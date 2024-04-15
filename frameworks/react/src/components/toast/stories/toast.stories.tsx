@@ -10,7 +10,9 @@ const meta: Meta = {
 export default meta
 
 const toaster = createToaster({
-  placement: 'top-end',
+  placement: 'bottom-end',
+  overlap: true,
+  gap: 24,
 })
 
 export const Basic = () => {
@@ -20,20 +22,13 @@ export const Basic = () => {
         type="button"
         onClick={() =>
           toaster.create({
-            id: 'a1',
-            title: 'Success!',
-            description: 'Something happened successfully.',
-            type: 'success',
+            title: 'Loading!',
+            description: 'We are loading something for you. Please wait.',
+            type: 'info',
           })
         }
       >
         Add Toast
-      </button>
-      <button
-        type="button"
-        onClick={() => toaster.update('a1', { type: 'loading', title: 'Loading!' })}
-      >
-        Update Toast
       </button>
       <Toaster toaster={toaster}>
         {(toast) => (

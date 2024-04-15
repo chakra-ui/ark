@@ -1,32 +1,29 @@
-import { createToaster } from '@ark-ui/react'
+import { Toaster, createToaster } from '@ark-ui/react'
 import { XIcon } from 'lucide-react'
-import { Button, IconButton, Toast } from '~/components/ui'
+import { Button, Toast } from '~/components/ui'
 
-const [Toaster, toast] = createToaster({
+const toaster = createToaster({
   placement: 'top-end',
-  render(toast) {
-    return (
-      <Toast.Root>
-        <Toast.Title>{toast.title}</Toast.Title>
-        <Toast.Description>{toast.description}</Toast.Description>
-        <Toast.CloseTrigger asChild>
-          <IconButton size="sm" variant="link">
-            <XIcon />
-          </IconButton>
-        </Toast.CloseTrigger>
-      </Toast.Root>
-    )
-  },
 })
 
 export const Demo = () => (
   <>
     <Button
       variant="outline"
-      onClick={() => toast.create({ title: 'Title', description: 'Description' })}
+      onClick={() => toaster.create({ title: 'Title', description: 'Description', type: 'info' })}
     >
       Create Toast
     </Button>
-    <Toaster />
+    <Toaster toaster={toaster}>
+      {(toast) => (
+        <Toast.Root key={toast.id}>
+          <Toast.Title>{toast.title}</Toast.Title>
+          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.CloseTrigger>
+            <XIcon />
+          </Toast.CloseTrigger>
+        </Toast.Root>
+      )}
+    </Toaster>
   </>
 )

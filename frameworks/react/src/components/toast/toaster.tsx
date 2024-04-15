@@ -3,29 +3,19 @@ import * as toast from '@zag-js/toast'
 import { type ReactNode, forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import type { createToaster } from './create-toaster'
+import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
 
-export interface ToastProps
+export interface ToasterProps
   extends Assign<
     HTMLArkProps<'div'>,
     {
-      // TODO simplify
-      toaster: ReturnType<typeof createToaster>
-      children: (toast: toast.Options<any>) => ReactNode
+      toaster: CreateToasterReturn
+      children: (toast: toast.Options<ReactNode>) => ReactNode
     }
   > {}
 
-const ToastActor = (props: {
-  value: toast.Service
-  children: (ctx: toast.Options<any>) => ReactNode
-}) => {
-  const [state, send] = useActor(props.value)
-  const api = toast.connect(state, send, normalizeProps)
-  return <ToastProvider value={api}>{props.children(state.context)}</ToastProvider>
-}
-
-export const Toaster = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
+export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
   const { toaster, children, ...rest } = props
   const [state, send] = useMachine(toaster.machine)
   const placement = state.context.placement
@@ -48,3 +38,14 @@ export const Toaster = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
 })
 
 Toaster.displayName = 'Toaster'
+
+interface ToastActorProps {
+  value: toast.Service
+  children: (ctx: toast.Options<ReactNode>) => ReactNode
+}
+
+const ToastActor = (props: ToastActorProps) => {
+  const [state, send] = useActor(props.value)
+  const api = toast.connect(state, send, normalizeProps)
+  return <ToastProvider value={api}>{props.children(state.context)}</ToastProvider>
+}

@@ -1,26 +1,32 @@
-import { Toast, createToaster } from '../'
+import { Toast, Toaster, createToaster } from '../'
 
-const [Toaster, toast] = createToaster({
-  placement: 'top-end',
-  render(toast) {
-    return (
-      <Toast.Root>
-        <Toast.Title>{toast.title}</Toast.Title>
-        <Toast.Description>{toast.description}</Toast.Description>
-        <Toast.CloseTrigger>Close</Toast.CloseTrigger>
-      </Toast.Root>
-    )
-  },
+const toaster = createToaster({
+  placement: 'bottom-end',
 })
 
 export const ComponentUnderTest = () => (
   <div>
     <button
       type="button"
-      onClick={() => toast.create({ title: 'Title', description: 'Description' })}
+      onClick={() =>
+        toaster.create({
+          title: 'Title',
+          description: 'Description',
+          type: 'info',
+        })
+      }
     >
       Create Toast
     </button>
-    <Toaster />
+    <Toaster toaster={toaster}>
+      {(toast) => (
+        <Toast.Root key={toast.id}>
+          <Toast.Title>{toast.title}</Toast.Title>
+          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.ActionTrigger>Start</Toast.ActionTrigger>
+          <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+        </Toast.Root>
+      )}
+    </Toaster>
   </div>
 )
