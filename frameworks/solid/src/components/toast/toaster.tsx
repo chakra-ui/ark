@@ -1,6 +1,6 @@
 import { mergeProps, normalizeProps, useActor, useMachine } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
-import { type Accessor, For, type JSX, createEffect, createMemo, splitProps } from 'solid-js'
+import { type Accessor, For, type JSX, createMemo, splitProps } from 'solid-js'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
