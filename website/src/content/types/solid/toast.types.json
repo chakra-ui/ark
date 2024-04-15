@@ -91,7 +91,6 @@
     }
   },
   "Root": {
-    "toast": { "type": "MachineContext<DefaultGenericOptions>", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
