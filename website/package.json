@@ -16,7 +16,7 @@
     "@ark-ui/react": "workspace:*",
     "@astrojs/check": "0.5.10",
     "@astrojs/mdx": "2.2.4",
-    "@astrojs/react": "3.1.1",
+    "@astrojs/react": "3.3.0",
     "@astrojs/sitemap": "3.1.2",
     "@fontsource-variable/fira-code": "5.0.17",
     "@fontsource-variable/outfit": "5.0.12",
