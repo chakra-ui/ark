@@ -73,6 +73,13 @@
       "description": "The title of the toast."
     }
   },
+  "ActionTrigger": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "CloseTrigger": {
     "asChild": {
       "type": "boolean",
