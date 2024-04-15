@@ -7,9 +7,9 @@ const meta: Meta = {
 
 export default meta
 
-export { Example as Basic } from './stories/accordion-basic'
-export { Example as Collapsible } from './stories/accordion-collapsible'
-export { Example as Controlled } from './stories/accordion-controlled'
-export { Example as Disabled } from './stories/accordion-disabled'
-export { Example as LazyMount } from './stories/accordion-lazymount'
-export { Example as Multiple } from './stories/accordion-multiple'
+export { Example as Basic } from './examples/basic'
+export { Example as Collapsible } from './examples/collapsible'
+export { Example as Controlled } from './examples/controlled'
+export { Example as Disabled } from './examples/disabled'
+export { Example as LazyMount } from './examples/lazymount'
+export { Example as Multiple } from './examples/multiple'
