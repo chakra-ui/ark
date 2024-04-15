@@ -19,6 +19,17 @@ const components = defineCollection({
   }),
 })
 
+const providers = defineCollection({
+  type: 'content',
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    specification: z.string().optional(),
+    label: z.string().optional(),
+  }),
+})
+
 const styling = defineCollection({
   type: 'content',
   schema: z.object({
@@ -71,6 +82,7 @@ export const collections = {
   changelog,
   components,
   overview,
+  providers,
   stories,
   styling,
   types,

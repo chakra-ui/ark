@@ -1,6 +1,6 @@
 ---
-import { type CollectionEntry } from 'astro:content'
-import path from 'path'
+import path from 'node:path'
+import type { CollectionEntry } from 'astro:content'
 import { match } from 'ts-pattern'
 import DocsHero from '~/components/docs/docs-hero.astro'
 import { InfoBanner } from '~/components/docs/info-banner'
@@ -27,12 +27,22 @@ const { entry } = Astro.props
 
 const { Content, headings } = await entry.render()
 
-const banner = match(entry).with({ collection: 'components' }, ({ data }) => 
-  match(data)
-    .with({ label: 'preview' }, () => ({title:"Preview Component", description:"Please note, the API of this component is currently in a preview phase and is subject to change."}))
-    .with({ label: 'upcoming' }, () => ({title:"Upcoming Component", description:"Please note that this component will only be available in the next minor release."}))
-    .otherwise(() => null)
-).otherwise(() => null)
+const banner = match(entry)
+  .with({ collection: 'components' }, ({ data }) =>
+    match(data)
+      .with({ label: 'preview' }, () => ({
+        title: 'Preview Component',
+        description:
+          'Please note, the API of this component is currently in a preview phase and is subject to change.',
+      }))
+      .with({ label: 'upcoming' }, () => ({
+        title: 'Upcoming Component',
+        description:
+          'Please note that this component will only be available in the next minor release.',
+      }))
+      .otherwise(() => null),
+  )
+  .otherwise(() => null)
 ---
 
 <DocsLayout title={entry.data.title} description={entry.data.description} headings={headings}>

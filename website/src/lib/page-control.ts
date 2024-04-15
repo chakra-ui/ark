@@ -1,5 +1,5 @@
+import path from 'node:path'
 import { getCollection } from 'astro:content'
-import path from 'path'
 
 const getOverviewPages = async () => {
   const priority = ['introduction', 'getting-started', 'as-child-prop', 'animation']
@@ -12,9 +12,10 @@ export const getAllCollections = async () => {
   const overviewPages = await getOverviewPages()
   const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
+  const providerPages = await getCollection('providers')
   const changelogPages = await getCollection('changelog')
 
-  return [...overviewPages, ...stylingPages, ...componentPages, ...changelogPages]
+  return [...overviewPages, ...stylingPages, ...componentPages, ...providerPages, ...changelogPages]
 }
 
 const getCurrentPageIndex = async (pathname?: string) => {
@@ -55,6 +56,7 @@ export const getSitemap = async (): Promise<Item[]> => {
   const overviewPages = await getOverviewPages()
   const stylingPages = await getCollection('styling')
   const componentPages = await getCollection('components')
+  const providerPages = await getCollection('providers')
   const changelogPages = await getCollection('changelog')
 
   return [
@@ -80,6 +82,16 @@ export const getSitemap = async (): Promise<Item[]> => {
       id: 'components',
       name: 'Components',
       items: componentPages.map((item) => ({
+        id: item.data.id,
+        name: item.data.title,
+        href: path.posix.join('/docs', item.collection, item.data.id),
+        label: item.data.label,
+      })),
+    },
+    {
+      id: 'providers',
+      name: 'Providers',
+      items: providerPages.map((item) => ({
         id: item.data.id,
         name: item.data.title,
         href: path.posix.join('/docs', item.collection, item.data.id),
