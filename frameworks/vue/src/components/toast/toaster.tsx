@@ -2,9 +2,9 @@ import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useToastContext } from './toast-context'
 
-export interface ToastRootProps extends HTMLArkProps<'div'> {}
+export interface ToasterProps extends HTMLArkProps<'div'> {}
 
-export const ToastRoot = defineComponent<ToastRootProps>(
+export const Toaster = defineComponent<ToasterProps>(
   (_, { attrs, slots }) => {
     const api = useToastContext()
 
@@ -15,6 +15,6 @@ export const ToastRoot = defineComponent<ToastRootProps>(
     )
   },
   {
-    name: 'ToastRoot',
+    name: 'Toaster',
   },
 )

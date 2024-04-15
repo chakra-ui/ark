@@ -2,19 +2,19 @@ import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useToastContext } from './toast-context'
 
-export interface ToastRootProps extends HTMLArkProps<'div'> {}
+export interface ToastActionTriggerProps extends HTMLArkProps<'button'> {}
 
-export const ToastRoot = defineComponent<ToastRootProps>(
+export const ToastActionTrigger = defineComponent<ToastActionTriggerProps>(
   (_, { attrs, slots }) => {
     const api = useToastContext()
 
     return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
+      <ark.button {...api.value.actionTriggerProps} {...attrs}>
         {slots.default?.()}
-      </ark.div>
+      </ark.button>
     )
   },
   {
-    name: 'ToastRoot',
+    name: 'ToastActionTrigger',
   },
 )
