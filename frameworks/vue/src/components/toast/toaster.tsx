@@ -16,7 +16,7 @@ export const Toaster = defineComponent<ToasterProps>(
     const toastsByPlacement = api.getToastsByPlacement()
     const toasts = toastsByPlacement[placement] ?? []
 
-    return () => <ark.div {...attrs}>{slots.default?.()}</ark.div>
+    return () => <ark.div {...attrs}>{slots.default?.(toasts)}</ark.div>
   },
   {
     name: 'Toaster',

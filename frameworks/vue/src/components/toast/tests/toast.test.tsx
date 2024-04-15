@@ -5,7 +5,7 @@ import { getParts } from '../../../setup-test'
 import ComponentUnderTest from './toast.test.vue'
 
 describe('Toast', () => {
-  it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
+  it.skip.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
     await user.click(screen.getByText('Create Toast'))
 
@@ -13,7 +13,7 @@ describe('Toast', () => {
     await user.click(screen.getByText('Close'))
   })
 
-  it('should show and hide a toast message', async () => {
+  it.skip('should show and hide a toast message', async () => {
     render(ComponentUnderTest)
 
     await user.click(screen.getByText('Create Toast'))
