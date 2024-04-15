@@ -564,7 +564,7 @@
     "release-it": "17.1.1",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "8.0.6",
-    "typescript": "5.4.4",
+    "typescript": "5.4.5",
     "vite": "5.2.8",
     "vite-plugin-dts": "3.8.2",
     "vitest": "1.5.0"

@@ -432,7 +432,7 @@
     "@release-it/keep-a-changelog": "5.0.0",
     "globby": "14.0.1",
     "release-it": "17.1.1",
-    "typescript": "5.4.4",
+    "typescript": "5.4.5",
     "vite": "5.2.8",
     "vite-plugin-dts": "3.8.2"
   }
