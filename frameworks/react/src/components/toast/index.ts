@@ -1,4 +1,5 @@
 export { createToaster, type CreateToasterProps } from './create-toaster'
+export { ToastActionTrigger, type ToastActionTriggerProps } from './toast-action-trigger'
 export { ToastCloseTrigger, type ToastCloseTriggerProps } from './toast-close-trigger'
 export { ToastContext, type ToastContextProps } from './toast-context'
 export { ToastDescription, type ToastDescriptionProps } from './toast-description'
