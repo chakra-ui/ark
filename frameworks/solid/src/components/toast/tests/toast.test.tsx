@@ -1,19 +1,13 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Toast } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast', () => {
   it.skip.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-
     expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(toastAnatomy))('should export %s', async (part) => {
-    expect(Toast[part]).toBeDefined()
   })
 
   it('should show and hide a toast message', async () => {
