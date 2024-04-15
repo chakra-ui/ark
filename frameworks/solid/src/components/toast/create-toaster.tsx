@@ -1,4 +1,4 @@
-import { type PropTypes, normalizeProps } from '@zag-js/react'
+import { type PropTypes, normalizeProps } from '@zag-js/solid'
 import * as toast from '@zag-js/toast'
 import type { JSX } from 'solid-js'
 import type { Optional } from '../../types'

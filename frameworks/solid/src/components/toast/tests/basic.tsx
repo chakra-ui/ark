@@ -21,8 +21,8 @@ export const ComponentUnderTest = () => (
     <Toaster toaster={toaster}>
       {(toast) => (
         <Toast.Root>
-          <Toast.Title>{toast.title}</Toast.Title>
-          <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Title>{toast().title}</Toast.Title>
+          <Toast.Description>{toast().description}</Toast.Description>
           <Toast.ActionTrigger>Start</Toast.ActionTrigger>
           <Toast.CloseTrigger>Close</Toast.CloseTrigger>
         </Toast.Root>

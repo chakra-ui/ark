@@ -1,5 +1,4 @@
 import { XIcon } from 'lucide-solid'
-import { Portal } from 'solid-js/web'
 import type { Meta } from 'storybook-solidjs'
 import { Toast, Toaster, createToaster } from '../'
 import './toast.css'
