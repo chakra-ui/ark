@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 
 const meta: Meta = {
-  title: 'Components / Environment',
+  title: 'Providers / Environment',
 }
 
 export default meta
