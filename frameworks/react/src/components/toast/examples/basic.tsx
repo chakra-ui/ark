@@ -1,6 +1,5 @@
 import { XIcon } from 'lucide-react'
-import { Toast, createToaster } from '../..'
-import { Toaster } from '../toaster'
+import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',
