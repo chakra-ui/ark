@@ -16,7 +16,7 @@ export default defineConfig({
         '**/*.stories.tsx',
         '**/*.test.tsx',
         '**/tests/*',
-        '**/stories/*',
+        '**/examples/*',
         '**/setup-test.ts',
       ],
       afterBuild: () => {

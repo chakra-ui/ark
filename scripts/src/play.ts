@@ -12,7 +12,7 @@ const toKebabCase = (str: string) => {
   )
 }
 
-const stories = await globby('../website/src/content/stories/react/*.stories.json')
+const stories = await globby('../website/src/content/stories/solid/*.stories.json')
 
 stories.sort().map((story) => {
   const component = toKebabCase(parse(story).name.split('.')[0])
@@ -21,8 +21,8 @@ stories.sort().map((story) => {
   Object.entries(content).map(([key, value]) => {
     const name = toKebabCase(key)
     outputFileSync(
-      `../frameworks/react/src/components/${component}/examples/${name}.tsx`,
-      value.replace('@ark-ui/react', '../..').replace('const', 'export const'),
+      `../frameworks/solid/src/components/${component}/examples/${name}.tsx`,
+      value.replace('@ark-ui/solid', '../..').replace('const', 'export const'),
     )
   })
 
@@ -32,7 +32,7 @@ stories.sort().map((story) => {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('')
 
-  const meta = `import type { Meta } from '@storybook/react'
+  const meta = `import type { Meta } from '@storybook/solid'
 
 const meta: Meta = {
   title: 'Components / ${componentName}',
@@ -50,7 +50,7 @@ export default meta
     .join('\n')
 
   outputFileSync(
-    `../frameworks/react/src/components/${component}/${component}.stories.tsx`,
+    `../frameworks/solid/src/components/${component}/${component}.stories.tsx`,
     `${meta}${exports}`,
   )
 })

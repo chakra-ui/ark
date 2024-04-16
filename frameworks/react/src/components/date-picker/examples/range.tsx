@@ -1,6 +1,6 @@
 import { DatePicker } from '../..'
 
-export const Basic = () => {
+export const Range = () => {
   return (
     <DatePicker.Root selectionMode="range">
       <DatePicker.Label>Label</DatePicker.Label>
