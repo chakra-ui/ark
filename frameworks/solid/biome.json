@@ -1,0 +1,10 @@
+{
+  "extends": ["../../biome.json"],
+  "linter": {
+    "rules": {
+      "correctness": {
+        "useJsxKeyInIterable": "off"
+      }
+    }
+  }
+}
