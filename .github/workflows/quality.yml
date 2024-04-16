@@ -41,8 +41,8 @@ jobs:
       - name: Generate TypeDocs
         run: bun scripts document:types
 
-      - name: Generate Storydocs
-        run: bun scripts document:stories
+      # - name: Generate Storydocs
+      #   run: bun scripts document:stories
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
