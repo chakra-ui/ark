@@ -50,17 +50,34 @@ To separate menu items, render the `Menu.Separator` component.
 
 <Story id="Separator" />
 
-### Checkbox and Radio option items
+### Context menu
 
-To show a checkbox or radio option item, use the `Menu.OptionItem` component.
-Depending on the `type` prop, the item will be rendered as a checkbox or radio
-option item. The `name` prop is used to group the items together, and the
-`value` prop is used to identify the item.
+To show the menu when a trigger element is right-clicked, use the
+`Menu.ContextTrigger` component.
 
-To manage the state of the option items pass the `value` and `onValueChange`
-props to the `Menu` component.
+Context menus are also opened during a long-press of roughly `700ms` when the
+pointer is pen or touch.
 
-<Story id="Options" />
+<Story id="Context" />
+
+### Nested menu
+
+To show a nested menu, render another `Menu` component and use the
+`Menu.TriggerItem` component to open the submenu.
+
+<Story id="Nested" />
+
+### Checkbox
+
+To add a checkbox to a menu item, use the `Menu.Checkbox` component.
+
+<Story id="Checkbox" />
+
+### Radio Group
+
+To group radio option items, use the `Menu.RadioGroup` component.
+
+<Story id="RadioGroup" />
 
 ## API Reference
 

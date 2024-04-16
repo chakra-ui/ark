@@ -6,7 +6,7 @@ resources:
   zag: date-picker
 ---
 
-import { Anatomy, Story, ComponentPreview } from '~/components/docs'
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
 import ComponentTypes from '~/components/docs/component-types.astro'
 
 <ComponentPreview />
@@ -26,6 +26,14 @@ Learn how to use the `DatePicker` component in your project. Let's take a look
 at the most basic example
 
 <Story id="Basic" />
+
+
+### Range Selection
+
+To create a Date Picker that allows a range selection, set the `selectionMode`
+prop to `range`.
+
+<Story id="Range" />
 
 ### Standalone Date Picker
 
