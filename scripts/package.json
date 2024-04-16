@@ -9,7 +9,8 @@
     "document:types": "bun run src/generate-type-docs.ts",
     "document:stories": "bun run src/generate-stories.ts",
     "release:prepare": "bun run src/release-prepare.ts",
-    "vue:props": "bun run src/generate-vue-props.ts"
+    "vue:props": "bun run src/generate-vue-props.ts",
+    "play": "bun  run src/play.ts"
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
