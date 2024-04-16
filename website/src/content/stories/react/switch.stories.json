@@ -1,1 +1,7 @@
-{}
+{
+  "RenderProp": "import { Switch } from '@ark-ui/react'\n\nexport const RenderProp = () => (\n  <Switch.Root>\n    <Switch.Control>\n      <Switch.Thumb />\n    </Switch.Control>\n    <Switch.Context>\n      {(context) => (\n        <Switch.Label>Feature is {context.isChecked ? 'enabled' : 'disabled'}</Switch.Label>\n      )}\n    </Switch.Context>\n  </Switch.Root>\n)\n",
+  "Controlled": "import { useState } from 'react'\nimport { Switch } from '@ark-ui/react'\n\nexport const Controlled = () => {\n  const [checked, setChecked] = useState(false)\n\n  return (\n    <Switch.Root checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>\n      <Switch.Control>\n        <Switch.Thumb />\n      </Switch.Control>\n      <Switch.Label>Label</Switch.Label>\n    </Switch.Root>\n  )\n}\n",
+  "Disabled": "import { Switch } from '@ark-ui/react'\n\nexport const Disabled = () => {\n  return (\n    <Switch.Root disabled>\n      <Switch.Control>\n        <Switch.Thumb />\n      </Switch.Control>\n      <Switch.Label>Label</Switch.Label>\n    </Switch.Root>\n  )\n}\n",
+  "Basic": "import { Switch } from '@ark-ui/react'\n\nexport const Basic = () => (\n  <Switch.Root>\n    <Switch.Control>\n      <Switch.Thumb />\n    </Switch.Control>\n    <Switch.Label>Label</Switch.Label>\n  </Switch.Root>\n)\n",
+  "InitialValue": "import { Switch } from '@ark-ui/react'\n\nexport const InitialValue = () => (\n  <Switch.Root defaultChecked>\n    <Switch.Control>\n      <Switch.Thumb />\n    </Switch.Control>\n    <Switch.Label>Label</Switch.Label>\n  </Switch.Root>\n)\n"
+}

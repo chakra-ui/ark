@@ -1,1 +1,5 @@
-{}
+{
+  "Events": "import { Avatar } from '@ark-ui/react'\n\nexport const Events = () => {\n  const handleStatusChange = (details: Avatar.StatusChangeDetails) => {\n    console.log(details.status)\n  }\n  return (\n    <Avatar.Root onStatusChange={handleStatusChange}>\n      <Avatar.Fallback>PA</Avatar.Fallback>\n      <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n    </Avatar.Root>\n  )\n}\n",
+  "Context": "import { Avatar } from '@ark-ui/react'\n\nexport const Context = () => (\n  <Avatar.Root>\n    <Avatar.Context>\n      {(api) => <Avatar.Fallback>{api.isLoaded ? 'Loading' : 'PA'}</Avatar.Fallback>}\n    </Avatar.Context>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n",
+  "Basic": "import { Avatar } from '@ark-ui/react'\n\nexport const Basic = (props: Avatar.RootProps) => (\n  <Avatar.Root {...props}>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/300\" alt=\"avatar\" />\n  </Avatar.Root>\n)\n"
+}
