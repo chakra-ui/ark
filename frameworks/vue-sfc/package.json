@@ -53,7 +53,7 @@
     "storybook": "8.0.8",
     "typescript": "5.4.5",
     "vite": "5.2.9",
-    "vue": "3.4.22"
+    "vue": "3.4.23"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
