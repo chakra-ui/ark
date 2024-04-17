@@ -6,7 +6,7 @@ import './avatar.css'
 <template>
   <Story title="Avatar">
     <Variant title="Basic">
-      <Avatar.Root>
+      <Avatar.Root >
         <Avatar.Fallback>PA</Avatar.Fallback>
         <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
       </Avatar.Root>

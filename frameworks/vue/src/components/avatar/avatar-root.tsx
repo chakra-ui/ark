@@ -12,9 +12,10 @@ export type AvatarRootEmits = {
   'status-change': [details: StatusChangeDetails]
 }
 
-export type AvatarRootSlots = SlotsType<{ default?: (avatar: UnwrapRef<UseAvatarReturn>) => void }>
 
-type AvatarRootVueProps = ComponentFactory<AvatarRootProps, AvatarRootEmits>
+export type AvatarRootSlots = SlotsType<{ default?: (props: UnwrapRef<UseAvatarReturn>) => void }>
+
+type AvatarRootVueProps = ComponentFactory<AvatarRootProps, AvatarRootEmits, AvatarRootSlots>
 
 export const AvatarRoot = defineComponent(
   (props, { slots, attrs, emit }) => {
