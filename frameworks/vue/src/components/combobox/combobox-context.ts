@@ -8,5 +8,4 @@ export interface ComboboxContext<T extends CollectionItem>
     UsePresenceProps {}
 
 export const [ComboboxProvider, useComboboxContext] =
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   createContext<ComboboxContext<any>>('ComboboxContext')

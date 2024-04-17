@@ -32,7 +32,6 @@ export type ComponentWithProps<P> = {
   new (): {
     $props: AllowedComponentProps &
       ComponentCustomProps &
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       VNodeProps & { props?: Record<keyof P, any> } & P & {
         [key: string]: unknown
       }
@@ -97,7 +96,6 @@ export function transformComposableProps<T extends { context: object }>(props: T
  * Checks whether a given VNode is a render-vialble element.
  */
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function isValidVNodeElement(input: any): boolean {
   return (
     input &&

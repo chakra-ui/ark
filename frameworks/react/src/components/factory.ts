@@ -33,9 +33,8 @@ const withAsChild = (Component: React.ElementType) => {
       const onlyChild = Children.only(children)
       return isValidElement(onlyChild)
         ? cloneElement(onlyChild, {
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             ...mergeProps(restProps, onlyChild.props as any),
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
             ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
           })
         : null

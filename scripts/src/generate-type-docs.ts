@@ -80,7 +80,6 @@ async function extractPropertiesOfTypeName(
       }
     }
     if (Object.keys(properties).length) {
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       results[(typeStatement as any).name.getText()] = Object.fromEntries(
         Object.entries(properties)
           .sort(([aName], [bName]) => aName.localeCompare(bName))

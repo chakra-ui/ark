@@ -1,6 +1,5 @@
 import { useCallback, useRef } from 'react'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type AnyFunction = (...args: any[]) => any
 
 type Options = {
@@ -19,7 +18,6 @@ export function useEvent<T extends AnyFunction>(callback: T | undefined, opts: O
   const callbackRef = useLatestRef(callback)
 
   return useCallback(
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     (...args: any[]) => {
       if (sync) return queueMicrotask(() => callbackRef.current?.(...args))
       return callbackRef.current?.(...args)

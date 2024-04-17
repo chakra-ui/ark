@@ -7,7 +7,6 @@ const avatar = useAvatarContext()
 defineSlots<{
   default(props: {
     avatar: UnwrapRef<UseAvatarContext>
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   }): any
 }>()
 </script>

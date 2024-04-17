@@ -41,7 +41,6 @@ const withAsProp = <T extends ElementType>(Component: T) => {
       return <>{otherProps.children(fn)}</>
     }
 
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     return <Dynamic component={Component} {...(otherProps as any)} />
   }
   return ArkComponent

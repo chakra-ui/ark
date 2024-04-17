@@ -38,20 +38,16 @@ export const SelectRoot = defineComponent<SelectRootProps<CollectionItem>>(
       ...props,
       ...presenceProps,
       items: {
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Array as PropType<UseSelectProps<any>['items']>,
         required: true,
       },
       itemToString: {
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Function as PropType<UseSelectProps<any>['itemToString']>,
       },
       itemToValue: {
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Function as PropType<UseSelectProps<any>['itemToValue']>,
       },
       isItemDisabled: {
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
         type: Function as PropType<UseSelectProps<any>['isItemDisabled']>,
       },
     },
