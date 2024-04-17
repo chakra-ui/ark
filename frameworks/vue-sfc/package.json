@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "storybook": "histoire dev"
+    "storybook": "histoire dev",
+    "typecheck": "vue-tsc"
   },
   "dependencies": {
     "@zag-js/accordion": "0.46.0",
@@ -52,7 +53,8 @@
     "typescript": "5.4.5",
     "vite": "5.2.9",
     "vite-plugin-dts": "3.8.3",
-    "vue": "3.4.23"
+    "vue": "3.4.23",
+    "vue-tsc": "2.0.13"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
