@@ -3,6 +3,7 @@ import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',
+  overlap: true,
   gap: 24,
 })
 

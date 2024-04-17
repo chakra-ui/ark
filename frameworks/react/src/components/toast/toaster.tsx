@@ -21,8 +21,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
   const placement = state.context.placement
 
   const api = toast.group.connect(state, send, normalizeProps)
-  const toastsByPlacement = api.getToastsByPlacement()
-  const toasts = toastsByPlacement[state.context.placement] ?? []
+  const toasts = api.getToastsByPlacement(placement)
 
   const mergedProps = mergeProps(api.getGroupProps({ placement }), rest)
 

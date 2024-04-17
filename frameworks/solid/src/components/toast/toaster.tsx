@@ -21,8 +21,7 @@ export const Toaster = (props: ToasterProps) => {
   const placement = state.context.placement
 
   const api = createMemo(() => toast.group.connect(state, send, normalizeProps))
-  const toastsByPlacement = createMemo(() => api().getToastsByPlacement())
-  const toasts = createMemo(() => toastsByPlacement()[state.context.placement] ?? [])
+  const toasts = createMemo(() => api().getToastsByPlacement(placement))
 
   const mergedProps = mergeProps(api().getGroupProps({ placement }), localProps)
 

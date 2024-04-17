@@ -13,8 +13,7 @@ export const Toaster = defineComponent<ToasterProps>(
     const [state, send] = useMachine(props.toaster.machine)
     const placement = state.value.context.placement
     const api = toast.group.connect(state.value, send, normalizeProps)
-    const toastsByPlacement = api.getToastsByPlacement()
-    const toasts = toastsByPlacement[placement] ?? []
+    const toasts = api.getToastsByPlacement(placement)
 
     return () => <ark.div {...attrs}>{slots.default?.(toasts)}</ark.div>
   },
