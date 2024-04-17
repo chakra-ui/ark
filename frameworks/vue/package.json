@@ -475,17 +475,17 @@
   "dependencies": {
     "@ark-ui/anatomy": "workspace:*",
     "@zag-js/accordion": "0.46.0",
-    "@zag-js/avatar": "0.46.0",
-    "@zag-js/carousel": "0.46.0",
+    "@zag-js/avatar": "0.47.0",
+    "@zag-js/carousel": "0.47.0",
     "@zag-js/checkbox": "0.46.0",
-    "@zag-js/clipboard": "0.46.0",
-    "@zag-js/collapsible": "0.46.0",
-    "@zag-js/color-picker": "0.46.0",
+    "@zag-js/clipboard": "0.47.0",
+    "@zag-js/collapsible": "0.47.0",
+    "@zag-js/color-picker": "0.47.0",
     "@zag-js/combobox": "0.46.0",
     "@zag-js/date-picker": "0.46.0",
     "@zag-js/dialog": "0.46.0",
     "@zag-js/editable": "0.46.0",
-    "@zag-js/file-upload": "0.46.0",
+    "@zag-js/file-upload": "0.47.0",
     "@zag-js/hover-card": "0.46.0",
     "@zag-js/i18n-utils": "0.46.0",
     "@zag-js/file-utils": "0.46.0",
@@ -509,7 +509,7 @@
     "@zag-js/tooltip": "0.46.0",
     "@zag-js/tree-view": "0.46.0",
     "@zag-js/types": "0.46.0",
-    "@zag-js/vue": "0.46.0"
+    "@zag-js/vue": "0.47.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.0",
