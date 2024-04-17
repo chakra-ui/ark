@@ -23,38 +23,6 @@ export default defineConfig({
     }),
     svelte(),
   ],
-  build: {
-    target: 'esnext',
-    minify: false,
-    lib: {
-      entry: globbySync('src/**/index.ts'),
-      formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
-    },
-    rollupOptions: {
-      external: [
-        ...Object.keys(pkg.dependencies ?? {}),
-        ...Object.keys(pkg.peerDependencies ?? {}),
-        'svelte',
-      ],
-      output: [
-        {
-          format: 'cjs',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
-          exports: 'named',
-          entryFileNames: '[name].cjs',
-        },
-        {
-          format: 'es',
-          preserveModules: true,
-          preserveModulesRoot: 'src',
-          exports: 'named',
-          entryFileNames: '[name].mjs',
-        },
-      ],
-    },
-  },
   test: {
     setupFiles: 'src/setup-test.ts',
     coverage: {

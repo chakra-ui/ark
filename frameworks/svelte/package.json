@@ -19,7 +19,7 @@
     "url": "https://github.com/chakra-ui/ark/issues"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "svelte-package -i ./src/ -o ./dist/",
     "lint": "eslint --ext .ts,.tsx,.svelte src",
     "test": "vitest",
     "test:ci": "vitest --run --coverage",
@@ -78,6 +78,7 @@
     "@storybook/svelte": "^8.0.0-beta.5",
     "@storybook/svelte-vite": "^8.0.0-beta.5",
     "@storybook/test": "^8.0.0-beta.5",
+    "@sveltejs/package": "2.3.1",
     "@sveltejs/vite-plugin-svelte": "3.0.2",
     "@testing-library/dom": "9.3.4",
     "@testing-library/jest-dom": "6.4.2",
@@ -106,5 +107,13 @@
   "peerDependencies": {
     "svelte": ">=5.0.0"
   },
-  "main": "src/index.ts"
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.ts",
+      "svelte": "./dist/index.ts",
+      "import": "./dist/index.ts"
+    }
+  }
 }
