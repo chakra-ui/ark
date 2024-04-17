@@ -1,10 +1,10 @@
 <script setup>
-import Basic from './examples/Basic.vue'
-import Events from './examples/Events.vue'
+import Basic from './examples/basic.vue'
+import Events from './examples/events.vue'
 </script>
 
 <template>
-  <Story>
+  <Story title="Avatar">
     <Variant title="Basic">
       <Basic />
     </Variant>
