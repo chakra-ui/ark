@@ -56,7 +56,7 @@
       "description": "The initial open state of the dialog."
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

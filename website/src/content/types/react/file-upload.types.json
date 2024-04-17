@@ -91,7 +91,7 @@
       "description": "The default camera to use when capturing media"
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

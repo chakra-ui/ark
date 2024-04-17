@@ -184,7 +184,7 @@
       "description": "Whether to close the menu when an option is selected"
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

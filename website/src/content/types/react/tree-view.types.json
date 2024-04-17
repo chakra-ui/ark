@@ -98,7 +98,7 @@
       "description": "The initial selected ids of the tree view."
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

@@ -20,7 +20,7 @@
       "description": "Render as a different element type."
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."

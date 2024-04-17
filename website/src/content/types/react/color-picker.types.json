@@ -120,7 +120,7 @@
       "description": "The initial value of the color picker."
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "isRequired": false,
       "description": "The direction of the color picker"
     },

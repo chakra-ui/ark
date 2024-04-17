@@ -111,7 +111,7 @@
       "description": "the initial value of the combobox"
     },
     "dir": {
-      "type": "'rtl' | 'ltr'",
+      "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
@@ -263,7 +263,7 @@
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
     "selectionBehavior": {
-      "type": "'replace' | 'clear' | 'preserve'",
+      "type": "'replace' | 'preserve' | 'clear'",
       "isRequired": false,
       "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
     },
