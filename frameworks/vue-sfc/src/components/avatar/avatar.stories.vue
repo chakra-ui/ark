@@ -1,6 +1,6 @@
 <script setup>
 import Basic from './examples/basic.vue'
-import Events from './examples/events.vue'
+import Context from './examples/context.vue'
 </script>
 
 <template>
@@ -8,8 +8,8 @@ import Events from './examples/events.vue'
     <Variant title="Basic">
       <Basic />
     </Variant>
-    <Variant title="Events">
-      <Events />
+    <Variant title="Context">
+      <Context />
     </Variant>
   </Story>
 </template>

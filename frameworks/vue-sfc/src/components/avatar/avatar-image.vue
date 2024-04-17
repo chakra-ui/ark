@@ -6,10 +6,9 @@ export interface AvatarImageProps {
 }
 
 defineProps<AvatarImageProps>()
-
-const api = useAvatarContext()
+const avatar = useAvatarContext()
 </script>
 
 <template>
- <img v-bind="api.imageProps" />
+  <img v-bind="avatar.imageProps" />
 </template>

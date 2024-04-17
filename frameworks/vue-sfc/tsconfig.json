@@ -1,6 +1,5 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["src/**/*", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -13,5 +12,6 @@
     "declaration": false,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true
-  }
+  },
+  "include": ["src/**/*", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
