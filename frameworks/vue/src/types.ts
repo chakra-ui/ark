@@ -1,4 +1,41 @@
-import type { PropType } from 'vue'
+import type {
+  AllowedComponentProps,
+  ComponentCustomProps,
+  ComponentOptionsMixin,
+  DefineComponent,
+  EmitsOptions,
+  ExtractPropTypes,
+  PropType,
+  SlotsType,
+  VNodeProps,
+} from 'vue'
+
+export type ComponentFactory<
+  // biome-ignore lint:lint/complexity/noBannedTypes Empty Object on Purpose
+  Props extends {} = {},
+  Emits extends {} = EmitsOptions,
+  Slots extends {} = SlotsType<Record<string, unknown>>,
+> = DefineComponent<
+  Props,
+  () => JSX.Element,
+  // biome-ignore lint:lint/complexity/noBannedTypes Empty Object on Purpose
+  {},
+  // biome-ignore lint:lint/complexity/noBannedTypes Empty Object on Purpose
+  {},
+  // biome-ignore lint:lint/complexity/noBannedTypes Empty Object on Purpose
+  {},
+  ComponentOptionsMixin,
+  ComponentOptionsMixin,
+  Emits,
+  string,
+  VNodeProps & AllowedComponentProps & ComponentCustomProps,
+  Readonly<ExtractPropTypes<Props>>,
+  // biome-ignore lint:lint/complexity/noBannedTypes Empty Object on Purpose
+  {},
+  Slots
+>
+
+export type ComponentWithProps<Props extends {}> = ComponentFactory<Props>
 
 /**
  * Assign property types from right to left.

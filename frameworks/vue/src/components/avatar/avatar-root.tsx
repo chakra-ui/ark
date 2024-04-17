@@ -1,13 +1,22 @@
-import { defineComponent } from 'vue'
-import type { Assign } from '../../types'
+import type { StatusChangeDetails } from '@zag-js/avatar'
+import { type SlotsType, type UnwrapRef, defineComponent } from 'vue'
+import type { Assign, ComponentFactory } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { AvatarProvider } from './avatar-context'
 import { emits, props } from './avatar.props'
-import { type UseAvatarProps, useAvatar } from './use-avatar'
+import { type UseAvatarProps, type UseAvatarReturn, useAvatar } from './use-avatar'
 
 export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
 
-export const AvatarRoot = defineComponent<AvatarRootProps>(
+export type AvatarRootEmits = {
+  'status-change': [details: StatusChangeDetails]
+}
+
+export type AvatarRootSlots = SlotsType<{ default?: UnwrapRef<UseAvatarReturn> }>
+
+type AvatarRootVueProps = ComponentFactory<AvatarRootProps, AvatarRootEmits>
+
+export const AvatarRoot = defineComponent(
   (props, { slots, attrs, emit }) => {
     const api = useAvatar(props, emit)
     AvatarProvider(api)
@@ -23,4 +32,4 @@ export const AvatarRoot = defineComponent<AvatarRootProps>(
     props,
     emits,
   },
-)
+) as AvatarRootVueProps
