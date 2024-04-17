@@ -11,12 +11,11 @@ import './avatar.css'
         <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
       </Avatar.Root>
     </Variant>
-
     <Variant title="Events">
-      <Avatar @loading-status-change="(status) => console.log(status)">
+      <Avatar.Root @status-change="(status) => console.log(status)">
         <Avatar.Fallback>PA</Avatar.Fallback>
         <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
-      </Avatar>
+      </Avatar.Root>
     </Variant>
   </Story>
 </template>
