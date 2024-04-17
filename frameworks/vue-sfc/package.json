@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build": "vite build",
     "storybook": "histoire dev"
   },
   "dependencies": {
@@ -47,11 +48,10 @@
   "devDependencies": {
     "@histoire/plugin-vue": "0.17.17",
     "@vitejs/plugin-vue": "5.0.4",
-    "@vue/compiler-sfc": "3.4.23",
-    "@vue/tsconfig": "0.5.1",
     "histoire": "0.17.17",
     "typescript": "5.4.5",
     "vite": "5.2.9",
+    "vite-plugin-dts": "3.8.3",
     "vue": "3.4.23"
   },
   "peerDependencies": {
