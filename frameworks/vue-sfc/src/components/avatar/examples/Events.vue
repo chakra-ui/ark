@@ -5,6 +5,6 @@ import AvatarRoot from '../AvatarRoot.vue'
 
 <template>
   <AvatarRoot>
-    Basic Avatar Root
+    Event Avatar Root
   </AvatarRoot>
 </template>

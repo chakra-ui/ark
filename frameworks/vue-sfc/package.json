@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "storybook": "storybook dev -p 6006"
+    "storybook": "histoire dev"
   },
   "dependencies": {
     "@zag-js/accordion": "0.46.0",
@@ -45,12 +45,11 @@
     "@zag-js/vue": "0.46.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "8.0.8",
-    "@storybook/addon-essentials": "8.0.8",
-    "@storybook/vue3-vite": "8.0.8",
-    "@storybook/vue3": "8.0.8",
+    "@histoire/plugin-vue": "0.17.17",
     "@vitejs/plugin-vue": "5.0.4",
-    "storybook": "8.0.8",
+    "@vue/compiler-sfc": "3.4.23",
+    "@vue/tsconfig": "0.5.1",
+    "histoire": "0.17.17",
     "typescript": "5.4.5",
     "vite": "5.2.9",
     "vue": "3.4.23"

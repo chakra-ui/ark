@@ -1,10 +1,17 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["src/**/*", "src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
     "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "noPropertyAccessFromIndexSignature": false,
-    "types": ["vitest/globals"]
-  },
-  "include": ["src"]
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": false,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true
+  }
 }
