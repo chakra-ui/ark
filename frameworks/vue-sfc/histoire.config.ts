@@ -3,4 +3,5 @@ import { defineConfig } from 'histoire'
 
 export default defineConfig({
   plugins: [HstVue()],
+  storyMatch: ['**/*.stories.vue'],
 })
