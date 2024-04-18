@@ -10,6 +10,9 @@ export interface AvatarRootProps extends Omit<UseAvatarProps, 'onStatusChange'> 
 
 const props = defineProps<AvatarRootProps>()
 const emits = defineEmits<AvatarRootEmits>()
+const slots = defineSlots<{
+  default(): any
+}>()
 
 const avatar = useAvatar(props, emits)
 AvatarProvider(avatar)
@@ -17,6 +20,6 @@ AvatarProvider(avatar)
 
 <template>
   <div v-bind="avatar.rootProps">
-    <slot></slot>
+    <slot />
   </div>
 </template>

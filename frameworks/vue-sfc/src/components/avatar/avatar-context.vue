@@ -12,5 +12,5 @@ defineSlots<{
 </script>
 
 <template>
-  <slot :avatar="avatar"></slot>
+  <slot :avatar />
 </template>
