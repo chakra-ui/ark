@@ -12,5 +12,5 @@ defineSlots<{
 </script>
 
 <template>
-  <slot :collapsible="collapsible"></slot>
+  <slot :collapsible />
 </template>

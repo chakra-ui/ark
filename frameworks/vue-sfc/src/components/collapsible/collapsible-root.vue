@@ -9,6 +9,9 @@ export interface CollapsibleRootProps extends Omit<UseCollapsibleProps, 'onExitC
 
 const props = defineProps<CollapsibleRootProps>()
 const emits = defineEmits<CollapsibleRootEmits>()
+defineSlots<{
+  default(): any
+}>()
 
 const collapsible = useCollapsible(props, emits)
 CollapsibleProvider(collapsible)
@@ -16,6 +19,6 @@ CollapsibleProvider(collapsible)
 
 <template>
   <div v-bind="collapsible.rootProps">
-    <slot></slot>
+    <slot />
   </div>
 </template>
