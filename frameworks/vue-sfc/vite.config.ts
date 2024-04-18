@@ -51,4 +51,12 @@ export default defineConfig({
       ],
     },
   },
+  test: {
+    setupFiles: 'src/setup-test.ts',
+    globals: true,
+    environment: 'jsdom',
+    testTransformMode: {
+      web: ['/.[tj]sx$/'],
+    },
+  },
 })
