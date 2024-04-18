@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAvatarContext } from './use-avatar-context'
 
-const slots = defineSlots<{
+defineSlots<{
   default(): any
 }>()
 

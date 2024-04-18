@@ -10,7 +10,7 @@ export interface AvatarRootProps extends Omit<UseAvatarProps, 'onStatusChange'> 
 
 const props = defineProps<AvatarRootProps>()
 const emits = defineEmits<AvatarRootEmits>()
-const slots = defineSlots<{
+defineSlots<{
   default(): any
 }>()
 
