@@ -33,7 +33,7 @@ describe('Collapsible', () => {
     expect(screen.queryByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('Content')).not.toBeInTheDocument())
   })
 
   it('should control presence when lazy mounting and unmounting on exit', async () => {
