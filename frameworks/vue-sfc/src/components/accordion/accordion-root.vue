@@ -1,20 +1,24 @@
 <script setup lang="ts">
-// export type AccordionRootEmits = {
-//   focusChange: [details: FocusChangeDetails]
-//   valueChange: [value: string]
-// }
-// export interface AccordionRootProps
-//   extends Omit<UseAccordionProps, 'onFocusChange' | 'onValueChange'> {}
+import type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/accordion'
+import { type UseAccordionProps, useAccordion } from './use-accordion'
+import { AccordionProvider } from './use-accordion-context'
 
-// const props = defineProps<AccordionRootProps>()
-// const emits = defineEmits<AccordionRootEmits>()
+export type AccordionRootEmits = {
+  focusChange: [details: FocusChangeDetails]
+  valueChange: [details: ValueChangeDetails]
+}
+export interface AccordionRootProps
+  extends Omit<UseAccordionProps, 'onFocusChange' | 'onValueChange'> {}
 
-// const accordion = useAccordion(props, emits)
-// AccordionProvider(accordion)
+const props = defineProps<AccordionRootProps>()
+const emits = defineEmits<AccordionRootEmits>()
+
+const accordion = useAccordion(props, emits)
+AccordionProvider(accordion)
 </script>
 
 <template>
-  <div>
+  <div v-bind="accordion.rootProps">
   <slot></slot>
   </div>
 </template>

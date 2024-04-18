@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import AccordionRoot from '../accordion-root.vue'
+import {
+  AccordionItem,
+  AccordionItemContent,
+  AccordionItemIndicator,
+  AccordionItemTrigger,
+  AccordionRoot,
+} from '..'
 
 const items = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-    <AccordionRoot :collapsible="true">
+    <AccordionRoot>
         <AccordionItem v-for="item in items" :key="item" :value="item">
             <AccordionItemTrigger>
                 What is {{ item }}?

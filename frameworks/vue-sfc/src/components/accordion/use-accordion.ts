@@ -15,7 +15,6 @@ export const useAccordion = (
   emit: CallableFunction,
 ): UseAccordionReturn => {
   const environment = useEnvironmentContext()
-  console.log(props)
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
