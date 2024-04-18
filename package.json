@@ -13,7 +13,7 @@
     "typecheck": "turbo run typecheck",
     "react": "bun run --cwd frameworks/react",
     "solid": "bun run --cwd frameworks/solid",
-    "vue": "bun run --cwd frameworks/vue",
+    "vue": "bun run --cwd frameworks/vue-sfc",
     "anatomy": "bun run --cwd anatomy",
     "scripts": "bun run --cwd scripts",
     "website": "bun run --cwd website"
