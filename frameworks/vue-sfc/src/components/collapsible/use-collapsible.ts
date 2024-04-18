@@ -1,6 +1,7 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref, watch } from 'vue'
+import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
 import type { UseRenderStrategyProps } from '../../utils/use-render-strategy'
@@ -24,11 +25,13 @@ export const useCollapsible = (
 ): UseCollapsibleReturn => {
   const context = ref(props)
   const wasVisible = ref(false)
+  const environment = useEnvironmentContext()
 
   const [state, send] = useMachine(
     collapsible.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      getRootNode: environment?.value,
       onExitComplete: () => {
         emits('exitComplete')
       },
