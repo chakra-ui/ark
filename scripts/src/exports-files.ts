@@ -20,7 +20,7 @@ const main = async () => {
     })),
   )
 
-  console.log(removeCommonFiles(result))
+  console.log(removeCommonFiles(result).slice(0, 2))
 }
 
 main().catch((err) => {

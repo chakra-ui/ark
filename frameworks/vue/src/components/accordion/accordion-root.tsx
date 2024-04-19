@@ -13,17 +13,17 @@ export interface AccordionRootProps
 
 export const AccordionRoot = defineComponent<AccordionRootProps>(
   (props, { slots, attrs, emit }) => {
-    const api = useAccordion(props, emit)
+    const accordion = useAccordion(props, emit)
 
     const renderStrategyProps = computed(() => ({
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))
-    AccordionProvider(api)
+    AccordionProvider(accordion)
     RenderStrategyProvider(renderStrategyProps)
 
     return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
+      <ark.div {...accordion.value.rootProps} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

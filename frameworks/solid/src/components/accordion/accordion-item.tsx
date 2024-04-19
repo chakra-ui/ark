@@ -8,7 +8,8 @@ import { Collapsible } from '../collapsible'
 import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import type { HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
-import { AccordionItemPropsProvider, AccordionItemProvider } from './use-accordion-item-context'
+import { AccordionItemProvider } from './use-accordion-item-context'
+import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
 export interface AccordionItemProps
   extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps>,
@@ -16,11 +17,11 @@ export interface AccordionItemProps
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
-  const context = useAccordionContext()
+  const accordion = useAccordionContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const mergedProps = mergeProps(() => context().getItemProps(itemProps), localProps)
-  const itemState = createMemo(() => context().getItemState(itemProps))
-  const itemContentProps = context().getItemContentProps(itemProps)
+  const mergedProps = mergeProps(() => accordion().getItemProps(itemProps), localProps)
+  const itemState = createMemo(() => accordion().getItemState(itemProps))
+  const itemContentProps = accordion().getItemContentProps(itemProps)
 
   return (
     <AccordionItemPropsProvider value={itemProps}>

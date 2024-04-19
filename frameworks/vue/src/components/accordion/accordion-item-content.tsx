@@ -3,20 +3,20 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { emits } from '../presence/presence.props'
 import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemContext } from './use-accordion-item-context'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
 
 export const AccordionItemContent = defineComponent<AccordionItemContentProps>(
   (_, { slots, attrs }) => {
-    const api = useAccordionContext()
-    const item = useAccordionItemContext()
+    const accordion = useAccordionContext()
+    const itemProps = useAccordionItemPropsContext()
     const presenceApi = usePresenceContext()
 
     return () => (
       <>
         {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.getItemContentProps(item.value)} {...attrs}>
+          <ark.div {...accordion.value.getItemContentProps(itemProps.value)} {...attrs}>
             {slots.default?.()}
           </ark.div>
         )}
