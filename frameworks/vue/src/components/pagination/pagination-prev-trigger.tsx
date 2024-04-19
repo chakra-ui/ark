@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { usePaginationContext } from './pagination-context'
+import { usePaginationContext } from './use-pagination-context'
 
 export interface PaginationPrevTriggerProps extends HTMLArkProps<'button'> {}
 

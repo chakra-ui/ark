@@ -1,9 +1,9 @@
 import type { SwatchProps } from '@zag-js/color-picker'
-import { type PropType, defineComponent, reactive } from 'vue'
+import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useColorPickerContext } from './color-picker-context'
-import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
+import { useColorPickerContext } from './use-color-picker-context'
+import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
 
 export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {
   readOnly?: SwatchProps['respectAlpha']
@@ -12,7 +12,7 @@ export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, Swat
 export const ColorPickerSwatch = defineComponent<ColorPickerSwatchProps>(
   (props, { slots, attrs }) => {
     const api = useColorPickerContext()
-    ColorPickerSwatchProvider(reactive(props))
+    ColorPickerSwatchPropsProvider(props)
 
     return () => (
       <ark.div {...api.value.getSwatchProps(props)} {...attrs}>

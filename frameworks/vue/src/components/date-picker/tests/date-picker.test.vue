@@ -11,12 +11,13 @@ import { DatePicker } from '../'
       <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
     <DatePicker.PresetTrigger value="last7Days">Last 7 days</DatePicker.PresetTrigger>
-    <Teleport to="body">
+
       <DatePicker.Positioner data-testid="positioner">
         <DatePicker.Content>
           <DatePicker.YearSelect />
           <DatePicker.MonthSelect />
-          <DatePicker.View view="day" #default="api">
+          <DatePicker.View view="day" >
+            <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -40,8 +41,10 @@ import { DatePicker } from '../'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
+            </DatePicker.Context>
           </DatePicker.View>
-          <DatePicker.View view="month" #default="api">
+          <DatePicker.View view="month">
+            <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -65,8 +68,10 @@ import { DatePicker } from '../'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
+            </DatePicker.Context>
           </DatePicker.View>
-          <DatePicker.View view="year" #default="api">
+          <DatePicker.View view="year">
+            <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -86,9 +91,9 @@ import { DatePicker } from '../'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
+            </DatePicker.Context>
           </DatePicker.View>
         </DatePicker.Content>
       </DatePicker.Positioner>
-    </Teleport>
   </DatePicker.Root>
 </template>

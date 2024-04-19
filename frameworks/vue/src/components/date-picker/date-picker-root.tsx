@@ -3,9 +3,9 @@ import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { DatePickerProvider } from './date-picker-context'
 import { emits, props } from './date-picker.props'
 import { type UseDatePickerProps, useDatePicker } from './use-date-picker'
+import { DatePickerProvider } from './use-date-picker-context'
 
 export interface DatePickerRootProps
   extends Assign<HTMLArkProps<'div'>, UseDatePickerProps>,
@@ -29,7 +29,7 @@ export const DatePickerRoot = defineComponent<DatePickerRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { CheckboxProvider } from './checkbox-context'
 import { emits, props } from './checkbox.props'
 import { type UseCheckboxProps, useCheckbox } from './use-checkbox'
+import { CheckboxProvider } from './use-checkbox-context'
 
 export interface CheckboxRootProps extends Assign<HTMLArkProps<'label'>, UseCheckboxProps> {}
 
@@ -14,7 +14,7 @@ export const CheckboxRoot = defineComponent<CheckboxRootProps>(
 
     return () => (
       <ark.label {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.label>
     )
   },

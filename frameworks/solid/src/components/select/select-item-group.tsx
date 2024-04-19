@@ -9,8 +9,8 @@ export interface SelectItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGr
 
 export const SelectItemGroup = (props: SelectItemGroupProps) => {
   const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['id'])
-  const api = useSelectContext()
-  const mergedProps = mergeProps(() => api().getItemGroupProps(itemGroupProps), localProps)
+  const select = useSelectContext()
+  const mergedProps = mergeProps(() => select().getItemGroupProps(itemGroupProps), localProps)
 
   return <ark.div {...mergedProps} />
 }

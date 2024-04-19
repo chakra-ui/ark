@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useToastContext } from './toast-context'
+import { useToastContext } from './use-toast-context'
 
 export interface ToastRootProps extends HTMLArkProps<'div'> {}
 

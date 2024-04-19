@@ -6,18 +6,18 @@ import { useSelectContext } from './use-select-context'
 export interface SelectControlProps extends HTMLArkProps<'div'> {}
 
 export const SelectControl = (props: SelectControlProps) => {
-  const api = useSelectContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
-  const isValueEmpty = createMemo(() => api().value.length === 0)
+  const select = useSelectContext()
+  const mergedProps = mergeProps(() => select().controlProps, props)
+  const isValueEmpty = createMemo(() => select().value.length === 0)
 
   return (
     <>
       <ark.div {...mergedProps} />
-      <select {...api().hiddenSelectProps}>
+      <select {...select().hiddenSelectProps}>
         <Show when={isValueEmpty()}>
           <option value="" />
         </Show>
-        <Index each={api().collection.toArray()}>
+        <Index each={select().collection.toArray()}>
           {(option) => <option value={option().value}>{option().label}</option>}
         </Index>
       </select>

@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useTagsInputContext } from './tags-input-context'
+import { useTagsInputContext } from './use-tags-input-context'
 
 export interface TagsInputClearTriggerProps extends HTMLArkProps<'button'> {}
 

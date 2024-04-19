@@ -6,10 +6,8 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
-import {
-  SegmentGroupItemPropsProvider,
-  SegmentGroupItemProvider,
-} from './use-segment-group-item-context'
+import { SegmentGroupItemProvider } from './use-segment-group-item-context'
+import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
@@ -20,14 +18,14 @@ export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
     'invalid',
   ])
 
-  const api = useSegmentGroupContext()
+  const segmentGroup = useSegmentGroupContext()
   const mergedProps = mergeProps(
-    () => api().getItemProps(itemProps),
+    () => segmentGroup().getItemProps(itemProps),
     segmentGroupAnatomy.build().item.attrs,
     localProps,
   )
 
-  const itemState = createMemo(() => api().getItemState(itemProps))
+  const itemState = createMemo(() => segmentGroup().getItemState(itemProps))
 
   return (
     <SegmentGroupItemPropsProvider value={itemProps}>

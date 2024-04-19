@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useSwitchContext } from './switch-context'
+import { useSwitchContext } from './use-switch-context'
 
 export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 

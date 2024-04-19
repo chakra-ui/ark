@@ -1,9 +1,9 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { PopoverProvider } from './popover-context'
 import { emits, props } from './popover.props'
 import { type UsePopoverProps, usePopover } from './use-popover'
+import { PopoverProvider } from './use-popover-context'
 
 export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {}
 
@@ -23,7 +23,7 @@ export const PopoverRoot = defineComponent<PopoverRootProps>(
     PopoverProvider(api)
     PresenceProvider(presenceApi)
 
-    return () => slots.default?.(api.value)
+    return () => slots.default?.()
   },
   {
     name: 'PopoverRoot',

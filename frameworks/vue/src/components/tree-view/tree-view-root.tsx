@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { TreeViewProvider } from './tree-view-context'
 import { emits, props } from './tree-view.props'
 import { type UseTreeViewProps, useTreeView } from './use-tree-view'
+import { TreeViewProvider } from './use-tree-view-context'
 
 export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, UseTreeViewProps> {}
 
@@ -14,7 +14,7 @@ export const TreeViewRoot = defineComponent<TreeViewRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

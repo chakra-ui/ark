@@ -48,12 +48,12 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'value',
   ])
 
-  const api = useSelect(useSelectProps)
-  const presenceApi = usePresence(mergeProps(() => ({ present: api().isOpen }), presenceProps))
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const select = useSelect(useSelectProps)
+  const presenceApi = usePresence(mergeProps(() => ({ present: select().isOpen }), presenceProps))
+  const mergedProps = mergeProps(() => select().rootProps, localProps)
 
   return (
-    <SelectProvider value={api}>
+    <SelectProvider value={select}>
       <PresenceProvider value={presenceApi}>
         <ark.div {...mergedProps} />
       </PresenceProvider>

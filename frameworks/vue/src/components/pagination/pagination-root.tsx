@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { PaginationProvider } from './pagination-context'
 import { emits, props } from './pagination.props'
 import { type UsePaginationProps, usePagination } from './use-pagination'
+import { PaginationProvider } from './use-pagination-context'
 
 export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
 
@@ -14,7 +14,7 @@ export const PaginationRoot = defineComponent<PaginationRootProps>(
 
     return () => (
       <ark.nav {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.nav>
     )
   },

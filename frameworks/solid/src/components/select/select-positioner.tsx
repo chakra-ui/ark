@@ -7,9 +7,9 @@ import { useSelectContext } from './use-select-context'
 export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
 export const SelectPositioner = (props: SelectPositionerProps) => {
-  const api = useSelectContext()
+  const select = useSelectContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => api().positionerProps, props)
+  const mergedProps = mergeProps(() => select().positionerProps, props)
 
   return (
     <Show when={!presenceApi().isUnmounted}>

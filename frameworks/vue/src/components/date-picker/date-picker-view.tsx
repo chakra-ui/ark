@@ -1,25 +1,24 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
 import type { ViewProps } from '@zag-js/date-picker'
-import { type PropType, defineComponent, reactive } from 'vue'
+import { type PropType, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
-import { DatePickerViewProvider } from './date-picker-view-context'
+import { useDatePickerContext } from './use-date-picker-context'
+import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context'
 
 export interface DatePickerViewProps extends HTMLArkProps<'div'>, Required<ViewProps> {}
 
 export const DatePickerView = defineComponent<DatePickerViewProps>(
   (props, { slots, attrs }) => {
     const api = useDatePickerContext()
-    const reactiveProps = reactive(props)
-    DatePickerViewProvider(reactiveProps)
+    DatePickerViewPropsProvider(props)
 
     return () => (
       <ark.div
-        hidden={api.value.view !== reactiveProps.view}
+        hidden={api.value.view !== props.view}
         {...datePickerAnatomy.build().view.attrs}
         {...attrs}
       >
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

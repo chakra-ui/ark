@@ -2,9 +2,9 @@ import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { SegmentGroupProvider } from './segment-group-context'
 import { emits, props } from './segment-group.props'
 import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group'
+import { SegmentGroupProvider } from './use-segment-group-context'
 
 export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
 

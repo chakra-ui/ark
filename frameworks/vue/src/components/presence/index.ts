@@ -1,7 +1,7 @@
-import { Presence, type PresenceProps } from './presence'
-import { type PresenceContext, PresenceProvider, usePresenceContext } from './presence-context'
-import { type UsePresenceProps, type UsePresenceReturn, usePresence } from './use-presence'
-
-export { Presence, PresenceProvider, usePresence, usePresenceContext }
-
-export type { PresenceContext, PresenceProps, UsePresenceProps, UsePresenceReturn }
+export { Presence, type PresenceProps } from './presence'
+export { type UsePresenceProps, type UsePresenceReturn, usePresence } from './use-presence'
+export {
+  PresenceProvider,
+  type UsePresenceContext,
+  usePresenceContext,
+} from './use-presence-context'

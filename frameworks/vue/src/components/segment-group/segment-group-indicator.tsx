@@ -1,7 +1,7 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useSegmentGroupContext } from './segment-group-context'
+import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
 

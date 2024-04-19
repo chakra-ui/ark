@@ -4,9 +4,9 @@ import { FileUpload, type FileUploadRootProps } from '../'
 export const ComponentUnderTest = (props: FileUploadRootProps) => (
   <FileUpload.Root {...props}>
     <FileUpload.Context>
-      {(api) => {
-        if (api().acceptedFiles.length < 1)
-          api().setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])
+      {(fileUpload) => {
+        if (fileUpload().acceptedFiles.length < 1)
+          fileUpload().setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])
 
         return (
           <>
@@ -15,7 +15,7 @@ export const ComponentUnderTest = (props: FileUploadRootProps) => (
             </FileUpload.Dropzone>
             <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
             <FileUpload.ItemGroup>
-              <For each={api().acceptedFiles}>
+              <For each={fileUpload().acceptedFiles}>
                 {(file) => (
                   <FileUpload.Item file={file}>
                     <FileUpload.ItemPreview type="image/*">
@@ -23,8 +23,10 @@ export const ComponentUnderTest = (props: FileUploadRootProps) => (
                     </FileUpload.ItemPreview>
                     <FileUpload.ItemPreview>Any Icon</FileUpload.ItemPreview>
                     <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
-                    <FileUpload.ItemSizeText>{api().getFileSize(file)}</FileUpload.ItemSizeText>
-                    <FileUpload.ItemDeleteTrigger onClick={() => api().deleteFile(file)}>
+                    <FileUpload.ItemSizeText>
+                      {fileUpload().getFileSize(file)}
+                    </FileUpload.ItemSizeText>
+                    <FileUpload.ItemDeleteTrigger onClick={() => fileUpload().deleteFile(file)}>
                       Remove
                     </FileUpload.ItemDeleteTrigger>
                   </FileUpload.Item>

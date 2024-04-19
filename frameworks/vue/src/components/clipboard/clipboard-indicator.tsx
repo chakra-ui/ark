@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useClipboardContext } from './clipboard-context'
+import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardIndicatorProps extends HTMLArkProps<'div'> {}
 

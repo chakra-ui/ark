@@ -1,4 +1,4 @@
-import type { ItemProps, ItemState } from '@zag-js/accordion'
+import type { ItemState } from '@zag-js/accordion'
 import type { Accessor } from 'solid-js'
 import { createContext } from '../../utils/create-context'
 
@@ -9,8 +9,3 @@ export const [AccordionItemProvider, useAccordionItemContext] =
     hookName: 'useAccordionItemContext',
     providerName: '<AccordionItemProvider />',
   })
-
-export const [AccordionItemPropsProvider, useAccordionItemPropsContext] = createContext<ItemProps>({
-  hookName: 'useAccordionItemPropsContext',
-  providerName: '<AccordionItemPropsProvider />',
-})

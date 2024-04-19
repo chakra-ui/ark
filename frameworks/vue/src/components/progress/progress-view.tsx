@@ -2,7 +2,7 @@ import type { ViewProps } from '@zag-js/progress'
 import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useProgressContext } from './progress-context'
+import { useProgressContext } from './use-progress-context'
 
 export interface ProgressViewProps extends Assign<HTMLArkProps<'span'>, ViewProps> {}
 

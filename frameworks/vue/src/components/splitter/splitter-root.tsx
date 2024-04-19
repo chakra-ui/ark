@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { SplitterProvider } from './splitter-context'
 import { emits, props } from './splitter.props'
 import { type UseSplitterProps, useSplitter } from './use-splitter'
+import { SplitterProvider } from './use-splitter-context'
 
 export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
 
@@ -14,7 +14,7 @@ export const SplitterRoot = defineComponent<SplitterRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

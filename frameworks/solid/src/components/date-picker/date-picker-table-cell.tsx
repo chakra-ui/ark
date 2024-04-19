@@ -5,8 +5,8 @@ import { useDatePickerContext } from './use-date-picker-context'
 import {
   DatePickerTableCellProvider,
   type UseDatePickerTableCellContext,
-} from './use-date-picker-table-cell-context'
-import { useDatePickerViewContext } from './use-date-picker-view-context'
+} from './use-date-picker-table-cell-props-context'
+import { useDatePickerViewContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableCellProps
   extends HTMLArkProps<'td'>,

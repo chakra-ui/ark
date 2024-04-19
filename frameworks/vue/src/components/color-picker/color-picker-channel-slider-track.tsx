@@ -1,17 +1,17 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useColorPickerChannelSliderContext } from './color-picker-channel-slider-context'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerChannelSliderTrackProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerChannelSliderTrack = defineComponent<ColorPickerChannelSliderTrackProps>(
   (_, { slots, attrs }) => {
     const api = useColorPickerContext()
-    const sliderProps = useColorPickerChannelSliderContext()
+    const channelProps = useColorPickerChannelPropsContext()
 
     return () => (
-      <ark.div {...api.value.getChannelSliderTrackProps(sliderProps)} {...attrs}>
+      <ark.div {...api.value.getChannelSliderTrackProps(channelProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

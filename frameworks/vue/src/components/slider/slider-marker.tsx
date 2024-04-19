@@ -2,7 +2,7 @@ import type { MarkerProps } from '@zag-js/slider'
 import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useSliderContext } from './slider-context'
+import { useSliderContext } from './use-slider-context'
 
 export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, MarkerProps> {}
 

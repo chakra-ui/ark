@@ -1,15 +1,15 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDialogContext } from './dialog-context'
+import { useDialogContext } from './use-dialog-context'
 
 export interface DialogTitleProps extends HTMLArkProps<'h2'> {}
 
 export const DialogTitle = defineComponent<DialogTitleProps>(
   (_, { slots, attrs }) => {
-    const api = useDialogContext()
+    const dialog = useDialogContext()
 
     return () => (
-      <ark.h2 {...api.value.titleProps} {...attrs}>
+      <ark.h2 {...dialog.value.titleProps} {...attrs}>
         {slots.default?.()}
       </ark.h2>
     )

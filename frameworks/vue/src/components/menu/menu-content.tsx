@@ -3,7 +3,7 @@ import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
-import { useMenuContext } from './menu-context'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 
@@ -12,15 +12,12 @@ export const MenuContent = defineComponent<MenuContentProps>(
     const api = useMenuContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'MenuContent',

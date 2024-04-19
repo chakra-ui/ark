@@ -1,4 +1,4 @@
-import type { ItemProps, ItemState } from '@zag-js/tags-input'
+import type { ItemState } from '@zag-js/tags-input'
 import type { Accessor } from 'solid-js'
 import { createContext } from '../../utils/create-context'
 
@@ -9,8 +9,3 @@ export const [TagsInputItemProvider, useTagsInputItemContext] =
     hookName: 'useTagsInputItemContext',
     providerName: '<TagsInputItemProvider />',
   })
-
-export const [TagsInputItemPropsProvider, useTagsInputItemPropsContext] = createContext<ItemProps>({
-  hookName: 'useTagsInputItemPropsContext',
-  providerName: '<TagsInputItemPropsProvider />',
-})

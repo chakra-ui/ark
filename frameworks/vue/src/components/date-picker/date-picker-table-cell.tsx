@@ -1,20 +1,21 @@
-import { type PropType, computed, defineComponent, reactive } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerContext } from './use-date-picker-context'
 import {
-  type DatePickerTableCellContext,
-  DatePickerTableCellProvider,
-} from './date-picker-table-cell-context'
-import { useDatePickerViewContext } from './date-picker-view-context'
+  type DatePickerTableCellPropsContext,
+  DatePickerTableCellPropsProvider,
+} from './use-date-picker-table-cell-props-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerTableCellProps extends HTMLArkProps<'td'>, DatePickerTableCellContext {}
+export interface DatePickerTableCellProps
+  extends HTMLArkProps<'td'>,
+    DatePickerTableCellPropsContext {}
 
 export const DatePickerTableCell = defineComponent<DatePickerTableCellProps>(
   (props, { slots, attrs }) => {
     const api = useDatePickerContext()
-    const view = useDatePickerViewContext()
-    // @ts-ignore
-    DatePickerTableCellProvider(reactive(props))
+    const viewProps = useDatePickerViewPropsContext()
+    DatePickerTableCellPropsProvider(props)
 
     const tableCellProps = computed(() => {
       return {
@@ -22,12 +23,12 @@ export const DatePickerTableCell = defineComponent<DatePickerTableCellProps>(
         month: api.value.getMonthTableCellProps,
         year: api.value.getYearTableCellProps,
         // @ts-expect-error use filter guard
-      }[view.view](props)
+      }[viewProps.view](props)
     })
 
     return () => (
       <ark.td {...tableCellProps.value} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.td>
     )
   },
@@ -35,17 +36,17 @@ export const DatePickerTableCell = defineComponent<DatePickerTableCellProps>(
     name: 'DatePickerTableCell',
     props: {
       columns: {
-        type: Number as PropType<DatePickerTableCellContext['columns']>,
+        type: Number as PropType<DatePickerTableCellPropsContext['columns']>,
       },
       disabled: {
-        type: Boolean as PropType<DatePickerTableCellContext['disabled']>,
+        type: Boolean as PropType<DatePickerTableCellPropsContext['disabled']>,
       },
       value: {
-        type: [Number, Object] as PropType<DatePickerTableCellContext['value']>,
+        type: [Number, Object] as PropType<DatePickerTableCellPropsContext['value']>,
         required: true,
       },
       visibleRange: {
-        type: Object as PropType<DatePickerTableCellContext['visibleRange']>,
+        type: Object as PropType<DatePickerTableCellPropsContext['visibleRange']>,
       },
     },
   },

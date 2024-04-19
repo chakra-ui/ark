@@ -4,9 +4,9 @@ import { RenderStrategyProvider } from '../../utils/render-strategy'
 import { type HTMLArkProps, ark } from '../factory'
 import type { UsePresenceProps } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { TabsProvider } from './tabs-context'
 import { emits, props } from './tabs.props'
 import { type UseTabsProps, useTabs } from './use-tabs'
+import { TabsProvider } from './use-tabs-context'
 
 export interface TabsRootProps
   extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
@@ -25,7 +25,7 @@ export const TabsRoot = defineComponent<TabsRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

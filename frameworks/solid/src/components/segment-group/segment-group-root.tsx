@@ -21,15 +21,15 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
     'orientation',
     'value',
   ])
-  const api = useSegmentGroup(useSegmentGroupProps)
+  const segmentGroup = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    () => api().rootProps,
+    () => segmentGroup().rootProps,
     segmentGroupAnatomy.build().root.attrs,
     localProps,
   )
 
   return (
-    <SegmentGroupProvider value={api}>
+    <SegmentGroupProvider value={segmentGroup}>
       <ark.div {...mergedProps} />
     </SegmentGroupProvider>
   )

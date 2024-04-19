@@ -3,15 +3,15 @@ import { createMemo } from 'solid-js'
 import { Collapsible } from '../collapsible'
 import type { HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
-import { useAccordionItemPropsContext } from './use-accordion-item-context'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
 
 export const AccordionItemContent = (props: AccordionItemContentProps) => {
-  const context = useAccordionContext()
+  const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()
   const itemContentProps = createMemo(() => {
-    const ownProps = context().getItemContentProps(itemProps)
+    const ownProps = accordion().getItemContentProps(itemProps)
     ownProps.hidden = undefined
     return ownProps
   })

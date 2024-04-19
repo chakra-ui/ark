@@ -3,9 +3,9 @@ import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { ColorPickerProvider } from './color-picker-context'
 import { emits, props } from './color-picker.props'
 import { type UseColorPickerProps, useColorPicker } from './use-color-picker'
+import { ColorPickerProvider } from './use-color-picker-context'
 
 export interface ColorPickerRootProps
   extends Assign<HTMLArkProps<'div'>, UseColorPickerProps>,
@@ -30,7 +30,7 @@ export const ColorPickerRoot = defineComponent<ColorPickerRootProps>(
     return () => (
       <>
         <ark.div {...api.value.rootProps} {...attrs}>
-          {slots.default?.(api.value)}
+          {slots.default?.()}
         </ark.div>
         <input {...api.value.hiddenInputProps} />
       </>

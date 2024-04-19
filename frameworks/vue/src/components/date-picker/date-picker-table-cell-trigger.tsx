@@ -1,16 +1,16 @@
 import { computed, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
-import { useDatePickerTableCellContext } from './date-picker-table-cell-context'
-import { useDatePickerViewContext } from './date-picker-view-context'
+import { useDatePickerContext } from './use-date-picker-context'
+import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'button'> {}
 
 export const DatePickerTableCellTrigger = defineComponent<DatePickerTableCellTriggerProps>(
   (_, { slots, attrs }) => {
     const api = useDatePickerContext()
-    const cell = useDatePickerTableCellContext()
-    const view = useDatePickerViewContext()
+    const cellProps = useDatePickerTableCellPropsContext()
+    const viewProps = useDatePickerViewPropsContext()
 
     const triggerProps = computed(() => {
       return {
@@ -18,7 +18,7 @@ export const DatePickerTableCellTrigger = defineComponent<DatePickerTableCellTri
         month: api.value.getMonthTableCellTriggerProps,
         year: api.value.getYearTableCellTriggerProps,
         // @ts-expect-error use filter guard
-      }[view.view](cell)
+      }[viewProps.view](cellProps)
     })
 
     return () => (

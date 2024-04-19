@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useComboboxContext } from './combobox-context'
+import { useComboboxContext } from './use-combobox-context'
 
 export interface ComboboxInputProps extends HTMLArkProps<'input'> {}
 

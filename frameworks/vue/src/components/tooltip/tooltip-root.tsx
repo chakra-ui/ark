@@ -1,9 +1,9 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { TooltipProvider } from './tooltip-context'
 import { emits, props } from './tooltip.props'
 import { type UseTooltipProps, useTooltip } from './use-tooltip'
+import { TooltipProvider } from './use-tooltip-context'
 
 export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {}
 
@@ -23,7 +23,7 @@ export const TooltipRoot = defineComponent<TooltipRootProps>(
     TooltipProvider(api)
     PresenceProvider(presenceApi)
 
-    return () => slots.default?.(api.value)
+    return () => slots.default?.()
   },
   {
     name: 'TooltipRoot',

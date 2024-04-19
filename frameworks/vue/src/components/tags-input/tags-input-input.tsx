@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useTagsInputContext } from './tags-input-context'
+import { useTagsInputContext } from './use-tags-input-context'
 
 export interface TagsInputInputProps extends HTMLArkProps<'input'> {}
 

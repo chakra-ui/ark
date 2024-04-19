@@ -21,11 +21,11 @@ export const RadioGroupRoot = (props: RadioGroupRootProps) => {
     'value',
   ])
 
-  const api = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const radioGroup = useRadioGroup(useRadioGroupProps)
+  const mergedProps = mergeProps(() => radioGroup().rootProps, localProps)
 
   return (
-    <RadioGroupProvider value={api}>
+    <RadioGroupProvider value={radioGroup}>
       <ark.div {...mergedProps} />
     </RadioGroupProvider>
   )

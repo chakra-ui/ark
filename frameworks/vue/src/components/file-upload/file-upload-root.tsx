@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { FileUploadProvider } from './file-upload-context'
 import { emits, props } from './file-upload.props'
 import { type UseFileUploadProps, useFileUpload } from './use-file-upload'
+import { FileUploadProvider } from './use-file-upload-context'
 
 export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
 
@@ -14,7 +14,7 @@ export const FileUploadRoot = defineComponent<FileUploadRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

@@ -1,22 +1,28 @@
-import { type PropType, defineComponent } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useTreeViewContext } from './tree-view-context'
-import { useTreeViewDepthContext } from './tree-view-depth-provider'
-import { type ItemProps, TreeViewItemProvider } from './tree-view-item-context'
+import { useTreeViewContext } from './use-tree-view-context'
+import { useTreeViewDepthContext } from './use-tree-view-depth-context'
+import { TreeViewItemProvider } from './use-tree-view-item-context'
+import {
+  TreeViewItemPropsProvider,
+  type UseTreeViewItemPropsContext,
+} from './use-tree-view-item-props-context'
 
-export interface TreeViewItemProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
+export interface TreeViewItemProps
+  extends Assign<HTMLArkProps<'li'>, UseTreeViewItemPropsContext> {}
 
 export const TreeViewItem = defineComponent<TreeViewItemProps>(
   (props, { slots, attrs }) => {
-    const api = useTreeViewContext()
+    const treeView = useTreeViewContext()
     const depth = useTreeViewDepthContext()
 
-    TreeViewItemProvider({ ...props, depth })
+    TreeViewItemProvider(computed(() => treeView.value.getItemState({ ...props, depth })))
+    TreeViewItemPropsProvider({ ...props, depth })
 
     return () => (
-      <ark.li {...api.value.getItemProps({ ...props, depth })} {...attrs}>
-        {slots.default?.(api.value.getItemState({ ...props, depth }))}
+      <ark.li {...treeView.value.getItemProps({ ...props, depth })} {...attrs}>
+        {slots.default?.()}
       </ark.li>
     )
   },

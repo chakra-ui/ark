@@ -1,9 +1,9 @@
 import { computed, defineComponent } from 'vue'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { DialogProvider } from './dialog-context'
 import { emits, props } from './dialog.props'
 import { type UseDialogProps, useDialog } from './use-dialog'
+import { DialogProvider } from './use-dialog-context'
 
 export interface DialogRootProps extends UseDialogProps, UsePresenceProps {}
 
@@ -23,7 +23,7 @@ export const DialogRoot = defineComponent<DialogRootProps>(
     DialogProvider(api)
     PresenceProvider(presenceApi)
 
-    return () => slots.default?.(api.value)
+    return () => slots.default?.()
   },
   {
     name: 'DialogRoot',

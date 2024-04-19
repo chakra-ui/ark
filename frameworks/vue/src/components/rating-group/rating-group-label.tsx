@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useRatingGroupContext } from './rating-group-context'
+import { useRatingGroupContext } from './use-rating-group-context'
 
 export interface RatingGroupLabelProps extends HTMLArkProps<'label'> {}
 

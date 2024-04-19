@@ -1,17 +1,17 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useAccordionContext } from './accordion-context'
-import { useAccordionItemContext } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const AccordionItemIndicator = defineComponent<AccordionItemIndicatorProps>(
   (_, { attrs, slots }) => {
-    const api = useAccordionContext()
-    const item = useAccordionItemContext()
+    const accordion = useAccordionContext()
+    const itemProps = useAccordionItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemIndicatorProps(item.value)} {...attrs}>
+      <ark.div {...accordion.value.getItemIndicatorProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

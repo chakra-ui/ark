@@ -61,7 +61,7 @@ const open = ref(false)
     </Variant>
 
     <Variant title="RenderFn">
-      <Dialog.Root v-slot="api">
+      <Dialog.Root v-slot="dialog">
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Teleport to="body">
           <Dialog.Backdrop />
@@ -73,7 +73,7 @@ const open = ref(false)
             </Dialog.Content>
           </Dialog.Positioner>
         </Teleport>
-        <p>Dialog is {{ api.isOpen ? 'open' : 'closed' }}</p>
+        <p>Dialog is {{ dialog.isOpen ? 'open' : 'closed' }}</p>
       </Dialog.Root>
     </Variant>
   </Story>

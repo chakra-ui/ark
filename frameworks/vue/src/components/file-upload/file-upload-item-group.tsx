@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useFileUploadContext } from './file-upload-context'
+import { useFileUploadContext } from './use-file-upload-context'
 
 export interface FileUploadItemGroupProps extends HTMLArkProps<'ul'> {}
 
@@ -10,7 +10,7 @@ export const FileUploadItemGroup = defineComponent<FileUploadItemGroupProps>(
 
     return () => (
       <ark.ul {...api.value.itemGroupProps} {...attrs}>
-        {slots.default?.(api.value.acceptedFiles)}
+        {slots.default?.()}
       </ark.ul>
     )
   },

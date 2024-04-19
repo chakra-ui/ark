@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { RatingGroup } from '../'
+import {
+  RatingGroupContext,
+  RatingGroupControl,
+  RatingGroupItem,
+  RatingGroupItemContext,
+  RatingGroupLabel,
+  RatingGroupRoot,
+} from '..'
 </script>
 
 <template>
-  <RatingGroup.Root>
-    <RatingGroup.Label>Label</RatingGroup.Label>
-    <RatingGroup.Control v-slot="{ items }">
-      <RatingGroup.Item
-        v-for="item in items"
-        :key="item"
-        :index="item"
-        v-slot="{ isHalf, isHighlighted }"
-      >
-        {{ isHalf ? 'half' : isHighlighted ? 'highlighted' : 'empty' }}
-      </RatingGroup.Item>
-    </RatingGroup.Control>
-  </RatingGroup.Root>
+  <RatingGroupRoot>
+    <RatingGroupLabel>Label</RatingGroupLabel>
+    <RatingGroupControl>
+      <RatingGroupContext v-slot="ratingGroup">
+        <RatingGroupItem v-for="item in ratingGroup.items" :key="item" :index="item">
+          <RatingGroupItemContext v-slot="{ isHighlighted }">
+            {{ item ? 'half' : isHighlighted ? 'highlighted' : 'empty' }}
+          </RatingGroupItemContext>
+        </RatingGroupItem>
+      </RatingGroupContext>
+    </RatingGroupControl>
+  </RatingGroupRoot>
 </template>

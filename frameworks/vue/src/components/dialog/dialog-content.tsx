@@ -2,24 +2,21 @@ import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
-import { useDialogContext } from './dialog-context'
+import { useDialogContext } from './use-dialog-context'
 
 export interface DialogContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 
 export const DialogContent = defineComponent<DialogContentProps>(
   (_, { slots, attrs }) => {
-    const api = useDialogContext()
-    const presenceApi = usePresenceContext()
+    const dialog = useDialogContext()
+    const presence = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presence.value.isUnmounted ? null : (
+        <ark.div {...dialog.value.contentProps} {...presence.value.presenceProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'DialogContent',

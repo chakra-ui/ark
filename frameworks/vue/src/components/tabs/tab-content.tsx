@@ -5,7 +5,7 @@ import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { emits } from '../presence/presence.props'
-import { useTabsContext } from './tabs-context'
+import { useTabsContext } from './use-tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 
@@ -22,19 +22,16 @@ export const TabContent = defineComponent<TabContentProps>(
 
     PresenceProvider(presenceApi)
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div
-            {...api.value.getContentProps(props)}
-            {...presenceApi.value.presenceProps}
-            {...attrs}
-          >
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div
+          {...api.value.getContentProps(props)}
+          {...presenceApi.value.presenceProps}
+          {...attrs}
+        >
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'TabContent',
