@@ -1,18 +1,4 @@
 {
-  "Arrow": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ArrowTip": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
   "Content": {
     "asChild": {
       "type": "boolean",
@@ -20,29 +6,27 @@
       "description": "Render as a different element type."
     }
   },
-  "Positioner": {
+  "Root": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
-    }
-  },
-  "Root": {
-    "closeDelay": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
     },
     "defaultOpen": {
       "type": "boolean",
       "isRequired": false,
-      "description": "The initial open state of the hover card."
+      "description": "The initial open state of the collpasible."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
       "isRequired": false,
       "description": "The document's text/writing direction."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the collapsible is disabled"
     },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
@@ -55,9 +39,9 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{\n  trigger: string\n  content: string\n  positioner: string\n  arrow: string\n}>",
+      "type": "Partial<{ root: string; content: string; trigger: string }>",
       "isRequired": false,
-      "description": "The ids of the elements in the popover. Useful for composition."
+      "description": "The ids of the elements in the collapsible. Useful for composition."
     },
     "lazyMount": {
       "type": "boolean",
@@ -73,27 +57,12 @@
     "onOpenChange": {
       "type": "(details: OpenChangeDetails) => void",
       "isRequired": false,
-      "description": "Function called when the hover card opens or closes."
+      "description": "Function called when the popup is opened"
     },
     "open": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether the hover card is open"
-    },
-    "openDelay": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The duration from when the mouse enters the trigger until the hover card opens."
-    },
-    "positioning": {
-      "type": "PositioningOptions",
-      "isRequired": false,
-      "description": "The user provided options used to position the popover content"
-    },
-    "present": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
+      "description": "Whether the collapsible is open"
     },
     "unmountOnExit": {
       "type": "boolean",

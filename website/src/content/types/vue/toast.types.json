@@ -28,7 +28,7 @@
       "description": "The gap or spacing between toasts"
     },
     "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
+      "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
@@ -48,7 +48,7 @@
       "description": "The maximum number of toasts that can be shown at once"
     },
     "offsets": {
-      "type": "string | Record<'top' | 'bottom' | 'left' | 'right', string>",
+      "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
       "isRequired": false,
       "description": "The offset from the safe environment edge of the viewport"
     },
