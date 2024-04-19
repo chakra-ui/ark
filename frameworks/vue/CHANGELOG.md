@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-0] - 2024-04-19
+
 ### Added
 
 - Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
