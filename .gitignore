@@ -303,3 +303,4 @@ styled-system
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 vite.config.mts.timestamp-*
+*storybook.log
