@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useSliderContext } from './slider-context'
+import { useSliderContext } from './use-slider-context'
 
 export interface SliderRangeProps extends HTMLArkProps<'div'> {}
 

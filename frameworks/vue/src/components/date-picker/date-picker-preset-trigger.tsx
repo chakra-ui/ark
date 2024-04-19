@@ -2,7 +2,7 @@ import type { PresetTriggerProps } from '@zag-js/date-picker'
 import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerPresetTriggerProps
   extends Assign<HTMLArkProps<'button'>, PresetTriggerProps> {}

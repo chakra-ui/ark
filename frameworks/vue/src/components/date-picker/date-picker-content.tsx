@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useDatePickerContext } from './date-picker-context'
+import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerContentProps extends HTMLArkProps<'div'> {}
 

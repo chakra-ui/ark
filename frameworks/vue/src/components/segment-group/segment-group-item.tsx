@@ -3,8 +3,8 @@ import type { ItemProps } from '@zag-js/radio-group'
 import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useSegmentGroupContext } from './segment-group-context'
 import { SegmentGroupItemProvider } from './segment-group-item-context'
+import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 

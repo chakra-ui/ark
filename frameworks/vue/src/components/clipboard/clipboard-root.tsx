@@ -14,7 +14,7 @@ export const ClipboardRoot = defineComponent<ClipboardRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

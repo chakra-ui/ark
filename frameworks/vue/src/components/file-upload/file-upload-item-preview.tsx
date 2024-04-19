@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useFileUploadContext } from './file-upload-context'
-import { useFileUploadItemContext } from './file-upload-item-context'
+import { useFileUploadContext } from './use-file-upload-context'
+import { useFileUploadItemContext } from './use-file-upload-item-context'
 
 export interface FileUploadItemPreviewProps extends HTMLArkProps<'div'> {
   /**

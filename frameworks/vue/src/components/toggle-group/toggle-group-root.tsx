@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { ToggleGroupProvider } from './toggle-group-context'
 import { emits, props } from './toggle-group.props'
 import { type UseToggleGroupProps, useToggleGroup } from './use-toggle-group'
+import { ToggleGroupProvider } from './use-toggle-group-context'
 
 export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
 

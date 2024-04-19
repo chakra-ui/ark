@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useSelectContext } from './select-context'
+import { useSelectContext } from './use-select-context'
 
 export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 

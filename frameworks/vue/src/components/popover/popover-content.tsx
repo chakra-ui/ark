@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
-import { usePopoverContext } from './popover-context'
+import { usePopoverContext } from './use-popover-context'
 
 export interface PopoverContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 

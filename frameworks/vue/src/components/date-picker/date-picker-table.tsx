@@ -3,9 +3,9 @@ import { type PropType, defineComponent, reactive } from 'vue'
 import type { Assign } from '../../types'
 import { useId } from '../../utils'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
 import { DatePickerTableProvider } from './date-picker-table-context'
-import { useDatePickerViewContext } from './date-picker-view-context'
+import { useDatePickerContext } from './use-date-picker-context'
+import { useDatePickerViewContext } from './use-date-picker-view-context'
 
 export interface DatePickerTableProps
   extends Assign<HTMLArkProps<'table'>, Pick<TableProps, 'columns'>> {}
@@ -18,7 +18,7 @@ export const DatePickerTable = defineComponent<DatePickerTableProps>(
 
     return () => (
       <ark.table {...api.value.getTableProps(props)} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.table>
     )
   },

@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { RadioGroupProvider } from './radio-group-context'
 import { emits, props } from './radio-group.props'
 import { type UseRadioGroupProps, useRadioGroup } from './use-radio-group'
+import { RadioGroupProvider } from './use-radio-group-context'
 
 export interface RadioGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRadioGroupProps> {}
 

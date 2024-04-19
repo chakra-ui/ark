@@ -3,7 +3,7 @@ import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
-import { useColorPickerContext } from './color-picker-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerContentProps extends Assign<HTMLArkProps<'div'>, PresenceProps> {}
 

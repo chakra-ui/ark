@@ -1,7 +1,7 @@
 import { computed, defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
-import { useMenuContext } from './menu-context'
+import { useMenuContext } from './use-menu-context'
 
 export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
 

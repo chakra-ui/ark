@@ -2,7 +2,7 @@ import type { PanelProps } from '@zag-js/splitter'
 import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useSplitterContext } from './splitter-context'
+import { useSplitterContext } from './use-splitter-context'
 
 export interface SplitterPanelProps extends Assign<HTMLArkProps<'div'>, PanelProps> {}
 

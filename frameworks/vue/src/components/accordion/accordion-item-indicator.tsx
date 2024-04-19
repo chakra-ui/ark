@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useAccordionContext } from './accordion-context'
-import { useAccordionItemContext } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { useAccordionItemContext } from './use-accordion-item-context'
 
 export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
 

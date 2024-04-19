@@ -2,8 +2,8 @@ import type { ChannelProps } from '@zag-js/color-picker'
 import { type PropType, defineComponent, reactive } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { ColorPickerChannelSliderProvider } from './color-picker-channel-slider-context'
-import { useColorPickerContext } from './color-picker-context'
+import { ColorPickerChannelSliderProvider } from './use-color-picker-channel-slider-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerChannelSliderProps extends Assign<HTMLArkProps<'div'>, ChannelProps> {}
 

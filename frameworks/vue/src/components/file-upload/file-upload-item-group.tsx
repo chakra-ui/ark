@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useFileUploadContext } from './file-upload-context'
+import { useFileUploadContext } from './use-file-upload-context'
 
 export interface FileUploadItemGroupProps extends HTMLArkProps<'ul'> {}
 

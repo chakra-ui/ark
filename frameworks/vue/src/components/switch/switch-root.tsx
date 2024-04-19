@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { SwitchProvider } from './switch-context'
 import { emits, props } from './switch.props'
 import { type UseSwitchProps, useSwitch } from './use-switch'
+import { SwitchProvider } from './use-switch-context'
 
 export interface SwitchRootProps extends Assign<HTMLArkProps<'div'>, UseSwitchProps> {}
 
@@ -14,7 +14,7 @@ export const SwitchRoot = defineComponent<SwitchRootProps>(
 
     return () => (
       <ark.label {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.label>
     )
   },

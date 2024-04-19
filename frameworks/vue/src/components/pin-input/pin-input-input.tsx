@@ -1,7 +1,7 @@
 import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { usePinInputContext } from './pin-input-context'
+import { usePinInputContext } from './use-pin-input-context'
 
 export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, { index: number }> {}
 

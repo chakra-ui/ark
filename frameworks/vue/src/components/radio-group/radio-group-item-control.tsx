@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useRadioGroupContext } from './radio-group-context'
-import { useRadioGroupItemContext } from './radio-group-item-context'
+import { useRadioGroupContext } from './use-radio-group-context'
+import { useRadioGroupItemContext } from './use-radio-group-item-context'
 
 export interface RadioGroupItemControlProps extends HTMLArkProps<'div'> {}
 

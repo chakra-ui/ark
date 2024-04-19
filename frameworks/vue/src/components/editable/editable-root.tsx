@@ -1,9 +1,9 @@
 import { defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { EditableProvider } from './editable-context'
 import { emits, props } from './editable.props'
 import { type UseEditableProps, useEditable } from './use-editable'
+import { EditableProvider } from './use-editable-context'
 
 export interface EditableRootProps extends Assign<HTMLArkProps<'div'>, UseEditableProps> {}
 
@@ -14,7 +14,7 @@ export const EditableRoot = defineComponent<EditableRootProps>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

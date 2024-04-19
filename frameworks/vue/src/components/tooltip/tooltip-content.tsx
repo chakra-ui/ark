@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
-import { useTooltipContext } from './tooltip-context'
+import { useTooltipContext } from './use-tooltip-context'
 
 export interface TooltipContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 

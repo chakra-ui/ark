@@ -3,9 +3,9 @@ import type { Assign, CollectionItem } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { SelectProvider } from './select-context'
 import { emits, props } from './select.props'
 import { type UseSelectProps, useSelect } from './use-select'
+import { SelectProvider } from './use-select-context'
 
 export interface SelectRootProps<T extends CollectionItem>
   extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
@@ -28,7 +28,7 @@ export const SelectRoot = defineComponent<SelectRootProps<CollectionItem>>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

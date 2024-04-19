@@ -1,8 +1,5 @@
 export type { StatusChangeDetails } from '@zag-js/avatar'
-export {
-  AvatarContext as Context,
-  type AvatarContextProps as ContextProps,
-} from './avatar-context'
+export { AvatarContext as Context, type AvatarContextProps as ContextProps } from './avatar-context'
 export {
   AvatarFallback as Fallback,
   type AvatarFallbackProps as FallbackProps,

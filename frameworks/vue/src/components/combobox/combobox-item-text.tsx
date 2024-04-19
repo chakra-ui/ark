@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useComboboxContext } from './combobox-context'
-import { useComboboxItemContext } from './combobox-item-context'
+import { useComboboxContext } from './use-combobox-context'
+import { useComboboxItemContext } from './use-combobox-item-context'
 
 export interface ComboboxItemTextProps extends HTMLArkProps<'span'> {}
 

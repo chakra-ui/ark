@@ -5,7 +5,7 @@ import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { emits } from '../presence/presence.props'
-import { useTabsContext } from './tabs-context'
+import { useTabsContext } from './use-tabs-context'
 
 export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
 

@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useColorPickerContext } from './color-picker-context'
 import { useColorPickerSwatchContext } from './color-picker-swatch-context'
+import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerSwatchIndicatorProps extends HTMLArkProps<'div'> {}
 

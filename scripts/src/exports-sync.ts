@@ -13,7 +13,7 @@ const main = async () => {
       // eg. copy `react/src/avatar/avatar.ts` to `solid/src/avatar/avatar.ts`
       copyFileSync(
         file.replace('index', basename(dirname(file))),
-        file.replace('react', 'solid').replace('index', basename(dirname(file))),
+        file.replace('react', 'vue').replace('index', basename(dirname(file))),
       )
     })
 }

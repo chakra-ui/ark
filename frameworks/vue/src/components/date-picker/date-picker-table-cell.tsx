@@ -1,11 +1,11 @@
 import { type PropType, computed, defineComponent, reactive } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useDatePickerContext } from './date-picker-context'
 import {
   type DatePickerTableCellContext,
   DatePickerTableCellProvider,
 } from './date-picker-table-cell-context'
-import { useDatePickerViewContext } from './date-picker-view-context'
+import { useDatePickerContext } from './use-date-picker-context'
+import { useDatePickerViewContext } from './use-date-picker-view-context'
 
 export interface DatePickerTableCellProps extends HTMLArkProps<'td'>, DatePickerTableCellContext {}
 
@@ -27,7 +27,7 @@ export const DatePickerTableCell = defineComponent<DatePickerTableCellProps>(
 
     return () => (
       <ark.td {...tableCellProps.value} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.td>
     )
   },

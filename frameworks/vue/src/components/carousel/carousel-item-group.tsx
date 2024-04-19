@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useCarouselContext } from './carousel-context'
+import { useCarouselContext } from './use-carousel-context'
 
 export interface CarouselItemGroupProps extends HTMLArkProps<'div'> {}
 

@@ -5,8 +5,8 @@ import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { emits } from '../presence/presence.props'
-import { useAccordionContext } from './accordion-context'
-import { AccordionItemProvider } from './accordion-item-context'
+import { useAccordionContext } from './use-accordion-context'
+import { AccordionItemProvider } from './use-accordion-item-context'
 
 export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 

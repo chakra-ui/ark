@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { type PresenceProps, usePresenceContext } from '../presence'
 import { emits, props } from '../presence/presence.props'
-import { useComboboxContext } from './combobox-context'
+import { useComboboxContext } from './use-combobox-context'
 
 export interface ComboboxContentProps extends HTMLArkProps<'div'>, PresenceProps {}
 

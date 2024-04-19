@@ -3,9 +3,9 @@ import type { Assign, CollectionItem } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, usePresence } from '../presence'
 import { emits as presenceEmits, props as presenceProps } from '../presence/presence.props'
-import { ComboboxProvider } from './combobox-context'
 import { emits, props } from './combobox.props'
 import { type UseComboboxProps, useCombobox } from './use-combobox'
+import { ComboboxProvider } from './use-combobox-context'
 
 // TOOD: #2011 this is a bad workaround but should work for now
 // function signature doesn't really support more complicated generics
@@ -31,7 +31,7 @@ export const ComboboxRoot = defineComponent<ComboboxRootProps<CollectionItem>>(
 
     return () => (
       <ark.div {...api.value.rootProps} {...attrs}>
-        {slots.default?.(api.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

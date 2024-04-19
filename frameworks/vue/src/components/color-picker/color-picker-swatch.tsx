@@ -2,8 +2,8 @@ import type { SwatchProps } from '@zag-js/color-picker'
 import { type PropType, defineComponent, reactive } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { useColorPickerContext } from './color-picker-context'
-import { ColorPickerSwatchProvider } from './color-picker-swatch-context'
+import { useColorPickerContext } from './use-color-picker-context'
+import { ColorPickerSwatchProvider } from './use-color-picker-swatch-context'
 
 export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, SwatchProps> {
   readOnly?: SwatchProps['respectAlpha']
