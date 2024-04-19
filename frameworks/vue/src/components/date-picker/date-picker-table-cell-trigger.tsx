@@ -18,7 +18,7 @@ export const DatePickerTableCellTrigger = defineComponent<DatePickerTableCellTri
         month: api.value.getMonthTableCellTriggerProps,
         year: api.value.getYearTableCellTriggerProps,
         // @ts-expect-error use filter guard
-      }[viewProps.value.view](cellProps.value)
+      }[viewProps.value.view](cellProps)
     })
 
     return () => (

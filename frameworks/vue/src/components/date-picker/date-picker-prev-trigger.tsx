@@ -11,7 +11,7 @@ export const DatePickerPrevTrigger = defineComponent<DatePickerPrevTriggerProps>
     const viewProps = useDatePickerViewPropsContext()
 
     return () => (
-      <ark.button {...api.value.getPrevTriggerProps(viewProps.value)} {...attrs}>
+      <ark.button {...api.value.getPrevTriggerProps(viewProps)} {...attrs}>
         {slots.default?.()}
       </ark.button>
     )

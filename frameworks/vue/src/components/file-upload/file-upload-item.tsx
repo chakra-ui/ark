@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/file-upload'
-import { type PropType, defineComponent, ref } from 'vue'
+import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'

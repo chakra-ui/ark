@@ -11,7 +11,7 @@ export const ColorPickerChannelSliderTrack = defineComponent<ColorPickerChannelS
     const channelProps = useColorPickerChannelPropsContext()
 
     return () => (
-      <ark.div {...api.value.getChannelSliderTrackProps(channelProps.value)} {...attrs}>
+      <ark.div {...api.value.getChannelSliderTrackProps(channelProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

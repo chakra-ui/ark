@@ -11,7 +11,7 @@ export const ColorPickerAreaBackground = defineComponent<ColorPickerAreaBackgrou
     const areaProps = useColorPickerAreaPropsContext()
 
     return () => (
-      <ark.div {...api.value.getAreaBackgroundProps(areaProps.value)} {...attrs}>
+      <ark.div {...api.value.getAreaBackgroundProps(areaProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

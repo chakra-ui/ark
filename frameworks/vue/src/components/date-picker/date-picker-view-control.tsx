@@ -11,7 +11,7 @@ export const DatePickerViewControl = defineComponent<DatePickerViewControlProps>
     const viewProps = useDatePickerViewPropsContext()
 
     return () => (
-      <ark.div {...api.value.getViewControlProps(viewProps.value)} {...attrs}>
+      <ark.div {...api.value.getViewControlProps(viewProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

@@ -11,7 +11,7 @@ export const ColorPickerSwatchIndicator = defineComponent<ColorPickerSwatchIndic
     const swatchProps = useColorPickerSwatchPropsContext()
 
     return () => (
-      <ark.div {...api.value.getSwatchIndicatorProps(swatchProps.value)} {...attrs}>
+      <ark.div {...api.value.getSwatchIndicatorProps(swatchProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

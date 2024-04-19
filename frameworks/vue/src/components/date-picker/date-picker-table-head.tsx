@@ -11,7 +11,7 @@ export const DatePickerTableHead = defineComponent<DatePickerTableHeadProps>(
     const tableProps = useDatePickerTablePropsContext()
 
     return () => (
-      <ark.thead {...api.value.getTableHeadProps(tableProps.value)} {...attrs}>
+      <ark.thead {...api.value.getTableHeadProps(tableProps)} {...attrs}>
         {slots.default?.()}
       </ark.thead>
     )
