@@ -4,7 +4,7 @@ import { FileUpload, type FileUploadRootProps } from '../'
 export const ComponentUnderTest = (props: FileUploadRootProps) => (
   <FileUpload.Root {...props}>
     <FileUpload.Context>
-      {(api) => {
+      {(fileUpload) => {
         if (fileUpload().acceptedFiles.length < 1)
           fileUpload().setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])
 
