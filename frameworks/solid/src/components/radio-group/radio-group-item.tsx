@@ -5,7 +5,8 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
-import { RadioGroupItemPropsProvider, RadioGroupItemProvider } from './use-radio-group-item-context'
+import { RadioGroupItemProvider } from './use-radio-group-item-context'
+import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context'
 
 export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
@@ -15,15 +16,15 @@ export const RadioGroupItem = (props: RadioGroupItemProps) => {
     'disabled',
     'invalid',
   ])
-  const api = useRadioGroupContext()
-  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
-  const itemState = createMemo(() => api().getItemState(itemProps))
+  const radioGroup = useRadioGroupContext()
+  const mergedProps = mergeProps(() => radioGroup().getItemProps(itemProps), localProps)
+  const itemState = createMemo(() => radioGroup().getItemState(itemProps))
 
   return (
-    <RadioGroupItemProvider value={itemState}>
-      <RadioGroupItemPropsProvider value={itemProps}>
+    <RadioGroupItemPropsProvider value={itemProps}>
+      <RadioGroupItemProvider value={itemState}>
         <ark.label {...mergedProps} />
-      </RadioGroupItemPropsProvider>
-    </RadioGroupItemProvider>
+      </RadioGroupItemProvider>
+    </RadioGroupItemPropsProvider>
   )
 }

@@ -2,15 +2,15 @@ import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
-import { useSegmentGroupItemPropsContext } from './use-segment-group-item-context'
+import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemControlProps extends HTMLArkProps<'div'> {}
 
 export const SegmentGroupItemControl = (props: SegmentGroupItemControlProps) => {
-  const api = useSegmentGroupContext()
+  const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
   const mergedProps = mergeProps(
-    () => api().getItemControlProps(itemProps),
+    () => segmentGroup().getItemControlProps(itemProps),
     segmentGroupAnatomy.build().itemControl.attrs,
     props,
   )
@@ -18,7 +18,7 @@ export const SegmentGroupItemControl = (props: SegmentGroupItemControlProps) => 
   return (
     <>
       <ark.div {...mergedProps} />
-      <input {...api().getItemHiddenInputProps(itemProps)} />
+      <input {...segmentGroup().getItemHiddenInputProps(itemProps)} />
     </>
   )
 }

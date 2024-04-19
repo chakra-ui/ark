@@ -6,9 +6,9 @@ import { useSegmentGroupContext } from './use-segment-group-context'
 export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const SegmentGroupIndicator = (props: SegmentGroupIndicatorProps) => {
-  const api = useSegmentGroupContext()
+  const segmentGroup = useSegmentGroupContext()
   const mergedProps = mergeProps(
-    () => api().indicatorProps,
+    () => segmentGroup().indicatorProps,
     segmentGroupAnatomy.build().indicator.attrs,
     props,
   )
