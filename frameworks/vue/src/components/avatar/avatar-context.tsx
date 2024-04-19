@@ -5,12 +5,14 @@ export type AvatarContextProps = SlotsType<{
   default: UnwrapRef<UseAvatarContext>
 }>
 
-export const AvatarContext = defineComponent({
-  name: 'AvatarContext',
-  slots: Object as AvatarContextProps,
-  setup(_, { slots }) {
+export const AvatarContext = defineComponent(
+  (_, { slots }) => {
     const avatar = useAvatarContext()
 
     return () => slots.default(avatar.value)
   },
-})
+  {
+    name: 'AvatarContext',
+    slots: Object as AvatarContextProps,
+  },
+)

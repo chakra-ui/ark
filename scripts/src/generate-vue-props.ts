@@ -1,6 +1,6 @@
+import path, { dirname } from 'node:path'
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
-import path, { dirname } from 'path'
 import prettier from 'prettier'
 import { Project, VariableDeclarationKind } from 'ts-morph'
 
@@ -14,11 +14,12 @@ const convertToEventName = (value: string): string => {
 const main = async () => {
   const prettierConfig = await prettier.resolveConfig('.')
 
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const root = dirname(findUpSync('bun.lockb')!)
   process.chdir(path.join(root, 'frameworks', 'vue'))
 
   // const indices = await globby(['src/*'], { onlyDirectories: true })
-  const indices = ['clipboard']
+  const indices = ['collapsible']
 
   await Promise.all(
     indices
@@ -27,7 +28,7 @@ const main = async () => {
       .map(async (component) => {
         const project = new Project()
         const sourceFile = project.addSourceFileAtPath(
-          `./node_modules/@zag-js/${component}/src/${component}.types.ts`,
+          `../../node_modules/@zag-js/${component}/src/${component}.types.ts`,
         )
 
         const publicContextTypeAlias = sourceFile.getTypeAliasOrThrow('UserDefinedContext')
@@ -43,7 +44,7 @@ const main = async () => {
           property.getName().startsWith('on'),
         )
 
-        const outputFile = project.createSourceFile(`./props.ts`, undefined, {
+        const outputFile = project.createSourceFile('./props.ts', undefined, {
           overwrite: true,
         })
 
@@ -99,7 +100,7 @@ const main = async () => {
                           `type: ${propType} as PropType<Context['${property.getName()}']>,`,
                         )
                         if (propType === 'Boolean') {
-                          writer.writeLine(`default: undefined,`)
+                          writer.writeLine('default: undefined,')
                         }
                       })
                       writer.writeLine('},')
@@ -130,7 +131,7 @@ const main = async () => {
         })
 
         fs.outputFile(
-          `./src/${component}/${component}.props.ts`,
+          `./src/components/${component}/${component}.props.ts`,
           await prettier.format(outputFile.getText(), {
             ...prettierConfig,
             plugins: ['prettier-plugin-organize-imports'],
