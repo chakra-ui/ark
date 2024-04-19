@@ -1,17 +1,19 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import type { ItemProps } from '@zag-js/radio-group'
-import { type PropType, computed, defineComponent } from 'vue'
+import { type PropType, computed, defineComponent, ref } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
+import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
 
 export const SegmentGroupItem = defineComponent<SegmentGroupItemProps>(
   (props, { slots, attrs }) => {
     const api = useSegmentGroupContext()
-    SegmentGroupItemProvider(computed(() => props))
+    SegmentGroupItemPropsProvider(ref(props))
+    SegmentGroupItemProvider(computed(() => api.value.getItemState(props)))
 
     return () => (
       <ark.label

@@ -3,10 +3,16 @@ import { globby, globbySync } from 'globby'
 const frameworks = ['react', 'solid', 'vue']
 
 const main = async () => {
-  const components = await globby(['../frameworks/react/src/components'], {
-    onlyDirectories: true,
-    deep: 1,
-  })
+  const components = await globby(
+    [
+      '../frameworks/react/src/components',
+      '!../frameworks/react/src/components/{portal,presence}/**',
+    ],
+    {
+      onlyDirectories: true,
+      deep: 1,
+    },
+  )
 
   const result = components.sort().map((component) =>
     frameworks.map((framework) => ({
@@ -20,7 +26,7 @@ const main = async () => {
     })),
   )
 
-  console.log(removeCommonFiles(result).slice(0, 2))
+  console.log(removeCommonFiles(result))
 }
 
 main().catch((err) => {
