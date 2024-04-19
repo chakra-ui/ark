@@ -1,4 +1,4 @@
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 import type { UseRatingGroupReturn } from './use-rating-group'
 
 export interface RatingGroupContext extends UseRatingGroupReturn {}

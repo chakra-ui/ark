@@ -1,4 +1,4 @@
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 import type { UseSwitchReturn } from './use-switch'
 
 export interface SwitchContext extends UseSwitchReturn {}

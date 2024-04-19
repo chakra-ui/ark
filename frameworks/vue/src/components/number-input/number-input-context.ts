@@ -1,4 +1,4 @@
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 import type { UseNumberInputReturn } from './use-number-input'
 
 export interface NumberInputContext extends UseNumberInputReturn {}

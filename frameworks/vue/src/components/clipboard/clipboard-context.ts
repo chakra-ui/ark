@@ -1,4 +1,4 @@
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 import type { UseClipboardReturn } from './use-clipboard'
 
 export interface ClipboardContext extends UseClipboardReturn {}

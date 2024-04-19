@@ -1,6 +1,6 @@
 import type { Context } from '@zag-js/avatar'
 import type { PropType } from 'vue'
-import { declareEmits } from '../../utils/utils'
+import { declareEmits } from '../../utils'
 
 export const props = {
   dir: {
@@ -13,4 +13,5 @@ export const props = {
     type: String as PropType<Context['id']>,
   },
 } as const
-export const emits = declareEmits(['status-change'])
+
+export const emits = declareEmits(['statusChange'])

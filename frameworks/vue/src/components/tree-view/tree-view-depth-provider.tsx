@@ -1,4 +1,4 @@
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 
 export type TreeViewDepthContext = number
 

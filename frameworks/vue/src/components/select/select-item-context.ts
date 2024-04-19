@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/select'
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 
 export interface SelectItemContext extends ItemProps {}
 

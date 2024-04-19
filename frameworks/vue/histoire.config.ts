@@ -3,12 +3,6 @@ import { defineConfig } from 'histoire'
 
 export default defineConfig({
   plugins: [HstVue()],
-  tree: {
-    groups: [
-      {
-        title: 'Components',
-        include: (file) => true,
-      },
-    ],
-  },
+  storyMatch: ['**/*.stories.vue'],
+  setupFile: '.storybook/main.ts',
 })

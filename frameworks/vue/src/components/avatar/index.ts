@@ -1,17 +1,8 @@
-import type { StatusChangeDetails as AvatarStatusChangeDetails } from '@zag-js/avatar'
-import { type AvatarContext, useAvatarContext } from './avatar-context'
-import { AvatarFallback, type AvatarFallbackProps } from './avatar-fallback'
-import { AvatarImage, type AvatarImageProps } from './avatar-image'
-import { AvatarRoot, type AvatarRootProps } from './avatar-root'
+export type { StatusChangeDetails as AvatarStatusChangeDetails } from '@zag-js/avatar'
+export { AvatarContext, type AvatarContextProps } from './avatar-context'
+export { AvatarFallback, type AvatarFallbackProps } from './avatar-fallback'
+export { AvatarImage, type AvatarImageProps } from './avatar-image'
+export { AvatarRoot, type AvatarRootEmits, type AvatarRootProps } from './avatar-root'
+export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
 
 export * as Avatar from './avatar'
-
-export { AvatarFallback, AvatarImage, AvatarRoot, useAvatarContext }
-
-export type {
-  AvatarContext,
-  AvatarFallbackProps,
-  AvatarImageProps,
-  AvatarRootProps,
-  AvatarStatusChangeDetails,
-}

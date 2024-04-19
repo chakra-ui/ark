@@ -1,7 +1,7 @@
 import type { Context } from '@zag-js/presence'
 import type { PropType } from 'vue'
+import { declareEmits } from '../../utils'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
-import { declareEmits } from '../../utils/utils'
 
 export const props = {
   present: {

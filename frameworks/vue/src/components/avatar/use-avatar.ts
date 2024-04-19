@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useId } from '../../utils/utils'
+import { useId } from '../../utils'
 
 export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
@@ -18,7 +18,7 @@ export const useAvatar = (props: UseAvatarProps, emit: CallableFunction): UseAva
       id: context.value.id ?? useId().value,
       getRootNode,
       onStatusChange: (details) => {
-        emit('status-change', details)
+        emit('statusChange', details)
       },
     }),
     { context },

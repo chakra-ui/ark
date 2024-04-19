@@ -1,6 +1,6 @@
 import type { Context } from '@zag-js/tabs'
 import type { PropType } from 'vue'
-import { declareEmits } from '../../utils/utils'
+import { declareEmits } from '../../utils'
 
 export const props = {
   activationMode: {

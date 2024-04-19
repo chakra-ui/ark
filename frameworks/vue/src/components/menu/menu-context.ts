@@ -1,5 +1,5 @@
 import type { ComputedRef } from 'vue'
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 import type { UseMenuReturn } from './use-menu'
 
 export type MenuContext = UseMenuReturn['api']

@@ -1,5 +1,5 @@
 import type { ItemProps as ZagItemProps } from '@zag-js/tree-view'
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 
 export interface ItemProps extends Omit<ZagItemProps, 'depth'> {}
 export interface TreeViewBranchContext extends ZagItemProps {}

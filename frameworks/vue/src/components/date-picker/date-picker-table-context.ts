@@ -1,5 +1,5 @@
 import type { TableProps } from '@zag-js/date-picker'
-import { createContext } from '../../utils/context'
+import { createContext } from '../../utils'
 
 export interface DatePickerTableContext extends TableProps {}
 
