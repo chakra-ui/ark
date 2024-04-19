@@ -1,38 +1,23 @@
 import { readFileSync } from 'node:fs'
-import { basename, dirname } from 'node:path'
 import { globby } from 'globby'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
 
+const frameworks = ['react', 'solid', 'vue']
+
 const main = async () => {
-  const files = await globby(['../frameworks/react/src/components/*/index.ts'], {})
-  files
-    .sort()
-    .map((file) => ({
-      id: basename(dirname(file)),
-      name: toPascalCase(basename(dirname(file))),
-      indexFile: file,
-      componentFile: file.replace('index', basename(dirname(file))),
-    }))
-    .filter((entry) => !['presence', 'portal'].includes(entry.id))
-    .map((entry) => ({
-      name: entry.name,
-      indexExports: getExportsFromSourceFile(entry.indexFile)
-        .map((x) => (entry.name === 'Tabs' ? x.replace('Tabs', 'Tab') : x))
-        .filter((x) => !/^use/i.test(x)) // filter hooks
-        .filter((x) => !/^createToaster/i.test(x))
-        .filter((x) => !/^toaster/i.test(x))
-        .map((item) => item.replace(entry.name === 'Tabs' ? 'Tab' : entry.name, '')),
-      componentExports: getExportsFromSourceFile(entry.componentFile),
-    }))
-    .map((entry) => ({
-      name: entry.name,
-      diff: diffArray(entry.indexExports, entry.componentExports),
-    }))
-    .map((diff) => {
-      if (diff.diff.inFirstOnly.length > 0 || diff.diff.inSecondOnly.length > 0) {
-        console.log(diff)
-      }
-    })
+  const components = await globby([
+    '../frameworks/react/src/components/*/index.ts',
+    '!../frameworks/react/src/components/{portal,presence}/**',
+  ])
+
+  const frameworkExports = components.sort().map((component) =>
+    frameworks.map((framework) => ({
+      framework,
+      exports: getExportsFromSourceFile(component.replace('react', framework)),
+    })),
+  )
+
+  console.log(removeCommonExports(frameworkExports))
 }
 
 main().catch((err) => {
@@ -44,6 +29,7 @@ const getExportsFromSourceFile = (path: string): string[] => {
   const project = new Project({
     useInMemoryFileSystem: true,
   })
+
   const fileContent = readFileSync(path, 'utf8')
   const sourceFile = project.createSourceFile('index.ts', fileContent)
 
@@ -57,13 +43,27 @@ const getExportsFromSourceFile = (path: string): string[] => {
     )
 }
 
-const diffArray = (a: string[], b: string[]) => ({
-  inFirstOnly: a.filter((x) => !b.includes(x)),
-  inSecondOnly: b.filter((x) => !a.includes(x)),
-})
+type FrameworkExports = {
+  framework: string
+  exports: string[]
+}
 
-const toPascalCase = (input: string): string =>
-  input
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('')
+function removeCommonExports(data: FrameworkExports[][]): FrameworkExports[][] {
+  return data
+    .map((subArray) => {
+      const commonExports = subArray.reduce<string[]>((common, item, index) => {
+        if (index === 0) {
+          return item.exports.slice()
+        }
+        return common.filter((exp) => item.exports.includes(exp))
+      }, [])
+
+      return subArray
+        .map((item) => ({
+          framework: item.framework,
+          exports: item.exports.filter((exp) => !commonExports.includes(exp)),
+        }))
+        .filter((item) => item.exports.length > 0)
+    })
+    .filter((subArray) => subArray.length > 0)
+}
