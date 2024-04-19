@@ -3,7 +3,7 @@ import { createContext } from '../../utils/create-context'
 
 export interface UseColorPickerAreaContext extends AreaProps {}
 
-export const [ColorPickerAreaProvider, useColorPickerAreaContext] =
+export const [ColorPickerAreaPropsProvider, useColorPickerAreaPropsContext] =
   createContext<UseColorPickerAreaContext>({
     hookName: 'useColorPickerAreaContext',
     providerName: '<ColorPickerAreaProvider />',
