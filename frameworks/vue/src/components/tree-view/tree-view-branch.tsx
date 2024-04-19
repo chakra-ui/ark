@@ -17,7 +17,7 @@ export const TreeViewBranch = defineComponent<TreeViewBranchProps>(
 
     return () => (
       <ark.li {...treeView.value.getBranchProps({ ...props, depth })} {...attrs}>
-        {slots.default?.(treeView.value.getBranchState({ ...props, depth }))}
+        {slots.default?.()}
       </ark.li>
     )
   },

@@ -29,7 +29,7 @@ export const AccordionItem = defineComponent<AccordionItemProps>(
 
     return () => (
       <ark.div {...accordion.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(itemState.value)}
+        {slots.default?.()}
       </ark.div>
     )
   },

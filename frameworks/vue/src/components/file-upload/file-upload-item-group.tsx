@@ -10,7 +10,7 @@ export const FileUploadItemGroup = defineComponent<FileUploadItemGroupProps>(
 
     return () => (
       <ark.ul {...api.value.itemGroupProps} {...attrs}>
-        {slots.default?.(api.value.acceptedFiles)}
+        {slots.default?.()}
       </ark.ul>
     )
   },

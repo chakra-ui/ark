@@ -14,7 +14,7 @@ export const SelectItem = defineComponent<SelectItemProps>(
 
     return () => (
       <ark.div {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(api.value.getItemState(props))}
+        {slots.default?.()}
       </ark.div>
     )
   },

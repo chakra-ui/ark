@@ -10,12 +10,11 @@ export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ItemP
 export const RatingGroupItem = defineComponent<RatingGroupItemProps>(
   (props, { slots, attrs }) => {
     const api = useRatingGroupContext()
-    const itemState = computed(() => api.value.getItemState(props))
     RatingGroupItemProvider(computed(() => props))
 
     return () => (
       <ark.span {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(itemState.value)}
+        {slots.default?.()}
       </ark.span>
     )
   },

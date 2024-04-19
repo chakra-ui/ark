@@ -14,7 +14,7 @@ export const RadioGroupItem = defineComponent<RadioGroupItemProps>(
 
     return () => (
       <ark.label {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(api.value.getItemState(props))}
+        {slots.default?.()}
       </ark.label>
     )
   },

@@ -16,7 +16,7 @@ export const FileUploadItem = defineComponent<FileUploadItemProps>(
 
     return () => (
       <ark.li {...api.value.getItemProps(props)} {...attrs}>
-        {slots.default?.(api.value.getItemProps(props))}
+        {slots.default?.()}
       </ark.li>
     )
   },
