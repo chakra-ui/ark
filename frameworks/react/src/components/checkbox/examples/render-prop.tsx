@@ -2,14 +2,15 @@ import { Checkbox } from '../..'
 
 export const RenderProp = () => (
   <Checkbox.Root>
-    <Checkbox.Context>
-      {(checkbox) => (
+      {(context) => (
+      <>
         <Checkbox.Control>
-          {checkbox.isChecked && <span>✓</span>}
-          {checkbox.isIndeterminate && <span>-</span>}
-        </Checkbox.Control>
+            {context.isChecked && <span>✓</span>}
+            {context.isIndeterminate && <span>-</span>}
+          </Checkbox.Control>
+          <Checkbox.Label>Checkbox</Checkbox.Label>
+        </>
       )}
-    </Checkbox.Context>
-    <Checkbox.Label>Checkbox</Checkbox.Label>
+
   </Checkbox.Root>
 )
