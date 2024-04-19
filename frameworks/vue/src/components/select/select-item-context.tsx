@@ -9,7 +9,7 @@ export const SelectItemContext = defineComponent(
   (_, { slots }) => {
     const item = useSelectItemContext()
 
-    return () => slots.default(item)
+    return () => slots.default(item.value)
   },
   {
     name: 'SelectItemContext',
