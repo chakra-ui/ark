@@ -5,7 +5,8 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
-import { ComboboxItemPropsProvider, ComboboxItemProvider } from './use-combobox-item-context'
+import { ComboboxItemProvider } from './use-combobox-item-context'
+import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
 
 export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 

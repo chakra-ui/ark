@@ -14,7 +14,7 @@ const main = async () => {
       files: globbySync([component.replace('react', framework)], { deep: 1 })
         .filter((file) => !file.endsWith('.stories.tsx'))
         .filter((file) => !file.endsWith('.stories.vue'))
-        .filter((file) => !file.endsWith('.props.ts'))
+        .filter((file) => !file.endsWith('props.ts'))
         .filter((file) => !file.endsWith('.test.tsx'))
         .map((file) => file.replace(`../frameworks/${framework}/src/components/`, '')),
     })),

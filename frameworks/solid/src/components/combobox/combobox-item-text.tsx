@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
-import { useComboboxItemPropsContext } from './use-combobox-item-context'
+import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
 export interface ComboboxItemTextProps extends HTMLArkProps<'span'> {}
 
