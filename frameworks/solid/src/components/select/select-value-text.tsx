@@ -8,8 +8,8 @@ export interface SelectValueTextProps extends HTMLArkProps<'span'> {
 }
 
 export const SelectValueText = (props: SelectValueTextProps) => {
-  const api = useSelectContext()
+  const select = useSelectContext()
   const mergedProps = mergeProps(() => selectAnatomy.build().valueText.attrs, props)
 
-  return <ark.span {...mergedProps}>{api().valueAsString || props.placeholder}</ark.span>
+  return <ark.span {...mergedProps}>{select().valueAsString || props.placeholder}</ark.span>
 }

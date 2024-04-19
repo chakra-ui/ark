@@ -13,9 +13,9 @@ export interface SelectItemGroupLabelProps
 
 export const SelectItemGroupLabel = (props: SelectItemGroupLabelProps) => {
   const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['for'])
-  const api = useSelectContext()
+  const select = useSelectContext()
   const mergedProps = mergeProps(
-    () => api().getItemGroupLabelProps({ htmlFor: labelProps.for }),
+    () => select().getItemGroupLabelProps({ htmlFor: labelProps.for }),
     localProps,
   )
 
