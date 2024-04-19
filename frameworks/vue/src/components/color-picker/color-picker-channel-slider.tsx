@@ -1,5 +1,5 @@
 import type { ChannelProps } from '@zag-js/color-picker'
-import { type PropType, defineComponent, ref } from 'vue'
+import { type PropType, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'

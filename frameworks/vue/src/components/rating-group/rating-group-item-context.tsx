@@ -12,7 +12,7 @@ export const RatingGroupItemContext = defineComponent(
   (_, { slots }) => {
     const item = useRatingGroupItemContext()
 
-    return () => slots.default(item.value)
+    return () => slots.default(item)
   },
   {
     name: 'RatingGroupItemContext',

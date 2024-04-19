@@ -23,7 +23,7 @@ export const DatePickerTableCell = defineComponent<DatePickerTableCellProps>(
         month: api.value.getMonthTableCellProps,
         year: api.value.getYearTableCellProps,
         // @ts-expect-error use filter guard
-      }[viewProps.value.view](props)
+      }[viewProps.view](props)
     })
 
     return () => (

@@ -1,4 +1,4 @@
-import { type PropType, defineComponent } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
@@ -17,7 +17,7 @@ export const TreeViewItem = defineComponent<TreeViewItemProps>(
     const treeView = useTreeViewContext()
     const depth = useTreeViewDepthContext()
 
-    TreeViewItemProvider(treeView.value.getItemState({ ...props, depth }))
+    TreeViewItemProvider(computed(() => treeView.value.getItemState({ ...props, depth })))
     TreeViewItemPropsProvider({ ...props, depth })
 
     return () => (

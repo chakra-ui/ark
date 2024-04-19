@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/select'
-import { type PropType, computed, defineComponent, ref } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'

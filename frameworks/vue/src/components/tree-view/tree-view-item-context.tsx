@@ -9,7 +9,7 @@ export const TreeViewItemContext = defineComponent(
   (_, { slots }) => {
     const item = useTreeViewItemContext()
 
-    return () => slots.default(item)
+    return () => slots.default(item.value)
   },
   {
     name: 'TreeViewItemContext',
