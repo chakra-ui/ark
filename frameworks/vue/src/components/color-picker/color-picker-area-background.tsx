@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
-import { useColorPickerAreaContext } from './color-picker-area-context'
+import { useColorPickerAreaContext } from './use-color-picker-area-context'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerAreaBackgroundProps extends HTMLArkProps<'div'> {}

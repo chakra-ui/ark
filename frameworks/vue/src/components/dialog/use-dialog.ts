@@ -13,7 +13,7 @@ export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'op
   'onUpdate:open'?: (open: dialog.OpenChangeDetails['open']) => void
 }
 
-export interface UseDialogReturn extends ComputedRef<dialog.dialog<PropTypes>> {}
+export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps, emit: CallableFunction) => {
   const context = ref(props)
