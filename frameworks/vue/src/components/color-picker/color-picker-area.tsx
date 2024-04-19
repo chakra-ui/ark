@@ -2,7 +2,7 @@ import type { AreaProps } from '@zag-js/color-picker'
 import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
-import { ColorPickerAreaProvider } from './use-color-picker-area-context'
+import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, AreaProps> {}
@@ -14,7 +14,7 @@ export const ColorPickerArea = defineComponent<ColorPickerAreaProps>(
       xChannel: props.xChannel,
       yChannel: props.yChannel,
     }))
-    ColorPickerAreaProvider(areaProps)
+    ColorPickerAreaPropsProvider(areaProps)
 
     return () => (
       <ark.div {...api.value.getAreaProps(areaProps.value)} {...attrs}>

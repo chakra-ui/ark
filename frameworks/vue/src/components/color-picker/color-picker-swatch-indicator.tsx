@@ -1,17 +1,17 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
-import { useColorPickerSwatchContext } from './use-color-picker-swatch-context'
+import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
 
 export interface ColorPickerSwatchIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerSwatchIndicator = defineComponent<ColorPickerSwatchIndicatorProps>(
   (_, { slots, attrs }) => {
     const api = useColorPickerContext()
-    const swatchProps = useColorPickerSwatchContext()
+    const swatchProps = useColorPickerSwatchPropsContext()
 
     return () => (
-      <ark.div {...api.value.getSwatchIndicatorProps(swatchProps)} {...attrs}>
+      <ark.div {...api.value.getSwatchIndicatorProps(swatchProps.value)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
