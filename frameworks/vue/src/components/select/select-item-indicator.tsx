@@ -11,7 +11,7 @@ export const SelectItemIndicator = defineComponent<SelectItemIndicatorProps>(
     const itemProps = useSelectItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemIndicatorProps(itemProps.value)} {...attrs}>
+      <ark.div {...api.value.getItemIndicatorProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

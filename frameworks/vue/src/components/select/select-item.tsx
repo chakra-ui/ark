@@ -12,7 +12,7 @@ export const SelectItem = defineComponent<SelectItemProps>(
   (props, { slots, attrs }) => {
     const api = useSelectContext()
 
-    SelectItemPropsProvider(ref(props))
+    SelectItemPropsProvider(props)
     SelectItemProvider(computed(() => api.value.getItemState(props)))
 
     return () => (

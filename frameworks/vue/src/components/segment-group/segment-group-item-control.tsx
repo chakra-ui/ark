@@ -14,13 +14,13 @@ export const SegmentGroupItemControl = defineComponent<SegmentGroupItemControlPr
     return () => (
       <>
         <ark.div
-          {...api.value.getItemControlProps(itemProps.value)}
+          {...api.value.getItemControlProps(itemProps)}
           {...segmentGroupAnatomy.build().itemControl.attrs}
           {...attrs}
         >
           {slots.default?.()}
         </ark.div>
-        <input {...api.value.getItemHiddenInputProps(itemProps.value)} />
+        <input {...api.value.getItemHiddenInputProps(itemProps)} />
       </>
     )
   },

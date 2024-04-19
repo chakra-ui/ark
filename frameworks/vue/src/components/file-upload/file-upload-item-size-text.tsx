@@ -11,8 +11,8 @@ export const FileUploadItemSizeText = defineComponent<FileUploadItemSizeTextProp
     const itemProps = useFileUploadItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemSizeTextProps(itemProps.value)} {...attrs}>
-        {slots.default?.() || api.value.getFileSize(itemProps.value.file)}
+      <ark.div {...api.value.getItemSizeTextProps(itemProps)} {...attrs}>
+        {slots.default?.() || api.value.getFileSize(itemProps.file)}
       </ark.div>
     )
   },

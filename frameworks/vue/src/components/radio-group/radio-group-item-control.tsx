@@ -12,10 +12,10 @@ export const RadioGroupItemControl = defineComponent<RadioGroupItemControlProps>
 
     return () => (
       <>
-        <ark.div {...api.value.getItemControlProps(itemProps.value)} {...attrs}>
+        <ark.div {...api.value.getItemControlProps(itemProps)} {...attrs}>
           {slots.default?.()}
         </ark.div>
-        <input {...api.value.getItemHiddenInputProps(itemProps.value)} />
+        <input {...api.value.getItemHiddenInputProps(itemProps)} />
       </>
     )
   },

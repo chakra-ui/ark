@@ -12,7 +12,7 @@ export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, Ite
 export const SegmentGroupItem = defineComponent<SegmentGroupItemProps>(
   (props, { slots, attrs }) => {
     const api = useSegmentGroupContext()
-    SegmentGroupItemPropsProvider(ref(props))
+    SegmentGroupItemPropsProvider(props)
     SegmentGroupItemProvider(computed(() => api.value.getItemState(props)))
 
     return () => (

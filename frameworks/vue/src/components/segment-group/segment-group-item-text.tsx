@@ -13,7 +13,7 @@ export const SegmentGroupItemText = defineComponent<SegmentGroupItemTextProps>(
 
     return () => (
       <ark.span
-        {...api.value.getItemTextProps(itemProps.value)}
+        {...api.value.getItemTextProps(itemProps)}
         {...segmentGroupAnatomy.build().itemText.attrs}
         {...attrs}
       >

@@ -10,7 +10,7 @@ export interface DatePickerViewProps extends HTMLArkProps<'div'>, Required<ViewP
 export const DatePickerView = defineComponent<DatePickerViewProps>(
   (props, { slots, attrs }) => {
     const api = useDatePickerContext()
-    DatePickerViewPropsProvider(ref(props))
+    DatePickerViewPropsProvider(props)
 
     return () => (
       <ark.div

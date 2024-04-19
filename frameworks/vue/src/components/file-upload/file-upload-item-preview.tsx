@@ -17,8 +17,8 @@ export const FileUploadItemPreview = defineComponent<FileUploadItemPreviewProps>
     const itemProps = useFileUploadItemPropsContext()
 
     return () =>
-      !itemProps.value.file.type.match(props.type ?? '.*') ? null : (
-        <ark.div {...api.value.getItemPreviewProps(itemProps.value)} {...attrs}>
+      !itemProps.file.type.match(props.type ?? '.*') ? null : (
+        <ark.div {...api.value.getItemPreviewProps(itemProps)} {...attrs}>
           {slots.default?.()}
         </ark.div>
       )

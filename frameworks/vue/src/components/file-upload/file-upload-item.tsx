@@ -10,7 +10,7 @@ export interface FileUploadItemProps extends Assign<HTMLArkProps<'li'>, ItemProp
 export const FileUploadItem = defineComponent<FileUploadItemProps>(
   (props, { slots, attrs }) => {
     const api = useFileUploadContext()
-    FileUploadItemPropsProvider(ref(props))
+    FileUploadItemPropsProvider(props)
 
     return () => (
       <ark.li {...api.value.getItemProps(props)} {...attrs}>

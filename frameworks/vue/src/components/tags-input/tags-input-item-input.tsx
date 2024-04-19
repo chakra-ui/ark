@@ -11,7 +11,7 @@ export const TagsInputItemInput = defineComponent<TagsInputItemInputProps>(
     const itemProps = useTagsInputItemPropsContext()
 
     return () => (
-      <ark.input {...api.value.getItemInputProps(itemProps.value)} {...attrs}>
+      <ark.input {...api.value.getItemInputProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.input>
     )

@@ -11,7 +11,7 @@ export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemP
 export const RadioGroupItem = defineComponent<RadioGroupItemProps>(
   (props, { slots, attrs }) => {
     const api = useRadioGroupContext()
-    RadioGroupItemPropsProvider(ref(props))
+    RadioGroupItemPropsProvider(props)
     RadioGroupItemProvider(computed(() => api.value.getItemState(props)))
 
     return () => (

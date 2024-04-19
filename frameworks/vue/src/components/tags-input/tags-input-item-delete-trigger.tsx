@@ -11,7 +11,7 @@ export const TagsInputItemDeleteTrigger = defineComponent<TagsInputItemDeleteTri
     const itemProps = useTagsInputItemPropsContext()
 
     return () => (
-      <ark.button {...api.value.getItemDeleteTriggerProps(itemProps.value)} {...attrs}>
+      <ark.button {...api.value.getItemDeleteTriggerProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.button>
     )

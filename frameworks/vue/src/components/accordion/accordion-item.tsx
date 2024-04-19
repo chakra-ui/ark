@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/accordion'
-import { type PropType, computed, defineComponent, ref } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLArkProps, ark } from '../factory'
@@ -24,7 +24,7 @@ export const AccordionItem = defineComponent<AccordionItemProps>(
     const presenceApi = usePresence(usePresenceProps, emit)
 
     AccordionItemProvider(itemState)
-    AccordionItemPropsProvider(ref(props))
+    AccordionItemPropsProvider(props)
     PresenceProvider(presenceApi)
 
     return () => (

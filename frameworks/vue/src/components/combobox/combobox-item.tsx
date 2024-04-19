@@ -11,7 +11,7 @@ export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps
 export const ComboboxItem = defineComponent<ComboboxItemProps>(
   (props, { slots, attrs }) => {
     const combobox = useComboboxContext()
-    ComboboxItemPropsProvider(ref(props))
+    ComboboxItemPropsProvider(props)
     ComboboxItemProvider(computed(() => combobox.value.getItemState(props)))
 
     return () => (

@@ -12,9 +12,9 @@ export const FileUploadItemPreviewImage = defineComponent<FileUploadItemPreviewI
     const url = ref<string>('')
 
     // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-    api.value.createFileUrl(itemProps.value.file, (src) => (url.value = src))
+    api.value.createFileUrl(itemProps.file, (src) => (url.value = src))
 
-    const previewProps = api.value.getItemPreviewImageProps({ ...itemProps.value, url: url.value })
+    const previewProps = api.value.getItemPreviewImageProps({ ...itemProps, url: url.value })
     return () => <ark.img {...previewProps} {...attrs} />
   },
   {

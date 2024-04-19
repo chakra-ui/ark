@@ -11,7 +11,7 @@ export const TagsInputItemPreview = defineComponent<TagsInputItemPreviewProps>(
     const itemProps = useTagsInputItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemPreviewProps(itemProps.value)} {...attrs}>
+      <ark.div {...api.value.getItemPreviewProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

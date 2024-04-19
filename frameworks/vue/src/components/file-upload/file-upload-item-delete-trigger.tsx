@@ -11,7 +11,7 @@ export const FileUploadItemDeleteTrigger = defineComponent<FileUploadItemDeleteT
     const itemProps = useFileUploadItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemDeleteTriggerProps(itemProps.value)} {...attrs}>
+      <ark.div {...api.value.getItemDeleteTriggerProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

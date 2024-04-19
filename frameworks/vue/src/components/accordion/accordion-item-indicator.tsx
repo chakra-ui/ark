@@ -11,7 +11,7 @@ export const AccordionItemIndicator = defineComponent<AccordionItemIndicatorProp
     const itemProps = useAccordionItemPropsContext()
 
     return () => (
-      <ark.div {...accordion.value.getItemIndicatorProps(itemProps.value)} {...attrs}>
+      <ark.div {...accordion.value.getItemIndicatorProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

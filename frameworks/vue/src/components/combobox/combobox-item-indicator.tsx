@@ -11,7 +11,7 @@ export const ComboboxItemIndicator = defineComponent<ComboboxItemIndicatorProps>
     const itemProps = useComboboxItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemIndicatorProps(itemProps.value)} {...attrs}>
+      <ark.div {...api.value.getItemIndicatorProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

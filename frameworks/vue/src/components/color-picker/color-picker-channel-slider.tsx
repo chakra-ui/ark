@@ -10,7 +10,7 @@ export interface ColorPickerChannelSliderProps extends Assign<HTMLArkProps<'div'
 export const ColorPickerChannelSlider = defineComponent<ColorPickerChannelSliderProps>(
   (props, { slots, attrs }) => {
     const api = useColorPickerContext()
-    ColorPickerChannelPropsProvider(ref(props))
+    ColorPickerChannelPropsProvider(props)
 
     return () => (
       <ark.div {...api.value.getChannelSliderProps(props)} {...attrs}>

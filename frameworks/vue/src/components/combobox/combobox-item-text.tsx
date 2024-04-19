@@ -11,7 +11,7 @@ export const ComboboxItemText = defineComponent<ComboboxItemTextProps>(
     const itemProps = useComboboxItemPropsContext()
 
     return () => (
-      <ark.span {...api.value.getItemTextProps(itemProps.value)} {...attrs}>
+      <ark.span {...api.value.getItemTextProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.span>
     )

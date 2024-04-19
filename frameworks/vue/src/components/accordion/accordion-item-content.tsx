@@ -16,7 +16,7 @@ export const AccordionItemContent = defineComponent<AccordionItemContentProps>(
     return () => (
       <>
         {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...accordion.value.getItemContentProps(itemProps.value)} {...attrs}>
+          <ark.div {...accordion.value.getItemContentProps(itemProps)} {...attrs}>
             {slots.default?.()}
           </ark.div>
         )}

@@ -11,7 +11,7 @@ export const AccordionItemTrigger = defineComponent<AccordionItemTriggerProps>(
     const accordion = useAccordionContext()
     const itemProps = useAccordionItemPropsContext()
     const presenceApi = usePresenceContext()
-    const triggerProps = computed(() => accordion.value.getItemTriggerProps(itemProps.value))
+    const triggerProps = computed(() => accordion.value.getItemTriggerProps(itemProps))
 
     const ariaProps = computed(() => ({
       'aria-controls': presenceApi.value.isUnmounted

@@ -12,7 +12,7 @@ export interface ColorPickerSwatchProps extends Assign<HTMLArkProps<'div'>, Swat
 export const ColorPickerSwatch = defineComponent<ColorPickerSwatchProps>(
   (props, { slots, attrs }) => {
     const api = useColorPickerContext()
-    ColorPickerSwatchPropsProvider(ref(props))
+    ColorPickerSwatchPropsProvider(props)
 
     return () => (
       <ark.div {...api.value.getSwatchProps(props)} {...attrs}>

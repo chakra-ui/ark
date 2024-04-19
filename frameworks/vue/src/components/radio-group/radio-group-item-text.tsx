@@ -11,7 +11,7 @@ export const RadioGroupItemText = defineComponent<RadioGroupItemTextProps>(
     const itemProps = useRadioGroupItemPropsContext()
 
     return () => (
-      <ark.span {...api.value.getItemTextProps(itemProps.value)} {...attrs}>
+      <ark.span {...api.value.getItemTextProps(itemProps)} {...attrs}>
         {slots.default?.()}
       </ark.span>
     )
