@@ -1,18 +1,16 @@
-import { type PropType, defineComponent } from 'vue'
+import type { ItemProps } from '@zag-js/file-upload'
+import { type PropType, defineComponent, ref } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
-import {
-  FileUploadItemProvider,
-  type UseFileUploadItemContext,
-} from './use-file-upload-item-context'
+import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemProps extends Assign<HTMLArkProps<'li'>, UseFileUploadItemContext> {}
+export interface FileUploadItemProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
 
 export const FileUploadItem = defineComponent<FileUploadItemProps>(
   (props, { slots, attrs }) => {
     const api = useFileUploadContext()
-    FileUploadItemProvider(props)
+    FileUploadItemPropsProvider(ref(props))
 
     return () => (
       <ark.li {...api.value.getItemProps(props)} {...attrs}>
@@ -24,7 +22,7 @@ export const FileUploadItem = defineComponent<FileUploadItemProps>(
     name: 'FileUploadItem',
     props: {
       file: {
-        type: Object as PropType<UseFileUploadItemContext['file']>,
+        type: Object as PropType<FileUploadItemProps['file']>,
         required: true,
       },
     },

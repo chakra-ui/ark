@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
-import { useFileUploadItemContext } from './use-file-upload-item-context'
+import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemPreviewProps extends HTMLArkProps<'div'> {
   /**
@@ -14,11 +14,11 @@ export interface FileUploadItemPreviewProps extends HTMLArkProps<'div'> {
 export const FileUploadItemPreview = defineComponent<FileUploadItemPreviewProps>(
   (props, { attrs, slots }) => {
     const api = useFileUploadContext()
-    const item = useFileUploadItemContext()
+    const itemProps = useFileUploadItemPropsContext()
 
     return () =>
-      !item.file.type.match(props.type ?? '.*') ? null : (
-        <ark.div {...api.value.getItemPreviewProps(item)} {...attrs}>
+      !itemProps.value.file.type.match(props.type ?? '.*') ? null : (
+        <ark.div {...api.value.getItemPreviewProps(itemProps.value)} {...attrs}>
           {slots.default?.()}
         </ark.div>
       )
