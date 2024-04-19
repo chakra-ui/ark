@@ -11,15 +11,12 @@ export const ComboboxContent = defineComponent<ComboboxContentProps>(
     const api = useComboboxContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'ComboboxContent',

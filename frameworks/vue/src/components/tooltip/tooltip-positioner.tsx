@@ -10,15 +10,12 @@ export const TooltipPositioner = defineComponent<TooltipPositionerProps>(
     const api = useTooltipContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.positionerProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.positionerProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'TooltipPositioner',

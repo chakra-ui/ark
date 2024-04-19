@@ -10,15 +10,12 @@ export const ColorPickerPositioner = defineComponent<ColorPickerPositionerProps>
     const api = useColorPickerContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.positionerProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.positionerProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'ColorPickerPositioner',

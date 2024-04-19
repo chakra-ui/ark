@@ -10,15 +10,12 @@ export const MenuPositioner = defineComponent<MenuPositionerProps>(
     const api = useMenuContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.positionerProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.positionerProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'MenuPositioner',

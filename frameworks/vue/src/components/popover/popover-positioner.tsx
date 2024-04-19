@@ -10,15 +10,12 @@ export const PopoverPositioner = defineComponent<PopoverPositionerProps>(
     const api = usePopoverContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.positionerProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.positionerProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'PopoverPositioner',

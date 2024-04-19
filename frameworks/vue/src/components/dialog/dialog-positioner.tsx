@@ -10,15 +10,12 @@ export const DialogPositioner = defineComponent<DialogPositionerProps>(
     const dialog = useDialogContext()
     const presencedialog = usePresenceContext()
 
-    return () => (
-      <>
-        {presencedialog.value.isUnmounted ? null : (
-          <ark.div {...dialog.value.positionerProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presencedialog.value.isUnmounted ? null : (
+        <ark.div {...dialog.value.positionerProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'DialogPositioner',

@@ -13,15 +13,12 @@ export const AccordionItemContent = defineComponent<AccordionItemContentProps>(
     const itemProps = useAccordionItemPropsContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...accordion.value.getItemContentProps(itemProps)} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...accordion.value.getItemContentProps(itemProps)} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'AccordionItemContent',

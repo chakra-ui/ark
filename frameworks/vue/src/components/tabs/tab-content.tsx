@@ -22,19 +22,16 @@ export const TabContent = defineComponent<TabContentProps>(
 
     PresenceProvider(presenceApi)
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div
-            {...api.value.getContentProps(props)}
-            {...presenceApi.value.presenceProps}
-            {...attrs}
-          >
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div
+          {...api.value.getContentProps(props)}
+          {...presenceApi.value.presenceProps}
+          {...attrs}
+        >
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'TabContent',

@@ -11,15 +11,12 @@ export const PopoverContent = defineComponent<PopoverContentProps>(
     const api = usePopoverContext()
     const presenceApi = usePresenceContext()
 
-    return () => (
-      <>
-        {presenceApi.value.isUnmounted ? null : (
-          <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
-            {slots.default?.()}
-          </ark.div>
-        )}
-      </>
-    )
+    return () =>
+      presenceApi.value.isUnmounted ? null : (
+        <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
+          {slots.default?.()}
+        </ark.div>
+      )
   },
   {
     name: 'PopoverContent',
