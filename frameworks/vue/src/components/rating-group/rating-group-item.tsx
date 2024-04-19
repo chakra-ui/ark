@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/rating-group'
-import { type PropType, defineComponent } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
@@ -10,7 +10,7 @@ export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ItemP
 export const RatingGroupItem = defineComponent<RatingGroupItemProps>(
   (props, { slots, attrs }) => {
     const api = useRatingGroupContext()
-    RatingGroupItemProvider(props)
+    RatingGroupItemProvider(computed(() => api.value.getItemState(props)))
 
     return () => (
       <ark.span {...api.value.getItemProps(props)} {...attrs}>
