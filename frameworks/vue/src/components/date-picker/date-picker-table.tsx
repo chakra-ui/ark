@@ -1,11 +1,11 @@
 import type { TableProps } from '@zag-js/date-picker'
-import { type PropType, defineComponent, reactive } from 'vue'
+import { type PropType, defineComponent, ref } from 'vue'
 import type { Assign } from '../../types'
 import { useId } from '../../utils'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerTableProvider } from './use-date-picker-table-context'
-import { useDatePickerViewContext } from './use-date-picker-view-context'
+import { DatePickerTablePropsProvider } from './use-date-picker-table-props-context'
+import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableProps
   extends Assign<HTMLArkProps<'table'>, Pick<TableProps, 'columns'>> {}
@@ -13,8 +13,8 @@ export interface DatePickerTableProps
 export const DatePickerTable = defineComponent<DatePickerTableProps>(
   (props, { slots, attrs }) => {
     const api = useDatePickerContext()
-    const view = useDatePickerViewContext()
-    DatePickerTableProvider(reactive({ ...props, id: useId().value, ...view }))
+    const viewProps = useDatePickerViewPropsContext()
+    DatePickerTablePropsProvider(ref({ ...props, id: useId().value, ...viewProps }))
 
     return () => (
       <ark.table {...api.value.getTableProps(props)} {...attrs}>
