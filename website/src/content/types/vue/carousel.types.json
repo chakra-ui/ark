@@ -53,7 +53,7 @@
   },
   "Root": {
     "align": {
-      "type": "'center' | 'start' | 'end'",
+      "type": "'center' | 'end' | 'start'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
