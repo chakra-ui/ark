@@ -8,6 +8,6 @@ export { TabList, type TabListProps } from './tab-list'
 export { TabTrigger, type TabTriggerProps } from './tab-trigger'
 export { TabsContext, type TabsContextProps } from './tabs-context'
 export { TabsRoot, type TabsRootProps } from './tabs-root'
-export { useTabsContext, type UseTabsContext } from './use-tabs-context'
+export { type UseTabsContext, useTabsContext } from './use-tabs-context'
 
 export * as Tabs from './tabs'
