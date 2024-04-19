@@ -8,10 +8,28 @@ description: All notable changes to this project will be documented in this file
 
 ### Added
 
+- Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
+
+```vue
+<template>
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Context v-slot="popover">
+          <Popover.Content>
+            <Popover.Title @click="() => popover.close()">Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
+          </Popover.Content>
+      </Popover.Context>
+    </Popover.Positioner>
+  </Popover.Root>
+</template>
+```
+
+- Added `Format` and `Collapsible` component
 - Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Add the `DatePicker.PresetTrigger` component
 - Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
-- Added new `FormatByte` and `FormatNumber` components.
 - Added `defaultOpen` to `Tooltip`
 
 ### Changed
