@@ -12,7 +12,7 @@
   "dependencies": {
     "@ark-ui/vue": "0.11.0",
     "nuxt": "3.11.2",
-    "vue": "3.4.22",
-    "vue-router": "4.3.0"
+    "vue": "3.4.23",
+    "vue-router": "4.3.2"
   }
 }
