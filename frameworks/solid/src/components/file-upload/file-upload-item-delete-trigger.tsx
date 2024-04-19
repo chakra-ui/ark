@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
-import { useFileUploadItemContext } from './use-file-upload-item-context'
+import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemDeleteTriggerProps extends HTMLArkProps<'button'> {}
 
 export const FileUploadItemDeleteTrigger = (props: FileUploadItemDeleteTriggerProps) => {
-  const api = useFileUploadContext()
-  const item = useFileUploadItemContext()
-  const mergedProps = mergeProps(() => api().getItemDeleteTriggerProps(item), props)
+  const fileUpload = useFileUploadContext()
+  const itemProps = useFileUploadItemPropsContext()
+  const mergedProps = mergeProps(() => fileUpload().getItemDeleteTriggerProps(itemProps), props)
 
   return <ark.button {...mergedProps} />
 }

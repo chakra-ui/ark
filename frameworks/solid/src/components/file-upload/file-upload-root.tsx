@@ -30,11 +30,11 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
     'validate',
   ])
 
-  const api = useFileUpload(fileUploadProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const fileUpload = useFileUpload(fileUploadProps)
+  const mergedProps = mergeProps(() => fileUpload().rootProps, localProps)
 
   return (
-    <FileUploadProvider value={api}>
+    <FileUploadProvider value={fileUpload}>
       <ark.div {...mergedProps} />
     </FileUploadProvider>
   )

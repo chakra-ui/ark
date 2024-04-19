@@ -5,7 +5,8 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
-import { TagsInputItemPropsProvider, TagsInputItemProvider } from './use-tags-input-item-context'
+import { TagsInputItemProvider } from './use-tags-input-item-context'
+import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
 
 export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
