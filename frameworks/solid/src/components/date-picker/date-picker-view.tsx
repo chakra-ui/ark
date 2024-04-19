@@ -5,7 +5,7 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { DatePickerViewProvider } from './use-date-picker-view-context'
+import { DatePickerViewProvider } from './use-date-picker-view-props-context'
 
 export interface DatePickerViewProps extends Assign<HTMLArkProps<'div'>, Required<ViewProps>> {}
 
