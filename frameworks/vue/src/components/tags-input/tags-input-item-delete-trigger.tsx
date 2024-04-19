@@ -1,14 +1,14 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
-import { useTagsInputItemContext } from './use-tags-input-item-context'
+import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
 export interface TagsInputItemDeleteTriggerProps extends HTMLArkProps<'button'> {}
 
 export const TagsInputItemDeleteTrigger = defineComponent<TagsInputItemDeleteTriggerProps>(
   (_, { slots, attrs }) => {
     const api = useTagsInputContext()
-    const itemProps = useTagsInputItemContext()
+    const itemProps = useTagsInputItemPropsContext()
 
     return () => (
       <ark.button {...api.value.getItemDeleteTriggerProps(itemProps.value)} {...attrs}>

@@ -1,14 +1,14 @@
 import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
-import { useTagsInputItemContext } from './use-tags-input-item-context'
+import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
 export interface TagsInputItemTextProps extends HTMLArkProps<'span'> {}
 
 export const TagsInputItemText = defineComponent<TagsInputItemTextProps>(
   (_, { slots, attrs }) => {
     const api = useTagsInputContext()
-    const itemProps = useTagsInputItemContext()
+    const itemProps = useTagsInputItemPropsContext()
 
     return () => (
       <ark.span {...api.value.getItemTextProps(itemProps.value)} {...attrs}>
