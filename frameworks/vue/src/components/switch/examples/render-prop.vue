@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Switch } from '../..'
-
-const checked = ref(false)
 </script>
 
 <template>

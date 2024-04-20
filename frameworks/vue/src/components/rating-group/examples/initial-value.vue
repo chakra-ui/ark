@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { RatingGroup } from '../..'
-import { StarHalfIcon, StarIcon, StarOutlineIcon } from './rating-icons'
-
-const value = ref(0)
+import { StarIcon, StarOutlineIcon } from './rating-icons'
 </script>
 
 <template>

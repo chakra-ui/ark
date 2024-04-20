@@ -464,7 +464,7 @@
     "lint": "echo 'No linting configured for this package.'",
     "test": "vitest",
     "test:ci": "vitest --run",
-    "typecheck": "tsc",
+    "typecheck": "vue-tsc",
     "storybook": "histoire dev",
     "release-it": "release-it --config ../../release-it.json"
   },
@@ -534,7 +534,8 @@
     "vite": "5.2.9",
     "vite-plugin-dts": "3.8.3",
     "vitest": "1.5.0",
-    "vue": "3.4.23"
+    "vue": "3.4.23",
+    "vue-tsc": "2.0.13"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"

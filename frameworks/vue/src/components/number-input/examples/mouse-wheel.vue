@@ -1,5 +1,5 @@
 <script setup lang="ts">
-null
+import { NumberInput } from '../..'
 </script>
 
 <template>

@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Tooltip } from '../..'
-
-const isOpen = ref(false)
 </script>
 
 <template>

@@ -6,7 +6,7 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-  <TagsInput.Root v-slot="api">
+  <TagsInput.Root>
     <TagsInput.Label>Frameworks</TagsInput.Label>
     <TagsInput.Control>
       <TagsInput.Item

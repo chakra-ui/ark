@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ToggleGroup } from '../..'
-
-const value = ref(['b'])
 </script>
 
 <template>

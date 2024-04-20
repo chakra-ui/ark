@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Popover } from '../..'
-
-const open = ref(false)
 </script>
 
 <template>
-  <Popover.Root v-slot="{ isOpen }">
+  <Popover.Root>
     <Popover.Trigger>Click Me</Popover.Trigger>
     <Popover.Positioner>
-      <Popover.Content>
-        <Popover.Title>Title</Popover.Title>
-        <Popover.Description>Description: {{ isOpen.toString() }}</Popover.Description>
-        <Popover.CloseTrigger>Close</Popover.CloseTrigger>
-      </Popover.Content>
+      <Popover.Context v-slot="popover">
+        <Popover.Content>
+          <Popover.Title>Title</Popover.Title>
+          <Popover.Description>Description: {{ popover.isOpen.toString() }}</Popover.Description>
+          <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+        </Popover.Content>
+      </Popover.Context>
     </Popover.Positioner>
   </Popover.Root>
 </template>

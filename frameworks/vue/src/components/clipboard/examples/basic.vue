@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Clipboard } from '../..'
-
 import { CheckIcon, ClipboardCopyIcon } from './icons'
 </script>
 

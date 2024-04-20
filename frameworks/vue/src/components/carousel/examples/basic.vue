@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Carousel } from '../..'
 
 const images = [
@@ -9,7 +8,6 @@ const images = [
   'https://tinyurl.com/6jurv23t',
   'https://tinyurl.com/yp4rfum7',
 ]
-const index = ref(0)
 </script>
 
 <template>

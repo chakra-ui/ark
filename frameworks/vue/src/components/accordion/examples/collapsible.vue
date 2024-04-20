@@ -4,7 +4,6 @@ import { ref } from 'vue'
 import { Accordion } from '../..'
 
 const items = ref(['React', 'Solid', 'Vue'])
-const value = ref(['React'])
 </script>
 
 <template>
