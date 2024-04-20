@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { SegmentGroup } from '../..'
 
 const frameworks = ref(['React', 'Solid', 'Svelte', 'Vue'])
-const value = ref('React')
 </script>
 
 <template>

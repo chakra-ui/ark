@@ -2,18 +2,11 @@
 import { ref } from 'vue'
 import { Combobox } from '../..'
 
-const basicItems = ref(['React', 'Solid', 'Vue'])
-
-const advancedItems = ref([
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte', disabled: true },
-])
+const items = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-  <Combobox.Root :items="basicItems">
+  <Combobox.Root :items="items">
     <Combobox.Label>Framework</Combobox.Label>
     <Combobox.Control>
       <Combobox.Input />
@@ -25,7 +18,7 @@ const advancedItems = ref([
         <Combobox.Content>
           <Combobox.ItemGroup id="framework">
             <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
-            <Combobox.Item v-for="item in basicItems" :key="item" :item="item">
+            <Combobox.Item v-for="item in items" :key="item" :item="item">
               <Combobox.ItemText>{{ item }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
             </Combobox.Item>

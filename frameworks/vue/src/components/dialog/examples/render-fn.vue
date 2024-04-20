@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { Teleport, ref } from 'vue'
+import { Teleport } from 'vue'
 import { Dialog } from '../..'
-
-const open = ref(false)
 </script>
 
 <template>

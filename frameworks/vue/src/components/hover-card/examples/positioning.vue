@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { HoverCard } from '../..'
-
-const open = ref(false)
 </script>
 
 <template>

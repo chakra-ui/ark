@@ -2,8 +2,6 @@
 import { ref } from 'vue'
 import { Combobox } from '../..'
 
-const basicItems = ref(['React', 'Solid', 'Vue'])
-
 const advancedItems = ref([
   { label: 'React', value: 'react' },
   { label: 'Solid', value: 'solid' },

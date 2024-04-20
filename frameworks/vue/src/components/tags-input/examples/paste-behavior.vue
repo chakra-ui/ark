@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { TagsInput } from '../..'
-
-const frameworks = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
