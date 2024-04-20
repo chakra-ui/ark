@@ -6,11 +6,13 @@ export interface ToastRootProps extends HTMLArkProps<'div'> {}
 
 export const ToastRoot = defineComponent<ToastRootProps>(
   (_, { attrs, slots }) => {
-    const api = useToastContext()
+    const toast = useToastContext()
 
     return () => (
-      <ark.div {...api.value.rootProps} {...attrs}>
+      <ark.div {...toast.value.rootProps} {...attrs}>
+        <div {...toast.value.ghostBeforeProps} />
         {slots.default?.()}
+        <div {...toast.value.ghostAfterProps} />
       </ark.div>
     )
   },
