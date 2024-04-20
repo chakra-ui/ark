@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { AvatarFallback, AvatarImage, AvatarRoot } from '..'
+import { Avatar } from '../..'
 </script>
 
 <template>
-  <AvatarRoot @status-change="e => console.log(e)">
-    <AvatarFallback>PA</AvatarFallback>
-    <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-  </AvatarRoot>
+  <Avatar @loading-status-change="(status) => console.log(status)">
+    <Avatar.Fallback>PA</Avatar.Fallback>
+    <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+  </Avatar>
 </template>

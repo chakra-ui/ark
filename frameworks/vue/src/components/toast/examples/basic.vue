@@ -1,5 +1,6 @@
 <script setup lang="tsx">
 import {
+  ToastActionTrigger,
   ToastCloseTrigger,
   ToastDescription,
   ToastRoot,
@@ -12,21 +13,22 @@ const toaster = createToaster({ placement: 'bottom-end', overlap: true, gap: 24 
 
 const createToast = () => {
   toaster.create({
-    title: 'Toast Title',
-    description: 'Toast Description',
+    title: 'Title',
+    description: 'Description',
     type: 'info',
   })
 }
 </script>
 
 <template>
-  <button @click="createToast">Toast</button>
+  <button @click="createToast">Create Toast</button>
   <Toaster :toaster="toaster" v-slot="toast">
     <ToastRoot>
       <ToastTitle>{{ toast.title }}</ToastTitle>
       <ToastDescription>{{ toast.description }}</ToastDescription>
+      <ToastActionTrigger>Action</ToastActionTrigger>
       <ToastCloseTrigger>
-        &#x2715;
+        Close
       </ToastCloseTrigger>
     </ToastRoot>
   </Toaster>
