@@ -5,4 +5,4 @@ export { AvatarImage, type AvatarImageProps } from './avatar-image'
 export { AvatarRoot, type AvatarRootEmits, type AvatarRootProps } from './avatar-root'
 export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
 
-export * as Avatar from './avatar'
+// export * as Avatar from './avatar'
