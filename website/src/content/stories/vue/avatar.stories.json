@@ -1,4 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { Avatar } from '@ark-ui/vue'\n</script>\n\n<template>\n  <Avatar.Root>\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar.Root>\n</template>\n",
-  "Events": "<script setup lang=\"ts\">\nimport { Avatar } from '@ark-ui/vue'\n</script>\n\n<template>\n  <Avatar @loading-status-change=\"(status) => console.log(status)\">\n    <Avatar.Fallback>PA</Avatar.Fallback>\n    <Avatar.Image src=\"https://i.pravatar.cc/3000\" alt=\"avatar\" />\n  </Avatar>\n</template>\n"
-}
