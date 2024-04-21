@@ -1,3 +1,0 @@
-{
-  "Basic": "import { useEffect } from 'react'\nimport Frame from 'react-frame-component'\nimport { Environment, useEnvironmentContext } from '@ark-ui/react'\n\nconst PrintEnvironment = () => {\n  const getRootNode = useEnvironmentContext()\n  useEffect(() => {\n    const rootNode = getRootNode?.()\n    console.log(rootNode)\n  })\n\n  return null\n}\n\nexport const Basic = () => {\n  return (\n    <Frame>\n      <Environment>\n        <PrintEnvironment />\n      </Environment>\n    </Frame>\n  )\n}\n"
-}

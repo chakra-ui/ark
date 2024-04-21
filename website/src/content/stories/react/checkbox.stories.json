@@ -1,6 +1,0 @@
-{
-  "Basic": "import { Checkbox } from '@ark-ui/react'\n\nexport const Basic = () => (\n  <Checkbox.Root defaultChecked>\n    <Checkbox.Control />\n    <Checkbox.Label>Checkbox</Checkbox.Label>\n  </Checkbox.Root>\n)\n",
-  "Controlled": "import { useState } from 'react'\nimport { Checkbox } from '@ark-ui/react'\n\nexport const Controlled = () => {\n  const [checked, setChecked] = useState<Checkbox.CheckedState>(true)\n  return (\n    <Checkbox.Root checked={checked} onCheckedChange={(e) => setChecked(e.checked)}>\n      <Checkbox.Control />\n      <Checkbox.Label>Checkbox</Checkbox.Label>\n    </Checkbox.Root>\n  )\n}\n",
-  "Indeterminate": "import { Checkbox } from '@ark-ui/react'\n\nexport const Indeterminate = () => (\n  <Checkbox.Root checked=\"indeterminate\">\n    <Checkbox.Control />\n    <Checkbox.Label>Checkbox</Checkbox.Label>\n  </Checkbox.Root>\n)\n",
-  "RenderProp": "import { Checkbox } from '@ark-ui/react'\n\nexport const RenderProp = () => (\n  <Checkbox.Root>\n    <Checkbox.Context>\n      {(checkbox) => (\n        <Checkbox.Control>\n          {checkbox.isChecked && <span>✓</span>}\n          {checkbox.isIndeterminate && <span>-</span>}\n        </Checkbox.Control>\n      )}\n    </Checkbox.Context>\n    <Checkbox.Label>Checkbox</Checkbox.Label>\n  </Checkbox.Root>\n)\n"
-}

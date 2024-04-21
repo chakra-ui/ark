@@ -14,7 +14,6 @@ const components = defineCollection({
         w3c: z.string().optional(),
       })
       .optional(),
-    stories: reference('stories').optional(),
     types: reference('types').optional(),
   }),
 })
@@ -37,11 +36,6 @@ const styling = defineCollection({
     title: z.string(),
     description: z.string(),
   }),
-})
-
-const stories = defineCollection({
-  type: 'data',
-  schema: z.record(z.string(), z.string()),
 })
 
 const types = defineCollection({
@@ -83,7 +77,6 @@ export const collections = {
   components,
   overview,
   providers,
-  stories,
   styling,
   types,
 }

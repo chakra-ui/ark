@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nnull\n</script>\n\n<template>\n  <button @click=\"createToast\">Toast</button>\n  <Toaster v-slot=\"toast\">\n    <Toast.Root :toast=\"toast\">\n      <Toast.Title>{{ toast.title }}</Toast.Title>\n      <Toast.Description>{{ toast.description }}</Toast.Description>\n      <Toast.CloseTrigger>Close</Toast.CloseTrigger>\n    </Toast.Root>\n  </Toaster>\n</template>\n"
-}

@@ -1,3 +1,0 @@
-{
-  "Basic": "<script setup lang=\"ts\">\nimport { Format } from '@ark-ui/vue'\n</script>\n\n<template>\n  <p>\n    <Format.Byte :value=\"120904\" unit=\"byte\" />\n  </p>\n  <p>\n    <Format.Number :value=\"1204\" :style=\"'currency'\" currency=\"EUR\" />\n  </p>\n</template>\n"
-}
