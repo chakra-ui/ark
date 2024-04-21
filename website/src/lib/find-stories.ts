@@ -13,7 +13,11 @@ export const findStories = async (props: Props) => {
     frameworks.map(async (framework) => {
       const filename = id.toLowerCase() + (framework === 'vue' ? '.vue' : '.tsx')
       const path = `../frameworks/${framework}/src/components/${component}/examples/${filename}`
-      return await readFile(path, 'utf-8').catch(() => '')
+      const content = await readFile(path, 'utf-8').catch(() => 'Story not found')
+
+      return content
+        .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
+        .replaceAll(/from '\..*'/g, `from '@ark-ui/${framework}'`)
     }),
   )
 }
