@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/menu'
-import { type PropType, defineComponent } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
@@ -10,8 +10,7 @@ export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 export const MenuItem = defineComponent<MenuItemProps>(
   (props, { slots, attrs }) => {
     const api = useMenuContext()
-
-    const itemState = api.value.getItemState(props)
+    const itemState = computed(() => api.value.getItemState(props))
 
     MenuItemProvider(itemState)
     return () => (

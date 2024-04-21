@@ -36,9 +36,7 @@ export const MenuRoot = defineComponent<MenuRootProps>(
     MenuProvider(api)
     PresenceProvider(presenceApi)
 
-    return () => {
-      return slots.default?.(api.value)
-    }
+    return () => slots.default?.()
   },
   {
     name: 'MenuRoot',

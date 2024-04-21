@@ -9,7 +9,7 @@ export const MenuTriggerItem = defineComponent<MenuTriggerItemProps>(
     const triggerItemProps = useMenuTriggerItemContext()
 
     return () => (
-      <ark.div {...triggerItemProps} {...attrs}>
+      <ark.div {...triggerItemProps.value} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

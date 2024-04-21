@@ -1,5 +1,5 @@
 import type { OptionItemProps } from '@zag-js/menu'
-import { type PropType, defineComponent } from 'vue'
+import { type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
@@ -10,13 +10,14 @@ export interface MenuCheckboxItemProps extends Assign<HTMLArkProps<'div'>, Optio
 
 export const MenuCheckboxItem = defineComponent<MenuCheckboxItemProps>(
   (props, { slots, attrs }) => {
-    const api = useMenuContext()
+    const menu = useMenuContext()
+    const item = computed(() => menu.value.getItemState(props))
 
-    MenuItemProvider(api.value.getItemState(props))
+    MenuItemProvider(item)
     MenuOptionItemPropsProvider(props)
 
     return () => (
-      <ark.div {...api.value.getOptionItemProps(props)} {...attrs}>
+      <ark.div {...menu.value.getOptionItemProps(props)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

@@ -1,6 +1,6 @@
 import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, watch } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
@@ -33,18 +33,7 @@ export const useMenu = (props: UseMenuProps, emit: CallableFunction): UseMenuRet
         emit('select', details)
       },
     }),
-  )
-
-  watch(
-    () => context.value.open,
-    (value) => {
-      if (value === undefined) return
-      if (value) {
-        api.value.open()
-      } else {
-        api.value.close()
-      }
-    },
+    { context },
   )
 
   const api = computed(() => menu.connect(state.value, send, normalizeProps))

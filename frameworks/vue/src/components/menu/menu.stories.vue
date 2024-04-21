@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Context from './examples/context.vue'
 import Controlled from './examples/controlled.vue'
 import Group from './examples/group.vue'
-import Options from './examples/options.vue'
+import Nested from './examples/nested.vue'
+import RenderProp from './examples/render-prop.vue'
 import Separator from './examples/separator.vue'
 </script>
 <template>
-<Story title="Menu">
+  <Story title="Menu">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -19,8 +21,15 @@ import Separator from './examples/separator.vue'
     <Variant title="Separator">
       <Separator />
     </Variant>
-    <Variant title="Options">
-      <Options />
+    <Variant title="Context">
+      <Context />
     </Variant>
-</Story>
+
+    <Variant title="RenderProp">
+      <RenderProp />
+    </Variant>
+    <Variant title="Nested">
+      <Nested />
+    </Variant>
+  </Story>
 </template>

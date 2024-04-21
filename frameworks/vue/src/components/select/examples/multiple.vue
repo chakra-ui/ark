@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ChevronDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { Select } from '../..'
 

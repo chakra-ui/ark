@@ -8,8 +8,7 @@ export type MenuItemContextProps = SlotsType<{
 export const MenuItemContext = defineComponent(
   (_, { slots }) => {
     const menuitem = useMenuItemContext()
-
-    return () => slots.default(menuitem)
+    return () => slots.default(menuitem.value)
   },
   {
     name: 'MenuItemContext',
