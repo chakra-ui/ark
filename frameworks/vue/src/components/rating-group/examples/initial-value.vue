@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RatingGroup } from '../..'
-import { StarIcon, StarOutlineIcon } from './rating-icons'
+import { StarIcon, StarOutlineIcon } from './icons'
 </script>
 
 <template>
