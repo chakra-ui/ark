@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Tabs } from '../..'
-
-const value = ref('react')
 </script>
 
 <template>

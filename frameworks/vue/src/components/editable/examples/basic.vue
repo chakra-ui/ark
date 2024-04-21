@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Editable } from '../..'
-const value = ref('Chakra')
 </script>
 
 <template>

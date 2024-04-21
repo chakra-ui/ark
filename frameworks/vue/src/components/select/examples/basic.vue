@@ -3,19 +3,11 @@ import { ChevronDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 import { Select } from '../..'
 
-const basicItems = ref(['React', 'Solid', 'Vue'])
-const advancedItems = ref([
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte', disabled: true },
-])
-
-const value = ref(['vue'])
+const items = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-  <Select.Root :items="basicItems">
+  <Select.Root :items="items">
     <Select.Label>Framework</Select.Label>
     <Select.Control>
       <Select.Trigger>
@@ -31,7 +23,7 @@ const value = ref(['vue'])
         <Select.Content>
           <Select.ItemGroup id="framework">
             <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in basicItems" :key="item" :item="item">
+            <Select.Item v-for="item in items" :key="item" :item="item">
               <Select.ItemText>{{ item }}</Select.ItemText>
               <Select.ItemIndicator>✓</Select.ItemIndicator>
             </Select.Item>

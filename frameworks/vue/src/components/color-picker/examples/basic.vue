@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ColorPicker } from '../..'
-
-const value = ref('hsl(20, 100%, 50%)')
 </script>
 
 <template>

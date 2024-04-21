@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { Menu } from '../..'
 </script>
 
@@ -18,4 +18,4 @@ import { Menu } from '../..'
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
-</template>
+</template> -->

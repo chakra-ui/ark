@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { ref } from 'vue'
 import { Menu } from '../..'
 
@@ -22,4 +22,4 @@ const value = ref({
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
-</template>
+</template> -->
