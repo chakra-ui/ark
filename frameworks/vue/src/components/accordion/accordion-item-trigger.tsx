@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
+import { useCollapsibleContext } from '../collapsible'
 import { type HTMLArkProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
@@ -10,11 +10,11 @@ export const AccordionItemTrigger = defineComponent<AccordionItemTriggerProps>(
   (_, { attrs, slots }) => {
     const accordion = useAccordionContext()
     const itemProps = useAccordionItemPropsContext()
-    const presenceApi = usePresenceContext()
+    const collapsible = useCollapsibleContext()
     const triggerProps = computed(() => accordion.value.getItemTriggerProps(itemProps))
 
     const ariaProps = computed(() => ({
-      'aria-controls': presenceApi.value.isUnmounted
+      'aria-controls': collapsible.value.isUnmounted
         ? undefined
         : triggerProps.value['aria-controls'],
     }))

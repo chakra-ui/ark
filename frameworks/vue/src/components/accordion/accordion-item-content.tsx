@@ -1,6 +1,6 @@
-import { defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../factory'
-import { usePresenceContext } from '../presence'
+import { computed, defineComponent } from 'vue'
+import { Collapsible } from '../..'
+import type { HTMLArkProps } from '../factory'
 import { emits } from '../presence/presence.props'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
@@ -11,14 +11,16 @@ export const AccordionItemContent = defineComponent<AccordionItemContentProps>(
   (_, { slots, attrs }) => {
     const accordion = useAccordionContext()
     const itemProps = useAccordionItemPropsContext()
-    const presenceApi = usePresenceContext()
+    const contentProps = computed(() => {
+      const { hidden: _, ...itemContentProps } = accordion.value.getItemContentProps(itemProps)
+      return itemContentProps
+    })
 
-    return () =>
-      presenceApi.value.isUnmounted ? null : (
-        <ark.div {...accordion.value.getItemContentProps(itemProps)} {...attrs}>
-          {slots.default?.()}
-        </ark.div>
-      )
+    return () => (
+      <Collapsible.Content {...contentProps.value} {...attrs}>
+        {slots.default?.()}
+      </Collapsible.Content>
+    )
   },
   {
     name: 'AccordionItemContent',

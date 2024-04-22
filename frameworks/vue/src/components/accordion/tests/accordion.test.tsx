@@ -1,6 +1,6 @@
 import { accordionAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import { Accordion } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './accordion.test.vue'
@@ -159,7 +159,7 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
     await user.click(button)
 
-    expect(screen.queryByText('React Content')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeVisible())
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
@@ -186,6 +186,6 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
     await user.click(button)
 
-    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
   })
 })
