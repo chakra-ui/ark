@@ -8,7 +8,7 @@ import { createSplitProps } from '../../utils/create-split-props'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {}
+    Omit<Optional<combobox.Context<T>, 'id'>, 'collection' | 'open.controlled'> {}
 
 export interface UseComboboxReturn<T extends CollectionItem>
   extends Accessor<combobox.Api<PropTypes, T>> {}

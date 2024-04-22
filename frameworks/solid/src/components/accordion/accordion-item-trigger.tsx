@@ -15,5 +15,5 @@ export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
   const mergedProps = mergeProps(() => accordion().getItemTriggerProps(itemProps), props)
   const [ariaControls, buttonProps] = splitProps(mergedProps, ['aria-controls'])
 
-  return <ark.button {...buttonProps} {...(!collapsible().isUnmounted && ariaControls)} />
+  return <ark.button {...buttonProps} {...(!collapsible().unmounted && ariaControls)} />
 }

@@ -12,7 +12,7 @@ export const SelectPositioner = (props: SelectPositionerProps) => {
   const mergedProps = mergeProps(() => select().positionerProps, props)
 
   return (
-    <Show when={!presenceApi().isUnmounted}>
+    <Show when={!presenceApi().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

@@ -18,18 +18,18 @@ export const usePresence = (props: UsePresenceProps) => {
   const api = createMemo(() => presence.connect(state, send, normalizeProps))
 
   createEffect(() => {
-    const isPresent = api().isPresent
-    if (isPresent) setWasEverPresent(true)
+    const present = api().present
+    if (present) setWasEverPresent(true)
   })
 
   return createMemo(() => ({
-    isUnmounted:
-      (!api().isPresent && !wasEverPresent() && renderStrategyProps.lazyMount) ||
-      (renderStrategyProps.unmountOnExit && !api().isPresent && wasEverPresent()),
-    isPresent: api().isPresent,
+    unmounted:
+      (!api().present && !wasEverPresent() && renderStrategyProps.lazyMount) ||
+      (renderStrategyProps.unmountOnExit && !api().present && wasEverPresent()),
+    present: api().present,
     presenceProps: {
       ref: api().setNode,
-      hidden: !api().isPresent,
+      hidden: !api().present,
       'data-state': context.present ? 'open' : 'closed',
     },
   }))

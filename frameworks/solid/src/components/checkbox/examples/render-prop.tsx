@@ -5,8 +5,8 @@ export const RenderProp = () => (
     <Checkbox.Context>
       {(context) => (
         <Checkbox.Control>
-          {context().isChecked && <span>✓</span>}
-          {context().isIndeterminate && <span>-</span>}
+          {context().checked && <span>✓</span>}
+          {context().indeterminate && <span>-</span>}
         </Checkbox.Control>
       )}
     </Checkbox.Context>

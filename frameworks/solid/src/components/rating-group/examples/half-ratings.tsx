@@ -13,9 +13,9 @@ export const HalfRatings = () => (
               <RatingGroup.Item index={index()}>
                 <RatingGroup.ItemContext>
                   {(context) =>
-                    context().isHalf ? (
+                    context().half ? (
                       <StarHalfIcon fill="current" />
-                    ) : context().isHighlighted ? (
+                    ) : context().highlighted ? (
                       <StarIcon fill="current" />
                     ) : (
                       <StarIcon />

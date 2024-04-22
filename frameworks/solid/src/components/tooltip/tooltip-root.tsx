@@ -34,7 +34,7 @@ export const TooltipRoot = (props: TooltipRootProps) => {
   ])
 
   const api = useTooltip(useTooltipProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
 
   return (
     <TooltipProvider value={api}>

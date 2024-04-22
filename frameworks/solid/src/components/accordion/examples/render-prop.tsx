@@ -11,7 +11,9 @@ export const RenderProp = () => {
             <Accordion.ItemContext>
               {(api) => (
                 <>
-                  <Accordion.ItemTrigger>{api().isOpen ? 'Close' : 'Open'}</Accordion.ItemTrigger>
+                  <Accordion.ItemTrigger>
+                    {api().expanded ? 'Expanded' : 'Open'}
+                  </Accordion.ItemTrigger>
                   <Accordion.ItemContent>{item()} content</Accordion.ItemContent>
                 </>
               )}

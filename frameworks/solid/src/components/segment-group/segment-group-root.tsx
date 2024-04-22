@@ -19,6 +19,7 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
     'name',
     'onValueChange',
     'orientation',
+    'readOnly',
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)

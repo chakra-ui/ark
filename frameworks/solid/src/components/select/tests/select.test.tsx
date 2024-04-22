@@ -19,7 +19,7 @@ describe('Select', () => {
 
   it.skip('should handle item selection', async () => {
     render(() => <ComponentUnderTest />)
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
 
     const item = screen.getByText('React', { ignore: 'option' })
@@ -30,7 +30,7 @@ describe('Select', () => {
   it('should close on select', async () => {
     render(() => <ComponentUnderTest />)
 
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
     fireEvent.click(trigger)
 
     const item = screen.getByText('React', { ignore: 'option' })
@@ -41,14 +41,14 @@ describe('Select', () => {
 
   it('should be disabled when disabled is true', async () => {
     render(() => <ComponentUnderTest disabled />)
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
 
     expect(trigger).toBeDisabled()
   })
 
   it('should handle multiple selection', async () => {
     render(() => <ComponentUnderTest multiple />)
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
     const itemReact = screen.getByText('React', { ignore: 'option' })
     const itemVue = screen.getByText('Vue', { ignore: 'option' })
@@ -61,7 +61,7 @@ describe('Select', () => {
     const onValueChange = vi.fn()
     render(() => <ComponentUnderTest onValueChange={onValueChange} />)
 
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
 
     const item = screen.getByText('React', { ignore: 'option' })
@@ -75,14 +75,14 @@ describe('Select', () => {
   it('should open menu when onOpenChange is called', async () => {
     const onOpenChange = vi.fn()
     render(() => <ComponentUnderTest onOpenChange={onOpenChange} />)
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
     await waitFor(() => expect(onOpenChange).toHaveBeenCalledTimes(1))
   })
 
   it('should be read-only when readOnly is true', async () => {
     render(() => <ComponentUnderTest readOnly />)
-    const trigger = screen.getByRole('button', { name: 'Framework' })
+    const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
     await waitFor(() => expect(screen.queryByText('React', { ignore: 'option' })).not.toBeVisible())
   })
@@ -91,7 +91,7 @@ describe('Select', () => {
     render(() => <ComponentUnderTest lazyMount />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Framework' }))
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
@@ -99,10 +99,10 @@ describe('Select', () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Framework' }))
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: 'Framework' }))
+    await user.click(screen.getByRole('combobox', { name: 'Framework' }))
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   })
 })

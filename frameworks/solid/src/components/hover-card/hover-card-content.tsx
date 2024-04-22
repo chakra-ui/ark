@@ -16,7 +16,7 @@ export const HoverCardContent = (props: HoverCardContentProps) => {
   )
 
   return (
-    <Show when={!presenceApi().isUnmounted}>
+    <Show when={!presenceApi().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

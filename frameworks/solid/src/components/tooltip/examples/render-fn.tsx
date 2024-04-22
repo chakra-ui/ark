@@ -8,7 +8,7 @@ export const RenderFn = () => (
       <Tooltip.Positioner>
         <Tooltip.Context>
           {(context) => (
-            <Tooltip.Content>This tooltip is open: {context().isOpen.toString()}</Tooltip.Content>
+            <Tooltip.Content>This tooltip is open: {context().open.toString()}</Tooltip.Content>
           )}
         </Tooltip.Context>
       </Tooltip.Positioner>

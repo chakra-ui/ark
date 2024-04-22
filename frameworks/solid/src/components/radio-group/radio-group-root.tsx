@@ -18,6 +18,7 @@ export const RadioGroupRoot = (props: RadioGroupRootProps) => {
     'name',
     'onValueChange',
     'orientation',
+    'readOnly',
     'value',
   ])
 

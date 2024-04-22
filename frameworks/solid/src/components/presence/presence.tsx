@@ -13,7 +13,7 @@ export const Presence = (props: PresenceProps) => {
   const mergedProps = mergeProps(() => api().presenceProps, localProps)
 
   return (
-    <Show when={!api().isUnmounted}>
+    <Show when={!api().unmounted}>
       <ark.div {...mergedProps} data-scope="presence" data-part="root" />
     </Show>
   )

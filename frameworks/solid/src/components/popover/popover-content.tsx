@@ -16,7 +16,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
   )
 
   return (
-    <Show when={!presenceApi().isUnmounted}>
+    <Show when={!presenceApi().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

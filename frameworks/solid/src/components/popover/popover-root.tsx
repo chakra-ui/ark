@@ -36,7 +36,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'positioning',
   ])
   const api = usePopover(usePopoverProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
 
   return (
     <PopoverProvider value={api}>

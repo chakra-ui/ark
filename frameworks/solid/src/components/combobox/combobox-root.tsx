@@ -23,8 +23,10 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'closeOnSelect',
     'dir',
     'disabled',
+    'dismissable',
     'form',
     'getRootNode',
+    'getSelectionValue',
     'highlightedValue',
     'id',
     'ids',
@@ -35,7 +37,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'items',
     'itemToString',
     'itemToValue',
-    'loop',
+    'loopFocus',
     'multiple',
     'name',
     'onFocusOutside',
@@ -46,18 +48,22 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'onOpenChange',
     'onPointerDownOutside',
     'onValueChange',
+    'open',
+    'openOnChange',
     'openOnClick',
+    'openOnKeyPress',
     'placeholder',
+    'popup',
     'positioning',
     'readOnly',
+    'scrollToIndexFn',
     'selectionBehavior',
-    'selectOnBlur',
     'translations',
     'value',
   ])
 
   const api = useCombobox(useComboboxProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (

@@ -12,7 +12,7 @@ export const DatePickerPositioner = (props: DatePickerPositionerProps) => {
   const mergedProps = mergeProps(() => api().positionerProps, props)
 
   return (
-    <Show when={!presenceApi().isUnmounted}>
+    <Show when={!presenceApi().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

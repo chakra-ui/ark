@@ -50,7 +50,7 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
     'view',
   ])
   const api = useDatePicker(useDatePickerProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
   const mergedProps = mergeProps(() => api().rootProps, localProps)
 
   return (
