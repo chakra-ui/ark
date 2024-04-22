@@ -11,7 +11,7 @@ export const MenuItemIndicator = defineComponent<MenuItemIndicatorProps>(
     const optionItemProps = useMenuOptionItemPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemIndicatorProps(optionItemProps)} {...attrs}>
+      <ark.div {...api.value.getItemIndicatorProps(optionItemProps.value)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )

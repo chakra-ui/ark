@@ -1,23 +1,30 @@
 import type { OptionItemProps } from '@zag-js/menu'
-import { type PropType, computed, defineComponent } from 'vue'
+import { type ComputedRef, type PropType, computed, defineComponent } from 'vue'
 import type { Assign } from '../../types'
 import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
-export interface MenuCheckboxItemProps extends Assign<HTMLArkProps<'div'>, OptionItemProps> {}
+export interface MenuCheckboxItemProps
+  extends Assign<HTMLArkProps<'div'>, Omit<OptionItemProps, 'type'>> {}
 
 export const MenuCheckboxItem = defineComponent<MenuCheckboxItemProps>(
-  (props, { slots, attrs }) => {
+  (props, { slots, attrs, emit }) => {
+    const context: ComputedRef<OptionItemProps> = computed(() => ({
+      ...props,
+      type: 'checkbox',
+      onCheckedChange: (e) => emit('update:checked', e),
+    }))
+
     const menu = useMenuContext()
-    const item = computed(() => menu.value.getItemState(props))
+    const item = computed(() => menu.value.getOptionItemState(context.value))
 
     MenuItemProvider(item)
-    MenuOptionItemPropsProvider(props)
+    MenuOptionItemPropsProvider(context)
 
     return () => (
-      <ark.div {...menu.value.getOptionItemProps(props)} {...attrs}>
+      <ark.div {...menu.value.getOptionItemProps(context.value)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
@@ -25,14 +32,17 @@ export const MenuCheckboxItem = defineComponent<MenuCheckboxItemProps>(
   {
     name: 'MenuCheckboxItem',
     props: {
-      checked: {},
+      checked: {
+        type: Boolean as PropType<OptionItemProps['checked']>,
+        default: false,
+      },
+      closeOnSelect: {
+        type: Boolean as PropType<OptionItemProps['closeOnSelect']>,
+        default: undefined,
+      },
       disabled: {
         type: Boolean as PropType<OptionItemProps['disabled']>,
         default: undefined,
-      },
-      type: {
-        type: String as PropType<OptionItemProps['type']>,
-        default: 'checkbox',
       },
       value: {
         type: String as PropType<OptionItemProps['value']>,
@@ -42,10 +52,7 @@ export const MenuCheckboxItem = defineComponent<MenuCheckboxItemProps>(
         type: String as PropType<OptionItemProps['valueText']>,
         default: undefined,
       },
-      closeOnSelect: {
-        type: Boolean as PropType<OptionItemProps['closeOnSelect']>,
-        default: undefined,
-      },
     },
+    emits: ['update:checked'],
   },
 )

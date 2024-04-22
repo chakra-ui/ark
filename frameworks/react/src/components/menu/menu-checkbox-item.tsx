@@ -27,12 +27,12 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps
     type: 'checkbox',
   }
   const menu = useMenuContext()
+  const item = menu.getOptionItemState(optionItemProps)
   const mergedProps = mergeProps(menu.getOptionItemProps(optionItemProps), localProps)
-  const itemState = menu.getItemState(optionItemProps)
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>
-      <MenuItemProvider value={itemState}>
+      <MenuItemProvider value={item}>
         <ark.div {...mergedProps} ref={ref} />
       </MenuItemProvider>
     </MenuOptionItemPropsProvider>

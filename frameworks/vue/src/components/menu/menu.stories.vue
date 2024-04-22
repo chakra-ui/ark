@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Checkbox from './examples/checkbox.vue'
 import Context from './examples/context.vue'
 import Controlled from './examples/controlled.vue'
 import Group from './examples/group.vue'
@@ -24,12 +25,14 @@ import Separator from './examples/separator.vue'
     <Variant title="Context">
       <Context />
     </Variant>
-
     <Variant title="RenderProp">
       <RenderProp />
     </Variant>
     <Variant title="Nested">
       <Nested />
+    </Variant>
+    <Variant title="Checkbox">
+      <Checkbox />
     </Variant>
   </Story>
 </template>
