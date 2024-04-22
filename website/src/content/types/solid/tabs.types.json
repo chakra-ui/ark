@@ -1,6 +1,6 @@
 {
   "TabContent": {
-    "value": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -22,13 +22,17 @@
     }
   },
   "TabTrigger": {
-    "value": { "type": "string", "isRequired": true },
+    "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "disabled": { "type": "boolean", "isRequired": false }
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tab is disabled"
+    }
   },
   "Root": {
     "activationMode": {
@@ -74,7 +78,7 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "loop": {
+    "loopFocus": {
       "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,

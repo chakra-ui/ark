@@ -215,7 +215,7 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "loop": {
+    "loopFocus": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation."
@@ -270,6 +270,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the node is present (controlled by the user)"
+    },
+    "typeahead": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the pressing printable characters should trigger typeahead navigation"
     },
     "unmountOnExit": {
       "type": "boolean",

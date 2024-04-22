@@ -73,7 +73,7 @@
       "description": "The associate form of the underlying input element."
     },
     "getAriaValueText": {
-      "type": "(value: number, index: number) => string",
+      "type": "(details: ValueTextDetails) => string",
       "isRequired": false,
       "description": "Function that returns a human readable value for the slider thumb"
     },

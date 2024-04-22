@@ -29,7 +29,7 @@
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
-      "description": "If `true`, the checkbox will be checked."
+      "description": "The checked state of the checkbox"
     },
     "defaultChecked": {
       "type": "CheckedState",
@@ -45,7 +45,7 @@
     "disabled": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the checkbox will be disabled"
+      "description": "Whether the checkbox is disabled"
     },
     "form": {
       "type": "string",
@@ -70,22 +70,27 @@
     "invalid": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the checkbox is marked as invalid."
+      "description": "Whether the checkbox is invalid"
     },
     "name": {
       "type": "string",
       "isRequired": false,
-      "description": "The name of the input field in a checkbox. Useful for form submission."
+      "description": "The name of the input field in a checkbox.\nUseful for form submission."
     },
     "onCheckedChange": {
       "type": "(details: CheckedChangeDetails) => void",
       "isRequired": false,
-      "description": "The callback invoked when the checked state of the `Checkbox` changes."
+      "description": "The callback invoked when the checked state changes."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the checkbox is read-only"
     },
     "required": {
       "type": "boolean",
       "isRequired": false,
-      "description": "If `true`, the checkbox input is marked as required,"
+      "description": "Whether the checkbox is required"
     },
     "value": {
       "type": "string",
