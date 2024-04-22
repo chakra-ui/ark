@@ -9,13 +9,15 @@ const size = ref([
 </script>
 
 <template>
-  <Splitter.Root :size="size" v-slot="api">
-    <Splitter.Panel id="a">
-      <button @click="api.setSize('a', 10)">Set A to 10%</button>
-    </Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b" />
-    <Splitter.Panel id="b">
-      <button @click="api.setSize('b', 10)">Set B to 10%</button>
-    </Splitter.Panel>
+  <Splitter.Root :size="size">
+    <Splitter.Context v-slot="splitter">
+      <Splitter.Panel id="a">
+        <button @click="splitter.setSize('a', 10)">Set A to 10%</button>
+      </Splitter.Panel>
+      <Splitter.ResizeTrigger id="a:b" />
+      <Splitter.Panel id="b">
+        <button @click="splitter.setSize('b', 10)">Set B to 10%</button>
+      </Splitter.Panel>
+    </Splitter.Context>
   </Splitter.Root>
 </template>

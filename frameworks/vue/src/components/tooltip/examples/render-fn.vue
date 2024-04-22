@@ -3,10 +3,12 @@ import { Tooltip } from '../..'
 </script>
 
 <template>
-  <Tooltip.Root v-slot="{ isOpen }">
-    <Tooltip.Trigger>Hover Me, isOpen {{ isOpen.toString() }}</Tooltip.Trigger>
+  <Tooltip.Root>
+    <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Tooltip.Positioner>
-      <Tooltip.Content>This tooltip is open: {{ isOpen.toString() }}</Tooltip.Content>
+      <Tooltip.Context v-slot="tooltip">
+        <Tooltip.Content>This tooltip is open: {{ tooltip.isOpen.toString() }}</Tooltip.Content>
+      </Tooltip.Context>
     </Tooltip.Positioner>
   </Tooltip.Root>
 </template>

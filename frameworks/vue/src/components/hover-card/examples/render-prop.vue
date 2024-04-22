@@ -3,8 +3,10 @@ import { HoverCard } from '../..'
 </script>
 
 <template>
-  <HoverCard.Root v-slot="api">
-    <HoverCard.Trigger>Hover me {{ api.isOpen ? '▲' : '▼' }}</HoverCard.Trigger>
+  <HoverCard.Root>
+    <HoverCard.Context v-slot="hoverCard">
+      <HoverCard.Trigger>Hover me {{ hoverCard.isOpen ? '▲' : '▼' }}</HoverCard.Trigger>
+    </HoverCard.Context>
     <Teleport to="body">
       <HoverCard.Positioner>
         <HoverCard.Content>

@@ -4,13 +4,15 @@ import { CheckIcon, ClipboardCopyIcon } from './icons'
 </script>
 
 <template>
-  <Clipboard.Root v-slot="api" value="https.//ark-ui.com">
+  <Clipboard.Root value="https.//ark-ui.com">
     <Clipboard.Label>Copy this link</Clipboard.Label>
     <Clipboard.Control>
       <Clipboard.Input />
       <Clipboard.Trigger>
-        <CheckIcon v-if="api.isCopied" />
-        <ClipboardCopyIcon v-else />
+        <Clipboard.Context v-slot="{ isCopied }">
+          <CheckIcon v-if="isCopied" />
+          <ClipboardCopyIcon v-else />
+        </Clipboard.Context>
       </Clipboard.Trigger>
     </Clipboard.Control>
   </Clipboard.Root>

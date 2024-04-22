@@ -3,11 +3,11 @@ import { ref } from 'vue'
 import { Accordion } from '../..'
 import { ChevronDownIcon } from './icons'
 
-const items = ref(['React'])
+const items = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-  <Accordion.Root lazyMount>
+  <Accordion.Root>
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemTrigger>
         What is {{ item }}?

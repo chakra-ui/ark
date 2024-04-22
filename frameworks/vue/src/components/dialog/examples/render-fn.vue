@@ -4,7 +4,7 @@ import { Dialog } from '../..'
 </script>
 
 <template>
-  <Dialog.Root v-slot="api">
+  <Dialog.Root>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Teleport to="body">
       <Dialog.Backdrop />
@@ -16,6 +16,8 @@ import { Dialog } from '../..'
         </Dialog.Content>
       </Dialog.Positioner>
     </Teleport>
-    <p>Dialog is {{ api.isOpen ? 'open' : 'closed' }}</p>
+    <Dialog.Context v-slot="dialog">
+      <p>Dialog is {{ dialog.isOpen ? 'open' : 'closed' }}</p>
+    </Dialog.Context>
   </Dialog.Root>
 </template>

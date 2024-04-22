@@ -8,18 +8,20 @@ import { FileUpload } from '../..'
       <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
     </FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
-    <FileUpload.ItemGroup v-slot="files">
-      <FileUpload.Item v-for="file in files" :file="file" :key="file">
-        <FileUpload.ItemPreview type="image/*">
-          <FileUpload.ItemPreviewImage />
-        </FileUpload.ItemPreview>
-        <FileUpload.ItemPreview type=".*">
-          <div>Generic Icon</div>
-        </FileUpload.ItemPreview>
-        <FileUpload.ItemName />
-        <FileUpload.ItemSizeText />
-        <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
-      </FileUpload.Item>
+    <FileUpload.ItemGroup>
+      <FileUpload.Context v-slot="{ acceptedFiles }">
+        <FileUpload.Item v-for="file in acceptedFiles" :file="file" :key="file.name">
+          <FileUpload.ItemPreview type="image/*">
+            <FileUpload.ItemPreviewImage />
+          </FileUpload.ItemPreview>
+          <FileUpload.ItemPreview type=".*">
+            <div>Generic Icon</div>
+          </FileUpload.ItemPreview>
+          <FileUpload.ItemName />
+          <FileUpload.ItemSizeText />
+          <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
+        </FileUpload.Item>
+      </FileUpload.Context>
     </FileUpload.ItemGroup>
   </FileUpload.Root>
 </template>

@@ -3,14 +3,15 @@ import { NumberInput } from '../..'
 </script>
 
 <template>
-  <NumberInput.Root v-slot="{ valueAsNumber }">
+  <NumberInput.Root>
     <NumberInput.Scrubber />
-    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Context v-slot="numberInput">
+      <NumberInput.Label>Label {{ numberInput.valueAsNumber }}</NumberInput.Label>
+    </NumberInput.Context>
     <NumberInput.Input />
     <NumberInput.Control>
       <NumberInput.DecrementTrigger>-1</NumberInput.DecrementTrigger>
       <NumberInput.IncrementTrigger>+1</NumberInput.IncrementTrigger>
     </NumberInput.Control>
-    <div>Value: {{ valueAsNumber }}</div>
   </NumberInput.Root>
 </template>
