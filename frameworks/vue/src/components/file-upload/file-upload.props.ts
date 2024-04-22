@@ -48,4 +48,4 @@ export const props = {
     type: Function as PropType<Context['validate']>,
   },
 }
-export const emits = declareEmits(['file-accept', 'file-reject', 'files-change'])
+export const emits = declareEmits(['file-accept', 'file-reject', 'file-change'])
