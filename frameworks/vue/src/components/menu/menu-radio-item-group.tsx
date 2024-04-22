@@ -22,8 +22,8 @@ export const MenuRadioItemGroup = defineComponent<MenuRadioItemGroupProps>(
     const id = useId()
     const itemGroupProps: UseMenuItemGroupContext = computed(() => ({
       id: props.id ? props.id : id.value,
-      value: props.value,
-      onValueChange: (e) => emit('update:value', e.value),
+      value: props.modelValue,
+      onValueChange: (e) => emit('update:modelValue', e.value),
     }))
     MenuItemGroupProvider(itemGroupProps)
 
@@ -42,10 +42,7 @@ export const MenuRadioItemGroup = defineComponent<MenuRadioItemGroupProps>(
       modelValue: {
         type: String as PropType<MenuRadioItemGroupProps['value']>,
       },
-      value: {
-        type: String as PropType<MenuRadioItemGroupProps['value']>,
-      },
     },
-    emits: ['update:value'],
+    emits: ['update:modelValue'],
   },
 )
