@@ -2,9 +2,9 @@
 import Basic from './examples/basic.vue'
 </script>
 <template>
-<Story title="Format">
+  <Story title="Format">
     <Variant title="Basic">
       <Basic />
     </Variant>
-</Story>
+  </Story>
 </template>

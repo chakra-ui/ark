@@ -7,7 +7,7 @@ import RenderFn from './examples/render-fn.vue'
 import Timings from './examples/timings.vue'
 </script>
 <template>
-<Story title="Tooltip">
+  <Story title="Tooltip">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -26,5 +26,5 @@ import Timings from './examples/timings.vue'
     <Variant title="Positioning">
       <Positioning />
     </Variant>
-</Story>
+  </Story>
 </template>

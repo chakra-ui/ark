@@ -9,7 +9,7 @@ import Vertical from './examples/vertical.vue'
 import WithMarks from './examples/with-marks.vue'
 </script>
 <template>
-<Story title="Slider">
+  <Story title="Slider">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -34,5 +34,5 @@ import WithMarks from './examples/with-marks.vue'
     <Variant title="CenterOrigin">
       <CenterOrigin />
     </Variant>
-</Story>
+  </Story>
 </template>

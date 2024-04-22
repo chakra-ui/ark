@@ -8,7 +8,7 @@ import RenderProp from './examples/render-prop.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
-<Story title="Accordion">
+  <Story title="Accordion">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -30,5 +30,5 @@ import Vertical from './examples/vertical.vue'
     <Variant title="Disabled">
       <Disabled />
     </Variant>
-</Story>
+  </Story>
 </template>

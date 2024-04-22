@@ -5,7 +5,8 @@ import { Popover } from '../..'
 <template>
   <Popover.Root portalled>
     <Popover.Trigger>
-      Click Me <Popover.Indicator>{{ '>' }}</Popover.Indicator>
+      Click Me
+      <Popover.Indicator>{{ '>' }}</Popover.Indicator>
     </Popover.Trigger>
     <Popover.Positioner>
       <Popover.Content>

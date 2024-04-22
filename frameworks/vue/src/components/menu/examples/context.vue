@@ -13,4 +13,4 @@ import { Menu } from '../..'
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>
-</template> 
+</template>

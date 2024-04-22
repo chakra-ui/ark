@@ -5,7 +5,7 @@ import RenderProp from './examples/render-prop.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
-<Story title="Splitter">
+  <Story title="Splitter">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import Vertical from './examples/vertical.vue'
     <Variant title="Vertical">
       <Vertical />
     </Variant>
-</Story>
+  </Story>
 </template>

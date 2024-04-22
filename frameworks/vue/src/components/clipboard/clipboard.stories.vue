@@ -3,12 +3,12 @@ import Basic from './examples/basic.vue'
 import RenderFn from './examples/render-fn.vue'
 </script>
 <template>
-<Story title="Clipboard">
+  <Story title="Clipboard">
     <Variant title="Basic">
       <Basic />
     </Variant>
     <Variant title="RenderFn">
       <RenderFn />
     </Variant>
-</Story>
+  </Story>
 </template>

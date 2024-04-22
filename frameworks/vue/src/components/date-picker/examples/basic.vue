@@ -26,9 +26,9 @@ import { DatePicker } from '../..'
             <DatePicker.Table>
               <DatePicker.TableHead>
                 <DatePicker.TableRow>
-                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">{{
-                    weekDay.short
-                  }}</DatePicker.TableHeader>
+                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">
+                    {{ weekDay.short }}
+                  </DatePicker.TableHeader>
                 </DatePicker.TableRow>
               </DatePicker.TableHead>
               <DatePicker.TableBody>

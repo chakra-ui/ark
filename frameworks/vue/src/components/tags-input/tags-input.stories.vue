@@ -9,7 +9,7 @@ import PasteBehavior from './examples/paste-behavior.vue'
 import Validated from './examples/validated.vue'
 </script>
 <template>
-<Story title="TagsInput">
+  <Story title="TagsInput">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -34,5 +34,5 @@ import Validated from './examples/validated.vue'
     <Variant title="OnEvent">
       <OnEvent />
     </Variant>
-</Story>
+  </Story>
 </template>

@@ -5,7 +5,7 @@ import LazyMount from './examples/lazy-mount.vue'
 import UnmountOnExit from './examples/unmount-on-exit.vue'
 </script>
 <template>
-<Story title="Presence">
+  <Story title="Presence">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import UnmountOnExit from './examples/unmount-on-exit.vue'
     <Variant title="LazyMountAndUnmountOnExit">
       <LazyMountAndUnmountOnExit />
     </Variant>
-</Story>
+  </Story>
 </template>

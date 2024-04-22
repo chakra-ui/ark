@@ -4,7 +4,7 @@ import Controlled from './examples/controlled.vue'
 import Customized from './examples/customized.vue'
 </script>
 <template>
-<Story title="Carousel">
+  <Story title="Carousel">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -14,5 +14,5 @@ import Customized from './examples/customized.vue'
     <Variant title="Customized">
       <Customized />
     </Variant>
-</Story>
+  </Story>
 </template>

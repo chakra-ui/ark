@@ -5,7 +5,7 @@ import LazyMount from './examples/lazy-mount.vue'
 import RenderFn from './examples/render-fn.vue'
 </script>
 <template>
-<Story title="Dialog">
+  <Story title="Dialog">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import RenderFn from './examples/render-fn.vue'
     <Variant title="RenderFn">
       <RenderFn />
     </Variant>
-</Story>
+  </Story>
 </template>

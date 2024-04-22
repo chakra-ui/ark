@@ -5,7 +5,8 @@ import { Popover } from '../..'
 <template>
   <Popover.Root @open-change="(open) => console.log(open ? 'opened' : 'closed')">
     <Popover.Trigger>
-      Click Me <Popover.Indicator>{{ '>' }}</Popover.Indicator>
+      Click Me
+      <Popover.Indicator>{{ '>' }}</Popover.Indicator>
     </Popover.Trigger>
     <Popover.Positioner>
       <Popover.Content>

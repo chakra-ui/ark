@@ -17,12 +17,13 @@ const items = ref([
         :key="idx"
         :value="item.value"
         :disabled="item.disabled"
-        >{{ item.value }} Trigger</Tabs.Trigger
       >
+        {{ item.value }} Trigger
+      </Tabs.Trigger>
       <Tabs.Indicator />
     </Tabs.List>
     <Tabs.Content v-for="(item, idx) in items" :key="idx" :value="item.value">
-      {{ item.value }} Content</Tabs.Content
-    >
+      {{ item.value }} Content
+    </Tabs.Content>
   </Tabs.Root>
 </template>

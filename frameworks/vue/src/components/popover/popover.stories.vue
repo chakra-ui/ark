@@ -10,7 +10,7 @@ import Positioning from './examples/positioning.vue'
 import RenderFn from './examples/render-fn.vue'
 </script>
 <template>
-<Story title="Popover">
+  <Story title="Popover">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -38,5 +38,5 @@ import RenderFn from './examples/render-fn.vue'
     <Variant title="Modal">
       <Modal />
     </Variant>
-</Story>
+  </Story>
 </template>

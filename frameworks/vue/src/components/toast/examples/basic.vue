@@ -27,9 +27,7 @@ const createToast = () => {
       <ToastTitle>{{ toast.title }}</ToastTitle>
       <ToastDescription>{{ toast.description }}</ToastDescription>
       <ToastActionTrigger>Action</ToastActionTrigger>
-      <ToastCloseTrigger>
-        Close
-      </ToastCloseTrigger>
+      <ToastCloseTrigger>Close</ToastCloseTrigger>
     </ToastRoot>
   </Toaster>
 </template>

@@ -6,7 +6,7 @@ import InitialValue from './examples/initial-value.vue'
 import RenderProp from './examples/render-prop.vue'
 </script>
 <template>
-<Story title="Switch">
+  <Story title="Switch">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -22,5 +22,5 @@ import RenderProp from './examples/render-prop.vue'
     <Variant title="RenderProp">
       <RenderProp />
     </Variant>
-</Story>
+  </Story>
 </template>

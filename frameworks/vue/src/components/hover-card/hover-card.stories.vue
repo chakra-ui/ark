@@ -5,7 +5,7 @@ import Positioning from './examples/positioning.vue'
 import RenderProp from './examples/render-prop.vue'
 </script>
 <template>
-<Story title="HoverCard">
+  <Story title="HoverCard">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import RenderProp from './examples/render-prop.vue'
     <Variant title="RenderProp">
       <RenderProp />
     </Variant>
-</Story>
+  </Story>
 </template>

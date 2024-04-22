@@ -10,7 +10,8 @@
     "document:types": "bun run src/generate-type-docs.ts",
     "release:prepare": "bun run src/release-prepare.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
-    "play": "bun run src/play.ts"
+    "play": "bun run src/play.ts",
+    "format:vue": "prettier --write '../frameworks/vue/src/**/*.vue'"
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",

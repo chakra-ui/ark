@@ -5,7 +5,7 @@ import InitialValue from './examples/initial-value.vue'
 import OnEvent from './examples/on-event.vue'
 </script>
 <template>
-<Story title="RadioGroup">
+  <Story title="RadioGroup">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import OnEvent from './examples/on-event.vue'
     <Variant title="OnEvent">
       <OnEvent />
     </Variant>
-</Story>
+  </Story>
 </template>

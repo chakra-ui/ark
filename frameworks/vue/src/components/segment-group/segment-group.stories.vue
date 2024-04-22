@@ -5,7 +5,7 @@ import Disabled from './examples/disabled.vue'
 import InitialValue from './examples/initial-value.vue'
 </script>
 <template>
-<Story title="SegmentGroup">
+  <Story title="SegmentGroup">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import InitialValue from './examples/initial-value.vue'
     <Variant title="Disabled">
       <Disabled />
     </Variant>
-</Story>
+  </Story>
 </template>

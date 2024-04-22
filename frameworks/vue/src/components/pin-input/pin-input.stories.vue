@@ -7,7 +7,7 @@ import OTPMode from './examples/o-tp-mode.vue'
 import WithMask from './examples/with-mask.vue'
 </script>
 <template>
-<Story title="PinInput">
+  <Story title="PinInput">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -26,5 +26,5 @@ import WithMask from './examples/with-mask.vue'
     <Variant title="WithMask">
       <WithMask />
     </Variant>
-</Story>
+  </Story>
 </template>

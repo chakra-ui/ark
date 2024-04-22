@@ -15,7 +15,9 @@ const items = ref(['React'])
           <ChevronDownIcon />
         </Accordion.ItemIndicator>
       </Accordion.ItemTrigger>
-      <Accordion.ItemContent>{{ item }} is a JavaScript library for building user interfaces.</Accordion.ItemContent>
+      <Accordion.ItemContent>
+        {{ item }} is a JavaScript library for building user interfaces.
+      </Accordion.ItemContent>
     </Accordion.Item>
   </Accordion.Root>
 </template>

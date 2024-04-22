@@ -8,6 +8,6 @@ const isPresent = ref(false)
 <template>
   <div>
     <button @click="isPresent = !isPresent">Toggle</button>
-    <Presence :present="isPresent" unmountOnExit>Hidden and Unmounted on Exit </Presence>
+    <Presence :present="isPresent" unmountOnExit>Hidden and Unmounted on Exit</Presence>
   </div>
 </template>

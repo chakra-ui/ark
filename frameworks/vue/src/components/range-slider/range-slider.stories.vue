@@ -9,7 +9,7 @@ import Vertical from './examples/vertical.vue'
 import WithMarks from './examples/with-marks.vue'
 </script>
 <template>
-<Story title="RangeSlider">
+  <Story title="RangeSlider">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -34,5 +34,5 @@ import WithMarks from './examples/with-marks.vue'
     <Variant title="ThumbOverlap">
       <ThumbOverlap />
     </Variant>
-</Story>
+  </Story>
 </template>

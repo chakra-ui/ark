@@ -5,7 +5,8 @@ import { Menu } from '../..'
 <template>
   <Menu.Root>
     <Menu.Trigger>
-      Open menu <Menu.Indicator>➡️</Menu.Indicator>
+      Open menu
+      <Menu.Indicator>➡️</Menu.Indicator>
     </Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>

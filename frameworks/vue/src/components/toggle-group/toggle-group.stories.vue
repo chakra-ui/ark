@@ -4,7 +4,7 @@ import InitialValue from './examples/initial-value.vue'
 import Multiple from './examples/multiple.vue'
 </script>
 <template>
-<Story title="ToggleGroup">
+  <Story title="ToggleGroup">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -14,5 +14,5 @@ import Multiple from './examples/multiple.vue'
     <Variant title="Multiple">
       <Multiple />
     </Variant>
-</Story>
+  </Story>
 </template>

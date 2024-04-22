@@ -2,9 +2,9 @@
 import Basic from './examples/basic.vue'
 </script>
 <template>
-<Story title="FileUpload">
+  <Story title="FileUpload">
     <Variant title="Basic">
       <Basic />
     </Variant>
-</Story>
+  </Story>
 </template>

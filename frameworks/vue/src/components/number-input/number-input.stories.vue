@@ -10,7 +10,7 @@ import RenderFn from './examples/render-fn.vue'
 import Scrubber from './examples/scrubber.vue'
 </script>
 <template>
-<Story title="NumberInput">
+  <Story title="NumberInput">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -38,5 +38,5 @@ import Scrubber from './examples/scrubber.vue'
     <Variant title="RenderFn">
       <RenderFn />
     </Variant>
-</Story>
+  </Story>
 </template>

@@ -9,7 +9,7 @@ import Manual from './examples/manual.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
-<Story title="Tabs">
+  <Story title="Tabs">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -34,5 +34,5 @@ import Vertical from './examples/vertical.vue'
     <Variant title="Manual">
       <Manual />
     </Variant>
-</Story>
+  </Story>
 </template>

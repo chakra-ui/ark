@@ -12,12 +12,12 @@ import { DatePicker } from '../'
     </DatePicker.Control>
     <DatePicker.PresetTrigger value="last7Days">Last 7 days</DatePicker.PresetTrigger>
 
-      <DatePicker.Positioner data-testid="positioner">
-        <DatePicker.Content>
-          <DatePicker.YearSelect />
-          <DatePicker.MonthSelect />
-          <DatePicker.View view="day" >
-            <DatePicker.Context v-slot="api">
+    <DatePicker.Positioner data-testid="positioner">
+      <DatePicker.Content>
+        <DatePicker.YearSelect />
+        <DatePicker.MonthSelect />
+        <DatePicker.View view="day">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -28,9 +28,9 @@ import { DatePicker } from '../'
             <DatePicker.Table>
               <DatePicker.TableHead>
                 <DatePicker.TableRow>
-                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">{{
-                    weekDay.short
-                  }}</DatePicker.TableHeader>
+                  <DatePicker.TableHeader v-for="(weekDay, id) in api.weekDays" :key="id">
+                    {{ weekDay.short }}
+                  </DatePicker.TableHeader>
                 </DatePicker.TableRow>
               </DatePicker.TableHead>
               <DatePicker.TableBody>
@@ -41,10 +41,10 @@ import { DatePicker } from '../'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-            </DatePicker.Context>
-          </DatePicker.View>
-          <DatePicker.View view="month">
-            <DatePicker.Context v-slot="api">
+          </DatePicker.Context>
+        </DatePicker.View>
+        <DatePicker.View view="month">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -68,10 +68,10 @@ import { DatePicker } from '../'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-            </DatePicker.Context>
-          </DatePicker.View>
-          <DatePicker.View view="year">
-            <DatePicker.Context v-slot="api">
+          </DatePicker.Context>
+        </DatePicker.View>
+        <DatePicker.View view="year">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -91,9 +91,9 @@ import { DatePicker } from '../'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-            </DatePicker.Context>
-          </DatePicker.View>
-        </DatePicker.Content>
-      </DatePicker.Positioner>
+          </DatePicker.Context>
+        </DatePicker.View>
+      </DatePicker.Content>
+    </DatePicker.Positioner>
   </DatePicker.Root>
 </template>

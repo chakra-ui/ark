@@ -5,7 +5,7 @@ import Controlled from './examples/controlled.vue'
 import Multiple from './examples/multiple.vue'
 </script>
 <template>
-<Story title="Select">
+  <Story title="Select">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -18,5 +18,5 @@ import Multiple from './examples/multiple.vue'
     <Variant title="Controlled">
       <Controlled />
     </Variant>
-</Story>
+  </Story>
 </template>

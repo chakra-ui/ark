@@ -6,7 +6,7 @@ const sliderValue = ref([-20, 20])
 </script>
 <template>
   <Slider.Root :min="-50" :max="50" v-model="sliderValue">
-    <Slider.Label>Quantity: </Slider.Label>
+    <Slider.Label>Quantity:</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>
       <Slider.Track>

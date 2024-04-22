@@ -8,7 +8,7 @@ import InitialValue from './examples/initial-value.vue'
 import ReadOnly from './examples/read-only.vue'
 </script>
 <template>
-<Story title="RatingGroup">
+  <Story title="RatingGroup">
     <Variant title="Basic">
       <Basic />
     </Variant>
@@ -30,5 +30,5 @@ import ReadOnly from './examples/read-only.vue'
     <Variant title="FormUsage">
       <FormUsage />
     </Variant>
-</Story>
+  </Story>
 </template>

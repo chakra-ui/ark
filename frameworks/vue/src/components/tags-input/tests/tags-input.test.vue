@@ -19,24 +19,24 @@ const frameworks = ref(['react', 'solid', 'vue'])
 
 <template>
   <TagsInputRoot v-model="frameworks">
-    <TagsInputContext  v-slot="tagsInput">
-    <TagsInputLabel>Frameworks</TagsInputLabel>
-    <TagsInputControl>
-      <TagsInputItem
-        v-for="(value, index) in tagsInput.value"
-        :key="index"
-        :index="index"
-        :value="value"
-      >
-        <TagsInputItemPreview>
-          <TagsInputItemText>{{ value }}</TagsInputItemText>
-          <TagsInputItemDeleteTrigger>Delete</TagsInputItemDeleteTrigger>
-        </TagsInputItemPreview>
-        <TagsInputItemInput />
-      </TagsInputItem>
-      <TagsInputInput placeholder="Add tag" />
-      <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
-    </TagsInputControl>
+    <TagsInputContext v-slot="tagsInput">
+      <TagsInputLabel>Frameworks</TagsInputLabel>
+      <TagsInputControl>
+        <TagsInputItem
+          v-for="(value, index) in tagsInput.value"
+          :key="index"
+          :index="index"
+          :value="value"
+        >
+          <TagsInputItemPreview>
+            <TagsInputItemText>{{ value }}</TagsInputItemText>
+            <TagsInputItemDeleteTrigger>Delete</TagsInputItemDeleteTrigger>
+          </TagsInputItemPreview>
+          <TagsInputItemInput />
+        </TagsInputItem>
+        <TagsInputInput placeholder="Add tag" />
+        <TagsInputClearTrigger>Clear all</TagsInputClearTrigger>
+      </TagsInputControl>
     </TagsInputContext>
   </TagsInputRoot>
 </template>

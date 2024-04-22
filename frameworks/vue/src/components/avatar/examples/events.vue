@@ -3,8 +3,8 @@ import { Avatar } from '../..'
 </script>
 
 <template>
-    <Avatar.Root @status-change="(status) => console.log(status)">
-        <Avatar.Fallback>PA</Avatar.Fallback>
-        <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
-    </Avatar.Root>
+  <Avatar.Root @status-change="(status) => console.log(status)">
+    <Avatar.Fallback>PA</Avatar.Fallback>
+    <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+  </Avatar.Root>
 </template>
