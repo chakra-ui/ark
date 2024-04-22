@@ -94,6 +94,11 @@
       "isRequired": false,
       "description": "Orientation of the radio group"
     },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the checkbox is read-only"
+    },
     "value": {
       "type": "string",
       "isRequired": false,

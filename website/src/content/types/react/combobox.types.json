@@ -56,7 +56,12 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "item": { "type": "any", "isRequired": false }
+    "item": { "type": "any", "isRequired": false, "description": "The item to render" },
+    "persistFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether hovering outside should clear the highlighted state"
+    }
   },
   "ItemText": {
     "asChild": {
@@ -88,7 +93,7 @@
     "allowCustomValue": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether to allow custom values or free values in the input"
+      "description": "Whether to allow typing custom values in the input"
     },
     "asChild": {
       "type": "boolean",
@@ -121,6 +126,11 @@
       "isRequired": false,
       "description": "Whether the combobox is disabled"
     },
+    "dismissable": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to register this combobox as a dismissable layer"
+    },
     "form": {
       "type": "string",
       "isRequired": false,
@@ -130,6 +140,11 @@
       "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+    },
+    "getSelectionValue": {
+      "type": "(details: SelectionValueDetails<T>) => string",
+      "isRequired": false,
+      "description": "Function to get the display value of the selected item"
     },
     "highlightedValue": {
       "type": "string",
@@ -182,7 +197,7 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "loop": {
+    "loopFocus": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation through the items"
@@ -237,15 +252,35 @@
       "isRequired": false,
       "description": "Function called when a new item is selected"
     },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the combobox is open"
+    },
+    "openOnChange": {
+      "type": "boolean | ((details: InputValueChangeDetails) => boolean)",
+      "isRequired": false,
+      "description": "Whether to show the combobox when the input value changes"
+    },
     "openOnClick": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to open the combobox popup on initial click on the input"
     },
+    "openOnKeyPress": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to open the combobox on arrow key press"
+    },
     "placeholder": {
       "type": "string",
       "isRequired": false,
       "description": "The placeholder text of the combobox's input"
+    },
+    "popup": {
+      "type": "'dialog' | 'listbox'",
+      "isRequired": false,
+      "description": "The underling `aria-haspopup` attribute to use for the combobox\n- `listbox`: The combobox has a listbox popup (default)\n- `dialog`: The combobox has a dialog popup. Useful when in select only mode"
     },
     "positioning": {
       "type": "PositioningOptions",
@@ -262,15 +297,15 @@
       "isRequired": false,
       "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
     },
+    "scrollToIndexFn": {
+      "type": "(details: ScrollToIndexDetails) => void",
+      "isRequired": false,
+      "description": "Function to scroll to a specific index"
+    },
     "selectionBehavior": {
       "type": "'replace' | 'clear' | 'preserve'",
       "isRequired": false,
       "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
-    },
-    "selectOnBlur": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to select the higlighted item on interaction outside the combobox"
     },
     "translations": {
       "type": "IntlTranslations",

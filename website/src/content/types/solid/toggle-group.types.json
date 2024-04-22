@@ -45,7 +45,7 @@
       "isRequired": false,
       "description": "The ids of the elements in the toggle. Useful for composition."
     },
-    "loop": {
+    "loopFocus": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop focus inside the toggle group."

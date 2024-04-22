@@ -14,7 +14,11 @@
     }
   },
   "Item": {
-    "value": { "type": "string", "isRequired": true },
+    "value": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The value of the accordion item."
+    },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
