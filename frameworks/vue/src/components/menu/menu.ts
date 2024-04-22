@@ -37,14 +37,14 @@ export {
   MenuPositioner as Positioner,
   type MenuPositionerProps as PositionerProps,
 } from './menu-positioner'
-// export {
-//   MenuRadioItem as RadioItem,
-//   type MenuRadioItemProps as RadioItemProps,
-// } from './menu-radio-item'
-// export {
-//   MenuRadioItemGroup as RadioItemGroup,
-//   type MenuRadioItemGroupProps as RadioItemGroupProps,
-// } from './menu-radio-item-group'
+export {
+  MenuRadioItem as RadioItem,
+  type MenuRadioItemProps as RadioItemProps,
+} from './menu-radio-item'
+export {
+  MenuRadioItemGroup as RadioItemGroup,
+  type MenuRadioItemGroupProps as RadioItemGroupProps,
+} from './menu-radio-item-group'
 export { MenuRoot as Root, type MenuRootProps as RootProps } from './menu-root'
 export {
   MenuSeparator as Separator,

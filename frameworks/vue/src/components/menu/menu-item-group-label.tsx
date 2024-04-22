@@ -11,7 +11,7 @@ export const MenuItemGroupLabel = defineComponent<MenuItemGroupLabelProps>(
     const itemGroup = useMenuItemGroupContext()
 
     return () => (
-      <ark.div {...api.value.getItemGroupLabelProps({ htmlFor: itemGroup.id })} {...attrs}>
+      <ark.div {...api.value.getItemGroupLabelProps({ htmlFor: itemGroup.value.id })} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
