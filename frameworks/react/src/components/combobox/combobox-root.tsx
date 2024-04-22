@@ -28,8 +28,10 @@ const ComboboxImpl = <T extends CollectionItem>(
     'defaultValue',
     'dir',
     'disabled',
+    'dismissable',
     'form',
     'getRootNode',
+    'getSelectionValue',
     'highlightedValue',
     'id',
     'ids',
@@ -40,7 +42,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'items',
     'itemToString',
     'itemToValue',
-    'loop',
+    'loopFocus',
     'multiple',
     'name',
     'onFocusOutside',
@@ -51,17 +53,21 @@ const ComboboxImpl = <T extends CollectionItem>(
     'onOpenChange',
     'onPointerDownOutside',
     'onValueChange',
+    'open',
+    'openOnChange',
     'openOnClick',
+    'openOnKeyPress',
     'placeholder',
+    'popup',
     'positioning',
     'readOnly',
+    'scrollToIndexFn',
     'selectionBehavior',
-    'selectOnBlur',
     'translations',
     'value',
   ])
   const combobox = useCombobox(useComboboxProps)
-  const presence = usePresence(mergeProps({ present: combobox.isOpen }, presenceProps))
+  const presence = usePresence(mergeProps({ present: combobox.open }, presenceProps))
   const mergedProps = mergeProps(combobox.rootProps, localProps)
 
   return (

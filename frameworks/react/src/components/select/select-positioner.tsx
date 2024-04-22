@@ -11,7 +11,7 @@ export const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps
   const mergedProps = mergeProps(select.positionerProps, props)
   const presence = usePresenceContext()
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

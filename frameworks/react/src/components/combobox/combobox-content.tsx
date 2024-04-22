@@ -11,7 +11,7 @@ export const ComboboxContent = forwardRef<HTMLDivElement, ComboboxContentProps>(
   const presence = usePresenceContext()
   const mergedProps = mergeProps(combobox.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

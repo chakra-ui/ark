@@ -9,9 +9,9 @@ export const ComponentUnderTest = (props: RatingGroupRootProps) => (
           items.map((item) => (
             <RatingGroup.Item key={item} index={item}>
               <RatingGroup.ItemContext>
-                {({ isHalf, isHighlighted }) => {
-                  if (isHalf) return 'half'
-                  if (isHighlighted) return 'highlighted'
+                {({ half, highlighted }) => {
+                  if (half) return 'half'
+                  if (highlighted) return 'highlighted'
                   return 'empty'
                 }}
               </RatingGroup.ItemContext>

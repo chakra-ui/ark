@@ -21,6 +21,7 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
     'name',
     'onValueChange',
     'orientation',
+    'readOnly',
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)

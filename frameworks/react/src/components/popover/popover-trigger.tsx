@@ -12,7 +12,7 @@ export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>
   const mergedProps = mergeProps(
     {
       ...popover.triggerProps,
-      'aria-controls': presence.isUnmounted ? undefined : popover.triggerProps['aria-controls'],
+      'aria-controls': presence.unmounted ? undefined : popover.triggerProps['aria-controls'],
     },
     props,
   )

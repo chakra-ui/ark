@@ -12,7 +12,7 @@ export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerPro
     const presence = usePresenceContext()
     const mergedProps = mergeProps(popover.positionerProps, props)
 
-    if (presence.isUnmounted) {
+    if (presence.unmounted) {
       return null
     }
 

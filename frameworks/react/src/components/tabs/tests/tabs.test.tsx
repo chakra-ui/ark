@@ -75,7 +75,7 @@ describe('Tabs', () => {
   })
 
   it('should not loop focus if loop is false', async () => {
-    render(<ComponentUnderTest loop={false} />)
+    render(<ComponentUnderTest loopFocus={false} />)
 
     const lastTab = screen.getByText('Vue Trigger')
 

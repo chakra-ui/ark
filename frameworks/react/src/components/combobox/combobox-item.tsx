@@ -11,7 +11,7 @@ import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
 export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'persistFocus'])
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(combobox.getItemProps(itemProps), localProps)
   const itemState = combobox.getItemState(itemProps)

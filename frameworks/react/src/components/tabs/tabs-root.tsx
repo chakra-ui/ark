@@ -24,7 +24,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'getRootNode',
     'id',
     'ids',
-    'loop',
+    'loopFocus',
     'onFocusChange',
     'onValueChange',
     'orientation',

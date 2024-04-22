@@ -27,7 +27,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'highlightedValue',
     'id',
     'ids',
-    'loop',
+    'loopFocus',
     'onEscapeKeyDown',
     'onFocusOutside',
     'onHighlightChange',
@@ -37,12 +37,13 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onSelect',
     'open',
     'positioning',
+    'typeahead',
   ])
 
   const parentApi = useMenuContext()
   const parentMachine = useMenuMachineContext()
   const menu = useMenu(useMenuProps)
-  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().isOpen })))
+  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().open })))
 
   createEffect(() => {
     if (!parentMachine) return

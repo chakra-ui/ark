@@ -9,7 +9,7 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {
+    Omit<Optional<combobox.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
   /**
    * the initial value of the combobox
    */
@@ -40,6 +40,7 @@ export const useCombobox = <T extends CollectionItem>(
     collection,
     ...comboboxProps,
     value: props.defaultValue,
+    'open.controlled': props.open !== undefined,
   }
 
   const context: combobox.Context<T> = {

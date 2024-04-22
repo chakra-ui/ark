@@ -10,19 +10,20 @@ export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, UseTreeVi
 
 export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props, ref) => {
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps>()(props, [
-    'defaultExpandedIds',
-    'defaultSelectedIds',
+    'defaultExpandedValue',
+    'defaultSelectedValue',
     'dir',
-    'expandedIds',
-    'focusedId',
+    'expandedValue',
+    'focusedValue',
     'getRootNode',
     'id',
     'onExpandedChange',
     'onFocusChange',
     'onSelectionChange',
     'openOnClick',
-    'selectedIds',
+    'selectedValue',
     'selectionMode',
+    'typeahead',
   ])
   const treeView = useTreeView(useTreeViewProps)
   const mergedProps = mergeProps(treeView.rootProps, localProps)

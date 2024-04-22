@@ -12,7 +12,7 @@ export const ColorPickerPositioner = forwardRef<HTMLDivElement, ColorPickerPosit
     const mergedProps = mergeProps(colorPicker.positionerProps, props)
     const presence = usePresenceContext()
 
-    if (presence.isUnmounted) {
+    if (presence.unmounted) {
       return null
     }
 

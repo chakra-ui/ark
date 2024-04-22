@@ -10,9 +10,7 @@ export const ReadOnly = () => (
           items.map((item) => (
             <RatingGroup.Item key={item} index={item}>
               <RatingGroup.ItemContext>
-                {({ isHighlighted }) =>
-                  isHighlighted ? <StarIcon fill="currrent" /> : <StarIcon />
-                }
+                {({ highlighted }) => (highlighted ? <StarIcon fill="currrent" /> : <StarIcon />)}
               </RatingGroup.ItemContext>
             </RatingGroup.Item>
           ))

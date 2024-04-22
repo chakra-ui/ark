@@ -15,13 +15,13 @@ export interface TreeViewItemProps
   extends Assign<HTMLArkProps<'li'>, UseTreeViewItemPropsContext> {}
 
 export const TreeViewItem = forwardRef<HTMLLIElement, TreeViewItemProps>((props, ref) => {
-  const [{ id, disabled }, localProps] = createSplitProps<UseTreeViewItemPropsContext>()(props, [
-    'id',
+  const [{ value, disabled }, localProps] = createSplitProps<UseTreeViewItemPropsContext>()(props, [
     'disabled',
+    'value',
   ])
   const treeView = useTreeViewContext()
   const depth = useTreeViewDepthContext()
-  const itemProps = { id, disabled, depth }
+  const itemProps = { value, disabled, depth }
   const mergedProps = mergeProps(treeView.getItemProps(itemProps), localProps)
   const itemState = treeView.getItemState(itemProps)
 

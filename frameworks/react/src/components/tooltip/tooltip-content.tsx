@@ -11,7 +11,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>((p
   const presence = usePresenceContext()
   const mergedProps = mergeProps(tooltip.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

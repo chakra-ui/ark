@@ -12,7 +12,7 @@ export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>((prop
   const mergedProps = mergeProps(
     {
       ...menu.triggerProps,
-      'aria-controls': presence.isUnmounted ? undefined : menu.triggerProps['aria-controls'],
+      'aria-controls': presence.unmounted ? undefined : menu.triggerProps['aria-controls'],
     },
     props,
   )

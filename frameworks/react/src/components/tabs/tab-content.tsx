@@ -27,7 +27,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
 
   return (
     <PresenceProvider value={presence}>
-      {presence.isUnmounted ? null : <ark.div {...mergedProps} />}
+      {presence.unmounted ? null : <ark.div {...mergedProps} />}
     </PresenceProvider>
   )
 })

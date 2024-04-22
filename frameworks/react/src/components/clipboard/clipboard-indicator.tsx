@@ -12,13 +12,13 @@ export const ClipboardIndicator = forwardRef<HTMLDivElement, ClipboardIndicatorP
     const { children, copied, ...localProps } = props
     const clipboard = useClipboardContext()
     const mergedProps = mergeProps(
-      clipboard.getIndicatorProps({ copied: clipboard.isCopied }),
+      clipboard.getIndicatorProps({ copied: clipboard.copied }),
       localProps,
     )
 
     return (
       <ark.div {...mergedProps} ref={ref}>
-        {clipboard.isCopied ? copied : children}
+        {clipboard.copied ? copied : children}
       </ark.div>
     )
   },

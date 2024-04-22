@@ -11,7 +11,7 @@ export const ControlledComponentUnderTest = (props: EditableRootProps) => (
             <Editable.Preview />
           </Editable.Area>
           <Editable.Control>
-            {editable.isEditing ? (
+            {editable.editing ? (
               <>
                 <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
                 <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>

@@ -20,7 +20,7 @@ export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'ite
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input data-testid="input" />
-        <Combobox.Trigger data-testid="trigger">Open</Combobox.Trigger>
+        <Combobox.Trigger>Open</Combobox.Trigger>
         <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
       </Combobox.Control>
       <Portal>

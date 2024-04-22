@@ -36,7 +36,7 @@ const SelectImpl = <T extends CollectionItem>(
     'items',
     'itemToString',
     'itemToValue',
-    'loop',
+    'loopFocus',
     'multiple',
     'name',
     'onFocusOutside',
@@ -49,11 +49,10 @@ const SelectImpl = <T extends CollectionItem>(
     'positioning',
     'readOnly',
     'scrollToIndexFn',
-    'selectOnBlur',
     'value',
   ])
   const select = useSelect(useSelectProps)
-  const presence = usePresence(mergeProps({ present: select.isOpen }, presenceProps))
+  const presence = usePresence(mergeProps({ present: select.open }, presenceProps))
   const mergedProps = mergeProps(select.rootProps, localProps)
 
   return (

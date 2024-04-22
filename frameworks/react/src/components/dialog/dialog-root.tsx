@@ -15,7 +15,7 @@ export const DialogRoot = (props: DialogRootProps) => {
   const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
   const dialog = useDialog(localProps)
-  const presence = usePresence(mergeProps({ present: dialog.isOpen }, presenceProps))
+  const presence = usePresence(mergeProps({ present: dialog.open }, presenceProps))
 
   return (
     <DialogProvider value={dialog}>

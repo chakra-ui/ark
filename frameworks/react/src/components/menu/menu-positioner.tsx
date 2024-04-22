@@ -11,7 +11,7 @@ export const MenuPositioner = forwardRef<HTMLDivElement, MenuPositionerProps>((p
   const mergedProps = mergeProps(menu.positionerProps, props)
   const presence = usePresenceContext()
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

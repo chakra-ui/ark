@@ -11,7 +11,7 @@ export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, 
   const presence = usePresenceContext()
   const mergedProps = mergeProps(menu.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 
