@@ -30,7 +30,7 @@ export const props = {
     default: 'horizontal',
   },
   slidesPerView: {
-    type: String as PropType<Context['slidesPerView']>,
+    type: Number as PropType<Context['slidesPerView']>,
   },
   spacing: {
     type: String as PropType<Context['spacing']>,
