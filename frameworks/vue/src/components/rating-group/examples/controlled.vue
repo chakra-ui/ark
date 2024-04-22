@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RatingGroup } from '../..'
-import { StarHalfIcon, StarIcon, StarOutlineIcon } from './icons'
+import { StarIcon, StarOutlineIcon } from './icons'
 
 const value = ref(0)
 </script>
@@ -11,15 +11,11 @@ const value = ref(0)
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       <RatingGroup.Context v-slot="{ items }">
-        <RatingGroup.Item
-          v-for="item in items"
-          :key="item"
-          :index="item"
-          v-slot="{ isHalf, isHighlighted }"
-        >
-          <StarHalfIcon v-if="isHalf" />
-          <StarIcon v-else-if="isHighlighted" />
-          <StarOutlineIcon v-else />
+        <RatingGroup.Item v-for="item in items" :key="item" :index="item">
+          <RatingGroup.ItemContext v-slot="{ isHighlighted }">
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
+          </RatingGroup.ItemContext>
         </RatingGroup.Item>
       </RatingGroup.Context>
     </RatingGroup.Control>

@@ -10,12 +10,12 @@ import { DatePicker } from '../..'
       <DatePicker.Trigger>📅</DatePicker.Trigger>
       <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
-    <Teleport to="body">
-      <DatePicker.Positioner>
-        <DatePicker.Content>
-          <DatePicker.YearSelect />
-          <DatePicker.MonthSelect />
-          <DatePicker.View view="day" #default="api">
+    <DatePicker.Positioner>
+      <DatePicker.Content>
+        <DatePicker.YearSelect />
+        <DatePicker.MonthSelect />
+        <DatePicker.View view="day">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -39,8 +39,10 @@ import { DatePicker } from '../..'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-          </DatePicker.View>
-          <DatePicker.View view="month" #default="api">
+          </DatePicker.Context>
+        </DatePicker.View>
+        <DatePicker.View view="month">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -64,8 +66,10 @@ import { DatePicker } from '../..'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-          </DatePicker.View>
-          <DatePicker.View view="year" #default="api">
+          </DatePicker.Context>
+        </DatePicker.View>
+        <DatePicker.View view="year">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -85,9 +89,9 @@ import { DatePicker } from '../..'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-          </DatePicker.View>
-        </DatePicker.Content>
-      </DatePicker.Positioner>
-    </Teleport>
+          </DatePicker.Context>
+        </DatePicker.View>
+      </DatePicker.Content>
+    </DatePicker.Positioner>
   </DatePicker.Root>
 </template>

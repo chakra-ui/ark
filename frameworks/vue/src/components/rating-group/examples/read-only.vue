@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RatingGroup } from '../..'
+import { StarIcon, StarOutlineIcon } from './icons'
 </script>
 
 <template>
@@ -7,14 +8,11 @@ import { RatingGroup } from '../..'
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       <RatingGroup.Context v-slot="{ items }">
-        <RatingGroup.Item
-          v-for="item in items"
-          :key="item"
-          :index="item"
-          v-slot="{ isHighlighted }"
-        >
-          <StarIcon v-if="isHighlighted" />
-          <StarOutlineIcon v-else />
+        <RatingGroup.Item v-for="item in items" :key="item" :index="item">
+          <RatingGroup.ItemContext v-slot="{ isHighlighted }">
+            <StarIcon v-if="isHighlighted" />
+            <StarOutlineIcon v-else />
+          </RatingGroup.ItemContext>
         </RatingGroup.Item>
       </RatingGroup.Context>
     </RatingGroup.Control>

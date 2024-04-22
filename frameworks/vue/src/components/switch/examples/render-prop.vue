@@ -3,10 +3,12 @@ import { Switch } from '../..'
 </script>
 
 <template>
-  <Switch.Root #default="api">
+  <Switch.Root>
     <Switch.Control>
       <Switch.Thumb />
     </Switch.Control>
-    <Switch.Label>Feature is {{ api.isChecked ? 'enabled' : 'disabled' }}</Switch.Label>
+    <Switch.Context v-slot="api">
+      <Switch.Label>Feature is {{ api.isChecked ? 'enabled' : 'disabled' }}</Switch.Label>
+    </Switch.Context>
   </Switch.Root>
 </template>

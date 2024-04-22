@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Range from './examples/range.vue'
 import Standalone from './examples/standalone.vue'
 </script>
 <template>
@@ -9,6 +10,9 @@ import Standalone from './examples/standalone.vue'
     </Variant>
     <Variant title="Standalone">
       <Standalone />
+    </Variant>
+    <Variant title="Range">
+      <Range />
     </Variant>
   </Story>
 </template>

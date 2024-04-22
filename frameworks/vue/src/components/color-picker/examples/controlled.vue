@@ -7,7 +7,6 @@ const value = ref('hsl(20, 100%, 50%)')
 
 <template>
   <ColorPicker.Root
-    #default="api"
     format="hsla"
     v-model="value"
     @value-change="(details) => (value = details.valueAsString)"
@@ -20,7 +19,9 @@ const value = ref('hsl(20, 100%, 50%)')
       <ColorPicker.ValueText />
       <ColorPicker.Trigger>
         <ColorPicker.TransparencyGrid />
-        <ColorPicker.Swatch :value="api.value" />
+        <ColorPicker.Context v-slot="api">
+          <ColorPicker.Swatch :value="api.value" />
+        </ColorPicker.Context>
       </ColorPicker.Trigger>
     </ColorPicker.Control>
     <ColorPicker.Positioner>

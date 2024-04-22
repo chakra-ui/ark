@@ -3,7 +3,7 @@ import { DatePicker } from '../..'
 </script>
 
 <template>
-  <DatePicker.Root selection-mode="range">
+  <DatePicker.Root selectionMode="range">
     <DatePicker.Label>Label</DatePicker.Label>
     <DatePicker.Control>
       <DatePicker.Input :index="0" />
@@ -12,12 +12,12 @@ import { DatePicker } from '../..'
       <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
     </DatePicker.Control>
     <DatePicker.PresetTrigger value="last7Days">Last 7 days</DatePicker.PresetTrigger>
-    <Teleport to="body">
-      <DatePicker.Positioner>
-        <DatePicker.Content>
-          <DatePicker.YearSelect />
-          <DatePicker.MonthSelect />
-          <DatePicker.View view="day" #default="api">
+    <DatePicker.Positioner>
+      <DatePicker.Content>
+        <DatePicker.YearSelect />
+        <DatePicker.MonthSelect />
+        <DatePicker.View view="day">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -41,8 +41,10 @@ import { DatePicker } from '../..'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-          </DatePicker.View>
-          <DatePicker.View view="month" #default="api">
+          </DatePicker.Context>
+        </DatePicker.View>
+        <DatePicker.View view="month">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -66,8 +68,10 @@ import { DatePicker } from '../..'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-          </DatePicker.View>
-          <DatePicker.View view="year" #default="api">
+          </DatePicker.Context>
+        </DatePicker.View>
+        <DatePicker.View view="year">
+          <DatePicker.Context v-slot="api">
             <DatePicker.ViewControl>
               <DatePicker.PrevTrigger>Prev</DatePicker.PrevTrigger>
               <DatePicker.ViewTrigger>
@@ -87,9 +91,9 @@ import { DatePicker } from '../..'
                 </DatePicker.TableRow>
               </DatePicker.TableBody>
             </DatePicker.Table>
-          </DatePicker.View>
-        </DatePicker.Content>
-      </DatePicker.Positioner>
-    </Teleport>
+          </DatePicker.Context>
+        </DatePicker.View>
+      </DatePicker.Content>
+    </DatePicker.Positioner>
   </DatePicker.Root>
 </template>

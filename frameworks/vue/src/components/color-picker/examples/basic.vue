@@ -3,7 +3,7 @@ import { ColorPicker } from '../..'
 </script>
 
 <template>
-  <ColorPicker.Root #default="api" :modelValue="'#eb5e41'">
+  <ColorPicker.Root :modelValue="'#eb5e41'">
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />
@@ -11,7 +11,9 @@ import { ColorPicker } from '../..'
       <ColorPicker.ValueText />
       <ColorPicker.Trigger>
         <ColorPicker.TransparencyGrid />
-        <ColorPicker.Swatch :value="api.value" />
+        <ColorPicker.Context v-slot="api">
+          <ColorPicker.Swatch :value="api.value" />
+        </ColorPicker.Context>
       </ColorPicker.Trigger>
     </ColorPicker.Control>
     <ColorPicker.Positioner>
