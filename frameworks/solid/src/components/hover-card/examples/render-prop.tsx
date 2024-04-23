@@ -4,7 +4,7 @@ import { HoverCard } from '../..'
 export const RenderProp = () => (
   <HoverCard.Root>
     <HoverCard.Context>
-      {(context) => <HoverCard.Trigger>Hover me {context().isOpen ? '▲' : '▼'} </HoverCard.Trigger>}
+      {(context) => <HoverCard.Trigger>Hover me {context().open ? '▲' : '▼'} </HoverCard.Trigger>}
     </HoverCard.Context>
     <Portal>
       <HoverCard.Positioner>

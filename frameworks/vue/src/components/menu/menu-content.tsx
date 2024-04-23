@@ -13,7 +13,7 @@ export const MenuContent = defineComponent<MenuContentProps>(
     const presenceApi = usePresenceContext()
 
     return () =>
-      presenceApi.value.isUnmounted ? null : (
+      presenceApi.value.unmounted ? null : (
         <ark.div {...api.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
           {slots.default?.()}
         </ark.div>

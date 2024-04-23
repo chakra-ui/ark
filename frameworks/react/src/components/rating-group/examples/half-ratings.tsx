@@ -10,9 +10,9 @@ export const HalfRatings = () => (
           items.map((item) => (
             <RatingGroup.Item key={item} index={item}>
               <RatingGroup.ItemContext>
-                {({ isHalf, isHighlighted }) => {
-                  if (isHalf) return <StarHalfIcon fill="current" />
-                  if (isHighlighted) return <StarIcon fill="current" />
+                {({ half, highlighted }) => {
+                  if (half) return <StarHalfIcon fill="current" />
+                  if (highlighted) return <StarIcon fill="current" />
                   return <StarIcon />
                 }}
               </RatingGroup.ItemContext>

@@ -11,8 +11,8 @@ const value = ref('Chakra')
       <Editable.Input />
       <Editable.Preview />
     </Editable.Area>
-    <Editable.Context v-slot="{ isEditing }">
-      <Editable.Control v-if="isEditing">
+    <Editable.Context v-slot="{ editing }">
+      <Editable.Control v-if="editing">
         <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
         <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>
       </Editable.Control>

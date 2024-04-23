@@ -12,7 +12,7 @@ export const HoverCardContent = defineComponent<HoverCardContentProps>(
     const presenceApi = usePresenceContext()
 
     return () =>
-      presenceApi.value.isUnmounted ? null : (
+      presenceApi.value.unmounted ? null : (
         <ark.div {...hoverCard.value.contentProps} {...presenceApi.value.presenceProps} {...attrs}>
           {slots.default?.()}
         </ark.div>

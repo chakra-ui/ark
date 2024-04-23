@@ -6,7 +6,7 @@ export const RenderFn = () => (
     <Tooltip.Positioner>
       <Tooltip.Context>
         {(tooltip) => (
-          <Tooltip.Content>This tooltip is open: {tooltip.isOpen.toString()}</Tooltip.Content>
+          <Tooltip.Content>This tooltip is open: {tooltip.open.toString()}</Tooltip.Content>
         )}
       </Tooltip.Context>
     </Tooltip.Positioner>

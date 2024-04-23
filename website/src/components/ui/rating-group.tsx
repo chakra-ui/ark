@@ -2,10 +2,10 @@ import {
   RatingGroup as ArkRatingGroup,
   type RatingGroupRootProps,
 } from '@ark-ui/react/rating-group'
-import { forwardRef, type ReactNode } from 'react'
+import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
-import { ratingGroup, type RatingGroupVariantProps } from 'styled-system/recipes'
+import { type RatingGroupVariantProps, ratingGroup } from 'styled-system/recipes'
 import type { Assign, JsxStyleProps } from 'styled-system/types'
 
 export interface RatingGroupProps
@@ -33,7 +33,7 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
             items.map((index) => (
               <ArkRatingGroup.Item className={styles.item} key={index} index={index}>
                 <ArkRatingGroup.ItemContext>
-                  {({ isHalf }) => <StarIcon isHalf={isHalf} />}
+                  {({ half }) => <StarIcon isHalf={half} />}
                 </ArkRatingGroup.ItemContext>
               </ArkRatingGroup.Item>
             ))

@@ -11,7 +11,7 @@ export const DialogPositioner = defineComponent<DialogPositionerProps>(
     const presencedialog = usePresenceContext()
 
     return () =>
-      presencedialog.value.isUnmounted ? null : (
+      presencedialog.value.unmounted ? null : (
         <ark.div {...dialog.value.positionerProps} {...attrs}>
           {slots.default?.()}
         </ark.div>

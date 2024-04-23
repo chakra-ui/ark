@@ -9,7 +9,7 @@ export const RenderFn = () => {
         <Clipboard.Input />
         <Clipboard.Trigger>
           <Clipboard.Context>
-            {(clipboard) => (clipboard.isCopied ? <CheckIcon /> : <ClipboardCopyIcon />)}
+            {(clipboard) => (clipboard.copied ? <CheckIcon /> : <ClipboardCopyIcon />)}
           </Clipboard.Context>
         </Clipboard.Trigger>
       </Clipboard.Control>

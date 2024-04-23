@@ -9,9 +9,9 @@ import { StarHalfIcon, StarIcon, StarOutlineIcon } from './icons'
     <RatingGroup.Control>
       <RatingGroup.Context v-slot="{ items }">
         <RatingGroup.Item v-for="item in items" :key="item" :index="item">
-          <RatingGroup.ItemContext v-slot="{ isHighlighted, isHalf }">
-            <StarHalfIcon v-if="isHalf" />
-            <StarIcon v-else-if="isHighlighted" />
+          <RatingGroup.ItemContext v-slot="{ highlighted, half }">
+            <StarHalfIcon v-if="half" />
+            <StarIcon v-else-if="highlighted" />
             <StarOutlineIcon v-else />
           </RatingGroup.ItemContext>
         </RatingGroup.Item>

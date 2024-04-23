@@ -25,7 +25,7 @@ export const TabContent = (props: TabContentProps) => {
 
   return (
     <PresenceProvider value={presenceApi}>
-      <Show when={!presenceApi().isUnmounted}>
+      <Show when={!presenceApi().unmounted}>
         <ark.div {...mergedProps} />
       </Show>
     </PresenceProvider>

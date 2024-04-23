@@ -21,6 +21,7 @@ export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((pro
     'invalid',
     'name',
     'onCheckedChange',
+    'readOnly',
     'required',
     'value',
   ])

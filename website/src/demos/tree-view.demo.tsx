@@ -8,23 +8,23 @@ const data: TreeViewData = {
   label: 'Root',
   children: [
     {
-      id: '1',
+      value: '1',
       name: 'Item 1',
       children: [
         {
-          id: '1.1',
+          value: '1.1',
           name: 'Item 1.1',
         },
         {
-          id: '1.2',
+          value: '1.2',
           name: 'Item 1.2',
           children: [
             {
-              id: '1.2.1',
+              value: '1.2.1',
               name: 'Item 1.2.1',
             },
             {
-              id: '1.2.2',
+              value: '1.2.2',
               name: 'Item 1.2.2',
             },
           ],
@@ -32,21 +32,21 @@ const data: TreeViewData = {
       ],
     },
     {
-      id: '2',
+      value: '2',
       name: 'Item 2',
       children: [
         {
-          id: '2.1',
+          value: '2.1',
           name: 'Item 2.1',
         },
         {
-          id: '2.2',
+          value: '2.2',
           name: 'Item 2.2',
         },
       ],
     },
     {
-      id: '3',
+      value: '3',
       name: 'Item 3',
     },
   ],

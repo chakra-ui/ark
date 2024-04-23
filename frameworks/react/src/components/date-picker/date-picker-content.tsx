@@ -12,7 +12,7 @@ export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentPro
     const presence = usePresenceContext()
     const mergedProps = mergeProps(datePicker.contentProps, presence.getPresenceProps(ref), props)
 
-    if (presence.isUnmounted) {
+    if (presence.unmounted) {
       return null
     }
 

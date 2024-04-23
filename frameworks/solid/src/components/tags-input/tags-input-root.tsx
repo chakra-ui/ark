@@ -10,13 +10,13 @@ export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, UseTagsI
 export const TagsInputRoot = (props: TagsInputRootProps) => {
   const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
-    'allowEditTag',
     'allowOverflow',
     'autoFocus',
     'blurBehavior',
     'delimiter',
     'dir',
     'disabled',
+    'editable',
     'form',
     'getRootNode',
     'id',
@@ -28,6 +28,7 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
     'name',
     'onFocusOutside',
     'onHighlightChange',
+    'onInputValueChange',
     'onInteractOutside',
     'onPointerDownOutside',
     'onValueChange',

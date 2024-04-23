@@ -10,7 +10,7 @@ export const CollapsibleContent = (props: CollapsibleContentProps) => {
   const mergedProps = mergeProps(() => api().contentProps, props)
 
   return (
-    <Show when={!api().isUnmounted}>
+    <Show when={!api().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

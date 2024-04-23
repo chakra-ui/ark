@@ -16,7 +16,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>(
     'getRootNode',
     'id',
     'ids',
-    'loop',
+    'loopFocus',
     'multiple',
     'onValueChange',
     'orientation',

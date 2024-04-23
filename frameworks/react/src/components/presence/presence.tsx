@@ -10,7 +10,7 @@ export const Presence = forwardRef<HTMLDivElement, PresenceProps>((props, ref) =
   const [presenceProps, localProps] = splitPresenceProps(props)
   const presence = usePresence(presenceProps)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

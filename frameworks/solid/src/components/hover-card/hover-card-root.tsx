@@ -27,7 +27,7 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
     'positioning',
   ])
   const api = useHoverCard(useHoverCardProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
 
   return (
     <HoverCardProvider value={api}>

@@ -11,7 +11,7 @@ export const RenderFn = () => {
         <Clipboard.Trigger>
           <Clipboard.Context>
             {(context) => (
-              <Show when={context().isCopied} fallback={<ClipboardCopyIcon />}>
+              <Show when={context().copied} fallback={<ClipboardCopyIcon />}>
                 <CheckIcon />
               </Show>
             )}

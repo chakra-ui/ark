@@ -15,7 +15,7 @@ export const ColorPickerRoot = defineComponent<ColorPickerRootProps>(
   (props, { slots, emit, attrs }) => {
     const api = useColorPicker(props, emit)
 
-    const isOpen = computed(() => api.value.isOpen)
+    const isOpen = computed(() => api.value.open)
 
     const presenceProps = computed(() => ({
       present: props.present || isOpen.value,

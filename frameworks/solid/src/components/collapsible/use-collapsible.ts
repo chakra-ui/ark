@@ -15,7 +15,7 @@ export interface UseCollapsibleReturn
       /**
        * Whether the content is unmounted
        */
-      isUnmounted?: boolean
+      unmounted?: boolean
     }
   > {}
 
@@ -27,7 +27,7 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
   const [wasVisible, setWasVisible] = createSignal(false)
 
   createEffect(() => {
-    const isPresent = api().isVisible
+    const isPresent = api().visible
     if (isPresent) setWasVisible(true)
   })
 
@@ -35,8 +35,8 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
 
   return createMemo(() => ({
     ...api(),
-    isUnmounted:
-      (!api().isVisible && !wasVisible() && renderStrategyProps.lazyMount) ||
-      (renderStrategyProps.unmountOnExit && !api().isVisible && wasVisible()),
+    unmounted:
+      (!api().visible && !wasVisible() && renderStrategyProps.lazyMount) ||
+      (renderStrategyProps.unmountOnExit && !api().visible && wasVisible()),
   }))
 }

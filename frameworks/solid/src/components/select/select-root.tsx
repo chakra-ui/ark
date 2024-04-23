@@ -31,7 +31,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'items',
     'itemToString',
     'itemToValue',
-    'loop',
+    'loopFocus',
     'multiple',
     'name',
     'onFocusOutside',
@@ -44,12 +44,11 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'positioning',
     'readOnly',
     'scrollToIndexFn',
-    'selectOnBlur',
     'value',
   ])
 
   const select = useSelect(useSelectProps)
-  const presenceApi = usePresence(mergeProps(() => ({ present: select().isOpen }), presenceProps))
+  const presenceApi = usePresence(mergeProps(() => ({ present: select().open }), presenceProps))
   const mergedProps = mergeProps(() => select().rootProps, localProps)
 
   return (

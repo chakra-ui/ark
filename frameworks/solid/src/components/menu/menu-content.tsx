@@ -16,7 +16,7 @@ export const MenuContent = (props: MenuContentProps) => {
   )
 
   return (
-    <Show when={!presenceContext().isUnmounted}>
+    <Show when={!presenceContext().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

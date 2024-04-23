@@ -20,6 +20,7 @@ export const SwitchRoot = (props: SwitchRootProps) => {
     'label',
     'name',
     'onCheckedChange',
+    'readOnly',
     'required',
     'value',
   ])

@@ -12,7 +12,7 @@ export const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerPro
     const mergedProps = mergeProps(tooltip.positionerProps, props)
     const presence = usePresenceContext()
 
-    if (presence.isUnmounted) {
+    if (presence.unmounted) {
       return null
     }
 

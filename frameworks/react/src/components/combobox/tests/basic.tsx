@@ -19,8 +19,8 @@ export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'ite
     <Combobox.Root items={items} {...props}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
-        <Combobox.Input data-testid="input" />
-        <Combobox.Trigger data-testid="trigger">Open</Combobox.Trigger>
+        <Combobox.Input />
+        <Combobox.Trigger>Open</Combobox.Trigger>
         <Combobox.ClearTrigger>Clear</Combobox.ClearTrigger>
       </Combobox.Control>
       <Portal>

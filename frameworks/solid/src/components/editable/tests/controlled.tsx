@@ -10,7 +10,7 @@ export const ControlledComponentUnderTest = (props: EditableRootProps) => (
     <Editable.Context>
       {(context) => (
         <Editable.Control>
-          {context().isEditing ? (
+          {context().editing ? (
             <>
               <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
               <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>

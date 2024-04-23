@@ -2,7 +2,7 @@ import { TagsInput } from '../..'
 
 export const DisabledEditing = () => {
   return (
-    <TagsInput.Root allowEditTag={false}>
+    <TagsInput.Root editable={false}>
       <TagsInput.Context>
         {(tagsInput) => (
           <>

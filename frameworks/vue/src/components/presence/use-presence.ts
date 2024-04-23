@@ -35,9 +35,9 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit: CallableFun
   const api = computed(() => presence.connect(state.value, send, normalizeProps))
 
   watch(
-    () => api.value.isPresent,
+    () => api.value.present,
     () => {
-      const isPresent = api.value.isPresent
+      const isPresent = api.value.present
       if (isPresent) wasEverPresent.value = true
     },
   )
@@ -52,13 +52,13 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit: CallableFun
   })
 
   return computed(() => ({
-    isPresent: api.value.isPresent,
-    isUnmounted:
-      (!api.value.isPresent && !wasEverPresent.value && context.value.lazyMount) ||
-      (context.value?.unmountOnExit && !api.value?.isPresent && wasEverPresent.value),
+    present: api.value.present,
+    unmounted:
+      (!api.value.present && !wasEverPresent.value && context.value.lazyMount) ||
+      (context.value?.unmountOnExit && !api.value?.present && wasEverPresent.value),
     presenceProps: {
       ref: nodeRef,
-      hidden: !api.value.isPresent,
+      hidden: !api.value.present,
       'data-state': context.value?.present ? 'open' : 'closed',
     },
   }))

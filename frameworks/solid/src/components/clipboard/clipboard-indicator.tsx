@@ -14,13 +14,13 @@ export interface ClipboardIndicatorProps extends Assign<HTMLArkProps<'div'>, Ind
 export const ClipboardIndicator = (props: ClipboardIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['copied'])
   const api = useClipboardContext()
-  const mergedProps = mergeProps(api().getIndicatorProps({ copied: api().isCopied }), localProps)
+  const mergedProps = mergeProps(api().getIndicatorProps({ copied: api().copied }), localProps)
   // @ts-expect-error TODO fix
   const getChildren = children(() => localProps.children)
 
   return (
     <ark.div {...mergedProps}>
-      <Show when={api().isCopied} fallback={getChildren()}>
+      <Show when={api().copied} fallback={getChildren()}>
         {indicatorProps.copied}
       </Show>
     </ark.div>

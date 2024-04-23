@@ -29,12 +29,12 @@ export const TreeViewItem = defineComponent<TreeViewItemProps>(
   {
     name: 'TreeViewItem',
     props: {
-      id: {
-        type: String as PropType<TreeViewItemProps['id']>,
-        required: true,
-      },
       disabled: {
         type: Boolean as PropType<TreeViewItemProps['disabled']>,
+      },
+      value: {
+        type: String as PropType<TreeViewItemProps['value']>,
+        required: true,
       },
     },
   },

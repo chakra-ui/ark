@@ -11,7 +11,7 @@ export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps
   const presence = usePresenceContext()
   const mergedProps = mergeProps(hoverCard.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

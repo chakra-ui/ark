@@ -11,7 +11,7 @@ export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((pro
   const presence = usePresenceContext()
   const mergedProps = mergeProps(select.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

@@ -24,12 +24,12 @@ export const TreeViewBranch = defineComponent<TreeViewBranchProps>(
   {
     name: 'TreeViewBranch',
     props: {
-      id: {
-        type: String as PropType<TreeViewBranchProps['id']>,
-        required: true,
-      },
       disabled: {
         type: Boolean as PropType<TreeViewBranchProps['disabled']>,
+      },
+      value: {
+        type: String as PropType<TreeViewBranchProps['value']>,
+        required: true,
       },
     },
   },

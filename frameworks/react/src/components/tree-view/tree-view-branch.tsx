@@ -10,7 +10,7 @@ import { TreeViewDepthProvider, useTreeViewDepthContext } from './use-tree-view-
 export interface TreeViewBranchProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
 
 export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'id'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'value'])
   const treeView = useTreeViewContext()
   const depth = useTreeViewDepthContext()
   const branchContext = { ...itemProps, depth }

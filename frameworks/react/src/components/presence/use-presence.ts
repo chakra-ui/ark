@@ -22,23 +22,23 @@ export const usePresence = (props: UsePresenceProps) => {
   const [state, send] = useMachine(presence.machine(context), { context })
   const api = presence.connect(state, send, normalizeProps)
 
-  if (api.isPresent) {
+  if (api.present) {
     wasEverPresent.current = true
   }
 
-  const isUnmounted =
-    (!api.isPresent && !wasEverPresent.current && lazyMount) ||
-    (unmountOnExit && !api.isPresent && wasEverPresent.current)
+  const unmounted =
+    (!api.present && !wasEverPresent.current && lazyMount) ||
+    (unmountOnExit && !api.present && wasEverPresent.current)
 
   const getPresenceProps = <T extends HTMLElement>(ref: ForwardedRef<T>) => ({
     ref: composeRefs(api.setNode, ref) as ForwardedRef<T>,
     'data-state': props.present ? 'open' : 'closed',
-    hidden: !api.isPresent,
+    hidden: !api.present,
   })
 
   return {
     getPresenceProps,
-    isPresent: api.isPresent,
-    isUnmounted,
+    present: api.present,
+    unmounted,
   }
 }

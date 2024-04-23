@@ -9,7 +9,7 @@ export const ComponentUnderTest = (props: PaginationRootProps) => (
       {(pagination) =>
         pagination.pages.map((page, index) =>
           page.type === 'page' ? (
-            <Pagination.Item key={page.value} {...page}>
+            <Pagination.Item key={index} {...page}>
               {page.value}
             </Pagination.Item>
           ) : (

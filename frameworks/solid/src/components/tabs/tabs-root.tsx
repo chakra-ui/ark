@@ -22,7 +22,7 @@ export const TabsRoot = (props: TabsRootProps) => {
     'getRootNode',
     'id',
     'ids',
-    'loop',
+    'loopFocus',
     'onFocusChange',
     'onValueChange',
     'orientation',

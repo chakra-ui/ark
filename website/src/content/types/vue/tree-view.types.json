@@ -21,7 +21,11 @@
     }
   },
   "Branch": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
+    "value": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The id of the item or branch"
+    },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -55,7 +59,11 @@
     }
   },
   "Item": {
-    "id": { "type": "string", "isRequired": true, "description": "The id of the item or branch" },
+    "value": {
+      "type": "string",
+      "isRequired": true,
+      "description": "The id of the item or branch"
+    },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -87,12 +95,12 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "defaultExpandedIds": {
+    "defaultExpandedValue": {
       "type": "string[]",
       "isRequired": false,
       "description": "The initial expanded ids of the tree view."
     },
-    "defaultSelectedIds": {
+    "defaultSelectedValue": {
       "type": "string[]",
       "isRequired": false,
       "description": "The initial selected ids of the tree view."
@@ -103,12 +111,12 @@
       "isRequired": false,
       "description": "The document's text/writing direction."
     },
-    "expandedIds": {
+    "expandedValue": {
       "type": "string[]",
       "isRequired": false,
       "description": "The id of the expanded nodes"
     },
-    "focusedId": {
+    "focusedValue": {
       "type": "string",
       "isRequired": false,
       "description": "The id of the focused node"
@@ -144,7 +152,7 @@
       "isRequired": false,
       "description": "Whether clicking on a branch should open it or not"
     },
-    "selectedIds": {
+    "selectedValue": {
       "type": "string[]",
       "isRequired": false,
       "description": "The id of the selected nodes"
@@ -154,6 +162,11 @@
       "defaultValue": "\"single\"",
       "isRequired": false,
       "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
+    },
+    "typeahead": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the tree supports typeahead search"
     }
   },
   "Tree": {

@@ -71,11 +71,6 @@
       "isRequired": false,
       "description": "Whether to add a tag when you paste values into the tag input"
     },
-    "allowEditTag": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether a tag can be edited after creation.\nIf `true` and focus is on a tag, pressing `Enter`or double clicking will edit the tag."
-    },
     "allowOverflow": {
       "type": "boolean",
       "isRequired": false,
@@ -118,6 +113,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the tags input should be disabled"
+    },
+    "editable": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether a tag can be edited after creation.\nIf `true` and focus is on a tag, pressing `Enter`or double clicking will edit the tag."
     },
     "form": {
       "type": "string",
@@ -165,6 +165,11 @@
       "type": "(details: HighlightChangeDetails) => void",
       "isRequired": false,
       "description": "Callback fired when a tag is highlighted by pointer or keyboard navigation"
+    },
+    "onInputValueChange": {
+      "type": "(details: InputValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Callback fired when the input value is updated"
     },
     "onInteractOutside": {
       "type": "(event: InteractOutsideEvent) => void",

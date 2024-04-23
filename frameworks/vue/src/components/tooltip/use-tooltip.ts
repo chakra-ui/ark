@@ -37,11 +37,7 @@ export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseT
     () => reactiveContext.open,
     (value) => {
       if (value === undefined) return
-      if (value) {
-        api.value.open()
-      } else {
-        api.value.close()
-      }
+      api.value.setOpen(value)
     },
   )
 

@@ -11,7 +11,6 @@ export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, UseTagsI
 export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((props, ref) => {
   const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
-    'allowEditTag',
     'allowOverflow',
     'autoFocus',
     'blurBehavior',
@@ -19,6 +18,7 @@ export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((p
     'delimiter',
     'dir',
     'disabled',
+    'editable',
     'form',
     'getRootNode',
     'id',
@@ -30,6 +30,7 @@ export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((p
     'name',
     'onFocusOutside',
     'onHighlightChange',
+    'onInputValueChange',
     'onInteractOutside',
     'onPointerDownOutside',
     'onValueChange',

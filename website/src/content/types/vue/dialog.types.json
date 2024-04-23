@@ -40,7 +40,7 @@
       "isRequired": false,
       "description": "Human readable label for the dialog, in event the dialog title is not rendered"
     },
-    "closeOnEscapeKeyDown": {
+    "closeOnEscape": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to close the dialog when the escape key is pressed"

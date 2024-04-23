@@ -22,7 +22,7 @@ export const MenuRoot = defineComponent<MenuRootProps>(
       api.value.setParent(parentMachine)
     })
 
-    const isOpen = computed(() => api.value.isOpen)
+    const isOpen = computed(() => api.value.open)
 
     const presenceProps = computed(() => ({
       present: props.present || isOpen.value,

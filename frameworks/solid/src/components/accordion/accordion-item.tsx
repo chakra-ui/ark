@@ -27,7 +27,7 @@ export const AccordionItem = (props: AccordionItemProps) => {
     <AccordionItemPropsProvider value={itemProps}>
       <AccordionItemProvider value={itemState}>
         <Collapsible.Root
-          open={itemState().isOpen}
+          open={itemState().expanded}
           ids={{ content: itemContentProps.id }}
           {...renderStrategyProps}
           {...mergedProps}

@@ -12,7 +12,7 @@ export const MenuPositioner = (props: MenuPositionerProps) => {
   const mergedProps = mergeProps(() => context().positionerProps, props)
 
   return (
-    <Show when={!presence().isUnmounted}>
+    <Show when={!presence().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

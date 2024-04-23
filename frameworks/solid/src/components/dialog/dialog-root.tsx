@@ -20,7 +20,7 @@ export const DialogRoot = (props: DialogRootProps) => {
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
   const [useDialogProps, localProps] = createSplitProps<UseDialogProps>()(dialogProps, [
     'aria-label',
-    'closeOnEscapeKeyDown',
+    'closeOnEscape',
     'closeOnInteractOutside',
     'dir',
     'finalFocusEl',
@@ -42,7 +42,7 @@ export const DialogRoot = (props: DialogRootProps) => {
   ])
 
   const api = useDialog(useDialogProps)
-  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().isOpen })))
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
 
   return (
     <DialogProvider value={api}>

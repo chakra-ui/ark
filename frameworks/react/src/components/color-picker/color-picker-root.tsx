@@ -46,7 +46,7 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
     ],
   )
   const colorPicker = useColorPicker(useColorPickerProps)
-  const presence = usePresence(mergeProps({ present: colorPicker.isOpen }, presenceProps))
+  const presence = usePresence(mergeProps({ present: colorPicker.open }, presenceProps))
   const mergedProps = mergeProps(colorPicker.rootProps, localProps)
 
   return (

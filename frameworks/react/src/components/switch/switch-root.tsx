@@ -22,6 +22,7 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
     'label',
     'name',
     'onCheckedChange',
+    'readOnly',
     'required',
     'value',
   ])

@@ -13,7 +13,7 @@ export const InitialValue = () => (
               <RatingGroup.Item index={index()}>
                 <RatingGroup.ItemContext>
                   {(context) => (
-                    <Show when={context().isHighlighted} fallback={<StarIcon />}>
+                    <Show when={context().highlighted} fallback={<StarIcon />}>
                       <StarIcon fill="current" />
                     </Show>
                   )}

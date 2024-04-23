@@ -14,7 +14,7 @@ export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
     'getRootNode',
     'id',
     'ids',
-    'loop',
+    'loopFocus',
     'multiple',
     'onValueChange',
     'orientation',

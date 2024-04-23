@@ -9,7 +9,7 @@ export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
   /**
    * The initial focused index of the tree view.
    */
-  defaultFocusedId?: treeView.Context['focusedId']
+  defaultFocusedId?: treeView.Context['focusedValue']
 }
 
 export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> {}

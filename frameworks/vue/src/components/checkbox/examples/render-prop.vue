@@ -5,9 +5,9 @@ import { Checkbox } from '../..'
 <template>
   <Checkbox.Root>
     <Checkbox.Control>
-      <Checkbox.Context v-slot="{ isChecked, isIndeterminate }">
-        <span v-if="isChecked">✓</span>
-        <span v-if="isIndeterminate">-</span>
+      <Checkbox.Context v-slot="{ checked, indeterminate }">
+        <span v-if="checked">✓</span>
+        <span v-if="indeterminate">-</span>
       </Checkbox.Context>
     </Checkbox.Control>
     <Checkbox.Label>Checkbox</Checkbox.Label>

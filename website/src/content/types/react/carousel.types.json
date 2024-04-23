@@ -30,7 +30,7 @@
     }
   },
   "Item": {
-    "index": { "type": "number", "isRequired": true },
+    "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
     "asChild": {
       "type": "boolean",
       "isRequired": false,

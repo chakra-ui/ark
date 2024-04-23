@@ -6,8 +6,8 @@ export const props = {
   'aria-label': {
     type: String as PropType<Context['aria-label']>,
   },
-  closeOnEscapeKeyDown: {
-    type: Boolean as PropType<Context['closeOnEscapeKeyDown']>,
+  closeOnEscape: {
+    type: Boolean as PropType<Context['closeOnEscape']>,
     default: undefined,
   },
   closeOnInteractOutside: {

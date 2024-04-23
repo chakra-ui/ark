@@ -19,6 +19,7 @@ export const CheckboxRoot = (props: CheckboxRootProps) => {
     'invalid',
     'name',
     'onCheckedChange',
+    'readOnly',
     'required',
     'value',
   ])

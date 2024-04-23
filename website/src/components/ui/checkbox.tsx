@@ -1,8 +1,8 @@
 import { Checkbox as ArkCheckbox, type CheckboxRootProps } from '@ark-ui/react/checkbox'
-import { forwardRef, type ReactNode } from 'react'
+import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
-import { checkbox, type CheckboxVariantProps } from 'styled-system/recipes'
+import { type CheckboxVariantProps, checkbox } from 'styled-system/recipes'
 import type { Assign, JsxStyleProps } from 'styled-system/types'
 
 export interface CheckboxProps
@@ -27,8 +27,8 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>((props, ref)
         {(state) => (
           <>
             <ArkCheckbox.Control className={styles.control}>
-              {state.isChecked && <CheckIcon />}
-              {state.isIndeterminate && <MinusIcon />}
+              {state.checked && <CheckIcon />}
+              {state.indeterminate && <MinusIcon />}
             </ArkCheckbox.Control>
             {children && <ArkCheckbox.Label className={styles.label}>{children}</ArkCheckbox.Label>}
           </>

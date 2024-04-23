@@ -10,7 +10,7 @@ export const CustomControls = () => (
     <Editable.Context>
       {(editable) => (
         <Editable.Control>
-          {editable.isEditing ? (
+          {editable.editing ? (
             <>
               <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
               <Editable.CancelTrigger>Cancel</Editable.CancelTrigger>

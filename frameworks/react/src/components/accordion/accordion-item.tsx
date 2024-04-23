@@ -28,7 +28,7 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
         {/* @ts-expect-error TODO fix dir typing */}
         <Collapsible.Root
           ref={ref}
-          open={item.isOpen}
+          open={item.expanded}
           ids={{ content: itemContentProps.id }}
           {...renderStrategy}
           {...mergedProps}

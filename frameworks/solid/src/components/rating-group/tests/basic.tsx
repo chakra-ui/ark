@@ -12,8 +12,8 @@ export const ComponentUnderTest = (props: RatingGroupRootProps) => (
               <RatingGroup.Item index={index()}>
                 <RatingGroup.ItemContext>
                   {(api) => {
-                    if (api().isHalf) return 'half'
-                    if (api().isHighlighted) return 'highlighted'
+                    if (api().half) return 'half'
+                    if (api().highlighted) return 'highlighted'
                     return 'empty'
                   }}
                 </RatingGroup.ItemContext>

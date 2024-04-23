@@ -12,7 +12,7 @@ export const DialogContent = defineComponent<DialogContentProps>(
     const presence = usePresenceContext()
 
     return () =>
-      presence.value.isUnmounted ? null : (
+      presence.value.unmounted ? null : (
         <ark.div {...dialog.value.contentProps} {...presence.value.presenceProps} {...attrs}>
           {slots.default?.()}
         </ark.div>

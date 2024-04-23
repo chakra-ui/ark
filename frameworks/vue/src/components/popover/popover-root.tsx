@@ -11,7 +11,7 @@ export const PopoverRoot = defineComponent<PopoverRootProps>(
   (props, { slots, emit }) => {
     const api = usePopover(props, emit)
 
-    const isOpen = computed(() => api.value.isOpen)
+    const isOpen = computed(() => api.value.open)
 
     const presenceProps = computed(() => ({
       present: props.present || isOpen.value,

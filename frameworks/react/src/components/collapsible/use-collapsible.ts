@@ -43,13 +43,13 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
   const [state, send] = useMachine(collapsible.machine(initialContext), { context })
   const api = collapsible.connect(state, send, normalizeProps)
 
-  if (api.isVisible) {
+  if (api.visible) {
     wasVisible.current = true
   }
 
   const isUnmounted =
-    (!api.isVisible && !wasVisible.current && lazyMount) ||
-    (unmountOnExit && !api.isVisible && wasVisible.current)
+    (!api.visible && !wasVisible.current && lazyMount) ||
+    (unmountOnExit && !api.visible && wasVisible.current)
 
   return { ...api, isUnmounted }
 }

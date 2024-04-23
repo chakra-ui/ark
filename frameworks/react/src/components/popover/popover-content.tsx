@@ -11,7 +11,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((p
   const presence = usePresenceContext()
   const mergedProps = mergeProps(popover.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

@@ -11,7 +11,7 @@ export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((pro
   const presence = usePresenceContext()
   const mergedProps = mergeProps(dialog.contentProps, presence.getPresenceProps(ref), props)
 
-  if (presence.isUnmounted) {
+  if (presence.unmounted) {
     return null
   }
 

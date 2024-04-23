@@ -8,7 +8,7 @@ import { Switch } from '../..'
       <Switch.Thumb />
     </Switch.Control>
     <Switch.Context v-slot="api">
-      <Switch.Label>Feature is {{ api.isChecked ? 'enabled' : 'disabled' }}</Switch.Label>
+      <Switch.Label>Feature is {{ api.checked ? 'enabled' : 'disabled' }}</Switch.Label>
     </Switch.Context>
   </Switch.Root>
 </template>

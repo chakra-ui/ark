@@ -16,8 +16,8 @@ export interface TreeViewItemProps
 
 export const TreeViewItem = (props: TreeViewItemProps) => {
   const [_itemProps, localProps] = createSplitProps<UseTreeViewItemPropsContext>()(props, [
-    'id',
     'disabled',
+    'value',
   ])
   const api = useTreeViewContext()
   const depth = useTreeViewDepthContext()

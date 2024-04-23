@@ -12,7 +12,7 @@ export const TooltipPositioner = (props: TooltipPositionerProps) => {
   const mergedProps = mergeProps(() => api().positionerProps, props)
 
   return (
-    <Show when={!presenceApi().isUnmounted}>
+    <Show when={!presenceApi().unmounted}>
       <ark.div {...mergedProps} />
     </Show>
   )

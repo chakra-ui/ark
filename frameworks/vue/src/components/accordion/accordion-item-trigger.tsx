@@ -14,7 +14,7 @@ export const AccordionItemTrigger = defineComponent<AccordionItemTriggerProps>(
     const triggerProps = computed(() => accordion.value.getItemTriggerProps(itemProps))
 
     const ariaProps = computed(() => ({
-      'aria-controls': collapsible.value.isUnmounted
+      'aria-controls': collapsible.value.unmounted
         ? undefined
         : triggerProps.value['aria-controls'],
     }))
