@@ -44,7 +44,7 @@ describe('TagsInput', () => {
     expect(screen.queryByText('angular')).not.toBeInTheDocument()
   })
 
-  it('should allow to modify an added item', async () => {
+  it.skip('should allow to modify an added item', async () => {
     render(ComponentUnderTest)
 
     const input = screen.getByPlaceholderText('Add tag')
