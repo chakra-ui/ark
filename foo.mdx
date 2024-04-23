@@ -12,9 +12,6 @@ export type RootProps = ExtractPublicPropTypes<typeof props>
 
 ```vue
 <script setup lang="ts">
-import { computed } from 'vue'
-import { AvatarFallback, AvatarImage, AvatarRoot, type AvatarRootEmits } from '../'
-import { useForwardPropsEmits } from '../../../utils'
 import type { RootProps } from '../avatar.props'
 
 export interface AvatarProps extends RootProps {
@@ -28,7 +25,7 @@ const props = defineProps<AvatarProps>()
 <template></template>
 ```
 
-```bash
+```txt
 Error: [@vue/compiler-sfc] Failed to resolve extends base type.
 If this previously worked in 3.2, you can instruct the compiler to ignore this extend by adding /* @vue-ignore */ before it, for example:
 
@@ -36,10 +33,9 @@ interface Props extends /* @vue-ignore */ Base {}
 
 Note: both in 3.2 or with the ignore, the properties in the base type are treated as fallthrough attrs at runtime.
 
-/Users/christian/Workspace/ark-ui/frameworks/vue/src/components/avatar/examples/closed.vue
-5  |  import type { Props } from '../avatar.props'
+5  |  import type { RootProps } from '../avatar.props'
 6  |  
-7  |  export interface AvatarProps extends Props {
+7  |  export interface AvatarProps extends RootProps {
    |                                       ^^^^^
 8  |    src?: string
 9  |    name: string
