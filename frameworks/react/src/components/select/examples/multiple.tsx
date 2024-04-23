@@ -24,8 +24,8 @@ export const Multiple = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            <Select.ItemGroup id="framework">
-              <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+            <Select.ItemGroup>
+              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
               {items.map((item) => (
                 <Select.Item key={item.value} item={item}>
                   <Select.ItemText>{item.label}</Select.ItemText>

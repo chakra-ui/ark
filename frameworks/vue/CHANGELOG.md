@@ -21,6 +21,15 @@ description: All notable changes to this project will be documented in this file
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
+- Made the `id` attribute optional for `<Select.ItemGroup>` and  removed `htmlFor` from `<Select.ItemGroupLabel>`.
+
+```diff
+- <Select.ItemGroup id="framework">
+-   <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
++ <Select.ItemGroup>
++   <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+```
+
 ## [1.0.0-0] - 2024-04-19
 
 ### Added

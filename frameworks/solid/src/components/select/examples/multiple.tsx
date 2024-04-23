@@ -20,7 +20,7 @@ export const Multiple = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            <Select.ItemGroup id="framework">
+            <Select.ItemGroup>
               <Index each={items}>
                 {(item) => (
                   <Select.Item item={item()}>

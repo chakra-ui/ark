@@ -29,8 +29,8 @@ export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items
       <Portal>
         <Select.Positioner data-testid="positioner">
           <Select.Content>
-            <Select.ItemGroup id="framework">
-              <Select.ItemGroupLabel for="framework">Frameworks</Select.ItemGroupLabel>
+            <Select.ItemGroup>
+              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
                   <Select.Item item={item}>

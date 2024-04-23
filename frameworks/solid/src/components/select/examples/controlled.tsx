@@ -30,8 +30,8 @@ export const Controlled = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            <Select.ItemGroup id="framework">
-              <Select.ItemGroupLabel for="framework">Frameworks</Select.ItemGroupLabel>
+            <Select.ItemGroup>
+              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
               <Index each={items}>
                 {(item) => (
                   <Select.Item item={item()}>

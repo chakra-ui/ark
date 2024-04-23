@@ -1,29 +1,22 @@
-import type { ItemGroupLabelProps } from '@zag-js/select'
-import { type PropType, defineComponent } from 'vue'
-import type { Assign } from '../../types'
+import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
 
-export interface SelectItemGroupLabelProps
-  extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
+export interface SelectItemGroupLabelProps extends HTMLArkProps<'div'> {}
 
 export const SelectItemGroupLabel = defineComponent<SelectItemGroupLabelProps>(
-  (props, { slots, attrs }) => {
-    const api = useSelectContext()
+  (_, { slots, attrs }) => {
+    const select = useSelectContext()
+    const itemGroupProps = useSelectItemGroupPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemGroupLabelProps(props)} {...attrs}>
+      <ark.div {...select.value.getItemGroupLabelProps({ htmlFor: itemGroupProps.id })} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
   },
   {
     name: 'SelectItemGroupLabel',
-    props: {
-      htmlFor: {
-        type: String as PropType<SelectItemGroupLabelProps['htmlFor']>,
-        required: true,
-      },
-    },
   },
 )

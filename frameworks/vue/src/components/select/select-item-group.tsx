@@ -1,17 +1,20 @@
-import type { ItemGroupProps } from '@zag-js/select'
-import { type PropType, defineComponent } from 'vue'
-import type { Assign } from '../../types'
+import { type PropType, computed, defineComponent } from 'vue'
+import { useId } from '../../utils'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
 
-export interface SelectItemGroupProps extends Assign<HTMLArkProps<'div'>, ItemGroupProps> {}
+export interface SelectItemGroupProps extends HTMLArkProps<'div'> {}
 
 export const SelectItemGroup = defineComponent<SelectItemGroupProps>(
   (props, { slots, attrs }) => {
-    const api = useSelectContext()
+    const select = useSelectContext()
+    const id = useId()
+    const itemGroupProps = computed(() => ({ id: props.id ? props.id : id.value }))
 
+    SelectItemGroupPropsProvider(itemGroupProps.value)
     return () => (
-      <ark.div {...api.value.getItemGroupProps(props)} {...attrs}>
+      <ark.div {...select.value.getItemGroupProps(itemGroupProps.value)} {...attrs}>
         {slots.default?.()}
       </ark.div>
     )
@@ -21,7 +24,7 @@ export const SelectItemGroup = defineComponent<SelectItemGroupProps>(
     props: {
       id: {
         type: String as PropType<SelectItemGroupProps['id']>,
-        required: true,
+        required: false,
       },
     },
   },

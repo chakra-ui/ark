@@ -25,8 +25,8 @@ const items = ref([
     <Teleport to="body">
       <Select.Positioner>
         <Select.Content>
-          <Select.ItemGroup id="framework">
-            <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
+          <Select.ItemGroup>
+            <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
             <Select.Item v-for="item in items" :key="item.value" :item="item">
               <Select.ItemText>{{ item.label }}</Select.ItemText>
               <Select.ItemIndicator>✓</Select.ItemIndicator>
