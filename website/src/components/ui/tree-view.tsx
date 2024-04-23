@@ -7,7 +7,7 @@ import { treeView } from 'styled-system/recipes'
 import type { Assign, JsxStyleProps } from 'styled-system/types'
 
 interface Child {
-  id: string
+  value: string
   name: string
   children?: Child[]
 }
@@ -27,7 +27,7 @@ export const TreeView = forwardRef<HTMLDivElement, TreeViewProps>((props, ref) =
   const styles = treeView()
 
   const renderChild = (child: Child) => (
-    <ArkTreeView.Branch key={child.id} id={child.id} className={styles.branch}>
+    <ArkTreeView.Branch key={child.value} value={child.value} className={styles.branch}>
       <ArkTreeView.BranchControl className={styles.branchControl}>
         <ArkTreeView.BranchIndicator className={styles.branchIndicator}>
           <ChevronRightIcon />
@@ -36,10 +36,11 @@ export const TreeView = forwardRef<HTMLDivElement, TreeViewProps>((props, ref) =
       </ArkTreeView.BranchControl>
       <ArkTreeView.BranchContent className={styles.branchContent}>
         {child.children?.map((child) =>
+          // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
           child.children ? (
             renderChild(child)
           ) : (
-            <ArkTreeView.Item key={child.id} id={child.id} className={styles.item}>
+            <ArkTreeView.Item key={child.value} value={child.value} className={styles.item}>
               <ArkTreeView.ItemText className={styles.itemText}>{child.name}</ArkTreeView.ItemText>
             </ArkTreeView.Item>
           ),

@@ -19,7 +19,7 @@ export const Demo = (props: Editable.RootProps) => {
               <Editable.Preview />
             </Editable.Area>
             <Editable.Control>
-              {api.isEditing ? (
+              {api.editing ? (
                 <>
                   <Editable.SubmitTrigger asChild>
                     <Button variant="link">Save</Button>
