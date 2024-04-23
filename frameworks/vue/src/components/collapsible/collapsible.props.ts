@@ -24,10 +24,6 @@ export const props = {
     type: Boolean as PropType<Context['open']>,
     default: undefined,
   },
-  'open.controlled': {
-    type: Boolean as PropType<Context['open.controlled']>,
-    default: undefined,
-  },
   lazyMount: {
     type: Boolean as PropType<RenderStrategyProps['lazyMount']>,
     default: undefined,

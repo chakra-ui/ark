@@ -3,7 +3,7 @@ import { Dialog } from '../..'
 
 export const Basic = () => {
   return (
-    <Dialog.Root>
+    <Dialog.Root open>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />

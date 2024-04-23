@@ -39,6 +39,7 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
     () => ({
       id: createUniqueId(),
       getRootNode,
+      'open.controlled': props.open !== undefined,
       focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,
       value: localProps.value ? datePicker.parse(localProps.value) : undefined,
       max: localProps.max ? datePicker.parse(localProps.max) : undefined,

@@ -9,7 +9,10 @@ export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const context = mergeProps(
+    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
+    props,
+  )
 
   const [state, send] = useMachine(popover.machine(context), { context })
   return createMemo(() => popover.connect(state, send, normalizeProps))

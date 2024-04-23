@@ -2,7 +2,7 @@ import { Portal } from 'solid-js/web'
 import { Tooltip } from '../..'
 
 export const Basic = () => (
-  <Tooltip.Root>
+  <Tooltip.Root open>
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
       <Tooltip.Positioner>

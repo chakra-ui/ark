@@ -9,7 +9,10 @@ export interface UseTooltipReturn extends Accessor<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const context = mergeProps(
+    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
+    props,
+  )
 
   const [state, send] = useMachine(tooltip.machine(context), { context })
   return createMemo(() => tooltip.connect(state, send, normalizeProps))

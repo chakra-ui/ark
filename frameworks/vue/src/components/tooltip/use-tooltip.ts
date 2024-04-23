@@ -1,6 +1,6 @@
 import * as tooltip from '@zag-js/tooltip'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, reactive, watch } from 'vue'
+import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
@@ -15,31 +15,22 @@ export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, '
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseTooltipReturn => {
-  const reactiveContext = reactive(props)
+  const context = ref(props)
   const getRootNode = useEnvironmentContext()
 
   const [state, send] = useMachine(
     tooltip.machine({
-      ...reactiveContext,
-      id: reactiveContext.id ?? useId().value,
+      id: useId().value,
       getRootNode,
+      ...context.value,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('open-change', details)
       },
     }),
+    { context },
   )
 
-  const api = computed(() => tooltip.connect(state.value, send, normalizeProps))
-
-  watch(
-    () => reactiveContext.open,
-    (value) => {
-      if (value === undefined) return
-      api.value.setOpen(value)
-    },
-  )
-
-  return api
+  return computed(() => tooltip.connect(state.value, send, normalizeProps))
 }

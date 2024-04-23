@@ -8,7 +8,7 @@ import { useId } from '../../utils'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<combobox.Context<T>, 'id'>, 'collection'> {
+    Omit<Optional<combobox.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
   modelValue?: combobox.Context<T>['value']
 }
 
@@ -35,6 +35,7 @@ export const useCombobox = <T extends CollectionItem>(
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode,
+      'open.controlled': props.open !== undefined,
       onHighlightChange: (details) => {
         emit('highlight-change', details)
       },

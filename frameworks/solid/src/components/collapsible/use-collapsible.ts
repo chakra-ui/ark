@@ -22,7 +22,10 @@ export interface UseCollapsibleReturn
 export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
   const getRootNode = useEnvironmentContext()
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, collapsibleProps)
+  const context = mergeProps(
+    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
+    collapsibleProps,
+  )
   const [state, send] = useMachine(collapsible.machine(context), { context })
   const [wasVisible, setWasVisible] = createSignal(false)
 

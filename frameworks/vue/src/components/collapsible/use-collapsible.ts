@@ -32,6 +32,7 @@ export const useCollapsible = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: environment,
+      'open.controlled': props.open !== undefined,
       onExitComplete: () => {
         emits('exitComplete')
       },
