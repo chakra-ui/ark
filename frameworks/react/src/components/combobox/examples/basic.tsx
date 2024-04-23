@@ -13,8 +13,8 @@ export const Basic = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content>
-            <Combobox.ItemGroup id="framework">
-              <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+            <Combobox.ItemGroup>
+              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
               {items.map((item) => (
                 <Combobox.Item key={item} item={item}>
                   <Combobox.ItemText>{item}</Combobox.ItemText>

@@ -27,8 +27,8 @@ export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'ite
       <Portal>
         <Combobox.Positioner data-testid="positioner">
           <Combobox.Content>
-            <Combobox.ItemGroup id="framework">
-              <Combobox.ItemGroupLabel for="framework">Frameworks</Combobox.ItemGroupLabel>
+            <Combobox.ItemGroup>
+              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
                   <Combobox.Item item={item}>

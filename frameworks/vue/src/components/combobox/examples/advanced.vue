@@ -21,8 +21,8 @@ const advancedItems = ref([
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.ItemGroup id="framework">
-            <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+          <Combobox.ItemGroup>
+            <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
             <Combobox.Item v-for="item in advancedItems" :key="item.value" :item="item">
               <Combobox.ItemText>{{ item.label }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>

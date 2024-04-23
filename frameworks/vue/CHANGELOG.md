@@ -10,6 +10,17 @@ description: All notable changes to this project will be documented in this file
 
 - Integrate `Collapsible` component with `Accordion` component
 
+### Changed
+
+- Made the `id` attribute optional for `<Combobox.ItemGroup>` and  removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
+
+```diff
+- <Combobox.ItemGroup id="framework">
+-   <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
++ <Combobox.ItemGroup>
++   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```
+
 ## [1.0.0-0] - 2024-04-19
 
 ### Added

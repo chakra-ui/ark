@@ -6,6 +6,17 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Made the `id` attribute optional for `<Combobox.ItemGroup>` and  removed `for` from `<Combobox.ItemGroupLabel>`.
+
+```diff
+- <Combobox.ItemGroup id="framework">
+-   <Combobox.ItemGroupLabel for="framework">Frameworks</Combobox.ItemGroupLabel>
++ <Combobox.ItemGroup>
++   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```
+
 ## [3.0.0-1] - 2024-04-11
 
 ### Fixed

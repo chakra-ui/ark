@@ -22,8 +22,8 @@ const testProps = ref<string[]>([])
     <Teleport to="body">
       <Combobox.Positioner data-testid="positioner">
         <Combobox.Content>
-          <Combobox.ItemGroup id="framework">
-            <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+          <Combobox.ItemGroup>
+            <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
             <Combobox.Item v-for="item in items" :key="item.value" :item="item">
               <Combobox.ItemText>{{ item.label }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>

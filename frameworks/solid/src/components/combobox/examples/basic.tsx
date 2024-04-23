@@ -15,8 +15,8 @@ export const Basic = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content>
-            <Combobox.ItemGroup id="framework">
-              <Combobox.ItemGroupLabel for="framework">Frameworks</Combobox.ItemGroupLabel>
+            <Combobox.ItemGroup>
+              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
               <For each={items}>
                 {(item) => (
                   <Combobox.Item item={item}>

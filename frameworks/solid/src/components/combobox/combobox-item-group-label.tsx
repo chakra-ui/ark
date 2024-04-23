@@ -1,22 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
+import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
 
-interface ItemGroupLabelProps {
-  for: string
-}
-
-export interface ComboboxItemGroupLabelProps
-  extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
+export interface ComboboxItemGroupLabelProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxItemGroupLabel = (props: ComboboxItemGroupLabelProps) => {
-  const [labelProps, localProps] = createSplitProps<ItemGroupLabelProps>()(props, ['for'])
-  const api = useComboboxContext()
+  const combobox = useComboboxContext()
+  const itemGroupProps = useComboboxItemGroupPropsContext()
   const mergedProps = mergeProps(
-    () => api().getItemGroupLabelProps({ htmlFor: labelProps.for }),
-    localProps,
+    () => combobox().getItemGroupLabelProps({ htmlFor: itemGroupProps.id }),
+    props,
   )
 
   return <ark.div {...mergedProps} />

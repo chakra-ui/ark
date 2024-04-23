@@ -16,8 +16,8 @@ const items = ref(['React', 'Solid', 'Vue'])
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.ItemGroup id="framework">
-            <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+          <Combobox.ItemGroup>
+            <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
             <Combobox.Item v-for="item in items" :key="item" :item="item">
               <Combobox.ItemText>{{ item }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>

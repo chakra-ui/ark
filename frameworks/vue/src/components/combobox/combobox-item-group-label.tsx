@@ -1,29 +1,25 @@
-import type { ItemGroupLabelProps } from '@zag-js/combobox'
-import { type PropType, defineComponent } from 'vue'
-import type { Assign } from '../../types'
+import { defineComponent } from 'vue'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
+import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
 
-export interface ComboboxItemGroupLabelProps
-  extends Assign<HTMLArkProps<'div'>, ItemGroupLabelProps> {}
+export interface ComboboxItemGroupLabelProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxItemGroupLabel = defineComponent<ComboboxItemGroupLabelProps>(
-  (props, { slots, attrs }) => {
-    const api = useComboboxContext()
+  (_, { slots, attrs }) => {
+    const combobox = useComboboxContext()
+    const itemGroupProps = useComboboxItemGroupPropsContext()
 
     return () => (
-      <ark.div {...api.value.getItemGroupLabelProps(props)} {...attrs}>
+      <ark.div
+        {...combobox.value.getItemGroupLabelProps({ htmlFor: itemGroupProps.id })}
+        {...attrs}
+      >
         {slots.default?.()}
       </ark.div>
     )
   },
   {
     name: 'ComboboxItemGroupLabel',
-    props: {
-      htmlFor: {
-        type: String as PropType<ComboboxItemGroupLabelProps['htmlFor']>,
-        required: true,
-      },
-    },
   },
 )
