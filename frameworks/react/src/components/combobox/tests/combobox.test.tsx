@@ -89,7 +89,7 @@ describe('Combobox', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Open'))
-    await screen.findByTestId('positioner')
+    expect(await screen.findByTestId('positioner')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Open'))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

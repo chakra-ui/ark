@@ -1,6 +1,6 @@
 import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import { TagsInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tags-input.test.vue'
@@ -31,14 +31,13 @@ describe('TagsInput', () => {
     render(ComponentUnderTest)
 
     const input = screen.getByPlaceholderText('Add tag')
+    await user.type(input, 'angular[enter]')
 
-    await user.type(input, 'angular')
-    await user.keyboard('[Enter]')
+    expect(await screen.findByText('angular')).toHaveAttribute('data-scope', 'tags-input')
 
-    expect(screen.getByText('angular')).toBeInTheDocument()
-
-    await user.keyboard('[ArrowLeft]')
-    await user.keyboard('[Delete]')
+    await user.type(input, '[ArrowLeft]')
+    await user.type(input, '[ArrowLeft]')
+    await user.type(input, '[Delete]')
 
     expect(screen.queryByText('angular')).not.toBeInTheDocument()
   })
@@ -46,19 +45,15 @@ describe('TagsInput', () => {
   it('should allow to modify an added item', async () => {
     render(ComponentUnderTest)
 
-    await user.type(screen.getByPlaceholderText('Add tag'), 'angular')
-    await user.keyboard('[Enter]')
+    const input = screen.getByPlaceholderText('Add tag')
+    await user.type(input, 'angular[enter]')
 
     expect(screen.getByText('angular')).toBeInTheDocument()
 
-    await user.keyboard('[ArrowLeft]')
-    await user.keyboard('[Enter]')
-    await user.keyboard('[Backspace]')
+    expect(await screen.findByText('angular')).toHaveAttribute('data-scope', 'tags-input')
 
-    const input = screen.getByLabelText(
-      'Editing tag angular. Press enter to save or escape to cancel.',
-    )
-
+    await user.type(input, '[ArrowLeft]')
+    await user.type(input, '[ArrowLeft]')
     await user.clear(input)
     await user.type(input, 'svelte')
     await user.keyboard('[Enter]')
