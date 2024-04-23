@@ -1,6 +1,6 @@
 import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render, screen, waitFor } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import { TagsInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tags-input.test.vue'
