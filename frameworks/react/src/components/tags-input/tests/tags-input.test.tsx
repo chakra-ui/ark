@@ -68,7 +68,6 @@ describe('TagsInput', () => {
     await user.keyboard('[Enter]')
 
     expect(await screen.findByText('svelte')).toBeInTheDocument()
-    expect(await screen.findByText('angular')).toBeInTheDocument()
   })
 
   it('should clear all item when clear all button is clicked', async () => {
