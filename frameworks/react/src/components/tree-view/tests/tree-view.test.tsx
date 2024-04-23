@@ -11,7 +11,7 @@ describe('TreeView', () => {
 
   render(<ComponentUnderTest />)
 
-  it.skip.each(getParts(treeViewAnatomy))('should render part %s', async (part) => {
+  it.each(getParts(treeViewAnatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
