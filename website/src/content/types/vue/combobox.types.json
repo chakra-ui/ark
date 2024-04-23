@@ -28,7 +28,6 @@
     }
   },
   "ItemGroupLabel": {
-    "htmlFor": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
@@ -36,7 +35,6 @@
     }
   },
   "ItemGroup": {
-    "id": { "type": "string", "isRequired": true },
     "asChild": {
       "type": "boolean",
       "isRequired": false,
