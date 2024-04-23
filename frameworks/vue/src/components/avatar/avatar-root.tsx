@@ -1,18 +1,24 @@
 import type { StatusChangeDetails } from '@zag-js/avatar'
-import { defineComponent } from 'vue'
-import type { Assign } from '../../types'
-import { type HTMLArkProps, ark } from '../factory'
-import { emits, props } from './avatar.props'
-import { type UseAvatarProps, useAvatar } from './use-avatar'
+import type { Direction } from '@zag-js/types'
+import { type PropType, defineComponent } from 'vue'
+import { ark } from '../factory'
+import { useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
+
+export interface AvatarRootProps {
+  id?: string
+  dir?: Direction
+}
 
 export type AvatarRootEmits = {
   statusChange: [details: StatusChangeDetails]
 }
 
-export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
+export interface AvatarRootPropsWithEmits extends AvatarRootProps {
+  onStatusChange?: (details: StatusChangeDetails) => void
+}
 
-export const AvatarRoot = defineComponent<AvatarRootProps>(
+export const AvatarRoot = defineComponent<AvatarRootPropsWithEmits>(
   (props, { slots, attrs, emit }) => {
     const avatar = useAvatar(props, emit)
     AvatarProvider(avatar)
@@ -25,7 +31,14 @@ export const AvatarRoot = defineComponent<AvatarRootProps>(
   },
   {
     name: 'AvatarRoot',
-    props,
-    emits,
+    props: {
+      dir: {
+        type: String as PropType<AvatarRootProps['dir']>,
+      },
+      id: {
+        type: String as PropType<AvatarRootProps['id']>,
+      },
+    },
+    emits: ['statusChange'],
   },
 )
