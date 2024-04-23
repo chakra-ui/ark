@@ -33,8 +33,8 @@ export const Demo = (props: Omit<Combobox.RootProps, 'items'>) => {
       </Combobox.Control>
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.ItemGroup id="framework">
-            <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
+          <Combobox.ItemGroup>
+            <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
             {items.map((item) => (
               <Combobox.Item key={item.value} item={item}>
                 <Combobox.ItemText>{item.label}</Combobox.ItemText>
