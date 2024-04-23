@@ -15,8 +15,8 @@ import {
     <RatingGroupControl>
       <RatingGroupContext v-slot="ratingGroup">
         <RatingGroupItem v-for="item in ratingGroup.items" :key="item" :index="item">
-          <RatingGroupItemContext v-slot="{ isHighlighted }">
-            {{ item ? 'half' : isHighlighted ? 'highlighted' : 'empty' }}
+          <RatingGroupItemContext v-slot="{ highlighted }">
+            {{ item ? 'half' : highlighted ? 'highlighted' : 'empty' }}
           </RatingGroupItemContext>
         </RatingGroupItem>
       </RatingGroupContext>

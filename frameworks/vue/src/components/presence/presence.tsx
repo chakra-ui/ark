@@ -11,7 +11,7 @@ export const Presence = defineComponent<PresenceProps>(
     const api = usePresence(props, emit)
 
     return () =>
-      api.value.isUnmounted ? null : (
+      api.value.unmounted ? null : (
         <ark.div {...attrs} {...api.value.presenceProps} data-scope="presence" data-part="root">
           {slots.default?.()}
         </ark.div>

@@ -20,7 +20,7 @@ export const props = {
     type: Object as PropType<Context['ids']>,
   },
   loop: {
-    type: Boolean as PropType<Context['loop']>,
+    type: Boolean as PropType<Context['loopFocus']>,
     default: undefined,
   },
   multiple: {

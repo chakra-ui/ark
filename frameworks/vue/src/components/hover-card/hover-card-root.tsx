@@ -10,7 +10,7 @@ export interface HoverCardRootProps extends UseHoverCardProps, UsePresenceProps 
 export const HoverCardRoot = defineComponent<HoverCardRootProps>(
   (props, { slots, emit }) => {
     const hoverCard = useHoverCard(props, emit)
-    const isOpen = computed(() => hoverCard.value.isOpen)
+    const isOpen = computed(() => hoverCard.value.open)
 
     const presenceProps = computed(() => ({
       present: props.present || isOpen.value,

@@ -12,7 +12,7 @@ export const DialogTrigger = defineComponent<DialogTriggerProps>(
 
     const triggerProps = computed(() => ({
       ...dialog.value.triggerProps,
-      'aria-controls': presencedialog.value.isUnmounted
+      'aria-controls': presencedialog.value.unmounted
         ? undefined
         : dialog.value.triggerProps['aria-controls'],
     }))

@@ -9,8 +9,8 @@ import { CheckIcon, ClipboardCopyIcon } from './icons'
     <Clipboard.Control>
       <Clipboard.Input />
       <Clipboard.Trigger>
-        <Clipboard.Context v-slot="{ isCopied }">
-          <CheckIcon v-if="isCopied" />
+        <Clipboard.Context v-slot="{ copied }">
+          <CheckIcon v-if="copied" />
           <ClipboardCopyIcon v-else />
         </Clipboard.Context>
       </Clipboard.Trigger>

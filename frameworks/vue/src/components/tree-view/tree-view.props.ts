@@ -6,11 +6,11 @@ export const props = {
   dir: {
     type: String as PropType<Context['dir']>,
   },
-  expandedIds: {
-    type: Object as PropType<Context['expandedIds']>,
+  expandedValue: {
+    type: Object as PropType<Context['expandedValue']>,
   },
-  focusedId: {
-    type: String as PropType<Context['focusedId']>,
+  focusedValue: {
+    type: String as PropType<Context['focusedValue']>,
   },
   getRootNode: {
     type: Function as PropType<Context['getRootNode']>,
@@ -23,14 +23,14 @@ export const props = {
     default: true,
   },
   selectedIds: {
-    type: Object as PropType<Context['selectedIds']>,
+    type: Object as PropType<Context['selectedValue']>,
   },
   selectionMode: {
     type: String as PropType<Context['selectionMode']>,
     default: 'single',
   },
-  defaultFocusedId: {
-    type: String as PropType<Context['focusedId']>,
+  defaultFocusedValue: {
+    type: String as PropType<Context['focusedValue']>,
   },
 } as const
 export const emits = declareEmits(['focus-change', 'expanded-change', 'selection-change'])

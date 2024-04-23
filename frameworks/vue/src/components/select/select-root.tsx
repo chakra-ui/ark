@@ -18,7 +18,7 @@ export const SelectRoot = defineComponent<SelectRootProps<CollectionItem>>(
     const api = useSelect(props, emit)
 
     const presenceProps = computed(() => ({
-      present: props.present || api.value.isOpen,
+      present: props.present || api.value.open,
       lazyMount: props.lazyMount,
       unmountOnExit: props.unmountOnExit,
     }))

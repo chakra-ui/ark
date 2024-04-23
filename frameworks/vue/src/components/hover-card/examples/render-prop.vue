@@ -5,7 +5,7 @@ import { HoverCard } from '../..'
 <template>
   <HoverCard.Root>
     <HoverCard.Context v-slot="hoverCard">
-      <HoverCard.Trigger>Hover me {{ hoverCard.isOpen ? '▲' : '▼' }}</HoverCard.Trigger>
+      <HoverCard.Trigger>Hover me {{ hoverCard.open ? '▲' : '▼' }}</HoverCard.Trigger>
     </HoverCard.Context>
     <Teleport to="body">
       <HoverCard.Positioner>

@@ -24,7 +24,7 @@ export const AccordionItem = defineComponent<AccordionItemProps>(
     return () => (
       // @ts-expect-error TODO fix dir typing
       <Collapsible.Root
-        open={item.value.isOpen}
+        open={item.value.expanded}
         ids={{ content: itemContentProps.value.id }}
         {...accordion.value.getItemProps(props)}
         {...renderStrategyProps.value}

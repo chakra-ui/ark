@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { Menu } from '../'
 
 const items = ref(['react', 'solid', 'vue', 'svelte'])
-const isChecked = ref(false)
+const checked = ref(false)
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const isChecked = ref(false)
           <Menu.Item value="dialog" disabled>Dialog</Menu.Item>
         </Menu.ItemGroup>
         <Menu.Separator />
-        <Menu.CheckboxItem v-model:checked="isChecked" value="my-checkbox">
+        <Menu.CheckboxItem v-model:checked="checked" value="my-checkbox">
           <Menu.ItemIndicator>✅</Menu.ItemIndicator>
           <Menu.ItemText>Check me</Menu.ItemText>
         </Menu.CheckboxItem>

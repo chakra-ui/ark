@@ -17,7 +17,7 @@ import { Dialog } from '../..'
       </Dialog.Positioner>
     </Teleport>
     <Dialog.Context v-slot="dialog">
-      <p>Dialog is {{ dialog.isOpen ? 'open' : 'closed' }}</p>
+      <p>Dialog is {{ dialog.open ? 'open' : 'closed' }}</p>
     </Dialog.Context>
   </Dialog.Root>
 </template>

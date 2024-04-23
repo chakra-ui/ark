@@ -12,7 +12,7 @@ export const MenuTrigger = defineComponent<MenuTriggerProps>(
 
     const triggerProps = computed(() => ({
       ...api.value.triggerProps,
-      'aria-controls': presenceApi.value.isUnmounted
+      'aria-controls': presenceApi.value.unmounted
         ? undefined
         : api.value.triggerProps['aria-controls'],
     }))

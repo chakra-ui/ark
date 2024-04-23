@@ -7,8 +7,8 @@ export const props = {
     type: Boolean as PropType<Context['addOnPaste']>,
     default: undefined,
   },
-  allowEditTag: {
-    type: Boolean as PropType<Context['allowEditTag']>,
+  editable: {
+    type: Boolean as PropType<Context['editable']>,
     default: undefined,
   },
   allowOverflow: {

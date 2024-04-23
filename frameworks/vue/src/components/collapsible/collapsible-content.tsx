@@ -9,7 +9,7 @@ export const CollapsibleContent = defineComponent<CollapsibleContentProps>(
     const collapsible = useCollapsibleContext()
 
     return () =>
-      collapsible.value.isUnmounted ? null : (
+      collapsible.value.unmounted ? null : (
         <ark.div {...collapsible.value.contentProps} {...attrs}>
           {slots.default?.()}
         </ark.div>

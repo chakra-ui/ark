@@ -17,7 +17,7 @@ export const ComboboxRoot = defineComponent<ComboboxRootProps<CollectionItem>>(
   (props, { slots, attrs, emit }) => {
     const api = useCombobox(props, emit)
 
-    const isOpen = computed(() => api.value.isOpen)
+    const isOpen = computed(() => api.value.open)
 
     const presenceProps = computed(() => ({
       present: props.present || isOpen.value,

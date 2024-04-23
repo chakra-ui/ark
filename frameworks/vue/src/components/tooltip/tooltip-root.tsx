@@ -11,7 +11,7 @@ export const TooltipRoot = defineComponent<TooltipRootProps>(
   (props, { slots, emit }) => {
     const api = useTooltip(props, emit)
 
-    const isOpen = computed(() => api.value.isOpen)
+    const isOpen = computed(() => api.value.open)
 
     const presenceProps = computed(() => ({
       present: props.present || isOpen.value,

@@ -6,7 +6,7 @@ import { AvatarContext, AvatarFallback, AvatarImage, AvatarRoot } from '..'
   <AvatarRoot>
     <AvatarContext v-slot="avatar">
       <AvatarFallback>
-        {{ avatar.isLoaded ? 'PA' : 'Loading' }}
+        {{ avatar.loaded ? 'PA' : 'Loading' }}
       </AvatarFallback>
     </AvatarContext>
     <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />

@@ -14,7 +14,7 @@ interface Collapsible extends collapsible.Api<PropTypes> {
   /**
    * Whether the content is unmounted
    */
-  isUnmounted?: boolean
+  unmounted?: boolean
 }
 
 export interface UseCollapsibleReturn extends ComputedRef<Collapsible> {}
@@ -41,9 +41,9 @@ export const useCollapsible = (
   const api = computed(() => collapsible.connect(state.value, send, normalizeProps))
 
   watch(
-    () => api.value.isVisible,
+    () => api.value.visible,
     () => {
-      if (api.value.isVisible) {
+      if (api.value.visible) {
         wasVisible.value = true
       }
     },
@@ -51,8 +51,8 @@ export const useCollapsible = (
 
   return computed(() => ({
     ...api.value,
-    isUnmounted:
-      (!api.value.isVisible && !wasVisible.value && context.value.lazyMount) ||
-      (context.value?.unmountOnExit && !api.value.isVisible && wasVisible.value),
+    unmounted:
+      (!api.value.visible && !wasVisible.value && context.value.lazyMount) ||
+      (context.value?.unmountOnExit && !api.value.visible && wasVisible.value),
   }))
 }

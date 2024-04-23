@@ -23,7 +23,7 @@ export const TabContent = defineComponent<TabContentProps>(
     PresenceProvider(presenceApi)
 
     return () =>
-      presenceApi.value.isUnmounted ? null : (
+      presenceApi.value.unmounted ? null : (
         <ark.div
           {...api.value.getContentProps(props)}
           {...presenceApi.value.presenceProps}

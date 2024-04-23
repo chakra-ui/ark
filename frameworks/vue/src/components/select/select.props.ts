@@ -34,7 +34,7 @@ export const props = {
     default: undefined,
   },
   loop: {
-    type: Boolean as PropType<Context['loop']>,
+    type: Boolean as PropType<Context['loopFocus']>,
     default: undefined,
   },
   multiple: {
@@ -53,10 +53,6 @@ export const props = {
   },
   readOnly: {
     type: Boolean as PropType<Context['readOnly']>,
-    default: undefined,
-  },
-  selectOnBlur: {
-    type: Boolean as PropType<Context['selectOnBlur']>,
     default: undefined,
   },
   modelValue: {

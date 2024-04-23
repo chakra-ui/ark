@@ -5,13 +5,13 @@ import { Menu } from '../..'
 <template>
   <Menu.Root>
     <Menu.Context v-slot="menu">
-      <Menu.Trigger>Menu is {{ menu.isOpen ? 'open' : 'closed' }}</Menu.Trigger>
+      <Menu.Trigger>Menu is {{ menu.open ? 'open' : 'closed' }}</Menu.Trigger>
     </Menu.Context>
     <Menu.Positioner>
       <Menu.Content>
         <Menu.Item value="react">
           <Menu.ItemContext v-slot="item">
-            React is {{ item.isHighlighted ? 'highlighted' : 'not highlighted' }}
+            React is {{ item.highlighted ? 'highlighted' : 'not highlighted' }}
           </Menu.ItemContext>
         </Menu.Item>
         <Menu.Item value="solid">Solid</Menu.Item>
