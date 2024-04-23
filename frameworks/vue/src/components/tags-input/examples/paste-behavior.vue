@@ -13,9 +13,11 @@ import { TagsInput } from '../..'
           :index="index"
           :value="value"
         >
-          <TagsInput.ItemInput />
-          <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
-          <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+          <TagsInput.ItemPreview>
+            <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
+            <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+            <TagsInput.ItemInput />
+          </TagsInput.ItemPreview>
         </TagsInput.Item>
         <TagsInput.Input placeholder="Add Framework" />
         <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
