@@ -1,12 +1,17 @@
+import { parse } from 'node:path'
+import { globby } from 'globby'
 import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
+import { chain } from 'voca'
 
-const main = async () => {
+const extractTypes = (component: string) => {
+  const camelCaseComponent = chain(component).camelCase().value()
+
   const project = new Project()
   const sourceFile = project.addSourceFileAtPath(
-    '../frameworks/vue/src/components/accordion/use-accordion.ts',
+    `../frameworks/vue/src/components/${component}/use-${component}.ts`,
   )
   const outputFile = project.createSourceFile(
-    '../frameworks/vue/src/components/accordion-sfc/accordion.types.ts',
+    `../frameworks/vue/src/components/${component}/${component}.types.ts`,
     '',
     {
       overwrite: true,
@@ -14,7 +19,7 @@ const main = async () => {
   )
 
   const propperties = sourceFile
-    .getInterfaceOrThrow('UseAccordionProps')
+    .getInterfaceOrThrow(`Use${chain(component).camelCase().capitalize().value()}Props`)
     .getType()
     .getProperties()
     .sort((a, b) => (a.getName() > b.getName() ? 1 : -1))
@@ -28,7 +33,7 @@ const main = async () => {
           declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`),
         )
       return {
-        name: property.getName(),
+        name: `"${property.getName()}"`,
         type: property.getTypeAtLocation(sourceFile).getText(sourceFile),
         hasQuestionToken: property.isOptional(),
         leadingTrivia: comment,
@@ -74,19 +79,19 @@ const main = async () => {
   }
 
   outputFile.addImportDeclaration({
-    moduleSpecifier: '@zag-js/accordion',
-    namespaceImport: 'accordion',
+    moduleSpecifier: `@zag-js/${component}`,
+    namespaceImport: camelCaseComponent === 'switch' ? 'zagSwitch' : camelCaseComponent,
     isTypeOnly: true,
   })
 
   outputFile.addInterface({
-    name: 'AccordionRootProps',
+    name: `${chain(component).camelCase().capitalize().value()}RootProps`,
     isExported: true,
     properties: props,
   })
 
   outputFile.addTypeAlias({
-    name: 'AccordionRootEmits',
+    name: `${chain(component).camelCase().capitalize().value()}RootEmits`,
     isExported: true,
     type: `{ ${emits
       .map(
@@ -98,6 +103,23 @@ const main = async () => {
   })
 
   outputFile.saveSync()
+}
+
+const main = async () => {
+  const components = await globby(['../frameworks/vue/src/components'], {
+    onlyDirectories: true,
+    deep: 1,
+  })
+  components
+    .map((component) => parse(component).name)
+    .filter((component) => ['rating-group'].includes(component))
+
+    // .filter((component) => !['toast', 'format'].includes(component))
+    .map((component) => {
+      const componentName = parse(component).name
+      console.log(`Generating types for ${componentName}`)
+      extractTypes(componentName)
+    })
 }
 
 main().catch((err) => {

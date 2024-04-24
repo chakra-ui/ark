@@ -1,15 +1,15 @@
-import * as rating from '@zag-js/rating-group'
+import * as ratingGroup from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
 
-export interface UseRatingGroupProps extends Optional<rating.Context, 'id'> {
-  modelValue?: rating.Context['value']
+export interface UseRatingGroupProps extends Optional<ratingGroup.Context, 'id'> {
+  modelValue?: ratingGroup.Context['value']
 }
 
-export interface UseRatingGroupReturn extends ComputedRef<rating.Api<PropTypes>> {}
+export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTypes>> {}
 
 export const useRatingGroup = (
   props: UseRatingGroupProps,
@@ -25,7 +25,7 @@ export const useRatingGroup = (
   })
 
   const [state, send] = useMachine(
-    rating.machine({
+    ratingGroup.machine({
       ...context.value,
       id: context.value.id || useId().value,
       getRootNode,
@@ -40,5 +40,5 @@ export const useRatingGroup = (
     { context },
   )
 
-  return computed(() => rating.connect(state.value, send, normalizeProps))
+  return computed(() => ratingGroup.connect(state.value, send, normalizeProps))
 }

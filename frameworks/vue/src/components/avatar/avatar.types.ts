@@ -2,18 +2,18 @@ import type * as avatar from '@zag-js/avatar'
 
 export interface AvatarRootProps {
   /**
-   * The unique identifier of the machine.
+   * The document's text/writing direction.
+   * @default "ltr"
    */
-  id?: string
+  dir?: 'ltr' | 'rtl'
   /**
    * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
    */
   getRootNode?: () => ShadowRoot | Node | Document
   /**
-   * The document's text/writing direction.
-   * @default "ltr"
+   * The unique identifier of the machine.
    */
-  dir?: 'ltr' | 'rtl'
+  id?: string
 }
 
 export type AvatarRootEmits = {

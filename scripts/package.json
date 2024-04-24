@@ -10,6 +10,7 @@
     "document:types": "bun run src/generate-type-docs.ts",
     "release:prepare": "bun run src/release-prepare.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
+    "postvue:props": "bun biome format --write ../frameworks/vue/src/",
     "play": "bun run src/play.ts",
     "format:vue": "prettier --write '../frameworks/vue/src/**/*.vue'"
   },
