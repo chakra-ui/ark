@@ -1,5 +1,5 @@
 import { tagsInputAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { TagsInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -42,12 +42,12 @@ describe('TagsInput', () => {
     const input = screen.getByPlaceholderText('Add tag')
     await user.type(input, 'angular[enter]')
 
-    expect(await screen.findByText('angular')).toHaveAttribute('data-scope', 'tags-input')
+    expect(screen.queryByText('angular')).toHaveAttribute('data-part', 'item-text')
 
-    await user.type(input, '[ArrowLeft]')
-    await user.type(input, '[ArrowLeft]')
+    await user.type(input, '[ArrowLeft]', { delay: 10 })
+    await waitFor(() => expect(screen.getByText('angular')).toHaveAttribute('data-highlighted', ''))
+
     await user.type(input, '[Delete]')
-
     expect(screen.queryByText('angular')).not.toBeInTheDocument()
   })
 

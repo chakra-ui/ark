@@ -112,8 +112,8 @@ const main = async () => {
   })
   components
     .map((component) => parse(component).name)
-    .filter((component) => ['avatar'].includes(component))
-    // .filter((component) => !['toast', 'format'].includes(component))
+    // .filter((component) => ['avatar'].includes(component))
+    .filter((component) => !['toast', 'format'].includes(component))
     .map((component) => {
       const componentName = parse(component).name
       console.log(`Generating types for ${componentName}`)
@@ -128,7 +128,7 @@ main().catch((err) => {
 
 function escapePropertyName(name: string): string {
   if (/[^a-zA-Z0-9_]/.test(name)) {
-    return `"${name}"`
+    return `"${name}"` // aria-label -> 'aria-label'
   }
   return name
 }
