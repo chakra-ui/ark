@@ -1,3 +1,0 @@
-{
-  "Basic": "import { Environment } from '@ark-ui/react'\nimport Frame from 'react-frame-component'\n\nconst Basic = () => {\n  return (\n    <Frame>\n      <Environment>\n        <PrintEnvironment />\n      </Environment>\n    </Frame>\n  )\n}\n"
-}

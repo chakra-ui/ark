@@ -4,22 +4,14 @@ description: 'Sets up Node.js and runs install'
 runs:
   using: composite
   steps:
-    - name: Install dependencies
-      uses: pnpm/action-setup@v2.4.0
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version-file: '.nvmrc'
-        registry-url: 'https://registry.npmjs.org'
-        cache: 'pnpm'
-
+    - uses: oven-sh/setup-bun@v1
+    
     - name: Setup Git User
       shell: bash
       run: |
         git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
         git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
 
-    - name: Install dependencies
+    - name: Install Dependencies
       shell: bash
-      run: pnpm install
+      run: bun install

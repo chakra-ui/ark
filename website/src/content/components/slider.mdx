@@ -1,0 +1,103 @@
+---
+id: slider
+title: Slider
+description: A control element that allows for a range of selections.
+resources:
+  zag: slider
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/slider/
+---
+
+import { Anatomy, ComponentPreview, Story } from '~/components/docs'
+import ComponentTypes from '~/components/docs/component-types.astro'
+
+<ComponentPreview />
+
+## Anatomy
+
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="slider" />
+
+## Examples
+
+Learn how to use the `Slider` component in your project. Let's take a look at
+the most basic example:
+
+<Story id="Basic" />
+
+### Range Slider
+
+You can add multiple thumbs to the slider by adding multiple `Slider.Thumb`
+
+<Story id="Range" />
+
+### Adding marks
+
+You can add marks to the slider track by using the `Slider.MarkerGroup` and
+`Slider.Marker` components.
+
+Position the `Slider.Marker` components relative to the track by providing the
+`value` prop.
+
+<Story id="WithMarks" />
+
+### Setting the initial value
+
+To set the slider's initial value, set the `defaultValue` prop to the array of
+numbers.
+
+<Story id="InitialValue" />
+
+### Specifying the minimum and maximum
+
+By default, the minimum is `0` and the maximum is `100`. If that's not what you
+want, you can easily specify different bounds by changing the values of the
+`min` and/or `max` props.
+
+For example, to ask the user for a value between `-10` and `10`, you can use:
+
+<Story id="MinMax" />
+
+### Setting the value's granularity
+
+By default, the granularity, is `1`, meaning that the value is always an
+integer. You can change the step attribute to control the granularity.
+
+For example, If you need a value between `5` and `10`, accurate to two decimal
+places, you should set the value of step to `0.01`:
+
+<Story id="Step" />
+
+### Listening for changes
+
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to set up custom behaviors in your app.
+
+<Story id="OnEvent" />
+
+### Changing the orientation
+
+By default, the slider is assumed to be horizontal. To change the orientation to
+vertical, set the orientation property in the machine's context to vertical.
+
+In this mode, the slider will use the arrow up and down keys to
+increment/decrement its value.
+
+> Don't forget to change the styles of the vertical slider by specifying its
+> height
+
+<Story id="Vertical" />
+
+### Changing the origin
+
+By default, the slider's origin is at the start of the track. To change the
+origin to the center of the track, set the `origin` prop to `center`.
+
+<Story id="CenterOrigin" />
+
+## API Reference
+
+<ComponentTypes id="slider" />

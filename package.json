@@ -1,51 +1,30 @@
 {
-  "name": "@ark-ui/root",
-  "version": "0.0.0",
-  "license": "MIT",
-  "private": true,
+  "name": "root",
   "type": "module",
+  "private": true,
+  "workspaces": ["anatomy", "frameworks/*", "scripts", "website"],
   "scripts": {
-    "prepare": "husky install",
+    "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**'",
-    "exports:check": "pnpm scripts exports:check",
-    "exports:sync": "pnpm scripts exports:sync",
-    "format:check": "prettier --plugin prettier-plugin-organize-imports --check packages/**/src",
-    "format:write": "prettier --plugin prettier-plugin-organize-imports --write packages/**/src",
+    "exports:check": "bun scripts exports:check",
+    "exports:sync": "bun scripts exports:sync",
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "document": "concurrently 'pnpm:document:*'",
-    "document:types": "turbo run typedocs",
-    "document:stories": "turbo run storydocs",
-    "react": "pnpm --filter=@ark-ui/react",
-    "solid": "pnpm --filter=@ark-ui/solid",
-    "vue": "pnpm --filter=@ark-ui/vue",
-    "anatomy": "pnpm --filter=@ark-ui/anatomy",
-    "scripts": "pnpm --filter=@ark-ui/scripts",
-    "website": "pnpm --filter=@ark-ui/website"
+    "react": "bun run --cwd frameworks/react",
+    "solid": "bun run --cwd frameworks/solid",
+    "vue": "bun run --cwd frameworks/vue",
+    "anatomy": "bun run --cwd anatomy",
+    "scripts": "bun run --cwd scripts",
+    "website": "bun run --cwd website"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.6.0",
-    "@commitlint/config-conventional": "18.6.0",
-    "concurrently": "8.2.2",
-    "husky": "9.0.7",
-    "lint-staged": "15.2.0",
-    "prettier": "3.2.4",
-    "prettier-plugin-astro": "0.13.0",
-    "prettier-plugin-organize-imports": "3.2.4",
-    "react": "18.2.0",
-    "turbo": "1.11.3",
-    "typescript": "5.3.3"
+    "@biomejs/biome": "1.7.0",
+    "@types/bun": "1.1.0",
+    "lefthook": "1.6.10",
+    "turbo": "1.13.2",
+    "typescript": "5.4.5"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json}": [
-      "prettier --plugin prettier-plugin-organize-imports --write"
-    ]
-  },
-  "packageManager": "pnpm@8.15.1"
+  "packageManager": "bun@1.1.3",
+  "trustedDependencies": ["@ark-ui/website"]
 }

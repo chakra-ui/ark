@@ -1,0 +1,31 @@
+---
+import { Code } from 'astro/components'
+import { Box } from 'styled-system/jsx'
+import { findStories } from '~/lib/find-stories'
+import { CodePreviewTabs } from './code-preview-tabs'
+
+interface Props {
+  id: string
+  component?: string
+}
+const { id } = Astro.props
+const { slug } = Astro.params
+const component = Astro.props.component ?? slug?.split('/').pop() ?? ''
+
+const [react, solid, vue] = await findStories({ component, id })
+---
+
+<Box borderRadius="l3" overflow="hidden" borderWidth="1px" className="not-prose">
+  <CodePreviewTabs
+    tabs={{
+      react: { label: 'React', code: react },
+      solid: { label: 'Solid', code: solid },
+      vue: { label: 'Vue', code: vue },
+    }}
+    client:only="react"
+  >
+    <Code code={react} lang="tsx" theme="css-variables" slot="react" />
+    <Code code={solid} lang="tsx" theme="css-variables" slot="solid" />
+    <Code code={vue} lang="tsx" theme="css-variables" slot="vue" />
+  </CodePreviewTabs>
+</Box>

@@ -1,0 +1,12 @@
+{
+  "Provider": {
+    "defaultLocale": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The default locale to use if no locale is provided via props."
+    },
+    "getRootNode": { "type": "() => ShadowRoot | Node | Document", "isRequired": false },
+    "locale": { "type": "string", "isRequired": false },
+    "onLocaleChange": { "type": "(locale: Locale) => void", "isRequired": false }
+  }
+}

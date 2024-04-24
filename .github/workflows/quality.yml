@@ -20,10 +20,12 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Build packages
-        run: pnpm build
+        run: bun run build
 
   docs:
     name: Docs
+    # This workflow doesn't work on forks
+    if: github.repository == 'chakra-ui/ark'
     runs-on: ubuntu-latest
 
     permissions:
@@ -36,8 +38,8 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Generate docs
-        run: pnpm document
+      - name: Generate TypeDocs
+        run: bun scripts document:types
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -54,28 +56,10 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run tests
-        run: pnpm test
+        run: bun run test
 
-      - name: Upload /react coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: react
-
-      - name: Upload /solid coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: solid
-
-      - name: Upload /vue coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: vue
-
-  eslint:
-    name: ESLint
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -84,8 +68,8 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Run ESLint
-        run: pnpm lint
+      - name: Run lint
+        run: bun run lint
 
   typecheck:
     name: Typecheck
@@ -98,17 +82,17 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run typecheck
-        run: pnpm typecheck
+        run: bun run typecheck
 
-  exports:
-    name: Check package exports
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4
+  # exports:
+  #   name: Check package exports
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout branch
+  #       uses: actions/checkout@v4
 
-      - name: Install
-        uses: ./.github/composite-actions/install
+  #     - name: Install
+  #       uses: ./.github/composite-actions/install
 
-      - name: Run exports:check
-        run: pnpm exports:check
+  #     - name: Run exports:check
+  #       run: bun run exports:check

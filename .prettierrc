@@ -4,14 +4,5 @@
   "trailingComma": "all",
   "arrowParens": "always",
   "semi": false,
-  "plugins": ["prettier-plugin-astro"],
-  "overrides": [
-    {
-      "files": "*.mdx",
-      "options": {
-        "printWidth": 80,
-        "proseWrap": "always"
-      }
-    }
-  ]
+  "htmlWhitespaceSensitivity": "ignore"
 }
