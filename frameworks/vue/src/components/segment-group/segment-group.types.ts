@@ -1,4 +1,4 @@
-import type * as segmentGroup from '@zag-js/segment-group'
+import type * as segmentGroup from '@zag-js/radio-group'
 
 export interface SegmentGroupRootProps {
   /**

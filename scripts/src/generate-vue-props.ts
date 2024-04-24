@@ -79,7 +79,7 @@ const extractTypes = (component: string) => {
   }
 
   outputFile.addImportDeclaration({
-    moduleSpecifier: `@zag-js/${component}`,
+    moduleSpecifier: `@zag-js/${component === 'segment-group' ? 'radio-group' : component}`,
     namespaceImport: camelCaseComponent === 'switch' ? 'zagSwitch' : camelCaseComponent,
     isTypeOnly: true,
   })
@@ -112,8 +112,8 @@ const main = async () => {
   })
   components
     .map((component) => parse(component).name)
-    // .filter((component) => ['progress'].includes(component))
-    .filter((component) => !['toast', 'format'].includes(component))
+    .filter((component) => ['segment-group'].includes(component))
+    // .filter((component) => !['toast', 'format'].includes(component))
     .map((component) => {
       const componentName = parse(component).name
       console.log(`Generating types for ${componentName}`)

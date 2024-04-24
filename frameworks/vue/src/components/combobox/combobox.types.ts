@@ -1,6 +1,6 @@
 import type * as combobox from '@zag-js/combobox'
 
-export interface ComboboxRootProps {
+export interface ComboboxRootProps<T extends combobox.CollectionItem = combobox.CollectionItem> {
   /**
    * Whether to allow typing custom values in the input
    */
@@ -156,6 +156,7 @@ export interface ComboboxRootProps {
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
+  // @ts-expect-error
   translations?: IntlTranslations
   /**
    * The keys of the selected items
@@ -163,11 +164,13 @@ export interface ComboboxRootProps {
   value?: string[]
 }
 
-export type ComboboxRootEmits = {
+export type ComboboxRootEmits<T extends combobox.CollectionItem = combobox.CollectionItem> = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [event: combobox.FocusOutsideEvent]
+  focusOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
+  ]
   /**
    * Function called when an item is highlighted using the pointer
    * or keyboard navigation.
@@ -180,7 +183,9 @@ export type ComboboxRootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [event: combobox.InteractOutsideEvent]
+  interactOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
+  ]
   /**
    * Function called when the popup is opened
    */
@@ -188,7 +193,9 @@ export type ComboboxRootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [event: combobox.PointerDownOutsideEvent]
+  pointerDownOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
+  ]
   /**
    * Function called when a new item is selected
    */

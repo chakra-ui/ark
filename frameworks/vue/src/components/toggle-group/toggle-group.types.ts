@@ -34,7 +34,7 @@ export interface ToggleGroupRootProps {
   /**
    * The orientation of the toggle group.
    */
-  orientation?: toggleGroup.Orientation
+  orientation?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/types/dist/index').Orientation
   /**
    *  Whether to use roving tab index to manage focus.
    */

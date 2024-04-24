@@ -27,7 +27,7 @@ export interface ProgressRootProps {
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: progress.Orientation
+  orientation?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/types/dist/index').Orientation
   /**
    * The localized messages to use.
    */

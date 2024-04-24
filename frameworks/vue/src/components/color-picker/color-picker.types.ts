@@ -45,7 +45,7 @@ export interface ColorPickerRootProps {
   /**
    * The initial focus element when the color picker is opened.
    */
-  initialFocusEl?: HTMLElement | (() => HTMLElement)
+  initialFocusEl?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/utils/dist/index').MaybeFunction<HTMLElement>
   modelValue?: string
   /**
    * The name for the form input
@@ -58,7 +58,7 @@ export interface ColorPickerRootProps {
   /**
    * The positioning options for the color picker
    */
-  positioning?: colorPicker.PositioningOptions
+  positioning?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/popper/dist/index').PositioningOptions
   /**
    * Whether the color picker is read-only
    */
@@ -69,7 +69,9 @@ export type ColorPickerRootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [event: colorPicker.FocusOutsideEvent]
+  focusOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
+  ]
   /**
    * Function called when the color format changes
    */
@@ -77,7 +79,9 @@ export type ColorPickerRootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [event: colorPicker.InteractOutsideEvent]
+  interactOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
+  ]
   /**
    * Handler that is called when the user opens or closes the color picker.
    */
@@ -85,7 +89,9 @@ export type ColorPickerRootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [event: colorPicker.PointerDownOutsideEvent]
+  pointerDownOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
+  ]
   /**
    * Handler that is called when the value changes, as the user drags.
    */

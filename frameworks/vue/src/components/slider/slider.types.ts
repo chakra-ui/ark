@@ -25,7 +25,8 @@ export interface SliderRootProps {
   /**
    * Function that returns a human readable value for the slider thumb
    */
-  getAriaValueText?: (details: slider.ValueTextDetails) => string
+  // @ts-expect-error
+  getAriaValueText?: (details: ValueTextDetails) => string
   /**
    * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
    */

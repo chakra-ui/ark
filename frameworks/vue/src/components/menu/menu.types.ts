@@ -4,7 +4,7 @@ export interface MenuRootProps {
   /**
    * The positioning point for the menu. Can be set by the context menu trigger or the button trigger.
    */
-  anchorPoint?: menu.Point
+  anchorPoint?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/rect-utils/dist/index').Point
   /**
    * The accessibility label for the menu
    */
@@ -53,7 +53,7 @@ export interface MenuRootProps {
   /**
    * The options used to dynamically position the menu
    */
-  positioning?: menu.PositioningOptions
+  positioning?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/popper/dist/index').PositioningOptions
   /**
    * Whether the pressing printable characters should trigger typeahead navigation
    */
@@ -68,7 +68,9 @@ export type MenuRootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [event: menu.FocusOutsideEvent]
+  focusOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
+  ]
   /**
    * Function called when the highlighted menu item changes.
    */
@@ -76,7 +78,9 @@ export type MenuRootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [event: menu.InteractOutsideEvent]
+  interactOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
+  ]
   /**
    * Function called when the menu opens or closes
    */
@@ -84,7 +88,9 @@ export type MenuRootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [event: menu.PointerDownOutsideEvent]
+  pointerDownOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
+  ]
   /**
    * Function called when a menu item is selected.
    */
