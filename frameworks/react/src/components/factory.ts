@@ -21,6 +21,14 @@ type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<
   asChild?: boolean
 }
 
+// Future proof: access ref from props, fallback to element.ref
+// https://github.com/facebook/react/pull/28348
+function getRef(child: React.ReactElement) {
+  if ('ref' in child.props) return child.props.ref
+  if ('ref' in child) return child.ref
+  return null
+}
+
 const withAsChild = (Component: React.ElementType) => {
   const Comp = memo(
     forwardRef<unknown, ArkPropsWithRef<typeof Component>>((props, ref) => {
@@ -30,15 +38,18 @@ const withAsChild = (Component: React.ElementType) => {
         return createElement(Component, { ...restProps, ref }, children)
       }
 
-      const onlyChild = Children.only(children)
-      return isValidElement(onlyChild)
-        ? cloneElement(onlyChild, {
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-            ...mergeProps(restProps, onlyChild.props as any),
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-            ref: ref ? composeRefs(ref, (onlyChild as any).ref) : (onlyChild as any).ref,
-          })
-        : null
+      const onlyChild: React.ReactNode = Children.only(children)
+
+      if (!isValidElement(onlyChild)) {
+        return null
+      }
+
+      const childRef = getRef(onlyChild)
+
+      return cloneElement(onlyChild, {
+        ...mergeProps(restProps, onlyChild.props),
+        ref: ref ? composeRefs(ref, childRef) : childRef,
+      })
     }),
   )
 

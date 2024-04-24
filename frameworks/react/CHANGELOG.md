@@ -8,7 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Made the `id` attribute optional for `<Combobox.ItemGroup>` and  removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
 
 ```diff
 - <Combobox.ItemGroup id="framework">
@@ -17,7 +17,7 @@ description: All notable changes to this project will be documented in this file
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- Made the `id` attribute optional for `<Select.ItemGroup>` and  removed `htmlFor` from `<Select.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `htmlFor` from `<Select.ItemGroupLabel>`.
 
 ```diff
 - <Select.ItemGroup id="framework">
@@ -26,6 +26,8 @@ description: All notable changes to this project will be documented in this file
 +   <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
 ```
 
+- Improve forward compatibility of `ark` factory with React 19 by supporting `ref` as normal prop.
+
 ## [3.0.0-0] - 2024-04-10
 
 ### Added
@@ -33,21 +35,21 @@ description: All notable changes to this project will be documented in this file
 - Exposed component-related types to keep imports clean and orderly.
 
 ```tsx
-import { Avatar } from '@ark-ui/react';
+import { Avatar } from '@ark-ui/react'
 
 export const Example = () => {
   // New: Use `Avatar` import to declare types.
   const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
-    console.log(details.status);
-  };
+    console.log(details.status)
+  }
 
   return (
     <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
       <Avatar.Fallback>PA</Avatar.Fallback>
       <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
     </Avatar.Root>
-  );
-};
+  )
+}
 ```
 
 - Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
@@ -67,7 +69,7 @@ export const Basic = () => (
       </Popover.Context>
     </Popover.Positioner>
   </Popover.Root>
-);
+)
 ```
 
 - Added new `Format` component to format bytes and numbers.
