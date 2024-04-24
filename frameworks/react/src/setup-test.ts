@@ -22,6 +22,11 @@ Object.defineProperty(window, 'navigator', {
   },
 })
 
+// stub Array.prototype.toSorted (used in zag.js collection)
+Array.prototype.toSorted = function () {
+  return [...this].sort()
+}
+
 Object.assign(global, { window, document: window.document })
 
 export const getParts = (anatomy: AnatomyInstance<string>) => {
