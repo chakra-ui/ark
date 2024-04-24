@@ -3,7 +3,8 @@ import { computed } from 'vue'
 import { useForwardPropsEmits } from '../../../utils'
 import AvatarFallback from '../avatar-fallback.vue'
 import AvatarImage from '../avatar-image.vue'
-import AvatarRoot, { type AvatarRootEmits, type AvatarRootProps } from '../avatar-root.vue'
+import AvatarRoot from '../avatar-root.vue'
+import type { AvatarRootEmits, AvatarRootProps } from '../avatar.types'
 
 export interface AvatarProps extends AvatarRootProps {
   src?: string

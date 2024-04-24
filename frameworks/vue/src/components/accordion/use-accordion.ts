@@ -5,8 +5,17 @@ import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
 
-export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
+export interface UseAccordionProps extends Omit<Optional<accordion.Context, 'id'>, 'value'> {
+  /**
+   * The accordion items that are currently expanded.
+   * Use this prop to control the state of the items via v-model.
+   */
   modelValue?: accordion.Context['value']
+  /**
+   * The initial value of the accordion items that are expanded.
+   * Use this when you do not need to control the state of the items.
+   */
+  defaultValue?: accordion.Context['value']
 }
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 

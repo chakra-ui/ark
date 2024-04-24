@@ -1,17 +1,7 @@
 <script setup lang="ts">
-import type { StatusChangeDetails } from '@zag-js/avatar'
-import type { Direction } from '@zag-js/types'
+import type { AvatarRootEmits, AvatarRootProps } from './avatar.types'
 import { useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
-
-export type AvatarRootEmits = {
-  statusChange: [details: StatusChangeDetails]
-}
-
-export interface AvatarRootProps {
-  id?: string
-  dir?: Direction
-}
 
 const props = defineProps<AvatarRootProps>()
 const emits = defineEmits<AvatarRootEmits>()

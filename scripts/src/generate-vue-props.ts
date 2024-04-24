@@ -1,141 +1,103 @@
-import path, { dirname } from 'node:path'
-import { findUpSync } from 'find-up'
-import fs from 'fs-extra'
-import prettier from 'prettier'
-import { Project, VariableDeclarationKind } from 'ts-morph'
-
-const convertToEventName = (value: string): string => {
-  return value
-    .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2')
-    .slice(3)
-    .toLowerCase()
-}
+import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
 
 const main = async () => {
   const project = new Project()
   const sourceFile = project.addSourceFileAtPath(
-    '../frameworks/vue/src/components/avatar/use-avatar.ts',
+    '../frameworks/vue/src/components/accordion/use-accordion.ts',
+  )
+  const outputFile = project.createSourceFile(
+    '../frameworks/vue/src/components/accordion-sfc/accordion.types.ts',
+    '',
+    {
+      overwrite: true,
+    },
   )
 
-  const propTypes = sourceFile.getInterfaceOrThrow('UseAvatarProps').getType()
+  const propperties = sourceFile
+    .getInterfaceOrThrow('UseAccordionProps')
+    .getType()
+    .getProperties()
+    .sort((a, b) => (a.getName() > b.getName() ? 1 : -1))
 
-  const properties = propTypes.getProperties().sort((a, b) => (a.getName() > b.getName() ? 1 : -1))
-  for (const property of properties) {
-    console.log(property.getName())
+  const props: OptionalKind<PropertySignatureStructure>[] = propperties
+    .filter((property) => !property.getName().startsWith('on'))
+    .map((property) => {
+      const comment = property
+        .getDeclarations()
+        .flatMap((declaration) =>
+          declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`),
+        )
+      return {
+        name: property.getName(),
+        type: property.getTypeAtLocation(sourceFile).getText(sourceFile),
+        hasQuestionToken: property.isOptional(),
+        leadingTrivia: comment,
+      }
+    })
+
+  const emits = propperties
+    .filter((property) => property.getName().startsWith('on'))
+    .map((property) => ({
+      name: property
+        .getName()
+        .replace(/^on/, '')
+        .replace(/^(.)/, (c) => c.toLowerCase()),
+      comment: property
+        .getDeclarations()
+        .flatMap((declaration) =>
+          declaration.getLeadingCommentRanges().map((comment) => comment.getText()),
+        ),
+      type: property
+        .getTypeAtLocation(sourceFile)
+        .getCallSignatures()
+        .flatMap((signature) =>
+          signature
+            .getParameters()
+            .map((param) => [
+              param.getName(),
+              param.getTypeAtLocation(sourceFile).getText(sourceFile),
+            ]),
+        ),
+    }))
+
+  const modelValue = props.find((prop) => prop.name === 'modelValue')
+  if (modelValue) {
+    emits.push({
+      name: 'update:modelValue',
+      comment: [
+        `/**
+      * The callback fired when the model value changes.
+      */`,
+      ],
+      type: [['value', modelValue.type?.toString() ?? 'any']],
+    })
   }
 
-  // const prettierConfig = await prettier.resolveConfig('.')
-  // // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  // const root = dirname(findUpSync('bun.lockb')!)
-  // process.chdir(path.join(root, 'frameworks', 'vue'))
-  // // const indices = await globby(['src/*'], { onlyDirectories: true })
-  // const indices = ['avatar']
-  // await Promise.all(
-  //   indices
-  //     .map((path) => path.split('/').pop() ?? '')
-  //     .map(async (component) => {
-  //       const project = new Project()
-  //       const sourceFile = project.addSourceFileAtPath(
-  //         `../../node_modules/@zag-js/${component}/src/${component}.types.ts`,
-  //       )
-  //       const publicContextTypeAlias = sourceFile.getTypeAliasOrThrow('UserDefinedContext')
-  //       const publicContextType = publicContextTypeAlias.getType()
-  //       const publicContextProperties = publicContextType
-  //         .getProperties()
-  //         .sort((a, b) => (a.getName() > b.getName() ? 1 : -1))
-  //       const props = publicContextProperties.filter(
-  //         (property) => !property.getName().startsWith('on'),
-  //       )
-  //       const emits = publicContextProperties.filter((property) =>
-  //         property.getName().startsWith('on'),
-  //       )
-  //       const outputFile = project.createSourceFile('./props.ts', undefined, {
-  //         overwrite: true,
-  //       })
-  //       outputFile.addImportDeclaration({
-  //         namedImports: ['PropType'],
-  //         moduleSpecifier: 'vue',
-  //         isTypeOnly: true,
-  //       })
-  //       outputFile.addImportDeclaration({
-  //         namedImports: ['Context'],
-  //         moduleSpecifier: `@zag-js/${component}`,
-  //         isTypeOnly: true,
-  //       })
-  //       outputFile.addImportDeclaration({
-  //         namedImports: ['declareEmits'],
-  //         moduleSpecifier: '../utils',
-  //       })
-  //       outputFile.addVariableStatement({
-  //         isExported: true,
-  //         declarationKind: VariableDeclarationKind.Const,
-  //         declarations: [
-  //           {
-  //             name: 'props',
-  //             initializer: (writer) => {
-  //               writer.block(() => {
-  //                 for (const property of props) {
-  //                   const name = property.getName() === 'value' ? 'modelValue' : property.getName()
-  //                   if (!name.startsWith('on')) {
-  //                     const type = property.getTypeAtLocation(publicContextTypeAlias)
-  //                     const isFunction =
-  //                       type.getText(publicContextTypeAlias).includes('=>') &&
-  //                       !type.getText(publicContextTypeAlias).startsWith('{')
-  //                     const propType = isFunction
-  //                       ? 'Function'
-  //                       : type.isBoolean()
-  //                         ? 'Boolean'
-  //                         : type.isString() || type.isUnion()
-  //                           ? 'String'
-  //                           : type.isNumber()
-  //                             ? 'Number'
-  //                             : type.isArray()
-  //                               ? 'Array'
-  //                               : 'Object'
-  //                     writer.writeLine(`'${name}': {`)
-  //                     writer.indent(() => {
-  //                       writer.writeLine(
-  //                         `type: ${propType} as PropType<Context['${property.getName()}']>,`,
-  //                       )
-  //                       if (propType === 'Boolean') {
-  //                         writer.writeLine('default: undefined,')
-  //                       }
-  //                     })
-  //                     writer.writeLine('},')
-  //                   }
-  //                 }
-  //               })
-  //             },
-  //           },
-  //         ],
-  //       })
-  //       outputFile.addVariableStatement({
-  //         declarationKind: VariableDeclarationKind.Const,
-  //         isExported: true,
-  //         declarations: [
-  //           {
-  //             name: 'emits',
-  //             initializer: `declareEmits([${emits
-  //               .map((property) => `'${convertToEventName(property.getName())}'`)
-  //               .join(', ')
-  //               .concat(
-  //                 props.some((property) => property.getName() === 'value')
-  //                   ? ', "update:modelValue"'
-  //                   : '',
-  //               )}])`,
-  //           },
-  //         ],
-  //       })
-  //       fs.outputFile(
-  //         `./src/components/${component}/${component}.props.ts`,
-  //         await prettier.format(outputFile.getText(), {
-  //           ...prettierConfig,
-  //           plugins: ['prettier-plugin-organize-imports'],
-  //           parser: 'typescript',
-  //         }),
-  //       )
-  //     }),
-  // )
+  outputFile.addImportDeclaration({
+    moduleSpecifier: '@zag-js/accordion',
+    namespaceImport: 'accordion',
+    isTypeOnly: true,
+  })
+
+  outputFile.addInterface({
+    name: 'AccordionRootProps',
+    isExported: true,
+    properties: props,
+  })
+
+  outputFile.addTypeAlias({
+    name: 'AccordionRootEmits',
+    isExported: true,
+    type: `{ ${emits
+      .map(
+        (emit) =>
+          `\n${emit.comment}
+        "${emit.name}": [${emit.type.map(([key, value]) => `${key}: ${value}`)}]`,
+      )
+      .join('; ')}}`,
+  })
+
+  outputFile.saveSync()
 }
 
 main().catch((err) => {
