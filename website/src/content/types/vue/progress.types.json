@@ -35,16 +35,6 @@
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultValue": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The initial value of the progress."
-    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -71,8 +61,9 @@
       "isRequired": false,
       "description": "The minimum allowed value of the progress bar."
     },
+    "modelValue": { "type": "number", "isRequired": false },
     "orientation": {
-      "type": "Orientation",
+      "type": "any",
       "defaultValue": "\"horizontal\"",
       "isRequired": false,
       "description": "The orientation of the element."

@@ -55,20 +55,10 @@
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the editable should auto-resize to fit the content."
-    },
-    "defaultValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The initial value of the editable."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -82,7 +72,7 @@
       "description": "Whether the editable is disabled"
     },
     "finalFocusEl": {
-      "type": "() => HTMLElement | null",
+      "type": "() => HTMLElement",
       "isRequired": false,
       "description": "The element that should receive focus when the editable is closed.\nBy default, it will focus on the trigger element."
     },
@@ -116,45 +106,11 @@
       "isRequired": false,
       "description": "The maximum number of characters allowed in the editable"
     },
+    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name attribute of the editable component. Used for form submission."
-    },
-    "onEdit": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "The callback that is called when in the edit mode."
-    },
-    "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "onPointerDownOutside": {
-      "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the component"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the editable's value is changed"
-    },
-    "onValueCommit": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the editable's value is submitted."
-    },
-    "onValueRevert": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
     },
     "placeholder": {
       "type": "string | { edit: string; preview: string }",

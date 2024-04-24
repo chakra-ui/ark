@@ -46,21 +46,11 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
     "clampValueOnBlur": {
       "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
-    },
-    "defaultValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The initial value of the number input."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -105,7 +95,7 @@
       "description": "The ids of the elements in the number input. Useful for composition."
     },
     "inputMode": {
-      "type": "InputMode",
+      "type": "'text' | 'tel' | 'numeric' | 'decimal'",
       "defaultValue": "\"decimal\"",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
@@ -131,25 +121,11 @@
       "isRequired": false,
       "description": "The minimum value of the number input"
     },
+    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name attribute of the number input. Useful for form submission."
-    },
-    "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the number input is focused"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the value changes"
-    },
-    "onValueInvalid": {
-      "type": "(details: ValueInvalidDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the value overflows or underflows the min/max range"
     },
     "pattern": {
       "type": "string",

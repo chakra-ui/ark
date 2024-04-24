@@ -21,11 +21,6 @@
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
@@ -76,11 +71,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The name of the input field in a checkbox.\nUseful for form submission."
-    },
-    "onCheckedChange": {
-      "type": "(details: CheckedChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback invoked when the checked state changes."
     },
     "readOnly": {
       "type": "boolean",

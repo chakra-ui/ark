@@ -46,16 +46,6 @@
       "isRequired": false,
       "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultValue": {
-      "type": "number[]",
-      "isRequired": false,
-      "description": "The initial value of the slider slider."
-    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -112,25 +102,11 @@
       "isRequired": false,
       "description": "The minimum permitted steps between multiple thumbs."
     },
+    "modelValue": { "type": "number[]", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name associated with each slider thumb (when used in a form)"
-    },
-    "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the slider's focused index changes"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the value of the slider changes"
-    },
-    "onValueChangeEnd": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the slider value change is done"
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

@@ -22,16 +22,6 @@
     "step": { "type": "number", "isRequired": false }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultSize": {
-      "type": "PanelSizeData[]",
-      "isRequired": false,
-      "description": "The initial size of the splitter."
-    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -52,16 +42,6 @@
       "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the splitter. Useful for composition."
-    },
-    "onSizeChange": {
-      "type": "(details: SizeChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the splitter is resized."
-    },
-    "onSizeChangeEnd": {
-      "type": "(details: SizeChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the splitter resize ends."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

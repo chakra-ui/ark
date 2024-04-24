@@ -32,16 +32,6 @@
   },
   "Root": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultPage": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The initial page of the pagination."
-    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -62,11 +52,6 @@
       "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevTrigger: string\n  nextTrigger: string\n  item(page: number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
-    },
-    "onPageChange": {
-      "type": "(details: PageChangeDetails) => void",
-      "isRequired": false,
-      "description": "Called when the page number is changed, and it takes the resulting page number argument"
     },
     "page": { "type": "number", "isRequired": false, "description": "The active page" },
     "pageSize": {

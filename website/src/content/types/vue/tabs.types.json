@@ -41,16 +41,6 @@
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The initial value of the tabs."
-    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -72,28 +62,13 @@
       "isRequired": false,
       "description": "The ids of the elements in the tabs. Useful for composition."
     },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
     "loopFocus": {
       "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
-    "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the focused tab changes"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the selected/active tab changes"
-    },
+    "modelValue": { "type": "string", "isRequired": false },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "defaultValue": "\"horizontal\"",
@@ -104,12 +79,6 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
     },
     "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
   }

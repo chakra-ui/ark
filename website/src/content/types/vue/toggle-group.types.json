@@ -9,16 +9,6 @@
     "disabled": { "type": "boolean", "isRequired": false }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the toggle group."
-    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -50,18 +40,14 @@
       "isRequired": false,
       "description": "Whether to loop focus inside the toggle group."
     },
+    "modelValue": { "type": "string[]", "isRequired": false },
     "multiple": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to allow multiple toggles to be selected."
     },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function to call when the toggle is clicked."
-    },
     "orientation": {
-      "type": "Orientation",
+      "type": "any",
       "isRequired": false,
       "description": "The orientation of the toggle group."
     },

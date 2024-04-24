@@ -22,11 +22,6 @@
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -36,11 +31,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to blur the input when the value is complete"
-    },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the pin input."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -83,25 +73,11 @@
       "isRequired": false,
       "description": "If `true`, the input's value will be masked just like `type=password`"
     },
+    "modelValue": { "type": "string[]", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name of the input element. Useful for form submission."
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called on input change"
-    },
-    "onValueComplete": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when all inputs have valid values"
-    },
-    "onValueInvalid": {
-      "type": "(details: ValueInvalidDetails) => void",
-      "isRequired": false,
-      "description": "Function called when an invalid value is entered"
     },
     "otp": {
       "type": "boolean",
