@@ -91,6 +91,11 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "collapsible": {
       "type": "boolean",
       "defaultValue": "false",
@@ -100,7 +105,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the accordion items that are expanded.\nUse this when you do not need to control the state of the items."
+      "description": "The initial value of the accordion."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -128,10 +133,11 @@
       "isRequired": false,
       "description": "The ids of the elements in the accordion. Useful for composition."
     },
-    "modelValue": {
-      "type": "string[]",
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
       "isRequired": false,
-      "description": "The accordion items that are currently expanded.\nUse this prop to control the state of the items via v-model."
+      "description": "Whether to enable lazy mounting"
     },
     "multiple": {
       "type": "boolean",
@@ -139,10 +145,31 @@
       "isRequired": false,
       "description": "Whether multple accordion items can be open at the same time."
     },
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback fired when the focused accordion item changes."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "The callback fired when the state of opened/closed accordion items changes."
+    },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "isRequired": false,
       "description": "The orientation of the accordion items."
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The `id` of the accordion item that is currently being opened."
     }
   }
 }

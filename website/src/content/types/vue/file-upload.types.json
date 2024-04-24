@@ -80,6 +80,11 @@
       "isRequired": false,
       "description": "Whether to allow drag and drop in the dropzone element"
     },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "capture": {
       "type": "'user' | 'environment'",
       "isRequired": false,
@@ -142,13 +147,28 @@
       "isRequired": false,
       "description": "The name of the underlying file input"
     },
+    "onFileAccept": {
+      "type": "(details: FileAcceptDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the file is accepted"
+    },
+    "onFileChange": {
+      "type": "(details: FileChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the value changes, whether accepted or rejected"
+    },
+    "onFileReject": {
+      "type": "(details: FileRejectDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the file is rejected"
+    },
     "translations": {
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "The localized messages to use."
     },
     "validate": {
-      "type": "(file: File) => FileError[]",
+      "type": "(file: File) => FileError[] | null",
       "isRequired": false,
       "description": "Function to validate a file"
     }

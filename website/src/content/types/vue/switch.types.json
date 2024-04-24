@@ -14,10 +14,20 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "checked": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the switch is checked."
+    },
+    "defaultChecked": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial checked state of the switch."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -60,11 +70,15 @@
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
-    "modelValue": { "type": "boolean", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name of the input field in a switch\n(Useful for form submission)."
+    },
+    "onCheckedChange": {
+      "type": "(details: CheckedChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function to call when the switch is clicked."
     },
     "readOnly": {
       "type": "boolean",

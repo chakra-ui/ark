@@ -38,6 +38,16 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the radio group."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -69,11 +79,15 @@
       "isRequired": false,
       "description": "The ids of the elements in the radio. Useful for composition."
     },
-    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name of the input fields in the radio\n(Useful for form submission)."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called once a radio is checked"
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

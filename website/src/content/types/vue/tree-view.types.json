@@ -90,10 +90,20 @@
     }
   },
   "Root": {
-    "defaultFocusedId": {
-      "type": "string",
+    "asChild": {
+      "type": "boolean",
       "isRequired": false,
-      "description": "The initial focused index of the tree view."
+      "description": "Render as a different element type."
+    },
+    "defaultExpandedValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial expanded ids of the tree view."
+    },
+    "defaultSelectedValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial selected ids of the tree view."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -120,6 +130,21 @@
       "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
+    },
+    "onExpandedChange": {
+      "type": "(details: ExpandedChangeDetails) => void",
+      "isRequired": false,
+      "description": "Called when the tree is opened or closed"
+    },
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "Called when the focused node changes"
+    },
+    "onSelectionChange": {
+      "type": "(details: SelectionChangeDetails) => void",
+      "isRequired": false,
+      "description": "Called when the selection changes"
     },
     "openOnClick": {
       "type": "boolean",

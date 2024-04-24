@@ -27,6 +27,11 @@
       "isRequired": false,
       "description": "Whether to allow half stars."
     },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -36,6 +41,11 @@
       "type": "number",
       "isRequired": false,
       "description": "The total number of ratings."
+    },
+    "defaultValue": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial value of the rating group."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -68,11 +78,20 @@
       "isRequired": false,
       "description": "The ids of the elements in the rating. Useful for composition."
     },
-    "modelValue": { "type": "number", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name attribute of the rating element (used in forms)."
+    },
+    "onHoverChange": {
+      "type": "(details: HoverChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function to be called when the rating value is hovered."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function to be called when the rating value changes."
     },
     "readOnly": {
       "type": "boolean",

@@ -32,6 +32,11 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "getRootNode": {
       "type": "() => Node | ShadowRoot | Document",
       "isRequired": false,
@@ -46,6 +51,11 @@
       "type": "Partial<{ root: string; input: string; label: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the clipboard. Useful for composition."
+    },
+    "onStatusChange": {
+      "type": "(details: CopyStatusDetails) => void",
+      "isRequired": false,
+      "description": "The function to be called when the value is copied to the clipboard"
     },
     "timeout": {
       "type": "number",

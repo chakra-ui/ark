@@ -14,6 +14,11 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -29,6 +34,11 @@
       "type": "string",
       "isRequired": false,
       "description": "The unique identifier of the machine."
+    },
+    "onStatusChange": {
+      "type": "(details: StatusChangeDetails) => void",
+      "isRequired": false,
+      "description": "Functional called when the image loading status changes."
     }
   }
 }

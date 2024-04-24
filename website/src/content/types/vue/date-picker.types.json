@@ -79,11 +79,21 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "closeOnSelect": {
       "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
+    },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the date picker"
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -127,6 +137,12 @@
       "isRequired": false,
       "description": "Returns whether a date of the calendar is available."
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "locale": {
       "type": "string",
       "isRequired": false,
@@ -147,11 +163,6 @@
       "isRequired": false,
       "description": "Whether the calendar should be modal. This means that the calendar will\nblock interaction with the rest of the page, and trap focus within it."
     },
-    "modelValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The v-model value of the date picker"
-    },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -162,15 +173,45 @@
       "isRequired": false,
       "description": "The number of months to display."
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onFocusChange": {
+      "type": "(details: FocusChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the focused date changes."
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the calendar opens or closes."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the value changes."
+    },
+    "onViewChange": {
+      "type": "(details: ViewChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the view changes."
+    },
     "open": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the datepicker is open"
     },
     "positioning": {
-      "type": "any",
+      "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the date picker content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
     },
     "readOnly": {
       "type": "boolean",
@@ -192,6 +233,17 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "The localized messages to use."
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The value of the date picker"
     },
     "view": {
       "type": "DateView",

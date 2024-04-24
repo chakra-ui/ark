@@ -57,6 +57,16 @@
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "defaultIndex": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial selected index of the carousel."
+    },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -83,6 +93,11 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the carousel should loop around."
+    },
+    "onIndexChange": {
+      "type": "(details: SlideChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the slide changes."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

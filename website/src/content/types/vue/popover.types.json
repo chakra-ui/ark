@@ -98,15 +98,51 @@
       "description": "The ids of the elements in the popover. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "HTMLElement | (() => HTMLElement)",
+      "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
     },
     "modal": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
+    },
+    "onEscapeKeyDown": {
+      "type": "(event: KeyboardEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the escape key is pressed"
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function invoked when the popover opens or closes"
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the component"
     },
     "open": {
       "type": "boolean",
@@ -123,6 +159,17 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     }
   },
   "Title": {

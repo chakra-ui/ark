@@ -104,10 +104,20 @@
     }
   },
   "Root": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to close the color picker when a swatch is selected"
+    },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the color picker."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -140,26 +150,87 @@
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "any",
+      "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "The initial focus element when the color picker is opened."
     },
-    "modelValue": { "type": "string", "isRequired": false },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "onFormatChange": {
+      "type": "(details: FormatChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the color format changes"
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the user opens or closes the color picker."
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the value changes, as the user drags."
+    },
+    "onValueChangeEnd": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Handler that is called when the user stops dragging."
+    },
     "open": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is open"
     },
     "positioning": {
-      "type": "any",
+      "type": "PositioningOptions",
       "isRequired": false,
       "description": "The positioning options for the color picker"
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
     },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the color picker is read-only"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The current value of the color picker."
     }
   },
   "SwatchGroup": {

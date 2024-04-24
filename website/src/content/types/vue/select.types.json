@@ -83,10 +83,20 @@
       "isRequired": true,
       "description": "The options of the select"
     },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select should close after an item is selected"
+    },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the select."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",
@@ -144,12 +154,17 @@
       "isRequired": false,
       "description": "The value of the item"
     },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
     "loopFocus": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation through the options"
     },
-    "modelValue": { "type": "string[]", "isRequired": false },
     "multiple": {
       "type": "boolean",
       "isRequired": false,
@@ -160,15 +175,55 @@
       "isRequired": false,
       "description": "The `name` attribute of the underlying select."
     },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "onHighlightChange": {
+      "type": "(details: HighlightChangeDetails<T>) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted item changes."
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the popup is opened"
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails<T>) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected item changes."
+    },
     "open": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select menu is open"
     },
     "positioning": {
-      "type": "any",
+      "type": "PositioningOptions",
       "isRequired": false,
       "description": "The positioning options of the menu."
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
     },
     "readOnly": {
       "type": "boolean",
@@ -179,6 +234,12 @@
       "type": "(details: ScrollToIndexDetails) => void",
       "isRequired": false,
       "description": "Function to scroll to a specific index"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
     },
     "value": {
       "type": "string[]",
