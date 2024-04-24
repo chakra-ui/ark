@@ -140,7 +140,7 @@
       "description": "The ids of the elements in the color picker. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "any",
+      "type": "HTMLElement | (() => HTMLElement)",
       "isRequired": false,
       "description": "The initial focus element when the color picker is opened."
     },
@@ -152,7 +152,7 @@
       "description": "Whether the color picker is open"
     },
     "positioning": {
-      "type": "any",
+      "type": "PositioningOptions",
       "isRequired": false,
       "description": "The positioning options for the color picker"
     },

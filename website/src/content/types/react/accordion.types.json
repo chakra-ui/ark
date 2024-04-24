@@ -100,7 +100,7 @@
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether an accordion item can be collapsed after it has been opened."
+      "description": "Whether an accordion item can be after it has been expanded."
     },
     "defaultValue": {
       "type": "string[]",
@@ -143,7 +143,7 @@
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether multple accordion items can be open at the same time."
+      "description": "Whether multple accordion items can be expanded at the same time."
     },
     "onFocusChange": {
       "type": "(details: FocusChangeDetails) => void",
@@ -153,10 +153,11 @@
     "onValueChange": {
       "type": "(details: ValueChangeDetails) => void",
       "isRequired": false,
-      "description": "The callback fired when the state of opened/closed accordion items changes."
+      "description": "The callback fired when the state of expanded/collapsed accordion items changes."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
+      "defaultValue": "\"vertical\"",
       "isRequired": false,
       "description": "The orientation of the accordion items."
     },
@@ -169,7 +170,7 @@
     "value": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The `id` of the accordion item that is currently being opened."
+      "description": "The `value` of the accordion items that are currently being expanded."
     }
   }
 }

@@ -35,7 +35,6 @@
     }
   },
   "Root": {
-    "aria-label": { "type": "string", "isRequired": true },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -64,7 +63,7 @@
     },
     "modelValue": { "type": "number", "isRequired": false },
     "orientation": {
-      "type": "any",
+      "type": "Orientation",
       "defaultValue": "\"horizontal\"",
       "isRequired": false,
       "description": "The orientation of the element."

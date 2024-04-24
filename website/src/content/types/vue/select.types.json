@@ -166,7 +166,7 @@
       "description": "Whether the select menu is open"
     },
     "positioning": {
-      "type": "any",
+      "type": "PositioningOptions",
       "isRequired": false,
       "description": "The positioning options of the menu."
     },
