@@ -1,12 +1,12 @@
 export type { StatusChangeDetails } from '@zag-js/avatar'
-export { AvatarContext as Context, type AvatarContextProps as ContextProps } from './avatar-context'
+export { default as Context, type AvatarContextProps as ContextProps } from './avatar-context.vue'
 export {
-  AvatarFallback as Fallback,
+  default as Fallback,
   type AvatarFallbackProps as FallbackProps,
-} from './avatar-fallback'
-export { AvatarImage as Image, type AvatarImageProps as ImageProps } from './avatar-image'
+} from './avatar-fallback.vue'
+export { default as Image, type AvatarImageProps as ImageProps } from './avatar-image.vue'
 export {
-  AvatarRoot as Root,
+  default as Root,
   type AvatarRootEmits as RootEmits,
   type AvatarRootProps as RootProps,
-} from './avatar-root'
+} from './avatar-root.vue'

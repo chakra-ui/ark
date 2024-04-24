@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import {
-  AvatarFallback,
-  AvatarImage,
-  AvatarRoot,
-  type AvatarRootEmits,
-  type AvatarRootProps,
-} from '../'
+import { Avatar, type AvatarRootEmits, type AvatarRootProps } from '../'
 import { useForwardPropsEmits } from '../../../utils'
 
 export interface AvatarProps extends AvatarRootProps {
@@ -29,8 +23,8 @@ const getInitials = computed(() =>
 </script>
 
 <template>
-  <AvatarRoot class="root" v-bind="forwarded">
-    <AvatarFallback class="fallback">{{ getInitials }}</AvatarFallback>
-    <AvatarImage :src="props.src" :alt="props.name" class="image" />
-  </AvatarRoot>
+  <Avatar.Root class="root" v-bind="forwarded">
+    <Avatar.Fallback class="fallback">{{ getInitials }}</Avatar.Fallback>
+    <Avatar.Image :src="props.src" :alt="props.name" class="image" />
+  </Avatar.Root>
 </template>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { AvatarContext, AvatarFallback, AvatarImage, AvatarRoot } from '..'
+import { Avatar } from '../'
 </script>
 
 <template>
-  <AvatarRoot>
-    <AvatarContext v-slot="avatar">
-      <AvatarFallback>
+  <Avatar.Root>
+    <Avatar.Context v-slot="{ avatar }">
+      <Avatar.Fallback>
         {{ avatar.loaded ? 'PA' : 'Loading' }}
-      </AvatarFallback>
-    </AvatarContext>
-    <AvatarImage src="https://i.pravatar.cc/300" alt="avatar" />
-  </AvatarRoot>
+      </Avatar.Fallback>
+    </Avatar.Context>
+    <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+  </Avatar.Root>
 </template>

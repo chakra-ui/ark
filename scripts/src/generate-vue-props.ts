@@ -112,7 +112,7 @@ const main = async () => {
   })
   components
     .map((component) => parse(component).name)
-    .filter((component) => ['segment-group'].includes(component))
+    .filter((component) => ['avatar'].includes(component))
     // .filter((component) => !['toast', 'format'].includes(component))
     .map((component) => {
       const componentName = parse(component).name

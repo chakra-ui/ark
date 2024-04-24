@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar } from '../..'
+import { Avatar } from '../'
 </script>
 
 <template>

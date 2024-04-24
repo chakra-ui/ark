@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
-import Closed from './examples/closed.vue'
+import Avatar from './examples/closed.vue'
 import Events from './examples/events.vue'
 </script>
 <template>
@@ -12,7 +12,11 @@ import Events from './examples/events.vue'
       <Events />
     </Variant>
     <Variant title="Closed">
-      <Closed name="Christian" @status-change="e => console.log(e.status)"  />
+      <Avatar
+        name="Christian"
+        src="https://avatars.githubusercontent.com/u/1846056?v=4"
+        @status-change="(e) => console.log(e.status)"
+      />
     </Variant>
   </Story>
 </template>
