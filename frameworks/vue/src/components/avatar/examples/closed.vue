@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { AvatarFallback, AvatarImage, AvatarRoot, type AvatarRootEmits } from '../'
+import {
+  AvatarFallback,
+  AvatarImage,
+  AvatarRoot,
+  type AvatarRootEmits,
+  type AvatarRootProps,
+} from '../'
 import { useForwardPropsEmits } from '../../../utils'
 
-export interface AvatarProps {
+export interface AvatarProps extends AvatarRootProps {
   src?: string
   name: string
 }
