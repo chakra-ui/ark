@@ -1,7 +1,6 @@
 import type * as progress from '@zag-js/progress'
 
 export interface ProgressRootProps {
-  'aria-label': string
   /**
    * The document's text/writing direction.
    * @default "ltr"
@@ -28,7 +27,7 @@ export interface ProgressRootProps {
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/types/dist/index').Orientation
+  orientation?: progress.Orientation
   /**
    * The localized messages to use.
    */

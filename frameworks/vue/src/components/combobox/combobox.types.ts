@@ -167,9 +167,7 @@ export type ComboboxRootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
-  ]
+  focusOutside: [event: combobox.FocusOutsideEvent]
   /**
    * Function called when an item is highlighted using the pointer
    * or keyboard navigation.
@@ -182,9 +180,7 @@ export type ComboboxRootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
-  ]
+  interactOutside: [event: combobox.InteractOutsideEvent]
   /**
    * Function called when the popup is opened
    */
@@ -192,9 +188,7 @@ export type ComboboxRootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
-  ]
+  pointerDownOutside: [event: combobox.PointerDownOutsideEvent]
   /**
    * Function called when a new item is selected
    */

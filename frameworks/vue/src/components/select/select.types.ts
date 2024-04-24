@@ -86,7 +86,7 @@ export interface SelectRootProps {
   /**
    * The positioning options of the menu.
    */
-  positioning?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/popper/dist/index').PositioningOptions
+  positioning?: select.PositioningOptions
   /**
    * Whether the select is read-only
    */
@@ -105,9 +105,7 @@ export type SelectRootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
-  ]
+  focusOutside: [event: select.FocusOutsideEvent]
   /**
    * The callback fired when the highlighted item changes.
    */
@@ -115,9 +113,7 @@ export type SelectRootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
-  ]
+  interactOutside: [event: select.InteractOutsideEvent]
   /**
    * Function called when the popup is opened
    */
@@ -125,9 +121,7 @@ export type SelectRootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
-  ]
+  pointerDownOutside: [event: select.PointerDownOutsideEvent]
   /**
    * The callback fired when the selected item changes.
    */
