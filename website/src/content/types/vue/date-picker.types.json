@@ -168,7 +168,7 @@
       "description": "Whether the datepicker is open"
     },
     "positioning": {
-      "type": "PositioningOptions",
+      "type": "any",
       "isRequired": false,
       "description": "The user provided options used to position the date picker content"
     },

@@ -95,7 +95,7 @@
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether an accordion item can be after it has been expanded."
+      "description": "Whether an accordion item can be collapsed after it has been opened."
     },
     "defaultValue": {
       "type": "string[]",
@@ -137,11 +137,10 @@
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
-      "description": "Whether multple accordion items can be expanded at the same time."
+      "description": "Whether multple accordion items can be open at the same time."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
-      "defaultValue": "\"vertical\"",
       "isRequired": false,
       "description": "The orientation of the accordion items."
     }

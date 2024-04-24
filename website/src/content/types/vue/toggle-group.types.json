@@ -47,7 +47,7 @@
       "description": "Whether to allow multiple toggles to be selected."
     },
     "orientation": {
-      "type": "Orientation",
+      "type": "any",
       "isRequired": false,
       "description": "The orientation of the toggle group."
     },

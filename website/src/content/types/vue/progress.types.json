@@ -63,7 +63,7 @@
     },
     "modelValue": { "type": "number", "isRequired": false },
     "orientation": {
-      "type": "Orientation",
+      "type": "any",
       "defaultValue": "\"horizontal\"",
       "isRequired": false,
       "description": "The orientation of the element."
