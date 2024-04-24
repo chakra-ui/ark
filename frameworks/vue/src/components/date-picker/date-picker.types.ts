@@ -154,4 +154,8 @@ export type DatePickerRootEmits = {
    * Function called when the view changes.
    */
   viewChange: [details: datePicker.ViewChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string[]]
 }

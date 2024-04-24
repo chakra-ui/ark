@@ -33,7 +33,7 @@ const extractTypes = (component: string) => {
           declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`),
         )
       return {
-        name: `"${property.getName()}"`,
+        name: escapePropertyName(property.getName()),
         type: property.getTypeAtLocation(sourceFile).getText(sourceFile),
         hasQuestionToken: property.isOptional(),
         leadingTrivia: comment,
@@ -97,11 +97,11 @@ const extractTypes = (component: string) => {
       .map(
         (emit) =>
           `\n${emit.comment}
-        "${emit.name}": [${emit.type.map(([key, value]) => `${key}: ${value}`)}]`,
+        ${escapePropertyName(emit.name)}: [${emit.type.map(([key, value]) => `${key}: ${value}`)}]`,
       )
       .join('; ')}}`,
   })
-
+  outputFile.organizeImports()
   outputFile.saveSync()
 }
 
@@ -112,9 +112,8 @@ const main = async () => {
   })
   components
     .map((component) => parse(component).name)
-    .filter((component) => ['rating-group'].includes(component))
-
-    // .filter((component) => !['toast', 'format'].includes(component))
+    // .filter((component) => ['progress'].includes(component))
+    .filter((component) => !['toast', 'format'].includes(component))
     .map((component) => {
       const componentName = parse(component).name
       console.log(`Generating types for ${componentName}`)
@@ -126,3 +125,10 @@ main().catch((err) => {
   console.error(err.message)
   process.exit(1)
 })
+
+function escapePropertyName(name: string): string {
+  if (/[^a-zA-Z0-9_]/.test(name)) {
+    return `"${name}"`
+  }
+  return name
+}

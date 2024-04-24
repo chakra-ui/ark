@@ -60,4 +60,8 @@ export type RadioGroupRootEmits = {
    * @param value the value of the checked radio
    */
   valueChange: [details: radioGroup.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }

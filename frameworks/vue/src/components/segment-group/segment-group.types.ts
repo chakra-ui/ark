@@ -1,4 +1,4 @@
-import type * as segmentGroup from '@zag-js/radio-group'
+import type * as segmentGroup from '@zag-js/segment-group'
 
 export interface SegmentGroupRootProps {
   /**
@@ -60,4 +60,8 @@ export type SegmentGroupRootEmits = {
    * @param value the value of the checked radio
    */
   valueChange: [details: segmentGroup.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }

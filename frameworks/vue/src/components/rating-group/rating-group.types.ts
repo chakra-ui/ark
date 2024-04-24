@@ -72,4 +72,8 @@ export type RatingGroupRootEmits = {
    * Function to be called when the rating value changes.
    */
   valueChange: [details: ratingGroup.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: number]
 }

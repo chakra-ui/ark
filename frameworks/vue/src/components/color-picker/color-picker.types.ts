@@ -100,4 +100,8 @@ export type ColorPickerRootEmits = {
    * Handler that is called when the user stops dragging.
    */
   valueChangeEnd: [details: colorPicker.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }

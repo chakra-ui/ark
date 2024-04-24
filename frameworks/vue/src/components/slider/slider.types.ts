@@ -114,4 +114,8 @@ export type SliderRootEmits = {
    * Function invoked when the slider value change is done
    */
   valueChangeEnd: [details: slider.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: number[]]
 }

@@ -62,4 +62,8 @@ export type AccordionRootEmits = {
    * The callback fired when the state of opened/closed accordion items changes.
    */
   valueChange: [details: accordion.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string[]]
 }

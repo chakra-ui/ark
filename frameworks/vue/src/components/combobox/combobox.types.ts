@@ -199,4 +199,8 @@ export type ComboboxRootEmits = {
    * Function called when a new item is selected
    */
   valueChange: [details: combobox.ValueChangeDetails<T>]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string[]]
 }

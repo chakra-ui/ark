@@ -1,6 +1,7 @@
 import type * as progress from '@zag-js/progress'
 
 export interface ProgressRootProps {
+  'aria-label': string
   /**
    * The document's text/writing direction.
    * @default "ltr"
@@ -32,8 +33,11 @@ export interface ProgressRootProps {
    * The localized messages to use.
    */
   translations?: progress.IntlTranslations
+}
+
+export type ProgressRootEmits = {
   /**
-   *  The current value of the progress bar.
+   * The callback fired when the model value changes.
    */
-  value?: number
+  'update:modelValue': [value: number]
 }

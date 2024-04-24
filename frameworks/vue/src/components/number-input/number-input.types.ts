@@ -126,4 +126,8 @@ export type NumberInputRootEmits = {
    * Function invoked when the value overflows or underflows the min/max range
    */
   valueInvalid: [details: numberInput.ValueInvalidDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }

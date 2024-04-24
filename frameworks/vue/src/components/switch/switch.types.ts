@@ -64,4 +64,8 @@ export type SwitchRootEmits = {
    * Function to call when the switch is clicked.
    */
   checkedChange: [details: zagSwitch.CheckedChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: boolean]
 }

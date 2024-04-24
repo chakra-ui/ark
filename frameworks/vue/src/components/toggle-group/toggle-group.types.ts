@@ -50,4 +50,8 @@ export type ToggleGroupRootEmits = {
    * Function to call when the toggle is clicked.
    */
   valueChange: [details: toggleGroup.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string[]]
 }

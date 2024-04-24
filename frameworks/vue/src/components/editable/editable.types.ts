@@ -140,4 +140,8 @@ export type EditableRootEmits = {
    * The callback that is called when the esc key is pressed or the cancel button is clicked
    */
   valueRevert: [details: editable.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }

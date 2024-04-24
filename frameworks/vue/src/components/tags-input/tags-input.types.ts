@@ -1,4 +1,3 @@
-import type * as interactOutside from '@zag-js/interact-outside'
 import type * as tagsInput from '@zag-js/tags-input'
 
 export interface TagsInputRootProps {
@@ -115,7 +114,9 @@ export type TagsInputRootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [event: interactOutside.FocusOutsideEvent]
+  focusOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
+  ]
   /**
    * Callback fired when a tag is highlighted by pointer or keyboard navigation
    */
@@ -127,11 +128,15 @@ export type TagsInputRootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [event: interactOutside.InteractOutsideEvent]
+  interactOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
+  ]
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [event: interactOutside.PointerDownOutsideEvent]
+  pointerDownOutside: [
+    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
+  ]
   /**
    * Callback fired when the tag values is updated
    */
@@ -140,4 +145,8 @@ export type TagsInputRootEmits = {
    * Callback fired when the max tag count is reached or the `validateTag` function returns `false`
    */
   valueInvalid: [details: tagsInput.ValidityChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string[]]
 }

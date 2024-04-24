@@ -132,4 +132,8 @@ export type SelectRootEmits = {
    * The callback fired when the selected item changes.
    */
   valueChange: [details: select.ValueChangeDetails<T>]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string[]]
 }

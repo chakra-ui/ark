@@ -58,4 +58,8 @@ export type TabsRootEmits = {
    * Callback to be called when the selected/active tab changes
    */
   valueChange: [details: tabs.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }
