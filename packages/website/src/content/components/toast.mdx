@@ -46,6 +46,54 @@ the content of the toast:
 
 <Story id="CustomRender" />
 
+## Data Attributes
+
+### Toast Group
+
+| Name           | Type                                                                                                                                                               | Description                                          | Default Value |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|---------------|
+| data-scope     | 'toast'                                                                                                                                                            | Indicates the scope of this part                     | -             |
+| data-part      | 'group'                                                                                                                                                            | Indicates which part is this element                 | -             |
+| data-placement | 'bottom' \| 'bottom-end' \| 'bottom-start' \| 'left' \| 'left-end' \| 'left-start' \| 'top' \| 'top-end' \| 'top-start' \| 'right' \| 'right-end' \| 'right start' | Specifies the placement strategy for the group       | -             |
+| data-side      | 'top' \| 'left' \| 'bottom' \| 'right'                                                                                                                             | Specifies which side of the viewport the group is on | -             |
+| data-align     | 'start' \| 'center' \| 'end'                                                                                                                                       | Aligns the group within its side                     | -             |
+
+### Toast Root
+
+| Name           | Type                                                                                                                                                               | Description                                          | Default Value |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|---------------|
+| data-scope     | 'toast'                                                                                                                                                            | Indicates the scope of this part                     | -             |
+| data-part      | 'root'                                                                                                                                                             | Indicates which part is this element                 | -             |
+| data-placement | 'bottom' \| 'bottom-end' \| 'bottom-start' \| 'left' \| 'left-end' \| 'left-start' \| 'top' \| 'top-end' \| 'top-start' \| 'right' \| 'right-end' \| 'right start' | Specifies the placement strategy for the toast       | -             |
+| data-side      | 'top' \| 'left' \| 'bottom' \| 'right'                                                                                                                             | Specifies which side of the viewport the toast is on | -             |
+| data-align     | 'start' \| 'center' \| 'end'                                                                                                                                       | Aligns the toast within its side                     | -             |
+| data-first     | boolean                                                                                                                                                            | Whether this is the first toast in the group         | -             |
+| data-last      | boolean                                                                                                                                                            | Whether this is the last toast in the group          | -             |
+| data-stack     | boolean                                                                                                                                                            | Whether the toast is part of a stack                 | -             |
+| data-mounted   | boolean                                                                                                                                                            | Whether the toast is currently mounted               | -             |
+| data-paused    | boolean                                                                                                                                                            | Whether the toas is paused                           | -             |
+
+### Toast Title
+
+| Name       | Type    | Description                          | Default Value |
+|------------|---------|--------------------------------------|---------------|
+| data-scope | 'toast' | Indicates the scope of this part     | -             |
+| data-part  | 'title' | Indicates which part is this element | -             |
+
+### Toast Description
+
+| Name       | Type          | Description                          | Default Value |
+|------------|---------------|--------------------------------------|---------------|
+| data-scope | 'toast'       | Indicates the scope of this part     | -             |
+| data-part  | 'description' | Indicates which part is this element | -             |
+
+### Toast Close Trigger
+
+| Name       | Type            | Description                          | Default Value |
+|------------|-----------------|--------------------------------------|---------------|
+| data-scope | 'toast'         | Indicates the scope of this part     | -             |
+| data-part  | 'close-trigger' | Indicates which part is this element | -             |
+
 ## API Reference
 
 <ComponentTypes />
