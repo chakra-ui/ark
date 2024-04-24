@@ -35,6 +35,7 @@
     }
   },
   "Root": {
+    "aria-label": { "type": "string", "isRequired": true },
     "dir": {
       "type": "'ltr' | 'rtl'",
       "defaultValue": "\"ltr\"",
@@ -72,11 +73,6 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "The localized messages to use."
-    },
-    "value": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The current value of the progress bar."
     }
   },
   "Track": {
