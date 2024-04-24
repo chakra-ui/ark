@@ -85,13 +85,13 @@ const extractTypes = (component: string) => {
   })
 
   outputFile.addInterface({
-    name: `${chain(component).camelCase().capitalize().value()}RootProps`,
+    name: 'RootProps',
     isExported: true,
     properties: props,
   })
 
   outputFile.addTypeAlias({
-    name: `${chain(component).camelCase().capitalize().value()}RootEmits`,
+    name: 'RootEmits',
     isExported: true,
     type: `{ ${emits
       .map(
@@ -112,8 +112,8 @@ const main = async () => {
   })
   components
     .map((component) => parse(component).name)
-    // .filter((component) => ['avatar'].includes(component))
-    .filter((component) => !['toast', 'format'].includes(component))
+    .filter((component) => ['collapsible'].includes(component))
+    // .filter((component) => !['toast', 'format'].includes(component))
     .map((component) => {
       const componentName = parse(component).name
       console.log(`Generating types for ${componentName}`)

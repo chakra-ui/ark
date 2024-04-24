@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Accordion from './examples/accordion.vue'
 import Basic from './examples/basic.vue'
 import Collapsible from './examples/collapsible.vue'
 import Controlled from './examples/controlled.vue'
@@ -29,6 +30,9 @@ import Vertical from './examples/vertical.vue'
     </Variant>
     <Variant title="Disabled">
       <Disabled />
+    </Variant>
+    <Variant title="Closed">
+      <Accordion :items="['React', 'Solid', 'Vue']" />
     </Variant>
   </Story>
 </template>

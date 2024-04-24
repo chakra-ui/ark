@@ -4,7 +4,7 @@ import { Avatar } from '../'
 
 <template>
   <Avatar.Root>
-    <Avatar.Context v-slot="{ avatar }">
+    <Avatar.Context v-slot="avatar">
       <Avatar.Fallback>
         {{ avatar.loaded ? 'PA' : 'Loading' }}
       </Avatar.Fallback>

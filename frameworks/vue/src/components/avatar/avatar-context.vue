@@ -14,10 +14,10 @@ import { useAvatarContext } from './use-avatar-context'
 const avatar = useAvatarContext()
 
 defineSlots<{
-  default(props: { avatar: UnwrapRef<UseAvatarContext> }): unknown
+  default(avatar: UnwrapRef<UseAvatarContext>): unknown
 }>()
 </script>
 
 <template>
-  <slot :avatar />
+  <slot v-bind="avatar"></slot>
 </template>

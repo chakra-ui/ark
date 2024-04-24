@@ -1,14 +1,18 @@
 export type { OpenChangeDetails } from '@zag-js/collapsible'
 export {
-  CollapsibleContent as Content,
+  default as Content,
   type CollapsibleContentProps as ContentProps,
-} from './collapsible-content'
+} from './collapsible-content.vue'
 export {
-  CollapsibleContext as Context,
+  default as Context,
   type CollapsibleContextProps as ContextProps,
-} from './collapsible-context'
-export { CollapsibleRoot as Root, type CollapsibleRootProps as RootProps } from './collapsible-root'
+} from './collapsible-context.vue'
 export {
-  CollapsibleTrigger as Trigger,
+  default as Root,
+  type CollapsibleRootEmits as RootEmits,
+  type CollapsibleRootProps as RootProps,
+} from './collapsible-root.vue'
+export {
+  default as Trigger,
   type CollapsibleTriggerProps as TriggerProps,
-} from './collapsible-trigger'
+} from './collapsible-trigger.vue'

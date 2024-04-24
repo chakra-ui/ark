@@ -2,9 +2,10 @@ import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref, watch } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { UseRenderStrategyProps } from '../../utils/use-render-strategy'
+import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
   extends UseRenderStrategyProps,
@@ -21,7 +22,7 @@ export interface UseCollapsibleReturn extends ComputedRef<Collapsible> {}
 
 export const useCollapsible = (
   props: UseCollapsibleProps,
-  emits: CallableFunction,
+  emits: EmitFn<RootEmits>,
 ): UseCollapsibleReturn => {
   const context = ref(props)
   const wasVisible = ref(false)

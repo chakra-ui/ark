@@ -1,23 +1,27 @@
 export type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/accordion'
 export {
-  AccordionContext as Context,
+  default as Context,
   type AccordionContextProps as ContextProps,
-} from './accordion-context'
-export { AccordionItem as Item, type AccordionItemProps as ItemProps } from './accordion-item'
+} from './accordion-context.vue'
 export {
-  AccordionItemContent as ItemContent,
+  default as ItemContent,
   type AccordionItemContentProps as ItemContentProps,
-} from './accordion-item-content'
+} from './accordion-item-content.vue'
 export {
-  AccordionItemContext as ItemContext,
+  default as ItemContext,
   type AccordionItemContextProps as ItemContextProps,
-} from './accordion-item-context'
+} from './accordion-item-context.vue'
 export {
-  AccordionItemIndicator as ItemIndicator,
+  default as ItemIndicator,
   type AccordionItemIndicatorProps as ItemIndicatorProps,
-} from './accordion-item-indicator'
+} from './accordion-item-indicator.vue'
 export {
-  AccordionItemTrigger as ItemTrigger,
+  default as ItemTrigger,
   type AccordionItemTriggerProps as ItemTriggerProps,
-} from './accordion-item-trigger'
-export { AccordionRoot as Root, type AccordionRootProps as RootProps } from './accordion-root'
+} from './accordion-item-trigger.vue'
+export { default as Item, type AccordionItemProps as ItemProps } from './accordion-item.vue'
+export {
+  default as Root,
+  type AccordionRootEmits as RootEmits,
+  type AccordionRootProps as RootProps,
+} from './accordion-root.vue'
