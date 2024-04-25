@@ -2,8 +2,9 @@ import * as zagSwitch from '@zag-js/switch'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './switch'
 
 export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
   modelValue?: zagSwitch.Context['checked']
@@ -11,7 +12,7 @@ export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
 
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
-export const useSwitch = (props: UseSwitchProps, emit: CallableFunction): UseSwitchReturn => {
+export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSwitchReturn => {
   const getRootNode = useEnvironmentContext()
 
   const context = computed(() => {
@@ -28,7 +29,7 @@ export const useSwitch = (props: UseSwitchProps, emit: CallableFunction): UseSwi
       id: context.value.id || useId().value,
       getRootNode,
       onCheckedChange(details) {
-        emit('checked-change', details)
+        emit('checkedChange', details)
         emit('update:modelValue', details.checked)
       },
     }),
