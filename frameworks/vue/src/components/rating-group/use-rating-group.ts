@@ -2,8 +2,9 @@ import * as ratingGroup from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './rating-group'
 
 export interface UseRatingGroupProps extends Optional<ratingGroup.Context, 'id'> {
   modelValue?: ratingGroup.Context['value']
@@ -13,7 +14,7 @@ export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTy
 
 export const useRatingGroup = (
   props: UseRatingGroupProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
   const getRootNode = useEnvironmentContext()
   const context = computed(() => {
@@ -30,11 +31,11 @@ export const useRatingGroup = (
       id: context.value.id || useId().value,
       getRootNode,
       onValueChange(details) {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
       onHoverChange(details) {
-        emit('hover-change', details)
+        emit('hoverChange', details)
       },
     }),
     { context },

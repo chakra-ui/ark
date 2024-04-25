@@ -1,25 +1,26 @@
 export type { HoverChangeDetails, ValueChangeDetails } from '@zag-js/rating-group'
 export {
-  RatingGroupContext as Context,
+  default as Context,
   type RatingGroupContextProps as ContextProps,
-} from './rating-group-context'
+} from './rating-group-context.vue'
 export {
-  RatingGroupControl as Control,
+  default as Control,
   type RatingGroupControlProps as ControlProps,
-} from './rating-group-control'
+} from './rating-group-control.vue'
 export {
-  RatingGroupItem as Item,
-  type RatingGroupItemProps as ItemProps,
-} from './rating-group-item'
-export {
-  RatingGroupItemContext as ItemContext,
+  default as ItemContext,
   type RatingGroupItemContextProps as ItemContextProps,
-} from './rating-group-item-context'
+} from './rating-group-item-context.vue'
 export {
-  RatingGroupLabel as Label,
+  default as Item,
+  type RatingGroupItemProps as ItemProps,
+} from './rating-group-item.vue'
+export {
+  default as Label,
   type RatingGroupLabelProps as LabelProps,
-} from './rating-group-label'
+} from './rating-group-label.vue'
 export {
-  RatingGroupRoot as Root,
+  default as Root,
+  type RatingGroupRootEmits as RootEmits,
   type RatingGroupRootProps as RootProps,
-} from './rating-group-root'
+} from './rating-group-root.vue'
