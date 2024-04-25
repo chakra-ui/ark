@@ -24,5 +24,5 @@ const thumbProps = computed(() => ({
   <ark.div v-bind="thumbProps" :as-child="asChild">
     <slot />
   </ark.div>
-  <input v-bind="slider.getHiddenInputProps(props)"/>
+  <input v-bind="slider.getHiddenInputProps(props)" />
 </template>

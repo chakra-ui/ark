@@ -1,19 +1,23 @@
 export type { ItemLabelDetails, PageChangeDetails } from '@zag-js/pagination'
 export {
-  PaginationContext as Context,
+  default as Context,
   type PaginationContextProps as ContextProps,
-} from './pagination-context'
+} from './pagination-context.vue'
 export {
-  PaginationEllipsis as Ellipsis,
+  default as Ellipsis,
   type PaginationEllipsisProps as EllipsisProps,
-} from './pagination-ellipsis'
-export { PaginationItem as Item, type PaginationItemProps as ItemProps } from './pagination-item'
+} from './pagination-ellipsis.vue'
+export { default as Item, type PaginationItemProps as ItemProps } from './pagination-item.vue'
 export {
-  PaginationNextTrigger as NextTrigger,
+  default as NextTrigger,
   type PaginationNextTriggerProps as NextTriggerProps,
-} from './pagination-next-trigger'
+} from './pagination-next-trigger.vue'
 export {
-  PaginationPrevTrigger as PrevTrigger,
+  default as PrevTrigger,
   type PaginationPrevTriggerProps as PrevTriggerProps,
-} from './pagination-prev-trigger'
-export { PaginationRoot as Root, type PaginationRootProps as RootProps } from './pagination-root'
+} from './pagination-prev-trigger.vue'
+export {
+  default as Root,
+  type PaginationRootProps as RootProps,
+  type PaginationRootEmits as RootEmits,
+} from './pagination-root.vue'

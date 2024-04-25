@@ -22,4 +22,3 @@ SwitchProvider(context)
     <slot />
   </ark.label>
 </template>
-

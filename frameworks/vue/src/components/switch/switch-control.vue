@@ -10,7 +10,7 @@ import { ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
 defineProps<SwitchControlProps>()
-  const attrs = useAttrs()
+const attrs = useAttrs()
 const context = useSwitchContext()
 
 const controlProps = computed(() => ({

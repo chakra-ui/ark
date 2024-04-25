@@ -22,4 +22,3 @@ SliderProvider(slider)
     <slot />
   </ark.div>
 </template>
-

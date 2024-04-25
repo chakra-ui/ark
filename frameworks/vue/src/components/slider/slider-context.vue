@@ -21,4 +21,3 @@ defineSlots<{
 <template>
   <slot v-bind="slider"></slot>
 </template>
-

@@ -2,15 +2,16 @@ import * as pagination from '@zag-js/pagination'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './pagination'
 
 export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {}
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (
   props: UsePaginationProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UsePaginationReturn => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
@@ -21,7 +22,7 @@ export const usePagination = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onPageChange: (details) => {
-        emit('page-change', details)
+        emit('pageChange', details)
       },
     }),
     { context },
