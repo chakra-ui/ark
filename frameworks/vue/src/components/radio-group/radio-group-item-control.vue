@@ -26,4 +26,5 @@ const controlProps = computed(() => ({
   <ark.div v-bind="controlProps" :as-child="asChild">
     <slot />
   </ark.div>
+  <input v-bind="radioGroup.getItemHiddenInputProps(itemProps)" />
 </template>

@@ -20,7 +20,7 @@ RadioGroupItemProvider(computed(() => radioGroup.value.getItemState(props)))
 </script>
 
 <template>
-  <ark.div v-bind="radioGroup.getItemProps(props)" :as-child="asChild">
+  <ark.label v-bind="radioGroup.getItemProps(props)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.label>
 </template>

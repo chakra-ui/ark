@@ -38,10 +38,12 @@ export const useSelect = <T extends CollectionItem>(
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange: (details) => {
+        // @ts-expect-error FIXME
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
       onHighlightChange: (details) => {
+        // @ts-expect-error FIXME
         emit('highlightChange', details)
       },
       onOpenChange: (details) => {
