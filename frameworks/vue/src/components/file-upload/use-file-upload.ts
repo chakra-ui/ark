@@ -2,8 +2,9 @@ import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './file-upload'
 
 export interface UseFileUploadProps extends Optional<fileUpload.Context, 'id'> {}
 
@@ -11,7 +12,7 @@ export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropType
 
 export const useFileUpload = (
   props: UseFileUploadProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseFileUploadReturn => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
@@ -22,13 +23,13 @@ export const useFileUpload = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onFileChange: (details) => {
-        emit('file-change', details)
+        emit('fileChange', details)
       },
       onFileAccept: (details) => {
-        emit('file-accept', details)
+        emit('fileAccept', details)
       },
       onFileReject(details) {
-        emit('file-reject', details)
+        emit('fileReject', details)
       },
     }),
     { context },

@@ -3,27 +3,48 @@ export type {
   FileChangeDetails as FileUploadFileChangeDetails,
   FileRejectDetails as FileUploadFileRejectDetails,
 } from '@zag-js/file-upload'
-export { FileUploadContext, type FileUploadContextProps } from './file-upload-context'
-export { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
-export { FileUploadItem, type FileUploadItemProps } from './file-upload-item'
 export {
-  FileUploadItemDeleteTrigger,
+  default as FileUploadContext,
+  type FileUploadContextProps,
+} from './file-upload-context.vue'
+export {
+  default as FileUploadDropzone,
+  type FileUploadDropzoneProps,
+} from './file-upload-dropzone.vue'
+export { default as FileUploadItem, type FileUploadItemProps } from './file-upload-item.vue'
+export {
+  default as FileUploadItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps,
-} from './file-upload-item-delete-trigger'
-export { FileUploadItemGroup, type FileUploadItemGroupProps } from './file-upload-item-group'
-export { FileUploadItemName, type FileUploadItemNameProps } from './file-upload-item-name'
-export { FileUploadItemPreview, type FileUploadItemPreviewProps } from './file-upload-item-preview'
+} from './file-upload-item-delete-trigger.vue'
 export {
-  FileUploadItemPreviewImage,
+  default as FileUploadItemGroup,
+  type FileUploadItemGroupProps,
+} from './file-upload-item-group.vue'
+export {
+  default as FileUploadItemName,
+  type FileUploadItemNameProps,
+} from './file-upload-item-name.vue'
+export {
+  default as FileUploadItemPreview,
+  type FileUploadItemPreviewProps,
+} from './file-upload-item-preview.vue'
+export {
+  default as FileUploadItemPreviewImage,
   type FileUploadItemPreviewImageProps,
-} from './file-upload-item-preview-image'
+} from './file-upload-item-preview-image.vue'
 export {
-  FileUploadItemSizeText,
+  default as FileUploadItemSizeText,
   type FileUploadItemSizeTextProps,
-} from './file-upload-item-size-text'
-export { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
-export { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
-export { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
+} from './file-upload-item-size-text.vue'
+export { default as FileUploadLabel, type FileUploadLabelProps } from './file-upload-label.vue'
+export {
+  default as FileUploadRoot,
+  type FileUploadRootProps,
+  type FileUploadRootEmits,
+} from './file-upload-root.vue'
+export {
+  default as FileUploadTrigger,
+  type FileUploadTriggerProps,
+} from './file-upload-trigger.vue'
 export { type UseFileUploadContext, useFileUploadContext } from './use-file-upload-context'
-
 export * as FileUpload from './file-upload'
