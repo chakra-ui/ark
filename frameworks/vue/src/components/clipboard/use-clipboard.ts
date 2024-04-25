@@ -2,15 +2,16 @@ import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './clipboard.types'
 
 export interface UseClipboardProps extends Optional<clipboard.Context, 'id'> {}
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}
 
 export const useClipboard = (
   props: UseClipboardProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseClipboardReturn => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
@@ -21,7 +22,7 @@ export const useClipboard = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onStatusChange: (details) => {
-        emit('status-change', details)
+        emit('statusChange', details)
       },
     }),
     { context },

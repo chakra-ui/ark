@@ -1,20 +1,24 @@
 export type { CopyStatusDetails } from '@zag-js/clipboard'
 export {
-  ClipboardContext as Context,
+  default as Context,
   type ClipboardContextProps as ContextProps,
-} from './clipboard-context'
+} from './clipboard-context.vue'
 export {
-  ClipboardControl as Control,
+  default as Control,
   type ClipboardControlProps as ControlProps,
-} from './clipboard-control'
+} from './clipboard-control.vue'
 export {
-  ClipboardIndicator as Indicator,
+  default as Indicator,
   type ClipboardIndicatorProps as IndicatorProps,
-} from './clipboard-indicator'
-export { ClipboardInput as Input, type ClipboardInputProps as InputProps } from './clipboard-input'
-export { ClipboardLabel as Label, type ClipboardLabelProps as LabelProps } from './clipboard-label'
-export { ClipboardRoot as Root, type ClipboardRootProps as RootProps } from './clipboard-root'
+} from './clipboard-indicator.vue'
+export { default as Input, type ClipboardInputProps as InputProps } from './clipboard-input.vue'
+export { default as Label, type ClipboardLabelProps as LabelProps } from './clipboard-label.vue'
 export {
-  ClipboardTrigger as Trigger,
+  default as Root,
+  type ClipboardRootEmits as RootEmits,
+  type ClipboardRootProps as RootProps,
+} from './clipboard-root.vue'
+export {
+  default as Trigger,
   type ClipboardTriggerProps as TriggerProps,
-} from './clipboard-trigger'
+} from './clipboard-trigger.vue'
