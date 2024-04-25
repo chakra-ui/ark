@@ -22,4 +22,3 @@ RatingGroupProvider(ratingGroup)
     <slot />
   </ark.div>
 </template>
-

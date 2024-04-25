@@ -4,34 +4,35 @@ export type {
   ValueInvalidDetails,
 } from '@zag-js/number-input'
 export {
-  NumberInputContext as Context,
+  default as Context,
   type NumberInputContextProps as ContextProps,
-} from './number-input-context'
+} from './number-input-context.vue'
 export {
-  NumberInputControl as Control,
+  default as Control,
   type NumberInputControlProps as ControlProps,
-} from './number-input-control'
+} from './number-input-control.vue'
 export {
-  NumberInputDecrementTrigger as DecrementTrigger,
+  default as DecrementTrigger,
   type NumberInputDecrementTriggerProps as DecrementTriggerProps,
-} from './number-input-decrement-trigger'
+} from './number-input-decrement-trigger.vue'
 export {
-  NumberInputIncrementTrigger as IncrementTrigger,
+  default as IncrementTrigger,
   type NumberInputIncrementTriggerProps as IncrementTriggerProps,
-} from './number-input-increment-trigger'
+} from './number-input-increment-trigger.vue'
 export {
-  NumberInputInput as Input,
+  default as Input,
   type NumberInputInputProps as InputProps,
-} from './number-input-input'
+} from './number-input-input.vue'
 export {
-  NumberInputLabel as Label,
+  default as Label,
   type NumberInputLabelProps as LabelProps,
-} from './number-input-label'
+} from './number-input-label.vue'
 export {
-  NumberInputRoot as Root,
+  default as Root,
   type NumberInputRootProps as RootProps,
-} from './number-input-root'
+  type NumberInputRootEmits as RootEmits,
+} from './number-input-root.vue'
 export {
-  NumberInputScrubber as Scrubber,
+  default as Scrubber,
   type NumberInputScrubberProps as ScrubberProps,
-} from './number-input-scrubber'
+} from './number-input-scrubber.vue'

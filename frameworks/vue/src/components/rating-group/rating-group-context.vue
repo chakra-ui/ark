@@ -21,4 +21,3 @@ defineSlots<{
 <template>
   <slot v-bind="ratingGroup"></slot>
 </template>
-

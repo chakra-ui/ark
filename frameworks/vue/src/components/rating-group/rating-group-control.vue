@@ -10,7 +10,7 @@ import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 
 defineProps<RatingGroupControlProps>()
-  const attrs = useAttrs()
+const attrs = useAttrs()
 
 const ratingGroup = useRatingGroupContext()
 
