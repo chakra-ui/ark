@@ -90,7 +90,7 @@ const reExportBarrelFile = async (component: string) => {
 const main = async () => {
   const component = process.argv.slice(2)[0]
   console.log('Generating types for', component)
-  // await reanmeParts(component)
+  await reanmeParts(component)
   await reExportIndexFile(component)
   await reExportBarrelFile(component)
 }

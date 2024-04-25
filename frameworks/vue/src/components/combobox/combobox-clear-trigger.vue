@@ -1,0 +1,19 @@
+<script lang="ts">
+import type { PolymorphicProps } from '../factory'
+
+export interface ComboboxClearTriggerProps extends PolymorphicProps {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
+import { useComboboxContext } from './use-combobox-context'
+
+defineProps<ComboboxClearTriggerProps>()
+const combobox = useComboboxContext()
+</script>
+
+<template>
+  <ark.button v-bind="combobox.clearTriggerProps" :as-child="asChild">
+    <slot />
+  </ark.button>
+</template>

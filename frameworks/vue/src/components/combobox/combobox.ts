@@ -6,50 +6,54 @@ export type {
 } from '@zag-js/combobox'
 export type { CollectionItem } from '../../types'
 export {
-  ComboboxClearTrigger as ClearTrigger,
+  default as ClearTrigger,
   type ComboboxClearTriggerProps as ClearTriggerProps,
-} from './combobox-clear-trigger'
+} from './combobox-clear-trigger.vue'
 export {
-  ComboboxContent as Content,
+  default as Content,
   type ComboboxContentProps as ContentProps,
-} from './combobox-content'
+} from './combobox-content.vue'
 export {
-  ComboboxContext as Context,
+  default as Context,
   type ComboboxContextProps as ContextProps,
-} from './combobox-context'
+} from './combobox-context.vue'
 export {
-  ComboboxControl as Control,
+  default as Control,
   type ComboboxControlProps as ControlProps,
-} from './combobox-control'
-export { ComboboxInput as Input, type ComboboxInputProps as InputProps } from './combobox-input'
-export { ComboboxItem as Item, type ComboboxItemProps as ItemProps } from './combobox-item'
+} from './combobox-control.vue'
+export { default as Input, type ComboboxInputProps as InputProps } from './combobox-input.vue'
 export {
-  ComboboxItemContext as ItemContext,
+  default as ItemContext,
   type ComboboxItemContextProps as ItemContextProps,
-} from './combobox-item-context'
+} from './combobox-item-context.vue'
 export {
-  ComboboxItemGroup as ItemGroup,
-  type ComboboxItemGroupProps as ItemGroupProps,
-} from './combobox-item-group'
-export {
-  ComboboxItemGroupLabel as ItemGroupLabel,
+  default as ItemGroupLabel,
   type ComboboxItemGroupLabelProps as ItemGroupLabelProps,
-} from './combobox-item-group-label'
+} from './combobox-item-group-label.vue'
 export {
-  ComboboxItemIndicator as ItemIndicator,
+  default as ItemGroup,
+  type ComboboxItemGroupProps as ItemGroupProps,
+} from './combobox-item-group.vue'
+export {
+  default as ItemIndicator,
   type ComboboxItemIndicatorProps as ItemIndicatorProps,
-} from './combobox-item-indicator'
+} from './combobox-item-indicator.vue'
 export {
-  ComboboxItemText as ItemText,
+  default as ItemText,
   type ComboboxItemTextProps as ItemTextProps,
-} from './combobox-item-text'
-export { ComboboxLabel as Label, type ComboboxLabelProps as LabelProps } from './combobox-label'
+} from './combobox-item-text.vue'
+export { default as Item, type ComboboxItemProps as ItemProps } from './combobox-item.vue'
+export { default as Label, type ComboboxLabelProps as LabelProps } from './combobox-label.vue'
 export {
-  ComboboxPositioner as Positioner,
+  default as Positioner,
   type ComboboxPositionerProps as PositionerProps,
-} from './combobox-positioner'
-export { ComboboxRoot as Root, type ComboboxRootProps as RootProps } from './combobox-root'
+} from './combobox-positioner.vue'
 export {
-  ComboboxTrigger as Trigger,
+  default as Root,
+  type ComboboxRootEmits as RootEmits,
+  type ComboboxRootProps as RootProps,
+} from './combobox-root.vue'
+export {
+  default as Trigger,
   type ComboboxTriggerProps as TriggerProps,
-} from './combobox-trigger'
+} from './combobox-trigger.vue'

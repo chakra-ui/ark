@@ -5,25 +5,43 @@ export type {
   ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
 export type { CollectionItem as ComboboxCollectionItem } from '../../types'
-export { ComboboxClearTrigger, type ComboboxClearTriggerProps } from './combobox-clear-trigger'
-export { ComboboxContent, type ComboboxContentProps } from './combobox-content'
-export { ComboboxContext, type ComboboxContextProps } from './combobox-context'
-export { ComboboxControl, type ComboboxControlProps } from './combobox-control'
-export { ComboboxInput, type ComboboxInputProps } from './combobox-input'
-export { ComboboxItem, type ComboboxItemProps } from './combobox-item'
-export { ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context'
-export { ComboboxItemGroup, type ComboboxItemGroupProps } from './combobox-item-group'
 export {
-  ComboboxItemGroupLabel,
+  default as ComboboxClearTrigger,
+  type ComboboxClearTriggerProps,
+} from './combobox-clear-trigger.vue'
+export { default as ComboboxContent, type ComboboxContentProps } from './combobox-content.vue'
+export { default as ComboboxContext, type ComboboxContextProps } from './combobox-context.vue'
+export { default as ComboboxControl, type ComboboxControlProps } from './combobox-control.vue'
+export { default as ComboboxInput, type ComboboxInputProps } from './combobox-input.vue'
+export { default as ComboboxItem, type ComboboxItemProps } from './combobox-item.vue'
+export {
+  default as ComboboxItemContext,
+  type ComboboxItemContextProps,
+} from './combobox-item-context.vue'
+export {
+  default as ComboboxItemGroup,
+  type ComboboxItemGroupProps,
+} from './combobox-item-group.vue'
+export {
+  default as ComboboxItemGroupLabel,
   type ComboboxItemGroupLabelProps,
-} from './combobox-item-group-label'
-export { ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './combobox-item-indicator'
-export { ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text'
-export { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
-export { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
-export { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
-export { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
+} from './combobox-item-group-label.vue'
+export {
+  default as ComboboxItemIndicator,
+  type ComboboxItemIndicatorProps,
+} from './combobox-item-indicator.vue'
+export { default as ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text.vue'
+export { default as ComboboxLabel, type ComboboxLabelProps } from './combobox-label.vue'
+export {
+  default as ComboboxPositioner,
+  type ComboboxPositionerProps,
+} from './combobox-positioner.vue'
+export {
+  default as ComboboxRoot,
+  type ComboboxRootProps,
+  type ComboboxRootEmits,
+} from './combobox-root.vue'
+export { default as ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger.vue'
 export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
 export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
-
 export * as Combobox from './combobox'
