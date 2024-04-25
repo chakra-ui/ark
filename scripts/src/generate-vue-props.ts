@@ -1,5 +1,3 @@
-import { parse } from 'node:path'
-import { globby } from 'globby'
 import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
 import { chain } from 'voca'
 
@@ -106,19 +104,10 @@ const extractTypes = (component: string) => {
 }
 
 const main = async () => {
-  const components = await globby(['../frameworks/vue/src/components'], {
-    onlyDirectories: true,
-    deep: 1,
-  })
-  components
-    .map((component) => parse(component).name)
-    .filter((component) => ['collapsible'].includes(component))
-    // .filter((component) => !['toast', 'format'].includes(component))
-    .map((component) => {
-      const componentName = parse(component).name
-      console.log(`Generating types for ${componentName}`)
-      extractTypes(componentName)
-    })
+  const component = process.argv.slice(2)[0]
+  console.log('Generating props for', component)
+
+  extractTypes(component)
 }
 
 main().catch((err) => {

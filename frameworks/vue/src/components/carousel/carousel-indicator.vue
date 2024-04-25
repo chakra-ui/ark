@@ -1,0 +1,20 @@
+<script lang="ts">
+import type { IndicatorProps } from '@zag-js/carousel'
+import type { PolimoprhicProps } from '../factory'
+
+export interface CarouselIndicatorProps extends IndicatorProps, PolimoprhicProps {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
+import { useCarouselContext } from './use-carousel-context'
+
+const props = defineProps<CarouselIndicatorProps>()
+const carousel = useCarouselContext()
+</script>
+
+<template>
+  <ark.button v-bind="carousel.getIndicatorProps(props)" :as-child="asChild">
+    <slot />
+  </ark.button>
+</template>

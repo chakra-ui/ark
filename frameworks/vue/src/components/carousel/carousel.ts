@@ -1,35 +1,39 @@
 export type { SlideChangeDetails } from '@zag-js/carousel'
 export {
-  CarouselContext as Context,
+  default as Context,
   type CarouselContextProps as ContextProps,
-} from './carousel-context'
+} from './carousel-context.vue'
 export {
-  CarouselControl as Control,
+  default as Control,
   type CarouselControlProps as ControlProps,
-} from './carousel-control'
+} from './carousel-control.vue'
 export {
-  CarouselIndicator as Indicator,
-  type CarouselIndicatorProps as IndicatorProps,
-} from './carousel-indicator'
-export {
-  CarouselIndicatorGroup as IndicatorGroup,
+  default as IndicatorGroup,
   type CarouselIndicatorGroupProps as IndicatorGroupProps,
-} from './carousel-indicator-group'
-export { CarouselItem as Item, type CarouselItemProps as ItemProps } from './carousel-item'
+} from './carousel-indicator-group.vue'
 export {
-  CarouselItemGroup as ItemGroup,
+  default as Indicator,
+  type CarouselIndicatorProps as IndicatorProps,
+} from './carousel-indicator.vue'
+export {
+  default as ItemGroup,
   type CarouselItemGroupProps as ItemGroupProps,
-} from './carousel-item-group'
+} from './carousel-item-group.vue'
+export { default as Item, type CarouselItemProps as ItemProps } from './carousel-item.vue'
 export {
-  CarouselNextTrigger as NextTrigger,
+  default as NextTrigger,
   type CarouselNextTriggerProps as NextTriggerProps,
-} from './carousel-next-trigger'
+} from './carousel-next-trigger.vue'
 export {
-  CarouselPrevTrigger as PrevTrigger,
+  default as PrevTrigger,
   type CarouselPrevTriggerProps as PrevTriggerProps,
-} from './carousel-prev-trigger'
-export { CarouselRoot as Root, type CarouselRootProps as RootProps } from './carousel-root'
+} from './carousel-prev-trigger.vue'
 export {
-  CarouselViewport as Viewport,
+  default as Root,
+  type CarouselRootEmits as RootEmits,
+  type CarouselRootProps as RootProps,
+} from './carousel-root.vue'
+export {
+  default as Viewport,
   type CarouselViewportProps as ViewportProps,
-} from './carousel-viewport'
+} from './carousel-viewport.vue'

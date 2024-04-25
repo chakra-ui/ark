@@ -17,11 +17,12 @@ const itemProps = useAccordionItemPropsContext()
 const collapsible = useCollapsibleContext()
 
 const triggerProps = computed(() => {
-  const { "aria-controls": ariaControls, ...otherProps } = accordion.value.getItemTriggerProps(itemProps);
+  const { 'aria-controls': ariaControls, ...otherProps } =
+    accordion.value.getItemTriggerProps(itemProps)
   return {
     ...otherProps,
-    ...(collapsible.value.unmounted ? {} : { 'aria-controls': ariaControls })
-  };
+    ...(collapsible.value.unmounted ? {} : { 'aria-controls': ariaControls }),
+  }
 })
 </script>
 

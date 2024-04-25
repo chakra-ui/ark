@@ -2,13 +2,17 @@ import * as carousel from '@zag-js/carousel'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './carousel.types'
 
 export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {}
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): UseCarouselReturn => {
+export const useCarousel = (
+  props: UseCarouselProps,
+  emit: EmitFn<RootEmits>,
+): UseCarouselReturn => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
 
@@ -18,7 +22,7 @@ export const useCarousel = (props: UseCarouselProps, emit: CallableFunction): Us
       id: context.value.id ?? useId().value,
       getRootNode,
       onIndexChange: (details) => {
-        emit('index-change', details)
+        emit('indexChange', details)
       },
     }),
     { context },

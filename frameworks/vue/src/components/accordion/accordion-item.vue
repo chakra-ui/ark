@@ -25,7 +25,7 @@ AccordionItemPropsProvider(props)
 
 <template>
   <Collapsible.Root
-    v-bind="accordion.getItemProps(props)" 
+    v-bind="accordion.getItemProps(props)"
     :open="item.expanded"
     :lazy-mount="renderStrategyProps.lazyMount"
     :unmount-on-exit="renderStrategyProps.unmountOnExit"
