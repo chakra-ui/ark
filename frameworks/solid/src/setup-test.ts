@@ -19,6 +19,11 @@ global.Element.prototype.scrollIntoView = () => {
   // no-op
 }
 
+// stub Array.prototype.toSorted (used in zag.js collection)
+Array.prototype.toSorted = function () {
+  return [...this].sort()
+}
+
 Object.defineProperty(window, 'navigator', {
   value: {
     clipboard: {
