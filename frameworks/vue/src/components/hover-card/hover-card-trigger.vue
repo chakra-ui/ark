@@ -1,0 +1,19 @@
+<script lang="ts">
+import type { PolymorphicProps } from '../factory'
+
+export interface HoverCardTriggerProps extends PolymorphicProps {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
+import { useHoverCardContext } from './use-hover-card-context'
+
+defineProps<HoverCardTriggerProps>()
+const hoverCard = useHoverCardContext()
+</script>
+
+<template>
+  <ark.button v-bind="hoverCard.triggerProps" :as-child="asChild">
+    <slot />
+  </ark.button>
+</template>

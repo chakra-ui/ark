@@ -1,23 +1,27 @@
 export type { OpenChangeDetails } from '@zag-js/hover-card'
-export { HoverCardArrow as Arrow, type HoverCardArrowProps as ArrowProps } from './hover-card-arrow'
 export {
-  HoverCardArrowTip as ArrowTip,
+  default as ArrowTip,
   type HoverCardArrowTipProps as ArrowTipProps,
-} from './hover-card-arrow-tip'
+} from './hover-card-arrow-tip.vue'
+export { default as Arrow, type HoverCardArrowProps as ArrowProps } from './hover-card-arrow.vue'
 export {
-  HoverCardContent as Content,
+  default as Content,
   type HoverCardContentProps as ContentProps,
-} from './hover-card-content'
+} from './hover-card-content.vue'
 export {
-  HoverCardContext as Context,
+  default as Context,
   type HoverCardContextProps as ContextProps,
-} from './hover-card-context'
+} from './hover-card-context.vue'
 export {
-  HoverCardPositioner as Positioner,
+  default as Positioner,
   type HoverCardPositionerProps as PositionerProps,
-} from './hover-card-positioner'
-export { HoverCardRoot as Root, type HoverCardRootProps as RootProps } from './hover-card-root'
+} from './hover-card-positioner.vue'
 export {
-  HoverCardTrigger as Trigger,
+  default as Root,
+  type HoverCardRootEmits,
+  type HoverCardRootProps as RootProps,
+} from './hover-card-root.vue'
+export {
+  default as Trigger,
   type HoverCardTriggerProps as TriggerProps,
-} from './hover-card-trigger'
+} from './hover-card-trigger.vue'
