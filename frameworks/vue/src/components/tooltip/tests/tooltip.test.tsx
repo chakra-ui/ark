@@ -105,7 +105,8 @@ describe('Tooltip', () => {
 
     expect(screen.getByRole('tooltip')).toBeInTheDocument()
 
-    await user.keyboard('[Escape]')
+    await user.unhover(tooltipTrigger)
+
     expect(screen.queryByRole('tooltip', { hidden: true })).not.toBeVisible()
   })
 
@@ -117,12 +118,13 @@ describe('Tooltip', () => {
       },
     })
 
+    const trigger = screen.getByText('hover me')
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
 
-    const tooltipTrigger = screen.getByText('hover me')
-    await user.hover(tooltipTrigger)
+    await user.hover(trigger)
+    expect(screen.getByRole('tooltip')).toBeVisible()
 
-    await user.keyboard('[Escape]')
+    await user.unhover(trigger)
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
   })
 })

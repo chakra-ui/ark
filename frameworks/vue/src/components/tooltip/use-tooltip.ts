@@ -2,8 +2,9 @@ import * as tooltip from '@zag-js/tooltip'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './tooltip.types'
 
 export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {
   /**
@@ -14,7 +15,7 @@ export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, '
 
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
-export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseTooltipReturn => {
+export const useTooltip = (props: UseTooltipProps, emit: EmitFn<RootEmits>): UseTooltipReturn => {
   const context = ref(props)
   const getRootNode = useEnvironmentContext()
 
@@ -26,7 +27,7 @@ export const useTooltip = (props: UseTooltipProps, emit: CallableFunction): UseT
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
-        emit('open-change', details)
+        emit('openChange', details)
       },
     }),
     { context },
