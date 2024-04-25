@@ -1,0 +1,31 @@
+<script lang="ts">
+import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { PolymorphicProps } from '../factory'
+import type { RootEmits, RootProps } from './select.types'
+
+export interface SelectRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface SelectRootEmits extends RootEmits {}
+</script>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { RenderStrategyProvider } from '../../utils/use-render-strategy'
+import { ark } from '../factory'
+import { useSelect } from './use-select'
+import { SelectProvider } from './use-select-context'
+
+const props = withDefaults(defineProps<SelectRootProps>(), { open: undefined, closeOnSelect: true })
+const emits = defineEmits<SelectRootEmits>()
+
+const select = useSelect(props, emits)
+SelectProvider(select)
+RenderStrategyProvider(
+  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
+)
+</script>
+
+<template>
+  <ark.div v-bind="select.rootProps" :as-child="asChild">
+    <slot />
+  </ark.div>
+</template>

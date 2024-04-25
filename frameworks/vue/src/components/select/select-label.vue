@@ -1,0 +1,19 @@
+<script lang="ts">
+import type { PolymorphicProps } from '../factory'
+
+export interface SelectLabelProps extends PolymorphicProps {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
+import { useSelectContext } from './use-select-context'
+
+defineProps<SelectLabelProps>()
+const select = useSelectContext()
+</script>
+
+<template>
+  <ark.label v-bind="select.labelProps" :as-child="asChild">
+    <slot />
+  </ark.label>
+</template>

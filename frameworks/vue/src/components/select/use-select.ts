@@ -3,8 +3,9 @@ import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { CollectionItem, Optional } from '../../types'
+import type { CollectionItem, EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
@@ -17,7 +18,7 @@ export interface UseSelectReturn<T extends CollectionItem>
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseSelectReturn<T> => {
   const context = computed(() => {
     const { items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } = props
@@ -37,14 +38,14 @@ export const useSelect = <T extends CollectionItem>(
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange: (details) => {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
       onHighlightChange: (details) => {
-        emit('highlight-change', details)
+        emit('highlightChange', details)
       },
       onOpenChange: (details) => {
-        emit('open-change', details)
+        emit('openChange', details)
       },
     }),
     { context },
