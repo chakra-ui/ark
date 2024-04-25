@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { DateView } from '@zag-js/date-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerViewProps extends PolimoprhicProps {
+export interface DatePickerViewProps extends PolymorphicProps {
   view: DateView
 }
 </script>

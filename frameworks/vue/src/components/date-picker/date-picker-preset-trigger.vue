@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { PresetTriggerProps } from '@zag-js/date-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerPresetTriggerProps extends PolimoprhicProps, PresetTriggerProps {}
+export interface DatePickerPresetTriggerProps extends PolymorphicProps, PresetTriggerProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerNextTriggerProps extends PolimoprhicProps {}
+export interface DatePickerNextTriggerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

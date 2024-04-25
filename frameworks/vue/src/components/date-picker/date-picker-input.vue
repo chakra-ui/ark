@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/date-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerInputProps extends PolimoprhicProps, InputProps {}
+export interface DatePickerInputProps extends PolymorphicProps, InputProps {}
 </script>
 
 <script setup lang="ts">

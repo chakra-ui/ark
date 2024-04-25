@@ -1,10 +1,10 @@
 <script lang="ts">
 import { computed } from 'vue'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import type { DatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
 
 export interface DatePickerTableCellProps
-  extends PolimoprhicProps,
+  extends PolymorphicProps,
     DatePickerTableCellPropsContext {}
 </script>
 

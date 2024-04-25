@@ -1,15 +1,16 @@
 <script lang="ts">
 import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
 
-export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolimoprhicProps {}
+export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RenderStrategyProvider } from '../../utils/use-render-strategy'
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark } from '../factory'
 import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 

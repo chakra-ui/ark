@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerViewControlProps extends PolimoprhicProps {}
+export interface DatePickerViewControlProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
