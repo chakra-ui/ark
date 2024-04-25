@@ -2,8 +2,9 @@ import * as popover from '@zag-js/popover'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './popover.types'
 
 export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {
   /**
@@ -15,7 +16,7 @@ export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, '
 
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
 
-export const usePopover = (props: UsePopoverProps, emit: CallableFunction) => {
+export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
 
@@ -27,20 +28,20 @@ export const usePopover = (props: UsePopoverProps, emit: CallableFunction) => {
       getRootNode,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
-        emit('open-change', details)
+        emit('openChange', details)
         emit('update:open', details.open)
       },
       onEscapeKeyDown: (details) => {
-        emit('escape-key-down', details)
+        emit('escapeKeyDown', details)
       },
       onFocusOutside: (details) => {
-        emit('focus-outside', details)
+        emit('focusOutside', details)
       },
       onInteractOutside: (details) => {
-        emit('interact-outside', details)
+        emit('interactOutside', details)
       },
       onPointerDownOutside: (details) => {
-        emit('pointer-down-outside', details)
+        emit('pointerDownOutside', details)
       },
     }),
     { context },

@@ -1,37 +1,37 @@
 export type { OpenChangeDetails } from '@zag-js/popover'
-export { PopoverAnchor as Anchor, type PopoverAnchorProps as AnchorProps } from './popover-anchor'
-export { PopoverArrow as Arrow, type PopoverArrowProps as ArrowProps } from './popover-arrow'
+export { default as Anchor, type PopoverAnchorProps as AnchorProps } from './popover-anchor.vue'
+export { default as Arrow, type PopoverArrowProps as ArrowProps } from './popover-arrow.vue'
 export {
-  PopoverArrowTip as ArrowTip,
+  default as ArrowTip,
   type PopoverArrowTipProps as ArrowTipProps,
-} from './popover-arrow-tip'
+} from './popover-arrow-tip.vue'
 export {
-  PopoverCloseTrigger as CloseTrigger,
+  default as CloseTrigger,
   type PopoverCloseTriggerProps as CloseTriggerProps,
-} from './popover-close-trigger'
+} from './popover-close-trigger.vue'
 export {
-  PopoverContent as Content,
+  default as Content,
   type PopoverContentProps as ContentProps,
-} from './popover-content'
+} from './popover-content.vue'
 export {
-  PopoverContext as Context,
+  default as Context,
   type PopoverContextProps as ContextProps,
-} from './popover-context'
+} from './popover-context.vue'
 export {
-  PopoverDescription as Description,
+  default as Description,
   type PopoverDescriptionProps as DescriptionProps,
-} from './popover-description'
+} from './popover-description.vue'
 export {
-  PopoverIndicator as Indicator,
+  default as Indicator,
   type PopoverIndicatorProps as IndicatorProps,
-} from './popover-indicator'
+} from './popover-indicator.vue'
 export {
-  PopoverPositioner as Positioner,
+  default as Positioner,
   type PopoverPositionerProps as PositionerProps,
-} from './popover-positioner'
-export { PopoverRoot as Root, type PopoverRootProps as RootProps } from './popover-root'
-export { PopoverTitle as Title, type PopoverTitleProps as TitleProps } from './popover-title'
+} from './popover-positioner.vue'
+export { default as Root, type PopoverRootProps as RootProps } from './popover-root.vue'
+export { default as Title, type PopoverTitleProps as TitleProps } from './popover-title.vue'
 export {
-  PopoverTrigger as Trigger,
+  default as Trigger,
   type PopoverTriggerProps as TriggerProps,
-} from './popover-trigger'
+} from './popover-trigger.vue'
