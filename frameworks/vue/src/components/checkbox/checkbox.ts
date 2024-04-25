@@ -1,15 +1,19 @@
 export type { CheckedChangeDetails, CheckedState } from '@zag-js/checkbox'
 export {
-  CheckboxContext as Context,
+  default as Context,
   type CheckboxContextProps as ContextProps,
-} from './checkbox-context'
+} from './checkbox-context.vue'
 export {
-  CheckboxControl as Control,
+  default as Control,
   type CheckboxControlProps as ControlProps,
-} from './checkbox-control'
+} from './checkbox-control.vue'
 export {
-  CheckboxIndicator as Indicator,
+  default as Indicator,
   type CheckboxIndicatorProps as IndicatorProps,
-} from './checkbox-indicator'
-export { CheckboxLabel as Label, type CheckboxLabelProps as LabelProps } from './checkbox-label'
-export { CheckboxRoot as Root, type CheckboxRootProps as RootProps } from './checkbox-root'
+} from './checkbox-indicator.vue'
+export { default as Label, type CheckboxLabelProps as LabelProps } from './checkbox-label.vue'
+export {
+  default as Root,
+  type CheckboxRootProps as RootProps,
+  type CheckboxRootEmits as RootEmits,
+} from './checkbox-root.vue'

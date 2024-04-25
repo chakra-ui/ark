@@ -2,8 +2,9 @@ import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './checkbox'
 
 export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
   /**
@@ -15,7 +16,7 @@ export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
 
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
-export const useCheckbox = (props: UseCheckboxProps, emit: CallableFunction) => {
+export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) => {
   const context = ref(props)
   const getRootNode = useEnvironmentContext()
 
@@ -26,7 +27,7 @@ export const useCheckbox = (props: UseCheckboxProps, emit: CallableFunction) => 
       getRootNode,
       checked: props.checked ?? props.defaultChecked,
       onCheckedChange(details) {
-        emit('checked-change', details)
+        emit('checkedChange', details)
         emit('update:checked', details.checked)
       },
     }),
