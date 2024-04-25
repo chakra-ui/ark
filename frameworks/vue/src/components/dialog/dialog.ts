@@ -1,22 +1,26 @@
 export type { OpenChangeDetails } from '@zag-js/dialog'
 export {
-  DialogBackdrop as Backdrop,
+  default as Backdrop,
   type DialogBackdropProps as BackdropProps,
-} from './dialog-backdrop'
+} from './dialog-backdrop.vue'
 export {
-  DialogCloseTrigger as CloseTrigger,
+  default as CloseTrigger,
   type DialogCloseTriggerProps as CloseTriggerProps,
-} from './dialog-close-trigger'
-export { DialogContent as Content, type DialogContentProps as ContentProps } from './dialog-content'
-export { DialogContext as Context, type DialogContextProps as ContextProps } from './dialog-context'
+} from './dialog-close-trigger.vue'
+export { default as Content, type DialogContentProps as ContentProps } from './dialog-content.vue'
+export { default as Context, type DialogContextProps as ContextProps } from './dialog-context.vue'
 export {
-  DialogDescription as Description,
+  default as Description,
   type DialogDescriptionProps as DescriptionProps,
-} from './dialog-description'
+} from './dialog-description.vue'
 export {
-  DialogPositioner as Positioner,
+  default as Positioner,
   type DialogPositionerProps as PositionerProps,
-} from './dialog-positioner'
-export { DialogRoot as Root, type DialogRootProps as RootProps } from './dialog-root'
-export { DialogTitle as Title, type DialogTitleProps as TitleProps } from './dialog-title'
-export { DialogTrigger as Trigger, type DialogTriggerProps as TriggerProps } from './dialog-trigger'
+} from './dialog-positioner.vue'
+export {
+  default as Root,
+  type DialogRootEmits as RootEmits,
+  type DialogRootProps as RootProps,
+} from './dialog-root.vue'
+export { default as Title, type DialogTitleProps as TitleProps } from './dialog-title.vue'
+export { default as Trigger, type DialogTriggerProps as TriggerProps } from './dialog-trigger.vue'

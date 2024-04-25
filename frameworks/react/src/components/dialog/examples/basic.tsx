@@ -1,7 +1,7 @@
 import { Dialog, Portal } from '../..'
 
 export const Basic = () => (
-  <Dialog.Root open={false}>
+  <Dialog.Root>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Portal>
       <Dialog.Backdrop />

@@ -1,7 +1,5 @@
 <script lang="ts">
-import { computed } from 'vue'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
-import { RenderStrategyProvider } from '../../utils/use-render-strategy'
 import type { RootEmits, RootProps } from './color-picker.types'
 
 export interface ColorPickerRootProps extends RootProps, RenderStrategyProps, PolimoprhicProps {}
@@ -12,6 +10,8 @@ export interface ColorPickerRootEmits extends RootEmits {}
 import { ark, type PolimoprhicProps } from '../factory'
 import { useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
+import { RenderStrategyProvider } from '../../utils/use-render-strategy'
+import { computed } from 'vue'
 
 const props = withDefaults(defineProps<ColorPickerRootProps>(), { open: undefined })
 const emits = defineEmits<ColorPickerRootEmits>()
