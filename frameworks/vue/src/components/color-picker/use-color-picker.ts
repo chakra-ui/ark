@@ -2,8 +2,9 @@ import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './color-picker.types'
 
 export interface UseColorPickerProps
   extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
@@ -13,7 +14,7 @@ export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTy
 
 export const useColorPicker = (
   props: UseColorPickerProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
   const getRootNode = useEnvironmentContext()
 
@@ -32,17 +33,17 @@ export const useColorPicker = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onFormatChange(details) {
-        emit('format-change', details)
+        emit('formatChange', details)
       },
       onOpenChange(details) {
-        emit('open-change', details)
+        emit('openChange', details)
       },
       onValueChange(details) {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.valueAsString)
       },
       onValueChangeEnd(details) {
-        emit('value-change-end', details)
+        emit('valueChangeEnd', details)
       },
     }),
     { context },

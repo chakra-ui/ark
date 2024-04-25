@@ -22,4 +22,3 @@ ClipboardProvider(clipboard)
     <slot />
   </ark.div>
 </template>
-

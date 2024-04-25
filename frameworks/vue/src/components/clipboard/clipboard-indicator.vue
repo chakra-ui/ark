@@ -13,7 +13,7 @@ const clipboard = useClipboardContext()
 </script>
 
 <template>
-  <ark.div v-bind="clipboard.getIndicatorProps({copied: clipboard.copied})" :as-child="asChild">
+  <ark.div v-bind="clipboard.getIndicatorProps({ copied: clipboard.copied })" :as-child="asChild">
     <slot name="copied" v-if="clipboard.copied" />
     <slot v-else />
   </ark.div>
