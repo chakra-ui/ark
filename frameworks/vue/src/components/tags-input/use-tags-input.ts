@@ -2,8 +2,9 @@ import * as tagsInput from '@zag-js/tags-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './tags-input.types'
 
 export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {
   modelValue?: tagsInput.Context['value']
@@ -12,7 +13,7 @@ export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>
 
 export const useTagsInput = (
   props: UseTagsInputProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
   const getRootNode = useEnvironmentContext()
 
@@ -30,14 +31,14 @@ export const useTagsInput = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange(details) {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
       onValueInvalid(details) {
-        emit('value-invalid', details)
+        emit('valueInvalid', details)
       },
       onHighlightChange(details) {
-        emit('highlight-change', details)
+        emit('highlightChange', details)
       },
     }),
     { context },

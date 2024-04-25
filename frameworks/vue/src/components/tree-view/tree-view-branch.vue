@@ -16,7 +16,7 @@ const props = defineProps<TreeViewBranchProps>()
 
 const treeView = useTreeViewContext()
 const depth = useTreeViewDepthContext()
-const branchProps = computed(() => ({...props, depth}))
+const branchProps = computed(() => ({ ...props, depth }))
 
 TreeViewBranchProvider(branchProps.value)
 TreeViewDepthProvider(depth + 1)

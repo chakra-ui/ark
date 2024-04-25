@@ -6,8 +6,8 @@ export interface TreeViewItemIndicatorProps extends PolimoprhicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useTreeViewContext } from './use-tree-view-context';
+import { ark } from '../factory'
+import { useTreeViewContext } from './use-tree-view-context'
 
 defineProps<TreeViewItemIndicatorProps>()
 const treeView = useTreeViewContext()

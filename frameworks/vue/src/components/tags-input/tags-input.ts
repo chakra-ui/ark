@@ -4,38 +4,42 @@ export type {
   ValueChangeDetails,
 } from '@zag-js/tags-input'
 export {
-  TagsInputClearTrigger as ClearTrigger,
+  default as ClearTrigger,
   type TagsInputClearTriggerProps as ClearTriggerProps,
-} from './tags-input-clear-trigger'
+} from './tags-input-clear-trigger.vue'
 export {
-  TagsInputContext as Context,
+  default as Context,
   type TagsInputContextProps as ContextProps,
-} from './tags-input-context'
+} from './tags-input-context.vue'
 export {
-  TagsInputControl as Control,
+  default as Control,
   type TagsInputControlProps as ControlProps,
-} from './tags-input-control'
-export { TagsInputInput as Input, type TagsInputInputProps as InputProps } from './tags-input-input'
-export { TagsInputItem as Item, type TagsInputItemProps as ItemProps } from './tags-input-item'
+} from './tags-input-control.vue'
+export { default as Input, type TagsInputInputProps as InputProps } from './tags-input-input.vue'
+export { default as Item, type TagsInputItemProps as ItemProps } from './tags-input-item.vue'
 export {
-  TagsInputItemContext as ItemContext,
+  default as ItemContext,
   type TagsInputItemContextProps as ItemContextProps,
-} from './tags-input-item-context'
+} from './tags-input-item-context.vue'
 export {
-  TagsInputItemDeleteTrigger as ItemDeleteTrigger,
+  default as ItemDeleteTrigger,
   type TagsInputItemDeleteTriggerProps as ItemDeleteTriggerProps,
-} from './tags-input-item-delete-trigger'
+} from './tags-input-item-delete-trigger.vue'
 export {
-  TagsInputItemInput as ItemInput,
+  default as ItemInput,
   type TagsInputItemInputProps as ItemInputProps,
-} from './tags-input-item-input'
+} from './tags-input-item-input.vue'
 export {
-  TagsInputItemPreview as ItemPreview,
+  default as ItemPreview,
   type TagsInputItemPreviewProps as ItemPreviewProps,
-} from './tags-input-item-preview'
+} from './tags-input-item-preview.vue'
 export {
-  TagsInputItemText as ItemText,
+  default as ItemText,
   type TagsInputItemTextProps as ItemTextProps,
-} from './tags-input-item-text'
-export { TagsInputLabel as Label, type TagsInputLabelProps as LabelProps } from './tags-input-label'
-export { TagsInputRoot as Root, type TagsInputRootProps as RootProps } from './tags-input-root'
+} from './tags-input-item-text.vue'
+export { default as Label, type TagsInputLabelProps as LabelProps } from './tags-input-label.vue'
+export {
+  default as Root,
+  type TagsInputRootProps as RootProps,
+  type TagsInputRootEmits as RootEmits,
+} from './tags-input-root.vue'

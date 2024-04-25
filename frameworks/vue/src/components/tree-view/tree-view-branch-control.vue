@@ -12,7 +12,6 @@ import { useTreeViewContext } from './use-tree-view-context'
 defineProps<TreeViewBranchControlProps>()
 const treeView = useTreeViewContext()
 const branchProps = useTreeViewBranchContext()
-
 </script>
 
 <template>

@@ -5,9 +5,9 @@ export interface TreeViewBranchIndicatorProps extends PolimoprhicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useTreeViewBranchContext } from './use-tree-view-branch-context';
-import { useTreeViewContext } from './use-tree-view-context';
+import { ark } from '../factory'
+import { useTreeViewBranchContext } from './use-tree-view-branch-context'
+import { useTreeViewContext } from './use-tree-view-context'
 
 defineProps<TreeViewBranchIndicatorProps>()
 const treeView = useTreeViewContext()

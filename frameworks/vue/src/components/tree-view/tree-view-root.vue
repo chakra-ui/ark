@@ -22,4 +22,3 @@ TreeViewProvider(treeView)
     <slot />
   </ark.div>
 </template>
-

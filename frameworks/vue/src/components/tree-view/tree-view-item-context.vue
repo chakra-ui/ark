@@ -20,4 +20,3 @@ defineSlots<{
 <template>
   <slot v-bind="item"></slot>
 </template>
-
