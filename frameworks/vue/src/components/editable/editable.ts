@@ -1,29 +1,33 @@
 export type { ValueChangeDetails } from '@zag-js/editable'
-export { EditableArea as Area, type EditableAreaProps as AreaProps } from './editable-area'
+export { default as Area, type EditableAreaProps as AreaProps } from './editable-area.vue'
 export {
-  EditableCancelTrigger as CancelTrigger,
+  default as CancelTrigger,
   type EditableCancelTriggerProps as CancelTriggerProps,
-} from './editable-cancel-trigger'
+} from './editable-cancel-trigger.vue'
 export {
-  EditableContext as Context,
+  default as Context,
   type EditableContextProps as ContextProps,
-} from './editable-context'
+} from './editable-context.vue'
 export {
-  EditableControl as Control,
+  default as Control,
   type EditableControlProps as ControlProps,
-} from './editable-control'
+} from './editable-control.vue'
 export {
-  EditableEditTrigger as EditTrigger,
+  default as EditTrigger,
   type EditableEditTriggerProps as EditTriggerProps,
-} from './editable-edit-trigger'
-export { EditableInput as Input, type EditableInputProps as InputProps } from './editable-input'
-export { EditableLabel as Label, type EditableLabelProps as LabelProps } from './editable-label'
+} from './editable-edit-trigger.vue'
+export { default as Input, type EditableInputProps as InputProps } from './editable-input.vue'
+export { default as Label, type EditableLabelProps as LabelProps } from './editable-label.vue'
 export {
-  EditablePreview as Preview,
+  default as Preview,
   type EditablePreviewProps as PreviewProps,
-} from './editable-preview'
-export { EditableRoot as Root, type EditableRootProps as RootProps } from './editable-root'
+} from './editable-preview.vue'
 export {
-  EditableSubmitTrigger as SubmitTrigger,
+  default as Root,
+  type EditableRootEmits as RootEmits,
+  type EditableRootProps as RootProps,
+} from './editable-root.vue'
+export {
+  default as SubmitTrigger,
   type EditableSubmitTriggerProps as SubmitTriggerProps,
-} from './editable-submit-trigger'
+} from './editable-submit-trigger.vue'

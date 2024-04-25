@@ -2,8 +2,9 @@ import * as editable from '@zag-js/editable'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './editable'
 
 export interface UseEditableProps extends Optional<editable.Context, 'id'> {
   modelValue?: editable.Context['value']
@@ -11,7 +12,10 @@ export interface UseEditableProps extends Optional<editable.Context, 'id'> {
 
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
-export const useEditable = (props: UseEditableProps, emit: CallableFunction): UseEditableReturn => {
+export const useEditable = (
+  props: UseEditableProps,
+  emit: EmitFn<RootEmits>,
+): UseEditableReturn => {
   const getRootNode = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, ...rest } = props
@@ -27,14 +31,14 @@ export const useEditable = (props: UseEditableProps, emit: CallableFunction): Us
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange(details) {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
       onValueCommit(details) {
-        emit('value-commit', details)
+        emit('valueCommit', details)
       },
       onValueRevert(details) {
-        emit('value-revert', details)
+        emit('valueRevert', details)
       },
       onEdit() {
         emit('edit')

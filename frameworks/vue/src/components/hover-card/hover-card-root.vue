@@ -12,7 +12,7 @@ import { RenderStrategyProvider } from '../../utils/use-render-strategy'
 import { useHoverCard } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
-const props = withDefaults(defineProps<HoverCardRootProps>(), {open: undefined})
+const props = withDefaults(defineProps<HoverCardRootProps>(), { open: undefined })
 const emits = defineEmits<HoverCardRootEmits>()
 
 const hoverCard = useHoverCard(props, emits)

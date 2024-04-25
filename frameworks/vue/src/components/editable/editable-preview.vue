@@ -1,0 +1,19 @@
+<script lang="ts">
+import type { PolymorphicProps } from '../factory'
+
+export interface EditablePreviewProps extends PolymorphicProps {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
+import { useEditableContext } from './use-editable-context'
+
+defineProps<EditablePreviewProps>()
+const editable = useEditableContext()
+</script>
+
+<template>
+  <ark.div v-bind="editable.previewProps" :as-child="asChild">
+    <slot />
+  </ark.div>
+</template>
