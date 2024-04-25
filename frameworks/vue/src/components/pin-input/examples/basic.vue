@@ -3,7 +3,7 @@ import { PinInput } from '../..'
 </script>
 
 <template>
-  <PinInput.Root @value-complete="(e) => console.log(e.valueAsString)">
+  <PinInput.Root>
     <PinInput.Label>Label</PinInput.Label>
     <PinInput.Control>
       <PinInput.Input v-for="id in [0, 1, 2]" :key="id" :index="id" />

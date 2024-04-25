@@ -1,12 +1,16 @@
 export type { ValueChangeDetails, ValueInvalidDetails } from '@zag-js/pin-input'
 export {
-  PinInputContext as Context,
+  default as Context,
   type PinInputContextProps as ContextProps,
-} from './pin-input-context'
+} from './pin-input-context.vue'
 export {
-  PinInputControl as Control,
+  default as Control,
   type PinInputControlProps as ControlProps,
-} from './pin-input-control'
-export { PinInputInput as Input, type PinInputInputProps as InputProps } from './pin-input-input'
-export { PinInputLabel as Label, type PinInputLabelProps as LabelProps } from './pin-input-label'
-export { PinInputRoot as Root, type PinInputRootProps as RootProps } from './pin-input-root'
+} from './pin-input-control.vue'
+export { default as Input, type PinInputInputProps as InputProps } from './pin-input-input.vue'
+export { default as Label, type PinInputLabelProps as LabelProps } from './pin-input-label.vue'
+export {
+  default as Root,
+  type PinInputRootProps as RootProps,
+  type PinInputRootEmits as RootEmits,
+} from './pin-input-root.vue'
