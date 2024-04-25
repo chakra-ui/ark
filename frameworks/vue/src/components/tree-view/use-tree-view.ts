@@ -2,8 +2,9 @@ import * as treeView from '@zag-js/tree-view'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './tree-view.types'
 
 export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
   /**
@@ -14,7 +15,10 @@ export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
 
 export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> {}
 
-export const useTreeView = (props: UseTreeViewProps, emit: CallableFunction): UseTreeViewReturn => {
+export const useTreeView = (
+  props: UseTreeViewProps,
+  emit: EmitFn<RootEmits>,
+): UseTreeViewReturn => {
   const getRootNode = useEnvironmentContext()
   const context = ref(props)
 
@@ -24,13 +28,13 @@ export const useTreeView = (props: UseTreeViewProps, emit: CallableFunction): Us
       id: context.value.id ?? useId().value,
       getRootNode,
       onFocusChange: (details) => {
-        emit('focus-change', details)
+        emit('focusChange', details)
       },
       onExpandedChange: (details) => {
-        emit('expanded-change', details)
+        emit('expandedChange', details)
       },
       onSelectionChange: (details) => {
-        emit('selection-change', details)
+        emit('selectionChange', details)
       },
     }),
     { context },

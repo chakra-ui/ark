@@ -17,7 +17,7 @@ import { TreeView } from '../..'
         </TreeView.BranchControl>
         <TreeView.BranchContent>
           <TreeView.Item value="2.1">
-            <TreeView.ItemText>2.2</TreeView.ItemText>
+            <TreeView.ItemText>2.1</TreeView.ItemText>
           </TreeView.Item>
           <TreeView.Item value="2.2">
             <TreeView.ItemText>2.2</TreeView.ItemText>
