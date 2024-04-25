@@ -1,11 +1,15 @@
 export type { SizeChangeDetails } from '@zag-js/splitter'
 export {
-  SplitterContext as Context,
+  default as Context,
   type SplitterContextProps as ContextProps,
-} from './splitter-context'
-export { SplitterPanel as Panel, type SplitterPanelProps as PanelProps } from './splitter-panel'
+} from './splitter-context.vue'
+export { default as Panel, type SplitterPanelProps as PanelProps } from './splitter-panel.vue'
 export {
-  SplitterResizeTrigger as ResizeTrigger,
+  default as ResizeTrigger,
   type SplitterResizeTriggerProps as ResizeTriggerProps,
-} from './splitter-resize-trigger'
-export { SplitterRoot as Root, type SplitterRootProps as RootProps } from './splitter-root'
+} from './splitter-resize-trigger.vue'
+export {
+  default as Root,
+  type SplitterRootProps as RootProps,
+  type SplitterRootEmits as RootEmits,
+} from './splitter-root.vue'
