@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/accordion'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface AccordionItemProps extends ItemProps, PolimoprhicProps {}
+export interface AccordionItemProps extends ItemProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

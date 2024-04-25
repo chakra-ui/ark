@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './pagination.types'
 
-export interface PaginationRootProps extends RootProps, PolimoprhicProps {}
+export interface PaginationRootProps extends RootProps, PolymorphicProps {}
 export interface PaginationRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { IndicatorProps } from '@zag-js/carousel'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface CarouselIndicatorProps extends IndicatorProps, PolimoprhicProps {}
+export interface CarouselIndicatorProps extends IndicatorProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

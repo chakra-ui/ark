@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ContentProps } from '@zag-js/tabs'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface TabContentProps extends PolimoprhicProps, ContentProps {}
+export interface TabContentProps extends PolymorphicProps, ContentProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './collapsible.types'
 
-export interface CollapsibleRootProps extends RootProps, PolimoprhicProps {}
+export interface CollapsibleRootProps extends RootProps, PolymorphicProps {}
 export interface CollapsibleRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 

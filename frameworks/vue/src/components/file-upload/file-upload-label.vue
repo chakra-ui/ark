@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadLabelProps extends PolimoprhicProps {}
+export interface FileUploadLabelProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

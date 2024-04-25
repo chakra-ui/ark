@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './tree-view.types'
 
-export interface TreeViewRootProps extends RootProps, PolimoprhicProps {}
+export interface TreeViewRootProps extends RootProps, PolymorphicProps {}
 export interface TreeViewRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 

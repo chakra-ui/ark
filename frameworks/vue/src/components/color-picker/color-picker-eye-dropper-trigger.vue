@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerEyeDropperTriggerProps extends PolimoprhicProps {}
+export interface ColorPickerEyeDropperTriggerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

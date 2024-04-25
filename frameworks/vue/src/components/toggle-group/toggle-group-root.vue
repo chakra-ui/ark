@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './toggle-group.types'
 
-export interface ToggleGroupRootProps extends RootProps, PolimoprhicProps {}
+export interface ToggleGroupRootProps extends RootProps, PolymorphicProps {}
 export interface ToggleGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useToggleGroup } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
 

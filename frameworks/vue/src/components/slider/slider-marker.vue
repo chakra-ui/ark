@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { MarkerProps } from '@zag-js/slider'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface SliderMarkerProps extends PolimoprhicProps, MarkerProps {}
+export interface SliderMarkerProps extends PolymorphicProps, MarkerProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/toggle-group'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface ToggleGroupItemProps extends PolimoprhicProps, ItemProps {}
+export interface ToggleGroupItemProps extends PolymorphicProps, ItemProps {}
 </script>
 
 <script setup lang="ts">

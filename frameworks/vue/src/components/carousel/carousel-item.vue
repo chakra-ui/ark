@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/carousel'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface CarouselItemProps extends ItemProps, PolimoprhicProps {}
+export interface CarouselItemProps extends ItemProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { AreaProps } from '@zag-js/color-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerAreaProps extends AreaProps, PolimoprhicProps {}
+export interface ColorPickerAreaProps extends AreaProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

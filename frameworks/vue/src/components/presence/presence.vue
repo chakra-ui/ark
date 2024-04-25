@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './presence.types'
 
-export interface PresenceProps extends RootProps, PolimoprhicProps {}
+export interface PresenceProps extends RootProps, PolymorphicProps {}
 export interface PresenceEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
 

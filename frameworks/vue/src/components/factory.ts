@@ -12,7 +12,7 @@ import { Dynamic } from '../utils/dynamic'
 type DOMElements = keyof IntrinsicElementAttributes
 type ElementType = Parameters<typeof h>[0]
 
-export interface PolimoprhicProps {
+export interface PolymorphicProps {
   /**
    * @default false
    */
@@ -32,7 +32,7 @@ export type AsChildComponent<
         ? IntrinsicElementAttributes[Component]
         : Record<never, never>) &
       P &
-      PolimoprhicProps
+      PolymorphicProps
   }
 }
 

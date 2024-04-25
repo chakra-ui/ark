@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './rating-group.types'
 
-export interface RatingGroupRootProps extends RootProps, PolimoprhicProps {}
+export interface RatingGroupRootProps extends RootProps, PolymorphicProps {}
 export interface RatingGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useRatingGroup } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
 

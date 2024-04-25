@@ -1,12 +1,12 @@
 export const rootTemplate = `<script lang="ts">
 import type { RootEmits, RootProps } from './{{ CamelCaseComponent }}.types'
 
-export interface {{ PascalCaseComponent }}RootProps extends RootProps, PolimoprhicProps {}
+export interface {{ PascalCaseComponent }}RootProps extends RootProps, PolymorphicProps {}
 export interface {{ PascalCaseComponent }}RootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { use{{ PascalCaseComponent }} } from './use-{{ CamelCaseComponent }}'
 import { {{ PascalCaseComponent }}Provider } from './use-{{ CamelCaseComponent }}-context'
 

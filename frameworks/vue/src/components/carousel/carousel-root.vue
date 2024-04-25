@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './carousel.types'
 
-export interface CarouselRootProps extends RootProps, PolimoprhicProps {}
+export interface CarouselRootProps extends RootProps, PolymorphicProps {}
 export interface CarouselRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 

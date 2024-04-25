@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import type { PresenceProps } from '../presence'
 
-export interface ColorPickerContentProps extends PresenceProps, PolimoprhicProps {}
+export interface ColorPickerContentProps extends PresenceProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

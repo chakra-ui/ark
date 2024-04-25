@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ResizeTriggerProps } from '@zag-js/splitter'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface SplitterResizeTriggerProps extends PolimoprhicProps, ResizeTriggerProps {}
+export interface SplitterResizeTriggerProps extends PolymorphicProps, ResizeTriggerProps {}
 </script>
 
 <script setup lang="ts">

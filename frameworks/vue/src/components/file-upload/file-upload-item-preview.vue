@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadItemPreviewProps extends PolimoprhicProps {
+export interface FileUploadItemPreviewProps extends PolymorphicProps {
   /**
    * The file type to match against. Matches all file types by default.
    * @default '.*'

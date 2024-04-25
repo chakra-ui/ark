@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import { useTreeViewItemPropsContext } from './use-tree-view-item-props-context'
 
-export interface TreeViewItemIndicatorProps extends PolimoprhicProps {}
+export interface TreeViewItemIndicatorProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

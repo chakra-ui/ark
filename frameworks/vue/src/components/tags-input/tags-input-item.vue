@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/tags-input'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputItemProps extends PolimoprhicProps, ItemProps {}
+export interface TagsInputItemProps extends PolymorphicProps, ItemProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/pin-input'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface PinInputInputProps extends PolimoprhicProps, InputProps {}
+export interface PinInputInputProps extends PolymorphicProps, InputProps {}
 </script>
 
 <script setup lang="ts">

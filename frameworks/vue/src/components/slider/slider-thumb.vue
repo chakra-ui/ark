@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ThumbProps } from '@zag-js/slider'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface SliderThumbProps extends PolimoprhicProps, ThumbProps {}
+export interface SliderThumbProps extends PolymorphicProps, ThumbProps {}
 </script>
 
 <script setup lang="ts">

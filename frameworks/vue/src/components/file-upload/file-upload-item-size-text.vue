@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemSizeTextProps extends PolimoprhicProps {}
+export interface FileUploadItemSizeTextProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,13 +1,13 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './tags-input.types'
 
-export interface TagsInputRootProps extends RootProps, PolimoprhicProps {}
+export interface TagsInputRootProps extends RootProps, PolymorphicProps {}
 export interface TagsInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue'
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 

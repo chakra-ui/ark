@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './file-upload.types'
 
-export interface FileUploadRootProps extends RootProps, PolimoprhicProps {}
+export interface FileUploadRootProps extends RootProps, PolymorphicProps {}
 export interface FileUploadRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
 

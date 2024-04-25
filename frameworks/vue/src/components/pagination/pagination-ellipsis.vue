@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { EllipsisProps } from '@zag-js/pagination'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface PaginationEllipsisProps extends PolimoprhicProps, EllipsisProps {}
+export interface PaginationEllipsisProps extends PolymorphicProps, EllipsisProps {}
 </script>
 
 <script setup lang="ts">

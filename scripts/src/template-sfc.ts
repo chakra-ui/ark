@@ -1,7 +1,7 @@
 export const template = `<script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface {{ PascalCasePart }}Props extends PolimoprhicProps {}
+export interface {{ PascalCasePart }}Props extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface DialogCloseTriggerProps extends PolimoprhicProps {}
+export interface DialogCloseTriggerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

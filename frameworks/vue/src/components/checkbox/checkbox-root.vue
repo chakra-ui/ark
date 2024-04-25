@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './checkbox.types'
 
-export interface CheckboxRootProps extends RootProps, PolimoprhicProps {}
+export interface CheckboxRootProps extends RootProps, PolymorphicProps {}
 export interface CheckboxRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 

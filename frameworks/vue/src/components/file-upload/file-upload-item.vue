@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/file-upload'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadItemProps extends PolimoprhicProps, ItemProps {}
+export interface FileUploadItemProps extends PolymorphicProps, ItemProps {}
 </script>
 
 <script setup lang="ts">

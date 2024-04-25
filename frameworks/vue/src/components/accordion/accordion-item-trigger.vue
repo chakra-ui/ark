@@ -1,8 +1,8 @@
 <script lang="ts">
 import { useCollapsibleContext } from '../collapsible'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface AccordionItemTriggerProps extends PolimoprhicProps {}
+export interface AccordionItemTriggerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

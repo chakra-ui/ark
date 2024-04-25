@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface PaginationNextTriggerProps extends PolimoprhicProps {}
+export interface PaginationNextTriggerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

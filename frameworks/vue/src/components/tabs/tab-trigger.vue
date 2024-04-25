@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { TriggerProps } from '@zag-js/tabs'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface TabTriggerProps extends PolimoprhicProps, TriggerProps {}
+export interface TabTriggerProps extends PolymorphicProps, TriggerProps {}
 </script>
 
 <script setup lang="ts">

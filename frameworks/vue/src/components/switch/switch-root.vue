@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './switch.types'
 
-export interface SwitchRootProps extends RootProps, PolimoprhicProps {}
+export interface SwitchRootProps extends RootProps, PolymorphicProps {}
 export interface SwitchRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 

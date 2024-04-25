@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/pagination'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface PaginationItemProps extends PolimoprhicProps, ItemProps {}
+export interface PaginationItemProps extends PolymorphicProps, ItemProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface SliderRangeProps extends PolimoprhicProps {}
+export interface SliderRangeProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,9 +1,9 @@
 <script lang="ts">
 import { type RenderStrategyProps, RenderStrategyProvider } from '../../utils/render-strategy'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './accordion.types'
 
-export interface AccordionRootProps extends RootProps, RenderStrategyProps, PolimoprhicProps {}
+export interface AccordionRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootEmits extends RootEmits {}
 </script>
 

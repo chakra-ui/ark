@@ -2,12 +2,12 @@
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import type { RootEmits, RootProps } from './color-picker.types'
 
-export interface ColorPickerRootProps extends RootProps, RenderStrategyProps, PolimoprhicProps {}
+export interface ColorPickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
 import { RenderStrategyProvider } from '../../utils/use-render-strategy'

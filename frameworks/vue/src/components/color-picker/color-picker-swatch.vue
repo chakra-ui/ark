@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { SwatchProps } from '@zag-js/color-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerSwatchProps extends SwatchProps, PolimoprhicProps {}
+export interface ColorPickerSwatchProps extends SwatchProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

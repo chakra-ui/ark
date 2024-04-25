@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { PanelProps } from '@zag-js/splitter'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface SplitterPanelProps extends PolimoprhicProps, PanelProps {}
+export interface SplitterPanelProps extends PolymorphicProps, PanelProps {}
 </script>
 
 <script setup lang="ts">

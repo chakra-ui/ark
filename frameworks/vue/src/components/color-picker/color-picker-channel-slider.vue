@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ChannelProps } from '@zag-js/color-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerChannelSliderProps extends ChannelProps, PolimoprhicProps {}
+export interface ColorPickerChannelSliderProps extends ChannelProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

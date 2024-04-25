@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import type { ItemProps } from './use-tree-view-branch-context'
 
-export interface TreeViewBranchProps extends PolimoprhicProps, ItemProps {}
+export interface TreeViewBranchProps extends PolymorphicProps, ItemProps {}
 </script>
 
 <script setup lang="ts">

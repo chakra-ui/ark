@@ -1,7 +1,7 @@
 <script lang="ts">
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface TreeViewBranchTriggerProps extends PolimoprhicProps {}
+export interface TreeViewBranchTriggerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">

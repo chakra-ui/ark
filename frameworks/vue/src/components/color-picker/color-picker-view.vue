@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ColorFormat } from '@zag-js/color-picker'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerViewProps extends PolimoprhicProps {
+export interface ColorPickerViewProps extends PolymorphicProps {
   format: ColorFormat
 }
 </script>

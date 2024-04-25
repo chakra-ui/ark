@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './number-input.types'
 
-export interface NumberInputRootProps extends RootProps, PolimoprhicProps {}
+export interface NumberInputRootProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 

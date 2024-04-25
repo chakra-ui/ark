@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/rating-group'
-import type { PolimoprhicProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 
-export interface RatingGroupItemProps extends PolimoprhicProps, ItemProps {}
+export interface RatingGroupItemProps extends PolymorphicProps, ItemProps {}
 </script>
 
 <script setup lang="ts">

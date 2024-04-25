@@ -1,12 +1,12 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './clipboard.types'
 
-export interface ClipboardRootProps extends RootProps, PolimoprhicProps {}
+export interface ClipboardRootProps extends RootProps, PolymorphicProps {}
 export interface ClipboardRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolimoprhicProps } from '../factory'
+import { ark, type PolymorphicProps } from '../factory'
 import { useClipboard } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
 
