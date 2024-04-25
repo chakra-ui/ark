@@ -2,8 +2,9 @@ import * as toggleGroup from '@zag-js/toggle-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './toggle-group'
 
 export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {
   modelValue?: toggleGroup.Context['value']
@@ -13,7 +14,7 @@ export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTy
 
 export const useToggleGroup = (
   props: UseToggleGroupProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
   const getRootNode = useEnvironmentContext()
 
@@ -31,7 +32,7 @@ export const useToggleGroup = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange: (details) => {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
     }),
