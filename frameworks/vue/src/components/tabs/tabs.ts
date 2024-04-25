@@ -1,10 +1,14 @@
 export type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/tabs'
-export { TabContent as Content, type TabContentProps as ContentProps } from './tab-content'
+export { default as Content, type TabContentProps as ContentProps } from './tab-content.vue'
 export {
-  TabIndicator as Indicator,
+  default as Indicator,
   type TabIndicatorProps as IndicatorProps,
-} from './tab-indicator'
-export { TabList as List, type TabListProps as ListProps } from './tab-list'
-export { TabTrigger as Trigger, type TabTriggerProps as TriggerProps } from './tab-trigger'
-export { TabsContext as Context, type TabsContextProps as ContextProps } from './tabs-context'
-export { TabsRoot as Root, type TabsRootProps as RootProps } from './tabs-root'
+} from './tab-indicator.vue'
+export { default as List, type TabListProps as ListProps } from './tab-list.vue'
+export { default as Trigger, type TabTriggerProps as TriggerProps } from './tab-trigger.vue'
+export { default as Context, type TabsContextProps as ContextProps } from './tabs-context.vue'
+export {
+  default as Root,
+  type TabsRootEmits as RootEmits,
+  type TabsRootProps as RootProps,
+} from './tabs-root.vue'

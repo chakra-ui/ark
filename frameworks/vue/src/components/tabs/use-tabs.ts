@@ -2,15 +2,16 @@ import * as tabs from '@zag-js/tabs'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './tabs.types'
 
 export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
   modelValue?: tabs.Context['value']
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
-export const useTabs = (props: UseTabsProps, emit: CallableFunction): UseTabsReturn => {
+export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsReturn => {
   const getRootNode = useEnvironmentContext()
 
   const context = computed(() => {
@@ -27,10 +28,10 @@ export const useTabs = (props: UseTabsProps, emit: CallableFunction): UseTabsRet
       id: context.value.id ?? useId().value,
       getRootNode,
       onFocusChange: (details) => {
-        emit('focus-change', details)
+        emit('focusChange', details)
       },
       onValueChange: (details) => {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
     }),
