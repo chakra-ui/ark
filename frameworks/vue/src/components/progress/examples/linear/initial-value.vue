@@ -3,7 +3,7 @@ import { Progress } from '../..'
 </script>
 
 <template>
-  <Progress.Root :model-value="70">
+  <Progress.Root :value="70">
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
     <Progress.Track>

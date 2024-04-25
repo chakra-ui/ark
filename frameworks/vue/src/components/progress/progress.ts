@@ -1,25 +1,25 @@
 export {
-  ProgressCircle as Circle,
+  default as Circle,
   type ProgressCircleProps as CircleProps,
-} from './progress-circle'
+} from './progress-circle.vue'
 export {
-  ProgressCircleRange as CircleRange,
+  default as CircleRange,
   type ProgressCircleRangeProps as CircleRangeProps,
-} from './progress-circle-range'
+} from './progress-circle-range.vue'
 export {
-  ProgressCircleTrack as CircleTrack,
+  default as CircleTrack,
   type ProgressCircleTrackProps as CircleTrackProps,
-} from './progress-circle-track'
+} from './progress-circle-track.vue'
 export {
-  ProgressContext as Context,
+  default as Context,
   type ProgressContextProps as ContextProps,
-} from './progress-context'
-export { ProgressLabel as Label, type ProgressLabelProps as LabelProps } from './progress-label'
-export { ProgressRange as Range, type ProgressRangeProps as RangeProps } from './progress-range'
-export { ProgressRoot as Root, type ProgressRootProps as RootProps } from './progress-root'
-export { ProgressTrack as Track, type ProgressTrackProps as TrackProps } from './progress-track'
+} from './progress-context.vue'
+export { default as Label, type ProgressLabelProps as LabelProps } from './progress-label.vue'
+export { default as Range, type ProgressRangeProps as RangeProps } from './progress-range.vue'
+export { default as Root, type ProgressRootProps as RootProps } from './progress-root.vue'
+export { default as Track, type ProgressTrackProps as TrackProps } from './progress-track.vue'
 export {
-  ProgressValueText as ValueText,
+  default as ValueText,
   type ProgressValueTextProps as ValueTextProps,
-} from './progress-value-text'
-export { ProgressView as View, type ProgressViewProps as ViewProps } from './progress-view'
+} from './progress-value-text.vue'
+export { default as View, type ProgressViewProps as ViewProps } from './progress-view.vue'
