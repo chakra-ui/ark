@@ -2,8 +2,9 @@ import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './date-picker.types'
 
 export interface UseDatePickerProps
   extends Optional<
@@ -35,7 +36,7 @@ export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropType
 
 export const useDatePicker = (
   props: UseDatePickerProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
   const getRootNode = useEnvironmentContext()
   const context = computed(() => {
@@ -56,17 +57,17 @@ export const useDatePicker = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange: (details) => {
-        emit('value-change', details)
-        emit('update:modelValue', details.value)
+        emit('valueChange', details)
+        emit('update:modelValue', details.valueAsString)
       },
       onFocusChange: (details) => {
-        emit('focus-change', details)
+        emit('focusChange', details)
       },
       onViewChange: (details) => {
-        emit('view-change', details)
+        emit('viewChange', details)
       },
       onOpenChange: (details) => {
-        emit('open-change', details)
+        emit('openChange', details)
       },
     }),
     { context },

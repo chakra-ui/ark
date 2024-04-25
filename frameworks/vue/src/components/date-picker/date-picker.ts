@@ -5,96 +5,100 @@ export type {
   ViewChangeDetails,
 } from '@zag-js/date-picker'
 export {
-  DatePickerClearTrigger as ClearTrigger,
+  default as ClearTrigger,
   type DatePickerClearTriggerProps as ClearTriggerProps,
-} from './date-picker-clear-trigger'
+} from './date-picker-clear-trigger.vue'
 export {
-  DatePickerContent as Content,
+  default as Content,
   type DatePickerContentProps as ContentProps,
-} from './date-picker-content'
+} from './date-picker-content.vue'
 export {
-  DatePickerContext as Context,
+  default as Context,
   type DatePickerContextProps as ContextProps,
-} from './date-picker-context'
+} from './date-picker-context.vue'
 export {
-  DatePickerControl as Control,
+  default as Control,
   type DatePickerControlProps as ControlProps,
-} from './date-picker-control'
+} from './date-picker-control.vue'
 export {
-  DatePickerInput as Input,
+  default as Input,
   type DatePickerInputProps as InputProps,
-} from './date-picker-input'
+} from './date-picker-input.vue'
 export {
-  DatePickerLabel as Label,
+  default as Label,
   type DatePickerLabelProps as LabelProps,
-} from './date-picker-label'
+} from './date-picker-label.vue'
 export {
-  DatePickerMonthSelect as MonthSelect,
+  default as MonthSelect,
   type DatePickerMonthSelectProps as MonthSelectProps,
-} from './date-picker-month-select'
+} from './date-picker-month-select.vue'
 export {
-  DatePickerNextTrigger as NextTrigger,
+  default as NextTrigger,
   type DatePickerNextTriggerProps as NextTriggerProps,
-} from './date-picker-next-trigger'
+} from './date-picker-next-trigger.vue'
 export {
-  DatePickerPositioner as Positioner,
+  default as Positioner,
   type DatePickerPositionerProps as PositionerProps,
-} from './date-picker-positioner'
+} from './date-picker-positioner.vue'
 export {
-  DatePickerPresetTrigger as PresetTrigger,
+  default as PresetTrigger,
   type DatePickerPresetTriggerProps as PresetTriggerProps,
-} from './date-picker-preset-trigger'
+} from './date-picker-preset-trigger.vue'
 export {
-  DatePickerPrevTrigger as PrevTrigger,
+  default as PrevTrigger,
   type DatePickerPrevTriggerProps as PrevTriggerProps,
-} from './date-picker-prev-trigger'
+} from './date-picker-prev-trigger.vue'
 export {
-  DatePickerRangeText as RangeText,
+  default as RangeText,
   type DatePickerRangeTextProps as RangeTextProps,
-} from './date-picker-range-text'
-export { DatePickerRoot as Root, type DatePickerRootProps as RootProps } from './date-picker-root'
+} from './date-picker-range-text.vue'
 export {
-  DatePickerTable as Table,
+  default as Root,
+  type DatePickerRootProps as RootProps,
+  type DatePickerRootEmits as RootEmits,
+} from './date-picker-root.vue'
+export {
+  default as Table,
   type DatePickerTableProps as TableProps,
-} from './date-picker-table'
+} from './date-picker-table.vue'
 export {
-  DatePickerTableBody as TableBody,
+  default as TableBody,
   type DatePickerTableBodyProps as TableBodyProps,
-} from './date-picker-table-body'
+} from './date-picker-table-body.vue'
 export {
-  DatePickerTableCell as TableCell,
+  default as TableCell,
   type DatePickerTableCellProps as TableCellProps,
-} from './date-picker-table-cell'
+} from './date-picker-table-cell.vue'
 export {
-  DatePickerTableCellTrigger as TableCellTrigger,
+  default as TableCellTrigger,
   type DatePickerTableCellTriggerProps as TableCellTriggerProps,
-} from './date-picker-table-cell-trigger'
+} from './date-picker-table-cell-trigger.vue'
 export {
-  DatePickerTableHead as TableHead,
+  default as TableHead,
   type DatePickerTableHeadProps as TableHeadProps,
-} from './date-picker-table-head'
+} from './date-picker-table-head.vue'
 export {
-  DatePickerTableHeader as TableHeader,
+  default as TableHeader,
   type DatePickerTableHeaderProps as TableHeaderProps,
-} from './date-picker-table-header'
+} from './date-picker-table-header.vue'
 export {
-  DatePickerTableRow as TableRow,
+  default as TableRow,
   type DatePickerTableRowProps as TableRowProps,
-} from './date-picker-table-row'
+} from './date-picker-table-row.vue'
 export {
-  DatePickerTrigger as Trigger,
+  default as Trigger,
   type DatePickerTriggerProps as TriggerProps,
-} from './date-picker-trigger'
-export { DatePickerView as View, type DatePickerViewProps as ViewProps } from './date-picker-view'
+} from './date-picker-trigger.vue'
+export { default as View, type DatePickerViewProps as ViewProps } from './date-picker-view.vue'
 export {
-  DatePickerViewControl as ViewControl,
+  default as ViewControl,
   type DatePickerViewControlProps as ViewControlProps,
-} from './date-picker-view-control'
+} from './date-picker-view-control.vue'
 export {
-  DatePickerViewTrigger as ViewTrigger,
+  default as ViewTrigger,
   type DatePickerViewTriggerProps as ViewTriggerProps,
-} from './date-picker-view-trigger'
+} from './date-picker-view-trigger.vue'
 export {
-  DatePickerYearSelect as YearSelect,
+  default as YearSelect,
   type DatePickerYearSelectProps as YearSelectProps,
-} from './date-picker-year-select'
+} from './date-picker-year-select.vue'
