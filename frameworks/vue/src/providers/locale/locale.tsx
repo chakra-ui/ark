@@ -19,7 +19,7 @@ export const LocaleProvider = defineComponent<LocaleProviderProps>(
     onMounted(() => {
       const cleanup = trackLocale({
         locale: props.locale,
-        getRootNode: env.value.getRootNode,
+        getRootNode: env?.value.getRootNode,
         onLocaleChange(locale) {
           localeRef.value = locale.locale
         },
