@@ -14,7 +14,10 @@ import { ark } from '../factory'
 import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
-const props = withDefaults(defineProps<ComboboxRootProps>(), { open: undefined, closeOnCombobox: true })
+const props = withDefaults(defineProps<ComboboxRootProps>(), {
+  open: undefined,
+  closeOnSelect: true,
+})
 const emits = defineEmits<ComboboxRootEmits>()
 
 const combobox = useCombobox(props, emits)

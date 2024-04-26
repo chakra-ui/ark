@@ -1,0 +1,21 @@
+<script lang="ts">
+import type { PolymorphicProps } from '../factory'
+
+export interface MenuItemIndicatorProps extends PolymorphicProps {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
+import { useMenuContext } from './use-menu-context'
+import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
+
+defineProps<MenuItemIndicatorProps>()
+const menu = useMenuContext()
+const optionItemProps = useMenuOptionItemPropsContext()
+</script>
+
+<template>
+  <ark.div v-bind="menu.getItemIndicatorProps(optionItemProps)" :as-child="asChild">
+    <slot />
+  </ark.div>
+</template>

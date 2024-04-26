@@ -1,58 +1,62 @@
 export type { HighlightChangeDetails, OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
-export { MenuArrow as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow'
-export { MenuArrowTip as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './menu-arrow-tip'
+export { default as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './menu-arrow-tip.vue'
+export { default as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow.vue'
 export {
-  MenuCheckboxItem as CheckboxItem,
+  default as CheckboxItem,
   type MenuCheckboxItemProps as CheckboxItemProps,
-} from './menu-checkbox-item'
-export { MenuContent as Content, type MenuContentProps as ContentProps } from './menu-content'
-export { MenuContext as Context, type MenuContextProps as ContextProps } from './menu-context'
+} from './menu-checkbox-item.vue'
+export { default as Content, type MenuContentProps as ContentProps } from './menu-content.vue'
 export {
-  MenuContextTrigger as ContextTrigger,
+  default as ContextTrigger,
   type MenuContextTriggerProps as ContextTriggerProps,
-} from './menu-context-trigger'
+} from './menu-context-trigger.vue'
+export { default as Context, type MenuContextProps as ContextProps } from './menu-context.vue'
 export {
-  MenuIndicator as Indicator,
+  default as Indicator,
   type MenuIndicatorProps as IndicatorProps,
-} from './menu-indicator'
-export { MenuItem as Item, type MenuItemProps as ItemProps } from './menu-item'
+} from './menu-indicator.vue'
 export {
-  MenuItemContext as ItemContext,
+  default as ItemContext,
   type MenuItemContextProps as ItemContextProps,
-} from './menu-item-context'
+} from './menu-item-context.vue'
 export {
-  MenuItemGroup as ItemGroup,
-  type MenuItemGroupProps as ItemGroupProps,
-} from './menu-item-group'
-export {
-  MenuItemGroupLabel as ItemGroupLabel,
+  default as ItemGroupLabel,
   type MenuItemGroupLabelProps as ItemGroupLabelProps,
-} from './menu-item-group-label'
+} from './menu-item-group-label.vue'
 export {
-  MenuItemIndicator as ItemIndicator,
+  default as ItemGroup,
+  type MenuItemGroupProps as ItemGroupProps,
+} from './menu-item-group.vue'
+export {
+  default as ItemIndicator,
   type MenuItemIndicatorProps as ItemIndicatorProps,
-} from './menu-item-indicator'
-export { MenuItemText as ItemText, type MenuItemTextProps as ItemTextProps } from './menu-item-text'
+} from './menu-item-indicator.vue'
+export { default as ItemText, type MenuItemTextProps as ItemTextProps } from './menu-item-text.vue'
+export { default as Item, type MenuItemProps as ItemProps } from './menu-item.vue'
 export {
-  MenuPositioner as Positioner,
+  default as Positioner,
   type MenuPositionerProps as PositionerProps,
-} from './menu-positioner'
+} from './menu-positioner.vue'
 export {
-  MenuRadioItem as RadioItem,
-  type MenuRadioItemProps as RadioItemProps,
-} from './menu-radio-item'
-export {
-  MenuRadioItemGroup as RadioItemGroup,
+  default as RadioItemGroup,
   type MenuRadioItemGroupProps as RadioItemGroupProps,
-} from './menu-radio-item-group'
-export { MenuRoot as Root, type MenuRootProps as RootProps } from './menu-root'
+} from './menu-radio-item-group.vue'
 export {
-  MenuSeparator as Separator,
+  default as RadioItem,
+  type MenuRadioItemProps as RadioItemProps,
+} from './menu-radio-item.vue'
+export {
+  default as Root,
+  type MenuRootEmits as RootEmits,
+  type MenuRootProps as RootProps,
+} from './menu-root.vue'
+export {
+  default as Separator,
   type MenuSeparatorProps as SeparatorProps,
-} from './menu-separator'
-export { MenuTrigger as Trigger, type MenuTriggerProps as TriggerProps } from './menu-trigger'
+} from './menu-separator.vue'
 export {
-  MenuTriggerItem as TriggerItem,
+  default as TriggerItem,
   type MenuTriggerItemProps as TriggerItemProps,
-} from './menu-trigger-item'
+} from './menu-trigger-item.vue'
+export { default as Trigger, type MenuTriggerProps as TriggerProps } from './menu-trigger.vue'
 export type { ValueChangeDetails } from './use-menu-item-group-context'

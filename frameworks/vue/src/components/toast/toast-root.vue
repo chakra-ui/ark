@@ -18,4 +18,3 @@ const toast = useToastContext()
     <div v-bind="toast.ghostAfterProps" />
   </ark.div>
 </template>
-

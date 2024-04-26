@@ -10,7 +10,6 @@ import { useComboboxContext } from './use-combobox-context'
 
 defineProps<ComboboxInputProps>()
 const combobox = useComboboxContext()
-
 </script>
 
 <template>
