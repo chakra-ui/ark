@@ -512,7 +512,7 @@
     "@zag-js/vue": "0.48.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.0",
+    "@biomejs/biome": "1.7.1",
     "@histoire/plugin-vue": "0.17.17",
     "@release-it/keep-a-changelog": "5.0.0",
     "@testing-library/dom": "10.0.0",
@@ -523,18 +523,18 @@
     "@types/testing-library__jest-dom": "5.14.9",
     "@vitejs/plugin-vue": "5.0.4",
     "@vitejs/plugin-vue-jsx": "3.1.0",
-    "@vue/compiler-sfc": "3.4.23",
+    "@vue/compiler-sfc": "3.4.25",
     "globby": "14.0.1",
     "histoire": "0.17.17",
     "jsdom": "24.0.0",
-    "lucide-vue-next": "0.372.0",
-    "release-it": "17.2.0",
+    "lucide-vue-next": "0.375.0",
+    "release-it": "17.2.1",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.4.5",
     "vite": "5.2.10",
-    "vite-plugin-dts": "3.8.3",
-    "vitest": "1.5.0",
-    "vue": "3.4.23",
+    "vite-plugin-dts": "3.9.0",
+    "vitest": "1.5.2",
+    "vue": "3.4.25",
     "vue-tsc": "2.0.14"
   },
   "peerDependencies": {
