@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {}
+export interface UseTreeViewProps
+  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTreeViewReturn extends Accessor<treeView.Api<PropTypes>> {}
 
 export const useTreeView = (props: UseTreeViewProps): UseTreeViewReturn => {

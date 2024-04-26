@@ -11,11 +11,9 @@ export const EditableRoot = (props: EditableRootProps) => {
   const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',
-    'dir',
     'disabled',
     'finalFocusEl',
     'form',
-    'getRootNode',
     'id',
     'ids',
     'invalid',

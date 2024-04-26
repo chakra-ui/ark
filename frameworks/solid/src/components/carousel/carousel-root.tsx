@@ -10,8 +10,6 @@ export interface CarouselRootProps extends Assign<HTMLArkProps<'div'>, UseCarous
 export const CarouselRoot = (props: CarouselRootProps) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
     'align',
-    'dir',
-    'getRootNode',
     'id',
     'ids',
     'index',

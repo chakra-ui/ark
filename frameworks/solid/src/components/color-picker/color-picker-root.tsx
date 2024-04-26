@@ -21,10 +21,8 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
     colorPickerProps,
     [
       'closeOnSelect',
-      'dir',
       'disabled',
       'format',
-      'getRootNode',
       'id',
       'ids',
       'initialFocusEl',

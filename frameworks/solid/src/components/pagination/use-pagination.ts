@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {}
+export interface UsePaginationProps
+  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
 
 export const usePagination = (props: UsePaginationProps): UsePaginationReturn => {

@@ -9,8 +9,6 @@ export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarPr
 
 export const AvatarRoot = (props: AvatarRootProps) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
-    'dir',
-    'getRootNode',
     'id',
     'onStatusChange',
   ])

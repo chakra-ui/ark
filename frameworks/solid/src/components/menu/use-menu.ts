@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
+export interface UseMenuProps
+  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
 
 export interface UseMenuReturn {
   machine: menu.Service

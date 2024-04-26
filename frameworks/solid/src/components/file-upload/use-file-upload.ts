@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseFileUploadProps extends Optional<fileUpload.Context, 'id'> {}
+export interface UseFileUploadProps
+  extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseFileUploadReturn extends Accessor<fileUpload.Api<PropTypes>> {}
 
 export const useFileUpload = (props: UseFileUploadProps): UseFileUploadReturn => {

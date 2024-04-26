@@ -9,8 +9,6 @@ export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, UseProgre
 
 export const ProgressRoot = (props: ProgressRootProps) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
-    'dir',
-    'getRootNode',
     'id',
     'max',
     'min',

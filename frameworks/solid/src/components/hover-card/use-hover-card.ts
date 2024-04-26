@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseHoverCardProps
-  extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {}
+  extends Optional<Omit<hoverCard.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
 export interface UseHoverCardReturn extends Accessor<hoverCard.Api<PropTypes>> {}
 
 export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {

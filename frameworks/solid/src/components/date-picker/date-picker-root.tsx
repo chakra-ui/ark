@@ -19,12 +19,10 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
   const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
     'closeOnSelect',
-    'dir',
     'disabled',
     'fixedWeeks',
     'focusedValue',
     'format',
-    'getRootNode',
     'id',
     'ids',
     'isDateUnavailable',

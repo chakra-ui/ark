@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseRatingGroupProps extends Optional<rating.Context, 'id'> {}
+export interface UseRatingGroupProps
+  extends Optional<Omit<rating.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {

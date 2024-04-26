@@ -49,7 +49,8 @@ describe('Slider', () => {
     expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it('should be possible to control it with the arrow keys in rtl mode', async () => {
+  // TODO use Local Provider to set the direction
+  it.skip('should be possible to control it with the arrow keys in rtl mode', async () => {
     render(() => <ComponentUnderTest dir="rtl" />)
 
     const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })

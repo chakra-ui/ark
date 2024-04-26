@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {}
+export interface UsePopoverProps
+  extends Optional<Omit<popover.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
 export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {

@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {}
+export interface UseToggleGroupProps
+  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseToggleGroupReturn extends Accessor<toggleGroup.Api<PropTypes>> {}
 
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {

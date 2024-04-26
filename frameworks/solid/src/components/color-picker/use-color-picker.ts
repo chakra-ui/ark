@@ -5,7 +5,10 @@ import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseColorPickerProps
-  extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
+  extends Optional<
+    Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
+    'id'
+  > {
   /**
    * The current value of the color picker.
    */

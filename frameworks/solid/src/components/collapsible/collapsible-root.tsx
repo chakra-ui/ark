@@ -9,9 +9,7 @@ export interface CollapsibleRootProps extends Assign<HTMLArkProps<'div'>, UseCol
 
 export const CollapsibleRoot = (props: CollapsibleRootProps) => {
   const [useCollapsibleProps, localProps] = createSplitProps<UseCollapsibleProps>()(props, [
-    'dir',
     'disabled',
-    'getRootNode',
     'id',
     'ids',
     'lazyMount',

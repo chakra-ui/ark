@@ -8,7 +8,10 @@ import { createSplitProps } from '../../utils/create-split-props'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<select.Context<T>, 'id'>, 'collection' | 'open.controlled'> {}
+    Optional<
+      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
+      'id'
+    > {}
 
 export interface UseSelectReturn<T extends CollectionItem>
   extends Accessor<select.Api<PropTypes, T>> {}

@@ -6,7 +6,7 @@ import type { Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'>,
+  extends Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'>,
     RenderStrategyProps {}
 
 export interface UseCollapsibleReturn

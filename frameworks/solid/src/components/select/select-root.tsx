@@ -19,10 +19,8 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
   const [presenceProps, selectProps] = splitPresenceProps(props)
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
     'closeOnSelect',
-    'dir',
     'disabled',
     'form',
-    'getRootNode',
     'highlightedValue',
     'id',
     'ids',

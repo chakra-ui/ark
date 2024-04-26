@@ -10,10 +10,8 @@ export interface SwitchRootProps extends Assign<HTMLArkProps<'label'>, UseSwitch
 export const SwitchRoot = (props: SwitchRootProps) => {
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
-    'dir',
     'disabled',
     'form',
-    'getRootNode',
     'id',
     'ids',
     'invalid',

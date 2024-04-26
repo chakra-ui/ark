@@ -9,10 +9,8 @@ export interface RadioGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRadi
 
 export const RadioGroupRoot = (props: RadioGroupRootProps) => {
   const [useRadioGroupProps, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
-    'dir',
     'disabled',
     'form',
-    'getRootNode',
     'id',
     'ids',
     'name',

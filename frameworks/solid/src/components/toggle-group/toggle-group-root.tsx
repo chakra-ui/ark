@@ -9,9 +9,7 @@ export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseTog
 
 export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
   const [useToggleGroupProps, restProps] = createSplitProps<UseToggleGroupProps>()(props, [
-    'dir',
     'disabled',
-    'getRootNode',
     'id',
     'ids',
     'loopFocus',

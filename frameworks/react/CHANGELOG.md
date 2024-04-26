@@ -8,7 +8,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Removed
 
-- BREAKING: Removed `dir` and `getRootNode` from all components. Use `LocaleProvider` instead.
+- BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to set the direction and root node.
 
 ### Changed
 

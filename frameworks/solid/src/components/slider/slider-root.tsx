@@ -11,11 +11,9 @@ export const SliderRoot = (props: SliderRootProps) => {
   const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [
     'aria-label',
     'aria-labelledby',
-    'dir',
     'disabled',
     'form',
     'getAriaValueText',
-    'getRootNode',
     'id',
     'ids',
     'invalid',

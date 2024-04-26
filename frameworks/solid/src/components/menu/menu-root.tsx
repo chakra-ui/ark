@@ -22,8 +22,6 @@ export const MenuRoot = (props: MenuRootProps) => {
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
-    'dir',
-    'getRootNode',
     'highlightedValue',
     'id',
     'ids',

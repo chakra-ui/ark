@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, 'open.controlled'> {}
+export interface UseTooltipProps
+  extends Optional<Omit<tooltip.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
 export interface UseTooltipReturn extends Accessor<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {

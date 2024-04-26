@@ -4,7 +4,8 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {}
+export interface UseSwitchProps
+  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
