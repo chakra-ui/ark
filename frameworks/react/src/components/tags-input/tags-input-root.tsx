@@ -16,11 +16,9 @@ export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((p
     'blurBehavior',
     'defaultValue',
     'delimiter',
-
     'disabled',
     'editable',
     'form',
-
     'id',
     'ids',
     'inputValue',

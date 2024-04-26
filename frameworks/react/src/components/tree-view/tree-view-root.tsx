@@ -12,10 +12,8 @@ export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps>()(props, [
     'defaultExpandedValue',
     'defaultSelectedValue',
-
     'expandedValue',
     'focusedValue',
-
     'id',
     'onExpandedChange',
     'onFocusChange',

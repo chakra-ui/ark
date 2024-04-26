@@ -12,10 +12,8 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
     'checked',
     'defaultChecked',
-
     'disabled',
     'form',
-
     'id',
     'ids',
     'invalid',

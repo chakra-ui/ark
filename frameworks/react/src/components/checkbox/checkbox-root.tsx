@@ -12,10 +12,8 @@ export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((pro
   const [useCheckboxProps, localProps] = createSplitProps<UseCheckboxProps>()(props, [
     'checked',
     'defaultChecked',
-
     'disabled',
     'form',
-
     'id',
     'ids',
     'invalid',

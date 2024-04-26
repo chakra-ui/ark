@@ -13,10 +13,8 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
     'autoFocus',
     'blurOnComplete',
     'defaultValue',
-
     'disabled',
     'form',
-
     'id',
     'ids',
     'invalid',

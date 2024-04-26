@@ -11,7 +11,6 @@ export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitt
 export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props, ref) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'defaultSize',
-
     'id',
     'ids',
     'onSizeChange',

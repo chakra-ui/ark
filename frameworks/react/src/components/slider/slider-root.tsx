@@ -13,11 +13,9 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'aria-label',
     'aria-labelledby',
     'defaultValue',
-
     'disabled',
     'form',
     'getAriaValueText',
-
     'id',
     'ids',
     'invalid',

@@ -12,10 +12,8 @@ export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSe
 export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps>((props, ref) => {
   const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
     'defaultValue',
-
     'disabled',
     'form',
-
     'id',
     'ids',
     'name',

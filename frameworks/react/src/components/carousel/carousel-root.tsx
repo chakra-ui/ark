@@ -12,7 +12,6 @@ export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
     'align',
     'defaultIndex',
-
     'id',
     'ids',
     'index',

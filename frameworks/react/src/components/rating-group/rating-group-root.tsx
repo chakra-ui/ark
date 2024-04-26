@@ -14,10 +14,8 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
     'autoFocus',
     'count',
     'defaultValue',
-
     'disabled',
     'form',
-
     'id',
     'ids',
     'name',
