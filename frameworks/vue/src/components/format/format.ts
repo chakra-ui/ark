@@ -1,2 +1,2 @@
-export { FormatByte as Byte, type FormatByteProps as ByteProps } from './format-byte'
-export { FormatNumber as Number, type FormatNumberProps as NumberProps } from './format-number'
+export { default as Byte, type FormatByteProps as ByteProps } from './format-byte.vue'
+export { default as Number, type FormatNumberProps as NumberProps } from './format-number.vue'

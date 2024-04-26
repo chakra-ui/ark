@@ -17,5 +17,5 @@ EnvironmentProvider(environment)
 
 <template>
   <slot></slot>
-  <span hidden ref={elRef} v-if="!props.value"></span>
+  <span hidden ref="{elRef}" v-if="!props.value"></span>
 </template>
