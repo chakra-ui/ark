@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './tabs.types'
 
 export interface TabsRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
@@ -8,7 +8,7 @@ export interface TabsRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyProvider } from '../../utils/use-render-strategy'
+import { RenderStrategyPropsProvider } from '../../utils'
 import { ark, type PolymorphicProps } from '../factory'
 import { useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
@@ -19,7 +19,7 @@ const emits = defineEmits<TabsRootEmits>()
 const tabs = useTabs(props, emits)
 
 TabsProvider(tabs)
-RenderStrategyProvider(
+RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
 </script>

@@ -11,7 +11,7 @@ import { useMenuContext } from './use-menu-context'
 defineProps<MenuPositionerProps>()
 const menu = useMenuContext()
 // TODO is undefined ?!
-// const renderStrategy = useRenderStrategyContext()
+// const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

@@ -5,13 +5,13 @@ export interface ColorPickerPositionerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
 
 defineProps<ColorPickerPositionerProps>()
 const colorPicker = useColorPickerContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

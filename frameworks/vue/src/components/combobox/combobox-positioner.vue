@@ -5,13 +5,13 @@ export interface ComboboxPositionerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
 import { useComboboxContext } from './use-combobox-context'
 
 defineProps<ComboboxPositionerProps>()
 const combobox = useComboboxContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

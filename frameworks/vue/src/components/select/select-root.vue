@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
 
@@ -9,7 +9,7 @@ export interface SelectRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyProvider } from '../../utils/use-render-strategy'
+import { RenderStrategyPropsProvider } from '../../utils'
 import { ark } from '../factory'
 import { useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
@@ -19,7 +19,7 @@ const emits = defineEmits<SelectRootEmits>()
 
 const select = useSelect(props, emits)
 SelectProvider(select)
-RenderStrategyProvider(
+RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
 </script>

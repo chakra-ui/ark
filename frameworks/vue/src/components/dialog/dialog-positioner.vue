@@ -5,13 +5,13 @@ export interface DialogPositionerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
 defineProps<DialogPositionerProps>()
 const dialog = useDialogContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

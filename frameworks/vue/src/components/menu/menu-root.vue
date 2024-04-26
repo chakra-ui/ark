@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './menu.types'
 
@@ -9,7 +9,7 @@ export interface MenuRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { RenderStrategyProvider } from '../../utils/render-strategy'
+import { RenderStrategyPropsProvider } from '../../utils'
 import { useMenu } from './use-menu'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
@@ -32,7 +32,7 @@ onMounted(() => {
 MenuTriggerItemProvider(computed(() => parentApi.value.getTriggerItemProps(api.value)))
 MenuMachineProvider(machine)
 MenuProvider(api)
-RenderStrategyProvider(
+RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
 </script>

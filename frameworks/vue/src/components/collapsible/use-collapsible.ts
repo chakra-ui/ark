@@ -4,11 +4,11 @@ import { type ComputedRef, computed, ref, watch } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
-import type { UseRenderStrategyProps } from '../../utils/use-render-strategy'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
-  extends UseRenderStrategyProps,
+  extends RenderStrategyProps,
     Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'> {}
 
 interface Collapsible extends collapsible.Api<PropTypes> {

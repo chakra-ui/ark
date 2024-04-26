@@ -5,13 +5,13 @@ export interface HoverCardPositionerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
 import { useHoverCardContext } from './use-hover-card-context'
 
 defineProps<HoverCardPositionerProps>()
 const hoverCard = useHoverCardContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

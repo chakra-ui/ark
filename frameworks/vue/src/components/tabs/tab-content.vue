@@ -6,13 +6,13 @@ export interface TabContentProps extends PolymorphicProps, ContentProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { useTabsContext } from './use-tabs-context'
 import { Presence } from '../presence'
 
 const props = defineProps<TabContentProps>()
 const tabs = useTabsContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

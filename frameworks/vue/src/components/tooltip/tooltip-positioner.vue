@@ -5,13 +5,13 @@ export interface TooltipPositionerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
 
 defineProps<TooltipPositionerProps>()
 const tooltip = useTooltipContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

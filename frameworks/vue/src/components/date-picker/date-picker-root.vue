@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
 
@@ -9,7 +9,7 @@ export interface DatePickerRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyProvider } from '../../utils/use-render-strategy'
+import { RenderStrategyPropsProvider } from '../../utils'
 import { ark } from '../factory'
 import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
@@ -22,7 +22,7 @@ const emits = defineEmits<DatePickerRootEmits>()
 
 const datePicker = useDatePicker(props, emits)
 DatePickerProvider(datePicker)
-RenderStrategyProvider(
+RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
 </script>

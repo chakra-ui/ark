@@ -7,8 +7,8 @@ export interface AccordionItemProps extends ItemProps, PolymorphicProps {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Collapsible } from '../..'
-import { useRenderStrategyContext } from '../../utils/render-strategy'
+import { useRenderStrategyProps } from '../../utils'
+import { Collapsible } from '../collapsible'
 import { useAccordionContext } from './use-accordion-context'
 import { AccordionItemProvider } from './use-accordion-item-context'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
@@ -16,7 +16,7 @@ import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 const accordion = useAccordionContext()
 const props = defineProps<AccordionItemProps>()
 const item = computed(() => accordion.value.getItemState(props))
-const renderStrategyProps = useRenderStrategyContext()
+const renderStrategyProps = useRenderStrategyProps()
 const itemContentProps = computed(() => accordion.value.getItemContentProps(props))
 
 AccordionItemProvider(item)

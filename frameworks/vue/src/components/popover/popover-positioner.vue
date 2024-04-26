@@ -5,14 +5,14 @@ export interface PopoverPositionerProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyContext } from '../../utils/use-render-strategy'
+import { useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
 import { usePopoverContext } from './use-popover-context'
 
 defineProps<PopoverPositionerProps>()
 
 const popover = usePopoverContext()
-const renderStrategy = useRenderStrategyContext()
+const renderStrategy = useRenderStrategyProps()
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils/render-strategy'
+import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './hover-card.types'
 
 export interface HoverCardRootProps extends RootProps, RenderStrategyProps {}
@@ -8,7 +8,7 @@ export interface HoverCardRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyProvider } from '../../utils/use-render-strategy'
+import { RenderStrategyPropsProvider } from '../../utils'
 import { useHoverCard } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
@@ -18,7 +18,7 @@ const emits = defineEmits<HoverCardRootEmits>()
 const hoverCard = useHoverCard(props, emits)
 
 HoverCardProvider(hoverCard)
-RenderStrategyProvider(
+RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
 </script>

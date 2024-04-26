@@ -1,7 +1,7 @@
 import type { ComputedRef } from 'vue'
 import { createContext } from './create-context'
 
-export interface UseRenderStrategyProps {
+export interface RenderStrategyProps {
   /**
    * Whether to enable lazy mounting
    * @default false
@@ -14,5 +14,5 @@ export interface UseRenderStrategyProps {
   unmountOnExit?: boolean
 }
 
-export const [RenderStrategyProvider, useRenderStrategyContext] =
-  createContext<ComputedRef<UseRenderStrategyProps>>('RenderStrategyContext')
+export const [RenderStrategyPropsProvider, useRenderStrategyProps] =
+  createContext<ComputedRef<RenderStrategyProps>>('RenderStrategyProps')
