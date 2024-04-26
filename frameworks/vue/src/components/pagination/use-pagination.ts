@@ -13,14 +13,14 @@ export const usePagination = (
   props: UsePaginationProps,
   emit: EmitFn<RootEmits>,
 ): UsePaginationReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     pagination.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onPageChange: (details) => {
         emit('pageChange', details)
       },

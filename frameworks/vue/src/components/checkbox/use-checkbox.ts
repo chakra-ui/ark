@@ -18,13 +18,13 @@ export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> 
 
 export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) => {
   const context = ref(props)
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     checkbox.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       checked: props.checked ?? props.defaultChecked,
       onCheckedChange(details) {
         emit('checkedChange', details)

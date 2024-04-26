@@ -30,13 +30,13 @@ export const useSelect = <T extends CollectionItem>(
     }
   })
 
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     select.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
         // @ts-expect-error FIXME
         emit('valueChange', details)

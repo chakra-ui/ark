@@ -18,14 +18,14 @@ export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps, emit: EmitFn<RootEmits>) => {
   const context = ref(props)
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     dialog.machine({
       ...context.value,
       id: context.value.id || useId().value,
       open: props.open ?? props.defaultOpen,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('openChange', details)

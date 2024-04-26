@@ -14,12 +14,12 @@ export const LocaleProvider = defineComponent<LocaleProviderProps>(
   (props, { slots }) => {
     const localeRef = ref(props.locale || props.defaultLocale || 'en-US')
 
-    const getRootNode = useEnvironmentContext()
+    const env = useEnvironmentContext()
 
     onMounted(() => {
       const cleanup = trackLocale({
         locale: props.locale,
-        getRootNode,
+        getRootNode: env.value.getRootNode,
         onLocaleChange(locale) {
           localeRef.value = locale.locale
         },

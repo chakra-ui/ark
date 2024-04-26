@@ -12,7 +12,7 @@ export interface UseSliderProps extends Optional<slider.Context, 'id'> {
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
 export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSliderReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
@@ -25,7 +25,7 @@ export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSl
     slider.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => {
         emit('focusChange', details)
       },

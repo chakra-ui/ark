@@ -16,7 +16,7 @@ export const useColorPicker = (
   props: UseColorPickerProps,
   emit: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
@@ -31,7 +31,7 @@ export const useColorPicker = (
     colorPicker.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onFormatChange(details) {
         emit('formatChange', details)
       },

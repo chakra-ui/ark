@@ -19,14 +19,14 @@ export const useTreeView = (
   props: UseTreeViewProps,
   emit: EmitFn<RootEmits>,
 ): UseTreeViewReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     treeView.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => {
         emit('focusChange', details)
       },

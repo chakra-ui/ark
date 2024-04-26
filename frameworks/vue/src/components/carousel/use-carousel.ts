@@ -13,14 +13,14 @@ export const useCarousel = (
   props: UseCarouselProps,
   emit: EmitFn<RootEmits>,
 ): UseCarouselReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     carousel.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onIndexChange: (details) => {
         emit('indexChange', details)
       },

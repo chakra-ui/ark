@@ -15,13 +15,13 @@ export interface UseMenuReturn {
 
 export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuReturn => {
   const context = ref(props)
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send, machine] = useMachine(
     menu.machine({
       ...context.value,
       id: context.value.id || useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('openChange', details)

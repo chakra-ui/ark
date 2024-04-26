@@ -14,14 +14,14 @@ export const useFileUpload = (
   props: UseFileUploadProps,
   emit: EmitFn<RootEmits>,
 ): UseFileUploadReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     fileUpload.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onFileChange: (details) => {
         emit('fileChange', details)
       },

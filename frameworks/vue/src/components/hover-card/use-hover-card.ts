@@ -21,14 +21,14 @@ export const useHoverCard = (
   emit: EmitFn<RootEmits>,
 ): UseHoverCardReturn => {
   const context = ref(props)
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     hoverCard.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
       open: props.open ?? props.defaultOpen,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('openChange', details)

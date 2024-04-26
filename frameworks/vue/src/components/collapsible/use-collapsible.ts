@@ -26,13 +26,13 @@ export const useCollapsible = (
 ): UseCollapsibleReturn => {
   const context = ref(props)
   const wasVisible = ref(false)
-  const environment = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     collapsible.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode: environment,
+      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
       onExitComplete: () => {
         emits('exitComplete')

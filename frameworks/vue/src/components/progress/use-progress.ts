@@ -9,14 +9,14 @@ export interface UseProgressProps extends Optional<progress.Context, 'id'> {}
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     progress.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
     }),
     { context },
   )

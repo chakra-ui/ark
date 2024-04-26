@@ -17,12 +17,12 @@ export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps, emit: EmitFn<RootEmits>): UseTooltipReturn => {
   const context = ref(props)
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     tooltip.machine({
       id: useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       ...context.value,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,

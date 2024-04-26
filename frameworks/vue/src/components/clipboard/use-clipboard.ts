@@ -13,14 +13,14 @@ export const useClipboard = (
   props: UseClipboardProps,
   emit: EmitFn<RootEmits>,
 ): UseClipboardReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     clipboard.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onStatusChange: (details) => {
         emit('statusChange', details)
       },

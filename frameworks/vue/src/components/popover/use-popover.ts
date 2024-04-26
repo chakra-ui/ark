@@ -17,7 +17,7 @@ export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, '
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
@@ -25,7 +25,7 @@ export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
       ...context.value,
       id: context.value.id || useId().value,
       open: props.open ?? props.defaultOpen,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('openChange', details)

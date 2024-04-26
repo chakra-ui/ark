@@ -15,13 +15,13 @@ export const useSplitter = (
   emit: EmitFn<RootEmits>,
 ): UseSplitterReturn => {
   const context = ref(props)
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const [state, send] = useMachine(
     splitter.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onSizeChange: (details) => {
         emit('sizeChange', details)
       },

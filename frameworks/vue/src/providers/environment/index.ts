@@ -1,5 +1,2 @@
-import { Environment, type EnvironmentProps } from './environment'
-import { type EnvironmentContext, useEnvironmentContext } from './environment-context'
-
-export { Environment, useEnvironmentContext }
-export type { EnvironmentContext, EnvironmentProps }
+export { default as Environment, type EnvironmentProps } from './environment.vue'
+export { useEnvironmentContext, type UseEnvironmentContext } from './use-environment-context'

@@ -16,7 +16,7 @@ export const useToggleGroup = (
   props: UseToggleGroupProps,
   emit: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
@@ -30,7 +30,7 @@ export const useToggleGroup = (
     toggleGroup.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
         emit('valueChange', details)
         emit('update:modelValue', details.value)

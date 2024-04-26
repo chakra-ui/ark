@@ -16,7 +16,7 @@ export const useEditable = (
   props: UseEditableProps,
   emit: EmitFn<RootEmits>,
 ): UseEditableReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
@@ -29,7 +29,7 @@ export const useEditable = (
     editable.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onValueChange(details) {
         emit('valueChange', details)
         emit('update:modelValue', details.value)

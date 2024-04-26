@@ -24,7 +24,7 @@ export const useAccordion = (
   props: UseAccordionProps,
   emit: EmitFn<RootEmits>,
 ): UseAccordionReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
@@ -37,7 +37,7 @@ export const useAccordion = (
     accordion.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => {
         emit('focusChange', details)
       },

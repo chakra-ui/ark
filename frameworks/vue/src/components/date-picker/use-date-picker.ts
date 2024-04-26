@@ -38,7 +38,7 @@ export const useDatePicker = (
   props: UseDatePickerProps,
   emit: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, focusedValue, min, max, ...rest } = props
     return {
@@ -55,7 +55,7 @@ export const useDatePicker = (
     datePicker.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
         emit('valueChange', details)
         emit('update:modelValue', details.valueAsString)

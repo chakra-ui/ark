@@ -13,7 +13,7 @@ export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
 export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> {}
 
 export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = computed(() => {
     const { modelValue, ...rest } = props
     return {
@@ -26,7 +26,7 @@ export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) =>
     pinInput.machine({
       ...context.value,
       id: context.value.id || useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onValueChange(details) {
         emit('valueChange', details)
         emit('update:modelValue', details.value)

@@ -10,14 +10,14 @@ export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps, emit: EmitFn<RootEmits>): UseAvatarReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
   const context = ref(props)
 
   const [state, send] = useMachine(
     avatar.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onStatusChange: (details) => {
         emit('statusChange', details)
       },

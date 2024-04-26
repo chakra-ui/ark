@@ -12,7 +12,7 @@ export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
 export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
@@ -26,7 +26,7 @@ export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsRe
     tabs.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => {
         emit('focusChange', details)
       },

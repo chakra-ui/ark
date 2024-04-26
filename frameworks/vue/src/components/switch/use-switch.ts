@@ -13,7 +13,7 @@ export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSwitchReturn => {
-  const getRootNode = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const context = computed(() => {
     const { modelValue, ...rest } = props
@@ -27,7 +27,7 @@ export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSw
     zagSwitch.machine({
       ...context.value,
       id: context.value.id || useId().value,
-      getRootNode,
+      getRootNode: env?.value.getRootNode,
       onCheckedChange(details) {
         emit('checkedChange', details)
         emit('update:modelValue', details.checked)
