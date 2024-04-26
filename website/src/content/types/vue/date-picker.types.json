@@ -118,7 +118,7 @@
       "description": "The format of the date to display in the input."
     },
     "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
+      "type": "() => ShadowRoot | Node | Document",
       "isRequired": false,
       "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
