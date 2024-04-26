@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseHoverCardProps
   extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {
   /**
-   * The initial open state of the hover card.
+   * The initial open state of the hover card when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: hoverCard.Context['open']
 }
@@ -20,7 +21,7 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
-    open: props.defaultOpen ?? props.open,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

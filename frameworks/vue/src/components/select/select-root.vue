@@ -14,7 +14,11 @@ import { ark } from '../factory'
 import { useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
-const props = withDefaults(defineProps<SelectRootProps>(), { open: undefined, closeOnSelect: true })
+const props = withDefaults(defineProps<SelectRootProps>(), {
+  closeOnSelect: true,
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<SelectRootEmits>()
 
 const select = useSelect(props, emits)

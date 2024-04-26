@@ -30,7 +30,11 @@ export interface UseDatePickerProps
    * The maximum date for the date picker in the format yyyy-mm-dd
    */
   max?: string
-  defaultOpen?: boolean
+  /**
+   * The initial open state of the date picker when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: datePicker.Context['open']
 }
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
@@ -48,6 +52,7 @@ export const useDatePicker = (
       value: modelValue ? datePicker.parse(modelValue) : undefined,
       max: max ? datePicker.parse(max) : undefined,
       min: min ? datePicker.parse(min) : undefined,
+      open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
     }
   })

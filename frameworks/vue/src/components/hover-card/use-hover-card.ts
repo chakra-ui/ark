@@ -9,10 +9,10 @@ import type { RootEmits } from './hover-card.types'
 export interface UseHoverCardProps
   extends Optional<Omit<hoverCard.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
-   * The initial open state of the hover card.
+   * The initial open state of the hover card when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: hoverCard.Context['open']
-  'onUpdate:open'?: (open: hoverCard.OpenChangeDetails['open']) => void
 }
 export interface UseHoverCardReturn extends ComputedRef<hoverCard.Api<PropTypes>> {}
 
@@ -28,8 +28,8 @@ export const useHoverCard = (
       ...context.value,
       id: context.value.id ?? useId().value,
       open: props.open ?? props.defaultOpen,
-      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
+      getRootNode: env?.value.getRootNode,
       onOpenChange: (details) => {
         emit('openChange', details)
         emit('update:open', details.open)

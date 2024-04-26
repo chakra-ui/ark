@@ -7,6 +7,11 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    */
   closeOnSelect?: boolean
   /**
+   * The initial open state of the select when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: boolean
+  /**
    * Whether the select is disabled
    */
   disabled?: boolean
@@ -14,7 +19,6 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * The associate form of the underlying select.
    */
   form?: string
-
   /**
    * The key of the highlighted item
    */

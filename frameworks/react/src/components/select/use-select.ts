@@ -14,6 +14,11 @@ export interface UseSelectProps<T extends CollectionItem>
       'id'
     > {
   /**
+   * The initial open state of the select when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: select.Context['open']
+  /**
    * The initial value of the select.
    */
   defaultValue?: select.Context<T>['value']
@@ -43,6 +48,7 @@ export const useSelect = <T extends CollectionItem>(
     collection,
     ...rest,
     value: props.defaultValue,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

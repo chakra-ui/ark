@@ -2,6 +2,11 @@ import type * as collapsible from '@zag-js/collapsible'
 
 export interface RootProps {
   /**
+   * The initial open state of the collapsible when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: boolean
+  /**
    * Whether the collapsible is disabled
    */
   disabled?: boolean

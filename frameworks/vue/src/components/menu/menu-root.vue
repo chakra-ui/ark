@@ -15,7 +15,11 @@ import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
-const props = withDefaults(defineProps<MenuRootProps>(), { open: undefined, closeOnSelect: true })
+const props = withDefaults(defineProps<MenuRootProps>(), {
+  closeOnSelect: true,
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<MenuRootEmits>()
 
 const { api, machine } = useMenu(props, emits)

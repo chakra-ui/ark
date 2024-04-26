@@ -6,7 +6,13 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
 export interface UseMenuProps
-  extends Optional<Omit<menu.Context, 'open.controlled' | 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<menu.Context, 'open.controlled' | 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial open state of the menu when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: menu.Context['open']
+}
 export interface UseMenuReturn {
   machine: menu.Service
   api: menu.Api<PropTypes>
@@ -19,6 +25,7 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
     ...props,
     onOpenChange: useEvent(props.onOpenChange),
     onSelect: useEvent(props.onSelect),
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

@@ -10,7 +10,8 @@ export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'>,
     RenderStrategyProps {
   /**
-   * The initial open state of the collpasible.
+   * The initial open state of the collapsible when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: collapsible.Context['open']
 }
@@ -30,7 +31,7 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
-    open: props.defaultOpen ?? props.open,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

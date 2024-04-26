@@ -8,6 +8,11 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
+   * The initial open state of the date picker when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: boolean
+  /**
    * Whether the calendar is disabled.
    */
   disabled?: boolean

@@ -14,7 +14,11 @@ export interface UseComboboxProps<T extends CollectionItem>
       'id'
     > {
   modelValue?: combobox.Context<T>['value']
-  defaultOpen?: boolean
+  /**
+   * The initial open state of the combobox when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: combobox.Context['open']
 }
 
 export interface UseComboboxReturn<T extends CollectionItem>
@@ -39,8 +43,9 @@ export const useCombobox = <T extends CollectionItem>(
     combobox.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode: env?.value.getRootNode,
+      open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
+      getRootNode: env?.value.getRootNode,
       onFocusOutside: (details) => emit('focusOutside', details),
       onHighlightChange: (details) => emit('highlightChange', details),
       onInputValueChange: (details) => emit('inputValueChange', details),

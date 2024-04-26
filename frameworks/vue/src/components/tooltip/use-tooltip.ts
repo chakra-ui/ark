@@ -9,7 +9,8 @@ import type { RootEmits } from './tooltip.types'
 export interface UseTooltipProps
   extends Optional<Omit<tooltip.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
-   * The initial open state of the tooltip.
+   * The initial open state of the tooltip when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: tooltip.Context['open']
 }

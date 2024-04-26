@@ -8,6 +8,10 @@ import type { RootEmits } from './menu'
 
 export interface UseMenuProps
   extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  /**
+   * The initial open state of the menu when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
   defaultOpen?: menu.Context['open']
 }
 
@@ -24,8 +28,9 @@ export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuRe
     menu.machine({
       ...context.value,
       id: context.value.id || useId().value,
-      getRootNode: env?.value.getRootNode,
+      open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
+      getRootNode: env?.value.getRootNode,
       onOpenChange: (details) => {
         emit('openChange', details)
         emit('update:open', details.open)

@@ -11,6 +11,11 @@ export interface UseColorPickerProps
     'id'
   > {
   /**
+   * The initial open state of the color picker when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: colorPicker.Context['open']
+  /**
    * The initial value of the color picker.
    */
   defaultValue?: string
@@ -28,6 +33,7 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue ? colorPicker.parse(props.defaultValue) : undefined,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

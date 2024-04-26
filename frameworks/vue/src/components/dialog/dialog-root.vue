@@ -12,7 +12,10 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
-const props = withDefaults(defineProps<DialogRootProps>(), { open: undefined })
+const props = withDefaults(defineProps<DialogRootProps>(), {
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<DialogRootEmits>()
 
 const dialog = useDialog(props, emits)

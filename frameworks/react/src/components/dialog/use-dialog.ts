@@ -7,7 +7,8 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'open.controlled'> {
   /**
-   * The initial open state of the dialog.
+   * The initial open state of the dialog when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: dialog.Context['open']
 }
@@ -19,7 +20,7 @@ export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
-    open: props.defaultOpen ?? props.open,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

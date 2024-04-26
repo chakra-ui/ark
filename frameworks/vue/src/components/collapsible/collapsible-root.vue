@@ -10,7 +10,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
-const props = withDefaults(defineProps<CollapsibleRootProps>(), { open: undefined })
+const props = withDefaults(defineProps<CollapsibleRootProps>(), {
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<CollapsibleRootEmits>()
 
 const collapsible = useCollapsible(props, emits)

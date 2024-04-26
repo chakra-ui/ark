@@ -14,6 +14,11 @@ export interface UseComboboxProps<T extends CollectionItem>
       'id'
     > {
   /**
+   * The initial open state of the combobox when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: combobox.Context['open']
+  /**
    * the initial value of the combobox
    */
   defaultValue?: combobox.Context<T>['value']
@@ -43,6 +48,7 @@ export const useCombobox = <T extends CollectionItem>(
     collection,
     ...comboboxProps,
     value: props.defaultValue,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

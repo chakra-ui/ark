@@ -9,7 +9,8 @@ import type { RootEmits } from './popover.types'
 export interface UsePopoverProps
   extends Optional<Omit<popover.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
-   * The initial open state of the popover.
+   * The initial open state of the popover when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: popover.Context['open']
 }
@@ -25,8 +26,8 @@ export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
       ...context.value,
       id: context.value.id || useId().value,
       open: props.open ?? props.defaultOpen,
-      getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
+      getRootNode: env?.value.getRootNode,
       onOpenChange: (details) => {
         emit('openChange', details)
         emit('update:open', details.open)

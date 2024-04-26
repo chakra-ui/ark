@@ -51,7 +51,7 @@
     "defaultOpen": {
       "type": "boolean",
       "isRequired": false,
-      "description": "The initial open state of the tooltip."
+      "description": "The initial open state of the tooltip when it is first rendered.\nUse when you do not need to control its open state."
     },
     "dir": {
       "type": "'rtl' | 'ltr'",

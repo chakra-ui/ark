@@ -74,7 +74,7 @@
     "defaultOpen": {
       "type": "boolean",
       "isRequired": false,
-      "description": "The initial open state of the popover."
+      "description": "The initial open state of the popover when it is first rendered.\nUse when you do not need to control its open state."
     },
     "dir": {
       "type": "'rtl' | 'ltr'",

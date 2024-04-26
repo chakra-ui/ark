@@ -12,7 +12,10 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
-const props = withDefaults(defineProps<TooltipRootProps>(), { open: undefined })
+const props = withDefaults(defineProps<TooltipRootProps>(), {
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<TooltipRootEmits>()
 
 const tooltip = useTooltip(props, emits)

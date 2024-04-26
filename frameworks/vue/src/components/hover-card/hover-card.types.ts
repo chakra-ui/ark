@@ -6,10 +6,10 @@ export interface RootProps {
    */
   closeDelay?: number
   /**
-   * The initial open state of the hover card.
+   * The initial open state of the hover card when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: boolean
-
   /**
    * The unique identifier of the machine.
    */

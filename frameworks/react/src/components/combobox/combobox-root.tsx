@@ -25,6 +25,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'allowCustomValue',
     'autoFocus',
     'closeOnSelect',
+    'defaultOpen',
     'defaultValue',
     'disabled',
     'dismissable',

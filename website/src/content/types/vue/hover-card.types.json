@@ -36,7 +36,7 @@
     "defaultOpen": {
       "type": "boolean",
       "isRequired": false,
-      "description": "The initial open state of the hover card."
+      "description": "The initial open state of the hover card when it is first rendered.\nUse when you do not need to control its open state."
     },
     "dir": {
       "type": "'ltr' | 'rtl'",

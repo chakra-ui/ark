@@ -14,6 +14,11 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
+   * The initial open state of the menu when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: boolean
+  /**
    * The value of the highlighted menu item.
    */
   highlightedValue?: string

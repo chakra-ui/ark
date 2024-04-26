@@ -13,7 +13,10 @@ import { ColorPickerProvider } from './use-color-picker-context'
 import { RenderStrategyPropsProvider } from '../../utils'
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<ColorPickerRootProps>(), { open: undefined })
+const props = withDefaults(defineProps<ColorPickerRootProps>(), {
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<ColorPickerRootEmits>()
 
 const colorPicker = useColorPicker(props, emits)

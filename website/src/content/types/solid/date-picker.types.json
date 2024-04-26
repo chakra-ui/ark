@@ -90,6 +90,11 @@
       "isRequired": false,
       "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the date picker when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,

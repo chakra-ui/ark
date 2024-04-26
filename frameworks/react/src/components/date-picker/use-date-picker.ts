@@ -14,6 +14,11 @@ export interface UseDatePickerProps
     'id'
   > {
   /**
+   * The initial open state of the date picker when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: datePicker.Context['open']
+  /**
    * The initial value of the date picker
    */
   defaultValue?: string[]
@@ -46,6 +51,7 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,
     max: props.max ? datePicker.parse(props.max) : undefined,
     min: props.min ? datePicker.parse(props.min) : undefined,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

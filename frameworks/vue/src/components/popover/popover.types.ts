@@ -15,7 +15,8 @@ export interface RootProps {
    */
   closeOnInteractOutside?: boolean
   /**
-   * The initial open state of the popover.
+   * The initial open state of the popover when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: boolean
   /**

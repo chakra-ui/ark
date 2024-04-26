@@ -12,6 +12,10 @@ export interface UseColorPickerProps
     'id'
   > {
   modelValue?: string
+  /**
+   * The initial open state of the color picker.
+   */
+  defaultOpen?: colorPicker.Context['open']
 }
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
@@ -26,6 +30,7 @@ export const useColorPicker = (
     return {
       ...rest,
       value: modelValue ? colorPicker.parse(modelValue) : undefined,
+      open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
     }
   })

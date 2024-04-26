@@ -108,6 +108,11 @@
       "isRequired": false,
       "description": "Whether to close the combobox when an item is selected."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the combobox when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,

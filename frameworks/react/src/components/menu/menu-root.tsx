@@ -23,6 +23,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'anchorPoint',
     'aria-label',
     'closeOnSelect',
+    'defaultOpen',
     'highlightedValue',
     'id',
     'ids',

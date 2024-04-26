@@ -12,7 +12,10 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
-const props = withDefaults(defineProps<PopoverRootProps>(), { open: undefined })
+const props = withDefaults(defineProps<PopoverRootProps>(), {
+  defaultOpen: undefined,
+  open: undefined,
+})
 const emits = defineEmits<PopoverRootEmits>()
 
 const popover = usePopover(props, emits)

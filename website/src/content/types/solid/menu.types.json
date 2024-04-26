@@ -183,6 +183,11 @@
       "isRequired": false,
       "description": "Whether to close the menu when an option is selected"
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the menu when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "highlightedValue": {
       "type": "string",
       "isRequired": false,

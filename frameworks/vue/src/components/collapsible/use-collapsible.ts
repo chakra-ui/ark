@@ -10,7 +10,11 @@ import type { RootEmits } from './collapsible.types'
 export interface UseCollapsibleProps
   extends RenderStrategyProps,
     Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  defaultOpen?: boolean
+  /**
+   * The initial open state of the collapsible when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: collapsible.Context['open']
 }
 
 interface Collapsible extends collapsible.Api<PropTypes> {
@@ -34,8 +38,9 @@ export const useCollapsible = (
     collapsible.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
-      getRootNode: env?.value.getRootNode,
+      open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
+      getRootNode: env?.value.getRootNode,
       onExitComplete: () => emits('exitComplete'),
       onOpenChange: (details) => {
         emits('openChange', details)

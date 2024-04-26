@@ -13,6 +13,11 @@ export interface UseSelectProps<T extends CollectionItem>
       Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
       'id'
     > {
+  /**
+   * The initial open state of the select when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: select.Context<T>['open']
   modelValue?: select.Context<T>['value']
 }
 
@@ -29,6 +34,7 @@ export const useSelect = <T extends CollectionItem>(
       ...rest,
       collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
       value: modelValue,
+      open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
     }
   })

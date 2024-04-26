@@ -7,7 +7,8 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {
   /**
-   * The initial open state of the popover.
+   * The initial open state of the popover when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: popover.Context['open']
 }
@@ -19,7 +20,7 @@ export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
-    open: props.defaultOpen ?? props.open,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
   }
 

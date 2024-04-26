@@ -9,7 +9,8 @@ import type { RootEmits } from './dialog'
 export interface UseDialogProps
   extends Optional<Omit<dialog.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
-   * The initial open state of the dialog.
+   * The initial open state of the dialog when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: dialog.Context['open']
 }

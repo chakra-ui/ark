@@ -14,7 +14,8 @@ export interface RootProps {
    */
   closeOnInteractOutside?: boolean
   /**
-   * The initial open state of the dialog.
+   * The initial open state of the dialog when it is first rendered.
+   * Use when you do not need to control its open state.
    */
   defaultOpen?: boolean
   /**
