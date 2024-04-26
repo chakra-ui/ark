@@ -9,7 +9,9 @@ import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
   extends RenderStrategyProps,
-    Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
+    Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  defaultOpen?: boolean
+}
 
 interface Collapsible extends collapsible.Api<PropTypes> {
   /**
@@ -34,8 +36,10 @@ export const useCollapsible = (
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
-      onExitComplete: () => {
-        emits('exitComplete')
+      onExitComplete: () => emits('exitComplete'),
+      onOpenChange: (details) => {
+        emits('openChange', details)
+        emits('update:open', details.open)
       },
     }),
     { context },

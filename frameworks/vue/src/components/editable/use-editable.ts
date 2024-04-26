@@ -35,15 +35,12 @@ export const useEditable = (
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      onValueCommit(details) {
-        emit('valueCommit', details)
-      },
-      onValueRevert(details) {
-        emit('valueRevert', details)
-      },
-      onEdit() {
-        emit('edit')
-      },
+      onEdit: () => emit('edit'),
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onValueCommit: (details) => emit('valueCommit', details),
+      onValueRevert: (details) => emit('valueRevert', details),
     }),
     { context },
   )

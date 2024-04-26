@@ -45,13 +45,15 @@ export const useSelect = <T extends CollectionItem>(
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      onHighlightChange: (details) => {
-        // @ts-expect-error FIXME
-        emit('highlightChange', details)
-      },
+      // @ts-expect-error FIXME
+      onHighlightChange: (details) => emit('highlightChange', details),
       onOpenChange: (details) => {
         emit('openChange', details)
+        emit('update:open', details.open)
       },
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     }),
     { context },
   )

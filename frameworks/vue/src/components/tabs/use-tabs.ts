@@ -27,9 +27,7 @@ export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsRe
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => {
-        emit('focusChange', details)
-      },
+      onFocusChange: (details) => emit('focusChange', details),
       onValueChange: (details) => {
         emit('valueChange', details)
         emit('update:modelValue', details.value)

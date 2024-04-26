@@ -35,19 +35,19 @@ export const useColorPicker = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onFormatChange(details) {
-        emit('formatChange', details)
-      },
       onOpenChange(details) {
         emit('openChange', details)
+        emit('update:open', details.open)
       },
       onValueChange(details) {
         emit('valueChange', details)
         emit('update:modelValue', details.valueAsString)
       },
-      onValueChangeEnd(details) {
-        emit('valueChangeEnd', details)
-      },
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onFormatChange: (details) => emit('formatChange', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onValueChangeEnd: (details) => emit('valueChangeEnd', details),
     }),
     { context },
   )

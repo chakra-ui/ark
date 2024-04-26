@@ -6,7 +6,6 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * Whether the select should close after an item is selected
    */
   closeOnSelect?: boolean
-
   /**
    * Whether the select is disabled
    */
@@ -130,4 +129,8 @@ export type RootEmits<T extends CollectionItem = CollectionItem> = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string[]]
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:open': [open: boolean]
 }

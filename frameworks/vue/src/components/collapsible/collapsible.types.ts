@@ -5,7 +5,6 @@ export interface RootProps {
    * Whether the collapsible is disabled
    */
   disabled?: boolean
-
   /**
    * The unique identifier of the machine.
    */
@@ -20,7 +19,7 @@ export interface RootProps {
    */
   lazyMount?: boolean
   /**
-   * Whether the collapsible is open
+   * The controlled open state of the collapsible. Can be binded with v-model.
    */
   open?: boolean
   /**
@@ -39,4 +38,8 @@ export type RootEmits = {
    * Function called when the popup is opened
    */
   openChange: [details: collapsible.OpenChangeDetails]
+  /**
+   * Event handler called when the open state of the collapsible changes.
+   */
+  'update:open': [open: boolean]
 }

@@ -12,7 +12,6 @@ export interface UseCheckboxProps
    * The initial checked state of the checkbox.
    */
   defaultChecked?: checkbox.Context['checked']
-  'onUpdate:checked'?: (checked: checkbox.CheckedChangeDetails['checked']) => void
 }
 
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}

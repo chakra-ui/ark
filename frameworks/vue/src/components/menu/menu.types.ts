@@ -13,7 +13,6 @@ export interface RootProps {
    * Whether to close the menu when an option is selected
    */
   closeOnSelect?: boolean
-
   /**
    * The value of the highlighted menu item.
    */
@@ -87,4 +86,9 @@ export type RootEmits = {
    * Function called when a menu item is selected.
    */
   select: [details: menu.SelectionDetails]
+
+  /**
+   * Function called when the menu is opened or closed.
+   */
+  'update:open': [open: boolean]
 }

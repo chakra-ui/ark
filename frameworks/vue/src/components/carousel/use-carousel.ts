@@ -22,9 +22,7 @@ export const useCarousel = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onIndexChange: (details) => {
-        emit('indexChange', details)
-      },
+      onIndexChange: (details) => emit('indexChange', details),
     }),
     { context },
   )

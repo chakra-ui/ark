@@ -27,9 +27,7 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit: EmitFn<Root
   const [state, send] = useMachine(
     presence.machine({
       ...context.value,
-      onExitComplete: () => {
-        emit('exitComplete')
-      },
+      onExitComplete: () => emit('exitComplete'),
     }),
     { context },
   )

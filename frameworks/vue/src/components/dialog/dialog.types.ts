@@ -17,7 +17,6 @@ export interface RootProps {
    * The initial open state of the dialog.
    */
   defaultOpen?: boolean
-
   /**
    * Element to receive focus when the dialog is closed
    */
@@ -100,6 +99,5 @@ export type RootEmits = {
   pointerDownOutside: [
     event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
   ]
-
   'update:open': [open: boolean]
 }

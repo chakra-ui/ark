@@ -18,7 +18,6 @@ export interface RootProps {
    * The initial open state of the popover.
    */
   defaultOpen?: boolean
-
   /**
    * The unique identifier of the machine.
    */

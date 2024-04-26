@@ -12,7 +12,6 @@ export interface UseDialogProps
    * The initial open state of the dialog.
    */
   defaultOpen?: dialog.Context['open']
-  'onUpdate:open'?: (open: dialog.OpenChangeDetails['open']) => void
 }
 
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
@@ -32,18 +31,10 @@ export const useDialog = (props: UseDialogProps, emit: EmitFn<RootEmits>) => {
         emit('openChange', details)
         emit('update:open', details.open)
       },
-      onEscapeKeyDown: (details) => {
-        emit('escapeKeyDown', details)
-      },
-      onFocusOutside: (details) => {
-        emit('focusOutside', details)
-      },
-      onInteractOutside: (details) => {
-        emit('interactOutside', details)
-      },
-      onPointerDownOutside: (details) => {
-        emit('pointerDownOutside', details)
-      },
+      onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     }),
     { context },
   )

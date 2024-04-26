@@ -23,12 +23,8 @@ export const useSplitter = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onSizeChange: (details) => {
-        emit('sizeChange', details)
-      },
-      onSizeChangeEnd(details) {
-        emit('sizeChangeEnd', details)
-      },
+      onSizeChange: (details) => emit('sizeChange', details),
+      onSizeChangeEnd: (details) => emit('sizeChangeEnd', details),
     }),
     { context },
   )

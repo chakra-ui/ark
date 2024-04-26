@@ -35,12 +35,12 @@ export const useTagsInput = (
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      onValueInvalid(details) {
-        emit('valueInvalid', details)
-      },
-      onHighlightChange(details) {
-        emit('highlightChange', details)
-      },
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onHighlightChange: (details) => emit('highlightChange', details),
+      onInputValueChange: (details) => emit('inputValueChange', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onValueInvalid: (details) => emit('valueInvalid', details),
     }),
     { context },
   )

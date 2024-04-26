@@ -101,4 +101,8 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string]
+  /**
+   * Event handler called when the open state of the color picker changes.
+   */
+  'update:open': [open: boolean]
 }

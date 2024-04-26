@@ -28,15 +28,9 @@ export const useTreeView = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => {
-        emit('focusChange', details)
-      },
-      onExpandedChange: (details) => {
-        emit('expandedChange', details)
-      },
-      onSelectionChange: (details) => {
-        emit('selectionChange', details)
-      },
+      onFocusChange: (details) => emit('focusChange', details),
+      onExpandedChange: (details) => emit('expandedChange', details),
+      onSelectionChange: (details) => emit('selectionChange', details),
     }),
     { context },
   )

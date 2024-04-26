@@ -29,6 +29,7 @@ export const useTooltip = (props: UseTooltipProps, emit: EmitFn<RootEmits>): Use
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('openChange', details)
+        emit('update:open', details.open)
       },
     }),
     { context },

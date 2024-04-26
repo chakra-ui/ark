@@ -7,7 +7,6 @@ export interface RootProps {
    * @default true
    */
   closeOnSelect?: boolean
-
   /**
    * Whether the calendar is disabled.
    */
@@ -25,7 +24,6 @@ export interface RootProps {
    * The format of the date to display in the input.
    */
   format?: (date: datePicker.DateValue) => string
-
   /**
    * The unique identifier of the machine.
    */
@@ -151,4 +149,5 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string[]]
+  'update:open': [open: boolean]
 }

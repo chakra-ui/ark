@@ -27,12 +27,8 @@ export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSl
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => {
-        emit('focusChange', details)
-      },
-      onValueChangeEnd: (details) => {
-        emit('valueChangeEnd', details)
-      },
+      onFocusChange: (details) => emit('focusChange', details),
+      onValueChangeEnd: (details) => emit('valueChangeEnd', details),
       onValueChange: (details) => {
         emit('valueChange', details)
         emit('update:modelValue', details.value)

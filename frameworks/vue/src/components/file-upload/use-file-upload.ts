@@ -23,15 +23,9 @@ export const useFileUpload = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
-      onFileChange: (details) => {
-        emit('fileChange', details)
-      },
-      onFileAccept: (details) => {
-        emit('fileAccept', details)
-      },
-      onFileReject(details) {
-        emit('fileReject', details)
-      },
+      onFileChange: (details) => emit('fileChange', details),
+      onFileAccept: (details) => emit('fileAccept', details),
+      onFileReject: (details) => emit('fileReject', details),
     }),
     { context },
   )

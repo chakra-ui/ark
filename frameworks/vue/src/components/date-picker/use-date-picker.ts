@@ -30,6 +30,7 @@ export interface UseDatePickerProps
    * The maximum date for the date picker in the format yyyy-mm-dd
    */
   max?: string
+  defaultOpen?: boolean
 }
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
@@ -56,18 +57,15 @@ export const useDatePicker = (
       ...context.value,
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
+      onFocusChange: (details) => emit('focusChange', details),
+      onViewChange: (details) => emit('viewChange', details),
+      onOpenChange: (details) => {
+        emit('openChange', details)
+        emit('update:open', details.open)
+      },
       onValueChange: (details) => {
         emit('valueChange', details)
         emit('update:modelValue', details.valueAsString)
-      },
-      onFocusChange: (details) => {
-        emit('focusChange', details)
-      },
-      onViewChange: (details) => {
-        emit('viewChange', details)
-      },
-      onOpenChange: (details) => {
-        emit('openChange', details)
       },
     }),
     { context },

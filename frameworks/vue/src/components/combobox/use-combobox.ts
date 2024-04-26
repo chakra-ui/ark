@@ -14,6 +14,7 @@ export interface UseComboboxProps<T extends CollectionItem>
       'id'
     > {
   modelValue?: combobox.Context<T>['value']
+  defaultOpen?: boolean
 }
 
 export interface UseComboboxReturn<T extends CollectionItem>
@@ -40,14 +41,14 @@ export const useCombobox = <T extends CollectionItem>(
       id: context.value.id ?? useId().value,
       getRootNode: env?.value.getRootNode,
       'open.controlled': props.open !== undefined,
-      onHighlightChange: (details) => {
-        emit('highlightChange', details)
-      },
-      onInputValueChange: (details) => {
-        emit('inputValueChange', details)
-      },
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onHighlightChange: (details) => emit('highlightChange', details),
+      onInputValueChange: (details) => emit('inputValueChange', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
       onOpenChange: (details) => {
         emit('openChange', details)
+        emit('update:open', details.open)
       },
       onValueChange: (details) => {
         emit('valueChange', details)

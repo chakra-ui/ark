@@ -9,7 +9,6 @@ export interface RootProps {
    * The initial checked state of the checkbox.
    */
   defaultChecked?: checkbox.CheckedState
-
   /**
    * Whether the checkbox is disabled
    */
@@ -18,7 +17,6 @@ export interface RootProps {
    * The id of the form that the checkbox belongs to.
    */
   form?: string
-
   /**
    * The unique identifier of the machine.
    */

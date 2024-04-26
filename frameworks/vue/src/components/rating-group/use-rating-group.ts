@@ -35,9 +35,7 @@ export const useRatingGroup = (
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      onHoverChange(details) {
-        emit('hoverChange', details)
-      },
+      onHoverChange: (details) => emit('hoverChange', details),
     }),
     { context },
   )

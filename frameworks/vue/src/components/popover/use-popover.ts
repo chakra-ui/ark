@@ -12,7 +12,6 @@ export interface UsePopoverProps
    * The initial open state of the popover.
    */
   defaultOpen?: popover.Context['open']
-  'onUpdate:open'?: (open: popover.OpenChangeDetails['open']) => void
 }
 
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
@@ -32,18 +31,10 @@ export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
         emit('openChange', details)
         emit('update:open', details.open)
       },
-      onEscapeKeyDown: (details) => {
-        emit('escapeKeyDown', details)
-      },
-      onFocusOutside: (details) => {
-        emit('focusOutside', details)
-      },
-      onInteractOutside: (details) => {
-        emit('interactOutside', details)
-      },
-      onPointerDownOutside: (details) => {
-        emit('pointerDownOutside', details)
-      },
+      onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     }),
     { context },
   )

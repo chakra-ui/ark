@@ -7,7 +7,9 @@ import { useId } from '../../utils'
 import type { RootEmits } from './menu'
 
 export interface UseMenuProps
-  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
+  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  defaultOpen?: menu.Context['open']
+}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
@@ -26,10 +28,14 @@ export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuRe
       'open.controlled': props.open !== undefined,
       onOpenChange: (details) => {
         emit('openChange', details)
+        emit('update:open', details.open)
       },
-      onSelect: (details) => {
-        emit('select', details)
-      },
+      onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
+      onFocusOutside: (details) => emit('focusOutside', details),
+      onHighlightChange: (details) => emit('highlightChange', details),
+      onInteractOutside: (details) => emit('interactOutside', details),
+      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onSelect: (details) => emit('select', details),
     }),
     { context },
   )

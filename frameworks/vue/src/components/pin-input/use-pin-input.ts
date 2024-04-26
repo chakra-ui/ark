@@ -7,7 +7,8 @@ import { useId } from '../../utils'
 import type { RootEmits } from './pin-input'
 
 export interface UsePinInputProps
-  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  defaultValue?: pinInput.Context['value']
   modelValue?: pinInput.Context['value']
 }
 
@@ -28,16 +29,12 @@ export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) =>
       ...context.value,
       id: context.value.id || useId().value,
       getRootNode: env?.value.getRootNode,
-      onValueChange(details) {
+      onValueChange: (details) => {
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      onValueComplete(details) {
-        emit('valueComplete', details)
-      },
-      onValueInvalid(details) {
-        emit('valueInvalid', details)
-      },
+      onValueComplete: (details) => emit('valueComplete', details),
+      onValueInvalid: (details) => emit('valueInvalid', details),
     }),
     { context },
   )

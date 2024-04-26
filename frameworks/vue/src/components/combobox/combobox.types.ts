@@ -14,7 +14,6 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * Whether to close the combobox when an item is selected.
    */
   closeOnSelect?: boolean
-
   /**
    * Whether the combobox is disabled
    */
@@ -27,7 +26,6 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * The associate form of the combobox.
    */
   form?: string
-
   /**
    * Function to get the display value of the selected item
    */
@@ -198,4 +196,8 @@ export type RootEmits<T extends CollectionItem = CollectionItem> = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string[]]
+  /**
+   * Event handler called when the open state of the combobox changes.
+   */
+  'update:open': [open: boolean]
 }
