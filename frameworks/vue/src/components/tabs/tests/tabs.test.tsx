@@ -65,7 +65,7 @@ describe('Tabs', () => {
   })
 
   it('should not loop focus if loop is false', async () => {
-    render(ComponentUnderTest, { props: { loop: false } })
+    render(ComponentUnderTest, { props: { loopFocus: false } })
 
     const lastTab = screen.getByText('Vue Trigger')
 
@@ -73,7 +73,7 @@ describe('Tabs', () => {
     await waitFor(() => expect(lastTab).toHaveFocus())
 
     await user.keyboard('[ArrowRight]')
-    expect(lastTab).toHaveFocus()
+    await waitFor(() => expect(lastTab).toHaveFocus())
   })
 
   it('should handle orientation', async () => {
