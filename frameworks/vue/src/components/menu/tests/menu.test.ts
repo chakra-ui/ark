@@ -17,7 +17,7 @@ describe('Menu', () => {
 })
 
 it('should set correct aria attributes on disabled MenuItems', () => {
-  render(<ComponentUnderTest />)
+  render(ComponentUnderTest)
 
   expect(screen.getByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
 })
