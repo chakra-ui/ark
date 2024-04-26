@@ -19,21 +19,10 @@
       "isRequired": false,
       "description": "The initial value of the toggle group."
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the toggle is disabled."
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

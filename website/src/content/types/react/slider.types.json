@@ -56,12 +56,6 @@
       "isRequired": false,
       "description": "The initial value of the slider slider."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -76,11 +70,6 @@
       "type": "(details: ValueTextDetails) => string",
       "isRequired": false,
       "description": "Function that returns a human readable value for the slider thumb"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

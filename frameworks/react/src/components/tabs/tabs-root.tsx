@@ -20,8 +20,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
   const [useTabsProps, localprops] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
     'defaultValue',
-    'dir',
-    'getRootNode',
+
     'id',
     'ids',
     'loopFocus',

@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseRatingGroupProps extends Optional<rating.Context, 'id'> {
+export interface UseRatingGroupProps
+  extends Optional<Omit<rating.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the rating group.
    */

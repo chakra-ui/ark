@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseNumberInputProps extends Optional<numberInput.Context, 'id'> {
+export interface UseNumberInputProps
+  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the number input.
    */

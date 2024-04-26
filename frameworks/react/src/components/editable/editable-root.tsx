@@ -13,11 +13,11 @@ export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props
     'activationMode',
     'autoResize',
     'defaultValue',
-    'dir',
+
     'disabled',
     'finalFocusEl',
     'form',
-    'getRootNode',
+
     'id',
     'ids',
     'invalid',

@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {
+export interface UseToggleGroupProps
+  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the toggle group.
    */

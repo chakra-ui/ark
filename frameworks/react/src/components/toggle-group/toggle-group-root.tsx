@@ -11,9 +11,9 @@ export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseTog
 export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>((props, ref) => {
   const [useToggleGroupProps, localProps] = createSplitProps<UseToggleGroupProps>()(props, [
     'defaultValue',
-    'dir',
+
     'disabled',
-    'getRootNode',
+
     'id',
     'ids',
     'loopFocus',

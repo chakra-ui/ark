@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
+export interface UseMenuProps
+  extends Optional<Omit<menu.Context, 'open.controlled' | 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseMenuReturn {
   machine: menu.Service
   api: menu.Api<PropTypes>

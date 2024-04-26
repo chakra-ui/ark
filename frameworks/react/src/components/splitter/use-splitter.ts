@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {
+export interface UseSplitterProps
+  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial size of the splitter.
    */

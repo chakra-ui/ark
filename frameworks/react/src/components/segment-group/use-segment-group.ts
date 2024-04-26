@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseSegmentGroupProps extends Optional<segmentGroup.Context, 'id'> {
+export interface UseSegmentGroupProps
+  extends Optional<Omit<segmentGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the segment group.
    */

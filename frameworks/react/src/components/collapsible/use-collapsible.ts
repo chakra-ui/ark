@@ -7,7 +7,7 @@ import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'>,
+  extends Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'>,
     RenderStrategyProps {
   /**
    * The initial open state of the collpasible.

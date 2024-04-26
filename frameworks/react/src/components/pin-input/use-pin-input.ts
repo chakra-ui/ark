@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
+export interface UsePinInputProps
+  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the pin input.
    */

@@ -29,21 +29,10 @@
       "isRequired": false,
       "description": "The initial open state of the collpasible."
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the collapsible is disabled"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",
@@ -107,21 +96,10 @@
       "isRequired": false,
       "description": "The initial value of the accordion."
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the accordion items are disabled"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

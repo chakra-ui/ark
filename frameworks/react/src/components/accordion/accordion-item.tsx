@@ -25,7 +25,6 @@ export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((pro
   return (
     <AccordionItemPropsProvider value={itemProps}>
       <AccordionItemProvider value={item}>
-        {/* @ts-expect-error TODO fix dir typing */}
         <Collapsible.Root
           ref={ref}
           open={item.expanded}

@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {
+export interface UseCarouselProps
+  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial selected index of the carousel.
    */

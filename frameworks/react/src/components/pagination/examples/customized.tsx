@@ -5,7 +5,6 @@ export const Customized = () => (
     count={5000}
     pageSize={20}
     siblingCount={3}
-    dir="ltr"
     translations={{
       nextTriggerLabel: 'Next',
       prevTriggerLabel: 'Prev',

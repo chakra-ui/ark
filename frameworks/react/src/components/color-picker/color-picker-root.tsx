@@ -23,10 +23,8 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
     [
       'closeOnSelect',
       'defaultValue',
-      'dir',
       'disabled',
       'format',
-      'getRootNode',
       'id',
       'ids',
       'initialFocusEl',

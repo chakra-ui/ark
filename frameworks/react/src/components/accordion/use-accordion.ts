@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseAccordionProps extends Optional<accordion.Context, 'id'> {
+export interface UseAccordionProps
+  extends Optional<Omit<accordion.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the accordion.
    */

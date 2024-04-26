@@ -105,12 +105,6 @@
       "isRequired": false,
       "description": "The initial selected ids of the tree view."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "expandedValue": {
       "type": "string[]",
       "isRequired": false,
@@ -120,11 +114,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The id of the focused node"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

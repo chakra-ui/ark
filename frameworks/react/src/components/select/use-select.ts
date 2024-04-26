@@ -9,7 +9,10 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<select.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
+    Optional<
+      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
+      'id'
+    > {
   /**
    * The initial value of the select.
    */

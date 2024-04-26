@@ -9,7 +9,10 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<combobox.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
+    Optional<
+      Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>,
+      'id'
+    > {
   /**
    * the initial value of the combobox
    */

@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
+export interface UseAvatarProps
+  extends Optional<Omit<avatar.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAvatarReturn extends avatar.Api<PropTypes> {}
 
 export const useAvatar = (props: UseAvatarProps = {}): UseAvatarReturn => {

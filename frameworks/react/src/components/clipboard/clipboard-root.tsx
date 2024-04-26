@@ -10,7 +10,6 @@ export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, UseClipb
 
 export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((props, ref) => {
   const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [
-    'getRootNode',
     'id',
     'ids',
     'onStatusChange',

@@ -20,9 +20,9 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
   const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
     'collapsible',
     'defaultValue',
-    'dir',
+
     'disabled',
-    'getRootNode',
+
     'id',
     'ids',
     'multiple',

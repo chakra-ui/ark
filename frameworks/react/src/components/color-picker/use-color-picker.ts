@@ -6,7 +6,10 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
 export interface UseColorPickerProps
-  extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
+  extends Optional<
+    Omit<colorPicker.Context, 'value' | 'open.controlled' | 'dir' | 'getRootNode'>,
+    'id'
+  > {
   /**
    * The initial value of the color picker.
    */

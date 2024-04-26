@@ -24,10 +24,8 @@ const SelectImpl = <T extends CollectionItem>(
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
     'closeOnSelect',
     'defaultValue',
-    'dir',
     'disabled',
     'form',
-    'getRootNode',
     'highlightedValue',
     'id',
     'ids',

@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Removed
+
+- BREAKING: Removed `dir` and `getRootNode` from all components. Use `LocaleProvider` instead.
+
 ### Changed
 
 - Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.

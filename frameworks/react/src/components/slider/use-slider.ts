@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseSliderProps extends Optional<Slider.Context, 'id'> {
+export interface UseSliderProps
+  extends Optional<Omit<Slider.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the slider slider.
    */

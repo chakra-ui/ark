@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
+export interface UseTreeViewProps
+  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial selected ids of the tree view.
    */

@@ -14,12 +14,12 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'allowOverflow',
     'clampValueOnBlur',
     'defaultValue',
-    'dir',
+
     'disabled',
     'focusInputOnChange',
     'form',
     'formatOptions',
-    'getRootNode',
+
     'id',
     'ids',
     'inputMode',

@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
+export interface UseSwitchProps
+  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial checked state of the switch.
    */

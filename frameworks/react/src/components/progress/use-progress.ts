@@ -4,7 +4,8 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 
-export interface UseProgressProps extends Optional<progress.Context, 'id'> {
+export interface UseProgressProps
+  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the progress.
    */

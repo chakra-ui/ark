@@ -36,12 +36,6 @@
       "isRequired": false,
       "description": "The initial checked state of the checkbox."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -51,11 +45,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The id of the form that the checkbox belongs to."
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

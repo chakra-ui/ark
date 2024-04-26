@@ -62,12 +62,6 @@
       "isRequired": false,
       "description": "The initial value of the number input."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -88,11 +82,6 @@
       "type": "NumberFormatOptions",
       "isRequired": false,
       "description": "The options to pass to the `Intl.NumberFormat` constructor"
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

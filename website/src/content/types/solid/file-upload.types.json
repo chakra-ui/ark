@@ -90,12 +90,6 @@
       "isRequired": false,
       "description": "The default camera to use when capturing media"
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "directory": {
       "type": "boolean",
       "isRequired": false,
@@ -105,11 +99,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the file input is disabled"
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

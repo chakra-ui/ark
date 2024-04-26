@@ -113,12 +113,6 @@
       "isRequired": false,
       "description": "the initial value of the combobox"
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -133,11 +127,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The associate form of the combobox."
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "getSelectionValue": {
       "type": "(details: SelectionValueDetails<T>) => string",

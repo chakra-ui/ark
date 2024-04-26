@@ -119,11 +119,6 @@
       "isRequired": false,
       "description": "The initial value of the color picker."
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "isRequired": false,
-      "description": "The direction of the color picker"
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -133,11 +128,6 @@
       "type": "ColorFormat",
       "isRequired": false,
       "description": "The color format to use"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

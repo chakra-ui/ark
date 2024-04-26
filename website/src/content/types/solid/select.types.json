@@ -98,12 +98,6 @@
       "isRequired": false,
       "description": "The initial value of the select."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -113,11 +107,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The associate form of the underlying select."
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "highlightedValue": {
       "type": "string",

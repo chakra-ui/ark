@@ -5,7 +5,7 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
+export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the tabs.
    */

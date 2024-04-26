@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {
+export interface UsePaginationProps
+  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial page of the pagination.
    */

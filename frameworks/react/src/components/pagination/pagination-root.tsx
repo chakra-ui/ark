@@ -12,8 +12,7 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
   const [paginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
     'defaultPage',
-    'dir',
-    'getRootNode',
+
     'id',
     'ids',
     'onPageChange',

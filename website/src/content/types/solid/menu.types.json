@@ -183,17 +183,6 @@
       "isRequired": false,
       "description": "Whether to close the menu when an option is selected"
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-    },
     "highlightedValue": {
       "type": "string",
       "isRequired": false,

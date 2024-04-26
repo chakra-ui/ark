@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseRadioGroupProps extends Optional<radio.Context, 'id'> {
+export interface UseRadioGroupProps
+  extends Optional<Omit<radio.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the radio group.
    */

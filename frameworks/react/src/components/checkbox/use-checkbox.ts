@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
+export interface UseCheckboxProps
+  extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial checked state of the checkbox.
    */

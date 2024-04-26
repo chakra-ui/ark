@@ -101,7 +101,7 @@ describe('Menu', () => {
   })
 
   it('should accept a custom placement', async () => {
-    render(<ComponentUnderTest dir="rtl" positioning={{ placement: 'left-start' }} />)
+    render(<ComponentUnderTest positioning={{ placement: 'left-start' }} />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
     await user.click(button)

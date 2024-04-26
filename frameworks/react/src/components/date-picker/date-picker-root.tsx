@@ -21,12 +21,10 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
   const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
     'closeOnSelect',
     'defaultValue',
-    'dir',
     'disabled',
     'fixedWeeks',
     'focusedValue',
     'format',
-    'getRootNode',
     'id',
     'ids',
     'isDateUnavailable',

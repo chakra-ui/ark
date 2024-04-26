@@ -6,7 +6,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseEditableProps extends Optional<editable.Context, 'id'> {
+export interface UseEditableProps
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the editable.
    */

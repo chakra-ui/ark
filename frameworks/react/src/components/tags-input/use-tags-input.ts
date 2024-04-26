@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {
+export interface UseTagsInputProps
+  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the tags input.
    */
