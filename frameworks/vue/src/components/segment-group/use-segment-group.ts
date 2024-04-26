@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './segment-group.types'
 
-export interface UseSegmentGroupProps extends Optional<segmentGroup.Context, 'id'> {
+export interface UseSegmentGroupProps
+  extends Optional<Omit<segmentGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: segmentGroup.Context['value']
 }
 

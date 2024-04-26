@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './avatar.types'
 
-export interface UseAvatarProps extends Optional<avatar.Context, 'id'> {}
+export interface UseAvatarProps
+  extends Optional<Omit<avatar.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps, emit: EmitFn<RootEmits>): UseAvatarReturn => {

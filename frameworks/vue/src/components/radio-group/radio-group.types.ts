@@ -2,11 +2,6 @@ import type * as radioGroup from '@zag-js/radio-group'
 
 export interface RootProps {
   /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
-  /**
    * If `true`, the radio group will be disabled
    */
   disabled?: boolean
@@ -14,10 +9,7 @@ export interface RootProps {
    * The associate form of the underlying input.
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

@@ -13,15 +13,7 @@ export interface RootProps {
    * Whether to close the menu when an option is selected
    */
   closeOnSelect?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The value of the highlighted menu item.
    */

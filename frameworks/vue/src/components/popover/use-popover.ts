@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './popover.types'
 
-export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {
+export interface UsePopoverProps
+  extends Optional<Omit<popover.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the popover.
    */

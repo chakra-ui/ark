@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './tags-input.types'
 
-export interface UseTagsInputProps extends Optional<tagsInput.Context, 'id'> {
+export interface UseTagsInputProps
+  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: tagsInput.Context['value']
 }
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}

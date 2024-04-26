@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './menu'
 
-export interface UseMenuProps extends Omit<Optional<menu.Context, 'id'>, 'open.controlled'> {}
+export interface UseMenuProps
+  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>

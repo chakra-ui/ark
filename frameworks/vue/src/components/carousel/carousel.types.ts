@@ -5,15 +5,7 @@ export interface RootProps {
    * The alignment of the slides in the carousel.
    */
   align?: 'start' | 'center' | 'end'
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './rating-group'
 
-export interface UseRatingGroupProps extends Optional<ratingGroup.Context, 'id'> {
+export interface UseRatingGroupProps
+  extends Optional<Omit<ratingGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: ratingGroup.Context['value']
 }
 

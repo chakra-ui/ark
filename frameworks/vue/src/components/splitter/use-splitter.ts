@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
-export interface UseSplitterProps extends Optional<splitter.Context, 'id'> {}
+export interface UseSplitterProps
+  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 

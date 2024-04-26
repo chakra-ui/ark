@@ -6,11 +6,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * Whether the select should close after an item is selected
    */
   closeOnSelect?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the select is disabled
    */
@@ -19,10 +15,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * The associate form of the underlying select.
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The key of the highlighted item
    */

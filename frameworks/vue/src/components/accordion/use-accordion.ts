@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './accordion.types'
 
-export interface UseAccordionProps extends Omit<Optional<accordion.Context, 'id'>, 'value'> {
+export interface UseAccordionProps
+  extends Optional<Omit<accordion.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The accordion items that are currently expanded.
    * Use this prop to control the state of the items via v-model.

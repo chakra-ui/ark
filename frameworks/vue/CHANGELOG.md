@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Removed
+
+- BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to set the direction and root node.
+
 ### Added
 
 - Integrate `Collapsible` component with `Accordion` component

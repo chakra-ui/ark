@@ -9,7 +9,10 @@ import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
-    Omit<Optional<select.Context<T>, 'id'>, 'collection' | 'open.controlled'> {
+    Optional<
+      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
+      'id'
+    > {
   modelValue?: select.Context<T>['value']
 }
 

@@ -9,7 +9,7 @@ import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
   extends RenderStrategyProps,
-    Optional<Omit<collapsible.Context, 'open.controlled'>, 'id'> {}
+    Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
 
 interface Collapsible extends collapsible.Api<PropTypes> {
   /**

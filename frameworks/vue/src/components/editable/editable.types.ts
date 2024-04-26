@@ -15,11 +15,7 @@ export interface RootProps {
    * Whether the editable should auto-resize to fit the content.
    */
   autoResize?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the editable is disabled
    */

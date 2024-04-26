@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './dialog'
 
-export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'open.controlled'> {
+export interface UseDialogProps
+  extends Optional<Omit<dialog.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the dialog.
    */

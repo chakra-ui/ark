@@ -2,10 +2,6 @@ import type * as clipboard from '@zag-js/clipboard'
 
 export interface RootProps {
   /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
-  /**
    * The unique identifier of the machine.
    */
   id?: string

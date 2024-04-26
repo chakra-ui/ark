@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './clipboard.types'
 
-export interface UseClipboardProps extends Optional<clipboard.Context, 'id'> {}
+export interface UseClipboardProps
+  extends Optional<Omit<clipboard.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}
 
 export const useClipboard = (

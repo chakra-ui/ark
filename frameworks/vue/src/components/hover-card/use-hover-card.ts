@@ -7,7 +7,7 @@ import { useId } from '../../utils'
 import type { RootEmits } from './hover-card.types'
 
 export interface UseHoverCardProps
-  extends Omit<Optional<hoverCard.Context, 'id'>, 'open.controlled'> {
+  extends Optional<Omit<hoverCard.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the hover card.
    */

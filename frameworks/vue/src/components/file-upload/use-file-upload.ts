@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './file-upload'
 
-export interface UseFileUploadProps extends Optional<fileUpload.Context, 'id'> {}
+export interface UseFileUploadProps
+  extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropTypes>> {}
 

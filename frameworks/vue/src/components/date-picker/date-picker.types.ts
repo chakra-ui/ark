@@ -7,11 +7,7 @@ export interface RootProps {
    * @default true
    */
   closeOnSelect?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the calendar is disabled.
    */
@@ -29,10 +25,7 @@ export interface RootProps {
    * The format of the date to display in the input.
    */
   format?: (date: datePicker.DateValue) => string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

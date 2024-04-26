@@ -5,7 +5,8 @@ import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
 
-export interface UseProgressProps extends Optional<progress.Context, 'id'> {}
+export interface UseProgressProps
+  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {

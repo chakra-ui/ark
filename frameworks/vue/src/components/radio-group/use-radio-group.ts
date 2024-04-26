@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './radio-group.types'
 
-export interface UseRadioGroupProps extends Optional<radioGroup.Context, 'id'> {
+export interface UseRadioGroupProps
+  extends Optional<Omit<radioGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: radioGroup.Context['value']
 }
 export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}

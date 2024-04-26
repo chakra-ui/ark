@@ -17,11 +17,7 @@ export interface RootProps {
    * The initial open state of the dialog.
    */
   defaultOpen?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Element to receive focus when the dialog is closed
    */

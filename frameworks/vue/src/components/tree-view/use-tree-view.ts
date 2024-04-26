@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './tree-view.types'
 
-export interface UseTreeViewProps extends Optional<treeView.Context, 'id'> {
+export interface UseTreeViewProps
+  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial focused index of the tree view.
    */

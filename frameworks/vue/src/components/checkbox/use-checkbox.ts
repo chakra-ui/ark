@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './checkbox'
 
-export interface UseCheckboxProps extends Optional<checkbox.Context, 'id'> {
+export interface UseCheckboxProps
+  extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial checked state of the checkbox.
    */

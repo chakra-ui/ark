@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './carousel.types'
 
-export interface UseCarouselProps extends Optional<carousel.Context, 'id'> {}
+export interface UseCarouselProps
+  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (

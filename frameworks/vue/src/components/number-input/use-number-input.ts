@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './number-input.types'
 
-export interface UseNumberInputProps extends Optional<numberInput.Context, 'id'> {
+export interface UseNumberInputProps
+  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: numberInput.Context['value']
 }
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}

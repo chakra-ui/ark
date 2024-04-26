@@ -21,19 +21,12 @@ export interface RootProps {
    * The initial open state of the tooltip.
    */
   defaultOpen?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the tooltip is disabled
    */
   disabled?: boolean
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The `id` of the tooltip.
    */

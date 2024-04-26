@@ -17,10 +17,7 @@ export interface RootProps {
    * The color format to use
    */
   format?: colorPicker.ColorFormat
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

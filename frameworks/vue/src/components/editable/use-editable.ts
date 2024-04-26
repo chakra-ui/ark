@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './editable'
 
-export interface UseEditableProps extends Optional<editable.Context, 'id'> {
+export interface UseEditableProps
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: editable.Context['value']
 }
 

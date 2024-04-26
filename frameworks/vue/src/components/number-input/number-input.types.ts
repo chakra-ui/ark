@@ -15,11 +15,7 @@ export interface RootProps {
    * @default true
    */
   clampValueOnBlur?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the number input is disabled.
    */
@@ -37,10 +33,7 @@ export interface RootProps {
    * The options to pass to the `Intl.NumberFormat` constructor
    */
   formatOptions?: Intl.NumberFormatOptions
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

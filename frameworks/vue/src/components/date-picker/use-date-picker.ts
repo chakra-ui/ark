@@ -10,7 +10,7 @@ export interface UseDatePickerProps
   extends Optional<
     Omit<
       datePicker.Context,
-      'value' | 'min' | 'max' | 'parse' | 'focusedValue' | 'open.controlled'
+      'dir' | 'getRootNode' | 'value' | 'min' | 'max' | 'parse' | 'focusedValue' | 'open.controlled'
     >,
     'id'
   > {

@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './pagination'
 
-export interface UsePaginationProps extends Optional<pagination.Context, 'id'> {}
+export interface UsePaginationProps
+  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (

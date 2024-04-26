@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './pin-input'
 
-export interface UsePinInputProps extends Optional<pinInput.Context, 'id'> {
+export interface UsePinInputProps
+  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: pinInput.Context['value']
 }
 

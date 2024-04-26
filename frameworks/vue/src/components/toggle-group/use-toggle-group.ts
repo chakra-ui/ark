@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './toggle-group'
 
-export interface UseToggleGroupProps extends Optional<toggleGroup.Context, 'id'> {
+export interface UseToggleGroupProps
+  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: toggleGroup.Context['value']
 }
 

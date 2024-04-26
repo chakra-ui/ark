@@ -9,11 +9,7 @@ export interface RootProps {
    * The initial checked state of the checkbox.
    */
   defaultChecked?: checkbox.CheckedState
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the checkbox is disabled
    */
@@ -22,10 +18,7 @@ export interface RootProps {
    * The id of the form that the checkbox belongs to.
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

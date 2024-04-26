@@ -9,11 +9,7 @@ export interface RootProps {
    * The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider
    */
   'aria-labelledby'?: string[]
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the slider is disabled
    */
@@ -27,10 +23,7 @@ export interface RootProps {
    */
   // @ts-expect-error
   getAriaValueText?: (details: ValueTextDetails) => string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

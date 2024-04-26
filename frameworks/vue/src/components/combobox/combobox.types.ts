@@ -14,11 +14,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * Whether to close the combobox when an item is selected.
    */
   closeOnSelect?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the combobox is disabled
    */
@@ -31,10 +27,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * The associate form of the combobox.
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * Function to get the display value of the selected item
    */

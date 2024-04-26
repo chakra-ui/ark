@@ -13,11 +13,7 @@ export interface RootProps {
    * The total number of ratings.
    */
   count?: number
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the rating is disabled.
    */
@@ -26,10 +22,7 @@ export interface RootProps {
    * The associate form of the underlying input element.
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

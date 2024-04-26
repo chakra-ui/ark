@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
-export interface UseTabsProps extends Optional<tabs.Context, 'id'> {
+export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: tabs.Context['value']
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}

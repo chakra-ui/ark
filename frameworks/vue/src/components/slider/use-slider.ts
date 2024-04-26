@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './slider'
 
-export interface UseSliderProps extends Optional<slider.Context, 'id'> {
+export interface UseSliderProps
+  extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: slider.Context['value']
 }
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}

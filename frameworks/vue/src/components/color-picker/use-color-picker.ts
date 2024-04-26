@@ -7,7 +7,10 @@ import { useId } from '../../utils'
 import type { RootEmits } from './color-picker.types'
 
 export interface UseColorPickerProps
-  extends Omit<Optional<Omit<colorPicker.Context, 'value'>, 'id'>, 'open.controlled'> {
+  extends Optional<
+    Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
+    'id'
+  > {
   modelValue?: string
 }
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}

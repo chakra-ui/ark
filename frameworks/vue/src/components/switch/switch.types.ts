@@ -5,11 +5,7 @@ export interface RootProps {
    * Whether the switch is checked.
    */
   checked?: boolean
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether the switch is disabled.
    */
@@ -18,10 +14,7 @@ export interface RootProps {
    * The id of the form that the switch belongs to
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

@@ -13,11 +13,7 @@ export interface RootProps {
    * The default camera to use when capturing media
    */
   capture?: 'user' | 'environment'
-  /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
+
   /**
    * Whether to accept directories, only works in webkit browsers
    */
@@ -26,10 +22,7 @@ export interface RootProps {
    * Whether the file input is disabled
    */
   disabled?: boolean
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */

@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './switch'
 
-export interface UseSwitchProps extends Optional<zagSwitch.Context, 'id'> {
+export interface UseSwitchProps
+  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
   modelValue?: zagSwitch.Context['checked']
 }
 

@@ -2,18 +2,10 @@ import type * as collapsible from '@zag-js/collapsible'
 
 export interface RootProps {
   /**
-   * The document's text/writing direction.
-   * @default "ltr"
-   */
-  dir?: 'ltr' | 'rtl'
-  /**
    * Whether the collapsible is disabled
    */
   disabled?: boolean
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => ShadowRoot | Node | Document
+
   /**
    * The unique identifier of the machine.
    */
