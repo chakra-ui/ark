@@ -2,8 +2,9 @@ import * as segmentGroup from '@zag-js/radio-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
+import type { RootEmits } from './segment-group.types'
 
 export interface UseSegmentGroupProps extends Optional<segmentGroup.Context, 'id'> {
   modelValue?: segmentGroup.Context['value']
@@ -13,7 +14,7 @@ export interface UseSegmentGroupReturn extends ComputedRef<segmentGroup.Api<Prop
 
 export const useSegmentGroup = (
   props: UseSegmentGroupProps,
-  emit: CallableFunction,
+  emit: EmitFn<RootEmits>,
 ): UseSegmentGroupReturn => {
   const getRootNode = useEnvironmentContext()
   const context = computed(() => {
@@ -30,7 +31,7 @@ export const useSegmentGroup = (
       id: context.value.id ?? useId().value,
       getRootNode,
       onValueChange: (details) => {
-        emit('value-change', details)
+        emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
     }),

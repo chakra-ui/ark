@@ -1,33 +1,34 @@
 export type { ValueChangeDetails } from '@zag-js/radio-group'
 export {
-  SegmentGroupContext as Context,
+  default as Context,
   type SegmentGroupContextProps as ContextProps,
-} from './segment-group-context'
+} from './segment-group-context.vue'
 export {
-  SegmentGroupIndicator as Indicator,
+  default as Indicator,
   type SegmentGroupIndicatorProps as IndicatorProps,
-} from './segment-group-indicator'
+} from './segment-group-indicator.vue'
 export {
-  SegmentGroupItem as Item,
-  type SegmentGroupItemProps as ItemProps,
-} from './segment-group-item'
-export {
-  SegmentGroupItemContext as ItemContext,
+  default as ItemContext,
   type SegmentGroupItemContextProps as ItemContextProps,
-} from './segment-group-item-context'
+} from './segment-group-item-context.vue'
 export {
-  SegmentGroupItemControl as ItemControl,
+  default as ItemControl,
   type SegmentGroupItemControlProps as ItemControlProps,
-} from './segment-group-item-control'
+} from './segment-group-item-control.vue'
 export {
-  SegmentGroupItemText as ItemText,
+  default as ItemText,
   type SegmentGroupItemTextProps as ItemTextProps,
-} from './segment-group-item-text'
+} from './segment-group-item-text.vue'
 export {
-  SegmentGroupLabel as Label,
+  default as Item,
+  type SegmentGroupItemProps as ItemProps,
+} from './segment-group-item.vue'
+export {
+  default as Label,
   type SegmentGroupLabelProps as LabelProps,
-} from './segment-group-label'
+} from './segment-group-label.vue'
 export {
-  SegmentGroupRoot as Root,
+  default as Root,
+  type SegmentGroupRootEmits as RootEmits,
   type SegmentGroupRootProps as RootProps,
-} from './segment-group-root'
+} from './segment-group-root.vue'

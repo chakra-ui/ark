@@ -15,10 +15,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <Presence
-    v-bind="menu.positionerProps"
-    :present="menu.open"
-  >
+  <Presence v-bind="menu.positionerProps" :present="menu.open">
     <slot />
   </Presence>
 </template>
