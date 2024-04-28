@@ -6,7 +6,13 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
-export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseTabsProps
+  extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the tabs when it is first rendered.
+   * Use when you do not need to control the state of the tabs.
+   */
+  defaultValue?: tabs.Context['value']
   modelValue?: tabs.Context['value']
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
@@ -15,10 +21,10 @@ export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsRe
   const env = useEnvironmentContext()
 
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

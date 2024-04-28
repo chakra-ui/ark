@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseAccordionProps
   extends Optional<Omit<accordion.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the accordion.
+   * The initial value of the accordion when it is first rendered.
+   * Use when you do not need to control the state of the color picker.
    */
   defaultValue?: accordion.Context['value']
 }

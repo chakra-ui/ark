@@ -17,6 +17,12 @@ describe('Tabs', () => {
     expect(Tabs[part]).toBeDefined()
   })
 
+  it('should render the content of tab when active', async () => {
+    render(ComponentUnderTest, { props: { defaultValue: 'React' } })
+
+    expect(screen.getByText('React Content')).toBeVisible()
+  })
+
   it('should activate tab on click', async () => {
     const onValueChange = vi.fn()
     render(ComponentUnderTest, { props: { onValueChange } })

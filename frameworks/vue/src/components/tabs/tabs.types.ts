@@ -8,7 +8,11 @@ export interface RootProps {
    * @default "automatic"
    */
   activationMode?: 'manual' | 'automatic'
-
+  /**
+   * The initial value of the tabs when it is first rendered.
+   * Use when you do not need to control the state of the tabs.
+   */
+  defaultValue?: string
   /**
    * The unique identifier of the machine.
    */
@@ -35,10 +39,6 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: tabs.IntlTranslations
-  /**
-   * The selected tab id
-   */
-  value?: string
 }
 
 export type RootEmits = {
