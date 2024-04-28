@@ -11,8 +11,6 @@ const main = async () => {
     .filter((file) => !file.endsWith('.test.tsx'))
     .map((file) => {
       const content = readFileSync(file, 'utf-8')
-      // search for the first occurent of ark.div, ark.span etc
-      // and log the result
       const match = content.match(/<ark.([A-Za-z]*)/)
       return {
         name: parse(file).name,
@@ -36,14 +34,13 @@ function groupItems(items: Item[]): void {
       groupedItems.set(item.name, [])
     }
     if (item.node !== undefined) {
-      // only add node if it's not undefined
       groupedItems.get(item.name)?.push(item.node)
     }
   }
 
-  const result = Array.from(groupedItems).filter(([_, nodes]) => {
-    return nodes.length > 1 && new Set(nodes).size > 1
-  })
+  const result = Array.from(groupedItems).filter(
+    ([_, nodes]) => nodes.length > 1 && new Set(nodes).size > 1,
+  )
 
   if (result.length > 0) {
     console.log('The following components have mixed nodes:')

@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "check:exports": "bun run src/check-exports.ts",
     "check:nodes": "bun run src/check-nodes.ts",
     "exports:check": "bun run src/exports-check.ts",
     "exports:files": "bun run src/exports-files.ts",

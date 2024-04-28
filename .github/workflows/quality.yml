@@ -94,5 +94,8 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Run check:nodes
+      - name: Check component exports
+        run: bun scripts check:exports
+
+      - name: Check for same HTML tags
         run: bun scripts check:nodes

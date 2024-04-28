@@ -17,7 +17,12 @@ const main = async () => {
     })),
   )
 
-  console.log(removeCommonExports(frameworkExports))
+  const results = removeCommonExports(frameworkExports)
+  if (results.length > 0) {
+    console.log('Some components have different exports:')
+    console.log(results)
+    process.exit(1)
+  }
 }
 
 main().catch((err) => {
@@ -39,7 +44,8 @@ const getExportsFromSourceFile = (path: string): string[] => {
     .flatMap((node) =>
       node
         .getNamedExports()
-        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
+        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName())
+        .filter((exp) => !exp.endsWith('Emits')),
     )
 }
 
