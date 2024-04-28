@@ -13,7 +13,7 @@ const dialog = useDialogContext()
 </script>
 
 <template>
-  <ark.p v-bind="dialog.descriptionProps" :as-child="asChild">
+  <ark.div v-bind="dialog.descriptionProps" :as-child="asChild">
     <slot />
-  </ark.p>
+  </ark.div>
 </template>

@@ -13,8 +13,8 @@ const slider = useSliderContext()
 </script>
 
 <template>
-  <ark.div v-bind="slider.valueTextProps" :as-child="asChild">
+  <ark.span v-bind="slider.valueTextProps" :as-child="asChild">
     <!-- TODO   {slots.default?.() || api.value.value.join(', ')} -->
     <slot />
-  </ark.div>
+  </ark.span>
 </template>

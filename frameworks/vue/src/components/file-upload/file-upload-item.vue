@@ -14,7 +14,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.getItemProps(props)" :as-child="asChild">
+  <ark.li v-bind="fileUpload.getItemProps(props)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.li>
 </template>

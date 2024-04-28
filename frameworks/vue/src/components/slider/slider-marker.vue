@@ -14,7 +14,7 @@ const slider = useSliderContext()
 </script>
 
 <template>
-  <ark.div v-bind="slider.getMarkerProps(props)" :as-child="asChild">
+  <ark.span v-bind="slider.getMarkerProps(props)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.span>
 </template>

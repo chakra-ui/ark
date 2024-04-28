@@ -20,8 +20,8 @@ const controlProps = computed(() => ({
 </script>
 
 <template>
-  <ark.div v-bind="controlProps" :as-child="asChild">
+  <ark.span v-bind="controlProps" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.span>
   <input v-bind="context.hiddenInputProps" />
 </template>

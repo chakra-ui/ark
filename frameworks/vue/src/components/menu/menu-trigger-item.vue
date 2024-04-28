@@ -6,14 +6,14 @@ export interface MenuTriggerItemProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+import { ark } from '../factory';
 
 defineProps<MenuTriggerItemProps>()
 const triggerItemProps = useMenuTriggerItemContext()
 </script>
 
 <template>
-  <ark.button v-bind="triggerItemProps" :as-child="asChild">
+  <ark.div v-bind="triggerItemProps" :as-child="asChild">
     <slot />
-  </ark.button>
+  </ark.div>
 </template>

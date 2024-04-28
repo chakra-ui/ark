@@ -15,7 +15,7 @@ const branchProps = useTreeViewBranchContext()
 </script>
 
 <template>
-  <ark.button v-bind="treeView.getBranchTriggerProps(branchProps)" :as-child="asChild">
+  <ark.div v-bind="treeView.getBranchTriggerProps(branchProps)" :as-child="asChild">
     <slot />
-  </ark.button>
+  </ark.div>
 </template>

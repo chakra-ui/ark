@@ -23,7 +23,7 @@ TreeViewDepthProvider(depth + 1)
 </script>
 
 <template>
-  <ark.div v-bind="treeView.getBranchProps(branchProps)" :as-child="asChild">
+  <ark.li v-bind="treeView.getBranchProps(branchProps)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.li>
 </template>

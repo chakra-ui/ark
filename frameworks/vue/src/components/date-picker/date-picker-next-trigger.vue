@@ -15,7 +15,7 @@ const viewProps = useDatePickerViewPropsContext()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.getNextTriggerProps(viewProps)" :as-child="asChild">
+  <ark.button v-bind="datePicker.getNextTriggerProps(viewProps)" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.button>
 </template>

@@ -15,7 +15,7 @@ const tableProps = useDatePickerTablePropsContext()
 </script>
 
 <template>
-  <ark.head v-bind="datePicker.getTableHeadProps(tableProps)" :as-child="asChild">
+  <ark.thead v-bind="datePicker.getTableHeadProps(tableProps)" :as-child="asChild">
     <slot />
-  </ark.head>
+  </ark.thead>
 </template>

@@ -13,7 +13,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.div v-bind="editable.editTriggerProps" :as-child="asChild">
+  <ark.button v-bind="editable.editTriggerProps" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.button>
 </template>

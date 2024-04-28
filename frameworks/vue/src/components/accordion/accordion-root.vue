@@ -9,6 +9,7 @@ export interface AccordionRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { ark } from '../factory'
 import { RenderStrategyPropsProvider } from '../../utils'
 import { useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
@@ -24,7 +25,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <div v-bind="accordion.rootProps" :as-child="asChild">
+  <ark.div v-bind="accordion.rootProps" :as-child="asChild">
     <slot></slot>
-  </div>
+  </ark.div>
 </template>
