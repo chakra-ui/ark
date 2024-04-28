@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/file-upload'
 import type { PolymorphicProps } from '../factory'
+import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemProps extends PolymorphicProps, ItemProps {}
 </script>
@@ -11,6 +12,7 @@ import { useFileUploadContext } from './use-file-upload-context'
 
 const props = defineProps<FileUploadItemProps>()
 const fileUpload = useFileUploadContext()
+FileUploadItemPropsProvider(props)
 </script>
 
 <template>

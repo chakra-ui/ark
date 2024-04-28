@@ -4,9 +4,8 @@ import { FileUpload } from '../..'
 
 <template>
   <FileUpload.Root :maxFiles="5">
-    <FileUpload.Dropzone>
-      <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
-    </FileUpload.Dropzone>
+    <FileUpload.Label>File Upload</FileUpload.Label>
+    <FileUpload.Dropzone>Drop your files here</FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
     <FileUpload.ItemGroup>
       <FileUpload.Context v-slot="{ acceptedFiles }">

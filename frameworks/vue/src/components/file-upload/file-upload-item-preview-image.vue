@@ -5,7 +5,7 @@ export interface FileUploadItemPreviewImageProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
@@ -15,7 +15,7 @@ const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
 const url = ref<string>('')
 
-computed(() => fileUpload.value.createFileUrl(itemProps.file, (src) => (url.value = src)))
+fileUpload.value.createFileUrl(itemProps.file, (src) => (url.value = src))
 </script>
 
 <template>
