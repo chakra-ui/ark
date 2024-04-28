@@ -2,10 +2,14 @@ import type * as toggleGroup from '@zag-js/toggle-group'
 
 export interface RootProps {
   /**
+   * The initial value of the toggle group when it is first rendered.
+   * Use when you do not need to control the state of the toggle group.
+   */
+  defaultValue?: string[]
+  /**
    * Whether the toggle is disabled.
    */
   disabled?: boolean
-
   /**
    * The unique identifier of the machine.
    */
@@ -31,10 +35,6 @@ export interface RootProps {
    *  Whether to use roving tab index to manage focus.
    */
   rovingFocus?: boolean
-  /**
-   * The values of the toggles in the group.
-   */
-  value?: string[]
 }
 
 export type RootEmits = {

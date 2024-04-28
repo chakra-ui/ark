@@ -18,7 +18,7 @@ describe('ToggleGroup', () => {
   })
 
   it('should handle default value', () => {
-    render(ComponentUnderTest, { props: { modelValue: ['a'] } })
+    render(ComponentUnderTest, { props: { defaultValue: ['a'] } })
     expect(screen.getByText('A')).toBeChecked()
   })
 

@@ -7,7 +7,12 @@ import { useId } from '../../utils'
 import type { RootEmits } from './toggle-group'
 
 export interface UseToggleGroupProps
-  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the toggle group when it is first rendered.
+   * Use when you do not need to control the state of the toggle group.
+   */
+  defaultValue?: toggleGroup.Context['value']
   modelValue?: toggleGroup.Context['value']
 }
 
@@ -18,12 +23,11 @@ export const useToggleGroup = (
   emit: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
   const env = useEnvironmentContext()
-
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 
