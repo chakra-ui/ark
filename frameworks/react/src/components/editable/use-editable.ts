@@ -9,7 +9,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseEditableProps
   extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the editable.
+   * The initial value of the editable when it is first rendered.
+   * Use when you do not need to control the state of the editable.
    */
   defaultValue?: editable.Context['value']
 }

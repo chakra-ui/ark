@@ -7,7 +7,12 @@ import { useId } from '../../utils'
 import type { RootEmits } from './editable'
 
 export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the editable when it is first rendered.
+   * Use when you do not need to control the state of the editable.
+   */
+  defaultValue?: editable.Context['value']
   modelValue?: editable.Context['value']
 }
 
@@ -19,10 +24,10 @@ export const useEditable = (
 ): UseEditableReturn => {
   const env = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

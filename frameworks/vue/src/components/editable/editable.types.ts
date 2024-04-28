@@ -15,7 +15,11 @@ export interface RootProps {
    * Whether the editable should auto-resize to fit the content.
    */
   autoResize?: boolean
-
+  /**
+   * The initial value of the editable when it is first rendered.
+   * Use when you do not need to control the state of the editable.
+   */
+  defaultValue?: string
   /**
    * Whether the editable is disabled
    */
@@ -29,10 +33,6 @@ export interface RootProps {
    * The associate form of the underlying input.
    */
   form?: string
-  /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => Node | ShadowRoot | Document
   /**
    * The unique identifier of the machine.
    */
@@ -95,10 +95,6 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: editable.IntlTranslations
-  /**
-   * The value of the editable in both edit and preview mode
-   */
-  value?: string
 }
 
 export type RootEmits = {
