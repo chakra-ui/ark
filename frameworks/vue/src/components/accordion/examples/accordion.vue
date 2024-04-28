@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '../'
+import { useForwardPropsEmits } from '../../../utils'
 import { ChevronDownIcon } from './icons'
 
 export interface AccordionProps extends AccordionRootProps {
   items: string[]
 }
 
-defineProps<AccordionProps>()
+const props = defineProps<AccordionProps>()
 const emits = defineEmits<AccordionRootEmits>()
+
+const forwarded = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Accordion.Root>
+  <Accordion.Root v-bind="forwarded">
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemTrigger>
         What is {{ item }}?

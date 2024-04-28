@@ -37,9 +37,10 @@ export function useForwardProps<
     const preservedProps = {} as U
     const assignedProps = vm?.vnode.props ?? {}
 
-    for (const key in Object.keys(assignedProps)) {
+    // biome-ignore lint/complexity/noForEach: <explanation>
+    Object.keys(assignedProps).forEach((key) => {
       preservedProps[camelize(key) as keyof U] = assignedProps[key]
-    }
+    })
 
     // @ts-expect-error
     return Object.keys({ ...defaultProps, ...preservedProps }).reduce((prev, curr) => {

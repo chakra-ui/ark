@@ -32,7 +32,7 @@ import Vertical from './examples/vertical.vue'
       <Disabled />
     </Variant>
     <Variant title="Closed">
-      <Accordion :items="['React', 'Solid', 'Vue']" />
+      <Accordion multiple :items="['React', 'Solid', 'Vue']" />
     </Variant>
   </Story>
 </template>
