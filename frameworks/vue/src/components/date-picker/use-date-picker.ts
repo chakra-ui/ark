@@ -35,6 +35,11 @@ export interface UseDatePickerProps
    * Use when you do not need to control its open state.
    */
   defaultOpen?: datePicker.Context['open']
+  /**
+   * The initial value of the date picker when it is first rendered.
+   * Use when you do not need to control the state of the date picker.
+   */
+  defaultValue?: string[]
 }
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
@@ -45,11 +50,15 @@ export const useDatePicker = (
 ): UseDatePickerReturn => {
   const env = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, focusedValue, min, max, ...rest } = props
+    const { modelValue, defaultValue, focusedValue, min, max, ...rest } = props
     return {
       ...rest,
       focusedValue: focusedValue ? datePicker.parse(focusedValue) : undefined,
-      value: modelValue ? datePicker.parse(modelValue) : undefined,
+      value: modelValue
+        ? datePicker.parse(modelValue)
+        : defaultValue
+          ? datePicker.parse(defaultValue)
+          : undefined,
       max: max ? datePicker.parse(max) : undefined,
       min: min ? datePicker.parse(min) : undefined,
       open: props.open ?? props.defaultOpen,

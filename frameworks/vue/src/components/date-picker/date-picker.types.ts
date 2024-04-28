@@ -13,6 +13,11 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
+   * The initial value of the date picker when it is first rendered.
+   * Use when you do not need to control the state of the date picker.
+   */
+  defaultValue?: string[]
+  /**
    * Whether the calendar is disabled.
    */
   disabled?: boolean

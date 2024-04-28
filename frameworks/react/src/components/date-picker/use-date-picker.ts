@@ -19,7 +19,8 @@ export interface UseDatePickerProps
    */
   defaultOpen?: datePicker.Context['open']
   /**
-   * The initial value of the date picker
+   * The initial value of the date picker when it is first rendered.
+   * Use when you do not need to control the state of the date picker.
    */
   defaultValue?: string[]
   /**
