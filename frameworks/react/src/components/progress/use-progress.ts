@@ -5,12 +5,7 @@ import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 
 export interface UseProgressProps
-  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial value of the progress.
-   */
-  defaultValue?: progress.Context['value']
-}
+  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseProgressReturn extends progress.Api<PropTypes> {}
 
@@ -19,7 +14,6 @@ export const useProgress = (props: UseProgressProps): UseProgressReturn => {
     id: useId(),
     getRootNode: useEnvironmentContext(),
     ...props,
-    value: props.defaultValue,
   }
 
   const context: progress.Context = {

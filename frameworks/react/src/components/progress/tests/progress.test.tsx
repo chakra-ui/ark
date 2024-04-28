@@ -25,14 +25,14 @@ describe('Progress', () => {
     cleanup()
   })
 
-  it('should handle default value', async () => {
-    render(<ComponentUnderTest defaultValue={7} />)
+  it('should render', async () => {
+    render(<ComponentUnderTest value={7} />)
 
     screen.getByText('7 percent')
   })
 
   it('should handle custom max range', async () => {
-    render(<ComponentUnderTest defaultValue={30} max={30} />)
+    render(<ComponentUnderTest value={30} max={30} />)
 
     screen.getByText('100 percent')
   })
