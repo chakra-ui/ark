@@ -12,6 +12,11 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    */
   defaultOpen?: boolean
   /**
+   * The initial value of the select when it is first rendered.
+   * Use when you do not need to control the state of the select.
+   */
+  defaultValue?: string[]
+  /**
    * Whether the select is disabled
    */
   disabled?: boolean
@@ -92,10 +97,6 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * Function to scroll to a specific index
    */
   scrollToIndexFn?: (details: select.ScrollToIndexDetails) => void
-  /**
-   * The keys of the selected items
-   */
-  value?: string[]
 }
 
 export type RootEmits<T extends CollectionItem = CollectionItem> = {

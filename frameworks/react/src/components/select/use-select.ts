@@ -19,7 +19,8 @@ export interface UseSelectProps<T extends CollectionItem>
    */
   defaultOpen?: select.Context['open']
   /**
-   * The initial value of the select.
+   * The initial value of the select when it is first rendered.
+   * Use when you do not need to control the state of the select.
    */
   defaultValue?: select.Context<T>['value']
 }

@@ -10,15 +10,20 @@ import type { RootEmits } from './select'
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Optional<
-      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
+      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
       'id'
     > {
+  modelValue?: select.Context<T>['value']
   /**
    * The initial open state of the select when it is first rendered.
    * Use when you do not need to control its open state.
    */
   defaultOpen?: select.Context<T>['open']
-  modelValue?: select.Context<T>['value']
+  /**
+   * The initial value of the select when it is first rendered.
+   * Use when you do not need to control the state of the select.
+   */
+  defaultValue?: select.Context<T>['value']
 }
 
 export interface UseSelectReturn<T extends CollectionItem>
@@ -29,11 +34,12 @@ export const useSelect = <T extends CollectionItem>(
   emit: EmitFn<RootEmits>,
 ): UseSelectReturn<T> => {
   const context = computed(() => {
-    const { items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } = props
+    const { items, defaultValue, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } =
+      props
     return {
       ...rest,
       collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
-      value: modelValue,
+      value: modelValue ?? defaultValue,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
     }
