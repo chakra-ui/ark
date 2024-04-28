@@ -19,7 +19,8 @@ export interface UseComboboxProps<T extends CollectionItem>
    */
   defaultOpen?: combobox.Context['open']
   /**
-   * the initial value of the combobox
+   * The initial value of the combobox when it is first rendered.
+   * Use when you do not need to control the state of the combobox.
    */
   defaultValue?: combobox.Context<T>['value']
 }

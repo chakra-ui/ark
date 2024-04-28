@@ -10,7 +10,7 @@ import type { RootEmits } from './combobox'
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
     Optional<
-      Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>,
+      Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled' | 'value'>,
       'id'
     > {
   modelValue?: combobox.Context<T>['value']
@@ -19,6 +19,11 @@ export interface UseComboboxProps<T extends CollectionItem>
    * Use when you do not need to control its open state.
    */
   defaultOpen?: combobox.Context['open']
+  /**
+   * The initial value of the combobox when it is first rendered.
+   * Use when you do not need to control the state of the combobox.
+   */
+  defaultValue?: combobox.Context['value']
 }
 
 export interface UseComboboxReturn<T extends CollectionItem>
@@ -31,11 +36,12 @@ export const useCombobox = <T extends CollectionItem>(
   const env = useEnvironmentContext()
 
   const context = computed(() => {
-    const { items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } = props
+    const { defaultValue, items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } =
+      props
     return {
       ...rest,
       collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

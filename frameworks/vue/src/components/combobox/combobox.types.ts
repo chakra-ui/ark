@@ -20,6 +20,11 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    */
   defaultOpen?: boolean
   /**
+   * The initial value of the combobox when it is first rendered.
+   * Use when you do not need to control the state of the combobox.
+   */
+  defaultValue?: string[]
+  /**
    * Whether the combobox is disabled
    */
   disabled?: boolean
@@ -155,10 +160,6 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    */
   // @ts-expect-error
   translations?: IntlTranslations
-  /**
-   * The keys of the selected items
-   */
-  value?: string[]
 }
 
 export type RootEmits<T extends CollectionItem = CollectionItem> = {
