@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseRatingGroupProps
   extends Optional<Omit<rating.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the rating group.
+   * The initial value of the rating group when it is first rendered.
+   * Use when you do not need to control the state of the rating group.
    */
   defaultValue?: rating.Context['value']
 }

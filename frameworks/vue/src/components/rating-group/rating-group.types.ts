@@ -13,7 +13,11 @@ export interface RootProps {
    * The total number of ratings.
    */
   count?: number
-
+  /**
+   * The initial value of the rating group when it is first rendered.
+   * Use when you do not need to control the state of the rating group.
+   */
+  defaultValue?: number
   /**
    * Whether the rating is disabled.
    */
@@ -22,7 +26,6 @@ export interface RootProps {
    * The associate form of the underlying input element.
    */
   form?: string
-
   /**
    * The unique identifier of the machine.
    */
@@ -50,10 +53,6 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: ratingGroup.IntlTranslations
-  /**
-   * The current rating value.
-   */
-  value?: number
 }
 
 export type RootEmits = {
