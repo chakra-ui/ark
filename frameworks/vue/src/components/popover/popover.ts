@@ -29,7 +29,11 @@ export {
   default as Positioner,
   type PopoverPositionerProps as PositionerProps,
 } from './popover-positioner.vue'
-export { default as Root, type PopoverRootProps as RootProps } from './popover-root.vue'
+export {
+  default as Root,
+  type PopoverRootProps as RootProps,
+  type PopoverRootEmits as RootEmits,
+} from './popover-root.vue'
 export { default as Title, type PopoverTitleProps as TitleProps } from './popover-title.vue'
 export {
   default as Trigger,

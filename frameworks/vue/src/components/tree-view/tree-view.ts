@@ -45,5 +45,9 @@ export {
   type TreeViewItemTextProps as ItemTextProps,
 } from './tree-view-item-text.vue'
 export { default as Label, type TreeViewLabelProps as LabelProps } from './tree-view-label.vue'
-export { default as Root, type TreeViewRootProps as RootProps } from './tree-view-root.vue'
+export {
+  default as Root,
+  type TreeViewRootProps as RootProps,
+  type TreeViewRootEmits as RootEmits,
+} from './tree-view-root.vue'
 export { default as Tree, type TreeViewTreeProps as TreeProps } from './tree-view-tree.vue'

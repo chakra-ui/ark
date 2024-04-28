@@ -14,7 +14,11 @@ export {
 } from './popover-description.vue'
 export { default as PopoverIndicator, type PopoverIndicatorProps } from './popover-indicator.vue'
 export { default as PopoverPositioner, type PopoverPositionerProps } from './popover-positioner.vue'
-export { default as PopoverRoot, type PopoverRootProps } from './popover-root.vue'
+export {
+  default as PopoverRoot,
+  type PopoverRootProps,
+  type PopoverRootEmits,
+} from './popover-root.vue'
 export { default as PopoverTitle, type PopoverTitleProps } from './popover-title.vue'
 export { default as PopoverTrigger, type PopoverTriggerProps } from './popover-trigger.vue'
 export { type UsePopoverContext, usePopoverContext } from './use-popover-context'

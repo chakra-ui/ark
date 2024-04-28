@@ -19,6 +19,7 @@ export {
 export {
   default as Root,
   type HoverCardRootEmits,
+  type HoverCardRootEmits as RootEmits,
   type HoverCardRootProps as RootProps,
 } from './hover-card-root.vue'
 export {

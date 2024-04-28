@@ -6,7 +6,7 @@ export interface MenuTriggerItemProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
+import { ark } from '../factory'
 
 defineProps<MenuTriggerItemProps>()
 const triggerItemProps = useMenuTriggerItemContext()

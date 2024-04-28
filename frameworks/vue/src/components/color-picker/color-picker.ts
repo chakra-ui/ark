@@ -67,6 +67,7 @@ export {
 export {
   default as Root,
   type ColorPickerRootProps as RootProps,
+  type ColorPickerRootEmits as RootEmits,
 } from './color-picker-root.vue'
 export {
   default as Swatch,

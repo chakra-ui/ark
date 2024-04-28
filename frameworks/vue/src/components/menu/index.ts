@@ -31,7 +31,7 @@ export {
   default as MenuRadioItemGroup,
   type MenuRadioItemGroupProps,
 } from './menu-radio-item-group.vue'
-export { default as MenuRoot, type MenuRootProps } from './menu-root.vue'
+export { default as MenuRoot, type MenuRootProps, type MenuRootEmits } from './menu-root.vue'
 export { default as MenuSeparator, type MenuSeparatorProps } from './menu-separator.vue'
 export { default as MenuTrigger, type MenuTriggerProps } from './menu-trigger.vue'
 export { default as MenuTriggerItem, type MenuTriggerItemProps } from './menu-trigger-item.vue'

@@ -21,7 +21,11 @@ export {
   type RadioGroupItemTextProps,
 } from './radio-group-item-text.vue'
 export { default as RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label.vue'
-export { default as RadioGroupRoot, type RadioGroupRootProps } from './radio-group-root.vue'
+export {
+  default as RadioGroupRoot,
+  type RadioGroupRootProps,
+  type RadioGroupRootEmits,
+} from './radio-group-root.vue'
 export { useRadioGroupContext, type UseRadioGroupContext } from './use-radio-group-context'
 export {
   useRadioGroupItemContext,

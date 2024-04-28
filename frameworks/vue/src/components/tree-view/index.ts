@@ -36,7 +36,11 @@ export {
 } from './tree-view-item-indicator.vue'
 export { default as TreeViewItemText, type TreeViewItemTextProps } from './tree-view-item-text.vue'
 export { default as TreeViewLabel, type TreeViewLabelProps } from './tree-view-label.vue'
-export { default as TreeViewRoot, type TreeViewRootProps } from './tree-view-root.vue'
+export {
+  default as TreeViewRoot,
+  type TreeViewRootProps,
+  type TreeViewRootEmits,
+} from './tree-view-root.vue'
 export { default as TreeViewTree, type TreeViewTreeProps } from './tree-view-tree.vue'
 export { type UseTreeViewContext, useTreeViewContext } from './use-tree-view-context'
 export { type UseTreeViewItemContext, useTreeViewItemContext } from './use-tree-view-item-context'

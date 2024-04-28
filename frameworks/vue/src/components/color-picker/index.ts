@@ -58,7 +58,11 @@ export {
   default as ColorPickerPositioner,
   type ColorPickerPositionerProps,
 } from './color-picker-positioner.vue'
-export { default as ColorPickerRoot, type ColorPickerRootProps } from './color-picker-root.vue'
+export {
+  default as ColorPickerRoot,
+  type ColorPickerRootProps,
+  type ColorPickerRootEmits,
+} from './color-picker-root.vue'
 export {
   default as ColorPickerSwatch,
   type ColorPickerSwatchProps,

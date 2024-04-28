@@ -5,8 +5,8 @@ export interface ClipboardInputProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useClipboardContext } from './use-clipboard-context';
+import { ark } from '../factory'
+import { useClipboardContext } from './use-clipboard-context'
 
 defineProps<ClipboardInputProps>()
 const clipboard = useClipboardContext()

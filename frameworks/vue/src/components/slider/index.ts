@@ -11,7 +11,11 @@ export {
   type SliderMarkerGroupProps,
 } from './slider-marker-group.vue'
 export { default as SliderRange, type SliderRangeProps } from './slider-range.vue'
-export { default as SliderRoot, type SliderRootProps } from './slider-root.vue'
+export {
+  default as SliderRoot,
+  type SliderRootProps,
+  type SliderRootEmits,
+} from './slider-root.vue'
 export { default as SliderThumb, type SliderThumbProps } from './slider-thumb.vue'
 export { default as SliderTrack, type SliderTrackProps } from './slider-track.vue'
 export { default as SliderValueText, type SliderValueTextProps } from './slider-value-text.vue'
