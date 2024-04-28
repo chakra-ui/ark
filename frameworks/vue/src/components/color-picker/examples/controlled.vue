@@ -9,8 +9,6 @@ const value = ref('hsl(20, 100%, 50%)')
   <ColorPicker.Root
     format="hsla"
     v-model="value"
-    @value-change="(details) => (value = details.valueAsString)"
-    @value-change-end="(details) => console.log(details.valueAsString)"
   >
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>

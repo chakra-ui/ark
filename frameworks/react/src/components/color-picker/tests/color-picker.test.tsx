@@ -49,4 +49,12 @@ describe('ColorPicker', () => {
     await user.click(screen.getByTestId('trigger'))
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
   }, 7000)
+
+  it('should render with default value', async () => {
+    render(<ComponentUnderTest defaultValue="#ff00ff" />)
+
+    expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
+      backgroundColor: 'rgb(255, 0, 255)',
+    })
+  })
 })

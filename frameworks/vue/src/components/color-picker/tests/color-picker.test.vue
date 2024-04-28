@@ -37,7 +37,7 @@ import {
       <ColorPickerTrigger data-testid="trigger">
         <ColorPickerTransparencyGrid />
         <ColorPickerContext v-slot="colorPicker">
-          <ColorPickerSwatch :value="colorPicker.value" />
+          <ColorPickerSwatch :value="colorPicker.value" data-testid="swatch-trigger" />
         </ColorPickerContext>
       </ColorPickerTrigger>
     </ColorPickerControl>

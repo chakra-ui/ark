@@ -16,7 +16,8 @@ export interface UseColorPickerProps
    */
   defaultOpen?: colorPicker.Context['open']
   /**
-   * The initial value of the color picker.
+   * The initial value of the color picker when it is first rendered.
+   * Use when you do not need to control the state of the color picker.
    */
   defaultValue?: string
   /**

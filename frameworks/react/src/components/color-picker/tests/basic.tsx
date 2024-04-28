@@ -12,7 +12,7 @@ export const ComponentUnderTest = (props: ColorPickerRootProps) => (
             <ColorPicker.ValueText />
             <ColorPicker.Trigger data-testid="trigger">
               <ColorPicker.TransparencyGrid />
-              <ColorPicker.Swatch value={colorPicker.value} />
+              <ColorPicker.Swatch value={colorPicker.value} data-testid="swatch-trigger" />
             </ColorPicker.Trigger>
           </ColorPicker.Control>
           <ColorPicker.Positioner data-testid="positioner">

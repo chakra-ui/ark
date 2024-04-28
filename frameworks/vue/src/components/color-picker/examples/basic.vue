@@ -3,7 +3,7 @@ import { ColorPicker } from '../..'
 </script>
 
 <template>
-  <ColorPicker.Root :modelValue="'#eb5e41'">
+  <ColorPicker.Root defaultValue="#ff00ff">
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />
