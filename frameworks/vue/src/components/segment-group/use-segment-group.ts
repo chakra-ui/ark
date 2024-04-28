@@ -7,7 +7,12 @@ import { useId } from '../../utils'
 import type { RootEmits } from './segment-group.types'
 
 export interface UseSegmentGroupProps
-  extends Optional<Omit<segmentGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<segmentGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the segment group when it is first rendered.
+   * Use when you do not need to control the state of the segment group.
+   */
+  defaultValue?: segmentGroup.Context['value']
   modelValue?: segmentGroup.Context['value']
 }
 
@@ -19,10 +24,10 @@ export const useSegmentGroup = (
 ): UseSegmentGroupReturn => {
   const env = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

@@ -2,6 +2,11 @@ import type * as segmentGroup from '@zag-js/radio-group'
 
 export interface RootProps {
   /**
+   * The initial value of the segment group when it is first rendered.
+   * Use when you do not need to control the state of the segment group.
+   */
+  defaultValue?: string
+  /**
    * If `true`, the radio group will be disabled
    */
   disabled?: boolean
@@ -9,7 +14,6 @@ export interface RootProps {
    * The associate form of the underlying input.
    */
   form?: string
-
   /**
    * The unique identifier of the machine.
    */
@@ -40,10 +44,6 @@ export interface RootProps {
    * Whether the checkbox is read-only
    */
   readOnly?: boolean
-  /**
-   * The value of the checked radio
-   */
-  value?: string
 }
 
 export type RootEmits = {

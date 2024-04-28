@@ -6,10 +6,7 @@ const value = ref('hsl(20, 100%, 50%)')
 </script>
 
 <template>
-  <ColorPicker.Root
-    format="hsla"
-    v-model="value"
-  >
+  <ColorPicker.Root format="hsla" v-model="value">
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />

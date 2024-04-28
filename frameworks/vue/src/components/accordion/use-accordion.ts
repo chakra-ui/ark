@@ -30,7 +30,7 @@ export const useAccordion = (
     const { modelValue, defaultValue, ...rest } = props
     return {
       ...rest,
-      value: defaultValue ?? modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 
