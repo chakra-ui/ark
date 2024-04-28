@@ -7,7 +7,12 @@ import { useId } from '../../utils'
 import type { RootEmits } from './radio-group.types'
 
 export interface UseRadioGroupProps
-  extends Optional<Omit<radioGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<radioGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the radio group when it is first rendered.
+   * Use when you do not need to control the state of the radio group.
+   */
+  defaultValue?: radioGroup.Context['value']
   modelValue?: radioGroup.Context['value']
 }
 export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}
@@ -18,10 +23,10 @@ export const useRadioGroup = (
 ): UseRadioGroupReturn => {
   const env = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 
