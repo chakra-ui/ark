@@ -7,8 +7,13 @@ import { useId } from '../../utils'
 import type { RootEmits } from './number-input.types'
 
 export interface UseNumberInputProps
-  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   modelValue?: numberInput.Context['value']
+  /**
+   * The initial value of the number input when it is first rendered.
+   * Use when you do not need to control the state of the number input.
+   */
+  defaultValue?: numberInput.Context['value']
 }
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
@@ -19,10 +24,10 @@ export const useNumberInput = (
   const env = useEnvironmentContext()
 
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

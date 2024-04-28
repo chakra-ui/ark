@@ -15,7 +15,11 @@ export interface RootProps {
    * @default true
    */
   clampValueOnBlur?: boolean
-
+  /**
+   * The initial value of the number input when it is first rendered.
+   * Use when you do not need to control the state of the number input.
+   */
+  defaultValue?: string
   /**
    * Whether the number input is disabled.
    */
@@ -33,7 +37,6 @@ export interface RootProps {
    * The options to pass to the `Intl.NumberFormat` constructor
    */
   formatOptions?: Intl.NumberFormatOptions
-
   /**
    * The unique identifier of the machine.
    */
@@ -100,10 +103,6 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   translations?: numberInput.IntlTranslations
-  /**
-   * The value of the input
-   */
-  value?: string
 }
 
 export type RootEmits = {
