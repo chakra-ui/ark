@@ -6,12 +6,7 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
-   * The direction of the color picker
-   */
-  dir?: 'ltr' | 'rtl'
-  /**
-   * The initial open state of the color picker when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial open state of the color picker.
    */
   defaultOpen?: boolean
   /**
@@ -27,7 +22,6 @@ export interface RootProps {
    * The color format to use
    */
   format?: colorPicker.ColorFormat
-
   /**
    * The unique identifier of the machine.
    */
@@ -111,8 +105,4 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string]
-  /**
-   * Event handler called when the open state of the color picker changes.
-   */
-  'update:open': [open: boolean]
 }

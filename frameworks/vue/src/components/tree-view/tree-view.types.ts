@@ -5,7 +5,6 @@ export interface RootProps {
    * The initial focused index of the tree view.
    */
   defaultFocusedId?: string
-
   /**
    * The id of the expanded nodes
    */
@@ -14,7 +13,6 @@ export interface RootProps {
    * The id of the focused node
    */
   focusedValue?: string
-
   /**
    * The unique identifier of the machine.
    */

@@ -5,7 +5,6 @@ export interface RootProps {
    * Whether the switch is checked.
    */
   checked?: boolean
-
   /**
    * Whether the switch is disabled.
    */
@@ -14,7 +13,6 @@ export interface RootProps {
    * The id of the form that the switch belongs to
    */
   form?: string
-
   /**
    * The unique identifier of the machine.
    */

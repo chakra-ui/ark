@@ -5,7 +5,6 @@ export interface RootProps {
    * Total number of data items
    */
   count: number
-
   /**
    * The unique identifier of the machine.
    */

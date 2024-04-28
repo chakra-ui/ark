@@ -59,8 +59,4 @@ export type RootEmits = {
    * Function called when the tooltip is opened.
    */
   openChange: [details: tooltip.OpenChangeDetails]
-  /**
-   * Function called when the tooltip is updated.
-   */
-  'update:open': [open: boolean]
 }

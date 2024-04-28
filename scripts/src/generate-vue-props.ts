@@ -1,7 +1,10 @@
+import { parse } from 'node:path'
+import { globby } from 'globby'
 import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
 import { chain } from 'voca'
 
 const extractTypes = (component: string) => {
+  console.log('Generating props for', component)
   const camelCaseComponent = chain(component).camelCase().value()
 
   const project = new Project()
@@ -105,9 +108,24 @@ const extractTypes = (component: string) => {
 
 const main = async () => {
   const component = process.argv.slice(2)[0]
-  console.log('Generating props for', component)
 
-  extractTypes(component)
+  if (component) {
+    console.log('Generating props for', component)
+    extractTypes(component)
+    return
+  }
+
+  console.log('Generating props for all components')
+  const components = await globby(['../frameworks/vue/src/components/*'], {
+    onlyDirectories: true,
+    deep: 1,
+  })
+  Promise.all(
+    components
+      .map((component) => parse(component).base)
+      .filter((x) => !['format', 'toast'].includes(x))
+      .map(extractTypes),
+  )
 }
 
 main().catch((err) => {

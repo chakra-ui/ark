@@ -5,7 +5,6 @@ export interface RootProps {
    * The alignment of the slides in the carousel.
    */
   align?: 'start' | 'center' | 'end'
-
   /**
    * The unique identifier of the machine.
    */

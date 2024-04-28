@@ -13,7 +13,6 @@ export interface RootProps {
    * The default camera to use when capturing media
    */
   capture?: 'user' | 'environment'
-
   /**
    * Whether to accept directories, only works in webkit browsers
    */
@@ -22,7 +21,6 @@ export interface RootProps {
    * Whether the file input is disabled
    */
   disabled?: boolean
-
   /**
    * The unique identifier of the machine.
    */

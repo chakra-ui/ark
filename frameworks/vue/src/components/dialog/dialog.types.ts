@@ -23,10 +23,6 @@ export interface RootProps {
    */
   finalFocusEl?: HTMLElement | (() => HTMLElement)
   /**
-   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
-   */
-  getRootNode?: () => Node | ShadowRoot | Document
-  /**
    * The unique identifier of the machine.
    */
   id?: string
