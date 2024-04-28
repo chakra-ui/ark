@@ -60,7 +60,7 @@
     "defaultValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The initial value of the number input."
+      "description": "The initial value of the number input when it is first rendered.\nUse when you do not need to control the state of the number input."
     },
     "disabled": {
       "type": "boolean",

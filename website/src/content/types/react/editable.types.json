@@ -68,7 +68,7 @@
     "defaultValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The initial value of the editable."
+      "description": "The initial value of the editable when it is first rendered.\nUse when you do not need to control the state of the editable."
     },
     "disabled": {
       "type": "boolean",

@@ -54,7 +54,7 @@
     "defaultValue": {
       "type": "number[]",
       "isRequired": false,
-      "description": "The initial value of the slider slider."
+      "description": "The initial value of the slider when it is first rendered.\nUse when you do not need to control the state of the slider picker."
     },
     "disabled": {
       "type": "boolean",

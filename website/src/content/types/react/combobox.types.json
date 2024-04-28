@@ -116,7 +116,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "the initial value of the combobox"
+      "description": "The initial value of the combobox when it is first rendered.\nUse when you do not need to control the state of the combobox."
     },
     "disabled": {
       "type": "boolean",

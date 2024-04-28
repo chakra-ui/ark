@@ -227,9 +227,9 @@ const extractTypesForFramework = async (framework: string) => {
 }
 
 const main = async () => {
-  extractTypesForFramework('react')
-    .then(() => extractTypesForFramework('solid'))
-    .then(() => extractTypesForFramework('vue'))
+  const framework = process.argv.slice(2)[0]
+  console.log('Generating type docs for', framework)
+  extractTypesForFramework(framework)
 }
 
 main().catch((err) => {

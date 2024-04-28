@@ -46,7 +46,7 @@
     "defaultValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The initial value of the radio group."
+      "description": "The initial value of the radio group when it is first rendered.\nUse when you do not need to control the state of the radio group."
     },
     "disabled": {
       "type": "boolean",

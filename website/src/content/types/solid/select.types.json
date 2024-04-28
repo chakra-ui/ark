@@ -1,107 +1,29 @@
 {
-  "ClearTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemGroupLabel": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroupLabel": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Item": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "item": { "type": "any", "isRequired": false }
   },
-  "ItemText": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "items": {
       "type": "T[] | readonly T[]",
       "isRequired": true,
       "description": "The options of the select"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the select should close after an item is selected"
-    },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the select when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the select."
     },
     "disabled": {
       "type": "boolean",
@@ -241,23 +163,9 @@
       "description": "The keys of the selected items"
     }
   },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ValueText": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "placeholder": {
-      "type": "string",
-      "isRequired": false,
-      "description": "Text to display when no value is selected."
-    }
+    "asChild": { "type": "boolean", "isRequired": false },
+    "placeholder": { "type": "string", "isRequired": false }
   }
 }

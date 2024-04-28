@@ -95,7 +95,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the tags input."
+      "description": "The initial value of the tags input when it is first rendered.\nUse when you do not need to control the state of the tags input."
     },
     "delimiter": {
       "type": "string | RegExp",

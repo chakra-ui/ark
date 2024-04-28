@@ -1,39 +1,9 @@
 {
-  "Backdrop": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "CloseTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Description": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Backdrop": { "asChild": { "type": "boolean", "isRequired": false } },
+  "CloseTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Description": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "aria-label": {
       "type": "string",
@@ -50,26 +20,10 @@
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the dialog when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "finalFocusEl": {
       "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is closed"
-    },
-    "getRootNode": {
-      "type": "() => Node | ShadowRoot | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",
@@ -161,18 +115,6 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Title": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Title": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
 }

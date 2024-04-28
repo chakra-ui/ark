@@ -1,33 +1,13 @@
 {
   "TabContent": {
     "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "isRequired": false }
   },
-  "TabIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "TabList": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "TabIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "TabList": { "asChild": { "type": "boolean", "isRequired": false } },
   "TabTrigger": {
     "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -41,16 +21,7 @@
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The initial value of the tabs."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "id": {
       "type": "string",
       "isRequired": false,

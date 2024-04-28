@@ -45,7 +45,7 @@
     "defaultValue": {
       "type": "number",
       "isRequired": false,
-      "description": "The initial value of the rating group."
+      "description": "The initial value of the rating group when it is first rendered.\nUse when you do not need to control the state of the rating group."
     },
     "disabled": {
       "type": "boolean",

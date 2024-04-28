@@ -40,11 +40,6 @@
       "isRequired": false,
       "description": "Render as a different element type."
     },
-    "defaultValue": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The initial value of the progress."
-    },
     "id": {
       "type": "string",
       "isRequired": false,

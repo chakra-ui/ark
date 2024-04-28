@@ -1,128 +1,36 @@
 {
-  "AreaBackground": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "AreaBackground": { "asChild": { "type": "boolean", "isRequired": false } },
   "Area": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "xChannel": { "type": "ColorChannel", "isRequired": false },
     "yChannel": { "type": "ColorChannel", "isRequired": false }
   },
-  "AreaThumb": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "AreaThumb": { "asChild": { "type": "boolean", "isRequired": false } },
   "ChannelInput": {
     "channel": { "type": "ExtendedColorChannel", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
   "ChannelSlider": {
     "channel": { "type": "ColorChannel", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "orientation": { "type": "Orientation", "isRequired": false }
   },
-  "ChannelSliderThumb": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ChannelSliderTrack": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "EyeDropperTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "FormatSelect": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "FormatTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "ChannelSliderThumb": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ChannelSliderTrack": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "FormatSelect": { "asChild": { "type": "boolean", "isRequired": false } },
+  "FormatTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether to close the color picker when a swatch is selected"
-    },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the color picker when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "defaultValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The initial value of the color picker."
     },
     "disabled": {
       "type": "boolean",
@@ -228,27 +136,11 @@
       "description": "The current value of the color picker."
     }
   },
-  "SwatchGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "SwatchIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "SwatchGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "SwatchIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Swatch": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "respectAlpha": {
       "type": "boolean",
       "isRequired": false,
@@ -257,11 +149,7 @@
   },
   "SwatchTrigger": {
     "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -269,33 +157,10 @@
     }
   },
   "TransparencyGrid": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "size": { "type": "string", "isRequired": false }
   },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ValueText": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "View": {
-    "format": { "type": "ColorFormat", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ValueText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "View": { "format": { "type": "ColorFormat", "isRequired": true } }
 }

@@ -1,34 +1,13 @@
 {
-  "ItemContent": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "ItemContent": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "Item": {
     "value": {
       "type": "string",
       "isRequired": true,
       "description": "The value of the accordion item."
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the collapsible when it is first rendered.\nUse when you do not need to control its open state."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
@@ -72,29 +51,14 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "ItemTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "collapsible": {
       "type": "boolean",
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether an accordion item can be collapsed after it has been opened."
-    },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the accordion."
     },
     "disabled": {
       "type": "boolean",

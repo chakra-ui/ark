@@ -1,39 +1,9 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "DecrementTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "IncrementTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Input": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "DecrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "IncrementTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "allowMouseWheel": {
       "type": "boolean",
@@ -46,21 +16,12 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "defaultValue": "true",
       "isRequired": false,
       "description": "Whether to clamp the value when the input loses focus (blur)"
-    },
-    "defaultValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The initial value of the number input."
     },
     "disabled": {
       "type": "boolean",
@@ -168,11 +129,5 @@
     },
     "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
   },
-  "Scrubber": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Scrubber": { "asChild": { "type": "boolean", "isRequired": false } }
 }

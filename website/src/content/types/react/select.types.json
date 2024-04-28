@@ -101,7 +101,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the select."
+      "description": "The initial value of the select when it is first rendered.\nUse when you do not need to control the state of the select."
     },
     "disabled": {
       "type": "boolean",

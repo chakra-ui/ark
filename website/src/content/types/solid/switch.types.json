@@ -1,33 +1,12 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the switch is checked."
-    },
-    "defaultChecked": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial checked state of the switch."
     },
     "disabled": {
       "type": "boolean",
@@ -86,11 +65,5 @@
       "description": "The value of switch input. Useful for form submission."
     }
   },
-  "Thumb": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Thumb": { "asChild": { "type": "boolean", "isRequired": false } }
 }

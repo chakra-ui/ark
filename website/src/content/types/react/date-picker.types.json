@@ -98,7 +98,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the date picker"
+      "description": "The initial value of the date picker when it is first rendered.\nUse when you do not need to control the state of the date picker."
     },
     "disabled": {
       "type": "boolean",
