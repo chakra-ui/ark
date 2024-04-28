@@ -6,15 +6,16 @@ export interface SliderValueTextProps extends PolymorphicProps {}
 
 <script setup lang="ts">
 import { ark } from '../factory'
+import { useSlots } from 'vue'
 import { useSliderContext } from './use-slider-context'
 
 defineProps<SliderValueTextProps>()
 const slider = useSliderContext()
+const slots = useSlots()
 </script>
 
 <template>
   <ark.span v-bind="slider.valueTextProps" :as-child="asChild">
-    <!-- TODO   {slots.default?.() || api.value.value.join(', ')} -->
-    <slot />
+    <slot>{{ slots.default?.() || slider.value.join(', ') }}</slot>
   </ark.span>
 </template>

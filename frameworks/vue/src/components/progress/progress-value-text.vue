@@ -7,13 +7,15 @@ export interface ProgressValueTextProps extends PolymorphicProps {}
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
+import { useSlots } from 'vue'
 
 defineProps<ProgressValueTextProps>()
 const progress = useProgressContext()
+const slots = useSlots()
 </script>
 
 <template>
   <ark.span v-bind="progress.valueTextProps" :as-child="asChild">
-    {{ progress.valueAsString }}
+    <slot>{{ slots.default?.() || progress.valueAsString }}</slot>
   </ark.span>
 </template>

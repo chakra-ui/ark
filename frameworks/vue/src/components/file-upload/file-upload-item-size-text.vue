@@ -1,23 +1,25 @@
 <script lang="ts">
 import type { PolymorphicProps } from '../factory'
-import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemSizeTextProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
+import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
+import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 defineProps<FileUploadItemSizeTextProps>()
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
+const slots = useSlots()
 </script>
 
 <template>
   <ark.div v-bind="fileUpload.getItemSizeTextProps(itemProps)" :as-child="asChild">
-    <!-- TODO -->
-    <!-- {slots.default?.() || api.value.getFileSize(itemProps.file)} -->
-    <slot />
+    <slot>
+      {{ slots.default?.() || fileUpload.getFileSize(itemProps.file) }}
+    </slot>
   </ark.div>
 </template>

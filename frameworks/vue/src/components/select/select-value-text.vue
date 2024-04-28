@@ -1,22 +1,24 @@
 <script lang="ts">
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectValueTextProps extends PolymorphicProps {}
+export interface SelectValueTextProps extends PolymorphicProps {
+  placeholder?: string
+}
 </script>
 
 <script setup lang="ts">
+import { selectAnatomy } from '@ark-ui/anatomy'
+import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
-import { selectAnatomy } from '@ark-ui/anatomy'
 
-defineProps<SelectValueTextProps>()
+const props = defineProps<SelectValueTextProps>()
 const select = useSelectContext()
+const slots = useSlots()
 </script>
 
 <template>
   <ark.span v-bind="selectAnatomy.build().valueText.attrs" :as-child="asChild">
-    <!-- TODO -->
-    <!-- {slots.default?.() || api.value.valueAsString || props.placeholder} -->
-    {{ select.valueAsString }}
+    <slot>{{ slots.default?.() || select.valueAsString || props.placeholder }}</slot>
   </ark.span>
 </template>
