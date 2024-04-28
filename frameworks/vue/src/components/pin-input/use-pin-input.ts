@@ -8,6 +8,10 @@ import type { RootEmits } from './pin-input'
 
 export interface UsePinInputProps
   extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the pin input when it is first rendered.
+   * Use when you do not need to control the state of the pin input.
+   */
   defaultValue?: pinInput.Context['value']
   modelValue?: pinInput.Context['value']
 }
@@ -17,10 +21,10 @@ export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> 
 export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) => {
   const env = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

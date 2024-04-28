@@ -9,7 +9,11 @@ export interface RootProps {
    * Whether to blur the input when the value is complete
    */
   blurOnComplete?: boolean
-
+  /**
+   * The initial value of the pin input when it is first rendered.
+   * Use when you do not need to control the state of the pin input.
+   */
+  defaultValue?: string[]
   /**
    * Whether the inputs are disabled
    */
@@ -18,7 +22,6 @@ export interface RootProps {
    * The associate form of the underlying input element.
    */
   form?: string
-
   /**
    * The unique identifier of the machine.
    */
@@ -71,10 +74,6 @@ export interface RootProps {
    * The type of value the pin-input should allow
    */
   type?: 'alphanumeric' | 'numeric' | 'alphabetic'
-  /**
-   * The value of the the pin input.
-   */
-  value?: string[]
 }
 
 export type RootEmits = {
