@@ -24,6 +24,11 @@ export interface RootProps {
    */
   blurBehavior?: 'clear' | 'add'
   /**
+   * The initial value of the tags input when it is first rendered.
+   * Use when you do not need to control the state of the tags input.
+   */
+  defaultValue?: string[]
+  /**
    * The character that serves has:
    * - event key to trigger the addition of a new tag
    * - character used to split tags when pasting into the input
@@ -31,7 +36,6 @@ export interface RootProps {
    * @default ","
    */
   delimiter?: string | RegExp
-
   /**
    * Whether the tags input should be disabled
    */
@@ -45,7 +49,6 @@ export interface RootProps {
    * The associate form of the underlying input element.
    */
   form?: string
-
   /**
    * The unique identifier of the machine.
    */
@@ -98,10 +101,6 @@ export interface RootProps {
    */
   // @ts-expect-error
   validate?: (details: ValidateArgs) => boolean
-  /**
-   * The tag values
-   */
-  value?: string[]
 }
 
 export type RootEmits = {

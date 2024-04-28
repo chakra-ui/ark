@@ -7,7 +7,12 @@ import { useId } from '../../utils'
 import type { RootEmits } from './tags-input.types'
 
 export interface UseTagsInputProps
-  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the tags input when it is first rendered.
+   * Use when you do not need to control the state of the tags input.
+   */
+  defaultValue?: tagsInput.Context['value']
   modelValue?: tagsInput.Context['value']
 }
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
@@ -19,10 +24,10 @@ export const useTagsInput = (
   const env = useEnvironmentContext()
 
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { modelValue, defaultValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

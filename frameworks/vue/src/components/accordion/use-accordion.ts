@@ -14,8 +14,8 @@ export interface UseAccordionProps
    */
   modelValue?: accordion.Context['value']
   /**
-   * The initial value of the accordion items that are expanded.
-   * Use this when you do not need to control the state of the items.
+   * The initial value of the accordion that are expanded.
+   * Use this when you do not need to control the state of the accordion.
    */
   defaultValue?: accordion.Context['value']
 }
