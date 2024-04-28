@@ -8,7 +8,11 @@ import type { RootEmits } from './switch'
 
 export interface UseSwitchProps
   extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
-  modelValue?: zagSwitch.Context['checked']
+  /**
+   * The checked state of the switch when it is first rendered.
+   * Use this when you do not need to control the state of the switch.
+   */
+  defaultChecked?: zagSwitch.Context['checked']
 }
 
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
@@ -17,10 +21,10 @@ export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSw
   const env = useEnvironmentContext()
 
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultChecked, checked, ...rest } = props
     return {
       ...rest,
-      checked: modelValue,
+      checked: checked ?? defaultChecked,
     }
   })
 
@@ -31,7 +35,7 @@ export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSw
       getRootNode: env?.value.getRootNode,
       onCheckedChange(details) {
         emit('checkedChange', details)
-        emit('update:modelValue', details.checked)
+        emit('update:checked', details.checked)
       },
     }),
     { context },

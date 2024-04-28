@@ -10,7 +10,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 
-const props = defineProps<SwitchRootProps>()
+const props = withDefaults(defineProps<SwitchRootProps>(), {
+  checked: undefined,
+  defaultChecked: undefined,
+})
 const emits = defineEmits<SwitchRootEmits>()
 
 const context = useSwitch(props, emits)

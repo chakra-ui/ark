@@ -10,7 +10,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
-const props = defineProps<CheckboxRootProps>()
+const props = withDefaults(defineProps<CheckboxRootProps>(), {
+  checked: undefined,
+  defaultChecked: undefined,
+})
 const emits = defineEmits<CheckboxRootEmits>()
 
 const checkbox = useCheckbox(props, emits)

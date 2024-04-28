@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 import { Switch } from '../..'
 
-const checked = ref(false)
+const checked = ref(true)
 </script>
 
 <template>
-  <Switch.Root v-model="checked">
+  <Switch.Root v-model:checked="checked">
     <Switch.Control>
       <Switch.Thumb />
     </Switch.Control>

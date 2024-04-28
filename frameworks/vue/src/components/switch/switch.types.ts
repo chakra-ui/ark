@@ -6,6 +6,11 @@ export interface RootProps {
    */
   checked?: boolean
   /**
+   * The checked state of the switch when it is first rendered.
+   * Use this when you do not need to control the state of the switch.
+   */
+  defaultChecked?: boolean
+  /**
    * Whether the switch is disabled.
    */
   disabled?: boolean
@@ -29,7 +34,6 @@ export interface RootProps {
    * Specifies the localized strings that identifies the accessibility elements and their states
    */
   label?: string
-  modelValue?: boolean
   /**
    * The name of the input field in a switch
    * (Useful for form submission).
@@ -58,5 +62,5 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: boolean]
+  'update:checked': [checked: boolean]
 }

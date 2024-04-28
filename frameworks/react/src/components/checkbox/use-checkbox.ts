@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseCheckboxProps
   extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial checked state of the checkbox.
+   * The checked state of the checkbox when it is first rendered.
+   * Use this when you do not need to control the state of the checkbox.
    */
   defaultChecked?: checkbox.Context['checked']
 }

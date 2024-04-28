@@ -3,7 +3,7 @@ import { Switch } from '../..'
 </script>
 
 <template>
-  <Switch.Root :model-value="true">
+  <Switch.Root :defaultChecked="true">
     <Switch.Control>
       <Switch.Thumb />
     </Switch.Control>

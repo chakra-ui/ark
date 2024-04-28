@@ -110,7 +110,6 @@ const main = async () => {
   const component = process.argv.slice(2)[0]
 
   if (component) {
-    console.log('Generating props for', component)
     extractTypes(component)
     return
   }

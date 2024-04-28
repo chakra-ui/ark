@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseSwitchProps
   extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial checked state of the switch.
+   * The checked state of the switch when it is first rendered.
+   * Use this when you do not need to control the state of the switch.
    */
   defaultChecked?: zagSwitch.Context['checked']
 }

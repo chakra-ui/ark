@@ -1,6 +1,6 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
@@ -9,7 +9,8 @@ import type { RootEmits } from './checkbox'
 export interface UseCheckboxProps
   extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial checked state of the checkbox.
+   * The checked state of the checkbox when it is first rendered.
+   * Use this when you do not need to control the state of the checkbox.
    */
   defaultChecked?: checkbox.Context['checked']
 }
@@ -17,8 +18,15 @@ export interface UseCheckboxProps
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) => {
-  const context = ref(props)
   const env = useEnvironmentContext()
+
+  const context = computed(() => {
+    const { checked, defaultChecked, ...rest } = props
+    return {
+      ...rest,
+      checked: checked ?? defaultChecked,
+    }
+  })
 
   const [state, send] = useMachine(
     checkbox.machine({
