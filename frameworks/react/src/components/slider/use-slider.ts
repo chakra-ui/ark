@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseSliderProps
   extends Optional<Omit<Slider.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the slider slider.
+   * The initial value of the slider when it is first rendered.
+   * Use when you do not need to control the state of the slider picker.
    */
   defaultValue?: Slider.Context['value']
 }

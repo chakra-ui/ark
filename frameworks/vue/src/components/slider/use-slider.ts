@@ -7,7 +7,12 @@ import { useId } from '../../utils'
 import type { RootEmits } from './slider'
 
 export interface UseSliderProps
-  extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<slider.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The initial value of the slider when it is first rendered.
+   * Use when you do not need to control the state of the slider.
+   */
+  defaultValue?: slider.Context['value']
   modelValue?: slider.Context['value']
 }
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
@@ -15,10 +20,10 @@ export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSliderReturn => {
   const env = useEnvironmentContext()
   const context = computed(() => {
-    const { modelValue, ...rest } = props
+    const { defaultValue, modelValue, ...rest } = props
     return {
       ...rest,
-      value: modelValue,
+      value: modelValue ?? defaultValue,
     }
   })
 

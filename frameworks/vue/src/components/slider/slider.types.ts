@@ -9,7 +9,11 @@ export interface RootProps {
    * The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider
    */
   'aria-labelledby'?: string[]
-
+  /**
+   * The initial value of the slider when it is first rendered.
+   * Use when you do not need to control the state of the slider.
+   */
+  defaultValue?: number[]
   /**
    * Whether the slider is disabled
    */
@@ -23,7 +27,6 @@ export interface RootProps {
    */
   // @ts-expect-error
   getAriaValueText?: (details: ValueTextDetails) => string
-
   /**
    * The unique identifier of the machine.
    */
@@ -89,10 +92,6 @@ export interface RootProps {
    * The slider thumbs dimensions
    */
   thumbSize?: { width: number; height: number }
-  /**
-   * The value of the range slider
-   */
-  value?: number[]
 }
 
 export type RootEmits = {
