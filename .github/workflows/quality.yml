@@ -95,4 +95,4 @@ jobs:
         uses: ./.github/composite-actions/install
 
       - name: Run check:nodes
-        run: bun scripts check:node
+        run: bun scripts check:nodes
