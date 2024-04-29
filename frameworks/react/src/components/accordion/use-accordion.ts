@@ -17,8 +17,7 @@ export interface UseAccordionProps
 export interface UseAccordionReturn extends accordion.Api<PropTypes> {}
 
 export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn => {
-  const { dir, locale } = useLocaleContext()
-  console.log(dir, locale)
+  const { dir } = useLocaleContext()
   const initialContext: accordion.Context = {
     id: useId(),
     dir,
@@ -29,8 +28,6 @@ export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn 
 
   const context: accordion.Context = {
     ...initialContext,
-    value: props.value,
-    dir,
     onFocusChange: useEvent(props.onFocusChange),
     onValueChange: useEvent(props.onValueChange),
   }
