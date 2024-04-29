@@ -114,6 +114,6 @@ describe('Select', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('combobox', { name: 'Framework' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

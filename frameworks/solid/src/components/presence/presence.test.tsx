@@ -1,4 +1,4 @@
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor, waitForElementToBeRemoved } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { createSignal } from 'solid-js'
 import { Presence, type PresenceProps } from './'
@@ -26,7 +26,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByTestId('box')).not.toBeVisible())
   })
 
   it('should control presence when lazy mounting and not unmounting on exit', async () => {
@@ -37,7 +37,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByTestId('box')).not.toBeVisible())
   })
 
   it('should control presence when not lazy mounting and unmounting on exit ', async () => {
@@ -48,7 +48,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).not.toBeInTheDocument()
+    await waitForElementToBeRemoved(screen.getByTestId('box'))
   })
 
   it('should control presence when lazy mounting and unmounting on exit', async () => {
@@ -60,6 +60,6 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).not.toBeInTheDocument()
+    await waitForElementToBeRemoved(screen.getByTestId('box'))
   })
 })

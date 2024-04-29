@@ -79,7 +79,7 @@ describe('Combobox', () => {
   it('should be read-only when readOnly is true', async () => {
     render(<ComponentUnderTest readOnly />)
 
-    fireEvent.click(screen.getByText('Open'))
+    await user.click(screen.getByText('Open'))
     await waitFor(() => expect(screen.queryByText('React')).not.toBeVisible())
   })
 

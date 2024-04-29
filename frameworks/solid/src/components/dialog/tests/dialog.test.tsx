@@ -1,5 +1,5 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Dialog } from '../'
@@ -24,7 +24,7 @@ describe('Dialog', () => {
     expect(await screen.findByText('Dialog Title')).toBeVisible()
 
     await user.click(screen.getByText('Close'))
-    expect(await screen.findByText('Dialog Title')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('Dialog Title')).not.toBeVisible())
   })
 
   it('should invoke onClose if dialog is closed', async () => {

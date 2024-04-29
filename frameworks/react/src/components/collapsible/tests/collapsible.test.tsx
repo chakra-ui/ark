@@ -1,5 +1,11 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen, waitForElementToBeRemoved } from '@testing-library/react/pure'
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Collapsible, type CollapsibleRootProps } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -52,7 +58,7 @@ describe('Collapsible', () => {
     render(<ComponentUnderTest open={false} />)
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    expect(screen.getByText('Content')).not.toBeVisible()
+    await waitFor(() => expect(screen.getByText('Content')).not.toBeVisible())
   })
 
   it('should lazy mount', async () => {

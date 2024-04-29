@@ -24,7 +24,7 @@ describe('Popover', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByText('close'))
-    expect(screen.queryByText('title')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
   it.skip('should hide the popover when escape is pressed', async () => {
@@ -54,7 +54,7 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: /toggle/i }))
-    expect(screen.queryByText('title')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
   it('should be able to lazy mount', async () => {
@@ -98,6 +98,6 @@ describe('Popover', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'close' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })
