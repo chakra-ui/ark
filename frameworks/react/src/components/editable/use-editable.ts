@@ -2,7 +2,7 @@ import * as editable from '@zag-js/editable'
 import { normalizeProps, useMachine } from '@zag-js/react'
 import type { PropTypes } from '@zag-js/types'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -18,8 +18,10 @@ export interface UseEditableProps
 export interface UseEditableReturn extends editable.Api<PropTypes> {}
 
 export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: editable.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

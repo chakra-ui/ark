@@ -1,7 +1,7 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -29,8 +29,10 @@ export interface UseColorPickerProps
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: colorPicker.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue ? colorPicker.parse(props.defaultValue) : undefined,

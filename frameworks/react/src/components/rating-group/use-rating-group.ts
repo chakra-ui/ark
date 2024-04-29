@@ -1,7 +1,7 @@
 import * as rating from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseRatingGroupProps
 export interface UseRatingGroupReturn extends rating.Api<PropTypes> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: rating.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

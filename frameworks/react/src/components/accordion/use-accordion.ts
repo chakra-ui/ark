@@ -1,7 +1,7 @@
 import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,11 @@ export interface UseAccordionProps
 export interface UseAccordionReturn extends accordion.Api<PropTypes> {}
 
 export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn => {
+  const { dir, locale } = useLocaleContext()
+  console.log(dir, locale)
   const initialContext: accordion.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,
@@ -27,6 +30,7 @@ export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn 
   const context: accordion.Context = {
     ...initialContext,
     value: props.value,
+    dir,
     onFocusChange: useEvent(props.onFocusChange),
     onValueChange: useEvent(props.onValueChange),
   }

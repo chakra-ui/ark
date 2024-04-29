@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as splitter from '@zag-js/splitter'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UseSplitterProps
 export interface UseSplitterReturn extends splitter.Api<PropTypes> {}
 
 export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: splitter.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     size: props.defaultSize,

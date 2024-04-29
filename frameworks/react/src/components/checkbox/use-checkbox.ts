@@ -1,7 +1,7 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseCheckboxProps
 export interface UseCheckboxReturn extends checkbox.Api<PropTypes> {}
 
 export const useCheckbox = (props: UseCheckboxProps = {}): UseCheckboxReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: checkbox.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     checked: props.defaultChecked,

@@ -17,7 +17,6 @@ export interface LocaleProviderProps extends LocaleOptions {
 
 export const LocaleProvider = (props: LocaleProviderProps) => {
   const { children, locale: localeProps, defaultLocale = 'en-US' } = props
-
   const [locale, setLocale] = useState(localeProps || defaultLocale)
   const getRootNode = useEnvironmentContext()
 

@@ -1,7 +1,7 @@
 import * as avatar from '@zag-js/avatar'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -10,8 +10,10 @@ export interface UseAvatarProps
 export interface UseAvatarReturn extends avatar.Api<PropTypes> {}
 
 export const useAvatar = (props: UseAvatarProps = {}): UseAvatarReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: avatar.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
   }

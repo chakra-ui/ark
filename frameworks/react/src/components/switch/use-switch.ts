@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as zagSwitch from '@zag-js/switch'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseSwitchProps
 export interface UseSwitchReturn extends zagSwitch.Api<PropTypes> {}
 
 export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: zagSwitch.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     checked: props.defaultChecked,

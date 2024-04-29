@@ -4,8 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 
-export interface UseClipboardProps
-  extends Optional<Omit<clipboard.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseClipboardProps extends Optional<Omit<clipboard.Context, 'getRootNode'>, 'id'> {}
 export interface UseClipboardReturn extends clipboard.Api<PropTypes> {}
 
 export const useClipboard = (props: UseClipboardProps) => {

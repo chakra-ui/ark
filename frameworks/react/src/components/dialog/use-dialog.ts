@@ -1,7 +1,7 @@
 import * as dialog from '@zag-js/dialog'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'op
 export interface UseDialogReturn extends dialog.Api<PropTypes> {}
 
 export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: dialog.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.open ?? props.defaultOpen,

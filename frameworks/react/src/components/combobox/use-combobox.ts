@@ -2,7 +2,7 @@ import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useMemo } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useEvent } from '../../utils/use-event'
@@ -30,6 +30,7 @@ export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Ap
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
+  const { dir } = useLocaleContext()
   const [collectionOptions, comboboxProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
@@ -45,6 +46,7 @@ export const useCombobox = <T extends CollectionItem>(
 
   const initialContext: combobox.Context<T> = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     collection,
     ...comboboxProps,

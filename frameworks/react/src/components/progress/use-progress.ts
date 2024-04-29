@@ -1,7 +1,7 @@
 import * as progress from '@zag-js/progress'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseProgressProps
@@ -10,8 +10,10 @@ export interface UseProgressProps
 export interface UseProgressReturn extends progress.Api<PropTypes> {}
 
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: progress.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
   }
