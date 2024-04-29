@@ -6,6 +6,7 @@ import { LocaleContextProvider } from './use-locale-context'
 export interface LocaleProviderProps extends LocaleOptions {
   /**
    * The default locale to use if no locale is provided via props.
+   * @default 'en-US'
    */
   defaultLocale?: string
   /**
@@ -16,19 +17,20 @@ export interface LocaleProviderProps extends LocaleOptions {
 
 export const LocaleProvider = (props: LocaleProviderProps) => {
   const { children, locale: localeProps, defaultLocale = 'en-US' } = props
-
   const [locale, setLocale] = useState(localeProps || defaultLocale)
   const getRootNode = useEnvironmentContext()
 
-  useEffect(() =>
-    trackLocale({
-      locale: localeProps,
-      getRootNode,
-      onLocaleChange(locale) {
-        setLocale(locale.locale)
-      },
-    }),
-  )
+  useEffect(() => {
+    if (!localeProps) {
+      return trackLocale({
+        locale: localeProps,
+        getRootNode,
+        onLocaleChange(locale) {
+          setLocale(locale.locale)
+        },
+      })
+    }
+  }, [localeProps, getRootNode])
 
   const context: Locale = {
     locale,

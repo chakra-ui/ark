@@ -1,7 +1,7 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId, useRef } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
@@ -25,10 +25,12 @@ export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
   const { lazyMount, unmountOnExit } = props
+  const { dir } = useLocaleContext()
   const wasVisible = useRef(false)
 
   const initialContext: collapsible.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.open ?? props.defaultOpen,

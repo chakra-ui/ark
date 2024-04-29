@@ -1,7 +1,7 @@
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -10,8 +10,10 @@ export interface UseFileUploadProps
 export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 
 export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: fileUpload.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
   }

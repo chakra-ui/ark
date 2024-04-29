@@ -4,7 +4,7 @@ import { createContext } from '../../utils'
 
 export interface LocaleContext extends Locale {}
 
-export const LOCALE_DEFAULT: ComputedRef<LocaleContext> = computed(() => ({
+export const DEFAULT_LOCALE: ComputedRef<LocaleContext> = computed(() => ({
   dir: 'ltr',
   locale: 'en-US',
 }))

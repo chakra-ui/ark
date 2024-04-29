@@ -1,7 +1,7 @@
 import * as ratingGroup from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './rating-group'
@@ -23,6 +23,7 @@ export const useRatingGroup = (
   emit: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed(() => {
     const { defaultValue, modelValue, ...rest } = props
     return {
@@ -34,7 +35,8 @@ export const useRatingGroup = (
   const [state, send] = useMachine(
     ratingGroup.machine({
       ...context.value,
-      id: context.value.id || useId().value,
+      id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onValueChange(details) {
         emit('valueChange', details)

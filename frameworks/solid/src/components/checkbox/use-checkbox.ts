@@ -1,7 +1,7 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseCheckboxProps
@@ -9,8 +9,9 @@ export interface UseCheckboxProps
 export interface UseCheckboxReturn extends Accessor<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (props: UseCheckboxProps): UseCheckboxReturn => {
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), getRootNode }, props)
+  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
   const [state, send] = useMachine(checkbox.machine(context), { context })
 
   return createMemo(() => checkbox.connect(state, send, normalizeProps))

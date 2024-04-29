@@ -2,7 +2,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { useId, useMemo } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useEvent } from '../../utils/use-event'
@@ -43,8 +43,10 @@ export const useSelect = <T extends CollectionItem>(
     Object.values(collectionOptions),
   )
 
+  const { dir } = useLocaleContext()
   const initialContext: select.Context<T> = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     collection,
     ...rest,

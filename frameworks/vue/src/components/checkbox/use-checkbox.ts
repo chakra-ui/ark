@@ -1,7 +1,7 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './checkbox'
@@ -19,6 +19,7 @@ export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> 
 
 export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed(() => {
     const { checked, defaultChecked, ...rest } = props
@@ -32,6 +33,7 @@ export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) =>
     checkbox.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       checked: props.checked ?? props.defaultChecked,
       onCheckedChange(details) {

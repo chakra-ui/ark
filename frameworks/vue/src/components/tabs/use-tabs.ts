@@ -1,7 +1,7 @@
 import * as tabs from '@zag-js/tabs'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './tabs.types'
@@ -19,6 +19,7 @@ export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
 export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsReturn => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed(() => {
     const { defaultValue, modelValue, ...rest } = props
@@ -32,6 +33,7 @@ export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsRe
     tabs.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => emit('focusChange', details),
       onValueChange: (details) => {

@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Slider } from '../'
+import { LocaleProvider } from '../../../providers'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -49,9 +50,12 @@ describe('Slider', () => {
     expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  // TODO use Local Provider to set the direction
-  it.skip('should be possible to control it with the arrow keys in rtl mode', async () => {
-    render(() => <ComponentUnderTest dir="rtl" />)
+  it('should be possible to control it with the arrow keys in rtl mode', async () => {
+    render(() => (
+      <LocaleProvider locale="ar-AE">
+        <ComponentUnderTest />
+      </LocaleProvider>
+    ))
 
     const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
 

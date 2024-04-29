@@ -1,7 +1,7 @@
 import * as hoverCard from '@zag-js/hover-card'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseHoverCardProps
 export interface UseHoverCardReturn extends hoverCard.Api<PropTypes> {}
 
 export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: hoverCard.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.open ?? props.defaultOpen,

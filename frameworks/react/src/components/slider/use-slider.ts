@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as Slider from '@zag-js/slider'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseSliderProps
 export interface UseSliderReturn extends Slider.Api<PropTypes> {}
 
 export const useSlider = (props: UseSliderProps): UseSliderReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: Slider.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

@@ -1,7 +1,7 @@
 import * as menu from '@zag-js/menu'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseMenuProps
@@ -13,9 +13,15 @@ export interface UseMenuReturn {
 }
 
 export const useMenu = (props: UseMenuProps): UseMenuReturn => {
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
+    {
+      id: createUniqueId(),
+      dir: locale().dir,
+      getRootNode,
+      'open.controlled': props.open !== undefined,
+    },
     props,
   )
   const [state, send, machine] = useMachine(menu.machine(context), { context })

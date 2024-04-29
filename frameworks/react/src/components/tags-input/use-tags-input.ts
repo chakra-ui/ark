@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tagsInput from '@zag-js/tags-input'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseTagsInputProps
 export interface UseTagsInputReturn extends tagsInput.Api<PropTypes> {}
 
 export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: tagsInput.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

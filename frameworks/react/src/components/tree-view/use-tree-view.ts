@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as treeView from '@zag-js/tree-view'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -20,8 +20,10 @@ export interface UseTreeViewProps
 export interface UseTreeViewReturn extends treeView.Api<PropTypes> {}
 
 export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: treeView.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     selectedValue: props.defaultSelectedValue,
     expandedValue: props.defaultExpandedValue,

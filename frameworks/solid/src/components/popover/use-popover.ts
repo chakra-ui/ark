@@ -1,7 +1,7 @@
 import * as popover from '@zag-js/popover'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UsePopoverProps
@@ -9,9 +9,15 @@ export interface UsePopoverProps
 export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
+    {
+      id: createUniqueId(),
+      dir: locale().dir,
+      getRootNode,
+      'open.controlled': props.open !== undefined,
+    },
     props,
   )
 

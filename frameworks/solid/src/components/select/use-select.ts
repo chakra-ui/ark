@@ -2,7 +2,7 @@ import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 
@@ -26,10 +26,12 @@ export const useSelect = <T extends CollectionItem>(
     'items',
   ])
   const collection = () => select.collection(collectionOptions)
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
     {
       id: createUniqueId(),
+      dir: locale().dir,
       getRootNode,
       collection: collection(),
       'open.controlled': props.open !== undefined,

@@ -3,6 +3,7 @@ import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { describe, vi } from 'vitest'
 import { Accordion } from '../'
+import { LocaleProvider } from '../../../providers'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -109,12 +110,14 @@ describe('Accordion', () => {
     expect(onFocusChange).toHaveBeenCalled()
   })
 
-  // TODO use locale provider
-  it.skip('should render text direction based on dir prop', async () => {
-    render(<ComponentUnderTest dir="rtl" />)
+  it('should render text direction based on dir prop', async () => {
+    render(
+      <LocaleProvider locale="ar-AE">
+        <ComponentUnderTest />
+      </LocaleProvider>,
+    )
 
     const button = screen.getByRole('button', { name: 'React Trigger' })
-
     expect(button).toHaveAttribute('dir', 'rtl')
   })
 

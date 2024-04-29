@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tooltip from '@zag-js/tooltip'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, '
 export interface UseTooltipReturn extends tooltip.Api<PropTypes> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: tooltip.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.open ?? props.defaultOpen,

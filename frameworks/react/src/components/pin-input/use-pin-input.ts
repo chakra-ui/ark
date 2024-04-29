@@ -1,7 +1,7 @@
 import * as pinInput from '@zag-js/pin-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UsePinInputProps
 export interface UsePinInputReturn extends pinInput.Api<PropTypes> {}
 
 export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: pinInput.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue ?? [],

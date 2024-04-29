@@ -1,7 +1,7 @@
 import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -19,8 +19,10 @@ export interface UseMenuReturn {
 }
 
 export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
+  const { dir } = useLocaleContext()
   const context: menu.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     onOpenChange: useEvent(props.onOpenChange),

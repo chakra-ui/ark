@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as toggleGroup from '@zag-js/toggle-group'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -17,8 +17,10 @@ export interface UseToggleGroupProps
 export interface UseToggleGroupReturn extends toggleGroup.Api<PropTypes> {}
 
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: toggleGroup.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

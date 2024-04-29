@@ -1,7 +1,7 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -44,8 +44,10 @@ export interface UseDatePickerProps
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
 
 export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: datePicker.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,

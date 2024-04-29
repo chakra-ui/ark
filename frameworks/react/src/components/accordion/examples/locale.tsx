@@ -1,8 +1,9 @@
 import { ChevronDownIcon } from 'lucide-react'
 import { Accordion } from '../..'
+import { LocaleProvider } from '../../../providers'
 
-export const Basic = () => {
-  return (
+export const Locale = () => (
+  <LocaleProvider defaultLocale="ar-AE">
     <Accordion.Root>
       {['React', 'Solid', 'Vue'].map((item) => (
         <Accordion.Item key={item} value={item}>
@@ -18,5 +19,5 @@ export const Basic = () => {
         </Accordion.Item>
       ))}
     </Accordion.Root>
-  )
-}
+  </LocaleProvider>
+)

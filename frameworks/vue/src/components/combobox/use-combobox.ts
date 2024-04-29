@@ -2,7 +2,7 @@ import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './combobox'
@@ -34,6 +34,7 @@ export const useCombobox = <T extends CollectionItem>(
   emit: EmitFn<RootEmits>,
 ): UseComboboxReturn<T> => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed(() => {
     const { defaultValue, items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } =
@@ -49,6 +50,7 @@ export const useCombobox = <T extends CollectionItem>(
     combobox.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
       getRootNode: env?.value.getRootNode,

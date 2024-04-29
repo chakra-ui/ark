@@ -1,7 +1,7 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseDatePickerProps
@@ -32,12 +32,14 @@ export interface UseDatePickerProps
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const [localProps, restProps] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
 
   const context = mergeProps(
     () => ({
       id: createUniqueId(),
+      dir: locale().dir,
       getRootNode,
       'open.controlled': props.open !== undefined,
       focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,

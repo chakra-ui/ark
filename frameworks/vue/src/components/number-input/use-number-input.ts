@@ -1,7 +1,7 @@
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './number-input.types'
@@ -22,6 +22,7 @@ export const useNumberInput = (
   emit: EmitFn<RootEmits>,
 ): UseNumberInputReturn => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed(() => {
     const { defaultValue, modelValue, ...rest } = props
@@ -35,6 +36,7 @@ export const useNumberInput = (
     numberInput.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
         emit('valueChange', details)

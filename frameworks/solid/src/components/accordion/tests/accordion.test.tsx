@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Accordion } from '../'
+import { LocaleProvider } from '../../../providers'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -101,9 +102,12 @@ describe('Accordion', () => {
     expect(onFocusChange).toHaveBeenCalled()
   })
 
-  // TODO use locale provier to set the direction
-  it.skip('should render text direction based on dir prop', async () => {
-    render(() => <ComponentUnderTest dir="rtl" />)
+  it('should render text direction based on dir prop', async () => {
+    render(() => (
+      <LocaleProvider locale="ar-AE">
+        <ComponentUnderTest />
+      </LocaleProvider>
+    ))
     expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('dir', 'rtl')
   })
 

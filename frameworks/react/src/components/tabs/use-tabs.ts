@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as tabs from '@zag-js/tabs'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRo
 export interface UseTabsReturn extends tabs.Api<PropTypes> {}
 
 export const useTabs = (props: UseTabsProps): UseTabsReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: tabs.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

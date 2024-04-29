@@ -1,7 +1,7 @@
 import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UseNumberInputProps
 export interface UseNumberInputReturn extends numberInput.Api<PropTypes> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: numberInput.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     value: props.defaultValue,

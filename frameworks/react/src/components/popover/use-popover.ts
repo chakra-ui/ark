@@ -1,7 +1,7 @@
 import * as popover from '@zag-js/popover'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, '
 export interface UsePopoverReturn extends popover.Api<PropTypes> {}
 
 export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: popover.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     ...props,
     open: props.open ?? props.defaultOpen,

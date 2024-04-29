@@ -1,7 +1,7 @@
 import * as carousel from '@zag-js/carousel'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
-import { useEnvironmentContext } from '../../providers/environment'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
@@ -16,8 +16,10 @@ export interface UseCarouselProps
 export interface UseCarouselReturn extends carousel.Api<PropTypes> {}
 
 export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => {
+  const { dir } = useLocaleContext()
   const initialContext: carousel.Context = {
     id: useId(),
+    dir,
     getRootNode: useEnvironmentContext(),
     index: props.defaultIndex,
     ...props,
