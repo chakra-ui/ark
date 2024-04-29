@@ -3,7 +3,7 @@ import { readFileSync } from 'fs-extra'
 import { globby } from 'globby'
 
 const main = async () => {
-  const components = await globby(['../frameworks/*/src/components/*/*.{tsx,vue}'])
+  const components = await globby(['../frameworks/*/src/components/dialog/*.{tsx,vue}'])
 
   const items = components
     .filter((file) => !file.endsWith('.stories.tsx'))
@@ -11,7 +11,7 @@ const main = async () => {
     .filter((file) => !file.endsWith('.test.tsx'))
     .map((file) => {
       const content = readFileSync(file, 'utf-8')
-      const match = content.match(/<ark.([A-Za-z]*)/)
+      const match = content.match(/<ark.([A-Za-z0-9]*)/)
       return {
         name: parse(file).name,
         node: match?.[1],
@@ -33,6 +33,7 @@ function groupItems(items: Item[]): void {
     if (!groupedItems.has(item.name)) {
       groupedItems.set(item.name, [])
     }
+
     if (item.node !== undefined) {
       groupedItems.get(item.name)?.push(item.node)
     }
