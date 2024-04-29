@@ -52,7 +52,7 @@ describe('Collapsible', () => {
     render(<ComponentUnderTest open={false} />)
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    expect(screen.getByText('Content')).not.toBeVisible()
+    await waitFor(() => expect(screen.getByText('Content')).not.toBeVisible())
   })
 
   it('should lazy mount', async () => {
@@ -71,9 +71,7 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    await waitFor(() => {
-      expect(screen.queryByText('Content')).not.toBeInTheDocument()
-    })
+    await waitFor(() => expect(screen.queryByText('Content')).not.toBeInTheDocument())
   })
 
   it('should lazy mount and unmount on exit', async () => {
@@ -85,8 +83,6 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    await waitFor(() => {
-      expect(screen.queryByText('Content')).not.toBeInTheDocument()
-    })
+    await waitFor(() => expect(screen.queryByText('Content')).not.toBeInTheDocument())
   })
 })

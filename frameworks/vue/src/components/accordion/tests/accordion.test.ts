@@ -180,13 +180,12 @@ describe('Accordion', () => {
     })
 
     const button = screen.getByRole('button', { name: 'React Trigger' })
-
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
-    await user.click(button)
 
+    await user.click(button)
     expect(screen.queryByText('React Content')).toBeVisible()
-    await user.click(button)
 
+    await user.click(button)
     await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
   })
 })

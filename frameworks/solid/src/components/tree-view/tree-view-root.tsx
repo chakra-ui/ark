@@ -12,6 +12,7 @@ export const TreeViewRoot = (props: TreeViewRootProps) => {
     'expandedValue',
     'focusedValue',
     'id',
+    'ids',
     'onExpandedChange',
     'onFocusChange',
     'onSelectionChange',

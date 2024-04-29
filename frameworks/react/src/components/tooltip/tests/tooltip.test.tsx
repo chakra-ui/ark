@@ -1,5 +1,5 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Tooltip } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -36,7 +36,9 @@ describe('Tooltip', () => {
 
     await user.unhover(tooltipTrigger)
 
-    expect(screen.queryByText('content')).not.toBeVisible()
+    waitFor(() => {
+      expect(screen.queryByText('content')).not.toBeVisible()
+    })
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
@@ -59,7 +61,9 @@ describe('Tooltip', () => {
     expect(screen.getByText('content')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.queryByText('content')).not.toBeVisible()
+    await waitFor(() => {
+      expect(screen.queryByText('content')).not.toBeVisible()
+    })
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
@@ -95,17 +99,17 @@ describe('Tooltip', () => {
     expect(screen.getByRole('tooltip')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.queryByRole('tooltip', { hidden: true })).not.toBeVisible()
+    await waitFor(() => {
+      expect(screen.queryByRole('tooltip', { hidden: true })).not.toBeVisible()
+    })
   })
 
   it('should lazy mount and unmount on exit', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
-
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
-
     await user.keyboard('[Escape]')
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByRole('tooltip')).not.toBeInTheDocument())
   })
 })

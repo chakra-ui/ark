@@ -10,6 +10,7 @@ export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, UseProgre
 export const ProgressRoot = (props: ProgressRootProps) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
     'id',
+    'ids',
     'max',
     'min',
     'orientation',

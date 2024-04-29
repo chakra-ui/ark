@@ -18,6 +18,10 @@ export interface RootProps {
    */
   id?: string
   /**
+   * The ids of the tree elements. Useful for composition.
+   */
+  ids?: Partial<{ root: string; tree: string; label: string }>
+  /**
    * Whether clicking on a branch should open it or not
    * @default true
    */

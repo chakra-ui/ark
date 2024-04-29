@@ -99,17 +99,14 @@ export interface RootProps {
    * Returns a boolean that determines whether a tag can be added.
    * Useful for preventing duplicates or invalid tag values.
    */
-  // @ts-expect-error
-  validate?: (details: ValidateArgs) => boolean
+  validate?: (details: tagsInput.ValidateArgs) => boolean
 }
 
 export type RootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
-  ]
+  focusOutside: [event: tagsInput.FocusOutsideEvent]
   /**
    * Callback fired when a tag is highlighted by pointer or keyboard navigation
    */
@@ -121,15 +118,11 @@ export type RootEmits = {
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
-  ]
+  interactOutside: [event: tagsInput.InteractOutsideEvent]
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
-  ]
+  pointerDownOutside: [event: tagsInput.PointerDownOutsideEvent]
   /**
    * Callback fired when the tag values is updated
    */

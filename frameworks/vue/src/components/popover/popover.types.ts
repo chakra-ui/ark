@@ -74,15 +74,11 @@ export type RootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').FocusOutsideEvent,
-  ]
+  focusOutside: [event: popover.FocusOutsideEvent]
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').InteractOutsideEvent,
-  ]
+  interactOutside: [event: popover.InteractOutsideEvent]
   /**
    * Function invoked when the popover opens or closes
    */
@@ -90,9 +86,6 @@ export type RootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [
-    event: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/interact-outside/dist/index').PointerDownOutsideEvent,
-  ]
-
+  pointerDownOutside: [event: popover.PointerDownOutsideEvent]
   'update:open': [open: boolean]
 }

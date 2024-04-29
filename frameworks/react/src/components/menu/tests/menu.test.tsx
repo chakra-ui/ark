@@ -148,7 +148,7 @@ describe('Menu', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(trigger)
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
   it('should open on context menu', async () => {

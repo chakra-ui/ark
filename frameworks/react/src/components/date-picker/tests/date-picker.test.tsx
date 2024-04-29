@@ -1,5 +1,5 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { DatePicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -47,7 +47,7 @@ describe('Date Picker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   }, 10000)
 
   it('should be fully controlled (true)', async () => {

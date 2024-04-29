@@ -1,5 +1,5 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { ColorPicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -36,7 +36,7 @@ describe('ColorPicker', () => {
 
     await user.click(screen.getByTestId('trigger'))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
-  }, 7000)
+  })
 
   it('should lazy mount and unmount on exit', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
@@ -47,8 +47,8 @@ describe('ColorPicker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
-  }, 7000)
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  })
 
   it('should render with default value', async () => {
     render(<ComponentUnderTest defaultValue="#ff00ff" />)

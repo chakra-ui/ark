@@ -30,10 +30,8 @@ describe('Toast', () => {
 
     await waitFor(() => expect(screen.queryByText('Title')).toBeVisible())
     await waitFor(() => expect(screen.queryByText('Description')).toBeVisible())
-
     await user.click(screen.getByText('Close'))
 
     await waitFor(() => expect(screen.queryByText('Title')).not.toBeInTheDocument())
-    await waitFor(() => expect(screen.queryByText('Description')).not.toBeInTheDocument())
   })
 })

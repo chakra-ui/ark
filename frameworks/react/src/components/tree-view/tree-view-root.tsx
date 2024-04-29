@@ -15,6 +15,7 @@ export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props
     'expandedValue',
     'focusedValue',
     'id',
+    'ids',
     'onExpandedChange',
     'onFocusChange',
     'onSelectionChange',

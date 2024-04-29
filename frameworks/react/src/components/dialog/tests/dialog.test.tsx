@@ -1,5 +1,5 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Dialog } from '../'
@@ -34,7 +34,7 @@ describe('Dialog', () => {
     expect(await screen.findByText('Dialog Title')).toBeVisible()
 
     await user.click(screen.getByText('Close'))
-    expect(await screen.findByText('Dialog Title')).not.toBeVisible()
+    await waitFor(() => expect(screen.queryByText('Dialog Title')).not.toBeVisible())
   })
 
   it('should invoke onOpenChange if dialog is closed', async () => {
@@ -72,7 +72,7 @@ describe('Dialog', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
   it('should be fully controlled (true)', async () => {
