@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-2] - 2024-04-29
+
 ### Added
 
 - Integrated latest zag-js version
