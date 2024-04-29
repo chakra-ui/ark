@@ -1,11 +1,5 @@
 import { dialogAnatomy } from '@ark-ui/anatomy'
-import {
-  cleanup,
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Dialog } from '../'
@@ -78,7 +72,7 @@ describe('Dialog', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    await waitForElementToBeRemoved(screen.queryByTestId('positioner'))
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
   })
 
   it('should be fully controlled (true)', async () => {

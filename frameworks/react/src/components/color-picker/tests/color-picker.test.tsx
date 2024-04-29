@@ -1,5 +1,5 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen, waitForElementToBeRemoved } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { ColorPicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -47,7 +47,7 @@ describe('ColorPicker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    await waitForElementToBeRemoved(screen.getByTestId('positioner'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
   it('should render with default value', async () => {
