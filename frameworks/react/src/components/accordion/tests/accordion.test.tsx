@@ -206,8 +206,8 @@ describe('Accordion', () => {
     await user.click(button)
 
     expect(screen.queryByText('React Content')).toBeVisible()
-    await user.click(button)
 
-    await waitFor(() => expect(screen.queryByText('React Content')).toBeInTheDocument())
+    await user.click(button)
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
   })
 })
