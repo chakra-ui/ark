@@ -1,5 +1,5 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitForElementToBeRemoved } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Collapsible, type CollapsibleRootProps } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -71,9 +71,7 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    await waitFor(() => {
-      expect(screen.queryByText('Content')).not.toBeInTheDocument()
-    })
+    await waitForElementToBeRemoved(screen.getByText('Content'))
   })
 
   it('should lazy mount and unmount on exit', async () => {
@@ -85,8 +83,6 @@ describe('Collapsible', () => {
     expect(screen.getByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Toggle' }))
-    await waitFor(() => {
-      expect(screen.queryByText('Content')).not.toBeInTheDocument()
-    })
+    await waitForElementToBeRemoved(screen.getByText('Content'))
   })
 })

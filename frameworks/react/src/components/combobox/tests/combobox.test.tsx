@@ -1,5 +1,12 @@
 import { comboboxAnatomy } from '@ark-ui/anatomy'
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Combobox } from '../'
@@ -92,6 +99,6 @@ describe('Combobox', () => {
     expect(await screen.findByTestId('positioner')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Open'))
-    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+    await waitForElementToBeRemoved(screen.getByTestId('positioner'))
   })
 })

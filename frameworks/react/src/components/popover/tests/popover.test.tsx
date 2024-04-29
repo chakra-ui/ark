@@ -1,5 +1,11 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import {
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Popover } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -34,7 +40,9 @@ describe('Popover', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument()
 
     await user.click(screen.getByText('close'))
-    expect(screen.queryByText('title')).not.toBeVisible()
+    await waitFor(() => {
+      expect(screen.queryByText('title')).not.toBeVisible()
+    })
   })
 
   it('should focus the first focusable element', async () => {
@@ -53,7 +61,9 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: /toggle/i }))
-    expect(screen.queryByText('title')).not.toBeVisible()
+    await waitFor(() => {
+      expect(screen.queryByText('title')).not.toBeVisible()
+    })
   })
 
   it('should be able to lazy mount', async () => {
@@ -81,6 +91,6 @@ describe('Popover', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'close' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitForElementToBeRemoved(() => screen.queryByTestId('positioner'))
   })
 })

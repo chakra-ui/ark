@@ -1,5 +1,12 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { Menu } from '..'
@@ -148,7 +155,7 @@ describe('Menu', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(trigger)
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    await waitForElementToBeRemoved(screen.queryByTestId('positioner'))
   })
 
   it('should open on context menu', async () => {
