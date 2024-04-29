@@ -1,11 +1,5 @@
 import { accordionAnatomy } from '@ark-ui/anatomy'
-import {
-  cleanup,
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { describe, vi } from 'vitest'
 import { Accordion } from '../'
@@ -214,6 +208,6 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
     await user.click(button)
 
-    await waitForElementToBeRemoved(() => screen.queryByText('React Content'))
+    await waitFor(() => expect(screen.queryByText('React Content')).toBeInTheDocument())
   })
 })

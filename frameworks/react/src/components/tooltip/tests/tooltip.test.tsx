@@ -1,11 +1,5 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
-import {
-  cleanup,
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { Tooltip } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -116,6 +110,6 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
     await user.keyboard('[Escape]')
-    await waitForElementToBeRemoved(() => screen.queryByRole('tooltip'))
+    await waitFor(() => expect(screen.queryByRole('tooltip')).not.toBeInTheDocument())
   })
 })

@@ -1,5 +1,5 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Popover } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -81,6 +81,6 @@ describe('Popover', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'close' }))
-    await waitForElementToBeRemoved(screen.getByTestId('positioner'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

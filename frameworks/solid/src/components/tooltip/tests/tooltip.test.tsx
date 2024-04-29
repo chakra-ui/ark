@@ -1,5 +1,5 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Tooltip } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -96,6 +96,6 @@ describe('Tooltip', () => {
     await user.hover(tooltipTrigger)
 
     await user.keyboard('[Escape]')
-    await waitForElementToBeRemoved(() => screen.queryByRole('tooltip'))
+    await waitFor(() => expect(screen.queryByRole('tooltip')).not.toBeInTheDocument())
   })
 })

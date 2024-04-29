@@ -1,11 +1,5 @@
 import { toastAnatomy } from '@ark-ui/anatomy'
-import {
-  cleanup,
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -38,6 +32,6 @@ describe('Toast', () => {
     await waitFor(() => expect(screen.queryByText('Description')).toBeVisible())
     await user.click(screen.getByText('Close'))
 
-    await waitForElementToBeRemoved(() => screen.queryByText('Title'))
+    await waitFor(() => expect(screen.queryByText('Title')).not.toBeInTheDocument())
   })
 })

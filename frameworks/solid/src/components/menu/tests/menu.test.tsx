@@ -1,11 +1,5 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@solidjs/testing-library'
+import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index, splitProps } from 'solid-js'
 import { vi } from 'vitest'
@@ -136,7 +130,7 @@ describe('Menu', () => {
     await user.click(trigger)
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
     await user.click(trigger)
-    await waitForElementToBeRemoved(screen.getByTestId('positioner'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
   it('should open on context menu', async () => {

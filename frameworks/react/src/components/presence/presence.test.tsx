@@ -1,4 +1,4 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
 import { Presence, type PresenceProps } from './'
@@ -52,7 +52,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    await waitForElementToBeRemoved(() => screen.queryByTestId('box'))
+    await waitFor(() => expect(screen.queryByTestId('box')).not.toBeInTheDocument())
   })
 
   it('should control presence when lazy mounting and unmounting on exit', async () => {
@@ -64,6 +64,6 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    await waitForElementToBeRemoved(() => screen.queryByTestId('box'))
+    await waitFor(() => expect(screen.queryByTestId('box')).not.toBeInTheDocument())
   })
 })
