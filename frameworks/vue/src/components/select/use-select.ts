@@ -2,7 +2,7 @@ import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './select'
@@ -46,11 +46,13 @@ export const useSelect = <T extends CollectionItem>(
   })
 
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const [state, send] = useMachine(
     select.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
         // @ts-expect-error FIXME

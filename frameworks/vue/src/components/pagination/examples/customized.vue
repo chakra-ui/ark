@@ -7,7 +7,6 @@ import { Pagination } from '../..'
     :count="5000"
     :page-size="20"
     :sibling-count="3"
-    dir="ltr"
     :translations="{
       nextTriggerLabel: 'Next',
       prevTriggerLabel: 'Prev',

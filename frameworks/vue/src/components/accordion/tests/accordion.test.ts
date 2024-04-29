@@ -89,12 +89,6 @@ describe('Accordion', () => {
     expect(onFocusChange).toHaveBeenCalled()
   })
 
-  // TODO use locale provider to set dir
-  it.skip('should render text direction based on dir prop', async () => {
-    render(ComponentUnderTest, { props: { dir: 'rtl' } })
-    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('dir', 'rtl')
-  })
-
   it('should focus the next/previous item on arrow up & down', async () => {
     render(ComponentUnderTest)
 

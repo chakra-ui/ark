@@ -1,7 +1,7 @@
 import * as pinInput from '@zag-js/pin-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './pin-input'
@@ -20,6 +20,7 @@ export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> 
 
 export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed(() => {
     const { defaultValue, modelValue, ...rest } = props
     return {
@@ -31,7 +32,8 @@ export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) =>
   const [state, send] = useMachine(
     pinInput.machine({
       ...context.value,
-      id: context.value.id || useId().value,
+      id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
         emit('valueChange', details)

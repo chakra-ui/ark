@@ -18,14 +18,13 @@ export interface FormatByteProps {
 <script setup lang="ts">
 import { formatBytes } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
-import { useLocaleContext } from '../../providers'
-import { LOCALE_DEFAULT } from '../../providers/locale/locale-context'
+import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
 
 const props = defineProps<FormatByteProps>()
-const ctx = useLocaleContext(LOCALE_DEFAULT)
+const locale = useLocaleContext(DEFAULT_LOCALE)
 const text = computed(() => {
   const { value, ...otherProps } = props
-  return formatBytes(value, ctx.value.locale, otherProps)
+  return formatBytes(value, locale.value.locale, otherProps)
 })
 </script>
 <template>

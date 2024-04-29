@@ -1,7 +1,7 @@
 import * as splitter from '@zag-js/splitter'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './splitter.types'
@@ -17,11 +17,13 @@ export const useSplitter = (
 ): UseSplitterReturn => {
   const context = ref(props)
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const [state, send] = useMachine(
     splitter.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onSizeChange: (details) => emit('sizeChange', details),
       onSizeChangeEnd: (details) => emit('sizeChangeEnd', details),

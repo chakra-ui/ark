@@ -6,6 +6,7 @@ import { LocaleContextProvider } from './locale-context'
 export interface LocaleProviderProps extends LocaleOptions {
   /**
    * The default locale to use if no locale is provided via props.
+   * @default 'en-US'
    */
   defaultLocale?: string
 }
@@ -13,7 +14,6 @@ export interface LocaleProviderProps extends LocaleOptions {
 export const LocaleProvider = defineComponent<LocaleProviderProps>(
   (props, { slots }) => {
     const localeRef = ref(props.locale || props.defaultLocale || 'en-US')
-
     const env = useEnvironmentContext()
 
     onMounted(() => {

@@ -1,7 +1,7 @@
 import * as hoverCard from '@zag-js/hover-card'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './hover-card.types'
@@ -22,11 +22,13 @@ export const useHoverCard = (
 ): UseHoverCardReturn => {
   const context = ref(props)
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const [state, send] = useMachine(
     hoverCard.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
       getRootNode: env?.value.getRootNode,

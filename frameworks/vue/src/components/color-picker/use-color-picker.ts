@@ -1,7 +1,7 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './color-picker.types'
@@ -29,6 +29,7 @@ export const useColorPicker = (
   emit: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed(() => {
     const { modelValue, defaultValue, ...rest } = props
@@ -44,6 +45,7 @@ export const useColorPicker = (
     colorPicker.machine({
       ...context.value,
       id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       onOpenChange(details) {
         emit('openChange', details)

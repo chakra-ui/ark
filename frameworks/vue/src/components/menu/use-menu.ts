@@ -1,7 +1,7 @@
 import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './menu'
@@ -23,11 +23,13 @@ export interface UseMenuReturn {
 export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuReturn => {
   const context = ref(props)
   const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const [state, send, machine] = useMachine(
     menu.machine({
       ...context.value,
-      id: context.value.id || useId().value,
+      id: context.value.id ?? useId().value,
+      dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
       getRootNode: env?.value.getRootNode,

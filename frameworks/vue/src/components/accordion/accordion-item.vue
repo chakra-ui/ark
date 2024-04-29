@@ -30,7 +30,6 @@ AccordionItemPropsProvider(props)
     :lazy-mount="renderStrategyProps.lazyMount"
     :unmount-on-exit="renderStrategyProps.unmountOnExit"
     :ids="{ content: itemContentProps.id }"
-    dir="ltr"
   >
     <slot />
   </Collapsible.Root>

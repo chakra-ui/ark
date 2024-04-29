@@ -17,14 +17,13 @@ export interface FormatNumberProps {
 <script setup lang="ts">
 import { formatNumber } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
-import { useLocaleContext } from '../../providers'
-import { LOCALE_DEFAULT } from '../../providers/locale/locale-context'
+import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
 
 const props = defineProps<FormatNumberProps>()
-const ctx = useLocaleContext(LOCALE_DEFAULT)
+const locale = useLocaleContext(DEFAULT_LOCALE)
 const text = computed(() => {
   const { value, ...intlProps } = props
-  return formatNumber(value, ctx.value.locale, intlProps)
+  return formatNumber(value, locale.value.locale, intlProps)
 })
 </script>
 
