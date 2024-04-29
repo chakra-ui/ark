@@ -13,6 +13,7 @@ import { LocaleContextProvider } from './use-locale-context'
 export interface LocaleProviderProps extends LocaleOptions, ParentProps {
   /**
    * The default locale to use if no locale is provided via props.
+   * @default 'en-US'
    */
   defaultLocale?: string
 }

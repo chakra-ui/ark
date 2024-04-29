@@ -1,7 +1,7 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createEffect, createMemo, createSignal, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
 
@@ -20,10 +20,16 @@ export interface UseCollapsibleReturn
   > {}
 
 export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
   const context = mergeProps(
-    { id: createUniqueId(), getRootNode, 'open.controlled': props.open !== undefined },
+    {
+      id: createUniqueId(),
+      dir: locale().dir,
+      getRootNode,
+      'open.controlled': props.open !== undefined,
+    },
     collapsibleProps,
   )
   const [state, send] = useMachine(collapsible.machine(context), { context })

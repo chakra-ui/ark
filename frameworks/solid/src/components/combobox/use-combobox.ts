@@ -2,7 +2,7 @@ import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 
@@ -26,10 +26,12 @@ export const useCombobox = <T extends CollectionItem>(
     'items',
   ])
   const collection = () => combobox.collection(collectionOptions)
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
     {
       id: createUniqueId(),
+      dir: locale().dir,
       getRootNode,
       'open.controlled': props.open !== undefined,
       collection: collection(),

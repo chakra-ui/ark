@@ -1,7 +1,7 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
-import { useEnvironmentContext } from '../../providers'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseColorPickerProps
@@ -18,10 +18,12 @@ export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const [local, rest] = splitProps(props, ['value'])
+  const locale = useLocaleContext()
   const getRootNode = useEnvironmentContext()
   const context = mergeProps(
     () => ({
       id: createUniqueId(),
+      dir: locale().dir,
       getRootNode,
       'open.controlled': props.open !== undefined,
       value: local.value ? colorPicker.parse(local.value) : undefined,
