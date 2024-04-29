@@ -24,9 +24,10 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     hookName = 'useContext',
     providerName = 'Provider',
     errorMessage,
+    defaultValue,
   } = options
 
-  const Context = createSolidContext<T | undefined>(undefined)
+  const Context = createSolidContext<T | undefined>(defaultValue)
 
   function useContext() {
     const context = useSolidContext(Context)
