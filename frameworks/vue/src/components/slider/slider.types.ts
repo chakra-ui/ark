@@ -25,8 +25,7 @@ export interface RootProps {
   /**
    * Function that returns a human readable value for the slider thumb
    */
-  // @ts-expect-error
-  getAriaValueText?: (details: ValueTextDetails) => string
+  getAriaValueText?: (details: slider.ValueTextDetails) => string
   /**
    * The unique identifier of the machine.
    */

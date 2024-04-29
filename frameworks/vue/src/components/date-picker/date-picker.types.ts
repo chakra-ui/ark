@@ -100,7 +100,7 @@ export interface RootProps {
   /**
    * The user provided options used to position the date picker content
    */
-  positioning?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/popper/dist/index').PositioningOptions
+  positioning?: datePicker.PositioningOptions
   /**
    * Whether the calendar is read-only.
    */

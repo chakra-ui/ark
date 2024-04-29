@@ -5,6 +5,10 @@ export interface RootProps {
    * The unique identifier of the machine.
    */
   id?: string
+  /**
+   * The ids of the elements in the avatar. Useful for composition.
+   */
+  ids?: Partial<{ root: string; image: string; fallback: string }>
 }
 
 export type RootEmits = {

@@ -17,7 +17,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the toggle. Useful for composition.
    */
-  ids?: Partial<{ root: string; toggle(value: string): string }>
+  ids?: Partial<{ root: string; item(value: string): string }>
   /**
    * Whether to loop focus inside the toggle group.
    */
@@ -30,7 +30,7 @@ export interface RootProps {
   /**
    * The orientation of the toggle group.
    */
-  orientation?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/types/dist/index').Orientation
+  orientation?: toggleGroup.Orientation
   /**
    *  Whether to use roving tab index to manage focus.
    */

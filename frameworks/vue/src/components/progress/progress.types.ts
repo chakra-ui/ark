@@ -6,6 +6,10 @@ export interface RootProps {
    */
   id?: string
   /**
+   * The ids of the elements in the progress bar. Useful for composition.
+   */
+  ids?: Partial<{ root: string; track: string; label: string; circle: string }>
+  /**
    * The maximum allowed value of the progress bar.
    */
   max?: number
@@ -17,7 +21,7 @@ export interface RootProps {
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: import('/Users/christian/Workspace/ark-ui/node_modules/@zag-js/types/dist/index').Orientation
+  orientation?: progress.Orientation
   /**
    * The localized messages to use.
    */

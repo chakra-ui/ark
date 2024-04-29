@@ -2,7 +2,7 @@ import type * as accordion from '@zag-js/accordion'
 
 export interface RootProps {
   /**
-   * Whether an accordion item can be collapsed after it has been opened.
+   * Whether an accordion item can be after it has been expanded.
    * @default false
    */
   collapsible?: boolean
@@ -34,12 +34,13 @@ export interface RootProps {
    */
   modelValue?: string[]
   /**
-   * Whether multple accordion items can be open at the same time.
+   * Whether multple accordion items can be expanded at the same time.
    * @default false
    */
   multiple?: boolean
   /**
    *  The orientation of the accordion items.
+   *  @default "vertical"
    */
   orientation?: 'horizontal' | 'vertical'
 }
@@ -50,7 +51,7 @@ export type RootEmits = {
    */
   focusChange: [details: accordion.FocusChangeDetails]
   /**
-   * The callback fired when the state of opened/closed accordion items changes.
+   * The callback fired when the state of expanded/collapsed accordion items changes.
    */
   valueChange: [details: accordion.ValueChangeDetails]
   /**

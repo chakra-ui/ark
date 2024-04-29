@@ -15,6 +15,10 @@ export interface UseCollapsibleProps
    * Use when you do not need to control its open state.
    */
   defaultOpen?: collapsible.Context['open']
+  /**
+   * The controlled open state of the collapsible. Can be binded with v-model.
+   */
+  open?: collapsible.Context['open']
 }
 
 interface Collapsible extends collapsible.Api<PropTypes> {
