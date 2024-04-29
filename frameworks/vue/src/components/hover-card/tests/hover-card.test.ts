@@ -1,6 +1,6 @@
 import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import { HoverCard } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './hover-card.test.vue'
@@ -57,6 +57,6 @@ describe('Hover Card', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.unhover(screen.getByText('Hover me'))
-    await waitForElementToBeRemoved(screen.queryByTestId('positioner'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

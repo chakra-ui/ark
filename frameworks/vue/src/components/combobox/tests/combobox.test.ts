@@ -1,6 +1,6 @@
 import { comboboxAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/vue'
+import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
 import { Combobox } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './combobox.test.vue'
@@ -80,6 +80,6 @@ describe('Combobox', () => {
     expect(await screen.findByTestId('positioner')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Open'))
-    await waitForElementToBeRemoved(screen.queryByTestId('positioner'))
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })

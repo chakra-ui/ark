@@ -1,6 +1,6 @@
 import { accordionAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import { Accordion } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './accordion.test.vue'
@@ -186,6 +186,6 @@ describe('Accordion', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
 
     await user.click(button)
-    await waitForElementToBeRemoved(screen.queryByText('React Content'))
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
   })
 })

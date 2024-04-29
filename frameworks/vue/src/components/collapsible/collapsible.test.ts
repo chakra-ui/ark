@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './examples/basic.vue'
 
 describe('Collapsible', () => {
@@ -35,7 +35,7 @@ describe('Collapsible', () => {
     expect(screen.queryByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    await waitForElementToBeRemoved(screen.getByText('Content'))
+    await waitFor(() => expect(screen.queryByText('Content')).not.toBeInTheDocument())
   })
 
   it('should control presence when lazy mounting and unmounting on exit', async () => {
@@ -47,6 +47,6 @@ describe('Collapsible', () => {
     expect(screen.queryByText('Content')).toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    await waitForElementToBeRemoved(screen.getByText('Content'))
+    await waitFor(() => expect(screen.queryByText('Content')).not.toBeInTheDocument())
   })
 })
