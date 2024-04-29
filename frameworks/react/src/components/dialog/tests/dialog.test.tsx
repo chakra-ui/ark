@@ -72,7 +72,7 @@ describe('Dialog', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))
-    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
+    await waitFor(() => expect(screen.queryByTestId('positioner')).toBeInTheDocument())
   })
 
   it('should be fully controlled (true)', async () => {

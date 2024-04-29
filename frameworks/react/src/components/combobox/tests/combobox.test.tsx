@@ -92,6 +92,6 @@ describe('Combobox', () => {
     expect(await screen.findByTestId('positioner')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Open'))
-    await waitFor(() => expect(screen.getByTestId('positioner')).not.toBeInTheDocument())
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 })
