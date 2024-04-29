@@ -44,9 +44,7 @@ describe('Combobox', () => {
 
     await user.click(screen.getByRole('option', { name: 'React' }))
 
-    await waitFor(() => {
-      expect(onValueChange).toHaveBeenCalledTimes(1)
-    })
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 
   it('should open menu when onOpenChange is called', async () => {

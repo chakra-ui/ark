@@ -105,6 +105,6 @@ describe('Tabs', () => {
     expect(screen.queryByText('React Content')).toBeVisible()
 
     await user.click(screen.getByText('Solid Trigger'))
-    expect(screen.queryByText('React Content')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())
   })
 })

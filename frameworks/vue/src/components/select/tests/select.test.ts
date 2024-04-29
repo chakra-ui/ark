@@ -75,9 +75,7 @@ describe('Select', () => {
     const item = screen.getByText('React', { ignore: 'option' })
 
     await user.click(item)
-    await waitFor(() => {
-      expect(onValueChange).toHaveBeenCalledTimes(1)
-    })
+    await waitFor(() => expect(onValueChange).toHaveBeenCalledTimes(1))
   })
 
   it('should open menu when onOpenChange is called', async () => {

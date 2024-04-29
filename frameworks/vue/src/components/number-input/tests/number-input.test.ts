@@ -22,9 +22,7 @@ describe('NumberInput', () => {
     input.focus()
     fireEvent.wheel(input, { deltaY: -1 })
 
-    await waitFor(() => {
-      expect(input).toHaveValue('1')
-    })
+    await waitFor(() => expect(input).toHaveValue('1'))
   })
 
   it('should clamp value on blur when clampValueOnBlur is true', async () => {
@@ -35,9 +33,7 @@ describe('NumberInput', () => {
     input.focus()
     await user.tab()
 
-    await waitFor(() => {
-      expect(input).toHaveValue('10')
-    })
+    await waitFor(() => expect(input).toHaveValue('10'))
   })
 
   it('should allow value to exceed max when allowOverflow is true', async () => {
@@ -50,9 +46,7 @@ describe('NumberInput', () => {
     render(ComponentUnderTest, { props: { formatOptions: { currency: 'USD' }, modelValue: '5' } })
     const input = screen.getByRole('spinbutton')
 
-    await waitFor(() => {
-      expect(input).toHaveValue('5')
-    })
+    await waitFor(() => expect(input).toHaveValue('5'))
   })
 
   it('should increment value by step when using increment button', async () => {
@@ -61,9 +55,7 @@ describe('NumberInput', () => {
     await user.click(incrementBtn)
 
     const input = screen.getByRole('spinbutton')
-    await waitFor(() => {
-      expect(input).toHaveValue('5')
-    })
+    await waitFor(() => expect(input).toHaveValue('5'))
   })
 
   it.skip('should handle min and max fraction digits', async () => {
@@ -74,15 +66,10 @@ describe('NumberInput', () => {
       },
     })
     const input = screen.getByRole('spinbutton')
-    await waitFor(() => {
-      expect(input).toHaveValue('1.00')
-    })
+    await waitFor(() => expect(input).toHaveValue('1.00'))
     await user.clear(input)
     await user.type(input, '1.1234')
     await user.tab()
-
-    await waitFor(() => {
-      expect(input).toHaveValue('1.123')
-    })
+    await waitFor(() => expect(input).toHaveValue('1.123'))
   })
 })
