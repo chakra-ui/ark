@@ -13,8 +13,13 @@ import { usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
 const props = withDefaults(defineProps<PopoverRootProps>(), {
+  autoFocus: undefined,
+  closeOnEsc: undefined,
+  closeOnInteractOutside: undefined,
   defaultOpen: undefined,
+  modal: undefined,
   open: undefined,
+  portalled: undefined,
 })
 const emits = defineEmits<PopoverRootEmits>()
 

@@ -14,7 +14,11 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
 
-const props = defineProps<AccordionRootProps>()
+const props = withDefaults(defineProps<AccordionRootProps>(), {
+  collapsible: undefined,
+  disabled: undefined,
+  multiple: undefined,
+})
 const emits = defineEmits<AccordionRootEmits>()
 
 const accordion = useAccordion(props, emits)

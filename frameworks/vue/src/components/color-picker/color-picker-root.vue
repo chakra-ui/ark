@@ -14,8 +14,11 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<ColorPickerRootProps>(), {
+  closeOnSelect: undefined,
   defaultOpen: undefined,
+  disabled: undefined,
   open: undefined,
+  readOnly: undefined,
 })
 const emits = defineEmits<ColorPickerRootEmits>()
 

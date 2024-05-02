@@ -10,7 +10,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
-const props = defineProps<TreeViewRootProps>()
+const props = withDefaults(defineProps<TreeViewRootProps>(), {
+  openOnClick: undefined,
+  typeahead: undefined,
+})
 const emits = defineEmits<TreeViewRootEmits>()
 
 const treeView = useTreeView(props, emits)

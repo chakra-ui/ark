@@ -10,7 +10,11 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
-const props = defineProps<SliderRootProps>()
+const props = withDefaults(defineProps<SliderRootProps>(), {
+  disabled: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+})
 const emits = defineEmits<SliderRootEmits>()
 
 const slider = useSlider(props, emits)

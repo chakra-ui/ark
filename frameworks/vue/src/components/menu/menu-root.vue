@@ -16,9 +16,11 @@ import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-c
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
 const props = withDefaults(defineProps<MenuRootProps>(), {
-  closeOnSelect: true,
+  closeOnSelect: undefined,
   defaultOpen: undefined,
+  loopFocus: undefined,
   open: undefined,
+  typeahead: undefined,
 })
 const emits = defineEmits<MenuRootEmits>()
 

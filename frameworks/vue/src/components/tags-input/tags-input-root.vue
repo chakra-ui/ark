@@ -10,7 +10,15 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 
-const props = withDefaults(defineProps<TagsInputRootProps>(), { editable: true })
+const props = withDefaults(defineProps<TagsInputRootProps>(), {
+  addOnPaste: undefined,
+  allowOverflow: undefined,
+  autoFocus: undefined,
+  disabled: undefined,
+  editable: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+})
 const emits = defineEmits<TagsInputRootEmits>()
 
 const tagsInput = useTagsInput(props, emits)

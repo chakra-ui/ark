@@ -10,7 +10,14 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
 
-const props = defineProps<EditableRootProps>()
+const props = withDefaults(defineProps<EditableRootProps>(), {
+  autoResize: undefined,
+  disabled: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+  selectOnFocus: undefined,
+  startWithEditView: undefined,
+})
 const emits = defineEmits<EditableRootEmits>()
 
 const editable = useEditable(props, emits)

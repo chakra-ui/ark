@@ -5,8 +5,8 @@ export interface SelectHiddenSelectProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useSelectContext } from './use-select-context';
+import { ark } from '../factory'
+import { useSelectContext } from './use-select-context'
 
 defineProps<SelectHiddenSelectProps>()
 const select = useSelectContext()

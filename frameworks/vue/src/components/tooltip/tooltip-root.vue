@@ -13,7 +13,11 @@ import { useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
 const props = withDefaults(defineProps<TooltipRootProps>(), {
+  closeOnEsc: undefined,
+  closeOnPointerDown: undefined,
   defaultOpen: undefined,
+  disabled: undefined,
+  interactive: undefined,
   open: undefined,
 })
 const emits = defineEmits<TooltipRootEmits>()

@@ -15,9 +15,14 @@ import { useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
 const props = withDefaults(defineProps<SelectRootProps>(), {
-  closeOnSelect: true,
+  closeOnSelect: undefined,
   defaultOpen: undefined,
+  disabled: undefined,
+  invalid: undefined,
+  loopFocus: undefined,
+  multiple: undefined,
   open: undefined,
+  readOnly: undefined,
 })
 const emits = defineEmits<SelectRootEmits>()
 

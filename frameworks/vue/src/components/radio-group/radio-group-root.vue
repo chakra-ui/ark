@@ -10,7 +10,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useRadioGroup } from './use-radio-group'
 import { RadioGroupProvider } from './use-radio-group-context'
 
-const props = defineProps<RadioGroupRootProps>()
+const props = withDefaults(defineProps<RadioGroupRootProps>(), {
+  disabled: undefined,
+  readOnly: undefined,
+})
 const emits = defineEmits<RadioGroupRootEmits>()
 
 const radioGroup = useRadioGroup(props, emits)

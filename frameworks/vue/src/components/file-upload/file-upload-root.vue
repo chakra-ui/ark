@@ -10,7 +10,11 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
 
-const props = defineProps<FileUploadRootProps>()
+const props = withDefaults(defineProps<FileUploadRootProps>(), {
+  allowDrop: undefined,
+  directory: undefined,
+  disabled: undefined,
+})
 const emits = defineEmits<FileUploadRootEmits>()
 
 const fileUpload = useFileUpload(props, emits)

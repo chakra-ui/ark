@@ -5,12 +5,11 @@ export interface SelectControlProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useSelectContext } from './use-select-context';
+import { ark } from '../factory'
+import { useSelectContext } from './use-select-context'
 
 defineProps<SelectControlProps>()
 const select = useSelectContext()
-
 </script>
 
 <template>

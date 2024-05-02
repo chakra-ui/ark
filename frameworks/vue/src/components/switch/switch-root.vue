@@ -13,6 +13,10 @@ import { SwitchProvider } from './use-switch-context'
 const props = withDefaults(defineProps<SwitchRootProps>(), {
   checked: undefined,
   defaultChecked: undefined,
+  disabled: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+  required: undefined,
 })
 const emits = defineEmits<SwitchRootEmits>()
 

@@ -15,9 +15,19 @@ import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
 const props = withDefaults(defineProps<ComboboxRootProps>(), {
-  closeOnSelect: true,
+  allowCustomValue: undefined,
+  autoFocus: undefined,
+  closeOnSelect: undefined,
   defaultOpen: undefined,
+  disabled: undefined,
+  dismissable: undefined,
+  invalid: undefined,
+  loopFocus: undefined,
+  multiple: undefined,
   open: undefined,
+  openOnClick: undefined,
+  openOnKeyPress: undefined,
+  readOnly: undefined,
 })
 const emits = defineEmits<ComboboxRootEmits>()
 

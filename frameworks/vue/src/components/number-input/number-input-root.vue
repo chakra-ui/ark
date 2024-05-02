@@ -10,7 +10,16 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 
-const props = defineProps<NumberInputRootProps>()
+const props = withDefaults(defineProps<NumberInputRootProps>(), {
+  allowMouseWheel: undefined,
+  allowOverflow: undefined,
+  clampValueOnBlur: undefined,
+  disabled: undefined,
+  focusInputOnChange: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+  spinOnPress: undefined,
+})
 const emits = defineEmits<NumberInputRootEmits>()
 
 const numberInput = useNumberInput(props, emits)

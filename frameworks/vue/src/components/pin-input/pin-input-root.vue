@@ -10,7 +10,15 @@ import { ark, type PolymorphicProps } from '../factory'
 import { usePinInput } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
 
-const props = defineProps<PinInputRootProps>()
+const props = withDefaults(defineProps<PinInputRootProps>(), {
+  autoFocus: undefined,
+  blurOnComplete: undefined,
+  disabled: undefined,
+  invalid: undefined,
+  mask: undefined,
+  otp: undefined,
+  selectOnFocus: undefined,
+})
 const emits = defineEmits<PinInputRootEmits>()
 
 const pinInput = usePinInput(props, emits)

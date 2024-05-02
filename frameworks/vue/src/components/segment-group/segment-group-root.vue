@@ -11,7 +11,11 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
-const props = defineProps<SegmentGroupRootProps>()
+const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
+  disabled: undefined,
+  readOnly: undefined,
+})
+
 const emits = defineEmits<SegmentGroupRootEmits>()
 
 const segmentGroup = useSegmentGroup(props, emits)

@@ -13,6 +13,10 @@ import { CheckboxProvider } from './use-checkbox-context'
 const props = withDefaults(defineProps<CheckboxRootProps>(), {
   checked: undefined,
   defaultChecked: undefined,
+  disabled: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+  required: undefined,
 })
 const emits = defineEmits<CheckboxRootEmits>()
 

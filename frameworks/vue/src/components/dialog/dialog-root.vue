@@ -13,11 +13,16 @@ import { useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
 const props = withDefaults(defineProps<DialogRootProps>(), {
+  closeOnEscape: undefined,
+  closeOnInteractOutside: undefined,
   defaultOpen: undefined,
+  modal: undefined,
   open: undefined,
+  preventScroll: undefined,
+  restoreFocus: undefined,
+  trapFocus: undefined,
 })
 const emits = defineEmits<DialogRootEmits>()
-
 const dialog = useDialog(props, emits)
 
 DialogProvider(dialog)

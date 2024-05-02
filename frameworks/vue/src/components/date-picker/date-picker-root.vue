@@ -15,9 +15,13 @@ import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 
 const props = withDefaults(defineProps<DatePickerRootProps>(), {
-  closeOnSelect: true,
+  closeOnSelect: undefined,
   defaultOpen: undefined,
+  disabled: undefined,
+  fixedWeeks: undefined,
+  modal: undefined,
   open: undefined,
+  readOnly: undefined,
 })
 const emits = defineEmits<DatePickerRootEmits>()
 

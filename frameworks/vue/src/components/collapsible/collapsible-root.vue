@@ -12,7 +12,10 @@ import { CollapsibleProvider } from './use-collapsible-context'
 
 const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   defaultOpen: undefined,
+  disabled: undefined,
+  lazyMount: undefined,
   open: undefined,
+  unmountOnExit: undefined,
 })
 const emits = defineEmits<CollapsibleRootEmits>()
 

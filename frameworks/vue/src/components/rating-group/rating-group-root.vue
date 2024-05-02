@@ -10,7 +10,12 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useRatingGroup } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
 
-const props = defineProps<RatingGroupRootProps>()
+const props = withDefaults(defineProps<RatingGroupRootProps>(), {
+  allowHalf: undefined,
+  autoFocus: undefined,
+  disabled: undefined,
+  readOnly: undefined,
+})
 const emits = defineEmits<RatingGroupRootEmits>()
 
 const ratingGroup = useRatingGroup(props, emits)

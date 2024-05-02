@@ -10,7 +10,9 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 
-const props = defineProps<CarouselRootProps>()
+const props = withDefaults(defineProps<CarouselRootProps>(), {
+  loop: undefined,
+})
 const emits = defineEmits<CarouselRootEmits>()
 
 const carousel = useCarousel(props, emits)

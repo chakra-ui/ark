@@ -11,8 +11,10 @@ import { useToggleGroup } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
 
 const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
-  loopFocus: true,
-  rovingFocus: true,
+  disabled: undefined,
+  loopFocus: undefined,
+  multiple: undefined,
+  rovingFocus: undefined,
 })
 const emits = defineEmits<ToggleGroupRootEmits>()
 

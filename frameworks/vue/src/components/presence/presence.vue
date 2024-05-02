@@ -10,7 +10,11 @@ import { ark, type PolymorphicProps } from '../factory'
 import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
 
-const props = withDefaults(defineProps<PresenceProps>(), { present: undefined })
+const props = withDefaults(defineProps<PresenceProps>(), {
+  lazyMount: undefined,
+  present: undefined,
+  unmountOnExit: undefined,
+})
 const emits = defineEmits<PresenceEmits>()
 
 // @ts-expect-error TODO tweak EmitFn
