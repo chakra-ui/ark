@@ -45,3 +45,7 @@ export {
   default as Trigger,
   type FileUploadTriggerProps as TriggerProps,
 } from './file-upload-trigger.vue'
+export {
+  default as HiddenInput,
+  type FileUploadHiddenInputProps as HiddenInputProps,
+} from './file-upload-hidden-input.vue'

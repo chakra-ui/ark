@@ -10,12 +10,7 @@ export const FileUploadDropzone = forwardRef<HTMLDivElement, FileUploadDropzoneP
     const fileUpload = useFileUploadContext()
     const mergedProps = mergeProps(fileUpload.dropzoneProps, props)
 
-    return (
-      <>
-        <ark.div {...mergedProps} ref={ref} />
-        <input {...fileUpload.hiddenInputProps} />
-      </>
-    )
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

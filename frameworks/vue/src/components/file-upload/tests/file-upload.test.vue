@@ -21,5 +21,6 @@ const testProps = ref<string[]>([])
         </FileUpload.Item>
       </FileUpload.Context>
     </FileUpload.ItemGroup>
+    <FileUpload.HiddenInput />
   </FileUpload.Root>
 </template>

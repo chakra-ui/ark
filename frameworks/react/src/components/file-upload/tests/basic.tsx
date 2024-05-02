@@ -33,5 +33,6 @@ export const ComponentUnderTest = (props: FileUploadRootProps) => (
         )
       }}
     </FileUpload.Context>
+    <FileUpload.HiddenInput />
   </FileUpload.Root>
 )

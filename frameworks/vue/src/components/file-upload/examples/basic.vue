@@ -22,5 +22,6 @@ import { FileUpload } from '../..'
         </FileUpload.Item>
       </FileUpload.Context>
     </FileUpload.ItemGroup>
+    <FileUpload.HiddenInput />
   </FileUpload.Root>
 </template>

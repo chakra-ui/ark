@@ -1,20 +1,17 @@
 <script lang="ts">
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadDropzoneProps extends PolymorphicProps {}
+export interface FileUploadHiddenInputProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-defineProps<FileUploadDropzoneProps>()
-
+defineProps<FileUploadHiddenInputProps>()
 const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.dropzoneProps" :as-child="asChild">
-    <slot />
-  </ark.div>
+  <ark.input v-bind="fileUpload.hiddenInputProps" :as-child="asChild" />
 </template>

@@ -41,3 +41,7 @@ export {
   FileUploadTrigger as Trigger,
   type FileUploadTriggerProps as TriggerProps,
 } from './file-upload-trigger'
+export {
+  FileUploadHiddenInput as HiddenInput,
+  type FileUploadHiddenInputProps as HiddenInputProps,
+} from './file-upload-hidden-input'

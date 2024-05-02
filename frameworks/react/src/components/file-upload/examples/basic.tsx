@@ -9,8 +9,8 @@ export const Basic = () => {
       <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
       <FileUpload.ItemGroup>
         <FileUpload.Context>
-          {(api) =>
-            api.acceptedFiles.map((file) => (
+          {({ acceptedFiles }) =>
+            acceptedFiles.map((file) => (
               <FileUpload.Item key={file.name} file={file}>
                 <FileUpload.ItemPreview type="image/*">
                   <FileUpload.ItemPreviewImage />
@@ -26,6 +26,7 @@ export const Basic = () => {
           }
         </FileUpload.Context>
       </FileUpload.ItemGroup>
+      <FileUpload.HiddenInput />
     </FileUpload.Root>
   )
 }

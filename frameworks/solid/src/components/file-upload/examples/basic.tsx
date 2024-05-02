@@ -25,5 +25,6 @@ export const Basic = () => (
         )}
       </FileUpload.Context>
     </FileUpload.ItemGroup>
+    <FileUpload.HiddenInput />
   </FileUpload.Root>
 )

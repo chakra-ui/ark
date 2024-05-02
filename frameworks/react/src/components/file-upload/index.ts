@@ -24,6 +24,7 @@ export {
 export { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
 export { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
 export { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
+export { FileUploadHiddenInput, type FileUploadHiddenInputProps } from './file-upload-hidden-input'
 export { type UseFileUploadContext, useFileUploadContext } from './use-file-upload-context'
 
 export * as FileUpload from './file-upload'
