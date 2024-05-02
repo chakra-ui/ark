@@ -6,7 +6,7 @@ export interface SwitchHiddenInputProps extends HTMLArkProps<'input'> {}
 
 export const SwitchHiddenInput = (props: SwitchHiddenInputProps) => {
   const api = useSwitchContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().hiddenInputProps, props)
 
   return <ark.input {...mergedProps} />
 }
