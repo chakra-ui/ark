@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@ark-ui/vue':
-    specifier: 1.0.0-2
-    version: 1.0.0-2(@internationalized/date@3.5.2)(vue@3.4.26)
+    specifier: 1.0.0-3
+    version: 1.0.0-3(@internationalized/date@3.5.2)(vue@3.4.26)
   lucide-vue-next:
     specifier: 0.376.0
     version: 0.376.0(vue@3.4.26)
@@ -87,8 +87,8 @@ packages:
       - '@internationalized/date'
     dev: false
 
-  /@ark-ui/vue@1.0.0-2(@internationalized/date@3.5.2)(vue@3.4.26):
-    resolution: {integrity: sha512-6ITnHTlZEQ3bdRwxOumA3LBOXB+F7KkDpgrHcpxLG3Tspcs3FOw5BWm/uKDlc0xe1mNd7G+IrQTy1lNqusKxrQ==}
+  /@ark-ui/vue@1.0.0-3(@internationalized/date@3.5.2)(vue@3.4.26):
+    resolution: {integrity: sha512-YfaHF2g8CbT9N7oHELjurw5JT2ZtQPtHP574hrDrLjeejzjhYEVodyzYzTL//71ZHeQ7iPRyM60YBENJEWuLdA==}
     peerDependencies:
       vue: '>=3.0.0'
     dependencies:
