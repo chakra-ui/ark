@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './radio-group.types'
 
 export interface RadioGroupRootProps extends RootProps, PolymorphicProps {}
@@ -10,10 +11,11 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useRadioGroup } from './use-radio-group'
 import { RadioGroupProvider } from './use-radio-group-context'
 
-const props = withDefaults(defineProps<RadioGroupRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   disabled: undefined,
   readOnly: undefined,
-})
+}
+const props = withDefaults(defineProps<RadioGroupRootProps>(), defaults)
 const emits = defineEmits<RadioGroupRootEmits>()
 
 const radioGroup = useRadioGroup(props, emits)

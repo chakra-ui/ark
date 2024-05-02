@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './file-upload.types'
 
 export interface FileUploadRootProps extends RootProps, PolymorphicProps {}
@@ -10,11 +11,13 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
 
-const props = withDefaults(defineProps<FileUploadRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   allowDrop: undefined,
   directory: undefined,
   disabled: undefined,
-})
+}
+
+const props = withDefaults(defineProps<FileUploadRootProps>(), defaults)
 const emits = defineEmits<FileUploadRootEmits>()
 
 const fileUpload = useFileUpload(props, emits)

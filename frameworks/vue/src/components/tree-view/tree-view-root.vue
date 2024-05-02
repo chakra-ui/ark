@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './tree-view.types'
 
 export interface TreeViewRootProps extends RootProps, PolymorphicProps {}
@@ -10,10 +11,11 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
-const props = withDefaults(defineProps<TreeViewRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   openOnClick: undefined,
   typeahead: undefined,
-})
+}
+const props = withDefaults(defineProps<TreeViewRootProps>(), defaults)
 const emits = defineEmits<TreeViewRootEmits>()
 
 const treeView = useTreeView(props, emits)

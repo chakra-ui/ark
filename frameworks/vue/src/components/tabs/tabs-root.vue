@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './tabs.types'
 
@@ -13,7 +14,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
-const props = withDefaults(defineProps<TabsRootProps>(), { loopFocus: true })
+const defaults: BooleanDefaults<RootProps> = {
+  loopFocus: undefined,
+}
+const props = withDefaults(defineProps<TabsRootProps>(), defaults)
 const emits = defineEmits<TabsRootEmits>()
 
 const tabs = useTabs(props, emits)

@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './color-picker.types'
 
@@ -13,13 +14,15 @@ import { ColorPickerProvider } from './use-color-picker-context'
 import { RenderStrategyPropsProvider } from '../../utils'
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<ColorPickerRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   closeOnSelect: undefined,
   defaultOpen: undefined,
   disabled: undefined,
   open: undefined,
   readOnly: undefined,
-})
+}
+
+const props = withDefaults(defineProps<ColorPickerRootProps>(), defaults)
 const emits = defineEmits<ColorPickerRootEmits>()
 
 const colorPicker = useColorPicker(props, emits)

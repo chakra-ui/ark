@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './combobox.types'
@@ -14,7 +15,7 @@ import { ark } from '../factory'
 import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
-const props = withDefaults(defineProps<ComboboxRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   allowCustomValue: undefined,
   autoFocus: undefined,
   closeOnSelect: undefined,
@@ -25,10 +26,13 @@ const props = withDefaults(defineProps<ComboboxRootProps>(), {
   loopFocus: undefined,
   multiple: undefined,
   open: undefined,
+  openOnChange: undefined,
   openOnClick: undefined,
   openOnKeyPress: undefined,
   readOnly: undefined,
-})
+}
+
+const props = withDefaults(defineProps<ComboboxRootProps>(), defaults)
 const emits = defineEmits<ComboboxRootEmits>()
 
 const combobox = useCombobox(props, emits)

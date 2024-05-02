@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { RootEmits, RootProps } from './editable.types'
+import type { BooleanDefaults } from '../../types'
 
 export interface EditableRootProps extends RootProps, PolymorphicProps {}
 export interface EditableRootEmits extends RootEmits {}
@@ -10,14 +11,16 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
 
-const props = withDefaults(defineProps<EditableRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   autoResize: undefined,
   disabled: undefined,
   invalid: undefined,
   readOnly: undefined,
   selectOnFocus: undefined,
   startWithEditView: undefined,
-})
+}
+
+const props = withDefaults(defineProps<EditableRootProps>(), defaults)
 const emits = defineEmits<EditableRootEmits>()
 
 const editable = useEditable(props, emits)

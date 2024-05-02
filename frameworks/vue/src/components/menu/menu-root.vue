@@ -2,6 +2,7 @@
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './menu.types'
+import type { BooleanDefaults } from '../../types'
 
 export interface MenuRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface MenuRootEmits extends RootEmits {}
@@ -15,13 +16,14 @@ import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
-const props = withDefaults(defineProps<MenuRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   closeOnSelect: undefined,
   defaultOpen: undefined,
   loopFocus: undefined,
   open: undefined,
   typeahead: undefined,
-})
+}
+const props = withDefaults(defineProps<MenuRootProps>(), defaults)
 const emits = defineEmits<MenuRootEmits>()
 
 const { api, machine } = useMenu(props, emits)

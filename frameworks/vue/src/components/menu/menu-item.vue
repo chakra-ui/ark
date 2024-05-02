@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/menu'
 import type { PolymorphicProps } from '../factory'
+import type { BooleanDefaults } from '../../types'
 
 export interface MenuItemProps extends PolymorphicProps, ItemProps {}
 </script>
@@ -11,7 +12,11 @@ import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 
-const props = withDefaults(defineProps<MenuItemProps>(), { closeOnSelect: true })
+const defaults: BooleanDefaults<ItemProps> = {
+  disabled: undefined,
+  closeOnSelect: undefined,
+}
+const props = withDefaults(defineProps<MenuItemProps>(), defaults)
 const menu = useMenuContext()
 
 MenuItemProvider(computed(() => menu.value.getItemState(props)))

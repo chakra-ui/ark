@@ -2,6 +2,7 @@
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
+import type { BooleanDefaults } from '../../types'
 
 export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootEmits extends RootEmits {}
@@ -14,7 +15,7 @@ import { ark } from '../factory'
 import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 
-const props = withDefaults(defineProps<DatePickerRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   closeOnSelect: undefined,
   defaultOpen: undefined,
   disabled: undefined,
@@ -22,7 +23,9 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   modal: undefined,
   open: undefined,
   readOnly: undefined,
-})
+}
+
+const props = withDefaults(defineProps<DatePickerRootProps>(), defaults)
 const emits = defineEmits<DatePickerRootEmits>()
 
 const datePicker = useDatePicker(props, emits)

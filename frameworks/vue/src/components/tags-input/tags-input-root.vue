@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './tags-input.types'
 
 export interface TagsInputRootProps extends RootProps, PolymorphicProps {}
@@ -10,7 +11,7 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 
-const props = withDefaults(defineProps<TagsInputRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   addOnPaste: undefined,
   allowOverflow: undefined,
   autoFocus: undefined,
@@ -18,7 +19,8 @@ const props = withDefaults(defineProps<TagsInputRootProps>(), {
   editable: undefined,
   invalid: undefined,
   readOnly: undefined,
-})
+}
+const props = withDefaults(defineProps<TagsInputRootProps>(), defaults)
 const emits = defineEmits<TagsInputRootEmits>()
 
 const tagsInput = useTagsInput(props, emits)

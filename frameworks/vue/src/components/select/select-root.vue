@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
@@ -14,7 +15,7 @@ import { ark } from '../factory'
 import { useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
-const props = withDefaults(defineProps<SelectRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   closeOnSelect: undefined,
   defaultOpen: undefined,
   disabled: undefined,
@@ -23,7 +24,9 @@ const props = withDefaults(defineProps<SelectRootProps>(), {
   multiple: undefined,
   open: undefined,
   readOnly: undefined,
-})
+}
+
+const props = withDefaults(defineProps<SelectRootProps>(), defaults)
 const emits = defineEmits<SelectRootEmits>()
 
 const select = useSelect(props, emits)

@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './switch.types'
 
 export interface SwitchRootProps extends RootProps, PolymorphicProps {}
@@ -10,14 +11,15 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 
-const props = withDefaults(defineProps<SwitchRootProps>(), {
+const defaults: BooleanDefaults<RootProps> = {
   checked: undefined,
   defaultChecked: undefined,
   disabled: undefined,
   invalid: undefined,
   readOnly: undefined,
   required: undefined,
-})
+}
+const props = withDefaults(defineProps<SwitchRootProps>(), defaults)
 const emits = defineEmits<SwitchRootEmits>()
 
 const context = useSwitch(props, emits)

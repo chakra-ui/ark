@@ -10,3 +10,11 @@ export type EmitFn<T> = <K extends keyof T>(
 ) => void
 
 export type CollectionItem = string | object
+
+type BooleanKey<T> = {
+  [K in keyof T]: boolean extends NonNullable<T[K]> ? K : never
+}[keyof T]
+
+export type BooleanDefaults<T> = {
+  [K in BooleanKey<T>]: undefined
+}

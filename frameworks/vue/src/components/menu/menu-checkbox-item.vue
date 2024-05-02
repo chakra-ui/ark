@@ -2,10 +2,10 @@
 import type { OptionItemProps } from '@zag-js/menu'
 import type { ComputedRef } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import type { BooleanDefaults } from '../../types'
 
-export interface MenuCheckboxItemProps
-  extends PolymorphicProps,
-    Omit<OptionItemProps, 'type' | 'onCheckedChange'> {}
+type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
+export interface MenuCheckboxItemProps extends PolymorphicProps, CheckboxItemProps {}
 
 export type MenuCheckboxItemEmits = {
   'update:checked': [value: boolean]
@@ -19,7 +19,12 @@ import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
-const props = withDefaults(defineProps<MenuCheckboxItemProps>(), { closeOnSelect: true })
+const defaults: BooleanDefaults<CheckboxItemProps> = {
+  checked: undefined,
+  disabled: undefined,
+  closeOnSelect: undefined,
+}
+const props = withDefaults(defineProps<MenuCheckboxItemProps>(), defaults)
 const emits = defineEmits<MenuCheckboxItemEmits>()
 
 const menu = useMenuContext()
