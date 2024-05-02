@@ -25,12 +25,12 @@ export const LocaleProvider = (props: LocaleProviderProps) => {
     localeProps.defaultLocale || localeProps.locale || 'en-US',
   )
 
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
 
   createEffect(() => {
     const cleanup = trackLocale({
       locale: localeProps.locale,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       onLocaleChange(locale) {
         setLocale(locale.locale)
       },

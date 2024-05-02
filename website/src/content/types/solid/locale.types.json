@@ -2,6 +2,7 @@
   "Provider": {
     "defaultLocale": {
       "type": "string",
+      "defaultValue": "'en-US'",
       "isRequired": false,
       "description": "The default locale to use if no locale is provided via props."
     },

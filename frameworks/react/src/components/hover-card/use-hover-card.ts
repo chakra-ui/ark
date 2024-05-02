@@ -17,11 +17,13 @@ export interface UseHoverCardProps
 export interface UseHoverCardReturn extends hoverCard.Api<PropTypes> {}
 
 export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: hoverCard.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,

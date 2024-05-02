@@ -30,7 +30,6 @@ export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Ap
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
-  const { dir } = useLocaleContext()
   const [collectionOptions, comboboxProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
@@ -44,10 +43,13 @@ export const useCombobox = <T extends CollectionItem>(
     Object.values(collectionOptions),
   )
 
+  const { dir } = useLocaleContext()
+  const { getRootNode } = useEnvironmentContext()
+
   const initialContext: combobox.Context<T> = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     collection,
     ...comboboxProps,
     value: props.defaultValue,

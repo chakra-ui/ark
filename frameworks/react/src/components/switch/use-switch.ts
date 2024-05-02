@@ -17,11 +17,13 @@ export interface UseSwitchProps
 export interface UseSwitchReturn extends zagSwitch.Api<PropTypes> {}
 
 export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: zagSwitch.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     checked: props.defaultChecked,
   }

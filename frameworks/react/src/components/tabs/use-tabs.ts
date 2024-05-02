@@ -16,11 +16,13 @@ export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRo
 export interface UseTabsReturn extends tabs.Api<PropTypes> {}
 
 export const useTabs = (props: UseTabsProps): UseTabsReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: tabs.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

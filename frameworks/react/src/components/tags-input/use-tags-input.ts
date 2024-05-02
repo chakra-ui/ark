@@ -17,11 +17,13 @@ export interface UseTagsInputProps
 export interface UseTagsInputReturn extends tagsInput.Api<PropTypes> {}
 
 export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: tagsInput.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

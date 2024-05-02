@@ -10,8 +10,11 @@ export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes
 
 export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(numberInput.machine(context), { context })
 
   return createMemo(() => numberInput.connect(state, send, normalizeProps))

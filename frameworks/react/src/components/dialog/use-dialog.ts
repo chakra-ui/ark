@@ -16,11 +16,13 @@ export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'op
 export interface UseDialogReturn extends dialog.Api<PropTypes> {}
 
 export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: dialog.Context = {
     id: useId(),
+    getRootNode,
     dir,
-    getRootNode: useEnvironmentContext(),
     ...props,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,

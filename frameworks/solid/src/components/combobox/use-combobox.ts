@@ -27,12 +27,12 @@ export const useCombobox = <T extends CollectionItem>(
   ])
   const collection = () => combobox.collection(collectionOptions)
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
   const context = mergeProps(
     {
       id: createUniqueId(),
       dir: locale().dir,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
       collection: collection(),
     },

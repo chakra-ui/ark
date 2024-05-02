@@ -19,12 +19,12 @@ export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const [local, rest] = splitProps(props, ['value'])
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
   const context = mergeProps(
     () => ({
       id: createUniqueId(),
       dir: locale().dir,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
       value: local.value ? colorPicker.parse(local.value) : undefined,
     }),

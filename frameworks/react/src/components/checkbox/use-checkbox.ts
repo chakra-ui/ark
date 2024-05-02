@@ -17,11 +17,13 @@ export interface UseCheckboxProps
 export interface UseCheckboxReturn extends checkbox.Api<PropTypes> {}
 
 export const useCheckbox = (props: UseCheckboxProps = {}): UseCheckboxReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: checkbox.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     checked: props.defaultChecked,
   }

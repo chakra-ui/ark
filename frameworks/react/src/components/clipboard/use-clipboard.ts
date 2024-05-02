@@ -8,9 +8,11 @@ export interface UseClipboardProps extends Optional<Omit<clipboard.Context, 'get
 export interface UseClipboardReturn extends clipboard.Api<PropTypes> {}
 
 export const useClipboard = (props: UseClipboardProps) => {
+  const { getRootNode } = useEnvironmentContext()
+
   const initialContext: clipboard.Context = {
     id: useId(),
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
   }
 

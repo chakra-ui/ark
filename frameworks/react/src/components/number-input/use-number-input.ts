@@ -16,11 +16,13 @@ export interface UseNumberInputProps
 export interface UseNumberInputReturn extends numberInput.Api<PropTypes> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: numberInput.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

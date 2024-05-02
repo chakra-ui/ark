@@ -16,11 +16,13 @@ export interface UsePaginationProps
 export interface UsePaginationReturn extends pagination.Api<PropTypes> {}
 
 export const usePagination = (props: UsePaginationProps): UsePaginationReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: pagination.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     page: props.defaultPage,
   }

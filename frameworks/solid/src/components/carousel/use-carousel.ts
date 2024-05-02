@@ -10,8 +10,11 @@ export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
 
   const [state, send] = useMachine(carousel.machine(context), { context })
   return createMemo(() => carousel.connect(state, send, normalizeProps))

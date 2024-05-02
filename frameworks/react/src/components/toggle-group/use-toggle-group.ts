@@ -17,11 +17,13 @@ export interface UseToggleGroupProps
 export interface UseToggleGroupReturn extends toggleGroup.Api<PropTypes> {}
 
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: toggleGroup.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

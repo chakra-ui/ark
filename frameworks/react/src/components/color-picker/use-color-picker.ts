@@ -29,11 +29,13 @@ export interface UseColorPickerProps
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: colorPicker.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue ? colorPicker.parse(props.defaultValue) : undefined,
     open: props.open ?? props.defaultOpen,

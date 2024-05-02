@@ -16,11 +16,13 @@ export interface UseCarouselProps
 export interface UseCarouselReturn extends carousel.Api<PropTypes> {}
 
 export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: carousel.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     index: props.defaultIndex,
     ...props,
   }

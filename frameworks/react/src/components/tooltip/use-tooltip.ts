@@ -16,11 +16,13 @@ export interface UseTooltipProps extends Omit<Optional<tooltip.Context, 'id'>, '
 export interface UseTooltipReturn extends tooltip.Api<PropTypes> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: tooltip.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,

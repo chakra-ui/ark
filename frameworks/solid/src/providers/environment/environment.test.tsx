@@ -1,31 +1,19 @@
 import { render, screen } from '@solidjs/testing-library'
-import { createEffect, createSignal } from 'solid-js'
-import { Environment, type EnvironmentContext, useEnvironmentContext } from './'
+import { Environment, useEnvironmentContext } from './'
 
 const PrintEnvironment = () => {
-  const getRootNode = useEnvironmentContext()
-  const [rootNode, setRootNode] = createSignal<
-    ReturnType<NonNullable<EnvironmentContext>> | undefined
-  >(undefined)
+  const environment = useEnvironmentContext()
 
-  createEffect(() => {
-    setRootNode(getRootNode?.())
-  })
-
-  return <pre aria-label="environment values">{rootNode()?.toString()}</pre>
+  return <pre>{environment().getRootNode().toString()}</pre>
 }
 
-const ComponentUnderTest = () => (
-  <Environment value={document}>
-    <PrintEnvironment />
-  </Environment>
-)
-
 describe('Environment', () => {
-  it.skip('should have access to the environment values', async () => {
-    render(() => <ComponentUnderTest />)
-    expect(screen.getByLabelText('environment values').innerHTML).toMatchInlineSnapshot(
-      '"[object HTMLDocument]"',
-    )
+  it('should have access to the environment values', async () => {
+    render(() => (
+      <Environment value={() => document}>
+        <PrintEnvironment />
+      </Environment>
+    ))
+    expect(screen.getByText('[object Document]')).toBeInTheDocument()
   })
 })

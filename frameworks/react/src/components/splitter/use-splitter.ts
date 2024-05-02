@@ -16,11 +16,13 @@ export interface UseSplitterProps
 export interface UseSplitterReturn extends splitter.Api<PropTypes> {}
 
 export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: splitter.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     size: props.defaultSize,
   }

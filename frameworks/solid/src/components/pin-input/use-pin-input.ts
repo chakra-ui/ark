@@ -10,8 +10,11 @@ export interface UsePinInputReturn extends Accessor<pinInput.Api<PropTypes>> {}
 
 export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(pinInput.machine(context), { context })
 
   return createMemo(() => pinInput.connect(state, send, normalizeProps))

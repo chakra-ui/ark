@@ -44,11 +44,13 @@ export interface UseDatePickerProps
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
 
 export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: datePicker.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,
     value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,

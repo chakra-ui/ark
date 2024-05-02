@@ -43,11 +43,13 @@ export const useSelect = <T extends CollectionItem>(
     Object.values(collectionOptions),
   )
 
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: select.Context<T> = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     collection,
     ...rest,
     value: props.defaultValue,

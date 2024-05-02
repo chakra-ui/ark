@@ -17,11 +17,13 @@ export interface UsePinInputProps
 export interface UsePinInputReturn extends pinInput.Api<PropTypes> {}
 
 export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: pinInput.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue ?? [],
   }

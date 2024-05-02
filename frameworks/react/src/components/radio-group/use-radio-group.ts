@@ -17,11 +17,13 @@ export interface UseRadioGroupProps
 export interface UseRadioGroupReturn extends radio.Api<PropTypes> {}
 
 export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: radio.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

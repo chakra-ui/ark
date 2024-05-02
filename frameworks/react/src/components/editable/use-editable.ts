@@ -18,11 +18,13 @@ export interface UseEditableProps
 export interface UseEditableReturn extends editable.Api<PropTypes> {}
 
 export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: editable.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

@@ -1,21 +1,28 @@
 <script setup lang="ts">
+import { getDocument, getWindow } from '@zag-js/dom-query'
 import { computed, ref } from 'vue'
-import { EnvironmentProvider } from './use-environment-context'
+import { runIfFn } from '../../utils'
+import { EnvironmentProvider, type RootNode } from './use-environment-context'
 
 export interface EnvironmentProps {
-  value?: ShadowRoot | Document | Node
+  value?: RootNode | (() => RootNode)
 }
 
-const elRef = ref<HTMLSpanElement>()
 const props = defineProps<EnvironmentProps>()
+const spanRef = ref<HTMLSpanElement | null>(null)
+
+const getRootNode = () => runIfFn(props.value) ?? spanRef.value?.ownerDocument ?? document
 
 const environment = computed(() => ({
-  getRootNode: () => props.value ?? elRef.value?.ownerDocument ?? document,
+  getRootNode,
+  getDocument: () => getDocument(getRootNode()),
+  getWindow: () => getWindow(getRootNode()),
 }))
+
 EnvironmentProvider(environment)
 </script>
 
 <template>
   <slot></slot>
-  <span hidden ref="{elRef}" v-if="!props.value"></span>
+  <span v-if="!props.value" hidden ref="spanRef"></span>
 </template>
