@@ -37,7 +37,6 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
   return (
     <PinInputProvider value={pinInput}>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...pinInput.hiddenInputProps} />
     </PinInputProvider>
   )
 })

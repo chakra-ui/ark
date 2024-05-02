@@ -8,5 +8,6 @@ export const WithMask = () => (
         <PinInput.Input key={id} index={index} />
       ))}
     </PinInput.Control>
+    <PinInput.HiddenInput />
   </PinInput.Root>
 )

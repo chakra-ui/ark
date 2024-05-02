@@ -8,5 +8,6 @@ export const ComponentUnderTest = (props: PinInputRootProps) => (
         <PinInput.Input key={id} index={index} />
       ))}
     </PinInput.Control>
+    <PinInput.HiddenInput />
   </PinInput.Root>
 )

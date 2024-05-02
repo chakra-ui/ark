@@ -29,13 +29,12 @@ export const PinInputRoot = (props: PinInputRootProps) => {
     'type',
     'value',
   ])
-  const api = usePinInput(usePinInputProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const pinInput = usePinInput(usePinInputProps)
+  const mergedProps = mergeProps(() => pinInput().rootProps, localProps)
 
   return (
-    <PinInputProvider value={api}>
+    <PinInputProvider value={pinInput}>
       <ark.div {...mergedProps} />
-      <input {...api().hiddenInputProps} />
     </PinInputProvider>
   )
 }
