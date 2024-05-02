@@ -11,5 +11,6 @@ const checked = ref(true)
       <Switch.Thumb />
     </Switch.Control>
     <Switch.Label>Label</Switch.Label>
+    <Switch.HiddenInput />
   </Switch.Root>
 </template>

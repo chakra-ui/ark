@@ -7,6 +7,7 @@ export const ComponentUnderTest = (props: SwitchRootProps) => {
         <Switch.Thumb />
       </Switch.Control>
       <Switch.Label>Label</Switch.Label>
+      <Switch.HiddenInput />
     </Switch.Root>
   )
 }

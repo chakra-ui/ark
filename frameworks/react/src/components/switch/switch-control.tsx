@@ -9,12 +9,7 @@ export const SwitchControl = forwardRef<HTMLSpanElement, SwitchControlProps>((pr
   const switchContext = useSwitchContext()
   const mergedProps = mergeProps(switchContext.controlProps, props)
 
-  return (
-    <>
-      <ark.span {...mergedProps} ref={ref} />
-      <input {...switchContext.hiddenInputProps} />
-    </>
-  )
+  return <ark.span {...mergedProps} ref={ref} />
 })
 
 SwitchControl.displayName = 'SwitchControl'

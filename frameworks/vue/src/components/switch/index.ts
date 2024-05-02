@@ -4,6 +4,10 @@ export { default as SwitchContext, type SwitchContextProps } from './switch-cont
 export { default as SwitchControl, type SwitchControlProps } from './switch-control.vue'
 export { default as SwitchLabel, type SwitchLabelProps } from './switch-label.vue'
 export {
+  default as SwitchHiddenInput,
+  type SwitchHiddenInputProps,
+} from './switch-hidden-input.vue'
+export {
   default as SwitchRoot,
   type SwitchRootEmits,
   type SwitchRootProps,

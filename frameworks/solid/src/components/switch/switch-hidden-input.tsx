@@ -2,11 +2,11 @@ import { mergeProps } from '@zag-js/solid'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
-export interface SwitchControlProps extends HTMLArkProps<'span'> {}
+export interface SwitchHiddenInputProps extends HTMLArkProps<'input'> {}
 
-export const SwitchControl = (props: SwitchControlProps) => {
+export const SwitchHiddenInput = (props: SwitchHiddenInputProps) => {
   const api = useSwitchContext()
   const mergedProps = mergeProps(() => api().controlProps, props)
 
-  return <ark.span {...mergedProps} />
+  return <ark.input {...mergedProps} />
 }

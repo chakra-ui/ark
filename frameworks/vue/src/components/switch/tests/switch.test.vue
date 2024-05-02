@@ -8,5 +8,6 @@ import { Switch } from '../'
       <Switch.Thumb />
     </Switch.Control>
     <Switch.Label>Label</Switch.Label>
+    <Switch.HiddenInput />
   </Switch.Root>
 </template>

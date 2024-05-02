@@ -10,5 +10,6 @@ import { Switch } from '../..'
     <Switch.Context v-slot="api">
       <Switch.Label>Feature is {{ api.checked ? 'enabled' : 'disabled' }}</Switch.Label>
     </Switch.Context>
+    <Switch.HiddenInput />
   </Switch.Root>
 </template>

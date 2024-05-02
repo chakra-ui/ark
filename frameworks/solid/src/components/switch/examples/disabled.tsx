@@ -7,6 +7,7 @@ export const Disabled = () => {
         <Switch.Thumb />
       </Switch.Control>
       <Switch.Label>Label</Switch.Label>
+      <Switch.HiddenInput />
     </Switch.Root>
   )
 }
