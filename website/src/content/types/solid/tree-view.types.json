@@ -50,6 +50,11 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
+    "ids": {
+      "type": "Partial<{ root: string; tree: string; label: string }>",
+      "isRequired": false,
+      "description": "The ids of the tree elements. Useful for composition."
+    },
     "onExpandedChange": {
       "type": "(details: ExpandedChangeDetails) => void",
       "isRequired": false,

@@ -27,12 +27,12 @@ export const useSelect = <T extends CollectionItem>(
   ])
   const collection = () => select.collection(collectionOptions)
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
   const context = mergeProps(
     {
       id: createUniqueId(),
       dir: locale().dir,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       collection: collection(),
       'open.controlled': props.open !== undefined,
     },

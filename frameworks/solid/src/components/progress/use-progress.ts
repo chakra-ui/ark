@@ -10,9 +10,12 @@ export interface UseProgressReturn extends Accessor<progress.Api<PropTypes>> {}
 
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
 
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(progress.machine(context), { context })
 
   return createMemo(() => progress.connect(state, send, normalizeProps))

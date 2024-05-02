@@ -10,8 +10,11 @@ export interface UseAccordionReturn extends Accessor<accordion.Api<PropTypes>> {
 
 export const useAccordion = (props: UseAccordionProps): UseAccordionReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(accordion.machine(context), { context })
 
   return createMemo(() => accordion.connect(state, send, normalizeProps))

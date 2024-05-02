@@ -10,12 +10,12 @@ export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
   const context = mergeProps(
     {
       id: createUniqueId(),
       dir: locale().dir,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
     },
     props,

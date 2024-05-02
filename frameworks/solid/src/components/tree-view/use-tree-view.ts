@@ -10,8 +10,11 @@ export interface UseTreeViewReturn extends Accessor<treeView.Api<PropTypes>> {}
 
 export const useTreeView = (props: UseTreeViewProps): UseTreeViewReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
 
   const [state, send] = useMachine(treeView.machine(context), { context })
   return createMemo(() => treeView.connect(state, send, normalizeProps))

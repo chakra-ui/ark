@@ -10,8 +10,11 @@ export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {
 
 export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(tagsInput.machine(context), { context })
 
   return createMemo(() => tagsInput.connect(state, send, normalizeProps))

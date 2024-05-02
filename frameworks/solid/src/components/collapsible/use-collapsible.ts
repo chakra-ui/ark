@@ -21,13 +21,13 @@ export interface UseCollapsibleReturn
 
 export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
   const context = mergeProps(
     {
       id: createUniqueId(),
       dir: locale().dir,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
     },
     collapsibleProps,

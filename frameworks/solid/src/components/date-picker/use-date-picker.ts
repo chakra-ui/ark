@@ -33,14 +33,14 @@ export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>>
 
 export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
   const [localProps, restProps] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
 
   const context = mergeProps(
     () => ({
       id: createUniqueId(),
       dir: locale().dir,
-      getRootNode,
+      getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
       focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,
       value: localProps.value ? datePicker.parse(localProps.value) : undefined,

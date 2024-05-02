@@ -10,8 +10,11 @@ export interface UseSliderReturn extends Accessor<slider.Api<PropTypes>> {}
 
 export const useSlider = (props: UseSliderProps): UseSliderReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(slider.machine(context), { context })
 
   return createMemo(() => slider.connect(state, send, normalizeProps))

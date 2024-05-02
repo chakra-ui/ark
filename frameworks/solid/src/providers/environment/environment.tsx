@@ -1,21 +1,29 @@
-import { type JSX, createMemo } from 'solid-js'
-import { EnvironmentProvider } from './use-environment-context'
+import { getDocument, getWindow } from '@zag-js/dom-query'
+import { type JSX, Show, createMemo, createSignal } from 'solid-js'
+import { runIfFn } from '../../utils/run-if-fn'
+import { EnvironmentProvider, type RootNode } from './use-environment-context'
 
 export interface EnvironmentProps {
   children?: JSX.Element
-  value?: ShadowRoot | Document | Node
+  value?: RootNode | (() => RootNode)
 }
 
 export const Environment = (props: EnvironmentProps) => {
-  const spanRef: HTMLSpanElement | undefined = undefined
+  const [spanRef, setSpanRef] = createSignal<HTMLSpanElement>()
+  const getRootNode = () => runIfFn(props.value) ?? spanRef()?.ownerDocument ?? document
 
-  // @ts-expect-error TODO fix
-  const currentEnv = createMemo(() => () => props.value ?? spanRef?.ownerDocument ?? document)
+  const environment = createMemo(() => ({
+    getRootNode,
+    getDocument: () => getDocument(getRootNode()),
+    getWindow: () => getWindow(getRootNode()),
+  }))
 
   return (
-    <EnvironmentProvider value={currentEnv()}>
+    <EnvironmentProvider value={environment}>
       {props.children}
-      {!props.value && <span hidden ref={spanRef} />}
+      <Show when={!props.value}>
+        <span hidden ref={setSpanRef} />
+      </Show>
     </EnvironmentProvider>
   )
 }

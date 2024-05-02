@@ -10,8 +10,11 @@ export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(splitter.machine(context), { context })
 
   return createMemo(() => splitter.connect(state, send, normalizeProps))

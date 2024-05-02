@@ -10,8 +10,11 @@ export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>>
 
 export const usePagination = (props: UsePaginationProps): UsePaginationReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
 
   const [state, send] = useMachine(pagination.machine(context), { context })
   return createMemo(() => pagination.connect(state, send, normalizeProps))

@@ -10,9 +10,12 @@ export interface UseToggleGroupReturn extends Accessor<toggleGroup.Api<PropTypes
 
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
+  const environment = useEnvironmentContext()
 
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
   const [state, send] = useMachine(toggleGroup.machine(context), {
     context,
   })

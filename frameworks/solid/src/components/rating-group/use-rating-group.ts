@@ -10,8 +10,11 @@ export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
   const locale = useLocaleContext()
-  const getRootNode = useEnvironmentContext()
-  const context = mergeProps({ id: createUniqueId(), dir: locale().dir, getRootNode }, props)
+  const environment = useEnvironmentContext()
+  const context = mergeProps(
+    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
+    props,
+  )
 
   const [state, send] = useMachine(rating.machine(context), { context })
 
