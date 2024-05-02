@@ -497,7 +497,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@ark-ui/anatomy": "3.0.0",
+    "@ark-ui/anatomy": "workspace:*",
     "@zag-js/accordion": "0.49.0",
     "@zag-js/avatar": "0.49.0",
     "@zag-js/carousel": "0.49.0",
