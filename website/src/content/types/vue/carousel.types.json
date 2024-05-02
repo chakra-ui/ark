@@ -1,72 +1,34 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "IndicatorGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
   "Indicator": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "readOnly": { "type": "boolean", "isRequired": false }
   },
-  "ItemGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "ItemGroup": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Item": {
     "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "NextTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "PrevTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "NextTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "PrevTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "indexChange": {
+      "type": "[details: SlideChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the slide changes."
     }
   },
   "Root": {
     "align": {
-      "type": "'center' | 'end' | 'start'",
+      "type": "'start' | 'center' | 'end'",
       "isRequired": false,
       "description": "The alignment of the slides in the carousel."
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultIndex": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The initial selected index of the carousel."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "id": {
       "type": "string",
       "isRequired": false,
@@ -82,11 +44,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the carousel should loop around."
-    },
-    "onIndexChange": {
-      "type": "(details: SlideChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the slide changes."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
@@ -105,11 +62,5 @@
       "description": "The amount of space between slides."
     }
   },
-  "Viewport": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Viewport": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

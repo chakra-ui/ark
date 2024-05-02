@@ -1,89 +1,53 @@
 {
   "ClearTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Input": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "index": { "type": "number", "isRequired": false }
   },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "MonthSelect": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "NextTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "MonthSelect": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "NextTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "PresetTrigger": {
     "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "PrevTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "RangeText": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "PrevTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RangeText": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "focusChange": {
+      "type": "[details: FocusChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the focused date changes."
+    },
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the calendar opens or closes."
+    },
+    "update:modelValue": {
+      "type": "[value: string[]]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "update:open": { "type": "[open: boolean]", "isRequired": true },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the value changes."
+    },
+    "viewChange": {
+      "type": "[details: ViewChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the view changes."
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "closeOnSelect": {
       "type": "boolean",
       "defaultValue": "true",
@@ -98,7 +62,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the date picker"
+      "description": "The initial value of the date picker when it is first rendered.\nUse when you do not need to control the state of the date picker."
     },
     "disabled": {
       "type": "boolean",
@@ -157,6 +121,11 @@
       "isRequired": false,
       "description": "Whether the calendar should be modal. This means that the calendar will\nblock interaction with the rest of the page, and trap focus within it."
     },
+    "modelValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The v-model value of the date picker"
+    },
     "name": {
       "type": "string",
       "isRequired": false,
@@ -167,31 +136,6 @@
       "isRequired": false,
       "description": "The number of months to display."
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the focused date changes."
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the calendar opens or closes."
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the value changes."
-    },
-    "onViewChange": {
-      "type": "(details: ViewChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the view changes."
-    },
     "open": {
       "type": "boolean",
       "isRequired": false,
@@ -201,11 +145,6 @@
       "type": "PositioningOptions",
       "isRequired": false,
       "description": "The user provided options used to position the date picker content"
-    },
-    "present": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
     },
     "readOnly": {
       "type": "boolean",
@@ -234,11 +173,6 @@
       "isRequired": false,
       "description": "Whether to unmount on exit."
     },
-    "value": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The value of the date picker"
-    },
     "view": {
       "type": "DateView",
       "defaultValue": "\"day\"",
@@ -246,94 +180,32 @@
       "description": "The view of the calendar"
     }
   },
-  "TableBody": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "TableBody": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "TableCell": {
     "value": { "type": "number | DateValue", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "columns": { "type": "number", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "visibleRange": { "type": "VisibleRange", "isRequired": false }
   },
   "TableCellTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "TableHead": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "TableHeader": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "TableHead": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "TableHeader": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Table": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "columns": { "type": "number", "isRequired": false }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "columns": { "type": "number", "isRequired": false },
+    "id": { "type": "string", "isRequired": false },
+    "view": { "type": "DateView", "isRequired": false }
   },
-  "TableRow": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ViewControl": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "TableRow": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "ViewControl": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "View": {
     "view": { "type": "DateView", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "ViewTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "YearSelect": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "ViewTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "YearSelect": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

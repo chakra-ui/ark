@@ -1,42 +1,17 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "copied": {
-      "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
-      "isRequired": false
-    }
-  },
-  "Input": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "statusChange": {
+      "type": "[details: CopyStatusDetails]",
+      "isRequired": true,
+      "description": "The function to be called when the value is copied to the clipboard"
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "id": {
       "type": "string",
       "isRequired": false,
@@ -46,11 +21,6 @@
       "type": "Partial<{ root: string; input: string; label: string }>",
       "isRequired": false,
       "description": "The ids of the elements in the clipboard. Useful for composition."
-    },
-    "onStatusChange": {
-      "type": "(details: CopyStatusDetails) => void",
-      "isRequired": false,
-      "description": "The function to be called when the value is copied to the clipboard"
     },
     "timeout": {
       "type": "number",
@@ -63,11 +33,5 @@
       "description": "The value to be copied to the clipboard"
     }
   },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

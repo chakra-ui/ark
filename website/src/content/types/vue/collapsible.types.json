@@ -1,17 +1,24 @@
 {
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "exitComplete": {
+      "type": "[]",
+      "isRequired": true,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the popup is opened"
+    },
+    "update:open": {
+      "type": "[open: boolean]",
+      "isRequired": true,
+      "description": "Event handler called when the open state of the collapsible changes."
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "defaultOpen": {
       "type": "boolean",
       "isRequired": false,
@@ -38,20 +45,10 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the popup is opened"
-    },
     "open": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether the collapsible is open"
+      "description": "The controlled open state of the collapsible. Can be binded with v-model."
     },
     "unmountOnExit": {
       "type": "boolean",
@@ -60,11 +57,5 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

@@ -1,38 +1,38 @@
 {
-  "Backdrop": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Backdrop": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "CloseTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Description": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Description": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "escapeKeyDown": {
+      "type": "[event: KeyboardEvent]",
+      "isRequired": true,
+      "description": "Callback to be invoked when the escape key is pressed"
+    },
+    "focusOutside": {
+      "type": "[event: FocusOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "interactOutside": {
+      "type": "[event: InteractOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Callback to be invoked when the dialog is opened or closed"
+    },
+    "pointerDownOutside": {
+      "type": "[event: PointerDownOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "update:open": { "type": "[open: boolean]", "isRequired": true }
   },
   "Root": {
     "aria-label": {
@@ -55,21 +55,10 @@
       "isRequired": false,
       "description": "The initial open state of the dialog when it is first rendered.\nUse when you do not need to control its open state."
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "finalFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement)",
+      "type": "HTMLElement | (() => HTMLElement)",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is closed"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",
@@ -82,7 +71,7 @@
       "description": "The ids of the elements in the dialog. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement)",
+      "type": "HTMLElement | (() => HTMLElement)",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is opened"
     },
@@ -97,42 +86,7 @@
       "isRequired": false,
       "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
     },
-    "onEscapeKeyDown": {
-      "type": "(event: KeyboardEvent) => void",
-      "isRequired": false,
-      "description": "Callback to be invoked when the escape key is pressed"
-    },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be invoked when the dialog is opened or closed"
-    },
-    "onPointerDownOutside": {
-      "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the component"
-    },
     "open": { "type": "boolean", "isRequired": false, "description": "Whether the dialog is open" },
-    "present": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
-    },
     "preventScroll": {
       "type": "boolean",
       "isRequired": false,
@@ -161,18 +115,6 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Title": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Title": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

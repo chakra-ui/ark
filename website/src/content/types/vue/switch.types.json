@@ -1,24 +1,20 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "checkedChange": {
+      "type": "[details: CheckedChangeDetails]",
+      "isRequired": true,
+      "description": "Function to call when the switch is clicked."
+    },
+    "update:checked": {
+      "type": "[checked: boolean]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "checked": {
       "type": "boolean",
       "isRequired": false,
@@ -27,7 +23,7 @@
     "defaultChecked": {
       "type": "boolean",
       "isRequired": false,
-      "description": "The initial checked state of the switch."
+      "description": "The checked state of the switch when it is first rendered.\nUse this when you do not need to control the state of the switch."
     },
     "disabled": {
       "type": "boolean",
@@ -64,11 +60,6 @@
       "isRequired": false,
       "description": "The name of the input field in a switch\n(Useful for form submission)."
     },
-    "onCheckedChange": {
-      "type": "(details: CheckedChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function to call when the switch is clicked."
-    },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -86,11 +77,5 @@
       "description": "The value of switch input. Useful for form submission."
     }
   },
-  "Thumb": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Thumb": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

@@ -1,32 +1,35 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Input": {
     "index": { "type": "number", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "update:modelValue": {
+      "type": "[value: string[]]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "Function called on input change"
+    },
+    "valueComplete": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when all inputs have valid values"
+    },
+    "valueInvalid": {
+      "type": "[details: ValueInvalidDetails]",
+      "isRequired": true,
+      "description": "Function called when an invalid value is entered"
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -40,7 +43,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the pin input."
+      "description": "The initial value of the pin input when it is first rendered.\nUse when you do not need to control the state of the pin input."
     },
     "disabled": {
       "type": "boolean",
@@ -72,25 +75,11 @@
       "isRequired": false,
       "description": "If `true`, the input's value will be masked just like `type=password`"
     },
+    "modelValue": { "type": "string[]", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name of the input element. Useful for form submission."
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called on input change"
-    },
-    "onValueComplete": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when all inputs have valid values"
-    },
-    "onValueInvalid": {
-      "type": "(details: ValueInvalidDetails) => void",
-      "isRequired": false,
-      "description": "Function called when an invalid value is entered"
     },
     "otp": {
       "type": "boolean",
@@ -118,14 +107,9 @@
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
     },
     "type": {
-      "type": "'numeric' | 'alphabetic' | 'alphanumeric'",
+      "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
       "isRequired": false,
       "description": "The type of value the pin-input should allow"
-    },
-    "value": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The value of the the pin input."
     }
   }
 }

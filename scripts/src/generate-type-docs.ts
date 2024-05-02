@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import path, { dirname } from 'node:path'
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
-import { globby } from 'globby'
+import { globby, globbySync } from 'globby'
 import prettier from 'prettier'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
 import ts from 'typescript'
@@ -91,7 +91,9 @@ async function extractPropertiesOfTypeName(
   }
 
   // Only document types that are component props
-  const foo = Object.fromEntries(Object.entries(results).filter(([key]) => key.endsWith('Props')))
+  const foo = Object.fromEntries(
+    Object.entries(results).filter(([key]) => key.endsWith('Props') || key.endsWith('Emits')),
+  )
 
   return Object.keys(foo).length ? results : null
 }
@@ -99,11 +101,10 @@ async function extractPropertiesOfTypeName(
 async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {
   const { shouldIgnoreProperty } = typeSearchOptions
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile)
+  const { options } = ts.parseJsonConfigFileContent(configFile.config, ts.sys, './dist')
 
-  const basePath = path.dirname(tsConfigPath)
-  const { fileNames, options } = ts.parseJsonConfigFileContent(configFile.config, ts.sys, basePath)
-
-  const program = ts.createProgram(fileNames, options)
+  const files = globbySync('./dist/')
+  const program = ts.createProgram(files, options)
   const sourceFiles = program.getSourceFiles()
 
   return async (searchTerm: Parameters<typeof extractPropertiesOfTypeName>[0]) => {

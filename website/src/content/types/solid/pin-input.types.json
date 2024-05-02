@@ -1,5 +1,6 @@
 {
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "isRequired": false } },
   "Input": {
     "index": { "type": "number", "isRequired": true },
     "asChild": { "type": "boolean", "isRequired": false }

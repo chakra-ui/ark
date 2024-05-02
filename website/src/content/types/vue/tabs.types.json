@@ -1,37 +1,36 @@
 {
   "TabContent": {
     "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
   "TabIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "TabList": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "TabList": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "TabTrigger": {
     "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the tab is disabled"
+    }
+  },
+  "RootEmits": {
+    "focusChange": {
+      "type": "[details: FocusChangeDetails]",
+      "isRequired": true,
+      "description": "Callback to be called when the focused tab changes"
+    },
+    "update:modelValue": {
+      "type": "[value: string]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "Callback to be called when the selected/active tab changes"
     }
   },
   "Root": {
@@ -41,15 +40,11 @@
       "isRequired": false,
       "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "defaultValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The initial value of the tabs."
+      "description": "The initial value of the tabs when it is first rendered.\nUse when you do not need to control the state of the tabs."
     },
     "id": {
       "type": "string",
@@ -73,16 +68,7 @@
       "isRequired": false,
       "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
     },
-    "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the focused tab changes"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Callback to be called when the selected/active tab changes"
-    },
+    "modelValue": { "type": "string", "isRequired": false },
     "orientation": {
       "type": "'horizontal' | 'vertical'",
       "defaultValue": "\"horizontal\"",
@@ -99,7 +85,6 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
-    },
-    "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
+    }
   }
 }

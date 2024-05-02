@@ -1,31 +1,15 @@
 {
-  "Arrow": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ArrowTip": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+  "Arrow": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "ArrowTip": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the hover card opens or closes."
+    },
+    "update:open": { "type": "[open: boolean]", "isRequired": true }
   },
   "Root": {
     "closeDelay": {
@@ -37,17 +21,6 @@
       "type": "boolean",
       "isRequired": false,
       "description": "The initial open state of the hover card when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",
@@ -65,16 +38,6 @@
       "isRequired": false,
       "description": "Whether to enable lazy mounting"
     },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the hover card opens or closes."
-    },
     "open": {
       "type": "boolean",
       "isRequired": false,
@@ -90,11 +53,6 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     },
-    "present": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
-    },
     "unmountOnExit": {
       "type": "boolean",
       "defaultValue": "false",
@@ -102,11 +60,5 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

@@ -1,31 +1,17 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "checkedChange": {
+      "type": "[details: CheckedChangeDetails]",
+      "isRequired": true,
+      "description": "The callback invoked when the checked state changes."
+    },
+    "update:checked": { "type": "[checked: CheckedState]", "isRequired": true }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "checked": {
       "type": "CheckedState",
       "isRequired": false,
@@ -34,7 +20,7 @@
     "defaultChecked": {
       "type": "CheckedState",
       "isRequired": false,
-      "description": "The initial checked state of the checkbox."
+      "description": "The checked state of the checkbox when it is first rendered.\nUse this when you do not need to control the state of the checkbox."
     },
     "disabled": {
       "type": "boolean",
@@ -65,11 +51,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The name of the input field in a checkbox.\nUseful for form submission."
-    },
-    "onCheckedChange": {
-      "type": "(details: CheckedChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback invoked when the checked state changes."
     },
     "readOnly": {
       "type": "boolean",

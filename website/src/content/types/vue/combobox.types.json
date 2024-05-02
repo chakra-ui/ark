@@ -1,59 +1,22 @@
 {
   "ClearTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Input": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "ItemGroupLabel": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
   "ItemGroup": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "id": { "type": "string", "isRequired": false }
   },
   "ItemIndicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
   "Item": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "item": { "type": "any", "isRequired": false, "description": "The item to render" },
     "persistFocus": {
       "type": "boolean",
@@ -61,30 +24,59 @@
       "description": "Whether hovering outside should clear the highlighted state"
     }
   },
-  "ItemText": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "ItemText": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "focusOutside": {
+      "type": "[event: FocusOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "highlightChange": {
+      "type": "[details: HighlightChangeDetails<CollectionItem>]",
+      "isRequired": true,
+      "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
+    },
+    "inputValueChange": {
+      "type": "[details: InputValueChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the input's value changes"
+    },
+    "interactOutside": {
+      "type": "[event: InteractOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the popup is opened"
+    },
+    "pointerDownOutside": {
+      "type": "[event: PointerDownOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "update:modelValue": {
+      "type": "[value: string[]]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "update:open": {
+      "type": "[open: boolean]",
+      "isRequired": true,
+      "description": "Event handler called when the open state of the combobox changes."
+    },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails<CollectionItem>]",
+      "isRequired": true,
+      "description": "Function called when a new item is selected"
     }
   },
   "Root": {
     "items": {
-      "type": "T[] | readonly T[]",
+      "type": "CollectionItem[] | readonly CollectionItem[]",
       "isRequired": true,
       "description": "The options of the select"
     },
@@ -93,11 +85,7 @@
       "isRequired": false,
       "description": "Whether to allow typing custom values in the input"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "autoFocus": {
       "type": "boolean",
       "isRequired": false,
@@ -116,7 +104,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "the initial value of the combobox"
+      "description": "The initial value of the combobox when it is first rendered.\nUse when you do not need to control the state of the combobox."
     },
     "disabled": {
       "type": "boolean",
@@ -134,7 +122,7 @@
       "description": "The associate form of the combobox."
     },
     "getSelectionValue": {
-      "type": "(details: SelectionValueDetails<T>) => string",
+      "type": "(details: SelectionValueDetails<CollectionItem>) => string",
       "isRequired": false,
       "description": "Function to get the display value of the selected item"
     },
@@ -154,7 +142,7 @@
       "description": "The ids of the elements in the combobox. Useful for composition."
     },
     "inputBehavior": {
-      "type": "'none' | 'autohighlight' | 'autocomplete'",
+      "type": "'none' | 'autocomplete' | 'autohighlight'",
       "isRequired": false,
       "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
     },
@@ -169,17 +157,17 @@
       "description": "Whether the combobox is required"
     },
     "isItemDisabled": {
-      "type": "(item: T) => boolean",
+      "type": "(item: CollectionItem) => boolean",
       "isRequired": false,
       "description": "Whether the item is disabled"
     },
     "itemToString": {
-      "type": "(item: T) => string",
+      "type": "(item: CollectionItem) => string",
       "isRequired": false,
       "description": "The label of the item"
     },
     "itemToValue": {
-      "type": "(item: T) => string",
+      "type": "(item: CollectionItem) => string",
       "isRequired": false,
       "description": "The value of the item"
     },
@@ -194,6 +182,7 @@
       "isRequired": false,
       "description": "Whether to loop the keyboard navigation through the items"
     },
+    "modelValue": { "type": "string[]", "isRequired": false },
     "multiple": {
       "type": "boolean",
       "isRequired": false,
@@ -203,46 +192,6 @@
       "type": "string",
       "isRequired": false,
       "description": "The `name` attribute of the combobox's input. Useful for form submission"
-    },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "onHighlightChange": {
-      "type": "(details: HighlightChangeDetails<T>) => void",
-      "isRequired": false,
-      "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
-    },
-    "onInputValueChange": {
-      "type": "(details: InputValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the input's value changes"
-    },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the popup is opened"
-    },
-    "onPointerDownOutside": {
-      "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the component"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails<T>) => void",
-      "isRequired": false,
-      "description": "Function called when a new item is selected"
     },
     "open": {
       "type": "boolean",
@@ -279,11 +228,6 @@
       "isRequired": false,
       "description": "The positioning options to dynamically position the menu"
     },
-    "present": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
-    },
     "readOnly": {
       "type": "boolean",
       "isRequired": false,
@@ -295,7 +239,7 @@
       "description": "Function to scroll to a specific index"
     },
     "selectionBehavior": {
-      "type": "'replace' | 'clear' | 'preserve'",
+      "type": "'clear' | 'replace' | 'preserve'",
       "isRequired": false,
       "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
     },
@@ -309,18 +253,7 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether to unmount on exit."
-    },
-    "value": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The keys of the selected items"
     }
   },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

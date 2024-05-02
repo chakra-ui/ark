@@ -1,11 +1,7 @@
 {
   "Panel": {
     "id": { "type": "PanelId", "isRequired": true },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "snapSize": { "type": "number", "isRequired": false }
   },
   "ResizeTrigger": {
@@ -13,25 +9,24 @@
       "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
       "isRequired": true
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "disabled": { "type": "boolean", "isRequired": false },
     "step": { "type": "number", "isRequired": false }
   },
+  "RootEmits": {
+    "sizeChange": {
+      "type": "[details: SizeChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the splitter is resized."
+    },
+    "sizeChangeEnd": {
+      "type": "[details: SizeChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the splitter resize ends."
+    }
+  },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "defaultSize": {
-      "type": "PanelSizeData[]",
-      "isRequired": false,
-      "description": "The initial size of the splitter."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "id": {
       "type": "string",
       "isRequired": false,
@@ -41,16 +36,6 @@
       "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
       "isRequired": false,
       "description": "The ids of the elements in the splitter. Useful for composition."
-    },
-    "onSizeChange": {
-      "type": "(details: SizeChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the splitter is resized."
-    },
-    "onSizeChangeEnd": {
-      "type": "(details: SizeChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the splitter resize ends."
     },
     "orientation": {
       "type": "'horizontal' | 'vertical'",

@@ -1,59 +1,41 @@
 {
-  "Anchor": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Arrow": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "ArrowTip": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Anchor": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Arrow": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "ArrowTip": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "CloseTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Content": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Description": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Indicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Positioner": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Description": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "escapeKeyDown": {
+      "type": "[event: KeyboardEvent]",
+      "isRequired": true,
+      "description": "Function called when the escape key is pressed"
+    },
+    "focusOutside": {
+      "type": "[event: FocusOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "interactOutside": {
+      "type": "[event: InteractOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the popover opens or closes"
+    },
+    "pointerDownOutside": {
+      "type": "[event: PointerDownOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "update:open": { "type": "[open: boolean]", "isRequired": true }
   },
   "Root": {
     "autoFocus": {
@@ -76,17 +58,6 @@
       "isRequired": false,
       "description": "The initial open state of the popover when it is first rendered.\nUse when you do not need to control its open state."
     },
-    "dir": {
-      "type": "'ltr' | 'rtl'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-    },
     "id": {
       "type": "string",
       "isRequired": false,
@@ -98,7 +69,7 @@
       "description": "The ids of the elements in the popover. Useful for composition."
     },
     "initialFocusEl": {
-      "type": "HTMLElement | (() => MaybeElement)",
+      "type": "HTMLElement | (() => HTMLElement)",
       "isRequired": false,
       "description": "The element to focus on when the popover is opened."
     },
@@ -113,36 +84,6 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
-    },
-    "onEscapeKeyDown": {
-      "type": "(event: KeyboardEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the escape key is pressed"
-    },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the popover opens or closes"
-    },
-    "onPointerDownOutside": {
-      "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the component"
     },
     "open": {
       "type": "boolean",
@@ -160,11 +101,6 @@
       "isRequired": false,
       "description": "The user provided options used to position the popover content"
     },
-    "present": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the node is present (controlled by the user)"
-    },
     "unmountOnExit": {
       "type": "boolean",
       "defaultValue": "false",
@@ -172,18 +108,6 @@
       "description": "Whether to unmount on exit."
     }
   },
-  "Title": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Trigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  }
+  "Title": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

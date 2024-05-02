@@ -1,37 +1,33 @@
 {
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "DecrementTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
   "IncrementTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Input": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "focusChange": {
+      "type": "[details: FocusChangeDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the number input is focused"
+    },
+    "update:modelValue": {
+      "type": "[value: string]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the value changes"
+    },
+    "valueInvalid": {
+      "type": "[details: ValueInvalidDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the value overflows or underflows the min/max range"
     }
   },
   "Root": {
@@ -46,11 +42,7 @@
       "isRequired": false,
       "description": "Whether to allow the value overflow the min/max range"
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "clampValueOnBlur": {
       "type": "boolean",
       "defaultValue": "true",
@@ -60,7 +52,7 @@
     "defaultValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The initial value of the number input."
+      "description": "The initial value of the number input when it is first rendered.\nUse when you do not need to control the state of the number input."
     },
     "disabled": {
       "type": "boolean",
@@ -94,7 +86,7 @@
       "description": "The ids of the elements in the number input. Useful for composition."
     },
     "inputMode": {
-      "type": "InputMode",
+      "type": "'text' | 'tel' | 'numeric' | 'decimal'",
       "defaultValue": "\"decimal\"",
       "isRequired": false,
       "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
@@ -120,25 +112,11 @@
       "isRequired": false,
       "description": "The minimum value of the number input"
     },
+    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name attribute of the number input. Useful for form submission."
-    },
-    "onFocusChange": {
-      "type": "(details: FocusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the number input is focused"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the value changes"
-    },
-    "onValueInvalid": {
-      "type": "(details: ValueInvalidDetails) => void",
-      "isRequired": false,
-      "description": "Function invoked when the value overflows or underflows the min/max range"
     },
     "pattern": {
       "type": "string",
@@ -165,14 +143,7 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    },
-    "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
-  },
-  "Scrubber": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
     }
-  }
+  },
+  "Scrubber": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
 }

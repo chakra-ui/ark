@@ -23,6 +23,7 @@
   "EyeDropperTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "FormatSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "FormatTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {

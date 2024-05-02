@@ -1,51 +1,53 @@
 {
-  "Area": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
+  "Area": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "CancelTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
-  "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "EditTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Input": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
-  },
-  "Preview": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "EditTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Preview": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "edit": {
+      "type": "[]",
+      "isRequired": true,
+      "description": "The callback that is called when in the edit mode."
+    },
+    "focusOutside": {
+      "type": "[event: FocusOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "interactOutside": {
+      "type": "[event: InteractOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "pointerDownOutside": {
+      "type": "[event: PointerDownOutsideEvent]",
+      "isRequired": true,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "update:modelValue": {
+      "type": "[value: string]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "The callback that is called when the editable's value is changed"
+    },
+    "valueCommit": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "The callback that is called when the editable's value is submitted."
+    },
+    "valueRevert": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
     }
   },
   "Root": {
@@ -55,11 +57,7 @@
       "isRequired": false,
       "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
     },
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
     "autoResize": {
       "type": "boolean",
       "isRequired": false,
@@ -68,7 +66,7 @@
     "defaultValue": {
       "type": "string",
       "isRequired": false,
-      "description": "The initial value of the editable."
+      "description": "The initial value of the editable when it is first rendered.\nUse when you do not need to control the state of the editable."
     },
     "disabled": {
       "type": "boolean",
@@ -76,7 +74,7 @@
       "description": "Whether the editable is disabled"
     },
     "finalFocusEl": {
-      "type": "() => HTMLElement | null",
+      "type": "() => HTMLElement",
       "isRequired": false,
       "description": "The element that should receive focus when the editable is closed.\nBy default, it will focus on the trigger element."
     },
@@ -105,45 +103,11 @@
       "isRequired": false,
       "description": "The maximum number of characters allowed in the editable"
     },
+    "modelValue": { "type": "string", "isRequired": false },
     "name": {
       "type": "string",
       "isRequired": false,
       "description": "The name attribute of the editable component. Used for form submission."
-    },
-    "onEdit": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "The callback that is called when in the edit mode."
-    },
-    "onFocusOutside": {
-      "type": "(event: FocusOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "onInteractOutside": {
-      "type": "(event: InteractOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "onPointerDownOutside": {
-      "type": "(event: PointerDownOutsideEvent) => void",
-      "isRequired": false,
-      "description": "Function called when the pointer is pressed down outside the component"
-    },
-    "onValueChange": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the editable's value is changed"
-    },
-    "onValueCommit": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the editable's value is submitted."
-    },
-    "onValueRevert": {
-      "type": "(details: ValueChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
     },
     "placeholder": {
       "type": "string | { edit: string; preview: string }",
@@ -175,18 +139,9 @@
       "type": "IntlTranslations",
       "isRequired": false,
       "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    },
-    "value": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The value of the editable in both edit and preview mode"
     }
   },
   "SubmitTrigger": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    }
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   }
 }
