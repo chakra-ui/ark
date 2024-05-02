@@ -1,23 +1,22 @@
-import { useEffect } from 'react'
-import Frame from 'react-frame-component'
+import Frame, { FrameContextConsumer } from 'react-frame-component'
 import { Environment, useEnvironmentContext } from '../'
-
-const PrintEnvironment = () => {
-  const { getRootNode } = useEnvironmentContext()
-  useEffect(() => {
-    const rootNode = getRootNode?.()
-    console.log(rootNode)
-  }, [getRootNode])
-
-  return null
-}
 
 export const Basic = () => {
   return (
-    <Frame>
-      <Environment>
-        <PrintEnvironment />
-      </Environment>
+    <Frame title="IFrame Context" width="100%" height="300px">
+      <FrameContextConsumer>
+        {({ document }) => (
+          <Environment value={document}>
+            <PrintEnvironment />
+          </Environment>
+        )}
+      </FrameContextConsumer>
     </Frame>
   )
+}
+
+const PrintEnvironment = () => {
+  const { getRootNode } = useEnvironmentContext()
+
+  return <pre>{JSON.stringify(getRootNode(), null, 2)}</pre>
 }

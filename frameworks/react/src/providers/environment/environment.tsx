@@ -1,9 +1,7 @@
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type ReactNode, useMemo, useRef } from 'react'
 import { runIfFn } from '../../utils/run-if-fn'
-import { EnvironmentProvider } from './use-environment-context'
-
-export type RootNode = ShadowRoot | Document | Node
+import { EnvironmentProvider, type RootNode } from './use-environment-context'
 
 export interface EnvironmentProps {
   children?: ReactNode
