@@ -8,6 +8,7 @@ export { SelectClearTrigger, type SelectClearTriggerProps } from './select-clear
 export { SelectContent, type SelectContentProps } from './select-content'
 export { SelectContext, type SelectContextProps } from './select-context'
 export { SelectControl, type SelectControlProps } from './select-control'
+export { SelectHiddenSelect, type SelectHiddenSelectProps } from './select-hidden-select'
 export { SelectIndicator, type SelectIndicatorProps } from './select-indicator'
 export { SelectItem, type SelectItemProps } from './select-item'
 export { SelectItemContext, type SelectItemContextProps } from './select-item-context'

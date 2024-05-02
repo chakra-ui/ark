@@ -35,5 +35,6 @@ const items = ref([
         </Select.Content>
       </Select.Positioner>
     </Teleport>
+    <Select.HiddenSelect />
   </Select.Root>
 </template>

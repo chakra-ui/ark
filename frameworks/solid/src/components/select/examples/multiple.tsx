@@ -33,6 +33,7 @@ export const Multiple = () => {
           </Select.Content>
         </Select.Positioner>
       </Portal>
+      <Select.HiddenSelect />
     </Select.Root>
   )
 }

@@ -31,5 +31,6 @@ const items = ref(['React', 'Solid', 'Vue'])
         </Select.Content>
       </Select.Positioner>
     </Teleport>
+    <Select.HiddenSelect />
   </Select.Root>
 </template>

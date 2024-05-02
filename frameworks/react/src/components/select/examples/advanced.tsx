@@ -36,6 +36,7 @@ export const Advanced = () => {
           </Select.Content>
         </Select.Positioner>
       </Portal>
+      <Select.HiddenSelect />
     </Select.Root>
   )
 }

@@ -8,6 +8,10 @@ export { SelectContent as Content, type SelectContentProps as ContentProps } fro
 export { SelectContext as Context, type SelectContextProps as ContextProps } from './select-context'
 export { SelectControl as Control, type SelectControlProps as ControlProps } from './select-control'
 export {
+  SelectHiddenSelect as HiddenSelect,
+  type SelectHiddenSelectProps as HiddenSelectProps,
+} from './select-hidden-select'
+export {
   SelectIndicator as Indicator,
   type SelectIndicatorProps as IndicatorProps,
 } from './select-indicator'

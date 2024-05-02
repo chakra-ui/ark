@@ -8,6 +8,10 @@ export { default as Content, type SelectContentProps as ContentProps } from './s
 export { default as Context, type SelectContextProps as ContextProps } from './select-context.vue'
 export { default as Control, type SelectControlProps as ControlProps } from './select-control.vue'
 export {
+  default as HiddenSelect,
+  type SelectHiddenSelectProps as HiddenSelectProps,
+} from './select-hidden-select.vue'
+export {
   default as Indicator,
   type SelectIndicatorProps as IndicatorProps,
 } from './select-indicator.vue'

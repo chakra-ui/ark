@@ -30,6 +30,7 @@ export const Basic = () => {
           </Select.Content>
         </Select.Positioner>
       </Portal>
+      <Select.HiddenSelect />
     </Select.Root>
   )
 }

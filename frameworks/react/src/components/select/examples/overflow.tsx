@@ -72,6 +72,7 @@ export const Overflow = () => {
             </Select.Content>
           </Select.Positioner>
         </Portal>
+        <Select.HiddenSelect />
       </Select.Root>
     </main>
   )

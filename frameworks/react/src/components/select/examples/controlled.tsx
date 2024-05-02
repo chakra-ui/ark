@@ -40,6 +40,7 @@ export const Controlled = () => {
           </Select.Content>
         </Select.Positioner>
       </Portal>
+      <Select.HiddenSelect />
     </Select.Root>
   )
 }

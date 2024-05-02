@@ -21,6 +21,10 @@ export {
   default as SelectItemGroupLabel,
   type SelectItemGroupLabelProps,
 } from './select-item-group-label.vue'
+export {
+  default as SelectHiddenSelect,
+  type SelectHiddenSelectProps,
+} from './select-hidden-select.vue'
 export { default as SelectItemGroup, type SelectItemGroupProps } from './select-item-group.vue'
 export {
   default as SelectItemIndicator,
