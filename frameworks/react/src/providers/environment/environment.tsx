@@ -10,15 +10,13 @@ export interface EnvironmentProps {
 
 export const Environment = (props: EnvironmentProps) => {
   const { value, children } = props
-  const ref = useRef<HTMLSpanElement>(null)
+  const spanRef = useRef<HTMLSpanElement>(null)
 
   const getRootNode = useMemo(() => {
-    return () => runIfFn(value) ?? ref.current?.ownerDocument ?? document
+    return () => runIfFn(value) ?? spanRef.current?.ownerDocument ?? document
   }, [value])
 
-  const showSpan = !value
-
-  const context = useMemo(
+  const environment = useMemo(
     () => ({
       getRootNode,
       getWindow: () => getWindow(getRootNode()),
@@ -28,9 +26,9 @@ export const Environment = (props: EnvironmentProps) => {
   )
 
   return (
-    <EnvironmentProvider value={context}>
+    <EnvironmentProvider value={environment}>
       {children}
-      {showSpan && <span data-ark-env="" hidden ref={ref} />}
+      {!value && <span data-ark-env="" hidden ref={spanRef} />}
     </EnvironmentProvider>
   )
 }
