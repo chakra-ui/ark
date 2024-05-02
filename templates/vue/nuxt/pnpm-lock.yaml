@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@ark-ui/vue':
-    specifier: 1.0.0-3
-    version: 1.0.0-3(@internationalized/date@3.5.2)(vue@3.4.26)
+    specifier: 1.0.0-4
+    version: 1.0.0-4(@internationalized/date@3.5.2)(vue@3.4.26)
   lucide-vue-next:
     specifier: 0.376.0
     version: 0.376.0(vue@3.4.26)
@@ -87,8 +87,8 @@ packages:
       - '@internationalized/date'
     dev: false
 
-  /@ark-ui/vue@1.0.0-3(@internationalized/date@3.5.2)(vue@3.4.26):
-    resolution: {integrity: sha512-YfaHF2g8CbT9N7oHELjurw5JT2ZtQPtHP574hrDrLjeejzjhYEVodyzYzTL//71ZHeQ7iPRyM60YBENJEWuLdA==}
+  /@ark-ui/vue@1.0.0-4(@internationalized/date@3.5.2)(vue@3.4.26):
+    resolution: {integrity: sha512-yx9Rw1W9TopMDmAmI80t7+1V8n2HKq68/1qr70rOvdjzKPYEa+TfMmiXb0AgYpYCsngjtZ5gMqbuLsjR3e1mFw==}
     peerDependencies:
       vue: '>=3.0.0'
     dependencies:
@@ -103,6 +103,7 @@ packages:
       '@zag-js/combobox': 0.49.0
       '@zag-js/date-picker': 0.49.0
       '@zag-js/dialog': 0.49.0
+      '@zag-js/dom-query': 0.49.0
       '@zag-js/editable': 0.49.0
       '@zag-js/file-upload': 0.49.0
       '@zag-js/file-utils': 0.49.0
