@@ -19,8 +19,8 @@
     "website": "bun run --cwd website"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.1",
-    "@types/bun": "1.1.0",
+    "@biomejs/biome": "1.7.2",
+    "@types/bun": "1.1.1",
     "lefthook": "1.6.10",
     "turbo": "1.13.3",
     "typescript": "5.4.5"

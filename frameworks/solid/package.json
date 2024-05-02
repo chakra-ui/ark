@@ -117,7 +117,7 @@
     "@zag-js/types": "0.49.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.1",
+    "@biomejs/biome": "1.7.2",
     "@release-it/keep-a-changelog": "5.0.0",
     "@solidjs/testing-library": "0.8.7",
     "@storybook/addon-a11y": "8.0.9",
@@ -139,9 +139,9 @@
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
     "typescript": "5.4.5",
-    "vite": "5.2.10",
+    "vite": "5.2.11",
     "vite-plugin-solid": "2.10.2",
-    "vitest": "1.5.2"
+    "vitest": "1.5.3"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
