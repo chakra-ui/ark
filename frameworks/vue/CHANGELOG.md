@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [1.0.0-4] - 2024-05-02
+
 ### Fixed
 
 - Added missing `dom-query` dependency

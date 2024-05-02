@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/vue",
-  "version": "1.0.0-3",
+  "version": "1.0.0-4",
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
