@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Changed
+
+- Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`, `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
+
 ## [3.0.0-2] - 2024-05-02
 
 ### Removed
