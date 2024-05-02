@@ -71,6 +71,7 @@ export const Controlled = () => {
           </>
         )}
       </ColorPicker.Context>
+      <ColorPicker.HiddenInput />
     </ColorPicker.Root>
   )
 }

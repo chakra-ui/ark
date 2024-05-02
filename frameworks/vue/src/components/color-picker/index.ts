@@ -91,6 +91,10 @@ export {
   default as ColorPickerValueText,
   type ColorPickerValueTextProps,
 } from './color-picker-value-text.vue'
+export {
+  default as ColorPickerHiddenInput,
+  type ColorPickerHiddenInputProps,
+} from './color-picker-hidden-input.vue'
 export { default as ColorPickerView, type ColorPickerViewProps } from './color-picker-view.vue'
 export { type UseColorPickerContext, useColorPickerContext } from './use-color-picker-context'
 export * as ColorPicker from './color-picker'

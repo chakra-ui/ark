@@ -41,6 +41,10 @@ export {
   ColorPickerFormatTrigger,
   type ColorPickerFormatTriggerProps,
 } from './color-picker-format-trigger'
+export {
+  ColorPickerHiddenInput,
+  type ColorPickerHiddenInputProps,
+} from './color-picker-hidden-input'
 export { ColorPickerLabel, type ColorPickerLabelProps } from './color-picker-label'
 export { ColorPickerPositioner, type ColorPickerPositionerProps } from './color-picker-positioner'
 export { ColorPickerRoot, type ColorPickerRootProps } from './color-picker-root'
@@ -64,6 +68,6 @@ export {
 export { ColorPickerTrigger, type ColorPickerTriggerProps } from './color-picker-trigger'
 export { ColorPickerValueText, type ColorPickerValueTextProps } from './color-picker-value-text'
 export { ColorPickerView, type ColorPickerViewProps } from './color-picker-view'
-export { type UseColorPickerContext, useColorPickerContext } from './use-color-picker-context'
+export { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
 
 export * as ColorPicker from './color-picker'

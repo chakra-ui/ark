@@ -52,7 +52,6 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
     <ColorPickerProvider value={colorPicker}>
       <PresenceProvider value={presence}>
         <ark.div {...mergedProps} ref={ref} />
-        <input {...colorPicker.hiddenInputProps} />
       </PresenceProvider>
     </ColorPickerProvider>
   )

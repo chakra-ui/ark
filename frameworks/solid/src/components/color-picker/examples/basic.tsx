@@ -65,6 +65,7 @@ export const Basic = () => {
           </>
         )}
       </ColorPicker.Context>
+      <ColorPicker.HiddenInput />
     </ColorPicker.Root>
   )
 }

@@ -62,5 +62,6 @@ import { ColorPicker } from '../..'
         <ColorPicker.EyeDropperTrigger>Pick color</ColorPicker.EyeDropperTrigger>
       </ColorPicker.Content>
     </ColorPicker.Positioner>
+    <ColorPicker.HiddenInput />
   </ColorPicker.Root>
 </template>

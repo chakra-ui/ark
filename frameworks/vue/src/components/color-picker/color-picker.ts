@@ -5,10 +5,6 @@ export type {
   ValueChangeDetails,
 } from '@zag-js/color-picker'
 export {
-  default as Area,
-  type ColorPickerAreaProps as AreaProps,
-} from './color-picker-area.vue'
-export {
   default as AreaBackground,
   type ColorPickerAreaBackgroundProps as AreaBackgroundProps,
 } from './color-picker-area-background.vue'
@@ -17,13 +13,13 @@ export {
   type ColorPickerAreaThumbProps as AreaThumbProps,
 } from './color-picker-area-thumb.vue'
 export {
+  default as Area,
+  type ColorPickerAreaProps as AreaProps,
+} from './color-picker-area.vue'
+export {
   default as ChannelInput,
   type ColorPickerChannelInputProps as ChannelInputProps,
 } from './color-picker-channel-input.vue'
-export {
-  default as ChannelSlider,
-  type ColorPickerChannelSliderProps as ChannelSliderProps,
-} from './color-picker-channel-slider.vue'
 export {
   default as ChannelSliderThumb,
   type ColorPickerChannelSliderThumbProps as ChannelSliderThumbProps,
@@ -32,6 +28,10 @@ export {
   default as ChannelSliderTrack,
   type ColorPickerChannelSliderTrackProps as ChannelSliderTrackProps,
 } from './color-picker-channel-slider-track.vue'
+export {
+  default as ChannelSlider,
+  type ColorPickerChannelSliderProps as ChannelSliderProps,
+} from './color-picker-channel-slider.vue'
 export {
   default as Content,
   type ColorPickerContentProps as ContentProps,
@@ -57,6 +57,10 @@ export {
   type ColorPickerFormatTriggerProps as FormatTriggerProps,
 } from './color-picker-format-trigger.vue'
 export {
+  default as HiddenInput,
+  type ColorPickerHiddenInputProps as HiddenInputProps,
+} from './color-picker-hidden-input.vue'
+export {
   default as Label,
   type ColorPickerLabelProps as LabelProps,
 } from './color-picker-label.vue'
@@ -66,13 +70,9 @@ export {
 } from './color-picker-positioner.vue'
 export {
   default as Root,
-  type ColorPickerRootProps as RootProps,
   type ColorPickerRootEmits as RootEmits,
+  type ColorPickerRootProps as RootProps,
 } from './color-picker-root.vue'
-export {
-  default as Swatch,
-  type ColorPickerSwatchProps as SwatchProps,
-} from './color-picker-swatch.vue'
 export {
   default as SwatchGroup,
   type ColorPickerSwatchGroupProps as SwatchGroupProps,
@@ -85,6 +85,10 @@ export {
   default as SwatchTrigger,
   type ColorPickerSwatchTriggerProps as SwatchTriggerProps,
 } from './color-picker-swatch-trigger.vue'
+export {
+  default as Swatch,
+  type ColorPickerSwatchProps as SwatchProps,
+} from './color-picker-swatch.vue'
 export {
   default as TransparencyGrid,
   type ColorPickerTransparencyGridProps as TransparencyGridProps,

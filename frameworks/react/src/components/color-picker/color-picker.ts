@@ -100,3 +100,7 @@ export {
   ColorPickerView as View,
   type ColorPickerViewProps as ViewProps,
 } from './color-picker-view'
+export {
+  ColorPickerHiddenInput as HiddenInput,
+  type ColorPickerHiddenInputProps as HiddenInputProps,
+} from './color-picker-hidden-input'

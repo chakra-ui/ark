@@ -64,5 +64,6 @@ export const ComponentUnderTest = (props: ColorPickerRootProps) => (
         </>
       )}
     </ColorPicker.Context>
+    <ColorPicker.HiddenInput />
   </ColorPicker.Root>
 )

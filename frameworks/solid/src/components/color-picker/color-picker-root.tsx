@@ -50,7 +50,6 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
       <PresenceProvider value={apiPresence}>
         <ark.div {...mergedProps} />
       </PresenceProvider>
-      <input {...api().hiddenInputProps} />
     </ColorPickerProvider>
   )
 }
