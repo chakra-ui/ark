@@ -8,3 +8,4 @@ export {
   RenderStrategyPropsProvider,
   type RenderStrategyProps,
 } from './use-render-strategy'
+export { runIfFn } from './run-if-fn'

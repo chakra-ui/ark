@@ -5,5 +5,5 @@ const env = useEnvironmentContext()
 </script>
 
 <template>
-  <pre aria-label="environment values">{{ JSON.stringify(env?.getRootNode?.(), null, 2) }}</pre>
+  <pre data-testid="output">{{ JSON.stringify(env?.getRootNode(), null, 2) }}</pre>
 </template>
