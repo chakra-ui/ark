@@ -7,7 +7,13 @@ import { useId } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
 export interface UseSplitterProps
-  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial size of the panels when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
+   */
+  defaultSize?: splitter.Context['size']
+}
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
@@ -24,6 +30,7 @@ export const useSplitter = (
       ...context.value,
       id: context.value.id ?? useId().value,
       dir: locale.value.dir,
+      size: props.size ?? props.defaultSize,
       getRootNode: env?.value.getRootNode,
       onSizeChange: (details) => emit('sizeChange', details),
       onSizeChangeEnd: (details) => emit('sizeChangeEnd', details),

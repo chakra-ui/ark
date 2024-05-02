@@ -2,6 +2,11 @@ import type * as splitter from '@zag-js/splitter'
 
 export interface RootProps {
   /**
+   * The initial size of the panels when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
+   */
+  defaultSize?: splitter.PanelSizeData[]
+  /**
    * The unique identifier of the machine.
    */
   id?: string
