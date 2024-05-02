@@ -20,6 +20,13 @@
       "description": "Render as a different element type."
     }
   },
+  "HiddenSelect": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Indicator": {
     "asChild": {
       "type": "boolean",

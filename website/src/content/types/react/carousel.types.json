@@ -65,7 +65,7 @@
     "defaultIndex": {
       "type": "number",
       "isRequired": false,
-      "description": "The initial selected index of the carousel."
+      "description": "The initial index of the carousel when it is first rendered.\nUse this when you do not need to control the state of the carousel."
     },
     "id": {
       "type": "string",

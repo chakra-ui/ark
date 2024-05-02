@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UseCarouselProps
   extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial selected index of the carousel.
+   * The initial index of the carousel when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
    */
   defaultIndex?: carousel.Context['index']
 }

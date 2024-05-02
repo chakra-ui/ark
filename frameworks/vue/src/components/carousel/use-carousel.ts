@@ -7,7 +7,13 @@ import { useId } from '../../utils'
 import type { RootEmits } from './carousel.types'
 
 export interface UseCarouselProps
-  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial index of the carousel when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
+   */
+  defaultIndex?: carousel.Context['index']
+}
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (
@@ -23,6 +29,7 @@ export const useCarousel = (
       ...context.value,
       id: context.value.id ?? useId().value,
       dir: locale.value.dir,
+      index: props.index ?? props.defaultIndex,
       getRootNode: env?.value.getRootNode,
       onIndexChange: (details) => emit('indexChange', details),
     }),

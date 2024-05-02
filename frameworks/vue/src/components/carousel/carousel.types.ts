@@ -6,6 +6,11 @@ export interface RootProps {
    */
   align?: 'start' | 'center' | 'end'
   /**
+   * The initial index of the carousel when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
+   */
+  defaultIndex?: number
+  /**
    * The unique identifier of the machine.
    */
   id?: string

@@ -1,5 +1,6 @@
 {
   "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "RootEmits": {
     "checkedChange": {

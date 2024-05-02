@@ -4,6 +4,9 @@
   },
   "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "HiddenSelect": {
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+  },
   "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "ItemGroupLabel": {
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }

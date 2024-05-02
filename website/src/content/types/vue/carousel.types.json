@@ -29,6 +29,11 @@
       "description": "The alignment of the slides in the carousel."
     },
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "defaultIndex": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial index of the carousel when it is first rendered.\nUse this when you do not need to control the state of the carousel."
+    },
     "id": {
       "type": "string",
       "isRequired": false,

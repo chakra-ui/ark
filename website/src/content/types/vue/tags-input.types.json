@@ -3,6 +3,7 @@
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
   "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "ItemDeleteTrigger": {
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }

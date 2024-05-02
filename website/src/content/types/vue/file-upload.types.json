@@ -1,5 +1,6 @@
 {
   "Dropzone": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "ItemDeleteTrigger": {
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
   },
