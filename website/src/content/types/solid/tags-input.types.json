@@ -1,6 +1,7 @@
 {
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "isRequired": false } },
   "Input": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemDeleteTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemInput": { "asChild": { "type": "boolean", "isRequired": false } },

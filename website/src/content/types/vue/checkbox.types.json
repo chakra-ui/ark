@@ -1,6 +1,10 @@
 {
   "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Indicator": {
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "indeterminate": { "type": "boolean", "isRequired": false }
+  },
   "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
   "RootEmits": {
     "checkedChange": {

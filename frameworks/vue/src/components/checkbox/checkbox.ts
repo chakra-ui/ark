@@ -8,12 +8,16 @@ export {
   type CheckboxControlProps as ControlProps,
 } from './checkbox-control.vue'
 export {
+  default as HiddenInput,
+  type CheckboxHiddenInputProps as HiddenInputProps,
+} from './checkbox-hidden-input.vue'
+export {
   default as Indicator,
   type CheckboxIndicatorProps as IndicatorProps,
 } from './checkbox-indicator.vue'
 export { default as Label, type CheckboxLabelProps as LabelProps } from './checkbox-label.vue'
 export {
   default as Root,
-  type CheckboxRootProps as RootProps,
   type CheckboxRootEmits as RootEmits,
+  type CheckboxRootProps as RootProps,
 } from './checkbox-root.vue'

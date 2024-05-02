@@ -3,14 +3,18 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
-export interface CheckboxIndicatorProps extends HTMLArkProps<'div'> {}
+export interface CheckboxIndicatorProps extends HTMLArkProps<'div'> {
+  indeterminate?: boolean
+}
 
 export const CheckboxIndicator = forwardRef<HTMLDivElement, CheckboxIndicatorProps>(
   (props, ref) => {
+    const { indeterminate, ...rest } = props
     const checkbox = useCheckboxContext()
-    const mergedProps = mergeProps(checkbox.indicatorProps, props)
+    const mergedProps = mergeProps(checkbox.indicatorProps, rest)
+    const isVisible = indeterminate ? checkbox.indeterminate : checkbox.checked
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return <ark.div {...mergedProps} hidden={!isVisible} ref={ref} />
   },
 )
 

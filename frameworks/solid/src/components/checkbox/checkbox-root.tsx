@@ -21,11 +21,11 @@ export const CheckboxRoot = (props: CheckboxRootProps) => {
     'required',
     'value',
   ])
-  const api = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(() => api().rootProps, labelprops)
+  const checkbox = useCheckbox(useCheckboxProps)
+  const mergedProps = mergeProps(() => checkbox().rootProps, labelprops)
 
   return (
-    <CheckboxProvider value={api}>
+    <CheckboxProvider value={checkbox}>
       <ark.label {...mergedProps} />
     </CheckboxProvider>
   )

@@ -8,6 +8,10 @@ export {
   type CheckboxControlProps as ControlProps,
 } from './checkbox-control'
 export {
+  CheckboxHiddenInput as HiddenInput,
+  type CheckboxHiddenInputProps as HiddenInputProps,
+} from './checkbox-hidden-input'
+export {
   CheckboxIndicator as Indicator,
   type CheckboxIndicatorProps as IndicatorProps,
 } from './checkbox-indicator'

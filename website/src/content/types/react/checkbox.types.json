@@ -6,12 +6,20 @@
       "description": "Render as a different element type."
     }
   },
-  "Indicator": {
+  "HiddenInput": {
     "asChild": {
       "type": "boolean",
       "isRequired": false,
       "description": "Render as a different element type."
     }
+  },
+  "Indicator": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "indeterminate": { "type": "boolean", "isRequired": false }
   },
   "Label": {
     "asChild": {

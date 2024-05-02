@@ -9,12 +9,7 @@ export const CheckboxControl = forwardRef<HTMLDivElement, CheckboxControlProps>(
   const checkbox = useCheckboxContext()
   const mergedProps = mergeProps(checkbox.controlProps, props)
 
-  return (
-    <>
-      <ark.div {...mergedProps} ref={ref} />
-      <input {...checkbox.hiddenInputProps} />
-    </>
-  )
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 CheckboxControl.displayName = 'CheckboxControl'

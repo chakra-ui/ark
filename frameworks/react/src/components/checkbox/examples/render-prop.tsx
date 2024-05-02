@@ -1,15 +1,16 @@
+import { CheckIcon } from 'lucide-react'
 import { Checkbox } from '../..'
 
 export const RenderProp = () => (
   <Checkbox.Root>
+    <Checkbox.Control>
+      <Checkbox.Indicator>
+        <CheckIcon />
+      </Checkbox.Indicator>
+    </Checkbox.Control>
     <Checkbox.Context>
-      {(checkbox) => (
-        <Checkbox.Control>
-          {checkbox.checked && <span>✓</span>}
-          {checkbox.indeterminate && <span>-</span>}
-        </Checkbox.Control>
-      )}
+      {(checkbox) => <Checkbox.Label>Checkbox {checkbox.checked.toString()}</Checkbox.Label>}
     </Checkbox.Context>
-    <Checkbox.Label>Checkbox</Checkbox.Label>
+    <Checkbox.HiddenInput />
   </Checkbox.Root>
 )

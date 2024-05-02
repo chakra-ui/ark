@@ -2,6 +2,7 @@
   "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "HiddenSelect": { "asChild": { "type": "boolean", "isRequired": false } },
   "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroupLabel": { "asChild": { "type": "boolean", "isRequired": false } },
   "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
