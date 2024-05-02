@@ -3,14 +3,9 @@ import { Accordion } from '../..'
 
 export const LazyMount = () => {
   return (
-    <Accordion.Root lazyMount collapsible>
+    <Accordion.Root lazyMount unmountOnExit>
       {['React', 'Solid', 'Vue'].map((item) => (
-        <Accordion.Item
-          key={item}
-          value={item}
-          lazyMount={false}
-          onExitComplete={() => alert('exit')}
-        >
+        <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
             What is {item}?
             <Accordion.ItemIndicator>
