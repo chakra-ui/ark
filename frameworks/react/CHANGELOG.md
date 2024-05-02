@@ -12,6 +12,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
+- Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`, `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
 - Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
 
 ```diff
