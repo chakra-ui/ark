@@ -98,12 +98,12 @@
     "defaultExpandedValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial expanded ids of the tree view."
+      "description": "The initial expanded items of the tree view.\nUse this when you do not need to control the state of the tree view."
     },
     "defaultSelectedValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial selected ids of the tree view."
+      "description": "The initial selected items of the tree view.\nUse this when you do not need to control the state of the tree view."
     },
     "expandedValue": {
       "type": "string[]",

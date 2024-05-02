@@ -9,11 +9,11 @@ const checked = ref<CheckboxCheckedState>(true)
 <template>
   <Checkbox.Root v-model:checked="checked">
     <Checkbox.Label>Checkbox</Checkbox.Label>
-      <Checkbox.Control>
-        <Checkbox.Indicator>
-          <CheckIcon />
-        </Checkbox.Indicator>
-      </Checkbox.Control>
-      <Checkbox.HiddenInput />
+    <Checkbox.Control>
+      <Checkbox.Indicator>
+        <CheckIcon />
+      </Checkbox.Indicator>
+    </Checkbox.Control>
+    <Checkbox.HiddenInput />
   </Checkbox.Root>
 </template>

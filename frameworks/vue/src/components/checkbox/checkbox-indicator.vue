@@ -13,7 +13,9 @@ import { useCheckboxContext } from './use-checkbox-context'
 
 const props = defineProps<CheckboxIndicatorProps>()
 const checkbox = useCheckboxContext()
-const isHidden = computed(() => props.indeterminate ? checkbox.value.indeterminate : checkbox.value.checked)
+const isHidden = computed(() =>
+  props.indeterminate ? checkbox.value.indeterminate : checkbox.value.checked,
+)
 </script>
 
 <template>

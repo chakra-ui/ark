@@ -11,8 +11,8 @@ import { CheckIcon } from './icons'
       </Checkbox.Indicator>
     </Checkbox.Control>
     <Checkbox.Context v-slot="checkbox">
-        <Checkbox.Label>Checkbox {{ checkbox.checked.toString() }}</Checkbox.Label>
-      </Checkbox.Context>
+      <Checkbox.Label>Checkbox {{ checkbox.checked.toString() }}</Checkbox.Label>
+    </Checkbox.Context>
     <Checkbox.HiddenInput />
   </Checkbox.Root>
 </template>

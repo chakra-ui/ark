@@ -5,8 +5,8 @@ export interface CheckboxControlProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useCheckboxContext } from './use-checkbox-context';
+import { ark } from '../factory'
+import { useCheckboxContext } from './use-checkbox-context'
 
 defineProps<CheckboxControlProps>()
 const checkbox = useCheckboxContext()

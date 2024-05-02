@@ -9,7 +9,7 @@ const checked = ref<CheckboxCheckedState>(false)
   <button @click="() => (checked = true)">set checked</button>
   <Checkbox.Root :checked="checked">
     <Checkbox.Label>Checkbox</Checkbox.Label>
-    <Checkbox.Control data-testid="control" >
+    <Checkbox.Control data-testid="control">
       <Checkbox.Indicator />
     </Checkbox.Control>
     <Checkbox.HiddenInput />

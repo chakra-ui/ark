@@ -30,7 +30,7 @@
     "defaultSize": {
       "type": "PanelSizeData[]",
       "isRequired": false,
-      "description": "The initial size of the splitter."
+      "description": "The initial size of the panels when it is first rendered.\nUse this when you do not need to control the state of the carousel."
     },
     "id": {
       "type": "string",
