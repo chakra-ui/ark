@@ -89,6 +89,7 @@
     "@zag-js/combobox": "0.49.0",
     "@zag-js/date-picker": "0.49.0",
     "@zag-js/dialog": "0.49.0",
+    "@zag-js/dom-query": "0.49.0",
     "@zag-js/editable": "0.49.0",
     "@zag-js/file-upload": "0.49.0",
     "@zag-js/hover-card": "0.49.0",
