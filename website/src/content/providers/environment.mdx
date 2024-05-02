@@ -1,14 +1,12 @@
 ---
 id: environment
 title: Environment
-description:
-  Setup components for a custom environment like IFrames, Shadow DOM or an
+description: Setup components for a custom environment like IFrames, Shadow DOM or an
   Electron context.
 ---
 
 import { Story, ComponentPreview } from '~/components/docs'
 import ComponentTypes from '~/components/docs/component-types.astro'
-
 
 ## Explanation
 
@@ -39,9 +37,7 @@ import { useCallback, type ReactNode } from 'react'
 
 export const App = (props: { children: ReactNode }) => {
   const getRootNode = useCallback(() => document, [])
-  return (
-    <Environment value={getRootNode}>{props.children}</Environment>
-  )
+  return <Environment value={getRootNode}>{props.children}</Environment>
 }
 ```
 
@@ -53,5 +49,5 @@ It will return `undefined` by default, if the Environment component is not
 rendered as a parent.
 
 ```tsx
-const getRootNode = useEnvironmentContext()
+const { getRootNode, getWindow, getDocument } = useEnvironmentContext()
 ```

@@ -1,23 +1,17 @@
 import { render, screen } from '@testing-library/react'
-import { useEffect, useState } from 'react'
-import { Environment, type EnvironmentContext, useEnvironmentContext } from './'
+import { Environment } from './'
+import { useEnvironmentContext } from './use-environment-context'
 
 const PrintEnvironment = () => {
-  const getRootNode = useEnvironmentContext()
-  const [rootNode, setRootNode] = useState<ReturnType<NonNullable<EnvironmentContext>> | undefined>(
-    undefined,
-  )
-  useEffect(() => {
-    setRootNode(getRootNode?.())
-  }, [getRootNode])
-
+  const { getRootNode } = useEnvironmentContext()
+  const rootNode = getRootNode()
   return <pre aria-label="environment values">{JSON.stringify(rootNode, null, 2)}</pre>
 }
 
 describe('Environment', () => {
   it('should have access to the environment values', async () => {
     const ComponentUnderTest = () => (
-      <Environment value={document}>
+      <Environment value={() => document}>
         <PrintEnvironment />
       </Environment>
     )

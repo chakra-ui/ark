@@ -30,7 +30,7 @@
       "description": "The unique identifier of the machine."
     },
     "ids": {
-      "type": "Partial<{ root: string; toggle(value: string): string }>",
+      "type": "Partial<{ root: string; item(value: string): string }>",
       "isRequired": false,
       "description": "The ids of the elements in the toggle. Useful for composition."
     },

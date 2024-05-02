@@ -16,11 +16,13 @@ export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, '
 export interface UsePopoverReturn extends popover.Api<PropTypes> {}
 
 export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: popover.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,

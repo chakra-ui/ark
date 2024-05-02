@@ -45,6 +45,11 @@
       "isRequired": false,
       "description": "The unique identifier of the machine."
     },
+    "ids": {
+      "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the progress bar. Useful for composition."
+    },
     "max": {
       "type": "number",
       "isRequired": false,

@@ -17,11 +17,13 @@ export interface UseSliderProps
 export interface UseSliderReturn extends Slider.Api<PropTypes> {}
 
 export const useSlider = (props: UseSliderProps): UseSliderReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: Slider.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

@@ -17,11 +17,13 @@ export interface UseRatingGroupProps
 export interface UseRatingGroupReturn extends rating.Api<PropTypes> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: rating.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

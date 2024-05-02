@@ -11,7 +11,7 @@ export interface PortalProps {
 export const Portal = (props: PropsWithChildren<PortalProps>) => {
   const { children, container, disabled } = props
   const isServer = useIsServer()
-  const getRootNode = useEnvironmentContext()
+  const { getRootNode } = useEnvironmentContext()
 
   if (isServer || disabled) return <>{children}</>
 

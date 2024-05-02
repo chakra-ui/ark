@@ -10,11 +10,13 @@ export interface UseAvatarProps
 export interface UseAvatarReturn extends avatar.Api<PropTypes> {}
 
 export const useAvatar = (props: UseAvatarProps = {}): UseAvatarReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: avatar.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
   }
 

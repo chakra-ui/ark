@@ -3,11 +3,11 @@ import Frame from 'react-frame-component'
 import { Environment, useEnvironmentContext } from '../'
 
 const PrintEnvironment = () => {
-  const getRootNode = useEnvironmentContext()
+  const { getRootNode } = useEnvironmentContext()
   useEffect(() => {
     const rootNode = getRootNode?.()
     console.log(rootNode)
-  })
+  }, [getRootNode])
 
   return null
 }

@@ -17,11 +17,13 @@ export interface UseSegmentGroupProps
 export interface UseSegmentGroupReturn extends segmentGroup.Api<PropTypes> {}
 
 export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: segmentGroup.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     value: props.defaultValue,
   }

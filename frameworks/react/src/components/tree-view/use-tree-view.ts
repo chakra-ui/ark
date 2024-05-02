@@ -20,11 +20,13 @@ export interface UseTreeViewProps
 export interface UseTreeViewReturn extends treeView.Api<PropTypes> {}
 
 export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const initialContext: treeView.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     selectedValue: props.defaultSelectedValue,
     expandedValue: props.defaultExpandedValue,
     ...props,

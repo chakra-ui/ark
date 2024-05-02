@@ -1,3 +1,4 @@
+import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type ReactNode, useMemo, useRef } from 'react'
 import { runIfFn } from '../../utils/run-if-fn'
 import { EnvironmentProvider } from './use-environment-context'
@@ -19,8 +20,17 @@ export const Environment = (props: EnvironmentProps) => {
 
   const showSpan = !value
 
+  const context = useMemo(
+    () => ({
+      getRootNode,
+      getWindow: () => getWindow(getRootNode()),
+      getDocument: () => getDocument(getRootNode()),
+    }),
+    [getRootNode],
+  )
+
   return (
-    <EnvironmentProvider value={getRootNode}>
+    <EnvironmentProvider value={context}>
       {children}
       {showSpan && <span data-ark-env="" hidden ref={ref} />}
     </EnvironmentProvider>

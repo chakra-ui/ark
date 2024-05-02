@@ -19,11 +19,13 @@ export interface UseMenuReturn {
 }
 
 export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
+  const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+
   const context: menu.Context = {
     id: useId(),
     dir,
-    getRootNode: useEnvironmentContext(),
+    getRootNode,
     ...props,
     onOpenChange: useEvent(props.onOpenChange),
     onSelect: useEvent(props.onSelect),
