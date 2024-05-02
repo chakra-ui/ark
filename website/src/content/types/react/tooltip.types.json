@@ -53,21 +53,10 @@
       "isRequired": false,
       "description": "The initial open state of the tooltip when it is first rendered.\nUse when you do not need to control its open state."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
       "description": "Whether the tooltip is disabled"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": { "type": "string", "isRequired": false, "description": "The `id` of the tooltip." },
     "ids": {

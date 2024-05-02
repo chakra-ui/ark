@@ -55,21 +55,10 @@
       "isRequired": false,
       "description": "The initial open state of the dialog when it is first rendered.\nUse when you do not need to control its open state."
     },
-    "dir": {
-      "type": "'rtl' | 'ltr'",
-      "defaultValue": "\"ltr\"",
-      "isRequired": false,
-      "description": "The document's text/writing direction."
-    },
     "finalFocusEl": {
       "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,
       "description": "Element to receive focus when the dialog is closed"
-    },
-    "getRootNode": {
-      "type": "() => ShadowRoot | Node | Document",
-      "isRequired": false,
-      "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
     },
     "id": {
       "type": "string",

@@ -5,7 +5,8 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseDialogProps extends Omit<Optional<dialog.Context, 'id'>, 'open.controlled'> {
+export interface UseDialogProps
+  extends Optional<Omit<dialog.Context, 'getRootNode' | 'dir' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the dialog when it is first rendered.
    * Use when you do not need to control its open state.

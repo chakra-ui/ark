@@ -5,7 +5,8 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePopoverProps extends Omit<Optional<popover.Context, 'id'>, 'open.controlled'> {
+export interface UsePopoverProps
+  extends Optional<Omit<popover.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the popover when it is first rendered.
    * Use when you do not need to control its open state.

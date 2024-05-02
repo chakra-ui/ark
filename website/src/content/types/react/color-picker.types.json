@@ -89,6 +89,13 @@
       "description": "Render as a different element type."
     }
   },
+  "HiddenInput": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
   "Label": {
     "asChild": {
       "type": "boolean",
