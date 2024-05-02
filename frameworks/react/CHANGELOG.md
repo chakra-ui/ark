@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [3.0.0-1] - 2024-05-02
+
 ### Removed
 
 - BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to set the direction and root node.
