@@ -58,14 +58,22 @@
       "type": "[details: SelectionChangeDetails]",
       "isRequired": true,
       "description": "Called when the selection changes"
-    }
+    },
+    "update:expandedValue": { "type": "[value: string[]]", "isRequired": true },
+    "update:focusedValue": { "type": "[value: string | null]", "isRequired": true },
+    "update:selectedValue": { "type": "[value: string[]]", "isRequired": true }
   },
   "Root": {
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "defaultFocusedId": {
-      "type": "string",
+    "defaultExpandedValue": {
+      "type": "string[]",
       "isRequired": false,
-      "description": "The initial focused index of the tree view."
+      "description": "The initial expanded items of the tree view.\nUse this when you do not need to control the state of the tree view."
+    },
+    "defaultSelectedValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial selected items of the tree view.\nUse this when you do not need to control the state of the tree view."
     },
     "expandedValue": {
       "type": "string[]",

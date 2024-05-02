@@ -9,9 +9,15 @@ import type { RootEmits } from './tree-view.types'
 export interface UseTreeViewProps
   extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial focused index of the tree view.
+   * The initial selected items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
    */
-  defaultFocusedId?: treeView.Context['focusedValue']
+  defaultSelectedValue?: treeView.Context['selectedValue']
+  /**
+   * The initial expanded items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
+   */
+  defaultExpandedValue?: treeView.Context['expandedValue']
 }
 
 export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> {}
@@ -29,10 +35,21 @@ export const useTreeView = (
       ...context.value,
       id: context.value.id ?? useId().value,
       dir: locale.value.dir,
+      expandedValue: props.expandedValue ?? props.defaultExpandedValue,
+      selectedValue: props.selectedValue ?? props.defaultSelectedValue,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit('focusChange', details),
-      onExpandedChange: (details) => emit('expandedChange', details),
-      onSelectionChange: (details) => emit('selectionChange', details),
+      onFocusChange: (details) => {
+        emit('focusChange', details)
+        emit('update:focusedValue', details.focusedValue)
+      },
+      onExpandedChange: (details) => {
+        emit('expandedChange', details)
+        emit('update:expandedValue', details.expandedValue)
+      },
+      onSelectionChange: (details) => {
+        emit('selectionChange', details)
+        emit('update:selectedValue', details.selectedValue)
+      },
     }),
     { context },
   )

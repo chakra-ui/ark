@@ -8,11 +8,13 @@ import { useEvent } from '../../utils/use-event'
 export interface UseTreeViewProps
   extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial selected ids of the tree view.
+   * The initial selected items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
    */
   defaultSelectedValue?: treeView.Context['selectedValue']
   /**
-   * The initial expanded ids of the tree view.
+   * The initial expanded items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
    */
   defaultExpandedValue?: treeView.Context['expandedValue']
 }

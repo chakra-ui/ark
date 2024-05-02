@@ -2,9 +2,15 @@ import type * as treeView from '@zag-js/tree-view'
 
 export interface RootProps {
   /**
-   * The initial focused index of the tree view.
+   * The initial expanded items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
    */
-  defaultFocusedId?: string
+  defaultExpandedValue?: string[]
+  /**
+   * The initial selected items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
+   */
+  defaultSelectedValue?: string[]
   /**
    * The id of the expanded nodes
    */
@@ -57,4 +63,7 @@ export type RootEmits = {
    * Called when the selection changes
    */
   selectionChange: [details: treeView.SelectionChangeDetails]
+  'update:expandedValue': [value: string[]]
+  'update:focusedValue': [value: string | null]
+  'update:selectedValue': [value: string[]]
 }
