@@ -14,7 +14,7 @@
     "lucide-vue-next": "0.376.0",
     "nuxt": "3.11.2",
     "typescript": "5.4.5",
-    "vue": "3.4.25",
+    "vue": "3.4.26",
     "vue-router": "4.3.2"
   }
 }

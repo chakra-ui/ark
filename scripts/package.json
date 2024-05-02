@@ -14,7 +14,7 @@
     "vue:props": "bun run src/generate-vue-props.ts",
     "postvue:props": "bun biome format --write ../frameworks/vue/src/",
     "play": "bun run src/play.ts",
-    "format:vue": "prettier --write '../frameworks/vue/src/**/*.vue'"
+    "format:vue": "prettier --write '../**/*.vue'"
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
