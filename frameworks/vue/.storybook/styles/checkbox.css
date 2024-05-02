@@ -1,26 +1,22 @@
 [data-scope='checkbox'][data-part='root'] {
-  display: flex;
-  flex-direction: row;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
 [data-scope='checkbox'][data-part='control'] {
   border: 2px solid;
-  border-radius: 9999px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
 }
 
-[data-scope='checkbox'][data-part='control'][data-state='checked'] {
-  background: black;
-  color: white;
-}
-
-[data-scope='checkbox'][data-part='control'][data-state='indeterminate'] {
-  background: blue;
-  color: white;
+[data-scope='checkbox'][data-part='indicator']:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

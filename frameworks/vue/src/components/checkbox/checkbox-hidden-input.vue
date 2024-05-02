@@ -1,19 +1,17 @@
 <script lang="ts">
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxControlProps extends PolymorphicProps {}
+export interface CheckboxHiddenInputProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory';
 import { useCheckboxContext } from './use-checkbox-context';
 
-defineProps<CheckboxControlProps>()
+defineProps<CheckboxHiddenInputProps>()
 const checkbox = useCheckboxContext()
 </script>
 
 <template>
-  <ark.div v-bind="checkbox.controlProps" :as-child="asChild">
-    <slot />
-  </ark.div>
+  <ark.input v-bind="checkbox.hiddenInputProps" :as-child="asChild" />
 </template>
