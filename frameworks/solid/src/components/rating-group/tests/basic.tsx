@@ -22,6 +22,7 @@ export const ComponentUnderTest = (props: RatingGroupRootProps) => (
           </Index>
         )}
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 )

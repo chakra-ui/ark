@@ -16,6 +16,7 @@ export const FormUsage = () => (
           ))
         }
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 )

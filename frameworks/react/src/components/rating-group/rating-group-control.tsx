@@ -10,12 +10,7 @@ export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlP
     const ratingGroup = useRatingGroupContext()
     const mergedProps = mergeProps(ratingGroup.controlProps, props)
 
-    return (
-      <>
-        <ark.div {...mergedProps} ref={ref} />
-        <input {...ratingGroup.hiddenInputProps} />
-      </>
-    )
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

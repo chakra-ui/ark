@@ -27,3 +27,7 @@ export {
   useRatingGroupItemContext,
   type UseRatingGroupItemContext,
 } from './use-rating-group-item-context'
+export {
+  default as RatingGroupHiddenInput,
+  type RatingGroupHiddenInputProps,
+} from './rating-group-hidden-input.vue'

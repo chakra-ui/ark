@@ -16,6 +16,7 @@ export const Basic = () => (
           ))
         }
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 )

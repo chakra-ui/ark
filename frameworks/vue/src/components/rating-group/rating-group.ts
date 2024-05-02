@@ -24,3 +24,7 @@ export {
   type RatingGroupRootEmits as RootEmits,
   type RatingGroupRootProps as RootProps,
 } from './rating-group-root.vue'
+export {
+  default as HiddenInput,
+  type RatingGroupHiddenInputProps as HiddenInputProps,
+} from './rating-group-hidden-input.vue'

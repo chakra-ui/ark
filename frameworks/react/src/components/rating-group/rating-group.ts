@@ -23,3 +23,7 @@ export {
   RatingGroupRoot as Root,
   type RatingGroupRootProps as RootProps,
 } from './rating-group-root'
+export {
+  RatingGroupHiddenInput as HiddenInput,
+  type RatingGroupHiddenInputProps as HiddenInputProps,
+} from './rating-group-hidden-input'

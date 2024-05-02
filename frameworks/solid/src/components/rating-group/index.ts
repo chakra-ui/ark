@@ -13,6 +13,10 @@ export { RatingGroupLabel, type RatingGroupLabelProps } from './rating-group-lab
 export { RatingGroupRoot, type RatingGroupRootProps } from './rating-group-root'
 export { type UseRatingGroupContext, useRatingGroupContext } from './use-rating-group-context'
 export {
+  RatingGroupHiddenInput,
+  type RatingGroupHiddenInputProps,
+} from './rating-group-hidden-input'
+export {
   type UseRatingGroupItemContext,
   useRatingGroupItemContext,
 } from './use-rating-group-item-context'

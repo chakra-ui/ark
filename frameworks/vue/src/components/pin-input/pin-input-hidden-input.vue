@@ -8,7 +8,7 @@ export interface PinInputHiddenInputProps extends PolymorphicProps {}
 import { ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
- defineProps<PinInputHiddenInputProps>()
+defineProps<PinInputHiddenInputProps>()
 const pinInput = usePinInputContext()
 </script>
 

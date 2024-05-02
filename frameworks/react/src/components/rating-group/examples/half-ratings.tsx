@@ -20,6 +20,7 @@ export const HalfRatings = () => (
           ))
         }
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 )

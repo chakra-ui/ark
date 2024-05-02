@@ -18,6 +18,7 @@ const value = ref(0)
           </RatingGroup.ItemContext>
         </RatingGroup.Item>
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 </template>

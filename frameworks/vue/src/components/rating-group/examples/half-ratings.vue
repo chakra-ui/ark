@@ -16,6 +16,7 @@ import { StarHalfIcon, StarIcon, StarOutlineIcon } from './icons'
           </RatingGroup.ItemContext>
         </RatingGroup.Item>
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 </template>

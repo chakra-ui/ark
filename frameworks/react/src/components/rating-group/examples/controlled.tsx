@@ -25,6 +25,7 @@ export const Controlled = () => {
             ))
           }
         </RatingGroup.Context>
+        <RatingGroup.HiddenInput />
       </RatingGroup.Control>
     </RatingGroup.Root>
   )

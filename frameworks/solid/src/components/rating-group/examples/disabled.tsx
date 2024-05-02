@@ -23,6 +23,7 @@ export const Disabled = () => (
           </Index>
         )}
       </RatingGroup.Context>
+      <RatingGroup.HiddenInput />
     </RatingGroup.Control>
   </RatingGroup.Root>
 )

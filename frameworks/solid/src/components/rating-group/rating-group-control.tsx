@@ -5,13 +5,8 @@ import { useRatingGroupContext } from './use-rating-group-context'
 export interface RatingGroupControlProps extends HTMLArkProps<'div'> {}
 
 export const RatingGroupControl = (props: RatingGroupControlProps) => {
-  const api = useRatingGroupContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const ratingGroup = useRatingGroupContext()
+  const mergedProps = mergeProps(() => ratingGroup().controlProps, props)
 
-  return (
-    <>
-      <ark.div {...mergedProps} />
-      <input {...api().hiddenInputProps} />
-    </>
-  )
+  return <ark.div {...mergedProps} />
 }
