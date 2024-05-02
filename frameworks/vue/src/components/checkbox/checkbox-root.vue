@@ -1,10 +1,9 @@
 <script lang="ts">
-import type { RootEmits, RootProps } from './checkbox.types'
 import type { BooleanDefaults } from '../../types'
+import type { RootEmits, RootProps } from './checkbox.types'
 
 export interface CheckboxRootProps extends RootProps, PolymorphicProps {}
 export interface CheckboxRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -19,7 +18,7 @@ const props = withDefaults(defineProps<CheckboxRootProps>(), {
   invalid: undefined,
   readOnly: undefined,
   required: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<CheckboxRootEmits>()
 

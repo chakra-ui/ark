@@ -1,10 +1,9 @@
 <script lang="ts">
-import type { RootEmits, RootProps } from './carousel.types'
 import type { BooleanDefaults } from '../../types'
+import type { RootEmits, RootProps } from './carousel.types'
 
 export interface CarouselRootProps extends RootProps, PolymorphicProps {}
 export interface CarouselRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -14,7 +13,7 @@ import { CarouselProvider } from './use-carousel-context'
 
 const props = withDefaults(defineProps<CarouselRootProps>(), {
   loop: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<CarouselRootEmits>()
 

@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './file-upload.types'
 
 export interface FileUploadRootProps extends RootProps, PolymorphicProps {}
 export interface FileUploadRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +15,7 @@ const props = withDefaults(defineProps<FileUploadRootProps>(), {
   allowDrop: undefined,
   directory: undefined,
   disabled: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<FileUploadRootEmits>()
 

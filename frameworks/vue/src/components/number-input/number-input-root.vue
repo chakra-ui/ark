@@ -1,10 +1,9 @@
 <script lang="ts">
-import type { RootEmits, RootProps } from './number-input.types'
 import type { BooleanDefaults } from '../../types'
+import type { RootEmits, RootProps } from './number-input.types'
 
 export interface NumberInputRootProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -21,7 +20,7 @@ const props = withDefaults(defineProps<NumberInputRootProps>(), {
   invalid: undefined,
   readOnly: undefined,
   spinOnPress: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<NumberInputRootEmits>()
 

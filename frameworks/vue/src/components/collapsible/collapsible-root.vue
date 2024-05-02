@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './collapsible.types'
 
 export interface CollapsibleRootProps extends RootProps, PolymorphicProps {}
 export interface CollapsibleRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -18,7 +17,7 @@ const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   lazyMount: undefined,
   open: undefined,
   unmountOnExit: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<CollapsibleRootEmits>()
 

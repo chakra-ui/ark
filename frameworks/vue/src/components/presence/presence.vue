@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './presence.types'
 
 export interface PresenceProps extends RootProps, PolymorphicProps {}
 export interface PresenceEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +15,7 @@ const props = withDefaults(defineProps<PresenceProps>(), {
   lazyMount: undefined,
   present: undefined,
   unmountOnExit: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<PresenceEmits>()
 

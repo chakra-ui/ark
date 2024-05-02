@@ -1,11 +1,10 @@
 <script lang="ts">
 import type { OptionItemProps } from '@zag-js/menu'
-import type { PolymorphicProps } from '../factory'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 
 type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checked'>
 export interface MenuRadioItemProps extends PolymorphicProps, RadioItemProps {}
-interface BooleanProps extends BooleanDefaults<RadioItemProps> {}
 </script>
 
 <script setup lang="ts">
@@ -19,7 +18,7 @@ import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-contex
 const props = withDefaults(defineProps<MenuRadioItemProps>(), {
   disabled: undefined,
   closeOnSelect: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RadioItemProps>)
 
 const menu = useMenuContext()
 const itemGroup = useMenuItemGroupContext()

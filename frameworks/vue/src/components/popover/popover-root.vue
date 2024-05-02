@@ -1,11 +1,10 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './popover.types'
-import type { BooleanDefaults } from '../../types'
 
 export interface PopoverRootProps extends RootProps, RenderStrategyProps {}
 export interface PopoverRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -22,7 +21,7 @@ const props = withDefaults(defineProps<PopoverRootProps>(), {
   modal: undefined,
   open: undefined,
   portalled: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<PopoverRootEmits>()
 

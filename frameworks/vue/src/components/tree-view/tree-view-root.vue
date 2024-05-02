@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './tree-view.types'
 
 export interface TreeViewRootProps extends RootProps, PolymorphicProps {}
 export interface TreeViewRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -15,7 +14,7 @@ import { TreeViewProvider } from './use-tree-view-context'
 const props = withDefaults(defineProps<TreeViewRootProps>(), {
   openOnClick: undefined,
   typeahead: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TreeViewRootEmits>()
 

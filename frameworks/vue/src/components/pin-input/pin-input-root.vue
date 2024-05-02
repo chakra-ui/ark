@@ -1,10 +1,9 @@
 <script lang="ts">
-import type { RootEmits, RootProps } from './pin-input.types'
 import type { BooleanDefaults } from '../../types'
+import type { RootEmits, RootProps } from './pin-input.types'
 
 export interface PinInputRootProps extends RootProps, PolymorphicProps {}
 export interface PinInputRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -20,7 +19,7 @@ const props = withDefaults(defineProps<PinInputRootProps>(), {
   mask: undefined,
   otp: undefined,
   selectOnFocus: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<PinInputRootEmits>()
 

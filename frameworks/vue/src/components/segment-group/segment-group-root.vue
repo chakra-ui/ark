@@ -1,10 +1,9 @@
 <script lang="ts">
-import type { RootEmits, RootProps } from './segment-group.types'
 import type { BooleanDefaults } from '../../types'
+import type { RootEmits, RootProps } from './segment-group.types'
 
 export interface SegmentGroupRootProps extends RootProps, PolymorphicProps {}
 export interface SegmentGroupRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +15,7 @@ import { SegmentGroupProvider } from './use-segment-group-context'
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<SegmentGroupRootEmits>()
 

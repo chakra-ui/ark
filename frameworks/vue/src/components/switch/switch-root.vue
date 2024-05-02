@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './switch.types'
 
 export interface SwitchRootProps extends RootProps, PolymorphicProps {}
 export interface SwitchRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -19,7 +18,7 @@ const props = withDefaults(defineProps<SwitchRootProps>(), {
   invalid: undefined,
   readOnly: undefined,
   required: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<SwitchRootEmits>()
 

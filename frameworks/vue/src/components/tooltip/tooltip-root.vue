@@ -5,7 +5,6 @@ import type { RootEmits, RootProps } from './tooltip.types'
 
 export interface TooltipRootProps extends RootProps, RenderStrategyProps {}
 export interface TooltipRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -21,7 +20,7 @@ const props = withDefaults(defineProps<TooltipRootProps>(), {
   disabled: undefined,
   interactive: undefined,
   open: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TooltipRootEmits>()
 

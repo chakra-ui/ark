@@ -1,12 +1,11 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './menu.types'
-import type { BooleanDefaults } from '../../types'
 
 export interface MenuRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface MenuRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -23,7 +22,7 @@ const props = withDefaults(defineProps<MenuRootProps>(), {
   loopFocus: undefined,
   open: undefined,
   typeahead: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<MenuRootEmits>()
 

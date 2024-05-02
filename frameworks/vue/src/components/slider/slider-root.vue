@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './slider.types'
 
 export interface SliderRootProps extends RootProps, PolymorphicProps {}
 export interface SliderRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +15,7 @@ const props = withDefaults(defineProps<SliderRootProps>(), {
   disabled: undefined,
   invalid: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<SliderRootEmits>()
 

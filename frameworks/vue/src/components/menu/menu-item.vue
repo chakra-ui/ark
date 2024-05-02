@@ -1,10 +1,9 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/menu'
-import type { PolymorphicProps } from '../factory'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 
 export interface MenuItemProps extends PolymorphicProps, ItemProps {}
-interface BooleanProps extends BooleanDefaults<ItemProps> {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +15,7 @@ import { MenuItemProvider } from './use-menu-item-context'
 const props = withDefaults(defineProps<MenuItemProps>(), {
   disabled: undefined,
   closeOnSelect: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<ItemProps>)
 
 const menu = useMenuContext()
 

@@ -6,7 +6,6 @@ import type { RootEmits, RootProps } from './combobox.types'
 
 export interface ComboboxRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface ComboboxRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -31,7 +30,7 @@ const props = withDefaults(defineProps<ComboboxRootProps>(), {
   openOnClick: undefined,
   openOnKeyPress: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<ComboboxRootEmits>()
 

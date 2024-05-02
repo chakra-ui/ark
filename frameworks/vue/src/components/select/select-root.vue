@@ -6,7 +6,6 @@ import type { RootEmits, RootProps } from './select.types'
 
 export interface SelectRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface SelectRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -25,7 +24,7 @@ const props = withDefaults(defineProps<SelectRootProps>(), {
   multiple: undefined,
   open: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<SelectRootEmits>()
 

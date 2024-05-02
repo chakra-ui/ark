@@ -6,7 +6,6 @@ import type { RootEmits, RootProps } from './accordion.types'
 
 export interface AccordionRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -20,7 +19,7 @@ const props = withDefaults(defineProps<AccordionRootProps>(), {
   collapsible: undefined,
   disabled: undefined,
   multiple: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<AccordionRootEmits>()
 

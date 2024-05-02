@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './toggle-group.types'
 
 export interface ToggleGroupRootProps extends RootProps, PolymorphicProps {}
 export interface ToggleGroupRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -17,7 +16,7 @@ const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   loopFocus: undefined,
   multiple: undefined,
   rovingFocus: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<ToggleGroupRootEmits>()
 

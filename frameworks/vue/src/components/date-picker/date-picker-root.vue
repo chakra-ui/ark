@@ -1,12 +1,11 @@
 <script lang="ts">
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
-import type { BooleanDefaults } from '../../types'
 
 export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -24,7 +23,7 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   modal: undefined,
   open: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<DatePickerRootEmits>()
 

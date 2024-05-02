@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './rating-group.types'
 
 export interface RatingGroupRootProps extends RootProps, PolymorphicProps {}
 export interface RatingGroupRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -17,7 +16,7 @@ const props = withDefaults(defineProps<RatingGroupRootProps>(), {
   autoFocus: undefined,
   disabled: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<RatingGroupRootEmits>()
 

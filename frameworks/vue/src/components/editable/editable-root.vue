@@ -1,10 +1,9 @@
 <script lang="ts">
-import type { RootEmits, RootProps } from './editable.types'
 import type { BooleanDefaults } from '../../types'
+import type { RootEmits, RootProps } from './editable.types'
 
 export interface EditableRootProps extends RootProps, PolymorphicProps {}
 export interface EditableRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -19,7 +18,7 @@ const props = withDefaults(defineProps<EditableRootProps>(), {
   readOnly: undefined,
   selectOnFocus: undefined,
   startWithEditView: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<EditableRootEmits>()
 

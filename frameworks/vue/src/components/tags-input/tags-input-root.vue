@@ -4,7 +4,6 @@ import type { RootEmits, RootProps } from './tags-input.types'
 
 export interface TagsInputRootProps extends RootProps, PolymorphicProps {}
 export interface TagsInputRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -20,7 +19,7 @@ const props = withDefaults(defineProps<TagsInputRootProps>(), {
   editable: undefined,
   invalid: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TagsInputRootEmits>()
 

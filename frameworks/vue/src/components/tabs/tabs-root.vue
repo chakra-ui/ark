@@ -5,7 +5,6 @@ import type { RootEmits, RootProps } from './tabs.types'
 
 export interface TabsRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -17,7 +16,7 @@ import { TabsProvider } from './use-tabs-context'
 
 const props = withDefaults(defineProps<TabsRootProps>(), {
   loopFocus: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TabsRootEmits>()
 

@@ -5,7 +5,6 @@ import type { RootEmits, RootProps } from './color-picker.types'
 
 export interface ColorPickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootEmits extends RootEmits {}
-interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -21,7 +20,7 @@ const props = withDefaults(defineProps<ColorPickerRootProps>(), {
   disabled: undefined,
   open: undefined,
   readOnly: undefined,
-} satisfies BooleanProps)
+} satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<ColorPickerRootEmits>()
 
