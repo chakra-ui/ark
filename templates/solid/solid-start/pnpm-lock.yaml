@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@ark-ui/solid':
-    specifier: 3.0.0-2
-    version: 3.0.0-2(@internationalized/date@3.5.2)(solid-js@1.8.17)
+    specifier: 3.0.0-3
+    version: 3.0.0-3(@internationalized/date@3.5.2)(solid-js@1.8.17)
   '@solidjs/meta':
     specifier: 0.29.3
     version: 0.29.3(solid-js@1.8.17)
@@ -80,8 +80,8 @@ packages:
       - '@internationalized/date'
     dev: false
 
-  /@ark-ui/solid@3.0.0-2(@internationalized/date@3.5.2)(solid-js@1.8.17):
-    resolution: {integrity: sha512-R4ueeXloss7vuFOaS8YjZJL27/Y12h42XI/1nVBot0TRBOP0SapV7xy9Zp4xg4L03Ild3KZBAZV0NzAAqQSaNw==}
+  /@ark-ui/solid@3.0.0-3(@internationalized/date@3.5.2)(solid-js@1.8.17):
+    resolution: {integrity: sha512-9cufEwioolIc8z9/c/SINnYu6ED/WjMadmxrGvsw/fxPiZ31+zoyjU/f5YfFs67jwe5wDwu0GKt4HhtFvdgZmQ==}
     peerDependencies:
       solid-js: '>=1.6.0'
     dependencies:
@@ -96,6 +96,7 @@ packages:
       '@zag-js/combobox': 0.49.0
       '@zag-js/date-picker': 0.49.0
       '@zag-js/dialog': 0.49.0
+      '@zag-js/dom-query': 0.49.0
       '@zag-js/editable': 0.49.0
       '@zag-js/file-upload': 0.49.0
       '@zag-js/file-utils': 0.49.0
