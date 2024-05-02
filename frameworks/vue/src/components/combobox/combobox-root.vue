@@ -6,6 +6,7 @@ import type { RootEmits, RootProps } from './combobox.types'
 
 export interface ComboboxRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface ComboboxRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -15,7 +16,7 @@ import { ark } from '../factory'
 import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<ComboboxRootProps>(), {
   allowCustomValue: undefined,
   autoFocus: undefined,
   closeOnSelect: undefined,
@@ -30,9 +31,8 @@ const defaults: BooleanDefaults<RootProps> = {
   openOnClick: undefined,
   openOnKeyPress: undefined,
   readOnly: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<ComboboxRootProps>(), defaults)
 const emits = defineEmits<ComboboxRootEmits>()
 
 const combobox = useCombobox(props, emits)

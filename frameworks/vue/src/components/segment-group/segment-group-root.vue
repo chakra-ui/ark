@@ -4,6 +4,7 @@ import type { BooleanDefaults } from '../../types'
 
 export interface SegmentGroupRootProps extends RootProps, PolymorphicProps {}
 export interface SegmentGroupRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -12,11 +13,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,
   readOnly: undefined,
-}
-const props = withDefaults(defineProps<SegmentGroupRootProps>(), defaults)
+} satisfies BooleanProps)
 
 const emits = defineEmits<SegmentGroupRootEmits>()
 

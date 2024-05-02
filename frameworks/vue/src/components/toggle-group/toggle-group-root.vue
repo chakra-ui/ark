@@ -4,6 +4,7 @@ import type { RootEmits, RootProps } from './toggle-group.types'
 
 export interface ToggleGroupRootProps extends RootProps, PolymorphicProps {}
 export interface ToggleGroupRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -11,13 +12,13 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useToggleGroup } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   disabled: undefined,
   loopFocus: undefined,
   multiple: undefined,
   rovingFocus: undefined,
-}
-const props = withDefaults(defineProps<ToggleGroupRootProps>(), defaults)
+} satisfies BooleanProps)
+
 const emits = defineEmits<ToggleGroupRootEmits>()
 
 const toggleGroup = useToggleGroup(props, emits)

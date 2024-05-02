@@ -5,6 +5,7 @@ import type { RootEmits, RootProps } from './hover-card.types'
 
 export interface HoverCardRootProps extends RootProps, RenderStrategyProps {}
 export interface HoverCardRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -13,12 +14,11 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { useHoverCard } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<HoverCardRootProps>(), {
   defaultOpen: undefined,
   open: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<HoverCardRootProps>(), defaults)
 const emits = defineEmits<HoverCardRootEmits>()
 
 const hoverCard = useHoverCard(props, emits)

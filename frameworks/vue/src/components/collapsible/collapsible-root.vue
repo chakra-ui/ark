@@ -4,6 +4,7 @@ import type { RootEmits, RootProps } from './collapsible.types'
 
 export interface CollapsibleRootProps extends RootProps, PolymorphicProps {}
 export interface CollapsibleRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -11,15 +12,14 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   defaultOpen: undefined,
   disabled: undefined,
   lazyMount: undefined,
   open: undefined,
   unmountOnExit: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<CollapsibleRootProps>(), defaults)
 const emits = defineEmits<CollapsibleRootEmits>()
 
 const collapsible = useCollapsible(props, emits)

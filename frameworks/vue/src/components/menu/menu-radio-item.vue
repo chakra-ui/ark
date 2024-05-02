@@ -5,6 +5,7 @@ import type { BooleanDefaults } from '../../types'
 
 type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checked'>
 export interface MenuRadioItemProps extends PolymorphicProps, RadioItemProps {}
+interface BooleanProps extends BooleanDefaults<RadioItemProps> {}
 </script>
 
 <script setup lang="ts">
@@ -15,11 +16,11 @@ import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
-const defaults: BooleanDefaults<RadioItemProps> = {
+const props = withDefaults(defineProps<MenuRadioItemProps>(), {
   disabled: undefined,
   closeOnSelect: undefined,
-}
-const props = withDefaults(defineProps<MenuRadioItemProps>(), defaults)
+} satisfies BooleanProps)
+
 const menu = useMenuContext()
 const itemGroup = useMenuItemGroupContext()
 

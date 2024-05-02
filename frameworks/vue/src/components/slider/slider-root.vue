@@ -4,6 +4,7 @@ import type { RootEmits, RootProps } from './slider.types'
 
 export interface SliderRootProps extends RootProps, PolymorphicProps {}
 export interface SliderRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -11,13 +12,12 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<SliderRootProps>(), {
   disabled: undefined,
   invalid: undefined,
   readOnly: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<SliderRootProps>(), defaults)
 const emits = defineEmits<SliderRootEmits>()
 
 const slider = useSlider(props, emits)

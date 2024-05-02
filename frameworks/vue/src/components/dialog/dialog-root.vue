@@ -5,6 +5,7 @@ import type { RootEmits, RootProps } from './dialog.types'
 
 export interface DialogRootProps extends RootProps, RenderStrategyProps {}
 export interface DialogRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +14,7 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<DialogRootProps>(), {
   closeOnEscape: undefined,
   closeOnInteractOutside: undefined,
   defaultOpen: undefined,
@@ -22,9 +23,8 @@ const defaults: BooleanDefaults<RootProps> = {
   preventScroll: undefined,
   restoreFocus: undefined,
   trapFocus: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<DialogRootProps>(), defaults)
 const emits = defineEmits<DialogRootEmits>()
 const dialog = useDialog(props, emits)
 

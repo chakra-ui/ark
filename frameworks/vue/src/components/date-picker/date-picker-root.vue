@@ -6,6 +6,7 @@ import type { BooleanDefaults } from '../../types'
 
 export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -15,7 +16,7 @@ import { ark } from '../factory'
 import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<DatePickerRootProps>(), {
   closeOnSelect: undefined,
   defaultOpen: undefined,
   disabled: undefined,
@@ -23,9 +24,8 @@ const defaults: BooleanDefaults<RootProps> = {
   modal: undefined,
   open: undefined,
   readOnly: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<DatePickerRootProps>(), defaults)
 const emits = defineEmits<DatePickerRootEmits>()
 
 const datePicker = useDatePicker(props, emits)

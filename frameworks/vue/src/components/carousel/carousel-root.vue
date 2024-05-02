@@ -4,6 +4,7 @@ import type { BooleanDefaults } from '../../types'
 
 export interface CarouselRootProps extends RootProps, PolymorphicProps {}
 export interface CarouselRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -11,11 +12,10 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<CarouselRootProps>(), {
   loop: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<CarouselRootProps>(), defaults)
 const emits = defineEmits<CarouselRootEmits>()
 
 const carousel = useCarousel(props, emits)

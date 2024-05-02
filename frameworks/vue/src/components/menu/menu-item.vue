@@ -4,6 +4,7 @@ import type { PolymorphicProps } from '../factory'
 import type { BooleanDefaults } from '../../types'
 
 export interface MenuItemProps extends PolymorphicProps, ItemProps {}
+interface BooleanProps extends BooleanDefaults<ItemProps> {}
 </script>
 
 <script setup lang="ts">
@@ -12,11 +13,11 @@ import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 
-const defaults: BooleanDefaults<ItemProps> = {
+const props = withDefaults(defineProps<MenuItemProps>(), {
   disabled: undefined,
   closeOnSelect: undefined,
-}
-const props = withDefaults(defineProps<MenuItemProps>(), defaults)
+} satisfies BooleanProps)
+
 const menu = useMenuContext()
 
 MenuItemProvider(computed(() => menu.value.getItemState(props)))

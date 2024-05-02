@@ -6,6 +6,7 @@ import type { RootEmits, RootProps } from './accordion.types'
 
 export interface AccordionRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -15,13 +16,12 @@ import { ark } from '../factory'
 import { useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<AccordionRootProps>(), {
   collapsible: undefined,
   disabled: undefined,
   multiple: undefined,
-}
+} satisfies BooleanProps)
 
-const props = withDefaults(defineProps<AccordionRootProps>(), defaults)
 const emits = defineEmits<AccordionRootEmits>()
 
 const accordion = useAccordion(props, emits)

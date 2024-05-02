@@ -5,6 +5,7 @@ import type { BooleanDefaults } from '../../types'
 
 export interface PopoverRootProps extends RootProps, RenderStrategyProps {}
 export interface PopoverRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +14,7 @@ import { RenderStrategyPropsProvider } from '../../utils'
 import { usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<PopoverRootProps>(), {
   autoFocus: undefined,
   closeOnEsc: undefined,
   closeOnInteractOutside: undefined,
@@ -21,8 +22,8 @@ const defaults: BooleanDefaults<RootProps> = {
   modal: undefined,
   open: undefined,
   portalled: undefined,
-}
-const props = withDefaults(defineProps<PopoverRootProps>(), defaults)
+} satisfies BooleanProps)
+
 const emits = defineEmits<PopoverRootEmits>()
 
 const popover = usePopover(props, emits)

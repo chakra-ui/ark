@@ -4,6 +4,7 @@ import type { RootEmits, RootProps } from './presence.types'
 
 export interface PresenceProps extends RootProps, PolymorphicProps {}
 export interface PresenceEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -11,12 +12,12 @@ import { ark, type PolymorphicProps } from '../factory'
 import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<PresenceProps>(), {
   lazyMount: undefined,
   present: undefined,
   unmountOnExit: undefined,
-}
-const props = withDefaults(defineProps<PresenceProps>(), defaults)
+} satisfies BooleanProps)
+
 const emits = defineEmits<PresenceEmits>()
 
 // @ts-expect-error TODO tweak EmitFn

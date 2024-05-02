@@ -4,6 +4,7 @@ import type { BooleanDefaults } from '../../types'
 
 export interface NumberInputRootProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootEmits extends RootEmits {}
+interface BooleanProps extends BooleanDefaults<RootProps> {}
 </script>
 
 <script setup lang="ts">
@@ -11,7 +12,7 @@ import { ark, type PolymorphicProps } from '../factory'
 import { useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 
-const defaults: BooleanDefaults<RootProps> = {
+const props = withDefaults(defineProps<NumberInputRootProps>(), {
   allowMouseWheel: undefined,
   allowOverflow: undefined,
   clampValueOnBlur: undefined,
@@ -20,8 +21,8 @@ const defaults: BooleanDefaults<RootProps> = {
   invalid: undefined,
   readOnly: undefined,
   spinOnPress: undefined,
-}
-const props = withDefaults(defineProps<NumberInputRootProps>(), defaults)
+} satisfies BooleanProps)
+
 const emits = defineEmits<NumberInputRootEmits>()
 
 const numberInput = useNumberInput(props, emits)

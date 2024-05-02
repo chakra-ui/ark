@@ -6,6 +6,7 @@ import type { BooleanDefaults } from '../../types'
 
 type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
 export interface MenuCheckboxItemProps extends PolymorphicProps, CheckboxItemProps {}
+interface BooleanProps extends BooleanDefaults<CheckboxItemProps> {}
 
 export type MenuCheckboxItemEmits = {
   'update:checked': [value: boolean]
@@ -19,12 +20,12 @@ import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
-const defaults: BooleanDefaults<CheckboxItemProps> = {
+const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
   checked: undefined,
   disabled: undefined,
   closeOnSelect: undefined,
-}
-const props = withDefaults(defineProps<MenuCheckboxItemProps>(), defaults)
+} satisfies BooleanProps)
+
 const emits = defineEmits<MenuCheckboxItemEmits>()
 
 const menu = useMenuContext()
