@@ -21,6 +21,7 @@ export const BlurBehavior = () => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

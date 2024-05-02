@@ -14,6 +14,7 @@ export {
   type TagsInputItemDeleteTriggerProps,
 } from './tags-input-item-delete-trigger'
 export { TagsInputItemInput, type TagsInputItemInputProps } from './tags-input-item-input'
+export { TagsInputHiddenInput, type TagsInputHiddenInputProps } from './tags-input-hidden-input'
 export { TagsInputItemPreview, type TagsInputItemPreviewProps } from './tags-input-item-preview'
 export { TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item-text'
 export { TagsInputLabel, type TagsInputLabelProps } from './tags-input-label'

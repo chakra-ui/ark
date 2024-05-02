@@ -24,6 +24,7 @@ export const DisabledEditing = () => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

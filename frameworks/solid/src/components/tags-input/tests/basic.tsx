@@ -26,6 +26,7 @@ export const ComponentUnderTest = (props: TagsInputRootProps) => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

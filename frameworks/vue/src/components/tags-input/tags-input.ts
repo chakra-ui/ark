@@ -15,8 +15,11 @@ export {
   default as Control,
   type TagsInputControlProps as ControlProps,
 } from './tags-input-control.vue'
+export {
+  default as HiddenInput,
+  type TagsInputHiddenInputProps as HiddenInputProps,
+} from './tags-input-hidden-input.vue'
 export { default as Input, type TagsInputInputProps as InputProps } from './tags-input-input.vue'
-export { default as Item, type TagsInputItemProps as ItemProps } from './tags-input-item.vue'
 export {
   default as ItemContext,
   type TagsInputItemContextProps as ItemContextProps,
@@ -37,9 +40,10 @@ export {
   default as ItemText,
   type TagsInputItemTextProps as ItemTextProps,
 } from './tags-input-item-text.vue'
+export { default as Item, type TagsInputItemProps as ItemProps } from './tags-input-item.vue'
 export { default as Label, type TagsInputLabelProps as LabelProps } from './tags-input-label.vue'
 export {
   default as Root,
-  type TagsInputRootProps as RootProps,
   type TagsInputRootEmits as RootEmits,
+  type TagsInputRootProps as RootProps,
 } from './tags-input-root.vue'

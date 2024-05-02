@@ -23,5 +23,6 @@ import { TagsInput } from '../..'
         <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
       </TagsInput.Control>
     </TagsInput.Context>
+    <TagsInput.HiddenInput />
   </TagsInput.Root>
 </template>

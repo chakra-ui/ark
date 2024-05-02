@@ -44,7 +44,6 @@ export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((p
   return (
     <TagsInputProvider value={tagsInput}>
       <ark.div {...mergedProps} ref={ref} />
-      <input {...tagsInput.hiddenInputProps} />
     </TagsInputProvider>
   )
 })

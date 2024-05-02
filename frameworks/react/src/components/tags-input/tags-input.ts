@@ -15,6 +15,10 @@ export {
   TagsInputControl as Control,
   type TagsInputControlProps as ControlProps,
 } from './tags-input-control'
+export {
+  TagsInputHiddenInput as HiddenInput,
+  type TagsInputHiddenInputProps as HiddenInputProps,
+} from './tags-input-hidden-input'
 export { TagsInputInput as Input, type TagsInputInputProps as InputProps } from './tags-input-input'
 export { TagsInputItem as Item, type TagsInputItemProps as ItemProps } from './tags-input-item'
 export {

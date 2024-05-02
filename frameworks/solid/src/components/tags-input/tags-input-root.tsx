@@ -43,7 +43,6 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
   return (
     <TagsInputProvider value={api}>
       <ark.div {...mergedProps} />
-      <input {...api().hiddenInputProps} />
     </TagsInputProvider>
   )
 }

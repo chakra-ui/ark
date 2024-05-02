@@ -23,6 +23,7 @@ export const Basic = () => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

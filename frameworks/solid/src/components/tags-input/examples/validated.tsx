@@ -28,6 +28,7 @@ export const Validated = () => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

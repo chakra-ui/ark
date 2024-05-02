@@ -1,17 +1,17 @@
 <script lang="ts">
 import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputInputProps extends PolymorphicProps {}
+export interface TagsInputHiddenInputProps extends PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 
-defineProps<TagsInputInputProps>()
+defineProps<TagsInputHiddenInputProps>()
 const tagsInput = useTagsInputContext()
 </script>
 
 <template>
-  <ark.input v-bind="tagsInput.inputProps" :as-child="asChild" />
+  <ark.input v-bind="tagsInput.hiddenInputProps" :as-child="asChild" />
 </template>

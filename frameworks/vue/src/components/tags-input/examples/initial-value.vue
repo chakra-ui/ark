@@ -24,5 +24,6 @@ const frameworks = ref(['React', 'Solid', 'Vue'])
         <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
       </TagsInput.Control>
     </TagsInput.Context>
+    <TagsInput.HiddenInput />
   </TagsInput.Root>
 </template>

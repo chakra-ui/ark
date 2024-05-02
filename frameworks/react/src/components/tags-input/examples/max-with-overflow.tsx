@@ -21,6 +21,7 @@ export const MaxWithOverflow = () => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

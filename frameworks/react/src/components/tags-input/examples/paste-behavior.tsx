@@ -21,6 +21,7 @@ export const PasteBehavior = () => {
           </>
         )}
       </TagsInput.Context>
+      <TagsInput.HiddenInput />
     </TagsInput.Root>
   )
 }

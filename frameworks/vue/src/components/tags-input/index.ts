@@ -38,6 +38,10 @@ export {
   type TagsInputRootEmits,
   type TagsInputRootProps,
 } from './tags-input-root.vue'
+export {
+  default as TagsInputHiddenInput,
+  type TagsInputHiddenInputProps,
+} from './tags-input-hidden-input.vue'
 export { useTagsInputContext, type UseTagsInputContext } from './use-tags-input-context'
 export {
   useTagsInputItemContext,
