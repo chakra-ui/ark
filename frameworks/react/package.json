@@ -556,7 +556,7 @@
     "@vitejs/plugin-react": "4.2.1",
     "globby": "14.0.1",
     "jsdom": "24.0.0",
-    "lucide-react": "0.376.0",
+    "lucide-react": "0.377.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-frame-component": "5.2.6",
