@@ -12,6 +12,10 @@ description: All notable changes to this project will be documented in this file
 
 - Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`, `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
 
+### Fixed
+
+- **Select, Combobox**: Fixed issue where dynamically updating the items doesn't sync up with the machine context.
+
 ## [3.0.0-2] - 2024-05-02
 
 ### Removed
@@ -20,7 +24,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Made the `id` attribute optional for `<Combobox.ItemGroup>` and  removed `for` from `<Combobox.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `for` from `<Combobox.ItemGroupLabel>`.
 
 ```diff
 - <Combobox.ItemGroup id="framework">
@@ -29,7 +33,7 @@ description: All notable changes to this project will be documented in this file
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- Made the `id` attribute optional for `<Select.ItemGroup>` and  removed `for` from `<Select.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `for` from `<Select.ItemGroupLabel>`.
 
 ```diff
 - <Select.ItemGroup id="framework">
@@ -51,21 +55,21 @@ description: All notable changes to this project will be documented in this file
 - Exposed component-related types to keep imports clean and orderly.
 
 ```tsx
-import { Avatar } from '@ark-ui/react';
+import { Avatar } from '@ark-ui/react'
 
 export const Example = () => {
   // New: Use `Avatar` import to declare types.
   const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
-    console.log(details.status);
-  };
+    console.log(details.status)
+  }
 
   return (
     <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
       <Avatar.Fallback>PA</Avatar.Fallback>
       <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
     </Avatar.Root>
-  );
-};
+  )
+}
 ```
 
 - Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
@@ -85,7 +89,7 @@ export const Basic = () => (
       </Popover.Context>
     </Popover.Positioner>
   </Popover.Root>
-);
+)
 ```
 
 - Added new `Format` component to format bytes and numbers.
