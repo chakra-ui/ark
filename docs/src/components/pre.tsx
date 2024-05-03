@@ -6,13 +6,11 @@ export const Pre = async (props: PropsWithChildren) => {
   // @ts-expect-error it exists
   const html = await codeToHtml(props.children?.props.children.toString(), {
     lang: 'jsx',
-    theme: 'ayu-dark',
+    theme: 'aurora-x',
     transformers: [transformerNotationHighlight()],
   })
   return (
-    <pre>
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: All code examples are provided from us */}
-      <code dangerouslySetInnerHTML={{ __html: html }} />
-    </pre>
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+    <div dangerouslySetInnerHTML={{ __html: html }} />
   )
 }

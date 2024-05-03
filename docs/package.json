@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@biomejs/biome": "1.7.2",
+    "@biomejs/biome": "1.7.1",
+    "@pandacss/dev": "0.38.0",
+    "@park-ui/panda-preset": "0.37.0",
     "@shikijs/transformers": "1.4.0",
     "@types/node": "20.12.8",
     "@types/react": "18.3.1",
@@ -18,10 +21,8 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "rehype-pretty-code": "0.13.1",
+    "shiki": "1.4.0",
     "typescript": "5.4.5",
     "velite": "0.1.0-beta.14"
-  },
-  "devDependencies": {
-    "shiki": "1.4.0"
   }
 }
