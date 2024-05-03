@@ -4,5 +4,5 @@ import type config from '../velite.config'
 
 type Collections = typeof config.collections
 
-export type Component = Collections['components']['schema']['_output']
-export declare const components: Component[]
+export type Pages = Collections['pages']['schema']['_output']
+export declare const pages: Pages[]
