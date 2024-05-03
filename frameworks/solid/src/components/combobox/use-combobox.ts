@@ -25,7 +25,7 @@ export const useCombobox = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = () => combobox.collection(collectionOptions)
+  const collection = createMemo(() => combobox.collection(collectionOptions))
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const context = mergeProps(
@@ -34,7 +34,9 @@ export const useCombobox = <T extends CollectionItem>(
       dir: locale().dir,
       getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
-      collection: collection(),
+      get collection() {
+        return collection()
+      },
     },
     rest,
   )

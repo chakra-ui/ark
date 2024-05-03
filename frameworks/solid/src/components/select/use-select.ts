@@ -19,25 +19,29 @@ export interface UseSelectReturn<T extends CollectionItem>
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, localProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
     'items',
   ])
-  const collection = () => select.collection(collectionOptions)
+  const collection = createMemo(() => select.collection(collectionOptions))
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const context = mergeProps(
+
+  const context: select.Context<T> = mergeProps(
     {
       id: createUniqueId(),
       dir: locale().dir,
       getRootNode: environment().getRootNode,
-      collection: collection(),
       'open.controlled': props.open !== undefined,
+      get collection() {
+        return collection()
+      },
     },
-    rest,
+    localProps,
   )
+
   const [state, send] = useMachine(select.machine(context), {
     context,
   })
