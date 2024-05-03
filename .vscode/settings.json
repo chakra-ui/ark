@@ -16,5 +16,9 @@
   },
   "material-icon-theme.files.associations": {
     "**.stories.vue": "storybook"
+  },
+  "material-icon-theme.folders.associations": {
+    "react": "React-components",
+    "solid": "Core"
   }
 }

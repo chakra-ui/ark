@@ -2,7 +2,7 @@
   "name": "root",
   "type": "module",
   "private": true,
-  "workspaces": ["anatomy", "frameworks/*", "scripts", "website"],
+  "workspaces": ["anatomy", "frameworks/*", "scripts", "website", "docs"],
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**'",

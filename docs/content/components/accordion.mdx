@@ -1,0 +1,34 @@
+---
+id: accordion
+title: Accordion
+description: A collapsible component for displaying content in a vertical stack.
+resources:
+  zag: accordion
+  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+---
+
+## Anatomy
+
+Understanding the Accordion's anatomy is crucial for proper setup:
+
+> Each component part is marked with a `data-part` attribute for easy DOM
+> identification.
+
+<Example id="basic" />
+
+
+## Usage
+
+Here is how you use this with multiple
+
+```jsx
+// [!code highlight:2]
+<Accordion.Root multiple>
+  <Accordion.Item value="item-1">
+    …
+  </Accordion.Item>
+  <Accordion.Item value="item-2">
+    …
+  </Accordion.Item>
+</AccordionRoot>
+```
