@@ -19,7 +19,7 @@ export interface UseComboboxReturn<T extends CollectionItem>
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, localProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
@@ -34,12 +34,12 @@ export const useCombobox = <T extends CollectionItem>(
   const initialContext: combobox.Context = {
     id: createUniqueId(),
     collection: collection(),
-    ...rest
+    ...localProps
   }
   
   const [state, send] = useMachine(combobox.machine(initialContext), {
     context: createMemo(() => ({
-      ...rest,
+      ...localProps,
       collection: collection(),
       dir: locale().dir,
       getRootNode: environment().getRootNode,

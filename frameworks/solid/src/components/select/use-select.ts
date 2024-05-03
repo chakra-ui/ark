@@ -19,7 +19,7 @@ export interface UseSelectReturn<T extends CollectionItem>
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, localProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
@@ -34,12 +34,12 @@ export const useSelect = <T extends CollectionItem>(
   const initialContext: select.Context = {
     id: createUniqueId(),
     collection: collection(),
-    ...rest,
+    ...localProps,
   }
 
   const [state, send] = useMachine(select.machine(initialContext), {
     context: createMemo(() => ({
-      ...rest,
+      ...localProps,
       collection: collection(),
       dir: locale().dir,
       getRootNode: environment().getRootNode,
