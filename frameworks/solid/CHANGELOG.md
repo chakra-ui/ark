@@ -6,6 +6,8 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+## [3.0.0-4] - 2024-05-03
+
 ### Fixed
 
 - Fixed an issue with reactivity in collection based components like `Select` or `Combobox`.
