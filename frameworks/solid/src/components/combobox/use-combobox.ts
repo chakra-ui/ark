@@ -1,6 +1,6 @@
 import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
-import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
@@ -25,24 +25,26 @@ export const useCombobox = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = createMemo(() => combobox.collection(collectionOptions))
+
+  const collection = () => combobox.collection(collectionOptions)
+
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const context = mergeProps(
-    {
-      id: createUniqueId(),
+
+  const initialContext: combobox.Context = {
+    id: createUniqueId(),
+    collection: collection(),
+    ...rest,
+  }
+
+  const [state, send] = useMachine(combobox.machine(initialContext), {
+    context: createMemo(() => ({
+      ...rest,
+      collection: collection(),
       dir: locale().dir,
       getRootNode: environment().getRootNode,
       'open.controlled': props.open !== undefined,
-      get collection() {
-        return collection()
-      },
-    },
-    rest,
-  )
-
-  const [state, send] = useMachine(combobox.machine(context), {
-    context,
+    })),
   })
 
   return createMemo(() => combobox.connect<PropTypes, T>(state, send, normalizeProps))
