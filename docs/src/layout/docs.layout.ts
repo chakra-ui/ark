@@ -4,7 +4,6 @@ export const layout = sva({
   slots: ['header', 'aside', 'main', 'logo', 'content'],
   base: {
     header: {
-      display: 'flex',
       position: 'fixed',
       width: '100vw',
       top: '0',
@@ -12,7 +11,8 @@ export const layout = sva({
     },
     logo: {
       position: 'absolute',
-      display: { base: 'none', md: 'block' },
+      display: { base: 'none', md: 'flex' },
+      alignItems: 'center',
       top: '0',
       left: '0',
       height: 'var(--ark-nav-height)',
@@ -21,10 +21,11 @@ export const layout = sva({
         base: 'var(--ark-sidebar-width)',
         '2xl': 'var(--ark-sidebar-max-width)',
       },
-      background: 'bg.muted',
+      background: 'bg.subtle',
     },
     content: {
       pe: 'var(--ark-main-pe)',
+      borderBottomWidth: '1px',
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
@@ -49,7 +50,7 @@ export const layout = sva({
       bottom: '0',
       left: '0',
       maxW: '100%',
-      background: 'bg.muted',
+      background: 'bg.subtle',
     },
     main: {
       pt: 'var(--ark-nav-height)',

@@ -4,11 +4,11 @@ import { MDXContent } from '~/mdx-content'
 import { components } from '.velite'
 
 export default function Page() {
-  const component = components[0]
+  const component = components[1]
   return (
-    <article>
+    <>
       <h1>{component.title}</h1>
       <MDXContent code={component.code} components={{ Example, pre: Pre }} />
-    </article>
+    </>
   )
 }

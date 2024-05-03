@@ -1,8 +1,19 @@
 import { defineConfig } from '@pandacss/dev'
+import { createPreset } from '@park-ui/panda-preset'
+import typographyPreset from 'pandacss-preset-typography'
 
 export default defineConfig({
   preflight: true,
-  presets: ['@pandacss/preset-base', '@park-ui/panda-preset'],
+  presets: [
+    '@pandacss/preset-base',
+    createPreset({ grayColor: 'sand' }),
+    typographyPreset({
+      recipe: {
+        sizes: ['base'],
+        notProse: true,
+      },
+    }),
+  ],
   include: ['./src/**/*.{js,jsx,ts,tsx}'],
   jsxFramework: 'react',
   outdir: 'styled-system',
@@ -30,10 +41,27 @@ export default defineConfig({
         display: 'flex',
         flexDirection: 'column',
         flexGrow: '1',
+        fontFamily: 'body',
       },
       pre: {
         overflowX: 'auto',
         fontSize: '14px !important',
+      },
+      article: {
+        '--colors-prose-body': 'colors.fg.muted',
+        '--colors-prose-heading': 'colors.fg.default',
+        '--colors-prose-bold': 'colors.fg.default',
+        '--colors-prose-link': 'colors.fg.default',
+        '--colors-prose-code': 'colors.fg.muted',
+      },
+    },
+  },
+  theme: {
+    extend: {
+      tokens: {
+        fonts: {
+          body: { value: 'var(--font-outfit), sans-serif' },
+        },
       },
     },
   },

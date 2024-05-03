@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Outfit } from 'next/font/google'
+import Script from 'next/script'
 import './global.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +16,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={outfit.variable}>
+      <head>
+        <ColorModeScript />
+        <Script src="https://plausible.io/js/plausible.js" data-domain="ark-ui.com" />
+      </head>
+      <body>{children}</body>
     </html>
   )
+}
+
+const ColorModeScript = () => {
+  const colorModeScript =
+    // language=javascript
+    `if (JSON.parse(window.localStorage.getItem('ark-ui-color-mode')) === 'dark') {
+    document.documentElement.classList.add('dark')
+  }`
+  // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+  return <script dangerouslySetInnerHTML={{ __html: colorModeScript }} />
 }
