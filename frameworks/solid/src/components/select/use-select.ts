@@ -1,6 +1,6 @@
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
-import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
@@ -25,21 +25,26 @@ export const useSelect = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
+
   const collection = () => select.collection(collectionOptions)
+
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const context = mergeProps(
-    {
-      id: createUniqueId(),
+
+  const initialContext: select.Context = {
+    id: createUniqueId(),
+    collection: collection(),
+    ...rest,
+  }
+
+  const [state, send] = useMachine(select.machine(initialContext), {
+    context: createMemo(() => ({
+      ...rest,
+      collection: collection(),
       dir: locale().dir,
       getRootNode: environment().getRootNode,
-      collection: collection(),
       'open.controlled': props.open !== undefined,
-    },
-    rest,
-  )
-  const [state, send] = useMachine(select.machine(context), {
-    context,
+    })),
   })
 
   return createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
