@@ -25,7 +25,6 @@ export const layout = sva({
     },
     content: {
       pe: 'var(--ark-main-pe)',
-      boxShadow: 'xs',
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
@@ -39,6 +38,7 @@ export const layout = sva({
     aside: {
       pt: 'var(--ark-nav-height)',
       ps: 'var(--ark-sidebar-ps)',
+      pe: '8',
       display: { base: 'none', md: 'block' },
       width: {
         base: 'var(--ark-sidebar-width)',

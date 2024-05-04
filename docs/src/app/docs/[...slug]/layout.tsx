@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from 'react'
-import { Box, Divider, Flex } from 'styled-system/jsx'
-import { ColorModeButton } from '~/components/color-mode-button'
+import { Box } from 'styled-system/jsx'
 import { Logo } from '~/components/logo'
-import { Prose } from '~/components/ui/prose'
+import { Navbar } from '~/components/navigation/navbar'
+import { Sidebar } from '~/components/navigation/sidebar'
 import { layout } from '~/layout/docs.layout'
 
 export default function Layout(props: PropsWithChildren) {
@@ -14,13 +14,30 @@ export default function Layout(props: PropsWithChildren) {
           <Logo />
         </div>
         <div className={styles.content}>
-          <Box px={{ base: '6', md: '8' }} minH="16">
-            <ColorModeButton />
-          </Box>
+          <Navbar />
         </div>
       </header>
       <aside className={styles.aside}>
-        <Box minH="lg">Sidebar</Box>
+        <Sidebar
+          groups={[
+            {
+              name: 'Overview',
+              items: [
+                { name: 'Introduction', href: '/docs/overview/introduction' },
+                { name: 'Getting Started', href: '/docs/overview/getting-started' },
+              ],
+            },
+            {
+              name: 'Components',
+              items: [
+                { name: 'Accordion', href: '/docs/components/accordion' },
+                { name: 'Avatar', href: '/docs/components/avatar' },
+                { name: 'Clipboard', href: '/docs/components/clipboard' },
+              ],
+            },
+          ]}
+          pathname="/"
+        />
       </aside>
       <main className={styles.main}>
         <Box px={{ base: '6', md: '8' }}>{props.children}</Box>

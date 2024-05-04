@@ -15,6 +15,8 @@ interface Props {
 export default function Page(props: Props) {
   const page = getPageBySlug(props.params.slug)
 
+  console.log(page)
+
   if (page) {
     return (
       <Flex justifyContent="center" pt="12" mx="auto" width="100%">

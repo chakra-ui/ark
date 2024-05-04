@@ -25,7 +25,22 @@
       }
     ],
     "code": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(t){const c={blockquote:\"blockquote\",code:\"code\",h2:\"h2\",p:\"p\",pre:\"pre\",...t.components},{Example:r}=c;return r||function(e,n){throw new Error(\"Expected \"+(n?\"component\":\"object\")+\" `\"+e+\"` to be defined: you likely forgot to import, pass, or provide it.\")}(\"Example\",!0),o(e,{children:[n(c.h2,{children:\"Anatomy\"}),\"\\n\",n(c.p,{children:\"Understanding the Accordion's anatomy is crucial for proper setup:\"}),\"\\n\",o(c.blockquote,{children:[\"\\n\",o(c.p,{children:[\"Each component part is marked with a \",n(c.code,{children:\"data-part\"}),\" attribute for easy DOM\\nidentification.\"]}),\"\\n\"]}),\"\\n\",n(r,{id:\"basic\"}),\"\\n\",n(c.h2,{children:\"Usage\"}),\"\\n\",n(c.p,{children:\"Here is how you use this with multiple\"}),\"\\n\",n(c.pre,{children:n(c.code,{className:\"language-jsx\",children:'// [!code highlight:2]\\n<Accordion.Root multiple>\\n  <Accordion.Item value=\"item-1\">\\n    …\\n  </Accordion.Item>\\n  <Accordion.Item value=\"item-2\">\\n    …\\n  </Accordion.Item>\\n</AccordionRoot>\\n'})})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "slug": "components/accordion"
+    "slug": "components/accordion",
+    "category": "components"
+  },
+  {
+    "id": "animation",
+    "title": "Animation",
+    "description": "Learn how to animate components with Ark UI.",
+    "metadata": {
+      "readingTime": 1,
+      "wordCount": 1
+    },
+    "content": "<p>TBD</p>",
+    "toc": [],
+    "code": "const{jsx:n}=arguments[0];function _createMdxContent(t){const e={p:\"p\",...t.components};return n(e.p,{children:\"TBD\"})}return{default:function(t={}){const{wrapper:e}=t.components||{};return e?n(e,{...t,children:n(_createMdxContent,{...t})}):_createMdxContent(t)}};",
+    "slug": "guides/animation",
+    "category": "guides"
   },
   {
     "id": "introduction",
@@ -54,6 +69,7 @@
       }
     ],
     "code": "const{Fragment:e,jsx:n,jsxs:o}=arguments[0];function _createMdxContent(r){const t={h2:\"h2\",p:\"p\",...r.components};return o(e,{children:[n(t.h2,{children:\"Motivation\"}),\"\\n\",n(t.p,{children:\"Most popular component libraries are designed to work with a specific JavaScript framework.\\nWhile this setup works fine for individuals and small businesses,\\nit can pose challenges for larger organizations or agencies dealing with various clients or teams that use different technology stacks.\"}),\"\\n\",n(t.h2,{children:\"Solution\"}),\"\\n\",n(t.p,{children:\"The goal of Ark UI is to provide a comprehensive selection of components for implementing complex,\\ninteractive, and accessible UI components across a wide range of JavaScript frameworks.\\nBuilding a company-wide design system or a component library for a client has never been more straightforward.\"}),\"\\n\",n(t.h2,{children:\"FAQ\"})]})}return{default:function(e={}){const{wrapper:o}=e.components||{};return o?n(o,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "slug": "overview/introduction"
+    "slug": "overview/introduction",
+    "category": "overview"
   }
 ]
