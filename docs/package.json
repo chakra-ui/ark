@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ark-ui/react": "workspace:*",
     "@biomejs/biome": "1.7.1",
     "@pandacss/dev": "0.38.0",
     "@park-ui/panda-preset": "0.37.0",

@@ -25,7 +25,7 @@ export const layout = sva({
     },
     content: {
       pe: 'var(--ark-main-pe)',
-      borderBottomWidth: '1px',
+      boxShadow: 'xs',
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
