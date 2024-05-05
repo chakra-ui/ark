@@ -22,6 +22,7 @@ export const recipe = sva({
       width: 'full',
       textStyle: 'sm',
       fontWeight: 'bold',
+      textTransform: 'capitalize',
       py: '1.5',
     },
     link: {

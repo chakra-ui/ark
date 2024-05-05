@@ -22,6 +22,7 @@ const pages = defineCollection({
     .transform((data, { meta }) => ({
       ...data,
       slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
+      href: meta.path.replace(/.*\/pages\//, '/docs/').replace(/\.mdx$/, ''),
       category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
     })),
 })
