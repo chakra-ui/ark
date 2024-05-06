@@ -1,50 +1,5 @@
 [
   {
-    "id": "react",
-    "title": "React",
-    "description": "Learn how to use Ark UI with React.",
-    "metadata": {
-      "readingTime": 1,
-      "wordCount": 0
-    },
-    "content": "",
-    "toc": [],
-    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
-    "slug": "changelogs/react",
-    "href": "/docs/changelogs/react",
-    "category": "changelogs"
-  },
-  {
-    "id": "solid",
-    "title": "Solid",
-    "description": "Learn how to use Ark UI with Solid.",
-    "metadata": {
-      "readingTime": 1,
-      "wordCount": 0
-    },
-    "content": "",
-    "toc": [],
-    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
-    "slug": "changelogs/solid",
-    "href": "/docs/changelogs/solid",
-    "category": "changelogs"
-  },
-  {
-    "id": "vue",
-    "title": "Vue",
-    "description": "Learn how to use Ark UI with Vue.",
-    "metadata": {
-      "readingTime": 1,
-      "wordCount": 0
-    },
-    "content": "",
-    "toc": [],
-    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
-    "slug": "changelogs/vue",
-    "href": "/docs/changelogs/vue",
-    "category": "changelogs"
-  },
-  {
     "id": "animation",
     "title": "Animation",
     "description": "Learn how to animate components with Ark UI.",
@@ -57,6 +12,21 @@
     "code": "const{jsx:n}=arguments[0];function _createMdxContent(t){const e={p:\"p\",...t.components};return n(e.p,{children:\"TBD\"})}return{default:function(t={}){const{wrapper:e}=t.components||{};return e?n(e,{...t,children:n(_createMdxContent,{...t})}):_createMdxContent(t)}};",
     "slug": "guides/animation",
     "href": "/docs/guides/animation",
+    "category": "guides"
+  },
+  {
+    "id": "composition",
+    "title": "Composition",
+    "description": "How to compose your UI with Ark UI",
+    "metadata": {
+      "readingTime": 1,
+      "wordCount": 0
+    },
+    "content": "",
+    "toc": [],
+    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
+    "slug": "guides/composition",
+    "href": "/docs/guides/composition",
     "category": "guides"
   },
   {
@@ -75,9 +45,9 @@
     "category": "guides"
   },
   {
-    "id": "environment",
-    "title": "Environment",
-    "description": "TBD",
+    "id": "changelog",
+    "title": "Changelog",
+    "description": "Stay up-to-date with the latest changes in Ark UI",
     "metadata": {
       "readingTime": 1,
       "wordCount": 0
@@ -85,24 +55,9 @@
     "content": "",
     "toc": [],
     "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
-    "slug": "providers/environment",
-    "href": "/docs/providers/environment",
-    "category": "providers"
-  },
-  {
-    "id": "locale",
-    "title": "Locale",
-    "description": "Setup components for a custom locale like RTL, LTR or a custom language.",
-    "metadata": {
-      "readingTime": 1,
-      "wordCount": 0
-    },
-    "content": "",
-    "toc": [],
-    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
-    "slug": "providers/locale",
-    "href": "/docs/providers/locale",
-    "category": "providers"
+    "slug": "overview/changelog",
+    "href": "/docs/overview/changelog",
+    "category": "overview"
   },
   {
     "id": "getting-started",
@@ -160,6 +115,36 @@
     "slug": "overview/introduction",
     "href": "/docs/overview/introduction",
     "category": "overview"
+  },
+  {
+    "id": "environment",
+    "title": "Environment",
+    "description": "TBD",
+    "metadata": {
+      "readingTime": 1,
+      "wordCount": 0
+    },
+    "content": "",
+    "toc": [],
+    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
+    "slug": "providers/environment",
+    "href": "/docs/providers/environment",
+    "category": "providers"
+  },
+  {
+    "id": "locale",
+    "title": "Locale",
+    "description": "Setup components for a custom locale like RTL, LTR or a custom language.",
+    "metadata": {
+      "readingTime": 1,
+      "wordCount": 0
+    },
+    "content": "",
+    "toc": [],
+    "code": "const{Fragment:n,jsx:t}=arguments[0];function _createMdxContent(e){return t(n,{})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?t(e,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent()}};",
+    "slug": "providers/locale",
+    "href": "/docs/providers/locale",
+    "category": "providers"
   },
   {
     "id": "accordion",

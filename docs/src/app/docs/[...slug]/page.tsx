@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Box, Flex, Stack, styled } from 'styled-system/jsx'
-import { Example } from '~/components/component-preview'
 import { Footer } from '~/components/navigation/footer'
-import { Pre } from '~/components/pre'
 import { TableOfContent } from '~/components/table-of-content'
+import { Heading } from '~/components/ui/heading'
 import { Prose } from '~/components/ui/prose'
+import { Text } from '~/components/ui/text'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
@@ -20,30 +20,24 @@ export default function Page(props: Props) {
 
   if (page) {
     return (
-      <Flex justifyContent="center" pt="12" mx="auto" width="100%">
-        <Box mx="auto" maxW="688px" width="full" minH="lg">
-          <Stack gap="16">
-            <Prose>
-              <styled.h1 fontWeight="bold">{page.title}</styled.h1>
-              <styled.p className="lead" color="fg.emphasized">
-                {page.description}
-              </styled.p>
-              <styled.hr />
-              <MDXContent code={page.code} />
-            </Prose>
-            <Footer nextPage={nextPage} prevPage={prevPage} />
-          </Stack>
-        </Box>
-
-        <Box
-          flexGrow="1"
-          ps="8"
-          width="full"
-          maxW="256px"
-          minH="lg"
-          display={{ base: 'none', xl: 'block' }}
-        >
-          <TableOfContent entries={page.toc} />
+      <Flex mx="auto" pt="12" justifyContent="center" px={{ base: '4', md: '8' }} gap="16">
+        <Stack gap="16" maxW="45rem" mx="auto" width="full">
+          <Prose css={{ maxWidth: 'full' }}>
+            <Heading as="h1" fontWeight="bold">
+              {page.title}
+            </Heading>
+            <Text className="lead" color="fg.muted">
+              {page.description}
+            </Text>
+            <styled.hr />
+            <MDXContent code={page.code} />
+          </Prose>
+          <Footer nextPage={nextPage} prevPage={prevPage} />
+        </Stack>
+        <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
+          <Box position="fixed">
+            <TableOfContent entries={page.toc} />
+          </Box>
         </Box>
       </Flex>
     )

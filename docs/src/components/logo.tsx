@@ -1,6 +1,14 @@
-export const Logo = () => {
+import { type HTMLStyledProps, styled } from 'styled-system/jsx'
+
+export const Logo = (props: HTMLStyledProps<'svg'>) => {
   return (
-    <svg height="28" viewBox="0 0 63 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <styled.svg
+      height="7"
+      viewBox="0 0 63 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <title>Ark Logo</title>
       <g clipPath="url(#clip0_901_179)">
         <path
@@ -15,6 +23,6 @@ export const Logo = () => {
           <rect width="62.7773" height="24" fill="white" />
         </clipPath>
       </defs>
-    </svg>
+    </styled.svg>
   )
 }

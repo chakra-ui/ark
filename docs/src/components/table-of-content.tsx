@@ -24,7 +24,7 @@ interface Props {
 export const TableOfContent = (props: Props) => {
   const { entries = [] } = props
   return (
-    <nav style={{ position: 'fixed' }}>
+    <nav>
       <Text textStyle="sm" fontWeight="semibold" py="1.5" borderLeftWidth="1px" ps="4">
         On this page
       </Text>

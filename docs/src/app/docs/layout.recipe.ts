@@ -21,15 +21,10 @@ export const layout = sva({
         base: 'var(--ark-sidebar-width)',
         '2xl': 'var(--ark-sidebar-max-width)',
       },
-      background: 'bg.subtle',
+      background: { base: 'gray.2', _dark: 'gray.1' },
     },
     content: {
-      pe: 'calc((100vw - 1440px) / 2 + 32px)',
-      ps: {
-        base: '0',
-        md: 'var(--ark-sidebar-width)',
-        '2xl': 'var(--ark-main-ps)',
-      },
+      pe: 'calc((100vw - 1440px) / 2)',
       height: 'var(--ark-nav-height)',
       flexGrow: '1',
       flexShrink: '0',
@@ -50,17 +45,18 @@ export const layout = sva({
       bottom: '0',
       left: '0',
       maxW: '100%',
-      background: 'bg.subtle',
+      background: { base: 'gray.2', _dark: 'gray.1' },
     },
     main: {
-      pt: 'var(--ark-nav-height)',
+      py: 'var(--ark-nav-height)',
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
         '2xl': 'var(--ark-main-ps)',
       },
       pe: 'var(--ark-main-pe)',
-      bg: 'bg.default',
+      background: { base: 'white', _dark: 'gray.2' },
+      flex: '1',
     },
     divider: {
       ps: {

@@ -6,7 +6,6 @@ export const recipe = sva({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      borderTopWidth: '1px',
     },
     indicator: {
       color: 'fg.muted',
@@ -44,7 +43,7 @@ export const recipe = sva({
     },
     group: {
       pt: '2.5',
-      pb: '4',
+      pb: '3',
     },
   },
 })

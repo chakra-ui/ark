@@ -1,13 +1,16 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { Box, Divider, HStack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
+import { Logo } from '../logo'
 import { IconButton } from '../ui'
 import { VersionSelect } from '../version-select'
 
 export const Navbar = () => {
   return (
-    <HStack justifyContent="space-between" h="16">
-      <Box />
+    <HStack justifyContent="space-between" h="16" px={{ base: '4', md: '8' }}>
+      <Box>
+        <Logo display={{ md: 'none' }} />
+      </Box>
       <HStack gap="3">
         <VersionSelect />
         <Divider orientation="vertical" h="6" />
