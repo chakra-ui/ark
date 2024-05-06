@@ -7,6 +7,28 @@ resources:
   w3c: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
 ---
 
+## Usage
+
+```tsx live story=Basic
+<Accordion.Root defaultValue={['React']}>
+  {['React', 'Solid', 'Vue'].map((item, id) => (
+    <Accordion.Item key={id} value={item}>
+      <Accordion.ItemTrigger>
+        {item}
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        <div>
+          {item} is a JavaScript library focused on building user interfaces.
+        </div>
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
+
 ## Anatomy
 
 Understanding the Accordion's anatomy is crucial for proper setup:
@@ -14,22 +36,108 @@ Understanding the Accordion's anatomy is crucial for proper setup:
 > Each component part is marked with a `data-part` attribute for easy DOM
 > identification.
 
-<Example id="basic" />
+<Anatomy id="accordion" />
 
+## Animation
 
-## Usage
+You can use CSS animations to create smooth transitions for opening and closing Accordion items. Utilize the `data-state` attribute in combination with the `--height` CSS variable to animate the open and closed states of `Accordion.ItemContent`.
 
-Here is how you use this with multiple
+```css
+@keyframes slideDown {
+  from { height: 0; }
+  to { height: var(--height); }
+}
 
-```jsx
-// [!code highlight:2]
-<Accordion.Root multiple>
-  <Accordion.Item value="item-1">
-    …
-  </Accordion.Item>
-  <Accordion.Item value="item-2">
-    …
-  </Accordion.Item>
-</AccordionRoot>
+@keyframes slideUp {
+  from { height: var(--height); }
+  to { height: 0; }
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+  animation: slideDown 250ms;
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+  animation: slideUp 200ms;
+}
 ```
 
+## Examples
+
+### Collapsible Panels
+
+To create a collapsible Accordion where all panels can be closed simultaneously,
+utilize the `collapsible` prop:
+
+```tsx live story=Collapsible
+<Accordion.Root defaultValue={['React']} collapsible>
+  {['React', 'Solid', 'Vue'].map((item, id) => (
+    <Accordion.Item key={id} value={item}>
+      <Accordion.ItemTrigger>
+        {item}
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        <div>{item} is a JavaScript library for building user interfaces.</div>
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
+
+### Multiple Panels Open
+
+For an Accordion that allows keeping multiple panels open, apply the `multiple`
+prop:
+
+```tsx live story=Multiple
+<Accordion.Root defaultValue={['React']} multiple>
+  {['React', 'Solid', 'Vue'].map((item, id) => (
+    <Accordion.Item key={id} value={item}>
+      <Accordion.ItemTrigger>
+        {item}
+        <Accordion.ItemIndicator>
+          <ChevronDownIcon />
+        </Accordion.ItemIndicator>
+      </Accordion.ItemTrigger>
+      <Accordion.ItemContent>
+        <div>{item} is a JavaScript library for building user interfaces.</div>
+      </Accordion.ItemContent>
+    </Accordion.Item>
+  ))}
+</Accordion.Root>
+```
+
+### Accessing the Accordion API
+
+For advanced control, access the Accordion API using a function as a child
+component:
+
+<Story id="render-prop" />
+
+### Controlled Accordion
+
+To manage the Accordion's state, use the `value` prop and update it with the
+`onValueChange` event:
+
+<Story id="controlled" />
+
+### Changing Orientation
+
+Set the Accordion's orientation to vertical with the `orientation` prop:
+
+<Story id="vertical" />
+
+### Disabling an Accordion Item
+
+Disable any Accordion Item using the `disabled` prop:
+
+<Story id="disabled" />
+
+## API Reference
+
+Explore our detailed API Reference for further customization:
+
+<ComponentTypes />

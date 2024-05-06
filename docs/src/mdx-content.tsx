@@ -1,7 +1,23 @@
 import * as runtime from 'react/jsx-runtime'
+import { Anatomy } from './components/anatomy'
+import { ComponentPreview } from './components/component-preview'
+import { ComponentTypes } from './components/component-types'
+import { Faq } from './components/faq'
+import { Pre } from './components/pre'
+import { Quickstart } from './components/quickstart'
+import { Story } from './components/story'
+import { Step, Steps } from './components/ui/stepper'
 
 const sharedComponents = {
-  // Add your global components here
+  Anatomy,
+  ComponentPreview,
+  ComponentTypes,
+  Faq,
+  Pre,
+  Quickstart,
+  Steps,
+  Step,
+  Story,
 }
 
 const useMDXComponent = (code: string) => {

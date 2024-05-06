@@ -1,4 +1,3 @@
-import NextLink from 'next/link'
 import { Box, Divider, HStack, styled } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 

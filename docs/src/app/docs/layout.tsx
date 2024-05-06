@@ -4,9 +4,12 @@ import { Logo } from '~/components/logo'
 import { Navbar } from '~/components/navigation/navbar'
 import { Sidebar } from '~/components/navigation/sidebar'
 import { layout } from '~/layout/docs.layout'
+import { getSidebarGroups } from '~/lib/sidebar'
 
 export default function Layout(props: PropsWithChildren) {
   const styles = layout()
+  const groups = getSidebarGroups()
+
   return (
     <>
       <header className={styles.header}>
@@ -18,26 +21,7 @@ export default function Layout(props: PropsWithChildren) {
         </div>
       </header>
       <aside className={styles.aside}>
-        <Sidebar
-          groups={[
-            {
-              name: 'Overview',
-              items: [
-                { name: 'Introduction', href: '/docs/overview/introduction' },
-                { name: 'Getting Started', href: '/docs/overview/getting-started' },
-              ],
-            },
-            {
-              name: 'Components',
-              items: [
-                { name: 'Accordion', href: '/docs/components/accordion' },
-                { name: 'Avatar', href: '/docs/components/avatar' },
-                { name: 'Clipboard', href: '/docs/components/clipboard' },
-              ],
-            },
-          ]}
-          pathname="/"
-        />
+        <Sidebar groups={groups} />
       </aside>
       <main className={styles.main}>
         <Box px={{ base: '6', md: '8' }}>{props.children}</Box>
