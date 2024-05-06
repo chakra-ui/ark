@@ -1,7 +1,7 @@
 import { sva } from 'styled-system/css'
 
 export const layout = sva({
-  slots: ['header', 'aside', 'main', 'logo', 'content'],
+  slots: ['header', 'aside', 'main', 'logo', 'content', 'divider'],
   base: {
     header: {
       position: 'fixed',
@@ -24,7 +24,7 @@ export const layout = sva({
       background: 'bg.subtle',
     },
     content: {
-      pe: 'var(--ark-main-pe)',
+      pe: 'calc((100vw - 1440px) / 2 + 32px)',
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
@@ -61,6 +61,13 @@ export const layout = sva({
       },
       pe: 'var(--ark-main-pe)',
       bg: 'bg.default',
+    },
+    divider: {
+      ps: {
+        base: '0',
+        md: 'var(--ark-sidebar-width)',
+        '2xl': 'var(--ark-main-ps)',
+      },
     },
   },
 })

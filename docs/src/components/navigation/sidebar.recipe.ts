@@ -1,11 +1,12 @@
 import { sva } from 'styled-system/css'
 
 export const recipe = sva({
-  slots: ['root', 'item', 'trigger', 'link', 'group', 'indicator', 'content'],
+  slots: ['root', 'item', 'trigger', 'link', 'group', 'indicator'],
   base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
+      borderTopWidth: '1px',
     },
     indicator: {
       color: 'fg.muted',
@@ -21,21 +22,13 @@ export const recipe = sva({
       display: 'flex',
       width: 'full',
       textStyle: 'sm',
-      fontWeight: 'bold',
+      fontWeight: 'semibold',
       textTransform: 'capitalize',
       py: '1.5',
       _expanded: {
         '& > svg': {
           transform: 'rotate(90deg)',
         },
-      },
-    },
-    content: {
-      _open: {
-        animation: 'collapse-in',
-      },
-      _closed: {
-        animation: 'collapse-out',
       },
     },
     link: {
@@ -50,7 +43,6 @@ export const recipe = sva({
       },
     },
     group: {
-      borderTopWidth: '1px',
       pt: '2.5',
       pb: '4',
     },

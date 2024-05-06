@@ -1,4 +1,7 @@
 export * as Accordion from './accordion'
+export { Badge } from './badge'
 export { Icon } from './icon'
 export { Link } from './link'
+export * as SegmentGroup from './segment-group'
 export { Text } from './text'
+export { IconButton } from './icon-button'

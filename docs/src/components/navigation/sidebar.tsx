@@ -28,7 +28,7 @@ export const Sidebar = (props: Props) => {
                   <ChevronRightIcon />
                 </Icon>
               </Collapsible.Trigger>
-              <Collapsible.Content className={styles.content}>
+              <Collapsible.Content>
                 <ul>
                   {group.map((item) => (
                     <li key={item.id}>

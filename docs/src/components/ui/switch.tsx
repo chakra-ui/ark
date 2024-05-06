@@ -1,0 +1,36 @@
+import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react/switch'
+import { SunIcon } from 'lucide-react'
+import { type ReactNode, forwardRef } from 'react'
+import { css, cx } from 'styled-system/css'
+import { splitCssProps } from 'styled-system/jsx'
+import { type SwitchRecipeVariantProps, switchRecipe } from 'styled-system/recipes'
+import type { Assign, JsxStyleProps } from 'styled-system/types'
+
+export interface SwitchProps
+  extends Assign<JsxStyleProps, SwitchRootProps>,
+    SwitchRecipeVariantProps {
+  children?: ReactNode
+}
+
+export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => {
+  const [variantProps, switchProps] = switchRecipe.splitVariantProps(props)
+  const [cssProps, localProps] = splitCssProps(switchProps)
+  const { children, className, ...rootProps } = localProps
+  const styles = switchRecipe(variantProps)
+
+  return (
+    <ArkSwitch.Root ref={ref} className={cx(styles.root, css(cssProps), className)} {...rootProps}>
+      <ArkSwitch.Control className={styles.control}>
+        <ArkSwitch.Thumb
+          className={styles.thumb}
+          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <SunIcon width="10px" height="10px" />
+        </ArkSwitch.Thumb>
+      </ArkSwitch.Control>
+      {children && <ArkSwitch.Label className={styles.label}>{children}</ArkSwitch.Label>}
+    </ArkSwitch.Root>
+  )
+})
+
+Switch.displayName = 'Switch'
