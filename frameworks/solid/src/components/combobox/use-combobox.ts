@@ -27,24 +27,20 @@ export const useCombobox = <T extends CollectionItem>(
   ])
 
   const collection = () => combobox.collection(collectionOptions)
-
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
 
-  const initialContext: combobox.Context = {
+  const context = createMemo(() => ({
     id: createUniqueId(),
     collection: collection(),
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
+    'open.controlled': props.open !== undefined,
     ...rest,
-  }
+  }))
 
-  const [state, send] = useMachine(combobox.machine(initialContext), {
-    context: createMemo(() => ({
-      ...rest,
-      collection: collection(),
-      dir: locale().dir,
-      getRootNode: environment().getRootNode,
-      'open.controlled': props.open !== undefined,
-    })),
+  const [state, send] = useMachine(combobox.machine(context()), {
+    context,
   })
 
   return createMemo(() => combobox.connect<PropTypes, T>(state, send, normalizeProps))

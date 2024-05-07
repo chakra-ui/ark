@@ -1,5 +1,5 @@
 import * as datePicker from '@zag-js/date-picker'
-import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
@@ -36,21 +36,19 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
   const environment = useEnvironmentContext()
   const [localProps, restProps] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
 
-  const context = mergeProps(
-    () => ({
-      id: createUniqueId(),
-      dir: locale().dir,
-      getRootNode: environment().getRootNode,
-      'open.controlled': props.open !== undefined,
-      focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,
-      value: localProps.value ? datePicker.parse(localProps.value) : undefined,
-      max: localProps.max ? datePicker.parse(localProps.max) : undefined,
-      min: localProps.min ? datePicker.parse(localProps.min) : undefined,
-    }),
-    restProps,
-  )
+  const context = createMemo(() => ({
+    id: createUniqueId(),
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
+    'open.controlled': props.open !== undefined,
+    focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,
+    value: localProps.value ? datePicker.parse(localProps.value) : undefined,
+    max: localProps.max ? datePicker.parse(localProps.max) : undefined,
+    min: localProps.min ? datePicker.parse(localProps.min) : undefined,
+    ...restProps,
+  }))
 
-  const [state, send] = useMachine(datePicker.machine(context), { context })
+  const [state, send] = useMachine(datePicker.machine(context()), { context })
 
   return createMemo(() => datePicker.connect(state, send, normalizeProps))
 }

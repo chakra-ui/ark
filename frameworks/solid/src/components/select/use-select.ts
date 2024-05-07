@@ -25,26 +25,20 @@ export const useSelect = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-
   const collection = () => select.collection(collectionOptions)
-
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-
-  const initialContext: select.Context = {
+  const context = createMemo(() => ({
     id: createUniqueId(),
     collection: collection(),
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
+    'open.controlled': props.open !== undefined,
     ...rest,
-  }
+  }))
 
-  const [state, send] = useMachine(select.machine(initialContext), {
-    context: createMemo(() => ({
-      ...rest,
-      collection: collection(),
-      dir: locale().dir,
-      getRootNode: environment().getRootNode,
-      'open.controlled': props.open !== undefined,
-    })),
+  const [state, send] = useMachine(select.machine(context()), {
+    context,
   })
 
   return createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
