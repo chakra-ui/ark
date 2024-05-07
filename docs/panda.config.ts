@@ -32,6 +32,7 @@ export default defineConfig({
     extend: {
       html: {
         scrollPaddingTop: '6rem',
+        scrollBehavior: 'smooth',
         minHeight: '100%',
       },
       'html, body': {
