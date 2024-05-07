@@ -27,28 +27,19 @@ export const useAccordion = (
 ): UseAccordionReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed(() => {
-    const { modelValue, defaultValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
-
-  const [state, send] = useMachine(
-    accordion.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit('focusChange', details),
-      onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-    }),
-    { context },
-  )
+  const context = computed<accordion.Context>(() => ({
+    id: useId().value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onFocusChange: (details) => emit('focusChange', details),
+    onValueChange: (details) => {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    ...props,
+  }))
+  const [state, send] = useMachine(accordion.machine(context.value), { context })
 
   return computed(() => accordion.connect(state.value, send, normalizeProps))
 }

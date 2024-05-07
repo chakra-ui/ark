@@ -8,7 +8,7 @@ export interface LocaleProviderProps {
 </script>
 
 <script setup lang="ts">
-import { type Locale, isRTL } from '@zag-js/i18n-utils'
+import { isRTL, type Locale } from '@zag-js/i18n-utils'
 import { computed } from 'vue'
 import { LocaleContextProvider } from './use-locale-context'
 
