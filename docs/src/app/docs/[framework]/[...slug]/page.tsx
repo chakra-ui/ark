@@ -14,29 +14,29 @@ interface Props {
 }
 
 export default function Page(props: Props) {
-  const page = getPageBySlug(props.params.slug)
+  const currentPage = getPageBySlug(props.params.slug)
   const nextPage = getNextPage(props.params.slug)
   const prevPage = getPrevPage(props.params.slug)
 
-  if (page) {
+  if (currentPage) {
     return (
       <Flex mx="auto" pt="12" justifyContent="center" px={{ base: '4', md: '8' }} gap="16">
         <Stack gap="16" maxW="45rem" mx="auto" width="full">
           <Prose css={{ maxWidth: 'full' }}>
             <Heading as="h1" fontWeight="bold">
-              {page.title}
+              {currentPage.title}
             </Heading>
             <Text className="lead" color="fg.muted">
-              {page.description}
+              {currentPage.description}
             </Text>
             <styled.hr />
-            <MDXContent code={page.code} />
+            <MDXContent code={currentPage.code} />
           </Prose>
           <Footer nextPage={nextPage} prevPage={prevPage} />
         </Stack>
         <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
           <Box position="fixed">
-            <TableOfContent entries={page.toc} />
+            <TableOfContent entries={currentPage.toc} />
           </Box>
         </Box>
       </Flex>

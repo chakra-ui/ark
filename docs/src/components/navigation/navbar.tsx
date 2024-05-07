@@ -1,9 +1,9 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import { Box, Divider, HStack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
+import { FrameworkSelect } from '../framework-select'
 import { Logo } from '../logo'
 import { IconButton } from '../ui'
-import { VersionSelect } from '../version-select'
 
 export const Navbar = () => {
   return (
@@ -12,7 +12,7 @@ export const Navbar = () => {
         <Logo display={{ md: 'none' }} />
       </Box>
       <HStack gap="3">
-        <VersionSelect />
+        <FrameworkSelect />
         <Divider orientation="vertical" h="6" />
         <HStack gap="1">
           <ColorModeButton />

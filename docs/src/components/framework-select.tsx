@@ -1,8 +1,13 @@
+'use client'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import * as Select from '~/components/ui/select'
 import { Icon } from './ui'
 
-export const VersionSelect = () => {
+export const FrameworkSelect = () => {
+  const router = useRouter()
+  const params = useParams<{ framework: string }>()
+  const pathname = usePathname()
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -11,7 +16,8 @@ export const VersionSelect = () => {
 
   return (
     <Select.Root
-      defaultValue={['react']}
+      defaultValue={[params.framework]}
+      onValueChange={(e) => router.push(pathname.replace(params.framework, e.value[0]))}
       size="md"
       items={items}
       variant="ghost"
