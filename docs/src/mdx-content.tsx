@@ -13,7 +13,7 @@ const sharedComponents = {
   ComponentPreview,
   ComponentTypes,
   Faq,
-  Pre,
+  pre: Pre,
   Quickstart,
   Steps,
   Step,

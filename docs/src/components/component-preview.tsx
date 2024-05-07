@@ -1,15 +1,20 @@
-import { transformerNotationHighlight } from '@shikijs/transformers'
-import { codeToHtml } from 'shiki'
-import { findExample } from '~/lib/examples'
+import { Flex } from 'styled-system/jsx'
+import { Demo } from '~/demos/accordion'
 
-export const ComponentPreview = async () => {
-  const examples = await findExample({ component: 'accordion', id: 'basic' })
-  const html = await codeToHtml(examples[0], {
-    lang: 'jsx',
-    theme: 'github-dark',
-    transformers: [transformerNotationHighlight()],
-  })
-
-  // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-  return <div dangerouslySetInnerHTML={{ __html: html }} />
+export const ComponentPreview = () => {
+  return (
+    <Flex
+      bg="bg.canvas"
+      minH="40"
+      borderRadius="lg"
+      borderWidth="1px"
+      width="full"
+      overflow="hidden"
+      className="not-prose"
+    >
+      <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+        <Demo />
+      </Flex>
+    </Flex>
+  )
 }

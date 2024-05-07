@@ -21,7 +21,8 @@ export const layout = sva({
         base: 'var(--ark-sidebar-width)',
         '2xl': 'var(--ark-sidebar-max-width)',
       },
-      background: { base: 'gray.2', _dark: 'gray.1' },
+      bg: 'bg.canvas',
+      borderRightWidth: '1px',
     },
     content: {
       pe: 'calc((100vw - 1440px) / 2)',
@@ -45,7 +46,8 @@ export const layout = sva({
       bottom: '0',
       left: '0',
       maxW: '100%',
-      background: { base: 'gray.2', _dark: 'gray.1' },
+      bg: 'bg.canvas',
+      borderRightWidth: '1px',
     },
     main: {
       py: 'var(--ark-nav-height)',

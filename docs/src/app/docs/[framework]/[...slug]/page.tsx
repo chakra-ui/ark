@@ -24,7 +24,7 @@ export default function Page(props: Props) {
         <Stack gap="16" maxW="45rem" mx="auto" width="full">
           <Prose css={{ maxWidth: 'full' }}>
             <Heading as="h1" fontWeight="bold">
-              {currentPage.title}
+              {currentPage.title === 'Introduction' ? 'Weclome to Ark UI' : currentPage.title}
             </Heading>
             <Text className="lead" color="fg.muted">
               {currentPage.description}
