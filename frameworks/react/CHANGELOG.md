@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed initial flicker of `Accordion` content
+
 ## [3.0.0-1] - 2024-05-02
 
 ### Removed
