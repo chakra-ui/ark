@@ -1,3 +1,4 @@
+'use client'
 import { useCopyToClipboard } from '@uidotdev/usehooks'
 import { CheckIcon, CopyIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'

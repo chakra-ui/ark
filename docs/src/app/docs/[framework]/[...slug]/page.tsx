@@ -19,7 +19,7 @@ export default function Page(props: Props) {
   serverContext.framework = props.params.framework
   serverContext.component = props.params.slug[1]
 
-  const currentPage = getPageBySlug(props.params.slug)
+  const currentPage = getPageBySlug(props.params.slug, props.params.framework)
   const nextPage = getNextPage(props.params.slug)
   const prevPage = getPrevPage(props.params.slug)
 
@@ -62,7 +62,15 @@ export const generateMetadata = (props: Props): Metadata => {
 const pages = getSidebarGroups().flatMap((group) => group)
 export const generateStaticParams = () => pages.map((page) => ({ slug: page.slug.split('/') }))
 
-const getPageBySlug = (slug: string[]) => pages.find((page) => page.slug === slug.join('/'))
+const getPageBySlug = (slug: string[], framework?: string) => {
+  if (framework) {
+    return pages.find(
+      (page) =>
+        page.slug === slug.join('/') && (page.framework === '*' || page.framework === framework),
+    )
+  }
+  return pages.find((page) => page.slug === slug.join('/'))
+}
 
 const getNextPage = (slug: string[]) => {
   const index = pages.findIndex((page) => page.slug === slug.join('/'))

@@ -4,7 +4,7 @@ import { defineCollection, defineConfig, s } from 'velite'
 
 const pages = defineCollection({
   name: 'Pages',
-  pattern: 'pages/**/*.mdx',
+  pattern: ['docs/content/pages/**/*.mdx', 'frameworks/*/CHANGELOG.md'],
   schema: s
     .object({
       id: s.string(),
@@ -18,19 +18,30 @@ const pages = defineCollection({
         .optional(),
       metadata: s.metadata(),
       content: s.markdown(),
+      framework: s.string().default('*'),
       toc: s.toc(),
       code: s.mdx(),
     })
-    .transform((data, { meta }) => ({
-      ...data,
-      slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
-      category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
-    })),
+    .transform((data, { meta }) => {
+      if (data.id === 'changelog') {
+        return {
+          ...data,
+          slug: 'overview/changelog',
+          category: 'overview',
+          framework: meta.path.replace(/.*\/frameworks\//, '').replace(/\/[^/]*$/, ''),
+        }
+      }
+      return {
+        ...data,
+        slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
+        category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
+      }
+    }),
 })
 
 const types = defineCollection({
   name: 'Types',
-  pattern: 'types/**/*.json',
+  pattern: 'docs/content/types/**/*.json',
   schema: s
     .record(
       s.string(),
@@ -52,6 +63,7 @@ const types = defineCollection({
 })
 
 export default defineConfig({
+  root: '../',
   collections: { pages, types },
   mdx: {
     rehypePlugins: [
