@@ -1,6 +1,6 @@
 import * as progress from '@zag-js/progress'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useId } from '../../utils'
@@ -10,19 +10,18 @@ export interface UseProgressProps
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = ref(props)
 
-  const [state, send] = useMachine(
-    progress.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-    }),
-    { context },
-  )
+  const context = computed<progress.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    getRootNode: env?.value.getRootNode,
+    ...props,
+  }))
+
+  const [state, send] = useMachine(progress.machine(context.value), { context })
 
   return computed(() => progress.connect(state.value, send, normalizeProps))
 }

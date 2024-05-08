@@ -22,29 +22,23 @@ export const useSegmentGroup = (
   props: UseSegmentGroupProps,
   emit: EmitFn<RootEmits>,
 ): UseSegmentGroupReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed(() => {
-    const { defaultValue, modelValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
 
-  const [state, send] = useMachine(
-    segmentGroup.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-    }),
-    { context },
-  )
+  const context = computed<segmentGroup.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onValueChange: (details) => {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    ...props,
+  }))
+
+  const [state, send] = useMachine(segmentGroup.machine(context.value), { context })
 
   return computed(() => segmentGroup.connect(state.value, send, normalizeProps))
 }

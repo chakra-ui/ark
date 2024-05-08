@@ -48,30 +48,17 @@ export const useDatePicker = (
   props: UseDatePickerProps,
   emit: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed(() => {
-    const { modelValue, defaultValue, focusedValue, min, max, ...rest } = props
+  const context = computed<datePicker.Context>(() => {
+    const { modelValue, defaultValue, focusedValue, min, max, ...otherProps } = props
     return {
-      ...rest,
-      focusedValue: focusedValue ? datePicker.parse(focusedValue) : undefined,
-      value: modelValue
-        ? datePicker.parse(modelValue)
-        : defaultValue
-          ? datePicker.parse(defaultValue)
-          : undefined,
-      max: max ? datePicker.parse(max) : undefined,
-      min: min ? datePicker.parse(min) : undefined,
+      id: id.value,
+      dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
-    }
-  })
-
-  const [state, send] = useMachine(
-    datePicker.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
+      value: datePicker.parse(modelValue ?? defaultValue ?? []),
       getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => emit('focusChange', details),
       onViewChange: (details) => emit('viewChange', details),
@@ -83,9 +70,14 @@ export const useDatePicker = (
         emit('valueChange', details)
         emit('update:modelValue', details.valueAsString)
       },
-    }),
-    { context },
-  )
+      ...otherProps,
+      focusedValue: focusedValue ? datePicker.parse(focusedValue) : undefined,
+      max: max ? datePicker.parse(max) : undefined,
+      min: min ? datePicker.parse(min) : undefined,
+    }
+  })
+
+  const [state, send] = useMachine(datePicker.machine(context.value), { context })
 
   return computed(() => datePicker.connect(state.value, send, normalizeProps))
 }

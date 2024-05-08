@@ -28,41 +28,33 @@ export const useColorPicker = (
   props: UseColorPickerProps,
   emit: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed(() => {
-    const { modelValue, defaultValue, ...rest } = props
-    return {
-      ...rest,
-      value: defaultValue ? colorPicker.parse(defaultValue) : colorPicker.parse(modelValue ?? ''),
-      open: props.open ?? props.defaultOpen,
-      'open.controlled': props.open !== undefined,
-    }
-  })
-
-  const [state, send] = useMachine(
-    colorPicker.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onOpenChange(details) {
-        emit('openChange', details)
-        emit('update:open', details.open)
-      },
-      onValueChange(details) {
-        emit('valueChange', details)
-        emit('update:modelValue', details.valueAsString)
-      },
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onFormatChange: (details) => emit('formatChange', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-      onValueChangeEnd: (details) => emit('valueChangeEnd', details),
-    }),
-    { context },
-  )
+  const context = computed<colorPicker.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    open: props.defaultOpen,
+    'open.controlled': props.open !== undefined,
+    value: colorPicker.parse(props.defaultValue ?? props.modelValue ?? ''),
+    getRootNode: env?.value.getRootNode,
+    onOpenChange(details) {
+      emit('openChange', details)
+      emit('update:open', details.open)
+    },
+    onValueChange(details) {
+      emit('valueChange', details)
+      emit('update:modelValue', details.valueAsString)
+    },
+    onFocusOutside: (details) => emit('focusOutside', details),
+    onFormatChange: (details) => emit('formatChange', details),
+    onInteractOutside: (details) => emit('interactOutside', details),
+    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+    onValueChangeEnd: (details) => emit('valueChangeEnd', details),
+    ...props,
+  }))
+  const [state, send] = useMachine(colorPicker.machine(context.value), { context })
 
   return computed(() => colorPicker.connect(state.value, send, normalizeProps))
 }

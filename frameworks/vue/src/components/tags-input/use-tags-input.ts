@@ -21,36 +21,29 @@ export const useTagsInput = (
   props: UseTagsInputProps,
   emit: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed(() => {
-    const { modelValue, defaultValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
+  const context = computed<tagsInput.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onValueChange(details) {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    onFocusOutside: (details) => emit('focusOutside', details),
+    onHighlightChange: (details) => emit('highlightChange', details),
+    onInputValueChange: (details) => emit('inputValueChange', details),
+    onInteractOutside: (details) => emit('interactOutside', details),
+    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+    onValueInvalid: (details) => emit('valueInvalid', details),
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    tagsInput.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onValueChange(details) {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onHighlightChange: (details) => emit('highlightChange', details),
-      onInputValueChange: (details) => emit('inputValueChange', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-      onValueInvalid: (details) => emit('valueInvalid', details),
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(tagsInput.machine(context.value), { context })
 
   return computed(() => tagsInput.connect(state.value, send, normalizeProps))
 }

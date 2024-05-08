@@ -1,6 +1,6 @@
 import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
@@ -14,17 +14,15 @@ export const useClipboard = (
   props: UseClipboardProps,
   emit: EmitFn<RootEmits>,
 ): UseClipboardReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
-  const context = ref(props)
+  const context = computed<clipboard.Context>(() => ({
+    id: id.value,
+    getRootNode: env?.value.getRootNode,
+    onStatusChange: (details) => emit('statusChange', details),
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    clipboard.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      getRootNode: env?.value.getRootNode,
-      onStatusChange: (details) => emit('statusChange', details),
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(clipboard.machine(context.value), { context })
   return computed(() => clipboard.connect(state.value, send, normalizeProps))
 }

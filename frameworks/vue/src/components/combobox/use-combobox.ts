@@ -33,26 +33,18 @@ export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
   emit: EmitFn<RootEmits>,
 ): UseComboboxReturn<T> => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-
-  const context = computed(() => {
-    const { defaultValue, items, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } =
-      props
+  const context = computed<combobox.Context<T>>(() => {
+    const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
-      ...rest,
-      collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
-      value: modelValue ?? defaultValue,
-    }
-  })
-
-  const [state, send] = useMachine(
-    combobox.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
+      id: id.value,
       dir: locale.value.dir,
-      open: props.open ?? props.defaultOpen,
+      collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
+      open: props.defaultOpen,
       'open.controlled': props.open !== undefined,
+      value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
       onFocusOutside: (details) => emit('focusOutside', details),
       onHighlightChange: (details) => emit('highlightChange', details),
@@ -67,9 +59,10 @@ export const useCombobox = <T extends CollectionItem>(
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-    }),
-    { context },
-  )
+      ...otherProps,
+    }
+  })
+  const [state, send] = useMachine(combobox.machine(context.value), { context })
 
   return computed(() => combobox.connect(state.value, send, normalizeProps))
 }

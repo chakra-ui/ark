@@ -1,36 +1,16 @@
-import { type Locale, type LocaleOptions, isRTL, trackLocale } from '@zag-js/i18n-utils'
-import { type ReactNode, useEffect, useState } from 'react'
-import { useEnvironmentContext } from '../environment'
+import { type Locale, isRTL } from '@zag-js/i18n-utils'
+import type { PropsWithChildren } from 'react'
 import { LocaleContextProvider } from './use-locale-context'
 
-export interface LocaleProviderProps extends LocaleOptions {
+export interface LocaleProviderProps extends PropsWithChildren {
   /**
-   * The default locale to use if no locale is provided via props.
-   * @default 'en-US'
+   * The locale to use. For example, 'en-US'.
    */
-  defaultLocale?: string
-  /**
-   * The children to render.
-   */
-  children: ReactNode
+  locale: string
 }
 
 export const LocaleProvider = (props: LocaleProviderProps) => {
-  const { children, locale: localeProps, defaultLocale = 'en-US' } = props
-  const [locale, setLocale] = useState(localeProps || defaultLocale)
-  const { getRootNode } = useEnvironmentContext()
-
-  useEffect(() => {
-    if (!localeProps) {
-      return trackLocale({
-        locale: localeProps,
-        getRootNode,
-        onLocaleChange(locale) {
-          setLocale(locale.locale)
-        },
-      })
-    }
-  }, [localeProps, getRootNode])
+  const { children, locale } = props
 
   const context: Locale = {
     locale,
