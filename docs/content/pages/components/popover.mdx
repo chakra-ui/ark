@@ -23,7 +23,7 @@ we name its parts.
 Learn how to use the `Popover` component in your project. Let's take a look at
 the most basic example:
 
-<Story id="Basic" />
+<Example id="basic" />
 
 ### Using a Portal
 
@@ -33,26 +33,26 @@ render the popover within a portal, set the `portalled` prop to `true`.
 > Note: This requires that you render the component within a `Portal` based on
 > the framework you use.
 
-<Story id="Portalled" />
+<Example id="portalled" />
 
 ### Adding an arrow
 
 To render an arrow within the popover, render the component `Popover.Arrow` and
 `Popover.ArrowTip` as children of `Popover.Positioner`.
 
-<Story id="Arrow" />
+<Example id="arrow" />
 
 ### Listening for open and close events
 
 When the popover is opened or closed, we invoke the `onOpenChange` callback.
 
-<Story id="OnOpenChange" />
+<Example id="onOpenChange" />
 
 ### Control the open state
 
 Use the `isOpen` prop to control the open state of the popover.
 
-<Story id="Controlled" />
+<Example id="controlled" />
 
 ### Modifying the close behavior
 
@@ -65,13 +65,13 @@ To prevent it from closing on blur (clicking or focusing outside), pass the
 To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the
 `closeOnEsc` prop and set it to `false`.
 
-<Story id="CloseBehavior" />
+<Example id="closeBehavior" />
 
 ### Changing the placement
 
 To change the placement of the popover, set the `positioning` prop.
 
-<Story id="Positioning" />
+<Example id="positioning" />
 
 ### Changing the modality
 
@@ -85,7 +85,7 @@ In some cases, you might want the popover to be modal. This means that it'll:
 To make the popover modal, set the `modal` prop to `true`. When `modal={true}`,
 we set the `portalled` attribute to `true` as well.
 
-<Story id="Modal" />
+<Example id="modal" />
 
 ## API Reference
 

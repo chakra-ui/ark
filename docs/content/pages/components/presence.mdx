@@ -18,28 +18,28 @@ By default the child component starts out as hidden and remains hidden after the
 needs to be hidden initially and continue to stay hidden after its presence is
 no longer required.
 
-<Story id="Basic" />
+<Example id="basic" />
 
 ### Lazy Mount
 
 To delay the mounting of a child component until the `present` prop is set to
 true, use the `lazyMount` prop:
 
-<Story id="LazyMount" />
+<Example id="lazyMount" />
 
 ### Unmount on Exit
 
 To remove the child component from the DOM when it's not present, use the
 `unmountOnExit` prop:
 
-<Story id="UnmountOnExit" />
+<Example id="unmountOnExit" />
 
 ### Combining Lazy Mount and Unmount on Exit
 
 Both `lazyMount` and `unmountOnExit` can be combined for a component to be
 mounted only when it's present and to be unmounted when it's no longer present:
 
-<Story id="LazyMountAndUnmountOnExit" />
+<Example id="lazyMountAndUnmountOnExit" />
 
 ## API Reference
 

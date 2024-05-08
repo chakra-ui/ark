@@ -23,20 +23,20 @@ name its parts.
 Learn how to use the `Tabs` component in your project. Let's take a look at the
 most basic example:
 
-<Story id="Basic" />
+<Example id="basic" />
 
 ### Initial Tab
 
 To set a default tab on initial render, use the `defaultValue` prop:
 
-<Story id="InitialTab" />
+<Example id="initialTab" />
 
 ### Tab Indicator
 
 To provide a visual cue for the selected tab, use the `Tabs.Indicator`
 component:
 
-<Story id="Indicator" />
+<Example id="indicator" />
 
 ### Lazy Mounting
 
@@ -49,21 +49,21 @@ In addition, the `unmountOnExit` prop can be used in conjunction with
 `lazyMount` to unmount the tab content when the tab is deactivated, freeing up
 resources. The next time the tab is activated, its content will be re-rendered.
 
-<Story id="LazyMount" />
+<Example id="lazyMount" />
 
 ### Disabled Tab
 
 To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger`
 component:
 
-<Story id="DisabledTab" />
+<Example id="disabledTab" />
 
 ### Controlled Tabs
 
 To create a controlled Tabs component, manage the current selected tab using the
 `value` prop and update it when the `onValueChange` event handler is called:
 
-<Story id="Controlled" />
+<Example id="controlled" />
 
 ### Router Controlled Tabs
 
@@ -115,7 +115,7 @@ export default function App() {
 The default orientation of the tabs is `horizontal`. To change the orientation,
 set the `orientation` prop to `vertical`.
 
-<Story id="Vertical" />
+<Example id="vertical" />
 
 ### Manual Activation
 
@@ -126,7 +126,7 @@ In contrast, manual tab activation means the tab is selected with the
 
 <kbd>Enter</kbd> key or by clicking on the tab.
 
-<Story id="Manual" />
+<Example id="manual" />
 
 ## API Reference
 

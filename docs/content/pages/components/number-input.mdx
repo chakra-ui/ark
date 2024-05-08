@@ -23,7 +23,7 @@ how we name its parts.
 Learn how to use the `NumberInput` component in your project. Let's take a look
 at the most basic example:
 
-<Story id="Basic" />
+<Example id="basic" />
 
 ### Setting a minimum and maximum value
 
@@ -31,7 +31,7 @@ Pass the `min` prop or `max` prop to set an upper and lower limit for the input.
 By default, the input will restrict the value to stay within the specified
 range.
 
-<Story id="MinMax" />
+<Example id="minMax" />
 
 ### Adjusting the precision of the value
 
@@ -39,7 +39,7 @@ In some cases, you might need the value to be rounded to specific decimal
 points. Set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
 `maximumFractionDigits` or `minimumFractionDigits`.
 
-<Story id="FractionDigits" />
+<Example id="fractionDigits" />
 
 ### Scrubbing the input value
 
@@ -48,14 +48,14 @@ render the `NumberInput.Scrubber` component. It uses the Pointer lock API and
 tracks the pointer movement. It also renders a virtual cursor which mimics the
 real cursor's pointer.
 
-<Story id="Scrubber" />
+<Example id="scrubber" />
 
 ### Using the mouse wheel to change value
 
 The NumberInput exposes a way to increment/decrement the value using the mouse
 wheel event. To activate this, set the `allowMouseWheel` prop to `true`.
 
-<Story id="MouseWheel" />
+<Example id="mouseWheel" />
 
 ### Clamp value when user blurs the input
 
@@ -65,20 +65,20 @@ of the input.
 
 To disable this behavior, pass `clampValueOnBlur` and set to `false`.
 
-<Story id="NoClamp" />
+<Example id="noClamp" />
 
 ### Usage within forms
 
 To use the number input within forms, set the `name` prop.
 
-<Story id="FormUsage" />
+<Example id="formUsage" />
 
 ### Format and parse value
 
 To apply custom formatting to the input's value, set the `formatOptions` and
 provide `Intl.NumberFormatOptions` such as `style` and `currency`.
 
-<Story id="Formatted" />
+<Example id="formatted" />
 
 ## API Reference
 

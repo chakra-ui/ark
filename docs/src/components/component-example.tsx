@@ -1,12 +1,10 @@
 import { readFile } from 'node:fs/promises'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { codeToHtml } from 'shiki'
+import { getServerContext } from '~/lib/server-context'
 import { CodeExplorer } from './code-explorer'
 
 interface Props {
-  /**
-   * Identifier of the example to load e.g. `accordion/multiple`
-   */
   id: string
 }
 
@@ -17,7 +15,9 @@ export const Example = async (props: Props) => {
 }
 
 const findExamples = async (props: Props) => {
-  const [component, id] = props.id.split('/')
+  const serverContext = getServerContext()
+  const id = props.id
+  const component = serverContext.component
 
   return Promise.all(
     ['react', 'solid', 'vue'].map(async (framework) => {

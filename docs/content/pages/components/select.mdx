@@ -23,31 +23,31 @@ name its parts.
 Learn how to use the `Select` component in your project. Let's take a look at
 the most basic example:
 
-<Story id="Basic" />
+<Example id="basic" />
 
 ### Advanced Customization
 
 For advanced customizations and item properties like `disabled`:
 
-<Story id="Advanced" />
+<Example id="advanced" />
 
 ### Multiple Selection
 
 To enable `multiple` item selection:
 
-<Story id="Multiple" />
+<Example id="multiple" />
 
 ### Controlled Component
 
 For scenarios where you want to control the Select component's state:
 
-<Story id="Controlled" />
+<Example id="controlled" />
 
 ### Usage with a Form Library
 
 See how to use the Select component with popular form libraries:
 
-<Story id="FormLibrary" />
+<Example id="formLibrary" />
 
 ## TypeScript Caveats in Vue
 Under the hood for React and Solid frameworks, we supply a complex prop type with a generic so that the type of the `items` prop matches the param type in the function signatures for props such as the `isItemDisabled` prop, say. (See the api reference table below) Unfortunately, generic typing is not supported in Vue for components that contain props with slots and/or emits. Therefore, you will not expect updated typing in this way.
