@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Accordion } from '../..'
-import LocaleProvider from '../../../providers/locale/locale-provider.vue'
 import { ChevronDownIcon } from './icons'
 
 const items = ref(['React', 'Solid', 'Vue'])
-const locale = ref('ar-BH')
 </script>
 
 <template>
-  <LocaleProvider :locale="locale">
-    <button @click="locale = 'en-US'">Switch to English {{ locale }}</button>
+
+
   <Accordion.Root>
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemTrigger>
@@ -24,6 +22,7 @@ const locale = ref('ar-BH')
       </Accordion.ItemContent>
     </Accordion.Item>
   </Accordion.Root>
-</LocaleProvider>
+
+
 </template>
 
