@@ -22,34 +22,27 @@ export const useEditable = (
   props: UseEditableProps,
   emit: EmitFn<RootEmits>,
 ): UseEditableReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed(() => {
-    const { defaultValue, modelValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
+  const context = computed<editable.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onValueChange(details) {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    onEdit: () => emit('edit'),
+    onFocusOutside: (details) => emit('focusOutside', details),
+    onInteractOutside: (details) => emit('interactOutside', details),
+    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+    onValueCommit: (details) => emit('valueCommit', details),
+    onValueRevert: (details) => emit('valueRevert', details),
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    editable.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onValueChange(details) {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-      onEdit: () => emit('edit'),
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-      onValueCommit: (details) => emit('valueCommit', details),
-      onValueRevert: (details) => emit('valueRevert', details),
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(editable.machine(context.value), { context })
   return computed(() => editable.connect(state.value, send, normalizeProps))
 }

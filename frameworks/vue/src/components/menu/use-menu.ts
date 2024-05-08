@@ -1,6 +1,6 @@
 import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
@@ -21,32 +21,30 @@ export interface UseMenuReturn {
 }
 
 export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuReturn => {
-  const context = ref(props)
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const [state, send, machine] = useMachine(
-    menu.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      open: props.open ?? props.defaultOpen,
-      'open.controlled': props.open !== undefined,
-      getRootNode: env?.value.getRootNode,
-      onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
-      },
-      onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onHighlightChange: (details) => emit('highlightChange', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-      onSelect: (details) => emit('select', details),
-    }),
-    { context },
-  )
+  const context = computed<menu.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    open: props.open ?? props.defaultOpen,
+    'open.controlled': props.open !== undefined,
+    getRootNode: env?.value.getRootNode,
+    onOpenChange: (details) => {
+      emit('openChange', details)
+      emit('update:open', details.open)
+    },
+    onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
+    onFocusOutside: (details) => emit('focusOutside', details),
+    onHighlightChange: (details) => emit('highlightChange', details),
+    onInteractOutside: (details) => emit('interactOutside', details),
+    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+    onSelect: (details) => emit('select', details),
+    ...props,
+  }))
 
+  const [state, send, machine] = useMachine(menu.machine(context.value), { context })
   const api = computed(() => menu.connect(state.value, send, normalizeProps))
 
   return {

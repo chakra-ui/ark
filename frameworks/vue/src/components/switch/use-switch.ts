@@ -18,30 +18,23 @@ export interface UseSwitchProps
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSwitchReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed(() => {
-    const { defaultChecked, checked, ...rest } = props
-    return {
-      ...rest,
-      checked: checked ?? defaultChecked,
-    }
-  })
+  const context = computed<zagSwitch.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    checked: props.defaultChecked,
+    getRootNode: env?.value.getRootNode,
+    onCheckedChange(details) {
+      emit('checkedChange', details)
+      emit('update:checked', details.checked)
+    },
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    zagSwitch.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onCheckedChange(details) {
-        emit('checkedChange', details)
-        emit('update:checked', details.checked)
-      },
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(zagSwitch.machine(context.value), { context })
 
   return computed(() => zagSwitch.connect(state.value, send, normalizeProps))
 }

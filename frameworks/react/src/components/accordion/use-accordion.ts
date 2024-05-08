@@ -25,11 +25,12 @@ export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn 
     dir,
     getRootNode,
     ...props,
-    value: props.defaultValue,
+    value: props.value ?? props.defaultValue,
   }
 
   const context: accordion.Context = {
     ...initialContext,
+    value: props.value,
     onFocusChange: useEvent(props.onFocusChange),
     onValueChange: useEvent(props.onValueChange),
   }

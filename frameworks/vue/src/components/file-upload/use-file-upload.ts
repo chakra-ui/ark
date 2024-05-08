@@ -1,6 +1,6 @@
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
@@ -15,22 +15,20 @@ export const useFileUpload = (
   props: UseFileUploadProps,
   emit: EmitFn<RootEmits>,
 ): UseFileUploadReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = ref(props)
+  const context = computed<fileUpload.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    getRootNode: env?.value.getRootNode,
+    onFileChange: (details) => emit('fileChange', details),
+    onFileAccept: (details) => emit('fileAccept', details),
+    onFileReject: (details) => emit('fileReject', details),
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    fileUpload.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onFileChange: (details) => emit('fileChange', details),
-      onFileAccept: (details) => emit('fileAccept', details),
-      onFileReject: (details) => emit('fileReject', details),
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(fileUpload.machine(context.value), { context })
 
   return computed(() => fileUpload.connect(state.value, send, normalizeProps))
 }

@@ -1,4 +1,4 @@
-import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as tabs from '@zag-js/tabs'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
@@ -10,11 +10,15 @@ export interface UseTabsReturn extends Accessor<tabs.Api<PropTypes>> {}
 export const useTabs = (props: UseTabsProps): UseTabsReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const context = mergeProps(
-    { id: createUniqueId(), dir: locale().dir, getRootNode: environment().getRootNode },
-    props,
-  )
-  const [state, send] = useMachine(tabs.machine(context), { context })
+  const id = createUniqueId()
+
+  const context = createMemo(() => ({
+    id,
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
+    ...props,
+  }))
+  const [state, send] = useMachine(tabs.machine(context()), { context })
 
   return createMemo(() => tabs.connect(state, send, normalizeProps))
 }

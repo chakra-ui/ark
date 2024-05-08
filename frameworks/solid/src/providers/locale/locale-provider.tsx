@@ -1,50 +1,21 @@
-import { type Locale, type LocaleOptions, isRTL, trackLocale } from '@zag-js/i18n-utils'
-import {
-  type ParentProps,
-  createEffect,
-  createMemo,
-  createSignal,
-  onCleanup,
-  splitProps,
-} from 'solid-js'
-import { useEnvironmentContext } from '../environment'
+import { type Locale, isRTL } from '@zag-js/i18n-utils'
+import { type ParentProps, createMemo } from 'solid-js'
 import { LocaleContextProvider } from './use-locale-context'
 
-export interface LocaleProviderProps extends LocaleOptions, ParentProps {
+export interface LocaleProviderProps extends ParentProps {
   /**
-   * The default locale to use if no locale is provided via props.
-   * @default 'en-US'
+   * The locale to use. For example, 'en-US'.
    */
-  defaultLocale?: string
+  locale: string
 }
 
 export const LocaleProvider = (props: LocaleProviderProps) => {
-  const [localeProps, restProps] = splitProps(props, ['locale', 'defaultLocale'])
-
-  const [locale, setLocale] = createSignal(
-    localeProps.defaultLocale || localeProps.locale || 'en-US',
-  )
-
-  const environment = useEnvironmentContext()
-
-  createEffect(() => {
-    const cleanup = trackLocale({
-      locale: localeProps.locale,
-      getRootNode: environment().getRootNode,
-      onLocaleChange(locale) {
-        setLocale(locale.locale)
-      },
-    })
-
-    onCleanup(cleanup)
-  })
-
   const context = createMemo(
     (): Locale => ({
-      locale: locale(),
-      dir: isRTL(locale()) ? 'rtl' : 'ltr',
+      locale: props.locale,
+      dir: isRTL(props.locale) ? 'rtl' : 'ltr',
     }),
   )
 
-  return <LocaleContextProvider value={context}>{restProps.children}</LocaleContextProvider>
+  return <LocaleContextProvider value={context}>{props.children}</LocaleContextProvider>
 }
