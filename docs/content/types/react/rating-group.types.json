@@ -1,0 +1,104 @@
+{
+  "Control": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "HiddenInput": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Item": {
+    "index": { "type": "number", "isRequired": true },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Label": {
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    }
+  },
+  "Root": {
+    "allowHalf": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to allow half stars."
+    },
+    "asChild": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Render as a different element type."
+    },
+    "autoFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to autofocus the rating."
+    },
+    "count": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The total number of ratings."
+    },
+    "defaultValue": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial value of the rating group when it is first rendered.\nUse when you do not need to control the state of the rating group."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the rating is disabled."
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying input element."
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the rating. Useful for composition."
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name attribute of the rating element (used in forms)."
+    },
+    "onHoverChange": {
+      "type": "(details: HoverChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function to be called when the rating value is hovered."
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function to be called when the rating value changes."
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the rating is readonly."
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    },
+    "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
+  }
+}

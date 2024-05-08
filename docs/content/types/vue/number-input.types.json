@@ -1,0 +1,149 @@
+{
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "DecrementTrigger": {
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+  },
+  "IncrementTrigger": {
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+  },
+  "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "focusChange": {
+      "type": "[details: FocusChangeDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the number input is focused"
+    },
+    "update:modelValue": {
+      "type": "[value: string]",
+      "isRequired": true,
+      "description": "The callback fired when the model value changes."
+    },
+    "valueChange": {
+      "type": "[details: ValueChangeDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the value changes"
+    },
+    "valueInvalid": {
+      "type": "[details: ValueInvalidDetails]",
+      "isRequired": true,
+      "description": "Function invoked when the value overflows or underflows the min/max range"
+    }
+  },
+  "Root": {
+    "allowMouseWheel": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to allow mouse wheel to change the value"
+    },
+    "allowOverflow": {
+      "type": "boolean",
+      "defaultValue": "true",
+      "isRequired": false,
+      "description": "Whether to allow the value overflow the min/max range"
+    },
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "clampValueOnBlur": {
+      "type": "boolean",
+      "defaultValue": "true",
+      "isRequired": false,
+      "description": "Whether to clamp the value when the input loses focus (blur)"
+    },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the number input when it is first rendered.\nUse when you do not need to control the state of the number input."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the number input is disabled."
+    },
+    "focusInputOnChange": {
+      "type": "boolean",
+      "defaultValue": "true",
+      "isRequired": false,
+      "description": "Whether to focus input when the value changes"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the input element."
+    },
+    "formatOptions": {
+      "type": "NumberFormatOptions",
+      "isRequired": false,
+      "description": "The options to pass to the `Intl.NumberFormat` constructor"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the number input. Useful for composition."
+    },
+    "inputMode": {
+      "type": "'text' | 'tel' | 'numeric' | 'decimal'",
+      "defaultValue": "\"decimal\"",
+      "isRequired": false,
+      "description": "Hints at the type of data that might be entered by the user. It also determines\nthe type of keyboard shown to the user on mobile devices"
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the number input value is invalid."
+    },
+    "locale": {
+      "type": "string",
+      "defaultValue": "\"en-US\"",
+      "isRequired": false,
+      "description": "The current locale. Based on the BCP 47 definition."
+    },
+    "max": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The maximum value of the number input"
+    },
+    "min": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The minimum value of the number input"
+    },
+    "modelValue": { "type": "string", "isRequired": false },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The name attribute of the number input. Useful for form submission."
+    },
+    "pattern": {
+      "type": "string",
+      "defaultValue": "\"[0-9]*(.[0-9]+)?\"",
+      "isRequired": false,
+      "description": "The pattern used to check the <input> element's value against"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the number input is readonly"
+    },
+    "spinOnPress": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to spin the value when the increment/decrement button is pressed"
+    },
+    "step": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The amount to increment or decrement the value by"
+    },
+    "translations": {
+      "type": "IntlTranslations",
+      "isRequired": false,
+      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    }
+  },
+  "Scrubber": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+}

@@ -28,8 +28,31 @@ const pages = defineCollection({
     })),
 })
 
+const types = defineCollection({
+  name: 'Types',
+  pattern: 'types/**/*.json',
+  schema: s
+    .record(
+      s.string(),
+      s.record(
+        s.string(),
+        s.object({
+          type: s.string(),
+          isRequired: s.boolean(),
+          defaultValue: s.string().optional(),
+          description: s.string().optional(),
+        }),
+      ),
+    )
+    .transform((data, { meta }) => ({
+      parts: data,
+      component: meta.basename?.split('.')[0] ?? '',
+      framework: meta.path.replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
+    })),
+})
+
 export default defineConfig({
-  collections: { pages },
+  collections: { pages, types },
   mdx: {
     rehypePlugins: [
       rehypeSlug,

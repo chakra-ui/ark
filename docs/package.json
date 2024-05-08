@@ -19,6 +19,8 @@
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
     "@uidotdev/usehooks": "2.4.1",
+    "@zag-js/anatomy-icons": "0.49.0",
+    "@zag-js/docs": "0.49.0",
     "next": "14.2.3",
     "next-themes": "0.3.0",
     "pandacss-preset-typography": "0.1.5",

@@ -1,0 +1,61 @@
+{
+  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "exitComplete": {
+      "type": "[]",
+      "isRequired": true,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "openChange": {
+      "type": "[details: OpenChangeDetails]",
+      "isRequired": true,
+      "description": "Function called when the popup is opened"
+    },
+    "update:open": {
+      "type": "[open: boolean]",
+      "isRequired": true,
+      "description": "Event handler called when the open state of the collapsible changes."
+    }
+  },
+  "Root": {
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the collapsible when it is first rendered.\nUse when you do not need to control its open state."
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the collapsible is disabled"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; content: string; trigger: string }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the collapsible. Useful for composition."
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The controlled open state of the collapsible. Can be binded with v-model."
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    }
+  },
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+}

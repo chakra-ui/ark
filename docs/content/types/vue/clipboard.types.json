@@ -1,0 +1,37 @@
+{
+  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Input": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "RootEmits": {
+    "statusChange": {
+      "type": "[details: CopyStatusDetails]",
+      "isRequired": true,
+      "description": "The function to be called when the value is copied to the clipboard"
+    }
+  },
+  "Root": {
+    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{ root: string; input: string; label: string }>",
+      "isRequired": false,
+      "description": "The ids of the elements in the clipboard. Useful for composition."
+    },
+    "timeout": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The timeout for the copy operation"
+    },
+    "value": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The value to be copied to the clipboard"
+    }
+  },
+  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+}

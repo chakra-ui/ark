@@ -6,14 +6,19 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
+import { getServerContext } from '~/lib/server-context'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
 interface Props {
-  params: { slug: string[] }
+  params: { framework: string; slug: string[] }
 }
 
 export default function Page(props: Props) {
+  const serverContext = getServerContext()
+  serverContext.framework = props.params.framework
+  serverContext.component = props.params.slug[1]
+
   const currentPage = getPageBySlug(props.params.slug)
   const nextPage = getNextPage(props.params.slug)
   const prevPage = getPrevPage(props.params.slug)

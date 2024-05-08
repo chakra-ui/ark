@@ -1,0 +1,172 @@
+{
+  "ClearTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Content": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "HiddenSelect": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Indicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroupLabel": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemGroup": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ItemIndicator": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Item": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "item": { "type": "any", "isRequired": false }
+  },
+  "ItemText": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Positioner": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Root": {
+    "items": {
+      "type": "T[] | readonly T[]",
+      "isRequired": true,
+      "description": "The options of the select"
+    },
+    "asChild": { "type": "boolean", "isRequired": false },
+    "closeOnSelect": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select should close after an item is selected"
+    },
+    "disabled": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is disabled"
+    },
+    "form": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The associate form of the underlying select."
+    },
+    "highlightedValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The key of the highlighted item"
+    },
+    "id": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The unique identifier of the machine."
+    },
+    "ids": {
+      "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+      "isRequired": false,
+      "description": "The ids of the elements in the select. Useful for composition."
+    },
+    "invalid": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is invalid"
+    },
+    "isItemDisabled": {
+      "type": "(item: T) => boolean",
+      "isRequired": false,
+      "description": "Whether the item is disabled"
+    },
+    "itemToString": {
+      "type": "(item: T) => string",
+      "isRequired": false,
+      "description": "The label of the item"
+    },
+    "itemToValue": {
+      "type": "(item: T) => string",
+      "isRequired": false,
+      "description": "The value of the item"
+    },
+    "lazyMount": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to enable lazy mounting"
+    },
+    "loopFocus": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to loop the keyboard navigation through the options"
+    },
+    "multiple": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether to allow multiple selection"
+    },
+    "name": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The `name` attribute of the underlying select."
+    },
+    "onExitComplete": {
+      "type": "() => void",
+      "isRequired": false,
+      "description": "Function called when the animation ends in the closed state."
+    },
+    "onFocusOutside": {
+      "type": "(event: FocusOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the focus is moved outside the component"
+    },
+    "onHighlightChange": {
+      "type": "(details: HighlightChangeDetails<T>) => void",
+      "isRequired": false,
+      "description": "The callback fired when the highlighted item changes."
+    },
+    "onInteractOutside": {
+      "type": "(event: InteractOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when an interaction happens outside the component"
+    },
+    "onOpenChange": {
+      "type": "(details: OpenChangeDetails) => void",
+      "isRequired": false,
+      "description": "Function called when the popup is opened"
+    },
+    "onPointerDownOutside": {
+      "type": "(event: PointerDownOutsideEvent) => void",
+      "isRequired": false,
+      "description": "Function called when the pointer is pressed down outside the component"
+    },
+    "onValueChange": {
+      "type": "(details: ValueChangeDetails<T>) => void",
+      "isRequired": false,
+      "description": "The callback fired when the selected item changes."
+    },
+    "open": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select menu is open"
+    },
+    "positioning": {
+      "type": "PositioningOptions",
+      "isRequired": false,
+      "description": "The positioning options of the menu."
+    },
+    "present": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the node is present (controlled by the user)"
+    },
+    "readOnly": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "Whether the select is read-only"
+    },
+    "scrollToIndexFn": {
+      "type": "(details: ScrollToIndexDetails) => void",
+      "isRequired": false,
+      "description": "Function to scroll to a specific index"
+    },
+    "unmountOnExit": {
+      "type": "boolean",
+      "defaultValue": "false",
+      "isRequired": false,
+      "description": "Whether to unmount on exit."
+    },
+    "value": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The keys of the selected items"
+    }
+  },
+  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } },
+  "ValueText": {
+    "asChild": { "type": "boolean", "isRequired": false },
+    "placeholder": { "type": "string", "isRequired": false }
+  }
+}
