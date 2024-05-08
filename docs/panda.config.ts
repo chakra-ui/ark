@@ -28,6 +28,11 @@ export default defineConfig({
     '--ark-main-ps': 'calc((100vw - var(--ark-layout-max-width)) / 2 + var(--ark-sidebar-width))',
     '--ark-main-pe': 'calc((100vw - var(--ark-layout-max-width)) / 2)',
   },
+  staticCss: {
+    recipes: {
+      code: [{ size: ['*'] }],
+    },
+  },
   globalCss: {
     extend: {
       html: {
