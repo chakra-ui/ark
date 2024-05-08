@@ -7,8 +7,6 @@ const items = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-
-
   <Accordion.Root>
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemTrigger>
@@ -22,7 +20,4 @@ const items = ref(['React', 'Solid', 'Vue'])
       </Accordion.ItemContent>
     </Accordion.Item>
   </Accordion.Root>
-
-
 </template>
-
