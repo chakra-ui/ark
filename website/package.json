@@ -23,7 +23,7 @@
     "@icons-pack/react-simple-icons": "9.4.1",
     "@nanostores/persistent": "0.10.1",
     "@nanostores/react": "0.7.2",
-    "@pandacss/dev": "0.38.0",
+    "@pandacss/dev": "0.39.1",
     "@park-ui/panda-preset": "0.37.0",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
