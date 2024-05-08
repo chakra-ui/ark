@@ -19,7 +19,7 @@ export const MobileSidebarContainer = (props: PropsWithChildren) => (
         <Drawer.Content>
           <Drawer.Header height="16" justifyContent="center">
             <NextLink href="/" aria-label="Go to start page">
-              <Logo height="7" />
+              <Logo />
             </NextLink>
             <Drawer.CloseTrigger position="absolute" asChild>
               <IconButton aria-label="Close Sidebar" variant="ghost" top="3" right="4">

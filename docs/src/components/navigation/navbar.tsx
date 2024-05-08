@@ -14,8 +14,8 @@ export const Navbar = () => {
   return (
     <>
       <HStack justifyContent="space-between" h="16" px={{ base: '4', md: '8' }}>
-        <Box>
-          <Logo display={{ md: 'none' }} />
+        <Box display={{ md: 'none' }}>
+          <Logo />
         </Box>
         <HStack gap="3">
           <FrameworkSelect />

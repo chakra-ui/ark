@@ -1,5 +1,4 @@
 'use client'
-
 import { Select } from '@ark-ui/react/select'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

@@ -18,7 +18,11 @@ export const CodeExplorer = (props: Props) => {
   const params = useParams<{ framework: string }>()
   return (
     <Tabs.Root defaultValue={params.framework} variant="enclosed" size="sm" className="not-prose">
-      <Tabs.List borderBottomRadius="0" borderBottomWidth="0" bg="bg.default">
+      <Tabs.List
+        borderBottomRadius="0"
+        borderBottomWidth="0"
+        bg={{ base: 'gray.2', _dark: 'gray.2' }}
+      >
         {examples.map((example) => (
           <Tabs.Trigger
             key={example.framework}
@@ -28,7 +32,7 @@ export const CodeExplorer = (props: Props) => {
             {example.framework}
           </Tabs.Trigger>
         ))}
-        <Tabs.Indicator boxShadow="none" bg="gray.3" />
+        <Tabs.Indicator bg={{ base: 'white', _dark: 'gray.3' }} />
       </Tabs.List>
       {examples.map((example) => (
         <Tabs.Content

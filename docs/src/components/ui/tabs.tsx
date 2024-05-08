@@ -1,5 +1,4 @@
 'use client'
-
 import { Tabs } from '@ark-ui/react/tabs'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

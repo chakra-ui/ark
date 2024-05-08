@@ -1,14 +1,8 @@
-import { type HTMLStyledProps, styled } from 'styled-system/jsx'
+import { styled } from 'styled-system/jsx'
 
-export const Logo = (props: HTMLStyledProps<'svg'>) => {
+export const Logo = () => {
   return (
-    <styled.svg
-      height="7"
-      viewBox="0 0 63 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <styled.svg height="7" viewBox="0 0 63 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <title>Ark Logo</title>
       <g clipPath="url(#clip0_901_179)">
         <path

@@ -25,7 +25,7 @@ export const ComponentTypes = (props: Props) => {
       <Fragment key={key}>
         <Heading as="h3">{key}</Heading>
         <Stack overflowX="auto" className="not-prose">
-          <Table.Root variant="outline" size="sm">
+          <Table.Root variant="outline" size="sm" borderRadius="xl">
             <Table.Head>
               <Table.Row>
                 <Table.Header px="4">Prop</Table.Header>

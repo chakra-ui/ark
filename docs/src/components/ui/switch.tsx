@@ -1,5 +1,4 @@
 import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react/switch'
-import { SunIcon } from 'lucide-react'
 import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
@@ -21,12 +20,7 @@ export const Switch = forwardRef<HTMLLabelElement, SwitchProps>((props, ref) => 
   return (
     <ArkSwitch.Root ref={ref} className={cx(styles.root, css(cssProps), className)} {...rootProps}>
       <ArkSwitch.Control className={styles.control}>
-        <ArkSwitch.Thumb
-          className={styles.thumb}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <SunIcon width="10px" height="10px" />
-        </ArkSwitch.Thumb>
+        <ArkSwitch.Thumb className={styles.thumb} />
       </ArkSwitch.Control>
       {children && <ArkSwitch.Label className={styles.label}>{children}</ArkSwitch.Label>}
     </ArkSwitch.Root>
