@@ -1,5 +1,6 @@
 import * as runtime from 'react/jsx-runtime'
 import { Anatomy } from './components/anatomy'
+import { Example } from './components/component-example'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { Faq } from './components/faq'
@@ -12,6 +13,7 @@ const sharedComponents = {
   Anatomy,
   ComponentPreview,
   ComponentTypes,
+  Example,
   Faq,
   pre: Pre,
   Quickstart,

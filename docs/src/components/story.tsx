@@ -1,3 +1,1 @@
-export const Story = () => {
-  return <div> Story</div>
-}
+export const Story = () => <div>Story</div>

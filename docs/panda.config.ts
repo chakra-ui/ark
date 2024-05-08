@@ -46,8 +46,12 @@ export default defineConfig({
         fontFamily: 'body',
       },
       pre: {
+        background: 'transparent!',
         overflowX: 'auto',
-        fontSize: '14px !important',
+        fontSize: '13px !important',
+      },
+      code: {
+        fontFamily: 'code',
       },
       article: {
         '--colors-prose-body': 'colors.fg.muted',
@@ -64,6 +68,7 @@ export default defineConfig({
       tokens: {
         fonts: {
           body: { value: 'var(--font-outfit), sans-serif' },
+          code: { value: 'var(--font-roboto-mono), monospace' },
         },
       },
     },
