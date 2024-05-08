@@ -26,13 +26,13 @@ export const layout = sva({
     },
     content: {
       pe: 'calc((100vw - 1440px) / 2)',
-      height: 'var(--ark-nav-height)',
+      height: '16',
       flexGrow: '1',
       flexShrink: '0',
       bg: 'bg.default',
     },
     aside: {
-      pt: 'var(--ark-nav-height)',
+      pt: '16',
       ps: 'var(--ark-sidebar-ps)',
       pe: '8',
       display: { base: 'none', md: 'block' },
@@ -50,14 +50,17 @@ export const layout = sva({
       borderRightWidth: '1px',
     },
     main: {
-      py: 'var(--ark-nav-height)',
+      py: {
+        base: '28',
+        md: '16',
+      },
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
         '2xl': 'var(--ark-main-ps)',
       },
       pe: 'var(--ark-main-pe)',
-      background: { base: 'white', _dark: 'gray.2' },
+      background: 'bg.default',
       flex: '1',
     },
     divider: {
