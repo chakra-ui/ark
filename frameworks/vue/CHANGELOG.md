@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed initial flicker of `Accordion` content
+
 ## [1.0.0-4] - 2024-05-02
 
 ### Fixed
@@ -24,7 +28,7 @@ description: All notable changes to this project will be documented in this file
 
 - Integrated latest zag-js version
 
-### Fixed 
+### Fixed
 
 - Resolved type issues
 
@@ -40,7 +44,7 @@ description: All notable changes to this project will be documented in this file
 
 ### Changed
 
-- Made the `id` attribute optional for `<Combobox.ItemGroup>` and  removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
 
 ```diff
 - <Combobox.ItemGroup id="framework">
@@ -49,7 +53,7 @@ description: All notable changes to this project will be documented in this file
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- Made the `id` attribute optional for `<Select.ItemGroup>` and  removed `htmlFor` from `<Select.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `htmlFor` from `<Select.ItemGroupLabel>`.
 
 ```diff
 - <Select.ItemGroup id="framework">
@@ -70,10 +74,10 @@ description: All notable changes to this project will be documented in this file
     <Popover.Trigger>Open</Popover.Trigger>
     <Popover.Positioner>
       <Popover.Context v-slot="popover">
-          <Popover.Content>
-            <Popover.Title @click="() => popover.close()">Title</Popover.Title>
-            <Popover.Description>Description</Popover.Description>
-          </Popover.Content>
+        <Popover.Content>
+          <Popover.Title @click="() => popover.close()">Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+        </Popover.Content>
       </Popover.Context>
     </Popover.Positioner>
   </Popover.Root>

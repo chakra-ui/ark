@@ -1,7 +1,15 @@
 <script lang="ts">
 import type { PolymorphicProps } from '../factory'
+import { createSplitProps } from '../create-split-props'
 
 export interface AccordionItemContentProps extends PolymorphicProps {}
+
+interface VisibilityProps {
+  hidden?: boolean
+  'data-state'?: string
+}
+
+const splitVisibilityProps = createSplitProps<VisibilityProps>()
 </script>
 
 <script setup lang="ts">
@@ -14,14 +22,18 @@ defineProps<AccordionItemContentProps>()
 const accordion = useAccordionContext()
 const itemProps = useAccordionItemPropsContext()
 
-const contentProps = computed(() => {
-  const { hidden: _, ...itemContentProps } = accordion.value.getItemContentProps(itemProps)
-  return itemContentProps
+const itemContentProps = computed(() => {
+  const contentProps = accordion.value.getItemContentProps(itemProps)
+  const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, [
+    'hidden',
+    'data-state',
+  ])
+  return ownProps
 })
 </script>
 
 <template>
-  <Collapsible.Content v-bind="contentProps" :as-child="asChild">
+  <Collapsible.Content v-bind="itemContentProps" :as-child="asChild">
     <slot />
   </Collapsible.Content>
 </template>
