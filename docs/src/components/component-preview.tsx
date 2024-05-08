@@ -4,10 +4,9 @@ import { Demo } from '~/demos/accordion'
 export const ComponentPreview = () => {
   return (
     <Flex
-      bg="bg.canvas"
       minH="40"
       borderRadius="lg"
-      borderWidth="1px"
+      boxShadow="xs"
       width="full"
       overflow="hidden"
       className="not-prose"

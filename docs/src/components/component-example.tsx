@@ -4,7 +4,9 @@ import { codeToHtml } from 'shiki'
 import { CodeExplorer } from './code-explorer'
 
 interface Props {
-  component: string
+  /**
+   * Identifier of the example to load e.g. `accordion/multiple`
+   */
   id: string
 }
 
@@ -14,19 +16,21 @@ export const Example = async (props: Props) => {
   return <CodeExplorer examples={examples} />
 }
 
-const frameworks = ['react', 'solid', 'vue']
-
 const findExamples = async (props: Props) => {
-  const { component, id } = props
+  const [component, id] = props.id.split('/')
 
   return Promise.all(
-    frameworks.map(async (framework) => {
+    ['react', 'solid', 'vue'].map(async (framework) => {
       const lang = framework === 'vue' ? 'vue' : 'tsx'
       const filename = `${id}.${lang}`
       const path = `../frameworks/${framework}/src/components/${component}/examples/${filename}`
       const content = await readFile(path, 'utf-8').catch(() => 'Example not found')
 
-      const html = await codeToHtml(content, {
+      const code = content
+        .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
+        .replaceAll(/from '\..*'/g, `from '@ark-ui/${framework}'`)
+
+      const html = await codeToHtml(code, {
         lang,
         theme: 'github-dark-default',
         transformers: [transformerNotationHighlight()],
@@ -34,9 +38,7 @@ const findExamples = async (props: Props) => {
 
       return {
         framework,
-        code: content
-          .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
-          .replaceAll(/from '\..*'/g, `from '@ark-ui/${framework}'`),
+        code,
         html,
       }
     }),

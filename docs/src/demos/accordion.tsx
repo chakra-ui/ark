@@ -6,7 +6,7 @@ export const Demo = (props: Accordion.RootProps) => {
   return (
     <Accordion.Root defaultValue={['React']} {...props} multiple>
       {items.map((item, id) => (
-        <Accordion.Item key={id} value={item} disabled={item == 'Svelte'}>
+        <Accordion.Item key={id} value={item} disabled={item === 'Svelte'}>
           <Accordion.ItemTrigger>
             {item}
             <Accordion.ItemIndicator>
