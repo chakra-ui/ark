@@ -11,8 +11,10 @@ export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}
 export const useEditable = (props: UseEditableProps) => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

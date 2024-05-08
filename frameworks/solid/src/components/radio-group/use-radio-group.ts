@@ -11,8 +11,10 @@ export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}
 export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

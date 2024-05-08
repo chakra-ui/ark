@@ -11,8 +11,10 @@ export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

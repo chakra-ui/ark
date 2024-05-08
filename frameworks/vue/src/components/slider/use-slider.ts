@@ -18,31 +18,24 @@ export interface UseSliderProps
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
 export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSliderReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed(() => {
-    const { defaultValue, modelValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
+  const context = computed<slider.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onFocusChange: (details) => emit('focusChange', details),
+    onValueChangeEnd: (details) => emit('valueChangeEnd', details),
+    onValueChange: (details) => {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    slider.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit('focusChange', details),
-      onValueChangeEnd: (details) => emit('valueChangeEnd', details),
-      onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(slider.machine(context.value), { context })
 
   return computed(() => slider.connect(state.value, send, normalizeProps))
 }

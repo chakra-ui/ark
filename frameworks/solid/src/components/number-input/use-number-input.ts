@@ -11,8 +11,10 @@ export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes
 export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

@@ -34,29 +34,28 @@ export const useCollapsible = (
   props: UseCollapsibleProps,
   emits: EmitFn<RootEmits>,
 ): UseCollapsibleReturn => {
-  const context = ref(props)
-  const wasVisible = ref(false)
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const [state, send] = useMachine(
-    collapsible.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      open: props.open ?? props.defaultOpen,
-      'open.controlled': props.open !== undefined,
-      getRootNode: env?.value.getRootNode,
-      onExitComplete: () => emits('exitComplete'),
-      onOpenChange: (details) => {
-        emits('openChange', details)
-        emits('update:open', details.open)
-      },
-    }),
-    { context },
-  )
+  const context = computed<collapsible.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    open: props.defaultOpen,
+    'open.controlled': props.open !== undefined,
+    getRootNode: env?.value.getRootNode,
+    onExitComplete: () => emits('exitComplete'),
+    onOpenChange: (details) => {
+      emits('openChange', details)
+      emits('update:open', details.open)
+    },
+    ...props,
+  }))
+
+  const [state, send] = useMachine(collapsible.machine(context.value), { context })
   const api = computed(() => collapsible.connect(state.value, send, normalizeProps))
 
+  const wasVisible = ref(false)
   watch(
     () => api.value.visible,
     () => {
@@ -69,7 +68,7 @@ export const useCollapsible = (
   return computed(() => ({
     ...api.value,
     unmounted:
-      (!api.value.visible && !wasVisible.value && context.value.lazyMount) ||
-      (context.value?.unmountOnExit && !api.value.visible && wasVisible.value),
+      (!api.value.visible && !wasVisible.value && props.lazyMount) ||
+      (props.unmountOnExit && !api.value.visible && wasVisible.value),
   }))
 }

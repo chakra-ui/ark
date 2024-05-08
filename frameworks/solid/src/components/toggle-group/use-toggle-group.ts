@@ -11,8 +11,10 @@ export interface UseToggleGroupReturn extends Accessor<toggleGroup.Api<PropTypes
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

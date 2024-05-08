@@ -25,10 +25,12 @@ export const useAccordion = (
   props: UseAccordionProps,
   emit: EmitFn<RootEmits>,
 ): UseAccordionReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+
   const context = computed<accordion.Context>(() => ({
-    id: useId().value,
+    id: id.value,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,

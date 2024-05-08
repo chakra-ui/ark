@@ -18,31 +18,23 @@ export interface UseCheckboxProps
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed(() => {
-    const { checked, defaultChecked, ...rest } = props
-    return {
-      ...rest,
-      checked: checked ?? defaultChecked,
-    }
-  })
+  const context = computed<checkbox.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    checked: props.defaultChecked,
+    getRootNode: env?.value.getRootNode,
+    onCheckedChange(details) {
+      emit('checkedChange', details)
+      emit('update:checked', details.checked)
+    },
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    checkbox.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      checked: props.checked ?? props.defaultChecked,
-      onCheckedChange(details) {
-        emit('checkedChange', details)
-        emit('update:checked', details.checked)
-      },
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(checkbox.machine(context.value), { context })
 
   return computed(() => checkbox.connect(state.value, send, normalizeProps))
 }

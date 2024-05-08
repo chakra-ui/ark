@@ -33,33 +33,24 @@ export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
   emit: EmitFn<RootEmits>,
 ): UseSelectReturn<T> => {
-  const context = computed(() => {
-    const { items, defaultValue, itemToString, itemToValue, isItemDisabled, modelValue, ...rest } =
-      props
-    return {
-      ...rest,
-      collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
-      value: modelValue ?? defaultValue,
-      open: props.open ?? props.defaultOpen,
-      'open.controlled': props.open !== undefined,
-    }
-  })
-
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const [state, send] = useMachine(
-    select.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
+  const context = computed<select.Context<T>>(() => {
+    const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
+    return {
+      id: id.value,
       dir: locale.value.dir,
+      open: props.defaultOpen,
+      'open.controlled': props.open !== undefined,
+      collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
+      value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
-        // @ts-expect-error FIXME
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      // @ts-expect-error FIXME
       onHighlightChange: (details) => emit('highlightChange', details),
       onOpenChange: (details) => {
         emit('openChange', details)
@@ -68,9 +59,11 @@ export const useSelect = <T extends CollectionItem>(
       onFocusOutside: (details) => emit('focusOutside', details),
       onInteractOutside: (details) => emit('interactOutside', details),
       onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    }),
-    { context },
-  )
+      ...otherProps,
+    }
+  })
+
+  const [state, send] = useMachine(select.machine(context.value), { context })
 
   return computed(() => select.connect(state.value, send, normalizeProps))
 }

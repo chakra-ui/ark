@@ -10,8 +10,10 @@ export interface UseClipboardReturn extends Accessor<clipboard.Api<PropTypes>> {
 
 export const useClipboard = (props: UseClipboardProps): UseClipboardReturn => {
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     getRootNode: environment().getRootNode,
     ...props,
   }))

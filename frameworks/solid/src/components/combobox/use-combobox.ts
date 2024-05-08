@@ -29,9 +29,10 @@ export const useCombobox = <T extends CollectionItem>(
   const collection = () => combobox.collection(collectionOptions)
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
 
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     collection: collection(),
     dir: locale().dir,
     getRootNode: environment().getRootNode,

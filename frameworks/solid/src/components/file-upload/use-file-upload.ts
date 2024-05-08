@@ -11,8 +11,10 @@ export interface UseFileUploadReturn extends Accessor<fileUpload.Api<PropTypes>>
 export const useFileUpload = (props: UseFileUploadProps): UseFileUploadReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

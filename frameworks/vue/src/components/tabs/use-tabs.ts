@@ -18,31 +18,24 @@ export interface UseTabsProps
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
 export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed(() => {
-    const { defaultValue, modelValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
+  const context = computed<tabs.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onFocusChange: (details) => emit('focusChange', details),
+    onValueChange: (details) => {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    tabs.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit('focusChange', details),
-      onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(tabs.machine(context.value), { context })
 
   return computed(() => tabs.connect(state.value, send, normalizeProps))
 }

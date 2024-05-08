@@ -10,8 +10,10 @@ export interface UseTabsReturn extends Accessor<tabs.Api<PropTypes>> {}
 export const useTabs = (props: UseTabsProps): UseTabsReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

@@ -1,6 +1,6 @@
 import * as hoverCard from '@zag-js/hover-card'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
@@ -20,25 +20,23 @@ export const useHoverCard = (
   props: UseHoverCardProps,
   emit: EmitFn<RootEmits>,
 ): UseHoverCardReturn => {
-  const context = ref(props)
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const context = computed<hoverCard.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    open: props.open ?? props.defaultOpen,
+    'open.controlled': props.open !== undefined,
+    getRootNode: env?.value.getRootNode,
+    onOpenChange: (details) => {
+      emit('openChange', details)
+      emit('update:open', details.open)
+    },
+    ...props,
+  }))
 
-  const [state, send] = useMachine(
-    hoverCard.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      open: props.open ?? props.defaultOpen,
-      'open.controlled': props.open !== undefined,
-      getRootNode: env?.value.getRootNode,
-      onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
-      },
-    }),
-    { context },
-  )
+  const [state, send] = useMachine(hoverCard.machine(context.value), { context })
 
   return computed(() => hoverCard.connect(state.value, send, normalizeProps))
 }

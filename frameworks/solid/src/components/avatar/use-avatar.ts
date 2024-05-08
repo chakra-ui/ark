@@ -11,8 +11,10 @@ export interface UseAvatarReturn extends Accessor<avatar.Api<PropTypes>> {}
 export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

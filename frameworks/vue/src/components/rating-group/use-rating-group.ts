@@ -22,30 +22,24 @@ export const useRatingGroup = (
   props: UseRatingGroupProps,
   emit: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed(() => {
-    const { defaultValue, modelValue, ...rest } = props
-    return {
-      ...rest,
-      value: modelValue ?? defaultValue,
-    }
-  })
 
-  const [state, send] = useMachine(
-    ratingGroup.machine({
-      ...context.value,
-      id: context.value.id ?? useId().value,
-      dir: locale.value.dir,
-      getRootNode: env?.value.getRootNode,
-      onValueChange(details) {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
-      },
-      onHoverChange: (details) => emit('hoverChange', details),
-    }),
-    { context },
-  )
+  const context = computed<ratingGroup.Context>(() => ({
+    id: id.value,
+    dir: locale.value.dir,
+    value: props.modelValue ?? props.defaultValue,
+    getRootNode: env?.value.getRootNode,
+    onValueChange(details) {
+      emit('valueChange', details)
+      emit('update:modelValue', details.value)
+    },
+    onHoverChange: (details) => emit('hoverChange', details),
+    ...props,
+  }))
+
+  const [state, send] = useMachine(ratingGroup.machine(context.value), { context })
 
   return computed(() => ratingGroup.connect(state.value, send, normalizeProps))
 }

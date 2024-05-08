@@ -11,8 +11,10 @@ export interface UseTooltipReturn extends Accessor<tooltip.Api<PropTypes>> {}
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     'open.controlled': props.open !== undefined,

@@ -11,8 +11,10 @@ export interface UseHoverCardReturn extends Accessor<hoverCard.Api<PropTypes>> {
 export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     'open.controlled': props.open !== undefined,

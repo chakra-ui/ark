@@ -23,8 +23,10 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     'open.controlled': props.open !== undefined,

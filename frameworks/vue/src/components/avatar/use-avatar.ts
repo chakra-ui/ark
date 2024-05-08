@@ -11,11 +11,12 @@ export interface UseAvatarProps
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps, emit: EmitFn<RootEmits>): UseAvatarReturn => {
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<avatar.Context>(() => ({
-    id: useId().value,
+    id: id.value,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onStatusChange: (details) => emit('statusChange', details),

@@ -11,8 +11,10 @@ export interface UseDialogReturn extends Accessor<dialog.Api<PropTypes>> {}
 export const useDialog = (props: UseDialogProps): UseDialogReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     'open.controlled': props.open !== undefined,

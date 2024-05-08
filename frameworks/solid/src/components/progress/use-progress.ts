@@ -11,8 +11,10 @@ export interface UseProgressReturn extends Accessor<progress.Api<PropTypes>> {}
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const id = createUniqueId()
+
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

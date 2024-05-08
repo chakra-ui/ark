@@ -35,9 +35,10 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const [localProps, restProps] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
+  const id = createUniqueId()
 
   const context = createMemo(() => ({
-    id: createUniqueId(),
+    id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     'open.controlled': props.open !== undefined,
