@@ -513,7 +513,7 @@
     "@zag-js/vue": "0.49.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.1",
+    "@biomejs/biome": "1.7.3",
     "@histoire/plugin-vue": "0.17.17",
     "@release-it/keep-a-changelog": "5.0.0",
     "@testing-library/dom": "10.1.0",
@@ -533,7 +533,7 @@
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.4.5",
     "vite": "5.2.11",
-    "vite-plugin-dts": "3.9.0",
+    "vite-plugin-dts": "3.9.1",
     "vitest": "1.6.0",
     "vue": "3.4.27",
     "vue-tsc": "2.0.16"
