@@ -1,4 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
+import NextLink from 'next/link'
 import { Box, Divider, HStack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { getSidebarGroups } from '~/lib/sidebar'
@@ -14,8 +15,12 @@ export const Navbar = () => {
   return (
     <>
       <HStack justifyContent="space-between" h="16" px={{ base: '4', md: '8' }}>
-        <Box display={{ md: 'none' }}>
-          <Logo />
+        <Box>
+          <Box display={{ md: 'none' }}>
+            <NextLink href="/" aria-label="Go to start page">
+              <Logo />
+            </NextLink>
+          </Box>
         </Box>
         <HStack gap="3">
           <FrameworkSelect />
