@@ -60,7 +60,11 @@ export const generateMetadata = (props: Props): Metadata => {
 }
 
 const pages = getSidebarGroups().flatMap((group) => group)
-export const generateStaticParams = () => pages.map((page) => ({ slug: page.slug.split('/') }))
+
+export const generateStaticParams = () =>
+  ['react', 'solid', 'vue'].flatMap((framework) =>
+    pages.map((page) => ({ framework, slug: page.slug.split('/') })),
+  )
 
 const getPageBySlug = (slug: string[], framework?: string) => {
   if (framework) {

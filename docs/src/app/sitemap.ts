@@ -1,13 +1,12 @@
 import type { MetadataRoute } from 'next'
+import { getSidebarGroups } from '~/lib/sidebar'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return [
-    { url: 'https://ark-ui.com' },
-    // TODO add all the examples
-    // { url: 'https://ark-ui.com/examples' },
-    // ...Object.keys(categories).map((categoryId) => ({
-    //   url: `https://park-ui.com/examples/${categoryId}`,
-    // })),
-    // ...urls,
-  ]
+  const docsPages = ['react', 'solid', 'vue'].flatMap((framework) =>
+    getSidebarGroups()
+      .flatMap((group) => group)
+      .map((page) => ({ url: `https://ark-ui.com/docs/${framework}/${page.slug}` })),
+  )
+
+  return [{ url: 'https://ark-ui.com' }, ...docsPages]
 }

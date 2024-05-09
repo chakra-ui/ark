@@ -41,7 +41,7 @@ export const CodeExplorer = (props: Props) => {
           p="0"
           borderWidth="1px"
           borderColor="gray.dark.4"
-          borderBottomRadius="xl"
+          borderBottomRadius="lg"
           overflow="hidden"
         >
           <CodePreview code={example.code} html={example.html} />
