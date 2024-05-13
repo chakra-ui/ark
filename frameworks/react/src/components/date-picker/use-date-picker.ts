@@ -28,17 +28,17 @@ export interface UseDatePickerProps
    */
   focusedValue?: string
   /**
-   * The value of the date picker
+   * The maximum date for the date picker in the format yyyy-mm-dd
    */
-  value?: string[]
+  max?: string
   /**
    * The minimum date for the date picker in the format yyyy-mm-dd
    */
   min?: string
   /**
-   * The maximum date for the date picker in the format yyyy-mm-dd
+   * The value of the date picker
    */
-  max?: string
+  value?: string[]
 }
 
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
@@ -51,13 +51,13 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     id: useId(),
     dir,
     getRootNode,
+    open: props.defaultOpen,
+    'open.controlled': props.open !== undefined,
     ...props,
     focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,
     value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,
     max: props.max ? datePicker.parse(props.max) : undefined,
     min: props.min ? datePicker.parse(props.min) : undefined,
-    open: props.open ?? props.defaultOpen,
-    'open.controlled': props.open !== undefined,
   }
 
   const context: datePicker.Context = {

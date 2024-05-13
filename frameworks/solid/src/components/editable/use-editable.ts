@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial value of the editable when it is first rendered.
+   * Use when you do not need to control the state of the editable.
+   */
+  defaultValue?: editable.Context['value']
+}
 export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}
 
 export const useEditable = (props: UseEditableProps) => {
@@ -17,6 +23,7 @@ export const useEditable = (props: UseEditableProps) => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    value: props.defaultValue,
     ...props,
   }))
   const [state, send] = useMachine(editable.machine(context()), { context })

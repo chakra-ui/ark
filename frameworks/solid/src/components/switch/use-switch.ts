@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseSwitchProps
-  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The checked state of the switch when it is first rendered.
+   * Use this when you do not need to control the state of the switch.
+   */
+  defaultChecked?: zagSwitch.Context['checked']
+}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
@@ -17,6 +23,7 @@ export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    checked: props.defaultChecked,
     ...props,
   }))
 

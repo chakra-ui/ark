@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseSplitterProps
-  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial size of the panels when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
+   */
+  defaultSize?: splitter.Context['size']
+}
 export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
@@ -17,6 +23,7 @@ export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    size: props.defaultSize,
     ...props,
   }))
   const [state, send] = useMachine(splitter.machine(context()), { context })

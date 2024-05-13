@@ -17,6 +17,7 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
   const [presenceProps, hoverCardProps] = splitPresenceProps(props)
   const [useHoverCardProps, localProps] = createSplitProps<UseHoverCardProps>()(hoverCardProps, [
     'closeDelay',
+    'defaultOpen',
     'id',
     'ids',
     'onOpenChange',

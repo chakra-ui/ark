@@ -22,18 +22,22 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const context: menu.Context = {
+  const initialContext: menu.Context = {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
-    onOpenChange: useEvent(props.onOpenChange),
-    onSelect: useEvent(props.onSelect),
-    open: props.open ?? props.defaultOpen,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...props,
   }
 
-  const [state, send, machine] = useMachine(menu.machine(context), { context })
+  const context: menu.Context = {
+    ...initialContext,
+    onOpenChange: useEvent(props.onOpenChange),
+    onSelect: useEvent(props.onSelect),
+  }
+
+  const [state, send, machine] = useMachine(menu.machine(initialContext), { context })
   const api = menu.connect(state, send, normalizeProps)
 
   return { api, machine }

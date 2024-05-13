@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseRatingGroupProps
-  extends Optional<Omit<rating.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<rating.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial value of the rating group when it is first rendered.
+   * Use when you do not need to control the state of the rating group.
+   */
+  defaultValue?: rating.Context['value']
+}
 export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
@@ -17,6 +23,7 @@ export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    value: props.defaultValue,
     ...props,
   }))
 

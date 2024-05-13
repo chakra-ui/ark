@@ -22,6 +22,7 @@ export const DialogRoot = (props: DialogRootProps) => {
     'aria-label',
     'closeOnEscape',
     'closeOnInteractOutside',
+    'defaultOpen',
     'finalFocusEl',
     'id',
     'ids',

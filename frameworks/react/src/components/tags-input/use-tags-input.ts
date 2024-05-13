@@ -24,8 +24,8 @@ export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: tagsInput.Context = {

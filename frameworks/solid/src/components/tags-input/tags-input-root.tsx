@@ -14,6 +14,7 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
     'autoFocus',
     'blurBehavior',
     'delimiter',
+    'defaultValue',
     'disabled',
     'editable',
     'form',

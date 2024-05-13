@@ -19,6 +19,8 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
   const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
     'closeOnSelect',
+    'defaultOpen',
+    'defaultValue',
     'disabled',
     'fixedWeeks',
     'focusedValue',

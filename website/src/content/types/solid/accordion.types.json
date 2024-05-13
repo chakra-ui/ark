@@ -11,44 +11,7 @@
     "disabled": {
       "type": "boolean",
       "isRequired": false,
-      "description": "Whether the collapsible is disabled"
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{ root: string; content: string; trigger: string }>",
-      "isRequired": false,
-      "description": "The ids of the elements in the collapsible. Useful for composition."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "onExitComplete": {
-      "type": "() => void",
-      "isRequired": false,
-      "description": "Function called when the animation ends in the closed state."
-    },
-    "onOpenChange": {
-      "type": "(details: OpenChangeDetails) => void",
-      "isRequired": false,
-      "description": "Function called when the popup is opened"
-    },
-    "open": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the collapsible is open"
-    },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
+      "description": "Whether the accordion item is disabled."
     }
   },
   "ItemTrigger": { "asChild": { "type": "boolean", "isRequired": false } },
@@ -59,6 +22,11 @@
       "defaultValue": "false",
       "isRequired": false,
       "description": "Whether an accordion item can be after it has been expanded."
+    },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the accordion when it is first rendered.\nUse when you do not need to control the state of the color picker."
     },
     "disabled": {
       "type": "boolean",

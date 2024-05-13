@@ -24,9 +24,9 @@ export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
-    open: props.open ?? props.defaultOpen,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...props,
   }
 
   const context: popover.Context = {

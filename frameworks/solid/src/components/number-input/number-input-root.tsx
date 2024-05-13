@@ -12,6 +12,7 @@ export const NumberInputRoot = (props: NumberInputRootProps) => {
     'allowMouseWheel',
     'allowOverflow',
     'clampValueOnBlur',
+    'defaultValue',
     'disabled',
     'focusInputOnChange',
     'form',

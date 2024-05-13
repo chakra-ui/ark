@@ -9,6 +9,8 @@ export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, UseTreeVi
 
 export const TreeViewRoot = (props: TreeViewRootProps) => {
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps>()(props, [
+    'defaultExpandedValue',
+    'defaultSelectedValue',
     'expandedValue',
     'focusedValue',
     'id',

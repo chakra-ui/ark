@@ -51,10 +51,10 @@ export const useCombobox = <T extends CollectionItem>(
     dir,
     getRootNode,
     collection,
-    ...comboboxProps,
+    open: props.defaultOpen,
     value: props.defaultValue,
-    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...comboboxProps,
   }
 
   const context: combobox.Context<T> = {

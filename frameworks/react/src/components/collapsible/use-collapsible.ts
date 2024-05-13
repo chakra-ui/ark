@@ -24,18 +24,18 @@ export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
 }
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
-  const { lazyMount, unmountOnExit } = props
+  const { lazyMount, unmountOnExit, ...collapsibleProps } = props
   const wasVisible = useRef(false)
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
 
   const initialContext: collapsible.Context = {
     id: useId(),
-    getRootNode,
     dir,
-    ...props,
-    open: props.open ?? props.defaultOpen,
+    getRootNode,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...collapsibleProps,
   }
 
   const context: collapsible.Context = {

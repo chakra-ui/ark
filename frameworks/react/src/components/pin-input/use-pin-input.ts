@@ -24,8 +24,8 @@ export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => 
     id: useId(),
     dir,
     getRootNode,
+    value: props.defaultValue,
     ...props,
-    value: props.defaultValue ?? [],
   }
 
   const context: pinInput.Context = {

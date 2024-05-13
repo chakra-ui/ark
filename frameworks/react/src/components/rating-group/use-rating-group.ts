@@ -24,8 +24,8 @@ export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: rating.Context = {

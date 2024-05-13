@@ -24,8 +24,8 @@ export const useCheckbox = (props: UseCheckboxProps = {}): UseCheckboxReturn => 
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     checked: props.defaultChecked,
+    ...props,
   }
 
   const context: checkbox.Context = {

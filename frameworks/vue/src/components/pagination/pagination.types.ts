@@ -6,6 +6,11 @@ export interface RootProps {
    */
   count: number
   /**
+   * The initial page of the pagination when it is first rendered.
+   * Use when you do not need to control the state of the pagination.
+   */
+  defaultPage?: number
+  /**
    * The unique identifier of the machine.
    */
   id?: string

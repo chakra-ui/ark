@@ -6,6 +6,10 @@ description: All notable changes to this project will be documented in this file
 
 ## [Unreleased]
 
+### Added
+
+- Added support for default values like `defaultOpen`, `defaultValue` etc .
+
 ### Fixed
 
 - Fixed initial flicker of `Accordion` content

@@ -10,6 +10,7 @@ export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePagi
 export const PaginationRoot = (props: PaginationRootProps) => {
   const [usePaginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
+    'defaultPage',
     'id',
     'ids',
     'onPageChange',

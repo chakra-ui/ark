@@ -8,7 +8,8 @@ import { useEvent } from '../../utils/use-event'
 export interface UsePaginationProps
   extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial page of the pagination.
+   * The initial page of the pagination when it is first rendered.
+   * Use when you do not need to control the state of the pagination.
    */
   defaultPage?: pagination.Context['page']
 }
@@ -23,8 +24,8 @@ export const usePagination = (props: UsePaginationProps): UsePaginationReturn =>
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     page: props.defaultPage,
+    ...props,
   }
 
   const context: pagination.Context = {

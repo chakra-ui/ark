@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseRadioGroupProps
-  extends Optional<Omit<radio.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<radio.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial value of the radio group when it is first rendered.
+   * Use when you do not need to control the state of the radio group.
+   */
+  defaultValue?: radio.Context['value']
+}
 export interface UseRadioGroupReturn extends Accessor<radio.Api<PropTypes>> {}
 
 export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn => {
@@ -17,8 +23,10 @@ export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn =>
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    value: props.defaultValue,
     ...props,
   }))
+
   const [state, send] = useMachine(radio.machine(context()), {
     context,
   })

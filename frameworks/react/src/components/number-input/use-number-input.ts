@@ -23,8 +23,8 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: numberInput.Context = {

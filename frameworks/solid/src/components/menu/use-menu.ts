@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseMenuProps
-  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
+  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  /**
+   * The initial open state of the menu when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: menu.Context['open']
+}
 
 export interface UseMenuReturn {
   machine: menu.Service
@@ -21,6 +27,7 @@ export const useMenu = (props: UseMenuProps): UseMenuReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
   }))

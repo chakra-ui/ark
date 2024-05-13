@@ -24,9 +24,9 @@ export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
-    open: props.open ?? props.defaultOpen,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...props,
   }
 
   const context: tooltip.Context = {

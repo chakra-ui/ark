@@ -24,8 +24,8 @@ export const useRadioGroup = (props: UseRadioGroupProps): UseRadioGroupReturn =>
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: radio.Context = {

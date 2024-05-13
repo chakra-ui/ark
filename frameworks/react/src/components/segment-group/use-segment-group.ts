@@ -24,8 +24,8 @@ export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupRet
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: segmentGroup.Context = {
