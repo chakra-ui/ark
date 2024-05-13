@@ -1,9 +1,8 @@
 {
-  "name": "docs",
-  "version": "0.1.0",
+  "name": "@ark-ui/docs",
   "private": true,
   "scripts": {
-    "prepare": "panda codegen",
+    "prepare": "bun run --cwd ../frameworks/react build && panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
