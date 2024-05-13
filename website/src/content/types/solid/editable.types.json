@@ -19,6 +19,11 @@
       "isRequired": false,
       "description": "Whether the editable should auto-resize to fit the content."
     },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the editable when it is first rendered.\nUse when you do not need to control the state of the editable."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

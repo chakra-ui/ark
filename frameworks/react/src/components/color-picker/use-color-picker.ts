@@ -36,10 +36,14 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     id: useId(),
     dir,
     getRootNode,
-    ...props,
-    value: props.defaultValue ? colorPicker.parse(props.defaultValue) : undefined,
-    open: props.open ?? props.defaultOpen,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...props,
+    value: props.value
+      ? colorPicker.parse(props.value)
+      : props.defaultValue
+        ? colorPicker.parse(props.defaultValue)
+        : undefined,
   }
 
   const context: colorPicker.Context = {

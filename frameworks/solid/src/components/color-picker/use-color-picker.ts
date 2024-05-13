@@ -1,6 +1,6 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
@@ -10,6 +10,16 @@ export interface UseColorPickerProps
     'id'
   > {
   /**
+   * The initial open state of the color picker when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: colorPicker.Context['open']
+  /**
+   * The initial value of the color picker when it is first rendered.
+   * Use when you do not need to control the state of the color picker.
+   */
+  defaultValue?: string
+  /**
    * The current value of the color picker.
    */
   value?: string
@@ -17,7 +27,6 @@ export interface UseColorPickerProps
 export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
-  const [local, rest] = splitProps(props, ['value'])
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
@@ -26,9 +35,14 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
-    value: local.value ? colorPicker.parse(local.value) : undefined,
-    ...rest,
+    ...props,
+    value: props.value
+      ? colorPicker.parse(props.value)
+      : props.defaultValue
+        ? colorPicker.parse(props.defaultValue)
+        : undefined,
   }))
   const [state, send] = useMachine(colorPicker.machine(context()), { context })
 

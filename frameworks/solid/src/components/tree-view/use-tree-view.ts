@@ -5,7 +5,18 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseTreeViewProps
-  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial selected items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
+   */
+  defaultSelectedValue?: treeView.Context['selectedValue']
+  /**
+   * The initial expanded items of the tree view.
+   * Use this when you do not need to control the state of the tree view.
+   */
+  defaultExpandedValue?: treeView.Context['expandedValue']
+}
 export interface UseTreeViewReturn extends Accessor<treeView.Api<PropTypes>> {}
 
 export const useTreeView = (props: UseTreeViewProps): UseTreeViewReturn => {
@@ -17,6 +28,8 @@ export const useTreeView = (props: UseTreeViewProps): UseTreeViewReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    selectedValue: props.defaultSelectedValue,
+    expandedValue: props.defaultExpandedValue,
     ...props,
   }))
 

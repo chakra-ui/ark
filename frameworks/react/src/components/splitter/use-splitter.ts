@@ -24,8 +24,8 @@ export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     size: props.defaultSize,
+    ...props,
   }
 
   const context: splitter.Context = {

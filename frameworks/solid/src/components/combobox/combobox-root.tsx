@@ -21,6 +21,8 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'allowCustomValue',
     'autoFocus',
     'closeOnSelect',
+    'defaultOpen',
+    'defaultValue',
     'disabled',
     'dismissable',
     'form',

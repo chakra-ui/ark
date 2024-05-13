@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseTooltipProps
-  extends Optional<Omit<tooltip.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
+  extends Optional<Omit<tooltip.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  /**
+   * The initial open state of the tooltip when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: tooltip.Context['open']
+}
 export interface UseTooltipReturn extends Accessor<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
@@ -17,6 +23,7 @@ export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
   }))

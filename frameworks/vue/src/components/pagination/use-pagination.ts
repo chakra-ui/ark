@@ -7,7 +7,13 @@ import { useId } from '../../utils'
 import type { RootEmits } from './pagination'
 
 export interface UsePaginationProps
-  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial page of the pagination when it is first rendered.
+   * Use when you do not need to control the state of the pagination.
+   */
+  defaultPage?: pagination.Context['page']
+}
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (
@@ -23,6 +29,7 @@ export const usePagination = (
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onPageChange: (details) => emit('pageChange', details),
+    value: props.defaultPage,
     ...props,
   }))
 

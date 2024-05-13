@@ -11,6 +11,11 @@
   "Label": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the segment group when it is first rendered.\nUse when you do not need to control the state of the segment group."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

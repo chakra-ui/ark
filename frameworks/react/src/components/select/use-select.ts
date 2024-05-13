@@ -30,7 +30,7 @@ export interface UseSelectReturn<T extends CollectionItem> extends select.Api<Pr
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, selectProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
@@ -51,10 +51,10 @@ export const useSelect = <T extends CollectionItem>(
     dir,
     getRootNode,
     collection,
-    ...rest,
+    open: props.defaultOpen,
     value: props.defaultValue,
-    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    ...selectProps,
   }
 
   const context: select.Context<T> = {

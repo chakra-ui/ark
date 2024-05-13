@@ -7,7 +7,13 @@ import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'>,
-    RenderStrategyProps {}
+    RenderStrategyProps {
+  /**
+   * The initial open state of the collapsible when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: collapsible.Context['open']
+}
 
 export interface UseCollapsibleReturn
   extends Accessor<
@@ -29,6 +35,7 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...collapsibleProps,
   }))

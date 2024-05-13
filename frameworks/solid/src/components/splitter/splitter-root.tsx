@@ -9,6 +9,7 @@ export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitt
 
 export const SplitterRoot = (props: SplitterRootProps) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [
+    'defaultSize',
     'id',
     'ids',
     'onSizeChange',

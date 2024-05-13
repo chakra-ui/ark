@@ -20,6 +20,11 @@
       "isRequired": false,
       "description": "Whether to close the dialog when the outside is clicked"
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the dialog when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "finalFocusEl": {
       "type": "HTMLElement | (() => MaybeElement)",
       "isRequired": false,

@@ -5,15 +5,12 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { Collapsible } from '../collapsible'
-import type { UseCollapsibleProps } from '../collapsible/use-collapsible'
 import type { HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { AccordionItemProvider } from './use-accordion-item-context'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
-export interface AccordionItemProps
-  extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps>,
-    ItemProps {}
+export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const AccordionItem = (props: AccordionItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])

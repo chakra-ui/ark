@@ -24,8 +24,8 @@ export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: toggleGroup.Context = {

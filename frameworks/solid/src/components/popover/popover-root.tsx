@@ -20,6 +20,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'autoFocus',
     'closeOnEsc',
     'closeOnInteractOutside',
+    'defaultOpen',
     'id',
     'ids',
     'initialFocusEl',

@@ -10,6 +10,7 @@ export interface CheckboxRootProps extends Assign<HTMLArkProps<'label'>, UseChec
 export const CheckboxRoot = (props: CheckboxRootProps) => {
   const [useCheckboxProps, labelprops] = createSplitProps<UseCheckboxProps>()(props, [
     'checked',
+    'defaultChecked',
     'disabled',
     'form',
     'id',

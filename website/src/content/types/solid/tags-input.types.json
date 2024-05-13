@@ -37,6 +37,11 @@
       "isRequired": false,
       "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
     },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the tags input when it is first rendered.\nUse when you do not need to control the state of the tags input."
+    },
     "delimiter": {
       "type": "string | RegExp",
       "defaultValue": "\",\"",

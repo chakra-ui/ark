@@ -11,7 +11,18 @@ export interface UseComboboxProps<T extends CollectionItem>
     Optional<
       Omit<combobox.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
       'id'
-    > {}
+    > {
+  /**
+   * The initial open state of the combobox when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: combobox.Context['open']
+  /**
+   * The initial value of the combobox when it is first rendered.
+   * Use when you do not need to control the state of the combobox.
+   */
+  defaultValue?: combobox.Context<T>['value']
+}
 
 export interface UseComboboxReturn<T extends CollectionItem>
   extends Accessor<combobox.Api<PropTypes, T>> {}
@@ -19,7 +30,7 @@ export interface UseComboboxReturn<T extends CollectionItem>
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
-  const [collectionOptions, rest] = createSplitProps<CollectionOptions<T>>()(props, [
+  const [collectionOptions, comboboxProps] = createSplitProps<CollectionOptions<T>>()(props, [
     'isItemDisabled',
     'itemToValue',
     'itemToString',
@@ -36,8 +47,10 @@ export const useCombobox = <T extends CollectionItem>(
     collection: collection(),
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    open: props.defaultOpen,
+    value: props.defaultValue,
     'open.controlled': props.open !== undefined,
-    ...rest,
+    ...comboboxProps,
   }))
 
   const [state, send] = useMachine(combobox.machine(context()), {

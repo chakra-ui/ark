@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseToggleGroupProps
-  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial value of the toggle group when it is first rendered.
+   * Use when you do not need to control the state of the toggle group.
+   */
+  defaultValue?: toggleGroup.Context['value']
+}
 export interface UseToggleGroupReturn extends Accessor<toggleGroup.Api<PropTypes>> {}
 
 export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn => {
@@ -17,6 +23,7 @@ export const useToggleGroup = (props: UseToggleGroupProps): UseToggleGroupReturn
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    value: props.defaultValue,
     ...props,
   }))
   const [state, send] = useMachine(toggleGroup.machine(context()), {

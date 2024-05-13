@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseCarouselProps
-  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial index of the carousel when it is first rendered.
+   * Use this when you do not need to control the state of the carousel.
+   */
+  defaultIndex?: carousel.Context['index']
+}
 export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
@@ -17,6 +23,7 @@ export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    index: props.defaultIndex,
     ...props,
   }))
 

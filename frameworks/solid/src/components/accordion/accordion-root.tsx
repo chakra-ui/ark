@@ -18,6 +18,7 @@ export const AccordionRoot = (props: AccordionRootProps) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
   const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
     'collapsible',
+    'defaultValue',
     'disabled',
     'id',
     'ids',

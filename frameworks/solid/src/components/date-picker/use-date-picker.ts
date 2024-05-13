@@ -1,6 +1,6 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
@@ -13,28 +13,37 @@ export interface UseDatePickerProps
     'id'
   > {
   /**
+   * The initial open state of the date picker when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: datePicker.Context['open']
+  /**
+   * The initial value of the date picker when it is first rendered.
+   * Use when you do not need to control the state of the date picker.
+   */
+  defaultValue?: string[]
+  /**
    * The focused date.
    */
   focusedValue?: string
   /**
-   * The value of the date picker
+   * The maximum date for the date picker in the format yyyy-mm-dd
    */
-  value?: string[]
+  max?: string
   /**
    * The minimum date for the date picker in the format yyyy-mm-dd
    */
   min?: string
   /**
-   * The maximum date for the date picker in the format yyyy-mm-dd
+   * The value of the date picker
    */
-  max?: string
+  value?: string[]
 }
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const [localProps, restProps] = splitProps(props, ['value', 'focusedValue', 'min', 'max'])
   const id = createUniqueId()
 
   const context = createMemo(() => ({
@@ -42,11 +51,16 @@ export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn =>
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     'open.controlled': props.open !== undefined,
-    focusedValue: localProps.focusedValue ? datePicker.parse(localProps.focusedValue) : undefined,
-    value: localProps.value ? datePicker.parse(localProps.value) : undefined,
-    max: localProps.max ? datePicker.parse(localProps.max) : undefined,
-    min: localProps.min ? datePicker.parse(localProps.min) : undefined,
-    ...restProps,
+    open: props.defaultOpen,
+    ...props,
+    focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,
+    value: props.value
+      ? datePicker.parse(props.value)
+      : props.defaultValue
+        ? datePicker.parse(props.defaultValue)
+        : undefined,
+    max: props.max ? datePicker.parse(props.max) : undefined,
+    min: props.min ? datePicker.parse(props.min) : undefined,
   }))
 
   const [state, send] = useMachine(datePicker.machine(context()), { context })

@@ -25,8 +25,8 @@ export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => 
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: editable.Context = {

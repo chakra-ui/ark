@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseNumberInputProps
-  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial value of the number input when it is first rendered.
+   * Use when you do not need to control the state of the number input.
+   */
+  defaultValue?: numberInput.Context['value']
+}
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn => {
@@ -17,6 +23,7 @@ export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    value: props.defaultValue,
     ...props,
   }))
 

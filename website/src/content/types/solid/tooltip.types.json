@@ -24,6 +24,11 @@
       "isRequired": false,
       "description": "Whether to close the tooltip on pointerdown."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the tooltip when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

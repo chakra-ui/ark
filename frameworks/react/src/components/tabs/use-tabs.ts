@@ -23,8 +23,8 @@ export const useTabs = (props: UseTabsProps): UseTabsReturn => {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     value: props.defaultValue,
+    ...props,
   }
 
   const context: tabs.Context = {

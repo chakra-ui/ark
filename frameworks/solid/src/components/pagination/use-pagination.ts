@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UsePaginationProps
-  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial page of the pagination when it is first rendered.
+   * Use when you do not need to control the state of the pagination.
+   */
+  defaultPage?: pagination.Context['page']
+}
 export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
 
 export const usePagination = (props: UsePaginationProps): UsePaginationReturn => {
@@ -17,6 +23,7 @@ export const usePagination = (props: UsePaginationProps): UsePaginationReturn =>
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    page: props.defaultPage,
     ...props,
   }))
 

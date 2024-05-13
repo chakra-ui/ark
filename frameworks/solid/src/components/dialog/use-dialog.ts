@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseDialogProps
-  extends Optional<Omit<dialog.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {}
+  extends Optional<Omit<dialog.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  /**
+   * The initial open state of the dialog when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: dialog.Context['open']
+}
 export interface UseDialogReturn extends Accessor<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps): UseDialogReturn => {
@@ -17,6 +23,7 @@ export const useDialog = (props: UseDialogProps): UseDialogReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
   }))

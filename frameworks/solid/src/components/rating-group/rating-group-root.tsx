@@ -12,6 +12,7 @@ export const RatingGroupRoot = (props: RatingGroupRootProps) => {
     'allowHalf',
     'autoFocus',
     'count',
+    'defaultValue',
     'disabled',
     'form',
     'id',

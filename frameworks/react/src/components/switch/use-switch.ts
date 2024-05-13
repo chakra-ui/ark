@@ -24,8 +24,8 @@ export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
     id: useId(),
     dir,
     getRootNode,
-    ...props,
     checked: props.defaultChecked,
+    ...props,
   }
 
   const context: zagSwitch.Context = {
