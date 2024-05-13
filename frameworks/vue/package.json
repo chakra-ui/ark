@@ -524,7 +524,7 @@
     "@types/testing-library__jest-dom": "5.14.9",
     "@vitejs/plugin-vue": "5.0.4",
     "@vitejs/plugin-vue-jsx": "3.1.0",
-    "@vue/compiler-sfc": "3.4.26",
+    "@vue/compiler-sfc": "3.4.27",
     "globby": "14.0.1",
     "histoire": "0.17.17",
     "jsdom": "24.0.0",
@@ -535,7 +535,7 @@
     "vite": "5.2.11",
     "vite-plugin-dts": "3.9.0",
     "vitest": "1.5.3",
-    "vue": "3.4.26",
+    "vue": "3.4.27",
     "vue-tsc": "2.0.16"
   },
   "peerDependencies": {
