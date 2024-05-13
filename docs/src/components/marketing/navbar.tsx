@@ -1,4 +1,5 @@
 import { Github } from 'lucide-react'
+import NextLink from 'next/link'
 import { css, cx } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
@@ -18,12 +19,12 @@ export const Navbar = () => (
         px="3"
         mt={{ base: '6', md: '10' }}
       >
-        <a href="/" aria-label="Back home">
+        <NextLink href="/" aria-label="Back home">
           <Logo />
-        </a>
+        </NextLink>
         <HStack gap="8">
-          <a
-            href="/docs/overview/introduction"
+          <NextLink
+            href="/docs/react/overview/introduction"
             className={css({
               textStyle: 'sm',
               fontWeight: 'medium',
@@ -35,7 +36,7 @@ export const Navbar = () => (
             })}
           >
             Docs
-          </a>
+          </NextLink>
           <a
             href="https://ark-ui.canny.io/"
             target="_blank"

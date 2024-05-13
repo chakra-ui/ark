@@ -1,5 +1,6 @@
 'use client'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import NextLink from 'next/link'
 import { useParams } from 'next/navigation'
 import { HStack, Stack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
@@ -24,12 +25,12 @@ export const Footer = (props: Props) => {
             <Text color="fg.subtle" fontWeight="medium" textStyle="sm">
               Previous
             </Text>
-            <a
+            <NextLink
               href={[basepath, prevPage.slug].join('/')}
               className={button({ variant: 'link', size: 'lg' })}
             >
               <ArrowLeft /> {prevPage.title}
-            </a>
+            </NextLink>
           </Stack>
         )}
         {nextPage && (
@@ -37,12 +38,12 @@ export const Footer = (props: Props) => {
             <Text color="fg.subtle" fontWeight="medium" textStyle="sm">
               Next
             </Text>
-            <a
+            <NextLink
               href={[basepath, nextPage.slug].join('/')}
               className={button({ variant: 'link', size: 'lg' })}
             >
               {nextPage.title} <ArrowRight />
-            </a>
+            </NextLink>
           </Stack>
         )}
       </HStack>

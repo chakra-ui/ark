@@ -24,7 +24,8 @@
     ],
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "customConditions": ["source"]
   },
   "include": ["next-env.d.ts", "global-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
