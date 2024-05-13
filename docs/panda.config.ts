@@ -76,6 +76,28 @@ export default defineConfig({
           code: { value: 'var(--font-roboto-mono), monospace' },
         },
       },
+      semanticTokens: {
+        colors: {
+          accent: {
+            1: { value: { base: '#fff8f7', _dark: '#1c1412' } },
+            2: { value: { base: '#ffefef', _dark: '#391a18' } },
+            3: { value: { base: '#ffe5e4', _dark: '#55221e' } },
+            4: { value: { base: '#ffdbda', _dark: '#722b25' } },
+            5: { value: { base: '#ffd2d1', _dark: '#8e342b' } },
+            6: { value: { base: '#ffc9c8', _dark: '#aa3d32' } },
+            7: { value: { base: '#ffbeb8', _dark: '#c6493a' } },
+            8: { value: { base: '#ffb2a8', _dark: '#e2503f' } },
+            9: { value: { base: '#EB5E41', _dark: '#EB5E41' } },
+            10: { value: { base: '#de5045', _dark: '#ef6b4e' } },
+            11: { value: { base: '#c9453b', _dark: '#f47a5c' } },
+            12: { value: { base: '#762d25', _dark: '#faa19b' } },
+
+            default: { value: '{colors.accent.9}' },
+            emphasized: { value: '{colors.accent.10}' },
+            fg: { value: 'white' },
+          },
+        },
+      },
     },
   },
 })
