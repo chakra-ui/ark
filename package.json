@@ -26,5 +26,5 @@
     "typescript": "5.4.5"
   },
   "packageManager": "bun@1.1.8",
-  "trustedDependencies": ["@ark-ui/website"]
+  "trustedDependencies": ["@ark-ui/website", "@ark-ui/docs"]
 }
