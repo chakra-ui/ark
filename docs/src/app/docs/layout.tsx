@@ -1,3 +1,4 @@
+import NextLink from 'next/link'
 import type { PropsWithChildren } from 'react'
 import { Logo } from '~/components/logo'
 import { Navbar } from '~/components/navigation/navbar'
@@ -14,7 +15,9 @@ export default function Layout(props: PropsWithChildren) {
     <>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <Logo />
+          <NextLink href="/" aria-label="Go to start page">
+            <Logo />
+          </NextLink>
         </div>
         <div className={styles.divider}>
           <NavbarContainer>
