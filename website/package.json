@@ -20,7 +20,7 @@
     "@astrojs/sitemap": "3.1.4",
     "@fontsource-variable/fira-code": "5.0.18",
     "@fontsource-variable/outfit": "5.0.13",
-    "@icons-pack/react-simple-icons": "9.4.1",
+    "@icons-pack/react-simple-icons": "9.5.0",
     "@nanostores/persistent": "0.10.1",
     "@nanostores/react": "0.7.2",
     "@pandacss/dev": "0.39.1",
