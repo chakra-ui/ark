@@ -1,8 +1,64 @@
 ---
 id: composition
 title: Composition
-description: How to compose your UI with Ark UI
+description: Customize component rendering with the asChild prop
 ---
 
+## Overview
 
-## Introduction
+Ark UI offers a flexible way to render components using the `asChild` prop. This
+prop allows you to replace the default component with a custom child element
+while maintaining the necessary behavior, such as event handling, and passing
+down props and refs.
+
+Every component that is exported in Ark UI has support for the `asChild` prop.
+
+> **Note:** When using the `asChild` prop, be sure that the element you're
+> rendering matches the tag name of the original component. Changing the
+> underlying tags might affect the accessibility and functionality.
+
+## Usage
+
+Consider a component like `Menu.Trigger`, which also supports the `asChild`
+prop.
+
+### Default Behavior
+
+By default, the original `Menu.Trigger` component will be rendered with its
+default appearance and behavior:
+
+```jsx
+<Menu.Trigger>Open Menu</Menu.Trigger>
+```
+
+### Customizing with asChild
+
+To replace the default `Menu.Trigger` with a custom child element (e.g., a
+Button), set the `asChild` prop to true and pass the custom child element:
+
+```jsx
+<Menu.Trigger asChild>
+  <Button>Open Menu</Button>
+</Menu.Trigger>
+```
+
+When using the `asChild` prop, the library ensures that the custom child element
+receives all the required props from the parent component and combines them with
+the child's existing props. In addition, if a ref is provided, it will be
+composed with the child's ref and passed down correctly.
+
+## Limitations
+
+When using the `asChild` prop, ensure that you only pass a single child element.
+If you pass multiple children, the component may not render correctly.
+
+Some components may have specific requirements for the child element, such as
+the `Checkbox.Root`, `RadioGroup.Item` and `Switch.Root` component, which
+requires a `label` element to be passed as a child element.
+
+## Summary
+
+The `asChild` prop provides a convenient way to customize the appearance and
+behavior of components in Ark UI, such as `Menu.Trigger`. Use the `asChild` prop
+to replace the original component with a custom child element, and the library
+will take care of merging and forwarding props and refs as needed.

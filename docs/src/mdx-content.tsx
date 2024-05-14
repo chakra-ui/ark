@@ -7,7 +7,7 @@ import { Faq } from './components/faq'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
 import { Story } from './components/story'
-import { Code } from './components/ui'
+import { Code, InfoBanner } from './components/ui'
 import { Step, Steps } from './components/ui/stepper'
 
 const sharedComponents = {
@@ -16,6 +16,7 @@ const sharedComponents = {
   ComponentPreview,
   ComponentTypes,
   Example,
+  InfoBanner,
   Faq,
   pre: Pre,
   Quickstart,

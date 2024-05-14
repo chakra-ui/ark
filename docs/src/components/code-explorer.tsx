@@ -17,33 +17,41 @@ export const CodeExplorer = (props: Props) => {
   const { examples } = props
   const params = useParams<{ framework: string }>()
   return (
-    <Tabs.Root defaultValue={params.framework} variant="enclosed" size="sm" className="not-prose">
+    <Tabs.Root
+      defaultValue={params.framework}
+      variant="line"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      bg="gray.dark.2"
+      size="sm"
+      className="not-prose"
+    >
       <Tabs.List
-        borderBottomRadius="0"
-        borderBottomWidth="0"
-        bg={{ base: 'gray.2', _dark: 'gray.1' }}
+        bg="gray.dark.a2"
+        boxShadow="none"
+        borderBottomWidth="1px"
+        borderBottomColor="gray.dark.5"
+        px="4"
+        alignItems="center"
       >
         {examples.map((example) => (
           <Tabs.Trigger
             key={example.framework}
             value={example.framework}
             textTransform="capitalize"
+            color="gray.dark.11"
+            _selected={{ color: 'white' }}
+            pb="0"
+            h="39px"
           >
             {example.framework}
           </Tabs.Trigger>
         ))}
-        <Tabs.Indicator bg={{ base: 'white', _dark: 'gray.3' }} />
+        <Tabs.Indicator />
       </Tabs.List>
       {examples.map((example) => (
-        <Tabs.Content
-          key={example.framework}
-          value={example.framework}
-          p="0"
-          borderWidth="1px"
-          borderColor="gray.dark.4"
-          borderBottomRadius="lg"
-          overflow="hidden"
-        >
+        <Tabs.Content key={example.framework} value={example.framework} pt="0">
           <CodePreview code={example.code} html={example.html} />
         </Tabs.Content>
       ))}

@@ -1,6 +1,6 @@
 import { MinusIcon } from 'lucide-react'
 import { Fragment } from 'react'
-import { Stack } from 'styled-system/jsx'
+import { Box, Stack } from 'styled-system/jsx'
 import { Code, Heading, Icon, Table, Text } from '~/components/ui'
 import { getServerContext } from '~/lib/server-context'
 import { types } from '.velite'
@@ -24,17 +24,17 @@ export const ComponentTypes = (props: Props) => {
     .map(([key, properties]) => (
       <Fragment key={key}>
         <Heading as="h3">{key}</Heading>
-        <Stack overflowX="auto" className="not-prose">
-          <Table.Root variant="outline" size="sm" borderRadius="xl">
+        <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose">
+          <Table.Root variant="outline" size="sm" border="none">
             <Table.Head>
               <Table.Row>
-                <Table.Header px="4" bg="gray.2">
+                <Table.Header px="4" bg="gray.2" h="10">
                   Prop
                 </Table.Header>
-                <Table.Header px="4" bg="gray.2">
+                <Table.Header px="4" bg="gray.2" h="10">
                   Default
                 </Table.Header>
-                <Table.Header px="4" bg="gray.2">
+                <Table.Header px="4" bg="gray.2" h="10">
                   Type
                 </Table.Header>
               </Table.Row>
@@ -66,7 +66,7 @@ export const ComponentTypes = (props: Props) => {
               ))}
             </Table.Body>
           </Table.Root>
-        </Stack>
+        </Box>
       </Fragment>
     ))
 }
