@@ -67,4 +67,7 @@ export default defineConfig({
       ],
     },
   },
+  resolve: {
+    conditions: ['source'],
+  },
 })
