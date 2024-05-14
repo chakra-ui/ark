@@ -11,12 +11,6 @@ const pages = defineCollection({
       id: s.string(),
       title: s.string(),
       description: s.string(),
-      resources: s
-        .object({
-          zag: s.string().optional(),
-          w3c: s.string().optional(),
-        })
-        .optional(),
       metadata: s.metadata(),
       content: s.markdown(),
       framework: s.string().default('*'),

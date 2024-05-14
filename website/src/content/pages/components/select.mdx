@@ -2,9 +2,6 @@
 id: select
 title: Select
 description: Displays a list of options for the user to pick from.
-resources:
-  zag: select
-  w3c: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
 ---
 
 <ComponentPreview id="Select" />
@@ -50,6 +47,7 @@ See how to use the Select component with popular form libraries:
 <Example id="formLibrary" />
 
 ## TypeScript Caveats in Vue
+
 Under the hood for React and Solid frameworks, we supply a complex prop type with a generic so that the type of the `items` prop matches the param type in the function signatures for props such as the `isItemDisabled` prop, say. (See the api reference table below) Unfortunately, generic typing is not supported in Vue for components that contain props with slots and/or emits. Therefore, you will not expect updated typing in this way.
 
 If you have a solution or a workaround to this problem, we would love the contribution and request that you [open a Github idea discussion](https://github.com/chakra-ui/ark/discussions/new?category=ideas) to let us know a PoC you have to share!
@@ -57,3 +55,11 @@ If you have a solution or a workaround to this problem, we would love the contri
 ## API Reference
 
 <ComponentTypes id="select" />
+
+## Accessibility
+
+Complies with the [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
+
+### Keyboard Support
+
+<KeyBindingsTable id="select" />

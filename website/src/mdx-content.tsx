@@ -4,24 +4,28 @@ import { Example } from './components/component-example'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { Faq } from './components/faq'
+import { KeyBindingsTable } from './components/key-bindings-table'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
 import { Story } from './components/story'
-import { Code, InfoBanner } from './components/ui'
+import { Code, InfoBanner, Kbd, Link } from './components/ui'
 import { Step, Steps } from './components/ui/stepper'
 
 const sharedComponents = {
+  a: Link,
   Anatomy,
   code: Code,
   ComponentPreview,
   ComponentTypes,
   Example,
-  InfoBanner,
   Faq,
+  InfoBanner,
+  kbd: Kbd,
+  KeyBindingsTable,
   pre: Pre,
   Quickstart,
-  Steps,
   Step,
+  Steps,
   Story,
 }
 
