@@ -1,10 +1,11 @@
+import path from 'node:path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
 
 const pages = defineCollection({
   name: 'Pages',
-  pattern: ['website/src/content/pages/**/*.mdx', 'frameworks/*/CHANGELOG.md'],
+  pattern: ['website/src/content/pages/**/*.mdx', 'packages/*/CHANGELOG.md'],
   schema: s
     .object({
       id: s.string(),
@@ -28,7 +29,7 @@ const pages = defineCollection({
           ...data,
           slug: 'overview/changelog',
           category: 'overview',
-          framework: meta.path.replace(/.*\/frameworks\//, '').replace(/\/[^/]*$/, ''),
+          framework: meta.path.replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
         }
       }
       return {
@@ -63,7 +64,7 @@ const types = defineCollection({
 })
 
 export default defineConfig({
-  root: '../',
+  root: path.join(process.cwd(), '../'),
   collections: { pages, types },
   mdx: {
     rehypePlugins: [
