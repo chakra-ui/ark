@@ -1,3 +1,9 @@
+---
+id: changelog
+title: Changelog
+description: All notable changes will be documented in this file.
+---
+
 ## [Unreleased]
 
 ## [3.0.0] - 2024-04-05

@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { codeToHtml } from 'shiki'
 import { getServerContext } from '~/lib/server-context'
@@ -23,7 +24,10 @@ const findExamples = async (props: Props) => {
     ['react', 'solid', 'vue'].map(async (framework) => {
       const lang = framework === 'vue' ? 'vue' : 'tsx'
       const filename = `${id}.${lang}`
-      const path = `../frameworks/${framework}/src/components/${component}/examples/${filename}`
+      const path = join(
+        process.cwd(),
+        `../packages/${framework}/src/components/${component}/examples/${filename}`,
+      )
       const content = await readFile(path, 'utf-8').catch(() => 'Example not found')
 
       const code = content
