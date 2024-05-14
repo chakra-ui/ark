@@ -1,9 +1,0 @@
-{
-  "Provider": {
-    "locale": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The locale to use. For example, 'en-US'."
-    }
-  }
-}
