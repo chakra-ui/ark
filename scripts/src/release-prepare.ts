@@ -63,7 +63,7 @@ const generateKeywords = async (pkgJsonPath: string) => {
 const main = async () => {
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const root = dirname(findUpSync('bun.lockb')!)
-  const packages = await globby([join(root, 'frameworks/*/package.json')])
+  const packages = await globby([join(root, 'packages/*/package.json')])
 
   for (const pkg of packages) {
     console.log(`Updating keywords and exports for ${basename(dirname(pkg))}`)

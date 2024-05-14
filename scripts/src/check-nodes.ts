@@ -3,7 +3,7 @@ import { readFileSync } from 'fs-extra'
 import { globby } from 'globby'
 
 const main = async () => {
-  const components = await globby(['../frameworks/*/src/components/dialog/*.{tsx,vue}'])
+  const components = await globby(['../packages/*/src/components/dialog/*.{tsx,vue}'])
 
   const items = components
     .filter((file) => !file.endsWith('.stories.tsx'))

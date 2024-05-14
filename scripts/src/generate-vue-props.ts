@@ -9,10 +9,10 @@ const extractTypes = (component: string) => {
 
   const project = new Project()
   const sourceFile = project.addSourceFileAtPath(
-    `../frameworks/vue/src/components/${component}/use-${component}.ts`,
+    `../packages/vue/src/components/${component}/use-${component}.ts`,
   )
   const outputFile = project.createSourceFile(
-    `../frameworks/vue/src/components/${component}/${component}.types.ts`,
+    `../packages/vue/src/components/${component}/${component}.types.ts`,
     '',
     {
       overwrite: true,
@@ -115,7 +115,7 @@ const main = async () => {
   }
 
   console.log('Generating props for all components')
-  const components = await globby(['../frameworks/vue/src/components/*'], {
+  const components = await globby(['../packages/vue/src/components/*'], {
     onlyDirectories: true,
     deep: 1,
   })

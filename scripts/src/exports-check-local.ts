@@ -4,7 +4,7 @@ import { globby } from 'globby'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
 
 const main = async () => {
-  const files = await globby(['../frameworks/react/src/components/*/index.ts'], {})
+  const files = await globby(['../packages/react/src/components/*/index.ts'], {})
   files
     .sort()
     .map((file) => ({

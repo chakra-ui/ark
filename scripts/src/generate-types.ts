@@ -4,7 +4,7 @@ const extractTypes = () => {
   const project = new Project()
 
   const sourceFile = project.addSourceFileAtPath(
-    '../frameworks/react/src/components/accordion/accordion-root.tsx',
+    '../packages/react/src/components/accordion/accordion-root.tsx',
   )
 
   const propperties = sourceFile

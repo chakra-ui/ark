@@ -3,7 +3,7 @@ import { copyFileSync } from 'fs-extra'
 import { globby } from 'globby'
 
 const main = async () => {
-  const files = await globby(['../frameworks/react/src/components/*/index.ts'], {})
+  const files = await globby(['../packages/react/src/components/*/index.ts'], {})
 
   files
     .filter((file) => !['presence', 'portal'].includes(basename(dirname(file))))

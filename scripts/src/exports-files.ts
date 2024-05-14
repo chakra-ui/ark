@@ -4,10 +4,7 @@ const frameworks = ['react', 'solid', 'vue']
 
 const main = async () => {
   const components = await globby(
-    [
-      '../frameworks/react/src/components',
-      '!../frameworks/react/src/components/{portal,presence}/**',
-    ],
+    ['../packages/react/src/components', '!../packages/react/src/components/{portal,presence}/**'],
     {
       onlyDirectories: true,
       deep: 1,
@@ -22,7 +19,7 @@ const main = async () => {
         .filter((file) => !file.endsWith('.stories.vue'))
         .filter((file) => !file.endsWith('props.ts'))
         .filter((file) => !file.endsWith('.test.tsx'))
-        .map((file) => file.replace(`../frameworks/${framework}/src/components/`, '')),
+        .map((file) => file.replace(`../packages/${framework}/src/components/`, '')),
     })),
   )
 

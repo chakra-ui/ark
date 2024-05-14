@@ -6,8 +6,8 @@ const frameworks = ['react', 'solid', 'vue']
 
 const main = async () => {
   const components = await globby([
-    '../frameworks/react/src/components/*/index.ts',
-    '!../frameworks/react/src/components/{portal,presence}/**',
+    '../packages/react/src/components/*/index.ts',
+    '!../packages/react/src/components/{portal,presence}/**',
   ])
 
   const frameworkExports = components.sort().map((component) =>

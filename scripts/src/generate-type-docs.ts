@@ -160,7 +160,7 @@ function extractTypeExports(fileContent?: string) {
 const extractTypesForFramework = async (framework: string) => {
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const rootDir = dirname(findUpSync('bun.lockb')!)
-  process.chdir(path.join(rootDir, 'frameworks', framework))
+  process.chdir(path.join(rootDir, 'packages', framework))
 
   const outDir = path.join(rootDir, 'website', 'src', 'content', 'types')
   const components = await globby(['src/components', 'src/providers'], {

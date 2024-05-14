@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { PolymorphicProps } from '../factory'
 import { createSplitProps } from '../create-split-props'
+import type { PolymorphicProps } from '../factory'
 
 export interface AccordionItemContentProps extends PolymorphicProps {}
 

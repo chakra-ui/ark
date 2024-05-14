@@ -1,14 +1,13 @@
 {
-  "name": "@ark-ui/react",
-  "version": "3.0.0-1",
-  "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
+  "name": "@ark-ui/vue",
+  "version": "1.0.0-4",
+  "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
     "avatar",
     "carousel",
     "checkbox",
     "clipboard",
-    "collapsible",
     "color picker",
     "combobox",
     "date picker",
@@ -21,7 +20,6 @@
     "pagination",
     "pin input",
     "popover",
-    "portal",
     "progress",
     "radio group",
     "rating group",
@@ -42,7 +40,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "frameworks/react"
+    "directory": "packages/vue"
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
@@ -117,17 +115,6 @@
       "require": {
         "types": "./dist/components/clipboard/index.d.cts",
         "default": "./dist/components/clipboard/index.cjs"
-      }
-    },
-    "./collapsible": {
-      "source": "./src/components/collapsible/index.ts",
-      "import": {
-        "types": "./dist/components/collapsible/index.d.ts",
-        "default": "./dist/components/collapsible/index.js"
-      },
-      "require": {
-        "types": "./dist/components/collapsible/index.d.cts",
-        "default": "./dist/components/collapsible/index.cjs"
       }
     },
     "./color-picker": {
@@ -282,17 +269,6 @@
       "require": {
         "types": "./dist/components/popover/index.d.cts",
         "default": "./dist/components/popover/index.cjs"
-      }
-    },
-    "./portal": {
-      "source": "./src/components/portal/index.ts",
-      "import": {
-        "types": "./dist/components/portal/index.d.ts",
-        "default": "./dist/components/portal/index.js"
-      },
-      "require": {
-        "types": "./dist/components/portal/index.d.cts",
-        "default": "./dist/components/portal/index.cjs"
       }
     },
     "./presence": {
@@ -485,11 +461,11 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "biome lint ./src",
+    "lint": "echo 'No linting configured for this package.'",
     "test": "vitest",
     "test:ci": "vitest --run",
-    "typecheck": "tsc",
-    "storybook": "storybook dev -p 6006",
+    "typecheck": "vue-tsc",
+    "storybook": "histoire dev",
     "release-it": "release-it --config ../../release-it.json"
   },
   "publishConfig": {
@@ -497,7 +473,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@ark-ui/anatomy": "workspace:*",
+    "@ark-ui/anatomy": "3.0.0",
     "@zag-js/accordion": "0.49.0",
     "@zag-js/avatar": "0.49.0",
     "@zag-js/carousel": "0.49.0",
@@ -505,18 +481,15 @@
     "@zag-js/clipboard": "0.49.0",
     "@zag-js/collapsible": "0.49.0",
     "@zag-js/color-picker": "0.49.0",
-    "@zag-js/color-utils": "0.49.0",
     "@zag-js/combobox": "0.49.0",
-    "@zag-js/core": "0.49.0",
     "@zag-js/date-picker": "0.49.0",
-    "@zag-js/date-utils": "0.49.0",
-    "@zag-js/dom-query": "0.49.0",
     "@zag-js/dialog": "0.49.0",
+    "@zag-js/dom-query": "0.49.0",
     "@zag-js/editable": "0.49.0",
     "@zag-js/file-upload": "0.49.0",
-    "@zag-js/file-utils": "0.49.0",
     "@zag-js/hover-card": "0.49.0",
     "@zag-js/i18n-utils": "0.49.0",
+    "@zag-js/file-utils": "0.49.0",
     "@zag-js/menu": "0.49.0",
     "@zag-js/number-input": "0.49.0",
     "@zag-js/pagination": "0.49.0",
@@ -526,7 +499,6 @@
     "@zag-js/progress": "0.49.0",
     "@zag-js/radio-group": "0.49.0",
     "@zag-js/rating-group": "0.49.0",
-    "@zag-js/react": "0.49.0",
     "@zag-js/select": "0.49.0",
     "@zag-js/slider": "0.49.0",
     "@zag-js/splitter": "0.49.0",
@@ -537,41 +509,36 @@
     "@zag-js/toggle-group": "0.49.0",
     "@zag-js/tooltip": "0.49.0",
     "@zag-js/tree-view": "0.49.0",
-    "@zag-js/types": "0.49.0"
+    "@zag-js/types": "0.49.0",
+    "@zag-js/vue": "0.49.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
+    "@histoire/plugin-vue": "0.17.17",
     "@release-it/keep-a-changelog": "5.0.0",
-    "@storybook/addon-a11y": "8.1.0",
-    "@storybook/addon-essentials": "8.1.0",
-    "@storybook/react-vite": "8.1.0",
-    "@storybook/react": "8.1.0",
     "@testing-library/dom": "10.1.0",
     "@testing-library/jest-dom": "6.4.5",
-    "@testing-library/react": "15.0.7",
     "@testing-library/user-event": "14.5.2",
+    "@testing-library/vue": "8.0.3",
     "@types/jsdom": "21.1.6",
-    "@types/react": "18.3.2",
-    "@types/react-dom": "18.3.0",
     "@types/testing-library__jest-dom": "5.14.9",
-    "@vitejs/plugin-react": "4.2.1",
+    "@vitejs/plugin-vue": "5.0.4",
+    "@vitejs/plugin-vue-jsx": "3.1.0",
+    "@vue/compiler-sfc": "3.4.27",
     "globby": "14.0.1",
+    "histoire": "0.17.17",
     "jsdom": "24.0.0",
-    "lucide-react": "0.378.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-frame-component": "5.2.6",
-    "react-hook-form": "7.51.4",
+    "lucide-vue-next": "0.378.0",
     "release-it": "17.2.1",
     "resize-observer-polyfill": "1.5.1",
-    "storybook": "8.1.0",
     "typescript": "5.4.5",
     "vite": "5.2.11",
     "vite-plugin-dts": "3.9.1",
-    "vitest": "1.6.0"
+    "vitest": "1.6.0",
+    "vue": "3.4.27",
+    "vue-tsc": "2.0.17"
   },
   "peerDependencies": {
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "vue": ">=3.0.0"
   }
 }

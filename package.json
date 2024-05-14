@@ -2,7 +2,7 @@
   "name": "root",
   "type": "module",
   "private": true,
-  "workspaces": ["anatomy", "frameworks/*", "scripts", "website"],
+  "workspaces": ["packages/*", "scripts", "website"],
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**'",
@@ -11,11 +11,11 @@
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "react": "bun run --cwd frameworks/react",
-    "solid": "bun run --cwd frameworks/solid",
-    "vue": "bun run --cwd frameworks/vue",
-    "anatomy": "bun run --cwd anatomy",
+    "anatomy": "bun run --cwd packages/anatomy",
+    "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",
+    "solid": "bun run --cwd packages/solid",
+    "vue": "bun run --cwd packages/vue",
     "website": "bun run --cwd website"
   },
   "devDependencies": {

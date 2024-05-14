@@ -41,7 +41,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "frameworks/solid"
+    "directory": "packages/solid"
   },
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"

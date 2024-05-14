@@ -21,7 +21,7 @@ stories.sort().map((story) => {
   Object.entries(content).map(([key, value]) => {
     const name = toKebabCase(key)
     outputFileSync(
-      `../frameworks/solid/src/components/${component}/examples/${name}.tsx`,
+      `../packages/solid/src/components/${component}/examples/${name}.tsx`,
       value.replace('@ark-ui/solid', '../..').replace('const', 'export const'),
     )
   })
@@ -50,7 +50,7 @@ export default meta
     .join('\n')
 
   outputFileSync(
-    `../frameworks/solid/src/components/${component}/${component}.stories.tsx`,
+    `../packages/solid/src/components/${component}/${component}.stories.tsx`,
     `${meta}${exports}`,
   )
 })

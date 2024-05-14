@@ -21,7 +21,10 @@ export const AccordionItemContent = (props: AccordionItemContentProps) => {
 
   const itemContentProps = createMemo(() => {
     const contentProps = accordion().getItemContentProps(itemProps)
-    const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
+    const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, [
+      'hidden',
+      'data-state',
+    ])
     return ownProps
   })
   const mergedProps = mergeProps(itemContentProps, props)
