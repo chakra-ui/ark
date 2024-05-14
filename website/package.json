@@ -2,7 +2,7 @@
   "name": "@ark-ui/website",
   "private": true,
   "scripts": {
-    "prepare": "bun run --cwd ../frameworks/react build && panda codegen",
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
