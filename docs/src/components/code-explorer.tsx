@@ -21,7 +21,7 @@ export const CodeExplorer = (props: Props) => {
       <Tabs.List
         borderBottomRadius="0"
         borderBottomWidth="0"
-        bg={{ base: 'gray.2', _dark: 'gray.2' }}
+        bg={{ base: 'gray.2', _dark: 'gray.1' }}
       >
         {examples.map((example) => (
           <Tabs.Trigger

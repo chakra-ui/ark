@@ -15,7 +15,7 @@ export const Pre = async (props: PropsWithChildren) => {
     transformers: [transformerNotationHighlight()],
   })
   return (
-    <Box borderWidth="1px" borderColor="gray.dark.4" borderRadius="xl" overflow="hidden">
+    <Box borderWidth="1px" borderColor="gray.dark.4" borderRadius="lg" overflow="hidden">
       <CodePreview html={html} code={code} />
     </Box>
   )

@@ -28,9 +28,15 @@ export const ComponentTypes = (props: Props) => {
           <Table.Root variant="outline" size="sm" borderRadius="xl">
             <Table.Head>
               <Table.Row>
-                <Table.Header px="4">Prop</Table.Header>
-                <Table.Header px="4">Default</Table.Header>
-                <Table.Header px="4">Type</Table.Header>
+                <Table.Header px="4" bg="gray.2">
+                  Prop
+                </Table.Header>
+                <Table.Header px="4" bg="gray.2">
+                  Default
+                </Table.Header>
+                <Table.Header px="4" bg="gray.2">
+                  Type
+                </Table.Header>
               </Table.Row>
             </Table.Head>
             <Table.Body>

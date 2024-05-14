@@ -21,7 +21,10 @@ export const layout = sva({
         base: 'var(--ark-sidebar-width)',
         '2xl': 'var(--ark-sidebar-max-width)',
       },
-      bg: 'bg.canvas',
+      bg: {
+        base: 'gray.2',
+        _dark: 'black.a3',
+      },
       borderRightWidth: '1px',
     },
     content: {
@@ -29,7 +32,7 @@ export const layout = sva({
       height: '16',
       flexGrow: '1',
       flexShrink: '0',
-      bg: 'bg.default',
+      bg: 'bg.canvas',
     },
     aside: {
       pt: '16',
@@ -46,7 +49,10 @@ export const layout = sva({
       bottom: '0',
       left: '0',
       maxW: '100%',
-      bg: 'bg.canvas',
+      bg: {
+        base: 'gray.2',
+        _dark: 'black.a3',
+      },
       borderRightWidth: '1px',
     },
     main: {
@@ -60,7 +66,7 @@ export const layout = sva({
         '2xl': 'var(--ark-main-ps)',
       },
       pe: 'var(--ark-main-pe)',
-      background: 'bg.default',
+      background: 'bg.canvas',
       flex: '1',
     },
     divider: {

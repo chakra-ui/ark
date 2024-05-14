@@ -31,10 +31,9 @@ export default function Page(props: Props) {
             <Heading as="h1" fontWeight="bold">
               {currentPage.title === 'Introduction' ? 'Weclome to Ark UI' : currentPage.title}
             </Heading>
-            <Text className="lead" color="fg.muted">
+            <Text className="lead" color="fg.muted" mb="6">
               {currentPage.description}
             </Text>
-            <styled.hr />
             <MDXContent code={currentPage.code} />
           </Prose>
           <Footer nextPage={nextPage} prevPage={prevPage} />
