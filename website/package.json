@@ -10,6 +10,7 @@
   "dependencies": {
     "@ark-ui/react": "workspace:*",
     "@biomejs/biome": "1.7.3",
+    "@icons-pack/react-simple-icons": "9.5.0",
     "@pandacss/dev": "0.39.1",
     "@park-ui/panda-preset": "0.37.0",
     "@shikijs/transformers": "1.5.1",

@@ -4,7 +4,7 @@ import { defineCollection, defineConfig, s } from 'velite'
 
 const pages = defineCollection({
   name: 'Pages',
-  pattern: ['docs/content/pages/**/*.mdx', 'frameworks/*/CHANGELOG.md'],
+  pattern: ['website/src/content/pages/**/*.mdx', 'frameworks/*/CHANGELOG.md'],
   schema: s
     .object({
       id: s.string(),
@@ -41,7 +41,7 @@ const pages = defineCollection({
 
 const types = defineCollection({
   name: 'Types',
-  pattern: 'docs/content/types/**/*.json',
+  pattern: 'website/src/content/types/**/*.json',
   schema: s
     .record(
       s.string(),
