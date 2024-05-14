@@ -7,7 +7,7 @@ export default defineConfig({
   validation: 'none',
   presets: [
     '@pandacss/preset-base',
-    createPreset({ grayColor: 'sand', accentColor: 'orange' }),
+    createPreset({ grayColor: 'sand' }),
     typographyPreset({
       recipe: {
         sizes: ['base'],
@@ -15,31 +15,48 @@ export default defineConfig({
       },
     }),
   ],
-  include: ['./src/**/*.{ts,tsx,js,jsx,astro}'],
-  exclude: [],
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
   jsxFramework: 'react',
   outdir: 'styled-system',
+  globalVars: {
+    '--ark-nav-height': '64px',
+    '--ark-layout-max-width': '1440px',
+    '--ark-sidebar-width': '272px',
+    '--ark-sidebar-ps': 'max(32px, calc((100vw - (var(--ark-layout-max-width) - 64px)) / 2))',
+    '--ark-sidebar-max-width':
+      'calc((100vw - (var(--ark-layout-max-width) - 64px)) / 2 + var(--ark-sidebar-width) - 32px)',
+    '--ark-main-ps': 'calc((100vw - var(--ark-layout-max-width)) / 2 + var(--ark-sidebar-width))',
+    '--ark-main-pe': 'calc((100vw - var(--ark-layout-max-width)) / 2)',
+  },
   staticCss: {
     recipes: {
-      switchRecipe: [{ size: ['*'] }],
+      code: [{ size: ['*'] }],
     },
   },
   globalCss: {
     extend: {
       html: {
         scrollPaddingTop: '6rem',
+        scrollBehavior: 'smooth',
         minHeight: '100%',
       },
       'html, body': {
         display: 'flex',
         flexDirection: 'column',
-        height: 'unset',
       },
       body: {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: '1',
-        fontFamily: 'Outfit Variable',
+        fontFamily: 'body',
+      },
+      pre: {
+        background: 'transparent!',
+        overflowX: 'auto',
+        fontSize: '13px !important',
+      },
+      code: {
+        fontFamily: 'code',
       },
       article: {
         '--colors-prose-body': 'colors.fg.muted',
@@ -47,100 +64,38 @@ export default defineConfig({
         '--colors-prose-bold': 'colors.fg.default',
         '--colors-prose-link': 'colors.fg.default',
         '--colors-prose-code': 'colors.fg.muted',
-      },
-      'pre, code': {
-        fontFamily: 'Fira Code Variable!',
-      },
-      pre: {
-        overflowX: 'auto',
-        fontSize: '14px !important',
-        '--astro-code-color-text': 'colors.grayPalette.300',
-        '--astro-code-color-background': 'colors.grayPalette.900',
-        '--astro-code-token-constant': 'colors.coral.300',
-        '--astro-code-token-string': 'colors.yellow.100',
-        '--astro-code-token-comment': 'colors.grayPalette.500',
-        '--astro-code-token-keyword': 'colors.coral.300',
-        '--astro-code-token-parameter': 'colors.grayPalette.600',
-        '--astro-code-token-function': 'colors.grayPalette.300',
-        '--astro-code-token-string-expression': 'colors.yellow.100',
-        '--astro-code-token-punctuation': 'colors.grayPalette.300',
-        '--astro-code-token-link': 'colors.coral.200',
-        '& code': {
-          fontFamily: 'inherit',
-        },
+        '--colors-prose-hr-border': 'colors.border.subtle',
       },
     },
   },
   theme: {
     extend: {
       tokens: {
-        colors: {
-          coral: {
-            50: { value: '#fef2ea' },
-            100: { value: '#fee2d3' },
-            200: { value: '#fecab8' },
-            300: { value: '#fca590' },
-            400: { value: '#f8725f' },
-            500: { value: '#eb5e41' },
-            600: { value: '#db532c' },
-            700: { value: '#b74221' },
-            800: { value: '#98331d' },
-            900: { value: '#7c251a' },
-            950: { value: '#420f0b' },
-          },
-          grayPalette: {
-            25: { value: '#fcfcfc' },
-            50: { value: '#fafaf9' },
-            100: { value: '#f6f4f3' },
-            200: { value: '#e1dedb' },
-            300: { value: '#cdc8c5' },
-            400: { value: '#a89c98' },
-            500: { value: '#7f7773' },
-            600: { value: '#615a56' },
-            700: { value: '#48433f' },
-            800: { value: '#302b28' },
-            900: { value: '#26221e' },
-            950: { value: '#1b1613' },
-          },
-        },
-        spacing: {
-          18: { value: '4.5rem' },
-        },
-        sizes: {
-          18: { value: '4.5rem' },
+        fonts: {
+          body: { value: 'var(--font-outfit), sans-serif' },
+          code: { value: 'var(--font-roboto-mono), monospace' },
         },
       },
       semanticTokens: {
         colors: {
           accent: {
-            default: { value: { base: '{colors.coral.500}', _dark: '{colors.coral.500}' } },
-            emphasized: { value: { base: '{colors.coral.600}', _dark: '{colors.coral.600}' } },
-            fg: { value: { base: '{colors.white}', _dark: '{colors.white}' } },
+            1: { value: { base: '#fff8f7', _dark: '#1c1412' } },
+            2: { value: { base: '#ffefef', _dark: '#391a18' } },
+            3: { value: { base: '#ffe5e4', _dark: '#55221e' } },
+            4: { value: { base: '#ffdbda', _dark: '#722b25' } },
+            5: { value: { base: '#ffd2d1', _dark: '#8e342b' } },
+            6: { value: { base: '#ffc9c8', _dark: '#aa3d32' } },
+            7: { value: { base: '#ffbeb8', _dark: '#c6493a' } },
+            8: { value: { base: '#ffb2a8', _dark: '#e2503f' } },
+            9: { value: { base: '#EB5E41', _dark: '#EB5E41' } },
+            10: { value: { base: '#de5045', _dark: '#ef6b4e' } },
+            11: { value: { base: '#c9453b', _dark: '#f47a5c' } },
+            12: { value: { base: '#762d25', _dark: '#faa19b' } },
+
+            default: { value: '{colors.accent.9}' },
+            emphasized: { value: '{colors.accent.10}' },
+            fg: { value: 'white' },
           },
-          fg: {
-            default: {
-              value: { base: '{colors.grayPalette.900}', _dark: '{colors.grayPalette.100}' },
-            },
-          },
-          border: {
-            accent: { value: { base: '{colors.coral.500}', _dark: '{colors.coral.500}' } },
-          },
-        },
-      },
-    },
-  },
-  patterns: {
-    extend: {
-      container: {
-        // @ts-ignore
-        transform(props: StyledPprops) {
-          return {
-            position: 'relative',
-            width: '100%',
-            mx: 'auto',
-            px: { base: '4', md: '6' },
-            ...props,
-          }
         },
       },
     },

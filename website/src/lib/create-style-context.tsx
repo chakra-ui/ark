@@ -1,17 +1,18 @@
+'use client'
 import {
+  type ComponentProps,
+  type ElementType,
+  type JSX,
   createContext,
   createElement,
   forwardRef,
   useContext,
-  type ComponentProps,
-  type ElementType,
-  type JSX,
 } from 'react'
 
 type GenericProps = Record<string, unknown>
 type StyleRecipe = {
   (props?: GenericProps): Record<string, string>
-  // biome-ignore lint/suspicious/noExplicitAny: this is a generic type
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   splitVariantProps: (props: GenericProps) => any
 }
 type StyleSlot<R extends StyleRecipe> = keyof ReturnType<R>
@@ -21,9 +22,9 @@ type CombineProps<T, U> = Omit<T, keyof U> & U
 
 const cx = (...args: (string | undefined)[]) => args.filter(Boolean).join(' ')
 
-export interface ComponentVariants<T extends ElementType, R extends StyleRecipe> {
-  (props: CombineProps<ComponentProps<T>, StyleVariantProps<R>>): JSX.Element
-}
+export type ComponentVariants<T extends ElementType, R extends StyleRecipe> = (
+  props: CombineProps<ComponentProps<T>, StyleVariantProps<R>>,
+) => JSX.Element
 
 export const createStyleContext = <R extends StyleRecipe>(recipe: R) => {
   const StyleContext = createContext<StyleSlotRecipe<R> | null>(null)

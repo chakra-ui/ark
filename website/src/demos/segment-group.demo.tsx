@@ -10,7 +10,7 @@ export const Demo = (props: SegmentGroup.RootProps) => {
   return (
     <SegmentGroup.Root defaultValue="react" orientation="horizontal" {...props}>
       {options.map((option) => (
-        <SegmentGroup.Item key={option.id} value={option.id} disabled={option.disabled}>
+        <SegmentGroup.Item key={option.id} value={option.id} disabled={Boolean(option.disabled)}>
           <SegmentGroup.ItemControl />
           <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
         </SegmentGroup.Item>

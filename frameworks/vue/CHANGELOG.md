@@ -1,7 +1,7 @@
 ---
 id: changelog
-name: Changelog
-description: All notable changes to this project will be documented in this file. The format is based on Keep a Changelog and this project adheres to and this project adheres to Semantic Versioning.
+title: Changelog
+description: All notable changes will be documented in this file.
 ---
 
 ## [Unreleased]
@@ -415,17 +415,3 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 - Add `Splitter`
 - Add `Tabs`
 - Add `Tooltip`
-
-[unreleased]: https://github.com/chakra-ui/ark/compare/@ark-ui/vue@0.8.0...HEAD
-[0.1.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.1.0
-[0.2.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.0
-[0.2.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.2.1
-[0.3.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.3.0
-[0.4.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.4.0
-[0.5.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.0
-[0.5.1]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.1
-[0.5.2]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.2
-[0.5.3]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.5.3
-[0.6.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.6.0
-[0.7.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.7.0
-[0.8.0]: https://github.com/chakra-ui/ark/releases/tag/@ark-ui/vue@0.8.0

@@ -1,3 +1,4 @@
+'use client'
 import { SegmentGroup } from '@ark-ui/react/segment-group'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

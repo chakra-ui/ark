@@ -1,3 +1,4 @@
+'use client'
 import { Toast } from '@ark-ui/react/toast'
 export { Toaster } from '@ark-ui/react/toast'
 

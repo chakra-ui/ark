@@ -15,6 +15,10 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "material-icon-theme.files.associations": {
-    "**.stories.vue": "storybook"
+    "**.recipe.ts": "panda"
+  },
+  "material-icon-theme.folders.associations": {
+    "react": "React-components",
+    "solid": "Core"
   }
 }

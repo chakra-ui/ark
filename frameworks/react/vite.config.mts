@@ -68,6 +68,9 @@ export default defineConfig({
     environment: 'jsdom',
     css: false,
   },
+  resolve: {
+    conditions: ['source'],
+  },
 })
 
 const renderBanner = (fileName: string) => {

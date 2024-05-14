@@ -1,24 +1,50 @@
-import { Box } from 'styled-system/jsx'
-import { Tabs } from '~/components/ui'
+import { codeToHtml } from 'shiki'
+import { CodePreview } from '../code-preview'
+import { Tabs } from '../ui'
+import * as snippets from './code-snippets'
 
-type Props = Tabs.RootProps & {
-  react?: JSX.Element
-  solid?: JSX.Element
-  vue?: JSX.Element
+export const CodeExamples = async () => {
+  return (
+    <Tabs.Root
+      defaultValue="react"
+      variant="line"
+      borderWidth="1px"
+      borderRadius="lg"
+      overflow="hidden"
+      bg="gray.dark.2"
+    >
+      <Tabs.List
+        bg="gray.dark.a2"
+        boxShadow="none"
+        borderBottomWidth="1px"
+        borderBottomColor="gray.dark.5"
+        pt="2"
+        px="4"
+      >
+        {['react', 'solid', 'vue'].map((framework) => (
+          <Tabs.Trigger
+            key={framework}
+            value={framework}
+            textTransform="capitalize"
+            color="gray.dark.11"
+            _selected={{ color: 'white' }}
+          >
+            {framework}
+          </Tabs.Trigger>
+        ))}
+        <Tabs.Indicator />
+      </Tabs.List>
+      {Object.entries(snippets).map(async ([key, code]) => {
+        const html = await codeToHtml(code, {
+          lang: key === 'vue' ? 'vue' : 'tsx',
+          theme: 'github-dark-default',
+        })
+        return (
+          <Tabs.Content key={key} value={key} pt="0">
+            <CodePreview code={code} html={html} />
+          </Tabs.Content>
+        )
+      })}
+    </Tabs.Root>
+  )
 }
-
-export const CodeExamples = (props: Props) => (
-  <Tabs.Root size="sm" defaultValue="react" {...props}>
-    <Tabs.List bg="bg.muted" px="4" pt="3" borderTopRadius="l3">
-      <Tabs.Trigger value="react">React</Tabs.Trigger>
-      <Tabs.Trigger value="solid">Solid</Tabs.Trigger>
-      <Tabs.Trigger value="vue">Vue</Tabs.Trigger>
-      <Tabs.Indicator />
-    </Tabs.List>
-    <Box borderBottomRadius="l3" px="3" py="4" mt="-5" bg="grayPalette.900" borderWidth="1px">
-      <Tabs.Content value="react">{props.react}</Tabs.Content>
-      <Tabs.Content value="solid">{props.solid}</Tabs.Content>
-      <Tabs.Content value="vue">{props.vue}</Tabs.Content>
-    </Box>
-  </Tabs.Root>
-)

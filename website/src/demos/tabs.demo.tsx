@@ -11,7 +11,7 @@ export const Demo = (props: Tabs.RootProps) => {
     <Tabs.Root defaultValue="react" {...props}>
       <Tabs.List>
         {options.map((option) => (
-          <Tabs.Trigger key={option.id} value={option.id} disabled={option.disabled}>
+          <Tabs.Trigger key={option.id} value={option.id} disabled={Boolean(option.disabled)}>
             {option.label}
           </Tabs.Trigger>
         ))}

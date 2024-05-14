@@ -1,3 +1,4 @@
+'use client'
 import { Splitter } from '@ark-ui/react/splitter'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

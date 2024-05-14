@@ -1,3 +1,4 @@
+'use client'
 import { ToggleGroup } from '@ark-ui/react/toggle-group'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

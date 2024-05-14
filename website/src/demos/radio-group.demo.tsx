@@ -10,7 +10,7 @@ export const Demo = (props: RadioGroup.RootProps) => {
   return (
     <RadioGroup.Root defaultValue="react" orientation="vertical" {...props}>
       {options.map((option) => (
-        <RadioGroup.Item key={option.id} value={option.id} disabled={option.disabled}>
+        <RadioGroup.Item key={option.id} value={option.id} disabled={Boolean(option.disabled)}>
           <RadioGroup.ItemControl />
           <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
         </RadioGroup.Item>

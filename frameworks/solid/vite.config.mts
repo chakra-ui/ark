@@ -10,4 +10,7 @@ export default defineConfig({
     retry: 2,
     css: false,
   },
+  resolve: {
+    conditions: ['source'],
+  },
 })

@@ -1,3 +1,4 @@
+'use client'
 import { TagsInput } from '@ark-ui/react/tags-input'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

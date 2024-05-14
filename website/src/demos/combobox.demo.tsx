@@ -1,3 +1,4 @@
+'use client'
 import type { ComboboxValueChangeDetails } from '@ark-ui/react'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'

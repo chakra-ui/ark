@@ -1,3 +1,4 @@
+'use client'
 import { DatePicker } from '@ark-ui/react/date-picker'
 import type { ComponentProps } from 'react'
 import { styled } from 'styled-system/jsx'

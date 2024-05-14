@@ -52,7 +52,7 @@
     "defaultValue": {
       "type": "string[]",
       "isRequired": false,
-      "description": "The initial value of the accordion when it is first rendered.\nUse when you do not need to control the state of the color picker."
+      "description": "The initial value of the accordion when it is first rendered.\nUse when you do not need to control the state of the accordion."
     },
     "disabled": {
       "type": "boolean",

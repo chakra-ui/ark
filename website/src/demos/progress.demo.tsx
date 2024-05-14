@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react'
 import { Progress, type ProgressProps } from '~/components/ui/progress'
 

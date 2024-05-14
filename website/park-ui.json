@@ -6,5 +6,5 @@
     "components": "~/components/ui",
     "utils": "~/lib"
   },
-  "useReactServerComponents": false
+  "useReactServerComponents": true
 }

@@ -20,6 +20,11 @@
   "Root": {
     "count": { "type": "number", "isRequired": true, "description": "Total number of data items" },
     "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+    "defaultPage": {
+      "type": "number",
+      "isRequired": false,
+      "description": "The initial page of the pagination when it is first rendered.\nUse when you do not need to control the state of the pagination."
+    },
     "id": {
       "type": "string",
       "isRequired": false,
