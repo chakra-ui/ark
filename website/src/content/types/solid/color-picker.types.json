@@ -33,6 +33,16 @@
       "isRequired": false,
       "description": "Whether to close the color picker when a swatch is selected"
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the color picker when it is first rendered.\nUse when you do not need to control its open state."
+    },
+    "defaultValue": {
+      "type": "string",
+      "isRequired": false,
+      "description": "The initial value of the color picker when it is first rendered.\nUse when you do not need to control the state of the color picker."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

@@ -13,6 +13,11 @@
       "isRequired": false,
       "description": "The checked state of the checkbox"
     },
+    "defaultChecked": {
+      "type": "CheckedState",
+      "isRequired": false,
+      "description": "The checked state of the checkbox when it is first rendered.\nUse this when you do not need to control the state of the checkbox."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

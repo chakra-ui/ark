@@ -18,6 +18,11 @@
       "isRequired": false,
       "description": "Whether to blur the input when the value is complete"
     },
+    "defaultValue": {
+      "type": "string[]",
+      "isRequired": false,
+      "description": "The initial value of the pin input when it is first rendered.\nUse when you do not need to control the state of the pin input"
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

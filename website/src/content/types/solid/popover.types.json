@@ -23,6 +23,11 @@
       "isRequired": false,
       "description": "Whether to close the popover when the user clicks outside of the popover."
     },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the popover when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "id": {
       "type": "string",
       "isRequired": false,

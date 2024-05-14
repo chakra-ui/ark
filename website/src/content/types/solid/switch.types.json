@@ -9,6 +9,11 @@
       "isRequired": false,
       "description": "Whether the switch is checked."
     },
+    "defaultChecked": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The checked state of the switch when it is first rendered.\nUse this when you do not need to control the state of the switch."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,

@@ -2,6 +2,11 @@
   "Content": { "asChild": { "type": "boolean", "isRequired": false } },
   "Root": {
     "asChild": { "type": "boolean", "isRequired": false },
+    "defaultOpen": {
+      "type": "boolean",
+      "isRequired": false,
+      "description": "The initial open state of the collapsible when it is first rendered.\nUse when you do not need to control its open state."
+    },
     "disabled": {
       "type": "boolean",
       "isRequired": false,
