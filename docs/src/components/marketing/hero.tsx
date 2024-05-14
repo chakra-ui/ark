@@ -1,9 +1,7 @@
-// import ReactIcon from './icons/react.astro'
-// import SolidIcon from './icons/solid.astro'
-// import VueIcon from './icons/vue.astro'
 import NextLink from 'next/link'
 import { Box, Container, HStack, Stack, styled } from 'styled-system/jsx'
 import { Button, Heading, Text } from '~/components/ui'
+import { ReactIcon, SolidIcon, VueIcon } from './icons'
 
 export const Hero = () => {
   return (
@@ -35,8 +33,23 @@ export const Hero = () => {
               <NextLink href="/docs/react/components/accordion">Show Components</NextLink>
             </Button>
           </Stack>
-          <HStack gap={{ base: '3', sm: '4' }}>
-            <Box>Icons</Box>
+          <HStack gap="10">
+            <HStack>
+              <ReactIcon />
+              <Text color="fg.muted">React</Text>
+            </HStack>
+            <HStack>
+              <SolidIcon />
+              <Text color="fg.muted">Solid</Text>
+            </HStack>
+            <HStack>
+              <VueIcon />
+              <Text color="fg.muted">Vue</Text>
+            </HStack>
+            {/* <HStack>
+              <SvelteIcon />
+              <Text color="fg.muted">Svelte</Text>
+            </HStack> */}
           </HStack>
         </Stack>
       </Container>

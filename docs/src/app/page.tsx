@@ -1,6 +1,11 @@
 import { Box } from 'styled-system/jsx'
+import { Community } from '~/components/marketing/community'
+import { Enterprise } from '~/components/marketing/enterprise'
+import { Footer } from '~/components/marketing/footer'
 import { Hero } from '~/components/marketing/hero'
+import { Highlights } from '~/components/marketing/highlights'
 import { Navbar } from '~/components/marketing/navbar'
+import { Universe } from '~/components/marketing/universe'
 
 export default function Home() {
   return (
@@ -20,13 +25,11 @@ export default function Home() {
       />
       <Navbar />
       <Hero />
-      {/* 
-      <Hero />
       <Highlights />
       <Enterprise />
       <Universe />
       <Community />
-      <Footer /> */}
+      <Footer />
     </Box>
   )
 }
