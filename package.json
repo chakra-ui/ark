@@ -2,7 +2,7 @@
   "name": "root",
   "type": "module",
   "private": true,
-  "workspaces": ["anatomy", "frameworks/*", "scripts", "website", "docs"],
+  "workspaces": ["anatomy", "frameworks/*", "scripts", "website"],
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**'",
@@ -26,5 +26,5 @@
     "typescript": "5.4.5"
   },
   "packageManager": "bun@1.1.8",
-  "trustedDependencies": ["@ark-ui/website", "@ark-ui/docs"]
+  "trustedDependencies": ["@ark-ui/website"]
 }
