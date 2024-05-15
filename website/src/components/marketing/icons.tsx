@@ -263,8 +263,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="183.121"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#1593F5" />
-        <stop offset="1" stop-color="#0084CE" />
+        <stop stopColor="#1593F5" />
+        <stop offset="1" stopColor="#0084CE" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_1_11"
@@ -274,8 +274,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="-40.5194"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#1593F5" />
-        <stop offset="1" stop-color="#0084CE" />
+        <stop stopColor="#1593F5" />
+        <stop offset="1" stopColor="#0084CE" />
       </linearGradient>
       <linearGradient
         id="paint2_linear_1_11"
@@ -285,8 +285,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="41.2027"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="#15ABFF" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="#15ABFF" />
       </linearGradient>
       <linearGradient
         id="paint3_linear_1_11"
@@ -296,8 +296,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="92.8615"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="#79CFFF" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="#79CFFF" />
       </linearGradient>
       <linearGradient
         id="paint4_linear_1_11"
@@ -307,8 +307,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="152.323"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#0057E5" />
-        <stop offset="1" stop-color="#0084CE" />
+        <stop stopColor="#0057E5" />
+        <stop offset="1" stopColor="#0084CE" />
       </linearGradient>
       <linearGradient
         id="paint5_linear_1_11"
@@ -318,8 +318,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="83.4928"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="#15ABFF" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="#15ABFF" />
       </linearGradient>
       <linearGradient
         id="paint6_linear_1_11"
@@ -329,8 +329,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="-63.9942"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="#79CFFF" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="#79CFFF" />
       </linearGradient>
       <linearGradient
         id="paint7_linear_1_11"
@@ -340,8 +340,8 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
         y2="146.751"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="white" />
-        <stop offset="1" stop-color="#79CFFF" />
+        <stop stopColor="white" />
+        <stop offset="1" stopColor="#79CFFF" />
       </linearGradient>
     </defs>
   </svg>

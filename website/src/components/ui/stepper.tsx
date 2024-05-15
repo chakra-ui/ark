@@ -5,7 +5,7 @@ import { Heading } from './heading'
 export const Steps = (props: PropsWithChildren) => {
   return (
     <Stack gap="8" position="relative">
-      <Box width="1px" height="full" bg="border.default" position="absolute" left="4" top="0" />
+      <Box width="1px" height="full" bg="border.subtle" position="absolute" left="4" top="0" />
       {props.children}
     </Stack>
   )
