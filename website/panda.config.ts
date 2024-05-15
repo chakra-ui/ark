@@ -70,6 +70,13 @@ export default defineConfig({
   },
   theme: {
     extend: {
+      recipes: {
+        code: {
+          base: {
+            whiteSpace: 'pre',
+          },
+        },
+      },
       tokens: {
         fonts: {
           body: { value: 'var(--font-outfit), sans-serif' },
