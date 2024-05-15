@@ -15,7 +15,7 @@ import { PopoverProvider } from './use-popover-context'
 
 const props = withDefaults(defineProps<PopoverRootProps>(), {
   autoFocus: undefined,
-  closeOnEsc: undefined,
+  closeOnEscape: undefined,
   closeOnInteractOutside: undefined,
   defaultOpen: undefined,
   modal: undefined,

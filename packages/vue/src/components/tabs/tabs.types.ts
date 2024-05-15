@@ -5,9 +5,14 @@ export interface RootProps {
    * The activation mode of the tabs. Can be `manual` or `automatic`
    * - `manual`: Tabs are activated when clicked or press `enter` key.
    * - `automatic`: Tabs are activated when receiving focus
+   *
    * @default "automatic"
    */
   activationMode?: 'manual' | 'automatic'
+  /**
+   * Whether the tab is composite
+   */
+  composite?: boolean
   /**
    * The initial value of the tabs when it is first rendered.
    * Use when you do not need to control the state of the tabs.

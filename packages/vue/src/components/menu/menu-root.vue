@@ -18,6 +18,7 @@ import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
 const props = withDefaults(defineProps<MenuRootProps>(), {
   closeOnSelect: undefined,
+  composite: undefined,
   defaultOpen: undefined,
   loopFocus: undefined,
   open: undefined,

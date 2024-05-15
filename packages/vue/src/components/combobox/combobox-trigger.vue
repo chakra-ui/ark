@@ -1,19 +1,20 @@
 <script lang="ts">
+import type { TriggerProps } from '@zag-js/combobox'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxTriggerProps extends PolymorphicProps {}
+export interface ComboboxTriggerProps extends TriggerProps, PolymorphicProps {}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-defineProps<ComboboxTriggerProps>()
+const props = defineProps<ComboboxTriggerProps>()
 const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.button v-bind="combobox.triggerProps" :as-child="asChild">
+  <ark.button v-bind="combobox.getTriggerProps(props)" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

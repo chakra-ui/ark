@@ -15,6 +15,7 @@ import { useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
 const props = withDefaults(defineProps<TabsRootProps>(), {
+  composite: undefined,
   loopFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

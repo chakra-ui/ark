@@ -48,6 +48,11 @@
         "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
       },
       "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tab is composite"
+      },
       "defaultValue": {
         "type": "string",
         "isRequired": false,

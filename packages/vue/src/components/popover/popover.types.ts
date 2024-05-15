@@ -4,14 +4,18 @@ export interface RootProps {
   /**
    * Whether to automatically set focus on the first focusable
    * content within the popover when opened.
+   *
+   * @default true
    */
   autoFocus?: boolean
   /**
    * Whether to close the popover when the escape key is pressed.
+   * @default true
    */
-  closeOnEsc?: boolean
+  closeOnEscape?: boolean
   /**
    * Whether to close the popover when the user clicks outside of the popover.
+   * @default true
    */
   closeOnInteractOutside?: boolean
   /**
@@ -39,7 +43,7 @@ export interface RootProps {
   /**
    * The element to focus on when the popover is opened.
    */
-  initialFocusEl?: HTMLElement | (() => HTMLElement)
+  initialFocusEl?: () => HTMLElement | null
   /**
    * Whether the popover should be modal. When set to `true`:
    * - interaction with outside elements will be disabled
@@ -55,7 +59,14 @@ export interface RootProps {
    */
   open?: boolean
   /**
-   * Whether the popover is rendered in a portal
+   * Returns the persistent elements that:
+   * - should not have pointer-events disabled
+   * - should not trigger the dismiss event
+   */
+  persistentElements?: (() => Element)[]
+  /**
+   * Whether the popover is portalled. This will proxy the tabbing behavior regardless of the DOM position
+   * of the popover content.
    *
    * @default true
    */

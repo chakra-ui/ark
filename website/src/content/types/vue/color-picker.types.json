@@ -123,6 +123,7 @@
       "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to close the color picker when a swatch is selected"
       },
@@ -143,6 +144,7 @@
       },
       "format": {
         "type": "ColorFormat",
+        "defaultValue": "\"rgba\"",
         "isRequired": false,
         "description": "The color format to use"
       },
@@ -157,7 +159,7 @@
         "description": "The ids of the elements in the color picker. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "HTMLElement | (() => HTMLElement)",
+        "type": "() => HTMLElement | null",
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },

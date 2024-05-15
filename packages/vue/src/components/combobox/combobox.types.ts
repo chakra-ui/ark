@@ -15,6 +15,11 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    */
   closeOnSelect?: boolean
   /**
+   * Whether the combobox is a composed with other composite widgets like tabs
+   * @default true
+   */
+  composite?: boolean
+  /**
    * The initial open state of the combobox when it is first rendered.
    * Use when you do not need to control its open state.
    */
@@ -25,13 +30,13 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    */
   defaultValue?: string[]
   /**
+   * Whether to disable registering this a dismissable layer
+   */
+  disableLayer?: boolean
+  /**
    * Whether the combobox is disabled
    */
   disabled?: boolean
-  /**
-   * Whether to register this combobox as a dismissable layer
-   */
-  dismissable?: boolean
   /**
    * The associate form of the combobox.
    */
@@ -69,6 +74,8 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    *
    * - `autohighlight`: The first focused item is highlighted as the user types
    * - `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated
+   *
+   * @default "none"
    */
   inputBehavior?: 'autohighlight' | 'autocomplete' | 'none'
   /**
@@ -97,6 +104,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   items: T[] | readonly T[]
   /**
    * Whether to loop the keyboard navigation through the items
+   * @default true
    */
   loopFocus?: boolean
   modelValue?: string[]
@@ -114,26 +122,23 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   open?: boolean
   /**
    * Whether to show the combobox when the input value changes
+   * @default true
    */
   openOnChange?: boolean | ((details: combobox.InputValueChangeDetails) => boolean)
   /**
    * Whether to open the combobox popup on initial click on the input
+   * @default false
    */
   openOnClick?: boolean
   /**
    * Whether to open the combobox on arrow key press
+   * @default true
    */
   openOnKeyPress?: boolean
   /**
    * The placeholder text of the combobox's input
    */
   placeholder?: string
-  /**
-   * The underling `aria-haspopup` attribute to use for the combobox
-   * - `listbox`: The combobox has a listbox popup (default)
-   * - `dialog`: The combobox has a dialog popup. Useful when in select only mode
-   */
-  popup?: 'listbox' | 'dialog'
   /**
    * The positioning options to dynamically position the menu
    */
@@ -153,6 +158,8 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
    * - `replace`: The selected item string is set as the input value
    * - `clear`: The input value is cleared
    * - `preserve`: The input value is preserved
+   *
+   * @default "replace"
    */
   selectionBehavior?: 'clear' | 'replace' | 'preserve'
   /**

@@ -11,6 +11,7 @@ export interface RootProps {
   ids?: Partial<{ root: string; input: string; label: string }>
   /**
    * The timeout for the copy operation
+   * @default 3000
    */
   timeout?: number
   /**

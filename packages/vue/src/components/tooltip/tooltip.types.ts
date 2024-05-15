@@ -7,14 +7,17 @@ export interface RootProps {
   'aria-label'?: string
   /**
    * The close delay of the tooltip.
+   * @default 500
    */
   closeDelay?: number
   /**
    * Whether to close the tooltip when the Escape key is pressed.
+   * @default true
    */
-  closeOnEsc?: boolean
+  closeOnEscape?: boolean
   /**
    * Whether to close the tooltip on pointerdown.
+   * @default true
    */
   closeOnPointerDown?: boolean
   /**
@@ -38,6 +41,8 @@ export interface RootProps {
    * Whether the tooltip's content is interactive.
    * In this mode, the tooltip will remain open when user hovers over the content.
    * @see https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+   *
+   * @default false
    */
   interactive?: boolean
   /**
@@ -46,6 +51,7 @@ export interface RootProps {
   open?: boolean
   /**
    * The open delay of the tooltip.
+   * @default 1000
    */
   openDelay?: number
   /**

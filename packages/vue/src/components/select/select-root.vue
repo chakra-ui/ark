@@ -17,6 +17,7 @@ import { SelectProvider } from './use-select-context'
 
 const props = withDefaults(defineProps<SelectRootProps>(), {
   closeOnSelect: undefined,
+  composite: undefined,
   defaultOpen: undefined,
   disabled: undefined,
   invalid: undefined,

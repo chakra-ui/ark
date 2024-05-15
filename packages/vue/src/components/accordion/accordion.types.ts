@@ -2,7 +2,7 @@ import type * as accordion from '@zag-js/accordion'
 
 export interface RootProps {
   /**
-   * Whether an accordion item can be after it has been expanded.
+   * Whether an accordion item can be closed after it has been expanded.
    * @default false
    */
   collapsible?: boolean

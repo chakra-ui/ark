@@ -3,6 +3,7 @@ import type * as colorPicker from '@zag-js/color-picker'
 export interface RootProps {
   /**
    * Whether to close the color picker when a swatch is selected
+   * @default false
    */
   closeOnSelect?: boolean
   /**
@@ -20,6 +21,7 @@ export interface RootProps {
   disabled?: boolean
   /**
    * The color format to use
+   * @default "rgba"
    */
   format?: colorPicker.ColorFormat
   /**
@@ -46,7 +48,7 @@ export interface RootProps {
   /**
    * The initial focus element when the color picker is opened.
    */
-  initialFocusEl?: HTMLElement | (() => HTMLElement)
+  initialFocusEl?: () => HTMLElement | null
   modelValue?: string
   /**
    * The name for the form input

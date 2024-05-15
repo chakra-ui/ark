@@ -66,6 +66,7 @@ export interface RootProps {
   isDateUnavailable?: (date: datePicker.DateValue, locale: string) => boolean
   /**
    * The locale (BCP 47 language tag) to use when formatting the date.
+   * @default "en-US"
    */
   locale?: string
   /**
@@ -110,6 +111,8 @@ export interface RootProps {
    * - `single` - only one date can be selected
    * - `multiple` - multiple dates can be selected
    * - `range` - a range of dates can be selected
+   *
+   * @default "single"
    */
   selectionMode?: datePicker.SelectionMode
   /**
@@ -125,6 +128,7 @@ export interface RootProps {
   startOfWeek?: number
   /**
    * The time zone to use
+   * @default "UTC"
    */
   timeZone?: string
   /**

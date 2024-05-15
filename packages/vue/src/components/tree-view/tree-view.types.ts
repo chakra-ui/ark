@@ -12,6 +12,11 @@ export interface RootProps {
    */
   defaultSelectedValue?: string[]
   /**
+   * Whether clicking on a branch should open it or not
+   * @default true
+   */
+  expandOnClick?: boolean
+  /**
    * The id of the expanded nodes
    */
   expandedValue?: string[]
@@ -28,11 +33,6 @@ export interface RootProps {
    */
   ids?: Partial<{ root: string; tree: string; label: string }>
   /**
-   * Whether clicking on a branch should open it or not
-   * @default true
-   */
-  openOnClick?: boolean
-  /**
    * The id of the selected nodes
    */
   selectedValue?: string[]
@@ -46,6 +46,7 @@ export interface RootProps {
   selectionMode?: 'single' | 'multiple'
   /**
    * Whether the tree supports typeahead search
+   * @default true
    */
   typeahead?: boolean
 }

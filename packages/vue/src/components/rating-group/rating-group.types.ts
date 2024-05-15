@@ -11,6 +11,7 @@ export interface RootProps {
   autoFocus?: boolean
   /**
    * The total number of ratings.
+   * @default 5
    */
   count?: number
   /**

@@ -3,6 +3,7 @@ import type * as tagsInput from '@zag-js/tags-input'
 export interface RootProps {
   /**
    * Whether to add a tag when you paste values into the tag input
+   * @default false
    */
   addOnPaste?: boolean
   /**
@@ -17,10 +18,7 @@ export interface RootProps {
   /**
    * The behavior of the tags input when the input is blurred
    * - `"add"`: add the input value as a new tag
-   * - `"none"`: do nothing
    * - `"clear"`: clear the input value
-   *
-   * @default "none"
    */
   blurBehavior?: 'clear' | 'add'
   /**
@@ -41,8 +39,8 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
-   * Whether a tag can be edited after creation.
-   * If `true` and focus is on a tag, pressing `Enter`or double clicking will edit the tag.
+   * Whether a tag can be edited after creation, by presing `Enter` or double clicking.
+   * @default true
    */
   editable?: boolean
   /**
@@ -76,6 +74,7 @@ export interface RootProps {
   invalid?: boolean
   /**
    * The max number of tags
+   * @default Infinity
    */
   max?: number
   /**

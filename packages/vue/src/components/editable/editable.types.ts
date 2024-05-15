@@ -28,7 +28,7 @@ export interface RootProps {
    * The element that should receive focus when the editable is closed.
    * By default, it will focus on the trigger element.
    */
-  finalFocusEl?: () => HTMLElement
+  finalFocusEl?: () => HTMLElement | null
   /**
    * The associate form of the underlying input.
    */
@@ -74,6 +74,7 @@ export interface RootProps {
   readOnly?: boolean
   /**
    * Whether to select the text in the input when it is focused.
+   * @default true
    */
   selectOnFocus?: boolean
   /**
@@ -88,7 +89,7 @@ export interface RootProps {
    * - "none" - No action will trigger submit. You need to use the submit button
    * - "both" - Pressing `Enter` and blurring the input will trigger submit
    *
-   * @default "enter"
+   * @default "both"
    */
   submitMode?: editable.SubmitMode
   /**

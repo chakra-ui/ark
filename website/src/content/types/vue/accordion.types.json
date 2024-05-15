@@ -47,7 +47,7 @@
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether an accordion item can be after it has been expanded."
+        "description": "Whether an accordion item can be closed after it has been expanded."
       },
       "defaultValue": {
         "type": "string[]",

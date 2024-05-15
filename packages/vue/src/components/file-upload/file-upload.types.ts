@@ -7,6 +7,7 @@ export interface RootProps {
   accept?: string | Record<string, string[]>
   /**
    * Whether to allow drag and drop in the dropzone element
+   * @default true
    */
   allowDrop?: boolean
   /**
@@ -46,14 +47,19 @@ export interface RootProps {
   locale?: string
   /**
    * The maximum file size in bytes
+   *
+   * @default Infinity
    */
   maxFileSize?: number
   /**
    * The maximum number of files
+   * @default 1
    */
   maxFiles?: number
   /**
    * The minimum file size in bytes
+   *
+   * @default 0
    */
   minFileSize?: number
   /**

@@ -60,6 +60,7 @@ export interface RootProps {
   pattern?: string
   /**
    * The placeholder text for the input
+   * @default "○"
    */
   placeholder?: string
   /**
@@ -72,6 +73,7 @@ export interface RootProps {
   translations?: pinInput.IntlTranslations
   /**
    * The type of value the pin-input should allow
+   * @default "numeric"
    */
   type?: 'alphanumeric' | 'numeric' | 'alphabetic'
 }
