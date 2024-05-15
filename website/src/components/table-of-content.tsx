@@ -1,6 +1,7 @@
 'use client'
+import { useWindowScroll } from '@uidotdev/usehooks'
 import { useRouter } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { SegmentGroup, Text } from './ui'
 
 interface TocEntry {
@@ -24,9 +25,10 @@ interface Props {
 }
 
 export const TableOfContent = (props: Props) => {
-  const { entries = [] } = props
+  const entries = flattenTocEntries(props.entries)
   const activeItem = useScrollSpy(entries.map((entry) => entry.url))
   const router = useRouter()
+  const [{ y }] = useWindowScroll()
 
   return (
     <nav>
@@ -35,7 +37,7 @@ export const TableOfContent = (props: Props) => {
       </Text>
       <SegmentGroup.Root
         onValueChange={(details) => router.push(details.value)}
-        value={activeItem}
+        value={y && y > 32 ? activeItem : ''}
         orientation="vertical"
         size={{ base: 'md', md: 'sm' }}
         gap="0"
@@ -46,7 +48,8 @@ export const TableOfContent = (props: Props) => {
               value={entry.url}
               data-orientation="vertical"
               fontWeight="normal"
-              px="4"
+              ps={entry.depth === 0 ? '4' : '8'}
+              pe="4"
             >
               <SegmentGroup.ItemControl />
               <SegmentGroup.ItemText>{entry.title}</SegmentGroup.ItemText>
@@ -58,6 +61,20 @@ export const TableOfContent = (props: Props) => {
     </nav>
   )
 }
+
+interface FlattenedTocEntry extends Omit<TocEntry, 'items'> {
+  depth: number
+}
+
+const flattenTocEntries = (entries: TocEntry[] = [], depth = 0): FlattenedTocEntry[] =>
+  entries.reduce<FlattenedTocEntry[]>(
+    (acc, entry) =>
+      acc.concat(
+        { title: entry.title, url: entry.url, depth },
+        flattenTocEntries(entry.items, depth + 1),
+      ),
+    [],
+  )
 
 const useScrollSpy = (selectors: string[]) => {
   const [activeId, setActiveId] = useState<string | null>(selectors[0])

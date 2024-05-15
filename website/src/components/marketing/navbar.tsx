@@ -1,10 +1,10 @@
-import { Github } from 'lucide-react'
+import { SiGithub } from '@icons-pack/react-simple-icons'
 import NextLink from 'next/link'
-import { css, cx } from 'styled-system/css'
+import { css } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
-import { button } from 'styled-system/recipes'
 import { ColorModeButton } from '../color-mode-button'
 import { Logo } from '../logo'
+import { IconButton } from '../ui'
 
 export const Navbar = () => (
   <nav role="navigation" className={css({ position: 'sticky', top: '0', zIndex: 'docked' })}>
@@ -55,13 +55,11 @@ export const Navbar = () => (
           </a>
         </HStack>
         <HStack gap="1">
-          <a
-            aria-label="Github repository"
-            href="https://github.com/chakra-ui/ark"
-            className={cx(css({ px: 0 }), button({ variant: 'ghost', size: 'sm' }))}
-          >
-            <Github />
-          </a>
+          <IconButton asChild variant="ghost">
+            <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">
+              <SiGithub />
+            </a>
+          </IconButton>
           <ColorModeButton />
         </HStack>
       </HStack>

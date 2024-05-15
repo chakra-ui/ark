@@ -24,6 +24,7 @@ const pages = defineCollection({
           slug: 'overview/changelog',
           category: 'overview',
           framework: meta.path.replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
+          toc: data.toc.map((entry) => ({ ...entry, items: [] })),
         }
       }
       return {
