@@ -5,7 +5,7 @@ import { CodeTabs } from './code-tabs'
 export const InstallCmd = async () => {
   const examples = await getInstallCmds()
 
-  return <CodeTabs examples={examples} defalutValue="npm" />
+  return <CodeTabs examples={examples} defaultValue="npm" />
 }
 
 type PackageManger = 'npm' | 'pnpm' | 'yarn' | 'bun'

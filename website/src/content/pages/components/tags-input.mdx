@@ -38,7 +38,7 @@ focus in on any tag:
 
 To set the initial tag values, set the `defaultValue` prop.
 
-<Example id="initialValue" />
+<Example id="initial-value" />
 
 ### Limiting the number of tags
 
@@ -48,7 +48,7 @@ to the limit you want. The default value is `Infinity`.
 When the tag reaches the limit, new tags cannot be added except the
 `allowOverflow` prop is set to `true`.
 
-<Example id="maxWithOverflow" />
+<Example id="max-with-overflow" />
 
 ### Validating Tags
 
@@ -68,7 +68,7 @@ should take by passing the `blurBehavior` prop.
 - `add` — Adds the tag to the list of tags.
 - `clear` — Clears the tags input value.
 
-<Example id="blurBehavior" />
+<Example id="blur-behavior" />
 
 ### Paste behavior
 
@@ -80,7 +80,7 @@ When a value is pasted, the component will:
 - check if the value is a valid tag based on the `validate` option
 - split the value by the `delimiter` option passed
 
-<Example id="pasteBehavior" />
+<Example id="paste-behavior" />
 
 ### Disable tag editing
 
@@ -88,7 +88,7 @@ by default the tags can be edited by double-clicking on the tag or focusing on
 them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
 `allowEditTag={false}`
 
-<Example id="disabledEditing" />
+<Example id="disabled-editing" />
 
 ### Events
 
@@ -100,7 +100,7 @@ emit:
 - `onValueInvalid` — invoked when the max tag count is reached or the `validate`
   function returns `false`.
 
-<Example id="onEvent" />
+<Example id="on-event" />
 
 ## API Reference
 

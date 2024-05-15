@@ -3,7 +3,7 @@ import Basic from './examples/basic.vue'
 import Blurred from './examples/blurred.vue'
 import Customized from './examples/customized.vue'
 import InitialValue from './examples/initial-value.vue'
-import OTPMode from './examples/o-tp-mode.vue'
+import OTPMode from './examples/otp-mode.vue'
 import WithMask from './examples/with-mask.vue'
 </script>
 <template>

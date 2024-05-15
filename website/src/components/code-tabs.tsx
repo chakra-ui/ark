@@ -10,16 +10,16 @@ interface CodeExample {
 }
 
 interface Props {
-  defalutValue: string
+  defaultValue: string
   examples: CodeExample[]
 }
 
 export const CodeTabs = (props: Props) => {
-  const { examples, defalutValue } = props
+  const { examples, defaultValue } = props
 
   return (
     <Tabs.Root
-      defaultValue={defalutValue}
+      defaultValue={defaultValue}
       variant="line"
       borderWidth="1px"
       borderRadius="lg"
