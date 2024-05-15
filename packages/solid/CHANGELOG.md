@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.0-5] - 2024-05-15
+
 ### Added
 
 - Added support for default values like `defaultOpen`, `defaultValue` etc .
@@ -555,4 +557,3 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 - Add `TagsInput`
 - Add `Toast`
 - Add `Tooltip`
-
