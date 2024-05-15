@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.0-2] - 2024-05-15
+
 ### Changed
 
 - Integrated latest `@zag-js`.
@@ -576,4 +578,3 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 - Add `TagsInput`
 - Add `Toast`
 - Add `Tooltip`
-
