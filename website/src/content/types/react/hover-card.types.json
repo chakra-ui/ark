@@ -39,6 +39,7 @@
     "props": {
       "closeDelay": {
         "type": "number",
+        "defaultValue": "300",
         "isRequired": false,
         "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
       },
@@ -80,6 +81,7 @@
       },
       "openDelay": {
         "type": "number",
+        "defaultValue": "700",
         "isRequired": false,
         "description": "The duration from when the mouse enters the trigger until the hover card opens."
       },

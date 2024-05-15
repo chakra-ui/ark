@@ -19,7 +19,7 @@
       "escapeKeyDown": {
         "type": "[event: KeyboardEvent]",
         "isRequired": true,
-        "description": "Callback to be invoked when the escape key is pressed"
+        "description": "Function called when the escape key is pressed"
       },
       "focusOutside": {
         "type": "[event: FocusOutsideEvent]",
@@ -51,11 +51,13 @@
       },
       "closeOnEscape": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to close the dialog when the escape key is pressed"
       },
       "closeOnInteractOutside": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to close the dialog when the outside is clicked"
       },
@@ -65,7 +67,7 @@
         "description": "The initial open state of the dialog when it is first rendered.\nUse when you do not need to control its open state."
       },
       "finalFocusEl": {
-        "type": "HTMLElement | (() => HTMLElement)",
+        "type": "() => HTMLElement",
         "isRequired": false,
         "description": "Element to receive focus when the dialog is closed"
       },
@@ -80,7 +82,7 @@
         "description": "The ids of the elements in the dialog. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "HTMLElement | (() => HTMLElement)",
+        "type": "() => HTMLElement",
         "isRequired": false,
         "description": "Element to receive focus when the dialog is opened"
       },
@@ -92,6 +94,7 @@
       },
       "modal": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
       },
@@ -100,8 +103,14 @@
         "isRequired": false,
         "description": "Whether the dialog is open"
       },
+      "persistentElements": {
+        "type": "(() => Element)[]",
+        "isRequired": false,
+        "description": "Returns the persistent elements that:\n- should not have pointer-events disabled\n- should not trigger the dismiss event"
+      },
       "preventScroll": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to prevent scrolling behind the dialog when it's opened"
       },
@@ -118,6 +127,7 @@
       },
       "trapFocus": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to trap focus inside the dialog when it's opened"
       },

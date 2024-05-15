@@ -55,6 +55,7 @@
       },
       "count": {
         "type": "number",
+        "defaultValue": "5",
         "isRequired": false,
         "description": "The total number of ratings."
       },

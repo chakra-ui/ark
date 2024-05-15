@@ -3,6 +3,7 @@ import type * as hoverCard from '@zag-js/hover-card'
 export interface RootProps {
   /**
    * The duration from when the mouse leaves the trigger or content until the hover card closes.
+   * @default 300
    */
   closeDelay?: number
   /**
@@ -24,6 +25,7 @@ export interface RootProps {
   open?: boolean
   /**
    * The duration from when the mouse enters the trigger until the hover card opens.
+   * @default 700
    */
   openDelay?: number
   /**
@@ -37,6 +39,5 @@ export type RootEmits = {
    * Function called when the hover card opens or closes.
    */
   openChange: [details: hoverCard.OpenChangeDetails]
-
   'update:open': [open: boolean]
 }

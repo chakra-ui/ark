@@ -55,6 +55,11 @@
         "isRequired": false,
         "description": "Render as a different element type."
       },
+      "composite": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the tab is composite"
+      },
       "defaultValue": {
         "type": "string",
         "isRequired": false,

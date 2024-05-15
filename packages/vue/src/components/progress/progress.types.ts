@@ -11,10 +11,12 @@ export interface RootProps {
   ids?: Partial<{ root: string; track: string; label: string; circle: string }>
   /**
    * The maximum allowed value of the progress bar.
+   * @default 100
    */
   max?: number
   /**
    * The minimum allowed value of the progress bar.
+   * @default 0
    */
   min?: number
   /**
@@ -28,6 +30,7 @@ export interface RootProps {
   translations?: progress.IntlTranslations
   /**
    *  The current value of the progress bar.
+   * @default 50
    */
-  value?: number | null
+  value?: number
 }

@@ -26,14 +26,17 @@ export interface RootProps {
   }>
   /**
    * The active page
+   * @default 1
    */
   page?: number
   /**
    * Number of data items per page
+   * @default 10
    */
   pageSize?: number
   /**
    * Number of pages to show beside active page
+   * @default 1
    */
   siblingCount?: number
   /**

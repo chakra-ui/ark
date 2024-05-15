@@ -7,10 +7,12 @@ export interface RootProps {
   'aria-label'?: string
   /**
    * Whether to close the dialog when the escape key is pressed
+   * @default true
    */
   closeOnEscape?: boolean
   /**
    * Whether to close the dialog when the outside is clicked
+   * @default true
    */
   closeOnInteractOutside?: boolean
   /**
@@ -21,7 +23,7 @@ export interface RootProps {
   /**
    * Element to receive focus when the dialog is closed
    */
-  finalFocusEl?: HTMLElement | (() => HTMLElement)
+  finalFocusEl?: () => HTMLElement
   /**
    * The unique identifier of the machine.
    */
@@ -41,9 +43,10 @@ export interface RootProps {
   /**
    * Element to receive focus when the dialog is opened
    */
-  initialFocusEl?: HTMLElement | (() => HTMLElement)
+  initialFocusEl?: () => HTMLElement
   /**
    * Whether to prevent pointer interaction outside the element and hide all content below it
+   * @default true
    */
   modal?: boolean
   /**
@@ -51,7 +54,14 @@ export interface RootProps {
    */
   open?: boolean
   /**
+   * Returns the persistent elements that:
+   * - should not have pointer-events disabled
+   * - should not trigger the dismiss event
+   */
+  persistentElements?: (() => Element)[]
+  /**
    * Whether to prevent scrolling behind the dialog when it's opened
+   * @default true
    */
   preventScroll?: boolean
   /**
@@ -65,13 +75,14 @@ export interface RootProps {
   role?: 'dialog' | 'alertdialog'
   /**
    * Whether to trap focus inside the dialog when it's opened
+   * @default true
    */
   trapFocus?: boolean
 }
 
 export type RootEmits = {
   /**
-   * Callback to be invoked when the escape key is pressed
+   * Function called when the escape key is pressed
    */
   escapeKeyDown: [event: KeyboardEvent]
   /**

@@ -102,6 +102,7 @@
       },
       "placeholder": {
         "type": "string",
+        "defaultValue": "\"○\"",
         "isRequired": false,
         "description": "The placeholder text for the input"
       },
@@ -117,6 +118,7 @@
       },
       "type": {
         "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
+        "defaultValue": "\"numeric\"",
         "isRequired": false,
         "description": "The type of value the pin-input should allow"
       }

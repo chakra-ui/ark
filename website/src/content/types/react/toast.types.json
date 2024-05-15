@@ -25,6 +25,7 @@
       },
       "gap": {
         "type": "number",
+        "defaultValue": "16",
         "isRequired": false,
         "description": "The gap or spacing between toasts"
       },
@@ -35,6 +36,7 @@
       },
       "hotkey": {
         "type": "string[]",
+        "defaultValue": "'[\"altKey\", \"KeyT\"]'",
         "isRequired": false,
         "description": "The hotkey that will move focus to the toast group"
       },
@@ -45,11 +47,13 @@
       },
       "max": {
         "type": "number",
+        "defaultValue": "Number.MAX_SAFE_INTEGER",
         "isRequired": false,
         "description": "The maximum number of toasts that can be shown at once"
       },
       "offsets": {
         "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
+        "defaultValue": "\"1rem\"",
         "isRequired": false,
         "description": "The offset from the safe environment edge of the viewport"
       },
@@ -60,11 +64,13 @@
       },
       "pauseOnPageIdle": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to pause toast when the user leaves the browser tab"
       },
       "removeDelay": {
         "type": "number",
+        "defaultValue": "200",
         "isRequired": false,
         "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
       },

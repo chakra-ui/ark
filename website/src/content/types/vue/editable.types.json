@@ -134,6 +134,7 @@
       },
       "selectOnFocus": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to select the text in the input when it is focused."
       },
@@ -144,7 +145,7 @@
       },
       "submitMode": {
         "type": "SubmitMode",
-        "defaultValue": "\"enter\"",
+        "defaultValue": "\"both\"",
         "isRequired": false,
         "description": "The action that triggers submit in the edit mode:\n\n- \"enter\" - Trigger submit when the enter key is pressed\n- \"blur\" - Trigger submit when the editable is blurred\n- \"none\" - No action will trigger submit. You need to use the submit button\n- \"both\" - Pressing `Enter` and blurring the input will trigger submit"
       },

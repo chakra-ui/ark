@@ -78,7 +78,12 @@
         "isRequired": false,
         "description": "Render as a different element type."
       },
-      "item": { "type": "any", "isRequired": false }
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" },
+      "persistFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether hovering outside should clear the highlighted state"
+      }
     }
   },
   "ItemText": {
@@ -122,8 +127,15 @@
       },
       "closeOnSelect": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the select should close after an item is selected"
+      },
+      "composite": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the select is a composed with other composite widgets like tabs or combobox"
       },
       "defaultOpen": {
         "type": "boolean",
@@ -188,6 +200,7 @@
       },
       "loopFocus": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation through the options"
       },

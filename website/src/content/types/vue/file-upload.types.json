@@ -66,6 +66,7 @@
       },
       "allowDrop": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to allow drag and drop in the dropzone element"
       },
@@ -103,16 +104,19 @@
       },
       "maxFiles": {
         "type": "number",
+        "defaultValue": "1",
         "isRequired": false,
         "description": "The maximum number of files"
       },
       "maxFileSize": {
         "type": "number",
+        "defaultValue": "Infinity",
         "isRequired": false,
         "description": "The maximum file size in bytes"
       },
       "minFileSize": {
         "type": "number",
+        "defaultValue": "0",
         "isRequired": false,
         "description": "The minimum file size in bytes"
       },

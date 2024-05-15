@@ -11,7 +11,7 @@ import { SelectItemPropsProvider } from './use-select-item-props-context'
 export interface SelectItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
 
 export const SelectItem = (props: SelectItemProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'persistFocus'])
   const select = useSelectContext()
   const mergedProps = mergeProps(() => select().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => select().getItemState(itemProps))

@@ -20,6 +20,7 @@ export interface RootProps {
   ids?: Partial<{ root: string; item(value: string): string }>
   /**
    * Whether to loop focus inside the toggle group.
+   * @default true
    */
   loopFocus?: boolean
   modelValue?: string[]
@@ -29,10 +30,12 @@ export interface RootProps {
   multiple?: boolean
   /**
    * The orientation of the toggle group.
+   * @default "horizontal"
    */
   orientation?: toggleGroup.Orientation
   /**
    *  Whether to use roving tab index to manage focus.
+   * @default true
    */
   rovingFocus?: boolean
 }

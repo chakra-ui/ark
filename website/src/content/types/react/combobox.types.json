@@ -131,6 +131,12 @@
         "isRequired": false,
         "description": "Whether to close the combobox when an item is selected."
       },
+      "composite": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the combobox is a composed with other composite widgets like tabs"
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
@@ -146,10 +152,10 @@
         "isRequired": false,
         "description": "Whether the combobox is disabled"
       },
-      "dismissable": {
+      "disableLayer": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether to register this combobox as a dismissable layer"
+        "description": "Whether to disable registering this a dismissable layer"
       },
       "form": {
         "type": "string",
@@ -178,6 +184,7 @@
       },
       "inputBehavior": {
         "type": "'none' | 'autohighlight' | 'autocomplete'",
+        "defaultValue": "\"none\"",
         "isRequired": false,
         "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
       },
@@ -214,6 +221,7 @@
       },
       "loopFocus": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation through the items"
       },
@@ -274,16 +282,19 @@
       },
       "openOnChange": {
         "type": "boolean | ((details: InputValueChangeDetails) => boolean)",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to show the combobox when the input value changes"
       },
       "openOnClick": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to open the combobox popup on initial click on the input"
       },
       "openOnKeyPress": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to open the combobox on arrow key press"
       },
@@ -291,11 +302,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The placeholder text of the combobox's input"
-      },
-      "popup": {
-        "type": "'dialog' | 'listbox'",
-        "isRequired": false,
-        "description": "The underling `aria-haspopup` attribute to use for the combobox\n- `listbox`: The combobox has a listbox popup (default)\n- `dialog`: The combobox has a dialog popup. Useful when in select only mode"
       },
       "positioning": {
         "type": "PositioningOptions",
@@ -319,6 +325,7 @@
       },
       "selectionBehavior": {
         "type": "'replace' | 'clear' | 'preserve'",
+        "defaultValue": "\"replace\"",
         "isRequired": false,
         "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
       },
@@ -346,6 +353,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Render as a different element type."
+      },
+      "focusable": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the trigger is focusable"
       }
     }
   }

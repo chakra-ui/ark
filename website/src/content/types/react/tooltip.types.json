@@ -44,16 +44,19 @@
       },
       "closeDelay": {
         "type": "number",
+        "defaultValue": "500",
         "isRequired": false,
         "description": "The close delay of the tooltip."
       },
-      "closeOnEsc": {
+      "closeOnEscape": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to close the tooltip when the Escape key is pressed."
       },
       "closeOnPointerDown": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to close the tooltip on pointerdown."
       },
@@ -75,6 +78,7 @@
       },
       "interactive": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the tooltip's content is interactive.\nIn this mode, the tooltip will remain open when user hovers over the content."
       },
@@ -101,6 +105,7 @@
       },
       "openDelay": {
         "type": "number",
+        "defaultValue": "1000",
         "isRequired": false,
         "description": "The open delay of the tooltip."
       },

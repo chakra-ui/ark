@@ -3,6 +3,7 @@ import type * as carousel from '@zag-js/carousel'
 export interface RootProps {
   /**
    * The alignment of the slides in the carousel.
+   * @default "start"
    */
   align?: 'start' | 'center' | 'end'
   /**
@@ -33,6 +34,7 @@ export interface RootProps {
   index?: number
   /**
    * Whether the carousel should loop around.
+   * @default false
    */
   loop?: boolean
   /**
@@ -42,10 +44,12 @@ export interface RootProps {
   orientation?: 'horizontal' | 'vertical'
   /**
    * The number of slides to show at a time.
+   * @default 1
    */
   slidesPerView?: number | 'auto'
   /**
    * The amount of space between slides.
+   * @default "0px"
    */
   spacing?: string
 }

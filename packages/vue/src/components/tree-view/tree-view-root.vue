@@ -12,7 +12,7 @@ import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
 const props = withDefaults(defineProps<TreeViewRootProps>(), {
-  openOnClick: undefined,
+  expandOnClick: undefined,
   typeahead: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

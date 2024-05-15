@@ -59,16 +59,19 @@
       },
       "max": {
         "type": "number",
+        "defaultValue": "100",
         "isRequired": false,
         "description": "The maximum value of the slider"
       },
       "min": {
         "type": "number",
+        "defaultValue": "0",
         "isRequired": false,
         "description": "The minimum value of the slider"
       },
       "minStepsBetweenThumbs": {
         "type": "number",
+        "defaultValue": "0",
         "isRequired": false,
         "description": "The minimum permitted steps between multiple thumbs."
       },
@@ -94,13 +97,15 @@
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the slider"
       },
       "origin": {
         "type": "'start' | 'center'",
+        "defaultValue": "\"start\"",
         "isRequired": false,
-        "description": "- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
+        "description": "The origin of the slider range\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
       },
       "readOnly": {
         "type": "boolean",
@@ -109,11 +114,13 @@
       },
       "step": {
         "type": "number",
+        "defaultValue": "1",
         "isRequired": false,
         "description": "The step value of the slider"
       },
       "thumbAlignment": {
         "type": "'center' | 'contain'",
+        "defaultValue": "\"contain\"",
         "isRequired": false,
         "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
       },

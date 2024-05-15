@@ -69,10 +69,12 @@ export interface RootProps {
   locale?: string
   /**
    * The maximum value of the number input
+   * @default Number.MAX_SAFE_INTEGER
    */
   max?: number
   /**
    * The minimum value of the number input
+   * @default Number.MIN_SAFE_INTEGER
    */
   min?: number
   modelValue?: string
@@ -83,8 +85,7 @@ export interface RootProps {
   /**
    * The pattern used to check the <input> element's value against
    *
-   * @default
-   * "[0-9]*(.[0-9]+)?"
+   * @default "[0-9]*(.[0-9]+)?"
    */
   pattern?: string
   /**
@@ -93,10 +94,12 @@ export interface RootProps {
   readOnly?: boolean
   /**
    * Whether to spin the value when the increment/decrement button is pressed
+   * @default true
    */
   spinOnPress?: boolean
   /**
    * The amount to increment or decrement the value by
+   * @default 1
    */
   step?: number
   /**

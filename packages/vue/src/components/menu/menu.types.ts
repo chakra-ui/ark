@@ -11,8 +11,14 @@ export interface RootProps {
   'aria-label'?: string
   /**
    * Whether to close the menu when an option is selected
+   * @default true
    */
   closeOnSelect?: boolean
+  /**
+   * Whether the menu is a composed with other composite widgets like a combobox or tabs
+   * @default true
+   */
+  composite?: boolean
   /**
    * The initial open state of the menu when it is first rendered.
    * Use when you do not need to control its open state.
@@ -40,6 +46,7 @@ export interface RootProps {
   }>
   /**
    * Whether to loop the keyboard navigation.
+   * @default false
    */
   loopFocus?: boolean
   /**
@@ -52,6 +59,7 @@ export interface RootProps {
   positioning?: menu.PositioningOptions
   /**
    * Whether the pressing printable characters should trigger typeahead navigation
+   * @default true
    */
   typeahead?: boolean
 }
@@ -85,7 +93,6 @@ export type RootEmits = {
    * Function called when a menu item is selected.
    */
   select: [details: menu.SelectionDetails]
-
   /**
    * Function called when the menu is opened or closed.
    */

@@ -70,14 +70,21 @@
         "isRequired": false,
         "description": "Called when the page number is changed, and it takes the resulting page number argument"
       },
-      "page": { "type": "number", "isRequired": false, "description": "The active page" },
+      "page": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The active page"
+      },
       "pageSize": {
         "type": "number",
+        "defaultValue": "10",
         "isRequired": false,
         "description": "Number of data items per page"
       },
       "siblingCount": {
         "type": "number",
+        "defaultValue": "1",
         "isRequired": false,
         "description": "Number of pages to show beside active page"
       },

@@ -123,11 +123,13 @@
       },
       "max": {
         "type": "number",
+        "defaultValue": "Number.MAX_SAFE_INTEGER",
         "isRequired": false,
         "description": "The maximum value of the number input"
       },
       "min": {
         "type": "number",
+        "defaultValue": "Number.MIN_SAFE_INTEGER",
         "isRequired": false,
         "description": "The minimum value of the number input"
       },
@@ -164,11 +166,13 @@
       },
       "spinOnPress": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to spin the value when the increment/decrement button is pressed"
       },
       "step": {
         "type": "number",
+        "defaultValue": "1",
         "isRequired": false,
         "description": "The amount to increment or decrement the value by"
       },

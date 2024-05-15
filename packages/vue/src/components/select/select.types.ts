@@ -4,8 +4,14 @@ import type { CollectionItem } from './select'
 export interface RootProps<T extends CollectionItem = CollectionItem> {
   /**
    * Whether the select should close after an item is selected
+   * @default true
    */
   closeOnSelect?: boolean
+  /**
+   * Whether the select is a composed with other composite widgets like tabs or combobox
+   * @default true
+   */
+  composite?: boolean
   /**
    * The initial open state of the select when it is first rendered.
    * Use when you do not need to control its open state.
@@ -70,6 +76,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   items: T[] | readonly T[]
   /**
    * Whether to loop the keyboard navigation through the options
+   * @default false
    */
   loopFocus?: boolean
   modelValue?: string[]

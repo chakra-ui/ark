@@ -18,7 +18,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
   const [presenceProps, popoverProps] = splitPresenceProps(props)
   const [usePopoverProps, localProps] = createSplitProps<UsePopoverProps>()(popoverProps, [
     'autoFocus',
-    'closeOnEsc',
+    'closeOnEscape',
     'closeOnInteractOutside',
     'defaultOpen',
     'id',
@@ -31,6 +31,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'onOpenChange',
     'onPointerDownOutside',
     'open',
+    'persistentElements',
     'portalled',
     'positioning',
   ])
