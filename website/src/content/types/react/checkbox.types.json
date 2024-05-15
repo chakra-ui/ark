@@ -1,99 +1,109 @@
 {
   "Control": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
     }
   },
   "HiddenInput": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
     }
   },
   "Indicator": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "indeterminate": { "type": "boolean", "isRequired": false }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      },
+      "indeterminate": { "type": "boolean", "isRequired": false }
+    }
   },
   "Label": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
     }
   },
   "Root": {
-    "asChild": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Render as a different element type."
-    },
-    "checked": {
-      "type": "CheckedState",
-      "isRequired": false,
-      "description": "The checked state of the checkbox"
-    },
-    "defaultChecked": {
-      "type": "CheckedState",
-      "isRequired": false,
-      "description": "The checked state of the checkbox when it is first rendered.\nUse this when you do not need to control the state of the checkbox."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is disabled"
-    },
-    "form": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The id of the form that the checkbox belongs to."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  control: string\n  label: string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the checkbox. Useful for composition."
-    },
-    "invalid": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is invalid"
-    },
-    "name": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The name of the input field in a checkbox.\nUseful for form submission."
-    },
-    "onCheckedChange": {
-      "type": "(details: CheckedChangeDetails) => void",
-      "isRequired": false,
-      "description": "The callback invoked when the checked state changes."
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is read-only"
-    },
-    "required": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the checkbox is required"
-    },
-    "value": {
-      "type": "string",
-      "defaultValue": "\"on\"",
-      "isRequired": false,
-      "description": "The value of checkbox input. Useful for form submission."
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      },
+      "checked": {
+        "type": "CheckedState",
+        "isRequired": false,
+        "description": "The checked state of the checkbox"
+      },
+      "defaultChecked": {
+        "type": "CheckedState",
+        "isRequired": false,
+        "description": "The checked state of the checkbox when it is first rendered.\nUse this when you do not need to control the state of the checkbox."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is disabled"
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the form that the checkbox belongs to."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  control: string\n  label: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the checkbox. Useful for composition."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is invalid"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the input field in a checkbox.\nUseful for form submission."
+      },
+      "onCheckedChange": {
+        "type": "(details: CheckedChangeDetails) => void",
+        "isRequired": false,
+        "description": "The callback invoked when the checked state changes."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is read-only"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the checkbox is required"
+      },
+      "value": {
+        "type": "string",
+        "defaultValue": "\"on\"",
+        "isRequired": false,
+        "description": "The value of checkbox input. Useful for form submission."
+      }
     }
   }
 }

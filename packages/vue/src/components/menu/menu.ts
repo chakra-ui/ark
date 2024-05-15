@@ -3,6 +3,7 @@ export { default as ArrowTip, type MenuArrowTipProps as ArrowTipProps } from './
 export { default as Arrow, type MenuArrowProps as ArrowProps } from './menu-arrow.vue'
 export {
   default as CheckboxItem,
+  type MenuCheckboxItemEmits as CheckboxItemEmits,
   type MenuCheckboxItemProps as CheckboxItemProps,
 } from './menu-checkbox-item.vue'
 export { default as Content, type MenuContentProps as ContentProps } from './menu-content.vue'
@@ -39,6 +40,7 @@ export {
 } from './menu-positioner.vue'
 export {
   default as RadioItemGroup,
+  type MenuRadioItemGroupEmits as RadioItemGroupEmits,
   type MenuRadioItemGroupProps as RadioItemGroupProps,
 } from './menu-radio-item-group.vue'
 export {

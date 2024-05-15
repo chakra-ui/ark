@@ -1,95 +1,103 @@
 {
-  "ItemContent": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "ItemContent": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "ItemIndicator": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Item": {
-    "value": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The value of the accordion item."
-    },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the accordion item is disabled."
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the accordion item."
+      },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the accordion item is disabled."
+      }
     }
   },
-  "ItemTrigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "RootEmits": {
-    "focusChange": {
-      "type": "[details: FocusChangeDetails]",
-      "isRequired": true,
-      "description": "The callback fired when the focused accordion item changes."
-    },
-    "update:modelValue": {
-      "type": "[value: string[]]",
-      "isRequired": true,
-      "description": "The callback fired when the model value changes."
-    },
-    "valueChange": {
-      "type": "[details: ValueChangeDetails]",
-      "isRequired": true,
-      "description": "The callback fired when the state of expanded/collapsed accordion items changes."
-    }
+  "ItemTrigger": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Root": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "collapsible": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether an accordion item can be after it has been expanded."
+    "emits": {
+      "focusChange": {
+        "type": "[details: FocusChangeDetails]",
+        "isRequired": true,
+        "description": "The callback fired when the focused accordion item changes."
+      },
+      "update:modelValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "The callback fired when the state of expanded/collapsed accordion items changes."
+      }
     },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the accordion that are expanded.\nUse this when you do not need to control the state of the accordion."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the accordion items are disabled"
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the accordion. Useful for composition."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "modelValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The accordion items that are currently expanded.\nUse this prop to control the state of the items via v-model."
-    },
-    "multiple": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether multple accordion items can be expanded at the same time."
-    },
-    "orientation": {
-      "type": "'horizontal' | 'vertical'",
-      "defaultValue": "\"vertical\"",
-      "isRequired": false,
-      "description": "The orientation of the accordion items."
-    },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "collapsible": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether an accordion item can be after it has been expanded."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial value of the accordion that are expanded.\nUse this when you do not need to control the state of the accordion."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the accordion items are disabled"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the accordion. Useful for composition."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "modelValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The accordion items that are currently expanded.\nUse this prop to control the state of the items via v-model."
+      },
+      "multiple": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether multple accordion items can be expanded at the same time."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"vertical\"",
+        "isRequired": false,
+        "description": "The orientation of the accordion items."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
     }
   }
 }

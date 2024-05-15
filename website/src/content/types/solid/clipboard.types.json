@@ -1,41 +1,45 @@
 {
-  "Control": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
   "Indicator": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "copied": {
-      "type": "number | boolean | Node | ArrayElement | (string & {})",
-      "isRequired": false
+    "props": {
+      "asChild": { "type": "boolean", "isRequired": false },
+      "copied": {
+        "type": "number | boolean | Node | ArrayElement | (string & {})",
+        "isRequired": false
+      }
     }
   },
-  "Input": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Input": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{ root: string; input: string; label: string }>",
-      "isRequired": false,
-      "description": "The ids of the elements in the clipboard. Useful for composition."
-    },
-    "onStatusChange": {
-      "type": "(details: CopyStatusDetails) => void",
-      "isRequired": false,
-      "description": "The function to be called when the value is copied to the clipboard"
-    },
-    "timeout": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The timeout for the copy operation"
-    },
-    "value": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The value to be copied to the clipboard"
+    "props": {
+      "asChild": { "type": "boolean", "isRequired": false },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; input: string; label: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the clipboard. Useful for composition."
+      },
+      "onStatusChange": {
+        "type": "(details: CopyStatusDetails) => void",
+        "isRequired": false,
+        "description": "The function to be called when the value is copied to the clipboard"
+      },
+      "timeout": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The timeout for the copy operation"
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value to be copied to the clipboard"
+      }
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "isRequired": false } }
+  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
 }

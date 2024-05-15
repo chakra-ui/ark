@@ -1,85 +1,95 @@
 {
-  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Item": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+  "Control": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
-  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "RootEmits": {
-    "hoverChange": {
-      "type": "[details: HoverChangeDetails]",
-      "isRequired": true,
-      "description": "Function to be called when the rating value is hovered."
-    },
-    "update:modelValue": {
-      "type": "[value: number]",
-      "isRequired": true,
-      "description": "The callback fired when the model value changes."
-    },
-    "valueChange": {
-      "type": "[details: ValueChangeDetails]",
-      "isRequired": true,
-      "description": "Function to be called when the rating value changes."
+  "HiddenInput": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Item": {
+    "props": {
+      "index": { "type": "number", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
     }
   },
+  "Label": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "Root": {
-    "allowHalf": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to allow half stars."
+    "emits": {
+      "hoverChange": {
+        "type": "[details: HoverChangeDetails]",
+        "isRequired": true,
+        "description": "Function to be called when the rating value is hovered."
+      },
+      "update:modelValue": {
+        "type": "[value: number]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function to be called when the rating value changes."
+      }
     },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "autoFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to autofocus the rating."
-    },
-    "count": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The total number of ratings."
-    },
-    "defaultValue": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The initial value of the rating group when it is first rendered.\nUse when you do not need to control the state of the rating group."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the rating is disabled."
-    },
-    "form": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The associate form of the underlying input element."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the rating. Useful for composition."
-    },
-    "modelValue": { "type": "number", "isRequired": false },
-    "name": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The name attribute of the rating element (used in forms)."
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the rating is readonly."
-    },
-    "translations": {
-      "type": "IntlTranslations",
-      "isRequired": false,
-      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+    "props": {
+      "allowHalf": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to allow half stars."
+      },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "autoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to autofocus the rating."
+      },
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The total number of ratings."
+      },
+      "defaultValue": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The initial value of the rating group when it is first rendered.\nUse when you do not need to control the state of the rating group."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the rating is disabled."
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying input element."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the rating. Useful for composition."
+      },
+      "modelValue": { "type": "number", "isRequired": false },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name attribute of the rating element (used in forms)."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the rating is readonly."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      }
     }
   }
 }

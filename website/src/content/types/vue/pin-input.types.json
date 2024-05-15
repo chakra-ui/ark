@@ -1,115 +1,125 @@
 {
-  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "HiddenInput": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Input": {
-    "index": { "type": "number", "isRequired": true },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+  "Control": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
-  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "RootEmits": {
-    "update:modelValue": {
-      "type": "[value: string[]]",
-      "isRequired": true,
-      "description": "The callback fired when the model value changes."
-    },
-    "valueChange": {
-      "type": "[details: ValueChangeDetails]",
-      "isRequired": true,
-      "description": "Function called on input change"
-    },
-    "valueComplete": {
-      "type": "[details: ValueChangeDetails]",
-      "isRequired": true,
-      "description": "Function called when all inputs have valid values"
-    },
-    "valueInvalid": {
-      "type": "[details: ValueInvalidDetails]",
-      "isRequired": true,
-      "description": "Function called when an invalid value is entered"
+  "HiddenInput": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Input": {
+    "props": {
+      "index": { "type": "number", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
     }
   },
+  "Label": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "Root": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "autoFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to auto-focus the first input."
+    "emits": {
+      "update:modelValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function called on input change"
+      },
+      "valueComplete": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when all inputs have valid values"
+      },
+      "valueInvalid": {
+        "type": "[details: ValueInvalidDetails]",
+        "isRequired": true,
+        "description": "Function called when an invalid value is entered"
+      }
     },
-    "blurOnComplete": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to blur the input when the value is complete"
-    },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the pin input when it is first rendered.\nUse when you do not need to control the state of the pin input."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the inputs are disabled"
-    },
-    "form": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The associate form of the underlying input element."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the pin input. Useful for composition."
-    },
-    "invalid": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the pin input is in the invalid state"
-    },
-    "mask": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the input's value will be masked just like `type=password`"
-    },
-    "modelValue": { "type": "string[]", "isRequired": false },
-    "name": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The name of the input element. Useful for form submission."
-    },
-    "otp": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "If `true`, the pin input component signals to its fields that they should\nuse `autocomplete=\"one-time-code\"`."
-    },
-    "pattern": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The regular expression that the user-entered input value is checked against."
-    },
-    "placeholder": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The placeholder text for the input"
-    },
-    "selectOnFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to select input value when input is focused"
-    },
-    "translations": {
-      "type": "IntlTranslations",
-      "isRequired": false,
-      "description": "Specifies the localized strings that identifies the accessibility elements and their states"
-    },
-    "type": {
-      "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
-      "isRequired": false,
-      "description": "The type of value the pin-input should allow"
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "autoFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to auto-focus the first input."
+      },
+      "blurOnComplete": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to blur the input when the value is complete"
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial value of the pin input when it is first rendered.\nUse when you do not need to control the state of the pin input."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the inputs are disabled"
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying input element."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the pin input. Useful for composition."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the pin input is in the invalid state"
+      },
+      "mask": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the input's value will be masked just like `type=password`"
+      },
+      "modelValue": { "type": "string[]", "isRequired": false },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the input element. Useful for form submission."
+      },
+      "otp": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the pin input component signals to its fields that they should\nuse `autocomplete=\"one-time-code\"`."
+      },
+      "pattern": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The regular expression that the user-entered input value is checked against."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text for the input"
+      },
+      "selectOnFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to select input value when input is focused"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "type": {
+        "type": "'alphabetic' | 'numeric' | 'alphanumeric'",
+        "isRequired": false,
+        "description": "The type of value the pin-input should allow"
+      }
     }
   }
 }

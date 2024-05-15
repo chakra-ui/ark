@@ -35,21 +35,23 @@ const pages = defineCollection({
     }),
 })
 
+const PropDefintion = s.object({
+  type: s.string(),
+  isRequired: s.boolean(),
+  defaultValue: s.string().optional(),
+  description: s.string().optional(),
+})
+
 const types = defineCollection({
   name: 'Types',
   pattern: 'website/src/content/types/**/*.json',
   schema: s
     .record(
       s.string(),
-      s.record(
-        s.string(),
-        s.object({
-          type: s.string(),
-          isRequired: s.boolean(),
-          defaultValue: s.string().optional(),
-          description: s.string().optional(),
-        }),
-      ),
+      s.object({
+        props: s.record(s.string(), PropDefintion),
+        emits: s.record(s.string(), PropDefintion).optional(),
+      }),
     )
     .transform((data, { meta }) => ({
       parts: data,

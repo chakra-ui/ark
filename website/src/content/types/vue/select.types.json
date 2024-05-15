@@ -1,191 +1,213 @@
 {
   "ClearTrigger": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
-  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Control": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Content": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Control": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "HiddenSelect": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
-  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Indicator": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "ItemGroupLabel": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "ItemGroup": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "id": { "type": "string", "isRequired": false }
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "id": { "type": "string", "isRequired": false }
+    }
   },
   "ItemIndicator": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Item": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "item": { "type": "any", "isRequired": false }
-  },
-  "ItemText": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Label": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "RootEmits": {
-    "focusOutside": {
-      "type": "[event: FocusOutsideEvent]",
-      "isRequired": true,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "highlightChange": {
-      "type": "[details: HighlightChangeDetails<CollectionItem>]",
-      "isRequired": true,
-      "description": "The callback fired when the highlighted item changes."
-    },
-    "interactOutside": {
-      "type": "[event: InteractOutsideEvent]",
-      "isRequired": true,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "openChange": {
-      "type": "[details: OpenChangeDetails]",
-      "isRequired": true,
-      "description": "Function called when the popup is opened"
-    },
-    "pointerDownOutside": {
-      "type": "[event: PointerDownOutsideEvent]",
-      "isRequired": true,
-      "description": "Function called when the pointer is pressed down outside the component"
-    },
-    "update:modelValue": {
-      "type": "[value: string[]]",
-      "isRequired": true,
-      "description": "The callback fired when the model value changes."
-    },
-    "update:open": {
-      "type": "[open: boolean]",
-      "isRequired": true,
-      "description": "The callback fired when the open state changes."
-    },
-    "valueChange": {
-      "type": "[details: ValueChangeDetails<CollectionItem>]",
-      "isRequired": true,
-      "description": "The callback fired when the selected item changes."
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "item": { "type": "any", "isRequired": false }
     }
+  },
+  "ItemText": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Label": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Positioner": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Root": {
-    "items": {
-      "type": "CollectionItem[] | readonly CollectionItem[]",
-      "isRequired": true,
-      "description": "The options of the select"
+    "emits": {
+      "focusOutside": {
+        "type": "[event: FocusOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when the focus is moved outside the component"
+      },
+      "highlightChange": {
+        "type": "[details: HighlightChangeDetails<CollectionItem>]",
+        "isRequired": true,
+        "description": "The callback fired when the highlighted item changes."
+      },
+      "interactOutside": {
+        "type": "[event: InteractOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when an interaction happens outside the component"
+      },
+      "openChange": {
+        "type": "[details: OpenChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the popup is opened"
+      },
+      "pointerDownOutside": {
+        "type": "[event: PointerDownOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when the pointer is pressed down outside the component"
+      },
+      "update:modelValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the open state changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails<CollectionItem>]",
+        "isRequired": true,
+        "description": "The callback fired when the selected item changes."
+      }
     },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the select should close after an item is selected"
-    },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the select when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the select when it is first rendered.\nUse when you do not need to control the state of the select."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the select is disabled"
-    },
-    "form": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The associate form of the underlying select."
-    },
-    "highlightedValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The key of the highlighted item"
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the select. Useful for composition."
-    },
-    "invalid": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the select is invalid"
-    },
-    "isItemDisabled": {
-      "type": "(item: CollectionItem) => boolean",
-      "isRequired": false,
-      "description": "Whether the item is disabled"
-    },
-    "itemToString": {
-      "type": "(item: CollectionItem) => string",
-      "isRequired": false,
-      "description": "The label of the item"
-    },
-    "itemToValue": {
-      "type": "(item: CollectionItem) => string",
-      "isRequired": false,
-      "description": "The value of the item"
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "loopFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to loop the keyboard navigation through the options"
-    },
-    "modelValue": { "type": "string[]", "isRequired": false },
-    "multiple": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to allow multiple selection"
-    },
-    "name": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `name` attribute of the underlying select."
-    },
-    "open": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the select menu is open"
-    },
-    "positioning": {
-      "type": "PositioningOptions",
-      "isRequired": false,
-      "description": "The positioning options of the menu."
-    },
-    "readOnly": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the select is read-only"
-    },
-    "scrollToIndexFn": {
-      "type": "(details: ScrollToIndexDetails) => void",
-      "isRequired": false,
-      "description": "Function to scroll to a specific index"
-    },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
+    "props": {
+      "items": {
+        "type": "CollectionItem[] | readonly CollectionItem[]",
+        "isRequired": true,
+        "description": "The options of the select"
+      },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select should close after an item is selected"
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the select when it is first rendered.\nUse when you do not need to control its open state."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial value of the select when it is first rendered.\nUse when you do not need to control the state of the select."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is disabled"
+      },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying select."
+      },
+      "highlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The key of the highlighted item"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the select. Useful for composition."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is invalid"
+      },
+      "isItemDisabled": {
+        "type": "(item: CollectionItem) => boolean",
+        "isRequired": false,
+        "description": "Whether the item is disabled"
+      },
+      "itemToString": {
+        "type": "(item: CollectionItem) => string",
+        "isRequired": false,
+        "description": "The label of the item"
+      },
+      "itemToValue": {
+        "type": "(item: CollectionItem) => string",
+        "isRequired": false,
+        "description": "The value of the item"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to loop the keyboard navigation through the options"
+      },
+      "modelValue": { "type": "string[]", "isRequired": false },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to allow multiple selection"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The `name` attribute of the underlying select."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select menu is open"
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The positioning options of the menu."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is read-only"
+      },
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Trigger": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "ValueText": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "placeholder": { "type": "string", "isRequired": false }
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "placeholder": { "type": "string", "isRequired": false }
+    }
   }
 }

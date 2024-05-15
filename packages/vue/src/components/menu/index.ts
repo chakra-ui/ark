@@ -5,7 +5,11 @@ export type {
 } from '@zag-js/menu'
 export { default as MenuArrow, type MenuArrowProps } from './menu-arrow.vue'
 export { default as MenuArrowTip, type MenuArrowTipProps } from './menu-arrow-tip.vue'
-export { default as MenuCheckboxItem, type MenuCheckboxItemProps } from './menu-checkbox-item.vue'
+export {
+  default as MenuCheckboxItem,
+  type MenuCheckboxItemProps,
+  type MenuCheckboxItemEmits,
+} from './menu-checkbox-item.vue'
 export { default as MenuContent, type MenuContentProps } from './menu-content.vue'
 export { default as MenuContext, type MenuContextProps } from './menu-context.vue'
 export {
@@ -30,6 +34,7 @@ export { default as MenuRadioItem, type MenuRadioItemProps } from './menu-radio-
 export {
   default as MenuRadioItemGroup,
   type MenuRadioItemGroupProps,
+  type MenuRadioItemGroupEmits,
 } from './menu-radio-item-group.vue'
 export { default as MenuRoot, type MenuRootProps, type MenuRootEmits } from './menu-root.vue'
 export { default as MenuSeparator, type MenuSeparatorProps } from './menu-separator.vue'

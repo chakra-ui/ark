@@ -1,64 +1,76 @@
 {
-  "Arrow": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "ArrowTip": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "RootEmits": {
-    "openChange": {
-      "type": "[details: OpenChangeDetails]",
-      "isRequired": true,
-      "description": "Function called when the hover card opens or closes."
-    },
-    "update:open": { "type": "[open: boolean]", "isRequired": true }
+  "Arrow": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "ArrowTip": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Content": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Positioner": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Root": {
-    "closeDelay": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
+    "emits": {
+      "openChange": {
+        "type": "[details: OpenChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the hover card opens or closes."
+      },
+      "update:open": { "type": "[open: boolean]", "isRequired": true }
     },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the hover card when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  trigger: string\n  content: string\n  positioner: string\n  arrow: string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the popover. Useful for composition."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "open": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the hover card is open"
-    },
-    "openDelay": {
-      "type": "number",
-      "isRequired": false,
-      "description": "The duration from when the mouse enters the trigger until the hover card opens."
-    },
-    "positioning": {
-      "type": "PositioningOptions",
-      "isRequired": false,
-      "description": "The user provided options used to position the popover content"
-    },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
+    "props": {
+      "closeDelay": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The duration from when the mouse leaves the trigger or content until the hover card closes."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the hover card when it is first rendered.\nUse when you do not need to control its open state."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  trigger: string\n  content: string\n  positioner: string\n  arrow: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the popover. Useful for composition."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the hover card is open"
+      },
+      "openDelay": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The duration from when the mouse enters the trigger until the hover card opens."
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The user provided options used to position the popover content"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
     }
   },
-  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  "Trigger": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  }
 }

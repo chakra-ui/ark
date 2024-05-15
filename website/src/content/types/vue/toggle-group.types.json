@@ -1,63 +1,67 @@
 {
   "Item": {
-    "value": { "type": "string", "isRequired": true },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "disabled": { "type": "boolean", "isRequired": false }
-  },
-  "RootEmits": {
-    "update:modelValue": {
-      "type": "[value: string[]]",
-      "isRequired": true,
-      "description": "The callback fired when the model value changes."
-    },
-    "valueChange": {
-      "type": "[details: ValueChangeDetails]",
-      "isRequired": true,
-      "description": "Function to call when the toggle is clicked."
+    "props": {
+      "value": { "type": "string", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "disabled": { "type": "boolean", "isRequired": false }
     }
   },
   "Root": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "defaultValue": {
-      "type": "string[]",
-      "isRequired": false,
-      "description": "The initial value of the toggle group when it is first rendered.\nUse when you do not need to control the state of the toggle group."
+    "emits": {
+      "update:modelValue": {
+        "type": "[value: string[]]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function to call when the toggle is clicked."
+      }
     },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the toggle is disabled."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{ root: string; item(value: string): string }>",
-      "isRequired": false,
-      "description": "The ids of the elements in the toggle. Useful for composition."
-    },
-    "loopFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to loop focus inside the toggle group."
-    },
-    "modelValue": { "type": "string[]", "isRequired": false },
-    "multiple": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to allow multiple toggles to be selected."
-    },
-    "orientation": {
-      "type": "Orientation",
-      "isRequired": false,
-      "description": "The orientation of the toggle group."
-    },
-    "rovingFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to use roving tab index to manage focus."
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial value of the toggle group when it is first rendered.\nUse when you do not need to control the state of the toggle group."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the toggle is disabled."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; item(value: string): string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the toggle. Useful for composition."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to loop focus inside the toggle group."
+      },
+      "modelValue": { "type": "string[]", "isRequired": false },
+      "multiple": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to allow multiple toggles to be selected."
+      },
+      "orientation": {
+        "type": "Orientation",
+        "isRequired": false,
+        "description": "The orientation of the toggle group."
+      },
+      "rovingFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to use roving tab index to manage focus."
+      }
     }
   }
 }

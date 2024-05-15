@@ -1,207 +1,239 @@
 {
-  "Arrow": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "ArrowTip": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "Arrow": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "ArrowTip": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "CheckboxItem": {
-    "checked": {
-      "type": "boolean",
-      "isRequired": true,
-      "description": "Whether the option is checked"
-    },
-    "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu should be closed when the option is selected."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu item is disabled"
-    },
-    "valueText": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    "emits": { "update:checked": { "type": "[value: boolean]", "isRequired": true } },
+    "props": {
+      "checked": {
+        "type": "boolean",
+        "isRequired": true,
+        "description": "Whether the option is checked"
+      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the menu should be closed when the option is selected."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the menu item is disabled"
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+      }
     }
   },
-  "Content": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "ContextTrigger": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+  "Content": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
-  "Indicator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "ContextTrigger": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Indicator": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "ItemGroupLabel": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "ItemGroup": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The `id` of the element that provides accessibility label to the option group"
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The `id` of the element that provides accessibility label to the option group"
+      }
     }
   },
   "ItemIndicator": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Item": {
-    "value": {
-      "type": "string",
-      "isRequired": true,
-      "description": "The unique value of the menu item option."
-    },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu should be closed when the option is selected."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu item is disabled"
-    },
-    "valueText": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The unique value of the menu item option."
+      },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the menu should be closed when the option is selected."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the menu item is disabled"
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+      }
     }
   },
-  "ItemText": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Positioner": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
+  "ItemText": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Positioner": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "RadioItemGroup": {
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "id": { "type": "string", "isRequired": false },
-    "modelValue": { "type": "string", "isRequired": false }
+    "emits": { "update:modelValue": { "type": "[value: string]", "isRequired": true } },
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "id": { "type": "string", "isRequired": false },
+      "modelValue": { "type": "string", "isRequired": false }
+    }
   },
   "RadioItem": {
-    "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu should be closed when the option is selected."
-    },
-    "disabled": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the menu item is disabled"
-    },
-    "valueText": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
-    }
-  },
-  "RootEmits": {
-    "escapeKeyDown": {
-      "type": "[event: KeyboardEvent]",
-      "isRequired": true,
-      "description": "Function called when the escape key is pressed"
-    },
-    "focusOutside": {
-      "type": "[event: FocusOutsideEvent]",
-      "isRequired": true,
-      "description": "Function called when the focus is moved outside the component"
-    },
-    "highlightChange": {
-      "type": "[details: HighlightChangeDetails]",
-      "isRequired": true,
-      "description": "Function called when the highlighted menu item changes."
-    },
-    "interactOutside": {
-      "type": "[event: InteractOutsideEvent]",
-      "isRequired": true,
-      "description": "Function called when an interaction happens outside the component"
-    },
-    "openChange": {
-      "type": "[details: OpenChangeDetails]",
-      "isRequired": true,
-      "description": "Function called when the menu opens or closes"
-    },
-    "pointerDownOutside": {
-      "type": "[event: PointerDownOutsideEvent]",
-      "isRequired": true,
-      "description": "Function called when the pointer is pressed down outside the component"
-    },
-    "select": {
-      "type": "[details: SelectionDetails]",
-      "isRequired": true,
-      "description": "Function called when a menu item is selected."
-    },
-    "update:open": {
-      "type": "[open: boolean]",
-      "isRequired": true,
-      "description": "Function called when the menu is opened or closed."
+    "props": {
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the menu should be closed when the option is selected."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the menu item is disabled"
+      },
+      "valueText": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
+      }
     }
   },
   "Root": {
-    "anchorPoint": {
-      "type": "Point",
-      "isRequired": false,
-      "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
+    "emits": {
+      "escapeKeyDown": {
+        "type": "[event: KeyboardEvent]",
+        "isRequired": true,
+        "description": "Function called when the escape key is pressed"
+      },
+      "focusOutside": {
+        "type": "[event: FocusOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when the focus is moved outside the component"
+      },
+      "highlightChange": {
+        "type": "[details: HighlightChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the highlighted menu item changes."
+      },
+      "interactOutside": {
+        "type": "[event: InteractOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when an interaction happens outside the component"
+      },
+      "openChange": {
+        "type": "[details: OpenChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the menu opens or closes"
+      },
+      "pointerDownOutside": {
+        "type": "[event: PointerDownOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when the pointer is pressed down outside the component"
+      },
+      "select": {
+        "type": "[details: SelectionDetails]",
+        "isRequired": true,
+        "description": "Function called when a menu item is selected."
+      },
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "Function called when the menu is opened or closed."
+      }
     },
-    "aria-label": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The accessibility label for the menu"
-    },
-    "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
-    "closeOnSelect": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to close the menu when an option is selected"
-    },
-    "defaultOpen": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "The initial open state of the menu when it is first rendered.\nUse when you do not need to control its open state."
-    },
-    "highlightedValue": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The value of the highlighted menu item."
-    },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
-      "isRequired": false,
-      "description": "The ids of the elements in the menu. Useful for composition."
-    },
-    "lazyMount": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to enable lazy mounting"
-    },
-    "loopFocus": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether to loop the keyboard navigation."
-    },
-    "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
-    "positioning": {
-      "type": "PositioningOptions",
-      "isRequired": false,
-      "description": "The options used to dynamically position the menu"
-    },
-    "typeahead": {
-      "type": "boolean",
-      "isRequired": false,
-      "description": "Whether the pressing printable characters should trigger typeahead navigation"
-    },
-    "unmountOnExit": {
-      "type": "boolean",
-      "defaultValue": "false",
-      "isRequired": false,
-      "description": "Whether to unmount on exit."
+    "props": {
+      "anchorPoint": {
+        "type": "Point",
+        "isRequired": false,
+        "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
+      },
+      "aria-label": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The accessibility label for the menu"
+      },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "closeOnSelect": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to close the menu when an option is selected"
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the menu when it is first rendered.\nUse when you do not need to control its open state."
+      },
+      "highlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value of the highlighted menu item."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  label(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the menu. Useful for composition."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to loop the keyboard navigation."
+      },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The options used to dynamically position the menu"
+      },
+      "typeahead": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the pressing printable characters should trigger typeahead navigation"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
     }
   },
-  "Separator": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "TriggerItem": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } },
-  "Trigger": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  "Separator": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "TriggerItem": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
+  "Trigger": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  }
 }

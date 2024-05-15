@@ -1,1 +1,1 @@
-{ "Root": { "value": { "type": "RootNode | (() => RootNode)", "isRequired": false } } }
+{ "Root": { "props": { "value": { "type": "RootNode | (() => RootNode)", "isRequired": false } } } }

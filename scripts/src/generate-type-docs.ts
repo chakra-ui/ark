@@ -202,14 +202,26 @@ const extractTypesForFramework = async (framework: string) => {
                     '',
                   )
                   const newName = voca.isEmpty(shortName) ? 'Root' : shortName
-                  return [newName, Object.fromEntries(Object.entries(x[1]))]
+                  return [newName, { props: Object.fromEntries(Object.entries(x[1])) }]
                 })
                 .filter((y) => Object.keys(y[1]).length !== 0),
             ),
           )
           .filter((value) => Object.keys(value).length !== 0)
-          // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
-          .reduce((acc, value) => ({ ...acc, ...value }), {}),
+          .reduce((acc, value) => {
+            const [partName, partValue] = Object.entries(value)[0]
+            const key = partName.replace('Emits', '')
+            // @ts-expect-error
+            const props = partValue.props
+
+            if (partName.endsWith('Emits')) {
+              acc[key] = { ...acc[key], emits: props }
+            } else {
+              acc[partName] = { ...acc[partName], props }
+            }
+
+            return acc
+          }, {}),
       }
     }),
   )

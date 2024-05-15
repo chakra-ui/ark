@@ -1,22 +1,24 @@
 {
-  "Fallback": { "asChild": { "type": "boolean", "isRequired": false } },
-  "Image": { "asChild": { "type": "boolean", "isRequired": false } },
+  "Fallback": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Image": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
   "Root": {
-    "asChild": { "type": "boolean", "isRequired": false },
-    "id": {
-      "type": "string",
-      "isRequired": false,
-      "description": "The unique identifier of the machine."
-    },
-    "ids": {
-      "type": "Partial<{ root: string; image: string; fallback: string }>",
-      "isRequired": false,
-      "description": "The ids of the elements in the avatar. Useful for composition."
-    },
-    "onStatusChange": {
-      "type": "(details: StatusChangeDetails) => void",
-      "isRequired": false,
-      "description": "Functional called when the image loading status changes."
+    "props": {
+      "asChild": { "type": "boolean", "isRequired": false },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; image: string; fallback: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the avatar. Useful for composition."
+      },
+      "onStatusChange": {
+        "type": "(details: StatusChangeDetails) => void",
+        "isRequired": false,
+        "description": "Functional called when the image loading status changes."
+      }
     }
   }
 }
