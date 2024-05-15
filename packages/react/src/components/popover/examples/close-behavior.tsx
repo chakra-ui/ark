@@ -1,7 +1,7 @@
 import { Popover } from '../..'
 
 export const CloseBehavior = () => (
-  <Popover.Root closeOnEsc={false} closeOnInteractOutside={false}>
+  <Popover.Root closeOnEscape closeOnInteractOutside>
     <Popover.Trigger>Click Me</Popover.Trigger>
     <Popover.Positioner>
       <Popover.Content>

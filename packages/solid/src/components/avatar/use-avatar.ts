@@ -13,7 +13,7 @@ export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {
   const environment = useEnvironmentContext()
   const id = createUniqueId()
 
-  const context = createMemo(() => ({
+  const context = createMemo<avatar.Context>(() => ({
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,

@@ -19,6 +19,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [useTabsProps, localprops] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
+    'composite',
     'defaultValue',
     'id',
     'ids',

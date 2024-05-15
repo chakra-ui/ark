@@ -52,7 +52,7 @@ describe('Tooltip', () => {
   })
 
   it('should hide the tooltip when escape is pressed', async () => {
-    render(<ComponentUnderTest closeOnEsc />)
+    render(<ComponentUnderTest closeOnEscape />)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
@@ -67,7 +67,7 @@ describe('Tooltip', () => {
   })
 
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
-    render(<ComponentUnderTest closeOnEsc={false} />)
+    render(<ComponentUnderTest closeOnEscape={false} />)
 
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
