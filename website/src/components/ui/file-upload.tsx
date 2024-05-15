@@ -21,6 +21,7 @@ export const ItemPreviewImage = withContext(styled(FileUpload.ItemPreviewImage),
 export const ItemSizeText = withContext(styled(FileUpload.ItemSizeText), 'itemSizeText')
 export const Label = withContext(styled(FileUpload.Label), 'label')
 export const Trigger = withContext(styled(FileUpload.Trigger), 'trigger')
+export const HiddenInput = FileUpload.HiddenInput
 export const Context = FileUpload.Context
 
 export interface RootProps extends ComponentProps<typeof Root> {}

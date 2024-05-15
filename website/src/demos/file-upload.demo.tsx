@@ -4,7 +4,9 @@ import { Button, FileUpload, IconButton } from '~/components/ui'
 export const Demo = (props: FileUpload.RootProps) => (
   <FileUpload.Root maxFiles={3} {...props}>
     <FileUpload.Dropzone>
-      <FileUpload.Label>Drop your files here</FileUpload.Label>
+      <FileUpload.Label asChild>
+        <span>Drop your files here</span>
+      </FileUpload.Label>
       <FileUpload.Trigger asChild>
         <Button size="sm">Open Dialog</Button>
       </FileUpload.Trigger>
@@ -29,5 +31,6 @@ export const Demo = (props: FileUpload.RootProps) => (
         }
       </FileUpload.Context>
     </FileUpload.ItemGroup>
+    <FileUpload.HiddenInput />
   </FileUpload.Root>
 )
