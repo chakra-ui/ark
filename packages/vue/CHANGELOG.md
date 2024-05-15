@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.0-5] - 2024-05-15
+
 ### Fixed
 
 - Fixed initial flicker of `Accordion` content
