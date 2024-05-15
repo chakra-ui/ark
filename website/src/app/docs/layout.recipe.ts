@@ -54,10 +54,11 @@ export const layout = sva({
       borderRightWidth: '1px',
     },
     main: {
-      py: {
+      pt: {
         base: '28',
         md: '16',
       },
+      pb: { base: '8', md: '16' },
       ps: {
         base: '0',
         md: 'var(--ark-sidebar-width)',
