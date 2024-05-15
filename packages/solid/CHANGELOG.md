@@ -10,6 +10,10 @@ description: All notable changes will be documented in this file.
 
 - Added support for default values like `defaultOpen`, `defaultValue` etc .
 
+### Changed
+
+- Integrated latest `@zag-js`.
+
 ### Fixed
 
 - Fixed initial flicker of `Accordion` content

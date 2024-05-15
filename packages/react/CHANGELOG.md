@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- Integrated latest `@zag-js`.
+
 ### Fixed
 
 - Fixed initial flicker of `Accordion` content
