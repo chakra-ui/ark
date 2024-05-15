@@ -20,7 +20,7 @@ export const recipe = sva({
       justifyContent: 'space-between',
       display: 'flex',
       width: 'full',
-      textStyle: 'sm',
+      textStyle: { base: 'md', md: 'sm' },
       fontWeight: 'semibold',
       textTransform: 'capitalize',
       py: '1.5',
@@ -32,13 +32,13 @@ export const recipe = sva({
     },
     link: {
       display: 'flex',
-      textStyle: 'sm',
+      textStyle: { base: 'md', md: 'sm' },
       fontWeight: 'medium',
       color: 'fg.muted',
       py: '1.5',
       textDecoration: 'none',
       _currentPage: {
-        color: '#EB5E41',
+        color: 'accent.default',
       },
     },
     group: {

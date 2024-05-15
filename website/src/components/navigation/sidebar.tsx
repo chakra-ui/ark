@@ -17,6 +17,7 @@ export const Sidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
   const params = useParams<{ framework: string }>()
+
   return (
     <nav>
       <ul className={styles.root}>
