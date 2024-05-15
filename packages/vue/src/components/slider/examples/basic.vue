@@ -10,7 +10,7 @@ import { Slider } from '../..'
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-      <Slider.Thumb :key="0" :index="0" />
+      <Slider.Thumb :index="0" />
     </Slider.Control>
   </Slider.Root>
 </template>

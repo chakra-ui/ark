@@ -7,6 +7,7 @@ import { CodeExplorer } from './code-explorer'
 
 interface Props {
   id: string
+  component?: string
 }
 
 export const Example = async (props: Props) => {
@@ -18,7 +19,7 @@ export const Example = async (props: Props) => {
 const findExamples = async (props: Props) => {
   const serverContext = getServerContext()
   const id = props.id
-  const component = serverContext.component
+  const component = props.component ?? serverContext.component
 
   return Promise.all(
     ['react', 'solid', 'vue'].map(async (framework) => {

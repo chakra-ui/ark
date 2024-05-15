@@ -15,7 +15,7 @@ Running tight on schedule? No worries! Check out our quickstart examples to get 
 <Steps>
 <Step title="Prerequisite" number="1">
 
-Before you start, ensure that you have a proper project setup. If not, please follow your preffered application framework setup guide and once you've completed that, come back to this guide.
+Before you start, ensure you have a proper project setup. If not, follow your preferred application framework setup guide and then return to this guide.
 
 </Step>
 <Step title="Install Ark UI" number="2">
@@ -31,25 +31,35 @@ npm install @ark-ui/react
 
 In this guide, we will be adding a Slider component. Copy the following code to your project.
 
-<Story id="Basic" component="slider" />
+<Example component="slider" id="basic"  />
 
 </Step>
+
 <Step number="4" title="Style a component">
-
 Ark UI is a headless component library that doesn't include default styles.
-Nowadays, projects often use CSS-in-JS libraries like [Panda CSS](https://panda-css.com/) or frameworks like [Tailwind](https://tailwindcss.com/) to style their components.
+You can leverage the `data-scope` and `data-part` attributes to style your components with custom CSS.
 
-However, if you prefer to write your own CSS, you can leverage the `data-scope` and `data-part` attributes to style your components.
+For example, to style a slider component, you can target its parts using these attributes:
 
 ```css
-/* Targets the slider root part */
+/* Targets the <Slider.Root /> */
 [data-scope='slider'][data-part='root'] {
   display: flex;
   flex-direction: column;
 }
 ```
 
-To learn more about how to style components in Ark UI, checkout our [Styling Components guide](/docs/styling/overview).
+Check out the [Styling Components guide](/docs/react/guides/styling) to learn more about styling components in Ark UI.
+
+</Step>
+
+
+<Step number="5" title="That's it">
+
+Congratulations! You've successfully set up and styled your components using Ark UI.
+If you run into any issues or have questions, open an issue on our [GitHub](https://github.com/chakra-ui/ark/issues/new/choose) or reach out on [Discord](https://discord.gg/ww6HE5xaZ2).
+
+Happy hacking! ✌️
 
 </Step>
 </Steps>
