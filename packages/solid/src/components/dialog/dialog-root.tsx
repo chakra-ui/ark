@@ -34,6 +34,7 @@ export const DialogRoot = (props: DialogRootProps) => {
     'onOpenChange',
     'onPointerDownOutside',
     'open',
+    'persistentElements',
     'preventScroll',
     'restoreFocus',
     'role',

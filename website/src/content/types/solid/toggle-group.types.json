@@ -31,6 +31,7 @@
       },
       "loopFocus": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to loop focus inside the toggle group."
       },
@@ -46,11 +47,13 @@
       },
       "orientation": {
         "type": "Orientation",
+        "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the toggle group."
       },
       "rovingFocus": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to use roving tab index to manage focus."
       },

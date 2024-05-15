@@ -18,6 +18,7 @@ export const TabsRoot = (props: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [useTabsProps, restProps] = createSplitProps<UseTabsProps>()(tabsProps, [
     'activationMode',
+    'composite',
     'defaultValue',
     'id',
     'ids',

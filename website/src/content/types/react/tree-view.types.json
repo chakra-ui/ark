@@ -131,6 +131,12 @@
         "isRequired": false,
         "description": "The id of the expanded nodes"
       },
+      "expandOnClick": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether clicking on a branch should open it or not"
+      },
       "focusedValue": {
         "type": "string",
         "isRequired": false,
@@ -161,12 +167,6 @@
         "isRequired": false,
         "description": "Called when the selection changes"
       },
-      "openOnClick": {
-        "type": "boolean",
-        "defaultValue": "true",
-        "isRequired": false,
-        "description": "Whether clicking on a branch should open it or not"
-      },
       "selectedValue": {
         "type": "string[]",
         "isRequired": false,
@@ -180,6 +180,7 @@
       },
       "typeahead": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the tree supports typeahead search"
       }

@@ -63,11 +63,13 @@
       },
       "max": {
         "type": "number",
+        "defaultValue": "100",
         "isRequired": false,
         "description": "The maximum allowed value of the progress bar."
       },
       "min": {
         "type": "number",
+        "defaultValue": "0",
         "isRequired": false,
         "description": "The minimum allowed value of the progress bar."
       },
@@ -84,6 +86,7 @@
       },
       "value": {
         "type": "number",
+        "defaultValue": "50",
         "isRequired": false,
         "description": "The current value of the progress bar."
       }

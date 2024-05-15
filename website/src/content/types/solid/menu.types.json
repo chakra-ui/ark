@@ -117,8 +117,15 @@
       },
       "closeOnSelect": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to close the menu when an option is selected"
+      },
+      "composite": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the menu is a composed with other composite widgets like a combobox or tabs"
       },
       "defaultOpen": {
         "type": "boolean",
@@ -148,6 +155,7 @@
       },
       "loopFocus": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation."
       },
@@ -204,6 +212,7 @@
       },
       "typeahead": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the pressing printable characters should trigger typeahead navigation"
       },

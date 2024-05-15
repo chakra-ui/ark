@@ -69,6 +69,7 @@
     "props": {
       "align": {
         "type": "'center' | 'end' | 'start'",
+        "defaultValue": "\"start\"",
         "isRequired": false,
         "description": "The alignment of the slides in the carousel."
       },
@@ -95,6 +96,7 @@
       "index": { "type": "number", "isRequired": false, "description": "The current slide index." },
       "loop": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the carousel should loop around."
       },
@@ -111,11 +113,13 @@
       },
       "slidesPerView": {
         "type": "number | 'auto'",
+        "defaultValue": "1",
         "isRequired": false,
         "description": "The number of slides to show at a time."
       },
       "spacing": {
         "type": "string",
+        "defaultValue": "\"0px\"",
         "isRequired": false,
         "description": "The amount of space between slides."
       }

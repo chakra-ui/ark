@@ -2,7 +2,7 @@ import { Portal } from 'solid-js/web'
 import { Popover } from '../..'
 
 export const CloseBehavior = () => (
-  <Popover.Root closeOnEsc={false} closeOnInteractOutside={false}>
+  <Popover.Root closeOnEscape={false} closeOnInteractOutside={false}>
     <Popover.Trigger>Click Me</Popover.Trigger>
     <Portal>
       <Popover.Positioner>

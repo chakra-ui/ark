@@ -96,6 +96,7 @@
     "props": {
       "addOnPaste": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to add a tag when you paste values into the tag input"
       },
@@ -116,9 +117,8 @@
       },
       "blurBehavior": {
         "type": "'clear' | 'add'",
-        "defaultValue": "\"none\"",
         "isRequired": false,
-        "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"none\"`: do nothing\n- `\"clear\"`: clear the input value"
+        "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"clear\"`: clear the input value"
       },
       "defaultValue": {
         "type": "string[]",
@@ -138,8 +138,9 @@
       },
       "editable": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether a tag can be edited after creation.\nIf `true` and focus is on a tag, pressing `Enter`or double clicking will edit the tag."
+        "description": "Whether a tag can be edited after creation, by presing `Enter` or double clicking."
       },
       "form": {
         "type": "string",
@@ -166,7 +167,12 @@
         "isRequired": false,
         "description": "Whether the tags input is invalid"
       },
-      "max": { "type": "number", "isRequired": false, "description": "The max number of tags" },
+      "max": {
+        "type": "number",
+        "defaultValue": "Infinity",
+        "isRequired": false,
+        "description": "The max number of tags"
+      },
       "maxLength": {
         "type": "number",
         "isRequired": false,
