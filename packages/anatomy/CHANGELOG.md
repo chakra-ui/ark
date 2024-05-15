@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added `Signature Pad` anatomy
+
 ## [3.0.0] - 2024-04-05
 
 ### Added
