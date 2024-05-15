@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { codeToHtml } from 'shiki'
 import { getServerContext } from '~/lib/server-context'
-import { CodeExplorer } from './code-explorer'
+import { CodeTabs } from './code-tabs'
 
 interface Props {
   id: string
@@ -11,14 +11,15 @@ interface Props {
 }
 
 export const Example = async (props: Props) => {
+  const framework = getServerContext().framework ?? 'react'
   const examples = await findExamples(props)
 
-  return <CodeExplorer examples={examples} />
+  return <CodeTabs examples={examples} defalutValue={framework} />
 }
 
 const findExamples = async (props: Props) => {
-  const serverContext = getServerContext()
   const id = props.id
+  const serverContext = getServerContext()
   const component = props.component ?? serverContext.component
 
   return Promise.all(
@@ -42,7 +43,8 @@ const findExamples = async (props: Props) => {
       })
 
       return {
-        framework,
+        label: framework.charAt(0).toUpperCase() + framework.slice(1),
+        value: framework,
         code,
         html,
       }

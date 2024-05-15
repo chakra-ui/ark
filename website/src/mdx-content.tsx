@@ -4,6 +4,7 @@ import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { Example } from './components/example'
 import { Faq } from './components/faq'
+import { InstallCmd } from './components/install-cmd'
 import { KeyBindingsTable } from './components/key-bindings-table'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
@@ -20,6 +21,7 @@ const sharedComponents = {
   Example,
   Faq,
   InfoBanner,
+  InstallCmd,
   kbd: Kbd,
   KeyBindingsTable,
   pre: Pre,

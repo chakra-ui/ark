@@ -1,24 +1,25 @@
 'use client'
-import { useParams } from 'next/navigation'
 import { CodePreview } from './code-preview'
 import { Tabs } from './ui'
 
 interface CodeExample {
+  label: string
+  value: string
   code: string
-  framework: string
   html: string
 }
 
 interface Props {
+  defalutValue: string
   examples: CodeExample[]
 }
 
-export const CodeExplorer = (props: Props) => {
-  const { examples } = props
-  const params = useParams<{ framework: string }>()
+export const CodeTabs = (props: Props) => {
+  const { examples, defalutValue } = props
+
   return (
     <Tabs.Root
-      defaultValue={params.framework}
+      defaultValue={defalutValue}
       variant="line"
       borderWidth="1px"
       borderRadius="lg"
@@ -37,21 +38,20 @@ export const CodeExplorer = (props: Props) => {
       >
         {examples.map((example) => (
           <Tabs.Trigger
-            key={example.framework}
-            value={example.framework}
-            textTransform="capitalize"
+            key={example.value}
+            value={example.value}
             color="gray.dark.11"
             _selected={{ color: 'white' }}
             pb="0"
             h="39px"
           >
-            {example.framework}
+            {example.label}
           </Tabs.Trigger>
         ))}
         <Tabs.Indicator />
       </Tabs.List>
       {examples.map((example) => (
-        <Tabs.Content key={example.framework} value={example.framework} pt="0">
+        <Tabs.Content key={example.value} value={example.value} pt="0">
           <CodePreview code={example.code} html={example.html} />
         </Tabs.Content>
       ))}
