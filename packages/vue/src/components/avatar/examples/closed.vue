@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Avatar, type AvatarRootEmits, type AvatarRootProps, useForwardPropsEmits } from '../../..'
