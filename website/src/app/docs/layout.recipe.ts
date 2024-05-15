@@ -23,7 +23,7 @@ export const layout = sva({
       },
       bg: {
         base: 'gray.2',
-        _dark: 'black.a3',
+        _dark: '#0e0e0e',
       },
       borderRightWidth: '1px',
     },
