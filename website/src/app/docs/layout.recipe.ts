@@ -29,10 +29,8 @@ export const layout = sva({
     },
     content: {
       pe: 'calc((100vw - 1440px) / 2)',
-      height: '16',
       flexGrow: '1',
       flexShrink: '0',
-      bg: 'bg.canvas',
     },
     aside: {
       pt: '16',

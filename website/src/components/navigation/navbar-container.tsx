@@ -9,7 +9,9 @@ export const NavbarContainer = (props: BoxProps) => {
   return (
     <Box
       shadow={isScrolled ? 'xs' : 'none'}
-      transitionProperty="box-shadow"
+      borderBottomWidth={{ base: isScrolled ? '0' : '1px', md: '0' }}
+      background={isScrolled ? 'bg.default' : 'bg.canvas'}
+      transitionProperty="background, box-shadow"
       transitionDuration="normal"
       transitionTimingFunction="default"
       {...props}

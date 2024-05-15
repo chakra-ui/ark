@@ -36,12 +36,7 @@ export const Navbar = () => {
         </HStack>
       </HStack>
       <Divider display={{ base: 'block', md: 'none' }} />
-      <Box
-        display={{ base: 'block', md: 'none' }}
-        bg="bg.default"
-        minH="11"
-        borderBottomWidth="1px"
-      >
+      <Box display={{ base: 'block', md: 'none' }} minH="11">
         <HStack gap="2" py="1.5" px="4">
           <MobileSidebarContainer>
             <Sidebar groups={groups} />
