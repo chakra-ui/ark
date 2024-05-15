@@ -76,6 +76,11 @@ export default defineConfig({
             whiteSpace: 'pre',
           },
         },
+        kbd: {
+          base: {
+            whiteSpace: 'pre',
+          },
+        },
       },
       tokens: {
         fonts: {

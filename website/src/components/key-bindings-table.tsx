@@ -1,5 +1,5 @@
 import { type AccessibilityDocKey, getAccessibilityDoc } from '@zag-js/docs'
-import { Box } from 'styled-system/jsx'
+import { Box, HStack } from 'styled-system/jsx'
 import { Kbd, Table } from './ui'
 
 interface Props {
@@ -26,7 +26,13 @@ export const KeyBindingsTable = (props: Props) => {
           {keyboard.map((item, id) => (
             <Table.Row key={id}>
               <Table.Cell px="4" py="2">
-                <Kbd color="gray.a11">{item.keys.map((key) => key)}</Kbd>
+                <HStack gap="1">
+                  {item.keys.map((key) => (
+                    <Kbd key={key} color="gray.a11" size="sm" px="1">
+                      {key}
+                    </Kbd>
+                  ))}
+                </HStack>
               </Table.Cell>
               <Table.Cell px="4" py="2" dangerouslySetInnerHTML={{ __html: item.description }} />
             </Table.Row>
