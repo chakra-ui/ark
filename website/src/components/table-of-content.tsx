@@ -53,7 +53,7 @@ export const TableOfContent = (props: Props) => {
             </SegmentGroup.Item>
           </a>
         ))}
-        <SegmentGroup.Indicator borderColor="#EB5E41" />
+        <SegmentGroup.Indicator />
       </SegmentGroup.Root>
     </nav>
   )
