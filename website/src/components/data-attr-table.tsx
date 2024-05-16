@@ -1,16 +1,22 @@
 import { type DataAttrKey, getDataAttrDoc } from '@zag-js/docs'
+import { Effect, pipe } from 'effect'
 import { Box } from 'styled-system/jsx'
 import { Code, Table } from './ui'
 
-type Props = {
+interface Props {
   component: string
   part: string
 }
 
 export const DataAttrTable = (props: Props) => {
   const { component, part } = props
-  const properties = getDataAttrDoc(component as DataAttrKey)[part]
 
+  const properties = Effect.runSync(
+    pipe(
+      Effect.try(() => getDataAttrDoc(component as DataAttrKey)[part]),
+      Effect.catchAll(() => Effect.succeed(null)),
+    ),
+  )
   if (!properties) {
     return null
   }
