@@ -1,3 +1,4 @@
+'use client'
 import {
   RatingGroup as ArkRatingGroup,
   type RatingGroupRootProps,

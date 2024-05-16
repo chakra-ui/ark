@@ -1,3 +1,4 @@
+'use client'
 import { PinInput as ArkPinInput, type PinInputRootProps } from '@ark-ui/react/pin-input'
 import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'

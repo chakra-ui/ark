@@ -1,4 +1,3 @@
-import { Portal } from '@ark-ui/react'
 import {
   ChevronRightIcon,
   CreditCardIcon,
@@ -62,31 +61,29 @@ export const Demo = (props: Menu.RootProps) => {
                 </HStack>
                 <ChevronRightIcon />
               </Menu.TriggerItem>
-              <Portal>
-                <Menu.Positioner>
-                  <Menu.Content>
-                    <Menu.Item value="email">
-                      <HStack gap="2">
-                        <MailIcon />
-                        Email
-                      </HStack>
-                    </Menu.Item>
-                    <Menu.Item value="message">
-                      <HStack gap="2">
-                        <MessageSquareIcon />
-                        Message
-                      </HStack>
-                    </Menu.Item>
-                    <Menu.Separator />
-                    <Menu.Item value="other">
-                      <HStack gap="2">
-                        <PlusCircleIcon />
-                        More Options...
-                      </HStack>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Positioner>
-              </Portal>
+              <Menu.Positioner>
+                <Menu.Content>
+                  <Menu.Item value="email">
+                    <HStack gap="2">
+                      <MailIcon />
+                      Email
+                    </HStack>
+                  </Menu.Item>
+                  <Menu.Item value="message">
+                    <HStack gap="2">
+                      <MessageSquareIcon />
+                      Message
+                    </HStack>
+                  </Menu.Item>
+                  <Menu.Separator />
+                  <Menu.Item value="other">
+                    <HStack gap="2">
+                      <PlusCircleIcon />
+                      More Options...
+                    </HStack>
+                  </Menu.Item>
+                </Menu.Content>
+              </Menu.Positioner>
             </Menu.Root>
             <Menu.Separator />
             <Menu.Item value="logout">

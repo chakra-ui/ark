@@ -1,3 +1,4 @@
+'use client'
 import { Button, Editable, FormLabel } from '~/components/ui'
 
 export const Demo = (props: Editable.RootProps) => {

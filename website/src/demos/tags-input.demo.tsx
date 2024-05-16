@@ -1,3 +1,4 @@
+'use client'
 import { XIcon } from 'lucide-react'
 import { Button, IconButton, TagsInput } from '~/components/ui'
 

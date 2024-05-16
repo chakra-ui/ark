@@ -1,4 +1,3 @@
-'use client'
 import dynamic from 'next/dynamic'
 import { Flex } from 'styled-system/jsx'
 
@@ -10,6 +9,7 @@ export const ComponentPreview = (props: Props) => {
   const { id } = props
   // @ts-expect-error
   const Demo = dynamic(() => import('~/demos').then((mod) => mod[id]).catch(() => null))
+
   return (
     <Flex
       minH="40"

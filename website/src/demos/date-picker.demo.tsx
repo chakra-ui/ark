@@ -1,3 +1,4 @@
+'use client'
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import { Button, DatePicker, IconButton, Input } from '~/components/ui'
 

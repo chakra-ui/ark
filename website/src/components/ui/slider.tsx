@@ -1,3 +1,4 @@
+'use client'
 import { Slider as ArkSlider, type SliderRootProps } from '@ark-ui/react/slider'
 import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'

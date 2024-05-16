@@ -1,3 +1,4 @@
+'use client'
 import { PipetteIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
 import { ColorPicker, IconButton, Input, Text } from '~/components/ui'
