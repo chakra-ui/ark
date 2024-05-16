@@ -7,3 +7,4 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { ShadowRoot } from './examples/shadow-root'

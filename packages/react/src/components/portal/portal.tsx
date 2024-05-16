@@ -1,3 +1,4 @@
+import { isShadowRoot } from '@zag-js/dom-query'
 import { Children, type PropsWithChildren, type RefObject } from 'react'
 import { createPortal } from 'react-dom'
 import { useEnvironmentContext } from '../../providers'
@@ -15,8 +16,16 @@ export const Portal = (props: PropsWithChildren<PortalProps>) => {
 
   if (isServer || disabled) return <>{children}</>
 
-  const doc = getRootNode?.().ownerDocument ?? document
-  const mountNode = container?.current ?? doc.body
+  const providedRootNode = getRootNode?.()
+  const rootNode = providedRootNode.getRootNode()
+  const doc = providedRootNode.ownerDocument ?? document
+  const mountNode =
+    container?.current ??
+    (isShadowRoot(providedRootNode)
+      ? providedRootNode
+      : isShadowRoot(rootNode)
+        ? rootNode
+        : doc.body)
 
   return <>{Children.map(children, (child) => createPortal(child, mountNode))}</>
 }
