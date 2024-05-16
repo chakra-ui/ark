@@ -18,15 +18,21 @@ export const FrameworkSelect = () => {
     <Select.Root
       defaultValue={[params.framework]}
       onValueChange={(e) => router.push(pathname.replace(params.framework, e.value[0]))}
-      size="md"
       items={items}
+      positioning={{ placement: 'bottom' }}
       variant="ghost"
-      positioning={{ placement: 'bottom-end' }}
+      size="sm"
     >
       <Select.Control>
-        <Select.Trigger>
+        <Select.Trigger
+          color="fg.muted"
+          fontWeight="medium"
+          px="0"
+          _hover={{ bg: 'transparent' }}
+          gap="1"
+        >
           <Select.ValueText placeholder="Select a Framework" />
-          <Icon color="fg.default" size="sm">
+          <Icon size="sm">
             <ChevronDownIcon />
           </Icon>
         </Select.Trigger>

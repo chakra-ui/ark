@@ -1,11 +1,13 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
+import { MessageCircleIcon, SendIcon } from 'lucide-react'
+import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import NextLink from 'next/link'
-import { Box, Divider, HStack } from 'styled-system/jsx'
+import { Box, Divider, Flex, HStack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { FrameworkSelect } from '../framework-select'
 import { Logo } from '../logo'
-import { IconButton } from '../ui'
+import { Icon, IconButton, Text } from '../ui'
 import { Breadcrumbs } from './breadcrumbs'
 import { MobileSidebarContainer } from './mobile-sidebar-container'
 import { Sidebar } from './sidebar'
@@ -22,18 +24,35 @@ export const Navbar = () => {
             </NextLink>
           </Box>
         </Box>
-        <HStack gap="3">
+
+        <Flex alignItems="center">
+          <HStack gap="6">
+            <Text textStyle="sm" fontWeight="medium" color="accent.default">
+              Docs
+            </Text>
+            <NextLink href="/showcase">
+              <Text textStyle="sm" fontWeight="medium" color="fg.muted">
+                Showcase
+              </Text>
+            </NextLink>
+            <NextLink href="/showcase">
+              <Text textStyle="sm" fontWeight="medium" color="fg.muted">
+                Examples
+              </Text>
+            </NextLink>
+          </HStack>
+          <Divider orientation="vertical" h="6" ms="5" me="4" />
           <FrameworkSelect />
-          <Divider orientation="vertical" h="6" />
-          <HStack gap="1">
+          <Divider orientation="vertical" h="6" ms="4" me="2" />
+          <HStack gap="0.5">
             <ColorModeButton />
-            <IconButton asChild variant="ghost">
+            <IconButton asChild variant="link" color="fg.muted" width="8">
               <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">
                 <SiGithub />
               </a>
             </IconButton>
           </HStack>
-        </HStack>
+        </Flex>
       </HStack>
       <Divider display={{ base: 'block', md: 'none' }} />
       <Box display={{ base: 'block', md: 'none' }} minH="11">
