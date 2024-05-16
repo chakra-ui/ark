@@ -92,7 +92,9 @@ async function extractPropertiesOfTypeName(
 
   // Only document types that are component props
   const foo = Object.fromEntries(
-    Object.entries(results).filter(([key]) => key.endsWith('Props') || key.endsWith('Emits')),
+    Object.entries(results).filter(
+      ([key]) => (!key.startsWith('Use') && key.endsWith('Props')) || key.endsWith('Emits'),
+    ),
   )
 
   return Object.keys(foo).length ? results : null
@@ -201,7 +203,10 @@ const extractTypesForFramework = async (framework: string) => {
                     voca.titleCase(component.split('/').pop()).replace('-', ''),
                     '',
                   )
-                  const newName = voca.isEmpty(shortName) ? 'Root' : shortName
+
+                  const newName =
+                    voca.isEmpty(shortName) || shortName === 'Emits' ? x[0] : shortName
+
                   return [newName, { props: Object.fromEntries(Object.entries(x[1])) }]
                 })
                 .filter((y) => Object.keys(y[1]).length !== 0),

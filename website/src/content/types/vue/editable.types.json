@@ -87,7 +87,7 @@
         "description": "Whether the editable is disabled"
       },
       "finalFocusEl": {
-        "type": "() => HTMLElement",
+        "type": "() => HTMLElement | null",
         "isRequired": false,
         "description": "The element that should receive focus when the editable is closed.\nBy default, it will focus on the trigger element."
       },
