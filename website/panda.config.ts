@@ -65,6 +65,7 @@ export default defineConfig({
         '--colors-prose-link': 'colors.fg.default',
         '--colors-prose-code': 'colors.fg.muted',
         '--colors-prose-hr-border': 'colors.border.subtle',
+        '--colors-prose-quote-border': 'colors.accent.default',
       },
     },
   },

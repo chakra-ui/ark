@@ -1,7 +1,24 @@
 ---
 id: locale
 title: Locale
-description: Setup components for a custom locale like RTL, LTR or a custom language.
+description: Locale provider for setting the locale and direction of the app.
 ---
 
-## Introduction
+## Setup
+
+The `LocaleProvider` component sets the locale for your app, formatting dates, numbers, and other locale-specific data.
+
+> **Note:** If no `LocaleProvider` is setup, the default locale for the app will be `en-US` and therefore the direction will be `ltr`.
+
+
+<Example id="setup" />
+
+## Usage
+
+To access the current locale and direction settings, use the `useLocaleContext` hook.
+
+<Example id="usage" />
+
+## API Reference
+
+<ComponentTypes id="locale" />

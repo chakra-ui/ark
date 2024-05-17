@@ -3,8 +3,9 @@
     "props": {
       "locale": {
         "type": "string",
+        "defaultValue": "'en-US'",
         "isRequired": true,
-        "description": "The locale to use. For example, 'en-US'."
+        "description": "The locale to use for the application."
       }
     }
   }
