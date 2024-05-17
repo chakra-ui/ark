@@ -6,14 +6,18 @@ description: Learn how to style Ark UI components.
 
 ## Overview
 
-Ark UI is a headless component library that works with any styling solution. It provides functional styles for elements like popovers for positioning, while leaving presentation styles up to you. Some components also expose CSS variables that can be used for styling or animations.
+Ark UI is a headless component library that works with any styling solution. It provides functional
+styles for elements like popovers for positioning, while leaving presentation styles up to you. Some
+components also expose CSS variables that can be used for styling or animations.
 
-> **Tip:** Looking for a ready-to-use solution? Checkout [Park UI](https://park-ui.com) for a collection of pre-designed styles based on Ark UI components.
-
+> **Tip:** Looking for a ready-to-use solution? Checkout [Park UI](https://park-ui.com) for a
+> collection of pre-designed styles based on Ark UI components.
 
 ### Data Attributes
 
-Ark UI components use `data-scope` and `data-part` attributes to target specific elements within a component. Interactive components often include `data-*` attributes to indicate their state. For example, here's what an open accordion item looks like:
+Ark UI components use `data-scope` and `data-part` attributes to target specific elements within a
+component. Interactive components often include `data-*` attributes to indicate their state. For
+example, here's what an open accordion item looks like:
 
 ```html
 <div data-scope="accordion" data-part="item" data-state="open"></div>
@@ -23,7 +27,8 @@ For more details on each component's data attributes, refer to their respective 
 
 ## Styling with CSS
 
-When styling components with CSS, you can target the data attributes assigned to each component part for easy customization.
+When styling components with CSS, you can target the data attributes assigned to each component part
+for easy customization.
 
 ### Styling a Part
 
@@ -45,15 +50,18 @@ To style a component based on its state, use the `data-state` attribute:
 }
 ```
 
-> **Tip:** If you prefer using classes instead of data attributes, utilize the `class` or `className` prop to add custom classes to Ark UI components.
+> **Tip:** If you prefer using classes instead of data attributes, utilize the `class` or
+> `className` prop to add custom classes to Ark UI components.
 
 ## Styling with Panda
 
-[Panda CSS](https://panda-css.com) is a build-time CSS-in-JS framework that integrates seamlessly with Ark UI, providing an efficient styling solution.
+[Panda CSS](https://panda-css.com) is a build-time CSS-in-JS framework that integrates seamlessly
+with Ark UI, providing an efficient styling solution.
 
 ### Styling a part
 
-Panda offers various ways to write styles, but in the context of Ark UI, we recommend using the `defineSlotRecipe` function to style a component with its different parts and variants.
+Panda offers various ways to write styles, but in the context of Ark UI, we recommend using the
+`defineSlotRecipe` function to style a component with its different parts and variants.
 
 ```ts
 import { accordionAnatomy } from '@ark-ui/anatomy'
@@ -74,7 +82,8 @@ export const accordionStyles = defineSlotRecipe({
 
 ### Styling a state
 
-To style a component based on its state, you can use build in [conditions](https://panda-css.com/docs/customization/conditions) in Panda CSS.
+To style a component based on its state, you can use build in
+[conditions](https://panda-css.com/docs/customization/conditions) in Panda CSS.
 
 ```ts
 import { accordionAnatomy } from '@ark-ui/anatomy'
@@ -98,11 +107,13 @@ export const accordionStyles = defineSlotRecipe({
 
 ## Styling with Tailwind CSS
 
-[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework providing a flexible way to style your components.
+[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework providing a flexible way
+to style your components.
 
 ### Styling a Part
 
-To style a part, apply classes directly to the parts using either `class` or `className`, depending on the JavaScript framework.
+To style a part, apply classes directly to the parts using either `class` or `className`, depending
+on the JavaScript framework.
 
 ```jsx
 <Accordion.Root>

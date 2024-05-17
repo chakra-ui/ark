@@ -8,8 +8,8 @@ description: A field that allows user input of numeric values.
 
 ## Anatomy
 
-To set up the number input correctly, you'll need to understand its anatomy and
-how we name its parts.
+To set up the number input correctly, you'll need to understand its anatomy and how we name its
+parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,47 +17,44 @@ how we name its parts.
 
 ## Examples
 
-Learn how to use the `NumberInput` component in your project. Let's take a look
-at the most basic example:
+Learn how to use the `NumberInput` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Setting a minimum and maximum value
 
-Pass the `min` prop or `max` prop to set an upper and lower limit for the input.
-By default, the input will restrict the value to stay within the specified
-range.
+Pass the `min` prop or `max` prop to set an upper and lower limit for the input. By default, the
+input will restrict the value to stay within the specified range.
 
 <Example id="min-max" />
 ### Adjusting the precision of the value
 
-In some cases, you might need the value to be rounded to specific decimal
-points. Set the `formatOptions` and provide `Intl.NumberFormatOptions` such as
-`maximumFractionDigits` or `minimumFractionDigits`.
+In some cases, you might need the value to be rounded to specific decimal points. Set the
+`formatOptions` and provide `Intl.NumberFormatOptions` such as `maximumFractionDigits` or
+`minimumFractionDigits`.
 
 <Example id="fraction-digits" />
 
 ### Scrubbing the input value
 
-The NumberInput supports the scrubber interaction pattern. To use this pattern,
-render the `NumberInput.Scrubber` component. It uses the Pointer lock API and
-tracks the pointer movement. It also renders a virtual cursor which mimics the
-real cursor's pointer.
+The NumberInput supports the scrubber interaction pattern. To use this pattern, render the
+`NumberInput.Scrubber` component. It uses the Pointer lock API and tracks the pointer movement. It
+also renders a virtual cursor which mimics the real cursor's pointer.
 
 <Example id="scrubber" />
 
 ### Using the mouse wheel to change value
 
-The NumberInput exposes a way to increment/decrement the value using the mouse
-wheel event. To activate this, set the `allowMouseWheel` prop to `true`.
+The NumberInput exposes a way to increment/decrement the value using the mouse wheel event. To
+activate this, set the `allowMouseWheel` prop to `true`.
 
 <Example id="mouse-wheel" />
 
 ### Clamp value when user blurs the input
 
-In most cases, users can type custom values in the input field. If the typed
-value is greater than the max, the value is reset to max when the user blur out
-of the input.
+In most cases, users can type custom values in the input field. If the typed value is greater than
+the max, the value is reset to max when the user blur out of the input.
 
 To disable this behavior, pass `clampValueOnBlur` and set to `false`.
 
@@ -71,8 +68,8 @@ To use the number input within forms, set the `name` prop.
 
 ### Format and parse value
 
-To apply custom formatting to the input's value, set the `formatOptions` and
-provide `Intl.NumberFormatOptions` such as `style` and `currency`.
+To apply custom formatting to the input's value, set the `formatOptions` and provide
+`Intl.NumberFormatOptions` such as `style` and `currency`.
 
 <Example id="formatted" />
 
@@ -82,7 +79,8 @@ provide `Intl.NumberFormatOptions` such as `style` and `currency`.
 
 ## Accessibility
 
-Complies with the [Spinbutton WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/).
+Complies with the
+[Spinbutton WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/).
 
 ### Keyboard Support
 

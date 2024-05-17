@@ -1,37 +1,34 @@
 ---
 id: presence
 title: Presence
-description: Helps control the rendering and unmounting of your content based on a given
-  state.
+description: Helps control the rendering and unmounting of your content based on a given state.
 ---
 
 ## Examples
 
-By default the child component starts out as hidden and remains hidden after the
-`present` state is toggled off. This is useful for situations where the element
-needs to be hidden initially and continue to stay hidden after its presence is
-no longer required.
+By default the child component starts out as hidden and remains hidden after the `present` state is
+toggled off. This is useful for situations where the element needs to be hidden initially and
+continue to stay hidden after its presence is no longer required.
 
 <Example id="basic" />
 
 ### Lazy Mount
 
-To delay the mounting of a child component until the `present` prop is set to
-true, use the `lazyMount` prop:
+To delay the mounting of a child component until the `present` prop is set to true, use the
+`lazyMount` prop:
 
 <Example id="lazy-mount" />
 
 ### Unmount on Exit
 
-To remove the child component from the DOM when it's not present, use the
-`unmountOnExit` prop:
+To remove the child component from the DOM when it's not present, use the `unmountOnExit` prop:
 
 <Example id="unmount-on-exit" />
 
 ### Combining Lazy Mount and Unmount on Exit
 
-Both `lazyMount` and `unmountOnExit` can be combined for a component to be
-mounted only when it's present and to be unmounted when it's no longer present:
+Both `lazyMount` and `unmountOnExit` can be combined for a component to be mounted only when it's
+present and to be unmounted when it's no longer present:
 
 <Example id="lazy-mount-and-unmount-on-exit" />
 

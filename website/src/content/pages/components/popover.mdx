@@ -8,8 +8,7 @@ description: An overlay that displays additional information or options when tri
 
 ## Anatomy
 
-To set up the popover correctly, you'll need to understand its anatomy and how
-we name its parts.
+To set up the popover correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,25 +16,25 @@ we name its parts.
 
 ## Examples
 
-Learn how to use the `Popover` component in your project. Let's take a look at
-the most basic example:
+Learn how to use the `Popover` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Using a Portal
 
-By default, the popover is rendered in the same DOM hierarchy as the trigger. To
-render the popover within a portal, set the `portalled` prop to `true`.
+By default, the popover is rendered in the same DOM hierarchy as the trigger. To render the popover
+within a portal, set the `portalled` prop to `true`.
 
-> Note: This requires that you render the component within a `Portal` based on
-> the framework you use.
+> Note: This requires that you render the component within a `Portal` based on the framework you
+> use.
 
 <Example id="portalled" />
 
 ### Adding an arrow
 
-To render an arrow within the popover, render the component `Popover.Arrow` and
-`Popover.ArrowTip` as children of `Popover.Positioner`.
+To render an arrow within the popover, render the component `Popover.Arrow` and `Popover.ArrowTip`
+as children of `Popover.Positioner`.
 
 <Example id="arrow" />
 
@@ -53,14 +52,13 @@ Use the `isOpen` prop to control the open state of the popover.
 
 ### Modifying the close behavior
 
-The popover is designed to close on blur and when the <kbd>esc</kbd> key is
-pressed.
+The popover is designed to close on blur and when the <kbd>esc</kbd> key is pressed.
 
-To prevent it from closing on blur (clicking or focusing outside), pass the
-`closeOnInteractOutside` prop and set it to `false`.
+To prevent it from closing on blur (clicking or focusing outside), pass the `closeOnInteractOutside`
+prop and set it to `false`.
 
-To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the
-`closeOnEsc` prop and set it to `false`.
+To prevent it from closing when the <kbd>esc</kbd> key is pressed, pass the `closeOnEsc` prop and
+set it to `false`.
 
 <Example id="close-behavior" />
 
@@ -79,8 +77,8 @@ In some cases, you might want the popover to be modal. This means that it'll:
 - disable pointer interactions outside the popover
 - hide content behind the popover from screen readers
 
-To make the popover modal, set the `modal` prop to `true`. When `modal={true}`,
-we set the `portalled` attribute to `true` as well.
+To make the popover modal, set the `modal` prop to `true`. When `modal={true}`, we set the
+`portalled` attribute to `true` as well.
 
 <Example id="modal" />
 

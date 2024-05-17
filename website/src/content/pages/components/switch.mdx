@@ -8,8 +8,7 @@ description: A control element that allows for a binary selection.
 
 ## Anatomy
 
-To set up the switch correctly, you'll need to understand its anatomy and how we
-name its parts.
+To set up the switch correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,33 +16,32 @@ name its parts.
 
 ### Design impact on the asChild property
 
-The `Switch.Root` element of the switch is a `label` element. This is because
-the switch is a form control and should be associated with a label to provide
-context and meaning to the user. Otherwise, the HTML and accessibility structure
-will be invalid.
+The `Switch.Root` element of the switch is a `label` element. This is because the switch is a form
+control and should be associated with a label to provide context and meaning to the user. Otherwise,
+the HTML and accessibility structure will be invalid.
 
-> If you need to use the `asChild` property, make sure that the `label` element
-> is the direct child of the `Switch.Root` component.
+> If you need to use the `asChild` property, make sure that the `label` element is the direct child
+> of the `Switch.Root` component.
 
 ## Examples
 
-Learn how to use the `Switch` component in your project. Let's take a look at
-the most basic example:
+Learn how to use the `Switch` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Controlled Switch
 
-For a controlled Switch component, the state of the toggle is managed using the
-checked prop, and updates when the `onCheckedChange` event handler is called:
+For a controlled Switch component, the state of the toggle is managed using the checked prop, and
+updates when the `onCheckedChange` event handler is called:
 
 <Example id="controlled" />
 
 ### Render Prop Usage
 
-The Switch component also allows for a render prop, granting direct access to
-its internal state. This enables you to dynamically adjust and customize aspects
-of the component based on its current state:
+The Switch component also allows for a render prop, granting direct access to its internal state.
+This enables you to dynamically adjust and customize aspects of the component based on its current
+state:
 
 <Example id="render-prop" />
 
@@ -53,7 +51,8 @@ of the component based on its current state:
 
 ## Accessibility
 
-Complies with the [Switch WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/).
+Complies with the
+[Switch WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/).
 
 ### Keyboard Support
 
