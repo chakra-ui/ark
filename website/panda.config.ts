@@ -55,6 +55,13 @@ export default defineConfig({
         overflowX: 'auto',
         fontSize: '13px !important',
       },
+      blockquote: {
+        fontStyle: 'normal!',
+        fontWeight: 'normal!',
+      },
+      strong: {
+        color: 'fg.default!',
+      },
       code: {
         fontFamily: 'code',
       },

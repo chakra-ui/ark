@@ -4,55 +4,120 @@ title: Styling
 description: Learn how to style Ark UI components.
 ---
 
-Ark UI is a headless component library compatible with any styling solution,
-offering broad flexibility and integration options.
+## Overview
 
-<InfoBanner title="Looking for a ready-to-use solution?">
-  Explore <a href="https://park-ui.com">Park UI's</a> extensive collection of pre-designed styles
-  based on Ark UI components.
-</InfoBanner>
+Ark UI is a headless component library that works with any styling solution. It provides functional styles for elements like popovers for positioning, while leaving presentation styles up to you. Some components also expose CSS variables that can be used for styling or animations.
 
-## Styling Parts
+> **Tip:** Looking for a ready-to-use solution? Checkout [Park UI](https://park-ui.com) for a collection of pre-designed styles based on Ark UI components.
 
-Each component part in Ark UI is designated with `data-scope` and `data-part`
-attributes. The `data-scope` attribute identifies the component, while
-`data-part` specifies the individual part of the component.
 
-> This approach aligns with the upcoming
-> [CSS Scopes Specification](https://drafts.csswg.org/css-cascade-6/#example-463550a5).
+### Data Attributes
 
-## Styling States
+Ark UI components use `data-scope` and `data-part` attributes to target specific elements within a component. Interactive components often include `data-*` attributes to indicate their state. For example, here's what an open accordion item looks like:
 
-Interactive components in Ark UI often include `data-*` attributes to reflect
-their current state.
+```html
+<div data-scope="accordion" data-part="item" data-state="open"></div>
+```
 
-For example, tab trigger and content elements will have a `data-selected`
-attribute when their `value` aligns with the active tab.
+For more details on each component's data attributes, refer to their respective documentation.
 
-Additional attributes like `data-disabled`, `data-readonly`, `data-focus`,
-`data-orientation`, etc., are provided to facilitate styling based on component
-state.
+## Styling with CSS
 
-## Integrating with Component Libraries
+When styling components with CSS, you can target the data attributes assigned to each component part for easy customization.
 
-When integrating Ark UI with component libraries such as Chakra UI or Material
-UI, the `asChild` prop allows for swapping Ark UI elements with those from your
-chosen library while preserving their original functionality.
+### Styling a Part
 
-> Important: For React users, ensure that your element supports the
-> `React.forwardRef` API. This is crucial for correctly forwarding the ref.
+To style a specific component part, target its `data-scope` and `data-part` attributes:
 
-```tsx
-import { Tabs } from '@ark-ui/react'
-import { Button } from '@chakra-ui/react'
+```css
+[data-scope='accordion'][data-part='item'] {
+  border-bottom: 1px solid #e5e5e5;
+}
+```
 
-const Demo = () => (
-  <Tabs.Root>
-    <Tabs.List>
-      <Tabs.Trigger value="react" asChild>
-        <Button variant="outline">React</Button>
-      </Tabs.Trigger>
-    </Tabs.List>
-  </Tabs.Root>
-)
+### Styling a State
+
+To style a component based on its state, use the `data-state` attribute:
+
+```css
+[data-scope='accordion'][data-part='item'][data-state='open'] {
+  background-color: #f5f5f5;
+}
+```
+
+> **Tip:** If you prefer using classes instead of data attributes, utilize the `class` or `className` prop to add custom classes to Ark UI components.
+
+## Styling with Panda
+
+[Panda CSS](https://panda-css.com) is a build-time CSS-in-JS framework that integrates seamlessly with Ark UI, providing an efficient styling solution.
+
+### Styling a part
+
+Panda offers various ways to write styles, but in the context of Ark UI, we recommend using the `defineSlotRecipe` function to style a component with its different parts and variants.
+
+```ts
+import { accordionAnatomy } from '@ark-ui/anatomy'
+import { defineSlotRecipe } from '@pandacss/dev'
+
+export const accordionStyles = defineSlotRecipe({
+  className: 'accordion',
+  slots: accordionAnatomy.keys(),
+  base: {
+    item: {
+      borderBottom: '1px solid #e5e5e5',
+    },
+  },
+  defaultVariants: {},
+  variants: {},
+})
+```
+
+### Styling a state
+
+To style a component based on its state, you can use build in [conditions](https://panda-css.com/docs/customization/conditions) in Panda CSS.
+
+```ts
+import { accordionAnatomy } from '@ark-ui/anatomy'
+import { defineSlotRecipe } from '@pandacss/dev'
+
+export const accordionStyles = defineSlotRecipe({
+  className: 'accordion',
+  slots: accordionAnatomy.keys(),
+  base: {
+    item: {
+      borderBottom: '1px solid {colors.gray.300}',
+      _open: { // [!code highlight]
+        backgroundColor: 'gray.100',
+      },
+    },
+  },
+  defaultVariants: {},
+  variants: {},
+})
+```
+
+## Styling with Tailwind CSS
+
+[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework providing a flexible way to style your components.
+
+### Styling a Part
+
+To style a part, apply classes directly to the parts using either `class` or `className`, depending on the JavaScript framework.
+
+```jsx
+<Accordion.Root>
+  <Accordion.Item className="border-b border-gray-300">{/* … */}</Accordion.Item>
+</Accordion.Root>
+```
+
+### Styling a State
+
+Leverage Tailwind CSS's variant selector to style a component based on its data-state attribute.
+
+```jsx
+<Accordion.Root>
+  <Accordion.Item className="border-b border-gray-300 data-[data-state=open]:bg-gray-100">
+    {/* … */}
+  </Accordion.Item>
+</Accordion.Root>
 ```
