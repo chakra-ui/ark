@@ -1,9 +1,9 @@
-import { Environment } from '../..'
+import { EnvironmentProvider } from '../..'
 
 export const App = () => {
   return (
     <iframe title="IFrame Context">
-      <Environment>{/* Your App */}</Environment>
+      <EnvironmentProvider>{/* Your App */}</EnvironmentProvider>
     </iframe>
   )
 }

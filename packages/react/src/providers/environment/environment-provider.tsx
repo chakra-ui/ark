@@ -1,14 +1,14 @@
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type ReactNode, useMemo, useState } from 'react'
 import { runIfFn } from '../../utils/run-if-fn'
-import { EnvironmentProvider, type RootNode } from './use-environment-context'
+import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
 
-export interface EnvironmentProps {
+export interface EnvironmentProviderProps {
   children?: ReactNode
   value?: RootNode | (() => RootNode)
 }
 
-export const Environment = (props: EnvironmentProps) => {
+export const EnvironmentProvider = (props: EnvironmentProviderProps) => {
   const { value, children } = props
   const [spanRef, setSpanRef] = useState<HTMLSpanElement | null>()
 
@@ -26,9 +26,9 @@ export const Environment = (props: EnvironmentProps) => {
   )
 
   return (
-    <EnvironmentProvider value={environment}>
+    <EnvironmentContextProvider value={environment}>
       {children}
       {!value && <span hidden ref={setSpanRef} />}
-    </EnvironmentProvider>
+    </EnvironmentContextProvider>
   )
 }

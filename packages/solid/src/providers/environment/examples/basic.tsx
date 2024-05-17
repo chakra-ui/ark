@@ -1,13 +1,8 @@
-import { Environment, useEnvironmentContext } from '../..'
+import { EnvironmentProvider } from '../..'
+import { Usage } from './usage'
 
 export const Basic = () => (
-  <Environment>
-    <PrintEnvironment />
-  </Environment>
+  <EnvironmentProvider>
+    <Usage />
+  </EnvironmentProvider>
 )
-
-const PrintEnvironment = () => {
-  const environment = useEnvironmentContext()
-
-  return <pre>{JSON.stringify(environment().getRootNode(), null, 2)}</pre>
-}

@@ -1,24 +1,23 @@
 ---
 id: environment
 title: Environment
-description: Setup components for custom environments like IFrames, Shadow DOM, or Electron contexts.
+description: Set up components for custom environments like iframes, Shadow DOM, or Electron.
 ---
 
 ## Motivation
 
-We use [Zag.js](https://zagjs.com/overview/composition#custom-window-environment) internally,
-which relies on DOM query methods like `document.querySelectorAll` and `document.getElementById` to locate elements.
-In custom environments such as iframes, Shadow DOM, or Electron, these methods might not work as expected because `document` may not be available.
+We use [Zag.js](https://zagjs.com/overview/composition#custom-window-environment) internally, which relies on DOM query methods like `document.querySelectorAll` and `document.getElementById`.
+In custom environments like iframes, Shadow DOM, or Electron, these methods might not work as expected.
 
-To handle this, you can set a default using the `Environment` component. This ensures the correct root node or document is referenced.
+To handle this, Ark UI includes the `EnvironmentProvider`, allowing you to set the appropriate root node or document, ensuring correct DOM queries.
 
 ## Setup
 
-To target custom environments like an iframe, Shadow DOM, or Electron, render the `Environment` component to provide the environment context to all Ark UI components.
+To support custom environments like an iframe, Shadow DOM or Electron, render the `EnvironmentProvider` component to provide the environment context to all Ark UI components.
 
 <Example id="setup" />
 
-The `Environment` component will automatically detect the current environment and set the correct environment context.
+The `EnvironmentProvider` component will automatically detect the current environment and set the correct environment context.
 However, you can also manually set the `Document` like shown in this React example below:
 
 ```jsx
@@ -28,7 +27,9 @@ import { Environment } from '@ark-ui/react'
 export const App = () => (
   <Frame title="IFrame Context">
     <FrameContextConsumer>
-      {({ document }) => <Environment value={document}>{/* Your App */}</Environment>}
+      {({ document }) => (
+        <EnvironmentProvider value={document}>{/* Your App */}</EnvironmentProvider>
+      )}
     </FrameContextConsumer>
   </Frame>
 )

@@ -205,7 +205,9 @@ const extractTypesForFramework = async (framework: string) => {
                   )
 
                   const newName =
-                    voca.isEmpty(shortName) || shortName === 'Emits' ? x[0] : shortName
+                    voca.isEmpty(shortName) || shortName === 'Emits' || shortName === 'Provider'
+                      ? x[0]
+                      : shortName
 
                   return [newName, { props: Object.fromEntries(Object.entries(x[1])) }]
                 })

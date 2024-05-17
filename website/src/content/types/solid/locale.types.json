@@ -1,5 +1,5 @@
 {
-  "Provider": {
+  "LocaleProvider": {
     "props": {
       "locale": {
         "type": "string",

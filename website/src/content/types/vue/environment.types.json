@@ -1,5 +1,5 @@
 {
-  "Environment": {
+  "EnvironmentProvider": {
     "props": { "value": { "type": "RootNode | (() => RootNode)", "isRequired": false } }
   }
 }

@@ -1,4 +1,4 @@
-export { Environment, type EnvironmentProps } from './environment'
+export { EnvironmentProvider, type EnvironmentProviderProps } from './environment-provider'
 export {
   useEnvironmentContext,
   type EnvironmentContext,

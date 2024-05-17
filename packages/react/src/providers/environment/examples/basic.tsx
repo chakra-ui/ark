@@ -1,18 +1,13 @@
 import Frame from 'react-frame-component'
-import { Environment, useEnvironmentContext } from '../'
+import { EnvironmentProvider } from '../'
+import { Usage } from './usage'
 
 export const Basic = () => {
   return (
     <Frame title="IFrame Context" width="100%" height="300px">
-      <Environment>
-        <PrintEnvironment />
-      </Environment>
+      <EnvironmentProvider>
+        <Usage />
+      </EnvironmentProvider>
     </Frame>
   )
-}
-
-const PrintEnvironment = () => {
-  const { getRootNode } = useEnvironmentContext()
-
-  return <pre>{JSON.stringify(getRootNode(), null, 2)}</pre>
 }

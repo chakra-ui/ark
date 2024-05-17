@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Environment from '../environment.vue'
+import { EnvironmentProvider } from '..'
 import Usage from './usage.vue'
 </script>
 
 <template>
-  <Environment>
+  <EnvironmentProvider>
     <Usage />
-  </Environment>
+  </EnvironmentProvider>
 </template>

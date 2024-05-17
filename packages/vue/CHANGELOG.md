@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- Renamed `Environment` to `EnvironmentProvider` for consistency with other providers.
+
 ## [1.0.0-5] - 2024-05-15
 
 ### Fixed

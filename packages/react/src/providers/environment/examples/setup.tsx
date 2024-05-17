@@ -1,10 +1,10 @@
 import Frame from 'react-frame-component'
-import { Environment } from '../'
+import { EnvironmentProvider } from '../'
 
 export const App = () => {
   return (
     <Frame title="IFrame Context">
-      <Environment>{/* Your App */}</Environment>
+      <EnvironmentProvider>{/* Your App */}</EnvironmentProvider>
     </Frame>
   )
 }

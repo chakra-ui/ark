@@ -22,7 +22,7 @@ export interface EnvironmentContext {
   getWindow(): Window & typeof globalThis
 }
 
-export const [EnvironmentProvider, useEnvironmentContext] = createContext<
+export const [EnvironmentContextProvider, useEnvironmentContext] = createContext<
   Accessor<EnvironmentContext>
 >({
   hookName: 'useEnvironmentContext',

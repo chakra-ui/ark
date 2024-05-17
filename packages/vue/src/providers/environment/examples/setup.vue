@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Environment } from '../'
+import { EnvironmentProvider } from '../'
 </script>
 
 <template>
   <iframe title="IFrame Context">
-    <Environment><!-- Your App --></Environment>
+    <EnvironmentProvider><!-- Your App --></EnvironmentProvider>
   </iframe>
 </template>
