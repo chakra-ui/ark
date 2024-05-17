@@ -54,6 +54,7 @@ const findExamples = async (props: Props) => {
       const code = content
         .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
         .replaceAll(/from '\..*'/g, `from '@ark-ui/${framework}'`)
+        .replace(/.*@ts-expect-error.*\n/g, '')
 
       const html = await codeToHtml(code, {
         lang: extenstion,
