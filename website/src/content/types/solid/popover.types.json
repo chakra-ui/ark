@@ -1,12 +1,44 @@
 {
-  "Anchor": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Arrow": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ArrowTip": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "CloseTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Description": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Indicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Anchor": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Arrow": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ArrowTip": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "CloseTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Description": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "autoFocus": {
@@ -123,6 +155,14 @@
       }
     }
   },
-  "Title": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Title": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  }
 }

@@ -1,6 +1,14 @@
 {
-  "ItemContent": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemContent": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "value": {
@@ -8,7 +16,7 @@
         "isRequired": true,
         "description": "The value of the accordion item."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -16,10 +24,14 @@
       }
     }
   },
-  "ItemTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "collapsible": {
         "type": "boolean",
         "defaultValue": "false",

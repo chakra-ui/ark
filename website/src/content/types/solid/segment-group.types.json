@@ -1,19 +1,35 @@
 {
-  "Indicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemControl": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Indicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemControl": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "value": { "type": "string", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
       "invalid": { "type": "boolean", "isRequired": false }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "defaultValue": {
         "type": "string",
         "isRequired": false,

@@ -1,11 +1,39 @@
 {
-  "Area": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "CancelTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "EditTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Input": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Preview": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Area": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "CancelTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "EditTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
+  "Preview": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "activationMode": {
@@ -14,7 +42,7 @@
         "isRequired": false,
         "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "autoResize": {
         "type": "boolean",
         "isRequired": false,
@@ -139,5 +167,9 @@
       }
     }
   },
-  "SubmitTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "SubmitTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  }
 }

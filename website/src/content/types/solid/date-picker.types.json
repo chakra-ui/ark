@@ -1,28 +1,64 @@
 {
-  "ClearTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ClearTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Input": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false },
       "index": { "type": "number", "isRequired": false }
     }
   },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "MonthSelect": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "NextTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
+  "MonthSelect": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'select'>) => Element", "isRequired": false }
+    }
+  },
+  "NextTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "PresetTrigger": {
     "props": {
       "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
     }
   },
-  "PrevTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "RangeText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "PrevTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "RangeText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "true",
@@ -193,34 +229,66 @@
       }
     }
   },
-  "TableBody": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "TableBody": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'tbody'>) => Element", "isRequired": false }
+    }
+  },
   "TableCell": {
     "props": {
       "value": { "type": "number | DateValue", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'td'>) => Element", "isRequired": false },
       "columns": { "type": "number", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
       "visibleRange": { "type": "VisibleRange", "isRequired": false }
     }
   },
-  "TableCellTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TableHead": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TableHeader": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "TableCellTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "TableHead": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'thead'>) => Element", "isRequired": false }
+    }
+  },
+  "TableHeader": {
+    "props": { "asChild": { "type": "(props: ParentProps<'th'>) => Element", "isRequired": false } }
+  },
   "Table": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'table'>) => Element", "isRequired": false },
       "columns": { "type": "number", "isRequired": false }
     }
   },
-  "TableRow": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ViewControl": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "TableRow": {
+    "props": { "asChild": { "type": "(props: ParentProps<'tr'>) => Element", "isRequired": false } }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "ViewControl": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "View": {
     "props": {
       "view": { "type": "DateView", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   },
-  "ViewTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "YearSelect": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "ViewTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "YearSelect": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'select'>) => Element", "isRequired": false }
+    }
+  }
 }

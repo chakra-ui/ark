@@ -1,7 +1,7 @@
 {
   "Presence": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

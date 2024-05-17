@@ -1,9 +1,17 @@
 {
-  "Fallback": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Image": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Fallback": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "Image": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'img'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "id": {
         "type": "string",
         "isRequired": false,

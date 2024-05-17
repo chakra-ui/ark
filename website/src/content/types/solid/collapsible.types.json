@@ -1,8 +1,12 @@
 {
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Content": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
@@ -52,5 +56,9 @@
       }
     }
   },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Trigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  }
 }

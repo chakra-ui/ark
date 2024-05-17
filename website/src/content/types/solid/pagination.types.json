@@ -2,18 +2,26 @@
   "Ellipsis": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   },
   "Item": {
     "props": {
       "type": { "type": "'page'", "isRequired": true },
       "value": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
     }
   },
-  "NextTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "PrevTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "NextTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "PrevTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "count": {
@@ -21,7 +29,7 @@
         "isRequired": true,
         "description": "Total number of data items"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'nav'>) => Element", "isRequired": false },
       "defaultPage": {
         "type": "number",
         "isRequired": false,

@@ -1,9 +1,29 @@
 {
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "DecrementTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "IncrementTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Input": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "DecrementTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "IncrementTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "allowMouseWheel": {
@@ -17,7 +37,7 @@
         "isRequired": false,
         "description": "Whether to allow the value overflow the min/max range"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "clampValueOnBlur": {
         "type": "boolean",
         "defaultValue": "true",
@@ -140,5 +160,9 @@
       "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
     }
   },
-  "Scrubber": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Scrubber": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  }
 }

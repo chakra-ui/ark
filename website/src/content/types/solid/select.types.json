@@ -1,15 +1,47 @@
 {
-  "ClearTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "HiddenSelect": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Indicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroupLabel": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroup": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ClearTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "HiddenSelect": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'select'>) => Element", "isRequired": false }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "item": { "type": "any", "isRequired": false, "description": "The item to render" },
       "persistFocus": {
         "type": "boolean",
@@ -18,9 +50,21 @@
       }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "items": {
@@ -28,7 +72,7 @@
         "isRequired": true,
         "description": "The options of the select"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "true",
@@ -191,10 +235,14 @@
       }
     }
   },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Trigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
   "ValueText": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false },
       "placeholder": { "type": "string", "isRequired": false }
     }
   }

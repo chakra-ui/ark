@@ -81,14 +81,30 @@
       }
     }
   },
-  "ActionTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "CloseTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Description": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Title": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ActionTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "CloseTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Description": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Title": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "er": {
     "props": {
       "toaster": { "type": "CreateToasterReturn", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   }
 }
