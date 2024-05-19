@@ -12,7 +12,7 @@
     "@biomejs/biome": "1.7.3",
     "@icons-pack/react-simple-icons": "9.5.0",
     "@pandacss/dev": "0.39.1",
-    "@park-ui/panda-preset": "0.37.0",
+    "@park-ui/panda-preset": "0.37.1",
     "@shikijs/transformers": "1.6.0",
     "@types/node": "20.12.12",
     "@types/react": "18.3.2",

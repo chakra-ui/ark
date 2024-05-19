@@ -64,6 +64,9 @@ export default defineConfig({
       },
       code: {
         fontFamily: 'code',
+        '::selection': {
+          bg: 'gray.dark.a4',
+        },
       },
       article: {
         '--colors-prose-body': 'colors.fg.muted',
@@ -78,18 +81,6 @@ export default defineConfig({
   },
   theme: {
     extend: {
-      recipes: {
-        code: {
-          base: {
-            whiteSpace: 'pre',
-          },
-        },
-        kbd: {
-          base: {
-            whiteSpace: 'pre',
-          },
-        },
-      },
       tokens: {
         fonts: {
           body: { value: 'var(--font-outfit), sans-serif' },
