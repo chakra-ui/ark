@@ -1,5 +1,5 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { ColorPicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -25,8 +25,10 @@ describe('ColorPicker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
-  }, 7000)
+    await waitFor(() => {
+      expect(screen.queryByTestId('positioner')).toBeInTheDocument()
+    })
+  })
 
   it('should lazy mount and unmount on exit', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
@@ -37,6 +39,8 @@ describe('ColorPicker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
-  }, 7000)
+    await waitFor(() => {
+      expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+    })
+  })
 })
