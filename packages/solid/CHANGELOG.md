@@ -9,6 +9,7 @@ description: All notable changes will be documented in this file.
 ### Changed
 
 - Renamed `Environment` to `EnvironmentProvider` for consistency with other providers.
+- Revised `asChild` prop
 
 ## [3.0.0-5] - 2024-05-15
 
