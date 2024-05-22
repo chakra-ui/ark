@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Exported `Assign` and `Optional` types.
+
 ### Changed
 
 - Renamed `Environment` to `EnvironmentProvider` for consistency with other providers.
