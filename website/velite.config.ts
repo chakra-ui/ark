@@ -50,6 +50,7 @@ const types = defineCollection({
       s.string(),
       s.object({
         props: s.record(s.string(), PropDefintion),
+        element: s.string().optional(),
         emits: s.record(s.string(), PropDefintion).optional(),
       }),
     )
