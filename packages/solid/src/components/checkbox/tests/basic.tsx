@@ -8,7 +8,7 @@ export const ComponentUnderTest = (props: CheckboxRootProps) => (
       <Checkbox.Indicator>
         <CheckIcon />
       </Checkbox.Indicator>
-      <Checkbox.Indicator>
+      <Checkbox.Indicator indeterminate>
         <MinusIcon />
       </Checkbox.Indicator>
     </Checkbox.Control>

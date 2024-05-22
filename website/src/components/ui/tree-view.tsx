@@ -36,7 +36,6 @@ export const TreeView = forwardRef<HTMLDivElement, TreeViewProps>((props, ref) =
       </ArkTreeView.BranchControl>
       <ArkTreeView.BranchContent className={styles.branchContent}>
         {child.children?.map((child) =>
-          // biome-ignore lint/correctness/useJsxKeyInIterable: <explanation>
           child.children ? (
             renderChild(child)
           ) : (
