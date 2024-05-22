@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.0-7] - 2024-05-22
+
 ### Added
 
 - Exported `Assign` and `Optional` types.
