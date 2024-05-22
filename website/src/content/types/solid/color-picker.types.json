@@ -257,5 +257,10 @@
       "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
     }
   },
-  "View": { "props": { "format": { "type": "ColorFormat", "isRequired": true } } }
+  "View": {
+    "props": {
+      "format": { "type": "ColorFormat", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  }
 }

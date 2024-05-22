@@ -27,6 +27,7 @@ export const Basic = () => {
           <Toast.Root key={toast.id}>
             <Toast.Title>{toast.title}</Toast.Title>
             <Toast.Description>{toast.description}</Toast.Description>
+            <Toast.ActionTrigger>Do Action</Toast.ActionTrigger>
             <Toast.CloseTrigger>
               <XIcon />
             </Toast.CloseTrigger>

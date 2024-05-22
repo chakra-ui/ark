@@ -1,86 +1,4 @@
 {
-  "Createer": {
-    "props": {
-      "placement": {
-        "type": "Placement",
-        "isRequired": true,
-        "description": "The placement of the toast"
-      },
-      "count": { "type": "number", "isRequired": false },
-      "description": {
-        "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
-        "isRequired": false,
-        "description": "The description of the toast."
-      },
-      "dir": {
-        "type": "'rtl' | 'ltr'",
-        "defaultValue": "\"ltr\"",
-        "isRequired": false,
-        "description": "The document's text/writing direction."
-      },
-      "duration": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The duration the toast will be visible"
-      },
-      "gap": {
-        "type": "number",
-        "defaultValue": "16",
-        "isRequired": false,
-        "description": "The gap or spacing between toasts"
-      },
-      "getRootNode": {
-        "type": "() => Node | ShadowRoot | Document",
-        "isRequired": false,
-        "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
-      },
-      "hotkey": {
-        "type": "string[]",
-        "defaultValue": "'[\"altKey\", \"KeyT\"]'",
-        "isRequired": false,
-        "description": "The hotkey that will move focus to the toast group"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
-      "max": {
-        "type": "number",
-        "defaultValue": "Number.MAX_SAFE_INTEGER",
-        "isRequired": false,
-        "description": "The maximum number of toasts that can be shown at once"
-      },
-      "offsets": {
-        "type": "string | Record<'left' | 'right' | 'top' | 'bottom', string>",
-        "defaultValue": "\"1rem\"",
-        "isRequired": false,
-        "description": "The offset from the safe environment edge of the viewport"
-      },
-      "overlap": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the toasts should overlap each other"
-      },
-      "pauseOnPageIdle": {
-        "type": "boolean",
-        "defaultValue": "false",
-        "isRequired": false,
-        "description": "Whether to pause toast when the user leaves the browser tab"
-      },
-      "removeDelay": {
-        "type": "number",
-        "defaultValue": "200",
-        "isRequired": false,
-        "description": "The duration for the toast to kept alive before it is removed.\nUseful for exit transitions."
-      },
-      "title": {
-        "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
-        "isRequired": false,
-        "description": "The title of the toast."
-      }
-    }
-  },
   "ActionTrigger": {
     "props": {
       "asChild": {
@@ -131,7 +49,7 @@
     },
     "element": "HTMLDivElement"
   },
-  "er": {
+  "Toaster": {
     "props": {
       "toaster": { "type": "CreateToasterReturn", "isRequired": true },
       "asChild": {

@@ -92,9 +92,9 @@ async function extractPropertiesOfTypeName(
 
   // Only document types that are component props
   const foo = Object.fromEntries(
-    Object.entries(results).filter(
-      ([key]) => (!key.startsWith('Use') && key.endsWith('Props')) || key.endsWith('Emits'),
-    ),
+    Object.entries(results)
+      .filter(([key]) => (!key.startsWith('Use') && key.endsWith('Props')) || key.endsWith('Emits'))
+      .filter(([key]) => !key.endsWith('CreateToasterProps')),
   )
 
   return Object.keys(foo).length ? results : null
@@ -205,7 +205,10 @@ const extractTypesForFramework = async (framework: string) => {
                   )
 
                   const newName =
-                    voca.isEmpty(shortName) || shortName === 'Emits' || shortName === 'Provider'
+                    voca.isEmpty(shortName) ||
+                    shortName === 'Emits' ||
+                    shortName === 'Provider' ||
+                    shortName === 'er'
                       ? x[0]
                       : shortName
 

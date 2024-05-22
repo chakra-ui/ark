@@ -245,6 +245,6 @@
       },
       "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLDivElement"
   }
 }
