@@ -4,7 +4,9 @@ import { XIcon } from 'lucide-react'
 import { Button, Toast } from '~/components/ui'
 
 const toaster = createToaster({
-  placement: 'top-end',
+  placement: 'bottom-end',
+  overlap: true,
+  gap: 16,
 })
 
 export const Demo = () => (
