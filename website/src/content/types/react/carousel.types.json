@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "IndicatorGroup": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Indicator": {
     "props": {
@@ -26,7 +28,8 @@
         "description": "Render as a different element type."
       },
       "readOnly": { "type": "boolean", "isRequired": false }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "ItemGroup": {
     "props": {
@@ -35,7 +38,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -45,7 +49,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "NextTrigger": {
     "props": {
@@ -54,7 +59,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
@@ -63,7 +69,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -123,7 +130,8 @@
         "isRequired": false,
         "description": "The amount of space between slides."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Viewport": {
     "props": {
@@ -132,6 +140,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

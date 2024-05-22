@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Input": {
     "props": {
@@ -25,7 +27,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Label": {
     "props": {
@@ -34,7 +37,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -145,6 +149,7 @@
         "isRequired": false,
         "description": "The value of the the pin input."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

@@ -30,6 +30,9 @@
       },
       "complexity": {
         "noBannedTypes": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off"
       }
     }
   }

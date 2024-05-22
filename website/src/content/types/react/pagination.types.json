@@ -7,7 +7,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -18,7 +19,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "NextTrigger": {
     "props": {
@@ -27,7 +29,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
@@ -36,7 +39,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -99,6 +103,7 @@
         "isRequired": false,
         "description": "The type of the trigger element"
       }
-    }
+    },
+    "element": "HTMLElement"
   }
 }

@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -62,7 +63,8 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Trigger": {
     "props": {
@@ -71,6 +73,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   }
 }

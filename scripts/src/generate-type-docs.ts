@@ -232,12 +232,49 @@ const extractTypesForFramework = async (framework: string) => {
       }
     }),
   )
+  const regex = /forwardRef<\s*([^\s,]+)/
 
   Promise.all(
-    result.map(async ({ component, typeExports }) => {
+    result.map(async (foo) => {
+      const { component, typeExports } = foo
+      const files = await globby(path.join(component, '**/*.tsx'), { deep: 1 })
+
+      const elementMap = files
+        .map((file) => {
+          const content = fs.readFileSync(file, 'utf8')
+          const match = content.match(regex)
+          const firstTypeParameter = match ? match[1] : null
+          const name = kebabToPascal(path.parse(file).name.replace(path.basename(component), ''))
+          if (firstTypeParameter && name) {
+            return [name, firstTypeParameter]
+          }
+        })
+        .filter(Boolean)
+        .reduce((acc, value) => {
+          if (value) {
+            const [key, type] = value
+            return { ...acc, [key]: type }
+          }
+          return acc
+        }, {})
+
+      const typeExportsWithElement = Object.entries(typeExports)
+        .flatMap(([key, value]) => {
+          // @ts-expect-error
+          if (elementMap[key]) {
+            // @ts-expect-error
+            return { [key]: { ...value, element: elementMap[key] } }
+          }
+          return { [key]: value }
+        })
+        .filter(Boolean)
+        .reduce((acc, value) => {
+          return { ...acc, ...value }
+        })
+
       fs.outputFileSync(
         path.join(outDir, framework, `${path.basename(component)}.types.json`),
-        await prettier.format(JSON.stringify(typeExports), {
+        await prettier.format(JSON.stringify(typeExportsWithElement), {
           ...prettierConfig,
           parser: 'json',
         }),
@@ -257,3 +294,10 @@ main().catch((err) => {
   console.error(error.stack)
   process.exit(1)
 })
+
+function kebabToPascal(str: string) {
+  return str
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
+}

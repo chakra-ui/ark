@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLUListElement"
   },
   "BranchControl": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "BranchIndicator": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Branch": {
     "props": {
@@ -43,7 +46,8 @@
         "isRequired": false,
         "description": "Whether the item or branch is disabled"
       }
-    }
+    },
+    "element": "HTMLLIElement"
   },
   "BranchText": {
     "props": {
@@ -52,7 +56,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "BranchTrigger": {
     "props": {
@@ -61,7 +66,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemIndicator": {
     "props": {
@@ -70,7 +76,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -89,7 +96,8 @@
         "isRequired": false,
         "description": "Whether the item or branch is disabled"
       }
-    }
+    },
+    "element": "HTMLLIElement"
   },
   "ItemText": {
     "props": {
@@ -98,7 +106,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Label": {
     "props": {
@@ -107,7 +116,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -184,7 +194,8 @@
         "isRequired": false,
         "description": "Whether the tree supports typeahead search"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Tree": {
     "props": {
@@ -193,6 +204,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLUListElement"
   }
 }

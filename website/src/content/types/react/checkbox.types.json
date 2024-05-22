@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Indicator": {
     "props": {
@@ -25,7 +27,8 @@
         "description": "Render as a different element type."
       },
       "indeterminate": { "type": "boolean", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Label": {
     "props": {
@@ -34,7 +37,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Root": {
     "props": {
@@ -104,6 +108,7 @@
         "isRequired": false,
         "description": "The value of checkbox input. Useful for form submission."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   }
 }
