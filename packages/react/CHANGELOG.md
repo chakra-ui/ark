@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Replaced `HTMLInputElement` with `HTMLDivElement` in the `TagsInput.Root`
+
 ## [3.0.0-3] - 2024-05-22
 
 ### Added
