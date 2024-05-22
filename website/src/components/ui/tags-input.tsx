@@ -1,34 +1,65 @@
 'use client'
+import type { Assign } from '@ark-ui/react'
 import { TagsInput } from '@ark-ui/react/tags-input'
-import type { ComponentProps } from 'react'
-import { styled } from 'styled-system/jsx'
-import { tagsInput } from 'styled-system/recipes'
+import { type TagsInputVariantProps, tagsInput } from 'styled-system/recipes'
+import type { JsxStyleProps } from 'styled-system/types'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(tagsInput)
 
-export const Root = withProvider(styled(TagsInput.Root), 'root')
-export const ClearTrigger = withContext(styled(TagsInput.ClearTrigger), 'clearTrigger')
-export const Control = withContext(styled(TagsInput.Control), 'control')
-export const Input = withContext(styled(TagsInput.Input), 'input')
-export const Item = withContext(styled(TagsInput.Item), 'item')
-export const ItemDeleteTrigger = withContext(
-  styled(TagsInput.ItemDeleteTrigger),
-  'itemDeleteTrigger',
-)
-export const ItemInput = withContext(styled(TagsInput.ItemInput), 'itemInput')
-export const ItemPreview = withContext(styled(TagsInput.ItemPreview), 'itemPreview')
-export const ItemText = withContext(styled(TagsInput.ItemText), 'itemText')
-export const Label = withContext(styled(TagsInput.Label), 'label')
-export const Context = TagsInput.Context
+export interface RootProps
+  extends Assign<JsxStyleProps, TagsInput.RootProps>,
+    TagsInputVariantProps {}
+export const Root = withProvider<HTMLDivElement, RootProps>(TagsInput.Root, 'root')
 
-export interface RootProps extends ComponentProps<typeof Root> {}
-export interface ClearTriggerProps extends ComponentProps<typeof ClearTrigger> {}
-export interface ControlProps extends ComponentProps<typeof Control> {}
-export interface InputProps extends ComponentProps<typeof Input> {}
-export interface ItemProps extends ComponentProps<typeof Item> {}
-export interface ItemDeleteTriggerProps extends ComponentProps<typeof ItemDeleteTrigger> {}
-export interface ItemInputProps extends ComponentProps<typeof ItemInput> {}
-export interface ItemPreviewProps extends ComponentProps<typeof ItemPreview> {}
-export interface ItemTextProps extends ComponentProps<typeof ItemText> {}
-export interface LabelProps extends ComponentProps<typeof Label> {}
+export const ClearTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, TagsInput.ClearTriggerProps>
+>(TagsInput.ClearTrigger, 'clearTrigger')
+
+export const Control = withContext<HTMLDivElement, Assign<JsxStyleProps, TagsInput.ControlProps>>(
+  TagsInput.Control,
+  'control',
+)
+
+export const Input = withContext<HTMLInputElement, Assign<JsxStyleProps, TagsInput.InputProps>>(
+  TagsInput.Input,
+  'input',
+)
+
+export const ItemDeleteTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, TagsInput.ItemDeleteTriggerProps>
+>(TagsInput.ItemDeleteTrigger, 'itemDeleteTrigger')
+
+export const ItemInput = withContext<
+  HTMLInputElement,
+  Assign<JsxStyleProps, TagsInput.ItemInputProps>
+>(TagsInput.ItemInput, 'itemInput')
+
+export const ItemPreview = withContext<
+  HTMLDivElement,
+  Assign<JsxStyleProps, TagsInput.ItemPreviewProps>
+>(TagsInput.ItemPreview, 'itemPreview')
+
+export const Item = withContext<HTMLDivElement, Assign<JsxStyleProps, TagsInput.ItemProps>>(
+  TagsInput.Item,
+  'item',
+)
+
+export const ItemText = withContext<
+  HTMLSpanElement,
+  Assign<JsxStyleProps, TagsInput.ItemTextProps>
+>(TagsInput.ItemText, 'itemText')
+
+export const Label = withContext<HTMLLabelElement, Assign<JsxStyleProps, TagsInput.LabelProps>>(
+  TagsInput.Label,
+  'label',
+)
+
+export {
+  TagsInputContext as Context,
+  TagsInputHiddenInput as HiddenInput,
+  type TagsInputContextProps as ContextProps,
+  type TagsInputHiddenInputProps as HiddenInputProps,
+} from '@ark-ui/react/tags-input'

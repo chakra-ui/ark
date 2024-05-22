@@ -1,11 +1,14 @@
-import { Avatar as ArkAvatar, type AvatarRootProps } from '@ark-ui/react/avatar'
+import type { Assign } from '@ark-ui/react'
+import { Avatar as ArkAvatar } from '@ark-ui/react/avatar'
 import { forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
 import { type AvatarVariantProps, avatar } from 'styled-system/recipes'
-import type { Assign, JsxStyleProps } from 'styled-system/types'
+import type { JsxStyleProps } from 'styled-system/types'
 
-export interface AvatarProps extends Assign<JsxStyleProps, AvatarRootProps>, AvatarVariantProps {
+export interface AvatarProps
+  extends Assign<JsxStyleProps, ArkAvatar.RootProps>,
+    AvatarVariantProps {
   name?: string
   src?: string
 }

@@ -1,10 +1,10 @@
+import type { Assign } from '@ark-ui/react'
 import { TreeView as ArkTreeView, type TreeViewRootProps } from '@ark-ui/react/tree-view'
-import { ChevronRightIcon } from 'lucide-react'
 import { forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
 import { treeView } from 'styled-system/recipes'
-import type { Assign, JsxStyleProps } from 'styled-system/types'
+import type { JsxStyleProps } from 'styled-system/types'
 
 interface Child {
   value: string
@@ -61,3 +61,17 @@ export const TreeView = forwardRef<HTMLDivElement, TreeViewProps>((props, ref) =
 })
 
 TreeView.displayName = 'TreeView'
+
+const ChevronRightIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <title>Chevron Right Icon</title>
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="m9 18l6-6l-6-6"
+    />
+  </svg>
+)
