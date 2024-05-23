@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './checkbox.types'
 
-export interface CheckboxRootProps extends RootProps, PolymorphicProps {}
+export interface CheckboxRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ LabelHTMLAttributes {}
 export interface CheckboxRootEmits extends RootEmits {}
 </script>
 

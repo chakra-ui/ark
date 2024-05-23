@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { ContentProps } from '@zag-js/tabs'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TabContentProps extends PolymorphicProps, ContentProps {}
+export interface TabContentProps
+  extends PolymorphicProps,
+    ContentProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

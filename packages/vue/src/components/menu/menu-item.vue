@@ -1,9 +1,13 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/menu'
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuItemProps extends PolymorphicProps, ItemProps {}
+export interface MenuItemProps
+  extends PolymorphicProps,
+    ItemProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/date-picker'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerInputProps extends PolymorphicProps, InputProps {}
+export interface DatePickerInputProps
+  extends PolymorphicProps,
+    InputProps,
+    /* @vue-ignore */ InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

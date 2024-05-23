@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './carousel.types'
 
-export interface CarouselRootProps extends RootProps, PolymorphicProps {}
+export interface CarouselRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface CarouselRootEmits extends RootEmits {}
 </script>
 

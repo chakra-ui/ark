@@ -1,5 +1,6 @@
 <script lang="ts">
-export interface ToastRootProps extends PolymorphicProps {}
+import type { HTMLAttributes } from 'vue'
+export interface ToastRootProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

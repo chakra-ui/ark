@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { TransparencyGridProps } from '@zag-js/color-picker'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerTransparencyGridProps extends TransparencyGridProps, PolymorphicProps {}
+export interface ColorPickerTransparencyGridProps
+  extends TransparencyGridProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

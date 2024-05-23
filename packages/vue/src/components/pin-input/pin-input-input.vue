@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/pin-input'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PinInputInputProps extends PolymorphicProps, InputProps {}
+export interface PinInputInputProps
+  extends PolymorphicProps,
+    InputProps,
+    /* @vue-ignore */ InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PopoverDescriptionProps extends PolymorphicProps {}
+export interface PopoverDescriptionProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

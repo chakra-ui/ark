@@ -1,10 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
 
-export interface SelectRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface SelectRootProps
+  extends RootProps,
+    RenderStrategyProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface SelectRootEmits extends RootEmits {}
 </script>
 

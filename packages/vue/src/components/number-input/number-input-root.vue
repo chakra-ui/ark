@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './number-input.types'
 
-export interface NumberInputRootProps extends RootProps, PolymorphicProps {}
+export interface NumberInputRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface NumberInputRootEmits extends RootEmits {}
 </script>
 

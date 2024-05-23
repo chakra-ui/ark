@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './collapsible.types'
 
-export interface CollapsibleRootProps extends RootProps, PolymorphicProps {}
+export interface CollapsibleRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface CollapsibleRootEmits extends RootEmits {}
 </script>
 

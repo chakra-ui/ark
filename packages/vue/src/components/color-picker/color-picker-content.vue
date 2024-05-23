@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { PresenceProps } from '../presence'
 
-export interface ColorPickerContentProps extends PresenceProps, PolymorphicProps {}
+export interface ColorPickerContentProps
+  extends PresenceProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerEyeDropperTriggerProps extends PolymorphicProps {}
+export interface ColorPickerEyeDropperTriggerProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

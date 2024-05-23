@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/pagination'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PaginationItemProps extends PolymorphicProps, ItemProps {}
+export interface PaginationItemProps
+  extends PolymorphicProps,
+    ItemProps,
+    /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'type' | 'value'> {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxInputProps extends PolymorphicProps {}
+export interface ComboboxInputProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

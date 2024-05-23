@@ -1,7 +1,8 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxLabelProps extends PolymorphicProps {}
+export interface CheckboxLabelProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './segment-group.types'
 
-export interface SegmentGroupRootProps extends RootProps, PolymorphicProps {}
+export interface SegmentGroupRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface SegmentGroupRootEmits extends RootEmits {}
 </script>
 

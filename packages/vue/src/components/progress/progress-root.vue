@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootProps } from './progress.types'
 
-export interface ProgressRootProps extends RootProps, PolymorphicProps {}
+export interface ProgressRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ClipboardTriggerProps extends PolymorphicProps {}
+export interface ClipboardTriggerProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

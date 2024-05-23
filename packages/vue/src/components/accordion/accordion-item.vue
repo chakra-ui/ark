@@ -2,11 +2,14 @@
 import type { ItemProps } from '@zag-js/accordion'
 import type { PolymorphicProps } from '../factory'
 
-export interface AccordionItemProps extends ItemProps, PolymorphicProps {}
+export interface AccordionItemProps
+  extends ItemProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, type HTMLAttributes } from 'vue'
 import { useRenderStrategyProps } from '../../utils'
 import { Collapsible } from '../collapsible'
 import { useAccordionContext } from './use-accordion-context'

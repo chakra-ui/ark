@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ClipboardLabelProps extends PolymorphicProps {}
+export interface ClipboardLabelProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

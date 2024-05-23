@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './slider.types'
 
-export interface SliderRootProps extends RootProps, PolymorphicProps {}
+export interface SliderRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ Omit<HTMLAttributes, 'aria-labelledby' | 'aria-label'> {}
 export interface SliderRootEmits extends RootEmits {}
 </script>
 

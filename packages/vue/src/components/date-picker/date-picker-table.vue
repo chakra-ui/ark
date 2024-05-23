@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { TableProps } from '@zag-js/date-picker'
+import type { TableHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerTableProps extends PolymorphicProps, TableProps {}
+export interface DatePickerTableProps
+  extends PolymorphicProps,
+    TableProps,
+    /* @vue-ignore */ TableHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

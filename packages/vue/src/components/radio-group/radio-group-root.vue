@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './radio-group.types'
 
-export interface RadioGroupRootProps extends RootProps, PolymorphicProps {}
+export interface RadioGroupRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface RadioGroupRootEmits extends RootEmits {}
 </script>
 

@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerHiddenInputProps extends PolymorphicProps {}
+export interface ColorPickerHiddenInputProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,10 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
 
-export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface DatePickerRootProps
+  extends RootProps,
+    RenderStrategyProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface DatePickerRootEmits extends RootEmits {}
 </script>
 

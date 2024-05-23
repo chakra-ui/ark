@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { SelectHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerYearSelectProps extends PolymorphicProps {}
+export interface DatePickerYearSelectProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ SelectHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

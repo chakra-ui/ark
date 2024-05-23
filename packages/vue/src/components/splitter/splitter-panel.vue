@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { PanelProps } from '@zag-js/splitter'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SplitterPanelProps extends PolymorphicProps, PanelProps {}
+export interface SplitterPanelProps
+  extends PolymorphicProps,
+    PanelProps,
+    /* @vue-ignore */ Omit<HTMLAttributes, 'id'> {}
 </script>
 
 <script setup lang="ts">

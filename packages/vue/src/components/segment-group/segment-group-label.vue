@@ -1,7 +1,10 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SegmentGroupLabelProps extends PolymorphicProps {}
+export interface SegmentGroupLabelProps
+  extends PolymorphicProps,
+    /* @vue-ignore */ LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

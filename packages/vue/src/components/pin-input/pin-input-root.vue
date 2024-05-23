@@ -1,8 +1,12 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './pin-input.types'
 
-export interface PinInputRootProps extends RootProps, PolymorphicProps {}
+export interface PinInputRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface PinInputRootEmits extends RootEmits {}
 </script>
 

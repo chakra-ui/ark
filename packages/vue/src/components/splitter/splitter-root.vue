@@ -1,7 +1,11 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { RootEmits, RootProps } from './splitter.types'
 
-export interface SplitterRootProps extends RootProps, PolymorphicProps {}
+export interface SplitterRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface SplitterRootEmits extends RootEmits {}
 </script>
 

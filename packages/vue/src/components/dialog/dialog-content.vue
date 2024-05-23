@@ -1,7 +1,8 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DialogContentProps extends PolymorphicProps {}
+export interface DialogContentProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,11 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { RootEmits, RootProps } from './avatar.types'
 
-export interface AvatarRootProps extends RootProps, PolymorphicProps {}
+export interface AvatarRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface AvatarRootEmits extends RootEmits {}
 </script>
 

@@ -1,7 +1,8 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectLabelProps extends PolymorphicProps {}
+export interface SelectLabelProps extends PolymorphicProps, /* @vue-ignore */ LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

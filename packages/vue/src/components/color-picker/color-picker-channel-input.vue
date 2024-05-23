@@ -1,8 +1,12 @@
 <script lang="ts">
 import type { ChannelInputProps } from '@zag-js/color-picker'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerChannelInputProps extends ChannelInputProps, PolymorphicProps {}
+export interface ColorPickerChannelInputProps
+  extends ChannelInputProps,
+    PolymorphicProps,
+    /* @vue-ignore */ InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

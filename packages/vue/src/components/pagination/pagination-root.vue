@@ -1,7 +1,11 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { RootEmits, RootProps } from './pagination.types'
 
-export interface PaginationRootProps extends RootProps, PolymorphicProps {}
+export interface PaginationRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /* @vue-ignore */ HTMLAttributes {}
 export interface PaginationRootEmits extends RootEmits {}
 </script>
 
