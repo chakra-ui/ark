@@ -42,7 +42,8 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`, `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
+- Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`,
+  `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
 
 ## [1.0.0-2] - 2024-04-29
 
@@ -58,7 +59,8 @@ description: All notable changes will be documented in this file.
 
 ### Removed
 
-- BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to set the direction and root node.
+- BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to
+  set the direction and root node.
 
 ### Added
 
@@ -66,7 +68,8 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from
+  `<Combobox.ItemGroupLabel>`.
 
 ```diff
 - <Combobox.ItemGroup id="framework">
@@ -75,7 +78,8 @@ description: All notable changes will be documented in this file.
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `htmlFor` from `<Select.ItemGroupLabel>`.
+- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `htmlFor` from
+  `<Select.ItemGroupLabel>`.
 
 ```diff
 - <Select.ItemGroup id="framework">
@@ -88,7 +92,10 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
+- Added a `Context` component to allow access to the internal machine API. Previously, it was only
+  possible to access the internal API at the root level, which is manageable for small components
+  but could lead to cumbersome composition in larger components. Additionally, this pattern clashed
+  with the `asChild` composition pattern we use.
 
 ```vue
 <template>
@@ -109,7 +116,8 @@ description: All notable changes will be documented in this file.
 - Added `Format` and `Collapsible` component
 - Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
 - Add the `DatePicker.PresetTrigger` component
-- Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
+- Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`,
+  `Popover`, `Select`, and `Tooltip` components
 - Added `defaultOpen` to `Tooltip`
 
 ### Changed
@@ -120,13 +128,16 @@ description: All notable changes will be documented in this file.
 
 - Prevent calling interaction outside when scrollbar is clicked.
 - Fix issue where positioned components don't respond to window resizing.
-- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
-- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
+- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll
+  point.
+- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling
+  the body element.
 - Fix issue where `DatePicker` does not show correct number of weeks when `startOfWeek` is set
 - Fix issue in the `Editable` where cannot delete text when `maxLength` reached
 - Fix issue in the `Select` where item group's label `id` pointed to the wrong element
 - Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
-- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values
+- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string
+  values
 - Fix issue where close animation doesn't work for components that use the `presence` component.
 
 ### Removed
@@ -143,21 +154,24 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
+  shown for the `Avatar` component below:
 
 ```diff
 - import type { AvatarProps } from "@ark-ui/vue"
 + import type { AvatarRootProps } from "@ark-ui/vue"
 ```
 
-- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and `Environment`.
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and
+  `Environment`.
 
 ```diff
 - <Presence.Root>...</Presence.Root>
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
+  accurately reflect its functionality.
 
 - Added the `ItemPreview` component to the `TagsInput` component. See the example below:
 
@@ -171,15 +185,19 @@ description: All notable changes will be documented in this file.
 </TagsInput.Item>
 ```
 
-- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple
+  paragraphs.
 
 ### Fixed
 
 - Added the missing `minStepsBetweenThumbs` prop to `Slider` component.
 - Fixed an issue where emitted event caused "not declared" warning
-- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
-- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
-- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
+- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select`
+  triggered a click event on the element behind the portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them
+  one per input.
+- Fix issue where `Select` component submits its first option when used in a form, even if there is
+  no value selected.
 
 ## [0.10.0] - 2024-01-17
 
@@ -192,7 +210,8 @@ description: All notable changes will be documented in this file.
 - Added `v-model:open` for `HoverCard` component
 - Added `v-model:open` for `Popover` component
 - Added `valueAsString` to `onValueChange` in `DatePicker` callback details
-- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+- Exported change details typings, for example `AccordionValueChangeDetails` or
+  `DialogOpenChangeDetails`
 
 ### Changed
 
@@ -213,7 +232,8 @@ description: All notable changes will be documented in this file.
 - Revised `TagsInput` component
 - Revised `Toast` component
 - Revised `ToggleGroup` component
-- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and
+  `Tabs`.
 
 ### Fixed
 
@@ -295,7 +315,12 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 - Added `Avatar` component
 - Added `Switch` component
 - Added `Presence` component
-- To improve performance and reduce initial load times, we've introduced two new properties to the `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `MenuContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
+- To improve performance and reduce initial load times, we've introduced two new properties to the
+  `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`,
+  `MenuContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount`
+  property allows for on-demand rendering of content, while the `unmountOnExit` property enables the
+  removal of the component from the DOM once it's no longer required, ensuring better resource
+  management and cleaner code.
 
 ### Changed
 
@@ -315,13 +340,17 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Added
 
-- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render a label for a group of options in the `ComboboxOptionGroup` component.
+- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render
+  a label for a group of options in the `ComboboxOptionGroup` component.
 
 ### Changed
 
-- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other
+  input components.
+- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input
+  components.
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other
+  input components.
 
 ### Removed
 
@@ -330,15 +359,19 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Fixed
 
-- Fixed a bug in the `CarouselControl` component where it was returning a function instead of the expected component.
+- Fixed a bug in the `CarouselControl` component where it was returning a function instead of the
+  expected component.
 
 ## [0.6.0] - 2023-08-06
 
 ### Added
 
-- Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
+- Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup`
+  components. These sub-components offer finer control over the carousel navigation, enabling users
+  to directly access desired carousel slides.
 - Expose `use<X>Context` for all components that use context.
-- Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
+- Developers can now set default options for all `Toast` components in their application, ensuring a
+  consistent look and feel across the board.
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 
 ## [0.5.3] - 2023-07-10
@@ -353,7 +386,10 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Added
 
-- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/vue/tabs` instead of the full `@ark-ui/vue` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+- Support for standalone component imports: Developers can now import individual components, such as
+  `@ark-ui/vue/tabs` instead of the full `@ark-ui/vue` package. This is a significant feature for
+  those working with bundlers that do not support tree-shaking. By allowing imports of individual
+  components, we ensure a reduced bundle size when the full package import is not necessary.
 
 ### Fixed
 
@@ -364,7 +400,8 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 ### Fixed
 
 - Fixed an issue where `TagsInput` was not exported
-- Fixed an issue where `CarouselNextSliderTrigger` and `CarouselPrevSlideTrigger` weren't rendered correctly
+- Fixed an issue where `CarouselNextSliderTrigger` and `CarouselPrevSlideTrigger` weren't rendered
+  correctly
 
 ## [0.5.0] - 2023-06-03
 

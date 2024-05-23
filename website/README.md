@@ -1,6 +1,5 @@
 ### Highlight COde Snippet
 
-
 ```jsx
 // [!code highlight:2]
 <Accordion.Root multiple>
