@@ -72,7 +72,12 @@
       "onPageChange": {
         "type": "(details: PageChangeDetails) => void",
         "isRequired": false,
-        "description": "Called when the page number is changed, and it takes the resulting page number argument"
+        "description": "Called when the page number is changed"
+      },
+      "onPageSizeChange": {
+        "type": "(details: PageSizeChangeDetails) => void",
+        "isRequired": false,
+        "description": "Called when the page size is changed"
       },
       "page": {
         "type": "number",
