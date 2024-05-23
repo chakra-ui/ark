@@ -25,7 +25,7 @@ export const Basic = () => (
       <Popover.Context>
         {(popover) => (
           <Popover.Content>
-            <Popover.Title onClick={() => popover.close()}>Title</Popover.Title>
+            <Popover.Title onClick={() => popover.setOpen(false)}>Title</Popover.Title>
             <Popover.Description>Description</Popover.Description>
           </Popover.Content>
         )}
@@ -44,6 +44,7 @@ export const Basic = () => (
 
 - **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
 - **Types:** Exported `Assign` and `Optional` types to enhance type handling.
+- **Toast:** Support for overlapping and stacked toast.
 
 ### Changed
 
@@ -73,6 +74,8 @@ export const Basic = () => (
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
+- **[BREAKING] Popover, Tooltip:** Rename `closeOnEsc` to `closeOnEscape` to be consistent with
+  dialog machine
 - **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
   providers.
 - **React 19:** Improved the `ark` factory's forward compatibility with React 19 by supporting `ref`
