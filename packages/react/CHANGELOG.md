@@ -10,11 +10,11 @@ description: All notable changes will be documented in this file.
 
 The 3.0 release brings significant enhancements and some breaking changes for a more streamlined and
 flexible API. Key updates include new components and types, improved form integration, and forward
-compatibility with React 19.
+compatibility with React 19. Here are some of the highlights:
 
 ### Added
 
-- **Context Component:** Introduced a `Context` component for easier access to internal machine
+- **Context Components:** Introduced the `Context` component for easier access to internal machine
   APIs, improving component composition. See the example below:
 
 ```tsx
@@ -44,7 +44,7 @@ export const Basic = () => (
 
 - **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
 - **Types:** Exported `Assign` and `Optional` types to enhance type handling.
-- **Toast:** Support for overlapping and stacked toast.
+- **Toast:** Added support for overlapping and stacked toast.
 
 ### Changed
 
@@ -74,8 +74,8 @@ export const Basic = () => (
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- **[BREAKING] Popover, Tooltip:** Rename `closeOnEsc` to `closeOnEscape` to be consistent with
-  dialog machine
+- **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
+  dialog machine.
 - **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
   providers.
 - **React 19:** Improved the `ark` factory's forward compatibility with React 19 by supporting `ref`

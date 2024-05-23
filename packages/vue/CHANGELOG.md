@@ -6,6 +6,96 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Highlights
+
+We are excited to announce the first major release of Ark UI Vue! Ark UI Vue is now feature-complete
+and ready for production use.
+
+To maintain consistency across our suite, we have aligned the versioning of all Ark UI packages.
+Therefore, the next release of Ark UI Vue will be v3.
+
+This update introduces several new components, enhancements, and bug fixes. Here are some of the
+highlights:
+
+### Added
+
+- **Context Components:** Introduced the `Context` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
+
+```vue
+<template>
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Context v-slot="popover">
+        <Popover.Content>
+          <Popover.Title @click="popover.setOpen(false)">Title</Popover.Title>
+          <Popover.Description>Description</Popover.Description>
+        </Popover.Content>
+      </Popover.Context>
+    </Popover.Positioner>
+  </Popover.Root>
+</template>
+```
+
+- **Format:** Added a `Format` component for formatting bytes and numbers.
+
+```vue
+<Format.Byte :value="120904" unit="byte" unit-display="short" />
+<Format.Number :value="1204" unit="centimeter" />
+```
+
+- **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
+- **Types:** Exported `Assign` and `Optional` types to enhance type handling.
+- **Toast:** Added support for overlapping and stacked toast.
+
+### Changed
+
+- **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
+  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility. Please
+  ensure to include the hidden input in your component as shown below:
+
+```jsx
+<Checkbox.Root>
+  <Checkbox.Label>Checkbox</Checkbox.Label>
+  <Checkbox.Control>
+    <Checkbox.Indicator>
+      <CheckIcon />
+    </Checkbox.Indicator>
+  </Checkbox.Control>
+  <Checkbox.HiddenInput /> <!-- [!code highlight] -->
+</Checkbox.Root>
+```
+
+- **[BREAKING] Combobox, Select:** Made `id` optional and removed `htmlFor` from `ItemGroupLabel`
+  for cleaner markup.
+
+```diff
+- <Combobox.ItemGroup id="framework">
+-   <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
++ <Combobox.ItemGroup>
++   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```
+
+- **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
+  dialog machine.
+- **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
+  providers.
+
+### Fixed
+
+- **DatePicker:** Resolved issues with `min` and `max` props not supporting date strings.
+- **Accordion:** Fixed initial flicker of content.
+- **TagsInput:** Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
+
+### Removed
+
+- **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
+  component for more flexible and cleaner API integration.
+- **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
+  [LocaleProvider](https://ark-ui.com/docs/vue/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/docs/vue/providers/locale) for these settings.
+
 ## [1.0.0-7] - 2024-05-23
 
 ### Added
