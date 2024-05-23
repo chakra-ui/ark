@@ -6,11 +6,105 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Highlights
+
+The 3.0 release brings significant enhancements and some breaking changes for a more streamlined and
+flexible API. Key updates include new components and types, improved form integration, and enhanced
+forward compatibility.
+
+### Added
+
+- **Context Component:** Introduced a `Context` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
+
+```tsx
+export const Basic = () => (
+  <Popover.Root>
+    <Popover.Trigger>Open</Popover.Trigger>
+    <Popover.Positioner>
+      <Popover.Context>
+        {(popover) => (
+          <Popover.Content>
+            <Popover.Title onClick={() => popover().close()}>Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
+          </Popover.Content>
+        )}
+      </Popover.Context>
+    </Popover.Positioner>
+  </Popover.Root>
+)
+```
+
+- **Format:** Added a `Format` component for formatting bytes and numbers.
+
+```tsx
+<Format.Byte value={120904} unit="byte" unitDisplay="short" />
+<Format.Number value={1204} unit="centimeter" />
+```
+
+- **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
+- **Types:** Exported `Assign` and `Optional` types to enhance type handling.
+
+### Changed
+
+- **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
+  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility. Please
+  ensure to include the hidden input in your component like shown below:
+
+```tsx
+<Checkbox.Root>
+  <Checkbox.Label>Checkbox</Checkbox.Label>
+  <Checkbox.Control>
+    <Checkbox.Indicator>
+      <CheckIcon />
+    </Checkbox.Indicator>
+  </Checkbox.Control>
+  <Checkbox.HiddenInput /> // [!code highlight]
+</Checkbox.Root>
+```
+
+- **[BREAKING]:** Made `id` optional and removed `for` from `ItemGroupLabel` in `Combobox` and
+  `Select` for cleaner markup.
+
+```diff
+- <Combobox.ItemGroup id="framework">
+-   <Combobox.ItemGroupLabel for="framework">Frameworks</Combobox.ItemGroupLabel>
++ <Combobox.ItemGroup>
++   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```
+
+- **[BREAKING]:** Renamed `Environment` to `EnvironmentProvider` to align with other providers.
+- Refined the `as` prop implementation for improved type merging and performance.
+
+```tsx
+// before
+<Button as={Dialog.Trigger} variant="solid" size="sm">
+  Open Dialog
+</Button>
+
+// after
+<Dialog.Trigger asChild={(props) => <Button {...props()} />}>
+  Open Dialog
+</Dialog.Trigger>
+```
+
 ### Fixed
 
-̊
+- **DatePicker:** Resolved issues with `min` and `max` props not supporting date strings.
+- **Accordion:** Fixed initial flicker of content.
+- **TagsInput:** Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
+- **Select, Combobox:** Fixed an issue with reactivity.
+- **Toast:** Resolved an issue with `Toast` not updating its toasts and count properties when
+  creating one or more toasts.
+- **ColorPicker:** Added missing `HTMLArkProps<'div'>` to `ColorPicker.View`.
 
-- Added missing `HTMLArkProps<'div'>` to `ColorPicker.View`
+### Removed
+
+- **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
+  component for more flexible and cleaner API integration.
+- **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
+  [LocaleProvider](https://ark-ui.com/docs/solid/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/docs/solid/providers/locale) for these settings.
 
 ## [3.0.0-7] - 2024-05-22
 

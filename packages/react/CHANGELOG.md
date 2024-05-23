@@ -48,7 +48,8 @@ export const Basic = () => (
 ### Changed
 
 - **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
-  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility.
+  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility. Please
+  ensure to include the hidden input in your component like shown below:
 
 ```tsx
 <Checkbox.Root>
