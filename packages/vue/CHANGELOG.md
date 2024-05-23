@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added `HTMLAttributes` to all component props to allow for better integration with TypeScript.
+
 ## [1.0.0-6] - 2024-05-22
 
 ### Added
