@@ -15,6 +15,7 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
     'id',
     'ids',
     'onPageChange',
+    'onPageSizeChange',
     'page',
     'pageSize',
     'siblingCount',
