@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface ColorPickerSwatchTriggerProps
   extends SwatchTriggerProps,
     PolymorphicProps,
-    /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
 </script>
 
 <script setup lang="ts">

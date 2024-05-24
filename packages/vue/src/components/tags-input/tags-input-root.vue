@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './tags-input.types'
 export interface TagsInputRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TagsInputRootEmits extends RootEmits {}
 </script>
 

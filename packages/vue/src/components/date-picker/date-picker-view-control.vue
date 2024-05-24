@@ -5,7 +5,10 @@ import { useDatePickerViewPropsContext } from './use-date-picker-view-props-cont
 
 export interface DatePickerViewControlProps
   extends PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

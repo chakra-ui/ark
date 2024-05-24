@@ -8,7 +8,10 @@ export interface TabsRootProps
   extends RootProps,
     RenderStrategyProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TabsRootEmits extends RootEmits {}
 </script>
 

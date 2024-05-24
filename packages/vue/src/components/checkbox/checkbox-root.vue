@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './checkbox.types'
 export interface CheckboxRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ LabelHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 export interface CheckboxRootEmits extends RootEmits {}
 </script>
 

@@ -5,7 +5,10 @@ import type { RootEmits, RootProps } from './pagination.types'
 export interface PaginationRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface PaginationRootEmits extends RootEmits {}
 </script>
 

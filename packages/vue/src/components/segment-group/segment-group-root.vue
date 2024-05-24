@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './segment-group.types'
 export interface SegmentGroupRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface SegmentGroupRootEmits extends RootEmits {}
 </script>
 

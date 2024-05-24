@@ -5,7 +5,10 @@ import type { RootEmits, RootProps } from './avatar.types'
 export interface AvatarRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface AvatarRootEmits extends RootEmits {}
 </script>
 

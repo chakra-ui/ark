@@ -6,7 +6,10 @@ import type { UseTreeViewItemPropsContext } from './use-tree-view-item-props-con
 export interface TreeViewItemProps
   extends PolymorphicProps,
     UseTreeViewItemPropsContext,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

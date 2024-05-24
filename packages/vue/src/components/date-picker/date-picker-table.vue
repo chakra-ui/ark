@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface DatePickerTableProps
   extends PolymorphicProps,
     TableProps,
-    /* @vue-ignore */ TableHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    TableHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

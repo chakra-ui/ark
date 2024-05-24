@@ -5,7 +5,10 @@ import { useTreeViewItemPropsContext } from './use-tree-view-item-props-context'
 
 export interface TreeViewItemIndicatorProps
   extends PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

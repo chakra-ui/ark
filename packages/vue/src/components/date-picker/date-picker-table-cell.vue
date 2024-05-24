@@ -6,7 +6,10 @@ import type { DatePickerTableCellPropsContext } from './use-date-picker-table-ce
 export interface DatePickerTableCellProps
   extends PolymorphicProps,
     DatePickerTableCellPropsContext,
-    /* @vue-ignore */ TdHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    TdHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

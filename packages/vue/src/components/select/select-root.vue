@@ -9,7 +9,10 @@ export interface SelectRootProps
   extends RootProps,
     RenderStrategyProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface SelectRootEmits extends RootEmits {}
 </script>
 

@@ -3,7 +3,12 @@ import type { ColorFormat } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerViewProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {
+export interface ColorPickerViewProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   format: ColorFormat
 }
 </script>

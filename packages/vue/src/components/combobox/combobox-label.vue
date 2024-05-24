@@ -4,7 +4,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface ComboboxLabelProps
   extends PolymorphicProps,
-    /* @vue-ignore */ LabelHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

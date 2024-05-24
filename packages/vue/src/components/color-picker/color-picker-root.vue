@@ -8,7 +8,10 @@ export interface ColorPickerRootProps
   extends RootProps,
     RenderStrategyProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface ColorPickerRootEmits extends RootEmits {}
 </script>
 

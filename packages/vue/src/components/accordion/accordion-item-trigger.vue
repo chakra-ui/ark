@@ -5,7 +5,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AccordionItemTriggerProps
   extends PolymorphicProps,
-    /* @vue-ignore */ ButtonHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

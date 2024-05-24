@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface TabTriggerProps
   extends PolymorphicProps,
     TriggerProps,
-    /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
 </script>
 
 <script setup lang="ts">

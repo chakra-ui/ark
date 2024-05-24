@@ -2,7 +2,12 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TooltipArrowTipProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
+export interface TooltipArrowTipProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -5,7 +5,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface AccordionItemContentProps
   extends PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 
 interface VisibilityProps {
   hidden?: boolean

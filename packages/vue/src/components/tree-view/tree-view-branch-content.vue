@@ -5,7 +5,10 @@ import { useTreeViewBranchContext } from './use-tree-view-branch-context'
 
 export interface TreeViewBranchContentProps
   extends PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

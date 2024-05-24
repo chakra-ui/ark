@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface ToggleGroupItemProps
   extends PolymorphicProps,
     ItemProps,
-    /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
 </script>
 
 <script setup lang="ts">

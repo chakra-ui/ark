@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface PaginationItemProps
   extends PolymorphicProps,
     ItemProps,
-    /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'type' | 'value'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'type' | 'value'> {}
 </script>
 
 <script setup lang="ts">

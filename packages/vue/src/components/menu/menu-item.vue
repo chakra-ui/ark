@@ -7,7 +7,10 @@ import type { PolymorphicProps } from '../factory'
 export interface MenuItemProps
   extends PolymorphicProps,
     ItemProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

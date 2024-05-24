@@ -6,7 +6,10 @@ import type { ItemProps } from './use-tree-view-branch-context'
 export interface TreeViewBranchProps
   extends PolymorphicProps,
     ItemProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

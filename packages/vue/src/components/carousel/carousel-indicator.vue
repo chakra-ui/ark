@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface CarouselIndicatorProps
   extends IndicatorProps,
     PolymorphicProps,
-    /* @vue-ignore */ ButtonHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

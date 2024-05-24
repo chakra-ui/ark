@@ -2,7 +2,12 @@
 import type { ImgHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface AvatarImageProps extends PolymorphicProps, /* @vue-ignore */ ImgHTMLAttributes {}
+export interface AvatarImageProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    ImgHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

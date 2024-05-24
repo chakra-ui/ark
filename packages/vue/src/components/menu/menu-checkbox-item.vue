@@ -9,7 +9,10 @@ type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
 export interface MenuCheckboxItemProps
   extends PolymorphicProps,
     CheckboxItemProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 
 export type MenuCheckboxItemEmits = {
   'update:checked': [value: boolean]

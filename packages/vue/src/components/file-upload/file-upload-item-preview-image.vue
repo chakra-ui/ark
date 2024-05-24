@@ -4,7 +4,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface FileUploadItemPreviewImageProps
   extends PolymorphicProps,
-    /* @vue-ignore */ ImgHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    ImgHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

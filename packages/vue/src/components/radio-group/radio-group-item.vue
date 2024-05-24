@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface RadioGroupItemProps
   extends PolymorphicProps,
     ItemProps,
-    /* @vue-ignore */ LabelHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

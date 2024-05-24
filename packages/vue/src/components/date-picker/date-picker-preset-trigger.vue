@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface DatePickerPresetTriggerProps
   extends PolymorphicProps,
     PresetTriggerProps,
-    /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'value'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'value'> {}
 </script>
 
 <script setup lang="ts">

@@ -7,7 +7,10 @@ import { FileUploadItemPropsProvider } from './use-file-upload-item-props-contex
 export interface FileUploadItemProps
   extends PolymorphicProps,
     ItemProps,
-    /* @vue-ignore */ LiHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    LiHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

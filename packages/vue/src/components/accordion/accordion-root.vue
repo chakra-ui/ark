@@ -9,7 +9,10 @@ export interface AccordionRootProps
   extends RootProps,
     RenderStrategyProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface AccordionRootEmits extends RootEmits {}
 </script>
 

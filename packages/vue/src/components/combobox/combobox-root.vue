@@ -9,7 +9,10 @@ export interface ComboboxRootProps
   extends RootProps,
     RenderStrategyProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface ComboboxRootEmits extends RootEmits {}
 </script>
 

@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './editable.types'
 export interface EditableRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ Omit<HTMLAttributes, 'placeholder'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<HTMLAttributes, 'placeholder'> {}
 export interface EditableRootEmits extends RootEmits {}
 </script>
 

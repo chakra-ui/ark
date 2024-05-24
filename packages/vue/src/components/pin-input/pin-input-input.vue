@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface PinInputInputProps
   extends PolymorphicProps,
     InputProps,
-    /* @vue-ignore */ InputHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

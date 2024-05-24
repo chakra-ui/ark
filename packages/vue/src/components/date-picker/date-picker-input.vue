@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface DatePickerInputProps
   extends PolymorphicProps,
     InputProps,
-    /* @vue-ignore */ InputHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

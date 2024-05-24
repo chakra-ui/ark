@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface ColorPickerSwatchProps
   extends SwatchProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface PaginationEllipsisProps
   extends PolymorphicProps,
     EllipsisProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

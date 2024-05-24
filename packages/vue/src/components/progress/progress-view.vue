@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface ProgressViewProps
   extends PolymorphicProps,
     ViewProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

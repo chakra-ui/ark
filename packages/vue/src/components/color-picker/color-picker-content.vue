@@ -6,7 +6,10 @@ import type { PresenceProps } from '../presence'
 export interface ColorPickerContentProps
   extends PresenceProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

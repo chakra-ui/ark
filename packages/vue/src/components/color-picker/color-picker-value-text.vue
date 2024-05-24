@@ -5,7 +5,10 @@ import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerValueTextProps
   extends PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

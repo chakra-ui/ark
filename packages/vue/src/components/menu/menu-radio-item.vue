@@ -8,7 +8,10 @@ type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checke
 export interface MenuRadioItemProps
   extends PolymorphicProps,
     RadioItemProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface SplitterPanelProps
   extends PolymorphicProps,
     PanelProps,
-    /* @vue-ignore */ Omit<HTMLAttributes, 'id'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<HTMLAttributes, 'id'> {}
 </script>
 
 <script setup lang="ts">

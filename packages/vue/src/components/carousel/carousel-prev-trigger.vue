@@ -4,7 +4,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface CarouselPrevTriggerProps
   extends PolymorphicProps,
-    /* @vue-ignore */ ButtonHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

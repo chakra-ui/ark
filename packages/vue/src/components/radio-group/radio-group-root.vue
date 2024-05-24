@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './radio-group.types'
 export interface RadioGroupRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface RadioGroupRootEmits extends RootEmits {}
 </script>
 

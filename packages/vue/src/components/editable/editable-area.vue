@@ -2,7 +2,12 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface EditableAreaProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
+export interface EditableAreaProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -2,7 +2,12 @@
 import type { SVGAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ProgressCircleProps extends PolymorphicProps, /* @vue-ignore */ SVGAttributes {}
+export interface ProgressCircleProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    SVGAttributes {}
 </script>
 
 <script setup lang="ts">

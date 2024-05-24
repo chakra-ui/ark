@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './switch.types'
 export interface SwitchRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ LabelHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 export interface SwitchRootEmits extends RootEmits {}
 </script>
 

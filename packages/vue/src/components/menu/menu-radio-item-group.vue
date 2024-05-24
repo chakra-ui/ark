@@ -4,7 +4,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface MenuRadioItemGroupProps
   extends PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   id?: string
   modelValue?: string
 }

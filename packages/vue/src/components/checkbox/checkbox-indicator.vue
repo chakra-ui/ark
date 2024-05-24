@@ -3,7 +3,12 @@ import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxIndicatorProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {
+export interface CheckboxIndicatorProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   indeterminate?: boolean
 }
 </script>

@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './slider.types'
 export interface SliderRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ Omit<HTMLAttributes, 'aria-labelledby' | 'aria-label'> {}
+    /**
+     * @vue-ignore
+     */
+    Omit<HTMLAttributes, 'aria-labelledby' | 'aria-label'> {}
 export interface SliderRootEmits extends RootEmits {}
 </script>
 

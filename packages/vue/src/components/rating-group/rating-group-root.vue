@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './rating-group.types'
 export interface RatingGroupRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface RatingGroupRootEmits extends RootEmits {}
 </script>
 

@@ -5,7 +5,10 @@ import type { RootEmits, RootProps } from './clipboard.types'
 export interface ClipboardRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface ClipboardRootEmits extends RootEmits {}
 </script>
 

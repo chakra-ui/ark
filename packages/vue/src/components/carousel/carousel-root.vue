@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './carousel.types'
 export interface CarouselRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface CarouselRootEmits extends RootEmits {}
 </script>
 

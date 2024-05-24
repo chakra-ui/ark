@@ -6,7 +6,10 @@ import type { PolymorphicProps } from '../factory'
 export interface ComboboxTriggerProps
   extends TriggerProps,
     PolymorphicProps,
-    /* @vue-ignore */ ButtonHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

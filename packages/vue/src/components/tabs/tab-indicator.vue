@@ -2,7 +2,12 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TabIndicatorProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
+export interface TabIndicatorProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

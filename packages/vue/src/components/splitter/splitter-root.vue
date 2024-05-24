@@ -5,7 +5,10 @@ import type { RootEmits, RootProps } from './splitter.types'
 export interface SplitterRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface SplitterRootEmits extends RootEmits {}
 </script>
 

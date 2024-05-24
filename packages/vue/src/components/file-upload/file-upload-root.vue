@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './file-upload.types'
 export interface FileUploadRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface FileUploadRootEmits extends RootEmits {}
 </script>
 

@@ -6,7 +6,10 @@ import type { RootEmits, RootProps } from './pin-input.types'
 export interface PinInputRootProps
   extends RootProps,
     PolymorphicProps,
-    /* @vue-ignore */ HTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface PinInputRootEmits extends RootEmits {}
 </script>
 

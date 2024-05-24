@@ -4,7 +4,10 @@ import type { PolymorphicProps } from '../factory'
 
 export interface SelectHiddenSelectProps
   extends PolymorphicProps,
-    /* @vue-ignore */ SelectHTMLAttributes {}
+    /**
+     * @vue-ignore
+     */
+    SelectHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

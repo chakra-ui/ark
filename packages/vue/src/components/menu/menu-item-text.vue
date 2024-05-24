@@ -3,7 +3,12 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
 
-export interface MenuItemTextProps extends PolymorphicProps, /* @vue-ignore */ HTMLAttributes {}
+export interface MenuItemTextProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
