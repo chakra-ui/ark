@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.0] - 2024-05-24
+
 ### Highlights
 
 We are excited to announce the first major release of Ark UI Vue! Ark UI Vue is now feature-complete
