@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Accordion from './components/accordion.vue'
 import Avatar from './components/avatar.vue'
-import Combobox from './components/combobox.vue'
 </script>
 
 <template>
   <h1>Welcome to Ark UI!</h1>
-  <Avatar />
-  <Accordion :items="['React', 'Solid', 'Vue']" />
-  <Combobox />
+  <Avatar
+    name="Christian Schröter"
+    src="https://avatars.githubusercontent.com/u/1846056?s=400&u=bc2821d6154517e6f62795b11ffe0e8e001764a5&v=4"
+  />
 </template>
