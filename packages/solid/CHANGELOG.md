@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.0] - 2024-05-24
+
 ### Highlights
 
 The 3.0 release brings significant enhancements and some breaking changes for a more streamlined and
