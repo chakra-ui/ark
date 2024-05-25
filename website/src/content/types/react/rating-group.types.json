@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Item": {
     "props": {
@@ -25,7 +27,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Label": {
     "props": {
@@ -34,7 +37,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -110,6 +114,7 @@
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

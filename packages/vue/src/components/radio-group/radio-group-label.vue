@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RadioGroupLabelProps extends PolymorphicProps {}
+export interface RadioGroupLabelProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './switch.types'
 
-export interface SwitchRootProps extends RootProps, PolymorphicProps {}
+export interface SwitchRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 export interface SwitchRootEmits extends RootEmits {}
 </script>
 

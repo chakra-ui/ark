@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface EditableControlProps extends PolymorphicProps {}
+export interface EditableControlProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

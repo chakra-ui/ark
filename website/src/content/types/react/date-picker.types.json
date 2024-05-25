@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Content": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Control": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Input": {
     "props": {
@@ -34,7 +37,8 @@
         "description": "Render as a different element type."
       },
       "index": { "type": "number", "isRequired": false }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Label": {
     "props": {
@@ -43,7 +47,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "MonthSelect": {
     "props": {
@@ -52,7 +57,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSelectElement"
   },
   "NextTrigger": {
     "props": {
@@ -61,7 +67,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Positioner": {
     "props": {
@@ -70,7 +77,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "PresetTrigger": {
     "props": {
@@ -80,7 +88,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
@@ -89,7 +98,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "RangeText": {
     "props": {
@@ -98,7 +108,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -275,7 +286,8 @@
         "isRequired": false,
         "description": "The view of the calendar"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "TableBody": {
     "props": {
@@ -284,7 +296,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLTableSectionElement"
   },
   "TableCell": {
     "props": {
@@ -297,7 +310,8 @@
       "columns": { "type": "number", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
       "visibleRange": { "type": "VisibleRange", "isRequired": false }
-    }
+    },
+    "element": "HTMLTableCellElement"
   },
   "TableCellTrigger": {
     "props": {
@@ -306,7 +320,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "TableHead": {
     "props": {
@@ -315,7 +330,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLTableSectionElement"
   },
   "TableHeader": {
     "props": {
@@ -324,7 +340,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLTableCellElement"
   },
   "Table": {
     "props": {
@@ -334,7 +351,8 @@
         "description": "Render as a different element type."
       },
       "columns": { "type": "number", "isRequired": false }
-    }
+    },
+    "element": "HTMLTableElement"
   },
   "TableRow": {
     "props": {
@@ -343,7 +361,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLTableRowElement"
   },
   "Trigger": {
     "props": {
@@ -352,7 +371,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "ViewControl": {
     "props": {
@@ -361,7 +381,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "View": {
     "props": {
@@ -371,7 +392,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ViewTrigger": {
     "props": {
@@ -380,7 +402,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "YearSelect": {
     "props": {
@@ -389,6 +412,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSelectElement"
   }
 }

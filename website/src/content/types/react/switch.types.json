@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "HiddenInput": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Label": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Root": {
     "props": {
@@ -99,7 +102,8 @@
         "isRequired": false,
         "description": "The value of switch input. Useful for form submission."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Thumb": {
     "props": {
@@ -108,6 +112,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   }
 }

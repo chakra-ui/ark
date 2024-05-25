@@ -8,7 +8,8 @@
         "description": "Render as a different element type."
       },
       "disabled": { "type": "boolean", "isRequired": false }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -70,6 +71,7 @@
         "isRequired": false,
         "description": "The values of the toggles in the group."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

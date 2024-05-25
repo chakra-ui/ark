@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectClearTriggerProps extends PolymorphicProps {}
+export interface SelectClearTriggerProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadItemPreviewProps extends PolymorphicProps {
+export interface FileUploadItemPreviewProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   /**
    * The file type to match against. Matches all file types by default.
    * @default '.*'

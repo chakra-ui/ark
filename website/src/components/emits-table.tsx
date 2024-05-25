@@ -23,7 +23,7 @@ export const EmitsTable = (props: Props) => {
   }
   return (
     <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose" my="8">
-      <Table.Root variant="outline" size="sm" border="none">
+      <Table.Root variant="outline" size="sm" border={0}>
         <Table.Head>
           <Table.Row>
             <Table.Header px="4" bg="gray.2" h="10">

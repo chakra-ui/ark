@@ -8,7 +8,7 @@ import { TagsInputProvider } from './use-tags-input-context'
 
 export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, UseTagsInputProps> {}
 
-export const TagsInputRoot = forwardRef<HTMLInputElement, TagsInputRootProps>((props, ref) => {
+export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((props, ref) => {
   const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [
     'addOnPaste',
     'allowOverflow',

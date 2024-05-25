@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './tree-view.types'
 
-export interface TreeViewRootProps extends RootProps, PolymorphicProps {}
+export interface TreeViewRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TreeViewRootEmits extends RootEmits {}
 </script>
 

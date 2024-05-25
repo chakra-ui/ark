@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemIndicator": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -34,7 +36,8 @@
         "isRequired": false,
         "description": "Whether the accordion item is disabled."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemTrigger": {
     "props": {
@@ -43,7 +46,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -117,6 +121,7 @@
         "isRequired": false,
         "description": "The `value` of the accordion items that are currently being expanded."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Content": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Control": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Input": {
     "props": {
@@ -33,7 +36,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "ItemGroupLabel": {
     "props": {
@@ -42,7 +46,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemGroup": {
     "props": {
@@ -51,7 +56,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemIndicator": {
     "props": {
@@ -60,7 +66,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -75,7 +82,8 @@
         "isRequired": false,
         "description": "Whether hovering outside should clear the highlighted state"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemText": {
     "props": {
@@ -84,7 +92,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Label": {
     "props": {
@@ -93,7 +102,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Positioner": {
     "props": {
@@ -102,7 +112,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -359,6 +370,7 @@
         "isRequired": false,
         "description": "Whether the trigger is focusable"
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   }
 }

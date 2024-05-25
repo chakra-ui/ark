@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CarouselNextTriggerProps extends PolymorphicProps {}
+export interface CarouselNextTriggerProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

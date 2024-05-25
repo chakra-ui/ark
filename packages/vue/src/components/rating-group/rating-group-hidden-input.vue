@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RatingGroupHiddenInputProps extends PolymorphicProps {}
+export interface RatingGroupHiddenInputProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

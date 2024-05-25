@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemControl": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -27,7 +29,8 @@
       },
       "disabled": { "type": "boolean", "isRequired": false },
       "invalid": { "type": "boolean", "isRequired": false }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "ItemText": {
     "props": {
@@ -36,7 +39,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Label": {
     "props": {
@@ -45,7 +49,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -104,6 +109,7 @@
         "isRequired": false,
         "description": "The value of the checked radio"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

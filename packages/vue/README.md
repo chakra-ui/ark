@@ -1,6 +1,8 @@
 # Welcome to Ark UI
 
-Ark UI is a headless, open-source UI library with over 30+ components designed for building reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering dedciated packages for each supported framework.
+Ark UI is a headless, open-source UI library with over 30+ components designed for building
+reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering
+dedciated packages for each supported framework.
 
 ## Supported Frameworks
 
@@ -90,7 +92,8 @@ const sliderValue = ref<SliderProps['modelValue']>([42])
 
 ## Documentation
 
-For more detailed documentation and examples, please visit the [official documentation](https://ark-ui.com/).
+For more detailed documentation and examples, please visit the
+[official documentation](https://ark-ui.com/).
 
 ## Roadmap
 
@@ -98,8 +101,11 @@ You can request, vote for, and check upcoming features on our [roadmap](https://
 
 ## Contribution
 
-We welcome contributions to Ark UI. Please read our [contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more information on how to contribute.
+We welcome contributions to Ark UI. Please read our
+[contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more
+information on how to contribute.
 
 ## License
 
-This project is licensed under the terms of the [MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).
+This project is licensed under the terms of the
+[MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).

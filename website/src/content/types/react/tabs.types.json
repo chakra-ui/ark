@@ -7,7 +7,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "TabIndicator": {
     "props": {
@@ -16,7 +17,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "TabList": {
     "props": {
@@ -25,7 +27,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "TabTrigger": {
     "props": {
@@ -40,7 +43,8 @@
         "isRequired": false,
         "description": "Whether the tab is disabled"
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -115,6 +119,7 @@
         "description": "Whether to unmount on exit."
       },
       "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

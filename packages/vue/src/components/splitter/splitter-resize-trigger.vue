@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ResizeTriggerProps } from '@zag-js/splitter'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SplitterResizeTriggerProps extends PolymorphicProps, ResizeTriggerProps {}
+export interface SplitterResizeTriggerProps
+  extends PolymorphicProps,
+    ResizeTriggerProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'id'> {}
 </script>
 
 <script setup lang="ts">

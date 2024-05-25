@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Area": {
     "props": {
@@ -17,7 +18,8 @@
       },
       "xChannel": { "type": "ColorChannel", "isRequired": false },
       "yChannel": { "type": "ColorChannel", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "AreaThumb": {
     "props": {
@@ -26,7 +28,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ChannelInput": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Render as a different element type."
       },
       "orientation": { "type": "Orientation", "isRequired": false }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "ChannelSlider": {
     "props": {
@@ -48,7 +52,8 @@
         "description": "Render as a different element type."
       },
       "orientation": { "type": "Orientation", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ChannelSliderThumb": {
     "props": {
@@ -57,7 +62,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ChannelSliderTrack": {
     "props": {
@@ -66,7 +72,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Content": {
     "props": {
@@ -75,7 +82,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Control": {
     "props": {
@@ -84,7 +92,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "EyeDropperTrigger": {
     "props": {
@@ -93,7 +102,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "FormatSelect": {
     "props": {
@@ -102,7 +112,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSelectElement"
   },
   "FormatTrigger": {
     "props": {
@@ -111,7 +122,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "HiddenInput": {
     "props": {
@@ -120,7 +132,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Label": {
     "props": {
@@ -129,7 +142,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Positioner": {
     "props": {
@@ -138,7 +152,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -271,7 +286,8 @@
         "isRequired": false,
         "description": "The current value of the color picker."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "SwatchGroup": {
     "props": {
@@ -280,7 +296,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "SwatchIndicator": {
     "props": {
@@ -289,7 +306,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Swatch": {
     "props": {
@@ -304,7 +322,8 @@
         "isRequired": false,
         "description": "Whether to include the alpha channel in the color"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "SwatchTrigger": {
     "props": {
@@ -319,7 +338,8 @@
         "isRequired": false,
         "description": "Whether the swatch trigger is disabled"
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "TransparencyGrid": {
     "props": {
@@ -329,7 +349,8 @@
         "description": "Render as a different element type."
       },
       "size": { "type": "string", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Trigger": {
     "props": {
@@ -338,7 +359,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "ValueText": {
     "props": {
@@ -347,7 +369,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "View": {
     "props": {
@@ -357,6 +380,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

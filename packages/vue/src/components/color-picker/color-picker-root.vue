@@ -1,9 +1,17 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './color-picker.types'
 
-export interface ColorPickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface ColorPickerRootProps
+  extends RootProps,
+    RenderStrategyProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface ColorPickerRootEmits extends RootEmits {}
 </script>
 

@@ -1,8 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import { createSplitProps } from '../create-split-props'
 import type { PolymorphicProps } from '../factory'
 
-export interface AccordionItemContentProps extends PolymorphicProps {}
+export interface AccordionItemContentProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 
 interface VisibilityProps {
   hidden?: boolean
