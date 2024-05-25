@@ -1,21 +1,57 @@
 {
-  "ClearTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "HiddenInput": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Input": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemDeleteTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemInput": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemPreview": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ClearTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemDeleteTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemInput": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemPreview": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "index": { "type": "string | number", "isRequired": true },
       "value": { "type": "string", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "addOnPaste": {
@@ -29,7 +65,7 @@
         "isRequired": false,
         "description": "Whether to allow tags to exceed max. In this case,\nwe'll attach `data-invalid` to the root"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "autoFocus": {
         "type": "boolean",
         "isRequired": false,

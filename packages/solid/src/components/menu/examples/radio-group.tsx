@@ -15,7 +15,7 @@ export const RadioGroup = () => {
               {(framework) => (
                 <Menu.RadioItem value={framework()} disabled={framework() === 'Svelte'}>
                   <Menu.ItemIndicator>✅</Menu.ItemIndicator>
-                  <Menu.ItemText>{framework}</Menu.ItemText>
+                  <Menu.ItemText>{framework()}</Menu.ItemText>
                 </Menu.RadioItem>
               )}
             </Index>

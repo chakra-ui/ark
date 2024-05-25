@@ -1,40 +1,88 @@
 {
-  "AreaBackground": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "AreaBackground": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Area": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "xChannel": { "type": "ColorChannel", "isRequired": false },
       "yChannel": { "type": "ColorChannel", "isRequired": false }
     }
   },
-  "AreaThumb": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "AreaThumb": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "ChannelInput": {
     "props": {
       "channel": { "type": "ExtendedColorChannel", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false },
       "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
   "ChannelSlider": {
     "props": {
       "channel": { "type": "ColorChannel", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
-  "ChannelSliderThumb": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ChannelSliderTrack": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "EyeDropperTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "FormatSelect": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "FormatTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "HiddenInput": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ChannelSliderThumb": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ChannelSliderTrack": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "EyeDropperTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "FormatSelect": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'select'>) => Element", "isRequired": false }
+    }
+  },
+  "FormatTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "false",
@@ -161,12 +209,20 @@
       }
     }
   },
-  "SwatchGroup": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "SwatchIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "SwatchGroup": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "SwatchIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Swatch": {
     "props": {
       "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "respectAlpha": {
         "type": "boolean",
         "isRequired": false,
@@ -177,7 +233,7 @@
   "SwatchTrigger": {
     "props": {
       "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -187,11 +243,24 @@
   },
   "TransparencyGrid": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "size": { "type": "string", "isRequired": false }
     }
   },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ValueText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "View": { "props": { "format": { "type": "ColorFormat", "isRequired": true } } }
+  "Trigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "View": {
+    "props": {
+      "format": { "type": "ColorFormat", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  }
 }

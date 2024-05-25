@@ -33,7 +33,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Range": {
     "props": {
@@ -42,7 +43,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -90,7 +92,8 @@
         "isRequired": false,
         "description": "The current value of the progress bar."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Track": {
     "props": {
@@ -99,7 +102,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ValueText": {
     "props": {
@@ -108,7 +112,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "View": {
     "props": {
@@ -118,6 +123,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   }
 }

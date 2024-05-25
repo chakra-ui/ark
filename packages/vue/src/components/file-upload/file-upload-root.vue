@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './file-upload.types'
 
-export interface FileUploadRootProps extends RootProps, PolymorphicProps {}
+export interface FileUploadRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface FileUploadRootEmits extends RootEmits {}
 </script>
 

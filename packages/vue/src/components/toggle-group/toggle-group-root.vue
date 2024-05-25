@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './toggle-group.types'
 
-export interface ToggleGroupRootProps extends RootProps, PolymorphicProps {}
+export interface ToggleGroupRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface ToggleGroupRootEmits extends RootEmits {}
 </script>
 

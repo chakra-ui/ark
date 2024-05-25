@@ -8,7 +8,8 @@
         "description": "Render as a different element type."
       },
       "snapSize": { "type": "number", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ResizeTrigger": {
     "props": {
@@ -23,7 +24,8 @@
       },
       "disabled": { "type": "boolean", "isRequired": false },
       "step": { "type": "number", "isRequired": false }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -67,6 +69,7 @@
         "isRequired": false,
         "description": "The size data of the panels"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

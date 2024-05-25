@@ -9,13 +9,13 @@ type JsxElements = {
   [E in ElementType]: ArkComponent<E>
 }
 
-type PropsFn<T extends ElementType> = (
+type ParentProps<T extends ElementType> = (
   userProps?: JSX.IntrinsicElements[T],
-) => JSX.HTMLAttributes<HTMLElement>
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+) => JSX.HTMLAttributes<any>
 
 type PolymorphicProps<T extends ElementType> = {
-  asChild?: boolean
-  children?: JSX.Element | ((props: PropsFn<T>) => JSX.Element)
+  asChild?: (props: ParentProps<T>) => JSX.Element
 }
 
 type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
@@ -24,26 +24,20 @@ type ArkComponent<E extends ElementType> = (props: HTMLArkProps<E>) => JSX.Eleme
 
 const withAsProp = <T extends ElementType>(Component: T) => {
   const ArkComponent: ArkComponent<T> = (props) => {
-    const [localProps, otherProps] = splitProps(props, ['asChild'])
+    const [localProps, parentProps] = splitProps(props, ['asChild'])
 
     if (localProps.asChild) {
-      if (typeof otherProps.children !== 'function') {
-        throw new Error('Children must be a function')
+      // @ts-expect-error
+      const propsFn = (userProps) => {
+        const [, restProps] = splitProps(parentProps, ['ref'])
+        return { ref: parentProps.ref, ...mergeProps(restProps, userProps) }
       }
-
-      // @ts-expect-error TODO improve
-      const fn = (userProps) => {
-        const [, restProps] = splitProps(otherProps, ['children', 'ref'])
-
-        return { ref: otherProps.ref, ...mergeProps(restProps, userProps) }
-      }
-
-      return <>{otherProps.children(fn)}</>
+      return localProps.asChild(propsFn)
     }
-
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    return <Dynamic component={Component} {...(otherProps as any)} />
+    // @ts-expect-error
+    return <Dynamic component={Component} {...parentProps} />
   }
+
   return ArkComponent
 }
 

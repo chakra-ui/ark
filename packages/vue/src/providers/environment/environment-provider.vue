@@ -2,13 +2,13 @@
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { computed, ref } from 'vue'
 import { runIfFn } from '../../utils'
-import { EnvironmentProvider, type RootNode } from './use-environment-context'
+import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
 
-export interface EnvironmentProps {
+export interface EnvironmentProviderProps {
   value?: RootNode | (() => RootNode)
 }
 
-const props = defineProps<EnvironmentProps>()
+const props = defineProps<EnvironmentProviderProps>()
 const spanRef = ref<HTMLSpanElement | null>(null)
 
 const getRootNode = () => runIfFn(props.value) ?? spanRef.value?.ownerDocument ?? document
@@ -19,7 +19,7 @@ const environment = computed(() => ({
   getWindow: () => getWindow(getRootNode()),
 }))
 
-EnvironmentProvider(environment)
+EnvironmentContextProvider(environment)
 </script>
 
 <template>

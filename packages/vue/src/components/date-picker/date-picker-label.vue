@@ -1,7 +1,13 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerLabelProps extends PolymorphicProps {}
+export interface DatePickerLabelProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

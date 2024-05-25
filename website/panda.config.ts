@@ -55,8 +55,18 @@ export default defineConfig({
         overflowX: 'auto',
         fontSize: '13px !important',
       },
+      blockquote: {
+        fontStyle: 'normal!',
+        fontWeight: 'normal!',
+      },
+      strong: {
+        color: 'fg.default!',
+      },
       code: {
         fontFamily: 'code',
+        '::selection': {
+          bg: 'gray.dark.a4',
+        },
       },
       article: {
         '--colors-prose-body': 'colors.fg.muted',
@@ -65,23 +75,12 @@ export default defineConfig({
         '--colors-prose-link': 'colors.fg.default',
         '--colors-prose-code': 'colors.fg.muted',
         '--colors-prose-hr-border': 'colors.border.subtle',
+        '--colors-prose-quote-border': 'colors.accent.default',
       },
     },
   },
   theme: {
     extend: {
-      recipes: {
-        code: {
-          base: {
-            whiteSpace: 'pre',
-          },
-        },
-        kbd: {
-          base: {
-            whiteSpace: 'pre',
-          },
-        },
-      },
       tokens: {
         fonts: {
           body: { value: 'var(--font-outfit), sans-serif' },

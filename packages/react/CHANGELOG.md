@@ -6,70 +6,18 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-## [3.0.0-2] - 2024-05-15
+## [3.0.0] - 2024-05-24
 
-### Changed
+### Highlights
 
-- Integrated latest `@zag-js`.
-
-### Fixed
-
-- Fixed initial flicker of `Accordion` content
-
-## [3.0.0-1] - 2024-05-02
-
-### Removed
-
-- BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to set the direction and root node.
-
-### Changed
-
-- Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`, `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
-- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
-
-```diff
-- <Combobox.ItemGroup id="framework">
--   <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
-+ <Combobox.ItemGroup>
-+   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-```
-
-- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `htmlFor` from `<Select.ItemGroupLabel>`.
-
-```diff
-- <Select.ItemGroup id="framework">
--   <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
-+ <Select.ItemGroup>
-+   <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-```
-
-- Improve forward compatibility of `ark` factory with React 19 by supporting `ref` as normal prop.
-
-## [3.0.0-0] - 2024-04-10
+The 3.0 release brings significant enhancements and some breaking changes for a more streamlined and
+flexible API. Key updates include new components and types, improved form integration, and forward
+compatibility with React 19. Here are some of the highlights:
 
 ### Added
 
-- Exposed component-related types to keep imports clean and orderly.
-
-```tsx
-import { Avatar } from '@ark-ui/react'
-
-export const Example = () => {
-  // New: Use `Avatar` import to declare types.
-  const handleLoadingStatusChange = (details: Avatar.StatusChangeDetails) => {
-    console.log(details.status)
-  }
-
-  return (
-    <Avatar.Root onLoadingStatusChange={handleLoadingStatusChange}>
-      <Avatar.Fallback>PA</Avatar.Fallback>
-      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
-    </Avatar.Root>
-  )
-}
-```
-
-- Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
+- **Context Components:** Introduced the `Context` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
 
 ```tsx
 export const Basic = () => (
@@ -77,9 +25,9 @@ export const Basic = () => (
     <Popover.Trigger>Open</Popover.Trigger>
     <Popover.Positioner>
       <Popover.Context>
-        {(api) => (
+        {(popover) => (
           <Popover.Content>
-            <Popover.Title onClick={() => api.close()}>Title</Popover.Title>
+            <Popover.Title onClick={() => popover.setOpen(false)}>Title</Popover.Title>
             <Popover.Description>Description</Popover.Description>
           </Popover.Content>
         )}
@@ -89,28 +37,73 @@ export const Basic = () => (
 )
 ```
 
-- Added new `Format` component to format bytes and numbers.
-- Added `defaultOpen` to `Tooltip`
+- **Format:** Added a `Format` component for formatting bytes and numbers.
+
+```tsx
+<Format.Byte value={120904} unit="byte" unitDisplay="short" />
+<Format.Number value={1204} unit="centimeter" />
+```
+
+- **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
+- **Types:** Exported `Assign` and `Optional` types to enhance type handling.
+- **Toast:** Added support for overlapping and stacked toast.
 
 ### Changed
 
-- Changed the `Menu` component. Please refer to the [documentation](https://ark-ui.com/docs/components/menu) for more information.
+- **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
+  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility. Please
+  ensure to include the hidden input in your component like shown below:
+
+```tsx
+<Checkbox.Root>
+  <Checkbox.Label>Checkbox</Checkbox.Label>
+  <Checkbox.Control>
+    <Checkbox.Indicator>
+      <CheckIcon />
+    </Checkbox.Indicator>
+  </Checkbox.Control>
+  <Checkbox.HiddenInput /> // [!code highlight]
+</Checkbox.Root>
+```
+
+- **[BREAKING] Combobox, Select:** Made `id` optional and removed `htmlFor` from `ItemGroupLabel`
+  for cleaner markup.
+
+```diff
+- <Combobox.ItemGroup id="framework">
+-   <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
++ <Combobox.ItemGroup>
++   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```
+
+- **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
+  dialog machine.
+- **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
+  providers.
+- **React 19:** Improved the `ark` factory's forward compatibility with React 19 by supporting `ref`
+  as a normal prop.
 
 ### Fixed
 
-- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values.
+- **DatePicker:** Resolved issues with `min` and `max` props not supporting date strings.
+- **Accordion:** Fixed initial flicker of content.
+- **TagsInput:** Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
 
 ### Removed
 
-- BREAKING: Removed the option to access the internal API from various Root components. Use the new `Context` component instead. This change will help in streamlining the `asChild` composition pattern.
-- Removed the unused `parse` prop from the `DatePicker` component.
+- **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
+  component for more flexible and cleaner API integration.
+- **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
+  [LocaleProvider](https://ark-ui.com/docs/react/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/docs/react/providers/locale) for these settings.
 
 ## [2.2.3] - 2024-03-05
 
 ### Fixed
 
 - Resolved an issue with using `Locale` in Next.js projects.
-- Resolved an issue with `Toast` not updating its toasts and count properties when creating one or more toasts.
+- Resolved an issue with `Toast` not updating its toasts and count properties when creating one or
+  more toasts.
 
 ## [2.2.2] - 2024-02-27
 
@@ -134,7 +127,8 @@ export const Basic = () => (
 ### Changed
 
 - Enhanced the performance of the Ark `factory` by utilizing `memo` to avoid unnecessary re-renders.
-- Integrated `Collapsible` into `Accordion`, allowing the `Accordion` component to utilize `Collapsible` for animating the opening and closing of content.d
+- Integrated `Collapsible` into `Accordion`, allowing the `Accordion` component to utilize
+  `Collapsible` for animating the opening and closing of content.d
 
 ```css
 @keyframes slideDown {
@@ -166,7 +160,8 @@ export const Basic = () => (
 
 ### Fixed
 
-- Updated the return type of `createToaster` for comprehensive IntelliSense support when styling the `Toaster` component.
+- Updated the return type of `createToaster` for comprehensive IntelliSense support when styling the
+  `Toaster` component.
 - Revised `TreeView` to utilize `defaultSelectedIds` instead of `defaultFocusedId`.
 - Resolved an issue with using `factory` in Next.js projects.
 - Fixed a bug where the disabled `Tooltip` would flash upon hovering and clicking the trigger.
@@ -175,16 +170,21 @@ export const Basic = () => (
 
 ### Fixed
 
-- Resolved an issue where the `Clipboard` component was missing a specifier in the `@ark-ui/react` package.
+- Resolved an issue where the `Clipboard` component was missing a specifier in the `@ark-ui/react`
+  package.
 
 ## [2.1.0] - 2024-02-14
 
 ### Added
 
-- Introduced `Clipboard` component. Refer to the [documentation](https://ark-ui.com/docs/components/clipboard) for details.
-- Implemented programmable control over the open state for `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip`.
-- Added a `PresetTrigger` part to the `DatePicker` component, enabling custom triggers for common date presets (e.g., Last 7 days, Last 30 days).
-- Enhanced the `DatePicker.Control` component to support multiple inputs by introducing an optional `index` attribute to `DatePicker.Input`. Example usage:
+- Introduced `Clipboard` component. Refer to the
+  [documentation](https://ark-ui.com/docs/components/clipboard) for details.
+- Implemented programmable control over the open state for `ColorPicker`, `DatePicker`, `Dialog`,
+  `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip`.
+- Added a `PresetTrigger` part to the `DatePicker` component, enabling custom triggers for common
+  date presets (e.g., Last 7 days, Last 30 days).
+- Enhanced the `DatePicker.Control` component to support multiple inputs by introducing an optional
+  `index` attribute to `DatePicker.Input`. Example usage:
 
 ```jsx
 <DatePicker.Control>
@@ -195,15 +195,19 @@ export const Basic = () => (
 
 ### Changed
 
-- Refined the `TreeView` component API for streamlined component usage. See the [documentation](https://ark-ui.com/docs/components/tree-view) for details.
+- Refined the `TreeView` component API for streamlined component usage. See the
+  [documentation](https://ark-ui.com/docs/components/tree-view) for details.
 
 ### Fixed
 
 - Resolved unintentional interactions when clicking the scrollbar.
 - Addressed an issue where positioned components failed to adjust to window resizing.
-- Corrected a behavior where restoring scroll position triggered a smooth scroll effect back to the starting point.
-- Rectified a problem in `Combobox`, `Menu`, and `Select` where scrolling into view inadvertently scrolled the body element.
-- Fixed a discrepancy in `DatePicker` regarding the incorrect display of weeks when setting `startOfWeek`.
+- Corrected a behavior where restoring scroll position triggered a smooth scroll effect back to the
+  starting point.
+- Rectified a problem in `Combobox`, `Menu`, and `Select` where scrolling into view inadvertently
+  scrolled the body element.
+- Fixed a discrepancy in `DatePicker` regarding the incorrect display of weeks when setting
+  `startOfWeek`.
 - Solved an issue in the `Editable` preventing text deletion upon reaching `maxLength`.
 - Corrected an issue in the `Select` where an item group's label `id` was misdirected.
 - Adjusted `Select` to use the correct `id` for the `aria-activedescendant` attribute.
@@ -216,13 +220,15 @@ export const Basic = () => (
 
 ### Changed
 
-- Updated `Dialog.Description` and `Popover.Description` elements from `p` to `div` for better paragraph handling.
+- Updated `Dialog.Description` and `Popover.Description` elements from `p` to `div` for better
+  paragraph handling.
 - Altered `TreeView.BranchTrigger` element from `button` to `div` for accessibility enhancements.
 
 ### Fixed
 
 - Fix issue where `@types/react@18.2.8` broke current typings in `Portal`
-- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
+- Fix issue where `Select` component submits its first option when used in a form, even if there is
+  no value selected.
 
 ## [2.0.1] - 2024-01-30
 
@@ -239,21 +245,24 @@ export const Basic = () => (
 
 ### Changed
 
-- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
+  shown for the `Avatar` component below:
 
 ```diff
 - import type { AvatarProps } from "@ark-ui/react"
 + import type { AvatarRootProps } from "@ark-ui/react"
 ```
 
-- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and `Environment`.
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and
+  `Environment`.
 
 ```diff
 - <Presence.Root>...</Presence.Root>
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
+  accurately reflect its functionality.
 
 - Added the `ItemPreview` component to the `TagsInput` component. See the example below:
 
@@ -267,12 +276,15 @@ export const Basic = () => (
 </TagsInput.Item>
 ```
 
-- Refactored the `Progress` component to use `div` elements instead of `nav` for semantic correctness.
+- Refactored the `Progress` component to use `div` elements instead of `nav` for semantic
+  correctness.
 
 ### Fixed
 
-- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
-- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
+- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select`
+  triggered a click event on the element behind the portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them
+  one per input.
 
 ## [1.3.0] - 2024-01-17
 
@@ -280,12 +292,14 @@ export const Basic = () => (
 
 - Added the `Progress` component.
 - Added `valueAsString` to `onValueChange` in `DatePicker` callback details
-- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+- Exported change details typings, for example `AccordionValueChangeDetails` or
+  `DialogOpenChangeDetails`
 - Redesign `Portal` component to support `getRootNode` and `disabled` props
 
 ### Changed
 
-- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and
+  `Tabs`.
 
 ### Fixed
 
@@ -312,13 +326,17 @@ export const Basic = () => (
 
 ### Changed
 
-- Revised the `FileUpload` component. Check out the [documentation](https://ark-ui.com/docs/components/file-upload) for more information.
+- Revised the `FileUpload` component. Check out the
+  [documentation](https://ark-ui.com/docs/components/file-upload) for more information.
 
 ### Fixed
 
-- Added an explicit return type for the `Portal` component to resolve an issue with online code editors.
-- Resolved an issue where the `present` prop in the disclosure-type component was not being respected.
-- Resolved an issue where the `ark` function would log a warning when the `asChild` prop was set to `false`.
+- Added an explicit return type for the `Portal` component to resolve an issue with online code
+  editors.
+- Resolved an issue where the `present` prop in the disclosure-type component was not being
+  respected.
+- Resolved an issue where the `ark` function would log a warning when the `asChild` prop was set to
+  `false`.
 - Fixed an issue where keyboard interactions within a submenu would bubble up to the parent `Menu`.
 - Fixed an issue with hydration mismatch in the `Portal` component.
 
@@ -331,11 +349,13 @@ export const Basic = () => (
 
 ### Changed
 
-- Revised the `ColorPicker` component. Check out the [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
+- Revised the `ColorPicker` component. Check out the
+  [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
 
 ### Fixed
 
-- Resolved an issue where the `Toast` component would throw a warning when multiple toasts were rendered at the same time.
+- Resolved an issue where the `Toast` component would throw a warning when multiple toasts were
+  rendered at the same time.
 
 ## [1.0.1] - 2023-11-10
 
@@ -349,24 +369,35 @@ export const Basic = () => (
 
 ## [1.0.0] - 2023-11-09
 
-We are happy to announce the release of `@ark-ui/react@1.0.0`. This release includes a number of breaking changes, new features, and bug fixes. Since our last release over two months ago, we will only highlight some key changes. Please refer to the documentation for each component to learn more.
+We are happy to announce the release of `@ark-ui/react@1.0.0`. This release includes a number of
+breaking changes, new features, and bug fixes. Since our last release over two months ago, we will
+only highlight some key changes. Please refer to the documentation for each component to learn more.
 
 ### Highlights
 
-- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking change.
-- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`, `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and more intuitive API.
+- Revised the `Presence` component: `lazyMount` and `unmountOnExit` have been added at the root
+  level. For some disclosure components like `Tabs` and `Accordion`, this constitutes a breaking
+  change.
+- Breaking changes have been implemented in `Accordion`, `ColorPicker`, `DatePicker`, `Dialog`,
+  `RadioGroup`, `SegmentGroup`, `TagsInput`, `Toast`, and `ToggleGroup` to achieve a consistent and
+  more intuitive API.
 - Resolved various bugs and addressed accessibility issues across all components.
 
 ### Stability and Support
 
-With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/react`. Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users. If you encounter any issues while upgrading, please do not hesitate to open an issue on our [GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping us improve.
+With the release of version 1.0.0, we are moving towards a more stable version of `@ark-ui/react`.
+Future updates will strive to avoid breaking changes, ensuring a smoother experience for our users.
+If you encounter any issues while upgrading, please do not hesitate to open an issue on our
+[GitHub repository](https://github.com/chakra-ui/ark/issues). Your feedback is invaluable in helping
+us improve.
 
 ## [0.15.0] - 2023-09-14
 
 ### Added
 
 - Added `ToggleGroup` component
-- Added `type HTMLArkProps` that can be used together with the `ark` factory fn to create a type that can be used with `asChild` prop.
+- Added `type HTMLArkProps` that can be used together with the `ark` factory fn to create a type
+  that can be used with `asChild` prop.
 
 ### Changed
 
@@ -375,7 +406,8 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 
 ### Fixed
 
-- Fix issue where event callbacks that use `flushSync` did not have a stable reference, resulting in a noticable blocking re-renders.
+- Fix issue where event callbacks that use `flushSync` did not have a stable reference, resulting in
+  a noticable blocking re-renders.
   > Affected components: `Slider`, `RangeSlider`, `NumberInput`, `ColorPicker`
 
 ## [0.14.0] - 2023-08-29
@@ -383,7 +415,8 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 ### Changed
 
 - Changed `MenuItem` from a `button` to a `div` element.
-- `Accordion`: Remove support for passing value as `string`. The value property must be an array of strings.
+- `Accordion`: Remove support for passing value as `string`. The value property must be an array of
+  strings.
 - `Combobox`: Remove `selectInputOnFocus` option in favor of userland control
 - `TagsInput`: Rename `onHighlight` to `onFocusChange`
 
@@ -404,7 +437,8 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 
 ### Changed
 
-- BREAKING: Renamed `SegmentIndicator` to `SegmentGroupIndicator` to match the naming convention of other components.
+- BREAKING: Renamed `SegmentIndicator` to `SegmentGroupIndicator` to match the naming convention of
+  other components.
 
 ## [0.12.0] - 2023-08-13
 
@@ -428,14 +462,19 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 ### Added
 
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
-- Added `DatePickerPositioner` component to the `DatePicker` component to help with positioning the calendar.
-- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render a label for a group of options in the `ComboboxOptionGroup` component.
+- Added `DatePickerPositioner` component to the `DatePicker` component to help with positioning the
+  calendar.
+- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render
+  a label for a group of options in the `ComboboxOptionGroup` component.
 
 ### Changed
 
-- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other
+  input components.
+- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other
+  input components.
+- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input
+  components.
 
 ### Removed
 
@@ -445,18 +484,27 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 
 ### Added
 
-- Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
-- Updated number input `onChange` handler to allow synchronous updates to the value when using the scrubber.
+- Developers can now set default options for all `Toast` components in their application, ensuring a
+  consistent look and feel across the board.
+- Updated number input `onChange` handler to allow synchronous updates to the value when using the
+  scrubber.
 
 ### Changed
 
-- Improved TypeScript typings in our factory functions. The changes allow for more accurate type inference for the `ref` property when dealing with both intrinsic HTML elements and custom React components.
+- Improved TypeScript typings in our factory functions. The changes allow for more accurate type
+  inference for the `ref` property when dealing with both intrinsic HTML elements and custom React
+  components.
 
 ## [0.9.0] - 2023-07-21
 
 ### Added
 
-- To improve performance and reduce initial load times, we've introduced two new properties to the `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
+- To improve performance and reduce initial load times, we've introduced two new properties to the
+  `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`,
+  `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property
+  allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal
+  of the component from the DOM once it's no longer required, ensuring better resource management
+  and cleaner code.
 
 ## [0.8.1] - 2023-07-19
 
@@ -472,9 +520,13 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 
 ### Added
 
-- Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
-- Introduced `Presence` component, a new utility designed to delay the unmount of child components to assist with animation processes.
-- Added support to animate the `Dialog`, `Tooltip` and `Popover` elements using the `Presence` component. Check out the documentation for these components to learn more.
+- Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup`
+  components. These sub-components offer finer control over the carousel navigation, enabling users
+  to directly access desired carousel slides.
+- Introduced `Presence` component, a new utility designed to delay the unmount of child components
+  to assist with animation processes.
+- Added support to animate the `Dialog`, `Tooltip` and `Popover` elements using the `Presence`
+  component. Check out the documentation for these components to learn more.
 - Expose `use<X>Context` for all components that use context.
 
 ## [0.7.3] - 2023-07-10
@@ -495,7 +547,11 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 
 ### Added
 
-- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/react/src/srctabs` instead of the full `@ark-ui/react` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+- Support for standalone component imports: Developers can now import individual components, such as
+  `@ark-ui/react/src/srctabs` instead of the full `@ark-ui/react` package. This is a significant
+  feature for those working with bundlers that do not support tree-shaking. By allowing imports of
+  individual components, we ensure a reduced bundle size when the full package import is not
+  necessary.
 
 ## [0.7.0] - 2023-06-23
 
@@ -514,7 +570,8 @@ With the release of version 1.0.0, we are moving towards a more stable version o
 
 ### Changed
 
-- Exposed direct access to the `Splitter` component's internal API, enabling more control over the component's state
+- Exposed direct access to the `Splitter` component's internal API, enabling more control over the
+  component's state
 - Updated all `@zag-js` dependencies to their latest versions
 
 ## [0.5.0] - 2023-05-25

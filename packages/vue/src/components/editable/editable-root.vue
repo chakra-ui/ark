@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './editable.types'
 
-export interface EditableRootProps extends RootProps, PolymorphicProps {}
+export interface EditableRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<HTMLAttributes, 'placeholder'> {}
 export interface EditableRootEmits extends RootEmits {}
 </script>
 

@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/toggle-group'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ToggleGroupItemProps extends PolymorphicProps, ItemProps {}
+export interface ToggleGroupItemProps
+  extends PolymorphicProps,
+    ItemProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
 </script>
 
 <script setup lang="ts">

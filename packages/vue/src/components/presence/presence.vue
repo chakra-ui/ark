@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './presence.types'
 
-export interface PresenceProps extends RootProps, PolymorphicProps {}
+export interface PresenceProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface PresenceEmits extends RootEmits {}
 </script>
 

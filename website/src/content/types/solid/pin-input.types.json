@@ -1,16 +1,28 @@
 {
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "HiddenInput": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
   "Input": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
     }
   },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "autoFocus": {
         "type": "boolean",
         "isRequired": false,

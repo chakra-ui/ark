@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "ItemDeleteTrigger": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "ItemGroup": {
     "props": {
@@ -33,7 +36,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLUListElement"
   },
   "ItemName": {
     "props": {
@@ -42,7 +46,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemPreviewImage": {
     "props": {
@@ -51,7 +56,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLImageElement"
   },
   "ItemPreview": {
     "props": {
@@ -66,7 +72,8 @@
         "isRequired": false,
         "description": "The file type to match against. Matches all file types by default."
       }
-    }
+    },
+    "element": "HTMLImageElement"
   },
   "Item": {
     "props": {
@@ -76,7 +83,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLIElement"
   },
   "ItemSizeText": {
     "props": {
@@ -85,7 +93,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Label": {
     "props": {
@@ -94,7 +103,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -193,7 +203,8 @@
         "isRequired": false,
         "description": "Function to validate a file"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Trigger": {
     "props": {
@@ -202,6 +213,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   }
 }

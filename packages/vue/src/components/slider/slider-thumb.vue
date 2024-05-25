@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ThumbProps } from '@zag-js/slider'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SliderThumbProps extends PolymorphicProps, ThumbProps {}
+export interface SliderThumbProps
+  extends PolymorphicProps,
+    ThumbProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

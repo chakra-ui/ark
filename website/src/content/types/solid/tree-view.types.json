@@ -1,7 +1,17 @@
 {
-  "BranchContent": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "BranchControl": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "BranchIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "BranchContent": {
+    "props": { "asChild": { "type": "(props: ParentProps<'ul'>) => Element", "isRequired": false } }
+  },
+  "BranchControl": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "BranchIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Branch": {
     "props": {
       "value": {
@@ -9,7 +19,7 @@
         "isRequired": true,
         "description": "The id of the item or branch"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'li'>) => Element", "isRequired": false },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -17,9 +27,21 @@
       }
     }
   },
-  "BranchText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "BranchTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "BranchText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "BranchTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "value": {
@@ -27,7 +49,7 @@
         "isRequired": true,
         "description": "The id of the item or branch"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'li'>) => Element", "isRequired": false },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -35,11 +57,19 @@
       }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "defaultExpandedValue": {
         "type": "string[]",
         "isRequired": false,
@@ -110,5 +140,7 @@
       }
     }
   },
-  "Tree": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Tree": {
+    "props": { "asChild": { "type": "(props: ParentProps<'ul'>) => Element", "isRequired": false } }
+  }
 }

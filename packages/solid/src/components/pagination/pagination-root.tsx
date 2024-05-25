@@ -14,6 +14,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
     'id',
     'ids',
     'onPageChange',
+    'onPageSizeChange',
     'page',
     'pageSize',
     'siblingCount',

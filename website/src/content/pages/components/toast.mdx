@@ -8,8 +8,7 @@ description: A message that appears on the screen to provide feedback on an acti
 
 ## Anatomy
 
-To set up the toast correctly, you'll need to understand its anatomy and how we
-name its parts.
+To set up the toast correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,30 +16,18 @@ name its parts.
 
 ## Examples
 
-To use the Toast component in your application, you need to set it up using the
-`createToaster` hook. This hook manages the placement and grouping of toasts,
-and provides a `toast` object needed to create toast notification.
+To use the Toast component in your application, you need to set it up using the `createToaster`
+hook. This hook manages the placement and grouping of toasts, and provides a `toast` object needed
+to create toast notification.
 
-To create a basic Toast, use the `toast.create` method to display a
-notification.
+To create a basic Toast, use the `toast.create` method to display a notification.
 
 <Example id="basic" />
 
-### Configuring Toast
+### Update Toast
 
-To configure the Toast component, you can pass various options to the
-`toast.create` method. These options include `title`, `description`, `type`,
-`duration`, and `removeDelay`:
 
-<Example id="customized" />
-
-### Custom Rendered Toast
-
-For cases where you need more flexibility in rendering, the Toast component
-offers the ability to use a custom render function. This allows you to customize
-the content of the toast:
-
-<Example id="custom-render" />
+<Example id="update" />
 
 ## API Reference
 

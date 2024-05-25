@@ -8,8 +8,8 @@ description: A modal window that appears on top of the main content.
 
 ## Anatomy
 
-To use the dialog component correctly, you'll need to understand its anatomy and
-how we name its parts.
+To use the dialog component correctly, you'll need to understand its anatomy and how we name its
+parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,36 +17,33 @@ how we name its parts.
 
 ## Examples
 
-Learn how to use the `Dialog` component in your project. Let's take a look at
-the most basic example
+Learn how to use the `Dialog` component in your project. Let's take a look at the most basic example
 
 <Example id="basic" />
 
 ### Controlled Dialog
 
-To create a controlled Dialog component, manage the state of the dialog using
-the `open` and `onOpenChange` props:
+To create a controlled Dialog component, manage the state of the dialog using the `open` and
+`onOpenChange` props:
 
 <Example id="controlled" />
 
 ### Lazy Mounting
 
-Lazy mounting is a feature that allows the content of a dialog to be rendered
-only when the dialog is first opened. This is useful for performance
-optimization, especially when dialog content is large or complex. To enable lazy
-mounting, use the `lazyMount` prop on the `Dialog.Root` component.
+Lazy mounting is a feature that allows the content of a dialog to be rendered only when the dialog
+is first opened. This is useful for performance optimization, especially when dialog content is
+large or complex. To enable lazy mounting, use the `lazyMount` prop on the `Dialog.Root` component.
 
-In addition, the `unmountOnExit` prop can be used in conjunction with
-`lazyMount` to unmount the dialog content when the Dialog is closed, freeing up
-resources. The next time the dialog is activated, its content will be
-re-rendered.
+In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the
+dialog content when the Dialog is closed, freeing up resources. The next time the dialog is
+activated, its content will be re-rendered.
 
 <Example id="lazy-mount" />
 
 ### Using Render Function
 
-The Dialog component supports the use of a render function as a child for more
-control. This allows access to dialog states like `isOpen`:
+The Dialog component supports the use of a render function as a child for more control. This allows
+access to dialog states like `isOpen`:
 
 <Example id="render-fn" />
 
@@ -56,7 +53,8 @@ control. This allows access to dialog states like `isOpen`:
 
 ## Accessibility
 
-Complies with the [Dialog WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/).
+Complies with the
+[Dialog WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/).
 
 ### Keyboard Support
 

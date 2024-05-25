@@ -1,10 +1,22 @@
 {
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "HiddenInput": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false },
       "checked": {
         "type": "boolean",
         "isRequired": false,
@@ -73,5 +85,9 @@
       }
     }
   },
-  "Thumb": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Thumb": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  }
 }

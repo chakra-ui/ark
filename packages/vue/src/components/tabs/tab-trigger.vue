@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { TriggerProps } from '@zag-js/tabs'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TabTriggerProps extends PolymorphicProps, TriggerProps {}
+export interface TabTriggerProps
+  extends PolymorphicProps,
+    TriggerProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
 </script>
 
 <script setup lang="ts">

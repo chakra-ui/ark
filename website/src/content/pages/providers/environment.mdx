@@ -1,50 +1,50 @@
 ---
 id: environment
 title: Environment
-description: Setup components for a custom environment like IFrames, Shadow DOM or an
-  Electron context.
+description: Set up components for custom environments like iframes, Shadow DOM, or Electron.
 ---
 
-## Explanation
+## Motivation
 
-Internally, we use
-[Zag.js](https://zagjs.com/overview/composition#custom-window-environment),
-which uses DOM query methods like `document.querySelectorAll` and
-`document.getElementById` to locate elements within the machine.
+We use [Zag.js](https://zagjs.com/overview/composition#custom-window-environment) internally, which
+relies on DOM query methods like `document.querySelectorAll` and `document.getElementById`. In
+custom environments like iframes, Shadow DOM, or Electron, these methods might not work as expected.
 
-In custom environments like iframe, Shadow DOM, Electron, etc., the machine
-might not work as expected because `document` may not be available.
+To handle this, Ark UI includes the `EnvironmentProvider`, allowing you to set the appropriate root
+node or document, ensuring correct DOM queries.
 
-To provide the correct reference to root node or document, you can pass
-`getRootNode` function either to all Ark UI root components, or provide a
-default with this Environment component.
+## Setup
 
-> In shadow DOM, the root node can be derived from calling
-> `element.getRootNode()` method on any element.
+To support custom environments like an iframe, Shadow DOM or Electron, render the
+`EnvironmentProvider` component to provide the environment context to all Ark UI components.
 
-## Examples
+<Example id="setup" />
 
-When targeting a custom environment like an iframe, Shadow DOM or Electron, you
-can render the Environment component to provide the environment context to all
-Ark UI child components.
+The `EnvironmentProvider` component will automatically detect the current environment and set the
+correct environment context. However, you can also manually set the `Document` like shown in this
+React example below:
 
-```tsx
-import { Environment, useEnvironmentContext } from '@ark-ui/react'
-import { useCallback, type ReactNode } from 'react'
+```jsx
+import Frame, { FrameContextConsumer } from 'react-frame-component'
+import { EnvironmentProvider } from '@ark-ui/react'
 
-export const App = (props: { children: ReactNode }) => {
-  const getRootNode = useCallback(() => document, [])
-  return <Environment value={getRootNode}>{props.children}</Environment>
-}
+export const App = () => (
+  <Frame title="IFrame Context">
+    <FrameContextConsumer>
+      {({ document }) => (
+        <EnvironmentProvider value={document}>{/* Your App */}</EnvironmentProvider>
+      )}
+    </FrameContextConsumer>
+  </Frame>
+)
 ```
 
-### Consuming the environment context
+## Usage
 
-You can use the `useEnvironmentContext` hook to consume the environment context.
+Use the `useEnvironmentContext` hook to access the `RootNode`, `Document`, and `Window`.
 
-It will return `undefined` by default, if the Environment component is not
-rendered as a parent.
+<Example id="usage" />
 
-```tsx
-const { getRootNode, getWindow, getDocument } = useEnvironmentContext()
-```
+## API Reference
+
+<ComponentTypes id="environment" />

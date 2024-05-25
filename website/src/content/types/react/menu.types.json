@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ArrowTip": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "CheckboxItem": {
     "props": {
@@ -50,7 +52,8 @@
         "isRequired": false,
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Content": {
     "props": {
@@ -59,7 +62,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ContextTrigger": {
     "props": {
@@ -68,7 +72,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Indicator": {
     "props": {
@@ -77,7 +82,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemGroupLabel": {
     "props": {
@@ -86,7 +92,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemGroup": {
     "props": {
@@ -100,7 +107,8 @@
         "isRequired": false,
         "description": "The `id` of the element that provides accessibility label to the option group"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemIndicator": {
     "props": {
@@ -109,7 +117,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -138,7 +147,8 @@
         "isRequired": false,
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemText": {
     "props": {
@@ -147,7 +157,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Positioner": {
     "props": {
@@ -156,7 +167,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "RadioItemGroup": {
     "props": {
@@ -168,7 +180,8 @@
       "id": { "type": "string", "isRequired": false },
       "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
       "value": { "type": "string", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "RadioItem": {
     "props": {
@@ -193,7 +206,8 @@
         "isRequired": false,
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -323,7 +337,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLHRElement"
   },
   "TriggerItem": {
     "props": {
@@ -332,7 +347,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Trigger": {
     "props": {
@@ -341,6 +357,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   }
 }

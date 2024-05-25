@@ -1,4 +1,4 @@
-export type { ItemLabelDetails, PageChangeDetails } from '@zag-js/pagination'
+export type { ItemLabelDetails, PageChangeDetails, PageSizeChangeDetails } from '@zag-js/pagination'
 export {
   default as Context,
   type PaginationContextProps as ContextProps,

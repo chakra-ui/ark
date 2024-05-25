@@ -7,7 +7,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -18,7 +19,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "NextTrigger": {
     "props": {
@@ -27,7 +29,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
@@ -36,7 +39,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -68,7 +72,12 @@
       "onPageChange": {
         "type": "(details: PageChangeDetails) => void",
         "isRequired": false,
-        "description": "Called when the page number is changed, and it takes the resulting page number argument"
+        "description": "Called when the page number is changed"
+      },
+      "onPageSizeChange": {
+        "type": "(details: PageSizeChangeDetails) => void",
+        "isRequired": false,
+        "description": "Called when the page size is changed"
       },
       "page": {
         "type": "number",
@@ -99,6 +108,7 @@
         "isRequired": false,
         "description": "The type of the trigger element"
       }
-    }
+    },
+    "element": "HTMLElement"
   }
 }

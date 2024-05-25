@@ -8,8 +8,7 @@ description: Flexible navigation tool with various modes and features.
 
 ## Anatomy
 
-To set up the tabs correctly, you'll need to understand its anatomy and how we
-name its parts.
+To set up the tabs correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,8 +16,7 @@ name its parts.
 
 ## Examples
 
-Learn how to use the `Tabs` component in your project. Let's take a look at the
-most basic example:
+Learn how to use the `Tabs` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
@@ -30,42 +28,39 @@ To set a default tab on initial render, use the `defaultValue` prop:
 
 ### Tab Indicator
 
-To provide a visual cue for the selected tab, use the `Tabs.Indicator`
-component:
+To provide a visual cue for the selected tab, use the `Tabs.Indicator` component:
 
 <Example id="indicator" />
 
 ### Lazy Mounting
 
-Lazy mounting is a feature that allows the content of a tab to be rendered only
-when the tab is first activated. This is useful for performance optimization,
-especially when tab content is large or complex. To enable lazy mounting, use
-the `lazyMount` prop on the `Tabs.Content` component.
+Lazy mounting is a feature that allows the content of a tab to be rendered only when the tab is
+first activated. This is useful for performance optimization, especially when tab content is large
+or complex. To enable lazy mounting, use the `lazyMount` prop on the `Tabs.Content` component.
 
-In addition, the `unmountOnExit` prop can be used in conjunction with
-`lazyMount` to unmount the tab content when the tab is deactivated, freeing up
-resources. The next time the tab is activated, its content will be re-rendered.
+In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the tab
+content when the tab is deactivated, freeing up resources. The next time the tab is activated, its
+content will be re-rendered.
 
 <Example id="lazy-mount" />
 
 ### Disabled Tab
 
-To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger`
-component:
+To disable a tab, simply pass the `disabled` prop to the `Tabs.Trigger` component:
 
 <Example id="disabled-tab" />
 
 ### Controlled Tabs
 
-To create a controlled Tabs component, manage the current selected tab using the
-`value` prop and update it when the `onValueChange` event handler is called:
+To create a controlled Tabs component, manage the current selected tab using the `value` prop and
+update it when the `onValueChange` event handler is called:
 
 <Example id="controlled" />
 
 ### Router Controlled Tabs
 
-When using frameworks like Next.js, Remix, or React Router, controlling the
-active tabs based on the URL can be useful.
+When using frameworks like Next.js, Remix, or React Router, controlling the active tabs based on the
+URL can be useful.
 
 To achieve this, you need to do two things:
 
@@ -109,15 +104,15 @@ export default function App() {
 
 ### Vertical Tabs
 
-The default orientation of the tabs is `horizontal`. To change the orientation,
-set the `orientation` prop to `vertical`.
+The default orientation of the tabs is `horizontal`. To change the orientation, set the
+`orientation` prop to `vertical`.
 
 <Example id="vertical" />
 
 ### Manual Activation
 
-By default, the tab can be selected when it receives focus from either the
-keyboard or pointer interaction. This is called automatic tab activation.
+By default, the tab can be selected when it receives focus from either the keyboard or pointer
+interaction. This is called automatic tab activation.
 
 In contrast, manual tab activation means the tab is selected with the
 

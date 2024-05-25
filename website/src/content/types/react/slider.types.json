@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Label": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "MarkerGroup": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Marker": {
     "props": {
@@ -34,7 +37,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Range": {
     "props": {
@@ -43,7 +47,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -174,7 +179,8 @@
         "isRequired": false,
         "description": "The value of the range slider"
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Thumb": {
     "props": {
@@ -185,7 +191,8 @@
         "description": "Render as a different element type."
       },
       "name": { "type": "string", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Track": {
     "props": {
@@ -194,7 +201,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ValueText": {
     "props": {
@@ -203,6 +211,7 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

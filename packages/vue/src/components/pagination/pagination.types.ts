@@ -52,7 +52,11 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
-   * Called when the page number is changed, and it takes the resulting page number argument
+   * Called when the page number is changed
    */
   pageChange: [details: pagination.PageChangeDetails]
+  /**
+   * Called when the page size is changed
+   */
+  pageSizeChange: [details: pagination.PageSizeChangeDetails]
 }

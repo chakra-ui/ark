@@ -1,7 +1,8 @@
 <script lang="ts">
 export interface LocaleProviderProps {
   /**
-   * The locale to use. For example, 'en-US'.
+   * The locale to use for the application.
+   * @default 'en-US'
    */
   locale: string
 }

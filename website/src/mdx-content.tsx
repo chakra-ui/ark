@@ -9,7 +9,7 @@ import { KeyBindingsTable } from './components/key-bindings-table'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
 import { Story } from './components/story'
-import { Code, InfoBanner, Kbd, Link } from './components/ui'
+import { Code, Kbd, Link } from './components/ui'
 import { Step, Steps } from './components/ui/stepper'
 
 const sharedComponents = {
@@ -20,7 +20,6 @@ const sharedComponents = {
   ComponentTypes,
   Example,
   Faq,
-  InfoBanner,
   InstallCmd,
   kbd: Kbd,
   KeyBindingsTable,

@@ -2,15 +2,23 @@
   "TabContent": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   },
-  "TabIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TabList": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "TabIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "TabList": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "TabTrigger": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -26,7 +34,7 @@
         "isRequired": false,
         "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "composite": {
         "type": "boolean",
         "isRequired": false,

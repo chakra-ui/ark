@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { Environment } from './'
+import { EnvironmentProvider } from './'
 import { useEnvironmentContext } from './use-environment-context'
 
 const PrintEnvironment = () => {
@@ -8,12 +8,12 @@ const PrintEnvironment = () => {
   return <pre data-testid="output">{JSON.stringify(getRootNode(), null, 2)}</pre>
 }
 
-describe('Environment', () => {
+describe('EnvironmentProvider', () => {
   it('should have access to the environment values', async () => {
     render(
-      <Environment value={() => document}>
+      <EnvironmentProvider value={() => document}>
         <PrintEnvironment />
-      </Environment>,
+      </EnvironmentProvider>,
     )
     expect(screen.getByTestId('output').innerHTML).not.toBe('""')
   })

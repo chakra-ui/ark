@@ -1,6 +1,14 @@
 {
-  "Arrow": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ArrowTip": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Arrow": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ArrowTip": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "CheckboxItem": {
     "props": {
       "checked": {
@@ -9,7 +17,7 @@
         "description": "Whether the option is checked"
       },
       "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -32,13 +40,29 @@
       }
     }
   },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ContextTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Indicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroupLabel": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Content": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ContextTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "ItemGroup": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "id": {
         "type": "string",
         "isRequired": false,
@@ -46,7 +70,11 @@
       }
     }
   },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemIndicator": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "value": {
@@ -54,7 +82,7 @@
         "isRequired": true,
         "description": "The unique value of the menu item option."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -72,11 +100,19 @@
       }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "RadioItemGroup": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "id": { "type": "string", "isRequired": false },
       "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
       "value": { "type": "string", "isRequired": false }
@@ -85,7 +121,7 @@
   "RadioItem": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -224,7 +260,17 @@
       }
     }
   },
-  "Separator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TriggerItem": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Separator": {
+    "props": { "asChild": { "type": "(props: ParentProps<'hr'>) => Element", "isRequired": false } }
+  },
+  "TriggerItem": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  }
 }

@@ -1,1 +1,5 @@
-{ "Root": { "props": { "value": { "type": "RootNode | (() => RootNode)", "isRequired": false } } } }
+{
+  "EnvironmentProvider": {
+    "props": { "value": { "type": "RootNode | (() => RootNode)", "isRequired": false } }
+  }
+}

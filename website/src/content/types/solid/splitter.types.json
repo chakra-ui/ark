@@ -2,7 +2,7 @@
   "Panel": {
     "props": {
       "id": { "type": "PanelId", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "snapSize": { "type": "number", "isRequired": false }
     }
   },
@@ -12,14 +12,14 @@
         "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
         "isRequired": true
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
       "step": { "type": "number", "isRequired": false }
     }
   },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "defaultSize": {
         "type": "PanelSizeData[]",
         "isRequired": false,

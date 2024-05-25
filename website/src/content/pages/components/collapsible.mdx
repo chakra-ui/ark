@@ -8,8 +8,9 @@ description: An interactive component that can be expanded or collapsed.
 
 ## Animation
 
-You can use CSS animations to create smooth transitions for opening and closing the Collapsible content.
-Utilize the `data-state` attribute in combination with the `--height` CSS variable to animate the open and closed states.
+You can use CSS animations to create smooth transitions for opening and closing the Collapsible
+content. Utilize the `data-state` attribute in combination with the `--height` CSS variable to
+animate the open and closed states.
 
 ```css
 @keyframes slideDown {
@@ -33,14 +34,14 @@ Utilize the `data-state` attribute in combination with the `--height` CSS variab
 
 ## Examples
 
-Learn how to use the `Collapsible` component in your project. Let's examine
-the most basic example:
+Learn how to use the `Collapsible` component in your project. Let's examine the most basic example:
 
 <Example id="basic" />
 
 ### Events
 
-You can listen for the `onExitComplete` event to know when the `Collapsible.Content` is no longer visible:
+You can listen for the `onExitComplete` event to know when the `Collapsible.Content` is no longer
+visible:
 
 <Example id="on-exit-complete" />
 
@@ -52,15 +53,15 @@ To delay the mounting of the `Collapsible.Content`, use the `lazyMount` prop:
 
 ### Unmount on Exit
 
-To remove the `Collapsible.Content` from the DOM when it is not visible, use the
-`unmountOnExit` prop:
+To remove the `Collapsible.Content` from the DOM when it is not visible, use the `unmountOnExit`
+prop:
 
 <Example id="unmount-on-exit" />
 
 ### Combining Lazy Mount and Unmount on Exit
 
-Both `lazyMount` and `unmountOnExit` can be combined to ensure that the component is
-mounted only when the `Collapsible` is expanded and unmounted when it is collapsed:
+Both `lazyMount` and `unmountOnExit` can be combined to ensure that the component is mounted only
+when the `Collapsible` is expanded and unmounted when it is collapsed:
 
 <Example id="lazy-mount-and-unmount-on-exit" />
 

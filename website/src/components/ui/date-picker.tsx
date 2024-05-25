@@ -1,57 +1,133 @@
 'use client'
+import type { Assign } from '@ark-ui/react'
 import { DatePicker } from '@ark-ui/react/date-picker'
-import type { ComponentProps } from 'react'
-import { styled } from 'styled-system/jsx'
-import { datePicker } from 'styled-system/recipes'
+import { type DatePickerVariantProps, datePicker } from 'styled-system/recipes'
+import type { JsxStyleProps } from 'styled-system/types'
 import { createStyleContext } from '~/lib/create-style-context'
 
 const { withProvider, withContext } = createStyleContext(datePicker)
 
-export const Root = withProvider(styled(DatePicker.Root), 'root')
-export const ClearTrigger = withContext(styled(DatePicker.ClearTrigger), 'clearTrigger')
-export const Content = withContext(styled(DatePicker.Content), 'content')
-export const Control = withContext(styled(DatePicker.Control), 'control')
-export const Input = withContext(styled(DatePicker.Input), 'input')
-export const Label = withContext(styled(DatePicker.Label), 'label')
-export const MonthSelect = withContext(styled(DatePicker.MonthSelect), 'monthSelect')
-export const NextTrigger = withContext(styled(DatePicker.NextTrigger), 'nextTrigger')
-export const Positioner = withContext(styled(DatePicker.Positioner), 'positioner')
-export const PrevTrigger = withContext(styled(DatePicker.PrevTrigger), 'prevTrigger')
-export const RangeText = withContext(styled(DatePicker.RangeText), 'rangeText')
-export const Table = withContext(styled(DatePicker.Table), 'table')
-export const TableBody = withContext(styled(DatePicker.TableBody), 'tableBody')
-export const TableCell = withContext(styled(DatePicker.TableCell), 'tableCell')
-export const TableCellTrigger = withContext(styled(DatePicker.TableCellTrigger), 'tableCellTrigger')
-export const TableHead = withContext(styled(DatePicker.TableHead), 'tableHead')
-export const TableHeader = withContext(styled(DatePicker.TableHeader), 'tableHeader')
-export const TableRow = withContext(styled(DatePicker.TableRow), 'tableRow')
-export const Trigger = withContext(styled(DatePicker.Trigger), 'trigger')
-export const View = withContext(styled(DatePicker.View), 'view')
-export const ViewControl = withContext(styled(DatePicker.ViewControl), 'viewControl')
-export const ViewTrigger = withContext(styled(DatePicker.ViewTrigger), 'viewTrigger')
-export const YearSelect = withContext(styled(DatePicker.YearSelect), 'yearSelect')
-export const Context = DatePicker.Context
+export interface RootProps
+  extends Assign<JsxStyleProps, DatePicker.RootProps>,
+    DatePickerVariantProps {}
+export const Root = withProvider<HTMLDivElement, RootProps>(DatePicker.Root, 'root')
 
-export interface RootProps extends ComponentProps<typeof Root> {}
-export interface ClearTriggerProps extends ComponentProps<typeof ClearTrigger> {}
-export interface ContentProps extends ComponentProps<typeof Content> {}
-export interface ControlProps extends ComponentProps<typeof Control> {}
-export interface InputProps extends ComponentProps<typeof Input> {}
-export interface LabelProps extends ComponentProps<typeof Label> {}
-export interface MonthSelectProps extends ComponentProps<typeof MonthSelect> {}
-export interface NextTriggerProps extends ComponentProps<typeof NextTrigger> {}
-export interface PositionerProps extends ComponentProps<typeof Positioner> {}
-export interface PrevTriggerProps extends ComponentProps<typeof PrevTrigger> {}
-export interface RangeTextProps extends ComponentProps<typeof RangeText> {}
-export interface TableProps extends ComponentProps<typeof Table> {}
-export interface TableBodyProps extends ComponentProps<typeof TableBody> {}
-export interface TableCellProps extends ComponentProps<typeof TableCell> {}
-export interface TableCellTriggerProps extends ComponentProps<typeof TableCellTrigger> {}
-export interface TableHeadProps extends ComponentProps<typeof TableHead> {}
-export interface TableHeaderProps extends ComponentProps<typeof TableHeader> {}
-export interface TableRowProps extends ComponentProps<typeof TableRow> {}
-export interface TriggerProps extends ComponentProps<typeof Trigger> {}
-export interface ViewProps extends ComponentProps<typeof View> {}
-export interface ViewControlProps extends ComponentProps<typeof ViewControl> {}
-export interface ViewTriggerProps extends ComponentProps<typeof ViewTrigger> {}
-export interface YearSelectProps extends ComponentProps<typeof YearSelect> {}
+export const ClearTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.ClearTriggerProps>
+>(DatePicker.ClearTrigger, 'clearTrigger')
+
+export const Content = withContext<HTMLDivElement, Assign<JsxStyleProps, DatePicker.ContentProps>>(
+  DatePicker.Content,
+  'content',
+)
+
+export const Control = withContext<HTMLDivElement, Assign<JsxStyleProps, DatePicker.ControlProps>>(
+  DatePicker.Control,
+  'control',
+)
+
+export const Input = withContext<HTMLInputElement, Assign<JsxStyleProps, DatePicker.InputProps>>(
+  DatePicker.Input,
+  'input',
+)
+
+export const Label = withContext<HTMLLabelElement, Assign<JsxStyleProps, DatePicker.LabelProps>>(
+  DatePicker.Label,
+  'label',
+)
+
+export const MonthSelect = withContext<
+  HTMLSelectElement,
+  Assign<JsxStyleProps, DatePicker.MonthSelectProps>
+>(DatePicker.MonthSelect, 'monthSelect')
+
+export const NextTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.NextTriggerProps>
+>(DatePicker.NextTrigger, 'nextTrigger')
+
+export const Positioner = withContext<
+  HTMLDivElement,
+  Assign<JsxStyleProps, DatePicker.MonthSelectProps>
+>(DatePicker.Positioner, 'positioner')
+
+export const PresetTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.PresetTriggerProps>
+>(DatePicker.PresetTrigger, 'presetTrigger')
+
+export const PrevTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.PrevTriggerProps>
+>(DatePicker.PrevTrigger, 'prevTrigger')
+
+export const RangeText = withContext<
+  HTMLDivElement,
+  Assign<JsxStyleProps, DatePicker.RangeTextProps>
+>(DatePicker.RangeText, 'rangeText')
+
+export const TableBody = withContext<
+  HTMLTableSectionElement,
+  Assign<JsxStyleProps, DatePicker.TableBodyProps>
+>(DatePicker.TableBody, 'tableBody')
+
+export const TableCell = withContext<
+  HTMLTableCellElement,
+  Assign<JsxStyleProps, DatePicker.TableCellProps>
+>(DatePicker.TableCell, 'tableCell')
+
+export const TableCellTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.TableCellTriggerProps>
+>(DatePicker.TableCellTrigger, 'tableCellTrigger')
+
+export const TableHead = withContext<
+  HTMLTableSectionElement,
+  Assign<JsxStyleProps, DatePicker.TableHeadProps>
+>(DatePicker.TableHead, 'tableHead')
+
+export const TableHeader = withContext<
+  HTMLTableCellElement,
+  Assign<JsxStyleProps, DatePicker.TableHeaderProps>
+>(DatePicker.TableHeader, 'tableHeader')
+
+export const Table = withContext<HTMLTableElement, Assign<JsxStyleProps, DatePicker.TableProps>>(
+  DatePicker.Table,
+  'table',
+)
+
+export const TableRow = withContext<
+  HTMLTableRowElement,
+  Assign<JsxStyleProps, DatePicker.TableRowProps>
+>(DatePicker.TableRow, 'tableRow')
+
+export const Trigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.TriggerProps>
+>(DatePicker.Trigger, 'trigger')
+
+export const ViewControl = withContext<
+  HTMLDivElement,
+  Assign<JsxStyleProps, DatePicker.ViewControlProps>
+>(DatePicker.ViewControl, 'viewControl')
+
+export const View = withContext<HTMLDivElement, Assign<JsxStyleProps, DatePicker.ViewProps>>(
+  DatePicker.View,
+  'view',
+)
+
+export const ViewTrigger = withContext<
+  HTMLButtonElement,
+  Assign<JsxStyleProps, DatePicker.ViewTriggerProps>
+>(DatePicker.ViewTrigger, 'viewTrigger')
+
+export const YearSelect = withContext<
+  HTMLSelectElement,
+  Assign<JsxStyleProps, DatePicker.YearSelectProps>
+>(DatePicker.YearSelect, 'yearSelect')
+
+export {
+  DatePickerContext as Context,
+  type DatePickerContextProps as ContextProps,
+} from '@ark-ui/react/date-picker'

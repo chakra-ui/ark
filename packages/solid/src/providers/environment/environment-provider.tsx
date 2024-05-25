@@ -1,14 +1,14 @@
 import { getDocument, getWindow } from '@zag-js/dom-query'
 import { type JSX, Show, createMemo, createSignal } from 'solid-js'
 import { runIfFn } from '../../utils/run-if-fn'
-import { EnvironmentProvider, type RootNode } from './use-environment-context'
+import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
 
-export interface EnvironmentProps {
+export interface EnvironmentProviderProps {
   children?: JSX.Element
   value?: RootNode | (() => RootNode)
 }
 
-export const Environment = (props: EnvironmentProps) => {
+export const EnvironmentProvider = (props: EnvironmentProviderProps) => {
   const [spanRef, setSpanRef] = createSignal<HTMLSpanElement>()
   const getRootNode = () => runIfFn(props.value) ?? spanRef()?.ownerDocument ?? document
 
@@ -19,11 +19,11 @@ export const Environment = (props: EnvironmentProps) => {
   }))
 
   return (
-    <EnvironmentProvider value={environment}>
+    <EnvironmentContextProvider value={environment}>
       {props.children}
       <Show when={!props.value}>
         <span hidden ref={setSpanRef} />
       </Show>
-    </EnvironmentProvider>
+    </EnvironmentContextProvider>
   )
 }

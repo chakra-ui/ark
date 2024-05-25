@@ -1,23 +1,29 @@
-import { type DataAttrKey, getDataAttrDoc } from '@zag-js/docs'
+import { type DataAttrDocKey, getDataAttrDoc } from '@zag-js/docs'
+import { Effect, pipe } from 'effect'
 import { Box } from 'styled-system/jsx'
 import { Code, Table } from './ui'
 
-type Props = {
+interface Props {
   component: string
   part: string
 }
 
 export const DataAttrTable = (props: Props) => {
   const { component, part } = props
-  const properties = getDataAttrDoc(component as DataAttrKey)[part]
 
+  const properties = Effect.runSync(
+    pipe(
+      Effect.try(() => getDataAttrDoc(component as DataAttrDocKey)[part]),
+      Effect.catchAll(() => Effect.succeed(null)),
+    ),
+  )
   if (!properties) {
     return null
   }
 
   return (
     <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose" my="8">
-      <Table.Root variant="outline" size="sm" border="none">
+      <Table.Root variant="outline" size="sm" border={0}>
         <Table.Head>
           <Table.Row>
             <Table.Header px="4" bg="gray.2" h="10">
@@ -37,7 +43,6 @@ export const DataAttrTable = (props: Props) => {
                 </Code>
               </Table.Cell>
               <Table.Cell px="4" py="2">
-                {/* @ts-expect-error Incorrectly typed */}
                 {value}
               </Table.Cell>
             </Table.Row>

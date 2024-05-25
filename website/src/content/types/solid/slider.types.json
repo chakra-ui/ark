@@ -1,14 +1,30 @@
 {
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "MarkerGroup": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
+  "MarkerGroup": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Marker": {
     "props": {
       "value": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
     }
   },
-  "Range": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Range": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Root": {
     "props": {
       "aria-label": {
@@ -21,7 +37,7 @@
         "isRequired": false,
         "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "defaultValue": {
         "type": "number[]",
         "isRequired": false,
@@ -139,10 +155,18 @@
   "Thumb": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
       "name": { "type": "string", "isRequired": false }
     }
   },
-  "Track": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ValueText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "Track": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+    }
+  }
 }

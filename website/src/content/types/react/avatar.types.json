@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Image": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Render as a different element type."
       }
-    }
+    },
+    "element": "HTMLImageElement"
   },
   "Root": {
     "props": {
@@ -39,6 +41,7 @@
         "isRequired": false,
         "description": "Functional called when the image loading status changes."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   }
 }

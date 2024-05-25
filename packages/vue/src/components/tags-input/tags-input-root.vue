@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RootEmits, RootProps } from './tags-input.types'
 
-export interface TagsInputRootProps extends RootProps, PolymorphicProps {}
+export interface TagsInputRootProps
+  extends RootProps,
+    PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TagsInputRootEmits extends RootEmits {}
 </script>
 
