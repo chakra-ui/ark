@@ -11,7 +11,7 @@
     "@ark-ui/react": "workspace:*",
     "@biomejs/biome": "1.7.3",
     "@icons-pack/react-simple-icons": "9.5.0",
-    "@pandacss/dev": "0.39.1",
+    "@pandacss/dev": "0.39.2",
     "@park-ui/panda-preset": "0.38.0-0",
     "@shikijs/transformers": "1.6.0",
     "@types/node": "20.12.12",
