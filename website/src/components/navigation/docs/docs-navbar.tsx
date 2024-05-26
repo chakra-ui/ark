@@ -7,7 +7,19 @@ import { Sidebar } from './sidebar'
 export const DocsNavbar = () => {
   const groups = getSidebarGroups()
   return (
-    <HStack gap="2" py="1.5" px="4" borderBottomWidth="1px" display={{ base: 'flex', md: 'none' }}>
+    <HStack
+      height="12"
+      gap="2"
+      px="4"
+      borderTopWidth="1px"
+      borderBottomWidth="1px"
+      display={{ base: 'flex', md: 'none' }}
+      position="fixed"
+      left="0"
+      right="0"
+      top="16"
+      bg="bg.canvas"
+    >
       <MobileSidebarContainer>
         <Sidebar groups={groups} />
       </MobileSidebarContainer>

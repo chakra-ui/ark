@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import { Divider } from 'styled-system/jsx'
+import { Box } from 'styled-system/jsx'
 import { Navbar } from '~/components/navigation/navbar'
 import { getServerContext } from '~/lib/server-context'
 
@@ -16,8 +16,7 @@ export default function Layout(props: PropsWithChildren<Props>) {
       <header>
         <Navbar />
       </header>
-      <Divider />
-      <main>{props.children}</main>
+      <Box pt="16">{props.children}</Box>
     </>
   )
 }
