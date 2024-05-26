@@ -13,12 +13,14 @@ export const DocsNavbar = () => {
       px="4"
       borderTopWidth="1px"
       borderBottomWidth="1px"
+      borderColor={{ base: 'border.subtle', _dark: 'black' }}
       display={{ base: 'flex', md: 'none' }}
       position="fixed"
       left="0"
       right="0"
       top="16"
       bg="bg.canvas"
+      zIndex="1"
     >
       <MobileSidebarContainer>
         <Sidebar groups={groups} />

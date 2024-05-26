@@ -1,8 +1,9 @@
-import { Box, type BoxProps, Container } from 'styled-system/jsx'
+import { type BoxProps, Container, Flex } from 'styled-system/jsx'
 
 export const NavbarContainer = (props: BoxProps) => {
   return (
-    <Box
+    <Flex
+      alignItems="center"
       position="fixed"
       top="0"
       width="full"
@@ -11,7 +12,7 @@ export const NavbarContainer = (props: BoxProps) => {
       borderBottomWidth="1px"
       borderColor={{ base: 'border.subtle', _dark: 'black' }}
     >
-      <Container py="3" {...props} />
-    </Box>
+      <Container py="2.5" {...props} />
+    </Flex>
   )
 }

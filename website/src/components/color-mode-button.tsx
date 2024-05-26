@@ -15,7 +15,7 @@ export const ColorModeButton = () => {
   }
 
   return (
-    <IconButton onClick={handleClick} variant="link" color="fg.muted" width="8">
+    <IconButton onClick={handleClick} variant="ghost">
       {theme === 'light' ? <SunIcon /> : <MoonIcon />}
     </IconButton>
   )

@@ -134,7 +134,8 @@ export default defineConfig({
               display: { base: 'none', md: 'block' },
               ps: 'max(32px, calc((100vw - (1440px - 64px)) / 2))',
               pe: '8',
-              minW: '272px',
+              minWidth: '272px',
+              overflow: 'auto',
               width: {
                 base: '272px',
                 lg: 'calc((100vw - (1440px - 64px)) / 2 + 272px - 32px)',
@@ -142,6 +143,7 @@ export default defineConfig({
               zIndex: '2',
             },
             main: {
+              minWidth: '0',
               flex: '1',
               ps: {
                 base: '0',

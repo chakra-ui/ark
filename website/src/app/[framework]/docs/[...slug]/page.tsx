@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Box, Container, Flex, Stack } from 'styled-system/jsx'
+import { Box, Container, Stack } from 'styled-system/jsx'
 import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
+import { getServerContext } from '~/lib/server-context'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
@@ -17,6 +18,10 @@ export default function Page(props: Props) {
   const currentPage = getPageBySlug(props.params.slug, props.params.framework)
   const nextPage = getNextPage(props.params.slug)
   const prevPage = getPrevPage(props.params.slug)
+
+  const serverContext = getServerContext()
+  serverContext.framework = props.params.framework
+  serverContext.component = props.params.slug[1]
 
   if (currentPage) {
     return (
