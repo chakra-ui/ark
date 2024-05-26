@@ -32,7 +32,7 @@ export const Universe = () => {
         backgroundRepeat="repeat-x"
         width="full"
       >
-        <Container pt={{ base: '8', md: '10' }} pb={{ base: '8', md: '10' }} maxW="7xl">
+        <Container pt={{ base: '8', md: '10' }} pb={{ base: '8', md: '10' }}>
           <Stack direction="row" align="center" width="full" justify="space-evenly">
             <Icon>
               <ReactIcon width="48" />

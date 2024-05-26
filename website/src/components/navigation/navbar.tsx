@@ -1,41 +1,35 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { MessageCircleIcon, SendIcon } from 'lucide-react'
-import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import NextLink from 'next/link'
-import { Box, Divider, Flex, HStack } from 'styled-system/jsx'
+import { Container, Divider, Flex, HStack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
-import { getSidebarGroups } from '~/lib/sidebar'
-import { FrameworkSelect } from '../framework-select'
-import { Logo } from '../logo'
-import { Icon, IconButton, Text } from '../ui'
-import { Breadcrumbs } from './breadcrumbs'
-import { MobileSidebarContainer } from './mobile-sidebar-container'
-import { Sidebar } from './sidebar'
+import { FrameworkSelect } from '~/components/framework-select'
+import { Logo } from '~/components/logo'
+import { IconButton, Text } from '~/components/ui'
+import { getServerContext } from '~/lib/server-context'
+import { MobileNavbar } from './mobile-navbar'
 
 export const Navbar = () => {
-  const groups = getSidebarGroups()
+  const serverContext = getServerContext()
+  const framework = serverContext.framework ?? 'react'
   return (
-    <>
-      <HStack justifyContent="space-between" h="16" px={{ base: '4', md: '8' }}>
-        <Box>
-          <Box display={{ md: 'none' }}>
-            <NextLink href="/" aria-label="Go to start page">
-              <Logo />
-            </NextLink>
-          </Box>
-        </Box>
-
-        <Flex alignItems="center">
+    <Container py="3">
+      <HStack justifyContent="space-between">
+        <NextLink href="/" aria-label="Go to start page">
+          <Logo />
+        </NextLink>
+        <Flex alignItems="center" py="0.5" display={{ base: 'none', md: 'flex' }}>
           <HStack gap="6">
-            <Text textStyle="sm" fontWeight="medium" color="accent.default">
-              Docs
-            </Text>
-            <NextLink href="/showcase">
+            <NextLink href={`/${framework}/docs/overview/introduction`}>
+              <Text textStyle="sm" fontWeight="medium" color="accent.default">
+                Docs
+              </Text>
+            </NextLink>
+            <NextLink href={`/${framework}/showcase`}>
               <Text textStyle="sm" fontWeight="medium" color="fg.muted">
                 Showcase
               </Text>
             </NextLink>
-            <NextLink href="/showcase">
+            <NextLink href={`/${framework}/examples`}>
               <Text textStyle="sm" fontWeight="medium" color="fg.muted">
                 Examples
               </Text>
@@ -53,16 +47,10 @@ export const Navbar = () => {
             </IconButton>
           </HStack>
         </Flex>
+        <Flex py="2.5" display={{ base: 'flex', md: 'none' }}>
+          <MobileNavbar />
+        </Flex>
       </HStack>
-      <Divider display={{ base: 'block', md: 'none' }} />
-      <Box display={{ base: 'block', md: 'none' }} minH="11">
-        <HStack gap="2" py="1.5" px="4">
-          <MobileSidebarContainer>
-            <Sidebar groups={groups} />
-          </MobileSidebarContainer>
-          <Breadcrumbs />
-        </HStack>
-      </Box>
-    </>
+    </Container>
   )
 }

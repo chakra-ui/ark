@@ -12,7 +12,7 @@ interface Props {
   nextPage?: Pages
 }
 
-export const Footer = (props: Props) => {
+export const DocsFooter = (props: Props) => {
   const { prevPage, nextPage } = props
   const params = useParams<{ framework: string }>()
   const basepath = `/${params.framework}//docs`

@@ -21,7 +21,7 @@ const resources = [
 export const Footer = () => {
   return (
     <footer role="contentinfo">
-      <Container py="8" maxW="8xl">
+      <Container py="8">
         <Stack
           direction={{ base: 'column-reverse', md: 'row' }}
           justify="space-between"

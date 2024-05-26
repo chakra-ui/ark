@@ -28,9 +28,26 @@ export default defineConfig({
     '--ark-main-ps': 'calc((100vw - var(--ark-layout-max-width)) / 2 + var(--ark-sidebar-width))',
     '--ark-main-pe': 'calc((100vw - var(--ark-layout-max-width)) / 2)',
   },
+  patterns: {
+    extend: {
+      container: {
+        transform(props: Record<string, unknown>) {
+          return {
+            position: 'relative',
+            width: '100%',
+            maxW: '8xl',
+            mx: 'auto',
+            px: { base: '4', md: '8' },
+            ...props,
+          }
+        },
+      },
+    },
+  },
   staticCss: {
     recipes: {
       code: [{ size: ['*'] }],
+      drawer: ['*'],
     },
   },
   globalCss: {

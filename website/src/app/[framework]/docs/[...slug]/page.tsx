@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Box, Flex, Stack, styled } from 'styled-system/jsx'
-import { Footer } from '~/components/navigation/footer'
+import { Box, Flex, Stack } from 'styled-system/jsx'
+import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
-import { getServerContext } from '~/lib/server-context'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
@@ -15,10 +14,6 @@ interface Props {
 }
 
 export default function Page(props: Props) {
-  const serverContext = getServerContext()
-  serverContext.framework = props.params.framework
-  serverContext.component = props.params.slug[1]
-
   const currentPage = getPageBySlug(props.params.slug, props.params.framework)
   const nextPage = getNextPage(props.params.slug)
   const prevPage = getPrevPage(props.params.slug)
@@ -36,7 +31,7 @@ export default function Page(props: Props) {
             </Text>
             <MDXContent code={currentPage.code} />
           </Prose>
-          <Footer nextPage={nextPage} prevPage={prevPage} />
+          <DocsFooter nextPage={nextPage} prevPage={prevPage} />
         </Stack>
         <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
           <Box position="fixed">

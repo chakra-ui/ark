@@ -54,10 +54,7 @@ export const layout = sva({
       borderRightWidth: '1px',
     },
     main: {
-      pt: {
-        base: '28',
-        md: '16',
-      },
+      pt: '0',
       pb: { base: '8', md: '16' },
       ps: {
         base: '0',
