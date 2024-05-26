@@ -1,11 +1,8 @@
 import { HStack } from 'styled-system/jsx'
-import { getSidebarGroups } from '~/lib/sidebar'
 import { MobileSidebarContainer } from '../mobile-sidebar-container'
-import { DocsBreadcrumbs } from './docs-breadcrumbs'
-import { DocsSidebar } from './docs-sidebar'
 
-export const DocsNavbar = () => {
-  const groups = getSidebarGroups()
+export const ExamplesNavbar = () => {
+  //   const groups = getSidebarGroups()
   return (
     <HStack
       height="12"
@@ -22,10 +19,8 @@ export const DocsNavbar = () => {
       bg="bg.canvas"
       zIndex="1"
     >
-      <MobileSidebarContainer>
-        <DocsSidebar groups={groups} />
-      </MobileSidebarContainer>
-      <DocsBreadcrumbs />
+      <MobileSidebarContainer>{/* <ExamplesSidebar groups={groups} /> */}</MobileSidebarContainer>
+      {/* <Breadcrumbs /> */}
     </HStack>
   )
 }

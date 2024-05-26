@@ -3,18 +3,43 @@ import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
-import { Icon } from '~/components/ui'
-import { recipe } from './sidebar.recipe'
+import { Stack } from 'styled-system/jsx'
+import { Icon, Text } from '~/components/ui'
+import { recipe } from '../sidebar.recipe'
 import type { Pages } from '.velite'
 
 const styles = recipe()
+
+const groups = [
+  {
+    id: 'menu',
+    title: 'Menu',
+    items: [
+      {
+        id: 'nested-menu',
+        title: 'Nested Menu',
+        description: 'Menu with nested items',
+      },
+    ],
+  },
+  {
+    id: 'select',
+    title: 'Select',
+    items: [
+      {
+        id: 'searchable-select',
+        title: 'Searchable Select',
+        description: 'A select with a search input',
+      },
+    ],
+  },
+]
 
 interface Props {
   groups: Pages[][]
 }
 
-export const Sidebar = (props: Props) => {
-  const { groups } = props
+export const ExamplesSidebar = (props: Props) => {
   const pathname = usePathname()
   const params = useParams<{ framework: string }>()
 
@@ -22,20 +47,19 @@ export const Sidebar = (props: Props) => {
     <nav>
       <ul className={styles.root}>
         {groups.map((group, id) => {
-          const uniqueGroup = uniqueByTitle(group)
           return (
             <li key={id} className={styles.group}>
               <Collapsible.Root defaultOpen>
                 <Collapsible.Trigger className={styles.trigger}>
-                  <span> {group[0].category}</span>
+                  <span>{group.title}</span>
                   <Icon size="sm" className={styles.indicator}>
                     <ChevronRightIcon />
                   </Icon>
                 </Collapsible.Trigger>
                 <Collapsible.Content>
                   <ul>
-                    {uniqueGroup.map((item) => {
-                      const href = `/${params.framework}/docs/${item.slug}`
+                    {group.items.map((item) => {
+                      const href = `/${params.framework}/examples/${group.id}/${item.id}`
                       return (
                         <li key={item.id}>
                           <NextLink
