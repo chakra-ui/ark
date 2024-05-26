@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Box, Flex, Stack } from 'styled-system/jsx'
+import { Box, Container, Flex, Stack } from 'styled-system/jsx'
 import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
@@ -20,7 +20,7 @@ export default function Page(props: Props) {
 
   if (currentPage) {
     return (
-      <Flex mx="auto" pt="12" justifyContent="center" px={{ base: '4', md: '8' }} gap="16">
+      <Container display="flex" py="12" gap="16" justifyContent="center">
         <Stack gap="16" maxW="45rem" mx="auto" width="full">
           <Prose css={{ maxWidth: 'full' }}>
             <Heading as="h1" fontWeight="bold">
@@ -38,7 +38,7 @@ export default function Page(props: Props) {
             <TableOfContent entries={currentPage.toc} />
           </Box>
         </Box>
-      </Flex>
+      </Container>
     )
   }
   return notFound()

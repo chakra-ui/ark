@@ -125,7 +125,7 @@ export default defineConfig({
             aside: {
               bg: {
                 base: 'gray.2',
-                _dark: 'black.a3',
+                _dark: '#0e0e0e',
               },
               borderRightWidth: '1px',
               position: 'fixed',
@@ -139,6 +139,7 @@ export default defineConfig({
                 base: '272px',
                 lg: 'calc((100vw - (1440px - 64px)) / 2 + 272px - 32px)',
               },
+              zIndex: '2',
             },
             main: {
               flex: '1',

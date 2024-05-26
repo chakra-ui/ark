@@ -16,7 +16,7 @@ export default function Layout(props: PropsWithChildren<Props>) {
       <header>
         <Navbar />
       </header>
-      <Box pt="16">{props.children}</Box>
+      {props.children}
     </>
   )
 }
