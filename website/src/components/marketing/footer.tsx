@@ -1,12 +1,9 @@
+import NextLink from 'next/link'
 import { Container, Stack } from 'styled-system/jsx'
 import { Text } from '~/components/ui'
 import { Logo } from '../logo'
 
 const resources = [
-  {
-    name: 'Docs',
-    href: '/docs/react/overview/getting-started',
-  },
   {
     name: 'GitHub',
     href: 'https://github.com/chakra-ui/ark',
@@ -24,7 +21,7 @@ const resources = [
 export const Footer = () => {
   return (
     <footer role="contentinfo">
-      <Container py="8" maxW="8xl">
+      <Container py="8">
         <Stack
           direction={{ base: 'column-reverse', md: 'row' }}
           justify="space-between"
@@ -36,6 +33,7 @@ export const Footer = () => {
             <Text color="fg.muted">A project by Chakra Systems</Text>
           </Stack>
           <Stack direction="row" gap="8">
+            <NextLink href="/react/docs/overview/getting-started">Docs</NextLink>
             {resources.map((resource) => (
               <a key={resource.name} href={resource.href} target="_blank" rel="noreferrer">
                 {resource.name}

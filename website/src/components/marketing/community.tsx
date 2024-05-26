@@ -40,7 +40,7 @@ const contributors = [
 
 export const Community = () => {
   return (
-    <Container py={{ base: '16', md: '24' }} maxW="8xl">
+    <Container py={{ base: '16', md: '24' }}>
       <Box
         bg="bg.default"
         borderRadius="l3"

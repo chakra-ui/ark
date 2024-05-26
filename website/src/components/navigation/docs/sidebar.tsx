@@ -35,7 +35,7 @@ export const Sidebar = (props: Props) => {
                 <Collapsible.Content>
                   <ul>
                     {uniqueGroup.map((item) => {
-                      const href = `/docs/${params.framework}/${item.slug}`
+                      const href = `/${params.framework}/docs/${item.slug}`
                       return (
                         <li key={item.id}>
                           <NextLink

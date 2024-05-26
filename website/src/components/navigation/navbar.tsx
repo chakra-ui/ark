@@ -1,49 +1,59 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import NextLink from 'next/link'
-import { Box, Divider, HStack } from 'styled-system/jsx'
+import { Divider, Flex, HStack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
-import { getSidebarGroups } from '~/lib/sidebar'
-import { FrameworkSelect } from '../framework-select'
-import { Logo } from '../logo'
-import { IconButton } from '../ui'
-import { Breadcrumbs } from './breadcrumbs'
-import { MobileSidebarContainer } from './mobile-sidebar-container'
-import { Sidebar } from './sidebar'
+import { FrameworkSelect } from '~/components/framework-select'
+import { Logo } from '~/components/logo'
+import { IconButton } from '~/components/ui'
+import { getServerContext } from '~/lib/server-context'
+import { NavbarContainer } from './navbar-container'
 
 export const Navbar = () => {
-  const groups = getSidebarGroups()
+  const serverContext = getServerContext()
+  const framework = serverContext.framework ?? 'react'
   return (
     <>
-      <HStack justifyContent="space-between" h="16" px={{ base: '4', md: '8' }}>
-        <Box>
-          <Box display={{ md: 'none' }}>
-            <NextLink href="/" aria-label="Go to start page">
-              <Logo />
+      <NavbarContainer>
+        <HStack justifyContent="space-between">
+          <NextLink href="/" aria-label="Go to start page">
+            <Logo />
+          </NextLink>
+          <Flex alignItems="center" py="0.5">
+            {/* <HStack gap="6">
+            <NextLink href={`/${framework}/docs/overview/introduction`}>
+              <Text textStyle="sm" fontWeight="medium" color="accent.default">
+                Docs
+              </Text>
             </NextLink>
-          </Box>
-        </Box>
-        <HStack gap="3">
-          <FrameworkSelect />
-          <Divider orientation="vertical" h="6" />
-          <HStack gap="1">
-            <ColorModeButton />
-            <IconButton asChild variant="ghost">
-              <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">
-                <SiGithub />
-              </a>
-            </IconButton>
+            <NextLink href={`/${framework}/showcase`}>
+              <Text textStyle="sm" fontWeight="medium" color="fg.muted">
+                Showcase
+              </Text>
+            </NextLink>
+            <NextLink href={`/${framework}/examples`}>
+              <Text textStyle="sm" fontWeight="medium" color="fg.muted">
+                Examples
+              </Text>
+            </NextLink>
           </HStack>
+          <Divider orientation="vertical" h="6" ms="5" me="4" /> */}
+            <FrameworkSelect />
+            <Divider orientation="vertical" h="6" ms="3" me="3" />
+            <HStack gap="0">
+              <ColorModeButton />
+              <IconButton asChild variant="ghost">
+                <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">
+                  <SiGithub />
+                </a>
+              </IconButton>
+            </HStack>
+          </Flex>
+          {/* <Flex py="2.5" display={{ base: 'flex', md: 'none' }}>
+            <MobileNavbar />
+          </Flex> */}
         </HStack>
-      </HStack>
-      <Divider display={{ base: 'block', md: 'none' }} />
-      <Box display={{ base: 'block', md: 'none' }} minH="11">
-        <HStack gap="2" py="1.5" px="4">
-          <MobileSidebarContainer>
-            <Sidebar groups={groups} />
-          </MobileSidebarContainer>
-          <Breadcrumbs />
-        </HStack>
-      </Box>
+      </NavbarContainer>
+      <Divider />
     </>
   )
 }

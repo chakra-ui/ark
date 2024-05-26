@@ -1,20 +1,18 @@
-'use client'
-import { useWindowScroll } from '@uidotdev/usehooks'
-import { Box, type BoxProps } from 'styled-system/jsx'
+import { type BoxProps, Container, Flex } from 'styled-system/jsx'
 
 export const NavbarContainer = (props: BoxProps) => {
-  const [{ y }] = useWindowScroll()
-  const isScrolled = y && y > 32
-
   return (
-    <Box
-      shadow={isScrolled ? 'xs' : 'none'}
-      borderBottomWidth={{ base: isScrolled ? '0' : '1px', md: '0' }}
-      background={isScrolled ? 'bg.default' : 'bg.canvas'}
-      transitionProperty="background, box-shadow"
-      transitionDuration="normal"
-      transitionTimingFunction="default"
-      {...props}
-    />
+    <Flex
+      alignItems="center"
+      position="fixed"
+      top="0"
+      width="full"
+      background="bg.canvas"
+      zIndex="1"
+      borderBottomWidth="1px"
+      borderColor={{ base: 'border.subtle', _dark: 'black' }}
+    >
+      <Container py="2.5" {...props} />
+    </Flex>
   )
 }

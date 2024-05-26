@@ -12,10 +12,10 @@ interface Props {
   nextPage?: Pages
 }
 
-export const Footer = (props: Props) => {
+export const DocsFooter = (props: Props) => {
   const { prevPage, nextPage } = props
   const params = useParams<{ framework: string }>()
-  const basepath = `/docs/${params.framework}`
+  const basepath = `/${params.framework}//docs`
 
   return (
     <Stack justify="space-between" gap="3" direction={{ base: 'column-reverse', sm: 'row' }}>
