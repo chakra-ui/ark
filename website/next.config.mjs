@@ -7,6 +7,16 @@ export default {
     config.plugins.push(new VeliteWebpackPlugin())
     return config
   },
+  async redirects() {
+    return [
+      {
+        // Redirect from /docs/[framework]/[...slug] to /[framework]/docs/[...slug]
+        source: '/docs/:framework/:slug*',
+        destination: '/:framework/docs/:slug*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 class VeliteWebpackPlugin {
