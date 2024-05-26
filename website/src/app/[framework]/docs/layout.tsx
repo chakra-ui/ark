@@ -17,7 +17,14 @@ export default function Layout(props: PropsWithChildren) {
       <DocsNavbar />
       <Flex pt={{ base: '28', md: '16' }}>
         <aside className={styles.aside}>
-          <Box py="4.5">
+          <Box
+            py="4.5"
+            position="sticky"
+            top="0"
+            bg="inherit"
+            zIndex="sticky"
+            borderBottomWidth="1px"
+          >
             <NextLink href="/" aria-label="Go to start page">
               <Logo />
             </NextLink>
