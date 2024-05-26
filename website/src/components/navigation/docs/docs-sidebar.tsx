@@ -13,7 +13,7 @@ interface Props {
   groups: Pages[][]
 }
 
-export const Sidebar = (props: Props) => {
+export const DocsSidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
   const params = useParams<{ framework: string }>()
