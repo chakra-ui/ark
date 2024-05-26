@@ -95,8 +95,8 @@ highlights:
 - **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
   component for more flexible and cleaner API integration.
 - **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
-  [LocaleProvider](https://ark-ui.com/docs/vue/providers/environment) and
-  [EnvironmentProvider](https://ark-ui.com/docs/vue/providers/locale) for these settings.
+  [LocaleProvider](https://ark-ui.com/vue/docs/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/vue/docs/providers/locale) for these settings.
 
 ## [0.11.0] - 2024-02-08
 

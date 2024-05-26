@@ -94,8 +94,8 @@ export const Basic = () => (
 - **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
   component for more flexible and cleaner API integration.
 - **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
-  [LocaleProvider](https://ark-ui.com/docs/react/providers/environment) and
-  [EnvironmentProvider](https://ark-ui.com/docs/react/providers/locale) for these settings.
+  [LocaleProvider](https://ark-ui.com/react/docs/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/react/docs/providers/locale) for these settings.
 
 ## [2.2.3] - 2024-03-05
 
