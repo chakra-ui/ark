@@ -16,6 +16,10 @@ export {
   type SegmentGroupItemControlProps as ItemControlProps,
 } from './segment-group-item-control.vue'
 export {
+  default as ItemHiddenInput,
+  type SegmentGroupItemHiddenInputProps as ItemHiddenInputProps,
+} from './segment-group-item-hidden-input.vue'
+export {
   default as ItemText,
   type SegmentGroupItemTextProps as ItemTextProps,
 } from './segment-group-item-text.vue'

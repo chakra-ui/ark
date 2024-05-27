@@ -20,6 +20,10 @@ export {
   type SegmentGroupItemControlProps as ItemControlProps,
 } from './segment-group-item-control'
 export {
+  SegmentGroupItemHiddenInput as ItemHiddenInput,
+  type SegmentGroupItemHiddenInputProps as ItemHiddenInputProps,
+} from './segment-group-item-hidden-input'
+export {
   SegmentGroupItemText as ItemText,
   type SegmentGroupItemTextProps as ItemTextProps,
 } from './segment-group-item-text'

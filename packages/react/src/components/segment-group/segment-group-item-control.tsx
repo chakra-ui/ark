@@ -17,12 +17,7 @@ export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupIt
       props,
     )
 
-    return (
-      <>
-        <ark.div {...mergedProps} ref={ref} />
-        <input {...segmentGroup.getItemHiddenInputProps(itemProps)} />
-      </>
-    )
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 
