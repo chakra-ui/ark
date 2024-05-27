@@ -7,13 +7,24 @@ import { SidebarContainer } from '~/components/navigation/sidebar-container'
 
 const styles = layout()
 
-export default function Layout(props: PropsWithChildren) {
+interface Props {
+  params: { framework: string }
+}
+
+export default async function Layout(props: PropsWithChildren<Props>) {
+  const { framework } = props.params
+  const groups = await fetch(`http://localhost:3001/api/${framework}/examples`, {
+    headers: {
+      Authorization: 'Basic YWRtaW46YWRtaW4=',
+    },
+  }).then((res) => res.json())
+
   return (
     <>
       <ExamplesNavbar />
       <Flex pt={{ base: '28', md: '16' }}>
         <SidebarContainer className={styles.aside}>
-          <ExamplesSidebar groups={[]} />
+          <ExamplesSidebar groups={groups} />
         </SidebarContainer>
         <main className={styles.main}>{props.children}</main>
       </Flex>

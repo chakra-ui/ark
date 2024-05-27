@@ -5,14 +5,13 @@ import { CodePreview } from '~/components/code-preview'
 import { IFrameExample } from '~/components/iframe-example'
 
 interface Props {
-  params: { component: string; id: string }
+  params: { component: string; framework: string; id: string }
 }
 
 export default async function Page(props: Props) {
-  const { id } = props.params
-
+  const { component, framework, id } = props.params
   const sourceFiles = await fetch(
-    'https://ark-plus.vercel.app/api/react/examples/popover-tooltip',
+    `http://localhost:3001/api/${framework}/examples/${component}/${id}`,
     {
       headers: {
         Authorization: 'Basic YWRtaW46YWRtaW4=',
