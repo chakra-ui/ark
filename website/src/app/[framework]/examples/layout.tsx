@@ -22,7 +22,9 @@ export default async function Layout(props: PropsWithChildren<Props>) {
 
   return (
     <>
-      <ExamplesNavbar />
+      <ExamplesNavbar>
+        <ExamplesSidebar groups={groups} />
+      </ExamplesNavbar>
       <Flex pt={{ base: '28', md: '16' }}>
         <SidebarContainer className={styles.aside}>
           <ExamplesSidebar groups={groups} />

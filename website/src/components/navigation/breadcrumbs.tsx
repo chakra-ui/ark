@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { Text } from '~/components/ui'
 
-export const DocsBreadcrumbs = () => {
+export const Breadcrumbs = () => {
   const pathname = usePathname()
   const crumbs = pathname
     .split('/')
