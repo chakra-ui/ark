@@ -35,6 +35,17 @@ const pages = defineCollection({
     }),
 })
 
+const showcases = defineCollection({
+  name: 'Showcases',
+  pattern: 'website/src/content/showcases.json',
+  schema: s.object({
+    title: s.string(),
+    description: s.string(),
+    url: s.string(),
+    image: s.string(),
+  }),
+})
+
 const PropDefintion = s.object({
   type: s.string(),
   isRequired: s.boolean(),
@@ -63,7 +74,7 @@ const types = defineCollection({
 
 export default defineConfig({
   root: path.join(process.cwd(), '../'),
-  collections: { pages, types },
+  collections: { pages, types, showcases },
   mdx: {
     rehypePlugins: [
       rehypeSlug,

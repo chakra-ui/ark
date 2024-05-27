@@ -37,8 +37,17 @@ export const recipe = sva({
       color: 'fg.muted',
       py: '1.5',
       textDecoration: 'none',
+      transitionDuration: 'normal',
+      transitionProperty: 'color',
+      transitionTimingFunction: 'default',
+      _hover: {
+        color: 'fg.default',
+      },
       _currentPage: {
         color: 'accent.default',
+        _hover: {
+          color: 'accent.default',
+        },
       },
     },
     group: {

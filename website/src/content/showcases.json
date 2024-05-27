@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Chakra UI",
+    "description": "Create accessible React apps with speed",
+    "url": "https://chakra-ui.com",
+    "image": "https://chakra-ui.com/og-image.png"
+  },
+  {
+    "title": "Park UI",
+    "description": "Build your own Design System",
+    "url": "https://park-ui.com",
+    "image": "https://park-ui.com/opengraph-image.png"
+  }
+]

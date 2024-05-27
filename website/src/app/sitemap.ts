@@ -8,5 +8,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((page) => ({ url: `https://ark-ui.com/${framework}/docs/${page.slug}` })),
   )
 
-  return [{ url: 'https://ark-ui.com' }, ...docsPages]
+  const showcasePages = ['react', 'solid', 'vue'].map((framework) => ({
+    url: `https://ark-ui.com/${framework}/showcase`,
+  }))
+
+  return [{ url: 'https://ark-ui.com' }, ...docsPages, ...showcasePages]
 }
