@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added `TimePicker` anatomy.
+
 ## [3.1.0] - 2024-05-15
 
 ### Added

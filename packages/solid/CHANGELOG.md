@@ -8,8 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- Exported missing `HiddenInput` to `Slider` component.
-- Exported missing `ItemHiddenInput` to `RadioGroup` and `SegmentGroup` component.
+- Added missing export for `HiddenInput` in `Slider`.
+- Added missing export for `ItemHiddenInput` in `RadioGroup` and `SegmentGroup`.
 
 ## [3.0.0] - 2024-05-24
 
