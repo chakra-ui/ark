@@ -1,6 +1,10 @@
 export type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/slider'
 export { SliderContext as Context, type SliderContextProps as ContextProps } from './slider-context'
 export { SliderControl as Control, type SliderControlProps as ControlProps } from './slider-control'
+export {
+  SliderHiddenInput as HiddenInput,
+  type SliderHiddenInputProps as HiddenInputProps,
+} from './slider-hidden-input'
 export { SliderLabel as Label, type SliderLabelProps as LabelProps } from './slider-label'
 export { SliderMarker as Marker, type SliderMarkerProps as MarkerProps } from './slider-marker'
 export {

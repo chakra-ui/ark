@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Added missing `HiddenInput` to `Slider` component
+
 ## [3.0.0] - 2024-05-24
 
 ### Highlights
@@ -51,7 +55,7 @@ export const Basic = () => (
 ### Changed
 
 - **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
-  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility. Please
+  `RatingGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for better form library compatibility. Please
   ensure to include the hidden input in your component like shown below:
 
 ```tsx

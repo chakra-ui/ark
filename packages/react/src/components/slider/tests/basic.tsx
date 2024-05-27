@@ -18,7 +18,9 @@ export const ComponentUnderTest = (props: SliderRootProps) => {
           <Slider.Range />
         </Slider.Track>
         {value.map((_, index) => (
-          <Slider.Thumb key={index} index={index} />
+          <Slider.Thumb key={index} index={index}>
+            <Slider.HiddenInput />
+          </Slider.Thumb>
         ))}
       </Slider.Control>
       <Slider.MarkerGroup>
