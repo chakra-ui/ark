@@ -1,4 +1,4 @@
-import { Container, Stack } from 'styled-system/jsx'
+import { Container, Flex, Stack } from 'styled-system/jsx'
 import { CodeTabs } from '~/components/code-tabs'
 import { IFrameExample } from '~/components/iframe-example'
 import { Heading, Text } from '~/components/ui'
@@ -14,7 +14,7 @@ const { ARK_PLUS_URL } = process.env
 export default async function Page(props: Props) {
   const { component, id } = props.params
   const data = await fetchExample(props.params)
-  const baseUrl = `${ARK_PLUS_URL}/examples/${component}/${id}`
+  const url = `${ARK_PLUS_URL}/examples/${component}/${id}`
 
   return (
     <Stack gap={{ base: '8', md: '12' }} py="12">
@@ -29,7 +29,17 @@ export default async function Page(props: Props) {
         </Prose>
       </Container>
       <Container maxW="65rem" mb="6">
-        <IFrameExample baseUrl={baseUrl} />
+        <Flex
+          minH="md"
+          bg="bg.default"
+          width="full"
+          overflow="hidden"
+          mx="auto"
+          boxShadow="xl"
+          borderRadius="2xl"
+        >
+          <IFrameExample url={url} />
+        </Flex>
       </Container>
       <Container maxW="49rem">
         <CodeTabs examples={data} defaultValue="index.tsx" />
