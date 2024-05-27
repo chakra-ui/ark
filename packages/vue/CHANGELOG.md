@@ -59,8 +59,9 @@ highlights:
 ### Changed
 
 - **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
-  `RatingGroup`, `Select`, `Switch`, `Slider` and `TagsInput` for better form library compatibility. Please
-  ensure to include the hidden input in your component as shown below:
+  `RadioGroup`, `RatingGroup`, `SegmentGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for
+  better form library compatibility. Please ensure to include the hidden input in your component as
+  shown below:
 
 ```jsx
 <Checkbox.Root>
