@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { cva } from 'styled-system/css'
 import { Container, Grid, GridItem, Stack, styled } from 'styled-system/jsx'
 import { PageHeader } from '~/components/page-header'
@@ -33,6 +34,11 @@ export default function Page() {
       </Stack>
     </Container>
   )
+}
+
+export const metadata: Metadata = {
+  title: 'Showcase',
+  description: 'Discover amazing projects built with Ark UI.',
 }
 
 const link = cva({
