@@ -4,7 +4,6 @@ import { layout } from 'styled-system/recipes'
 import { ExamplesNavbar } from '~/components/navigation/examples/examples-navbar'
 import { ExamplesSidebar } from '~/components/navigation/examples/examples-sidebar'
 import { SidebarContainer } from '~/components/navigation/sidebar-container'
-import { fetchExample } from '~/lib/fetch-example'
 
 const styles = layout()
 
@@ -12,11 +11,13 @@ interface Props {
   params: { component: string; framework: string; id: string }
 }
 
+const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
+
 export default async function Layout(props: PropsWithChildren<Props>) {
   const { framework } = props.params
-  const groups = await fetch(`http://localhost:3001/api/${framework}/examples`, {
+  const groups = await fetch(`${ARK_PLUS_URL}/api/${framework}/examples`, {
     headers: {
-      Authorization: 'Basic YWRtaW46YWRtaW4=',
+      Authorization: ARK_PLUS_API_KEY,
     },
   }).then((res) => res.json())
 

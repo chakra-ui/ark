@@ -11,16 +11,15 @@ const highlighter = await getHighlighter({
   langs: ['tsx'],
 })
 
+const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
+
 export const fetchExample = async (props: Props) => {
   const { component, framework, id } = props
-  const sources = await fetch(
-    `http://localhost:3001/api/${framework}/examples/${component}/${id}`,
-    {
-      headers: {
-        Authorization: 'Basic YWRtaW46YWRtaW4=',
-      },
+  const sources = await fetch(`${ARK_PLUS_URL}/api/${framework}/examples/${component}/${id}`, {
+    headers: {
+      Authorization: ARK_PLUS_API_KEY,
     },
-  ).then((res) => res.json())
+  }).then((res) => res.json())
 
   // @ts-expect-error
   return sources.map((source) => ({
