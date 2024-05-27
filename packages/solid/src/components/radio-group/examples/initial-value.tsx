@@ -12,6 +12,7 @@ export const InitialValue = () => {
           <RadioGroup.Item value={framework()}>
             <RadioGroup.ItemText>{framework()}</RadioGroup.ItemText>
             <RadioGroup.ItemControl />
+            <RadioGroup.ItemHiddenInput />
           </RadioGroup.Item>
         )}
       </Index>

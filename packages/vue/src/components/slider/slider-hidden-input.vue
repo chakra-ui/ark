@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
 export interface SliderHiddenInputProps
   extends PolymorphicProps,
@@ -14,6 +13,7 @@ export interface SliderHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
+import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
 defineProps<SliderHiddenInputProps>()
 const slider = useSliderContext()

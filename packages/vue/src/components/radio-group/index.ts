@@ -1,4 +1,5 @@
 export type { ValueChangeDetails as RadioGroupValueChangeDetails } from '@zag-js/radio-group'
+export * as RadioGroup from './radio-group'
 export {
   default as RadioGroupContext,
   type RadioGroupContextProps,
@@ -7,7 +8,6 @@ export {
   default as RadioGroupIndicator,
   type RadioGroupIndicatorProps,
 } from './radio-group-indicator.vue'
-export { default as RadioGroupItem, type RadioGroupItemProps } from './radio-group-item.vue'
 export {
   default as RadioGroupItemContext,
   type RadioGroupItemContextProps,
@@ -17,18 +17,22 @@ export {
   type RadioGroupItemControlProps,
 } from './radio-group-item-control.vue'
 export {
+  default as RadioGroupItemHiddenInput,
+  type RadioGroupItemHiddenInputProps,
+} from './radio-group-item-hidden-input.vue'
+export {
   default as RadioGroupItemText,
   type RadioGroupItemTextProps,
 } from './radio-group-item-text.vue'
+export { default as RadioGroupItem, type RadioGroupItemProps } from './radio-group-item.vue'
 export { default as RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label.vue'
 export {
   default as RadioGroupRoot,
-  type RadioGroupRootProps,
   type RadioGroupRootEmits,
+  type RadioGroupRootProps,
 } from './radio-group-root.vue'
 export { useRadioGroupContext, type UseRadioGroupContext } from './use-radio-group-context'
 export {
   useRadioGroupItemContext,
   type UseRadioGroupItemContext,
 } from './use-radio-group-item-context'
-export * as RadioGroup from './radio-group'

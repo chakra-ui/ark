@@ -1,13 +1,13 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RadioGroupItemControlProps
+export interface RadioGroupItemHiddenInputProps
   extends PolymorphicProps,
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -15,14 +15,12 @@ import { ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
-defineProps<RadioGroupItemControlProps>()
+defineProps<RadioGroupItemHiddenInputProps>()
 
 const radioGroup = useRadioGroupContext()
 const itemProps = useRadioGroupItemPropsContext()
 </script>
 
 <template>
-  <ark.div v-bind="radioGroup.getItemControlProps(itemProps)" :as-child="asChild">
-    <slot />
-  </ark.div>
+  <ark.input v-bind="radioGroup.getItemHiddenInputProps(itemProps)" :as-child="asChild" />
 </template>

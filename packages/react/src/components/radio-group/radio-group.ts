@@ -17,6 +17,10 @@ export {
   type RadioGroupItemControlProps as ItemControlProps,
 } from './radio-group-item-control'
 export {
+  RadioGroupItemHiddenInput as ItemHiddenInput,
+  type RadioGroupItemHiddenInputProps as ItemHiddenInputProps,
+} from './radio-group-item-hidden-input'
+export {
   RadioGroupItemText as ItemText,
   type RadioGroupItemTextProps as ItemTextProps,
 } from './radio-group-item-text'

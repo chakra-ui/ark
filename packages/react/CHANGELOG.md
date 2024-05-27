@@ -8,7 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- Added missing `HiddenInput` to `Slider` component
+- Added missing `HiddenInput` to `Slider` component.
+- Added missing `ItemHiddenInput` to `RadioGroup` component.
 
 ## [3.0.0] - 2024-05-24
 

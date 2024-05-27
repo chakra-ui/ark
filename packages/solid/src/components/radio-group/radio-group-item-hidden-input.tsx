@@ -3,12 +3,12 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
-export interface RadioGroupItemControlProps extends HTMLArkProps<'div'> {}
+export interface RadioGroupItemHiddenInputProps extends HTMLArkProps<'input'> {}
 
-export const RadioGroupItemControl = (props: RadioGroupItemControlProps) => {
+export const RadioGroupItemHiddenInput = (props: RadioGroupItemHiddenInputProps) => {
   const radioGroup = useRadioGroupContext()
   const itemProps = useRadioGroupItemPropsContext()
-  const mergedProps = mergeProps(() => radioGroup().getItemControlProps(itemProps), props)
+  const mergedProps = mergeProps(() => radioGroup().getItemHiddenInputProps(itemProps), props)
 
-  return <ark.div {...mergedProps} />
+  return <ark.input {...mergedProps} />
 }
