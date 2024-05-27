@@ -1,7 +1,6 @@
 'use client'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
 import { cva } from 'styled-system/css'
 
 interface Props {
@@ -40,13 +39,13 @@ export const MobileNavbarLinks = (props: Props) => {
       >
         Docs
       </NextLink>
-      {/* <NextLink
+      <NextLink
         href={`/${framework}/examples`}
         className={link}
         aria-current={pathname.startsWith(`/${framework}/examples`) ? 'page' : undefined}
       >
         Examples
-      </NextLink> */}
+      </NextLink>
       <NextLink
         href={`/${framework}/showcase`}
         className={link}

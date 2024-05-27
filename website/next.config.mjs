@@ -10,7 +10,11 @@ export default {
   async redirects() {
     return [
       {
-        // Redirect from /docs/[framework]/[...slug] to /[framework]/docs/[...slug]
+        source: '/:framework/examples',
+        destination: '/:framework/examples/menu/nested',
+        permanent: false,
+      },
+      {
         source: '/docs/:framework/:slug*',
         destination: '/:framework/docs/:slug*',
         permanent: true,
