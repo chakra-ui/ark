@@ -5,6 +5,9 @@
   "ItemControl": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
+  "ItemHiddenInput": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "Item": {
     "props": {
       "value": { "type": "string", "isRequired": true },

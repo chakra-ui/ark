@@ -19,6 +19,16 @@
     },
     "element": "HTMLDivElement"
   },
+  "ItemHiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLInputElement"
+  },
   "Item": {
     "props": {
       "value": { "type": "string", "isRequired": true },

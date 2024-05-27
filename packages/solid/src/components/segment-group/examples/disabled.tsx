@@ -11,6 +11,7 @@ export const Disabled = () => {
           <SegmentGroup.Item value={framework()} disabled={framework() === 'Svelte'}>
             <SegmentGroup.ItemText>{framework()}</SegmentGroup.ItemText>
             <SegmentGroup.ItemControl />
+            <SegmentGroup.ItemHiddenInput />
           </SegmentGroup.Item>
         )}
       </Index>

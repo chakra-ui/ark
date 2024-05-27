@@ -32,7 +32,7 @@ const features = [
 
 export const Highlights = () => {
   return (
-    <Container py={{ base: '16', md: '24' }} maxW="8xl">
+    <Container py={{ base: '16', md: '24' }}>
       <Grid columns={{ base: 1, md: 2 }} gap={{ base: '16', lg: '24' }}>
         <Stack width="full" gap={{ base: '10', md: '12' }}>
           <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">

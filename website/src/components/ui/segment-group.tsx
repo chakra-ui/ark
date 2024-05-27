@@ -40,4 +40,6 @@ export const Label = withContext<HTMLLabelElement, Assign<JsxStyleProps, Segment
 export {
   SegmentGroupContext as Context,
   type SegmentGroupContextProps as ContextProps,
+  SegmentGroupItemHiddenInput as ItemHiddenInput,
+  type SegmentGroupItemHiddenInputProps as ItemHiddenInputProps,
 } from '@ark-ui/react/segment-group'

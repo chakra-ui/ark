@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/react",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
@@ -497,7 +497,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@ark-ui/anatomy": "3.1.0",
+    "@ark-ui/anatomy": "3.2.0",
     "@zag-js/accordion": "0.51.1",
     "@zag-js/avatar": "0.51.1",
     "@zag-js/carousel": "0.51.1",

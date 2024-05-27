@@ -22,6 +22,7 @@ const items = ref([
     >
       <RadioGroup.ItemText>{{ item.label }}</RadioGroup.ItemText>
       <RadioGroup.ItemControl />
+      <RadioGroup.ItemHiddenInput />
     </RadioGroup.Item>
   </RadioGroup.Root>
 </template>

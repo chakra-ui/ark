@@ -1,8 +1,7 @@
 'use client'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { useParams, usePathname, useRouter } from 'next/navigation'
-import * as Select from '~/components/ui/select'
-import { Icon } from './ui'
+import { Icon, Select } from '~/components/ui'
 
 export const FrameworkSelect = () => {
   const router = useRouter()
@@ -18,15 +17,21 @@ export const FrameworkSelect = () => {
     <Select.Root
       defaultValue={[params.framework]}
       onValueChange={(e) => router.push(pathname.replace(params.framework, e.value[0]))}
-      size="md"
+      size={{ base: 'md', md: 'sm' }}
       items={items}
       variant="ghost"
-      positioning={{ placement: 'bottom-end' }}
+      positioning={{ placement: 'bottom-end', sameWidth: true }}
     >
-      <Select.Control>
-        <Select.Trigger>
+      <Select.Control py={{ base: '1', md: '0' }}>
+        <Select.Trigger
+          css={{
+            color: 'fg.muted',
+            fontWeight: 'medium',
+            _hover: { color: 'fg.default', '& :where(svg)': { color: 'fg.default' } },
+          }}
+        >
           <Select.ValueText placeholder="Select a Framework" />
-          <Icon color="fg.default" size="sm">
+          <Icon color="fg.muted" size="sm">
             <ChevronDownIcon />
           </Icon>
         </Select.Trigger>

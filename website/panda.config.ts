@@ -18,19 +18,26 @@ export default defineConfig({
   include: ['./src/**/*.{js,jsx,ts,tsx}'],
   jsxFramework: 'react',
   outdir: 'styled-system',
-  globalVars: {
-    '--ark-nav-height': '64px',
-    '--ark-layout-max-width': '1440px',
-    '--ark-sidebar-width': '272px',
-    '--ark-sidebar-ps': 'max(32px, calc((100vw - (var(--ark-layout-max-width) - 64px)) / 2))',
-    '--ark-sidebar-max-width':
-      'calc((100vw - (var(--ark-layout-max-width) - 64px)) / 2 + var(--ark-sidebar-width) - 32px)',
-    '--ark-main-ps': 'calc((100vw - var(--ark-layout-max-width)) / 2 + var(--ark-sidebar-width))',
-    '--ark-main-pe': 'calc((100vw - var(--ark-layout-max-width)) / 2)',
+  patterns: {
+    extend: {
+      container: {
+        transform(props: Record<string, unknown>) {
+          return {
+            position: 'relative',
+            width: '100%',
+            maxW: '8xl',
+            mx: 'auto',
+            px: { base: '4', md: '8' },
+            ...props,
+          }
+        },
+      },
+    },
   },
   staticCss: {
     recipes: {
       code: [{ size: ['*'] }],
+      drawer: ['*'],
     },
   },
   globalCss: {
@@ -106,6 +113,44 @@ export default defineConfig({
             default: { value: '{colors.accent.9}' },
             emphasized: { value: '{colors.accent.10}' },
             fg: { value: 'white' },
+          },
+        },
+      },
+
+      slotRecipes: {
+        layout: {
+          className: 'layout',
+          slots: ['aside', 'main'],
+          base: {
+            aside: {
+              bg: {
+                base: 'gray.2',
+                _dark: '#0e0e0e',
+              },
+              borderRightWidth: '1px',
+              position: 'fixed',
+              top: '0',
+              bottom: '0',
+              display: { base: 'none', md: 'block' },
+              ps: 'max(32px, calc((100vw - (1440px - 64px)) / 2))',
+              pe: '8',
+              minWidth: '272px',
+              overflow: 'auto',
+              width: {
+                base: '272px',
+                lg: 'calc((100vw - (1440px - 64px)) / 2 + 272px - 32px)',
+              },
+              zIndex: '2',
+            },
+            main: {
+              minWidth: '0',
+              flex: '1',
+              ps: {
+                base: '0',
+                md: 'max(calc((100vw - 1440px) / 2 + 272px), 272px)',
+              },
+              pe: 'calc((100vw - 1440px) / 2)',
+            },
           },
         },
       },

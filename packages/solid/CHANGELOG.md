@@ -6,6 +6,13 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.1] - 2024-05-27
+
+### Fixed
+
+- Added missing export for `HiddenInput` in `Slider`.
+- Added missing export for `ItemHiddenInput` in `RadioGroup` and `SegmentGroup`.
+
 ## [3.0.0] - 2024-05-24
 
 ### Highlights
@@ -51,8 +58,9 @@ export const Basic = () => (
 ### Changed
 
 - **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
-  `RatingGroup`, `Select`, `Switch`, and `TagsInput` for better form library compatibility. Please
-  ensure to include the hidden input in your component like shown below:
+  `RadioGroup`, `RatingGroup`, `SegmentGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for
+  better form library compatibility. Please ensure to include the hidden input in your component
+  like shown below:
 
 ```tsx
 <Checkbox.Root>
@@ -108,8 +116,8 @@ export const Basic = () => (
 - **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
   component for more flexible and cleaner API integration.
 - **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
-  [LocaleProvider](https://ark-ui.com/docs/solid/providers/environment) and
-  [EnvironmentProvider](https://ark-ui.com/docs/solid/providers/locale) for these settings.
+  [LocaleProvider](https://ark-ui.com/solid/docs/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/solid/docs/providers/locale) for these settings.
 
 ## [2.2.0] - 2024-02-27
 

@@ -9,6 +9,16 @@
     },
     "element": "HTMLDivElement"
   },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLInputElement"
+  },
   "Label": {
     "props": {
       "asChild": {

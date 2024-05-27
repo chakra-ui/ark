@@ -23,7 +23,12 @@
       "pageChange": {
         "type": "[details: PageChangeDetails]",
         "isRequired": true,
-        "description": "Called when the page number is changed, and it takes the resulting page number argument"
+        "description": "Called when the page number is changed"
+      },
+      "pageSizeChange": {
+        "type": "[details: PageSizeChangeDetails]",
+        "isRequired": true,
+        "description": "Called when the page size is changed"
       }
     },
     "props": {

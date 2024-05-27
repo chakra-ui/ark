@@ -9,6 +9,11 @@
       "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   },
+  "ItemHiddenInput": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+    }
+  },
   "Item": {
     "props": {
       "value": { "type": "string", "isRequired": true },

@@ -10,13 +10,17 @@ export {
   SegmentGroupItemControl,
   type SegmentGroupItemControlProps,
 } from './segment-group-item-control'
+export {
+  SegmentGroupItemHiddenInput,
+  type SegmentGroupItemHiddenInputProps,
+} from './segment-group-item-hidden-input'
 export { SegmentGroupItemText, type SegmentGroupItemTextProps } from './segment-group-item-text'
 export { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
 export { SegmentGroupRoot, type SegmentGroupRootProps } from './segment-group-root'
-export { type UseSegmentGroupContext, useSegmentGroupContext } from './use-segment-group-context'
+export { useSegmentGroupContext, type UseSegmentGroupContext } from './use-segment-group-context'
 export {
-  type UseSegmentGroupItemContext,
   useSegmentGroupItemContext,
+  type UseSegmentGroupItemContext,
 } from './use-segment-group-item-context'
 
 export * as SegmentGroup from './segment-group'

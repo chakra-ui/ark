@@ -16,6 +16,10 @@ export {
   type RadioGroupItemControlProps as ItemControlProps,
 } from './radio-group-item-control.vue'
 export {
+  default as ItemHiddenInput,
+  type RadioGroupItemHiddenInputProps as ItemHiddenInputProps,
+} from './radio-group-item-hidden-input.vue'
+export {
   default as ItemText,
   type RadioGroupItemTextProps as ItemTextProps,
 } from './radio-group-item-text.vue'
@@ -26,6 +30,6 @@ export {
 } from './radio-group-label.vue'
 export {
   default as Root,
-  type RadioGroupRootProps as RootProps,
   type RadioGroupRootEmits as RootEmits,
+  type RadioGroupRootProps as RootProps,
 } from './radio-group-root.vue'

@@ -12,6 +12,10 @@ export { SliderRoot as Root, type SliderRootProps as RootProps } from './slider-
 export { SliderThumb as Thumb, type SliderThumbProps as ThumbProps } from './slider-thumb'
 export { SliderTrack as Track, type SliderTrackProps as TrackProps } from './slider-track'
 export {
+  SliderHiddenInput as HiddenInput,
+  type SliderHiddenInputProps as HiddenInputProps,
+} from './slider-hidden-input'
+export {
   SliderValueText as ValueText,
   type SliderValueTextProps as ValueTextProps,
 } from './slider-value-text'

@@ -17,6 +17,7 @@ export const ComponentUnderTest = (props: SegmentGroupRootProps) => {
           <SegmentGroup.Item value={item.value} disabled={item.disabled}>
             <SegmentGroup.ItemText>{item.label}</SegmentGroup.ItemText>
             <SegmentGroup.ItemControl />
+            <SegmentGroup.ItemHiddenInput />
           </SegmentGroup.Item>
         )}
       </For>

@@ -32,7 +32,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
                 <ArkSlider.Range className={styles.range} />
               </ArkSlider.Track>
               {api.value.map((_, index) => (
-                <ArkSlider.Thumb key={index} index={index} className={styles.thumb} />
+                <ArkSlider.Thumb key={index} index={index} className={styles.thumb}>
+                  <ArkSlider.HiddenInput />
+                </ArkSlider.Thumb>
               ))}
             </ArkSlider.Control>
             {props.marks && (
