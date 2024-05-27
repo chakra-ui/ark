@@ -4,11 +4,12 @@ import { layout } from 'styled-system/recipes'
 import { ExamplesNavbar } from '~/components/navigation/examples/examples-navbar'
 import { ExamplesSidebar } from '~/components/navigation/examples/examples-sidebar'
 import { SidebarContainer } from '~/components/navigation/sidebar-container'
+import { fetchExample } from '~/lib/fetch-example'
 
 const styles = layout()
 
 interface Props {
-  params: { framework: string }
+  params: { component: string; framework: string; id: string }
 }
 
 export default async function Layout(props: PropsWithChildren<Props>) {

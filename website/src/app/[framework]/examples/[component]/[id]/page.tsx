@@ -1,40 +1,36 @@
-import { transformerNotationHighlight } from '@shikijs/transformers'
-import { codeToHtml } from 'shiki'
-import { Box, Container } from 'styled-system/jsx'
-import { CodePreview } from '~/components/code-preview'
+import { Container, Stack } from 'styled-system/jsx'
+import { CodeTabs } from '~/components/code-tabs'
 import { IFrameExample } from '~/components/iframe-example'
+import { Heading, Text } from '~/components/ui'
+import { Prose } from '~/components/ui/prose'
+import { fetchExample } from '~/lib/fetch-example'
 
 interface Props {
   params: { component: string; framework: string; id: string }
 }
 
 export default async function Page(props: Props) {
-  const { component, framework, id } = props.params
-  const sourceFiles = await fetch(
-    `http://localhost:3001/api/${framework}/examples/${component}/${id}`,
-    {
-      headers: {
-        Authorization: 'Basic YWRtaW46YWRtaW4=',
-      },
-    },
-  ).then((res) => res.json())
-
-  const code = sourceFiles[0].content
-
-  const html = await codeToHtml(code, {
-    lang: 'tsx',
-    theme: 'github-dark-default',
-    transformers: [transformerNotationHighlight()],
-  })
+  const data = await fetchExample(props.params)
 
   return (
-    <Container py={{ base: '12', md: '16' }} maxW="3xl">
-      <h1>Example {id}</h1>
-      <IFrameExample />
-      <Box borderWidth="1px" borderColor="gray.dark.4" borderRadius="lg" overflow="hidden">
-        <CodePreview html={html} code={code} />
-      </Box>
-    </Container>
+    <>
+      <Container maxW="49rem" py="12">
+        <Prose>
+          <Heading as="h1" fontWeight="bold">
+            Nested Menu
+          </Heading>
+          <Text className="lead" color="fg.muted" mb="6">
+            The nested menu displays nested item lists.
+          </Text>
+        </Prose>
+      </Container>
+      <Container maxW="65rem">
+        <IFrameExample />
+      </Container>
+      <Container maxW="49rem" py="12">
+        <CodeTabs examples={data} defaultValue="index.tsx" mt="12" />
+      </Container>
+    </>
   )
 }
 

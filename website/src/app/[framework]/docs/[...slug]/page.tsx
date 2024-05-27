@@ -25,9 +25,9 @@ export default function Page(props: Props) {
 
   if (currentPage) {
     return (
-      <Container display="flex" py="12" gap="16" justifyContent="center">
-        <Stack gap="16" maxW="45rem" mx="auto" width="full">
-          <Prose css={{ maxWidth: 'full' }}>
+      <Container display="flex" py="12" gap="8" justifyContent="center">
+        <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
+          <Prose css={{ maxWidth: '45rem', mx: 'auto' }}>
             <Heading as="h1" fontWeight="bold">
               {currentPage.title === 'Introduction' ? 'Weclome to Ark UI' : currentPage.title}
             </Heading>

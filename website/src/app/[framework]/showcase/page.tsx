@@ -7,7 +7,7 @@ import { showcases } from '.velite'
 
 export default function Page() {
   return (
-    <Container py={{ base: '12', md: '16' }} maxW="7xl">
+    <Container py="12" maxW="7xl">
       <Stack gap={{ base: '8', md: '12' }}>
         <PageHeader
           heading="Showcase"
