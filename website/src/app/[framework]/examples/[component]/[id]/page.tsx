@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { ExamplePreview } from '~/components/example-preview'
 import { Heading, Text } from '~/components/ui'
@@ -34,4 +35,10 @@ export default async function Page(props: Props) {
   )
 }
 
-export const generateStaticParams = () => ['popover-toooltip'].map((id) => ({ params: { id } }))
+export const metadata: Metadata = {
+  title: 'Nested Menu',
+  description: 'The nested menu displays nested item lists.',
+}
+
+export const generateStaticParams = () =>
+  ['react', 'solid', 'vue'].flatMap((framework) => ({ framework, component: 'menu', id: 'nested' }))
