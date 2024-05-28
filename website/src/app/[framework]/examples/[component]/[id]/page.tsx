@@ -42,7 +42,7 @@ export default async function Page(props: Props) {
         </Flex>
       </Container>
       <Container maxW="49rem">
-        <CodeTabs examples={data} defaultValue="index.tsx" />
+        <CodeTabs examples={data} defaultValue={data[0].value} />
       </Container>
     </Stack>
   )

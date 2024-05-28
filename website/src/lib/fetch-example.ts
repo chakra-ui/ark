@@ -8,7 +8,7 @@ interface Props {
 
 const highlighter = await getHighlighter({
   themes: ['github-dark-default'],
-  langs: ['tsx'],
+  langs: ['tsx', 'vue'],
 })
 
 const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
@@ -28,7 +28,7 @@ export const fetchExample = async (props: Props) => {
     label: source.name,
     code: source.content,
     html: highlighter.codeToHtml(source.content, {
-      lang: 'tsx',
+      lang: framework === 'vue' ? 'vue' : 'tsx',
       theme: 'github-dark-default',
     }),
   }))
