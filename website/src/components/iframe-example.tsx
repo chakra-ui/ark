@@ -12,5 +12,7 @@ export const IFrameExample = (props: Props) => {
   const { resolvedTheme } = useTheme()
 
   if (!isClient) return null
-  return <iframe title="Example" width="100%" src={`${url}?theme=${resolvedTheme}`} />
+  return (
+    <iframe title="Example" width="100%" height="448px" src={`${url}?theme=${resolvedTheme}`} />
+  )
 }
