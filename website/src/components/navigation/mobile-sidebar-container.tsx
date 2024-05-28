@@ -1,5 +1,5 @@
 'use client'
-import { Portal } from '@ark-ui/react'
+import { Portal } from '@ark-ui/react/portal'
 import { AlignLeftIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { type PropsWithChildren, useEffect, useState } from 'react'
