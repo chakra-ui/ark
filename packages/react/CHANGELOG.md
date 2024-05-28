@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Added missing `'use client'` annotation to the `Portal` component.
+
 ## [3.0.1] - 2024-05-27
 
 ### Fixed
