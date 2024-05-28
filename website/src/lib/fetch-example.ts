@@ -19,6 +19,7 @@ export const fetchExample = async (props: Props) => {
     headers: {
       Authorization: ARK_PLUS_API_KEY,
     },
+    cache: 'no-cache',
   }).then((res) => res.json())
 
   // @ts-expect-error
