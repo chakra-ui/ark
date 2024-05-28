@@ -1,5 +1,4 @@
 'use client'
-import type { ComboboxValueChangeDetails } from '@ark-ui/react'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Combobox, IconButton, Input } from '~/components/ui'
@@ -14,7 +13,7 @@ const data = [
 export const Demo = (props: Omit<Combobox.RootProps, 'items'>) => {
   const [items, setItems] = useState(data)
 
-  const handleChange = (e: ComboboxValueChangeDetails) => {
+  const handleChange = (e: Combobox.ValueChangeDetails) => {
     const filtered = data.filter((item) => e.value.includes(item.value))
     setItems(filtered.length > 0 ? filtered : data)
   }

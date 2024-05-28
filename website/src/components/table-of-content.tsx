@@ -1,7 +1,7 @@
 'use client'
 import { useWindowScroll } from '@uidotdev/usehooks'
 import { useRouter } from 'next/navigation'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SegmentGroup, Text } from './ui'
 
 interface TocEntry {

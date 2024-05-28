@@ -1,5 +1,4 @@
 import type { PropsWithChildren } from 'react'
-import { Box } from 'styled-system/jsx'
 import { Navbar } from '~/components/navigation/navbar'
 import { getServerContext } from '~/lib/server-context'
 

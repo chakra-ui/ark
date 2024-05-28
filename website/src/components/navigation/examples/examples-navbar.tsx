@@ -1,8 +1,9 @@
+import type { PropsWithChildren } from 'react'
 import { HStack } from 'styled-system/jsx'
+import { Breadcrumbs } from '../breadcrumbs'
 import { MobileSidebarContainer } from '../mobile-sidebar-container'
 
-export const ExamplesNavbar = () => {
-  //   const groups = getSidebarGroups()
+export const ExamplesNavbar = (props: PropsWithChildren) => {
   return (
     <HStack
       height="12"
@@ -19,8 +20,8 @@ export const ExamplesNavbar = () => {
       bg="bg.canvas"
       zIndex="1"
     >
-      <MobileSidebarContainer>{/* <ExamplesSidebar groups={groups} /> */}</MobileSidebarContainer>
-      {/* <Breadcrumbs /> */}
+      <MobileSidebarContainer {...props} />
+      <Breadcrumbs />
     </HStack>
   )
 }

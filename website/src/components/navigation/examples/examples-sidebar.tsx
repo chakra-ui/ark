@@ -3,45 +3,26 @@ import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
-import { Stack } from 'styled-system/jsx'
-import { Icon, Text } from '~/components/ui'
+import { Icon } from '~/components/ui'
 import { recipe } from '../sidebar.recipe'
 import type { Pages } from '.velite'
 
 const styles = recipe()
 
-const groups = [
-  {
-    id: 'menu',
-    title: 'Menu',
-    items: [
-      {
-        id: 'nested-menu',
-        title: 'Nested Menu',
-        description: 'Menu with nested items',
-      },
-    ],
-  },
-  {
-    id: 'select',
-    title: 'Select',
-    items: [
-      {
-        id: 'searchable-select',
-        title: 'Searchable Select',
-        description: 'A select with a search input',
-      },
-    ],
-  },
-]
+interface Item {
+  id: string
+  title: string
+  items: Item[]
+}
 
 interface Props {
-  groups: Pages[][]
+  groups: Item[]
 }
 
 export const ExamplesSidebar = (props: Props) => {
   const pathname = usePathname()
   const params = useParams<{ framework: string }>()
+  const { groups } = props
 
   return (
     <nav>
