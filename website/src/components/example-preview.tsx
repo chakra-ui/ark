@@ -1,16 +1,16 @@
 import { Code2Icon, EyeIcon } from 'lucide-react'
 import { Box } from 'styled-system/jsx'
 import { Tabs, Text } from '~/components/ui'
+import type { Example } from '~/lib/examples'
 import { CodeTabs } from './code-tabs'
 import { IFrameExample } from './iframe-example'
 
 interface Props {
-  previewUrl: string
-  data: any[]
+  example: Example
 }
 
 export const ExamplePreview = (props: Props) => {
-  const { previewUrl, data } = props
+  const { example } = props
   return (
     <Tabs.Root variant="enclosed" defaultValue="preview" size="sm" lazyMount>
       <Tabs.List width="fit-content" alignSelf="flex-end">
@@ -18,7 +18,7 @@ export const ExamplePreview = (props: Props) => {
           <EyeIcon />
           <Text>Preview</Text>
         </Tabs.Trigger>
-        <Tabs.Trigger value="code">
+        <Tabs.Trigger value="code" disabled>
           <Code2Icon />
           <Text>Code</Text>
         </Tabs.Trigger>
@@ -26,11 +26,11 @@ export const ExamplePreview = (props: Props) => {
       </Tabs.List>
       <Tabs.Content value="preview" px="!0">
         <Box borderRadius="l3" overflow="hidden" minH="md" borderWidth="1px">
-          <IFrameExample url={previewUrl} />
+          <IFrameExample url={example.previewUrl} />
         </Box>
       </Tabs.Content>
       <Tabs.Content value="code" px="!0">
-        <CodeTabs examples={data} defaultValue={data[0].value} />
+        <CodeTabs examples={[]} defaultValue="index.tsx" />
       </Tabs.Content>
     </Tabs.Root>
   )

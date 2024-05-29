@@ -11,7 +11,7 @@ export default {
     return [
       {
         source: '/:framework/examples',
-        destination: '/:framework/examples/menu/nested',
+        destination: '/:framework/examples/nested-menu',
         permanent: false,
       },
       {

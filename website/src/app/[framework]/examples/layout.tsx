@@ -4,6 +4,7 @@ import { layout } from 'styled-system/recipes'
 import { ExamplesNavbar } from '~/components/navigation/examples/examples-navbar'
 import { ExamplesSidebar } from '~/components/navigation/examples/examples-sidebar'
 import { SidebarContainer } from '~/components/navigation/sidebar-container'
+import { fetchExamplesGroupedByCategory } from '~/lib/examples'
 
 const styles = layout()
 
@@ -11,24 +12,17 @@ interface Props {
   params: { component: string; framework: string; id: string }
 }
 
-const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
+const exampleGroups = await fetchExamplesGroupedByCategory()
 
 export default async function Layout(props: PropsWithChildren<Props>) {
-  const { framework } = props.params
-  const groups = await fetch(`${ARK_PLUS_URL}/api/${framework}/examples`, {
-    headers: {
-      Authorization: ARK_PLUS_API_KEY,
-    },
-  }).then((res) => res.json())
-
   return (
     <>
       <ExamplesNavbar>
-        <ExamplesSidebar groups={groups} />
+        <ExamplesSidebar groups={exampleGroups} />
       </ExamplesNavbar>
       <Flex pt={{ base: '28', md: '16' }}>
         <SidebarContainer className={styles.aside}>
-          <ExamplesSidebar groups={groups} />
+          <ExamplesSidebar groups={exampleGroups} />
         </SidebarContainer>
         <main className={styles.main}>{props.children}</main>
       </Flex>

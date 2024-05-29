@@ -4,25 +4,19 @@ import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { Icon } from '~/components/ui'
+import type { Example, ExampleGroup } from '~/lib/examples'
 import { recipe } from '../sidebar.recipe'
-import type { Pages } from '.velite'
 
 const styles = recipe()
 
-interface Item {
-  id: string
-  title: string
-  items: Item[]
-}
-
 interface Props {
-  groups: Item[]
+  groups: ExampleGroup[]
 }
 
 export const ExamplesSidebar = (props: Props) => {
+  const { groups } = props
   const pathname = usePathname()
   const params = useParams<{ framework: string }>()
-  const { groups } = props
 
   return (
     <nav>
@@ -40,7 +34,7 @@ export const ExamplesSidebar = (props: Props) => {
                 <Collapsible.Content>
                   <ul>
                     {group.items.map((item) => {
-                      const href = `/${params.framework}/examples/${group.id}/${item.id}`
+                      const href = `/${params.framework}/examples/${item.id}`
                       return (
                         <li key={item.id}>
                           <NextLink
@@ -63,6 +57,3 @@ export const ExamplesSidebar = (props: Props) => {
     </nav>
   )
 }
-
-const uniqueByTitle = (items: Pages[]): Pages[] =>
-  Array.from(new Map(items.map((item) => [item.title, item])).values())

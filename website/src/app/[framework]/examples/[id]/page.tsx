@@ -3,18 +3,14 @@ import { Box, Container, Stack } from 'styled-system/jsx'
 import { ExamplePreview } from '~/components/example-preview'
 import { Heading, Text } from '~/components/ui'
 import { Prose } from '~/components/ui/prose'
-import { fetchExample } from '~/lib/fetch-example'
+import { fetchExample, fetchExamples } from '~/lib/examples'
 
 interface Props {
-  params: { component: string; framework: string; id: string }
+  params: { id: string }
 }
 
-const { ARK_PLUS_URL } = process.env
-
 export default async function Page(props: Props) {
-  const { component, id } = props.params
-  const data = await fetchExample(props.params)
-  const previewUrl = `${ARK_PLUS_URL}/examples/${component}/${id}`
+  const example = await fetchExample(props.params)
 
   return (
     <Container display="flex" py="12" gap="8" justifyContent="center">
@@ -22,23 +18,28 @@ export default async function Page(props: Props) {
         <Box maxW="61rem" mx="auto" width="full">
           <Prose css={{ maxWidth: 'unset' }}>
             <Heading as="h1" fontWeight="bold">
-              Nested Menu
+              {example.title}
             </Heading>
             <Text className="lead" color="fg.muted" mb="12">
-              The nested menu displays nested item lists.
+              {example.description}
             </Text>
           </Prose>
-          <ExamplePreview previewUrl={previewUrl} data={data} />
+          <ExamplePreview example={example} />
         </Box>
       </Stack>
     </Container>
   )
 }
 
-export const metadata: Metadata = {
-  title: 'Nested Menu',
-  description: 'The nested menu displays nested item lists.',
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const example = await fetchExample(props.params)
+  return example ? { title: example.title, description: example.description } : {}
 }
 
-export const generateStaticParams = () =>
-  ['react', 'solid', 'vue'].flatMap((framework) => ({ framework, component: 'menu', id: 'nested' }))
+export const generateStaticParams = async () => {
+  const examples = await fetchExamples()
+
+  return ['react', 'solid', 'vue'].flatMap((framework) =>
+    examples.map((example) => ({ framework, id: example.id })),
+  )
+}
