@@ -47,7 +47,7 @@ export const fetchExample = async (props: Props): Promise<Example> => {
 
   return {
     ...example,
-    previewUrl: [ARK_PLUS_URL, example.previewUrl].join('/'),
+    previewUrl: [ARK_PLUS_URL, example.previewUrl].join(''),
   }
 
   // const highlighter = await getHighlighter({
