@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.0.2] - 2024-05-29
+
 ### Changed
 
 - **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of `currentSrc`.
