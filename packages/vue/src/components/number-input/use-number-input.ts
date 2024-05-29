@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './number-input.types'
 
 export interface UseNumberInputProps
@@ -25,7 +25,7 @@ export const useNumberInput = (
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<numberInput.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
@@ -35,7 +35,7 @@ export const useNumberInput = (
     },
     onFocusChange: (details) => emit('focusChange', details),
     onValueInvalid: (details) => emit('valueInvalid', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(numberInput.machine(context.value), { context })

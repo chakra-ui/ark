@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './dialog'
 
 export interface UseDialogProps
@@ -22,7 +22,7 @@ export const useDialog = (props: UseDialogProps, emit: EmitFn<RootEmits>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<dialog.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
@@ -35,7 +35,7 @@ export const useDialog = (props: UseDialogProps, emit: EmitFn<RootEmits>) => {
     onFocusOutside: (details) => emit('focusOutside', details),
     onInteractOutside: (details) => emit('interactOutside', details),
     onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(dialog.machine(context.value), { context })

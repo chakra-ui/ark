@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './carousel.types'
 
 export interface UseCarouselProps
@@ -24,12 +24,12 @@ export const useCarousel = (
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<carousel.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     index: props.defaultIndex,
     getRootNode: env?.value.getRootNode,
     onIndexChange: (details) => emit('indexChange', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(carousel.machine(context.value), { context })

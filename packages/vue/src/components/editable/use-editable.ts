@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './editable'
 
 export interface UseEditableProps
@@ -26,7 +26,7 @@ export const useEditable = (
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<editable.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
@@ -40,7 +40,7 @@ export const useEditable = (
     onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     onValueCommit: (details) => emit('valueCommit', details),
     onValueRevert: (details) => emit('valueRevert', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(editable.machine(context.value), { context })

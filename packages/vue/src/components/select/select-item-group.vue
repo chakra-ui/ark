@@ -13,7 +13,6 @@ export interface SelectItemGroupProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useId } from '../../utils'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
@@ -21,13 +20,13 @@ import { SelectItemGroupPropsProvider } from './use-select-item-group-props-cont
 
 const props = defineProps<SelectItemGroupProps>()
 const select = useSelectContext()
-const id = useId()
-const itemGroupProps = computed(() => ({ id: props.id ? props.id : id.value }))
-SelectItemGroupPropsProvider(itemGroupProps.value)
+const id = useId(props.id)
+
+SelectItemGroupPropsProvider({id})
 </script>
 
 <template>
-  <ark.div v-bind="select.getItemGroupProps(itemGroupProps)" :as-child="asChild">
+  <ark.div v-bind="select.getItemGroupProps({id})" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

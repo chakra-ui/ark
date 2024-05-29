@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './pagination'
 
 export interface UsePaginationProps
@@ -25,12 +25,12 @@ export const usePagination = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<pagination.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onPageChange: (details) => emit('pageChange', details),
     value: props.defaultPage,
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(pagination.machine(context.value), { context })

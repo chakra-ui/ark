@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './rating-group'
 
 export interface UseRatingGroupProps
@@ -27,7 +27,7 @@ export const useRatingGroup = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<ratingGroup.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
@@ -36,7 +36,7 @@ export const useRatingGroup = (
       emit('update:modelValue', details.value)
     },
     onHoverChange: (details) => emit('hoverChange', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(ratingGroup.machine(context.value), { context })

@@ -4,7 +4,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
@@ -40,7 +40,7 @@ export const useSelect = <T extends CollectionItem>(
   const context = computed<select.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
-      id: id.value,
+      id,
       dir: locale.value.dir,
       open: props.defaultOpen,
       'open.controlled': props.open !== undefined,
@@ -59,7 +59,7 @@ export const useSelect = <T extends CollectionItem>(
       onFocusOutside: (details) => emit('focusOutside', details),
       onInteractOutside: (details) => emit('interactOutside', details),
       onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-      ...otherProps,
+      ...cleanProps(otherProps),
     }
   })
 

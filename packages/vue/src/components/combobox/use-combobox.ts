@@ -4,7 +4,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
@@ -39,7 +39,7 @@ export const useCombobox = <T extends CollectionItem>(
   const context = computed<combobox.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
-      id: id.value,
+      id,
       dir: locale.value.dir,
       collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
       open: props.defaultOpen,
@@ -59,7 +59,7 @@ export const useCombobox = <T extends CollectionItem>(
         emit('valueChange', details)
         emit('update:modelValue', details.value)
       },
-      ...otherProps,
+      ...cleanProps(otherProps),
     }
   })
   const [state, send] = useMachine(combobox.machine(context.value), { context })

@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue where auto-generated ids were not correctly passed to the machines.
+
 ## [3.0.2] - 2024-05-29
 
 ### Changed

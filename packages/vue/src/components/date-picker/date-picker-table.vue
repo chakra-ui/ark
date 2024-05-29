@@ -22,7 +22,8 @@ import { useDatePickerViewPropsContext } from './use-date-picker-view-props-cont
 const props = defineProps<DatePickerTableProps>()
 const datePicker = useDatePickerContext()
 const viewProps = useDatePickerViewPropsContext()
-DatePickerTablePropsProvider({ ...props, id: useId().value, ...viewProps })
+const id = useId(props.id)
+DatePickerTablePropsProvider({ ...props, id, ...viewProps })
 </script>
 
 <template>

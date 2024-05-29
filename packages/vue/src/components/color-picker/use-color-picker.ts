@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './color-picker.types'
 
 export interface UseColorPickerProps
@@ -33,7 +33,7 @@ export const useColorPicker = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<colorPicker.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
@@ -52,7 +52,7 @@ export const useColorPicker = (
     onInteractOutside: (details) => emit('interactOutside', details),
     onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     onValueChangeEnd: (details) => emit('valueChangeEnd', details),
-    ...props,
+    ...cleanProps(props),
   }))
   const [state, send] = useMachine(colorPicker.machine(context.value), { context })
 

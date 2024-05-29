@@ -13,7 +13,6 @@ export interface ComboboxItemGroupProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useId } from '../../utils'
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
@@ -21,14 +20,14 @@ import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-
 
 const props = defineProps<ComboboxItemGroupProps>()
 const combobox = useComboboxContext()
-const id = useId()
-const itemGroupProps = computed(() => ({ id: props.id ? props.id : id.value }))
+const id = useId(props.id)
 
-ComboboxItemGroupPropsProvider(itemGroupProps.value)
+
+ComboboxItemGroupPropsProvider({id})
 </script>
 
 <template>
-  <ark.div v-bind="combobox.getItemGroupProps(itemGroupProps)" :as-child="asChild">
+  <ark.div v-bind="combobox.getItemGroupProps({id})" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

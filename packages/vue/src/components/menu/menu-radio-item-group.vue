@@ -27,10 +27,10 @@ import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()
 const menu = useMenuContext()
-const id = useId()
+const id = useId(props.id)
 
 const itemGroupProps: UseMenuItemGroupContext = computed(() => ({
-  id: props.id ? props.id : id.value,
+  id,
   value: props.modelValue,
   onValueChange: (e) => emits('update:modelValue', e.value),
 }))

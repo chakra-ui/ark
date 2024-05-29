@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './tags-input.types'
 
 export interface UseTagsInputProps
@@ -26,7 +26,7 @@ export const useTagsInput = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<tagsInput.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
@@ -40,7 +40,7 @@ export const useTagsInput = (
     onInteractOutside: (details) => emit('interactOutside', details),
     onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     onValueInvalid: (details) => emit('valueInvalid', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(tagsInput.machine(context.value), { context })

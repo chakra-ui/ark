@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './date-picker.types'
 
 export interface UseDatePickerProps
@@ -54,7 +54,7 @@ export const useDatePicker = (
   const context = computed<datePicker.Context>(() => {
     const { modelValue, defaultValue, focusedValue, min, max, ...otherProps } = props
     return {
-      id: id.value,
+      id,
       dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
@@ -70,10 +70,10 @@ export const useDatePicker = (
         emit('valueChange', details)
         emit('update:modelValue', details.valueAsString)
       },
-      ...otherProps,
       focusedValue: focusedValue ? datePicker.parse(focusedValue) : undefined,
       max: max ? datePicker.parse(max) : undefined,
       min: min ? datePicker.parse(min) : undefined,
+      ...cleanProps(otherProps),
     }
   })
 

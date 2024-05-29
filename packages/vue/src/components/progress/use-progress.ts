@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 
 export interface UseProgressProps
   extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {}
@@ -15,10 +15,10 @@ export const useProgress = (props: UseProgressProps): UseProgressReturn => {
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<progress.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(progress.machine(context.value), { context })

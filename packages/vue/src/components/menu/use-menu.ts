@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './menu'
 
 export interface UseMenuProps
@@ -26,7 +26,7 @@ export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuRe
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<menu.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
@@ -41,7 +41,7 @@ export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuRe
     onInteractOutside: (details) => emit('interactOutside', details),
     onPointerDownOutside: (details) => emit('pointerDownOutside', details),
     onSelect: (details) => emit('select', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send, machine] = useMachine(menu.machine(context.value), { context })

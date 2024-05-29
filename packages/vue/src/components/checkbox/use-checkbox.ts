@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './checkbox'
 
 export interface UseCheckboxProps
@@ -23,7 +23,7 @@ export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) =>
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<checkbox.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     checked: props.defaultChecked,
     getRootNode: env?.value.getRootNode,
@@ -31,7 +31,7 @@ export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) =>
       emit('checkedChange', details)
       emit('update:checked', details.checked)
     },
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(checkbox.machine(context.value), { context })

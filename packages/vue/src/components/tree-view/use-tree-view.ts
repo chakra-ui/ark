@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './tree-view.types'
 
 export interface UseTreeViewProps
@@ -31,7 +31,7 @@ export const useTreeView = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<treeView.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     expandedValue: props.expandedValue ?? props.defaultExpandedValue,
     selectedValue: props.selectedValue ?? props.defaultSelectedValue,
@@ -48,7 +48,7 @@ export const useTreeView = (
       emit('selectionChange', details)
       emit('update:selectedValue', details.selectedValue)
     },
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(treeView.machine(context.value), { context })

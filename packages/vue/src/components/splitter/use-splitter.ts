@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
 export interface UseSplitterProps
@@ -26,13 +26,13 @@ export const useSplitter = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<splitter.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     size: props.size ?? props.defaultSize,
     getRootNode: env?.value.getRootNode,
     onSizeChange: (details) => emit('sizeChange', details),
     onSizeChangeEnd: (details) => emit('sizeChangeEnd', details),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(splitter.machine(context.value), { context })
