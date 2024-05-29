@@ -24,6 +24,7 @@ const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
 
 export const fetchExamples = async (): Promise<Example[]> =>
   fetch(`${ARK_PLUS_URL}/api/examples`, {
+    cache: 'no-cache',
     headers: {
       Authorization: ARK_PLUS_API_KEY,
     },
