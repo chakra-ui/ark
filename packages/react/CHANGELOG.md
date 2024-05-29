@@ -8,7 +8,12 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- Added missing `'use client'` annotation to the `Portal` component.
+- Added the missing `'use client'` annotation to the `Portal` component.
+- Fixed an issue where the `keydown` event might not fire in React due to `nativeEvent.currentTarget` not being set consistently.
+
+### Changed
+
+- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of `currentSrc`.
 
 ## [3.0.1] - 2024-05-27
 
