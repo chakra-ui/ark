@@ -10,7 +10,8 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of `currentSrc`.
+- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
+  `currentSrc`.
 
 ## [3.0.1] - 2024-05-27
 
@@ -95,6 +96,8 @@ highlights:
 
 - **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
   dialog machine.
+- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup:** Renamed `loop` to `focusLopp` to be more
+  descriptive.
 - **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
   providers.
 
