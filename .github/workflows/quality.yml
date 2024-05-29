@@ -22,29 +22,6 @@ jobs:
       - name: Build packages
         run: bun run build
 
-  # docs:
-  #   name: Docs
-  #   # This workflow doesn't work on forks
-  #   if: github.repository == 'chakra-ui/ark'
-  #   runs-on: ubuntu-latest
-
-  #   permissions:
-  #     contents: write
-
-  #   steps:
-  #     - name: Checkout branch
-  #       uses: actions/checkout@v4
-
-  #     - name: Install
-  #       uses: ./.github/composite-actions/install
-
-  #     - name: Generate TypeDocs
-  #       run: bun scripts document:types
-
-  #     - uses: stefanzweifel/git-auto-commit-action@v5
-  #       with:
-  #         commit_message: 'docs: update types and storydocs'
-
   tests:
     name: Tests
     runs-on: ubuntu-latest

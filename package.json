@@ -5,7 +5,7 @@
   "workspaces": ["packages/*", "scripts", "website"],
   "scripts": {
     "postinstall": "lefthook install",
-    "build": "turbo run build --filter='!./templates/**'",
+    "build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
     "exports:check": "bun scripts exports:check",
     "exports:sync": "bun scripts exports:sync",
     "lint": "turbo run lint",
