@@ -11,7 +11,7 @@ export default {
     return [
       {
         source: '/:framework/examples',
-        destination: '/:framework/examples/nested-menu',
+        destination: '/:framework/examples/combobox-with-tags-input',
         permanent: false,
       },
       {
