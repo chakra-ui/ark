@@ -69,16 +69,18 @@ export const fetchExample = async (props: Props): Promise<Example> => {
 
 export const fetchExamplesGroupedByCategory = async (): Promise<ExampleGroup[]> => {
   const examples = await fetchExamples()
-  return examples.reduce(
-    (acc, example) => {
-      const group = acc.find((group) => group.id === example.category)
-      if (group) {
-        group.items.push(example)
-      } else {
-        acc.push({ id: example.category, title: example.category, items: [example] })
-      }
-      return acc
-    },
-    [] as { id: string; title: string; items: Example[] }[],
-  )
+  return examples
+    .reduce(
+      (acc, example) => {
+        const group = acc.find((group) => group.id === example.category)
+        if (group) {
+          group.items.push(example)
+        } else {
+          acc.push({ id: example.category, title: example.category, items: [example] })
+        }
+        return acc
+      },
+      [] as { id: string; title: string; items: Example[] }[],
+    )
+    .sort((a, b) => a.title.localeCompare(b.title))
 }
