@@ -20,7 +20,7 @@ export const PageHeader = (props: PropsWithChildren<Props>) => {
           {heading}
         </Heading>
       </Stack>
-      <Text color="fg.muted" fontSize={{ base: 'lg', md: 'xl' }} maxW="3xl">
+      <Text color="fg.muted" fontSize={{ base: 'lg', md: 'xl' }} maxW="2xl">
         {description}
       </Text>
       {props.children}

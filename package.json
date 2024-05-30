@@ -16,14 +16,16 @@
     "scripts": "bun run --cwd scripts",
     "solid": "bun run --cwd packages/solid",
     "vue": "bun run --cwd packages/vue",
-    "website": "bun run --cwd website"
+    "website": "bun run --cwd website",
+    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
     "@types/bun": "1.1.3",
     "lefthook": "1.6.13",
     "turbo": "1.13.3",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vercel": "34.2.3"
   },
   "packageManager": "bun@1.1.10",
   "trustedDependencies": ["@ark-ui/website"]
