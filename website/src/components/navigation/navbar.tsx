@@ -3,6 +3,7 @@ import { Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
 import { getServerContext } from '~/lib/server-context'
+import { UserButton } from '../auth/user-button'
 import { FrameworkSelect } from './framework-select'
 import { GitHubLink } from './github-link'
 import { MobileNavbar } from './mobile-navbar'
@@ -25,9 +26,12 @@ export const Navbar = () => {
             <Divider orientation="vertical" h="6" />
             <FrameworkSelect />
             <Divider orientation="vertical" h="6" />
-            <HStack gap="0">
-              <ColorModeButton />
-              <GitHubLink />
+            <HStack gap="2">
+              <HStack gap="0">
+                <ColorModeButton />
+                <GitHubLink />
+              </HStack>
+              <UserButton />
             </HStack>
           </HStack>
           <HStack gap="3" py="0.5" display={{ base: 'flex', md: 'none' }}>
@@ -36,9 +40,10 @@ export const Navbar = () => {
                 <MobileNavbarLinks framework={framework} />
                 <FrameworkSelect />
                 <Divider />
-                <HStack gap="0.5" justifyContent="center" px="3" pt="6">
+                <HStack gap="3" justifyContent="center" px="3" pt="6">
                   <ColorModeButton />
                   <GitHubLink />
+                  <UserButton />
                 </HStack>
               </Stack>
             </MobileNavbar>

@@ -9,8 +9,8 @@ import type { JsxStyleProps } from 'styled-system/types'
 export interface AvatarProps
   extends Assign<JsxStyleProps, ArkAvatar.RootProps>,
     AvatarVariantProps {
-  name?: string
-  src?: string
+  name?: string | undefined
+  src?: string | undefined
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
@@ -24,7 +24,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
       <ArkAvatar.Fallback className={styles.fallback}>
         {getInitials(name) || <UserIcon />}
       </ArkAvatar.Fallback>
-      <ArkAvatar.Image className={styles.image} src={src} alt={name} />
+      <ArkAvatar.Image className={styles.image} src={src} alt={name} referrerPolicy="no-referrer" />
     </ArkAvatar.Root>
   )
 })

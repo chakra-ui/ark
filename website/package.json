@@ -5,7 +5,10 @@
     "prepare": "bun run --cwd ../packages/anatomy build && bun panda codegen",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:reset": "prisma db push --force-reset"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",
