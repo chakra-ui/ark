@@ -5,7 +5,7 @@ export interface Example {
   previewUrl: string
   category: string
   relatedComponents: string[]
-  relatedExamples?: Example[]
+  relatedExamples: Example[]
   sourceFiles?: SourceFile[]
 }
 

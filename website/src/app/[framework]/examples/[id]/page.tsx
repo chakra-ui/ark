@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { ExamplePreview } from '~/components/example-preview'
+import { ExamplesFooter } from '~/components/navigation/examples/examples-footer'
 import { Heading, Text } from '~/components/ui'
 import { Prose } from '~/components/ui/prose'
 import { fetchExample, fetchExamples } from '~/lib/examples'
@@ -25,6 +26,9 @@ export default async function Page(props: Props) {
             </Text>
           </Prose>
           <ExamplePreview example={example} />
+        </Box>
+        <Box maxW="61rem" mx="auto" width="full">
+          <ExamplesFooter example={example} />
         </Box>
       </Stack>
     </Container>
