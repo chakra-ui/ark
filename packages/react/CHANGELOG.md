@@ -99,7 +99,7 @@ export const Basic = () => (
 
 - **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
   dialog machine.
-  - **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup:** Renamed `loop` to `focusLopp` to be
+- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup:** Renamed `loop` to `loopFocus` to be
     more descriptive.
 - **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
   providers.
