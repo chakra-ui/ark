@@ -3,7 +3,7 @@ import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
-import { Icon } from '~/components/ui'
+import { Badge, Icon } from '~/components/ui'
 import { recipe } from '../sidebar.recipe'
 import type { Pages } from '.velite'
 
@@ -44,6 +44,11 @@ export const DocsSidebar = (props: Props) => {
                             className={styles.link}
                           >
                             {item.title}
+                            {item.status && (
+                              <Badge textTransform="capitalize" size="sm">
+                                {item.status}
+                              </Badge>
+                            )}
                           </NextLink>
                         </li>
                       )

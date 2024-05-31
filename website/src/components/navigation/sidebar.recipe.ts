@@ -32,9 +32,11 @@ export const recipe = sva({
     },
     link: {
       display: 'flex',
+      alignItems: 'baseline',
       textStyle: { base: 'md', md: 'sm' },
       fontWeight: 'medium',
       color: 'fg.muted',
+      gap: '2',
       py: '1.5',
       textDecoration: 'none',
       transitionDuration: 'normal',
