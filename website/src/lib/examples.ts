@@ -1,3 +1,5 @@
+import { getHighlighter } from 'shiki'
+
 export interface Example {
   id: string
   title: string
@@ -6,7 +8,7 @@ export interface Example {
   category: string
   relatedComponents: string[]
   relatedExamples: Example[]
-  sourceFiles?: SourceFile[]
+  accessLevel: 'free' | 'paid'
 }
 
 export interface SourceFile {
@@ -32,12 +34,7 @@ export const fetchExamples = async (): Promise<Example[]> =>
     .then((res) => res.json())
     .catch(() => [])
 
-interface Props {
-  id: string
-}
-
-export const fetchExample = async (props: Props): Promise<Example> => {
-  const { id } = props
+export const fetchExample = async (id: string): Promise<Example> => {
   const example: Example = await fetch(`${ARK_PLUS_URL}/api/examples/${id}`, {
     headers: {
       Authorization: ARK_PLUS_API_KEY,
@@ -49,22 +46,46 @@ export const fetchExample = async (props: Props): Promise<Example> => {
     ...example,
     previewUrl: [ARK_PLUS_URL, example.previewUrl].join(''),
   }
+}
 
-  // const highlighter = await getHighlighter({
-  //   themes: ['github-dark-default'],
-  //   langs: ['tsx', 'vue'],
-  // })
+interface CodeExample {
+  label: string
+  value: string
+  code: string
+  html: string
+}
 
-  // // @ts-expect-error
-  // return sources.map((source) => ({
-  //   value: source.name,
-  //   label: source.name,
-  //   code: source.content,
-  //   html: highlighter.codeToHtml(source.content, {
-  //     lang: framework === 'vue' ? 'vue' : 'tsx',
-  //     theme: 'github-dark-default',
-  //   }),
-  // }))
+interface FetchCodeExamplesParams {
+  id: string
+  framework: string
+}
+
+const highlighter = await getHighlighter({
+  themes: ['github-dark-default'],
+  langs: ['tsx', 'vue'],
+})
+
+export const fetchCodeExamples = async (props: FetchCodeExamplesParams): Promise<CodeExample[]> => {
+  const { id, framework } = props
+  const sources: SourceFile[] = await fetch(
+    `${ARK_PLUS_URL}/api/examples/${id}/sources/${framework}`,
+    {
+      headers: {
+        Authorization: ARK_PLUS_API_KEY,
+      },
+      cache: 'no-cache',
+    },
+  ).then((res) => res.json())
+
+  return sources.map((source) => ({
+    value: source.name,
+    label: source.name,
+    code: source.content,
+    html: highlighter.codeToHtml(source.content, {
+      lang: framework === 'vue' ? 'vue' : 'tsx',
+      theme: 'github-dark-default',
+    }),
+  }))
 }
 
 export const fetchExamplesGroupedByCategory = async (): Promise<ExampleGroup[]> => {

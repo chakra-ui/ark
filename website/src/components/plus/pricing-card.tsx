@@ -1,6 +1,7 @@
-import { BlocksIcon, FigmaIcon, HeartHandshakeIcon, UsersIcon } from 'lucide-react'
+import { BlocksIcon, HeartHandshakeIcon, ShoppingCartIcon, UsersIcon } from 'lucide-react'
+import NextLink from 'next/link'
 import { Stack } from 'styled-system/jsx'
-import { Button, Card, Icon, Text } from '~/components/ui'
+import { Button, Card, Icon, Link, Text } from '~/components/ui'
 
 type Props = {
   variant: 'personal' | 'team'
@@ -30,9 +31,18 @@ export const PricingCard = (props: Props) => {
             {license.price}
           </Text>
         </Stack>
-        <Button width="full" asChild>
-          <a href={license.checkoutUrl}>Buy Now</a>
-        </Button>
+        <Stack gap="3">
+          <Button width="full" asChild>
+            <a href={license.checkoutUrl}>Buy Now</a>
+          </Button>
+          <Text color="fg.muted" textStyle="sm">
+            Already purchased?{' '}
+            <Link asChild>
+              <NextLink href="/auth/signin">Sign in</NextLink>
+            </Link>
+          </Text>
+        </Stack>
+
         <Stack gap="6">
           {license.features.map((feature, id) => (
             <Stack key={id} direction="row">
@@ -63,28 +73,27 @@ const licenses = {
       'https://chakra-pro.lemonsqueezy.com/buy/f7b5e908-749f-4930-b19e-0940b37abc3b?discount=0&aff=OALPM',
     features: [
       {
-        label: 'Access to all examples',
+        label: 'Access to All Examples',
         description:
-          ' — Get access to all examples and free updates. Use them to kickstart your projects and save time.',
+          ' — Get access to all examples in React, Solid, and Vue. Includes all future updates and new examples.',
         icon: BlocksIcon,
       },
       {
-        label: 'Pro Figma Kit',
+        label: 'One-time Purchase',
         description:
-          ' — Use our Figma Kit to customize the components to your needs. It includes all components and is updated regularly.',
-        icon: FigmaIcon,
+          ' — Pay once for lifetime access to all examples. No hidden fees, no recurring payments.',
+        icon: ShoppingCartIcon,
       },
       {
-        label: 'Lifetime access',
-        description:
-          " — Buy once, use forever. It's that simple. Enjoy unlimited lifetime access to all components, along with continual free updates.",
+        label: 'Support the Project',
+        description: ' — Help us maintain and enhance Ark UI with quality examples and components.',
         icon: HeartHandshakeIcon,
       },
     ],
   },
   team: {
     name: 'Team',
-    description: 'For companies and agencies',
+    description: 'Same as personal, but for teams',
     price: '$599',
     originalPrice: '$649',
     checkoutUrl:
@@ -93,7 +102,7 @@ const licenses = {
       {
         label: 'Access for your entire team',
         description:
-          ' — Team licenses grants permission to all employees and contractors of the licensee to access and use the examples.',
+          ' — Team licenses grant permission for all employees and contractors of the licensee to access and use the examples.',
         icon: UsersIcon,
       },
     ],

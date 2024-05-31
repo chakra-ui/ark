@@ -87,6 +87,29 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
     ),
   )
 
+export const hasUserPermission = async () =>
+  Effect.runPromise(
+    pipe(
+      Effect.promise(() => auth()),
+      Effect.map((session) => session?.user?.id),
+      Effect.filterOrFail(
+        (userId): userId is string => typeof userId === 'string',
+        () => new UnauthorizedError(),
+      ),
+      Effect.flatMap((userId) =>
+        Effect.tryPromise({
+          try: () =>
+            prisma.licenseKey.findFirst({
+              where: { userId },
+            }),
+          catch: () => new InternalServerError(),
+        }),
+      ),
+      Effect.map((license) => license !== null),
+      Effect.catchAll(() => Effect.succeed(false)),
+    ),
+  )
+
 class InternalServerError {
   readonly _tag = 'InternalServerError'
 }
