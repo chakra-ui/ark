@@ -10,7 +10,7 @@ export default function Page() {
         <PageHeader
           heading="Ark UI Plus"
           subHeading="Pricing"
-          description="Buy Ark UI Plus to unlock exclusive features and support the development of Ark UI."
+          description="Unlock exclusive examples and support the development of Ark UI"
         />
         <Stack direction={{ base: 'column', sm: 'row' }} gap="8" align="start">
           <PricingCard variant="personal" />

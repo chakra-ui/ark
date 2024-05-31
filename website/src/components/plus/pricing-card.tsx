@@ -100,9 +100,9 @@ const licenses = {
       'https://chakra-pro.lemonsqueezy.com/buy/32116f45-7b47-40b6-9fb7-a5f0d9a72d51?discount=0&enabled=399172&aff=OALPM',
     features: [
       {
-        label: 'Access for your entire team',
+        label: 'Access for Your Entire Team',
         description:
-          ' — Team licenses grant permission for all employees and contractors of the licensee to access and use the examples.',
+          ' — Everyone on your team, including employees and contractors, can access and use the examples.',
         icon: UsersIcon,
       },
     ],
