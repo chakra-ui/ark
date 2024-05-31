@@ -40,7 +40,10 @@ export const ExamplePreview = async (props: Props) => {
         </Box>
       </Tabs.Content>
       <Tabs.Content value="code" px="!0">
-        <CodeTabs examples={codeExamples} defaultValue="index.tsx" />
+        <CodeTabs
+          examples={codeExamples}
+          defaultValue={framework === 'vue' ? 'index.vue' : 'index.tsx'}
+        />
       </Tabs.Content>
     </Tabs.Root>
   ) : (
