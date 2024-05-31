@@ -1,7 +1,7 @@
 import { BlocksIcon, HeartHandshakeIcon, ShoppingCartIcon, UsersIcon } from 'lucide-react'
-import NextLink from 'next/link'
 import { Stack } from 'styled-system/jsx'
-import { Button, Card, Icon, Link, Text } from '~/components/ui'
+import { Button, Card, Icon, Text } from '~/components/ui'
+import { SignInLink } from '../auth/sign-in-link'
 
 type Props = {
   variant: 'personal' | 'team'
@@ -36,10 +36,7 @@ export const PricingCard = (props: Props) => {
             <a href={license.checkoutUrl}>Buy Now</a>
           </Button>
           <Text color="fg.muted" textStyle="sm">
-            Already purchased?{' '}
-            <Link asChild>
-              <NextLink href="/auth/signin">Sign in</NextLink>
-            </Link>
+            Already purchased? <SignInLink />
           </Text>
         </Stack>
 

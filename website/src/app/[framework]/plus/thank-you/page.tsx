@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Container, Stack } from 'styled-system/jsx'
+import { Box, Container, Stack } from 'styled-system/jsx'
 import { findLicenseKeysByOrderId } from '~/app/actions'
 import { PageHeader } from '~/components/page-header'
 import { ActivationForm } from '~/components/plus/activation-form'
+import { auth } from '~/lib/auth'
 
 interface Props {
   searchParams: {
@@ -12,6 +13,8 @@ interface Props {
 
 export default async function Page(props: Props) {
   const licenseKeys = await findLicenseKeysByOrderId(props.searchParams.orderId)
+  const session = await auth()
+  const authenticated = session !== null
 
   if (!licenseKeys) {
     return <div>Order not found</div>
@@ -26,7 +29,9 @@ export default async function Page(props: Props) {
           description="We're thrilled to have you on board. Below you'll find your license key, which will give
           you access to all the examples."
         />
-        <ActivationForm licenseKey={licenseKeys[0]} />
+        <Box maxW="lg" mx="auto" width="full">
+          <ActivationForm authenticated={authenticated} licenseKey={licenseKeys[0]} />
+        </Box>
       </Stack>
     </Container>
   )

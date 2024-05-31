@@ -2,32 +2,37 @@
 import { useFormState } from 'react-dom'
 import { Stack } from 'styled-system/jsx'
 import { activateLicense } from '~/app/actions'
-import { Button, Input } from '~/components/ui'
+import { Button, Input, Text } from '~/components/ui'
+import { SignInButton } from '../auth/sign-in-button'
 
 interface Props {
   licenseKey: string
+  authenticated?: boolean
 }
 
 export const ActivationForm = (props: Props) => {
-  const { licenseKey } = props
+  const { licenseKey, authenticated } = props
   const [state, formAction] = useFormState(activateLicense, { message: '', success: false })
 
   return (
     <form action={formAction}>
-      <Stack gap={{ base: '8', md: '10' }}>
-        <Input name="licenseKey" value={licenseKey} size="xl" />
-        <Stack direction="row" gap="3">
-          <Button variant="outline" size="xl">
-            Share
-          </Button>
-          <Button type="submit" size="xl">
-            Activate license
-          </Button>
+      <Stack gap="1.5">
+        <Stack gap="3" direction={{ base: 'column', sm: 'row' }}>
+          <Input name="licenseKey" defaultValue={licenseKey} size={{ base: 'lg', md: 'xl' }} />
+          {authenticated ? (
+            <Button type="submit" size={{ base: 'lg', md: 'xl' }} flexShrink={0}>
+              Activate license
+            </Button>
+          ) : (
+            <SignInButton size={{ base: 'lg', md: 'xl' }} flexShrink={0}>
+              Sign in to activate
+            </SignInButton>
+          )}
         </Stack>
+        <Text aria-live="polite" color={state.success ? '##30A46C' : '#E5484D'}>
+          {state?.message}
+        </Text>
       </Stack>
-      <p aria-live="polite" className="sr-only">
-        {state?.message}
-      </p>
     </form>
   )
 }
