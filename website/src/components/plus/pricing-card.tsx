@@ -59,7 +59,8 @@ const licenses = {
     description: 'For individuals and freelancers',
     price: '$199',
     originalPrice: '$249',
-    checkoutUrl: 'https://ark-ui.lemonsqueezy.com/checkout/',
+    checkoutUrl:
+      'https://chakra-pro.lemonsqueezy.com/buy/b8d1b090-7d33-4f70-9ac5-533e2208e9db?discount=0&enabled=399150',
     features: [
       {
         label: 'Access to all examples',
@@ -86,7 +87,8 @@ const licenses = {
     description: 'For companies and agencies',
     price: '$599',
     originalPrice: '$649',
-    checkoutUrl: 'https://ark-ui.lemonsqueezy.com/checkout/',
+    checkoutUrl:
+      'https://chakra-pro.lemonsqueezy.com/buy/74a5cacf-f00c-4baa-ad2b-bbf304cfa4b5?discount=0&enabled=399150',
     features: [
       {
         label: 'Access for your entire team',
