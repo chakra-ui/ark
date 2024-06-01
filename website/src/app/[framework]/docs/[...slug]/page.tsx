@@ -29,7 +29,7 @@ export default function Page(props: Props) {
         <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
           <Prose css={{ maxWidth: '45rem', mx: 'auto' }}>
             <Heading as="h1" fontWeight="bold">
-              {currentPage.title === 'Introduction' ? 'Weclome to Ark UI' : currentPage.title}
+              {currentPage.title === 'Introduction' ? 'Welcome to Ark UI' : currentPage.title}
             </Heading>
             <Text className="lead" color="fg.muted" mb="6">
               {currentPage.description}
