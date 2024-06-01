@@ -11,7 +11,8 @@ interface Props {
 }
 
 export default async function Page(props: Props) {
-  const example = await fetchExample(props.params)
+  const { id } = props.params
+  const example = await fetchExample(id)
 
   return (
     <Container display="flex" py="12" gap="8" justifyContent="center">
@@ -36,7 +37,8 @@ export default async function Page(props: Props) {
 }
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
-  const example = await fetchExample(props.params)
+  const { id } = props.params
+  const example = await fetchExample(id)
   return example ? { title: example.title, description: example.description } : {}
 }
 

@@ -1,8 +1,8 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { Button, type ButtonProps } from '~/components/ui'
+import { Link, type LinkProps } from '~/components/ui'
 
-export const SignInButton = (props: ButtonProps) => {
+export const SignInLink = (props: LinkProps) => {
   const router = useRouter()
 
   const handleClick = () => {
@@ -12,5 +12,11 @@ export const SignInButton = (props: ButtonProps) => {
       })}`,
     )
   }
-  return <Button {...props} onClick={handleClick} />
+  return (
+    <Link asChild {...props}>
+      <button type="button" onClick={handleClick}>
+        Sign in
+      </button>
+    </Link>
+  )
 }
