@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Factory:**  Fixed an issue where the `ark` factory was incorretly adding the parent ref to the
+  child component.
+
 ## [3.0.2] - 2024-05-29
 
 ### Changed

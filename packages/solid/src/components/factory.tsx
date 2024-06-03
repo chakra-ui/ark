@@ -30,7 +30,7 @@ const withAsProp = <T extends ElementType>(Component: T) => {
       // @ts-expect-error
       const propsFn = (userProps) => {
         const [, restProps] = splitProps(parentProps, ['ref'])
-        return { ref: parentProps.ref, ...mergeProps(restProps, userProps) }
+        return mergeProps(restProps, userProps)
       }
       return localProps.asChild(propsFn)
     }
