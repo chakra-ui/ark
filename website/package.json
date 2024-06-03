@@ -19,7 +19,7 @@
     "@pandacss/dev": "0.40.1",
     "@park-ui/panda-preset": "0.38.0-0",
     "@prisma/client": "5.14.0",
-    "@shikijs/transformers": "1.6.1",
+    "@shikijs/transformers": "1.6.2",
     "@types/node": "20.12.13",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
