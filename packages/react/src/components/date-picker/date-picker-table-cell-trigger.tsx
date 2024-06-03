@@ -5,26 +5,30 @@ import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'button'> {}
+export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'div'> {}
 
 export const DatePickerTableCellTrigger = forwardRef<
-  HTMLButtonElement,
+  HTMLDivElement,
   DatePickerTableCellTriggerProps
 >((props, ref) => {
   const datePicker = useDatePickerContext()
   const tableCellProps = useDatePickerTableCellPropsContext()
   const viewProps = useDatePickerViewPropsContext()
 
-  const triggerProps = {
+  const viewMap = {
     day: datePicker.getDayTableCellTriggerProps,
     month: datePicker.getMonthTableCellTriggerProps,
     year: datePicker.getYearTableCellTriggerProps,
-    // @ts-expect-error value is number filter
-  }[viewProps.view](tableCellProps)
+  }
+
+  const viewFn = viewMap[viewProps.view]
+
+  // @ts-expect-error fix later
+  const triggerProps = viewFn(tableCellProps)
 
   const mergedProps = mergeProps(triggerProps, props)
 
-  return <ark.button ref={ref} {...mergedProps} />
+  return <ark.div ref={ref} {...mergedProps} />
 })
 
 DatePickerTableCellTrigger.displayName = 'DatePickerTableCellTrigger'

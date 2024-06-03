@@ -8,8 +8,11 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Factory:**  Fixed an issue where the `ark` factory was incorretly adding the parent ref to the
+- **Factory:** Fixed an issue where the `ark` factory was incorretly adding the parent ref to the
   child component.
+
+- **DatePicker:** Fixed an issue in range mode where calendar close unexpectedly when hovering on a
+  day quickly.
 
 ## [3.0.2] - 2024-05-29
 

@@ -1,15 +1,17 @@
-import { Portal } from 'solid-js/web'
+import { Index, Portal } from 'solid-js/web'
 import { DatePicker } from '../..'
 
 export const Basic = () => {
   return (
     <DatePicker.Root>
       <DatePicker.Label>Label</DatePicker.Label>
+
       <DatePicker.Control>
         <DatePicker.Input />
         <DatePicker.Trigger>📅</DatePicker.Trigger>
         <DatePicker.ClearTrigger>Clear</DatePicker.ClearTrigger>
       </DatePicker.Control>
+
       <Portal>
         <DatePicker.Positioner>
           <DatePicker.Content>
@@ -26,30 +28,41 @@ export const Basic = () => {
                       </DatePicker.ViewTrigger>
                       <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
+
                     <DatePicker.Table>
                       <DatePicker.TableHead>
                         <DatePicker.TableRow>
-                          {context().weekDays.map((weekDay) => (
-                            <DatePicker.TableHeader>{weekDay.short}</DatePicker.TableHeader>
-                          ))}
+                          <Index each={context().weekDays}>
+                            {(weekDay) => (
+                              <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>
+                            )}
+                          </Index>
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
+
                       <DatePicker.TableBody>
-                        {context().weeks.map((week) => (
-                          <DatePicker.TableRow>
-                            {week.map((day) => (
-                              <DatePicker.TableCell value={day}>
-                                <DatePicker.TableCellTrigger>{day.day}</DatePicker.TableCellTrigger>
-                              </DatePicker.TableCell>
-                            ))}
-                          </DatePicker.TableRow>
-                        ))}
+                        <Index each={context().weeks}>
+                          {(week) => (
+                            <DatePicker.TableRow>
+                              <Index each={week()}>
+                                {(day) => (
+                                  <DatePicker.TableCell value={day()}>
+                                    <DatePicker.TableCellTrigger>
+                                      {day().day}
+                                    </DatePicker.TableCellTrigger>
+                                  </DatePicker.TableCell>
+                                )}
+                              </Index>
+                            </DatePicker.TableRow>
+                          )}
+                        </Index>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>
                 )}
               </DatePicker.Context>
             </DatePicker.View>
+
             <DatePicker.View view="month">
               <DatePicker.Context>
                 {(context) => (
@@ -61,27 +74,31 @@ export const Basic = () => {
                       </DatePicker.ViewTrigger>
                       <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
+
                     <DatePicker.Table>
                       <DatePicker.TableBody>
-                        {context()
-                          .getMonthsGrid({ columns: 4, format: 'short' })
-                          .map((months) => (
+                        <Index each={context().getMonthsGrid({ columns: 4, format: 'short' })}>
+                          {(months) => (
                             <DatePicker.TableRow>
-                              {months.map((month) => (
-                                <DatePicker.TableCell value={month.value}>
-                                  <DatePicker.TableCellTrigger>
-                                    {month.label}
-                                  </DatePicker.TableCellTrigger>
-                                </DatePicker.TableCell>
-                              ))}
+                              <Index each={months()}>
+                                {(month) => (
+                                  <DatePicker.TableCell value={month().value}>
+                                    <DatePicker.TableCellTrigger>
+                                      {month().label}
+                                    </DatePicker.TableCellTrigger>
+                                  </DatePicker.TableCell>
+                                )}
+                              </Index>
                             </DatePicker.TableRow>
-                          ))}
+                          )}
+                        </Index>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>
                 )}
               </DatePicker.Context>
             </DatePicker.View>
+
             <DatePicker.View view="year">
               <DatePicker.Context>
                 {(context) => (
@@ -93,21 +110,24 @@ export const Basic = () => {
                       </DatePicker.ViewTrigger>
                       <DatePicker.NextTrigger>Next</DatePicker.NextTrigger>
                     </DatePicker.ViewControl>
+
                     <DatePicker.Table>
                       <DatePicker.TableBody>
-                        {context()
-                          .getYearsGrid({ columns: 4 })
-                          .map((years) => (
+                        <Index each={context().getYearsGrid({ columns: 4 })}>
+                          {(years) => (
                             <DatePicker.TableRow>
-                              {years.map((year) => (
-                                <DatePicker.TableCell value={year.value}>
-                                  <DatePicker.TableCellTrigger>
-                                    {year.label}
-                                  </DatePicker.TableCellTrigger>
-                                </DatePicker.TableCell>
-                              ))}
+                              <Index each={years()}>
+                                {(year) => (
+                                  <DatePicker.TableCell value={year().value}>
+                                    <DatePicker.TableCellTrigger>
+                                      {year().label}
+                                    </DatePicker.TableCellTrigger>
+                                  </DatePicker.TableCell>
+                                )}
+                              </Index>
                             </DatePicker.TableRow>
-                          ))}
+                          )}
+                        </Index>
                       </DatePicker.TableBody>
                     </DatePicker.Table>
                   </>
