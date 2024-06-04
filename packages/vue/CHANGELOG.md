@@ -6,6 +6,35 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Select, Combobox:** Added support for generics.
+  
+You can now use generics with Select and Combobox components to ensure type safety and improved development experience.
+
+```vue
+<script setup lang="ts">
+import { Combobox } from '@ark-ui/vue'
+import { ref } from 'vue'
+
+interface Pokemon {
+  id: string
+  name: string
+  url: string
+}
+
+const items = ref<Pokemon[]>([])
+</script>
+
+<template>
+  <Combobox.Root 
+    :items="items" 
+    :item-to-value="(item) => item.id"  
+    @highlight-change="e => console.log(e.highlightedItem?.name)"
+  />
+</template>
+```
+
 ## [3.1.0] - 2024-06-04
 
 ### Added

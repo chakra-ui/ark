@@ -31,7 +31,7 @@ export interface UseComboboxReturn<T extends CollectionItem>
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
-  emit: EmitFn<RootEmits>,
+  emit: EmitFn<RootEmits<T>>,
 ): UseComboboxReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()

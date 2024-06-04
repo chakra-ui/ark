@@ -1,7 +1,7 @@
 import type * as combobox from '@zag-js/combobox'
 import type { CollectionItem } from './combobox'
 
-export interface RootProps<T extends CollectionItem = CollectionItem> {
+export interface RootProps<T extends CollectionItem> {
   /**
    * Whether to allow typing custom values in the input
    */
@@ -168,7 +168,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   translations?: combobox.IntlTranslations
 }
 
-export type RootEmits<T extends CollectionItem = CollectionItem> = {
+export type RootEmits<T extends CollectionItem> = {
   /**
    * Function called when the focus is moved outside the component
    */

@@ -1,29 +1,29 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
+import type { BooleanDefaults, CollectionItem } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './combobox.types'
 
-export interface ComboboxRootProps
-  extends RootProps,
+export interface ComboboxRootProps<T extends CollectionItem>
+  extends RootProps<T>,
     RenderStrategyProps,
     PolymorphicProps,
     /**
      * @vue-ignore
      */
     HTMLAttributes {}
-export interface ComboboxRootEmits extends RootEmits {}
+export type { RootEmits as ComboboxRootEmits } from './combobox.types'
 </script>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils'
 import { ark } from '../factory'
 import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
-const props = withDefaults(defineProps<ComboboxRootProps>(), {
+const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   allowCustomValue: undefined,
   autoFocus: undefined,
   closeOnSelect: undefined,
@@ -39,9 +39,9 @@ const props = withDefaults(defineProps<ComboboxRootProps>(), {
   openOnClick: undefined,
   openOnKeyPress: undefined,
   readOnly: undefined,
-} satisfies BooleanDefaults<RootProps>)
+} satisfies BooleanDefaults<RootProps<T>>)
 
-const emits = defineEmits<ComboboxRootEmits>()
+const emits = defineEmits<RootEmits<T>>()
 
 const combobox = useCombobox(props, emits)
 ComboboxProvider(combobox)

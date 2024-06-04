@@ -31,7 +31,7 @@ export interface UseSelectReturn<T extends CollectionItem>
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
-  emit: EmitFn<RootEmits>,
+  emit: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
