@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.1.0] - 2024-06-04
+
 ### Added
 
 - **Editable:** Supported `textarea` as the input element in edit mode.
