@@ -6,10 +6,23 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Editable:** Supported `textarea` as the input element in edit mode.
+
 ### Fixed
 
+- Fixed an issue where spreading `readOnly: false` adds the `readonly` attribute on editable
+  elements, making them uneditable.
 - **Factory:** Fixed an issue where the `ark` factory was incorretly adding the parent ref to the
   child component.
+- **Select:** Fixed an issue where changing the label of a collection item did not trigger a change
+  event.
+- **Popover:**
+  - Implemented `autoFocus` to determine whether the popover should autofocus on open:
+    - When `true`, the first focusable element or the content is focused.
+    - When `false`, the content is focused.
+  - Fixed an issue where the page scroll resets on opening the popover.
 
 - **DatePicker:** Fixed an issue in range mode where calendar close unexpectedly when hovering on a
   day quickly.

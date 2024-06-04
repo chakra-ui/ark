@@ -6,6 +6,33 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Editable:** Supported `textarea` as the input element in edit mode.
+
+### Fixed
+
+- **Select:** Fixed an issue where changing the label of a collection item did not trigger a change
+  event.
+- **Popover:**
+  - Implemented `autoFocus` to determine whether the popover should autofocus on open:
+    - When `true`, the first focusable element or the content is focused.
+    - When `false`, the content is focused.
+  - Fixed an issue where the page scroll resets on opening the popover.
+
+## [3.0.2] - 2024-05-29
+
+### Fixed
+
+- Added the missing `'use client'` annotation to the `Portal` component.
+- Fixed an issue where the `keydown` event might not fire in React due to
+  `nativeEvent.currentTarget` not being set consistently.
+
+### Changed
+
+- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
+  `currentSrc`.
+
 ## [3.0.2] - 2024-05-29
 
 ### Fixed
