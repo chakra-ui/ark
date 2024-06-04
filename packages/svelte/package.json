@@ -1,42 +1,45 @@
 {
   "name": "@ark-ui/svelte",
-  "version": "0.0.0",
-  "description": "A collection of unstyled, accessible UI components for Svelte, utilizing state machines for seamless interaction.",
-  "keywords": [],
-  "license": "MIT",
-  "homepage": "https://ark-ui.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chakra-ui/ark.git",
-    "directory": "packages/svelte"
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && npm run package",
+    "preview": "vite preview",
+    "package": "svelte-kit sync && svelte-package && publint",
+    "prepublishOnly": "npm run package",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest"
   },
-  "bugs": {
-    "url": "https://github.com/chakra-ui/ark/issues"
-  },
-  "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": ["dist"],
   "exports": {
     ".": {
-      "source": "./src/index.ts",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
     }
   },
-  "scripts": {},
-  "publishConfig": {
-    "access": "public"
+  "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
+  "peerDependencies": {
+    "svelte": "5.0.0-next.148"
   },
-  "sideEffects": false,
-  "dependencies": {},
-  "devDependencies": {},
-  "peerDependencies": {}
+  "dependencies": {
+    "@zag-js/avatar": "0.53.0",
+    "@zag-js/core": "0.53.0",
+    "@zag-js/svelte": "0.53.0"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "3.2.1",
+    "@sveltejs/kit": "2.5.10",
+    "@sveltejs/package": "2.3.1",
+    "@sveltejs/vite-plugin-svelte": "3.1.1",
+    "publint": "0.2.8",
+    "svelte": "5.0.0-next.148",
+    "svelte-check": "3.8.0",
+    "tslib": "2.6.2",
+    "typescript": "5.4.5",
+    "vite": "5.2.12",
+    "vitest": "1.6.0"
+  },
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module"
 }
