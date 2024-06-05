@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
@@ -21,14 +22,20 @@ export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   ])
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
-  const tableCellProps = {
-    day: api().getDayTableCellProps,
-    month: api().getMonthTableCellProps,
-    year: api().getYearTableCellProps,
-    // @ts-expect-error use filter guard
-  }[viewProps.view](cellProps)
+  const tableCellProps = createMemo(() => {
+    const viewMap = {
+      day: api().getDayTableCellProps,
+      month: api().getMonthTableCellProps,
+      year: api().getYearTableCellProps,
+    }
 
-  const mergedProps = mergeProps(() => tableCellProps, localProps)
+    const viewFn = viewMap[viewProps.view]
+
+    // @ts-expect-error
+    return viewFn(cellProps)
+  })
+
+  const mergedProps = mergeProps(tableCellProps, localProps)
 
   return (
     <DatePickerTableCellProvider value={cellProps}>
