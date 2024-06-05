@@ -21,3 +21,7 @@ export {
   type PaginationPrevTriggerProps as PrevTriggerProps,
 } from './pagination-prev-trigger'
 export { PaginationRoot as Root, type PaginationRootProps as RootProps } from './pagination-root'
+export {
+  PaginationRootProvider as RootProvider,
+  type PaginationRootProviderProps as RootProviderProps,
+} from './pagination-root-provider'

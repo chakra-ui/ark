@@ -18,7 +18,7 @@ export interface UsePinInputProps
 
 export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> {}
 
-export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) => {
+export const usePinInput = (props: UsePinInputProps, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -29,11 +29,11 @@ export const usePinInput = (props: UsePinInputProps, emit: EmitFn<RootEmits>) =>
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    onValueComplete: (details) => emit('valueComplete', details),
-    onValueInvalid: (details) => emit('valueInvalid', details),
+    onValueComplete: (details) => emit?.('valueComplete', details),
+    onValueInvalid: (details) => emit?.('valueInvalid', details),
     ...cleanProps(props),
   }))
 

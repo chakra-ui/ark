@@ -6,6 +6,28 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **All Components:** Introduced the `Provider` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
+
+```tsx
+import { Avatar, useAvatar } from '@ark-ui/react'
+
+export const Provider = () => {
+  const avatar = useAvatar({
+    onStatusChange: (e) => console.log('status changed', e),
+  })
+
+  return (
+    <Avatar.RootProvider value={avatar}>
+      <Avatar.Fallback>PA</Avatar.Fallback>
+      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    </Avatar.RootProvider>
+  )
+}
+```
+
 ## [3.1.0] - 2024-06-04
 
 ### Added

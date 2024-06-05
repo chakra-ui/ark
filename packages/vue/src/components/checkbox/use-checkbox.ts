@@ -17,7 +17,7 @@ export interface UseCheckboxProps
 
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
-export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) => {
+export const useCheckbox = (props: UseCheckboxProps, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -28,8 +28,8 @@ export const useCheckbox = (props: UseCheckboxProps, emit: EmitFn<RootEmits>) =>
     checked: props.defaultChecked,
     getRootNode: env?.value.getRootNode,
     onCheckedChange(details) {
-      emit('checkedChange', details)
-      emit('update:checked', details.checked)
+      emit?.('checkedChange', details)
+      emit?.('update:checked', details.checked)
     },
     ...cleanProps(props),
   }))

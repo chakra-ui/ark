@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './carousel.types'
 
 export interface CarouselRootProps
@@ -14,7 +15,7 @@ export interface CarouselRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 

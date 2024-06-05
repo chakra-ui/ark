@@ -8,6 +8,10 @@ export {
   type FileUploadDropzoneProps as DropzoneProps,
 } from './file-upload-dropzone.vue'
 export {
+  default as HiddenInput,
+  type FileUploadHiddenInputProps as HiddenInputProps,
+} from './file-upload-hidden-input.vue'
+export {
   default as ItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps as ItemDeleteTriggerProps,
 } from './file-upload-item-delete-trigger.vue'
@@ -37,6 +41,10 @@ export {
   type FileUploadLabelProps as LabelProps,
 } from './file-upload-label.vue'
 export {
+  default as RootProvider,
+  type FileUploadRootProviderProps as RootProviderProps,
+} from './file-upload-root-provider.vue'
+export {
   default as Root,
   type FileUploadRootEmits as RootEmits,
   type FileUploadRootProps as RootProps,
@@ -45,7 +53,3 @@ export {
   default as Trigger,
   type FileUploadTriggerProps as TriggerProps,
 } from './file-upload-trigger.vue'
-export {
-  default as HiddenInput,
-  type FileUploadHiddenInputProps as HiddenInputProps,
-} from './file-upload-hidden-input.vue'

@@ -7,4 +7,8 @@ export {
 } from './switch-hidden-input'
 export { SwitchLabel as Label, type SwitchLabelProps as LabelProps } from './switch-label'
 export { SwitchRoot as Root, type SwitchRootProps as RootProps } from './switch-root'
+export {
+  SwitchRootProvider as RootProvider,
+  type SwitchRootProviderProps as RootProviderProps,
+} from './switch-root-provider'
 export { SwitchThumb as Thumb, type SwitchThumbProps as ThumbProps } from './switch-thumb'

@@ -23,7 +23,7 @@ export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>
 
 export const useAccordion = (
   props: UseAccordionProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseAccordionReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -34,10 +34,10 @@ export const useAccordion = (
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit('focusChange', details),
+    onFocusChange: (details) => emit?.('focusChange', details),
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
     ...cleanProps(props),
   }))

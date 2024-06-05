@@ -18,6 +18,10 @@ export {
 } from './hover-card-positioner'
 export { HoverCardRoot as Root, type HoverCardRootProps as RootProps } from './hover-card-root'
 export {
+  HoverCardRootProvider as RootProvider,
+  type HoverCardRootProviderProps as RootProviderProps,
+} from './hover-card-root-provider'
+export {
   HoverCardTrigger as Trigger,
   type HoverCardTriggerProps as TriggerProps,
 } from './hover-card-trigger'

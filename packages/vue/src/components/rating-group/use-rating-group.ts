@@ -20,7 +20,7 @@ export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTy
 
 export const useRatingGroup = (
   props: UseRatingGroupProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -32,10 +32,10 @@ export const useRatingGroup = (
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    onHoverChange: (details) => emit('hoverChange', details),
+    onHoverChange: (details) => emit?.('hoverChange', details),
     ...cleanProps(props),
   }))
 

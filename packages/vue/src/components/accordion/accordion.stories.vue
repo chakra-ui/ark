@@ -5,6 +5,7 @@ import Collapsible from './examples/collapsible.vue'
 import Controlled from './examples/controlled.vue'
 import Disabled from './examples/disabled.vue'
 import Multiple from './examples/multiple.vue'
+import Provider from './examples/provider.vue'
 import RenderProp from './examples/render-prop.vue'
 import Vertical from './examples/vertical.vue'
 </script>
@@ -30,6 +31,9 @@ import Vertical from './examples/vertical.vue'
     </Variant>
     <Variant title="Disabled">
       <Disabled />
+    </Variant>
+    <Variant title="Provider">
+      <Provider />
     </Variant>
     <Variant title="Closed">
       <Accordion multiple :items="['React', 'Solid', 'Vue']" />

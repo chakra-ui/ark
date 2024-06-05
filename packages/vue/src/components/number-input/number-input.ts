@@ -28,9 +28,13 @@ export {
   type NumberInputLabelProps as LabelProps,
 } from './number-input-label.vue'
 export {
+  default as RootProvider,
+  type NumberInputRootProviderProps as RootProviderProps,
+} from './number-input-root-provider.vue'
+export {
   default as Root,
-  type NumberInputRootProps as RootProps,
   type NumberInputRootEmits as RootEmits,
+  type NumberInputRootProps as RootProps,
 } from './number-input-root.vue'
 export {
   default as Scrubber,

@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Avatar from './examples/closed.vue'
 import Events from './examples/events.vue'
+import Provider from './examples/provider.vue'
 </script>
 <template>
   <Story title="Avatar">
@@ -17,6 +18,9 @@ import Events from './examples/events.vue'
         src="https://avatars.githubusercontent.com/u/1846056?v=4"
         @status-change="(e) => console.log(e.status)"
       />
+    </Variant>
+    <Variant title="Provider">
+      <Provider />
     </Variant>
   </Story>
 </template>

@@ -12,6 +12,8 @@ export {
 } from './accordion-item-indicator'
 export { AccordionItemTrigger, type AccordionItemTriggerProps } from './accordion-item-trigger'
 export { AccordionRoot, type AccordionRootProps } from './accordion-root'
+export { AccordionRootProvider, type AccordionRootProviderProps } from './accordion-root-provider'
+export { useAccordion, type UseAccordionProps, type UseAccordionReturn } from './use-accordion'
 export { useAccordionContext, type UseAccordionContext } from './use-accordion-context'
 export { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
 

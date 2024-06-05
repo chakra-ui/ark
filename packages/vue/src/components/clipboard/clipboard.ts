@@ -14,6 +14,10 @@ export {
 export { default as Input, type ClipboardInputProps as InputProps } from './clipboard-input.vue'
 export { default as Label, type ClipboardLabelProps as LabelProps } from './clipboard-label.vue'
 export {
+  default as RootProvider,
+  type ClipboardRootProviderProps as RootProviderProps,
+} from './clipboard-root-provider.vue'
+export {
   default as Root,
   type ClipboardRootEmits as RootEmits,
   type ClipboardRootProps as RootProps,

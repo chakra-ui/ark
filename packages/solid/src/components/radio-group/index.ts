@@ -11,6 +11,11 @@ export {
 export { RadioGroupItemText, type RadioGroupItemTextProps } from './radio-group-item-text'
 export { RadioGroupLabel, type RadioGroupLabelProps } from './radio-group-label'
 export { RadioGroupRoot, type RadioGroupRootProps } from './radio-group-root'
+export {
+  RadioGroupRootProvider,
+  type RadioGroupRootProviderProps,
+} from './radio-group-root-provider'
+export { useRadioGroup, type UseRadioGroupProps, type UseRadioGroupReturn } from './use-radio-group'
 export { useRadioGroupContext, type UseRadioGroupContext } from './use-radio-group-context'
 export {
   useRadioGroupItemContext,

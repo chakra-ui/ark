@@ -9,6 +9,10 @@ export {
 } from './collapsible-context'
 export { CollapsibleRoot as Root, type CollapsibleRootProps as RootProps } from './collapsible-root'
 export {
+  CollapsibleRootProvider as RootProvider,
+  type CollapsibleRootProviderProps as RootProviderProps,
+} from './collapsible-root-provider'
+export {
   CollapsibleTrigger as Trigger,
   type CollapsibleTriggerProps as TriggerProps,
 } from './collapsible-trigger'

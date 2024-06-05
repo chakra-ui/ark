@@ -8,7 +8,7 @@ export const Basic = () => {
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
-            <Accordion.ItemTrigger onClick={() => console.log('on Click')}>
+            <Accordion.ItemTrigger>
               What is {item()}?
               <Accordion.ItemIndicator>
                 <ChevronDownIcon />

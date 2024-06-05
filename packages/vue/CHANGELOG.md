@@ -6,13 +6,36 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **All Components:** Introduced the `Provider` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
+
+```vue
+<script setup lang="ts">
+import { Avatar, useAvatar } from '@ark-ui/vue'
+
+const avatar = useAvatar({
+  onStatusChange: (e) => console.log('status changed', e),
+})
+</script>
+
+<template>
+  <Avatar.RootProvider :value="avatar">
+    <Avatar.Fallback>PA</Avatar.Fallback>
+    <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+  </Avatar.RootProvider>
+</template>
+```
+
 ## [3.2.0] - 2024-06-04
 
 ### Added
 
 - **Select, Combobox:** Added support for generics.
-  
-You can now use generics with Select and Combobox components to ensure type safety and improved development experience.
+
+You can now use generics with Select and Combobox components to ensure type safety and improved
+development experience.
 
 ```vue
 <script setup lang="ts">
@@ -29,10 +52,10 @@ const items = ref<Pokemon[]>([])
 </script>
 
 <template>
-  <Combobox.Root 
-    :items="items" 
-    :item-to-value="(item) => item.id"  
-    @highlight-change="e => console.log(e.highlightedItem?.name)"
+  <Combobox.Root
+    :items="items"
+    :item-to-value="(item) => item.id"
+    @highlight-change="(e) => console.log(e.highlightedItem?.name)"
   />
 </template>
 ```

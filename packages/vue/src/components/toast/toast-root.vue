@@ -1,5 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
+
 export interface ToastRootProps
   extends PolymorphicProps,
     /**
@@ -9,7 +11,7 @@ export interface ToastRootProps
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
 defineProps<ToastRootProps>()

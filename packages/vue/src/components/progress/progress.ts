@@ -1,8 +1,4 @@
 export {
-  default as Circle,
-  type ProgressCircleProps as CircleProps,
-} from './progress-circle.vue'
-export {
   default as CircleRange,
   type ProgressCircleRangeProps as CircleRangeProps,
 } from './progress-circle-range.vue'
@@ -11,11 +7,19 @@ export {
   type ProgressCircleTrackProps as CircleTrackProps,
 } from './progress-circle-track.vue'
 export {
+  default as Circle,
+  type ProgressCircleProps as CircleProps,
+} from './progress-circle.vue'
+export {
   default as Context,
   type ProgressContextProps as ContextProps,
 } from './progress-context.vue'
 export { default as Label, type ProgressLabelProps as LabelProps } from './progress-label.vue'
 export { default as Range, type ProgressRangeProps as RangeProps } from './progress-range.vue'
+export {
+  default as RootProvider,
+  type ProgressRootProviderProps as RootProviderProps,
+} from './progress-root-provider.vue'
 export { default as Root, type ProgressRootProps as RootProps } from './progress-root.vue'
 export { default as Track, type ProgressTrackProps as TrackProps } from './progress-track.vue'
 export {

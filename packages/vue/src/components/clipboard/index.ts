@@ -8,10 +8,16 @@ export {
 export { default as ClipboardInput, type ClipboardInputProps } from './clipboard-input.vue'
 export { default as ClipboardLabel, type ClipboardLabelProps } from './clipboard-label.vue'
 export {
+  default as ClipboardRootProvider,
+  type ClipboardRootProviderProps,
+} from './clipboard-root-provider.vue'
+export {
   default as ClipboardRoot,
-  type ClipboardRootProps,
   type ClipboardRootEmits,
+  type ClipboardRootProps,
 } from './clipboard-root.vue'
 export { default as ClipboardTrigger, type ClipboardTriggerProps } from './clipboard-trigger.vue'
-export { type UseClipboardContext, useClipboardContext } from './use-clipboard-context'
+export { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard'
+export { useClipboardContext, type UseClipboardContext } from './use-clipboard-context'
+
 export * as Clipboard from './clipboard'

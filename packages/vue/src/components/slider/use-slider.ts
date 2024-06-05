@@ -17,7 +17,7 @@ export interface UseSliderProps
 }
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
-export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSliderReturn => {
+export const useSlider = (props: UseSliderProps, emit?: EmitFn<RootEmits>): UseSliderReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -26,11 +26,11 @@ export const useSlider = (props: UseSliderProps, emit: EmitFn<RootEmits>): UseSl
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit('focusChange', details),
-    onValueChangeEnd: (details) => emit('valueChangeEnd', details),
+    onFocusChange: (details) => emit?.('focusChange', details),
+    onValueChangeEnd: (details) => emit?.('valueChangeEnd', details),
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
     ...cleanProps(props),
   }))

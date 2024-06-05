@@ -13,7 +13,7 @@ export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropType
 
 export const useFileUpload = (
   props: UseFileUploadProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseFileUploadReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -22,9 +22,9 @@ export const useFileUpload = (
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onFileChange: (details) => emit('fileChange', details),
-    onFileAccept: (details) => emit('fileAccept', details),
-    onFileReject: (details) => emit('fileReject', details),
+    onFileChange: (details) => emit?.('fileChange', details),
+    onFileAccept: (details) => emit?.('fileAccept', details),
+    onFileReject: (details) => emit?.('fileReject', details),
     ...cleanProps(props),
   }))
 

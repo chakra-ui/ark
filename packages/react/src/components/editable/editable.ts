@@ -24,6 +24,10 @@ export {
 } from './editable-preview'
 export { EditableRoot as Root, type EditableRootProps as RootProps } from './editable-root'
 export {
+  EditableRootProvider as RootProvider,
+  type EditableRootProviderProps as RootProviderProps,
+} from './editable-root-provider'
+export {
   EditableSubmitTrigger as SubmitTrigger,
   type EditableSubmitTriggerProps as SubmitTriggerProps,
 } from './editable-submit-trigger'

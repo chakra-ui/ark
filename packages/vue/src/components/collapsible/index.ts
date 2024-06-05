@@ -8,6 +8,10 @@ export {
   type CollapsibleContextProps,
 } from './collapsible-context.vue'
 export {
+  default as CollapsibleRootProvider,
+  type CollapsibleRootProviderProps,
+} from './collapsible-root-provider.vue'
+export {
   default as CollapsibleRoot,
   type CollapsibleRootEmits,
   type CollapsibleRootProps,
@@ -16,6 +20,11 @@ export {
   default as CollapsibleTrigger,
   type CollapsibleTriggerProps,
 } from './collapsible-trigger.vue'
+export {
+  useCollapsible,
+  type UseCollapsibleProps,
+  type UseCollapsibleReturn,
+} from './use-collapsible'
 export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'
 
 export * as Collapsible from './collapsible'

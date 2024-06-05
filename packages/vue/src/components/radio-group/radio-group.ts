@@ -29,6 +29,10 @@ export {
   type RadioGroupLabelProps as LabelProps,
 } from './radio-group-label.vue'
 export {
+  default as RootProvider,
+  type RadioGroupRootProviderProps as RootProviderProps,
+} from './radio-group-root-provider.vue'
+export {
   default as Root,
   type RadioGroupRootEmits as RootEmits,
   type RadioGroupRootProps as RootProps,

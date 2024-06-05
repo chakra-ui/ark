@@ -22,11 +22,11 @@ const props = defineProps<SelectItemGroupProps>()
 const select = useSelectContext()
 const id = useId(props.id)
 
-SelectItemGroupPropsProvider({id})
+SelectItemGroupPropsProvider({ id })
 </script>
 
 <template>
-  <ark.div v-bind="select.getItemGroupProps({id})" :as-child="asChild">
+  <ark.div v-bind="select.getItemGroupProps({ id })" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

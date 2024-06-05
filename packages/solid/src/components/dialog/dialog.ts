@@ -18,5 +18,9 @@ export {
   type DialogPositionerProps as PositionerProps,
 } from './dialog-positioner'
 export { DialogRoot as Root, type DialogRootProps as RootProps } from './dialog-root'
+export {
+  DialogRootProvider as RootProvider,
+  type DialogRootProviderProps as RootProviderProps,
+} from './dialog-root-provider'
 export { DialogTitle as Title, type DialogTitleProps as TitleProps } from './dialog-title'
 export { DialogTrigger as Trigger, type DialogTriggerProps as TriggerProps } from './dialog-trigger'

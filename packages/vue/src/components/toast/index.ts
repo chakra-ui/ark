@@ -13,4 +13,5 @@ export { default as ToastRoot, type ToastRootProps } from './toast-root.vue'
 export { default as ToastTitle, type ToastTitleProps } from './toast-title.vue'
 export { Toaster, type ToasterProps } from './toaster'
 export { useToastContext, type UseToastContext } from './use-toast-context'
+
 export * as Toast from './toast'

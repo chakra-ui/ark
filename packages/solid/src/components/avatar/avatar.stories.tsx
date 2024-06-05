@@ -9,3 +9,4 @@ export default meta
 export { Basic } from './examples/basic'
 export { Events } from './examples/events'
 export { Context } from './examples/context'
+export { Provider } from './examples/provider'

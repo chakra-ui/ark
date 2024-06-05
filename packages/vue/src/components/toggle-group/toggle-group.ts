@@ -8,7 +8,11 @@ export {
   type ToggleGroupItemProps as ItemProps,
 } from './toggle-group-item.vue'
 export {
+  default as RootProvider,
+  type ToggleGroupRootProviderProps as RootProviderProps,
+} from './toggle-group-root-provider.vue'
+export {
   default as Root,
-  type ToggleGroupRootProps as RootProps,
   type ToggleGroupRootEmits as RootEmits,
+  type ToggleGroupRootProps as RootProps,
 } from './toggle-group-root.vue'

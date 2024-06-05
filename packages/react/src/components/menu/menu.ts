@@ -47,6 +47,10 @@ export {
 } from './menu-radio-item-group'
 export { MenuRoot as Root, type MenuRootProps as RootProps } from './menu-root'
 export {
+  MenuRootProvider as RootProvider,
+  type MenuRootProviderProps as RootProviderProps,
+} from './menu-root-provider'
+export {
   MenuSeparator as Separator,
   type MenuSeparatorProps as SeparatorProps,
 } from './menu-separator'

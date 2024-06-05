@@ -15,6 +15,10 @@ export { ClipboardInput as Input, type ClipboardInputProps as InputProps } from 
 export { ClipboardLabel as Label, type ClipboardLabelProps as LabelProps } from './clipboard-label'
 export { ClipboardRoot as Root, type ClipboardRootProps as RootProps } from './clipboard-root'
 export {
+  ClipboardRootProvider as RootProvider,
+  type ClipboardRootProviderProps as RootProviderProps,
+} from './clipboard-root-provider'
+export {
   ClipboardTrigger as Trigger,
   type ClipboardTriggerProps as TriggerProps,
 } from './clipboard-trigger'

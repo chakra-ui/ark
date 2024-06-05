@@ -47,23 +47,26 @@ export {
   type DatePickerRangeTextProps,
 } from './date-picker-range-text.vue'
 export {
+  default as DatePickerRootProvider,
+  type DatePickerRootProviderProps,
+} from './date-picker-root-provider.vue'
+export {
   default as DatePickerRoot,
-  type DatePickerRootProps,
   type DatePickerRootEmits,
+  type DatePickerRootProps,
 } from './date-picker-root.vue'
-export { default as DatePickerTable, type DatePickerTableProps } from './date-picker-table.vue'
 export {
   default as DatePickerTableBody,
   type DatePickerTableBodyProps,
 } from './date-picker-table-body.vue'
 export {
-  default as DatePickerTableCell,
-  type DatePickerTableCellProps,
-} from './date-picker-table-cell.vue'
-export {
   default as DatePickerTableCellTrigger,
   type DatePickerTableCellTriggerProps,
 } from './date-picker-table-cell-trigger.vue'
+export {
+  default as DatePickerTableCell,
+  type DatePickerTableCellProps,
+} from './date-picker-table-cell.vue'
 export {
   default as DatePickerTableHead,
   type DatePickerTableHeadProps,
@@ -76,11 +79,11 @@ export {
   default as DatePickerTableRow,
   type DatePickerTableRowProps,
 } from './date-picker-table-row.vue'
+export { default as DatePickerTable, type DatePickerTableProps } from './date-picker-table.vue'
 export {
   default as DatePickerTrigger,
   type DatePickerTriggerProps,
 } from './date-picker-trigger.vue'
-export { default as DatePickerView, type DatePickerViewProps } from './date-picker-view.vue'
 export {
   default as DatePickerViewControl,
   type DatePickerViewControlProps,
@@ -89,9 +92,12 @@ export {
   default as DatePickerViewTrigger,
   type DatePickerViewTriggerProps,
 } from './date-picker-view-trigger.vue'
+export { default as DatePickerView, type DatePickerViewProps } from './date-picker-view.vue'
 export {
   default as DatePickerYearSelect,
   type DatePickerYearSelectProps,
 } from './date-picker-year-select.vue'
-export { type UseDatePickerContext, useDatePickerContext } from './use-date-picker-context'
+export { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
+export { useDatePickerContext, type UseDatePickerContext } from './use-date-picker-context'
+
 export * as DatePicker from './date-picker'

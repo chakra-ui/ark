@@ -46,4 +46,8 @@ export {
 } from './tree-view-item-text'
 export { TreeViewLabel as Label, type TreeViewLabelProps as LabelProps } from './tree-view-label'
 export { TreeViewRoot as Root, type TreeViewRootProps as RootProps } from './tree-view-root'
+export {
+  TreeViewRootProvider as RootProvider,
+  type TreeViewRootProviderProps as RootProviderProps,
+} from './tree-view-root-provider'
 export { TreeViewTree as Tree, type TreeViewTreeProps as TreeProps } from './tree-view-tree'
