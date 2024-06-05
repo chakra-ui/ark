@@ -27,7 +27,7 @@ export default function Page(props: Props) {
     return (
       <Container display="flex" py="12" gap="8" justifyContent="center">
         <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
-          <Prose css={{ maxWidth: '45rem', mx: 'auto' }}>
+          <Prose css={{ maxWidth: '45rem', mx: 'auto', width: '100%' }}>
             <Heading as="h1" fontWeight="bold">
               {currentPage.title === 'Introduction' ? 'Welcome to Ark UI' : currentPage.title}
             </Heading>
@@ -58,7 +58,7 @@ export const generateMetadata = (props: Props): Metadata => {
   return {}
 }
 
-const pages = getSidebarGroups().flatMap((group) => group)
+const pages = getSidebarGroups().flat()
 
 export const generateStaticParams = () =>
   ['react', 'solid', 'vue'].flatMap((framework) =>
