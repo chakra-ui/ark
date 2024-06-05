@@ -24,8 +24,8 @@ export interface ExampleGroup {
 
 const { ARK_PLUS_API_KEY, ARK_PLUS_URL } = process.env
 
-export const fetchExamples = async (): Promise<Example[]> =>
-  fetch(`${ARK_PLUS_URL}/api/examples`, {
+export const fetchExamples = async (): Promise<Example[]> => {
+  const examples = await fetch(`${ARK_PLUS_URL}/api/examples`, {
     cache: 'no-cache',
     headers: {
       Authorization: ARK_PLUS_API_KEY,
@@ -33,6 +33,9 @@ export const fetchExamples = async (): Promise<Example[]> =>
   })
     .then((res) => res.json())
     .catch(() => [])
+
+  return examples
+}
 
 export const fetchExample = async (id: string): Promise<Example> => {
   const example: Example = await fetch(`${ARK_PLUS_URL}/api/examples/${id}`, {
