@@ -22,13 +22,23 @@ export {
 export { default as NumberInputInput, type NumberInputInputProps } from './number-input-input.vue'
 export { default as NumberInputLabel, type NumberInputLabelProps } from './number-input-label.vue'
 export {
+  default as NumberInputRootProvider,
+  type NumberInputRootProviderProps,
+} from './number-input-root-provider.vue'
+export {
   default as NumberInputRoot,
-  type NumberInputRootProps,
   type NumberInputRootEmits,
+  type NumberInputRootProps,
 } from './number-input-root.vue'
 export {
   default as NumberInputScrubber,
   type NumberInputScrubberProps,
 } from './number-input-scrubber.vue'
-export { type UseNumberInputContext, useNumberInputContext } from './use-number-input-context'
+export {
+  useNumberInput,
+  type UseNumberInputProps,
+  type UseNumberInputReturn,
+} from './use-number-input'
+export { useNumberInputContext, type UseNumberInputContext } from './use-number-input-context'
+
 export * as NumberInput from './number-input'

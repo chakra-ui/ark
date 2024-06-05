@@ -9,11 +9,17 @@ export { default as DialogContext, type DialogContextProps } from './dialog-cont
 export { default as DialogDescription, type DialogDescriptionProps } from './dialog-description.vue'
 export { default as DialogPositioner, type DialogPositionerProps } from './dialog-positioner.vue'
 export {
+  default as DialogRootProvider,
+  type DialogRootProviderProps,
+} from './dialog-root-provider.vue'
+export {
   default as DialogRoot,
-  type DialogRootProps,
   type DialogRootEmits,
+  type DialogRootProps,
 } from './dialog-root.vue'
 export { default as DialogTitle, type DialogTitleProps } from './dialog-title.vue'
 export { default as DialogTrigger, type DialogTriggerProps } from './dialog-trigger.vue'
-export { type UseDialogContext, useDialogContext } from './use-dialog-context'
+export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
+export { useDialogContext, type UseDialogContext } from './use-dialog-context'
+
 export * as Dialog from './dialog'

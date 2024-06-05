@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './slider.types'
 
 export interface SliderRootProps
@@ -14,7 +15,7 @@ export interface SliderRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 

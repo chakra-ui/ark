@@ -20,7 +20,7 @@ export interface UseSegmentGroupReturn extends ComputedRef<segmentGroup.Api<Prop
 
 export const useSegmentGroup = (
   props: UseSegmentGroupProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseSegmentGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -32,8 +32,8 @@ export const useSegmentGroup = (
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
     ...cleanProps(props),
   }))

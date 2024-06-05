@@ -3,7 +3,6 @@ export type {
   PageChangeDetails as PaginationPageChangeDetails,
   PageSizeChangeDetails as PaginationPageSizeChangeDetails,
 } from '@zag-js/pagination'
-export * as Pagination from './pagination'
 export { default as PaginationContext, type PaginationContextProps } from './pagination-context.vue'
 export {
   default as PaginationEllipsis,
@@ -19,8 +18,15 @@ export {
   type PaginationPrevTriggerProps,
 } from './pagination-prev-trigger.vue'
 export {
+  default as PaginationRootProvider,
+  type PaginationRootProviderProps,
+} from './pagination-root-provider.vue'
+export {
   default as PaginationRoot,
   type PaginationRootEmits,
   type PaginationRootProps,
 } from './pagination-root.vue'
+export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 export { usePaginationContext, type UsePaginationContext } from './use-pagination-context'
+
+export * as Pagination from './pagination'

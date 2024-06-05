@@ -23,6 +23,10 @@ export {
 export { DatePickerPrevTrigger, type DatePickerPrevTriggerProps } from './date-picker-prev-trigger'
 export { DatePickerRangeText, type DatePickerRangeTextProps } from './date-picker-range-text'
 export { DatePickerRoot, type DatePickerRootProps } from './date-picker-root'
+export {
+  DatePickerRootProvider,
+  type DatePickerRootProviderProps,
+} from './date-picker-root-provider'
 export { DatePickerTable, type DatePickerTableProps } from './date-picker-table'
 export { DatePickerTableBody, type DatePickerTableBodyProps } from './date-picker-table-body'
 export { DatePickerTableCell, type DatePickerTableCellProps } from './date-picker-table-cell'
@@ -38,6 +42,7 @@ export { DatePickerView, type DatePickerViewProps } from './date-picker-view'
 export { DatePickerViewControl, type DatePickerViewControlProps } from './date-picker-view-control'
 export { DatePickerViewTrigger, type DatePickerViewTriggerProps } from './date-picker-view-trigger'
 export { DatePickerYearSelect, type DatePickerYearSelectProps } from './date-picker-year-select'
-export { type UseDatePickerContext, useDatePickerContext } from './use-date-picker-context'
+export { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
+export { useDatePickerContext, type UseDatePickerContext } from './use-date-picker-context'
 
 export * as DatePicker from './date-picker'

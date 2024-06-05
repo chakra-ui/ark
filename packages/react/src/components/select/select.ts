@@ -42,6 +42,10 @@ export {
   type SelectPositionerProps as PositionerProps,
 } from './select-positioner'
 export { SelectRoot as Root, type SelectRootProps as RootProps } from './select-root'
+export {
+  SelectRootProvider as RootProvider,
+  type SelectRootProviderProps as RootProviderProps,
+} from './select-root-provider'
 export { SelectTrigger as Trigger, type SelectTriggerProps as TriggerProps } from './select-trigger'
 export {
   SelectValueText as ValueText,

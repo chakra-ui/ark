@@ -17,6 +17,10 @@ export {
 } from './checkbox-indicator.vue'
 export { default as Label, type CheckboxLabelProps as LabelProps } from './checkbox-label.vue'
 export {
+  default as RootProvider,
+  type CheckboxRootProviderProps as RootProviderProps,
+} from './checkbox-root-provider.vue'
+export {
   default as Root,
   type CheckboxRootEmits as RootEmits,
   type CheckboxRootProps as RootProps,

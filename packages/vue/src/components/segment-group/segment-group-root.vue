@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './segment-group.types'
 
 export interface SegmentGroupRootProps
@@ -15,7 +16,7 @@ export interface SegmentGroupRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 

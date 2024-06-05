@@ -19,8 +19,10 @@ export { TreeViewItemIndicator, type TreeViewItemIndicatorProps } from './tree-v
 export { TreeViewItemText, type TreeViewItemTextProps } from './tree-view-item-text'
 export { TreeViewLabel, type TreeViewLabelProps } from './tree-view-label'
 export { TreeViewRoot, type TreeViewRootProps } from './tree-view-root'
+export { TreeViewRootProvider, type TreeViewRootProviderProps } from './tree-view-root-provider'
 export { TreeViewTree, type TreeViewTreeProps } from './tree-view-tree'
-export { type UseTreeViewContext, useTreeViewContext } from './use-tree-view-context'
-export { type UseTreeViewItemContext, useTreeViewItemContext } from './use-tree-view-item-context'
+export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
+export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
+export { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
 
 export * as TreeView from './tree-view'

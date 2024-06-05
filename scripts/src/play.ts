@@ -1,56 +1,17 @@
-import { parse } from 'node:path'
-import { outputFileSync, readJsonSync } from 'fs-extra'
+import fs from 'node:fs/promises'
 import { globby } from 'globby'
 
-const toKebabCase = (str: string) => {
-  return (
-    str
-      // Insert a hyphen before each uppercase letter, except at the start
-      .replace(/(.)([A-Z])/g, '$1-$2')
-      // Convert the entire string to lowercase
-      .toLowerCase()
-  )
-}
+const stories = await globby('../packages/*/src/components/*/*root.tsx')
 
-const stories = await globby('../website/src/content/stories/solid/*.stories.json')
+// biome-ignore lint/complexity/noForEach: <explanation>
+stories.forEach(async (story) => {
+  // create a copy of the file with the new name *-root-provider.tsx
+  // replace the name of the component with *-root-provider
 
-stories.sort().map((story) => {
-  const component = toKebabCase(parse(story).name.split('.')[0])
-  const content = readJsonSync(story) as Record<string, string>
+  const content = await fs.readFile(story, 'utf-8')
+  const newContent = content.replaceAll(/Root/g, 'RootProvider')
 
-  Object.entries(content).map(([key, value]) => {
-    const name = toKebabCase(key)
-    outputFileSync(
-      `../packages/solid/src/components/${component}/examples/${name}.tsx`,
-      value.replace('@ark-ui/solid', '../..').replace('const', 'export const'),
-    )
-  })
-
-  // date-picker -> DatePicker
-  const componentName = component
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('')
-
-  const meta = `import type { Meta } from '@storybook/solid'
-
-const meta: Meta = {
-  title: 'Components / ${componentName}',
-}
-
-export default meta
-
-`
-
-  const exports = Object.keys(content)
-    .map((key) => {
-      const name = toKebabCase(key)
-      return `export { ${key} } from './examples/${name}'`
-    })
-    .join('\n')
-
-  outputFileSync(
-    `../packages/solid/src/components/${component}/${component}.stories.tsx`,
-    `${meta}${exports}`,
-  )
+  fs.writeFile(story.replace('root.tsx', 'root-provider.tsx'), newContent, 'utf-8')
 })
+
+console.log(stories)

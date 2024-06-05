@@ -32,6 +32,10 @@ export {
   type SegmentGroupLabelProps as LabelProps,
 } from './segment-group-label.vue'
 export {
+  default as RootProvider,
+  type SegmentGroupRootProviderProps as RootProviderProps,
+} from './segment-group-root-provider.vue'
+export {
   default as Root,
   type SegmentGroupRootEmits as RootEmits,
   type SegmentGroupRootProps as RootProps,

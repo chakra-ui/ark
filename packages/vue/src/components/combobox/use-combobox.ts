@@ -31,7 +31,7 @@ export interface UseComboboxReturn<T extends CollectionItem>
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
-  emit: EmitFn<RootEmits<T>>,
+  emit?: EmitFn<RootEmits<T>>,
 ): UseComboboxReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -46,18 +46,18 @@ export const useCombobox = <T extends CollectionItem>(
       'open.controlled': props.open !== undefined,
       value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onHighlightChange: (details) => emit('highlightChange', details),
-      onInputValueChange: (details) => emit('inputValueChange', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onFocusOutside: (details) => emit?.('focusOutside', details),
+      onHighlightChange: (details) => emit?.('highlightChange', details),
+      onInputValueChange: (details) => emit?.('inputValueChange', details),
+      onInteractOutside: (details) => emit?.('interactOutside', details),
+      onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
       onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
+        emit?.('openChange', details)
+        emit?.('update:open', details.open)
       },
       onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
       },
       ...cleanProps(otherProps),
     }

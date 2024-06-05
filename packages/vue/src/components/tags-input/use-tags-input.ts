@@ -19,7 +19,7 @@ export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>
 
 export const useTagsInput = (
   props: UseTagsInputProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -31,15 +31,15 @@ export const useTagsInput = (
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onHighlightChange: (details) => emit('highlightChange', details),
-    onInputValueChange: (details) => emit('inputValueChange', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onValueInvalid: (details) => emit('valueInvalid', details),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onHighlightChange: (details) => emit?.('highlightChange', details),
+    onInputValueChange: (details) => emit?.('inputValueChange', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onValueInvalid: (details) => emit?.('valueInvalid', details),
     ...cleanProps(props),
   }))
 

@@ -30,6 +30,10 @@ export {
 } from './carousel-prev-trigger'
 export { CarouselRoot as Root, type CarouselRootProps as RootProps } from './carousel-root'
 export {
+  CarouselRootProvider as RootProvider,
+  type CarouselRootProviderProps as RootProviderProps,
+} from './carousel-root-provider'
+export {
   CarouselViewport as Viewport,
   type CarouselViewportProps as ViewportProps,
 } from './carousel-viewport'

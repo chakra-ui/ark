@@ -14,7 +14,7 @@ Here's an example using `asChild` to integrate a custom `Button` component withi
 
 <Example id="as-child" component="popover" />
 
-In this example, the `asChild` prop allows the `Button` to be used as the trigger for the `Popover`, 
+In this example, the `asChild` prop allows the `Button` to be used as the trigger for the `Popover`,
 inheriting its behaviors from Popover.Trigger.
 
 ## The Ark Factory
@@ -33,6 +33,6 @@ This will produce the following HTML:
 
 When using the `asChild` prop, ensure you pass only a single child element. Passing multiple children may cause rendering issues.
 
-Certain components, such as `Checkbox.Root` or `RadioGroup.Item`, have specific requirements for their child elements. 
-For instance, they may require a label element as a child. 
+Certain components, such as `Checkbox.Root` or `RadioGroup.Item`, have specific requirements for their child elements.
+For instance, they may require a label element as a child.
 If you change the underlying element type, ensure it remains accessible and functional.

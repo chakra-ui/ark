@@ -17,7 +17,7 @@ export interface UseDialogProps
 
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
-export const useDialog = (props: UseDialogProps, emit: EmitFn<RootEmits>) => {
+export const useDialog = (props: UseDialogProps, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -28,13 +28,13 @@ export const useDialog = (props: UseDialogProps, emit: EmitFn<RootEmits>) => {
     'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
-    onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+    onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
     ...cleanProps(props),
   }))
 

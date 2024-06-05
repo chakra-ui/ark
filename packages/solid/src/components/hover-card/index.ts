@@ -5,7 +5,9 @@ export { HoverCardContent, type HoverCardContentProps } from './hover-card-conte
 export { HoverCardContext, type HoverCardContextProps } from './hover-card-context'
 export { HoverCardPositioner, type HoverCardPositionerProps } from './hover-card-positioner'
 export { HoverCardRoot, type HoverCardRootProps } from './hover-card-root'
+export { HoverCardRootProvider, type HoverCardRootProviderProps } from './hover-card-root-provider'
 export { HoverCardTrigger, type HoverCardTriggerProps } from './hover-card-trigger'
-export { type UseHoverCardContext, useHoverCardContext } from './use-hover-card-context'
+export { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card'
+export { useHoverCardContext, type UseHoverCardContext } from './use-hover-card-context'
 
 export * as HoverCard from './hover-card'

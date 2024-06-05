@@ -1,10 +1,10 @@
 export type { OpenChangeDetails } from '@zag-js/popover'
 export { default as Anchor, type PopoverAnchorProps as AnchorProps } from './popover-anchor.vue'
-export { default as Arrow, type PopoverArrowProps as ArrowProps } from './popover-arrow.vue'
 export {
   default as ArrowTip,
   type PopoverArrowTipProps as ArrowTipProps,
 } from './popover-arrow-tip.vue'
+export { default as Arrow, type PopoverArrowProps as ArrowProps } from './popover-arrow.vue'
 export {
   default as CloseTrigger,
   type PopoverCloseTriggerProps as CloseTriggerProps,
@@ -30,9 +30,13 @@ export {
   type PopoverPositionerProps as PositionerProps,
 } from './popover-positioner.vue'
 export {
+  default as RootProvider,
+  type PopoverRootProviderProps as RootProviderProps,
+} from './popover-root-provider.vue'
+export {
   default as Root,
-  type PopoverRootProps as RootProps,
   type PopoverRootEmits as RootEmits,
+  type PopoverRootProps as RootProps,
 } from './popover-root.vue'
 export { default as Title, type PopoverTitleProps as TitleProps } from './popover-title.vue'
 export {

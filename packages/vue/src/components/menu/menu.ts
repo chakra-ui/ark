@@ -48,6 +48,10 @@ export {
   type MenuRadioItemProps as RadioItemProps,
 } from './menu-radio-item.vue'
 export {
+  default as RootProvider,
+  type MenuRootProviderProps as RootProviderProps,
+} from './menu-root-provider.vue'
+export {
   default as Root,
   type MenuRootEmits as RootEmits,
   type MenuRootProps as RootProps,

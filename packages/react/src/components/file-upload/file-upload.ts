@@ -38,6 +38,10 @@ export {
 } from './file-upload-label'
 export { FileUploadRoot as Root, type FileUploadRootProps as RootProps } from './file-upload-root'
 export {
+  FileUploadRootProvider as RootProvider,
+  type FileUploadRootProviderProps as RootProviderProps,
+} from './file-upload-root-provider'
+export {
   FileUploadTrigger as Trigger,
   type FileUploadTriggerProps as TriggerProps,
 } from './file-upload-trigger'

@@ -17,7 +17,7 @@ export interface UsePopoverProps
 
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
 
-export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
+export const usePopover = (props: UsePopoverProps, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -29,13 +29,13 @@ export const usePopover = (props: UsePopoverProps, emit: EmitFn<RootEmits>) => {
     'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
-    onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+    onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
     ...cleanProps(props),
   }))
 

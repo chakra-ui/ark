@@ -17,6 +17,15 @@ export {
 export { SegmentGroupItemText, type SegmentGroupItemTextProps } from './segment-group-item-text'
 export { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
 export { SegmentGroupRoot, type SegmentGroupRootProps } from './segment-group-root'
+export {
+  SegmentGroupRootProvider,
+  type SegmentGroupRootProviderProps,
+} from './segment-group-root-provider'
+export {
+  useSegmentGroup,
+  type UseSegmentGroupProps,
+  type UseSegmentGroupReturn,
+} from './use-segment-group'
 export { useSegmentGroupContext, type UseSegmentGroupContext } from './use-segment-group-context'
 export {
   useSegmentGroupItemContext,

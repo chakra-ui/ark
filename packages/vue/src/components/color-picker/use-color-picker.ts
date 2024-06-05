@@ -26,7 +26,7 @@ export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTy
 
 export const useColorPicker = (
   props: UseColorPickerProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -40,18 +40,18 @@ export const useColorPicker = (
     value: colorPicker.parse(props.defaultValue ?? props.modelValue ?? ''),
     getRootNode: env?.value.getRootNode,
     onOpenChange(details) {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
     onValueChange(details) {
-      emit('valueChange', details)
-      emit('update:modelValue', details.valueAsString)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.valueAsString)
     },
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onFormatChange: (details) => emit('formatChange', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onValueChangeEnd: (details) => emit('valueChangeEnd', details),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onFormatChange: (details) => emit?.('formatChange', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onValueChangeEnd: (details) => emit?.('valueChangeEnd', details),
     ...cleanProps(props),
   }))
   const [state, send] = useMachine(colorPicker.machine(context.value), { context })

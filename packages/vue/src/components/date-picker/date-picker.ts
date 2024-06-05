@@ -53,26 +53,26 @@ export {
   type DatePickerRangeTextProps as RangeTextProps,
 } from './date-picker-range-text.vue'
 export {
-  default as Root,
-  type DatePickerRootProps as RootProps,
-  type DatePickerRootEmits as RootEmits,
-} from './date-picker-root.vue'
+  default as RootProvider,
+  type DatePickerRootProviderProps as RootProviderProps,
+} from './date-picker-root-provider.vue'
 export {
-  default as Table,
-  type DatePickerTableProps as TableProps,
-} from './date-picker-table.vue'
+  default as Root,
+  type DatePickerRootEmits as RootEmits,
+  type DatePickerRootProps as RootProps,
+} from './date-picker-root.vue'
 export {
   default as TableBody,
   type DatePickerTableBodyProps as TableBodyProps,
 } from './date-picker-table-body.vue'
 export {
-  default as TableCell,
-  type DatePickerTableCellProps as TableCellProps,
-} from './date-picker-table-cell.vue'
-export {
   default as TableCellTrigger,
   type DatePickerTableCellTriggerProps as TableCellTriggerProps,
 } from './date-picker-table-cell-trigger.vue'
+export {
+  default as TableCell,
+  type DatePickerTableCellProps as TableCellProps,
+} from './date-picker-table-cell.vue'
 export {
   default as TableHead,
   type DatePickerTableHeadProps as TableHeadProps,
@@ -86,10 +86,13 @@ export {
   type DatePickerTableRowProps as TableRowProps,
 } from './date-picker-table-row.vue'
 export {
+  default as Table,
+  type DatePickerTableProps as TableProps,
+} from './date-picker-table.vue'
+export {
   default as Trigger,
   type DatePickerTriggerProps as TriggerProps,
 } from './date-picker-trigger.vue'
-export { default as View, type DatePickerViewProps as ViewProps } from './date-picker-view.vue'
 export {
   default as ViewControl,
   type DatePickerViewControlProps as ViewControlProps,
@@ -98,6 +101,7 @@ export {
   default as ViewTrigger,
   type DatePickerViewTriggerProps as ViewTriggerProps,
 } from './date-picker-view-trigger.vue'
+export { default as View, type DatePickerViewProps as ViewProps } from './date-picker-view.vue'
 export {
   default as YearSelect,
   type DatePickerYearSelectProps as YearSelectProps,

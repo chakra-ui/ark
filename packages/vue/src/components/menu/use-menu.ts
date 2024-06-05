@@ -20,7 +20,7 @@ export interface UseMenuReturn {
   machine: menu.Service
 }
 
-export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuReturn => {
+export const useMenu = (props: UseMenuProps, emit?: EmitFn<RootEmits>): UseMenuReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -32,15 +32,15 @@ export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuRe
     'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
-    onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onHighlightChange: (details) => emit('highlightChange', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onSelect: (details) => emit('select', details),
+    onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onHighlightChange: (details) => emit?.('highlightChange', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onSelect: (details) => emit?.('select', details),
     ...cleanProps(props),
   }))
 

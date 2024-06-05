@@ -31,7 +31,7 @@ export interface UseSelectReturn<T extends CollectionItem>
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
-  emit: EmitFn<RootEmits<T>>,
+  emit?: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -48,17 +48,17 @@ export const useSelect = <T extends CollectionItem>(
       value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
       },
-      onHighlightChange: (details) => emit('highlightChange', details),
+      onHighlightChange: (details) => emit?.('highlightChange', details),
       onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
+        emit?.('openChange', details)
+        emit?.('update:open', details.open)
       },
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onFocusOutside: (details) => emit?.('focusOutside', details),
+      onInteractOutside: (details) => emit?.('interactOutside', details),
+      onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
       ...cleanProps(otherProps),
     }
   })

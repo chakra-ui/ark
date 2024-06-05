@@ -17,7 +17,11 @@ export {
   type PaginationPrevTriggerProps as PrevTriggerProps,
 } from './pagination-prev-trigger.vue'
 export {
+  default as RootProvider,
+  type PaginationRootProviderProps as RootProviderProps,
+} from './pagination-root-provider.vue'
+export {
   default as Root,
-  type PaginationRootProps as RootProps,
   type PaginationRootEmits as RootEmits,
+  type PaginationRootProps as RootProps,
 } from './pagination-root.vue'

@@ -6,9 +6,15 @@ export {
   type SplitterResizeTriggerProps,
 } from './splitter-resize-trigger.vue'
 export {
+  default as SplitterRootProvider,
+  type SplitterRootProviderProps,
+} from './splitter-root-provider.vue'
+export {
   default as SplitterRoot,
-  type SplitterRootProps,
   type SplitterRootEmits,
+  type SplitterRootProps,
 } from './splitter-root.vue'
-export { type UseSplitterContext, useSplitterContext } from './use-splitter-context'
+export { useSplitter, type UseSplitterProps, type UseSplitterReturn } from './use-splitter'
+export { useSplitterContext, type UseSplitterContext } from './use-splitter-context'
+
 export * as Splitter from './splitter'

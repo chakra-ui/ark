@@ -8,3 +8,7 @@ export { TabList as List, type TabListProps as ListProps } from './tab-list'
 export { TabTrigger as Trigger, type TabTriggerProps as TriggerProps } from './tab-trigger'
 export { TabsContext as Context, type TabsContextProps as ContextProps } from './tabs-context'
 export { TabsRoot as Root, type TabsRootProps as RootProps } from './tabs-root'
+export {
+  TabsRootProvider as RootProvider,
+  type TabsRootProviderProps as RootProviderProps,
+} from './tabs-root-provider'

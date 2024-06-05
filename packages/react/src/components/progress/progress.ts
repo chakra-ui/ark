@@ -17,6 +17,10 @@ export {
 export { ProgressLabel as Label, type ProgressLabelProps as LabelProps } from './progress-label'
 export { ProgressRange as Range, type ProgressRangeProps as RangeProps } from './progress-range'
 export { ProgressRoot as Root, type ProgressRootProps as RootProps } from './progress-root'
+export {
+  ProgressRootProvider as RootProvider,
+  type ProgressRootProviderProps as RootProviderProps,
+} from './progress-root-provider'
 export { ProgressTrack as Track, type ProgressTrackProps as TrackProps } from './progress-track'
 export {
   ProgressValueText as ValueText,

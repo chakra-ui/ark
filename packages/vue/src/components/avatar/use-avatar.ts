@@ -10,7 +10,7 @@ export interface UseAvatarProps
   extends Optional<Omit<avatar.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
-export const useAvatar = (props: UseAvatarProps, emit: EmitFn<RootEmits>): UseAvatarReturn => {
+export const useAvatar = (props: UseAvatarProps, emit?: EmitFn<RootEmits>): UseAvatarReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -19,7 +19,7 @@ export const useAvatar = (props: UseAvatarProps, emit: EmitFn<RootEmits>): UseAv
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onStatusChange: (details) => emit('statusChange', details),
+    onStatusChange: (details) => emit?.('statusChange', details),
     ...cleanProps(props),
   }))
 

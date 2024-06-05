@@ -14,3 +14,7 @@ export {
 export { PinInputInput as Input, type PinInputInputProps as InputProps } from './pin-input-input'
 export { PinInputLabel as Label, type PinInputLabelProps as LabelProps } from './pin-input-label'
 export { PinInputRoot as Root, type PinInputRootProps as RootProps } from './pin-input-root'
+export {
+  PinInputRootProvider as RootProvider,
+  type PinInputRootProviderProps as RootProviderProps,
+} from './pin-input-root-provider'

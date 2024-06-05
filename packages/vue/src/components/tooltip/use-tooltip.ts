@@ -17,7 +17,7 @@ export interface UseTooltipProps
 
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
-export const useTooltip = (props: UseTooltipProps, emit: EmitFn<RootEmits>): UseTooltipReturn => {
+export const useTooltip = (props: UseTooltipProps, emit?: EmitFn<RootEmits>): UseTooltipReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -29,8 +29,8 @@ export const useTooltip = (props: UseTooltipProps, emit: EmitFn<RootEmits>): Use
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
     ...cleanProps(props),
   }))

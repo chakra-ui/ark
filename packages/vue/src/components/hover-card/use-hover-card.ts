@@ -18,7 +18,7 @@ export interface UseHoverCardReturn extends ComputedRef<hoverCard.Api<PropTypes>
 
 export const useHoverCard = (
   props: UseHoverCardProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseHoverCardReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -30,8 +30,8 @@ export const useHoverCard = (
     'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
     ...cleanProps(props),
   }))

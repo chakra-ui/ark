@@ -16,7 +16,16 @@ export {
 export { NumberInputInput, type NumberInputInputProps } from './number-input-input'
 export { NumberInputLabel, type NumberInputLabelProps } from './number-input-label'
 export { NumberInputRoot, type NumberInputRootProps } from './number-input-root'
+export {
+  NumberInputRootProvider,
+  type NumberInputRootProviderProps,
+} from './number-input-root-provider'
 export { NumberInputScrubber, type NumberInputScrubberProps } from './number-input-scrubber'
-export { type UseNumberInputContext, useNumberInputContext } from './use-number-input-context'
+export {
+  useNumberInput,
+  type UseNumberInputProps,
+  type UseNumberInputReturn,
+} from './use-number-input'
+export { useNumberInputContext, type UseNumberInputContext } from './use-number-input-context'
 
 export * as NumberInput from './number-input'

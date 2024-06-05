@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './pin-input.types'
 
 export interface PinInputRootProps
@@ -14,7 +15,7 @@ export interface PinInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { usePinInput } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
 

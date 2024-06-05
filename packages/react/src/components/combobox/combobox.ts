@@ -50,6 +50,10 @@ export {
 } from './combobox-positioner'
 export { ComboboxRoot as Root, type ComboboxRootProps as RootProps } from './combobox-root'
 export {
+  ComboboxRootProvider as RootProvider,
+  type ComboboxRootProviderProps as RootProviderProps,
+} from './combobox-root-provider'
+export {
   ComboboxTrigger as Trigger,
   type ComboboxTriggerProps as TriggerProps,
 } from './combobox-trigger'

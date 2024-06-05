@@ -20,7 +20,7 @@ export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTy
 
 export const useToggleGroup = (
   props: UseToggleGroupProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -32,8 +32,8 @@ export const useToggleGroup = (
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
     ...cleanProps(props),
   }))

@@ -3,7 +3,6 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export { default as TreeViewBranch, type TreeViewBranchProps } from './tree-view-branch.vue'
 export {
   default as TreeViewBranchContent,
   type TreeViewBranchContentProps,
@@ -24,8 +23,8 @@ export {
   default as TreeViewBranchTrigger,
   type TreeViewBranchTriggerProps,
 } from './tree-view-branch-trigger.vue'
+export { default as TreeViewBranch, type TreeViewBranchProps } from './tree-view-branch.vue'
 export { default as TreeViewContext, type TreeViewContextProps } from './tree-view-context.vue'
-export { default as TreeViewItem, type TreeViewItemProps } from './tree-view-item.vue'
 export {
   default as TreeViewItemContext,
   type TreeViewItemContextProps,
@@ -35,13 +34,20 @@ export {
   type TreeViewItemIndicatorProps,
 } from './tree-view-item-indicator.vue'
 export { default as TreeViewItemText, type TreeViewItemTextProps } from './tree-view-item-text.vue'
+export { default as TreeViewItem, type TreeViewItemProps } from './tree-view-item.vue'
 export { default as TreeViewLabel, type TreeViewLabelProps } from './tree-view-label.vue'
 export {
+  default as TreeViewRootProvider,
+  type TreeViewRootProviderProps,
+} from './tree-view-root-provider.vue'
+export {
   default as TreeViewRoot,
-  type TreeViewRootProps,
   type TreeViewRootEmits,
+  type TreeViewRootProps,
 } from './tree-view-root.vue'
 export { default as TreeViewTree, type TreeViewTreeProps } from './tree-view-tree.vue'
-export { type UseTreeViewContext, useTreeViewContext } from './use-tree-view-context'
-export { type UseTreeViewItemContext, useTreeViewItemContext } from './use-tree-view-item-context'
+export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
+export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
+export { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
+
 export * as TreeView from './tree-view'

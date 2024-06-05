@@ -49,6 +49,10 @@ export {
   type ComboboxPositionerProps as PositionerProps,
 } from './combobox-positioner.vue'
 export {
+  default as RootProvider,
+  type ComboboxRootProviderProps as RootProviderProps,
+} from './combobox-root-provider.vue'
+export {
   default as Root,
   type ComboboxRootEmits as RootEmits,
   type ComboboxRootProps as RootProps,

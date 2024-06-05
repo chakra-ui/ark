@@ -20,7 +20,7 @@ export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> 
 
 export const useEditable = (
   props: UseEditableProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseEditableReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -31,15 +31,15 @@ export const useEditable = (
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    onEdit: () => emit('edit'),
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onValueCommit: (details) => emit('valueCommit', details),
-    onValueRevert: (details) => emit('valueRevert', details),
+    onEdit: () => emit?.('edit'),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onValueCommit: (details) => emit?.('valueCommit', details),
+    onValueRevert: (details) => emit?.('valueRevert', details),
     ...cleanProps(props),
   }))
 

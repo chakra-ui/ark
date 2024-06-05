@@ -17,3 +17,7 @@ export {
 } from './checkbox-indicator'
 export { CheckboxLabel as Label, type CheckboxLabelProps as LabelProps } from './checkbox-label'
 export { CheckboxRoot as Root, type CheckboxRootProps as RootProps } from './checkbox-root'
+export {
+  CheckboxRootProvider as RootProvider,
+  type CheckboxRootProviderProps as RootProviderProps,
+} from './checkbox-root-provider'

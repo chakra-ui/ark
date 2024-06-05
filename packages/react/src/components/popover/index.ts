@@ -9,8 +9,10 @@ export { PopoverDescription, type PopoverDescriptionProps } from './popover-desc
 export { PopoverIndicator, type PopoverIndicatorProps } from './popover-indicator'
 export { PopoverPositioner, type PopoverPositionerProps } from './popover-positioner'
 export { PopoverRoot, type PopoverRootProps } from './popover-root'
+export { PopoverRootProvider, type PopoverRootProviderProps } from './popover-root-provider'
 export { PopoverTitle, type PopoverTitleProps } from './popover-title'
 export { PopoverTrigger, type PopoverTriggerProps } from './popover-trigger'
-export { type UsePopoverContext, usePopoverContext } from './use-popover-context'
+export { usePopover, type UsePopoverProps, type UsePopoverReturn } from './use-popover'
+export { usePopoverContext, type UsePopoverContext } from './use-popover-context'
 
 export * as Popover from './popover'
