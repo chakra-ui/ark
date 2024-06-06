@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.3.0] - 2024-06-06
+
 ### Added
 
 - **All Components:** Introduced the `Provider` component for easier access to internal machine
