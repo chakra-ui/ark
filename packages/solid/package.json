@@ -130,7 +130,7 @@
     "@types/testing-library__jest-dom": "5.14.9",
     "globby": "14.0.1",
     "jsdom": "24.1.0",
-    "lucide-solid": "0.383.0",
+    "lucide-solid": "0.390.0",
     "release-it": "17.3.0",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.18.0",
