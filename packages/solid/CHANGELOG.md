@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.2.1] - 2024-06-06
+
 ### Fixed
 
 - Resolved an issue where the component context could be undefined in some components.
