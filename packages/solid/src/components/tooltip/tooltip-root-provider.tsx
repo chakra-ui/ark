@@ -17,12 +17,14 @@ interface RootProviderProps {
 export interface TooltipRootProviderProps extends RootProviderProps, UsePresenceProps {}
 
 export const TooltipRootProvider = (props: TooltipRootProviderProps) => {
-  const [presenceProps, { value: tooltip, children }] = splitPresenceProps(props)
-  const presence = usePresence(mergeProps(presenceProps, () => ({ present: tooltip().open })))
+  const [presenceProps, tooltipProps] = splitPresenceProps(props)
+  const presence = usePresence(
+    mergeProps(presenceProps, () => ({ present: tooltipProps.value().open })),
+  )
 
   return (
-    <TooltipProvider value={tooltip}>
-      <PresenceProvider value={presence}>{children}</PresenceProvider>
+    <TooltipProvider value={tooltipProps.value}>
+      <PresenceProvider value={presence}>{tooltipProps.children}</PresenceProvider>
     </TooltipProvider>
   )
 }

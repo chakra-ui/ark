@@ -17,12 +17,14 @@ interface RootProviderProps {
 export interface PopoverRootProviderProps extends RootProviderProps, UsePresenceProps {}
 
 export const PopoverRootProvider = (props: PopoverRootProviderProps) => {
-  const [presenceProps, { value: popover, children }] = splitPresenceProps(props)
-  const presence = usePresence(mergeProps(presenceProps, () => ({ present: popover().open })))
+  const [presenceProps, popoverProps] = splitPresenceProps(props)
+  const presence = usePresence(
+    mergeProps(presenceProps, () => ({ present: popoverProps.value().open })),
+  )
 
   return (
-    <PopoverProvider value={popover}>
-      <PresenceProvider value={presence}>{children}</PresenceProvider>
+    <PopoverProvider value={popoverProps.value}>
+      <PresenceProvider value={presence}>{popoverProps.children}</PresenceProvider>
     </PopoverProvider>
   )
 }

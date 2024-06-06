@@ -18,17 +18,17 @@ interface RootProviderProps {
 export interface DialogRootProviderProps extends RootProviderProps, UsePresenceProps {}
 
 export const DialogRootProvider = (props: DialogRootProviderProps) => {
-  const [presenceProps, localProps] = splitPresenceProps(props)
+  const [presenceProps, dialogProps] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
 
   const apiPresence = usePresence(
-    mergeProps(presenceProps, () => ({ present: localProps.value().open })),
+    mergeProps(presenceProps, () => ({ present: dialogProps.value().open })),
   )
 
   return (
-    <DialogProvider value={localProps.value}>
+    <DialogProvider value={dialogProps.value}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <PresenceProvider value={apiPresence}>{localProps.children}</PresenceProvider>
+        <PresenceProvider value={apiPresence}>{dialogProps.children}</PresenceProvider>
       </RenderStrategyProvider>
     </DialogProvider>
   )

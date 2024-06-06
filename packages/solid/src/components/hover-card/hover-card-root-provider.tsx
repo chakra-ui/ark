@@ -17,12 +17,14 @@ interface RootProviderProps {
 export interface HoverCardRootProviderProps extends RootProviderProps, UsePresenceProps {}
 
 export const HoverCardRootProvider = (props: HoverCardRootProviderProps) => {
-  const [presenceProps, { value: hoverCard, children }] = splitPresenceProps(props)
-  const presence = usePresence(mergeProps(presenceProps, () => ({ present: hoverCard().open })))
+  const [presenceProps, hoverCardProps] = splitPresenceProps(props)
+  const presence = usePresence(
+    mergeProps(presenceProps, () => ({ present: hoverCardProps.value().open })),
+  )
 
   return (
-    <HoverCardProvider value={hoverCard}>
-      <PresenceProvider value={presence}>{children}</PresenceProvider>
+    <HoverCardProvider value={hoverCardProps.value}>
+      <PresenceProvider value={presence}>{hoverCardProps.children}</PresenceProvider>
     </HoverCardProvider>
   )
 }

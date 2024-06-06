@@ -21,22 +21,24 @@ export interface MenuRootProviderProps extends RootProviderProps, UsePresencePro
 export const MenuRootProvider = (props: MenuRootProviderProps) => {
   const parentApi = useMenuContext()
   const parentMachine = useMenuMachineContext()
-  const [presenceProps, { value: menu, children }] = splitPresenceProps(props)
-  const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().open })))
+  const [presenceProps, menuProps] = splitPresenceProps(props)
+  const presenceApi = usePresence(
+    mergeProps(presenceProps, () => ({ present: menuProps.value.api().open })),
+  )
 
   createEffect(() => {
     if (!parentMachine) return
-    parentApi?.().setChild(menu.machine)
-    menu.api().setParent(parentMachine)
+    parentApi?.().setChild(menuProps.value.machine)
+    menuProps.value.api().setParent(parentMachine)
   })
 
-  const triggerItemContext = () => parentApi?.().getTriggerItemProps(menu.api())
+  const triggerItemContext = () => parentApi?.().getTriggerItemProps(menuProps.value.api())
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={menu.machine}>
-        <MenuProvider value={menu.api}>
-          <PresenceProvider value={presenceApi}>{children}</PresenceProvider>
+      <MenuMachineProvider value={menuProps.value.machine}>
+        <MenuProvider value={menuProps.value.api}>
+          <PresenceProvider value={presenceApi}>{menuProps.children}</PresenceProvider>
         </MenuProvider>
       </MenuMachineProvider>
     </MenuTriggerItemProvider>
