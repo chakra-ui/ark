@@ -6,7 +6,7 @@ export interface ClipboardInputProps extends HTMLArkProps<'input'> {}
 
 export const ClipboardInput = (props: ClipboardInputProps) => {
   const api = useClipboardContext()
-  const mergedProps = mergeProps(() => api().inputProps, props)
+  const mergedProps = mergeProps(() => api().getInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

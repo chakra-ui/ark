@@ -6,7 +6,7 @@ export interface SliderValueTextProps extends HTMLArkProps<'span'> {}
 
 export const SliderValueText = (props: SliderValueTextProps) => {
   const api = useSliderContext()
-  const mergedProps = mergeProps(() => api().valueTextProps, props)
+  const mergedProps = mergeProps(() => api().getValueTextProps(), props)
 
   return <ark.span {...mergedProps}>{props.children || api().value.join(',')}</ark.span>
 }

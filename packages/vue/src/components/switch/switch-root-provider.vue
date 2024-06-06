@@ -28,7 +28,7 @@ SwitchProvider(api)
 </script>
 
 <template>
-  <ark.label v-bind="api.rootProps" :as-child="asChild">
+  <ark.label v-bind="api.getRootProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

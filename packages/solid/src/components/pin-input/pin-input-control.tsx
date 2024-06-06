@@ -6,7 +6,7 @@ export interface PinInputControlProps extends HTMLArkProps<'div'> {}
 
 export const PinInputControl = (props: PinInputControlProps) => {
   const api = usePinInputContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

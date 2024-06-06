@@ -36,7 +36,7 @@ export const NumberInputRoot = (props: NumberInputRootProps) => {
     'value',
   ])
   const api = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <NumberInputProvider value={api}>

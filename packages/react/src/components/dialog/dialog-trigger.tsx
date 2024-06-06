@@ -12,8 +12,8 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((
 
   const mergedProps = mergeProps(
     {
-      ...dialog.triggerProps,
-      'aria-controls': presence.unmounted ? undefined : dialog.triggerProps['aria-controls'],
+      ...dialog.getTriggerProps(),
+      'aria-controls': presence.unmounted ? undefined : dialog.getTriggerProps()['aria-controls'],
     },
     props,
   )

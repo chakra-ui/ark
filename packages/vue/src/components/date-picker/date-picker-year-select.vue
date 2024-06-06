@@ -32,7 +32,7 @@ const getYearsRange = (range: YearsRange) => {
 </script>
 
 <template>
-  <ark.select v-bind="datePicker.yearSelectProps" :as-child="asChild">
+  <ark.select v-bind="datePicker.getYearSelectProps()" :as-child="asChild">
     <option v-for="year in getYearsRange({ from: 1_000, to: 4_000 })" :key="year" :value="year">
       {{ year }}
     </option>

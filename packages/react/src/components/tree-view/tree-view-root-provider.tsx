@@ -16,7 +16,7 @@ export const TreeViewRootProvider = forwardRef<HTMLDivElement, TreeViewRootProvi
     const [{ value: treeView }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(treeView.rootProps, localProps)
+    const mergedProps = mergeProps(treeView.getRootProps(), localProps)
 
     return (
       <TreeViewProvider value={treeView}>

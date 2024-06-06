@@ -12,7 +12,7 @@ export interface TagsInputRootProviderProps extends HTMLArkProps<'div'>, RootPro
 
 export const TagsInputRootProvider = (props: TagsInputRootProviderProps) => {
   const [{ value: tagsInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => tagsInput().rootProps, localProps)
+  const mergedProps = mergeProps(() => tagsInput().getRootProps(), localProps)
 
   return (
     <TagsInputProvider value={tagsInput}>

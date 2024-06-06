@@ -8,7 +8,7 @@ export interface RatingGroupHiddenInputProps extends HTMLArkProps<'input'> {}
 export const RatingGroupHiddenInput = forwardRef<HTMLInputElement, RatingGroupHiddenInputProps>(
   (props, ref) => {
     const ratingGroup = useRatingGroupContext()
-    const mergedProps = mergeProps(ratingGroup.hiddenInputProps, props)
+    const mergedProps = mergeProps(ratingGroup.getHiddenInputProps(), props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

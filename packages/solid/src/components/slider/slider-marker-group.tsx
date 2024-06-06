@@ -6,7 +6,7 @@ export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
 
 export const SliderMarkerGroup = (props: SliderMarkerGroupProps) => {
   const api = useSliderContext()
-  const mergedProps = mergeProps(() => api().markerGroupProps, props)
+  const mergedProps = mergeProps(() => api().getMarkerGroupProps(), props)
 
   return <ark.div {...mergedProps} />
 }

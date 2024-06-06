@@ -30,7 +30,7 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
     'value',
   ])
   const accordion = useAccordion(useAccordionProps)
-  const mergedProps = mergeProps(accordion.rootProps, localProps)
+  const mergedProps = mergeProps(accordion.getRootProps(), localProps)
 
   return (
     <AccordionProvider value={accordion}>

@@ -7,7 +7,7 @@ export interface ClipboardControlProps extends HTMLArkProps<'div'> {}
 
 export const ClipboardControl = forwardRef<HTMLDivElement, ClipboardControlProps>((props, ref) => {
   const clipboard = useClipboardContext()
-  const mergedProps = mergeProps(clipboard.controlProps, props)
+  const mergedProps = mergeProps(clipboard.getControlProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

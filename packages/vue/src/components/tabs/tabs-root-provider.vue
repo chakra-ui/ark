@@ -34,7 +34,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="tabs.rootProps" :as-child="asChild">
+  <ark.div v-bind="tabs.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

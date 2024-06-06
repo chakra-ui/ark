@@ -56,5 +56,11 @@
         "description": "The size data of the panels"
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSplitterReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
   }
 }

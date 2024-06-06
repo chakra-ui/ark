@@ -12,7 +12,7 @@ export interface SplitterRootProviderProps extends HTMLArkProps<'div'>, RootProv
 
 export const SplitterRootProvider = (props: SplitterRootProviderProps) => {
   const [{ value: splitter }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => splitter().rootProps, localProps)
+  const mergedProps = mergeProps(() => splitter().getRootProps(), localProps)
 
   return (
     <SplitterProvider value={splitter}>

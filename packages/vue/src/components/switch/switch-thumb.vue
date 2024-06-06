@@ -19,7 +19,7 @@ const context = useSwitchContext()
 </script>
 
 <template>
-  <ark.span v-bind="context.thumbProps" :as-child="asChild">
+  <ark.span v-bind="context.getThumbProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

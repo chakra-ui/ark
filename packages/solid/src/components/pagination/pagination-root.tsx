@@ -22,7 +22,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
     'type',
   ])
   const api = usePagination(usePaginationProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <PaginationProvider value={api}>

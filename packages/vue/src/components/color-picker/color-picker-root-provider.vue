@@ -34,7 +34,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="colorPicker.rootProps" :as-child="asChild">
+  <ark.div v-bind="colorPicker.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

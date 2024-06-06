@@ -12,7 +12,7 @@ export interface PinInputRootProviderProps extends HTMLArkProps<'div'>, RootProv
 
 export const PinInputRootProvider = (props: PinInputRootProviderProps) => {
   const [{ value: pinInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => pinInput().rootProps, localProps)
+  const mergedProps = mergeProps(() => pinInput().getRootProps(), localProps)
 
   return (
     <PinInputProvider value={pinInput}>

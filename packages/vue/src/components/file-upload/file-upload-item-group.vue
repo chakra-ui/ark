@@ -19,7 +19,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.ul v-bind="fileUpload.itemGroupProps" :as-child="asChild">
+  <ark.ul v-bind="fileUpload.getItemGroupProps()" :as-child="asChild">
     <slot />
   </ark.ul>
 </template>

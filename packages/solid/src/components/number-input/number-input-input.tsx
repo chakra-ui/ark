@@ -6,7 +6,7 @@ export interface NumberInputInputProps extends HTMLArkProps<'input'> {}
 
 export const NumberInputInput = (props: NumberInputInputProps) => {
   const api = useNumberInputContext()
-  const mergedProps = mergeProps(() => api().inputProps, props)
+  const mergedProps = mergeProps(() => api().getInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

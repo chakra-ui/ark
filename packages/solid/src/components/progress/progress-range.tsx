@@ -6,7 +6,7 @@ export interface ProgressRangeProps extends HTMLArkProps<'div'> {}
 
 export const ProgressRange = (props: ProgressRangeProps) => {
   const api = useProgressContext()
-  const mergedProps = mergeProps(() => api().rangeProps, props)
+  const mergedProps = mergeProps(() => api().getRangeProps(), props)
 
   return <ark.div {...mergedProps} />
 }

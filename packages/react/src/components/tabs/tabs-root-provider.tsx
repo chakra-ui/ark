@@ -22,7 +22,7 @@ export interface TabsRootProviderProps
 export const TabsRootProvider = forwardRef<HTMLDivElement, TabsRootProviderProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
   const [{ value: tabs }, localprops] = createSplitProps<RootProviderProps>()(tabsProps, ['value'])
-  const mergedProps = mergeProps(tabs.rootProps, localprops)
+  const mergedProps = mergeProps(tabs.getRootProps(), localprops)
 
   return (
     <TabsProvider value={tabs}>

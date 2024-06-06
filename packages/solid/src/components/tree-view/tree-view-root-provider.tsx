@@ -12,7 +12,7 @@ export interface TreeViewRootProviderProps extends HTMLArkProps<'div'>, RootProv
 
 export const TreeViewRootProvider = (props: TreeViewRootProviderProps) => {
   const [{ value: treeView }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => treeView().rootProps, localProps)
+  const mergedProps = mergeProps(() => treeView().getRootProps(), localProps)
 
   return (
     <TreeViewProvider value={treeView}>

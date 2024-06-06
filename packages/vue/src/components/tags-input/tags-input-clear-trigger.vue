@@ -19,7 +19,7 @@ const tagsInput = useTagsInputContext()
 </script>
 
 <template>
-  <ark.button v-bind="tagsInput.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="tagsInput.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

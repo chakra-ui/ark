@@ -35,7 +35,7 @@ SwitchProvider(context)
 </script>
 
 <template>
-  <ark.label v-bind="context.rootProps" :as-child="asChild">
+  <ark.label v-bind="context.getRootProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

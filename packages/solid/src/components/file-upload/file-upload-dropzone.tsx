@@ -6,7 +6,7 @@ export interface FileUploadDropzoneProps extends HTMLArkProps<'div'> {}
 
 export const FileUploadDropzone = (props: FileUploadDropzoneProps) => {
   const fileUpload = useFileUploadContext()
-  const mergedProps = mergeProps(() => fileUpload().dropzoneProps, props)
+  const mergedProps = mergeProps(() => fileUpload().getDropzoneProps(), props)
 
   return <ark.div {...mergedProps} />
 }

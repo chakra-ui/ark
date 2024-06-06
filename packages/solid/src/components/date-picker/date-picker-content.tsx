@@ -10,7 +10,7 @@ export const DatePickerContent = (props: DatePickerContentProps) => {
   const api = useDatePickerContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

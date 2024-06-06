@@ -16,7 +16,7 @@ export const RadioGroupRootProvider = forwardRef<HTMLDivElement, RadioGroupRootP
     const [{ value: radioGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(radioGroup.rootProps, localProps)
+    const mergedProps = mergeProps(radioGroup.getRootProps(), localProps)
 
     return (
       <RadioGroupProvider value={radioGroup}>

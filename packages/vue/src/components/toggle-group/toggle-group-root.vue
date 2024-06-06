@@ -33,7 +33,7 @@ ToggleGroupProvider(toggleGroup)
 </script>
 
 <template>
-  <ark.div v-bind="toggleGroup.rootProps" :as-child="asChild">
+  <ark.div v-bind="toggleGroup.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

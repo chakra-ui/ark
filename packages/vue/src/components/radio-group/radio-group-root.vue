@@ -31,7 +31,7 @@ RadioGroupProvider(radioGroup)
 </script>
 
 <template>
-  <ark.div v-bind="radioGroup.rootProps" :as-child="asChild">
+  <ark.div v-bind="radioGroup.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

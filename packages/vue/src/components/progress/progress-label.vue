@@ -19,7 +19,7 @@ const progress = useProgressContext()
 </script>
 
 <template>
-  <ark.label v-bind="progress.labelProps" :as-child="asChild">
+  <ark.label v-bind="progress.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

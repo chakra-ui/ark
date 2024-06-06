@@ -22,7 +22,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="tooltip.positionerProps"
+    v-bind="tooltip.getPositionerProps()"
     :present="tooltip.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

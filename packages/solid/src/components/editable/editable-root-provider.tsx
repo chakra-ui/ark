@@ -12,7 +12,7 @@ export interface EditableRootProviderProps extends HTMLArkProps<'div'>, RootProv
 
 export const EditableRootProvider = (props: EditableRootProviderProps) => {
   const [{ value: editable }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => editable().rootProps, localProps)
+  const mergedProps = mergeProps(() => editable().getRootProps(), localProps)
 
   return (
     <EditableProvider value={editable}>

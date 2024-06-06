@@ -19,7 +19,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.select v-bind="datePicker.monthSelectProps" :as-child="asChild">
+  <ark.select v-bind="datePicker.getMonthSelectProps()" :as-child="asChild">
     <option v-for="month in datePicker.getMonths()" :key="month.value" :value="month.value">
       {{ month.label }}
     </option>

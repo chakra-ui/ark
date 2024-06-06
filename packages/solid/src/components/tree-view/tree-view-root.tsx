@@ -24,7 +24,7 @@ export const TreeViewRoot = (props: TreeViewRootProps) => {
     'typeahead',
   ])
   const api = useTreeView(useTreeViewProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <TreeViewProvider value={api}>

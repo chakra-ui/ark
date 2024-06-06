@@ -12,7 +12,7 @@ export interface CheckboxRootProviderProps extends HTMLArkProps<'label'>, RootPr
 
 export const CheckboxRootProvider = (props: CheckboxRootProviderProps) => {
   const [{ value: checkbox }, labelprops] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => checkbox().rootProps, labelprops)
+  const mergedProps = mergeProps(() => checkbox().getRootProps(), labelprops)
 
   return (
     <CheckboxProvider value={checkbox}>

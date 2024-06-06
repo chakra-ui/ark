@@ -37,7 +37,7 @@ NumberInputProvider(numberInput)
 </script>
 
 <template>
-  <ark.div v-bind="numberInput.rootProps" :as-child="asChild">
+  <ark.div v-bind="numberInput.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

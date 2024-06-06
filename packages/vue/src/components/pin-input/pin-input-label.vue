@@ -19,7 +19,7 @@ const pinInput = usePinInputContext()
 </script>
 
 <template>
-  <ark.label v-bind="pinInput.labelProps" :as-child="asChild">
+  <ark.label v-bind="pinInput.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

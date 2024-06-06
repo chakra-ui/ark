@@ -28,7 +28,7 @@ FileUploadProvider(fileUpload)
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.rootProps" :as-child="asChild">
+  <ark.div v-bind="fileUpload.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

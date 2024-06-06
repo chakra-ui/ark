@@ -6,7 +6,7 @@ export interface CheckboxHiddenInputProps extends HTMLArkProps<'input'> {}
 
 export const CheckboxHiddenInput = (props: CheckboxHiddenInputProps) => {
   const checkbox = useCheckboxContext()
-  const mergedProps = mergeProps(() => checkbox().hiddenInputProps, props)
+  const mergedProps = mergeProps(() => checkbox().getHiddenInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

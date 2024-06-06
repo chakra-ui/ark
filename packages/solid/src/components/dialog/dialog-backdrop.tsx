@@ -12,7 +12,7 @@ export const DialogBackdrop = (props: DialogBackdropProps) => {
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(mergeProps(renderStrategyProps, () => ({ present: api().open })))
   const mergedProps = mergeProps(
-    () => api().backdropProps,
+    () => api().getBackdropProps(),
     () => presenceApi().presenceProps,
     props,
   )

@@ -7,7 +7,7 @@ export interface PopoverTitleProps extends HTMLArkProps<'div'> {}
 
 export const PopoverTitle = forwardRef<HTMLDivElement, PopoverTitleProps>((props, ref) => {
   const popover = usePopoverContext()
-  const mergedProps = mergeProps(popover.titleProps, props)
+  const mergedProps = mergeProps(popover.getTitleProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

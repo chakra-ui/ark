@@ -9,7 +9,7 @@ export const DialogTrigger = (props: DialogTriggerProps) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().triggerProps,
+    () => api().getTriggerProps(),
     () => ({ 'aria-controls': presenceApi().unmounted && null }),
     props,
   )

@@ -12,7 +12,7 @@ export interface CarouselRootProviderProps extends HTMLArkProps<'div'>, RootProv
 
 export const CarouselRootProvider = (props: CarouselRootProviderProps) => {
   const [{ value: carousel }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => carousel().rootProps, localProps)
+  const mergedProps = mergeProps(() => carousel().getRootProps(), localProps)
 
   return (
     <CarouselProvider value={carousel}>

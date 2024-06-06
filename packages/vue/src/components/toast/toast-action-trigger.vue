@@ -19,7 +19,7 @@ const toast = useToastContext()
 </script>
 
 <template>
-  <ark.button v-bind="toast.actionTriggerProps" :as-child="asChild">
+  <ark.button v-bind="toast.getActionTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -19,7 +19,7 @@ const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.label v-bind="combobox.labelProps" :as-child="asChild">
+  <ark.label v-bind="combobox.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

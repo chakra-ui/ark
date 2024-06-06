@@ -16,7 +16,7 @@ export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRoo
     const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(ratingGroup.rootProps, localProps)
+    const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
 
     return (
       <RatingGroupProvider value={ratingGroup}>

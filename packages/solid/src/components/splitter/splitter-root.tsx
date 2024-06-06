@@ -18,7 +18,7 @@ export const SplitterRoot = (props: SplitterRootProps) => {
     'size',
   ])
   const api = useSplitter(useSplitterProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <SplitterProvider value={api}>

@@ -9,7 +9,7 @@ export const MenuTrigger = (props: MenuTriggerProps) => {
   const api = useMenuContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().triggerProps,
+    () => api().getTriggerProps(),
     () => ({ 'aria-controls': presenceApi().unmounted && null }),
     props,
   )

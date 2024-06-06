@@ -26,7 +26,7 @@ SplitterProvider(splitter)
 </script>
 
 <template>
-  <ark.div v-bind="splitter.rootProps" :as-child="asChild">
+  <ark.div v-bind="splitter.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

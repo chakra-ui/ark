@@ -191,5 +191,11 @@
       },
       "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTagsInputReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
   }
 }

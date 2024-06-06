@@ -19,7 +19,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.button v-bind="datePicker.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="datePicker.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

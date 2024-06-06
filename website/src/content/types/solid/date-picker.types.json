@@ -229,6 +229,34 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseDatePickerReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state."
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
   "TableBody": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'tbody'>) => Element", "isRequired": false }
@@ -245,7 +273,7 @@
   },
   "TableCellTrigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   },
   "TableHead": {

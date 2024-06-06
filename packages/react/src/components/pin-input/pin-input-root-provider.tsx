@@ -16,7 +16,7 @@ export const PinInputRootProvider = forwardRef<HTMLDivElement, PinInputRootProvi
     const [{ value: pinInput }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(pinInput.rootProps, localProps)
+    const mergedProps = mergeProps(pinInput.getRootProps(), localProps)
 
     return (
       <PinInputProvider value={pinInput}>

@@ -6,7 +6,7 @@ export interface CheckboxControlProps extends HTMLArkProps<'div'> {}
 
 export const CheckboxControl = (props: CheckboxControlProps) => {
   const checkbox = useCheckboxContext()
-  const mergedProps = mergeProps(() => checkbox().controlProps, props)
+  const mergedProps = mergeProps(() => checkbox().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

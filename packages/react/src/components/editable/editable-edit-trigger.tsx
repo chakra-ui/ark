@@ -8,7 +8,7 @@ export interface EditableEditTriggerProps extends HTMLArkProps<'button'> {}
 export const EditableEditTrigger = forwardRef<HTMLButtonElement, EditableEditTriggerProps>(
   (props, ref) => {
     const editable = useEditableContext()
-    const mergedProps = mergeProps(editable.editTriggerProps, props)
+    const mergedProps = mergeProps(editable.getEditTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

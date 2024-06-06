@@ -14,7 +14,7 @@ export const FileUploadRootProvider = (props: FileUploadRootProviderProps) => {
   const [{ value: fileUpload }, localProps] = createSplitProps<RootProviderProps>()(props, [
     'value',
   ])
-  const mergedProps = mergeProps(() => fileUpload().rootProps, localProps)
+  const mergedProps = mergeProps(() => fileUpload().getRootProps(), localProps)
 
   return (
     <FileUploadProvider value={fileUpload}>

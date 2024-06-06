@@ -9,7 +9,7 @@ export interface MenuContentProps extends HTMLArkProps<'div'> {}
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
   const menu = useMenuContext()
   const presence = usePresenceContext()
-  const mergedProps = mergeProps(menu.contentProps, presence.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(menu.getContentProps(), presence.getPresenceProps(ref), props)
 
   if (presence.unmounted) {
     return null

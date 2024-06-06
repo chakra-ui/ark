@@ -85,6 +85,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSwitchReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
   "Thumb": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }

@@ -98,5 +98,23 @@
         "description": "The `value` of the accordion items that are currently being expanded."
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseAccordionReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
   }
 }

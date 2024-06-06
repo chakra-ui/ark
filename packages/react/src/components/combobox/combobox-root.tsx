@@ -67,7 +67,7 @@ const ComboboxImpl = <T extends CollectionItem>(
   ])
   const combobox = useCombobox(useComboboxProps)
   const presence = usePresence(mergeProps({ present: combobox.open }, presenceProps))
-  const mergedProps = mergeProps(combobox.rootProps, localProps)
+  const mergedProps = mergeProps(combobox.getRootProps(), localProps)
 
   return (
     <ComboboxProvider value={combobox}>

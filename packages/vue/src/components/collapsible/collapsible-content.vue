@@ -19,7 +19,7 @@ const collapsible = useCollapsibleContext()
 </script>
 
 <template>
-  <ark.div v-if="!collapsible.unmounted" v-bind="collapsible.contentProps" :as-child="asChild">
+  <ark.div v-if="!collapsible.unmounted" v-bind="collapsible.getContentProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

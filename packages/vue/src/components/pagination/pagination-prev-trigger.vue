@@ -19,7 +19,7 @@ const pagination = usePaginationContext()
 </script>
 
 <template>
-  <ark.button v-bind="pagination.prevTriggerProps" :as-child="asChild">
+  <ark.button v-bind="pagination.getPrevTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -85,5 +85,11 @@
         "description": "The type of the trigger element"
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UsePaginationReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'nav'>) => Element", "isRequired": false }
+    }
   }
 }

@@ -8,7 +8,7 @@ export interface DatePickerClearTriggerProps extends HTMLArkProps<'button'> {}
 export const DatePickerClearTrigger = forwardRef<HTMLButtonElement, DatePickerClearTriggerProps>(
   (props, ref) => {
     const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.clearTriggerProps, props)
+    const mergedProps = mergeProps(datePicker.getClearTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

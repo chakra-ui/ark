@@ -6,7 +6,7 @@ export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
 
 export const DatePickerRangeText = (props: DatePickerRangeTextProps) => {
   const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().rangeTextProps, props)
+  const mergedProps = mergeProps(() => api().getRangeTextProps(), props)
 
   return <ark.div {...mergedProps}>{api().visibleRangeText.start}</ark.div>
 }

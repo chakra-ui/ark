@@ -22,7 +22,7 @@ export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
   ])
 
   const api = useToggleGroup(useToggleGroupProps)
-  const mergedProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), restProps)
 
   return (
     <ToggleGroupProvider value={api}>

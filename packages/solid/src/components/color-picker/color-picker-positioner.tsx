@@ -9,7 +9,7 @@ export interface ColorPickerPositionerProps extends HTMLArkProps<'div'> {}
 export const ColorPickerPositioner = (props: ColorPickerPositionerProps) => {
   const api = useColorPickerContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => api().positionerProps, props)
+  const mergedProps = mergeProps(() => api().getPositionerProps(), props)
 
   return (
     <Show when={!presenceApi().unmounted}>

@@ -16,7 +16,7 @@ export const EditableRootProvider = forwardRef<HTMLDivElement, EditableRootProvi
     const [{ value: editable }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(editable.rootProps, localProps)
+    const mergedProps = mergeProps(editable.getRootProps(), localProps)
 
     return (
       <EditableProvider value={editable}>

@@ -22,7 +22,7 @@ export const RadioGroupRoot = (props: RadioGroupRootProps) => {
   ])
 
   const radioGroup = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(() => radioGroup().rootProps, localProps)
+  const mergedProps = mergeProps(() => radioGroup().getRootProps(), localProps)
 
   return (
     <RadioGroupProvider value={radioGroup}>

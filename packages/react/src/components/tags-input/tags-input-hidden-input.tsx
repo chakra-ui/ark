@@ -8,7 +8,7 @@ export interface TagsInputHiddenInputProps extends HTMLArkProps<'input'> {}
 export const TagsInputHiddenInput = forwardRef<HTMLInputElement, TagsInputHiddenInputProps>(
   (props, ref) => {
     const tagsInput = useTagsInputContext()
-    const mergedProps = mergeProps(tagsInput.hiddenInputProps, props)
+    const mergedProps = mergeProps(tagsInput.getHiddenInputProps(), props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

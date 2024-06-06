@@ -22,7 +22,7 @@ export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props
     'spacing',
   ])
   const carousel = useCarousel(useCarouselProps)
-  const mergedProps = mergeProps(carousel.rootProps, localProps)
+  const mergedProps = mergeProps(carousel.getRootProps(), localProps)
 
   return (
     <CarouselProvider value={carousel}>

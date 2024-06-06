@@ -19,5 +19,5 @@ const pinInput = usePinInputContext()
 </script>
 
 <template>
-  <ark.input v-bind="pinInput.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="pinInput.getHiddenInputProps()" :as-child="asChild" />
 </template>

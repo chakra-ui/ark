@@ -14,7 +14,7 @@ export interface SwitchRootProviderProps extends HTMLArkProps<'label'>, RootProv
 export const SwitchRootProvider = forwardRef<HTMLLabelElement, SwitchRootProviderProps>(
   (props, ref) => {
     const [{ value: api }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-    const mergedProps = mergeProps(api.rootProps, localProps)
+    const mergedProps = mergeProps(api.getRootProps(), localProps)
 
     return (
       <SwitchProvider value={api}>

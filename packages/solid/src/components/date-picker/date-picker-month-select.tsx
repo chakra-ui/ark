@@ -6,7 +6,7 @@ export interface DatePickerMonthSelectProps extends HTMLArkProps<'select'> {}
 
 export const DatePickerMonthSelect = (props: DatePickerMonthSelectProps) => {
   const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().monthSelectProps, props)
+  const mergedProps = mergeProps(() => api().getMonthSelectProps(), props)
 
   return (
     <ark.select {...mergedProps}>

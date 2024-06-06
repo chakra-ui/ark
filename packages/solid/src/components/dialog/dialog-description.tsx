@@ -6,7 +6,7 @@ export interface DialogDescriptionProps extends HTMLArkProps<'div'> {}
 
 export const DialogDescription = (props: DialogDescriptionProps) => {
   const dialog = useDialogContext()
-  const mergedProps = mergeProps(() => dialog().descriptionProps, props)
+  const mergedProps = mergeProps(() => dialog().getDescriptionProps(), props)
 
   return <ark.div {...mergedProps} />
 }

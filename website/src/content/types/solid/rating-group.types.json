@@ -91,5 +91,11 @@
       },
       "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseRatingGroupReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
   }
 }

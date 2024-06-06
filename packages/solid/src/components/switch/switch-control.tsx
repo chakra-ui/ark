@@ -6,7 +6,7 @@ export interface SwitchControlProps extends HTMLArkProps<'span'> {}
 
 export const SwitchControl = (props: SwitchControlProps) => {
   const api = useSwitchContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().getControlProps(), props)
 
   return <ark.span {...mergedProps} />
 }

@@ -19,7 +19,7 @@ const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.button v-bind="combobox.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="combobox.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

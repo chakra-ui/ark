@@ -160,6 +160,12 @@
       "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseNumberInputReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Scrubber": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }

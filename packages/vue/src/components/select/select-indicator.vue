@@ -19,7 +19,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.div v-bind="select.indicatorProps" :as-child="asChild">
+  <ark.div v-bind="select.getIndicatorProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

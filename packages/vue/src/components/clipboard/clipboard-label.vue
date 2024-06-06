@@ -19,7 +19,7 @@ const clipboard = useClipboardContext()
 </script>
 
 <template>
-  <ark.label v-bind="clipboard.labelProps" :as-child="asChild">
+  <ark.label v-bind="clipboard.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

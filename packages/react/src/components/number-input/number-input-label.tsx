@@ -8,7 +8,7 @@ export interface NumberInputLabelProps extends HTMLArkProps<'label'> {}
 export const NumberInputLabel = forwardRef<HTMLLabelElement, NumberInputLabelProps>(
   (props, ref) => {
     const numberInput = useNumberInputContext()
-    const mergedProps = mergeProps(numberInput.labelProps, props)
+    const mergedProps = mergeProps(numberInput.getLabelProps(), props)
 
     return <ark.label {...mergedProps} ref={ref} />
   },

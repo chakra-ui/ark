@@ -39,7 +39,7 @@ export const TagsInputRoot = (props: TagsInputRootProps) => {
   ])
 
   const api = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <TagsInputProvider value={api}>

@@ -37,7 +37,7 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'value',
   ])
   const numberInput = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(numberInput.rootProps, localProps)
+  const mergedProps = mergeProps(numberInput.getRootProps(), localProps)
 
   return (
     <NumberInputProvider value={numberInput}>

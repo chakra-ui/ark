@@ -10,7 +10,7 @@ export const ColorPickerEyeDropperTrigger = forwardRef<
   ColorPickerEyeDropperTriggerProps
 >((props, ref) => {
   const colorPicker = useColorPickerContext()
-  const mergedProps = mergeProps(colorPicker.eyeDropperTriggerProps, props)
+  const mergedProps = mergeProps(colorPicker.getEyeDropperTriggerProps(), props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

@@ -28,7 +28,7 @@ AvatarProvider(avatar)
 </script>
 
 <template>
-  <ark.div v-bind="avatar.rootProps" :as-child="asChild">
+  <ark.div v-bind="avatar.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

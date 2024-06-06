@@ -36,7 +36,7 @@ TagsInputProvider(tagsInput)
 </script>
 
 <template>
-  <ark.div v-bind="tagsInput.rootProps" :as-child="asChild">
+  <ark.div v-bind="tagsInput.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

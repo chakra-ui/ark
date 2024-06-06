@@ -10,7 +10,7 @@ export const ColorPickerContent = (props: ColorPickerContentProps) => {
   const api = useColorPickerContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

@@ -6,7 +6,7 @@ export interface EditablePreviewProps extends HTMLArkProps<'span'> {}
 
 export const EditablePreview = (props: EditablePreviewProps) => {
   const api = useEditableContext()
-  const mergedProps = mergeProps(() => api().previewProps, props)
+  const mergedProps = mergeProps(() => api().getPreviewProps(), props)
 
   return <ark.span {...mergedProps} />
 }

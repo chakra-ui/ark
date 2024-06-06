@@ -21,7 +21,7 @@ export const CarouselRoot = (props: CarouselRootProps) => {
     'spacing',
   ])
   const api = useCarousel(useCarouselProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <CarouselProvider value={api}>

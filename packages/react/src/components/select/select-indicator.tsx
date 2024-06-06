@@ -7,7 +7,7 @@ export interface SelectIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const SelectIndicator = forwardRef<HTMLDivElement, SelectIndicatorProps>((props, ref) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(select.indicatorProps, props)
+  const mergedProps = mergeProps(select.getIndicatorProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

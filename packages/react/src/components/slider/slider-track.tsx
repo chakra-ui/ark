@@ -7,7 +7,7 @@ export interface SliderTrackProps extends HTMLArkProps<'div'> {}
 
 export const SliderTrack = forwardRef<HTMLDivElement, SliderTrackProps>((props, ref) => {
   const slider = useSliderContext()
-  const mergedProps = mergeProps(slider.trackProps, props)
+  const mergedProps = mergeProps(slider.getTrackProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

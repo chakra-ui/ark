@@ -12,7 +12,7 @@ export interface ClipboardRootProviderProps extends HTMLArkProps<'div'>, RootPro
 
 export const ClipboardRootProvider = (props: ClipboardRootProviderProps) => {
   const [{ value: clipboard }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => clipboard().rootProps, localProps)
+  const mergedProps = mergeProps(() => clipboard().getRootProps(), localProps)
 
   return (
     <ClipboardProvider value={clipboard}>

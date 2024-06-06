@@ -19,7 +19,7 @@ const dialog = useDialogContext()
 </script>
 
 <template>
-  <ark.button v-bind="dialog.triggerProps" :as-child="asChild">
+  <ark.button v-bind="dialog.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -34,7 +34,7 @@ const { root } = segmentGroupAnatomy.build()
 
 <template>
   <ark.div
-    v-bind="segmentGroup.rootProps"
+    v-bind="segmentGroup.getRootProps()"
     :data-scope="root.attrs['data-scope']"
     :data-part="root.attrs['data-part']"
     :as-child="asChild"

@@ -16,7 +16,7 @@ export const CheckboxRootProvider = forwardRef<HTMLLabelElement, CheckboxRootPro
     const [{ value: checkbox }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(checkbox.rootProps, localProps)
+    const mergedProps = mergeProps(checkbox.getRootProps(), localProps)
 
     return (
       <CheckboxProvider value={checkbox}>

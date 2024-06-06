@@ -19,7 +19,7 @@ const ratingGroup = useRatingGroupContext()
 </script>
 
 <template>
-  <ark.label v-bind="ratingGroup.labelProps" :as-child="asChild">
+  <ark.label v-bind="ratingGroup.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

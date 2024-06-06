@@ -34,7 +34,7 @@ CollapsibleProvider(collapsible)
 </script>
 
 <template>
-  <ark.div v-bind="collapsible.rootProps" :as-child="asChild">
+  <ark.div v-bind="collapsible.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

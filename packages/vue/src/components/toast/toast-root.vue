@@ -20,9 +20,9 @@ const toast = useToastContext()
 </script>
 
 <template>
-  <ark.div v-bind="toast.rootProps" :as-child="asChild">
-    <div v-bind="toast.ghostBeforeProps" />
+  <ark.div v-bind="toast.getRootProps()" :as-child="asChild">
+    <div v-bind="toast.getGhostBeforeProps()" />
     <slot />
-    <div v-bind="toast.ghostAfterProps" />
+    <div v-bind="toast.getGhostAfterProps()" />
   </ark.div>
 </template>

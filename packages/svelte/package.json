@@ -22,9 +22,9 @@
     "svelte": "5.0.0-next.148"
   },
   "dependencies": {
-    "@zag-js/avatar": "0.53.0",
-    "@zag-js/core": "0.53.0",
-    "@zag-js/svelte": "0.53.0"
+    "@zag-js/avatar": "0.54.0",
+    "@zag-js/core": "0.54.0",
+    "@zag-js/svelte": "0.54.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.2.1",

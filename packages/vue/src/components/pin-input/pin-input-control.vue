@@ -19,7 +19,7 @@ const pinInput = usePinInputContext()
 </script>
 
 <template>
-  <ark.div v-bind="pinInput.controlProps" :as-child="asChild">
+  <ark.div v-bind="pinInput.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

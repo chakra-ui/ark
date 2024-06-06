@@ -156,6 +156,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    }
+  },
   "SubmitTrigger": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   }

@@ -19,7 +19,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <ark.div v-bind="menu.arrowTipProps" :as-child="asChild">
+  <ark.div v-bind="menu.getArrowTipProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -26,7 +26,7 @@ export const SelectRootProvider = <T extends CollectionItem>(props: SelectRootPr
     'value',
   ])
   const presence = usePresence(mergeProps(() => ({ present: select().open }), presenceProps))
-  const mergedProps = mergeProps(() => select().rootProps, localProps)
+  const mergedProps = mergeProps(() => select().getRootProps(), localProps)
 
   return (
     <SelectProvider value={select}>

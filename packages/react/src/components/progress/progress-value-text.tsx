@@ -9,7 +9,7 @@ export const ProgressValueText = forwardRef<HTMLSpanElement, ProgressValueTextPr
   (props, ref) => {
     const { children, ...rest } = props
     const progress = useProgressContext()
-    const mergedProps = mergeProps(progress.valueTextProps, rest)
+    const mergedProps = mergeProps(progress.getValueTextProps(), rest)
 
     return (
       <ark.span {...mergedProps} ref={ref}>

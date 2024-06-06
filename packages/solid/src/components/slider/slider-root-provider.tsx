@@ -12,7 +12,7 @@ export interface SliderRootProviderProps extends HTMLArkProps<'div'>, RootProvid
 
 export const SliderRootProvider = (props: SliderRootProviderProps) => {
   const [{ value: slider }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => slider().rootProps, localProps)
+  const mergedProps = mergeProps(() => slider().getRootProps(), localProps)
 
   return (
     <SliderProvider value={slider}>

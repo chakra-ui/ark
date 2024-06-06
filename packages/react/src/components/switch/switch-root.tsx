@@ -26,7 +26,7 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
   ])
 
   const switchContext = useSwitch(switchProps)
-  const mergedProps = mergeProps(switchContext.rootProps, localProps)
+  const mergedProps = mergeProps(switchContext.getRootProps(), localProps)
 
   return (
     <SwitchProvider value={switchContext}>

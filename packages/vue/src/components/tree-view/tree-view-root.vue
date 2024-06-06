@@ -31,7 +31,7 @@ TreeViewProvider(treeView)
 </script>
 
 <template>
-  <ark.div v-bind="treeView.rootProps" :as-child="asChild">
+  <ark.div v-bind="treeView.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

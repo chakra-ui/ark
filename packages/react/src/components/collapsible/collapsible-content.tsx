@@ -13,7 +13,7 @@ export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentP
       return null
     }
 
-    const mergedProps = mergeProps(collapsible.contentProps, props)
+    const mergedProps = mergeProps(collapsible.getContentProps(), props)
     return <ark.div {...mergedProps} ref={ref} />
   },
 )

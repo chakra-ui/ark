@@ -28,7 +28,7 @@ export const DatePickerRootProvider = forwardRef<HTMLDivElement, DatePickerRootP
       ['value'],
     )
     const presence = usePresence(mergeProps({ present: datePicker.open }, presenceProps))
-    const mergedProps = mergeProps(datePicker.rootProps, localProps)
+    const mergedProps = mergeProps(datePicker.getRootProps(), localProps)
 
     return (
       <DatePickerProvider value={datePicker}>

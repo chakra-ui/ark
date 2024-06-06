@@ -37,7 +37,7 @@ PinInputProvider(pinInput)
 </script>
 
 <template>
-  <ark.div v-bind="pinInput.rootProps" :as-child="asChild">
+  <ark.div v-bind="pinInput.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

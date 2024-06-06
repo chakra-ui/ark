@@ -33,7 +33,7 @@ RatingGroupProvider(ratingGroup)
 </script>
 
 <template>
-  <ark.div v-bind="ratingGroup.rootProps" :as-child="asChild">
+  <ark.div v-bind="ratingGroup.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -7,7 +7,7 @@ export interface CarouselViewportProps extends HTMLArkProps<'div'> {}
 
 export const CarouselViewport = forwardRef<HTMLDivElement, CarouselViewportProps>((props, ref) => {
   const carousel = useCarouselContext()
-  const mergedProps = mergeProps(carousel.viewportProps, props)
+  const mergedProps = mergeProps(carousel.getViewportProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

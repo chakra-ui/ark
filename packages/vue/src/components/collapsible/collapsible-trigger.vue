@@ -19,7 +19,7 @@ const collapsible = useCollapsibleContext()
 </script>
 
 <template>
-  <ark.button v-bind="collapsible.triggerProps">
+  <ark.button v-bind="collapsible.getTriggerProps()">
     <slot />
   </ark.button>
 </template>

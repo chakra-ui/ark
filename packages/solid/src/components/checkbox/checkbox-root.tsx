@@ -23,7 +23,7 @@ export const CheckboxRoot = (props: CheckboxRootProps) => {
     'value',
   ])
   const checkbox = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(() => checkbox().rootProps, labelprops)
+  const mergedProps = mergeProps(() => checkbox().getRootProps(), labelprops)
 
   return (
     <CheckboxProvider value={checkbox}>

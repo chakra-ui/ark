@@ -16,7 +16,7 @@ export const SegmentGroupRootProvider = (props: SegmentGroupRootProviderProps) =
     'value',
   ])
   const mergedProps = mergeProps(
-    () => segmentGroup().rootProps,
+    () => segmentGroup().getRootProps(),
     segmentGroupAnatomy.build().root.attrs,
     localProps,
   )

@@ -10,7 +10,7 @@ export const SelectContent = (props: SelectContentProps) => {
   const select = useSelectContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => select().contentProps,
+    () => select().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

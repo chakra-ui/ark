@@ -19,7 +19,7 @@ export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props
     'value',
   ])
   const progress = useProgress(progressProps)
-  const mergedProps = mergeProps(progress.rootProps, localProps)
+  const mergedProps = mergeProps(progress.getRootProps(), localProps)
 
   return (
     <ProgressProvider value={progress}>

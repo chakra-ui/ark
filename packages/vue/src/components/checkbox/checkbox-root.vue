@@ -35,7 +35,7 @@ CheckboxProvider(checkbox)
 </script>
 
 <template>
-  <ark.label v-bind="checkbox.rootProps" :as-child="asChild">
+  <ark.label v-bind="checkbox.getRootProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

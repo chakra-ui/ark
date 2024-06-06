@@ -6,7 +6,7 @@ export interface SliderControlProps extends HTMLArkProps<'div'> {}
 
 export const SliderControl = (props: SliderControlProps) => {
   const api = useSliderContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

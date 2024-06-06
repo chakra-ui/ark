@@ -8,7 +8,7 @@ export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 
 export const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps>((props, ref) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(select.positionerProps, props)
+  const mergedProps = mergeProps(select.getPositionerProps(), props)
   const presence = usePresenceContext()
 
   if (presence.unmounted) {

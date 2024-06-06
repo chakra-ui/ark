@@ -35,7 +35,7 @@ export const SliderRoot = (props: SliderRootProps) => {
     'value',
   ])
   const api = useSlider(useSliderProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <SliderProvider value={api}>

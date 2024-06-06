@@ -22,7 +22,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="hoverCard.positionerProps"
+    v-bind="hoverCard.getPositionerProps()"
     :present="hoverCard.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

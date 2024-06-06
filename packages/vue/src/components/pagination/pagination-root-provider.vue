@@ -28,7 +28,7 @@ PaginationProvider(pagination)
 </script>
 
 <template>
-  <ark.nav v-bind="pagination.rootProps" :as-child="asChild">
+  <ark.nav v-bind="pagination.getRootProps()" :as-child="asChild">
     <slot />
   </ark.nav>
 </template>

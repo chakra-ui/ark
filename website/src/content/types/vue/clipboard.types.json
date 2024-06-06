@@ -44,6 +44,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    }
+  },
   "Trigger": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   }

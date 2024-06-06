@@ -10,7 +10,7 @@ export const PopoverContent = (props: PopoverContentProps) => {
   const api = usePopoverContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

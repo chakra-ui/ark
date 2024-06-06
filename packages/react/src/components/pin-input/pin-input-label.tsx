@@ -7,7 +7,7 @@ export interface PinInputLabelProps extends HTMLArkProps<'label'> {}
 
 export const PinInputLabel = forwardRef<HTMLLabelElement, PinInputLabelProps>((props, ref) => {
   const pinInput = usePinInputContext()
-  const mergedProps = mergeProps(pinInput.labelProps, props)
+  const mergedProps = mergeProps(pinInput.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

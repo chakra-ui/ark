@@ -6,10 +6,10 @@ export interface ToastRootProps extends ComponentProps<'div'> {}
 export const ToastRoot = (props: ToastRootProps) => {
   const toast = useToastContext()
   return (
-    <div {...toast().rootProps}>
-      <div {...toast().ghostBeforeProps} />
+    <div {...toast().getRootProps()}>
+      <div {...toast().getGhostBeforeProps()} />
       {props.children}
-      <div {...toast().ghostAfterProps} />
+      <div {...toast().getGhostAfterProps()} />
     </div>
   )
 }

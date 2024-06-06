@@ -28,7 +28,7 @@ SliderProvider(slider)
 </script>
 
 <template>
-  <ark.div v-bind="slider.rootProps" :as-child="asChild">
+  <ark.div v-bind="slider.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

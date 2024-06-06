@@ -26,7 +26,7 @@ export const RatingGroupRoot = (props: RatingGroupRootProps) => {
   ])
 
   const api = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <RatingGroupProvider value={api}>

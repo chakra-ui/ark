@@ -19,7 +19,7 @@ const checkbox = useCheckboxContext()
 </script>
 
 <template>
-  <ark.span v-bind="checkbox.labelProps" :as-child="asChild">
+  <ark.span v-bind="checkbox.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

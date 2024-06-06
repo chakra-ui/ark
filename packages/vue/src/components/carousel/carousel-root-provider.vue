@@ -28,7 +28,7 @@ CarouselProvider(carousel)
 </script>
 
 <template>
-  <ark.div v-bind="carousel.rootProps" :as-child="asChild">
+  <ark.div v-bind="carousel.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

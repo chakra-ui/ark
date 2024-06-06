@@ -6,7 +6,7 @@ export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ToastCloseTrigger = (props: ToastCloseTriggerProps) => {
   const toast = useToastContext()
-  const mergedProps = mergeProps(() => toast().closeTriggerProps, props)
+  const mergedProps = mergeProps(() => toast().getCloseTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

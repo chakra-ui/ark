@@ -35,7 +35,7 @@ EditableProvider(editable)
 </script>
 
 <template>
-  <ark.div v-bind="editable.rootProps" :as-child="asChild">
+  <ark.div v-bind="editable.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

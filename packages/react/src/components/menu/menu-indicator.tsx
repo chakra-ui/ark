@@ -7,7 +7,7 @@ export interface MenuIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const MenuIndicator = forwardRef<HTMLDivElement, MenuIndicatorProps>((props, ref) => {
   const menu = useMenuContext()
-  const mergedProps = mergeProps(menu.indicatorProps, props)
+  const mergedProps = mergeProps(menu.getIndicatorProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

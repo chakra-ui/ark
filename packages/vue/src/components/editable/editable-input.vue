@@ -19,5 +19,5 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.input v-bind="editable.inputProps" :as-child="asChild" />
+  <ark.input v-bind="editable.getInputProps()" :as-child="asChild" />
 </template>

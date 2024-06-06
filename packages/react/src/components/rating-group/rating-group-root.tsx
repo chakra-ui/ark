@@ -27,7 +27,7 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
   ])
 
   const ratingGroup = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(ratingGroup.rootProps, localProps)
+  const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
 
   return (
     <RatingGroupProvider value={ratingGroup}>

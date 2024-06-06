@@ -24,7 +24,7 @@ export const AccordionRootProvider = (props: AccordionRootProviderProps) => {
     'value',
   ])
 
-  const mergedProps = mergeProps(() => accordion().rootProps, localProps)
+  const mergedProps = mergeProps(() => accordion().getRootProps(), localProps)
 
   return (
     <AccordionProvider value={accordion}>

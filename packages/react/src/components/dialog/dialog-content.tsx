@@ -9,7 +9,7 @@ export interface DialogContentProps extends HTMLArkProps<'div'> {}
 export const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>((props, ref) => {
   const dialog = useDialogContext()
   const presence = usePresenceContext()
-  const mergedProps = mergeProps(dialog.contentProps, presence.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(dialog.getContentProps(), presence.getPresenceProps(ref), props)
 
   if (presence.unmounted) {
     return null

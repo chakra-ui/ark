@@ -12,7 +12,7 @@ export interface ProgressRootProviderProps extends HTMLArkProps<'div'>, RootProv
 
 export const ProgressRootProvider = (props: ProgressRootProviderProps) => {
   const [{ value: progress }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-  const mergedProps = mergeProps(() => progress().rootProps, localProps)
+  const mergedProps = mergeProps(() => progress().getRootProps(), localProps)
 
   return (
     <ProgressProvider value={progress}>

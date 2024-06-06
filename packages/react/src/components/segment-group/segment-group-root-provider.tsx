@@ -18,7 +18,7 @@ export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupR
       'value',
     ])
     const mergedProps = mergeProps(
-      segmentGroup.rootProps,
+      segmentGroup.getRootProps(),
       segmentGroupAnatomy.build().root.attrs as Record<string, string>,
       localProps,
     )

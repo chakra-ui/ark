@@ -14,7 +14,7 @@ export const NumberInputRootProvider = (props: NumberInputRootProviderProps) => 
   const [{ value: numberInput }, localProps] = createSplitProps<RootProviderProps>()(props, [
     'value',
   ])
-  const mergedProps = mergeProps(() => numberInput().rootProps, localProps)
+  const mergedProps = mergeProps(() => numberInput().getRootProps(), localProps)
 
   return (
     <NumberInputProvider value={numberInput}>

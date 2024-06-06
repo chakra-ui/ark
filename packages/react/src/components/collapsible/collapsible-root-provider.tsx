@@ -16,7 +16,7 @@ export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRoo
     const [{ value: collapsible }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(collapsible.rootProps, localProps)
+    const mergedProps = mergeProps(collapsible.getRootProps(), localProps)
 
     return (
       <CollapsibleProvider value={collapsible}>

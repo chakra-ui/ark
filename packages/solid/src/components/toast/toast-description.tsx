@@ -6,7 +6,7 @@ export interface ToastDescriptionProps extends HTMLArkProps<'div'> {}
 
 export const ToastDescription = (props: ToastDescriptionProps) => {
   const toast = useToastContext()
-  const mergedProps = mergeProps(() => toast().descriptionProps, props)
+  const mergedProps = mergeProps(() => toast().getDescriptionProps(), props)
 
   return <ark.div {...mergedProps} />
 }

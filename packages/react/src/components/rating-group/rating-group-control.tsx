@@ -8,7 +8,7 @@ export interface RatingGroupControlProps extends HTMLArkProps<'div'> {}
 export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlProps>(
   (props, ref) => {
     const ratingGroup = useRatingGroupContext()
-    const mergedProps = mergeProps(ratingGroup.controlProps, props)
+    const mergedProps = mergeProps(ratingGroup.getControlProps(), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

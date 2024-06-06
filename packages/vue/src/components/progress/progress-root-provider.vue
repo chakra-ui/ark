@@ -28,7 +28,7 @@ ProgressProvider(progress)
 </script>
 
 <template>
-  <ark.div v-bind="progress.rootProps" :as-child="asChild">
+  <ark.div v-bind="progress.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

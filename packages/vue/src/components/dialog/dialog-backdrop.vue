@@ -22,7 +22,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="dialog.backdropProps"
+    v-bind="dialog.getBackdropProps()"
     :present="dialog.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

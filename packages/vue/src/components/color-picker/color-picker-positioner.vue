@@ -22,7 +22,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="colorPicker.positionerProps"
+    v-bind="colorPicker.getPositionerProps()"
     :present="colorPicker.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

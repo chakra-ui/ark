@@ -35,7 +35,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="combobox.rootProps" :as-child="asChild">
+  <ark.div v-bind="combobox.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

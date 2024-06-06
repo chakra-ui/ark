@@ -6,7 +6,7 @@ export interface RadioGroupLabelProps extends HTMLArkProps<'label'> {}
 
 export const RadioGroupLabel = (props: RadioGroupLabelProps) => {
   const radioGroup = useRadioGroupContext()
-  const mergedProps = mergeProps(() => radioGroup().labelProps, props)
+  const mergedProps = mergeProps(() => radioGroup().getLabelProps(), props)
 
   return <ark.label {...mergedProps} />
 }

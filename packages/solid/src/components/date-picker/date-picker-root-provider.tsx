@@ -26,7 +26,7 @@ export const DatePickerRootProvider = (props: DatePickerRootProviderProps) => {
     ['value'],
   )
   const presence = usePresence(mergeProps(presenceProps, () => ({ present: datePicker().open })))
-  const mergedProps = mergeProps(() => datePicker().rootProps, localProps)
+  const mergedProps = mergeProps(() => datePicker().getRootProps(), localProps)
 
   return (
     <DatePickerProvider value={datePicker}>

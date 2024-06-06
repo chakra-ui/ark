@@ -16,7 +16,7 @@ export const SplitterRootProvider = forwardRef<HTMLDivElement, SplitterRootProvi
     const [{ value: splitter }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(splitter.rootProps, localProps)
+    const mergedProps = mergeProps(splitter.getRootProps(), localProps)
 
     return (
       <SplitterProvider value={splitter}>

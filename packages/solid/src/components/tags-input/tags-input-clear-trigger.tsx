@@ -6,7 +6,7 @@ export interface TagsInputClearTriggerProps extends HTMLArkProps<'button'> {}
 
 export const TagsInputClearTrigger = (props: TagsInputClearTriggerProps) => {
   const api = useTagsInputContext()
-  const mergedProps = mergeProps(() => api().clearTriggerProps, props)
+  const mergedProps = mergeProps(() => api().getClearTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

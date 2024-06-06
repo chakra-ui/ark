@@ -13,7 +13,7 @@ export interface CheckboxIndicatorProps extends Assign<HTMLArkProps<'div'>, Indi
 export const CheckboxIndicator = (props: CheckboxIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['indeterminate'])
   const checkbox = useCheckboxContext()
-  const mergedProps = mergeProps(() => checkbox().indicatorProps, localProps)
+  const mergedProps = mergeProps(() => checkbox().getIndicatorProps(), localProps)
 
   return (
     <ark.div

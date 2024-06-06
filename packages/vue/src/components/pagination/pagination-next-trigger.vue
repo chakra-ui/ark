@@ -19,7 +19,7 @@ const pagination = usePaginationContext()
 </script>
 
 <template>
-  <ark.button v-bind="pagination.nextTriggerProps" :as-child="asChild">
+  <ark.button v-bind="pagination.getNextTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

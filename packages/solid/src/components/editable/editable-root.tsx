@@ -37,7 +37,7 @@ export const EditableRoot = (props: EditableRootProps) => {
   ])
 
   const api = useEditable(useEditableProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <EditableProvider value={api}>

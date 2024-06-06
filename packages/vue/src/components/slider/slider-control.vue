@@ -19,7 +19,7 @@ const slider = useSliderContext()
 </script>
 
 <template>
-  <ark.div v-bind="slider.controlProps" :as-child="asChild">
+  <ark.div v-bind="slider.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

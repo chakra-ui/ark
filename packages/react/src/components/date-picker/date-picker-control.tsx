@@ -8,7 +8,7 @@ export interface DatePickerControlProps extends HTMLArkProps<'div'> {}
 export const DatePickerControl = forwardRef<HTMLDivElement, DatePickerControlProps>(
   (props, ref) => {
     const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.controlProps, props)
+    const mergedProps = mergeProps(datePicker.getControlProps(), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

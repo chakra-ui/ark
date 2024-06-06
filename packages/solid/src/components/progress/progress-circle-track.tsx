@@ -6,7 +6,7 @@ export interface ProgressCircleTrackProps extends HTMLArkProps<'circle'> {}
 
 export const ProgressCircleTrack = (props: ProgressCircleTrackProps) => {
   const api = useProgressContext()
-  const mergedProps = mergeProps(() => api().circleTrackProps, props)
+  const mergedProps = mergeProps(() => api().getCircleTrackProps(), props)
 
   return <ark.circle {...mergedProps} />
 }

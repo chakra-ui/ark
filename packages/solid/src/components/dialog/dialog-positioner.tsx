@@ -9,7 +9,7 @@ export interface DialogPositionerProps extends HTMLArkProps<'div'> {}
 export const DialogPositioner = (props: DialogPositionerProps) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => api().positionerProps, props)
+  const mergedProps = mergeProps(() => api().getPositionerProps(), props)
 
   return (
     <Show when={!presenceApi().unmounted}>

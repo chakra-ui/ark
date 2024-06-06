@@ -30,7 +30,7 @@ export const ComboboxRootProvider = <T extends CollectionItem>(
   )
 
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: combobox().open })))
-  const mergedProps = mergeProps(() => combobox().rootProps, localProps)
+  const mergedProps = mergeProps(() => combobox().getRootProps(), localProps)
 
   return (
     <ComboboxProvider value={combobox}>

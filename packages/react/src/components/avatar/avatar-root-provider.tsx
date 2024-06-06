@@ -14,7 +14,7 @@ export interface AvatarRootProviderProps extends HTMLArkProps<'div'>, RootProvid
 export const AvatarRootProvider = forwardRef<HTMLDivElement, AvatarRootProviderProps>(
   (props, ref) => {
     const [{ value: avatar }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-    const mergedProps = mergeProps(avatar.rootProps, localProps)
+    const mergedProps = mergeProps(avatar.getRootProps(), localProps)
 
     return (
       <AvatarProvider value={avatar}>

@@ -11,7 +11,7 @@ export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((p
   const dialog = useDialogContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: dialog.open })
-  const mergedProps = mergeProps(dialog.backdropProps, presence.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(dialog.getBackdropProps(), presence.getPresenceProps(ref), props)
 
   if (presence.unmounted) {
     return null

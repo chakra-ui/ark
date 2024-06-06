@@ -16,7 +16,7 @@ export const TagsInputRootProvider = forwardRef<HTMLDivElement, TagsInputRootPro
     const [{ value: tagsInput }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(tagsInput.rootProps, localProps)
+    const mergedProps = mergeProps(tagsInput.getRootProps(), localProps)
 
     return (
       <TagsInputProvider value={tagsInput}>

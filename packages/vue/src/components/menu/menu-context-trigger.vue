@@ -19,7 +19,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <ark.button v-bind="menu.contextTriggerProps" :as-child="asChild">
+  <ark.button v-bind="menu.getContextTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

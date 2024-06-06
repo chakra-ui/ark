@@ -14,7 +14,7 @@ export const CollapsibleRootProvider = (props: CollapsibleRootProviderProps) => 
   const [{ value: collapsible }, localProps] = createSplitProps<RootProviderProps>()(props, [
     'value',
   ])
-  const mergedProps = mergeProps(() => collapsible().rootProps, localProps)
+  const mergedProps = mergeProps(() => collapsible().getRootProps(), localProps)
 
   return (
     <CollapsibleProvider value={collapsible}>

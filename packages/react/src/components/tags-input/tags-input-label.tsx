@@ -7,7 +7,7 @@ export interface TagsInputLabelProps extends HTMLArkProps<'label'> {}
 
 export const TagsInputLabel = forwardRef<HTMLLabelElement, TagsInputLabelProps>((props, ref) => {
   const tagsInput = useTagsInputContext()
-  const mergedProps = mergeProps(tagsInput.labelProps, props)
+  const mergedProps = mergeProps(tagsInput.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

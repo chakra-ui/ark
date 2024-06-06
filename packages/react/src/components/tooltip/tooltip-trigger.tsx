@@ -7,7 +7,7 @@ export interface TooltipTriggerProps extends HTMLArkProps<'button'> {}
 
 export const TooltipTrigger = forwardRef<HTMLButtonElement, TooltipTriggerProps>((props, ref) => {
   const tooltip = useTooltipContext()
-  const mergedProps = mergeProps(tooltip.triggerProps, props)
+  const mergedProps = mergeProps(tooltip.getTriggerProps(), props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

@@ -56,6 +56,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCollapsibleReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Trigger": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }

@@ -63,5 +63,11 @@
         "description": "The values of the toggles in the group."
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseToggleGroupReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
   }
 }

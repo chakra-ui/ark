@@ -6,7 +6,7 @@ export interface ProgressTrackProps extends HTMLArkProps<'div'> {}
 
 export const ProgressTrack = (props: ProgressTrackProps) => {
   const api = useProgressContext()
-  const mergedProps = mergeProps(() => api().trackProps, props)
+  const mergedProps = mergeProps(() => api().getTrackProps(), props)
 
   return <ark.div {...mergedProps} />
 }

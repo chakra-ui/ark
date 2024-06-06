@@ -19,7 +19,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.div v-bind="editable.controlProps" :as-child="asChild">
+  <ark.div v-bind="editable.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -6,7 +6,7 @@ export interface ClipboardTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ClipboardTrigger = (props: ClipboardTriggerProps) => {
   const api = useClipboardContext()
-  const mergedProps = mergeProps(() => api().triggerProps, props)
+  const mergedProps = mergeProps(() => api().getTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

@@ -29,7 +29,7 @@ export const AccordionRoot = (props: AccordionRootProps) => {
     'value',
   ])
   const api = useAccordion(useAccordionProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <AccordionProvider value={api}>

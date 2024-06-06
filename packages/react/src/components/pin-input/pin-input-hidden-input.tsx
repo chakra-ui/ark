@@ -8,7 +8,7 @@ export interface PinInputHiddenInputProps extends HTMLArkProps<'input'> {}
 export const PinInputHiddenInput = forwardRef<HTMLInputElement, PinInputHiddenInputProps>(
   (props, ref) => {
     const pinInput = usePinInputContext()
-    const mergedProps = mergeProps(pinInput.hiddenInputProps, props)
+    const mergedProps = mergeProps(pinInput.getHiddenInputProps(), props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

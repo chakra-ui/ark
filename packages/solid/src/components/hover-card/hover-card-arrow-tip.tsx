@@ -6,7 +6,7 @@ export interface HoverCardArrowTipProps extends HTMLArkProps<'div'> {}
 
 export const HoverCardArrowTip = (props: HoverCardArrowTipProps) => {
   const hoverCard = useHoverCardContext()
-  const mergedProps = mergeProps(() => hoverCard().arrowTipProps, props)
+  const mergedProps = mergeProps(() => hoverCard().getArrowTipProps(), props)
 
   return <ark.div {...mergedProps} />
 }

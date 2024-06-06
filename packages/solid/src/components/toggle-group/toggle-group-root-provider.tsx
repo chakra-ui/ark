@@ -14,7 +14,7 @@ export const ToggleGroupRootProvider = (props: ToggleGroupRootProviderProps) => 
   const [{ value: toggleGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
     'value',
   ])
-  const mergedProps = mergeProps(() => toggleGroup().rootProps, localProps)
+  const mergedProps = mergeProps(() => toggleGroup().getRootProps(), localProps)
 
   return (
     <ToggleGroupProvider value={toggleGroup}>

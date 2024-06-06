@@ -19,7 +19,7 @@ export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props
     'size',
   ])
   const splitter = useSplitter(useSplitterProps)
-  const mergedProps = mergeProps(splitter.rootProps, localProps)
+  const mergedProps = mergeProps(splitter.getRootProps(), localProps)
 
   return (
     <SplitterProvider value={splitter}>

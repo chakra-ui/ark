@@ -85,5 +85,11 @@
         "description": "The value of checkbox input. Useful for form submission."
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCheckboxReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
   }
 }

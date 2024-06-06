@@ -21,7 +21,7 @@ const slots = useSlots()
 </script>
 
 <template>
-  <ark.span v-bind="slider.valueTextProps" :as-child="asChild">
+  <ark.span v-bind="slider.getValueTextProps()" :as-child="asChild">
     <slot>{{ slots.default?.() || slider.value.join(', ') }}</slot>
   </ark.span>
 </template>

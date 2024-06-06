@@ -26,7 +26,7 @@ ClipboardProvider(clipboard)
 </script>
 
 <template>
-  <ark.div v-bind="clipboard.rootProps" :as-child="asChild">
+  <ark.div v-bind="clipboard.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -19,5 +19,5 @@ const avatar = useAvatarContext()
 </script>
 
 <template>
-  <ark.img v-bind="avatar.imageProps" :as-child="asChild" />
+  <ark.img v-bind="avatar.getImageProps()" :as-child="asChild" />
 </template>

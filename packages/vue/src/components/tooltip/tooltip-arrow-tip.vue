@@ -19,7 +19,7 @@ const tooltip = useTooltipContext()
 </script>
 
 <template>
-  <ark.div v-bind="tooltip.arrowTipProps" :as-child="asChild">
+  <ark.div v-bind="tooltip.getArrowTipProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

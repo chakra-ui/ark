@@ -22,7 +22,7 @@ export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((p
     'value',
   ])
   const radioGroup = useRadioGroup(useRadioGroupProps)
-  const mergedProps = mergeProps(radioGroup.rootProps, localProps)
+  const mergedProps = mergeProps(radioGroup.getRootProps(), localProps)
 
   return (
     <RadioGroupProvider value={radioGroup}>

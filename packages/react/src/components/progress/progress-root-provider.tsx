@@ -16,7 +16,7 @@ export const ProgressRootProvider = forwardRef<HTMLDivElement, ProgressRootProvi
     const [{ value: progress }, localProps] = createSplitProps<RootProviderProps>()(props, [
       'value',
     ])
-    const mergedProps = mergeProps(progress.rootProps, localProps)
+    const mergedProps = mergeProps(progress.getRootProps(), localProps)
 
     return (
       <ProgressProvider value={progress}>
