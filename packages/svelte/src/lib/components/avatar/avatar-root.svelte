@@ -16,8 +16,6 @@ const avatar = useAvatar(props)
 AvatarProvider(avatar)
 </script>
   
-<div {...avatar.rootProps}>
+<div {...avatar.getRootProps()}>
   {@render children()}
 </div>
-
-  

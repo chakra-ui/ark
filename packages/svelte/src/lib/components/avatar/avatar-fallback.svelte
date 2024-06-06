@@ -13,7 +13,7 @@ const avatar = useAvatarContext()
 </script>
 
 
-<div {...avatar.fallbackProps} >
+<div {...avatar.getFallbackProps()} >
 {@render children()}
 </div>
         
