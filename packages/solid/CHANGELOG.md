@@ -4,7 +4,9 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
-## [Unreleased]̊
+## [Unreleased]
+
+## [3.2.2] - 2024-06-07̊
 
 ### Fixed
 
