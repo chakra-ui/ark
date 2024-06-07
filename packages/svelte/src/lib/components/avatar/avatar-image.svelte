@@ -10,9 +10,10 @@ import { useAvatarContext } from "./use-avatar-context"
 
 const { id, ...imageProps }: AvatarImageProps = $props()
 const avatar = useAvatarContext()
+
 </script>
       
 
-<img {...avatar.getImageProps()} {...imageProps} />
+<img {...avatar.api?.getImageProps()} {...imageProps} />
     
       
