@@ -2,8 +2,10 @@ import NextLink from 'next/link'
 import { Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
+import { data } from '~/lib/search'
 import { getServerContext } from '~/lib/server-context'
 import { UserButton } from '../auth/user-button'
+import { CommandMenu } from '../command-menu'
 import { FrameworkSelect } from './framework-select'
 import { GitHubLink } from './github-link'
 import { MobileNavbar } from './mobile-navbar'
@@ -28,13 +30,15 @@ export const Navbar = () => {
             <Divider orientation="vertical" h="6" />
             <HStack gap="2">
               <HStack gap="0">
+                <CommandMenu data={data} />
                 <ColorModeButton />
                 <GitHubLink />
               </HStack>
               <UserButton />
             </HStack>
           </HStack>
-          <HStack gap="3" py="0.5" display={{ base: 'flex', md: 'none' }}>
+          <HStack gap="1" py="0.5" display={{ base: 'flex', md: 'none' }}>
+            <CommandMenu data={data} />
             <MobileNavbar>
               <Stack gap="0" width="17rem">
                 <MobileNavbarLinks framework={framework} />

@@ -27,6 +27,7 @@
     "@zag-js/anatomy-icons": "0.54.0",
     "@zag-js/docs": "0.54.0",
     "effect": "3.3.0",
+    "match-sorter": "6.3.4",
     "next": "14.2.3",
     "next-auth": "5.0.0-beta.19",
     "next-themes": "0.3.0",
