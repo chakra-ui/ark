@@ -44,6 +44,7 @@ export {
   type ComboboxItemTextProps as ItemTextProps,
 } from './combobox-item-text'
 export { ComboboxLabel as Label, type ComboboxLabelProps as LabelProps } from './combobox-label'
+export { ComboboxList as List, type ComboboxListProps as ListProps } from './combobox-list'
 export {
   ComboboxPositioner as Positioner,
   type ComboboxPositionerProps as PositionerProps,

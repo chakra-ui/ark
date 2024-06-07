@@ -32,6 +32,7 @@ export {
 export { default as ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text.vue'
 export { default as ComboboxItem, type ComboboxItemProps } from './combobox-item.vue'
 export { default as ComboboxLabel, type ComboboxLabelProps } from './combobox-label.vue'
+export { default as ComboboxList, type ComboboxListProps } from './combobox-list.vue'
 export {
   default as ComboboxPositioner,
   type ComboboxPositionerProps,

@@ -4,7 +4,11 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
-## [Unreleased]
+## [Unreleased]̊
+
+### Fixed
+
+- **Combobox:** Exported missing `ComboboxList` component.
 
 ## [3.2.1] - 2024-06-06
 

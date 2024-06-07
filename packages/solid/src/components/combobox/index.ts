@@ -20,6 +20,7 @@ export {
 export { ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './combobox-item-indicator'
 export { ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text'
 export { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
+export { ComboboxList, type ComboboxListProps } from './combobox-list'
 export { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 export { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
 export { ComboboxRootProvider, type ComboboxRootProviderProps } from './combobox-root-provider'
