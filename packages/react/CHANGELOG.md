@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.2.1] - 2024-06-07
+
 ### Fixed
 
 - **Combobox:** Exported missing `ComboboxList` component.
