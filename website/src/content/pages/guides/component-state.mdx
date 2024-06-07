@@ -6,9 +6,9 @@ description: Learn how to access the state of a component using Context and Prov
 
 ## Motivation
 
-Effectively accessing and managing component state is crucial for dynamic UIs in Ark. 
-Using `Context` and `Provider` components, you can write modular, maintainable code. 
-This guide shows how to share state and behavior across your application, 
+Effectively accessing and managing component state is crucial for dynamic UIs in Ark.
+Using `Context` and `Provider` components, you can write modular, maintainable code.
+This guide shows how to share state and behavior across your application,
 enabling flexible and powerful component compositions.
 
 ## Context Components
@@ -17,6 +17,9 @@ Context components allow you to access a component's state or functions from a c
 In the example below, `Avatar.Fallback` conditionally renders based on the `loaded` state.
 
 <Example id="context" component="avatar" />
+
+> **Good to know (RSC)**: Due to the usage of render prop, you might need to add the `'use client'` directive
+> at the top of your file when using React Server Components.
 
 ## Provider Components
 
