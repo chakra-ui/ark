@@ -105,6 +105,16 @@
     },
     "element": "HTMLLabelElement"
   },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
   "Positioner": {
     "props": {
       "asChild": {

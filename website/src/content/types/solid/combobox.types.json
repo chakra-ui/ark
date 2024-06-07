@@ -55,6 +55,11 @@
       "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
     }
   },
+  "List": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Positioner": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
