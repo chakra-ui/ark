@@ -4,6 +4,7 @@ import { PageHeader } from '~/components/page-header'
 import { Faqs } from '~/components/plus/faqs'
 import { GetInTouch } from '~/components/plus/get-in-touch'
 import { PricingCard } from '~/components/plus/pricing-card'
+import { signIn } from '~/lib/auth'
 
 export default function Page() {
   return (
@@ -21,6 +22,14 @@ export default function Page() {
         <Faqs />
         <GetInTouch />
       </Stack>
+      <form
+        action={async () => {
+          'use server'
+          await signIn('google')
+        }}
+      >
+        <button type="submit">Signin with Google</button>
+      </form>
     </Container>
   )
 }
