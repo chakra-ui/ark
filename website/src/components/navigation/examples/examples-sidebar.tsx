@@ -1,10 +1,11 @@
 'use client'
 import { Collapsible } from '@ark-ui/react/collapsible'
-import { ChevronRightIcon } from 'lucide-react'
+import { ChevronRightIcon, CirclePlus } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
-import { Icon } from '~/components/ui'
-import type { Example, ExampleGroup } from '~/lib/examples'
+import { HStack } from 'styled-system/jsx'
+import { Icon, Text } from '~/components/ui'
+import type { ExampleGroup } from '~/lib/examples'
 import { recipe } from '../sidebar.recipe'
 
 const styles = recipe()
@@ -42,7 +43,14 @@ export const ExamplesSidebar = (props: Props) => {
                             aria-current={pathname === href ? 'page' : undefined}
                             className={styles.link}
                           >
-                            {item.title}
+                            <HStack justifyContent="space-between" width="full">
+                              <Text as="span">{item.title}</Text>
+                              {item.accessLevel === 'paid' && (
+                                <Icon size="sm" color="accent.default">
+                                  <CirclePlus />
+                                </Icon>
+                              )}
+                            </HStack>
                           </NextLink>
                         </li>
                       )
