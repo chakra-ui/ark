@@ -9,7 +9,7 @@ export interface SignaturePadGuideProps extends HTMLArkProps<'div'> {}
 export const SignaturePadGuide = forwardRef<HTMLDivElement, SignaturePadGuideProps>(
   (props, ref) => {
     const signature = useSignaturePadContext()
-    const mergedProps = mergeProps(signature.guideProps, props)
+    const mergedProps = mergeProps(signature.getGuideProps(), props)
 
     return <ark.div {...mergedProps} ref={ref} />
   },

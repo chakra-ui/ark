@@ -26,3 +26,7 @@ export {
   SignaturePadSegment as Segment,
   type SignaturePadSegmentProps as SegmentProps,
 } from './signature-pad-segment'
+export {
+  SignaturePadSegmentPath as SegmentPath,
+  type SignaturePadSegmentPathProps as SegmentPathProps,
+} from './signature-pad-segment-path'

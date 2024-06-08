@@ -11,7 +11,7 @@ export const SignaturePadClearTrigger = forwardRef<
   SignaturePadClearTriggerProps
 >((props, ref) => {
   const signature = useSignaturePadContext()
-  const mergedProps = mergeProps(signature.clearTriggerProps, props)
+  const mergedProps = mergeProps(signature.getClearTriggerProps(), props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

@@ -19,7 +19,7 @@ export const SignaturePadRoot = forwardRef<HTMLDivElement, SignaturePadRootProps
     'onDrawEnd',
   ])
   const signaturePad = useSignaturePad(useSignaturePadProps)
-  const mergedProps = mergeProps(signaturePad.rootProps, localProps)
+  const mergedProps = mergeProps(signaturePad.getRootProps(), localProps)
 
   return (
     <SignaturePadProvider value={signaturePad}>

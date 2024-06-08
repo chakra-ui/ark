@@ -8,7 +8,7 @@ export interface SignaturePadLabelProps extends HTMLArkProps<'label'> {}
 export const SignaturePadLabel = forwardRef<HTMLLabelElement, SignaturePadLabelProps>(
   (props, ref) => {
     const signature = useSignaturePadContext()
-    const mergedProps = mergeProps(signature.labelProps, props)
+    const mergedProps = mergeProps(signature.getLabelProps(), props)
 
     return <ark.label {...mergedProps} ref={ref} />
   },
