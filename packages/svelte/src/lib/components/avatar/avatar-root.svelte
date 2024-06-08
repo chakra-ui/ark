@@ -19,6 +19,5 @@
 </script>
 
 <div {...avatar.api.getRootProps()}>
-  <span {...avatar.api.getFallbackProps()}>PA</span>
   {@render children()}
 </div>
