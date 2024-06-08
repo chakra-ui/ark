@@ -9,6 +9,10 @@ export {
 } from './slider-marker-group'
 export { SliderRange as Range, type SliderRangeProps as RangeProps } from './slider-range'
 export { SliderRoot as Root, type SliderRootProps as RootProps } from './slider-root'
+export {
+  SliderRootProvider as RootProvider,
+  type SliderRootProviderProps as RootProviderProps,
+} from './slider-root-provider'
 export { SliderThumb as Thumb, type SliderThumbProps as ThumbProps } from './slider-thumb'
 export { SliderTrack as Track, type SliderTrackProps as TrackProps } from './slider-track'
 export {

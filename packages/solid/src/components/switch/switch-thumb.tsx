@@ -6,7 +6,7 @@ export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
 
 export const SwitchThumb = (props: SwitchThumbProps) => {
   const api = useSwitchContext()
-  const mergedProps = mergeProps(() => api().thumbProps, props)
+  const mergedProps = mergeProps(() => api().getThumbProps(), props)
 
   return <ark.span {...mergedProps} />
 }

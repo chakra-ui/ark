@@ -18,7 +18,7 @@ export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropType
 
 export const usePagination = (
   props: UsePaginationProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UsePaginationReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -28,7 +28,7 @@ export const usePagination = (
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onPageChange: (details) => emit('pageChange', details),
+    onPageChange: (details) => emit?.('pageChange', details),
     value: props.defaultPage,
     ...cleanProps(props),
   }))

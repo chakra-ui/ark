@@ -6,7 +6,7 @@ export interface ColorPickerControlProps extends HTMLArkProps<'div'> {}
 
 export const ColorPickerControl = (props: ColorPickerControlProps) => {
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

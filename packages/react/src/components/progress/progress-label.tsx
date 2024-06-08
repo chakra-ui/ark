@@ -7,7 +7,7 @@ export interface ProgressLabelProps extends HTMLArkProps<'label'> {}
 
 export const ProgressLabel = forwardRef<HTMLLabelElement, ProgressLabelProps>((props, ref) => {
   const progress = useProgressContext()
-  const mergedProps = mergeProps(progress.labelProps, props)
+  const mergedProps = mergeProps(progress.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

@@ -19,5 +19,5 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.input v-bind="colorPicker.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="colorPicker.getHiddenInputProps()" :as-child="asChild" />
 </template>

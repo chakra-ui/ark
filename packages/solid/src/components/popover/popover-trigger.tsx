@@ -9,7 +9,7 @@ export const PopoverTrigger = (props: PopoverTriggerProps) => {
   const api = usePopoverContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().triggerProps,
+    () => api().getTriggerProps(),
     () => ({ 'aria-controls': presenceApi().unmounted && null }),
     props,
   )

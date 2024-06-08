@@ -19,7 +19,7 @@ export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropType
 
 export const useRadioGroup = (
   props: UseRadioGroupProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseRadioGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -30,8 +30,8 @@ export const useRadioGroup = (
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
     ...cleanProps(props),
   }))

@@ -6,7 +6,7 @@ export interface ComboboxLabelProps extends HTMLArkProps<'label'> {}
 
 export const ComboboxLabel = (props: ComboboxLabelProps) => {
   const combobox = useComboboxContext()
-  const mergedProps = mergeProps(() => combobox().labelProps, props)
+  const mergedProps = mergeProps(() => combobox().getLabelProps(), props)
 
   return <ark.label {...mergedProps} />
 }

@@ -13,6 +13,6 @@ const avatar = useAvatarContext()
 </script>
       
 
-<img {...avatar.imageProps} {...imageProps} />
+<img {...avatar.getImageProps()} {...imageProps} />
     
       

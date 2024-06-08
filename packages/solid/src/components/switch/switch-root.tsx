@@ -24,7 +24,7 @@ export const SwitchRoot = (props: SwitchRootProps) => {
     'value',
   ])
   const api = useSwitch(switchProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <SwitchProvider value={api}>

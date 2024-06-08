@@ -30,6 +30,10 @@ export {
   type PopoverPositionerProps as PositionerProps,
 } from './popover-positioner'
 export { PopoverRoot as Root, type PopoverRootProps as RootProps } from './popover-root'
+export {
+  PopoverRootProvider as RootProvider,
+  type PopoverRootProviderProps as RootProviderProps,
+} from './popover-root-provider'
 export { PopoverTitle as Title, type PopoverTitleProps as TitleProps } from './popover-title'
 export {
   PopoverTrigger as Trigger,

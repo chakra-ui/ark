@@ -192,6 +192,17 @@
     },
     "element": "HTMLDivElement"
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSliderReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
   "Thumb": {
     "props": {
       "index": { "type": "number", "isRequired": true },

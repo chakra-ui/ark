@@ -19,5 +19,5 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.input v-bind="fileUpload.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="fileUpload.getHiddenInputProps()" :as-child="asChild" />
 </template>

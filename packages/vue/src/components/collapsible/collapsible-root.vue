@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './collapsible.types'
 
 export interface CollapsibleRootProps
@@ -14,7 +15,7 @@ export interface CollapsibleRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
@@ -33,7 +34,7 @@ CollapsibleProvider(collapsible)
 </script>
 
 <template>
-  <ark.div v-bind="collapsible.rootProps" :as-child="asChild">
+  <ark.div v-bind="collapsible.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

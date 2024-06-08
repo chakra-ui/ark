@@ -58,6 +58,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    }
+  },
   "Track": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },

@@ -19,7 +19,7 @@ const popover = usePopoverContext()
 </script>
 
 <template>
-  <ark.div v-bind="popover.descriptionProps" :as-child="asChild">
+  <ark.div v-bind="popover.getDescriptionProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

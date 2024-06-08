@@ -18,7 +18,7 @@ export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> 
 
 export const useCarousel = (
   props: UseCarouselProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseCarouselReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -28,7 +28,7 @@ export const useCarousel = (
     dir: locale.value.dir,
     index: props.defaultIndex,
     getRootNode: env?.value.getRootNode,
-    onIndexChange: (details) => emit('indexChange', details),
+    onIndexChange: (details) => emit?.('indexChange', details),
     ...cleanProps(props),
   }))
 

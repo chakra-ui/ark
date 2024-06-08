@@ -19,7 +19,7 @@ const carousel = useCarouselContext()
 </script>
 
 <template>
-  <ark.div v-bind="carousel.itemGroupProps" :as-child="asChild">
+  <ark.div v-bind="carousel.getItemGroupProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

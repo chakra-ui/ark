@@ -29,3 +29,7 @@ export {
   type RadioGroupLabelProps as LabelProps,
 } from './radio-group-label'
 export { RadioGroupRoot as Root, type RadioGroupRootProps as RootProps } from './radio-group-root'
+export {
+  RadioGroupRootProvider as RootProvider,
+  type RadioGroupRootProviderProps as RootProviderProps,
+} from './radio-group-root-provider'

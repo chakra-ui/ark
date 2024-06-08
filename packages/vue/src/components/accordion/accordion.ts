@@ -21,6 +21,10 @@ export {
 } from './accordion-item-trigger.vue'
 export { default as Item, type AccordionItemProps as ItemProps } from './accordion-item.vue'
 export {
+  default as RootProvider,
+  type AccordionRootProviderProps as RootProviderProps,
+} from './accordion-root-provider.vue'
+export {
   default as Root,
   type AccordionRootEmits as RootEmits,
   type AccordionRootProps as RootProps,

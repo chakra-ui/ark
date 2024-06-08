@@ -20,9 +20,12 @@ export {
 export { ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './combobox-item-indicator'
 export { ComboboxItemText, type ComboboxItemTextProps } from './combobox-item-text'
 export { ComboboxLabel, type ComboboxLabelProps } from './combobox-label'
+export { ComboboxList, type ComboboxListProps } from './combobox-list'
 export { ComboboxPositioner, type ComboboxPositionerProps } from './combobox-positioner'
 export { ComboboxRoot, type ComboboxRootProps } from './combobox-root'
+export { ComboboxRootProvider, type ComboboxRootProviderProps } from './combobox-root-provider'
 export { ComboboxTrigger, type ComboboxTriggerProps } from './combobox-trigger'
+export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
 export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
 

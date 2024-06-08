@@ -31,7 +31,7 @@ export const PinInputRoot = (props: PinInputRootProps) => {
     'value',
   ])
   const pinInput = usePinInput(usePinInputProps)
-  const mergedProps = mergeProps(() => pinInput().rootProps, localProps)
+  const mergedProps = mergeProps(() => pinInput().getRootProps(), localProps)
 
   return (
     <PinInputProvider value={pinInput}>

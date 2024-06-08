@@ -157,6 +157,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSliderReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Thumb": {
     "props": {
       "index": { "type": "number", "isRequired": true },

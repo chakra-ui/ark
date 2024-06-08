@@ -19,7 +19,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.span v-bind="editable.previewProps" :as-child="asChild">
+  <ark.span v-bind="editable.getPreviewProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

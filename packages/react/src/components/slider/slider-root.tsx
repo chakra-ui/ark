@@ -36,7 +36,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'value',
   ])
   const slider = useSlider(useSliderProps)
-  const mergedProps = mergeProps(slider.rootProps, localProps)
+  const mergedProps = mergeProps(slider.getRootProps(), localProps)
 
   return (
     <SliderProvider value={slider}>

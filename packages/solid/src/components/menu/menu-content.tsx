@@ -10,7 +10,7 @@ export const MenuContent = (props: MenuContentProps) => {
   const context = useMenuContext()
   const presenceContext = usePresenceContext()
   const mergedProps = mergeProps(
-    () => context().contentProps,
+    () => context().getContentProps(),
     () => presenceContext().presenceProps,
     props,
   )

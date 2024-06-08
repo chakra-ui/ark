@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './clipboard.types'
 
 export interface ClipboardRootProps
@@ -13,7 +14,7 @@ export interface ClipboardRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useClipboard } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
 
@@ -25,7 +26,7 @@ ClipboardProvider(clipboard)
 </script>
 
 <template>
-  <ark.div v-bind="clipboard.rootProps" :as-child="asChild">
+  <ark.div v-bind="clipboard.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

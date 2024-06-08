@@ -7,7 +7,7 @@ export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
 
 export const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>((props, ref) => {
   const switchContext = useSwitchContext()
-  const mergedProps = mergeProps(switchContext.thumbProps, props)
+  const mergedProps = mergeProps(switchContext.getThumbProps(), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

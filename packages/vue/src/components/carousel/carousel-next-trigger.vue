@@ -19,7 +19,7 @@ const carousel = useCarouselContext()
 </script>
 
 <template>
-  <ark.button v-bind="carousel.nextTriggerProps" :as-child="asChild">
+  <ark.button v-bind="carousel.getNextTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

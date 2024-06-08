@@ -19,7 +19,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.label v-bind="editable.labelProps" :as-child="asChild">
+  <ark.label v-bind="editable.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

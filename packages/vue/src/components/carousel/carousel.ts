@@ -29,6 +29,10 @@ export {
   type CarouselPrevTriggerProps as PrevTriggerProps,
 } from './carousel-prev-trigger.vue'
 export {
+  default as RootProvider,
+  type CarouselRootProviderProps as RootProviderProps,
+} from './carousel-root-provider.vue'
+export {
   default as Root,
   type CarouselRootEmits as RootEmits,
   type CarouselRootProps as RootProps,

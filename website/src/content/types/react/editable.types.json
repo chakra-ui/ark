@@ -207,6 +207,17 @@
     },
     "element": "HTMLDivElement"
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseEditableReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
   "SubmitTrigger": {
     "props": {
       "asChild": {

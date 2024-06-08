@@ -19,7 +19,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.button v-bind="editable.cancelTriggerProps" :as-child="asChild">
+  <ark.button v-bind="editable.getCancelTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -11,7 +11,7 @@ export interface CollapsibleRootProps extends Assign<HTMLArkProps<'div'>, UseCol
 export const CollapsibleRoot = forwardRef<HTMLDivElement, CollapsibleRootProps>((props, ref) => {
   const [useCollapsibleProps, localProps] = splitCollapsibleProps(props)
   const collapsible = useCollapsible(useCollapsibleProps)
-  const mergedProps = mergeProps(collapsible.rootProps, localProps)
+  const mergedProps = mergeProps(collapsible.getRootProps(), localProps)
 
   return (
     <CollapsibleProvider value={collapsible}>

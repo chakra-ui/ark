@@ -6,7 +6,7 @@ export interface MenuIndicatorProps extends HTMLArkProps<'div'> {}
 
 export const MenuIndicator = (props: MenuIndicatorProps) => {
   const context = useMenuContext()
-  const mergedProps = mergeProps(() => context().indicatorProps, props)
+  const mergedProps = mergeProps(() => context().getIndicatorProps(), props)
 
   return <ark.div {...mergedProps} />
 }

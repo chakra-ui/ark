@@ -29,7 +29,7 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
   ])
 
   const fileUpload = useFileUpload(fileUploadProps)
-  const mergedProps = mergeProps(() => fileUpload().rootProps, localProps)
+  const mergedProps = mergeProps(() => fileUpload().getRootProps(), localProps)
 
   return (
     <FileUploadProvider value={fileUpload}>

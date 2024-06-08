@@ -8,7 +8,7 @@ export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
 export const DatePickerRangeText = forwardRef<HTMLDivElement, DatePickerRangeTextProps>(
   (props, ref) => {
     const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.rangeTextProps, props)
+    const mergedProps = mergeProps(datePicker.getRangeTextProps(), props)
 
     return (
       <ark.div {...mergedProps} ref={ref}>

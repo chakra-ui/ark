@@ -7,7 +7,7 @@ export interface SelectLabelProps extends HTMLArkProps<'label'> {}
 
 export const SelectLabel = forwardRef<HTMLLabelElement, SelectLabelProps>((props, ref) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(select.labelProps, props)
+  const mergedProps = mergeProps(select.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

@@ -19,7 +19,7 @@ export interface UsePresenceProps extends Optional<presence.Context, 'present'> 
 
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
-export const usePresence = (props: MaybeRef<UsePresenceProps>, emit: EmitFn<RootEmits>) => {
+export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<RootEmits>) => {
   const context = ref(props)
   const wasEverPresent = ref(false)
   const nodeRef = ref<VNodeRef | null>(null)
@@ -27,7 +27,7 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit: EmitFn<Root
   const [state, send] = useMachine(
     presence.machine({
       ...context.value,
-      onExitComplete: () => emit('exitComplete'),
+      onExitComplete: () => emit?.('exitComplete'),
     }),
     { context },
   )

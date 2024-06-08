@@ -6,7 +6,7 @@ export interface TagsInputInputProps extends HTMLArkProps<'input'> {}
 
 export const TagsInputInput = (props: TagsInputInputProps) => {
   const api = useTagsInputContext()
-  const mergedProps = mergeProps(() => api().inputProps, props)
+  const mergedProps = mergeProps(() => api().getInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

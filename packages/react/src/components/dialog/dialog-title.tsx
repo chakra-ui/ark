@@ -7,7 +7,7 @@ export interface DialogTitleProps extends HTMLArkProps<'h2'> {}
 
 export const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>((props, ref) => {
   const dialog = useDialogContext()
-  const mergedProps = mergeProps(dialog.titleProps, props)
+  const mergedProps = mergeProps(dialog.getTitleProps(), props)
 
   return <ark.h2 {...mergedProps} ref={ref} />
 })

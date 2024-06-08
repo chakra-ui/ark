@@ -1,5 +1,4 @@
 export type { ValueChangeDetails as EditableValueChangeDetails } from '@zag-js/editable'
-export * as Editable from './editable'
 export { default as EditableArea, type EditableAreaProps } from './editable-area.vue'
 export {
   default as EditableCancelTrigger,
@@ -23,4 +22,11 @@ export {
   default as EditableSubmitTrigger,
   type EditableSubmitTriggerProps,
 } from './editable-submit-trigger.vue'
+export { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
 export { useEditableContext, type UseEditableContext } from './use-editable-context'
+export {
+  default as EditableRootProvider,
+  type EditableRootProviderProps,
+} from './editable-root-provider.vue'
+
+export * as Editable from './editable'

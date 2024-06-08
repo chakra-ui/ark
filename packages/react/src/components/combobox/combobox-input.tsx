@@ -7,7 +7,7 @@ export interface ComboboxInputProps extends HTMLArkProps<'input'> {}
 
 export const ComboboxInput = forwardRef<HTMLInputElement, ComboboxInputProps>((props, ref) => {
   const combobox = useComboboxContext()
-  const mergedProps = mergeProps(combobox.inputProps, props)
+  const mergedProps = mergeProps(combobox.getInputProps(), props)
 
   return <ark.input {...mergedProps} ref={ref} />
 })

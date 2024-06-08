@@ -7,7 +7,7 @@ export interface TagsInputControlProps extends HTMLArkProps<'div'> {}
 
 export const TagsInputControl = forwardRef<HTMLDivElement, TagsInputControlProps>((props, ref) => {
   const tagsInput = useTagsInputContext()
-  const mergedProps = mergeProps(tagsInput.controlProps, props)
+  const mergedProps = mergeProps(tagsInput.getControlProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

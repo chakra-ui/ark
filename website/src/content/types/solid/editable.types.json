@@ -167,6 +167,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseEditableReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "SubmitTrigger": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }

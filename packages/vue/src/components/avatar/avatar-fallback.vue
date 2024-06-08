@@ -19,7 +19,7 @@ const avatar = useAvatarContext()
 </script>
 
 <template>
-  <ark.span v-bind="avatar.fallbackProps" :as-child="asChild">
+  <ark.span v-bind="avatar.getFallbackProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

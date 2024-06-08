@@ -8,7 +8,7 @@ export interface ColorPickerFormatSelectProps extends HTMLArkProps<'select'> {}
 export const ColorPickerFormatSelect = forwardRef<HTMLSelectElement, ColorPickerFormatSelectProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
-    const mergedProps = mergeProps(colorPicker.formatSelectProps, props)
+    const mergedProps = mergeProps(colorPicker.getFormatSelectProps(), props)
 
     return (
       <ark.select {...mergedProps} ref={ref}>

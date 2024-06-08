@@ -19,7 +19,7 @@ const carousel = useCarouselContext()
 </script>
 
 <template>
-  <ark.div v-bind="carousel.viewportProps" :as-child="asChild">
+  <ark.div v-bind="carousel.getViewportProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

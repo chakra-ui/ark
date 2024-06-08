@@ -79,5 +79,11 @@
         "description": "Whether the checkbox is read-only"
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    }
   }
 }

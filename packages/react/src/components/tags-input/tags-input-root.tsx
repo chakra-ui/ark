@@ -39,7 +39,7 @@ export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((pro
     'value',
   ])
   const tagsInput = useTagsInput(useTagsInputProps)
-  const mergedProps = mergeProps(tagsInput.rootProps, localProps)
+  const mergedProps = mergeProps(tagsInput.getRootProps(), localProps)
 
   return (
     <TagsInputProvider value={tagsInput}>

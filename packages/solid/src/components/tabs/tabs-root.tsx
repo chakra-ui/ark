@@ -31,7 +31,7 @@ export const TabsRoot = (props: TabsRootProps) => {
   ])
 
   const api = useTabs(useTabsProps)
-  const mergedProps = mergeProps(() => api().rootProps, restProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), restProps)
 
   return (
     <TabsProvider value={api}>

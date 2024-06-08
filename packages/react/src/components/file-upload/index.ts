@@ -5,6 +5,7 @@ export type {
 } from '@zag-js/file-upload'
 export { FileUploadContext, type FileUploadContextProps } from './file-upload-context'
 export { FileUploadDropzone, type FileUploadDropzoneProps } from './file-upload-dropzone'
+export { FileUploadHiddenInput, type FileUploadHiddenInputProps } from './file-upload-hidden-input'
 export { FileUploadItem, type FileUploadItemProps } from './file-upload-item'
 export {
   FileUploadItemDeleteTrigger,
@@ -23,8 +24,12 @@ export {
 } from './file-upload-item-size-text'
 export { FileUploadLabel, type FileUploadLabelProps } from './file-upload-label'
 export { FileUploadRoot, type FileUploadRootProps } from './file-upload-root'
+export {
+  FileUploadRootProvider,
+  type FileUploadRootProviderProps,
+} from './file-upload-root-provider'
 export { FileUploadTrigger, type FileUploadTriggerProps } from './file-upload-trigger'
-export { FileUploadHiddenInput, type FileUploadHiddenInputProps } from './file-upload-hidden-input'
-export { type UseFileUploadContext, useFileUploadContext } from './use-file-upload-context'
+export { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload'
+export { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context'
 
 export * as FileUpload from './file-upload'

@@ -6,7 +6,7 @@ export interface ToastActionTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ToastActionTrigger = (props: ToastActionTriggerProps) => {
   const toast = useToastContext()
-  const mergedProps = mergeProps(() => toast().actionTriggerProps, props)
+  const mergedProps = mergeProps(() => toast().getActionTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

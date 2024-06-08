@@ -19,7 +19,7 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.button v-bind="numberInput.incrementTriggerProps" :as-child="asChild">
+  <ark.button v-bind="numberInput.getIncrementTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

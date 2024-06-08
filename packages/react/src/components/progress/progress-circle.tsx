@@ -6,7 +6,7 @@ export interface ProgressCircleProps extends HTMLArkProps<'svg'> {}
 
 export const ProgressCircle = (props: ProgressCircleProps) => {
   const progress = useProgressContext()
-  const mergedProps = mergeProps(progress.circleProps, props)
+  const mergedProps = mergeProps(progress.getCircleProps(), props)
 
   return <ark.svg {...mergedProps} />
 }

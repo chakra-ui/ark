@@ -23,6 +23,10 @@ export {
   type EditablePreviewProps as PreviewProps,
 } from './editable-preview.vue'
 export {
+  default as RootProvider,
+  type EditableRootProviderProps as RootProviderProps,
+} from './editable-root-provider.vue'
+export {
   default as Root,
   type EditableRootEmits as RootEmits,
   type EditableRootProps as RootProps,

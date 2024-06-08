@@ -10,7 +10,7 @@ export const ComboboxContent = (props: ComboboxContentProps) => {
   const api = useComboboxContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

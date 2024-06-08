@@ -10,7 +10,7 @@ export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerP
   (props, ref) => {
     const combobox = useComboboxContext()
     const presence = usePresenceContext()
-    const mergedProps = mergeProps(combobox.positionerProps, props)
+    const mergedProps = mergeProps(combobox.getPositionerProps(), props)
 
     if (presence.unmounted) {
       return null

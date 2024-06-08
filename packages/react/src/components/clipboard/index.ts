@@ -5,7 +5,9 @@ export { ClipboardIndicator, type ClipboardIndicatorProps } from './clipboard-in
 export { ClipboardInput, type ClipboardInputProps } from './clipboard-input'
 export { ClipboardLabel, type ClipboardLabelProps } from './clipboard-label'
 export { ClipboardRoot, type ClipboardRootProps } from './clipboard-root'
+export { ClipboardRootProvider, type ClipboardRootProviderProps } from './clipboard-root-provider'
 export { ClipboardTrigger, type ClipboardTriggerProps } from './clipboard-trigger'
-export { type UseClipboardContext, useClipboardContext } from './use-clipboard-context'
+export { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard'
+export { useClipboardContext, type UseClipboardContext } from './use-clipboard-context'
 
 export * as Clipboard from './clipboard'

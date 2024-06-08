@@ -19,7 +19,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.controlProps" :as-child="asChild">
+  <ark.div v-bind="datePicker.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

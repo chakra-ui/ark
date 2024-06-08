@@ -7,7 +7,7 @@ export interface DatePickerLabelProps extends HTMLArkProps<'label'> {}
 
 export const DatePickerLabel = forwardRef<HTMLLabelElement, DatePickerLabelProps>((props, ref) => {
   const datePicker = useDatePickerContext()
-  const mergedProps = mergeProps(datePicker.labelProps, props)
+  const mergedProps = mergeProps(datePicker.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

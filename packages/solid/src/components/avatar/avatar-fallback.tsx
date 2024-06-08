@@ -6,6 +6,6 @@ export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
 
 export const AvatarFallback = (props: AvatarFallbackProps) => {
   const context = useAvatarContext()
-  const mergedProps = mergeProps(() => context().fallbackProps, props)
+  const mergedProps = mergeProps(() => context().getFallbackProps(), props)
   return <ark.span {...mergedProps} />
 }

@@ -3,13 +3,16 @@ export type {
   ValidityChangeDetails as TagsInputValidityChangeDetails,
   ValueChangeDetails as TagsInputValueChangeDetails,
 } from '@zag-js/tags-input'
-export * as TagsInput from './tags-input'
 export {
   default as TagsInputClearTrigger,
   type TagsInputClearTriggerProps,
 } from './tags-input-clear-trigger.vue'
 export { default as TagsInputContext, type TagsInputContextProps } from './tags-input-context.vue'
 export { default as TagsInputControl, type TagsInputControlProps } from './tags-input-control.vue'
+export {
+  default as TagsInputHiddenInput,
+  type TagsInputHiddenInputProps,
+} from './tags-input-hidden-input.vue'
 export { default as TagsInputInput, type TagsInputInputProps } from './tags-input-input.vue'
 export {
   default as TagsInputItemContext,
@@ -34,16 +37,19 @@ export {
 export { default as TagsInputItem, type TagsInputItemProps } from './tags-input-item.vue'
 export { default as TagsInputLabel, type TagsInputLabelProps } from './tags-input-label.vue'
 export {
+  default as TagsInputRootProvider,
+  type TagsInputRootProviderProps,
+} from './tags-input-root-provider.vue'
+export {
   default as TagsInputRoot,
   type TagsInputRootEmits,
   type TagsInputRootProps,
 } from './tags-input-root.vue'
-export {
-  default as TagsInputHiddenInput,
-  type TagsInputHiddenInputProps,
-} from './tags-input-hidden-input.vue'
+export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 export { useTagsInputContext, type UseTagsInputContext } from './use-tags-input-context'
 export {
   useTagsInputItemContext,
   type UseTagsInputItemContext,
 } from './use-tags-input-item-context'
+
+export * as TagsInput from './tags-input'

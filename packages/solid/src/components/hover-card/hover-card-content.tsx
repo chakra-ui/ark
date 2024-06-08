@@ -10,7 +10,7 @@ export const HoverCardContent = (props: HoverCardContentProps) => {
   const api = useHoverCardContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

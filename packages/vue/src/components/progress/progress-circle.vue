@@ -19,7 +19,7 @@ const progress = useProgressContext()
 </script>
 
 <template>
-  <ark.svg v-bind="progress.circleProps" :as-child="asChild">
+  <ark.svg v-bind="progress.getCircleProps()" :as-child="asChild">
     <slot />
   </ark.svg>
 </template>

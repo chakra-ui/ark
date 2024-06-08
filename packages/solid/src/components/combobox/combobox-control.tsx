@@ -6,7 +6,7 @@ export interface ComboboxControlProps extends HTMLArkProps<'div'> {}
 
 export const ComboboxControl = (props: ComboboxControlProps) => {
   const combobox = useComboboxContext()
-  const mergedProps = mergeProps(() => combobox().controlProps, props)
+  const mergedProps = mergeProps(() => combobox().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

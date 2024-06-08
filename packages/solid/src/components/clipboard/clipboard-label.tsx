@@ -6,7 +6,7 @@ export interface ClipboardLabelProps extends HTMLArkProps<'label'> {}
 
 export const ClipboardLabel = (props: ClipboardLabelProps) => {
   const api = useClipboardContext()
-  const mergedProps = mergeProps(() => api().labelProps, props)
+  const mergedProps = mergeProps(() => api().getLabelProps(), props)
 
   return <ark.label {...mergedProps} />
 }

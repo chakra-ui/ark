@@ -150,6 +150,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+    }
+  },
   "Thumb": {
     "props": {
       "index": { "type": "number", "isRequired": true },

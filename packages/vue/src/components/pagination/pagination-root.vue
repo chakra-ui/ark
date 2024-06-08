@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './pagination.types'
 
 export interface PaginationRootProps
@@ -13,7 +14,7 @@ export interface PaginationRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 
@@ -25,7 +26,7 @@ PaginationProvider(pagination)
 </script>
 
 <template>
-  <ark.nav v-bind="pagination.rootProps" :as-child="asChild">
+  <ark.nav v-bind="pagination.getRootProps()" :as-child="asChild">
     <slot />
   </ark.nav>
 </template>

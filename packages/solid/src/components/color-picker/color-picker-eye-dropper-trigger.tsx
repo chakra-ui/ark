@@ -6,7 +6,7 @@ export interface ColorPickerEyeDropperTriggerProps extends HTMLArkProps<'button'
 
 export const ColorPickerEyeDropperTrigger = (props: ColorPickerEyeDropperTriggerProps) => {
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => api().eyeDropperTriggerProps, props)
+  const mergedProps = mergeProps(() => api().getEyeDropperTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

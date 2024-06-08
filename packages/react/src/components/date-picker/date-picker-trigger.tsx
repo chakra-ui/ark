@@ -8,7 +8,7 @@ export interface DatePickerTriggerProps extends HTMLArkProps<'button'> {}
 export const DatePickerTrigger = forwardRef<HTMLButtonElement, DatePickerTriggerProps>(
   (props, ref) => {
     const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.triggerProps, props)
+    const mergedProps = mergeProps(datePicker.getTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

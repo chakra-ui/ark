@@ -7,7 +7,7 @@ export interface ToastTitleProps extends HTMLArkProps<'div'> {}
 
 export const ToastTitle = forwardRef<HTMLDivElement, ToastTitleProps>((props, ref) => {
   const toast = useToastContext()
-  const mergedProps = mergeProps(toast.titleProps, props)
+  const mergedProps = mergeProps(toast.getTitleProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

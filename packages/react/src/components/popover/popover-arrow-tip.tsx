@@ -7,7 +7,7 @@ export interface PopoverArrowTipProps extends HTMLArkProps<'div'> {}
 
 export const PopoverArrowTip = forwardRef<HTMLDivElement, PopoverArrowTipProps>((props, ref) => {
   const popover = usePopoverContext()
-  const mergedProps = mergeProps(popover.arrowTipProps, props)
+  const mergedProps = mergeProps(popover.getArrowTipProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

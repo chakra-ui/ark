@@ -8,7 +8,7 @@ export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
 export const DialogCloseTrigger = forwardRef<HTMLButtonElement, DialogCloseTriggerProps>(
   (props, ref) => {
     const dialog = useDialogContext()
-    const mergedProps = mergeProps(dialog.closeTriggerProps, props)
+    const mergedProps = mergeProps(dialog.getCloseTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

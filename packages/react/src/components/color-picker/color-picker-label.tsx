@@ -8,7 +8,7 @@ export interface ColorPickerLabelProps extends HTMLArkProps<'label'> {}
 export const ColorPickerLabel = forwardRef<HTMLLabelElement, ColorPickerLabelProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
-    const mergedProps = mergeProps(colorPicker.labelProps, props)
+    const mergedProps = mergeProps(colorPicker.getLabelProps(), props)
 
     return <ark.label {...mergedProps} ref={ref} />
   },

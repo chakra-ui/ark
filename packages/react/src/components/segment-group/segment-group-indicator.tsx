@@ -10,7 +10,7 @@ export const SegmentGroupIndicator = forwardRef<HTMLDivElement, SegmentGroupIndi
   (props, ref) => {
     const segmentGroup = useSegmentGroupContext()
     const mergedProps = mergeProps(
-      segmentGroup.indicatorProps,
+      segmentGroup.getIndicatorProps(),
       segmentGroupAnatomy.build().indicator.attrs as Record<string, string>,
       props,
     )

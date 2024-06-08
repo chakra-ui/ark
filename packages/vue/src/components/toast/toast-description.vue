@@ -19,7 +19,7 @@ const toast = useToastContext()
 </script>
 
 <template>
-  <ark.div v-bind="toast.descriptionProps" :as-child="asChild">
+  <ark.div v-bind="toast.getDescriptionProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

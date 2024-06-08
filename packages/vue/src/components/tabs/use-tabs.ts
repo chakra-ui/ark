@@ -17,7 +17,7 @@ export interface UseTabsProps
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
-export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsReturn => {
+export const useTabs = (props: UseTabsProps, emit?: EmitFn<RootEmits>): UseTabsReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -27,10 +27,10 @@ export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsRe
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit('focusChange', details),
+    onFocusChange: (details) => emit?.('focusChange', details),
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
     ...cleanProps(props),
   }))

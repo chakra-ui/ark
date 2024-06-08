@@ -69,6 +69,10 @@ export {
   type ColorPickerPositionerProps as PositionerProps,
 } from './color-picker-positioner.vue'
 export {
+  default as RootProvider,
+  type ColorPickerRootProviderProps as RootProviderProps,
+} from './color-picker-root-provider.vue'
+export {
   default as Root,
   type ColorPickerRootEmits as RootEmits,
   type ColorPickerRootProps as RootProps,

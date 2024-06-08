@@ -19,7 +19,7 @@ const context = useSwitchContext()
 </script>
 
 <template>
-  <ark.span v-bind="context.controlProps" :as-child="asChild">
+  <ark.span v-bind="context.getControlProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

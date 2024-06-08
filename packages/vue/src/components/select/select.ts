@@ -42,6 +42,10 @@ export {
   type SelectPositionerProps as PositionerProps,
 } from './select-positioner.vue'
 export {
+  default as RootProvider,
+  type SelectRootProviderProps as RootProviderProps,
+} from './select-root-provider.vue'
+export {
   default as Root,
   type SelectRootEmits as RootEmits,
   type SelectRootProps as RootProps,

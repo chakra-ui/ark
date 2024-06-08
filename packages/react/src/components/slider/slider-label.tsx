@@ -7,7 +7,7 @@ export interface SliderLabelProps extends HTMLArkProps<'label'> {}
 
 export const SliderLabel = forwardRef<HTMLLabelElement, SliderLabelProps>((props, ref) => {
   const slider = useSliderContext()
-  const mergedProps = mergeProps(slider.labelProps, props)
+  const mergedProps = mergeProps(slider.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

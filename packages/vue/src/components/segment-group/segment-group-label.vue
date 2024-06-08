@@ -22,7 +22,7 @@ const { label } = segmentGroupAnatomy.build()
 
 <template>
   <ark.label
-    v-bind="segmentGroup.labelProps"
+    v-bind="segmentGroup.getLabelProps()"
     :as-child="asChild"
     :data-scope="label.attrs['data-scope']"
     :data-part="label.attrs['data-part']"

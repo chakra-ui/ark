@@ -16,7 +16,7 @@ export const ClipboardRoot = (props: ClipboardRootProps) => {
     'value',
   ])
   const api = useClipboard(useClipboardProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <ClipboardProvider value={api}>

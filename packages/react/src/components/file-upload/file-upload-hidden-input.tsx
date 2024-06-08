@@ -8,7 +8,7 @@ export interface FileUploadHiddenInputProps extends HTMLArkProps<'input'> {}
 export const FileUploadHiddenInput = forwardRef<HTMLInputElement, FileUploadHiddenInputProps>(
   (props, ref) => {
     const fileUpload = useFileUploadContext()
-    const mergedProps = mergeProps(fileUpload.hiddenInputProps, props)
+    const mergedProps = mergeProps(fileUpload.getHiddenInputProps(), props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

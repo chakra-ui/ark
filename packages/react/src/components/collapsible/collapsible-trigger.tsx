@@ -8,7 +8,7 @@ export interface CollapsibleTriggerProps extends HTMLArkProps<'button'> {}
 export const CollapsibleTrigger = forwardRef<HTMLButtonElement, CollapsibleTriggerProps>(
   (props, ref) => {
     const collapsible = useCollapsibleContext()
-    const mergedProps = mergeProps(collapsible.triggerProps, props)
+    const mergedProps = mergeProps(collapsible.getTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

@@ -19,7 +19,7 @@ const popover = usePopoverContext()
 </script>
 
 <template>
-  <ark.button v-bind="popover.closeTriggerProps" :as-child="asChild">
+  <ark.button v-bind="popover.getCloseTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -19,7 +19,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.select v-bind="colorPicker.formatSelectProps">
+  <ark.select v-bind="colorPicker.getFormatSelectProps()">
     <ark.option v-for="format in ['rgba', 'hsla', 'hsba']" :key="format" :value="format">
       {{ format }}
     </ark.option>

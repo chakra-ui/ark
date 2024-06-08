@@ -19,7 +19,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.div v-bind="select.controlProps" :as-child="asChild">
+  <ark.div v-bind="select.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

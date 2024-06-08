@@ -8,7 +8,7 @@ export interface ComboboxClearTriggerProps extends HTMLArkProps<'button'> {}
 export const ComboboxClearTrigger = forwardRef<HTMLButtonElement, ComboboxClearTriggerProps>(
   (props, ref) => {
     const combobox = useComboboxContext()
-    const mergedProps = mergeProps(combobox.clearTriggerProps, props)
+    const mergedProps = mergeProps(combobox.getClearTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

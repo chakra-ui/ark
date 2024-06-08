@@ -7,7 +7,7 @@ export interface CollapsibleContentProps extends HTMLArkProps<'div'> {}
 
 export const CollapsibleContent = (props: CollapsibleContentProps) => {
   const api = useCollapsibleContext()
-  const mergedProps = mergeProps(() => api().contentProps, props)
+  const mergedProps = mergeProps(() => api().getContentProps(), props)
 
   return (
     <Show when={!api().unmounted}>

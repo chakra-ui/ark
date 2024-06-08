@@ -29,10 +29,19 @@ export {
   type SegmentGroupLabelProps,
 } from './segment-group-label.vue'
 export {
+  default as SegmentGroupRootProvider,
+  type SegmentGroupRootProviderProps,
+} from './segment-group-root-provider.vue'
+export {
   default as SegmentGroupRoot,
   type SegmentGroupRootEmits,
   type SegmentGroupRootProps,
 } from './segment-group-root.vue'
+export {
+  useSegmentGroup,
+  type UseSegmentGroupProps,
+  type UseSegmentGroupReturn,
+} from './use-segment-group'
 export { useSegmentGroupContext, type UseSegmentGroupContext } from './use-segment-group-context'
 export {
   useSegmentGroupItemContext,

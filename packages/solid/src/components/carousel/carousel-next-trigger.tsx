@@ -6,7 +6,7 @@ export interface CarouselNextTriggerProps extends HTMLArkProps<'button'> {}
 
 export const CarouselNextTrigger = (props: CarouselNextTriggerProps) => {
   const api = useCarouselContext()
-  const mergedProps = mergeProps(() => api().nextTriggerProps, props)
+  const mergedProps = mergeProps(() => api().getNextTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

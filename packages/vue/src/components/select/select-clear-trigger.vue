@@ -19,7 +19,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.button v-bind="select.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="select.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

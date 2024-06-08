@@ -19,7 +19,7 @@ const dialog = useDialogContext()
 </script>
 
 <template>
-  <ark.h2 v-bind="dialog.titleProps" :as-child="asChild">
+  <ark.h2 v-bind="dialog.getTitleProps()" :as-child="asChild">
     <slot />
   </ark.h2>
 </template>

@@ -7,7 +7,7 @@ export interface SliderControlProps extends HTMLArkProps<'div'> {}
 
 export const SliderControl = forwardRef<HTMLDivElement, SliderControlProps>((props, ref) => {
   const slider = useSliderContext()
-  const mergedProps = mergeProps(slider.controlProps, props)
+  const mergedProps = mergeProps(slider.getControlProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

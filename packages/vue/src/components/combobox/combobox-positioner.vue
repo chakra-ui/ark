@@ -22,7 +22,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="combobox.positionerProps"
+    v-bind="combobox.getPositionerProps()"
     :present="combobox.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

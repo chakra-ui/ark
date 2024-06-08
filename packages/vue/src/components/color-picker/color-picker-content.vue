@@ -21,7 +21,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.div v-bind="colorPicker.contentProps">
+  <ark.div v-bind="colorPicker.getContentProps()">
     <slot />
   </ark.div>
 </template>

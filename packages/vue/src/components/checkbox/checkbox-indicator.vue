@@ -25,7 +25,7 @@ const isHidden = computed(() =>
 </script>
 
 <template>
-  <ark.div v-bind="checkbox.indicatorProps" :hidden="!isHidden" :as-child="asChild">
+  <ark.div v-bind="checkbox.getIndicatorProps()" :hidden="!isHidden" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

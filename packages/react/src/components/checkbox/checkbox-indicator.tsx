@@ -11,7 +11,7 @@ export const CheckboxIndicator = forwardRef<HTMLDivElement, CheckboxIndicatorPro
   (props, ref) => {
     const { indeterminate, ...rest } = props
     const checkbox = useCheckboxContext()
-    const mergedProps = mergeProps(checkbox.indicatorProps, rest)
+    const mergedProps = mergeProps(checkbox.getIndicatorProps(), rest)
     const isVisible = indeterminate ? checkbox.indeterminate : checkbox.checked
 
     return <ark.div {...mergedProps} hidden={!isVisible} ref={ref} />

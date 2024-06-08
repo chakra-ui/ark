@@ -17,7 +17,7 @@ export interface UseSwitchProps
 
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
-export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSwitchReturn => {
+export const useSwitch = (props: UseSwitchProps, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -28,8 +28,8 @@ export const useSwitch = (props: UseSwitchProps, emit: EmitFn<RootEmits>): UseSw
     checked: props.defaultChecked,
     getRootNode: env?.value.getRootNode,
     onCheckedChange(details) {
-      emit('checkedChange', details)
-      emit('update:checked', details.checked)
+      emit?.('checkedChange', details)
+      emit?.('update:checked', details.checked)
     },
     ...cleanProps(props),
   }))

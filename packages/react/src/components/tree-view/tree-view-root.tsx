@@ -25,7 +25,7 @@ export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props
     'typeahead',
   ])
   const treeView = useTreeView(useTreeViewProps)
-  const mergedProps = mergeProps(treeView.rootProps, localProps)
+  const mergedProps = mergeProps(treeView.getRootProps(), localProps)
 
   return (
     <TreeViewProvider value={treeView}>

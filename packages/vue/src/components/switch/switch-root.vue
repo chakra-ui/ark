@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { LabelHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './switch.types'
 
 export interface SwitchRootProps
@@ -14,7 +15,7 @@ export interface SwitchRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 
@@ -34,7 +35,7 @@ SwitchProvider(context)
 </script>
 
 <template>
-  <ark.label v-bind="context.rootProps" :as-child="asChild">
+  <ark.label v-bind="context.getRootProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

@@ -7,7 +7,7 @@ export interface SwitchLabelProps extends HTMLArkProps<'span'> {}
 
 export const SwitchLabel = forwardRef<HTMLSpanElement, SwitchLabelProps>((props, ref) => {
   const switchContext = useSwitchContext()
-  const mergedProps = mergeProps(switchContext.labelProps, props)
+  const mergedProps = mergeProps(switchContext.getLabelProps(), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

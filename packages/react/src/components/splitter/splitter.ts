@@ -9,3 +9,7 @@ export {
   type SplitterResizeTriggerProps as ResizeTriggerProps,
 } from './splitter-resize-trigger'
 export { SplitterRoot as Root, type SplitterRootProps as RootProps } from './splitter-root'
+export {
+  SplitterRootProvider as RootProvider,
+  type SplitterRootProviderProps as RootProviderProps,
+} from './splitter-root-provider'

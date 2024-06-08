@@ -140,6 +140,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTreeViewReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Tree": {
     "props": { "asChild": { "type": "(props: ParentProps<'ul'>) => Element", "isRequired": false } }
   }

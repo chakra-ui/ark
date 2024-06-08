@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './color-picker.types'
 
 export interface ColorPickerRootProps
@@ -16,7 +17,7 @@ export interface ColorPickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
 import { RenderStrategyPropsProvider } from '../../utils'
@@ -41,7 +42,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="colorPicker.rootProps" :as-child="asChild">
+  <ark.div v-bind="colorPicker.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

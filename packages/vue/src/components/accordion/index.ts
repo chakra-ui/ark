@@ -21,10 +21,15 @@ export {
 } from './accordion-item-trigger.vue'
 export { default as AccordionItem, type AccordionItemProps } from './accordion-item.vue'
 export {
+  default as AccordionRootProvider,
+  type AccordionRootProviderProps,
+} from './accordion-root-provider.vue'
+export {
   default as AccordionRoot,
-  type AccordionRootProps,
   type AccordionRootEmits,
+  type AccordionRootProps,
 } from './accordion-root.vue'
+export { useAccordion, type UseAccordionProps, type UseAccordionReturn } from './use-accordion'
 export { useAccordionContext, type UseAccordionContext } from './use-accordion-context'
 export { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
 

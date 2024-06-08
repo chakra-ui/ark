@@ -8,6 +8,8 @@ export { CheckboxHiddenInput, type CheckboxHiddenInputProps } from './checkbox-h
 export { CheckboxIndicator, type CheckboxIndicatorProps } from './checkbox-indicator'
 export { CheckboxLabel, type CheckboxLabelProps } from './checkbox-label'
 export { CheckboxRoot, type CheckboxRootProps } from './checkbox-root'
+export { CheckboxRootProvider, type CheckboxRootProviderProps } from './checkbox-root-provider'
+export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
 export { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context'
 
 export * as Checkbox from './checkbox'

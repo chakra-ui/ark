@@ -42,10 +42,11 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   return example ? { title: example.title, description: example.description } : {}
 }
 
-export const generateStaticParams = async () => {
-  const examples = await fetchExamples()
+// TODO this should work
+// export const generateStaticParams = async () => {
+//   const examples = await fetchExamples()
 
-  return ['react', 'solid', 'vue'].flatMap((framework) =>
-    examples.map((example) => ({ framework, id: example.id })),
-  )
-}
+//   return ['react', 'solid', 'vue'].flatMap((framework) =>
+//     examples.map((example) => ({ framework, id: example.id })),
+//   )
+// }

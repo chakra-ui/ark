@@ -19,7 +19,7 @@ const tagsInput = useTagsInputContext()
 </script>
 
 <template>
-  <ark.label v-bind="tagsInput.labelProps" :as-child="asChild">
+  <ark.label v-bind="tagsInput.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

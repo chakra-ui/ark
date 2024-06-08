@@ -7,7 +7,7 @@ export interface ColorPickerFormatSelectProps extends HTMLArkProps<'select'> {}
 
 export const ColorPickerFormatSelect = (props: ColorPickerFormatSelectProps) => {
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => api().formatSelectProps, props)
+  const mergedProps = mergeProps(() => api().getFormatSelectProps(), props)
 
   return (
     <ark.select {...mergedProps}>

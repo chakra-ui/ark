@@ -19,7 +19,7 @@ export const ProgressRoot = (props: ProgressRootProps) => {
   ])
 
   const api = useProgress(progressProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <ProgressProvider value={api}>

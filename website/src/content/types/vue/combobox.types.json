@@ -40,60 +40,16 @@
   "Label": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
+  "List": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "Positioner": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Root": {
-    "emits": {
-      "focusOutside": {
-        "type": "[event: FocusOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when the focus is moved outside the component"
-      },
-      "highlightChange": {
-        "type": "[details: HighlightChangeDetails<CollectionItem>]",
-        "isRequired": true,
-        "description": "Function called when an item is highlighted using the pointer\nor keyboard navigation."
-      },
-      "inputValueChange": {
-        "type": "[details: InputValueChangeDetails]",
-        "isRequired": true,
-        "description": "Function called when the input's value changes"
-      },
-      "interactOutside": {
-        "type": "[event: InteractOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when an interaction happens outside the component"
-      },
-      "openChange": {
-        "type": "[details: OpenChangeDetails]",
-        "isRequired": true,
-        "description": "Function called when the popup is opened"
-      },
-      "pointerDownOutside": {
-        "type": "[event: PointerDownOutsideEvent]",
-        "isRequired": true,
-        "description": "Function called when the pointer is pressed down outside the component"
-      },
-      "update:modelValue": {
-        "type": "[value: string[]]",
-        "isRequired": true,
-        "description": "The callback fired when the model value changes."
-      },
-      "update:open": {
-        "type": "[open: boolean]",
-        "isRequired": true,
-        "description": "Event handler called when the open state of the combobox changes."
-      },
-      "valueChange": {
-        "type": "[details: ValueChangeDetails<CollectionItem>]",
-        "isRequired": true,
-        "description": "Function called when a new item is selected"
-      }
-    },
     "props": {
       "items": {
-        "type": "CollectionItem[] | readonly CollectionItem[]",
+        "type": "T[] | readonly T[]",
         "isRequired": true,
         "description": "The options of the select"
       },
@@ -145,7 +101,7 @@
         "description": "The associate form of the combobox."
       },
       "getSelectionValue": {
-        "type": "(details: SelectionValueDetails<CollectionItem>) => string",
+        "type": "(details: SelectionValueDetails<T>) => string",
         "isRequired": false,
         "description": "Function to get the display value of the selected item"
       },
@@ -181,17 +137,17 @@
         "description": "Whether the combobox is required"
       },
       "isItemDisabled": {
-        "type": "(item: CollectionItem) => boolean",
+        "type": "(item: T) => boolean",
         "isRequired": false,
         "description": "Whether the item is disabled"
       },
       "itemToString": {
-        "type": "(item: CollectionItem) => string",
+        "type": "(item: T) => string",
         "isRequired": false,
         "description": "The label of the item"
       },
       "itemToValue": {
-        "type": "(item: CollectionItem) => string",
+        "type": "(item: T) => string",
         "isRequired": false,
         "description": "The value of the item"
       },
@@ -271,6 +227,24 @@
         "type": "IntlTranslations",
         "isRequired": false,
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes, T>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
       },
       "unmountOnExit": {
         "type": "boolean",

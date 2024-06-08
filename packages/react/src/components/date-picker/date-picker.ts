@@ -54,6 +54,10 @@ export {
 } from './date-picker-range-text'
 export { DatePickerRoot as Root, type DatePickerRootProps as RootProps } from './date-picker-root'
 export {
+  DatePickerRootProvider as RootProvider,
+  type DatePickerRootProviderProps as RootProviderProps,
+} from './date-picker-root-provider'
+export {
   DatePickerTable as Table,
   type DatePickerTableProps as TableProps,
 } from './date-picker-table'

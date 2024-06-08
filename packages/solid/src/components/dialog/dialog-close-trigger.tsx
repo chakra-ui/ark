@@ -6,7 +6,7 @@ export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
 
 export const DialogCloseTrigger = (props: DialogCloseTriggerProps) => {
   const dialog = useDialogContext()
-  const mergedProps = mergeProps(() => dialog().closeTriggerProps, props)
+  const mergedProps = mergeProps(() => dialog().getCloseTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

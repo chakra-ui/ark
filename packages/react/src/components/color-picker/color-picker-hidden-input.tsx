@@ -8,7 +8,7 @@ export interface ColorPickerHiddenInputProps extends HTMLArkProps<'input'> {}
 export const ColorPickerHiddenInput = forwardRef<HTMLInputElement, ColorPickerHiddenInputProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
-    const mergedProps = mergeProps(colorPicker.hiddenInputProps, props)
+    const mergedProps = mergeProps(colorPicker.getHiddenInputProps(), props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

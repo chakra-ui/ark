@@ -8,7 +8,7 @@ export interface TreeViewTreeProps extends HTMLArkProps<'ul'> {}
 
 export const TreeViewTree = forwardRef<HTMLUListElement, TreeViewTreeProps>((props, ref) => {
   const treeView = useTreeViewContext()
-  const mergedProps = mergeProps(treeView.treeProps, props)
+  const mergedProps = mergeProps(treeView.getTreeProps(), props)
 
   return (
     <TreeViewDepthProvider value={1}>

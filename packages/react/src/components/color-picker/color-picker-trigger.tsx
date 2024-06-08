@@ -8,7 +8,7 @@ export interface ColorPickerTriggerProps extends HTMLArkProps<'button'> {}
 export const ColorPickerTrigger = forwardRef<HTMLButtonElement, ColorPickerTriggerProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
-    const mergedProps = mergeProps(colorPicker.triggerProps, props)
+    const mergedProps = mergeProps(colorPicker.getTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

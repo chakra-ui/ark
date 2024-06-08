@@ -10,7 +10,7 @@ export const ColorPickerFormatTrigger = forwardRef<
   ColorPickerFormatTriggerProps
 >((props, ref) => {
   const colorPicker = useColorPickerContext()
-  const mergedProps = mergeProps(colorPicker.formatTriggerProps, props)
+  const mergedProps = mergeProps(colorPicker.getFormatTriggerProps(), props)
 
   return <ark.button {...mergedProps} ref={ref} />
 })

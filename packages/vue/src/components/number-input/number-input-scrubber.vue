@@ -19,7 +19,7 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.div v-bind="numberInput.scrubberProps" :as-child="asChild">
+  <ark.div v-bind="numberInput.getScrubberProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

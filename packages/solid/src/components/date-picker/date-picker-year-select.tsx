@@ -6,7 +6,7 @@ export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
 
 export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
   const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().yearSelectProps, props)
+  const mergedProps = mergeProps(() => api().getYearSelectProps(), props)
 
   return (
     <ark.select {...mergedProps}>

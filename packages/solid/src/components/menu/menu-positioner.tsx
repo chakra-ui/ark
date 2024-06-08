@@ -9,7 +9,7 @@ export interface MenuPositionerProps extends HTMLArkProps<'div'> {}
 export const MenuPositioner = (props: MenuPositionerProps) => {
   const context = useMenuContext()
   const presence = usePresenceContext()
-  const mergedProps = mergeProps(() => context().positionerProps, props)
+  const mergedProps = mergeProps(() => context().getPositionerProps(), props)
 
   return (
     <Show when={!presence().unmounted}>

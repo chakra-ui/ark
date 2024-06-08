@@ -9,7 +9,7 @@ export interface SelectPositionerProps extends HTMLArkProps<'div'> {}
 export const SelectPositioner = (props: SelectPositionerProps) => {
   const select = useSelectContext()
   const presenceApi = usePresenceContext()
-  const mergedProps = mergeProps(() => select().positionerProps, props)
+  const mergedProps = mergeProps(() => select().getPositionerProps(), props)
 
   return (
     <Show when={!presenceApi().unmounted}>

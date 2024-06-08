@@ -19,7 +19,7 @@ const radioGroup = useRadioGroupContext()
 </script>
 
 <template>
-  <ark.label v-bind="radioGroup.labelProps" :as-child="asChild">
+  <ark.label v-bind="radioGroup.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

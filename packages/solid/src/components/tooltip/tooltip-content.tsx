@@ -10,7 +10,7 @@ export const TooltipContent = (props: TooltipContentProps) => {
   const api = useTooltipContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

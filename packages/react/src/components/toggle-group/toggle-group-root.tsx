@@ -22,7 +22,7 @@ export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>(
     'value',
   ])
   const togglegroup = useToggleGroup(useToggleGroupProps)
-  const mergedProps = mergeProps(togglegroup.rootProps, localProps)
+  const mergedProps = mergeProps(togglegroup.getRootProps(), localProps)
 
   return (
     <ToggleGroupProvider value={togglegroup}>

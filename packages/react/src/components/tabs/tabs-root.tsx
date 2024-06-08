@@ -31,7 +31,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'value',
   ])
   const tabs = useTabs(useTabsProps)
-  const mergedProps = mergeProps(tabs.rootProps, localprops)
+  const mergedProps = mergeProps(tabs.getRootProps(), localprops)
 
   return (
     <TabsProvider value={tabs}>

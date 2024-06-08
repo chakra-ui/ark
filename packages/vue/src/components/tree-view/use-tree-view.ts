@@ -24,7 +24,7 @@ export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> 
 
 export const useTreeView = (
   props: UseTreeViewProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseTreeViewReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -37,16 +37,16 @@ export const useTreeView = (
     selectedValue: props.selectedValue ?? props.defaultSelectedValue,
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => {
-      emit('focusChange', details)
-      emit('update:focusedValue', details.focusedValue)
+      emit?.('focusChange', details)
+      emit?.('update:focusedValue', details.focusedValue)
     },
     onExpandedChange: (details) => {
-      emit('expandedChange', details)
-      emit('update:expandedValue', details.expandedValue)
+      emit?.('expandedChange', details)
+      emit?.('update:expandedValue', details.expandedValue)
     },
     onSelectionChange: (details) => {
-      emit('selectionChange', details)
-      emit('update:selectedValue', details.selectedValue)
+      emit?.('selectionChange', details)
+      emit?.('update:selectedValue', details.selectedValue)
     },
     ...cleanProps(props),
   }))

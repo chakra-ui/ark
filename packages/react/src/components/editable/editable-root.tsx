@@ -37,7 +37,7 @@ export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props
     'value',
   ])
   const editable = useEditable(useEditableProps)
-  const mergedProps = mergeProps(editable.rootProps, localProps)
+  const mergedProps = mergeProps(editable.getRootProps(), localProps)
 
   return (
     <EditableProvider value={editable}>

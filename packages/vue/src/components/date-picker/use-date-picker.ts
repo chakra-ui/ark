@@ -46,7 +46,7 @@ export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropType
 
 export const useDatePicker = (
   props: UseDatePickerProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -60,15 +60,15 @@ export const useDatePicker = (
       'open.controlled': props.open !== undefined,
       value: datePicker.parse(modelValue ?? defaultValue ?? []),
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit('focusChange', details),
-      onViewChange: (details) => emit('viewChange', details),
+      onFocusChange: (details) => emit?.('focusChange', details),
+      onViewChange: (details) => emit?.('viewChange', details),
       onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
+        emit?.('openChange', details)
+        emit?.('update:open', details.open)
       },
       onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.valueAsString)
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.valueAsString)
       },
       focusedValue: focusedValue ? datePicker.parse(focusedValue) : undefined,
       max: max ? datePicker.parse(max) : undefined,

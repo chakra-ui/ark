@@ -15,7 +15,7 @@ export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, re
     'onStatusChange',
   ])
   const avatar = useAvatar(useAvatarProps)
-  const mergedProps = mergeProps(avatar.rootProps, localProps)
+  const mergedProps = mergeProps(avatar.getRootProps(), localProps)
 
   return (
     <AvatarProvider value={avatar}>

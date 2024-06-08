@@ -8,5 +8,10 @@ export {
   type AvatarRootProps,
 } from './avatar-root.vue'
 export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
+export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar'
+export {
+  default as AvatarRootProvider,
+  type AvatarRootProviderProps,
+} from './avatar-root-provider.vue'
 
 export * as Avatar from './avatar'

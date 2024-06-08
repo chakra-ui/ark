@@ -7,7 +7,7 @@ export interface SelectHiddenSelectProps extends HTMLArkProps<'select'> {}
 
 export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(() => select().controlProps, props)
+  const mergedProps = mergeProps(() => select().getControlProps(), props)
   const isValueEmpty = createMemo(() => select().value.length === 0)
 
   return (

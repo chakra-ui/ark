@@ -19,7 +19,7 @@ const hoverCard = useHoverCardContext()
 </script>
 
 <template>
-  <ark.div v-bind="hoverCard.contentProps" :as-child="asChild">
+  <ark.div v-bind="hoverCard.getContentProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -19,7 +19,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.label v-bind="fileUpload.labelProps" :as-child="asChild">
+  <ark.label v-bind="fileUpload.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

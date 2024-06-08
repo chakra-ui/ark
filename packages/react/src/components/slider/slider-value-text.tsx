@@ -8,7 +8,7 @@ export interface SliderValueTextProps extends HTMLArkProps<'span'> {}
 export const SliderValueText = forwardRef<HTMLDivElement, SliderValueTextProps>((props, ref) => {
   const { children, ...rest } = props
   const slider = useSliderContext()
-  const mergedProps = mergeProps(slider.valueTextProps, rest)
+  const mergedProps = mergeProps(slider.getValueTextProps(), rest)
 
   return (
     <ark.span {...mergedProps} ref={ref}>

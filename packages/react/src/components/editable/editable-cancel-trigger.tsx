@@ -8,7 +8,7 @@ export interface EditableCancelTriggerProps extends HTMLArkProps<'button'> {}
 export const EditableCancelTrigger = forwardRef<HTMLButtonElement, EditableCancelTriggerProps>(
   (props, ref) => {
     const editable = useEditableContext()
-    const mergedProps = mergeProps(editable.cancelTriggerProps, props)
+    const mergedProps = mergeProps(editable.getCancelTriggerProps(), props)
 
     return <ark.button {...mergedProps} ref={ref} />
   },

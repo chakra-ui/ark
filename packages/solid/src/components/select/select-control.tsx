@@ -6,7 +6,7 @@ export interface SelectControlProps extends HTMLArkProps<'div'> {}
 
 export const SelectControl = (props: SelectControlProps) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(() => select().controlProps, props)
+  const mergedProps = mergeProps(() => select().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

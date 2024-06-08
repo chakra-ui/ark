@@ -9,7 +9,7 @@ export interface PopoverContentProps extends HTMLArkProps<'div'> {}
 export const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>((props, ref) => {
   const popover = usePopoverContext()
   const presence = usePresenceContext()
-  const mergedProps = mergeProps(popover.contentProps, presence.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(popover.getContentProps(), presence.getPresenceProps(ref), props)
 
   if (presence.unmounted) {
     return null

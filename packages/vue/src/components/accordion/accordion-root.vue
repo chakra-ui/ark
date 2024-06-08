@@ -39,7 +39,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="accordion.rootProps" :as-child="asChild">
+  <ark.div v-bind="accordion.getRootProps()" :as-child="asChild">
     <slot></slot>
   </ark.div>
 </template>

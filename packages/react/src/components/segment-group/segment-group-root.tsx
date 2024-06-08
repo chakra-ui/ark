@@ -24,7 +24,7 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    segmentGroup.rootProps,
+    segmentGroup.getRootProps(),
     segmentGroupAnatomy.build().root.attrs as Record<string, string>,
     localProps,
   )

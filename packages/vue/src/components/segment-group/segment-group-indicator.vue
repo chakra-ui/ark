@@ -22,7 +22,7 @@ const { indicator } = segmentGroupAnatomy.build()
 
 <template>
   <ark.div
-    v-bind="segmentGroup.indicatorProps"
+    v-bind="segmentGroup.getIndicatorProps()"
     :as-child="asChild"
     :data-scope="indicator.attrs['data-scope']"
     :data-part="indicator.attrs['data-part']"

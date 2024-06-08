@@ -17,8 +17,11 @@ export {
   type HoverCardPositionerProps as PositionerProps,
 } from './hover-card-positioner.vue'
 export {
+  default as RootProvider,
+  type HoverCardRootProviderProps as RootProviderProps,
+} from './hover-card-root-provider.vue'
+export {
   default as Root,
-  type HoverCardRootEmits,
   type HoverCardRootEmits as RootEmits,
   type HoverCardRootProps as RootProps,
 } from './hover-card-root.vue'

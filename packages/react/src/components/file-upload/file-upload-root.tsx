@@ -29,7 +29,7 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'validate',
   ])
   const fileUpload = useFileUpload(useFileUploadProps)
-  const mergedProps = mergeProps(fileUpload.rootProps, localProps)
+  const mergedProps = mergeProps(fileUpload.getRootProps(), localProps)
 
   return (
     <FileUploadProvider value={fileUpload}>

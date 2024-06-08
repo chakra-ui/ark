@@ -19,7 +19,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.label v-bind="colorPicker.labelProps" :as-child="asChild">
+  <ark.label v-bind="colorPicker.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

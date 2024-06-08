@@ -19,5 +19,5 @@ const ratingGroup = useRatingGroupContext()
 </script>
 
 <template>
-  <ark.input v-bind="ratingGroup.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="ratingGroup.getHiddenInputProps()" :as-child="asChild" />
 </template>

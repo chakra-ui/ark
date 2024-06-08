@@ -6,7 +6,7 @@ export interface ColorPickerFormatTriggerProps extends HTMLArkProps<'button'> {}
 
 export const ColorPickerFormatTrigger = (props: ColorPickerFormatTriggerProps) => {
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => api().formatTriggerProps, props)
+  const mergedProps = mergeProps(() => api().getFormatTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

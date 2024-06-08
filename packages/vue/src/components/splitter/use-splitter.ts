@@ -19,7 +19,7 @@ export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> 
 
 export const useSplitter = (
   props: UseSplitterProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseSplitterReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -30,8 +30,8 @@ export const useSplitter = (
     dir: locale.value.dir,
     size: props.size ?? props.defaultSize,
     getRootNode: env?.value.getRootNode,
-    onSizeChange: (details) => emit('sizeChange', details),
-    onSizeChangeEnd: (details) => emit('sizeChangeEnd', details),
+    onSizeChange: (details) => emit?.('sizeChange', details),
+    onSizeChangeEnd: (details) => emit?.('sizeChangeEnd', details),
     ...cleanProps(props),
   }))
 

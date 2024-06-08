@@ -20,7 +20,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.dropzoneProps" :as-child="asChild">
+  <ark.div v-bind="fileUpload.getDropzoneProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

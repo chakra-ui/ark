@@ -18,6 +18,10 @@ export {
   type DialogPositionerProps as PositionerProps,
 } from './dialog-positioner.vue'
 export {
+  default as RootProvider,
+  type DialogRootProviderProps as RootProviderProps,
+} from './dialog-root-provider.vue'
+export {
   default as Root,
   type DialogRootEmits as RootEmits,
   type DialogRootProps as RootProps,

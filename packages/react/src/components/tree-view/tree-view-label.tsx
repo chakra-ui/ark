@@ -7,7 +7,7 @@ export interface TreeViewLabelProps extends HTMLArkProps<'label'> {}
 
 export const TreeViewLabel = forwardRef<HTMLLabelElement, TreeViewLabelProps>((props, ref) => {
   const treeView = useTreeViewContext()
-  const mergedProps = mergeProps(treeView.labelProps, props)
+  const mergedProps = mergeProps(treeView.getLabelProps(), props)
 
   return <ark.label {...mergedProps} ref={ref} />
 })

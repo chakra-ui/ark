@@ -19,7 +19,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.button v-bind="colorPicker.eyeDropperTriggerProps" :as-child="asChild">
+  <ark.button v-bind="colorPicker.getEyeDropperTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

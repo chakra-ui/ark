@@ -110,5 +110,16 @@
       }
     },
     "element": "HTMLLabelElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCheckboxReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLLabelElement"
   }
 }

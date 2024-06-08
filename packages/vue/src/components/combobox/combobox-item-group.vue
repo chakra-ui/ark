@@ -22,12 +22,11 @@ const props = defineProps<ComboboxItemGroupProps>()
 const combobox = useComboboxContext()
 const id = useId(props.id)
 
-
-ComboboxItemGroupPropsProvider({id})
+ComboboxItemGroupPropsProvider({ id })
 </script>
 
 <template>
-  <ark.div v-bind="combobox.getItemGroupProps({id})" :as-child="asChild">
+  <ark.div v-bind="combobox.getItemGroupProps({ id })" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -43,3 +43,7 @@ export {
 } from './tags-input-item-text'
 export { TagsInputLabel as Label, type TagsInputLabelProps as LabelProps } from './tags-input-label'
 export { TagsInputRoot as Root, type TagsInputRootProps as RootProps } from './tags-input-root'
+export {
+  TagsInputRootProvider as RootProvider,
+  type TagsInputRootProviderProps as RootProviderProps,
+} from './tags-input-root-provider'

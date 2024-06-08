@@ -1,4 +1,11 @@
 export type { ValueChangeDetails as RadioGroupValueChangeDetails } from '@zag-js/radio-group'
+export { useRadioGroup, type UseRadioGroupProps, type UseRadioGroupReturn } from './use-radio-group'
+
+export {
+  default as RadioGroupRootProvider,
+  type RadioGroupRootProviderProps,
+} from './radio-group-root-provider.vue'
+
 export * as RadioGroup from './radio-group'
 export {
   default as RadioGroupContext,

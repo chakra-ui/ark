@@ -7,7 +7,7 @@ export interface PopoverAnchorProps extends HTMLArkProps<'div'> {}
 
 export const PopoverAnchor = forwardRef<HTMLDivElement, PopoverAnchorProps>((props, ref) => {
   const popover = usePopoverContext()
-  const mergedProps = mergeProps(popover.anchorProps, props)
+  const mergedProps = mergeProps(popover.getAnchorProps(), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

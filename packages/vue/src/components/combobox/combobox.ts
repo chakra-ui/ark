@@ -44,10 +44,15 @@ export {
 } from './combobox-item-text.vue'
 export { default as Item, type ComboboxItemProps as ItemProps } from './combobox-item.vue'
 export { default as Label, type ComboboxLabelProps as LabelProps } from './combobox-label.vue'
+export { default as List, type ComboboxListProps as ListProps } from './combobox-list.vue'
 export {
   default as Positioner,
   type ComboboxPositionerProps as PositionerProps,
 } from './combobox-positioner.vue'
+export {
+  default as RootProvider,
+  type ComboboxRootProviderProps as RootProviderProps,
+} from './combobox-root-provider.vue'
 export {
   default as Root,
   type ComboboxRootEmits as RootEmits,

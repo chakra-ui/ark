@@ -6,7 +6,7 @@ export interface NumberInputScrubberProps extends HTMLArkProps<'div'> {}
 
 export const NumberInputScrubber = (props: NumberInputScrubberProps) => {
   const api = useNumberInputContext()
-  const mergedProps = mergeProps(() => api().scrubberProps, props)
+  const mergedProps = mergeProps(() => api().getScrubberProps(), props)
 
   return <ark.div {...mergedProps} />
 }

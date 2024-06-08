@@ -21,7 +21,7 @@ const slots = useSlots()
 </script>
 
 <template>
-  <ark.span v-bind="progress.valueTextProps" :as-child="asChild">
+  <ark.span v-bind="progress.getValueTextProps()" :as-child="asChild">
     <slot>{{ slots.default?.() || progress.valueAsString }}</slot>
   </ark.span>
 </template>

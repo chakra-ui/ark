@@ -19,7 +19,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.select v-bind="select.hiddenSelectProps">
+  <ark.select v-bind="select.getHiddenSelectProps()">
     <option v-if="select.value.length === 0" value="" />
     <option v-for="option in select.collection.toArray()" :key="option.value" :value="option.value">
       {{ option.label }}

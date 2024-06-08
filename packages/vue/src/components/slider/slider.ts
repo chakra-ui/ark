@@ -13,6 +13,10 @@ export {
 export { default as Marker, type SliderMarkerProps as MarkerProps } from './slider-marker.vue'
 export { default as Range, type SliderRangeProps as RangeProps } from './slider-range.vue'
 export {
+  default as RootProvider,
+  type SliderRootProviderProps as RootProviderProps,
+} from './slider-root-provider.vue'
+export {
   default as Root,
   type SliderRootEmits as RootEmits,
   type SliderRootProps as RootProps,

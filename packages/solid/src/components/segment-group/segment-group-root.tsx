@@ -23,7 +23,7 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    () => segmentGroup().rootProps,
+    () => segmentGroup().getRootProps(),
     segmentGroupAnatomy.build().root.attrs,
     localProps,
   )

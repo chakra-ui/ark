@@ -19,7 +19,7 @@ const treeView = useTreeViewContext()
 </script>
 
 <template>
-  <ark.ul v-bind="treeView.treeProps" :as-child="asChild">
+  <ark.ul v-bind="treeView.getTreeProps()" :as-child="asChild">
     <slot />
   </ark.ul>
 </template>

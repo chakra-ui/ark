@@ -19,7 +19,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.button v-bind="fileUpload.triggerProps" :as-child="asChild">
+  <ark.button v-bind="fileUpload.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

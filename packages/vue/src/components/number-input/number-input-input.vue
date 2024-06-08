@@ -19,5 +19,5 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.input v-bind="numberInput.inputProps" :as-child="asChild" />
+  <ark.input v-bind="numberInput.getInputProps()" :as-child="asChild" />
 </template>

@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './splitter.types'
 
 export interface SplitterRootProps
@@ -13,7 +14,7 @@ export interface SplitterRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 
@@ -25,7 +26,7 @@ SplitterProvider(splitter)
 </script>
 
 <template>
-  <ark.div v-bind="splitter.rootProps" :as-child="asChild">
+  <ark.div v-bind="splitter.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -8,6 +8,10 @@ export {
   type CollapsibleContextProps as ContextProps,
 } from './collapsible-context.vue'
 export {
+  default as RootProvider,
+  type CollapsibleRootProviderProps as RootProviderProps,
+} from './collapsible-root-provider.vue'
+export {
   default as Root,
   type CollapsibleRootEmits as RootEmits,
   type CollapsibleRootProps as RootProps,

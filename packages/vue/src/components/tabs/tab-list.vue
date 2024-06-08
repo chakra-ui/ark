@@ -19,7 +19,7 @@ const tabs = useTabsContext()
 </script>
 
 <template>
-  <ark.div v-bind="tabs.listProps" :as-child="asChild">
+  <ark.div v-bind="tabs.getListProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

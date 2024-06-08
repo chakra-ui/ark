@@ -43,6 +43,10 @@ export {
 export { default as Item, type TagsInputItemProps as ItemProps } from './tags-input-item.vue'
 export { default as Label, type TagsInputLabelProps as LabelProps } from './tags-input-label.vue'
 export {
+  default as RootProvider,
+  type TagsInputRootProviderProps as RootProviderProps,
+} from './tags-input-root-provider.vue'
+export {
   default as Root,
   type TagsInputRootEmits as RootEmits,
   type TagsInputRootProps as RootProps,

@@ -28,5 +28,11 @@
         "description": "Functional called when the image loading status changes."
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseAvatarReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
   }
 }

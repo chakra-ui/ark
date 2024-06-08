@@ -96,5 +96,23 @@
       },
       "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTabsReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
   }
 }

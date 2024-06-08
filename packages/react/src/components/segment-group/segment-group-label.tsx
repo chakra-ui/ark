@@ -10,7 +10,7 @@ export const SegmentGroupLabel = forwardRef<HTMLLabelElement, SegmentGroupLabelP
   (props, ref) => {
     const segmentGroup = useSegmentGroupContext()
     const mergedProps = mergeProps(
-      segmentGroup.labelProps,
+      segmentGroup.getLabelProps(),
       segmentGroupAnatomy.build().label.attrs as Record<string, string>,
       props,
     )

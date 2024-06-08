@@ -6,7 +6,7 @@ export interface EditableEditTriggerProps extends HTMLArkProps<'button'> {}
 
 export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
   const api = useEditableContext()
-  const mergedProps = mergeProps(() => api().editTriggerProps, props)
+  const mergedProps = mergeProps(() => api().getEditTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

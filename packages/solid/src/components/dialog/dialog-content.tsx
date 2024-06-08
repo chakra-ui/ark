@@ -10,7 +10,7 @@ export const DialogContent = (props: DialogContentProps) => {
   const api = useDialogContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().contentProps,
+    () => api().getContentProps(),
     () => presenceApi().presenceProps,
     props,
   )

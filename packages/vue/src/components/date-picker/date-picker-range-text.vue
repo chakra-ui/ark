@@ -19,7 +19,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.rangeTextProps" :as-child="asChild">
+  <ark.div v-bind="datePicker.getRangeTextProps()" :as-child="asChild">
     {{ datePicker.visibleRangeText.start }}
   </ark.div>
 </template>

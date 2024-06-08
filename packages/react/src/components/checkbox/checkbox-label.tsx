@@ -7,7 +7,7 @@ export interface CheckboxLabelProps extends HTMLArkProps<'span'> {}
 
 export const CheckboxLabel = forwardRef<HTMLSpanElement, CheckboxLabelProps>((props, ref) => {
   const checkbox = useCheckboxContext()
-  const mergedProps = mergeProps(checkbox.labelProps, props)
+  const mergedProps = mergeProps(checkbox.getLabelProps(), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

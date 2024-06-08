@@ -18,6 +18,10 @@ export {
 } from './tooltip-positioner'
 export { TooltipRoot as Root, type TooltipRootProps as RootProps } from './tooltip-root'
 export {
+  TooltipRootProvider as RootProvider,
+  type TooltipRootProviderProps as RootProviderProps,
+} from './tooltip-root-provider'
+export {
   TooltipTrigger as Trigger,
   type TooltipTriggerProps as TriggerProps,
 } from './tooltip-trigger'

@@ -17,7 +17,7 @@ export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((pro
     'value',
   ])
   const clipboard = useClipboard(useClipboardProps)
-  const mergedProps = mergeProps(clipboard.rootProps, localProps)
+  const mergedProps = mergeProps(clipboard.getRootProps(), localProps)
 
   return (
     <ClipboardProvider value={clipboard}>

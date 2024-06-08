@@ -86,5 +86,11 @@
         "description": "The value of the checked radio"
       }
     }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSegmentGroupReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
   }
 }

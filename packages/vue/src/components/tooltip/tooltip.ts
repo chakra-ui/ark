@@ -17,6 +17,10 @@ export {
   type TooltipPositionerProps as PositionerProps,
 } from './tooltip-positioner.vue'
 export {
+  default as RootProvider,
+  type TooltipRootProviderProps as RootProviderProps,
+} from './tooltip-root-provider.vue'
+export {
   default as Root,
   type TooltipRootEmits as RootEmits,
   type TooltipRootProps as RootProps,

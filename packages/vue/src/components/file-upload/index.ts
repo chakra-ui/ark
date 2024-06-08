@@ -11,7 +11,10 @@ export {
   default as FileUploadDropzone,
   type FileUploadDropzoneProps,
 } from './file-upload-dropzone.vue'
-export { default as FileUploadItem, type FileUploadItemProps } from './file-upload-item.vue'
+export {
+  default as FileUploadHiddenInput,
+  type FileUploadHiddenInputProps,
+} from './file-upload-hidden-input.vue'
 export {
   default as FileUploadItemDeleteTrigger,
   type FileUploadItemDeleteTriggerProps,
@@ -25,30 +28,33 @@ export {
   type FileUploadItemNameProps,
 } from './file-upload-item-name.vue'
 export {
-  default as FileUploadItemPreview,
-  type FileUploadItemPreviewProps,
-} from './file-upload-item-preview.vue'
-export {
   default as FileUploadItemPreviewImage,
   type FileUploadItemPreviewImageProps,
 } from './file-upload-item-preview-image.vue'
 export {
+  default as FileUploadItemPreview,
+  type FileUploadItemPreviewProps,
+} from './file-upload-item-preview.vue'
+export {
   default as FileUploadItemSizeText,
   type FileUploadItemSizeTextProps,
 } from './file-upload-item-size-text.vue'
+export { default as FileUploadItem, type FileUploadItemProps } from './file-upload-item.vue'
 export { default as FileUploadLabel, type FileUploadLabelProps } from './file-upload-label.vue'
 export {
+  default as FileUploadRootProvider,
+  type FileUploadRootProviderProps,
+} from './file-upload-root-provider.vue'
+export {
   default as FileUploadRoot,
-  type FileUploadRootProps,
   type FileUploadRootEmits,
+  type FileUploadRootProps,
 } from './file-upload-root.vue'
 export {
   default as FileUploadTrigger,
   type FileUploadTriggerProps,
 } from './file-upload-trigger.vue'
-export {
-  default as FileUploadHiddenInput,
-  type FileUploadHiddenInputProps,
-} from './file-upload-hidden-input.vue'
-export { type UseFileUploadContext, useFileUploadContext } from './use-file-upload-context'
+export { useFileUpload, type UseFileUploadProps, type UseFileUploadReturn } from './use-file-upload'
+export { useFileUploadContext, type UseFileUploadContext } from './use-file-upload-context'
+
 export * as FileUpload from './file-upload'

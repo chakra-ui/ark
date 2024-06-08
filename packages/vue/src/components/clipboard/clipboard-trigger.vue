@@ -19,7 +19,7 @@ const clipboard = useClipboardContext()
 </script>
 
 <template>
-  <ark.button v-bind="clipboard.triggerProps" :as-child="asChild">
+  <ark.button v-bind="clipboard.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

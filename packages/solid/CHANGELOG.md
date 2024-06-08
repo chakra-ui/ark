@@ -6,6 +6,42 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.2.2] - 2024-06-07̊
+
+### Fixed
+
+- **Combobox:** Exported missing `ComboboxList` component.
+
+## [3.2.1] - 2024-06-06
+
+### Fixed
+
+- Resolved an issue where the component context could be undefined in some components.
+
+## [3.2.0] - 2024-06-06
+
+### Added
+
+- **All Components:**  Introduced the `Provider` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
+
+```tsx
+import { Avatar, useAvatar } from '@ark-ui/solid'
+
+export const Example = () => {
+  const avatar = useAvatar({
+    onStatusChange: (e) => console.log('status changed', e),
+  })
+
+  return (
+    <Avatar.RootProvider value={avatar}>
+      <Avatar.Fallback>PA</Avatar.Fallback>
+      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+    </Avatar.RootProvider>
+  )
+}
+```
+
 ## [3.1.0] - 2024-06-04
 
 ### Added
@@ -21,6 +57,7 @@ description: All notable changes will be documented in this file.
 - **Select:** Fixed an issue where changing the label of a collection item did not trigger a change
   event.
 - **Popover:**
+
   - Implemented `autoFocus` to determine whether the popover should autofocus on open:
     - When `true`, the first focusable element or the content is focused.
     - When `false`, the content is focused.

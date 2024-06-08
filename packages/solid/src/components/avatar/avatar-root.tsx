@@ -15,7 +15,7 @@ export const AvatarRoot = (props: AvatarRootProps) => {
   ])
 
   const context = useAvatar(useAvatarProps)
-  const mergedProps = mergeProps(() => context().rootProps, localProps)
+  const mergedProps = mergeProps(() => context().getRootProps(), localProps)
 
   return (
     <AvatarProvider value={context}>

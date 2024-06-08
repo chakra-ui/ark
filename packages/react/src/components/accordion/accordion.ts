@@ -21,3 +21,7 @@ export {
   type AccordionItemTriggerProps as ItemTriggerProps,
 } from './accordion-item-trigger'
 export { AccordionRoot as Root, type AccordionRootProps as RootProps } from './accordion-root'
+export {
+  AccordionRootProvider as RootProvider,
+  type AccordionRootProviderProps as RootProviderProps,
+} from './accordion-root-provider'

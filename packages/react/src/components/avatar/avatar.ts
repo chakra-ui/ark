@@ -6,3 +6,7 @@ export {
 } from './avatar-fallback'
 export { AvatarImage as Image, type AvatarImageProps as ImageProps } from './avatar-image'
 export { AvatarRoot as Root, type AvatarRootProps as RootProps } from './avatar-root'
+export {
+  AvatarRootProvider as RootProvider,
+  type AvatarRootProviderProps as RootProviderProps,
+} from './avatar-root-provider'

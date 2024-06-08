@@ -43,7 +43,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.rootProps" :as-child="asChild">
+  <ark.div v-bind="datePicker.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

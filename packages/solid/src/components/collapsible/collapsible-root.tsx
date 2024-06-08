@@ -21,7 +21,7 @@ export const CollapsibleRoot = (props: CollapsibleRootProps) => {
   ])
 
   const api = useCollapsible(useCollapsibleProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <CollapsibleProvider value={api}>

@@ -24,7 +24,7 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
   ])
 
   const pagination = usePagination(paginationProps)
-  const mergedProps = mergeProps(pagination.rootProps, localProps)
+  const mergedProps = mergeProps(pagination.getRootProps(), localProps)
 
   return (
     <PaginationProvider value={pagination}>
