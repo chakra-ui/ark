@@ -421,6 +421,7 @@
     "@zag-js/slider": "0.53.0",
     "@zag-js/splitter": "0.53.0",
     "@zag-js/switch": "0.53.0",
+    "@zag-js/signature-pad": "0.53.0",
     "@zag-js/tabs": "0.53.0",
     "@zag-js/tags-input": "0.53.0",
     "@zag-js/toast": "0.53.0",
