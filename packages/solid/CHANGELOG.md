@@ -6,6 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **TreeView:** Fixed issue where tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`
+
+### Added
+
+### Changed
+
 ## [3.2.2] - 2024-06-07̊
 
 ### Fixed
@@ -22,7 +31,7 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **All Components:**  Introduced the `Provider` component for easier access to internal machine
+- **All Components:** Introduced the `Provider` component for easier access to internal machine
   APIs, improving component composition. See the example below:
 
 ```tsx
