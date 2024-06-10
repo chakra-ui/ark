@@ -350,6 +350,17 @@
         "default": "./dist/components/select/index.cjs"
       }
     },
+    "./signature-pad": {
+      "source": "./src/components/signature-pad/index.ts",
+      "import": {
+        "types": "./dist/components/signature-pad/index.d.ts",
+        "default": "./dist/components/signature-pad/index.js"
+      },
+      "require": {
+        "types": "./dist/components/signature-pad/index.d.cts",
+        "default": "./dist/components/signature-pad/index.cjs"
+      }
+    },
     "./slider": {
       "source": "./src/components/slider/index.ts",
       "import": {
