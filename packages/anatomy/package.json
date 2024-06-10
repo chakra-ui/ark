@@ -283,6 +283,17 @@
         "default": "./dist/select/index.cjs"
       }
     },
+    "./signature-pad": {
+      "source": "./src/signature-pad/index.ts",
+      "import": {
+        "types": "./dist/signature-pad/index.d.ts",
+        "default": "./dist/signature-pad/index.js"
+      },
+      "require": {
+        "types": "./dist/signature-pad/index.d.cts",
+        "default": "./dist/signature-pad/index.cjs"
+      }
+    },
     "./slider": {
       "source": "./src/slider/index.ts",
       "import": {

@@ -1,23 +1,24 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
-import { SignaturePadSegmentPath } from './signature-pad-segment-path'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadSegmentProps extends HTMLArkProps<'svg'> {}
 
 export const SignaturePadSegment = forwardRef<SVGSVGElement, SignaturePadSegmentProps>(
   (props, ref) => {
-    const signature = useSignaturePadContext()
-    const mergedProps = mergeProps(signature.getSegmentProps(), props)
+    const signaturePad = useSignaturePadContext()
+    const mergedProps = mergeProps(signaturePad.getSegmentProps(), props)
 
     return (
       <ark.svg {...mergedProps} ref={ref}>
-        <title>Signature pad segment</title>
-        {signature.paths.map((path, i) => (
-          <SignaturePadSegmentPath key={i} path={path} />
+        <title>Signature</title>
+        {signaturePad.paths.map((path, i) => (
+          <path key={i} {...signaturePad.getSegmentPathProps({ path })} />
         ))}
-        {signature.currentPath && <SignaturePadSegmentPath path={signature.currentPath} />}
+        {signaturePad.currentPath && (
+          <path {...signaturePad.getSegmentPathProps({ path: signaturePad.currentPath })} />
+        )}
       </ark.svg>
     )
   },

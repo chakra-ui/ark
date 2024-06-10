@@ -1,7 +1,7 @@
-import { SignaturePad } from '../'
+import { SignaturePad } from '..'
 
-export const ComponentUnderTest = (props: SignaturePad.RootProps) => (
-  <SignaturePad.Root {...props}>
+export const Basic = () => (
+  <SignaturePad.Root>
     <SignaturePad.Label>Sign below</SignaturePad.Label>
     <SignaturePad.Control>
       <SignaturePad.Segment />

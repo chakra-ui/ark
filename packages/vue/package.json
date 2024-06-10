@@ -8,6 +8,7 @@
     "carousel",
     "checkbox",
     "clipboard",
+    "collapsible",
     "color picker",
     "combobox",
     "date picker",
@@ -115,6 +116,17 @@
       "require": {
         "types": "./dist/components/clipboard/index.d.cts",
         "default": "./dist/components/clipboard/index.cjs"
+      }
+    },
+    "./collapsible": {
+      "source": "./src/components/collapsible/index.ts",
+      "import": {
+        "types": "./dist/components/collapsible/index.d.ts",
+        "default": "./dist/components/collapsible/index.js"
+      },
+      "require": {
+        "types": "./dist/components/collapsible/index.d.cts",
+        "default": "./dist/components/collapsible/index.cjs"
       }
     },
     "./color-picker": {

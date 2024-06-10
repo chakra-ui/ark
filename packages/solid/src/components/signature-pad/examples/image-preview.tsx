@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { Show, createSignal } from 'solid-js'
 import { SignaturePad } from '../..'
 
 export const ImagePreview = () => {
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrl, setImageUrl] = createSignal<string>()
 
   return (
     <>
@@ -16,8 +16,9 @@ export const ImagePreview = () => {
           <SignaturePad.Guide />
         </SignaturePad.Control>
       </SignaturePad.Root>
-
-      {imageUrl && <img src={imageUrl} alt="Signature" />}
+      <Show when={imageUrl()}>
+        <img src={imageUrl()} alt="Signature" />
+      </Show>
     </>
   )
 }
