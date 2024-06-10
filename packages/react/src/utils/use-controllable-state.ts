@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react'
 
 export interface UseControllableStateProps<T> {
   value?: T
-  onChange?: (value: T) => void
   defaultValue?: T
+  onChange?: (value: T) => void
 }
 
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
@@ -11,18 +11,18 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
 
   const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue)
 
-  const isControlled = value !== undefined
-  const currentValue = isControlled ? value : uncontrolledValue
+  const controlled = value !== undefined
+  const currentValue = controlled ? value : uncontrolledValue
 
   const setValue = useCallback(
     (value: T) => {
-      if (isControlled) {
+      if (controlled) {
         return onChange?.(value)
       }
       setUncontrolledValue(value)
       return onChange?.(value)
     },
-    [isControlled, onChange],
+    [controlled, onChange],
   )
 
   return [currentValue as T, setValue] as const
