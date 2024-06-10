@@ -17,6 +17,7 @@ export { SelectItemGroupLabel, type SelectItemGroupLabelProps } from './select-i
 export { SelectItemIndicator, type SelectItemIndicatorProps } from './select-item-indicator'
 export { SelectItemText, type SelectItemTextProps } from './select-item-text'
 export { SelectLabel, type SelectLabelProps } from './select-label'
+export { SelectList, type SelectListProps } from './select-list'
 export { SelectPositioner, type SelectPositionerProps } from './select-positioner'
 export { SelectRoot, type SelectRootProps } from './select-root'
 export { SelectRootProvider, type SelectRootProviderProps } from './select-root-provider'

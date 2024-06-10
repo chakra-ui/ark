@@ -37,6 +37,7 @@ export {
   type SelectItemTextProps as ItemTextProps,
 } from './select-item-text'
 export { SelectLabel as Label, type SelectLabelProps as LabelProps } from './select-label'
+export { SelectList as List, type SelectListProps as ListProps } from './select-list'
 export {
   SelectPositioner as Positioner,
   type SelectPositionerProps as PositionerProps,

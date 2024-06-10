@@ -29,6 +29,7 @@ const testProps = ref<string[]>([])
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
             </Combobox.Item>
           </Combobox.ItemGroup>
+          <Combobox.List />
         </Combobox.Content>
       </Combobox.Positioner>
     </Teleport>

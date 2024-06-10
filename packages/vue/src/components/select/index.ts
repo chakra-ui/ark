@@ -24,6 +24,7 @@ export {
   default as SelectItemGroupLabel,
   type SelectItemGroupLabelProps,
 } from './select-item-group-label.vue'
+export { default as SelectList, type SelectListProps } from './select-list.vue'
 export { default as SelectItemGroup, type SelectItemGroupProps } from './select-item-group.vue'
 export {
   default as SelectItemIndicator,
