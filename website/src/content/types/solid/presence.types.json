@@ -2,6 +2,11 @@
   "Presence": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -11,7 +16,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "present": {
         "type": "boolean",

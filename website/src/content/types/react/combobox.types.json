@@ -203,6 +203,11 @@
         "isRequired": false,
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "inputBehavior": {
         "type": "'none' | 'autohighlight' | 'autocomplete'",
         "defaultValue": "\"none\"",
@@ -249,7 +254,7 @@
       "multiple": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether to allow multiple selection"
+        "description": "Whether to allow multiple selection.\n\n**Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.\nIt is recommended to render the selected items in a separate container."
       },
       "name": {
         "type": "string",
@@ -259,7 +264,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusOutside": {
         "type": "(event: FocusOutsideEvent) => void",
@@ -376,6 +381,11 @@
         "isRequired": false,
         "description": "Render as a different element type."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -385,7 +395,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "present": {
         "type": "boolean",
