@@ -20,6 +20,7 @@ import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
 
 const props = withDefaults(defineProps<PresenceProps>(), {
+  immediate: undefined,
   lazyMount: undefined,
   present: undefined,
   unmountOnExit: undefined,
