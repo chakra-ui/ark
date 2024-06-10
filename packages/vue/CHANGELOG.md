@@ -6,6 +6,14 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+
+### Fixed
+
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
+
 ## [3.3.1] - 2024-06-07
 
 ### Fixed

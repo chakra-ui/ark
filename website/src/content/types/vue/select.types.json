@@ -43,6 +43,9 @@
   "Label": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
+  "List": {
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+  },
   "Positioner": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },

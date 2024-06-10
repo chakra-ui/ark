@@ -1,0 +1,73 @@
+{
+  "ClearTrigger": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Guide": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is disabled."
+      },
+      "drawing": {
+        "type": "DrawingOptions",
+        "defaultValue": "'{ size: 2, simulatePressure: true }'",
+        "isRequired": false,
+        "description": "The drawing options."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; control: string; hiddenInput: string }>",
+        "isRequired": false,
+        "description": "The ids of the signature pad elements. Useful for composition."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the signature pad. Useful for form submission."
+      },
+      "onDraw": {
+        "type": "(details: DrawDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the signature pad is drawing."
+      },
+      "onDrawEnd": {
+        "type": "(details: DrawEndDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the signature pad is done drawing."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is read-only."
+      }
+    }
+  },
+  "Segment": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'svg'>) => Element", "isRequired": false }
+    }
+  }
+}
