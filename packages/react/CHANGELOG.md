@@ -6,14 +6,13 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Fixed
-
-- **TreeView:** Fixed issue where tree view state could be updated after setting
-  `defaultSelectedValue` or `defaultExpandedValue`
-
 ### Added
 
-### Changed
+- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+
+### Fixed
+
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
 
 ## [3.2.1] - 2024-06-07
 
@@ -69,8 +68,6 @@ export const Provider = () => {
 - Fixed an issue where the `keydown` event might not fire in React due to
   `nativeEvent.currentTarget` not being set consistently.
 
-### Changed
-
 - **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
   `currentSrc`.
 
@@ -81,8 +78,6 @@ export const Provider = () => {
 - Added the missing `'use client'` annotation to the `Portal` component.
 - Fixed an issue where the `keydown` event might not fire in React due to
   `nativeEvent.currentTarget` not being set consistently.
-
-### Changed
 
 - **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
   `currentSrc`.
@@ -135,8 +130,6 @@ export const Basic = () => (
 - **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
 - **Types:** Exported `Assign` and `Optional` types to enhance type handling.
 - **Toast:** Added support for overlapping and stacked toast.
-
-### Changed
 
 - **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
   `RadioGroup`, `RatingGroup`, `SegmentGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for
@@ -204,8 +197,6 @@ export const Basic = () => (
 
 ## [2.2.1] - 2024-02-27
 
-### Changed
-
 - Updated to latest `@ark-ui/anatomy` version.
 
 ## [2.2.0] - 2024-02-27
@@ -214,8 +205,6 @@ export const Basic = () => (
 
 - Added `Collapsible` component.
 - Added support for `defaultExpandedIds` in the `TreeView` component.
-
-### Changed
 
 - Enhanced the performance of the Ark `factory` by utilizing `memo` to avoid unnecessary re-renders.
 - Integrated `Collapsible` into `Accordion`, allowing the `Accordion` component to utilize
@@ -284,8 +273,6 @@ export const Basic = () => (
 </DatePicker.Control>
 ```
 
-### Changed
-
 - Refined the `TreeView` component API for streamlined component usage. See the
   [documentation](https://ark-ui.com/docs/components/tree-view) for details.
 
@@ -309,8 +296,6 @@ export const Basic = () => (
 
 - Exported `SelectionDetails` type for the `Menu` component.
 
-### Changed
-
 - Updated `Dialog.Description` and `Popover.Description` elements from `p` to `div` for better
   paragraph handling.
 - Altered `TreeView.BranchTrigger` element from `button` to `div` for accessibility enhancements.
@@ -333,8 +318,6 @@ export const Basic = () => (
 
 - Added `TreeView` component
 - Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
-
-### Changed
 
 - **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
   shown for the `Avatar` component below:
@@ -387,16 +370,12 @@ export const Basic = () => (
   `DialogOpenChangeDetails`
 - Redesign `Portal` component to support `getRootNode` and `disabled` props
 
-### Changed
-
 - Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and
   `Tabs`.
 
 ### Fixed
 
 - Added missing `placeholder` prop to `SelectValueTextProps` type.
-- Changed `PopoverDescriptionProps` type from `div` to `p`
-- Fixed multiple rerenders on `Select` component with Next.js or Remix `useSearchParams`
 - Fixed the issue where setting `disabled` on `Combobox` does not reflect in combobox item
 - Fix an issue that breaks the `Combobox` when clicking on the input while the menu is open
 - Fixed the issue where `DatePicker` initial value isn't set when using controlled context
@@ -414,8 +393,6 @@ export const Basic = () => (
 
 - Added the `ToastGroup` component.
 - Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
-
-### Changed
 
 - Revised the `FileUpload` component. Check out the
   [documentation](https://ark-ui.com/docs/components/file-upload) for more information.
@@ -437,8 +414,6 @@ export const Basic = () => (
 
 - Added render function to the `NumberInput` component
 - Added `FileUpload` component
-
-### Changed
 
 - Revised the `ColorPicker` component. Check out the
   [documentation](https://ark-ui.com/docs/components/color-picker) for more information.
@@ -490,8 +465,6 @@ us improve.
 - Added `type HTMLArkProps` that can be used together with the `ark` factory fn to create a type
   that can be used with `asChild` prop.
 
-### Changed
-
 - Revised `Comoobox` component to support multiple selection
 - Revised `Select` component to support multiple selection
 
@@ -503,10 +476,6 @@ us improve.
 
 ## [0.14.0] - 2023-08-29
 
-### Changed
-
-- Changed `MenuItem` from a `button` to a `div` element.
-- `Accordion`: Remove support for passing value as `string`. The value property must be an array of
   strings.
 - `Combobox`: Remove `selectInputOnFocus` option in favor of userland control
 - `TagsInput`: Rename `onHighlight` to `onFocusChange`
@@ -520,13 +489,9 @@ us improve.
 
 ## [0.13.1] - 2023-08-13
 
-### Changed
-
 - Removed `'use client'` annotation from `factory` function.
 
 ## [0.13.0] - 2023-08-13
-
-### Changed
 
 - BREAKING: Renamed `SegmentIndicator` to `SegmentGroupIndicator` to match the naming convention of
   other components.
@@ -558,8 +523,6 @@ us improve.
 - Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render
   a label for a group of options in the `ComboboxOptionGroup` component.
 
-### Changed
-
 - BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other
   input components.
 - BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other
@@ -579,8 +542,6 @@ us improve.
   consistent look and feel across the board.
 - Updated number input `onChange` handler to allow synchronous updates to the value when using the
   scrubber.
-
-### Changed
 
 - Improved TypeScript typings in our factory functions. The changes allow for more accurate type
   inference for the `ref` property when dealing with both intrinsic HTML elements and custom React
@@ -659,8 +620,6 @@ us improve.
 - Introduced an optional `defaultSize` property to `Splitter`
 - Introduced the `onLongPress` property to `Pressable`
 
-### Changed
-
 - Exposed direct access to the `Splitter` component's internal API, enabling more control over the
   component's state
 - Updated all `@zag-js` dependencies to their latest versions
@@ -676,8 +635,6 @@ us improve.
 ### Added
 
 - Add `DatePicker`
-
-### Changed
 
 - Update `Checkbox`. Control `indeterminate` state in `checked` prop
 
