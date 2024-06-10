@@ -1,0 +1,103 @@
+{
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLButtonElement"
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Guide": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLLabelElement"
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is disabled."
+      },
+      "drawing": {
+        "type": "DrawingOptions",
+        "defaultValue": "'{ size: 2, simulatePressure: true }'",
+        "isRequired": false,
+        "description": "The drawing options."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; control: string; hiddenInput: string }>",
+        "isRequired": false,
+        "description": "The ids of the signature pad elements. Useful for composition."
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the signature pad. Useful for form submission."
+      },
+      "onDraw": {
+        "type": "(details: DrawDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the signature pad is drawing."
+      },
+      "onDrawEnd": {
+        "type": "(details: DrawEndDetails) => void",
+        "isRequired": false,
+        "description": "Callback when the signature pad is done drawing."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is read-only."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Segment": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "SVGSVGElement"
+  }
+}
