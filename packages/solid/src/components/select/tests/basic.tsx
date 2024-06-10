@@ -40,6 +40,7 @@ export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items
                 )}
               </For>
             </Select.ItemGroup>
+            <Select.List />
           </Select.Content>
         </Select.Positioner>
       </Portal>

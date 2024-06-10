@@ -29,6 +29,7 @@ const items = [
               <Select.ItemIndicator>✓</Select.ItemIndicator>
             </Select.Item>
           </Select.ItemGroup>
+          <Select.List />
         </Select.Content>
       </Select.Positioner>
     </Teleport>

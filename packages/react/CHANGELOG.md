@@ -6,6 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **TreeView:** Fixed issue where tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`
+
+### Added
+
+### Changed
+
 ## [3.2.1] - 2024-06-07
 
 ### Fixed

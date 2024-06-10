@@ -15,6 +15,7 @@ export {
   default as Indicator,
   type SelectIndicatorProps as IndicatorProps,
 } from './select-indicator.vue'
+export { default as List, type SelectListProps as ListProps } from './select-list.vue'
 export {
   default as ItemContext,
   type SelectItemContextProps as ItemContextProps,
