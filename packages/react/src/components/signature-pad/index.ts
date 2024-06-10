@@ -1,5 +1,4 @@
 export type { DrawDetails as SignaturePadDrawDetails } from '@zag-js/signature-pad'
-
 export { SignaturePadRoot, type SignaturePadRootProps } from './signature-pad-root'
 export {
   SignaturePadClearTrigger,

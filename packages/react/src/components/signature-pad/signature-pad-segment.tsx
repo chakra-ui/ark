@@ -1,6 +1,5 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-
 import { type HTMLArkProps, ark } from '../factory'
 import { SignaturePadSegmentPath } from './signature-pad-segment-path'
 import { useSignaturePadContext } from './use-signature-pad-context'
