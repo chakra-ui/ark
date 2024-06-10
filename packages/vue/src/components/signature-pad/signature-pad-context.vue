@@ -1,9 +1,23 @@
-import type { JSX } from 'solid-js'
-import { type UseSignaturePadContext, useSignaturePadContext } from './use-signature-pad-context'
+<script lang="ts">
+import type { SlotsType, UnwrapRef } from 'vue'
+import type { UseSignaturePadContext } from './use-signature-pad-context'
 
-export interface SignaturePadContextProps {
-  children: (context: UseSignaturePadContext) => JSX.Element
-}
+export interface SignaturePadContextProps
+  extends SlotsType<{
+    default: UnwrapRef<UseSignaturePadContext>
+  }> {}
+</script>
 
-export const SignaturePadContext = (props: SignaturePadContextProps) =>
-  props.children(useSignaturePadContext())
+<script setup lang="ts">
+import { useSignaturePadContext } from './use-signature-pad-context'
+
+const signaturepad = useSignaturePadContext()
+
+defineSlots<{
+  default(signaturepad: UnwrapRef<UseSignaturePadContext>): unknown
+}>()
+</script>
+
+<template>
+  <slot v-bind="signaturepad"></slot>
+</template>

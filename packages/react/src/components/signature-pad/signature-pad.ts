@@ -1,3 +1,4 @@
+export type { DrawDetails, DrawEndDetails, DrawingOptions } from '@zag-js/signature-pad'
 export {
   SignaturePadClearTrigger as ClearTrigger,
   type SignaturePadClearTriggerProps as ClearTriggerProps,

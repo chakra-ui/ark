@@ -1,26 +1,32 @@
-import * as signaturePad from '@zag-js/signature-pad'
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import * as signaturepad from '@zag-js/signature-pad'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
+import { type ComputedRef, computed } from 'vue'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import type { EmitFn, Optional } from '../../types'
+import { cleanProps, useId } from '../../utils'
+import type { RootEmits } from './signature-pad.types'
 
 export interface UseSignaturePadProps
-  extends Optional<Omit<signaturePad.Context, 'dir' | 'getRootNode'>, 'id'> {}
-export interface UseSignaturePadReturn extends Accessor<signaturePad.Api<PropTypes>> {}
+  extends Optional<Omit<signaturepad.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSignaturePadReturn extends ComputedRef<signaturepad.Api<PropTypes>> {}
 
-export const useSignaturePad = (props: UseSignaturePadProps): UseSignaturePadReturn => {
-  const locale = useLocaleContext()
-  const environment = useEnvironmentContext()
-  const id = createUniqueId()
+export const useSignaturePad = (
+  props: UseSignaturePadProps,
+  emit?: EmitFn<RootEmits>,
+): UseSignaturePadReturn => {
+  const id = useId()
+  const env = useEnvironmentContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = createMemo<signaturePad.Context>(() => ({
+  const context = computed<signaturepad.Context>(() => ({
     id,
-    dir: locale().dir,
-    getRootNode: environment().getRootNode,
-    ...props,
+    dir: locale.value.dir,
+    getRootNode: env?.value.getRootNode,
+    onDraw: (details) => emit?.('draw', details),
+    onDrawEnd: (details) => emit?.('drawEnd', details),
+    ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(signaturePad.machine(context()), { context })
-
-  return createMemo(() => signaturePad.connect(state, send, normalizeProps))
+  const [state, send] = useMachine(signaturepad.machine(context.value), { context })
+  return computed(() => signaturepad.connect(state.value, send, normalizeProps))
 }

@@ -1,10 +1,14 @@
-import type { Meta } from 'storybook-solidjs'
-
-const meta: Meta = {
-  title: 'Components / Signature Pad',
-}
-
-export default meta
-
-export { Basic } from './examples/basic'
-export { ImagePreview } from './examples/image-preview'
+<script setup lang="ts">
+import Basic from './examples/basic.vue'
+import ImagePreview from './examples/image-preview.vue'
+</script>
+<template>
+  <Story title="Signature Pad">
+    <Variant title="Basic">
+      <Basic />
+    </Variant>
+    <Variant title="Image Preview">
+      <ImagePreview />
+    </Variant>
+  </Story>
+</template>

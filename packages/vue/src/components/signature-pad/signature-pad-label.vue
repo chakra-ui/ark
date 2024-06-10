@@ -1,12 +1,25 @@
-import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+<script lang="ts">
+import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
+
+export interface SignaturePadLabelProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
-export interface SignaturePadLabelProps extends HTMLArkProps<'label'> {}
+defineProps<SignaturePadLabelProps>()
+const signaturePad = useSignaturePadContext()
+</script>
 
-export const SignaturePadLabel = (props: SignaturePadLabelProps) => {
-  const signaturePad = useSignaturePadContext()
-  const mergedProps = mergeProps(() => signaturePad().getLabelProps(), props)
-
-  return <ark.label {...mergedProps} />
-}
+<template>
+  <ark.label v-bind="signaturePad.getLabelProps()" :as-child="asChild">
+    <slot />
+  </ark.label>
+</template>

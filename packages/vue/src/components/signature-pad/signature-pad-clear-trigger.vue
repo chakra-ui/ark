@@ -1,12 +1,25 @@
-import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+<script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
+
+export interface SignaturePadClearTriggerProps
+  extends PolymorphicProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
+</script>
+
+<script setup lang="ts">
+import { ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
-export interface SignaturePadClearTriggerProps extends HTMLArkProps<'button'> {}
+defineProps<SignaturePadClearTriggerProps>()
+const signaturePad = useSignaturePadContext()
+</script>
 
-export const SignaturePadClearTrigger = (props: SignaturePadClearTriggerProps) => {
-  const signaturePad = useSignaturePadContext()
-  const mergedProps = mergeProps(() => signaturePad().getClearTriggerProps(), props)
-
-  return <ark.button {...mergedProps} />
-}
+<template>
+  <ark.button v-bind="signaturePad.getClearTriggerProps()" :as-child="asChild">
+    <slot />
+  </ark.button>
+</template>

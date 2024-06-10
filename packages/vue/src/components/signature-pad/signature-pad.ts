@@ -1,3 +1,8 @@
+export type {
+  DrawDetails,
+  DrawEndDetails,
+  DrawingOptions,
+} from '@zag-js/signature-pad'
 export {
   default as Root,
   type SignaturePadRootProps as RootProps,
