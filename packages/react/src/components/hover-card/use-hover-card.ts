@@ -24,14 +24,13 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
     id: useId(),
     dir,
     getRootNode,
-    open: props.defaultOpen,
+    open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
   }
 
   const context: hoverCard.Context = {
     ...initialContext,
-    open: props.open,
     onOpenChange: useEvent(props.onOpenChange, { sync: true }),
   }
 
