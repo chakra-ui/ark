@@ -24,16 +24,17 @@ export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
     id: useId(),
     dir,
     getRootNode,
-    open: props.open ?? props.defaultOpen,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
   }
 
   const context: popover.Context = {
     ...initialContext,
+    open: props.open,
     onOpenChange: useEvent(props.onOpenChange, { sync: true }),
   }
 
-  const [state, send] = useMachine(popover.machine(context), { context })
+  const [state, send] = useMachine(popover.machine(initialContext), { context })
   return popover.connect(state, send, normalizeProps)
 }

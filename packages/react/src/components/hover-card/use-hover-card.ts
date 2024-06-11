@@ -24,17 +24,18 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
     id: useId(),
     dir,
     getRootNode,
-    open: props.open ?? props.defaultOpen,
+    open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
   }
 
   const context: hoverCard.Context = {
     ...initialContext,
+    open: props.open,
     onOpenChange: useEvent(props.onOpenChange, { sync: true }),
   }
 
-  const [state, send] = useMachine(hoverCard.machine(context), { context })
+  const [state, send] = useMachine(hoverCard.machine(initialContext), { context })
 
   return hoverCard.connect(state, send, normalizeProps)
 }
