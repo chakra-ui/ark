@@ -7,6 +7,8 @@ import type {
   CheckboxGroupProps,
 } from './checkbox-group.types'
 
+export interface UseCheckboxGroupProps extends CheckboxGroupProps {}
+
 export function useCheckboxGroup(props: CheckboxGroupProps, emit?: EmitFn<CheckboxGroupEmits>) {
   const interative = computed(() => !(props.disabled || props.readOnly))
 
