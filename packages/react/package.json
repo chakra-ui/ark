@@ -318,6 +318,17 @@
         "default": "./dist/components/progress/index.cjs"
       }
     },
+    "./qr-code": {
+      "source": "./src/components/qr-code/index.ts",
+      "import": {
+        "types": "./dist/components/qr-code/index.d.ts",
+        "default": "./dist/components/qr-code/index.js"
+      },
+      "require": {
+        "types": "./dist/components/qr-code/index.d.cts",
+        "default": "./dist/components/qr-code/index.cjs"
+      }
+    },
     "./radio-group": {
       "source": "./src/components/radio-group/index.ts",
       "import": {
