@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Adeed `QRCode` anatomy.
+
 ## [3.2.0] - 2024-05-27
 
 ### Added
