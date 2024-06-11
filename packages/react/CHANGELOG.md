@@ -8,11 +8,13 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+- **Signature Pad** Introduced the `SignaturePad` component for capturing signatures.
+- **CheckboxGroup** Added the `CheckboxGroup` component for managing multiple checkboxes.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`.
 
 ## [3.2.1] - 2024-06-07
 
@@ -476,7 +478,8 @@ us improve.
 
 ## [0.14.0] - 2023-08-29
 
-  strings.
+strings.
+
 - `Combobox`: Remove `selectInputOnFocus` option in favor of userland control
 - `TagsInput`: Rename `onHighlight` to `onFocusChange`
 
