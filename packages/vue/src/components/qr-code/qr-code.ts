@@ -1,3 +1,7 @@
+export type {
+  QrCodeGenerateOptions as GenerateOptions,
+  QrCodeGenerateResult as GenerateResult,
+} from '@zag-js/qr-code'
 export { default, type QrCodeContextProps } from './qr-code-context.vue'
 export { default as Frame, type QrCodeFrameProps as FrameProps } from './qr-code-frame.vue'
 export {

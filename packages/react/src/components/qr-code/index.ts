@@ -1,3 +1,4 @@
+export type { QrCodeGenerateOptions, QrCodeGenerateResult } from '@zag-js/qr-code'
 export { QrCodeContext, type QrCodeContextProps } from './qr-code-context'
 export { QrCodeFrame, type QrCodeFrameProps } from './qr-code-frame'
 export { QrCodeOverlay, type QrCodeOverlayProps } from './qr-code-overlay'

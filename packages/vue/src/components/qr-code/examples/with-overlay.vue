@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { QrCode } from '../..'
+import { QrCode, type QrCodeGenerateOptions } from '../..'
 
-const encoding = ref({ ecc: 'H' })
+const encoding = ref<QrCodeGenerateOptions>({ ecc: 'H' })
 </script>
 
 <template>
