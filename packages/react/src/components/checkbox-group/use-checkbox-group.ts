@@ -63,7 +63,9 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
     return {
       checked: props.value != null ? isChecked(props.value) : undefined,
       onCheckedChange() {
-        if (props.value) toggleValue(props.value)
+        if (props.value != null) {
+          toggleValue(props.value)
+        }
       },
       disabled,
       readOnly,
