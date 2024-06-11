@@ -5,3 +5,4 @@ export type {
   UseCheckboxGroupProps,
   UseCheckboxGroupReturn,
 } from './use-checkbox-group'
+export { useCheckboxGroupContext } from './use-checkbox-group-context'
