@@ -9,6 +9,7 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+
 - **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
 
 ### Fixed
@@ -24,6 +25,8 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Combobox:** Exported missing `ComboboxList` component.
+
+- **Toast:** Resolved an issue where `ToastRoot` doesn't merge its incoming props correctly.
 
 ## [3.2.1] - 2024-06-06
 
