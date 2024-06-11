@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/anatomy",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Contains all the anatomy information for the Ark UI components",
   "keywords": ["Ark UI", "Anatomy", "Components"],
   "license": "MIT",
