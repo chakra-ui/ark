@@ -536,6 +536,7 @@
     "@zag-js/popover": "0.56.0",
     "@zag-js/presence": "0.56.0",
     "@zag-js/progress": "0.56.0",
+    "@zag-js/qr-code": "0.56.0",
     "@zag-js/radio-group": "0.56.0",
     "@zag-js/rating-group": "0.56.0",
     "@zag-js/react": "0.56.0",

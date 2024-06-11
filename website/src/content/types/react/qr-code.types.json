@@ -1,0 +1,65 @@
+{
+  "Frame": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "SVGSVGElement"
+  },
+  "Overlay": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Pattern": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "SVGPathElement"
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      },
+      "encoding": {
+        "type": "QrCodeGenerateOptions",
+        "isRequired": false,
+        "description": "The qr code encoding options."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The element ids." },
+      "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
+    },
+    "element": "HTMLDivElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseQrCodeReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Render as a different element type."
+      }
+    },
+    "element": "HTMLDivElement"
+  }
+}

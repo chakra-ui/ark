@@ -1,0 +1,40 @@
+{
+  "Frame": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'svg'>) => Element", "isRequired": false }
+    }
+  },
+  "Overlay": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
+  "Pattern": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'path'>) => Element", "isRequired": false }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "encoding": {
+        "type": "QrCodeGenerateOptions",
+        "isRequired": false,
+        "description": "The qr code encoding options."
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The element ids." },
+      "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseQrCodeReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  }
+}
