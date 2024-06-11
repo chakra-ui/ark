@@ -125,7 +125,7 @@
     "@storybook/addon-a11y": "8.1.6",
     "@storybook/addon-essentials": "8.1.6",
     "@testing-library/dom": "10.1.0",
-    "@testing-library/jest-dom": "6.4.5",
+    "@testing-library/jest-dom": "6.4.6",
     "@testing-library/user-event": "14.5.2",
     "@types/jsdom": "21.1.7",
     "@types/testing-library__jest-dom": "5.14.9",
