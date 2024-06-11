@@ -15,7 +15,10 @@ export const TabContent = (props: TabContentProps) => {
   const api = useTabsContext()
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(
-    mergeProps(renderStrategyProps, () => ({ present: api().value === contentProps.value })),
+    mergeProps(renderStrategyProps, () => ({
+      present: api().value === contentProps.value,
+      immediate: true,
+    })),
   )
   const mergedProps = mergeProps(
     () => api().getContentProps(contentProps),

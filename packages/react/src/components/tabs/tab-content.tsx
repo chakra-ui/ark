@@ -17,6 +17,7 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
   const presence = usePresence({
     ...renderStrategyProps,
     present: tabs.value === props.value,
+    immediate: true,
   })
 
   const mergedProps = mergeProps(

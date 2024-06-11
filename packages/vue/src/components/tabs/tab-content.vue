@@ -28,6 +28,7 @@ const renderStrategy = useRenderStrategyProps()
     :present="tabs.value === props.value"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"
+    :immediate="true"
   >
     <slot />
   </Presence>

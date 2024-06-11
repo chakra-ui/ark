@@ -8,8 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Signature Pad** Introduced the `SignaturePad` component for capturing signatures.
-- **CheckboxGroup** Added the `CheckboxGroup` component for managing multiple checkboxes.
+- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+- **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
 
 ### Fixed
 
@@ -17,6 +17,9 @@ description: All notable changes will be documented in this file.
   `defaultSelectedValue` or `defaultExpandedValue`.
 
 - **Popover, HoverCard:** Fixed issue where `defaultOpen` does not work
+
+- **Tabs:** Resolved an issue where rapidly changing the selected tab could show previous tab
+  content briefly.
 
 ## [3.2.1] - 2024-06-07
 
