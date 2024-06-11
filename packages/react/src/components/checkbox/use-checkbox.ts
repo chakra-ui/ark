@@ -1,9 +1,10 @@
 import * as checkbox from '@zag-js/checkbox'
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import { useId } from 'react'
+import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/react'
+import { useId, useMemo } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import { useCheckboxGroupContext } from '../checkbox-group/use-checkbox-group-context'
 
 export interface UseCheckboxProps
   extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -16,7 +17,13 @@ export interface UseCheckboxProps
 
 export interface UseCheckboxReturn extends checkbox.Api<PropTypes> {}
 
-export const useCheckbox = (props: UseCheckboxProps = {}): UseCheckboxReturn => {
+export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn => {
+  const checkboxGroup = useCheckboxGroupContext()
+
+  const props = useMemo(() => {
+    return mergeProps(ownProps, checkboxGroup?.getItemProps({ value: ownProps.value }) ?? {})
+  }, [ownProps, checkboxGroup])
+
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 

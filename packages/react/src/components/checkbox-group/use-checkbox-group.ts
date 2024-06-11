@@ -1,0 +1,85 @@
+import { useControllableState } from '../../utils/use-controllable-state'
+import { useEvent } from '../../utils/use-event'
+
+export interface UseCheckboxGroupProps {
+  /**
+   * The initial value of `value` when uncontrolled
+   */
+  defaultValue?: string[]
+  /**
+   * The controlled value of the checkbox group
+   */
+  value?: string[]
+  /**
+   * The callback to call when the value changes
+   */
+  onValueChange?: (value: string[]) => void
+  /**
+   * If `true`, the checkbox group is disabled
+   */
+  disabled?: boolean
+  /**
+   * If `true`, the checkbox group is read-only
+   */
+  readOnly?: boolean
+}
+
+export interface CheckboxGroupItemProps {
+  value: string | undefined
+}
+
+export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
+  const { defaultValue, value: controlledValue, onValueChange, disabled, readOnly } = props
+  const interative = !(disabled || readOnly)
+
+  const onChangeProp = useEvent(onValueChange, { sync: true })
+
+  const [value, setValue] = useControllableState({
+    value: controlledValue,
+    defaultValue: defaultValue || [],
+    onChange: onChangeProp,
+  })
+
+  const isChecked = (val: string | undefined) => {
+    return value.some((v) => String(v) === String(val))
+  }
+
+  const toggleValue = (val: string) => {
+    isChecked(val) ? removeValue(val) : addValue(val)
+  }
+
+  const addValue = (val: string) => {
+    if (!interative) return
+    if (isChecked(val)) return
+    setValue(value.concat(val))
+  }
+
+  const removeValue = (val: string) => {
+    if (!interative) return
+    setValue(value.filter((v) => String(v) !== String(val)))
+  }
+
+  const getItemProps = (props: CheckboxGroupItemProps) => {
+    return {
+      checked: props.value != null ? isChecked(props.value) : undefined,
+      onCheckedChange() {
+        if (props.value) toggleValue(props.value)
+      },
+      disabled,
+      readOnly,
+    }
+  }
+
+  return {
+    isChecked,
+    value,
+    disabled,
+    readOnly,
+    setValue,
+    addValue,
+    toggleValue,
+    getItemProps,
+  }
+}
+
+export type UseCheckboxGroupReturn = ReturnType<typeof useCheckboxGroup>
