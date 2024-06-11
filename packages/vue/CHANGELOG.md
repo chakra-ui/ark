@@ -17,6 +17,8 @@ description: All notable changes will be documented in this file.
   `defaultSelectedValue` or `defaultExpandedValue`.
 - **Tabs:** Resolved an issue where rapidly changing the selected tab could show previous tab
   content briefly.
+- **Carousel:** Fixed an issue where the carousel would not update the current index when used with
+  `v-model`.
 
 ## [3.3.1] - 2024-06-07
 

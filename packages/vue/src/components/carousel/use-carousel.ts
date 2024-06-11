@@ -28,7 +28,10 @@ export const useCarousel = (
     dir: locale.value.dir,
     index: props.defaultIndex,
     getRootNode: env?.value.getRootNode,
-    onIndexChange: (details) => emit?.('indexChange', details),
+    onIndexChange: (details) => {
+      emit?.('indexChange', details)
+      emit?.('update:index', details.index)
+    },
     ...cleanProps(props),
   }))
 
