@@ -3,12 +3,12 @@ import { runIfFn } from './run-if-fn'
 
 export interface UseControllableStateProps<T> {
   value?: Accessor<T | undefined>
-  defaultValue?: Accessor<T | undefined>
+  defaultValue?: Accessor<T | undefined> | T
   onChange?: (value: T) => void
 }
 
 export function useControllableState<T>(props: UseControllableStateProps<T>) {
-  const [uncontrolledValue, setUncontrolledValue] = createSignal(props.defaultValue?.())
+  const [uncontrolledValue, setUncontrolledValue] = createSignal(runIfFn(props.defaultValue))
   const controlled = createMemo(() => props.value?.() !== undefined)
 
   const currentValue = createMemo(() => (controlled() ? props.value?.() : uncontrolledValue()))
@@ -26,5 +26,5 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
     })
   }
 
-  return [currentValue, setValue] as const
+  return [currentValue as Accessor<T>, setValue] as const
 }
