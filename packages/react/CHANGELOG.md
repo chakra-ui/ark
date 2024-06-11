@@ -6,8 +6,6 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-## [Unreleased]
-
 ### Added
 
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
@@ -21,7 +19,7 @@ description: All notable changes will be documented in this file.
 - **Popover, HoverCard:** Fixed an issue where `defaultOpen` did not work.
 - **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous tab content.
 - **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item via the delete trigger.
-- **Select:** Exported the missing `SelectList` component.
+- **Select:** Exported missing `SelectList` component.
 
 ## [3.2.1] - 2024-06-07
 
