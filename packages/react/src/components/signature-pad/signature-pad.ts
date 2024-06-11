@@ -24,6 +24,10 @@ export {
   type SignaturePadRootProps as RootProps,
 } from './signature-pad-root'
 export {
+  SignaturePadRootProvider as RootProvider,
+  type SignaturePadRootProviderProps as RootProviderProps,
+} from './signature-pad-root-provider'
+export {
   SignaturePadSegment as Segment,
   type SignaturePadSegmentProps as SegmentProps,
 } from './signature-pad-segment'

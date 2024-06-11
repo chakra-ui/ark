@@ -4,11 +4,16 @@
       "exitComplete": {
         "type": "[]",
         "isRequired": true,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       }
     },
     "props": {
       "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

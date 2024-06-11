@@ -167,7 +167,7 @@
       "multiple": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether to allow multiple selection"
+        "description": "Whether to allow multiple selection.\n\n**Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.\nIt is recommended to render the selected items in a separate container."
       },
       "name": {
         "type": "string",

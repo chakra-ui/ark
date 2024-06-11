@@ -65,6 +65,12 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSignaturePadReturn", "isRequired": true },
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+    }
+  },
   "Segment": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'svg'>) => Element", "isRequired": false }

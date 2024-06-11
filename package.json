@@ -19,7 +19,7 @@
     "solid": "bun run --cwd packages/solid",
     "svelte": "bun run --cwd packages/svelte",
     "vue": "bun run --cwd packages/vue",
-    "website": "bun run --cwd website",
+    "web": "bun run --cwd website",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env"
   },
   "devDependencies": {

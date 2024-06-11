@@ -3,7 +3,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
 
-const previewComponents = ['carousel', 'tree-view']
+const previewComponents = ['carousel', 'signature-pad', 'tree-view']
 
 const pages = defineCollection({
   name: 'Pages',
