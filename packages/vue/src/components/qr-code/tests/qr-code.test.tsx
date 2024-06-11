@@ -2,7 +2,7 @@ import { qrCodeAnatomy } from '@ark-ui/anatomy'
 import { render } from '@testing-library/vue'
 import { QrCode } from '../'
 import { getExports, getParts } from '../../../setup-test'
-import ComponentUnderTest from './rating-group.test.vue'
+import ComponentUnderTest from './basic.vue'
 
 describe('Rating Group', () => {
   it.each(getParts(qrCodeAnatomy))('should render part! %s', async (part) => {
