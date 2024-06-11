@@ -9,6 +9,7 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+- **QR Code:** Added the `QRCode` component for generating QR codes.
 - **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
 
 ### Fixed
