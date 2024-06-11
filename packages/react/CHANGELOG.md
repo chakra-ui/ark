@@ -14,6 +14,8 @@ description: All notable changes will be documented in this file.
 
 - **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
 
+- **Popover, HoverCard:** Fixed issue where `defaultOpen` does not work
+
 ## [3.2.1] - 2024-06-07
 
 ### Fixed

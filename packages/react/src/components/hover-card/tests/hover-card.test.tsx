@@ -70,4 +70,11 @@ describe('HoverCard', () => {
     await user.unhover(screen.getByText('Hover me'))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
+
+  it('should open by default', async () => {
+    render(<ComponentUnderTest defaultOpen />)
+
+    const hoverContent = screen.getByText('Content')
+    await waitFor(() => expect(hoverContent).toBeVisible())
+  })
 })

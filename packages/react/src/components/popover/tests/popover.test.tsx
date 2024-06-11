@@ -87,4 +87,9 @@ describe('Popover', () => {
     await user.click(screen.getByRole('button', { name: 'close' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
+
+  it('should open by default', async () => {
+    render(<ComponentUnderTest defaultOpen />)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+  })
 })

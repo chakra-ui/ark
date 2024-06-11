@@ -35,7 +35,7 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
     onOpenChange: useEvent(props.onOpenChange, { sync: true }),
   }
 
-  const [state, send] = useMachine(hoverCard.machine(context), { context })
+  const [state, send] = useMachine(hoverCard.machine(initialContext), { context })
 
   return hoverCard.connect(state, send, normalizeProps)
 }
