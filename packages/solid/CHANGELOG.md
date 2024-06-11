@@ -9,14 +9,13 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
-
+- **QR Code:** Added the `QRCode` component for generating QR codes.
 - **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
 
 ### Fixed
 
 - **TreeView:** Resolved an issue where the tree view state could be updated after setting
   `defaultSelectedValue` or `defaultExpandedValue`.
-
 - **Tabs:** Resolved an issue where rapidly changing the selected tab could show previous tab
   content briefly.
 
@@ -25,7 +24,6 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Combobox:** Exported missing `ComboboxList` component.
-
 - **Toast:** Resolved an issue where `ToastRoot` doesn't merge its incoming props correctly.
 
 ## [3.2.1] - 2024-06-06

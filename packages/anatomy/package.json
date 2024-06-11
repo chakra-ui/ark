@@ -239,6 +239,17 @@
         "default": "./dist/progress/index.cjs"
       }
     },
+    "./qr-code": {
+      "source": "./src/qr-code/index.ts",
+      "import": {
+        "types": "./dist/qr-code/index.d.ts",
+        "default": "./dist/qr-code/index.js"
+      },
+      "require": {
+        "types": "./dist/qr-code/index.d.cts",
+        "default": "./dist/qr-code/index.cjs"
+      }
+    },
     "./radio-group": {
       "source": "./src/radio-group/index.ts",
       "import": {
@@ -426,6 +437,7 @@
     "@zag-js/popover": "0.56.0",
     "@zag-js/presence": "0.56.0",
     "@zag-js/progress": "0.56.0",
+    "@zag-js/qr-code": "0.56.0",
     "@zag-js/radio-group": "0.56.0",
     "@zag-js/rating-group": "0.56.0",
     "@zag-js/select": "0.56.0",
