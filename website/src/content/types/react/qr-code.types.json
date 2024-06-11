@@ -46,7 +46,11 @@
         "isRequired": false,
         "description": "The unique identifier of the machine."
       },
-      "ids": { "type": "ElementIds", "isRequired": false, "description": "The element ids." },
+      "ids": {
+        "type": "Partial<{ root: string; frame: string }>",
+        "isRequired": false,
+        "description": "The element ids."
+      },
       "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
     },
     "element": "HTMLDivElement"

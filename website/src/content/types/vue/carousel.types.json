@@ -33,7 +33,8 @@
         "type": "[details: SlideChangeDetails]",
         "isRequired": true,
         "description": "Function called when the slide changes."
-      }
+      },
+      "update:index": { "type": "[index: number]", "isRequired": true }
     },
     "props": {
       "align": {

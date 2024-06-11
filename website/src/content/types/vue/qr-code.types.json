@@ -1,22 +1,16 @@
 {
   "Frame": {
-    "props": {
-      "asChild": { "type": "(props: ParentProps<'svg'>) => Element", "isRequired": false }
-    }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Overlay": {
-    "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
-    }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Pattern": {
-    "props": {
-      "asChild": { "type": "(props: ParentProps<'path'>) => Element", "isRequired": false }
-    }
+    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
   "Root": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
       "encoding": {
         "type": "QrCodeGenerateOptions",
         "isRequired": false,
@@ -37,8 +31,8 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseQrCodeReturn", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
     }
   }
 }

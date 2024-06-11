@@ -1,9 +1,10 @@
+import type * as qrcode from '@zag-js/qr-code'
+
 export interface RootProps {
   /**
    * The qr code encoding options.
    */
-  // biome-ignore lint/suspicious/noExplicitAny: Fix with next release of @zag-js/qr-code
-  encoding?: any
+  encoding?: qrcode.QrCodeGenerateOptions
   /**
    * The unique identifier of the machine.
    */
