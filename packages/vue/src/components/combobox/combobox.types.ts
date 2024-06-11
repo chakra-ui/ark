@@ -109,7 +109,10 @@ export interface RootProps<T extends CollectionItem> {
   loopFocus?: boolean
   modelValue?: string[]
   /**
-   * Whether to allow multiple selection
+   * Whether to allow multiple selection.
+   *
+   * **Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.
+   * It is recommended to render the selected items in a separate container.
    */
   multiple?: boolean
   /**

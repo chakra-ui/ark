@@ -101,6 +101,11 @@
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
         "isRequired": false,
@@ -146,7 +151,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusChange": {
         "type": "(details: FocusChangeDetails) => void",
@@ -233,6 +238,11 @@
     "props": {
       "value": { "type": "UseDatePickerReturn", "isRequired": true },
       "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -242,7 +252,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "present": {
         "type": "boolean",
