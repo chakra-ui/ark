@@ -1,0 +1,5 @@
+export type { CheckboxGroupEmits, CheckboxGroupProps } from './checkbox-group.types'
+export { default as CheckboxGroup } from './checkbox-group.vue'
+export { useCheckboxGroup } from './use-checkbox-group'
+export type { UseCheckboxGroupProps, UseCheckboxGroupReturn } from './use-checkbox-group'
+export { useCheckboxGroupContext } from './use-checkbox-group-context'
