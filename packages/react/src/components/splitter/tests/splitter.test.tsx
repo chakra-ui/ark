@@ -1,5 +1,6 @@
 import { splitterAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render } from '@testing-library/react/pure'
+import { axe } from 'vitest-axe'
 import { Splitter } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -17,5 +18,12 @@ describe('Splitter / Parts & Exports', () => {
 
   it.each(getExports(splitterAnatomy))('should export %s', async (part) => {
     expect(Splitter[part]).toBeDefined()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 })

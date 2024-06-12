@@ -1,6 +1,7 @@
 import { collapsibleAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { axe } from 'vitest-axe'
 import { Collapsible, type CollapsibleRootProps } from '../'
 import { getExports, getParts } from '../../../setup-test'
 
@@ -30,6 +31,13 @@ describe('Collapsible / Parts & Exports', () => {
 describe('Collapsible', () => {
   afterEach(() => {
     cleanup()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 
   it('should toggle', async () => {

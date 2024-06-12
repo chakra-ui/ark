@@ -10,7 +10,8 @@ export const SignaturePadControl = forwardRef<HTMLDivElement, SignaturePadContro
     const signaturePad = useSignaturePadContext()
     const mergedProps = mergeProps(signaturePad.getControlProps(), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    // TODO remove with next zag release
+    return <ark.div role="application" {...mergedProps} ref={ref} />
   },
 )
 

@@ -1,6 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import { ark } from './factory'
 
 const ComponentUnderTest = () => (

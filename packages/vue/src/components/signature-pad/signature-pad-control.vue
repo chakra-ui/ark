@@ -19,7 +19,7 @@ const signaturePad = useSignaturePadContext()
 </script>
 
 <template>
-  <ark.div v-bind="signaturePad.getControlProps()" :as-child="asChild">
+  <ark.div role="application" v-bind="signaturePad.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -1,7 +1,7 @@
 import { tabsAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
+import { axe } from 'vitest-axe'
 import { Tabs } from '..'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -25,6 +25,13 @@ describe('Tabs / Parts & Exports', () => {
 describe('Tabs', () => {
   afterEach(() => {
     cleanup()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 
   it('should activate tab on click', async () => {

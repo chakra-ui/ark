@@ -1,6 +1,6 @@
 import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
-import { vi } from 'vitest'
+import { axe } from 'vitest-axe'
 import { RatingGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -24,6 +24,13 @@ describe('Rating Group / Parts & Exports', () => {
 describe('Rating Group', () => {
   afterEach(() => {
     cleanup()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 
   it('should apply default value', async () => {

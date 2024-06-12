@@ -1,12 +1,11 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
+import { axe } from 'vitest-axe'
 import { Checkbox } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
-
 describe('Checkbox / Parts & Exports', () => {
   afterAll(() => {
     cleanup()
@@ -26,6 +25,13 @@ describe('Checkbox / Parts & Exports', () => {
 describe('Checkbox', () => {
   afterEach(() => {
     cleanup()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 
   it('should handle check and unchecked', async () => {

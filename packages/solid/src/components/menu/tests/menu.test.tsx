@@ -2,7 +2,6 @@ import { menuAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { Index, splitProps } from 'solid-js'
-import { vi } from 'vitest'
 import { Menu } from '..'
 import { getExports, getParts } from '../../../setup-test'
 
