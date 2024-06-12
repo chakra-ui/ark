@@ -28,7 +28,7 @@
     "lefthook": "1.6.15",
     "turbo": "2.0.3",
     "typescript": "5.4.5",
-    "vercel": "34.2.6"
+    "vercel": "34.2.7"
   },
   "packageManager": "bun@1.1.12",
   "trustedDependencies": ["@ark-ui/website"]

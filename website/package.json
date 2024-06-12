@@ -28,7 +28,7 @@
     "@zag-js/docs": "0.56.1",
     "effect": "3.3.1",
     "match-sorter": "6.3.4",
-    "next": "14.2.3",
+    "next": "14.2.4",
     "next-auth": "5.0.0-beta.19",
     "next-themes": "0.3.0",
     "pandacss-preset-typography": "0.1.6",
