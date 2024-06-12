@@ -7,6 +7,7 @@ export {
   CheckboxControl as Control,
   type CheckboxControlProps as ControlProps,
 } from './checkbox-control'
+export { CheckboxGroup as Group, type CheckboxGroupProps as GroupProps } from './checkbox-group'
 export {
   CheckboxHiddenInput as HiddenInput,
   type CheckboxHiddenInputProps as HiddenInputProps,

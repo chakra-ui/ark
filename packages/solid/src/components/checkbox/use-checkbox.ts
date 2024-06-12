@@ -3,7 +3,7 @@ import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useCheckboxGroupContext } from '../checkbox-group/use-checkbox-group-context'
+import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
 export interface UseCheckboxProps
   extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {

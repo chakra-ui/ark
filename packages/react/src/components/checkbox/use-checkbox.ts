@@ -4,7 +4,7 @@ import { useId, useMemo } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
-import { useCheckboxGroupContext } from '../checkbox-group/use-checkbox-group-context'
+import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
 export interface UseCheckboxProps
   extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {

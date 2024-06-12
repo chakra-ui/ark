@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
-import WithGroupVModel from './examples/with-group-vmodel.vue'
-import WithGroup from './examples/with-group.vue'
 </script>
 
 <template>
@@ -21,11 +20,8 @@ import WithGroup from './examples/with-group.vue'
     <Variant title="RenderProp">
       <RenderProp />
     </Variant>
-    <Variant title="WithGroup">
-      <WithGroup />
-    </Variant>
-    <Variant title="WithGroupVModel">
-      <WithGroupVModel />
+    <Variant title="Group">
+      <Group />
     </Variant>
   </Story>
 </template>

@@ -7,6 +7,7 @@ export {
   default as Control,
   type CheckboxControlProps as ControlProps,
 } from './checkbox-control.vue'
+export { default as Group, type CheckboxGroupProps as GroupProps } from './checkbox-group.vue'
 export {
   default as HiddenInput,
   type CheckboxHiddenInputProps as HiddenInputProps,

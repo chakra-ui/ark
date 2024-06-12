@@ -4,8 +4,8 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
-import { useCheckboxGroupContext } from '../checkbox-group'
 import type { RootEmits } from './checkbox'
+import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
 export interface UseCheckboxProps
   extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {

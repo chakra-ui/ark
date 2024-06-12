@@ -4,6 +4,36 @@
       "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
     }
   },
+  "Group": {
+    "props": {
+      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "defaultValue": {
+        "type": "string[] | Accessor<string[]>",
+        "isRequired": false,
+        "description": "The initial value of `value` when uncontrolled"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is disabled"
+      },
+      "onValueChange": {
+        "type": "(value: string[]) => void",
+        "isRequired": false,
+        "description": "The callback to call when the value changes"
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is read-only"
+      },
+      "value": {
+        "type": "Accessor<string[]>",
+        "isRequired": false,
+        "description": "The controlled value of the checkbox group"
+      }
+    }
+  },
   "HiddenInput": {
     "props": {
       "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }

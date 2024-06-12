@@ -2,6 +2,31 @@
   "Control": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },
+  "Group": {
+    "props": {
+      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial value of `value` when uncontrolled"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is disabled"
+      },
+      "modelValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled value of the checkbox group"
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is read-only"
+      }
+    }
+  },
   "HiddenInput": {
     "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
   },

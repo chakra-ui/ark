@@ -1,4 +1,4 @@
-export interface CheckboxGroupProps {
+export interface GroupProps {
   /**
    * The initial value of `value` when uncontrolled
    */
@@ -17,15 +17,10 @@ export interface CheckboxGroupProps {
   readOnly?: boolean
 }
 
-export type CheckboxGroupEmits = {
+export type GroupEmits = {
   /**
    * Functional called when the value changes.
    */
   valueChange: [value: string[]]
-
   'update:modelValue': [value: string[]]
-}
-
-export interface CheckboxGroupItemProps {
-  value: string | undefined
 }

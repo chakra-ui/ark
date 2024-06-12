@@ -1,1 +1,3 @@
-export { anatomy } from '@zag-js/checkbox'
+import { anatomy as _ } from '@zag-js/checkbox'
+
+export const anatomy = _.extendWith('group')

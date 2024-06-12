@@ -1,15 +1,16 @@
 import { computed, toRefs } from 'vue'
 import type { EmitFn } from '../../types'
 import { useVModel } from '../use-v-model'
-import type {
-  CheckboxGroupEmits,
-  CheckboxGroupItemProps,
-  CheckboxGroupProps,
-} from './checkbox-group.types'
+import type { GroupEmits, GroupProps } from './checkbox-group.types'
 
-export interface UseCheckboxGroupProps extends CheckboxGroupProps {}
+export interface UseCheckboxGroupProps extends GroupProps {}
+export type UseCheckboxGroupReturn = ReturnType<typeof useCheckboxGroup>
 
-export function useCheckboxGroup(props: CheckboxGroupProps, emit?: EmitFn<CheckboxGroupEmits>) {
+interface CheckboxGroupItemProps {
+  value: string | undefined
+}
+
+export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
   const interative = computed(() => !(props.disabled || props.readOnly))
 
   const { defaultValue } = toRefs(props)
@@ -66,5 +67,3 @@ export function useCheckboxGroup(props: CheckboxGroupProps, emit?: EmitFn<Checkb
     getItemProps,
   }))
 }
-
-export type UseCheckboxGroupReturn = ReturnType<typeof useCheckboxGroup>
