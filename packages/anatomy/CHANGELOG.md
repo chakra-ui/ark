@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Added missing `Checkbox.Group` part̊.
+
 ## [3.3.0] - 2024-06-11
 
 ### Added
