@@ -1,8 +1,9 @@
 <h1 align="center">@ark</h1>
 
 <p align="center">
-  <img alt="NPM" src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" />
+  <img alt="License" src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" />
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge" />
+  <img alt="Downloads" src="https://img.shields.io/npm/dt/@zag-js/core?style=for-the-badge" />
 </p>
 
 ## What is Ark UI?

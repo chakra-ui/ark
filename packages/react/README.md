@@ -1,3 +1,9 @@
+<p align="center">
+  <img alt="License" src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" />
+  <img alt="GitHub stars" src="https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge" />
+  <img alt="Downloads" src="https://img.shields.io/npm/dt/@ark-ui/react?style=for-the-badge" />
+</p>
+
 # Welcome to Ark UI
 
 Ark UI is a headless, open-source UI library with over 30+ components designed for building
@@ -18,6 +24,8 @@ Ark UI is available for the following JavaScript frameworks:
 - [Avatar](https://ark-ui.com/react/docs/components/avatar)
 - [Carousel](https://ark-ui.com/react/docs/components/carousel)
 - [Checkbox](https://ark-ui.com/react/docs/components/checkbox)
+- [Clipboard](https://ark-ui.com/react/docs/components/clipboard)
+- [Collapsible](https://ark-ui.com/react/docs/components/collapsible)
 - [Color Picker](https://ark-ui.com/react/docs/components/color-picker)
 - [Combobox](https://ark-ui.com/react/docs/components/combobox)
 - [Date Picker](https://ark-ui.com/react/docs/components/date-picker)
@@ -30,12 +38,14 @@ Ark UI is available for the following JavaScript frameworks:
 - [Pagination](https://ark-ui.com/react/docs/components/pagination)
 - [Pin Input](https://ark-ui.com/react/docs/components/pin-input)
 - [Popover](https://ark-ui.com/react/docs/components/popover)
-- [Progress](https://ark-ui.com/react/docs/components/progress)
+- [Progress - Circular](https://ark-ui.com/react/docs/components/progress-circular)
+- [Progress - Linear](https://ark-ui.com/react/docs/components/progress-linear)
+- [QR Code](https://ark-ui.com/react/docs/components/qr-code)
 - [Radio Group](https://ark-ui.com/react/docs/components/radio-group)
-- [Range Slider](https://ark-ui.com/react/docs/components/slider)
 - [Rating Group](https://ark-ui.com/react/docs/components/rating-group)
 - [Segment Group](https://ark-ui.com/react/docs/components/segment-group)
 - [Select](https://ark-ui.com/react/docs/components/select)
+- [Signature Pad](https://ark-ui.com/react/docs/components/signature-pad)
 - [Slider](https://ark-ui.com/react/docs/components/slider)
 - [Splitter](https://ark-ui.com/react/docs/components/splitter)
 - [Switch](https://ark-ui.com/react/docs/components/switch)
@@ -65,33 +75,27 @@ yarn add @ark-ui/react
 To use a component from `@ark-ui/react`, import it and include it in your application:
 
 ```tsx
-import { Slider, type SliderProps } from '@ark-ui/react'
+import { Slider } from '@ark-ui/react'
 import { useState } from 'react'
-
-export const MySlider = (props: SliderProps) => {
-  const [value, setValue] = useState([42])
-
+  
+export const MySlider = () => {
+  const [value, setValue] = useState([30])
+    
   return (
     <Slider.Root
-      min={0}
-      max={100}
+      min={-50}
+      max={50}
       value={value}
       onValueChange={(e) => setValue(e.value)}
-      {...props}
     >
       <Slider.Label>Label</Slider.Label>
-      <Slider.ValueText />
+      <Slider.ValueText>{value}</Slider.ValueText>
       <Slider.Control>
         <Slider.Track>
           <Slider.Range />
         </Slider.Track>
-        <Slider.Thumb key={0} index={0} />
+        <Slider.Thumb index={0} />
       </Slider.Control>
-      <Slider.MarkerGroup>
-        <Slider.Marker value={25}>25</Slider.Marker>
-        <Slider.Marker value={50}>50</Slider.Marker>
-        <Slider.Marker value={75}>75</Slider.Marker>
-      </Slider.MarkerGroup>
     </Slider.Root>
   )
 }
