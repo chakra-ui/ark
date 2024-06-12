@@ -7,7 +7,7 @@ const items = ref(['React', 'Solid', 'Vue'])
 </script>
 
 <template>
-  <Accordion.Root :defaultValue="['React']">
+  <Accordion.Root :defaultValue="['React']" orientation="horizontal">
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemTrigger>
         What is {{ item }}?

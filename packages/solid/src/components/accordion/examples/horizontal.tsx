@@ -2,9 +2,9 @@ import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 import { Accordion } from '../..'
 
-export const Basic = () => {
+export const Horizontal = () => {
   return (
-    <Accordion.Root defaultValue={['React']}>
+    <Accordion.Root defaultValue={['React']} orientation="horizontal">
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>

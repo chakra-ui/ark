@@ -7,11 +7,12 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { RenderProp } from './examples/render-prop'
 export { Collapsible } from './examples/collapsible'
-export { Multiple } from './examples/multiple'
 export { Controlled } from './examples/controlled'
-export { Vertical } from './examples/vertical'
 export { Disabled } from './examples/disabled'
+export { Horizontal } from './examples/horizontal'
 export { LazyMount } from './examples/lazy-mount'
+export { Multiple } from './examples/multiple'
 export { Provider } from './examples/provider'
+export { RenderProp } from './examples/render-prop'
+export { Vertical } from './examples/vertical'
