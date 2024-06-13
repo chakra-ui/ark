@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
-export interface CarouselIndicatorGroupProps extends HTMLArkProps<'div'> {}
+export type CarouselIndicatorGroupBaseProps = {}
+export interface CarouselIndicatorGroupProps
+  extends HTMLArkProps<'div'>,
+    CarouselIndicatorGroupBaseProps {}
 
 export const CarouselIndicatorGroup = forwardRef<HTMLDivElement, CarouselIndicatorGroupProps>(
   (props, ref) => {

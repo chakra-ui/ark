@@ -8,8 +8,9 @@ import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-
 
 type OptionalUseMenuItemGroupContext = Optional<UseMenuItemGroupContext, 'id'>
 
+export interface MenuRadioItemGroupBaseProps extends OptionalUseMenuItemGroupContext {}
 export interface MenuRadioItemGroupProps
-  extends Assign<HTMLArkProps<'div'>, OptionalUseMenuItemGroupContext> {}
+  extends Assign<HTMLArkProps<'div'>, MenuRadioItemGroupBaseProps> {}
 
 export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>(
   (props, ref) => {

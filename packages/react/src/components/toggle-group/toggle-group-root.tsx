@@ -6,7 +6,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseToggleGroupProps, useToggleGroup } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
 
-export interface ToggleGroupRootProps extends Assign<HTMLArkProps<'div'>, UseToggleGroupProps> {}
+export interface ToggleGroupRootBaseProps extends UseToggleGroupProps {}
+export interface ToggleGroupRootProps
+  extends Assign<HTMLArkProps<'div'>, ToggleGroupRootBaseProps> {}
 
 export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>((props, ref) => {
   const [useToggleGroupProps, localProps] = createSplitProps<UseToggleGroupProps>()(props, [

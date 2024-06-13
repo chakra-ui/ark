@@ -6,7 +6,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
 
-export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}
+export interface TabTriggerBaseProps extends TriggerProps {}
+export interface TabTriggerProps extends Assign<HTMLArkProps<'button'>, TabTriggerBaseProps> {}
 
 export const TabTrigger = forwardRef<HTMLButtonElement, TabTriggerProps>((props, ref) => {
   const [tabProps, localProps] = createSplitProps<TriggerProps>()(props, ['disabled', 'value'])

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogTitleProps extends HTMLArkProps<'h2'> {}
+export type DialogTitleBaseProps = {}
+export interface DialogTitleProps extends HTMLArkProps<'h2'>, DialogTitleBaseProps {}
 
 export const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>((props, ref) => {
   const dialog = useDialogContext()

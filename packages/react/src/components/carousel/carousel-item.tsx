@@ -6,7 +6,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
-export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface CarouselItemBaseProps extends ItemProps {}
+export interface CarouselItemProps extends Assign<HTMLArkProps<'div'>, CarouselItemBaseProps> {}
 
 export const CarouselItem = forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])

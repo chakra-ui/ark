@@ -9,7 +9,8 @@ import { useAccordionContext } from './use-accordion-context'
 import { AccordionItemProvider } from './use-accordion-item-context'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
-export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface AccordionItemBaseProps extends ItemProps {}
+export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, AccordionItemBaseProps> {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
   const [itemProps, localProps] = splitItemProps(props)

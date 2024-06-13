@@ -7,7 +7,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
 
-export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, ThumbProps> {}
+export interface SliderThumbBaseProps extends ThumbProps {}
+export interface SliderThumbProps extends Assign<HTMLArkProps<'div'>, SliderThumbBaseProps> {}
 
 export const SliderThumb = forwardRef<HTMLDivElement, SliderThumbProps>((props, ref) => {
   const [thumbProps, localProps] = createSplitProps<ThumbProps>()(props, ['index', 'name'])

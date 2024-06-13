@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
-export interface RadioGroupItemControlProps extends HTMLArkProps<'div'> {}
+export type RadioGroupItemControlBaseProps = {}
+export interface RadioGroupItemControlProps
+  extends HTMLArkProps<'div'>,
+    RadioGroupItemControlBaseProps {}
 
 export const RadioGroupItemControl = forwardRef<HTMLDivElement, RadioGroupItemControlProps>(
   (props, ref) => {

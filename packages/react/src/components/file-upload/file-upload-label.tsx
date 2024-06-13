@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadLabelProps extends HTMLArkProps<'label'> {}
+export type FileUploadLabelBaseProps = {}
+export interface FileUploadLabelProps extends HTMLArkProps<'label'>, FileUploadLabelBaseProps {}
 
 export const FileUploadLabel = forwardRef<HTMLLabelElement, FileUploadLabelProps>((props, ref) => {
   const fileUpload = useFileUploadContext()

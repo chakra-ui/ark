@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardInputProps extends HTMLArkProps<'input'> {}
+export type ClipboardInputBaseProps = {}
+export interface ClipboardInputProps extends HTMLArkProps<'input'>, ClipboardInputBaseProps {}
 
 export const ClipboardInput = forwardRef<HTMLInputElement, ClipboardInputProps>((props, ref) => {
   const clipboard = useClipboardContext()

@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemGroupPropsProvider } from './use-select-item-group-props'
 
-export interface SelectItemGroupProps extends HTMLArkProps<'div'> {}
+export type SelectItemGroupBaseProps = {}
+export interface SelectItemGroupProps extends HTMLArkProps<'div'>, SelectItemGroupBaseProps {}
 
 export const SelectItemGroup = forwardRef<HTMLDivElement, SelectItemGroupProps>((props, ref) => {
   const id = useId()

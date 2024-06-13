@@ -7,7 +7,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerAreaProps extends Assign<HTMLArkProps<'div'>, AreaProps> {}
+export interface ColorPickerAreaBaseProps extends AreaProps {}
+export interface ColorPickerAreaProps
+  extends Assign<HTMLArkProps<'div'>, ColorPickerAreaBaseProps> {}
 
 export const ColorPickerArea = forwardRef<HTMLDivElement, ColorPickerAreaProps>((props, ref) => {
   const [areaProps, localProps] = createSplitProps<AreaProps>()(props, ['xChannel', 'yChannel'])

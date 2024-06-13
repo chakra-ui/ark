@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseSplitterProps, useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 
-export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
+export interface SplitterRootBaseProps extends UseSplitterProps {}
+export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, SplitterRootBaseProps> {}
 
 export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props, ref) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [

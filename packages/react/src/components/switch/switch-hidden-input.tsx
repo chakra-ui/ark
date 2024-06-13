@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
-export interface SwitchHiddenInputProps extends HTMLArkProps<'input'> {}
+export type SwitchHiddenInputBaseProps = {}
+export interface SwitchHiddenInputProps extends HTMLArkProps<'input'>, SwitchHiddenInputBaseProps {}
 
 export const SwitchHiddenInput = forwardRef<HTMLInputElement, SwitchHiddenInputProps>(
   (props, ref) => {

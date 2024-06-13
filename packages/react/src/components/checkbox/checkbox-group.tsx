@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 
-export interface CheckboxGroupProps extends Assign<HTMLArkProps<'div'>, UseCheckboxGroupProps> {}
+export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps {}
+export interface CheckboxGroupProps extends Assign<HTMLArkProps<'div'>, CheckboxGroupBaseProps> {}
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, ref) => {
   const [checkboxGroupProps, localProps] = createSplitProps<UseCheckboxGroupProps>()(props, [

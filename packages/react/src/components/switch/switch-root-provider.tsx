@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseSwitchReturn
 }
 
-export interface SwitchRootProviderProps extends HTMLArkProps<'label'>, RootProviderProps {}
+export interface SwitchRootProviderBaseProps extends RootProviderProps {}
+export interface SwitchRootProviderProps
+  extends HTMLArkProps<'label'>,
+    SwitchRootProviderBaseProps {}
 
 export const SwitchRootProvider = forwardRef<HTMLLabelElement, SwitchRootProviderProps>(
   (props, ref) => {

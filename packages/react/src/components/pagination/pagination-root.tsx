@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UsePaginationProps, usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 
-export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
+export interface PaginationRootBaseProps extends UsePaginationProps {}
+export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, PaginationRootBaseProps> {}
 
 export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((props, ref) => {
   const [paginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [

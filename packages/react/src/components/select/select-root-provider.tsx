@@ -15,11 +15,12 @@ import { SelectProvider } from './use-select-context'
 interface RootProviderProps<T extends CollectionItem> {
   value: UseSelectReturn<T>
 }
-
+export interface SelectRootProviderBaseProps<T extends CollectionItem>
+  extends RootProviderProps<T>,
+    UsePresenceProps {}
 export interface SelectRootProviderProps<T extends CollectionItem>
   extends HTMLArkProps<'div'>,
-    RootProviderProps<T>,
-    UsePresenceProps {}
+    SelectRootProviderBaseProps<T> {}
 
 const SelectImpl = <T extends CollectionItem>(
   props: SelectRootProviderProps<T>,

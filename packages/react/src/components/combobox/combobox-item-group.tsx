@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-context'
 
-export interface ComboboxItemGroupProps extends HTMLArkProps<'div'> {}
+export type ComboboxItemGroupBaseProps = {}
+export interface ComboboxItemGroupProps extends HTMLArkProps<'div'>, ComboboxItemGroupBaseProps {}
 
 export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>(
   (props, ref) => {

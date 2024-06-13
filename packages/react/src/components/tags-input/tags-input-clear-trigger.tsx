@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 
-export interface TagsInputClearTriggerProps extends HTMLArkProps<'button'> {}
+export type TagsInputClearTriggerBaseProps = {}
+export interface TagsInputClearTriggerProps
+  extends HTMLArkProps<'button'>,
+    TagsInputClearTriggerBaseProps {}
 
 export const TagsInputClearTrigger = forwardRef<HTMLButtonElement, TagsInputClearTriggerProps>(
   (props, ref) => {

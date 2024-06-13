@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useAvatarContext } from './use-avatar-context'
 
-export interface AvatarImageProps extends HTMLArkProps<'img'> {}
+export type AvatarImageBaseProps = {}
+export interface AvatarImageProps extends HTMLArkProps<'img'>, AvatarImageBaseProps {}
 
 export const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const avatar = useAvatarContext()

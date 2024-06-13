@@ -4,9 +4,11 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerViewProps extends HTMLArkProps<'div'> {
+export interface ColorPickerViewBaseProps {
   format: ColorFormat
 }
+
+export interface ColorPickerViewProps extends HTMLArkProps<'div'>, ColorPickerViewBaseProps {}
 
 export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>((props, ref) => {
   const colorPicker = useColorPickerContext()

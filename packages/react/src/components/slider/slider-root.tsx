@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseSliderProps, useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
-export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
+export interface SliderRootBaseProps extends UseSliderProps {}
+export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, SliderRootBaseProps> {}
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
   const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [

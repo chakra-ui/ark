@@ -4,13 +4,16 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemPreviewProps extends HTMLArkProps<'div'> {
+export interface FileUploadItemPreviewBaseProps {
   /**
    * The file type to match against. Matches all file types by default.
    * @default '.*'
    */
   type?: string
 }
+export interface FileUploadItemPreviewProps
+  extends HTMLArkProps<'div'>,
+    FileUploadItemPreviewBaseProps {}
 
 export const FileUploadItemPreview = forwardRef<HTMLImageElement, FileUploadItemPreviewProps>(
   (props, ref) => {

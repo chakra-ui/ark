@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
-export interface EditableLabelProps extends HTMLArkProps<'label'> {}
+export type EditableLabelBaseProps = {}
+export interface EditableLabelProps extends HTMLArkProps<'label'>, EditableLabelBaseProps {}
 
 export const EditableLabel = forwardRef<HTMLLabelElement, EditableLabelProps>((props, ref) => {
   const editable = useEditableContext()

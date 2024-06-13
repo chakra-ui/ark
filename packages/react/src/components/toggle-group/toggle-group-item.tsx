@@ -6,7 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useToggleGroupContext } from './use-toggle-group-context'
 
-export interface ToggleGroupItemProps extends Assign<HTMLArkProps<'button'>, ItemProps> {}
+export interface ToggleGroupItemBaseProps extends ItemProps {}
+export interface ToggleGroupItemProps
+  extends Assign<HTMLArkProps<'button'>, ToggleGroupItemBaseProps> {}
 
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])

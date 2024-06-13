@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseRatingGroupReturn
 }
 
-export interface RatingGroupRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface RatingGroupRootProviderBaseProps extends RootProviderProps {}
+export interface RatingGroupRootProviderProps
+  extends HTMLArkProps<'div'>,
+    RatingGroupRootProviderBaseProps {}
 
 export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRootProviderProps>(
   (props, ref) => {

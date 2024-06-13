@@ -3,9 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
-export interface CheckboxIndicatorProps extends HTMLArkProps<'div'> {
+export interface CheckboxIndicatorBaseProps {
   indeterminate?: boolean
 }
+export interface CheckboxIndicatorProps extends HTMLArkProps<'div'>, CheckboxIndicatorBaseProps {}
 
 export const CheckboxIndicator = forwardRef<HTMLDivElement, CheckboxIndicatorProps>(
   (props, ref) => {

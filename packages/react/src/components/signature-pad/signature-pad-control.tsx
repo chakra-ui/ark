@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
-export interface SignaturePadControlProps extends HTMLArkProps<'div'> {}
+export type SignaturePadControlBaseProps = {}
+export interface SignaturePadControlProps
+  extends HTMLArkProps<'div'>,
+    SignaturePadControlBaseProps {}
 
 export const SignaturePadControl = forwardRef<HTMLDivElement, SignaturePadControlProps>(
   (props, ref) => {

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerLabelProps extends HTMLArkProps<'label'> {}
+export type DatePickerLabelBaseProps = {}
+export interface DatePickerLabelProps extends HTMLArkProps<'label'>, DatePickerLabelBaseProps {}
 
 export const DatePickerLabel = forwardRef<HTMLLabelElement, DatePickerLabelProps>((props, ref) => {
   const datePicker = useDatePickerContext()

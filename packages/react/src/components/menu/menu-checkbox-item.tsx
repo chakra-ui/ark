@@ -10,8 +10,9 @@ import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-contex
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 
+export interface MenuCheckboxItemBaseProps extends PartialOptionItemProps {}
 export interface MenuCheckboxItemProps
-  extends Assign<HTMLArkProps<'div'>, PartialOptionItemProps> {}
+  extends Assign<HTMLArkProps<'div'>, MenuCheckboxItemBaseProps> {}
 
 export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps>((props, ref) => {
   const [partialOptionItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [

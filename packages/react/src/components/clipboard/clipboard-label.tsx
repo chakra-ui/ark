@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardLabelProps extends HTMLArkProps<'label'> {}
+export type ClipboardLabelBaseProps = {}
+export interface ClipboardLabelProps extends HTMLArkProps<'label'>, ClipboardLabelBaseProps {}
 
 export const ClipboardLabel = forwardRef<HTMLLabelElement, ClipboardLabelProps>((props, ref) => {
   const clipboard = useClipboardContext()

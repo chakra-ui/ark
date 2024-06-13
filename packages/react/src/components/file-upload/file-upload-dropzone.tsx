@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadDropzoneProps extends HTMLArkProps<'div'> {}
+export type FileUploadDropzoneBaseProps = {}
+export interface FileUploadDropzoneProps extends HTMLArkProps<'div'>, FileUploadDropzoneBaseProps {}
 
 export const FileUploadDropzone = forwardRef<HTMLDivElement, FileUploadDropzoneProps>(
   (props, ref) => {

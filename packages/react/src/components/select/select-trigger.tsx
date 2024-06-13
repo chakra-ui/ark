@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectTriggerProps extends HTMLArkProps<'button'> {}
+export type SelectTriggerBaseProps = {}
+export interface SelectTriggerProps extends HTMLArkProps<'button'>, SelectTriggerBaseProps {}
 
 export const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>((props, ref) => {
   const select = useSelectContext()

@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseFileUploadProps, useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
 
-export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
+export interface FileUploadRootBaseProps extends UseFileUploadProps {}
+export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, FileUploadRootBaseProps> {}
 
 export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((props, ref) => {
   const [useFileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [

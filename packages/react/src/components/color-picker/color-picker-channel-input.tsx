@@ -6,8 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
+export interface ColorPickerChannelInputBaseProps extends ChannelInputProps {}
 export interface ColorPickerChannelInputProps
-  extends Assign<HTMLArkProps<'input'>, ChannelInputProps> {}
+  extends Assign<HTMLArkProps<'input'>, ColorPickerChannelInputBaseProps> {}
 
 export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorPickerChannelInputProps>(
   (props, ref) => {

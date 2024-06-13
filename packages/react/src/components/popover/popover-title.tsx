@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
 
-export interface PopoverTitleProps extends HTMLArkProps<'div'> {}
+export type PopoverTitleBaseProps = {}
+export interface PopoverTitleProps extends HTMLArkProps<'div'>, PopoverTitleBaseProps {}
 
 export const PopoverTitle = forwardRef<HTMLDivElement, PopoverTitleProps>((props, ref) => {
   const popover = usePopoverContext()

@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
-export interface EditableCancelTriggerProps extends HTMLArkProps<'button'> {}
+export type EditableCancelTriggerBaseProps = {}
+export interface EditableCancelTriggerProps
+  extends HTMLArkProps<'button'>,
+    EditableCancelTriggerBaseProps {}
 
 export const EditableCancelTrigger = forwardRef<HTMLButtonElement, EditableCancelTriggerProps>(
   (props, ref) => {

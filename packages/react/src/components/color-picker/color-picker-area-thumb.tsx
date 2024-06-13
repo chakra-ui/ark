@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerAreaThumbProps extends HTMLArkProps<'div'> {}
+export type ColorPickerAreaThumbBaseProps = {}
+export interface ColorPickerAreaThumbProps
+  extends HTMLArkProps<'div'>,
+    ColorPickerAreaThumbBaseProps {}
 
 export const ColorPickerAreaThumb = forwardRef<HTMLDivElement, ColorPickerAreaThumbProps>(
   (props, ref) => {

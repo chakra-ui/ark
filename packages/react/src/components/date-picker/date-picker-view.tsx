@@ -7,7 +7,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context'
 
-export interface DatePickerViewProps extends Assign<HTMLArkProps<'div'>, Required<ViewProps>> {}
+export interface DatePickerViewBaseProps extends Required<ViewProps> {}
+export interface DatePickerViewProps extends Assign<HTMLArkProps<'div'>, DatePickerViewBaseProps> {}
 
 export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((props, ref) => {
   const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])

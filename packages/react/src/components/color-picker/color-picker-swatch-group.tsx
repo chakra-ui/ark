@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerSwatchGroupProps extends HTMLArkProps<'div'> {}
+export type ColorPickerSwatchGroupBaseProps = {}
+export interface ColorPickerSwatchGroupProps
+  extends HTMLArkProps<'div'>,
+    ColorPickerSwatchGroupBaseProps {}
 
 export const ColorPickerSwatchGroup = forwardRef<HTMLDivElement, ColorPickerSwatchGroupProps>(
   (props, ref) => {

@@ -6,8 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
+export interface DatePickerPresetTriggerBaseProps extends PresetTriggerProps {}
 export interface DatePickerPresetTriggerProps
-  extends Assign<HTMLArkProps<'button'>, PresetTriggerProps> {}
+  extends Assign<HTMLArkProps<'button'>, DatePickerPresetTriggerBaseProps> {}
 
 export const DatePickerPresetTrigger = forwardRef<HTMLButtonElement, DatePickerPresetTriggerProps>(
   (props, ref) => {

@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UsePinInputReturn
 }
 
-export interface PinInputRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface PinInputRootProviderBaseProps extends RootProviderProps {}
+export interface PinInputRootProviderProps
+  extends HTMLArkProps<'div'>,
+    PinInputRootProviderBaseProps {}
 
 export const PinInputRootProvider = forwardRef<HTMLDivElement, PinInputRootProviderProps>(
   (props, ref) => {

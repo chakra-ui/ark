@@ -12,9 +12,11 @@ import {
 import { type UseSelectProps, useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
-export interface SelectRootProps<T extends CollectionItem>
-  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
+export interface SelectRootBaseProps<T extends CollectionItem>
+  extends UseSelectProps<T>,
     UsePresenceProps {}
+export interface SelectRootProps<T extends CollectionItem>
+  extends Assign<HTMLArkProps<'div'>, SelectRootBaseProps<T>> {}
 
 const SelectImpl = <T extends CollectionItem>(
   props: SelectRootProps<T>,

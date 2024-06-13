@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
-export interface SwitchThumbProps extends HTMLArkProps<'span'> {}
+export type SwitchThumbBaseProps = {}
+export interface SwitchThumbProps extends HTMLArkProps<'span'>, SwitchThumbBaseProps {}
 
 export const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>((props, ref) => {
   const switchContext = useSwitchContext()

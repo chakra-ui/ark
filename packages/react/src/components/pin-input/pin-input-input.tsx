@@ -6,7 +6,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, InputProps> {}
+export interface PinInputInputBaseProps extends InputProps {}
+export interface PinInputInputProps extends Assign<HTMLArkProps<'input'>, PinInputInputBaseProps> {}
 
 export const PinInputInput = forwardRef<HTMLInputElement, PinInputInputProps>((props, ref) => {
   const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
 
-export interface TooltipArrowTipProps extends HTMLArkProps<'div'> {}
+export type TooltipArrowTipBaseProps = {}
+export interface TooltipArrowTipProps extends HTMLArkProps<'div'>, TooltipArrowTipBaseProps {}
 
 export const TooltipArrowTip = forwardRef<HTMLDivElement, TooltipArrowTipProps>((props, ref) => {
   const tooltip = useTooltipContext()

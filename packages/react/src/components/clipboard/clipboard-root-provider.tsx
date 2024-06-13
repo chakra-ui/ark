@@ -5,17 +5,19 @@ import { type HTMLArkProps, ark } from '../factory'
 import type { UseClipboardReturn } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
 
-interface RootProviderProps {
+export interface ClipboardRootProviderBaseProps {
   value: UseClipboardReturn
 }
-
-export interface ClipboardRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface ClipboardRootProviderProps
+  extends HTMLArkProps<'div'>,
+    ClipboardRootProviderBaseProps {}
 
 export const ClipboardRootProvider = forwardRef<HTMLDivElement, ClipboardRootProviderProps>(
   (props, ref) => {
-    const [{ value: clipboard }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
+    const [{ value: clipboard }, localProps] = createSplitProps<ClipboardRootProviderBaseProps>()(
+      props,
+      ['value'],
+    )
     const mergedProps = mergeProps(clipboard.getRootProps(), localProps)
 
     return (

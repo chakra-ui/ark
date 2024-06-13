@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
-export interface SliderHiddenInputProps extends HTMLArkProps<'input'> {}
+export type SliderHiddenInputBaseProps = {}
+export interface SliderHiddenInputProps extends HTMLArkProps<'input'>, SliderHiddenInputBaseProps {}
 
 export const SliderHiddenInput = forwardRef<HTMLInputElement, SliderHiddenInputProps>(
   (props, ref) => {

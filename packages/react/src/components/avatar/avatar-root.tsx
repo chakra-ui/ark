@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseAvatarProps, useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
 
-export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, UseAvatarProps> {}
+export interface AvatarRootBaseProps extends UseAvatarProps {}
+export interface AvatarRootProps extends Assign<HTMLArkProps<'div'>, AvatarRootBaseProps> {}
 
 export const AvatarRoot = forwardRef<HTMLDivElement, AvatarRootProps>((props, ref) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [

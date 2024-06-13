@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputIncrementTriggerProps extends HTMLArkProps<'button'> {}
+export type NumberInputIncrementTriggerBaseProps = {}
+export interface NumberInputIncrementTriggerProps
+  extends HTMLArkProps<'button'>,
+    NumberInputIncrementTriggerBaseProps {}
 
 export const NumberInputIncrementTrigger = forwardRef<
   HTMLButtonElement,

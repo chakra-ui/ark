@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useSelectItemGroupPropsContext } from './use-select-item-group-props'
 
-export interface SelectItemGroupLabelProps extends HTMLArkProps<'div'> {}
+export type SelectItemGroupLabelBaseProps = {}
+export interface SelectItemGroupLabelProps
+  extends HTMLArkProps<'div'>,
+    SelectItemGroupLabelBaseProps {}
 
 export const SelectItemGroupLabel = forwardRef<HTMLDivElement, SelectItemGroupLabelProps>(
   (props, ref) => {

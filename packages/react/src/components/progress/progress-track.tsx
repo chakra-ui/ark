@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressTrackProps extends HTMLArkProps<'div'> {}
+export type ProgressTrackBaseProps = {}
+export interface ProgressTrackProps extends HTMLArkProps<'div'>, ProgressTrackBaseProps {}
 
 export const ProgressTrack = forwardRef<HTMLDivElement, ProgressTrackProps>((props, ref) => {
   const progress = useProgressContext()

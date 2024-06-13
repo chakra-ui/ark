@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export interface ComboboxClearTriggerProps extends HTMLArkProps<'button'> {}
+export type ComboboxClearTriggerBaseProps = {}
+export interface ComboboxClearTriggerProps
+  extends HTMLArkProps<'button'>,
+    ComboboxClearTriggerBaseProps {}
 
 export const ComboboxClearTrigger = forwardRef<HTMLButtonElement, ComboboxClearTriggerProps>(
   (props, ref) => {

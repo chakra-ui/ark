@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
 
-export interface PopoverCloseTriggerProps extends HTMLArkProps<'button'> {}
+export type PopoverCloseTriggerBaseProps = {}
+export interface PopoverCloseTriggerProps
+  extends HTMLArkProps<'button'>,
+    PopoverCloseTriggerBaseProps {}
 
 export const PopoverCloseTrigger = forwardRef<HTMLButtonElement, PopoverCloseTriggerProps>(
   (props, ref) => {

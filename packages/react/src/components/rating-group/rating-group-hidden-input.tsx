@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 
-export interface RatingGroupHiddenInputProps extends HTMLArkProps<'input'> {}
+export type RatingGroupHiddenInputBaseProps = {}
+export interface RatingGroupHiddenInputProps
+  extends HTMLArkProps<'input'>,
+    RatingGroupHiddenInputBaseProps {}
 
 export const RatingGroupHiddenInput = forwardRef<HTMLInputElement, RatingGroupHiddenInputProps>(
   (props, ref) => {

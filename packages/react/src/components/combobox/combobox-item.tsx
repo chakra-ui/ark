@@ -8,7 +8,8 @@ import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemProvider } from './use-combobox-item-context'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
 
-export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface ComboboxItemBaseProps extends ItemProps {}
+export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ComboboxItemBaseProps> {}
 
 export const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'persistFocus'])

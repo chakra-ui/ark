@@ -214,6 +214,8 @@ const extractTypesForFramework = async (framework: string) => {
 
                   return [newName, { props: Object.fromEntries(Object.entries(x[1])) }]
                 })
+                // @ts-expect-error
+                .filter((x) => !x[0].endsWith('Base'))
                 .filter((y) => Object.keys(y[1]).length !== 0),
             ),
           )

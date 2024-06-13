@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseEditableReturn
 }
 
-export interface EditableRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface EditableRootProviderBaseProps extends RootProviderProps {}
+export interface EditableRootProviderProps
+  extends HTMLArkProps<'div'>,
+    EditableRootProviderBaseProps {}
 
 export const EditableRootProvider = forwardRef<HTMLDivElement, EditableRootProviderProps>(
   (props, ref) => {

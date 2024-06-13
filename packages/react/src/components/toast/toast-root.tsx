@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import type { HTMLArkProps } from '../factory'
 import { useToastContext } from './use-toast-context'
 
-export interface ToastRootProps extends HTMLArkProps<'div'> {}
+export type ToastRootBaseProps = {}
+export interface ToastRootProps extends HTMLArkProps<'div'>, ToastRootBaseProps {}
 
 export const ToastRoot = forwardRef<HTMLDivElement, ToastRootProps>((props, ref) => {
   const toast = useToastContext()

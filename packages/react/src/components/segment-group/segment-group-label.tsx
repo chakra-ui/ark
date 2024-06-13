@@ -4,7 +4,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
-export interface SegmentGroupLabelProps extends HTMLArkProps<'label'> {}
+export type SegmentGroupLabelBaseProps = {}
+export interface SegmentGroupLabelProps extends HTMLArkProps<'label'>, SegmentGroupLabelBaseProps {}
 
 export const SegmentGroupLabel = forwardRef<HTMLLabelElement, SegmentGroupLabelProps>(
   (props, ref) => {

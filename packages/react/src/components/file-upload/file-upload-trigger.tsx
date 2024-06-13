@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadTriggerProps extends HTMLArkProps<'button'> {}
+export type FileUploadTriggerBaseProps = {}
+export interface FileUploadTriggerProps
+  extends HTMLArkProps<'button'>,
+    FileUploadTriggerBaseProps {}
 
 export const FileUploadTrigger = forwardRef<HTMLButtonElement, FileUploadTriggerProps>(
   (props, ref) => {

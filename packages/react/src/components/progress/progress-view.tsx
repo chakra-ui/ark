@@ -6,7 +6,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressViewProps extends Assign<HTMLArkProps<'span'>, ViewProps> {}
+export interface ProgressViewBaseProps extends ViewProps {}
+export interface ProgressViewProps extends Assign<HTMLArkProps<'span'>, ProgressViewBaseProps> {}
 
 export const ProgressView = forwardRef<HTMLSpanElement, ProgressViewProps>((props, ref) => {
   const [viewProps, localProps] = createSplitProps<ViewProps>()(props, ['state'])

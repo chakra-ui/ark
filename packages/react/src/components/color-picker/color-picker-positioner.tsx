@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerPositionerProps extends HTMLArkProps<'div'> {}
+export type ColorPickerPositionerBaseProps = {}
+export interface ColorPickerPositionerProps
+  extends HTMLArkProps<'div'>,
+    ColorPickerPositionerBaseProps {}
 
 export const ColorPickerPositioner = forwardRef<HTMLDivElement, ColorPickerPositionerProps>(
   (props, ref) => {

@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectContentProps extends HTMLArkProps<'div'> {}
+export type SelectContentBaseProps = {}
+export interface SelectContentProps extends HTMLArkProps<'div'>, SelectContentBaseProps {}
 
 export const SelectContent = forwardRef<HTMLDivElement, SelectContentProps>((props, ref) => {
   const select = useSelectContext()

@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseTreeViewProps, useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
-export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, UseTreeViewProps> {}
+export interface TreeViewRootBaseProps extends UseTreeViewProps {}
+export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, TreeViewRootBaseProps> {}
 
 export const TreeViewRoot = forwardRef<HTMLDivElement, TreeViewRootProps>((props, ref) => {
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps>()(props, [

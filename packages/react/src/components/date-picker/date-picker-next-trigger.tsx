@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerNextTriggerProps extends HTMLArkProps<'button'> {}
+export type DatePickerNextTriggerBaseProps = {}
+export interface DatePickerNextTriggerProps
+  extends HTMLArkProps<'button'>,
+    DatePickerNextTriggerBaseProps {}
 
 export const DatePickerNextTrigger = forwardRef<HTMLButtonElement, DatePickerNextTriggerProps>(
   (props, ref) => {

@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
+export type DatePickerRangeTextBaseProps = {}
+export interface DatePickerRangeTextProps
+  extends HTMLArkProps<'div'>,
+    DatePickerRangeTextBaseProps {}
 
 export const DatePickerRangeText = forwardRef<HTMLDivElement, DatePickerRangeTextProps>(
   (props, ref) => {

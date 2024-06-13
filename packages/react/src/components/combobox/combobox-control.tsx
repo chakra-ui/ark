@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export interface ComboboxControlProps extends HTMLArkProps<'div'> {}
+export type ComboboxControlBaseProps = {}
+export interface ComboboxControlProps extends HTMLArkProps<'div'>, ComboboxControlBaseProps {}
 
 export const ComboboxControl = forwardRef<HTMLDivElement, ComboboxControlProps>((props, ref) => {
   const combobox = useComboboxContext()

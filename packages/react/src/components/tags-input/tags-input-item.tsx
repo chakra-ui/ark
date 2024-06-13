@@ -8,7 +8,8 @@ import { useTagsInputContext } from './use-tags-input-context'
 import { TagsInputItemProvider } from './use-tags-input-item-context'
 import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
 
-export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface TagsInputItemBaseProps extends ItemProps {}
+export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, TagsInputItemBaseProps> {}
 
 export const TagsInputItem = forwardRef<HTMLDivElement, TagsInputItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [

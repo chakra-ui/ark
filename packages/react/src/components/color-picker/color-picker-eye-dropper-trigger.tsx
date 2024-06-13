@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerEyeDropperTriggerProps extends HTMLArkProps<'button'> {}
+export type ColorPickerEyeDropperTriggerBaseProps = {}
+export interface ColorPickerEyeDropperTriggerProps
+  extends HTMLArkProps<'button'>,
+    ColorPickerEyeDropperTriggerBaseProps {}
 
 export const ColorPickerEyeDropperTrigger = forwardRef<
   HTMLButtonElement,

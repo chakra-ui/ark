@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
-export interface ComboboxItemTextProps extends HTMLArkProps<'span'> {}
+export type ComboboxItemTextBaseProps = {}
+export interface ComboboxItemTextProps extends HTMLArkProps<'span'>, ComboboxItemTextBaseProps {}
 
 export const ComboboxItemText = forwardRef<HTMLDivElement, ComboboxItemTextProps>((props, ref) => {
   const combobox = useComboboxContext()

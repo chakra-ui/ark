@@ -2,7 +2,10 @@ import { mergeProps } from '@zag-js/react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressCircleRangeProps extends HTMLArkProps<'circle'> {}
+export type ProgressCircleRangeBaseProps = {}
+export interface ProgressCircleRangeProps
+  extends HTMLArkProps<'circle'>,
+    ProgressCircleRangeBaseProps {}
 
 export const ProgressCircleRange = (props: ProgressCircleRangeProps) => {
   const progress = useProgressContext()

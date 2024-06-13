@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemSizeTextProps extends HTMLArkProps<'div'> {}
+export type FileUploadItemSizeTextBaseProps = {}
+export interface FileUploadItemSizeTextProps
+  extends HTMLArkProps<'div'>,
+    FileUploadItemSizeTextBaseProps {}
 
 export const FileUploadItemSizeText = forwardRef<HTMLDivElement, FileUploadItemSizeTextProps>(
   (props, ref) => {

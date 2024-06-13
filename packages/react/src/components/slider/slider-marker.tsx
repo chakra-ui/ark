@@ -6,7 +6,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, MarkerProps> {}
+export interface SliderMarkerBaseProps extends MarkerProps {}
+export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, SliderMarkerBaseProps> {}
 
 export const SliderMarker = forwardRef<HTMLSpanElement, SliderMarkerProps>((props, ref) => {
   const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])

@@ -7,7 +7,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 
-export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface MenuItemBaseProps extends ItemProps {}
+export interface MenuItemProps extends Assign<HTMLArkProps<'div'>, MenuItemBaseProps> {}
 
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [

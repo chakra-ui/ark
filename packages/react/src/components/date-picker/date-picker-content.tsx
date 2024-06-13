@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerContentProps extends HTMLArkProps<'div'> {}
+export type DatePickerContentBaseProps = {}
+export interface DatePickerContentProps extends HTMLArkProps<'div'>, DatePickerContentBaseProps {}
 
 export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>(
   (props, ref) => {

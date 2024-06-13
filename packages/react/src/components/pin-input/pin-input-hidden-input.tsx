@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export interface PinInputHiddenInputProps extends HTMLArkProps<'input'> {}
+export type PinInputHiddenInputBaseProps = {}
+export interface PinInputHiddenInputProps
+  extends HTMLArkProps<'input'>,
+    PinInputHiddenInputBaseProps {}
 
 export const PinInputHiddenInput = forwardRef<HTMLInputElement, PinInputHiddenInputProps>(
   (props, ref) => {

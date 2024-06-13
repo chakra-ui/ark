@@ -7,7 +7,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemProps extends Assign<HTMLArkProps<'ul'>, ItemProps> {}
+export interface FileUploadItemBaseProps extends ItemProps {}
+export interface FileUploadItemProps extends Assign<HTMLArkProps<'ul'>, FileUploadItemBaseProps> {}
 
 export const FileUploadItem = forwardRef<HTMLLIElement, FileUploadItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['file'])

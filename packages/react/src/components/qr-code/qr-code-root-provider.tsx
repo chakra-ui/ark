@@ -9,7 +9,8 @@ interface RootProviderProps {
   value: UseQrCodeReturn
 }
 
-export interface QrCodeRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface QrCodeRootProviderBaseProps extends RootProviderProps {}
+export interface QrCodeRootProviderProps extends HTMLArkProps<'div'>, QrCodeRootProviderBaseProps {}
 
 export const QrCodeRootProvider = forwardRef<HTMLDivElement, QrCodeRootProviderProps>(
   (props, ref) => {

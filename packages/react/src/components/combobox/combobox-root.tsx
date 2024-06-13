@@ -12,9 +12,11 @@ import {
 import { type UseComboboxProps, useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
-export interface ComboboxRootProps<T extends CollectionItem>
-  extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
+export interface ComboboxRootBaseProps<T extends CollectionItem>
+  extends UseComboboxProps<T>,
     UsePresenceProps {}
+export interface ComboboxRootProps<T extends CollectionItem>
+  extends Assign<HTMLArkProps<'div'>, ComboboxRootBaseProps<T>> {}
 
 const ComboboxImpl = <T extends CollectionItem>(
   props: ComboboxRootProps<T>,

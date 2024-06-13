@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseSplitterReturn
 }
 
-export interface SplitterRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface SplitterRootProviderBaseProps extends RootProviderProps {}
+export interface SplitterRootProviderProps
+  extends HTMLArkProps<'div'>,
+    SplitterRootProviderBaseProps {}
 
 export const SplitterRootProvider = forwardRef<HTMLDivElement, SplitterRootProviderProps>(
   (props, ref) => {

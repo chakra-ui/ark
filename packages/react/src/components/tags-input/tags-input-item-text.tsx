@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
-export interface TagsInputItemTextProps extends HTMLArkProps<'span'> {}
+export type TagsInputItemTextBaseProps = {}
+export interface TagsInputItemTextProps extends HTMLArkProps<'span'>, TagsInputItemTextBaseProps {}
 
 export const TagsInputItemText = forwardRef<HTMLSpanElement, TagsInputItemTextProps>(
   (props, ref) => {

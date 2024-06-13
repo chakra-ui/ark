@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
+export type DialogTriggerBaseProps = {}
+export interface DialogTriggerProps extends HTMLArkProps<'button'>, DialogTriggerBaseProps {}
 
 export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((props, ref) => {
   const dialog = useDialogContext()

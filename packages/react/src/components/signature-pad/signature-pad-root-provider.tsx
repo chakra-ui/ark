@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseSignaturePadReturn
 }
 
-export interface SignaturePadRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface SignaturePadRootProviderBaseProps extends RootProviderProps {}
+export interface SignaturePadRootProviderProps
+  extends HTMLArkProps<'div'>,
+    SignaturePadRootProviderBaseProps {}
 
 export const SignaturePadRootProvider = forwardRef<HTMLDivElement, SignaturePadRootProviderProps>(
   (props, ref) => {

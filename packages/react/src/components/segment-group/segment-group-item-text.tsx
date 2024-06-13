@@ -5,7 +5,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemTextProps extends HTMLArkProps<'span'> {}
+export type SegmentGroupItemTextBaseProps = {}
+export interface SegmentGroupItemTextProps
+  extends HTMLArkProps<'span'>,
+    SegmentGroupItemTextBaseProps {}
 
 export const SegmentGroupItemText = forwardRef<HTMLSpanElement, SegmentGroupItemTextProps>(
   (props, ref) => {

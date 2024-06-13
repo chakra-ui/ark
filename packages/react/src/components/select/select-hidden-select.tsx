@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectHiddenSelectProps extends HTMLArkProps<'select'> {}
+export type SelectHiddenSelectBaseProps = {}
+export interface SelectHiddenSelectProps
+  extends HTMLArkProps<'select'>,
+    SelectHiddenSelectBaseProps {}
 
 export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSelectProps>(
   (props, ref) => {

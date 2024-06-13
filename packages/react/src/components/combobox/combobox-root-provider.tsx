@@ -15,11 +15,12 @@ import { ComboboxProvider } from './use-combobox-context'
 interface RootProviderProps<T extends CollectionItem> {
   value: UseComboboxReturn<T>
 }
-
+export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
+  extends RootProviderProps<T>,
+    UsePresenceProps {}
 export interface ComboboxRootProviderProps<T extends CollectionItem>
   extends HTMLArkProps<'div'>,
-    RootProviderProps<T>,
-    UsePresenceProps {}
+    ComboboxRootProviderBaseProps<T> {}
 
 const ComboboxImpl = <T extends CollectionItem>(
   props: ComboboxRootProviderProps<T>,

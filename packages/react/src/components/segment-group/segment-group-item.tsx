@@ -9,7 +9,9 @@ import { useSegmentGroupContext } from './use-segment-group-context'
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
+export interface SegmentGroupItemBaseProps extends ItemProps {}
+export interface SegmentGroupItemProps
+  extends Assign<HTMLArkProps<'label'>, SegmentGroupItemBaseProps> {}
 
 export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>(
   (props, ref) => {

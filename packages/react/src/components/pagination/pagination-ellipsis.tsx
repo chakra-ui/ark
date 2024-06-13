@@ -6,7 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
 
-export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}
+export interface PaginationEllipsisBaseProps extends EllipsisProps {}
+export interface PaginationEllipsisProps
+  extends Assign<HTMLArkProps<'div'>, PaginationEllipsisBaseProps> {}
 
 export const PaginationEllipsis = forwardRef<HTMLDivElement, PaginationEllipsisProps>(
   (props, ref) => {

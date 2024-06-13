@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseTreeViewReturn
 }
 
-export interface TreeViewRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface TreeViewRootProviderBaseProps extends RootProviderProps {}
+export interface TreeViewRootProviderProps
+  extends HTMLArkProps<'div'>,
+    TreeViewRootProviderBaseProps {}
 
 export const TreeViewRootProvider = forwardRef<HTMLDivElement, TreeViewRootProviderProps>(
   (props, ref) => {

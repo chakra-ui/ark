@@ -6,14 +6,11 @@ import { type HTMLArkProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
 
-export interface ToasterProps
-  extends Assign<
-    HTMLArkProps<'div'>,
-    {
-      toaster: CreateToasterReturn
-      children: (toast: toast.Options<ReactNode>) => ReactNode
-    }
-  > {}
+export interface ToasterBaseProps {
+  toaster: CreateToasterReturn
+  children: (toast: toast.Options<ReactNode>) => ReactNode
+}
+export interface ToasterProps extends Assign<HTMLArkProps<'div'>, ToasterBaseProps> {}
 
 export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
   const { toaster, children, ...rest } = props

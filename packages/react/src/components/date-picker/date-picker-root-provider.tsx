@@ -15,10 +15,10 @@ interface RootProviderProps {
   value: UseDatePickerReturn
 }
 
+export interface DatePickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface DatePickerRootProviderProps
   extends HTMLArkProps<'div'>,
-    RootProviderProps,
-    UsePresenceProps {}
+    DatePickerRootProviderBaseProps {}
 
 export const DatePickerRootProvider = forwardRef<HTMLDivElement, DatePickerRootProviderProps>(
   (props, ref) => {

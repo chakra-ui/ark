@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 
-export interface MenuArrowTipProps extends HTMLArkProps<'div'> {}
+export type MenuArrowTipBaseProps = {}
+export interface MenuArrowTipProps extends HTMLArkProps<'div'>, MenuArrowTipBaseProps {}
 
 export const MenuArrowTip = forwardRef<HTMLDivElement, MenuArrowTipProps>((props, ref) => {
   const menu = useMenuContext()

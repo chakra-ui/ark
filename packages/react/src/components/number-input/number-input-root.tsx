@@ -6,7 +6,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseNumberInputProps, useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 
-export interface NumberInputRootProps extends Assign<HTMLArkProps<'div'>, UseNumberInputProps> {}
+export interface NumberInputRootBaseProps extends UseNumberInputProps {}
+export interface NumberInputRootProps
+  extends Assign<HTMLArkProps<'div'>, NumberInputRootBaseProps> {}
 
 export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>((props, ref) => {
   const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
 
-export interface CollapsibleContentProps extends HTMLArkProps<'div'> {}
+export type CollapsibleContentBaseProps = {}
+export interface CollapsibleContentProps extends HTMLArkProps<'div'>, CollapsibleContentBaseProps {}
 
 export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentProps>(
   (props, ref) => {

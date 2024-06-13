@@ -8,7 +8,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useTabsContext } from './use-tabs-context'
 
-export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
+export interface TabContentBaseProps extends ContentProps {}
+export interface TabContentProps extends Assign<HTMLArkProps<'div'>, TabContentBaseProps> {}
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])

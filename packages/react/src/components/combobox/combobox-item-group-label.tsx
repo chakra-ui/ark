@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
 
-export interface ComboboxItemGroupLabelProps extends HTMLArkProps<'div'> {}
+export type ComboboxItemGroupLabelBaseProps = {}
+export interface ComboboxItemGroupLabelProps
+  extends HTMLArkProps<'div'>,
+    ComboboxItemGroupLabelBaseProps {}
 
 export const ComboboxItemGroupLabel = forwardRef<HTMLDivElement, ComboboxItemGroupLabelProps>(
   (props, ref) => {

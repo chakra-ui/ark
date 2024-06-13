@@ -5,7 +5,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
+export type AccordionItemTriggerBaseProps = {}
+export interface AccordionItemTriggerProps
+  extends HTMLArkProps<'button'>,
+    AccordionItemTriggerBaseProps {}
 
 export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerProps>(
   (props, ref) => {

@@ -11,9 +11,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseAccordionProps, useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
 
-export interface AccordionRootProps
-  extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
-    RenderStrategyProps {}
+export interface AccordionRootBaseProps extends UseAccordionProps, RenderStrategyProps {}
+export interface AccordionRootProps extends Assign<HTMLArkProps<'div'>, AccordionRootBaseProps> {}
 
 export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)

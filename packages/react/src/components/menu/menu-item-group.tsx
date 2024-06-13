@@ -9,7 +9,8 @@ import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
 type OptionalItemGroupProps = Optional<ItemGroupProps, 'id'>
 
-export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, OptionalItemGroupProps> {}
+export interface MenuItemGroupBaseProps extends OptionalItemGroupProps {}
+export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, MenuItemGroupBaseProps> {}
 
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
   const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, [

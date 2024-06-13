@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
-export interface SignaturePadClearTriggerProps extends HTMLArkProps<'button'> {}
+export type SignaturePadClearTriggerBaseProps = {}
+export interface SignaturePadClearTriggerProps
+  extends HTMLArkProps<'button'>,
+    SignaturePadClearTriggerBaseProps {}
 
 export const SignaturePadClearTrigger = forwardRef<
   HTMLButtonElement,

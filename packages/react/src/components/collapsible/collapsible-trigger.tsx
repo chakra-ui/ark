@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
 
-export interface CollapsibleTriggerProps extends HTMLArkProps<'button'> {}
+export type CollapsibleTriggerBaseProps = {}
+export interface CollapsibleTriggerProps
+  extends HTMLArkProps<'button'>,
+    CollapsibleTriggerBaseProps {}
 
 export const CollapsibleTrigger = forwardRef<HTMLButtonElement, CollapsibleTriggerProps>(
   (props, ref) => {
