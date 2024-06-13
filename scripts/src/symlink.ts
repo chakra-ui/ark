@@ -1,22 +1,36 @@
 import { spawnSync } from 'node:child_process'
 import { readFileSync, writeFileSync } from 'node:fs'
-import { resolve } from 'node:path'
+import { dirname, relative, resolve } from 'node:path'
+import { findPackages } from 'find-packages'
+import { findUpSync } from 'find-up'
 
-const overrides = {
-  '@zag-js/core': '../zag/packages/core',
-  '@zag-js/react': '../zag/packages/frameworks/react',
-  '@zag-js/vue': '../zag/packages/frameworks/vue',
-  '@zag-js/solid': '../zag/packages/frameworks/solid',
-  '@zag-js/store': '../zag/packages/store',
-  '@zag-js/utils': '../zag/packages/utilities/core',
-  '@zag-js/dom-query': '../zag/packages/utilities/dom-query',
-  '@zag-js/text-selection': '../zag/packages/utilities/text-selection',
-  '@zag-js/dom-event': '../zag/packages/utilities/dom-event',
-  '@zag-js/types': '../zag/packages/types',
-  '@zag-js/presence': '../zag/packages/machines/presence',
+async function getZagPackages(): Promise<Record<string, string>> {
+  const lockFilePath = findUpSync('bun.lockb')
+  if (!lockFilePath) throw new ReferenceError('bun.lockb not found')
+
+  const rootDir = dirname(lockFilePath)
+
+  const dir = findUpSync('zag', { type: 'directory' })
+  if (!dir) throw new ReferenceError('zag directory not found')
+
+  const packages = await findPackages(dir, {
+    includeRoot: false,
+    patterns: ['packages/**/*', 'shared/*'],
+  })
+
+  const result: Record<string, string> = {}
+
+  for (const { manifest, dir } of packages) {
+    if (!manifest.name) continue
+    result[manifest.name] = relative(rootDir, dir)
+  }
+
+  return result
 }
 
 async function main() {
+  const overrides = await getZagPackages()
+
   const revert = process.argv.includes('--revert')
   const lockFilePath = resolve('../bun.lockb')
 

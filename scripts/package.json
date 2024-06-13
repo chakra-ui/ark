@@ -22,6 +22,7 @@
     "@types/fs-extra": "11.0.4",
     "@types/node": "20.14.2",
     "@types/voca": "1.4.5",
+    "find-packages": "10.0.4",
     "find-up": "7.0.0",
     "fs-extra": "11.2.0",
     "globby": "14.0.1",
