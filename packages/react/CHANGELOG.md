@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Checkbox:** Added missing `group` role for Checkbox group component.
+
 ## [3.3.0] - 2024-06-12
 
 ### Added

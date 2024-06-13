@@ -21,7 +21,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((pro
 
   return (
     <CheckboxGroupContextProvider value={checkboxGroup}>
-      <ark.div ref={ref} {...localProps} {...checkboxAnatomy.build().group.attrs} />
+      <ark.div ref={ref} role="group" {...localProps} {...checkboxAnatomy.build().group.attrs} />
     </CheckboxGroupContextProvider>
   )
 })
