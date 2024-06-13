@@ -33,6 +33,9 @@
       },
       "performance": {
         "noAccumulatingSpread": "off"
+      },
+      "a11y": {
+        "useButtonType": "off"
       }
     }
   }
