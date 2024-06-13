@@ -32,7 +32,7 @@ CheckboxGroupProvider(checkboxGroup)
 </script>
 
 <template>
-  <ark.div v-bind="{ ...checkboxAnatomy.build().group.attrs }" :as-child="asChild">
+  <ark.div role="group" v-bind="{ ...checkboxAnatomy.build().group.attrs }" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

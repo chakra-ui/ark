@@ -19,7 +19,7 @@ export const CheckboxGroup = (props: CheckboxGroupProps) => {
 
   return (
     <CheckboxGroupContextProvider value={checkboxGroup}>
-      <ark.div {...localProps} {...checkboxAnatomy.build().group.attrs} />
+      <ark.div role="group" {...localProps} {...checkboxAnatomy.build().group.attrs} />
     </CheckboxGroupContextProvider>
   )
 }
