@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
 
-export interface TabListProps extends HTMLArkProps<'div'> {}
+export type TabListBaseProps = {}
+export interface TabListProps extends HTMLArkProps<'div'>, TabListBaseProps {}
 
 export const TabList = forwardRef<HTMLDivElement, TabListProps>((props, ref) => {
   const tabs = useTabsContext()

@@ -5,7 +5,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemControlProps extends HTMLArkProps<'div'> {}
+export type SegmentGroupItemControlBaseProps = {}
+export interface SegmentGroupItemControlProps
+  extends HTMLArkProps<'div'>,
+    SegmentGroupItemControlBaseProps {}
 
 export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupItemControlProps>(
   (props, ref) => {

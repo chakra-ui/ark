@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseToggleGroupReturn
 }
 
-export interface ToggleGroupRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface ToggleGroupRootProviderBaseProps extends RootProviderProps {}
+export interface ToggleGroupRootProviderProps
+  extends HTMLArkProps<'div'>,
+    ToggleGroupRootProviderBaseProps {}
 
 export const ToggleGroupRootProvider = forwardRef<HTMLDivElement, ToggleGroupRootProviderProps>(
   (props, ref) => {

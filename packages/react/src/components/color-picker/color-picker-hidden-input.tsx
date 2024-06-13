@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerHiddenInputProps extends HTMLArkProps<'input'> {}
+export type ColorPickerHiddenInputBaseProps = {}
+export interface ColorPickerHiddenInputProps
+  extends HTMLArkProps<'input'>,
+    ColorPickerHiddenInputBaseProps {}
 
 export const ColorPickerHiddenInput = forwardRef<HTMLInputElement, ColorPickerHiddenInputProps>(
   (props, ref) => {

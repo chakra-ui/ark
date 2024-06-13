@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
+export type DatePickerYearSelectBaseProps = {}
+export interface DatePickerYearSelectProps
+  extends HTMLArkProps<'select'>,
+    DatePickerYearSelectBaseProps {}
 
 export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYearSelectProps>(
   (props, ref) => {

@@ -7,7 +7,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerChannelSliderProps extends Assign<HTMLArkProps<'div'>, ChannelProps> {}
+export interface ColorPickerChannelSliderBaseProps extends ChannelProps {}
+export interface ColorPickerChannelSliderProps
+  extends Assign<HTMLArkProps<'div'>, ColorPickerChannelSliderBaseProps> {}
 
 export const ColorPickerChannelSlider = forwardRef<HTMLDivElement, ColorPickerChannelSliderProps>(
   (props, ref) => {

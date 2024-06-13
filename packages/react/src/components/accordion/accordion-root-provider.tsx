@@ -14,10 +14,10 @@ interface RootProviderProps {
   value: UseAccordionReturn
 }
 
+export interface AccordionRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
 export interface AccordionRootProviderProps
   extends HTMLArkProps<'div'>,
-    RootProviderProps,
-    RenderStrategyProps {}
+    AccordionRootProviderBaseProps {}
 
 export const AccordionRootProvider = forwardRef<HTMLDivElement, AccordionRootProviderProps>(
   (props, ref) => {

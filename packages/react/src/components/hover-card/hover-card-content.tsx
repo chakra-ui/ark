@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useHoverCardContext } from './use-hover-card-context'
 
-export interface HoverCardContentProps extends HTMLArkProps<'div'> {}
+export type HoverCardContentBaseProps = {}
+export interface HoverCardContentProps extends HTMLArkProps<'div'>, HoverCardContentBaseProps {}
 
 export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps>((props, ref) => {
   const hoverCard = useHoverCardContext()

@@ -7,6 +7,7 @@ import { splitPresenceProps } from '../presence/split-presence-props'
 import { type UseDialogProps, useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
+export interface DialogRootBaseProps extends UseDialogProps, UsePresenceProps {}
 export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
   children?: ReactNode
 }

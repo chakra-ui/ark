@@ -15,10 +15,10 @@ interface RootProviderProps {
   value: UseColorPickerReturn
 }
 
+export interface ColorPickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface ColorPickerRootProviderProps
   extends HTMLArkProps<'div'>,
-    RootProviderProps,
-    UsePresenceProps {}
+    ColorPickerRootProviderBaseProps {}
 
 export const ColorPickerRootProvider = forwardRef<HTMLDivElement, ColorPickerRootProviderProps>(
   (props, ref) => {

@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseRadioGroupReturn
 }
 
-export interface RadioGroupRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface RadioGroupRootProviderBaseProps extends RootProviderProps {}
+export interface RadioGroupRootProviderProps
+  extends HTMLArkProps<'div'>,
+    RadioGroupRootProviderBaseProps {}
 
 export const RadioGroupRootProvider = forwardRef<HTMLDivElement, RadioGroupRootProviderProps>(
   (props, ref) => {

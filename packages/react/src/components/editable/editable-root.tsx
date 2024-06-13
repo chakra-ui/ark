@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseEditableProps, useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
 
-export interface EditableRootProps extends Assign<HTMLArkProps<'div'>, UseEditableProps> {}
+export interface EditableRootBaseProps extends UseEditableProps {}
+export interface EditableRootProps extends Assign<HTMLArkProps<'div'>, EditableRootBaseProps> {}
 
 export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props, ref) => {
   const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [

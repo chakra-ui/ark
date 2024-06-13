@@ -9,7 +9,8 @@ interface RootProviderProps {
   value: UseAvatarReturn
 }
 
-export interface AvatarRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface AvatarRootProviderBaseProps extends RootProviderProps {}
+export interface AvatarRootProviderProps extends HTMLArkProps<'div'>, AvatarRootProviderBaseProps {}
 
 export const AvatarRootProvider = forwardRef<HTMLDivElement, AvatarRootProviderProps>(
   (props, ref) => {

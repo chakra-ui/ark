@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseProgressProps, useProgress } from './use-progress'
 import { ProgressProvider } from './use-progress-context'
 
-export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, UseProgressProps> {}
+export interface ProgressRootBaseProps extends UseProgressProps {}
+export interface ProgressRootProps extends Assign<HTMLArkProps<'div'>, ProgressRootBaseProps> {}
 
 export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props, ref) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [

@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseFileUploadReturn
 }
 
-export interface FileUploadRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface FileUploadRootProviderBaseProps extends RootProviderProps {}
+export interface FileUploadRootProviderProps
+  extends HTMLArkProps<'div'>,
+    FileUploadRootProviderBaseProps {}
 
 export const FileUploadRootProvider = forwardRef<HTMLDivElement, FileUploadRootProviderProps>(
   (props, ref) => {

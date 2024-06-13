@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
+export type AccordionItemIndicatorBaseProps = {}
+export interface AccordionItemIndicatorProps
+  extends HTMLArkProps<'div'>,
+    AccordionItemIndicatorBaseProps {}
 
 export const AccordionItemIndicator = forwardRef<HTMLDivElement, AccordionItemIndicatorProps>(
   (props, ref) => {

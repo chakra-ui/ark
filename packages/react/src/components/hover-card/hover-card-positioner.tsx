@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useHoverCardContext } from './use-hover-card-context'
 
-export interface HoverCardPositionerProps extends HTMLArkProps<'div'> {}
+export type HoverCardPositionerBaseProps = {}
+export interface HoverCardPositionerProps
+  extends HTMLArkProps<'div'>,
+    HoverCardPositionerBaseProps {}
 
 export const HoverCardPositioner = forwardRef<HTMLDivElement, HoverCardPositionerProps>(
   (props, ref) => {

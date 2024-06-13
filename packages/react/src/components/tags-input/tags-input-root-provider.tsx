@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseTagsInputReturn
 }
 
-export interface TagsInputRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface TagsInputRootProviderBaseProps extends RootProviderProps {}
+export interface TagsInputRootProviderProps
+  extends HTMLArkProps<'div'>,
+    TagsInputRootProviderBaseProps {}
 
 export const TagsInputRootProvider = forwardRef<HTMLDivElement, TagsInputRootProviderProps>(
   (props, ref) => {

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useAvatarContext } from './use-avatar-context'
 
-export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
+export type AvatarFallbackBaseProps = {}
+export interface AvatarFallbackProps extends HTMLArkProps<'span'>, AvatarFallbackBaseProps {}
 
 export const AvatarFallback = forwardRef<HTMLSpanElement, AvatarFallbackProps>((props, ref) => {
   const avatar = useAvatarContext()

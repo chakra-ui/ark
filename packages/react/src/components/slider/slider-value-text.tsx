@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderValueTextProps extends HTMLArkProps<'span'> {}
+export type SliderValueTextBaseProps = {}
+export interface SliderValueTextProps extends HTMLArkProps<'span'>, SliderValueTextBaseProps {}
 
 export const SliderValueText = forwardRef<HTMLDivElement, SliderValueTextProps>((props, ref) => {
   const { children, ...rest } = props

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 
-export interface RadioGroupLabelProps extends HTMLArkProps<'label'> {}
+export type RadioGroupLabelBaseProps = {}
+export interface RadioGroupLabelProps extends HTMLArkProps<'label'>, RadioGroupLabelBaseProps {}
 
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroupLabelProps>((props, ref) => {
   const radioGroup = useRadioGroupContext()

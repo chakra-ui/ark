@@ -1,7 +1,18 @@
 export type { ValueChangeDetails as SegmentGroupValueChangeDetails } from '@zag-js/radio-group'
-export { SegmentGroupContext, type SegmentGroupContextProps } from './segment-group-context'
-export { SegmentGroupIndicator, type SegmentGroupIndicatorProps } from './segment-group-indicator'
-export { SegmentGroupItem, type SegmentGroupItemProps } from './segment-group-item'
+export {
+  SegmentGroupContext,
+  type SegmentGroupContextProps,
+} from './segment-group-context'
+export {
+  SegmentGroupIndicator,
+  type SegmentGroupIndicatorProps,
+  type SegmentGroupIndicatorBaseProps,
+} from './segment-group-indicator'
+export {
+  SegmentGroupItem,
+  type SegmentGroupItemProps,
+  type SegmentGroupItemBaseProps,
+} from './segment-group-item'
 export {
   SegmentGroupItemContext,
   type SegmentGroupItemContextProps,
@@ -9,17 +20,32 @@ export {
 export {
   SegmentGroupItemControl,
   type SegmentGroupItemControlProps,
+  type SegmentGroupItemControlBaseProps,
 } from './segment-group-item-control'
 export {
   SegmentGroupItemHiddenInput,
   type SegmentGroupItemHiddenInputProps,
+  type SegmentGroupItemHiddenInputBaseProps,
 } from './segment-group-item-hidden-input'
-export { SegmentGroupItemText, type SegmentGroupItemTextProps } from './segment-group-item-text'
-export { SegmentGroupLabel, type SegmentGroupLabelProps } from './segment-group-label'
-export { SegmentGroupRoot, type SegmentGroupRootProps } from './segment-group-root'
+export {
+  SegmentGroupItemText,
+  type SegmentGroupItemTextProps,
+  type SegmentGroupItemTextBaseProps,
+} from './segment-group-item-text'
+export {
+  SegmentGroupLabel,
+  type SegmentGroupLabelProps,
+  type SegmentGroupLabelBaseProps,
+} from './segment-group-label'
+export {
+  SegmentGroupRoot,
+  type SegmentGroupRootProps,
+  type SegmentGroupRootBaseProps,
+} from './segment-group-root'
 export {
   SegmentGroupRootProvider,
   type SegmentGroupRootProviderProps,
+  type SegmentGroupRootProviderBaseProps,
 } from './segment-group-root-provider'
 export {
   useSegmentGroup,

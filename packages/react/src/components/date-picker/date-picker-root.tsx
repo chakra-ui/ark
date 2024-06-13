@@ -12,9 +12,8 @@ import {
 import { type UseDatePickerProps, useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 
-export interface DatePickerRootProps
-  extends Assign<HTMLArkProps<'div'>, UseDatePickerProps>,
-    UsePresenceProps {}
+export interface DatePickerRootBaseProps extends UseDatePickerProps, UsePresenceProps {}
+export interface DatePickerRootProps extends Assign<HTMLArkProps<'div'>, DatePickerRootBaseProps> {}
 
 export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((props, ref) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)

@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
-export interface ToastCloseTriggerProps extends HTMLArkProps<'button'> {}
+export type ToastCloseTriggerBaseProps = {}
+export interface ToastCloseTriggerProps
+  extends HTMLArkProps<'button'>,
+    ToastCloseTriggerBaseProps {}
 
 export const ToastCloseTrigger = forwardRef<HTMLButtonElement, ToastCloseTriggerProps>(
   (props, ref) => {

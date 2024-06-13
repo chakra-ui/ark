@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 
-export interface TagsInputInputProps extends HTMLArkProps<'input'> {}
+export type TagsInputInputBaseProps = {}
+export interface TagsInputInputProps extends HTMLArkProps<'input'>, TagsInputInputBaseProps {}
 
 export const TagsInputInput = forwardRef<HTMLInputElement, TagsInputInputProps>((props, ref) => {
   const tagsInput = useTagsInputContext()

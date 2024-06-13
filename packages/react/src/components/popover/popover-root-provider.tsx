@@ -7,11 +7,13 @@ import type { UsePopoverReturn } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
 interface RootProviderProps {
-  children?: ReactNode
   value: UsePopoverReturn
 }
 
-export interface PopoverRootProviderProps extends RootProviderProps, UsePresenceProps {}
+export interface PopoverRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface PopoverRootProviderProps extends PopoverRootProviderBaseProps {
+  children?: ReactNode
+}
 
 export const PopoverRootProvider = (props: PopoverRootProviderProps) => {
   const [presenceProps, { value: popover, children }] = splitPresenceProps(props)

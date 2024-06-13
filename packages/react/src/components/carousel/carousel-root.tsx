@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseCarouselProps, useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 
-export interface CarouselRootProps extends Assign<HTMLArkProps<'div'>, UseCarouselProps> {}
+export interface CarouselRootBaseProps extends UseCarouselProps {}
+export interface CarouselRootProps extends Assign<HTMLArkProps<'div'>, CarouselRootBaseProps> {}
 
 export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props, ref) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [

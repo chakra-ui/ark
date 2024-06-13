@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 
-export interface RatingGroupControlProps extends HTMLArkProps<'div'> {}
+export type RatingGroupControlBaseProps = {}
+export interface RatingGroupControlProps extends HTMLArkProps<'div'>, RatingGroupControlBaseProps {}
 
 export const RatingGroupControl = forwardRef<HTMLDivElement, RatingGroupControlProps>(
   (props, ref) => {

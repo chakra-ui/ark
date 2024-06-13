@@ -12,9 +12,9 @@ import {
 import { type UseColorPickerProps, useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
 
+export interface ColorPickerRootBaseProps extends UseColorPickerProps, UsePresenceProps {}
 export interface ColorPickerRootProps
-  extends Assign<HTMLArkProps<'div'>, UseColorPickerProps>,
-    UsePresenceProps {}
+  extends Assign<HTMLArkProps<'div'>, ColorPickerRootBaseProps> {}
 
 export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>((props, ref) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)

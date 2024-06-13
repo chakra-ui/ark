@@ -5,17 +5,19 @@ import { type HTMLArkProps, ark } from '../factory'
 import type { UseCarouselReturn } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 
-interface RootProviderProps {
+export interface CarouselRootProviderBaseProps {
   value: UseCarouselReturn
 }
-
-export interface CarouselRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface CarouselRootProviderProps
+  extends HTMLArkProps<'div'>,
+    CarouselRootProviderBaseProps {}
 
 export const CarouselRootProvider = forwardRef<HTMLDivElement, CarouselRootProviderProps>(
   (props, ref) => {
-    const [{ value: carousel }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
+    const [{ value: carousel }, localProps] = createSplitProps<CarouselRootProviderBaseProps>()(
+      props,
+      ['value'],
+    )
     const mergedProps = mergeProps(carousel.getRootProps(), localProps)
 
     return (

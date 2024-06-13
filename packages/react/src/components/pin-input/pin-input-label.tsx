@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export interface PinInputLabelProps extends HTMLArkProps<'label'> {}
+export type PinInputLabelBaseProps = {}
+export interface PinInputLabelProps extends HTMLArkProps<'label'>, PinInputLabelBaseProps {}
 
 export const PinInputLabel = forwardRef<HTMLLabelElement, PinInputLabelProps>((props, ref) => {
   const pinInput = usePinInputContext()

@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
 
-export interface ColorPickerSwatchIndicatorProps extends HTMLArkProps<'div'> {}
+export type ColorPickerSwatchIndicatorBaseProps = {}
+export interface ColorPickerSwatchIndicatorProps
+  extends HTMLArkProps<'div'>,
+    ColorPickerSwatchIndicatorBaseProps {}
 
 export const ColorPickerSwatchIndicator = forwardRef<
   HTMLDivElement,

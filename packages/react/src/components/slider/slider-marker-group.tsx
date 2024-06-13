@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
+export type SliderMarkerGroupBaseProps = {}
+export interface SliderMarkerGroupProps extends HTMLArkProps<'div'>, SliderMarkerGroupBaseProps {}
 
 export const SliderMarkerGroup = forwardRef<HTMLDivElement, SliderMarkerGroupProps>(
   (props, ref) => {

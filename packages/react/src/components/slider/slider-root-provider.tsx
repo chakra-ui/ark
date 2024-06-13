@@ -9,7 +9,8 @@ interface RootProviderProps {
   value: UseSliderReturn
 }
 
-export interface SliderRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface SliderRootProviderBaseProps extends RootProviderProps {}
+export interface SliderRootProviderProps extends HTMLArkProps<'div'>, SliderRootProviderBaseProps {}
 
 export const SliderRootProvider = forwardRef<HTMLDivElement, SliderRootProviderProps>(
   (props, ref) => {

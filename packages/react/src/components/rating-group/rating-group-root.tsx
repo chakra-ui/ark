@@ -6,7 +6,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseRatingGroupProps, useRatingGroup } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
 
-export interface RatingGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
+export interface RatingGroupRootBaseProps extends UseRatingGroupProps {}
+export interface RatingGroupRootProps
+  extends Assign<HTMLArkProps<'div'>, RatingGroupRootBaseProps> {}
 
 export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>((props, ref) => {
   const [useRatingProps, localProps] = createSplitProps<UseRatingGroupProps>()(props, [

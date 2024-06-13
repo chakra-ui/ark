@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
-export interface CarouselPrevTriggerProps extends HTMLArkProps<'button'> {}
+export type CarouselPrevTriggerBaseProps = {}
+export interface CarouselPrevTriggerProps
+  extends HTMLArkProps<'button'>,
+    CarouselPrevTriggerBaseProps {}
 
 export const CarouselPrevTrigger = forwardRef<HTMLButtonElement, CarouselPrevTriggerProps>(
   (props, ref) => {

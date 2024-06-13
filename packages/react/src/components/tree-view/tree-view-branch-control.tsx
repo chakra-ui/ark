@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewBranchContext } from './use-tree-view-branch-context'
 import { useTreeViewContext } from './use-tree-view-context'
 
-export interface TreeViewBranchControlProps extends HTMLArkProps<'div'> {}
+export type TreeViewBranchControlBaseProps = {}
+export interface TreeViewBranchControlProps
+  extends HTMLArkProps<'div'>,
+    TreeViewBranchControlBaseProps {}
 
 export const TreeViewBranchControl = forwardRef<HTMLDivElement, TreeViewBranchControlProps>(
   (props, ref) => {

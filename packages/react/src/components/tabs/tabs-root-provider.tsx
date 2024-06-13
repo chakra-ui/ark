@@ -14,10 +14,8 @@ interface RootProviderProps {
   value: UseTabsReturn
 }
 
-export interface TabsRootProviderProps
-  extends HTMLArkProps<'div'>,
-    RootProviderProps,
-    RenderStrategyProps {}
+export interface TabsRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
+export interface TabsRootProviderProps extends HTMLArkProps<'div'>, TabsRootProviderBaseProps {}
 
 export const TabsRootProvider = forwardRef<HTMLDivElement, TabsRootProviderProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)

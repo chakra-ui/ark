@@ -6,7 +6,8 @@ import { splitPresenceProps } from '../presence/split-presence-props'
 import { type UseTooltipProps, useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
-export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {
+export interface TooltipRootBaseProps extends UseTooltipProps, UsePresenceProps {}
+export interface TooltipRootProps extends TooltipRootBaseProps {
   children?: ReactNode
 }
 

@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseClipboardProps, useClipboard } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
 
-export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, UseClipboardProps> {}
+export interface ClipboardRootBaseProps extends UseClipboardProps {}
+export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, ClipboardRootBaseProps> {}
 
 export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((props, ref) => {
   const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [

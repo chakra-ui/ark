@@ -7,7 +7,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
-export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
+export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps {}
+export interface SegmentGroupRootProps
+  extends Assign<HTMLArkProps<'div'>, SegmentGroupRootBaseProps> {}
 
 export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps>((props, ref) => {
   const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [

@@ -7,11 +7,13 @@ import type { UseTooltipReturn } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
 interface RootProviderProps {
-  children?: ReactNode
   value: UseTooltipReturn
 }
 
-export interface TooltipRootProviderProps extends RootProviderProps, UsePresenceProps {}
+export interface TooltipRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface TooltipRootProviderProps extends TooltipRootProviderBaseProps {
+  children?: ReactNode
+}
 
 export const TooltipRootProvider = (props: TooltipRootProviderProps) => {
   const [presenceProps, { value: tooltip, children }] = splitPresenceProps(props)

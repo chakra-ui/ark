@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewItemPropsContext } from './use-tree-view-item-props-context'
 
-export interface TreeViewItemTextProps extends HTMLArkProps<'span'> {}
+export type TreeViewItemTextBaseProps = {}
+export interface TreeViewItemTextProps extends HTMLArkProps<'span'>, TreeViewItemTextBaseProps {}
 
 export const TreeViewItemText = forwardRef<HTMLSpanElement, TreeViewItemTextProps>((props, ref) => {
   const treeView = useTreeViewContext()

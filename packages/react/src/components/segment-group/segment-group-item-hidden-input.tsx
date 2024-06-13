@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemHiddenInputProps extends HTMLArkProps<'input'> {}
+export type SegmentGroupItemHiddenInputBaseProps = {}
+export interface SegmentGroupItemHiddenInputProps
+  extends HTMLArkProps<'input'>,
+    SegmentGroupItemHiddenInputBaseProps {}
 
 export const SegmentGroupItemHiddenInput = forwardRef<
   HTMLInputElement,

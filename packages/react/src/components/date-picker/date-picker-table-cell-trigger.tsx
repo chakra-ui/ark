@@ -5,7 +5,10 @@ import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerTableCellTriggerProps extends HTMLArkProps<'div'> {}
+export type DatePickerTableCellTriggerBaseProps = {}
+export interface DatePickerTableCellTriggerProps
+  extends HTMLArkProps<'div'>,
+    DatePickerTableCellTriggerBaseProps {}
 
 export const DatePickerTableCellTrigger = forwardRef<
   HTMLDivElement,

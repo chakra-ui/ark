@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
-export interface EditableControlProps extends HTMLArkProps<'div'> {}
+export type EditableControlBaseProps = {}
+export interface EditableControlProps extends HTMLArkProps<'div'>, EditableControlBaseProps {}
 
 export const EditableControl = forwardRef<HTMLDivElement, EditableControlProps>((props, ref) => {
   const editable = useEditableContext()

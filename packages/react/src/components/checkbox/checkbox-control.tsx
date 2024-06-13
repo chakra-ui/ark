@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
-export interface CheckboxControlProps extends HTMLArkProps<'div'> {}
+export type CheckboxControlBaseProps = {}
+export interface CheckboxControlProps extends HTMLArkProps<'div'>, CheckboxControlBaseProps {}
 
 export const CheckboxControl = forwardRef<HTMLDivElement, CheckboxControlProps>((props, ref) => {
   const checkbox = useCheckboxContext()

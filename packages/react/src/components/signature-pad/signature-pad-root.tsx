@@ -6,7 +6,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseSignaturePadProps, useSignaturePad } from './use-signature-pad'
 import { SignaturePadProvider } from './use-signature-pad-context'
 
-export interface SignaturePadRootProps extends Assign<HTMLArkProps<'div'>, UseSignaturePadProps> {}
+export interface SignaturePadRootBaseProps extends UseSignaturePadProps {}
+export interface SignaturePadRootProps
+  extends Assign<HTMLArkProps<'div'>, SignaturePadRootBaseProps> {}
 export const SignaturePadRoot = forwardRef<HTMLDivElement, SignaturePadRootProps>((props, ref) => {
   const [useSignaturePadProps, localProps] = createSplitProps<UseSignaturePadProps>()(props, [
     'id',

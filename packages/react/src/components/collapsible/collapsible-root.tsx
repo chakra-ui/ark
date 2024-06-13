@@ -6,7 +6,9 @@ import { splitCollapsibleProps } from './split-collapsible-props'
 import { type UseCollapsibleProps, useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
-export interface CollapsibleRootProps extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps> {}
+export interface CollapsibleRootBaseProps extends UseCollapsibleProps {}
+export interface CollapsibleRootProps
+  extends Assign<HTMLArkProps<'div'>, CollapsibleRootBaseProps> {}
 
 export const CollapsibleRoot = forwardRef<HTMLDivElement, CollapsibleRootProps>((props, ref) => {
   const [useCollapsibleProps, localProps] = splitCollapsibleProps(props)

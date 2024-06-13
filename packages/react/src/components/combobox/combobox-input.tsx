@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export interface ComboboxInputProps extends HTMLArkProps<'input'> {}
+export type ComboboxInputBaseProps = {}
+export interface ComboboxInputProps extends HTMLArkProps<'input'>, ComboboxInputBaseProps {}
 
 export const ComboboxInput = forwardRef<HTMLInputElement, ComboboxInputProps>((props, ref) => {
   const combobox = useComboboxContext()

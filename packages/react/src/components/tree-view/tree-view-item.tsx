@@ -11,8 +11,8 @@ import {
   type UseTreeViewItemPropsContext,
 } from './use-tree-view-item-props-context'
 
-export interface TreeViewItemProps
-  extends Assign<HTMLArkProps<'li'>, UseTreeViewItemPropsContext> {}
+export interface TreeViewItemBaseProps extends UseTreeViewItemPropsContext {}
+export interface TreeViewItemProps extends Assign<HTMLArkProps<'li'>, TreeViewItemBaseProps> {}
 
 export const TreeViewItem = forwardRef<HTMLLIElement, TreeViewItemProps>((props, ref) => {
   const [{ value, disabled }, localProps] = createSplitProps<UseTreeViewItemPropsContext>()(props, [

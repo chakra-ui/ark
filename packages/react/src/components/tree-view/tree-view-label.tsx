@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 
-export interface TreeViewLabelProps extends HTMLArkProps<'label'> {}
+export type TreeViewLabelBaseProps = {}
+export interface TreeViewLabelProps extends HTMLArkProps<'label'>, TreeViewLabelBaseProps {}
 
 export const TreeViewLabel = forwardRef<HTMLLabelElement, TreeViewLabelProps>((props, ref) => {
   const treeView = useTreeViewContext()

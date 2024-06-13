@@ -5,7 +5,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogBackdropProps extends HTMLArkProps<'div'> {}
+export type DialogBackdropBaseProps = {}
+export interface DialogBackdropProps extends HTMLArkProps<'div'>, DialogBackdropBaseProps {}
 
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
   const dialog = useDialogContext()

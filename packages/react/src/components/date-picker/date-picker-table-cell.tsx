@@ -9,9 +9,10 @@ import {
 } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
+export interface DatePickerTableCellBaseProps extends UseDatePickerTableCellPropsContext {}
 export interface DatePickerTableCellProps
   extends HTMLArkProps<'td'>,
-    UseDatePickerTableCellPropsContext {}
+    DatePickerTableCellBaseProps {}
 
 export const DatePickerTableCell = forwardRef<HTMLTableCellElement, DatePickerTableCellProps>(
   (props, ref) => {

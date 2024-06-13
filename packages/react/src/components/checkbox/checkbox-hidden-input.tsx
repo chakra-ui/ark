@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
-export interface CheckboxHiddenInputProps extends HTMLArkProps<'input'> {}
+export type CheckboxHiddenInputBaseProps = {}
+export interface CheckboxHiddenInputProps
+  extends HTMLArkProps<'input'>,
+    CheckboxHiddenInputBaseProps {}
 
 export const CheckboxHiddenInput = forwardRef<HTMLInputElement, CheckboxHiddenInputProps>(
   (props, ref) => {

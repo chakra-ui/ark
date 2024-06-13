@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './use-popover-context'
 
-export interface PopoverPositionerProps extends HTMLArkProps<'div'> {}
+export type PopoverPositionerBaseProps = {}
+export interface PopoverPositionerProps extends HTMLArkProps<'div'>, PopoverPositionerBaseProps {}
 
 export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>(
   (props, ref) => {

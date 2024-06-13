@@ -4,7 +4,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
-export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
+export type SegmentGroupIndicatorBaseProps = {}
+export interface SegmentGroupIndicatorProps
+  extends HTMLArkProps<'div'>,
+    SegmentGroupIndicatorBaseProps {}
 
 export const SegmentGroupIndicator = forwardRef<HTMLDivElement, SegmentGroupIndicatorProps>(
   (props, ref) => {

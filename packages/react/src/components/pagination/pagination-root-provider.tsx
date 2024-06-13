@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UsePaginationReturn
 }
 
-export interface PaginationRootProviderProps extends HTMLArkProps<'nav'>, RootProviderProps {}
+export interface PaginationRootProviderBaseProps extends RootProviderProps {}
+export interface PaginationRootProviderProps
+  extends HTMLArkProps<'nav'>,
+    PaginationRootProviderBaseProps {}
 
 export const PaginationRootProvider = forwardRef<HTMLElement, PaginationRootProviderProps>(
   (props, ref) => {

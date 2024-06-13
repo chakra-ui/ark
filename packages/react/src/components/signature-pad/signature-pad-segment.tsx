@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
-export interface SignaturePadSegmentProps extends HTMLArkProps<'svg'> {}
+export type SignaturePadSegmentBaseProps = {}
+export interface SignaturePadSegmentProps
+  extends HTMLArkProps<'svg'>,
+    SignaturePadSegmentBaseProps {}
 
 export const SignaturePadSegment = forwardRef<SVGSVGElement, SignaturePadSegmentProps>(
   (props, ref) => {

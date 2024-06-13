@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTablePropsContext } from './use-date-picker-table-props-context'
 
-export interface DatePickerTableHeaderProps extends HTMLArkProps<'th'> {}
+export type DatePickerTableHeaderBaseProps = {}
+export interface DatePickerTableHeaderProps
+  extends HTMLArkProps<'th'>,
+    DatePickerTableHeaderBaseProps {}
 
 export const DatePickerTableHeader = forwardRef<HTMLTableCellElement, DatePickerTableHeaderProps>(
   (props, ref) => {

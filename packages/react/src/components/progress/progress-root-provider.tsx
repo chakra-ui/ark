@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseProgressReturn
 }
 
-export interface ProgressRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface ProgressRootProviderBaseProps extends RootProviderProps {}
+export interface ProgressRootProviderProps
+  extends HTMLArkProps<'div'>,
+    ProgressRootProviderBaseProps {}
 
 export const ProgressRootProvider = forwardRef<HTMLDivElement, ProgressRootProviderProps>(
   (props, ref) => {

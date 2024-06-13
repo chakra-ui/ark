@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseCheckboxProps, useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
-export interface CheckboxRootProps extends Assign<HTMLArkProps<'label'>, UseCheckboxProps> {}
+export interface CheckboxRootBaseProps extends UseCheckboxProps {}
+export interface CheckboxRootProps extends Assign<HTMLArkProps<'label'>, CheckboxRootBaseProps> {}
 
 export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((props, ref) => {
   const [useCheckboxProps, localProps] = createSplitProps<UseCheckboxProps>()(props, [

@@ -11,9 +11,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseTabsProps, useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
-export interface TabsRootProps
-  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
-    RenderStrategyProps {}
+export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps {}
+export interface TabsRootProps extends Assign<HTMLArkProps<'div'>, TabsRootBaseProps> {}
 
 export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)

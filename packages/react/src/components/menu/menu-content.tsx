@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useMenuContext } from './use-menu-context'
 
-export interface MenuContentProps extends HTMLArkProps<'div'> {}
+export type MenuContentBaseProps = {}
+export interface MenuContentProps extends HTMLArkProps<'div'>, MenuContentBaseProps {}
 
 export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>((props, ref) => {
   const menu = useMenuContext()

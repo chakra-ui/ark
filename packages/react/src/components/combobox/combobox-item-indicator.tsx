@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
-export interface ComboboxItemIndicatorProps extends HTMLArkProps<'div'> {}
+export type ComboboxItemIndicatorBaseProps = {}
+export interface ComboboxItemIndicatorProps
+  extends HTMLArkProps<'div'>,
+    ComboboxItemIndicatorBaseProps {}
 
 export const ComboboxItemIndicator = forwardRef<HTMLDivElement, ComboboxItemIndicatorProps>(
   (props, ref) => {

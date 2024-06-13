@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseSwitchProps, useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 
-export interface SwitchRootProps extends Assign<HTMLArkProps<'label'>, UseSwitchProps> {}
+export interface SwitchRootBaseProps extends UseSwitchProps {}
+export interface SwitchRootProps extends Assign<HTMLArkProps<'label'>, SwitchRootBaseProps> {}
 
 export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [

@@ -6,7 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerInputProps extends Assign<HTMLArkProps<'input'>, InputProps> {}
+export interface DatePickerInputBaseProps extends InputProps {}
+export interface DatePickerInputProps
+  extends Assign<HTMLArkProps<'input'>, DatePickerInputBaseProps> {}
 
 export const DatePickerInput = forwardRef<HTMLInputElement, DatePickerInputProps>((props, ref) => {
   const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])

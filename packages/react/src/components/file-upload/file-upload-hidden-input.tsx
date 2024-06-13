@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadHiddenInputProps extends HTMLArkProps<'input'> {}
+export type FileUploadHiddenInputBaseProps = {}
+export interface FileUploadHiddenInputProps
+  extends HTMLArkProps<'input'>,
+    FileUploadHiddenInputBaseProps {}
 
 export const FileUploadHiddenInput = forwardRef<HTMLInputElement, FileUploadHiddenInputProps>(
   (props, ref) => {

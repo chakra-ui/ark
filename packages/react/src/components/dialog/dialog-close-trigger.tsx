@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
+export type DialogCloseTriggerBaseProps = {}
+export interface DialogCloseTriggerProps
+  extends HTMLArkProps<'button'>,
+    DialogCloseTriggerBaseProps {}
 
 export const DialogCloseTrigger = forwardRef<HTMLButtonElement, DialogCloseTriggerProps>(
   (props, ref) => {

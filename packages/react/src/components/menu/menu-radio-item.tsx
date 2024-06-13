@@ -11,7 +11,8 @@ import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-contex
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
-export interface MenuRadioItemProps extends Assign<HTMLArkProps<'div'>, PartialOptionItemProps> {}
+export interface MenuRadioItemBaseProps extends PartialOptionItemProps {}
+export interface MenuRadioItemProps extends Assign<HTMLArkProps<'div'>, MenuRadioItemBaseProps> {}
 
 export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((props, ref) => {
   const [partialItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [

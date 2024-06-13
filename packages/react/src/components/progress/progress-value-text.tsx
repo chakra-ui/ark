@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
+export type ProgressValueTextBaseProps = {}
+export interface ProgressValueTextProps extends HTMLArkProps<'span'>, ProgressValueTextBaseProps {}
 
 export const ProgressValueText = forwardRef<HTMLSpanElement, ProgressValueTextProps>(
   (props, ref) => {

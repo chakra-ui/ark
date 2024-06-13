@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputControlProps extends HTMLArkProps<'div'> {}
+export type NumberInputControlBaseProps = {}
+export interface NumberInputControlProps extends HTMLArkProps<'div'>, NumberInputControlBaseProps {}
 
 export const NumberInputControl = forwardRef<HTMLDivElement, NumberInputControlProps>(
   (props, ref) => {

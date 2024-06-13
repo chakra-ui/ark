@@ -6,7 +6,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { type UseQrCodeProps, useQrCode } from './use-qr-code'
 import { QrCodeProvider } from './use-qr-code-context'
 
-export interface QrCodeRootProps extends Assign<HTMLArkProps<'div'>, UseQrCodeProps> {}
+export interface QrCodeRootBaseProps extends UseQrCodeProps {}
+export interface QrCodeRootProps extends Assign<HTMLArkProps<'div'>, QrCodeRootBaseProps> {}
 
 export const QrCodeRoot = forwardRef<HTMLDivElement, QrCodeRootProps>((props, ref) => {
   const [qrcodeProps, localProps] = createSplitProps<UseQrCodeProps>()(props, [

@@ -8,7 +8,9 @@ import { useRadioGroupContext } from './use-radio-group-context'
 import { RadioGroupItemProvider } from './use-radio-group-item-context'
 import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context'
 
-export interface RadioGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
+export interface RadioGroupItemBaseProps extends ItemProps {}
+export interface RadioGroupItemProps
+  extends Assign<HTMLArkProps<'label'>, RadioGroupItemBaseProps> {}
 
 export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [

@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewItemPropsContext } from './use-tree-view-item-props-context'
 
-export interface TreeViewItemIndicatorProps extends HTMLArkProps<'div'> {}
+export type TreeViewItemIndicatorBaseProps = {}
+export interface TreeViewItemIndicatorProps
+  extends HTMLArkProps<'div'>,
+    TreeViewItemIndicatorBaseProps {}
 
 export const TreeViewItemIndicator = forwardRef<HTMLDivElement, TreeViewItemIndicatorProps>(
   (props, ref) => {

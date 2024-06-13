@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerClearTriggerProps extends HTMLArkProps<'button'> {}
+export type DatePickerClearTriggerBaseProps = {}
+export interface DatePickerClearTriggerProps
+  extends HTMLArkProps<'button'>,
+    DatePickerClearTriggerBaseProps {}
 
 export const DatePickerClearTrigger = forwardRef<HTMLButtonElement, DatePickerClearTriggerProps>(
   (props, ref) => {

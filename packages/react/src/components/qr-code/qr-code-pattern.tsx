@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
 
-export interface QrCodePatternProps extends HTMLArkProps<'path'> {}
+export type QrCodePatternBaseProps = {}
+export interface QrCodePatternProps extends HTMLArkProps<'path'>, QrCodePatternBaseProps {}
 
 export const QrCodePattern = forwardRef<SVGPathElement, QrCodePatternProps>((props, ref) => {
   const qrCode = useQrCodeContext()

@@ -7,11 +7,13 @@ import type { UseHoverCardReturn } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
 interface RootProviderProps {
-  children?: ReactNode
   value: UseHoverCardReturn
 }
 
-export interface HoverCardRootProviderProps extends RootProviderProps, UsePresenceProps {}
+export interface HoverCardRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface HoverCardRootProviderProps extends HoverCardRootProviderBaseProps {
+  children?: ReactNode
+}
 
 export const HoverCardRootProvider = (props: HoverCardRootProviderProps) => {
   const [presenceProps, { value: hoverCard, children }] = splitPresenceProps(props)

@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectLabelProps extends HTMLArkProps<'label'> {}
+export type SelectLabelBaseProps = {}
+export interface SelectLabelProps extends HTMLArkProps<'label'>, SelectLabelBaseProps {}
 
 export const SelectLabel = forwardRef<HTMLLabelElement, SelectLabelProps>((props, ref) => {
   const select = useSelectContext()

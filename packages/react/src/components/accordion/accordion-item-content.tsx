@@ -6,7 +6,10 @@ import type { HTMLArkProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
+export type AccordionItemContentBaseProps = {}
+export interface AccordionItemContentProps
+  extends HTMLArkProps<'div'>,
+    AccordionItemContentBaseProps {}
 
 interface VisibilityProps {
   hidden?: boolean

@@ -9,7 +9,10 @@ interface RootProviderProps {
   value: UseNumberInputReturn
 }
 
-export interface NumberInputRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface NumberInputRootProviderBaseProps extends RootProviderProps {}
+export interface NumberInputRootProviderProps
+  extends HTMLArkProps<'div'>,
+    NumberInputRootProviderBaseProps {}
 
 export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRootProviderProps>(
   (props, ref) => {

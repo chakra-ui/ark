@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useHoverCardContext } from './use-hover-card-context'
 
-export interface HoverCardArrowTipProps extends HTMLArkProps<'div'> {}
+export type HoverCardArrowTipBaseProps = {}
+export interface HoverCardArrowTipProps extends HTMLArkProps<'div'>, HoverCardArrowTipBaseProps {}
 
 export const HoverCardArrowTip = forwardRef<HTMLDivElement, HoverCardArrowTipProps>(
   (props, ref) => {

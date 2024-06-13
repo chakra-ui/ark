@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
 
-export interface PaginationNextTriggerProps extends HTMLArkProps<'button'> {}
+export type PaginationNextTriggerBaseProps = {}
+export interface PaginationNextTriggerProps
+  extends HTMLArkProps<'button'>,
+    PaginationNextTriggerBaseProps {}
 
 export const PaginationNextTrigger = forwardRef<HTMLButtonElement, PaginationNextTriggerProps>(
   (props, ref) => {

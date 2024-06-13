@@ -10,7 +10,10 @@ interface RootProviderProps {
   value: UseSegmentGroupReturn
 }
 
-export interface SegmentGroupRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface SegmentGroupRootProviderBaseProps extends RootProviderProps {}
+export interface SegmentGroupRootProviderProps
+  extends HTMLArkProps<'div'>,
+    SegmentGroupRootProviderBaseProps {}
 
 export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupRootProviderProps>(
   (props, ref) => {

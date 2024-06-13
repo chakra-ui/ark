@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemNameProps extends HTMLArkProps<'div'> {}
+export type FileUploadItemNameBaseProps = {}
+export interface FileUploadItemNameProps extends HTMLArkProps<'div'>, FileUploadItemNameBaseProps {}
 
 export const FileUploadItemName = forwardRef<HTMLDivElement, FileUploadItemNameProps>(
   (props, ref) => {

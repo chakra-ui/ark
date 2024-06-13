@@ -5,17 +5,19 @@ import { type HTMLArkProps, ark } from '../factory'
 import type { UseCheckboxReturn } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
-interface RootProviderProps {
+export interface CheckboxRootProviderBaseProps {
   value: UseCheckboxReturn
 }
-
-export interface CheckboxRootProviderProps extends HTMLArkProps<'label'>, RootProviderProps {}
+export interface CheckboxRootProviderProps
+  extends HTMLArkProps<'label'>,
+    CheckboxRootProviderBaseProps {}
 
 export const CheckboxRootProvider = forwardRef<HTMLLabelElement, CheckboxRootProviderProps>(
   (props, ref) => {
-    const [{ value: checkbox }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
+    const [{ value: checkbox }, localProps] = createSplitProps<CheckboxRootProviderBaseProps>()(
+      props,
+      ['value'],
+    )
     const mergedProps = mergeProps(checkbox.getRootProps(), localProps)
 
     return (

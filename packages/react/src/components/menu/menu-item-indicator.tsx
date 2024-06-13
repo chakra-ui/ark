@@ -4,7 +4,8 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
 
-export interface MenuItemIndicatorProps extends HTMLArkProps<'div'> {}
+export type MenuItemIndicatorBaseProps = {}
+export interface MenuItemIndicatorProps extends HTMLArkProps<'div'>, MenuItemIndicatorBaseProps {}
 
 export const MenuItemIndicator = forwardRef<HTMLDivElement, MenuItemIndicatorProps>(
   (props, ref) => {

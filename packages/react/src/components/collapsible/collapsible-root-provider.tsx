@@ -5,17 +5,17 @@ import { type HTMLArkProps, ark } from '../factory'
 import type { UseCollapsibleReturn } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
-interface RootProviderProps {
+export interface CollapsibleRootProviderBaseProps {
   value: UseCollapsibleReturn
 }
-
-export interface CollapsibleRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface CollapsibleRootProviderProps
+  extends HTMLArkProps<'div'>,
+    CollapsibleRootProviderBaseProps {}
 
 export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRootProviderProps>(
   (props, ref) => {
-    const [{ value: collapsible }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
+    const [{ value: collapsible }, localProps] =
+      createSplitProps<CollapsibleRootProviderBaseProps>()(props, ['value'])
     const mergedProps = mergeProps(collapsible.getRootProps(), localProps)
 
     return (

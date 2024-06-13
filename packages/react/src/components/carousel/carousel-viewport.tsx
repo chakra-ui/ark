@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
-export interface CarouselViewportProps extends HTMLArkProps<'div'> {}
+export type CarouselViewportBaseProps = {}
+export interface CarouselViewportProps extends HTMLArkProps<'div'>, CarouselViewportBaseProps {}
 
 export const CarouselViewport = forwardRef<HTMLDivElement, CarouselViewportProps>((props, ref) => {
   const carousel = useCarouselContext()

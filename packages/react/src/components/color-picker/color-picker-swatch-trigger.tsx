@@ -6,8 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
+export interface ColorPickerSwatchTriggerBaseProps extends SwatchTriggerProps {}
 export interface ColorPickerSwatchTriggerProps
-  extends Assign<HTMLArkProps<'button'>, SwatchTriggerProps> {}
+  extends Assign<HTMLArkProps<'button'>, ColorPickerSwatchTriggerBaseProps> {}
 
 export const ColorPickerSwatchTrigger = forwardRef<
   HTMLButtonElement,

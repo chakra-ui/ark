@@ -7,7 +7,9 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 import { RatingGroupItemProvider } from './use-rating-group-item-context'
 
-export interface RatingGroupItemProps extends Assign<HTMLArkProps<'span'>, ItemProps> {}
+export interface RatingGroupItemBaseProps extends ItemProps {}
+export interface RatingGroupItemProps
+  extends Assign<HTMLArkProps<'span'>, RatingGroupItemBaseProps> {}
 
 export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])

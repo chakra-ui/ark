@@ -3,7 +3,8 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderRangeProps extends HTMLArkProps<'div'> {}
+export type SliderRangeBaseProps = {}
+export interface SliderRangeProps extends HTMLArkProps<'div'>, SliderRangeBaseProps {}
 
 export const SliderRange = forwardRef<HTMLDivElement, SliderRangeProps>((props, ref) => {
   const slider = useSliderContext()

@@ -4,7 +4,10 @@ import { type HTMLArkProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
-export interface TagsInputItemPreviewProps extends HTMLArkProps<'div'> {}
+export type TagsInputItemPreviewBaseProps = {}
+export interface TagsInputItemPreviewProps
+  extends HTMLArkProps<'div'>,
+    TagsInputItemPreviewBaseProps {}
 
 export const TagsInputItemPreview = forwardRef<HTMLDivElement, TagsInputItemPreviewProps>(
   (props, ref) => {

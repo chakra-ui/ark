@@ -8,7 +8,8 @@ import { useSelectContext } from './use-select-context'
 import { SelectItemProvider } from './use-select-item-context'
 import { SelectItemPropsProvider } from './use-select-item-props-context'
 
-export interface SelectItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface SelectItemBaseProps extends ItemProps {}
+export interface SelectItemProps extends Assign<HTMLArkProps<'div'>, SelectItemBaseProps> {}
 
 export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'persistFocus'])

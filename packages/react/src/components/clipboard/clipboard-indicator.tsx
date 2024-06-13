@@ -3,9 +3,10 @@ import { type ReactNode, forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardIndicatorProps extends HTMLArkProps<'div'> {
+export interface ClipboardIndicatorBaseProps {
   copied?: ReactNode
 }
+export interface ClipboardIndicatorProps extends HTMLArkProps<'div'>, ClipboardIndicatorBaseProps {}
 
 export const ClipboardIndicator = forwardRef<HTMLDivElement, ClipboardIndicatorProps>(
   (props, ref) => {

@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 
-export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
+export type MenuContextTriggerBaseProps = {}
+export interface MenuContextTriggerProps
+  extends HTMLArkProps<'button'>,
+    MenuContextTriggerBaseProps {}
 
 export const MenuContextTrigger = forwardRef<HTMLButtonElement, MenuContextTriggerProps>(
   (props, ref) => {

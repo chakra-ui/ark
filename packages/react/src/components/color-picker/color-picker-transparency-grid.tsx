@@ -6,8 +6,9 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
+export interface ColorPickerTransparencyGridBaseProps extends TransparencyGridProps {}
 export interface ColorPickerTransparencyGridProps
-  extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}
+  extends Assign<HTMLArkProps<'div'>, ColorPickerTransparencyGridBaseProps> {}
 
 export const ColorPickerTransparencyGrid = forwardRef<
   HTMLDivElement,

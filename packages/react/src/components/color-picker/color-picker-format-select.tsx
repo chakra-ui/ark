@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerFormatSelectProps extends HTMLArkProps<'select'> {}
+export type ColorPickerFormatSelectBaseProps = {}
+export interface ColorPickerFormatSelectProps
+  extends HTMLArkProps<'select'>,
+    ColorPickerFormatSelectBaseProps {}
 
 export const ColorPickerFormatSelect = forwardRef<HTMLSelectElement, ColorPickerFormatSelectProps>(
   (props, ref) => {

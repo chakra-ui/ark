@@ -6,6 +6,17 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.4.0-0] - 2024-06-13
+
+### Added
+
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
+
+```jsx
+export interface AccordionItemBaseProps extends ItemProps {}
+export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, AccordionItemBaseProps> {}
+```
+
 ### Fixed
 
 - **Checkbox:** Added missing `group` role for Checkbox group component.
