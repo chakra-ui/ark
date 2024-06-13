@@ -2,7 +2,7 @@ import { QrCode } from '../..'
 
 export const Basic = () => {
   return (
-    <QrCode.Root value="http://ark-ui.com" encoding={{ ecc: 'H' }}>
+    <QrCode.Root value="http://ark-ui.com">
       <QrCode.Frame>
         <QrCode.Pattern />
       </QrCode.Frame>
