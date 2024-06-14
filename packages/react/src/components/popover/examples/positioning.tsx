@@ -2,7 +2,10 @@ import { Popover } from '../..'
 
 export const Positioning = () => (
   <Popover.Root
-    positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
+    positioning={{
+      placement: 'left-start',
+      offset: { mainAxis: 12, crossAxis: 12 },
+    }}
   >
     <Popover.Trigger>Click Me</Popover.Trigger>
     <Popover.Positioner>
