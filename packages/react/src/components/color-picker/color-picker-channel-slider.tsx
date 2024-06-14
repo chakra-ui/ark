@@ -6,6 +6,7 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLArkProps, ark } from '../factory'
 import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
 export interface ColorPickerChannelSliderBaseProps extends ChannelProps {}
 export interface ColorPickerChannelSliderProps
@@ -17,8 +18,16 @@ export const ColorPickerChannelSlider = forwardRef<HTMLDivElement, ColorPickerCh
       'channel',
       'orientation',
     ])
+
     const colorPicker = useColorPickerContext()
-    const mergedProps = mergeProps(colorPicker.getChannelSliderProps(channelProps), localProps)
+
+    const formatProps = useColorPickerFormatPropsContext()
+    const channelSliderProps = { ...channelProps, ...formatProps }
+
+    const mergedProps = mergeProps(
+      colorPicker.getChannelSliderProps(channelSliderProps),
+      localProps,
+    )
 
     return (
       <ColorPickerChannelPropsProvider value={channelProps}>

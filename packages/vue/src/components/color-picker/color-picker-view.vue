@@ -17,9 +17,12 @@ export interface ColorPickerViewProps
 import { ark } from '../factory'
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
+import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 
-defineProps<ColorPickerViewProps>()
+const props = defineProps<ColorPickerViewProps>()
 const colorPicker = useColorPickerContext()
+
+ColorPickerFormatPropsProvider(props)
 </script>
 
 <template>

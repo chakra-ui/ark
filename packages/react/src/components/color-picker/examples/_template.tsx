@@ -1,11 +1,9 @@
-import { ColorPicker } from '../..'
+import { ColorPicker, type ColorPickerSwatchBaseProps } from '../..'
+import type { ChannelSliderBaseProps } from '../color-picker'
 
 export const ColorPickerContent = () => {
   return (
     <ColorPicker.Content>
-      <ColorPicker.FormatTrigger>Toggle ColorFormat</ColorPicker.FormatTrigger>
-      <ColorPicker.FormatSelect />
-
       <ColorPicker.Area>
         <ColorPicker.AreaBackground />
         <ColorPicker.AreaThumb />
@@ -72,13 +70,23 @@ export const ColorPickerControl = () => {
   )
 }
 
-export const ColorPickerSwatch = (props: { value: string }) => {
-  const { value } = props
+export const ColorPickerSwatch = (props: ColorPickerSwatchBaseProps) => {
+  const { value, ...rest } = props
   return (
-    <ColorPicker.SwatchTrigger value={value}>
+    <ColorPicker.SwatchTrigger value={value} {...rest}>
       <ColorPicker.Swatch value={value}>
         <ColorPicker.SwatchIndicator>✓</ColorPicker.SwatchIndicator>
       </ColorPicker.Swatch>
     </ColorPicker.SwatchTrigger>
+  )
+}
+
+export const ColorPickerSlider = (props: ChannelSliderBaseProps) => {
+  return (
+    <ColorPicker.ChannelSlider {...props}>
+      <ColorPicker.TransparencyGrid />
+      <ColorPicker.ChannelSliderTrack />
+      <ColorPicker.ChannelSliderThumb />
+    </ColorPicker.ChannelSlider>
   )
 }

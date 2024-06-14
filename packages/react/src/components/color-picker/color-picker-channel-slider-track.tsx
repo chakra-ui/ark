@@ -3,6 +3,7 @@ import { forwardRef } from 'react'
 import { type HTMLArkProps, ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
 export type ColorPickerChannelSliderTrackBaseProps = {}
 export interface ColorPickerChannelSliderTrackProps
@@ -14,8 +15,12 @@ export const ColorPickerChannelSliderTrack = forwardRef<
   ColorPickerChannelSliderTrackProps
 >((props, ref) => {
   const colorPicker = useColorPickerContext()
+
   const channelProps = useColorPickerChannelPropsContext()
-  const mergedProps = mergeProps(colorPicker.getChannelSliderTrackProps(channelProps), props)
+  const formatProps = useColorPickerFormatPropsContext()
+  const channelSliderProps = { ...channelProps, ...formatProps }
+
+  const mergedProps = mergeProps(colorPicker.getChannelSliderTrackProps(channelSliderProps), props)
 
   return <ark.div {...mergedProps} ref={ref} />
 })
