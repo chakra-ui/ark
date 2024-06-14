@@ -8,3 +8,5 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { WithClearTrigger } from './examples/with-clear-trigger'
+export { WithFormRegister } from './examples/with-form-register'
+export { WithFormSetValue } from './examples/with-form-set-value'
