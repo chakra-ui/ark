@@ -7,3 +7,4 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { WithClearTrigger } from './examples/with-clear-trigger'
