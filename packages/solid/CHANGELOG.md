@@ -9,6 +9,7 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Checkbox:** Added missing `group` role for Checkbox group component.
+- **Signature Pad**: Added missing package.json for `signature-pad` machine.
 
 ## [3.3.0] - 2024-06-12
 
@@ -17,13 +18,17 @@ description: All notable changes will be documented in this file.
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
 - **QR Code:** Added the `QRCode` component for generating QR codes.
 - **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
-- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of deferring to the next tick.
+- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of
+  deferring to the next tick.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
-- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous tab content.
-- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item via the delete trigger.
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`.
+- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous
+  tab content.
+- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item
+  via the delete trigger.
 - **Select:** Exported the missing `SelectList` component.
 
 ## [3.2.2] - 2024-06-07̊

@@ -107,6 +107,7 @@
     "@zag-js/radio-group": "0.56.1",
     "@zag-js/rating-group": "0.56.1",
     "@zag-js/select": "0.56.1",
+    "@zag-js/signature-pad": "0.56.1",
     "@zag-js/slider": "0.56.1",
     "@zag-js/solid": "0.56.1",
     "@zag-js/splitter": "0.56.1",
