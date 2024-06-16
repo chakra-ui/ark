@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { QrCode, type QrCodeGenerateOptions } from '../..'
-
-const encoding = ref<QrCodeGenerateOptions>({ ecc: 'H' })
+import { QrCode } from '../..'
 </script>
 
 <template>
-  <QrCode.Root value="http://ark-ui.com" :encoding="encoding">
+  <QrCode.Root value="http://ark-ui.com">
     <QrCode.Frame>
       <QrCode.Pattern />
     </QrCode.Frame>

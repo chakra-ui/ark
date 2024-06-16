@@ -26,7 +26,9 @@ You can also add a logo or overlay to the QR code. This is useful when you want 
 
 <Example id="with-overlay" />
 
-> **Good to know**: In cases where the link is too long or the logo overlay covers a significant area, the error correction level can be increased.
+## Error Correction
+
+In cases where the link is too long or the logo overlay covers a significant area, the error correction level can be increased.
 
 Use the `encoding.ecc` or `encoding.boostEcc` property to set the error correction level:
 
@@ -34,6 +36,8 @@ Use the `encoding.ecc` or `encoding.boostEcc` property to set the error correcti
 - `M`: Allows recovery of up to 15% data loss
 - `Q`: Allows recovery of up to 25% data loss
 - `H`: Allows recovery of up to 30% data loss
+
+<Example id="error-correction" />
 
 ## API Reference
 
