@@ -65,9 +65,6 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp
 }
 
-/**
- * @deprecated
- */
 export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> &
   PolymorphicProps
 
