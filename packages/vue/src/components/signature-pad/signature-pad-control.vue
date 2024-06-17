@@ -12,15 +12,15 @@ export interface SignaturePadControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSignaturePadContext } from './use-signature-pad-context'
+import { ark } from '../factory';
+import { useSignaturePadContext } from './use-signature-pad-context';
 
 defineProps<SignaturePadControlProps>()
 const signaturePad = useSignaturePadContext()
 </script>
 
 <template>
-  <ark.div role="application" v-bind="signaturePad.getControlProps()" :as-child="asChild">
+  <ark.div v-bind="signaturePad.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

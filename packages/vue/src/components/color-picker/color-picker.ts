@@ -30,6 +30,16 @@ export {
   type ColorPickerChannelSliderThumbProps as ChannelSliderThumbBaseProps,
 } from './color-picker-channel-slider-thumb.vue'
 export {
+  default as ChannelSliderValueText,
+  type ColorPickerChannelSliderValueTextProps as ChannelSliderValueTextProps,
+  type ColorPickerChannelSliderValueTextProps as ChannelSliderValueTextBaseProps,
+} from './color-picker-channel-slider-value-text.vue'
+export {
+  default as ChannelSliderLabel,
+  type ColorPickerChannelSliderLabelProps as ChannelSliderLabelProps,
+  type ColorPickerChannelSliderLabelProps as ChannelSliderLabelBaseProps,
+} from './color-picker-channel-slider-label.vue'
+export {
   default as ChannelSliderTrack,
   type ColorPickerChannelSliderTrackProps as ChannelSliderTrackProps,
   type ColorPickerChannelSliderTrackProps as ChannelSliderTrackBaseProps,

@@ -43,6 +43,16 @@
     },
     "element": "HTMLInputElement"
   },
+  "ChannelSliderLabel": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLLabelElement"
+  },
   "ChannelSlider": {
     "props": {
       "channel": { "type": "ColorChannel", "isRequired": true },
@@ -74,6 +84,16 @@
       }
     },
     "element": "HTMLDivElement"
+  },
+  "ChannelSliderValueText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLSpanElement"
   },
   "Content": {
     "props": {

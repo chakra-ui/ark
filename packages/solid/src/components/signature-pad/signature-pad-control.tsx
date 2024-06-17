@@ -12,5 +12,5 @@ export const SignaturePadControl = (props: SignaturePadControlProps) => {
   const signaturePad = useSignaturePadContext()
   const mergedProps = mergeProps(() => signaturePad().getControlProps(), props)
 
-  return <ark.div role="application" {...mergedProps} />
+  return <ark.div {...mergedProps} />
 }
