@@ -27,7 +27,7 @@
     "@zag-js/svelte": "0.56.1"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "3.2.1",
+    "@sveltejs/adapter-auto": "3.2.2",
     "@sveltejs/kit": "2.5.10",
     "@sveltejs/package": "2.3.1",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
