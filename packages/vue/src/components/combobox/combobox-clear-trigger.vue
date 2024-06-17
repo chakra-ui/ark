@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ComboboxClearTriggerBaseProps extends PolymorphicProps {}
 export interface ComboboxClearTriggerProps
-  extends PolymorphicProps,
+  extends ComboboxClearTriggerBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SliderLabelBaseProps extends PolymorphicProps {}
 export interface SliderLabelProps
-  extends PolymorphicProps,
+  extends SliderLabelBaseProps,
     /**
      * @vue-ignore
      */

@@ -8,10 +8,12 @@ interface RootProviderProps {
   value: UnwrapRef<UseTabsReturn>
 }
 
-export interface TabsRootProviderProps
+export interface TabsRootProviderBaseProps
   extends RootProviderProps,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface TabsRootProviderProps
+  extends TabsRootProviderBaseProps,
     /**
      * @vue-ignore
      */

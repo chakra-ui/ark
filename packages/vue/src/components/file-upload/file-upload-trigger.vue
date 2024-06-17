@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface FileUploadTriggerBaseProps extends PolymorphicProps {}
 export interface FileUploadTriggerProps
-  extends PolymorphicProps,
+  extends FileUploadTriggerBaseProps,
     /**
      * @vue-ignore
      */

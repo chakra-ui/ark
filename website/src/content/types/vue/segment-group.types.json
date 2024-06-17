@@ -1,26 +1,60 @@
 {
   "Indicator": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "ItemControl": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "ItemHiddenInput": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Item": {
     "props": {
       "value": { "type": "string", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "disabled": { "type": "boolean", "isRequired": false },
       "invalid": { "type": "boolean", "isRequired": false }
     }
   },
   "ItemText": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Label": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Root": {
     "emits": {
@@ -36,7 +70,11 @@
       }
     },
     "props": {
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
@@ -83,7 +121,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

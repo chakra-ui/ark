@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './editable.types'
 
+export interface EditableRootBaseProps extends RootProps, PolymorphicProps {}
 export interface EditableRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends EditableRootBaseProps,
     /**
      * @vue-ignore
      */

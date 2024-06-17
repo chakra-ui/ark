@@ -14,7 +14,7 @@ type ElementType = Parameters<typeof h>[0]
 
 export interface PolymorphicProps {
   /**
-   * @default false
+   * Use the provided child element as the default rendered element, combining their props and behavior.
    */
   asChild?: boolean
 }

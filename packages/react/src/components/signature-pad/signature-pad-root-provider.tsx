@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseSignaturePadReturn } from './use-signature-pad'
 import { SignaturePadProvider } from './use-signature-pad-context'
 
@@ -9,9 +9,9 @@ interface RootProviderProps {
   value: UseSignaturePadReturn
 }
 
-export interface SignaturePadRootProviderBaseProps extends RootProviderProps {}
+export interface SignaturePadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SignaturePadRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     SignaturePadRootProviderBaseProps {}
 
 export const SignaturePadRootProvider = forwardRef<HTMLDivElement, SignaturePadRootProviderProps>(

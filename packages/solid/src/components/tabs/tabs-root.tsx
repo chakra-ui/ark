@@ -1,18 +1,20 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
   RenderStrategyProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseTabsProps, useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
-export interface TabsRootProps
-  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
-    RenderStrategyProps {}
+export interface TabsRootBaseProps
+  extends UseTabsProps,
+    RenderStrategyProps,
+    PolymorphicProps<'div'> {}
+export interface TabsRootProps extends JSX.HTMLAttributes<HTMLDivElement>, TabsRootBaseProps {}
 
 export const TabsRoot = (props: TabsRootProps) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)

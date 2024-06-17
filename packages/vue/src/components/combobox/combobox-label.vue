@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ComboboxLabelBaseProps extends PolymorphicProps {}
 export interface ComboboxLabelProps
-  extends PolymorphicProps,
+  extends ComboboxLabelBaseProps,
     /**
      * @vue-ignore
      */

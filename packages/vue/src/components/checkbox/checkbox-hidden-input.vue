@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CheckboxHiddenInputBaseProps extends PolymorphicProps {}
 export interface CheckboxHiddenInputProps
-  extends PolymorphicProps,
+  extends CheckboxHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

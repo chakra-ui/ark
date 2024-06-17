@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type SVGProps, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
 
-export type QrCodeFrameBaseProps = {}
-export interface QrCodeFrameProps extends HTMLArkProps<'svg'>, QrCodeFrameBaseProps {}
+export interface QrCodeFrameBaseProps extends PolymorphicProps {}
+export interface QrCodeFrameProps extends SVGProps<SVGSVGElement>, QrCodeFrameBaseProps {}
 
 export const QrCodeFrame = forwardRef<SVGSVGElement, QrCodeFrameProps>((props, ref) => {
   const qrCode = useQrCodeContext()

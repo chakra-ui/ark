@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface AccordionItemIndicatorBaseProps extends PolymorphicProps {}
 export interface AccordionItemIndicatorProps
-  extends PolymorphicProps,
+  extends AccordionItemIndicatorBaseProps,
     /**
      * @vue-ignore
      */

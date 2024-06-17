@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SegmentGroupLabelBaseProps extends PolymorphicProps {}
 export interface SegmentGroupLabelProps
-  extends PolymorphicProps,
+  extends SegmentGroupLabelBaseProps,
     /**
      * @vue-ignore
      */

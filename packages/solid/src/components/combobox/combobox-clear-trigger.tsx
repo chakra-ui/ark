@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export interface ComboboxClearTriggerProps extends HTMLArkProps<'button'> {}
+export interface ComboboxClearTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface ComboboxClearTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    ComboboxClearTriggerBaseProps {}
 
 export const ComboboxClearTrigger = (props: ComboboxClearTriggerProps) => {
   const combobox = useComboboxContext()

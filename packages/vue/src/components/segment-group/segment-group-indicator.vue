@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SegmentGroupIndicatorBaseProps extends PolymorphicProps {}
 export interface SegmentGroupIndicatorProps
-  extends PolymorphicProps,
+  extends SegmentGroupIndicatorBaseProps,
     /**
      * @vue-ignore
      */

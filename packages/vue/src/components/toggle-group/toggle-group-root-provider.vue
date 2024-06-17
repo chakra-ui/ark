@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseToggleGroupReturn>
 }
 
+export interface ToggleGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ToggleGroupRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends ToggleGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

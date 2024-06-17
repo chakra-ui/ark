@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './signature-pad.types'
 
+export interface SignaturePadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SignaturePadRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends SignaturePadRootBaseProps,
     /**
      * @vue-ignore
      */

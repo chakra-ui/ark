@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface QrCodeOverlayBaseProps extends PolymorphicProps {}
 export interface QrCodeOverlayProps
-  extends PolymorphicProps,
+  extends QrCodeOverlayBaseProps,
     /**
      * @vue-ignore
      */

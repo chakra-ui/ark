@@ -1,27 +1,47 @@
 {
   "Control": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "DecrementTrigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "IncrementTrigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Input": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Label": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'label'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Root": {
@@ -37,7 +57,11 @@
         "isRequired": false,
         "description": "Whether to allow the value overflow the min/max range"
       },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "clampValueOnBlur": {
         "type": "boolean",
         "defaultValue": "true",
@@ -163,12 +187,20 @@
   "RootProvider": {
     "props": {
       "value": { "type": "UseNumberInputReturn", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Scrubber": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

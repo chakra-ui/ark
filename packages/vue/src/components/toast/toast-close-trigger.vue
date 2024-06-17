@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ToastCloseTriggerBaseProps extends PolymorphicProps {}
 export interface ToastCloseTriggerProps
-  extends PolymorphicProps,
+  extends ToastCloseTriggerBaseProps,
     /**
      * @vue-ignore
      */

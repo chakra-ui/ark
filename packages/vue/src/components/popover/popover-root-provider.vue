@@ -7,7 +7,8 @@ interface RootProviderProps {
   value: UnwrapRef<UsePopoverReturn>
 }
 
-export interface PopoverRootProviderProps extends RootProviderProps, RenderStrategyProps {}
+export interface PopoverRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
+export interface PopoverRootProviderProps extends PopoverRootProviderBaseProps {}
 </script>
 
 <script setup lang="ts">

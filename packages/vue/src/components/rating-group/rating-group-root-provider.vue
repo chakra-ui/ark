@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseRatingGroupReturn>
 }
 
+export interface RatingGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RatingGroupRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends RatingGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

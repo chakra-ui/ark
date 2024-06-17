@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps {}
 export interface FileUploadItemDeleteTriggerProps
-  extends PolymorphicProps,
+  extends FileUploadItemDeleteTriggerBaseProps,
     /**
      * @vue-ignore
      */

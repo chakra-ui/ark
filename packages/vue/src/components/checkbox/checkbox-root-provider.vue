@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseCheckboxReturn>
 }
 
+export interface CheckboxRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CheckboxRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends CheckboxRootProviderBaseProps,
     /**
      * @vue-ignore
      */

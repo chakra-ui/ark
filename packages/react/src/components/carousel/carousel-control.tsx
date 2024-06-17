@@ -1,9 +1,11 @@
 import { carouselAnatomy } from '@ark-ui/anatomy'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 
-export type CarouselControlBaseProps = {}
-export interface CarouselControlProps extends HTMLArkProps<'div'>, CarouselControlBaseProps {}
+export interface CarouselControlBaseProps extends PolymorphicProps {}
+export interface CarouselControlProps
+  extends HTMLAttributes<HTMLDivElement>,
+    CarouselControlBaseProps {}
 
 export const CarouselControl = forwardRef<HTMLDivElement, CarouselControlProps>((props, ref) => (
   <ark.div {...carouselAnatomy.build().control.attrs} {...props} ref={ref} />

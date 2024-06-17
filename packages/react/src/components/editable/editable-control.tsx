@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
-export type EditableControlBaseProps = {}
-export interface EditableControlProps extends HTMLArkProps<'div'>, EditableControlBaseProps {}
+export interface EditableControlBaseProps extends PolymorphicProps {}
+export interface EditableControlProps
+  extends HTMLAttributes<HTMLDivElement>,
+    EditableControlBaseProps {}
 
 export const EditableControl = forwardRef<HTMLDivElement, EditableControlProps>((props, ref) => {
   const editable = useEditableContext()

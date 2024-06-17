@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
 
-export type QrCodeOverlayBaseProps = {}
-export interface QrCodeOverlayProps extends HTMLArkProps<'div'>, QrCodeOverlayBaseProps {}
+export interface QrCodeOverlayBaseProps extends PolymorphicProps {}
+export interface QrCodeOverlayProps
+  extends HTMLAttributes<HTMLDivElement>,
+    QrCodeOverlayBaseProps {}
 
 export const QrCodeOverlay = forwardRef<HTMLDivElement, QrCodeOverlayProps>((props, ref) => {
   const qrCode = useQrCodeContext()

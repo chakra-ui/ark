@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "SVGSVGElement"
@@ -14,7 +14,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -24,7 +24,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "SVGPathElement"
@@ -34,17 +34,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "encoding": {
         "type": "QrCodeGenerateOptions",
         "isRequired": false,
         "description": "The qr code encoding options."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{ root: string; frame: string }>",
@@ -61,7 +56,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"

@@ -1,14 +1,17 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
 interface IndicatorProps {
   indeterminate?: boolean
 }
 
-export interface CheckboxIndicatorProps extends Assign<HTMLArkProps<'div'>, IndicatorProps> {}
+export interface CheckboxIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'div'> {}
+export interface CheckboxIndicatorProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    CheckboxIndicatorBaseProps {}
 
 export const CheckboxIndicator = (props: CheckboxIndicatorProps) => {
   const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['indeterminate'])

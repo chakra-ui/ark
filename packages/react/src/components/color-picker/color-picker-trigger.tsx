@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export type ColorPickerTriggerBaseProps = {}
+export interface ColorPickerTriggerBaseProps extends PolymorphicProps {}
 export interface ColorPickerTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     ColorPickerTriggerBaseProps {}
 
 export const ColorPickerTrigger = forwardRef<HTMLButtonElement, ColorPickerTriggerProps>(

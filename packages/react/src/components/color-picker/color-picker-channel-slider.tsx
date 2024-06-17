@@ -1,16 +1,16 @@
 import type { ChannelProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
-export interface ColorPickerChannelSliderBaseProps extends ChannelProps {}
+export interface ColorPickerChannelSliderBaseProps extends ChannelProps, PolymorphicProps {}
 export interface ColorPickerChannelSliderProps
-  extends Assign<HTMLArkProps<'div'>, ColorPickerChannelSliderBaseProps> {}
+  extends HTMLAttributes<HTMLDivElement>,
+    ColorPickerChannelSliderBaseProps {}
 
 export const ColorPickerChannelSlider = forwardRef<HTMLDivElement, ColorPickerChannelSliderProps>(
   (props, ref) => {

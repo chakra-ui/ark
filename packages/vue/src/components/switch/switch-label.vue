@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SwitchLabelBaseProps extends PolymorphicProps {}
 export interface SwitchLabelProps
-  extends PolymorphicProps,
+  extends SwitchLabelBaseProps,
     /**
      * @vue-ignore
      */

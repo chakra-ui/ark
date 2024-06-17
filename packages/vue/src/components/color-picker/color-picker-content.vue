@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { PresenceProps } from '../presence'
 
+export interface ColorPickerContentBaseProps extends PresenceProps, PolymorphicProps {}
 export interface ColorPickerContentProps
-  extends PresenceProps,
-    PolymorphicProps,
+  extends ColorPickerContentBaseProps,
     /**
      * @vue-ignore
      */

@@ -3,11 +3,11 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { ItemProps } from './use-tree-view-branch-context'
 
+export interface TreeViewBranchBaseProps extends ItemProps, PolymorphicProps {}
 export interface TreeViewBranchProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends TreeViewBranchBaseProps,
     /**
-     * @vue-ignore
+     * @vue-ignore̊
      */
     HTMLAttributes {}
 </script>

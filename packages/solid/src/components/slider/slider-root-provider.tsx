@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseSliderReturn } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
@@ -8,7 +9,11 @@ interface RootProviderProps {
   value: UseSliderReturn
 }
 
-export interface SliderRootProviderProps extends HTMLArkProps<'div'>, RootProviderProps {}
+export interface SliderRootProviderBaseProps extends PolymorphicProps<'div'> {}
+export interface SliderRootProviderProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    RootProviderProps,
+    SliderRootProviderBaseProps {}
 
 export const SliderRootProvider = (props: SliderRootProviderProps) => {
   const [{ value: slider }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

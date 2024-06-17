@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseClipboardReturn>
 }
 
+export interface ClipboardRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ClipboardRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends ClipboardRootProviderBaseProps,
     /**
      * @vue-ignore
      */

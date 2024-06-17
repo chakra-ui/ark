@@ -9,10 +9,12 @@ interface RootProviderProps<T extends CollectionItem> {
   value: UnwrapRef<UseComboboxReturn<T>>
 }
 
-export interface ComboboxRootProviderProps<T extends CollectionItem>
+export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface ComboboxRootProviderProps<T extends CollectionItem>
+  extends ComboboxRootProviderBaseProps<T>,
     /**
      * @vue-ignore
      */

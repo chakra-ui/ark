@@ -1,13 +1,16 @@
 import { datePickerAnatomy } from '@ark-ui/anatomy'
 import type { ViewProps } from '@zag-js/date-picker'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerViewProvider } from './use-date-picker-view-props-context'
 
-export interface DatePickerViewProps extends Assign<HTMLArkProps<'div'>, Required<ViewProps>> {}
+export interface DatePickerViewBaseProps extends Required<ViewProps>, PolymorphicProps<'div'> {}
+export interface DatePickerViewProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    DatePickerViewBaseProps {}
 
 export const DatePickerView = (props: DatePickerViewProps) => {
   const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])

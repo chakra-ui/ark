@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { GroupEmits, GroupProps } from './checkbox-group.types.ts'
 
+export interface CheckboxGroupBaseProps extends GroupProps, PolymorphicProps {}
 export interface CheckboxGroupProps
-  extends GroupProps,
-    PolymorphicProps,
+  extends CheckboxGroupBaseProps,
     /**
      * @vue-ignore
      */

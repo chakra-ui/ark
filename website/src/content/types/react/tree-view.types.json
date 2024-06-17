@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLUListElement"
@@ -14,7 +14,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -24,7 +24,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -39,7 +39,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "disabled": {
         "type": "boolean",
@@ -54,7 +54,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLSpanElement"
@@ -64,7 +64,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -74,7 +74,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -89,7 +89,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "disabled": {
         "type": "boolean",
@@ -104,7 +104,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLSpanElement"
@@ -114,7 +114,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLLabelElement"
@@ -124,7 +124,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "defaultExpandedValue": {
         "type": "string[]",
@@ -151,11 +151,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The id of the focused node"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{ root: string; tree: string; label: string }>",
@@ -203,7 +198,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -213,7 +208,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLUListElement"

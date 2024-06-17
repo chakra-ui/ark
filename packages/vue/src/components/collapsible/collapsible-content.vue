@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CollapsibleContentBaseProps extends PolymorphicProps {}
 export interface CollapsibleContentProps
-  extends PolymorphicProps,
+  extends CollapsibleContentBaseProps,
     /**
      * @vue-ignore
      */

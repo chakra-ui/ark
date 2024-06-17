@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export type ColorPickerControlBaseProps = {}
-export interface ColorPickerControlProps extends HTMLArkProps<'div'>, ColorPickerControlBaseProps {}
+export interface ColorPickerControlBaseProps extends PolymorphicProps {}
+export interface ColorPickerControlProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ColorPickerControlBaseProps {}
 
 export const ColorPickerControl = forwardRef<HTMLDivElement, ColorPickerControlProps>(
   (props, ref) => {

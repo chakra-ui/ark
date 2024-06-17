@@ -5,10 +5,12 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './combobox.types'
 
-export interface ComboboxRootProps<T extends CollectionItem>
+export interface ComboboxRootBaseProps<T extends CollectionItem>
   extends RootProps<T>,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface ComboboxRootProps<T extends CollectionItem>
+  extends ComboboxRootBaseProps<T>,
     /**
      * @vue-ignore
      */

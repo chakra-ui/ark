@@ -3,9 +3,9 @@ import type { InputProps } from '@zag-js/pin-input'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PinInputInputBaseProps extends InputProps, PolymorphicProps {}
 export interface PinInputInputProps
-  extends PolymorphicProps,
-    InputProps,
+  extends PinInputInputBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseTagsInputProps, useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 
-export interface TagsInputRootProps extends Assign<HTMLArkProps<'div'>, UseTagsInputProps> {}
+export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps<'div'> {}
+export interface TagsInputRootProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    TagsInputRootBaseProps {}
 
 export const TagsInputRoot = (props: TagsInputRootProps) => {
   const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [

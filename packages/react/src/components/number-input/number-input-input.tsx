@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export type NumberInputInputBaseProps = {}
-export interface NumberInputInputProps extends HTMLArkProps<'input'>, NumberInputInputBaseProps {}
+export interface NumberInputInputBaseProps extends PolymorphicProps {}
+export interface NumberInputInputProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    NumberInputInputBaseProps {}
 
 export const NumberInputInput = forwardRef<HTMLInputElement, NumberInputInputProps>(
   (props, ref) => {

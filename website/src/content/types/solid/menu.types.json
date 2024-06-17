@@ -1,12 +1,20 @@
 {
   "Arrow": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ArrowTip": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "CheckboxItem": {
@@ -17,7 +25,11 @@
         "description": "Whether the option is checked"
       },
       "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -42,37 +54,56 @@
   },
   "Content": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ContextTrigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Indicator": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ItemGroupLabel": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ItemGroup": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
-      "id": {
-        "type": "string",
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
-        "description": "The `id` of the element that provides accessibility label to the option group"
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
   "ItemIndicator": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Item": {
@@ -82,7 +113,11 @@
         "isRequired": true,
         "description": "The unique value of the menu item option."
       },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -102,18 +137,29 @@
   },
   "ItemText": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Positioner": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "RadioItemGroup": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
-      "id": { "type": "string", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
       "value": { "type": "string", "isRequired": false }
     }
@@ -121,7 +167,11 @@
   "RadioItem": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -298,16 +348,30 @@
     }
   },
   "Separator": {
-    "props": { "asChild": { "type": "(props: ParentProps<'hr'>) => Element", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'hr'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "TriggerItem": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Trigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

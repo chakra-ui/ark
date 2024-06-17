@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
-export type EditableCancelTriggerBaseProps = {}
+export interface EditableCancelTriggerBaseProps extends PolymorphicProps {}
 export interface EditableCancelTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     EditableCancelTriggerBaseProps {}
 
 export const EditableCancelTrigger = forwardRef<HTMLButtonElement, EditableCancelTriggerProps>(

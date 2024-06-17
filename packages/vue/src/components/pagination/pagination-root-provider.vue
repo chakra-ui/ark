@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UsePaginationReturn>
 }
 
+export interface PaginationRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PaginationRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends PaginationRootProviderBaseProps,
     /**
      * @vue-ignore
      */

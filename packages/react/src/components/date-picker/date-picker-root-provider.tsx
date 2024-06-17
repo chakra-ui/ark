@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -15,9 +15,12 @@ interface RootProviderProps {
   value: UseDatePickerReturn
 }
 
-export interface DatePickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface DatePickerRootProviderBaseProps
+  extends RootProviderProps,
+    UsePresenceProps,
+    PolymorphicProps {}
 export interface DatePickerRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     DatePickerRootProviderBaseProps {}
 
 export const DatePickerRootProvider = forwardRef<HTMLDivElement, DatePickerRootProviderProps>(

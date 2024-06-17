@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
-export type ComboboxItemIndicatorBaseProps = {}
+export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps {}
 export interface ComboboxItemIndicatorProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     ComboboxItemIndicatorBaseProps {}
 
 export const ComboboxItemIndicator = forwardRef<HTMLDivElement, ComboboxItemIndicatorProps>(

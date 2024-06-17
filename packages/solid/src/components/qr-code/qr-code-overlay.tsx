@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
 
-export interface QrCodeOverlayProps extends HTMLArkProps<'div'> {}
+export interface QrCodeOverlayBaseProps extends PolymorphicProps<'div'> {}
+export interface QrCodeOverlayProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    QrCodeOverlayBaseProps {}
 
 export const QrCodeOverlay = (props: QrCodeOverlayProps) => {
   const qrCode = useQrCodeContext()

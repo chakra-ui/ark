@@ -4,9 +4,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
 
+export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps {}
 export interface SliderThumbProps
-  extends PolymorphicProps,
-    ThumbProps,
+  extends SliderThumbBaseProps,
     /**
      * @vue-ignore
      */

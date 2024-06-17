@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PaginationNextTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationNextTriggerProps
-  extends PolymorphicProps,
+  extends PaginationNextTriggerBaseProps,
     /**
      * @vue-ignore
      */

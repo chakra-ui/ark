@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export type ClipboardControlBaseProps = {}
-export interface ClipboardControlProps extends HTMLArkProps<'div'>, ClipboardControlBaseProps {}
+export interface ClipboardControlBaseProps extends PolymorphicProps {}
+export interface ClipboardControlProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ClipboardControlBaseProps {}
 
 export const ClipboardControl = forwardRef<HTMLDivElement, ClipboardControlProps>((props, ref) => {
   const clipboard = useClipboardContext()

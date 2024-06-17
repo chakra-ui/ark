@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -14,7 +14,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -30,7 +30,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -60,7 +60,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -70,7 +70,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLButtonElement"
@@ -80,7 +80,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -90,7 +90,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -100,12 +100,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The `id` of the element that provides accessibility label to the option group"
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -115,7 +110,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -130,7 +125,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -155,7 +150,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -165,7 +160,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -175,9 +170,8 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "id": { "type": "string", "isRequired": false },
       "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
       "value": { "type": "string", "isRequired": false }
     },
@@ -189,7 +183,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "closeOnSelect": {
         "type": "boolean",
@@ -372,7 +366,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLHRElement"
@@ -382,7 +376,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLDivElement"
@@ -392,7 +386,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLButtonElement"

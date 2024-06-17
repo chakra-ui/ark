@@ -1,14 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ItemProps } from '@zag-js/tags-input'
-import { createMemo } from 'solid-js'
-import type { Assign } from '../../types'
+import { type JSX, createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { TagsInputItemProvider } from './use-tags-input-item-context'
 import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
 
-export interface TagsInputItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface TagsInputItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface TagsInputItemProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    TagsInputItemBaseProps {}
 
 export const TagsInputItem = (props: TagsInputItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [

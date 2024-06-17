@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TreeViewTreeBaseProps extends PolymorphicProps {}
 export interface TreeViewTreeProps
-  extends PolymorphicProps,
+  extends TreeViewTreeBaseProps,
     /**
      * @vue-ignore
      */

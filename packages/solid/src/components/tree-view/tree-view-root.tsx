@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseTreeViewProps, useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
-export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, UseTreeViewProps> {}
+export interface TreeViewRootBaseProps extends UseTreeViewProps, PolymorphicProps<'div'> {}
+export interface TreeViewRootProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    TreeViewRootBaseProps {}
 
 export const TreeViewRoot = (props: TreeViewRootProps) => {
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps>()(props, [

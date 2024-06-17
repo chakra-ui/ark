@@ -1,31 +1,75 @@
 {
   "ClearTrigger": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Content": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Control": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Input": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "ItemGroupLabel": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "ItemGroup": {
     "props": {
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "id": { "type": "string", "isRequired": false }
     }
   },
   "ItemIndicator": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Item": {
     "props": {
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "item": { "type": "any", "isRequired": false, "description": "The item to render" },
       "persistFocus": {
         "type": "boolean",
@@ -35,16 +79,40 @@
     }
   },
   "ItemText": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Label": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "List": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Positioner": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Root": {
     "props": {
@@ -58,7 +126,11 @@
         "isRequired": false,
         "description": "Whether to allow typing custom values in the input"
       },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "autoFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -121,7 +193,7 @@
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
       "inputBehavior": {
-        "type": "'none' | 'autocomplete' | 'autohighlight'",
+        "type": "'none' | 'autohighlight' | 'autocomplete'",
         "defaultValue": "\"none\"",
         "isRequired": false,
         "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
@@ -218,7 +290,7 @@
         "description": "Function to scroll to a specific index"
       },
       "selectionBehavior": {
-        "type": "'clear' | 'replace' | 'preserve'",
+        "type": "'replace' | 'clear' | 'preserve'",
         "defaultValue": "\"replace\"",
         "isRequired": false,
         "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
@@ -239,7 +311,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "MachineApi<PropTypes, T>", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -256,7 +332,11 @@
   },
   "Trigger": {
     "props": {
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "focusable": {
         "type": "boolean",
         "isRequired": false,

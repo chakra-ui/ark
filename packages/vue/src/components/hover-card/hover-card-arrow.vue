@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface HoverCardArrowBaseProps extends PolymorphicProps {}
 export interface HoverCardArrowProps
-  extends PolymorphicProps,
+  extends HoverCardArrowBaseProps,
     /**
      * @vue-ignore
      */

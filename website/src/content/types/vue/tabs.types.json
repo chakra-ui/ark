@@ -2,19 +2,39 @@
   "TabContent": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "TabIndicator": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "TabList": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "TabTrigger": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -47,7 +67,11 @@
         "isRequired": false,
         "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
       },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "composite": {
         "type": "boolean",
         "isRequired": false,
@@ -103,7 +127,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

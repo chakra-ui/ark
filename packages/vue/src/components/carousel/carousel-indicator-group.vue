@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CarouselIndicatorGroupBaseProps extends PolymorphicProps {}
 export interface CarouselIndicatorGroupProps
-  extends PolymorphicProps,
+  extends CarouselIndicatorGroupBaseProps,
     /**
      * @vue-ignore
      */

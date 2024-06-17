@@ -1,14 +1,14 @@
 import type { IndicatorProps } from '@zag-js/carousel'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
-export interface CarouselIndicatorBaseProps extends IndicatorProps {}
+export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps {}
 export interface CarouselIndicatorProps
-  extends Assign<HTMLArkProps<'button'>, CarouselIndicatorBaseProps> {}
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    CarouselIndicatorBaseProps {}
 
 export const CarouselIndicator = forwardRef<HTMLButtonElement, CarouselIndicatorProps>(
   (props, ref) => {

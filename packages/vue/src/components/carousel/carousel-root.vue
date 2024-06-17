@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './carousel.types'
 
+export interface CarouselRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CarouselRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends CarouselRootBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerClearTriggerProps extends HTMLArkProps<'button'> {}
+export interface DatePickerClearTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface DatePickerClearTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    DatePickerClearTriggerBaseProps {}
 
 export const DatePickerClearTrigger = (props: DatePickerClearTriggerProps) => {
   const api = useDatePickerContext()

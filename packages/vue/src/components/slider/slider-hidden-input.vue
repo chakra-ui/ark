@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SliderHiddenInputBaseProps extends PolymorphicProps {}
 export interface SliderHiddenInputProps
-  extends PolymorphicProps,
+  extends SliderHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

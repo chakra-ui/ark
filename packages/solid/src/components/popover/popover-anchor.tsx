@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
 
-export interface PopoverAnchorProps extends HTMLArkProps<'div'> {}
+export interface PopoverAnchorBaseProps extends PolymorphicProps<'div'> {}
+export interface PopoverAnchorProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    PopoverAnchorBaseProps {}
 
 export const PopoverAnchor = (props: PopoverAnchorProps) => {
   const api = usePopoverContext()

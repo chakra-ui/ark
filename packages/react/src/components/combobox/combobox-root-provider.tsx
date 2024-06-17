@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
-import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
+import { type HTMLAttributes, type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
 import type { CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -17,9 +17,10 @@ interface RootProviderProps<T extends CollectionItem> {
 }
 export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>,
-    UsePresenceProps {}
+    UsePresenceProps,
+    PolymorphicProps {}
 export interface ComboboxRootProviderProps<T extends CollectionItem>
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     ComboboxRootProviderBaseProps<T> {}
 
 const ComboboxImpl = <T extends CollectionItem>(

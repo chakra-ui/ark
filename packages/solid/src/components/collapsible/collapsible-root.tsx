@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseCollapsibleProps, useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
-export interface CollapsibleRootProps extends Assign<HTMLArkProps<'div'>, UseCollapsibleProps> {}
+export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div'> {}
+export interface CollapsibleRootProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    CollapsibleRootBaseProps {}
 
 export const CollapsibleRoot = (props: CollapsibleRootProps) => {
   const [useCollapsibleProps, localProps] = createSplitProps<UseCollapsibleProps>()(props, [

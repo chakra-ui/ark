@@ -3,8 +3,9 @@ import type { ButtonHTMLAttributes } from 'vue'
 import { useCollapsibleContext } from '../collapsible'
 import type { PolymorphicProps } from '../factory'
 
+export interface AccordionItemTriggerBaseProps extends PolymorphicProps {}
 export interface AccordionItemTriggerProps
-  extends PolymorphicProps,
+  extends AccordionItemTriggerBaseProps,
     /**
      * @vue-ignore
      */

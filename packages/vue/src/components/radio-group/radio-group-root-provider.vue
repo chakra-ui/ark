@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseRadioGroupReturn>
 }
 
+export interface RadioGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RadioGroupRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends RadioGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

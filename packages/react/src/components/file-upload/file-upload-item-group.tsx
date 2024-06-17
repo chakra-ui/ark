@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export type FileUploadItemGroupBaseProps = {}
+export interface FileUploadItemGroupBaseProps extends PolymorphicProps {}
 export interface FileUploadItemGroupProps
-  extends HTMLArkProps<'ul'>,
+  extends HTMLAttributes<HTMLUListElement>,
     FileUploadItemGroupBaseProps {}
 
 export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGroupProps>(

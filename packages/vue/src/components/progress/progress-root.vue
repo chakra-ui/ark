@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootProps } from './progress.types'
 
+export interface ProgressRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ProgressRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends ProgressRootBaseProps,
     /**
      * @vue-ignore
      */

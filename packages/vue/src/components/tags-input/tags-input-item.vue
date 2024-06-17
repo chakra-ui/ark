@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/tags-input'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TagsInputItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TagsInputItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends TagsInputItemBaseProps,
     /**
      * @vue-ignore
      */

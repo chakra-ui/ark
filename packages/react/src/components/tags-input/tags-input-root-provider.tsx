@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseTagsInputReturn } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 
@@ -9,9 +9,9 @@ interface RootProviderProps {
   value: UseTagsInputReturn
 }
 
-export interface TagsInputRootProviderBaseProps extends RootProviderProps {}
+export interface TagsInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TagsInputRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     TagsInputRootProviderBaseProps {}
 
 export const TagsInputRootProvider = forwardRef<HTMLDivElement, TagsInputRootProviderProps>(

@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SignaturePadClearTriggerBaseProps extends PolymorphicProps {}
 export interface SignaturePadClearTriggerProps
-  extends PolymorphicProps,
+  extends SignaturePadClearTriggerBaseProps,
     /**
      * @vue-ignore
      */

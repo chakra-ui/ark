@@ -3,9 +3,9 @@ import type { PanelProps } from '@zag-js/splitter'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps {}
 export interface SplitterPanelProps
-  extends PolymorphicProps,
-    PanelProps,
+  extends SplitterPanelBaseProps,
     /**
      * @vue-ignore
      */

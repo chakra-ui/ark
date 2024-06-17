@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemProps } from '@zag-js/toggle-group'
-import { forwardRef } from 'react'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useToggleGroupContext } from './use-toggle-group-context'
 
-export interface ToggleGroupItemBaseProps extends ItemProps {}
+export interface ToggleGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ToggleGroupItemProps
-  extends Assign<HTMLArkProps<'button'>, ToggleGroupItemBaseProps> {}
+  extends Assign<ButtonHTMLAttributes<HTMLButtonElement>, ToggleGroupItemBaseProps> {}
 
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])

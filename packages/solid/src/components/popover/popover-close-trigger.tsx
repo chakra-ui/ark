@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
 
-export interface PopoverCloseTriggerProps extends HTMLArkProps<'button'> {}
+export interface PopoverCloseTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface PopoverCloseTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    PopoverCloseTriggerBaseProps {}
 
 export const PopoverCloseTrigger = (props: PopoverCloseTriggerProps) => {
   const api = usePopoverContext()

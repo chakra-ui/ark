@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ProgressLabelBaseProps extends PolymorphicProps {}
 export interface ProgressLabelProps
-  extends PolymorphicProps,
+  extends ProgressLabelBaseProps,
     /**
      * @vue-ignore
      */

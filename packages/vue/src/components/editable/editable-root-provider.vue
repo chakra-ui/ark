@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseEditableReturn>
 }
 
+export interface EditableRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface EditableRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends EditableRootProviderBaseProps,
     /**
      * @vue-ignore
      */

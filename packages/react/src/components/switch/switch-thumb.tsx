@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
-export type SwitchThumbBaseProps = {}
-export interface SwitchThumbProps extends HTMLArkProps<'span'>, SwitchThumbBaseProps {}
+export interface SwitchThumbBaseProps extends PolymorphicProps {}
+export interface SwitchThumbProps extends HTMLAttributes<HTMLSpanElement>, SwitchThumbBaseProps {}
 
 export const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>((props, ref) => {
   const switchContext = useSwitchContext()

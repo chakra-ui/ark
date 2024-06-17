@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export type ComboboxClearTriggerBaseProps = {}
+export interface ComboboxClearTriggerBaseProps extends PolymorphicProps {}
 export interface ComboboxClearTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     ComboboxClearTriggerBaseProps {}
 
 export const ComboboxClearTrigger = forwardRef<HTMLButtonElement, ComboboxClearTriggerProps>(

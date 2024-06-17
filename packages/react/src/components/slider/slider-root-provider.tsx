@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseSliderReturn } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
@@ -9,8 +9,10 @@ interface RootProviderProps {
   value: UseSliderReturn
 }
 
-export interface SliderRootProviderBaseProps extends RootProviderProps {}
-export interface SliderRootProviderProps extends HTMLArkProps<'div'>, SliderRootProviderBaseProps {}
+export interface SliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
+export interface SliderRootProviderProps
+  extends HTMLAttributes<HTMLDivElement>,
+    SliderRootProviderBaseProps {}
 
 export const SliderRootProvider = forwardRef<HTMLDivElement, SliderRootProviderProps>(
   (props, ref) => {

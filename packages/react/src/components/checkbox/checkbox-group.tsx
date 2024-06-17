@@ -1,13 +1,14 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 
-export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps {}
-export interface CheckboxGroupProps extends Assign<HTMLArkProps<'div'>, CheckboxGroupBaseProps> {}
+export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps, PolymorphicProps {}
+export interface CheckboxGroupProps
+  extends Assign<HTMLAttributes<HTMLDivElement>, CheckboxGroupBaseProps> {}
 
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, ref) => {
   const [checkboxGroupProps, localProps] = createSplitProps<UseCheckboxGroupProps>()(props, [

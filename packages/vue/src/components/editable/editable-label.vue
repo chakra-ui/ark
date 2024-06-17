@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface EditableLabelBaseProps extends PolymorphicProps {}
 export interface EditableLabelProps
-  extends PolymorphicProps,
+  extends EditableLabelBaseProps,
     /**
      * @vue-ignore
      */

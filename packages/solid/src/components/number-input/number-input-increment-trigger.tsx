@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputIncrementTriggerProps extends HTMLArkProps<'button'> {}
+export interface NumberInputIncrementTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface NumberInputIncrementTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    NumberInputIncrementTriggerBaseProps {}
 
 export const NumberInputIncrementTrigger = (props: NumberInputIncrementTriggerProps) => {
   const api = useNumberInputContext()

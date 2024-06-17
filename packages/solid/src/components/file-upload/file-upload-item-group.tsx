@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadItemGroupProps extends HTMLArkProps<'ul'> {}
+export interface FileUploadItemGroupBaseProps extends PolymorphicProps<'ul'> {}
+export interface FileUploadItemGroupProps
+  extends JSX.HTMLAttributes<HTMLUListElement>,
+    FileUploadItemGroupBaseProps {}
 
 export const FileUploadItemGroup = (props: FileUploadItemGroupProps) => {
   const fileUpload = useFileUploadContext()

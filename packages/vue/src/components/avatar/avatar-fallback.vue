@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface AvatarFallbackBaseProps extends PolymorphicProps {}
 export interface AvatarFallbackProps
-  extends PolymorphicProps,
+  extends AvatarFallbackBaseProps,
     /**
      * @vue-ignore
      */

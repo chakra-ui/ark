@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps {}
 export interface ComboboxItemIndicatorProps
-  extends PolymorphicProps,
+  extends ComboboxItemIndicatorBaseProps,
     /**
      * @vue-ignore
      */

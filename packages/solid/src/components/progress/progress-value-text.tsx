@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
+export interface ProgressValueTextBaseProps extends PolymorphicProps<'span'> {}
+export interface ProgressValueTextProps
+  extends JSX.HTMLAttributes<HTMLSpanElement>,
+    ProgressValueTextBaseProps {}
 
 export const ProgressValueText = (props: ProgressValueTextProps) => {
   const api = useProgressContext()

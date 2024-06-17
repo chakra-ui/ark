@@ -3,9 +3,9 @@ import type { ItemGroupProps } from '@zag-js/select'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SelectItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps {}
 export interface SelectItemGroupProps
-  extends PolymorphicProps,
-    Partial<ItemGroupProps>,
+  extends SelectItemGroupBaseProps,
     /**
      * @vue-ignore
      */

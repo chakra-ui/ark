@@ -3,9 +3,9 @@ import type { ChannelInputProps } from '@zag-js/color-picker'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerChannelInputBaseProps extends ChannelInputProps, PolymorphicProps {}
 export interface ColorPickerChannelInputProps
-  extends ChannelInputProps,
-    PolymorphicProps,
+  extends ColorPickerChannelInputBaseProps,
     /**
      * @vue-ignore
      */

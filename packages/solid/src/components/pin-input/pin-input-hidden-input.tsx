@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export interface PinInputHiddenInputProps extends HTMLArkProps<'input'> {}
+export interface PinInputHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+export interface PinInputHiddenInputProps
+  extends JSX.InputHTMLAttributes<HTMLInputElement>,
+    PinInputHiddenInputBaseProps {}
 
 export const PinInputHiddenInput = (props: PinInputHiddenInputProps) => {
   const pinInput = usePinInputContext()

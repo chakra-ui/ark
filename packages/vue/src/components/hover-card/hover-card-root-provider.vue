@@ -7,7 +7,8 @@ interface RootProviderProps {
   value: UnwrapRef<UseHoverCardReturn>
 }
 
-export interface HoverCardRootProviderProps extends RootProviderProps, RenderStrategyProps {}
+export interface HoverCardRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
+export interface HoverCardRootProviderProps extends HoverCardRootProviderBaseProps {}
 </script>
 
 <script setup lang="ts">

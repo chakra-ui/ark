@@ -1,11 +1,18 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectValueTextProps extends HTMLArkProps<'span'> {
+export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {
+  /**
+   * Text to display when no value is selected.
+   */
   placeholder?: string
 }
+export interface SelectValueTextProps
+  extends JSX.HTMLAttributes<HTMLSpanElement>,
+    SelectValueTextBaseProps {}
 
 export const SelectValueText = (props: SelectValueTextProps) => {
   const select = useSelectContext()

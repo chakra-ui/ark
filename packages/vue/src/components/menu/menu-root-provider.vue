@@ -7,10 +7,11 @@ interface RootProviderProps {
   value: UseMenuReturn
 }
 
-export interface MenuRootProviderProps
+export interface MenuRootProviderBaseProps
   extends RootProviderProps,
     RenderStrategyProps,
     PolymorphicProps {}
+export interface MenuRootProviderProps extends MenuRootProviderBaseProps {}
 </script>
 
 <script setup lang="ts">

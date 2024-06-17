@@ -1,31 +1,69 @@
 {
   "Control": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "IndicatorGroup": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Indicator": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "readOnly": { "type": "boolean", "isRequired": false }
     }
   },
   "ItemGroup": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Item": {
     "props": {
       "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "NextTrigger": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "PrevTrigger": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Root": {
     "emits": {
@@ -43,7 +81,11 @@
         "isRequired": false,
         "description": "The alignment of the slides in the carousel."
       },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "defaultIndex": {
         "type": "number",
         "isRequired": false,
@@ -89,10 +131,20 @@
   "RootProvider": {
     "props": {
       "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Viewport": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   }
 }

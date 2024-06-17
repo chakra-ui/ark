@@ -1,13 +1,12 @@
 import type { ViewProps } from '@zag-js/progress'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressViewBaseProps extends ViewProps {}
-export interface ProgressViewProps extends Assign<HTMLArkProps<'span'>, ProgressViewBaseProps> {}
+export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
+export interface ProgressViewProps extends HTMLAttributes<HTMLSpanElement>, ProgressViewBaseProps {}
 
 export const ProgressView = forwardRef<HTMLSpanElement, ProgressViewProps>((props, ref) => {
   const [viewProps, localProps] = createSplitProps<ViewProps>()(props, ['state'])

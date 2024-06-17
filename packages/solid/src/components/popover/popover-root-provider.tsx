@@ -10,11 +10,13 @@ import type { UsePopoverReturn } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
 interface RootProviderProps {
-  children?: JSX.Element
   value: UsePopoverReturn
 }
 
-export interface PopoverRootProviderProps extends RootProviderProps, UsePresenceProps {}
+export interface PopoverRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface PopoverRootProviderProps extends PopoverRootProviderBaseProps {
+  children?: JSX.Element
+}
 
 export const PopoverRootProvider = (props: PopoverRootProviderProps) => {
   const [presenceProps, popoverProps] = splitPresenceProps(props)

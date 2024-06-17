@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/combobox'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ComboboxItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends ComboboxItemBaseProps,
     /**
      * @vue-ignore
      */

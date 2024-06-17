@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseAvatarReturn } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
 
@@ -9,8 +9,10 @@ interface RootProviderProps {
   value: UseAvatarReturn
 }
 
-export interface AvatarRootProviderBaseProps extends RootProviderProps {}
-export interface AvatarRootProviderProps extends HTMLArkProps<'div'>, AvatarRootProviderBaseProps {}
+export interface AvatarRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
+export interface AvatarRootProviderProps
+  extends HTMLAttributes<HTMLDivElement>,
+    AvatarRootProviderBaseProps {}
 
 export const AvatarRootProvider = forwardRef<HTMLDivElement, AvatarRootProviderProps>(
   (props, ref) => {

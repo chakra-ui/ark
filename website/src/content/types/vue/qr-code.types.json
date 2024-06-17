@@ -1,16 +1,38 @@
 {
   "Frame": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Overlay": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Pattern": {
-    "props": { "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false } }
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "encoding": {
         "type": "QrCodeGenerateOptions",
         "isRequired": false,
@@ -32,7 +54,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false }
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TagsInputItemDeleteTriggerBaseProps extends PolymorphicProps {}
 export interface TagsInputItemDeleteTriggerProps
-  extends PolymorphicProps,
+  extends TagsInputItemDeleteTriggerBaseProps,
     /**
      * @vue-ignore
      */

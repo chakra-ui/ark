@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerTableCellTriggerProps
-  extends PolymorphicProps,
+  extends DatePickerTableCellTriggerBaseProps,
     /**
      * @vue-ignore
      */

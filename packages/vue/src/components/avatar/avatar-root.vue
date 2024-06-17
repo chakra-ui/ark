@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './avatar.types'
 
+export interface AvatarRootBaseProps extends RootProps, PolymorphicProps {}
 export interface AvatarRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends AvatarRootBaseProps,
     /**
      * @vue-ignore
      */

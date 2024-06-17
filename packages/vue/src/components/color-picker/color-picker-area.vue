@@ -3,9 +3,9 @@ import type { AreaProps } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerAreaBaseProps extends AreaProps, PolymorphicProps {}
 export interface ColorPickerAreaProps
-  extends AreaProps,
-    PolymorphicProps,
+  extends ColorPickerAreaBaseProps,
     /**
      * @vue-ignore
      */

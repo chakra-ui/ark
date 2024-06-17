@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './slider.types'
 
+export interface SliderRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SliderRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends SliderRootBaseProps,
     /**
      * @vue-ignore
      */

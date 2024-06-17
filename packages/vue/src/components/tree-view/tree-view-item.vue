@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { UseTreeViewItemPropsContext } from './use-tree-view-item-props-context'
 
+export interface TreeViewItemBaseProps extends UseTreeViewItemPropsContext, PolymorphicProps {}
 export interface TreeViewItemProps
-  extends PolymorphicProps,
-    UseTreeViewItemPropsContext,
+  extends TreeViewItemBaseProps,
     /**
      * @vue-ignore
      */

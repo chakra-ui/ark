@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SliderControlBaseProps extends PolymorphicProps {}
 export interface SliderControlProps
-  extends PolymorphicProps,
+  extends SliderControlBaseProps,
     /**
      * @vue-ignore
      */

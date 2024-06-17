@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ToastDescriptionBaseProps extends PolymorphicProps {}
 export interface ToastDescriptionProps
-  extends PolymorphicProps,
+  extends ToastDescriptionBaseProps,
     /**
      * @vue-ignore
      */

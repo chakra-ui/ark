@@ -5,10 +5,9 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './accordion.types'
 
+export interface AccordionRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProps
-  extends RootProps,
-    RenderStrategyProps,
-    PolymorphicProps,
+  extends AccordionRootBaseProps,
     /**
      * @vue-ignore
      */

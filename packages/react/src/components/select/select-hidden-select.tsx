@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type SelectHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export type SelectHiddenSelectBaseProps = {}
+export interface SelectHiddenSelectBaseProps extends PolymorphicProps {}
 export interface SelectHiddenSelectProps
-  extends HTMLArkProps<'select'>,
+  extends SelectHTMLAttributes<HTMLSelectElement>,
     SelectHiddenSelectBaseProps {}
 
 export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSelectProps>(

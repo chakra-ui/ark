@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './pin-input.types'
 
+export interface PinInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PinInputRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends PinInputRootBaseProps,
     /**
      * @vue-ignore
      */

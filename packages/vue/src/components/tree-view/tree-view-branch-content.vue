@@ -3,8 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import { useTreeViewBranchContext } from './use-tree-view-branch-context'
 
+export interface TreeViewBranchContentBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchContentProps
-  extends PolymorphicProps,
+  extends TreeViewBranchContentBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadHiddenInputProps extends HTMLArkProps<'input'> {}
+export interface FileUploadHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+export interface FileUploadHiddenInputProps
+  extends JSX.InputHTMLAttributes<HTMLInputElement>,
+    FileUploadHiddenInputBaseProps {}
 
 export const FileUploadHiddenInput = (props: FileUploadHiddenInputProps) => {
   const fileUpload = useFileUploadContext()

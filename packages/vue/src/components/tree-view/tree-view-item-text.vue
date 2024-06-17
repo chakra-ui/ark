@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TreeViewItemTextBaseProps extends PolymorphicProps {}
 export interface TreeViewItemTextProps
-  extends PolymorphicProps,
+  extends TreeViewItemTextBaseProps,
     /**
      * @vue-ignore
      */

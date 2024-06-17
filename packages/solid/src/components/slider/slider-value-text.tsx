@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderValueTextProps extends HTMLArkProps<'span'> {}
+export interface SliderValueTextBaseProps extends PolymorphicProps<'span'> {}
+export interface SliderValueTextProps
+  extends JSX.HTMLAttributes<HTMLSpanElement>,
+    SliderValueTextBaseProps {}
 
 export const SliderValueText = (props: SliderValueTextProps) => {
   const api = useSliderContext()

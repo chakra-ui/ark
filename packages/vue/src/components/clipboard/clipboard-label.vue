@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ClipboardLabelBaseProps extends PolymorphicProps {}
 export interface ClipboardLabelProps
-  extends PolymorphicProps,
+  extends ClipboardLabelBaseProps,
     /**
      * @vue-ignore
      */

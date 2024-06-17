@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DatePickerNextTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerNextTriggerProps
-  extends PolymorphicProps,
+  extends DatePickerNextTriggerBaseProps,
     /**
      * @vue-ignore
      */

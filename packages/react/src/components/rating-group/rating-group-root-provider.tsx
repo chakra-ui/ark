@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseRatingGroupReturn } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
 
@@ -9,9 +9,9 @@ interface RootProviderProps {
   value: UseRatingGroupReturn
 }
 
-export interface RatingGroupRootProviderBaseProps extends RootProviderProps {}
+export interface RatingGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RatingGroupRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     RatingGroupRootProviderBaseProps {}
 
 export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRootProviderProps>(

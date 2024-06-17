@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface RatingGroupLabelBaseProps extends PolymorphicProps {}
 export interface RatingGroupLabelProps
-  extends PolymorphicProps,
+  extends RatingGroupLabelBaseProps,
     /**
      * @vue-ignore
      */

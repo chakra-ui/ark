@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/pagination'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface PaginationItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends PaginationItemBaseProps,
     /**
      * @vue-ignore
      */

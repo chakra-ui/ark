@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PopoverTriggerBaseProps extends PolymorphicProps {}
 export interface PopoverTriggerProps
-  extends PolymorphicProps,
+  extends PopoverTriggerBaseProps,
     /**
      * @vue-ignore
      */

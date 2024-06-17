@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './splitter.types'
 
+export interface SplitterRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SplitterRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends SplitterRootBaseProps,
     /**
      * @vue-ignore
      */

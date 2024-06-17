@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
 import { useCollapsibleContext } from '../collapsible'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export type AccordionItemTriggerBaseProps = {}
+export interface AccordionItemTriggerBaseProps extends PolymorphicProps {}
 export interface AccordionItemTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     AccordionItemTriggerBaseProps {}
 
 export const AccordionItemTrigger = forwardRef<HTMLButtonElement, AccordionItemTriggerProps>(

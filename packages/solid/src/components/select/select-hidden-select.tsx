@@ -1,9 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js'
 import { Index, Show, createMemo } from 'solid-js'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectHiddenSelectProps extends HTMLArkProps<'select'> {}
+export interface SelectHiddenSelectBaseProps extends PolymorphicProps<'select'> {}
+export interface SelectHiddenSelectProps
+  extends JSX.SelectHTMLAttributes<HTMLSelectElement>,
+    SelectHiddenSelectBaseProps {}
 
 export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
   const select = useSelectContext()

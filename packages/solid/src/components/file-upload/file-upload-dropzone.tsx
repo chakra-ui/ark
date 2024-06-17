@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export interface FileUploadDropzoneProps extends HTMLArkProps<'div'> {}
+export interface FileUploadDropzoneBaseProps extends PolymorphicProps<'div'> {}
+export interface FileUploadDropzoneProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    FileUploadDropzoneBaseProps {}
 
 export const FileUploadDropzone = (props: FileUploadDropzoneProps) => {
   const fileUpload = useFileUploadContext()

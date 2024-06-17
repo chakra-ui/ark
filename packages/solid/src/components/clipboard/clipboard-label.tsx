@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardLabelProps extends HTMLArkProps<'label'> {}
+export interface ClipboardLabelBaseProps extends PolymorphicProps<'label'> {}
+export interface ClipboardLabelProps
+  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
+    ClipboardLabelBaseProps {}
 
 export const ClipboardLabel = (props: ClipboardLabelProps) => {
   const api = useClipboardContext()

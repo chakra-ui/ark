@@ -1,14 +1,16 @@
 import type { ItemProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
-import type { Assign } from '../../types'
+import { type JSX, createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemProvider } from './use-combobox-item-context'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
 
-export interface ComboboxItemProps extends Assign<HTMLArkProps<'div'>, ItemProps> {}
+export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface ComboboxItemProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    ComboboxItemBaseProps {}
 
 export const ComboboxItem = (props: ComboboxItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'persistFocus'])

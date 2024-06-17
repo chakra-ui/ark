@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLSpanElement"
@@ -14,7 +14,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLInputElement"
@@ -24,7 +24,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLSpanElement"
@@ -34,32 +34,17 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "checked": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the switch is checked."
       },
-      "defaultChecked": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "The checked state of the switch when it is first rendered.\nUse this when you do not need to control the state of the switch."
-      },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the switch is disabled."
-      },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the form that the switch belongs to"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  input: string\n  control: string\n  label: string\n  thumb: string\n}>",
@@ -111,7 +96,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLLabelElement"
@@ -121,7 +106,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
     "element": "HTMLSpanElement"

@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputScrubberProps extends HTMLArkProps<'div'> {}
+export interface NumberInputScrubberBaseProps extends PolymorphicProps<'div'> {}
+export interface NumberInputScrubberProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    NumberInputScrubberBaseProps {}
 
 export const NumberInputScrubber = (props: NumberInputScrubberProps) => {
   const api = useNumberInputContext()

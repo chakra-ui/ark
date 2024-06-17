@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
 
-export interface PaginationNextTriggerProps extends HTMLArkProps<'button'> {}
+export interface PaginationNextTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface PaginationNextTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    PaginationNextTriggerBaseProps {}
 
 export const PaginationNextTrigger = (props: PaginationNextTriggerProps) => {
   const api = usePaginationContext()

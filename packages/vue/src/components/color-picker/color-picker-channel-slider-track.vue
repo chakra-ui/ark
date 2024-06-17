@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerChannelSliderTrackBaseProps extends PolymorphicProps {}
 export interface ColorPickerChannelSliderTrackProps
-  extends PolymorphicProps,
+  extends ColorPickerChannelSliderTrackBaseProps,
     /**
      * @vue-ignore
      */

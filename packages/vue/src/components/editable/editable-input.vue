@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface EditableInputBaseProps extends PolymorphicProps {}
 export interface EditableInputProps
-  extends PolymorphicProps,
+  extends EditableInputBaseProps,
     /**
      * @vue-ignore
      */

@@ -6,8 +6,8 @@ import type { UseTooltipReturn } from './use-tooltip'
 interface RootProviderProps {
   value: UnwrapRef<UseTooltipReturn>
 }
-
-export interface TooltipRootProviderProps extends RootProviderProps, RenderStrategyProps {}
+export interface TooltipRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
+export interface TooltipRootProviderProps extends TooltipRootProviderBaseProps {}
 </script>
 
 <script setup lang="ts">

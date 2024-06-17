@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PinInputLabelBaseProps extends PolymorphicProps {}
 export interface PinInputLabelProps
-  extends PolymorphicProps,
+  extends PinInputLabelBaseProps,
     /**
      * @vue-ignore
      */

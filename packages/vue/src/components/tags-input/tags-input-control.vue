@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TagsInputControlBaseProps extends PolymorphicProps {}
 export interface TagsInputControlProps
-  extends PolymorphicProps,
+  extends TagsInputControlBaseProps,
     /**
      * @vue-ignore
      */

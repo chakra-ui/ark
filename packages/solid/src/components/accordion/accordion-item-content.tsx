@@ -1,12 +1,15 @@
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
+import { type JSX, createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import { Collapsible } from '../collapsible'
-import type { HTMLArkProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export interface AccordionItemContentProps extends HTMLArkProps<'div'> {}
+export interface AccordionItemContentBaseProps extends PolymorphicProps<'div'> {}
+export interface AccordionItemContentProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    AccordionItemContentBaseProps {}
 
 interface VisibilityProps {
   hidden?: boolean

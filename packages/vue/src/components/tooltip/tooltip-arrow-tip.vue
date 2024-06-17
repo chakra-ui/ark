@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TooltipArrowTipBaseProps extends PolymorphicProps {}
 export interface TooltipArrowTipProps
-  extends PolymorphicProps,
+  extends TooltipArrowTipBaseProps,
     /**
      * @vue-ignore
      */

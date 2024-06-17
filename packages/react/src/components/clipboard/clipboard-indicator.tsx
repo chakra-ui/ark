@@ -1,12 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { type ReactNode, forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, type ReactNode, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardIndicatorBaseProps {
+export interface ClipboardIndicatorBaseProps extends PolymorphicProps {
   copied?: ReactNode
 }
-export interface ClipboardIndicatorProps extends HTMLArkProps<'div'>, ClipboardIndicatorBaseProps {}
+export interface ClipboardIndicatorProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ClipboardIndicatorBaseProps {}
 
 export const ClipboardIndicator = forwardRef<HTMLDivElement, ClipboardIndicatorProps>(
   (props, ref) => {

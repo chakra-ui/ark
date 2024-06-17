@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SelectTriggerBaseProps extends PolymorphicProps {}
 export interface SelectTriggerProps
-  extends PolymorphicProps,
+  extends SelectTriggerBaseProps,
     /**
      * @vue-ignore
      */

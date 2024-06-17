@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TabIndicatorBaseProps extends PolymorphicProps {}
 export interface TabIndicatorProps
-  extends PolymorphicProps,
+  extends TabIndicatorBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemHiddenInputProps
-  extends PolymorphicProps,
+  extends SegmentGroupItemHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

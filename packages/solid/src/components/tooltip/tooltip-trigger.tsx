@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
 
-export interface TooltipTriggerProps extends HTMLArkProps<'button'> {}
+export interface TooltipTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface TooltipTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    TooltipTriggerBaseProps {}
 
 export const TooltipTrigger = (props: TooltipTriggerProps) => {
   const api = useTooltipContext()

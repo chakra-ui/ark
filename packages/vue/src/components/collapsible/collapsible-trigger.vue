@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CollapsibleTriggerBaseProps extends PolymorphicProps {}
 export interface CollapsibleTriggerProps
-  extends PolymorphicProps,
+  extends CollapsibleTriggerBaseProps,
     /**
      * @vue-ignore
      */

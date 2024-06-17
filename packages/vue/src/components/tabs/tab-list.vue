@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TabListBaseProps extends PolymorphicProps {}
 export interface TabListProps
-  extends PolymorphicProps,
+  extends TabListBaseProps,
     /**
      * @vue-ignore
      */

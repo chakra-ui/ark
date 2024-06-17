@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
-export interface ToastActionTriggerProps extends HTMLArkProps<'button'> {}
+export interface ToastActionTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface ToastActionTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    ToastActionTriggerBaseProps {}
 
 export const ToastActionTrigger = (props: ToastActionTriggerProps) => {
   const toast = useToastContext()

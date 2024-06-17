@@ -5,10 +5,12 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
 
-export interface SelectRootProps<T extends CollectionItem>
+export interface SelectRootBaseProps<T extends CollectionItem>
   extends RootProps<T>,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface SelectRootProps<T extends CollectionItem>
+  extends SelectRootBaseProps<T>,
     /**
      * @vue-ignore
      */

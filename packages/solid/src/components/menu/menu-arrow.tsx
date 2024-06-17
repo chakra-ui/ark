@@ -1,8 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 
-export interface MenuArrowProps extends HTMLArkProps<'div'> {}
+export interface MenuArrowBaseProps extends PolymorphicProps<'div'> {}
+export interface MenuArrowProps extends JSX.HTMLAttributes<HTMLDivElement>, MenuArrowBaseProps {}
 
 export const MenuArrow = (props: MenuArrowProps) => {
   const context = useMenuContext()

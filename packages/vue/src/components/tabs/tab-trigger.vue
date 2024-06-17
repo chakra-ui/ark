@@ -3,9 +3,9 @@ import type { TriggerProps } from '@zag-js/tabs'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface TabTriggerProps
-  extends PolymorphicProps,
-    TriggerProps,
+  extends TabTriggerBaseProps,
     /**
      * @vue-ignore
      */

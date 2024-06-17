@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export type SelectListBaseProps = {}
-export interface SelectListProps extends HTMLArkProps<'div'>, SelectListBaseProps {}
+export interface SelectListBaseProps extends PolymorphicProps {}
+export interface SelectListProps extends HTMLAttributes<HTMLDivElement>, SelectListBaseProps {}
 
 export const SelectList = forwardRef<HTMLDivElement, SelectListProps>((props, ref) => {
   const select = useSelectContext()

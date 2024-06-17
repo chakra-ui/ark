@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export type NumberInputDecrementTriggerBaseProps = {}
+export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps {}
 export interface NumberInputDecrementTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     NumberInputDecrementTriggerBaseProps {}
 
 export const NumberInputDecrementTrigger = forwardRef<

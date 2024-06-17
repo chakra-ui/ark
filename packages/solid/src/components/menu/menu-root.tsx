@@ -12,7 +12,8 @@ import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
-export interface MenuRootProps extends UseMenuProps, UsePresenceProps {
+export interface MenuRootBaseProps extends UseMenuProps, UsePresenceProps {}
+export interface MenuRootProps extends MenuRootBaseProps {
   children?: JSX.Element
 }
 

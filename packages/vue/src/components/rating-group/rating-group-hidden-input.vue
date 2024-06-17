@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps {}
 export interface RatingGroupHiddenInputProps
-  extends PolymorphicProps,
+  extends RatingGroupHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

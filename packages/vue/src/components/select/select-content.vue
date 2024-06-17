@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SelectContentBaseProps extends PolymorphicProps {}
 export interface SelectContentProps
-  extends PolymorphicProps,
+  extends SelectContentBaseProps,
     /**
      * @vue-ignore
      */

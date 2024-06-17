@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderLabelProps extends HTMLArkProps<'label'> {}
+export interface SliderLabelBaseProps extends PolymorphicProps<'label'> {}
+export interface SliderLabelProps
+  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
+    SliderLabelBaseProps {}
 
 export const SliderLabel = (props: SliderLabelProps) => {
   const api = useSliderContext()

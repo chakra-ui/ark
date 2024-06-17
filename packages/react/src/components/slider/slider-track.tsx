@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export type SliderTrackBaseProps = {}
-export interface SliderTrackProps extends HTMLArkProps<'div'>, SliderTrackBaseProps {}
+export interface SliderTrackBaseProps extends PolymorphicProps {}
+export interface SliderTrackProps extends HTMLAttributes<HTMLDivElement>, SliderTrackBaseProps {}
 
 export const SliderTrack = forwardRef<HTMLDivElement, SliderTrackProps>((props, ref) => {
   const slider = useSliderContext()

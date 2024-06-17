@@ -8,10 +8,12 @@ interface RootProviderProps {
   value: UnwrapRef<UseColorPickerReturn>
 }
 
-export interface ColorPickerRootProviderProps
+export interface ColorPickerRootProviderBaseProps
   extends RootProviderProps,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface ColorPickerRootProviderProps
+  extends ColorPickerRootProviderBaseProps,
     /**
      * @vue-ignore
      */
