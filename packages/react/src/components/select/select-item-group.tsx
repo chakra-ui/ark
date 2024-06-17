@@ -1,15 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import type { ItemGroupProps } from '@zag-js/select'
-import { type HTMLAttributes, forwardRef, useId } from 'react'
+import { forwardRef, useId } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemGroupPropsProvider } from './use-select-item-group-props'
 
 export interface SelectItemGroupBaseProps extends PolymorphicProps {}
-export interface SelectItemGroupProps
-  extends HTMLAttributes<HTMLDivElement>,
-    SelectItemGroupBaseProps {}
+export interface SelectItemGroupProps extends HTMLProps<'div'>, SelectItemGroupBaseProps {}
 
 export const SelectItemGroup = forwardRef<HTMLDivElement, SelectItemGroupProps>((props, ref) => {
   const id = useId()

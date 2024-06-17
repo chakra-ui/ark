@@ -13,8 +13,8 @@ description: All notable changes will be documented in this file.
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
 
 ```jsx
-export interface AccordionItemBaseProps extends ItemProps {}
-export interface AccordionItemProps extends Assign<HTMLArkProps<'div'>, AccordionItemBaseProps> {}
+export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 ```
 
 ### Fixed

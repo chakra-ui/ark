@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
   RenderStrategyProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseAccordionReturn } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
 
@@ -19,7 +18,7 @@ export interface AccordionRootProviderBaseProps
     RenderStrategyProps,
     PolymorphicProps<'div'> {}
 export interface AccordionRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     AccordionRootProviderBaseProps {}
 
 export const AccordionRootProvider = (props: AccordionRootProviderProps) => {

@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseQrCodeReturn } from './use-qr-code'
 import { QrCodeProvider } from './use-qr-code-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface QrCodeRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface QrCodeRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     QrCodeRootProviderBaseProps {}
 

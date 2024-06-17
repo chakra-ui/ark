@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type LabelHTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseCheckboxReturn } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
@@ -11,7 +11,7 @@ interface RootProviderProps {
 
 export interface CheckboxRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CheckboxRootProviderProps
-  extends LabelHTMLAttributes<HTMLLabelElement>,
+  extends HTMLProps<'label'>,
     CheckboxRootProviderBaseProps {}
 
 export const CheckboxRootProvider = forwardRef<HTMLLabelElement, CheckboxRootProviderProps>(

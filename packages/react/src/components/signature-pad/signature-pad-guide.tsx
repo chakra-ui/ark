@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadGuideBaseProps extends PolymorphicProps {}
-export interface SignaturePadGuideProps
-  extends HTMLAttributes<HTMLDivElement>,
-    SignaturePadGuideBaseProps {}
+export interface SignaturePadGuideProps extends HTMLProps<'div'>, SignaturePadGuideBaseProps {}
 
 export const SignaturePadGuide = forwardRef<HTMLDivElement, SignaturePadGuideProps>(
   (props, ref) => {

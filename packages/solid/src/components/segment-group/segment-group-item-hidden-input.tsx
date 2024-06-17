@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'> {}
 export interface SegmentGroupItemHiddenInputProps
-  extends JSX.InputHTMLAttributes<HTMLInputElement>,
+  extends HTMLProps<'input'>,
     SegmentGroupItemHiddenInputBaseProps {}
 
 export const SegmentGroupItemHiddenInput = (props: SegmentGroupItemHiddenInputProps) => {

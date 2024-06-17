@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
 export interface CheckboxLabelBaseProps extends PolymorphicProps<'span'> {}
-export interface CheckboxLabelProps
-  extends JSX.HTMLAttributes<HTMLSpanElement>,
-    CheckboxLabelBaseProps {}
+export interface CheckboxLabelProps extends HTMLProps<'span'>, CheckboxLabelBaseProps {}
 
 export const CheckboxLabel = (props: CheckboxLabelProps) => {
   const checkbox = useCheckboxContext()

@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
 export interface SwitchLabelBaseProps extends PolymorphicProps {}
-export interface SwitchLabelProps extends HTMLAttributes<HTMLSpanElement>, SwitchLabelBaseProps {}
+export interface SwitchLabelProps extends HTMLProps<'span'>, SwitchLabelBaseProps {}
 
 export const SwitchLabel = forwardRef<HTMLSpanElement, SwitchLabelProps>((props, ref) => {
   const switchContext = useSwitchContext()

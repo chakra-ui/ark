@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { Show } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { splitPresenceProps } from './split-presence-props'
 import { type UsePresenceProps, usePresence } from './use-presence'
 
 export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps<'div'> {}
-export interface PresenceProps extends JSX.HTMLAttributes<HTMLDivElement>, PresenceBaseProps {}
+export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}
 
 export const Presence = (props: PresenceProps) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseClipboardReturn } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
 
@@ -11,7 +11,7 @@ interface RootProviderProps {
 
 export interface ClipboardRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ClipboardRootProviderProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ClipboardRootProviderBaseProps {}
 
 export const ClipboardRootProvider = forwardRef<HTMLDivElement, ClipboardRootProviderProps>(

@@ -1,13 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './use-popover-context'
 
 export interface PopoverTriggerBaseProps extends PolymorphicProps {}
-export interface PopoverTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    PopoverTriggerBaseProps {}
+export interface PopoverTriggerProps extends HTMLProps<'button'>, PopoverTriggerBaseProps {}
 
 export const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>((props, ref) => {
   const popover = usePopoverContext()

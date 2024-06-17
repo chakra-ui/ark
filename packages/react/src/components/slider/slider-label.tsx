@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type LabelHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
 export interface SliderLabelBaseProps extends PolymorphicProps {}
-export interface SliderLabelProps
-  extends LabelHTMLAttributes<HTMLLabelElement>,
-    SliderLabelBaseProps {}
+export interface SliderLabelProps extends HTMLProps<'label'>, SliderLabelBaseProps {}
 
 export const SliderLabel = forwardRef<HTMLLabelElement, SliderLabelProps>((props, ref) => {
   const slider = useSliderContext()

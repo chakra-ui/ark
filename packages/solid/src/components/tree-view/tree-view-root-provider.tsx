@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseTreeViewReturn } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface TreeViewRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface TreeViewRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     TreeViewRootProviderBaseProps {}
 

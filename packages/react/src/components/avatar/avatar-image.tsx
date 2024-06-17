@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type ImgHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAvatarContext } from './use-avatar-context'
 
 export interface AvatarImageBaseProps extends PolymorphicProps {}
-export interface AvatarImageProps
-  extends ImgHTMLAttributes<HTMLImageElement>,
-    AvatarImageBaseProps {}
+export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}
 
 export const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const avatar = useAvatarContext()

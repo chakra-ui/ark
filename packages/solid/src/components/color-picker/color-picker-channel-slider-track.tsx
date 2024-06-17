@@ -1,13 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
 export interface ColorPickerChannelSliderTrackBaseProps extends PolymorphicProps<'div'> {}
 export interface ColorPickerChannelSliderTrackProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ColorPickerChannelSliderTrackBaseProps {}
 
 export const ColorPickerChannelSliderTrack = (props: ColorPickerChannelSliderTrackProps) => {

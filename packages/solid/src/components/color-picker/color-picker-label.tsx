@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerLabelBaseProps extends PolymorphicProps<'label'> {}
-export interface ColorPickerLabelProps
-  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
-    ColorPickerLabelBaseProps {}
+export interface ColorPickerLabelProps extends HTMLProps<'label'>, ColorPickerLabelBaseProps {}
 
 export const ColorPickerLabel = (props: ColorPickerLabelProps) => {
   const api = useColorPickerContext()

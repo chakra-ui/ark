@@ -1,14 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSwitchProps, useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 
 export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<'label'> {}
-export interface SwitchRootProps
-  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
-    SwitchRootBaseProps {}
+export interface SwitchRootProps extends HTMLProps<'label'>, SwitchRootBaseProps {}
 
 export const SwitchRoot = (props: SwitchRootProps) => {
   const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [

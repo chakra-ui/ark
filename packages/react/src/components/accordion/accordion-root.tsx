@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
@@ -7,7 +7,7 @@ import {
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseAccordionProps, useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
 
@@ -15,8 +15,7 @@ export interface AccordionRootBaseProps
   extends UseAccordionProps,
     RenderStrategyProps,
     PolymorphicProps {}
-export interface AccordionRootProps
-  extends Assign<HTMLAttributes<HTMLDivElement>, AccordionRootBaseProps> {}
+export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 
 export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)

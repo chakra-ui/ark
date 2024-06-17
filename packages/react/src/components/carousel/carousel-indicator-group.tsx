@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
 export interface CarouselIndicatorGroupBaseProps extends PolymorphicProps {}
 export interface CarouselIndicatorGroupProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     CarouselIndicatorGroupBaseProps {}
 
 export const CarouselIndicatorGroup = forwardRef<HTMLDivElement, CarouselIndicatorGroupProps>(

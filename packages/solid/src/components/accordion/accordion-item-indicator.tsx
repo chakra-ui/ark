@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
 export interface AccordionItemIndicatorProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     AccordionItemIndicatorBaseProps {}
 
 export const AccordionItemIndicator = (props: AccordionItemIndicatorProps) => {

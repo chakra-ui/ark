@@ -1,13 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useHoverCardContext } from './use-hover-card-context'
 
 export interface HoverCardContentBaseProps extends PolymorphicProps {}
-export interface HoverCardContentProps
-  extends HTMLAttributes<HTMLDivElement>,
-    HoverCardContentBaseProps {}
+export interface HoverCardContentProps extends HTMLProps<'div'>, HoverCardContentBaseProps {}
 
 export const HoverCardContent = forwardRef<HTMLDivElement, HoverCardContentProps>((props, ref) => {
   const hoverCard = useHoverCardContext()

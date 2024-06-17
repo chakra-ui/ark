@@ -1,17 +1,15 @@
 import { type ItemProps, splitItemProps } from '@zag-js/accordion'
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { Collapsible } from '../../components'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import type { PolymorphicProps } from '../factory'
+import type { HTMLProps, PolymorphicProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { AccordionItemProvider } from './use-accordion-item-context'
 import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
-export interface AccordionItemProps
-  extends HTMLAttributes<HTMLDivElement>,
-    AccordionItemBaseProps {}
+export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
   const [itemProps, localProps] = splitItemProps(props)

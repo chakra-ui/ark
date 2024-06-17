@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerTriggerBaseProps extends PolymorphicProps {}
-export interface DatePickerTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    DatePickerTriggerBaseProps {}
+export interface DatePickerTriggerProps extends HTMLProps<'button'>, DatePickerTriggerBaseProps {}
 
 export const DatePickerTrigger = forwardRef<HTMLButtonElement, DatePickerTriggerProps>(
   (props, ref) => {

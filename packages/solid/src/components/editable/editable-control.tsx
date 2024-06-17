@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
 export interface EditableControlBaseProps extends PolymorphicProps<'div'> {}
-export interface EditableControlProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
-    EditableControlBaseProps {}
+export interface EditableControlProps extends HTMLProps<'div'>, EditableControlBaseProps {}
 
 export const EditableControl = (props: EditableControlProps) => {
   const api = useEditableContext()

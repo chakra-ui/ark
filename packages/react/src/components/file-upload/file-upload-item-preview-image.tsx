@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { type ImgHTMLAttributes, forwardRef, useEffect, useState } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef, useEffect, useState } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemPreviewImageBaseProps extends PolymorphicProps {}
 export interface FileUploadItemPreviewImageProps
-  extends ImgHTMLAttributes<HTMLImageElement>,
+  extends HTMLProps<'img'>,
     FileUploadItemPreviewImageBaseProps {}
 
 export const FileUploadItemPreviewImage = forwardRef<

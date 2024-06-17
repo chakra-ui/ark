@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type LabelHTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseSwitchReturn } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
 
@@ -10,9 +10,7 @@ interface RootProviderProps {
 }
 
 export interface SwitchRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface SwitchRootProviderProps
-  extends LabelHTMLAttributes<HTMLLabelElement>,
-    SwitchRootProviderBaseProps {}
+export interface SwitchRootProviderProps extends HTMLProps<'label'>, SwitchRootProviderBaseProps {}
 
 export const SwitchRootProvider = forwardRef<HTMLLabelElement, SwitchRootProviderProps>(
   (props, ref) => {

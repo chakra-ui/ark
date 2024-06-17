@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 
 export interface RadioGroupIndicatorBaseProps extends PolymorphicProps<'div'> {}
-export interface RadioGroupIndicatorProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
-    RadioGroupIndicatorBaseProps {}
+export interface RadioGroupIndicatorProps extends HTMLProps<'div'>, RadioGroupIndicatorBaseProps {}
 
 export const RadioGroupIndicator = (props: RadioGroupIndicatorProps) => {
   const radioGroup = useRadioGroupContext()

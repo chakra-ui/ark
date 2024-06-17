@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectClearTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface SelectClearTriggerProps
-  extends JSX.HTMLAttributes<HTMLButtonElement>,
-    SelectClearTriggerBaseProps {}
+export interface SelectClearTriggerProps extends HTMLProps<'button'>, SelectClearTriggerBaseProps {}
 
 export const SelectClearTrigger = (props: SelectClearTriggerProps) => {
   const select = useSelectContext()

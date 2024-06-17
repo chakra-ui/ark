@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/tabs'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useTabsContext } from './use-tabs-context'
 
 export interface TabContentBaseProps extends ContentProps, PolymorphicProps {}
-export interface TabContentProps extends HTMLAttributes<HTMLDivElement>, TabContentBaseProps {}
+export interface TabContentProps extends HTMLProps<'div'>, TabContentBaseProps {}
 
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])

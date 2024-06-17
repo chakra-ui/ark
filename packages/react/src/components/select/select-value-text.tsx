@@ -1,6 +1,6 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectValueTextBaseProps extends PolymorphicProps {
@@ -9,9 +9,7 @@ export interface SelectValueTextBaseProps extends PolymorphicProps {
    */
   placeholder?: string
 }
-export interface SelectValueTextProps
-  extends HTMLAttributes<HTMLSpanElement>,
-    SelectValueTextBaseProps {}
+export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueTextBaseProps {}
 
 export const SelectValueText = forwardRef<HTMLSpanElement, SelectValueTextProps>((props, ref) => {
   const { children, placeholder, ...rest } = props

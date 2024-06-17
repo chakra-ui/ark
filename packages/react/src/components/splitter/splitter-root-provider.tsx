@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseSplitterReturn } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 
@@ -11,7 +11,7 @@ interface RootProviderProps {
 
 export interface SplitterRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SplitterRootProviderProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     SplitterRootProviderBaseProps {}
 
 export const SplitterRootProvider = forwardRef<HTMLDivElement, SplitterRootProviderProps>(

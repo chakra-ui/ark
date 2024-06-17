@@ -1,13 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useMenuContext } from './use-menu-context'
 
 export interface MenuTriggerBaseProps extends PolymorphicProps {}
-export interface MenuTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    MenuTriggerBaseProps {}
+export interface MenuTriggerProps extends HTMLProps<'button'>, MenuTriggerBaseProps {}
 
 export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>((props, ref) => {
   const menu = useMenuContext()

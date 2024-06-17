@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseTabsReturn } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
@@ -18,9 +18,7 @@ export interface TabsRootProviderBaseProps
   extends RootProviderProps,
     RenderStrategyProps,
     PolymorphicProps {}
-export interface TabsRootProviderProps
-  extends HTMLAttributes<HTMLDivElement>,
-    TabsRootProviderBaseProps {}
+export interface TabsRootProviderProps extends HTMLProps<'div'>, TabsRootProviderBaseProps {}
 
 export const TabsRootProvider = forwardRef<HTMLDivElement, TabsRootProviderProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)

@@ -1,14 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseToggleGroupProps, useToggleGroup } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
 
 export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps {}
-export interface ToggleGroupRootProps
-  extends Assign<HTMLAttributes<HTMLDivElement>, ToggleGroupRootBaseProps> {}
+export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGroupRootBaseProps> {}
 
 export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>((props, ref) => {
   const [useToggleGroupProps, localProps] = createSplitProps<UseToggleGroupProps>()(props, [

@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseRatingGroupReturn } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface RatingGroupRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface RatingGroupRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     RatingGroupRootProviderBaseProps {}
 

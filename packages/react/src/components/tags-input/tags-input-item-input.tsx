@@ -1,13 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type InputHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
 export interface TagsInputItemInputBaseProps extends PolymorphicProps {}
-export interface TagsInputItemInputProps
-  extends InputHTMLAttributes<HTMLInputElement>,
-    TagsInputItemInputBaseProps {}
+export interface TagsInputItemInputProps extends HTMLProps<'input'>, TagsInputItemInputBaseProps {}
 
 export const TagsInputItemInput = forwardRef<HTMLInputElement, TagsInputItemInputProps>(
   (props, ref) => {

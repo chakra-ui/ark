@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseCollapsibleReturn } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
 
@@ -11,7 +11,7 @@ interface RootProviderProps {
 
 export interface CollapsibleRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CollapsibleRootProviderProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     CollapsibleRootProviderBaseProps {}
 
 export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRootProviderProps>(

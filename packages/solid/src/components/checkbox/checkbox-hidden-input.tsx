@@ -1,11 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
 export interface CheckboxHiddenInputBaseProps extends PolymorphicProps<'input'> {}
 export interface CheckboxHiddenInputProps
-  extends JSX.InputHTMLAttributes<HTMLInputElement>,
+  extends HTMLProps<'input'>,
     CheckboxHiddenInputBaseProps {}
 
 export const CheckboxHiddenInput = (props: CheckboxHiddenInputProps) => {

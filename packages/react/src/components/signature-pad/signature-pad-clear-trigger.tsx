@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadClearTriggerBaseProps extends PolymorphicProps {}
 export interface SignaturePadClearTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends HTMLProps<'button'>,
     SignaturePadClearTriggerBaseProps {}
 
 export const SignaturePadClearTrigger = forwardRef<

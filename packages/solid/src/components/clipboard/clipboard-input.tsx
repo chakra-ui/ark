@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardInputBaseProps extends PolymorphicProps<'input'> {}
-export interface ClipboardInputProps
-  extends JSX.InputHTMLAttributes<HTMLInputElement>,
-    ClipboardInputBaseProps {}
+export interface ClipboardInputProps extends HTMLProps<'input'>, ClipboardInputBaseProps {}
 
 export const ClipboardInput = (props: ClipboardInputProps) => {
   const api = useClipboardContext()

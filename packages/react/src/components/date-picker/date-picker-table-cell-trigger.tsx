@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps {}
 export interface DatePickerTableCellTriggerProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     DatePickerTableCellTriggerBaseProps {}
 
 export const DatePickerTableCellTrigger = forwardRef<

@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
 
 export interface QrCodeFrameBaseProps extends PolymorphicProps<'svg'> {}
-export interface QrCodeFrameProps
-  extends JSX.SvgSVGAttributes<SVGSVGElement>,
-    QrCodeFrameBaseProps {}
+export interface QrCodeFrameProps extends HTMLProps<'svg'>, QrCodeFrameBaseProps {}
 
 export const QrCodeFrame = (props: QrCodeFrameProps) => {
   const qrCode = useQrCodeContext()

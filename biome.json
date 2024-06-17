@@ -22,6 +22,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error"
+      },
       "suspicious": {
         "noArrayIndexKey": "off"
       },

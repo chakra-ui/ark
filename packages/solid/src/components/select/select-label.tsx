@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectLabelBaseProps extends PolymorphicProps<'label'> {}
-export interface SelectLabelProps
-  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
-    SelectLabelBaseProps {}
+export interface SelectLabelProps extends HTMLProps<'label'>, SelectLabelBaseProps {}
 
 export const SelectLabel = (props: SelectLabelProps) => {
   const select = useSelectContext()

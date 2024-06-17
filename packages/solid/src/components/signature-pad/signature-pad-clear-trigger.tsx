@@ -1,11 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadClearTriggerBaseProps extends PolymorphicProps<'button'> {}
 export interface SignaturePadClearTriggerProps
-  extends JSX.HTMLAttributes<HTMLButtonElement>,
+  extends HTMLProps<'button'>,
     SignaturePadClearTriggerBaseProps {}
 
 export const SignaturePadClearTrigger = (props: SignaturePadClearTriggerProps) => {

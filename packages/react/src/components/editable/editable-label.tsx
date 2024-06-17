@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type LabelHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
 export interface EditableLabelBaseProps extends PolymorphicProps {}
-export interface EditableLabelProps
-  extends LabelHTMLAttributes<HTMLLabelElement>,
-    EditableLabelBaseProps {}
+export interface EditableLabelProps extends HTMLProps<'label'>, EditableLabelBaseProps {}
 
 export const EditableLabel = forwardRef<HTMLLabelElement, EditableLabelProps>((props, ref) => {
   const editable = useEditableContext()

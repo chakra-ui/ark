@@ -1,17 +1,15 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, createMemo } from 'solid-js'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps<'label'> {}
-export interface SegmentGroupItemProps
-  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
-    SegmentGroupItemBaseProps {}
+export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupItemBaseProps {}
 
 export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [

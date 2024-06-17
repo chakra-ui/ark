@@ -1,10 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
 
 export interface TabListBaseProps extends PolymorphicProps<'div'> {}
-export interface TabListProps extends JSX.HTMLAttributes<HTMLDivElement>, TabListBaseProps {}
+export interface TabListProps extends HTMLProps<'div'>, TabListBaseProps {}
 
 export const TabList = (props: TabListProps) => {
   const api = useTabsContext()

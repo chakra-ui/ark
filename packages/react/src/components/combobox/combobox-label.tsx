@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
 export interface ComboboxLabelBaseProps extends PolymorphicProps {}
-export interface ComboboxLabelProps
-  extends HTMLAttributes<HTMLLabelElement>,
-    ComboboxLabelBaseProps {}
+export interface ComboboxLabelProps extends HTMLProps<'label'>, ComboboxLabelBaseProps {}
 
 export const ComboboxLabel = forwardRef<HTMLLabelElement, ComboboxLabelProps>((props, ref) => {
   const combobox = useComboboxContext()

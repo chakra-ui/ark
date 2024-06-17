@@ -1,14 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseCheckboxProps, useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
 export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps<'label'> {}
-export interface CheckboxRootProps
-  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
-    CheckboxRootBaseProps {}
+export interface CheckboxRootProps extends HTMLProps<'label'>, CheckboxRootBaseProps {}
 
 export const CheckboxRoot = (props: CheckboxRootProps) => {
   const [useCheckboxProps, labelprops] = createSplitProps<UseCheckboxProps>()(props, [

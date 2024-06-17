@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 
 export interface MenuSeparatorBaseProps extends PolymorphicProps {}
-export interface MenuSeparatorProps extends HTMLAttributes<HTMLHRElement>, MenuSeparatorBaseProps {}
+export interface MenuSeparatorProps extends HTMLProps<'hr'>, MenuSeparatorBaseProps {}
 
 export const MenuSeparator = forwardRef<HTMLHRElement, MenuSeparatorProps>((props, ref) => {
   const menu = useMenuContext()

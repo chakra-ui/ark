@@ -1,11 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps<'input'> {}
 export interface ColorPickerHiddenInputProps
-  extends JSX.InputHTMLAttributes<HTMLInputElement>,
+  extends HTMLProps<'input'>,
     ColorPickerHiddenInputBaseProps {}
 
 export const ColorPickerHiddenInput = (props: ColorPickerHiddenInputProps) => {

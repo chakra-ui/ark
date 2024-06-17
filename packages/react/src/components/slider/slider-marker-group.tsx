@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
 export interface SliderMarkerGroupBaseProps extends PolymorphicProps {}
-export interface SliderMarkerGroupProps
-  extends HTMLAttributes<HTMLDivElement>,
-    SliderMarkerGroupBaseProps {}
+export interface SliderMarkerGroupProps extends HTMLProps<'div'>, SliderMarkerGroupBaseProps {}
 
 export const SliderMarkerGroup = forwardRef<HTMLDivElement, SliderMarkerGroupProps>(
   (props, ref) => {

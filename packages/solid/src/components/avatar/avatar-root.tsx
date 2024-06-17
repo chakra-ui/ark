@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseAvatarProps, useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
 
 export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
-export interface AvatarRootProps extends JSX.HTMLAttributes<HTMLDivElement>, AvatarRootBaseProps {}
+export interface AvatarRootProps extends HTMLProps<'div'>, AvatarRootBaseProps {}
 
 export const AvatarRoot = (props: AvatarRootProps) => {
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [

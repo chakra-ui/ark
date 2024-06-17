@@ -20,8 +20,8 @@ export type PolymorphicProps<T extends ElementType> = {
    */
   asChild?: (props: ParentProps<T>) => JSX.Element
 }
-
-type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
+export type HTMLProps<E extends ElementType> = JSX.IntrinsicElements[E]
+export type HTMLArkProps<E extends ElementType> = Assign<ComponentProps<E>, PolymorphicProps<E>>
 
 type ArkComponent<E extends ElementType> = (props: HTMLArkProps<E>) => JSX.Element
 
@@ -62,4 +62,3 @@ function jsxFactory() {
 }
 
 export const ark = jsxFactory()
-export type { HTMLArkProps }

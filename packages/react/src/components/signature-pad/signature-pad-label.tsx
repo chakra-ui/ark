@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type LabelHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadLabelBaseProps extends PolymorphicProps {}
-export interface SignaturePadLabelProps
-  extends LabelHTMLAttributes<HTMLLabelElement>,
-    SignaturePadLabelBaseProps {}
+export interface SignaturePadLabelProps extends HTMLProps<'label'>, SignaturePadLabelBaseProps {}
 
 export const SignaturePadLabel = forwardRef<HTMLLabelElement, SignaturePadLabelProps>(
   (props, ref) => {

@@ -1,14 +1,11 @@
 import { checkboxAnatomy } from '@ark-ui/anatomy'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 
 export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps, PolymorphicProps<'div'> {}
-export interface CheckboxGroupProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
-    CheckboxGroupBaseProps {}
+export interface CheckboxGroupProps extends HTMLProps<'div'>, CheckboxGroupBaseProps {}
 
 export const CheckboxGroup = (props: CheckboxGroupProps) => {
   const [checkboxGroupProps, localProps] = createSplitProps<UseCheckboxGroupProps>()(props, [

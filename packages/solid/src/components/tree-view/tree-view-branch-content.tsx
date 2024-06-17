@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewBranchContext } from './use-tree-view-branch-context'
 import { useTreeViewContext } from './use-tree-view-context'
 
 export interface TreeViewBranchContentBaseProps extends PolymorphicProps<'ul'> {}
 export interface TreeViewBranchContentProps
-  extends JSX.HTMLAttributes<HTMLUListElement>,
+  extends HTMLProps<'ul'>,
     TreeViewBranchContentBaseProps {}
 
 export const TreeViewBranchContent = (props: TreeViewBranchContentProps) => {

@@ -1,11 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 
 export interface CarouselIndicatorGroupBaseProps extends PolymorphicProps<'div'> {}
 export interface CarouselIndicatorGroupProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     CarouselIndicatorGroupBaseProps {}
 
 export const CarouselIndicatorGroup = (props: CarouselIndicatorGroupProps) => {

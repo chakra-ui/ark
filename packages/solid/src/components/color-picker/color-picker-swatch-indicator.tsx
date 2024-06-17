@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
 
 export interface ColorPickerSwatchIndicatorBaseProps extends PolymorphicProps<'div'> {}
 export interface ColorPickerSwatchIndicatorProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ColorPickerSwatchIndicatorBaseProps {}
 
 export const ColorPickerSwatchIndicator = (props: ColorPickerSwatchIndicatorProps) => {

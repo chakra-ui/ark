@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, type JSX, forwardRef } from 'react'
+import { type JSX, forwardRef } from 'react'
 import type { Assign, CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -17,7 +17,7 @@ export interface SelectRootBaseProps<T extends CollectionItem>
     UsePresenceProps,
     PolymorphicProps {}
 export interface SelectRootProps<T extends CollectionItem>
-  extends Assign<HTMLAttributes<HTMLDivElement>, SelectRootBaseProps<T>> {}
+  extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
 
 const SelectImpl = <T extends CollectionItem>(
   props: SelectRootProps<T>,

@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseSignaturePadReturn } from './use-signature-pad'
 import { SignaturePadProvider } from './use-signature-pad-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface SignaturePadRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     SignaturePadRootProviderBaseProps {}
 

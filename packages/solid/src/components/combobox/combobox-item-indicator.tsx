@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
 export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
 export interface ComboboxItemIndicatorProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ComboboxItemIndicatorBaseProps {}
 
 export const ComboboxItemIndicator = (props: ComboboxItemIndicatorProps) => {

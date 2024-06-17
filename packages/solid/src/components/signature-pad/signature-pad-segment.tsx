@@ -1,13 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { For, Show } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
 export interface SignaturePadSegmentBaseProps extends PolymorphicProps<'svg'> {}
-export interface SignaturePadSegmentProps
-  extends JSX.SvgSVGAttributes<SVGSVGElement>,
-    SignaturePadSegmentBaseProps {}
+export interface SignaturePadSegmentProps extends HTMLProps<'svg'>, SignaturePadSegmentBaseProps {}
 
 export const SignaturePadSegment = (props: SignaturePadSegmentProps) => {
   const signaturePad = useSignaturePadContext()

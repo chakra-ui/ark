@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UsePinInputReturn } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
 
@@ -11,7 +11,7 @@ interface RootProviderProps {
 
 export interface PinInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PinInputRootProviderProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     PinInputRootProviderBaseProps {}
 
 export const PinInputRootProvider = forwardRef<HTMLDivElement, PinInputRootProviderProps>(

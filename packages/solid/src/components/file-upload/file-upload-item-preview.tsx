@@ -1,6 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
@@ -12,7 +11,7 @@ export interface FileUploadItemPreviewBaseProps extends PolymorphicProps<'div'> 
   type?: string
 }
 export interface FileUploadItemPreviewProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     FileUploadItemPreviewBaseProps {}
 
 export const FileUploadItemPreview = (props: FileUploadItemPreviewProps) => {

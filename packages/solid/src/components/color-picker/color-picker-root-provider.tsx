@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -20,7 +19,7 @@ export interface ColorPickerRootProviderBaseProps
     UsePresenceProps,
     PolymorphicProps<'div'> {}
 export interface ColorPickerRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ColorPickerRootProviderBaseProps {}
 
 export const ColorPickerRootProvider = (props: ColorPickerRootProviderProps) => {

@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UsePinInputReturn } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface PinInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface PinInputRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     PinInputRootProviderBaseProps {}
 

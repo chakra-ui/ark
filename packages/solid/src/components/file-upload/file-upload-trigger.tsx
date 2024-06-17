@@ -1,12 +1,9 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
 export interface FileUploadTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface FileUploadTriggerProps
-  extends JSX.HTMLAttributes<HTMLButtonElement>,
-    FileUploadTriggerBaseProps {}
+export interface FileUploadTriggerProps extends HTMLProps<'button'>, FileUploadTriggerBaseProps {}
 
 export const FileUploadTrigger = (props: FileUploadTriggerProps) => {
   const fileUpload = useFileUploadContext()

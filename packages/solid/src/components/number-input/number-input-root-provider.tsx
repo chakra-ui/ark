@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseNumberInputReturn } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface NumberInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface NumberInputRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     NumberInputRootProviderBaseProps {}
 

@@ -1,12 +1,12 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupIndicatorBaseProps extends PolymorphicProps {}
 export interface SegmentGroupIndicatorProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     SegmentGroupIndicatorBaseProps {}
 
 export const SegmentGroupIndicator = forwardRef<HTMLDivElement, SegmentGroupIndicatorProps>(

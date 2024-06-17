@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableContext } from './use-date-picker-table-props-context'
 
 export interface DatePickerTableHeaderBaseProps extends PolymorphicProps<'th'> {}
 export interface DatePickerTableHeaderProps
-  extends JSX.ThHTMLAttributes<HTMLTableCellElement>,
+  extends HTMLProps<'th'>,
     DatePickerTableHeaderBaseProps {}
 
 export const DatePickerTableHeader = (props: DatePickerTableHeaderProps) => {

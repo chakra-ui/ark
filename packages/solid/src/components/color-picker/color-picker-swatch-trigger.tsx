@@ -1,16 +1,15 @@
 import type { SwatchTriggerProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerSwatchTriggerBaseProps
   extends SwatchTriggerProps,
     PolymorphicProps<'button'> {}
 export interface ColorPickerSwatchTriggerProps
-  extends JSX.HTMLAttributes<HTMLButtonElement>,
-    ColorPickerSwatchTriggerBaseProps {}
+  extends Assign<HTMLProps<'button'>, ColorPickerSwatchTriggerBaseProps> {}
 
 export const ColorPickerSwatchTrigger = (props: ColorPickerSwatchTriggerProps) => {
   const [triggerProps, localProps] = createSplitProps<SwatchTriggerProps>()(props, [

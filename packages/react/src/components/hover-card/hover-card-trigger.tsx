@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useHoverCardContext } from './use-hover-card-context'
 
 export interface HoverCardTriggerBaseProps extends PolymorphicProps {}
-export interface HoverCardTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    HoverCardTriggerBaseProps {}
+export interface HoverCardTriggerProps extends HTMLProps<'button'>, HoverCardTriggerBaseProps {}
 
 export const HoverCardTrigger = forwardRef<HTMLButtonElement, HoverCardTriggerProps>(
   (props, ref) => {

@@ -1,13 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { type InputHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
 export interface SliderHiddenInputBaseProps extends PolymorphicProps {}
-export interface SliderHiddenInputProps
-  extends InputHTMLAttributes<HTMLInputElement>,
-    SliderHiddenInputBaseProps {}
+export interface SliderHiddenInputProps extends HTMLProps<'input'>, SliderHiddenInputBaseProps {}
 
 export const SliderHiddenInput = forwardRef<HTMLInputElement, SliderHiddenInputProps>(
   (props, ref) => {

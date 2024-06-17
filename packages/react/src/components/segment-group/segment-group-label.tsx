@@ -1,13 +1,11 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
-import { type LabelHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupLabelBaseProps extends PolymorphicProps {}
-export interface SegmentGroupLabelProps
-  extends LabelHTMLAttributes<HTMLLabelElement>,
-    SegmentGroupLabelBaseProps {}
+export interface SegmentGroupLabelProps extends HTMLProps<'label'>, SegmentGroupLabelBaseProps {}
 
 export const SegmentGroupLabel = forwardRef<HTMLLabelElement, SegmentGroupLabelProps>(
   (props, ref) => {

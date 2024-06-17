@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseToggleGroupReturn } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface ToggleGroupRootProviderBaseProps extends PolymorphicProps<'div'> {}
 export interface ToggleGroupRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     RootProviderProps,
     ToggleGroupRootProviderBaseProps {}
 

@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UsePaginationReturn } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 
@@ -11,7 +10,7 @@ interface RootProviderProps {
 
 export interface PaginationRootProviderBaseProps extends PolymorphicProps<'nav'> {}
 export interface PaginationRootProviderProps
-  extends JSX.HTMLAttributes<HTMLElement>,
+  extends HTMLProps<'nav'>,
     RootProviderProps,
     PaginationRootProviderBaseProps {}
 

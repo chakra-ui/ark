@@ -1,8 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import type { CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -20,7 +19,7 @@ export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
     UsePresenceProps,
     PolymorphicProps<'div'> {}
 export interface ComboboxRootProviderProps<T extends CollectionItem>
-  extends JSX.HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ComboboxRootProviderBaseProps<T> {}
 
 export const ComboboxRootProvider = <T extends CollectionItem>(

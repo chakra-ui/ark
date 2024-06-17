@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseProgressReturn } from './use-progress'
 import { ProgressProvider } from './use-progress-context'
 
@@ -11,7 +11,7 @@ interface RootProviderProps {
 
 export interface ProgressRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ProgressRootProviderProps
-  extends HTMLAttributes<HTMLDivElement>,
+  extends HTMLProps<'div'>,
     ProgressRootProviderBaseProps {}
 
 export const ProgressRootProvider = forwardRef<HTMLDivElement, ProgressRootProviderProps>(

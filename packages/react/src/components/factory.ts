@@ -65,8 +65,8 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp
 }
 
-export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> &
-  PolymorphicProps
+export type HTMLProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T>
+export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = HTMLProps<T> & PolymorphicProps
 
 export const jsxFactory = () => {
   const cache = new Map()

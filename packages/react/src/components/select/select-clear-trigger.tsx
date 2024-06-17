@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectClearTriggerBaseProps extends PolymorphicProps {}
-export interface SelectClearTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    SelectClearTriggerBaseProps {}
+export interface SelectClearTriggerProps extends HTMLProps<'button'>, SelectClearTriggerBaseProps {}
 
 export const SelectClearTrigger = forwardRef<HTMLButtonElement, SelectClearTriggerProps>(
   (props, ref) => {

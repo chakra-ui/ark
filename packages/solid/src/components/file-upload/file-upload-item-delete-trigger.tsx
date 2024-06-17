@@ -1,12 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps<'button'> {}
 export interface FileUploadItemDeleteTriggerProps
-  extends JSX.HTMLAttributes<HTMLButtonElement>,
+  extends HTMLProps<'button'>,
     FileUploadItemDeleteTriggerBaseProps {}
 
 export const FileUploadItemDeleteTrigger = (props: FileUploadItemDeleteTriggerProps) => {

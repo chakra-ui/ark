@@ -1,13 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
 export interface DialogTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface DialogTriggerProps
-  extends JSX.HTMLAttributes<HTMLButtonElement>,
-    DialogTriggerBaseProps {}
+export interface DialogTriggerProps extends HTMLProps<'button'>, DialogTriggerBaseProps {}
 
 export const DialogTrigger = (props: DialogTriggerProps) => {
   const api = useDialogContext()

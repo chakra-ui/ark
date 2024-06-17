@@ -6,6 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
+
+```jsx
+export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
+```
+
 ### Fixed
 
 - **Checkbox:** Added missing `group` role for Checkbox group component.

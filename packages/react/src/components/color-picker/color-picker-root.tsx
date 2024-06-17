@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -16,8 +16,7 @@ export interface ColorPickerRootBaseProps
   extends UseColorPickerProps,
     UsePresenceProps,
     PolymorphicProps {}
-export interface ColorPickerRootProps
-  extends Assign<HTMLAttributes<HTMLDivElement>, ColorPickerRootBaseProps> {}
+export interface ColorPickerRootProps extends Assign<HTMLProps<'div'>, ColorPickerRootBaseProps> {}
 
 export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>((props, ref) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)

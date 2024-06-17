@@ -1,13 +1,10 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupLabelBaseProps extends PolymorphicProps<'label'> {}
-export interface SegmentGroupLabelProps
-  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
-    SegmentGroupLabelBaseProps {}
+export interface SegmentGroupLabelProps extends HTMLProps<'label'>, SegmentGroupLabelBaseProps {}
 
 export const SegmentGroupLabel = (props: SegmentGroupLabelProps) => {
   const segmentGroup = useSegmentGroupContext()

@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardTriggerBaseProps extends PolymorphicProps {}
-export interface ClipboardTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ClipboardTriggerBaseProps {}
+export interface ClipboardTriggerProps extends HTMLProps<'button'>, ClipboardTriggerBaseProps {}
 
 export const ClipboardTrigger = forwardRef<HTMLButtonElement, ClipboardTriggerProps>(
   (props, ref) => {

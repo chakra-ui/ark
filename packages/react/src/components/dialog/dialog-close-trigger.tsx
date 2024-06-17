@@ -1,12 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type ButtonHTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
 export interface DialogCloseTriggerBaseProps extends PolymorphicProps {}
-export interface DialogCloseTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    DialogCloseTriggerBaseProps {}
+export interface DialogCloseTriggerProps extends HTMLProps<'button'>, DialogCloseTriggerBaseProps {}
 
 export const DialogCloseTrigger = forwardRef<HTMLButtonElement, DialogCloseTriggerProps>(
   (props, ref) => {

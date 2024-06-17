@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseCarouselProps, useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 
 export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps {}
-export interface CarouselRootProps extends HTMLAttributes<HTMLDivElement>, CarouselRootBaseProps {}
+export interface CarouselRootProps extends HTMLProps<'div'>, CarouselRootBaseProps {}
 
 export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props, ref) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [

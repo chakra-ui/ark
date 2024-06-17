@@ -1,7 +1,6 @@
 import { selectAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
-import { type PolymorphicProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {
@@ -10,9 +9,7 @@ export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {
    */
   placeholder?: string
 }
-export interface SelectValueTextProps
-  extends JSX.HTMLAttributes<HTMLSpanElement>,
-    SelectValueTextBaseProps {}
+export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueTextBaseProps {}
 
 export const SelectValueText = (props: SelectValueTextProps) => {
   const select = useSelectContext()

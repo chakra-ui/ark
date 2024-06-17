@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLAttributes, forwardRef } from 'react'
-import { type PolymorphicProps, ark } from '../factory'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewBranchContext } from './use-tree-view-branch-context'
 import { useTreeViewContext } from './use-tree-view-context'
 
 export interface TreeViewBranchContentBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchContentProps
-  extends HTMLAttributes<HTMLUListElement>,
+  extends HTMLProps<'ul'>,
     TreeViewBranchContentBaseProps {}
 
 export const TreeViewBranchContent = forwardRef<HTMLUListElement, TreeViewBranchContentProps>(
