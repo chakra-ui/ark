@@ -20,6 +20,12 @@ export {
   type ColorPickerAreaProps,
 } from './color-picker-area.vue'
 export {
+  default as ColorPickerValueSwatch,
+  type ColorPickerValueSwatchBaseProps,
+  type ColorPickerValueSwatchProps,
+} from './color-picker-value-swatch.vue'
+
+export {
   default as ColorPickerChannelInput,
   type ColorPickerChannelInputBaseProps,
   type ColorPickerChannelInputProps,

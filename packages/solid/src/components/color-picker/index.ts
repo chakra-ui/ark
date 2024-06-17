@@ -134,6 +134,11 @@ export {
   type ColorPickerTriggerProps,
 } from './color-picker-trigger'
 export {
+  ColorPickerValueSwatch,
+  type ColorPickerValueSwatchBaseProps,
+  type ColorPickerValueSwatchProps,
+} from './color-picker-value-swatch'
+export {
   ColorPickerValueText,
   type ColorPickerValueTextBaseProps,
   type ColorPickerValueTextProps,

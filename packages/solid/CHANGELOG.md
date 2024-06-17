@@ -8,12 +8,16 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+  in CSS-in-JS environments.
 
 ```jsx
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
 export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 ```
+
+- **ColorPicker:** Added `SliderValueText`, `SliderLabel` and `ValueSwatch` parts to help with
+  customizing the color picker.
 
 ### Fixed
 

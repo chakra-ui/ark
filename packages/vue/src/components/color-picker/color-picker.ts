@@ -125,6 +125,11 @@ export {
   type ColorPickerSwatchProps as SwatchBaseProps,
 } from './color-picker-swatch.vue'
 export {
+  default as ValueSwatch,
+  type ColorPickerValueSwatchProps as ValueSwatchProps,
+  type ColorPickerValueSwatchProps as ValueSwatchBaseProps,
+} from './color-picker-value-swatch.vue'
+export {
   default as TransparencyGrid,
   type ColorPickerTransparencyGridProps as TransparencyGridProps,
   type ColorPickerTransparencyGridProps as TransparencyGridBaseProps,

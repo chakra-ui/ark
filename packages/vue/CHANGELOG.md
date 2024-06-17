@@ -8,7 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+  in CSS-in-JS environments.
 
 ```jsx
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
@@ -19,6 +20,10 @@ export interface AccordionItemProps
      */
     HTMLAttributes {}
 ```
+
+- **ColorPicker:** Added `SliderValueText`, `SliderLabel` and `ValueSwatch` parts to help with
+  customizing the color picker.
+
 ### Fixed
 
 - **Checkbox:** Added missing `group` role for Checkbox group component.
@@ -32,13 +37,17 @@ export interface AccordionItemProps
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
 - **QR Code:** Added the `QRCode` component for generating QR codes.
 - **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
-- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of deferring to the next tick.
+- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of
+  deferring to the next tick.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
-- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous tab content.
-- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item via the delete trigger.
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`.
+- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous
+  tab content.
+- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item
+  via the delete trigger.
 - **Select:** Exported the missing `SelectList` component.
 - **Carousel:** Fixed an issue where the carousel would not update the current index when used with
   `v-model`.

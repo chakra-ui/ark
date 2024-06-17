@@ -1,4 +1,3 @@
-
 <p align="center">
   <img alt="License" src="https://img.shields.io/npm/l/@ark-ui/vue?style=for-the-badge" />
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge" />

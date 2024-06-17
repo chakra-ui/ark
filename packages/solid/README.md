@@ -56,7 +56,6 @@ Ark UI is available for the following JavaScript frameworks:
 - [Tooltip](https://ark-ui.com/solid/docs/components/tooltip)
 - [Tree View](https://ark-ui.com/solid/docs/components/tree-view)
 
-
 ## Installation
 
 To install `@ark-ui/solid`, run the following command:
@@ -83,12 +82,7 @@ export const MySlider = () => {
   const [value, setValue] = createSignal([30])
 
   return (
-    <Slider.Root
-      min={-50}
-      max={50}
-      value={value()}
-      onValueChange={(e) => setValue(e.value)}
-    >
+    <Slider.Root min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText>{value}</Slider.ValueText>
       <Slider.Control>

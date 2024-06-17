@@ -14,9 +14,7 @@ const value = ref('hsl(20, 100%, 50%)')
       <ColorPicker.ValueText />
       <ColorPicker.Trigger>
         <ColorPicker.TransparencyGrid />
-        <ColorPicker.Context v-slot="api">
-          <ColorPicker.Swatch :value="api.value" />
-        </ColorPicker.Context>
+        <ColorPicker.ValueSwatch />
       </ColorPicker.Trigger>
     </ColorPicker.Control>
     <ColorPicker.Positioner>

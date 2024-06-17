@@ -10,9 +10,7 @@ export const Basic = () => {
         <ColorPicker.ValueText />
         <ColorPicker.Trigger>
           <ColorPicker.TransparencyGrid />
-          <ColorPicker.Context>
-            {(colorPicker) => <ColorPicker.Swatch value={colorPicker.value} />}
-          </ColorPicker.Context>
+          <ColorPicker.ValueSwatch />
         </ColorPicker.Trigger>
       </ColorPicker.Control>
       <ColorPicker.Positioner>

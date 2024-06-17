@@ -129,6 +129,11 @@ export {
   type ColorPickerTriggerProps as TriggerProps,
 } from './color-picker-trigger'
 export {
+  ColorPickerValueSwatch as ValueSwatch,
+  type ColorPickerValueSwatchBaseProps as ValueSwatchBaseProps,
+  type ColorPickerValueSwatchProps as ValueSwatchProps,
+} from './color-picker-value-swatch'
+export {
   ColorPickerValueText as ValueText,
   type ColorPickerValueTextBaseProps as ValueTextBaseProps,
   type ColorPickerValueTextProps as ValueTextProps,

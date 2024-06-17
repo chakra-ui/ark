@@ -6,11 +6,17 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **ColorPicker:** Added `SliderValueText`, `SliderLabel` and `ValueSwatch` parts to help with
+  customizing the color picker.
+
 ## [3.4.0-0] - 2024-06-13
 
 ### Added
 
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+  in CSS-in-JS environments.
 
 ```jsx
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
@@ -28,14 +34,18 @@ export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseP
 - **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
 - **QR Code:** Added the `QRCode` component for generating QR codes.
 - **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
-- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of deferring to the next tick.
+- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of
+  deferring to the next tick.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue where the tree view state could be updated after setting `defaultSelectedValue` or `defaultExpandedValue`.
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`.
 - **Popover, HoverCard:** Fixed an issue where `defaultOpen` did not work.
-- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous tab content.
-- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item via the delete trigger.
+- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous
+  tab content.
+- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item
+  via the delete trigger.
 - **Select:** Exported missing `SelectList` component.
 
 ## [3.2.1] - 2024-06-07

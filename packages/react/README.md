@@ -77,17 +77,12 @@ To use a component from `@ark-ui/react`, import it and include it in your applic
 ```tsx
 import { Slider } from '@ark-ui/react'
 import { useState } from 'react'
-  
+
 export const MySlider = () => {
   const [value, setValue] = useState([30])
-    
+
   return (
-    <Slider.Root
-      min={-50}
-      max={50}
-      value={value}
-      onValueChange={(e) => setValue(e.value)}
-    >
+    <Slider.Root min={-50} max={50} value={value} onValueChange={(e) => setValue(e.value)}>
       <Slider.Label>Label</Slider.Label>
       <Slider.ValueText>{value}</Slider.ValueText>
       <Slider.Control>

@@ -11,16 +11,13 @@ export const Controlled = () => {
       onValueChange={(details) => setCurrentValue(details.valueAsString)}
     >
       <ColorPicker.Label>Color</ColorPicker.Label>
-
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />
         <ColorPicker.ChannelInput channel="alpha" />
         <ColorPicker.ValueText />
         <ColorPicker.Trigger>
           <ColorPicker.TransparencyGrid />
-          <ColorPicker.Context>
-            {(colorPicker) => <ColorPicker.Swatch value={colorPicker.value} />}
-          </ColorPicker.Context>
+          <ColorPicker.ValueSwatch />
         </ColorPicker.Trigger>
       </ColorPicker.Control>
 
