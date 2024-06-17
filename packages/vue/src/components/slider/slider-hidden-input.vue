@@ -22,5 +22,7 @@ const thumbProps = useSliderThumbPropsContext()
 </script>
 
 <template>
-  <ark.input v-bind="slider.getHiddenInputProps(thumbProps)" :as-child="asChild" />
+  <ark.input v-bind="slider.getHiddenInputProps(thumbProps)" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>

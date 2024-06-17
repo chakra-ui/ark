@@ -9,6 +9,8 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Checkbox:** Added missing `group` role for Checkbox group component.
+- **Input:** Resolved an issue where the `Input` components could not be used with the `asChild`
+  prop.
 
 ## [3.4.0] - 2024-06-12
 

@@ -22,5 +22,7 @@ const itemProps = useTagsInputItemPropsContext()
 </script>
 
 <template>
-  <ark.input v-bind="tagsInput.getItemInputProps(itemProps)" :as-child="asChild" />
+  <ark.input v-bind="tagsInput.getItemInputProps(itemProps)" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>

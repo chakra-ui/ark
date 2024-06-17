@@ -20,5 +20,5 @@ const clipboard = useClipboardContext()
 </script>
 
 <template>
-  <ark.input v-bind="clipboard.getInputProps()" :as-child="asChild" />
+  <ark.input v-bind="clipboard.getInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

@@ -12,8 +12,8 @@ export interface SignaturePadControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { useSignaturePadContext } from './use-signature-pad-context';
+import { ark } from '../factory'
+import { useSignaturePadContext } from './use-signature-pad-context'
 
 defineProps<SignaturePadControlProps>()
 const signaturePad = useSignaturePadContext()

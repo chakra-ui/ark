@@ -23,5 +23,7 @@ const itemProps = useSegmentGroupItemPropsContext()
 </script>
 
 <template>
-  <ark.input v-bind="segmentGroup.getItemHiddenInputProps(itemProps)" :as-child="asChild" />
+  <ark.input v-bind="segmentGroup.getItemHiddenInputProps(itemProps)" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>

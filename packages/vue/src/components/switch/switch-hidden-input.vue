@@ -20,5 +20,5 @@ const context = useSwitchContext()
 </script>
 
 <template>
-  <ark.input v-bind="context.getHiddenInputProps()" :as-child="asChild" />
+  <ark.input v-bind="context.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

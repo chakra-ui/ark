@@ -21,5 +21,5 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.input v-bind="datePicker.getInputProps(props)" :as-child="asChild" />
+  <ark.input v-bind="datePicker.getInputProps(props)" :as-child="asChild"><slot /></ark.input>
 </template>

@@ -20,5 +20,5 @@ const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.input v-bind="combobox.getInputProps()" :as-child="asChild" />
+  <ark.input v-bind="combobox.getInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

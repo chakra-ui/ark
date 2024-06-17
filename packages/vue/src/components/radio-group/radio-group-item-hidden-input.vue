@@ -23,5 +23,7 @@ const itemProps = useRadioGroupItemPropsContext()
 </script>
 
 <template>
-  <ark.input v-bind="radioGroup.getItemHiddenInputProps(itemProps)" :as-child="asChild" />
+  <ark.input v-bind="radioGroup.getItemHiddenInputProps(itemProps)" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>

@@ -20,5 +20,7 @@ const checkbox = useCheckboxContext()
 </script>
 
 <template>
-  <ark.input v-bind="checkbox.getHiddenInputProps()" :as-child="asChild" />
+  <ark.input v-bind="checkbox.getHiddenInputProps()" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>
