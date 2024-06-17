@@ -21,12 +21,17 @@ export interface AccordionItemProps
     HTMLAttributes {}
 ```
 
-- **ColorPicker:** Added `SliderValueText`, `SliderLabel` and `ValueSwatch` parts to help with
-  customizing the color picker.
+- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced customization.
+- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the trigger's overflow parent scrolls.
 
 ### Fixed
 
-- **Checkbox:** Added missing `group` role for Checkbox group component.
+- **Menu:** 
+  - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
+  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long press.
+- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
+- **Checkbox:** Added the missing `group` role for the Checkbox group component.
+- **Signature Pad**: Added missing package.json for `signature-pad` machine.
 - **Input:** Resolved an issue where the `Input` components could not be used with the `asChild`
   prop.
 

@@ -8,20 +8,23 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
-  in CSS-in-JS environments.
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
 
 ```jsx
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
 export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 ```
 
-- **ColorPicker:** Added `SliderValueText`, `SliderLabel` and `ValueSwatch` parts to help with
-  customizing the color picker.
+- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced customization.
+- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the trigger's overflow parent scrolls.
 
 ### Fixed
 
-- **Checkbox:** Added missing `group` role for Checkbox group component.
+- **Menu:** 
+  - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
+  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long press.
+- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
+- **Checkbox:** Added the missing `group` role for the Checkbox group component.
 - **Signature Pad**: Added missing package.json for `signature-pad` machine.
 
 ## [3.3.0] - 2024-06-12

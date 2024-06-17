@@ -425,6 +425,21 @@
     },
     "element": "HTMLButtonElement"
   },
+  "ValueSwatch": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "respectAlpha": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to include the alpha channel in the color"
+      }
+    },
+    "element": "HTMLDivElement"
+  },
   "ValueText": {
     "props": {
       "asChild": {

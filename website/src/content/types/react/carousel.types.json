@@ -75,7 +75,7 @@
   "Root": {
     "props": {
       "align": {
-        "type": "'center' | 'start' | 'end'",
+        "type": "'center' | 'end' | 'start'",
         "defaultValue": "\"start\"",
         "isRequired": false,
         "description": "The alignment of the slides in the carousel."
