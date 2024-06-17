@@ -102,7 +102,7 @@ describe('Menu', () => {
     render(<ComponentUnderTest />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    await user.click(button)
+    fireEvent.click(button)
 
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   })
@@ -111,10 +111,10 @@ describe('Menu', () => {
     render(<ComponentUnderTest positioning={{ placement: 'left-start' }} />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    await user.click(button)
-
-    const menuList = screen.getByRole('menu')
-    expect(menuList).toHaveAttribute('data-placement', 'left-start')
+    fireEvent.click(button)
+    await waitFor(() =>
+      expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'),
+    )
   })
 
   it('should control the open state', async () => {
@@ -131,10 +131,10 @@ describe('Menu', () => {
 
     const trigger = screen.getByRole('button', { name: 'Open menu' })
 
-    await user.click(trigger)
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    fireEvent.click(trigger)
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
-    await user.click(trigger)
+    fireEvent.click(trigger)
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
@@ -151,10 +151,10 @@ describe('Menu', () => {
 
     const trigger = screen.getByRole('button', { name: 'Open menu' })
 
-    await user.click(trigger)
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    fireEvent.click(trigger)
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
-    await user.click(trigger)
+    fireEvent.click(trigger)
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
@@ -172,10 +172,10 @@ describe('Menu', () => {
 
     const button = screen.getByRole('button', { name: /open menu/i })
 
-    await user.click(button)
+    fireEvent.click(button)
     await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
 
-    await user.click(screen.getByText(/CSS Frameworks/i))
+    fireEvent.click(screen.getByText(/CSS Frameworks/i))
     await waitFor(() => expect(screen.getByText(/Panda/i)).toBeVisible())
   })
 
@@ -183,10 +183,12 @@ describe('Menu', () => {
     render(<ComponentUnderTest />)
 
     const menuButton = screen.getByRole('button', { name: /open menu/i })
-    await user.click(menuButton)
+    fireEvent.click(menuButton)
+    await waitFor(() => expect(screen.getByText(/JS Frameworks/i)).toBeVisible())
 
     const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
-    await user.click(radioButton)
+    fireEvent.click(radioButton)
+
     await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
   })
 })

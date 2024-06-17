@@ -68,6 +68,12 @@
         "isRequired": false,
         "description": "Whether to close the tooltip on pointerdown."
       },
+      "closeOnScroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the tooltip should close on scroll"
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,

@@ -39,6 +39,15 @@
       "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
+  "ChannelSliderLabel": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "ChannelSlider": {
     "props": {
       "channel": { "type": "ColorChannel", "isRequired": true },
@@ -60,6 +69,15 @@
     }
   },
   "ChannelSliderTrack": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ChannelSliderValueText": {
     "props": {
       "asChild": {
         "type": "boolean",

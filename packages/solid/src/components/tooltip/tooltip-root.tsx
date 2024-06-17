@@ -21,6 +21,7 @@ export const TooltipRoot = (props: TooltipRootProps) => {
     'closeDelay',
     'closeOnEscape',
     'closeOnPointerDown',
+    'closeOnScroll',
     'defaultOpen',
     'disabled',
     'id',

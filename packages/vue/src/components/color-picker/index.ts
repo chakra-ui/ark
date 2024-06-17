@@ -6,43 +6,53 @@ export type {
 } from '@zag-js/color-picker'
 export {
   default as ColorPickerAreaBackground,
-  type ColorPickerAreaBackgroundProps,
   type ColorPickerAreaBackgroundBaseProps,
+  type ColorPickerAreaBackgroundProps,
 } from './color-picker-area-background.vue'
 export {
   default as ColorPickerAreaThumb,
-  type ColorPickerAreaThumbProps,
   type ColorPickerAreaThumbBaseProps,
+  type ColorPickerAreaThumbProps,
 } from './color-picker-area-thumb.vue'
 export {
   default as ColorPickerArea,
-  type ColorPickerAreaProps,
   type ColorPickerAreaBaseProps,
+  type ColorPickerAreaProps,
 } from './color-picker-area.vue'
 export {
   default as ColorPickerChannelInput,
-  type ColorPickerChannelInputProps,
   type ColorPickerChannelInputBaseProps,
+  type ColorPickerChannelInputProps,
 } from './color-picker-channel-input.vue'
 export {
+  default as ColorPickerChannelSliderLabel,
+  type ColorPickerChannelSliderLabelBaseProps,
+  type ColorPickerChannelSliderLabelProps,
+} from './color-picker-channel-slider-label.vue'
+export {
   default as ColorPickerChannelSliderThumb,
-  type ColorPickerChannelSliderThumbProps,
   type ColorPickerChannelSliderThumbBaseProps,
+  type ColorPickerChannelSliderThumbProps,
 } from './color-picker-channel-slider-thumb.vue'
 export {
   default as ColorPickerChannelSliderTrack,
-  type ColorPickerChannelSliderTrackProps,
   type ColorPickerChannelSliderTrackBaseProps,
+  type ColorPickerChannelSliderTrackProps,
 } from './color-picker-channel-slider-track.vue'
 export {
+  default as ColorPickerChannelSliderValueText,
+  type ColorPickerChannelSliderValueTextBaseProps,
+  type ColorPickerChannelSliderValueTextProps,
+} from './color-picker-channel-slider-value-text.vue'
+export {
   default as ColorPickerChannelSlider,
-  type ColorPickerChannelSliderProps,
   type ColorPickerChannelSliderBaseProps,
+  type ColorPickerChannelSliderProps,
 } from './color-picker-channel-slider.vue'
 export {
   default as ColorPickerContent,
-  type ColorPickerContentProps,
   type ColorPickerContentBaseProps,
+  type ColorPickerContentProps,
 } from './color-picker-content.vue'
 export {
   default as ColorPickerContext,
@@ -50,89 +60,89 @@ export {
 } from './color-picker-context.vue'
 export {
   default as ColorPickerControl,
-  type ColorPickerControlProps,
   type ColorPickerControlBaseProps,
+  type ColorPickerControlProps,
 } from './color-picker-control.vue'
 export {
   default as ColorPickerEyeDropperTrigger,
-  type ColorPickerEyeDropperTriggerProps,
   type ColorPickerEyeDropperTriggerBaseProps,
+  type ColorPickerEyeDropperTriggerProps,
 } from './color-picker-eye-dropper-trigger.vue'
 export {
   default as ColorPickerFormatSelect,
-  type ColorPickerFormatSelectProps,
   type ColorPickerFormatSelectBaseProps,
+  type ColorPickerFormatSelectProps,
 } from './color-picker-format-select.vue'
 export {
   default as ColorPickerFormatTrigger,
-  type ColorPickerFormatTriggerProps,
   type ColorPickerFormatTriggerBaseProps,
+  type ColorPickerFormatTriggerProps,
 } from './color-picker-format-trigger.vue'
 export {
   default as ColorPickerHiddenInput,
-  type ColorPickerHiddenInputProps,
   type ColorPickerHiddenInputBaseProps,
+  type ColorPickerHiddenInputProps,
 } from './color-picker-hidden-input.vue'
 export {
   default as ColorPickerLabel,
-  type ColorPickerLabelProps,
   type ColorPickerLabelBaseProps,
+  type ColorPickerLabelProps,
 } from './color-picker-label.vue'
 export {
   default as ColorPickerPositioner,
-  type ColorPickerPositionerProps,
   type ColorPickerPositionerBaseProps,
+  type ColorPickerPositionerProps,
 } from './color-picker-positioner.vue'
 export {
   default as ColorPickerRootProvider,
-  type ColorPickerRootProviderProps,
   type ColorPickerRootProviderBaseProps,
+  type ColorPickerRootProviderProps,
 } from './color-picker-root-provider.vue'
 export {
   default as ColorPickerRoot,
-  type ColorPickerRootEmits,
   type ColorPickerRootBaseProps,
+  type ColorPickerRootEmits,
   type ColorPickerRootProps,
 } from './color-picker-root.vue'
 export {
   default as ColorPickerSwatchGroup,
-  type ColorPickerSwatchGroupProps,
   type ColorPickerSwatchGroupBaseProps,
+  type ColorPickerSwatchGroupProps,
 } from './color-picker-swatch-group.vue'
 export {
   default as ColorPickerSwatchIndicator,
-  type ColorPickerSwatchIndicatorProps,
   type ColorPickerSwatchIndicatorBaseProps,
+  type ColorPickerSwatchIndicatorProps,
 } from './color-picker-swatch-indicator.vue'
 export {
   default as ColorPickerSwatchTrigger,
-  type ColorPickerSwatchTriggerProps,
   type ColorPickerSwatchTriggerBaseProps,
+  type ColorPickerSwatchTriggerProps,
 } from './color-picker-swatch-trigger.vue'
 export {
   default as ColorPickerSwatch,
-  type ColorPickerSwatchProps,
   type ColorPickerSwatchBaseProps,
+  type ColorPickerSwatchProps,
 } from './color-picker-swatch.vue'
 export {
   default as ColorPickerTransparencyGrid,
-  type ColorPickerTransparencyGridProps,
   type ColorPickerTransparencyGridBaseProps,
+  type ColorPickerTransparencyGridProps,
 } from './color-picker-transparency-grid.vue'
 export {
   default as ColorPickerTrigger,
-  type ColorPickerTriggerProps,
   type ColorPickerTriggerBaseProps,
+  type ColorPickerTriggerProps,
 } from './color-picker-trigger.vue'
 export {
   default as ColorPickerValueText,
-  type ColorPickerValueTextProps,
   type ColorPickerValueTextBaseProps,
+  type ColorPickerValueTextProps,
 } from './color-picker-value-text.vue'
 export {
   default as ColorPickerView,
-  type ColorPickerViewProps,
   type ColorPickerViewBaseProps,
+  type ColorPickerViewProps,
 } from './color-picker-view.vue'
 export {
   useColorPicker,
