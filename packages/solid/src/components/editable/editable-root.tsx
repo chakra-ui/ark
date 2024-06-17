@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseEditableProps, useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
 
-export interface EditableRootProps extends Assign<HTMLArkProps<'div'>, UseEditableProps> {}
+export interface EditableRootBaseProps extends UseEditableProps, PolymorphicProps<'div'> {}
+export interface EditableRootProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    EditableRootBaseProps {}
 
 export const EditableRoot = (props: EditableRootProps) => {
   const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [

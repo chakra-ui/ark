@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TagsInputHiddenInputBaseProps extends PolymorphicProps {}
 export interface TagsInputHiddenInputProps
-  extends PolymorphicProps,
+  extends TagsInputHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

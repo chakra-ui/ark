@@ -5,10 +5,9 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tabs.types'
 
+export interface TabsRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProps
-  extends RootProps,
-    RenderStrategyProps,
-    PolymorphicProps,
+  extends TabsRootBaseProps,
     /**
      * @vue-ignore
      */

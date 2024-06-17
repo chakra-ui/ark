@@ -6,6 +6,7 @@ export {
 export {
   default as SegmentGroupIndicator,
   type SegmentGroupIndicatorProps,
+  type SegmentGroupIndicatorBaseProps,
 } from './segment-group-indicator.vue'
 export {
   default as SegmentGroupItemContext,
@@ -14,27 +15,37 @@ export {
 export {
   default as SegmentGroupItemControl,
   type SegmentGroupItemControlProps,
+  type SegmentGroupItemControlBaseProps,
 } from './segment-group-item-control.vue'
 export {
   default as SegmentGroupItemHiddenInput,
   type SegmentGroupItemHiddenInputProps,
+  type SegmentGroupItemHiddenInputBaseProps,
 } from './segment-group-item-hidden-input.vue'
 export {
   default as SegmentGroupItemText,
   type SegmentGroupItemTextProps,
+  type SegmentGroupItemTextBaseProps,
 } from './segment-group-item-text.vue'
-export { default as SegmentGroupItem, type SegmentGroupItemProps } from './segment-group-item.vue'
+export {
+  default as SegmentGroupItem,
+  type SegmentGroupItemProps,
+  type SegmentGroupItemBaseProps,
+} from './segment-group-item.vue'
 export {
   default as SegmentGroupLabel,
   type SegmentGroupLabelProps,
+  type SegmentGroupLabelBaseProps,
 } from './segment-group-label.vue'
 export {
   default as SegmentGroupRootProvider,
   type SegmentGroupRootProviderProps,
+  type SegmentGroupRootProviderBaseProps,
 } from './segment-group-root-provider.vue'
 export {
   default as SegmentGroupRoot,
   type SegmentGroupRootEmits,
+  type SegmentGroupRootBaseProps,
   type SegmentGroupRootProps,
 } from './segment-group-root.vue'
 export {

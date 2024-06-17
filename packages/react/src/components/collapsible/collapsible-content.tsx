@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
 
-export type CollapsibleContentBaseProps = {}
-export interface CollapsibleContentProps extends HTMLArkProps<'div'>, CollapsibleContentBaseProps {}
+export interface CollapsibleContentBaseProps extends PolymorphicProps {}
+export interface CollapsibleContentProps
+  extends HTMLAttributes<HTMLDivElement>,
+    CollapsibleContentBaseProps {}
 
 export const CollapsibleContent = forwardRef<HTMLDivElement, CollapsibleContentProps>(
   (props, ref) => {

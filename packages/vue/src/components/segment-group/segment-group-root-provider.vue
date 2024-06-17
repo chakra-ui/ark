@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseSegmentGroupReturn>
 }
 
+export interface SegmentGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SegmentGroupRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends SegmentGroupRootProviderBaseProps,
     /**
      * @vue-ignore
      */

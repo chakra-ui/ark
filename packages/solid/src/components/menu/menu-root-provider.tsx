@@ -12,11 +12,13 @@ import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-c
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
 interface RootProviderProps {
-  children?: JSX.Element
   value: UseMenuReturn
 }
 
-export interface MenuRootProviderProps extends RootProviderProps, UsePresenceProps {}
+export interface MenuRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface MenuRootProviderProps extends MenuRootProviderBaseProps {
+  children?: JSX.Element
+}
 
 export const MenuRootProvider = (props: MenuRootProviderProps) => {
   const parentApi = useMenuContext()

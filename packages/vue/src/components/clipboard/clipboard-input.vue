@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ClipboardInputBaseProps extends PolymorphicProps {}
 export interface ClipboardInputProps
-  extends PolymorphicProps,
+  extends ClipboardInputBaseProps,
     /**
      * @vue-ignore
      */

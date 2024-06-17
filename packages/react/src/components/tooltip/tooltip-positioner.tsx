@@ -1,11 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
 
-export type TooltipPositionerBaseProps = {}
-export interface TooltipPositionerProps extends HTMLArkProps<'div'>, TooltipPositionerBaseProps {}
+export interface TooltipPositionerBaseProps extends PolymorphicProps {}
+export interface TooltipPositionerProps
+  extends HTMLAttributes<HTMLDivElement>,
+    TooltipPositionerBaseProps {}
 
 export const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerProps>(
   (props, ref) => {

@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tree-view.types'
 
+export interface TreeViewRootBaseProps extends RootProps, PolymorphicProps {}
 export interface TreeViewRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends TreeViewRootBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useToastContext } from './use-toast-context'
 
-export type ToastActionTriggerBaseProps = {}
+export interface ToastActionTriggerBaseProps extends PolymorphicProps {}
 export interface ToastActionTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     ToastActionTriggerBaseProps {}
 
 export const ToastActionTrigger = forwardRef<HTMLButtonElement, ToastActionTriggerProps>(

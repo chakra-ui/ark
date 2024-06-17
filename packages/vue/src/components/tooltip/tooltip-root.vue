@@ -3,7 +3,8 @@ import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './tooltip.types'
 
-export interface TooltipRootProps extends RootProps, RenderStrategyProps {}
+export interface TooltipRootBaseProps extends RootProps, RenderStrategyProps {}
+export interface TooltipRootProps extends TooltipRootBaseProps {}
 export interface TooltipRootEmits extends RootEmits {}
 </script>
 

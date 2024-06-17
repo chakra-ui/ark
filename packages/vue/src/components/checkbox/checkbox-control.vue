@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CheckboxControlBaseProps extends PolymorphicProps {}
 export interface CheckboxControlProps
-  extends PolymorphicProps,
+  extends CheckboxControlBaseProps,
     /**
      * @vue-ignore
      */

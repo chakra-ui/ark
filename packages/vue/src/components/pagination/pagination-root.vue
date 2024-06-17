@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './pagination.types'
 
+export interface PaginationRootBaseProps extends RootProps, PolymorphicProps {}
 export interface PaginationRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends PaginationRootBaseProps,
     /**
      * @vue-ignore
      */

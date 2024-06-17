@@ -5,10 +5,12 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './color-picker.types'
 
-export interface ColorPickerRootProps
+export interface ColorPickerRootBaseProps
   extends RootProps,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface ColorPickerRootProps
+  extends ColorPickerRootBaseProps,
     /**
      * @vue-ignore
      */

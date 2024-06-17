@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderMarkerGroupProps extends HTMLArkProps<'div'> {}
+export interface SliderMarkerGroupBaseProps extends PolymorphicProps<'div'> {}
+export interface SliderMarkerGroupProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    SliderMarkerGroupBaseProps {}
 
 export const SliderMarkerGroup = (props: SliderMarkerGroupProps) => {
   const api = useSliderContext()

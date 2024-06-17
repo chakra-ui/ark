@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface NumberInputInputBaseProps extends PolymorphicProps {}
 export interface NumberInputInputProps
-  extends PolymorphicProps,
+  extends NumberInputInputBaseProps,
     /**
      * @vue-ignore
      */

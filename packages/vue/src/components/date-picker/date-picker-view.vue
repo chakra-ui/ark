@@ -3,8 +3,9 @@ import type { DateView } from '@zag-js/date-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DatePickerViewBaseProps extends PolymorphicProps {}
 export interface DatePickerViewProps
-  extends PolymorphicProps,
+  extends DatePickerViewBaseProps,
     /**
      * @vue-ignore
      */

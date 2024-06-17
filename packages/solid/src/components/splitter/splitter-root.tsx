@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseSplitterProps, useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 
-export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
+export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps<'div'> {}
+export interface SplitterRootProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    SplitterRootBaseProps {}
 
 export const SplitterRoot = (props: SplitterRootProps) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [

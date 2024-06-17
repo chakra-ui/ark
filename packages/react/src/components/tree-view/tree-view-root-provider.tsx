@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseTreeViewReturn } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
@@ -9,9 +9,9 @@ interface RootProviderProps {
   value: UseTreeViewReturn
 }
 
-export interface TreeViewRootProviderBaseProps extends RootProviderProps {}
+export interface TreeViewRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TreeViewRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     TreeViewRootProviderBaseProps {}
 
 export const TreeViewRootProvider = forwardRef<HTMLDivElement, TreeViewRootProviderProps>(

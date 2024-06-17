@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export type SliderValueTextBaseProps = {}
-export interface SliderValueTextProps extends HTMLArkProps<'span'>, SliderValueTextBaseProps {}
+export interface SliderValueTextBaseProps extends PolymorphicProps {}
+export interface SliderValueTextProps
+  extends HTMLAttributes<HTMLSpanElement>,
+    SliderValueTextBaseProps {}
 
 export const SliderValueText = forwardRef<HTMLDivElement, SliderValueTextProps>((props, ref) => {
   const { children, ...rest } = props

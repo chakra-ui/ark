@@ -3,7 +3,8 @@ import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './hover-card.types'
 
-export interface HoverCardRootProps extends RootProps, RenderStrategyProps {}
+export interface HoverCardRootBaseProps extends RootProps, RenderStrategyProps {}
+export interface HoverCardRootProps extends HoverCardRootBaseProps {}
 export interface HoverCardRootEmits extends RootEmits {}
 </script>
 

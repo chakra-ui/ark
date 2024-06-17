@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import { splitProps } from 'solid-js'
+import { type JSX, splitProps } from 'solid-js'
 import { useCollapsibleContext } from '../collapsible'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export interface AccordionItemTriggerProps extends HTMLArkProps<'button'> {}
+export interface AccordionItemTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface AccordionItemTriggerProps
+  extends JSX.HTMLAttributes<HTMLButtonElement>,
+    AccordionItemTriggerBaseProps {}
 
 export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
   const accordion = useAccordionContext()

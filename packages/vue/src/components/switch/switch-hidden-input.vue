@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SwitchHiddenInputBaseProps extends PolymorphicProps {}
 export interface SwitchHiddenInputProps
-  extends PolymorphicProps,
+  extends SwitchHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

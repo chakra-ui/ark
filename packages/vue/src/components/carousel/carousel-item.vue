@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/carousel'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface CarouselItemProps
-  extends ItemProps,
-    PolymorphicProps,
+  extends CarouselItemBaseProps,
     /**
      * @vue-ignore
      */

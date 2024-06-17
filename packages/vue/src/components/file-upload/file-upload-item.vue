@@ -4,9 +4,9 @@ import type { LiHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
+export interface FileUploadItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface FileUploadItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends FileUploadItemBaseProps,
     /**
      * @vue-ignore
      */

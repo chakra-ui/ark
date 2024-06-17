@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DialogPositionerBaseProps extends PolymorphicProps {}
 export interface DialogPositionerProps
-  extends PolymorphicProps,
+  extends DialogPositionerBaseProps,
     /**
      * @vue-ignore
      */

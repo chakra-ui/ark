@@ -9,10 +9,12 @@ interface RootProviderProps<T extends CollectionItem> {
   value: UnwrapRef<UseSelectReturn<T>>
 }
 
-export interface SelectRootProviderProps<T extends CollectionItem>
+export interface SelectRootProviderBaseProps<T extends CollectionItem>
   extends RootProviderProps<T>,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface SelectRootProviderProps<T extends CollectionItem>
+  extends SelectRootProviderBaseProps<T>,
     /**
      * @vue-ignore
      */

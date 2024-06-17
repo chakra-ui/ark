@@ -13,13 +13,19 @@ import {
 } from 'react'
 import { composeRefs } from '../utils/compose-refs'
 
+export interface PolymorphicProps {
+  /**
+   * Use the provided child element as the default rendered element, combining their props and behavior.
+   */
+  asChild?: boolean
+}
+
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
 type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<
   ArkPropsWithRef<E>
 >
-type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & {
-  asChild?: boolean
-}
+type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> &
+  PolymorphicProps
 
 // Future proof: access ref from props, fallback to element.ref
 // https://github.com/facebook/react/pull/28348
@@ -59,12 +65,11 @@ const withAsChild = (Component: React.ElementType) => {
   return Comp
 }
 
-export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> & {
-  /**
-   * Render as a different element type.
-   */
-  asChild?: boolean
-}
+/**
+ * @deprecated
+ */
+export type HTMLArkProps<T extends keyof JSX.IntrinsicElements> = ComponentPropsWithoutRef<T> &
+  PolymorphicProps
 
 export const jsxFactory = () => {
   const cache = new Map()

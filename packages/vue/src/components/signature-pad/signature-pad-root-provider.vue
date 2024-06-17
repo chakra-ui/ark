@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseSignaturePadReturn>
 }
 
+export interface SignaturePadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SignaturePadRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends SignaturePadRootProviderBaseProps,
     /**
      * @vue-ignore
      */

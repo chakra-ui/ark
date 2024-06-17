@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type SVGProps, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 
-export type SignaturePadSegmentBaseProps = {}
+export interface SignaturePadSegmentBaseProps extends PolymorphicProps {}
 export interface SignaturePadSegmentProps
-  extends HTMLArkProps<'svg'>,
+  extends SVGProps<SVGSVGElement>,
     SignaturePadSegmentBaseProps {}
 
 export const SignaturePadSegment = forwardRef<SVGSVGElement, SignaturePadSegmentProps>(

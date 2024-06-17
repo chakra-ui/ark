@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './toggle-group.types'
 
+export interface ToggleGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ToggleGroupRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends ToggleGroupRootBaseProps,
     /**
      * @vue-ignore
      */

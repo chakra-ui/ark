@@ -6,9 +6,10 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
 type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
+
+export interface MenuCheckboxItemBaseProps extends CheckboxItemProps, PolymorphicProps {}
 export interface MenuCheckboxItemProps
-  extends PolymorphicProps,
-    CheckboxItemProps,
+  extends MenuCheckboxItemBaseProps,
     /**
      * @vue-ignore
      */

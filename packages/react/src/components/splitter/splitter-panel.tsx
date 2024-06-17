@@ -1,13 +1,14 @@
 import { mergeProps } from '@zag-js/react'
 import type { PanelProps } from '@zag-js/splitter'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSplitterContext } from './use-splitter-context'
 
-export interface SplitterPanelBaseProps extends PanelProps {}
-export interface SplitterPanelProps extends Assign<HTMLArkProps<'div'>, SplitterPanelBaseProps> {}
+export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps {}
+export interface SplitterPanelProps
+  extends Assign<HTMLAttributes<HTMLDivElement>, SplitterPanelBaseProps> {}
 
 export const SplitterPanel = forwardRef<HTMLDivElement, SplitterPanelProps>((props, ref) => {
   const [splitterPanelProps, localProps] = createSplitProps<PanelProps>()(props, ['id', 'snapSize'])

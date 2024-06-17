@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseCarouselReturn>
 }
 
+export interface CarouselRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CarouselRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends CarouselRootProviderBaseProps,
     /**
      * @vue-ignore
      */

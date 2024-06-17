@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UsePinInputReturn>
 }
 
+export interface PinInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PinInputRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends PinInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

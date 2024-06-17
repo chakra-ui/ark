@@ -10,10 +10,10 @@ import {
 import { type UseTooltipProps, useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
-export interface TooltipRootProps extends UseTooltipProps, UsePresenceProps {
+export interface TooltipRootBaseProps extends UseTooltipProps, UsePresenceProps {}
+export interface TooltipRootProps extends TooltipRootBaseProps {
   children?: JSX.Element
 }
-
 export const TooltipRoot = (props: TooltipRootProps) => {
   const [presenceProps, tooltipProps] = splitPresenceProps(props)
   const [useTooltipProps, localProps] = createSplitProps<UseTooltipProps>()(tooltipProps, [

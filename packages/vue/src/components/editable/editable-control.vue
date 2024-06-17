@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface EditableControlBaseProps extends PolymorphicProps {}
 export interface EditableControlProps
-  extends PolymorphicProps,
+  extends EditableControlBaseProps,
     /**
      * @vue-ignore
      */

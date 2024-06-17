@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/radio-group'
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SegmentGroupItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends SegmentGroupItemBaseProps,
     /**
      * @vue-ignore
      */

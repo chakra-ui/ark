@@ -14,7 +14,10 @@ type ParentProps<T extends ElementType> = (
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 ) => JSX.HTMLAttributes<any>
 
-type PolymorphicProps<T extends ElementType> = {
+export type PolymorphicProps<T extends ElementType> = {
+  /**
+   * Use the provided child element as the default rendered element, combining their props and behavior.
+   */
   asChild?: (props: ParentProps<T>) => JSX.Element
 }
 

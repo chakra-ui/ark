@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DialogTriggerBaseProps extends PolymorphicProps {}
 export interface DialogTriggerProps
-  extends PolymorphicProps,
+  extends DialogTriggerBaseProps,
     /**
      * @vue-ignore
      */

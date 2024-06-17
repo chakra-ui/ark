@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './rating-group.types'
 
+export interface RatingGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface RatingGroupRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends RatingGroupRootBaseProps,
     /**
      * @vue-ignore
      */

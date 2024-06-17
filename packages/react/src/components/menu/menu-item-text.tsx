@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
 
-export type MenuItemTextBaseProps = {}
-export interface MenuItemTextProps extends HTMLArkProps<'div'>, MenuItemTextBaseProps {}
+export interface MenuItemTextBaseProps extends PolymorphicProps {}
+export interface MenuItemTextProps extends HTMLAttributes<HTMLDivElement>, MenuItemTextBaseProps {}
 
 export const MenuItemText = forwardRef<HTMLDivElement, MenuItemTextProps>((props, ref) => {
   const menu = useMenuContext()

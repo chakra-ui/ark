@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './number-input.types'
 
+export interface NumberInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface NumberInputRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends NumberInputRootBaseProps,
     /**
      * @vue-ignore
      */

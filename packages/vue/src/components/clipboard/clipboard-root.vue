@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './clipboard.types'
 
+export interface ClipboardRootBaseProps extends RootProps, PolymorphicProps {}
 export interface ClipboardRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends ClipboardRootBaseProps,
     /**
      * @vue-ignore
      */

@@ -3,9 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { RootProps } from './qr-code.types'
 
+export interface QrCodeRootBaseProps extends RootProps, PolymorphicProps {}
 export interface QrCodeRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends QrCodeRootBaseProps,
     /**
      * @vue-ignore
      */

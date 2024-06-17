@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tags-input.types'
 
+export interface TagsInputRootBaseProps extends RootProps, PolymorphicProps {}
 export interface TagsInputRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends TagsInputRootBaseProps,
     /**
      * @vue-ignore
      */

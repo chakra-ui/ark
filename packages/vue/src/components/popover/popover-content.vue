@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PopoverContentBaseProps extends PolymorphicProps {}
 export interface PopoverContentProps
-  extends PolymorphicProps,
+  extends PopoverContentBaseProps,
     /**
      * @vue-ignore
      */

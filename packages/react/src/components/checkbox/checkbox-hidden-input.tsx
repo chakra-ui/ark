@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
-export type CheckboxHiddenInputBaseProps = {}
+export interface CheckboxHiddenInputBaseProps extends PolymorphicProps {}
 export interface CheckboxHiddenInputProps
-  extends HTMLArkProps<'input'>,
+  extends InputHTMLAttributes<HTMLInputElement>,
     CheckboxHiddenInputBaseProps {}
 
 export const CheckboxHiddenInput = forwardRef<HTMLInputElement, CheckboxHiddenInputProps>(

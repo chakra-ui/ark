@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export interface ComboboxLabelProps extends HTMLArkProps<'label'> {}
+export interface ComboboxLabelBaseProps extends PolymorphicProps<'label'> {}
+export interface ComboboxLabelProps
+  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
+    ComboboxLabelBaseProps {}
 
 export const ComboboxLabel = (props: ComboboxLabelProps) => {
   const combobox = useComboboxContext()

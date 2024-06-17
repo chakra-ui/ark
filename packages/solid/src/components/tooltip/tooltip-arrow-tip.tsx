@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
 
-export interface TooltipArrowTipProps extends HTMLArkProps<'div'> {}
+export interface TooltipArrowTipBaseProps extends PolymorphicProps<'div'> {}
+export interface TooltipArrowTipProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    TooltipArrowTipBaseProps {}
 
 export const TooltipArrowTip = (props: TooltipArrowTipProps) => {
   const api = useTooltipContext()

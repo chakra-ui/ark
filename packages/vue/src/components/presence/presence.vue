@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './presence.types'
 
+export interface PresenceBaseProps extends RootProps, PolymorphicProps {}
 export interface PresenceProps
-  extends RootProps,
-    PolymorphicProps,
+  extends PresenceBaseProps,
     /**
      * @vue-ignore
      */

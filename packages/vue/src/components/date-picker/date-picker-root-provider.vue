@@ -8,10 +8,12 @@ interface RootProviderProps {
   value: UnwrapRef<UseDatePickerReturn>
 }
 
-export interface DatePickerRootProviderProps
+export interface DatePickerRootProviderBaseProps
   extends RootProviderProps,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface DatePickerRootProviderProps
+  extends DatePickerRootProviderBaseProps,
     /**
      * @vue-ignore
      */

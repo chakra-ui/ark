@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TreeViewLabelBaseProps extends PolymorphicProps {}
 export interface TreeViewLabelProps
-  extends PolymorphicProps,
+  extends TreeViewLabelBaseProps,
     /**
      * @vue-ignore
      */

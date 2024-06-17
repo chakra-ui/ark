@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputLabelProps extends HTMLArkProps<'label'> {}
+export interface NumberInputLabelBaseProps extends PolymorphicProps<'label'> {}
+export interface NumberInputLabelProps
+  extends JSX.LabelHTMLAttributes<HTMLLabelElement>,
+    NumberInputLabelBaseProps {}
 
 export const NumberInputLabel = (props: NumberInputLabelProps) => {
   const api = useNumberInputContext()

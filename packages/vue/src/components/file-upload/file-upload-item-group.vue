@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface FileUploadItemGroupBaseProps extends PolymorphicProps {}
 export interface FileUploadItemGroupProps
-  extends PolymorphicProps,
+  extends FileUploadItemGroupBaseProps,
     /**
      * @vue-ignore
      */

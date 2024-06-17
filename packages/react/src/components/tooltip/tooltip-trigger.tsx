@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
 
-export type TooltipTriggerBaseProps = {}
-export interface TooltipTriggerProps extends HTMLArkProps<'button'>, TooltipTriggerBaseProps {}
+export interface TooltipTriggerBaseProps extends PolymorphicProps {}
+export interface TooltipTriggerProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    TooltipTriggerBaseProps {}
 
 export const TooltipTrigger = forwardRef<HTMLButtonElement, TooltipTriggerProps>((props, ref) => {
   const tooltip = useTooltipContext()

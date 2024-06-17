@@ -1,11 +1,10 @@
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { splitPresenceProps } from './split-presence-props'
 import { type UsePresenceProps, usePresence } from './use-presence'
 
-export interface PresenceBaseProps extends UsePresenceProps {}
-export interface PresenceProps extends Assign<HTMLArkProps<'div'>, PresenceBaseProps> {}
+export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps {}
+export interface PresenceProps extends HTMLAttributes<HTMLDivElement>, PresenceBaseProps {}
 
 export const Presence = forwardRef<HTMLDivElement, PresenceProps>((props, ref) => {
   const [presenceProps, localProps] = splitPresenceProps(props)

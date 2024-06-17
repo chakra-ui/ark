@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './checkbox.types'
 
+export interface CheckboxRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CheckboxRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends CheckboxRootBaseProps,
     /**
      * @vue-ignore
      */

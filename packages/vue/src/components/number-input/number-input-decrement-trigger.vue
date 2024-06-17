@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps {}
 export interface NumberInputDecrementTriggerProps
-  extends PolymorphicProps,
+  extends NumberInputDecrementTriggerBaseProps,
     /**
      * @vue-ignore
      */

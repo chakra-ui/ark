@@ -3,9 +3,9 @@ import type { SwatchProps } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerSwatchBaseProps extends SwatchProps, PolymorphicProps {}
 export interface ColorPickerSwatchProps
-  extends SwatchProps,
-    PolymorphicProps,
+  extends ColorPickerSwatchBaseProps,
     /**
      * @vue-ignore
      */

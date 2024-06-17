@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PinInputControlBaseProps extends PolymorphicProps {}
 export interface PinInputControlProps
-  extends PolymorphicProps,
+  extends PinInputControlBaseProps,
     /**
      * @vue-ignore
      */

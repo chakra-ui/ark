@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export type ProgressRangeBaseProps = {}
-export interface ProgressRangeProps extends HTMLArkProps<'div'>, ProgressRangeBaseProps {}
+export interface ProgressRangeBaseProps extends PolymorphicProps {}
+export interface ProgressRangeProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ProgressRangeBaseProps {}
 
 export const ProgressRange = forwardRef<HTMLDivElement, ProgressRangeProps>((props, ref) => {
   const progress = useProgressContext()

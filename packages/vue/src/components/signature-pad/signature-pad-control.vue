@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SignaturePadControlBaseProps extends PolymorphicProps {}
 export interface SignaturePadControlProps
-  extends PolymorphicProps,
+  extends SignaturePadControlBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,12 +1,16 @@
 import type { ItemGroupProps } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js'
 import { createUniqueId } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
 
-export interface SelectItemGroupProps extends HTMLArkProps<'div'> {}
+export interface SelectItemGroupBaseProps extends PolymorphicProps<'div'> {}
+export interface SelectItemGroupProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    SelectItemGroupBaseProps {}
 
 export const SelectItemGroup = (props: SelectItemGroupProps) => {
   const [_itemGroupProps, localProps] = createSplitProps<Partial<ItemGroupProps>>()(props, ['id'])

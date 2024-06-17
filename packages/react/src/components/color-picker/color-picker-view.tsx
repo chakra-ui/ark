@@ -1,20 +1,23 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import type { ColorFormat } from '@zag-js/color-picker'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 
-export interface ColorPickerViewBaseProps {
+interface FormatOptions {
   format: ColorFormat
 }
 
-export interface ColorPickerViewProps extends HTMLArkProps<'div'>, ColorPickerViewBaseProps {}
+export interface ColorPickerViewBaseProps extends FormatOptions, PolymorphicProps {}
+export interface ColorPickerViewProps
+  extends HTMLAttributes<HTMLDivElement>,
+    ColorPickerViewBaseProps {}
 
 export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>((props, ref) => {
   const colorPicker = useColorPickerContext()
-  const [formatProps, restProps] = createSplitProps<ColorPickerViewBaseProps>()(props, ['format'])
+  const [formatProps, restProps] = createSplitProps<FormatOptions>()(props, ['format'])
 
   if (colorPicker.format !== formatProps.format) {
     return null

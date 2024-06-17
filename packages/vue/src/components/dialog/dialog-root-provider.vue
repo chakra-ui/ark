@@ -7,7 +7,8 @@ interface RootProviderProps {
   value: UnwrapRef<UseDialogReturn>
 }
 
-export interface DialogRootProviderProps extends RootProviderProps, RenderStrategyProps {}
+export interface DialogRootProviderBaseProps extends RootProviderProps, RenderStrategyProps {}
+export interface DialogRootProviderProps extends DialogRootProviderBaseProps {}
 </script>
 
 <script setup lang="ts">

@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
 
-export type CollapsibleTriggerBaseProps = {}
+export interface CollapsibleTriggerBaseProps extends PolymorphicProps {}
 export interface CollapsibleTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     CollapsibleTriggerBaseProps {}
 
 export const CollapsibleTrigger = forwardRef<HTMLButtonElement, CollapsibleTriggerProps>(

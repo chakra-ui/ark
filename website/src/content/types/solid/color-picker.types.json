@@ -1,88 +1,152 @@
 {
   "AreaBackground": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Area": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "xChannel": { "type": "ColorChannel", "isRequired": false },
       "yChannel": { "type": "ColorChannel", "isRequired": false }
     }
   },
   "AreaThumb": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ChannelInput": {
     "props": {
       "channel": { "type": "ExtendedColorChannel", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
   "ChannelSlider": {
     "props": {
       "channel": { "type": "ColorChannel", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
   "ChannelSliderThumb": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ChannelSliderTrack": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Content": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Control": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "EyeDropperTrigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "FormatSelect": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'select'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'select'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "FormatTrigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "HiddenInput": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Label": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'label'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Positioner": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Root": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "false",
@@ -109,11 +173,6 @@
         "defaultValue": "\"rgba\"",
         "isRequired": false,
         "description": "The color format to use"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  control: string\n  trigger: string\n  label: string\n  input: string\n  content: string\n  area: string\n  areaGradient: string\n  areaThumb: string\n  channelInput(id: string): string\n  channelSliderTrack(id: ColorChannel): string\n  channelSliderThumb(id: ColorChannel): string\n}>",
@@ -217,7 +276,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "UseColorPickerReturn", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -249,18 +312,30 @@
   },
   "SwatchGroup": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "SwatchIndicator": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Swatch": {
     "props": {
       "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "respectAlpha": {
         "type": "boolean",
         "isRequired": false,
@@ -271,7 +346,11 @@
   "SwatchTrigger": {
     "props": {
       "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -281,24 +360,40 @@
   },
   "TransparencyGrid": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "size": { "type": "string", "isRequired": false }
     }
   },
   "Trigger": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "ValueText": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'span'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "View": {
     "props": {
       "format": { "type": "ColorFormat", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

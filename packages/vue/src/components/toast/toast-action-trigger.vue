@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ToastActionTriggerBaseProps extends PolymorphicProps {}
 export interface ToastActionTriggerProps
-  extends PolymorphicProps,
+  extends ToastActionTriggerBaseProps,
     /**
      * @vue-ignore
      */

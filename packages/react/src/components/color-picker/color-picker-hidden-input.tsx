@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export type ColorPickerHiddenInputBaseProps = {}
+export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps {}
 export interface ColorPickerHiddenInputProps
-  extends HTMLArkProps<'input'>,
+  extends InputHTMLAttributes<HTMLInputElement>,
     ColorPickerHiddenInputBaseProps {}
 
 export const ColorPickerHiddenInput = forwardRef<HTMLInputElement, ColorPickerHiddenInputProps>(

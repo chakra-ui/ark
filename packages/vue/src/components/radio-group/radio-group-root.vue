@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './radio-group.types'
 
+export interface RadioGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface RadioGroupRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends RadioGroupRootBaseProps,
     /**
      * @vue-ignore
      */

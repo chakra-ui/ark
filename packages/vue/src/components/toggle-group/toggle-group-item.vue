@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/toggle-group'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ToggleGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ToggleGroupItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends ToggleGroupItemBaseProps,
     /**
      * @vue-ignore
      */

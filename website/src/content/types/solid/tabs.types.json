@@ -2,23 +2,39 @@
   "TabContent": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "TabIndicator": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "TabList": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "TabTrigger": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
-      "asChild": { "type": "(props: ParentProps<'button'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -34,7 +50,11 @@
         "isRequired": false,
         "description": "The activation mode of the tabs. Can be `manual` or `automatic`\n- `manual`: Tabs are activated when clicked or press `enter` key.\n- `automatic`: Tabs are activated when receiving focus"
       },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "composite": {
         "type": "boolean",
         "isRequired": false,
@@ -44,11 +64,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The initial value of the tabs when it is first rendered.\nUse when you do not need to control the state of the tabs."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  trigger: string\n  list: string\n  content: string\n  indicator: string\n}>",
@@ -100,7 +115,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "UseTabsReturn", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

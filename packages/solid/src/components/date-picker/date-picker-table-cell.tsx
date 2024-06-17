@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
+import { type JSX, createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import {
   DatePickerTableCellProvider,
@@ -9,9 +9,12 @@ import {
 } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewContext } from './use-date-picker-view-props-context'
 
+export interface DatePickerTableCellBaseProps
+  extends UseDatePickerTableCellContext,
+    PolymorphicProps<'td'> {}
 export interface DatePickerTableCellProps
-  extends HTMLArkProps<'td'>,
-    UseDatePickerTableCellContext {}
+  extends JSX.TdHTMLAttributes<HTMLTableCellElement>,
+    DatePickerTableCellBaseProps {}
 
 export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   const [cellProps, localProps] = createSplitProps<UseDatePickerTableCellContext>()(props, [

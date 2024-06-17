@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface NumberInputScrubberBaseProps extends PolymorphicProps {}
 export interface NumberInputScrubberProps
-  extends PolymorphicProps,
+  extends NumberInputScrubberBaseProps,
     /**
      * @vue-ignore
      */

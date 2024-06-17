@@ -1,14 +1,14 @@
 import type { EllipsisProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
 
-export interface PaginationEllipsisBaseProps extends EllipsisProps {}
+export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps {}
 export interface PaginationEllipsisProps
-  extends Assign<HTMLArkProps<'div'>, PaginationEllipsisBaseProps> {}
+  extends HTMLAttributes<HTMLDivElement>,
+    PaginationEllipsisBaseProps {}
 
 export const PaginationEllipsis = forwardRef<HTMLDivElement, PaginationEllipsisProps>(
   (props, ref) => {

@@ -1,12 +1,15 @@
 import type { ItemProps } from '@zag-js/file-upload'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
+export interface FileUploadItemBaseProps extends ItemProps, PolymorphicProps<'li'> {}
+export interface FileUploadItemProps
+  extends JSX.LiHTMLAttributes<HTMLLIElement>,
+    FileUploadItemBaseProps {}
 
 export const FileUploadItem = (props: FileUploadItemProps) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['file'])

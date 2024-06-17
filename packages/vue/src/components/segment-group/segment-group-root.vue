@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './segment-group.types'
 
+export interface SegmentGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface SegmentGroupRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends SegmentGroupRootBaseProps,
     /**
      * @vue-ignore
      */

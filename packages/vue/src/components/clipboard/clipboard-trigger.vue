@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ClipboardTriggerBaseProps extends PolymorphicProps {}
 export interface ClipboardTriggerProps
-  extends PolymorphicProps,
+  extends ClipboardTriggerBaseProps,
     /**
      * @vue-ignore
      */

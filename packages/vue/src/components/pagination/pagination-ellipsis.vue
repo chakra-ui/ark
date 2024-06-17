@@ -3,9 +3,9 @@ import type { EllipsisProps } from '@zag-js/pagination'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps {}
 export interface PaginationEllipsisProps
-  extends PolymorphicProps,
-    EllipsisProps,
+  extends PaginationEllipsisBaseProps,
     /**
      * @vue-ignore
      */

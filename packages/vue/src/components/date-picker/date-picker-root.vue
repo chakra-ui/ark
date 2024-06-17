@@ -5,10 +5,9 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
 
+export interface DatePickerRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootProps
-  extends RootProps,
-    RenderStrategyProps,
-    PolymorphicProps,
+  extends DatePickerRootBaseProps,
     /**
      * @vue-ignore
      */

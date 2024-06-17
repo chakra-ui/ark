@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface HoverCardTriggerBaseProps extends PolymorphicProps {}
 export interface HoverCardTriggerProps
-  extends PolymorphicProps,
+  extends HoverCardTriggerBaseProps,
     /**
      * @vue-ignore
      */

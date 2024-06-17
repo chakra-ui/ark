@@ -1,13 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import type { MarkerProps } from '@zag-js/slider'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 
-export interface SliderMarkerBaseProps extends MarkerProps {}
-export interface SliderMarkerProps extends Assign<HTMLArkProps<'span'>, SliderMarkerBaseProps> {}
+export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
+export interface SliderMarkerProps extends HTMLAttributes<HTMLSpanElement>, SliderMarkerBaseProps {}
 
 export const SliderMarker = forwardRef<HTMLSpanElement, SliderMarkerProps>((props, ref) => {
   const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])

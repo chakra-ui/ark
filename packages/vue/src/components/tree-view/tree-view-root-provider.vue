@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseTreeViewReturn>
 }
 
+export interface TreeViewRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TreeViewRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends TreeViewRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,8 +2,9 @@
 import type { SVGAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SignaturePadSegmentBaseProps extends PolymorphicProps {}
 export interface SignaturePadSegmentProps
-  extends PolymorphicProps,
+  extends SignaturePadSegmentBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface MenuArrowBaseProps extends PolymorphicProps {}
 export interface MenuArrowProps
-  extends PolymorphicProps,
+  extends MenuArrowBaseProps,
     /**
      * @vue-ignore
      */

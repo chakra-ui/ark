@@ -3,9 +3,9 @@ import type { TableProps } from '@zag-js/date-picker'
 import type { TableHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DatePickerTableBaseProps extends TableProps, PolymorphicProps {}
 export interface DatePickerTableProps
-  extends PolymorphicProps,
-    TableProps,
+  extends DatePickerTableBaseProps,
     /**
      * @vue-ignore
      */

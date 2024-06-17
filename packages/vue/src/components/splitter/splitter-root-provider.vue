@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseSplitterReturn>
 }
 
+export interface SplitterRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SplitterRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends SplitterRootProviderBaseProps,
     /**
      * @vue-ignore
      */

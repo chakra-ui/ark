@@ -1,14 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { Collapsible } from '../collapsible'
-import type { HTMLArkProps } from '../factory'
+import type { PolymorphicProps } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export type AccordionItemContentBaseProps = {}
+export interface AccordionItemContentBaseProps extends PolymorphicProps {}
 export interface AccordionItemContentProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     AccordionItemContentBaseProps {}
 
 interface VisibilityProps {

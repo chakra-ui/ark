@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-export type SegmentGroupItemHiddenInputBaseProps = {}
+export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemHiddenInputProps
-  extends HTMLArkProps<'input'>,
+  extends InputHTMLAttributes<HTMLInputElement>,
     SegmentGroupItemHiddenInputBaseProps {}
 
 export const SegmentGroupItemHiddenInput = forwardRef<

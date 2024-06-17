@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseProgressReturn>
 }
 
+export interface ProgressRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ProgressRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends ProgressRootProviderBaseProps,
     /**
      * @vue-ignore
      */

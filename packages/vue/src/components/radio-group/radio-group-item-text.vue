@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface RadioGroupItemTextBaseProps extends PolymorphicProps {}
 export interface RadioGroupItemTextProps
-  extends PolymorphicProps,
+  extends RadioGroupItemTextBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,9 +1,8 @@
 import type { OptionItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
@@ -11,8 +10,10 @@ import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-contex
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
-export interface MenuRadioItemBaseProps extends PartialOptionItemProps {}
-export interface MenuRadioItemProps extends Assign<HTMLArkProps<'div'>, MenuRadioItemBaseProps> {}
+export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps {}
+export interface MenuRadioItemProps
+  extends HTMLAttributes<HTMLDivElement>,
+    MenuRadioItemBaseProps {}
 
 export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((props, ref) => {
   const [partialItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [

@@ -1,11 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UsePaginationProps, usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 
-export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
+export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps<'nav'> {}
+export interface PaginationRootProps
+  extends JSX.HTMLAttributes<HTMLElement>,
+    PaginationRootBaseProps {}
 
 export const PaginationRoot = (props: PaginationRootProps) => {
   const [usePaginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [

@@ -1,12 +1,14 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
-export type DialogBackdropBaseProps = {}
-export interface DialogBackdropProps extends HTMLArkProps<'div'>, DialogBackdropBaseProps {}
+export interface DialogBackdropBaseProps extends PolymorphicProps {}
+export interface DialogBackdropProps
+  extends HTMLAttributes<HTMLDivElement>,
+    DialogBackdropBaseProps {}
 
 export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((props, ref) => {
   const dialog = useDialogContext()

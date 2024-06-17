@@ -8,10 +8,12 @@ interface RootProviderProps {
   value: UnwrapRef<UseAccordionReturn>
 }
 
-export interface AccordionRootProviderProps
+export interface AccordionRootProviderBaseProps
   extends RootProviderProps,
     RenderStrategyProps,
-    PolymorphicProps,
+    PolymorphicProps {}
+export interface AccordionRootProviderProps
+  extends AccordionRootProviderBaseProps,
     /**
      * @vue-ignore
      */

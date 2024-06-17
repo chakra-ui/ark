@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SliderRangeBaseProps extends PolymorphicProps {}
 export interface SliderRangeProps
-  extends PolymorphicProps,
+  extends SliderRangeBaseProps,
     /**
      * @vue-ignore
      */

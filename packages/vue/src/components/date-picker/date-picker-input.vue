@@ -3,9 +3,9 @@ import type { InputProps } from '@zag-js/date-picker'
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface DatePickerInputBaseProps extends InputProps, PolymorphicProps {}
 export interface DatePickerInputProps
-  extends PolymorphicProps,
-    InputProps,
+  extends DatePickerInputBaseProps,
     /**
      * @vue-ignore
      */

@@ -1,9 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { type HTMLArkProps, ark } from '../factory'
+import type { SVGProps } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export type ProgressCircleBaseProps = {}
-export interface ProgressCircleProps extends HTMLArkProps<'svg'>, ProgressCircleBaseProps {}
+export interface ProgressCircleBaseProps extends PolymorphicProps {}
+export interface ProgressCircleProps extends SVGProps<SVGSVGElement>, ProgressCircleBaseProps {}
 
 export const ProgressCircle = (props: ProgressCircleProps) => {
   const progress = useProgressContext()

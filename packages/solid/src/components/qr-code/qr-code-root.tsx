@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
+import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { type UseQrCodeProps, useQrCode } from './use-qr-code'
 import { QrCodeProvider } from './use-qr-code-context'
 
-export interface QrCodeRootProps extends Assign<HTMLArkProps<'div'>, UseQrCodeProps> {}
+export interface QrCodeRootBaseProps extends UseQrCodeProps, PolymorphicProps<'div'> {}
+export interface QrCodeRootProps extends JSX.HTMLAttributes<HTMLDivElement>, QrCodeRootBaseProps {}
 
 export const QrCodeRoot = (props: QrCodeRootProps) => {
   const [useQrCodeProps, restProps] = createSplitProps<UseQrCodeProps>()(props, [

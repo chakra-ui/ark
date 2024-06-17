@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type LabelHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 
-export type TreeViewLabelBaseProps = {}
-export interface TreeViewLabelProps extends HTMLArkProps<'label'>, TreeViewLabelBaseProps {}
+export interface TreeViewLabelBaseProps extends PolymorphicProps {}
+export interface TreeViewLabelProps
+  extends LabelHTMLAttributes<HTMLLabelElement>,
+    TreeViewLabelBaseProps {}
 
 export const TreeViewLabel = forwardRef<HTMLLabelElement, TreeViewLabelProps>((props, ref) => {
   const treeView = useTreeViewContext()

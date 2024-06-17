@@ -3,9 +3,9 @@ import type { MarkerProps } from '@zag-js/slider'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface SliderMarkerProps
-  extends PolymorphicProps,
-    MarkerProps,
+  extends SliderMarkerBaseProps,
     /**
      * @vue-ignore
      */

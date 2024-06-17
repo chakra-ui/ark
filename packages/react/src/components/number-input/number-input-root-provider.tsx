@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseNumberInputReturn } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 
@@ -9,9 +9,9 @@ interface RootProviderProps {
   value: UseNumberInputReturn
 }
 
-export interface NumberInputRootProviderBaseProps extends RootProviderProps {}
+export interface NumberInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface NumberInputRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     NumberInputRootProviderBaseProps {}
 
 export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRootProviderProps>(

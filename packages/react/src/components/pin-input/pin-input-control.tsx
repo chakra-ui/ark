@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export type PinInputControlBaseProps = {}
-export interface PinInputControlProps extends HTMLArkProps<'div'>, PinInputControlBaseProps {}
+export interface PinInputControlBaseProps extends PolymorphicProps {}
+export interface PinInputControlProps
+  extends HTMLAttributes<HTMLDivElement>,
+    PinInputControlBaseProps {}
 
 export const PinInputControl = forwardRef<HTMLDivElement, PinInputControlProps>((props, ref) => {
   const pinInput = usePinInputContext()

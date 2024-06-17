@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseFileUploadReturn>
 }
 
+export interface FileUploadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FileUploadRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends FileUploadRootProviderBaseProps,
     /**
      * @vue-ignore
      */

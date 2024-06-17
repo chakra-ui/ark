@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './file-upload.types'
 
+export interface FileUploadRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FileUploadRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends FileUploadRootBaseProps,
     /**
      * @vue-ignore
      */

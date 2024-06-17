@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type LabelHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export type FileUploadLabelBaseProps = {}
-export interface FileUploadLabelProps extends HTMLArkProps<'label'>, FileUploadLabelBaseProps {}
+export interface FileUploadLabelBaseProps extends PolymorphicProps {}
+export interface FileUploadLabelProps
+  extends LabelHTMLAttributes<HTMLLabelElement>,
+    FileUploadLabelBaseProps {}
 
 export const FileUploadLabel = forwardRef<HTMLLabelElement, FileUploadLabelProps>((props, ref) => {
   const fileUpload = useFileUploadContext()

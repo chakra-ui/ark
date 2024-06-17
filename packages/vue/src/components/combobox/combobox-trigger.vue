@@ -3,9 +3,9 @@ import type { TriggerProps } from '@zag-js/combobox'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ComboboxTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface ComboboxTriggerProps
-  extends TriggerProps,
-    PolymorphicProps,
+  extends ComboboxTriggerBaseProps,
     /**
      * @vue-ignore
      */

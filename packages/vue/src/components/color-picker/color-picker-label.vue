@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerLabelBaseProps extends PolymorphicProps {}
 export interface ColorPickerLabelProps
-  extends PolymorphicProps,
+  extends ColorPickerLabelBaseProps,
     /**
      * @vue-ignore
      */

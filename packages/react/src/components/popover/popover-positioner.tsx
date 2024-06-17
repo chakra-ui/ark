@@ -1,11 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { usePopoverContext } from './use-popover-context'
 
-export type PopoverPositionerBaseProps = {}
-export interface PopoverPositionerProps extends HTMLArkProps<'div'>, PopoverPositionerBaseProps {}
+export interface PopoverPositionerBaseProps extends PolymorphicProps {}
+export interface PopoverPositionerProps
+  extends HTMLAttributes<HTMLDivElement>,
+    PopoverPositionerBaseProps {}
 
 export const PopoverPositioner = forwardRef<HTMLDivElement, PopoverPositionerProps>(
   (props, ref) => {

@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface FileUploadHiddenInputBaseProps extends PolymorphicProps {}
 export interface FileUploadHiddenInputProps
-  extends PolymorphicProps,
+  extends FileUploadHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

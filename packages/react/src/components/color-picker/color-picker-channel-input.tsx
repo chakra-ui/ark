@@ -1,14 +1,14 @@
 import type { ChannelInputProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import type { Assign } from '../../types'
+import { type InputHTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerChannelInputBaseProps extends ChannelInputProps {}
+export interface ColorPickerChannelInputBaseProps extends ChannelInputProps, PolymorphicProps {}
 export interface ColorPickerChannelInputProps
-  extends Assign<HTMLArkProps<'input'>, ColorPickerChannelInputBaseProps> {}
+  extends InputHTMLAttributes<HTMLInputElement>,
+    ColorPickerChannelInputBaseProps {}
 
 export const ColorPickerChannelInput = forwardRef<HTMLInputElement, ColorPickerChannelInputProps>(
   (props, ref) => {

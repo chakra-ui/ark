@@ -5,9 +5,10 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
 type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checked'>
+
+export interface MenuRadioItemBaseProps extends RadioItemProps, PolymorphicProps {}
 export interface MenuRadioItemProps
-  extends PolymorphicProps,
-    RadioItemProps,
+  extends MenuRadioItemBaseProps,
     /**
      * @vue-ignore
      */

@@ -3,9 +3,9 @@ import type { ViewProps } from '@zag-js/progress'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
 export interface ProgressViewProps
-  extends PolymorphicProps,
-    ViewProps,
+  extends ProgressViewBaseProps,
     /**
      * @vue-ignore
      */

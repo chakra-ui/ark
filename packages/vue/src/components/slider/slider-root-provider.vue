@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseSliderReturn>
 }
 
+export interface SliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SliderRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends SliderRootProviderBaseProps,
     /**
      * @vue-ignore
      */

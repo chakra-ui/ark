@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
 
-export type PaginationPrevTriggerBaseProps = {}
+export interface PaginationPrevTriggerBaseProps extends PolymorphicProps {}
 export interface PaginationPrevTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     PaginationPrevTriggerBaseProps {}
 
 export const PaginationPrevTrigger = forwardRef<HTMLButtonElement, PaginationPrevTriggerProps>(

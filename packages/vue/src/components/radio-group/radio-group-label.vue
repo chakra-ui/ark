@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface RadioGroupLabelBaseProps extends PolymorphicProps {}
 export interface RadioGroupLabelProps
-  extends PolymorphicProps,
+  extends RadioGroupLabelBaseProps,
     /**
      * @vue-ignore
      */

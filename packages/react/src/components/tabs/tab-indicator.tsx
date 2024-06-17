@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
 
-export type TabIndicatorBaseProps = {}
-export interface TabIndicatorProps extends HTMLArkProps<'div'>, TabIndicatorBaseProps {}
+export interface TabIndicatorBaseProps extends PolymorphicProps {}
+export interface TabIndicatorProps extends HTMLAttributes<HTMLDivElement>, TabIndicatorBaseProps {}
 
 export const TabIndicator = forwardRef<HTMLDivElement, TabIndicatorProps>((props, ref) => {
   const tabs = useTabsContext()

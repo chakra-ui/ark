@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseNumberInputReturn>
 }
 
+export interface NumberInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface NumberInputRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends NumberInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

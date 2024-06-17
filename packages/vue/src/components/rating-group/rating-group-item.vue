@@ -3,9 +3,9 @@ import type { ItemProps } from '@zag-js/rating-group'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface RatingGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface RatingGroupItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends RatingGroupItemBaseProps,
     /**
      * @vue-ignore
      */

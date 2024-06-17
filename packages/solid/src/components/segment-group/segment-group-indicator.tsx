@@ -1,9 +1,13 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
-export interface SegmentGroupIndicatorProps extends HTMLArkProps<'div'> {}
+export interface SegmentGroupIndicatorBaseProps extends PolymorphicProps<'div'> {}
+export interface SegmentGroupIndicatorProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    SegmentGroupIndicatorBaseProps {}
 
 export const SegmentGroupIndicator = (props: SegmentGroupIndicatorProps) => {
   const segmentGroup = useSegmentGroupContext()

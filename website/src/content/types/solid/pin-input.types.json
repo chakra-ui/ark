@@ -1,28 +1,48 @@
 {
   "Control": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "HiddenInput": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Input": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'input'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Label": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'label'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'label'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
   "Root": {
     "props": {
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "autoFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -47,11 +67,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The associate form of the underlying input element."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
@@ -130,7 +145,11 @@
   "RootProvider": {
     "props": {
       "value": { "type": "UsePinInputReturn", "isRequired": true },
-      "asChild": { "type": "(props: ParentProps<'div'>) => Element", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

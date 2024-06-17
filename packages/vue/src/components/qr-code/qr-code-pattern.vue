@@ -2,8 +2,9 @@
 import type { SVGAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface QrCodePatternBaseProps extends PolymorphicProps {}
 export interface QrCodePatternProps
-  extends PolymorphicProps,
+  extends QrCodePatternBaseProps,
     /**
      * @vue-ignore
      */

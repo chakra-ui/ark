@@ -1,8 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import type { JSX } from 'solid-js'
+import { type PolymorphicProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
-export interface SwitchHiddenInputProps extends HTMLArkProps<'input'> {}
+export interface SwitchHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+export interface SwitchHiddenInputProps
+  extends JSX.InputHTMLAttributes<HTMLInputElement>,
+    SwitchHiddenInputBaseProps {}
 
 export const SwitchHiddenInput = (props: SwitchHiddenInputProps) => {
   const api = useSwitchContext()

@@ -2,8 +2,9 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps {}
 export interface ColorPickerHiddenInputProps
-  extends PolymorphicProps,
+  extends ColorPickerHiddenInputBaseProps,
     /**
      * @vue-ignore
      */

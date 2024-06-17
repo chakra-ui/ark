@@ -2,8 +2,9 @@
 import type { SelectHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerFormatSelectBaseProps extends PolymorphicProps {}
 export interface ColorPickerFormatSelectProps
-  extends PolymorphicProps,
+  extends ColorPickerFormatSelectBaseProps,
     /**
      * @vue-ignore
      */

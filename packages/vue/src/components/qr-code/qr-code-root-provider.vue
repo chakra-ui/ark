@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseQrCodeReturn>
 }
 
+export interface QrCodeRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface QrCodeRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends QrCodeRootProviderBaseProps,
     /**
      * @vue-ignore
      */

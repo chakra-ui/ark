@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseRadioGroupReturn } from './use-radio-group'
 import { RadioGroupProvider } from './use-radio-group-context'
 
@@ -9,9 +9,9 @@ interface RootProviderProps {
   value: UseRadioGroupReturn
 }
 
-export interface RadioGroupRootProviderBaseProps extends RootProviderProps {}
+export interface RadioGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RadioGroupRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     RadioGroupRootProviderBaseProps {}
 
 export const RadioGroupRootProvider = forwardRef<HTMLDivElement, RadioGroupRootProviderProps>(

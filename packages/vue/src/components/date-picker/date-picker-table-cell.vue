@@ -3,9 +3,11 @@ import type { TdHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import type { DatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
 
+export interface DatePickerTableCellBaseProps
+  extends DatePickerTableCellPropsContext,
+    PolymorphicProps {}
 export interface DatePickerTableCellProps
-  extends PolymorphicProps,
-    DatePickerTableCellPropsContext,
+  extends DatePickerTableCellBaseProps,
     /**
      * @vue-ignore
      */

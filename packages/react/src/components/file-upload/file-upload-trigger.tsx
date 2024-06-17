@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 
-export type FileUploadTriggerBaseProps = {}
+export interface FileUploadTriggerBaseProps extends PolymorphicProps {}
 export interface FileUploadTriggerProps
-  extends HTMLArkProps<'button'>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     FileUploadTriggerBaseProps {}
 
 export const FileUploadTrigger = forwardRef<HTMLButtonElement, FileUploadTriggerProps>(

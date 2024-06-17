@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type InputHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export type ClipboardInputBaseProps = {}
-export interface ClipboardInputProps extends HTMLArkProps<'input'>, ClipboardInputBaseProps {}
+export interface ClipboardInputBaseProps extends PolymorphicProps {}
+export interface ClipboardInputProps
+  extends InputHTMLAttributes<HTMLInputElement>,
+    ClipboardInputBaseProps {}
 
 export const ClipboardInput = forwardRef<HTMLInputElement, ClipboardInputProps>((props, ref) => {
   const clipboard = useClipboardContext()

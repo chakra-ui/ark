@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseTagsInputReturn>
 }
 
+export interface TagsInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TagsInputRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends TagsInputRootProviderBaseProps,
     /**
      * @vue-ignore
      */

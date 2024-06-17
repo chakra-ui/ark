@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface CarouselPrevTriggerBaseProps extends PolymorphicProps {}
 export interface CarouselPrevTriggerProps
-  extends PolymorphicProps,
+  extends CarouselPrevTriggerBaseProps,
     /**
      * @vue-ignore
      */

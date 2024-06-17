@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface FileUploadLabelBaseProps extends PolymorphicProps {}
 export interface FileUploadLabelProps
-  extends PolymorphicProps,
+  extends FileUploadLabelBaseProps,
     /**
      * @vue-ignore
      */

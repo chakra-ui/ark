@@ -2,8 +2,9 @@
 import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface TagsInputLabelBaseProps extends PolymorphicProps {}
 export interface TagsInputLabelProps
-  extends PolymorphicProps,
+  extends TagsInputLabelBaseProps,
     /**
      * @vue-ignore
      */

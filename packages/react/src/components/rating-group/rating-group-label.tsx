@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type LabelHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 
-export type RatingGroupLabelBaseProps = {}
-export interface RatingGroupLabelProps extends HTMLArkProps<'label'>, RatingGroupLabelBaseProps {}
+export interface RatingGroupLabelBaseProps extends PolymorphicProps {}
+export interface RatingGroupLabelProps
+  extends LabelHTMLAttributes<HTMLLabelElement>,
+    RatingGroupLabelBaseProps {}
 
 export const RatingGroupLabel = forwardRef<HTMLLabelElement, RatingGroupLabelProps>(
   (props, ref) => {

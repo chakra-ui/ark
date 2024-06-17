@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseSwitchReturn>
 }
 
+export interface SwitchRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SwitchRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends SwitchRootProviderBaseProps,
     /**
      * @vue-ignore
      */

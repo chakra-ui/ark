@@ -1,10 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js'
 import { Show } from 'solid-js'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerPositionerProps extends HTMLArkProps<'div'> {}
+export interface ColorPickerPositionerBaseProps extends PolymorphicProps<'div'> {}
+export interface ColorPickerPositionerProps
+  extends JSX.HTMLAttributes<HTMLDivElement>,
+    ColorPickerPositionerBaseProps {}
 
 export const ColorPickerPositioner = (props: ColorPickerPositionerProps) => {
   const api = useColorPickerContext()

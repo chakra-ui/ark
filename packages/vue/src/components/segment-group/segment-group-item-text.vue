@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SegmentGroupItemTextBaseProps extends PolymorphicProps {}
 export interface SegmentGroupItemTextProps
-  extends PolymorphicProps,
+  extends SegmentGroupItemTextBaseProps,
     /**
      * @vue-ignore
      */

@@ -3,8 +3,9 @@ import type { HTMLAttributes } from 'vue'
 import { createSplitProps } from '../create-split-props'
 import type { PolymorphicProps } from '../factory'
 
+export interface AccordionItemContentBaseProps extends PolymorphicProps {}
 export interface AccordionItemContentProps
-  extends PolymorphicProps,
+  extends AccordionItemContentBaseProps,
     /**
      * @vue-ignore
      */

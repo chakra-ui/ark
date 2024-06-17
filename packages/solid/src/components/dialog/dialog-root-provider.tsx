@@ -11,11 +11,13 @@ import type { UseDialogReturn } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
 interface RootProviderProps {
-  children?: JSX.Element
   value: UseDialogReturn
 }
 
-export interface DialogRootProviderProps extends RootProviderProps, UsePresenceProps {}
+export interface DialogRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface DialogRootProviderProps extends DialogRootProviderBaseProps {
+  children?: JSX.Element
+}
 
 export const DialogRootProvider = (props: DialogRootProviderProps) => {
   const [presenceProps, dialogProps] = splitPresenceProps(props)

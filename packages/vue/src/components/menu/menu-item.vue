@@ -4,9 +4,9 @@ import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
+export interface MenuItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface MenuItemProps
-  extends PolymorphicProps,
-    ItemProps,
+  extends MenuItemBaseProps,
     /**
      * @vue-ignore
      */

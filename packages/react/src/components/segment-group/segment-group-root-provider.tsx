@@ -1,8 +1,8 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { type HTMLAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type PolymorphicProps, ark } from '../factory'
 import type { UseSegmentGroupReturn } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
@@ -10,9 +10,9 @@ interface RootProviderProps {
   value: UseSegmentGroupReturn
 }
 
-export interface SegmentGroupRootProviderBaseProps extends RootProviderProps {}
+export interface SegmentGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SegmentGroupRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     SegmentGroupRootProviderBaseProps {}
 
 export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupRootProviderProps>(

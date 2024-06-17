@@ -2,8 +2,9 @@
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface EditableSubmitTriggerBaseProps extends PolymorphicProps {}
 export interface EditableSubmitTriggerProps
-  extends PolymorphicProps,
+  extends EditableSubmitTriggerBaseProps,
     /**
      * @vue-ignore
      */

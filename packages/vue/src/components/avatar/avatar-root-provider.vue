@@ -7,9 +7,9 @@ interface RootProviderProps {
   value: UnwrapRef<UseAvatarReturn>
 }
 
+export interface AvatarRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface AvatarRootProviderProps
-  extends RootProviderProps,
-    PolymorphicProps,
+  extends AvatarRootProviderBaseProps,
     /**
      * @vue-ignore
      */

@@ -2,8 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ProgressCircleRangeBaseProps extends PolymorphicProps {}
 export interface ProgressCircleRangeProps
-  extends PolymorphicProps,
+  extends ProgressCircleRangeBaseProps,
     /**
      * @vue-ignore
      */

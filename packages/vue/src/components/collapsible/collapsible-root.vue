@@ -4,9 +4,9 @@ import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './collapsible.types'
 
+export interface CollapsibleRootBaseProps extends RootProps, PolymorphicProps {}
 export interface CollapsibleRootProps
-  extends RootProps,
-    PolymorphicProps,
+  extends CollapsibleRootBaseProps,
     /**
      * @vue-ignore
      */

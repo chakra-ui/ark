@@ -3,9 +3,9 @@ import type { ChannelProps } from '@zag-js/color-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface ColorPickerChannelSliderBaseProps extends ChannelProps, PolymorphicProps {}
 export interface ColorPickerChannelSliderProps
-  extends ChannelProps,
-    PolymorphicProps,
+  extends ColorPickerChannelSliderBaseProps,
     /**
      * @vue-ignore
      */

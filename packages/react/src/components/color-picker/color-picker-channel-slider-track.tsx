@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
-export type ColorPickerChannelSliderTrackBaseProps = {}
+export interface ColorPickerChannelSliderTrackBaseProps extends PolymorphicProps {}
 export interface ColorPickerChannelSliderTrackProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLAttributes<HTMLDivElement>,
     ColorPickerChannelSliderTrackBaseProps {}
 
 export const ColorPickerChannelSliderTrack = forwardRef<

@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
-export type CheckboxLabelBaseProps = {}
-export interface CheckboxLabelProps extends HTMLArkProps<'span'>, CheckboxLabelBaseProps {}
+export interface CheckboxLabelBaseProps extends PolymorphicProps {}
+export interface CheckboxLabelProps
+  extends HTMLAttributes<HTMLSpanElement>,
+    CheckboxLabelBaseProps {}
 
 export const CheckboxLabel = forwardRef<HTMLSpanElement, CheckboxLabelProps>((props, ref) => {
   const checkbox = useCheckboxContext()

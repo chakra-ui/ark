@@ -1,10 +1,12 @@
 import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type LabelHTMLAttributes, forwardRef } from 'react'
+import { type PolymorphicProps, ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 
-export type RadioGroupLabelBaseProps = {}
-export interface RadioGroupLabelProps extends HTMLArkProps<'label'>, RadioGroupLabelBaseProps {}
+export interface RadioGroupLabelBaseProps extends PolymorphicProps {}
+export interface RadioGroupLabelProps
+  extends LabelHTMLAttributes<HTMLLabelElement>,
+    RadioGroupLabelBaseProps {}
 
 export const RadioGroupLabel = forwardRef<HTMLLabelElement, RadioGroupLabelProps>((props, ref) => {
   const radioGroup = useRadioGroupContext()

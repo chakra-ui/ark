@@ -3,9 +3,9 @@ import type { ResizeTriggerProps } from '@zag-js/splitter'
 import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
+export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
 export interface SplitterResizeTriggerProps
-  extends PolymorphicProps,
-    ResizeTriggerProps,
+  extends SplitterResizeTriggerBaseProps,
     /**
      * @vue-ignore
      */
