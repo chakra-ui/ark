@@ -371,6 +371,17 @@
         "default": "./dist/toast/index.cjs"
       }
     },
+    "./time-picker": {
+      "source": "./src/time-picker/index.ts",
+      "import": {
+        "types": "./dist/time-picker/index.d.ts",
+        "default": "./dist/time-picker/index.js"
+      },
+      "require": {
+        "types": "./dist/time-picker/index.d.cts",
+        "default": "./dist/time-picker/index.cjs"
+      }
+    },
     "./toggle-group": {
       "source": "./src/toggle-group/index.ts",
       "import": {
@@ -447,6 +458,7 @@
     "@zag-js/switch": "0.59.0",
     "@zag-js/tabs": "0.59.0",
     "@zag-js/tags-input": "0.59.0",
+    "@zag-js/time-picker": "0.59.0",
     "@zag-js/toast": "0.59.0",
     "@zag-js/toggle-group": "0.59.0",
     "@zag-js/tooltip": "0.59.0",
