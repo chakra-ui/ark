@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -17,7 +17,7 @@ interface RootProviderProps {
 
 export interface TimePickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface TimePickerRootProviderProps
-  extends HTMLArkProps<'div'>,
+  extends HTMLProps<'div'>,
     TimePickerRootProviderBaseProps {}
 
 export const TimePickerRootProvider = forwardRef<HTMLDivElement, TimePickerRootProviderProps>(

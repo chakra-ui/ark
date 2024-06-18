@@ -3,20 +3,20 @@ import type { CellProps } from '@zag-js/time-picker'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerMinuteCellBaseProps extends CellProps {}
 export interface TimePickerMinuteCellProps
-  extends Assign<HTMLArkProps<'div'>, TimePickerMinuteCellBaseProps> {}
+  extends Assign<HTMLProps<'button'>, TimePickerMinuteCellBaseProps> {}
 
-export const TimePickerMinuteCell = forwardRef<HTMLDivElement, TimePickerMinuteCellProps>(
+export const TimePickerMinuteCell = forwardRef<HTMLButtonElement, TimePickerMinuteCellProps>(
   (props, ref) => {
     const [cellProps, localProps] = createSplitProps<CellProps>()(props, ['value'])
     const timePicker = useTimePickerContext()
     const mergedProps = mergeProps(timePicker.getMinuteCellProps(cellProps), localProps)
 
-    return <ark.div {...mergedProps} ref={ref} />
+    return <ark.button {...mergedProps} ref={ref} />
   },
 )
 
