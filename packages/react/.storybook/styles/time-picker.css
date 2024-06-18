@@ -1,3 +1,7 @@
+[hidden] {
+  display: none !important;
+}
+
 [data-scope="time-picker"][data-part="content"] {
   border: 1px solid gray;
   background: white;

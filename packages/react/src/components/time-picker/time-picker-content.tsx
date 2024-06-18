@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export type TimePickerContentBaseProps = {}
 export interface TimePickerContentProps
-  extends Assign<HTMLArkProps<'div'>, TimePickerContentBaseProps> {}
+  extends Assign<HTMLProps<'div'>, TimePickerContentBaseProps> {}
 
 export const TimePickerContent = forwardRef<HTMLDivElement, TimePickerContentProps>(
   (props, ref) => {

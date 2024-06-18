@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -13,7 +13,7 @@ import { type UseTimePickerProps, useTimePicker } from './use-time-picker'
 import { TimePickerProvider } from './use-time-picker-context'
 
 export interface TimePickerRootBaseProps extends UseTimePickerProps, UsePresenceProps {}
-export interface TimePickerRootProps extends Assign<HTMLArkProps<'div'>, TimePickerRootBaseProps> {}
+export interface TimePickerRootProps extends Assign<HTMLProps<'div'>, TimePickerRootBaseProps> {}
 
 export const TimePickerRoot = forwardRef<HTMLDivElement, TimePickerRootProps>((props, ref) => {
   const [presenceProps, timePickerProps] = splitPresenceProps(props)
