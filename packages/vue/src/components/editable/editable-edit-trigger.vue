@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface EditableEditTriggerProps extends PolymorphicProps {}
+export interface EditableEditTriggerBaseProps extends PolymorphicProps {}
+export interface EditableEditTriggerProps
+  extends EditableEditTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.button v-bind="editable.editTriggerProps" :as-child="asChild">
+  <ark.button v-bind="editable.getEditTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

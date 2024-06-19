@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseClipboardProps, useClipboard } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
 
-export interface ClipboardRootProps extends Assign<HTMLArkProps<'div'>, UseClipboardProps> {}
+export interface ClipboardRootBaseProps extends UseClipboardProps, PolymorphicProps {}
+export interface ClipboardRootProps extends HTMLProps<'div'>, ClipboardRootBaseProps {}
 
 export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((props, ref) => {
   const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [
@@ -17,7 +17,7 @@ export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((pro
     'value',
   ])
   const clipboard = useClipboard(useClipboardProps)
-  const mergedProps = mergeProps(clipboard.rootProps, localProps)
+  const mergedProps = mergeProps(clipboard.getRootProps(), localProps)
 
   return (
     <ClipboardProvider value={clipboard}>

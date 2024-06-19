@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerContentProps extends PolymorphicProps {}
+export interface DatePickerContentBaseProps extends PolymorphicProps {}
+export interface DatePickerContentProps
+  extends DatePickerContentBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.contentProps" :as-child="asChild">
+  <ark.div v-bind="datePicker.getContentProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

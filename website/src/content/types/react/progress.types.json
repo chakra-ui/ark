@@ -4,7 +4,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
@@ -13,7 +13,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
@@ -22,7 +22,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
@@ -31,30 +31,27 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Range": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "ids": {
         "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
@@ -90,25 +87,39 @@
         "isRequired": false,
         "description": "The current value of the progress bar."
       }
-    }
+    },
+    "element": "HTMLDivElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseProgressReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
   },
   "Track": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ValueText": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "View": {
     "props": {
@@ -116,8 +127,9 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   }
 }

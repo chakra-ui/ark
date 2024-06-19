@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UsePaginationProps, usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 
-export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
+export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps {}
+export interface PaginationRootProps extends HTMLProps<'nav'>, PaginationRootBaseProps {}
 
 export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((props, ref) => {
   const [paginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
@@ -15,6 +15,7 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
     'id',
     'ids',
     'onPageChange',
+    'onPageSizeChange',
     'page',
     'pageSize',
     'siblingCount',
@@ -23,7 +24,7 @@ export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((prop
   ])
 
   const pagination = usePagination(paginationProps)
-  const mergedProps = mergeProps(pagination.rootProps, localProps)
+  const mergedProps = mergeProps(pagination.getRootProps(), localProps)
 
   return (
     <PaginationProvider value={pagination}>

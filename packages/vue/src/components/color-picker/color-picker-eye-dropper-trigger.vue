@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerEyeDropperTriggerProps extends PolymorphicProps {}
+export interface ColorPickerEyeDropperTriggerBaseProps extends PolymorphicProps {}
+export interface ColorPickerEyeDropperTriggerProps
+  extends ColorPickerEyeDropperTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.button v-bind="colorPicker.eyeDropperTriggerProps" :as-child="asChild">
+  <ark.button v-bind="colorPicker.getEyeDropperTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/select'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectItemProps extends PolymorphicProps, ItemProps {}
+export interface SelectItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface SelectItemProps
+  extends SelectItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

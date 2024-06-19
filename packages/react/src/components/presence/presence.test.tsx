@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useState } from 'react'
+import { axe } from 'vitest-axe'
 import { Presence, type PresenceProps } from './'
 
 const ComponentUnderTest = (props: PresenceProps) => {
@@ -18,6 +19,13 @@ const ComponentUnderTest = (props: PresenceProps) => {
 }
 
 describe('Presence', () => {
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
   it('should control presence when not lazy mounting and not unmounting on exit', async () => {
     render(<ComponentUnderTest />)
     expect(screen.queryByTestId('box')).not.toBeVisible()

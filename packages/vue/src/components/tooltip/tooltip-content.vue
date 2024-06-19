@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TooltipContentProps extends PolymorphicProps {}
+export interface TooltipContentBaseProps extends PolymorphicProps {}
+export interface TooltipContentProps
+  extends TooltipContentBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const tooltip = useTooltipContext()
 </script>
 
 <template>
-  <ark.div v-bind="tooltip.contentProps" :as-child="asChild">
+  <ark.div v-bind="tooltip.getContentProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

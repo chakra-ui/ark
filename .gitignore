@@ -305,3 +305,4 @@ vite.config.ts.timestamp-*
 vite.config.mts.timestamp-*
 
 .velite
+.vercel

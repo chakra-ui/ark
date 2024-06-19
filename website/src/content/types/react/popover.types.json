@@ -4,72 +4,80 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Arrow": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ArrowTip": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "CloseTrigger": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Content": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Description": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLParagraphElement"
   },
   "Indicator": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Positioner": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -106,6 +114,11 @@
         "isRequired": false,
         "description": "The ids of the elements in the popover. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "initialFocusEl": {
         "type": "() => HTMLElement | null",
         "isRequired": false,
@@ -131,7 +144,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusOutside": {
         "type": "(event: FocusOutsideEvent) => void",
@@ -187,22 +200,56 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UsePopoverReturn", "isRequired": true },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
   "Title": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Trigger": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   }
 }

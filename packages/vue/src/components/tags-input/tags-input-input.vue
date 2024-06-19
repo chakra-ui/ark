@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputInputProps extends PolymorphicProps {}
+export interface TagsInputInputBaseProps extends PolymorphicProps {}
+export interface TagsInputInputProps
+  extends TagsInputInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const tagsInput = useTagsInputContext()
 </script>
 
 <template>
-  <ark.input v-bind="tagsInput.inputProps" :as-child="asChild" />
+  <ark.input v-bind="tagsInput.getInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

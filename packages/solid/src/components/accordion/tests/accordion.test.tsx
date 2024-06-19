@@ -1,7 +1,6 @@
 import { accordionAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import { Accordion } from '../'
 import { LocaleProvider } from '../../../providers'
 import { getExports, getParts } from '../../../setup-test'

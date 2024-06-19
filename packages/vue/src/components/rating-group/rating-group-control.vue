@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RatingGroupControlProps extends PolymorphicProps {}
+export interface RatingGroupControlBaseProps extends PolymorphicProps {}
+export interface RatingGroupControlProps
+  extends RatingGroupControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -14,7 +21,7 @@ const ratingGroup = useRatingGroupContext()
 </script>
 
 <template>
-  <ark.div v-bind="ratingGroup.controlProps" :as-child="asChild">
+  <ark.div v-bind="ratingGroup.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

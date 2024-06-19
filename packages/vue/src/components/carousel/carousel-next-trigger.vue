@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CarouselNextTriggerProps extends PolymorphicProps {}
+export interface CarouselNextTriggerBaseProps extends PolymorphicProps {}
+export interface CarouselNextTriggerProps
+  extends CarouselNextTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const carousel = useCarouselContext()
 </script>
 
 <template>
-  <ark.button v-bind="carousel.nextTriggerProps" :as-child="asChild">
+  <ark.button v-bind="carousel.getNextTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

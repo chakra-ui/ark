@@ -10,11 +10,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@ark-ui/vue": "1.0.0-4",
-    "lucide-vue-next": "0.376.0",
+    "@ark-ui/vue": "3.3.0",
+    "lucide-vue-next": "0.387.0",
     "nuxt": "3.11.2",
     "typescript": "5.4.5",
-    "vue": "3.4.26",
+    "vue": "3.4.27",
     "vue-router": "4.3.2"
   }
 }

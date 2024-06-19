@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
 
-export interface MenuTriggerItemProps extends PolymorphicProps {}
+export interface MenuTriggerItemBaseProps extends PolymorphicProps {}
+export interface MenuTriggerItemProps
+  extends MenuTriggerItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

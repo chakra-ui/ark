@@ -1,7 +1,7 @@
 import type * as combobox from '@zag-js/combobox'
 import type { CollectionItem } from './combobox'
 
-export interface RootProps<T extends CollectionItem = CollectionItem> {
+export interface RootProps<T extends CollectionItem> {
   /**
    * Whether to allow typing custom values in the input
    */
@@ -109,7 +109,10 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   loopFocus?: boolean
   modelValue?: string[]
   /**
-   * Whether to allow multiple selection
+   * Whether to allow multiple selection.
+   *
+   * **Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.
+   * It is recommended to render the selected items in a separate container.
    */
   multiple?: boolean
   /**
@@ -168,7 +171,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   translations?: combobox.IntlTranslations
 }
 
-export type RootEmits<T extends CollectionItem = CollectionItem> = {
+export type RootEmits<T extends CollectionItem> = {
   /**
    * Function called when the focus is moved outside the component
    */

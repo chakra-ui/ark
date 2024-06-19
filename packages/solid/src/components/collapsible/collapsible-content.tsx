@@ -1,13 +1,14 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
 
-export interface CollapsibleContentProps extends HTMLArkProps<'div'> {}
+export interface CollapsibleContentBaseProps extends PolymorphicProps<'div'> {}
+export interface CollapsibleContentProps extends HTMLProps<'div'>, CollapsibleContentBaseProps {}
 
 export const CollapsibleContent = (props: CollapsibleContentProps) => {
   const api = useCollapsibleContext()
-  const mergedProps = mergeProps(() => api().contentProps, props)
+  const mergedProps = mergeProps(() => api().getContentProps(), props)
 
   return (
     <Show when={!api().unmounted}>

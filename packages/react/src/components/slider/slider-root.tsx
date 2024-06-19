@@ -2,11 +2,12 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSliderProps, useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
-export interface SliderRootProps extends Assign<HTMLArkProps<'div'>, UseSliderProps> {}
+export interface SliderRootBaseProps extends UseSliderProps, PolymorphicProps {}
+export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBaseProps> {}
 
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
   const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [
@@ -36,7 +37,7 @@ export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, re
     'value',
   ])
   const slider = useSlider(useSliderProps)
-  const mergedProps = mergeProps(slider.rootProps, localProps)
+  const mergedProps = mergeProps(slider.getRootProps(), localProps)
 
   return (
     <SliderProvider value={slider}>

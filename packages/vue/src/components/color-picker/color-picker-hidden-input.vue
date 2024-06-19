@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerHiddenInputProps extends PolymorphicProps {}
+export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps {}
+export interface ColorPickerHiddenInputProps
+  extends ColorPickerHiddenInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.input v-bind="colorPicker.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="colorPicker.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

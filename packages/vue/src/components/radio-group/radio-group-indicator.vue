@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RadioGroupIndicatorProps extends PolymorphicProps {}
+export interface RadioGroupIndicatorBaseProps extends PolymorphicProps {}
+export interface RadioGroupIndicatorProps
+  extends RadioGroupIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const radioGroup = useRadioGroupContext()
 </script>
 
 <template>
-  <ark.div v-bind="radioGroup.indicatorProps" :as-child="asChild">
+  <ark.div v-bind="radioGroup.getIndicatorProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

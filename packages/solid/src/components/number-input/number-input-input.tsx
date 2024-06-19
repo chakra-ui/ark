@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
-export interface NumberInputInputProps extends HTMLArkProps<'input'> {}
+export interface NumberInputInputBaseProps extends PolymorphicProps<'input'> {}
+export interface NumberInputInputProps extends HTMLProps<'input'>, NumberInputInputBaseProps {}
 
 export const NumberInputInput = (props: NumberInputInputProps) => {
   const api = useNumberInputContext()
-  const mergedProps = mergeProps(() => api().inputProps, props)
+  const mergedProps = mergeProps(() => api().getInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

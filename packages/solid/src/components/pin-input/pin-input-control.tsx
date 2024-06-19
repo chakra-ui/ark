@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export interface PinInputControlProps extends HTMLArkProps<'div'> {}
+export interface PinInputControlBaseProps extends PolymorphicProps<'div'> {}
+export interface PinInputControlProps extends HTMLProps<'div'>, PinInputControlBaseProps {}
 
 export const PinInputControl = (props: PinInputControlProps) => {
   const api = usePinInputContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().getControlProps(), props)
 
   return <ark.div {...mergedProps} />
 }

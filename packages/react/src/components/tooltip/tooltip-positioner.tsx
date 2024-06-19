@@ -1,15 +1,16 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
 
-export interface TooltipPositionerProps extends HTMLArkProps<'div'> {}
+export interface TooltipPositionerBaseProps extends PolymorphicProps {}
+export interface TooltipPositionerProps extends HTMLProps<'div'>, TooltipPositionerBaseProps {}
 
 export const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerProps>(
   (props, ref) => {
     const tooltip = useTooltipContext()
-    const mergedProps = mergeProps(tooltip.positionerProps, props)
+    const mergedProps = mergeProps(tooltip.getPositionerProps(), props)
     const presence = usePresenceContext()
 
     if (presence.unmounted) {

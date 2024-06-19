@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputItemDeleteTriggerProps extends PolymorphicProps {}
+export interface TagsInputItemDeleteTriggerBaseProps extends PolymorphicProps {}
+export interface TagsInputItemDeleteTriggerProps
+  extends TagsInputItemDeleteTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

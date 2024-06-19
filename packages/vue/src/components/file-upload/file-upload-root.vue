@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './file-upload.types'
 
-export interface FileUploadRootProps extends RootProps, PolymorphicProps {}
+export interface FileUploadRootBaseProps extends RootProps, PolymorphicProps {}
+export interface FileUploadRootProps
+  extends FileUploadRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface FileUploadRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
 
@@ -24,7 +32,7 @@ FileUploadProvider(fileUpload)
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.rootProps" :as-child="asChild">
+  <ark.div v-bind="fileUpload.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

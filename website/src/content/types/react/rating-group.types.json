@@ -4,18 +4,20 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Item": {
     "props": {
@@ -23,18 +25,20 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Label": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -46,7 +50,7 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "autoFocus": {
         "type": "boolean",
@@ -110,6 +114,18 @@
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
-    }
+    },
+    "element": "HTMLDivElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseRatingGroupReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
   }
 }

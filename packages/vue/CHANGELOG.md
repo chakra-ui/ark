@@ -6,73 +6,172 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-## [1.0.0-5] - 2024-05-15
-
-### Fixed
-
-- Fixed initial flicker of `Accordion` content
-
-### Changed
-
-- Integrated latest `@zag-js`
-
-## [1.0.0-4] - 2024-05-02
-
-### Fixed
-
-- Added missing `dom-query` dependency
-
-## [1.0.0-3] - 2024-05-02
-
-### Changed
-
-- Exposed hidden inputs for various components like `Checkbox`, `RadioGroup`, `PinInput`, `TagsInput`, and `NumberInput` to allow for better integration with form libraries.
-
-## [1.0.0-2] - 2024-04-29
-
 ### Added
 
-- Integrated latest zag-js version
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+  in CSS-in-JS environments.
 
-### Fixed
-
-- Resolved type issues
-
-## [1.0.0-1] - 2024-04-29
-
-### Removed
-
-- BREAKING: Removed `dir` and `getRootNode` from all components. Use `Locale` and `Environment` to set the direction and root node.
-
-### Added
-
-- Integrate `Collapsible` component with `Accordion` component
-
-### Changed
-
-- Made the `id` attribute optional for `<Combobox.ItemGroup>` and removed `htmlFor` from `<Combobox.ItemGroupLabel>`.
-
-```diff
-- <Combobox.ItemGroup id="framework">
--   <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
-+ <Combobox.ItemGroup>
-+   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```jsx
+export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface AccordionItemProps
+  extends AccordionItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 ```
 
-- Made the `id` attribute optional for `<Select.ItemGroup>` and removed `htmlFor` from `<Select.ItemGroupLabel>`.
+- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced customization.
+- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the trigger's overflow parent scrolls.
 
-```diff
-- <Select.ItemGroup id="framework">
--   <Select.ItemGroupLabel htmlFor="framework">Frameworks</Select.ItemGroupLabel>
-+ <Select.ItemGroup>
-+   <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-```
+### Fixed
 
-## [1.0.0-0] - 2024-04-19
+- **Menu:** 
+  - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
+  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long press.
+- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
+- **Checkbox:** Added the missing `group` role for the Checkbox group component.
+- **Signature Pad**: Added missing package.json for `signature-pad` machine.
+- **Input:** Resolved an issue where the `Input` components could not be used with the `asChild`
+  prop.
+
+## [3.4.0] - 2024-06-12
 
 ### Added
 
-- Added a `Context` component to allow access to the internal machine API. Previously, it was only possible to access the internal API at the root level, which is manageable for small components but could lead to cumbersome composition in larger components. Additionally, this pattern clashed with the `asChild` composition pattern we use.
+- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
+- **QR Code:** Added the `QRCode` component for generating QR codes.
+- **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
+- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of
+  deferring to the next tick.
+
+### Fixed
+
+- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+  `defaultSelectedValue` or `defaultExpandedValue`.
+- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous
+  tab content.
+- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item
+  via the delete trigger.
+- **Select:** Exported the missing `SelectList` component.
+- **Carousel:** Fixed an issue where the carousel would not update the current index when used with
+  `v-model`.
+
+## [3.3.1] - 2024-06-07
+
+### Fixed
+
+- **Combobox:** Exported missing `ComboboxList` component.
+
+## [3.3.0] - 2024-06-06
+
+### Added
+
+- **All Components:** Introduced the `Provider` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
+
+```vue
+<script setup lang="ts">
+import { Avatar, useAvatar } from '@ark-ui/vue'
+
+const avatar = useAvatar({
+  onStatusChange: (e) => console.log('status changed', e),
+})
+</script>
+
+<template>
+  <Avatar.RootProvider :value="avatar">
+    <Avatar.Fallback>PA</Avatar.Fallback>
+    <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+  </Avatar.RootProvider>
+</template>
+```
+
+## [3.2.0] - 2024-06-04
+
+### Added
+
+- **Select, Combobox:** Added support for generics.
+
+You can now use generics with Select and Combobox components to ensure type safety and improved
+development experience.
+
+```vue
+<script setup lang="ts">
+import { Combobox } from '@ark-ui/vue'
+import { ref } from 'vue'
+
+interface Pokemon {
+  id: string
+  name: string
+  url: string
+}
+
+const items = ref<Pokemon[]>([])
+</script>
+
+<template>
+  <Combobox.Root
+    :items="items"
+    :item-to-value="(item) => item.id"
+    @highlight-change="(e) => console.log(e.highlightedItem?.name)"
+  />
+</template>
+```
+
+## [3.1.0] - 2024-06-04
+
+### Added
+
+- **Editable:** Supported `textarea` as the input element in edit mode.
+
+### Fixed
+
+- **Select:** Fixed an issue where changing the label of a collection item did not trigger a change
+  event.
+- **Popover:**
+  - Implemented `autoFocus` to determine whether the popover should autofocus on open:
+    - When `true`, the first focusable element or the content is focused.
+    - When `false`, the content is focused.
+  - Fixed an issue where the page scroll resets on opening the popover.
+
+## [3.0.3] - 2024-05-29
+
+### Fixed
+
+- Resolved an issue where auto-generated ids were not correctly passed to the machines.
+
+## [3.0.2] - 2024-05-29
+
+### Changed
+
+- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
+  `currentSrc`.
+
+## [3.0.1] - 2024-05-27
+
+### Fixed
+
+- Added missing export for `HiddenInput` in `Slider`.
+- Added missing export for `ItemHiddenInput` in `RadioGroup` and `SegmentGroup`.
+
+## [3.0.0] - 2024-05-24
+
+### Highlights
+
+We are excited to announce the first major release of Ark UI Vue! Ark UI Vue is now feature-complete
+and ready for production use.
+
+To maintain consistency across our suite, we have aligned the versioning of all Ark UI packages.
+Therefore, the next release of Ark UI Vue will be v3.
+
+This update introduces several new components, enhancements, and bug fixes. Here are some of the
+highlights:
+
+### Added
+
+- **Context Components:** Introduced the `Context` component for easier access to internal machine
+  APIs, improving component composition. See the example below:
 
 ```vue
 <template>
@@ -81,7 +180,7 @@ description: All notable changes will be documented in this file.
     <Popover.Positioner>
       <Popover.Context v-slot="popover">
         <Popover.Content>
-          <Popover.Title @click="() => popover.close()">Title</Popover.Title>
+          <Popover.Title @click="popover.setOpen(false)">Title</Popover.Title>
           <Popover.Description>Description</Popover.Description>
         </Popover.Content>
       </Popover.Context>
@@ -90,32 +189,66 @@ description: All notable changes will be documented in this file.
 </template>
 ```
 
-- Added `Format` and `Collapsible` component
-- Add an optional `index` prop to the `DatePicker.Input` to support multiple inputs.
-- Add the `DatePicker.PresetTrigger` component
-- Improve a controlled state in `ColorPicker`, `DatePicker`, `Dialog`, `HoverCard`, `Menu`, `Popover`, `Select`, and `Tooltip` components
-- Added `defaultOpen` to `Tooltip`
+- **Format:** Added a `Format` component for formatting bytes and numbers.
+
+```vue
+<Format.Byte :value="120904" unit="byte" unit-display="short" />
+<Format.Number :value="1204" unit="centimeter" />
+```
+
+- **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
+- **Types:** Exported `Assign` and `Optional` types to enhance type handling.
+- **Toast:** Added support for overlapping and stacked toast.
 
 ### Changed
 
-- Changed `TreeView.BranchTrigger` from `button` to `div` for the accessibility reasons.
+- **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
+  `RadioGroup`, `RatingGroup`, `SegmentGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for
+  better form library compatibility. Please ensure to include the hidden input in your component as
+  shown below:
+
+```jsx
+<Checkbox.Root>
+  <Checkbox.Label>Checkbox</Checkbox.Label>
+  <Checkbox.Control>
+    <Checkbox.Indicator>
+      <CheckIcon />
+    </Checkbox.Indicator>
+  </Checkbox.Control>
+  <Checkbox.HiddenInput /> <!-- [!code highlight] -->
+</Checkbox.Root>
+```
+
+- **[BREAKING] Combobox, Select:** Made `id` optional and removed `htmlFor` from `ItemGroupLabel`
+  for cleaner markup.
+
+```diff
+- <Combobox.ItemGroup id="framework">
+-   <Combobox.ItemGroupLabel htmlFor="framework">Frameworks</Combobox.ItemGroupLabel>
++ <Combobox.ItemGroup>
++   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
+```
+
+- **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
+  dialog machine.
+- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup:** Renamed `loop` to `focusLopp` to be more
+  descriptive.
+- **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
+  providers.
 
 ### Fixed
 
-- Prevent calling interaction outside when scrollbar is clicked.
-- Fix issue where positioned components don't respond to window resizing.
-- Fix issue where restoring scroll causes a smooth scroll transition back to the initial scroll point.
-- Fix issue in `Combobox`, `Menu`, and `Select` where scrolling into view could result in scrolling the body element.
-- Fix issue where `DatePicker` does not show correct number of weeks when `startOfWeek` is set
-- Fix issue in the `Editable` where cannot delete text when `maxLength` reached
-- Fix issue in the `Select` where item group's label `id` pointed to the wrong element
-- Fix issue where `Select` uses the incorrect `id` for `aria-activedecesendant` field
-- Resolved an issue in `DatePicker` where the `min` and `max` props did not support date string values
-- Fix issue where close animation doesn't work for components that use the `presence` component.
+- **DatePicker:** Resolved issues with `min` and `max` props not supporting date strings.
+- **Accordion:** Fixed initial flicker of content.
+- **TagsInput:** Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
 
 ### Removed
 
-- Removed the unused `parse` prop from the `DatePicker` component.
+- **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
+  component for more flexible and cleaner API integration.
+- **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
+  [LocaleProvider](https://ark-ui.com/vue/docs/providers/environment) and
+  [EnvironmentProvider](https://ark-ui.com/vue/docs/providers/locale) for these settings.
 
 ## [0.11.0] - 2024-02-08
 
@@ -127,21 +260,24 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like shown for the `Avatar` component below:
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
+  shown for the `Avatar` component below:
 
 ```diff
 - import type { AvatarProps } from "@ark-ui/vue"
 + import type { AvatarRootProps } from "@ark-ui/vue"
 ```
 
-- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and `Environment`.
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and
+  `Environment`.
 
 ```diff
 - <Presence.Root>...</Presence.Root>
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
+  accurately reflect its functionality.
 
 - Added the `ItemPreview` component to the `TagsInput` component. See the example below:
 
@@ -155,15 +291,19 @@ description: All notable changes will be documented in this file.
 </TagsInput.Item>
 ```
 
-- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple paragraphs.
+- Changed `Dialog.Description` and `Popover.Description` from `p` to `div` to allow for multiple
+  paragraphs.
 
 ### Fixed
 
 - Added the missing `minStepsBetweenThumbs` prop to `Slider` component.
 - Fixed an issue where emitted event caused "not declared" warning
-- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select` triggered a click event on the element behind the portalled content.
-- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them one per input.
-- Fix issue where `Select` component submits its first option when used in a form, even if there is no value selected.
+- Fixed an issue on touch devices where selecting an item within `Combobox`, `Menu`, or `Select`
+  triggered a click event on the element behind the portalled content.
+- Fixed an issue in `PinInput` where pasting a value filled all inputs instead of populating them
+  one per input.
+- Fix issue where `Select` component submits its first option when used in a form, even if there is
+  no value selected.
 
 ## [0.10.0] - 2024-01-17
 
@@ -176,7 +316,8 @@ description: All notable changes will be documented in this file.
 - Added `v-model:open` for `HoverCard` component
 - Added `v-model:open` for `Popover` component
 - Added `valueAsString` to `onValueChange` in `DatePicker` callback details
-- Exported change details typings, for example `AccordionValueChangeDetails` or `DialogOpenChangeDetails`
+- Exported change details typings, for example `AccordionValueChangeDetails` or
+  `DialogOpenChangeDetails`
 
 ### Changed
 
@@ -197,7 +338,8 @@ description: All notable changes will be documented in this file.
 - Revised `TagsInput` component
 - Revised `Toast` component
 - Revised `ToggleGroup` component
-- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and `Tabs`.
+- Replaced the styling props for indicator with CSS variables in `RadioGroup`, `SegmentGroup`, and
+  `Tabs`.
 
 ### Fixed
 
@@ -279,7 +421,12 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 - Added `Avatar` component
 - Added `Switch` component
 - Added `Presence` component
-- To improve performance and reduce initial load times, we've introduced two new properties to the `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`, `MenuContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount` property allows for on-demand rendering of content, while the `unmountOnExit` property enables the removal of the component from the DOM once it's no longer required, ensuring better resource management and cleaner code.
+- To improve performance and reduce initial load times, we've introduced two new properties to the
+  `AccordionContent`, `ComboboxContent`, `DialogBackdrop`, `DialogContent`, `HoverCardContent`,
+  `MenuContent`, `PopoverContent`, `SelectContent`, and `TooltipContent` components. The `lazyMount`
+  property allows for on-demand rendering of content, while the `unmountOnExit` property enables the
+  removal of the component from the DOM once it's no longer required, ensuring better resource
+  management and cleaner code.
 
 ### Changed
 
@@ -299,13 +446,17 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Added
 
-- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render a label for a group of options in the `ComboboxOptionGroup` component.
+- Added `ComboboxOptionGroupLabel` to the `Combobox` component. This component can be used to render
+  a label for a group of options in the `ComboboxOptionGroup` component.
 
 ### Changed
 
-- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input components.
-- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other input components.
+- BREAKING: Renamed `NumberInputField` to `NumberInputInput` to match the naming convention of other
+  input components.
+- BREAKING: Renamed `PinInputField` to `PinInputInput` to match the naming convention of other input
+  components.
+- BREAKING: Renamed `TagsInputField` to `TagsInputInput` to match the naming convention of other
+  input components.
 
 ### Removed
 
@@ -314,15 +465,19 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Fixed
 
-- Fixed a bug in the `CarouselControl` component where it was returning a function instead of the expected component.
+- Fixed a bug in the `CarouselControl` component where it was returning a function instead of the
+  expected component.
 
 ## [0.6.0] - 2023-08-06
 
 ### Added
 
-- Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup` components. These sub-components offer finer control over the carousel navigation, enabling users to directly access desired carousel slides.
+- Enhanced `Carousel` component: Introduced `CarouselIndicator` and `CarouselIndicatorGroup`
+  components. These sub-components offer finer control over the carousel navigation, enabling users
+  to directly access desired carousel slides.
 - Expose `use<X>Context` for all components that use context.
-- Developers can now set default options for all `Toast` components in their application, ensuring a consistent look and feel across the board.
+- Developers can now set default options for all `Toast` components in their application, ensuring a
+  consistent look and feel across the board.
 - Added `ComboboxOptionGroup` and `ComboboxClearTrigger` components to the `Combobox` component.
 
 ## [0.5.3] - 2023-07-10
@@ -337,7 +492,10 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 
 ### Added
 
-- Support for standalone component imports: Developers can now import individual components, such as `@ark-ui/vue/tabs` instead of the full `@ark-ui/vue` package. This is a significant feature for those working with bundlers that do not support tree-shaking. By allowing imports of individual components, we ensure a reduced bundle size when the full package import is not necessary.
+- Support for standalone component imports: Developers can now import individual components, such as
+  `@ark-ui/vue/tabs` instead of the full `@ark-ui/vue` package. This is a significant feature for
+  those working with bundlers that do not support tree-shaking. By allowing imports of individual
+  components, we ensure a reduced bundle size when the full package import is not necessary.
 
 ### Fixed
 
@@ -348,7 +506,8 @@ import { anatomy } from '@ark-ui/anatomy/accordion'
 ### Fixed
 
 - Fixed an issue where `TagsInput` was not exported
-- Fixed an issue where `CarouselNextSliderTrigger` and `CarouselPrevSlideTrigger` weren't rendered correctly
+- Fixed an issue where `CarouselNextSliderTrigger` and `CarouselPrevSlideTrigger` weren't rendered
+  correctly
 
 ## [0.5.0] - 2023-06-03
 

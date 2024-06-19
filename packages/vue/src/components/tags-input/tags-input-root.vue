@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tags-input.types'
 
-export interface TagsInputRootProps extends RootProps, PolymorphicProps {}
+export interface TagsInputRootBaseProps extends RootProps, PolymorphicProps {}
+export interface TagsInputRootProps
+  extends TagsInputRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TagsInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
 
@@ -28,7 +36,7 @@ TagsInputProvider(tagsInput)
 </script>
 
 <template>
-  <ark.div v-bind="tagsInput.rootProps" :as-child="asChild">
+  <ark.div v-bind="tagsInput.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

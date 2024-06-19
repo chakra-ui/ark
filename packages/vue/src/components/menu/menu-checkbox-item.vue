@@ -1,11 +1,19 @@
 <script lang="ts">
 import type { OptionItemProps } from '@zag-js/menu'
+import type { HTMLAttributes } from 'vue'
 import type { ComputedRef } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
 type CheckboxItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange'>
-export interface MenuCheckboxItemProps extends PolymorphicProps, CheckboxItemProps {}
+
+export interface MenuCheckboxItemBaseProps extends CheckboxItemProps, PolymorphicProps {}
+export interface MenuCheckboxItemProps
+  extends MenuCheckboxItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 
 export type MenuCheckboxItemEmits = {
   'update:checked': [value: boolean]

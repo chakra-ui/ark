@@ -1,10 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-export interface AccordionItemIndicatorProps extends HTMLArkProps<'div'> {}
+export interface AccordionItemIndicatorBaseProps extends PolymorphicProps {}
+export interface AccordionItemIndicatorProps
+  extends HTMLProps<'div'>,
+    AccordionItemIndicatorBaseProps {}
 
 export const AccordionItemIndicator = forwardRef<HTMLDivElement, AccordionItemIndicatorProps>(
   (props, ref) => {

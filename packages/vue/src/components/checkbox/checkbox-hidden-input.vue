@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxHiddenInputProps extends PolymorphicProps {}
+export interface CheckboxHiddenInputBaseProps extends PolymorphicProps {}
+export interface CheckboxHiddenInputProps
+  extends CheckboxHiddenInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,7 @@ const checkbox = useCheckboxContext()
 </script>
 
 <template>
-  <ark.input v-bind="checkbox.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="checkbox.getHiddenInputProps()" :as-child="asChild">
+    <slot />
+  </ark.input>
 </template>

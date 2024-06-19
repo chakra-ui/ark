@@ -1,6 +1,7 @@
 import { tooltipAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { axe } from 'vitest-axe'
 import { Tooltip } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -24,6 +25,13 @@ describe('Tooltip / Parts & Exports', () => {
 describe('Tooltip', () => {
   afterEach(() => {
     cleanup()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 
   it('should show the tooltip on pointerover and close on pointer leave', async () => {

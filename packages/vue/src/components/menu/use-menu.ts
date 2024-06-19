@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './menu'
 
 export interface UseMenuProps
@@ -20,28 +20,28 @@ export interface UseMenuReturn {
   machine: menu.Service
 }
 
-export const useMenu = (props: UseMenuProps, emit: EmitFn<RootEmits>): UseMenuReturn => {
+export const useMenu = (props: UseMenuProps, emit?: EmitFn<RootEmits>): UseMenuReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<menu.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
-    onEscapeKeyDown: (details) => emit('escapeKeyDown', details),
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onHighlightChange: (details) => emit('highlightChange', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onSelect: (details) => emit('select', details),
-    ...props,
+    onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onHighlightChange: (details) => emit?.('highlightChange', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onSelect: (details) => emit?.('select', details),
+    ...cleanProps(props),
   }))
 
   const [state, send, machine] = useMachine(menu.machine(context.value), { context })

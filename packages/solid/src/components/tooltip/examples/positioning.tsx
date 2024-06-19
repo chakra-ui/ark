@@ -3,7 +3,10 @@ import { Tooltip } from '../..'
 
 export const Positioning = () => (
   <Tooltip.Root
-    positioning={{ placement: 'left-start', gutter: 16, offset: { mainAxis: 12, crossAxis: 12 } }}
+    positioning={{
+      placement: 'left-start',
+      offset: { mainAxis: 12, crossAxis: 12 },
+    }}
   >
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>

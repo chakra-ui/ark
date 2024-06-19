@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerControlProps extends PolymorphicProps {}
+export interface ColorPickerControlBaseProps extends PolymorphicProps {}
+export interface ColorPickerControlProps
+  extends ColorPickerControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.div v-bind="colorPicker.controlProps" :as-child="asChild">
+  <ark.div v-bind="colorPicker.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

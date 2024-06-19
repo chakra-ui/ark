@@ -9,17 +9,16 @@ interface CodeExample {
   html: string
 }
 
-interface Props {
+interface Props extends Tabs.RootProps {
   defaultValue: string
   examples: CodeExample[]
 }
 
 export const CodeTabs = (props: Props) => {
-  const { examples, defaultValue } = props
+  const { examples, ...rootProps } = props
 
   return (
     <Tabs.Root
-      defaultValue={defaultValue}
       variant="line"
       borderWidth="1px"
       borderRadius="lg"
@@ -27,6 +26,7 @@ export const CodeTabs = (props: Props) => {
       bg="gray.dark.2"
       size="sm"
       className="not-prose"
+      {...rootProps}
     >
       <Tabs.List
         bg="gray.dark.a2"

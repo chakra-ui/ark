@@ -1,11 +1,14 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemTextProps extends HTMLArkProps<'span'> {}
+export interface SegmentGroupItemTextBaseProps extends PolymorphicProps {}
+export interface SegmentGroupItemTextProps
+  extends HTMLProps<'span'>,
+    SegmentGroupItemTextBaseProps {}
 
 export const SegmentGroupItemText = forwardRef<HTMLSpanElement, SegmentGroupItemTextProps>(
   (props, ref) => {

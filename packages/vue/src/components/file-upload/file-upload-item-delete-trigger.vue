@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadItemDeleteTriggerProps extends PolymorphicProps {}
+export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps {}
+export interface FileUploadItemDeleteTriggerProps
+  extends FileUploadItemDeleteTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

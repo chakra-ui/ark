@@ -1,10 +1,11 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogTriggerProps extends HTMLArkProps<'button'> {}
+export interface DialogTriggerBaseProps extends PolymorphicProps {}
+export interface DialogTriggerProps extends HTMLProps<'button'>, DialogTriggerBaseProps {}
 
 export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((props, ref) => {
   const dialog = useDialogContext()
@@ -12,8 +13,8 @@ export const DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>((
 
   const mergedProps = mergeProps(
     {
-      ...dialog.triggerProps,
-      'aria-controls': presence.unmounted ? undefined : dialog.triggerProps['aria-controls'],
+      ...dialog.getTriggerProps(),
+      'aria-controls': presence.unmounted ? undefined : dialog.getTriggerProps()['aria-controls'],
     },
     props,
   )

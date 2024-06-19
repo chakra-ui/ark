@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SwitchLabelProps extends PolymorphicProps {}
+export interface SwitchLabelBaseProps extends PolymorphicProps {}
+export interface SwitchLabelProps
+  extends SwitchLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const context = useSwitchContext()
 </script>
 
 <template>
-  <ark.span v-bind="context.labelProps" :as-child="asChild">
+  <ark.span v-bind="context.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

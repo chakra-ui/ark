@@ -1,22 +1,70 @@
 {
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "IndicatorGroup": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "IndicatorGroup": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Indicator": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "readOnly": { "type": "boolean", "isRequired": false }
     }
   },
-  "ItemGroup": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Item": {
     "props": {
       "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
-  "NextTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "PrevTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "NextTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "PrevTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
       "align": {
@@ -25,16 +73,15 @@
         "isRequired": false,
         "description": "The alignment of the slides in the carousel."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "defaultIndex": {
         "type": "number",
         "isRequired": false,
         "description": "The initial index of the carousel when it is first rendered.\nUse this when you do not need to control the state of the carousel."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  viewport: string\n  slide(index: number): string\n  slideGroup: string\n  nextSlideTrigger: string\n  prevSlideTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
@@ -73,5 +120,23 @@
       }
     }
   },
-  "Viewport": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCarouselReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Viewport": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
 }

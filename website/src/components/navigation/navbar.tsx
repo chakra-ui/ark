@@ -1,49 +1,60 @@
-import { SiGithub } from '@icons-pack/react-simple-icons'
 import NextLink from 'next/link'
-import { Box, Divider, HStack } from 'styled-system/jsx'
+import { Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
-import { getSidebarGroups } from '~/lib/sidebar'
-import { FrameworkSelect } from '../framework-select'
-import { Logo } from '../logo'
-import { IconButton } from '../ui'
-import { Breadcrumbs } from './breadcrumbs'
-import { MobileSidebarContainer } from './mobile-sidebar-container'
-import { Sidebar } from './sidebar'
+import { Logo } from '~/components/logo'
+import { data } from '~/lib/search'
+import { getServerContext } from '~/lib/server-context'
+import { UserButton } from '../auth/user-button'
+import { CommandMenu } from '../command-menu'
+import { FrameworkSelect } from './framework-select'
+import { GitHubLink } from './github-link'
+import { MobileNavbar } from './mobile-navbar'
+import { MobileNavbarLinks } from './mobile-navbar-links'
+import { NavbarContainer } from './navbar-container'
+import { NavbarLinks } from './navbar-links'
 
 export const Navbar = () => {
-  const groups = getSidebarGroups()
+  const { framework } = getServerContext()
+
   return (
     <>
-      <HStack justifyContent="space-between" h="16" px={{ base: '4', md: '8' }}>
-        <Box>
-          <Box display={{ md: 'none' }}>
-            <NextLink href="/" aria-label="Go to start page">
-              <Logo />
-            </NextLink>
-          </Box>
-        </Box>
-        <HStack gap="3">
-          <FrameworkSelect />
-          <Divider orientation="vertical" h="6" />
-          <HStack gap="1">
-            <ColorModeButton />
-            <IconButton asChild variant="ghost">
-              <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">
-                <SiGithub />
-              </a>
-            </IconButton>
+      <NavbarContainer>
+        <HStack justifyContent="space-between">
+          <NextLink href="/" aria-label="Go to start page">
+            <Logo />
+          </NextLink>
+          <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
+            <NavbarLinks framework={framework} />
+            <Divider orientation="vertical" h="6" />
+            <FrameworkSelect />
+            <Divider orientation="vertical" h="6" />
+            <HStack gap="2">
+              <HStack gap="0">
+                <CommandMenu data={data} />
+                <ColorModeButton />
+                <GitHubLink />
+              </HStack>
+              <UserButton />
+            </HStack>
+          </HStack>
+          <HStack gap="1" py="0.5" display={{ base: 'flex', md: 'none' }}>
+            <CommandMenu data={data} />
+            <MobileNavbar>
+              <Stack gap="0" width="17rem">
+                <MobileNavbarLinks framework={framework} />
+                <FrameworkSelect />
+                <Divider />
+                <HStack gap="3" justifyContent="center" px="3" pt="6">
+                  <ColorModeButton />
+                  <GitHubLink />
+                  <UserButton />
+                </HStack>
+              </Stack>
+            </MobileNavbar>
           </HStack>
         </HStack>
-      </HStack>
-      <Divider display={{ base: 'block', md: 'none' }} />
-      <Box display={{ base: 'block', md: 'none' }} minH="11">
-        <HStack gap="2" py="1.5" px="4">
-          <MobileSidebarContainer>
-            <Sidebar groups={groups} />
-          </MobileSidebarContainer>
-          <Breadcrumbs />
-        </HStack>
-      </Box>
+      </NavbarContainer>
+      <Divider />
     </>
   )
 }

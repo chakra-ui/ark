@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TooltipPositionerProps extends PolymorphicProps {}
+export interface TooltipPositionerBaseProps extends PolymorphicProps {}
+export interface TooltipPositionerProps
+  extends TooltipPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="tooltip.positionerProps"
+    v-bind="tooltip.getPositionerProps()"
     :present="tooltip.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

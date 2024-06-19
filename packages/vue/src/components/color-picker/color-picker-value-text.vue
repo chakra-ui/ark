@@ -1,14 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerValueTextProps extends PolymorphicProps {}
+export interface ColorPickerValueTextBaseProps extends PolymorphicProps {}
+export interface ColorPickerValueTextProps
+  extends ColorPickerValueTextBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { useSlots } from 'vue'
 import { ark } from '../factory'
+import { useColorPickerContext } from './use-color-picker-context'
 
 defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()

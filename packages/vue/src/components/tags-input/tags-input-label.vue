@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputLabelProps extends PolymorphicProps {}
+export interface TagsInputLabelBaseProps extends PolymorphicProps {}
+export interface TagsInputLabelProps
+  extends TagsInputLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const tagsInput = useTagsInputContext()
 </script>
 
 <template>
-  <ark.label v-bind="tagsInput.labelProps" :as-child="asChild">
+  <ark.label v-bind="tagsInput.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

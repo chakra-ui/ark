@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogDescriptionProps extends HTMLArkProps<'div'> {}
+export interface DialogDescriptionBaseProps extends PolymorphicProps<'div'> {}
+export interface DialogDescriptionProps extends HTMLProps<'div'>, DialogDescriptionBaseProps {}
 
 export const DialogDescription = (props: DialogDescriptionProps) => {
   const dialog = useDialogContext()
-  const mergedProps = mergeProps(() => dialog().descriptionProps, props)
+  const mergedProps = mergeProps(() => dialog().getDescriptionProps(), props)
 
   return <ark.div {...mergedProps} />
 }

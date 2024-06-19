@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadHiddenInputProps extends PolymorphicProps {}
+export interface FileUploadHiddenInputBaseProps extends PolymorphicProps {}
+export interface FileUploadHiddenInputProps
+  extends FileUploadHiddenInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.input v-bind="fileUpload.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="fileUpload.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

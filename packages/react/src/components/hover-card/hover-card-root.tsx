@@ -6,7 +6,8 @@ import { splitPresenceProps } from '../presence/split-presence-props'
 import { type UseHoverCardProps, useHoverCard } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
-export interface HoverCardRootProps extends UseHoverCardProps, UsePresenceProps {
+export interface HoverCardRootBaseProps extends UseHoverCardProps, UsePresenceProps {}
+export interface HoverCardRootProps extends HoverCardRootBaseProps {
   children?: ReactNode
 }
 

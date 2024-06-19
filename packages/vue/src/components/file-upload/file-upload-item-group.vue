@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadItemGroupProps extends PolymorphicProps {}
+export interface FileUploadItemGroupBaseProps extends PolymorphicProps {}
+export interface FileUploadItemGroupProps
+  extends FileUploadItemGroupBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.ul v-bind="fileUpload.itemGroupProps" :as-child="asChild">
+  <ark.ul v-bind="fileUpload.getItemGroupProps()" :as-child="asChild">
     <slot />
   </ark.ul>
 </template>

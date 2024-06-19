@@ -2,14 +2,14 @@ import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemProps extends Assign<HTMLArkProps<'label'>, ItemProps> {}
+export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupItemBaseProps {}
 
 export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>(
   (props, ref) => {

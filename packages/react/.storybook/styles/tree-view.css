@@ -1,0 +1,31 @@
+[data-scope='tree-view'][data-part='tree'] {
+  margin: 0;
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+[data-scope='tree-view'][data-part='item'],
+[data-scope='tree-view'][data-part='branch-control'] {
+  display: flex;
+  gap: 4px;
+  padding-inline: 6px;
+  padding-block: 4px;
+  user-select: none;
+}
+
+[data-scope='tree-view'][data-part='item'][data-selected],
+[data-scope='tree-view'][data-part='branch-control'][data-selected] {
+  background: lightblue;
+}
+
+[data-scope='tree-view'][data-part='branch-content'] {
+  list-style: none;
+  padding-inline-start: 12px;
+}
+
+[data-scope='tree-view'][data-part='branch-content'] [data-part='item'] {
+  --dx: calc(var(--depth) + 1);
+  padding-inline-start: calc(var(--dx) * 4px);
+  border-inline-start: 1px solid lightgray;
+}

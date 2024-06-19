@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SliderMarkerGroupProps extends PolymorphicProps {}
+export interface SliderMarkerGroupBaseProps extends PolymorphicProps {}
+export interface SliderMarkerGroupProps
+  extends SliderMarkerGroupBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const slider = useSliderContext()
 </script>
 
 <template>
-  <ark.div v-bind="slider.markerGroupProps" :as-child="asChild">
+  <ark.div v-bind="slider.getMarkerGroupProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RatingGroupHiddenInputProps extends PolymorphicProps {}
+export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps {}
+export interface RatingGroupHiddenInputProps
+  extends RatingGroupHiddenInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const ratingGroup = useRatingGroupContext()
 </script>
 
 <template>
-  <ark.input v-bind="ratingGroup.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="ratingGroup.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

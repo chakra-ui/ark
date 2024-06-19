@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import { SignaturePad } from '../..'
+</script>
+
+<template>
+  <SignaturePad.Root>
+    <SignaturePad.Label>Sign below</SignaturePad.Label>
+    <SignaturePad.Control>
+      <SignaturePad.Segment />
+      <SignaturePad.ClearTrigger>Clear</SignaturePad.ClearTrigger>
+      <SignaturePad.Guide />
+    </SignaturePad.Control>
+  </SignaturePad.Root>
+</template>

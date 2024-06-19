@@ -19,5 +19,5 @@ export interface EnvironmentContext {
   getWindow(): Window & typeof globalThis
 }
 
-export const [EnvironmentProvider, useEnvironmentContext] =
+export const [EnvironmentContextProvider, useEnvironmentContext] =
   createContext<ComputedRef<EnvironmentContext> | null>('EnvironmentContext')

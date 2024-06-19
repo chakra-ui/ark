@@ -8,8 +8,7 @@ description: A component that allows users to edit text in place.
 
 ## Anatomy
 
-To set up the editable correctly, you'll need to understand its anatomy and how
-we name its parts.
+To set up the editable correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,23 +16,21 @@ we name its parts.
 
 ## Examples
 
-Learn how to use the `Editable` component in your project. Let's take a look at
-the most basic example:
+Learn how to use the `Editable` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Using custom controls
 
-In some cases, you might need to use custom controls to toggle the edit and read
-mode. We use the render prop pattern to provide access to the internal state of
-the component.
+In some cases, you might need to use custom controls to toggle the edit and read mode. We use the
+render prop pattern to provide access to the internal state of the component.
 
 <Example id="custom-controls" />
 
 ### Auto-resizing the editable
 
-To auto-grow the editable as the content changes, set the `autoResize` prop to
-`true`.
+To auto-grow the editable as the content changes, set the `autoResize` prop to `true`.
 
 ```tsx
 <Editable.Root placeholder="Placeholder" autoResize>
@@ -43,8 +40,8 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to
 
 ### Setting a maxWidth
 
-It is a common pattern to set a maximum of the editable as it auto-grows. To
-achieve this, set the `maxWidth` prop to the desired value.
+It is a common pattern to set a maximum of the editable as it auto-grows. To achieve this, set the
+`maxWidth` prop to the desired value.
 
 ```tsx
 <Editable.Root placeholder="Placeholder" autoResize maxWidth="320px">

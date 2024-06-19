@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxClearTriggerProps extends PolymorphicProps {}
+export interface ComboboxClearTriggerBaseProps extends PolymorphicProps {}
+export interface ComboboxClearTriggerProps
+  extends ComboboxClearTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.button v-bind="combobox.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="combobox.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

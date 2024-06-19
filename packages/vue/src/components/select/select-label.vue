@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectLabelProps extends PolymorphicProps {}
+export interface SelectLabelBaseProps extends PolymorphicProps {}
+export interface SelectLabelProps
+  extends SelectLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.label v-bind="select.labelProps" :as-child="asChild">
+  <ark.label v-bind="select.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

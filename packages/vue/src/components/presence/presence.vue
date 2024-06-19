@@ -1,17 +1,26 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './presence.types'
 
-export interface PresenceProps extends RootProps, PolymorphicProps {}
+export interface PresenceBaseProps extends RootProps, PolymorphicProps {}
+export interface PresenceProps
+  extends PresenceBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface PresenceEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
 
 const props = withDefaults(defineProps<PresenceProps>(), {
+  immediate: undefined,
   lazyMount: undefined,
   present: undefined,
   unmountOnExit: undefined,

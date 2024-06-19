@@ -2,11 +2,12 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseRatingGroupProps, useRatingGroup } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
 
-export interface RatingGroupRootProps extends Assign<HTMLArkProps<'div'>, UseRatingGroupProps> {}
+export interface RatingGroupRootBaseProps extends UseRatingGroupProps, PolymorphicProps {}
+export interface RatingGroupRootProps extends Assign<HTMLProps<'div'>, RatingGroupRootBaseProps> {}
 
 export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>((props, ref) => {
   const [useRatingProps, localProps] = createSplitProps<UseRatingGroupProps>()(props, [
@@ -27,7 +28,7 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
   ])
 
   const ratingGroup = useRatingGroup(useRatingProps)
-  const mergedProps = mergeProps(ratingGroup.rootProps, localProps)
+  const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
 
   return (
     <RatingGroupProvider value={ratingGroup}>

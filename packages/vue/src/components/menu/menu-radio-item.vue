@@ -1,10 +1,18 @@
 <script lang="ts">
 import type { OptionItemProps } from '@zag-js/menu'
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
 type RadioItemProps = Omit<OptionItemProps, 'type' | 'onCheckedChange' | 'checked'>
-export interface MenuRadioItemProps extends PolymorphicProps, RadioItemProps {}
+
+export interface MenuRadioItemBaseProps extends RadioItemProps, PolymorphicProps {}
+export interface MenuRadioItemProps
+  extends MenuRadioItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

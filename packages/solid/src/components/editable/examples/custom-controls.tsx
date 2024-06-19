@@ -1,3 +1,4 @@
+import { Show } from 'solid-js'
 import { Editable } from '../..'
 
 export const CustomControls = () => (
@@ -8,16 +9,15 @@ export const CustomControls = () => (
       <Editable.Preview />
     </Editable.Area>
     <Editable.Context>
-      {(context) => (
+      {(editable) => (
         <Editable.Control>
-          {context().editing ? (
-            <>
-              <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
-              <Editable.CancelTrigger>Canvel</Editable.CancelTrigger>
-            </>
-          ) : (
-            <Editable.EditTrigger>Edit</Editable.EditTrigger>
-          )}
+          <Show
+            when={editable().editing}
+            fallback={<Editable.EditTrigger>Edit</Editable.EditTrigger>}
+          >
+            <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
+            <Editable.CancelTrigger>Canvel</Editable.CancelTrigger>
+          </Show>
         </Editable.Control>
       )}
     </Editable.Context>

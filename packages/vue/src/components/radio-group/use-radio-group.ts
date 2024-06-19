@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './radio-group.types'
 
 export interface UseRadioGroupProps
@@ -19,21 +19,21 @@ export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropType
 
 export const useRadioGroup = (
   props: UseRadioGroupProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseRadioGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<radioGroup.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(radioGroup.machine(context.value), { context })

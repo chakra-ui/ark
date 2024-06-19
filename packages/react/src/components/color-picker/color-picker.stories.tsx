@@ -8,3 +8,8 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
+export { Inline } from './examples/inline'
+export { OnChangeEnd } from './examples/on-change-end'
+export { SliderOnly } from './examples/slider-only'
+export { SwatchOnly } from './examples/swatch-only'
+export { WithFormRegister } from './examples/with-form-register'

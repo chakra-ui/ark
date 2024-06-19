@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerViewTriggerProps extends PolymorphicProps {}
+export interface DatePickerViewTriggerBaseProps extends PolymorphicProps {}
+export interface DatePickerViewTriggerProps
+  extends DatePickerViewTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

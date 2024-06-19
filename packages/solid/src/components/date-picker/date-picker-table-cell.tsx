@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
+import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import {
   DatePickerTableCellProvider,
@@ -8,9 +9,10 @@ import {
 } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerTableCellProps
-  extends HTMLArkProps<'td'>,
-    UseDatePickerTableCellContext {}
+export interface DatePickerTableCellBaseProps
+  extends UseDatePickerTableCellContext,
+    PolymorphicProps<'td'> {}
+export interface DatePickerTableCellProps extends HTMLProps<'td'>, DatePickerTableCellBaseProps {}
 
 export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   const [cellProps, localProps] = createSplitProps<UseDatePickerTableCellContext>()(props, [
@@ -21,14 +23,20 @@ export const DatePickerTableCell = (props: DatePickerTableCellProps) => {
   ])
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
-  const tableCellProps = {
-    day: api().getDayTableCellProps,
-    month: api().getMonthTableCellProps,
-    year: api().getYearTableCellProps,
-    // @ts-expect-error use filter guard
-  }[viewProps.view](cellProps)
+  const tableCellProps = createMemo(() => {
+    const viewMap = {
+      day: api().getDayTableCellProps,
+      month: api().getMonthTableCellProps,
+      year: api().getYearTableCellProps,
+    }
 
-  const mergedProps = mergeProps(() => tableCellProps, localProps)
+    const viewFn = viewMap[viewProps.view]
+
+    // @ts-expect-error
+    return viewFn(cellProps)
+  })
+
+  const mergedProps = mergeProps(tableCellProps, localProps)
 
   return (
     <DatePickerTableCellProvider value={cellProps}>

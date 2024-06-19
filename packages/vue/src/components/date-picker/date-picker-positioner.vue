@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerPositionerProps extends PolymorphicProps {}
+export interface DatePickerPositionerBaseProps extends PolymorphicProps {}
+export interface DatePickerPositionerProps
+  extends DatePickerPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="datePicker.positionerProps"
+    v-bind="datePicker.getPositionerProps()"
     :present="datePicker.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

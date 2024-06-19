@@ -4,27 +4,30 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLUListElement"
   },
   "BranchControl": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "BranchIndicator": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Branch": {
     "props": {
@@ -36,41 +39,45 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the item or branch is disabled"
       }
-    }
+    },
+    "element": "HTMLLIElement"
   },
   "BranchText": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "BranchTrigger": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ItemIndicator": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -82,39 +89,42 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the item or branch is disabled"
       }
-    }
+    },
+    "element": "HTMLLIElement"
   },
   "ItemText": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Label": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "defaultExpandedValue": {
         "type": "string[]",
@@ -141,11 +151,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The id of the focused node"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{ root: string; tree: string; label: string }>",
@@ -184,15 +189,28 @@
         "isRequired": false,
         "description": "Whether the tree supports typeahead search"
       }
-    }
+    },
+    "element": "HTMLDivElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTreeViewReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
   },
   "Tree": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLUListElement"
   }
 }

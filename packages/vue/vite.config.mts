@@ -12,13 +12,7 @@ export default defineConfig({
     dts({
       entryRoot: 'src',
       staticImport: true,
-      exclude: [
-        '**/*.stories.tsx',
-        '**/*.test.tsx',
-        '**/tests/*',
-        '**/stories/*',
-        '**/setup-test.ts',
-      ],
+      exclude: ['**/*.stories.*', '**/*.test.*', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
       afterBuild: () => {
         globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
           copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))

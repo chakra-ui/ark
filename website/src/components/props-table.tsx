@@ -1,8 +1,10 @@
 import { MinusIcon } from 'lucide-react'
+import NextLink from 'next/link'
 import { Box, Stack } from 'styled-system/jsx'
-import { Code, Icon, Table, Text } from '~/components/ui'
+import { Code, Icon, Link, Table, Text } from '~/components/ui'
 
 interface Props {
+  framework: string
   properties: Record<
     string,
     {
@@ -15,10 +17,10 @@ interface Props {
 }
 
 export const PropsTable = (props: Props) => {
-  const { properties } = props
+  const { properties, framework } = props
   return (
     <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose" my="8">
-      <Table.Root variant="outline" size="sm" border="none">
+      <Table.Root variant="outline" size="sm" border={0}>
         <Table.Head>
           <Table.Row>
             <Table.Header px="4" bg="gray.2" h="10">
@@ -53,6 +55,17 @@ export const PropsTable = (props: Props) => {
                 <Stack gap="1" align="start">
                   <Code size="sm">{property.type}</Code>
                   <Text>{property.description}</Text>
+                  {name === 'asChild' && (
+                    <Text as="span">
+                      For more details, read our{' '}
+                      <Link asChild>
+                        <NextLink href={`/${framework}/docs/guides/composition`}>
+                          Composition
+                        </NextLink>
+                      </Link>{' '}
+                      guide.
+                    </Text>
+                  )}
                 </Stack>
               </Table.Cell>
             </Table.Row>

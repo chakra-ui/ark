@@ -1,12 +1,15 @@
 import type { TransparencyGridProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
+export interface ColorPickerTransparencyGridBaseProps
+  extends TransparencyGridProps,
+    PolymorphicProps<'div'> {}
 export interface ColorPickerTransparencyGridProps
-  extends Assign<HTMLArkProps<'div'>, TransparencyGridProps> {}
+  extends HTMLProps<'div'>,
+    ColorPickerTransparencyGridBaseProps {}
 
 export const ColorPickerTransparencyGrid = (props: ColorPickerTransparencyGridProps) => {
   const [gridProps, localProps] = createSplitProps<TransparencyGridProps>()(props, ['size'])

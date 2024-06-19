@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UsePaginationProps, usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
 
-export interface PaginationRootProps extends Assign<HTMLArkProps<'nav'>, UsePaginationProps> {}
+export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps<'nav'> {}
+export interface PaginationRootProps extends HTMLProps<'nav'>, PaginationRootBaseProps {}
 
 export const PaginationRoot = (props: PaginationRootProps) => {
   const [usePaginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
@@ -14,6 +14,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
     'id',
     'ids',
     'onPageChange',
+    'onPageSizeChange',
     'page',
     'pageSize',
     'siblingCount',
@@ -21,7 +22,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
     'type',
   ])
   const api = usePagination(usePaginationProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <PaginationProvider value={api}>

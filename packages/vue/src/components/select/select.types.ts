@@ -1,7 +1,7 @@
 import type * as select from '@zag-js/select'
 import type { CollectionItem } from './select'
 
-export interface RootProps<T extends CollectionItem = CollectionItem> {
+export interface RootProps<T extends CollectionItem> {
   /**
    * Whether the select should close after an item is selected
    * @default true
@@ -106,7 +106,7 @@ export interface RootProps<T extends CollectionItem = CollectionItem> {
   scrollToIndexFn?: (details: select.ScrollToIndexDetails) => void
 }
 
-export type RootEmits<T extends CollectionItem = CollectionItem> = {
+export type RootEmits<T extends CollectionItem> = {
   /**
    * Function called when the focus is moved outside the component
    */

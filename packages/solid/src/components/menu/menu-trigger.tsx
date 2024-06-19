@@ -1,15 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useMenuContext } from './use-menu-context'
 
-export interface MenuTriggerProps extends HTMLArkProps<'button'> {}
+export interface MenuTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface MenuTriggerProps extends HTMLProps<'button'>, MenuTriggerBaseProps {}
 
 export const MenuTrigger = (props: MenuTriggerProps) => {
   const api = useMenuContext()
   const presenceApi = usePresenceContext()
   const mergedProps = mergeProps(
-    () => api().triggerProps,
+    () => api().getTriggerProps(),
     () => ({ 'aria-controls': presenceApi().unmounted && null }),
     props,
   )

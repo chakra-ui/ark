@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PopoverPositionerProps extends PolymorphicProps {}
+export interface PopoverPositionerBaseProps extends PolymorphicProps {}
+export interface PopoverPositionerProps
+  extends PopoverPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -17,7 +24,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="popover.positionerProps"
+    v-bind="popover.getPositionerProps()"
     :present="popover.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuRadioItemGroupProps extends PolymorphicProps {
+export interface MenuRadioItemGroupBaseProps extends PolymorphicProps {}
+export interface MenuRadioItemGroupProps
+  extends MenuRadioItemGroupBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   id?: string
   modelValue?: string
 }
@@ -21,10 +28,10 @@ import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()
 const menu = useMenuContext()
-const id = useId()
+const id = useId(props.id)
 
 const itemGroupProps: UseMenuItemGroupContext = computed(() => ({
-  id: props.id ? props.id : id.value,
+  id,
   value: props.modelValue,
   onValueChange: (e) => emits('update:modelValue', e.value),
 }))

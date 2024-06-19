@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './slider.types'
 
-export interface SliderRootProps extends RootProps, PolymorphicProps {}
+export interface SliderRootBaseProps extends RootProps, PolymorphicProps {}
+export interface SliderRootProps
+  extends SliderRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<HTMLAttributes, 'aria-labelledby' | 'aria-label'> {}
 export interface SliderRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
 
@@ -24,7 +32,7 @@ SliderProvider(slider)
 </script>
 
 <template>
-  <ark.div v-bind="slider.rootProps" :as-child="asChild">
+  <ark.div v-bind="slider.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

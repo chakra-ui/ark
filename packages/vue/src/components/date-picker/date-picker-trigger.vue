@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerTriggerProps extends PolymorphicProps {}
+export interface DatePickerTriggerBaseProps extends PolymorphicProps {}
+export interface DatePickerTriggerProps
+  extends DatePickerTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.button v-bind="datePicker.triggerProps" :as-child="asChild">
+  <ark.button v-bind="datePicker.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

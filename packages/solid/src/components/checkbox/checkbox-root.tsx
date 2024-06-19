@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseCheckboxProps, useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
-export interface CheckboxRootProps extends Assign<HTMLArkProps<'label'>, UseCheckboxProps> {}
+export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps<'label'> {}
+export interface CheckboxRootProps extends HTMLProps<'label'>, CheckboxRootBaseProps {}
 
 export const CheckboxRoot = (props: CheckboxRootProps) => {
   const [useCheckboxProps, labelprops] = createSplitProps<UseCheckboxProps>()(props, [
@@ -23,7 +23,7 @@ export const CheckboxRoot = (props: CheckboxRootProps) => {
     'value',
   ])
   const checkbox = useCheckbox(useCheckboxProps)
-  const mergedProps = mergeProps(() => checkbox().rootProps, labelprops)
+  const mergedProps = mergeProps(() => checkbox().getRootProps(), labelprops)
 
   return (
     <CheckboxProvider value={checkbox}>

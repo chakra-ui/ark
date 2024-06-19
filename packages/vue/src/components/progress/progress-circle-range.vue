@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ProgressCircleRangeProps extends PolymorphicProps {}
+export interface ProgressCircleRangeBaseProps extends PolymorphicProps {}
+export interface ProgressCircleRangeProps
+  extends ProgressCircleRangeBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const progress = useProgressContext()
 </script>
 
 <template>
-  <ark.circle v-bind="progress.circleRangeProps" :as-child="asChild">
+  <ark.circle v-bind="progress.getCircleRangeProps()" :as-child="asChild">
     <slot />
   </ark.circle>
 </template>

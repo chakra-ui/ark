@@ -1,5 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
-import { Environment, useEnvironmentContext } from './'
+import { EnvironmentProvider, useEnvironmentContext } from './'
 
 const PrintEnvironment = () => {
   const environment = useEnvironmentContext()
@@ -7,12 +7,12 @@ const PrintEnvironment = () => {
   return <pre>{environment().getRootNode().toString()}</pre>
 }
 
-describe('Environment', () => {
+describe('EnvironmentPrvovider', () => {
   it('should have access to the environment values', async () => {
     render(() => (
-      <Environment value={() => document}>
+      <EnvironmentProvider value={() => document}>
         <PrintEnvironment />
-      </Environment>
+      </EnvironmentProvider>
     ))
     expect(screen.getByText('[object Document]')).toBeInTheDocument()
   })

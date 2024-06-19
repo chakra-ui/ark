@@ -1,11 +1,19 @@
 import * as toast from '@zag-js/toast'
 import { normalizeProps, useActor, useMachine } from '@zag-js/vue'
-import { type PropType, type SlotsType, type VNodeChild, computed, defineComponent } from 'vue'
-import { type HTMLArkProps, ark } from '../factory'
+import {
+  type HTMLAttributes,
+  type PropType,
+  type SlotsType,
+  type VNodeChild,
+  computed,
+  defineComponent,
+} from 'vue'
+import { type PolymorphicProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
 
-export interface ToasterProps extends HTMLArkProps<'div'> {
+export interface ToasterBaseProps extends PolymorphicProps {}
+export interface ToasterProps extends ToasterBaseProps, HTMLAttributes {
   toaster: CreateToasterReturn
 }
 

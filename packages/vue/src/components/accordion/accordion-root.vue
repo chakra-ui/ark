@@ -1,10 +1,17 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './accordion.types'
 
-export interface AccordionRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface AccordionRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface AccordionRootProps
+  extends AccordionRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface AccordionRootEmits extends RootEmits {}
 </script>
 
@@ -31,7 +38,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="accordion.rootProps" :as-child="asChild">
+  <ark.div v-bind="accordion.getRootProps()" :as-child="asChild">
     <slot></slot>
   </ark.div>
 </template>

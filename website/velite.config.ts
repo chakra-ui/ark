@@ -3,6 +3,8 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
 
+const previewComponents = ['carousel', 'qr-code', 'signature-pad', 'tree-view']
+
 const pages = defineCollection({
   name: 'Pages',
   pattern: ['website/src/content/pages/**/*.mdx', 'packages/*/CHANGELOG.md'],
@@ -14,6 +16,7 @@ const pages = defineCollection({
       metadata: s.metadata(),
       content: s.markdown(),
       framework: s.string().default('*'),
+      status: s.string().optional(),
       toc: s.toc(),
       code: s.mdx(),
     })
@@ -29,10 +32,22 @@ const pages = defineCollection({
       }
       return {
         ...data,
+        status: previewComponents.includes(data.id) ? 'preview' : undefined,
         slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
         category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }
     }),
+})
+
+const showcases = defineCollection({
+  name: 'Showcases',
+  pattern: 'website/src/content/showcases.json',
+  schema: s.object({
+    title: s.string(),
+    description: s.string(),
+    url: s.string(),
+    image: s.string(),
+  }),
 })
 
 const PropDefintion = s.object({
@@ -50,6 +65,7 @@ const types = defineCollection({
       s.string(),
       s.object({
         props: s.record(s.string(), PropDefintion),
+        element: s.string().optional(),
         emits: s.record(s.string(), PropDefintion).optional(),
       }),
     )
@@ -62,7 +78,7 @@ const types = defineCollection({
 
 export default defineConfig({
   root: path.join(process.cwd(), '../'),
-  collections: { pages, types },
+  collections: { pages, types, showcases },
   mdx: {
     rehypePlugins: [
       rehypeSlug,

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxControlProps extends PolymorphicProps {}
+export interface CheckboxControlBaseProps extends PolymorphicProps {}
+export interface CheckboxControlProps
+  extends CheckboxControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const checkbox = useCheckboxContext()
 </script>
 
 <template>
-  <ark.div v-bind="checkbox.controlProps" :as-child="asChild">
+  <ark.div v-bind="checkbox.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

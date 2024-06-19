@@ -5,9 +5,11 @@
   "workspaces": ["packages/*", "scripts", "website"],
   "scripts": {
     "postinstall": "lefthook install",
-    "build": "turbo run build --filter='!./templates/**'",
+    "build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
     "exports:check": "bun scripts exports:check",
     "exports:sync": "bun scripts exports:sync",
+    "local:sync": "bun scripts local:sync",
+    "local:revert": "bun scripts local:sync --revert",
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
@@ -15,16 +17,19 @@
     "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",
     "solid": "bun run --cwd packages/solid",
+    "svelte": "bun run --cwd packages/svelte",
     "vue": "bun run --cwd packages/vue",
-    "website": "bun run --cwd website"
+    "web": "bun run --cwd website",
+    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.3",
-    "@types/bun": "1.1.2",
-    "lefthook": "1.6.11",
-    "turbo": "1.13.3",
-    "typescript": "5.4.5"
+    "@biomejs/biome": "1.8.1",
+    "@types/bun": "1.1.4",
+    "lefthook": "1.6.16",
+    "turbo": "2.0.4",
+    "typescript": "5.4.5",
+    "vercel": "34.2.7"
   },
-  "packageManager": "bun@1.1.8",
+  "packageManager": "bun@1.1.12",
   "trustedDependencies": ["@ark-ui/website"]
 }

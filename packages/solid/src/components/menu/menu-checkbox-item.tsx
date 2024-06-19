@@ -1,17 +1,18 @@
 import type { OptionItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 
-export interface MenuCheckboxItemProps
-  extends Assign<HTMLArkProps<'div'>, PartialOptionItemProps> {}
+export interface MenuCheckboxItemBaseProps
+  extends PartialOptionItemProps,
+    PolymorphicProps<'div'> {}
+export interface MenuCheckboxItemProps extends HTMLProps<'div'>, MenuCheckboxItemBaseProps {}
 
 export const MenuCheckboxItem = (props: MenuCheckboxItemProps) => {
   const [partialOptionItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [

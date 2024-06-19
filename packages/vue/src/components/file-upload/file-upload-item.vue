@@ -1,9 +1,16 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/file-upload'
+import type { LiHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemProps extends PolymorphicProps, ItemProps {}
+export interface FileUploadItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface FileUploadItemProps
+  extends FileUploadItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LiHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

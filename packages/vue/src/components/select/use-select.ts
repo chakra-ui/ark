@@ -4,7 +4,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
@@ -31,7 +31,7 @@ export interface UseSelectReturn<T extends CollectionItem>
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -40,7 +40,7 @@ export const useSelect = <T extends CollectionItem>(
   const context = computed<select.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
-      id: id.value,
+      id,
       dir: locale.value.dir,
       open: props.defaultOpen,
       'open.controlled': props.open !== undefined,
@@ -48,18 +48,18 @@ export const useSelect = <T extends CollectionItem>(
       value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
       },
-      onHighlightChange: (details) => emit('highlightChange', details),
+      onHighlightChange: (details) => emit?.('highlightChange', details),
       onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
+        emit?.('openChange', details)
+        emit?.('update:open', details.open)
       },
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-      ...otherProps,
+      onFocusOutside: (details) => emit?.('focusOutside', details),
+      onInteractOutside: (details) => emit?.('interactOutside', details),
+      onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+      ...cleanProps(otherProps),
     }
   })
 

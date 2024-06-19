@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface NumberInputDecrementTriggerProps extends PolymorphicProps {}
+export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps {}
+export interface NumberInputDecrementTriggerProps
+  extends NumberInputDecrementTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.button v-bind="numberInput.decrementTriggerProps" :as-child="asChild">
+  <ark.button v-bind="numberInput.getDecrementTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

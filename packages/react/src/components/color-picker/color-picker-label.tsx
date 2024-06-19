@@ -1,14 +1,15 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerLabelProps extends HTMLArkProps<'label'> {}
+export interface ColorPickerLabelBaseProps extends PolymorphicProps {}
+export interface ColorPickerLabelProps extends HTMLProps<'label'>, ColorPickerLabelBaseProps {}
 
 export const ColorPickerLabel = forwardRef<HTMLLabelElement, ColorPickerLabelProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
-    const mergedProps = mergeProps(colorPicker.labelProps, props)
+    const mergedProps = mergeProps(colorPicker.getLabelProps(), props)
 
     return <ark.label {...mergedProps} ref={ref} />
   },

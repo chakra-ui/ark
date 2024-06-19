@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadDropzoneProps extends PolymorphicProps {}
+export interface FileUploadDropzoneBaseProps extends PolymorphicProps {}
+export interface FileUploadDropzoneProps
+  extends FileUploadDropzoneBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -14,7 +21,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.div v-bind="fileUpload.dropzoneProps" :as-child="asChild">
+  <ark.div v-bind="fileUpload.getDropzoneProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

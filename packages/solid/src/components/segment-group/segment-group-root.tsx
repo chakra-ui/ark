@@ -1,12 +1,12 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
-export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
+export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps<'div'> {}
+export interface SegmentGroupRootProps extends HTMLProps<'div'>, SegmentGroupRootBaseProps {}
 
 export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
   const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
@@ -23,7 +23,7 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    () => segmentGroup().rootProps,
+    () => segmentGroup().getRootProps(),
     segmentGroupAnatomy.build().root.attrs,
     localProps,
   )

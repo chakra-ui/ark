@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -11,9 +10,11 @@ import {
 import { type UseDatePickerProps, useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 
-export interface DatePickerRootProps
-  extends Assign<HTMLArkProps<'div'>, UseDatePickerProps>,
-    UsePresenceProps {}
+export interface DatePickerRootBaseProps
+  extends UseDatePickerProps,
+    UsePresenceProps,
+    PolymorphicProps<'div'> {}
+export interface DatePickerRootProps extends HTMLProps<'div'>, DatePickerRootBaseProps {}
 
 export const DatePickerRoot = (props: DatePickerRootProps) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
@@ -51,7 +52,7 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
   ])
   const api = useDatePicker(useDatePickerProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <DatePickerProvider value={api}>

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TreeViewLabelProps extends PolymorphicProps {}
+export interface TreeViewLabelBaseProps extends PolymorphicProps {}
+export interface TreeViewLabelProps
+  extends TreeViewLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const treeView = useTreeViewContext()
 </script>
 
 <template>
-  <ark.label v-bind="treeView.labelProps" :as-child="asChild">
+  <ark.label v-bind="treeView.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

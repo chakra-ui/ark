@@ -1,0 +1,45 @@
+import { FileIcon } from 'lucide-react'
+import { FileUpload } from '../..'
+
+function FileUploadClearTrigger() {
+  return (
+    <FileUpload.Context>
+      {(api) => (
+        <button type="button" hidden={!api.acceptedFiles.length} onClick={api.clearFiles}>
+          Clear Files
+        </button>
+      )}
+    </FileUpload.Context>
+  )
+}
+
+export const WithClearTrigger = () => {
+  return (
+    <FileUpload.Root maxFiles={5}>
+      <FileUpload.Label>File Upload</FileUpload.Label>
+      <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
+      <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+      <FileUploadClearTrigger />
+      <FileUpload.ItemGroup>
+        <FileUpload.Context>
+          {({ acceptedFiles }) =>
+            acceptedFiles.map((file) => (
+              <FileUpload.Item key={file.name} file={file}>
+                <FileUpload.ItemPreview type="image/*">
+                  <FileUpload.ItemPreviewImage />
+                </FileUpload.ItemPreview>
+                <FileUpload.ItemPreview type=".*">
+                  <FileIcon />
+                </FileUpload.ItemPreview>
+                <FileUpload.ItemName />
+                <FileUpload.ItemSizeText />
+                <FileUpload.ItemDeleteTrigger>X</FileUpload.ItemDeleteTrigger>
+              </FileUpload.Item>
+            ))
+          }
+        </FileUpload.Context>
+      </FileUpload.ItemGroup>
+      <FileUpload.HiddenInput />
+    </FileUpload.Root>
+  )
+}

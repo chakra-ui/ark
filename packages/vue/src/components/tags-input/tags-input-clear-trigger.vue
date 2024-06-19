@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputClearTriggerProps extends PolymorphicProps {}
+export interface TagsInputClearTriggerBaseProps extends PolymorphicProps {}
+export interface TagsInputClearTriggerProps
+  extends TagsInputClearTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const tagsInput = useTagsInputContext()
 </script>
 
 <template>
-  <ark.button v-bind="tagsInput.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="tagsInput.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

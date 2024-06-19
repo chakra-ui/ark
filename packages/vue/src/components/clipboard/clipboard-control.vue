@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ClipboardControlProps extends PolymorphicProps {}
+export interface ClipboardControlBaseProps extends PolymorphicProps {}
+export interface ClipboardControlProps
+  extends ClipboardControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const clipboard = useClipboardContext()
 </script>
 
 <template>
-  <ark.div v-bind="clipboard.controlProps" :as-child="asChild">
+  <ark.div v-bind="clipboard.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

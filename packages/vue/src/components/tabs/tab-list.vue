@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TabListProps extends PolymorphicProps {}
+export interface TabListBaseProps extends PolymorphicProps {}
+export interface TabListProps
+  extends TabListBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const tabs = useTabsContext()
 </script>
 
 <template>
-  <ark.div v-bind="tabs.listProps" :as-child="asChild">
+  <ark.div v-bind="tabs.getListProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

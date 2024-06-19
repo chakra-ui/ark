@@ -9,6 +9,7 @@ export const Basic = () => {
         <SegmentGroup.Item key={framework} value={framework}>
           <SegmentGroup.ItemText>{framework}</SegmentGroup.ItemText>
           <SegmentGroup.ItemControl />
+          <SegmentGroup.ItemHiddenInput />
         </SegmentGroup.Item>
       ))}
     </SegmentGroup.Root>

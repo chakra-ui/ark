@@ -3,7 +3,7 @@ import { Accordion } from '../..'
 
 export const Basic = () => {
   return (
-    <Accordion.Root>
+    <Accordion.Root defaultValue={['React']}>
       {['React', 'Solid', 'Vue'].map((item) => (
         <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>

@@ -36,6 +36,8 @@ export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => 
 
   const context: treeView.Context = {
     ...initialContext,
+    selectedValue: props.selectedValue,
+    expandedValue: props.expandedValue,
     onFocusChange: useEvent(props.onFocusChange, { sync: true }),
     onExpandedChange: useEvent(props.onExpandedChange),
     onSelectionChange: useEvent(props.onSelectionChange),

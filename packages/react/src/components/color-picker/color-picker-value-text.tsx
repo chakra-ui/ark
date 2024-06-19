@@ -1,9 +1,12 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerValueTextProps extends HTMLArkProps<'span'> {}
+export interface ColorPickerValueTextBaseProps extends PolymorphicProps {}
+export interface ColorPickerValueTextProps
+  extends HTMLProps<'span'>,
+    ColorPickerValueTextBaseProps {}
 
 export const ColorPickerValueText = forwardRef<HTMLDivElement, ColorPickerValueTextProps>(
   (props, ref) => {

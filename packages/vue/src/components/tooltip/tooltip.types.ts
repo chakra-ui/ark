@@ -21,6 +21,11 @@ export interface RootProps {
    */
   closeOnPointerDown?: boolean
   /**
+   * Whether the tooltip should close on scroll
+   * @default true
+   */
+  closeOnScroll?: boolean
+  /**
    * The initial open state of the tooltip when it is first rendered.
    * Use when you do not need to control its open state.
    */

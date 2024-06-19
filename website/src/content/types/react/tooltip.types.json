@@ -4,36 +4,40 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "ArrowTip": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Content": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Positioner": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -60,6 +64,12 @@
         "isRequired": false,
         "description": "Whether to close the tooltip on pointerdown."
       },
+      "closeOnScroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the tooltip should close on scroll"
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
@@ -76,6 +86,11 @@
         "isRequired": false,
         "description": "The ids of the elements in the tooltip. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "interactive": {
         "type": "boolean",
         "defaultValue": "false",
@@ -91,7 +106,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onOpenChange": {
         "type": "(details: OpenChangeDetails) => void",
@@ -127,13 +142,46 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTooltipReturn", "isRequired": true },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
   "Trigger": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   }
 }

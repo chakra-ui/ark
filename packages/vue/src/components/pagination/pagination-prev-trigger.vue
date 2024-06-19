@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PaginationPrevTriggerProps extends PolymorphicProps {}
+export interface PaginationPrevTriggerBaseProps extends PolymorphicProps {}
+export interface PaginationPrevTriggerProps
+  extends PaginationPrevTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const pagination = usePaginationContext()
 </script>
 
 <template>
-  <ark.button v-bind="pagination.prevTriggerProps" :as-child="asChild">
+  <ark.button v-bind="pagination.getPrevTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

@@ -16,6 +16,7 @@ const frameworks = ref(['React', 'Solid', 'Svelte', 'Vue'])
     >
       <SegmentGroup.ItemText>{{ framework }}</SegmentGroup.ItemText>
       <SegmentGroup.ItemControl />
+      <SegmentGroup.ItemHiddenInput />
     </SegmentGroup.Item>
   </SegmentGroup.Root>
 </template>

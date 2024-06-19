@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/accordion'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface AccordionItemProps extends ItemProps, PolymorphicProps {}
+export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface AccordionItemProps
+  extends AccordionItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

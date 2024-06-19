@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxItemGroupLabelProps extends PolymorphicProps {}
+export interface ComboboxItemGroupLabelBaseProps extends PolymorphicProps {}
+export interface ComboboxItemGroupLabelProps
+  extends ComboboxItemGroupLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

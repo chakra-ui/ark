@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ClipboardTriggerProps extends PolymorphicProps {}
+export interface ClipboardTriggerBaseProps extends PolymorphicProps {}
+export interface ClipboardTriggerProps
+  extends ClipboardTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const clipboard = useClipboardContext()
 </script>
 
 <template>
-  <ark.button v-bind="clipboard.triggerProps" :as-child="asChild">
+  <ark.button v-bind="clipboard.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

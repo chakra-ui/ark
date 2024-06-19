@@ -1,10 +1,15 @@
 {
-  "Root": {
+  "Presence": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "lazyMount": {
         "type": "boolean",
@@ -15,33 +20,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
-      },
-      "present": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the node is present (controlled by the user)"
-      },
-      "unmountOnExit": {
-        "type": "boolean",
-        "defaultValue": "false",
-        "isRequired": false,
-        "description": "Whether to unmount on exit."
-      }
-    }
-  },
-  "Use": {
-    "props": {
-      "lazyMount": {
-        "type": "boolean",
-        "defaultValue": "false",
-        "isRequired": false,
-        "description": "Whether to enable lazy mounting"
-      },
-      "onExitComplete": {
-        "type": "() => void",
-        "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "present": {
         "type": "boolean",

@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, ref, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits } from './collapsible.types'
 
@@ -39,7 +39,7 @@ export const useCollapsible = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<collapsible.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
@@ -49,7 +49,7 @@ export const useCollapsible = (
       emits('openChange', details)
       emits('update:open', details.open)
     },
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(collapsible.machine(context.value), { context })

@@ -4,44 +4,83 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Group": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The initial value of `value` when uncontrolled"
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is disabled"
+      },
+      "onValueChange": {
+        "type": "(value: string[]) => void",
+        "isRequired": false,
+        "description": "The callback to call when the value changes"
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is read-only"
+      },
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The controlled value of the checkbox group"
+      }
+    },
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLInputElement"
   },
   "Indicator": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "indeterminate": { "type": "boolean", "isRequired": false }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Label": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLSpanElement"
   },
   "Root": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "checked": {
         "type": "CheckedState",
@@ -104,6 +143,18 @@
         "isRequired": false,
         "description": "The value of checkbox input. Useful for form submission."
       }
-    }
+    },
+    "element": "HTMLLabelElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCheckboxReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLLabelElement"
   }
 }

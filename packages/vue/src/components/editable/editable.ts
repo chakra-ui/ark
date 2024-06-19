@@ -1,8 +1,13 @@
 export type { ValueChangeDetails } from '@zag-js/editable'
-export { default as Area, type EditableAreaProps as AreaProps } from './editable-area.vue'
+export {
+  default as Area,
+  type EditableAreaProps as AreaProps,
+  type EditableAreaProps as AreaBaseProps,
+} from './editable-area.vue'
 export {
   default as CancelTrigger,
   type EditableCancelTriggerProps as CancelTriggerProps,
+  type EditableCancelTriggerProps as CancelTriggerBaseProps,
 } from './editable-cancel-trigger.vue'
 export {
   default as Context,
@@ -11,23 +16,41 @@ export {
 export {
   default as Control,
   type EditableControlProps as ControlProps,
+  type EditableControlProps as ControlBaseProps,
 } from './editable-control.vue'
 export {
   default as EditTrigger,
   type EditableEditTriggerProps as EditTriggerProps,
+  type EditableEditTriggerProps as EditTriggerBaseProps,
 } from './editable-edit-trigger.vue'
-export { default as Input, type EditableInputProps as InputProps } from './editable-input.vue'
-export { default as Label, type EditableLabelProps as LabelProps } from './editable-label.vue'
+export {
+  default as Input,
+  type EditableInputProps as InputProps,
+  type EditableInputProps as InputBaseProps,
+} from './editable-input.vue'
+export {
+  default as Label,
+  type EditableLabelProps as LabelProps,
+  type EditableLabelProps as LabelBaseProps,
+} from './editable-label.vue'
 export {
   default as Preview,
   type EditablePreviewProps as PreviewProps,
+  type EditablePreviewProps as PreviewBaseProps,
 } from './editable-preview.vue'
+export {
+  default as RootProvider,
+  type EditableRootProviderProps as RootProviderProps,
+  type EditableRootProviderProps as RootProviderBaseProps,
+} from './editable-root-provider.vue'
 export {
   default as Root,
   type EditableRootEmits as RootEmits,
+  type EditableRootProps as RootBaseProps,
   type EditableRootProps as RootProps,
 } from './editable-root.vue'
 export {
   default as SubmitTrigger,
   type EditableSubmitTriggerProps as SubmitTriggerProps,
+  type EditableSubmitTriggerProps as SubmitTriggerBaseProps,
 } from './editable-submit-trigger.vue'

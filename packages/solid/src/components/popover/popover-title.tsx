@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
 
-export interface PopoverTitleProps extends HTMLArkProps<'div'> {}
+export interface PopoverTitleBaseProps extends PolymorphicProps<'div'> {}
+export interface PopoverTitleProps extends HTMLProps<'div'>, PopoverTitleBaseProps {}
 
 export const PopoverTitle = (props: PopoverTitleProps) => {
   const api = usePopoverContext()
-  const mergedProps = mergeProps(() => api().titleProps, props)
+  const mergedProps = mergeProps(() => api().getTitleProps(), props)
 
   return <ark.div {...mergedProps} />
 }

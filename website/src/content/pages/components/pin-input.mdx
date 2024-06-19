@@ -8,8 +8,7 @@ description: For pin or verification codes with auto-focus transfer and masking 
 
 ## Anatomy
 
-To set up the pin input correctly, you'll need to understand its anatomy and how
-we name its parts.
+To set up the pin input correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,8 +16,8 @@ we name its parts.
 
 ## Examples
 
-Learn how to use the `PinInput` component in your project. Let's take a look at
-the most basic example:
+Learn how to use the `PinInput` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
@@ -30,32 +29,31 @@ To set the initial value of the pin input, set the `defaultValue` prop.
 
 ### Changing the placeholder
 
-To customize the default pin input placeholder `○` for each input, pass the
-placeholder prop and set it to your desired value.
+To customize the default pin input placeholder `○` for each input, pass the placeholder prop and set
+it to your desired value.
 
 <Example id="customized" />
 
 ### Blur on complete
 
-By default, the last input maintains focus when filled, and we invoke the
-`onValueComplete` callback. To blur the last input when the user completes the
-input, set the prop `blurOnComplete` to `true`.
+By default, the last input maintains focus when filled, and we invoke the `onValueComplete`
+callback. To blur the last input when the user completes the input, set the prop `blurOnComplete` to
+`true`.
 
 <Example id="blurred" />
 
 ### Using OTP mode
 
-To trigger smartphone OTP auto-suggestion, it is recommended to set the
-`autocomplete` attribute to "one-time-code". The pin input component provides
-support for this automatically when you set the `otp` prop to true.
+To trigger smartphone OTP auto-suggestion, it is recommended to set the `autocomplete` attribute to
+"one-time-code". The pin input component provides support for this automatically when you set the
+`otp` prop to true.
 
 <Example id="otp-mode" />
 
 ### Securing the text input
 
-When collecting private or sensitive information using the pin input, you might
-need to mask the value entered, similar to `<input type="password"/>`. Pass the
-`mask` prop to `true`.
+When collecting private or sensitive information using the pin input, you might need to mask the
+value entered, similar to `<input type="password"/>`. Pass the `mask` prop to `true`.
 
 <Example id="with-mask" />
 
@@ -64,10 +62,9 @@ need to mask the value entered, similar to `<input type="password"/>`. Pass the
 The pin input component invokes several callback functions when the user enters:
 
 - `onValueChange` — Callback invoked when the value is changed.
-- `onValueComplete` — Callback invoked when all fields have been completed (by
-  typing or pasting).
-- `onValueInvalid` — Callback invoked when an invalid value is entered into the
-  input. An invalid value is any value that doesn't match the specified "type".
+- `onValueComplete` — Callback invoked when all fields have been completed (by typing or pasting).
+- `onValueInvalid` — Callback invoked when an invalid value is entered into the input. An invalid
+  value is any value that doesn't match the specified "type".
 
 ## API Reference
 

@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -11,9 +10,11 @@ import {
 import { type UseColorPickerProps, useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
 
-export interface ColorPickerRootProps
-  extends Assign<HTMLArkProps<'div'>, UseColorPickerProps>,
-    UsePresenceProps {}
+export interface ColorPickerRootBaseProps
+  extends UseColorPickerProps,
+    UsePresenceProps,
+    PolymorphicProps<'div'> {}
+export interface ColorPickerRootProps extends HTMLProps<'div'>, ColorPickerRootBaseProps {}
 
 export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
@@ -45,7 +46,7 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
   )
   const api = useColorPicker(useColorPickerProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <ColorPickerProvider value={api}>

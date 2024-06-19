@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './editable'
 
 export interface UseEditableProps
@@ -20,27 +20,27 @@ export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> 
 
 export const useEditable = (
   props: UseEditableProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseEditableReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<editable.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    onEdit: () => emit('edit'),
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onValueCommit: (details) => emit('valueCommit', details),
-    onValueRevert: (details) => emit('valueRevert', details),
-    ...props,
+    onEdit: () => emit?.('edit'),
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onValueCommit: (details) => emit?.('valueCommit', details),
+    onValueRevert: (details) => emit?.('valueRevert', details),
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(editable.machine(context.value), { context })

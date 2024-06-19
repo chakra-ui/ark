@@ -1,6 +1,22 @@
 {
-  "ItemContent": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemContent": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Item": {
     "props": {
       "value": {
@@ -8,7 +24,11 @@
         "isRequired": true,
         "description": "The value of the accordion item."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
@@ -16,10 +36,22 @@
       }
     }
   },
-  "ItemTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "collapsible": {
         "type": "boolean",
         "defaultValue": "false",
@@ -35,11 +67,6 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the accordion items are disabled"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  item(value: string): string\n  content(value: string): string\n  trigger(value: string): string\n}>",
@@ -84,6 +111,28 @@
         "type": "string[]",
         "isRequired": false,
         "description": "The `value` of the accordion items that are currently being expanded."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseAccordionReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
       }
     }
   }

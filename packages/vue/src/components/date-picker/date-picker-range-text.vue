@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerRangeTextProps extends PolymorphicProps {}
+export interface DatePickerRangeTextBaseProps extends PolymorphicProps {}
+export interface DatePickerRangeTextProps
+  extends DatePickerRangeTextBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.rangeTextProps" :as-child="asChild">
+  <ark.div v-bind="datePicker.getRangeTextProps()" :as-child="asChild">
     {{ datePicker.visibleRangeText.start }}
   </ark.div>
 </template>

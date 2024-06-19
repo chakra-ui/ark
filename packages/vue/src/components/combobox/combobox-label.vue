@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxLabelProps extends PolymorphicProps {}
+export interface ComboboxLabelBaseProps extends PolymorphicProps {}
+export interface ComboboxLabelProps
+  extends ComboboxLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.label v-bind="combobox.labelProps" :as-child="asChild">
+  <ark.label v-bind="combobox.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

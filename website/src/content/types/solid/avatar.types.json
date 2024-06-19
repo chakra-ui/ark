@@ -1,13 +1,28 @@
 {
-  "Fallback": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Image": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Fallback": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Image": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'img'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
-      "id": {
-        "type": "string",
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
-        "description": "The unique identifier of the machine."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "ids": {
         "type": "Partial<{ root: string; image: string; fallback: string }>",
@@ -18,6 +33,16 @@
         "type": "(details: StatusChangeDetails) => void",
         "isRequired": false,
         "description": "Functional called when the image loading status changes."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseAvatarReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   }

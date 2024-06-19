@@ -1,9 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-export interface FileUploadItemSizeTextProps extends HTMLArkProps<'div'> {}
+export interface FileUploadItemSizeTextBaseProps extends PolymorphicProps<'div'> {}
+export interface FileUploadItemSizeTextProps
+  extends HTMLProps<'div'>,
+    FileUploadItemSizeTextBaseProps {}
 
 export const FileUploadItemSizeText = (props: FileUploadItemSizeTextProps) => {
   const fileUpload = useFileUploadContext()

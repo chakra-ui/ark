@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ClipboardIndicatorProps extends PolymorphicProps {}
+export interface ClipboardIndicatorBaseProps extends PolymorphicProps {}
+export interface ClipboardIndicatorProps
+  extends ClipboardIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

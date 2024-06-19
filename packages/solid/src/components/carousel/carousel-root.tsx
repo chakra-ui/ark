@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseCarouselProps, useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
 
-export interface CarouselRootProps extends Assign<HTMLArkProps<'div'>, UseCarouselProps> {}
+export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps<'div'> {}
+export interface CarouselRootProps extends HTMLProps<'div'>, CarouselRootBaseProps {}
 
 export const CarouselRoot = (props: CarouselRootProps) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
@@ -21,7 +21,7 @@ export const CarouselRoot = (props: CarouselRootProps) => {
     'spacing',
   ])
   const api = useCarousel(useCarouselProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <CarouselProvider value={api}>

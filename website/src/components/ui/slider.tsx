@@ -1,10 +1,11 @@
 'use client'
+import type { Assign } from '@ark-ui/react'
 import { Slider as ArkSlider, type SliderRootProps } from '@ark-ui/react/slider'
 import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
 import { type SliderVariantProps, slider } from 'styled-system/recipes'
-import type { Assign, JsxStyleProps } from 'styled-system/types'
+import type { JsxStyleProps } from 'styled-system/types'
 
 export interface SliderProps extends Assign<JsxStyleProps, SliderRootProps>, SliderVariantProps {
   children?: ReactNode
@@ -31,7 +32,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
                 <ArkSlider.Range className={styles.range} />
               </ArkSlider.Track>
               {api.value.map((_, index) => (
-                <ArkSlider.Thumb key={index} index={index} className={styles.thumb} />
+                <ArkSlider.Thumb key={index} index={index} className={styles.thumb}>
+                  <ArkSlider.HiddenInput />
+                </ArkSlider.Thumb>
               ))}
             </ArkSlider.Control>
             {props.marks && (

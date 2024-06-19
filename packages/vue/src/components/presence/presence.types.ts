@@ -1,5 +1,9 @@
 export interface RootProps {
   /**
+   * Whether to synchronize the present change immediately or defer it to the next frame
+   */
+  immediate?: boolean
+  /**
    * Whether to enable lazy mounting
    * @default false
    */
@@ -17,7 +21,7 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
-   * Function called when the animation ends in the closed state.
+   * Function called when the animation ends in the closed state
    */
   exitComplete: []
 }

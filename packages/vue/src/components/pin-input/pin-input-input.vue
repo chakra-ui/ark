@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/pin-input'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PinInputInputProps extends PolymorphicProps, InputProps {}
+export interface PinInputInputBaseProps extends InputProps, PolymorphicProps {}
+export interface PinInputInputProps
+  extends PinInputInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -14,5 +21,5 @@ const pinInput = usePinInputContext()
 </script>
 
 <template>
-  <ark.input v-bind="pinInput.getInputProps(props)" :as-child="asChild" />
+  <ark.input v-bind="pinInput.getInputProps(props)" :as-child="asChild"><slot /></ark.input>
 </template>

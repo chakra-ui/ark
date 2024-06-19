@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
 export interface UseTabsProps
@@ -17,22 +17,22 @@ export interface UseTabsProps
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
-export const useTabs = (props: UseTabsProps, emit: EmitFn<RootEmits>): UseTabsReturn => {
+export const useTabs = (props: UseTabsProps, emit?: EmitFn<RootEmits>): UseTabsReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<tabs.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit('focusChange', details),
+    onFocusChange: (details) => emit?.('focusChange', details),
     onValueChange: (details) => {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(tabs.machine(context.value), { context })

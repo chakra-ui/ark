@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './radio-group.types'
 
-export interface RadioGroupRootProps extends RootProps, PolymorphicProps {}
+export interface RadioGroupRootBaseProps extends RootProps, PolymorphicProps {}
+export interface RadioGroupRootProps
+  extends RadioGroupRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface RadioGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useRadioGroup } from './use-radio-group'
 import { RadioGroupProvider } from './use-radio-group-context'
 
@@ -23,7 +31,7 @@ RadioGroupProvider(radioGroup)
 </script>
 
 <template>
-  <ark.div v-bind="radioGroup.rootProps" :as-child="asChild">
+  <ark.div v-bind="radioGroup.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

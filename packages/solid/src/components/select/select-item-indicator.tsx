@@ -1,9 +1,10 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useSelectItemPropsContext } from './use-select-item-props-context'
 
-export interface SelectItemIndicatorProps extends HTMLArkProps<'div'> {}
+export interface SelectItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
+export interface SelectItemIndicatorProps extends HTMLProps<'div'>, SelectItemIndicatorBaseProps {}
 
 export const SelectItemIndicator = (props: SelectItemIndicatorProps) => {
   const select = useSelectContext()

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectPositionerProps extends PolymorphicProps {}
+export interface SelectPositionerBaseProps extends PolymorphicProps {}
+export interface SelectPositionerProps
+  extends SelectPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="select.positionerProps"
+    v-bind="select.getPositionerProps()"
     :present="select.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

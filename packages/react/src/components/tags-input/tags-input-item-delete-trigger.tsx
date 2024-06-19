@@ -1,10 +1,13 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
-export interface TagsInputItemDeleteTriggerProps extends HTMLArkProps<'button'> {}
+export interface TagsInputItemDeleteTriggerBaseProps extends PolymorphicProps {}
+export interface TagsInputItemDeleteTriggerProps
+  extends HTMLProps<'button'>,
+    TagsInputItemDeleteTriggerBaseProps {}
 
 export const TagsInputItemDeleteTrigger = forwardRef<
   HTMLButtonElement,

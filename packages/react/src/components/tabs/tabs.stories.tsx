@@ -7,10 +7,11 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { InitialTab } from './examples/initial-tab'
-export { Indicator } from './examples/indicator'
-export { LazyMount } from './examples/lazy-mount'
-export { DisabledTab } from './examples/disabled-tab'
 export { Controlled } from './examples/controlled'
-export { Vertical } from './examples/vertical'
+export { DisabledTab } from './examples/disabled-tab'
+export { Indicator } from './examples/indicator'
+export { InitialTab } from './examples/initial-tab'
+export { LazyMount } from './examples/lazy-mount'
+export { WithLinkTrigger } from './examples/link-trigger'
 export { Manual } from './examples/manual'
+export { Vertical } from './examples/vertical'

@@ -1,12 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseFileUploadProps, useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
 
-export interface FileUploadRootProps extends Assign<HTMLArkProps<'div'>, UseFileUploadProps> {}
+export interface FileUploadRootBaseProps extends UseFileUploadProps, PolymorphicProps {}
+export interface FileUploadRootProps extends HTMLProps<'div'>, FileUploadRootBaseProps {}
 
 export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((props, ref) => {
   const [useFileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
@@ -29,7 +29,7 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'validate',
   ])
   const fileUpload = useFileUpload(useFileUploadProps)
-  const mergedProps = mergeProps(fileUpload.rootProps, localProps)
+  const mergedProps = mergeProps(fileUpload.getRootProps(), localProps)
 
   return (
     <FileUploadProvider value={fileUpload}>

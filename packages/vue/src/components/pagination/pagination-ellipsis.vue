@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { EllipsisProps } from '@zag-js/pagination'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PaginationEllipsisProps extends PolymorphicProps, EllipsisProps {}
+export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps {}
+export interface PaginationEllipsisProps
+  extends PaginationEllipsisBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

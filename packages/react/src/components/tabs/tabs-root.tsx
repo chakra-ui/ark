@@ -7,13 +7,12 @@ import {
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseTabsProps, useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
-export interface TabsRootProps
-  extends Assign<HTMLArkProps<'div'>, UseTabsProps>,
-    RenderStrategyProps {}
+export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps {}
+export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProps> {}
 
 export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
@@ -31,7 +30,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'value',
   ])
   const tabs = useTabs(useTabsProps)
-  const mergedProps = mergeProps(tabs.rootProps, localprops)
+  const mergedProps = mergeProps(tabs.getRootProps(), localprops)
 
   return (
     <TabsProvider value={tabs}>

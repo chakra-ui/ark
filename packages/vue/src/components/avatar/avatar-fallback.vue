@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface AvatarFallbackProps extends PolymorphicProps {}
+export interface AvatarFallbackBaseProps extends PolymorphicProps {}
+export interface AvatarFallbackProps
+  extends AvatarFallbackBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const avatar = useAvatarContext()
 </script>
 
 <template>
-  <ark.span v-bind="avatar.fallbackProps" :as-child="asChild">
+  <ark.span v-bind="avatar.getFallbackProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

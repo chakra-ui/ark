@@ -5,9 +5,10 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -16,27 +17,30 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "NextTrigger": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -48,17 +52,12 @@
       "asChild": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Render as a different element type."
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "defaultPage": {
         "type": "number",
         "isRequired": false,
         "description": "The initial page of the pagination when it is first rendered.\nUse when you do not need to control the state of the pagination."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevTrigger: string\n  nextTrigger: string\n  item(page: number): string\n}>",
@@ -68,7 +67,12 @@
       "onPageChange": {
         "type": "(details: PageChangeDetails) => void",
         "isRequired": false,
-        "description": "Called when the page number is changed, and it takes the resulting page number argument"
+        "description": "Called when the page number is changed"
+      },
+      "onPageSizeChange": {
+        "type": "(details: PageSizeChangeDetails) => void",
+        "isRequired": false,
+        "description": "Called when the page size is changed"
       },
       "page": {
         "type": "number",
@@ -99,6 +103,18 @@
         "isRequired": false,
         "description": "The type of the trigger element"
       }
-    }
+    },
+    "element": "HTMLElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UsePaginationReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLElement"
   }
 }

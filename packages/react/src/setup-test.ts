@@ -1,8 +1,9 @@
 import type { AnatomyInstance } from '@ark-ui/anatomy'
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/vitest'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
 import { vi } from 'vitest'
+import 'vitest-axe/extend-expect'
 
 const { window } = new JSDOM()
 

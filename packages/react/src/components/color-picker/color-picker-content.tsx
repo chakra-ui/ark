@@ -1,16 +1,21 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerContentProps extends HTMLArkProps<'div'> {}
+export interface ColorPickerContentBaseProps extends PolymorphicProps {}
+export interface ColorPickerContentProps extends HTMLProps<'div'>, ColorPickerContentBaseProps {}
 
 export const ColorPickerContent = forwardRef<HTMLDivElement, ColorPickerContentProps>(
   (props, ref) => {
     const colorPicker = useColorPickerContext()
     const presence = usePresenceContext()
-    const mergedProps = mergeProps(colorPicker.contentProps, presence.getPresenceProps(ref), props)
+    const mergedProps = mergeProps(
+      colorPicker.getContentProps(),
+      presence.getPresenceProps(ref),
+      props,
+    )
 
     if (presence.unmounted) {
       return null

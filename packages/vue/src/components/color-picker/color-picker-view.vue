@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ColorFormat } from '@zag-js/color-picker'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerViewProps extends PolymorphicProps {
+export interface ColorPickerViewBaseProps extends PolymorphicProps {}
+export interface ColorPickerViewProps
+  extends ColorPickerViewBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   format: ColorFormat
 }
 </script>
@@ -11,9 +18,12 @@ export interface ColorPickerViewProps extends PolymorphicProps {
 import { ark } from '../factory'
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
+import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 
-defineProps<ColorPickerViewProps>()
+const props = defineProps<ColorPickerViewProps>()
 const colorPicker = useColorPickerContext()
+
+ColorPickerFormatPropsProvider(props)
 </script>
 
 <template>

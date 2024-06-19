@@ -4,7 +4,8 @@ import { LocaleContextProvider } from './use-locale-context'
 
 export interface LocaleProviderProps extends PropsWithChildren {
   /**
-   * The locale to use. For example, 'en-US'.
+   * The locale to use for the application.
+   * @default 'en-US'
    */
   locale: string
 }

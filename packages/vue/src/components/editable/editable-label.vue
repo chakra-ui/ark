@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface EditableLabelProps extends PolymorphicProps {}
+export interface EditableLabelBaseProps extends PolymorphicProps {}
+export interface EditableLabelProps
+  extends EditableLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.label v-bind="editable.labelProps" :as-child="asChild">
+  <ark.label v-bind="editable.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

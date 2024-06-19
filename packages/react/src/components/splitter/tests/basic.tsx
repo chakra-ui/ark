@@ -9,7 +9,7 @@ export const ComponentUnderTest = (props: SplitterRootProps) => (
     {...props}
   >
     <Splitter.Panel id="a">A</Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b">
+    <Splitter.ResizeTrigger id="a:b" aria-label="Reisze">
       <div className="bar" />
     </Splitter.ResizeTrigger>
     <Splitter.Panel id="b">B</Splitter.Panel>

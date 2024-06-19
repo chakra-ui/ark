@@ -2,11 +2,12 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseNumberInputProps, useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
 
-export interface NumberInputRootProps extends Assign<HTMLArkProps<'div'>, UseNumberInputProps> {}
+export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps {}
+export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
 
 export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>((props, ref) => {
   const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [
@@ -37,7 +38,7 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'value',
   ])
   const numberInput = useNumberInput(useNumberInputProps)
-  const mergedProps = mergeProps(numberInput.rootProps, localProps)
+  const mergedProps = mergeProps(numberInput.getRootProps(), localProps)
 
   return (
     <NumberInputProvider value={numberInput}>

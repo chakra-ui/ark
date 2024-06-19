@@ -1,12 +1,15 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
-export interface EditableEditTriggerProps extends HTMLArkProps<'button'> {}
+export interface EditableEditTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface EditableEditTriggerProps
+  extends HTMLProps<'button'>,
+    EditableEditTriggerBaseProps {}
 
 export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
   const api = useEditableContext()
-  const mergedProps = mergeProps(() => api().editTriggerProps, props)
+  const mergedProps = mergeProps(() => api().getEditTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

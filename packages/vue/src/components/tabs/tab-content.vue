@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ContentProps } from '@zag-js/tabs'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TabContentProps extends PolymorphicProps, ContentProps {}
+export interface TabContentBaseProps extends ContentProps, PolymorphicProps {}
+export interface TabContentProps
+  extends TabContentBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -21,6 +28,7 @@ const renderStrategy = useRenderStrategyProps()
     :present="tabs.value === props.value"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"
+    :immediate="true"
   >
     <slot />
   </Presence>

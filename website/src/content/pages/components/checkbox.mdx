@@ -8,8 +8,7 @@ description: A control element that allows for multiple selections within a set.
 
 ## Anatomy
 
-To set up the checkbox correctly, you'll need to understand its anatomy and how
-we name its parts.
+To set up the checkbox correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,42 +16,47 @@ we name its parts.
 
 ### Design impact on the asChild property
 
-The `Checkbox.Root` element of the checkbox is a `label` element. This is
-because the checkbox is a form control and should be associated with a label to
-provide context and meaning to the user. Otherwise, the HTML and accessibility
-structure will be invalid.
+The `Checkbox.Root` element of the checkbox is a `label` element. This is because the checkbox is a
+form control and should be associated with a label to provide context and meaning to the user.
+Otherwise, the HTML and accessibility structure will be invalid.
 
-> If you need to use the `asChild` property, make sure that the `label` element
-> is the direct child of the `Checkbox.Root` component.
+> If you need to use the `asChild` property, make sure that the `label` element is the direct child
+> of the `Checkbox.Root` component.
 
 ## Examples
 
-Learn how to use the `Checkbox` component in your project. Let's take a look at
-the most basic example:
+Learn how to use the `Checkbox` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Controlled Checkbox
 
-To create a controlled Checkbox component, manage the state of the checked
-status using the `checked` prop and update it when the `onCheckedChange` event
-handler is called:
+To create a controlled Checkbox component, manage the state of the checked status using the
+`checked` prop and update it when the `onCheckedChange` event handler is called:
 
 <Example id="controlled" />
 
 ### Indeterminate Checkbox
 
-In some cases, you may need a checkbox to represent a state that is neither
-checked nor unchecked, known as the indeterminate state. This can be achieved by
-setting the `checked` prop to `indeterminate`:
+In some cases, you may need a checkbox to represent a state that is neither checked nor unchecked,
+known as the indeterminate state. This can be achieved by setting the `checked` prop to
+`indeterminate`:
 
 <Example id="indeterminate" />
 
+### Checkbox Group
+
+Ark provides a `Checkbox.Group` component to manage a group of checkboxes. The `Checkbox.Group`
+component manages the state of the checkboxes and provides a way to access the checked values:
+
+<Example id="group" />
+
 ### Render Prop Usage
 
-For cases where you need more flexibility in rendering, the Checkbox component
-offers the use of a render prop. The render prop function gives you access to
-the checkbox's API, allowing you to customize the checkbox control's rendering:
+For cases where you need more flexibility in rendering, the Checkbox component offers the use of a
+render prop. The render prop function gives you access to the checkbox's API, allowing you to
+customize the checkbox control's rendering:
 
 <Example id="render-prop" />
 
@@ -62,7 +66,8 @@ the checkbox's API, allowing you to customize the checkbox control's rendering:
 
 ## Accessibility
 
-Complies with the [Checkbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/).
+Complies with the
+[Checkbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/).
 
 ### Keyboard Support
 

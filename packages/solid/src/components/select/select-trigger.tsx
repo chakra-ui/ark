@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 
-export interface SelectTriggerProps extends HTMLArkProps<'button'> {}
+export interface SelectTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface SelectTriggerProps extends HTMLProps<'button'>, SelectTriggerBaseProps {}
 
 export const SelectTrigger = (props: SelectTriggerProps) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(() => select().triggerProps, props)
+  const mergedProps = mergeProps(() => select().getTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

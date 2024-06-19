@@ -8,8 +8,7 @@ description: A component that allows users to add tags to an input field.
 
 ## Anatomy
 
-To set up the tags input correctly, you'll need to understand its anatomy and
-how we name its parts.
+To set up the tags input correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,22 +16,19 @@ how we name its parts.
 
 ## Examples
 
-Learn how to use the `TagsInput` component in your project. Let's take a look at
-the most basic example:
+Learn how to use the `TagsInput` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Navigating and Editing tags
 
-When the input has an empty value or the caret is at the start position, the
-tags can be selected by using the arrow left and arrow right keys. When "visual"
-focus in on any tag:
+When the input has an empty value or the caret is at the start position, the tags can be selected by
+using the arrow left and arrow right keys. When "visual" focus in on any tag:
 
-- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit
-  mode, allowing the user change its value and press <kbd>Enter</kbd> to commit
-  the changes.
-- Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that
-  has _visual_ focus.
+- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit mode, allowing the
+  user change its value and press <kbd>Enter</kbd> to commit the changes.
+- Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that has _visual_ focus.
 
 ### Setting the initial tags
 
@@ -42,28 +38,27 @@ To set the initial tag values, set the `defaultValue` prop.
 
 ### Limiting the number of tags
 
-To limit the number of tags within the component, you can set the `max` property
-to the limit you want. The default value is `Infinity`.
+To limit the number of tags within the component, you can set the `max` property to the limit you
+want. The default value is `Infinity`.
 
-When the tag reaches the limit, new tags cannot be added except the
-`allowOverflow` prop is set to `true`.
+When the tag reaches the limit, new tags cannot be added except the `allowOverflow` prop is set to
+`true`.
 
 <Example id="max-with-overflow" />
 
 ### Validating Tags
 
-Before a tag is added, the `validate` function is called to determine whether to
-accept or reject a tag.
+Before a tag is added, the `validate` function is called to determine whether to accept or reject a
+tag.
 
-A common use-case for validating tags is preventing duplicates or validating the
-data type.
+A common use-case for validating tags is preventing duplicates or validating the data type.
 
 <Example id="validated" />
 
 ### Blur behavior
 
-When the tags input is blurred, you can configure the action the component
-should take by passing the `blurBehavior` prop.
+When the tags input is blurred, you can configure the action the component should take by passing
+the `blurBehavior` prop.
 
 - `add` — Adds the tag to the list of tags.
 - `clear` — Clears the tags input value.
@@ -72,8 +67,7 @@ should take by passing the `blurBehavior` prop.
 
 ### Paste behavior
 
-To add a tag when a arbitrary value is pasted in the input element, pass the
-`addOnPaste` prop.
+To add a tag when a arbitrary value is pasted in the input element, pass the `addOnPaste` prop.
 
 When a value is pasted, the component will:
 
@@ -84,21 +78,20 @@ When a value is pasted, the component will:
 
 ### Disable tag editing
 
-by default the tags can be edited by double-clicking on the tag or focusing on
-them and pressing <kbd>Enter</kbd>. To disable this behavior, pass
-`allowEditTag={false}`
+by default the tags can be edited by double-clicking on the tag or focusing on them and pressing
+
+<kbd>Enter</kbd>. To disable this behavior, pass `allowEditTag={false}`
 
 <Example id="disabled-editing" />
 
 ### Events
 
-During the lifetime of the tags input interaction, here's a list of events we
-emit:
+During the lifetime of the tags input interaction, here's a list of events we emit:
 
 - `onValueChange` — invoked when the tag value changes.
 - `onHighlightChange` — invoked when a tag has visual focus.
-- `onValueInvalid` — invoked when the max tag count is reached or the `validate`
-  function returns `false`.
+- `onValueInvalid` — invoked when the max tag count is reached or the `validate` function returns
+  `false`.
 
 <Example id="on-event" />
 

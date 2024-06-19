@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RadioGroupLabelProps extends PolymorphicProps {}
+export interface RadioGroupLabelBaseProps extends PolymorphicProps {}
+export interface RadioGroupLabelProps
+  extends RadioGroupLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const radioGroup = useRadioGroupContext()
 </script>
 
 <template>
-  <ark.label v-bind="radioGroup.labelProps" :as-child="asChild">
+  <ark.label v-bind="radioGroup.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

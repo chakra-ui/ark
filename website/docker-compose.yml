@@ -1,0 +1,17 @@
+services:
+  db:
+    container_name: ark-plus-db
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /data/postgres
+    volumes:
+       - ark-plus-db:/data/postgres
+
+volumes:
+  ark-plus-db:
+    driver: local

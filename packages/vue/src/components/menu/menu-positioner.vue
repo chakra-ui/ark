@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuPositionerProps extends PolymorphicProps {}
+export interface MenuPositionerBaseProps extends PolymorphicProps {}
+export interface MenuPositionerProps
+  extends MenuPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -15,7 +22,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <Presence v-bind="menu.positionerProps" :present="menu.open">
+  <Presence v-bind="menu.getPositionerProps()" :present="menu.open">
     <slot />
   </Presence>
 </template>

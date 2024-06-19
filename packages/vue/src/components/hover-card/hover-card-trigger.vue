@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface HoverCardTriggerProps extends PolymorphicProps {}
+export interface HoverCardTriggerBaseProps extends PolymorphicProps {}
+export interface HoverCardTriggerProps
+  extends HoverCardTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const hoverCard = useHoverCardContext()
 </script>
 
 <template>
-  <ark.button v-bind="hoverCard.triggerProps" :as-child="asChild">
+  <ark.button v-bind="hoverCard.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

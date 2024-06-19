@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { InputProps } from '@zag-js/date-picker'
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerInputProps extends PolymorphicProps, InputProps {}
+export interface DatePickerInputBaseProps extends InputProps, PolymorphicProps {}
+export interface DatePickerInputProps
+  extends DatePickerInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -14,5 +21,5 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.input v-bind="datePicker.getInputProps(props)" :as-child="asChild" />
+  <ark.input v-bind="datePicker.getInputProps(props)" :as-child="asChild"><slot /></ark.input>
 </template>

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CarouselItemGroupProps extends PolymorphicProps {}
+export interface CarouselItemGroupBaseProps extends PolymorphicProps {}
+export interface CarouselItemGroupProps
+  extends CarouselItemGroupBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const carousel = useCarouselContext()
 </script>
 
 <template>
-  <ark.div v-bind="carousel.itemGroupProps" :as-child="asChild">
+  <ark.div v-bind="carousel.getItemGroupProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

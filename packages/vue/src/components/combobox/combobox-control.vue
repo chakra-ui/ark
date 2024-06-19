@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxControlProps extends PolymorphicProps {}
+export interface ComboboxControlBaseProps extends PolymorphicProps {}
+export interface ComboboxControlProps
+  extends ComboboxControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const combobox = useComboboxContext()
 </script>
 
 <template>
-  <ark.div v-bind="combobox.controlProps" :as-child="asChild">
+  <ark.div v-bind="combobox.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

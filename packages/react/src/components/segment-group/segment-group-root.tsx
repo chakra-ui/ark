@@ -3,11 +3,13 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
-export interface SegmentGroupRootProps extends Assign<HTMLArkProps<'div'>, UseSegmentGroupProps> {}
+export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps {}
+export interface SegmentGroupRootProps
+  extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}
 
 export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps>((props, ref) => {
   const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
@@ -24,7 +26,7 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
   const mergedProps = mergeProps(
-    segmentGroup.rootProps,
+    segmentGroup.getRootProps(),
     segmentGroupAnatomy.build().root.attrs as Record<string, string>,
     localProps,
   )

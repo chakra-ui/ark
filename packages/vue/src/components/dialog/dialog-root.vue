@@ -3,7 +3,8 @@ import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './dialog.types'
 
-export interface DialogRootProps extends RootProps, RenderStrategyProps {}
+export interface DialogRootBaseProps extends RootProps, RenderStrategyProps {}
+export interface DialogRootProps extends DialogRootBaseProps {}
 export interface DialogRootEmits extends RootEmits {}
 </script>
 

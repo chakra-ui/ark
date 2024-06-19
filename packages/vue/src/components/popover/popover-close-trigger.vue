@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PopoverCloseTriggerProps extends PolymorphicProps {}
+export interface PopoverCloseTriggerBaseProps extends PolymorphicProps {}
+export interface PopoverCloseTriggerProps
+  extends PopoverCloseTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const popover = usePopoverContext()
 </script>
 
 <template>
-  <ark.button v-bind="popover.closeTriggerProps" :as-child="asChild">
+  <ark.button v-bind="popover.getCloseTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

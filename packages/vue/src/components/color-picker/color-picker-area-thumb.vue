@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerAreaThumbProps extends PolymorphicProps {}
+export interface ColorPickerAreaThumbBaseProps extends PolymorphicProps {}
+export interface ColorPickerAreaThumbProps
+  extends ColorPickerAreaThumbBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

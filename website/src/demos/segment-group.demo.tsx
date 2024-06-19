@@ -13,6 +13,7 @@ export const Demo = (props: SegmentGroup.RootProps) => {
         <SegmentGroup.Item key={option.id} value={option.id} disabled={Boolean(option.disabled)}>
           <SegmentGroup.ItemControl />
           <SegmentGroup.ItemText>{option.label}</SegmentGroup.ItemText>
+          <SegmentGroup.ItemHiddenInput />
         </SegmentGroup.Item>
       ))}
       <SegmentGroup.Indicator />

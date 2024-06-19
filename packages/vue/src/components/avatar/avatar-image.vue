@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ImgHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface AvatarImageProps extends PolymorphicProps {}
+export interface AvatarImageBaseProps extends PolymorphicProps {}
+export interface AvatarImageProps
+  extends AvatarImageBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ImgHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const avatar = useAvatarContext()
 </script>
 
 <template>
-  <ark.img v-bind="avatar.imageProps" :as-child="asChild" />
+  <ark.img v-bind="avatar.getImageProps()" :as-child="asChild" />
 </template>

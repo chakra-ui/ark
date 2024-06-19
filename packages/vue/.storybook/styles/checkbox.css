@@ -5,6 +5,11 @@
   gap: 8px;
 }
 
+[data-scope='checkbox'][data-part='group'] {
+  display: flex;
+  gap: 24px;
+}
+
 [data-scope='checkbox'][data-part='control'] {
   border: 2px solid;
   border-radius: 4px;

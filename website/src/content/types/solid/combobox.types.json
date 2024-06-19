@@ -1,14 +1,74 @@
 {
-  "ClearTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Input": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroupLabel": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroup": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Item": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "item": { "type": "any", "isRequired": false, "description": "The item to render" },
       "persistFocus": {
         "type": "boolean",
@@ -17,9 +77,42 @@
       }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'label'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
       "items": {
@@ -32,7 +125,11 @@
         "isRequired": false,
         "description": "Whether to allow typing custom values in the input"
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "autoFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -84,18 +181,18 @@
         "isRequired": false,
         "description": "The active item's id. Used to set the `aria-activedescendant` attribute"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
       "ids": {
         "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item(id: string, index?: number | undefined): string\n  positioner: string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "inputBehavior": {
-        "type": "'none' | 'autocomplete' | 'autohighlight'",
+        "type": "'none' | 'autohighlight' | 'autocomplete'",
         "defaultValue": "\"none\"",
         "isRequired": false,
         "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
@@ -140,7 +237,7 @@
       "multiple": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether to allow multiple selection"
+        "description": "Whether to allow multiple selection.\n\n**Good to know:** When `multiple` is `true`, the `selectionBehavior` is automatically set to `clear`.\nIt is recommended to render the selected items in a separate container."
       },
       "name": {
         "type": "string",
@@ -150,7 +247,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusOutside": {
         "type": "(event: FocusOutsideEvent) => void",
@@ -259,9 +356,50 @@
       }
     }
   },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseComboboxReturn<T>", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
   "Trigger": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "focusable": {
         "type": "boolean",
         "isRequired": false,

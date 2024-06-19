@@ -3,7 +3,8 @@ import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './popover.types'
 
-export interface PopoverRootProps extends RootProps, RenderStrategyProps {}
+export interface PopoverRootBaseProps extends RootProps, RenderStrategyProps {}
+export interface PopoverRootProps extends PopoverRootBaseProps {}
 export interface PopoverRootEmits extends RootEmits {}
 </script>
 

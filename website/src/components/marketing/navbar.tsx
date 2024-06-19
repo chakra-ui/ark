@@ -24,7 +24,7 @@ export const Navbar = () => (
         </NextLink>
         <HStack gap="8">
           <NextLink
-            href="/docs/react/overview/introduction"
+            href="/react/docs/overview/introduction"
             className={css({
               textStyle: 'sm',
               fontWeight: 'medium',

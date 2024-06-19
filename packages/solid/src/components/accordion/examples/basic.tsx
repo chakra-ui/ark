@@ -4,11 +4,11 @@ import { Accordion } from '../..'
 
 export const Basic = () => {
   return (
-    <Accordion.Root>
+    <Accordion.Root defaultValue={['React']}>
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
-            <Accordion.ItemTrigger onClick={() => console.log('on Click')}>
+            <Accordion.ItemTrigger>
               What is {item()}?
               <Accordion.ItemIndicator>
                 <ChevronDownIcon />

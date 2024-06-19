@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
 
-export interface SwitchControlProps extends HTMLArkProps<'span'> {}
+export interface SwitchControlBaseProps extends PolymorphicProps<'span'> {}
+export interface SwitchControlProps extends HTMLProps<'span'>, SwitchControlBaseProps {}
 
 export const SwitchControl = (props: SwitchControlProps) => {
   const api = useSwitchContext()
-  const mergedProps = mergeProps(() => api().controlProps, props)
+  const mergedProps = mergeProps(() => api().getControlProps(), props)
 
   return <ark.span {...mergedProps} />
 }

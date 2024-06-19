@@ -1,11 +1,11 @@
 import type { TriggerProps } from '@zag-js/combobox'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 
-export interface ComboboxTriggerProps extends Assign<HTMLArkProps<'button'>, TriggerProps> {}
+export interface ComboboxTriggerBaseProps extends TriggerProps, PolymorphicProps {}
+export interface ComboboxTriggerProps extends HTMLProps<'button'>, ComboboxTriggerBaseProps {}
 
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, ComboboxTriggerProps>((props, ref) => {
   const combobox = useComboboxContext()

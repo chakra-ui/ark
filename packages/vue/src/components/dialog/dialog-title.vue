@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DialogTitleProps extends PolymorphicProps {}
+export interface DialogTitleBaseProps extends PolymorphicProps {}
+export interface DialogTitleProps
+  extends DialogTitleBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const dialog = useDialogContext()
 </script>
 
 <template>
-  <ark.h2 v-bind="dialog.titleProps" :as-child="asChild">
+  <ark.h2 v-bind="dialog.getTitleProps()" :as-child="asChild">
     <slot />
   </ark.h2>
 </template>

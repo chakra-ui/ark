@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/anatomy",
-  "version": "3.1.0",
+  "version": "3.3.1",
   "description": "Contains all the anatomy information for the Ark UI components",
   "keywords": ["Ark UI", "Anatomy", "Components"],
   "license": "MIT",
@@ -239,6 +239,17 @@
         "default": "./dist/progress/index.cjs"
       }
     },
+    "./qr-code": {
+      "source": "./src/qr-code/index.ts",
+      "import": {
+        "types": "./dist/qr-code/index.d.ts",
+        "default": "./dist/qr-code/index.js"
+      },
+      "require": {
+        "types": "./dist/qr-code/index.d.cts",
+        "default": "./dist/qr-code/index.cjs"
+      }
+    },
     "./radio-group": {
       "source": "./src/radio-group/index.ts",
       "import": {
@@ -281,6 +292,17 @@
       "require": {
         "types": "./dist/select/index.d.cts",
         "default": "./dist/select/index.cjs"
+      }
+    },
+    "./signature-pad": {
+      "source": "./src/signature-pad/index.ts",
+      "import": {
+        "types": "./dist/signature-pad/index.d.ts",
+        "default": "./dist/signature-pad/index.js"
+      },
+      "require": {
+        "types": "./dist/signature-pad/index.d.cts",
+        "default": "./dist/signature-pad/index.cjs"
       }
     },
     "./slider": {
@@ -392,48 +414,50 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/accordion": "0.50.0",
-    "@zag-js/anatomy": "0.50.0",
-    "@zag-js/avatar": "0.50.0",
-    "@zag-js/carousel": "0.50.0",
-    "@zag-js/checkbox": "0.50.0",
-    "@zag-js/clipboard": "0.50.0",
-    "@zag-js/collapsible": "0.50.0",
-    "@zag-js/color-picker": "0.50.0",
-    "@zag-js/color-utils": "0.50.0",
-    "@zag-js/combobox": "0.50.0",
-    "@zag-js/date-picker": "0.50.0",
-    "@zag-js/date-utils": "0.50.0",
-    "@zag-js/dialog": "0.50.0",
-    "@zag-js/editable": "0.50.0",
-    "@zag-js/file-upload": "0.50.0",
-    "@zag-js/hover-card": "0.50.0",
-    "@zag-js/menu": "0.50.0",
-    "@zag-js/number-input": "0.50.0",
-    "@zag-js/pagination": "0.50.0",
-    "@zag-js/pin-input": "0.50.0",
-    "@zag-js/popover": "0.50.0",
-    "@zag-js/presence": "0.50.0",
-    "@zag-js/progress": "0.50.0",
-    "@zag-js/radio-group": "0.50.0",
-    "@zag-js/rating-group": "0.50.0",
-    "@zag-js/select": "0.50.0",
-    "@zag-js/slider": "0.50.0",
-    "@zag-js/splitter": "0.50.0",
-    "@zag-js/switch": "0.50.0",
-    "@zag-js/tabs": "0.50.0",
-    "@zag-js/tags-input": "0.50.0",
-    "@zag-js/toast": "0.50.0",
-    "@zag-js/toggle-group": "0.50.0",
-    "@zag-js/tooltip": "0.50.0",
-    "@zag-js/tree-view": "0.50.0"
+    "@zag-js/accordion": "0.57.0",
+    "@zag-js/anatomy": "0.57.0",
+    "@zag-js/avatar": "0.57.0",
+    "@zag-js/carousel": "0.57.0",
+    "@zag-js/checkbox": "0.57.0",
+    "@zag-js/clipboard": "0.57.0",
+    "@zag-js/collapsible": "0.57.0",
+    "@zag-js/color-picker": "0.57.0",
+    "@zag-js/color-utils": "0.57.0",
+    "@zag-js/combobox": "0.57.0",
+    "@zag-js/date-picker": "0.57.0",
+    "@zag-js/date-utils": "0.57.0",
+    "@zag-js/dialog": "0.57.0",
+    "@zag-js/editable": "0.57.0",
+    "@zag-js/file-upload": "0.57.0",
+    "@zag-js/hover-card": "0.57.0",
+    "@zag-js/menu": "0.57.0",
+    "@zag-js/number-input": "0.57.0",
+    "@zag-js/pagination": "0.57.0",
+    "@zag-js/pin-input": "0.57.0",
+    "@zag-js/popover": "0.57.0",
+    "@zag-js/presence": "0.57.0",
+    "@zag-js/progress": "0.57.0",
+    "@zag-js/qr-code": "0.57.0",
+    "@zag-js/radio-group": "0.57.0",
+    "@zag-js/rating-group": "0.57.0",
+    "@zag-js/select": "0.57.0",
+    "@zag-js/signature-pad": "0.57.0",
+    "@zag-js/slider": "0.57.0",
+    "@zag-js/splitter": "0.57.0",
+    "@zag-js/switch": "0.57.0",
+    "@zag-js/tabs": "0.57.0",
+    "@zag-js/tags-input": "0.57.0",
+    "@zag-js/toast": "0.57.0",
+    "@zag-js/toggle-group": "0.57.0",
+    "@zag-js/tooltip": "0.57.0",
+    "@zag-js/tree-view": "0.57.0"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "5.0.0",
     "globby": "14.0.1",
-    "release-it": "17.2.1",
+    "release-it": "17.3.0",
     "typescript": "5.4.5",
-    "vite": "5.2.11",
+    "vite": "5.3.1",
     "vite-plugin-dts": "3.9.1"
   }
 }

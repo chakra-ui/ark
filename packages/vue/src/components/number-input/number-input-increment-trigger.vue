@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface NumberInputIncrementTriggerProps extends PolymorphicProps {}
+export interface NumberInputIncrementTriggerBaseProps extends PolymorphicProps {}
+export interface NumberInputIncrementTriggerProps
+  extends NumberInputIncrementTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.button v-bind="numberInput.incrementTriggerProps" :as-child="asChild">
+  <ark.button v-bind="numberInput.getIncrementTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

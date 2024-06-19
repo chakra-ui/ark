@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuSeparatorProps extends PolymorphicProps {}
+export interface MenuSeparatorBaseProps extends PolymorphicProps {}
+export interface MenuSeparatorProps
+  extends MenuSeparatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <ark.hr v-bind="menu.separatorProps" :as-child="asChild">
+  <ark.hr v-bind="menu.getSeparatorProps()" :as-child="asChild">
     <slot />
   </ark.hr>
 </template>

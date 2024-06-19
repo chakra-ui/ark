@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerTriggerProps extends PolymorphicProps {}
+export interface ColorPickerTriggerBaseProps extends PolymorphicProps {}
+export interface ColorPickerTriggerProps
+  extends ColorPickerTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.button v-bind="colorPicker.triggerProps" :as-child="asChild">
+  <ark.button v-bind="colorPicker.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

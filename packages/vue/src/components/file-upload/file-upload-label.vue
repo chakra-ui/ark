@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadLabelProps extends PolymorphicProps {}
+export interface FileUploadLabelBaseProps extends PolymorphicProps {}
+export interface FileUploadLabelProps
+  extends FileUploadLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.label v-bind="fileUpload.labelProps" :as-child="asChild">
+  <ark.label v-bind="fileUpload.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ProgressValueTextProps extends PolymorphicProps {}
+export interface ProgressValueTextBaseProps extends PolymorphicProps {}
+export interface ProgressValueTextProps
+  extends ProgressValueTextBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -15,7 +22,7 @@ const slots = useSlots()
 </script>
 
 <template>
-  <ark.span v-bind="progress.valueTextProps" :as-child="asChild">
+  <ark.span v-bind="progress.getValueTextProps()" :as-child="asChild">
     <slot>{{ slots.default?.() || progress.valueAsString }}</slot>
   </ark.span>
 </template>

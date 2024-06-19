@@ -1,15 +1,16 @@
 import type { ItemGroupProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
 import { createUniqueId } from 'solid-js'
-import type { Assign, Optional } from '../../types'
+import type { Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
 type OptionalItemGroupProps = Optional<ItemGroupProps, 'id'>
 
-export interface MenuItemGroupProps extends Assign<HTMLArkProps<'div'>, OptionalItemGroupProps> {}
+export interface MenuItemGroupBaseProps extends OptionalItemGroupProps, PolymorphicProps<'div'> {}
+export interface MenuItemGroupProps extends HTMLProps<'div'>, MenuItemGroupBaseProps {}
 
 export const MenuItemGroup = (props: MenuItemGroupProps) => {
   const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, [

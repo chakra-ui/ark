@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tree-view.types'
 
-export interface TreeViewRootProps extends RootProps, PolymorphicProps {}
+export interface TreeViewRootBaseProps extends RootProps, PolymorphicProps {}
+export interface TreeViewRootProps
+  extends TreeViewRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TreeViewRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
@@ -23,7 +31,7 @@ TreeViewProvider(treeView)
 </script>
 
 <template>
-  <ark.div v-bind="treeView.rootProps" :as-child="asChild">
+  <ark.div v-bind="treeView.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

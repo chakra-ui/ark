@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
 
-export interface TabListProps extends HTMLArkProps<'div'> {}
+export interface TabListBaseProps extends PolymorphicProps<'div'> {}
+export interface TabListProps extends HTMLProps<'div'>, TabListBaseProps {}
 
 export const TabList = (props: TabListProps) => {
   const api = useTabsContext()
-  const mergedProps = mergeProps(() => api().listProps, props)
+  const mergedProps = mergeProps(() => api().getListProps(), props)
 
   return <ark.div {...mergedProps} />
 }

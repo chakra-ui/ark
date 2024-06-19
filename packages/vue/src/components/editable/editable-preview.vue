@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface EditablePreviewProps extends PolymorphicProps {}
+export interface EditablePreviewBaseProps extends PolymorphicProps {}
+export interface EditablePreviewProps
+  extends EditablePreviewBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.span v-bind="editable.previewProps" :as-child="asChild">
+  <ark.span v-bind="editable.getPreviewProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

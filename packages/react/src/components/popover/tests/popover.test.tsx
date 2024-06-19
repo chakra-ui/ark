@@ -1,6 +1,7 @@
 import { popoverAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { axe } from 'vitest-axe'
 import { Popover } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -25,6 +26,13 @@ describe('Popover / Parts & Exports', () => {
 describe('Popover', () => {
   afterEach(() => {
     cleanup()
+  })
+
+  it('should have no a11y violations', async () => {
+    const { container } = render(<ComponentUnderTest />)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
   })
 
   it('should open and close the popover', async () => {
@@ -86,5 +94,10 @@ describe('Popover', () => {
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  })
+
+  it('should open by default', async () => {
+    render(<ComponentUnderTest defaultOpen />)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 })

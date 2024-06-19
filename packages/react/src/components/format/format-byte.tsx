@@ -20,6 +20,7 @@ export interface FormatByteProps {
 export const FormatByte = (props: FormatByteProps) => {
   const { value, ...intlOptions } = props
   const { locale } = useLocaleContext()
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   const text = useMemo(() => formatBytes(value, locale, intlOptions), [value, locale, intlOptions])
   return <>{text}</>
 }

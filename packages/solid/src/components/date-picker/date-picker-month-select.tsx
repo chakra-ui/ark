@@ -1,20 +1,22 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { For } from 'solid-js'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerMonthSelectProps extends HTMLArkProps<'select'> {}
+export interface DatePickerMonthSelectBaseProps extends PolymorphicProps<'select'> {}
+export interface DatePickerMonthSelectProps
+  extends HTMLProps<'select'>,
+    DatePickerMonthSelectBaseProps {}
 
 export const DatePickerMonthSelect = (props: DatePickerMonthSelectProps) => {
   const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().monthSelectProps, props)
+  const mergedProps = mergeProps(() => api().getMonthSelectProps(), props)
 
   return (
     <ark.select {...mergedProps}>
-      {api()
-        .getMonths()
-        .map((month) => (
-          <option value={month.value}>{month.label}</option>
-        ))}
+      <For each={api().getMonths()}>
+        {(month) => <option value={month.value}>{month.label}</option>}
+      </For>
     </ark.select>
   )
 }

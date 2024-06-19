@@ -35,6 +35,7 @@ export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'ite
                 </Combobox.Item>
               ))}
             </Combobox.ItemGroup>
+            <Combobox.List />
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

@@ -1,9 +1,49 @@
 {
-  "Backdrop": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "CloseTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Description": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Backdrop": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "CloseTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
       "aria-label": {
@@ -43,6 +83,11 @@
         "isRequired": false,
         "description": "The ids of the elements in the dialog. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "initialFocusEl": {
         "type": "() => HTMLElement | null",
         "isRequired": false,
@@ -68,7 +113,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusOutside": {
         "type": "(event: FocusOutsideEvent) => void",
@@ -136,6 +181,54 @@
       }
     }
   },
-  "Title": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseDialogReturn", "isRequired": true },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "Title": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'h2'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
 }

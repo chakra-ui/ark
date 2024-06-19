@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SliderLabelProps extends PolymorphicProps {}
+export interface SliderLabelBaseProps extends PolymorphicProps {}
+export interface SliderLabelProps
+  extends SliderLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const slider = useSliderContext()
 </script>
 
 <template>
-  <ark.label v-bind="slider.labelProps" :as-child="asChild">
+  <ark.label v-bind="slider.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

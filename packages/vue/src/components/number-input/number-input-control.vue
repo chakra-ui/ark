@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface NumberInputControlProps extends PolymorphicProps {}
+export interface NumberInputControlBaseProps extends PolymorphicProps {}
+export interface NumberInputControlProps
+  extends NumberInputControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.div v-bind="numberInput.controlProps" :as-child="asChild">
+  <ark.div v-bind="numberInput.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

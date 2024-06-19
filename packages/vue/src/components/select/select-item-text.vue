@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectItemTextProps extends PolymorphicProps {}
+export interface SelectItemTextBaseProps extends PolymorphicProps {}
+export interface SelectItemTextProps
+  extends SelectItemTextBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

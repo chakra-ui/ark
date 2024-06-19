@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CollapsibleTriggerProps extends PolymorphicProps {}
+export interface CollapsibleTriggerBaseProps extends PolymorphicProps {}
+export interface CollapsibleTriggerProps
+  extends CollapsibleTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const collapsible = useCollapsibleContext()
 </script>
 
 <template>
-  <ark.button v-bind="collapsible.triggerProps">
+  <ark.button v-bind="collapsible.getTriggerProps()">
     <slot />
   </ark.button>
 </template>

@@ -8,8 +8,7 @@ description: A list of options that appears when a user interacts with a button.
 
 ## Anatomy
 
-To set up the menu correctly, you'll need to understand its anatomy and how we
-name its parts.
+To set up the menu correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,24 +16,22 @@ name its parts.
 
 ## Examples
 
-Learn how to use the `Menu` component in your project. Let's take a look at the
-most basic example:
+Learn how to use the `Menu` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
 ### Listening to item selection
 
-Pass the `onSelect` prop to the Menu component to perform some custom logic when
-an item is selected. The callback is invoked with the `id` of the item.
+Pass the `onSelect` prop to the Menu component to perform some custom logic when an item is
+selected. The callback is invoked with the `id` of the item.
 
 <Example id="controlled" />
 
 ### Grouping menu items
 
-When the number of menu items gets much, it might be useful to group related
-menu items. To achieve this, render the `Menu.ItemGroup` component around the
-`Menu.Item` components. The `Menu.ItemGroupLabel` component can be used to add a
-label to the group.
+When the number of menu items gets much, it might be useful to group related menu items. To achieve
+this, render the `Menu.ItemGroup` component around the `Menu.Item` components. The
+`Menu.ItemGroupLabel` component can be used to add a label to the group.
 
 <Example id="group" />
 
@@ -46,18 +43,17 @@ To separate menu items, render the `Menu.Separator` component.
 
 ### Context menu
 
-To show the menu when a trigger element is right-clicked, use the
-`Menu.ContextTrigger` component.
+To show the menu when a trigger element is right-clicked, use the `Menu.ContextTrigger` component.
 
-Context menus are also opened during a long-press of roughly `700ms` when the
-pointer is pen or touch.
+Context menus are also opened during a long-press of roughly `700ms` when the pointer is pen or
+touch.
 
 <Example id="context" />
 
 ### Nested menu
 
-To show a nested menu, render another `Menu` component and use the
-`Menu.TriggerItem` component to open the submenu.
+To show a nested menu, render another `Menu` component and use the `Menu.TriggerItem` component to
+open the submenu.
 
 <Example id="nested" />
 

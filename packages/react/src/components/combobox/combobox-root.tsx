@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
 import type { Assign, CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -12,9 +12,12 @@ import {
 import { type UseComboboxProps, useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
+export interface ComboboxRootBaseProps<T extends CollectionItem>
+  extends UseComboboxProps<T>,
+    UsePresenceProps,
+    PolymorphicProps {}
 export interface ComboboxRootProps<T extends CollectionItem>
-  extends Assign<HTMLArkProps<'div'>, UseComboboxProps<T>>,
-    UsePresenceProps {}
+  extends Assign<HTMLProps<'div'>, ComboboxRootBaseProps<T>> {}
 
 const ComboboxImpl = <T extends CollectionItem>(
   props: ComboboxRootProps<T>,
@@ -67,7 +70,7 @@ const ComboboxImpl = <T extends CollectionItem>(
   ])
   const combobox = useCombobox(useComboboxProps)
   const presence = usePresence(mergeProps({ present: combobox.open }, presenceProps))
-  const mergedProps = mergeProps(combobox.rootProps, localProps)
+  const mergedProps = mergeProps(combobox.getRootProps(), localProps)
 
   return (
     <ComboboxProvider value={combobox}>

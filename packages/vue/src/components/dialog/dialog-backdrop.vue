@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DialogBackdropProps extends PolymorphicProps {}
+export interface DialogBackdropBaseProps extends PolymorphicProps {}
+export interface DialogBackdropProps
+  extends DialogBackdropBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="dialog.backdropProps"
+    v-bind="dialog.getBackdropProps()"
     :present="dialog.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

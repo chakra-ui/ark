@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SwitchHiddenInputProps extends PolymorphicProps {}
+export interface SwitchHiddenInputBaseProps extends PolymorphicProps {}
+export interface SwitchHiddenInputProps
+  extends SwitchHiddenInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const context = useSwitchContext()
 </script>
 
 <template>
-  <ark.input v-bind="context.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="context.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

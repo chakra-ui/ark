@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TagsInputItemPreviewProps extends PolymorphicProps {}
+export interface TagsInputItemPreviewBaseProps extends PolymorphicProps {}
+export interface TagsInputItemPreviewProps
+  extends TagsInputItemPreviewBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

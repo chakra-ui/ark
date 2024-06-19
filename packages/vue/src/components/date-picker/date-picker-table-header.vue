@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ThHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerTableHeaderProps extends PolymorphicProps {}
+export interface DatePickerTableHeaderBaseProps extends PolymorphicProps {}
+export interface DatePickerTableHeaderProps
+  extends DatePickerTableHeaderBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ThHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

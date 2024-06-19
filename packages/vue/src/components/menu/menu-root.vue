@@ -4,7 +4,8 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './menu.types'
 
-export interface MenuRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface MenuRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface MenuRootProps extends MenuRootBaseProps {}
 export interface MenuRootEmits extends RootEmits {}
 </script>
 

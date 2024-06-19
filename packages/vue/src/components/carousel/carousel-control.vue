@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CarouselControlProps extends PolymorphicProps {}
+export interface CarouselControlBaseProps extends PolymorphicProps {}
+export interface CarouselControlProps
+  extends CarouselControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

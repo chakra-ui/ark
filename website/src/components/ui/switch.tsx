@@ -1,9 +1,10 @@
+import type { Assign } from '@ark-ui/react'
 import { Switch as ArkSwitch, type SwitchRootProps } from '@ark-ui/react/switch'
 import { type ReactNode, forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
 import { type SwitchRecipeVariantProps, switchRecipe } from 'styled-system/recipes'
-import type { Assign, JsxStyleProps } from 'styled-system/types'
+import type { JsxStyleProps } from 'styled-system/types'
 
 export interface SwitchProps
   extends Assign<JsxStyleProps, SwitchRootProps>,

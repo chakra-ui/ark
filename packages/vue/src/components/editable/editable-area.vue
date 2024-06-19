@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface EditableAreaProps extends PolymorphicProps {}
+export interface EditableAreaBaseProps extends PolymorphicProps {}
+export interface EditableAreaProps
+  extends EditableAreaBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const editable = useEditableContext()
 </script>
 
 <template>
-  <ark.div v-bind="editable.areaProps" :as-child="asChild">
+  <ark.div v-bind="editable.getAreaProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

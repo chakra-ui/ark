@@ -6,6 +6,24 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.3.1] - 2024-06-12
+
+### Fixed
+
+- Added missing `Checkbox.Group` part̊.
+
+## [3.3.0] - 2024-06-11
+
+### Added
+
+- Adeed `QRCode` anatomy.
+
+## [3.2.0] - 2024-05-27
+
+### Added
+
+- Added `TimePicker` anatomy.
+
 ## [3.1.0] - 2024-05-15
 
 ### Added
@@ -22,7 +40,7 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
--  Resolved an issue where the `package.json` is missing export specifiers.
+- Resolved an issue where the `package.json` is missing export specifiers.
 
 ## [2.3.0] - 2024-02-27
 
@@ -51,7 +69,8 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more accurately reflect its functionality.
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
+  accurately reflect its functionality.
 
 ## [1.3.0] - 2024-01-17
 

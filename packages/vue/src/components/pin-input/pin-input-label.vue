@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PinInputLabelProps extends PolymorphicProps {}
+export interface PinInputLabelBaseProps extends PolymorphicProps {}
+export interface PinInputLabelProps
+  extends PinInputLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const pinInput = usePinInputContext()
 </script>
 
 <template>
-  <ark.label v-bind="pinInput.labelProps" :as-child="asChild">
+  <ark.label v-bind="pinInput.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

@@ -1,6 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { vi } from 'vitest'
 import { ark } from './factory'
 
 const ComponentUnderTest = () => (
@@ -10,52 +9,46 @@ const ComponentUnderTest = () => (
     data-testid="parent"
     class="parent"
     style={{ background: 'red' }}
-    asChild
-  >
-    {(props) => (
+    asChild={(props) => (
       <ark.span
         {...props({ id: 'child', class: 'child', style: { color: 'blue' } })}
         data-part="child"
         data-testid="child"
       >
-        Ark UI
+        Child
       </ark.span>
     )}
+  >
+    Parent
   </ark.div>
 )
 
 describe('Ark Factory', () => {
   it('should render only the child', () => {
     render(() => <ComponentUnderTest />)
-
-    expect(() => screen.getByTestId('parent')).toThrow()
-    expect(screen.getByTestId('child')).toBeVisible()
+    expect(screen.getByText('Child')).toBeVisible()
   })
 
-  it('should override existing props', () => {
+  it('should merge styles', () => {
     render(() => <ComponentUnderTest />)
-    const child = screen.getByTestId('child')
-    expect(child.id).toBe('child')
-    // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-    expect(child.dataset['part']).toBe('child')
+    expect(screen.getByText('Child')).toHaveStyle({ color: 'rgb(0, 0, 255)', background: 'red' })
   })
 
-  it('should merge styles and classes', () => {
+  it('should merge classes', () => {
     render(() => <ComponentUnderTest />)
-    const child = screen.getByTestId('child')
-    expect(child).toHaveStyle({ background: 'red' })
-    expect(child).toHaveStyle({ color: 'rgb(0, 0, 255)' })
-    expect(child).toHaveClass('child parent')
-    expect(screen.getByText('Ark UI')).toBeVisible()
+    expect(screen.getByText('Child')).toHaveClass('child parent')
   })
 
-  // TODO: Fix this test
   it('should merge events', async () => {
     const onClickParent = vi.fn()
     const onClickChild = vi.fn()
     render(() => (
-      <ark.div data-testid="parent" onClick={onClickParent} asChild>
-        {(props) => <ark.span {...props({ onClick: onClickChild })} data-testid="child" />}
+      <ark.div
+        data-testid="parent"
+        onClick={onClickParent}
+        asChild={(props) => <ark.span {...props({ onClick: onClickChild })} data-testid="child" />}
+      >
+        Parent
       </ark.div>
     ))
     await user.click(screen.getByTestId('child'))
@@ -63,31 +56,19 @@ describe('Ark Factory', () => {
     expect(onClickChild).toHaveBeenCalled()
   })
 
-  it.skip('should propagate asChild', async () => {
-    render(() => (
-      <ark.div data-testid="parent" asChild>
-        {(props) => (
-          <ark.span {...props()}>
-            <ark.span>Ark UI</ark.span>
-          </ark.span>
-        )}
-      </ark.div>
-    ))
-    expect(screen.getByText('Ark UI')).toHaveAttribute('data-testid', 'parent')
-  })
-
   it('should stop propagate asChild', async () => {
     render(() => (
-      <p>
-        <ark.div data-testid="parent" asChild>
-          {(props) => (
-            <ark.span {...props()}>
-              <ark.span>Ark UI</ark.span>
-            </ark.span>
-          )}
-        </ark.div>
-      </p>
+      <ark.div
+        data-testid="parent"
+        asChild={(props) => (
+          <ark.span {...props()}>
+            <ark.span>Child</ark.span>
+          </ark.span>
+        )}
+      >
+        Parent
+      </ark.div>
     ))
-    expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
+    expect(screen.getByText('Child')).not.toHaveAttribute('data-testid', 'parent')
   })
 })

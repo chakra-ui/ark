@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerPositionerProps extends PolymorphicProps {}
+export interface ColorPickerPositionerBaseProps extends PolymorphicProps {}
+export interface ColorPickerPositionerProps
+  extends ColorPickerPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="colorPicker.positionerProps"
+    v-bind="colorPicker.getPositionerProps()"
     :present="colorPicker.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
-export interface DialogCloseTriggerProps extends HTMLArkProps<'button'> {}
+export interface DialogCloseTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface DialogCloseTriggerProps extends HTMLProps<'button'>, DialogCloseTriggerBaseProps {}
 
 export const DialogCloseTrigger = (props: DialogCloseTriggerProps) => {
   const dialog = useDialogContext()
-  const mergedProps = mergeProps(() => dialog().closeTriggerProps, props)
+  const mergedProps = mergeProps(() => dialog().getCloseTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

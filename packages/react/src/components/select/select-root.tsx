@@ -2,7 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
 import type { Assign, CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -12,9 +12,12 @@ import {
 import { type UseSelectProps, useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
+export interface SelectRootBaseProps<T extends CollectionItem>
+  extends UseSelectProps<T>,
+    UsePresenceProps,
+    PolymorphicProps {}
 export interface SelectRootProps<T extends CollectionItem>
-  extends Assign<HTMLArkProps<'div'>, UseSelectProps<T>>,
-    UsePresenceProps {}
+  extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
 
 const SelectImpl = <T extends CollectionItem>(
   props: SelectRootProps<T>,
@@ -53,7 +56,7 @@ const SelectImpl = <T extends CollectionItem>(
   ])
   const select = useSelect(useSelectProps)
   const presence = usePresence(mergeProps({ present: select.open }, presenceProps))
-  const mergedProps = mergeProps(select.rootProps, localProps)
+  const mergedProps = mergeProps(select.getRootProps(), localProps)
 
   return (
     <SelectProvider value={select}>

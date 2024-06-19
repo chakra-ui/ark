@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerTableCellTriggerProps extends PolymorphicProps {}
+export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps {}
+export interface DatePickerTableCellTriggerProps
+  extends DatePickerTableCellTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -17,17 +24,21 @@ const cellProps = useDatePickerTableCellPropsContext()
 const viewProps = useDatePickerViewPropsContext()
 
 const triggerProps = computed(() => {
-  return {
+  const viewMap = {
     day: datePicker.value.getDayTableCellTriggerProps,
     month: datePicker.value.getMonthTableCellTriggerProps,
     year: datePicker.value.getYearTableCellTriggerProps,
-    // @ts-expect-error use filter guard
-  }[viewProps.view](cellProps)
+  }
+
+  const viewFn = viewMap[viewProps.view]
+
+  // @ts-expect-error fix later
+  return viewFn(cellProps)
 })
 </script>
 
 <template>
-  <ark.button v-bind="triggerProps" :as-child="asChild">
+  <ark.div v-bind="triggerProps" :as-child="asChild">
     <slot />
-  </ark.button>
+  </ark.div>
 </template>

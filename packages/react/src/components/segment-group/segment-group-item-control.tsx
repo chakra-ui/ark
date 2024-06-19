@@ -1,11 +1,14 @@
 import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-export interface SegmentGroupItemControlProps extends HTMLArkProps<'div'> {}
+export interface SegmentGroupItemControlBaseProps extends PolymorphicProps {}
+export interface SegmentGroupItemControlProps
+  extends HTMLProps<'div'>,
+    SegmentGroupItemControlBaseProps {}
 
 export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupItemControlProps>(
   (props, ref) => {
@@ -17,12 +20,7 @@ export const SegmentGroupItemControl = forwardRef<HTMLDivElement, SegmentGroupIt
       props,
     )
 
-    return (
-      <>
-        <ark.div {...mergedProps} ref={ref} />
-        <input {...segmentGroup.getItemHiddenInputProps(itemProps)} />
-      </>
-    )
+    return <ark.div {...mergedProps} ref={ref} />
   },
 )
 

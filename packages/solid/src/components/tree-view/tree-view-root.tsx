@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseTreeViewProps, useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
-export interface TreeViewRootProps extends Assign<HTMLArkProps<'div'>, UseTreeViewProps> {}
+export interface TreeViewRootBaseProps extends UseTreeViewProps, PolymorphicProps<'div'> {}
+export interface TreeViewRootProps extends HTMLProps<'div'>, TreeViewRootBaseProps {}
 
 export const TreeViewRoot = (props: TreeViewRootProps) => {
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps>()(props, [
@@ -24,7 +24,7 @@ export const TreeViewRoot = (props: TreeViewRootProps) => {
     'typeahead',
   ])
   const api = useTreeView(useTreeViewProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <TreeViewProvider value={api}>

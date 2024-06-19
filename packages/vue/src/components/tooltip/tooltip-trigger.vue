@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TooltipTriggerProps extends PolymorphicProps {}
+export interface TooltipTriggerBaseProps extends PolymorphicProps {}
+export interface TooltipTriggerProps
+  extends TooltipTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const tooltip = useTooltipContext()
 </script>
 
 <template>
-  <ark.button v-bind="tooltip.triggerProps" :as-child="asChild">
+  <ark.button v-bind="tooltip.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

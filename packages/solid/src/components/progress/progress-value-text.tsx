@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
-export interface ProgressValueTextProps extends HTMLArkProps<'span'> {}
+export interface ProgressValueTextBaseProps extends PolymorphicProps<'span'> {}
+export interface ProgressValueTextProps extends HTMLProps<'span'>, ProgressValueTextBaseProps {}
 
 export const ProgressValueText = (props: ProgressValueTextProps) => {
   const api = useProgressContext()
-  const mergedProps = mergeProps(() => api().valueTextProps, props)
+  const mergedProps = mergeProps(() => api().getValueTextProps(), props)
 
   return <ark.span {...mergedProps}>{props.children || api().valueAsString}</ark.span>
 }

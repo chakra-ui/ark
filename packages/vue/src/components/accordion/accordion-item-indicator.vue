@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface AccordionItemIndicatorProps extends PolymorphicProps {}
+export interface AccordionItemIndicatorBaseProps extends PolymorphicProps {}
+export interface AccordionItemIndicatorProps
+  extends AccordionItemIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

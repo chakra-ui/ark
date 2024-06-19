@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectContentProps extends PolymorphicProps {}
+export interface SelectContentBaseProps extends PolymorphicProps {}
+export interface SelectContentProps
+  extends SelectContentBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.div v-bind="select.contentProps" :as-child="asChild">
+  <ark.div v-bind="select.getContentProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

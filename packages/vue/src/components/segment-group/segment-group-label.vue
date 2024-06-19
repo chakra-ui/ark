@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SegmentGroupLabelProps extends PolymorphicProps {}
+export interface SegmentGroupLabelBaseProps extends PolymorphicProps {}
+export interface SegmentGroupLabelProps
+  extends SegmentGroupLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const { label } = segmentGroupAnatomy.build()
 
 <template>
   <ark.label
-    v-bind="segmentGroup.labelProps"
+    v-bind="segmentGroup.getLabelProps()"
     :as-child="asChild"
     :data-scope="label.attrs['data-scope']"
     :data-part="label.attrs['data-part']"

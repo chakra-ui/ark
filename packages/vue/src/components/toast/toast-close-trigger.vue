@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ToastCloseTriggerProps extends PolymorphicProps {}
+export interface ToastCloseTriggerBaseProps extends PolymorphicProps {}
+export interface ToastCloseTriggerProps
+  extends ToastCloseTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const toast = useToastContext()
 </script>
 
 <template>
-  <ark.button v-bind="toast.closeTriggerProps" :as-child="asChild">
+  <ark.button v-bind="toast.getCloseTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

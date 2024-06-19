@@ -1,14 +1,15 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerRangeTextProps extends HTMLArkProps<'div'> {}
+export interface DatePickerRangeTextBaseProps extends PolymorphicProps {}
+export interface DatePickerRangeTextProps extends HTMLProps<'div'>, DatePickerRangeTextBaseProps {}
 
 export const DatePickerRangeText = forwardRef<HTMLDivElement, DatePickerRangeTextProps>(
   (props, ref) => {
     const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.rangeTextProps, props)
+    const mergedProps = mergeProps(datePicker.getRangeTextProps(), props)
 
     return (
       <ark.div {...mergedProps} ref={ref}>

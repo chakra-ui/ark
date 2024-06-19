@@ -4,7 +4,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
@@ -31,7 +31,7 @@ export interface UseComboboxReturn<T extends CollectionItem>
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits<T>>,
 ): UseComboboxReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -39,27 +39,27 @@ export const useCombobox = <T extends CollectionItem>(
   const context = computed<combobox.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
-      id: id.value,
+      id,
       dir: locale.value.dir,
       collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
       open: props.defaultOpen,
       'open.controlled': props.open !== undefined,
       value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
-      onFocusOutside: (details) => emit('focusOutside', details),
-      onHighlightChange: (details) => emit('highlightChange', details),
-      onInputValueChange: (details) => emit('inputValueChange', details),
-      onInteractOutside: (details) => emit('interactOutside', details),
-      onPointerDownOutside: (details) => emit('pointerDownOutside', details),
+      onFocusOutside: (details) => emit?.('focusOutside', details),
+      onHighlightChange: (details) => emit?.('highlightChange', details),
+      onInputValueChange: (details) => emit?.('inputValueChange', details),
+      onInteractOutside: (details) => emit?.('interactOutside', details),
+      onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
       onOpenChange: (details) => {
-        emit('openChange', details)
-        emit('update:open', details.open)
+        emit?.('openChange', details)
+        emit?.('update:open', details.open)
       },
       onValueChange: (details) => {
-        emit('valueChange', details)
-        emit('update:modelValue', details.value)
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
       },
-      ...otherProps,
+      ...cleanProps(otherProps),
     }
   })
   const [state, send] = useMachine(combobox.machine(context.value), { context })

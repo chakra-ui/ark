@@ -1,23 +1,29 @@
 import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import type { ColorFormat } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, Show } from 'solid-js'
-import { ark } from '../factory'
+import { Show } from 'solid-js'
+import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
+import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 
-export interface ColorPickerViewProps {
+interface FormatOptions {
   format: ColorFormat
-  children?: JSX.Element
 }
+
+export interface ColorPickerViewBaseProps extends FormatOptions, PolymorphicProps<'div'> {}
+export interface ColorPickerViewProps extends HTMLProps<'div'>, ColorPickerViewBaseProps {}
 
 export const ColorPickerView = (props: ColorPickerViewProps) => {
   const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => colorPickerAnatomy.build().view.attrs, props)
+  const [formatProps, localProps] = createSplitProps<FormatOptions>()(props, ['format'])
+  const mergedProps = mergeProps(() => colorPickerAnatomy.build().view.attrs, localProps)
 
-  // TODO @segunadebayo
   return (
-    <Show when={api().format === props.format}>
-      <ark.div data-format={props.format} {...mergedProps} />
-    </Show>
+    <ColorPickerFormatPropsProvider value={formatProps}>
+      <Show when={api().format === props.format}>
+        <ark.div data-format={props.format} {...mergedProps} />
+      </Show>
+    </ColorPickerFormatPropsProvider>
   )
 }

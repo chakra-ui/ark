@@ -7,13 +7,15 @@ import {
   RenderStrategyPropsProvider,
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseAccordionProps, useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
 
-export interface AccordionRootProps
-  extends Assign<HTMLArkProps<'div'>, UseAccordionProps>,
-    RenderStrategyProps {}
+export interface AccordionRootBaseProps
+  extends UseAccordionProps,
+    RenderStrategyProps,
+    PolymorphicProps {}
+export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 
 export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
@@ -30,7 +32,7 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((pro
     'value',
   ])
   const accordion = useAccordion(useAccordionProps)
-  const mergedProps = mergeProps(accordion.rootProps, localProps)
+  const mergedProps = mergeProps(accordion.getRootProps(), localProps)
 
   return (
     <AccordionProvider value={accordion}>

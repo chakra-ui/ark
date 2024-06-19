@@ -1,12 +1,15 @@
 import type { ChannelInputProps } from '@zag-js/color-picker'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
+export interface ColorPickerChannelInputBaseProps
+  extends ChannelInputProps,
+    PolymorphicProps<'input'> {}
 export interface ColorPickerChannelInputProps
-  extends Assign<HTMLArkProps<'input'>, ChannelInputProps> {}
+  extends HTMLProps<'input'>,
+    ColorPickerChannelInputBaseProps {}
 
 export const ColorPickerChannelInput = (props: ColorPickerChannelInputProps) => {
   const [channelProps, inputProps] = createSplitProps<ChannelInputProps>()(props, [

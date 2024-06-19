@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAvatarContext } from './use-avatar-context'
 
-export interface AvatarFallbackProps extends HTMLArkProps<'span'> {}
+export interface AvatarFallbackBaseProps extends PolymorphicProps<'span'> {}
+export interface AvatarFallbackProps extends HTMLProps<'span'>, AvatarFallbackBaseProps {}
 
 export const AvatarFallback = (props: AvatarFallbackProps) => {
   const context = useAvatarContext()
-  const mergedProps = mergeProps(() => context().fallbackProps, props)
+  const mergedProps = mergeProps(() => context().getFallbackProps(), props)
   return <ark.span {...mergedProps} />
 }

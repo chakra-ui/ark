@@ -2,18 +2,15 @@ import { mergeProps, normalizeProps, useActor, useMachine } from '@zag-js/react'
 import * as toast from '@zag-js/toast'
 import { type ReactNode, forwardRef } from 'react'
 import type { Assign } from '../../types'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
 
-export interface ToasterProps
-  extends Assign<
-    HTMLArkProps<'div'>,
-    {
-      toaster: CreateToasterReturn
-      children: (toast: toast.Options<ReactNode>) => ReactNode
-    }
-  > {}
+export interface ToasterBaseProps extends PolymorphicProps {
+  toaster: CreateToasterReturn
+  children: (toast: toast.Options<ReactNode>) => ReactNode
+}
+export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
 export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => {
   const { toaster, children, ...rest } = props

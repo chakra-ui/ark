@@ -1,16 +1,15 @@
-'use client'
+import type { Assign } from '@ark-ui/react'
 import { PinInput as ArkPinInput, type PinInputRootProps } from '@ark-ui/react/pin-input'
-import { type ReactNode, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { css, cx } from 'styled-system/css'
 import { splitCssProps } from 'styled-system/jsx'
 import { type PinInputVariantProps, pinInput } from 'styled-system/recipes'
-import type { Assign, JsxStyleProps } from 'styled-system/types'
+import type { JsxStyleProps } from 'styled-system/types'
 import { Input } from '~/components/ui/input'
 
 export interface PinInputProps
   extends Assign<JsxStyleProps, PinInputRootProps>,
     PinInputVariantProps {
-  children?: ReactNode
   /**
    * The number of inputs to render.
    * @default 4
@@ -26,8 +25,8 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) =
 
   return (
     <ArkPinInput.Root
-      ref={ref}
       className={cx(styles.root, css(cssProps), className)}
+      ref={ref}
       {...rootProps}
     >
       {children && <ArkPinInput.Label className={styles.label}>{children}</ArkPinInput.Label>}

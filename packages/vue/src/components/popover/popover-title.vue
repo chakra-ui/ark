@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PopoverTitleProps extends PolymorphicProps {}
+export interface PopoverTitleBaseProps extends PolymorphicProps {}
+export interface PopoverTitleProps
+  extends PopoverTitleBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const popover = usePopoverContext()
 </script>
 
 <template>
-  <ark.div v-bind="popover.titleProps" :as-child="asChild">
+  <ark.div v-bind="popover.getTitleProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { SelectHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerMonthSelectProps extends PolymorphicProps {}
+export interface DatePickerMonthSelectBaseProps extends PolymorphicProps {}
+export interface DatePickerMonthSelectProps
+  extends DatePickerMonthSelectBaseProps,
+    /**
+     * @vue-ignore
+     */
+    SelectHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const datePicker = useDatePickerContext()
 </script>
 
 <template>
-  <ark.select v-bind="datePicker.monthSelectProps" :as-child="asChild">
+  <ark.select v-bind="datePicker.getMonthSelectProps()" :as-child="asChild">
     <option v-for="month in datePicker.getMonths()" :key="month.value" :value="month.value">
       {{ month.label }}
     </option>

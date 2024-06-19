@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/carousel'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CarouselItemProps extends ItemProps, PolymorphicProps {}
+export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface CarouselItemProps
+  extends CarouselItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

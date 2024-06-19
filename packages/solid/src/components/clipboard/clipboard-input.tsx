@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
-export interface ClipboardInputProps extends HTMLArkProps<'input'> {}
+export interface ClipboardInputBaseProps extends PolymorphicProps<'input'> {}
+export interface ClipboardInputProps extends HTMLProps<'input'>, ClipboardInputBaseProps {}
 
 export const ClipboardInput = (props: ClipboardInputProps) => {
   const api = useClipboardContext()
-  const mergedProps = mergeProps(() => api().inputProps, props)
+  const mergedProps = mergeProps(() => api().getInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

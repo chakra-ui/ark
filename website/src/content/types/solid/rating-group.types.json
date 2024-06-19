@@ -1,13 +1,41 @@
 {
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "HiddenInput": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Item": {
     "props": {
       "index": { "type": "number", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'label'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
       "allowHalf": {
@@ -15,7 +43,11 @@
         "isRequired": false,
         "description": "Whether to allow half stars."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "autoFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -41,11 +73,6 @@
         "type": "string",
         "isRequired": false,
         "description": "The associate form of the underlying input element."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
@@ -78,6 +105,16 @@
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseRatingGroupReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   }
 }

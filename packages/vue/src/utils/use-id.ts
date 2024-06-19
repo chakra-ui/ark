@@ -1,20 +1,9 @@
-import { computed, ref } from 'vue'
-
-let _id = 0
-const genId = () => ++_id
-
 /**
- * Generates a unique id
- *
- * @param id external ID provided by consumer/user.
- * @param prefix prefix to append before the id
+ * Simple custom hook to generate unique ids
+ * Workaround until Vue 3.5.0 is released
+ * @see https://x.com/youyuxi/status/1745379112456429688
  */
-export const useId = (id?: string, prefix?: string) => {
-  const initialId = id || genId()
-  const uid = ref(initialId)
+let count = 0
 
-  return computed(() => {
-    const __id__ = uid.value !== null ? uid.value.toString() : undefined
-    return (prefix ? `${prefix}-${__id__}` : __id__) as string
-  })
-}
+export const useId = (id?: string | null | undefined, prefix = 'ark') =>
+  id ? id : `${prefix}-${count++}`

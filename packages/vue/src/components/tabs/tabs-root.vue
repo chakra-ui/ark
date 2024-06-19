@@ -1,16 +1,24 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tabs.types'
 
-export interface TabsRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface TabsRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface TabsRootProps
+  extends TabsRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface TabsRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils'
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useTabs } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
 
@@ -30,7 +38,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="tabs.rootProps" :as-child="asChild">
+  <ark.div v-bind="tabs.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

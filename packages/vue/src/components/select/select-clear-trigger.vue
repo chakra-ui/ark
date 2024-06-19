@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectClearTriggerProps extends PolymorphicProps {}
+export interface SelectClearTriggerBaseProps extends PolymorphicProps {}
+export interface SelectClearTriggerProps
+  extends SelectClearTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.button v-bind="select.clearTriggerProps" :as-child="asChild">
+  <ark.button v-bind="select.getClearTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

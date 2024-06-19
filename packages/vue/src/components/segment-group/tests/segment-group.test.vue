@@ -22,6 +22,7 @@ const items = ref([
     >
       <SegmentGroup.ItemText>{{ item.label }}</SegmentGroup.ItemText>
       <SegmentGroup.ItemControl />
+      <SegmentGroup.ItemHiddenInput />
     </SegmentGroup.Item>
   </SegmentGroup.Root>
 </template>

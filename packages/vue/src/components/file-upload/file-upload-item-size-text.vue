@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadItemSizeTextProps extends PolymorphicProps {}
+export interface FileUploadItemSizeTextBaseProps extends PolymorphicProps {}
+export interface FileUploadItemSizeTextProps
+  extends FileUploadItemSizeTextBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

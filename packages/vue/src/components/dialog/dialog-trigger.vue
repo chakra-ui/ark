@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DialogTriggerProps extends PolymorphicProps {}
+export interface DialogTriggerBaseProps extends PolymorphicProps {}
+export interface DialogTriggerProps
+  extends DialogTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const dialog = useDialogContext()
 </script>
 
 <template>
-  <ark.button v-bind="dialog.triggerProps" :as-child="asChild">
+  <ark.button v-bind="dialog.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

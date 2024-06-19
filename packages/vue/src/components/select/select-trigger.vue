@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SelectTriggerProps extends PolymorphicProps {}
+export interface SelectTriggerBaseProps extends PolymorphicProps {}
+export interface SelectTriggerProps
+  extends SelectTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const select = useSelectContext()
 </script>
 
 <template>
-  <ark.button v-bind="select.triggerProps" :as-child="asChild">
+  <ark.button v-bind="select.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

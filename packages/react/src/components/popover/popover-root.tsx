@@ -6,7 +6,8 @@ import { splitPresenceProps } from '../presence/split-presence-props'
 import { type UsePopoverProps, usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
-export interface PopoverRootProps extends UsePopoverProps, UsePresenceProps {
+export interface PopoverRootBaseProps extends UsePopoverProps, UsePresenceProps {}
+export interface PopoverRootProps extends PopoverRootBaseProps {
   children?: ReactNode
 }
 

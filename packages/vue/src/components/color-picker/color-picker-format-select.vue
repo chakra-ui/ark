@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { SelectHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerFormatSelectProps extends PolymorphicProps {}
+export interface ColorPickerFormatSelectBaseProps extends PolymorphicProps {}
+export interface ColorPickerFormatSelectProps
+  extends ColorPickerFormatSelectBaseProps,
+    /**
+     * @vue-ignore
+     */
+    SelectHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const colorPicker = useColorPickerContext()
 </script>
 
 <template>
-  <ark.select v-bind="colorPicker.formatSelectProps">
+  <ark.select v-bind="colorPicker.getFormatSelectProps()">
     <ark.option v-for="format in ['rgba', 'hsla', 'hsba']" :key="format" :value="format">
       {{ format }}
     </ark.option>

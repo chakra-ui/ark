@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UsePinInputProps, usePinInput } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
 
-export interface PinInputRootProps extends Assign<HTMLArkProps<'div'>, UsePinInputProps> {}
+export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps<'div'> {}
+export interface PinInputRootProps extends HTMLProps<'div'>, PinInputRootBaseProps {}
 
 export const PinInputRoot = (props: PinInputRootProps) => {
   const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
@@ -31,7 +31,7 @@ export const PinInputRoot = (props: PinInputRootProps) => {
     'value',
   ])
   const pinInput = usePinInput(usePinInputProps)
-  const mergedProps = mergeProps(() => pinInput().rootProps, localProps)
+  const mergedProps = mergeProps(() => pinInput().getRootProps(), localProps)
 
   return (
     <PinInputProvider value={pinInput}>

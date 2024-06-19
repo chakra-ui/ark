@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './editable.types'
 
-export interface EditableRootProps extends RootProps, PolymorphicProps {}
+export interface EditableRootBaseProps extends RootProps, PolymorphicProps {}
+export interface EditableRootProps
+  extends EditableRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<HTMLAttributes, 'placeholder'> {}
 export interface EditableRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
 
@@ -27,7 +35,7 @@ EditableProvider(editable)
 </script>
 
 <template>
-  <ark.div v-bind="editable.rootProps" :as-child="asChild">
+  <ark.div v-bind="editable.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

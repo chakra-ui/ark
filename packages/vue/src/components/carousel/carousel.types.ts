@@ -59,4 +59,5 @@ export type RootEmits = {
    * Function called when the slide changes.
    */
   indexChange: [details: carousel.SlideChangeDetails]
+  'update:index': [index: number]
 }

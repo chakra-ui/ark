@@ -1,13 +1,54 @@
 export type { OpenChangeDetails as DialogOpenChangeDetails } from '@zag-js/dialog'
-export { DialogBackdrop, type DialogBackdropProps } from './dialog-backdrop'
-export { DialogCloseTrigger, type DialogCloseTriggerProps } from './dialog-close-trigger'
-export { DialogContent, type DialogContentProps } from './dialog-content'
-export { DialogContext, type DialogContextProps } from './dialog-context'
-export { DialogDescription, type DialogDescriptionProps } from './dialog-description'
-export { DialogPositioner, type DialogPositionerProps } from './dialog-positioner'
-export { DialogRoot, type DialogRootProps } from './dialog-root'
-export { DialogTitle, type DialogTitleProps } from './dialog-title'
-export { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
-export { type UseDialogContext, useDialogContext } from './use-dialog-context'
+export {
+  DialogBackdrop,
+  type DialogBackdropProps,
+  type DialogBackdropBaseProps,
+} from './dialog-backdrop'
+export {
+  DialogCloseTrigger,
+  type DialogCloseTriggerProps,
+  type DialogCloseTriggerBaseProps,
+} from './dialog-close-trigger'
+export {
+  DialogContent,
+  type DialogContentProps,
+  type DialogContentBaseProps,
+} from './dialog-content'
+export {
+  DialogContext,
+  type DialogContextProps,
+} from './dialog-context'
+export {
+  DialogDescription,
+  type DialogDescriptionProps,
+  type DialogDescriptionBaseProps,
+} from './dialog-description'
+export {
+  DialogPositioner,
+  type DialogPositionerProps,
+  type DialogPositionerBaseProps,
+} from './dialog-positioner'
+export {
+  DialogRoot,
+  type DialogRootProps,
+  type DialogRootBaseProps,
+} from './dialog-root'
+export {
+  DialogRootProvider,
+  type DialogRootProviderProps,
+  type DialogRootProviderBaseProps,
+} from './dialog-root-provider'
+export {
+  DialogTitle,
+  type DialogTitleProps,
+  type DialogTitleBaseProps,
+} from './dialog-title'
+export {
+  DialogTrigger,
+  type DialogTriggerProps,
+  type DialogTriggerBaseProps,
+} from './dialog-trigger'
+export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
+export { useDialogContext, type UseDialogContext } from './use-dialog-context'
 
 export * as Dialog from './dialog'

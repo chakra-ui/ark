@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/combobox'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ComboboxItemProps extends PolymorphicProps, ItemProps {}
+export interface ComboboxItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface ComboboxItemProps
+  extends ComboboxItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

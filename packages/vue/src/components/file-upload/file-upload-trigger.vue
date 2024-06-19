@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FileUploadTriggerProps extends PolymorphicProps {}
+export interface FileUploadTriggerBaseProps extends PolymorphicProps {}
+export interface FileUploadTriggerProps
+  extends FileUploadTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const fileUpload = useFileUploadContext()
 </script>
 
 <template>
-  <ark.button v-bind="fileUpload.triggerProps" :as-child="asChild">
+  <ark.button v-bind="fileUpload.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

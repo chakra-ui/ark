@@ -15,6 +15,7 @@ export const ComponentUnderTest = (props: RadioGroupRootProps) => {
         <RadioGroup.Item key={item.value} value={item.value} disabled={item.disabled}>
           <RadioGroup.ItemText>{item.label}</RadioGroup.ItemText>
           <RadioGroup.ItemControl />
+          <RadioGroup.ItemHiddenInput />
         </RadioGroup.Item>
       ))}
     </RadioGroup.Root>

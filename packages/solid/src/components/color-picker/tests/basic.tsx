@@ -28,6 +28,8 @@ export const ComponentUnderTest = (props: ColorPickerRootProps) => (
                 <ColorPicker.ChannelSliderThumb />
               </ColorPicker.ChannelSlider>
               <ColorPicker.ChannelSlider channel="alpha">
+                <ColorPicker.ChannelSliderLabel>Alpha</ColorPicker.ChannelSliderLabel>
+                <ColorPicker.ChannelSliderValueText />
                 <ColorPicker.TransparencyGrid />
                 <ColorPicker.ChannelSliderTrack />
                 <ColorPicker.ChannelSliderThumb />

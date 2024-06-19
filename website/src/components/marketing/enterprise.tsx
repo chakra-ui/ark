@@ -6,7 +6,7 @@ import { Button, Heading, Text } from '~/components/ui'
 export const Enterprise = () => {
   return (
     <Box bg="gray.2" borderYWidth="1px">
-      <Container py={{ base: '16', md: '24' }} maxW="7xl">
+      <Container py={{ base: '16', md: '24' }}>
         <Stack direction={{ base: 'column', lg: 'row' }} gap={{ base: '12', lg: '16' }}>
           <Stack gap={{ base: '8', md: '10' }} alignItems="start">
             <Stack gap={{ base: '4', md: '5' }} maxW="3xl">
@@ -19,7 +19,7 @@ export const Enterprise = () => {
               </Text>
             </Stack>
             <Button size={{ base: 'lg', md: '2xl' }} variant="link" asChild>
-              <NextLink href="/docs/react/overview/introduction">
+              <NextLink href="/react/docs/overview/introduction">
                 Get started <ArrowRight />
               </NextLink>
             </Button>

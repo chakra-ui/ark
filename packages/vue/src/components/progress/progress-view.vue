@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ViewProps } from '@zag-js/progress'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ProgressViewProps extends PolymorphicProps, ViewProps {}
+export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
+export interface ProgressViewProps
+  extends ProgressViewBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

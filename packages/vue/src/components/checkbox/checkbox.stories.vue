@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
 </script>
+
 <template>
   <Story title="Checkbox">
     <Variant title="Basic">
@@ -17,6 +19,9 @@ import RenderProp from './examples/render-prop.vue'
     </Variant>
     <Variant title="RenderProp">
       <RenderProp />
+    </Variant>
+    <Variant title="Group">
+      <Group />
     </Variant>
   </Story>
 </template>

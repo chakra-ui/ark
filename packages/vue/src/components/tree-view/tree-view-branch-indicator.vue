@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TreeViewBranchIndicatorProps extends PolymorphicProps {}
+export interface TreeViewBranchIndicatorBaseProps extends PolymorphicProps {}
+export interface TreeViewBranchIndicatorProps
+  extends TreeViewBranchIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

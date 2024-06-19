@@ -1,11 +1,11 @@
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSplitterProps, useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 
-export interface SplitterRootProps extends Assign<HTMLArkProps<'div'>, UseSplitterProps> {}
+export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps<'div'> {}
+export interface SplitterRootProps extends HTMLProps<'div'>, SplitterRootBaseProps {}
 
 export const SplitterRoot = (props: SplitterRootProps) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [
@@ -18,7 +18,7 @@ export const SplitterRoot = (props: SplitterRootProps) => {
     'size',
   ])
   const api = useSplitter(useSplitterProps)
-  const mergedProps = mergeProps(() => api().rootProps, localProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <SplitterProvider value={api}>

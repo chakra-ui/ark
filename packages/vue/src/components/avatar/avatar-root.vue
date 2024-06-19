@@ -1,12 +1,20 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './avatar.types'
 
-export interface AvatarRootProps extends RootProps, PolymorphicProps {}
+export interface AvatarRootBaseProps extends RootProps, PolymorphicProps {}
+export interface AvatarRootProps
+  extends AvatarRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface AvatarRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
 
@@ -18,7 +26,7 @@ AvatarProvider(avatar)
 </script>
 
 <template>
-  <ark.div v-bind="avatar.rootProps" :as-child="asChild">
+  <ark.div v-bind="avatar.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

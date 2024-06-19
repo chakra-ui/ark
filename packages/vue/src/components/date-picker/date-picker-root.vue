@@ -1,10 +1,17 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './date-picker.types'
 
-export interface DatePickerRootProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface DatePickerRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
+export interface DatePickerRootProps
+  extends DatePickerRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 export interface DatePickerRootEmits extends RootEmits {}
 </script>
 
@@ -35,7 +42,7 @@ RenderStrategyPropsProvider(
 </script>
 
 <template>
-  <ark.div v-bind="datePicker.rootProps" :as-child="asChild">
+  <ark.div v-bind="datePicker.getRootProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

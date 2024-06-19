@@ -25,7 +25,7 @@ export const ComponentTypes = (props: Props) => {
     .map(([key, types]) => (
       <Fragment key={key}>
         <Heading as="h3">{key}</Heading>
-        <PropsTable properties={types.props} />
+        <PropsTable properties={types.props} framework={serverContext.framework} />
         <EmitsTable emits={types.emits} />
         <DataAttrTable component={props.id} part={key} />
       </Fragment>

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DialogPositionerProps extends PolymorphicProps {}
+export interface DialogPositionerBaseProps extends PolymorphicProps {}
+export interface DialogPositionerProps
+  extends DialogPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="dialog.positionerProps"
+    v-bind="dialog.getPositionerProps()"
     :present="dialog.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

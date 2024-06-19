@@ -1,11 +1,11 @@
 import type { EllipsisProps } from '@zag-js/pagination'
 import { mergeProps } from '@zag-js/solid'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
 
-export interface PaginationEllipsisProps extends Assign<HTMLArkProps<'div'>, EllipsisProps> {}
+export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps<'div'> {}
+export interface PaginationEllipsisProps extends HTMLProps<'div'>, PaginationEllipsisBaseProps {}
 
 export const PaginationEllipsis = (props: PaginationEllipsisProps) => {
   const [ellipsisProps, localProps] = createSplitProps<EllipsisProps>()(props, ['index'])

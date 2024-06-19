@@ -7,6 +7,20 @@ export default {
     config.plugins.push(new VeliteWebpackPlugin())
     return config
   },
+  async redirects() {
+    return [
+      {
+        source: '/:framework/examples',
+        destination: '/:framework/examples/combobox-with-tags-input',
+        permanent: false,
+      },
+      {
+        source: '/docs/:framework/:slug*',
+        destination: '/:framework/docs/:slug*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 class VeliteWebpackPlugin {

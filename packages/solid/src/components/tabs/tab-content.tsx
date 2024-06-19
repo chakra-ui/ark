@@ -1,21 +1,24 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ContentProps } from '@zag-js/tabs'
 import { Show } from 'solid-js'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useTabsContext } from './use-tabs-context'
 
-export interface TabContentProps extends Assign<HTMLArkProps<'div'>, ContentProps> {}
+export interface TabContentBaseProps extends ContentProps, PolymorphicProps<'div'> {}
+export interface TabContentProps extends HTMLProps<'div'>, TabContentBaseProps {}
 
 export const TabContent = (props: TabContentProps) => {
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
   const api = useTabsContext()
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(
-    mergeProps(renderStrategyProps, () => ({ present: api().value === contentProps.value })),
+    mergeProps(renderStrategyProps, () => ({
+      present: api().value === contentProps.value,
+      immediate: true,
+    })),
   )
   const mergedProps = mergeProps(
     () => api().getContentProps(contentProps),

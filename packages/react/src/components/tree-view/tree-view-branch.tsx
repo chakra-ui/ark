@@ -2,12 +2,13 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type ItemProps, TreeViewBranchProvider } from './use-tree-view-branch-context'
 import { useTreeViewContext } from './use-tree-view-context'
 import { TreeViewDepthProvider, useTreeViewDepthContext } from './use-tree-view-depth-context'
 
-export interface TreeViewBranchProps extends Assign<HTMLArkProps<'li'>, ItemProps> {}
+export interface TreeViewBranchBaseProps extends ItemProps, PolymorphicProps {}
+export interface TreeViewBranchProps extends Assign<HTMLProps<'li'>, TreeViewBranchBaseProps> {}
 
 export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'value'])

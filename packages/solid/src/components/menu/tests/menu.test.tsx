@@ -1,8 +1,6 @@
 import { menuAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
-import user from '@testing-library/user-event'
 import { Index, splitProps } from 'solid-js'
-import { vi } from 'vitest'
 import { Menu } from '..'
 import { getExports, getParts } from '../../../setup-test'
 
@@ -83,23 +81,25 @@ describe('Menu', () => {
   it('should not fire onValueChange on disabled MenuItems', async () => {
     const onValueChange = vi.fn()
     render(() => <ComponentUnderTest onValueChange={onValueChange} />)
-    await user.click(screen.getByText(/svelte/i))
+    fireEvent.click(screen.getByText(/svelte/i))
     expect(onValueChange).not.toHaveBeenCalled()
   })
 
   it('should apply correct role to MenuItemGroup', async () => {
     render(() => <ComponentUnderTest />)
     const button = screen.getByRole('button', { name: /open menu/i })
-    await user.click(button)
+    fireEvent.click(button)
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   })
 
   it('should accept a custom placement', async () => {
     render(() => <ComponentUnderTest positioning={{ placement: 'left-start' }} />)
     const button = screen.getByRole('button', { name: /open menu/i })
-    await user.click(button)
-    const menuList = screen.getByRole('menu')
-    expect(menuList).toHaveAttribute('data-placement', 'left-start')
+    fireEvent.click(button)
+
+    await waitFor(() =>
+      expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'),
+    )
   })
 
   it('should control the open state', async () => {
@@ -112,9 +112,9 @@ describe('Menu', () => {
     render(() => <ComponentUnderTest lazyMount />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
     const trigger = screen.getByRole('button', { name: 'Open menu' })
-    await user.click(trigger)
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
-    await user.click(trigger)
+    fireEvent.click(trigger)
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
+    fireEvent.click(trigger)
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
@@ -127,9 +127,9 @@ describe('Menu', () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
     const trigger = screen.getByRole('button', { name: 'Open menu' })
-    await user.click(trigger)
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
-    await user.click(trigger)
+    fireEvent.click(trigger)
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
+    fireEvent.click(trigger)
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
@@ -143,18 +143,19 @@ describe('Menu', () => {
   it('should open on nested menu', async () => {
     render(() => <ComponentUnderTest />)
     const button = screen.getByRole('button', { name: /open menu/i })
-    await user.click(button)
+    fireEvent.click(button)
     await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
-    await user.click(screen.getByText(/CSS Frameworks/i))
+    fireEvent.click(screen.getByText(/CSS Frameworks/i))
     await waitFor(() => expect(screen.getByText(/Panda/i)).toBeVisible())
   })
 
   it('should select a radio option', async () => {
     render(() => <ComponentUnderTest />)
     const menuButton = screen.getByRole('button', { name: /open menu/i })
-    await user.click(menuButton)
+    fireEvent.click(menuButton)
+    await waitFor(() => expect(screen.getByText(/JS Frameworks/i)).toBeVisible())
     const radioButton = screen.getByRole('menuitemradio', { name: /react/i })
-    await user.click(radioButton)
+    fireEvent.click(radioButton)
     await waitFor(() => expect(radioButton).toHaveAttribute('aria-checked', 'true'))
   })
 })

@@ -1,15 +1,17 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef, useId } from 'react'
-import type { Assign, Optional } from '../../types'
+import type { Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
 
 type OptionalUseMenuItemGroupContext = Optional<UseMenuItemGroupContext, 'id'>
 
-export interface MenuRadioItemGroupProps
-  extends Assign<HTMLArkProps<'div'>, OptionalUseMenuItemGroupContext> {}
+export interface MenuRadioItemGroupBaseProps
+  extends OptionalUseMenuItemGroupContext,
+    PolymorphicProps {}
+export interface MenuRadioItemGroupProps extends HTMLProps<'div'>, MenuRadioItemGroupBaseProps {}
 
 export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>(
   (props, ref) => {

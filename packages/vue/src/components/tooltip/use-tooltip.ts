@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './tooltip.types'
 
 export interface UseTooltipProps
@@ -17,22 +17,22 @@ export interface UseTooltipProps
 
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
-export const useTooltip = (props: UseTooltipProps, emit: EmitFn<RootEmits>): UseTooltipReturn => {
+export const useTooltip = (props: UseTooltipProps, emit?: EmitFn<RootEmits>): UseTooltipReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<tooltip.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     open: props.open ?? props.defaultOpen,
     'open.controlled': props.open !== undefined,
     onOpenChange: (details) => {
-      emit('openChange', details)
-      emit('update:open', details.open)
+      emit?.('openChange', details)
+      emit?.('update:open', details.open)
     },
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(tooltip.machine(context.value), { context })

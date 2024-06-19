@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuTriggerProps extends PolymorphicProps {}
+export interface MenuTriggerBaseProps extends PolymorphicProps {}
+export interface MenuTriggerProps
+  extends MenuTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <ark.button v-bind="menu.triggerProps" :as-child="asChild">
+  <ark.button v-bind="menu.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>

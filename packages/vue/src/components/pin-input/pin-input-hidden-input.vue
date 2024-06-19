@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { InputHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface PinInputHiddenInputProps extends PolymorphicProps {}
+export interface PinInputHiddenInputBaseProps extends PolymorphicProps {}
+export interface PinInputHiddenInputProps
+  extends PinInputHiddenInputBaseProps,
+    /**
+     * @vue-ignore
+     */
+    InputHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,5 +20,5 @@ const pinInput = usePinInputContext()
 </script>
 
 <template>
-  <ark.input v-bind="pinInput.hiddenInputProps" :as-child="asChild" />
+  <ark.input v-bind="pinInput.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
 </template>

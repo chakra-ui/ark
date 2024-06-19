@@ -1,6 +1,22 @@
 {
-  "Arrow": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ArrowTip": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Arrow": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ArrowTip": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "CheckboxItem": {
     "props": {
       "checked": {
@@ -9,7 +25,11 @@
         "description": "Whether the option is checked"
       },
       "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -32,21 +52,60 @@
       }
     }
   },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ContextTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Indicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroupLabel": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ItemGroup": {
+  "Content": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
-      "id": {
-        "type": "string",
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
-        "description": "The `id` of the element that provides accessibility label to the option group"
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
-  "ItemIndicator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ContextTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Item": {
     "props": {
       "value": {
@@ -54,7 +113,11 @@
         "isRequired": true,
         "description": "The unique value of the menu item option."
       },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -72,12 +135,31 @@
       }
     }
   },
-  "ItemText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ItemText": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "RadioItemGroup": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
-      "id": { "type": "string", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
       "value": { "type": "string", "isRequired": false }
     }
@@ -85,7 +167,11 @@
   "RadioItem": {
     "props": {
       "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
@@ -147,6 +233,11 @@
         "isRequired": false,
         "description": "The ids of the elements in the menu. Useful for composition."
       },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -167,7 +258,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusOutside": {
         "type": "(event: FocusOutsideEvent) => void",
@@ -224,7 +315,63 @@
       }
     }
   },
-  "Separator": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TriggerItem": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseMenuReturn", "isRequired": true },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "Separator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'hr'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "TriggerItem": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
 }

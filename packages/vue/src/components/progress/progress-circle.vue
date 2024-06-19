@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { SVGAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ProgressCircleProps extends PolymorphicProps {}
+export interface ProgressCircleBaseProps extends PolymorphicProps {}
+export interface ProgressCircleProps
+  extends ProgressCircleBaseProps,
+    /**
+     * @vue-ignore
+     */
+    SVGAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const progress = useProgressContext()
 </script>
 
 <template>
-  <ark.svg v-bind="progress.circleProps" :as-child="asChild">
+  <ark.svg v-bind="progress.getCircleProps()" :as-child="asChild">
     <slot />
   </ark.svg>
 </template>

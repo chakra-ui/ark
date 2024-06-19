@@ -1,14 +1,17 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerYearSelectProps extends HTMLArkProps<'select'> {}
+export interface DatePickerYearSelectBaseProps extends PolymorphicProps {}
+export interface DatePickerYearSelectProps
+  extends HTMLProps<'select'>,
+    DatePickerYearSelectBaseProps {}
 
 export const DatePickerYearSelect = forwardRef<HTMLSelectElement, DatePickerYearSelectProps>(
   (props, ref) => {
     const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.yearSelectProps, props)
+    const mergedProps = mergeProps(datePicker.getYearSelectProps(), props)
 
     return (
       <ark.select {...mergedProps} ref={ref}>

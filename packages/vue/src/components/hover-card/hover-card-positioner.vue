@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface HoverCardPositionerProps extends PolymorphicProps {}
+export interface HoverCardPositionerBaseProps extends PolymorphicProps {}
+export interface HoverCardPositionerProps
+  extends HoverCardPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const renderStrategy = useRenderStrategyProps()
 
 <template>
   <Presence
-    v-bind="hoverCard.positionerProps"
+    v-bind="hoverCard.getPositionerProps()"
     :present="hoverCard.open"
     :lazy-mount="renderStrategy.lazyMount"
     :unmount-on-exit="renderStrategy.unmountOnExit"

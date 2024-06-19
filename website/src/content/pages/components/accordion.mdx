@@ -6,10 +6,18 @@ description: A collapsible component for displaying content in a vertical stack.
 
 <ComponentPreview id="Accordion" />
 
+## Features
+
+- Full keyboard navigation
+- Supports horizontal and vertical orientation
+- Right-to-Left (RTL) support
+- Single or multiple item expansion
+- Controlled and uncontrolled modes
+- Collapse each accordion item
+
 ## Anatomy
 
-To set up the avatar correctly, you'll need to understand its anatomy and how we
-name its parts.
+To set up the accordion correctly, it's essential to understand its anatomy and the naming of its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,12 +25,65 @@ name its parts.
 
 ## Examples
 
-### Multiple Panels Open
+### Default Expanded State
 
-For an Accordion that allows keeping multiple panels open, apply the `multiple`
-prop:
+Set the `defaultValue` prop to specify which item should be expanded by default.
+
+<Example id="basic" />
+
+### Collapsible
+
+Use the `collapsible` prop to allow the user to collapse all panels.
+
+<Example id="collapsible" />
+
+### Multiple Panels
+
+Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
 
 <Example id="multiple" />
+
+### Horizontal Orientation
+
+By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
+
+<Example id="horizontal" />
+
+### Animate Content Size
+
+Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes:
+
+```css
+@keyframes slideDown {
+  from {
+    opacity: 0.01;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: var(--height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    height: var(--height);
+  }
+  to {
+    opacity: 0.01;
+    height: 0;
+  }
+}
+
+[data-scope="accordion"][data-part="item-content"][data-state="open"] {
+  animation: slideDown 250ms ease-in-out;
+}
+
+[data-scope="accordion"][data-part="item-content"][data-state="closed"] {
+  animation: slideUp 200ms ease-in-out;
+}
+```
 
 ## API Reference
 
@@ -30,7 +91,7 @@ prop:
 
 ## Accessibility
 
-Complies with the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+This component complies with the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
 
 ### Keyboard Support
 

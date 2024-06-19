@@ -1,8 +1,15 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxIndicatorProps extends PolymorphicProps {
+export interface CheckboxIndicatorBaseProps extends PolymorphicProps {}
+export interface CheckboxIndicatorProps
+  extends CheckboxIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {
   indeterminate?: boolean
 }
 </script>
@@ -19,7 +26,7 @@ const isHidden = computed(() =>
 </script>
 
 <template>
-  <ark.div v-bind="checkbox.indicatorProps" :hidden="!isHidden" :as-child="asChild">
+  <ark.div v-bind="checkbox.getIndicatorProps()" :hidden="!isHidden" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

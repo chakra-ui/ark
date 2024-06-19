@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './tags-input.types'
 
 export interface UseTagsInputProps
@@ -19,28 +19,28 @@ export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>
 
 export const useTagsInput = (
   props: UseTagsInputProps,
-  emit: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<tagsInput.Context>(() => ({
-    id: id.value,
+    id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
-      emit('valueChange', details)
-      emit('update:modelValue', details.value)
+      emit?.('valueChange', details)
+      emit?.('update:modelValue', details.value)
     },
-    onFocusOutside: (details) => emit('focusOutside', details),
-    onHighlightChange: (details) => emit('highlightChange', details),
-    onInputValueChange: (details) => emit('inputValueChange', details),
-    onInteractOutside: (details) => emit('interactOutside', details),
-    onPointerDownOutside: (details) => emit('pointerDownOutside', details),
-    onValueInvalid: (details) => emit('valueInvalid', details),
-    ...props,
+    onFocusOutside: (details) => emit?.('focusOutside', details),
+    onHighlightChange: (details) => emit?.('highlightChange', details),
+    onInputValueChange: (details) => emit?.('inputValueChange', details),
+    onInteractOutside: (details) => emit?.('interactOutside', details),
+    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+    onValueInvalid: (details) => emit?.('valueInvalid', details),
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(tagsInput.machine(context.value), { context })

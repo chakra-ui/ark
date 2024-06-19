@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RatingGroupLabelProps extends PolymorphicProps {}
+export interface RatingGroupLabelBaseProps extends PolymorphicProps {}
+export interface RatingGroupLabelProps
+  extends RatingGroupLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const ratingGroup = useRatingGroupContext()
 </script>
 
 <template>
-  <ark.label v-bind="ratingGroup.labelProps" :as-child="asChild">
+  <ark.label v-bind="ratingGroup.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

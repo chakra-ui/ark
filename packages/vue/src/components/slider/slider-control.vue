@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SliderControlProps extends PolymorphicProps {}
+export interface SliderControlBaseProps extends PolymorphicProps {}
+export interface SliderControlProps
+  extends SliderControlBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const slider = useSliderContext()
 </script>
 
 <template>
-  <ark.div v-bind="slider.controlProps" :as-child="asChild">
+  <ark.div v-bind="slider.getControlProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

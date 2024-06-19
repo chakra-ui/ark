@@ -1,28 +1,112 @@
 {
-  "ClearTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Content": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Control": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Input": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "index": { "type": "number", "isRequired": false }
     }
   },
-  "Label": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "MonthSelect": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "NextTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Positioner": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'label'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "MonthSelect": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'select'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "NextTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "PresetTrigger": {
     "props": {
       "value": { "type": "DateValue[] | DateRangePreset", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
-  "PrevTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "RangeText": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "PrevTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "RangeText": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "true",
@@ -55,15 +139,15 @@
         "isRequired": false,
         "description": "The format of the date to display in the input."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
       "ids": {
         "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
@@ -110,7 +194,7 @@
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "Function called when the animation ends in the closed state"
       },
       "onFocusChange": {
         "type": "(details: FocusChangeDetails) => void",
@@ -193,34 +277,155 @@
       }
     }
   },
-  "TableBody": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseDatePickerReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "TableBody": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'tbody'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "TableCell": {
     "props": {
       "value": { "type": "number | DateValue", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'td'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "columns": { "type": "number", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
       "visibleRange": { "type": "VisibleRange", "isRequired": false }
     }
   },
-  "TableCellTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TableHead": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "TableHeader": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "TableCellTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "TableHead": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'thead'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "TableHeader": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'th'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Table": {
     "props": {
-      "asChild": { "type": "boolean", "isRequired": false },
+      "asChild": {
+        "type": "(props: ParentProps<'table'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "columns": { "type": "number", "isRequired": false }
     }
   },
-  "TableRow": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "Trigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "ViewControl": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
+  "TableRow": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'tr'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ViewControl": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "View": {
     "props": {
       "view": { "type": "DateView", "isRequired": true },
-      "asChild": { "type": "boolean", "isRequired": false }
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
     }
   },
-  "ViewTrigger": { "props": { "asChild": { "type": "boolean", "isRequired": false } } },
-  "YearSelect": { "props": { "asChild": { "type": "boolean", "isRequired": false } } }
+  "ViewTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "YearSelect": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'select'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
 }

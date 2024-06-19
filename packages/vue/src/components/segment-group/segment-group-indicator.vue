@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SegmentGroupIndicatorProps extends PolymorphicProps {}
+export interface SegmentGroupIndicatorBaseProps extends PolymorphicProps {}
+export interface SegmentGroupIndicatorProps
+  extends SegmentGroupIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,7 +23,7 @@ const { indicator } = segmentGroupAnatomy.build()
 
 <template>
   <ark.div
-    v-bind="segmentGroup.indicatorProps"
+    v-bind="segmentGroup.getIndicatorProps()"
     :as-child="asChild"
     :data-scope="indicator.attrs['data-scope']"
     :data-part="indicator.attrs['data-part']"

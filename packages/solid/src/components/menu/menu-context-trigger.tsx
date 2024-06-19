@@ -1,12 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 
-export interface MenuContextTriggerProps extends HTMLArkProps<'button'> {}
+export interface MenuContextTriggerBaseProps extends PolymorphicProps<'button'> {}
+export interface MenuContextTriggerProps extends HTMLProps<'button'>, MenuContextTriggerBaseProps {}
 
 export const MenuContextTrigger = (props: MenuContextTriggerProps) => {
   const context = useMenuContext()
-  const mergedProps = mergeProps(() => context().contextTriggerProps, props)
+  const mergedProps = mergeProps(() => context().getContextTriggerProps(), props)
 
   return <ark.button {...mergedProps} />
 }

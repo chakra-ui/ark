@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SwitchThumbProps extends PolymorphicProps {}
+export interface SwitchThumbBaseProps extends PolymorphicProps {}
+export interface SwitchThumbProps
+  extends SwitchThumbBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const context = useSwitchContext()
 </script>
 
 <template>
-  <ark.span v-bind="context.thumbProps" :as-child="asChild">
+  <ark.span v-bind="context.getThumbProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

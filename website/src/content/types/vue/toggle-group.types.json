@@ -2,7 +2,11 @@
   "Item": {
     "props": {
       "value": { "type": "string", "isRequired": true },
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "disabled": { "type": "boolean", "isRequired": false }
     }
   },
@@ -20,7 +24,11 @@
       }
     },
     "props": {
-      "asChild": { "type": "boolean", "defaultValue": "false", "isRequired": false },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
@@ -64,6 +72,16 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to use roving tab index to manage focus."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   }

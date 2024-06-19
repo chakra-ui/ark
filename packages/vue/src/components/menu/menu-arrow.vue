@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuArrowProps extends PolymorphicProps {}
+export interface MenuArrowBaseProps extends PolymorphicProps {}
+export interface MenuArrowProps
+  extends MenuArrowBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const menu = useMenuContext()
 </script>
 
 <template>
-  <ark.div v-bind="menu.arrowProps" :as-child="asChild">
+  <ark.div v-bind="menu.getArrowProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

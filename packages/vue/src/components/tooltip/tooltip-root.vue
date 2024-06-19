@@ -3,7 +3,8 @@ import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './tooltip.types'
 
-export interface TooltipRootProps extends RootProps, RenderStrategyProps {}
+export interface TooltipRootBaseProps extends RootProps, RenderStrategyProps {}
+export interface TooltipRootProps extends TooltipRootBaseProps {}
 export interface TooltipRootEmits extends RootEmits {}
 </script>
 
@@ -16,6 +17,7 @@ import { TooltipProvider } from './use-tooltip-context'
 const props = withDefaults(defineProps<TooltipRootProps>(), {
   closeOnEscape: undefined,
   closeOnPointerDown: undefined,
+  closeOnScroll: undefined,
   defaultOpen: undefined,
   disabled: undefined,
   interactive: undefined,

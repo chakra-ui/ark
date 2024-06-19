@@ -1,14 +1,17 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLArkProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 
-export interface PinInputHiddenInputProps extends HTMLArkProps<'input'> {}
+export interface PinInputHiddenInputBaseProps extends PolymorphicProps {}
+export interface PinInputHiddenInputProps
+  extends HTMLProps<'input'>,
+    PinInputHiddenInputBaseProps {}
 
 export const PinInputHiddenInput = forwardRef<HTMLInputElement, PinInputHiddenInputProps>(
   (props, ref) => {
     const pinInput = usePinInputContext()
-    const mergedProps = mergeProps(pinInput.hiddenInputProps, props)
+    const mergedProps = mergeProps(pinInput.getHiddenInputProps(), props)
 
     return <ark.input {...mergedProps} ref={ref} />
   },

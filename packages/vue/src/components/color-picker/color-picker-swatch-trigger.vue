@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { SwatchTriggerProps } from '@zag-js/color-picker'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerSwatchTriggerProps extends SwatchTriggerProps, PolymorphicProps {}
+export interface ColorPickerSwatchTriggerBaseProps extends SwatchTriggerProps, PolymorphicProps {}
+export interface ColorPickerSwatchTriggerProps
+  extends ColorPickerSwatchTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'disabled' | 'value'> {}
 </script>
 
 <script setup lang="ts">

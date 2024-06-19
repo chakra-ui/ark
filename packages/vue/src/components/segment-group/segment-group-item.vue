@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/radio-group'
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface SegmentGroupItemProps extends PolymorphicProps, ItemProps {}
+export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
+export interface SegmentGroupItemProps
+  extends SegmentGroupItemBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

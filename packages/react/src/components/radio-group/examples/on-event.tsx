@@ -10,6 +10,7 @@ export const OnEvent = () => {
         <RadioGroup.Item key={framework} value={framework}>
           <RadioGroup.ItemText>{framework}</RadioGroup.ItemText>
           <RadioGroup.ItemControl />
+          <RadioGroup.ItemHiddenInput />
         </RadioGroup.Item>
       ))}
     </RadioGroup.Root>

@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { PresetTriggerProps } from '@zag-js/date-picker'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface DatePickerPresetTriggerProps extends PolymorphicProps, PresetTriggerProps {}
+export interface DatePickerPresetTriggerBaseProps extends PresetTriggerProps, PolymorphicProps {}
+export interface DatePickerPresetTriggerProps
+  extends DatePickerPresetTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    Omit<ButtonHTMLAttributes, 'value'> {}
 </script>
 
 <script setup lang="ts">

@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface MenuItemIndicatorProps extends PolymorphicProps {}
+export interface MenuItemIndicatorBaseProps extends PolymorphicProps {}
+export interface MenuItemIndicatorProps
+  extends MenuItemIndicatorBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

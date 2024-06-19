@@ -1,15 +1,19 @@
-import type { ComponentProps } from 'solid-js'
+import { mergeProps } from '@zag-js/solid'
+import type { HTMLProps, PolymorphicProps } from '../factory'
 import { useToastContext } from './use-toast-context'
 
-export interface ToastRootProps extends ComponentProps<'div'> {}
+export interface ToastRootBaseProps extends PolymorphicProps<'div'> {}
+export interface ToastRootProps extends HTMLProps<'div'>, ToastRootBaseProps {}
 
 export const ToastRoot = (props: ToastRootProps) => {
   const toast = useToastContext()
+  const mergedProps = mergeProps(() => toast().getRootProps(), props)
+
   return (
-    <div {...toast().rootProps}>
-      <div {...toast().ghostBeforeProps} />
+    <div {...mergedProps}>
+      <div {...toast().getGhostBeforeProps()} />
       {props.children}
-      <div {...toast().ghostAfterProps} />
+      <div {...toast().getGhostAfterProps()} />
     </div>
   )
 }

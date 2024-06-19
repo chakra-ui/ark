@@ -8,8 +8,7 @@ description: A single input field that combines the functionality of a select an
 
 ## Anatomy
 
-To set up the combobox correctly, you'll need to understand its anatomy and how
-we name its parts.
+To set up the combobox correctly, you'll need to understand its anatomy and how we name its parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -17,31 +16,17 @@ we name its parts.
 
 ## Examples
 
-Learn how to use the `Combobox` component in your project. Let's take a look at
-the most basic example
+Learn how to use the `Combobox` component in your project. Let's take a look at the most basic
+example
 
 <Example id="basic" />
 
 ### Advanced Customization
 
-Extended example that shows usage with complex item objects, including disabled
-state for certain options.
+Extended example that shows usage with complex item objects, including disabled state for certain
+options.
 
 <Example id="advanced" />
-
-## TypeScript Caveats in Vue
-
-Under the hood for React and Solid frameworks, we supply a complex prop type
-with a generic so that the type of the `items` prop matches the param type in
-the function signatures for props such as the `isItemDisabled` prop, say. (See
-the api reference table below) Unfortunately, generic typing is not supported in
-Vue for components that contain props with slots and/or emits. Therefore, you
-will not expect updated typing in this way.
-
-If you have a solution or a workaround to this problem, we would love the
-contribution and request that you
-[open a Github idea discussion](https://github.com/chakra-ui/ark/discussions/new?category=ideas)
-to let us know a PoC you have to share!
 
 ## API Reference
 
@@ -49,7 +34,8 @@ to let us know a PoC you have to share!
 
 ## Accessibility
 
-Complies with the [Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
+Complies with the
+[Combobox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).
 
 ### Keyboard Support
 

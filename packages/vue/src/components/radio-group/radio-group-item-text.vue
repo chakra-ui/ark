@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface RadioGroupItemTextProps extends PolymorphicProps {}
+export interface RadioGroupItemTextBaseProps extends PolymorphicProps {}
+export interface RadioGroupItemTextProps
+  extends RadioGroupItemTextBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

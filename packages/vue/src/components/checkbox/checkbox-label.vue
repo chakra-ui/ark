@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CheckboxLabelProps extends PolymorphicProps {}
+export interface CheckboxLabelBaseProps extends PolymorphicProps {}
+export interface CheckboxLabelProps
+  extends CheckboxLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const checkbox = useCheckboxContext()
 </script>
 
 <template>
-  <ark.span v-bind="checkbox.labelProps" :as-child="asChild">
+  <ark.span v-bind="checkbox.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

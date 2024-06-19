@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface NumberInputLabelProps extends PolymorphicProps {}
+export interface NumberInputLabelBaseProps extends PolymorphicProps {}
+export interface NumberInputLabelProps
+  extends NumberInputLabelBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const numberInput = useNumberInputContext()
 </script>
 
 <template>
-  <ark.label v-bind="numberInput.labelProps" :as-child="asChild">
+  <ark.label v-bind="numberInput.getLabelProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

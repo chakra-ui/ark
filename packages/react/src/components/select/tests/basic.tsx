@@ -38,6 +38,7 @@ export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items
               ))}
             </Select.ItemGroup>
           </Select.Content>
+          <Select.List />
         </Select.Positioner>
       </Portal>
       <Select.HiddenSelect />

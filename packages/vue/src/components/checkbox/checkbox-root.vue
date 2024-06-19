@@ -1,13 +1,21 @@
 <script lang="ts">
+import type { LabelHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './checkbox.types'
 
-export interface CheckboxRootProps extends RootProps, PolymorphicProps {}
+export interface CheckboxRootBaseProps extends RootProps, PolymorphicProps {}
+export interface CheckboxRootProps
+  extends CheckboxRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    LabelHTMLAttributes {}
 export interface CheckboxRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark, type PolymorphicProps } from '../factory'
+import { ark } from '../factory'
 import { useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
 
@@ -27,7 +35,7 @@ CheckboxProvider(checkbox)
 </script>
 
 <template>
-  <ark.label v-bind="checkbox.rootProps" :as-child="asChild">
+  <ark.label v-bind="checkbox.getRootProps()" :as-child="asChild">
     <slot />
   </ark.label>
 </template>

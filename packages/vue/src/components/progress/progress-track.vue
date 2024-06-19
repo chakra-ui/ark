@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ProgressTrackProps extends PolymorphicProps {}
+export interface ProgressTrackBaseProps extends PolymorphicProps {}
+export interface ProgressTrackProps
+  extends ProgressTrackBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -13,7 +20,7 @@ const progress = useProgressContext()
 </script>
 
 <template>
-  <ark.div v-bind="progress.trackProps" :as-child="asChild">
+  <ark.div v-bind="progress.getTrackProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

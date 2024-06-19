@@ -1,8 +1,15 @@
 <script lang="ts">
 import type { SwatchProps } from '@zag-js/color-picker'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerSwatchProps extends SwatchProps, PolymorphicProps {}
+export interface ColorPickerSwatchBaseProps extends SwatchProps, PolymorphicProps {}
+export interface ColorPickerSwatchProps
+  extends ColorPickerSwatchBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
