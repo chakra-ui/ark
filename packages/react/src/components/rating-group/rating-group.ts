@@ -28,6 +28,11 @@ export {
   type RatingGroupRootBaseProps as RootBaseProps,
 } from './rating-group-root'
 export {
+  RatingGroupRootProvider as RootProvider,
+  type RatingGroupRootProviderProps as RootProviderProps,
+  type RatingGroupRootProviderBaseProps as RootProviderBaseProps,
+} from './rating-group-root-provider'
+export {
   RatingGroupHiddenInput as HiddenInput,
   type RatingGroupHiddenInputProps as HiddenInputProps,
   type RatingGroupHiddenInputBaseProps as HiddenInputBaseProps,

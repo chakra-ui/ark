@@ -26,6 +26,9 @@ export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseP
 - **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
 - **Checkbox:** Added the missing `group` role for the Checkbox group component.
 - **Signature Pad**: Added missing package.json for `signature-pad` machine.
+- **NumberInput:** Added missing `RootProvider` export for the `NumberInput` component.
+- **RatingGroup:** Added missing `RootProvider` export for the `RatingGroup` component.
+- **ToggleGroup:** Added missing `RootProvider` export for the `ToggleGroup` component.
 
 ## [3.3.0] - 2024-06-12
 

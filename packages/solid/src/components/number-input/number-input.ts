@@ -38,6 +38,11 @@ export {
   type NumberInputRootBaseProps as RootBaseProps,
 } from './number-input-root'
 export {
+  NumberInputRootProvider as RootProvider,
+  type NumberInputRootProviderProps as RootProviderProps,
+  type NumberInputRootProviderBaseProps as RootProviderBaseProps,
+} from './number-input-root-provider'
+export {
   NumberInputScrubber as Scrubber,
   type NumberInputScrubberProps as ScrubberProps,
   type NumberInputScrubberBaseProps as ScrubberBaseProps,
