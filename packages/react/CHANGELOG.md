@@ -6,8 +6,6 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-## [3.4.0-1] - 2024-06-20
-
 ### Added
 
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
@@ -31,7 +29,7 @@ description: All notable changes will be documented in this file.
 - **RootProvider:** Added missing `RootProvider` for the `ColorPicker`, `NumberInput`, `RatingGroup`, `SegmentGroup` and `ToggleGroup` components.
 
 
-## [3.4.0-0] - 2024-06-12
+## [3.3.0] - 2024-06-12
 
 ### Added
 
