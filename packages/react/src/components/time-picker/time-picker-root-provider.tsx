@@ -22,16 +22,16 @@ export interface TimePickerRootProviderProps
 
 export const TimePickerRootProvider = forwardRef<HTMLDivElement, TimePickerRootProviderProps>(
   (props, ref) => {
-    const [presenceProps, TimePickerProps] = splitPresenceProps(props)
-    const [{ value: TimePicker }, localProps] = createSplitProps<RootProviderProps>()(
-      TimePickerProps,
+    const [presenceProps, timePickerProps] = splitPresenceProps(props)
+    const [{ value: timePicker }, localProps] = createSplitProps<RootProviderProps>()(
+      timePickerProps,
       ['value'],
     )
-    const presence = usePresence(mergeProps({ present: TimePicker.open }, presenceProps))
-    const mergedProps = mergeProps(TimePicker.getRootProps(), localProps)
+    const presence = usePresence(mergeProps({ present: timePicker.open }, presenceProps))
+    const mergedProps = mergeProps(timePicker.getRootProps(), localProps)
 
     return (
-      <TimePickerProvider value={TimePicker}>
+      <TimePickerProvider value={timePicker}>
         <PresenceProvider value={presence}>
           <ark.div {...mergedProps} ref={ref} />
         </PresenceProvider>

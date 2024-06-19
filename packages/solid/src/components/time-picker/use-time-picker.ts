@@ -1,10 +1,9 @@
 import type { Time } from '@internationalized/date'
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as timePicker from '@zag-js/time-picker'
-import { useId } from 'react'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useEvent } from '../../utils/use-event'
 
 export interface UseTimePickerProps
   extends Optional<Omit<timePicker.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
@@ -20,30 +19,24 @@ export interface UseTimePickerProps
   defaultValue?: Time
 }
 
-export interface UseTimePickerReturn extends timePicker.Api<PropTypes> {}
+export interface UseTimePickerReturn extends Accessor<timePicker.Api<PropTypes>> {}
 
 export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerReturn => {
-  const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const locale = useLocaleContext()
+  const environment = useEnvironmentContext()
+  const id = createUniqueId()
 
-  const initialContext: timePicker.Context = {
-    id: useId(),
-    dir,
-    getRootNode,
+  const context = createMemo(() => ({
+    id,
+    dir: locale().dir,
+    getRootNode: environment().getRootNode,
     open: props.defaultOpen,
     value: props.defaultValue,
     'open.controlled': props.open !== undefined,
     ...props,
-  }
+  }))
 
-  const context: timePicker.Context = {
-    ...initialContext,
-    onValueChange: useEvent(props.onValueChange, { sync: true }),
-    onFocusChange: useEvent(props.onFocusChange),
-    onOpenChange: useEvent(props.onOpenChange),
-  }
+  const [state, send] = useMachine(timePicker.machine(context()), { context })
 
-  const [state, send] = useMachine(timePicker.machine(initialContext), { context })
-
-  return timePicker.connect(state, send, normalizeProps)
+  return createMemo(() => timePicker.connect(state, send, normalizeProps))
 }
