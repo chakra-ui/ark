@@ -99,6 +99,11 @@ export {
   type ColorPickerRootProps as RootProps,
 } from './color-picker-root'
 export {
+  ColorPickerRootProvider as RootProvider,
+  type ColorPickerRootProviderBaseProps as RootProviderBaseProps,
+  type ColorPickerRootProviderProps as RootProviderProps,
+} from './color-picker-root-provider'
+export {
   ColorPickerSwatch as Swatch,
   type ColorPickerSwatchBaseProps as SwatchBaseProps,
   type ColorPickerSwatchProps as SwatchProps,

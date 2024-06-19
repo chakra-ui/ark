@@ -26,9 +26,7 @@ description: All notable changes will be documented in this file.
 - **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
 - **Checkbox:** Added the missing `group` role for the Checkbox group component.
 - **Progress:** Converted `Circle`, `CircleTrack`, and `CircleRange` components to use React's `forwardRef` for improved ref handling.
-- **NumberInput:** Added missing `RootProvider` export for the `NumberInput` component.
-- **RatingGroup:** Added missing `RootProvider` export for the `RatingGroup` component.
-- **ToggleGroup:** Added missing `RootProvider` export for the `ToggleGroup` component.
+- **RootProvider:** Added missing `RootProvider` for the `ColorPicker`, `NumberInput`, `RatingGroup`, `SegmentGroup` and `ToggleGroup` components.
 
 ## [3.3.0] - 2024-06-12
 
