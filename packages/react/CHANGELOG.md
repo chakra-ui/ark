@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.4.0-1] - 2024-06-20
+
 ### Added
 
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
