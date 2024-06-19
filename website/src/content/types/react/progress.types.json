@@ -6,7 +6,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "SVGSVGElement"
   },
   "CircleRange": {
     "props": {
@@ -15,7 +16,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "SVGCircleElement"
   },
   "CircleTrack": {
     "props": {
@@ -24,7 +26,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
-    }
+    },
+    "element": "SVGCircleElement"
   },
   "Label": {
     "props": {
