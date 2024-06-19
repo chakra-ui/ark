@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Environment, useEnvironmentContext } from '../'
+import { EnvironmentProvider, useEnvironmentContext } from '../'
 import { Portal } from '../../../components'
 import { Basic } from '../../../components/tooltip/examples/basic'
 
@@ -14,9 +14,9 @@ export const ShadowRoot = () => {
   return (
     <div ref={setRef}>
       {shadowRoot && (
-        <Environment value={() => shadowRoot}>
+        <EnvironmentProvider value={() => shadowRoot}>
           <PrintEnvironment />
-        </Environment>
+        </EnvironmentProvider>
       )}
     </div>
   )

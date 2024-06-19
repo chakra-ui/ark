@@ -19,13 +19,7 @@ export const Portal = (props: PropsWithChildren<PortalProps>) => {
   const providedRootNode = getRootNode?.()
   const rootNode = providedRootNode.getRootNode()
   const doc = providedRootNode.ownerDocument ?? document
-  const mountNode =
-    container?.current ??
-    (isShadowRoot(providedRootNode)
-      ? providedRootNode
-      : isShadowRoot(rootNode)
-        ? rootNode
-        : doc.body)
+  const mountNode = container?.current ?? (isShadowRoot(rootNode) ? rootNode : doc.body)
 
   return <>{Children.map(children, (child) => createPortal(child, mountNode))}</>
 }

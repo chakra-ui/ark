@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { useRef } from 'react'
-import { Environment } from '../../providers'
+import { EnvironmentProvider } from '../../providers'
 import { Portal } from './portal'
 
 const PortalWithContainerTest = (props: { disabled?: boolean }) => {
@@ -107,11 +107,11 @@ describe('Portal', () => {
     document.body.appendChild(div)
     const shadowRoot = div.attachShadow({ mode: 'open' })
     const view = render(
-      <Environment value={() => shadowRoot}>
+      <EnvironmentProvider value={() => shadowRoot}>
         <Portal>
           <p>Anything must be visible</p>
         </Portal>
-      </Environment>,
+      </EnvironmentProvider>,
     )
     expect(view.baseElement).toMatchInlineSnapshot(`
       <body>
