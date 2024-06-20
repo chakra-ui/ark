@@ -23,11 +23,11 @@
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.1",
-    "@types/bun": "1.1.4",
-    "lefthook": "1.6.16",
+    "@biomejs/biome": "1.8.2",
+    "@types/bun": "1.1.5",
+    "lefthook": "1.6.17",
     "turbo": "2.0.4",
-    "typescript": "5.4.5",
+    "typescript": "5.5.2",
     "vercel": "34.2.7"
   },
   "packageManager": "bun@1.1.12",
