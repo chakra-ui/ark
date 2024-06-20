@@ -38,7 +38,7 @@ export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerRetu
 
   const context: timePicker.Context = {
     ...initialContext,
-    onValueChange: useEvent(props.onValueChange, { sync: true }),
+    onValueChange: useEvent(props.onValueChange),
     onFocusChange: useEvent(props.onFocusChange),
     onOpenChange: useEvent(props.onOpenChange),
   }

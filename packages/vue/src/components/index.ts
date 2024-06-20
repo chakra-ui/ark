@@ -32,6 +32,7 @@ export * from './splitter'
 export * from './switch'
 export * from './tabs'
 export * from './tags-input'
+export * from './time-picker'
 export * from './toast'
 export * from './toggle-group' // 1
 export * from './tooltip'
