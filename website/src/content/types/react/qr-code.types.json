@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "SVGSVGElement"
+    "element": "SVGSVGElement",
+    "tag": "svg"
   },
   "Overlay": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Pattern": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "SVGPathElement"
+    "element": "SVGPathElement",
+    "tag": "path"
   },
   "Root": {
     "props": {
@@ -46,19 +49,28 @@
         "isRequired": false,
         "description": "The element ids."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value to encode."
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseQrCodeReturn", "isRequired": true },
+      "value": {
+        "type": "UseQrCodeReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

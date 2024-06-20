@@ -1,14 +1,19 @@
 {
   "TabContent": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the tab"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "TabIndicator": {
     "props": {
@@ -18,7 +23,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "TabList": {
     "props": {
@@ -28,11 +34,16 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "TabTrigger": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the tab"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -44,7 +55,8 @@
         "description": "Whether the tab is disabled"
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Root": {
     "props": {
@@ -118,13 +130,21 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The selected tab id"
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTabsReturn", "isRequired": true },
+      "value": {
+        "type": "UseTabsReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -143,6 +163,7 @@
         "description": "Whether to unmount on exit."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

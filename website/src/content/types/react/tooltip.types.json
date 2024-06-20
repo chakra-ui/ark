@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ArrowTip": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Content": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Positioner": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -80,7 +84,11 @@
         "isRequired": false,
         "description": "Whether the tooltip is disabled"
       },
-      "id": { "type": "string", "isRequired": false, "description": "The `id` of the tooltip." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The `id` of the tooltip."
+      },
       "ids": {
         "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
         "isRequired": false,
@@ -144,7 +152,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTooltipReturn", "isRequired": true },
+      "value": {
+        "type": "UseTooltipReturn",
+        "isRequired": true
+      },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -182,6 +193,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

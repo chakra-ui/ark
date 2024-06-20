@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Area": {
     "props": {
@@ -16,10 +17,17 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "xChannel": { "type": "ColorChannel", "isRequired": false },
-      "yChannel": { "type": "ColorChannel", "isRequired": false }
+      "xChannel": {
+        "type": "ColorChannel",
+        "isRequired": false
+      },
+      "yChannel": {
+        "type": "ColorChannel",
+        "isRequired": false
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "AreaThumb": {
     "props": {
@@ -29,19 +37,27 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ChannelInput": {
     "props": {
-      "channel": { "type": "ExtendedColorChannel", "isRequired": true },
+      "channel": {
+        "type": "ExtendedColorChannel",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": {
+        "type": "Orientation",
+        "isRequired": false
+      }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "ChannelSliderLabel": {
     "props": {
@@ -51,19 +67,27 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "ChannelSlider": {
     "props": {
-      "channel": { "type": "ColorChannel", "isRequired": true },
+      "channel": {
+        "type": "ColorChannel",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": {
+        "type": "Orientation",
+        "isRequired": false
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ChannelSliderThumb": {
     "props": {
@@ -73,7 +97,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ChannelSliderTrack": {
     "props": {
@@ -83,7 +108,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ChannelSliderValueText": {
     "props": {
@@ -93,7 +119,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement"
+    "element": "HTMLSpanElement",
+    "tag": "span"
   },
   "Content": {
     "props": {
@@ -103,7 +130,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Control": {
     "props": {
@@ -113,7 +141,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "EyeDropperTrigger": {
     "props": {
@@ -123,7 +152,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "FormatSelect": {
     "props": {
@@ -133,7 +163,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSelectElement"
+    "element": "HTMLSelectElement",
+    "tag": "select"
   },
   "FormatTrigger": {
     "props": {
@@ -143,7 +174,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "HiddenInput": {
     "props": {
@@ -153,7 +185,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "Label": {
     "props": {
@@ -163,7 +196,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "Positioner": {
     "props": {
@@ -173,7 +207,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -312,11 +347,15 @@
         "description": "The current value of the color picker."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseColorPickerReturn", "isRequired": true },
+      "value": {
+        "type": "UseColorPickerReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -350,7 +389,8 @@
         "description": "Whether to unmount on exit."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "SwatchGroup": {
     "props": {
@@ -360,7 +400,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "SwatchIndicator": {
     "props": {
@@ -370,11 +411,16 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Swatch": {
     "props": {
-      "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+      "value": {
+        "type": "string | Color",
+        "isRequired": true,
+        "description": "The color value"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -386,11 +432,16 @@
         "description": "Whether to include the alpha channel in the color"
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "SwatchTrigger": {
     "props": {
-      "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+      "value": {
+        "type": "string | Color",
+        "isRequired": true,
+        "description": "The color value"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -402,7 +453,8 @@
         "description": "Whether the swatch trigger is disabled"
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "TransparencyGrid": {
     "props": {
@@ -411,9 +463,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "size": { "type": "string", "isRequired": false }
+      "size": {
+        "type": "string",
+        "isRequired": false
+      }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Trigger": {
     "props": {
@@ -423,7 +479,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "ValueSwatch": {
     "props": {
@@ -438,7 +495,8 @@
         "description": "Whether to include the alpha channel in the color"
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "ValueText": {
     "props": {
@@ -448,17 +506,22 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "span"
   },
   "View": {
     "props": {
-      "format": { "type": "ColorFormat", "isRequired": true },
+      "format": {
+        "type": "ColorFormat",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   }
 }

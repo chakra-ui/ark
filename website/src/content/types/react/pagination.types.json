@@ -1,26 +1,37 @@
 {
   "Ellipsis": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "index": {
+        "type": "number",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Item": {
     "props": {
-      "type": { "type": "'page'", "isRequired": true },
-      "value": { "type": "number", "isRequired": true },
+      "type": {
+        "type": "'page'",
+        "isRequired": true
+      },
+      "value": {
+        "type": "number",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "NextTrigger": {
     "props": {
@@ -30,7 +41,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "PrevTrigger": {
     "props": {
@@ -40,7 +52,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Root": {
     "props": {
@@ -104,17 +117,22 @@
         "description": "The type of the trigger element"
       }
     },
-    "element": "HTMLElement"
+    "element": "HTMLElement",
+    "tag": "nav"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UsePaginationReturn", "isRequired": true },
+      "value": {
+        "type": "UsePaginationReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLElement"
+    "element": "HTMLElement",
+    "tag": "nav"
   }
 }
