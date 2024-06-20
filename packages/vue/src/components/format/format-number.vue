@@ -23,6 +23,7 @@ const props = defineProps<FormatNumberProps>()
 const locale = useLocaleContext(DEFAULT_LOCALE)
 const text = computed(() => {
   const { value, ...intlProps } = props
+  // @ts-expect-error TS 5.5.2
   return formatNumber(value, locale.value.locale, intlProps)
 })
 </script>
