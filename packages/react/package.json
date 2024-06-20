@@ -33,6 +33,7 @@
     "switch",
     "tabs",
     "tags input",
+    "timer",
     "toast",
     "toggle group",
     "tooltip",
@@ -439,6 +440,17 @@
         "default": "./dist/components/tags-input/index.cjs"
       }
     },
+    "./timer": {
+      "source": "./src/components/timer/index.ts",
+      "import": {
+        "types": "./dist/components/timer/index.d.ts",
+        "default": "./dist/components/timer/index.js"
+      },
+      "require": {
+        "types": "./dist/components/timer/index.d.cts",
+        "default": "./dist/components/timer/index.cjs"
+      }
+    },
     "./toast": {
       "source": "./src/components/toast/index.ts",
       "import": {
@@ -558,6 +570,7 @@
     "@zag-js/switch": "0.58.1",
     "@zag-js/tabs": "0.58.1",
     "@zag-js/tags-input": "0.58.1",
+    "@zag-js/timer": "0.58.1",
     "@zag-js/toast": "0.58.1",
     "@zag-js/toggle-group": "0.58.1",
     "@zag-js/tooltip": "0.58.1",
