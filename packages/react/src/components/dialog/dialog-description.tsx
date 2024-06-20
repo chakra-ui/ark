@@ -6,7 +6,7 @@ import { useDialogContext } from './use-dialog-context'
 export interface DialogDescriptionBaseProps extends PolymorphicProps {}
 export interface DialogDescriptionProps extends HTMLProps<'div'>, DialogDescriptionBaseProps {}
 
-export const DialogDescription = forwardRef<HTMLParagraphElement, DialogDescriptionProps>(
+export const DialogDescription = forwardRef<HTMLDivElement, DialogDescriptionProps>(
   (props, ref) => {
     const dialog = useDialogContext()
     const mergedProps = mergeProps(dialog.getDescriptionProps(), props)
