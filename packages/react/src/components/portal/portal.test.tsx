@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { useRef } from 'react'
+import { EnvironmentProvider } from '../../providers'
 import { Portal } from './portal'
 
 const PortalWithContainerTest = (props: { disabled?: boolean }) => {
@@ -99,5 +100,25 @@ describe('Portal', () => {
     expect(container).toBeInTheDocument()
     expect(container).toBeEmptyDOMElement()
     expect(screen.getByText('Anything must be visible')).toBeVisible()
+  })
+
+  it('should render portal children inside a shadow root', () => {
+    const div = document.createElement('div')
+    document.body.appendChild(div)
+    const shadowRoot = div.attachShadow({ mode: 'open' })
+    const view = render(
+      <EnvironmentProvider value={() => shadowRoot}>
+        <Portal>
+          <p>Anything must be visible</p>
+        </Portal>
+      </EnvironmentProvider>,
+    )
+    expect(view.baseElement).toMatchInlineSnapshot(`
+      <body>
+        <div />
+        <div />
+      </body>
+    `)
+    expect(shadowRoot.innerHTML).toMatchInlineSnapshot(`"<p>Anything must be visible</p>"`)
   })
 })
