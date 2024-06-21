@@ -4,81 +4,81 @@ export type {
   ValueChangeDetails as TimePickerValueChangeDetails,
 } from '@zag-js/time-picker'
 export {
-  default as ClearTrigger,
+  default as TimePickerClearTrigger,
   type TimePickerClearTriggerProps,
   type TimePickerClearTriggerBaseProps,
 } from './time-picker-clear-trigger.vue'
 export {
-  default as Column,
+  default as TimePickerColumn,
   type TimePickerColumnProps,
   type TimePickerColumnBaseProps,
 } from './time-picker-column.vue'
 export {
-  default as Content,
+  default as TimePickerContent,
   type TimePickerContentProps,
   type TimePickerContentBaseProps,
 } from './time-picker-content.vue'
 export {
-  default as Context,
+  default as TimePickerContext,
   type TimePickerContextProps,
 } from './time-picker-context.vue'
 export {
-  default as Control,
+  default as TimePickerControl,
   type TimePickerControlProps,
   type TimePickerControlBaseProps,
 } from './time-picker-control.vue'
 export {
-  default as HourCell,
+  default as TimePickerHourCell,
   type TimePickerHourCellProps,
   type TimePickerHourCellBaseProps,
 } from './time-picker-hour-cell.vue'
 export {
-  default as Input,
+  default as TimePickerInput,
   type TimePickerInputProps,
   type TimePickerInputBaseProps,
 } from './time-picker-input.vue'
 export {
-  default as Label,
+  default as TimePickerLabel,
   type TimePickerLabelProps,
   type TimePickerLabelBaseProps,
 } from './time-picker-label.vue'
 export {
-  default as MinuteCell,
+  default as TimePickerMinuteCell,
   type TimePickerMinuteCellProps,
   type TimePickerMinuteCellBaseProps,
 } from './time-picker-minute-cell.vue'
 export {
-  default as PeriodCell,
+  default as TimePickerPeriodCell,
   type TimePickerPeriodCellProps,
   type TimePickerPeriodCellBaseProps,
 } from './time-picker-period-cell.vue'
 export {
-  default as Positioner,
+  default as TimePickerPositioner,
   type TimePickerPositionerProps,
   type TimePickerPositionerBaseProps,
 } from './time-picker-positioner.vue'
 export {
-  default as Root,
+  default as TimePickerRoot,
   type TimePickerRootProps,
   type TimePickerRootBaseProps,
 } from './time-picker-root.vue'
 export {
-  default as RootProvider,
+  default as TimePickerRootProvider,
   type TimePickerRootProviderProps,
   type TimePickerRootProviderBaseProps,
 } from './time-picker-root-provider.vue'
 export {
-  default as SecondCell,
+  default as TimePickerSecondCell,
   type TimePickerSecondCellProps,
   type TimePickerSecondCellBaseProps,
 } from './time-picker-second-cell.vue'
 export {
-  default as Spacer,
+  default as TimePickerSpacer,
   type TimePickerSpacerProps,
   type TimePickerSpacerBaseProps,
 } from './time-picker-spacer.vue'
 export {
-  default as Trigger,
+  default as TimePickerTrigger,
   type TimePickerTriggerProps,
   type TimePickerTriggerBaseProps,
 } from './time-picker-trigger.vue'

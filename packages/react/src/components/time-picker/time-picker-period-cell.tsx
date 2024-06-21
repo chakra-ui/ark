@@ -3,10 +3,10 @@ import type { PeriodCellProps } from '@zag-js/time-picker'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
 
-export interface TimePickerPeriodCellBaseProps extends PeriodCellProps {}
+export interface TimePickerPeriodCellBaseProps extends PeriodCellProps, PolymorphicProps {}
 export interface TimePickerPeriodCellProps
   extends Assign<HTMLProps<'button'>, TimePickerPeriodCellBaseProps> {}
 

@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -15,7 +15,10 @@ interface RootProviderProps {
   value: UseTimePickerReturn
 }
 
-export interface TimePickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface TimePickerRootProviderBaseProps
+  extends RootProviderProps,
+    UsePresenceProps,
+    PolymorphicProps {}
 export interface TimePickerRootProviderProps
   extends HTMLProps<'div'>,
     TimePickerRootProviderBaseProps {}

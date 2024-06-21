@@ -1,14 +1,12 @@
 import { mergeProps } from '@zag-js/react'
 import type { ColumnProps } from '@zag-js/time-picker'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
 
-export interface TimePickerColumnBaseProps extends ColumnProps {}
-export interface TimePickerColumnProps
-  extends Assign<HTMLProps<'div'>, TimePickerColumnBaseProps> {}
+export interface TimePickerColumnBaseProps extends ColumnProps, PolymorphicProps {}
+export interface TimePickerColumnProps extends HTMLProps<'div'>, TimePickerColumnBaseProps {}
 
 export const TimePickerColumn = forwardRef<HTMLDivElement, TimePickerColumnProps>((props, ref) => {
   const [columnProps, localProps] = createSplitProps<ColumnProps>()(props, ['unit'])
