@@ -1,3 +1,4 @@
 [data-scope=timer][data-part=root] {
   display: flex;
+  font-size: 1.25rem;
 }
