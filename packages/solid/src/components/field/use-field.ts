@@ -1,6 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/anatomy'
 import { getWindow } from '@zag-js/dom-query'
-import { useId, useLayoutEffect, useRef, useState } from 'react'
+import { createEffect, createSignal, onCleanup } from 'solid-js'
 
 const parts = fieldAnatomy.build()
 
@@ -16,17 +16,17 @@ export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps) => {
   const { required = false, disabled = false, invalid = false, readOnly = false } = props
-  const [hasErrorText, setHasErrorText] = useState(false)
-  const [hasHelperText, setHasHelperText] = useState(false)
+  const [hasErrorText, setHasErrorText] = createSignal(false)
+  const [hasHelperText, setHasHelperText] = createSignal(false)
 
-  const id = props.id ?? useId()
-  const rootRef = useRef<HTMLDivElement>(null)
+  const id = props.id ?? `field-${Math.random().toString(36).substr(2, 9)}`
+  let rootRef: HTMLDivElement | undefined
   const errorTextId = `field::${id}::error-text`
   const helperTextId = `field::${id}::helper-text`
   const labelId = `field::${id}::label`
 
-  useLayoutEffect(() => {
-    const rootNode = rootRef.current
+  createEffect(() => {
+    const rootNode = rootRef
     if (!rootNode) return
 
     const win = getWindow(rootNode)
@@ -42,8 +42,8 @@ export const useField = (props: UseFieldProps) => {
 
     observer.observe(rootNode, { childList: true, subtree: true })
 
-    return () => observer.disconnect()
-  }, [errorTextId, helperTextId])
+    onCleanup(() => observer.disconnect())
+  })
 
   const getRootProps = () => ({
     ...parts.root.attrs,
@@ -64,8 +64,8 @@ export const useField = (props: UseFieldProps) => {
 
   const labelIds: string[] = []
 
-  if (hasErrorText && invalid) labelIds.push(errorTextId)
-  if (hasHelperText) labelIds.push(helperTextId)
+  if (hasErrorText() && invalid) labelIds.push(errorTextId)
+  if (hasHelperText()) labelIds.push(helperTextId)
 
   const getControlProps = () => ({
     'aria-describedby': labelIds.join(' ') || undefined,
