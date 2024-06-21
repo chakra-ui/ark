@@ -31,6 +31,7 @@ export const NumberInputRoot = (props: NumberInputRootProps) => {
     'onValueInvalid',
     'pattern',
     'readOnly',
+    'required',
     'spinOnPress',
     'step',
     'translations',

@@ -206,7 +206,7 @@
       "invalid": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the combobox is required"
+        "description": "Whether the combobox is invalid"
       },
       "isItemDisabled": {
         "type": "(item: T) => boolean",
@@ -283,6 +283,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the combobox is required"
       },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",

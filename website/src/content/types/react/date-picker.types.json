@@ -94,7 +94,7 @@
   "PresetTrigger": {
     "props": {
       "value": {
-        "type": "DateValue[] | DateRangePreset",
+        "type": "PresetTriggerValue",
         "isRequired": true
       },
       "asChild": {
@@ -177,7 +177,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{ root: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
+        "type": "Partial<{ root: string; label: string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; cellTrigger(id: string): string; ... 9 more ...; positioner: string; }>",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },

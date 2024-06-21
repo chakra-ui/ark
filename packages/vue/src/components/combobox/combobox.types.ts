@@ -83,7 +83,7 @@ export interface RootProps<T extends CollectionItem> {
    */
   inputValue?: string
   /**
-   * Whether the combobox is required
+   * Whether the combobox is invalid
    */
   invalid?: boolean
   /**
@@ -151,6 +151,10 @@ export interface RootProps<T extends CollectionItem> {
    * but the user can still interact with it
    */
   readOnly?: boolean
+  /**
+   * Whether the combobox is required
+   */
+  required?: boolean
   /**
    * Function to scroll to a specific index
    */

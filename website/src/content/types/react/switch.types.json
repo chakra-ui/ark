@@ -50,7 +50,7 @@
         "description": "Whether the switch is disabled."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  input: string\n  control: string\n  label: string\n  thumb: string\n}>",
+        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  control: string\n  label: string\n  thumb: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the switch. Useful for composition."
       },

@@ -85,6 +85,16 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the signature pad is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the signature pad is required."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The translations of the signature pad. Useful for internationalization."
       }
     },
     "element": "HTMLDivElement",

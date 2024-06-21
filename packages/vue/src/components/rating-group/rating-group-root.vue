@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<RatingGroupRootProps>(), {
   autoFocus: undefined,
   disabled: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<RatingGroupRootEmits>()

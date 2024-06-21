@@ -164,6 +164,11 @@
         "isRequired": false,
         "description": "Whether the number input is readonly"
       },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the number input is required"
+      },
       "spinOnPress": {
         "type": "boolean",
         "defaultValue": "true",

@@ -25,8 +25,8 @@ export interface RootProps {
   ids?: Partial<{
     root: string
     item(value: string): string
-    content(value: string): string
-    trigger(value: string): string
+    itemContent(value: string): string
+    itemTrigger(value: string): string
   }>
   /**
    * The accordion items that are currently expanded.

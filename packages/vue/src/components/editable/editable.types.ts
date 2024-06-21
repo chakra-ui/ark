@@ -46,7 +46,7 @@ export interface RootProps {
     label: string
     preview: string
     input: string
-    controls: string
+    control: string
     submitTrigger: string
     cancelTrigger: string
     editTrigger: string
@@ -72,6 +72,10 @@ export interface RootProps {
    * Whether the editable is readonly
    */
   readOnly?: boolean
+  /**
+   * Whether the editable is required
+   */
+  required?: boolean
   /**
    * Whether to select the text in the input when it is focused.
    * @default true

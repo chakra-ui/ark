@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<NumberInputRootProps>(), {
   focusInputOnChange: undefined,
   invalid: undefined,
   readOnly: undefined,
+  required: undefined,
   spinOnPress: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

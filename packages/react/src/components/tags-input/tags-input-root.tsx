@@ -35,6 +35,7 @@ export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((pro
     'onValueChange',
     'onValueInvalid',
     'readOnly',
+    'required',
     'translations',
     'validate',
     'value',

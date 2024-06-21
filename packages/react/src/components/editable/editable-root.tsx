@@ -31,6 +31,7 @@ export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props
     'onValueRevert',
     'placeholder',
     'readOnly',
+    'required',
     'selectOnFocus',
     'startWithEditView',
     'submitMode',

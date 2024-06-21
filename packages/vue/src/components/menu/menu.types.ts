@@ -39,7 +39,7 @@ export interface RootProps {
     trigger: string
     contextTrigger: string
     content: string
-    label(id: string): string
+    groupLabel(id: string): string
     group(id: string): string
     positioner: string
     arrow: string

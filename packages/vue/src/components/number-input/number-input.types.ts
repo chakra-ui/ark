@@ -93,6 +93,10 @@ export interface RootProps {
    */
   readOnly?: boolean
   /**
+   * Whether the number input is required
+   */
+  required?: boolean
+  /**
    * Whether to spin the value when the increment/decrement button is pressed
    * @default true
    */

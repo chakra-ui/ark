@@ -41,6 +41,7 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
       'open',
       'positioning',
       'readOnly',
+      'required',
       'value',
     ],
   )

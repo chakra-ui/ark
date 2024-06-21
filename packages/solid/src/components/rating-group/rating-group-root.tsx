@@ -21,6 +21,7 @@ export const RatingGroupRoot = (props: RatingGroupRootProps) => {
     'onHoverChange',
     'onValueChange',
     'readOnly',
+    'required',
     'translations',
     'value',
   ])

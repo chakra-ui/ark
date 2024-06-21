@@ -36,6 +36,7 @@ export interface RootProps {
   ids?: Partial<{
     root: string
     thumb(index: number): string
+    hiddenInput(index: number): string
     control: string
     track: string
     range: string

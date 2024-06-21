@@ -17,6 +17,9 @@ export const SignaturePadRoot = (props: SignaturePadRootProps) => {
     'name',
     'onDraw',
     'onDrawEnd',
+    'readOnly',
+    'required',
+    'translations',
   ])
 
   const signaturePad = useSignaturePad(useSignaturePadProps)

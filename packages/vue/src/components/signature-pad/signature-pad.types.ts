@@ -26,6 +26,14 @@ export interface RootProps {
    * Whether the signature pad is read-only.
    */
   readOnly?: boolean
+  /**
+   * Whether the signature pad is required.
+   */
+  required?: boolean
+  /**
+   * The translations of the signature pad. Useful for internationalization.
+   */
+  translations?: signaturePad.IntlTranslations
 }
 
 export type RootEmits = {

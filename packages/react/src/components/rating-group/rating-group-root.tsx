@@ -23,6 +23,7 @@ export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>(
     'onHoverChange',
     'onValueChange',
     'readOnly',
+    'required',
     'translations',
     'value',
   ])

@@ -75,7 +75,7 @@
         "description": "The associate form of the underlying input element."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  rating(id: string): string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  hiddenInput: string\n  control: string\n  item(id: string): string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the rating. Useful for composition."
       },
@@ -98,6 +98,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the rating is readonly."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the rating is required."
       },
       "translations": {
         "type": "IntlTranslations",

@@ -41,6 +41,7 @@ const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   openOnClick: undefined,
   openOnKeyPress: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps<T>>)
 
 const emits = defineEmits<RootEmits<T>>()

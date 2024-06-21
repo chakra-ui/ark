@@ -25,7 +25,13 @@ export interface RootProps {
   /**
    * The ids of the elements in the switch. Useful for composition.
    */
-  ids?: Partial<{ root: string; input: string; control: string; label: string; thumb: string }>
+  ids?: Partial<{
+    root: string
+    hiddenInput: string
+    control: string
+    label: string
+    thumb: string
+  }>
   /**
    * If `true`, the switch is marked as invalid.
    */

@@ -148,7 +148,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  controls: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
+        "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  control: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the editable. Useful for composition."
       },
@@ -177,6 +177,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the editable is readonly"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is required"
       },
       "selectOnFocus": {
         "type": "boolean",

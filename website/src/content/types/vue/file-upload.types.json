@@ -116,7 +116,7 @@
     },
     "props": {
       "accept": {
-        "type": "string | Record<string, string[]>",
+        "type": "Record<string, string[]> | FileMimeType | FileMimeType[]",
         "isRequired": false,
         "description": "The accept file types"
       },
@@ -184,6 +184,11 @@
         "type": "string",
         "isRequired": false,
         "description": "The name of the underlying file input"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the file input is required"
       },
       "translations": {
         "type": "IntlTranslations",

@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<TagsInputRootProps>(), {
   editable: undefined,
   invalid: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TagsInputRootEmits>()

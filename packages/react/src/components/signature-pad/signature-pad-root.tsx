@@ -17,6 +17,9 @@ export const SignaturePadRoot = forwardRef<HTMLDivElement, SignaturePadRootProps
     'name',
     'onDraw',
     'onDrawEnd',
+    'readOnly',
+    'required',
+    'translations',
   ])
   const signaturePad = useSignaturePad(useSignaturePadProps)
   const mergedProps = mergeProps(signaturePad.getRootProps(), localProps)

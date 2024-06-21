@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<ColorPickerRootProps>(), {
   disabled: undefined,
   open: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<ColorPickerRootEmits>()

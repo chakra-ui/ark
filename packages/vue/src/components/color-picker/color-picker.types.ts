@@ -37,9 +37,12 @@ export interface RootProps {
     trigger: string
     label: string
     input: string
+    hiddenInput: string
     content: string
     area: string
     areaGradient: string
+    positioner: string
+    formatSelect: string
     areaThumb: string
     channelInput(id: string): string
     channelSliderTrack(id: colorPicker.ColorChannel): string
@@ -48,7 +51,7 @@ export interface RootProps {
   /**
    * The initial focus element when the color picker is opened.
    */
-  initialFocusEl?: () => HTMLElement | null
+  initialFocusEl?: () => HTMLElement
   modelValue?: string
   /**
    * The name for the form input
@@ -66,6 +69,10 @@ export interface RootProps {
    * Whether the color picker is read-only
    */
   readOnly?: boolean
+  /**
+   * Whether the color picker is required
+   */
+  required?: boolean
 }
 
 export type RootEmits = {

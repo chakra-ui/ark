@@ -4,7 +4,7 @@ export interface RootProps {
   /**
    * The accept file types
    */
-  accept?: string | Record<string, string[]>
+  accept?: Record<string, string[]> | fileUpload.FileMimeType | fileUpload.FileMimeType[]
   /**
    * Whether to allow drag and drop in the dropzone element
    * @default true
@@ -66,6 +66,10 @@ export interface RootProps {
    * The name of the underlying file input
    */
   name?: string
+  /**
+   * Whether the file input is required
+   */
+  required?: boolean
   /**
    * The localized messages to use.
    */

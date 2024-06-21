@@ -63,6 +63,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'placeholder',
     'positioning',
     'readOnly',
+    'required',
     'scrollToIndexFn',
     'selectionBehavior',
     'translations',

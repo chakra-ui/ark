@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<EditableRootProps>(), {
   disabled: undefined,
   invalid: undefined,
   readOnly: undefined,
+  required: undefined,
   selectOnFocus: undefined,
   startWithEditView: undefined,
 } satisfies BooleanDefaults<RootProps>)

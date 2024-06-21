@@ -57,6 +57,7 @@ export interface RootProps {
   ids?: Partial<{
     root: string
     input: string
+    hiddenInput: string
     clearBtn: string
     label: string
     control: string
@@ -90,6 +91,10 @@ export interface RootProps {
    * Whether the tags input should be read-only
    */
   readOnly?: boolean
+  /**
+   * Whether the tags input is required
+   */
+  required?: boolean
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */

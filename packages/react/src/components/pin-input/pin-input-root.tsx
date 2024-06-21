@@ -27,6 +27,7 @@ export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props
     'otp',
     'pattern',
     'placeholder',
+    'readOnly',
     'selectOnFocus',
     'translations',
     'type',

@@ -4,7 +4,6 @@ import { FileUpload } from '../..'
 export const WithValidation = () => {
   return (
     <FileUpload.Root
-      // @ts-expect-error - will loosen type in Zag.js
       validate={(file) => {
         if (file.name.length > 20) return ['FILE_NAME_TOO_LONG']
         return null

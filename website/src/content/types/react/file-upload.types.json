@@ -122,7 +122,7 @@
   "Root": {
     "props": {
       "accept": {
-        "type": "string | Record<string, string[]>",
+        "type": "Record<string, string[]> | FileMimeType | FileMimeType[]",
         "isRequired": false,
         "description": "The accept file types"
       },
@@ -200,6 +200,11 @@
         "type": "(details: FileRejectDetails) => void",
         "isRequired": false,
         "description": "Function called when the file is rejected"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the file input is required"
       },
       "translations": {
         "type": "IntlTranslations",

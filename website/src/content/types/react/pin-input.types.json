@@ -135,6 +135,11 @@
         "isRequired": false,
         "description": "The placeholder text for the input"
       },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the pin input is in the valid state"
+      },
       "selectOnFocus": {
         "type": "boolean",
         "isRequired": false,

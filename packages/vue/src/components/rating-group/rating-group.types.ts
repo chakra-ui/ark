@@ -39,7 +39,7 @@ export interface RootProps {
     label: string
     hiddenInput: string
     control: string
-    rating(id: string): string
+    item(id: string): string
   }>
   modelValue?: number
   /**
@@ -50,6 +50,10 @@ export interface RootProps {
    * Whether the rating is readonly.
    */
   readOnly?: boolean
+  /**
+   * Whether the rating is required.
+   */
+  required?: boolean
   /**
    * Specifies the localized strings that identifies the accessibility elements and their states
    */

@@ -60,6 +60,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'placeholder',
     'positioning',
     'readOnly',
+    'required',
     'scrollToIndexFn',
     'selectionBehavior',
     'translations',

@@ -21,10 +21,10 @@ export interface RootProps {
   ids?: Partial<{
     root: string
     viewport: string
-    slide(index: number): string
-    slideGroup: string
-    nextSlideTrigger: string
-    prevSlideTrigger: string
+    item(index: number): string
+    itemGroup: string
+    nextTrigger: string
+    prevTrigger: string
     indicatorGroup: string
     indicator(index: number): string
   }>

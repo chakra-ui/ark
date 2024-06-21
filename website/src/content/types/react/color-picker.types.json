@@ -250,7 +250,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  control: string\n  trigger: string\n  label: string\n  input: string\n  content: string\n  area: string\n  areaGradient: string\n  areaThumb: string\n  channelInput(id: string): string\n  channelSliderTrack(id: ColorChannel): string\n  channelSliderThumb(id: ColorChannel): string\n}>",
+        "type": "Partial<{ root: string; control: string; trigger: string; label: string; input: string; hiddenInput: string; content: string; area: string; areaGradient: string; positioner: string; formatSelect: string; areaThumb: string; channelInput(id: string): string; channelSliderTrack(id: ColorChannel): string; channelSliderT...",
         "isRequired": false,
         "description": "The ids of the elements in the color picker. Useful for composition."
       },
@@ -334,6 +334,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the color picker is read-only"
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the color picker is required"
       },
       "unmountOnExit": {
         "type": "boolean",

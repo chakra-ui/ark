@@ -29,6 +29,7 @@ export const EditableRoot = (props: EditableRootProps) => {
     'onValueRevert',
     'placeholder',
     'readOnly',
+    'required',
     'selectOnFocus',
     'startWithEditView',
     'submitMode',

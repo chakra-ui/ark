@@ -43,6 +43,7 @@ export interface RootProps {
    */
   ids?: Partial<{
     root: string
+    label: string
     table(id: string): string
     tableHeader(id: string): string
     tableBody(id: string): string
