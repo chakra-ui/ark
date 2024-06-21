@@ -6,4 +6,5 @@ export interface UseFieldContext extends UseFieldReturn {}
 export const [FieldProvider, useFieldContext] = createContext<UseFieldContext>({
   hookName: 'useFieldContext',
   providerName: '<FieldProvider />',
+  strict: false,
 })
