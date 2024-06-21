@@ -7,7 +7,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Column": {
     "props": {
@@ -17,7 +18,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Content": {
     "props": {
@@ -27,7 +29,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Control": {
     "props": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "HourCell": {
     "props": {
@@ -46,9 +50,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "value": { "type": "number", "isRequired": true }
+      "value": {
+        "type": "number",
+        "isRequired": true
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Input": {
     "props": {
@@ -57,9 +65,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": { "type": "number", "isRequired": false }
+      "index": {
+        "type": "number",
+        "isRequired": false
+      }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLInputElement",
+    "tag": "input"
   },
   "Label": {
     "props": {
@@ -69,7 +81,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLLabelElement",
+    "tag": "label"
   },
   "MinuteCell": {
     "props": {
@@ -78,9 +91,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "value": { "type": "number", "isRequired": true }
+      "value": {
+        "type": "number",
+        "isRequired": true
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "PeriodCell": {
     "props": {
@@ -89,9 +106,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "value": { "type": "number", "isRequired": true }
+      "value": {
+        "type": "number",
+        "isRequired": true
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Positioner": {
     "props": {
@@ -101,7 +122,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Root": {
     "props": {
@@ -224,11 +246,15 @@
         "description": "The value of the time picker"
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTimePickerReturn", "isRequired": true },
+      "value": {
+        "type": "UseTimePickerReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -262,7 +288,8 @@
         "description": "Whether to unmount on exit."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "SecondCell": {
     "props": {
@@ -271,9 +298,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "value": { "type": "number", "isRequired": true }
+      "value": {
+        "type": "number",
+        "isRequired": true
+      }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   },
   "Spacer": {
     "props": {
@@ -283,7 +314,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement"
+    "element": "HTMLDivElement",
+    "tag": "div"
   },
   "Trigger": {
     "props": {
@@ -293,6 +325,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement"
+    "element": "HTMLButtonElement",
+    "tag": "button"
   }
 }

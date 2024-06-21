@@ -1,10 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTimePickerContext } from './use-time-picker-context'
 
-export type TimePickerPositionerBaseProps = {}
+export interface TimePickerPositionerBaseProps extends PolymorphicProps {}
 export interface TimePickerPositionerProps
   extends HTMLProps<'div'>,
     TimePickerPositionerBaseProps {}

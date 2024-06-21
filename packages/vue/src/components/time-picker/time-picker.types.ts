@@ -1,26 +1,35 @@
 import type { Time } from '@internationalized/date'
-import type { PositioningOptions } from '@zag-js/popper'
 import type * as timePicker from '@zag-js/time-picker'
 
 export interface RootProps {
   /**
-   * The locale (BCP 47 language tag) to use when formatting the time.
+   * Whether to show the seconds.
    */
-  locale?: string
+  allowSeconds?: boolean
   /**
-   * The selected time.
+   * The initial open state of the time picker when it is first rendered.
+   * Use when you do not need to control its open state.
    */
-  value?: Time | null
+  defaultOpen?: boolean
   /**
-   * Whether the timepicker is open
+   * The initial value of the time picker when it is first rendered.
+   * Use when you do not need to control the state of the time picker.
    */
-  open?: boolean
+  defaultValue?: Time
   /**
-   * Whether the timepicker open state is controlled by the user
+   * Whether to disable the interaction outside logic
    */
-  'open.controlled'?: boolean
+  disableLayer?: boolean
   /**
-   * The ids of the elements in the time picker. Useful for composition.
+   * Whether the time picker is disabled.
+   */
+  disabled?: boolean
+  /**
+   * The unique identifier of the machine.
+   */
+  id?: string
+  /**
+   * The ids of the elements in the date picker. Useful for composition.
    */
   ids?: Partial<{
     trigger: string
@@ -32,63 +41,58 @@ export interface RootProps {
     column(unit: timePicker.TimeUnit): string
   }>
   /**
-   * The `name` attribute of the input element.
+   * The locale (BCP 47 language tag) to use when formatting the time.
    */
-  name?: string
-  /**
-   * The user provided options used to position the time picker content
-   */
-  positioning?: PositioningOptions
-  /**
-   * The placeholder text of the input.
-   */
-  placeholder?: string
-  /**
-   * Whether the time picker is disabled.
-   */
-  disabled?: boolean
-  /**
-   * Whether the time picker is read-only.
-   */
-  readOnly?: boolean
-  /**
-   * The minimum time that can be selected.
-   */
-  min?: Time
+  locale?: string
   /**
    * The maximum time that can be selected.
    */
   max?: Time
   /**
+   * The minimum time that can be selected.
+   */
+  min?: Time
+  /**
+   * The `name` attribute of the input element.
+   */
+  name?: string
+  /**
+   * Whether the timepicker is open
+   */
+  open?: boolean
+  /**
+   * The placeholder text of the input.
+   */
+  placeholder?: string
+  /**
+   * The user provided options used to position the time picker content
+   */
+  positioning?: import('/Users/colinlienard/dev/ark/node_modules/@zag-js/popper/dist/index').PositioningOptions
+  /**
+   * Whether the time picker is read-only.
+   */
+  readOnly?: boolean
+  /**
    * The steps of each time unit.
    */
   steps?: { hour?: number; minute?: number; second?: number }
   /**
-   * Whether to show the seconds.
+   * The selected time.
    */
-  allowSeconds?: boolean
-  /**
-   * Whether to disable the interaction outside logic
-   */
-  disableLayer?: boolean
+  value?: Time
 }
 
 export type RootEmits = {
-  /**
-   * Function called when the value changes.
-   */
-  valueChange: [value: timePicker.ValueChangeDetails]
-  /**
-   * Function called when the time picker opens or closes.
-   */
-  openChange: [details: timePicker.OpenChangeDetails]
   /**
    * Function called when the focused date changes.
    */
   focusChange: [details: timePicker.FocusChangeDetails]
   /**
-   * The callback fired when the model value changes.
+   * Function called when the time picker opens or closes.
    */
-  'update:modelValue': [value: Time | null]
-  'update:open': [open: boolean]
+  openChange: [details: timePicker.OpenChangeDetails]
+  /**
+   * Function called when the value changes.
+   */
+  valueChange: [value: timePicker.ValueChangeDetails]
 }
