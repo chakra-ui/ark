@@ -197,6 +197,17 @@
         "default": "./dist/components/factory.cjs"
       }
     },
+    "./field": {
+      "source": "./src/components/field.ts",
+      "import": {
+        "types": "./dist/components/field.d.ts",
+        "default": "./dist/components/field.js"
+      },
+      "require": {
+        "types": "./dist/components/field.d.cts",
+        "default": "./dist/components/field.cjs"
+      }
+    },
     "./file-upload": {
       "source": "./src/components/file-upload/index.ts",
       "import": {

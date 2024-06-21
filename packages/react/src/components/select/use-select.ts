@@ -6,6 +6,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
@@ -45,9 +46,18 @@ export const useSelect = <T extends CollectionItem>(
 
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+  const field = useFieldContext()
 
   const initialContext: select.Context<T> = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      hiddenSelect: field?.ids.control,
+    },
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    invalid: field?.invalid,
+
     dir,
     getRootNode,
     collection,

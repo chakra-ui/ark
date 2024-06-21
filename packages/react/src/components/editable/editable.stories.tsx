@@ -8,3 +8,4 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { CustomControls } from './examples/custom-controls'
+export { WithField } from './examples/with-field'

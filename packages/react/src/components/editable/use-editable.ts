@@ -5,6 +5,7 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 
 export interface UseEditableProps
   extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -20,10 +21,19 @@ export interface UseEditableReturn extends editable.Api<PropTypes> {}
 export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+  const field = useFieldContext()
 
   const initialContext: editable.Context = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      input: field?.ids.control,
+    },
     dir,
+    disabled: field?.disabled,
+    invalid: field?.invalid,
+    readOnly: field?.readOnly,
+    required: field?.required,
     getRootNode,
     value: props.defaultValue,
     ...props,

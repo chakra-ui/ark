@@ -4,6 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 
 export interface UseColorPickerProps
   extends Optional<
@@ -31,10 +32,18 @@ export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+  const field = useFieldContext()
 
   const initialContext: colorPicker.Context = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      input: field?.ids.control,
+    },
     dir,
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    required: field?.required,
     getRootNode,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
