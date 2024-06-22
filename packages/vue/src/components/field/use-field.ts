@@ -1,6 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/anatomy'
 import { getWindow } from '@zag-js/dom-query'
-import { onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 
 const parts = fieldAnatomy.build()
 
@@ -102,13 +102,13 @@ export const useField = (props: UseFieldProps) => {
     ...parts.helperText.attrs,
   })
 
-  const getErrorTextProps = () => ({
+  const getErrorTextProps = (): HTMLAttributes => ({
     id: errorTextId,
     ...parts.errorText.attrs,
     'aria-live': 'polite',
   })
 
-  return {
+  return computed(() => ({
     ariaDescribedby: labelIds.join(' '),
     ids: {
       control: id,
@@ -130,7 +130,7 @@ export const useField = (props: UseFieldProps) => {
     getSelectProps,
     getHelperTextProps,
     getErrorTextProps,
-  }
+  }))
 }
 
 type Booleanish = boolean | 'true' | 'false'
