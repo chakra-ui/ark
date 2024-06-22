@@ -15,7 +15,7 @@ export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSele
     const field = useFieldContext()
 
     return (
-      <ark.select required={field?.required} {...mergedProps} ref={ref}>
+      <ark.select aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref}>
         {isValueEmpty && <option value="" />}
         {select.collection.toArray().map((option) => (
           <option key={option.value} value={option.value}>

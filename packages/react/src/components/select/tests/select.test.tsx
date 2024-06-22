@@ -142,9 +142,9 @@ describe('Select / Field', () => {
     cleanup()
   })
 
-  it.skip('should set combobox as required', async () => {
+  it('should set combobox as required', async () => {
     render(<WithField required />)
-    expect(screen.getByRole('combobox', { hidden: true })).toBeRequired()
+    expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()
   })
 
   it('should set input as disabled', async () => {

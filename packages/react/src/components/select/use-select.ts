@@ -57,7 +57,7 @@ export const useSelect = <T extends CollectionItem>(
     disabled: field?.disabled,
     readOnly: field?.readOnly,
     invalid: field?.invalid,
-
+    required: field?.required,
     dir,
     getRootNode,
     collection,

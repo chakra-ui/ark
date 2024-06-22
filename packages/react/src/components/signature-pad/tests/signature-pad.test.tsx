@@ -45,14 +45,14 @@ describe('Signature Pad / Field', () => {
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
   })
 
-  it.skip('should set  signature pad as disabled', async () => {
+  it('should set  signature pad as disabled', async () => {
     render(<WithField disabled />)
-    expect(screen.getByRole('application')).toBeDisabled()
+    expect(screen.getByRole('application')).toHaveAttribute('aria-disabled', 'true')
   })
 
   it.skip('should set date picker as readonly', async () => {
     render(<WithField readOnly />)
-    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('readonly')
+    expect(screen.getByRole('application')).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
@@ -65,10 +65,10 @@ describe('Signature Pad / Field', () => {
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
-  it.skip('should focus on input when label is clicked', async () => {
+  it('should focus on input when label is clicked', async () => {
     render(<WithField />)
     await user.click(screen.getByText(/label/i))
-    expect(screen.getByRole('textbox')).toHaveFocus()
+    expect(screen.getByRole('application')).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {

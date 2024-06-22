@@ -15,14 +15,7 @@ export const PinInputHiddenInput = forwardRef<HTMLInputElement, PinInputHiddenIn
     const mergedProps = mergeProps(pinInput.getHiddenInputProps(), props)
     const field = useFieldContext()
 
-    return (
-      <ark.input
-        aria-describedby={field?.ariaDescribedby}
-        required={field?.required}
-        {...mergedProps}
-        ref={ref}
-      />
-    )
+    return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} />
   },
 )
 

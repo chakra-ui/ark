@@ -19,12 +19,13 @@ export const useSignaturePad = (props: UseSignaturePadProps): UseSignaturePadRet
   const initialContext: signaturePad.Context = {
     id: useId(),
     ids: {
-      // label: field?.ids.label,
+      label: field?.ids.label,
       hiddenInput: field?.ids.control,
     },
     dir,
     disabled: field?.disabled,
     readOnly: field?.readOnly,
+    required: field?.required,
     getRootNode,
     ...props,
   }

@@ -30,7 +30,7 @@ export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => 
     },
     disabled: field?.disabled,
     readOnly: field?.readOnly,
-    // required: field?.required,
+    required: field?.required,
     invalid: field?.invalid,
     dir,
     getRootNode,
