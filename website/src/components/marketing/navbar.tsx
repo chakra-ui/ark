@@ -37,9 +37,8 @@ export const Navbar = () => (
           >
             Docs
           </NextLink>
-          <a
-            href="https://ark-ui.canny.io/"
-            target="_blank"
+          <NextLink
+            href="/react/examples"
             className={css({
               textStyle: 'sm',
               fontWeight: 'medium',
@@ -49,10 +48,9 @@ export const Navbar = () => (
                 fontWeight: 'semibold',
               },
             })}
-            rel="noreferrer"
           >
-            Roadmap
-          </a>
+            Examples
+          </NextLink>
         </HStack>
         <HStack gap="1">
           <IconButton asChild variant="ghost">
