@@ -560,7 +560,7 @@
     "@types/jsdom": "21.1.7",
     "@vitejs/plugin-vue": "5.0.5",
     "@vitejs/plugin-vue-jsx": "4.0.0",
-    "@vue/compiler-sfc": "3.4.29",
+    "@vue/compiler-sfc": "3.4.30",
     "globby": "14.0.1",
     "histoire": "0.17.17",
     "jsdom": "24.1.0",
@@ -571,7 +571,7 @@
     "vite": "5.3.1",
     "vite-plugin-dts": "3.9.1",
     "vitest": "1.6.0",
-    "vue": "3.4.29",
+    "vue": "3.4.30",
     "vue-tsc": "2.0.21"
   },
   "peerDependencies": {
