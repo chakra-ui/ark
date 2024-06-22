@@ -11,7 +11,7 @@ export default {
     return [
       {
         source: '/:framework/examples',
-        destination: '/:framework/examples/combobox-with-tags-input',
+        destination: '/:framework/examples/checkbox-group',
         permanent: false,
       },
       {
