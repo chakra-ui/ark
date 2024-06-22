@@ -35,6 +35,10 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.ids.label,
+      input: field?.ids.control,
+    },
     dir: locale().dir,
     disabled: field?.disabled,
     readOnly: field?.readOnly,

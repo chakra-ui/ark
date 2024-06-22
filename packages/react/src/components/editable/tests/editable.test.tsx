@@ -93,17 +93,17 @@ describe('Editable / Field', () => {
     cleanup()
   })
 
-  it('should set checkbox as required', async () => {
+  it('should set editable as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
   })
 
-  it('should set input as disabled', async () => {
+  it('should set editable as disabled', async () => {
     render(<WithField disabled />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
   })
 
-  it('should set input as readonly', async () => {
+  it('should set editable as readonly', async () => {
     render(<WithField readOnly />)
     expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
   })
