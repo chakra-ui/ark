@@ -5,6 +5,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends CollectionOptions<T>,
@@ -40,9 +41,18 @@ export const useSelect = <T extends CollectionItem>(
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
+  const field = useFieldContext()
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.ids.label,
+      hiddenSelect: field?.ids.control,
+    },
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    invalid: field?.invalid,
+    required: field?.required,
     collection: collection(),
     dir: locale().dir,
     getRootNode: environment().getRootNode,
