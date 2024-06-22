@@ -35,7 +35,7 @@ describe('File Upload / Field', () => {
     cleanup()
   })
 
-  it('should set checkbox as required', async () => {
+  it('should set file upload as required', async () => {
     render(<WithField required />)
     expect(screen.getByTestId('input')).toBeRequired()
   })
@@ -45,7 +45,7 @@ describe('File Upload / Field', () => {
     expect(screen.getByTestId('input')).toBeDisabled()
   })
 
-  it.skip('should set input as readonly', async () => {
+  it.skip('should set file upload as readonly', async () => {
     render(<WithField readOnly />)
     expect(screen.getByRole('button', { name: /select/i })).toHaveAttribute('readonly')
   })
@@ -60,7 +60,7 @@ describe('File Upload / Field', () => {
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
-  it('should focus on input when label is clicked', async () => {
+  it('should focus on file upload when label is clicked', async () => {
     render(<WithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByTestId('input')).toHaveFocus()
