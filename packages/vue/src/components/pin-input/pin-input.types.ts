@@ -68,6 +68,10 @@ export interface RootProps {
    */
   readOnly?: boolean
   /**
+   * Whether the pin input is required
+   */
+  required?: boolean
+  /**
    * Whether to select input value when input is focused
    */
   selectOnFocus?: boolean

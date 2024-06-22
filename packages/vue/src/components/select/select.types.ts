@@ -101,6 +101,10 @@ export interface RootProps<T extends CollectionItem> {
    */
   readOnly?: boolean
   /**
+   * Whether the select is required
+   */
+  required?: boolean
+  /**
    * Function to scroll to a specific index
    */
   scrollToIndexFn?: (details: select.ScrollToIndexDetails) => void

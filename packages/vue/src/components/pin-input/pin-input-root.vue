@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<PinInputRootProps>(), {
   mask: undefined,
   otp: undefined,
   readOnly: undefined,
+  required: undefined,
   selectOnFocus: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

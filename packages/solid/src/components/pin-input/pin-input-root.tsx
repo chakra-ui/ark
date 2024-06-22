@@ -26,6 +26,7 @@ export const PinInputRoot = (props: PinInputRootProps) => {
     'pattern',
     'placeholder',
     'readOnly',
+    'required',
     'selectOnFocus',
     'translations',
     'type',
