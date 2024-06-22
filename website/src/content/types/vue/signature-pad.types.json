@@ -59,7 +59,7 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{ root: string; control: string; hiddenInput: string }>",
+        "type": "Partial<{\n  root: string\n  control: string\n  hiddenInput: string\n  label: string\n}>",
         "isRequired": false,
         "description": "The ids of the signature pad elements. Useful for composition."
       },

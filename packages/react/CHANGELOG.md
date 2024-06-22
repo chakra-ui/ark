@@ -17,6 +17,7 @@ description: All notable changes will be documented in this file.
 
 - **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced customization.
 - **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the trigger's overflow parent scrolls.
+- **Portal:** Added support for `Shadow DOM`
 
 ### Fixed
 

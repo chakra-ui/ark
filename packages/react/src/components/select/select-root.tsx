@@ -51,6 +51,7 @@ const SelectImpl = <T extends CollectionItem>(
     'open',
     'positioning',
     'readOnly',
+    'required',
     'scrollToIndexFn',
     'value',
   ])

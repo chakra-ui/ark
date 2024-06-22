@@ -313,6 +313,11 @@
         "isRequired": false,
         "description": "Whether the select is read-only"
       },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the select is required"
+      },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",
         "isRequired": false,

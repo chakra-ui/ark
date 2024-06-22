@@ -140,6 +140,11 @@
         "isRequired": false,
         "description": "Whether the pin input is in the valid state"
       },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the pin input is required"
+      },
       "selectOnFocus": {
         "type": "boolean",
         "isRequired": false,
