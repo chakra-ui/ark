@@ -8,11 +8,12 @@ export interface FieldErrorTextProps extends HTMLProps<'span'>, FieldErrorTextBa
 
 export const FieldErrorText = forwardRef<HTMLSpanElement, FieldErrorTextProps>((props, ref) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps<HTMLProps<'span'>>(field.getErrorTextProps(), props)
+  const mergedProps = mergeProps(field.getErrorTextProps(), props)
 
-  if (field && !field.invalid) return null
-
-  return <ark.span {...mergedProps} ref={ref} />
+  if (field?.invalid) {
+    return <ark.span {...mergedProps} ref={ref} />
+  }
+  return null
 })
 
 FieldErrorText.displayName = 'FieldErrorText'

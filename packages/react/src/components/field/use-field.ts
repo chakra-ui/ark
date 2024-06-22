@@ -1,6 +1,7 @@
 import { fieldAnatomy } from '@ark-ui/anatomy'
 import { getWindow } from '@zag-js/dom-query'
 import { useId, useLayoutEffect, useRef, useState } from 'react'
+import type { HTMLProps } from '../factory'
 
 const parts = fieldAnatomy.build()
 
@@ -98,7 +99,7 @@ export const useField = (props: UseFieldProps) => {
     ...parts.helperText.attrs,
   })
 
-  const getErrorTextProps = () => ({
+  const getErrorTextProps = (): HTMLProps<'span'> => ({
     id: errorTextId,
     ...parts.errorText.attrs,
     'aria-live': 'polite',
