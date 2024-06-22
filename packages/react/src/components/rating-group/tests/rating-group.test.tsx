@@ -77,17 +77,17 @@ describe('Rating Group / Field', () => {
     cleanup()
   })
 
-  it('should set ratin group as required', async () => {
+  it('should set rating group as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
   })
 
-  it('should set input as disabled', async () => {
+  it('should set rating group as disabled', async () => {
     render(<WithField disabled />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
   })
 
-  it('should set input as readonly', async () => {
+  it('should set rating group as readonly', async () => {
     render(<WithField readOnly />)
     expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
   })
@@ -102,7 +102,7 @@ describe('Rating Group / Field', () => {
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
-  it('should focus on input when label is clicked', async () => {
+  it('should focus on rating group when label is clicked', async () => {
     render(<WithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('radio', { name: /1 stars/i })).toHaveFocus()

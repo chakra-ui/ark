@@ -3,6 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
+import { useFieldContext } from '../field'
 
 export interface UseRatingGroupProps
   extends Optional<Omit<rating.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -18,9 +19,17 @@ export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
+  const field = useFieldContext()
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.ids.label,
+      hiddenInput: field?.ids.control,
+    },
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    required: field?.required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     value: props.defaultValue,
