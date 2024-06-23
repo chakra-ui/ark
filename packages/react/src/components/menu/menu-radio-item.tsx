@@ -29,11 +29,11 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
     onCheckedChange: () => itemGroup.onValueChange?.({ value: partialItemProps.value }),
   }
   const mergedProps = mergeProps(menu.getOptionItemProps(optionItemProps), localProps)
-  const itemState = menu.getItemState(optionItemProps)
+  const optionItemState = menu.getOptionItemState(optionItemProps)
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>
-      <MenuItemProvider value={itemState}>
+      <MenuItemProvider value={optionItemState}>
         <ark.div {...mergedProps} ref={ref} />
       </MenuItemProvider>
     </MenuOptionItemPropsProvider>

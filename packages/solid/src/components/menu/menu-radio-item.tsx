@@ -29,11 +29,11 @@ export const MenuRadioItem = (props: MenuRadioItemProps) => {
   })) as OptionItemProps
 
   const mergedProps = mergeProps(() => context().getOptionItemProps(optionItemProps), localProps)
-  const itemState = createMemo(() => context().getItemState(optionItemProps))
+  const optionItemState = createMemo(() => context().getOptionItemState(optionItemProps))
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>
-      <MenuItemProvider value={itemState}>
+      <MenuItemProvider value={optionItemState}>
         <ark.div {...mergedProps} />
       </MenuItemProvider>
     </MenuOptionItemPropsProvider>
