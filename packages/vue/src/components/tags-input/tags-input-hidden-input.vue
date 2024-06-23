@@ -22,5 +22,11 @@ const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="tagsInput.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="tagsInput.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

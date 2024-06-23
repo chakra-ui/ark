@@ -5,6 +5,7 @@ import { vi } from 'vitest'
 import { nextTick } from 'vue'
 import { PinInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './pin-input.test.vue'
 
 type RenderFuncParams = Parameters<typeof render>
@@ -127,5 +128,44 @@ describe('PinInput', () => {
         valueAsString: '123',
       }),
     )
+  })
+})
+
+describe('NumberInput / Field', () => {
+  it('should set input as required', async () => {
+    await renderOnNextTick(WithField, { props: { required: true } })
+    expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()
+  })
+
+  it('should set input as disabled', async () => {
+    await renderOnNextTick(WithField, { props: { disabled: true } })
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toBeDisabled()
+  })
+
+  it('should set input as readonly', async () => {
+    await renderOnNextTick(WithField, { props: { readOnly: true } })
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveAttribute('readonly')
+  })
+
+  it('should display helper text', async () => {
+    await renderOnNextTick(WithField)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    await renderOnNextTick(WithField, { props: { invalid: true } })
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should focus on input when label is clicked', async () => {
+    await renderOnNextTick(WithField)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveFocus()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    await renderOnNextTick(WithField)
+
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })
