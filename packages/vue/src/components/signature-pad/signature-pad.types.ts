@@ -17,7 +17,7 @@ export interface RootProps {
   /**
    * The ids of the signature pad elements. Useful for composition.
    */
-  ids?: Partial<{ root: string; control: string; hiddenInput: string }>
+  ids?: Partial<{ root: string; control: string; hiddenInput: string; label: string }>
   /**
    * The name of the signature pad. Useful for form submission.
    */

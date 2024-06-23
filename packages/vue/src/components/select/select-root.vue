@@ -35,6 +35,7 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   multiple: undefined,
   open: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps<T>>)
 
 const emits = defineEmits<RootEmits<T>>()
