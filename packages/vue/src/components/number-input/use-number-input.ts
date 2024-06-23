@@ -4,6 +4,7 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import { useFieldContext } from '../field'
 import type { RootEmits } from './number-input.types'
 
 export interface UseNumberInputProps
@@ -24,8 +25,18 @@ export const useNumberInput = (
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const field = useFieldContext()
+
   const context = computed<numberInput.Context>(() => ({
     id,
+    ids: {
+      label: field?.value.ids.label,
+      input: field?.value.ids.control,
+    },
+    disabled: field?.value.disabled,
+    readOnly: field?.value.readOnly,
+    required: field?.value.required,
+    invalid: field?.value.invalid,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,

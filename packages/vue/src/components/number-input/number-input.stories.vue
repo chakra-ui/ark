@@ -38,5 +38,8 @@ import Scrubber from './examples/scrubber.vue'
     <Variant title="RenderFn">
       <RenderFn />
     </Variant>
+    <Variant title="WithField">
+      <WithField />
+    </Variant>
   </Story>
 </template>
