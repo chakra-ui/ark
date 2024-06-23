@@ -17,10 +17,11 @@ import { useCheckboxContext } from './use-checkbox-context'
 
 defineProps<CheckboxHiddenInputProps>()
 const checkbox = useCheckboxContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="checkbox.getHiddenInputProps()"  :as-child="asChild">
+  <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="checkbox.getHiddenInputProps()"  :as-child="asChild">
     <slot />
   </ark.input>
 </template>
