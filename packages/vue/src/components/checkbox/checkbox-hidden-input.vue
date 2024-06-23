@@ -14,6 +14,7 @@ export interface CheckboxHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
+import { useFieldContext } from '../field'
 
 defineProps<CheckboxHiddenInputProps>()
 const checkbox = useCheckboxContext()
