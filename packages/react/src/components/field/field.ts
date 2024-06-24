@@ -4,6 +4,11 @@ export {
   type FieldRootBaseProps as RootBaseProps,
 } from './field-root'
 export {
+  FieldRootProvider as RootProvider,
+  type FieldRootProviderProps as RootProviderProps,
+  type FieldRootProviderBaseProps as RootProviderBaseProps,
+} from './field-root-provider'
+export {
   FieldLabel as Label,
   type FieldLabelProps as LabelProps,
   type FieldLabelBaseProps as LabelBaseProps,

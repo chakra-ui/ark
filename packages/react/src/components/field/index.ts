@@ -14,6 +14,11 @@ export { FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './fi
 export { FieldSelect, type FieldSelectBaseProps, type FieldSelectProps } from './field-select'
 export { FieldRoot, type FieldRootBaseProps, type FieldRootProps } from './field-root'
 export {
+  FieldRootProvider,
+  type FieldRootProviderBaseProps,
+  type FieldRootProviderProps,
+} from './field-root-provider'
+export {
   FieldTextarea,
   type FieldTextareaBaseProps,
   type FieldTextareaProps,

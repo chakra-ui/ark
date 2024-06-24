@@ -1,3 +1,4 @@
+'use client'
 import type { Assign } from '@ark-ui/react'
 import { Field } from '@ark-ui/react/field'
 import { field } from 'styled-system/recipes'
@@ -18,17 +19,29 @@ export const Root = withProvider<
   Assign<HTMLStyledProps<'div'>, Field.RootBaseProps>
 >(Field.Root, 'root')
 
-export type FallbackProps = ComponentProps<typeof Fallback>
-export const Fallback = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Field.FallbackBaseProps>
->(Field.Fallback, 'fallback')
+export type LabelProps = ComponentProps<typeof Label>
+export const Label = withContext<
+  HTMLLabelElement,
+  Assign<HTMLStyledProps<'label'>, Field.LabelBaseProps>
+>(Field.Label, 'label')
 
-export type ImageProps = ComponentProps<typeof Image>
-export const Image = withContext<
-  HTMLImageElement,
-  Assign<HTMLStyledProps<'img'>, Field.ImageBaseProps>
->(Field.Image, 'image')
+export type InputProps = ComponentProps<typeof Input>
+export const Input = withContext<
+  HTMLInputElement,
+  Assign<HTMLStyledProps<'input'>, Field.InputBaseProps>
+>(Field.Input, 'input')
+
+export type HelperTextProps = ComponentProps<typeof HelperText>
+export const HelperText = withContext<
+  HTMLSpanElement,
+  Assign<HTMLStyledProps<'span'>, Field.HelperTextBaseProps>
+>(Field.HelperText, 'helperText')
+
+export type ErrorTextProps = ComponentProps<typeof ErrorText>
+export const ErrorText = withContext<
+  HTMLSpanElement,
+  Assign<HTMLStyledProps<'span'>, Field.ErrorTextBaseProps>
+>(Field.ErrorText, 'errorText')
 
 export {
   FieldContext as Context,
