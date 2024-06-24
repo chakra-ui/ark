@@ -38,9 +38,9 @@ const optionItemProps: ComputedRef<OptionItemProps> = computed(() => ({
   onCheckedChange: () => itemGroup.value.onValueChange?.({ value: props.value }),
 }))
 
-const item = computed(() => menu.value.getOptionItemState(optionItemProps.value))
+const optionItemState = computed(() => menu.value.getOptionItemState(optionItemProps.value))
 
-MenuItemProvider(item)
+MenuItemProvider(optionItemState)
 MenuOptionItemPropsProvider(optionItemProps)
 </script>
 

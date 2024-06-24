@@ -29,11 +29,11 @@ export const MenuCheckboxItem = (props: MenuCheckboxItemProps) => {
 
   const context = useMenuContext()
   const mergedProps = mergeProps(() => context().getOptionItemProps(optionItemProps), localProps)
-  const itemState = createMemo(() => context().getItemState(optionItemProps))
+  const optionItemState = createMemo(() => context().getItemState(optionItemProps))
 
   return (
     <MenuOptionItemPropsProvider value={optionItemProps}>
-      <MenuItemProvider value={itemState}>
+      <MenuItemProvider value={optionItemState}>
         <ark.div {...mergedProps} />
       </MenuItemProvider>
     </MenuOptionItemPropsProvider>

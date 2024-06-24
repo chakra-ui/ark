@@ -24,6 +24,7 @@ description: All notable changes will be documented in this file.
 - **Menu:** 
   - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
   - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long press.
+  - Fixed issue where `RadioOptionItem` does not provide the `checked` state in context.
 - **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
 - **Checkbox:** Added the missing `group` role for the Checkbox group component.
 - **Progress:** Converted `Circle`, `CircleTrack`, and `CircleRange` components to use React's `forwardRef` for improved ref handling.
