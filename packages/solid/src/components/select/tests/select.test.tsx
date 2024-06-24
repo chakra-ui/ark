@@ -108,15 +108,14 @@ describe('Select', () => {
 })
 
 describe('Select / Field', () => {
-  // it('should set combobox as required', async () => {
-  //   render(() => <WithField required />)
-  //   screen.debug()
-  //   expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()
-  // })
-  // it('should set input as disabled', async () => {
-  //   render(() => <WithField disabled />)
-  //   expect(screen.getByRole('combobox')).toBeDisabled()
-  // })
+  it('should set combobox as required', async () => {
+    render(() => <WithField required />)
+    expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()
+  })
+  it('should set input as disabled', async () => {
+    render(() => <WithField disabled />)
+    expect(screen.getByRole('combobox')).toBeDisabled()
+  })
   it('should set input as readonly', async () => {
     render(() => <WithField readOnly />)
     expect(screen.getByRole('combobox')).toHaveAttribute('data-readonly')

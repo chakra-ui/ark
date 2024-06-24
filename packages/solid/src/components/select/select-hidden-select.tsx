@@ -9,7 +9,7 @@ export interface SelectHiddenSelectProps extends HTMLProps<'select'>, SelectHidd
 
 export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(() => select().getControlProps(), props)
+  const mergedProps = mergeProps(() => select().getHiddenSelectProps(), props)
   const isValueEmpty = createMemo(() => select().value.length === 0)
   const field = useFieldContext()
 
