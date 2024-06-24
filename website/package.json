@@ -14,7 +14,7 @@
     "@ark-ui/react": "workspace:*",
     "@auth/prisma-adapter": "2.3.0",
     "@biomejs/biome": "1.8.2",
-    "@effect/schema": "0.68.4",
+    "@effect/schema": "0.68.7",
     "@icons-pack/react-simple-icons": "9.5.0",
     "@pandacss/dev": "0.41.0",
     "@park-ui/panda-preset": "0.38.0",
