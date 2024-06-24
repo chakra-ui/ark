@@ -198,14 +198,14 @@
       }
     },
     "./field": {
-      "source": "./src/components/field.ts",
+      "source": "./src/components/index.ts",
       "import": {
-        "types": "./dist/components/field.d.ts",
-        "default": "./dist/components/field.js"
+        "types": "./dist/components/index.d.ts",
+        "default": "./dist/components/index.js"
       },
       "require": {
-        "types": "./dist/components/field.d.cts",
-        "default": "./dist/components/field.cjs"
+        "types": "./dist/components/index.d.cts",
+        "default": "./dist/components/index.cjs"
       }
     },
     "./file-upload": {
