@@ -7,6 +7,7 @@ import MaxWithOverflow from './examples/max-with-overflow.vue'
 import OnEvent from './examples/on-event.vue'
 import PasteBehavior from './examples/paste-behavior.vue'
 import Validated from './examples/validated.vue'
+import WithField from './examples/with-field.vue'
 </script>
 <template>
   <Story title="TagsInput">
@@ -33,6 +34,9 @@ import Validated from './examples/validated.vue'
     </Variant>
     <Variant title="OnEvent">
       <OnEvent />
+    </Variant>
+    <Variant title="With Field">
+      <WithField />
     </Variant>
   </Story>
 </template>

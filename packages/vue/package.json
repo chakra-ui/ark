@@ -14,6 +14,7 @@
     "date picker",
     "dialog",
     "editable",
+    "field",
     "file upload",
     "hover card",
     "menu",
@@ -194,6 +195,17 @@
       "require": {
         "types": "./dist/components/factory.d.cts",
         "default": "./dist/components/factory.cjs"
+      }
+    },
+    "./field": {
+      "source": "./src/components/field/index.ts",
+      "import": {
+        "types": "./dist/components/field/index.d.ts",
+        "default": "./dist/components/field/index.js"
+      },
+      "require": {
+        "types": "./dist/components/field/index.d.cts",
+        "default": "./dist/components/field/index.cjs"
       }
     },
     "./file-upload": {

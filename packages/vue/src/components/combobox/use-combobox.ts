@@ -5,6 +5,7 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
@@ -36,10 +37,20 @@ export const useCombobox = <T extends CollectionItem>(
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const field = useFieldContext()
+
   const context = computed<combobox.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
       id,
+      ids: {
+        label: field?.value.ids.label,
+        input: field?.value.ids.control,
+      },
+      disabled: field?.value.disabled,
+      readOnly: field?.value.readOnly,
+      required: field?.value.required,
+      invalid: field?.value.invalid,
       dir: locale.value.dir,
       collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
       open: props.defaultOpen,

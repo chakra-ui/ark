@@ -14,11 +14,19 @@ export interface TagsInputHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
+import { useFieldContext } from '../field'
 
 defineProps<TagsInputHiddenInputProps>()
 const tagsInput = useTagsInputContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="tagsInput.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="tagsInput.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { useFieldContext } from '../field'
 import { usePinInputContext } from './use-pin-input-context'
 
 export interface PinInputHiddenInputBaseProps extends PolymorphicProps {}
@@ -12,8 +13,9 @@ export const PinInputHiddenInput = forwardRef<HTMLInputElement, PinInputHiddenIn
   (props, ref) => {
     const pinInput = usePinInputContext()
     const mergedProps = mergeProps(pinInput.getHiddenInputProps(), props)
+    const field = useFieldContext()
 
-    return <ark.input {...mergedProps} ref={ref} />
+    return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} />
   },
 )
 

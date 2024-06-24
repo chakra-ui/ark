@@ -8,28 +8,36 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially in CSS-in-JS environments.
+
+- **Field:** Added the `Field` component for flexible form input, label, and helper text container.
+- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+  in CSS-in-JS environments.
 
   ```jsx
   export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
   export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
   ```
 
-- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced customization.
-- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the trigger's overflow parent scrolls.
+- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
+  customization.
+- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the
+  trigger's overflow parent scrolls.
 - **Portal:** Added support for `Shadow DOM`
 
 ### Fixed
 
-- **Menu:** 
+- **Menu:**
   - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
-  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long press.
+  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long
+    press.
   - Fixed issue where `RadioOptionItem` does not provide the `checked` state in context.
-- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the input value.
+- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the
+  input value.
 - **Checkbox:** Added the missing `group` role for the Checkbox group component.
-- **Progress:** Converted `Circle`, `CircleTrack`, and `CircleRange` components to use React's `forwardRef` for improved ref handling.
-- **RootProvider:** Added missing `RootProvider` for the `ColorPicker`, `NumberInput`, `RatingGroup`, `SegmentGroup` and `ToggleGroup` components.
-
+- **Progress:** Converted `Circle`, `CircleTrack`, and `CircleRange` components to use React's
+  `forwardRef` for improved ref handling.
+- **RootProvider:** Added missing `RootProvider` for the `ColorPicker`, `NumberInput`,
+  `RatingGroup`, `SegmentGroup` and `ToggleGroup` components.
 
 ## [3.3.0] - 2024-06-12
 

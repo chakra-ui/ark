@@ -14,11 +14,19 @@ export interface ColorPickerHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useFieldContext } from '../field'
 
 defineProps<ColorPickerHiddenInputProps>()
 const colorPicker = useColorPickerContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="colorPicker.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="colorPicker.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

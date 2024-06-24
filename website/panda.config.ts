@@ -118,6 +118,26 @@ export default defineConfig({
       },
 
       slotRecipes: {
+        field: {
+          className: 'field',
+          slots: ['root', 'label', 'input', 'textarea', 'select', 'helperText', 'errorText'],
+          base: {
+            root: {
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.5',
+            },
+            label: {
+              color: 'fg.default',
+              fontWeight: 'medium',
+              textStyle: 'sm',
+            },
+            helperText: {
+              color: 'fg.muted',
+              textStyle: 'sm',
+            },
+          },
+        },
         layout: {
           className: 'layout',
           slots: ['aside', 'main'],

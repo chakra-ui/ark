@@ -3,6 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
+import { useFieldContext } from '../field'
 
 export interface UseColorPickerProps
   extends Optional<
@@ -29,11 +30,19 @@ export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes
 export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
+  const field = useFieldContext()
   const id = createUniqueId()
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.().ids.label,
+      input: field?.().ids.control,
+    },
     dir: locale().dir,
+    disabled: field?.().disabled,
+    readOnly: field?.().readOnly,
+    required: field?.().required,
     getRootNode: environment().getRootNode,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,

@@ -14,11 +14,19 @@ export interface PinInputHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
+import { useFieldContext } from '../field'
 
 defineProps<PinInputHiddenInputProps>()
 const pinInput = usePinInputContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="pinInput.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="pinInput.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

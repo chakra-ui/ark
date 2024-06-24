@@ -4,6 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 
 export interface UseTagsInputProps
   extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -19,10 +20,19 @@ export interface UseTagsInputReturn extends tagsInput.Api<PropTypes> {}
 export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+  const field = useFieldContext()
 
   const initialContext: tagsInput.Context = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      hiddenInput: field?.ids.control,
+    },
     dir,
+    disabled: field?.disabled,
+    invalid: field?.invalid,
+    readOnly: field?.readOnly,
+    required: field?.required,
     getRootNode,
     value: props.defaultValue,
     ...props,

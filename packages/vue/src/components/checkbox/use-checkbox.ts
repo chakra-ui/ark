@@ -4,6 +4,7 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import { useFieldContext } from '../field'
 import type { RootEmits } from './checkbox'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
@@ -22,6 +23,7 @@ export const useCheckbox = (ownProps: UseCheckboxProps, emit?: EmitFn<RootEmits>
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const field = useFieldContext()
 
   const checkboxGroup = useCheckboxGroupContext()
   const props = computed(() => {
@@ -30,6 +32,14 @@ export const useCheckbox = (ownProps: UseCheckboxProps, emit?: EmitFn<RootEmits>
 
   const context = computed<checkbox.Context>(() => ({
     id,
+    ids: {
+      label: field?.value.ids.label,
+      hiddenInput: field?.value.ids.control,
+    },
+    disabled: field?.value.disabled,
+    readOnly: field?.value.readOnly,
+    invalid: field?.value.invalid,
+    required: field?.value.required,
     dir: locale.value.dir,
     checked: props.value.defaultChecked,
     getRootNode: env?.value.getRootNode,

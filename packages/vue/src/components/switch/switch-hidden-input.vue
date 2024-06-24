@@ -14,11 +14,19 @@ export interface SwitchHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
+import { useFieldContext } from '../field'
 
 defineProps<SwitchHiddenInputProps>()
 const context = useSwitchContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="context.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="context.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

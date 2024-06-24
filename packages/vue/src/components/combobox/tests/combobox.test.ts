@@ -3,6 +3,7 @@ import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
 import { Combobox } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './combobox.test.vue'
 
 describe('Combobox', () => {
@@ -79,5 +80,43 @@ describe('Combobox', () => {
 
     fireEvent.click(screen.getByText('Open'))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  })
+})
+
+describe('Combobox / Field', () => {
+  it('should set combobox as required', async () => {
+    render(WithField, { props: { required: true } })
+    expect(screen.getByRole('combobox', { name: /label/i })).toBeRequired()
+  })
+
+  it('should set combobox as disabled', async () => {
+    render(WithField, { props: { disabled: true } })
+    expect(screen.getByRole('combobox', { name: /label/i })).toBeDisabled()
+  })
+
+  it('should set combobox as readonly', async () => {
+    render(WithField, { props: { readOnly: true } })
+    expect(screen.getByRole('combobox', { name: /label/i })).toHaveAttribute('readonly')
+  })
+
+  it('should display helper text', async () => {
+    render(WithField)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    render(WithField, { props: { invalid: true } })
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should focus on combobox when label is clicked', async () => {
+    render(WithField)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    render(WithField)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

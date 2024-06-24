@@ -5,6 +5,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import { useFieldContext } from '../field'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
@@ -41,9 +42,18 @@ export const useCombobox = <T extends CollectionItem>(
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
+  const field = useFieldContext()
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.().ids.label,
+      input: field?.().ids.control,
+    },
+    disabled: field?.().disabled,
+    readOnly: field?.().readOnly,
+    required: field?.().required,
+    invalid: field?.().invalid,
     collection: collection(),
     dir: locale().dir,
     getRootNode: environment().getRootNode,
