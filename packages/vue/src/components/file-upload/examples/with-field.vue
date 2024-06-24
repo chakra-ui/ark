@@ -4,7 +4,7 @@ import { Field, FileUpload } from '../..'
 
 <template>
   <Field.Root>
-    <FileUpload.Root maxFiles="{5}">
+    <FileUpload.Root :maxFiles="5">
       <FileUpload.Label>Label</FileUpload.Label>
       <FileUpload.Trigger>Select</FileUpload.Trigger>
       <FileUpload.ItemGroup />
