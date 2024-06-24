@@ -4,7 +4,7 @@ import Basic from './examples/basic.vue'
 </script>
 
 <template>
-  <Story title="DatePicker">
+  <Story title="TimePicker">
     <Variant title="Basic">
       <Basic />
     </Variant>
