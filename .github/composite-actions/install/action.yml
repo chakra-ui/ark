@@ -4,7 +4,10 @@ description: 'Sets up Node.js and runs install'
 runs:
   using: composite
   steps:
-    - uses: oven-sh/setup-bun@v1
+    - uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+
     
     - name: Setup Git User
       shell: bash
