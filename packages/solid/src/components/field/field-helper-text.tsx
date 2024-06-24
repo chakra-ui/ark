@@ -7,7 +7,7 @@ export interface FieldHelperTextProps extends HTMLProps<'span'>, FieldHelperText
 
 export const FieldHelperText = (props: FieldHelperTextProps) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps(() => field.getHelperTextProps(), props)
+  const mergedProps = mergeProps(() => field().getHelperTextProps(), props)
 
   return <ark.span {...mergedProps} />
 }

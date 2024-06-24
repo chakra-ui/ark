@@ -7,7 +7,7 @@ export interface FieldTextareaProps extends HTMLProps<'textarea'>, FieldTextarea
 
 export const FieldTextarea = (props: FieldTextareaProps) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps(() => field?.getTextareaProps(), props)
+  const mergedProps = mergeProps(() => field?.().getTextareaProps(), props)
 
   return <ark.textarea {...mergedProps} />
 }

@@ -13,5 +13,5 @@ export const CheckboxHiddenInput = (props: CheckboxHiddenInputProps) => {
   const mergedProps = mergeProps(() => checkbox().getHiddenInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

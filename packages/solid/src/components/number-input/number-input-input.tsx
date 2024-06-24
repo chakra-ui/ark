@@ -11,5 +11,5 @@ export const NumberInputInput = (props: NumberInputInputProps) => {
   const mergedProps = mergeProps(() => api().getInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

@@ -7,7 +7,7 @@ export interface FieldSelectProps extends HTMLProps<'select'>, FieldSelectBasePr
 
 export const FieldSelect = (props: FieldSelectProps) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps(() => field?.getSelectProps(), props)
+  const mergedProps = mergeProps(() => field?.().getSelectProps(), props)
 
   return <ark.select {...mergedProps} />
 }

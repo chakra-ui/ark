@@ -7,7 +7,7 @@ export interface FieldLabelProps extends HTMLProps<'label'>, FieldLabelBaseProps
 
 export const FieldLabel = (props: FieldLabelProps) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps(() => field?.getLabelProps(), props)
+  const mergedProps = mergeProps(() => field?.().getLabelProps(), props)
 
   return <ark.label {...mergedProps} />
 }

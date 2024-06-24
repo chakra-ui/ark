@@ -24,12 +24,12 @@ export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn
   const context = createMemo(() => ({
     id,
     ids: {
-      label: field?.ids.label,
-      hiddenInput: field?.ids.control,
+      label: field?.().ids.label,
+      hiddenInput: field?.().ids.control,
     },
-    disabled: field?.disabled,
-    readOnly: field?.readOnly,
-    required: field?.required,
+    disabled: field?.().disabled,
+    readOnly: field?.().readOnly,
+    required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     value: props.defaultValue,

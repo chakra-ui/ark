@@ -13,5 +13,5 @@ export const PinInputHiddenInput = (props: PinInputHiddenInputProps) => {
   const mergedProps = mergeProps(() => pinInput().getHiddenInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

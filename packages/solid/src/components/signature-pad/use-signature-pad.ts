@@ -18,12 +18,12 @@ export const useSignaturePad = (props: UseSignaturePadProps): UseSignaturePadRet
   const context = createMemo<signaturePad.Context>(() => ({
     id,
     ids: {
-      label: field?.ids.label,
-      hiddenInput: field?.ids.control,
+      label: field?.().ids.label,
+      hiddenInput: field?.().ids.control,
     },
-    disabled: field?.disabled,
-    readOnly: field?.readOnly,
-    required: field?.required,
+    disabled: field?.().disabled,
+    readOnly: field?.().readOnly,
+    required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     ...props,

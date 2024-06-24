@@ -11,5 +11,5 @@ export const ComboboxInput = (props: ComboboxInputProps) => {
   const mergedProps = mergeProps(() => combobox().getInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

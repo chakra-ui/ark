@@ -14,7 +14,7 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
   const field = useFieldContext()
 
   return (
-    <ark.select aria-describedby={field?.ariaDescribedby} {...mergedProps}>
+    <ark.select aria-describedby={field?.().ariaDescribedby} {...mergedProps}>
       <Show when={isValueEmpty()}>
         <option value="" />
       </Show>

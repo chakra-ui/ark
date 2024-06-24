@@ -13,5 +13,5 @@ export const RatingGroupHiddenInput = (props: RatingGroupHiddenInputProps) => {
   const mergedProps = mergeProps(() => ratingGroup().getHiddenInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

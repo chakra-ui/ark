@@ -8,10 +8,10 @@ export interface FieldErrorTextProps extends HTMLProps<'span'>, FieldErrorTextBa
 
 export const FieldErrorText = (props: FieldErrorTextProps) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps(() => field.getErrorTextProps(), props)
+  const mergedProps = mergeProps(() => field().getErrorTextProps(), props)
 
   return (
-    <Show when={field?.invalid}>
+    <Show when={field?.().invalid}>
       <ark.span {...mergedProps} />
     </Show>
   )

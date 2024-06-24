@@ -7,7 +7,7 @@ export interface FieldInputProps extends HTMLProps<'input'>, FieldInputBaseProps
 
 export const FieldInput = (props: FieldInputProps) => {
   const field = useFieldContext()
-  const mergedProps = mergeProps(() => field?.getInputProps(), props)
+  const mergedProps = mergeProps(() => field?.().getInputProps(), props)
 
   return <ark.input {...mergedProps} />
 }

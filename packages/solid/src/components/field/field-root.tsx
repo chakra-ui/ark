@@ -16,7 +16,7 @@ export const FieldRoot = (props: FieldRootProps) => {
     'required',
   ])
   const field = useField(useFieldProps)
-  const mergedProps = mergeProps(() => field.getRootProps(), localProps)
+  const mergedProps = mergeProps(() => field().getRootProps(), localProps)
 
   return (
     <FieldProvider value={field}>

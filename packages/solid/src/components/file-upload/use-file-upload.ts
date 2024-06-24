@@ -18,12 +18,12 @@ export const useFileUpload = (props: UseFileUploadProps): UseFileUploadReturn =>
   const context = createMemo(() => ({
     id,
     ids: {
-      label: field?.ids.label,
-      hiddenInput: field?.ids.control,
+      label: field?.().ids.label,
+      hiddenInput: field?.().ids.control,
     },
     dir: locale().dir,
-    disabled: field?.disabled,
-    required: field?.required,
+    disabled: field?.().disabled,
+    required: field?.().required,
     getRootNode: environment().getRootNode,
     ...props,
   }))

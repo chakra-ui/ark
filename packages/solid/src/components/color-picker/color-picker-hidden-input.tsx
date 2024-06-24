@@ -13,5 +13,5 @@ export const ColorPickerHiddenInput = (props: ColorPickerHiddenInputProps) => {
   const mergedProps = mergeProps(() => colorPicker().getHiddenInputProps(), props)
   const field = useFieldContext()
 
-  return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} />
+  return <ark.input aria-describedby={field?.().ariaDescribedby} {...mergedProps} />
 }

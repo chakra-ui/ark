@@ -1,6 +1,6 @@
 import { fieldAnatomy } from '@ark-ui/anatomy'
 import { getWindow } from '@zag-js/dom-query'
-import { createEffect, createSignal, onCleanup } from 'solid-js'
+import { createEffect, createMemo, createSignal, onCleanup } from 'solid-js'
 
 const parts = fieldAnatomy.build()
 
@@ -104,7 +104,7 @@ export const useField = (props: UseFieldProps) => {
     'aria-live': 'polite',
   })
 
-  return {
+  return createMemo(() => ({
     ariaDescribedby: labelIds.join(' '),
     ids: {
       control: id,
@@ -126,7 +126,7 @@ export const useField = (props: UseFieldProps) => {
     getSelectProps,
     getHelperTextProps,
     getErrorTextProps,
-  }
+  }))
 }
 
 type Booleanish = boolean | 'true' | 'false'
