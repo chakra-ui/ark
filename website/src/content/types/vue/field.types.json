@@ -1,0 +1,83 @@
+{
+  "ErrorText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HelperText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": { "type": "boolean", "isRequired": false },
+      "id": { "type": "string", "isRequired": false },
+      "invalid": { "type": "boolean", "isRequired": false },
+      "readOnly": { "type": "boolean", "isRequired": false },
+      "required": { "type": "boolean", "isRequired": false }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null>; }; disabled: boolean | undefined; invalid: boolean | undefined; ... 8 more ...; getErrorTextProps: () => HTMLAttributes; }",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Select": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Textarea": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}
