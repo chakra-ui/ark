@@ -14,11 +14,19 @@ export interface RatingGroupHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
+import { useFieldContext } from '../field'
 
 defineProps<RatingGroupHiddenInputProps>()
 const ratingGroup = useRatingGroupContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="ratingGroup.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="ratingGroup.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>
