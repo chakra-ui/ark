@@ -10,6 +10,7 @@
   },
   "Column": {
     "props": {
+      "unit": { "type": "TimeUnit", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -37,12 +38,12 @@
   },
   "HourCell": {
     "props": {
+      "value": { "type": "number", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "value": { "type": "number", "isRequired": true }
+      }
     }
   },
   "Input": {
@@ -51,8 +52,7 @@
         "type": "(props: ParentProps<'input'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "index": { "type": "number", "isRequired": false }
+      }
     }
   },
   "Label": {
@@ -66,22 +66,22 @@
   },
   "MinuteCell": {
     "props": {
+      "value": { "type": "number", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "value": { "type": "number", "isRequired": true }
+      }
     }
   },
   "PeriodCell": {
     "props": {
+      "value": { "type": "TimePeriod", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "value": { "type": "number", "isRequired": true }
+      }
     }
   },
   "Positioner": {
@@ -96,22 +96,32 @@
   "Root": {
     "props": {
       "allowSeconds": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
-        "description": "Whether to show the seconds"
+        "description": "Whether to show the seconds."
       },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "(props: ParentProps<'div'>) => Element",
+      "defaultOpen": {
+        "type": "boolean",
         "isRequired": false,
-        "description": "Whether the calendar is disabled."
+        "description": "The initial open state of the time picker when it is first rendered.\nUse when you do not need to control its open state."
+      },
+      "defaultValue": {
+        "type": "Time",
+        "isRequired": false,
+        "description": "The initial value of the time picker when it is first rendered.\nUse when you do not need to control the state of the time picker."
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the time picker is disabled."
       },
       "disableLayer": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
         "description": "Whether to disable the interaction outside logic"
       },
@@ -121,66 +131,70 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{ trigger: string; input: string; positioner: string; content: string; clearTrigger: string; control: string; column(unit: TimeUnit): 'hour' | 'minute' | 'second' | 'period' }>",
+        "type": "Partial<{\n  trigger: string\n  input: string\n  positioner: string\n  content: string\n  clearTrigger: string\n  control: string\n  column(unit: TimeUnit): string\n}>",
         "isRequired": false,
-        "description": "The ids of the elements in the time picker. Useful for composition."
+        "description": "The ids of the elements in the date picker. Useful for composition."
       },
       "immediate": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "lazyMount": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
       "locale": {
         "type": "string",
-        "defaultValue": "\"en-US\"",
         "isRequired": false,
         "description": "The locale (BCP 47 language tag) to use when formatting the time."
       },
       "max": {
         "type": "Time",
         "isRequired": false,
-        "description": "The maximum time for that can be selected"
+        "description": "The maximum time that can be selected."
       },
       "min": {
         "type": "Time",
         "isRequired": false,
-        "description": "The minimum time for that can be selected"
+        "description": "The minimum time that can be selected."
       },
       "name": {
         "type": "string",
         "isRequired": false,
         "description": "The `name` attribute of the input element."
       },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
       "onFocusChange": {
         "type": "(details: FocusChangeDetails) => void",
         "isRequired": false,
-        "description": "Function called when the focused time changes."
+        "description": "Function called when the focused date changes."
       },
       "onOpenChange": {
         "type": "(details: OpenChangeDetails) => void",
         "isRequired": false,
-        "description": "Function called when the calendar opens or closes."
+        "description": "Function called when the time picker opens or closes."
       },
       "onValueChange": {
-        "type": "(details: ValueChangeDetails) => void",
+        "type": "(value: ValueChangeDetails) => void",
         "isRequired": false,
         "description": "Function called when the value changes."
       },
       "open": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
         "description": "Whether the timepicker is open"
       },
       "placeholder": {
         "type": "string",
         "isRequired": false,
-        "description": "The placeholder text of the input"
+        "description": "The placeholder text of the input."
       },
       "positioning": {
         "type": "PositioningOptions",
@@ -188,31 +202,27 @@
         "description": "The user provided options used to position the time picker content"
       },
       "present": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
       "readOnly": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
-        "description": "Whether the calendar is read-only."
+        "description": "Whether the time picker is read-only."
       },
       "steps": {
-        "type": "{ hour?: number; minute?: number; second?: number }",
+        "type": "{\n  hour?: number | undefined\n  minute?: number | undefined\n  second?: number | undefined\n}",
         "isRequired": false,
-        "description": "The steps of each time unit"
+        "description": "The steps of each time unit."
       },
       "unmountOnExit": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": {
-        "type": "Time | null",
-        "isRequired": false,
-        "description": "The value of the time picker"
-      }
+      "value": { "type": "Time", "isRequired": false, "description": "The selected time." }
     }
   },
   "RootProvider": {
@@ -224,12 +234,12 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "immediate": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "lazyMount": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
@@ -240,12 +250,12 @@
         "description": "Function called when the animation ends in the closed state"
       },
       "present": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
       "unmountOnExit": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
@@ -254,12 +264,12 @@
   },
   "SecondCell": {
     "props": {
+      "value": { "type": "number", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "value": { "type": "number", "isRequired": true }
+      }
     }
   },
   "Spacer": {
