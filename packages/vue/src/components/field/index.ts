@@ -20,6 +20,11 @@ export {
   type FieldLabelProps,
 } from './field-label.vue'
 export {
+  default as FieldRootProvider,
+  type FieldRootProviderProps,
+  type FieldRootProviderBaseProps,
+} from './field-root-provider.vue'
+export {
   default as FieldSelect,
   type FieldSelectBaseProps,
   type FieldSelectProps,
