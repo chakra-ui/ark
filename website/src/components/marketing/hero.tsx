@@ -1,6 +1,7 @@
+import { ArrowRightIcon, RocketIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { Box, Container, HStack, Stack, styled } from 'styled-system/jsx'
-import { Button, Heading, Text } from '~/components/ui'
+import { Badge, Button, Heading, Text } from '~/components/ui'
 import { ReactIcon, SolidIcon, VueIcon } from './icons'
 
 export const Hero = () => {
@@ -16,10 +17,19 @@ export const Hero = () => {
       <Container pt={{ base: '16', md: '32' }} pb={{ base: '16', md: '24' }}>
         <Stack gap={{ base: '8', md: '12' }} maxW="3xl">
           <Stack gap={{ base: '4', md: '6' }}>
-            <Heading fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
-              Fully <styled.span color="accent.default">customizable</styled.span> and{' '}
-              <styled.span color="accent.default">accessible</styled.span> UI components
-            </Heading>
+            <Stack gap="4">
+              <NextLink href="/reat/plus">
+                <Badge size="lg" variant="outline">
+                  <RocketIcon />
+                  New: Launching Ark UI Plus
+                  <ArrowRightIcon />
+                </Badge>
+              </NextLink>
+              <Heading fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
+                Fully <styled.span color="accent.default">customizable</styled.span> and{' '}
+                <styled.span color="accent.default">accessible</styled.span> UI components
+              </Heading>
+            </Stack>
             <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
               Ark UI is a headless library for building reusable, scalable Design Systems that works
               for a wide range of JS frameworks.
