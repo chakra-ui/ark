@@ -10,7 +10,7 @@ import CustomControls from './examples/custom-controls.vue'
     <Variant title="CustomControls">
       <CustomControls />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>

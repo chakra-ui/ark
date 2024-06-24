@@ -27,7 +27,7 @@ import WithMask from './examples/with-mask.vue'
     <Variant title="WithMask">
       <WithMask />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>

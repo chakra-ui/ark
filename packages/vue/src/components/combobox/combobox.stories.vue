@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Advanced from './examples/advanced.vue'
 import Basic from './examples/basic.vue'
+import WithField from './examples/with-field.vue'
 </script>
 <template>
   <Story title="Combobox">
@@ -9,6 +10,9 @@ import Basic from './examples/basic.vue'
     </Variant>
     <Variant title="Advanced">
       <Advanced />
+    </Variant>
+    <Variant title="With Field">
+      <WithField />
     </Variant>
   </Story>
 </template>

@@ -4,6 +4,7 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import { useFieldContext } from '../field'
 import type { RootEmits } from './file-upload'
 
 export interface UseFileUploadProps
@@ -18,8 +19,16 @@ export const useFileUpload = (
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const field = useFieldContext()
+
   const context = computed<fileUpload.Context>(() => ({
     id,
+    ids: {
+      label: field?.value.ids.label,
+      hiddenInput: field?.value.ids.control,
+    },
+    disabled: field?.value.disabled,
+    required: field?.value.required,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onFileChange: (details) => emit?.('fileChange', details),

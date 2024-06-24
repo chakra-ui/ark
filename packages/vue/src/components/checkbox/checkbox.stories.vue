@@ -24,7 +24,7 @@ import WithField from './examples/with-field.vue'
     <Variant title="Group">
       <Group />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>

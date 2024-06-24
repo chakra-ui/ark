@@ -31,7 +31,7 @@ import WithField from './examples/with-field.vue'
     <Variant title="FormUsage">
       <FormUsage />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>

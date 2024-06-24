@@ -23,7 +23,7 @@ import WithField from './examples/with-field.vue'
     <Variant title="RenderProp">
       <RenderProp />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>

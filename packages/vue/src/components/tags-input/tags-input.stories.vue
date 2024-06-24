@@ -35,7 +35,7 @@ import WithField from './examples/with-field.vue'
     <Variant title="OnEvent">
       <OnEvent />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>

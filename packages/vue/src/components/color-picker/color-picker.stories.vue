@@ -11,7 +11,7 @@ import WithField from './examples/with-field.vue'
     <Variant title="Controlled">
       <Controlled />
     </Variant>
-    <Variant title="WithField">
+    <Variant title="With Field">
       <WithField />
     </Variant>
   </Story>
