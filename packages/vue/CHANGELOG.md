@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.5.0] - 2024-06-25
+
 ### Added
 
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially
