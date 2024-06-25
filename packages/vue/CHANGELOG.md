@@ -8,44 +8,42 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Field:** Added the `Field` component for flexible form input, label, and helper text container.
-- **Signature Pad:** Added `HiddenInput` to the `SignaturePad` component for better form library
-  compatibility.
-
-## [3.5.0-0] - 2024-06-20
-
-### Added
-
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially
   in CSS-in-JS environments.
-
-```jsx
-export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
-export interface AccordionItemProps
-  extends AccordionItemBaseProps,
-    /**
-     * @vue-ignore
-     */
-    HTMLAttributes {}
-```
-
-- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
+  ```jsx
+  export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
+  export interface AccordionItemProps
+    extends AccordionItemBaseProps,
+      /**
+       * @vue-ignore
+       */
+      HTMLAttributes {}
+  ```
+- **Field:** Introduced the `Field` component for flexible form input, label, and helper text
+  container.
+- **Signature Pad:** Added `HiddenInput` to the `SignaturePad` component for better form library
+  compatibility.
+- **ColorPicker:** Added `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
   customization.
-- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the
-  trigger's overflow parent scrolls.
+- **Tooltip:** Introduced the `closeOnScroll` option to control whether the tooltip should close
+  when the trigger's overflow parent scrolls.
 
 ### Fixed
 
 - **Menu:**
-  - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
-  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long
+  - Resolved an issue causing sibling menus or popovers to malfunction on iOS devices.
+  - Fixed a problem where the context menu trigger showed the magnifier and iOS context menu on long
     press.
-- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the
+- **Editable:** Fixed a bug where setting `activationMode` to `dblclick` unexpectedly cleared the
   input value.
 - **Checkbox:** Added the missing `group` role for the Checkbox group component.
-- **Signature Pad**: Added missing package.json for `signature-pad` machine.
+- **Signature Pad:** Added missing exports for the `signature-pad` component.
 - **Input:** Resolved an issue where the `Input` components could not be used with the `asChild`
   prop.
+
+## [3.5.0-0] - 2024-06-20
+
+- stuff
 
 ## [3.4.0] - 2024-06-12
 

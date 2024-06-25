@@ -8,35 +8,33 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Field:** Added the `Field` component for flexible form input, label, and helper text container.
+- **Field:** Introduced the `Field` component for flexible form input, label, and helper text
+  container.
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially
   in CSS-in-JS environments.
-
-```jsx
-export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
-export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
-```
-
-- **ColorPicker:** Introduced `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
+  ```jsx
+  export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+  export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
+  ```
+- **ColorPicker:** Added `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
   customization.
 - **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the
   trigger's overflow parent scrolls.
-- **Signature Pad:** Added `HiddenInput` to the `SignaturePad` component for better form library
-  compatibility.
+- **Signature Pad:** Introduced `HiddenInput` to the `SignaturePad` component for better form
+  library compatibility.
 
 ### Fixed
 
 - **Menu:**
-  - Resolved issue causing sibling menus or popovers to malfunction on iOS devices.
-  - Fixed problem where the context menu trigger showed the magnifier and iOS context menu on long
-    press.
-  - Fixed issue where `RadioOptionItem` does not provide the `checked` state in context.
-- **Editable:** Fixed bug where setting `activationMode` to `dblclick` unexpectedly cleared the
+  - Fixed an issue causing sibling menus or popovers to malfunction on iOS devices.
+  - Resolved the problem where the context menu trigger showed the magnifier and iOS context menu on
+    long press.
+  - Fixed an issue where `RadioOptionItem` did not provide the `checked` state in context.
+- **Editable:** Fixed a bug where setting `activationMode` to `dblclick` unexpectedly cleared the
   input value.
 - **Checkbox:** Added the missing `group` role for the Checkbox group component.
-- **Signature Pad**: Added missing package.json for `signature-pad` machine.
-- **RootProvider:** Added missing `RootProvider` for the `ColorPicker`, `NumberInput`,
-  `RatingGroup`, `SegmentGroup` and `ToggleGroup` components.
+- **RootProvider:** Added the missing `RootProvider` for the `ColorPicker`, `NumberInput`,
+  `RatingGroup`, `SegmentGroup`, and `ToggleGroup` components.
 
 ## [3.3.0] - 2024-06-12
 
