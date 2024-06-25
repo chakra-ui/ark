@@ -19,6 +19,11 @@ export {
   type SignaturePadGuideBaseProps as GuideBaseProps,
 } from './signature-pad-guide'
 export {
+  SignaturePadHiddenInput as HiddenInput,
+  type SignaturePadHiddenInputProps as HiddenInputProps,
+  type SignaturePadHiddenInputBaseProps as HiddenInputBaseProps,
+} from './signature-pad-hidden-input'
+export {
   SignaturePadLabel as Label,
   type SignaturePadLabelProps as LabelProps,
   type SignaturePadLabelBaseProps as LabelBaseProps,

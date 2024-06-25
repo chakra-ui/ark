@@ -28,6 +28,11 @@ export {
   type SignaturePadLabelBaseProps,
 } from './signature-pad-label'
 export {
+  SignaturePadHiddenInput,
+  type SignaturePadHiddenInputProps,
+  type SignaturePadHiddenInputBaseProps,
+} from './signature-pad-hidden-input'
+export {
   SignaturePadRoot,
   type SignaturePadRootProps,
   type SignaturePadRootBaseProps,

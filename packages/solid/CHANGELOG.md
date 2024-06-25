@@ -21,6 +21,8 @@ export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseP
   customization.
 - **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the
   trigger's overflow parent scrolls.
+- **Signature Pad:** Added `HiddenInput` to the `SignaturePad` component for better form library
+  compatibility.
 
 ### Fixed
 

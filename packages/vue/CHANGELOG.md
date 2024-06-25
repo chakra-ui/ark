@@ -9,6 +9,8 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Field:** Added the `Field` component for flexible form input, label, and helper text container.
+- **Signature Pad:** Added `HiddenInput` to the `SignaturePad` component for better form library
+  compatibility.
 
 ## [3.5.0-0] - 2024-06-20
 

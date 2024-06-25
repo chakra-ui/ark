@@ -13,6 +13,11 @@ export {
   type SignaturePadContextProps,
 } from './signature-pad-context.vue'
 export {
+  default as SignaturePadHiddenInput,
+  type SignaturePadHiddenInputProps,
+  type SignaturePadHiddenInputBaseProps,
+} from './signature-pad-hidden-input.vue'
+export {
   default as SignaturePadControl,
   type SignaturePadControlProps,
   type SignaturePadControlBaseProps,

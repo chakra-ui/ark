@@ -40,9 +40,9 @@ describe('Signature Pad / Field', () => {
     cleanup()
   })
 
-  it.skip('should set signature pad as required', async () => {
+  it('should set signature pad as required', async () => {
     render(<WithField required />)
-    expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
+    expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
   })
 
   it('should set signature pad as disabled', async () => {
@@ -50,9 +50,9 @@ describe('Signature Pad / Field', () => {
     expect(screen.getByRole('application')).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it.skip('should set signature pad as readonly', async () => {
+  it('should set signature pad as readonly', async () => {
     render(<WithField readOnly />)
-    expect(screen.getByRole('application')).toHaveAttribute('readonly')
+    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
@@ -68,7 +68,7 @@ describe('Signature Pad / Field', () => {
   it('should focus on signature pad when label is clicked', async () => {
     render(<WithField />)
     await user.click(screen.getByText(/label/i))
-    expect(screen.getByRole('application')).toHaveFocus()
+    expect(screen.getByRole('textbox', { hidden: true })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {

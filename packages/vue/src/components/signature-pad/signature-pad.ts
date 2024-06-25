@@ -18,6 +18,11 @@ export {
   type SignaturePadControlProps as ControlBaseProps,
 } from './signature-pad-control.vue'
 export {
+  default as HiddenInput,
+  type SignaturePadHiddenInputProps as HiddenInputProps,
+  type SignaturePadHiddenInputProps as HiddenInputBaseProps,
+} from './signature-pad-hidden-input.vue'
+export {
   default as Guide,
   type SignaturePadGuideProps as GuideProps,
   type SignaturePadGuideProps as GuideBaseProps,

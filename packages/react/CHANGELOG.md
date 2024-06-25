@@ -8,7 +8,6 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-
 - **Field:** Added the `Field` component for flexible form input, label, and helper text container.
 - **All Components:** Exposed base props to simplify prop merging for library consumers, especially
   in CSS-in-JS environments.
@@ -23,6 +22,8 @@ description: All notable changes will be documented in this file.
 - **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the
   trigger's overflow parent scrolls.
 - **Portal:** Added support for `Shadow DOM`
+- **Signature Pad:** Added `HiddenInput` to the `SignaturePad` component for better form library
+  compatibility.
 
 ### Fixed
 
