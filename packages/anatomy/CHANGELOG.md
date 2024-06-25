@@ -6,11 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added `Field` anatomy.
+
 ## [3.3.1] - 2024-06-12
 
 ### Fixed
 
-- Added missing `Checkbox.Group` part̊.
+- Added missing `Checkbox.Group` part.
 
 ## [3.3.0] - 2024-06-11
 
