@@ -41,10 +41,6 @@ description: All notable changes will be documented in this file.
 - **RootProvider:** Added the missing `RootProvider` for the `ColorPicker`, `NumberInput`,
   `RatingGroup`, `SegmentGroup`, and `ToggleGroup` components.
 
-## [3.4.0-1] - 2024-06-14
-
-- Stuff
-
 ## [3.3.0] - 2024-06-12
 
 ### Added

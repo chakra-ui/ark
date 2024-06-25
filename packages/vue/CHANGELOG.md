@@ -43,10 +43,6 @@ description: All notable changes will be documented in this file.
 - **Input:** Resolved an issue where the `Input` components could not be used with the `asChild`
   prop.
 
-## [3.5.0-0] - 2024-06-20
-
-- stuff
-
 ## [3.4.0] - 2024-06-12
 
 ### Added
