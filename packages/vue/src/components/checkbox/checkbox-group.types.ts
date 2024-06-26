@@ -15,6 +15,11 @@ export interface GroupProps {
    * If `true`, the checkbox group is read-only
    */
   readOnly?: boolean
+  /**
+   * The name of the input fields in the checkbox group
+   * (Useful for form submission).
+   */
+  name?: string
 }
 
 export type GroupEmits = {

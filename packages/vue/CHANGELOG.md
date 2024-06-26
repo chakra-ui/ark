@@ -6,6 +6,9 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+- **CheckboxGroup**: Introduced the `name` prop on CheckboxGroup to set the names of the checkboxes
+  inside it.
+
 ## [3.5.0] - 2024-06-25
 
 ### Added

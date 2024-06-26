@@ -9,7 +9,7 @@ const items = [
 ]
 
 export const Group = () => (
-  <CheckboxGroup defaultValue={['react']} onValueChange={console.log}>
+  <CheckboxGroup defaultValue={['react']} name="framework" onValueChange={console.log}>
     <For each={items}>
       {(item) => (
         <Checkbox.Root value={item.value}>

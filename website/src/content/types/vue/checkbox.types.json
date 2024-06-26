@@ -30,6 +30,11 @@
         "isRequired": false,
         "description": "The controlled value of the checkbox group"
       },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of all input field in a checkbox group.\nUseful for form submission."
+      },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,

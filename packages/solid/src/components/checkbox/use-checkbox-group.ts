@@ -11,6 +11,11 @@ export interface UseCheckboxGroupProps {
    */
   value?: Accessor<string[]>
   /**
+   * The name of the input fields in the checkbox group
+   * (Useful for form submission).
+   */
+  name?: string
+  /**
    * The callback to call when the value changes
    */
   onValueChange?: (value: string[]) => void
@@ -65,6 +70,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
             toggleValue(itemProps.value)
           }
         },
+        name: props.name,
         disabled: props.disabled,
         readOnly: props.readOnly,
       }
@@ -73,6 +79,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
     return {
       isChecked,
       value,
+      name: props.name,
       disabled: props.disabled,
       readOnly: props.readOnly,
       setValue,
