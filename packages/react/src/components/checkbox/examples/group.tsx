@@ -8,7 +8,7 @@ const items = [
 ]
 
 export const Group = () => (
-  <Checkbox.Group defaultValue={['react']} onValueChange={console.log}>
+  <Checkbox.Group defaultValue={['react']} name="framework" onValueChange={console.log}>
     {items.map((item) => (
       <Checkbox.Root value={item.value} key={item.value}>
         <Checkbox.Label>{item.label}</Checkbox.Label>

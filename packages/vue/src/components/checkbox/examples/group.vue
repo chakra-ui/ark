@@ -10,7 +10,7 @@ const items = [
 </script>
 
 <template>
-  <Checkbox.Group :defaultValue="['react']" @valueChange="console.log">
+  <Checkbox.Group :defaultValue="['react']" name="framework" @valueChange="console.log">
     <Checkbox.Root v-for="item in items" :value="item.value" :key="item.value">
       <Checkbox.Label>{{ item.label }}</Checkbox.Label>
       <Checkbox.Control>

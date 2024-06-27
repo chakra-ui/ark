@@ -14,6 +14,7 @@ export const CheckboxGroup = (props: CheckboxGroupProps) => {
     'onValueChange',
     'disabled',
     'readOnly',
+    'name',
   ])
   const checkboxGroup = useCheckboxGroup(checkboxGroupProps)
 
