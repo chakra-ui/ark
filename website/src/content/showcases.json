@@ -10,5 +10,11 @@
     "description": "Build your own Design System",
     "url": "https://park-ui.com",
     "image": "https://park-ui.com/opengraph-image.png"
+  },
+  {
+    "title": "Typebot",
+    "description": "Open-source conversational apps builder",
+    "url": "https://typebot.io/",
+    "image": "https://home.typebot.io/images/preview.png"
   }
 ]
