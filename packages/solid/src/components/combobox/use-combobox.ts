@@ -38,7 +38,7 @@ export const useCombobox = <T extends CollectionItem>(
     'items',
   ])
 
-  const collection = () => combobox.collection(collectionOptions)
+  const collection = () => combobox.collection({ ...collectionOptions })
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

@@ -37,7 +37,7 @@ export const useSelect = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = () => select.collection(collectionOptions)
+  const collection = () => select.collection({ ...collectionOptions })
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

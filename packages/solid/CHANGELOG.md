@@ -6,8 +6,14 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
 - **CheckboxGroup**: Introduced the `name` prop on CheckboxGroup to set the names of the checkboxes
   inside it.
+
+### Fixed
+
+- **Combobox, Select**: Fixed an issue where it throws an error when `items` are reactive.
 
 ## [3.4.0] - 2024-06-25
 
