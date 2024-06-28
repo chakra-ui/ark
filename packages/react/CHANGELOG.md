@@ -6,8 +6,9 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-- **CheckboxGroup**: Introduced the `name` prop on CheckboxGroup to set the names of the checkboxes
-  inside it.
+### Added
+
+- **Checkbox**: Added the `name` prop to `Checkbox.Group` for setting checkbox names within the group.
 
 ## [3.4.0] - 2024-06-25
 

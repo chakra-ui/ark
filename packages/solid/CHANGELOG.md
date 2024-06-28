@@ -8,8 +8,7 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **CheckboxGroup**: Introduced the `name` prop on CheckboxGroup to set the names of the checkboxes
-  inside it.
+- **Checkbox**: Added the `name` prop to `Checkbox.Group` for setting checkbox names within the group.
 
 ### Fixed
 
