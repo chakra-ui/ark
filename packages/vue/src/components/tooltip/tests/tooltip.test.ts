@@ -1,7 +1,6 @@
-import { tooltipAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Tooltip } from '../'
+import { Tooltip, tooltipAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tooltip.test.vue'
 

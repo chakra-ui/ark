@@ -1,20 +1,19 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { anatomy } from '@zag-js/field'
-import { Field } from '../'
+import { Field, fieldAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './field.test.vue'
 
 describe('Field', () => {
   it.each(
-    getParts(anatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
+    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
   )('should render part %s', async (part) => {
     render(ComponentUnderTest)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
     expect(Field[part]).toBeDefined()
   })
 

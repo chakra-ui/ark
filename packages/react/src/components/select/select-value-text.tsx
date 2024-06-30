@@ -14,7 +14,6 @@ export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueText
 export const SelectValueText = forwardRef<HTMLSpanElement, SelectValueTextProps>((props, ref) => {
   const { children, placeholder, ...localprops } = props
   const select = useSelectContext()
-
   const mergedProps = mergeProps(select.getValueTextProps(), localprops)
 
   return (

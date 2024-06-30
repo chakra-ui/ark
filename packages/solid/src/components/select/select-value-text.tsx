@@ -1,6 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { selectAnatomy } from './select.anatomy'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {
@@ -13,7 +12,7 @@ export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueText
 
 export const SelectValueText = (props: SelectValueTextProps) => {
   const select = useSelectContext()
-  const mergedProps = mergeProps(() => selectAnatomy.build().valueText.attrs, props)
+  const mergedProps = mergeProps(() => select().getValueTextProps(), props)
 
   return <ark.span {...mergedProps}>{select().valueAsString || props.placeholder}</ark.span>
 }

@@ -1,7 +1,6 @@
-import { popoverAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Popover } from '../'
+import { Popover, popoverAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ControlledComponentUnderTest from './controlled-popover.test.vue'
 import ComponentUnderTest from './popover.test.vue'

@@ -1,6 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { colorPickerAnatomy } from './color-picker.anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerValueTextBaseProps extends PolymorphicProps<'span'> {}
@@ -9,8 +8,8 @@ export interface ColorPickerValueTextProps
     ColorPickerValueTextBaseProps {}
 
 export const ColorPickerValueText = (props: ColorPickerValueTextProps) => {
-  const api = useColorPickerContext()
-  const mergedProps = mergeProps(() => colorPickerAnatomy.build().valueText.attrs, props)
+  const colorPicker = useColorPickerContext()
+  const mergedProps = mergeProps(() => colorPicker().getValueTextProps(), props)
 
-  return <ark.span {...mergedProps}>{api().valueAsString || props.children}</ark.span>
+  return <ark.span {...mergedProps}>{colorPicker().valueAsString || props.children}</ark.span>
 }

@@ -58,5 +58,6 @@ export {
   useSegmentGroupItemContext,
   type UseSegmentGroupItemContext,
 } from './use-segment-group-item-context'
+export { segmentGroupAnatomy } from './segment-group.anatomy'
 
 export * as SegmentGroup from './segment-group'

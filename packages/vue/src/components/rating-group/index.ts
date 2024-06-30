@@ -8,13 +8,13 @@ export {
 } from './rating-group-context.vue'
 export {
   default as RatingGroupControl,
-  type RatingGroupControlProps,
   type RatingGroupControlBaseProps,
+  type RatingGroupControlProps,
 } from './rating-group-control.vue'
 export {
   default as RatingGroupHiddenInput,
-  type RatingGroupHiddenInputProps,
   type RatingGroupHiddenInputBaseProps,
+  type RatingGroupHiddenInputProps,
 } from './rating-group-hidden-input.vue'
 export {
   default as RatingGroupItemContext,
@@ -22,25 +22,26 @@ export {
 } from './rating-group-item-context.vue'
 export {
   default as RatingGroupItem,
-  type RatingGroupItemProps,
   type RatingGroupItemBaseProps,
+  type RatingGroupItemProps,
 } from './rating-group-item.vue'
 export {
   default as RatingGroupLabel,
-  type RatingGroupLabelProps,
   type RatingGroupLabelBaseProps,
+  type RatingGroupLabelProps,
 } from './rating-group-label.vue'
 export {
   default as RatingGroupRootProvider,
-  type RatingGroupRootProviderProps,
   type RatingGroupRootProviderBaseProps,
+  type RatingGroupRootProviderProps,
 } from './rating-group-root-provider.vue'
 export {
   default as RatingGroupRoot,
-  type RatingGroupRootEmits,
   type RatingGroupRootBaseProps,
+  type RatingGroupRootEmits,
   type RatingGroupRootProps,
 } from './rating-group-root.vue'
+export { ratingGroupAnatomy } from './rating-group.anatomy'
 export {
   useRatingGroup,
   type UseRatingGroupProps,

@@ -12,24 +12,23 @@ export interface SegmentGroupItemControlProps
 </script>
 
 <script setup lang="ts">
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
+import { parts } from './segment-group.anatomy'
 
 defineProps<SegmentGroupItemControlProps>()
 
 const segmentGroup = useSegmentGroupContext()
 const itemProps = useSegmentGroupItemPropsContext()
-const { itemControl } = segmentGroupAnatomy.build()
 </script>
 
 <template>
   <ark.div
     v-bind="segmentGroup.getItemControlProps(itemProps)"
     :as-child="asChild"
-    :data-scope="itemControl.attrs['data-scope']"
-    :data-part="itemControl.attrs['data-part']"
+    :data-scope="parts.itemControl.attrs['data-scope']"
+    :data-part="parts.itemControl.attrs['data-part']"
   >
     <slot />
   </ark.div>

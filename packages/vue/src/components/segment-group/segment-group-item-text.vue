@@ -12,22 +12,22 @@ export interface SegmentGroupItemTextProps
 </script>
 
 <script setup lang="ts">
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
+import {parts} from './segment-group.anatomy'
 
 defineProps<SegmentGroupItemTextProps>()
 const segmentGroup = useSegmentGroupContext()
 const itemProps = useSegmentGroupItemPropsContext()
-const { itemText } = segmentGroupAnatomy.build()
+
 </script>
 
 <template>
   <ark.span
     v-bind="segmentGroup.getItemTextProps(itemProps)"
-    :data-scope="itemText.attrs['data-scope']"
-    :data-part="itemText.attrs['data-part']"
+    :data-scope="parts.itemText.attrs['data-scope']"
+    :data-part="parts.itemText.attrs['data-part']"
     :as-child="asChild"
   >
     <slot />

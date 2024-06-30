@@ -1,7 +1,6 @@
-import { checkboxAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Checkbox } from '../'
+import { Checkbox, checkboxAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './checkbox.test.vue'

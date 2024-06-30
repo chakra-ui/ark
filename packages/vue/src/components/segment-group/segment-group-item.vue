@@ -13,16 +13,15 @@ export interface SegmentGroupItemProps
 </script>
 
 <script setup lang="ts">
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { computed } from 'vue'
 import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
+import {parts} from './segment-group.anatomy'
 
 const props = defineProps<SegmentGroupItemProps>()
 const segmentGroup = useSegmentGroupContext()
-const { item } = segmentGroupAnatomy.build()
 
 SegmentGroupItemPropsProvider(props)
 SegmentGroupItemProvider(computed(() => segmentGroup.value.getItemState(props)))
@@ -31,8 +30,8 @@ SegmentGroupItemProvider(computed(() => segmentGroup.value.getItemState(props)))
 <template>
   <ark.label
     v-bind="segmentGroup.getItemProps(props)"
-    :data-scope="item.attrs['data-scope']"
-    :data-part="item.attrs['data-part']"
+    :data-scope="parts.item.attrs['data-scope']"
+    :data-part="parts.item.attrs['data-part']"
     :as-child="asChild"
   >
     <slot />

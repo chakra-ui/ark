@@ -1,9 +1,7 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { getWindow } from '@zag-js/dom-query'
 import { useId, useLayoutEffect, useRef, useState } from 'react'
 import type { HTMLProps } from '../factory'
-
-const parts = fieldAnatomy.build()
+import { parts } from './field.anatomy'
 
 export interface UseFieldProps {
   id?: string

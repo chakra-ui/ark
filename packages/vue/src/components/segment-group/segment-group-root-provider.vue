@@ -17,23 +17,22 @@ export interface SegmentGroupRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { SegmentGroupProvider } from './use-segment-group-context'
+import {parts} from './segment-group.anatomy'
 
 const props = defineProps<SegmentGroupRootProviderProps>()
 const segmentGroup = computed(() => props.value)
 
 SegmentGroupProvider(segmentGroup)
-const { root } = segmentGroupAnatomy.build()
 </script>
 
 <template>
   <ark.div
     v-bind="segmentGroup.getRootProps()"
-    :data-scope="root.attrs['data-scope']"
-    :data-part="root.attrs['data-part']"
+    :data-scope="parts.root.attrs['data-scope']"
+    :data-part="parts.root.attrs['data-part']"
     :as-child="asChild"
   >
     <slot />

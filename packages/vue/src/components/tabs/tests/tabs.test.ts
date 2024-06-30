@@ -1,8 +1,7 @@
-import { tabsAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import { Tabs } from '../'
+import { Tabs, tabsAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tabs.test.vue'
 

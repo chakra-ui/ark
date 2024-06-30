@@ -1,7 +1,6 @@
-import { dialogAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Dialog } from '../'
+import { Dialog, dialogAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './dialog.test.vue'
 

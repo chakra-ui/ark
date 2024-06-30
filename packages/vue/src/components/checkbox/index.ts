@@ -47,5 +47,6 @@ export {
   type UseCheckboxGroupReturn,
 } from './use-checkbox-group'
 export { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context'
+export { checkboxAnatomy } from './checkbox.anatomy'
 
 export * as Checkbox from './checkbox'

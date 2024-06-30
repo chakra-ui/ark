@@ -15,10 +15,10 @@ export interface SegmentGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { ark } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
+import {parts} from './segment-group.anatomy'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,
@@ -29,14 +29,13 @@ const emits = defineEmits<SegmentGroupRootEmits>()
 
 const segmentGroup = useSegmentGroup(props, emits)
 SegmentGroupProvider(segmentGroup)
-const { root } = segmentGroupAnatomy.build()
 </script>
 
 <template>
   <ark.div
     v-bind="segmentGroup.getRootProps()"
-    :data-scope="root.attrs['data-scope']"
-    :data-part="root.attrs['data-part']"
+    :data-scope="parts.root.attrs['data-scope']"
+    :data-part="parts.root.attrs['data-part']"
     :as-child="asChild"
   >
     <slot />

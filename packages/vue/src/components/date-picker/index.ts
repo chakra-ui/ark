@@ -136,5 +136,6 @@ export {
 } from './date-picker-year-select.vue'
 export { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
 export { useDatePickerContext, type UseDatePickerContext } from './use-date-picker-context'
+export { datePickerAnatomy } from './date-picker.anatomy'
 
 export * as DatePicker from './date-picker'

@@ -520,7 +520,6 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@ark-ui/anatomy": "^3.4.0",
     "@zag-js/accordion": "0.59.0",
     "@zag-js/avatar": "0.59.0",
     "@zag-js/carousel": "0.59.0",

@@ -1,8 +1,6 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { getWindow } from '@zag-js/dom-query'
 import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
-
-const parts = fieldAnatomy.build()
+import { parts } from './field.anatomy'
 
 export interface UseFieldProps {
   id?: string
