@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { anatomy } from '@zag-js/segmentGroup'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
 export interface SegmentGroupIndicatorBaseProps extends PolymorphicProps {}
@@ -14,7 +14,7 @@ export const SegmentGroupIndicator = forwardRef<HTMLDivElement, SegmentGroupIndi
     const segmentGroup = useSegmentGroupContext()
     const mergedProps = mergeProps(
       segmentGroup.getIndicatorProps(),
-      segmentGroupAnatomy.build().indicator.attrs as Record<string, string>,
+      parts.indicator.attrs as Record<string, string>,
       props,
     )
     return <ark.div {...mergedProps} ref={ref} />

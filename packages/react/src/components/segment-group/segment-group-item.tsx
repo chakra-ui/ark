@@ -1,9 +1,9 @@
 import type { ItemProps } from '@zag-js/radio-group'
 import { mergeProps } from '@zag-js/react'
-import { anatomy } from '@zag-js/segmentGroup'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
@@ -21,7 +21,7 @@ export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemPro
     const segmentGroup = useSegmentGroupContext()
     const mergedProps = mergeProps(
       segmentGroup.getItemProps(itemProps),
-      segmentGroupAnatomy.build().item.attrs as Record<string, string>,
+      parts.item.attrs as Record<string, string>,
       localProps,
     )
     const itemState = segmentGroup.getItemState(itemProps)

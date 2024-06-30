@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
-import { anatomy } from '@zag-js/segmentGroup'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
@@ -16,7 +16,7 @@ export const SegmentGroupItemText = forwardRef<HTMLSpanElement, SegmentGroupItem
     const itemProps = useSegmentGroupItemPropsContext()
     const mergedProps = mergeProps(
       segmentGroup.getItemTextProps(itemProps),
-      segmentGroupAnatomy.build().itemText.attrs as Record<string, string>,
+      parts.itemText.attrs as Record<string, string>,
       props,
     )
 

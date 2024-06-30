@@ -1,9 +1,9 @@
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/radioGroup'
 import { axe } from 'vitest-axe'
 import { RadioGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { radioGroupAnatomy } from '../radio-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Radio Group / Parts & Exports', () => {
@@ -13,11 +13,11 @@ describe('Radio Group / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(radioGroupAnatomy))('should export %s', async (part) => {
     expect(RadioGroup[part]).toBeDefined()
   })
 })

@@ -1,6 +1,6 @@
-import { anatomy } from '@zag-js/carousel'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { carouselAnatomy } from './carousel.anatomy'
 
 export interface CarouselControlBaseProps extends PolymorphicProps {}
 export interface CarouselControlProps extends HTMLProps<'div'>, CarouselControlBaseProps {}

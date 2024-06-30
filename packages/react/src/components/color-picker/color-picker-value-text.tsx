@@ -1,6 +1,6 @@
-import { anatomy } from '@zag-js/colorPicker'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { colorPickerAnatomy } from './color-picker.anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerValueTextBaseProps extends PolymorphicProps {}

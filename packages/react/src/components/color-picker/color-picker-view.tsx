@@ -1,8 +1,8 @@
 import type { ColorFormat } from '@zag-js/color-picker'
-import { anatomy } from '@zag-js/colorPicker'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { colorPickerAnatomy } from './color-picker.anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
 import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 

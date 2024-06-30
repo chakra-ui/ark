@@ -1,10 +1,10 @@
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/numberInput'
 import { axe } from 'vitest-axe'
 import { NumberInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
+import { numberInputAnatomy } from '../number-input.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('NumberInput / Parts & Exports', () => {
@@ -14,11 +14,11 @@ describe('NumberInput / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(numberInputAnatomy))('should export %s', async (part) => {
     expect(NumberInput[part]).toBeDefined()
   })
 })
