@@ -6,7 +6,7 @@ export {
 export {
   default as Indicator,
   type RadioGroupIndicatorProps as IndicatorProps,
-  type RadioGroupIndicatorProps as IndicatorBaseProps,
+  type RadioGroupIndicatorBaseProps as IndicatorBaseProps,
 } from './radio-group-indicator.vue'
 export {
   default as ItemContext,
@@ -15,36 +15,36 @@ export {
 export {
   default as ItemControl,
   type RadioGroupItemControlProps as ItemControlProps,
-  type RadioGroupItemControlProps as ItemControlBaseProps,
+  type RadioGroupItemControlBaseProps as ItemControlBaseProps,
 } from './radio-group-item-control.vue'
 export {
   default as ItemHiddenInput,
   type RadioGroupItemHiddenInputProps as ItemHiddenInputProps,
-  type RadioGroupItemHiddenInputProps as ItemHiddenInputBaseProps,
+  type RadioGroupItemHiddenInputBaseProps as ItemHiddenInputBaseProps,
 } from './radio-group-item-hidden-input.vue'
 export {
   default as ItemText,
   type RadioGroupItemTextProps as ItemTextProps,
-  type RadioGroupItemTextProps as ItemTextBaseProps,
+  type RadioGroupItemTextBaseProps as ItemTextBaseProps,
 } from './radio-group-item-text.vue'
 export {
   default as Item,
   type RadioGroupItemProps as ItemProps,
-  type RadioGroupItemProps as ItemBaseProps,
+  type RadioGroupItemBaseProps as ItemBaseProps,
 } from './radio-group-item.vue'
 export {
   default as Label,
   type RadioGroupLabelProps as LabelProps,
-  type RadioGroupLabelProps as LabelBaseProps,
+  type RadioGroupLabelBaseProps as LabelBaseProps,
 } from './radio-group-label.vue'
 export {
   default as RootProvider,
   type RadioGroupRootProviderProps as RootProviderProps,
-  type RadioGroupRootProviderProps as RootProviderBaseProps,
+  type RadioGroupRootProviderBaseProps as RootProviderBaseProps,
 } from './radio-group-root-provider.vue'
 export {
   default as Root,
   type RadioGroupRootEmits as RootEmits,
-  type RadioGroupRootProps as RootBaseProps,
+  type RadioGroupRootBaseProps as RootBaseProps,
   type RadioGroupRootProps as RootProps,
 } from './radio-group-root.vue'

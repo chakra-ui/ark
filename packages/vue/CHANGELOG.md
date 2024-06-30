@@ -17,12 +17,14 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
+- **All Components**: Corrected multiple incorrect base export aliases across various components.
 - **TreeView**: Resolved an issue preventing input usage within the tree.
 - **Progress**: Fixed a warning in `Circle` due to an incorrect `viewBox` attribute on the `<svg>`
   element.
 - **Carousel**: Corrected looping behavior for next and previous buttons when both `slidesPerView`
   and `loop` are set.
 - **Menu**: Fixed loss of position data in the context menu upon closing.
+
 
 ## [3.5.0] - 2024-06-25
 

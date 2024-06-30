@@ -20,7 +20,7 @@ export {
 export {
   default as IncrementTrigger,
   type NumberInputIncrementTriggerProps as IncrementTriggerProps,
-  type NumberInputIncrementTriggerProps as IncrementTriggerBaseProps,
+  type NumberInputIncrementTriggerBaseProps as IncrementTriggerBaseProps,
 } from './number-input-increment-trigger.vue'
 export {
   default as ValueText,
@@ -45,8 +45,8 @@ export {
 export {
   default as Root,
   type NumberInputRootEmits as RootEmits,
-  type NumberInputRootProps as RootBaseProps,
-  type NumberInputRootBaseProps as RootProps,
+  type NumberInputRootBaseProps as RootBaseProps,
+  type NumberInputRootProps as RootProps,
 } from './number-input-root.vue'
 export {
   default as Scrubber,

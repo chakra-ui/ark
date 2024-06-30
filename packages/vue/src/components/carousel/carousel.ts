@@ -6,51 +6,51 @@ export {
 export {
   default as Control,
   type CarouselControlProps as ControlProps,
-  type CarouselControlProps as ControlBaseProps,
+  type CarouselControlBaseProps as ControlBaseProps,
 } from './carousel-control.vue'
 export {
   default as IndicatorGroup,
   type CarouselIndicatorGroupProps as IndicatorGroupProps,
-  type CarouselIndicatorGroupProps as IndicatorGroupBaseProps,
+  type CarouselIndicatorGroupBaseProps as IndicatorGroupBaseProps,
 } from './carousel-indicator-group.vue'
 export {
   default as Indicator,
   type CarouselIndicatorProps as IndicatorProps,
-  type CarouselIndicatorProps as IndicatorBaseProps,
+  type CarouselIndicatorBaseProps as IndicatorBaseProps,
 } from './carousel-indicator.vue'
 export {
   default as ItemGroup,
   type CarouselItemGroupProps as ItemGroupProps,
-  type CarouselItemGroupProps as ItemGroupBaseProps,
+  type CarouselItemGroupBaseProps as ItemGroupBaseProps,
 } from './carousel-item-group.vue'
 export {
   default as Item,
   type CarouselItemProps as ItemProps,
-  type CarouselItemProps as ItemBaseProps,
+  type CarouselItemBaseProps as ItemBaseProps,
 } from './carousel-item.vue'
 export {
   default as NextTrigger,
   type CarouselNextTriggerProps as NextTriggerProps,
-  type CarouselNextTriggerProps as NextTriggerBaseProps,
+  type CarouselNextTriggerBaseProps as NextTriggerBaseProps,
 } from './carousel-next-trigger.vue'
 export {
   default as PrevTrigger,
   type CarouselPrevTriggerProps as PrevTriggerProps,
-  type CarouselPrevTriggerProps as PrevTriggerBaseProps,
+  type CarouselPrevTriggerBaseProps as PrevTriggerBaseProps,
 } from './carousel-prev-trigger.vue'
 export {
   default as RootProvider,
   type CarouselRootProviderProps as RootProviderProps,
-  type CarouselRootProviderProps as RootProviderBaseProps,
+  type CarouselRootProviderBaseProps as RootProviderBaseProps,
 } from './carousel-root-provider.vue'
 export {
   default as Root,
   type CarouselRootEmits as RootEmits,
-  type CarouselRootProps as RootBaseProps,
+  type CarouselRootBaseProps as RootBaseProps,
   type CarouselRootProps as RootProps,
 } from './carousel-root.vue'
 export {
   default as Viewport,
   type CarouselViewportProps as ViewportProps,
-  type CarouselViewportProps as ViewportBaseProps,
+  type CarouselViewportBaseProps as ViewportBaseProps,
 } from './carousel-viewport.vue'
