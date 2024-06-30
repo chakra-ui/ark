@@ -1,4 +1,4 @@
-import { selectAnatomy } from '@ark-ui/anatomy'
+import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'
@@ -12,11 +12,13 @@ export interface SelectValueTextBaseProps extends PolymorphicProps {
 export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueTextBaseProps {}
 
 export const SelectValueText = forwardRef<HTMLSpanElement, SelectValueTextProps>((props, ref) => {
-  const { children, placeholder, ...rest } = props
+  const { children, placeholder, ...localprops } = props
   const select = useSelectContext()
 
+  const mergedProps = mergeProps(select.getValueTextProps(), localprops)
+
   return (
-    <ark.span {...selectAnatomy.build().valueText.attrs} {...rest} ref={ref}>
+    <ark.span {...mergedProps} ref={ref}>
       {children || select.valueAsString || placeholder}
     </ark.span>
   )

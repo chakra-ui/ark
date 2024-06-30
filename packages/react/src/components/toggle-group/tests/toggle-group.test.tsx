@@ -1,6 +1,6 @@
-import { toggleGroupAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/toggleGroup'
 import { axe } from 'vitest-axe'
 import { ToggleGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -13,11 +13,11 @@ describe('ToggleGroup / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(toggleGroupAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(ToggleGroup[part]).toBeDefined()
   })
 })

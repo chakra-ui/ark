@@ -1,4 +1,4 @@
-import { carouselAnatomy } from '@ark-ui/anatomy'
+import { anatomy } from '@zag-js/carousel'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 

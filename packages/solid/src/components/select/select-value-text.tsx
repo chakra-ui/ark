@@ -1,4 +1,4 @@
-import { selectAnatomy } from '@ark-ui/anatomy'
+import { anatomy } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSelectContext } from './use-select-context'

@@ -1,6 +1,6 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/field'
 import { axe } from 'vitest-axe'
 import { Field } from '../'
 import { getExports, getParts } from '../../setup-test'
@@ -22,12 +22,12 @@ describe('Field / Parts & Exports', () => {
   render(<ComponentUnderTest invalid />)
 
   it.each(
-    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
+    getParts(anatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
   )('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Field[part]).toBeDefined()
   })
 })

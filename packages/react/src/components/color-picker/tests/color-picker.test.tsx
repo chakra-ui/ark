@@ -1,6 +1,6 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/colorPicker'
 import { axe } from 'vitest-axe'
 import { ColorPicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -14,11 +14,11 @@ describe('ColorPicker / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(colorPickerAnatomy))('should render part %s', async (part) => {
+  it.each(getParts(anatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(colorPickerAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(ColorPicker[part]).toBeDefined()
   })
 })

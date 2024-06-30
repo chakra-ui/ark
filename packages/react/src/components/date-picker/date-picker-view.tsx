@@ -1,5 +1,5 @@
-import { datePickerAnatomy } from '@ark-ui/anatomy'
 import type { ViewProps } from '@zag-js/date-picker'
+import { anatomy } from '@zag-js/datePicker'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'

@@ -1,6 +1,6 @@
-import { signaturePadAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/signaturePad'
 import { axe } from 'vitest-axe'
 import { SignaturePad } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -14,7 +14,7 @@ describe('SignaturePad / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  const renderedParts = getParts(signaturePadAnatomy).filter(
+  const renderedParts = getParts(anatomy).filter(
     (part) => !part.includes('[data-part="segment-path"]'),
   )
 
@@ -22,7 +22,7 @@ describe('SignaturePad / Parts & Exports', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.skip.each(getExports(signaturePadAnatomy))('should export %s', async (part) => {
+  it.skip.each(getExports(anatomy))('should export %s', async (part) => {
     // @ts-expect-error
     expect(SignaturePad[part]).toBeDefined()
   })

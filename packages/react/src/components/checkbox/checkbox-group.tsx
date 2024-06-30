@@ -1,4 +1,4 @@
-import { checkboxAnatomy } from '@ark-ui/anatomy'
+import { anatomy } from '@zag-js/checkbox'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'

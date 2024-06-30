@@ -1,5 +1,5 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import type { ItemProps } from '@zag-js/radio-group'
+import { anatomy } from '@zag-js/segmentGroup'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'

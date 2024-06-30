@@ -1,5 +1,5 @@
-import { avatarAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render } from '@testing-library/react/pure'
+import { anatomy } from '@zag-js/avatar'
 import { axe } from 'vitest-axe'
 import { Avatar } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -12,11 +12,11 @@ describe('Avatar / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(avatarAnatomy))('should render part %s', async (part) => {
+  it.each(getParts(anatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(avatarAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Avatar[part]).toBeDefined()
   })
 

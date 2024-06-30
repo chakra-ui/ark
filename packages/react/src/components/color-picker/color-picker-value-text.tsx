@@ -1,4 +1,4 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
+import { anatomy } from '@zag-js/colorPicker'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'

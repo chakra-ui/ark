@@ -1,6 +1,6 @@
-import { menuAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/menu'
 import { axe } from 'vitest-axe'
 import { Menu } from '..'
 import { getExports, getParts } from '../../../setup-test'
@@ -60,13 +60,13 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
 }
 
 describe('Menu / Parts & Exports', () => {
-  it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     render(<ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Menu[part]).toBeDefined()
   })
 })

@@ -1,6 +1,6 @@
-import { accordionAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/accordion'
 import { axe } from 'vitest-axe'
 import { Accordion } from '../'
 import { LocaleProvider } from '../../../providers'
@@ -14,11 +14,11 @@ describe('Accordion / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
+  it.each(getParts(anatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Accordion[part]).toBeDefined()
   })
 })

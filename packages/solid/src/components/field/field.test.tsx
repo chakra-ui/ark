@@ -1,6 +1,6 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/field'
 import { Field } from '../'
 import { getExports, getParts } from '../../setup-test'
 
@@ -15,14 +15,14 @@ const ComponentUnderTest = (props: Field.RootProps) => (
 
 describe('Field / Parts & Exports', () => {
   it.each(
-    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
+    getParts(anatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
   )('should render part %s', async (part) => {
     render(() => <ComponentUnderTest invalid />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Field[part]).toBeDefined()
   })
 })

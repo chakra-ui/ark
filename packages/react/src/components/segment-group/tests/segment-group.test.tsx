@@ -1,6 +1,6 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/segmentGroup'
 import { axe } from 'vitest-axe'
 import { SegmentGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -13,11 +13,11 @@ describe('Segment Group / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(SegmentGroup[part]).toBeDefined()
   })
 })

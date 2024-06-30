@@ -1,6 +1,6 @@
-import { checkboxAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/checkbox'
 import { axe } from 'vitest-axe'
 import { Checkbox } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -15,11 +15,11 @@ describe('Checkbox / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
+  it.each(getParts(anatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Checkbox[part]).toBeDefined()
   })
 })

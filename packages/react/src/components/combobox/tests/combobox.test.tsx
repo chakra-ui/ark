@@ -1,6 +1,6 @@
-import { comboboxAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/combobox'
 import { axe } from 'vitest-axe'
 import { Combobox } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -14,11 +14,11 @@ describe('Combobox / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Combobox[part]).toBeDefined()
   })
 })

@@ -1,4 +1,4 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
+import { anatomy } from '@zag-js/segmentGroup'
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'

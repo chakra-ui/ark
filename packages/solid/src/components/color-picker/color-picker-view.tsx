@@ -1,5 +1,5 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import type { ColorFormat } from '@zag-js/color-picker'
+import { anatomy } from '@zag-js/colorPicker'
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'

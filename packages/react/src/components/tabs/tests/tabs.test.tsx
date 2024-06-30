@@ -1,6 +1,6 @@
-import { tabsAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/tabs'
 import { axe } from 'vitest-axe'
 import { Tabs } from '..'
 import { getExports, getParts } from '../../../setup-test'
@@ -13,11 +13,11 @@ describe('Tabs / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Tabs[part]).toBeDefined()
   })
 })

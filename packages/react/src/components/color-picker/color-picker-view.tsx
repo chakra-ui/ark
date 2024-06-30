@@ -1,5 +1,5 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import type { ColorFormat } from '@zag-js/color-picker'
+import { anatomy } from '@zag-js/colorPicker'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'

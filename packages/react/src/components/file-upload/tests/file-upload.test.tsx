@@ -1,6 +1,6 @@
-import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/fileUpload'
 import { axe } from 'vitest-axe'
 import { FileUpload } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -14,11 +14,11 @@ describe('File Upload / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(fileUploadAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(FileUpload[part]).toBeDefined()
   })
 

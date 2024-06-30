@@ -1,5 +1,5 @@
-import { menuAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
+import { anatomy } from '@zag-js/menu'
 import { Index, splitProps } from 'solid-js'
 import { Menu } from '..'
 import { getExports, getParts } from '../../../setup-test'
@@ -61,13 +61,13 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
 }
 
 describe('Menu / Parts & Exports', () => {
-  it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
+  it.skip.each(getParts(anatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Menu[part]).toBeDefined()
   })
 })

@@ -1,18 +1,18 @@
-import { toggleGroupAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/toggleGroup'
 import { ToggleGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('ToggleGroup', () => {
-  it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(toggleGroupAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(ToggleGroup[part]).toBeDefined()
   })
 

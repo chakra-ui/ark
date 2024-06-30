@@ -1,19 +1,19 @@
-import { comboboxAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/combobox'
 import { Combobox } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('Combobox', () => {
-  it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(anatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(Combobox[part]).toBeDefined()
   })
 

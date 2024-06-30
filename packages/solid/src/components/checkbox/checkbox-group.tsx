@@ -1,4 +1,4 @@
-import { checkboxAnatomy } from '@ark-ui/anatomy'
+import { anatomy } from '@zag-js/checkbox'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'

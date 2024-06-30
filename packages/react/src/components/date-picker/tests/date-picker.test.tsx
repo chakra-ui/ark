@@ -1,6 +1,6 @@
-import { datePickerAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
+import { anatomy } from '@zag-js/datePicker'
 import { axe } from 'vitest-axe'
 import { DatePicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -13,11 +13,11 @@ describe('Date Picker / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
+  it.each(getParts(anatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
+  it.each(getExports(anatomy))('should export %s', async (part) => {
     expect(DatePicker[part]).toBeDefined()
   })
 })
