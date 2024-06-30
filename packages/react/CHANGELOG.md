@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.5.0] - 2024-06-30
+
 ### Added
 
 - **All Components**: Exported each component's anatomy. For example:
