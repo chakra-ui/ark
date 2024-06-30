@@ -28,7 +28,7 @@
       "name": {
         "type": "string",
         "isRequired": false,
-        "description": "The name of all input field in a checkbox group.\nUseful for form submission."
+        "description": "The name of the input fields in the checkbox group\n(Useful for form submission)."
       },
       "onValueChange": {
         "type": "(value: string[]) => void",

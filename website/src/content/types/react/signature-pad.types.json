@@ -32,6 +32,21 @@
     "element": "HTMLDivElement",
     "tag": "div"
   },
+  "HiddenInput": {
+    "props": {
+      "value": {
+        "type": "string",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLInputElement",
+    "tag": "input"
+  },
   "Label": {
     "props": {
       "asChild": {

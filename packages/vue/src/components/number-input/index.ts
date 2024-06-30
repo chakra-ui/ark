@@ -28,6 +28,11 @@ export {
   type NumberInputInputBaseProps,
 } from './number-input-input.vue'
 export {
+  default as NumberInputValueText,
+  type NumberInputValueTextProps,
+  type NumberInputValueTextBaseProps,
+} from './number-input-value-text.vue'
+export {
   default as NumberInputLabel,
   type NumberInputLabelProps,
   type NumberInputLabelBaseProps,

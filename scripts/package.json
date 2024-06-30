@@ -16,7 +16,7 @@
     "postvue:props": "bun biome format --write ../packages/vue/src/",
     "play": "bun run src/play.ts",
     "format:vue": "prettier --write '../**/*.vue'",
-    "format:mdx": "prettier --write '../**/*.md'",
+    "format:mdx": "prettier --write '../**/CHANGELOG.md'",
     "local:sync": "bun run src/symlink.ts"
   },
   "dependencies": {

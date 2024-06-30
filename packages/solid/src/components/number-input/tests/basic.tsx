@@ -2,7 +2,9 @@ import { NumberInput, type NumberInputRootProps } from '../'
 
 export const ComponentUnderTest = (props: NumberInputRootProps) => (
   <NumberInput.Root {...props}>
-    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Label>
+      Label: <NumberInput.ValueText />
+    </NumberInput.Label>
     <NumberInput.Input />
     <NumberInput.Scrubber />
     <NumberInput.Control>

@@ -26,6 +26,16 @@
       }
     }
   },
+  "HiddenInput": {
+    "props": {
+      "value": { "type": "string", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Label": {
     "props": {
       "asChild": {

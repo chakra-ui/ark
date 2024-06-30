@@ -8,7 +8,17 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Checkbox**: Added the `name` prop to `Checkbox.Group` for setting checkbox names within the group.
+- **NumberInput:** Introduced the `ValueText` part to render the internal state value.
+- **Checkbox:** Added the `name` prop to `Checkbox.Group` for setting names within the group.
+
+### Fixed
+
+- **TreeView:** Resolved an issue preventing input usage within the tree.
+- **Progress:** Fixed a warning in `Circle` due to an incorrect `viewBox` attribute on the `<svg>`
+  element.
+- **Carousel:** Corrected looping behavior for next and previous buttons when both `slidesPerView`
+  and `loop` are set.
+- **Menu:** Fixed loss of position data in the context menu upon closing.
 
 ## [3.4.0] - 2024-06-25
 
@@ -371,7 +381,7 @@ export const Basic = () => (
 - Added `TreeView` component
 - Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
 
-- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
+- **Breaking Change:** Renamed the root types for all components to `<ComponentName>RootProps`. Like
   shown for the `Avatar` component below:
 
 ```diff
@@ -379,7 +389,7 @@ export const Basic = () => (
 + import type { AvatarRootProps } from "@ark-ui/react"
 ```
 
-- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and
+- **Breaking Change:** Removed the `.Root` suffix for provider component like `Presence` and
   `Environment`.
 
 ```diff
@@ -387,7 +397,7 @@ export const Basic = () => (
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
+- **Breaking Change:** Renamed the `indicator` part to `view` in the `Progress` component to more
   accurately reflect its functionality.
 
 - Added the `ItemPreview` component to the `TagsInput` component. See the example below:

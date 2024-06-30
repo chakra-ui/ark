@@ -18,7 +18,7 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
       <Show when={isValueEmpty()}>
         <option value="" />
       </Show>
-      <Index each={select().collection.toArray()}>
+      <Index each={select().collection.items}>
         {(option) => <option value={option().value}>{option().label}</option>}
       </Index>
     </ark.select>

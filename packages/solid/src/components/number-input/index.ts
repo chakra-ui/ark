@@ -9,44 +9,49 @@ export {
 } from './number-input-context'
 export {
   NumberInputControl,
-  type NumberInputControlProps,
   type NumberInputControlBaseProps,
+  type NumberInputControlProps,
 } from './number-input-control'
 export {
   NumberInputDecrementTrigger,
-  type NumberInputDecrementTriggerProps,
   type NumberInputDecrementTriggerBaseProps,
+  type NumberInputDecrementTriggerProps,
 } from './number-input-decrement-trigger'
 export {
   NumberInputIncrementTrigger,
-  type NumberInputIncrementTriggerProps,
   type NumberInputIncrementTriggerBaseProps,
+  type NumberInputIncrementTriggerProps,
 } from './number-input-increment-trigger'
 export {
   NumberInputInput,
-  type NumberInputInputProps,
   type NumberInputInputBaseProps,
+  type NumberInputInputProps,
 } from './number-input-input'
 export {
   NumberInputLabel,
-  type NumberInputLabelProps,
   type NumberInputLabelBaseProps,
+  type NumberInputLabelProps,
 } from './number-input-label'
 export {
   NumberInputRoot,
-  type NumberInputRootProps,
   type NumberInputRootBaseProps,
+  type NumberInputRootProps,
 } from './number-input-root'
 export {
   NumberInputRootProvider,
-  type NumberInputRootProviderProps,
   type NumberInputRootProviderBaseProps,
+  type NumberInputRootProviderProps,
 } from './number-input-root-provider'
 export {
   NumberInputScrubber,
-  type NumberInputScrubberProps,
   type NumberInputScrubberBaseProps,
+  type NumberInputScrubberProps,
 } from './number-input-scrubber'
+export {
+  NumberInputValueText,
+  type NumberInputValueTextBaseProps,
+  type NumberInputValueTextProps,
+} from './number-input-value-text'
 export {
   useNumberInput,
   type UseNumberInputProps,

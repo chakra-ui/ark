@@ -24,7 +24,7 @@ const field = useFieldContext()
 <template>
   <ark.select :aria-describedby="field?.ariaDescribedby" v-bind="select.getHiddenSelectProps()">
     <option v-if="select.value.length === 0" value="" />
-    <option v-for="option in select.collection.toArray()" :key="option.value" :value="option.value">
+    <option v-for="option in select.collection.items" :key="option.value" :value="option.value">
       {{ option.label }}
     </option>
   </ark.select>

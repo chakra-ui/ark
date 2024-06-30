@@ -11,7 +11,7 @@ const handleDrawEnd = async (details: SignaturePadDrawEndDetails) => {
 
 <template>
   <Field.Root>
-    <SignaturePad.Root  @draw-end="handleDrawEnd">
+    <SignaturePad.Root @draw-end="handleDrawEnd">
       <SignaturePad.Label>Label</SignaturePad.Label>
       <SignaturePad.Control>
         <SignaturePad.Segment />
