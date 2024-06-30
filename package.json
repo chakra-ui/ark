@@ -26,10 +26,10 @@
     "root": "."
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.2",
-    "@types/bun": "1.1.5",
+    "@biomejs/biome": "1.8.3",
+    "@types/bun": "1.1.6",
     "lefthook": "1.6.18",
-    "turbo": "2.0.5",
+    "turbo": "2.0.6",
     "typescript": "5.5.2",
     "vercel": "34.2.8"
   },
