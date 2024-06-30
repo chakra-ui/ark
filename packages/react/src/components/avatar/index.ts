@@ -25,5 +25,6 @@ export {
 } from './avatar-root-provider'
 export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar'
 export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
+export { avatarAnatomy } from './avatar.anatomy'
 
 export * as Avatar from './avatar'
