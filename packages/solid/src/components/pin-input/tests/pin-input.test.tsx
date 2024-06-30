@@ -1,20 +1,18 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/pinInput'
-
-import { PinInput } from '../'
+import { PinInput, pinInputAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('PinInput', () => {
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
     expect(PinInput[part]).toBeDefined()
   })
 

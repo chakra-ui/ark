@@ -1,6 +1,6 @@
-import { anatomy } from '@zag-js/select'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { selectAnatomy } from './select.anatomy'
 import { useSelectContext } from './use-select-context'
 
 export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {

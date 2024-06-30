@@ -1,6 +1,6 @@
-import { anatomy } from '@zag-js/segmentGroup'
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
@@ -14,7 +14,7 @@ export const SegmentGroupItemControl = (props: SegmentGroupItemControlProps) => 
   const itemProps = useSegmentGroupItemPropsContext()
   const mergedProps = mergeProps(
     () => segmentGroup().getItemControlProps(itemProps),
-    segmentGroupAnatomy.build().itemControl.attrs,
+    parts.itemControl.attrs,
     props,
   )
 

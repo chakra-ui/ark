@@ -1,6 +1,6 @@
-import { anatomy } from '@zag-js/checkbox'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { checkboxAnatomy } from './checkbox.anatomy'
 import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 

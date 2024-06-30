@@ -1,18 +1,17 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/radioGroup'
-import { RadioGroup } from '../'
+import { RadioGroup, radioGroupAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Radio Group', () => {
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(radioGroupAnatomy))('should export %s', async (part) => {
     expect(RadioGroup[part]).toBeDefined()
   })
 

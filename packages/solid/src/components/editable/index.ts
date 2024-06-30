@@ -55,5 +55,6 @@ export {
 } from './editable-submit-trigger'
 export { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
 export { useEditableContext, type UseEditableContext } from './use-editable-context'
+export { editableAnatomy } from './editable.anatomy'
 
 export * as Editable from './editable'

@@ -1,18 +1,17 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/segmentGroup'
-import { SegmentGroup } from '../'
+import { SegmentGroup, segmentGroupAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Segment Group', () => {
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
     expect(SegmentGroup[part]).toBeDefined()
   })
 

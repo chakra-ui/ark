@@ -1,13 +1,12 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/signaturePad'
-import { SignaturePad } from '../'
+import { SignaturePad, signaturePadAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('SignaturePad / Parts & Exports', () => {
-  const renderedParts = getParts(anatomy).filter(
+  const renderedParts = getParts(signaturePadAnatomy).filter(
     (part) => !part.includes('[data-part="segment-path"]'),
   )
 
@@ -17,7 +16,7 @@ describe('SignaturePad / Parts & Exports', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.skip.each(getExports(anatomy))('should export %s', async (part) => {
+  it.skip.each(getExports(signaturePadAnatomy))('should export %s', async (part) => {
     // @ts-expect-error
     expect(SignaturePad[part]).toBeDefined()
   })

@@ -37,5 +37,6 @@ export {
   type ToasterBaseProps,
 } from './toaster'
 export { useToastContext, type UseToastContext } from './use-toast-context'
+export { toastAnatomy } from './toast.anatomy'
 
 export * as Toast from './toast'
