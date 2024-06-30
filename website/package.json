@@ -2,7 +2,7 @@
   "name": "@ark-ui/website",
   "private": true,
   "scripts": {
-    "prepare": "bun panda codegen && prisma generate",
+    "prepare": "bun run --cwd ../packages/anatomy build && bun panda codegen && prisma generate",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
