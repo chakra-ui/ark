@@ -1,8 +1,7 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/clipboard'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { Clipboard } from '../'
+import { Clipboard, clipboardAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 
 const ComponentUnderTest = () => (
@@ -20,13 +19,13 @@ const ComponentUnderTest = () => (
 )
 
 describe('Clipboard', () => {
-  it.each(getParts(anatomy))('should render part %s', async (part) => {
+  it.each(getParts(clipboardAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(clipboardAnatomy))('should export %s', async (part) => {
     expect(Clipboard[part]).toBeDefined()
   })
 

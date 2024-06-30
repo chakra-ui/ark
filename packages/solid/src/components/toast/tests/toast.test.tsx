@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/toast'
 import { getParts } from '../../../setup-test'
+import { toastAnatomy } from '../toast.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast', () => {
-  it.skip.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.skip.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
     expect(document.querySelector(part)).toBeInTheDocument()
   })

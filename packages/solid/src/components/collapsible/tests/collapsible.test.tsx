@@ -1,7 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/collapsible'
-import { Collapsible, type CollapsibleRootProps } from '../'
+import { Collapsible, type CollapsibleRootProps, collapsibleAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 
 const ComponentUnderTest = (props: CollapsibleRootProps) => (
@@ -12,13 +11,13 @@ const ComponentUnderTest = (props: CollapsibleRootProps) => (
 )
 
 describe('Collapsible / Parts & Exports', () => {
-  it.each(getParts(anatomy))('should render part %s', async (part) => {
+  it.each(getParts(collapsibleAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(collapsibleAnatomy))('should export %s', async (part) => {
     expect(Collapsible[part]).toBeDefined()
   })
 })

@@ -1,18 +1,17 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/carousel'
-import { Carousel } from '../'
+import { Carousel, carouselAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Carousel', () => {
-  it.each(getParts(anatomy))('should render part %s', async (part) => {
+  it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(carouselAnatomy))('should export %s', async (part) => {
     expect(Carousel[part]).toBeDefined()
   })
 
