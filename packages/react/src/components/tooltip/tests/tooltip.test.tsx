@@ -1,8 +1,7 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/tooltip'
 import { axe } from 'vitest-axe'
-import { Tooltip } from '../'
+import { Tooltip, tooltipAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -13,11 +12,11 @@ describe('Tooltip / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
     expect(Tooltip[part]).toBeDefined()
   })
 })

@@ -1,8 +1,7 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/dialog'
 import { axe } from 'vitest-axe'
-import { Dialog } from '../'
+import { Dialog, dialogAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -13,11 +12,11 @@ describe('Dialog / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(dialogAnatomy))('should export %s', async (part) => {
     expect(Dialog[part]).toBeDefined()
   })
 })

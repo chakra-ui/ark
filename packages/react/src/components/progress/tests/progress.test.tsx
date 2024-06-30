@@ -1,7 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react/pure'
-import { anatomy } from '@zag-js/progress'
 import { axe } from 'vitest-axe'
-import { Progress } from '../'
+import { Progress, progressAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -12,11 +11,11 @@ describe('Progress / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(progressAnatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(progressAnatomy))('should export %s', async (part) => {
     expect(Progress[part]).toBeDefined()
   })
 })

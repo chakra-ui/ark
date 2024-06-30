@@ -1,8 +1,8 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/toast'
 import { axe } from 'vitest-axe'
 import { getParts } from '../../../setup-test'
+import { toastAnatomy } from '../toast.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast / Parts & Exports', () => {
@@ -12,7 +12,7 @@ describe('Toast / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     await user.click(screen.getByText('Create Toast'))
 
     expect(document.querySelector(part)).toBeInTheDocument()

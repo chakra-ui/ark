@@ -1,8 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/pagination'
 import { axe } from 'vitest-axe'
-import { Pagination } from '../'
+import { Pagination, paginationAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
@@ -13,11 +12,11 @@ describe('Pagination / Parts & Exports', () => {
 
   render(<ComponentUnderTest count={100} pageSize={10} />)
 
-  it.each(getParts(anatomy))('should render part! %s', async (part) => {
+  it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
     expect(Pagination[part]).toBeDefined()
   })
 })

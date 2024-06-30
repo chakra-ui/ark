@@ -1,8 +1,7 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
-import { anatomy } from '@zag-js/slider'
 import { axe } from 'vitest-axe'
-import { Slider } from '../'
+import { Slider, sliderAnatomy } from '../'
 import { LocaleProvider } from '../../../providers'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
@@ -14,11 +13,11 @@ describe('Slider / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(anatomy))('should render part %s', async (part) => {
+  it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.each(getExports(anatomy))('should export %s', async (part) => {
+  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
     expect(Slider[part]).toBeDefined()
   })
 })
