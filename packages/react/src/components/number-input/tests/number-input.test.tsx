@@ -1,10 +1,10 @@
-import { numberInputAnatomy } from '@ark-ui/anatomy'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { NumberInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
+import { numberInputAnatomy } from '../number-input.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('NumberInput / Parts & Exports', () => {

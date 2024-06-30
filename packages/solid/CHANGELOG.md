@@ -6,88 +6,92 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Added
+- **All Components**: Exported each component's anatomy. For example:
 
-- **NumberInput:** Introduced the `ValueText` part to render the internal state value.
+  ```jsx
+  import { avatarAnatomy } from '@ark-ui/solid'
+  ```
+
+- **NumberInput**: Introduced the `ValueText` part to render the internal state value.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue preventing input usage within the tree.
-- **Progress:** Fixed a warning in `Circle` due to an incorrect `viewBox` attribute on the `<svg>`
+- **TreeView**: Resolved an issue preventing input usage within the tree.
+- **Progress**: Fixed a warning in `Circle` due to an incorrect `viewBox` attribute on the `<svg>`
   element.
-- **Carousel:** Corrected looping behavior for next and previous buttons when both `slidesPerView`
+- **Carousel**: Corrected looping behavior for next and previous buttons when both `slidesPerView`
   and `loop` are set.
-- **Menu:** Fixed loss of position data in the context menu upon closing.
+- **Menu**: Fixed loss of position data in the context menu upon closing.
 
 ## [3.4.1] - 2024-06-28
 
 ### Changed
 
-- **Checkbox:** Added the `name` prop to `Checkbox.Group` for setting checkbox names within the
+- **Checkbox**: Added the `name` prop to `Checkbox.Group` for setting checkbox names within the
   group.
 
 ### Fixed
 
-- **Combobox, Select:** Fixed an issue where it throws an error when `items` are reactive.
+- **Combobox, Select**: Fixed an issue where it throws an error when `items` are reactive.
 
 ## [3.4.0] - 2024-06-25
 
 ### Added
 
-- **Field:** Introduced the `Field` component for flexible form input, label, and helper text
+- **Field**: Introduced the `Field` component for flexible form input, label, and helper text
   container.
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+- **All Components**: Exposed base props to simplify prop merging for library consumers, especially
   in CSS-in-JS environments.
   ```jsx
   export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
   export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
   ```
-- **ColorPicker:** Added `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
+- **ColorPicker**: Added `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
   customization.
-- **Tooltip:** Added `closeOnScroll` option to control whether the tooltip should close when the
+- **Tooltip**: Added `closeOnScroll` option to control whether the tooltip should close when the
   trigger's overflow parent scrolls.
-- **Signature Pad:** Introduced `HiddenInput` to the `SignaturePad` component for better form
+- **Signature Pad**: Introduced `HiddenInput` to the `SignaturePad` component for better form
   library compatibility.
 
 ### Fixed
 
-- **Menu:**
+- **Menu**:
   - Fixed an issue causing sibling menus or popovers to malfunction on iOS devices.
   - Resolved the problem where the context menu trigger showed the magnifier and iOS context menu on
     long press.
   - Fixed an issue where `RadioOptionItem` did not provide the `checked` state in context.
-- **Editable:** Fixed a bug where setting `activationMode` to `dblclick` unexpectedly cleared the
+- **Editable**: Fixed a bug where setting `activationMode` to `dblclick` unexpectedly cleared the
   input value.
-- **Checkbox:** Added the missing `group` role for the Checkbox group component.
-- **RootProvider:** Added the missing `RootProvider` for the `ColorPicker`, `NumberInput`,
+- **Checkbox**: Added the missing `group` role for the Checkbox group component.
+- **RootProvider**: Added the missing `RootProvider` for the `ColorPicker`, `NumberInput`,
   `RatingGroup`, `SegmentGroup`, and `ToggleGroup` components.
 
 ## [3.3.0] - 2024-06-12
 
 ### Added
 
-- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
-- **QR Code:** Added the `QRCode` component for generating QR codes.
-- **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
-- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of
+- **Signature Pad**: Introduced the `SignaturePad` component for capturing signatures.
+- **QR Code**: Added the `QRCode` component for generating QR codes.
+- **CheckboxGroup**: Added the `CheckboxGroup` component for managing multiple checkboxes.
+- **Presence**: Added support for `immediate` to synchronize presence changes immediately instead of
   deferring to the next tick.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+- **TreeView**: Resolved an issue where the tree view state could be updated after setting
   `defaultSelectedValue` or `defaultExpandedValue`.
-- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous
+- **Tabs**: Resolved an issue where rapidly changing the selected tab could briefly show previous
   tab content.
-- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item
+- **FileUpload**: Fixed an issue where the `onFileAccept` event was triggered when deleting an item
   via the delete trigger.
-- **Select:** Exported the missing `SelectList` component.
+- **Select**: Exported the missing `SelectList` component.
 
 ## [3.2.2] - 2024-06-07̊
 
 ### Fixed
 
-- **Combobox:** Exported missing `ComboboxList` component.
-- **Toast:** Resolved an issue where `ToastRoot` doesn't merge its incoming props correctly.
+- **Combobox**: Exported missing `ComboboxList` component.
+- **Toast**: Resolved an issue where `ToastRoot` doesn't merge its incoming props correctly.
 
 ## [3.2.1] - 2024-06-06
 
@@ -99,7 +103,7 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **All Components:** Introduced the `Provider` component for easier access to internal machine
+- **All Components**: Introduced the `Provider` component for easier access to internal machine
   APIs, improving component composition. See the example below:
 
 ```tsx
@@ -123,31 +127,31 @@ export const Example = () => {
 
 ### Added
 
-- **Editable:** Supported `textarea` as the input element in edit mode.
+- **Editable**: Supported `textarea` as the input element in edit mode.
 
 ### Fixed
 
 - Fixed an issue where spreading `readOnly: false` adds the `readonly` attribute on editable
   elements, making them uneditable.
-- **Factory:** Fixed an issue where the `ark` factory was incorretly adding the parent ref to the
+- **Factory**: Fixed an issue where the `ark` factory was incorretly adding the parent ref to the
   child component.
-- **Select:** Fixed an issue where changing the label of a collection item did not trigger a change
+- **Select**: Fixed an issue where changing the label of a collection item did not trigger a change
   event.
-- **Popover:**
+- **Popover**:
 
   - Implemented `autoFocus` to determine whether the popover should autofocus on open:
     - When `true`, the first focusable element or the content is focused.
     - When `false`, the content is focused.
   - Fixed an issue where the page scroll resets on opening the popover.
 
-- **DatePicker:** Fixed an issue in range mode where calendar close unexpectedly when hovering on a
+- **DatePicker**: Fixed an issue in range mode where calendar close unexpectedly when hovering on a
   day quickly.
 
 ## [3.0.2] - 2024-05-29
 
 ### Changed
 
-- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
+- **Avatar**: Improved image load check by using `naturalWidth` and `naturalHeight` instead of
   `currentSrc`.
 
 ## [3.0.1] - 2024-05-27
@@ -167,7 +171,7 @@ forward compatibility. Here are some highlights:
 
 ### Added
 
-- **Context Components:** Introduced the `Context` component for easier access to internal machine
+- **Context Components**: Introduced the `Context` component for easier access to internal machine
   APIs, improving component composition. See the example below:
 
 ```tsx
@@ -188,20 +192,20 @@ export const Basic = () => (
 )
 ```
 
-- **Format:** Added a `Format` component for formatting bytes and numbers.
+- **Format**: Added a `Format` component for formatting bytes and numbers.
 
 ```tsx
 <Format.Byte value={120904} unit="byte" unitDisplay="short" />
 <Format.Number value={1204} unit="centimeter" />
 ```
 
-- **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
-- **Types:** Exported `Assign` and `Optional` types to enhance type handling.
-- **Toast:** Added support for overlapping and stacked toast.
+- **Tooltip**: Added `defaultOpen` prop for cases where you do not need to control its open state.
+- **Types**: Exported `Assign` and `Optional` types to enhance type handling.
+- **Toast**: Added support for overlapping and stacked toast.
 
 ### Changed
 
-- **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
+- **[BREAKING]**: Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
   `RadioGroup`, `RatingGroup`, `SegmentGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for
   better form library compatibility. Please ensure to include the hidden input in your component
   like shown below:
@@ -218,7 +222,7 @@ export const Basic = () => (
 </Checkbox.Root>
 ```
 
-- **[BREAKING]:** Made `id` optional and removed `for` from `ItemGroupLabel` in `Combobox` and
+- **[BREAKING]**: Made `id` optional and removed `for` from `ItemGroupLabel` in `Combobox` and
   `Select` for cleaner markup.
 
 ```diff
@@ -228,11 +232,11 @@ export const Basic = () => (
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
+- **[BREAKING] Popover, Tooltip**: Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
   dialog machine.
-- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup:** Renamed `loop` to `focusLopp` to be more
+- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup**: Renamed `loop` to `focusLopp` to be more
   descriptive.
-- **[BREAKING]:** Renamed `Environment` to `EnvironmentProvider` to align with other providers.
+- **[BREAKING]**: Renamed `Environment` to `EnvironmentProvider` to align with other providers.
 - Refined the `as` prop implementation for improved type merging and performance.
 
 ```tsx
@@ -249,19 +253,19 @@ export const Basic = () => (
 
 ### Fixed
 
-- **DatePicker:** Resolved issues with `min` and `max` props not supporting date strings.
-- **Accordion:** Fixed initial flicker of content.
-- **TagsInput:** Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
-- **Select, Combobox:** Fixed an issue with reactivity.
-- **Toast:** Resolved an issue with `Toast` not updating its toasts and count properties when
+- **DatePicker**: Resolved issues with `min` and `max` props not supporting date strings.
+- **Accordion**: Fixed initial flicker of content.
+- **TagsInput**: Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
+- **Select, Combobox**: Fixed an issue with reactivity.
+- **Toast**: Resolved an issue with `Toast` not updating its toasts and count properties when
   creating one or more toasts.
-- **ColorPicker:** Added missing `HTMLArkProps<'div'>` to `ColorPicker.View`.
+- **ColorPicker**: Added missing `HTMLArkProps<'div'>` to `ColorPicker.View`.
 
 ### Removed
 
-- **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
+- **[BREAKING]**: Dropped direct internal API access from Root components. Use the new `Context`
   component for more flexible and cleaner API integration.
-- **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
+- **[BREAKING]**: Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
   [LocaleProvider](https://ark-ui.com/solid/docs/providers/environment) and
   [EnvironmentProvider](https://ark-ui.com/solid/docs/providers/locale) for these settings.
 
@@ -378,7 +382,7 @@ export const Basic = () => (
 
 ### Changed
 
-- **Breaking Change:** Renamed the `asChild` to `as` prop. The `as` prop now accepts a native HTML
+- **Breaking Change**: Renamed the `asChild` to `as` prop. The `as` prop now accepts a native HTML
   element or a custom component. For example:
 
 ```diff
@@ -386,7 +390,7 @@ export const Basic = () => (
 + <Popover.Trigger as={<Button>Open</Button>} />
 ```
 
-- **Breaking Change:** Renamed the root types for all components to `<ComponentName>RootProps`. Like
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
   shown for the `Avatar` component below:
 
 ```diff
@@ -394,7 +398,7 @@ export const Basic = () => (
 + import type { AvatarRootProps } from "@ark-ui/solid"
 ```
 
-- **Breaking Change:** Removed the `.Root` suffix for provider component like `Presence` and
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and
   `Environment`.
 
 ```diff
@@ -402,7 +406,7 @@ export const Basic = () => (
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change:** Renamed the `indicator` part to `view` in the `Progress` component to more
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
   accurately reflect its functionality.
 
 - Added the `ItemPreview` component to the `TagsInput` component. See the example below:

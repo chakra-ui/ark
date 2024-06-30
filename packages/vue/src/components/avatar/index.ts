@@ -23,5 +23,6 @@ export {
   type AvatarRootProviderProps,
   type AvatarRootProviderBaseProps,
 } from './avatar-root-provider.vue'
+export { avatarAnatomy } from './avatar.anatomy'
 
 export * as Avatar from './avatar'

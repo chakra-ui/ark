@@ -12,9 +12,9 @@ export interface FieldErrorTextProps
 </script>
 
 <script setup lang="ts">
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { fieldAnatomy } from './field.anatomy'
 
 defineProps<FieldErrorTextProps>()
 const field = useFieldContext()

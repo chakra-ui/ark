@@ -1,6 +1,5 @@
-import { menuAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@testing-library/vue'
-import { Menu } from '..'
+import { Menu, menuAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './menu.test.vue'
 

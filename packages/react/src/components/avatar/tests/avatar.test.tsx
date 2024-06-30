@@ -1,7 +1,6 @@
-import { avatarAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render } from '@testing-library/react/pure'
 import { axe } from 'vitest-axe'
-import { Avatar } from '../'
+import { Avatar, avatarAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

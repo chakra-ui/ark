@@ -156,5 +156,6 @@ export {
   type UseColorPickerReturn,
 } from './use-color-picker'
 export { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
+export { colorPickerAnatomy } from './color-picker.anatomy'
 
 export * as ColorPicker from './color-picker'

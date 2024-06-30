@@ -1,10 +1,10 @@
-import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { FileUpload } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
+import { fileUploadAnatomy } from '../file-upload.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('File Upload / Parts & Exports', () => {

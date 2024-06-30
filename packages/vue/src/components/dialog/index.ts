@@ -48,5 +48,6 @@ export {
 } from './dialog-trigger.vue'
 export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 export { useDialogContext, type UseDialogContext } from './use-dialog-context'
+export { dialogAnatomy } from './dialog.anatomy'
 
 export * as Dialog from './dialog'

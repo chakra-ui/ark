@@ -51,5 +51,6 @@ export {
 } from './progress-view.vue'
 export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
 export { useProgressContext, type UseProgressContext } from './use-progress-context'
+export { progressAnatomy } from './progress.anatomy'
 
 export * as Progress from './progress'

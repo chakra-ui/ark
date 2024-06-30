@@ -1,9 +1,9 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Field } from '../'
 import { getExports, getParts } from '../../setup-test'
+import { fieldAnatomy } from './field.anatomy'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>

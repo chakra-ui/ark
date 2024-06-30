@@ -1,8 +1,7 @@
-import { clipboardAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { Clipboard } from '../'
+import { Clipboard, clipboardAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 
 const ComponentUnderTest = () => (

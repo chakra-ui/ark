@@ -1,7 +1,6 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Field } from '../'
+import { Field, fieldAnatomy } from '../'
 import { getExports, getParts } from '../../setup-test'
 
 const ComponentUnderTest = (props: Field.RootProps) => (

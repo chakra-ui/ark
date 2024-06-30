@@ -1,7 +1,6 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { ColorPicker } from '../'
+import { ColorPicker, colorPickerAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './color-picker.test.vue'

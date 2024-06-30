@@ -1,7 +1,6 @@
-import { accordionAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Accordion } from '../'
+import { Accordion, accordionAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './accordion.test.vue'
 

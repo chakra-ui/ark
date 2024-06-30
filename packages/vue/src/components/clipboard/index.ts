@@ -38,5 +38,6 @@ export {
 } from './clipboard-trigger.vue'
 export { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard'
 export { useClipboardContext, type UseClipboardContext } from './use-clipboard-context'
+export { clipboardAnatomy } from './clipboard.anatomy'
 
 export * as Clipboard from './clipboard'

@@ -1,8 +1,8 @@
-import { qrCodeAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render } from '@testing-library/react/pure'
 import { axe } from 'vitest-axe'
 import { QrCode } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { qrCodeAnatomy } from '../qr-code.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Avatar / Parts & Exports', () => {

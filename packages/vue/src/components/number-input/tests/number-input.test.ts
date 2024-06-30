@@ -1,7 +1,6 @@
-import { numberInputAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { NumberInput } from '../'
+import { NumberInput, numberInputAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './number-input.test.vue'

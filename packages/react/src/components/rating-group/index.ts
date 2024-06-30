@@ -50,5 +50,6 @@ export {
   useRatingGroupItemContext,
   type UseRatingGroupItemContext,
 } from './use-rating-group-item-context'
+export { ratingGroupAnatomy } from './rating-group.anatomy'
 
 export * as RatingGroup from './rating-group'

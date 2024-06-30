@@ -1,5 +1,5 @@
-import type { AnatomyInstance } from '@ark-ui/anatomy'
 import '@testing-library/jest-dom/vitest'
+import type { AnatomyInstance } from '@zag-js/anatomy'
 import ResizeObserver from 'resize-observer-polyfill'
 import { vi } from 'vitest'
 

@@ -1,10 +1,10 @@
-import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { TagsInput } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
+import { tagsInputAnatomy } from '../tags-input.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('TagsInput / Parts & Exports', () => {

@@ -1,9 +1,9 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { SegmentGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { segmentGroupAnatomy } from '../segment-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Segment Group / Parts & Exports', () => {

@@ -1,7 +1,6 @@
-import { switchAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Switch } from '..'
+import { Switch, switchAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './switch.test.vue'

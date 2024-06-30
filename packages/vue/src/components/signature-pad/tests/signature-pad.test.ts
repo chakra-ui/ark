@@ -1,7 +1,6 @@
-import { signaturePadAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { SignaturePad } from '..'
+import { SignaturePad, signaturePadAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './signature-pad.test.vue'

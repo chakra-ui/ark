@@ -29,5 +29,6 @@ export {
   type UseCollapsibleReturn,
 } from './use-collapsible'
 export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'
+export { collapsibleAnatomy } from './collapsible.anatomy'
 
 export * as Collapsible from './collapsible'

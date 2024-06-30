@@ -40,5 +40,6 @@ export {
   type FieldTextareaProps,
 } from './field-textarea.vue'
 export { useFieldContext, type UseFieldContext } from './use-field-context'
+export { fieldAnatomy } from './field.anatomy'
 
 export * as Field from './field'

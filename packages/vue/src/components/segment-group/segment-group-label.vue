@@ -13,20 +13,20 @@ export interface SegmentGroupLabelProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
+import {parts} from './segment-group.anatomy'
+
 
 defineProps<SegmentGroupLabelProps>()
 const segmentGroup = useSegmentGroupContext()
-const { label } = segmentGroupAnatomy.build()
 </script>
 
 <template>
   <ark.label
     v-bind="segmentGroup.getLabelProps()"
     :as-child="asChild"
-    :data-scope="label.attrs['data-scope']"
-    :data-part="label.attrs['data-part']"
+    :data-scope="parts.label.attrs['data-scope']"
+    :data-part="parts.label.attrs['data-part']"
   >
     <slot />
   </ark.label>

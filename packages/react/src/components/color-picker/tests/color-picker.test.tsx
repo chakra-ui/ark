@@ -1,9 +1,9 @@
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ColorPicker } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { colorPickerAnatomy } from '../color-picker.anatomy'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 

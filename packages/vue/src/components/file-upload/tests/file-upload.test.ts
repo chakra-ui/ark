@@ -1,7 +1,6 @@
-import { fileUploadAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { FileUpload } from '../'
+import { FileUpload, fileUploadAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './file-upload.test.vue'

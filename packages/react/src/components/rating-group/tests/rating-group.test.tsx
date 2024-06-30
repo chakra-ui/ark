@@ -1,10 +1,10 @@
-import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { RatingGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
+import { ratingGroupAnatomy } from '../rating-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Rating Group / Parts & Exports', () => {

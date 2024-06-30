@@ -1,7 +1,6 @@
-import { ratingGroupAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { RatingGroup } from '../'
+import { RatingGroup, ratingGroupAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './rating-group.test.vue'

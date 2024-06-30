@@ -27,5 +27,6 @@ export {
 } from './toast-title.vue'
 export { Toaster, type ToasterProps, type ToasterBaseProps } from './toaster'
 export { useToastContext, type UseToastContext } from './use-toast-context'
+export { toastAnatomy } from './toast.anatomy'
 
 export * as Toast from './toast'

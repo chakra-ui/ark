@@ -1,7 +1,6 @@
-import { fieldAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Field } from '../'
+import { Field, fieldAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './field.test.vue'
 
