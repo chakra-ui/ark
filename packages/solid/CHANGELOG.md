@@ -6,7 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Added
+- **All Components**: Exported each component's anatomy. For example:
+
+  ```jsx
+  import { avatarAnatomy } from '@ark-ui/solid'
+  ```
 
 - **NumberInput:** Introduced the `ValueText` part to render the internal state value.
 

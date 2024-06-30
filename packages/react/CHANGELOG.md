@@ -8,6 +8,12 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
+- **All Components**: Exported each component's anatomy. For example:
+
+  ```jsx
+  import { avatarAnatomy } from '@ark-ui/react'
+  ```
+
 - **NumberInput:** Introduced the `ValueText` part to render the internal state value.
 - **Checkbox:** Added the `name` prop to `Checkbox.Group` for setting names within the group.
 
