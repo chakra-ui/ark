@@ -14,85 +14,85 @@ description: All notable changes will be documented in this file.
   import { avatarAnatomy } from '@ark-ui/react'
   ```
 
-- **NumberInput:** Introduced the `ValueText` part to render the internal state value.
-- **Checkbox:** Added the `name` prop to `Checkbox.Group` for setting names within the group.
+- **NumberInput**: Introduced the `ValueText` part to render the internal state value.
+- **Checkbox**: Added the `name` prop to `Checkbox.Group` for setting names within the group.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue preventing input usage within the tree.
-- **Progress:** Fixed a warning in `Circle` due to an incorrect `viewBox` attribute on the `<svg>`
+- **TreeView**: Resolved an issue preventing input usage within the tree.
+- **Progress**: Fixed a warning in `Circle` due to an incorrect `viewBox` attribute on the `<svg>`
   element.
-- **Carousel:** Corrected looping behavior for next and previous buttons when both `slidesPerView`
+- **Carousel**: Corrected looping behavior for next and previous buttons when both `slidesPerView`
   and `loop` are set.
-- **Menu:** Fixed loss of position data in the context menu upon closing.
+- **Menu**: Fixed loss of position data in the context menu upon closing.
 
 ## [3.4.0] - 2024-06-25
 
 ### Added
 
-- **Field:** Introduced the `Field` component for flexible form input, label, and helper text
+- **Field**: Introduced the `Field` component for flexible form input, label, and helper text
   container.
-- **All Components:** Exposed base props to simplify prop merging for library consumers, especially
+- **All Components**: Exposed base props to simplify prop merging for library consumers, especially
   in CSS-in-JS environments.
   ```jsx
   export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
   export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
   ```
-- **ColorPicker:** Added `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
+- **ColorPicker**: Added `SliderValueText`, `SliderLabel`, and `ValueSwatch` parts for enhanced
   customization.
-- **Tooltip:** Introduced the `closeOnScroll` option to control whether the tooltip should close
+- **Tooltip**: Introduced the `closeOnScroll` option to control whether the tooltip should close
   when the trigger's overflow parent scrolls.
-- **Portal:** Added support for `Shadow DOM`.
-- **Signature Pad:** Introduced `HiddenInput` to the `SignaturePad` component for better form
+- **Portal**: Added support for `Shadow DOM`.
+- **Signature Pad**: Introduced `HiddenInput` to the `SignaturePad` component for better form
   library compatibility.
 
 ### Fixed
 
-- **Menu:**
+- **Menu**:
   - Resolved an issue causing sibling menus or popovers to malfunction on iOS devices.
   - Fixed a problem where the context menu trigger showed the magnifier and iOS context menu on long
     press.
   - Fixed an issue where `RadioOptionItem` did not provide the `checked` state in context.
-- **Editable:** Fixed a bug where setting `activationMode` to `dblclick` unexpectedly cleared the
+- **Editable**: Fixed a bug where setting `activationMode` to `dblclick` unexpectedly cleared the
   input value.
-- **Checkbox:** Added the missing `group` role for the Checkbox group component.
-- **Progress:** Converted `Circle`, `CircleTrack`, and `CircleRange` components to use React's
+- **Checkbox**: Added the missing `group` role for the Checkbox group component.
+- **Progress**: Converted `Circle`, `CircleTrack`, and `CircleRange` components to use React's
   `forwardRef` for improved ref handling.
-- **RootProvider:** Added the missing `RootProvider` for the `ColorPicker`, `NumberInput`,
+- **RootProvider**: Added the missing `RootProvider` for the `ColorPicker`, `NumberInput`,
   `RatingGroup`, `SegmentGroup`, and `ToggleGroup` components.
 
 ## [3.3.0] - 2024-06-12
 
 ### Added
 
-- **Signature Pad:** Introduced the `SignaturePad` component for capturing signatures.
-- **QR Code:** Added the `QRCode` component for generating QR codes.
-- **CheckboxGroup:** Added the `CheckboxGroup` component for managing multiple checkboxes.
-- **Presence:** Added support for `immediate` to synchronize presence changes immediately instead of
+- **Signature Pad**: Introduced the `SignaturePad` component for capturing signatures.
+- **QR Code**: Added the `QRCode` component for generating QR codes.
+- **CheckboxGroup**: Added the `CheckboxGroup` component for managing multiple checkboxes.
+- **Presence**: Added support for `immediate` to synchronize presence changes immediately instead of
   deferring to the next tick.
 
 ### Fixed
 
-- **TreeView:** Resolved an issue where the tree view state could be updated after setting
+- **TreeView**: Resolved an issue where the tree view state could be updated after setting
   `defaultSelectedValue` or `defaultExpandedValue`.
-- **Popover, HoverCard:** Fixed an issue where `defaultOpen` did not work.
-- **Tabs:** Resolved an issue where rapidly changing the selected tab could briefly show previous
+- **Popover, HoverCard**: Fixed an issue where `defaultOpen` did not work.
+- **Tabs**: Resolved an issue where rapidly changing the selected tab could briefly show previous
   tab content.
-- **FileUpload:** Fixed an issue where the `onFileAccept` event was triggered when deleting an item
+- **FileUpload**: Fixed an issue where the `onFileAccept` event was triggered when deleting an item
   via the delete trigger.
-- **Select:** Exported missing `SelectList` component.
+- **Select**: Exported missing `SelectList` component.
 
 ## [3.2.1] - 2024-06-07
 
 ### Fixed
 
-- **Combobox:** Exported missing `ComboboxList` component.
+- **Combobox**: Exported missing `ComboboxList` component.
 
 ## [3.2.0] - 2024-06-06
 
 ### Added
 
-- **All Components:** Introduced the `Provider` component for easier access to internal machine
+- **All Components**: Introduced the `Provider` component for easier access to internal machine
   APIs, improving component composition. See the example below:
 
 ```tsx
@@ -116,13 +116,13 @@ export const Provider = () => {
 
 ### Added
 
-- **Editable:** Supported `textarea` as the input element in edit mode.
+- **Editable**: Supported `textarea` as the input element in edit mode.
 
 ### Fixed
 
-- **Select:** Fixed an issue where changing the label of a collection item did not trigger a change
+- **Select**: Fixed an issue where changing the label of a collection item did not trigger a change
   event.
-- **Popover:**
+- **Popover**:
   - Implemented `autoFocus` to determine whether the popover should autofocus on open:
     - When `true`, the first focusable element or the content is focused.
     - When `false`, the content is focused.
@@ -136,7 +136,7 @@ export const Provider = () => {
 - Fixed an issue where the `keydown` event might not fire in React due to
   `nativeEvent.currentTarget` not being set consistently.
 
-- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
+- **Avatar**: Improved image load check by using `naturalWidth` and `naturalHeight` instead of
   `currentSrc`.
 
 ## [3.0.2] - 2024-05-29
@@ -147,7 +147,7 @@ export const Provider = () => {
 - Fixed an issue where the `keydown` event might not fire in React due to
   `nativeEvent.currentTarget` not being set consistently.
 
-- **Avatar:** Improved image load check by using `naturalWidth` and `naturalHeight` instead of
+- **Avatar**: Improved image load check by using `naturalWidth` and `naturalHeight` instead of
   `currentSrc`.
 
 ## [3.0.1] - 2024-05-27
@@ -167,7 +167,7 @@ compatibility with React 19. Here are some of the highlights:
 
 ### Added
 
-- **Context Components:** Introduced the `Context` component for easier access to internal machine
+- **Context Components**: Introduced the `Context` component for easier access to internal machine
   APIs, improving component composition. See the example below:
 
 ```tsx
@@ -188,18 +188,18 @@ export const Basic = () => (
 )
 ```
 
-- **Format:** Added a `Format` component for formatting bytes and numbers.
+- **Format**: Added a `Format` component for formatting bytes and numbers.
 
 ```tsx
 <Format.Byte value={120904} unit="byte" unitDisplay="short" />
 <Format.Number value={1204} unit="centimeter" />
 ```
 
-- **Tooltip:** Added `defaultOpen` prop for cases where you do not need to control its open state.
-- **Types:** Exported `Assign` and `Optional` types to enhance type handling.
-- **Toast:** Added support for overlapping and stacked toast.
+- **Tooltip**: Added `defaultOpen` prop for cases where you do not need to control its open state.
+- **Types**: Exported `Assign` and `Optional` types to enhance type handling.
+- **Toast**: Added support for overlapping and stacked toast.
 
-- **[BREAKING]:** Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
+- **[BREAKING]**: Exposed hidden inputs in `Checkbox`, `ColorPicker`, `FileUpload`, `PinInput`,
   `RadioGroup`, `RatingGroup`, `SegmentGroup`, `Select`, `Slider`, `Switch`, and `TagsInput` for
   better form library compatibility. Please ensure to include the hidden input in your component
   like shown below:
@@ -216,7 +216,7 @@ export const Basic = () => (
 </Checkbox.Root>
 ```
 
-- **[BREAKING] Combobox, Select:** Made `id` optional and removed `htmlFor` from `ItemGroupLabel`
+- **[BREAKING] Combobox, Select**: Made `id` optional and removed `htmlFor` from `ItemGroupLabel`
   for cleaner markup.
 
 ```diff
@@ -226,26 +226,26 @@ export const Basic = () => (
 +   <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
 ```
 
-- **[BREAKING] Popover, Tooltip:** Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
+- **[BREAKING] Popover, Tooltip**: Renamed `closeOnEsc` to `closeOnEscape` to be consistent with
   dialog machine.
-- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup:** Renamed `loop` to `loopFocus` to be more
+- **[BREAKING] Combobox, Menu, Select, Tabs, ToggleGroup**: Renamed `loop` to `loopFocus` to be more
   descriptive.
-- **[BREAKING] Environment:** Renamed `Environment` to `EnvironmentProvider` to align with other
+- **[BREAKING] Environment**: Renamed `Environment` to `EnvironmentProvider` to align with other
   providers.
-- **React 19:** Improved the `ark` factory's forward compatibility with React 19 by supporting `ref`
+- **React 19**: Improved the `ark` factory's forward compatibility with React 19 by supporting `ref`
   as a normal prop.
 
 ### Fixed
 
-- **DatePicker:** Resolved issues with `min` and `max` props not supporting date strings.
-- **Accordion:** Fixed initial flicker of content.
-- **TagsInput:** Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
+- **DatePicker**: Resolved issues with `min` and `max` props not supporting date strings.
+- **Accordion**: Fixed initial flicker of content.
+- **TagsInput**: Replaced `HTMLInputElement` with `HTMLDivElement` in `TagsInput.Root`.
 
 ### Removed
 
-- **[BREAKING]:** Dropped direct internal API access from Root components. Use the new `Context`
+- **[BREAKING]**: Dropped direct internal API access from Root components. Use the new `Context`
   component for more flexible and cleaner API integration.
-- **[BREAKING]:** Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
+- **[BREAKING]**: Simplified component APIs by removing `dir` and `getRootNode` attributes. Use
   [LocaleProvider](https://ark-ui.com/react/docs/providers/environment) and
   [EnvironmentProvider](https://ark-ui.com/react/docs/providers/locale) for these settings.
 
@@ -387,7 +387,7 @@ export const Basic = () => (
 - Added `TreeView` component
 - Updated `@zag-js` dependencies to their latest versions, enhancing performance for all components.
 
-- **Breaking Change:** Renamed the root types for all components to `<ComponentName>RootProps`. Like
+- **Breaking Change**: Renamed the root types for all components to `<ComponentName>RootProps`. Like
   shown for the `Avatar` component below:
 
 ```diff
@@ -395,7 +395,7 @@ export const Basic = () => (
 + import type { AvatarRootProps } from "@ark-ui/react"
 ```
 
-- **Breaking Change:** Removed the `.Root` suffix for provider component like `Presence` and
+- **Breaking Change**: Removed the `.Root` suffix for provider component like `Presence` and
   `Environment`.
 
 ```diff
@@ -403,7 +403,7 @@ export const Basic = () => (
 + <Presence>...</Presence>
 ```
 
-- **Breaking Change:** Renamed the `indicator` part to `view` in the `Progress` component to more
+- **Breaking Change**: Renamed the `indicator` part to `view` in the `Progress` component to more
   accurately reflect its functionality.
 
 - Added the `ItemPreview` component to the `TagsInput` component. See the example below:
