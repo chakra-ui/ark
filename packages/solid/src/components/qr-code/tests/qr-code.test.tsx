@@ -1,6 +1,5 @@
-import { qrCodeAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
-import { QrCode } from '../'
+import { QrCode, qrCodeAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

@@ -3,6 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
+import { useFieldContext } from '../field'
 
 export interface UseNumberInputProps
   extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -18,9 +19,18 @@ export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
+  const field = useFieldContext()
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.().ids.label,
+      input: field?.().ids.control,
+    },
+    disabled: field?.().disabled,
+    readOnly: field?.().readOnly,
+    required: field?.().required,
+    invalid: field?.().invalid,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     value: props.defaultValue,

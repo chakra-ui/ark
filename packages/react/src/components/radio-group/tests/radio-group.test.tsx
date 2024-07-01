@@ -1,9 +1,9 @@
-import { radioGroupAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { RadioGroup } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { radioGroupAnatomy } from '../radio-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Radio Group / Parts & Exports', () => {

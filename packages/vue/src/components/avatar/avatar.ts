@@ -3,21 +3,21 @@ export { default as Context, type AvatarContextProps as ContextProps } from './a
 export {
   default as Fallback,
   type AvatarFallbackProps as FallbackProps,
-  type AvatarFallbackProps as FallbackBaseProps,
+  type AvatarFallbackBaseProps as FallbackBaseProps,
 } from './avatar-fallback.vue'
 export {
   default as Image,
   type AvatarImageProps as ImageProps,
-  type AvatarImageProps as ImageBaseProps,
+  type AvatarImageBaseProps as ImageBaseProps,
 } from './avatar-image.vue'
 export {
   default as RootProvider,
   type AvatarRootProviderProps as RootProviderProps,
-  type AvatarRootProviderProps as RootProviderBaseProps,
+  type AvatarRootProviderBaseProps as RootProviderBaseProps,
 } from './avatar-root-provider.vue'
 export {
   default as Root,
   type AvatarRootEmits as RootEmits,
-  type AvatarRootProps as RootBaseProps,
+  type AvatarRootBaseProps as RootBaseProps,
   type AvatarRootProps as RootProps,
 } from './avatar-root.vue'

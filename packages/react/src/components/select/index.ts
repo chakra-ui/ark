@@ -100,5 +100,6 @@ export {
 export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 export { useSelectContext, type UseSelectContext } from './use-select-context'
 export { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
+export { selectAnatomy } from './select.anatomy'
 
 export * as Select from './select'

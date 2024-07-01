@@ -14,11 +14,19 @@ export interface FileUploadHiddenInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
+import { useFieldContext } from '../field'
 
 defineProps<FileUploadHiddenInputProps>()
 const fileUpload = useFileUploadContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="fileUpload.getHiddenInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="fileUpload.getHiddenInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

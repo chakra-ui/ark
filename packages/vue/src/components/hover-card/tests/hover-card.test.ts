@@ -1,7 +1,6 @@
-import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { HoverCard } from '../'
+import { HoverCard, hoverCardAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './hover-card.test.vue'
 

@@ -1,8 +1,8 @@
-import { tagsInputAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { TagsInput } from '..'
+import { TagsInput, tagsInputAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
+import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './tags-input.test.vue'
 
 describe('TagsInput', () => {
@@ -71,5 +71,43 @@ describe('TagsInput', () => {
     expect(screen.queryByText('react')).not.toBeInTheDocument()
     expect(screen.queryByText('solid')).not.toBeInTheDocument()
     expect(screen.queryByText('vue')).not.toBeInTheDocument()
+  })
+})
+
+describe('TagsInput / Field', () => {
+  it('should set tags input as required', async () => {
+    render(WithField, { props: { required: true } })
+    expect(screen.getAllByRole('textbox', { hidden: true })[1]).toBeRequired()
+  })
+
+  it('should set tags input as disabled', async () => {
+    render(WithField, { props: { disabled: true } })
+    expect(screen.getAllByRole('textbox', { hidden: true })[1]).toBeDisabled()
+  })
+
+  it('should set tags input as readonly', async () => {
+    render(WithField, { props: { readOnly: true } })
+    expect(screen.getAllByRole('textbox', { hidden: true })[1]).toHaveAttribute('readonly')
+  })
+
+  it('should display helper text', async () => {
+    render(WithField)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    render(WithField, { props: { invalid: true } })
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should focus on tags input when label is clicked', async () => {
+    render(WithField)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveFocus()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    render(WithField)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

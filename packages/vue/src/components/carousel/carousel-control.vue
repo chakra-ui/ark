@@ -12,8 +12,8 @@ export interface CarouselControlProps
 </script>
 
 <script setup lang="ts">
-import { carouselAnatomy } from '@ark-ui/anatomy'
 import { ark } from '../factory'
+import { carouselAnatomy } from './carousel.anatomy'
 
 defineProps<CarouselControlProps>()
 </script>

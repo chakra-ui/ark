@@ -8,3 +8,4 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Advanced } from './examples/advanced'
+export { WithField } from './examples/with-field'

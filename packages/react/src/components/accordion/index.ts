@@ -8,13 +8,13 @@ export {
 } from './accordion-context'
 export {
   AccordionItem,
-  type AccordionItemProps,
   type AccordionItemBaseProps,
+  type AccordionItemProps,
 } from './accordion-item'
 export {
   AccordionItemContent,
-  type AccordionItemContentProps,
   type AccordionItemContentBaseProps,
+  type AccordionItemContentProps,
 } from './accordion-item-content'
 export {
   AccordionItemContext,
@@ -22,26 +22,27 @@ export {
 } from './accordion-item-context'
 export {
   AccordionItemIndicator,
-  type AccordionItemIndicatorProps,
   type AccordionItemIndicatorBaseProps,
+  type AccordionItemIndicatorProps,
 } from './accordion-item-indicator'
 export {
   AccordionItemTrigger,
-  type AccordionItemTriggerProps,
   type AccordionItemTriggerBaseProps,
+  type AccordionItemTriggerProps,
 } from './accordion-item-trigger'
 export {
   AccordionRoot,
-  type AccordionRootProps,
   type AccordionRootBaseProps,
+  type AccordionRootProps,
 } from './accordion-root'
 export {
   AccordionRootProvider,
-  type AccordionRootProviderProps,
   type AccordionRootProviderBaseProps,
+  type AccordionRootProviderProps,
 } from './accordion-root-provider'
 export { useAccordion, type UseAccordionProps, type UseAccordionReturn } from './use-accordion'
 export { useAccordionContext, type UseAccordionContext } from './use-accordion-context'
 export { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
+export { accordionAnatomy } from './accordion.anatomy'
 
 export * as Accordion from './accordion'

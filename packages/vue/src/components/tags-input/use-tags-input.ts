@@ -4,6 +4,7 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
 export interface UseTagsInputProps
@@ -24,9 +25,18 @@ export const useTagsInput = (
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const field = useFieldContext()
 
   const context = computed<tagsInput.Context>(() => ({
     id,
+    ids: {
+      label: field?.value.ids.label,
+      hiddenInput: field?.value.ids.control,
+    },
+    disabled: field?.value.disabled,
+    invalid: field?.value.invalid,
+    readOnly: field?.value.readOnly,
+    required: field?.value.required,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,

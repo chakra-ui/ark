@@ -53,5 +53,6 @@ export {
   type EditableRootProviderProps,
   type EditableRootProviderBaseProps,
 } from './editable-root-provider.vue'
+export { editableAnatomy } from './editable.anatomy'
 
 export * as Editable from './editable'

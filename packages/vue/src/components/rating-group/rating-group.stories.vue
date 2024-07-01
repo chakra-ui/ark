@@ -6,6 +6,7 @@ import FormUsage from './examples/form-usage.vue'
 import HalfRatings from './examples/half-ratings.vue'
 import InitialValue from './examples/initial-value.vue'
 import ReadOnly from './examples/read-only.vue'
+import WithField from './examples/with-field.vue'
 </script>
 <template>
   <Story title="RatingGroup">
@@ -29,6 +30,9 @@ import ReadOnly from './examples/read-only.vue'
     </Variant>
     <Variant title="FormUsage">
       <FormUsage />
+    </Variant>
+    <Variant title="With Field">
+      <WithField />
     </Variant>
   </Story>
 </template>

@@ -12,7 +12,6 @@ export interface ColorPickerValueTextProps
 </script>
 
 <script setup lang="ts">
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
 import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
@@ -23,7 +22,7 @@ const slots = useSlots()
 </script>
 
 <template>
-  <ark.span v-bind="colorPickerAnatomy.build().valueText.attrs" :as-child="asChild">
+  <ark.span v-bind="colorPicker.getValueTextProps()" :as-child="asChild">
     <slot>
       {{ slots.default?.() || colorPicker.valueAsString }}
     </slot>

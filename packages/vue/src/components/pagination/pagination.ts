@@ -6,31 +6,31 @@ export {
 export {
   default as Ellipsis,
   type PaginationEllipsisProps as EllipsisProps,
-  type PaginationEllipsisProps as EllipsisBaseProps,
+  type PaginationEllipsisBaseProps as EllipsisBaseProps,
 } from './pagination-ellipsis.vue'
 export {
   default as Item,
   type PaginationItemProps as ItemProps,
-  type PaginationItemProps as ItemBaseProps,
+  type PaginationItemBaseProps as ItemBaseProps,
 } from './pagination-item.vue'
 export {
   default as NextTrigger,
   type PaginationNextTriggerProps as NextTriggerProps,
-  type PaginationNextTriggerProps as NextTriggerBaseProps,
+  type PaginationNextTriggerBaseProps as NextTriggerBaseProps,
 } from './pagination-next-trigger.vue'
 export {
   default as PrevTrigger,
   type PaginationPrevTriggerProps as PrevTriggerProps,
-  type PaginationPrevTriggerProps as PrevTriggerBaseProps,
+  type PaginationPrevTriggerBaseProps as PrevTriggerBaseProps,
 } from './pagination-prev-trigger.vue'
 export {
   default as RootProvider,
   type PaginationRootProviderProps as RootProviderProps,
-  type PaginationRootProviderProps as RootProviderBaseProps,
+  type PaginationRootProviderBaseProps as RootProviderBaseProps,
 } from './pagination-root-provider.vue'
 export {
   default as Root,
   type PaginationRootEmits as RootEmits,
-  type PaginationRootProps as RootBaseProps,
+  type PaginationRootBaseProps as RootBaseProps,
   type PaginationRootProps as RootProps,
 } from './pagination-root.vue'

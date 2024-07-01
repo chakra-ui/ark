@@ -10,5 +10,23 @@
     "description": "Build your own Design System",
     "url": "https://park-ui.com",
     "image": "https://park-ui.com/opengraph-image.png"
+  },
+  {
+    "title": "Typebot",
+    "description": "Open-source conversational apps builder",
+    "url": "https://typebot.io/",
+    "image": "https://home.typebot.io/images/preview.png"
+  },
+  {
+    "title": "Inkeep",
+    "description": "ChatGPT for your docs",
+    "url": "https://inkeep.com/",
+    "image": "https://marketing-hh1wdbx9b-inkeep.vercel.app/opengraph-image.png?2ddf48b899c7adb1"
+  },
+  {
+    "title": "RELAND",
+    "description": "Marketplace for rural real estate in Brazil",
+    "url": "https://reland.com.br/",
+    "image": "https://reland.com.br/opengraph-image.png"
   }
 ]

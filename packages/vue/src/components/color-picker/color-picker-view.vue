@@ -16,7 +16,7 @@ export interface ColorPickerViewProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { colorPickerAnatomy } from '@ark-ui/anatomy'
+import { colorPickerAnatomy } from './color-picker.anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
 import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 

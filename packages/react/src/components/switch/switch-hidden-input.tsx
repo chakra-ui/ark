@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { useFieldContext } from '../field'
 import { useSwitchContext } from './use-switch-context'
 
 export interface SwitchHiddenInputBaseProps extends PolymorphicProps {}
@@ -10,8 +11,9 @@ export const SwitchHiddenInput = forwardRef<HTMLInputElement, SwitchHiddenInputP
   (props, ref) => {
     const switchContext = useSwitchContext()
     const mergedProps = mergeProps(switchContext.getHiddenInputProps(), props)
+    const field = useFieldContext()
 
-    return <ark.input {...mergedProps} ref={ref} />
+    return <ark.input aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref} />
   },
 )
 

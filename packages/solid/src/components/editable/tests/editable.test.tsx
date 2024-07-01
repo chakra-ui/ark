@@ -1,8 +1,8 @@
-import { editableAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Editable } from '../'
+import { Editable, editableAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
@@ -67,5 +67,37 @@ describe('Editable', () => {
     await user.click(editableCancelTriggerButton)
 
     expect(input).toHaveAttribute('hidden', '')
+  })
+})
+
+describe('Editable / Field', () => {
+  it('should set editable as required', async () => {
+    render(() => <WithField required />)
+    expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
+  })
+
+  it('should set editable as disabled', async () => {
+    render(() => <WithField disabled />)
+    expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
+  })
+
+  it('should set editable as readonly', async () => {
+    render(() => <WithField readOnly />)
+    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
+  })
+
+  it('should display helper text', async () => {
+    render(() => <WithField />)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    render(() => <WithField invalid />)
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    render(() => <WithField />)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

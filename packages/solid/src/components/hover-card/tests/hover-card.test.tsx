@@ -1,7 +1,6 @@
-import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { HoverCard } from '../'
+import { HoverCard, hoverCardAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

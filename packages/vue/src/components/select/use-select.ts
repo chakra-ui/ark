@@ -5,6 +5,7 @@ import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import { useFieldContext } from '../field'
 import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
@@ -36,11 +37,20 @@ export const useSelect = <T extends CollectionItem>(
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const field = useFieldContext()
 
   const context = computed<select.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
       id,
+      ids: {
+        label: field?.value.ids.label,
+        hiddenSelect: field?.value.ids.control,
+      },
+      disabled: field?.value.disabled,
+      readOnly: field?.value.readOnly,
+      invalid: field?.value.invalid,
+      required: field?.value.required,
       dir: locale.value.dir,
       open: props.defaultOpen,
       'open.controlled': props.open !== undefined,

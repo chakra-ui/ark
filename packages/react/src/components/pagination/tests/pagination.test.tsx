@@ -1,8 +1,7 @@
-import { paginationAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Pagination } from '../'
+import { Pagination, paginationAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

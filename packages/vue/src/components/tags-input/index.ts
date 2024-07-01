@@ -75,5 +75,6 @@ export {
   useTagsInputItemContext,
   type UseTagsInputItemContext,
 } from './use-tags-input-item-context'
+export { tagsInputAnatomy } from './tags-input.anatomy'
 
 export * as TagsInput from './tags-input'

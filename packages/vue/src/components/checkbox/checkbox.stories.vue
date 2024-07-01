@@ -4,6 +4,7 @@ import Controlled from './examples/controlled.vue'
 import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
+import WithField from './examples/with-field.vue'
 </script>
 
 <template>
@@ -22,6 +23,9 @@ import RenderProp from './examples/render-prop.vue'
     </Variant>
     <Variant title="Group">
       <Group />
+    </Variant>
+    <Variant title="With Field">
+      <WithField />
     </Variant>
   </Story>
 </template>

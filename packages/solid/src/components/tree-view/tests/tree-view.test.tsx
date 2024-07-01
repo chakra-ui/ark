@@ -1,6 +1,5 @@
-import { treeViewAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
-import { TreeView } from '..'
+import { TreeView, treeViewAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

@@ -14,11 +14,19 @@ export interface ComboboxInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
+import { useFieldContext } from '../field'
 
 defineProps<ComboboxInputProps>()
 const combobox = useComboboxContext()
+const field = useFieldContext()
 </script>
 
 <template>
-  <ark.input v-bind="combobox.getInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    :aria-describedby="field?.ariaDescribedby"
+    v-bind="combobox.getInputProps()"
+    :as-child="asChild"
+  >
+    <slot />
+  </ark.input>
 </template>

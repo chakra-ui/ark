@@ -1,8 +1,7 @@
-import { carouselAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
 import { nextTick } from 'vue'
-import { Carousel } from '../'
+import { Carousel, carouselAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './carousel.test.vue'
 

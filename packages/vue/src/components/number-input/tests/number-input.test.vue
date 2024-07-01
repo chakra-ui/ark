@@ -4,7 +4,10 @@ import { NumberInput } from '../'
 
 <template>
   <NumberInput.Root>
-    <NumberInput.Label>Label</NumberInput.Label>
+    <NumberInput.Label>
+      Label:
+      <NumberInput.ValueText />
+    </NumberInput.Label>
     <NumberInput.Input />
     <NumberInput.Scrubber />
     <NumberInput.Control>

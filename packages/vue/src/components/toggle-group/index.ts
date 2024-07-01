@@ -25,5 +25,6 @@ export {
   type UseToggleGroupReturn,
 } from './use-toggle-group'
 export { useToggleGroupContext, type UseToggleGroupContext } from './use-toggle-group-context'
+export { toggleGroupAnatomy } from './toggle-group.anatomy'
 
 export * as ToggleGroup from './toggle-group'

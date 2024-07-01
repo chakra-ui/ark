@@ -13,20 +13,19 @@ export interface SegmentGroupIndicatorProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
+import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
 
 defineProps<SegmentGroupIndicatorProps>()
 const segmentGroup = useSegmentGroupContext()
-const { indicator } = segmentGroupAnatomy.build()
 </script>
 
 <template>
   <ark.div
     v-bind="segmentGroup.getIndicatorProps()"
     :as-child="asChild"
-    :data-scope="indicator.attrs['data-scope']"
-    :data-part="indicator.attrs['data-part']"
+    :data-scope="parts.indicator.attrs['data-scope']"
+    :data-part="parts.indicator.attrs['data-part']"
   >
     <slot />
   </ark.div>

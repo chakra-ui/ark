@@ -2,17 +2,17 @@ export type { OpenChangeDetails } from '@zag-js/tooltip'
 export {
   default as ArrowTip,
   type TooltipArrowTipProps as ArrowTipProps,
-  type TooltipArrowTipProps as ArrowTipBaseProps,
+  type TooltipArrowTipBaseProps as ArrowTipBaseProps,
 } from './tooltip-arrow-tip.vue'
 export {
   default as Arrow,
   type TooltipArrowProps as ArrowProps,
-  type TooltipArrowProps as ArrowBaseProps,
+  type TooltipArrowBaseProps as ArrowBaseProps,
 } from './tooltip-arrow.vue'
 export {
   default as Content,
   type TooltipContentProps as ContentProps,
-  type TooltipContentProps as ContentBaseProps,
+  type TooltipContentBaseProps as ContentBaseProps,
 } from './tooltip-content.vue'
 export {
   default as Context,
@@ -21,21 +21,21 @@ export {
 export {
   default as Positioner,
   type TooltipPositionerProps as PositionerProps,
-  type TooltipPositionerProps as PositionerBaseProps,
+  type TooltipPositionerBaseProps as PositionerBaseProps,
 } from './tooltip-positioner.vue'
 export {
   default as RootProvider,
   type TooltipRootProviderProps as RootProviderProps,
-  type TooltipRootProviderProps as RootProviderBaseProps,
+  type TooltipRootProviderBaseProps as RootProviderBaseProps,
 } from './tooltip-root-provider.vue'
 export {
   default as Root,
   type TooltipRootEmits as RootEmits,
-  type TooltipRootProps as RootBaseProps,
+  type TooltipRootBaseProps as RootBaseProps,
   type TooltipRootProps as RootProps,
 } from './tooltip-root.vue'
 export {
   default as Trigger,
   type TooltipTriggerProps as TriggerProps,
-  type TooltipTriggerProps as TriggerBaseProps,
+  type TooltipTriggerBaseProps as TriggerBaseProps,
 } from './tooltip-trigger.vue'

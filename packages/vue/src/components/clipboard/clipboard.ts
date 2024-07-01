@@ -5,37 +5,37 @@ export {
 } from './clipboard-context.vue'
 export {
   default as Control,
+  type ClipboardControlBaseProps as ControlBaseProps,
   type ClipboardControlProps as ControlProps,
-  type ClipboardControlProps as ControlBaseProps,
 } from './clipboard-control.vue'
 export {
   default as Indicator,
+  type ClipboardIndicatorBaseProps as IndicatorBaseProps,
   type ClipboardIndicatorProps as IndicatorProps,
-  type ClipboardIndicatorProps as IndicatorBaseProps,
 } from './clipboard-indicator.vue'
 export {
   default as Input,
+  type ClipboardInputBaseProps as InputBaseProps,
   type ClipboardInputProps as InputProps,
-  type ClipboardInputProps as InputBaseProps,
 } from './clipboard-input.vue'
 export {
   default as Label,
+  type ClipboardLabelBaseProps as LabelBaseProps,
   type ClipboardLabelProps as LabelProps,
-  type ClipboardLabelProps as LabelBaseProps,
 } from './clipboard-label.vue'
 export {
   default as RootProvider,
+  type ClipboardRootProviderBaseProps as RootProviderBaseProps,
   type ClipboardRootProviderProps as RootProviderProps,
-  type ClipboardRootProviderProps as RootProviderBaseProps,
 } from './clipboard-root-provider.vue'
 export {
   default as Root,
+  type ClipboardRootBaseProps as RootBaseProps,
   type ClipboardRootEmits as RootEmits,
-  type ClipboardRootProps as RootBaseProps,
   type ClipboardRootProps as RootProps,
 } from './clipboard-root.vue'
 export {
   default as Trigger,
+  type ClipboardTriggerBaseProps as TriggerBaseProps,
   type ClipboardTriggerProps as TriggerProps,
-  type ClipboardTriggerProps as TriggerBaseProps,
 } from './clipboard-trigger.vue'

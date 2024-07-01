@@ -4,6 +4,7 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 
 export interface UseSwitchProps
   extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -19,10 +20,19 @@ export interface UseSwitchReturn extends zagSwitch.Api<PropTypes> {}
 export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
+  const field = useFieldContext()
 
   const initialContext: zagSwitch.Context = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      hiddenInput: field?.ids.control,
+    },
     dir,
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    invalid: field?.invalid,
+    required: field?.required,
     getRootNode,
     checked: props.defaultChecked,
     ...props,

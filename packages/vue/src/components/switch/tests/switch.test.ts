@@ -1,8 +1,8 @@
-import { switchAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Switch } from '..'
+import { Switch, switchAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
+import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './switch.test.vue'
 
 describe('Switch', () => {
@@ -51,5 +51,38 @@ describe('Switch', () => {
     const switchControl = screen.getByRole('checkbox')
 
     expect(switchControl).toBeRequired()
+  })
+})
+
+describe('Switch / Field', () => {
+  it('should set switch as required', async () => {
+    render(WithField, { props: { required: true } })
+    expect(screen.getByRole('checkbox', { name: /label/i })).toBeRequired()
+  })
+
+  it('should set switch as disabled', async () => {
+    render(WithField, { props: { disabled: true } })
+    expect(screen.getByRole('checkbox', { name: /label/i })).toBeDisabled()
+  })
+
+  it('should display helper text', async () => {
+    render(WithField)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    render(WithField, { props: { invalid: true } })
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should focus on switch when label is clicked', async () => {
+    render(WithField)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('checkbox', { name: /label/i })).toHaveFocus()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    render(WithField)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

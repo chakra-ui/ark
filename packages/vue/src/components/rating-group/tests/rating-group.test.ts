@@ -1,7 +1,8 @@
-import { ratingGroupAnatomy } from '@ark-ui/anatomy'
+import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { RatingGroup } from '../'
+import { RatingGroup, ratingGroupAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './rating-group.test.vue'
 
 describe('Rating Group', () => {
@@ -41,5 +42,43 @@ describe('Rating Group', () => {
     fireEvent.click(maxStarRadio)
 
     await waitFor(() => expect(input).toHaveValue('5'))
+  })
+})
+
+describe('Rating Group / Field', () => {
+  it('should set rating group as required', async () => {
+    render(WithField, { props: { required: true } })
+    expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
+  })
+
+  it('should set rating group as disabled', async () => {
+    render(WithField, { props: { disabled: true } })
+    expect(screen.getByRole('textbox', { hidden: true })).toBeDisabled()
+  })
+
+  it('should set rating group as readonly', async () => {
+    render(WithField, { props: { readOnly: true } })
+    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
+  })
+
+  it('should display helper text', async () => {
+    render(WithField)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+
+  it('should display error text when error is present', async () => {
+    render(WithField, { props: { invalid: true } })
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+
+  it('should focus on rating group when label is clicked', async () => {
+    render(WithField)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('radio', { name: /1 stars/i })).toHaveFocus()
+  })
+
+  it('should not display error text when no error is present', async () => {
+    render(WithField)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

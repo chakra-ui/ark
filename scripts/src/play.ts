@@ -1,17 +1,16 @@
 import fs from 'node:fs/promises'
+import path from 'node:path'
 import { globby } from 'globby'
 
-const stories = await globby('../packages/*/src/components/*/*root.tsx')
+const anatomies = await globby('../packages/anatomy/src/*/index.ts')
 
 // biome-ignore lint/complexity/noForEach: <explanation>
-stories.forEach(async (story) => {
-  // create a copy of the file with the new name *-root-provider.tsx
-  // replace the name of the component with *-root-provider
+anatomies.forEach(async (story) => {
+  const component = path.parse(path.parse(story).dir).base
 
-  const content = await fs.readFile(story, 'utf-8')
-  const newContent = content.replaceAll(/Root/g, 'RootProvider')
+  const dest = story
+    .replace('packages/anatomy/src', 'packages/vue/src/components')
+    .replace('index.ts', `${component}.anatomy.ts`)
 
-  fs.writeFile(story.replace('root.tsx', 'root-provider.tsx'), newContent, 'utf-8')
+  await fs.copyFile(story, dest)
 })
-
-console.log(stories)

@@ -1,6 +1,6 @@
-import { checkboxAnatomy } from '@ark-ui/anatomy'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { checkboxAnatomy } from './checkbox.anatomy'
 import { type UseCheckboxGroupProps, useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 
@@ -14,6 +14,7 @@ export const CheckboxGroup = (props: CheckboxGroupProps) => {
     'onValueChange',
     'disabled',
     'readOnly',
+    'name',
   ])
   const checkboxGroup = useCheckboxGroup(checkboxGroupProps)
 

@@ -1,9 +1,9 @@
-import { hoverCardAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { HoverCard } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { hoverCardAnatomy } from '../hover-card.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('HoverCard / Parts & Exports', () => {

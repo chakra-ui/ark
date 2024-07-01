@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './signature-pad.types'
 
@@ -18,7 +19,11 @@ import { ark } from '../factory'
 import { useSignaturePad } from './use-signature-pad'
 import { SignaturePadProvider } from './use-signature-pad-context'
 
-const props = defineProps<SignaturePadRootProps>()
+const props = withDefaults(defineProps<SignaturePadRootBaseProps>(), {
+  readOnly: undefined,
+  disabled: undefined,
+  required: undefined,
+} satisfies BooleanDefaults<RootProps>)
 const emits = defineEmits<SignaturePadRootEmits>()
 
 const signaturepad = useSignaturePad(props, emits)

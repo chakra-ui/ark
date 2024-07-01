@@ -25,6 +25,11 @@
         "isRequired": false,
         "description": "If `true`, the checkbox group is disabled"
       },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the input fields in the checkbox group\n(Useful for form submission)."
+      },
       "onValueChange": {
         "type": "(value: string[]) => void",
         "isRequired": false,

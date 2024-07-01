@@ -1,7 +1,6 @@
-import { menuAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import { Index, splitProps } from 'solid-js'
-import { Menu } from '..'
+import { Menu, menuAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
 
 interface ComponentUnderTestProps extends Menu.RootProps {

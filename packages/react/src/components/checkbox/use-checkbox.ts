@@ -4,6 +4,7 @@ import { useId, useMemo } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
 export interface UseCheckboxProps
@@ -19,6 +20,7 @@ export interface UseCheckboxReturn extends checkbox.Api<PropTypes> {}
 
 export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn => {
   const checkboxGroup = useCheckboxGroupContext()
+  const field = useFieldContext()
 
   const props = useMemo(() => {
     return mergeProps(ownProps, checkboxGroup?.getItemProps({ value: ownProps.value }) ?? {})
@@ -29,7 +31,15 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
 
   const initialContext: checkbox.Context = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      hiddenInput: field?.ids.control,
+    },
     dir,
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    invalid: field?.invalid,
+    required: field?.required,
     getRootNode,
     checked: props.defaultChecked,
     ...props,

@@ -6,6 +6,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useEvent } from '../../utils/use-event'
+import { useFieldContext } from '../field'
 
 export interface UseComboboxProps<T extends CollectionItem>
   extends CollectionOptions<T>,
@@ -45,9 +46,18 @@ export const useCombobox = <T extends CollectionItem>(
 
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
+  const field = useFieldContext()
 
   const initialContext: combobox.Context<T> = {
     id: useId(),
+    ids: {
+      label: field?.ids.label,
+      input: field?.ids.control,
+    },
+    disabled: field?.disabled,
+    readOnly: field?.readOnly,
+    required: field?.required,
+    invalid: field?.invalid,
     dir,
     getRootNode,
     collection,

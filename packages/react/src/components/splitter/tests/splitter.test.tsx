@@ -1,7 +1,6 @@
-import { splitterAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render } from '@testing-library/react/pure'
 import { axe } from 'vitest-axe'
-import { Splitter } from '../'
+import { Splitter, splitterAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

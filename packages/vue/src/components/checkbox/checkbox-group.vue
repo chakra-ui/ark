@@ -15,8 +15,8 @@ export interface CheckboxGroupEmits extends GroupEmits {}
 </script>
 
 <script setup lang="ts">
-import { checkboxAnatomy } from '@ark-ui/anatomy'
 import { ark } from '../factory'
+import { checkboxAnatomy } from './checkbox.anatomy'
 import { useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupProvider } from './use-checkbox-group-context'
 

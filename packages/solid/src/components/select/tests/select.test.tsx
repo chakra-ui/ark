@@ -1,8 +1,8 @@
-import { selectAnatomy } from '@ark-ui/anatomy'
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Select } from '../'
+import { Select, selectAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
+import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('Select', () => {
@@ -103,5 +103,37 @@ describe('Select', () => {
 
     await user.click(screen.getByRole('combobox', { name: 'Framework' }))
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
+  })
+})
+
+describe('Select / Field', () => {
+  it('should set combobox as required', async () => {
+    render(() => <WithField required />)
+    expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()
+  })
+  it('should set input as disabled', async () => {
+    render(() => <WithField disabled />)
+    expect(screen.getByRole('combobox')).toBeDisabled()
+  })
+  it('should set input as readonly', async () => {
+    render(() => <WithField readOnly />)
+    expect(screen.getByRole('combobox')).toHaveAttribute('data-readonly')
+  })
+  it('should display helper text', async () => {
+    render(() => <WithField />)
+    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+  })
+  it('should display error text when error is present', async () => {
+    render(() => <WithField invalid />)
+    expect(screen.getByText('Error Info')).toBeInTheDocument()
+  })
+  it('should focus on input when label is clicked', async () => {
+    render(() => <WithField />)
+    await user.click(screen.getByText(/label/i))
+    expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus()
+  })
+  it('should not display error text when no error is present', async () => {
+    render(() => <WithField />)
+    expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

@@ -1,8 +1,8 @@
-import { toastAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { getParts } from '../../../setup-test'
+import { toastAnatomy } from '../toast.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast / Parts & Exports', () => {

@@ -14,7 +14,6 @@ export interface SelectValueTextProps
 </script>
 
 <script setup lang="ts">
-import { selectAnatomy } from '@ark-ui/anatomy'
 import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
@@ -25,7 +24,7 @@ const slots = useSlots()
 </script>
 
 <template>
-  <ark.span v-bind="selectAnatomy.build().valueText.attrs" :as-child="asChild">
+  <ark.span v-bind="select.getValueTextProps()" :as-child="asChild">
     <slot>{{ slots.default?.() || select.valueAsString || props.placeholder }}</slot>
   </ark.span>
 </template>

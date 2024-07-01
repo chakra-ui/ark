@@ -1,6 +1,5 @@
-import { progressAnatomy } from '@ark-ui/anatomy'
 import { render, screen } from '@solidjs/testing-library'
-import { Progress } from '../'
+import { Progress, progressAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

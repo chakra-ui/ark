@@ -1,6 +1,5 @@
-import { avatarAnatomy } from '@ark-ui/anatomy'
 import { render } from '@solidjs/testing-library'
-import { Avatar } from '../'
+import { Avatar, avatarAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

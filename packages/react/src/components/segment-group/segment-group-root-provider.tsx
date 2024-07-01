@@ -1,8 +1,8 @@
-import { segmentGroupAnatomy } from '@ark-ui/anatomy'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { parts } from './segment-group.anatomy'
 import type { UseSegmentGroupReturn } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
@@ -22,7 +22,7 @@ export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupR
     ])
     const mergedProps = mergeProps(
       segmentGroup.getRootProps(),
-      segmentGroupAnatomy.build().root.attrs as Record<string, string>,
+      parts.root.attrs as Record<string, string>,
       localProps,
     )
 

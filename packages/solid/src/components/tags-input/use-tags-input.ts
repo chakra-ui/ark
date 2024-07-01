@@ -3,6 +3,7 @@ import * as tagsInput from '@zag-js/tags-input'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
+import { useFieldContext } from '../field'
 
 export interface UseTagsInputProps
   extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
@@ -18,10 +19,19 @@ export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
+  const field = useFieldContext()
 
   const context = createMemo(() => ({
     id,
+    ids: {
+      label: field?.().ids.label,
+      hiddenInput: field?.().ids.control,
+    },
     dir: locale().dir,
+    disabled: field?.().disabled,
+    invalid: field?.().invalid,
+    readOnly: field?.().readOnly,
+    required: field?.().required,
     getRootNode: environment().getRootNode,
     value: props.defaultValue,
     ...props,

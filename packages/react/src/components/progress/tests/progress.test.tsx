@@ -1,7 +1,6 @@
-import { progressAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render, screen } from '@testing-library/react/pure'
 import { axe } from 'vitest-axe'
-import { Progress } from '../'
+import { Progress, progressAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

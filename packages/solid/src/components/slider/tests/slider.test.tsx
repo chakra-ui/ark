@@ -1,7 +1,6 @@
-import { sliderAnatomy } from '@ark-ui/anatomy'
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Slider } from '../'
+import { Slider, sliderAnatomy } from '../'
 import { LocaleProvider } from '../../../providers'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
