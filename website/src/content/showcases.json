@@ -28,5 +28,11 @@
     "description": "Marketplace for rural real estate in Brazil",
     "url": "https://reland.com.br/",
     "image": "https://reland.com.br/opengraph-image.png"
+  },
+  {
+    "title": "Gumbo",
+    "description": "AI-powered Personalised Recipe Search Engine",
+    "url": "https://www.gumbo.kitchen/",
+    "image": "https://i.imgur.com/y76kzDu.png"
   }
 ]
