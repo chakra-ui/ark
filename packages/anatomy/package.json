@@ -360,17 +360,6 @@
         "default": "./dist/tags-input/index.cjs"
       }
     },
-    "./toast": {
-      "source": "./src/toast/index.ts",
-      "import": {
-        "types": "./dist/toast/index.d.ts",
-        "default": "./dist/toast/index.js"
-      },
-      "require": {
-        "types": "./dist/toast/index.d.cts",
-        "default": "./dist/toast/index.cjs"
-      }
-    },
     "./time-picker": {
       "source": "./src/time-picker/index.ts",
       "import": {
@@ -380,6 +369,17 @@
       "require": {
         "types": "./dist/time-picker/index.d.cts",
         "default": "./dist/time-picker/index.cjs"
+      }
+    },
+    "./toast": {
+      "source": "./src/toast/index.ts",
+      "import": {
+        "types": "./dist/toast/index.d.ts",
+        "default": "./dist/toast/index.js"
+      },
+      "require": {
+        "types": "./dist/toast/index.d.cts",
+        "default": "./dist/toast/index.cjs"
       }
     },
     "./toggle-group": {

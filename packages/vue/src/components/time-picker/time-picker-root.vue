@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<TimePickerRootProps>(), {
   disableLayer: undefined,
   open: undefined,
   readOnly: undefined,
-  'open.controlled': undefined,
+  defaultOpen: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<TimePickerRootEmits>()
