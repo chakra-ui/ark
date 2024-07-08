@@ -22,7 +22,7 @@ export const DocsFooter = (props: Props) => {
       {prevPage && (
         <NextLink href={[basepath, prevPage.slug].join('/')} className={link}>
           <Text color="fg.muted" fontWeight="medium" textStyle="sm">
-            Next page
+            Prev page
           </Text>
           <HStack gap="1">
             <Icon size="md">
