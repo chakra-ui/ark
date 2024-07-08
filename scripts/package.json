@@ -29,7 +29,7 @@
     "globby": "14.0.2",
     "pkg-dir": "8.0.0",
     "prettier": "3.3.2",
-    "prettier-plugin-organize-imports": "3.2.4",
+    "prettier-plugin-organize-imports": "4.0.0",
     "ts-morph": "23.0.0",
     "ts-pattern": "5.2.0",
     "typescript": "5.5.2",
