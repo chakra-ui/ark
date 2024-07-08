@@ -579,7 +579,7 @@
     "lucide-vue-next": "0.399.0",
     "release-it": "17.4.1",
     "resize-observer-polyfill": "1.5.1",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "vite": "5.3.3",
     "vite-plugin-dts": "3.9.1",
     "vitest": "1.6.0",

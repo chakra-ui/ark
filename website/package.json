@@ -38,7 +38,7 @@
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
     "shiki": "1.10.3",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "velite": "0.1.0"
   }
 }
