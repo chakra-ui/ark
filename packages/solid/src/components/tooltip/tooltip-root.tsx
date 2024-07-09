@@ -19,6 +19,7 @@ export const TooltipRoot = (props: TooltipRootProps) => {
   const [useTooltipProps, localProps] = createSplitProps<UseTooltipProps>()(tooltipProps, [
     'aria-label',
     'closeDelay',
+    'closeOnClick',
     'closeOnEscape',
     'closeOnPointerDown',
     'closeOnScroll',

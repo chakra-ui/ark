@@ -11,6 +11,11 @@ export interface RootProps {
    */
   closeDelay?: number
   /**
+   * Whether the tooltip should close on click
+   * @default true
+   */
+  closeOnClick?: boolean
+  /**
    * Whether to close the tooltip when the Escape key is pressed.
    * @default true
    */
