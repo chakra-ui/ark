@@ -15,6 +15,7 @@ import { useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
 const props = withDefaults(defineProps<TooltipRootProps>(), {
+  closeOnClick: undefined,
   closeOnEscape: undefined,
   closeOnPointerDown: undefined,
   closeOnScroll: undefined,

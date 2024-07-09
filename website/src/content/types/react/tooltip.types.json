@@ -56,6 +56,12 @@
         "isRequired": false,
         "description": "The close delay of the tooltip."
       },
+      "closeOnClick": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the tooltip should close on click"
+      },
       "closeOnEscape": {
         "type": "boolean",
         "defaultValue": "true",

@@ -207,5 +207,14 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
   }
 }
