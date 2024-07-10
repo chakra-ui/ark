@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
 import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
+import type { PolymorphicProps } from '../factory'
 import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
@@ -11,7 +12,10 @@ interface RootProviderProps {
   value: UseFloatingPanelReturn
 }
 
-export interface FloatingPanelRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
+export interface FloatingPanelRootProviderBaseProps
+  extends RootProviderProps,
+    UsePresenceProps,
+    PolymorphicProps {}
 export interface FloatingPanelRootProviderProps extends FloatingPanelRootProviderBaseProps {
   children?: ReactNode
 }

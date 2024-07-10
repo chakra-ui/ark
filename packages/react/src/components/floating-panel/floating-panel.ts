@@ -15,6 +15,10 @@ export {
   type FloatingPanelContentBaseProps as ContentBaseProps,
 } from './floating-panel-content'
 export {
+  FloatingPanelContext as Context,
+  type FloatingPanelContextProps as ContextProps,
+} from './floating-panel-context'
+export {
   FloatingPanelDock as Dock,
   type FloatingPanelDockProps as DockProps,
   type FloatingPanelDockBaseProps as DockBaseProps,
