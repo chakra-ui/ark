@@ -1,59 +1,45 @@
-import {
-  FloatingPanel,
-  FloatingPanelBody,
-  FloatingPanelCloseTrigger,
-  FloatingPanelContent,
-  FloatingPanelDragTrigger,
-  FloatingPanelHeader,
-  FloatingPanelMaximizeTrigger,
-  FloatingPanelMinimizeTrigger,
-  FloatingPanelPositioner,
-  FloatingPanelResizeTrigger,
-  FloatingPanelRestoreTrigger,
-  FloatingPanelTitle,
-  FloatingPanelTrigger,
-  Portal,
-} from '../..'
-
 import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-react'
+import { FloatingPanel, Portal } from '../..'
 
 export const Basic = () => (
   <FloatingPanel.Root>
-    <FloatingPanelTrigger>Toggle Panel</FloatingPanelTrigger>
-    <FloatingPanelPositioner>
-      <FloatingPanelContent>
-        <FloatingPanelDragTrigger>
-          <FloatingPanelHeader>
-            <FloatingPanelTitle>Floating Panel</FloatingPanelTitle>
-            <div data-scope="floating-panel" data-part="trigger-group">
-              <FloatingPanelMinimizeTrigger>
-                <Minus />
-              </FloatingPanelMinimizeTrigger>
-              <FloatingPanelMaximizeTrigger>
-                <Maximize2 />
-              </FloatingPanelMaximizeTrigger>
-              <FloatingPanelRestoreTrigger>
-                <ArrowDownLeft />
-              </FloatingPanelRestoreTrigger>
-              <FloatingPanelCloseTrigger>
-                <XIcon />
-              </FloatingPanelCloseTrigger>
-            </div>
-          </FloatingPanelHeader>
-        </FloatingPanelDragTrigger>
-        <FloatingPanelBody>
-          <p>Some content</p>
-        </FloatingPanelBody>
+    <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
+    <Portal>
+      <FloatingPanel.Positioner>
+        <FloatingPanel.Content>
+          <FloatingPanel.DragTrigger>
+            <FloatingPanel.Header>
+              <FloatingPanel.Title>Floating Panel</FloatingPanel.Title>
+              <div data-scope="floating-panel" data-part="trigger-group">
+                <FloatingPanel.MinimizeTrigger>
+                  <Minus />
+                </FloatingPanel.MinimizeTrigger>
+                <FloatingPanel.MaximizeTrigger>
+                  <Maximize2 />
+                </FloatingPanel.MaximizeTrigger>
+                <FloatingPanel.RestoreTrigger>
+                  <ArrowDownLeft />
+                </FloatingPanel.RestoreTrigger>
+                <FloatingPanel.CloseTrigger>
+                  <XIcon />
+                </FloatingPanel.CloseTrigger>
+              </div>
+            </FloatingPanel.Header>
+          </FloatingPanel.DragTrigger>
+          <FloatingPanel.Body>
+            <p>Some content</p>
+          </FloatingPanel.Body>
 
-        <FloatingPanelResizeTrigger axis="n" />
-        <FloatingPanelResizeTrigger axis="e" />
-        <FloatingPanelResizeTrigger axis="w" />
-        <FloatingPanelResizeTrigger axis="s" />
-        <FloatingPanelResizeTrigger axis="ne" />
-        <FloatingPanelResizeTrigger axis="se" />
-        <FloatingPanelResizeTrigger axis="sw" />
-        <FloatingPanelResizeTrigger axis="nw" />
-      </FloatingPanelContent>
-    </FloatingPanelPositioner>
+          <FloatingPanel.ResizeTrigger axis="n" />
+          <FloatingPanel.ResizeTrigger axis="e" />
+          <FloatingPanel.ResizeTrigger axis="w" />
+          <FloatingPanel.ResizeTrigger axis="s" />
+          <FloatingPanel.ResizeTrigger axis="ne" />
+          <FloatingPanel.ResizeTrigger axis="se" />
+          <FloatingPanel.ResizeTrigger axis="sw" />
+          <FloatingPanel.ResizeTrigger axis="nw" />
+        </FloatingPanel.Content>
+      </FloatingPanel.Positioner>
+    </Portal>
   </FloatingPanel.Root>
 )
