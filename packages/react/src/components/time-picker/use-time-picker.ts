@@ -1,4 +1,4 @@
-import type { Time } from '@internationalized/date'
+import { parseTime } from '@internationalized/date'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as timePicker from '@zag-js/time-picker'
 import { useId } from 'react'
@@ -7,7 +7,10 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
 export interface UseTimePickerProps
-  extends Optional<Omit<timePicker.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+  extends Optional<
+    Omit<timePicker.Context, 'dir' | 'getRootNode' | 'value' | 'open.controlled'>,
+    'id'
+  > {
   /**
    * The initial open state of the time picker when it is first rendered.
    * Use when you do not need to control its open state.
@@ -17,7 +20,11 @@ export interface UseTimePickerProps
    * The initial value of the time picker when it is first rendered.
    * Use when you do not need to control the state of the time picker.
    */
-  defaultValue?: Time
+  defaultValue?: string
+  /**
+   * The value of the time picker
+   */
+  value?: string
 }
 
 export interface UseTimePickerReturn extends timePicker.Api<PropTypes> {}
@@ -31,13 +38,14 @@ export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerRetu
     dir,
     getRootNode,
     open: props.defaultOpen,
-    value: props.defaultValue,
     'open.controlled': props.open !== undefined,
     ...props,
+    value: props.defaultValue ? parseTime(props.defaultValue) : undefined,
   }
 
   const context: timePicker.Context = {
     ...initialContext,
+    value: props.value ? parseTime(props.value) : undefined,
     onValueChange: useEvent(props.onValueChange),
     onFocusChange: useEvent(props.onFocusChange),
     onOpenChange: useEvent(props.onOpenChange),

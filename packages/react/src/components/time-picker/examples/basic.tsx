@@ -2,7 +2,7 @@ import { Portal, TimePicker } from '../..'
 
 export const Basic = () => {
   return (
-    <TimePicker.Root>
+    <TimePicker.Root locale="de-DE">
       <TimePicker.Control>
         <TimePicker.Input />
         <TimePicker.Trigger>🗓</TimePicker.Trigger>
@@ -12,11 +12,11 @@ export const Basic = () => {
         <TimePicker.Positioner>
           <TimePicker.Content>
             <TimePicker.Context>
-              {(api) => (
+              {(timepicker) => (
                 <>
                   <TimePicker.Column unit="hour">
                     <TimePicker.Spacer />
-                    {api.getHours().map((item) => (
+                    {timepicker.getHours().map((item) => (
                       <TimePicker.HourCell key={item.value} value={item.value}>
                         {item.label}
                       </TimePicker.HourCell>
@@ -25,7 +25,7 @@ export const Basic = () => {
                   </TimePicker.Column>
                   <TimePicker.Column unit="minute">
                     <TimePicker.Spacer />
-                    {api.getMinutes().map((item) => (
+                    {timepicker.getMinutes().map((item) => (
                       <TimePicker.MinuteCell key={item.value} value={item.value}>
                         {item.label}
                       </TimePicker.MinuteCell>
@@ -34,7 +34,7 @@ export const Basic = () => {
                   </TimePicker.Column>
                   <TimePicker.Column unit="second">
                     <TimePicker.Spacer />
-                    {api.getSeconds().map((item) => (
+                    {timepicker.getSeconds().map((item) => (
                       <TimePicker.SecondCell key={item.value} value={item.value}>
                         {item.label}
                       </TimePicker.SecondCell>
