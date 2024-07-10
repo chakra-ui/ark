@@ -35,9 +35,9 @@
     "svelte": "5.0.0-next.175",
     "svelte-check": "3.8.4",
     "tslib": "2.6.3",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "vite": "5.3.3",
-    "vitest": "1.6.0"
+    "vitest": "2.0.1"
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
