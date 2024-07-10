@@ -30,7 +30,8 @@ export const useField = (props: UseFieldProps) => {
   const [hasErrorText, setHasErrorText] = useState(false)
   const [hasHelperText, setHasHelperText] = useState(false)
 
-  const id = props.id ?? useId()
+  const fallbackId = useId()
+  const id = props.id ?? fallbackId
   const rootRef = useRef<HTMLDivElement>(null)
   const errorTextId = `field::${id}::error-text`
   const helperTextId = `field::${id}::helper-text`
