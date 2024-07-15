@@ -33,6 +33,6 @@
     "typescript": "5.5.3",
     "vercel": "34.3.1"
   },
-  "packageManager": "bun@1.1.12",
+  "packageManager": "bun@1.1.17",
   "trustedDependencies": ["@ark-ui/website"]
 }
