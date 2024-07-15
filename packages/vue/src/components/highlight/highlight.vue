@@ -1,6 +1,5 @@
 <script lang="ts">
-import { useSlots } from 'vue'
-import type { Assign } from '../../types'
+import type { HTMLAttributes } from 'vue'
 import type { UseHighlightProps } from './use-highlight'
 
 export interface HighlightBaseProps extends UseHighlightProps {}
