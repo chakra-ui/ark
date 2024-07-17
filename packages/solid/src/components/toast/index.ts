@@ -1,6 +1,7 @@
 export {
   createToaster,
   type CreateToasterProps,
+  type CreateToasterReturn,
 } from './create-toaster'
 export {
   ToastActionTrigger,
