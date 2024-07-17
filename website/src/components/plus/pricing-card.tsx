@@ -67,7 +67,7 @@ const licenses = {
     price: '$199',
     originalPrice: '$249',
     checkoutUrl:
-      'https://chakra-pro.lemonsqueezy.com/buy/f7b5e908-749f-4930-b19e-0940b37abc3b?discount=0&aff=OALPM',
+      'https://chakra-pro.lemonsqueezy.com/buy/f7b5e908-749f-4930-b19e-0940b37abc3b?discount=0',
     features: [
       {
         label: 'Access to All Examples',
@@ -94,7 +94,7 @@ const licenses = {
     price: '$599',
     originalPrice: '$649',
     checkoutUrl:
-      'https://chakra-pro.lemonsqueezy.com/buy/32116f45-7b47-40b6-9fb7-a5f0d9a72d51?discount=0&enabled=399172&aff=OALPM',
+      'https://chakra-pro.lemonsqueezy.com/buy/32116f45-7b47-40b6-9fb7-a5f0d9a72d51?discount=0&enabled=399172',
     features: [
       {
         label: 'Access for Your Entire Team',
