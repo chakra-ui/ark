@@ -27,33 +27,33 @@ export const Advanced = () => {
                   <TimePicker.Column unit="hour">
                     <TimePicker.Spacer />
                     {api.getHours().map((item) => (
-                      <TimePicker.HourCell key={item.value} value={item.value}>
+                      <TimePicker.Cell key={item.value} value={item.value}>
                         {item.label}
-                      </TimePicker.HourCell>
+                      </TimePicker.Cell>
                     ))}
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="minute">
                     <TimePicker.Spacer />
                     {api.getMinutes().map((item) => (
-                      <TimePicker.MinuteCell key={item.value} value={item.value}>
+                      <TimePicker.Cell key={item.value} value={item.value}>
                         {item.label}
-                      </TimePicker.MinuteCell>
+                      </TimePicker.Cell>
                     ))}
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="second">
                     <TimePicker.Spacer />
                     {api.getSeconds().map((item) => (
-                      <TimePicker.SecondCell key={item.value} value={item.value}>
+                      <TimePicker.Cell key={item.value} value={item.value}>
                         {item.label}
-                      </TimePicker.SecondCell>
+                      </TimePicker.Cell>
                     ))}
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="period">
-                    <TimePicker.PeriodCell value="am">AM</TimePicker.PeriodCell>
-                    <TimePicker.PeriodCell value="pm">PM</TimePicker.PeriodCell>
+                    <TimePicker.Cell value="am">AM</TimePicker.Cell>
+                    <TimePicker.Cell value="pm">PM</TimePicker.Cell>
                   </TimePicker.Column>
                 </>
               )}
