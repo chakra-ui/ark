@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- **Toast**: Exported `CreateToasterReturn` type to improve type inference when creating a toaster.
+
 ## [3.5.0] - 2024-06-30
 
 - **All Components**: Exported each component's anatomy. For example:

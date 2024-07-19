@@ -69,7 +69,7 @@ const Icon = (props: PropsWithChildren) => (
     align="center"
     borderWidth="2px"
     borderColor={{
-      base: '#F6E1DB',
+      _light: '#F6E1DB',
       _dark: '#391915',
     }}
     bg="bg.canvas"

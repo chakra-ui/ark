@@ -10,7 +10,7 @@ export const NavbarContainer = (props: BoxProps) => {
       background="bg.canvas"
       zIndex="1"
       borderBottomWidth="1px"
-      borderColor={{ base: 'border.subtle', _dark: 'black' }}
+      borderColor={{ _light: 'border.subtle', _dark: 'black' }}
     >
       <Container py="2.5" {...props} />
     </Flex>
