@@ -27,7 +27,7 @@ export const TimePickerCell = forwardRef<HTMLButtonElement, TimePickerCellProps>
   }
   const mergedProps = mergeProps(unitToPropsMap[columnProps.unit](), localProps)
 
-  return <ark.button {...mergedProps} {...localProps} ref={ref} />
+  return <ark.button {...mergedProps} ref={ref} />
 })
 
 TimePickerCell.displayName = 'TimePickerCell'
