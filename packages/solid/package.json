@@ -131,7 +131,7 @@
     "@testing-library/user-event": "14.5.2",
     "@types/jsdom": "21.1.7",
     "globby": "14.0.2",
-    "jsdom": "24.1.0",
+    "jsdom": "24.1.1",
     "lucide-solid": "0.414.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
