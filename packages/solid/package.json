@@ -132,7 +132,7 @@
     "@types/jsdom": "21.1.7",
     "globby": "14.0.2",
     "jsdom": "24.1.0",
-    "lucide-solid": "0.408.0",
+    "lucide-solid": "0.414.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.19.0",
