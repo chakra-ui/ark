@@ -8,7 +8,7 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UseTimePickerProps
   extends Optional<
-    Omit<timePicker.Context, 'dir' | 'getRootNode' | 'value' | 'open.controlled'>,
+    Omit<timePicker.Context, 'dir' | 'getRootNode' | 'min' | 'max' | 'open.controlled' | 'value'>,
     'id'
   > {
   /**
@@ -21,6 +21,14 @@ export interface UseTimePickerProps
    * Use when you do not need to control the state of the time picker.
    */
   defaultValue?: string
+  /**
+   * The minimum time that can be selected.
+   */
+  min?: string
+  /**
+   * The maximum time that can be selected.
+   */
+  max?: string
   /**
    * The value of the time picker
    */
@@ -40,11 +48,15 @@ export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerRetu
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     ...props,
+    min: props.min ? parseTime(props.min) : undefined,
+    max: props.max ? parseTime(props.max) : undefined,
     value: props.defaultValue ? parseTime(props.defaultValue) : undefined,
   }
 
   const context: timePicker.Context = {
     ...initialContext,
+    min: props.min ? parseTime(props.min) : undefined,
+    max: props.max ? parseTime(props.max) : undefined,
     value: props.value ? parseTime(props.value) : undefined,
     onValueChange: useEvent(props.onValueChange),
     onFocusChange: useEvent(props.onFocusChange),
