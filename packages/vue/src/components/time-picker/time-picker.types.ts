@@ -1,4 +1,3 @@
-import type { Time } from '@internationalized/date'
 import type * as timePicker from '@zag-js/time-picker'
 
 export interface RootProps {
@@ -7,15 +6,16 @@ export interface RootProps {
    */
   allowSeconds?: boolean
   /**
-   * The initial open state of the time picker when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
+      /**
+       * The initial open state of the time picker when it is first rendered.
+       * Use when you do not need to control its open state.
+       */
   defaultOpen?: boolean
   /**
    * The initial value of the time picker when it is first rendered.
    * Use when you do not need to control the state of the time picker.
    */
-  defaultValue?: Time
+  defaultValue?: string
   /**
    * Whether to disable the interaction outside logic
    */
@@ -47,11 +47,15 @@ export interface RootProps {
   /**
    * The maximum time that can be selected.
    */
-  max?: Time
+  max?: string
   /**
    * The minimum time that can be selected.
    */
-  min?: Time
+  min?: string
+  /**
+   * The v-model value of the time picker
+   */
+  modelValue?: string
   /**
    * The `name` attribute of the input element.
    */
@@ -67,7 +71,7 @@ export interface RootProps {
   /**
    * The user provided options used to position the time picker content
    */
-  positioning?: import('/Users/colinlienard/dev/ark/node_modules/@zag-js/popper/dist/index').PositioningOptions
+  positioning?: import('/Users/christian/Workspace/ark/node_modules/@zag-js/popper/dist/index').PositioningOptions
   /**
    * Whether the time picker is read-only.
    */
@@ -76,10 +80,6 @@ export interface RootProps {
    * The steps of each time unit.
    */
   steps?: { hour?: number; minute?: number; second?: number }
-  /**
-   * The selected time.
-   */
-  value?: Time
 }
 
 export type RootEmits = {
@@ -95,4 +95,8 @@ export type RootEmits = {
    * Function called when the value changes.
    */
   valueChange: [value: timePicker.ValueChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [value: string]
 }

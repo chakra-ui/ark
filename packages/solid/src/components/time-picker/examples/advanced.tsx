@@ -1,4 +1,3 @@
-import { Time } from '@internationalized/date'
 import { Index, Portal } from 'solid-js/web'
 import { TimePicker } from '../..'
 
@@ -11,8 +10,8 @@ export const Advanced = () => {
         minute: 5,
         second: 10,
       }}
-      min={new Time(4, 20, 30)}
-      max={new Time(20, 10, 10)}
+      min="03:00"
+      max="11:00"
     >
       <TimePicker.Control>
         <TimePicker.Input />
