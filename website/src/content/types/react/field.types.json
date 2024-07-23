@@ -77,7 +77,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement>; }; disabled: boolean; ... 9 more ...; getErrorTextProps: () => Omit<...>; }",
+        "type": "{ ariaDescribedby: string | undefined; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement>; }; ... 10 more ...; getErrorTextProps: () => Omit<...>; }",
         "isRequired": true
       },
       "asChild": {

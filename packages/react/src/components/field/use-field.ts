@@ -1,6 +1,7 @@
 import { getWindow } from '@zag-js/dom-query'
-import { useId, useLayoutEffect, useRef, useState } from 'react'
+import { useId, useLayoutEffect, useMemo, useRef } from 'react'
 import type { HTMLProps } from '../factory'
+import { useFieldsetContext } from '../fieldset/use-fieldset-context'
 import { parts } from './field.anatomy'
 
 export interface UseFieldProps {
@@ -26,12 +27,18 @@ export interface UseFieldProps {
 export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps) => {
-  const { required = false, disabled = false, invalid = false, readOnly = false } = props
-  const [hasErrorText, setHasErrorText] = useState(false)
-  const [hasHelperText, setHasHelperText] = useState(false)
+  const fieldset = useFieldsetContext()
+  const {
+    disabled = Boolean(fieldset?.disabled),
+    invalid = false,
+    readOnly = false,
+    required = false,
+  } = props
 
-  const fallbackId = useId()
-  const id = props.id ?? fallbackId
+  const hasErrorText = useRef(false)
+  const hasHelperText = useRef(false)
+
+  const id = props.id ?? useId()
   const rootRef = useRef<HTMLDivElement>(null)
   const errorTextId = `field::${id}::error-text`
   const helperTextId = `field::${id}::helper-text`
@@ -45,79 +52,113 @@ export const useField = (props: UseFieldProps) => {
     const doc = win.document
 
     const checkTextElements = () => {
-      setHasErrorText(!!doc.getElementById(errorTextId))
-      setHasHelperText(!!doc.getElementById(helperTextId))
+      hasErrorText.current = !!doc.getElementById(errorTextId)
+      hasHelperText.current = !!doc.getElementById(helperTextId)
     }
 
     checkTextElements()
     const observer = new win.MutationObserver(checkTextElements)
-
     observer.observe(rootNode, { childList: true, subtree: true })
 
     return () => observer.disconnect()
   }, [errorTextId, helperTextId])
 
-  const getRootProps = () => ({
-    ...parts.root.attrs,
-    role: 'group',
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
-  })
+  const labelIds = useMemo(() => {
+    const ids: string[] = []
+    if (hasErrorText.current && invalid) ids.push(errorTextId)
+    if (hasHelperText.current) ids.push(helperTextId)
+    return ids.join(' ') || undefined
+  }, [invalid, errorTextId, helperTextId])
 
-  const getLabelProps = () => ({
-    ...parts.label.attrs,
-    id: labelId,
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
-    htmlFor: id,
-  })
+  const getRootProps = useMemo(
+    () => () =>
+      ({
+        ...parts.root.attrs,
+        ref: rootRef,
+        role: 'group',
+        'data-disabled': dataAttr(disabled),
+        'data-invalid': dataAttr(invalid),
+        'data-readonly': dataAttr(readOnly),
+      }) as HTMLProps<'div'>,
+    [disabled, invalid, readOnly],
+  )
 
-  const labelIds: string[] = []
+  const getLabelProps = useMemo(
+    () => () =>
+      ({
+        ...parts.label.attrs,
+        id: labelId,
+        'data-disabled': dataAttr(disabled),
+        'data-invalid': dataAttr(invalid),
+        'data-readonly': dataAttr(readOnly),
+        htmlFor: id,
+      }) as HTMLProps<'label'>,
+    [disabled, invalid, readOnly, id, labelId],
+  )
 
-  if (hasErrorText && invalid) labelIds.push(errorTextId)
-  if (hasHelperText) labelIds.push(helperTextId)
+  const getControlProps = useMemo(
+    () => () =>
+      ({
+        'aria-describedby': labelIds,
+        'aria-invalid': ariaAttr(invalid),
+        'aria-required': ariaAttr(required),
+        'aria-readonly': ariaAttr(readOnly),
+        id,
+        required,
+        disabled,
+        readOnly,
+      }) as HTMLProps<'input'>,
+    [labelIds, invalid, required, readOnly, id, disabled],
+  )
 
-  const getControlProps = () => ({
-    'aria-describedby': labelIds.join(' ') || undefined,
-    'aria-invalid': ariaAttr(invalid),
-    'aria-required': ariaAttr(required),
-    'aria-readonly': ariaAttr(readOnly),
-    id,
-    required,
-    disabled,
-    readOnly,
-  })
+  const getInputProps = useMemo(
+    () => () =>
+      ({
+        ...getControlProps(),
+        ...parts.input.attrs,
+      }) as HTMLProps<'input'>,
+    [getControlProps],
+  )
 
-  const getInputProps = () => ({
-    ...getControlProps(),
-    ...parts.input.attrs,
-  })
+  const getTextareaProps = useMemo(
+    () => () =>
+      ({
+        ...getControlProps(),
+        ...parts.textarea.attrs,
+      }) as HTMLProps<'textarea'>,
+    [getControlProps],
+  )
 
-  const getTextareaProps = () => ({
-    ...getControlProps(),
-    ...parts.textarea.attrs,
-  })
+  const getSelectProps = useMemo(
+    () => () =>
+      ({
+        ...getControlProps(),
+        ...parts.select.attrs,
+      }) as HTMLProps<'select'>,
+    [getControlProps],
+  )
 
-  const getSelectProps = () => ({
-    ...getControlProps(),
-    ...parts.select.attrs,
-  })
+  const getHelperTextProps = useMemo(
+    () => () =>
+      ({
+        id: helperTextId,
+        ...parts.helperText.attrs,
+      }) as HTMLProps<'span'>,
+    [helperTextId],
+  )
 
-  const getHelperTextProps = () => ({
-    id: helperTextId,
-    ...parts.helperText.attrs,
-  })
-
-  const getErrorTextProps = (): HTMLProps<'span'> => ({
-    id: errorTextId,
-    ...parts.errorText.attrs,
-    'aria-live': 'polite',
-  })
+  const getErrorTextProps = useMemo(
+    () => () =>
+      ({
+        id: errorTextId,
+        ...parts.errorText.attrs,
+        'aria-live': 'polite',
+      }) as HTMLProps<'span'>,
+    [errorTextId],
+  )
 
   return {
-    ariaDescribedby: labelIds.join(' '),
+    ariaDescribedby: labelIds,
     ids: {
       control: id,
       label: labelId,
@@ -142,5 +183,5 @@ export const useField = (props: UseFieldProps) => {
 }
 
 type Booleanish = boolean | 'true' | 'false'
-const dataAttr = (condition: boolean | undefined) => (condition ? '' : undefined) as Booleanish
+const dataAttr = (condition: boolean | undefined) => (condition ? 'true' : undefined) as Booleanish
 const ariaAttr = (condition: boolean | undefined) => (condition ? true : undefined)

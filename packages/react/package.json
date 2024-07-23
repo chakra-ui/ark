@@ -14,6 +14,8 @@
     "date picker",
     "dialog",
     "editable",
+    "field",
+    "fieldset",
     "file upload",
     "hover card",
     "menu",
@@ -207,6 +209,17 @@
       "require": {
         "types": "./dist/components/field/index.d.cts",
         "default": "./dist/components/field/index.cjs"
+      }
+    },
+    "./fieldset": {
+      "source": "./src/components/fieldset/index.ts",
+      "import": {
+        "types": "./dist/components/fieldset/index.d.ts",
+        "default": "./dist/components/fieldset/index.js"
+      },
+      "require": {
+        "types": "./dist/components/fieldset/index.d.cts",
+        "default": "./dist/components/fieldset/index.cjs"
       }
     },
     "./file-upload": {
@@ -591,10 +604,10 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@release-it/keep-a-changelog": "5.0.0",
-    "@storybook/addon-a11y": "8.2.3",
-    "@storybook/addon-essentials": "8.2.3",
-    "@storybook/react-vite": "8.2.3",
-    "@storybook/react": "8.2.3",
+    "@storybook/addon-a11y": "8.2.5",
+    "@storybook/addon-essentials": "8.2.5",
+    "@storybook/react-vite": "8.2.5",
+    "@storybook/react": "8.2.5",
     "@testing-library/dom": "10.3.2",
     "@testing-library/jest-dom": "6.4.6",
     "@testing-library/react": "16.0.0",
@@ -605,16 +618,16 @@
     "@vitejs/plugin-react": "4.3.1",
     "globby": "14.0.2",
     "jsdom": "24.1.0",
-    "lucide-react": "0.408.0",
+    "lucide-react": "0.414.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-frame-component": "5.2.7",
     "react-hook-form": "7.52.1",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
-    "storybook": "8.2.3",
+    "storybook": "8.2.5",
     "typescript": "5.5.3",
-    "vite": "5.3.3",
+    "vite": "5.3.4",
     "vite-plugin-dts": "3.9.1",
     "vitest": "2.0.3",
     "vitest-axe": "1.0.0-pre.3"

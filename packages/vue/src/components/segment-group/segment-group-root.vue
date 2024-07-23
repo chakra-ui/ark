@@ -18,7 +18,7 @@ export interface SegmentGroupRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
-import {parts} from './segment-group.anatomy'
+import { parts } from './segment-group.anatomy'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,

@@ -12,8 +12,8 @@ export interface ColorPickerSwatchGroupProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory';
-import { colorPickerAnatomy } from './color-picker.anatomy';
+import { ark } from '../factory'
+import { colorPickerAnatomy } from './color-picker.anatomy'
 
 defineProps<ColorPickerSwatchGroupProps>()
 </script>
