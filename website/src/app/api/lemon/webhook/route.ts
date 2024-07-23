@@ -10,7 +10,7 @@ const Payload = Schema.Struct({
     event_name: Schema.Literal('order_created', 'order_refunded'),
   }),
   data: Schema.Struct({
-    id: Schema.String.pipe(Schema.nonEmpty()),
+    id: Schema.String,
     attributes: Schema.Struct({
       first_order_item: Schema.Struct({
         product_name: Schema.Literal('Ark UI Plus'),
