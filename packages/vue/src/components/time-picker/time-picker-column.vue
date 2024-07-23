@@ -2,6 +2,7 @@
 import type { ColumnProps } from '@zag-js/time-picker'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import { TimePickerColumnPropsProvider } from './use-time-picker-column-props-context'
 
 export interface TimePickerColumnBaseProps extends ColumnProps, PolymorphicProps {}
 export interface TimePickerColumnProps
@@ -15,9 +16,9 @@ export interface TimePickerColumnProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
-
 const props = defineProps<TimePickerColumnProps>()
 const timePicker = useTimePickerContext()
+TimePickerColumnPropsProvider(props)
 </script>
 
 <template>

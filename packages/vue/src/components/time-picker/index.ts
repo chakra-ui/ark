@@ -28,11 +28,6 @@ export {
   type TimePickerControlBaseProps,
 } from './time-picker-control.vue'
 export {
-  default as TimePickerHourCell,
-  type TimePickerHourCellProps,
-  type TimePickerHourCellBaseProps,
-} from './time-picker-hour-cell.vue'
-export {
   default as TimePickerInput,
   type TimePickerInputProps,
   type TimePickerInputBaseProps,
@@ -42,16 +37,6 @@ export {
   type TimePickerLabelProps,
   type TimePickerLabelBaseProps,
 } from './time-picker-label.vue'
-export {
-  default as TimePickerMinuteCell,
-  type TimePickerMinuteCellProps,
-  type TimePickerMinuteCellBaseProps,
-} from './time-picker-minute-cell.vue'
-export {
-  default as TimePickerPeriodCell,
-  type TimePickerPeriodCellProps,
-  type TimePickerPeriodCellBaseProps,
-} from './time-picker-period-cell.vue'
 export {
   default as TimePickerPositioner,
   type TimePickerPositionerProps,
@@ -71,7 +56,7 @@ export {
   default as TimePickerSecondCell,
   type TimePickerSecondCellProps,
   type TimePickerSecondCellBaseProps,
-} from './time-picker-second-cell.vue'
+} from './time-picker-cell.vue'
 export {
   default as TimePickerSpacer,
   type TimePickerSpacerProps,

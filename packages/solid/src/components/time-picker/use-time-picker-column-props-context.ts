@@ -1,12 +1,12 @@
 import type { TimeUnit } from '@zag-js/time-picker'
 import { createContext } from '../../utils/create-context'
 
-export interface UseTimePickerColumnPropsColumnPropsContext {
+export interface UseTimePickerColumnPropsContext {
   unit: TimeUnit
 }
 
 export const [TimePickerColumnPropsProvider, useTimePickerColumnPropsContext] =
-  createContext<UseTimePickerColumnPropsColumnPropsContext>({
+  createContext<UseTimePickerColumnPropsContext>({
     hookName: 'useTimePickerColumnPropsContext',
     providerName: '<TimePickerColumnPropsProvider />',
   })

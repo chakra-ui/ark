@@ -14,40 +14,40 @@ import { TimePicker } from '../..'
         <TimePicker.Context v-slot="api">
           <TimePicker.Column unit="hour">
             <TimePicker.Spacer />
-            <TimePicker.HourCell
+            <TimePicker.Cell
               v-for="item in api.getHours()"
               :key="item.value"
               :value="item.value"
             >
               {{ item.label }}
-            </TimePicker.HourCell>
+            </TimePicker.Cell>
             <TimePicker.Spacer />
           </TimePicker.Column>
           <TimePicker.Column unit="minute">
             <TimePicker.Spacer />
-            <TimePicker.MinuteCell
+            <TimePicker.Cell
               v-for="item in api.getHours()"
               :key="item.value"
               :value="item.value"
             >
               {{ item.label }}
-            </TimePicker.MinuteCell>
+            </TimePicker.Cell>
             <TimePicker.Spacer />
           </TimePicker.Column>
           <TimePicker.Column unit="second">
             <TimePicker.Spacer />
-            <TimePicker.SecondCell
+            <TimePicker.Cell
               v-for="item in api.getHours()"
               :key="item.value"
               :value="item.value"
             >
               {{ item.label }}
-            </TimePicker.SecondCell>
+            </TimePicker.Cell>
             <TimePicker.Spacer />
           </TimePicker.Column>
           <TimePicker.Column unit="period">
-            <TimePicker.PeriodCell value="am">AM</TimePicker.PeriodCell>
-            <TimePicker.PeriodCell value="pm">PM</TimePicker.PeriodCell>
+            <TimePicker.Cell value="am">AM</TimePicker.Cell>
+            <TimePicker.Cell value="pm">PM</TimePicker.Cell>
           </TimePicker.Column>
         </TimePicker.Context>
       </TimePicker.Content>
