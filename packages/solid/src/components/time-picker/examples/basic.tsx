@@ -1,16 +1,17 @@
 import { Index, Portal } from 'solid-js/web'
 import { TimePicker } from '../..'
 
-export const Basic = () => {
+export const Basic = (props: TimePicker.RootProps) => {
   return (
-    <TimePicker.Root>
+    <TimePicker.Root {...props}>
       <TimePicker.Control>
+        <TimePicker.Label>Time Picker</TimePicker.Label>
         <TimePicker.Input />
         <TimePicker.Trigger>🗓</TimePicker.Trigger>
         <TimePicker.ClearTrigger>❌</TimePicker.ClearTrigger>
       </TimePicker.Control>
       <Portal>
-        <TimePicker.Positioner>
+        <TimePicker.Positioner data-testid="positioner">
           <TimePicker.Content>
             <TimePicker.Context>
               {(api) => (
@@ -19,9 +20,7 @@ export const Basic = () => {
                     <TimePicker.Spacer />
                     <Index each={api().getHours()}>
                       {(item) => (
-                        <TimePicker.HourCell value={item().value}>
-                          {item().label}
-                        </TimePicker.HourCell>
+                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
                       )}
                     </Index>
                     <TimePicker.Spacer />
@@ -30,9 +29,7 @@ export const Basic = () => {
                     <TimePicker.Spacer />
                     <Index each={api().getMinutes()}>
                       {(item) => (
-                        <TimePicker.MinuteCell value={item().value}>
-                          {item().label}
-                        </TimePicker.MinuteCell>
+                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
                       )}
                     </Index>
                     <TimePicker.Spacer />
@@ -41,16 +38,14 @@ export const Basic = () => {
                     <TimePicker.Spacer />
                     <Index each={api().getSeconds()}>
                       {(item) => (
-                        <TimePicker.SecondCell value={item().value}>
-                          {item().label}
-                        </TimePicker.SecondCell>
+                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
                       )}
                     </Index>
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="period">
-                    <TimePicker.PeriodCell value="am">AM</TimePicker.PeriodCell>
-                    <TimePicker.PeriodCell value="pm">PM</TimePicker.PeriodCell>
+                    <TimePicker.Cell value="am">AM</TimePicker.Cell>
+                    <TimePicker.Cell value="pm">PM</TimePicker.Cell>
                   </TimePicker.Column>
                 </>
               )}

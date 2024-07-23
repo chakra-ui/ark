@@ -19,9 +19,7 @@ export const ComponentUnderTest = (props: TimePickerRootProps) => {
                     <TimePicker.Spacer />
                     <Index each={api().getHours()}>
                       {(item) => (
-                        <TimePicker.HourCell value={item().value}>
-                          {item().label}
-                        </TimePicker.HourCell>
+                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
                       )}
                     </Index>
                     <TimePicker.Spacer />
@@ -30,9 +28,7 @@ export const ComponentUnderTest = (props: TimePickerRootProps) => {
                     <TimePicker.Spacer />
                     <Index each={api().getMinutes()}>
                       {(item) => (
-                        <TimePicker.MinuteCell value={item().value}>
-                          {item().label}
-                        </TimePicker.MinuteCell>
+                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
                       )}
                     </Index>
                     <TimePicker.Spacer />
@@ -41,16 +37,14 @@ export const ComponentUnderTest = (props: TimePickerRootProps) => {
                     <TimePicker.Spacer />
                     <Index each={api().getSeconds()}>
                       {(item) => (
-                        <TimePicker.SecondCell value={item().value}>
-                          {item().label}
-                        </TimePicker.SecondCell>
+                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
                       )}
                     </Index>
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="period">
-                    <TimePicker.PeriodCell value="am">AM</TimePicker.PeriodCell>
-                    <TimePicker.PeriodCell value="pm">PM</TimePicker.PeriodCell>
+                    <TimePicker.Cell value="am">AM</TimePicker.Cell>
+                    <TimePicker.Cell value="pm">PM</TimePicker.Cell>
                   </TimePicker.Column>
                 </>
               )}

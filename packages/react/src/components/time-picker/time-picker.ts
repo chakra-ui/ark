@@ -1,3 +1,8 @@
+export type {
+  FocusChangeDetails,
+  OpenChangeDetails,
+  ValueChangeDetails,
+} from '@zag-js/time-picker'
 export {
   TimePickerCell as Cell,
   type TimePickerCellBaseProps as CellBaseProps,

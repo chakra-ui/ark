@@ -3,6 +3,7 @@ import type { ColumnProps } from '@zag-js/time-picker'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { TimePickerColumnPropsProvider } from './use-time-picker-column-props-context'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerColumnBaseProps extends ColumnProps, PolymorphicProps<'div'> {}
@@ -14,5 +15,9 @@ export const TimePickerColumn = (props: TimePickerColumnProps) => {
   const timePicker = useTimePickerContext()
   const mergedProps = mergeProps(() => timePicker().getColumnProps(columnProps), localProps)
 
-  return <ark.div {...mergedProps} />
+  return (
+    <TimePickerColumnPropsProvider value={columnProps}>
+      <ark.div {...mergedProps} />
+    </TimePickerColumnPropsProvider>
+  )
 }
