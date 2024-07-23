@@ -151,6 +151,28 @@
         "default": "./dist/editable/index.cjs"
       }
     },
+    "./field": {
+      "source": "./src/field/index.ts",
+      "import": {
+        "types": "./dist/field/index.d.ts",
+        "default": "./dist/field/index.js"
+      },
+      "require": {
+        "types": "./dist/field/index.d.cts",
+        "default": "./dist/field/index.cjs"
+      }
+    },
+    "./fieldset": {
+      "source": "./src/fieldset/index.ts",
+      "import": {
+        "types": "./dist/fieldset/index.d.ts",
+        "default": "./dist/fieldset/index.js"
+      },
+      "require": {
+        "types": "./dist/fieldset/index.d.cts",
+        "default": "./dist/fieldset/index.cjs"
+      }
+    },
     "./file-upload": {
       "source": "./src/file-upload/index.ts",
       "import": {

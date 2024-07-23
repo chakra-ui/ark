@@ -15,6 +15,7 @@
     "dialog",
     "editable",
     "field",
+    "fieldset",
     "file upload",
     "hover card",
     "menu",
@@ -206,6 +207,17 @@
       "require": {
         "types": "./dist/components/field/index.d.cts",
         "default": "./dist/components/field/index.cjs"
+      }
+    },
+    "./fieldset": {
+      "source": "./src/components/fieldset/index.ts",
+      "import": {
+        "types": "./dist/components/fieldset/index.d.ts",
+        "default": "./dist/components/fieldset/index.js"
+      },
+      "require": {
+        "types": "./dist/components/fieldset/index.d.cts",
+        "default": "./dist/components/fieldset/index.cjs"
       }
     },
     "./file-upload": {

@@ -14,8 +14,7 @@ export interface SegmentGroupLabelProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
-import {parts} from './segment-group.anatomy'
-
+import { parts } from './segment-group.anatomy'
 
 defineProps<SegmentGroupLabelProps>()
 const segmentGroup = useSegmentGroupContext()

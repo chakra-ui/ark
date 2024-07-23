@@ -15,12 +15,11 @@ export interface SegmentGroupItemTextProps
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
-import {parts} from './segment-group.anatomy'
+import { parts } from './segment-group.anatomy'
 
 defineProps<SegmentGroupItemTextProps>()
 const segmentGroup = useSegmentGroupContext()
 const itemProps = useSegmentGroupItemPropsContext()
-
 </script>
 
 <template>
