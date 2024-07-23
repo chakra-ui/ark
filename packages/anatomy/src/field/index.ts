@@ -9,4 +9,3 @@ export const anatomy = createAnatomy('field').parts(
   'select',
   'textarea',
 )
-export const parts = anatomy.build()

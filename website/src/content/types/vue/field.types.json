@@ -42,11 +42,27 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false },
-      "id": { "type": "string", "isRequired": false },
-      "invalid": { "type": "boolean", "isRequired": false },
-      "readOnly": { "type": "boolean", "isRequired": false },
-      "required": { "type": "boolean", "isRequired": false }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is disabled."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is invalid."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is read-only."
+      },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is required."
+      }
     }
   },
   "RootProvider": {

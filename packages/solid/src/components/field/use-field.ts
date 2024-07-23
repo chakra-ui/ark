@@ -1,5 +1,7 @@
 import { getWindow } from '@zag-js/dom-query'
-import { createEffect, createMemo, createSignal, onCleanup } from 'solid-js'
+import { createEffect, createMemo, createSignal, createUniqueId, onCleanup } from 'solid-js'
+import { useFieldsetContext } from '../fieldset'
+import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
 import { parts } from './field.anatomy'
 
 export interface UseFieldProps {
@@ -25,11 +27,18 @@ export interface UseFieldProps {
 export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps) => {
-  const { required = false, disabled = false, invalid = false, readOnly = false } = props
+  const fieldset: UseFieldsetReturn | undefined = useFieldsetContext()
+
+  const {
+    disabled = Boolean(fieldset?.().disabled),
+    invalid = false,
+    readOnly = false,
+    required = false,
+  } = props
   const [hasErrorText, setHasErrorText] = createSignal(false)
   const [hasHelperText, setHasHelperText] = createSignal(false)
 
-  const id = props.id ?? `field-${Math.random().toString(36).substr(2, 9)}`
+  const id = props.id ?? createUniqueId()
   let rootRef: HTMLDivElement | undefined
   const errorTextId = `field::${id}::error-text`
   const helperTextId = `field::${id}::helper-text`
