@@ -22,9 +22,9 @@
     "svelte": "5.0.0-next.193"
   },
   "dependencies": {
-    "@zag-js/avatar": "0.61.1",
-    "@zag-js/core": "0.61.1",
-    "@zag-js/svelte": "0.61.1"
+    "@zag-js/avatar": "0.62.0",
+    "@zag-js/core": "0.62.0",
+    "@zag-js/svelte": "0.62.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.2.2",
@@ -35,9 +35,9 @@
     "svelte": "5.0.0-next.193",
     "svelte-check": "3.8.4",
     "tslib": "2.6.3",
-    "typescript": "5.5.3",
+    "typescript": "5.5.4",
     "vite": "5.3.4",
-    "vitest": "2.0.3"
+    "vitest": "2.0.4"
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
