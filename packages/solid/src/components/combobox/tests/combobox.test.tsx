@@ -30,8 +30,7 @@ describe('Combobox', () => {
     fireEvent.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    await user.click(screen.getByRole('option', { name: 'React' }))
-
+    fireEvent.click(screen.getByRole('option', { name: 'React' }))
     await waitFor(() => expect(screen.getByRole('combobox')).toHaveValue('React'))
   })
 
@@ -42,7 +41,7 @@ describe('Combobox', () => {
     fireEvent.click(screen.getByTestId('trigger'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    await user.click(screen.getByRole('option', { name: 'React' }))
+    fireEvent.click(screen.getByRole('option', { name: 'React' }))
 
     await waitFor(() => {
       expect(onValueChange).toHaveBeenCalledTimes(1)
