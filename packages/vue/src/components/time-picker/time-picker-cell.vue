@@ -26,11 +26,11 @@ const timePicker = useTimePickerContext()
 const columnProps = useTimePickerColumnPropsContext()
 
 const unitToPropsMap = {
-    hour: () => timePicker.value.getHourCellProps(props as CellProps),
-    minute: () => timePicker.value.getMinuteCellProps(props as CellProps),
-    second: () => timePicker.value.getSecondCellProps(props as CellProps),
-    period: () => timePicker.value.getPeriodCellProps(props as PeriodCellProps),
-  }
+  hour: () => timePicker.value.getHourCellProps(props as CellProps),
+  minute: () => timePicker.value.getMinuteCellProps(props as CellProps),
+  second: () => timePicker.value.getSecondCellProps(props as CellProps),
+  period: () => timePicker.value.getPeriodCellProps(props as PeriodCellProps),
+}
 
 const cellProps = unitToPropsMap[columnProps.unit]()
 </script>

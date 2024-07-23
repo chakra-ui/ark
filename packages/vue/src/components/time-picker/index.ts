@@ -53,9 +53,9 @@ export {
   type TimePickerRootProviderBaseProps,
 } from './time-picker-root-provider.vue'
 export {
-  default as TimePickerSecondCell,
-  type TimePickerSecondCellProps,
-  type TimePickerSecondCellBaseProps,
+  default as TimePickerCell,
+  type TimePickerCellProps,
+  type TimePickerCellBaseProps,
 } from './time-picker-cell.vue'
 export {
   default as TimePickerSpacer,

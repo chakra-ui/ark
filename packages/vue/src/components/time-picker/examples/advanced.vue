@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Time } from '@internationalized/date'
 import { TimePicker } from '../..'
 </script>
 
@@ -11,8 +10,8 @@ import { TimePicker } from '../..'
       minute: 5,
       second: 10,
     }"
-    :min="new Time(4, 20, 30)"
-    :max="new Time(20, 10, 10)"
+    min="03:00"
+    max="11:00"
   >
     <TimePicker.Control>
       <TimePicker.Input />
@@ -24,33 +23,21 @@ import { TimePicker } from '../..'
         <TimePicker.Context v-slot="api">
           <TimePicker.Column unit="hour">
             <TimePicker.Spacer />
-            <TimePicker.Cell
-              v-for="item in api.getHours()"
-              :key="item.value"
-              :value="item.value"
-            >
+            <TimePicker.Cell v-for="item in api.getHours()" :key="item.value" :value="item.value">
               {{ item.label }}
             </TimePicker.Cell>
             <TimePicker.Spacer />
           </TimePicker.Column>
           <TimePicker.Column unit="minute">
             <TimePicker.Spacer />
-            <TimePicker.Cell
-              v-for="item in api.getHours()"
-              :key="item.value"
-              :value="item.value"
-            >
+            <TimePicker.Cell v-for="item in api.getHours()" :key="item.value" :value="item.value">
               {{ item.label }}
             </TimePicker.Cell>
             <TimePicker.Spacer />
           </TimePicker.Column>
           <TimePicker.Column unit="second">
             <TimePicker.Spacer />
-            <TimePicker.Cell
-              v-for="item in api.getHours()"
-              :key="item.value"
-              :value="item.value"
-            >
+            <TimePicker.Cell v-for="item in api.getHours()" :key="item.value" :value="item.value">
               {{ item.label }}
             </TimePicker.Cell>
             <TimePicker.Spacer />
