@@ -43,7 +43,7 @@ describe('Date Picker', () => {
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
-  }, 10000)
+  })
 
   it('should lazy mount and unmount on exit', async () => {
     render(<ComponentUnderTest lazyMount unmountOnExit />)
@@ -55,7 +55,7 @@ describe('Date Picker', () => {
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
-  }, 10000)
+  })
 
   it('should be fully controlled (true)', async () => {
     render(<ComponentUnderTest open={true} />)

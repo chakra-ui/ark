@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import { DatePicker, datePickerAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './date-picker.test.vue'
@@ -29,7 +29,7 @@ describe('Date Picker', () => {
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
-  }, 7000)
+  })
 
   it('should lazy mount and unmount on exit', async () => {
     render(ComponentUnderTest, {
@@ -45,6 +45,6 @@ describe('Date Picker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
-  }, 7000)
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  })
 })

@@ -50,7 +50,7 @@ describe('Combobox', () => {
     fireEvent.click(screen.getByText('Open'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    await user.click(screen.getByRole('option', { name: 'React' }))
+    fireEvent.click(screen.getByRole('option', { name: 'React' }))
     await waitFor(() => expect(screen.getByRole('combobox')).toHaveValue('React'))
   })
 
@@ -58,11 +58,10 @@ describe('Combobox', () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    // TODO this is strange
     fireEvent.click(screen.getByText('Open'))
     await waitFor(() => expect(screen.getByRole('option', { name: 'React' })).toBeVisible())
 
-    await user.click(screen.getByRole('option', { name: 'React' }))
+    fireEvent.click(screen.getByRole('option', { name: 'React' }))
     await waitFor(() => {
       expect(onValueChange).toHaveBeenCalledTimes(1)
     })
