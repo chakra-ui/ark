@@ -1,5 +1,4 @@
 import { parseTime } from '@internationalized/date'
-import { parse } from '@vue/compiler-sfc'
 import * as timePicker from '@zag-js/time-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
