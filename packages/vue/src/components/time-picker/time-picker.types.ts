@@ -71,7 +71,7 @@ export interface RootProps {
   /**
    * The user provided options used to position the time picker content
    */
-  positioning?: import('/Users/christian/Workspace/ark/node_modules/@zag-js/popper/dist/index').PositioningOptions
+  positioning?: timePicker.PositioningOptions
   /**
    * Whether the time picker is read-only.
    */
