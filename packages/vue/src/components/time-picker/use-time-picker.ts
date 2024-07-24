@@ -1,4 +1,5 @@
 import { parseTime } from '@internationalized/date'
+import { parse } from '@vue/compiler-sfc'
 import * as timePicker from '@zag-js/time-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed } from 'vue'
@@ -60,7 +61,11 @@ export const useTimePicker = (
       onOpenChange: (details) => emit?.('openChange', details),
       max: max ? parseTime(max) : undefined,
       min: min ? parseTime(min) : undefined,
-      value: parseTime(modelValue ?? defaultValue ?? ''),
+      value: modelValue
+        ? parseTime(modelValue)
+        : defaultValue
+          ? parseTime(defaultValue)
+          : undefined,
       ...cleanProps(otherProps),
     }
   })
