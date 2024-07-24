@@ -1,5 +1,6 @@
-import { EnvironmentProvider, Select } from '@ark-ui/solid'
 import { Index, Portal } from 'solid-js/web'
+import { Select } from '..'
+import { EnvironmentProvider } from '../../../providers'
 
 const items = ['React', 'Solid', 'Vue']
 
