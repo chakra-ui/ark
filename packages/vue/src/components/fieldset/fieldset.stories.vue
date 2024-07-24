@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import WithCheckbox from './examples/with-checkbox.vue'
-import WithField from './examples/withfield.vue'
+import WithField from './examples/with-field.vue'
 </script>
 <template>
   <Story title="Fieldset">
