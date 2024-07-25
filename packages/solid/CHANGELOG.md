@@ -4,7 +4,7 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
-## Unreleased
+## [Unreleased]
 
 ### Added
 
