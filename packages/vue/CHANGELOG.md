@@ -6,10 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.7.0] - 2024-07-25
+
 ### Added
 
-- Added `Fieldset` component to help group form fields.
-
+- **Fieldset Component**: Introduced to help group form fields.
 ```jsx
 <Fieldset.Root>
   <Fieldset.Legend>Legend</Fieldset.Legend>
@@ -17,12 +18,37 @@ description: All notable changes will be documented in this file.
   <Fieldset.ErrorText>Error text</Fieldset.ErrorText>
 </Fieldset.Root>
 ```
+  Learn more in the [documentation](https://ark-ui.com/docs/react/components/fieldset).
 
-- Added `Highlight` component.
+- **Highlight Component**: Added to highlight text based on a query.
+```jsx
+import { Highlight } from '@ark-ui/react'
+
+export const App = () => (
+  <Highlight
+    query={['Ark UI', 'exclusive examples']}
+    text="Unlock exclusive examples and support the development by getting Ark UI Plus."
+  />
+)
+```
+
+- **Tooltip**: Added `closeOnClick` to control tooltip closure on trigger click.
 
 ### Changed
 
-- **Toast**: Exported `CreateToasterReturn` type to improve type inference when creating a toaster.
+- **Toast**: Exported `CreateToasterReturn` type to improve type inference.
+- **Combobox**: Enhanced accessibility by removing unnecessary `aria-selected` and `aria-disabled` attributes.
+
+### Fixed
+
+- **Toast**: Added missing `aria-labelledby` and `aria-describedby` attributes on the root element.
+- **Combobox**: Fixed issue where the input didn't update on selection with a pointer.
+- **RadioGroup**: Corrected misspelt `data-readonly` attribute.
+- **Select**: Enabled customization of `closeOnSelect` when `multiple` is true.
+- **Tags Input**: 
+  - Fixed issues with repeat pasting and undo.
+  - Addressed problem where deleting a pasted value disabled further pasting.
+  - Ensured values are always unique by discarding duplicates
 
 ## [3.6.0] - 2024-06-30
 
