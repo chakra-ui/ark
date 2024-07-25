@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Highlight**
+  - Added missing `/highlight` exports in `package.json`.
+  - Export `HighlightChunk` type for better type inference in userland code.
+
 ## [3.6.0] - 2024-07-25
 
 ### Added

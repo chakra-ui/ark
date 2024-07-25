@@ -243,6 +243,17 @@
         "default": "./dist/components/format/index.cjs"
       }
     },
+    "./highlight": {
+      "source": "./src/components/highlight/index.ts",
+      "import": {
+        "types": "./dist/components/highlight/index.d.ts",
+        "default": "./dist/components/highlight/index.js"
+      },
+      "require": {
+        "types": "./dist/components/highlight/index.d.cts",
+        "default": "./dist/components/highlight/index.cjs"
+      }
+    },
     "./hover-card": {
       "source": "./src/components/hover-card/index.ts",
       "import": {

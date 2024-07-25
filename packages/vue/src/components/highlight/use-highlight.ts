@@ -54,4 +54,4 @@ export const useHighlight = (props: UseHighlightProps) => {
   return computed(() => highlightWords({ text: text.value, query: query.value }))
 }
 
-export type { UseHighlightProps }
+export type { UseHighlightProps, HighlightChunk }
