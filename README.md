@@ -27,8 +27,9 @@ dedicated packages for each supported framework.
 | [Date Picker](https://ark-ui.com/react/docs/components/date-picker)               | ✓     | ✓     |        | ✓   |
 | [Dialog](https://ark-ui.com/react/docs/components/dialog)                         | ✓     | ✓     |        | ✓   |
 | [Editable](https://ark-ui.com/react/docs/components/editable)                     | ✓     | ✓     |        | ✓   |
+| [Field](https://ark-ui.com/react/docs/components/field)                           | ✓     | ✓     |        | ✓   |
+| [Fieldset](https://ark-ui.com/react/docs/components/fieldset)                     | ✓     | ✓     |        | ✓   |
 | [File Upload](https://ark-ui.com/react/docs/components/file-upload)               | ✓     | ✓     |        | ✓   |
-| [Format](https://ark-ui.com/react/docs/components/format)                         | ✓     | ✓     |        | ✓   |
 | [Hover Card](https://ark-ui.com/react/docs/components/hover-card)                 | ✓     | ✓     |        | ✓   |
 | [Menu](https://ark-ui.com/react/docs/components/menu)                             | ✓     | ✓     |        | ✓   |
 | [Number Input](https://ark-ui.com/react/docs/components/number-input)             | ✓     | ✓     |        | ✓   |
@@ -42,11 +43,13 @@ dedicated packages for each supported framework.
 | [Rating Group](https://ark-ui.com/react/docs/components/rating-group)             | ✓     | ✓     |        | ✓   |
 | [Segment Group](https://ark-ui.com/react/docs/components/segment-group)           | ✓     | ✓     |        | ✓   |
 | [Select](https://ark-ui.com/react/docs/components/select)                         | ✓     | ✓     |        | ✓   |
+| [Signature Pad](https://ark-ui.com/react/docs/components/signature-pad)           | ✓     | ✓     |        | ✓   |
 | [Slider](https://ark-ui.com/react/docs/components/slider)                         | ✓     | ✓     |        | ✓   |
 | [Splitter](https://ark-ui.com/react/docs/components/splitter)                     | ✓     | ✓     |        | ✓   |
 | [Switch](https://ark-ui.com/react/docs/components/switch)                         | ✓     | ✓     |        | ✓   |
 | [Tabs](https://ark-ui.com/react/docs/components/tabs)                             | ✓     | ✓     |        | ✓   |
 | [Tags Input](https://ark-ui.com/react/docs/components/tags-input)                 | ✓     | ✓     |        | ✓   |
+| [Time Picker](https://ark-ui.com/react/docs/components/time-picker)               | ✓     | ✓     |        | ✓   |
 | [Toast](https://ark-ui.com/react/docs/components/toast)                           | ✓     | ✓     |        | ✓   |
 | [Toggle Group](https://ark-ui.com/react/docs/components/toggle-group)             | ✓     | ✓     |        | ✓   |
 | [Tooltip](https://ark-ui.com/react/docs/components/tooltip)                       | ✓     | ✓     |        | ✓   |
