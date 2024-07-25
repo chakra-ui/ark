@@ -4,7 +4,6 @@ import { PageHeader } from '~/components/page-header'
 import { Faqs } from '~/components/plus/faqs'
 import { GetInTouch } from '~/components/plus/get-in-touch'
 import { PricingCard } from '~/components/plus/pricing-card'
-import { signIn } from '~/lib/auth'
 
 export default function Page() {
   return (

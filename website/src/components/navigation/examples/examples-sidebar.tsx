@@ -1,6 +1,6 @@
 'use client'
 import { Collapsible } from '@ark-ui/react/collapsible'
-import { ChevronRightIcon, CirclePlusIcon } from 'lucide-react'
+import { ChevronRightIcon, SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import { Flex } from 'styled-system/jsx'
@@ -43,11 +43,11 @@ export const ExamplesSidebar = (props: Props) => {
                             aria-current={pathname === href ? 'page' : undefined}
                             className={styles.link}
                           >
-                            <Flex gap="1">
+                            <Flex gap="2" align="center">
                               <Text as="span">{item.title}</Text>
                               {item.accessLevel === 'paid' && (
                                 <Icon width="3.5" height="3.5" color="accent.default">
-                                  <CirclePlusIcon />
+                                  <SparklesIcon />
                                 </Icon>
                               )}
                             </Flex>

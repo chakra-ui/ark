@@ -1,5 +1,5 @@
 'use client'
-import { CirclePlusIcon } from 'lucide-react'
+import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cva } from 'styled-system/css'
@@ -14,6 +14,7 @@ const link = cva({
     borderBottomWidth: '1px',
     color: 'fg.muted',
     display: 'flex',
+    alignItems: 'center',
     fontWeight: 'medium',
     gap: '1',
     p: '3',
@@ -66,7 +67,7 @@ export const MobileNavbarLinks = (props: Props) => {
         aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
       >
         Plus
-        <CirclePlusIcon />
+        <SparklesIcon />
       </NavbarLink>
     </>
   )

@@ -1,4 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
+import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
@@ -31,7 +32,6 @@ export const Navbar = () => (
               color: 'fg.emphasized',
               _hover: {
                 color: 'fg.default',
-                fontWeight: 'semibold',
               },
             })}
           >
@@ -45,11 +45,31 @@ export const Navbar = () => (
               color: 'fg.emphasized',
               _hover: {
                 color: 'fg.default',
-                fontWeight: 'semibold',
               },
             })}
           >
             Examples
+          </NextLink>
+          <NextLink
+            href="/react/plus"
+            className={css({
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1.5',
+              textStyle: 'sm',
+              fontWeight: 'medium',
+              color: 'fg.emphasized',
+              _hover: {
+                color: 'fg.default',
+              },
+              '& svg': {
+                width: '4',
+                height: '4',
+                color: 'accent.default',
+              },
+            })}
+          >
+            Plus <SparklesIcon />
           </NextLink>
         </HStack>
         <HStack gap="1">

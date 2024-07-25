@@ -20,7 +20,8 @@
     "svelte": "bun run --cwd packages/svelte",
     "vue": "bun run --cwd packages/vue",
     "web": "bun run --cwd website",
-    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env"
+    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
+    "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env"
   },
   "dependencies": {
     "root": "."
