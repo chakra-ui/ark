@@ -1,4 +1,4 @@
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { DatePicker, datePickerAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
@@ -24,8 +24,8 @@ describe('Date Picker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
-  }, 7000)
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
+  })
 
   it('should lazy mount and unmount on exit', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
@@ -36,8 +36,8 @@ describe('Date Picker', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
-    expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
-  }, 7000)
+    await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
+  })
 
   it('should be fully controlled (true)', async () => {
     render(() => <ComponentUnderTest open={true} />)

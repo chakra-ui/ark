@@ -6,6 +6,24 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added `Fieldset` component to help group form fields.
+
+```jsx
+<Fieldset.Root>
+  <Fieldset.Legend>Legend</Fieldset.Legend>
+  <Fieldset.HelperText>Helper text</Fieldset.HelperText>
+  <Fieldset.ErrorText>Error text</Fieldset.ErrorText>
+</Fieldset.Root>
+```
+
+- Added `Highlight` component.
+
+### Changed
+
+- **Toast**: Exported `CreateToasterReturn` type to improve type inference when creating a toaster.
+
 ## [3.5.0] - 2024-06-30
 
 - **All Components**: Exported each component's anatomy. For example:

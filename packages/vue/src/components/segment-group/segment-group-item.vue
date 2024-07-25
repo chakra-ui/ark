@@ -18,7 +18,7 @@ import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-co
 import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
-import {parts} from './segment-group.anatomy'
+import { parts } from './segment-group.anatomy'
 
 const props = defineProps<SegmentGroupItemProps>()
 const segmentGroup = useSegmentGroupContext()

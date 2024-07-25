@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+- Added `Fieldset` anatomy.
+
 ## [3.4.0] - 2024-06-25
 
 ### Added

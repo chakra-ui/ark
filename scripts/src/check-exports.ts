@@ -10,16 +10,12 @@ const main = async () => {
     '!../packages/react/src/components/{portal,presence}/**',
   ])
 
-  const frameworkExports = components
-    // TODO remove after signature-pad is added to all frameworks
-    .filter((component) => !component.includes('signature-pad'))
-    .sort()
-    .map((component) =>
-      frameworks.map((framework) => ({
-        framework,
-        exports: getExportsFromSourceFile(component.replace('react', framework)),
-      })),
-    )
+  const frameworkExports = components.sort().map((component) =>
+    frameworks.map((framework) => ({
+      framework,
+      exports: getExportsFromSourceFile(component.replace('react', framework)),
+    })),
+  )
 
   const results = removeCommonExports(frameworkExports)
   if (results.length > 0) {

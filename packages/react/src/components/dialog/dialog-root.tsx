@@ -8,7 +8,7 @@ import { type UseDialogProps, useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
 export interface DialogRootBaseProps extends UseDialogProps, UsePresenceProps {}
-export interface DialogRootProps extends UseDialogProps, UsePresenceProps {
+export interface DialogRootProps extends DialogRootBaseProps {
   children?: ReactNode
 }
 

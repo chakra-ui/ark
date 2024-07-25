@@ -20,6 +20,8 @@ To support custom environments like an iframe, Shadow DOM or Electron, render th
 
 <Example id="setup" />
 
+### Usage in iframe
+
 The `EnvironmentProvider` component will automatically detect the current environment and set the
 correct environment context. However, you can also manually set the `Document` like shown in this
 React example below:
@@ -39,7 +41,28 @@ export const App = () => (
 )
 ```
 
-## Usage
+### Usage in Shadow DOM
+
+Here's an example of how to set the `EnvironmentProvider`'s value with Shadow DOM in Solid.js
+`Portal` component.
+
+```jsx
+import { EnvironmentProvider } from '@ark-ui/react'
+import { Index, Portal } from 'solid-js/web'
+
+export const App = () => {
+  let portalNode
+  return (
+    <Portal ref={portalNode} useShadow={true}>
+      <EnvironmentProvider value={() => portalNode?.shadowRoot ?? document}>
+        {/* Your App */}
+      </EnvironmentProvider>
+    </Portal>
+  )
+}
+```
+
+## Context
 
 Use the `useEnvironmentContext` hook to access the `RootNode`, `Document`, and `Window`.
 
