@@ -382,6 +382,17 @@
         "default": "./dist/tags-input/index.cjs"
       }
     },
+    "./timer": {
+      "source": "./src/timer/index.ts",
+      "import": {
+        "types": "./dist/timer/index.d.ts",
+        "default": "./dist/timer/index.js"
+      },
+      "require": {
+        "types": "./dist/timer/index.d.cts",
+        "default": "./dist/timer/index.cjs"
+      }
+    },
     "./time-picker": {
       "source": "./src/time-picker/index.ts",
       "import": {
