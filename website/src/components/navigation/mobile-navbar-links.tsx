@@ -1,7 +1,9 @@
 'use client'
+import { CirclePlusIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cva } from 'styled-system/css'
+import { styled } from 'styled-system/jsx'
 
 interface Props {
   framework: string
@@ -11,11 +13,18 @@ const link = cva({
   base: {
     borderBottomWidth: '1px',
     color: 'fg.muted',
+    display: 'flex',
     fontWeight: 'medium',
+    gap: '1',
     p: '3',
     transitionDuration: 'normal',
     transitionProperty: 'color',
     transitionTimingFunction: 'default',
+    '& svg': {
+      width: '4',
+      height: '4',
+      color: 'accent.default',
+    },
     _hover: { color: 'fg.default' },
     _currentPage: {
       color: 'accent.default',
@@ -24,7 +33,9 @@ const link = cva({
       },
     },
   },
-})()
+})
+
+const NavbarLink = styled(NextLink, link)
 
 export const MobileNavbarLinks = (props: Props) => {
   const { framework } = props
@@ -32,27 +43,31 @@ export const MobileNavbarLinks = (props: Props) => {
 
   return (
     <>
-      <NextLink
+      <NavbarLink
         href={`/${framework}/docs/overview/introduction`}
-        className={link}
         aria-current={pathname.startsWith(`/${framework}/docs`) ? 'page' : undefined}
       >
         Docs
-      </NextLink>
-      <NextLink
+      </NavbarLink>
+      <NavbarLink
         href={`/${framework}/examples`}
-        className={link}
         aria-current={pathname.startsWith(`/${framework}/examples`) ? 'page' : undefined}
       >
         Examples
-      </NextLink>
-      <NextLink
+      </NavbarLink>
+      <NavbarLink
         href={`/${framework}/showcase`}
-        className={link}
         aria-current={pathname.startsWith(`/${framework}/showcase`) ? 'page' : undefined}
       >
         Showcase
-      </NextLink>
+      </NavbarLink>
+      <NavbarLink
+        href={`/${framework}/plus`}
+        aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
+      >
+        Plus
+        <CirclePlusIcon />
+      </NavbarLink>
     </>
   )
 }
