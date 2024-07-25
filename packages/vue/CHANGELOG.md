@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.7.0] - 2024-07-25
+
 ### Added
 
 - **Fieldset Component**: Introduced to help group form fields.
