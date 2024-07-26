@@ -46,7 +46,11 @@ export const useColorPicker = (
     dir: locale.value.dir,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
-    value: colorPicker.parse(props.defaultValue ?? props.modelValue ?? ''),
+    value: props.defaultValue
+      ? colorPicker.parse(props.defaultValue)
+      : props.modelValue
+        ? colorPicker.parse(props.modelValue)
+        : undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange(details) {
       emit?.('openChange', details)

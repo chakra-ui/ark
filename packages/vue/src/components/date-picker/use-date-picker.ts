@@ -58,7 +58,11 @@ export const useDatePicker = (
       dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
-      value: datePicker.parse(modelValue ?? defaultValue ?? []),
+      value: modelValue
+        ? datePicker.parse(modelValue)
+        : defaultValue
+          ? datePicker.parse(defaultValue)
+          : undefined,
       getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => emit?.('focusChange', details),
       onViewChange: (details) => emit?.('viewChange', details),

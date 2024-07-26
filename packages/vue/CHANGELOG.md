@@ -12,6 +12,7 @@ description: All notable changes will be documented in this file.
   - Added missing `/highlight` exports in `package.json`.
   - Exported `HighlightChunk` type for improved type inference in userland code.
 - **Select**: Resolved an issue where `HiddenSelect` did not emit the correct value when a simple string array was passed as the `value` for the `Select` component.
+- **ColorPicker**: Fixed an issue where an invalid color value was emitted if no default value was provided.
 
 ## [3.7.0] - 2024-07-25
 
