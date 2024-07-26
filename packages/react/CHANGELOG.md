@@ -6,12 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- **Highlight**: 
+  - Enabled import from `@ark-ui/react/highlight`.
+  - Exported `HighlightChunk` type to enhance type inference in userland code.
+
 ### Fixed
 
-- **Highlight**
-  - Added missing `/highlight` exports in `package.json`.
-  - Exported `HighlightChunk` type for improved type inference in userland code.
-- **Select**: Resolved an issue where `HiddenSelect` did not emit the correct value when a simple string array was passed as the `value` for the `Select` component.
+- **Select**: Fixed `HiddenSelect` to correctly emit values when a simple string array is used as the `value` for the `Select` component.
 
 ## [3.6.0] - 2024-07-25
 
