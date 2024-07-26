@@ -10,19 +10,21 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Highlight**: 
+- **Highlight**:
   - Enabled import from `@ark-ui/react/highlight`.
   - Exported `HighlightChunk` type to enhance type inference in userland code.
 
 ### Fixed
 
-- **Select**: Fixed `HiddenSelect` to correctly emit values when a simple string array is used as the `value` for the `Select` component.
+- **Select**: Fixed `HiddenSelect` to correctly emit values when a simple string array is used as
+  the `value` for the `Select` component.
 
 ## [3.6.0] - 2024-07-25
 
 ### Added
 
 - **Fieldset Component**: Introduced to help group form fields.
+
 ```jsx
 <Fieldset.Root>
   <Fieldset.Legend>Legend</Fieldset.Legend>
@@ -30,9 +32,11 @@ description: All notable changes will be documented in this file.
   <Fieldset.ErrorText>Error text</Fieldset.ErrorText>
 </Fieldset.Root>
 ```
-  Learn more in the [documentation](https://ark-ui.com/docs/react/components/fieldset).
+
+Learn more in the [documentation](https://ark-ui.com/docs/react/components/fieldset).
 
 - **Highlight Component**: Added to highlight text based on a query.
+
 ```jsx
 import { Highlight } from '@ark-ui/react'
 
@@ -49,7 +53,8 @@ export const App = () => (
 ### Changed
 
 - **Toast**: Exported `CreateToasterReturn` type to improve type inference.
-- **Combobox**: Enhanced accessibility by removing unnecessary `aria-selected` and `aria-disabled` attributes.
+- **Combobox**: Enhanced accessibility by removing unnecessary `aria-selected` and `aria-disabled`
+  attributes.
 
 ### Fixed
 
@@ -57,7 +62,7 @@ export const App = () => (
 - **Combobox**: Fixed issue where the input didn't update on selection with a pointer.
 - **RadioGroup**: Corrected misspelt `data-readonly` attribute.
 - **Select**: Enabled customization of `closeOnSelect` when `multiple` is true.
-- **Tags Input**: 
+- **Tags Input**:
   - Fixed issues with repeat pasting and undo.
   - Addressed problem where deleting a pasted value disabled further pasting.
   - Ensured values are always unique by discarding duplicates.

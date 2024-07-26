@@ -10,20 +10,23 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Highlight**: 
-  - Enabled import from `@ark-ui/react/highlight`.
+- **Highlight**:
+  - Enabled import from `@ark-ui/vue/highlight`.
   - Exported `HighlightChunk` type to enhance type inference in userland code.
 
 ### Fixed
 
-- **Select**: Fixed `HiddenSelect` to correctly emit values when a simple string array is used as the `value` for the `Select` component.
-- **ColorPicker**: Fixed an issue where an invalid color value was emitted if no default value was provided.
+- **Select**: Fixed `HiddenSelect` to correctly emit values when a simple string array is used as
+  the `value` for the `Select` component.
+- **ColorPicker**: Fixed an issue where an invalid color value was emitted if no default value was
+  provided.
 
 ## [3.7.0] - 2024-07-25
 
 ### Added
 
 - **Fieldset Component**: Introduced to help group form fields.
+
 ```jsx
 <Fieldset.Root>
   <Fieldset.Legend>Legend</Fieldset.Legend>
@@ -31,11 +34,13 @@ description: All notable changes will be documented in this file.
   <Fieldset.ErrorText>Error text</Fieldset.ErrorText>
 </Fieldset.Root>
 ```
-  Learn more in the [documentation](https://ark-ui.com/docs/react/components/fieldset).
+
+Learn more in the [documentation](https://ark-ui.com/docs/vue/components/fieldset).
 
 - **Highlight Component**: Added to highlight text based on a query.
+
 ```jsx
-import { Highlight } from '@ark-ui/react'
+import { Highlight } from '@ark-ui/vue'
 
 export const App = () => (
   <Highlight
@@ -50,7 +55,8 @@ export const App = () => (
 ### Changed
 
 - **Toast**: Exported `CreateToasterReturn` type to improve type inference.
-- **Combobox**: Enhanced accessibility by removing unnecessary `aria-selected` and `aria-disabled` attributes.
+- **Combobox**: Enhanced accessibility by removing unnecessary `aria-selected` and `aria-disabled`
+  attributes.
 
 ### Fixed
 
@@ -58,7 +64,7 @@ export const App = () => (
 - **Combobox**: Fixed issue where the input didn't update on selection with a pointer.
 - **RadioGroup**: Corrected misspelt `data-readonly` attribute.
 - **Select**: Enabled customization of `closeOnSelect` when `multiple` is true.
-- **Tags Input**: 
+- **Tags Input**:
   - Fixed issues with repeat pasting and undo.
   - Addressed problem where deleting a pasted value disabled further pasting.
   - Ensured values are always unique by discarding duplicates
@@ -83,7 +89,6 @@ export const App = () => (
 - **Carousel**: Corrected looping behavior for next and previous buttons when both `slidesPerView`
   and `loop` are set.
 - **Menu**: Fixed loss of position data in the context menu upon closing.
-
 
 ## [3.5.0] - 2024-06-25
 
@@ -463,7 +468,7 @@ highlights:
 - Added `ToggleGroup` component
 - Added `ValueText` to the `ColorPicker` component
 - Added support to lazy mount the `ColorPicker` component using the `Presence` component
-- Added entrypoint for the `ark` factory at `@ark-ui/react/factory`
+- Added entrypoint for the `ark` factory at `@ark-ui/vue/factory`
 
 ### Changed
 
