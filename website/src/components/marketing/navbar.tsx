@@ -46,6 +46,10 @@ export const Navbar = () => (
               _hover: {
                 color: 'fg.default',
               },
+              display: {
+                base: 'none',
+                md: 'block',
+              },
             })}
           >
             Examples
