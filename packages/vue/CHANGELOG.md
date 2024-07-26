@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.7.1] - 2024-07-26
+
 ### Changed
 
 - **Highlight**: 
