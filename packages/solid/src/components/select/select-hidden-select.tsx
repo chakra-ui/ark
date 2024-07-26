@@ -19,7 +19,12 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
         <option value="" />
       </Show>
       <Index each={select().collection.items}>
-        {(option) => <option value={option().value}>{option().label}</option>}
+        {(item) => (
+          <option
+            value={select().collection.getItemValue(item) ?? ''}
+            disabled={select().collection.getItemDisabled(item)}
+          />
+        )}
       </Index>
     </ark.select>
   )
