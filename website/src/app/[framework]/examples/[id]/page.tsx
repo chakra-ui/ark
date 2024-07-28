@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { ExamplePreview } from '~/components/example-preview'
 import { ExamplesFooter } from '~/components/navigation/examples/examples-footer'
-import { Heading, Text } from '~/components/ui'
-import { Prose } from '~/components/ui/prose'
+import { Heading, Prose, Text } from '~/components/ui'
 import { fetchExample, fetchExamples } from '~/lib/examples'
 
 interface Props {

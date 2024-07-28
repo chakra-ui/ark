@@ -1,6 +1,5 @@
 import { Box, Center } from 'styled-system/jsx'
-import { Button } from '~/components/ui/button'
-import * as Collapsible from '~/components/ui/collapsible'
+import { Button, Collapsible } from '~/components/ui'
 
 export const Demo = (props: Collapsible.RootProps) => {
   return (

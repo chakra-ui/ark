@@ -1,43 +1,39 @@
-import type { Assign } from '@ark-ui/react'
-import { Avatar as ArkAvatar } from '@ark-ui/react/avatar'
-import { UserIcon } from 'lucide-react'
 import { forwardRef } from 'react'
-import { css, cx } from 'styled-system/css'
-import { splitCssProps } from 'styled-system/jsx'
-import { type AvatarVariantProps, avatar } from 'styled-system/recipes'
-import type { JsxStyleProps } from 'styled-system/types'
+import { Avatar as ArkAvatar } from '~/components/ui/primitives'
 
-export interface AvatarProps
-  extends Assign<JsxStyleProps, ArkAvatar.RootProps>,
-    AvatarVariantProps {
+export interface AvatarProps extends ArkAvatar.RootProps {
   name?: string | undefined | null
   src?: string | undefined | null
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
-  const [variantProps, avatarProps] = avatar.splitVariantProps(props)
-  const [cssProps, localProps] = splitCssProps(avatarProps)
-  const { name, src, className, ...rootProps } = localProps
-  const styles = avatar(variantProps)
+  const { name, src, ...rootProps } = props
 
   return (
-    <ArkAvatar.Root ref={ref} className={cx(styles.root, css(cssProps), className)} {...rootProps}>
-      <ArkAvatar.Fallback className={styles.fallback}>
-        {name ? getInitials(name) : <UserIcon />}
-      </ArkAvatar.Fallback>
+    <ArkAvatar.Root ref={ref} {...rootProps}>
+      <ArkAvatar.Fallback>{name ? getInitials(name) : <UserIcon />}</ArkAvatar.Fallback>
       {src && (
-        <ArkAvatar.Image
-          className={styles.image}
-          src={src}
-          alt={name ?? 'User Profile'}
-          referrerPolicy="no-referrer"
-        />
+        <ArkAvatar.Image src={src} alt={name ?? 'User Profile'} referrerPolicy="no-referrer" />
       )}
     </ArkAvatar.Root>
   )
 })
 
 Avatar.displayName = 'Avatar'
+
+const UserIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <title>User Icon</title>
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+)
 
 const getInitials = (name = '') =>
   name

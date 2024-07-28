@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 import { Box, Circle, Stack } from 'styled-system/jsx'
-import { Heading } from './heading'
+import { Heading } from './primitives/heading'
 
 export const Steps = (props: PropsWithChildren) => {
   return (

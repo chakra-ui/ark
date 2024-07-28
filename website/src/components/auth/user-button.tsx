@@ -1,6 +1,5 @@
 import { Box, Stack } from 'styled-system/jsx'
-import { Avatar } from '~/components/ui'
-import * as Popover from '~/components/ui/popover'
+import { Avatar, Popover } from '~/components/ui'
 import { auth } from '~/lib/auth'
 import { SignOutButton } from './sign-out-button'
 
