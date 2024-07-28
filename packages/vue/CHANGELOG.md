@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.7.2] - 2024-07-28
+
 ### Changed
 
 - **DatePicker**: Added support for `index` in `getLabelProps`.
