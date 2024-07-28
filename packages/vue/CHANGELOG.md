@@ -6,6 +6,18 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- **DatePicker**: Added support for `index` in `getLabelProps`.
+
+### Fixed
+
+- **DatePicker**:
+  - Fixed issue where the selected date doesn't reflect in the input when clicking the trigger and then focusing the input.
+  - Fixed SSR issue when using `getPresetTrigger`.
+- **Slider**: Fixed issue where `onValueChangeEnd` was called with an incorrect value.
+- Fixed an import issue with `@internationalized/date`.
+
 ## [3.7.1] - 2024-07-26
 
 ### Changed
