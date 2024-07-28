@@ -29,11 +29,11 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@types/bun": "1.1.6",
-    "lefthook": "1.7.7",
+    "lefthook": "1.7.9",
     "turbo": "2.0.9",
     "typescript": "5.5.4",
-    "vercel": "35.2.0"
+    "vercel": "35.2.1"
   },
-  "packageManager": "bun@1.1.20",
+  "packageManager": "bun@1.1.21",
   "trustedDependencies": ["@ark-ui/website"]
 }

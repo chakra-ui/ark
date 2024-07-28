@@ -630,7 +630,7 @@
     "@vitejs/plugin-react": "4.3.1",
     "globby": "14.0.2",
     "jsdom": "24.1.1",
-    "lucide-react": "0.414.0",
+    "lucide-react": "0.417.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-frame-component": "5.2.7",
@@ -639,7 +639,7 @@
     "resize-observer-polyfill": "1.5.1",
     "storybook": "8.2.6",
     "typescript": "5.5.4",
-    "vite": "5.3.4",
+    "vite": "5.3.5",
     "vite-plugin-dts": "3.9.1",
     "vitest": "2.0.4",
     "vitest-axe": "1.0.0-pre.3"

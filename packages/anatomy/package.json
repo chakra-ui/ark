@@ -491,7 +491,7 @@
     "globby": "14.0.2",
     "release-it": "17.6.0",
     "typescript": "5.5.4",
-    "vite": "5.3.4",
+    "vite": "5.3.5",
     "vite-plugin-dts": "3.9.1"
   }
 }
