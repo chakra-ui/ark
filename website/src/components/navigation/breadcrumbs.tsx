@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { Fragment } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
-import { Text } from '~/components/ui'
+import { Text } from '~/components/ui/text'
 
 export const Breadcrumbs = () => {
   const pathname = usePathname()

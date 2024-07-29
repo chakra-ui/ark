@@ -1,8 +1,8 @@
 'use client'
 import { forwardRef } from 'react'
-import { Pagination as ArkPagination } from '~/components/ui/primitives'
-import { Button } from '~/components/ui/primitives'
-import { IconButton } from '~/components/ui/primitives'
+import { Button } from './button'
+import { IconButton } from './icon-button'
+import * as ArkPagination from './primitives/pagination'
 
 export interface PaginationProps extends ArkPagination.RootProps {}
 

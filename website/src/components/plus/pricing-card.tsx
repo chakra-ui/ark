@@ -1,6 +1,9 @@
 import { BlocksIcon, HeartHandshakeIcon, ShoppingCartIcon, UsersIcon } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
-import { Button, Card, Icon, Text } from '~/components/ui'
+import { Button } from '~/components/ui/button'
+import { Card } from '~/components/ui/card'
+import { Icon } from '~/components/ui/icon'
+import { Text } from '~/components/ui/text'
 import { SignInLink } from '../auth/sign-in-link'
 
 type Props = {

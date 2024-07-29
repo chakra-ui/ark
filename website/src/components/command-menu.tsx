@@ -7,7 +7,11 @@ import { matchSorter } from 'match-sorter'
 import { useParams, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Center, Stack } from 'styled-system/jsx'
-import { Combobox, Dialog, IconButton, Input, Text } from '~/components/ui'
+import { Combobox } from '~/components/ui/combobox'
+import { Dialog } from '~/components/ui/dialog'
+import { IconButton } from '~/components/ui/icon-button'
+import { Input } from '~/components/ui/input'
+import { Text } from '~/components/ui/text'
 
 interface Item {
   label: string

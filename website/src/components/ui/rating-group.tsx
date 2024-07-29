@@ -1,6 +1,6 @@
 'use client'
 import { forwardRef } from 'react'
-import { RatingGroup as ArkRatingGroup } from '~/components/ui/primitives'
+import * as ArkRatingGroup from './primitives/rating-group'
 
 export interface RatingGroupProps extends ArkRatingGroup.RootProps {}
 

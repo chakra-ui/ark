@@ -3,7 +3,7 @@ import { styled } from 'styled-system/jsx'
 import {
   Spinner as StyledSpinner,
   type SpinnerProps as StyledSpinnerProps,
-} from '~/components/ui/primitives'
+} from './primitives/spinner'
 
 export interface SpinnerProps extends StyledSpinnerProps {
   /**

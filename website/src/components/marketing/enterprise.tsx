@@ -1,7 +1,9 @@
 import { ArrowRight } from 'lucide-react'
 import NextLink from 'next/link'
 import { Box, Container, Stack } from 'styled-system/jsx'
-import { Button, Heading, Text } from '~/components/ui'
+import { Button } from '~/components/ui/button'
+import { Heading } from '~/components/ui/heading'
+import { Text } from '~/components/ui/text'
 
 export const Enterprise = () => {
   return (

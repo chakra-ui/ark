@@ -1,6 +1,6 @@
 'use client'
+import { Tabs } from '~/components/ui/tabs'
 import { CodePreview } from './code-preview'
-import { Tabs } from './ui'
 
 interface CodeExample {
   label: string

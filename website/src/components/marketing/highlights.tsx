@@ -1,6 +1,7 @@
 import { Braces, Keyboard, Orbit, Paintbrush } from 'lucide-react'
 import { Container, Flex, Grid, Stack } from 'styled-system/jsx'
-import { Heading, Text } from '~/components/ui'
+import { Heading } from '~/components/ui/heading'
+import { Text } from '~/components/ui/text'
 import { CodeExamples } from './code-examples'
 
 const features = [

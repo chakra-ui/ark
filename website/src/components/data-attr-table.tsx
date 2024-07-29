@@ -1,7 +1,8 @@
 import { type DataAttrDocKey, getDataAttrDoc } from '@zag-js/docs'
 import { Effect, pipe } from 'effect'
 import { Box } from 'styled-system/jsx'
-import { Code, Table } from './ui'
+import { Code } from '~/components/ui/code'
+import { Table } from '~/components/ui/table'
 
 interface Props {
   component: string

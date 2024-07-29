@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Switch as ArkSwitch } from '~/components/ui/primitives'
+import * as ArkSwitch from './primitives/switch'
 
 export interface SwitchProps extends ArkSwitch.RootProps {}
 

@@ -1,6 +1,9 @@
 import { MinusIcon } from 'lucide-react'
 import { Box, Stack } from 'styled-system/jsx'
-import { Code, Icon, Table, Text } from '~/components/ui'
+import { Code } from '~/components/ui/code'
+import { Icon } from '~/components/ui/icon'
+import { Table } from '~/components/ui/table'
+import { Text } from '~/components/ui/text'
 
 interface Props {
   emits:

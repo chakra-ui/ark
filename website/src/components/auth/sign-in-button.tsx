@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { Button, type ButtonProps } from '~/components/ui'
+import { Button, type ButtonProps } from '~/components/ui/button'
 
 export const SignInButton = (props: ButtonProps) => {
   const router = useRouter()

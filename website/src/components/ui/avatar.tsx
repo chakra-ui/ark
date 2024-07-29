@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Avatar as ArkAvatar } from '~/components/ui/primitives'
+import * as ArkAvatar from './primitives/avatar'
 
 export interface AvatarProps extends ArkAvatar.RootProps {
   name?: string | undefined | null

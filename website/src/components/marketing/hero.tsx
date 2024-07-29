@@ -1,7 +1,10 @@
 import { ArrowRightIcon, RocketIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { Box, Container, HStack, Stack, styled } from 'styled-system/jsx'
-import { Badge, Button, Heading, Text } from '~/components/ui'
+import { Badge } from '~/components/ui/badge'
+import { Button } from '~/components/ui/button'
+import { Heading } from '~/components/ui/heading'
+import { Text } from '~/components/ui/text'
 import { ReactIcon, SolidIcon, VueIcon } from './icons'
 
 export const Hero = () => {

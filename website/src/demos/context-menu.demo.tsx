@@ -1,4 +1,4 @@
-import { Menu } from '~/components/ui'
+import { Menu } from '~/components/ui/menu'
 
 export const Demo = (props: Menu.RootProps) => {
   return (

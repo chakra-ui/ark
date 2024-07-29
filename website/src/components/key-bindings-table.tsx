@@ -1,6 +1,7 @@
 import { type AccessibilityDocKey, getAccessibilityDoc } from '@zag-js/docs'
 import { Box, HStack } from 'styled-system/jsx'
-import { Kbd, Table } from './ui'
+import { Kbd } from '~/components/ui/kbd'
+import { Table } from '~/components/ui/table'
 
 interface Props {
   id: AccessibilityDocKey

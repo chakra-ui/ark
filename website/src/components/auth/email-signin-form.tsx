@@ -1,5 +1,6 @@
 import { Stack } from 'styled-system/jsx'
-import { Button, Input } from '~/components/ui'
+import { Button } from '~/components/ui/button'
+import { Input } from '~/components/ui/input'
 import { signIn } from '~/lib/auth'
 
 interface Props {

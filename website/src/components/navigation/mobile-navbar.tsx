@@ -3,7 +3,8 @@ import { Portal } from '@ark-ui/react/portal'
 import { AlignRightIcon, XIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { type PropsWithChildren, useEffect, useState } from 'react'
-import { IconButton, Popover } from '~/components/ui'
+import { IconButton } from '~/components/ui/icon-button'
+import { Popover } from '~/components/ui/popover'
 
 export const MobileNavbar = (props: PropsWithChildren) => {
   const pathname = usePathname()

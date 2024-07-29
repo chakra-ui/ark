@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { Accordion } from '~/components/ui'
+import { Accordion } from '~/components/ui/accordion'
 
 export const Demo = (props: Accordion.RootProps) => {
   const items = ['React', 'Solid', 'Svelte', 'Vue']

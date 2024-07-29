@@ -1,7 +1,10 @@
 import { ChevronDownIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { Stack } from 'styled-system/jsx'
-import { Accordion, Heading, Link, Text } from '~/components/ui'
+import { Accordion } from '~/components/ui/accordion'
+import { Heading } from '~/components/ui/heading'
+import { Link } from '~/components/ui/link'
+import { Text } from '~/components/ui/text'
 import { MailToSupportLink } from './mail-to-support'
 
 export const Faqs = () => {

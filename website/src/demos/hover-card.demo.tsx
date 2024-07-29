@@ -1,6 +1,10 @@
 import { MapPinIcon } from 'lucide-react'
 import { HStack, Stack } from 'styled-system/jsx'
-import { Avatar, HoverCard, Icon, Link, Text } from '~/components/ui'
+import { Avatar } from '~/components/ui/avatar'
+import { HoverCard } from '~/components/ui/hover-card'
+import { Icon } from '~/components/ui/icon'
+import { Link } from '~/components/ui/link'
+import { Text } from '~/components/ui/text'
 
 export const Demo = (props: HoverCard.RootProps) => {
   return (

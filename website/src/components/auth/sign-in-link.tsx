@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import { Link, type LinkProps } from '~/components/ui'
+import { Link, type LinkProps } from '~/components/ui/link'
 
 export const SignInLink = (props: LinkProps) => {
   const router = useRouter()

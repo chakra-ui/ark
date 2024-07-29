@@ -3,9 +3,9 @@ import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
+import { IconButton } from '~/components/ui/icon-button'
 import { ColorModeButton } from '../color-mode-button'
 import { Logo } from '../logo'
-import { IconButton } from '../ui'
 
 export const Navbar = () => (
   <nav role="navigation" className={css({ position: 'sticky', top: '0', zIndex: 'docked' })}>

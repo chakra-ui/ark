@@ -1,7 +1,9 @@
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { button } from 'styled-system/recipes'
-import { Button, Heading, Text } from '~/components/ui'
-import { AvatarGroup } from '../ui/avatar-group'
+import { AvatarGroup } from '~/components/ui/avatar-group'
+import { Button } from '~/components/ui/button'
+import { Heading } from '~/components/ui/heading'
+import { Text } from '~/components/ui/text'
 
 const contributors = [
   {

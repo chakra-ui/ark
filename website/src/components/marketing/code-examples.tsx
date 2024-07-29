@@ -1,6 +1,6 @@
 import { codeToHtml } from 'shiki'
+import { Tabs } from '~/components/ui/tabs'
 import { CodePreview } from '../code-preview'
-import { Tabs } from '../ui'
 import * as snippets from './code-snippets'
 
 export const CodeExamples = async () => {

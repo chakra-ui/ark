@@ -1,7 +1,11 @@
 import { MinusIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { Box, Stack } from 'styled-system/jsx'
-import { Code, Icon, Link, Table, Text } from '~/components/ui'
+import { Code } from '~/components/ui/code'
+import { Icon } from '~/components/ui/icon'
+import { Link } from '~/components/ui/link'
+import { Table } from '~/components/ui/table'
+import { Text } from '~/components/ui/text'
 
 interface Props {
   framework: string

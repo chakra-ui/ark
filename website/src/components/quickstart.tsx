@@ -1,5 +1,5 @@
 import { Flex, Grid, Stack } from 'styled-system/jsx'
-import { Text } from '~/components/ui'
+import { Text } from '~/components/ui/text'
 import { NextJsIcon, NuxtIcon, SolidStartIcon } from './marketing/icons'
 
 export const Quickstart = () => {

@@ -1,5 +1,5 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { IconButton } from '~/components/ui'
+import { IconButton } from '~/components/ui/icon-button'
 
 export const GitHubLink = () => {
   return (

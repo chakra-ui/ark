@@ -4,7 +4,8 @@ import { EmailSignInForm } from '~/components/auth/email-signin-form'
 import { GitHubSignInButton } from '~/components/auth/github-signin-button'
 import { GoogleSignInButton } from '~/components/auth/google-signin-button'
 import { Logo } from '~/components/logo'
-import { Card, Text } from '~/components/ui'
+import { Card } from '~/components/ui/card'
+import { Text } from '~/components/ui/text'
 
 interface Props {
   searchParams: {

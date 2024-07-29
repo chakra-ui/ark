@@ -1,5 +1,6 @@
 'use client'
-import { Field, Input } from '~/components/ui'
+import { Field } from '~/components/ui/field'
+import { Input } from '~/components/ui/input'
 
 export const Demo = () => {
   return (
