@@ -29,7 +29,7 @@
     "effect": "3.5.8",
     "match-sorter": "6.3.4",
     "next": "14.2.5",
-    "next-auth": "5.0.0-beta.19",
+    "next-auth": "5.0.0-beta.20",
     "next-themes": "0.3.0",
     "pandacss-preset-typography": "0.1.6",
     "prisma": "5.17.0",
