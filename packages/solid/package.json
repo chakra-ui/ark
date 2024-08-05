@@ -137,7 +137,7 @@
     "@types/jsdom": "21.1.7",
     "globby": "14.0.2",
     "jsdom": "24.1.1",
-    "lucide-solid": "0.417.0",
+    "lucide-solid": "0.424.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.20.0",
