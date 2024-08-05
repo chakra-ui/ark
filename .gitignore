@@ -306,3 +306,6 @@ vite.config.mts.timestamp-*
 
 .velite
 .vercel
+
+# Claude
+*.prompt.md
