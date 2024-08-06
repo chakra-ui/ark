@@ -18,13 +18,14 @@ export const generatePrompt = async (framework: string, component: string) => {
   const cwd = `packages/${framework}/src/components/${component}`
 
   let scannedFiles = await Array.fromAsync(glob.scan({ cwd }))
-  scannedFiles = scannedFiles.filter((file) => !file.includes('.stories.tsx'))
+  scannedFiles = scannedFiles.filter((file) => !file.includes('.stories.'))
 
   const contents: string[] = [
-    `Here's an example of implementing the ${component} component from Zag.js in ${framework}:`,
+    `Here's an example of implementing the ${component} component from Zag.js in ${toTitleCase(framework)}:`,
   ]
 
   for (const file of scannedFiles) {
+    const lang = file.endsWith('.vue') ? 'html' : 'tsx'
     const absPath = join(cwd, file)
 
     const bunFile = Bun.file(absPath)
@@ -33,7 +34,7 @@ export const generatePrompt = async (framework: string, component: string) => {
     contents.push(`
 ### ${toTitleCase(file)}
       
-\`\`\`tsx filename='${file}'
+\`\`\`${lang} filename='${file}'
 ${content}
 \`\`\`
 `)

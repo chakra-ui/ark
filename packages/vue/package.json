@@ -430,6 +430,17 @@
         "default": "./dist/components/splitter/index.cjs"
       }
     },
+    "./steps": {
+      "source": "./src/components/steps/index.ts",
+      "import": {
+        "types": "./dist/components/steps/index.d.ts",
+        "default": "./dist/components/steps/index.js"
+      },
+      "require": {
+        "types": "./dist/components/steps/index.d.cts",
+        "default": "./dist/components/steps/index.cjs"
+      }
+    },
     "./switch": {
       "source": "./src/components/switch/index.ts",
       "import": {
