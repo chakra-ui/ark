@@ -24,6 +24,11 @@ export {
 } from './steps-progress'
 export { StepsRoot, type StepsRootBaseProps, type StepsRootProps } from './steps-root'
 export {
+  StepsRootProvider,
+  type StepsRootProviderBaseProps,
+  type StepsRootProviderProps,
+} from './steps-root-provider'
+export {
   StepsSeparator,
   type StepsSeparatorBaseProps,
   type StepsSeparatorProps,

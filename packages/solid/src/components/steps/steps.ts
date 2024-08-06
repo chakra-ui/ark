@@ -40,6 +40,11 @@ export {
   type StepsRootProps as RootProps,
 } from './steps-root'
 export {
+  StepsRootProvider as RootProvider,
+  type StepsRootProviderBaseProps as RootProviderBaseProps,
+  type StepsRootProviderProps as RootProviderProps,
+} from './steps-root-provider'
+export {
   StepsSeparator as Separator,
   type StepsSeparatorBaseProps as SeparatorBaseProps,
   type StepsSeparatorProps as SeparatorProps,
