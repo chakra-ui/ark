@@ -1,7 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
-import type { RootEmits, RootProps } from './slider.types'
+import type { RootEmits, RootProps } from './steps.types'
 
 export interface StepsRootBaseProps extends RootProps, PolymorphicProps {}
 export interface StepsRootProps
