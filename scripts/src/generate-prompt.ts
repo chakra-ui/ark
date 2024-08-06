@@ -1,5 +1,6 @@
 import { parse } from 'node:path'
 import { join } from 'node:path/posix'
+import { parseArgs } from 'node:util'
 import * as Bun from 'bun'
 import { format } from 'prettier'
 
@@ -11,16 +12,16 @@ const toTitleCase = (str: string) => {
     .join('')
 }
 
-export const generatePrompt = async (component: string) => {
-  const glob = new Bun.Glob('*.{ts,tsx}')
+export const generatePrompt = async (framework: string, component: string) => {
+  const glob = new Bun.Glob('*.{ts,tsx,vue}')
 
-  const cwd = `packages/react/src/components/${component}`
+  const cwd = `packages/${framework}/src/components/${component}`
 
   let scannedFiles = await Array.fromAsync(glob.scan({ cwd }))
   scannedFiles = scannedFiles.filter((file) => !file.includes('.stories.tsx'))
 
   const contents: string[] = [
-    `Here's an example of implementing the ${component} component from Zag.js`,
+    `Here's an example of implementing the ${component} component from Zag.js in ${framework}:`,
   ]
 
   for (const file of scannedFiles) {
@@ -32,7 +33,7 @@ export const generatePrompt = async (component: string) => {
     contents.push(`
 ### ${toTitleCase(file)}
       
-\`\`\`tsx
+\`\`\`tsx filename='${file}'
 ${content}
 \`\`\`
 `)
@@ -52,10 +53,29 @@ ${content}
   console.log(`Generated prompt at ${outPath}`)
 }
 
-const components = ['file-upload', 'popover', 'accordion', 'tabs', 'dialog']
+const allComponents = ['file-upload', 'popover', 'accordion', 'tabs', 'dialog']
 
 const main = async () => {
-  await Promise.all(components.map(generatePrompt))
+  const { positionals, values } = parseArgs({
+    args: Bun.argv,
+    allowPositionals: true,
+    options: {
+      framework: {
+        type: 'string',
+        short: 'f',
+        default: 'react',
+      },
+    },
+  })
+
+  let components = positionals.slice(2).flatMap((arg) => arg.split(/[ ,]/))
+  if (!components.length) components = allComponents
+
+  await Promise.all(
+    components.map((component) => {
+      return generatePrompt(values.framework || 'react', component)
+    }),
+  )
 }
 
 main().catch((err) => {
