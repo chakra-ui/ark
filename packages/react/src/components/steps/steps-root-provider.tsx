@@ -1,25 +1,20 @@
-import { ark } from '@ark-ui/react'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseStepsReturn } from './use-steps'
 import { StepsProvider } from './use-steps-context'
 
-export interface StepsRootProviderBaseProps {
+interface RootProviderProps {
   value: UseStepsReturn
 }
 
-export interface StepsRootProviderProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    StepsRootProviderBaseProps {
-  children: React.ReactNode
-}
+export interface StepsRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
+export interface StepsRootProviderProps extends HTMLProps<'div'>, StepsRootProviderBaseProps {}
 
 export const StepsRootProvider = forwardRef<HTMLDivElement, StepsRootProviderProps>(
   (props, ref) => {
-    const [{ value: steps }, rootProps] = createSplitProps<StepsRootProviderBaseProps>()(props, [
-      'value',
-    ])
+    const [{ value: steps }, rootProps] = createSplitProps<RootProviderProps>()(props, ['value'])
     const mergedProps = mergeProps(steps.getRootProps(), rootProps)
 
     return (

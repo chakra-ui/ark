@@ -1,24 +1,18 @@
 import { mergeProps } from '@zag-js/solid'
-import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import { ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseStepsReturn } from './use-steps'
 import { StepsProvider } from './use-steps-context'
 
-export interface StepsRootProviderBaseProps {
+interface RootProviderProps {
   value: UseStepsReturn
 }
 
-export interface StepsRootProviderProps
-  extends JSX.HTMLAttributes<HTMLDivElement>,
-    StepsRootProviderBaseProps {
-  children: JSX.Element
-}
+export interface StepsRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'> {}
+export interface StepsRootProviderProps extends HTMLProps<'div'>, StepsRootProviderBaseProps {}
 
 export const StepsRootProvider = (props: StepsRootProviderProps) => {
-  const [{ value: steps }, rootProps] = createSplitProps<StepsRootProviderBaseProps>()(props, [
-    'value',
-  ])
+  const [{ value: steps }, rootProps] = createSplitProps<RootProviderProps>()(props, ['value'])
   const mergedProps = mergeProps(() => steps().getRootProps(), rootProps)
 
   return (
