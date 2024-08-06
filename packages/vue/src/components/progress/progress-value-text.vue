@@ -23,6 +23,6 @@ const slots = useSlots()
 
 <template>
   <ark.span v-bind="progress.getValueTextProps()" :as-child="asChild">
-    <slot>{{ slots.default?.() || progress.valueAsString }}</slot>
+    <slot>{{ slots.default?.() || progress.percentAsString }}</slot>
   </ark.span>
 </template>
