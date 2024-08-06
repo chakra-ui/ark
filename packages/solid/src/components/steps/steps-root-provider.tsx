@@ -1,7 +1,7 @@
-import { ark } from '@ark-ui/solid'
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
+import { ark } from '../factory'
 import type { UseStepsReturn } from './use-steps'
 import { StepsProvider } from './use-steps-context'
 
