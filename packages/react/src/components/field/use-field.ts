@@ -1,5 +1,6 @@
 import { getWindow } from '@zag-js/dom-query'
-import { useId, useLayoutEffect, useMemo, useRef } from 'react'
+import { useId, useMemo, useRef } from 'react'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context'
 import { parts } from './field.anatomy'
@@ -44,7 +45,7 @@ export const useField = (props: UseFieldProps) => {
   const helperTextId = `field::${id}::helper-text`
   const labelId = `field::${id}::label`
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     const rootNode = rootRef.current
     if (!rootNode) return
 

@@ -8,7 +8,11 @@ description: All notable changes will be documented in this file.
 
 ### Changed
 
-- **Progress**: Update `Progress.ValueText` to render percentage as string.
+- **Progress**: Updated `Progress.ValueText` to render percentage as string.
+
+### Fixed
+
+- **Field**: Fixed SSR warning related to `useLayoutEffect` usage.
 
 ## [3.6.2] - 2024-07-28
 
@@ -19,7 +23,8 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **DatePicker**:
-  - Fixed issue where the selected date doesn't reflect in the input when clicking the trigger and then focusing the input.
+  - Fixed issue where the selected date doesn't reflect in the input when clicking the trigger and
+    then focusing the input.
   - Fixed SSR issue when using `getPresetTrigger`.
 - **Slider**: Fixed issue where `onValueChangeEnd` was called with an incorrect value.
 - Fixed an import issue with `@internationalized/date`.
