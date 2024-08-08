@@ -3,7 +3,7 @@ import { Editable } from '../..'
 </script>
 
 <template>
-  <Editable.Root placeholder="Placeholder" activationMode="dblclick">
+  <Editable.Root placeholder="Placeholder">
     <Editable.Label>Label</Editable.Label>
     <Editable.Area>
       <Editable.Input />

@@ -1,8 +1,7 @@
 import { Editable } from '../..'
 
-export const Basic = () => (
-  <Editable.Root placeholder="Placeholder">
-    <Editable.Label>Label</Editable.Label>
+export const DoubleClick = () => (
+  <Editable.Root placeholder="Placeholder" activationMode="dblclick">
     <Editable.Area>
       <Editable.Input />
       <Editable.Preview />
