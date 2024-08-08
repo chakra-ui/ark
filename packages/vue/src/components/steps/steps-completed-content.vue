@@ -1,11 +1,10 @@
 <script lang="ts">
-import type { ItemProps } from '@zag-js/steps'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface StepsContentBaseProps extends PolymorphicProps, ItemProps {}
-export interface StepsContentProps
-  extends StepsContentBaseProps,
+export interface StepsCompletedContentBaseProps extends PolymorphicProps {}
+export interface StepsCompletedContentProps
+  extends StepsCompletedContentBaseProps,
     /**
      * @vue-ignore
      */
@@ -13,11 +12,14 @@ export interface StepsContentProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 
-const itemProps = defineProps<StepsContentProps>()
+defineProps<StepsCompletedContentProps>()
+
 const steps = useStepsContext()
+const itemProps = computed(() => ({ index: steps.value.count }))
 </script>
 
 <template>

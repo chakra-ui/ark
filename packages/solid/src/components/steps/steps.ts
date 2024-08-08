@@ -5,6 +5,11 @@ export {
   type StepsContentProps as ContentProps,
 } from './steps-content'
 export {
+  StepsCompletedContent as CompletedContent,
+  type StepsCompletedContentBaseProps as CompletedContentBaseProps,
+  type StepsCompletedContentProps as CompletedContentProps,
+} from './steps-completed-content'
+export {
   StepsIndicator as Indicator,
   type StepsIndicatorBaseProps as IndicatorBaseProps,
   type StepsIndicatorProps as IndicatorProps,

@@ -1,6 +1,11 @@
 export type { StepChangeDetails } from '@zag-js/steps'
 export { StepsContent, type StepsContentBaseProps, type StepsContentProps } from './steps-content'
 export {
+  StepsCompletedContent,
+  type StepsCompletedContentBaseProps,
+  type StepsCompletedContentProps,
+} from './steps-completed-content'
+export {
   StepsIndicator,
   type StepsIndicatorBaseProps,
   type StepsIndicatorProps,

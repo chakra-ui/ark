@@ -5,6 +5,11 @@ export {
   type StepsContentProps,
 } from './steps-content.vue'
 export {
+  default as StepsCompletedContent,
+  type StepsCompletedContentBaseProps,
+  type StepsCompletedContentProps,
+} from './steps-completed-content.vue'
+export {
   default as StepsIndicator,
   type StepsIndicatorBaseProps,
   type StepsIndicatorProps,
