@@ -12,6 +12,7 @@ export interface FieldRootProps extends HTMLProps<'div'>, FieldRootBaseProps {}
 export const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>((props, ref) => {
   const [useFieldProps, localProps] = createSplitProps<UseFieldProps>()(props, [
     'id',
+    'ids',
     'disabled',
     'invalid',
     'readOnly',

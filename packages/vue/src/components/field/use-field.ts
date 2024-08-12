@@ -1,14 +1,7 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
 import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import { parts } from './field.anatomy'
-
-export interface ElementIds {
-  root?: string
-  control?: string
-  label?: string
-  errorText?: string
-  helperText?: string
-}
+import type { ElementIds } from './field.types'
 
 export interface UseFieldProps {
   /**
