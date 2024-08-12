@@ -1,7 +1,7 @@
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
+import { type Accessor, createEffect, createMemo, createUniqueId, splitProps } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
@@ -37,13 +37,15 @@ export const useSelect = <T extends CollectionItem>(
     'itemToString',
     'items',
   ])
-  const collection = () => select.collection({ ...collectionOptions })
+
+  const collection = createMemo(() => select.collection({ ...collectionOptions }))
+
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const initialContext = createMemo(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -62,9 +64,20 @@ export const useSelect = <T extends CollectionItem>(
     ...selectProps,
   }))
 
-  const [state, send] = useMachine(select.machine(context()), {
+  const context = createMemo(() => {
+    const [, restProps] = splitProps(initialContext(), ['collection'])
+    return restProps
+  })
+
+  const [state, send] = useMachine(select.machine(initialContext()), {
     context,
   })
 
-  return createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
+  const api = createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
+
+  createEffect(() => {
+    api().setCollection(collection())
+  })
+
+  return api
 }

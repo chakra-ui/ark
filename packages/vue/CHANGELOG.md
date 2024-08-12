@@ -13,8 +13,11 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Field**:
+
   - Fixed issue where id of field parts could not be customized, breaking Zag.js composition.
   - Added `data-*` attributes to control part to allow for better styling.
+
+- **Select**: Fixed reactivity issues when `items` and `value` are updated.
 
 ## [3.7.2] - 2024-07-28
 
