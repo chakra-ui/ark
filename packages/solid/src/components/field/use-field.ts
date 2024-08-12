@@ -1,11 +1,26 @@
-import { getWindow } from '@zag-js/dom-query'
+import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
 import { createEffect, createMemo, createSignal, createUniqueId, onCleanup } from 'solid-js'
 import { useFieldsetContext } from '../fieldset'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
 import { parts } from './field.anatomy'
 
+export interface ElementIds {
+  root?: string
+  control?: string
+  label?: string
+  errorText?: string
+  helperText?: string
+}
+
 export interface UseFieldProps {
+  /**
+   * The id of the field.
+   */
   id?: string
+  /**
+   * The ids of the field parts.
+   */
+  ids?: ElementIds
   /**
    * Indicates whether the field is required.
    */
@@ -30,19 +45,23 @@ export const useField = (props: UseFieldProps) => {
   const fieldset: UseFieldsetReturn | undefined = useFieldsetContext()
 
   const {
+    ids,
     disabled = Boolean(fieldset?.().disabled),
     invalid = false,
     readOnly = false,
     required = false,
   } = props
+
   const [hasErrorText, setHasErrorText] = createSignal(false)
   const [hasHelperText, setHasHelperText] = createSignal(false)
 
   const id = props.id ?? createUniqueId()
   let rootRef: HTMLDivElement | undefined
-  const errorTextId = `field::${id}::error-text`
-  const helperTextId = `field::${id}::helper-text`
-  const labelId = `field::${id}::label`
+
+  const rootId = ids?.control ?? `field::${id}`
+  const errorTextId = ids?.errorText ?? `field::${id}::error-text`
+  const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
+  const labelId = ids?.label ?? `field::${id}::label`
 
   createEffect(() => {
     const rootNode = rootRef
@@ -66,6 +85,7 @@ export const useField = (props: UseFieldProps) => {
 
   const getRootProps = () => ({
     ...parts.root.attrs,
+    id: rootId,
     role: 'group',
     'data-disabled': dataAttr(disabled),
     'data-invalid': dataAttr(invalid),
@@ -89,8 +109,9 @@ export const useField = (props: UseFieldProps) => {
   const getControlProps = () => ({
     'aria-describedby': labelIds.join(' ') || undefined,
     'aria-invalid': ariaAttr(invalid),
-    'aria-required': ariaAttr(required),
-    'aria-readonly': ariaAttr(readOnly),
+    'data-invalid': dataAttr(invalid),
+    'data-required': dataAttr(required),
+    'data-readonly': dataAttr(readOnly),
     id,
     required,
     disabled,
@@ -147,7 +168,3 @@ export const useField = (props: UseFieldProps) => {
     getErrorTextProps,
   }))
 }
-
-type Booleanish = boolean | 'true' | 'false'
-const dataAttr = (condition: boolean | undefined) => (condition ? '' : undefined) as Booleanish
-const ariaAttr = (condition: boolean | undefined) => (condition ? true : undefined)

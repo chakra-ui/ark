@@ -10,6 +10,12 @@ description: All notable changes will be documented in this file.
 
 - **Progress**: Update `Progress.ValueText` to render percentage as string.
 
+### Fixed
+
+- **Field**:
+  - Fixed issue where id of field parts could not be customized, breaking Zag.js composition.
+  - Added `data-*` attributes to control part to allow for better styling.
+
 ## [3.7.2] - 2024-07-28
 
 ### Changed

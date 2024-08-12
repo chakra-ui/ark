@@ -12,7 +12,10 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Field**: Fixed SSR warning related to `useLayoutEffect` usage.
+- **Field**:
+  - Fixed SSR warning related to `useLayoutEffect` usage.
+  - Fixed issue where id of field parts could not be customized, breaking Zag.js composition.
+  - Added `data-*` attributes to control part to allow for better styling.
 
 ## [3.6.2] - 2024-07-28
 
