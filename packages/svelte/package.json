@@ -29,7 +29,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.2.3",
     "@sveltejs/kit": "2.5.20",
-    "@sveltejs/package": "2.3.2",
+    "@sveltejs/package": "2.3.3",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
     "publint": "0.2.9",
     "svelte": "5.0.0-next.208",
