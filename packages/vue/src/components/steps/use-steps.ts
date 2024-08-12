@@ -6,11 +6,16 @@ import type { EmitFn, Optional } from '../../types'
 import { useId } from '../../utils'
 import type { RootEmits } from './steps.types'
 
-export interface UseStepsProps extends Optional<Omit<steps.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseStepsProps
+  extends Optional<Omit<steps.Context, 'dir' | 'getRootNode' | 'step'>, 'id'> {
   /**
    * The initial value of the step
    */
   defaultStep?: number
+  /**
+   * The v-model value of the step
+   */
+  modelValue?: number
 }
 
 export interface UseStepsReturn extends ComputedRef<steps.Api<PropTypes>> {}
@@ -24,8 +29,11 @@ export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): U
     id,
     dir: locale.value.dir,
     getRootNode: env?.value?.getRootNode,
-    step: props.step ?? props.defaultStep,
-    onStepChange: (details) => emit?.('stepChange', details),
+    step: props.modelValue ?? props.defaultStep,
+    onStepChange: (details) => {
+      emit?.('stepChange', details)
+      emit?.('update:modelValue', details.step)
+    },
     onStepComplete: () => emit?.('stepComplete'),
     ...props,
   }))

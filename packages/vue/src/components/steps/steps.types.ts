@@ -39,9 +39,9 @@ export interface RootProps {
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * The controlled step of the component.
+   * The v-model value of the component.
    */
-  step?: number
+  modelValue?: number
 }
 
 export type RootEmits = {
@@ -58,5 +58,5 @@ export type RootEmits = {
   /**
    * Event triggered when the model value changes.
    */
-  'update:modelValue': [value: number]
+  'update:modelValue': [step: number]
 }
