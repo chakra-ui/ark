@@ -30,7 +30,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-organize-imports": "4.0.0",
     "ts-morph": "23.0.0",
-    "ts-pattern": "5.2.0",
+    "ts-pattern": "5.3.1",
     "typescript": "5.5.4",
     "voca": "1.4.1"
   }
