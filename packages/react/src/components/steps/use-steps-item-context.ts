@@ -1,10 +1,10 @@
-import type { ItemProps } from '@zag-js/steps'
+import type { ItemState } from '@zag-js/steps'
 import { createContext } from '../../utils/create-context'
 
-interface StepsItemContext extends ItemProps {}
+export interface UseStepsItemContext extends ItemState {}
 
-export const [StepsItemProvider, useStepsItemContext] = createContext<StepsItemContext>({
+export const [StepsItemProvider, useStepsItemContext] = createContext<UseStepsItemContext>({
   name: 'StepsItemContext',
   hookName: 'useStepsItemContext',
-  providerName: '<StepsItemProvider />',
+  providerName: '<StepsItem />',
 })

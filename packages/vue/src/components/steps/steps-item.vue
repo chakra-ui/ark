@@ -13,13 +13,18 @@ export interface StepsItemProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
+import { StepsItemProvider } from './use-steps-item-context'
 import { StepsItemPropsProvider } from './use-steps-item-props-context'
 
 const props = defineProps<StepsItemProps>()
 const steps = useStepsContext()
+const itemState = computed(() => steps.value.getItemState(props))
+
 StepsItemPropsProvider(props)
+StepsItemProvider(itemState)
 </script>
 
 <template>

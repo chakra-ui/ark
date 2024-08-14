@@ -6,6 +6,30 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Steps (Preview)**: Added `Steps` component.
+
+```jsx
+<Steps.Root count={1}>
+  <Steps.List>
+    <Steps.Item index={0}>
+      <Steps.Trigger>
+        <Steps.Indicator>1</Steps.Indicator>
+        First
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+
+  <Steps.Content index={0}>Content</Steps.Content>
+  <Steps.CompletedContent>Completed</Steps.CompletedContent>
+
+  <Steps.PrevTrigger>Back</Steps.PrevTrigger>
+  <Steps.NextTrigger>Next</Steps.NextTrigger>
+</Steps.Root>
+```
+
 ## [3.8.0] - 2024-08-14
 
 ### Changed

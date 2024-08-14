@@ -1,16 +1,17 @@
 export type { StepChangeDetails } from '@zag-js/steps'
-export { StepsContent, type StepsContentBaseProps, type StepsContentProps } from './steps-content'
 export {
   StepsCompletedContent,
   type StepsCompletedContentBaseProps,
   type StepsCompletedContentProps,
 } from './steps-completed-content'
+export { StepsContent, type StepsContentBaseProps, type StepsContentProps } from './steps-content'
 export {
   StepsIndicator,
   type StepsIndicatorBaseProps,
   type StepsIndicatorProps,
 } from './steps-indicator'
 export { StepsItem, type StepsItemBaseProps, type StepsItemProps } from './steps-item'
+export { StepsItemContext, type StepsItemContextProps } from './steps-item-context'
 export { StepsList, type StepsListBaseProps, type StepsListProps } from './steps-list'
 export {
   StepsNextTrigger,
@@ -41,5 +42,6 @@ export {
 export { StepsTrigger, type StepsTriggerBaseProps, type StepsTriggerProps } from './steps-trigger'
 export { useSteps, type UseStepsProps, type UseStepsReturn } from './use-steps'
 export { useStepsContext, type UseStepsContext } from './use-steps-context'
+export { useStepsItemContext, type UseStepsItemContext } from './use-steps-item-context'
 
 export * as Steps from './steps'
