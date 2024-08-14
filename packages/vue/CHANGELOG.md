@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.8.0] - 2024-08-14
+
 ### Changed
 
 - **Progress**: Update `Progress.ValueText` to render percentage as string.
