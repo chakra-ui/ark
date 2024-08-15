@@ -630,7 +630,7 @@
     "typescript": "5.5.4",
     "vite": "5.4.0",
     "vite-plugin-dts": "3.9.1",
-    "vitest": "2.0.4",
+    "vitest": "2.0.5",
     "vue": "3.4.38",
     "vue-tsc": "2.0.29"
   },
