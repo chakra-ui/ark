@@ -29,7 +29,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@types/bun": "1.1.6",
-    "lefthook": "1.7.12",
+    "lefthook": "1.7.14",
     "turbo": "2.0.12",
     "typescript": "5.5.4",
     "vercel": "35.2.3"
