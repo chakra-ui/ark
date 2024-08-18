@@ -2,7 +2,9 @@
 import { useFormState } from 'react-dom'
 import { Stack } from 'styled-system/jsx'
 import { activateLicense } from '~/app/actions'
-import { Button, Input, Text } from '~/components/ui'
+import { Button } from '~/components/ui/button'
+import { Input } from '~/components/ui/input'
+import { Text } from '~/components/ui/text'
 import { SignInButton } from '../auth/sign-in-button'
 
 interface Props {

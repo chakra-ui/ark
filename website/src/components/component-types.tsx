@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Heading } from '~/components/ui'
+import { Heading } from '~/components/ui/heading'
 import { getServerContext } from '~/lib/server-context'
 import { DataAttrTable } from './data-attr-table'
 import { EmitsTable } from './emits-table'

@@ -1,4 +1,19 @@
 {
+  "Cell": {
+    "props": {
+      "value": {
+        "type": "number | TimePeriod",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement",
+    "tag": "button"
+  },
   "ClearTrigger": {
     "props": {
       "asChild": {

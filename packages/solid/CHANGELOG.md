@@ -8,7 +8,74 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- Added `Fieldset` component to help group form fields.
+- **Steps (Preview)**: Added `Steps` component.
+
+```jsx
+<Steps.Root count={1}>
+  <Steps.List>
+    <Steps.Item index={0}>
+      <Steps.Trigger>
+        <Steps.Indicator>1</Steps.Indicator>
+        First
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+
+  <Steps.Content index={0}>Content</Steps.Content>
+  <Steps.CompletedContent>Completed</Steps.CompletedContent>
+
+  <Steps.PrevTrigger>Back</Steps.PrevTrigger>
+  <Steps.NextTrigger>Next</Steps.NextTrigger>
+</Steps.Root>
+```
+
+## [3.7.0] - 2024-08-13
+
+### Changed
+
+- **Progress**: Update `Progress.ValueText` to render percentage as string.
+
+### Fixed
+
+- **Field**:
+
+  - Fixed issue where id of field parts could not be customized, breaking Zag.js composition.
+  - Added `data-*` attributes to control part to allow for better styling.
+
+- **Select**: Fixed reactivity issues when `items` and `value` are updated.
+
+## [3.6.2] - 2024-07-28
+
+### Changed
+
+- **DatePicker**: Added support for `index` in `getLabelProps`.
+
+### Fixed
+
+- **DatePicker**:
+  - Fixed issue where the selected date doesn't reflect in the input when clicking the trigger and
+    then focusing the input.
+  - Fixed SSR issue when using `getPresetTrigger`.
+- **Slider**: Fixed issue where `onValueChangeEnd` was called with an incorrect value.
+- Fixed an import issue with `@internationalized/date`.
+
+## [3.6.1] - 2024-07-26
+
+### Changed
+
+- **Highlight**: Exported `HighlightChunk` type to enhance type inference in userland code.
+
+### Fixed
+
+- **Select**: Fixed `HiddenSelect` to correctly emit values when a simple string array is used as
+  the `value` for the `Select` component.
+
+## [3.6.0] - 2024-07-25
+
+### Added
+
+- **Fieldset Component**: Introduced to help group form fields.
 
 ```jsx
 <Fieldset.Root>
@@ -18,11 +85,39 @@ description: All notable changes will be documented in this file.
 </Fieldset.Root>
 ```
 
-- Added `Highlight` component.
+Learn more in the [documentation](https://ark-ui.com/docs/solid/components/fieldset).
+
+- **Highlight Component**: Added to highlight text based on a query.
+
+```jsx
+import { Highlight } from '@ark-ui/solid'
+
+export const App = () => (
+  <Highlight
+    query={['Ark UI', 'exclusive examples']}
+    text="Unlock exclusive examples and support the development by getting Ark UI Plus."
+  />
+)
+```
+
+- **Tooltip**: Added `closeOnClick` to control tooltip closure on trigger click.
 
 ### Changed
 
-- **Toast**: Exported `CreateToasterReturn` type to improve type inference when creating a toaster.
+- **Toast**: Exported `CreateToasterReturn` type to improve type inference.
+- **Combobox**: Enhanced accessibility by removing unnecessary `aria-selected` and `aria-disabled`
+  attributes.
+
+### Fixed
+
+- **Toast**: Added missing `aria-labelledby` and `aria-describedby` attributes on the root element.
+- **Combobox**: Fixed issue where the input didn't update on selection with a pointer.
+- **RadioGroup**: Corrected misspelt `data-readonly` attribute.
+- **Select**: Enabled customization of `closeOnSelect` when `multiple` is true.
+- **Tags Input**:
+  - Fixed issues with repeat pasting and undo.
+  - Addressed problem where deleting a pasted value disabled further pasting.
+  - Ensured values are always unique by discarding duplicates
 
 ## [3.5.0] - 2024-06-30
 

@@ -1,4 +1,4 @@
-import { RadioGroup } from '~/components/ui'
+import { RadioGroup } from '~/components/ui/radio-group'
 
 export const Demo = (props: RadioGroup.RootProps) => {
   const options = [

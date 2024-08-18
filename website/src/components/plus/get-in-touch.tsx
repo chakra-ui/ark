@@ -1,6 +1,6 @@
-import { Container, Stack } from 'styled-system/jsx'
-import { Text } from '~/components/ui'
-import { AvatarGroup } from '../ui/avatar-group'
+import { Stack } from 'styled-system/jsx'
+import { AvatarGroup } from '~/components/ui/avatar-group'
+import { Text } from '~/components/ui/text'
 import { MailToSupportButton } from './mail-to-support'
 
 export const GetInTouch = () => {

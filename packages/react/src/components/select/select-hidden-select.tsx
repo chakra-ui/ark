@@ -17,10 +17,12 @@ export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSele
     return (
       <ark.select aria-describedby={field?.ariaDescribedby} {...mergedProps} ref={ref}>
         {isValueEmpty && <option value="" />}
-        {select.collection.items.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
+        {select.collection.items.map((item, index) => (
+          <option
+            key={index}
+            value={select.collection.getItemValue(item) ?? ''}
+            disabled={select.collection.getItemDisabled(item)}
+          />
         ))}
       </ark.select>
     )

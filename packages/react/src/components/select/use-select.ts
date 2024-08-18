@@ -1,7 +1,7 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
-import { useId, useMemo } from 'react'
+import { useEffect, useId, useMemo } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
@@ -44,8 +44,8 @@ export const useSelect = <T extends CollectionItem>(
     Object.values(collectionOptions),
   )
 
-  const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const locale = useLocaleContext()
+  const environment = useEnvironmentContext()
   const field = useFieldContext()
 
   const initialContext: select.Context<T> = {
@@ -58,8 +58,8 @@ export const useSelect = <T extends CollectionItem>(
     readOnly: field?.readOnly,
     invalid: field?.invalid,
     required: field?.required,
-    dir,
-    getRootNode,
+    dir: locale.dir,
+    getRootNode: environment.getRootNode,
     collection,
     open: props.defaultOpen,
     value: props.defaultValue,
@@ -67,18 +67,27 @@ export const useSelect = <T extends CollectionItem>(
     ...selectProps,
   }
 
-  const context: select.Context<T> = {
-    ...initialContext,
-    collection,
-    value: props.value,
-    onValueChange: useEvent(props.onValueChange, { sync: true }),
-    onHighlightChange: useEvent(props.onHighlightChange),
-    onOpenChange: useEvent(props.onOpenChange),
-  }
+  const context = (() => {
+    const { collection: _, ...restProps } = initialContext
+    return {
+      ...restProps,
+      value: props.value,
+      onValueChange: useEvent(props.onValueChange, { sync: true }),
+      onHighlightChange: useEvent(props.onHighlightChange),
+      onOpenChange: useEvent(props.onOpenChange),
+    }
+  })()
 
   const [state, send] = useMachine(select.machine(initialContext), {
     context,
   })
 
-  return select.connect(state, send, normalizeProps)
+  const api = select.connect(state, send, normalizeProps)
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    api.setCollection(collection)
+  }, [collection])
+
+  return api
 }

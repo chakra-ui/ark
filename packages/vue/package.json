@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/vue",
-  "version": "3.6.0",
+  "version": "3.8.0",
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
@@ -243,6 +243,17 @@
         "default": "./dist/components/format/index.cjs"
       }
     },
+    "./highlight": {
+      "source": "./src/components/highlight/index.ts",
+      "import": {
+        "types": "./dist/components/highlight/index.d.ts",
+        "default": "./dist/components/highlight/index.js"
+      },
+      "require": {
+        "types": "./dist/components/highlight/index.d.cts",
+        "default": "./dist/components/highlight/index.cjs"
+      }
+    },
     "./hover-card": {
       "source": "./src/components/hover-card/index.ts",
       "import": {
@@ -419,6 +430,17 @@
         "default": "./dist/components/splitter/index.cjs"
       }
     },
+    "./steps": {
+      "source": "./src/components/steps/index.ts",
+      "import": {
+        "types": "./dist/components/steps/index.d.ts",
+        "default": "./dist/components/steps/index.js"
+      },
+      "require": {
+        "types": "./dist/components/steps/index.d.cts",
+        "default": "./dist/components/steps/index.cjs"
+      }
+    },
     "./switch": {
       "source": "./src/components/switch/index.ts",
       "import": {
@@ -544,47 +566,48 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/accordion": "0.62.1",
-    "@zag-js/anatomy": "0.62.1",
-    "@zag-js/avatar": "0.62.1",
-    "@zag-js/carousel": "0.62.1",
-    "@zag-js/checkbox": "0.62.1",
-    "@zag-js/clipboard": "0.62.1",
-    "@zag-js/collapsible": "0.62.1",
-    "@zag-js/color-picker": "0.62.1",
-    "@zag-js/combobox": "0.62.1",
-    "@zag-js/date-picker": "0.62.1",
-    "@zag-js/dialog": "0.62.1",
-    "@zag-js/dom-query": "0.62.1",
-    "@zag-js/editable": "0.62.1",
-    "@zag-js/file-upload": "0.62.1",
-    "@zag-js/hover-card": "0.62.1",
-    "@zag-js/i18n-utils": "0.62.1",
-    "@zag-js/file-utils": "0.62.1",
-    "@zag-js/menu": "0.62.1",
-    "@zag-js/number-input": "0.62.1",
-    "@zag-js/pagination": "0.62.1",
-    "@zag-js/pin-input": "0.62.1",
-    "@zag-js/popover": "0.62.1",
-    "@zag-js/presence": "0.62.1",
-    "@zag-js/progress": "0.62.1",
-    "@zag-js/qr-code": "0.62.1",
-    "@zag-js/radio-group": "0.62.1",
-    "@zag-js/rating-group": "0.62.1",
-    "@zag-js/select": "0.62.1",
-    "@zag-js/signature-pad": "0.62.1",
-    "@zag-js/slider": "0.62.1",
-    "@zag-js/splitter": "0.62.1",
-    "@zag-js/switch": "0.62.1",
-    "@zag-js/tabs": "0.62.1",
-    "@zag-js/tags-input": "0.62.1",
-    "@zag-js/time-picker": "0.62.1",
-    "@zag-js/toast": "0.62.1",
-    "@zag-js/toggle-group": "0.62.1",
-    "@zag-js/tooltip": "0.62.1",
-    "@zag-js/tree-view": "0.62.1",
-    "@zag-js/types": "0.62.1",
-    "@zag-js/vue": "0.62.1"
+    "@internationalized/date": "3.5.5",
+    "@zag-js/accordion": "0.64.0",
+    "@zag-js/anatomy": "0.64.0",
+    "@zag-js/avatar": "0.64.0",
+    "@zag-js/carousel": "0.64.0",
+    "@zag-js/checkbox": "0.64.0",
+    "@zag-js/clipboard": "0.64.0",
+    "@zag-js/collapsible": "0.64.0",
+    "@zag-js/color-picker": "0.64.0",
+    "@zag-js/combobox": "0.64.0",
+    "@zag-js/date-picker": "0.64.0",
+    "@zag-js/dialog": "0.64.0",
+    "@zag-js/dom-query": "0.64.0",
+    "@zag-js/editable": "0.64.0",
+    "@zag-js/file-upload": "0.64.0",
+    "@zag-js/hover-card": "0.64.0",
+    "@zag-js/i18n-utils": "0.64.0",
+    "@zag-js/file-utils": "0.64.0",
+    "@zag-js/menu": "0.64.0",
+    "@zag-js/number-input": "0.64.0",
+    "@zag-js/pagination": "0.64.0",
+    "@zag-js/pin-input": "0.64.0",
+    "@zag-js/popover": "0.64.0",
+    "@zag-js/presence": "0.64.0",
+    "@zag-js/progress": "0.64.0",
+    "@zag-js/qr-code": "0.64.0",
+    "@zag-js/radio-group": "0.64.0",
+    "@zag-js/rating-group": "0.64.0",
+    "@zag-js/select": "0.64.0",
+    "@zag-js/signature-pad": "0.64.0",
+    "@zag-js/slider": "0.64.0",
+    "@zag-js/splitter": "0.64.0",
+    "@zag-js/switch": "0.64.0",
+    "@zag-js/tabs": "0.64.0",
+    "@zag-js/tags-input": "0.64.0",
+    "@zag-js/time-picker": "0.64.0",
+    "@zag-js/toast": "0.64.0",
+    "@zag-js/toggle-group": "0.64.0",
+    "@zag-js/tooltip": "0.64.0",
+    "@zag-js/tree-view": "0.64.0",
+    "@zag-js/types": "0.64.0",
+    "@zag-js/vue": "0.64.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
@@ -595,21 +618,21 @@
     "@testing-library/user-event": "14.5.2",
     "@testing-library/vue": "8.0.3",
     "@types/jsdom": "21.1.7",
-    "@vitejs/plugin-vue": "5.1.0",
+    "@vitejs/plugin-vue": "5.1.1",
     "@vitejs/plugin-vue-jsx": "4.0.0",
-    "@vue/compiler-sfc": "3.4.34",
+    "@vue/compiler-sfc": "3.4.38",
     "globby": "14.0.2",
     "histoire": "0.17.17",
     "jsdom": "24.1.1",
-    "lucide-vue-next": "0.414.0",
+    "lucide-vue-next": "0.427.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.5.4",
-    "vite": "5.3.4",
+    "vite": "5.4.0",
     "vite-plugin-dts": "3.9.1",
-    "vitest": "2.0.4",
-    "vue": "3.4.34",
-    "vue-tsc": "2.0.28"
+    "vitest": "2.0.5",
+    "vue": "3.4.38",
+    "vue-tsc": "2.0.29"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"

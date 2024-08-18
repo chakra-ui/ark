@@ -1,6 +1,6 @@
 import NextLink from 'next/link'
 import { Container, Stack } from 'styled-system/jsx'
-import { Text } from '~/components/ui'
+import { Text } from '~/components/ui/text'
 import { Logo } from '../logo'
 
 const resources = [

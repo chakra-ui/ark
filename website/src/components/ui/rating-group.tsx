@@ -1,37 +1,19 @@
 'use client'
-import type { Assign } from '@ark-ui/react'
-import {
-  RatingGroup as ArkRatingGroup,
-  type RatingGroupRootProps,
-} from '@ark-ui/react/rating-group'
 import { forwardRef } from 'react'
-import { css, cx } from 'styled-system/css'
-import { splitCssProps } from 'styled-system/jsx'
-import { type RatingGroupVariantProps, ratingGroup } from 'styled-system/recipes'
-import type { JsxStyleProps } from 'styled-system/types'
+import * as ArkRatingGroup from './primitives/rating-group'
 
-export interface RatingGroupProps
-  extends Assign<JsxStyleProps, RatingGroupRootProps>,
-    RatingGroupVariantProps {}
+export interface RatingGroupProps extends ArkRatingGroup.RootProps {}
 
 export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, ref) => {
-  const [variantProps, ratingGroupProps] = ratingGroup.splitVariantProps(props)
-  const [cssProps, localProps] = splitCssProps(ratingGroupProps)
-  const { children, className, ...rootProps } = localProps
-  const styles = ratingGroup(variantProps)
-
+  const { children, ...rootProps } = props
   return (
-    <ArkRatingGroup.Root
-      ref={ref}
-      className={cx(styles.root, css(cssProps), className)}
-      {...rootProps}
-    >
-      {children && <ArkRatingGroup.Label className={styles.label}>{children}</ArkRatingGroup.Label>}
-      <ArkRatingGroup.Control className={styles.control}>
+    <ArkRatingGroup.Root ref={ref} {...rootProps}>
+      {children && <ArkRatingGroup.Label>{children}</ArkRatingGroup.Label>}
+      <ArkRatingGroup.Control>
         <ArkRatingGroup.Context>
           {({ items }) =>
             items.map((index) => (
-              <ArkRatingGroup.Item className={styles.item} key={index} index={index}>
+              <ArkRatingGroup.Item key={index} index={index}>
                 <ArkRatingGroup.ItemContext>
                   {(item) => <StarIcon isHalf={item.half} />}
                 </ArkRatingGroup.ItemContext>
@@ -40,6 +22,7 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
           }
         </ArkRatingGroup.Context>
       </ArkRatingGroup.Control>
+      <ArkRatingGroup.HiddenInput />
     </ArkRatingGroup.Root>
   )
 })

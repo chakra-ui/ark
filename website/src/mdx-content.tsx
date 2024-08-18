@@ -1,4 +1,7 @@
 import * as runtime from 'react/jsx-runtime'
+import { Code } from '~/components/ui/code'
+import { Kbd } from '~/components/ui/kbd'
+import { Link } from '~/components/ui/link'
 import { Anatomy } from './components/anatomy'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
@@ -9,8 +12,8 @@ import { KeyBindingsTable } from './components/key-bindings-table'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
 import { Story } from './components/story'
-import { Code, Kbd, Link } from './components/ui'
-import { Step, Steps } from './components/ui/stepper'
+
+import { Step, Steps } from '~/components/ui/stepper'
 
 const sharedComponents = {
   a: Link,

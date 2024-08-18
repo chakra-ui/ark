@@ -1,4 +1,4 @@
-import { Tooltip } from '~/components/ui'
+import { Tooltip } from '~/components/ui/tooltip'
 
 export const Demo = (props: Tooltip.RootProps) => (
   <Tooltip.Root {...props}>

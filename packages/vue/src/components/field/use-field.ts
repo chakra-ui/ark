@@ -1,9 +1,17 @@
-import { getWindow } from '@zag-js/dom-query'
+import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
 import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import { parts } from './field.anatomy'
+import type { ElementIds } from './field.types'
 
 export interface UseFieldProps {
+  /**
+   * The id of the field.
+   */
   id?: string
+  /**
+   * The ids of the field parts.
+   */
+  ids?: ElementIds
   /**
    * Indicates whether the field is required.
    */
@@ -25,7 +33,8 @@ export interface UseFieldProps {
 export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps) => {
-  const { required, disabled, invalid, readOnly } = props
+  const { required, disabled, invalid, readOnly, ids } = props
+
   const state = reactive({
     hasErrorText: false,
     hasHelperText: false,
@@ -33,9 +42,11 @@ export const useField = (props: UseFieldProps) => {
 
   const id = props.id ?? `field-${Math.random().toString(36).substr(2, 9)}`
   const rootRef = ref(null)
-  const errorTextId = `field::${id}::error-text`
-  const helperTextId = `field::${id}::helper-text`
-  const labelId = `field::${id}::label`
+
+  const rootId = ids?.control ?? `field::${id}`
+  const errorTextId = ids?.errorText ?? `field::${id}::error-text`
+  const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
+  const labelId = ids?.label ?? `field::${id}::label`
 
   onMounted(() => {
     const rootNode = rootRef.value
@@ -61,6 +72,7 @@ export const useField = (props: UseFieldProps) => {
 
   const getRootProps = () => ({
     ...parts.root.attrs,
+    id: rootId,
     role: 'group',
     'data-disabled': dataAttr(disabled),
     'data-invalid': dataAttr(invalid),
@@ -84,8 +96,9 @@ export const useField = (props: UseFieldProps) => {
   const getControlProps = () => ({
     'aria-describedby': labelIds.join(' ') || undefined,
     'aria-invalid': ariaAttr(invalid),
-    'aria-required': ariaAttr(required),
-    'aria-readonly': ariaAttr(readOnly),
+    'data-invalid': dataAttr(invalid),
+    'data-required': dataAttr(required),
+    'data-readonly': dataAttr(readOnly),
     id,
     required,
     disabled,
@@ -142,7 +155,3 @@ export const useField = (props: UseFieldProps) => {
     getErrorTextProps,
   }))
 }
-
-type Booleanish = boolean | 'true' | 'false'
-const dataAttr = (condition: boolean | undefined) => (condition ? '' : undefined) as Booleanish
-const ariaAttr = (condition: boolean | undefined) => (condition ? true : undefined)

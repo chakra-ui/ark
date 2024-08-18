@@ -1,15 +1,7 @@
-import type { Assign } from '@ark-ui/react'
-import { Progress as ArkProgress, type ProgressRootProps } from '@ark-ui/react/progress'
-import { type ReactNode, forwardRef } from 'react'
-import { css, cx } from 'styled-system/css'
-import { splitCssProps } from 'styled-system/jsx'
-import { type ProgressVariantProps, progress } from 'styled-system/recipes'
-import type { JsxStyleProps } from 'styled-system/types'
+import { forwardRef } from 'react'
+import * as ArkProgress from './primitives/progress'
 
-export interface ProgressProps
-  extends Assign<JsxStyleProps, ProgressRootProps>,
-    ProgressVariantProps {
-  children?: ReactNode
+export interface ProgressProps extends ArkProgress.RootProps {
   /**
    * The type of progress to render.
    * @default linear
@@ -18,31 +10,24 @@ export interface ProgressProps
 }
 
 export const Progress = forwardRef<HTMLDivElement, ProgressProps>((props, ref) => {
-  const [variantProps, progressProps] = progress.splitVariantProps(props)
-  const [cssProps, localProps] = splitCssProps(progressProps)
-  const { children, className, type = 'linear', ...rootProps } = localProps
-  const styles = progress(variantProps)
+  const { children, type = 'linear', ...rootProps } = props
 
   return (
-    <ArkProgress.Root
-      ref={ref}
-      className={cx(styles.root, css(cssProps), className)}
-      {...rootProps}
-    >
-      {children && <ArkProgress.Label className={styles.label}>{children}</ArkProgress.Label>}
+    <ArkProgress.Root ref={ref} {...rootProps}>
+      {children && <ArkProgress.Label>{children}</ArkProgress.Label>}
       {type === 'linear' && (
-        <ArkProgress.Track className={styles.track}>
-          <ArkProgress.Range className={styles.range} />
+        <ArkProgress.Track>
+          <ArkProgress.Range />
         </ArkProgress.Track>
       )}
       {type === 'circular' && (
-        <ArkProgress.Circle className={styles.circle}>
-          <ArkProgress.CircleTrack className={styles.circleTrack} />
-          <ArkProgress.CircleRange className={styles.circleRange} />
-          <ArkProgress.ValueText className={styles.valueText} />
+        <ArkProgress.Circle>
+          <ArkProgress.CircleTrack />
+          <ArkProgress.CircleRange />
+          <ArkProgress.ValueText />
         </ArkProgress.Circle>
       )}
-      <ArkProgress.ValueText className={styles.valueText} />
+      <ArkProgress.ValueText />
     </ArkProgress.Root>
   )
 })

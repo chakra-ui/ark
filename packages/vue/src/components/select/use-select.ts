@@ -1,7 +1,8 @@
 import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
+import { omit } from '@zag-js/utils'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
@@ -39,7 +40,12 @@ export const useSelect = <T extends CollectionItem>(
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<select.Context<T>>(() => {
+  const collection = computed(() => {
+    const { items, itemToString, itemToValue, isItemDisabled } = props
+    return select.collection({ items, itemToString, itemToValue, isItemDisabled })
+  })
+
+  const initialContext = computed<select.Context<T>>(() => {
     const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
       id,
@@ -54,7 +60,7 @@ export const useSelect = <T extends CollectionItem>(
       dir: locale.value.dir,
       open: props.defaultOpen,
       'open.controlled': props.open !== undefined,
-      collection: select.collection({ items, itemToString, itemToValue, isItemDisabled }),
+      collection: collection.value,
       value: props.modelValue ?? props.defaultValue,
       getRootNode: env?.value.getRootNode,
       onValueChange: (details) => {
@@ -73,7 +79,15 @@ export const useSelect = <T extends CollectionItem>(
     }
   })
 
-  const [state, send] = useMachine(select.machine(context.value), { context })
+  const [state, send] = useMachine(select.machine(initialContext.value), {
+    context: computed(() => omit(initialContext.value, ['collection'])),
+  })
 
-  return computed(() => select.connect(state.value, send, normalizeProps))
+  const api = computed(() => select.connect(state.value, send, normalizeProps))
+
+  watch([collection], () => {
+    api.value.setCollection(collection.value)
+  })
+
+  return api
 }

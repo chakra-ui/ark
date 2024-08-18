@@ -35,12 +35,12 @@ describe('Progress', () => {
   it('should render', async () => {
     render(<ComponentUnderTest value={7} />)
 
-    screen.getByText('7 percent')
+    screen.getByText('7%')
   })
 
   it('should handle custom max range', async () => {
     render(<ComponentUnderTest value={30} max={30} />)
 
-    screen.getByText('100 percent')
+    screen.getByText('100%')
   })
 })

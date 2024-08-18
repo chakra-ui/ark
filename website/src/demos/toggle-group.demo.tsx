@@ -1,5 +1,5 @@
 import { AlignCenterIcon, AlignJustifyIcon, AlignLeftIcon, AlignRightIcon } from 'lucide-react'
-import { ToggleGroup } from '~/components/ui'
+import { ToggleGroup } from '~/components/ui/toggle-group'
 
 export const Demo = (props: ToggleGroup.RootProps) => {
   return (

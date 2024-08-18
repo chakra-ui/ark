@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { cva } from 'styled-system/css'
 import { Container, Grid, GridItem, Stack, styled } from 'styled-system/jsx'
 import { PageHeader } from '~/components/page-header'
-import { Card } from '~/components/ui'
+import { Card } from '~/components/ui/card'
 import { showcases } from '.velite'
 
 export default function Page() {

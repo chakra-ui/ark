@@ -1,7 +1,8 @@
 import type { PropsWithChildren } from 'react'
 import { css } from 'styled-system/css'
 import { Box, Container, Flex, Stack } from 'styled-system/jsx'
-import { Heading, Text } from '~/components/ui'
+import { Heading } from '~/components/ui/heading'
+import { Text } from '~/components/ui/text'
 import { ReactIcon, SolidIcon, SvelteIcon, VueIcon } from './icons'
 
 export const Universe = () => {

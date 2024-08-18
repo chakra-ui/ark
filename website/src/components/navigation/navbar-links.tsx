@@ -1,8 +1,9 @@
 'use client'
+import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cva } from 'styled-system/css'
-import { HStack } from 'styled-system/jsx'
+import { HStack, styled } from 'styled-system/jsx'
 
 interface Props {
   framework: string
@@ -12,10 +13,18 @@ const link = cva({
   base: {
     color: 'fg.muted',
     fontWeight: 'medium',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1',
     textStyle: 'sm',
     transitionDuration: 'normal',
     transitionProperty: 'color',
     transitionTimingFunction: 'default',
+    '& svg': {
+      width: '3.5',
+      height: '3.5',
+      color: 'accent.default',
+    },
     _hover: { color: 'fg.default' },
     _currentPage: {
       color: 'accent.default',
@@ -24,7 +33,9 @@ const link = cva({
       },
     },
   },
-})()
+})
+
+const NavbarLink = styled(NextLink, link)
 
 export const NavbarLinks = (props: Props) => {
   const { framework } = props
@@ -32,27 +43,32 @@ export const NavbarLinks = (props: Props) => {
 
   return (
     <HStack gap="6" me="2">
-      <NextLink
+      <NavbarLink
         href={`/${framework}/docs/overview/introduction`}
-        className={link}
         aria-current={pathname.startsWith(`/${framework}/docs`) ? 'page' : undefined}
       >
         Docs
-      </NextLink>
-      <NextLink
+      </NavbarLink>
+      <NavbarLink
         href={`/${framework}/examples`}
-        className={link}
         aria-current={pathname.startsWith(`/${framework}/examples`) ? 'page' : undefined}
       >
         Examples
-      </NextLink>
-      <NextLink
+      </NavbarLink>
+      <NavbarLink
         href={`/${framework}/showcase`}
-        className={link}
         aria-current={pathname.startsWith(`/${framework}/showcase`) ? 'page' : undefined}
+        display={{ base: 'none', lg: 'flex' }}
       >
         Showcase
-      </NextLink>
+      </NavbarLink>
+      <NavbarLink
+        href={`/${framework}/plus`}
+        aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
+      >
+        Plus
+        <SparklesIcon />
+      </NavbarLink>
     </HStack>
   )
 }

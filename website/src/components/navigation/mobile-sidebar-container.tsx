@@ -3,7 +3,8 @@ import { Portal } from '@ark-ui/react/portal'
 import { AlignLeftIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { type PropsWithChildren, useEffect, useState } from 'react'
-import { Drawer, IconButton } from '~/components/ui'
+import { Drawer } from '~/components/ui/drawer'
+import { IconButton } from '~/components/ui/icon-button'
 
 export const MobileSidebarContainer = (props: PropsWithChildren) => {
   const [isOpen, setIsOpen] = useState(false)

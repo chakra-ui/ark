@@ -2,7 +2,7 @@
 import { SignaturePad } from '@ark-ui/react/signature-pad'
 import { RotateCcwIcon } from 'lucide-react'
 import { sva } from 'styled-system/css'
-import { IconButton } from '~/components/ui'
+import { IconButton } from '~/components/ui/icon-button'
 
 const styles = sva({
   slots: ['root', 'label', 'control', 'segment', 'clearTrigger', 'guide'],

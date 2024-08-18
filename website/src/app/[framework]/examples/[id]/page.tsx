@@ -2,9 +2,10 @@ import type { Metadata } from 'next'
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { ExamplePreview } from '~/components/example-preview'
 import { ExamplesFooter } from '~/components/navigation/examples/examples-footer'
-import { Heading, Text } from '~/components/ui'
+import { Heading } from '~/components/ui/heading'
 import { Prose } from '~/components/ui/prose'
-import { fetchExample, fetchExamples } from '~/lib/examples'
+import { Text } from '~/components/ui/text'
+import { fetchExample } from '~/lib/examples'
 
 interface Props {
   params: { id: string }

@@ -1,8 +1,20 @@
+export interface ElementIds {
+  root?: string
+  control?: string
+  label?: string
+  errorText?: string
+  helperText?: string
+}
+
 export interface RootProps {
   /**
    * The id of the field.
    */
   id?: string
+  /**
+   * The ids of the field parts.
+   */
+  ids?: ElementIds
   /**
    * Indicates whether the field is required.
    */

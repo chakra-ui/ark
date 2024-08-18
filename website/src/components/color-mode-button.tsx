@@ -3,7 +3,7 @@ import { useIsClient } from '@uidotdev/usehooks'
 import { MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Box } from 'styled-system/jsx'
-import { IconButton } from './ui'
+import { IconButton } from '~/components/ui/icon-button'
 
 export const ColorModeButton = () => {
   const isClient = useIsClient()

@@ -1,7 +1,8 @@
 'use client'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { useParams, usePathname, useRouter } from 'next/navigation'
-import { Icon, Select } from '~/components/ui'
+import { Icon } from '~/components/ui/icon'
+import { Select } from '~/components/ui/select'
 
 export const FrameworkSelect = () => {
   const router = useRouter()

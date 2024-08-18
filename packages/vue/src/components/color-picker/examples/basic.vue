@@ -3,7 +3,7 @@ import { ColorPicker } from '../..'
 </script>
 
 <template>
-  <ColorPicker.Root defaultValue="#ff00ff">
+  <ColorPicker.Root>
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />

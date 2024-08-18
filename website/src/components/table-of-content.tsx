@@ -2,7 +2,8 @@
 import { useWindowScroll } from '@uidotdev/usehooks'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { SegmentGroup, Text } from './ui'
+import { SegmentGroup } from '~/components/ui/segment-group'
+import { Text } from '~/components/ui/text'
 
 interface TocEntry {
   /**

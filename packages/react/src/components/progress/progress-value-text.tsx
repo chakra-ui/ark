@@ -14,7 +14,7 @@ export const ProgressValueText = forwardRef<HTMLSpanElement, ProgressValueTextPr
 
     return (
       <ark.span {...mergedProps} ref={ref}>
-        {children || progress.valueAsString}
+        {children || progress.percentAsString}
       </ark.span>
     )
   },

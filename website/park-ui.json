@@ -1,10 +1,9 @@
 {
-  "$schema": "https://park-ui.com/schema.json",
-  "cssFramework": "panda",
+  "$schema": "https://park-ui.com/registry/latest/schema.json",
+  "importAlias": "~/*",
   "jsFramework": "react",
-  "importAliases": {
-    "components": "~/components/ui",
-    "utils": "~/lib"
-  },
-  "useReactServerComponents": true
+  "outputPaths": {
+    "componentsDir": "~/components/ui",
+    "libDir": "~/lib"
+  }
 }

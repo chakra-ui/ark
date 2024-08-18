@@ -1,4 +1,4 @@
-import { TreeView, type TreeViewData } from '~/components/ui'
+import { TreeView, type TreeViewData } from '~/components/ui/tree-view'
 
 export const Demo = () => {
   return <TreeView data={data} maxW="2xs" />

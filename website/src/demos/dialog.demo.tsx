@@ -1,6 +1,8 @@
 import { XIcon } from 'lucide-react'
 import { Stack } from 'styled-system/jsx'
-import { Button, Dialog, IconButton } from '~/components/ui'
+import { Button } from '~/components/ui/button'
+import { Dialog } from '~/components/ui/dialog'
+import { IconButton } from '~/components/ui/icon-button'
 
 export const Demo = (props: Dialog.RootProps) => {
   return (

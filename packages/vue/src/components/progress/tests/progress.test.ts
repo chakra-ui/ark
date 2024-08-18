@@ -21,7 +21,7 @@ describe('Progress', () => {
       },
     })
 
-    screen.getByText('7 percent')
+    screen.getByText('7%')
   })
 
   it('should handle custom max range', async () => {
@@ -32,6 +32,6 @@ describe('Progress', () => {
       },
     })
 
-    screen.getByText('100 percent')
+    screen.getByText('100%')
   })
 })

@@ -3,7 +3,7 @@ import { Slider } from '../..'
 </script>
 
 <template>
-  <Slider.Root>
+  <Slider.Root :defaultValue="[10, 20]">
     <Slider.Label>Label</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>

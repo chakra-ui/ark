@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
-    "exports:check": "bun scripts exports:check",
+    "exports:check": "bun scripts check:exports",
     "exports:sync": "bun scripts exports:sync",
     "local:sync": "bun scripts local:sync",
     "local:revert": "bun scripts local:sync --revert",
@@ -20,7 +20,8 @@
     "svelte": "bun run --cwd packages/svelte",
     "vue": "bun run --cwd packages/vue",
     "web": "bun run --cwd website",
-    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env"
+    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
+    "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env"
   },
   "dependencies": {
     "root": "."
@@ -28,11 +29,11 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@types/bun": "1.1.6",
-    "lefthook": "1.7.7",
-    "turbo": "2.0.9",
+    "lefthook": "1.7.12",
+    "turbo": "2.0.12",
     "typescript": "5.5.4",
-    "vercel": "35.2.0"
+    "vercel": "35.2.3"
   },
-  "packageManager": "bun@1.1.20",
+  "packageManager": "bun@1.1.21",
   "trustedDependencies": ["@ark-ui/website"]
 }

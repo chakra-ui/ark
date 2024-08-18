@@ -1,4 +1,4 @@
-import { Tabs } from '~/components/ui'
+import { Tabs } from '~/components/ui/tabs'
 
 export const Demo = (props: Tabs.RootProps) => {
   const options = [

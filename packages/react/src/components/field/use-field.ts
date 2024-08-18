@@ -1,11 +1,27 @@
-import { getWindow } from '@zag-js/dom-query'
-import { useId, useLayoutEffect, useMemo, useRef } from 'react'
+import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
+import { useId, useMemo, useRef } from 'react'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context'
 import { parts } from './field.anatomy'
 
+export interface ElementIds {
+  root?: string
+  control?: string
+  label?: string
+  errorText?: string
+  helperText?: string
+}
+
 export interface UseFieldProps {
+  /**
+   * The id of the field.
+   */
   id?: string
+  /**
+   * The ids of the field parts.
+   */
+  ids?: ElementIds
   /**
    * Indicates whether the field is required.
    */
@@ -29,6 +45,7 @@ export type UseFieldReturn = ReturnType<typeof useField>
 export const useField = (props: UseFieldProps) => {
   const fieldset = useFieldsetContext()
   const {
+    ids,
     disabled = Boolean(fieldset?.disabled),
     invalid = false,
     readOnly = false,
@@ -40,11 +57,13 @@ export const useField = (props: UseFieldProps) => {
 
   const id = props.id ?? useId()
   const rootRef = useRef<HTMLDivElement>(null)
-  const errorTextId = `field::${id}::error-text`
-  const helperTextId = `field::${id}::helper-text`
-  const labelId = `field::${id}::label`
 
-  useLayoutEffect(() => {
+  const rootId = ids?.control ?? `field::${id}`
+  const errorTextId = ids?.errorText ?? `field::${id}::error-text`
+  const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
+  const labelId = ids?.label ?? `field::${id}::label`
+
+  useSafeLayoutEffect(() => {
     const rootNode = rootRef.current
     if (!rootNode) return
 
@@ -74,13 +93,14 @@ export const useField = (props: UseFieldProps) => {
     () => () =>
       ({
         ...parts.root.attrs,
+        id: rootId,
         ref: rootRef,
         role: 'group',
         'data-disabled': dataAttr(disabled),
         'data-invalid': dataAttr(invalid),
         'data-readonly': dataAttr(readOnly),
       }) as HTMLProps<'div'>,
-    [disabled, invalid, readOnly],
+    [disabled, invalid, readOnly, rootId],
   )
 
   const getLabelProps = useMemo(
@@ -101,8 +121,9 @@ export const useField = (props: UseFieldProps) => {
       ({
         'aria-describedby': labelIds,
         'aria-invalid': ariaAttr(invalid),
-        'aria-required': ariaAttr(required),
-        'aria-readonly': ariaAttr(readOnly),
+        'data-invalid': dataAttr(invalid),
+        'data-required': dataAttr(required),
+        'data-readonly': dataAttr(readOnly),
         id,
         required,
         disabled,
@@ -160,6 +181,7 @@ export const useField = (props: UseFieldProps) => {
   return {
     ariaDescribedby: labelIds,
     ids: {
+      root: rootId,
       control: id,
       label: labelId,
       errorText: errorTextId,
@@ -181,7 +203,3 @@ export const useField = (props: UseFieldProps) => {
     getErrorTextProps,
   }
 }
-
-type Booleanish = boolean | 'true' | 'false'
-const dataAttr = (condition: boolean | undefined) => (condition ? 'true' : undefined) as Booleanish
-const ariaAttr = (condition: boolean | undefined) => (condition ? true : undefined)
