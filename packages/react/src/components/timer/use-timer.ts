@@ -10,11 +10,11 @@ export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'get
 export interface UseTimerReturn extends timer.Api<PropTypes> {}
 
 export const useTimer = (props: UseTimerProps): UseTimerReturn => {
-  const { getRootNode } = useEnvironmentContext()
+  const env = useEnvironmentContext()
 
   const initialContext: timer.Context = {
     id: useId(),
-    getRootNode,
+    getRootNode: env.getRootNode,
     ...props,
   }
 
