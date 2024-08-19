@@ -602,6 +602,7 @@
     "@zag-js/tabs": "0.64.0",
     "@zag-js/tags-input": "0.64.0",
     "@zag-js/time-picker": "0.64.0",
+    "@zag-js/timer": "0.64.0",
     "@zag-js/toast": "0.64.0",
     "@zag-js/toggle-group": "0.64.0",
     "@zag-js/tooltip": "0.64.0",
