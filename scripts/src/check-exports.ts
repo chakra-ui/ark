@@ -35,18 +35,23 @@ const getExportsFromSourceFile = (path: string): string[] => {
     useInMemoryFileSystem: true,
   })
 
-  const fileContent = readFileSync(path, 'utf8')
-  const sourceFile = project.createSourceFile('index.ts', fileContent)
+  try {
+    const fileContent = readFileSync(path, 'utf8')
+    const sourceFile = project.createSourceFile('index.ts', fileContent)
 
-  return sourceFile
-    .forEachDescendantAsArray()
-    .filter((node): node is ExportDeclaration => Node.isExportDeclaration(node))
-    .flatMap((node) =>
-      node
-        .getNamedExports()
-        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName())
-        .filter((exp) => !exp.endsWith('Emits')),
-    )
+    return sourceFile
+      .forEachDescendantAsArray()
+      .filter((node): node is ExportDeclaration => Node.isExportDeclaration(node))
+      .flatMap((node) =>
+        node
+          .getNamedExports()
+          .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName())
+          .filter((exp) => !exp.endsWith('Emits')),
+      )
+  } catch {
+    console.error(`Unable to read file: ${path}`)
+    return []
+  }
 }
 
 type FrameworkExports = {
