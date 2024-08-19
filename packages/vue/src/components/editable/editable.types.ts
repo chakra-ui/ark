@@ -25,6 +25,10 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
+   * Whether the editable is in edit mode.
+   */
+  edit?: boolean
+  /**
    * The element that should receive focus when the editable is closed.
    * By default, it will focus on the trigger element.
    */
@@ -82,10 +86,6 @@ export interface RootProps {
    */
   selectOnFocus?: boolean
   /**
-   * Whether to start with the edit mode active.
-   */
-  startWithEditView?: boolean
-  /**
    * The action that triggers submit in the edit mode:
    *
    * - "enter" - Trigger submit when the enter key is pressed
@@ -106,7 +106,7 @@ export type RootEmits = {
   /**
    * The callback that is called when in the edit mode.
    */
-  edit: []
+  editChange: [event: editable.EditChangeDetails]
   /**
    * Function called when the focus is moved outside the component
    */
