@@ -15,12 +15,12 @@
 @import url("./styles/pagination.css");
 @import url("./styles/pin-input.css");
 @import url("./styles/popover.css");
-@import url("./styles/progress.css");
 @import url("./styles/presence.css");
+@import url("./styles/progress.css");
 @import url("./styles/qr-code.css");
 @import url("./styles/radio-group.css");
-@import url("./styles/select.css");
 @import url("./styles/segment-group.css");
+@import url("./styles/select.css");
 @import url("./styles/signature-pad.css");
 @import url("./styles/slider.css");
 @import url("./styles/splitter.css");
@@ -29,6 +29,7 @@
 @import url("./styles/tabs.css");
 @import url("./styles/tags-input.css");
 @import url("./styles/time-picker.css");
+@import url("./styles/timer.css");
 @import url("./styles/toast.css");
 @import url("./styles/toggle-group.css");
 @import url("./styles/tooltip.css");

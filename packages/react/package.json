@@ -36,6 +36,7 @@
     "tabs",
     "tags input",
     "time picker",
+    "timer",
     "toast",
     "toggle group",
     "tooltip",
@@ -486,6 +487,17 @@
         "default": "./dist/components/tags-input/index.cjs"
       }
     },
+    "./timer": {
+      "source": "./src/components/timer/index.ts",
+      "import": {
+        "types": "./dist/components/timer/index.d.ts",
+        "default": "./dist/components/timer/index.js"
+      },
+      "require": {
+        "types": "./dist/components/timer/index.d.cts",
+        "default": "./dist/components/timer/index.cjs"
+      }
+    },
     "./time-picker": {
       "source": "./src/components/time-picker/index.ts",
       "import": {
@@ -619,6 +631,7 @@
     "@zag-js/tabs": "0.64.0",
     "@zag-js/tags-input": "0.64.0",
     "@zag-js/time-picker": "0.64.0",
+    "@zag-js/timer": "0.64.0",
     "@zag-js/toast": "0.64.0",
     "@zag-js/toggle-group": "0.64.0",
     "@zag-js/tooltip": "0.64.0",

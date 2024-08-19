@@ -30,6 +30,20 @@ description: All notable changes will be documented in this file.
 </Steps.Root>
 ```
 
+- **Timer (Preview)**: Added `Timer` component.
+
+```jsx
+<Timer.Root>
+  <Timer.Item type="days" />
+  <Timer.Separator>:</Timer.Separator>
+  <Timer.Item type="hours" />
+  <Timer.Separator>:</Timer.Separator>
+  <Timer.Item type="minutes" />
+  <Timer.Separator>:</Timer.Separator>
+  <Timer.Item type="seconds" />
+</Timer.Root>
+```
+
 ## [3.7.0] - 2024-08-13
 
 ### Changed
