@@ -6,7 +6,7 @@ import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
 export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'edit.controlled'>, 'id'> {
   /**
    * The initial value of the editable when it is first rendered.
    * Use when you do not need to control the state of the editable.
