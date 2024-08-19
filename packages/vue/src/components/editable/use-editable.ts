@@ -8,7 +8,10 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './editable'
 
 export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  extends Optional<
+    Omit<editable.Context, 'dir' | 'getRootNode' | 'value' | 'edit.controlled'>,
+    'id'
+  > {
   /**
    * The initial value of the editable when it is first rendered.
    * Use when you do not need to control the state of the editable.
@@ -44,7 +47,7 @@ export const useEditable = (
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
     },
-    onEdit: () => emit?.('edit'),
+    onEditChange: (details) => emit?.('editChange', details),
     onFocusOutside: (details) => emit?.('focusOutside', details),
     onInteractOutside: (details) => emit?.('interactOutside', details),
     onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
