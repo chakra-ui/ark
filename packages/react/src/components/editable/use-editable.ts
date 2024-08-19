@@ -8,7 +8,7 @@ import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
 export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode'>, 'id'> {
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'edit.controlled'>, 'id'> {
   /**
    * The initial value of the editable when it is first rendered.
    * Use when you do not need to control the state of the editable.
@@ -43,7 +43,7 @@ export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => 
     ...initialContext,
     value: props.value,
     onValueChange: useEvent(props.onValueChange, { sync: true }),
-    onEdit: useEvent(props.onEdit),
+    onEditChange: useEvent(props.onEditChange),
     onValueCommit: useEvent(props.onValueCommit),
     onValueRevert: useEvent(props.onValueRevert),
   }
