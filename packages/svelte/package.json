@@ -27,11 +27,11 @@
     "@zag-js/svelte": "0.64.0"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "3.2.3",
-    "@sveltejs/kit": "2.5.21",
-    "@sveltejs/package": "2.3.3",
+    "@sveltejs/adapter-auto": "3.2.4",
+    "@sveltejs/kit": "2.5.24",
+    "@sveltejs/package": "2.3.4",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
-    "publint": "0.2.9",
+    "publint": "0.2.10",
     "svelte": "5.0.0-next.216",
     "svelte-check": "3.8.5",
     "tslib": "2.6.3",
