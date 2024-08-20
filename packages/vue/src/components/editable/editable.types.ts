@@ -16,6 +16,11 @@ export interface RootProps {
    */
   autoResize?: boolean
   /**
+   * The initial edit state of the editable when it is first rendered.
+   * Use when you do not need to control its edit state.
+   */
+  defaultEdit?: boolean
+  /**
    * The initial value of the editable when it is first rendered.
    * Use when you do not need to control the state of the editable.
    */
@@ -102,11 +107,16 @@ export interface RootProps {
   translations?: editable.IntlTranslations
 }
 
+// TODO: remove when Zag is fixed
+interface EditChangeDetails {
+  edit: boolean;
+}
+
 export type RootEmits = {
   /**
    * The callback that is called when in the edit mode.
    */
-  editChange: [event: editable.EditChangeDetails]
+  editChange: [event: EditChangeDetails]
   /**
    * Function called when the focus is moved outside the component
    */
@@ -135,4 +145,8 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string]
+  /**
+   * Event handler called when the edit state of the combobox changes.
+   */
+  'update:edit': [edit: boolean]
 }

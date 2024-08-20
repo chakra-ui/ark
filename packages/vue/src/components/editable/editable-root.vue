@@ -21,6 +21,7 @@ import { EditableProvider } from './use-editable-context'
 
 const props = withDefaults(defineProps<EditableRootProps>(), {
   autoResize: undefined,
+  defaultEdit: undefined,
   disabled: undefined,
   edit: undefined,
   invalid: undefined,

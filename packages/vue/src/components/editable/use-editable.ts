@@ -13,6 +13,11 @@ export interface UseEditableProps
     'id'
   > {
   /**
+   * The initial edit state of the editable when it is first rendered.
+   * Use when you do not need to control its edit state.
+   */
+  defaultEdit?: editable.Context['edit']
+  /**
    * The initial value of the editable when it is first rendered.
    * Use when you do not need to control the state of the editable.
    */
@@ -41,13 +46,18 @@ export const useEditable = (
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
+    edit: props.defaultEdit,
+    'edit.controlled': props.edit !== undefined,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
+    onEditChange: (details) => {
+      emit?.('editChange', details)
+      emit?.('update:edit', details.edit)
+    },
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
     },
-    onEditChange: (details) => emit?.('editChange', details),
     onFocusOutside: (details) => emit?.('focusOutside', details),
     onInteractOutside: (details) => emit?.('interactOutside', details),
     onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),

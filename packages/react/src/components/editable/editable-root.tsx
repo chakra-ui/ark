@@ -13,6 +13,7 @@ export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props
   const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [
     'activationMode',
     'autoResize',
+    'defaultEdit',
     'defaultValue',
     'disabled',
     'edit',
