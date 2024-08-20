@@ -40,3 +40,4 @@ export * from './toggle-group' // 1
 export * from './tooltip'
 export * from './tree-view'
 export * from './timer'
+export * from './steps'
