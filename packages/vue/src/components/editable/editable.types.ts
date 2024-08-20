@@ -108,7 +108,7 @@ export interface RootProps {
 }
 
 // TODO: remove when Zag is fixed
-interface EditChangeDetails {
+export interface EditChangeDetails {
   edit: boolean;
 }
 
