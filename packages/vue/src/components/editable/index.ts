@@ -1,4 +1,8 @@
 export type { ValueChangeDetails as EditableValueChangeDetails } from '@zag-js/editable'
+// TODO: Remove when Zag is fixed
+export interface EditableEditChangeDetails {
+  edit: boolean;
+};
 export {
   default as EditableArea,
   type EditableAreaProps,
