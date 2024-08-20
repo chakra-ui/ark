@@ -6,7 +6,29 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Editable**
+
+  - Add support for controlled the editable's state (edit/preview) using `edit` and `onEditChange`
+
+- **Pagination**
+
+  - Expose `api.count` property
+
+### Changed
+
+- **Editable**
+
+  - Removed `onEdit` in favor of `onEditChange`
+  - Removed `startsWithEditView` in favor of `edit` prop
+
 ### Fixed
+
+- **Dialog**
+
+  - Fix issue where closing a nested dialog focuses the first focusable element in the parent dialog instead of the
+    previously focused element.
 
 - **Steps**: Fixed issue where the steps component was not exported in the index file.
 
