@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Steps**: Fixed issue where the steps component was not exported in the index file.
+
 ## [3.8.0] - 2024-08-19
 
 ### Added
