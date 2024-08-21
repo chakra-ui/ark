@@ -3,7 +3,7 @@ import { Dialog } from '../..'
 </script>
 
 <template>
-  <Dialog.Root lazyMoun unmountOnExit>
+  <Dialog.Root lazyMount unmountOnExit>
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Dialog.Backdrop />
     <Dialog.Positioner>
