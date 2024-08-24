@@ -609,6 +609,7 @@
     "@zag-js/tree-view": "0.65.1",
     "@zag-js/types": "0.65.1",
     "@zag-js/utils": "0.65.1",
+    "@zag-js/steps": "0.65.1",
     "@zag-js/vue": "0.65.1"
   },
   "devDependencies": {
