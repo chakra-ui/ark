@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import { type HTMLAttributes, computed } from 'vue'
+import { type PolymorphicProps, ark } from '../factory'
 
 export interface DatePickerPositionerBaseProps extends PolymorphicProps {}
 export interface DatePickerPositionerProps
@@ -13,21 +13,24 @@ export interface DatePickerPositionerProps
 
 <script setup lang="ts">
 import { useRenderStrategyProps } from '../../utils'
-import { Presence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { useDatePickerContext } from './use-date-picker-context'
 
 defineProps<DatePickerPositionerProps>()
 const datePicker = useDatePickerContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: datePicker.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence
-    v-bind="datePicker.getPositionerProps()"
-    :present="datePicker.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="datePicker.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>
