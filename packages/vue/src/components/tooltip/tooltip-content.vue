@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import { usePresenceContext } from '../presence'
 
 export interface TooltipContentBaseProps extends PolymorphicProps {}
 export interface TooltipContentProps
@@ -17,10 +19,12 @@ import { useTooltipContext } from './use-tooltip-context'
 
 defineProps<TooltipContentProps>()
 const tooltip = useTooltipContext()
+const presence = usePresenceContext()
+const mergedProps = computed(() => mergeProps(tooltip.value.getContentProps(), presence.value.presenceProps))
 </script>
 
 <template>
-  <ark.div v-bind="tooltip.getContentProps()" :as-child="asChild">
+  <ark.div v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
