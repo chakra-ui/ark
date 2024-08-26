@@ -19,7 +19,7 @@
   },
   "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
   "peerDependencies": {
-    "svelte": "5.0.0-next.225"
+    "svelte": "5.0.0-next.238"
   },
   "dependencies": {
     "@zag-js/avatar": "0.65.1",
@@ -32,7 +32,7 @@
     "@sveltejs/package": "2.3.4",
     "@sveltejs/vite-plugin-svelte": "3.1.1",
     "publint": "0.2.10",
-    "svelte": "5.0.0-next.225",
+    "svelte": "5.0.0-next.238",
     "svelte-check": "3.8.5",
     "tslib": "2.6.3",
     "typescript": "5.5.4",
