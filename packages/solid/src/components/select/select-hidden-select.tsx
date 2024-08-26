@@ -21,8 +21,8 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
       <Index each={select().collection.items}>
         {(item) => (
           <option
-            value={select().collection.getItemValue(item) ?? ''}
-            disabled={select().collection.getItemDisabled(item)}
+            value={select().collection.getItemValue(item()) ?? ''}
+            disabled={select().collection.getItemDisabled(item())}
           />
         )}
       </Index>
