@@ -24,7 +24,7 @@ const mergedProps = computed(() => mergeProps(colorPicker.value.getContentProps(
 </script>
 
 <template>
-  <ark.div v-bind="mergedProps">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

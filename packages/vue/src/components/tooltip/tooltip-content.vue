@@ -24,7 +24,7 @@ const mergedProps = computed(() => mergeProps(tooltip.value.getContentProps(), p
 </script>
 
 <template>
-  <ark.div v-bind="mergedProps" :as-child="asChild">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
