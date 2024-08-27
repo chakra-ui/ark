@@ -119,9 +119,9 @@ describe('Tooltip', () => {
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
 
     await user.hover(trigger)
-    expect(screen.getByRole('tooltip')).toBeVisible()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeVisible())
 
     await user.unhover(trigger)
-    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+    await waitFor(() => expect(screen.queryByRole('tooltip')).not.toBeInTheDocument())
   })
 })

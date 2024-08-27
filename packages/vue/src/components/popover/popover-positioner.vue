@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import { type HTMLAttributes, computed } from 'vue'
+import { type PolymorphicProps, ark } from '../factory'
 
 export interface PopoverPositionerBaseProps extends PolymorphicProps {}
 export interface PopoverPositionerProps
@@ -13,22 +13,25 @@ export interface PopoverPositionerProps
 
 <script setup lang="ts">
 import { useRenderStrategyProps } from '../../utils'
-import { Presence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { usePopoverContext } from './use-popover-context'
 
 defineProps<PopoverPositionerProps>()
 
 const popover = usePopoverContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: popover.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence
-    v-bind="popover.getPositionerProps()"
-    :present="popover.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="popover.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

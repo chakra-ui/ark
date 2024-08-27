@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import { type HTMLAttributes, computed } from 'vue'
+import { type PolymorphicProps, ark } from '../factory'
 
 export interface TooltipPositionerBaseProps extends PolymorphicProps {}
 export interface TooltipPositionerProps
@@ -13,21 +13,24 @@ export interface TooltipPositionerProps
 
 <script setup lang="ts">
 import { useRenderStrategyProps } from '../../utils'
-import { Presence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
 
 defineProps<TooltipPositionerProps>()
 const tooltip = useTooltipContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: tooltip.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence
-    v-bind="tooltip.getPositionerProps()"
-    :present="tooltip.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="tooltip.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

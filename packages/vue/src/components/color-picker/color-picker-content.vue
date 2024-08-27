@@ -1,7 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import type { PresenceProps } from '../presence'
+import { type PresenceProps, usePresenceContext } from '../presence'
 
 export interface ColorPickerContentBaseProps extends PresenceProps, PolymorphicProps {}
 export interface ColorPickerContentProps
@@ -18,10 +19,12 @@ import { useColorPickerContext } from './use-color-picker-context'
 
 defineProps<ColorPickerContentProps>()
 const colorPicker = useColorPickerContext()
+const presence = usePresenceContext()
+const mergedProps = computed(() => mergeProps(colorPicker.value.getContentProps(), presence.value.presenceProps))
 </script>
 
 <template>
-  <ark.div v-bind="colorPicker.getContentProps()">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
