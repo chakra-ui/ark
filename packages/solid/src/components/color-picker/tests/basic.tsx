@@ -1,7 +1,7 @@
-import { ColorPicker, type ColorPickerRootProps } from '../'
+import { ColorPicker, type ColorPickerRootProps, parseColor } from '../'
 
 export const ComponentUnderTest = (props: ColorPickerRootProps) => (
-  <ColorPicker.Root value="#eb5e41" {...props}>
+  <ColorPicker.Root value={parseColor('#eb5e41')} {...props}>
     <ColorPicker.Context>
       {(api) => (
         <>
