@@ -1,8 +1,8 @@
-import { ColorPicker } from '../..'
+import { ColorPicker, parseColor } from '../..'
 
 export const Basic = () => {
   return (
-    <ColorPicker.Root defaultValue="#eb5e41">
+    <ColorPicker.Root defaultValue={parseColor('#eb5e41')}>
       <ColorPicker.Label>Color</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />

@@ -1,3 +1,4 @@
+export { parse as parseColor } from '@zag-js/color-picker'
 export type {
   ColorFormat as ColorPickerColorFormat,
   FormatChangeDetails as ColorPickerFormatChangeDetails,
@@ -148,12 +149,12 @@ export {
   type ColorPickerViewBaseProps,
   type ColorPickerViewProps,
 } from './color-picker-view'
+export { colorPickerAnatomy } from './color-picker.anatomy'
 export {
   useColorPicker,
   type UseColorPickerProps,
   type UseColorPickerReturn,
 } from './use-color-picker'
 export { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
-export { colorPickerAnatomy } from './color-picker.anatomy'
 
 export * as ColorPicker from './color-picker'

@@ -1,3 +1,4 @@
+export { parse } from '@zag-js/color-picker'
 export type {
   ColorFormat,
   FormatChangeDetails,
