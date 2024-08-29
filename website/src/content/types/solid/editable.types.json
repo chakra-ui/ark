@@ -68,7 +68,7 @@
         "type": "ActivationMode",
         "defaultValue": "\"focus\"",
         "isRequired": false,
-        "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
+        "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview is focused\n- \"dblclick\" - Enter edit mode when the preview is double-clicked\n- \"click\" - Enter edit mode when the preview is clicked"
       },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
@@ -80,6 +80,11 @@
         "isRequired": false,
         "description": "Whether the editable should auto-resize to fit the content."
       },
+      "defaultEdit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial edit state of the editable when it is first rendered.\nUse when you do not need to control its edit state."
+      },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
@@ -89,6 +94,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the editable is disabled"
+      },
+      "edit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is in edit mode."
       },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
@@ -120,10 +130,10 @@
         "isRequired": false,
         "description": "The name attribute of the editable component. Used for form submission."
       },
-      "onEdit": {
-        "type": "() => void",
+      "onEditChange": {
+        "type": "(details: EditChangeDetails) => void",
         "isRequired": false,
-        "description": "The callback that is called when in the edit mode."
+        "description": "The callback that is called when the edit mode is changed"
       },
       "onFocusOutside": {
         "type": "(event: FocusOutsideEvent) => void",
@@ -175,11 +185,6 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to select the text in the input when it is focused."
-      },
-      "startWithEditView": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to start with the edit mode active."
       },
       "submitMode": {
         "type": "SubmitMode",

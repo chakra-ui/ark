@@ -55,6 +55,11 @@
         "isRequired": false,
         "description": "Indicates whether the field is disabled."
       },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the field parts."
+      },
       "invalid": {
         "type": "boolean",
         "isRequired": false,
@@ -77,7 +82,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string | undefined; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement>; }; ... 10 more ...; getErrorTextProps: () => Omit<...>; }",
+        "type": "{ ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement>; }; ... 10 more ...; getErrorTextProps: () => Omit<...>; }",
         "isRequired": true
       },
       "asChild": {

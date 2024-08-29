@@ -1,0 +1,96 @@
+{
+  "ActionTrigger": {
+    "props": {
+      "action": { "type": "TimerAction", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "type": { "type": "keyof Time<number>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "emits": {
+      "complete": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Callback fired when the timer completes"
+      },
+      "tick": {
+        "type": "[details: TickDetails]",
+        "isRequired": true,
+        "description": "Callback fired on each tick of the timer"
+      }
+    },
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoStart": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to start the timer automatically"
+      },
+      "countdown": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the timer is a countdown timer"
+      },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The unique identifier of the machine."
+      },
+      "interval": {
+        "type": "number",
+        "defaultValue": "1000",
+        "isRequired": false,
+        "description": "The interval between each tick in milliseconds"
+      },
+      "startMs": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial start time in milliseconds"
+      },
+      "targetMs": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The target time in milliseconds (for countdown timer)"
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Separator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

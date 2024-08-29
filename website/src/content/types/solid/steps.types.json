@@ -1,0 +1,153 @@
+{
+  "CompletedContent": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "index": { "type": "number", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "index": { "type": "number", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'li'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "List": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'ol'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "NextTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "PrevTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Progress": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The total number of steps"
+      },
+      "defaultStep": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The initial value of the step"
+      },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The custom ids for the stepper elements"
+      },
+      "linear": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the stepper requires the user to complete the steps in order"
+      },
+      "onStepChange": {
+        "type": "(details: StepChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback to be called when the value changes"
+      },
+      "onStepComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Callback to be called when a step is completed"
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": false,
+        "description": "The orientation of the stepper"
+      },
+      "step": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The current value of the stepper"
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseStepsReturn", "isRequired": true },
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Separator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}
