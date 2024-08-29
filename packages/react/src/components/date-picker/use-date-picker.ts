@@ -7,10 +7,7 @@ import { useEvent } from '../../utils/use-event'
 
 export interface UseDatePickerProps
   extends Optional<
-    Omit<
-      datePicker.Context,
-      'dir' | 'getRootNode' | 'value' | 'min' | 'max' | 'parse' | 'focusedValue' | 'open.controlled'
-    >,
+    Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled'>,
     'id'
   > {
   /**
@@ -22,23 +19,7 @@ export interface UseDatePickerProps
    * The initial value of the date picker when it is first rendered.
    * Use when you do not need to control the state of the date picker.
    */
-  defaultValue?: string[]
-  /**
-   * The focused date.
-   */
-  focusedValue?: string
-  /**
-   * The maximum date for the date picker in the format yyyy-mm-dd
-   */
-  max?: string
-  /**
-   * The minimum date for the date picker in the format yyyy-mm-dd
-   */
-  min?: string
-  /**
-   * The value of the date picker
-   */
-  value?: string[]
+  defaultValue?: datePicker.Context['value']
 }
 
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
@@ -53,18 +34,13 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     getRootNode,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    value: props.defaultValue,
     ...props,
-    focusedValue: props.focusedValue ? datePicker.parse(props.focusedValue) : undefined,
-    value: props.defaultValue ? datePicker.parse(props.defaultValue) : undefined,
-    max: props.max ? datePicker.parse(props.max) : undefined,
-    min: props.min ? datePicker.parse(props.min) : undefined,
   }
 
   const context: datePicker.Context = {
     ...initialContext,
-    max: props.max ? datePicker.parse(props.max) : undefined,
-    min: props.min ? datePicker.parse(props.min) : undefined,
-    value: props.value ? datePicker.parse(props.value) : undefined,
+    value: props.value,
     onValueChange: useEvent(props.onValueChange, { sync: true }),
     onFocusChange: useEvent(props.onFocusChange),
     onViewChange: useEvent(props.onViewChange),

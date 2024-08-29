@@ -4,6 +4,7 @@ export type {
   ValueChangeDetails as DatePickerValueChangeDetails,
   ViewChangeDetails as DatePickerViewChangeDetails,
 } from '@zag-js/date-picker'
+export { parse as parseDate } from '@zag-js/date-picker'
 export {
   DatePickerClearTrigger,
   type DatePickerClearTriggerProps,
