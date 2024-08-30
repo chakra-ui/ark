@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import { usePresenceContext } from '../presence'
 
 export interface SelectContentBaseProps extends PolymorphicProps {}
 export interface SelectContentProps
@@ -17,10 +19,12 @@ import { useSelectContext } from './use-select-context'
 
 defineProps<SelectContentProps>()
 const select = useSelectContext()
+const presence = usePresenceContext()
+const mergedProps = computed(() => mergeProps(select.value.getContentProps(), presence.value.presenceProps))
 </script>
 
 <template>
-  <ark.div v-bind="select.getContentProps()" :as-child="asChild">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

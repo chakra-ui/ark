@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import { usePresenceContext } from '../presence'
 
 export interface DialogContentBaseProps extends PolymorphicProps {}
 export interface DialogContentProps
@@ -16,11 +18,14 @@ import { ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
 defineProps<DialogContentProps>()
+
 const dialog = useDialogContext()
+const presence = usePresenceContext()
+const mergedProps = computed(() => mergeProps(dialog.value.getContentProps(), presence.value.presenceProps))
 </script>
 
 <template>
-  <ark.div v-bind="dialog.getContentProps()" :as-child="asChild">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

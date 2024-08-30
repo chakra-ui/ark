@@ -1,5 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { type HTMLAttributes, computed } from 'vue'
+import { useRenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 
 export interface DialogPositionerBaseProps extends PolymorphicProps {}
@@ -12,22 +13,26 @@ export interface DialogPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils'
-import { Presence } from '../presence'
+import { ark } from '../factory'
+import { PresenceProvider, usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
 defineProps<DialogPositionerProps>()
+
 const dialog = useDialogContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: dialog.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence
-    v-bind="dialog.getPositionerProps()"
-    :present="dialog.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="dialog.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

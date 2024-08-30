@@ -19,10 +19,11 @@ describe('Dialog', () => {
     render(ComponentUnderTest)
 
     await user.click(screen.getByText('Open Dialog'))
-    expect(await screen.findByText('Dialog Title')).toBeVisible()
+
+    await waitFor(async () => expect(await screen.findByText('Dialog Title')).toBeVisible())
 
     await user.click(screen.getByText('Close'))
-    expect(await screen.findByText('Dialog Title')).not.toBeVisible()
+    await waitFor(async () => expect(await screen.findByText('Dialog Title')).not.toBeVisible())
   })
 
   it('should invoke onOpenChange if dialog is closed', async () => {

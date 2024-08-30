@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import { usePresenceContext } from '../presence'
 
 export interface MenuContentBaseProps extends PolymorphicProps {}
 export interface MenuContentProps
@@ -17,10 +19,12 @@ import { useMenuContext } from './use-menu-context'
 
 defineProps<MenuContentProps>()
 const menu = useMenuContext()
+const presence = usePresenceContext()
+const mergedProps = computed(() => mergeProps(menu.value.getContentProps(), presence.value.presenceProps))
 </script>
 
 <template>
-  <ark.div v-bind="menu.getContentProps()" :as-child="asChild">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

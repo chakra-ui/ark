@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import { type HTMLAttributes, computed } from 'vue'
+import { type PolymorphicProps, ark } from '../factory'
 
 export interface ComboboxPositionerBaseProps extends PolymorphicProps {}
 export interface ComboboxPositionerProps
@@ -13,21 +13,24 @@ export interface ComboboxPositionerProps
 
 <script setup lang="ts">
 import { useRenderStrategyProps } from '../../utils'
-import { Presence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { useComboboxContext } from './use-combobox-context'
 
 defineProps<ComboboxPositionerProps>()
 const combobox = useComboboxContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: combobox.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence
-    v-bind="combobox.getPositionerProps()"
-    :present="combobox.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="combobox.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

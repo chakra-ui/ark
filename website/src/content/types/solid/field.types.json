@@ -47,6 +47,11 @@
         "isRequired": false,
         "description": "Indicates whether the field is disabled."
       },
+      "ids": {
+        "type": "ElementIds",
+        "isRequired": false,
+        "description": "The ids of the field parts."
+      },
       "invalid": {
         "type": "boolean",
         "isRequired": false,

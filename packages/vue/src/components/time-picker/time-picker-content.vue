@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
+import { usePresenceContext } from '../presence'
 
 export interface TimePickerContentBaseProps extends PolymorphicProps {}
 export interface TimePickerContentProps
@@ -17,10 +19,12 @@ import { useTimePickerContext } from './use-time-picker-context'
 
 defineProps<TimePickerContentProps>()
 const timePicker = useTimePickerContext()
+const presence = usePresenceContext()
+const mergedProps = computed(() => mergeProps(timePicker.value.getContentProps(), presence.value.presenceProps))
 </script>
 
 <template>
-  <ark.div v-bind="timePicker.getContentProps()" :as-child="asChild">
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

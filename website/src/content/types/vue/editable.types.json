@@ -64,8 +64,8 @@
   },
   "Root": {
     "emits": {
-      "edit": {
-        "type": "[]",
+      "editChange": {
+        "type": "[event: EditChangeDetails]",
         "isRequired": true,
         "description": "The callback that is called when in the edit mode."
       },
@@ -83,6 +83,11 @@
         "type": "[event: PointerDownOutsideEvent]",
         "isRequired": true,
         "description": "Function called when the pointer is pressed down outside the component"
+      },
+      "update:edit": {
+        "type": "[edit: boolean]",
+        "isRequired": true,
+        "description": "Event handler called when the edit state of the combobox changes."
       },
       "update:modelValue": {
         "type": "[value: string]",
@@ -122,6 +127,11 @@
         "isRequired": false,
         "description": "Whether the editable should auto-resize to fit the content."
       },
+      "defaultEdit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial edit state of the editable when it is first rendered.\nUse when you do not need to control its edit state."
+      },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
@@ -131,6 +141,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the editable is disabled"
+      },
+      "edit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the editable is in edit mode."
       },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
@@ -188,11 +203,6 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to select the text in the input when it is focused."
-      },
-      "startWithEditView": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to start with the edit mode active."
       },
       "submitMode": {
         "type": "SubmitMode",

@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import { type HTMLAttributes, computed } from 'vue'
+import { type PolymorphicProps, ark } from '../factory'
 
 export interface SelectPositionerBaseProps extends PolymorphicProps {}
 export interface SelectPositionerProps
@@ -13,21 +13,25 @@ export interface SelectPositionerProps
 
 <script setup lang="ts">
 import { useRenderStrategyProps } from '../../utils'
-import { Presence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { useSelectContext } from './use-select-context'
 
 defineProps<SelectPositionerProps>()
 const select = useSelectContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: select.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence
-    v-bind="select.getPositionerProps()"
-    :present="select.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="select.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>
+

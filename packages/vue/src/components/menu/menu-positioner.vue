@@ -1,6 +1,7 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import { type HTMLAttributes, computed } from 'vue'
+import { useRenderStrategyProps } from '../../utils'
+import { type PolymorphicProps, ark } from '../factory'
 
 export interface MenuPositionerBaseProps extends PolymorphicProps {}
 export interface MenuPositionerProps
@@ -12,17 +13,24 @@ export interface MenuPositionerProps
 </script>
 
 <script setup lang="ts">
-import { Presence } from '../presence'
-import { useMenuContext } from './use-menu-context'
+import { PresenceProvider, usePresence } from '../presence';
+import { useMenuContext } from './use-menu-context';
 
 defineProps<MenuPositionerProps>()
 const menu = useMenuContext()
-// TODO is undefined ?!
-// const renderStrategy = useRenderStrategyProps()
+const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: menu.value.open,
+  })),
+)
+PresenceProvider(presence)
 </script>
 
 <template>
-  <Presence v-bind="menu.getPositionerProps()" :present="menu.open">
+  <ark.div v-if="!presence.unmounted" v-bind="menu.getPositionerProps()" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>
