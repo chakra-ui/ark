@@ -8,7 +8,9 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **All Components**: Fixed issue where exit animations weren't working correctly. 
+- **All Components**: Fixed issue where exit animations weren't working correctly.
+
+- **Steps**: Fixed issue where steps context was not exported.
 
 ## [3.10.0] - 2024-08-22
 

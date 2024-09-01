@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Steps**: Fixed issue where steps context was not exported.
+
 ## [3.9.0] - 2024-08-22
 
 ### Added
@@ -29,8 +33,8 @@ description: All notable changes will be documented in this file.
 
 - **Dialog**
 
-  - Fix issue where closing a nested dialog focuses the first focusable element in the parent dialog instead of the
-    previously focused element.
+  - Fix issue where closing a nested dialog focuses the first focusable element in the parent dialog
+    instead of the previously focused element.
 
 - **Steps**: Fixed issue where the steps component was not exported in the index file.
 
