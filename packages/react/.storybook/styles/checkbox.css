@@ -18,7 +18,16 @@
   justify-content: center;
   width: 24px;
   height: 24px;
+
+  &[data-invalid] {
+    border-color: red;
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 }
+
 
 [data-scope='checkbox'][data-part='indicator']:not([hidden]) {
   display: flex;

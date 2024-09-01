@@ -12,6 +12,10 @@ description: All notable changes will be documented in this file.
 
 - **Steps**: Fixed issue where steps context was not exported.
 
+## Added
+
+- **Checkbox**: Added `invalid` prop to `Checkbox.Group`
+
 ## [3.10.0] - 2024-08-22
 
 ### Added

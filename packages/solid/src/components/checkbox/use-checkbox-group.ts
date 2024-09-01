@@ -27,6 +27,10 @@ export interface UseCheckboxGroupProps {
    * If `true`, the checkbox group is read-only
    */
   readOnly?: boolean
+  /**
+   * If `true`, the checkbox group is invalid
+   */
+  invalid?: boolean
 }
 
 export interface CheckboxGroupItemProps {
@@ -73,6 +77,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
         name: props.name,
         disabled: props.disabled,
         readOnly: props.readOnly,
+        invalid: props.invalid,
       }
     }
 
@@ -82,6 +87,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
       name: props.name,
       disabled: props.disabled,
       readOnly: props.readOnly,
+      invalid: props.invalid,
       setValue,
       addValue,
       toggleValue,
