@@ -26,7 +26,7 @@
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.65.1",
     "@zag-js/docs": "0.65.1",
-    "effect": "3.6.5",
+    "effect": "3.7.0",
     "match-sorter": "6.3.4",
     "next": "14.2.7",
     "next-auth": "5.0.0-beta.20",
