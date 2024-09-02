@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.11.0] - 2024-09-02
+
 ### Fixed
 
 - **All Components**: Fixed issue where exit animations weren't working correctly.
