@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.10.0] - 2024-09-02
+
 ### Fixed
 
 - **Steps**: Fixed issue where steps context was not exported
