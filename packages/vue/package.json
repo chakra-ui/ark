@@ -195,7 +195,7 @@
     "vite-plugin-dts": "4.1.0",
     "vitest": "2.0.5",
     "vue": "3.4.38",
-    "vue-tsc": "2.0.29"
+    "vue-tsc": "2.1.6"
   },
   "peerDependencies": {
     "vue": ">=3.0.0"
