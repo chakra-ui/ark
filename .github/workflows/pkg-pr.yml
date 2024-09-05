@@ -7,19 +7,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout branch
         uses: actions/checkout@v4
 
-      - run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          cache: "pnpm"
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
 
       - name: Build
-        run: pnpm build
+        run: bun run build
 
-      - run: pnpx pkg-pr-new publish './packages/*'
+      - run: bunx pkg-pr-new publish './packages/*'
