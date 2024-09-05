@@ -6,6 +6,52 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Floating Components**: Fixed issue where clicking outside of a dialog on mobile passed click
+  events through.
+
+- **Popover**: Fixed issue where popover did not restore focus when open state was changed
+  programmatically
+
+- **Avatar**: Fixed issue where avatar could throw when the fallback inner text changed
+
+- **Steps**: Improved accessibility of tablist semantics by using `aria-owns`
+
+### Added
+
+- **FileUpload**: Add support for more file types in file upload `accept` intellisense
+
+- **Toast**: Add support for `action` property when creating toasts, giving you the ability to add a
+  `action.label` and `action.onClick`. The `onClick` function will be called when the user clicks
+  the action trigger.
+
+```ts
+toaster.create({
+  title: 'Uploaded successfully',
+  type: 'success',
+  action: {
+    label: 'Undo',
+    onClick: () => {
+      console.log('undo')
+    },
+  },
+})
+```
+
+- **File Upload**: Added support for `invalid` prop in file upload to explicitly mark upload
+  operation as invalid. This could be paired with the `rejectedFiles` to show an error message.
+
+### Changed
+
+- **Floating Components**: Refactored `boundary` to only support function that returns an element.
+
+- **Select**
+
+  - Refactored opening and selection to be based on click events rather than pointerdown/up cycles.
+  - Improved usability and accessibility of the select component.
+  - Fixed issue where controlled multiple selects open state behaved unexpectedly.
+
 ## [3.11.0] - 2024-09-02
 
 ### Fixed

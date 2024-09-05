@@ -32,3 +32,7 @@ Object.defineProperty(window, 'navigator', {
     },
   },
 })
+
+Element.prototype.scrollTo = () => {
+  // no-op
+}

@@ -1,15 +1,31 @@
-import { XIcon } from 'lucide-react'
 import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',
-  overlap: true,
   gap: 24,
 })
 
-export const Basic = () => {
+export const Action = () => {
   return (
     <div>
+      <button
+        type="button"
+        onClick={() =>
+          toaster.create({
+            title: 'Toast Title',
+            description: 'Toast Description',
+            type: 'info',
+            action: {
+              label: 'Subscribe',
+              onClick: () => {
+                console.log('Subscribe')
+              },
+            },
+          })
+        }
+      >
+        Add Toast
+      </button>
       <button
         type="button"
         onClick={() =>
@@ -20,16 +36,14 @@ export const Basic = () => {
           })
         }
       >
-        Add Toast
+        Toast Plain
       </button>
       <Toaster toaster={toaster}>
         {(toast) => (
           <Toast.Root key={toast.id}>
             <Toast.Title>{toast.title}</Toast.Title>
             <Toast.Description>{toast.description}</Toast.Description>
-            <Toast.CloseTrigger>
-              <XIcon />
-            </Toast.CloseTrigger>
+            {toast.action && <Toast.ActionTrigger>{toast.action?.label}</Toast.ActionTrigger>}
           </Toast.Root>
         )}
       </Toaster>

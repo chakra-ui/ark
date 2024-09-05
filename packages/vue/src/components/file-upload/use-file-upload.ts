@@ -29,6 +29,7 @@ export const useFileUpload = (
     },
     disabled: field?.value.disabled,
     required: field?.value.required,
+    invalid: field?.value.invalid,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onFileChange: (details) => emit?.('fileChange', details),
