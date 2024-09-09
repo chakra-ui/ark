@@ -1,6 +1,6 @@
-import { Switch, type SwitchRootProps } from '../'
+import { Switch } from '../'
 
-export const ComponentUnderTest = (props: SwitchRootProps) => {
+export const ComponentUnderTest = (props: Switch.RootProps) => {
   return (
     <Switch.Root {...props}>
       <Switch.Control>

@@ -1,12 +1,12 @@
 export {
   Presence,
-  type PresenceProps,
   type PresenceBaseProps,
+  type PresenceProps,
 } from './presence'
 export { splitPresenceProps } from './split-presence-props'
-export { type UsePresenceProps, type UsePresenceReturn, usePresence } from './use-presence'
+export { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence'
 export {
   PresenceProvider,
-  type UsePresenceContext,
   usePresenceContext,
+  type UsePresenceContext,
 } from './use-presence-context'

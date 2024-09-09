@@ -1,4 +1,4 @@
-import { Select, type SelectRootProps, createListCollection } from '../'
+import { Select, createListCollection } from '../'
 import type { Optional } from '../../../types'
 import { Portal } from '../../portal'
 
@@ -8,7 +8,7 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'collection'>) => {
+export const ComponentUnderTest = (props: Optional<Select.RootProps<Item>, 'collection'>) => {
   const collection = createListCollection({
     items: [
       { label: 'React', value: 'react' },

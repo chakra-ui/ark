@@ -1,6 +1,6 @@
-import { Avatar, type AvatarRootProps } from '../'
+import { Avatar } from '../'
 
-export const ComponentUnderTest = (props: AvatarRootProps) => {
+export const ComponentUnderTest = (props: Avatar.RootProps) => {
   return (
     <Avatar.Root {...props}>
       <Avatar.Fallback>PA</Avatar.Fallback>

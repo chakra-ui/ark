@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Slider, type SliderRootProps } from '../'
+import { Slider } from '../'
 
-export const ComponentUnderTest = (props: SliderRootProps) => {
+export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = useState([-20, 20])
   return (
     <Slider.Root

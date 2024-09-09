@@ -1,6 +1,6 @@
-import { Popover, type PopoverRootProps } from '../'
+import { Popover } from '../'
 
-export const ComponentUnderTest = (props: PopoverRootProps) => (
+export const ComponentUnderTest = (props: Popover.RootProps) => (
   <Popover.Root {...props}>
     <Popover.Trigger>
       click me

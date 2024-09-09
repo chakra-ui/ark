@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { CheckboxRootProps } from '../'
+import type { Checkbox } from '..'
 import { ComponentUnderTest } from './basic'
 
-export const ControlledComponentUnderTest = (props: CheckboxRootProps) => {
+export const ControlledComponentUnderTest = (props: Checkbox.RootProps) => {
   const [checked, setChecked] = useState(false)
   return (
     <>
