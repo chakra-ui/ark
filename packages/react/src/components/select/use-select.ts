@@ -1,19 +1,17 @@
+import type { ListCollection } from '@zag-js/collection'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
-import { useEffect, useId, useMemo } from 'react'
+import { useEffect, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
 import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>
-  extends CollectionOptions<T>,
-    Optional<
-      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
-      'id'
-    > {
+  extends Optional<
+    Omit<select.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'collection'>,
+    'id'
+  > {
   /**
    * The initial open state of the select when it is first rendered.
    * Use when you do not need to control its open state.
@@ -24,6 +22,8 @@ export interface UseSelectProps<T extends CollectionItem>
    * Use when you do not need to control the state of the select.
    */
   defaultValue?: select.Context<T>['value']
+
+  collection: ListCollection<T>
 }
 
 export interface UseSelectReturn<T extends CollectionItem> extends select.Api<PropTypes, T> {}
@@ -31,19 +31,7 @@ export interface UseSelectReturn<T extends CollectionItem> extends select.Api<Pr
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-  const [collectionOptions, selectProps] = createSplitProps<CollectionOptions<T>>()(props, [
-    'isItemDisabled',
-    'itemToValue',
-    'itemToString',
-    'items',
-  ])
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  const collection = useMemo(
-    () => select.collection(collectionOptions),
-    Object.values(collectionOptions),
-  )
-
+  const { collection, ...selectProps } = props
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const field = useFieldContext()
@@ -81,7 +69,6 @@ export const useSelect = <T extends CollectionItem>(
   const [state, send] = useMachine(select.machine(initialContext), {
     context,
   })
-
   const api = select.connect(state, send, normalizeProps)
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>

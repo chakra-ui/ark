@@ -1,20 +1,28 @@
+import * as select from '@zag-js/select'
 import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Portal, Select } from '../..'
 
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
 export const Controlled = () => {
-  type Item = { label: string; value: string; disabled?: boolean }
   const [_, setSelectedItems] = useState<Item[]>([])
 
-  const items: Item[] = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const collection = select.collection<Item>({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
 
   return (
-    <Select.Root items={items} onValueChange={(e) => setSelectedItems(e.items)}>
+    <Select.Root collection={collection} onValueChange={(e) => setSelectedItems(e.items)}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -30,7 +38,7 @@ export const Controlled = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Select.Item key={item.value} item={item}>
                   <Select.ItemText>{item.label}</Select.ItemText>
                   <Select.ItemIndicator>✓</Select.ItemIndicator>

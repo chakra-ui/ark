@@ -1,3 +1,4 @@
+import * as select from '@zag-js/select'
 import { Select, type SelectRootProps } from '../'
 import type { Optional } from '../../../types'
 import { Portal } from '../../portal'
@@ -8,15 +9,18 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items'>) => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'collection'>) => {
+  const collection = select.collection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
+
   return (
-    <Select.Root items={items} {...props}>
+    <Select.Root collection={collection} {...props}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -30,7 +34,7 @@ export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Select.Item key={item.value} item={item}>
                   <Select.ItemText>{item.label}</Select.ItemText>
                   <Select.ItemIndicator>✓</Select.ItemIndicator>

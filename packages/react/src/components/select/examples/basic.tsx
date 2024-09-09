@@ -1,10 +1,12 @@
+import * as select from '@zag-js/select'
 import { ChevronDownIcon } from 'lucide-react'
 import { Portal, Select } from '../..'
 
 export const Basic = () => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = select.collection({ items: ['React', 'Vue', 'Angular'] })
+
   return (
-    <Select.Root items={items}>
+    <Select.Root collection={collection}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -20,7 +22,7 @@ export const Basic = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Select.Item key={item} item={item}>
                   <Select.ItemText>{item}</Select.ItemText>
                   <Select.ItemIndicator>✓</Select.ItemIndicator>

@@ -1,3 +1,4 @@
+import * as select from '@zag-js/select'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Select } from '../..'
@@ -11,8 +12,9 @@ const itemsBase = [
 
 export const ReactiveCollection = () => {
   const [number, setNumber] = useState(0)
-
-  const items = itemsBase.map((item) => ({ ...item, label: `${item.label}-${number}` }))
+  const collection = select.collection({
+    items: itemsBase.map((item) => ({ ...item, label: `${item.label}-${number}` })),
+  })
 
   return (
     <div>
@@ -23,7 +25,7 @@ export const ReactiveCollection = () => {
         Dec
       </button>
 
-      <Select.Root positioning={{ sameWidth: true }} items={items}>
+      <Select.Root positioning={{ sameWidth: true }} collection={collection}>
         <Select.Label>Framework</Select.Label>
         <Select.Control>
           <Select.Trigger>
@@ -35,7 +37,7 @@ export const ReactiveCollection = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Framework</Select.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Select.Item item={item} key={item.label}>
                   <Select.ItemText>{item.label}</Select.ItemText>
                   <Select.ItemIndicator>

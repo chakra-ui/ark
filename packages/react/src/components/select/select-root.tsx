@@ -26,6 +26,7 @@ const SelectImpl = <T extends CollectionItem>(
   const [presenceProps, selectProps] = splitPresenceProps(props)
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
     'closeOnSelect',
+    'collection',
     'composite',
     'defaultOpen',
     'defaultValue',
@@ -35,10 +36,6 @@ const SelectImpl = <T extends CollectionItem>(
     'id',
     'ids',
     'invalid',
-    'isItemDisabled',
-    'items',
-    'itemToString',
-    'itemToValue',
     'loopFocus',
     'multiple',
     'name',

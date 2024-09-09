@@ -1,29 +1,32 @@
+import * as select from '@zag-js/select'
 import { Portal, Select } from '../..'
 
-const items = [
-  'Name 1',
-  'Name 2',
-  'Name 3',
-  'Name 4',
-  'Name 5',
-  'Name 6',
-  'Name 7',
-  'Name 8',
-  'Name 9',
-  'Name 10',
-  'Name 11',
-  'Name 12',
-  'Name 13',
-  'Name 14',
-]
-
 export const Overflow = () => {
+  const collection = select.collection({
+    items: [
+      'Name 1',
+      'Name 2',
+      'Name 3',
+      'Name 4',
+      'Name 5',
+      'Name 6',
+      'Name 7',
+      'Name 8',
+      'Name 9',
+      'Name 10',
+      'Name 11',
+      'Name 12',
+      'Name 13',
+      'Name 14',
+    ],
+  })
+
   return (
     <main>
       <h1>Welcome to Ark UI</h1>
       <p>Please edit src/App.tsx and save to reload.</p>
       <Select.Root
-        items={items}
+        collection={collection}
         positioning={{
           fitViewport: true,
           placement: 'bottom-start',
@@ -42,7 +45,7 @@ export const Overflow = () => {
             <Select.Content style={{ maxHeight: '120px', overflow: 'auto' }}>
               <Select.ItemGroup>
                 <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-                {items.map((item) => (
+                {collection.items.map((item) => (
                   <Select.Item
                     key={item}
                     item={item}
