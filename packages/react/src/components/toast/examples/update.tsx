@@ -1,4 +1,3 @@
-import { XIcon } from 'lucide-react'
 import { useRef } from 'react'
 import { Toast, Toaster, createToaster } from '../..'
 
@@ -43,9 +42,6 @@ export const Update = () => {
             <Toast.Title>{toast.title}</Toast.Title>
             <Toast.Description>{toast.description}</Toast.Description>
             <Toast.ActionTrigger>Do Action</Toast.ActionTrigger>
-            <Toast.CloseTrigger>
-              <XIcon />
-            </Toast.CloseTrigger>
           </Toast.Root>
         )}
       </Toaster>

@@ -24,6 +24,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
     dir,
     disabled: field?.disabled,
     required: field?.required,
+    invalid: field?.invalid,
     getRootNode,
     ...props,
   }

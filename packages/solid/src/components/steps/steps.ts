@@ -59,3 +59,8 @@ export {
   type StepsTriggerBaseProps as TriggerBaseProps,
   type StepsTriggerProps as TriggerProps,
 } from './steps-trigger'
+export {
+  StepsItemContext as ItemContext,
+  type StepsItemContextProps as ItemContextProps,
+} from './steps-item-context'
+export { StepsContext as Context, type StepsContextProps as ContextProps } from './steps-context'

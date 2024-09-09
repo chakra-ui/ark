@@ -5,6 +5,7 @@ export {
   type StepsCompletedContentProps,
 } from './steps-completed-content'
 export { StepsContent, type StepsContentBaseProps, type StepsContentProps } from './steps-content'
+export { StepsContext, type StepsContextProps } from './steps-context'
 export {
   StepsIndicator,
   type StepsIndicatorBaseProps,
@@ -40,9 +41,9 @@ export {
   type StepsSeparatorProps,
 } from './steps-separator'
 export { StepsTrigger, type StepsTriggerBaseProps, type StepsTriggerProps } from './steps-trigger'
+export { stepsAnatomy } from './steps.anatomy'
 export { useSteps, type UseStepsProps, type UseStepsReturn } from './use-steps'
 export { useStepsContext, type UseStepsContext } from './use-steps-context'
 export { useStepsItemContext, type UseStepsItemContext } from './use-steps-item-context'
-export { stepsAnatomy } from './steps.anatomy'
 
 export * as Steps from './steps'

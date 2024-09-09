@@ -9,6 +9,7 @@ export {
   type StepsContentBaseProps,
   type StepsContentProps,
 } from './steps-content.vue'
+export { default as StepsContext, type StepsContextProps } from './steps-context.vue'
 export {
   default as StepsIndicator,
   type StepsIndicatorBaseProps,
@@ -60,7 +61,7 @@ export {
   type StepsTriggerBaseProps,
   type StepsTriggerProps,
 } from './steps-trigger.vue'
+export { stepsAnatomy } from './steps.anatomy'
 export { useSteps, type UseStepsProps, type UseStepsReturn } from './use-steps'
 export { useStepsContext, type UseStepsContext } from './use-steps-context'
 export { useStepsItemContext, type UseStepsItemContext } from './use-steps-item-context'
-export { stepsAnatomy } from './steps.anatomy'

@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<FileUploadRootProps>(), {
   directory: undefined,
   disabled: undefined,
   required: undefined,
+  invalid: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<FileUploadRootEmits>()

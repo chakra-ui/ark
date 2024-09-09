@@ -13,6 +13,7 @@ export const CheckboxGroup = (props: CheckboxGroupProps) => {
     'value',
     'onValueChange',
     'disabled',
+    'invalid',
     'readOnly',
     'name',
   ])

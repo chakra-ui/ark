@@ -23,6 +23,7 @@ import { CheckboxGroupProvider } from './use-checkbox-group-context'
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   disabled: undefined,
   readOnly: undefined,
+  invalid: undefined,
 } satisfies BooleanDefaults<GroupProps>)
 
 const emits = defineEmits<CheckboxGroupEmits>()

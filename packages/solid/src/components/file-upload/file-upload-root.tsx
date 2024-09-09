@@ -16,6 +16,7 @@ export const FileUploadRoot = (props: FileUploadRootProps) => {
     'disabled',
     'id',
     'ids',
+    'invalid',
     'locale',
     'maxFiles',
     'maxFileSize',

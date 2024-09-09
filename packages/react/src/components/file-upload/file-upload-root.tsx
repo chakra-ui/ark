@@ -17,6 +17,7 @@ export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((p
     'disabled',
     'id',
     'ids',
+    'invalid',
     'locale',
     'maxFiles',
     'maxFileSize',

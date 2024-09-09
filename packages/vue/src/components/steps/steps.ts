@@ -60,3 +60,8 @@ export {
   type StepsTriggerBaseProps as TriggerBaseProps,
   type StepsTriggerProps as TriggerProps,
 } from './steps-trigger.vue'
+export {
+  default as ItemContext,
+  type StepsItemContextProps as ItemContextProps,
+} from './steps-item-context.vue'
+export { default as Context, type StepsContextProps as ContextProps } from './steps-context.vue'
