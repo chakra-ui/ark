@@ -2,7 +2,7 @@ import { ChevronDownIcon } from 'lucide-react'
 import { Portal, Select, createListCollection } from '../..'
 
 export const Basic = () => {
-  const collection = createListCollection({ items: ['React', 'Vue', 'Angular'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
 
   return (
     <Select.Root collection={collection}>

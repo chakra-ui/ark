@@ -1,14 +1,17 @@
-import { Combobox, Portal } from '../..'
+import { Combobox, Portal, createListCollection } from '../..'
 
 export const Advanced = () => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
+
   return (
-    <Combobox.Root items={items} multiple>
+    <Combobox.Root collection={collection} multiple>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -20,7 +23,7 @@ export const Advanced = () => {
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Combobox.Item key={item.value} item={item}>
                   <Combobox.ItemText>{item.label}</Combobox.ItemText>
                   <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>

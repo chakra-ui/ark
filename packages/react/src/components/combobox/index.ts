@@ -4,16 +4,16 @@ export type {
   OpenChangeDetails as ComboboxOpenChangeDetails,
   ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
-export type { CollectionItem as ComboboxCollectionItem } from '../../types'
+export { createListCollection, type CollectionItem } from '../collection'
 export {
   ComboboxClearTrigger,
-  type ComboboxClearTriggerProps,
   type ComboboxClearTriggerBaseProps,
+  type ComboboxClearTriggerProps,
 } from './combobox-clear-trigger'
 export {
   ComboboxContent,
-  type ComboboxContentProps,
   type ComboboxContentBaseProps,
+  type ComboboxContentProps,
 } from './combobox-content'
 export {
   ComboboxContext,
@@ -21,18 +21,18 @@ export {
 } from './combobox-context'
 export {
   ComboboxControl,
-  type ComboboxControlProps,
   type ComboboxControlBaseProps,
+  type ComboboxControlProps,
 } from './combobox-control'
 export {
   ComboboxInput,
-  type ComboboxInputProps,
   type ComboboxInputBaseProps,
+  type ComboboxInputProps,
 } from './combobox-input'
 export {
   ComboboxItem,
-  type ComboboxItemProps,
   type ComboboxItemBaseProps,
+  type ComboboxItemProps,
 } from './combobox-item'
 export {
   ComboboxItemContext,
@@ -40,57 +40,57 @@ export {
 } from './combobox-item-context'
 export {
   ComboboxItemGroup,
-  type ComboboxItemGroupProps,
   type ComboboxItemGroupBaseProps,
+  type ComboboxItemGroupProps,
 } from './combobox-item-group'
 export {
   ComboboxItemGroupLabel,
-  type ComboboxItemGroupLabelProps,
   type ComboboxItemGroupLabelBaseProps,
+  type ComboboxItemGroupLabelProps,
 } from './combobox-item-group-label'
 export {
   ComboboxItemIndicator,
-  type ComboboxItemIndicatorProps,
   type ComboboxItemIndicatorBaseProps,
+  type ComboboxItemIndicatorProps,
 } from './combobox-item-indicator'
 export {
   ComboboxItemText,
-  type ComboboxItemTextProps,
   type ComboboxItemTextBaseProps,
+  type ComboboxItemTextProps,
 } from './combobox-item-text'
 export {
   ComboboxLabel,
-  type ComboboxLabelProps,
   type ComboboxLabelBaseProps,
+  type ComboboxLabelProps,
 } from './combobox-label'
 export {
   ComboboxList,
-  type ComboboxListProps,
   type ComboboxListBaseProps,
+  type ComboboxListProps,
 } from './combobox-list'
 export {
   ComboboxPositioner,
-  type ComboboxPositionerProps,
   type ComboboxPositionerBaseProps,
+  type ComboboxPositionerProps,
 } from './combobox-positioner'
 export {
   ComboboxRoot,
-  type ComboboxRootProps,
   type ComboboxRootBaseProps,
+  type ComboboxRootProps,
 } from './combobox-root'
 export {
   ComboboxRootProvider,
-  type ComboboxRootProviderProps,
   type ComboboxRootProviderBaseProps,
+  type ComboboxRootProviderProps,
 } from './combobox-root-provider'
 export {
   ComboboxTrigger,
-  type ComboboxTriggerProps,
   type ComboboxTriggerBaseProps,
+  type ComboboxTriggerProps,
 } from './combobox-trigger'
+export { comboboxAnatomy } from './combobox.anatomy'
 export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
 export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
-export { comboboxAnatomy } from './combobox.anatomy'
 
 export * as Combobox from './combobox'

@@ -1,10 +1,10 @@
-import type { ListCollection } from '@zag-js/collection'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as select from '@zag-js/select'
 import { useEffect, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { CollectionItem, Optional } from '../../types'
+import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>

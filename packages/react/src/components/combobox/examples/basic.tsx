@@ -1,9 +1,10 @@
-import { Combobox, Portal } from '../..'
+import { Combobox, Portal, createListCollection } from '../..'
 
 export const Basic = () => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+
   return (
-    <Combobox.Root items={items} lazyMount unmountOnExit>
+    <Combobox.Root collection={collection} lazyMount unmountOnExit>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -15,7 +16,7 @@ export const Basic = () => {
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Combobox.Item key={item} item={item}>
                   <Combobox.ItemText>{item}</Combobox.ItemText>
                   <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
