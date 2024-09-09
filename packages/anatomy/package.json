@@ -503,7 +503,7 @@
     "globby": "14.0.2",
     "release-it": "17.6.0",
     "typescript": "5.5.4",
-    "vite": "5.4.2",
+    "vite": "5.4.3",
     "vite-plugin-dts": "4.1.0"
   }
 }
