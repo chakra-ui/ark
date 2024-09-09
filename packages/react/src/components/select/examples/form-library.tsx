@@ -1,14 +1,13 @@
-import * as select from '@zag-js/select'
 import { ChevronDownIcon } from 'lucide-react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
-import { Select } from '../..'
+import { Select, createListCollection } from '../..'
 
 interface Inputs {
   framework: string
 }
 
 export const FormLibrary = () => {
-  const collection = select.collection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
   const { register, handleSubmit } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => window.alert(JSON.stringify(data))

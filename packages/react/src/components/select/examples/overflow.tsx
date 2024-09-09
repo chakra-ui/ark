@@ -1,8 +1,7 @@
-import * as select from '@zag-js/select'
-import { Portal, Select } from '../..'
+import { Portal, Select, createListCollection } from '../..'
 
 export const Overflow = () => {
-  const collection = select.collection({
+  const collection = createListCollection({
     items: [
       'Name 1',
       'Name 2',

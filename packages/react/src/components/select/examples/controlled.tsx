@@ -1,7 +1,6 @@
-import * as select from '@zag-js/select'
 import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Portal, Select } from '../..'
+import { Portal, Select, createListCollection } from '../..'
 
 interface Item {
   label: string
@@ -12,7 +11,7 @@ interface Item {
 export const Controlled = () => {
   const [_, setSelectedItems] = useState<Item[]>([])
 
-  const collection = select.collection<Item>({
+  const collection = createListCollection<Item>({
     items: [
       { label: 'React', value: 'react' },
       { label: 'Solid', value: 'solid' },

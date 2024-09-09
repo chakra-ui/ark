@@ -1,9 +1,8 @@
-import * as select from '@zag-js/select'
 import { ChevronDownIcon } from 'lucide-react'
-import { Field, Select } from '../..'
+import { Field, Select, createListCollection } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
-  const collection = select.collection({ items: ['React', 'Vue', 'Angular'] })
+  const collection = createListCollection({ items: ['React', 'Vue', 'Angular'] })
 
   return (
     <Field.Root {...props}>

@@ -1,5 +1,4 @@
-import * as select from '@zag-js/select'
-import { Select, type SelectRootProps } from '../'
+import { Select, type SelectRootProps, createListCollection } from '../'
 import type { Optional } from '../../../types'
 import { Portal } from '../../portal'
 
@@ -10,7 +9,7 @@ interface Item {
 }
 
 export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'collection'>) => {
-  const collection = select.collection({
+  const collection = createListCollection({
     items: [
       { label: 'React', value: 'react' },
       { label: 'Solid', value: 'solid' },

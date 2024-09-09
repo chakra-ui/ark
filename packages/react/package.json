@@ -69,6 +69,17 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./collection": {
+      "source": "./src/components/collection.ts",
+      "import": {
+        "types": "./dist/components/collection.d.ts",
+        "default": "./dist/components/collection.js"
+      },
+      "require": {
+        "types": "./dist/components/collection.d.cts",
+        "default": "./dist/components/collection.cjs"
+      }
+    },
     "./factory": {
       "source": "./src/components/factory.ts",
       "import": {
@@ -136,6 +147,7 @@
     "@zag-js/checkbox": "0.66.1",
     "@zag-js/clipboard": "0.66.1",
     "@zag-js/collapsible": "0.66.1",
+    "@zag-js/collection": "0.66.1",
     "@zag-js/color-picker": "0.66.1",
     "@zag-js/color-utils": "0.66.1",
     "@zag-js/combobox": "0.66.1",

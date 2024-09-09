@@ -4,15 +4,16 @@ export type {
   ValueChangeDetails as SelectValueChangeDetails,
 } from '@zag-js/select'
 export type { CollectionItem as SelectCollectionItem } from '../../types'
+export { createListCollection } from '../collection'
 export {
   SelectClearTrigger,
-  type SelectClearTriggerProps,
   type SelectClearTriggerBaseProps,
+  type SelectClearTriggerProps,
 } from './select-clear-trigger'
 export {
   SelectContent,
-  type SelectContentProps,
   type SelectContentBaseProps,
+  type SelectContentProps,
 } from './select-content'
 export {
   SelectContext,
@@ -20,23 +21,23 @@ export {
 } from './select-context'
 export {
   SelectControl,
-  type SelectControlProps,
   type SelectControlBaseProps,
+  type SelectControlProps,
 } from './select-control'
 export {
   SelectHiddenSelect,
-  type SelectHiddenSelectProps,
   type SelectHiddenSelectBaseProps,
+  type SelectHiddenSelectProps,
 } from './select-hidden-select'
 export {
   SelectIndicator,
-  type SelectIndicatorProps,
   type SelectIndicatorBaseProps,
+  type SelectIndicatorProps,
 } from './select-indicator'
 export {
   SelectItem,
-  type SelectItemProps,
   type SelectItemBaseProps,
+  type SelectItemProps,
 } from './select-item'
 export {
   SelectItemContext,
@@ -44,62 +45,62 @@ export {
 } from './select-item-context'
 export {
   SelectItemGroup,
-  type SelectItemGroupProps,
   type SelectItemGroupBaseProps,
+  type SelectItemGroupProps,
 } from './select-item-group'
 export {
   SelectItemGroupLabel,
-  type SelectItemGroupLabelProps,
   type SelectItemGroupLabelBaseProps,
+  type SelectItemGroupLabelProps,
 } from './select-item-group-label'
 export {
   SelectItemIndicator,
-  type SelectItemIndicatorProps,
   type SelectItemIndicatorBaseProps,
+  type SelectItemIndicatorProps,
 } from './select-item-indicator'
 export {
   SelectItemText,
-  type SelectItemTextProps,
   type SelectItemTextBaseProps,
+  type SelectItemTextProps,
 } from './select-item-text'
 export {
   SelectLabel,
-  type SelectLabelProps,
   type SelectLabelBaseProps,
+  type SelectLabelProps,
 } from './select-label'
 export {
   SelectList,
-  type SelectListProps,
   type SelectListBaseProps,
+  type SelectListProps,
 } from './select-list'
 export {
   SelectPositioner,
-  type SelectPositionerProps,
   type SelectPositionerBaseProps,
+  type SelectPositionerProps,
 } from './select-positioner'
 export {
   SelectRoot,
-  type SelectRootProps,
   type SelectRootBaseProps,
+  type SelectRootProps,
 } from './select-root'
 export {
   SelectRootProvider,
-  type SelectRootProviderProps,
   type SelectRootProviderBaseProps,
+  type SelectRootProviderProps,
 } from './select-root-provider'
 export {
   SelectTrigger,
-  type SelectTriggerProps,
   type SelectTriggerBaseProps,
+  type SelectTriggerProps,
 } from './select-trigger'
 export {
   SelectValueText,
-  type SelectValueTextProps,
   type SelectValueTextBaseProps,
+  type SelectValueTextProps,
 } from './select-value-text'
+export { selectAnatomy } from './select.anatomy'
 export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 export { useSelectContext, type UseSelectContext } from './use-select-context'
 export { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
-export { selectAnatomy } from './select.anatomy'
 
 export * as Select from './select'

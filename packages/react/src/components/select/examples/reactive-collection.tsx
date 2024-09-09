@@ -1,7 +1,6 @@
-import * as select from '@zag-js/select'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Select } from '../..'
+import { Select, createListCollection } from '../..'
 
 const itemsBase = [
   { label: 'React', value: 'react' },
@@ -12,7 +11,7 @@ const itemsBase = [
 
 export const ReactiveCollection = () => {
   const [number, setNumber] = useState(0)
-  const collection = select.collection({
+  const collection = createListCollection({
     items: itemsBase.map((item) => ({ ...item, label: `${item.label}-${number}` })),
   })
 

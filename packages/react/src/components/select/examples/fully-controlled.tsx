@@ -1,9 +1,8 @@
-import * as select from '@zag-js/select'
 import { ChevronDownIcon } from 'lucide-react'
-import { Portal, Select } from '../..'
+import { Portal, Select, createListCollection } from '../..'
 
 export const FullyControlled = () => {
-  const collection = select.collection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
 
   return (
     <Select.Root value={['React']} collection={collection}>
