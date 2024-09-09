@@ -1,7 +1,7 @@
 import { Portal } from 'solid-js/web'
-import { DatePicker, type DatePickerRootProps } from '../'
+import { DatePicker } from '../'
 
-export const ComponentUnderTest = (props: DatePickerRootProps) => (
+export const ComponentUnderTest = (props: DatePicker.RootProps) => (
   <DatePicker.Root {...props}>
     <DatePicker.Label>Label</DatePicker.Label>
     <DatePicker.Control>

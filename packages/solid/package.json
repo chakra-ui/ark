@@ -90,6 +90,7 @@
     "@zag-js/checkbox": "0.66.1",
     "@zag-js/clipboard": "0.66.1",
     "@zag-js/collapsible": "0.66.1",
+    "@zag-js/collection": "0.66.1",
     "@zag-js/color-picker": "0.66.1",
     "@zag-js/combobox": "0.66.1",
     "@zag-js/date-picker": "0.66.1",

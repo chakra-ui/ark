@@ -6,15 +6,19 @@ const main = async () => {
   const files = await globby(['../packages/react/src/components/*/index.ts'], {})
 
   files
-    .filter((file) => !['presence', 'portal'].includes(basename(dirname(file))))
+    .filter((file) => !['presence', 'portal', 'highlight'].includes(basename(dirname(file))))
     .map((file) => {
-      // eg. copy `react/src/avatar/index.ts` to `solid/src/avatar/index.ts`
-      copyFileSync(file, file.replace('react', 'solid'))
-      // eg. copy `react/src/avatar/avatar.ts` to `solid/src/avatar/avatar.ts`
-      copyFileSync(
-        file.replace('index', basename(dirname(file))),
-        file.replace('react', 'solid').replace('index', basename(dirname(file))),
-      )
+      try {
+        // eg. copy `react/src/avatar/index.ts` to `solid/src/avatar/index.ts`
+        copyFileSync(file, file.replace('react', 'solid'))
+        // eg. copy `react/src/avatar/avatar.ts` to `solid/src/avatar/avatar.ts`
+        copyFileSync(
+          file.replace('index', basename(dirname(file))),
+          file.replace('react', 'solid').replace('index', basename(dirname(file))),
+        )
+      } catch (e) {
+        console.log('oops', file, e)
+      }
     })
 }
 

@@ -1,7 +1,7 @@
 import { For } from 'solid-js'
-import { SegmentGroup, type SegmentGroupRootProps } from '../'
+import { SegmentGroup } from '../'
 
-export const ComponentUnderTest = (props: SegmentGroupRootProps) => {
+export const ComponentUnderTest = (props: SegmentGroup.RootProps) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

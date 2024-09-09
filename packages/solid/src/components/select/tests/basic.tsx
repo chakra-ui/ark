@@ -1,6 +1,6 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Select, type SelectRootProps } from '../'
+import { Select } from '../'
 import type { Optional } from '../../../types'
 
 interface Item {
@@ -9,7 +9,7 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<SelectRootProps<Item>, 'items'>) => {
+export const ComponentUnderTest = (props: Optional<Select.RootProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

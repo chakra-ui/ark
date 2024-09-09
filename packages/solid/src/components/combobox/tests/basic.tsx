@@ -1,6 +1,6 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Combobox, type ComboboxRootProps } from '../'
+import { Combobox } from '../'
 import type { Optional } from '../../../types'
 
 interface Item {
@@ -9,7 +9,7 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'items'>) => {
+export const ComponentUnderTest = (props: Optional<Combobox.RootProps<Item>, 'items'>) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
