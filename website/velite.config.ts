@@ -32,7 +32,7 @@ const pages = defineCollection({
       }
       return {
         ...data,
-        status: previewComponents.includes(data.id) ? 'preview' : undefined,
+        status: previewComponents.includes(data.id) ? 'preview' : data.status,
         slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
         category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }

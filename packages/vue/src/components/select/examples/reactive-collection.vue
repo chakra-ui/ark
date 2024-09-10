@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { CheckIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { Select } from '../..'
 
@@ -35,9 +34,7 @@ const items = computed(() => {
             <Select.ItemGroupLabel>Framework</Select.ItemGroupLabel>
             <Select.Item v-for="item in items" :item="item" :key="item.label">
               <Select.ItemText>{{ item.label }}</Select.ItemText>
-              <Select.ItemIndicator>
-                <CheckIcon />
-              </Select.ItemIndicator>
+              <Select.ItemIndicator>✅</Select.ItemIndicator>
             </Select.Item>
           </Select.ItemGroup>
         </Select.Content>
