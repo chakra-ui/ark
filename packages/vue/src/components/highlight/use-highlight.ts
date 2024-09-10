@@ -1,4 +1,4 @@
-import { computed, toRefs } from 'vue'
+import { computed } from 'vue'
 import type { HighlightChunk, HighlightSpan, UseHighlightProps } from './highlight.types'
 
 const escapeRegexp = (term: string): string =>
@@ -35,23 +35,47 @@ const normalizeSpan = (spans: HighlightSpan[], len: number) => {
 }
 
 const highlightWords = (props: UseHighlightProps): HighlightChunk[] => {
-  const flags = getRegexFlags(props.ignoreCase, props.matchAll)
+  const { matchAll = Array.isArray(props.query), query, ignoreCase, text } = props
 
-  const regex = buildRegex(Array.isArray(props.query) ? props.query : [props.query], flags)
+  if (matchAll) {
+    const flags = getRegexFlags(ignoreCase, matchAll)
 
-  const spans = [...props.text.matchAll(regex)].map((match) => ({
-    start: match.index || 0,
-    end: (match.index || 0) + match[0].length,
-  }))
+    const regex = buildRegex(Array.isArray(query) ? query : [query], flags)
 
-  return normalizeSpan(spans, props.text.length).map((chunk) => ({
-    text: props.text.slice(chunk.start, chunk.end),
-    match: !!chunk.match,
-  }))
+    const spans = [...text.matchAll(regex)].map((match) => ({
+      start: match.index || 0,
+      end: (match.index || 0) + match[0].length,
+    }))
+
+    return normalizeSpan(spans, props.text.length).map((chunk) => ({
+      text: props.text.slice(chunk.start, chunk.end),
+      match: !!chunk.match,
+    }))
+  }
+
+  if (Array.isArray(query)) {
+    throw new Error('matchAll must be true when using multiple queries')
+  }
+
+  const searchText = ignoreCase ? text.toLowerCase() : text
+  const searchQuery = ignoreCase ? query.toLowerCase() : query
+
+  const start = searchText.indexOf(searchQuery)
+
+  if (start !== -1) {
+    const end = start + searchQuery.length
+    const spans = [{ start, end }]
+    return normalizeSpan(spans, props.text.length).map((chunk) => ({
+      text: props.text.slice(chunk.start, chunk.end),
+      match: !!chunk.match,
+    }))
+  }
+
+  return [{ text: props.text, match: false }]
 }
+
 export const useHighlight = (props: UseHighlightProps) => {
-  const { text, query } = toRefs(props)
-  return computed(() => highlightWords({ text: text.value, query: query.value }))
+  return computed(() => highlightWords(props))
 }
 
-export type { UseHighlightProps, HighlightChunk }
+export type { HighlightChunk, UseHighlightProps }
