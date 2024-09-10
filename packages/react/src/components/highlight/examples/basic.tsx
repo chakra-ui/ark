@@ -1,4 +1,4 @@
-import { Highlight } from '../highlight'
+import { Highlight } from '../..'
 
 export const Basic = () => {
   return (

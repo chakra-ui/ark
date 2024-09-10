@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Highlight } from '../highlight'
+import { Highlight } from '../..'
 
 export const WithInput = () => {
   const [query, setQuery] = useState('ipsum')

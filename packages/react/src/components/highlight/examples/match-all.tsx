@@ -1,4 +1,4 @@
-import { Highlight } from '@ark-ui/react'
+import { Highlight } from '../..'
 
 export const MatchAll = () => (
   <div>
