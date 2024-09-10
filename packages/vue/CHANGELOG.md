@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.12.0] - 2024-09-10
+
 ### Fixed
 
 - **Floating Components**: Fixed issue where clicking outside of a dialog on mobile passed click
