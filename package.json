@@ -32,7 +32,7 @@
     "lefthook": "1.7.14",
     "turbo": "2.1.1",
     "typescript": "5.5.4",
-    "vercel": "37.3.0"
+    "vercel": "37.4.1"
   },
   "packageManager": "bun@1.1.27",
   "trustedDependencies": ["@ark-ui/website"]
