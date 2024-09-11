@@ -7,3 +7,5 @@ export interface UseHighlightProps extends HighlightWordProps {}
 export const useHighlight = (props: UseHighlightProps): Accessor<HighlightChunk[]> => {
   return createMemo(() => highlightWord(props))
 }
+
+export type { HighlightChunk }
