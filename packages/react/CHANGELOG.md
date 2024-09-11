@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.11.1] - 2024-09-11
+
 ### Fixed
 
 - **Highlight**: Fixed issue where `ignoreCase` and `matchAll` props were not working.
