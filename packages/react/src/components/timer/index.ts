@@ -1,27 +1,16 @@
-export {
-  TimerContext,
-  type TimerContextProps,
-} from './timer-context'
+export { TimerContext, type TimerContextProps } from './timer-context'
 export {
   TimerActionTrigger,
   type TimerActionTriggerBaseProps,
   type TimerActionTriggerProps,
 } from './timer-action-trigger'
-export {
-  TimerItem,
-  type TimerItemProps,
-  type TimerItemBaseProps,
-} from './timer-item'
+export { TimerItem, type TimerItemProps, type TimerItemBaseProps } from './timer-item'
 export {
   TimerSeparator,
   type TimerSeparatorProps,
   type TimerSeparatorBaseProps,
 } from './timer-separator'
-export {
-  TimerRoot,
-  type TimerRootProps,
-  type TimerRootBaseProps,
-} from './timer-root'
+export { TimerRoot, type TimerRootProps, type TimerRootBaseProps } from './timer-root'
 export {
   TimerRootProvider,
   type TimerRootProviderProps,

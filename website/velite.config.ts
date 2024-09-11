@@ -3,8 +3,6 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
 
-const previewComponents = ['carousel', 'qr-code', 'signature-pad', 'tree-view']
-
 const pages = defineCollection({
   name: 'Pages',
   pattern: ['website/src/content/pages/**/*.mdx', 'packages/*/CHANGELOG.md'],
@@ -32,7 +30,6 @@ const pages = defineCollection({
       }
       return {
         ...data,
-        status: previewComponents.includes(data.id) ? 'preview' : data.status,
         slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
         category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }
