@@ -1,15 +1,4 @@
-export interface RegexOptions {
-  /**
-   * Whether to ignore case while matching
-   */
-  ignoreCase?: boolean
-  /**
-   * Whether to match multiple instances of the query
-   */
-  matchAll?: boolean
-}
-
-export interface UseHighlightProps extends RegexOptions {
+export interface UseHighlightProps {
   /**
    * The text to highlight
    */
@@ -18,6 +7,14 @@ export interface UseHighlightProps extends RegexOptions {
    * The query to highlight in the text
    */
   query: string | string[]
+  /**
+   * Whether to ignore case while matching
+   */
+  ignoreCase?: boolean
+  /**
+   * Whether to match multiple instances of the query
+   */
+  matchAll?: boolean
 }
 
 export interface HighlightChunk {

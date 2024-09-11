@@ -147,6 +147,7 @@
     "@zag-js/editable": "0.67.0",
     "@zag-js/file-upload": "0.67.0",
     "@zag-js/file-utils": "0.67.0",
+    "@zag-js/highlight-word": "0.67.0",
     "@zag-js/hover-card": "0.67.0",
     "@zag-js/i18n-utils": "0.67.0",
     "@zag-js/menu": "0.67.0",
