@@ -6,7 +6,11 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/basic'
+export { ByteBasic } from './examples/byte-basic'
+export { ByteSizes } from './examples/byte-sizes'
+export { ByteWithLocale } from './examples/byte-with-locale'
+export { ByteWithUnit } from './examples/byte-with-unit'
+export { ByteWithUnitDisplay } from './examples/byte-with-unit-display'
 export { NumberBasic } from './examples/number-basic'
 export { NumberWithCompact } from './examples/number-with-compact'
 export { NumberWithCurrency } from './examples/number-with-currency'
