@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Frame (Preview)**: Added `Frame` component for rendering components inside an iframe.
+
 ## [3.12.1] - 2024-09-11
 
 ### Fixed
