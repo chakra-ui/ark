@@ -1,11 +1,12 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Combobox } from '../..'
+import { Combobox, createListCollection } from '../..'
 
 export const Basic = () => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+
   return (
-    <Combobox.Root items={items} multiple>
+    <Combobox.Root collection={collection}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -17,7 +18,7 @@ export const Basic = () => {
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={items}>
+              <For each={collection.items}>
                 {(item) => (
                   <Combobox.Item item={item}>
                     <Combobox.ItemText>{item}</Combobox.ItemText>

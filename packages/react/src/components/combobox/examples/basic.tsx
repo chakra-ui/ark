@@ -4,7 +4,7 @@ export const Basic = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
 
   return (
-    <Combobox.Root collection={collection} lazyMount unmountOnExit>
+    <Combobox.Root collection={collection}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />

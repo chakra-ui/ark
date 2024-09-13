@@ -1,18 +1,16 @@
-import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
+import type { ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends CollectionOptions<T>,
-    Optional<
-      Omit<combobox.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
-      'id'
-    > {
+  extends Optional<
+    Omit<combobox.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
+    'id'
+  > {
   /**
    * The initial open state of the combobox when it is first rendered.
    * Use when you do not need to control its open state.
@@ -23,6 +21,10 @@ export interface UseComboboxProps<T extends CollectionItem>
    * Use when you do not need to control the state of the combobox.
    */
   defaultValue?: combobox.Context<T>['value']
+  /**
+   * The collection of items
+   */
+  collection: ListCollection<T>
 }
 
 export interface UseComboboxReturn<T extends CollectionItem>
@@ -31,14 +33,6 @@ export interface UseComboboxReturn<T extends CollectionItem>
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
-  const [collectionOptions, comboboxProps] = createSplitProps<CollectionOptions<T>>()(props, [
-    'isItemDisabled',
-    'itemToValue',
-    'itemToString',
-    'items',
-  ])
-
-  const collection = () => combobox.collection({ ...collectionOptions })
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
@@ -54,13 +48,12 @@ export const useCombobox = <T extends CollectionItem>(
     readOnly: field?.().readOnly,
     required: field?.().required,
     invalid: field?.().invalid,
-    collection: collection(),
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     open: props.defaultOpen,
     value: props.defaultValue,
     'open.controlled': props.open !== undefined,
-    ...comboboxProps,
+    ...props,
   }))
 
   const [state, send] = useMachine(combobox.machine(context()), {

@@ -1,11 +1,12 @@
 import { For } from 'solid-js'
-import { Combobox, Field } from '../..'
+import { Combobox, Field, createListCollection } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+
   return (
     <Field.Root {...props}>
-      <Combobox.Root items={items} lazyMount unmountOnExit>
+      <Combobox.Root collection={collection}>
         <Combobox.Label>Label</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input />
@@ -14,7 +15,7 @@ export const WithField = (props: Field.RootProps) => {
         </Combobox.Control>
         <Combobox.Positioner>
           <Combobox.Content>
-            <For each={items}>
+            <For each={collection.items}>
               {(item) => (
                 <Combobox.Item item={item}>
                   <Combobox.ItemText>{item}</Combobox.ItemText>

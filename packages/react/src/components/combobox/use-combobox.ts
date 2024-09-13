@@ -22,7 +22,9 @@ export interface UseComboboxProps<T extends CollectionItem>
    * Use when you do not need to control the state of the combobox.
    */
   defaultValue?: combobox.Context<T>['value']
-
+  /**
+   * The collection of items
+   */
   collection: ListCollection<T>
 }
 
