@@ -1,3 +1,4 @@
+'use client'
 import { createListCollection } from '@ark-ui/react/select'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { Select } from '~/components/ui/select'
