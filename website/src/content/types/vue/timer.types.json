@@ -9,6 +9,24 @@
       }
     }
   },
+  "Area": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Item": {
     "props": {
       "type": { "type": "keyof Time<number>", "isRequired": true },
@@ -24,12 +42,12 @@
       "complete": {
         "type": "[]",
         "isRequired": true,
-        "description": "Callback fired when the timer completes"
+        "description": "Function invoked when the timer is completed"
       },
       "tick": {
         "type": "[details: TickDetails]",
         "isRequired": true,
-        "description": "Callback fired on each tick of the timer"
+        "description": "Function invoked when the timer ticks"
       }
     },
     "props": {
@@ -40,37 +58,39 @@
       },
       "autoStart": {
         "type": "boolean",
-        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether to start the timer automatically"
+        "description": "Whether the timer should start automatically"
       },
       "countdown": {
         "type": "boolean",
-        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether the timer is a countdown timer"
+        "description": "Whether the timer should countdown, decrementing the timer on each tick."
       },
       "id": {
         "type": "string",
         "isRequired": false,
         "description": "The unique identifier of the machine."
       },
+      "ids": {
+        "type": "Partial<{ root: string; area: string }>",
+        "isRequired": false,
+        "description": "The ids of the timer parts"
+      },
       "interval": {
         "type": "number",
-        "defaultValue": "1000",
+        "defaultValue": "250",
         "isRequired": false,
-        "description": "The interval between each tick in milliseconds"
+        "description": "The interval in milliseconds to update the timer count."
       },
       "startMs": {
         "type": "number",
-        "defaultValue": "0",
         "isRequired": false,
-        "description": "The initial start time in milliseconds"
+        "description": "The total duration of the timer in milliseconds."
       },
       "targetMs": {
         "type": "number",
         "isRequired": false,
-        "description": "The target time in milliseconds (for countdown timer)"
+        "description": "The minimum count of the timer in milliseconds."
       }
     }
   },

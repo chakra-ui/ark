@@ -15,7 +15,10 @@ export interface HighlightProps
 <script lang="ts" setup>
 import { useHighlight } from './use-highlight'
 
-const props = defineProps<HighlightProps>()
+const props = withDefaults(defineProps<HighlightProps>(), {
+  ignoreCase: undefined,
+  matchAll: undefined,
+})
 
 if (typeof props.text !== 'string') {
   throw new Error('[ark-ui/highlight] text must be a string')

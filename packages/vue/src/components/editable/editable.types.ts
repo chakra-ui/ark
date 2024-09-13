@@ -109,7 +109,7 @@ export interface RootProps {
 
 // TODO: remove when Zag is fixed
 export interface EditChangeDetails {
-  edit: boolean;
+  edit: boolean
 }
 
 export type RootEmits = {

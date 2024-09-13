@@ -20,7 +20,9 @@ import { useTooltipContext } from './use-tooltip-context'
 defineProps<TooltipContentProps>()
 const tooltip = useTooltipContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(tooltip.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(tooltip.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>

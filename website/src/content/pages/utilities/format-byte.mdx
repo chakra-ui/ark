@@ -1,0 +1,47 @@
+---
+id: format-byte
+title: Format Byte
+description: Used to format byte values with various options and units
+---
+
+<ComponentPreview id="FormatByte" />
+
+## Usage
+
+The byte formatting component extends the number formatting capabilities to handle byte-specific formatting, including automatic unit conversion and display options.
+
+```jsx
+import { Format } from '@ark-ui/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.Byte` component to format a byte value with default options.
+
+<Example component="format" id="byte-basic" />
+
+### Sizes
+
+Use the `sizes` prop to specify custom byte sizes for formatting.
+
+<Example component="format" id="byte-sizes" />
+
+### Locale
+
+Use the `locale` prop to format the byte value according to a specific locale.
+
+<Example component="format" id="byte-with-locale" />
+
+### Unit
+
+Use the `unit` prop to specify the unit of the byte value.
+
+<Example component="format" id="byte-with-unit" />
+
+### Unit Display
+
+Use the `unitDisplay` prop to specify the display of the unit.
+
+<Example component="format" id="byte-with-unit-display" />

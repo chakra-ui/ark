@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Frame (Preview)**: Added `Frame` component for rendering components inside an iframe.
+
+## [3.11.0] - 2024-09-10
+
 ### Fixed
 
 - **Floating Components**: Fixed issue where clicking outside of a dialog on mobile passed click

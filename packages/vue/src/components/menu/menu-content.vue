@@ -20,7 +20,9 @@ import { useMenuContext } from './use-menu-context'
 defineProps<MenuContentProps>()
 const menu = useMenuContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(menu.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(menu.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>

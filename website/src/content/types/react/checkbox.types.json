@@ -27,6 +27,11 @@
         "isRequired": false,
         "description": "If `true`, the checkbox group is disabled"
       },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is invalid"
+      },
       "name": {
         "type": "string",
         "isRequired": false,

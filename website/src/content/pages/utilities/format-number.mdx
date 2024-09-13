@@ -1,0 +1,55 @@
+---
+id: format
+title: Format Number
+description: Used to format numbers to a specific locale and options
+---
+
+<ComponentPreview id="FormatNumber" />
+
+## Usage
+
+The number formatting logic is handled by the native `Intl.NumberFormat` API and
+smartly cached to avoid performance issues when using the same locale and
+options.
+
+```jsx
+import { Format } from '@ark-ui/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.Number` component to format a number with default options.
+
+<Example component="format" id="number-basic" />
+
+### Percentage
+
+Use the `style="percent"` prop to format the number as a percentage.
+
+<Example component="format" id="number-with-percentage" />
+
+### Currency
+
+Use the `style="currency"` prop along with the `currency` prop to format the number as a currency.
+
+<Example component="format" id="number-with-currency" />
+
+### Locale
+
+Use the `locale` prop to format the number according to a specific locale.
+
+<Example component="format" id="number-with-locale" />
+
+### Unit
+
+Use the `style="unit"` prop along with the `unit` prop to format the number with a specific unit.
+
+<Example component="format" id="number-with-unit" />
+
+### Compact Notation
+
+Use the `notation="compact"` prop to format the number in compact notation.
+
+<Example component="format" id="number-with-compact" />

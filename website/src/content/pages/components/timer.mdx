@@ -1,0 +1,33 @@
+---
+id: timer
+title: Timer
+status: preview
+description: Used to record the time elapsed from zero or since a specified target time.
+---
+
+<ComponentPreview id="Timer" />
+
+## Examples
+
+Learn how to use the `Timer` component in your project. Let's take a look at the most basic example:
+
+<Example id="basic" />
+
+### Countdown Timer
+
+You can create a countdown timer by setting the `targetMs` prop to a future timestamp:
+
+<Example id="countdown" />
+
+### Timer Events
+
+The Timer component provides events that you can listen to for various timer-related actions.
+
+- The `onComplete` event is triggered when the timer reaches its target time.
+- The `onTick` event is called on each timer update, providing details about the current timer state.
+
+<Example id="events" />
+
+## API Reference
+
+<ComponentTypes id="timer" />

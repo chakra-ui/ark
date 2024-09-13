@@ -25,6 +25,11 @@
         "isRequired": false,
         "description": "If `true`, the checkbox group is disabled"
       },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the checkbox group is invalid"
+      },
       "modelValue": {
         "type": "string[]",
         "isRequired": false,

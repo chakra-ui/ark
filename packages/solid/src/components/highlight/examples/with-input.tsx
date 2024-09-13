@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js'
-import { Highlight } from '../highlight'
+import { Highlight } from '../..'
 
 export const WithInput = () => {
   const [query, setQuery] = createSignal('ipsum')

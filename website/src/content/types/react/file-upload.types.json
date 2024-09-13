@@ -157,6 +157,11 @@
         "isRequired": false,
         "description": "The ids of the elements. Useful for composition."
       },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the file input is invalid"
+      },
       "locale": {
         "type": "string",
         "defaultValue": "\"en-US\"",

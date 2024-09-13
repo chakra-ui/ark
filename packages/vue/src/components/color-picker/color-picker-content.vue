@@ -20,7 +20,9 @@ import { useColorPickerContext } from './use-color-picker-context'
 defineProps<ColorPickerContentProps>()
 const colorPicker = useColorPickerContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(colorPicker.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(colorPicker.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>

@@ -12,6 +12,7 @@ export interface TimerRootProps extends HTMLProps<'div'>, TimerRootBaseProps {}
 export const TimerRoot = forwardRef<HTMLDivElement, TimerRootProps>((props, ref) => {
   const [useTimerProps, localProps] = createSplitProps<UseTimerProps>()(props, [
     'id',
+    'ids',
     'autoStart',
     'interval',
     'countdown',

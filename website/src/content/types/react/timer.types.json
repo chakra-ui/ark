@@ -14,6 +14,28 @@
     "element": "HTMLButtonElement",
     "tag": "button"
   },
+  "Area": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement",
+    "tag": "div"
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement",
+    "tag": "div"
+  },
   "Item": {
     "props": {
       "type": {
@@ -45,6 +67,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the timer should countdown, decrementing the timer on each tick."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; area: string }>",
+        "isRequired": false,
+        "description": "The ids of the timer parts"
       },
       "interval": {
         "type": "number",
