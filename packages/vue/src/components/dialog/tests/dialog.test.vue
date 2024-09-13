@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Teleport } from 'vue'
 import { Dialog } from '../'
 </script>
 
