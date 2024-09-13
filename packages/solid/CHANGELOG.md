@@ -8,7 +8,12 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Frame (Preview)**: Added `Frame` component for rendering components inside an iframe.
+- **Frame (Preview)**: Introduced the `Frame` component for rendering content within an iframe.
+- **Timer (Preview)**: Added `Area` and `Control` parts to improve structure and anatomy.
+
+### Fixed
+
+- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of items was empty.
 
 ## [3.11.0] - 2024-09-10
 
