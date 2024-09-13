@@ -71,7 +71,7 @@ toaster.create({
 
 - **Steps**: Fixed issue where steps context was not exported
 
-## Added
+### Added
 
 - **Checkbox**: Added `invalid` prop to `Checkbox.Group`
 
