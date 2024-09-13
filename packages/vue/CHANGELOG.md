@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- **Field**: Expose `v-model` through `FieldInput`, `FieldSelect`, and `FieldTextarea`. Use
+  `v-model` at these components instead of `FieldRoot` to maintain value type for each form element,
+  as the type is variable. This is consistent with the React version.
+
 ### Added
 
 - **Frame (Preview)**: Added `Frame` component for rendering components inside an iframe.
