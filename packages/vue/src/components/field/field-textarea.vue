@@ -17,7 +17,7 @@ export interface FieldTextareaProps
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
-const props = defineProps<FieldTextareaProps>()
+defineProps<FieldTextareaProps>()
 const field = useFieldContext()
 const emit = defineEmits(['update:modelValue'])
 </script>
@@ -25,9 +25,9 @@ const emit = defineEmits(['update:modelValue'])
 <template>
   <ark.textarea
     v-bind="field.getTextareaProps()"
-    :value="props.modelValue"
+    :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
-    :as-child="asChild"
+    :as-child
   >
     <slot />
   </ark.textarea>

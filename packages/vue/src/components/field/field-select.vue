@@ -17,7 +17,7 @@ export interface FieldSelectProps
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
-const props = defineProps<FieldSelectProps & { modelValue?: string }>()
+defineProps<FieldSelectProps & { modelValue?: string }>()
 const field = useFieldContext()
 
 const emit = defineEmits(['update:modelValue'])
@@ -26,9 +26,9 @@ const emit = defineEmits(['update:modelValue'])
 <template>
   <ark.select
     v-bind="field.getSelectProps()"
-    :value="props.modelValue"
+    :value="modelValue"
     @change="(event) => emit('update:modelValue', (event.target as HTMLSelectElement).value)"
-    :as-child="asChild"
+    :as-child
   >
     <slot />
   </ark.select>

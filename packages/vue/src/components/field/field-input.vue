@@ -17,7 +17,7 @@ export interface FieldInputProps
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
-const props = defineProps<FieldInputProps>()
+defineProps<FieldInputProps>()
 const field = useFieldContext()
 
 const emit = defineEmits(['update:modelValue'])
@@ -26,8 +26,8 @@ const emit = defineEmits(['update:modelValue'])
 <template>
   <ark.input
     v-bind="field.getInputProps()"
-    :as-child="asChild"
-    :value="props.modelValue"
+    :as-child
+    :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"
   >
     <slot />
