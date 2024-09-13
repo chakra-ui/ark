@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Teleport, ref } from 'vue'
+import { ref } from 'vue'
 import { Dialog } from '../..'
 
 const open = ref(false)
