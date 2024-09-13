@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Field } from '../'
+
+const model = ref('3')
 </script>
 
 <template>
+  <span>Selected: Option {{ model }}</span>
   <Field.Root>
     <Field.Label>Label</Field.Label>
-    <Field.Select>
+    <Field.Select v-model="model">
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
       <option value="3">Option 3</option>
