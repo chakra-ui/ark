@@ -1,18 +1,16 @@
-import type { CollectionOptions } from '@zag-js/select'
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createEffect, createMemo, createUniqueId, splitProps } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
+import type { ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>
-  extends CollectionOptions<T>,
-    Optional<
-      Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
-      'id'
-    > {
+  extends Optional<
+    Omit<select.Context<T>, 'collection' | 'dir' | 'getRootNode' | 'open.controlled'>,
+    'id'
+  > {
   /**
    * The initial open state of the select when it is first rendered.
    * Use when you do not need to control its open state.
@@ -23,6 +21,10 @@ export interface UseSelectProps<T extends CollectionItem>
    * Use when you do not need to control the state of the select.
    */
   defaultValue?: select.Context<T>['value']
+  /**
+   * The collection of items
+   */
+  collection: ListCollection<T>
 }
 
 export interface UseSelectReturn<T extends CollectionItem>
@@ -31,15 +33,6 @@ export interface UseSelectReturn<T extends CollectionItem>
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-  const [collectionOptions, selectProps] = createSplitProps<CollectionOptions<T>>()(props, [
-    'isItemDisabled',
-    'itemToValue',
-    'itemToString',
-    'items',
-  ])
-
-  const collection = createMemo(() => select.collection({ ...collectionOptions }))
-
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
@@ -55,13 +48,12 @@ export const useSelect = <T extends CollectionItem>(
     readOnly: field?.().readOnly,
     invalid: field?.().invalid,
     required: field?.().required,
-    collection: collection(),
     dir: locale().dir,
     getRootNode: environment().getRootNode,
     open: props.defaultOpen,
     value: props.defaultValue,
     'open.controlled': props.open !== undefined,
-    ...selectProps,
+    ...props,
   }))
 
   const context = createMemo(() => {
@@ -76,7 +68,7 @@ export const useSelect = <T extends CollectionItem>(
   const api = createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
 
   createEffect(() => {
-    api().setCollection(collection())
+    api().setCollection(props.collection)
   })
 
   return api

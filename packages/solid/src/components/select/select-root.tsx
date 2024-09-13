@@ -24,6 +24,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
     'closeOnSelect',
     'composite',
+    'collection',
     'defaultOpen',
     'defaultValue',
     'disabled',
@@ -32,10 +33,6 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'id',
     'ids',
     'invalid',
-    'isItemDisabled',
-    'items',
-    'itemToString',
-    'itemToValue',
     'loopFocus',
     'multiple',
     'name',

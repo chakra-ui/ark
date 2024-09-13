@@ -1,6 +1,6 @@
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Select } from '../'
+import { Select, createListCollection } from '../'
 import type { Optional } from '../../../types'
 
 interface Item {
@@ -9,15 +9,18 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<Select.RootProps<Item>, 'items'>) => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+export const ComponentUnderTest = (props: Optional<Select.RootProps<Item>, 'collection'>) => {
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
+
   return (
-    <Select.Root items={items} {...props}>
+    <Select.Root collection={collection} {...props}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -31,7 +34,7 @@ export const ComponentUnderTest = (props: Optional<Select.RootProps<Item>, 'item
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              <For each={items}>
+              <For each={collection.items}>
                 {(item) => (
                   <Select.Item item={item}>
                     <Select.ItemText>{item.label}</Select.ItemText>

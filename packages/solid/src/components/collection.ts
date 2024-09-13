@@ -5,10 +5,4 @@ export type { CollectionItem, ListCollection } from '@zag-js/collection'
 
 export const createListCollection = <T extends CollectionItem>(
   options: CollectionOptions<T>,
-): ListCollection<T> => {
-  return ref(new ListCollection(options))
-}
-
-// collection.empty = (): ListCollection<CollectionItem> => {
-//   return ref(new ListCollection<CollectionItem>({ items: [] }))
-// }
+): ListCollection<T> => ref(new ListCollection(options))

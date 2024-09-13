@@ -1,13 +1,13 @@
 import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js/web'
-import { Field, Select } from '../..'
+import { Field, Select, createListCollection } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
 
   return (
     <Field.Root {...props}>
-      <Select.Root items={items}>
+      <Select.Root collection={collection}>
         <Select.Label>Label</Select.Label>
         <Select.Control>
           <Select.Trigger>
@@ -18,10 +18,11 @@ export const WithField = (props: Field.RootProps) => {
           </Select.Trigger>
         </Select.Control>
         <Select.Positioner>
+          ̦
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              <Index each={items}>
+              <Index each={collection.items}>
                 {(item) => (
                   <Select.Item item={item()}>
                     <Select.ItemText>{item()}</Select.ItemText>

@@ -22,7 +22,9 @@ export interface UseSelectProps<T extends CollectionItem>
    * Use when you do not need to control the state of the select.
    */
   defaultValue?: select.Context<T>['value']
-
+  /**
+   * The collection of items
+   */
   collection: ListCollection<T>
 }
 
