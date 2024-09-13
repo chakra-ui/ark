@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/solid",
-  "version": "3.11.0",
+  "version": "3.12.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
@@ -130,7 +130,7 @@
     "@zag-js/types": "0.68.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
+    "@biomejs/biome": "1.9.0",
     "@release-it/keep-a-changelog": "5.0.0",
     "@solidjs/testing-library": "0.8.9",
     "@storybook/addon-a11y": "8.3.0",
@@ -143,19 +143,19 @@
     "@zag-js/stringify-state": "0.68.0",
     "globby": "14.0.2",
     "jsdom": "25.0.0",
-    "lucide-solid": "0.439.0",
+    "lucide-solid": "0.441.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
-    "rollup": "4.21.2",
+    "rollup": "4.21.3",
     "rollup-preset-solid": "2.0.1",
     "solid-js": "1.8.22",
     "storybook": "8.3.0",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
-    "typescript": "5.5.4",
-    "vite": "5.4.3",
+    "typescript": "5.6.2",
+    "vite": "5.4.5",
     "vite-plugin-solid": "2.10.2",
-    "vitest": "2.0.5"
+    "vitest": "2.1.1"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
