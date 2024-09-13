@@ -59,4 +59,4 @@ export const SubmitTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, Editable.SubmitTriggerBaseProps>
 >(Editable.SubmitTrigger, 'submitTrigger')
 
-export { EditableContext as Context } from '@ark-ui/react/editable'
+export const Context = Editable.Context

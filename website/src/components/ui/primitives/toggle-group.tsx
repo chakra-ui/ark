@@ -24,4 +24,4 @@ export const Item = withContext<
   Assign<HTMLStyledProps<'button'>, ToggleGroup.ItemBaseProps>
 >(ToggleGroup.Item, 'item')
 
-export { ToggleGroupContext as Context } from '@ark-ui/react/toggle-group'
+export const Context = ToggleGroup.Context

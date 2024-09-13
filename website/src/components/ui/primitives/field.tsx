@@ -49,4 +49,4 @@ export const Textarea = withContext<
   Assign<HTMLStyledProps<'textarea'>, Field.TextareaBaseProps>
 >(Field.Textarea, 'textarea')
 
-export { FieldContext as Context } from '@ark-ui/react/field'
+export const Context = Field.Context

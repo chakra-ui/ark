@@ -42,4 +42,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, HoverCard.TriggerBaseProps>
 >(HoverCard.Trigger, 'trigger')
 
-export { HoverCardContext as Context } from '@ark-ui/react/hover-card'
+export const Context = HoverCard.Context

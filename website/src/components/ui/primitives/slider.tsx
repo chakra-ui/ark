@@ -59,7 +59,5 @@ export const ValueText = withContext<
   Assign<HTMLStyledProps<'span'>, Slider.ValueTextBaseProps>
 >(Slider.ValueText, 'valueText')
 
-export {
-  SliderContext as Context,
-  SliderHiddenInput as HiddenInput,
-} from '@ark-ui/react/slider'
+export const Context = Slider.Context
+export const HiddenInput = Slider.HiddenInput

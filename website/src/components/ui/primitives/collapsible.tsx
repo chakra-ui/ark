@@ -29,4 +29,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, Collapsible.TriggerBaseProps>
 >(Collapsible.Trigger, 'trigger')
 
-export { CollapsibleContext as Context } from '@ark-ui/react/collapsible'
+export const Context = Collapsible.Context

@@ -134,4 +134,4 @@ export const YearSelect = withContext<
   Assign<HTMLStyledProps<'select'>, DatePicker.YearSelectBaseProps>
 >(DatePicker.YearSelect, 'yearSelect')
 
-export { DatePickerContext as Context } from '@ark-ui/react/date-picker'
+export const Context = DatePicker.Context

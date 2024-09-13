@@ -69,7 +69,5 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, FileUpload.TriggerBaseProps>
 >(FileUpload.Trigger, 'trigger')
 
-export {
-  FileUploadContext as Context,
-  FileUploadHiddenInput as HiddenInput,
-} from '@ark-ui/react/file-upload'
+export const Context = FileUpload.Context
+export const HiddenInput = FileUpload.HiddenInput
