@@ -2,13 +2,11 @@ import type * as timer from '@zag-js/timer'
 
 export interface RootProps {
   /**
-   * Whether to start the timer automatically
-   * @default false
+   * Whether the timer should start automatically
    */
   autoStart?: boolean
   /**
-   * Whether the timer is a countdown timer
-   * @default false
+   * Whether the timer should countdown, decrementing the timer on each tick.
    */
   countdown?: boolean
   /**
@@ -16,28 +14,31 @@ export interface RootProps {
    */
   id?: string
   /**
-   * The interval between each tick in milliseconds
-   * @default 1000
+   * The ids of the timer parts
+   */
+  ids?: Partial<{ root: string; area: string }>
+  /**
+   * The interval in milliseconds to update the timer count.
+   * @default 250
    */
   interval?: number
   /**
-   * The initial start time in milliseconds
-   * @default 0
+   * The total duration of the timer in milliseconds.
    */
   startMs?: number
   /**
-   * The target time in milliseconds (for countdown timer)
+   * The minimum count of the timer in milliseconds.
    */
   targetMs?: number
 }
 
 export type RootEmits = {
   /**
-   * Callback fired when the timer completes
+   * Function invoked when the timer is completed
    */
   complete: []
   /**
-   * Callback fired on each tick of the timer
+   * Function invoked when the timer ticks
    */
   tick: [details: timer.TickDetails]
 }

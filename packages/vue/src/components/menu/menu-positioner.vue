@@ -13,8 +13,8 @@ export interface MenuPositionerProps
 </script>
 
 <script setup lang="ts">
-import { PresenceProvider, usePresence } from '../presence';
-import { useMenuContext } from './use-menu-context';
+import { PresenceProvider, usePresence } from '../presence'
+import { useMenuContext } from './use-menu-context'
 
 defineProps<MenuPositionerProps>()
 const menu = useMenuContext()

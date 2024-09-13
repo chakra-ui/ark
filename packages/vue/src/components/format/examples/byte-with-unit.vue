@@ -7,6 +7,7 @@ const unit = 'bit'
 
 <template>
   <div>
-    File size: <Format.Byte :value="value" :unit="unit" />
+    File size:
+    <Format.Byte :value="value" :unit="unit" />
   </div>
 </template>

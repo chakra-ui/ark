@@ -20,7 +20,9 @@ import { usePopoverContext } from './use-popover-context'
 defineProps<PopoverContentProps>()
 const popover = usePopoverContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(popover.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(popover.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>

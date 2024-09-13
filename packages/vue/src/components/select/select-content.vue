@@ -20,7 +20,9 @@ import { useSelectContext } from './use-select-context'
 defineProps<SelectContentProps>()
 const select = useSelectContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(select.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(select.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>

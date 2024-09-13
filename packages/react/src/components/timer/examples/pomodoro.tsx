@@ -23,11 +23,11 @@ export const Pomodoro = () => {
       <Timer.Separator>:</Timer.Separator>
       <Timer.Item type="seconds" />
 
-      <div>
+      <Timer.Control>
         <Timer.ActionTrigger action="start">Start</Timer.ActionTrigger>
         <Timer.ActionTrigger action="pause">Pause</Timer.ActionTrigger>
         <Timer.ActionTrigger action="reset">Reset</Timer.ActionTrigger>
-      </div>
+      </Timer.Control>
       <p>Completed cycles: {cycles}</p>
     </Timer.Root>
   )

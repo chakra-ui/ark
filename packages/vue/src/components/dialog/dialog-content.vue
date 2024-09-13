@@ -21,7 +21,9 @@ defineProps<DialogContentProps>()
 
 const dialog = useDialogContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(dialog.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(dialog.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>

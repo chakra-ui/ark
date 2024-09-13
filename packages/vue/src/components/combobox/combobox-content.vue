@@ -20,7 +20,9 @@ import { useComboboxContext } from './use-combobox-context'
 defineProps<ComboboxContentProps>()
 const combobox = useComboboxContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(combobox.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(combobox.value.getContentProps(), presence.value.presenceProps),
+)
 </script>
 
 <template>
@@ -28,4 +30,3 @@ const mergedProps = computed(() => mergeProps(combobox.value.getContentProps(), 
     <slot />
   </ark.div>
 </template>
-
