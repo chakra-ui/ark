@@ -1,4 +1,5 @@
 'use client'
+import { createListCollection } from '@ark-ui/react/select'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 import { Icon } from '~/components/ui/icon'
@@ -8,18 +9,21 @@ export const FrameworkSelect = () => {
   const router = useRouter()
   const params = useParams<{ framework: string }>()
   const pathname = usePathname()
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-  ]
+
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+    ],
+  })
 
   return (
     <Select.Root
       defaultValue={[params.framework]}
       onValueChange={(e) => router.push(pathname.replace(params.framework, e.value[0]))}
       size={{ base: 'md', md: 'sm' }}
-      items={items}
+      collection={collection}
       variant="ghost"
       positioning={{ placement: 'bottom-end', sameWidth: true }}
     >
@@ -39,7 +43,7 @@ export const FrameworkSelect = () => {
       </Select.Control>
       <Select.Positioner>
         <Select.Content minW="28">
-          {items.map((item) => (
+          {collection.items.map((item) => (
             <Select.Item key={item.value} item={item}>
               <Select.ItemText>{item.label}</Select.ItemText>
               <Select.ItemIndicator>
