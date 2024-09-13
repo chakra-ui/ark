@@ -8,17 +8,28 @@ export interface FieldSelectProps
     /**
      * @vue-ignore
      */
-    SelectHTMLAttributes {}
+    Omit<SelectHTMLAttributes, 'value'> {
+  modelValue?: SelectHTMLAttributes['value']
+}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
-defineProps<FieldSelectProps>()
+defineProps<FieldSelectProps & { modelValue?: string }>()
 const field = useFieldContext()
+
+const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <ark.select v-bind="field.getSelectProps()" :as-child="asChild"><slot /></ark.select>
+  <ark.select
+    v-bind="field.getSelectProps()"
+    :value="modelValue"
+    @change="(event) => emit('update:modelValue', (event.target as HTMLSelectElement).value)"
+    :as-child
+  >
+    <slot />
+  </ark.select>
 </template>

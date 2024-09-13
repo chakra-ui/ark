@@ -52,4 +52,10 @@ describe('Field', () => {
     render(ComponentUnderTest, { props: { invalid: false } })
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
+
+  it('should allow input to be controlled', async () => {
+    render(ComponentUnderTest, { props: { modelValue: 'Input is controlled' } })
+
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('Input is controlled')
+  })
 })

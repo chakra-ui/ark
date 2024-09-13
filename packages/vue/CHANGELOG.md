@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- **Field**: Expose `v-model` through `FieldInput`, `FieldSelect`, and `FieldTextarea`. Use
+  `v-model` at these components instead of `FieldRoot` to maintain value type for each form element,
+  as the type is variable. This is consistent with the React version.
+
 ## [3.13.0] - 2024-09-13
 
 ### Added
@@ -15,7 +21,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of items was empty.
+- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of
+  items was empty.
 
 ## [3.12.1] - 2024-09-11
 
