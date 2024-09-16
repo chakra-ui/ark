@@ -6,6 +6,13 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **DatePicker**
+
+  - Fixed issue where the year select dropdown doesn't respect `min` and `max` props.
+  - Fixed issue where date picker throws when `min` or `max` is changed.
+
 ## [3.12.0] - 2024-09-13
 
 ### Added
@@ -15,7 +22,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of items was empty.
+- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of
+  items was empty.
 
 ## [3.11.0] - 2024-09-10
 

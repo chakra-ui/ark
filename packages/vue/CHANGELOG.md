@@ -6,11 +6,18 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Changed
+### Fixed
 
-- **Field**: Expose `v-model` through `FieldInput`, `FieldSelect`, and `FieldTextarea`. Use
-  `v-model` at these components instead of `FieldRoot` to maintain value type for each form element,
-  as the type is variable. This is consistent with the React version.
+- **Field**: Fix issue where using `v-model` in `Field.Input`, `Field.Select`, and `Field.Textarea`
+  doesn't work.
+
+- **Frame**: Fixed issue where package requires `vue@3.5.x` due to usage of `onWatcherCleanup`.
+
+- **DatePicker**
+
+  - Fixed issue where the year select dropdown doesn't respect `min` and `max` props.
+  - Fixed issue where date picker throws when `min` or `max` is changed.
+  - Fixed issue where typing in date picker input doesn't work.
 
 ## [3.13.0] - 2024-09-13
 
