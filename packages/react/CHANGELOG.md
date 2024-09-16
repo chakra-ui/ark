@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+TBD
+
+### Removed
+
+- Removed full name imports like `AccordionItem` in favor of `Accordion.Item`.
+
 ## [3.12.0] - 2024-09-13
 
 ### Added
