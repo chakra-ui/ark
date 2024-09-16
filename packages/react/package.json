@@ -179,7 +179,7 @@
     "@zag-js/types": "0.68.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.0",
+    "@biomejs/biome": "1.9.1",
     "@release-it/keep-a-changelog": "5.0.0",
     "@storybook/addon-a11y": "8.3.0",
     "@storybook/addon-essentials": "8.3.0",
