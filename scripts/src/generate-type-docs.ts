@@ -275,7 +275,7 @@ const extractTypesForFramework = async (framework: string) => {
         .filter(Boolean)
         .reduce((acc, value) => {
           return { ...acc, ...value }
-        })
+        }, {})
 
       fs.outputFileSync(
         path.join(outDir, framework, `${path.basename(component)}.types.json`),
