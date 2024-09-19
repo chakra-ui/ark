@@ -3,7 +3,7 @@ import { DatePicker } from '../..'
 </script>
 
 <template>
-  <DatePicker.Root open :close-on-select="false">
+  <DatePicker.Root open>
     <DatePicker.View view="day">
       <DatePicker.Context v-slot="api">
         <DatePicker.ViewControl>

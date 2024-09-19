@@ -1,4 +1,5 @@
 export type {
+  DateValue,
   FocusChangeDetails,
   OpenChangeDetails,
   ValueChangeDetails,

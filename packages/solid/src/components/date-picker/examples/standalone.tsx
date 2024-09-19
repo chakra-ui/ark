@@ -3,7 +3,7 @@ import { DatePicker } from '../..'
 
 export const Standalone = () => {
   return (
-    <DatePicker.Root open closeOnSelect={false}>
+    <DatePicker.Root open>
       <DatePicker.Context>
         {(context) => (
           <>

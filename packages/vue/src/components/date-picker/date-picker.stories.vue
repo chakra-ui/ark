@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Controlled from './examples/controlled.vue'
 import Range from './examples/range.vue'
 import Standalone from './examples/standalone.vue'
 </script>
@@ -7,6 +8,9 @@ import Standalone from './examples/standalone.vue'
   <Story title="DatePicker">
     <Variant title="Basic">
       <Basic />
+    </Variant>
+    <Variant title="Controlled">
+      <Controlled />
     </Variant>
     <Variant title="Standalone">
       <Standalone />
