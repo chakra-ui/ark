@@ -36,6 +36,9 @@
       },
       "a11y": {
         "useButtonType": "off"
+      },
+      "style": {
+        "useImportType": "off"
       }
     }
   }

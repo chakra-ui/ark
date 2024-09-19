@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { DatePicker, parseDate } from '../..'
 
-const value = ref([parseDate('2022-01-01')])
+const value = ref<DatePicker.DateValue[]>([parseDate('2022-01-01')])
 </script>
 
 <template>
