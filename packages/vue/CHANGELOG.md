@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.13.1] - 2024-09-19
+
 ### Fixed
 
 - **Field**: Fix issue where using `v-model` in `Field.Input`, `Field.Select`, and `Field.Textarea`
