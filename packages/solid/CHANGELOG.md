@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.12.1] - 2024-09-19
+
 ### Fixed
 
 - **DatePicker**
