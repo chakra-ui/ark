@@ -46,7 +46,17 @@ export const DocsSidebar = (props: Props) => {
                           >
                             {item.title}
                             {item.status && (
-                              <Badge textTransform="capitalize" size="sm">
+                              <Badge
+                                textTransform="capitalize"
+                                size="sm"
+                                data-status={item.status}
+                                css={{
+                                  '&[data-status=new]': {
+                                    bg: 'accent.default',
+                                    color: 'accent.fg',
+                                  },
+                                }}
+                              >
                                 {item.status}
                               </Badge>
                             )}
