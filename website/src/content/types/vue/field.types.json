@@ -23,7 +23,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "modelValue": { "type": "any", "isRequired": false }
     }
   },
   "Label": {
@@ -89,7 +90,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "modelValue": { "type": "any", "isRequired": false }
     }
   },
   "Textarea": {
@@ -98,7 +100,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "modelValue": { "type": "string | number | readonly string[]", "isRequired": false }
     }
   }
 }

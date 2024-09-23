@@ -156,6 +156,11 @@
         "isRequired": false,
         "description": "The initial value of the select when it is first rendered.\nUse when you do not need to control the state of the select."
       },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the value can be cleared by clicking the selected item.\n\n**Note:** this is only applicable for single selection"
+      },
       "disabled": {
         "type": "boolean",
         "isRequired": false,

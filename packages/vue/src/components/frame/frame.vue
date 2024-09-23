@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type IframeHTMLAttributes, type VNode, onWatcherCleanup, ref, watch } from 'vue'
+import { type IframeHTMLAttributes, type VNode, ref, watch } from 'vue'
 import { EnvironmentProvider } from '../../providers'
 import FrameContent from './frame-content.vue'
 
@@ -53,7 +53,7 @@ watch(frameRef, (node) => {
 
 watch(
   () => [frameRef.value, mountNode.value] as const,
-  ([frameNode, mountNode]) => {
+  ([frameNode, mountNode], _oldValue, onCleanup) => {
     if (!frameNode || !frameNode.contentDocument) return
 
     const win = frameNode.contentWindow as Window & typeof globalThis
@@ -73,7 +73,7 @@ watch(
       resizeObserver.observe(mountNode)
     }
 
-    onWatcherCleanup(() => {
+    onCleanup(() => {
       resizeObserver.disconnect()
     })
   },

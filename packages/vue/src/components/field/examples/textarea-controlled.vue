@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { Field } from '../..'
-const model = defineModel()
+import { ref } from 'vue'
+import { Field } from '../'
+
+const model = ref(['This is some text', 'then more text'])
 </script>
 
 <template>
-  <Field.Root invalid>
+  <span>Textarea value: {{ model }}</span>
+  <Field.Root>
     <Field.Label>Label</Field.Label>
-    <Field.Input v-model="model" />
+    <Field.Textarea v-model="model" />
     <Field.HelperText>Some additional Info</Field.HelperText>
     <Field.ErrorText>Error Info</Field.ErrorText>
   </Field.Root>

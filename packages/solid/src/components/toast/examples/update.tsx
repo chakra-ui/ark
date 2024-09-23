@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { createSignal } from 'solid-js'
 import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
@@ -8,21 +8,23 @@ const toaster = createToaster({
 })
 
 export const Update = () => {
-  const id = useRef<string>()
+  const [id, setId] = createSignal<string | undefined>(undefined)
 
   const createToast = () => {
-    id.current = toaster.create({
+    const newId = toaster.create({
       title: 'Loading',
       description: 'Loading ...',
       type: 'info',
     })
+    setId(newId)
   }
 
   const updateToast = () => {
-    if (!id.current) {
+    const currentId = id()
+    if (!currentId) {
       return
     }
-    toaster.update(id.current, {
+    toaster.update(currentId, {
       title: 'Success',
       description: 'Success!',
     })
@@ -38,9 +40,9 @@ export const Update = () => {
       </button>
       <Toaster toaster={toaster}>
         {(toast) => (
-          <Toast.Root key={toast.id}>
-            <Toast.Title>{toast.title}</Toast.Title>
-            <Toast.Description>{toast.description}</Toast.Description>
+          <Toast.Root>
+            <Toast.Title>{toast().title}</Toast.Title>
+            <Toast.Description>{toast().description}</Toast.Description>
           </Toast.Root>
         )}
       </Toaster>

@@ -8,7 +8,9 @@ export interface FieldTextareaProps
     /**
      * @vue-ignore
      */
-    TextareaHTMLAttributes {}
+    Omit<TextareaHTMLAttributes, 'value'> {
+  modelValue?: TextareaHTMLAttributes['value']
+}
 </script>
 
 <script setup lang="ts">
@@ -17,8 +19,16 @@ import { useFieldContext } from './use-field-context'
 
 defineProps<FieldTextareaProps>()
 const field = useFieldContext()
+const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <ark.textarea v-bind="field.getTextareaProps()" :as-child="asChild"><slot /></ark.textarea>
+  <ark.textarea
+    v-bind="field.getTextareaProps()"
+    :value="modelValue"
+    @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
+    :as-child
+  >
+    <slot />
+  </ark.textarea>
 </template>

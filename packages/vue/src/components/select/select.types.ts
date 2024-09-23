@@ -23,6 +23,12 @@ export interface RootProps<T extends CollectionItem> {
    */
   defaultValue?: string[]
   /**
+   * Whether the value can be cleared by clicking the selected item.
+   *
+   * **Note:** this is only applicable for single selection
+   */
+  deselectable?: boolean
+  /**
    * Whether the select is disabled
    */
   disabled?: boolean

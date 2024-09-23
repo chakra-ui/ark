@@ -29,6 +29,7 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   closeOnSelect: undefined,
   composite: undefined,
   defaultOpen: undefined,
+  deselectable: undefined,
   disabled: undefined,
   invalid: undefined,
   loopFocus: undefined,

@@ -37,7 +37,7 @@ export const CommandMenu = (props: Props) => {
   useHotkey(setOpen)
 
   return (
-    <Dialog.Root open={open} onOpenChange={(event) => setOpen(event.open)}>
+    <Dialog.Root lazyMount unmountOnExit open={open} onOpenChange={(event) => setOpen(event.open)}>
       <Dialog.Trigger asChild>
         <IconButton
           variant="ghost"

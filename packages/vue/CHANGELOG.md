@@ -6,6 +6,32 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **FileUpload**: Fix issue where `directory: true` doesn't work
+
+### Changed
+
+- **Switch, Checkbox, Radio Group**: Added `data-focus-visible` attribute to the selected radio
+  button when it is interacted with the keyboard.
+
+- **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
+
+## [3.13.1] - 2024-09-19
+
+### Fixed
+
+- **Field**: Fix issue where using `v-model` in `Field.Input`, `Field.Select`, and `Field.Textarea`
+  doesn't work.
+
+- **Frame**: Fixed issue where package requires `vue@3.5.x` due to usage of `onWatcherCleanup`.
+
+- **DatePicker**
+
+  - Fixed issue where the year select dropdown doesn't respect `min` and `max` props.
+  - Fixed issue where date picker throws when `min` or `max` is changed.
+  - Fixed issue where typing in date picker input doesn't work.
+
 ## [3.13.0] - 2024-09-13
 
 ### Added
@@ -15,7 +41,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of items was empty.
+- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of
+  items was empty.
 
 ## [3.12.1] - 2024-09-11
 

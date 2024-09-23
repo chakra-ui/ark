@@ -21,6 +21,7 @@ export const TabsRoot = (props: TabsRootProps) => {
     'activationMode',
     'composite',
     'defaultValue',
+    'deselectable',
     'id',
     'ids',
     'loopFocus',

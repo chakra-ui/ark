@@ -27,6 +27,7 @@ export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) 
     'collection',
     'defaultOpen',
     'defaultValue',
+    'deselectable',
     'disabled',
     'form',
     'highlightedValue',

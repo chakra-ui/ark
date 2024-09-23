@@ -28,10 +28,10 @@ export const Action = () => {
       </button>
       <Toaster toaster={toaster}>
         {(toast) => (
-          <Toast.Root key={toast.id}>
-            <Toast.Title>{toast.title}</Toast.Title>
-            <Toast.Description>{toast.description}</Toast.Description>
-            {toast.action && <Toast.ActionTrigger>{toast.action?.label}</Toast.ActionTrigger>}
+          <Toast.Root>
+            <Toast.Title>{toast().title}</Toast.Title>
+            <Toast.Description>{toast().description}</Toast.Description>
+            {toast().action && <Toast.ActionTrigger>{toast().action?.label}</Toast.ActionTrigger>}
           </Toast.Root>
         )}
       </Toaster>

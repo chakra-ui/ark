@@ -6,6 +6,17 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **FileUpload**: Fix issue where `directory: true` doesn't work
+
+### Changed
+
+- **Switch, Checkbox, Radio Group**: Added `data-focus-visible` attribute to the selected radio
+  button when it is interacted with the keyboard.
+
+- **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
+
 ## [4.0.0-0] - 2024-09-16
 
 TBD
@@ -13,6 +24,15 @@ TBD
 ### Removed
 
 - Removed full name imports like `AccordionItem` in favor of `Accordion.Item`.
+
+## [3.12.1] - 2024-09-19
+
+### Fixed
+
+- **DatePicker**
+
+  - Fixed issue where the year select dropdown doesn't respect `min` and `max` props.
+  - Fixed issue where date picker throws when `min` or `max` is changed.
 
 ## [3.12.0] - 2024-09-13
 
@@ -23,7 +43,8 @@ TBD
 
 ### Fixed
 
-- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of items was empty.
+- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of
+  items was empty.
 
 ## [3.11.1] - 2024-09-11
 

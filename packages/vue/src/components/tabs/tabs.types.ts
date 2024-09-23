@@ -19,6 +19,10 @@ export interface RootProps {
    */
   defaultValue?: string
   /**
+   * Whether the active tab can be deselected when clicking on it.
+   */
+  deselectable?: boolean
+  /**
    * The unique identifier of the machine.
    */
   id?: string

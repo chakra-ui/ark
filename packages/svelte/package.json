@@ -19,24 +19,24 @@
   },
   "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
   "peerDependencies": {
-    "svelte": "5.0.0-next.244"
+    "svelte": "5.0.0-next.246"
   },
   "dependencies": {
-    "@zag-js/avatar": "0.68.0",
-    "@zag-js/core": "0.68.0",
-    "@zag-js/svelte": "0.68.0"
+    "@zag-js/avatar": "0.70.0",
+    "@zag-js/core": "0.70.0",
+    "@zag-js/svelte": "0.70.0"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "3.2.4",
-    "@sveltejs/kit": "2.5.27",
+    "@sveltejs/adapter-auto": "3.2.5",
+    "@sveltejs/kit": "2.5.28",
     "@sveltejs/package": "2.3.5",
     "@sveltejs/vite-plugin-svelte": "3.1.2",
-    "publint": "0.2.10",
-    "svelte": "5.0.0-next.244",
+    "publint": "0.2.11",
+    "svelte": "5.0.0-next.246",
     "svelte-check": "4.0.2",
     "tslib": "2.7.0",
     "typescript": "5.6.2",
-    "vite": "5.4.5",
+    "vite": "5.4.7",
     "vitest": "2.1.1"
   },
   "svelte": "./dist/index.js",
