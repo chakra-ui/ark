@@ -27,13 +27,13 @@
     "root": "."
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.1",
-    "@types/bun": "1.1.9",
+    "@biomejs/biome": "1.9.2",
+    "@types/bun": "1.1.10",
     "lefthook": "1.7.15",
     "turbo": "2.1.2",
     "typescript": "5.6.2",
-    "vercel": "37.4.2"
+    "vercel": "37.5.3"
   },
-  "packageManager": "bun@1.1.27",
+  "packageManager": "bun@1.1.29",
   "trustedDependencies": ["@ark-ui/website"]
 }

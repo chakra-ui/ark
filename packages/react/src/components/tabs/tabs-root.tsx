@@ -20,6 +20,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'activationMode',
     'composite',
     'defaultValue',
+    'deselectable',
     'id',
     'ids',
     'loopFocus',

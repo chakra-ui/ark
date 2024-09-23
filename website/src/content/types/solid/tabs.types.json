@@ -65,6 +65,11 @@
         "isRequired": false,
         "description": "The initial value of the tabs when it is first rendered.\nUse when you do not need to control the state of the tabs."
       },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the active tab can be deselected when clicking on it."
+      },
       "ids": {
         "type": "Partial<{\n  root: string\n  trigger: string\n  list: string\n  content: string\n  indicator: string\n}>",
         "isRequired": false,

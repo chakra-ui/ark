@@ -29,6 +29,7 @@ const SelectImpl = <T extends CollectionItem>(
     'composite',
     'defaultOpen',
     'defaultValue',
+    'deselectable',
     'disabled',
     'form',
     'highlightedValue',
