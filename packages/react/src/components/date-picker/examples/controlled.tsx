@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { DatePicker, Portal, parseDate } from '../..'
 
 export const Controlled = () => {
-  const [date, setDate] = useState<DatePicker.DateValue[]>([parseDate('2022-01-01')])
+  const [value, setValue] = useState([parseDate('2022-01-01')])
 
   return (
-    <DatePicker.Root value={date} onValueChange={(e) => setDate(e.value)}>
+    <DatePicker.Root value={value} onValueChange={(e) => setValue(e.value)}>
       <DatePicker.Label>Label</DatePicker.Label>
       <DatePicker.Control>
         <DatePicker.Input />

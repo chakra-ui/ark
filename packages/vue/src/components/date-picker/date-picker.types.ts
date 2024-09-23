@@ -137,10 +137,6 @@ export interface RootProps {
    */
   translations?: datePicker.IntlTranslations
   /**
-   * The selected date(s).
-   */
-  value?: datePicker.DateValue[]
-  /**
    * The view of the calendar
    * @default "day"
    */

@@ -8,7 +8,7 @@ import type { RootEmits } from './date-picker.types'
 
 export interface UseDatePickerProps
   extends Optional<
-    Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled'>,
+    Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled' | 'value'>,
     'id'
   > {
   /**
