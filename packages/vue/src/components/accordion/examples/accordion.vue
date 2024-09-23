@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Accordion } from '../'
+import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '../'
 import { useForwardPropsEmits } from '../../../utils'
 import { ChevronDownIcon } from './icons'
 
-export interface AccordionProps extends Accordion.RootProps {
+export interface AccordionProps extends AccordionRootProps {
   items: string[]
 }
 
 const props = defineProps<AccordionProps>()
-const emits = defineEmits<Accordion.RootEmits>()
+const emits = defineEmits<AccordionRootEmits>()
 
 const forwarded = useForwardPropsEmits(props, emits)
 </script>

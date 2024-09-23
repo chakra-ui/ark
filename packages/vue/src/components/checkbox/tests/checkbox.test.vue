@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { Checkbox } from '../'
-
-const props = defineProps<Checkbox.RootProps>()
+import { Checkbox, type CheckboxRootProps } from '../'
+const props = defineProps<CheckboxRootProps>()
 </script>
 
 <template>

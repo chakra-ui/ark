@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Field, SignaturePad } from '../..'
+import { Field, SignaturePad, type SignaturePadDrawEndDetails } from '../..'
 
 const imageUrl = ref('')
 
-const handleDrawEnd = async (details: SignaturePad.DrawEndDetails) => {
+const handleDrawEnd = async (details: SignaturePadDrawEndDetails) => {
   imageUrl.value = await details.getDataUrl('image/png')
 }
 </script>
