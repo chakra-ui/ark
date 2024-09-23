@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { ColorPicker, Field } from '../..'
+import { ColorPicker, Field, parseColor } from '../..'
+
+const defaultValue = parseColor('hsl(20, 100%, 50%)')
 </script>
 
 <template>
   <Field.Root>
-    <ColorPicker.Root defaultValue="#ff00ff">
+    <ColorPicker.Root :defaultValue>
       <ColorPicker.Label>Label</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />

@@ -57,7 +57,7 @@ export const useColorPicker = (
     },
     onValueChange(details) {
       emit?.('valueChange', details)
-      emit?.('update:modelValue', details.valueAsString)
+      emit?.('update:modelValue', details.value)
     },
     onFocusOutside: (details) => emit?.('focusOutside', details),
     onFormatChange: (details) => emit?.('formatChange', details),

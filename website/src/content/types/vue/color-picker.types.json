@@ -208,7 +208,7 @@
         "description": "Function called when the pointer is pressed down outside the component"
       },
       "update:modelValue": {
-        "type": "[value: string]",
+        "type": "[value: Color]",
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       },
@@ -242,7 +242,7 @@
         "description": "The initial open state of the color picker."
       },
       "defaultValue": {
-        "type": "string",
+        "type": "Color",
         "isRequired": false,
         "description": "The initial value of the color picker when it is first rendered.\nUse when you do not need to control the state of the color picker."
       },
@@ -268,7 +268,7 @@
         "description": "The ids of the elements in the color picker. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement",
+        "type": "() => HTMLElement | null",
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },
@@ -278,7 +278,11 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
-      "modelValue": { "type": "string", "isRequired": false },
+      "modelValue": {
+        "type": "Color",
+        "isRequired": false,
+        "description": "The v-model value of the color picker"
+      },
       "name": {
         "type": "string",
         "isRequired": false,
