@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Select } from '../..'
+import { Select, createListCollection } from '../..'
 import { ChevronDownIcon } from './icons'
 
-const items = ref(['React', 'Solid', 'Vue'])
+const collection = createListCollection({
+  items: ['React', 'Solid', 'Vue'],
+})
 </script>
 
 <template>
-  <Select.Root :items="items">
+  <Select.Root :collection="collection">
     <Select.Label>Framework</Select.Label>
     <Select.Control>
       <Select.Trigger>
@@ -23,7 +24,7 @@ const items = ref(['React', 'Solid', 'Vue'])
         <Select.Content>
           <Select.ItemGroup>
             <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in items" :key="item" :item="item">
+            <Select.Item v-for="item in collection.items" :key="item" :item="item">
               <Select.ItemText>{{ item }}</Select.ItemText>
               <Select.ItemIndicator>✓</Select.ItemIndicator>
             </Select.Item>

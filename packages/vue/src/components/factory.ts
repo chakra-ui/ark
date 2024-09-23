@@ -52,8 +52,8 @@ export type HTMLPolymorphicProps<T extends ElementType> = Omit<
 export type HTMLArkProps<T extends DOMElements> = HTMLPolymorphicProps<T>
 
 const withAsChild = (component: ElementType) => {
-  const Polimoprhic = defineComponent({
-    name: 'Polimoprhic',
+  return defineComponent({
+    name: 'Polymorphic',
     inheritAttrs: false,
     props: {
       asChild: {
@@ -66,7 +66,6 @@ const withAsChild = (component: ElementType) => {
       return () => h(Dynamic, attrs, { default: slots.default })
     },
   })
-  return Polimoprhic
 }
 
 export function jsxFactory() {

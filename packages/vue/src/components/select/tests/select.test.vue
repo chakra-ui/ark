@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { Select } from '../'
+import { Select, createListCollection } from '../..'
 
-const items = [
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte', disabled: true },
-]
+const collection = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ],
+})
 </script>
 
 <template>
-  <Select.Root :items="items" :openDelay="0" :closeDelay="0">
+  <Select.Root :collection="collection" :openDelay="0" :closeDelay="0">
     <Select.Label>Framework</Select.Label>
     <Select.Control>
       <Select.Trigger>
@@ -24,7 +26,7 @@ const items = [
         <Select.Content>
           <Select.ItemGroup>
             <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in items" :key="item.value" :item="item">
+            <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
               <Select.ItemText>{{ item.label }}</Select.ItemText>
               <Select.ItemIndicator>✓</Select.ItemIndicator>
             </Select.Item>
