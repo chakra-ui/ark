@@ -35,7 +35,8 @@
         "noAccumulatingSpread": "off"
       },
       "a11y": {
-        "useButtonType": "off"
+        "useButtonType": "off",
+        "noLabelWithoutControl": "off"
       }
     }
   }
