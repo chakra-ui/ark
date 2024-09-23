@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ToastDescription, ToastRoot, ToastTitle, Toaster, createToaster } from '../..'
+import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',
@@ -34,10 +34,10 @@ const updateToast = () => {
     <button type="button" @click="createToast">Create Toast</button>
     <button type="button" @click="updateToast">Update Toast</button>
     <Toaster :toaster="toaster" v-slot="toast">
-      <ToastRoot>
-        <ToastTitle>{{ toast.title }}</ToastTitle>
-        <ToastDescription>{{ toast.description }}</ToastDescription>
-      </ToastRoot>
+      <Toast.Root>
+        <Toast.Title>{{ toast.title }}</Toast.Title>
+        <Toast.Description>{{ toast.description }}</Toast.Description>
+      </Toast.Root>
     </Toaster>
   </div>
 </template>

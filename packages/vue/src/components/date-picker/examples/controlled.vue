@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { DatePicker, parseDate } from '../..'
+import { type Ref, ref } from 'vue'
+import { DatePicker, type DatePickerDateValue, parseDate } from '../..'
 
-const value = ref([parseDate('2022-01-01')])
+const value = ref([parseDate('2022-01-01')]) as Ref<DatePickerDateValue[]>
 </script>
 
 <template>
