@@ -1,17 +1,18 @@
-import { createListCollection } from '@ark-ui/react/select'
+'use client'
+import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { Select } from '~/components/ui/select'
 
-export const Demo = (props: Omit<Select.RootProps, 'items'>) => {
-  const collection = createListCollection({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
-    ],
-  })
+const collection = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ],
+})
 
+export const Demo = (props: Omit<Select.RootProps, 'collection'>) => {
   return (
     <Select.Root {...props} positioning={{ sameWidth: true }} width="2xs" collection={collection}>
       <Select.Label>Framework</Select.Label>

@@ -1,22 +1,22 @@
 'use client'
-import { createListCollection } from '@ark-ui/react/select'
+import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
 
+const collection = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+  ],
+})
+
 export const FrameworkSelect = () => {
   const router = useRouter()
   const params = useParams<{ framework: string }>()
   const pathname = usePathname()
-
-  const collection = createListCollection({
-    items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-    ],
-  })
 
   return (
     <Select.Root
