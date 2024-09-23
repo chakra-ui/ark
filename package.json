@@ -27,7 +27,7 @@
     "root": "."
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.1",
+    "@biomejs/biome": "1.9.2",
     "@types/bun": "1.1.9",
     "lefthook": "1.7.15",
     "turbo": "2.1.2",
