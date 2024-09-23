@@ -37,13 +37,12 @@ export const useDatePicker = (
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<datePicker.Context>(() => {
-    const { modelValue, defaultValue, focusedValue, min, max, ...otherProps } = props
     return {
       id,
       dir: locale.value.dir,
       open: props.open ?? props.defaultOpen,
       'open.controlled': props.open !== undefined,
-      value: defaultValue ?? modelValue,
+      value: props.defaultValue ?? props.modelValue,
       getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => emit?.('focusChange', details),
       onViewChange: (details) => emit?.('viewChange', details),
@@ -55,7 +54,7 @@ export const useDatePicker = (
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)
       },
-      ...cleanProps(otherProps),
+      ...cleanProps(props),
     }
   })
 
