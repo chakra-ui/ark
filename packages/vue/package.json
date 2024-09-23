@@ -188,7 +188,7 @@
     "@vue/compiler-sfc": "3.5.5",
     "globby": "14.0.2",
     "histoire": "0.17.17",
-    "jsdom": "25.0.0",
+    "jsdom": "25.0.1",
     "lucide-vue-next": "0.441.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
