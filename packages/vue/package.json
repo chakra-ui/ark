@@ -68,6 +68,17 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./collection": {
+      "source": "./src/components/collection.ts",
+      "import": {
+        "types": "./dist/components/collection.d.ts",
+        "default": "./dist/components/collection.js"
+      },
+      "require": {
+        "types": "./dist/components/collection.d.cts",
+        "default": "./dist/components/collection.cjs"
+      }
+    },
     "./factory": {
       "source": "./src/components/factory.ts",
       "import": {
@@ -135,6 +146,7 @@
     "@zag-js/checkbox": "0.70.0",
     "@zag-js/clipboard": "0.70.0",
     "@zag-js/collapsible": "0.70.0",
+    "@zag-js/collection": "0.70.0",
     "@zag-js/color-picker": "0.70.0",
     "@zag-js/combobox": "0.70.0",
     "@zag-js/date-picker": "0.70.0",
