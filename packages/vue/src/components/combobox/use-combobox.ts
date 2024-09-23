@@ -1,19 +1,19 @@
-import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
+import { omit } from '@zag-js/utils'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { CollectionItem, EmitFn, Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { cleanProps, useId } from '../../utils'
+import type { CollectionItem } from '../collection'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends CollectionOptions<T>,
-    Optional<
-      Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled' | 'value'>,
-      'id'
-    > {
+  extends Optional<
+    Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
+    'id'
+  > {
   modelValue?: combobox.Context<T>['value']
   /**
    * The initial open state of the combobox when it is first rendered.
@@ -40,7 +40,6 @@ export const useCombobox = <T extends CollectionItem>(
   const field = useFieldContext()
 
   const context = computed<combobox.Context<T>>(() => {
-    const { items, itemToString, itemToValue, isItemDisabled, ...otherProps } = props
     return {
       id,
       ids: {
@@ -52,7 +51,6 @@ export const useCombobox = <T extends CollectionItem>(
       required: field?.value.required,
       invalid: field?.value.invalid,
       dir: locale.value.dir,
-      collection: combobox.collection({ items, itemToString, itemToValue, isItemDisabled }),
       open: props.defaultOpen,
       'open.controlled': props.open !== undefined,
       value: props.modelValue ?? props.defaultValue,
@@ -70,10 +68,19 @@ export const useCombobox = <T extends CollectionItem>(
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)
       },
-      ...cleanProps(otherProps),
+      ...cleanProps(props),
     }
   })
-  const [state, send] = useMachine(combobox.machine(context.value), { context })
 
-  return computed(() => combobox.connect(state.value, send, normalizeProps))
+  const [state, send] = useMachine(combobox.machine(context.value), {
+    context: computed(() => omit(context.value, ['collection'])),
+  })
+
+  const api = computed(() => combobox.connect(state.value, send, normalizeProps))
+
+  watch([props.collection], () => {
+    api.value.setCollection(props.collection)
+  })
+
+  return api as UseComboboxReturn<T>
 }

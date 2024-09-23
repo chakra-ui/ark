@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Combobox } from '../..'
+import { Combobox, createListCollection } from '../..'
 
-const advancedItems = ref([
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte', disabled: true },
-])
+const frameworks = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ],
+})
 </script>
 
 <template>
-  <Combobox.Root :items="advancedItems" multiple>
+  <Combobox.Root :collection="frameworks" multiple>
     <Combobox.Label>Framework</Combobox.Label>
     <Combobox.Control>
       <Combobox.Input />
@@ -23,7 +24,7 @@ const advancedItems = ref([
         <Combobox.Content>
           <Combobox.ItemGroup>
             <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-            <Combobox.Item v-for="item in advancedItems" :key="item.value" :item="item">
+            <Combobox.Item v-for="item in frameworks.items" :key="item.value" :item="item">
               <Combobox.ItemText>{{ item.label }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
             </Combobox.Item>
