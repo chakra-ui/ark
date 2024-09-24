@@ -6,16 +6,7 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Fixed
-
-- **FileUpload**: Fix issue where `directory: true` doesn't work
-
 ### Changed
-
-- **Switch, Checkbox, Radio Group**: Added `data-focus-visible` attribute to the selected radio
-  button when it is interacted with the keyboard.
-
-- **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
 
 - **ColorPicker [Breaking]** : Changed `value` and `defaultValue` type from `string` to `Color`. To
   convert between string and color object, use exported `parseColor` functions.
@@ -99,6 +90,19 @@ description: All notable changes will be documented in this file.
     return <DatePicker.Root defaultValue={parseDate('2024-01-01')} />
   }
   ```
+
+## [3.13.0] - 2024-09-24
+
+### Fixed
+
+- **FileUpload**: Fix issue where `directory: true` doesn't work
+
+### Changed
+
+- **Switch, Checkbox, Radio Group**: Added `data-focus-visible` attribute to the selected radio
+  button when it is interacted with the keyboard.
+
+- **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
 
 ## [4.0.0-0] - 2024-09-16
 
