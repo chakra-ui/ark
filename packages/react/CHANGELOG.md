@@ -6,14 +6,19 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+In this major release, we shifted from primitive data types like strings to more structured types
+such as Collection, Color, and DateValue. This enhanced flexibility and control by offering advanced
+methods and properties.
+
+The new APIs introduced helper functions like `parseColor`, `parseDate`, and `createListCollection`
+to simplify working with the new types and make code more concise.
+
 ### Changed
 
-- **ColorPicker [Breaking]** : Changed `value` and `defaultValue` type from `string` to `Color`. To
-  convert between string and color object, use exported `parseColor` functions.
+- **ColorPicker [Breaking]**: Updated `value` and `defaultValue` types from `string` to `Color`. Use
+  the exported `parseColor` function to convert between strings and color objects.
 
-  > This allows you to access methods and properties of the color object in your code.
-
-  **BEFORE**
+  **Before**
 
   ```tsx
   import { ColorPicker } from '@ark-ui/react/color-picker'
@@ -23,7 +28,7 @@ description: All notable changes will be documented in this file.
   }
   ```
 
-  **AFTER**
+  **After**
 
   ```tsx
   import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
@@ -33,32 +38,29 @@ description: All notable changes will be documented in this file.
   }
   ```
 
-- **Select, Combobox [Breaking]**: Removed `items`, `itemToString` and `itemToValue` prop in favor
-  of passing the `collection` prop instead. Use the `createListCollection` helper to build a
+  > This change allows direct access to color object methods and properties.
+
+- **Select, Combobox [Breaking]**: Removed the `items`, `itemToString`, and `itemToValue` props.
+  Introduced a `collection` prop instead. Use the `createListCollection` helper to generate a
   collection from items.
 
-  > This opens up the possibility to support grid selection in the future.
-
-  **BEFORE**
+  **Before**
 
   ```tsx
-  import { Select } from '@ark-ui/react'
+  import { Select } from '@ark-ui/react/select'
 
   const Demo = () => {
     return <Select.Root items={['Option 1', 'Option 2', 'Option 3']} />
   }
   ```
 
-  **AFTER**
+  **After**
 
   ```tsx
-  import { Select, createListCollection } from '@ark-ui/react'
+  import { Select, createListCollection } from '@ark-ui/react/select'
 
   const collection = createListCollection({
     items: ['Option 1', 'Option 2', 'Option 3'],
-    // move the itemToString and itemToValue here
-    itemToString: (item) => item,
-    itemToValue: (item) => item,
   })
 
   const Demo = () => {
@@ -66,55 +68,48 @@ description: All notable changes will be documented in this file.
   }
   ```
 
-- **DatePicker [Breaking]**: Changed `value` and `defaultValue` type from `string` to `Date`. To
-  convert between date and string, use the `parseDate` function.
+- **DatePicker [Breaking]**: Changed `value` and `defaultValue` types from `string` to `Date`. To
+  convert between strings and dates, use the `parseDate` function.
 
-  > This allows you to access methods and properties of the date object in your code.
-
-  **BEFORE**
+  **Before**
 
   ```tsx
-  import { DatePicker } from '@ark-ui/react'
+  import { DatePicker } from '@ark-ui/react/date-picker'
 
   const Demo = () => {
     return <DatePicker.Root defaultValue="2024-01-01" />
   }
   ```
 
-  **AFTER**
+  **After**
 
   ```tsx
-  import { DatePicker, parseDate } from '@ark-ui/react'
+  import { DatePicker, parseDate } from '@ark-ui/react/date-picker'
 
   const Demo = () => {
     return <DatePicker.Root defaultValue={parseDate('2024-01-01')} />
   }
   ```
 
-## [3.13.0] - 2024-09-24
-
-### Fixed
-
-- **FileUpload**: Fix issue where `directory: true` doesn't work
-
-### Changed
-
-- **Switch, Checkbox, Radio Group**: Added `data-focus-visible` attribute to the selected radio
-  button when it is interacted with the keyboard.
-
-- **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
-
 ## [4.0.0-0] - 2024-09-16
 
 TBD
 
-### Removed
+## [3.13.0] - 2024-09-24
 
-- Removed full name imports like `AccordionItem` in favor of `Accordion.Item`.
+### Added
 
-## Added
+- **FileUpload**: Introduced a `ClearTrigger` for clearing file uploads.
+- **Switch, Checkbox, Radio Group**: Added the `data-focus-visible` attribute for elements
+  interacted with via keyboard.
 
-- **FileUpload**: Added `ClearTrigger` to the `FileUpload` component.
+### Fixed
+
+- **FileUpload**: Resolved an issue where `directory: true` was non-functional.
+
+### Changed
+
+- **Tooltip**: Now only opens on keyboard focus, improving accessibility.
 
 ## [3.12.1] - 2024-09-19
 
