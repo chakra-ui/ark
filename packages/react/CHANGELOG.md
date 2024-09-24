@@ -17,6 +17,89 @@ description: All notable changes will be documented in this file.
 
 - **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
 
+- **ColorPicker [Breaking]** : Changed `value` and `defaultValue` type from `string` to `Color`. To
+  convert between string and color object, use exported `parseColor` functions.
+
+  > This allows you to access methods and properties of the color object in your code.
+
+  **BEFORE**
+
+  ```tsx
+  import { ColorPicker } from '@ark-ui/react/color-picker'
+
+  const Demo = () => {
+    return <ColorPicker.Root defaultValue="#000" />
+  }
+  ```
+
+  **AFTER**
+
+  ```tsx
+  import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
+
+  const Demo = () => {
+    return <ColorPicker.Root defaultValue={parseColor('#000')} />
+  }
+  ```
+
+- **Select, Combobox [Breaking]**: Removed `items`, `itemToString` and `itemToValue` prop in favor
+  of passing the `collection` prop instead. Use the `createListCollection` helper to build a
+  collection from items.
+
+  > This opens up the possibility to support grid selection in the future.
+
+  **BEFORE**
+
+  ```tsx
+  import { Select } from '@ark-ui/react'
+
+  const Demo = () => {
+    return <Select.Root items={['Option 1', 'Option 2', 'Option 3']} />
+  }
+  ```
+
+  **AFTER**
+
+  ```tsx
+  import { Select, createListCollection } from '@ark-ui/react'
+
+  const collection = createListCollection({
+    items: ['Option 1', 'Option 2', 'Option 3'],
+    // move the itemToString and itemToValue here
+    itemToString: (item) => item,
+    itemToValue: (item) => item,
+  })
+
+  const Demo = () => {
+    return <Select.Root collection={collection} />
+  }
+  ```
+
+- **DatePicker [Breaking]**: Changed `value` and `defaultValue` type from `string` to `Date`. To
+  convert between date and string, use the `parseDate` function.
+
+  > This allows you to access methods and properties of the date object in your code.
+
+  **BEFORE**
+
+  ```tsx
+  import { DatePicker } from '@ark-ui/react'
+
+  const Demo = () => {
+    return <DatePicker.Root defaultValue="2024-01-01" />
+  }
+  ```
+
+  **AFTER**
+
+  ```tsx
+  import { DatePicker, parseDate } from '@ark-ui/react'
+
+  const Demo = () => {
+    return <DatePicker.Root defaultValue={parseDate('2024-01-01')} />
+  }
+  ```
+
 ## [4.0.0-0] - 2024-09-16
 
 TBD
