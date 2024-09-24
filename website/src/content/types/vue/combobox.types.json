@@ -116,10 +116,10 @@
   },
   "Root": {
     "props": {
-      "items": {
-        "type": "T[] | readonly T[]",
+      "collection": {
+        "type": "ListCollection<T>",
         "isRequired": true,
-        "description": "The options of the select"
+        "description": "The collection of items to display in the combobox"
       },
       "allowCustomValue": {
         "type": "boolean",
@@ -208,21 +208,6 @@
         "isRequired": false,
         "description": "Whether the combobox is invalid"
       },
-      "isItemDisabled": {
-        "type": "(item: T) => boolean",
-        "isRequired": false,
-        "description": "Whether the item is disabled"
-      },
-      "itemToString": {
-        "type": "(item: T) => string",
-        "isRequired": false,
-        "description": "The label of the item"
-      },
-      "itemToValue": {
-        "type": "(item: T) => string",
-        "isRequired": false,
-        "description": "The value of the item"
-      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -235,7 +220,11 @@
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation through the items"
       },
-      "modelValue": { "type": "string[]", "isRequired": false },
+      "modelValue": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The current selected values of the combobox's input"
+      },
       "multiple": {
         "type": "boolean",
         "isRequired": false,

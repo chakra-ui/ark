@@ -10,6 +10,16 @@ export {
   type TimerItemProps,
 } from './timer-item.vue'
 export {
+  default as TimerArea,
+  type TimerAreaBaseProps,
+  type TimerAreaProps,
+} from './timer-area.vue'
+export {
+  default as TimerControl,
+  type TimerControlBaseProps,
+  type TimerControlProps,
+} from './timer-control.vue'
+export {
   default as TimerRootProvider,
   type TimerRootProviderBaseProps,
   type TimerRootProviderProps,
