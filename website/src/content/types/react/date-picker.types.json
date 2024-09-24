@@ -7,8 +7,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "Content": {
     "props": {
@@ -18,8 +17,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Control": {
     "props": {
@@ -29,8 +27,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Input": {
     "props": {
@@ -39,13 +36,9 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": {
-        "type": "number",
-        "isRequired": false
-      }
+      "index": { "type": "number", "isRequired": false }
     },
-    "element": "HTMLInputElement",
-    "tag": "input"
+    "element": "HTMLInputElement"
   },
   "Label": {
     "props": {
@@ -55,8 +48,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement",
-    "tag": "label"
+    "element": "HTMLLabelElement"
   },
   "MonthSelect": {
     "props": {
@@ -66,8 +58,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSelectElement",
-    "tag": "select"
+    "element": "HTMLSelectElement"
   },
   "NextTrigger": {
     "props": {
@@ -77,8 +68,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "Positioner": {
     "props": {
@@ -88,23 +78,18 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "PresetTrigger": {
     "props": {
-      "value": {
-        "type": "PresetTriggerValue",
-        "isRequired": true
-      },
+      "value": { "type": "PresetTriggerValue", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
@@ -114,8 +99,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "RangeText": {
     "props": {
@@ -125,8 +109,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -313,15 +296,11 @@
         "description": "The view of the calendar"
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseDatePickerReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseDatePickerReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -355,8 +334,7 @@
         "description": "Whether to unmount on exit."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "TableBody": {
     "props": {
@@ -366,35 +344,21 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLTableSectionElement",
-    "tag": "tbody"
+    "element": "HTMLTableSectionElement"
   },
   "TableCell": {
     "props": {
-      "value": {
-        "type": "number | DateValue",
-        "isRequired": true
-      },
+      "value": { "type": "number | DateValue", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "columns": {
-        "type": "number",
-        "isRequired": false
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false
-      },
-      "visibleRange": {
-        "type": "VisibleRange",
-        "isRequired": false
-      }
+      "columns": { "type": "number", "isRequired": false },
+      "disabled": { "type": "boolean", "isRequired": false },
+      "visibleRange": { "type": "VisibleRange", "isRequired": false }
     },
-    "element": "HTMLTableCellElement",
-    "tag": "td"
+    "element": "HTMLTableCellElement"
   },
   "TableCellTrigger": {
     "props": {
@@ -404,8 +368,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "TableHead": {
     "props": {
@@ -415,8 +378,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLTableSectionElement",
-    "tag": "thead"
+    "element": "HTMLTableSectionElement"
   },
   "TableHeader": {
     "props": {
@@ -426,8 +388,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLTableCellElement",
-    "tag": "th"
+    "element": "HTMLTableCellElement"
   },
   "Table": {
     "props": {
@@ -436,13 +397,9 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "columns": {
-        "type": "number",
-        "isRequired": false
-      }
+      "columns": { "type": "number", "isRequired": false }
     },
-    "element": "HTMLTableElement",
-    "tag": "table"
+    "element": "HTMLTableElement"
   },
   "TableRow": {
     "props": {
@@ -452,8 +409,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLTableRowElement",
-    "tag": "tr"
+    "element": "HTMLTableRowElement"
   },
   "Trigger": {
     "props": {
@@ -463,8 +419,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "ViewControl": {
     "props": {
@@ -474,23 +429,18 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "View": {
     "props": {
-      "view": {
-        "type": "DateView",
-        "isRequired": true
-      },
+      "view": { "type": "DateView", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ViewTrigger": {
     "props": {
@@ -500,8 +450,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "YearSelect": {
     "props": {
@@ -511,7 +460,6 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSelectElement",
-    "tag": "select"
+    "element": "HTMLSelectElement"
   }
 }

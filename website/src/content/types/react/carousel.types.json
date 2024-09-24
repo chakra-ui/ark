@@ -7,8 +7,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "IndicatorGroup": {
     "props": {
@@ -18,27 +17,19 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Indicator": {
     "props": {
-      "index": {
-        "type": "number",
-        "isRequired": true
-      },
+      "index": { "type": "number", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false
-      }
+      "readOnly": { "type": "boolean", "isRequired": false }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "ItemGroup": {
     "props": {
@@ -48,24 +39,18 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
-      "index": {
-        "type": "number",
-        "isRequired": true,
-        "description": "The index of the item."
-      },
+      "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "NextTrigger": {
     "props": {
@@ -75,8 +60,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "PrevTrigger": {
     "props": {
@@ -86,8 +70,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "Root": {
     "props": {
@@ -112,11 +95,7 @@
         "isRequired": false,
         "description": "The ids of the elements in the carousel. Useful for composition."
       },
-      "index": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The current slide index."
-      },
+      "index": { "type": "number", "isRequired": false, "description": "The current slide index." },
       "loop": {
         "type": "boolean",
         "defaultValue": "false",
@@ -147,23 +126,18 @@
         "description": "The amount of space between slides."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseCarouselReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseCarouselReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Viewport": {
     "props": {
@@ -173,7 +147,6 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   }
 }

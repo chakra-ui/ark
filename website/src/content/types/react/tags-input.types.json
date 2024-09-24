@@ -7,8 +7,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "Control": {
     "props": {
@@ -18,8 +17,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "HiddenInput": {
     "props": {
@@ -29,8 +27,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement",
-    "tag": "input"
+    "element": "HTMLInputElement"
   },
   "Input": {
     "props": {
@@ -40,8 +37,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement",
-    "tag": "input"
+    "element": "HTMLInputElement"
   },
   "ItemDeleteTrigger": {
     "props": {
@@ -51,8 +47,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "ItemInput": {
     "props": {
@@ -62,8 +57,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement",
-    "tag": "input"
+    "element": "HTMLInputElement"
   },
   "ItemPreview": {
     "props": {
@@ -73,31 +67,20 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
-      "index": {
-        "type": "string | number",
-        "isRequired": true
-      },
-      "value": {
-        "type": "string",
-        "isRequired": true
-      },
+      "index": { "type": "string | number", "isRequired": true },
+      "value": { "type": "string", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false
-      }
+      "disabled": { "type": "boolean", "isRequired": false }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ItemText": {
     "props": {
@@ -107,8 +90,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLSpanElement",
-    "tag": "span"
+    "element": "HTMLSpanElement"
   },
   "Label": {
     "props": {
@@ -118,8 +100,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement",
-    "tag": "label"
+    "element": "HTMLLabelElement"
   },
   "Root": {
     "props": {
@@ -267,28 +248,19 @@
         "isRequired": false,
         "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
       },
-      "value": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The tag values"
-      }
+      "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseTagsInputReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseTagsInputReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   }
 }
