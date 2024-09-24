@@ -7,8 +7,8 @@ description: All notable changes will be documented in this file.
 ## [Unreleased]
 
 In this major release, we shifted from primitive data types like strings to more structured types
-such as Collection, Color, and DateValue. This enhanced flexibility and control by offering advanced
-methods and properties.
+such as `Collection`, `Color`, and `DateValue`. This enhanced flexibility and control by offering
+advanced methods and properties.
 
 The new APIs introduced helper functions like `parseColor`, `parseDate`, and `createListCollection`
 to simplify working with the new types and make code more concise.

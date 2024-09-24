@@ -1,6 +1,6 @@
 export { parse as parseDate } from '@zag-js/date-picker'
 export type {
-  DateValue as DatePickerDateValue,
+  DateValue,
   FocusChangeDetails as DatePickerFocusChangeDetails,
   OpenChangeDetails as DatePickerOpenChangeDetails,
   ValueChangeDetails as DatePickerValueChangeDetails,
