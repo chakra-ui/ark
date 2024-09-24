@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [3.13.0] - 2024-09-24
+
 ### Fixed
 
 - **FileUpload**: Fix issue where `directory: true` doesn't work
