@@ -11,6 +11,7 @@ const testProps = ref<string[]>([])
       <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
     </FileUpload.Dropzone>
     <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
+    <FileUpload.ClearTrigger>Clear</FileUpload.ClearTrigger>
     <FileUpload.ItemGroup>
       <FileUpload.Context v-slot="api">
         <FileUpload.Item v-for="file in api.acceptedFiles" :key="file.name as string" :file="file">

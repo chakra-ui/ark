@@ -25,6 +25,10 @@ TBD
 
 - Removed full name imports like `AccordionItem` in favor of `Accordion.Item`.
 
+## Added
+
+- **FileUpload**: Added `ClearTrigger` to the `FileUpload` component.
+
 ## [3.12.1] - 2024-09-19
 
 ### Fixed

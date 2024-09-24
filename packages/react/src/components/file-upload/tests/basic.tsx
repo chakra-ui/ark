@@ -11,6 +11,7 @@ export const ComponentUnderTest = (props: FileUpload.RootProps) => (
           <>
             <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
             <FileUpload.Dropzone />
+            <FileUpload.ClearTrigger>Clear</FileUpload.ClearTrigger>
             <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
             <FileUpload.ItemGroup>
               {fileUpload.acceptedFiles.map((file) => (

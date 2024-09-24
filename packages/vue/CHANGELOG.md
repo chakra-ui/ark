@@ -17,6 +17,10 @@ description: All notable changes will be documented in this file.
 
 - **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
 
+## Added
+
+- **FileUpload**: Added `ClearTrigger` to the `FileUpload` component.
+
 ## [3.13.1] - 2024-09-19
 
 ### Fixed

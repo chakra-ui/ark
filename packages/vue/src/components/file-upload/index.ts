@@ -4,6 +4,11 @@ export type {
   FileRejectDetails as FileUploadFileRejectDetails,
 } from '@zag-js/file-upload'
 export {
+  default as FileUploadClearTrigger,
+  type FileUploadClearTriggerBaseProps,
+  type FileUploadClearTriggerProps,
+} from './file-upload-clear-trigger.vue'
+export {
   default as FileUploadContext,
   type FileUploadContextProps,
 } from './file-upload-context.vue'
