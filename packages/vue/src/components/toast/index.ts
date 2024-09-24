@@ -4,28 +4,33 @@ export {
   type CreateToasterReturn,
 } from './create-toaster'
 export {
-  type ToastActionTriggerProps,
+  default as ToastActionTrigger,
   type ToastActionTriggerBaseProps,
+  type ToastActionTriggerProps,
 } from './toast-action-trigger.vue'
 export {
-  type ToastCloseTriggerProps,
+  default as ToastCloseTrigger,
   type ToastCloseTriggerBaseProps,
+  type ToastCloseTriggerProps,
 } from './toast-close-trigger.vue'
-export { type ToastContextProps } from './toast-context.vue'
+export { default as ToastContext, type ToastContextProps } from './toast-context.vue'
 export {
-  type ToastDescriptionProps,
+  default as ToastDescription,
   type ToastDescriptionBaseProps,
+  type ToastDescriptionProps,
 } from './toast-description.vue'
 export {
-  type ToastRootProps,
+  default as ToastRoot,
   type ToastRootBaseProps,
+  type ToastRootProps,
 } from './toast-root.vue'
 export {
-  type ToastTitleProps,
+  default as ToastTitle,
   type ToastTitleBaseProps,
+  type ToastTitleProps,
 } from './toast-title.vue'
-export { Toaster, type ToasterProps, type ToasterBaseProps } from './toaster'
-export { useToastContext, type UseToastContext } from './use-toast-context'
 export { toastAnatomy } from './toast.anatomy'
+export { Toaster, type ToasterBaseProps, type ToasterProps } from './toaster'
+export { useToastContext, type UseToastContext } from './use-toast-context'
 
 export * as Toast from './toast'

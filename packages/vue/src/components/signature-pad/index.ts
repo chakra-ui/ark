@@ -4,44 +4,55 @@ export type {
   DrawingOptions as SignaturePadDrawingOptions,
 } from '@zag-js/signature-pad'
 export {
-  type SignaturePadClearTriggerProps,
+  default as SignaturePadClearTrigger,
   type SignaturePadClearTriggerBaseProps,
+  type SignaturePadClearTriggerProps,
 } from './signature-pad-clear-trigger.vue'
-export { type SignaturePadContextProps } from './signature-pad-context.vue'
 export {
-  type SignaturePadHiddenInputProps,
-  type SignaturePadHiddenInputBaseProps,
-} from './signature-pad-hidden-input.vue'
+  default as SignaturePadContext,
+  type SignaturePadContextProps,
+} from './signature-pad-context.vue'
 export {
-  type SignaturePadControlProps,
+  default as SignaturePadControl,
   type SignaturePadControlBaseProps,
+  type SignaturePadControlProps,
 } from './signature-pad-control.vue'
 export {
-  type SignaturePadGuideProps,
+  default as SignaturePadGuide,
   type SignaturePadGuideBaseProps,
+  type SignaturePadGuideProps,
 } from './signature-pad-guide.vue'
 export {
-  type SignaturePadLabelProps,
+  default as SignaturePadHiddenInput,
+  type SignaturePadHiddenInputBaseProps,
+  type SignaturePadHiddenInputProps,
+} from './signature-pad-hidden-input.vue'
+export {
+  default as SignaturePadLabel,
   type SignaturePadLabelBaseProps,
+  type SignaturePadLabelProps,
 } from './signature-pad-label.vue'
 export {
-  type SignaturePadRootProviderProps,
+  default as SignaturePadRootProvider,
   type SignaturePadRootProviderBaseProps,
+  type SignaturePadRootProviderProps,
 } from './signature-pad-root-provider.vue'
 export {
-  type SignaturePadRootProps,
+  default as SignaturePadRoot,
   type SignaturePadRootBaseProps,
+  type SignaturePadRootProps,
 } from './signature-pad-root.vue'
 export {
-  type SignaturePadSegmentProps,
+  default as SignaturePadSegment,
   type SignaturePadSegmentBaseProps,
+  type SignaturePadSegmentProps,
 } from './signature-pad-segment.vue'
+export { signaturePadAnatomy } from './signature-pad.anatomy'
 export {
   useSignaturePad,
   type UseSignaturePadProps,
   type UseSignaturePadReturn,
 } from './use-signature-pad'
 export { useSignaturePadContext, type UseSignaturePadContext } from './use-signature-pad-context'
-export { signaturePadAnatomy } from './signature-pad.anatomy'
 
 export * as SignaturePad from './signature-pad'

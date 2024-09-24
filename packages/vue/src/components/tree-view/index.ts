@@ -4,63 +4,79 @@ export type {
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
 export {
-  type TreeViewBranchContentProps,
+  default as TreeViewBranchContent,
   type TreeViewBranchContentBaseProps,
+  type TreeViewBranchContentProps,
 } from './tree-view-branch-content.vue'
 export {
-  type TreeViewBranchControlProps,
+  default as TreeViewBranchControl,
   type TreeViewBranchControlBaseProps,
+  type TreeViewBranchControlProps,
 } from './tree-view-branch-control.vue'
 export {
-  type TreeViewBranchIndicatorProps,
+  default as TreeViewBranchIndicator,
   type TreeViewBranchIndicatorBaseProps,
+  type TreeViewBranchIndicatorProps,
 } from './tree-view-branch-indicator.vue'
 export {
-  type TreeViewBranchTextProps,
+  default as TreeViewBranchText,
   type TreeViewBranchTextBaseProps,
+  type TreeViewBranchTextProps,
 } from './tree-view-branch-text.vue'
 export {
-  type TreeViewBranchTriggerProps,
+  default as TreeViewBranchTrigger,
   type TreeViewBranchTriggerBaseProps,
+  type TreeViewBranchTriggerProps,
 } from './tree-view-branch-trigger.vue'
 export {
-  type TreeViewBranchProps,
+  default as TreeViewBranch,
   type TreeViewBranchBaseProps,
+  type TreeViewBranchProps,
 } from './tree-view-branch.vue'
-export { type TreeViewContextProps } from './tree-view-context.vue'
-export { type TreeViewItemContextProps } from './tree-view-item-context.vue'
+export { default as TreeViewContext, type TreeViewContextProps } from './tree-view-context.vue'
 export {
-  type TreeViewItemIndicatorProps,
+  default as TreeViewItemContext,
+  type TreeViewItemContextProps,
+} from './tree-view-item-context.vue'
+export {
+  default as TreeViewItemIndicator,
   type TreeViewItemIndicatorBaseProps,
+  type TreeViewItemIndicatorProps,
 } from './tree-view-item-indicator.vue'
 export {
-  type TreeViewItemTextProps,
+  default as TreeViewItemText,
   type TreeViewItemTextBaseProps,
+  type TreeViewItemTextProps,
 } from './tree-view-item-text.vue'
 export {
-  type TreeViewItemProps,
+  default as TreeViewItem,
   type TreeViewItemBaseProps,
+  type TreeViewItemProps,
 } from './tree-view-item.vue'
 export {
-  type TreeViewLabelProps,
+  default as TreeViewLabel,
   type TreeViewLabelBaseProps,
+  type TreeViewLabelProps,
 } from './tree-view-label.vue'
 export {
-  type TreeViewRootProviderProps,
+  default as TreeViewRootProvider,
   type TreeViewRootProviderBaseProps,
+  type TreeViewRootProviderProps,
 } from './tree-view-root-provider.vue'
 export {
-  type TreeViewRootEmits,
+  default as TreeViewRoot,
   type TreeViewRootBaseProps,
+  type TreeViewRootEmits,
   type TreeViewRootProps,
 } from './tree-view-root.vue'
 export {
-  type TreeViewTreeProps,
+  default as TreeViewTree,
   type TreeViewTreeBaseProps,
+  type TreeViewTreeProps,
 } from './tree-view-tree.vue'
+export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
 export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
 export { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
-export { treeViewAnatomy } from './tree-view.anatomy'
 
 export * as TreeView from './tree-view'

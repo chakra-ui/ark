@@ -4,51 +4,94 @@ export type {
   OpenChangeDetails as ComboboxOpenChangeDetails,
   ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
+export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
 export {
-  type ComboboxClearTriggerProps,
+  default as ComboboxClearTrigger,
   type ComboboxClearTriggerBaseProps,
+  type ComboboxClearTriggerProps,
 } from './combobox-clear-trigger.vue'
-export { type ComboboxContentProps, type ComboboxContentBaseProps } from './combobox-content.vue'
-export { type ComboboxContextProps } from './combobox-context.vue'
-export { type ComboboxControlProps, type ComboboxControlBaseProps } from './combobox-control.vue'
-export { type ComboboxInputProps, type ComboboxInputBaseProps } from './combobox-input.vue'
-export { type ComboboxItemContextProps } from './combobox-item-context.vue'
 export {
-  type ComboboxItemGroupLabelProps,
+  default as ComboboxContent,
+  type ComboboxContentBaseProps,
+  type ComboboxContentProps,
+} from './combobox-content.vue'
+export {
+  default as ComboboxContext,
+  type ComboboxContextProps,
+} from './combobox-context.vue'
+export {
+  default as ComboboxControl,
+  type ComboboxControlBaseProps,
+  type ComboboxControlProps,
+} from './combobox-control.vue'
+export {
+  default as ComboboxInput,
+  type ComboboxInputBaseProps,
+  type ComboboxInputProps,
+} from './combobox-input.vue'
+export {
+  default as ComboboxItemContext,
+  type ComboboxItemContextProps,
+} from './combobox-item-context.vue'
+export {
+  default as ComboboxItemGroupLabel,
   type ComboboxItemGroupLabelBaseProps,
+  type ComboboxItemGroupLabelProps,
 } from './combobox-item-group-label.vue'
 export {
-  type ComboboxItemGroupProps,
+  default as ComboboxItemGroup,
   type ComboboxItemGroupBaseProps,
+  type ComboboxItemGroupProps,
 } from './combobox-item-group.vue'
 export {
-  type ComboboxItemIndicatorProps,
+  default as ComboboxItemIndicator,
   type ComboboxItemIndicatorBaseProps,
+  type ComboboxItemIndicatorProps,
 } from './combobox-item-indicator.vue'
 export {
-  type ComboboxItemTextProps,
+  default as ComboboxItemText,
   type ComboboxItemTextBaseProps,
+  type ComboboxItemTextProps,
 } from './combobox-item-text.vue'
-export { type ComboboxItemProps, type ComboboxItemBaseProps } from './combobox-item.vue'
-export { type ComboboxLabelProps, type ComboboxLabelBaseProps } from './combobox-label.vue'
-export { type ComboboxListProps, type ComboboxListBaseProps } from './combobox-list.vue'
 export {
-  type ComboboxPositionerProps,
+  default as ComboboxItem,
+  type ComboboxItemBaseProps,
+  type ComboboxItemProps,
+} from './combobox-item.vue'
+export {
+  default as ComboboxLabel,
+  type ComboboxLabelBaseProps,
+  type ComboboxLabelProps,
+} from './combobox-label.vue'
+export {
+  default as ComboboxList,
+  type ComboboxListBaseProps,
+  type ComboboxListProps,
+} from './combobox-list.vue'
+export {
+  default as ComboboxPositioner,
   type ComboboxPositionerBaseProps,
+  type ComboboxPositionerProps,
 } from './combobox-positioner.vue'
 export {
-  type ComboboxRootProviderProps,
+  default as ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
+  type ComboboxRootProviderProps,
 } from './combobox-root-provider.vue'
 export {
-  type ComboboxRootEmits,
+  default as ComboboxRoot,
   type ComboboxRootBaseProps,
+  type ComboboxRootEmits,
   type ComboboxRootProps,
 } from './combobox-root.vue'
-export { type ComboboxTriggerProps, type ComboboxTriggerBaseProps } from './combobox-trigger.vue'
+export {
+  default as ComboboxTrigger,
+  type ComboboxTriggerBaseProps,
+  type ComboboxTriggerProps,
+} from './combobox-trigger.vue'
+export { comboboxAnatomy } from './combobox.anatomy'
 export { useCombobox, type UseComboboxProps, type UseComboboxReturn } from './use-combobox'
 export { useComboboxContext, type UseComboboxContext } from './use-combobox-context'
 export { useComboboxItemContext, type UseComboboxItemContext } from './use-combobox-item-context'
-export { comboboxAnatomy } from './combobox.anatomy'
 
 export * as Combobox from './combobox'

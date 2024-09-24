@@ -3,24 +3,29 @@ export type {
   ValueChangeDetails as TabsValueChangeDetails,
 } from '@zag-js/tabs'
 export {
+  default as TabContent,
   type TabContentBaseProps,
   type TabContentProps,
 } from './tab-content.vue'
 export {
+  default as TabIndicator,
   type TabIndicatorBaseProps,
   type TabIndicatorProps,
 } from './tab-indicator.vue'
-export { type TabListBaseProps, type TabListProps } from './tab-list.vue'
+export { default as TabList, type TabListBaseProps, type TabListProps } from './tab-list.vue'
 export {
+  default as TabTrigger,
   type TabTriggerBaseProps,
   type TabTriggerProps,
 } from './tab-trigger.vue'
-export { type TabsContextProps } from './tabs-context.vue'
+export { default as TabsContext, type TabsContextProps } from './tabs-context.vue'
 export {
+  default as TabsRootProvider,
   type TabsRootProviderBaseProps,
   type TabsRootProviderProps,
 } from './tabs-root-provider.vue'
 export {
+  default as TabsRoot,
   type TabsRootBaseProps,
   type TabsRootEmits,
   type TabsRootProps,

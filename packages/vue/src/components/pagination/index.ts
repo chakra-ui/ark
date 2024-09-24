@@ -3,34 +3,40 @@ export type {
   PageChangeDetails as PaginationPageChangeDetails,
   PageSizeChangeDetails as PaginationPageSizeChangeDetails,
 } from '@zag-js/pagination'
-export { type PaginationContextProps } from './pagination-context.vue'
+export { default as PaginationContext, type PaginationContextProps } from './pagination-context.vue'
 export {
-  type PaginationEllipsisProps,
+  default as PaginationEllipsis,
   type PaginationEllipsisBaseProps,
+  type PaginationEllipsisProps,
 } from './pagination-ellipsis.vue'
 export {
-  type PaginationItemProps,
+  default as PaginationItem,
   type PaginationItemBaseProps,
+  type PaginationItemProps,
 } from './pagination-item.vue'
 export {
-  type PaginationNextTriggerProps,
+  default as PaginationNextTrigger,
   type PaginationNextTriggerBaseProps,
+  type PaginationNextTriggerProps,
 } from './pagination-next-trigger.vue'
 export {
-  type PaginationPrevTriggerProps,
+  default as PaginationPrevTrigger,
   type PaginationPrevTriggerBaseProps,
+  type PaginationPrevTriggerProps,
 } from './pagination-prev-trigger.vue'
 export {
-  type PaginationRootProviderProps,
+  default as PaginationRootProvider,
   type PaginationRootProviderBaseProps,
+  type PaginationRootProviderProps,
 } from './pagination-root-provider.vue'
 export {
-  type PaginationRootEmits,
+  default as PaginationRoot,
   type PaginationRootBaseProps,
+  type PaginationRootEmits,
   type PaginationRootProps,
 } from './pagination-root.vue'
+export { paginationAnatomy } from './pagination.anatomy'
 export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 export { usePaginationContext, type UsePaginationContext } from './use-pagination-context'
-export { paginationAnatomy } from './pagination.anatomy'
 
 export * as Pagination from './pagination'

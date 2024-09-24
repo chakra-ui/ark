@@ -5,79 +5,99 @@ export type {
 } from '@zag-js/select'
 export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
 export {
-  type SelectClearTriggerProps,
+  default as SelectClearTrigger,
   type SelectClearTriggerBaseProps,
+  type SelectClearTriggerProps,
 } from './select-clear-trigger.vue'
 export {
-  type SelectContentProps,
+  default as SelectContent,
   type SelectContentBaseProps,
+  type SelectContentProps,
 } from './select-content.vue'
-export { type SelectContextProps } from './select-context.vue'
+export { default as SelectContext, type SelectContextProps } from './select-context.vue'
 export {
-  type SelectControlProps,
+  default as SelectControl,
   type SelectControlBaseProps,
+  type SelectControlProps,
 } from './select-control.vue'
 export {
-  type SelectHiddenSelectProps,
+  default as SelectHiddenSelect,
   type SelectHiddenSelectBaseProps,
+  type SelectHiddenSelectProps,
 } from './select-hidden-select.vue'
 export {
-  type SelectIndicatorProps,
+  default as SelectIndicator,
   type SelectIndicatorBaseProps,
+  type SelectIndicatorProps,
 } from './select-indicator.vue'
-export { type SelectItemContextProps } from './select-item-context.vue'
 export {
-  type SelectItemGroupLabelProps,
+  default as SelectItemContext,
+  type SelectItemContextProps,
+} from './select-item-context.vue'
+export {
+  default as SelectItemGroupLabel,
   type SelectItemGroupLabelBaseProps,
+  type SelectItemGroupLabelProps,
 } from './select-item-group-label.vue'
 export {
-  type SelectListProps,
-  type SelectListBaseProps,
-} from './select-list.vue'
-export {
-  type SelectItemGroupProps,
+  default as SelectItemGroup,
   type SelectItemGroupBaseProps,
+  type SelectItemGroupProps,
 } from './select-item-group.vue'
 export {
-  type SelectItemIndicatorProps,
+  default as SelectItemIndicator,
   type SelectItemIndicatorBaseProps,
+  type SelectItemIndicatorProps,
 } from './select-item-indicator.vue'
 export {
-  type SelectItemTextProps,
+  default as SelectItemText,
   type SelectItemTextBaseProps,
+  type SelectItemTextProps,
 } from './select-item-text.vue'
 export {
-  type SelectItemProps,
+  default as SelectItem,
   type SelectItemBaseProps,
+  type SelectItemProps,
 } from './select-item.vue'
 export {
-  type SelectLabelProps,
+  default as SelectLabel,
   type SelectLabelBaseProps,
+  type SelectLabelProps,
 } from './select-label.vue'
 export {
-  type SelectPositionerProps,
+  default as SelectList,
+  type SelectListBaseProps,
+  type SelectListProps,
+} from './select-list.vue'
+export {
+  default as SelectPositioner,
   type SelectPositionerBaseProps,
+  type SelectPositionerProps,
 } from './select-positioner.vue'
 export {
-  type SelectRootProviderProps,
+  default as SelectRootProvider,
   type SelectRootProviderBaseProps,
+  type SelectRootProviderProps,
 } from './select-root-provider.vue'
 export {
-  type SelectRootEmits,
+  default as SelectRoot,
   type SelectRootBaseProps,
+  type SelectRootEmits,
   type SelectRootProps,
 } from './select-root.vue'
 export {
-  type SelectTriggerProps,
+  default as SelectTrigger,
   type SelectTriggerBaseProps,
+  type SelectTriggerProps,
 } from './select-trigger.vue'
 export {
-  type SelectValueTextProps,
+  default as SelectValueText,
   type SelectValueTextBaseProps,
+  type SelectValueTextProps,
 } from './select-value-text.vue'
+export { selectAnatomy } from './select.anatomy'
 export { useSelect, type UseSelectProps, type UseSelectReturn } from './use-select'
 export { useSelectContext, type UseSelectContext } from './use-select-context'
 export { useSelectItemContext, type UseSelectItemContext } from './use-select-item-context'
-export { selectAnatomy } from './select.anatomy'
 
 export * as Select from './select'

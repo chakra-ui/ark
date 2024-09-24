@@ -2,54 +2,65 @@ export type {
   FocusChangeDetails as SliderFocusChangeDetails,
   ValueChangeDetails as SliderValueChangeDetails,
 } from '@zag-js/slider'
-export { type SliderContextProps } from './slider-context.vue'
+export { default as SliderContext, type SliderContextProps } from './slider-context.vue'
 export {
-  type SliderControlProps,
+  default as SliderControl,
   type SliderControlBaseProps,
+  type SliderControlProps,
 } from './slider-control.vue'
 export {
-  type SliderHiddenInputProps,
+  default as SliderHiddenInput,
   type SliderHiddenInputBaseProps,
+  type SliderHiddenInputProps,
 } from './slider-hidden-input.vue'
 export {
-  type SliderLabelProps,
+  default as SliderLabel,
   type SliderLabelBaseProps,
+  type SliderLabelProps,
 } from './slider-label.vue'
 export {
-  type SliderMarkerGroupProps,
+  default as SliderMarkerGroup,
   type SliderMarkerGroupBaseProps,
+  type SliderMarkerGroupProps,
 } from './slider-marker-group.vue'
 export {
-  type SliderMarkerProps,
+  default as SliderMarker,
   type SliderMarkerBaseProps,
+  type SliderMarkerProps,
 } from './slider-marker.vue'
 export {
-  type SliderRangeProps,
+  default as SliderRange,
   type SliderRangeBaseProps,
+  type SliderRangeProps,
 } from './slider-range.vue'
 export {
-  type SliderRootProviderProps,
+  default as SliderRootProvider,
   type SliderRootProviderBaseProps,
+  type SliderRootProviderProps,
 } from './slider-root-provider.vue'
 export {
-  type SliderRootEmits,
+  default as SliderRoot,
   type SliderRootBaseProps,
+  type SliderRootEmits,
   type SliderRootProps,
 } from './slider-root.vue'
 export {
-  type SliderThumbProps,
+  default as SliderThumb,
   type SliderThumbBaseProps,
+  type SliderThumbProps,
 } from './slider-thumb.vue'
 export {
-  type SliderTrackProps,
+  default as SliderTrack,
   type SliderTrackBaseProps,
+  type SliderTrackProps,
 } from './slider-track.vue'
 export {
-  type SliderValueTextProps,
+  default as SliderValueText,
   type SliderValueTextBaseProps,
+  type SliderValueTextProps,
 } from './slider-value-text.vue'
+export { sliderAnatomy } from './slider.anatomy'
 export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 export { useSliderContext, type UseSliderContext } from './use-slider-context'
-export { sliderAnatomy } from './slider.anatomy'
 
 export * as Slider from './slider'

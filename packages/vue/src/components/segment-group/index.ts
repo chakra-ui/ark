@@ -1,39 +1,54 @@
 export type { ValueChangeDetails as SegmentGroupValueChangeDetails } from '@zag-js/radio-group'
-export { type SegmentGroupContextProps } from './segment-group-context.vue'
 export {
-  type SegmentGroupIndicatorProps,
+  default as SegmentGroupContext,
+  type SegmentGroupContextProps,
+} from './segment-group-context.vue'
+export {
+  default as SegmentGroupIndicator,
   type SegmentGroupIndicatorBaseProps,
+  type SegmentGroupIndicatorProps,
 } from './segment-group-indicator.vue'
-export { type SegmentGroupItemContextProps } from './segment-group-item-context.vue'
 export {
-  type SegmentGroupItemControlProps,
+  default as SegmentGroupItemContext,
+  type SegmentGroupItemContextProps,
+} from './segment-group-item-context.vue'
+export {
+  default as SegmentGroupItemControl,
   type SegmentGroupItemControlBaseProps,
+  type SegmentGroupItemControlProps,
 } from './segment-group-item-control.vue'
 export {
-  type SegmentGroupItemHiddenInputProps,
+  default as SegmentGroupItemHiddenInput,
   type SegmentGroupItemHiddenInputBaseProps,
+  type SegmentGroupItemHiddenInputProps,
 } from './segment-group-item-hidden-input.vue'
 export {
-  type SegmentGroupItemTextProps,
+  default as SegmentGroupItemText,
   type SegmentGroupItemTextBaseProps,
+  type SegmentGroupItemTextProps,
 } from './segment-group-item-text.vue'
 export {
-  type SegmentGroupItemProps,
+  default as SegmentGroupItem,
   type SegmentGroupItemBaseProps,
+  type SegmentGroupItemProps,
 } from './segment-group-item.vue'
 export {
-  type SegmentGroupLabelProps,
+  default as SegmentGroupLabel,
   type SegmentGroupLabelBaseProps,
+  type SegmentGroupLabelProps,
 } from './segment-group-label.vue'
 export {
-  type SegmentGroupRootProviderProps,
+  default as SegmentGroupRootProvider,
   type SegmentGroupRootProviderBaseProps,
+  type SegmentGroupRootProviderProps,
 } from './segment-group-root-provider.vue'
 export {
-  type SegmentGroupRootEmits,
+  default as SegmentGroupRoot,
   type SegmentGroupRootBaseProps,
+  type SegmentGroupRootEmits,
   type SegmentGroupRootProps,
 } from './segment-group-root.vue'
+export { segmentGroupAnatomy } from './segment-group.anatomy'
 export {
   useSegmentGroup,
   type UseSegmentGroupProps,
@@ -44,6 +59,5 @@ export {
   useSegmentGroupItemContext,
   type UseSegmentGroupItemContext,
 } from './use-segment-group-item-context'
-export { segmentGroupAnatomy } from './segment-group.anatomy'
 
 export * as SegmentGroup from './segment-group'

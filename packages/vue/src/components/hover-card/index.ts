@@ -1,36 +1,43 @@
 export type { OpenChangeDetails as HoverCardOpenChangeDetails } from '@zag-js/hover-card'
 export {
-  type HoverCardArrowTipProps,
+  default as HoverCardArrowTip,
   type HoverCardArrowTipBaseProps,
+  type HoverCardArrowTipProps,
 } from './hover-card-arrow-tip.vue'
 export {
-  type HoverCardArrowProps,
+  default as HoverCardArrow,
   type HoverCardArrowBaseProps,
+  type HoverCardArrowProps,
 } from './hover-card-arrow.vue'
 export {
-  type HoverCardContentProps,
+  default as HoverCardContent,
   type HoverCardContentBaseProps,
+  type HoverCardContentProps,
 } from './hover-card-content.vue'
-export { type HoverCardContextProps } from './hover-card-context.vue'
+export { default as HoverCardContext, type HoverCardContextProps } from './hover-card-context.vue'
 export {
-  type HoverCardPositionerProps,
+  default as HoverCardPositioner,
   type HoverCardPositionerBaseProps,
+  type HoverCardPositionerProps,
 } from './hover-card-positioner.vue'
 export {
-  type HoverCardRootProviderProps,
+  default as HoverCardRootProvider,
   type HoverCardRootProviderBaseProps,
+  type HoverCardRootProviderProps,
 } from './hover-card-root-provider.vue'
 export {
-  type HoverCardRootEmits,
+  default as HoverCardRoot,
   type HoverCardRootBaseProps,
+  type HoverCardRootEmits,
   type HoverCardRootProps,
 } from './hover-card-root.vue'
 export {
-  type HoverCardTriggerProps,
+  default as HoverCardTrigger,
   type HoverCardTriggerBaseProps,
+  type HoverCardTriggerProps,
 } from './hover-card-trigger.vue'
+export { hoverCardAnatomy } from './hover-card.anatomy'
 export { useHoverCard, type UseHoverCardProps, type UseHoverCardReturn } from './use-hover-card'
 export { useHoverCardContext, type UseHoverCardContext } from './use-hover-card-context'
-export { hoverCardAnatomy } from './hover-card.anatomy'
 
 export * as HoverCard from './hover-card'

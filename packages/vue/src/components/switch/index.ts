@@ -1,32 +1,38 @@
 export type { CheckedChangeDetails as SwitchCheckedChangeDetails } from '@zag-js/switch'
-export { type SwitchContextProps } from './switch-context.vue'
+export { default as SwitchContext, type SwitchContextProps } from './switch-context.vue'
 export {
-  type SwitchControlProps,
+  default as SwitchControl,
   type SwitchControlBaseProps,
+  type SwitchControlProps,
 } from './switch-control.vue'
 export {
-  type SwitchHiddenInputProps,
+  default as SwitchHiddenInput,
   type SwitchHiddenInputBaseProps,
+  type SwitchHiddenInputProps,
 } from './switch-hidden-input.vue'
 export {
-  type SwitchLabelProps,
+  default as SwitchLabel,
   type SwitchLabelBaseProps,
+  type SwitchLabelProps,
 } from './switch-label.vue'
 export {
-  type SwitchRootProviderProps,
+  default as SwitchRootProvider,
   type SwitchRootProviderBaseProps,
+  type SwitchRootProviderProps,
 } from './switch-root-provider.vue'
 export {
-  type SwitchRootEmits,
+  default as SwitchRoot,
   type SwitchRootBaseProps,
+  type SwitchRootEmits,
   type SwitchRootProps,
 } from './switch-root.vue'
 export {
-  type SwitchThumbProps,
+  default as SwitchThumb,
   type SwitchThumbBaseProps,
+  type SwitchThumbProps,
 } from './switch-thumb.vue'
+export { switchAnatomy } from './switch.anatomy'
 export { useSwitch, type UseSwitchProps, type UseSwitchReturn } from './use-switch'
 export { useSwitchContext, type UseSwitchContext } from './use-switch-context'
-export { switchAnatomy } from './switch.anatomy'
 
 export * as Switch from './switch'

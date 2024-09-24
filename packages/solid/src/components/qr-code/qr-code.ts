@@ -8,26 +8,26 @@ export {
 } from './qr-code-context'
 export {
   QrCodeFrame as Frame,
-  type QrCodeFrameBaseProps as FrameBaseProps,
   type QrCodeFrameProps as FrameProps,
+  type QrCodeFrameBaseProps as FrameBaseProps,
 } from './qr-code-frame'
 export {
   QrCodeOverlay as Overlay,
-  type QrCodeOverlayBaseProps as OverlayBaseProps,
   type QrCodeOverlayProps as OverlayProps,
+  type QrCodeOverlayBaseProps as OverlayBaseProps,
 } from './qr-code-overlay'
 export {
   QrCodePattern as Pattern,
-  type QrCodePatternBaseProps as PatternBaseProps,
   type QrCodePatternProps as PatternProps,
+  type QrCodePatternBaseProps as PatternBaseProps,
 } from './qr-code-pattern'
 export {
   QrCodeRoot as Root,
-  type QrCodeRootBaseProps as RootBaseProps,
   type QrCodeRootProps as RootProps,
+  type QrCodeRootBaseProps as RootBaseProps,
 } from './qr-code-root'
 export {
   QrCodeRootProvider as RootProvider,
-  type QrCodeRootProviderBaseProps as RootProviderBaseProps,
   type QrCodeRootProviderProps as RootProviderProps,
+  type QrCodeRootProviderBaseProps as RootProviderBaseProps,
 } from './qr-code-root-provider'
