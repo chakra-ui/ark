@@ -1,0 +1,128 @@
+---
+id: collection
+title: Collection
+description: Working with collections in Ark UI
+---
+
+Collections are used to manage a collection of some kind, like menus, select,
+combobox, etc. They provide functionalities such as sorting, searching, getting
+next or previous items, converting items to values or strings, checking if an
+item is disabled, and more.
+
+## List Collection
+
+A list collection is a collection that is based on an array of items. It is
+created by passing an array of items to the constructor.
+
+```ts
+import { createListCollection } from '@ark-ui/react/collection'
+
+const collection = createListCollection({
+  items: [
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+  ],
+})
+
+console.log(collection.items) // [{ label: 'Apple', value: 'apple' }, { label: 'Banana', value: 'banana' }]
+```
+
+### Converting value to item
+
+Use the `find` or `findMany` method to convert a value to an item.
+
+```ts
+const item = collection.find('banana')
+
+console.log(item) // { label: "Banana", value: "banana" }
+
+const items = collection.findMany(['apple', 'banana'])
+
+console.log(items) // [{ label: "Apple", value: "apple" }, { label: "Banana", value: "banana" }]
+```
+
+### Value Traversal
+
+Use the `getNextValue` or `getPreviousValue` method to get the next or previous
+item based on a value.
+
+```ts
+const nextValue = collection.getNextValue('apple')
+
+console.log(nextValue) // banana
+
+const previousItem = collection.getPreviousValue('banana')
+
+console.log(previousItem) // apple
+```
+
+Likewise, use the `firstValue` or `lastValue` computed properties to get the
+first or last item.
+
+```ts
+console.log(collection.firstValue) // apple
+
+console.log(collection.lastValue) // banana
+```
+
+### Check for value existence
+
+Use the `has` method to check if a value exists in the collection.
+
+```ts
+const hasValue = collection.has('apple')
+
+console.log(hasValue) // true
+```
+
+### Working with custom objects
+
+If you are working with custom objects, you can pass a function to the
+`itemToString` and `itemToValue` options to specify how to convert an item to
+a string and a value, respectively.
+
+> By default, we look for the `label` and `value` properties in the item.
+
+```ts
+import { createListCollection } from '@ark-ui/react/collection'
+
+const collection = createListCollection({
+  items: [
+    { id: 1, name: 'apple' },
+    { id: 2, name: 'banana' },
+    { id: 3, name: 'cherry' },
+  ],
+  itemToString: (item) => item.name,
+  itemToValue: (item) => item.id,
+})
+```
+
+To mark an item as disabled, pass a function to the `isItemDisabled` option.
+
+> By default, we look for the `disabled` property in the item.
+
+```ts
+import { createListCollection } from '@ark-ui/react/collection'
+
+const collection = createListCollection({
+  items: [
+    { id: 1, name: 'apple' },
+    { id: 2, name: 'banana' },
+    { id: 3, name: 'cherry' },
+  ],
+  isItemDisabled: (item) => item.id === 2,
+})
+```
+
+### Reorder items
+
+Use the `reorder` method to reorder items by passing the starting index and the
+ending index of the item to be moved.
+
+```ts
+const fromIndex = 1 // Banana
+const toIndex = 0 // Apple
+collection.reorder(fromIndex, toIndex)
+
+console.log(collection.items) // [{ label: "Banana", value: "banana" }, { label: "Apple", value: "apple" }]
+```
