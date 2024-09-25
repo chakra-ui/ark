@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.0.0] - 2024-09-25
+
 In this major release, we shifted from primitive data types like strings to more structured types
 such as Collection, Color, and DateValue. This enhanced flexibility and control by offering advanced
 methods and properties.
