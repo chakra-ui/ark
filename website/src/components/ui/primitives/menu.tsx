@@ -100,4 +100,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, Menu.TriggerBaseProps>
 >(Menu.Trigger, 'trigger')
 
-export { MenuContext as Context } from '@ark-ui/react/menu'
+export const Context = Menu.Context

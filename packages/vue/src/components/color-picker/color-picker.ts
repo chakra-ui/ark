@@ -1,4 +1,5 @@
 export type {
+  Color,
   ColorFormat,
   FormatChangeDetails,
   OpenChangeDetails,

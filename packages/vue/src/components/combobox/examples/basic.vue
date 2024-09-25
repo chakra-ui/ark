@@ -1,12 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Combobox } from '../..'
+import { computed, ref } from 'vue'
+// biome-ignore lint/style/useImportType: <explanation>
+import { Combobox, createListCollection } from '../..'
 
-const items = ref(['React', 'Solid', 'Vue'])
+const initialItems = ['React', 'Solid', 'Vue']
+
+const items = ref(initialItems)
+
+const collection = computed(() => createListCollection({ items: items.value }))
+
+const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+  items.value = initialItems.filter((item) =>
+    item.toLowerCase().includes(details.inputValue.toLowerCase()),
+  )
+}
 </script>
 
 <template>
-  <Combobox.Root :items="items">
+  <Combobox.Root :collection="collection" @input-value-change="handleInputChange">
     <Combobox.Label>Framework</Combobox.Label>
     <Combobox.Control>
       <Combobox.Input />
@@ -18,7 +29,7 @@ const items = ref(['React', 'Solid', 'Vue'])
         <Combobox.Content>
           <Combobox.ItemGroup>
             <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-            <Combobox.Item v-for="item in items" :key="item" :item="item">
+            <Combobox.Item v-for="item in collection.items" :key="item" :item="item">
               <Combobox.ItemText>{{ item }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
             </Combobox.Item>

@@ -8,39 +8,40 @@ export {
 } from './checkbox-context'
 export {
   CheckboxControl,
-  type CheckboxControlProps,
   type CheckboxControlBaseProps,
+  type CheckboxControlProps,
 } from './checkbox-control'
 export {
   CheckboxGroup,
-  type CheckboxGroupProps,
   type CheckboxGroupBaseProps,
+  type CheckboxGroupProps,
 } from './checkbox-group'
 export {
   CheckboxHiddenInput,
-  type CheckboxHiddenInputProps,
   type CheckboxHiddenInputBaseProps,
+  type CheckboxHiddenInputProps,
 } from './checkbox-hidden-input'
 export {
   CheckboxIndicator,
-  type CheckboxIndicatorProps,
   type CheckboxIndicatorBaseProps,
+  type CheckboxIndicatorProps,
 } from './checkbox-indicator'
 export {
   CheckboxLabel,
-  type CheckboxLabelProps,
   type CheckboxLabelBaseProps,
+  type CheckboxLabelProps,
 } from './checkbox-label'
 export {
   CheckboxRoot,
-  type CheckboxRootProps,
   type CheckboxRootBaseProps,
+  type CheckboxRootProps,
 } from './checkbox-root'
 export {
   CheckboxRootProvider,
-  type CheckboxRootProviderProps,
   type CheckboxRootProviderBaseProps,
+  type CheckboxRootProviderProps,
 } from './checkbox-root-provider'
+export { checkboxAnatomy } from './checkbox.anatomy'
 export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
 export { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context'
 export {
@@ -49,6 +50,5 @@ export {
   type UseCheckboxGroupReturn,
 } from './use-checkbox-group'
 export { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context'
-export { checkboxAnatomy } from './checkbox.anatomy'
 
 export * as Checkbox from './checkbox'

@@ -1,17 +1,16 @@
-export type { ValueChangeDetails as EditableValueChangeDetails } from '@zag-js/editable'
-// TODO: Remove when Zag is fixed
-export interface EditableEditChangeDetails {
-  edit: boolean;
-};
+export type {
+  EditChangeDetails as EditableEditChangeDetails,
+  ValueChangeDetails as EditableValueChangeDetails,
+} from '@zag-js/editable'
 export {
   EditableArea,
-  type EditableAreaProps,
   type EditableAreaBaseProps,
+  type EditableAreaProps,
 } from './editable-area'
 export {
   EditableCancelTrigger,
-  type EditableCancelTriggerProps,
   type EditableCancelTriggerBaseProps,
+  type EditableCancelTriggerProps,
 } from './editable-cancel-trigger'
 export {
   EditableContext,
@@ -19,46 +18,46 @@ export {
 } from './editable-context'
 export {
   EditableControl,
-  type EditableControlProps,
   type EditableControlBaseProps,
+  type EditableControlProps,
 } from './editable-control'
 export {
   EditableEditTrigger,
-  type EditableEditTriggerProps,
   type EditableEditTriggerBaseProps,
+  type EditableEditTriggerProps,
 } from './editable-edit-trigger'
 export {
   EditableInput,
-  type EditableInputProps,
   type EditableInputBaseProps,
+  type EditableInputProps,
 } from './editable-input'
 export {
   EditableLabel,
-  type EditableLabelProps,
   type EditableLabelBaseProps,
+  type EditableLabelProps,
 } from './editable-label'
 export {
   EditablePreview,
-  type EditablePreviewProps,
   type EditablePreviewBaseProps,
+  type EditablePreviewProps,
 } from './editable-preview'
 export {
   EditableRoot,
-  type EditableRootProps,
   type EditableRootBaseProps,
+  type EditableRootProps,
 } from './editable-root'
 export {
   EditableRootProvider,
-  type EditableRootProviderProps,
   type EditableRootProviderBaseProps,
+  type EditableRootProviderProps,
 } from './editable-root-provider'
 export {
   EditableSubmitTrigger,
-  type EditableSubmitTriggerProps,
   type EditableSubmitTriggerBaseProps,
+  type EditableSubmitTriggerProps,
 } from './editable-submit-trigger'
+export { editableAnatomy } from './editable.anatomy'
 export { useEditable, type UseEditableProps, type UseEditableReturn } from './use-editable'
 export { useEditableContext, type UseEditableContext } from './use-editable-context'
-export { editableAnatomy } from './editable.anatomy'
 
 export * as Editable from './editable'

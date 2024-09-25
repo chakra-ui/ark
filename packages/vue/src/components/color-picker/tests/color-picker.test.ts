@@ -1,6 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { ColorPicker, colorPickerAnatomy } from '../'
+import { ColorPicker, colorPickerAnatomy, parseColor } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './color-picker.test.vue'
@@ -50,7 +50,7 @@ describe('ColorPicker', () => {
   }, 7000)
 
   it('should render with default value', async () => {
-    render(ComponentUnderTest, { props: { defaultValue: '#ff00ff' } })
+    render(ComponentUnderTest, { props: { defaultValue: parseColor('#ff00ff') } })
 
     expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
       backgroundColor: 'rgb(255, 0, 255)',

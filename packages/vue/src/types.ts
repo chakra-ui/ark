@@ -10,8 +10,6 @@ export type EmitFn<T> = <K extends keyof T>(
   ...args: T[K] extends any[] ? T[K] : never
 ) => void
 
-export type CollectionItem = string | object
-
 type BooleanKey<T> = {
   [K in keyof T]: boolean extends NonNullable<T[K]> ? K : never
 }[keyof T]

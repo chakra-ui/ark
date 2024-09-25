@@ -3,7 +3,8 @@ import { useLayoutEffect } from 'react'
 
 interface Service {
   initialContext: { id: string }
-  state: Record<string, unknown>
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  state: Record<string, any>
   subscribe: (callback: () => void) => () => void
 }
 

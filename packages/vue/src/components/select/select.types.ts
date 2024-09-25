@@ -1,5 +1,5 @@
 import type * as select from '@zag-js/select'
-import type { CollectionItem } from './select'
+import type { CollectionItem, ListCollection } from '../select'
 
 export interface RootProps<T extends CollectionItem> {
   /**
@@ -7,6 +7,10 @@ export interface RootProps<T extends CollectionItem> {
    * @default true
    */
   closeOnSelect?: boolean
+  /**
+   * The collection of items
+   */
+  collection: ListCollection<T>
   /**
    * Whether the select is a composed with other composite widgets like tabs or combobox
    * @default true
@@ -64,22 +68,6 @@ export interface RootProps<T extends CollectionItem> {
    * Whether the select is invalid
    */
   invalid?: boolean
-  /**
-   * Whether the item is disabled
-   */
-  isItemDisabled?: (item: T) => boolean
-  /**
-   * The label of the item
-   */
-  itemToString?: (item: T) => string
-  /**
-   * The value of the item
-   */
-  itemToValue?: (item: T) => string
-  /**
-   * The options of the select
-   */
-  items: T[] | readonly T[]
   /**
    * Whether to loop the keyboard navigation through the options
    * @default false

@@ -1,8 +1,9 @@
+import { parseColor } from '@zag-js/color-utils'
 import { ColorPicker, Field } from '../..'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>
-    <ColorPicker.Root defaultValue="#eb5e41">
+    <ColorPicker.Root defaultValue={parseColor('#eb5e41')}>
       <ColorPicker.Label>Label</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />

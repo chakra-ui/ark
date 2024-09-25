@@ -1,18 +1,18 @@
 export type { OpenChangeDetails as DialogOpenChangeDetails } from '@zag-js/dialog'
 export {
   DialogBackdrop,
-  type DialogBackdropProps,
   type DialogBackdropBaseProps,
+  type DialogBackdropProps,
 } from './dialog-backdrop'
 export {
   DialogCloseTrigger,
-  type DialogCloseTriggerProps,
   type DialogCloseTriggerBaseProps,
+  type DialogCloseTriggerProps,
 } from './dialog-close-trigger'
 export {
   DialogContent,
-  type DialogContentProps,
   type DialogContentBaseProps,
+  type DialogContentProps,
 } from './dialog-content'
 export {
   DialogContext,
@@ -20,36 +20,36 @@ export {
 } from './dialog-context'
 export {
   DialogDescription,
-  type DialogDescriptionProps,
   type DialogDescriptionBaseProps,
+  type DialogDescriptionProps,
 } from './dialog-description'
 export {
   DialogPositioner,
-  type DialogPositionerProps,
   type DialogPositionerBaseProps,
+  type DialogPositionerProps,
 } from './dialog-positioner'
 export {
   DialogRoot,
-  type DialogRootProps,
   type DialogRootBaseProps,
+  type DialogRootProps,
 } from './dialog-root'
 export {
   DialogRootProvider,
-  type DialogRootProviderProps,
   type DialogRootProviderBaseProps,
+  type DialogRootProviderProps,
 } from './dialog-root-provider'
 export {
   DialogTitle,
-  type DialogTitleProps,
   type DialogTitleBaseProps,
+  type DialogTitleProps,
 } from './dialog-title'
 export {
   DialogTrigger,
-  type DialogTriggerProps,
   type DialogTriggerBaseProps,
+  type DialogTriggerProps,
 } from './dialog-trigger'
+export { dialogAnatomy } from './dialog.anatomy'
 export { useDialog, type UseDialogProps, type UseDialogReturn } from './use-dialog'
 export { useDialogContext, type UseDialogContext } from './use-dialog-context'
-export { dialogAnatomy } from './dialog.anatomy'
 
 export * as Dialog from './dialog'

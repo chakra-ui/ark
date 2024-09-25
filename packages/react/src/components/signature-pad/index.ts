@@ -5,8 +5,8 @@ export type {
 } from '@zag-js/signature-pad'
 export {
   SignaturePadClearTrigger,
-  type SignaturePadClearTriggerProps,
   type SignaturePadClearTriggerBaseProps,
+  type SignaturePadClearTriggerProps,
 } from './signature-pad-clear-trigger'
 export {
   SignaturePadContext,
@@ -14,45 +14,45 @@ export {
 } from './signature-pad-context'
 export {
   SignaturePadControl,
-  type SignaturePadControlProps,
   type SignaturePadControlBaseProps,
+  type SignaturePadControlProps,
 } from './signature-pad-control'
 export {
   SignaturePadGuide,
-  type SignaturePadGuideProps,
   type SignaturePadGuideBaseProps,
+  type SignaturePadGuideProps,
 } from './signature-pad-guide'
 export {
-  SignaturePadLabel,
-  type SignaturePadLabelProps,
-  type SignaturePadLabelBaseProps,
-} from './signature-pad-label'
-export {
   SignaturePadHiddenInput,
-  type SignaturePadHiddenInputProps,
   type SignaturePadHiddenInputBaseProps,
+  type SignaturePadHiddenInputProps,
 } from './signature-pad-hidden-input'
 export {
+  SignaturePadLabel,
+  type SignaturePadLabelBaseProps,
+  type SignaturePadLabelProps,
+} from './signature-pad-label'
+export {
   SignaturePadRoot,
-  type SignaturePadRootProps,
   type SignaturePadRootBaseProps,
+  type SignaturePadRootProps,
 } from './signature-pad-root'
 export {
   SignaturePadRootProvider,
-  type SignaturePadRootProviderProps,
   type SignaturePadRootProviderBaseProps,
+  type SignaturePadRootProviderProps,
 } from './signature-pad-root-provider'
 export {
   SignaturePadSegment,
-  type SignaturePadSegmentProps,
   type SignaturePadSegmentBaseProps,
+  type SignaturePadSegmentProps,
 } from './signature-pad-segment'
+export { signaturePadAnatomy } from './signature-pad.anatomy'
 export {
   useSignaturePad,
   type UseSignaturePadProps,
   type UseSignaturePadReturn,
 } from './use-signature-pad'
 export { useSignaturePadContext, type UseSignaturePadContext } from './use-signature-pad-context'
-export { signaturePadAnatomy } from './signature-pad.anatomy'
 
 export * as SignaturePad from './signature-pad'

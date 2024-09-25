@@ -115,10 +115,10 @@
   },
   "Root": {
     "props": {
-      "items": {
-        "type": "T[] | readonly T[]",
+      "collection": {
+        "type": "ListCollection<T>",
         "isRequired": true,
-        "description": "The options of the select"
+        "description": "The collection of items"
       },
       "allowCustomValue": {
         "type": "boolean",
@@ -206,21 +206,6 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the combobox is invalid"
-      },
-      "isItemDisabled": {
-        "type": "(item: T) => boolean",
-        "isRequired": false,
-        "description": "Whether the item is disabled"
-      },
-      "itemToString": {
-        "type": "(item: T) => string",
-        "isRequired": false,
-        "description": "The label of the item"
-      },
-      "itemToValue": {
-        "type": "(item: T) => string",
-        "isRequired": false,
-        "description": "The value of the item"
       },
       "lazyMount": {
         "type": "boolean",
@@ -338,7 +323,7 @@
         "description": "Function to scroll to a specific index"
       },
       "selectionBehavior": {
-        "type": "'clear' | 'replace' | 'preserve'",
+        "type": "'replace' | 'clear' | 'preserve'",
         "defaultValue": "\"replace\"",
         "isRequired": false,
         "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"

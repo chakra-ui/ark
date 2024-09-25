@@ -1,5 +1,5 @@
 'use client'
-
+import { createListCollection } from '@ark-ui/react'
 import { useEnvironmentContext } from '@ark-ui/react/environment'
 import { Portal } from '@ark-ui/react/portal'
 import { SearchIcon } from 'lucide-react'
@@ -32,6 +32,8 @@ export const CommandMenu = (props: Props) => {
   const router = useRouter()
   const params = useParams<{ framework: string }>()
 
+  const collection = createListCollection({ items: filteredItems })
+
   useHotkey(setOpen)
 
   return (
@@ -63,7 +65,7 @@ export const CommandMenu = (props: Props) => {
               placeholder="Search the docs"
               selectionBehavior="clear"
               loopFocus={false}
-              items={filteredItems}
+              collection={collection}
               onValueChange={(e) => {
                 setOpen(false)
                 router.push(`/${params.framework}/${e.value}`)

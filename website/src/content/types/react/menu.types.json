@@ -7,8 +7,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ArrowTip": {
     "props": {
@@ -18,8 +17,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "CheckboxItem": {
     "props": {
@@ -28,11 +26,7 @@
         "isRequired": true,
         "description": "Whether the option is checked"
       },
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the option"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -59,8 +53,7 @@
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Content": {
     "props": {
@@ -70,8 +63,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ContextTrigger": {
     "props": {
@@ -81,8 +73,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   },
   "Indicator": {
     "props": {
@@ -92,8 +83,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ItemGroupLabel": {
     "props": {
@@ -103,8 +93,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ItemGroup": {
     "props": {
@@ -114,8 +103,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ItemIndicator": {
     "props": {
@@ -125,8 +113,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Item": {
     "props": {
@@ -156,8 +143,7 @@
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "ItemText": {
     "props": {
@@ -167,8 +153,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Positioner": {
     "props": {
@@ -178,8 +163,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "RadioItemGroup": {
     "props": {
@@ -188,25 +172,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "onValueChange": {
-        "type": "(e: ValueChangeDetails) => void",
-        "isRequired": false
-      },
-      "value": {
-        "type": "string",
-        "isRequired": false
-      }
+      "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
+      "value": { "type": "string", "isRequired": false }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "RadioItem": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the option"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -228,8 +201,7 @@
         "description": "The textual value of the option. Used in typeahead navigation of the menu.\nIf not provided, the text content of the menu item will be used."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
@@ -332,11 +304,7 @@
         "isRequired": false,
         "description": "Function called when a menu item is selected."
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the menu is open"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
       "positioning": {
         "type": "PositioningOptions",
         "isRequired": false,
@@ -363,10 +331,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseMenuReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseMenuReturn", "isRequired": true },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -404,8 +369,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLHRElement",
-    "tag": "hr"
+    "element": "HTMLHRElement"
   },
   "TriggerItem": {
     "props": {
@@ -415,8 +379,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLDivElement",
-    "tag": "div"
+    "element": "HTMLDivElement"
   },
   "Trigger": {
     "props": {
@@ -426,7 +389,6 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLButtonElement",
-    "tag": "button"
+    "element": "HTMLButtonElement"
   }
 }

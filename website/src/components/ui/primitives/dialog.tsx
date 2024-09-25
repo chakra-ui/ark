@@ -50,4 +50,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, Dialog.TriggerBaseProps>
 >(Dialog.Trigger, 'trigger')
 
-export { DialogContext as Context } from '@ark-ui/react/dialog'
+export const Context = Dialog.Context

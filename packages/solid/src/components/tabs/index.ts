@@ -4,23 +4,23 @@ export type {
 } from '@zag-js/tabs'
 export {
   TabContent,
-  type TabContentProps,
   type TabContentBaseProps,
+  type TabContentProps,
 } from './tab-content'
 export {
   TabIndicator,
-  type TabIndicatorProps,
   type TabIndicatorBaseProps,
+  type TabIndicatorProps,
 } from './tab-indicator'
 export {
   TabList,
-  type TabListProps,
   type TabListBaseProps,
+  type TabListProps,
 } from './tab-list'
 export {
   TabTrigger,
-  type TabTriggerProps,
   type TabTriggerBaseProps,
+  type TabTriggerProps,
 } from './tab-trigger'
 export {
   TabsContext,
@@ -28,16 +28,16 @@ export {
 } from './tabs-context'
 export {
   TabsRoot,
-  type TabsRootProps,
   type TabsRootBaseProps,
+  type TabsRootProps,
 } from './tabs-root'
 export {
   TabsRootProvider,
-  type TabsRootProviderProps,
   type TabsRootProviderBaseProps,
+  type TabsRootProviderProps,
 } from './tabs-root-provider'
+export { tabsAnatomy } from './tabs.anatomy'
 export { useTabs, type UseTabsProps, type UseTabsReturn } from './use-tabs'
 export { useTabsContext, type UseTabsContext } from './use-tabs-context'
-export { tabsAnatomy } from './tabs.anatomy'
 
 export * as Tabs from './tabs'

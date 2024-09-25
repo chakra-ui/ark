@@ -1,6 +1,6 @@
-import { TreeView, type TreeViewRootProps } from '../'
+import { TreeView } from '../'
 
-export const ComponentUnderTest = (props: TreeViewRootProps) => {
+export const ComponentUnderTest = (props: TreeView.RootProps) => {
   return (
     <TreeView.Root {...props}>
       <TreeView.Label>Tree</TreeView.Label>

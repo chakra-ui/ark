@@ -5,23 +5,23 @@ export type {
 } from '@zag-js/menu'
 export {
   MenuArrow,
-  type MenuArrowProps,
   type MenuArrowBaseProps,
+  type MenuArrowProps,
 } from './menu-arrow'
 export {
   MenuArrowTip,
-  type MenuArrowTipProps,
   type MenuArrowTipBaseProps,
+  type MenuArrowTipProps,
 } from './menu-arrow-tip'
 export {
   MenuCheckboxItem,
-  type MenuCheckboxItemProps,
   type MenuCheckboxItemBaseProps,
+  type MenuCheckboxItemProps,
 } from './menu-checkbox-item'
 export {
   MenuContent,
-  type MenuContentProps,
   type MenuContentBaseProps,
+  type MenuContentProps,
 } from './menu-content'
 export {
   MenuContext,
@@ -29,18 +29,18 @@ export {
 } from './menu-context'
 export {
   MenuContextTrigger,
-  type MenuContextTriggerProps,
   type MenuContextTriggerBaseProps,
+  type MenuContextTriggerProps,
 } from './menu-context-trigger'
 export {
   MenuIndicator,
-  type MenuIndicatorProps,
   type MenuIndicatorBaseProps,
+  type MenuIndicatorProps,
 } from './menu-indicator'
 export {
   MenuItem,
-  type MenuItemProps,
   type MenuItemBaseProps,
+  type MenuItemProps,
 } from './menu-item'
 export {
   MenuItemContext,
@@ -48,68 +48,68 @@ export {
 } from './menu-item-context'
 export {
   MenuItemGroup,
-  type MenuItemGroupProps,
   type MenuItemGroupBaseProps,
+  type MenuItemGroupProps,
 } from './menu-item-group'
 export {
   MenuItemGroupLabel,
-  type MenuItemGroupLabelProps,
   type MenuItemGroupLabelBaseProps,
+  type MenuItemGroupLabelProps,
 } from './menu-item-group-label'
 export {
   MenuItemIndicator,
-  type MenuItemIndicatorProps,
   type MenuItemIndicatorBaseProps,
+  type MenuItemIndicatorProps,
 } from './menu-item-indicator'
 export {
   MenuItemText,
-  type MenuItemTextProps,
   type MenuItemTextBaseProps,
+  type MenuItemTextProps,
 } from './menu-item-text'
 export {
   MenuPositioner,
-  type MenuPositionerProps,
   type MenuPositionerBaseProps,
+  type MenuPositionerProps,
 } from './menu-positioner'
 export {
   MenuRadioItem,
-  type MenuRadioItemProps,
   type MenuRadioItemBaseProps,
+  type MenuRadioItemProps,
 } from './menu-radio-item'
 export {
   MenuRadioItemGroup,
-  type MenuRadioItemGroupProps,
   type MenuRadioItemGroupBaseProps,
+  type MenuRadioItemGroupProps,
 } from './menu-radio-item-group'
 export {
   MenuRoot,
-  type MenuRootProps,
   type MenuRootBaseProps,
+  type MenuRootProps,
 } from './menu-root'
 export {
   MenuRootProvider,
-  type MenuRootProviderProps,
   type MenuRootProviderBaseProps,
+  type MenuRootProviderProps,
 } from './menu-root-provider'
 export {
   MenuSeparator,
-  type MenuSeparatorProps,
   type MenuSeparatorBaseProps,
+  type MenuSeparatorProps,
 } from './menu-separator'
 export {
   MenuTrigger,
-  type MenuTriggerProps,
   type MenuTriggerBaseProps,
+  type MenuTriggerProps,
 } from './menu-trigger'
 export {
   MenuTriggerItem,
-  type MenuTriggerItemProps,
   type MenuTriggerItemBaseProps,
+  type MenuTriggerItemProps,
 } from './menu-trigger-item'
+export { menuAnatomy } from './menu.anatomy'
 export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 export { useMenuContext, type UseMenuContext } from './use-menu-context'
 export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context'
 export type { ValueChangeDetails as MenuValueChangeDetails } from './use-menu-item-group-context'
-export { menuAnatomy } from './menu.anatomy'
 
 export * as Menu from './menu'

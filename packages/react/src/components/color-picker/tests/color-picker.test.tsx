@@ -1,7 +1,7 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ColorPicker } from '../'
+import { ColorPicker, parseColor } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { colorPickerAnatomy } from '../color-picker.anatomy'
 import { WithField } from '../examples/with-field'
@@ -60,7 +60,7 @@ describe('ColorPicker', () => {
   })
 
   it('should render with default value', async () => {
-    render(<ComponentUnderTest defaultValue="#ff00ff" />)
+    render(<ComponentUnderTest defaultValue={parseColor('#ff00ff')} />)
 
     expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
       backgroundColor: 'rgb(255, 0, 255)',

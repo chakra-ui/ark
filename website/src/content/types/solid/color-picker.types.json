@@ -177,7 +177,7 @@
         "description": "The initial open state of the color picker when it is first rendered.\nUse when you do not need to control its open state."
       },
       "defaultValue": {
-        "type": "string",
+        "type": "Color",
         "isRequired": false,
         "description": "The initial value of the color picker when it is first rendered.\nUse when you do not need to control the state of the color picker."
       },
@@ -290,9 +290,10 @@
         "description": "Whether to unmount on exit."
       },
       "value": {
-        "type": "string",
+        "type": "Color",
+        "defaultValue": "#000000",
         "isRequired": false,
-        "description": "The current value of the color picker."
+        "description": "The current color value"
       }
     }
   },

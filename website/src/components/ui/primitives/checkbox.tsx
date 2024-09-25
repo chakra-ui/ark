@@ -39,7 +39,5 @@ export const Label = withContext<
   Assign<HTMLStyledProps<'span'>, Checkbox.LabelBaseProps>
 >(Checkbox.Label, 'label')
 
-export {
-  CheckboxContext as Context,
-  CheckboxHiddenInput as HiddenInput,
-} from '@ark-ui/react/checkbox'
+export const Context = Checkbox.Context
+export const HiddenInput = Checkbox.HiddenInput

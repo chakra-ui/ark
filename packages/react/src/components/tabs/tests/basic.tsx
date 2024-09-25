@@ -1,6 +1,6 @@
-import { Tabs, type TabsRootProps } from '../'
+import { Tabs } from '../'
 
-export const ComponentUnderTest = (props: TabsRootProps) => {
+export const ComponentUnderTest = (props: Tabs.RootProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },

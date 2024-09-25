@@ -40,4 +40,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, Tooltip.TriggerBaseProps>
 >(Tooltip.Trigger, 'trigger')
 
-export { TooltipContext as Context } from '@ark-ui/react/tooltip'
+export const Context = Tooltip.Context

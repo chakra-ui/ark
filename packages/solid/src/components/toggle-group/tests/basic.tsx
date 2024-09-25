@@ -1,6 +1,6 @@
-import { ToggleGroup, type ToggleGroupRootProps } from '../'
+import { ToggleGroup } from '../'
 
-export const ComponentUnderTest = (props: ToggleGroupRootProps) => (
+export const ComponentUnderTest = (props: ToggleGroup.RootProps) => (
   <ToggleGroup.Root {...props}>
     <ToggleGroup.Item value="a">A</ToggleGroup.Item>
     <ToggleGroup.Item value="b">B</ToggleGroup.Item>

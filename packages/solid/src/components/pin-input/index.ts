@@ -8,36 +8,36 @@ export {
 } from './pin-input-context'
 export {
   PinInputControl,
-  type PinInputControlProps,
   type PinInputControlBaseProps,
+  type PinInputControlProps,
 } from './pin-input-control'
 export {
   PinInputHiddenInput,
-  type PinInputHiddenInputProps,
   type PinInputHiddenInputBaseProps,
+  type PinInputHiddenInputProps,
 } from './pin-input-hidden-input'
 export {
   PinInputInput,
-  type PinInputInputProps,
   type PinInputInputBaseProps,
+  type PinInputInputProps,
 } from './pin-input-input'
 export {
   PinInputLabel,
-  type PinInputLabelProps,
   type PinInputLabelBaseProps,
+  type PinInputLabelProps,
 } from './pin-input-label'
 export {
   PinInputRoot,
-  type PinInputRootProps,
   type PinInputRootBaseProps,
+  type PinInputRootProps,
 } from './pin-input-root'
 export {
   PinInputRootProvider,
-  type PinInputRootProviderProps,
   type PinInputRootProviderBaseProps,
+  type PinInputRootProviderProps,
 } from './pin-input-root-provider'
+export { pinInputAnatomy } from './pin-input.anatomy'
 export { usePinInput, type UsePinInputProps, type UsePinInputReturn } from './use-pin-input'
 export { usePinInputContext, type UsePinInputContext } from './use-pin-input-context'
-export { pinInputAnatomy } from './pin-input.anatomy'
 
 export * as PinInput from './pin-input'

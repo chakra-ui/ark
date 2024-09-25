@@ -8,61 +8,61 @@ export {
 } from './slider-context'
 export {
   SliderControl,
-  type SliderControlProps,
   type SliderControlBaseProps,
+  type SliderControlProps,
 } from './slider-control'
 export {
   SliderHiddenInput,
-  type SliderHiddenInputProps,
   type SliderHiddenInputBaseProps,
+  type SliderHiddenInputProps,
 } from './slider-hidden-input'
 export {
   SliderLabel,
-  type SliderLabelProps,
   type SliderLabelBaseProps,
+  type SliderLabelProps,
 } from './slider-label'
 export {
   SliderMarker,
-  type SliderMarkerProps,
   type SliderMarkerBaseProps,
+  type SliderMarkerProps,
 } from './slider-marker'
 export {
   SliderMarkerGroup,
-  type SliderMarkerGroupProps,
   type SliderMarkerGroupBaseProps,
+  type SliderMarkerGroupProps,
 } from './slider-marker-group'
 export {
   SliderRange,
-  type SliderRangeProps,
   type SliderRangeBaseProps,
+  type SliderRangeProps,
 } from './slider-range'
 export {
   SliderRoot,
-  type SliderRootProps,
   type SliderRootBaseProps,
+  type SliderRootProps,
 } from './slider-root'
 export {
   SliderRootProvider,
-  type SliderRootProviderProps,
   type SliderRootProviderBaseProps,
+  type SliderRootProviderProps,
 } from './slider-root-provider'
 export {
   SliderThumb,
-  type SliderThumbProps,
   type SliderThumbBaseProps,
+  type SliderThumbProps,
 } from './slider-thumb'
 export {
   SliderTrack,
-  type SliderTrackProps,
   type SliderTrackBaseProps,
+  type SliderTrackProps,
 } from './slider-track'
 export {
   SliderValueText,
-  type SliderValueTextProps,
   type SliderValueTextBaseProps,
+  type SliderValueTextProps,
 } from './slider-value-text'
+export { sliderAnatomy } from './slider.anatomy'
 export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 export { useSliderContext, type UseSliderContext } from './use-slider-context'
-export { sliderAnatomy } from './slider.anatomy'
 
 export * as Slider from './slider'

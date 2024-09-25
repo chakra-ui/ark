@@ -1,4 +1,6 @@
+export { parse as parseDate } from '@zag-js/date-picker'
 export type {
+  DateValue,
   FocusChangeDetails as DatePickerFocusChangeDetails,
   OpenChangeDetails as DatePickerOpenChangeDetails,
   ValueChangeDetails as DatePickerValueChangeDetails,
@@ -6,13 +8,13 @@ export type {
 } from '@zag-js/date-picker'
 export {
   DatePickerClearTrigger,
-  type DatePickerClearTriggerProps,
   type DatePickerClearTriggerBaseProps,
+  type DatePickerClearTriggerProps,
 } from './date-picker-clear-trigger'
 export {
   DatePickerContent,
-  type DatePickerContentProps,
   type DatePickerContentBaseProps,
+  type DatePickerContentProps,
 } from './date-picker-content'
 export {
   DatePickerContext,
@@ -20,121 +22,121 @@ export {
 } from './date-picker-context'
 export {
   DatePickerControl,
-  type DatePickerControlProps,
   type DatePickerControlBaseProps,
+  type DatePickerControlProps,
 } from './date-picker-control'
 export {
   DatePickerInput,
-  type DatePickerInputProps,
   type DatePickerInputBaseProps,
+  type DatePickerInputProps,
 } from './date-picker-input'
 export {
   DatePickerLabel,
-  type DatePickerLabelProps,
   type DatePickerLabelBaseProps,
+  type DatePickerLabelProps,
 } from './date-picker-label'
 export {
   DatePickerMonthSelect,
-  type DatePickerMonthSelectProps,
   type DatePickerMonthSelectBaseProps,
+  type DatePickerMonthSelectProps,
 } from './date-picker-month-select'
 export {
   DatePickerNextTrigger,
-  type DatePickerNextTriggerProps,
   type DatePickerNextTriggerBaseProps,
+  type DatePickerNextTriggerProps,
 } from './date-picker-next-trigger'
 export {
   DatePickerPositioner,
-  type DatePickerPositionerProps,
   type DatePickerPositionerBaseProps,
+  type DatePickerPositionerProps,
 } from './date-picker-positioner'
 export {
   DatePickerPresetTrigger,
-  type DatePickerPresetTriggerProps,
   type DatePickerPresetTriggerBaseProps,
+  type DatePickerPresetTriggerProps,
 } from './date-picker-preset-trigger'
 export {
   DatePickerPrevTrigger,
-  type DatePickerPrevTriggerProps,
   type DatePickerPrevTriggerBaseProps,
+  type DatePickerPrevTriggerProps,
 } from './date-picker-prev-trigger'
 export {
   DatePickerRangeText,
-  type DatePickerRangeTextProps,
   type DatePickerRangeTextBaseProps,
+  type DatePickerRangeTextProps,
 } from './date-picker-range-text'
 export {
   DatePickerRoot,
-  type DatePickerRootProps,
   type DatePickerRootBaseProps,
+  type DatePickerRootProps,
 } from './date-picker-root'
 export {
   DatePickerRootProvider,
-  type DatePickerRootProviderProps,
   type DatePickerRootProviderBaseProps,
+  type DatePickerRootProviderProps,
 } from './date-picker-root-provider'
 export {
   DatePickerTable,
-  type DatePickerTableProps,
   type DatePickerTableBaseProps,
+  type DatePickerTableProps,
 } from './date-picker-table'
 export {
   DatePickerTableBody,
-  type DatePickerTableBodyProps,
   type DatePickerTableBodyBaseProps,
+  type DatePickerTableBodyProps,
 } from './date-picker-table-body'
 export {
   DatePickerTableCell,
-  type DatePickerTableCellProps,
   type DatePickerTableCellBaseProps,
+  type DatePickerTableCellProps,
 } from './date-picker-table-cell'
 export {
   DatePickerTableCellTrigger,
-  type DatePickerTableCellTriggerProps,
   type DatePickerTableCellTriggerBaseProps,
+  type DatePickerTableCellTriggerProps,
 } from './date-picker-table-cell-trigger'
 export {
   DatePickerTableHead,
-  type DatePickerTableHeadProps,
   type DatePickerTableHeadBaseProps,
+  type DatePickerTableHeadProps,
 } from './date-picker-table-head'
 export {
   DatePickerTableHeader,
-  type DatePickerTableHeaderProps,
   type DatePickerTableHeaderBaseProps,
+  type DatePickerTableHeaderProps,
 } from './date-picker-table-header'
 export {
   DatePickerTableRow,
-  type DatePickerTableRowProps,
   type DatePickerTableRowBaseProps,
+  type DatePickerTableRowProps,
 } from './date-picker-table-row'
 export {
   DatePickerTrigger,
-  type DatePickerTriggerProps,
   type DatePickerTriggerBaseProps,
+  type DatePickerTriggerProps,
 } from './date-picker-trigger'
 export {
   DatePickerView,
-  type DatePickerViewProps,
   type DatePickerViewBaseProps,
+  type DatePickerViewProps,
 } from './date-picker-view'
 export {
   DatePickerViewControl,
-  type DatePickerViewControlProps,
   type DatePickerViewControlBaseProps,
+  type DatePickerViewControlProps,
 } from './date-picker-view-control'
 export {
   DatePickerViewTrigger,
-  type DatePickerViewTriggerProps,
   type DatePickerViewTriggerBaseProps,
+  type DatePickerViewTriggerProps,
 } from './date-picker-view-trigger'
 export {
   DatePickerYearSelect,
-  type DatePickerYearSelectProps,
   type DatePickerYearSelectBaseProps,
+  type DatePickerYearSelectProps,
 } from './date-picker-year-select'
+export { datePickerAnatomy } from './date-picker.anatomy'
 export { useDatePicker, type UseDatePickerProps, type UseDatePickerReturn } from './use-date-picker'
 export { useDatePickerContext, type UseDatePickerContext } from './use-date-picker-context'
-export { datePickerAnatomy } from './date-picker.anatomy'
 
 export * as DatePicker from './date-picker'

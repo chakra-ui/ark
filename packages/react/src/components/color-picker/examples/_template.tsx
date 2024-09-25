@@ -1,4 +1,4 @@
-import { ColorPicker, type ColorPickerSwatchBaseProps } from '../..'
+import { ColorPicker } from '../..'
 import type { ChannelSliderBaseProps } from '../color-picker'
 
 export const ColorPickerContent = () => {
@@ -70,7 +70,7 @@ export const ColorPickerControl = () => {
   )
 }
 
-export const ColorPickerSwatch = (props: ColorPickerSwatchBaseProps) => {
+export const ColorPickerSwatch = (props: ColorPicker.SwatchBaseProps) => {
   const { value, ...rest } = props
   return (
     <ColorPicker.SwatchTrigger value={value} {...rest}>

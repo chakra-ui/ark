@@ -1,10 +1,10 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Collapsible, type CollapsibleRootProps, collapsibleAnatomy } from '../'
+import { Collapsible, collapsibleAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 
-const ComponentUnderTest = (props: CollapsibleRootProps) => (
+const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
     <Collapsible.Trigger>Toggle</Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>

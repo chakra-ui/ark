@@ -39,4 +39,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, Tabs.TriggerBaseProps>
 >(Tabs.Trigger, 'trigger')
 
-export { TabsContext as Context } from '@ark-ui/react/tabs'
+export const Context = Tabs.Context

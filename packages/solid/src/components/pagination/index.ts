@@ -9,36 +9,36 @@ export {
 } from './pagination-context'
 export {
   PaginationEllipsis,
-  type PaginationEllipsisProps,
   type PaginationEllipsisBaseProps,
+  type PaginationEllipsisProps,
 } from './pagination-ellipsis'
 export {
   PaginationItem,
-  type PaginationItemProps,
   type PaginationItemBaseProps,
+  type PaginationItemProps,
 } from './pagination-item'
 export {
   PaginationNextTrigger,
-  type PaginationNextTriggerProps,
   type PaginationNextTriggerBaseProps,
+  type PaginationNextTriggerProps,
 } from './pagination-next-trigger'
 export {
   PaginationPrevTrigger,
-  type PaginationPrevTriggerProps,
   type PaginationPrevTriggerBaseProps,
+  type PaginationPrevTriggerProps,
 } from './pagination-prev-trigger'
 export {
   PaginationRoot,
-  type PaginationRootProps,
   type PaginationRootBaseProps,
+  type PaginationRootProps,
 } from './pagination-root'
 export {
   PaginationRootProvider,
-  type PaginationRootProviderProps,
   type PaginationRootProviderBaseProps,
+  type PaginationRootProviderProps,
 } from './pagination-root-provider'
+export { paginationAnatomy } from './pagination.anatomy'
 export { usePagination, type UsePaginationProps, type UsePaginationReturn } from './use-pagination'
 export { usePaginationContext, type UsePaginationContext } from './use-pagination-context'
-export { paginationAnatomy } from './pagination.anatomy'
 
 export * as Pagination from './pagination'

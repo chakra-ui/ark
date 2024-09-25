@@ -1,19 +1,27 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { Select } from '../..'
+import { Select, createListCollection } from '../..'
 
-const itemsBase = [
-  { label: 'React', value: 'react' },
-  { label: 'Solid', value: 'solid' },
-  { label: 'Svelte', value: 'svelte', disabled: true },
-  { label: 'Vue', value: 'vue' },
-]
+const itemsBase = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Svelte', value: 'svelte', disabled: true },
+    { label: 'Vue', value: 'vue' },
+  ],
+})
 
 const number = ref(0)
+
 const inc = () => number.value++
 const dec = () => number.value--
-const items = computed(() => {
-  return itemsBase.map((item) => ({ ...item, label: `${item.label}-${number.value}` }))
+
+const collection = computed(() => {
+  const newItems = itemsBase.items.map((item) => ({
+    ...item,
+    label: `${item.label}-${number.value}`,
+  }))
+  return createListCollection({ items: newItems })
 })
 </script>
 
@@ -21,7 +29,7 @@ const items = computed(() => {
   <div>
     <button type="button" @click="inc">Inc</button>
     <button type="button" @click="dec">Dec</button>
-    <Select.Root :positioning="{ sameWidth: true }" :items="items">
+    <Select.Root :positioning="{ sameWidth: true }" :collection="collection">
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -32,7 +40,7 @@ const items = computed(() => {
         <Select.Content>
           <Select.ItemGroup>
             <Select.ItemGroupLabel>Framework</Select.ItemGroupLabel>
-            <Select.Item v-for="item in items" :item="item" :key="item.label">
+            <Select.Item v-for="item in collection.items" :item="item" :key="item.label">
               <Select.ItemText>{{ item.label }}</Select.ItemText>
               <Select.ItemIndicator>✅</Select.ItemIndicator>
             </Select.Item>

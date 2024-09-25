@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
-import { Select } from '../..'
+import { Select, createListCollection } from '../..'
 
 interface Item {
   label: string
@@ -11,15 +11,17 @@ interface Item {
 export const Controlled = () => {
   const [, setSelectedItems] = createSignal<Item[]>([])
 
-  const items: Item[] = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const collection = createListCollection<Item>({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
 
   return (
-    <Select.Root items={items} onValueChange={(e) => setSelectedItems(e.items)}>
+    <Select.Root collection={collection} onValueChange={(e) => setSelectedItems(e.items)}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -32,7 +34,7 @@ export const Controlled = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              <Index each={items}>
+              <Index each={collection.items}>
                 {(item) => (
                   <Select.Item item={item()}>
                     <Select.ItemText>{item().label}</Select.ItemText>

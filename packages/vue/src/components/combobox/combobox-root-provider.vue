@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { CollectionItem } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
+import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { UseComboboxReturn } from './use-combobox'
 

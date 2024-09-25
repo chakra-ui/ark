@@ -34,7 +34,5 @@ export const Label = withContext<
   Assign<HTMLStyledProps<'label'>, PinInput.LabelBaseProps>
 >(PinInput.Label, 'label')
 
-export {
-  PinInputContext as Context,
-  PinInputHiddenInput as HiddenInput,
-} from '@ark-ui/react/pin-input'
+export const Context = PinInput.Context
+export const HiddenInput = PinInput.HiddenInput

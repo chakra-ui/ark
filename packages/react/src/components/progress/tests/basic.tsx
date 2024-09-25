@@ -1,6 +1,6 @@
-import { Progress, type ProgressRootProps } from '../'
+import { Progress } from '../'
 
-export const ComponentUnderTest = (props: ProgressRootProps) => (
+export const ComponentUnderTest = (props: Progress.RootProps) => (
   <Progress.Root {...props}>
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />

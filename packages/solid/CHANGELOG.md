@@ -6,22 +6,108 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-## [3.13.0] - 2024-09-24
+## [Unreleased]
 
-### Fixed
+In this major release, we shifted from primitive data types like strings to more structured types
+such as Collection, Color, and DateValue. This enhanced flexibility and control by offering advanced
+methods and properties.
 
-- **FileUpload**: Fix issue where `directory: true` doesn't work
+The new APIs introduced helper functions like `parseColor`, `parseDate`, and `createListCollection`
+to simplify working with the new types and make code more concise.
 
 ### Changed
 
-- **Switch, Checkbox, Radio Group**: Added `data-focus-visible` attribute to the selected radio
-  button when it is interacted with the keyboard.
+- **ColorPicker [Breaking]**: Updated `value` and `defaultValue` types from `string` to `Color`. Use
+  the exported `parseColor` function to convert between strings and color objects.
 
-- **Tooltip**: Focus behavior only opens when the tooltip trigger is focused with keyboard.
+  **Before**
 
-## Added
+  ```tsx
+  import { ColorPicker } from '@ark-ui/solid'
 
-- **FileUpload**: Added `ClearTrigger` to the `FileUpload` component.
+  const Demo = () => {
+    return <ColorPicker.Root defaultValue="#000" />
+  }
+  ```
+
+  **After**
+
+  ```tsx
+  import { ColorPicker, parseColor } from '@ark-ui/solid'
+
+  const Demo = () => {
+    return <ColorPicker.Root defaultValue={parseColor('#000')} />
+  }
+  ```
+
+  > This change allows direct access to color object methods and properties.
+
+- **Select, Combobox [Breaking]**: Removed the `items`, `itemToString`, and `itemToValue` props.
+  Introduced a `collection` prop instead. Use the `createListCollection` helper to generate a
+  collection from items.
+
+  **Before**
+
+  ```tsx
+  import { Select } from '@ark-ui/solid'
+
+  const Demo = () => {
+    return <Select.Root items={['Option 1', 'Option 2', 'Option 3']} />
+  }
+  ```
+
+  **After**
+
+  ```tsx
+  import { Select, createListCollection } from '@ark-ui/solid'
+
+  const collection = createListCollection({
+    items: ['Option 1', 'Option 2', 'Option 3'],
+  })
+
+  const Demo = () => {
+    return <Select.Root collection={collection} />
+  }
+  ```
+
+- **DatePicker [Breaking]**: Changed `value` and `defaultValue` types from `string` to `Date`. To
+  convert between strings and dates, use the `parseDate` function.
+
+  **Before**
+
+  ```tsx
+  import { DatePicker } from '@ark-ui/solid'
+
+  const Demo = () => {
+    return <DatePicker.Root defaultValue="2024-01-01" />
+  }
+  ```
+
+  **After**
+
+  ```tsx
+  import { DatePicker, parseDate } from '@ark-ui/solid'
+
+  const Demo = () => {
+    return <DatePicker.Root defaultValue={parseDate('2024-01-01')} />
+  }
+  ```
+
+## [3.13.0] - 2024-09-24
+
+### Added
+
+- **FileUpload**: Introduced a `ClearTrigger` for clearing file uploads.
+- **Switch, Checkbox, Radio Group**: Added the `data-focus-visible` attribute for elements
+  interacted with via keyboard.
+
+### Fixed
+
+- **FileUpload**: Resolved an issue where `directory: true` was non-functional.
+
+### Changed
+
+- **Tooltip**: Now only opens on keyboard focus, improving accessibility.
 
 ## [3.12.1] - 2024-09-19
 

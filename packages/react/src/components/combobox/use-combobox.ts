@@ -1,19 +1,17 @@
-import type { CollectionOptions } from '@zag-js/combobox'
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import { useId, useMemo } from 'react'
+import { useEffect, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { CollectionItem, Optional } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
+import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends CollectionOptions<T>,
-    Optional<
-      Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>,
-      'id'
-    > {
+  extends Optional<
+    Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>,
+    'id'
+  > {
   /**
    * The initial open state of the combobox when it is first rendered.
    * Use when you do not need to control its open state.
@@ -24,6 +22,10 @@ export interface UseComboboxProps<T extends CollectionItem>
    * Use when you do not need to control the state of the combobox.
    */
   defaultValue?: combobox.Context<T>['value']
+  /**
+   * The collection of items
+   */
+  collection: ListCollection<T>
 }
 
 export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Api<PropTypes, T> {}
@@ -31,18 +33,7 @@ export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Ap
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
 ): UseComboboxReturn<T> => {
-  const [collectionOptions, comboboxProps] = createSplitProps<CollectionOptions<T>>()(props, [
-    'isItemDisabled',
-    'itemToValue',
-    'itemToString',
-    'items',
-  ])
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  const collection = useMemo(
-    () => combobox.collection(collectionOptions),
-    Object.values(collectionOptions),
-  )
+  const { collection, ...comboboxProps } = props
 
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
@@ -67,19 +58,26 @@ export const useCombobox = <T extends CollectionItem>(
     ...comboboxProps,
   }
 
-  const context: combobox.Context<T> = {
-    ...initialContext,
-    collection,
-    value: props.value,
-    onValueChange: useEvent(props.onValueChange, { sync: true }),
-    onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
-    onHighlightChange: useEvent(props.onHighlightChange),
-    onOpenChange: useEvent(props.onOpenChange),
-  }
+  const context = (() => {
+    const { collection: _, ...restProps } = initialContext
+    return {
+      ...restProps,
+      value: props.value,
+      onValueChange: useEvent(props.onValueChange, { sync: true }),
+      onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
+      onHighlightChange: useEvent(props.onHighlightChange),
+      onOpenChange: useEvent(props.onOpenChange),
+    }
+  })()
 
-  const [state, send] = useMachine(combobox.machine(initialContext), {
+  const [state, send, service] = useMachine(combobox.machine(initialContext), {
     context,
   })
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    service.setContext({ collection })
+  }, [collection])
 
   return combobox.connect(state, send, normalizeProps)
 }

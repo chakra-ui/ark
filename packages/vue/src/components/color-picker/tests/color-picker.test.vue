@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ColorPicker } from '..'
+import { ref } from 'vue'
+import { ColorPicker, parseColor } from '..'
+
+const value = ref(parseColor('#eb5e41'))
 </script>
 
 <template>
-  <ColorPicker.Root :modelValue="'#eb5e41'">
+  <ColorPicker.Root v-model="value">
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />

@@ -1,6 +1,6 @@
-import { TagsInput, type TagsInputRootProps } from '../'
+import { TagsInput } from '../'
 
-export const ComponentUnderTest = (props: TagsInputRootProps) => {
+export const ComponentUnderTest = (props: TagsInput.RootProps) => {
   return (
     <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
       <TagsInput.Context>

@@ -47,7 +47,5 @@ export const Segment = withContext<
   Assign<HTMLStyledProps<'svg'>, SignaturePad.SegmentBaseProps>
 >(SignaturePad.Segment, 'segment')
 
-export {
-  SignaturePadContext as Context,
-  SignaturePadHiddenInput as HiddenInput,
-} from '@ark-ui/react/signature-pad'
+export const Context = SignaturePad.Context
+export const HiddenInput = SignaturePad.HiddenInput

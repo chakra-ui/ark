@@ -144,7 +144,5 @@ export const View = withContext<
   Assign<HTMLStyledProps<'div'>, ColorPicker.ViewBaseProps>
 >(ColorPicker.View, 'view')
 
-export {
-  ColorPickerContext as Context,
-  ColorPickerHiddenInput as HiddenInput,
-} from '@ark-ui/react/color-picker'
+export const Context = ColorPicker.Context
+export const HiddenInput = ColorPicker.HiddenInput

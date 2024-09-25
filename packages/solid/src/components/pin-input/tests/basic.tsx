@@ -1,7 +1,7 @@
 import { Index } from 'solid-js'
-import { PinInput, type PinInputRootProps } from '../'
+import { PinInput } from '../'
 
-export const ComponentUnderTest = (props: PinInputRootProps) => (
+export const ComponentUnderTest = (props: PinInput.RootProps) => (
   <PinInput.Root {...props}>
     <PinInput.Label>Label</PinInput.Label>
     <PinInput.Control>

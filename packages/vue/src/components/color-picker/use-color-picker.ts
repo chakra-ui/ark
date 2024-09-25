@@ -12,7 +12,10 @@ export interface UseColorPickerProps
     Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
     'id'
   > {
-  modelValue?: string
+  /**
+   * The v-model value of the color picker
+   */
+  modelValue?: colorPicker.Context['value']
   /**
    * The initial open state of the color picker.
    */
@@ -21,7 +24,7 @@ export interface UseColorPickerProps
    * The initial value of the color picker when it is first rendered.
    * Use when you do not need to control the state of the color picker.
    */
-  defaultValue?: string
+  defaultValue?: colorPicker.Context['value']
 }
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
@@ -46,11 +49,7 @@ export const useColorPicker = (
     dir: locale.value.dir,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
-    value: props.defaultValue
-      ? colorPicker.parse(props.defaultValue)
-      : props.modelValue
-        ? colorPicker.parse(props.modelValue)
-        : undefined,
+    value: props.defaultValue ?? props.modelValue,
     getRootNode: env?.value.getRootNode,
     onOpenChange(details) {
       emit?.('openChange', details)
@@ -58,7 +57,7 @@ export const useColorPicker = (
     },
     onValueChange(details) {
       emit?.('valueChange', details)
-      emit?.('update:modelValue', details.valueAsString)
+      emit?.('update:modelValue', details.value)
     },
     onFocusOutside: (details) => emit?.('focusOutside', details),
     onFormatChange: (details) => emit?.('formatChange', details),

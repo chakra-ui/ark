@@ -1,17 +1,17 @@
 export {
   ProgressCircle,
-  type ProgressCircleProps,
   type ProgressCircleBaseProps,
+  type ProgressCircleProps,
 } from './progress-circle'
 export {
   ProgressCircleRange,
-  type ProgressCircleRangeProps,
   type ProgressCircleRangeBaseProps,
+  type ProgressCircleRangeProps,
 } from './progress-circle-range'
 export {
   ProgressCircleTrack,
-  type ProgressCircleTrackProps,
   type ProgressCircleTrackBaseProps,
+  type ProgressCircleTrackProps,
 } from './progress-circle-track'
 export {
   ProgressContext,
@@ -19,41 +19,41 @@ export {
 } from './progress-context'
 export {
   ProgressLabel,
-  type ProgressLabelProps,
   type ProgressLabelBaseProps,
+  type ProgressLabelProps,
 } from './progress-label'
 export {
   ProgressRange,
-  type ProgressRangeProps,
   type ProgressRangeBaseProps,
+  type ProgressRangeProps,
 } from './progress-range'
 export {
   ProgressRoot,
-  type ProgressRootProps,
   type ProgressRootBaseProps,
+  type ProgressRootProps,
 } from './progress-root'
 export {
   ProgressRootProvider,
-  type ProgressRootProviderProps,
   type ProgressRootProviderBaseProps,
+  type ProgressRootProviderProps,
 } from './progress-root-provider'
 export {
   ProgressTrack,
-  type ProgressTrackProps,
   type ProgressTrackBaseProps,
+  type ProgressTrackProps,
 } from './progress-track'
 export {
   ProgressValueText,
-  type ProgressValueTextProps,
   type ProgressValueTextBaseProps,
+  type ProgressValueTextProps,
 } from './progress-value-text'
 export {
   ProgressView,
-  type ProgressViewProps,
   type ProgressViewBaseProps,
+  type ProgressViewProps,
 } from './progress-view'
+export { progressAnatomy } from './progress.anatomy'
 export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress'
 export { useProgressContext, type UseProgressContext } from './use-progress-context'
-export { progressAnatomy } from './progress.anatomy'
 
 export * as Progress from './progress'

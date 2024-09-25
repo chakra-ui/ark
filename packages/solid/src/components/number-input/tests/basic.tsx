@@ -1,6 +1,6 @@
-import { NumberInput, type NumberInputRootProps } from '../'
+import { NumberInput } from '../'
 
-export const ComponentUnderTest = (props: NumberInputRootProps) => (
+export const ComponentUnderTest = (props: NumberInput.RootProps) => (
   <NumberInput.Root {...props}>
     <NumberInput.Label>
       Label: <NumberInput.ValueText />

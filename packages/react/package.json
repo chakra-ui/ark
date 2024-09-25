@@ -1,6 +1,6 @@
 {
   "name": "@ark-ui/react",
-  "version": "3.13.0",
+  "version": "4.0.0-0",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
@@ -70,6 +70,17 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./collection": {
+      "source": "./src/components/collection.ts",
+      "import": {
+        "types": "./dist/components/collection.d.ts",
+        "default": "./dist/components/collection.js"
+      },
+      "require": {
+        "types": "./dist/components/collection.d.cts",
+        "default": "./dist/components/collection.cjs"
+      }
+    },
     "./factory": {
       "source": "./src/components/factory.ts",
       "import": {
@@ -137,6 +148,7 @@
     "@zag-js/checkbox": "0.71.0",
     "@zag-js/clipboard": "0.71.0",
     "@zag-js/collapsible": "0.71.0",
+    "@zag-js/collection": "0.71.0",
     "@zag-js/color-picker": "0.71.0",
     "@zag-js/color-utils": "0.71.0",
     "@zag-js/combobox": "0.71.0",

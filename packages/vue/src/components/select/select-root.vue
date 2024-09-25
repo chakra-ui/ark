@@ -1,7 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults, CollectionItem } from '../../types'
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
+import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
 

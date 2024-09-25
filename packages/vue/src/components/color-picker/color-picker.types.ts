@@ -14,7 +14,7 @@ export interface RootProps {
    * The initial value of the color picker when it is first rendered.
    * Use when you do not need to control the state of the color picker.
    */
-  defaultValue?: string
+  defaultValue?: colorPicker.Color
   /**
    * Whether the color picker is disabled
    */
@@ -51,8 +51,11 @@ export interface RootProps {
   /**
    * The initial focus element when the color picker is opened.
    */
-  initialFocusEl?: () => HTMLElement
-  modelValue?: string
+  initialFocusEl?: () => HTMLElement | null
+  /**
+   * The v-model value of the color picker
+   */
+  modelValue?: colorPicker.Color
   /**
    * The name for the form input
    */
@@ -107,6 +110,6 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: string]
+  'update:modelValue': [value: colorPicker.Color]
   'update:open': [open: boolean]
 }

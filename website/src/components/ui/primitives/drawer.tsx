@@ -66,7 +66,4 @@ export const Footer = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>,
   'footer',
 )
 
-export {
-  DialogContext as Context,
-  type DialogContextProps as ContextProps,
-} from '@ark-ui/react/dialog'
+export const Context = Dialog.Context

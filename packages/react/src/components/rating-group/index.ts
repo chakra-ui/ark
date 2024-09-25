@@ -8,18 +8,18 @@ export {
 } from './rating-group-context'
 export {
   RatingGroupControl,
-  type RatingGroupControlProps,
   type RatingGroupControlBaseProps,
+  type RatingGroupControlProps,
 } from './rating-group-control'
 export {
   RatingGroupHiddenInput,
-  type RatingGroupHiddenInputProps,
   type RatingGroupHiddenInputBaseProps,
+  type RatingGroupHiddenInputProps,
 } from './rating-group-hidden-input'
 export {
   RatingGroupItem,
-  type RatingGroupItemProps,
   type RatingGroupItemBaseProps,
+  type RatingGroupItemProps,
 } from './rating-group-item'
 export {
   RatingGroupItemContext,
@@ -27,19 +27,20 @@ export {
 } from './rating-group-item-context'
 export {
   RatingGroupLabel,
-  type RatingGroupLabelProps,
   type RatingGroupLabelBaseProps,
+  type RatingGroupLabelProps,
 } from './rating-group-label'
 export {
   RatingGroupRoot,
-  type RatingGroupRootProps,
   type RatingGroupRootBaseProps,
+  type RatingGroupRootProps,
 } from './rating-group-root'
 export {
   RatingGroupRootProvider,
-  type RatingGroupRootProviderProps,
   type RatingGroupRootProviderBaseProps,
+  type RatingGroupRootProviderProps,
 } from './rating-group-root-provider'
+export { ratingGroupAnatomy } from './rating-group.anatomy'
 export {
   useRatingGroup,
   type UseRatingGroupProps,
@@ -50,6 +51,5 @@ export {
   useRatingGroupItemContext,
   type UseRatingGroupItemContext,
 } from './use-rating-group-item-context'
-export { ratingGroupAnatomy } from './rating-group.anatomy'
 
 export * as RatingGroup from './rating-group'

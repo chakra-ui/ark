@@ -34,4 +34,4 @@ export const Pattern = withContext<
   Assign<HTMLStyledProps<'path'>, QrCode.PatternBaseProps>
 >(QrCode.Pattern, 'pattern')
 
-export { QrCodeContext as Context } from '@ark-ui/react/qr-code'
+export const Context = QrCode.Context

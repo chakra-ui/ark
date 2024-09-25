@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { CollectionItem } from '../../types'
+import type { CollectionItem } from '../collection'
 import { type UseComboboxContext, useComboboxContext } from './use-combobox-context'
 
 export interface ComboboxContextProps<T extends CollectionItem> {

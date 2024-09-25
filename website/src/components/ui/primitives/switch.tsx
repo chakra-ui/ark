@@ -34,7 +34,5 @@ export const Thumb = withContext<
   Assign<HTMLStyledProps<'span'>, Switch.ThumbBaseProps>
 >(Switch.Thumb, 'thumb')
 
-export {
-  SwitchContext as Context,
-  SwitchHiddenInput as HiddenInput,
-} from '@ark-ui/react/switch'
+export const Context = Switch.Context
+export const HiddenInput = Switch.HiddenInput

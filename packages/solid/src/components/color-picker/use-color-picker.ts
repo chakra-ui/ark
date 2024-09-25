@@ -6,10 +6,7 @@ import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
 export interface UseColorPickerProps
-  extends Optional<
-    Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
-    'id'
-  > {
+  extends Optional<Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the color picker when it is first rendered.
    * Use when you do not need to control its open state.
@@ -19,11 +16,7 @@ export interface UseColorPickerProps
    * The initial value of the color picker when it is first rendered.
    * Use when you do not need to control the state of the color picker.
    */
-  defaultValue?: string
-  /**
-   * The current value of the color picker.
-   */
-  value?: string
+  defaultValue?: colorPicker.Context['value']
 }
 export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}
 
@@ -46,12 +39,8 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     getRootNode: environment().getRootNode,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    value: props.defaultValue,
     ...props,
-    value: props.value
-      ? colorPicker.parse(props.value)
-      : props.defaultValue
-        ? colorPicker.parse(props.defaultValue)
-        : undefined,
   }))
   const [state, send] = useMachine(colorPicker.machine(context()), { context })
 

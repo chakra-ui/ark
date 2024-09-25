@@ -5,13 +5,13 @@ export {
 } from './create-toaster'
 export {
   ToastActionTrigger,
-  type ToastActionTriggerProps,
   type ToastActionTriggerBaseProps,
+  type ToastActionTriggerProps,
 } from './toast-action-trigger'
 export {
   ToastCloseTrigger,
-  type ToastCloseTriggerProps,
   type ToastCloseTriggerBaseProps,
+  type ToastCloseTriggerProps,
 } from './toast-close-trigger'
 export {
   ToastContext,
@@ -19,25 +19,25 @@ export {
 } from './toast-context'
 export {
   ToastDescription,
-  type ToastDescriptionProps,
   type ToastDescriptionBaseProps,
+  type ToastDescriptionProps,
 } from './toast-description'
 export {
   ToastRoot,
-  type ToastRootProps,
   type ToastRootBaseProps,
+  type ToastRootProps,
 } from './toast-root'
 export {
   ToastTitle,
-  type ToastTitleProps,
   type ToastTitleBaseProps,
+  type ToastTitleProps,
 } from './toast-title'
+export { toastAnatomy } from './toast.anatomy'
 export {
   Toaster,
-  type ToasterProps,
   type ToasterBaseProps,
+  type ToasterProps,
 } from './toaster'
 export { useToastContext, type UseToastContext } from './use-toast-context'
-export { toastAnatomy } from './toast.anatomy'
 
 export * as Toast from './toast'

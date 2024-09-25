@@ -1,18 +1,18 @@
 export type { OpenChangeDetails as TooltipOpenChangeDetails } from '@zag-js/tooltip'
 export {
   TooltipArrow,
-  type TooltipArrowProps,
   type TooltipArrowBaseProps,
+  type TooltipArrowProps,
 } from './tooltip-arrow'
 export {
   TooltipArrowTip,
-  type TooltipArrowTipProps,
   type TooltipArrowTipBaseProps,
+  type TooltipArrowTipProps,
 } from './tooltip-arrow-tip'
 export {
   TooltipContent,
-  type TooltipContentProps,
   type TooltipContentBaseProps,
+  type TooltipContentProps,
 } from './tooltip-content'
 export {
   TooltipContext,
@@ -20,26 +20,26 @@ export {
 } from './tooltip-context'
 export {
   TooltipPositioner,
-  type TooltipPositionerProps,
   type TooltipPositionerBaseProps,
+  type TooltipPositionerProps,
 } from './tooltip-positioner'
 export {
   TooltipRoot,
-  type TooltipRootProps,
   type TooltipRootBaseProps,
+  type TooltipRootProps,
 } from './tooltip-root'
 export {
   TooltipRootProvider,
-  type TooltipRootProviderProps,
   type TooltipRootProviderBaseProps,
+  type TooltipRootProviderProps,
 } from './tooltip-root-provider'
 export {
   TooltipTrigger,
-  type TooltipTriggerProps,
   type TooltipTriggerBaseProps,
+  type TooltipTriggerProps,
 } from './tooltip-trigger'
+export { tooltipAnatomy } from './tooltip.anatomy'
 export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context'
-export { tooltipAnatomy } from './tooltip.anatomy'
 
 export * as Tooltip from './tooltip'

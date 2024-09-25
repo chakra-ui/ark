@@ -1,4 +1,4 @@
-import { Combobox, type ComboboxRootProps } from '../'
+import { Combobox, createListCollection } from '../'
 import type { Optional } from '../../../types'
 import { Portal } from '../../portal'
 
@@ -8,15 +8,17 @@ interface Item {
   disabled?: boolean
 }
 
-export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'items'>) => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+export const ComponentUnderTest = (props: Optional<Combobox.RootProps<Item>, 'collection'>) => {
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
   return (
-    <Combobox.Root items={items} {...props}>
+    <Combobox.Root collection={collection} {...props}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -28,7 +30,7 @@ export const ComponentUnderTest = (props: Optional<ComboboxRootProps<Item>, 'ite
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Combobox.Item key={item.value} item={item}>
                   <Combobox.ItemText>{item.label}</Combobox.ItemText>
                   <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
