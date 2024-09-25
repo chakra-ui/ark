@@ -1,10 +1,21 @@
+import { useMemo, useState } from 'react'
 import { Combobox, Portal, createListCollection } from '../..'
 
+const initialItems = ['React', 'Solid', 'Vue']
+
 export const Basic = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const [items, setItems] = useState(initialItems)
+
+  const collection = useMemo(() => createListCollection({ items }), [items])
+
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+    setItems(
+      initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())),
+    )
+  }
 
   return (
-    <Combobox.Root collection={collection}>
+    <Combobox.Root collection={collection} onInputValueChange={handleInputChange}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />

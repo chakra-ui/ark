@@ -73,15 +73,16 @@ export const useSelect = <T extends CollectionItem>(
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(select.machine(initialContext.value), {
+  const [state, send, service] = useMachine(select.machine(initialContext.value), {
     context: computed(() => omit(initialContext.value, ['collection'])),
   })
 
-  const api = computed(() => select.connect(state.value, send, normalizeProps))
+  watch(
+    () => props.collection,
+    (collection) => {
+      service.setContext({ collection })
+    },
+  )
 
-  watch([props.collection], () => {
-    api.value.setCollection(props.collection)
-  })
-
-  return api
+  return computed(() => select.connect(state.value, send, normalizeProps))
 }

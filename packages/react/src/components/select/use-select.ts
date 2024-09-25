@@ -68,15 +68,14 @@ export const useSelect = <T extends CollectionItem>(
     }
   })()
 
-  const [state, send] = useMachine(select.machine(initialContext), {
+  const [state, send, service] = useMachine(select.machine(initialContext), {
     context,
   })
-  const api = select.connect(state, send, normalizeProps)
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    api.setCollection(collection)
+    service.setContext({ collection })
   }, [collection])
 
-  return api
+  return select.connect(state, send, normalizeProps)
 }

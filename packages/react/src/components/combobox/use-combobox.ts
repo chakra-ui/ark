@@ -1,6 +1,6 @@
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import { useId } from 'react'
+import { useEffect, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
@@ -58,19 +58,26 @@ export const useCombobox = <T extends CollectionItem>(
     ...comboboxProps,
   }
 
-  const context: combobox.Context<T> = {
-    ...initialContext,
-    collection,
-    value: props.value,
-    onValueChange: useEvent(props.onValueChange, { sync: true }),
-    onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
-    onHighlightChange: useEvent(props.onHighlightChange),
-    onOpenChange: useEvent(props.onOpenChange),
-  }
+  const context = (() => {
+    const { collection: _, ...restProps } = initialContext
+    return {
+      ...restProps,
+      value: props.value,
+      onValueChange: useEvent(props.onValueChange, { sync: true }),
+      onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
+      onHighlightChange: useEvent(props.onHighlightChange),
+      onOpenChange: useEvent(props.onOpenChange),
+    }
+  })()
 
-  const [state, send] = useMachine(combobox.machine(initialContext), {
+  const [state, send, service] = useMachine(combobox.machine(initialContext), {
     context,
   })
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    service.setContext({ collection })
+  }, [collection])
 
   return combobox.connect(state, send, normalizeProps)
 }

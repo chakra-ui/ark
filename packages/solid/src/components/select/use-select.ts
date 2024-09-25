@@ -61,15 +61,13 @@ export const useSelect = <T extends CollectionItem>(
     return restProps
   })
 
-  const [state, send] = useMachine(select.machine(initialContext()), {
+  const [state, send, service] = useMachine(select.machine(initialContext()), {
     context,
   })
 
-  const api = createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
-
   createEffect(() => {
-    api().setCollection(props.collection)
+    service.setContext({ collection: props.collection })
   })
 
-  return api
+  return createMemo(() => select.connect<PropTypes, T>(state, send, normalizeProps))
 }

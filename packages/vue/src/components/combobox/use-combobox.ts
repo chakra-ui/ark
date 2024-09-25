@@ -72,15 +72,16 @@ export const useCombobox = <T extends CollectionItem>(
     }
   })
 
-  const [state, send] = useMachine(combobox.machine(context.value), {
+  const [state, send, service] = useMachine(combobox.machine(context.value), {
     context: computed(() => omit(context.value, ['collection'])),
   })
 
-  const api = computed(() => combobox.connect(state.value, send, normalizeProps))
+  watch(
+    () => props.collection,
+    (collection) => {
+      service.setContext({ collection })
+    },
+  )
 
-  watch([props.collection], () => {
-    api.value.setCollection(props.collection)
-  })
-
-  return api as UseComboboxReturn<T>
+  return computed(() => combobox.connect(state.value, send, normalizeProps))
 }

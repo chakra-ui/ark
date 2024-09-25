@@ -1,12 +1,22 @@
-import { For } from 'solid-js'
+import { For, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { Combobox, createListCollection } from '../..'
 
+const initialItems = ['React', 'Solid', 'Vue']
+
 export const Basic = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const [items, setItems] = createSignal(initialItems)
+
+  const collection = createMemo(() => createListCollection({ items: items() }))
+
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+    setItems(
+      initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())),
+    )
+  }
 
   return (
-    <Combobox.Root collection={collection}>
+    <Combobox.Root collection={collection()} onInputValueChange={handleInputChange}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -18,7 +28,7 @@ export const Basic = () => {
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={collection.items}>
+              <For each={collection().items}>
                 {(item) => (
                   <Combobox.Item item={item}>
                     <Combobox.ItemText>{item}</Combobox.ItemText>
