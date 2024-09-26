@@ -4,7 +4,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps, useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import type { CollectionItem } from '../collection'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
@@ -34,7 +34,7 @@ export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseComboboxReturn<T> => {
-  const id = useId()
+  const id = useId() as string
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

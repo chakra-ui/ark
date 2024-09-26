@@ -4,7 +4,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, computed, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps, useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './select'
@@ -38,7 +38,7 @@ export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
-  const id = useId()
+  const id = useId() as string
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
