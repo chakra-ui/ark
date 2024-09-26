@@ -14,7 +14,7 @@ export const useClipboard = (
   props: UseClipboardProps,
   emit?: EmitFn<RootEmits>,
 ): UseClipboardReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const context = computed<clipboard.Context>(() => ({
     id,

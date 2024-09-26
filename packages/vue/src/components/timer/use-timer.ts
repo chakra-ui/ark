@@ -11,7 +11,7 @@ export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'get
 export interface UseTimerReturn extends ComputedRef<timer.Api<PropTypes>> {}
 
 export const useTimer = (props: UseTimerProps, emit?: EmitFn<RootEmits>): UseTimerReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
 
   const context = computed<timer.Context>(() => ({

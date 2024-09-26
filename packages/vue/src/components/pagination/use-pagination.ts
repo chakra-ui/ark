@@ -20,7 +20,7 @@ export const usePagination = (
   props: UsePaginationProps,
   emit?: EmitFn<RootEmits>,
 ): UsePaginationReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

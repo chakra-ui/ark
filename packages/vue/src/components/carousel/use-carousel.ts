@@ -20,7 +20,7 @@ export const useCarousel = (
   props: UseCarouselProps,
   emit?: EmitFn<RootEmits>,
 ): UseCarouselReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<carousel.Context>(() => ({

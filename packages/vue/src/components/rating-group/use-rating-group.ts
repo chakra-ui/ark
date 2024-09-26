@@ -23,7 +23,7 @@ export const useRatingGroup = (
   props: UseRatingGroupProps,
   emit?: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

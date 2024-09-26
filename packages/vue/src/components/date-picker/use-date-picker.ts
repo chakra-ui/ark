@@ -33,7 +33,7 @@ export const useDatePicker = (
   props: UseDatePickerProps,
   emit?: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<datePicker.Context>(() => {

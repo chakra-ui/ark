@@ -32,7 +32,7 @@ export const useColorPicker = (
   props: UseColorPickerProps,
   emit?: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

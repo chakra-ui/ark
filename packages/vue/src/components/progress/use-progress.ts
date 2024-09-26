@@ -10,7 +10,7 @@ export interface UseProgressProps
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
 export const useProgress = (props: UseProgressProps): UseProgressReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

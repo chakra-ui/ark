@@ -43,7 +43,7 @@ export const useTimePicker = (
   props: UseTimePickerProps,
   emit?: EmitFn<RootEmits>,
 ): UseTimePickerReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

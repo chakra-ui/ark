@@ -20,7 +20,7 @@ export interface UseCheckboxProps
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (ownProps: UseCheckboxProps, emit?: EmitFn<RootEmits>) => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

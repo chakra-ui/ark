@@ -34,7 +34,7 @@ export const useCollapsible = (
   props: UseCollapsibleProps,
   emits: EmitFn<RootEmits>,
 ): UseCollapsibleReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

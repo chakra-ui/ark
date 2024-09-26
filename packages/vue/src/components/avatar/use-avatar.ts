@@ -11,7 +11,7 @@ export interface UseAvatarProps
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps, emit?: EmitFn<RootEmits>): UseAvatarReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

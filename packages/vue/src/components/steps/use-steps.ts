@@ -23,7 +23,7 @@ export interface UseStepsReturn extends ComputedRef<steps.Api<PropTypes>> {}
 export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): UseStepsReturn {
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const id = useId() as string
+  const id = useId()
 
   const context = computed<steps.Context>(() => ({
     id,

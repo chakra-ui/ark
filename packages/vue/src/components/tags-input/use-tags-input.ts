@@ -22,7 +22,7 @@ export const useTagsInput = (
   props: UseTagsInputProps,
   emit?: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

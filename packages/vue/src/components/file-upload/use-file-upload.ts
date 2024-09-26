@@ -16,7 +16,7 @@ export const useFileUpload = (
   props: UseFileUploadProps,
   emit?: EmitFn<RootEmits>,
 ): UseFileUploadReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

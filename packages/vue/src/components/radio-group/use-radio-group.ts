@@ -21,7 +21,7 @@ export const useRadioGroup = (
   props: UseRadioGroupProps,
   emit?: EmitFn<RootEmits>,
 ): UseRadioGroupReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<radioGroup.Context>(() => ({

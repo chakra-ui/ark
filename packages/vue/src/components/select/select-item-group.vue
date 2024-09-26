@@ -20,7 +20,7 @@ import { SelectItemGroupPropsProvider } from './use-select-item-group-props-cont
 
 const props = defineProps<SelectItemGroupProps>()
 const select = useSelectContext()
-const id = props.id ?? (useId() as string)
+const id = props.id ?? useId()
 
 SelectItemGroupPropsProvider({ id })
 </script>

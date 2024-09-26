@@ -22,7 +22,7 @@ export const useToggleGroup = (
   props: UseToggleGroupProps,
   emit?: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

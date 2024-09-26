@@ -20,7 +20,7 @@ import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
 const props = defineProps<MenuItemGroupProps>()
 const menu = useMenuContext()
-const id = props.id ?? (useId() as string)
+const id = props.id ?? useId()
 const itemGroupProps = computed(() => ({ id }))
 
 MenuItemGroupProvider(itemGroupProps)

@@ -22,7 +22,7 @@ export const useSegmentGroup = (
   props: UseSegmentGroupProps,
   emit?: EmitFn<RootEmits>,
 ): UseSegmentGroupReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

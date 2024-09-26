@@ -25,7 +25,7 @@ export const useAccordion = (
   props: UseAccordionProps,
   emit?: EmitFn<RootEmits>,
 ): UseAccordionReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

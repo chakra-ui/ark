@@ -18,7 +18,7 @@ export interface UsePopoverProps
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps, emit?: EmitFn<RootEmits>) => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

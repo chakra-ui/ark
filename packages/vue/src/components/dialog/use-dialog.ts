@@ -18,7 +18,7 @@ export interface UseDialogProps
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps, emit?: EmitFn<RootEmits>) => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<dialog.Context>(() => ({

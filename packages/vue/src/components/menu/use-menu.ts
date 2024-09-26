@@ -21,7 +21,7 @@ export interface UseMenuReturn {
 }
 
 export const useMenu = (props: UseMenuProps, emit?: EmitFn<RootEmits>): UseMenuReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

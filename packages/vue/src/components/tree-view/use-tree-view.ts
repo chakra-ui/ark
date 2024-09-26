@@ -26,7 +26,7 @@ export const useTreeView = (
   props: UseTreeViewProps,
   emit?: EmitFn<RootEmits>,
 ): UseTreeViewReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

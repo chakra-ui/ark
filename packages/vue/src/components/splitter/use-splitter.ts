@@ -21,7 +21,7 @@ export const useSplitter = (
   props: UseSplitterProps,
   emit?: EmitFn<RootEmits>,
 ): UseSplitterReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

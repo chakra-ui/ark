@@ -20,7 +20,7 @@ import { useId } from 'vue'
 
 const props = defineProps<ComboboxItemGroupProps>()
 const combobox = useComboboxContext()
-const id = props.id ?? (useId() as string)
+const id = props.id ?? useId()
 
 ComboboxItemGroupPropsProvider({ id })
 </script>

@@ -19,7 +19,7 @@ export interface UseSwitchProps
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

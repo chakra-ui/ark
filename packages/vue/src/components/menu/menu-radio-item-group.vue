@@ -27,7 +27,7 @@ import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()
 const menu = useMenuContext()
-const id = props.id ?? (useId() as string)
+const id = props.id ?? useId()
 
 const itemGroupProps: UseMenuItemGroupContext = computed(() => ({
   id,

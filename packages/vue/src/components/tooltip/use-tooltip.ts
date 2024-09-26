@@ -18,7 +18,7 @@ export interface UseTooltipProps
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps, emit?: EmitFn<RootEmits>): UseTooltipReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

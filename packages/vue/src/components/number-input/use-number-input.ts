@@ -22,7 +22,7 @@ export const useNumberInput = (
   props: UseNumberInputProps,
   emit?: EmitFn<RootEmits>,
 ): UseNumberInputReturn => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

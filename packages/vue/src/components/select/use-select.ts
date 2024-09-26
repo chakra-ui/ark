@@ -38,7 +38,7 @@ export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
-  const id = useId() as string
+  const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
