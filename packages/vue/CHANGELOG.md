@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.0.1] - 2024-09-26
+
 ### Fixed
 
 - Corrected an issue where Vue 3.5.x was not properly declared as a peer dependency.
