@@ -97,3 +97,5 @@ export const ValueText = withContext<
 
 export const Context = Select.Context
 export const HiddenSelect = Select.HiddenSelect
+
+export type ValueChangeDetails = Select.ValueChangeDetails

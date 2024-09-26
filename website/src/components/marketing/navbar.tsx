@@ -8,7 +8,7 @@ import { ColorModeButton } from '../color-mode-button'
 import { Logo } from '../logo'
 
 export const Navbar = () => (
-  <nav role="navigation" className={css({ position: 'sticky', top: '0', zIndex: 'docked' })}>
+  <nav className={css({ position: 'sticky', top: '0', zIndex: 'docked' })}>
     <Flex justify="center" align="center">
       <HStack
         background="bg.default"
