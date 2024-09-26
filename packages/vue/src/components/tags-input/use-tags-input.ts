@@ -1,9 +1,9 @@
 import * as tagsInput from '@zag-js/tags-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps, useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
@@ -22,7 +22,7 @@ export const useTagsInput = (
   props: UseTagsInputProps,
   emit?: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
-  const id = useId()
+  const id = useId() as string
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

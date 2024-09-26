@@ -1,9 +1,9 @@
 import * as steps from '@zag-js/steps'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import type { RootEmits } from './steps.types'
 
 export interface UseStepsProps
@@ -23,7 +23,7 @@ export interface UseStepsReturn extends ComputedRef<steps.Api<PropTypes>> {}
 export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): UseStepsReturn {
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const id = useId()
+  const id = useId() as string
 
   const context = computed<steps.Context>(() => ({
     id,
@@ -35,7 +35,7 @@ export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): U
       emit?.('update:modelValue', details.step)
     },
     onStepComplete: () => emit?.('stepComplete'),
-    ...props,
+    ...cleanProps(props),
   }))
 
   const [state, send] = useMachine(steps.machine(context.value), { context })

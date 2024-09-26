@@ -212,6 +212,6 @@
     "vue-tsc": "2.1.6"
   },
   "peerDependencies": {
-    "vue": ">=3.0.0"
+    "vue": ">=3.5.0"
   }
 }

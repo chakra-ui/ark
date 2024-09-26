@@ -1,9 +1,9 @@
 import * as dialog from '@zag-js/dialog'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps, useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import type { RootEmits } from './dialog'
 
 export interface UseDialogProps
@@ -18,7 +18,7 @@ export interface UseDialogProps
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps, emit?: EmitFn<RootEmits>) => {
-  const id = useId()
+  const id = useId() as string
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<dialog.Context>(() => ({

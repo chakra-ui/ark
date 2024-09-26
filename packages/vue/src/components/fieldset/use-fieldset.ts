@@ -7,8 +7,8 @@ import {
   onMounted,
   reactive,
   ref,
+  useId,
 } from 'vue'
-import { useId } from '../../utils'
 import { parts } from './fieldset.anatomy'
 
 export interface UseFieldsetProps {

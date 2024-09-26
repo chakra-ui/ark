@@ -1,9 +1,9 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps, useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import type { RootEmits } from './date-picker.types'
 
 export interface UseDatePickerProps
@@ -33,7 +33,7 @@ export const useDatePicker = (
   props: UseDatePickerProps,
   emit?: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
-  const id = useId()
+  const id = useId() as string
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const context = computed<datePicker.Context>(() => {
