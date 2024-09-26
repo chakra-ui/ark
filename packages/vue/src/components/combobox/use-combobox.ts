@@ -1,7 +1,7 @@
 import * as combobox from '@zag-js/combobox'
 import { omit } from '@zag-js/utils'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, watch } from 'vue'
+import { type ComputedRef, computed, useId, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'

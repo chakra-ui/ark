@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Corrected an issue where Vue 3.5.x was not properly declared as a peer dependency.
+
 ## [4.0.0] - 2024-09-25
 
 In this major release, we shifted from primitive data types like strings to more structured types
@@ -17,6 +21,7 @@ to simplify working with the new types and make code more concise.
 
 ### Changed
 
+- Ark UI Vue now required Vue 3.5.x or later, as it leveraged the useId() helper introduced in this version.
 - **ColorPicker [Breaking]**: Updated `value` and `defaultValue` types from `string` to `Color`. Use
   the exported `parseColor` function to convert between strings and color objects.
 
