@@ -55,6 +55,11 @@ describe('Fieldset', () => {
     expect(screen.getByRole('textbox', { name: /label/i })).toBeDisabled()
   })
 
+  it('should light up textbox as invalid', async () => {
+    render(<ComponentUnderTest invalid />)
+    expect(screen.getByRole('textbox', { name: /label/i })).toHaveAttribute('data-invalid')
+  })
+
   it('should display helper text', async () => {
     render(<ComponentUnderTest />)
     expect(screen.getByText('Fieldset Helper Text')).toBeInTheDocument()
