@@ -184,6 +184,7 @@
     "@zag-js/types": "0.71.0",
     "@zag-js/utils": "0.71.0",
     "@zag-js/steps": "0.71.0",
+    "@zag-js/store": "0.71.0",
     "@zag-js/vue": "0.71.0"
   },
   "devDependencies": {

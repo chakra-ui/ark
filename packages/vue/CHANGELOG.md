@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Resolved an issue that `ref` is not exported from `@zag-js/store`.
+
 ## [4.0.1] - 2024-09-26
 
 ### Fixed
