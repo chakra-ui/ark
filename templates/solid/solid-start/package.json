@@ -8,12 +8,12 @@
     "version": "vinxi version"
   },
   "dependencies": {
-    "@ark-ui/solid": "3.4.0",
+    "@ark-ui/solid": "4.0.0",
     "@solidjs/meta": "0.29.4",
-    "@solidjs/router": "0.13.6",
-    "@solidjs/start": "1.0.2",
-    "solid-js": "1.8.17",
-    "vinxi": "0.3.12"
+    "@solidjs/router": "0.14.7",
+    "@solidjs/start": "1.0.7",
+    "solid-js": "1.9.1",
+    "vinxi": "0.4.3"
   },
   "engines": {
     "node": ">=18"
