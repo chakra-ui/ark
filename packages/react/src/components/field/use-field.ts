@@ -47,7 +47,7 @@ export const useField = (props: UseFieldProps) => {
   const {
     ids,
     disabled = Boolean(fieldset?.disabled),
-    invalid = false,
+    invalid = Boolean(fieldset?.invalid),
     readOnly = false,
     required = false,
   } = props
