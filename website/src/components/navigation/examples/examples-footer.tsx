@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
 import { cva } from 'styled-system/css'
 import { Grid, Stack } from 'styled-system/jsx'
+import { ExamplesPreview } from '~/components/examples-preview'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import type { Example } from '~/lib/examples'
@@ -40,22 +41,7 @@ export const ExamplesFooter = (props: Props) => {
       {example.relatedExamples.length > 0 && (
         <Stack gap="6">
           <Heading textStyle="2xl">Related Examples</Heading>
-          <Grid columns={{ base: 1, sm: 2, md: 3 }} gap="8">
-            {example.relatedExamples.map((relatedExample) => {
-              return (
-                <NextLink
-                  key={relatedExample.id}
-                  href={`/${framework}/examples/${relatedExample.id}`}
-                  className={link}
-                >
-                  <Text fontWeight="medium">{relatedExample?.title}</Text>
-                  <Text color="fg.muted" textStyle="sm">
-                    {relatedExample?.description}
-                  </Text>
-                </NextLink>
-              )
-            })}
-          </Grid>
+          <ExamplesPreview id={example.id} />
         </Stack>
       )}
     </Stack>
@@ -69,7 +55,7 @@ const link = cva({
     display: 'flex',
 
     flexDirection: 'column',
-    gap: '1.5',
+    gap: '1',
     p: '4',
     transitionDuration: 'normal',
     transitionProperty: 'border-color, box-shadow',
