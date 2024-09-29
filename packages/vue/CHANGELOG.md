@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Toggle [New]**: Added `Toggle` component.
+
 ## [4.0.2] - 2024-09-27
 
 ### Fixed
@@ -29,7 +33,8 @@ to simplify working with the new types and make code more concise.
 
 ### Changed
 
-- Ark UI Vue now required Vue 3.5.x or later, as it leveraged the useId() helper introduced in this version.
+- Ark UI Vue now required Vue 3.5.x or later, as it leveraged the useId() helper introduced in this
+  version.
 - **ColorPicker [Breaking]**: Updated `value` and `defaultValue` types from `string` to `Color`. Use
   the exported `parseColor` function to convert between strings and color objects.
 

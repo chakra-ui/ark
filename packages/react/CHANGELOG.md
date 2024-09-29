@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Toggle [New]**: Added `Toggle` component.
+
 ## [4.0.0] - 2024-09-25
 
 In this major release, we shifted from primitive data types like strings to more structured types
