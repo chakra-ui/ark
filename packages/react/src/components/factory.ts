@@ -27,12 +27,25 @@ type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoti
 type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> &
   PolymorphicProps
 
-// Future proof: access ref from props, fallback to element.ref
-// https://github.com/facebook/react/pull/28348
-function getRef(child: React.ReactElement) {
-  if ('ref' in child.props) return child.props.ref
-  if ('ref' in child) return child.ref
-  return null
+// Credits to the Radix team
+function getRef(element: React.ReactElement) {
+  // React <=18 in DEV
+  let getter = Object.getOwnPropertyDescriptor(element.props, 'ref')?.get
+  let mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning
+  if (mayWarn) {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    return (element as any).ref
+  }
+
+  // React 19 in DEV
+  getter = Object.getOwnPropertyDescriptor(element, 'ref')?.get
+  mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning
+  if (mayWarn) {
+    return element.props.ref
+  }
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  return element.props.ref || (element as any).ref
 }
 
 const withAsChild = (Component: React.ElementType) => {
