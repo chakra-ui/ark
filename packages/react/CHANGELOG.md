@@ -8,7 +8,11 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Toggle [New]**: Added `Toggle` component.
+- **Toggle**: Added `Toggle` component.
+
+### Fixed
+
+- Resolved a bug where passing a `ref` to a component occasionally triggered a warning.
 
 ### Fixed
 
@@ -100,10 +104,6 @@ to simplify working with the new types and make code more concise.
     return <DatePicker.Root defaultValue={parseDate('2024-01-01')} />
   }
   ```
-
-## [4.0.0-0] - 2024-09-16
-
-TBD
 
 ## [3.13.0] - 2024-09-24
 

@@ -1,8 +1,7 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/react'
-import { type ForwardedRef, useRef } from 'react'
+import { useRef } from 'react'
 import type { Optional } from '../../types'
-import { composeRefs } from '../../utils/compose-refs'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 
@@ -30,13 +29,13 @@ export const usePresence = (props: UsePresenceProps) => {
     (!api.present && !wasEverPresent.current && lazyMount) ||
     (unmountOnExit && !api.present && wasEverPresent.current)
 
-  const getPresenceProps = <T extends HTMLElement>(ref: ForwardedRef<T>) => ({
-    ref: composeRefs(api.setNode, ref) as ForwardedRef<T>,
+  const getPresenceProps = () => ({
     'data-state': props.present ? 'open' : 'closed',
     hidden: !api.present,
   })
 
   return {
+    ref: api.setNode,
     getPresenceProps,
     present: api.present,
     unmounted,
