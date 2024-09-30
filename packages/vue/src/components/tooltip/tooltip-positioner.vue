@@ -15,6 +15,7 @@ export interface TooltipPositionerProps
 import { useRenderStrategyProps } from '../../utils'
 import { PresenceProvider, usePresence } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TooltipPositionerProps>()
 const tooltip = useTooltipContext()
@@ -26,7 +27,10 @@ const presence = usePresence(
     present: tooltip.value.open,
   })),
 )
+
 PresenceProvider(presence)
+
+useForwardExpose()
 </script>
 
 <template>

@@ -20,11 +20,13 @@ export interface CollapsibleRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { CollapsibleProvider } from './use-collapsible-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<CollapsibleRootProviderProps>()
 const collapsible = computed(() => props.value)
 
 CollapsibleProvider(collapsible)
+useForwardExpose()
 </script>
 
 <template>

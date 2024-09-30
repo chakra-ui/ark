@@ -19,11 +19,13 @@ import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context'
 import { datePickerAnatomy } from './date-picker.anatomy'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<DatePickerViewProps>()
 const datePicker = useDatePickerContext()
 
 DatePickerViewPropsProvider(props)
+useForwardExpose()
 </script>
 
 <template>

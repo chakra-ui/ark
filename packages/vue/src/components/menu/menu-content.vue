@@ -16,13 +16,18 @@ export interface MenuContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuContentProps>()
+
 const menu = useMenuContext()
 const presence = usePresenceContext()
+
 const mergedProps = computed(() =>
   mergeProps(menu.value.getContentProps(), presence.value.presenceProps),
 )
+
+useForwardExpose()
 </script>
 
 <template>

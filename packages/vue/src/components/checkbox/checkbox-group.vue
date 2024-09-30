@@ -19,6 +19,7 @@ import { ark } from '../factory'
 import { checkboxAnatomy } from './checkbox.anatomy'
 import { useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupProvider } from './use-checkbox-group-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   disabled: undefined,
@@ -30,6 +31,8 @@ const emits = defineEmits<CheckboxGroupEmits>()
 
 const checkboxGroup = useCheckboxGroup(props, emits)
 CheckboxGroupProvider(checkboxGroup)
+
+useForwardExpose()
 </script>
 
 <template>

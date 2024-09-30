@@ -14,9 +14,12 @@ export interface FieldHelperTextProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldHelperTextProps>()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

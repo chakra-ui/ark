@@ -16,11 +16,14 @@ export interface SliderThumbProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SliderThumbProps>()
 const slider = useSliderContext()
 
 SliderThumbPropsProvider(props)
+
+useForwardExpose()
 </script>
 
 <template>

@@ -16,13 +16,18 @@ export interface TooltipContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TooltipContentProps>()
+
 const tooltip = useTooltipContext()
 const presence = usePresenceContext()
+
 const mergedProps = computed(() =>
   mergeProps(tooltip.value.getContentProps(), presence.value.presenceProps),
 )
+
+useForwardExpose()
 </script>
 
 <template>

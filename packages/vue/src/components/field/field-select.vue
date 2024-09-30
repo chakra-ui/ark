@@ -16,11 +16,14 @@ export interface FieldSelectProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldSelectProps & { modelValue?: string }>()
 const field = useFieldContext()
 
 const emit = defineEmits(['update:modelValue'])
+
+useForwardExpose()
 </script>
 
 <template>

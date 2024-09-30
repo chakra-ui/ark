@@ -18,6 +18,7 @@ export interface TreeViewRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<TreeViewRootProps>(), {
   expandOnClick: undefined,
@@ -28,6 +29,8 @@ const emits = defineEmits<TreeViewRootEmits>()
 
 const treeView = useTreeView(props, emits)
 TreeViewProvider(treeView)
+
+useForwardExpose()
 </script>
 
 <template>

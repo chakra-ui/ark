@@ -20,11 +20,14 @@ export interface ClipboardRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { ClipboardProvider } from './use-clipboard-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ClipboardRootProviderProps>()
 const clipboard = computed(() => props.value)
 
 ClipboardProvider(clipboard)
+
+useForwardExpose()
 </script>
 
 <template>

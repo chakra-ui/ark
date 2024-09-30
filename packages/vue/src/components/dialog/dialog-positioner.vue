@@ -16,6 +16,7 @@ export interface DialogPositionerProps
 import { ark } from '../factory'
 import { PresenceProvider, usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DialogPositionerProps>()
 
@@ -29,6 +30,8 @@ const presence = usePresence(
   })),
 )
 PresenceProvider(presence)
+
+useForwardExpose()
 </script>
 
 <template>

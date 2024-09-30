@@ -18,12 +18,15 @@ import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemProvider } from './use-select-item-context'
 import { SelectItemPropsProvider } from './use-select-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SelectItemProps>()
 const select = useSelectContext()
 
 SelectItemPropsProvider(props)
 SelectItemProvider(computed(() => select.value.getItemState(props)))
+
+useForwardExpose()
 </script>
 
 <template>

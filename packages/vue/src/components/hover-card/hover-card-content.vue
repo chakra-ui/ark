@@ -16,13 +16,18 @@ export interface HoverCardContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useHoverCardContext } from './use-hover-card-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<HoverCardContentProps>()
+
 const hoverCard = useHoverCardContext()
 const presence = usePresenceContext()
+
 const mergedProps = computed(() =>
   mergeProps(hoverCard.value.getContentProps(), presence.value.presenceProps),
 )
+
+useForwardExpose()
 </script>
 
 <template>

@@ -14,9 +14,12 @@ export interface TooltipArrowTipProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TooltipArrowTipProps>()
 const tooltip = useTooltipContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -16,13 +16,18 @@ export interface TimePickerContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TimePickerContentProps>()
+
 const timePicker = useTimePickerContext()
 const presence = usePresenceContext()
+
 const mergedProps = computed(() =>
   mergeProps(timePicker.value.getContentProps(), presence.value.presenceProps),
 )
+
+useForwardExpose()
 </script>
 
 <template>

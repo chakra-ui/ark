@@ -11,7 +11,7 @@ export interface MenuRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { useMenu } from './use-menu'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
@@ -45,6 +45,8 @@ MenuProvider(api)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

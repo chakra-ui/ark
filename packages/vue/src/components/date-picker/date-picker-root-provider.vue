@@ -25,6 +25,7 @@ import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils'
 import { ark } from '../factory'
 import { DatePickerProvider } from './use-date-picker-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<DatePickerRootProviderProps>()
 const datePicker = computed(() => props.value)
@@ -33,6 +34,8 @@ DatePickerProvider(datePicker)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

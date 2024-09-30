@@ -15,10 +15,13 @@ export interface ColorPickerAreaThumbProps
 import { ark } from '../factory'
 import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerAreaThumbProps>()
 const colorPicker = useColorPickerContext()
 const areaProps = useColorPickerAreaPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

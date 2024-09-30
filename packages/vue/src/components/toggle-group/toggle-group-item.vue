@@ -15,9 +15,12 @@ export interface ToggleGroupItemProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useToggleGroupContext } from './use-toggle-group-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ToggleGroupItemProps>()
 const toggleGroup = useToggleGroupContext()
+
+useForwardExpose()
 </script>
 
 <template>

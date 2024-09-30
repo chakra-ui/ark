@@ -15,10 +15,14 @@ export interface StepsTriggerProps
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { useStepsItemPropsContext } from './use-steps-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<StepsTriggerProps>()
+
 const steps = useStepsContext()
 const itemProps = useStepsItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

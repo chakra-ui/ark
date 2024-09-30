@@ -21,11 +21,14 @@ import { computed } from 'vue'
 import { ark } from '../factory'
 import { SegmentGroupProvider } from './use-segment-group-context'
 import { parts } from './segment-group.anatomy'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SegmentGroupRootProviderProps>()
 const segmentGroup = computed(() => props.value)
 
 SegmentGroupProvider(segmentGroup)
+
+useForwardExpose()
 </script>
 
 <template>

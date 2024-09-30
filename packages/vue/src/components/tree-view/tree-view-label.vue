@@ -14,9 +14,12 @@ export interface TreeViewLabelProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TreeViewLabelProps>()
 const treeView = useTreeViewContext()
+
+useForwardExpose()
 </script>
 
 <template>

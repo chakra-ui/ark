@@ -10,7 +10,7 @@ export interface TooltipRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 
@@ -33,6 +33,8 @@ TooltipProvider(tooltip)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

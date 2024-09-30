@@ -15,9 +15,12 @@ export interface ProgressViewProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ProgressViewProps>()
 const progress = useProgressContext()
+
+useForwardExpose()
 </script>
 
 <template>

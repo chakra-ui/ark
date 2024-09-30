@@ -15,10 +15,14 @@ export interface SliderHiddenInputProps
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SliderHiddenInputProps>()
+
 const slider = useSliderContext()
 const thumbProps = useSliderThumbPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

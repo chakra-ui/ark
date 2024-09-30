@@ -15,10 +15,14 @@ export interface MenuItemGroupLabelProps
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuItemGroupLabelProps>()
+
 const menu = useMenuContext()
 const itemGroup = useMenuItemGroupContext()
+
+useForwardExpose()
 </script>
 
 <template>

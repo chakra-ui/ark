@@ -18,6 +18,7 @@ export interface EditableRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<EditableRootProps>(), {
   autoResize: undefined,
@@ -34,6 +35,8 @@ const emits = defineEmits<EditableRootEmits>()
 
 const editable = useEditable(props, emits)
 EditableProvider(editable)
+
+useForwardExpose()
 </script>
 
 <template>

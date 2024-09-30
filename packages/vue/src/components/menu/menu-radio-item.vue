@@ -22,6 +22,7 @@ import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuRadioItemProps>(), {
   disabled: undefined,
@@ -42,6 +43,8 @@ const optionItemState = computed(() => menu.value.getOptionItemState(optionItemP
 
 MenuItemProvider(optionItemState)
 MenuOptionItemPropsProvider(optionItemProps)
+
+useForwardExpose()
 </script>
 
 <template>

@@ -20,11 +20,14 @@ export interface CarouselRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { CarouselProvider } from './use-carousel-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<CarouselRootProviderProps>()
 const carousel = computed(() => props.value)
 
 CarouselProvider(carousel)
+
+useForwardExpose()
 </script>
 
 <template>

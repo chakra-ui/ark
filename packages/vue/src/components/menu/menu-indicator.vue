@@ -14,9 +14,12 @@ export interface MenuIndicatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuIndicatorProps>()
 const menu = useMenuContext()
+
+useForwardExpose()
 </script>
 
 <template>

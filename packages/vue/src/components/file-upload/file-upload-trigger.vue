@@ -14,9 +14,12 @@ export interface FileUploadTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadTriggerProps>()
 const fileUpload = useFileUploadContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -15,10 +15,12 @@ export interface ComboboxItemTextProps
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ComboboxItemTextProps>()
 const combobox = useComboboxContext()
 const itemProps = useComboboxItemPropsContext()
+useForwardExpose()
 </script>
 
 <template>

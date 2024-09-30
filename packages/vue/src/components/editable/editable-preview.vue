@@ -14,9 +14,12 @@ export interface EditablePreviewProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<EditablePreviewProps>()
 const editable = useEditableContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -19,6 +19,7 @@ import { ark } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 import { parts } from './segment-group.anatomy'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,
@@ -29,6 +30,8 @@ const emits = defineEmits<SegmentGroupRootEmits>()
 
 const segmentGroup = useSegmentGroup(props, emits)
 SegmentGroupProvider(segmentGroup)
+
+useForwardExpose()
 </script>
 
 <template>

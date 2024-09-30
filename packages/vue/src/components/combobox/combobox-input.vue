@@ -15,10 +15,12 @@ export interface ComboboxInputProps
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ComboboxInputProps>()
 const combobox = useComboboxContext()
 const field = useFieldContext()
+useForwardExpose()
 </script>
 
 <template>

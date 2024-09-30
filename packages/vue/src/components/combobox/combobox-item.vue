@@ -18,11 +18,14 @@ import { computed } from 'vue'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemProvider } from './use-combobox-item-context'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ComboboxItemProps>()
 const combobox = useComboboxContext()
 ComboboxItemPropsProvider(props)
 ComboboxItemProvider(computed(() => combobox.value.getItemState(props)))
+
+useForwardExpose()
 </script>
 
 <template>

@@ -10,7 +10,7 @@ export interface PopoverRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 
@@ -32,6 +32,8 @@ PopoverProvider(popover)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

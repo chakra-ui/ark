@@ -18,6 +18,7 @@ export interface AvatarRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { AvatarProvider } from './use-avatar-context'
 
@@ -25,6 +26,8 @@ const props = defineProps<AvatarRootProviderProps>()
 const avatar = computed(() => props.value)
 
 AvatarProvider(avatar)
+
+useForwardExpose()
 </script>
 
 <template>

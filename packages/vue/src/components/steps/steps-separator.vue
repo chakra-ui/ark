@@ -15,10 +15,14 @@ export interface StepsSeparatorProps
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { useStepsItemPropsContext } from './use-steps-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<StepsSeparatorProps>()
+
 const steps = useStepsContext()
 const itemProps = useStepsItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

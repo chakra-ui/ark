@@ -14,9 +14,12 @@ export interface QrCodePatternProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<QrCodePatternProps>()
 const qrCode = useQrCodeContext()
+
+useForwardExpose()
 </script>
 
 <template>

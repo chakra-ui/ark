@@ -23,7 +23,7 @@ export interface ComboboxRootProviderProps<T extends CollectionItem>
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { ComboboxProvider } from './use-combobox-context'
 
@@ -34,6 +34,8 @@ ComboboxProvider(combobox)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

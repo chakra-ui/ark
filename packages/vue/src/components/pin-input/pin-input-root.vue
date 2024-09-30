@@ -18,6 +18,7 @@ export interface PinInputRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { usePinInput } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<PinInputRootProps>(), {
   autoFocus: undefined,
@@ -36,6 +37,8 @@ const emits = defineEmits<PinInputRootEmits>()
 const pinInput = usePinInput(props, emits)
 
 PinInputProvider(pinInput)
+
+useForwardExpose()
 </script>
 
 <template>

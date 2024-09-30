@@ -9,6 +9,14 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Toggle [New]**: Added `Toggle` component.
+- **useForwardExpose [New]**: Added `useForwardExpose` util to help forward the underlying component
+  node.
+
+### Fixed
+
+- **All Components**: Fixed issue where the underlying of most components could not be accessed
+  using `$el`.
+- **FileUpload**: Fixed issue in preview image where `createObjectURL` was not cleaned up.
 
 ## [4.0.2] - 2024-09-27
 

@@ -21,7 +21,13 @@ const collection = createListCollection({
     </Select.Control>
     <Teleport to="body">
       <Select.Positioner>
-        <Select.Content>
+        <Select.Content
+          :ref="
+            (el) => {
+              console.log(el)
+            }
+          "
+        >
           <Select.ItemGroup>
             <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
             <Select.Item v-for="item in collection.items" :key="item" :item="item">

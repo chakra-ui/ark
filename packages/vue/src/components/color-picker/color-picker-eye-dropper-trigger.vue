@@ -14,9 +14,12 @@ export interface ColorPickerEyeDropperTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerEyeDropperTriggerProps>()
 const colorPicker = useColorPickerContext()
+
+useForwardExpose()
 </script>
 
 <template>

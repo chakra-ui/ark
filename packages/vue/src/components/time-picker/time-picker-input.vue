@@ -14,9 +14,12 @@ export interface TimePickerInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TimePickerInputProps>()
 const timePicker = useTimePickerContext()
+
+useForwardExpose()
 </script>
 
 <template>

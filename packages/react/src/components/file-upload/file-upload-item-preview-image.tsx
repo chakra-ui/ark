@@ -19,7 +19,7 @@ export const FileUploadItemPreviewImage = forwardRef<
   const mergedProps = mergeProps(fileUpload.getItemPreviewImageProps({ ...itemProps, url }), props)
 
   useEffect(() => {
-    fileUpload.createFileUrl(itemProps.file, (url) => setUrl(url))
+    return fileUpload.createFileUrl(itemProps.file, (url) => setUrl(url))
   }, [itemProps, fileUpload])
 
   return <ark.img {...mergedProps} ref={ref} />

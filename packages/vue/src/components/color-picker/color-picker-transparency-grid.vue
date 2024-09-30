@@ -17,9 +17,12 @@ export interface ColorPickerTransparencyGridProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ColorPickerTransparencyGridProps>()
 const colorPicker = useColorPickerContext()
+
+useForwardExpose()
 </script>
 
 <template>

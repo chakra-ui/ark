@@ -15,10 +15,13 @@ export interface CheckboxHiddenInputProps
 import { ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CheckboxHiddenInputProps>()
 const checkbox = useCheckboxContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

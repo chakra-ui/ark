@@ -14,9 +14,12 @@ export interface CarouselViewportProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CarouselViewportProps>()
 const carousel = useCarouselContext()
+
+useForwardExpose()
 </script>
 
 <template>
