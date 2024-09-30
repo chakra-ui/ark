@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import { Flex } from 'styled-system/jsx'
+import { ExamplesPreview } from './examples-preview'
 
 interface Props {
   id: string
@@ -11,19 +12,22 @@ export const ComponentPreview = (props: Props) => {
   const Demo = dynamic(() => import('~/demos').then((mod) => mod[id]).catch(() => null))
 
   return (
-    <Flex
-      minH="40"
-      bg="bg.default"
-      borderRadius="lg"
-      borderWidth="1px"
-      width="full"
-      overflow="hidden"
-      className="not-prose"
-      my="12"
-    >
-      <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
-        <Demo />
+    <>
+      <Flex
+        minH="40"
+        bg="bg.default"
+        borderRadius="lg"
+        borderWidth="1px"
+        width="full"
+        overflow="hidden"
+        className="not-prose"
+        my="12"
+      >
+        <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+          <Demo />
+        </Flex>
       </Flex>
-    </Flex>
+      <ExamplesPreview id={id} />
+    </>
   )
 }
