@@ -4,19 +4,22 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
+
 ## [Unreleased]
 
 ### Added
 
-- **Toggle**: Added `Toggle` component.
+- **Toggle**: Introduced the `Toggle` component.
+- **Dialog**: Added support for detecting outside clicks from parent windows when rendered within an iframe.
 
 ### Fixed
 
 - Resolved a bug where passing a `ref` to a component occasionally triggered a warning.
-
-### Fixed
-
-- **FileUpload**: Fixed issue in preview image where `createObjectURL` was not cleaned up.
+- **Combobox**: Fixed an issue where pressing Enter without selecting an option left text in the input.
+- **Dialog**: Fixed an issue where the dialog closed when the positioner was scrollable, and the scrollbar was clicked.
+- **File Upload**:
+  -  Fixed an issue where `acceptedFiles` were removed after an invalid file upload.
+  -  Fixed an issue in the preview image where `createObjectURL` was not cleaned up.
 
 ## [4.0.0] - 2024-09-25
 
