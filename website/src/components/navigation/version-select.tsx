@@ -2,19 +2,29 @@
 import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
+import { useMemo } from 'react'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
 
-const collection = createListCollection({
-  items: [
-    { label: 'v4.0.0', value: 'v4' },
-    { label: 'v3', value: 'v3' },
-  ],
-})
+interface Props {
+  latest: string
+}
 
-export const VersionSelect = () => {
+export const VersionSelect = (props: Props) => {
+  const { latest } = props
   const router = useRouter()
   const pathname = usePathname()
+
+  const collection = useMemo(
+    () =>
+      createListCollection({
+        items: [
+          { label: `v${latest}`, value: latest },
+          { label: 'v3', value: 'v3' },
+        ],
+      }),
+    [latest],
+  )
 
   const handleValueChange = (value: Select.ValueChangeDetails) => {
     if (value.value.includes('v3')) {
@@ -24,7 +34,7 @@ export const VersionSelect = () => {
 
   return (
     <Select.Root
-      defaultValue={['v4']}
+      defaultValue={[latest]}
       onValueChange={handleValueChange}
       size={{ base: 'md', md: 'sm' }}
       collection={collection}
