@@ -1,4 +1,4 @@
-type PossibleRef<T> = React.Ref<T> | undefined
+type PossibleRef<T> = React.Ref<T | null> | undefined
 
 function setRef<T>(ref: PossibleRef<T>, value: T) {
   if (typeof ref === 'function') {
@@ -8,8 +8,8 @@ function setRef<T>(ref: PossibleRef<T>, value: T) {
   }
 }
 
-export function composeRefs<T>(...refs: PossibleRef<T>[]) {
-  return (node: T) => {
+export function composeRefs<T>(...refs: PossibleRef<T>[]): (node: T | null) => void {
+  return (node) => {
     for (const ref of refs) {
       setRef(ref, node)
     }

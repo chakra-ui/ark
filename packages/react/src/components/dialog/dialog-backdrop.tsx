@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
+import { composeRefs } from '../../utils/compose-refs'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresence } from '../presence'
@@ -12,13 +13,13 @@ export const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>((p
   const dialog = useDialogContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: dialog.open })
-  const mergedProps = mergeProps(dialog.getBackdropProps(), presence.getPresenceProps(ref), props)
+  const mergedProps = mergeProps(dialog.getBackdropProps(), presence.getPresenceProps(), props)
 
   if (presence.unmounted) {
     return null
   }
 
-  return <ark.div {...mergedProps} />
+  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
 })
 
 DialogBackdrop.displayName = 'DialogBackdrop'
