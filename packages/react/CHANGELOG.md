@@ -7,6 +7,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.1.0] - 2024-09-30
+
 ### Added
 
 - **Toggle**: Introduced the `Toggle` component.
