@@ -15,11 +15,14 @@ export interface StepsCompletedContentProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<StepsCompletedContentProps>()
 
 const steps = useStepsContext()
 const itemProps = computed(() => ({ index: steps.value.count }))
+
+useForwardExpose()
 </script>
 
 <template>

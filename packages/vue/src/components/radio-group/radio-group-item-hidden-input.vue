@@ -15,11 +15,14 @@ export interface RadioGroupItemHiddenInputProps
 import { ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<RadioGroupItemHiddenInputProps>()
 
 const radioGroup = useRadioGroupContext()
 const itemProps = useRadioGroupItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

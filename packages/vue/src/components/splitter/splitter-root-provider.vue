@@ -20,10 +20,14 @@ export interface SplitterRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { SplitterProvider } from './use-splitter-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SplitterRootProviderProps>()
+
 const splitter = computed(() => props.value)
 SplitterProvider(splitter)
+
+useForwardExpose()
 </script>
 
 <template>

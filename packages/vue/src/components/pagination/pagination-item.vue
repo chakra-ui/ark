@@ -15,9 +15,12 @@ export interface PaginationItemProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<PaginationItemProps>()
 const pagination = usePaginationContext()
+
+useForwardExpose()
 </script>
 
 <template>

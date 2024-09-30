@@ -14,9 +14,12 @@ export interface TimerSeparatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTimerContext } from './use-timer-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TimerSeparatorProps>()
 const timer = useTimerContext()
+
+useForwardExpose()
 </script>
 
 <template>

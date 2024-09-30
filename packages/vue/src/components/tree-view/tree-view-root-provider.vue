@@ -20,11 +20,14 @@ export interface TreeViewRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { TreeViewProvider } from './use-tree-view-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TreeViewRootProviderProps>()
 const treeView = computed(() => props.value)
 
 TreeViewProvider(treeView)
+
+useForwardExpose()
 </script>
 
 <template>

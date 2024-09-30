@@ -15,6 +15,7 @@ export interface DialogRootProviderProps extends DialogRootProviderBaseProps {}
 import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils'
 import { DialogProvider } from './use-dialog-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<DialogRootProviderProps>()
 const dialog = computed(() => props.value)
@@ -23,6 +24,8 @@ DialogProvider(dialog)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

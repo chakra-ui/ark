@@ -22,7 +22,7 @@ export interface AccordionRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { AccordionProvider } from './use-accordion-context'
 
@@ -33,6 +33,7 @@ AccordionProvider(accordion)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+useForwardExpose()
 </script>
 
 <template>

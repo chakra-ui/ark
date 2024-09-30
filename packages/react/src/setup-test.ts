@@ -14,6 +14,7 @@ window.Element.prototype.scrollTo = () => {}
 window.Element.prototype.scrollIntoView = () => {}
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
 window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
+window.URL.revokeObjectURL = () => {}
 
 Object.defineProperty(window, 'navigator', {
   value: {

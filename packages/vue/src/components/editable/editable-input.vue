@@ -15,10 +15,13 @@ export interface EditableInputProps
 import { ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<EditableInputProps>()
 const editable = useEditableContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

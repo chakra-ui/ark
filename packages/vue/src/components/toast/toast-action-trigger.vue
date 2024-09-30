@@ -14,9 +14,12 @@ export interface ToastActionTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useToastContext } from './use-toast-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ToastActionTriggerProps>()
 const toast = useToastContext()
+
+useForwardExpose()
 </script>
 
 <template>

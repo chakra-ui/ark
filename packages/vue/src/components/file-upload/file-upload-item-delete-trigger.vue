@@ -15,10 +15,13 @@ export interface FileUploadItemDeleteTriggerProps
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadItemDeleteTriggerProps>()
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

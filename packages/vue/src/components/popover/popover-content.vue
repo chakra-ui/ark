@@ -16,13 +16,18 @@ export interface PopoverContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<PopoverContentProps>()
+
 const popover = usePopoverContext()
 const presence = usePresenceContext()
+
 const mergedProps = computed(() =>
   mergeProps(popover.value.getContentProps(), presence.value.presenceProps),
 )
+
+useForwardExpose()
 </script>
 
 <template>

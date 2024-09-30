@@ -15,10 +15,13 @@ export interface SliderValueTextProps
 import { ark } from '../factory'
 import { useSlots } from 'vue'
 import { useSliderContext } from './use-slider-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SliderValueTextProps>()
 const slider = useSliderContext()
 const slots = useSlots()
+
+useForwardExpose()
 </script>
 
 <template>

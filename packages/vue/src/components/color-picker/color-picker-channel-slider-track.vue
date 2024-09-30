@@ -17,6 +17,7 @@ import { ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerChannelSliderTrackProps>()
 const colorPicker = useColorPickerContext()
@@ -24,6 +25,8 @@ const colorPicker = useColorPickerContext()
 const formatProps = useColorPickerFormatPropsContext()
 const channelProps = useColorPickerChannelPropsContext()
 const channelSliderProps = computed(() => ({ ...channelProps, ...formatProps }))
+
+useForwardExpose()
 </script>
 
 <template>

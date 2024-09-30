@@ -14,9 +14,12 @@ export interface ClipboardIndicatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ClipboardIndicatorProps>()
 const clipboard = useClipboardContext()
+
+useForwardExpose()
 </script>
 
 <template>

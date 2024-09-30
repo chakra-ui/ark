@@ -19,6 +19,7 @@ import { computed } from 'vue'
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ColorPickerValueSwatchBaseProps>()
 const colorPicker = useColorPickerContext()
@@ -28,6 +29,7 @@ const swatchProps = computed(() => ({
 }))
 
 ColorPickerSwatchPropsProvider(swatchProps.value)
+useForwardExpose()
 </script>
 
 <template>

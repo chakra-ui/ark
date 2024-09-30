@@ -14,9 +14,12 @@ export interface FieldLabelProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldLabelProps>()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

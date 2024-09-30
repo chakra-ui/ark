@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
+import { useForwardExpose } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import { ark } from '../factory'
 import type { RootEmits, RootProps } from './toggle.types'
@@ -27,6 +28,8 @@ const emit = defineEmits<ToggleRootEmits>()
 const toggle = useToggle(props, emit)
 
 ToggleProvider(toggle)
+
+useForwardExpose()
 </script>
 
 <template>

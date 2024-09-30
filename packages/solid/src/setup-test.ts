@@ -16,6 +16,7 @@ export const getExports = <T extends string>(anatomy: AnatomyInstance<T>) => {
 global.document.execCommand = () => true
 global.ResizeObserver = ResizeObserver
 global.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
+global.URL.revokeObjectURL = () => {}
 global.Element.prototype.scrollIntoView = () => {
   // no-op
 }

@@ -9,3 +9,4 @@ export {
   useRenderStrategyProps,
   type RenderStrategyProps,
 } from './use-render-strategy'
+export { useForwardExpose } from './use-forward-expose'

@@ -15,10 +15,14 @@ export interface TagsInputItemInputProps
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TagsInputItemInputProps>()
+
 const tagsInput = useTagsInputContext()
 const itemProps = useTagsInputItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

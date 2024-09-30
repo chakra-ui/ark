@@ -14,9 +14,12 @@ export interface CollapsibleTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CollapsibleTriggerProps>()
 const collapsible = useCollapsibleContext()
+
+useForwardExpose()
 </script>
 
 <template>

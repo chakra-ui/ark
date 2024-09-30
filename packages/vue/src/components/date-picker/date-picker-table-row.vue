@@ -15,10 +15,13 @@ export interface DatePickerTableRowProps
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTablePropsContext } from './use-date-picker-table-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DatePickerTableRowProps>()
 const datePicker = useDatePickerContext()
 const tableProps = useDatePickerTablePropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

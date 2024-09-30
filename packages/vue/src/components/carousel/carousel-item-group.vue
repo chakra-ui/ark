@@ -14,9 +14,12 @@ export interface CarouselItemGroupProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CarouselItemGroupProps>()
 const carousel = useCarouselContext()
+
+useForwardExpose()
 </script>
 
 <template>

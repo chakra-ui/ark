@@ -20,6 +20,7 @@ import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerTableCellPropsProvider } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<DatePickerTableCellProps>()
 const datePicker = useDatePickerContext()
@@ -34,6 +35,8 @@ const tableCellProps = computed(() => {
     // @ts-expect-error use filter guard
   }[viewProps.view](props)
 })
+
+useForwardExpose()
 </script>
 
 <template>

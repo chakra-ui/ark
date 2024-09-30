@@ -15,11 +15,14 @@ export interface SegmentGroupItemHiddenInputProps
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SegmentGroupItemHiddenInputProps>()
 
 const segmentGroup = useSegmentGroupContext()
 const itemProps = useSegmentGroupItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

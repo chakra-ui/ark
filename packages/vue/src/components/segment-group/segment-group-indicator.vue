@@ -15,9 +15,12 @@ export interface SegmentGroupIndicatorProps
 import { ark } from '../factory'
 import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SegmentGroupIndicatorProps>()
 const segmentGroup = useSegmentGroupContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -19,6 +19,7 @@ import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewDepthContext } from './use-tree-view-depth-context'
 import { TreeViewItemProvider } from './use-tree-view-item-context'
 import { TreeViewItemPropsProvider } from './use-tree-view-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TreeViewItemProps>()
 const treeView = useTreeViewContext()
@@ -26,6 +27,8 @@ const depth = useTreeViewDepthContext()
 
 TreeViewItemProvider(computed(() => treeView.value.getItemState({ ...props, depth })))
 TreeViewItemPropsProvider({ ...props, depth })
+
+useForwardExpose()
 </script>
 
 <template>

@@ -15,10 +15,14 @@ export interface MenuItemIndicatorProps
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuItemIndicatorProps>()
+
 const menu = useMenuContext()
 const optionItemProps = useMenuOptionItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

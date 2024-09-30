@@ -15,9 +15,12 @@ export interface StepsContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
+import { useForwardExpose } from '../../utils'
 
 const itemProps = defineProps<StepsContentProps>()
 const steps = useStepsContext()
+
+useForwardExpose()
 </script>
 
 <template>

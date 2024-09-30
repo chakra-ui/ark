@@ -18,6 +18,7 @@ export interface FileUploadRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useFileUpload } from './use-file-upload'
 import { FileUploadProvider } from './use-file-upload-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<FileUploadRootProps>(), {
   allowDrop: undefined,
@@ -31,6 +32,8 @@ const emits = defineEmits<FileUploadRootEmits>()
 
 const fileUpload = useFileUpload(props, emits)
 FileUploadProvider(fileUpload)
+
+useForwardExpose()
 </script>
 
 <template>

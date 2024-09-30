@@ -16,11 +16,15 @@ import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadItemSizeTextProps>()
+
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
 const slots = useSlots()
+
+useForwardExpose()
 </script>
 
 <template>

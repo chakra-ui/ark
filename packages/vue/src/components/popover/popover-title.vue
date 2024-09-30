@@ -14,9 +14,12 @@ export interface PopoverTitleProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<PopoverTitleProps>()
 const popover = usePopoverContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -14,9 +14,12 @@ export interface MenuTriggerItemProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuTriggerItemProps>()
 const triggerItemProps = useMenuTriggerItemContext()
+
+useForwardExpose()
 </script>
 
 <template>

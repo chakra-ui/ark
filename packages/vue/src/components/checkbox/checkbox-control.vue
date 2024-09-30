@@ -14,9 +14,12 @@ export interface CheckboxControlProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CheckboxControlProps>()
 const checkbox = useCheckboxContext()
+
+useForwardExpose()
 </script>
 
 <template>

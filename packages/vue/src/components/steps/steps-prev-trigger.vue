@@ -14,9 +14,12 @@ export interface StepsPrevTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<StepsPrevTriggerProps>()
 const steps = useStepsContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -18,6 +18,7 @@ export interface TimerRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useTimer } from './use-timer'
 import { TimerProvider } from './use-timer-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<TimerRootProps>(), {
   autoStart: undefined,
@@ -28,6 +29,8 @@ const emits = defineEmits<TimerRootEmits>()
 
 const timer = useTimer(props, emits)
 TimerProvider(timer)
+
+useForwardExpose()
 </script>
 
 <template>

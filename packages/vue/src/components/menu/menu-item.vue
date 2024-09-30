@@ -18,6 +18,7 @@ import { ark } from '../factory'
 import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuItemProps>(), {
   disabled: undefined,
@@ -27,6 +28,8 @@ const props = withDefaults(defineProps<MenuItemProps>(), {
 const menu = useMenuContext()
 
 MenuItemProvider(computed(() => menu.value.getItemState(props)))
+
+useForwardExpose()
 </script>
 
 <template>

@@ -10,7 +10,7 @@ export interface DialogRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 
@@ -32,6 +32,8 @@ DialogProvider(dialog)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

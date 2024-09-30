@@ -17,13 +17,17 @@ export interface FieldsetRootProps
 import { ark } from '../factory'
 import { useFieldset } from './use-fieldset'
 import { FieldsetProvider } from './use-fieldset-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<FieldsetRootProps>(), {
   disabled: undefined,
   invalid: undefined,
 } satisfies BooleanDefaults<RootProps>)
+
 const fieldset = useFieldset(props)
 FieldsetProvider(fieldset)
+
+useForwardExpose()
 </script>
 
 <template>

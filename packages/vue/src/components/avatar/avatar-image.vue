@@ -13,10 +13,13 @@ export interface AvatarImageProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
+import { useForwardExpose } from '../../utils'
 import { useAvatarContext } from './use-avatar-context'
 
 defineProps<AvatarImageProps>()
 const avatar = useAvatarContext()
+
+useForwardExpose()
 </script>
 
 <template>

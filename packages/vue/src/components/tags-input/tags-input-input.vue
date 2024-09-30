@@ -14,9 +14,12 @@ export interface TagsInputInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TagsInputInputProps>()
 const tagsInput = useTagsInputContext()
+
+useForwardExpose()
 </script>
 
 <template>

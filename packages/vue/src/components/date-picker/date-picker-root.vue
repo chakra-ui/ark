@@ -17,7 +17,7 @@ export interface DatePickerRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
@@ -39,6 +39,8 @@ DatePickerProvider(datePicker)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

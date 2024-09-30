@@ -16,7 +16,7 @@ export interface TimePickerRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed, type HTMLAttributes } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimePicker } from './use-time-picker'
 import { TimePickerProvider } from './use-time-picker-context'
@@ -37,6 +37,8 @@ TimePickerProvider(timePicker)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

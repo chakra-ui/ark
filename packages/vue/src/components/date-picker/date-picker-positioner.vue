@@ -15,6 +15,7 @@ export interface DatePickerPositionerProps
 import { useRenderStrategyProps } from '../../utils'
 import { PresenceProvider, usePresence } from '../presence'
 import { useDatePickerContext } from './use-date-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DatePickerPositionerProps>()
 const datePicker = useDatePickerContext()
@@ -27,6 +28,8 @@ const presence = usePresence(
   })),
 )
 PresenceProvider(presence)
+
+useForwardExpose()
 </script>
 
 <template>

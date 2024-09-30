@@ -16,6 +16,7 @@ export interface DatePickerContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DatePickerContentProps>()
 const datePicker = useDatePickerContext()
@@ -23,6 +24,8 @@ const presence = usePresenceContext()
 const mergedProps = computed(() =>
   mergeProps(datePicker.value.getContentProps(), presence.value.presenceProps),
 )
+
+useForwardExpose()
 </script>
 
 <template>

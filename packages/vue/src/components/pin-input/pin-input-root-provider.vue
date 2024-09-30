@@ -20,11 +20,14 @@ export interface PinInputRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { PinInputProvider } from './use-pin-input-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<PinInputRootProviderProps>()
 const pinInput = computed(() => props.value)
 
 PinInputProvider(pinInput)
+
+useForwardExpose()
 </script>
 
 <template>

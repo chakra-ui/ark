@@ -15,10 +15,14 @@ export interface SelectHiddenSelectProps
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectHiddenSelectProps>()
+
 const select = useSelectContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

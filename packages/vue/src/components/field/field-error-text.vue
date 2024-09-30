@@ -14,9 +14,12 @@ export interface FieldErrorTextProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldErrorTextProps>()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>
