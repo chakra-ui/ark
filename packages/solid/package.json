@@ -147,7 +147,7 @@
     "lucide-solid": "0.446.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
-    "rollup": "4.22.5",
+    "rollup": "4.23.0",
     "rollup-preset-solid": "2.0.1",
     "solid-js": "1.9.1",
     "storybook": "8.3.4",
