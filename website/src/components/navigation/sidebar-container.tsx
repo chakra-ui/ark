@@ -31,7 +31,9 @@ export const SidebarContainer = async (props: PropsWithChildren<Props>) => {
 }
 
 const fetchLatestVersion = async (framework: string) => {
-  const response = await fetch(`https://registry.npmjs.org/@ark-ui/${framework}/latest`)
+  const response = await fetch(`https://registry.npmjs.org/@ark-ui/${framework}/latest`, {
+    cache: 'no-cache',
+  })
   const data = await response.json()
 
   return data.version as string
