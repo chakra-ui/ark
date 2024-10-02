@@ -131,7 +131,19 @@
     "test:ci": "vitest --run",
     "typecheck": "vue-tsc",
     "storybook": "histoire dev",
-    "release-it": "release-it --config ../../release-it.json"
+    "release-it": "release-it --config ../../release-it.json",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": {
+    "remove": [
+      "exports.\\..source",
+      "exports.\\./collection.source",
+      "exports.\\./factory.source",
+      "exports.\\./environment.source",
+      "exports.\\./locale.source",
+      "exports.\\./*.source"
+    ]
   },
   "publishConfig": {
     "access": "public"
@@ -199,6 +211,7 @@
     "@vitejs/plugin-vue": "5.1.4",
     "@vitejs/plugin-vue-jsx": "4.0.1",
     "@vue/compiler-sfc": "3.5.10",
+    "clean-package": "2.2.0",
     "globby": "14.0.2",
     "histoire": "0.17.17",
     "jsdom": "25.0.1",

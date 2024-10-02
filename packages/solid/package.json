@@ -101,7 +101,19 @@
     "test:ci": "vitest --run",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../release-it.json"
+    "release-it": "release-it --config ../../release-it.json",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": {
+    "remove": [
+      "exports.\\..source",
+      "exports.\\./collection.source",
+      "exports.\\./factory.source",
+      "exports.\\./environment.source",
+      "exports.\\./locale.source",
+      "exports.\\./*.source"
+    ]
   },
   "publishConfig": {
     "access": "public"
@@ -167,6 +179,7 @@
     "@testing-library/user-event": "14.5.2",
     "@types/jsdom": "21.1.7",
     "@zag-js/stringify-state": "0.73.0",
+    "clean-package": "2.2.0",
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.0.2",
     "jsdom": "25.0.1",
