@@ -8,7 +8,11 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- Added support for importing components using dedicated entry points. For example, you can now import the `Select` component directly from `@ark-ui/solid/select`.
+- Introduced support for importing components via dedicated entry points. For instance, the `Select` can now be imported directly from `@ark-ui/solid/select`.
+
+### Fixed
+
+- Fixed an issue where Field.Input was mistakenly read-only when rendered on the server.
 
 ## [4.1.0] - 2024-09-30
 

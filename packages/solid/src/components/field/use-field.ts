@@ -1,5 +1,12 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import { createEffect, createMemo, createSignal, createUniqueId, onCleanup } from 'solid-js'
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  createUniqueId,
+  mergeProps,
+  onCleanup,
+} from 'solid-js'
 import { useFieldsetContext } from '../fieldset'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
 import { parts } from './field.anatomy'
@@ -44,24 +51,21 @@ export type UseFieldReturn = ReturnType<typeof useField>
 export const useField = (props: UseFieldProps) => {
   const fieldset: UseFieldsetReturn | undefined = useFieldsetContext()
 
-  const {
-    ids,
-    disabled = Boolean(fieldset?.().disabled),
-    invalid = false,
-    readOnly = false,
-    required = false,
-  } = props
+  const fieldProps = mergeProps(
+    { disabled: Boolean(fieldset?.().disabled), required: false, invalid: false, readOnly: false },
+    props,
+  )
 
   const [hasErrorText, setHasErrorText] = createSignal(false)
   const [hasHelperText, setHasHelperText] = createSignal(false)
 
-  const id = props.id ?? createUniqueId()
+  const id = fieldProps.id ?? createUniqueId()
   let rootRef: HTMLDivElement | undefined
 
-  const rootId = ids?.control ?? `field::${id}`
-  const errorTextId = ids?.errorText ?? `field::${id}::error-text`
-  const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
-  const labelId = ids?.label ?? `field::${id}::label`
+  const rootId = fieldProps.ids?.control ?? `field::${id}`
+  const errorTextId = fieldProps.ids?.errorText ?? `field::${id}::error-text`
+  const helperTextId = fieldProps.ids?.helperText ?? `field::${id}::helper-text`
+  const labelId = fieldProps.ids?.label ?? `field::${id}::label`
 
   createEffect(() => {
     const rootNode = rootRef
@@ -87,35 +91,35 @@ export const useField = (props: UseFieldProps) => {
     ...parts.root.attrs,
     id: rootId,
     role: 'group',
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
+    'data-disabled': dataAttr(fieldProps.disabled),
+    'data-invalid': dataAttr(fieldProps.invalid),
+    'data-readonly': dataAttr(fieldProps.readOnly),
   })
 
   const getLabelProps = () => ({
     ...parts.label.attrs,
     id: labelId,
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
+    'data-disabled': dataAttr(fieldProps.disabled),
+    'data-invalid': dataAttr(fieldProps.invalid),
+    'data-readonly': dataAttr(fieldProps.readOnly),
     htmlFor: id,
   })
 
   const labelIds: string[] = []
 
-  if (hasErrorText() && invalid) labelIds.push(errorTextId)
+  if (hasErrorText() && fieldProps.invalid) labelIds.push(errorTextId)
   if (hasHelperText()) labelIds.push(helperTextId)
 
   const getControlProps = () => ({
     'aria-describedby': labelIds.join(' ') || undefined,
-    'aria-invalid': ariaAttr(invalid),
-    'data-invalid': dataAttr(invalid),
-    'data-required': dataAttr(required),
-    'data-readonly': dataAttr(readOnly),
+    'aria-invalid': ariaAttr(fieldProps.invalid),
+    'data-invalid': dataAttr(fieldProps.invalid),
+    'data-required': dataAttr(fieldProps.required),
+    'data-readonly': dataAttr(fieldProps.readOnly),
     id,
-    required,
-    disabled,
-    readOnly,
+    required: fieldProps.required,
+    disabled: fieldProps.disabled,
+    readOnly: fieldProps.readOnly || undefined,
   })
 
   const getInputProps = () => ({
@@ -155,10 +159,10 @@ export const useField = (props: UseFieldProps) => {
     refs: {
       rootRef,
     },
-    disabled,
-    invalid,
-    readOnly,
-    required,
+    disabled: fieldProps.disabled,
+    invalid: fieldProps.invalid,
+    readOnly: fieldProps.readOnly,
+    required: fieldProps.required,
     getLabelProps,
     getRootProps,
     getInputProps,
