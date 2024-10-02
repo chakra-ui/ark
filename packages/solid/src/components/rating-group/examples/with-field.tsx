@@ -1,6 +1,7 @@
+import { Field } from '@ark-ui/solid/field'
+import { RatingGroup } from '@ark-ui/solid/rating-group'
 import { StarIcon } from 'lucide-solid'
 import { Index, Show } from 'solid-js'
-import { Field, RatingGroup } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   return (

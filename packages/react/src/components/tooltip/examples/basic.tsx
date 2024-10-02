@@ -1,4 +1,4 @@
-import { Tooltip } from '../..'
+import { Tooltip } from '@ark-ui/react/tooltip'
 
 export const Basic = () => (
   <Tooltip.Root>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Highlight from '../highlight.vue'
+import { Highlight } from '@ark-ui/vue/highlight'
 </script>
 
 <template>

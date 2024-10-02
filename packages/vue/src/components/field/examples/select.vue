@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Field } from '../'
+import { Field } from '@ark-ui/vue/field'
 </script>
 
 <template>

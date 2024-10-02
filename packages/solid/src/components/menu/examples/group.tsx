@@ -1,4 +1,4 @@
-import { Menu } from '../..'
+import { Menu } from '@ark-ui/solid/menu'
 
 export const Group = () => (
   <Menu.Root>

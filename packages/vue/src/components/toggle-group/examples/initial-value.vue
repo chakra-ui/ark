@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { ToggleGroup } from '@ark-ui/vue/toggle-group'
 import { ref } from 'vue'
-import { ToggleGroup } from '../..'
 
 const value = ref(['b'])
 </script>

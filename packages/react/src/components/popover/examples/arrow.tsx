@@ -1,4 +1,4 @@
-import { Popover } from '../..'
+import { Popover } from '@ark-ui/react/popover'
 
 export const Arrow = () => (
   <Popover.Root>

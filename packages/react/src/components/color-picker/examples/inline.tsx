@@ -1,4 +1,4 @@
-import { ColorPicker, parseColor } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { ColorPickerContent } from './_template'
 
 export const Inline = () => {

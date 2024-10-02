@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Checkbox, type CheckboxCheckedState } from '@ark-ui/vue/checkbox'
 import { ref } from 'vue'
-import { Checkbox, type CheckboxCheckedState } from '../..'
 import { CheckIcon } from './icons'
 
 const checked = ref<CheckboxCheckedState>(true)

@@ -1,4 +1,6 @@
-import { Checkbox, Field, Fieldset } from '../..'
+import { Checkbox } from '@ark-ui/react/checkbox'
+import { Field } from '@ark-ui/react/field'
+import { Fieldset } from '@ark-ui/react/fieldset'
 
 export const WithCheckbox = (props: Fieldset.RootProps) => {
   return (

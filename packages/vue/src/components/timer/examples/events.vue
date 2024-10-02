@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Timer } from '../..'
+import { Timer } from '@ark-ui/vue/timer'
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-import { Progress } from '../..'
+import { Progress } from '@ark-ui/solid/progress'
 
 export const Basic = () => (
   <Progress.Root>

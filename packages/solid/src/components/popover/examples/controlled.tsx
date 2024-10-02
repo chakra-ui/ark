@@ -1,5 +1,5 @@
+import { Popover } from '@ark-ui/solid/popover'
 import { createSignal } from 'solid-js'
-import { Popover } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)

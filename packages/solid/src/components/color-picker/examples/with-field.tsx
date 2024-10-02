@@ -1,4 +1,5 @@
-import { ColorPicker, Field, parseColor } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
+import { Field } from '@ark-ui/solid/field'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

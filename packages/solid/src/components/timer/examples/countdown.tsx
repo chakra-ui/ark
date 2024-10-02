@@ -1,4 +1,4 @@
-import { Timer } from '../..'
+import { Timer } from '@ark-ui/solid/timer'
 
 export const Countdown = () => (
   <Timer.Root autoStart countdown startMs={60 * 60 * 500}>

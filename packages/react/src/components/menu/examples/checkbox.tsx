@@ -1,5 +1,5 @@
+import { Menu } from '@ark-ui/react/menu'
 import { useState } from 'react'
-import { Menu } from '../..'
 
 export const Checkbox = () => {
   const [checked, setChecked] = useState(false)

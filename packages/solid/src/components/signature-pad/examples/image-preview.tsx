@@ -1,5 +1,5 @@
+import { SignaturePad } from '@ark-ui/solid/signature-pad'
 import { Show, createSignal } from 'solid-js'
-import { SignaturePad } from '../..'
 
 export const ImagePreview = () => {
   const [imageUrl, setImageUrl] = createSignal<string>()

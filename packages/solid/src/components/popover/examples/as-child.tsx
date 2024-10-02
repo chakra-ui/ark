@@ -1,6 +1,6 @@
 // @ts-expect-error
 import { Button } from '@acme/ui-lib'
-import { Popover } from '../..'
+import { Popover } from '@ark-ui/solid/popover'
 
 export const Basic = () => (
   <Popover.Root>

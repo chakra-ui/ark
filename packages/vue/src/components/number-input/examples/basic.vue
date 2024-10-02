@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NumberInput } from '../..'
+import { NumberInput } from '@ark-ui/vue/number-input'
 </script>
 
 <template>

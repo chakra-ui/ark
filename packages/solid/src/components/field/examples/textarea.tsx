@@ -1,4 +1,4 @@
-import { Field } from '..'
+import { Field } from '@ark-ui/solid/field'
 
 export const Textarea = () => {
   return (

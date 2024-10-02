@@ -1,5 +1,5 @@
+import { Toggle } from '@ark-ui/react/toggle'
 import { BoldIcon } from 'lucide-react'
-import { Toggle } from '../'
 
 export const Basic = () => {
   return (

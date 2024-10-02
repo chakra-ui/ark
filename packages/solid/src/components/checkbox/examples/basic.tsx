@@ -1,5 +1,5 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
 import { CheckIcon } from 'lucide-solid'
-import { Checkbox } from '../..'
 
 export const Basic = () => (
   <Checkbox.Root>

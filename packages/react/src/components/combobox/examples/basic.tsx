@@ -1,5 +1,6 @@
+import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { Portal } from '@ark-ui/react/portal'
 import { useMemo, useState } from 'react'
-import { Combobox, Portal, createListCollection } from '../..'
 
 const initialItems = ['React', 'Solid', 'Vue']
 

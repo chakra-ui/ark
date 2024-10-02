@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { QrCode } from '../..'
+import { QrCode } from '@ark-ui/vue/qr-code'
 </script>
 
 <template>

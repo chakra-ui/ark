@@ -1,5 +1,5 @@
+import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
 import { createSignal } from 'solid-js'
-import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',

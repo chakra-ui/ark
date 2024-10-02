@@ -1,4 +1,5 @@
-import { Editable, Field } from '../..'
+import { Editable } from '@ark-ui/solid/editable'
+import { Field } from '@ark-ui/solid/field'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props} readOnly>

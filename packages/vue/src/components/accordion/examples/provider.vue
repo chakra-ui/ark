@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Accordion, useAccordion } from '@ark-ui/vue/accordion'
 import { ref } from 'vue'
-import { Accordion, useAccordion } from '../..'
 import { ChevronDownIcon } from './icons'
 
 const accordion = useAccordion({

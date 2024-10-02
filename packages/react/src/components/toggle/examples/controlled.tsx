@@ -1,6 +1,6 @@
+import { Toggle } from '@ark-ui/react/toggle'
 import { Volume, VolumeOff } from 'lucide-react'
 import { useState } from 'react'
-import { Toggle } from '../'
 
 export const Controlled = () => {
   const [pressed, setPressed] = useState(false)

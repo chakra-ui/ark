@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Menu } from '../..'
+import { Menu } from '@ark-ui/vue/menu'
 </script>
 
 <template>

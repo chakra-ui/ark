@@ -1,4 +1,4 @@
-import { Editable } from '../..'
+import { Editable } from '@ark-ui/solid/editable'
 
 export const Basic = () => (
   <Editable.Root placeholder="Placeholder">

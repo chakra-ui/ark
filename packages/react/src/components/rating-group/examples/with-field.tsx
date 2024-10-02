@@ -1,5 +1,6 @@
+import { Field } from '@ark-ui/react/field'
+import { RatingGroup } from '@ark-ui/react/rating-group'
 import { StarIcon } from 'lucide-react'
-import { Field, RatingGroup } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   return (

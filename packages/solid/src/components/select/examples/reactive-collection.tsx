@@ -1,7 +1,7 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-solid'
 import { createMemo, createSignal } from 'solid-js'
 import { Index } from 'solid-js/web'
-import { Select, createListCollection } from '../..'
 
 const items = [
   { label: 'React', value: 'react' },

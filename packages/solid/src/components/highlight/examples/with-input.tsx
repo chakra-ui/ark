@@ -1,5 +1,5 @@
+import { Highlight } from '@ark-ui/solid/highlight'
 import { createSignal } from 'solid-js'
-import { Highlight } from '../..'
 
 export const WithInput = () => {
   const [query, setQuery] = createSignal('ipsum')

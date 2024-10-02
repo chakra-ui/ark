@@ -1,6 +1,6 @@
+import { Dialog } from '@ark-ui/solid/dialog'
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Dialog } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)

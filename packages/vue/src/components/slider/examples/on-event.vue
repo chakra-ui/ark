@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Slider } from '../..'
+import { Slider } from '@ark-ui/vue/slider'
 </script>
 
 <template>

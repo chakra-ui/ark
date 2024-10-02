@@ -1,4 +1,4 @@
-import { Pagination } from '../..'
+import { Pagination } from '@ark-ui/react/pagination'
 
 export const Customized = () => (
   <Pagination.Root

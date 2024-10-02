@@ -1,4 +1,4 @@
-import { Tabs } from '../..'
+import { Tabs } from '@ark-ui/solid/tabs'
 
 export const Vertical = () => (
   <Tabs.Root orientation="vertical" value="react">

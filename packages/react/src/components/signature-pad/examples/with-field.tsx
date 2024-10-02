@@ -1,5 +1,6 @@
+import { Field } from '@ark-ui/react/field'
+import { SignaturePad } from '@ark-ui/react/signature-pad'
 import { useState } from 'react'
-import { Field, SignaturePad } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   const [value, setValue] = useState('')

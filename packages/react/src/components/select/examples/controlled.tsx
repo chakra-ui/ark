@@ -1,6 +1,7 @@
+import { Portal } from '@ark-ui/react/portal'
+import { Select, createListCollection } from '@ark-ui/react/select'
 import { ChevronDownIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Portal, Select, createListCollection } from '../..'
 
 interface Item {
   label: string

@@ -1,4 +1,4 @@
-import { ColorPicker, parseColor } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
 
 export const Basic = () => {
   return (

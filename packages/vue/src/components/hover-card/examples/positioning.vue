@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HoverCard } from '../..'
+import { HoverCard } from '@ark-ui/vue/hover-card'
 </script>
 
 <template>

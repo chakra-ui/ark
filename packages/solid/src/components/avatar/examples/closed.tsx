@@ -1,6 +1,6 @@
+import { Avatar as ArkAvatar } from '@ark-ui/solid/avatar'
 import { UserIcon } from 'lucide-solid'
 import { Show, splitProps } from 'solid-js'
-import { Avatar as ArkAvatar } from '../..'
 
 export interface AvatarProps extends ArkAvatar.RootProps {
   name?: string

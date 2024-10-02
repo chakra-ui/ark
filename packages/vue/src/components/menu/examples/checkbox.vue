@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Menu } from '@ark-ui/vue/menu'
 import { ref } from 'vue'
-import { Menu } from '../..'
 
 const checked = ref(true)
 </script>

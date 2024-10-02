@@ -1,4 +1,5 @@
-import { DatePicker, Portal } from '../..'
+import { DatePicker } from '@ark-ui/react/date-picker'
+import { Portal } from '@ark-ui/react/portal'
 
 export const Basic = () => {
   return (

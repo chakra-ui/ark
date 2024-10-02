@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Editable } from '../..'
+import { Editable } from '@ark-ui/vue/editable'
 </script>
 
 <template>

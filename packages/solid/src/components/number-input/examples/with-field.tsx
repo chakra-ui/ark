@@ -1,4 +1,5 @@
-import { Field, NumberInput } from '../..'
+import { Field } from '@ark-ui/solid/field'
+import { NumberInput } from '@ark-ui/solid/number-input'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

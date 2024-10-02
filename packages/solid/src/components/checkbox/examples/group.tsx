@@ -1,6 +1,6 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
 import { CheckIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Checkbox } from '../..'
 
 const items = [
   { label: 'React', value: 'react' },

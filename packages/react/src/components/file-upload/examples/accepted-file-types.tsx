@@ -1,4 +1,4 @@
-import { FileUpload } from '../..'
+import { FileUpload } from '@ark-ui/react/file-upload'
 
 export const WithAcceptedFileTypes = () => {
   return (

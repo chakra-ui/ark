@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Format } from '../..'
-import { LocaleProvider } from '../../../providers'
+import { Format } from '@ark-ui/vue/format'
+import { LocaleProvider } from '@ark-ui/vue/locale'
 </script>
 
 <template>

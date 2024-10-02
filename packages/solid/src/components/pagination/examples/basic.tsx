@@ -1,5 +1,5 @@
+import { Pagination } from '@ark-ui/solid/pagination'
 import { For } from 'solid-js'
-import { Pagination } from '../..'
 
 export const Basic = () => (
   <Pagination.Root count={5000} pageSize={10} siblingCount={2}>

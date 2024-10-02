@@ -1,4 +1,5 @@
-import { Field, TagsInput } from '../..'
+import { Field } from '@ark-ui/react/field'
+import { TagsInput } from '@ark-ui/react/tags-input'
 
 export const WithField = (props: Field.RootProps) => {
   return (

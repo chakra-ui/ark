@@ -1,5 +1,5 @@
+import { Clipboard } from '@ark-ui/solid/clipboard'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { Clipboard } from '../..'
 
 export const Basic = () => {
   return (

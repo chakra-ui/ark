@@ -1,5 +1,5 @@
+import { RatingGroup } from '@ark-ui/react/rating-group'
 import { StarIcon } from 'lucide-react'
-import { RatingGroup } from '../..'
 
 export const FormUsage = () => (
   <RatingGroup.Root name="my-rating" count={5} defaultValue={3}>

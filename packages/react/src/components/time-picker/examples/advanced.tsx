@@ -1,4 +1,5 @@
-import { Portal, TimePicker } from '../..'
+import { Portal } from '@ark-ui/react/portal'
+import { TimePicker } from '@ark-ui/react/time-picker'
 
 export const Advanced = () => {
   return (

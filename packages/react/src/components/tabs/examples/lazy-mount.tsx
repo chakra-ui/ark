@@ -1,4 +1,4 @@
-import { Tabs } from '../..'
+import { Tabs } from '@ark-ui/react/tabs'
 
 export const LazyMount = () => (
   <Tabs.Root lazyMount unmountOnExit>

@@ -1,5 +1,5 @@
+import { Carousel } from '@ark-ui/react/carousel'
 import { useState } from 'react'
-import { Carousel } from '../..'
 
 export const Controlled = () => {
   const [currentIndex, setCurrentIndex] = useState(0)

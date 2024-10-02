@@ -1,5 +1,5 @@
+import { Pagination } from '@ark-ui/react/pagination'
 import { useState } from 'react'
-import { Pagination } from '../..'
 
 export const Controlled = () => {
   const [currentPage, setCurrentPage] = useState(1)

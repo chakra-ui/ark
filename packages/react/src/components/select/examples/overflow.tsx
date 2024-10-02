@@ -1,4 +1,5 @@
-import { Portal, Select, createListCollection } from '../..'
+import { Portal } from '@ark-ui/react/portal'
+import { Select, createListCollection } from '@ark-ui/react/select'
 
 export const Overflow = () => {
   const collection = createListCollection({

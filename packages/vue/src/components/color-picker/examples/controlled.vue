@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { ColorPicker, parseColor } from '@ark-ui/vue/color-picker'
 import { ref } from 'vue'
-import { ColorPicker, parseColor } from '../..'
 
 const value = ref(parseColor('hsl(20, 100%, 50%)'))
 </script>

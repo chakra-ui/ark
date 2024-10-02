@@ -1,4 +1,4 @@
-export const react = `import { Slider } from '@ark-ui/react'
+export const react = `import { Slider } from '@ark-ui/react/slider'
 import { useState } from 'react'
   
 export const MySlider = () => {
@@ -23,7 +23,7 @@ export const MySlider = () => {
   )
 }`
 
-export const solid = `import { Slider } from '@ark-ui/solid'
+export const solid = `import { Slider } from '@ark-ui/solid/slider'
 import { createSignal } from 'solid-js'
 
 export const MySlider = () => {
@@ -49,7 +49,7 @@ export const MySlider = () => {
 }`
 
 export const vue = `<script setup lang="ts">
-import { Slider } from '@ark-ui/vue'
+import { Slider } from '@ark-ui/vue/slider'
 import { ref } from 'vue'
 
 const value = ref([30])

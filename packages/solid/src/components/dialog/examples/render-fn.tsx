@@ -1,5 +1,5 @@
+import { Dialog } from '@ark-ui/solid/dialog'
 import { Portal } from 'solid-js/web'
-import { Dialog } from '../..'
 
 export const RenderFn = () => {
   return (

@@ -1,4 +1,4 @@
-import { SignaturePad } from '../..'
+import { SignaturePad } from '@ark-ui/react/signature-pad'
 
 export const Basic = () => (
   <SignaturePad.Root>

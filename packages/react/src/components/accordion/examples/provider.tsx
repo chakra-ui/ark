@@ -1,5 +1,5 @@
+import { Accordion, useAccordion } from '@ark-ui/react/accordion'
 import { ChevronDownIcon } from 'lucide-react'
-import { Accordion, useAccordion } from '../..'
 
 export const Provider = () => {
   const accordion = useAccordion({

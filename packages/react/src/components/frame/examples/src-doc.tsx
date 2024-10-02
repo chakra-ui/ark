@@ -1,4 +1,4 @@
-import { Frame } from '../frame'
+import { Frame } from '@ark-ui/react/frame'
 
 const srcDoc = `<html><head>
 <link href="//use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet" />

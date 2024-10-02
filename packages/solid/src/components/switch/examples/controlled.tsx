@@ -1,5 +1,5 @@
+import { Switch } from '@ark-ui/solid/switch'
 import { createSignal } from 'solid-js'
-import { Switch } from '../..'
 
 export const Controlled = () => {
   const [checked, setChecked] = createSignal(false)

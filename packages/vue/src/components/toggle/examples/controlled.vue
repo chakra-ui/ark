@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { Toggle } from '@ark-ui/vue/toggle'
 import { Volume, VolumeOff } from 'lucide-vue-next'
 import { ref } from 'vue'
-import { Toggle } from '../'
 
 const pressed = ref(false)
 </script>

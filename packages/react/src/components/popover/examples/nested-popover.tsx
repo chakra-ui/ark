@@ -1,4 +1,5 @@
-import { Popover, Portal } from '../..'
+import { Popover } from '@ark-ui/react/popover'
+import { Portal } from '@ark-ui/react/portal'
 
 const style: React.CSSProperties = {
   width: '200px',

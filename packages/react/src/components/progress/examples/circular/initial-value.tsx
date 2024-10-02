@@ -1,4 +1,4 @@
-import { Progress } from '../..'
+import { Progress } from '@ark-ui/react/progress'
 
 export const InitialValue = () => (
   <Progress.Root defaultValue={70}>
