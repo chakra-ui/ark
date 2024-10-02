@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added support for importing components using dedicated entry points. For example, you can now import the `Select` component directly from `@ark-ui/solid/select`.
+
 ## [4.1.0] - 2024-09-30
 
 ### Added
