@@ -1,4 +1,4 @@
-import { Timer } from '../..'
+import { Timer } from '@ark-ui/solid/timer'
 
 export const Basic = () => (
   <Timer.Root targetMs={60 * 60 * 1000}>

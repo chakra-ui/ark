@@ -1,5 +1,5 @@
+import { Toggle } from '@ark-ui/solid/toggle'
 import { BoldIcon } from 'lucide-solid'
-import { Toggle } from '../'
 
 export const Disabled = () => {
   return (

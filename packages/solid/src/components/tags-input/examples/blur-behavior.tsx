@@ -1,5 +1,5 @@
+import { TagsInput } from '@ark-ui/solid/tags-input'
 import { Index } from 'solid-js'
-import { TagsInput } from '../..'
 
 export const BlurBehavior = () => {
   return (

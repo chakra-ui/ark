@@ -1,6 +1,6 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
 import { CheckIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
-import { Checkbox } from '../..'
 
 export const Controlled = () => {
   const [checked, setChecked] = createSignal<Checkbox.CheckedState>(true)

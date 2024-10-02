@@ -1,4 +1,4 @@
-import { Frame } from '../frame'
+import { Frame } from '@ark-ui/solid/frame'
 
 export const Basic = () => {
   return (

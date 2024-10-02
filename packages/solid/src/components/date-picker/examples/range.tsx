@@ -1,6 +1,6 @@
+import { DatePicker } from '@ark-ui/solid/date-picker'
 import { Index, createMemo } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { DatePicker } from '../..'
 
 export const Range = () => {
   return (

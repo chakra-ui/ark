@@ -1,6 +1,6 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronDown } from 'lucide-solid'
 import { For, Portal } from 'solid-js/web'
-import { Select, createListCollection } from '../..'
 
 const SelectAllButton = () => {
   return (

@@ -1,4 +1,4 @@
-import { Avatar } from '../..'
+import { Avatar } from '@ark-ui/solid/avatar'
 
 export const Context = () => (
   <Avatar.Root>

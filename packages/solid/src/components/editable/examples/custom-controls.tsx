@@ -1,5 +1,5 @@
+import { Editable } from '@ark-ui/solid/editable'
 import { Show } from 'solid-js'
-import { Editable } from '../..'
 
 export const CustomControls = () => (
   <Editable.Root placeholder="enter a value" value="Chakra">

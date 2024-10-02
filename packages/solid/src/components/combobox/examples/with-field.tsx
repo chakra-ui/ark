@@ -1,5 +1,6 @@
+import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
+import { Field } from '@ark-ui/solid/field'
 import { For } from 'solid-js'
-import { Combobox, Field, createListCollection } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })

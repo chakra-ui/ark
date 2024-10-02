@@ -1,5 +1,5 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
 import { CheckIcon, MinusIcon } from 'lucide-solid'
-import { Checkbox } from '../..'
 
 export const Indeterminate = () => (
   <Checkbox.Root checked="indeterminate">

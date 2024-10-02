@@ -1,4 +1,6 @@
-import { Checkbox, Field, Fieldset } from '../..'
+import { Checkbox } from '@ark-ui/solid/checkbox'
+import { Field } from '@ark-ui/solid/field'
+import { Fieldset } from '@ark-ui/solid/fieldset'
 
 export const WithCheckbox = (props: Fieldset.RootProps) => {
   return (

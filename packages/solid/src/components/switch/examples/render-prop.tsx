@@ -1,4 +1,4 @@
-import { Switch } from '../..'
+import { Switch } from '@ark-ui/solid/switch'
 
 export const RenderProp = () => (
   <Switch.Root>

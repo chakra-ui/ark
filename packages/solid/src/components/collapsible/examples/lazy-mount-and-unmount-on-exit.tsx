@@ -1,4 +1,4 @@
-import { Collapsible } from '../..'
+import { Collapsible } from '@ark-ui/solid/collapsible'
 
 export const LazyMountAndUnmountOnExit = () => (
   <Collapsible.Root lazyMount unmountOnExit>

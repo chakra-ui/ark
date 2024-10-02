@@ -1,5 +1,5 @@
+import { Steps } from '@ark-ui/solid/steps'
 import { For } from 'solid-js'
-import { Steps } from '..'
 
 const items = [
   { value: 'first', title: 'First', description: 'Contact Info' },

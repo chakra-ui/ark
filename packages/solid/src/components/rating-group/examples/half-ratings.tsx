@@ -1,6 +1,6 @@
+import { RatingGroup } from '@ark-ui/solid/rating-group'
 import { StarHalfIcon, StarIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
-import { RatingGroup } from '../..'
 
 export const HalfRatings = () => (
   <RatingGroup.Root count={5} value={3} allowHalf>

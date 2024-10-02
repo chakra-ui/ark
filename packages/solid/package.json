@@ -58,31 +58,37 @@
   "files": ["dist"],
   "exports": {
     ".": {
+      "source": "./src/index.tsx",
       "types": "./dist/index.d.ts",
       "solid": "./dist/index.jsx",
       "default": "./dist/index.js"
     },
     "./collection": {
+      "source": "./src/components/collection.ts",
       "types": "./dist/components/collection.d.ts",
       "solid": "./dist/components/collection.jsx",
       "default": "./dist/components/collection.js"
     },
     "./factory": {
+      "source": "./src/components/factory.tsx",
       "types": "./dist/components/factory.d.ts",
       "solid": "./dist/components/factory.jsx",
       "default": "./dist/components/factory.js"
     },
     "./environment": {
+      "source": "./src/providers/environment/index.ts",
       "types": "./dist/providers/environment/index.d.ts",
       "solid": "./dist/providers/environment/index.jsx",
       "default": "./dist/providers/environment/index.js"
     },
     "./locale": {
+      "source": "./src/providers/locale/index.tsx",
       "types": "./dist/providers/locale/index.d.ts",
       "solid": "./dist/providers/locale/index.jsx",
       "default": "./dist/providers/locale/index.js"
     },
     "./*": {
+      "source": "./src/components/*/index.tsx",
       "types": "./dist/components/*/index.d.ts",
       "solid": "./dist/components/*/index.jsx",
       "default": "./dist/components/*/index.js"

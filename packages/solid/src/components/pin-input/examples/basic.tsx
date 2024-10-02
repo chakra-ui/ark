@@ -1,5 +1,5 @@
+import { PinInput } from '@ark-ui/solid/pin-input'
 import { Index } from 'solid-js'
-import { PinInput } from '../..'
 
 export const Basic = () => (
   <PinInput.Root onValueComplete={(e) => alert(e.valueAsString)}>

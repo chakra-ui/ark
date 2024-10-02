@@ -1,4 +1,4 @@
-import { Highlight } from '../..'
+import { Highlight } from '@ark-ui/solid/highlight'
 
 export const Basic = () => {
   return (

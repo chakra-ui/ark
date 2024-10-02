@@ -1,6 +1,6 @@
+import { DatePicker, parseDate } from '@ark-ui/solid/date-picker'
 import { createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
-import { DatePicker, parseDate } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = createSignal<DatePicker.DateValue[]>([parseDate('2022-01-01')])

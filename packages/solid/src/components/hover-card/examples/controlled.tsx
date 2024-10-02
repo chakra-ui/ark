@@ -1,6 +1,6 @@
+import { HoverCard } from '@ark-ui/solid/hover-card'
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { HoverCard } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setOpen] = createSignal(false)

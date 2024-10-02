@@ -1,4 +1,4 @@
-import { Splitter } from '../..'
+import { Splitter } from '@ark-ui/solid/splitter'
 
 export const RenderProp = () => (
   <Splitter.Root

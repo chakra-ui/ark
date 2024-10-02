@@ -1,5 +1,5 @@
+import { TimePicker } from '@ark-ui/solid/time-picker'
 import { Index, Portal } from 'solid-js/web'
-import { TimePicker } from '../..'
 
 export const Advanced = () => {
   return (

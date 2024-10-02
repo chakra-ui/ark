@@ -1,6 +1,6 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { createMemo, createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
-import { Select, createListCollection } from '../../'
 
 export const DynamicItems = () => {
   const [items, setItems] = createSignal(['React', 'Solid', 'Vue'])

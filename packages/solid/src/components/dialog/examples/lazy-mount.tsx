@@ -1,4 +1,4 @@
-import { Dialog } from '../..'
+import { Dialog } from '@ark-ui/solid/dialog'
 
 export const LazyMount = () => {
   return (

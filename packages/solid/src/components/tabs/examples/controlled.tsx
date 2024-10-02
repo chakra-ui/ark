@@ -1,5 +1,5 @@
+import { Tabs } from '@ark-ui/solid/tabs'
 import { createSignal } from 'solid-js'
-import { Tabs } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = createSignal<string | null>('react')

@@ -1,4 +1,4 @@
-import { Format } from '../..'
+import { Format } from '@ark-ui/solid/format'
 
 export const ByteWithUnit = () => {
   const value = 1450.45

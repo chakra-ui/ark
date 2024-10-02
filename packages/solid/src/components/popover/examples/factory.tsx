@@ -1,4 +1,4 @@
-import { ark } from '../../factory'
+import { ark } from '@ark-ui/solid/factory'
 
 export const ArkFactory = () => (
   <ark.div

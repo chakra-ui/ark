@@ -1,6 +1,6 @@
+import { Accordion, useAccordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
-import { Accordion, useAccordion } from '../..'
 
 export const Provider = () => {
   const accordion = useAccordion({

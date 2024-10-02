@@ -1,5 +1,6 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
+import { Field } from '@ark-ui/solid/field'
 import { CheckIcon, MinusIcon } from 'lucide-solid'
-import { Checkbox, Field } from '../..'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>
