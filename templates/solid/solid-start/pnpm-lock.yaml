@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@ark-ui/solid':
-    specifier: 4.1.0
-    version: 4.1.0(solid-js@1.9.1)
+    specifier: 4.2.0
+    version: 4.2.0(solid-js@1.9.1)
   '@solidjs/meta':
     specifier: 0.29.4
     version: 0.29.4(solid-js@1.9.1)
@@ -34,8 +34,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
     dev: false
 
-  /@ark-ui/solid@4.1.0(solid-js@1.9.1):
-    resolution: {integrity: sha512-jH7oEmcLoKuc8AAKlS7f/zcGsjwca3uJUKr9Im7SYlNBbAHYm+RI/sHdr7/UeKMnVdMq9a8+/VqGhBd0kalTbA==}
+  /@ark-ui/solid@4.2.0(solid-js@1.9.1):
+    resolution: {integrity: sha512-LYVzCq2v086HpXaZ/Ex7ZLUWgZgbzjJwdr19BQq5R8UQCRe26S4IVLa+BgA+v1iLecbRh7Ht31WUqbeV8NXIBA==}
     peerDependencies:
       solid-js: '>=1.6.0'
     dependencies:
