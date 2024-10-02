@@ -76,7 +76,7 @@
       "default": "./dist/components/factory.js"
     },
     "./environment": {
-      "source": "./src/providers/environment/index.ts",
+      "source": "./src/providers/environment/index.tsx",
       "types": "./dist/providers/environment/index.d.ts",
       "solid": "./dist/providers/environment/index.jsx",
       "default": "./dist/providers/environment/index.js"
