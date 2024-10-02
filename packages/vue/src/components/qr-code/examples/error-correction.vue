@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { QrCode, type QrCodeGenerateOptions } from '@ark-ui/vue/qr-code'
 import { ref } from 'vue'
-import { QrCode, type QrCodeGenerateOptions } from '../..'
 
 const encoding = ref<QrCodeGenerateOptions>({ ecc: 'H' })
 </script>

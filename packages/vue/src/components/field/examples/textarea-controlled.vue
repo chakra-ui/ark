@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Field } from '@ark-ui/vue/field'
 import { ref } from 'vue'
-import { Field } from '../'
 
 const model = ref(['This is some text', 'then more text'])
 </script>

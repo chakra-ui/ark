@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Combobox, createListCollection } from '../..'
+import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
 
 const frameworks = createListCollection({
   items: [

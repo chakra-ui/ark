@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Select, createListCollection } from '../..'
+import { Select, createListCollection } from '@ark-ui/vue/select'
 import { ChevronDownIcon } from './icons'
 
 const collection = createListCollection({

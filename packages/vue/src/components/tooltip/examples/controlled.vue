@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Tooltip } from '@ark-ui/vue/tooltip'
 import { ref } from 'vue'
-import { Tooltip } from '../..'
 
 const isOpen = ref(false)
 </script>

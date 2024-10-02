@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { RadioGroup } from '@ark-ui/vue/radio-group'
 import { ref } from 'vue'
-import { RadioGroup } from '../..'
 
 const frameworks = ref(['React', 'Solid', 'Vue'])
 </script>

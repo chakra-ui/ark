@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Frame from '../frame.vue'
+import { Frame } from '@ark-ui/vue/frame'
 
 const srcDoc = `<html><head>
 <link href="//use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet" />

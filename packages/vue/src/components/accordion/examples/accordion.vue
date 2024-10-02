@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '../'
-import { useForwardPropsEmits } from '../../../utils'
+import { useForwardPropsEmits } from '@ark-ui/vue'
+import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '@ark-ui/vue/accordion'
 import { ChevronDownIcon } from './icons'
 
 export interface AccordionProps extends AccordionRootProps {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DatePicker } from '../..'
+import { DatePicker } from '@ark-ui/vue/date-picker'
 </script>
 
 <template>

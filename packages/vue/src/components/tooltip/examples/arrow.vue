@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Tooltip } from '../..'
+import { Tooltip } from '@ark-ui/vue/tooltip'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ColorPicker } from '../..'
+import { ColorPicker } from '@ark-ui/vue/color-picker'
 </script>
 
 <template>

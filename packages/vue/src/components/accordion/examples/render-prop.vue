@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Accordion } from '@ark-ui/vue/accordion'
 import { ref } from 'vue'
-import { Accordion } from '../..'
 
 const items = ref(['React', 'Solid', 'Vue'])
 </script>

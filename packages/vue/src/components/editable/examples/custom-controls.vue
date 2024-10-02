@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Editable } from '@ark-ui/vue/editable'
 import { ref } from 'vue'
-import { Editable } from '../..'
 const value = ref('Chakra')
 </script>
 

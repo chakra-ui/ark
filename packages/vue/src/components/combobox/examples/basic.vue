@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 // biome-ignore lint/style/useImportType: <explanation>
-import { Combobox, createListCollection } from '../..'
+import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
+import { computed, ref } from 'vue'
 
 const initialItems = ['React', 'Solid', 'Vue']
 

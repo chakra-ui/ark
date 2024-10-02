@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Collapsible } from '..'
+import { Collapsible } from '@ark-ui/vue/collapsible'
 </script>
 
 <template>

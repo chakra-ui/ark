@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Tabs } from '@ark-ui/vue/tabs'
 import { ref } from 'vue'
-import { Tabs } from '../..'
 
 const value = ref('react')
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Toast, Toaster, createToaster } from '@ark-ui/vue/toast'
 import { ref } from 'vue'
-import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',

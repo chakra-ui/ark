@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar, useAvatar } from '../..'
+import { Avatar, useAvatar } from '@ark-ui/vue/avatar'
 
 const avatar = useAvatar({
   onStatusChange: (e) => console.log('status changed', e),

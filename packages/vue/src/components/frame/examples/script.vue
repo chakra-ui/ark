@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 // biome-ignore lint/style/useImportType: <explanation>
-import Frame from '../frame.vue'
+import { Frame } from '@ark-ui/vue/frame'
+import { ref } from 'vue'
 
 const frameRef = ref<InstanceType<typeof Frame> | null>(null)
 

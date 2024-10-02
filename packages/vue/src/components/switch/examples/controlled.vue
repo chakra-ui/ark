@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Switch } from '@ark-ui/vue/switch'
 import { ref } from 'vue'
-import { Switch } from '../..'
 
 const checked = ref(true)
 </script>

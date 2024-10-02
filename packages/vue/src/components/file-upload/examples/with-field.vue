@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Field, FileUpload } from '../..'
+import { Field } from '@ark-ui/vue/field'
+import { FileUpload } from '@ark-ui/vue/file-upload'
 </script>
 
 <template>

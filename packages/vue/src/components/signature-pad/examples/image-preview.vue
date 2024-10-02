@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { SignaturePad, type SignaturePadDrawEndDetails } from '@ark-ui/vue/signature-pad'
 import { ref } from 'vue'
-import { SignaturePad, type SignaturePadDrawEndDetails } from '../..'
 
 const imageUrl = ref<string | null>(null)
 

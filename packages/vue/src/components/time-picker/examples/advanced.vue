@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TimePicker } from '../..'
+import { TimePicker } from '@ark-ui/vue/time-picker'
 </script>
 
 <template>

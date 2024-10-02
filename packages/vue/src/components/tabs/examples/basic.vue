@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Tabs } from '../..'
+import { Tabs } from '@ark-ui/vue/tabs'
 </script>
 
 <template>
