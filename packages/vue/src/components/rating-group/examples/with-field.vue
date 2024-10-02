@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Field, RatingGroup } from '../..'
+import { Field } from '@ark-ui/vue/field'
+import { RatingGroup } from '@ark-ui/vue/rating-group'
 import { StarIcon, StarOutlineIcon } from './icons'
 </script>
 

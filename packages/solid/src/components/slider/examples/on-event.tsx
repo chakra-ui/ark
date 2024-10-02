@@ -1,4 +1,4 @@
-import { Slider } from '../..'
+import { Slider } from '@ark-ui/solid/slider'
 
 export const OnEvent = () => {
   return (

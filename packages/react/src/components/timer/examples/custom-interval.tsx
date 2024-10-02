@@ -1,4 +1,4 @@
-import { Timer } from '../..'
+import { Timer } from '@ark-ui/react/timer'
 
 export const CustomInterval = () => (
   <Timer.Root interval={500} targetMs={10 * 1000}>

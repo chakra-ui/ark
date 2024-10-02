@@ -1,4 +1,4 @@
-import { RadioGroup } from '../..'
+import { RadioGroup } from '@ark-ui/react/radio-group'
 
 export const Disabled = () => {
   const frameworks = ['React', 'Solid', 'Vue']

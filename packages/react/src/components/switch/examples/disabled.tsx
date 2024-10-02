@@ -1,4 +1,4 @@
-import { Switch } from '../..'
+import { Switch } from '@ark-ui/react/switch'
 
 export const Disabled = () => {
   return (

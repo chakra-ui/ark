@@ -1,6 +1,6 @@
+import { ColorPicker } from '@ark-ui/react/color-picker'
 import { parseColor } from '@zag-js/color-utils'
 import { useForm } from 'react-hook-form'
-import { ColorPicker } from '../..'
 import { ColorPickerContent } from './_template'
 
 interface FieldValues {

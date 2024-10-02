@@ -1,4 +1,4 @@
-import { NumberInput } from '../..'
+import { NumberInput } from '@ark-ui/react/number-input'
 
 export const FractionDigits = () => (
   <NumberInput.Root

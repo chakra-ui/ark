@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Combobox, Field, createListCollection } from '../..'
+import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
+import { Field } from '@ark-ui/vue/field'
 
 const frameworks = createListCollection({
   items: ['React', 'Solid', 'Vue'],

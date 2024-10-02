@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { Field } from '@ark-ui/vue/field'
+import { SignaturePad, type SignaturePadDrawEndDetails } from '@ark-ui/vue/signature-pad'
 import { ref } from 'vue'
-import { Field, SignaturePad, type SignaturePadDrawEndDetails } from '../..'
 
 const imageUrl = ref('')
 

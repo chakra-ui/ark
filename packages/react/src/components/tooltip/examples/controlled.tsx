@@ -1,5 +1,5 @@
+import { Tooltip } from '@ark-ui/react/tooltip'
 import { useState } from 'react'
-import { Tooltip } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)

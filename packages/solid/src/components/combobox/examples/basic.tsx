@@ -1,6 +1,6 @@
+import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
 import { For, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Combobox, createListCollection } from '../..'
 
 const initialItems = ['React', 'Solid', 'Vue']
 

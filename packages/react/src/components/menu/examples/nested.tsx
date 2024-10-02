@@ -1,5 +1,5 @@
-import { Menu } from '..'
-import { Portal } from '../..'
+import { Menu } from '@ark-ui/react/menu'
+import { Portal } from '@ark-ui/react/portal'
 
 export const Nested = () => (
   <Menu.Root>

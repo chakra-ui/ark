@@ -1,5 +1,5 @@
+import { SegmentGroup } from '@ark-ui/solid/segment-group'
 import { Index, createSignal } from 'solid-js'
-import { SegmentGroup } from '../..'
 
 export const Controlled = () => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']

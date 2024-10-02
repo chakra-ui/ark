@@ -1,4 +1,5 @@
-import { Field, FileUpload } from '../..'
+import { Field } from '@ark-ui/solid/field'
+import { FileUpload } from '@ark-ui/solid/file-upload'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

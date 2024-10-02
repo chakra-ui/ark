@@ -1,4 +1,4 @@
-import { Progress } from '../..'
+import { Progress } from '@ark-ui/solid/progress'
 
 export const MinMax = () => (
   <Progress.Root value={20} min={10} max={30}>

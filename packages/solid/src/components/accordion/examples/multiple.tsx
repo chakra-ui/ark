@@ -1,6 +1,6 @@
+import { Accordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
-import { Accordion } from '../..'
 
 export const Multiple = () => {
   return (

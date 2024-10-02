@@ -1,6 +1,6 @@
+import { Toggle } from '@ark-ui/solid/toggle'
 import { Volume, VolumeOff } from 'lucide-solid'
 import { Show, createSignal } from 'solid-js'
-import { Toggle } from '../'
 
 export const Controlled = () => {
   const [pressed, setPressed] = createSignal(false)

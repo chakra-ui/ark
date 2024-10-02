@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Format } from '../..'
+import { Format } from '@ark-ui/vue/format'
 
 const value = 1450.45
 const unit = 'bit'

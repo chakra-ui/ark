@@ -1,5 +1,5 @@
+import { Menu } from '@ark-ui/solid/menu'
 import { createSignal } from 'solid-js'
-import { Menu } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)

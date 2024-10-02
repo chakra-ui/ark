@@ -1,5 +1,5 @@
+import { Menu } from '@ark-ui/solid/menu'
 import { Index, createSignal } from 'solid-js'
-import { Menu } from '../..'
 
 export const RadioGroup = () => {
   const [value, setValue] = createSignal('React')

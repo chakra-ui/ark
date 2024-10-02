@@ -1,6 +1,6 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
-import { Select, createListCollection } from '../..'
 
 interface Item {
   label: string

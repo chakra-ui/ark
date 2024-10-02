@@ -1,6 +1,6 @@
+import { RatingGroup } from '@ark-ui/solid/rating-group'
 import { StarIcon } from 'lucide-solid'
 import { Index, Show } from 'solid-js'
-import { RatingGroup } from '../..'
 
 export const InitialValue = () => (
   <RatingGroup.Root count={5} value={2} readOnly>

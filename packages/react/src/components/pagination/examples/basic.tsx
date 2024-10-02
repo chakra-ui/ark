@@ -1,4 +1,4 @@
-import { Pagination } from '../..'
+import { Pagination } from '@ark-ui/react/pagination'
 
 export const Basic = () => (
   <Pagination.Root count={5000} pageSize={10} siblingCount={2}>

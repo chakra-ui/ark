@@ -1,5 +1,5 @@
+import { Format } from '@ark-ui/solid/format'
 import { For } from 'solid-js'
-import { Format } from '../..'
 
 export const ByteSizes = () => {
   const byteSizes = [50, 5000, 5000000, 5000000000]

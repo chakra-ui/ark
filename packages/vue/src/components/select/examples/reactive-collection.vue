@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Select, createListCollection } from '@ark-ui/vue/select'
 import { computed, ref } from 'vue'
-import { Select, createListCollection } from '../..'
 
 const itemsBase = createListCollection({
   items: [

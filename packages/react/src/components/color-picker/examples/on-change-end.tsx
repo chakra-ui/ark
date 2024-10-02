@@ -1,5 +1,5 @@
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { useState } from 'react'
-import { ColorPicker, parseColor } from '../..'
 import { ColorPickerContent } from './_template'
 
 export const OnChangeEnd = () => {

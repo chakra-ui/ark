@@ -1,6 +1,7 @@
+import { Field } from '@ark-ui/solid/field'
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js/web'
-import { Field, Select, createListCollection } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })

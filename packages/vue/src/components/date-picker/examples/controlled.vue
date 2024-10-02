@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { DatePicker, type DateValue, parseDate } from '@ark-ui/vue/date-picker'
 import { type Ref, ref } from 'vue'
-import { DatePicker, type DateValue, parseDate } from '../..'
 
 const value = ref([parseDate('2022-01-01')]) as Ref<DateValue[]>
 </script>

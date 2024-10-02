@@ -1,5 +1,5 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { Index, Portal } from 'solid-js/web'
-import { Select, createListCollection } from '../..'
 
 export const Basic = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })

@@ -1,5 +1,6 @@
+import { Checkbox } from '@ark-ui/react/checkbox'
+import { Field } from '@ark-ui/react/field'
 import { CheckIcon, MinusIcon } from 'lucide-react'
-import { Checkbox, Field } from '../..'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

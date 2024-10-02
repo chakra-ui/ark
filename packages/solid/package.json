@@ -52,25 +52,50 @@
     "url": "https://github.com/chakra-ui/ark/issues"
   },
   "type": "module",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": ["dist"],
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "solid": "./dist/source/index.jsx",
-      "import": "./dist/esm/index.js",
-      "browser": {
-        "import": "./dist/esm/index.js",
-        "require": "./dist/cjs/index.js"
-      },
-      "require": "./dist/cjs/index.js",
-      "node": "./dist/cjs/index.js"
+      "source": "./src/index.tsx",
+      "types": "./dist/index.d.ts",
+      "solid": "./dist/index.jsx",
+      "default": "./dist/index.js"
+    },
+    "./collection": {
+      "source": "./src/components/collection.ts",
+      "types": "./dist/components/collection.d.ts",
+      "solid": "./dist/components/collection.jsx",
+      "default": "./dist/components/collection.js"
+    },
+    "./factory": {
+      "source": "./src/components/factory.tsx",
+      "types": "./dist/components/factory.d.ts",
+      "solid": "./dist/components/factory.jsx",
+      "default": "./dist/components/factory.js"
+    },
+    "./environment": {
+      "source": "./src/providers/environment/index.tsx",
+      "types": "./dist/providers/environment/index.d.ts",
+      "solid": "./dist/providers/environment/index.jsx",
+      "default": "./dist/providers/environment/index.js"
+    },
+    "./locale": {
+      "source": "./src/providers/locale/index.tsx",
+      "types": "./dist/providers/locale/index.d.ts",
+      "solid": "./dist/providers/locale/index.jsx",
+      "default": "./dist/providers/locale/index.js"
+    },
+    "./*": {
+      "source": "./src/components/*/index.tsx",
+      "types": "./dist/components/*/index.d.ts",
+      "solid": "./dist/components/*/index.jsx",
+      "default": "./dist/components/*/index.js"
     }
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" tsup",
     "lint": "biome lint ./src",
     "test": "vitest",
     "test:ci": "vitest --run",
@@ -135,24 +160,24 @@
     "@release-it/keep-a-changelog": "5.0.0",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "8.3.4",
-    "@storybook/docs-tools": "8.3.4",
     "@storybook/addon-essentials": "8.3.4",
+    "@storybook/docs-tools": "8.3.4",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.5.0",
     "@testing-library/user-event": "14.5.2",
     "@types/jsdom": "21.1.7",
     "@zag-js/stringify-state": "0.73.0",
+    "esbuild-plugin-solid": "0.6.0",
     "globby": "14.0.2",
     "jsdom": "25.0.1",
     "lucide-solid": "0.447.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
-    "rollup": "4.23.0",
-    "rollup-preset-solid": "2.0.1",
     "solid-js": "1.9.1",
     "storybook": "8.3.4",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
+    "tsup": "8.3.0",
     "typescript": "5.6.2",
     "vite": "5.4.8",
     "vite-plugin-solid": "2.10.2",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Popover } from '../..'
+import { Popover } from '@ark-ui/vue/popover'
 </script>
 
 <template>

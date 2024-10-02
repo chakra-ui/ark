@@ -1,5 +1,5 @@
+import { Toast, Toaster, createToaster } from '@ark-ui/solid/toast'
 import { XIcon } from 'lucide-solid'
-import { Toast, Toaster, createToaster } from '../..'
 
 export const Basic = () => {
   const toaster = createToaster({

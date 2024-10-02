@@ -1,4 +1,4 @@
-import { Splitter } from '../..'
+import { Splitter } from '@ark-ui/react/splitter'
 
 export const Events = () => (
   <Splitter.Root

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Format } from '../..'
+import { Format } from '@ark-ui/vue/format'
 
 const value = 50345.53
 const unitDisplays = ['narrow', 'short', 'long'] as const

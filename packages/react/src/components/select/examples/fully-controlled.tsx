@@ -1,5 +1,6 @@
+import { Portal } from '@ark-ui/react/portal'
+import { Select, createListCollection } from '@ark-ui/react/select'
 import { ChevronDownIcon } from 'lucide-react'
-import { Portal, Select, createListCollection } from '../..'
 
 export const FullyControlled = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })

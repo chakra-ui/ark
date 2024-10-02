@@ -1,5 +1,5 @@
+import { Carousel } from '@ark-ui/solid/carousel'
 import { Index } from 'solid-js'
-import { Carousel } from '../..'
 
 export const Customized = () => {
   const images = [

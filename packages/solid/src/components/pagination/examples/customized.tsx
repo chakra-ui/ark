@@ -1,5 +1,5 @@
+import { Pagination } from '@ark-ui/solid/pagination'
 import { For } from 'solid-js'
-import { Pagination } from '../..'
 
 export const Customized = () => {
   return (

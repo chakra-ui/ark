@@ -1,4 +1,4 @@
-import { QrCode } from '../..'
+import { QrCode } from '@ark-ui/react/qr-code'
 
 export const Basic = () => {
   return (

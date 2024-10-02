@@ -1,6 +1,6 @@
+import { Format } from '@ark-ui/solid/format'
+import { LocaleProvider } from '@ark-ui/solid/locale'
 import { For } from 'solid-js'
-import { Format } from '../..'
-import { LocaleProvider } from '../../../providers'
 
 export const ByteWithLocale = () => {
   const locales = ['de-DE', 'zh-CN']

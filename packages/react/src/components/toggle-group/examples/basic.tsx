@@ -1,4 +1,4 @@
-import { ToggleGroup } from '../..'
+import { ToggleGroup } from '@ark-ui/react/toggle-group'
 
 export const Basic = () => {
   return (

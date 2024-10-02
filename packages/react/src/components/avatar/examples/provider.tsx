@@ -1,4 +1,4 @@
-import { Avatar, useAvatar } from '../..'
+import { Avatar, useAvatar } from '@ark-ui/react/avatar'
 
 export const Provider = () => {
   const avatar = useAvatar({

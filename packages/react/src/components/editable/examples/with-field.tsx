@@ -1,4 +1,5 @@
-import { Editable, Field } from '../..'
+import { Editable } from '@ark-ui/react/editable'
+import { Field } from '@ark-ui/react/field'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

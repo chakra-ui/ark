@@ -1,5 +1,5 @@
+import { Format } from '@ark-ui/solid/format'
 import { For } from 'solid-js'
-import { Format } from '../..'
 
 export const ByteWithUnitDisplay = () => {
   const value = 50345.53

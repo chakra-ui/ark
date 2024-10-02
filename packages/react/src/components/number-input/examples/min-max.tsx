@@ -1,4 +1,4 @@
-import { NumberInput } from '../..'
+import { NumberInput } from '@ark-ui/react/number-input'
 
 export const MinMax = () => (
   <NumberInput.Root min={0} max={10}>

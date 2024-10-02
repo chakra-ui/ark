@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Field, TagsInput } from '../..'
+import { Field } from '@ark-ui/vue/field'
+import { TagsInput } from '@ark-ui/vue/tags-input'
 </script>
 
 <template>

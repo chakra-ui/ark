@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SignaturePad } from '../..'
+import { SignaturePad } from '@ark-ui/vue/signature-pad'
 </script>
 
 <template>

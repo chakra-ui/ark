@@ -1,5 +1,5 @@
+import { FileUpload } from '@ark-ui/react/file-upload'
 import { FileIcon } from 'lucide-react'
-import { FileUpload } from '../..'
 
 export const Basic = () => {
   return (

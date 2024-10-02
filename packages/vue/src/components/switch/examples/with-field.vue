@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Field, Switch } from '../..'
+import { Field } from '@ark-ui/vue/field'
+import { Switch } from '@ark-ui/vue/switch'
 </script>
 
 <template>

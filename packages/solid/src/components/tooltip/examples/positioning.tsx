@@ -1,5 +1,5 @@
+import { Tooltip } from '@ark-ui/solid/tooltip'
 import { Portal } from 'solid-js/web'
-import { Tooltip } from '../..'
 
 export const Positioning = () => (
   <Tooltip.Root

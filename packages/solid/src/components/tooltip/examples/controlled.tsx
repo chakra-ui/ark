@@ -1,6 +1,6 @@
+import { Tooltip } from '@ark-ui/solid/tooltip'
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Tooltip } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = createSignal(false)

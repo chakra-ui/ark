@@ -1,5 +1,6 @@
+import { Field } from '@ark-ui/solid/field'
+import { PinInput } from '@ark-ui/solid/pin-input'
 import { Index } from 'solid-js'
-import { Field, PinInput } from '../..'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

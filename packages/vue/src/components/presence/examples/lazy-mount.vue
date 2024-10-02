@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Presence } from '@ark-ui/vue/presence'
 import { ref } from 'vue'
-import { Presence } from '../..'
 
 const isPresent = ref(false)
 </script>

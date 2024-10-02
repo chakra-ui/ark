@@ -1,5 +1,5 @@
+import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
 import { createSignal } from 'solid-js'
-import { ColorPicker, parseColor } from '../..'
 
 export const Controlled = () => {
   const [color, setColor] = createSignal(parseColor('hsl(0, 100%, 50%)'))

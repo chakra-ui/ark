@@ -1,4 +1,4 @@
-import { TagsInput } from '../..'
+import { TagsInput } from '@ark-ui/react/tags-input'
 
 export const BlurBehavior = () => {
   return (

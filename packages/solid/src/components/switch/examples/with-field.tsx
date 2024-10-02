@@ -1,4 +1,5 @@
-import { Field, Switch } from '../..'
+import { Field } from '@ark-ui/solid/field'
+import { Switch } from '@ark-ui/solid/switch'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

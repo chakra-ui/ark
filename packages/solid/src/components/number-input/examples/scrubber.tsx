@@ -1,4 +1,4 @@
-import { NumberInput } from '../..'
+import { NumberInput } from '@ark-ui/solid/number-input'
 
 export const Scrubber = () => (
   <NumberInput.Root>

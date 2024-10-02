@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Highlight } from '@ark-ui/vue/highlight'
 import { ref } from 'vue'
-import Highlight from '../highlight.vue'
 
 const query = ref('ipsum')
 </script>

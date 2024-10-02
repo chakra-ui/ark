@@ -1,6 +1,6 @@
+import { Select, createListCollection } from '@ark-ui/react/select'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Select, createListCollection } from '../..'
 
 const itemsBase = [
   { label: 'React', value: 'react' },

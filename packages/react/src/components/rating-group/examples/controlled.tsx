@@ -1,6 +1,6 @@
+import { RatingGroup } from '@ark-ui/react/rating-group'
 import { StarIcon } from 'lucide-react'
 import { useState } from 'react'
-import { RatingGroup } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = useState(0)

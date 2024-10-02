@@ -1,5 +1,5 @@
+import { Presence } from '@ark-ui/solid/presence'
 import { createSignal } from 'solid-js'
-import { Presence } from '../..'
 
 export const Basic = () => {
   const [present, setPresent] = createSignal(false)

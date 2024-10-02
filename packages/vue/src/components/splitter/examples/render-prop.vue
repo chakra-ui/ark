@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Splitter } from '@ark-ui/vue/splitter'
 import { ref } from 'vue'
-import { Splitter } from '../..'
 
 const size = ref([
   { id: 'a', size: 50 },
