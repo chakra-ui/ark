@@ -144,7 +144,7 @@
     "@zag-js/stringify-state": "0.73.0",
     "globby": "14.0.2",
     "jsdom": "25.0.1",
-    "lucide-solid": "0.446.0",
+    "lucide-solid": "0.447.0",
     "release-it": "17.6.0",
     "resize-observer-polyfill": "1.5.1",
     "rollup": "4.23.0",
