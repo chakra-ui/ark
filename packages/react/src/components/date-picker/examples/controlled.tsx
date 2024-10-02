@@ -1,5 +1,6 @@
+import { DatePicker, parseDate } from '@ark-ui/react/date-picker'
+import { Portal } from '@ark-ui/react/portal'
 import { useState } from 'react'
-import { DatePicker, Portal, parseDate } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = useState([parseDate('2022-01-01')])

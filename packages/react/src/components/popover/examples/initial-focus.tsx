@@ -1,5 +1,5 @@
+import { Popover } from '@ark-ui/react/popover'
 import { useRef } from 'react'
-import { Popover } from '../..'
 
 const style: React.CSSProperties = {
   display: 'flex',

@@ -1,5 +1,4 @@
-import { ColorPicker } from '../..'
-import type { ChannelSliderBaseProps } from '../color-picker'
+import { ColorPicker } from '@ark-ui/react/color-picker'
 
 export const ColorPickerContent = () => {
   return (
@@ -81,7 +80,7 @@ export const ColorPickerSwatch = (props: ColorPicker.SwatchBaseProps) => {
   )
 }
 
-export const ColorPickerSlider = (props: ChannelSliderBaseProps) => {
+export const ColorPickerSlider = (props: ColorPicker.ChannelSliderBaseProps) => {
   return (
     <ColorPicker.ChannelSlider {...props}>
       <ColorPicker.TransparencyGrid />

@@ -1,4 +1,4 @@
-import { Editable } from '../..'
+import { Editable } from '@ark-ui/react/editable'
 
 export const CustomControls = () => (
   <Editable.Root placeholder="enter a value" defaultValue="Chakra">

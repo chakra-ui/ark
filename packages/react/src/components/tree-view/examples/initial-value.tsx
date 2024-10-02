@@ -1,4 +1,4 @@
-import { TreeView } from '../..'
+import { TreeView } from '@ark-ui/react/tree-view'
 
 export const Basic = () => {
   return (

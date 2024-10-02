@@ -1,4 +1,5 @@
-import { Field, Fieldset } from '../..'
+import { Field } from '@ark-ui/react/field'
+import { Fieldset } from '@ark-ui/react/fieldset'
 
 export const WithField = (props: Fieldset.RootProps) => {
   return (

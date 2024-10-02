@@ -1,6 +1,6 @@
+import { Select, createListCollection } from '@ark-ui/react/select'
 import { ChevronDownIcon } from 'lucide-react'
 import { type SubmitHandler, useForm } from 'react-hook-form'
-import { Select, createListCollection } from '../..'
 
 interface Inputs {
   framework: string

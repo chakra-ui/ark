@@ -1,5 +1,5 @@
+import { Toggle } from '@ark-ui/react/toggle'
 import { Volume, VolumeOff } from 'lucide-react'
-import { Toggle } from '../'
 
 export const Indicator = () => {
   return (

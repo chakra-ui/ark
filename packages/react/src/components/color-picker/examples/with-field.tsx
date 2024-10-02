@@ -1,5 +1,5 @@
-import { parseColor } from '@zag-js/color-utils'
-import { ColorPicker, Field } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
+import { Field } from '@ark-ui/react/field'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

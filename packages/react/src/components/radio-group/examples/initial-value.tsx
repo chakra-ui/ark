@@ -1,4 +1,4 @@
-import { RadioGroup } from '../..'
+import { RadioGroup } from '@ark-ui/react/radio-group'
 
 export const InitialValue = () => {
   const frameworks = ['React', 'Solid', 'Vue']

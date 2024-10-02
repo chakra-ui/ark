@@ -1,4 +1,4 @@
-import { Slider } from '../..'
+import { Slider } from '@ark-ui/react/slider'
 
 export const CenterOrigin = () => {
   return (

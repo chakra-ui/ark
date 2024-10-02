@@ -1,4 +1,5 @@
-import { Accordion, Slider } from '../..'
+import { Accordion } from '@ark-ui/react/accordion'
+import { Slider } from '@ark-ui/react/slider'
 
 export const WithSlider = () => {
   return (

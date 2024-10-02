@@ -1,5 +1,5 @@
+import { Frame } from '@ark-ui/react/frame'
 import { useRef } from 'react'
-import { Frame } from '../'
 
 export const InheritStyles = () => {
   const ref = useRef<HTMLIFrameElement>(null)

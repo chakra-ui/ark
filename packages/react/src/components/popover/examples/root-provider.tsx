@@ -1,4 +1,4 @@
-import { Popover, usePopover } from '../..'
+import { Popover, usePopover } from '@ark-ui/react/popover'
 
 export const WithRootProvider = () => {
   const popover = usePopover({

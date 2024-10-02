@@ -1,4 +1,4 @@
-import { ColorPicker, parseColor } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { ColorPickerSwatch } from './_template'
 
 export const SwatchOnly = () => {

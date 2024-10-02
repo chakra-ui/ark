@@ -1,5 +1,6 @@
+import { Field } from '@ark-ui/react/field'
+import { Select, createListCollection } from '@ark-ui/react/select'
 import { ChevronDownIcon } from 'lucide-react'
-import { Field, Select, createListCollection } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })

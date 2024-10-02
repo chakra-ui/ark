@@ -1,5 +1,5 @@
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { useState } from 'react'
-import { ColorPicker, parseColor } from '../..'
 
 export const Controlled = () => {
   const [color, setColor] = useState(() => parseColor('hsl(20, 100%, 50%)'))

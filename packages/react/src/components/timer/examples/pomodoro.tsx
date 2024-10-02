@@ -1,5 +1,5 @@
+import { Timer } from '@ark-ui/react/timer'
 import { useState } from 'react'
-import { Timer } from '../..'
 
 export const Pomodoro = () => {
   const [isWorking, setIsWorking] = useState(true)

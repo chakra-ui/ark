@@ -1,4 +1,5 @@
-import { Field, PinInput } from '../..'
+import { Field } from '@ark-ui/react/field'
+import { PinInput } from '@ark-ui/react/pin-input'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

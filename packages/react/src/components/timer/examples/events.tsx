@@ -1,4 +1,4 @@
-import { Timer } from '../..'
+import { Timer } from '@ark-ui/react/timer'
 
 export const Events = () => (
   <Timer.Root

@@ -1,5 +1,5 @@
+import { Accordion } from '@ark-ui/react/accordion'
 import { useState } from 'react'
-import { Accordion } from '../..'
 
 export const Controlled = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']

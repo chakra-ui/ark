@@ -1,5 +1,5 @@
-import { Format } from '../..'
-import { LocaleProvider } from '../../../providers'
+import { Format } from '@ark-ui/react/format'
+import { LocaleProvider } from '@ark-ui/react/locale'
 
 export const NumberWithLocale = () => {
   return (

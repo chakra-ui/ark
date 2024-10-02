@@ -1,5 +1,5 @@
+import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
 import { XIcon } from 'lucide-react'
-import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',

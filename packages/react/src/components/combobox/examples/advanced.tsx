@@ -1,4 +1,5 @@
-import { Combobox, Portal, createListCollection } from '../..'
+import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { Portal } from '@ark-ui/react/portal'
 
 export const Advanced = () => {
   const collection = createListCollection({

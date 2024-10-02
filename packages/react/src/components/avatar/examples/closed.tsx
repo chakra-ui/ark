@@ -1,6 +1,6 @@
+import { Avatar as ArkAvatar } from '@ark-ui/react/avatar'
 import { UserIcon } from 'lucide-react'
 import { forwardRef } from 'react'
-import { Avatar as ArkAvatar } from '../'
 
 export interface AvatarProps extends ArkAvatar.RootProps {
   name?: string

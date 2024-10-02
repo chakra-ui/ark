@@ -1,5 +1,5 @@
+import { Popover } from '@ark-ui/react/popover'
 import { useState } from 'react'
-import { Popover } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)

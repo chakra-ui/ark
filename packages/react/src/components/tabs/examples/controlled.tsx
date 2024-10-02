@@ -1,5 +1,5 @@
+import { Tabs } from '@ark-ui/react/tabs'
 import { useState } from 'react'
-import { Tabs } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = useState<string | null>('react')

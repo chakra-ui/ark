@@ -1,5 +1,5 @@
+import { Switch } from '@ark-ui/react/switch'
 import { useState } from 'react'
-import { Switch } from '../..'
 
 export const Controlled = () => {
   const [checked, setChecked] = useState(false)
