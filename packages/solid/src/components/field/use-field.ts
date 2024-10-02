@@ -119,7 +119,7 @@ export const useField = (props: UseFieldProps) => {
     id,
     required: fieldProps.required,
     disabled: fieldProps.disabled,
-    readOnly: fieldProps.readOnly,
+    readOnly: fieldProps.readOnly || undefined,
   })
 
   const getInputProps = () => ({
