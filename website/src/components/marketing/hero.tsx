@@ -21,7 +21,7 @@ export const Hero = () => {
         <Stack gap={{ base: '8', md: '12' }} maxW="3xl">
           <Stack gap={{ base: '4', md: '6' }}>
             <Stack gap="4">
-              <NextLink href="/reat/plus">
+              <NextLink href="/react/plus">
                 <Badge size="lg" variant="outline">
                   <RocketIcon />
                   New: Launching Ark UI Plus
