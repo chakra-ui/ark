@@ -501,7 +501,7 @@
   "devDependencies": {
     "@release-it/keep-a-changelog": "5.0.0",
     "globby": "14.0.2",
-    "release-it": "17.6.0",
+    "release-it": "17.7.0",
     "typescript": "5.6.2",
     "vite": "5.4.8",
     "vite-plugin-dts": "4.2.3"

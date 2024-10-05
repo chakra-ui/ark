@@ -168,12 +168,12 @@
     "@zag-js/types": "0.73.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.2",
+    "@biomejs/biome": "1.9.3",
     "@release-it/keep-a-changelog": "5.0.0",
     "@solidjs/testing-library": "0.8.10",
-    "@storybook/addon-a11y": "8.3.4",
-    "@storybook/addon-essentials": "8.3.4",
-    "@storybook/docs-tools": "8.3.4",
+    "@storybook/addon-a11y": "8.3.5",
+    "@storybook/addon-essentials": "8.3.5",
+    "@storybook/docs-tools": "8.3.5",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.5.0",
     "@testing-library/user-event": "14.5.2",
@@ -184,17 +184,17 @@
     "globby": "14.0.2",
     "jsdom": "25.0.1",
     "lucide-solid": "0.447.0",
-    "release-it": "17.6.0",
+    "release-it": "17.7.0",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.1",
-    "storybook": "8.3.4",
+    "storybook": "8.3.5",
     "storybook-solidjs": "1.0.0-beta.2",
     "storybook-solidjs-vite": "1.0.0-beta.2",
     "tsup": "8.3.0",
     "typescript": "5.6.2",
     "vite": "5.4.8",
     "vite-plugin-solid": "2.10.2",
-    "vitest": "2.1.1"
+    "vitest": "2.1.2"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
