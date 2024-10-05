@@ -27,7 +27,7 @@ export const ComponentPreview = (props: Props) => {
           <Demo />
         </Flex>
       </Flex>
-      <ExamplesPreview id={id} />
+      <ExamplesPreview />
     </>
   )
 }

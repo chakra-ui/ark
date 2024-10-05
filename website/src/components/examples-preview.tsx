@@ -7,19 +7,15 @@ import { fetchExamples } from '~/lib/examples'
 import { getServerContext } from '~/lib/server-context'
 import { Icon } from './ui/icon'
 
-interface Props {
-  id: string
-}
-
-export const ExamplesPreview = async (props: Props) => {
-  const { framework } = getServerContext()
+export const ExamplesPreview = async () => {
+  const { framework, component } = getServerContext()
   const examples = (await fetchExamples()).filter((example) =>
-    example.relatedComponents.includes(props.id.toLowerCase()),
+    example.relatedComponents.includes(component ?? ''),
   )
 
   return examples.length > 0 ? (
     <>
-      <Text>You can explore the {props.id} component in the following curated examples.</Text>
+      <Text>You can explore the {component} component in the following curated examples.</Text>
       <Grid columns={{ base: 1, sm: 2 }} gap="6" className="not-prose">
         {examples.map((relatedExample) => (
           <NextLink
