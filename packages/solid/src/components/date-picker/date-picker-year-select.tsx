@@ -9,12 +9,12 @@ export interface DatePickerYearSelectProps
     DatePickerYearSelectBaseProps {}
 
 export const DatePickerYearSelect = (props: DatePickerYearSelectProps) => {
-  const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().getYearSelectProps(), props)
+  const datePicker = useDatePickerContext()
+  const mergedProps = mergeProps(() => datePicker().getYearSelectProps(), props)
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={api().getYears()}>
+      <Index each={datePicker().getYears()}>
         {(year) => <option value={year().value}>{year().label}</option>}
       </Index>
     </ark.select>

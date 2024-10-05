@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **DatePicker**: Fixed an issue where the `MonthSelect` sometimes defaulted to January.
+
 ## [4.2.0] - 2024-10-03
 
 ### Added
