@@ -33,7 +33,7 @@ const tableCellProps = computed(() => {
     month: datePicker.value.getMonthTableCellProps,
     year: datePicker.value.getYearTableCellProps,
     // @ts-expect-error use filter guard
-  }[viewProps.view](props)
+  }[viewProps.view ?? "day"](props)
 })
 
 useForwardExpose()
