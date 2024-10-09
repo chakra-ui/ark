@@ -1,0 +1,42 @@
+{
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "fallback": {
+        "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
+        "isRequired": false,
+        "description": "The fallback content to render when the toggle is not pressed."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultPressed": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The default pressed state of the toggle."
+      },
+      "onPressedChange": {
+        "type": "(pressed: boolean) => void",
+        "isRequired": false,
+        "description": "Event handler called when the pressed state of the toggle changes."
+      },
+      "pressed": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The pressed state of the toggle."
+      }
+    },
+    "element": "HTMLButtonElement"
+  }
+}
