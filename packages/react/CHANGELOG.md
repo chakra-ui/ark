@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.1.1] - 2024-10-09
+
 ### Changed
 
 - **TimePicker [Preview]**: Updated `value` and `defaultValue` types from `string` to `Time`. Use
