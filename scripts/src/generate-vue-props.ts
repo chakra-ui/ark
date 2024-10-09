@@ -122,7 +122,7 @@ const main = async () => {
   Promise.all(
     components
       .map((component) => parse(component).base)
-      .filter((x) => !['format', 'toast'].includes(x))
+      .filter((x) => !['format', 'toast', 'highlight', 'frame'].includes(x))
       .map(extractTypes),
   )
 }

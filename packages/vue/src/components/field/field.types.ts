@@ -8,6 +8,10 @@ export interface ElementIds {
 
 export interface RootProps {
   /**
+   * Indicates whether the field is disabled.
+   */
+  disabled?: boolean
+  /**
    * The id of the field.
    */
   id?: string
@@ -16,14 +20,6 @@ export interface RootProps {
    */
   ids?: ElementIds
   /**
-   * Indicates whether the field is required.
-   */
-  required?: boolean
-  /**
-   * Indicates whether the field is disabled.
-   */
-  disabled?: boolean
-  /**
    * Indicates whether the field is invalid.
    */
   invalid?: boolean
@@ -31,4 +27,8 @@ export interface RootProps {
    * Indicates whether the field is read-only.
    */
   readOnly?: boolean
+  /**
+   * Indicates whether the field is required.
+   */
+  required?: boolean
 }
