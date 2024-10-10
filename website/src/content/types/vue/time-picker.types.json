@@ -91,7 +91,7 @@
         "description": "/**\n  The initial open state of the time picker when it is first rendered.\n  Use when you do not need to control its open state."
       },
       "defaultValue": {
-        "type": "string",
+        "type": "Time",
         "isRequired": false,
         "description": "The initial value of the time picker when it is first rendered.\nUse when you do not need to control the state of the time picker."
       },
@@ -127,17 +127,17 @@
         "description": "The locale (BCP 47 language tag) to use when formatting the time."
       },
       "max": {
-        "type": "string",
+        "type": "Time",
         "isRequired": false,
         "description": "The maximum time that can be selected."
       },
       "min": {
-        "type": "string",
+        "type": "Time",
         "isRequired": false,
         "description": "The minimum time that can be selected."
       },
       "modelValue": {
-        "type": "string",
+        "type": "Time",
         "isRequired": false,
         "description": "The v-model value of the time picker"
       },

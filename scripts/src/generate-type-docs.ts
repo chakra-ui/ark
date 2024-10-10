@@ -173,9 +173,12 @@ const extractTypesForFramework = async (framework: string) => {
   const componentExportMap: Record<string, string[]> = Object.fromEntries(
     await Promise.all(
       components.map(async (component) => {
-        const fileContent = await readFile(path.join(component, 'index.ts'), {
-          encoding: 'utf8',
-        }).catch(() => undefined)
+        const fileContent = await readFile(
+          path.join(component, framework === 'solid' ? 'index.tsx' : 'index.ts'),
+          {
+            encoding: 'utf8',
+          },
+        ).catch(() => undefined)
         return [component, extractTypeExports(fileContent)]
       }),
     ),

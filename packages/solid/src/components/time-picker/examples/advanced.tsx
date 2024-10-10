@@ -1,4 +1,4 @@
-import { TimePicker } from '@ark-ui/solid/time-picker'
+import { TimePicker, parseTime } from '@ark-ui/solid/time-picker'
 import { Index, Portal } from 'solid-js/web'
 
 export const Advanced = () => {
@@ -10,8 +10,8 @@ export const Advanced = () => {
         minute: 5,
         second: 10,
       }}
-      min="03:00"
-      max="11:00"
+      min={parseTime('09:00')}
+      max={parseTime('17:00')}
     >
       <TimePicker.Control>
         <TimePicker.Input />

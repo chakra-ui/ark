@@ -2,7 +2,7 @@ import type * as steps from '@zag-js/steps'
 
 export interface RootProps {
   /**
-   * The number of steps in the component.
+   * The total number of steps
    */
   count?: number
   /**
@@ -14,49 +14,34 @@ export interface RootProps {
    */
   id?: string
   /**
-   * The ids of the elements. Useful for composition.
+   * The custom ids for the stepper elements
    */
-  ids?: Partial<{
-    root: string
-    list: string
-    progress: string
-    trigger(index: number): string
-    separator(index: number): string
-    item(index: number): string
-    itemContent(index: number): string
-  }>
+  ids?: steps.ElementIds
   /**
-   * Whether the step transitions should be linear and require the user
-   * to go through each step one by one.
-   *
-   * @default false
+   * If `true`, the stepper requires the user to complete the steps in order
    */
   linear?: boolean
   /**
-   * The orientation of the steps.
-   *
-   * @default "horizontal"
-   */
-  orientation?: 'horizontal' | 'vertical'
-  /**
-   * The v-model value of the component.
+   * The v-model value of the step
    */
   modelValue?: number
+  /**
+   * The orientation of the stepper
+   */
+  orientation?: 'horizontal' | 'vertical'
 }
 
 export type RootEmits = {
   /**
-   * Event triggered when a step is changed, either by clicking on a step,
-   * clicking on the next/previous triggers, or by calling `setStep`.
+   * Callback to be called when the value changes
    */
   stepChange: [details: steps.StepChangeDetails]
   /**
-   * Event triggered when a step is completed by clicking on the next/previous
-   * triggers or by calling `setStep`.
+   * Callback to be called when a step is completed
    */
   stepComplete: []
   /**
-   * Event triggered when the model value changes.
+   * The callback fired when the model value changes.
    */
-  'update:modelValue': [step: number]
+  'update:modelValue': [value: number]
 }

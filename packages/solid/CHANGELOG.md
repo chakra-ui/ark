@@ -6,15 +6,27 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.2.1] - 2024-10-09
+
+### Changed
+
+- **Time Picker [Preview]**: Updated `value` and `defaultValue` types from `string` to `Time`. Use
+  the exported `parseTime` function to convert between strings and time objects.
+
 ### Fixed
 
-- **DatePicker**: Fixed an issue where the `MonthSelect` sometimes defaulted to January.
+- **TagsInput**: Resolved an issue where tag navigation was unresponsive after removing tags with
+  the delete key.
+- **DatePicker**:
+  - Fixed a bug where selecting a preset and then blurring the input incorrectly reset the value.
+  - Fixed an issue where the `MonthSelect` sometimes defaulted to January.
 
 ## [4.2.0] - 2024-10-03
 
 ### Added
 
-- Introduced support for importing components via dedicated entry points. For instance, the `Select` can now be imported directly from `@ark-ui/solid/select`.
+- Introduced support for importing components via dedicated entry points. For instance, the `Select`
+  can now be imported directly from `@ark-ui/solid/select`.
 
 ### Fixed
 
@@ -25,15 +37,18 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Toggle**: Introduced the `Toggle` component.
-- **Dialog**: Added support for detecting outside clicks from parent windows when rendered within an iframe.
+- **Dialog**: Added support for detecting outside clicks from parent windows when rendered within an
+  iframe.
 
 ### Fixed
 
-- **Combobox**: Fixed an issue where pressing Enter without selecting an option left text in the input.
-- **Dialog**: Fixed an issue where the dialog closed when the positioner was scrollable, and the scrollbar was clicked.
+- **Combobox**: Fixed an issue where pressing Enter without selecting an option left text in the
+  input.
+- **Dialog**: Fixed an issue where the dialog closed when the positioner was scrollable, and the
+  scrollbar was clicked.
 - **File Upload**:
-  -  Fixed an issue where `acceptedFiles` were removed after an invalid file upload.
-  -  Fixed an issue in the preview image where `createObjectURL` was not cleaned up.
+  - Fixed an issue where `acceptedFiles` were removed after an invalid file upload.
+  - Fixed an issue in the preview image where `createObjectURL` was not cleaned up.
 
 ## [4.0.0] - 2024-09-25
 

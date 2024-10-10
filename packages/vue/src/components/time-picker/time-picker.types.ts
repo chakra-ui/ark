@@ -15,7 +15,7 @@ export interface RootProps {
    * The initial value of the time picker when it is first rendered.
    * Use when you do not need to control the state of the time picker.
    */
-  defaultValue?: string
+  defaultValue?: timePicker.Time
   /**
    * Whether to disable the interaction outside logic
    */
@@ -47,15 +47,15 @@ export interface RootProps {
   /**
    * The maximum time that can be selected.
    */
-  max?: string
+  max?: timePicker.Time
   /**
    * The minimum time that can be selected.
    */
-  min?: string
+  min?: timePicker.Time
   /**
    * The v-model value of the time picker
    */
-  modelValue?: string
+  modelValue?: timePicker.Time
   /**
    * The `name` attribute of the input element.
    */
@@ -98,5 +98,6 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: string]
+  'update:modelValue': [value: timePicker.Time | null]
+  'update:open': [open: boolean]
 }

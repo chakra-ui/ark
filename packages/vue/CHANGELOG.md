@@ -6,22 +6,39 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.1.1] - 2024-10-09
+
+### Changed
+
+- **Time Picker [Preview]**: Updated `value` and `defaultValue` types from `string` to `Time`. Use
+  the exported `parseTime` function to convert between strings and time objects.
+
+### Fixed
+
+- **TagsInput**: Resolved an issue where tag navigation was unresponsive after removing tags with
+  the delete key.
+- **DatePicker**: Fixed a bug where selecting a preset and then blurring the input incorrectly reset
+  the value.
+
 ## [4.1.0] - 2024-09-30
 
 ### Added
 
 - **Toggle**: Introduced the `Toggle` component.
 - **useForwardExpose**: Added utility to facilitate forwarding of underlying component nodes.
-- **Dialog**: Added support for detecting outside clicks from parent windows when rendered within an iframe.
+- **Dialog**: Added support for detecting outside clicks from parent windows when rendered within an
+  iframe.
 
 ### Fixed
 
 - Resolved an issue where the underlying DOM node of most components was inaccessible via `$el`.
-- **Combobox**: Fixed an issue where pressing Enter without selecting an option left text in the input.
-- **Dialog**: Fixed an issue where the dialog closed when the positioner was scrollable, and the scrollbar was clicked.
+- **Combobox**: Fixed an issue where pressing Enter without selecting an option left text in the
+  input.
+- **Dialog**: Fixed an issue where the dialog closed when the positioner was scrollable, and the
+  scrollbar was clicked.
 - **File Upload**:
-  -  Fixed an issue where `acceptedFiles` were removed after an invalid file upload.
-  -  Fixed an issue in the preview image where `createObjectURL` was not cleaned up.
+  - Fixed an issue where `acceptedFiles` were removed after an invalid file upload.
+  - Fixed an issue in the preview image where `createObjectURL` was not cleaned up.
 
 ## [4.0.2] - 2024-09-27
 
