@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
+
+const subscribe = () => () => {}
+const getSnapshot = () => false
+const getServerSnapshot = () => true
 
 export const useIsServer = () => {
-  const [isServer, setServer] = useState(true)
-
-  useEffect(() => {
-    setServer(false)
-  }, [])
-
-  return isServer
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 }
