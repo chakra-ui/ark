@@ -14,9 +14,11 @@ export interface ComboboxControlProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ComboboxControlProps>()
 const combobox = useComboboxContext()
+useForwardExpose()
 </script>
 
 <template>

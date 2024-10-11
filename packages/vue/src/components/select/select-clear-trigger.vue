@@ -14,9 +14,12 @@ export interface SelectClearTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectClearTriggerProps>()
 const select = useSelectContext()
+
+useForwardExpose()
 </script>
 
 <template>

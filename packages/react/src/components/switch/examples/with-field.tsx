@@ -1,4 +1,5 @@
-import { Field, Switch } from '../..'
+import { Field } from '@ark-ui/react/field'
+import { Switch } from '@ark-ui/react/switch'
 
 export const WithField = (props: Field.RootProps) => (
   <Field.Root {...props}>

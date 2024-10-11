@@ -15,8 +15,10 @@ export interface TimePickerPositionerProps
 import { useRenderStrategyProps } from '../../utils'
 import { PresenceProvider, usePresence } from '../presence'
 import { useTimePickerContext } from './use-time-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TimePickerPositionerProps>()
+
 const timePicker = useTimePickerContext()
 const renderStrategy = useRenderStrategyProps()
 
@@ -26,7 +28,10 @@ const presence = usePresence(
     present: timePicker.value.open,
   })),
 )
+
 PresenceProvider(presence)
+
+useForwardExpose()
 </script>
 
 <template>
@@ -34,4 +39,3 @@ PresenceProvider(presence)
     <slot />
   </ark.div>
 </template>
-

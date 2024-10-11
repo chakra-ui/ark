@@ -22,6 +22,7 @@ const splitVisibilityProps = createSplitProps<VisibilityProps>()
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Collapsible } from '../..'
+import { useForwardExpose } from '../../utils'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
@@ -37,6 +38,7 @@ const itemContentProps = computed(() => {
   ])
   return ownProps
 })
+useForwardExpose()
 </script>
 
 <template>

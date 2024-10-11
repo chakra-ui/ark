@@ -1,5 +1,5 @@
+import { HoverCard } from '@ark-ui/solid/hover-card'
 import { Portal } from 'solid-js/web'
-import { HoverCard } from '../..'
 
 export const Positioning = () => (
   <HoverCard.Root positioning={{ placement: 'right', gutter: 12 }}>

@@ -1,5 +1,6 @@
+import { HoverCard } from '@ark-ui/react/hover-card'
+import { Portal } from '@ark-ui/react/portal'
 import { useState } from 'react'
-import { HoverCard, Portal } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)

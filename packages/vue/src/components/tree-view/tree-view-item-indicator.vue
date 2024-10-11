@@ -15,10 +15,13 @@ export interface TreeViewItemIndicatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TreeViewItemIndicatorProps>()
 const treeView = useTreeViewContext()
 const itemProps = useTreeViewItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

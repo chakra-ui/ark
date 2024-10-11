@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { SegmentGroup } from '@ark-ui/vue/segment-group'
 import { ref } from 'vue'
-import { SegmentGroup } from '../..'
 
 const frameworks = ref(['React', 'Solid', 'Svelte', 'Vue'])
 </script>

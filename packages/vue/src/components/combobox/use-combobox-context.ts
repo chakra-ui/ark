@@ -1,5 +1,5 @@
-import type { CollectionItem } from '../../types'
 import { createContext } from '../../utils'
+import type { CollectionItem } from '../collection'
 import type { UsePresenceProps } from '../presence'
 import type { UseComboboxReturn } from './use-combobox'
 

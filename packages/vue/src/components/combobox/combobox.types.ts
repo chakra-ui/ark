@@ -1,5 +1,6 @@
+import type { ListCollection } from '@zag-js/collection'
 import type * as combobox from '@zag-js/combobox'
-import type { CollectionItem } from './combobox'
+import type { CollectionItem } from '../collection'
 
 export interface RootProps<T extends CollectionItem> {
   /**
@@ -87,26 +88,17 @@ export interface RootProps<T extends CollectionItem> {
    */
   invalid?: boolean
   /**
-   * Whether the item is disabled
+   * The collection of items to display in the combobox
    */
-  isItemDisabled?: (item: T) => boolean
-  /**
-   * The label of the item
-   */
-  itemToString?: (item: T) => string
-  /**
-   * The value of the item
-   */
-  itemToValue?: (item: T) => string
-  /**
-   * The options of the select
-   */
-  items: T[] | readonly T[]
+  collection: ListCollection<T>
   /**
    * Whether to loop the keyboard navigation through the items
    * @default true
    */
   loopFocus?: boolean
+  /**
+   * The current selected values of the combobox's input
+   */
   modelValue?: string[]
   /**
    * Whether to allow multiple selection.

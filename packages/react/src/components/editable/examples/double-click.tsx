@@ -1,4 +1,4 @@
-import { Editable } from '../..'
+import { Editable } from '@ark-ui/react/editable'
 
 export const DoubleClick = () => (
   <Editable.Root placeholder="Placeholder" activationMode="dblclick">

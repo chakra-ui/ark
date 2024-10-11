@@ -49,7 +49,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ refs: { rootRef: Ref<null>; }; disabled: boolean | \"true\" | \"false\" | undefined; invalid: boolean | undefined; getRootProps: () => FieldsetHTMLAttributes; getLegendProps: () => { ...; }; getHelperTextProps: () => { ...; }; getErrorTextProps: () => HTMLAttributes; }",
+        "type": "{ refs: { rootRef: Ref<null, null>; }; disabled: boolean | \"true\" | \"false\" | undefined; invalid: boolean | undefined; getRootProps: () => FieldsetHTMLAttributes; getLegendProps: () => { ...; }; getHelperTextProps: () => { ...; }; getErrorTextProps: () => HTMLAttributes; }",
         "isRequired": true
       },
       "asChild": {

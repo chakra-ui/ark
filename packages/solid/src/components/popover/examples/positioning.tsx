@@ -1,4 +1,4 @@
-import { Popover } from '../..'
+import { Popover } from '@ark-ui/solid/popover'
 
 export const Positioning = () => (
   <Popover.Root

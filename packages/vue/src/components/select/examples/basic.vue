@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Select } from '../..'
+import { Select, createListCollection } from '@ark-ui/vue/select'
 import { ChevronDownIcon } from './icons'
 
-const items = ref(['React', 'Solid', 'Vue'])
+const collection = createListCollection({
+  items: ['React', 'Solid', 'Vue'],
+})
 </script>
 
 <template>
-  <Select.Root :items="items">
+  <Select.Root :collection="collection">
     <Select.Label>Framework</Select.Label>
     <Select.Control>
       <Select.Trigger>
@@ -20,10 +21,16 @@ const items = ref(['React', 'Solid', 'Vue'])
     </Select.Control>
     <Teleport to="body">
       <Select.Positioner>
-        <Select.Content>
+        <Select.Content
+          :ref="
+            (el) => {
+              console.log(el)
+            }
+          "
+        >
           <Select.ItemGroup>
             <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in items" :key="item" :item="item">
+            <Select.Item v-for="item in collection.items" :key="item" :item="item">
               <Select.ItemText>{{ item }}</Select.ItemText>
               <Select.ItemIndicator>✓</Select.ItemIndicator>
             </Select.Item>

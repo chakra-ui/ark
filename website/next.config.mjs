@@ -7,6 +7,9 @@ export default {
     config.plugins.push(new VeliteWebpackPlugin())
     return config
   },
+  experimental: {
+    optimizePackageImports: ['@ark-ui/react'],
+  },
   async redirects() {
     return [
       {

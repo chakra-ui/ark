@@ -1,6 +1,6 @@
-import { RadioGroup, type RadioGroupRootProps } from '../'
+import { RadioGroup } from '../'
 
-export const ComponentUnderTest = (props: RadioGroupRootProps) => {
+export const ComponentUnderTest = (props: RadioGroup.RootProps) => {
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },

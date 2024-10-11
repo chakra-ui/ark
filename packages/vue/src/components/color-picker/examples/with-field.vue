@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ColorPicker, Field } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/vue/color-picker'
+import { Field } from '@ark-ui/vue/field'
+
+const defaultValue = parseColor('hsl(20, 100%, 50%)')
 </script>
 
 <template>
   <Field.Root>
-    <ColorPicker.Root defaultValue="#ff00ff">
+    <ColorPicker.Root :defaultValue>
       <ColorPicker.Label>Label</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />

@@ -1,5 +1,5 @@
+import { DatePicker } from '@ark-ui/solid/date-picker'
 import { Index, Portal } from 'solid-js/web'
-import { DatePicker } from '../..'
 
 export const Basic = () => {
   return (

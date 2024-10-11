@@ -5,8 +5,8 @@ export {
 } from './segment-group-context.vue'
 export {
   default as SegmentGroupIndicator,
-  type SegmentGroupIndicatorProps,
   type SegmentGroupIndicatorBaseProps,
+  type SegmentGroupIndicatorProps,
 } from './segment-group-indicator.vue'
 export {
   default as SegmentGroupItemContext,
@@ -14,40 +14,41 @@ export {
 } from './segment-group-item-context.vue'
 export {
   default as SegmentGroupItemControl,
-  type SegmentGroupItemControlProps,
   type SegmentGroupItemControlBaseProps,
+  type SegmentGroupItemControlProps,
 } from './segment-group-item-control.vue'
 export {
   default as SegmentGroupItemHiddenInput,
-  type SegmentGroupItemHiddenInputProps,
   type SegmentGroupItemHiddenInputBaseProps,
+  type SegmentGroupItemHiddenInputProps,
 } from './segment-group-item-hidden-input.vue'
 export {
   default as SegmentGroupItemText,
-  type SegmentGroupItemTextProps,
   type SegmentGroupItemTextBaseProps,
+  type SegmentGroupItemTextProps,
 } from './segment-group-item-text.vue'
 export {
   default as SegmentGroupItem,
-  type SegmentGroupItemProps,
   type SegmentGroupItemBaseProps,
+  type SegmentGroupItemProps,
 } from './segment-group-item.vue'
 export {
   default as SegmentGroupLabel,
-  type SegmentGroupLabelProps,
   type SegmentGroupLabelBaseProps,
+  type SegmentGroupLabelProps,
 } from './segment-group-label.vue'
 export {
   default as SegmentGroupRootProvider,
-  type SegmentGroupRootProviderProps,
   type SegmentGroupRootProviderBaseProps,
+  type SegmentGroupRootProviderProps,
 } from './segment-group-root-provider.vue'
 export {
   default as SegmentGroupRoot,
-  type SegmentGroupRootEmits,
   type SegmentGroupRootBaseProps,
+  type SegmentGroupRootEmits,
   type SegmentGroupRootProps,
 } from './segment-group-root.vue'
+export { segmentGroupAnatomy } from './segment-group.anatomy'
 export {
   useSegmentGroup,
   type UseSegmentGroupProps,
@@ -58,6 +59,5 @@ export {
   useSegmentGroupItemContext,
   type UseSegmentGroupItemContext,
 } from './use-segment-group-item-context'
-export { segmentGroupAnatomy } from './segment-group.anatomy'
 
 export * as SegmentGroup from './segment-group'

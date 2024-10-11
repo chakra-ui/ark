@@ -1,7 +1,7 @@
 import { Index, createSignal } from 'solid-js'
-import { Slider, type SliderRootProps } from '../'
+import { Slider } from '../'
 
-export const ComponentUnderTest = (props: SliderRootProps) => {
+export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = createSignal([-20, 20])
   return (
     <Slider.Root

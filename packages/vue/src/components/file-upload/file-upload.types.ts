@@ -41,6 +41,10 @@ export interface RootProps {
     itemPreview(id: string): string
   }>
   /**
+   * Whether the file input is invalid
+   */
+  invalid?: boolean
+  /**
    * The current locale. Based on the BCP 47 definition.
    * @default "en-US"
    */
@@ -77,7 +81,7 @@ export interface RootProps {
   /**
    * Function to validate a file
    */
-  validate?: (file: File) => fileUpload.FileError[]
+  validate?: (file: File) => fileUpload.FileError[] | null
 }
 
 export type RootEmits = {

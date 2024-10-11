@@ -1,8 +1,8 @@
+import { Tooltip } from '@ark-ui/solid/tooltip'
 import { Portal } from 'solid-js/web'
-import { Tooltip } from '../..'
 
 export const Basic = () => (
-  <Tooltip.Root open>
+  <Tooltip.Root>
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
       <Tooltip.Positioner>

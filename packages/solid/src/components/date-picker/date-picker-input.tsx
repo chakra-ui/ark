@@ -9,8 +9,8 @@ export interface DatePickerInputProps extends HTMLProps<'input'>, DatePickerInpu
 
 export const DatePickerInput = (props: DatePickerInputProps) => {
   const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])
-  const api = useDatePickerContext()
-  const mergedProps = mergeProps(() => api().getInputProps(inputProps), localProps)
+  const datePicker = useDatePickerContext()
+  const mergedProps = mergeProps(() => datePicker().getInputProps(inputProps), localProps)
 
   return <ark.input {...mergedProps} />
 }

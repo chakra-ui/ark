@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ark } from '../..'
+import { ark } from '@ark-ui/vue/factory'
 </script>
 
 <template>

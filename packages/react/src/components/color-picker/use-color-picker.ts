@@ -7,10 +7,7 @@ import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
 export interface UseColorPickerProps
-  extends Optional<
-    Omit<colorPicker.Context, 'value' | 'open.controlled' | 'dir' | 'getRootNode'>,
-    'id'
-  > {
+  extends Optional<Omit<colorPicker.Context, 'open.controlled' | 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial open state of the color picker when it is first rendered.
    * Use when you do not need to control its open state.
@@ -20,11 +17,7 @@ export interface UseColorPickerProps
    * The initial value of the color picker when it is first rendered.
    * Use when you do not need to control the state of the color picker.
    */
-  defaultValue?: string
-  /**
-   * The current value of the color picker.
-   */
-  value?: string
+  defaultValue?: colorPicker.Context['value']
 }
 
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
@@ -47,17 +40,13 @@ export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn
     getRootNode,
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
+    value: props.defaultValue,
     ...props,
-    value: props.value
-      ? colorPicker.parse(props.value)
-      : props.defaultValue
-        ? colorPicker.parse(props.defaultValue)
-        : undefined,
   }
 
   const context: colorPicker.Context = {
     ...initialContext,
-    value: props.value ? colorPicker.parse(props.value) : undefined,
+    value: props.value,
     onValueChange: useEvent(props.onValueChange, { sync: true }),
     onValueChangeEnd: useEvent(props.onValueChangeEnd),
   }

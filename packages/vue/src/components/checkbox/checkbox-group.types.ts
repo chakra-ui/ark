@@ -20,6 +20,10 @@ export interface GroupProps {
    * (Useful for form submission).
    */
   name?: string
+  /**
+   * If `true`, the checkbox group is invalid
+   */
+  invalid?: boolean
 }
 
 export type GroupEmits = {

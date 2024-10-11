@@ -18,6 +18,7 @@ import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { StepsItemProvider } from './use-steps-item-context'
 import { StepsItemPropsProvider } from './use-steps-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<StepsItemProps>()
 const steps = useStepsContext()
@@ -25,6 +26,8 @@ const itemState = computed(() => steps.value.getItemState(props))
 
 StepsItemPropsProvider(props)
 StepsItemProvider(itemState)
+
+useForwardExpose()
 </script>
 
 <template>

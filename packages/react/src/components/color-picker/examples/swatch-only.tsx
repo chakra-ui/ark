@@ -1,9 +1,9 @@
-import { ColorPicker } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { ColorPickerSwatch } from './_template'
 
 export const SwatchOnly = () => {
   return (
-    <ColorPicker.Root open defaultValue="#eb5e41">
+    <ColorPicker.Root open defaultValue={parseColor('#eb5e41')}>
       <ColorPicker.Content>
         <div>
           <div>Selected color:</div>

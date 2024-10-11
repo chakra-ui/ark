@@ -1,4 +1,4 @@
-import { mergeProps } from '@zag-js/core'
+import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFieldContext } from './use-field-context'

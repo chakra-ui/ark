@@ -54,4 +54,4 @@ export const ValueText = withContext<
   Assign<HTMLStyledProps<'span'>, NumberInput.ValueTextBaseProps>
 >(NumberInput.ValueText, 'valueText')
 
-export { NumberInputContext as Context } from '@ark-ui/react/number-input'
+export const Context = NumberInput.Context

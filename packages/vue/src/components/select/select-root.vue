@@ -1,7 +1,8 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults, CollectionItem } from '../../types'
+import type { BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
+import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './select.types'
 
@@ -20,7 +21,7 @@ export type { RootEmits as SelectRootEmits } from './select.types'
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
@@ -29,6 +30,7 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   closeOnSelect: undefined,
   composite: undefined,
   defaultOpen: undefined,
+  deselectable: undefined,
   disabled: undefined,
   invalid: undefined,
   loopFocus: undefined,
@@ -45,6 +47,8 @@ SelectProvider(select)
 RenderStrategyPropsProvider(
   computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
 )
+
+useForwardExpose()
 </script>
 
 <template>

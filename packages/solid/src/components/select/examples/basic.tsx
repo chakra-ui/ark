@@ -1,10 +1,11 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { Index, Portal } from 'solid-js/web'
-import { Select } from '../..'
 
 export const Basic = () => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+
   return (
-    <Select.Root items={items}>
+    <Select.Root collection={collection}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -18,7 +19,7 @@ export const Basic = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              <Index each={items}>
+              <Index each={collection.items}>
                 {(item) => (
                   <Select.Item item={item()}>
                     <Select.ItemText>{item()}</Select.ItemText>

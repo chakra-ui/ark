@@ -1,5 +1,5 @@
+import { SegmentGroup } from '@ark-ui/react/segment-group'
 import { useState } from 'react'
-import { SegmentGroup } from '../..'
 
 export const Controlled = () => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']

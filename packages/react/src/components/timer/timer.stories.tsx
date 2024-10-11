@@ -9,4 +9,5 @@ export default meta
 export { Basic } from './examples/basic'
 export { Countdown } from './examples/countdown'
 export { CustomInterval } from './examples/custom-interval'
-export { TimerWithEvents } from './examples/events'
+export { Events } from './examples/events'
+export { Pomodoro } from './examples/pomodoro'

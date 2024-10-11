@@ -29,4 +29,4 @@ export const ResizeTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, Splitter.ResizeTriggerBaseProps>
 >(Splitter.ResizeTrigger, 'resizeTrigger')
 
-export { SplitterContext as Context } from '@ark-ui/react/splitter'
+export const Context = Splitter.Context

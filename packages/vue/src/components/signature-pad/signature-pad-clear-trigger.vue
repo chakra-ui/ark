@@ -14,9 +14,12 @@ export interface SignaturePadClearTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SignaturePadClearTriggerProps>()
 const signaturePad = useSignaturePadContext()
+
+useForwardExpose()
 </script>
 
 <template>

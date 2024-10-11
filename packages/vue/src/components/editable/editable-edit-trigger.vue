@@ -14,9 +14,12 @@ export interface EditableEditTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<EditableEditTriggerProps>()
 const editable = useEditableContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -1,6 +1,6 @@
+import { Checkbox } from '@ark-ui/solid/checkbox'
 import { CheckIcon } from 'lucide-solid'
 import { For } from 'solid-js'
-import { Checkbox, CheckboxGroup } from '../..'
 
 const items = [
   { label: 'React', value: 'react' },
@@ -9,7 +9,7 @@ const items = [
 ]
 
 export const Group = () => (
-  <CheckboxGroup defaultValue={['react']} name="framework" onValueChange={console.log}>
+  <Checkbox.Group defaultValue={['react']} name="framework" onValueChange={console.log}>
     <For each={items}>
       {(item) => (
         <Checkbox.Root value={item.value}>
@@ -23,5 +23,5 @@ export const Group = () => (
         </Checkbox.Root>
       )}
     </For>
-  </CheckboxGroup>
+  </Checkbox.Group>
 )

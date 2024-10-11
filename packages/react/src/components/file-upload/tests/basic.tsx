@@ -1,6 +1,6 @@
-import { FileUpload, type FileUploadRootProps } from '../'
+import { FileUpload } from '../'
 
-export const ComponentUnderTest = (props: FileUploadRootProps) => (
+export const ComponentUnderTest = (props: FileUpload.RootProps) => (
   <FileUpload.Root {...props}>
     <FileUpload.Context>
       {(fileUpload) => {
@@ -11,6 +11,7 @@ export const ComponentUnderTest = (props: FileUploadRootProps) => (
           <>
             <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
             <FileUpload.Dropzone />
+            <FileUpload.ClearTrigger>Clear</FileUpload.ClearTrigger>
             <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
             <FileUpload.ItemGroup>
               {fileUpload.acceptedFiles.map((file) => (

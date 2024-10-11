@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Teleport } from 'vue'
-import { Dialog } from '../..'
+import { Dialog } from '@ark-ui/vue/dialog'
 </script>
 
 <template>

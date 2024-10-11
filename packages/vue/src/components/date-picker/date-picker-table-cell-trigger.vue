@@ -17,6 +17,7 @@ import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context'
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DatePickerTableCellTriggerProps>()
 const datePicker = useDatePickerContext()
@@ -35,6 +36,8 @@ const triggerProps = computed(() => {
   // @ts-expect-error fix later
   return viewFn(cellProps)
 })
+
+useForwardExpose()
 </script>
 
 <template>

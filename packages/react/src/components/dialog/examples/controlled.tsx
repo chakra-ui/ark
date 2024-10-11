@@ -1,5 +1,6 @@
+import { Dialog } from '@ark-ui/react/dialog'
+import { Portal } from '@ark-ui/react/portal'
 import { useState } from 'react'
-import { Dialog, Portal } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)

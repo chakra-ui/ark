@@ -1,7 +1,7 @@
 import { For } from 'solid-js'
-import { Accordion, type AccordionRootProps } from '../'
+import { Accordion } from '../'
 
-export const ComponentUnderTest = (props: AccordionRootProps) => {
+export const ComponentUnderTest = (props: Accordion.RootProps) => {
   const items = [
     { value: 'React' },
     { value: 'Solid' },

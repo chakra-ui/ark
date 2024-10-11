@@ -16,11 +16,16 @@ export interface SelectContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectContentProps>()
 const select = useSelectContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(select.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(select.value.getContentProps(), presence.value.presenceProps),
+)
+
+useForwardExpose()
 </script>
 
 <template>

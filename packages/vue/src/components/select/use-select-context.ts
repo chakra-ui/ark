@@ -1,5 +1,5 @@
-import type { CollectionItem } from '../../types'
 import { createContext } from '../../utils'
+import type { CollectionItem } from '../collection'
 import type { UseSelectReturn } from './use-select'
 
 export interface UseSelectContext<T extends CollectionItem = CollectionItem>

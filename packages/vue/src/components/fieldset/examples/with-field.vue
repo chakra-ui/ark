@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Field, Fieldset } from '../..'
+import { Field } from '@ark-ui/vue/field'
+import { Fieldset } from '@ark-ui/vue/fieldset'
 </script>
 
 <template>

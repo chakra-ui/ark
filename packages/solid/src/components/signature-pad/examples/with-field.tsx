@@ -1,5 +1,6 @@
+import { Field } from '@ark-ui/solid/field'
+import { SignaturePad } from '@ark-ui/solid/signature-pad'
 import { createSignal } from 'solid-js'
-import { Field, SignaturePad } from '../..'
 
 export const WithField = (props: Field.RootProps) => {
   const [value, setValue] = createSignal('')

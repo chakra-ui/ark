@@ -1,4 +1,4 @@
-import { Tabs } from '../..'
+import { Tabs } from '@ark-ui/solid/tabs'
 
 export const InitialTab = () => (
   <Tabs.Root value="react">

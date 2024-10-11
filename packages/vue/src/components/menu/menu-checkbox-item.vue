@@ -26,6 +26,7 @@ import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
   checked: undefined,
@@ -46,6 +47,8 @@ const optionItemState = computed(() => menu.value.getOptionItemState(optionItemP
 
 MenuItemProvider(optionItemState)
 MenuOptionItemPropsProvider(optionItemProps)
+
+useForwardExpose()
 </script>
 
 <template>

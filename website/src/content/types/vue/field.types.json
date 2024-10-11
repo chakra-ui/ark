@@ -23,7 +23,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "modelValue": { "type": "any", "isRequired": false }
     }
   },
   "Label": {
@@ -73,7 +74,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null>; }; disabled: boolean | undefined; invalid: boolean | undefined; ... 8 more ...; getErrorTextProps: () => HTMLAttributes; }",
+        "type": "{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null, null>; }; disabled: boolean | undefined; invalid: boolean | undefined; ... 8 more ...; getErrorTextProps: () => HTMLAttributes; }",
         "isRequired": true
       },
       "asChild": {
@@ -89,7 +90,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "modelValue": { "type": "any", "isRequired": false }
     }
   },
   "Textarea": {
@@ -98,7 +100,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "modelValue": { "type": "string | number | readonly string[]", "isRequired": false }
     }
   }
 }

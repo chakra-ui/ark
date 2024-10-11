@@ -1,5 +1,5 @@
+import { Carousel } from '@ark-ui/solid/carousel'
 import { Index, createSignal } from 'solid-js'
-import { Carousel } from '../..'
 
 export const Controlled = () => {
   const [currentIndex, setCurrentIndex] = createSignal(0)

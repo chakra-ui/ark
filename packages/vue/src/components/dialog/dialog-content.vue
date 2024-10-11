@@ -16,12 +16,17 @@ export interface DialogContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DialogContentProps>()
 
 const dialog = useDialogContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(dialog.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(dialog.value.getContentProps(), presence.value.presenceProps),
+)
+
+useForwardExpose()
 </script>
 
 <template>

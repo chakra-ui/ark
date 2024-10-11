@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Pagination } from '../..'
+import { Pagination } from '@ark-ui/vue/pagination'
 </script>
 
 <template>

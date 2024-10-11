@@ -4,7 +4,6 @@ export type {
   OpenChangeDetails,
   ValueChangeDetails,
 } from '@zag-js/combobox'
-export type { CollectionItem } from '../../types'
 export {
   default as ClearTrigger,
   type ComboboxClearTriggerProps as ClearTriggerProps,

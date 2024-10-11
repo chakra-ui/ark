@@ -12,13 +12,15 @@ export interface DialogBackdropProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils'
+import { useRenderStrategyProps, useForwardExpose } from '../../utils'
 import { Presence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 
 defineProps<DialogBackdropProps>()
 const dialog = useDialogContext()
 const renderStrategy = useRenderStrategyProps()
+
+useForwardExpose()
 </script>
 
 <template>

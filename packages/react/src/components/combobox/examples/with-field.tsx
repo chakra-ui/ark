@@ -1,10 +1,12 @@
-import { Combobox, Field } from '../..'
+import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { Field } from '@ark-ui/react/field'
 
 export const WithField = (props: Field.RootProps) => {
-  const items = ['React', 'Solid', 'Vue']
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+
   return (
     <Field.Root {...props}>
-      <Combobox.Root items={items} lazyMount unmountOnExit>
+      <Combobox.Root collection={collection}>
         <Combobox.Label>Label</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input />
@@ -13,7 +15,7 @@ export const WithField = (props: Field.RootProps) => {
         </Combobox.Control>
         <Combobox.Positioner>
           <Combobox.Content>
-            {items.map((item) => (
+            {collection.items.map((item) => (
               <Combobox.Item key={item} item={item}>
                 <Combobox.ItemText>{item}</Combobox.ItemText>
                 <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>

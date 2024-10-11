@@ -1,5 +1,5 @@
+import { Presence } from '@ark-ui/react/presence'
 import { useState } from 'react'
-import { Presence } from '../..'
 
 export const LazyMountAndUnmountOnExit = () => {
   const [present, setPresent] = useState(false)

@@ -1,15 +1,15 @@
+import { EnvironmentProvider } from '@ark-ui/solid/environment'
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { Index, Portal } from 'solid-js/web'
-import { Select } from '..'
-import { EnvironmentProvider } from '../../../providers'
-
-const items = ['React', 'Solid', 'Vue']
 
 export const WithShadowRoot = () => {
   let portalNode: (HTMLDivElement & { shadowRoot: ShadowRoot }) | undefined
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+
   return (
     <Portal ref={portalNode} useShadow={true}>
       <EnvironmentProvider value={() => portalNode?.shadowRoot ?? document}>
-        <Select.Root items={items}>
+        <Select.Root collection={collection}>
           <Select.Label>Framework</Select.Label>
           <Select.Control>
             <Select.Trigger>
@@ -21,7 +21,7 @@ export const WithShadowRoot = () => {
           <Select.Positioner>
             <Select.Content>
               <Select.ItemGroup>
-                <Index each={items}>
+                <Index each={collection.items}>
                   {(item) => (
                     <Select.Item item={item()}>
                       <Select.ItemText>{item()}</Select.ItemText>

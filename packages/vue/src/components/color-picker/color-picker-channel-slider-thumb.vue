@@ -17,12 +17,14 @@ import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerChannelSliderThumbProps>()
 const colorPicker = useColorPickerContext()
 const formatProps = useColorPickerFormatPropsContext()
 const channelProps = useColorPickerChannelPropsContext()
 const channelSliderProps = computed(() => ({ ...channelProps, ...formatProps }))
+useForwardExpose()
 </script>
 
 <template>

@@ -4,9 +4,9 @@ export interface RootProps {
   /**
    * The activation mode for the preview element.
    *
-   * - "focus" - Enter edit mode when the preview element is focused
-   * - "dblclick" - Enter edit mode when the preview element is double-clicked
-   * - "none" - No interaction with the preview element will trigger edit mode.
+   * - "focus" - Enter edit mode when the preview is focused
+   * - "dblclick" - Enter edit mode when the preview is double-clicked
+   * - "click" - Enter edit mode when the preview is clicked
    *
    * @default "focus"
    */
@@ -107,16 +107,11 @@ export interface RootProps {
   translations?: editable.IntlTranslations
 }
 
-// TODO: remove when Zag is fixed
-export interface EditChangeDetails {
-  edit: boolean;
-}
-
 export type RootEmits = {
   /**
-   * The callback that is called when in the edit mode.
+   * The callback that is called when the edit mode is changed
    */
-  editChange: [event: EditChangeDetails]
+  editChange: [details: editable.EditChangeDetails]
   /**
    * Function called when the focus is moved outside the component
    */

@@ -14,10 +14,13 @@ export interface FileUploadDropzoneProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadDropzoneProps>()
 
 const fileUpload = useFileUploadContext()
+
+useForwardExpose()
 </script>
 
 <template>

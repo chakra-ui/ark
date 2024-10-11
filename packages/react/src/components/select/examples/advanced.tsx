@@ -1,16 +1,19 @@
+import { Portal } from '@ark-ui/react/portal'
+import { Select, createListCollection } from '@ark-ui/react/select'
 import { ChevronDownIcon } from 'lucide-react'
-import { Portal, Select } from '../..'
 
 export const Advanced = () => {
-  type Item = { label: string; value: string; disabled?: boolean }
-  const items: Item[] = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
+
   return (
-    <Select.Root items={items}>
+    <Select.Root collection={collection}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -26,7 +29,7 @@ export const Advanced = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              {items.map((item) => (
+              {collection.items.map((item) => (
                 <Select.Item key={item.value} item={item}>
                   <Select.ItemText>{item.label}</Select.ItemText>
                   <Select.ItemIndicator>✓</Select.ItemIndicator>

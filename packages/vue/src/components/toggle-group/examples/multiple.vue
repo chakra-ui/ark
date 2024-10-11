@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ToggleGroup } from '../..'
+import { ToggleGroup } from '@ark-ui/vue/toggle-group'
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Popover } from '@ark-ui/vue/popover'
 import { ref } from 'vue'
-import { Popover } from '../..'
 
 const open = ref(false)
 </script>

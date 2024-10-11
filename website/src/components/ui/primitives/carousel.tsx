@@ -59,4 +59,4 @@ export const Viewport = withContext<
   Assign<HTMLStyledProps<'div'>, Carousel.ViewportBaseProps>
 >(Carousel.Viewport, 'viewport')
 
-export { CarouselContext as Context } from '@ark-ui/react/carousel'
+export const Context = Carousel.Context

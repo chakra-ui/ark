@@ -1,9 +1,9 @@
+import { DatePicker } from '@ark-ui/solid/date-picker'
 import { Index } from 'solid-js'
-import { DatePicker } from '../..'
 
 export const Standalone = () => {
   return (
-    <DatePicker.Root open closeOnSelect={false}>
+    <DatePicker.Root open>
       <DatePicker.Context>
         {(context) => (
           <>

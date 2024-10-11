@@ -1,4 +1,4 @@
-import { Highlight } from '../highlight'
+import { Highlight } from '@ark-ui/react/highlight'
 
 export const Multiple = () => {
   return (

@@ -1,4 +1,5 @@
-import { Portal, TimePicker } from '../..'
+import { Portal } from '@ark-ui/react/portal'
+import { TimePicker, parseTime } from '@ark-ui/react/time-picker'
 
 export const Advanced = () => {
   return (
@@ -9,8 +10,8 @@ export const Advanced = () => {
         minute: 5,
         second: 10,
       }}
-      min="03:00"
-      max="11:00"
+      min={parseTime('09:00')}
+      max={parseTime('17:00')}
     >
       <TimePicker.Control>
         <TimePicker.Input />

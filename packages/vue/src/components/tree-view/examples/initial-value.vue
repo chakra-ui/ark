@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TreeView } from '../..'
+import { TreeView } from '@ark-ui/vue/tree-view'
 </script>
 
 <template>

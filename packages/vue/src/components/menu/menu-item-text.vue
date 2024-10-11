@@ -15,10 +15,14 @@ export interface MenuItemTextProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuItemTextProps>()
+
 const menu = useMenuContext()
 const optionItemProps = useMenuOptionItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

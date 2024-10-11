@@ -14,9 +14,12 @@ export interface HoverCardTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useHoverCardContext } from './use-hover-card-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<HoverCardTriggerProps>()
 const hoverCard = useHoverCardContext()
+
+useForwardExpose()
 </script>
 
 <template>

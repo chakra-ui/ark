@@ -124,10 +124,10 @@
   },
   "Root": {
     "props": {
-      "items": {
-        "type": "T[] | readonly T[]",
+      "collection": {
+        "type": "ListCollection<T>",
         "isRequired": true,
-        "description": "The options of the select"
+        "description": "The collection of items"
       },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
@@ -155,6 +155,11 @@
         "type": "string[]",
         "isRequired": false,
         "description": "The initial value of the select when it is first rendered.\nUse when you do not need to control the state of the select."
+      },
+      "deselectable": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the value can be cleared by clicking the selected item.\n\n**Note:** this is only applicable for single selection"
       },
       "disabled": {
         "type": "boolean",
@@ -185,21 +190,6 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the select is invalid"
-      },
-      "isItemDisabled": {
-        "type": "(item: T) => boolean",
-        "isRequired": false,
-        "description": "Whether the item is disabled"
-      },
-      "itemToString": {
-        "type": "(item: T) => string",
-        "isRequired": false,
-        "description": "The label of the item"
-      },
-      "itemToValue": {
-        "type": "(item: T) => string",
-        "isRequired": false,
-        "description": "The value of the item"
       },
       "lazyMount": {
         "type": "boolean",

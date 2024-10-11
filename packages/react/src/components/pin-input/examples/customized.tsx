@@ -1,4 +1,4 @@
-import { PinInput } from '../..'
+import { PinInput } from '@ark-ui/react/pin-input'
 
 export const Customized = () => (
   <PinInput.Root placeholder="*">

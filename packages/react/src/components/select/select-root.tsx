@@ -1,7 +1,8 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
-import type { Assign, CollectionItem } from '../../types'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
@@ -26,19 +27,17 @@ const SelectImpl = <T extends CollectionItem>(
   const [presenceProps, selectProps] = splitPresenceProps(props)
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
     'closeOnSelect',
+    'collection',
     'composite',
     'defaultOpen',
     'defaultValue',
+    'deselectable',
     'disabled',
     'form',
     'highlightedValue',
     'id',
     'ids',
     'invalid',
-    'isItemDisabled',
-    'items',
-    'itemToString',
-    'itemToValue',
     'loopFocus',
     'multiple',
     'name',

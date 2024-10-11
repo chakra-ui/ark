@@ -1,6 +1,6 @@
+import { FileUpload } from '@ark-ui/react/file-upload'
 import { FileIcon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
-import { FileUpload } from '../..'
 
 interface FieldValues {
   files: File[]

@@ -15,6 +15,7 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((pro
     'value',
     'onValueChange',
     'disabled',
+    'invalid',
     'readOnly',
     'name',
   ])

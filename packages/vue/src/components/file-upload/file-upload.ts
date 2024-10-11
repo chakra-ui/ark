@@ -1,71 +1,76 @@
 export type { FileAcceptDetails, FileChangeDetails, FileRejectDetails } from '@zag-js/file-upload'
 export {
+  default as ClearTrigger,
+  type FileUploadClearTriggerBaseProps as ClearTriggerBaseProps,
+  type FileUploadClearTriggerProps as ClearTriggerProps,
+} from './file-upload-clear-trigger.vue'
+export {
   default as Context,
   type FileUploadContextProps as ContextProps,
 } from './file-upload-context.vue'
 export {
   default as Dropzone,
-  type FileUploadDropzoneProps as DropzoneProps,
   type FileUploadDropzoneBaseProps as DropzoneBaseProps,
+  type FileUploadDropzoneProps as DropzoneProps,
 } from './file-upload-dropzone.vue'
 export {
   default as HiddenInput,
-  type FileUploadHiddenInputProps as HiddenInputProps,
   type FileUploadHiddenInputBaseProps as HiddenInputBaseProps,
+  type FileUploadHiddenInputProps as HiddenInputProps,
 } from './file-upload-hidden-input.vue'
 export {
   default as ItemDeleteTrigger,
-  type FileUploadItemDeleteTriggerProps as ItemDeleteTriggerProps,
   type FileUploadItemDeleteTriggerBaseProps as ItemDeleteTriggerBaseProps,
+  type FileUploadItemDeleteTriggerProps as ItemDeleteTriggerProps,
 } from './file-upload-item-delete-trigger.vue'
 export {
   default as ItemGroup,
-  type FileUploadItemGroupProps as ItemGroupProps,
   type FileUploadItemGroupBaseProps as ItemGroupBaseProps,
+  type FileUploadItemGroupProps as ItemGroupProps,
 } from './file-upload-item-group.vue'
 export {
   default as ItemName,
-  type FileUploadItemNameProps as ItemNameProps,
   type FileUploadItemNameBaseProps as ItemNameBaseProps,
+  type FileUploadItemNameProps as ItemNameProps,
 } from './file-upload-item-name.vue'
 export {
   default as ItemPreviewImage,
-  type FileUploadItemPreviewImageProps as ItemPreviewImageProps,
   type FileUploadItemPreviewImageBaseProps as ItemPreviewImageBaseProps,
+  type FileUploadItemPreviewImageProps as ItemPreviewImageProps,
 } from './file-upload-item-preview-image.vue'
 export {
   default as ItemPreview,
-  type FileUploadItemPreviewProps as ItemPreviewProps,
   type FileUploadItemPreviewBaseProps as ItemPreviewBaseProps,
+  type FileUploadItemPreviewProps as ItemPreviewProps,
 } from './file-upload-item-preview.vue'
 export {
   default as ItemSizeText,
-  type FileUploadItemSizeTextProps as ItemSizeTextProps,
   type FileUploadItemSizeTextBaseProps as ItemSizeTextBaseProps,
+  type FileUploadItemSizeTextProps as ItemSizeTextProps,
 } from './file-upload-item-size-text.vue'
 export {
   default as Item,
-  type FileUploadItemProps as ItemProps,
   type FileUploadItemBaseProps as ItemBaseProps,
+  type FileUploadItemProps as ItemProps,
 } from './file-upload-item.vue'
 export {
   default as Label,
-  type FileUploadLabelProps as LabelProps,
   type FileUploadLabelBaseProps as LabelBaseProps,
+  type FileUploadLabelProps as LabelProps,
 } from './file-upload-label.vue'
 export {
   default as RootProvider,
-  type FileUploadRootProviderProps as RootProviderProps,
   type FileUploadRootProviderBaseProps as RootProviderBaseProps,
+  type FileUploadRootProviderProps as RootProviderProps,
 } from './file-upload-root-provider.vue'
 export {
   default as Root,
-  type FileUploadRootEmits as RootEmits,
   type FileUploadRootBaseProps as RootBaseProps,
+  type FileUploadRootEmits as RootEmits,
   type FileUploadRootProps as RootProps,
 } from './file-upload-root.vue'
 export {
   default as Trigger,
-  type FileUploadTriggerProps as TriggerProps,
   type FileUploadTriggerBaseProps as TriggerBaseProps,
+  type FileUploadTriggerProps as TriggerProps,
 } from './file-upload-trigger.vue'

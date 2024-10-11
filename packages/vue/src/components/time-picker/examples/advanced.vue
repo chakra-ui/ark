@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TimePicker } from '../..'
+import { TimePicker, parseTime } from '@ark-ui/vue/time-picker'
 </script>
 
 <template>
@@ -10,8 +10,8 @@ import { TimePicker } from '../..'
       minute: 5,
       second: 10,
     }"
-    min="03:00"
-    max="11:00"
+    :min="parseTime('09:00')"
+    :max="parseTime('17:00')"
   >
     <TimePicker.Control>
       <TimePicker.Input />

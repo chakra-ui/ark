@@ -1,35 +1,28 @@
 <script setup lang="ts">
-import {
-  PaginationContext,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationNextTrigger,
-  PaginationPrevTrigger,
-  PaginationRoot,
-} from '..'
+import { Pagination } from '..'
 </script>
 <template>
-  <PaginationRoot :count="100" :page-size="10" :sibling-count="2">
-    <PaginationPrevTrigger>
+  <Pagination.Root :count="100" :page-size="10" :sibling-count="2">
+    <Pagination.PrevTrigger>
       Previous
       <span className="visually-hidden">Page</span>
-    </PaginationPrevTrigger>
-    <PaginationContext v-slot="pagination">
+    </Pagination.PrevTrigger>
+    <Pagination.Context v-slot="pagination">
       <template v-for="(page, index) in pagination.pages">
-        <PaginationItem
+        <Pagination.Item
           v-if="page.type === 'page'"
           :key="index"
           :value="page.value"
           :type="page.type"
         >
           {{ page.value }}
-        </PaginationItem>
-        <PaginationEllipsis v-else :key="'e' + index" :index="index">&#8230;</PaginationEllipsis>
+        </Pagination.Item>
+        <Pagination.Ellipsis v-else :key="'e' + index" :index="index">&#8230;</Pagination.Ellipsis>
       </template>
-    </PaginationContext>
-    <PaginationNextTrigger>
+    </Pagination.Context>
+    <Pagination.NextTrigger>
       Next
       <span className="visually-hidden">Page</span>
-    </PaginationNextTrigger>
-  </PaginationRoot>
+    </Pagination.NextTrigger>
+  </Pagination.Root>
 </template>

@@ -15,10 +15,12 @@ export interface ColorPickerChannelSliderLabelProps
 import { ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerChannelSliderLabelProps>()
 const colorPicker = useColorPickerContext()
 const channelProps = useColorPickerChannelPropsContext()
+useForwardExpose()
 </script>
 
 <template>

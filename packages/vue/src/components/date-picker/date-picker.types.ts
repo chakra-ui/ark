@@ -16,7 +16,7 @@ export interface RootProps {
    * The initial value of the date picker when it is first rendered.
    * Use when you do not need to control the state of the date picker.
    */
-  defaultValue?: string[]
+  defaultValue?: datePicker.DateValue[]
   /**
    * Whether the calendar is disabled.
    */
@@ -29,7 +29,7 @@ export interface RootProps {
   /**
    * The focused date.
    */
-  focusedValue?: string
+  focusedValue?: datePicker.DateValue
   /**
    * The format of the date to display in the input.
    */
@@ -71,13 +71,13 @@ export interface RootProps {
    */
   locale?: string
   /**
-   * The maximum date for the date picker in the format yyyy-mm-dd
+   * The maximum date that can be selected.
    */
-  max?: string
+  max?: datePicker.DateValue
   /**
-   * The minimum date for the date picker in the format yyyy-mm-dd
+   * The minimum date that can be selected.
    */
-  min?: string
+  min?: datePicker.DateValue
   /**
    * Whether the calendar should be modal. This means that the calendar will
    * block interaction with the rest of the page, and trap focus within it.
@@ -86,7 +86,7 @@ export interface RootProps {
   /**
    * The v-model value of the date picker
    */
-  modelValue?: string[]
+  modelValue?: datePicker.DateValue[]
   /**
    * The `name` attribute of the input element.
    */
@@ -163,6 +163,6 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: string[]]
+  'update:modelValue': [value: datePicker.DateValue[]]
   'update:open': [open: boolean]
 }

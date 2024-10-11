@@ -1,4 +1,4 @@
-import { Tooltip } from '../..'
+import { Tooltip } from '@ark-ui/react/tooltip'
 
 export const Timings = () => (
   <Tooltip.Root closeDelay={0} openDelay={0}>

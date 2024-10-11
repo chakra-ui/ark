@@ -12,6 +12,7 @@ export interface AccordionItemIndicatorProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
@@ -19,6 +20,7 @@ import { useAccordionItemPropsContext } from './use-accordion-item-props-context
 defineProps<AccordionItemIndicatorProps>()
 const accordion = useAccordionContext()
 const itemProps = useAccordionItemPropsContext()
+useForwardExpose()
 </script>
 
 <template>

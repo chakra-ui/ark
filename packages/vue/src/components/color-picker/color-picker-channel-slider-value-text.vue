@@ -17,12 +17,15 @@ import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
 import { ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerChannelSliderValueTextProps>()
 const colorPicker = useColorPickerContext()
 const channelProps = useColorPickerChannelPropsContext()
 const slots = useSlots()
 const localeContext = useLocaleContext(DEFAULT_LOCALE)
+
+useForwardExpose()
 </script>
 
 <template>

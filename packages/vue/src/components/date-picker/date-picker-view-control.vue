@@ -15,10 +15,13 @@ export interface DatePickerViewControlProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DatePickerViewControlProps>()
 const datePicker = useDatePickerContext()
 const viewProps = useDatePickerViewPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

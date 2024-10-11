@@ -1,4 +1,4 @@
-import { Popover } from '../..'
+import { Popover } from '@ark-ui/react/popover'
 
 export const Modal = () => (
   <Popover.Root modal>

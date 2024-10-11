@@ -15,9 +15,12 @@ export interface PinInputInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<PinInputInputProps>()
 const pinInput = usePinInputContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -1,3 +1,4 @@
+export { parseTime } from '@internationalized/date'
 export type {
   FocusChangeDetails as TimePickerFocusChangeDetails,
   OpenChangeDetails as TimePickerOpenChangeDetails,

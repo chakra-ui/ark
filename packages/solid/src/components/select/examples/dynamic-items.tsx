@@ -1,14 +1,20 @@
-import { createSignal } from 'solid-js'
+import { Select, createListCollection } from '@ark-ui/solid/select'
+import { createMemo, createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
-import { Select } from '../../'
 
 export const DynamicItems = () => {
   const [items, setItems] = createSignal(['React', 'Solid', 'Vue'])
+  const collection = createMemo(() =>
+    createListCollection({
+      items: items(),
+    }),
+  )
+
   const addItem = () => setItems([...items(), 'Svelte'])
 
   return (
     <div>
-      <Select.Root id="sample-select" items={items()} present={undefined}>
+      <Select.Root collection={collection()}>
         <Select.Control>
           <Select.Label>Framework</Select.Label>
           <Select.Trigger>
@@ -17,13 +23,12 @@ export const DynamicItems = () => {
           </Select.Trigger>
           <Select.ClearTrigger>Clear</Select.ClearTrigger>
         </Select.Control>
-
         <Portal>
           <Select.Positioner>
             <Select.Content>
-              <Select.ItemGroup id="framework">
+              <Select.ItemGroup>
                 <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-                <Index each={items()}>
+                <Index each={collection().items}>
                   {(item) => (
                     <Select.Item item={item()}>
                       <Select.ItemText>{item()}</Select.ItemText>

@@ -1,9 +1,9 @@
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed } from 'vue'
+import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps, useId } from '../../utils'
+import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './file-upload'
 
@@ -29,6 +29,7 @@ export const useFileUpload = (
     },
     disabled: field?.value.disabled,
     required: field?.value.required,
+    invalid: field?.value.invalid,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onFileChange: (details) => emit?.('fileChange', details),

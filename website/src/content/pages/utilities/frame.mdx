@@ -1,0 +1,40 @@
+---
+id: frame
+title: Frame
+description: Used to render a component in an iframe
+status: preview
+---
+
+<ComponentPreview id="Frame" />
+
+## Usage
+
+The `Frame` component is used to render a component in an iframe.
+
+- Tracks the size of the content and exposes them via css variables.
+- Support for `head` prop to inject scripts and styles.
+- Support for mount and unmount callbacks.
+
+```jsx
+import { Frame } from '@ark-ui/react'
+```
+
+## Examples
+
+### Basic
+
+Wrap your component in the `Frame` component to render it in an iframe.
+
+<Example component="frame" id="basic" />
+
+### Injecting Script
+
+Using the `onMount` prop, you can inject a script into the iframe.
+
+<Example component="frame" id="script" />
+
+### Custom src doc
+
+Use the `srcDoc` prop to specify the HTML content of the page to use in the iframe.
+
+<Example component="frame" id="src-doc" />

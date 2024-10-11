@@ -13,6 +13,6 @@ export const IFrameExample = (props: Props) => {
 
   if (!isClient) return null
   return (
-    <iframe title="Example" width="100%" height="448px" src={`${url}?theme=${resolvedTheme}`} />
+    <iframe title="Example" width="100%" height="551px" src={`${url}?theme=${resolvedTheme}`} />
   )
 }

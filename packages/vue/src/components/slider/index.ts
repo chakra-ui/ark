@@ -5,62 +5,62 @@ export type {
 export { default as SliderContext, type SliderContextProps } from './slider-context.vue'
 export {
   default as SliderControl,
-  type SliderControlProps,
   type SliderControlBaseProps,
+  type SliderControlProps,
 } from './slider-control.vue'
 export {
   default as SliderHiddenInput,
-  type SliderHiddenInputProps,
   type SliderHiddenInputBaseProps,
+  type SliderHiddenInputProps,
 } from './slider-hidden-input.vue'
 export {
   default as SliderLabel,
-  type SliderLabelProps,
   type SliderLabelBaseProps,
+  type SliderLabelProps,
 } from './slider-label.vue'
 export {
   default as SliderMarkerGroup,
-  type SliderMarkerGroupProps,
   type SliderMarkerGroupBaseProps,
+  type SliderMarkerGroupProps,
 } from './slider-marker-group.vue'
 export {
   default as SliderMarker,
-  type SliderMarkerProps,
   type SliderMarkerBaseProps,
+  type SliderMarkerProps,
 } from './slider-marker.vue'
 export {
   default as SliderRange,
-  type SliderRangeProps,
   type SliderRangeBaseProps,
+  type SliderRangeProps,
 } from './slider-range.vue'
 export {
   default as SliderRootProvider,
-  type SliderRootProviderProps,
   type SliderRootProviderBaseProps,
+  type SliderRootProviderProps,
 } from './slider-root-provider.vue'
 export {
   default as SliderRoot,
-  type SliderRootEmits,
   type SliderRootBaseProps,
+  type SliderRootEmits,
   type SliderRootProps,
 } from './slider-root.vue'
 export {
   default as SliderThumb,
-  type SliderThumbProps,
   type SliderThumbBaseProps,
+  type SliderThumbProps,
 } from './slider-thumb.vue'
 export {
   default as SliderTrack,
-  type SliderTrackProps,
   type SliderTrackBaseProps,
+  type SliderTrackProps,
 } from './slider-track.vue'
 export {
   default as SliderValueText,
-  type SliderValueTextProps,
   type SliderValueTextBaseProps,
+  type SliderValueTextProps,
 } from './slider-value-text.vue'
+export { sliderAnatomy } from './slider.anatomy'
 export { useSlider, type UseSliderProps, type UseSliderReturn } from './use-slider'
 export { useSliderContext, type UseSliderContext } from './use-slider-context'
-export { sliderAnatomy } from './slider.anatomy'
 
 export * as Slider from './slider'

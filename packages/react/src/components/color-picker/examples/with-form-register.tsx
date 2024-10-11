@@ -1,5 +1,6 @@
+import { ColorPicker } from '@ark-ui/react/color-picker'
+import { parseColor } from '@zag-js/color-utils'
 import { useForm } from 'react-hook-form'
-import { ColorPicker } from '../..'
 import { ColorPickerContent } from './_template'
 
 interface FieldValues {
@@ -15,7 +16,7 @@ export const WithFormRegister = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <ColorPicker.Root open defaultValue="#eb5e41">
+      <ColorPicker.Root open defaultValue={parseColor('#eb5e41')}>
         <ColorPickerContent />
         <ColorPicker.HiddenInput {...register('color')} />
       </ColorPicker.Root>

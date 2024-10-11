@@ -16,11 +16,13 @@ export interface ProgressRootProps
 import { ark } from '../factory'
 import { useProgress } from './use-progress'
 import { ProgressProvider } from './use-progress-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ProgressRootProps>()
 const progress = useProgress(props)
 
 ProgressProvider(progress)
+useForwardExpose()
 </script>
 
 <template>

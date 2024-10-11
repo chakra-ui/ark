@@ -1,4 +1,4 @@
-import { Tabs } from '../..'
+import { Tabs } from '@ark-ui/react/tabs'
 
 export const WithLinkTrigger = () => (
   <Tabs.Root defaultValue="react">

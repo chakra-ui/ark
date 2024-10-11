@@ -14,9 +14,12 @@ export interface PopoverArrowTipProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<PopoverArrowTipProps>()
 const popover = usePopoverContext()
+
+useForwardExpose()
 </script>
 
 <template>

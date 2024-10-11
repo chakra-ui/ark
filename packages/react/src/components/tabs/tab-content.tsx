@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import type { ContentProps } from '@zag-js/tabs'
 import { forwardRef } from 'react'
+import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -22,13 +23,15 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
 
   const mergedProps = mergeProps(
     tabs.getContentProps(contentProps),
-    presence.getPresenceProps(ref),
+    presence.getPresenceProps(),
     localProps,
   )
 
   return (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : <ark.div {...mergedProps} />}
+      {presence.unmounted ? null : (
+        <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
+      )}
     </PresenceProvider>
   )
 })

@@ -1,4 +1,13 @@
 {
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Dropzone": {
     "props": {
       "asChild": {
@@ -156,6 +165,11 @@
         "isRequired": false,
         "description": "The ids of the elements. Useful for composition."
       },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the file input is invalid"
+      },
       "locale": {
         "type": "string",
         "defaultValue": "\"en-US\"",
@@ -196,7 +210,7 @@
         "description": "The localized messages to use."
       },
       "validate": {
-        "type": "(file: File) => FileError[]",
+        "type": "(file: File) => FileError[] | null",
         "isRequired": false,
         "description": "Function to validate a file"
       }

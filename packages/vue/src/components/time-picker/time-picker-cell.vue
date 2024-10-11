@@ -20,6 +20,7 @@ export interface TimePickerCellProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TimePickerCellProps>()
 const timePicker = useTimePickerContext()
@@ -33,6 +34,8 @@ const unitToPropsMap = {
 }
 
 const cellProps = unitToPropsMap[columnProps.unit]()
+
+useForwardExpose()
 </script>
 
 <template>

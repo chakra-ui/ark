@@ -1,11 +1,22 @@
-import { For } from 'solid-js'
+import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
+import { For, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Combobox } from '../..'
+
+const initialItems = ['React', 'Solid', 'Vue']
 
 export const Basic = () => {
-  const items = ['React', 'Solid', 'Vue']
+  const [items, setItems] = createSignal(initialItems)
+
+  const collection = createMemo(() => createListCollection({ items: items() }))
+
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+    setItems(
+      initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())),
+    )
+  }
+
   return (
-    <Combobox.Root items={items} multiple>
+    <Combobox.Root collection={collection()} onInputValueChange={handleInputChange}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -17,7 +28,7 @@ export const Basic = () => {
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={items}>
+              <For each={collection().items}>
                 {(item) => (
                   <Combobox.Item item={item}>
                     <Combobox.ItemText>{item}</Combobox.ItemText>

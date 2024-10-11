@@ -65,9 +65,9 @@
   "Root": {
     "emits": {
       "editChange": {
-        "type": "[event: EditChangeDetails]",
+        "type": "[details: EditChangeDetails]",
         "isRequired": true,
-        "description": "The callback that is called when in the edit mode."
+        "description": "The callback that is called when the edit mode is changed"
       },
       "focusOutside": {
         "type": "[event: FocusOutsideEvent]",
@@ -115,7 +115,7 @@
         "type": "ActivationMode",
         "defaultValue": "\"focus\"",
         "isRequired": false,
-        "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview element is focused\n- \"dblclick\" - Enter edit mode when the preview element is double-clicked\n- \"none\" - No interaction with the preview element will trigger edit mode."
+        "description": "The activation mode for the preview element.\n\n- \"focus\" - Enter edit mode when the preview is focused\n- \"dblclick\" - Enter edit mode when the preview is double-clicked\n- \"click\" - Enter edit mode when the preview is clicked"
       },
       "asChild": {
         "type": "boolean",

@@ -15,10 +15,14 @@ export interface TagsInputHiddenInputProps
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TagsInputHiddenInputProps>()
+
 const tagsInput = useTagsInputContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Carousel } from '@ark-ui/vue/carousel'
 import { ref } from 'vue'
-import { Carousel } from '../..'
 
 const images = [
   'https://tinyurl.com/5b6ka8jd',

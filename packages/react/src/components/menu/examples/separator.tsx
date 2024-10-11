@@ -1,4 +1,4 @@
-import { Menu } from '../..'
+import { Menu } from '@ark-ui/react/menu'
 
 export const Separator = () => (
   <Menu.Root>

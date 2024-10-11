@@ -1,4 +1,4 @@
-import { Steps } from '..'
+import { Steps } from '@ark-ui/react/steps'
 
 const items = [
   { value: 'first', title: 'First', description: 'Contact Info' },

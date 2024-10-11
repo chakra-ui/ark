@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Checkbox, Field } from '../..'
+import { Checkbox } from '@ark-ui/vue/checkbox'
+import { Field } from '@ark-ui/vue/field'
 import { CheckIcon } from './icons'
 </script>
 

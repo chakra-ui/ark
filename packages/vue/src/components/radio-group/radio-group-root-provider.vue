@@ -20,11 +20,14 @@ export interface RadioGroupRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { RadioGroupProvider } from './use-radio-group-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<RadioGroupRootProviderProps>()
 const radioGroup = computed(() => props.value)
 
 RadioGroupProvider(radioGroup)
+
+useForwardExpose()
 </script>
 
 <template>

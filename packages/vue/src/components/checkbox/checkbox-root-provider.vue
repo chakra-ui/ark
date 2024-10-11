@@ -20,11 +20,14 @@ export interface CheckboxRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { CheckboxProvider } from './use-checkbox-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<CheckboxRootProviderProps>()
 const checkbox = computed(() => props.value)
 
 CheckboxProvider(checkbox)
+
+useForwardExpose()
 </script>
 
 <template>

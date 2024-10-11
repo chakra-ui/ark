@@ -1,6 +1,6 @@
 <TagsInput.HiddenInput />
 <script setup lang="ts">
-import { TagsInput } from '../..'
+import { TagsInput } from '@ark-ui/vue/tags-input'
 </script>
 
 <template>

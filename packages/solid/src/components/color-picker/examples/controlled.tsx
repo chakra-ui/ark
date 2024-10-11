@@ -1,14 +1,14 @@
+import { ColorPicker, parseColor } from '@ark-ui/solid/color-picker'
 import { createSignal } from 'solid-js'
-import { ColorPicker } from '../..'
 
 export const Controlled = () => {
-  const [currentValue, setCurrentValue] = createSignal('hsl(0, 100%, 50%)')
+  const [color, setColor] = createSignal(parseColor('hsl(0, 100%, 50%)'))
 
   return (
     <ColorPicker.Root
-      value={currentValue()}
-      onValueChange={(details) => setCurrentValue(details.valueAsString)}
-      onValueChangeEnd={(details) => console.log(details.valueAsString)}
+      value={color()}
+      onValueChange={(e) => setColor(e.value)}
+      onValueChangeEnd={(e) => console.log(e.valueAsString)}
     >
       <ColorPicker.Label>Color</ColorPicker.Label>
       <ColorPicker.Control>

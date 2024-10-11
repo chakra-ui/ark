@@ -1,4 +1,4 @@
-import { Carousel } from '../..'
+import { Carousel } from '@ark-ui/react/carousel'
 
 export const Basic = () => {
   const images = [

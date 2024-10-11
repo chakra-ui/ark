@@ -83,7 +83,7 @@
       "count": {
         "type": "number",
         "isRequired": false,
-        "description": "The number of steps in the component."
+        "description": "The total number of steps"
       },
       "defaultStep": {
         "type": "number",
@@ -96,26 +96,24 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  list: string\n  progress: string\n  trigger(index: number): string\n  separator(index: number): string\n  item(index: number): string\n  itemContent(index: number): string\n}>",
+        "type": "ElementIds",
         "isRequired": false,
-        "description": "The ids of the elements. Useful for composition."
+        "description": "The custom ids for the stepper elements"
       },
       "linear": {
         "type": "boolean",
-        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether the step transitions should be linear and require the user\nto go through each step one by one."
+        "description": "If `true`, the stepper requires the user to complete the steps in order"
       },
       "modelValue": {
         "type": "number",
         "isRequired": false,
-        "description": "The v-model value of the component."
+        "description": "The v-model value of the step"
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
-        "defaultValue": "\"horizontal\"",
         "isRequired": false,
-        "description": "The orientation of the steps."
+        "description": "The orientation of the stepper"
       }
     }
   },

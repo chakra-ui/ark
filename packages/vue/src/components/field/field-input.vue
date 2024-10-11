@@ -8,17 +8,31 @@ export interface FieldInputProps
     /**
      * @vue-ignore
      */
-    InputHTMLAttributes {}
+    Omit<InputHTMLAttributes, 'value'> {
+  modelValue?: InputHTMLAttributes['value']
+}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldInputProps>()
 const field = useFieldContext()
+
+const emit = defineEmits(['update:modelValue'])
+
+useForwardExpose()
 </script>
 
 <template>
-  <ark.input v-bind="field.getInputProps()" :as-child="asChild"><slot /></ark.input>
+  <ark.input
+    v-bind="field.getInputProps()"
+    :as-child
+    :value="modelValue"
+    @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"
+  >
+    <slot />
+  </ark.input>
 </template>

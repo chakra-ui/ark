@@ -1,9 +1,9 @@
+import { Select, createListCollection } from '@ark-ui/solid/select'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-solid'
-import { createSignal } from 'solid-js'
+import { createMemo, createSignal } from 'solid-js'
 import { Index } from 'solid-js/web'
-import { Select } from '../..'
 
-const itemsBase = [
+const items = [
   { label: 'React', value: 'react' },
   { label: 'Solid', value: 'solid' },
   { label: 'Svelte', value: 'svelte', disabled: true },
@@ -13,7 +13,11 @@ const itemsBase = [
 export const ReactiveCollection = () => {
   const [number, setNumber] = createSignal(0)
 
-  const items = () => itemsBase.map((item) => ({ ...item, label: `${item.label}-${number()}` }))
+  const collection = createMemo(() =>
+    createListCollection({
+      items: items.map((item) => ({ ...item, label: `${item.label}-${number()}` })),
+    }),
+  )
 
   return (
     <div>
@@ -24,7 +28,7 @@ export const ReactiveCollection = () => {
         Dec
       </button>
 
-      <Select.Root positioning={{ sameWidth: true }} items={items()}>
+      <Select.Root positioning={{ sameWidth: true }} collection={collection()}>
         <Select.Label>Framework</Select.Label>
         <Select.Control>
           <Select.Trigger>
@@ -36,7 +40,7 @@ export const ReactiveCollection = () => {
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Framework</Select.ItemGroupLabel>
-              <Index each={items()}>
+              <Index each={collection().items}>
                 {(item) => (
                   <Select.Item item={item()}>
                     <Select.ItemText>{item().label}</Select.ItemText>

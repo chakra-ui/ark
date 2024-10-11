@@ -1,4 +1,4 @@
-import { PinInput } from '../..'
+import { PinInput } from '@ark-ui/react/pin-input'
 
 export const InitialValue = () => (
   <PinInput.Root defaultValue={['1', '2', '3']}>

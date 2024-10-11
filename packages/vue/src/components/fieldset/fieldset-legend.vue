@@ -14,9 +14,12 @@ export interface FieldsetLegendProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldsetContext } from './use-fieldset-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldsetLegendProps>()
 const fieldset = useFieldsetContext()
+
+useForwardExpose()
 </script>
 
 <template>

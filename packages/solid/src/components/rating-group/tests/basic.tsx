@@ -1,7 +1,7 @@
 import { Index } from 'solid-js'
-import { RatingGroup, type RatingGroupRootProps } from '../'
+import { RatingGroup } from '../'
 
-export const ComponentUnderTest = (props: RatingGroupRootProps) => (
+export const ComponentUnderTest = (props: RatingGroup.RootProps) => (
   <RatingGroup.Root {...props}>
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>

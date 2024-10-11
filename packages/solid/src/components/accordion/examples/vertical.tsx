@@ -1,5 +1,5 @@
+import { Accordion } from '@ark-ui/solid/accordion'
 import { Index } from 'solid-js'
-import { Accordion } from '../..'
 
 export const Vertical = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']

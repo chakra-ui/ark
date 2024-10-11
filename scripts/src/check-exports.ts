@@ -13,7 +13,12 @@ const main = async () => {
   const frameworkExports = components.sort().map((component) =>
     frameworks.map((framework) => ({
       framework,
-      exports: getExportsFromSourceFile(component.replace('react', framework)),
+      exports: getExportsFromSourceFile(
+        component
+          .replace('react', framework)
+          // in solid we use .tsx files
+          .replace('.ts', framework === 'solid' ? '.tsx' : '.ts'),
+      ),
     })),
   )
 

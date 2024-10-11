@@ -1,5 +1,5 @@
+import { Highlight } from '@ark-ui/react/highlight'
 import { useState } from 'react'
-import { Highlight } from '../highlight'
 
 export const WithInput = () => {
   const [query, setQuery] = useState('ipsum')

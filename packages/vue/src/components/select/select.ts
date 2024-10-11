@@ -1,5 +1,5 @@
 export type { HighlightChangeDetails, OpenChangeDetails, ValueChangeDetails } from '@zag-js/select'
-export type { CollectionItem } from '../../types'
+export type { CollectionItem, ListCollection } from '../collection'
 export {
   default as ClearTrigger,
   type SelectClearTriggerProps as ClearTriggerProps,

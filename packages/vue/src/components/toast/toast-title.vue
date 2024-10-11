@@ -14,9 +14,12 @@ export interface ToastTitleProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useToastContext } from './use-toast-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ToastTitleProps>()
 const toast = useToastContext()
+
+useForwardExpose()
 </script>
 
 <template>

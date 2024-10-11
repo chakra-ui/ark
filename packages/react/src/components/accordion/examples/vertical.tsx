@@ -1,4 +1,4 @@
-import { Accordion } from '../..'
+import { Accordion } from '@ark-ui/react/accordion'
 
 export const Vertical = () => {
   const items = ['panel-1', 'panel-2', 'panel-3']

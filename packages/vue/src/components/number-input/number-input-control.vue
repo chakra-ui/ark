@@ -14,9 +14,12 @@ export interface NumberInputControlProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<NumberInputControlProps>()
 const numberInput = useNumberInputContext()
+
+useForwardExpose()
 </script>
 
 <template>

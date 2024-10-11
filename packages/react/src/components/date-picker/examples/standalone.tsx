@@ -1,8 +1,8 @@
-import { DatePicker } from '../..'
+import { DatePicker } from '@ark-ui/react/date-picker'
 
 export const Standalone = () => {
   return (
-    <DatePicker.Root open={true} closeOnSelect={false}>
+    <DatePicker.Root open>
       <DatePicker.Input />
       <DatePicker.View view="day">
         <DatePicker.Context>

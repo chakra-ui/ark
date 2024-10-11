@@ -15,10 +15,14 @@ export interface SelectItemTextProps
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useSelectItemPropsContext } from './use-select-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectItemTextProps>()
+
 const select = useSelectContext()
 const itemProps = useSelectItemPropsContext()
+
+useForwardExpose()
 </script>
 
 <template>

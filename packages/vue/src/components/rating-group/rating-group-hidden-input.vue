@@ -15,10 +15,14 @@ export interface RatingGroupHiddenInputProps
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<RatingGroupHiddenInputProps>()
+
 const ratingGroup = useRatingGroupContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

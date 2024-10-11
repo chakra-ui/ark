@@ -17,12 +17,15 @@ export interface CheckboxIndicatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<CheckboxIndicatorProps>()
 const checkbox = useCheckboxContext()
 const isHidden = computed(() =>
   props.indeterminate ? checkbox.value.indeterminate : checkbox.value.checked,
 )
+
+useForwardExpose()
 </script>
 
 <template>

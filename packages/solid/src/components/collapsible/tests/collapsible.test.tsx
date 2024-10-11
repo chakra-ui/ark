@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Collapsible, type CollapsibleRootProps, collapsibleAnatomy } from '../'
+import { Collapsible, collapsibleAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 
-const ComponentUnderTest = (props: CollapsibleRootProps) => (
+const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
     <Collapsible.Trigger>Toggle</Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>

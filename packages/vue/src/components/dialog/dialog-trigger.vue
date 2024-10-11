@@ -14,9 +14,12 @@ export interface DialogTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<DialogTriggerProps>()
 const dialog = useDialogContext()
+
+useForwardExpose()
 </script>
 
 <template>

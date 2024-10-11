@@ -44,4 +44,4 @@ export const Trigger = withContext<
   Assign<HTMLStyledProps<'button'>, Clipboard.TriggerBaseProps>
 >(Clipboard.Trigger, 'trigger')
 
-export { ClipboardContext as Context } from '@ark-ui/react/clipboard'
+export const Context = Clipboard.Context

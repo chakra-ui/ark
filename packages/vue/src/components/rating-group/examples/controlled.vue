@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { RatingGroup } from '@ark-ui/vue/rating-group'
 import { ref } from 'vue'
-import { RatingGroup } from '../..'
 import { StarIcon, StarOutlineIcon } from './icons'
 
 const value = ref(0)

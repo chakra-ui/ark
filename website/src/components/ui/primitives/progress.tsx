@@ -59,4 +59,4 @@ export const View = withContext<
   Assign<HTMLStyledProps<'span'>, Progress.ViewBaseProps>
 >(Progress.View, 'view')
 
-export { ProgressContext as Context } from '@ark-ui/react/progress'
+export const Context = Progress.Context

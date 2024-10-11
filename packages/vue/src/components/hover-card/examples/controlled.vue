@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { HoverCard } from '@ark-ui/vue/hover-card'
 import { ref } from 'vue'
-import { HoverCard } from '../..'
 
 const open = ref(false)
 </script>

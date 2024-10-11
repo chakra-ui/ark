@@ -20,7 +20,7 @@ const resources = [
 
 export const Footer = () => {
   return (
-    <footer role="contentinfo">
+    <footer>
       <Container py="8">
         <Stack
           direction={{ base: 'column-reverse', md: 'row' }}

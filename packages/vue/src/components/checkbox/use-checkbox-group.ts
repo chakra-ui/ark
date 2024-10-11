@@ -51,6 +51,7 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
       name: props.name,
       disabled: props.disabled,
       readOnly: props.readOnly,
+      invalid: props.invalid,
     }
   }
   const setValue = (value: string[]) => {
@@ -63,6 +64,7 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
     name: props.name,
     disabled: props.disabled,
     readOnly: props.readOnly,
+    invalid: props.invalid,
     addValue,
     setValue,
     toggleValue,

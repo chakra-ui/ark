@@ -18,6 +18,7 @@ export interface RadioGroupRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useRadioGroup } from './use-radio-group'
 import { RadioGroupProvider } from './use-radio-group-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   disabled: undefined,
@@ -28,6 +29,8 @@ const emits = defineEmits<RadioGroupRootEmits>()
 
 const radioGroup = useRadioGroup(props, emits)
 RadioGroupProvider(radioGroup)
+
+useForwardExpose()
 </script>
 
 <template>

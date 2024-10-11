@@ -1,4 +1,4 @@
-import { PinInput } from '../..'
+import { PinInput } from '@ark-ui/react/pin-input'
 
 export const WithMask = () => (
   <PinInput.Root mask>

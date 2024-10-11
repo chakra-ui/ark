@@ -1,14 +1,14 @@
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { useState } from 'react'
-import { ColorPicker } from '../..'
 import { ColorPickerContent } from './_template'
 
 export const OnChangeEnd = () => {
-  const [color, setColor] = useState('rgba(186, 43, 186, 1)')
+  const [color, setColor] = useState(parseColor('rgba(186, 43, 186, 1)'))
 
   return (
-    <ColorPicker.Root value={color} onValueChangeEnd={(details) => setColor(details.valueAsString)}>
+    <ColorPicker.Root value={color} onValueChangeEnd={(details) => setColor(details.value)}>
       <ColorPicker.Control>
-        <p>Current color value: {color}</p>
+        <p>Current color value: {color.toString('rgba')}</p>
 
         <ColorPicker.Trigger>
           <ColorPicker.TransparencyGrid />

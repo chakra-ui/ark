@@ -18,6 +18,7 @@ import { ark } from '../factory'
 import { TreeViewBranchProvider } from './use-tree-view-branch-context'
 import { useTreeViewContext } from './use-tree-view-context'
 import { TreeViewDepthProvider, useTreeViewDepthContext } from './use-tree-view-depth-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TreeViewBranchProps>()
 
@@ -27,6 +28,8 @@ const branchProps = computed(() => ({ ...props, depth }))
 
 TreeViewBranchProvider(branchProps.value)
 TreeViewDepthProvider(depth + 1)
+
+useForwardExpose()
 </script>
 
 <template>

@@ -15,8 +15,10 @@ export interface SelectPositionerProps
 import { useRenderStrategyProps } from '../../utils'
 import { PresenceProvider, usePresence } from '../presence'
 import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectPositionerProps>()
+
 const select = useSelectContext()
 const renderStrategy = useRenderStrategyProps()
 
@@ -26,7 +28,10 @@ const presence = usePresence(
     present: select.value.open,
   })),
 )
+
 PresenceProvider(presence)
+
+useForwardExpose()
 </script>
 
 <template>
@@ -34,4 +39,3 @@ PresenceProvider(presence)
     <slot />
   </ark.div>
 </template>
-

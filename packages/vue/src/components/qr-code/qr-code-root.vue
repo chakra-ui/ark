@@ -16,11 +16,14 @@ export interface QrCodeRootProps
 import { ark } from '../factory'
 import { useQrCode } from './use-qr-code'
 import { QrCodeProvider } from './use-qr-code-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<QrCodeRootProps>()
 const qrCode = useQrCode(props)
 
 QrCodeProvider(qrCode)
+
+useForwardExpose()
 </script>
 
 <template>

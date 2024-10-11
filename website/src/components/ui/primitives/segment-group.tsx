@@ -47,7 +47,5 @@ export const Label = withContext<
   Assign<HTMLStyledProps<'label'>, SegmentGroup.LabelBaseProps>
 >(SegmentGroup.Label, 'label')
 
-export {
-  SegmentGroupContext as Context,
-  SegmentGroupItemHiddenInput as ItemHiddenInput,
-} from '@ark-ui/react/segment-group'
+export const Context = SegmentGroup.Context
+export const ItemHiddenInput = SegmentGroup.ItemHiddenInput

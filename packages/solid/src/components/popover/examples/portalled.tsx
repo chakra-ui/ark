@@ -1,5 +1,5 @@
+import { Popover } from '@ark-ui/solid/popover'
 import { Portal } from 'solid-js/web'
-import { Popover } from '../..'
 
 export const Portalled = () => (
   <Popover.Root portalled>

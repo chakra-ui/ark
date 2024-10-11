@@ -15,10 +15,13 @@ export interface NumberInputInputProps
 import { ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<NumberInputInputProps>()
 const numberInput = useNumberInputContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

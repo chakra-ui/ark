@@ -15,10 +15,14 @@ export interface TreeViewBranchIndicatorProps
 import { ark } from '../factory'
 import { useTreeViewBranchContext } from './use-tree-view-branch-context'
 import { useTreeViewContext } from './use-tree-view-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TreeViewBranchIndicatorProps>()
+
 const treeView = useTreeViewContext()
 const branchProps = useTreeViewBranchContext()
+
+useForwardExpose()
 </script>
 
 <template>

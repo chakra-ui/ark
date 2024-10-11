@@ -1,4 +1,4 @@
-import { ToggleGroup } from '../..'
+import { ToggleGroup } from '@ark-ui/solid/toggle-group'
 
 export const InitialValue = () => {
   return (

@@ -1,16 +1,18 @@
+import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
-import { Combobox } from '../..'
 
 export const Advanced = () => {
-  const items = [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ]
+  const collection = createListCollection({
+    items: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+  })
   return (
-    <Combobox.Root items={items}>
+    <Combobox.Root collection={collection}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -22,7 +24,7 @@ export const Advanced = () => {
           <Combobox.Content>
             <Combobox.ItemGroup>
               <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={items}>
+              <For each={collection.items}>
                 {(item) => (
                   <Combobox.Item item={item}>
                     <Combobox.ItemText>{item.label}</Combobox.ItemText>

@@ -1,43 +1,43 @@
 export type { OpenChangeDetails as TooltipOpenChangeDetails } from '@zag-js/tooltip'
 export {
   default as TooltipArrowTip,
-  type TooltipArrowTipProps,
   type TooltipArrowTipBaseProps,
+  type TooltipArrowTipProps,
 } from './tooltip-arrow-tip.vue'
 export {
   default as TooltipArrow,
-  type TooltipArrowProps,
   type TooltipArrowBaseProps,
+  type TooltipArrowProps,
 } from './tooltip-arrow.vue'
 export {
   default as TooltipContent,
-  type TooltipContentProps,
   type TooltipContentBaseProps,
+  type TooltipContentProps,
 } from './tooltip-content.vue'
 export { default as TooltipContext, type TooltipContextProps } from './tooltip-context.vue'
 export {
   default as TooltipPositioner,
-  type TooltipPositionerProps,
   type TooltipPositionerBaseProps,
+  type TooltipPositionerProps,
 } from './tooltip-positioner.vue'
 export {
   default as TooltipRootProvider,
-  type TooltipRootProviderProps,
   type TooltipRootProviderBaseProps,
+  type TooltipRootProviderProps,
 } from './tooltip-root-provider.vue'
 export {
   default as TooltipRoot,
-  type TooltipRootEmits,
   type TooltipRootBaseProps,
+  type TooltipRootEmits,
   type TooltipRootProps,
 } from './tooltip-root.vue'
 export {
   default as TooltipTrigger,
-  type TooltipTriggerProps,
   type TooltipTriggerBaseProps,
+  type TooltipTriggerProps,
 } from './tooltip-trigger.vue'
+export { tooltipAnatomy } from './tooltip.anatomy'
 export { useTooltip, type UseTooltipProps, type UseTooltipReturn } from './use-tooltip'
 export { useTooltipContext, type UseTooltipContext } from './use-tooltip-context'
-export { tooltipAnatomy } from './tooltip.anatomy'
 
 export * as Tooltip from './tooltip'

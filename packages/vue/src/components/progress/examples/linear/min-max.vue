@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Progress } from '../..'
+import { Progress } from '@ark-ui/vue/progress'
 </script>
 
 <template>

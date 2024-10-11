@@ -15,8 +15,8 @@ export {
 } from './menu-arrow.vue'
 export {
   default as MenuCheckboxItem,
-  type MenuCheckboxItemEmits,
   type MenuCheckboxItemBaseProps,
+  type MenuCheckboxItemEmits,
   type MenuCheckboxItemProps,
 } from './menu-checkbox-item.vue'
 export {
@@ -64,8 +64,8 @@ export {
 } from './menu-positioner.vue'
 export {
   default as MenuRadioItemGroup,
-  type MenuRadioItemGroupEmits,
   type MenuRadioItemGroupBaseProps,
+  type MenuRadioItemGroupEmits,
   type MenuRadioItemGroupProps,
 } from './menu-radio-item-group.vue'
 export {
@@ -99,10 +99,10 @@ export {
   type MenuTriggerBaseProps,
   type MenuTriggerProps,
 } from './menu-trigger.vue'
+export { menuAnatomy } from './menu.anatomy'
 export { useMenu, type UseMenuProps, type UseMenuReturn } from './use-menu'
 export { useMenuContext, type UseMenuContext } from './use-menu-context'
 export { useMenuItemContext, type UseMenuItemContext } from './use-menu-item-context'
 export type { ValueChangeDetails as MenuValueChangeDetails } from './use-menu-item-group-context'
-export { menuAnatomy } from './menu.anatomy'
 
 export * as Menu from './menu'

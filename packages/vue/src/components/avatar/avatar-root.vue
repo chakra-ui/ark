@@ -17,12 +17,15 @@ export interface AvatarRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<AvatarRootProps>()
 const emits = defineEmits<AvatarRootEmits>()
 
 const avatar = useAvatar(props, emits)
 AvatarProvider(avatar)
+
+useForwardExpose()
 </script>
 
 <template>

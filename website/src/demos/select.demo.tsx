@@ -1,16 +1,20 @@
+'use client'
+import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
 import { Select } from '~/components/ui/select'
 
-export const Demo = (props: Omit<Select.RootProps, 'items'>) => {
-  const items = [
+const collection = createListCollection({
+  items: [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
     { label: 'Vue', value: 'vue' },
-  ]
+    { label: 'Svelte', value: 'svelte', disabled: true },
+  ],
+})
 
+export const Demo = (props: Omit<Select.RootProps, 'collection'>) => {
   return (
-    <Select.Root {...props} positioning={{ sameWidth: true }} width="2xs" items={items}>
+    <Select.Root {...props} positioning={{ sameWidth: true }} width="2xs" collection={collection}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>
@@ -22,7 +26,7 @@ export const Demo = (props: Omit<Select.RootProps, 'items'>) => {
         <Select.Content>
           <Select.ItemGroup>
             <Select.ItemGroupLabel>Framework</Select.ItemGroupLabel>
-            {items.map((item) => (
+            {collection.items.map((item) => (
               <Select.Item key={item.value} item={item}>
                 <Select.ItemText>{item.label}</Select.ItemText>
                 <Select.ItemIndicator>

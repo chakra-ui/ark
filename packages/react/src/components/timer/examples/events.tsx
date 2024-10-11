@@ -1,6 +1,6 @@
-import { Timer } from '../..'
+import { Timer } from '@ark-ui/react/timer'
 
-export const TimerWithEvents = () => (
+export const Events = () => (
   <Timer.Root
     targetMs={5 * 1000}
     onComplete={() => console.log('Timer completed')}

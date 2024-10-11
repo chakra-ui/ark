@@ -1,6 +1,6 @@
+import { RatingGroup } from '@ark-ui/solid/rating-group'
 import { StarIcon } from 'lucide-solid'
 import { Index, Show, createSignal } from 'solid-js'
-import { RatingGroup } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = createSignal(0)

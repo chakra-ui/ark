@@ -1,4 +1,6 @@
+export { parse as parseColor } from '@zag-js/color-picker'
 export type {
+  Color,
   ColorFormat as ColorPickerColorFormat,
   FormatChangeDetails as ColorPickerFormatChangeDetails,
   OpenChangeDetails as ColorPickerOpenChangeDetails,
@@ -19,12 +21,6 @@ export {
   type ColorPickerAreaBaseProps,
   type ColorPickerAreaProps,
 } from './color-picker-area.vue'
-export {
-  default as ColorPickerValueSwatch,
-  type ColorPickerValueSwatchBaseProps,
-  type ColorPickerValueSwatchProps,
-} from './color-picker-value-swatch.vue'
-
 export {
   default as ColorPickerChannelInput,
   type ColorPickerChannelInputBaseProps,
@@ -141,6 +137,12 @@ export {
   type ColorPickerTriggerProps,
 } from './color-picker-trigger.vue'
 export {
+  default as ColorPickerValueSwatch,
+  type ColorPickerValueSwatchBaseProps,
+  type ColorPickerValueSwatchProps,
+} from './color-picker-value-swatch.vue'
+
+export {
   default as ColorPickerValueText,
   type ColorPickerValueTextBaseProps,
   type ColorPickerValueTextProps,
@@ -150,12 +152,12 @@ export {
   type ColorPickerViewBaseProps,
   type ColorPickerViewProps,
 } from './color-picker-view.vue'
+export { colorPickerAnatomy } from './color-picker.anatomy'
 export {
   useColorPicker,
   type UseColorPickerProps,
   type UseColorPickerReturn,
 } from './use-color-picker'
 export { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
-export { colorPickerAnatomy } from './color-picker.anatomy'
 
 export * as ColorPicker from './color-picker'

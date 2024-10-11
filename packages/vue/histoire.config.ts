@@ -5,4 +5,5 @@ export default defineConfig({
   plugins: [HstVue()],
   storyMatch: ['**/*.stories.vue'],
   setupFile: '.storybook/main.ts',
+  viteNodeInlineDeps: [/lucide-vue-next/],
 })

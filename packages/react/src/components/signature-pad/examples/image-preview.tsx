@@ -1,5 +1,5 @@
+import { SignaturePad } from '@ark-ui/react/signature-pad'
 import { useState } from 'react'
-import { SignaturePad } from '../..'
 
 export const ImagePreview = () => {
   const [imageUrl, setImageUrl] = useState('')

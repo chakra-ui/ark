@@ -14,9 +14,12 @@ export interface ProgressTrackProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ProgressTrackProps>()
 const progress = useProgressContext()
+
+useForwardExpose()
 </script>
 
 <template>

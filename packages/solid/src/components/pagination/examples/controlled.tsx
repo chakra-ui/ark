@@ -1,5 +1,5 @@
+import { Pagination } from '@ark-ui/solid/pagination'
 import { For, createSignal } from 'solid-js'
-import { Pagination } from '../..'
 
 export const Controlled = () => {
   const [currentPage, setCurrentPage] = createSignal(1)

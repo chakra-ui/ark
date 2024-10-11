@@ -1,6 +1,6 @@
-import { Pagination, type PaginationRootProps } from '../'
+import { Pagination } from '../'
 
-export const ComponentUnderTest = (props: PaginationRootProps) => (
+export const ComponentUnderTest = (props: Pagination.RootProps) => (
   <Pagination.Root {...props}>
     <Pagination.PrevTrigger>
       Previous <span className="visually-hidden">Page</span>

@@ -74,4 +74,4 @@ export const Tree = withContext<
   Assign<HTMLStyledProps<'ul'>, TreeView.TreeBaseProps>
 >(TreeView.Tree, 'tree')
 
-export { TreeViewContext as Context } from '@ark-ui/react/tree-view'
+export const Context = TreeView.Context

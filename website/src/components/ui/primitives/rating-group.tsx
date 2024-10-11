@@ -34,8 +34,6 @@ export const Label = withContext<
   Assign<HTMLStyledProps<'label'>, RatingGroup.LabelBaseProps>
 >(RatingGroup.Label, 'label')
 
-export {
-  RatingGroupContext as Context,
-  RatingGroupItemContext as ItemContext,
-  RatingGroupHiddenInput as HiddenInput,
-} from '@ark-ui/react/rating-group'
+export const Context = RatingGroup.Context
+export const ItemContext = RatingGroup.ItemContext
+export const HiddenInput = RatingGroup.HiddenInput

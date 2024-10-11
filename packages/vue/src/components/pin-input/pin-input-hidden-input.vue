@@ -15,10 +15,14 @@ export interface PinInputHiddenInputProps
 import { ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
 import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<PinInputHiddenInputProps>()
+
 const pinInput = usePinInputContext()
 const field = useFieldContext()
+
+useForwardExpose()
 </script>
 
 <template>

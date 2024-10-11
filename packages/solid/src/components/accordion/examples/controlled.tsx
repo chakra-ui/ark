@@ -1,5 +1,5 @@
+import { Accordion } from '@ark-ui/solid/accordion'
 import { Index, createSignal } from 'solid-js'
-import { Accordion } from '../..'
 
 export const Controlled = () => {
   const [value, setValue] = createSignal<string[]>([])

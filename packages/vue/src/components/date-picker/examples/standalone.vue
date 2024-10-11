@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { DatePicker } from '../..'
+import { DatePicker } from '@ark-ui/vue/date-picker'
 </script>
 
 <template>
-  <DatePicker.Root open :close-on-select="false">
+  <DatePicker.Root open>
     <DatePicker.View view="day">
       <DatePicker.Context v-slot="api">
         <DatePicker.ViewControl>

@@ -1,4 +1,4 @@
-import { ColorPicker } from '../..'
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { ColorPickerSlider } from './_template'
 
 const style: React.CSSProperties = {
@@ -7,11 +7,9 @@ const style: React.CSSProperties = {
   gap: '10px',
 }
 
-// Throws for now, but will be fixed in the next zag.js release
-
 export const SliderOnly = () => {
   return (
-    <ColorPicker.Root open defaultValue="#7f007f">
+    <ColorPicker.Root open defaultValue={parseColor('#7f007f')}>
       <ColorPicker.Content>
         <ColorPicker.ValueText />
         <ColorPicker.View format="rgba" style={style}>

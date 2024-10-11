@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Checkbox } from '../..'
+import { Checkbox } from '@ark-ui/vue/checkbox'
 import { CheckIcon } from './icons'
 
 const items = [

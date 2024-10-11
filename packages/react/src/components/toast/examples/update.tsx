@@ -1,6 +1,5 @@
-import { XIcon } from 'lucide-react'
+import { Toast, Toaster, createToaster } from '@ark-ui/react/toast'
 import { useRef } from 'react'
-import { Toast, Toaster, createToaster } from '../..'
 
 const toaster = createToaster({
   placement: 'bottom-end',
@@ -42,10 +41,6 @@ export const Update = () => {
           <Toast.Root key={toast.id}>
             <Toast.Title>{toast.title}</Toast.Title>
             <Toast.Description>{toast.description}</Toast.Description>
-            <Toast.ActionTrigger>Do Action</Toast.ActionTrigger>
-            <Toast.CloseTrigger>
-              <XIcon />
-            </Toast.CloseTrigger>
           </Toast.Root>
         )}
       </Toaster>

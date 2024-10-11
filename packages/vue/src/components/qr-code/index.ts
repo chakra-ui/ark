@@ -2,31 +2,31 @@ export type { QrCodeGenerateOptions, QrCodeGenerateResult } from '@zag-js/qr-cod
 export { default as QrCodeContext, type QrCodeContextProps } from './qr-code-context.vue'
 export {
   default as QrCodeFrame,
-  type QrCodeFrameProps,
   type QrCodeFrameBaseProps,
+  type QrCodeFrameProps,
 } from './qr-code-frame.vue'
 export {
   default as QrCodeOverlay,
-  type QrCodeOverlayProps,
   type QrCodeOverlayBaseProps,
+  type QrCodeOverlayProps,
 } from './qr-code-overlay.vue'
 export {
   default as QrCodePattern,
-  type QrCodePatternProps,
   type QrCodePatternBaseProps,
+  type QrCodePatternProps,
 } from './qr-code-pattern.vue'
 export {
   default as QrCodeRootProvider,
-  type QrCodeRootProviderProps,
   type QrCodeRootProviderBaseProps,
+  type QrCodeRootProviderProps,
 } from './qr-code-root-provider.vue'
 export {
   default as QrCodeRoot,
-  type QrCodeRootProps,
   type QrCodeRootBaseProps,
+  type QrCodeRootProps,
 } from './qr-code-root.vue'
+export { qrCodeAnatomy } from './qr-code.anatomy'
 export { useQrCode, type UseQrCodeProps, type UseQrCodeReturn } from './use-qr-code'
 export { useQrCodeContext, type UseQrCodeContext } from './use-qr-code-context'
-export { qrCodeAnatomy } from './qr-code.anatomy'
 
 export * as QrCode from './qr-code'

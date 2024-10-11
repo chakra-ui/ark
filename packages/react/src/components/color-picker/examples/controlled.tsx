@@ -1,15 +1,11 @@
+import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
 import { useState } from 'react'
-import { ColorPicker } from '../..'
 
 export const Controlled = () => {
-  const [currentValue, setCurrentValue] = useState('hsl(20, 100%, 50%)')
+  const [color, setColor] = useState(() => parseColor('hsl(20, 100%, 50%)'))
 
   return (
-    <ColorPicker.Root
-      format="hsla"
-      value={currentValue}
-      onValueChange={(details) => setCurrentValue(details.valueAsString)}
-    >
+    <ColorPicker.Root format="hsla" value={color} onValueChange={(e) => setColor(e.value)}>
       <ColorPicker.Label>Color</ColorPicker.Label>
       <ColorPicker.Control>
         <ColorPicker.ChannelInput channel="hex" />

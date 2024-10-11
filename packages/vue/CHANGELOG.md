@@ -6,9 +6,249 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.1.1] - 2024-10-09
+
+### Changed
+
+- **Time Picker [Preview]**: Updated `value` and `defaultValue` types from `string` to `Time`. Use
+  the exported `parseTime` function to convert between strings and time objects.
+
 ### Fixed
 
-- **All Components**: Fixed issue where exit animations weren't working correctly. 
+- **TagsInput**: Resolved an issue where tag navigation was unresponsive after removing tags with
+  the delete key.
+- **DatePicker**: Fixed a bug where selecting a preset and then blurring the input incorrectly reset
+  the value.
+
+## [4.1.0] - 2024-09-30
+
+### Added
+
+- **Toggle**: Introduced the `Toggle` component.
+- **useForwardExpose**: Added utility to facilitate forwarding of underlying component nodes.
+- **Dialog**: Added support for detecting outside clicks from parent windows when rendered within an
+  iframe.
+
+### Fixed
+
+- Resolved an issue where the underlying DOM node of most components was inaccessible via `$el`.
+- **Combobox**: Fixed an issue where pressing Enter without selecting an option left text in the
+  input.
+- **Dialog**: Fixed an issue where the dialog closed when the positioner was scrollable, and the
+  scrollbar was clicked.
+- **File Upload**:
+  - Fixed an issue where `acceptedFiles` were removed after an invalid file upload.
+  - Fixed an issue in the preview image where `createObjectURL` was not cleaned up.
+
+## [4.0.2] - 2024-09-27
+
+### Fixed
+
+- Resolved an issue that `ref` is not exported from `@zag-js/store`.
+
+## [4.0.1] - 2024-09-26
+
+### Fixed
+
+- Corrected an issue where Vue 3.5.x was not properly declared as a peer dependency.
+
+## [4.0.0] - 2024-09-25
+
+In this major release, we shifted from primitive data types like strings to more structured types
+such as Collection, Color, and DateValue. This enhanced flexibility and control by offering advanced
+methods and properties.
+
+The new APIs introduced helper functions like `parseColor`, `parseDate`, and `createListCollection`
+to simplify working with the new types and make code more concise.
+
+### Changed
+
+- Ark UI Vue now required Vue 3.5.x or later, as it leveraged the useId() helper introduced in this
+  version.
+- **ColorPicker [Breaking]**: Updated `value` and `defaultValue` types from `string` to `Color`. Use
+  the exported `parseColor` function to convert between strings and color objects.
+
+  **Before**
+
+  ```tsx
+  import { ColorPicker } from '@ark-ui/react/color-picker'
+
+  const Demo = () => {
+    return <ColorPicker.Root defaultValue="#000" />
+  }
+  ```
+
+  **After**
+
+  ```tsx
+  import { ColorPicker, parseColor } from '@ark-ui/react/color-picker'
+
+  const Demo = () => {
+    return <ColorPicker.Root defaultValue={parseColor('#000')} />
+  }
+  ```
+
+  > This change allows direct access to color object methods and properties.
+
+- **Select, Combobox [Breaking]**: Removed the `items`, `itemToString`, and `itemToValue` props.
+  Introduced a `collection` prop instead. Use the `createListCollection` helper to generate a
+  collection from items.
+
+  **Before**
+
+  ```tsx
+  import { Select } from '@ark-ui/react/select'
+
+  const Demo = () => {
+    return <Select.Root items={['Option 1', 'Option 2', 'Option 3']} />
+  }
+  ```
+
+  **After**
+
+  ```tsx
+  import { Select, createListCollection } from '@ark-ui/react/select'
+
+  const collection = createListCollection({
+    items: ['Option 1', 'Option 2', 'Option 3'],
+  })
+
+  const Demo = () => {
+    return <Select.Root collection={collection} />
+  }
+  ```
+
+- **DatePicker [Breaking]**: Changed `value` and `defaultValue` types from `string` to `Date`. To
+  convert between strings and dates, use the `parseDate` function.
+
+  **Before**
+
+  ```tsx
+  import { DatePicker } from '@ark-ui/react/date-picker'
+
+  const Demo = () => {
+    return <DatePicker.Root defaultValue="2024-01-01" />
+  }
+  ```
+
+  **After**
+
+  ```tsx
+  import { DatePicker, parseDate } from '@ark-ui/react/date-picker'
+
+  const Demo = () => {
+    return <DatePicker.Root defaultValue={parseDate('2024-01-01')} />
+  }
+  ```
+
+## [3.14.0] - 2024-09-24
+
+### Added
+
+- **FileUpload**: Introduced a `ClearTrigger` for clearing file uploads.
+- **Switch, Checkbox, Radio Group**: Added the `data-focus-visible` attribute for elements
+  interacted with via keyboard.
+
+### Fixed
+
+- **FileUpload**: Resolved an issue where `directory: true` was non-functional.
+
+### Changed
+
+- **Tooltip**: Now only opens on keyboard focus, improving accessibility.
+
+## [3.13.1] - 2024-09-19
+
+### Fixed
+
+- **Field**: Fix issue where using `v-model` in `Field.Input`, `Field.Select`, and `Field.Textarea`
+  doesn't work.
+
+- **Frame**: Fixed issue where package requires `vue@3.5.x` due to usage of `onWatcherCleanup`.
+
+- **DatePicker**
+
+  - Fixed issue where the year select dropdown doesn't respect `min` and `max` props.
+  - Fixed issue where date picker throws when `min` or `max` is changed.
+  - Fixed issue where typing in date picker input doesn't work.
+
+## [3.13.0] - 2024-09-13
+
+### Added
+
+- **Frame (Preview)**: Introduced the `Frame` component for rendering content within an iframe.
+- **Timer (Preview)**: Added `Area` and `Control` parts to improve structure and anatomy.
+
+### Fixed
+
+- **Combobox**: Resolved an issue where the highlighted item remained persistent when the list of
+  items was empty.
+
+## [3.12.1] - 2024-09-11
+
+### Fixed
+
+- **Highlight**: Fixed issue where `ignoreCase` and `matchAll` props were not working.
+
+## [3.12.0] - 2024-09-10
+
+### Fixed
+
+- **Floating Components**: Fixed issue where clicking outside of a dialog on mobile passed click
+  events through.
+
+- **Popover**: Fixed issue where popover did not restore focus when open state was changed
+  programmatically
+
+- **Avatar**: Fixed issue where avatar could throw when the fallback inner text changed
+
+- **Steps**: Improved accessibility of tablist semantics by using `aria-owns`
+
+### Added
+
+- **FileUpload**: Add support for more file types in file upload `accept` intellisense
+
+- **Toast**: Add support for `action` property when creating toasts, giving you the ability to add a
+  `action.label` and `action.onClick`. The `onClick` function will be called when the user clicks
+  the action trigger.
+
+```ts
+toaster.create({
+  title: 'Uploaded successfully',
+  type: 'success',
+  action: {
+    label: 'Undo',
+    onClick: () => {
+      console.log('undo')
+    },
+  },
+})
+```
+
+- **File Upload**: Added support for `invalid` prop in file upload to explicitly mark upload
+  operation as invalid. This could be paired with the `rejectedFiles` to show an error message.
+
+### Changed
+
+- **Floating Components**: Refactored `boundary` to only support function that returns an element.
+
+- **Select**
+
+  - Refactored opening and selection to be based on click events rather than pointerdown/up cycles.
+  - Improved usability and accessibility of the select component.
+  - Fixed issue where controlled multiple selects open state behaved unexpectedly.
+
+## [3.11.0] - 2024-09-02
+
+### Fixed
+
+- **All Components**: Fixed issue where exit animations weren't working correctly.
+
+- **Steps**: Fixed issue where steps context was not exported.
+
+### Added
+
+- **Checkbox**: Added `invalid` prop to `Checkbox.Group`
 
 ## [3.10.0] - 2024-08-22
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Teleport, ref } from 'vue'
-import { Dialog } from '../..'
+import { Dialog } from '@ark-ui/vue/dialog'
+import { ref } from 'vue'
 
 const open = ref(false)
 </script>

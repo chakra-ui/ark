@@ -15,9 +15,12 @@ export interface SplitterPanelProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSplitterContext } from './use-splitter-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SplitterPanelProps>()
 const splitter = useSplitterContext()
+
+useForwardExpose()
 </script>
 
 <template>

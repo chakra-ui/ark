@@ -64,7 +64,5 @@ export const Label = withContext<
   Assign<HTMLStyledProps<'label'>, TagsInput.LabelBaseProps>
 >(TagsInput.Label, 'label')
 
-export {
-  TagsInputContext as Context,
-  TagsInputHiddenInput as HiddenInput,
-} from '@ark-ui/react/tags-input'
+export const Context = TagsInput.Context
+export const HiddenInput = TagsInput.HiddenInput

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PinInput } from '../..'
+import { PinInput } from '@ark-ui/vue/pin-input'
 </script>
 
 <template>

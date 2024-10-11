@@ -21,25 +21,25 @@ export {
 } from './field-label.vue'
 export {
   default as FieldRootProvider,
-  type FieldRootProviderProps,
   type FieldRootProviderBaseProps,
+  type FieldRootProviderProps,
 } from './field-root-provider.vue'
-export {
-  default as FieldSelect,
-  type FieldSelectBaseProps,
-  type FieldSelectProps,
-} from './field-select.vue'
 export {
   default as FieldRoot,
   type FieldRootBaseProps,
   type FieldRootProps,
 } from './field-root.vue'
 export {
+  default as FieldSelect,
+  type FieldSelectBaseProps,
+  type FieldSelectProps,
+} from './field-select.vue'
+export {
   default as FieldTextarea,
   type FieldTextareaBaseProps,
   type FieldTextareaProps,
 } from './field-textarea.vue'
-export { useFieldContext, type UseFieldContext } from './use-field-context'
 export { fieldAnatomy } from './field.anatomy'
+export { useFieldContext, type UseFieldContext } from './use-field-context'
 
 export * as Field from './field'

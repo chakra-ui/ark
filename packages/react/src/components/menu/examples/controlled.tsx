@@ -1,5 +1,5 @@
+import { Menu } from '@ark-ui/react/menu'
 import { useState } from 'react'
-import { Menu } from '../..'
 
 export const Controlled = () => {
   const [isOpen, setIsOpen] = useState(false)

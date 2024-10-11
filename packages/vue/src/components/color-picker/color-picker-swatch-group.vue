@@ -14,8 +14,10 @@ export interface ColorPickerSwatchGroupProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { colorPickerAnatomy } from './color-picker.anatomy'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerSwatchGroupProps>()
+useForwardExpose()
 </script>
 
 <template>

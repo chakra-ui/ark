@@ -16,11 +16,16 @@ export interface ComboboxContentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ComboboxContentProps>()
 const combobox = useComboboxContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() => mergeProps(combobox.value.getContentProps(), presence.value.presenceProps))
+const mergedProps = computed(() =>
+  mergeProps(combobox.value.getContentProps(), presence.value.presenceProps),
+)
+
+useForwardExpose()
 </script>
 
 <template>
@@ -28,4 +33,3 @@ const mergedProps = computed(() => mergeProps(combobox.value.getContentProps(), 
     <slot />
   </ark.div>
 </template>
-

@@ -1,7 +1,7 @@
 import { CheckIcon, MinusIcon } from 'lucide-react'
-import { Checkbox, type CheckboxRootProps } from '../'
+import { Checkbox } from '../'
 
-export const ComponentUnderTest = (props: CheckboxRootProps) => (
+export const ComponentUnderTest = (props: Checkbox.RootProps) => (
   <Checkbox.Group>
     <Checkbox.Root {...props}>
       <Checkbox.Label>Checkbox</Checkbox.Label>

@@ -1,5 +1,5 @@
+import { RatingGroup } from '@ark-ui/react/rating-group'
 import { StarIcon } from 'lucide-react'
-import { RatingGroup } from '../..'
 
 export const ReadOnly = () => (
   <RatingGroup.Root count={5} defaultValue={3} readOnly>

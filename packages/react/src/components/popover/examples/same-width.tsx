@@ -1,4 +1,4 @@
-import { Popover } from '../..'
+import { Popover } from '@ark-ui/react/popover'
 
 const style: React.CSSProperties = {
   minWidth: '200px',

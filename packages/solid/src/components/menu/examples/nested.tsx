@@ -1,5 +1,5 @@
+import { Menu } from '@ark-ui/solid/menu'
 import { Portal } from 'solid-js/web'
-import { Menu } from '../..'
 
 export const Nested = () => (
   <Menu.Root>

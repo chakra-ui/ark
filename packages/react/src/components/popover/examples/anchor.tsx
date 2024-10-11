@@ -1,5 +1,5 @@
+import { Popover } from '@ark-ui/react/popover'
 import { useRef } from 'react'
-import { Popover } from '../..'
 
 export const WithAnchor = () => {
   const ref = useRef<HTMLInputElement>(null)

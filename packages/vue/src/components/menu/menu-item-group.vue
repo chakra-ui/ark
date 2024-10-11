@@ -13,18 +13,21 @@ export interface MenuItemGroupProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useId } from '../../utils'
+import { computed, useId } from 'vue'
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider } from './use-menu-item-group-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<MenuItemGroupProps>()
+
 const menu = useMenuContext()
-const id = useId(props.id)
+const id = props.id ?? useId()
 const itemGroupProps = computed(() => ({ id }))
 
 MenuItemGroupProvider(itemGroupProps)
+
+useForwardExpose()
 </script>
 
 <template>

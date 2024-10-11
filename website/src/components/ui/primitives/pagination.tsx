@@ -39,4 +39,4 @@ export const PrevTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, Pagination.PrevTriggerBaseProps>
 >(Pagination.PrevTrigger, 'prevTrigger')
 
-export { PaginationContext as Context } from '@ark-ui/react/pagination'
+export const Context = Pagination.Context

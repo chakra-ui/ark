@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { TagsInput } from '@ark-ui/vue/tags-input'
 import { ref } from 'vue'
-import { TagsInput } from '../..'
 
 const frameworks = ref(['React', 'Solid', 'Vue'])
 </script>

@@ -1,6 +1,6 @@
-import { Portal, TimePicker, type TimePickerRootProps } from '../..'
+import { Portal, TimePicker } from '../..'
 
-export const ComponentUnderTest = (props: TimePickerRootProps) => {
+export const ComponentUnderTest = (props: TimePicker.RootProps) => {
   return (
     <TimePicker.Root {...props}>
       <TimePicker.Control>

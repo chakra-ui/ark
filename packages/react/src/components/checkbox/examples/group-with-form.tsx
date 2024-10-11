@@ -1,5 +1,5 @@
+import { Checkbox } from '@ark-ui/react/checkbox'
 import { CheckIcon } from 'lucide-react'
-import { Checkbox } from '../..'
 
 const items = [
   { label: 'React', value: 'react' },

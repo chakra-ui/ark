@@ -1,7 +1,8 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
-import type { Assign, CollectionItem } from '../../types'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import {
   PresenceProvider,
@@ -29,6 +30,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'autoFocus',
     'closeOnSelect',
     'composite',
+    'collection',
     'defaultOpen',
     'defaultValue',
     'disabled',
@@ -41,10 +43,6 @@ const ComboboxImpl = <T extends CollectionItem>(
     'inputBehavior',
     'inputValue',
     'invalid',
-    'isItemDisabled',
-    'items',
-    'itemToString',
-    'itemToValue',
     'loopFocus',
     'multiple',
     'name',

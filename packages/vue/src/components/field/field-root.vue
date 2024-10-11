@@ -17,6 +17,7 @@ export interface FieldRootProps
 import { ark } from '../factory'
 import { useField } from './use-field'
 import { FieldProvider } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<FieldRootProps>(), {
   disabled: undefined,
@@ -24,8 +25,11 @@ const props = withDefaults(defineProps<FieldRootProps>(), {
   readOnly: undefined,
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)
+
 const field = useField(props)
 FieldProvider(field)
+
+useForwardExpose()
 </script>
 
 <template>

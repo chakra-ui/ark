@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { PopoverRootProps } from '../'
+import type { Popover } from '..'
 import { ComponentUnderTest } from './basic'
 
-export const ControlledComponentUnderTest = (props: PopoverRootProps) => {
+export const ControlledComponentUnderTest = (props: Popover.RootProps) => {
   const [open, setOpen] = useState(false)
   return (
     <>

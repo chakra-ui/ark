@@ -1,4 +1,5 @@
-import { Dialog, Portal } from '../..'
+import { Dialog } from '@ark-ui/react/dialog'
+import { Portal } from '@ark-ui/react/portal'
 
 export const LazyMount = () => (
   <Dialog.Root lazyMount unmountOnExit onExitComplete={() => console.log('onExitComplete invoked')}>

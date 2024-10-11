@@ -1,6 +1,6 @@
+import { Clipboard } from '@ark-ui/solid/clipboard'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
 import { Show } from 'solid-js'
-import { Clipboard } from '../..'
 
 export const RenderFn = () => {
   return (

@@ -1,13 +1,5 @@
 <script setup lang="tsx">
-import {
-  ToastActionTrigger,
-  ToastCloseTrigger,
-  ToastDescription,
-  ToastRoot,
-  ToastTitle,
-  Toaster,
-  createToaster,
-} from '..'
+import { Toast, Toaster, createToaster } from '@ark-ui/vue/toast'
 
 const toaster = createToaster({ placement: 'bottom-end', overlap: true, gap: 24 })
 
@@ -23,11 +15,11 @@ const createToast = () => {
 <template>
   <button @click="createToast">Create Toast</button>
   <Toaster :toaster="toaster" v-slot="toast">
-    <ToastRoot>
-      <ToastTitle>{{ toast.title }}</ToastTitle>
-      <ToastDescription>{{ toast.description }}</ToastDescription>
-      <ToastActionTrigger>Action</ToastActionTrigger>
-      <ToastCloseTrigger>Close</ToastCloseTrigger>
-    </ToastRoot>
+    <Toast.Root>
+      <Toast.Title>{{ toast.title }}</Toast.Title>
+      <Toast.Description>{{ toast.description }}</Toast.Description>
+      <Toast.ActionTrigger>Action</Toast.ActionTrigger>
+      <Toast.CloseTrigger>Close</Toast.CloseTrigger>
+    </Toast.Root>
   </Toaster>
 </template>

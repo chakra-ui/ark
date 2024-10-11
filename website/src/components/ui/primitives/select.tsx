@@ -95,7 +95,7 @@ export const ValueText = withContext<
   Assign<HTMLStyledProps<'span'>, Select.ValueTextBaseProps>
 >(Select.ValueText, 'valueText')
 
-export {
-  SelectContext as Context,
-  SelectHiddenSelect as HiddenSelect,
-} from '@ark-ui/react/select'
+export const Context = Select.Context
+export const HiddenSelect = Select.HiddenSelect
+
+export type ValueChangeDetails = Select.ValueChangeDetails

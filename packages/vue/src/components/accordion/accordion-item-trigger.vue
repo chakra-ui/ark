@@ -13,6 +13,7 @@ export interface AccordionItemTriggerProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { computed } from 'vue'
 import { useAccordionContext } from './use-accordion-context'
@@ -22,7 +23,6 @@ defineProps<AccordionItemTriggerProps>()
 const accordion = useAccordionContext()
 const itemProps = useAccordionItemPropsContext()
 const collapsible = useCollapsibleContext()
-
 const triggerProps = computed(() => {
   const { 'aria-controls': ariaControls, ...otherProps } =
     accordion.value.getItemTriggerProps(itemProps)
@@ -31,6 +31,7 @@ const triggerProps = computed(() => {
     ...(collapsible.value.unmounted ? {} : { 'aria-controls': ariaControls }),
   }
 })
+useForwardExpose()
 </script>
 
 <template>
