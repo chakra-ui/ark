@@ -1,7 +1,8 @@
 import { getWindow } from '@zag-js/dom-query'
-import { useId, useLayoutEffect, useMemo, useRef } from 'react'
+import { useId, useMemo, useRef } from 'react'
 import type { HTMLProps } from '../factory'
 import { parts } from './fieldset.anatomy'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 
 export interface UseFieldsetProps {
   /**
@@ -31,7 +32,7 @@ export const useFieldset = (props: UseFieldsetProps) => {
   const errorTextId = `fieldset::${id}::error-text`
   const helperTextId = `fieldset::${id}::helper-text`
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     const rootNode = rootRef.current
     if (!rootNode) return
 
