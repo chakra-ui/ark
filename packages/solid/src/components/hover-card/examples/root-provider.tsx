@@ -8,7 +8,7 @@ export const RootProvider = () => {
     <>
       <button onClick={() => hoverCard().setOpen(true)}>Open</button>
 
-      <HoverCard.RootProvider value={hovercard}>
+      <HoverCard.RootProvider value={hoverCard}>
         <HoverCard.Trigger>Hover me</HoverCard.Trigger>
         <Portal>
           <HoverCard.Positioner>
