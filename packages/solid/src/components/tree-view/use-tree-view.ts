@@ -19,7 +19,7 @@ export interface UseTreeViewProps
 }
 export interface UseTreeViewReturn extends Accessor<treeView.Api<PropTypes>> {}
 
-export const useTreeView = (props: UseTreeViewProps): UseTreeViewReturn => {
+export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

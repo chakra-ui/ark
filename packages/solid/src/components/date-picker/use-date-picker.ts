@@ -22,7 +22,7 @@ export interface UseDatePickerProps
 }
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
-export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
+export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

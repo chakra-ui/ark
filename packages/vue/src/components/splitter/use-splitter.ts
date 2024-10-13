@@ -18,7 +18,7 @@ export interface UseSplitterProps
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (
-  props: UseSplitterProps,
+  props: UseSplitterProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseSplitterReturn => {
   const id = useId()

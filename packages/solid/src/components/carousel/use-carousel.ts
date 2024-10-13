@@ -14,7 +14,7 @@ export interface UseCarouselProps
 }
 export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (props: UseCarouselProps): UseCarouselReturn => {
+export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

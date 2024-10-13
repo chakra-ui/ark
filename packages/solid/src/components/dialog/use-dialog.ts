@@ -14,7 +14,7 @@ export interface UseDialogProps
 }
 export interface UseDialogReturn extends Accessor<dialog.Api<PropTypes>> {}
 
-export const useDialog = (props: UseDialogProps): UseDialogReturn => {
+export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

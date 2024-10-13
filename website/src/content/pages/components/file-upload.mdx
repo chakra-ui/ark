@@ -29,6 +29,15 @@ It includes handling ARIA labels, helper text, and error text to ensure proper a
 
 <Example id="with-field" />
 
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the file-upload. It accepts the value of the `useFile-upload` hook.
+You can leverage it to access the component state and methods from outside the file-upload.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
 ## API Reference
 
 <ComponentTypes id="file-upload" />

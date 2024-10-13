@@ -16,7 +16,7 @@ export interface UseTooltipProps
 
 export interface UseTooltipReturn extends tooltip.Api<PropTypes> {}
 
-export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
+export const useTooltip = (props: UseTooltipProps = {}): UseTooltipReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 

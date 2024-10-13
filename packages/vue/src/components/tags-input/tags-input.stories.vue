@@ -6,6 +6,7 @@ import InitialValue from './examples/initial-value.vue'
 import MaxWithOverflow from './examples/max-with-overflow.vue'
 import OnEvent from './examples/on-event.vue'
 import PasteBehavior from './examples/paste-behavior.vue'
+import RootProvider from './examples/root-provider.vue'
 import Validated from './examples/validated.vue'
 import WithField from './examples/with-field.vue'
 </script>
@@ -37,6 +38,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="With Field">
       <WithField />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

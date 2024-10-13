@@ -8,6 +8,7 @@ export default meta
 
 export { Advanced } from './examples/advanced'
 export { Basic } from './examples/basic'
+export { RootProvider } from './examples/root-provider'
 export { Controlled } from './examples/controlled'
 export { FormLibrary } from './examples/form-library'
 export { FormLibraryWithDefaultValue } from './examples/form-library-with-default-value'

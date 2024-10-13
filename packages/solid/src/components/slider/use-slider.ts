@@ -14,7 +14,7 @@ export interface UseSliderProps
 }
 export interface UseSliderReturn extends Accessor<slider.Api<PropTypes>> {}
 
-export const useSlider = (props: UseSliderProps): UseSliderReturn => {
+export const useSlider = (props: UseSliderProps = {}): UseSliderReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

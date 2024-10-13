@@ -17,7 +17,7 @@ export interface UseTagsInputProps
 
 export interface UseTagsInputReturn extends tagsInput.Api<PropTypes> {}
 
-export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
+export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
   const field = useFieldContext()

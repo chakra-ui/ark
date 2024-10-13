@@ -29,7 +29,7 @@ export interface UseColorPickerProps
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (
-  props: UseColorPickerProps,
+  props: UseColorPickerProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
   const id = useId()

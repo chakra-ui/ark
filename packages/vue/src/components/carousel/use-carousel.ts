@@ -17,7 +17,7 @@ export interface UseCarouselProps
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (
-  props: UseCarouselProps,
+  props: UseCarouselProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseCarouselReturn => {
   const id = useId()

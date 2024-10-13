@@ -19,7 +19,7 @@ export interface UsePinInputProps
 
 export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> {}
 
-export const usePinInput = (props: UsePinInputProps, emit?: EmitFn<RootEmits>) => {
+export const usePinInput = (props: UsePinInputProps = {}, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

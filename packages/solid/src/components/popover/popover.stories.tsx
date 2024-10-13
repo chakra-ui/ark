@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { RootProvider } from './examples/root-provider'
 export { Portalled } from './examples/portalled'
 export { OnOpenChange } from './examples/on-open-change'
 export { Controlled } from './examples/controlled'

@@ -15,7 +15,7 @@ export interface UseRatingGroupProps
 }
 export interface UseRatingGroupReturn extends Accessor<rating.Api<PropTypes>> {}
 
-export const useRatingGroup = (props: UseRatingGroupProps): UseRatingGroupReturn => {
+export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

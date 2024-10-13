@@ -18,7 +18,7 @@ export interface UseRadioGroupProps
 export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}
 
 export const useRadioGroup = (
-  props: UseRadioGroupProps,
+  props: UseRadioGroupProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseRadioGroupReturn => {
   const id = useId()

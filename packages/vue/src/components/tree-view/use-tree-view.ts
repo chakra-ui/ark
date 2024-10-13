@@ -23,7 +23,7 @@ export interface UseTreeViewProps
 export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> {}
 
 export const useTreeView = (
-  props: UseTreeViewProps,
+  props: UseTreeViewProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseTreeViewReturn => {
   const id = useId()

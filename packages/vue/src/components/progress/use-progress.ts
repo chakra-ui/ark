@@ -9,7 +9,7 @@ export interface UseProgressProps
   extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
-export const useProgress = (props: UseProgressProps): UseProgressReturn => {
+export const useProgress = (props: UseProgressProps = {}): UseProgressReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

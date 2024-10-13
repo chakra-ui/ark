@@ -19,7 +19,7 @@ export interface UseSegmentGroupProps
 export interface UseSegmentGroupReturn extends ComputedRef<segmentGroup.Api<PropTypes>> {}
 
 export const useSegmentGroup = (
-  props: UseSegmentGroupProps,
+  props: UseSegmentGroupProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseSegmentGroupReturn => {
   const id = useId()

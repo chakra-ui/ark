@@ -20,7 +20,7 @@ export interface UseEditableProps
 }
 export interface UseEditableReturn extends Accessor<editable.Api<PropTypes>> {}
 
-export const useEditable = (props: UseEditableProps) => {
+export const useEditable = (props: UseEditableProps = {}) => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

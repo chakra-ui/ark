@@ -65,6 +65,15 @@ when the `Collapsible` is expanded and unmounted when it is collapsed:
 
 <Example id="lazy-mount-and-unmount-on-exit" />
 
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the collapsible. It accepts the value of the `useCollapsible` hook.
+You can leverage it to access the component state and methods from outside the collapsible.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
 ## API Reference
 
 <ComponentTypes id="collapsible" />

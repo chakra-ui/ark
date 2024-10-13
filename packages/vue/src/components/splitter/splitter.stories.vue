@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Events from './examples/events.vue'
 import RenderProp from './examples/render-prop.vue'
+import RootProvider from './examples/root-provider.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
@@ -17,6 +18,9 @@ import Vertical from './examples/vertical.vue'
     </Variant>
     <Variant title="Vertical">
       <Vertical />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

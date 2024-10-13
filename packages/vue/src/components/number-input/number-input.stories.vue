@@ -7,6 +7,7 @@ import MinMax from './examples/min-max.vue'
 import MouseWheel from './examples/mouse-wheel.vue'
 import NoClamp from './examples/no-clamp.vue'
 import RenderFn from './examples/render-fn.vue'
+import RootProvider from './examples/root-provider.vue'
 import Scrubber from './examples/scrubber.vue'
 </script>
 <template>
@@ -40,6 +41,9 @@ import Scrubber from './examples/scrubber.vue'
     </Variant>
     <Variant title="With Field">
       <WithField />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

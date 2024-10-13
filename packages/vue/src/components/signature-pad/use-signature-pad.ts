@@ -12,7 +12,7 @@ export interface UseSignaturePadProps
 export interface UseSignaturePadReturn extends ComputedRef<signaturepad.Api<PropTypes>> {}
 
 export const useSignaturePad = (
-  props: UseSignaturePadProps,
+  props: UseSignaturePadProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseSignaturePadReturn => {
   const id = useId()

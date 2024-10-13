@@ -25,7 +25,7 @@ export interface UseCollapsibleReturn
     }
   > {}
 
-export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
+export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)

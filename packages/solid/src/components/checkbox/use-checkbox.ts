@@ -16,7 +16,7 @@ export interface UseCheckboxProps
 }
 export interface UseCheckboxReturn extends Accessor<checkbox.Api<PropTypes>> {}
 
-export const useCheckbox = (ownProps: UseCheckboxProps): UseCheckboxReturn => {
+export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn => {
   const checkboxGroup = useCheckboxGroupContext()
 
   const props = createMemo(() => {

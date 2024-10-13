@@ -9,6 +9,7 @@ export default meta
 export { WithAnchor } from './examples/anchor'
 export { Arrow } from './examples/arrow'
 export { Basic } from './examples/basic'
+export { RootProvider } from './examples/root-provider'
 export { CloseBehavior } from './examples/close-behavior'
 export { Controlled } from './examples/controlled'
 export { WithDisableOutsideClick } from './examples/disable-outside-click'

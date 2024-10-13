@@ -14,7 +14,7 @@ export interface UseTooltipProps
 }
 export interface UseTooltipReturn extends Accessor<tooltip.Api<PropTypes>> {}
 
-export const useTooltip = (props: UseTooltipProps): UseTooltipReturn => {
+export const useTooltip = (props: UseTooltipProps = {}): UseTooltipReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

@@ -19,7 +19,7 @@ export interface UseNumberInputProps
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (
-  props: UseNumberInputProps,
+  props: UseNumberInputProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseNumberInputReturn => {
   const id = useId()

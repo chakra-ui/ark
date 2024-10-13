@@ -19,7 +19,7 @@ export interface UseTagsInputProps
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
 
 export const useTagsInput = (
-  props: UseTagsInputProps,
+  props: UseTagsInputProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseTagsInputReturn => {
   const id = useId()

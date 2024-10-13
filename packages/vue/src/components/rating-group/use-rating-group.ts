@@ -20,7 +20,7 @@ export interface UseRatingGroupProps
 export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTypes>> {}
 
 export const useRatingGroup = (
-  props: UseRatingGroupProps,
+  props: UseRatingGroupProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
   const id = useId()

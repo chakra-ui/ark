@@ -20,7 +20,7 @@ export interface UseMenuReturn {
   machine: menu.Service
 }
 
-export const useMenu = (props: UseMenuProps, emit?: EmitFn<RootEmits>): UseMenuReturn => {
+export const useMenu = (props: UseMenuProps = {}, emit?: EmitFn<RootEmits>): UseMenuReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
