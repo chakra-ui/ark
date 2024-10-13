@@ -5,12 +5,7 @@ function FileUploadClearTrigger() {
   return (
     <FileUpload.Context>
       {(api) => (
-        <button
-          type="button"
-          hidden={!api.acceptedFiles.length}
-          button
-          onClick={() => api.clearFiles()}
-        >
+        <button type="button" hidden={!api.acceptedFiles.length} onClick={api.clearFiles}>
           Clear Files
         </button>
       )}
