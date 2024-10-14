@@ -33,7 +33,7 @@
     "@sveltejs/vite-plugin-svelte": "3.1.2",
     "publint": "0.2.11",
     "svelte": "5.0.0-next.264",
-    "svelte-check": "4.0.4",
+    "svelte-check": "4.0.5",
     "tslib": "2.7.0",
     "typescript": "5.6.3",
     "vite": "5.4.8",
