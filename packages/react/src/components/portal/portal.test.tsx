@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { useRef } from 'react'
 import { EnvironmentProvider } from '../../providers'
 import { Portal } from './portal'
@@ -120,5 +120,44 @@ describe('Portal', () => {
       </body>
     `)
     expect(shadowRoot.innerHTML).toMatchInlineSnapshot(`"<p>Anything must be visible</p>"`)
+  })
+
+  it('should render twice if container was specified', async () => {
+    const RenderCount = () => {
+      RenderCount.count++
+      return <div>{RenderCount.count}</div>
+    }
+    RenderCount.count = 0
+
+    const Test = () => {
+      const ref = useRef<HTMLDivElement>(null)
+      return (
+        <>
+          <Portal container={ref}>
+            <RenderCount />
+          </Portal>
+          <div ref={ref} />
+        </>
+      )
+    }
+    render(<Test />)
+    await waitFor(() => expect(screen.getByText('2')).toBeInTheDocument())
+  })
+
+  it('should render once if container was not specified', async () => {
+    const RenderCount = () => {
+      RenderCount.count++
+      return <div>{RenderCount.count}</div>
+    }
+    RenderCount.count = 0
+    const Test = () => {
+      return (
+        <Portal>
+          <RenderCount />
+        </Portal>
+      )
+    }
+    render(<Test />)
+    await waitFor(() => expect(screen.getByText('1')).toBeInTheDocument())
   })
 })
