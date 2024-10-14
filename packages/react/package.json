@@ -172,6 +172,7 @@
     "@zag-js/editable": "0.74.2",
     "@zag-js/file-upload": "0.74.2",
     "@zag-js/file-utils": "0.74.2",
+    "@zag-js/floating-panel": "0.74.2",
     "@zag-js/highlight-word": "0.74.2",
     "@zag-js/hover-card": "0.74.2",
     "@zag-js/i18n-utils": "0.74.2",
