@@ -14,7 +14,7 @@ export interface UseAccordionProps
 }
 export interface UseAccordionReturn extends Accessor<accordion.Api<PropTypes>> {}
 
-export const useAccordion = (props: UseAccordionProps): UseAccordionReturn => {
+export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()

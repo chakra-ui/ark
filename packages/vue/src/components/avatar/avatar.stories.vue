@@ -2,7 +2,7 @@
 import Basic from './examples/basic.vue'
 import Avatar from './examples/closed.vue'
 import Events from './examples/events.vue'
-import Provider from './examples/provider.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
   <Story title="Avatar">
@@ -19,8 +19,8 @@ import Provider from './examples/provider.vue'
         @status-change="(e) => console.log(e.status)"
       />
     </Variant>
-    <Variant title="Provider">
-      <Provider />
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

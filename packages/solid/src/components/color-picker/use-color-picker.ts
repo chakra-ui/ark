@@ -20,7 +20,7 @@ export interface UseColorPickerProps
 }
 export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}
 
-export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
+export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const field = useFieldContext()

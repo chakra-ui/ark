@@ -22,7 +22,7 @@ export interface UseAccordionProps
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
 export const useAccordion = (
-  props: UseAccordionProps,
+  props: UseAccordionProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseAccordionReturn => {
   const id = useId()

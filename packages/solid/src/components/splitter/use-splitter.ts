@@ -14,7 +14,7 @@ export interface UseSplitterProps
 }
 export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 
-export const useSplitter = (props: UseSplitterProps): UseSplitterReturn => {
+export const useSplitter = (props: UseSplitterProps = {}): UseSplitterReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

@@ -15,7 +15,7 @@ export interface UseNumberInputProps
 }
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
-export const useNumberInput = (props: UseNumberInputProps): UseNumberInputReturn => {
+export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

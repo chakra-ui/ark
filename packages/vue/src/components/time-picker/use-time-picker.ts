@@ -31,7 +31,7 @@ export interface UseTimePickerProps
 export interface UseTimePickerReturn extends ComputedRef<timePicker.Api<PropTypes>> {}
 
 export const useTimePicker = (
-  props: UseTimePickerProps,
+  props: UseTimePickerProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseTimePickerReturn => {
   const id = useId()

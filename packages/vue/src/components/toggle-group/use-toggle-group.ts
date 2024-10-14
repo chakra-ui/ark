@@ -19,7 +19,7 @@ export interface UseToggleGroupProps
 export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTypes>> {}
 
 export const useToggleGroup = (
-  props: UseToggleGroupProps,
+  props: UseToggleGroupProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseToggleGroupReturn => {
   const id = useId()

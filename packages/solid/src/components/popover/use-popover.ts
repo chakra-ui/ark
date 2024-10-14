@@ -14,7 +14,7 @@ export interface UsePopoverProps
 }
 export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
-export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
+export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

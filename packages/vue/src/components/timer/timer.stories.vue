@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Countdown from './examples/countdown.vue'
 import Events from './examples/events.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 
 <template>
@@ -14,6 +15,9 @@ import Events from './examples/events.vue'
     </Variant>
     <Variant title="Events">
       <Events />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

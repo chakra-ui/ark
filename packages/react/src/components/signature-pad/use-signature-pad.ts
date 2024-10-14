@@ -11,7 +11,7 @@ export interface UseSignaturePadProps
 
 export interface UseSignaturePadReturn extends signaturePad.Api<PropTypes> {}
 
-export const useSignaturePad = (props: UseSignaturePadProps): UseSignaturePadReturn => {
+export const useSignaturePad = (props: UseSignaturePadProps = {}): UseSignaturePadReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
   const field = useFieldContext()

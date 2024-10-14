@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import InitialValue from './examples/initial-value.vue'
 import Multiple from './examples/multiple.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
   <Story title="ToggleGroup">
@@ -13,6 +14,9 @@ import Multiple from './examples/multiple.vue'
     </Variant>
     <Variant title="Multiple">
       <Multiple />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

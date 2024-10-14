@@ -9,7 +9,7 @@ export interface UseSignaturePadProps
   extends Optional<Omit<signaturePad.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSignaturePadReturn extends Accessor<signaturePad.Api<PropTypes>> {}
 
-export const useSignaturePad = (props: UseSignaturePadProps): UseSignaturePadReturn => {
+export const useSignaturePad = (props: UseSignaturePadProps = {}): UseSignaturePadReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

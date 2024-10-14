@@ -17,7 +17,7 @@ export interface UseHoverCardProps
 export interface UseHoverCardReturn extends ComputedRef<hoverCard.Api<PropTypes>> {}
 
 export const useHoverCard = (
-  props: UseHoverCardProps,
+  props: UseHoverCardProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseHoverCardReturn => {
   const id = useId()

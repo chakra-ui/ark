@@ -22,7 +22,7 @@ export interface UseColorPickerProps
 
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 
-export const useColorPicker = (props: UseColorPickerProps): UseColorPickerReturn => {
+export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
   const field = useFieldContext()

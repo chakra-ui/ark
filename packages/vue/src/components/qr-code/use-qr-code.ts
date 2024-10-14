@@ -9,7 +9,7 @@ export interface UseQrCodeProps
   extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseQrCodeReturn extends ComputedRef<qrcode.Api<PropTypes>> {}
 
-export const useQrCode = (props: UseQrCodeProps): UseQrCodeReturn => {
+export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

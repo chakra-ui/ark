@@ -15,7 +15,7 @@ export interface UsePinInputProps
 }
 export interface UsePinInputReturn extends Accessor<pinInput.Api<PropTypes>> {}
 
-export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
+export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

@@ -14,7 +14,7 @@ export interface UseSegmentGroupProps
 }
 export interface UseSegmentGroupReturn extends Accessor<segmentGroup.Api<PropTypes>> {}
 
-export const useSegmentGroup = (props: UseSegmentGroupProps): UseSegmentGroupReturn => {
+export const useSegmentGroup = (props: UseSegmentGroupProps = {}): UseSegmentGroupReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

@@ -17,7 +17,10 @@ export interface UseSliderProps
 }
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
-export const useSlider = (props: UseSliderProps, emit?: EmitFn<RootEmits>): UseSliderReturn => {
+export const useSlider = (
+  props: UseSliderProps = {},
+  emit?: EmitFn<RootEmits>,
+): UseSliderReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

@@ -3,15 +3,14 @@ import { Accordion, useAccordion } from '@ark-ui/vue/accordion'
 import { ref } from 'vue'
 import { ChevronDownIcon } from './icons'
 
-const accordion = useAccordion({
-  multiple: true,
-  onValueChange: (details) => console.log(details),
-})
-
 const items = ref(['React', 'Solid', 'Vue'])
+
+const accordion = useAccordion({ defaultValue: ['React'] })
 </script>
 
 <template>
+  <button @click="accordion.setValue(['Vue'])">Set to Vue</button>
+
   <Accordion.RootProvider :value="accordion">
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemTrigger>

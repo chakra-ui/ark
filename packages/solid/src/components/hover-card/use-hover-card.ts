@@ -14,7 +14,7 @@ export interface UseHoverCardProps
 }
 export interface UseHoverCardReturn extends Accessor<hoverCard.Api<PropTypes>> {}
 
-export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
+export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

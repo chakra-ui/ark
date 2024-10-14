@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Range from './examples/range.vue'
+import RootProvider from './examples/root-provider.vue'
 import Standalone from './examples/standalone.vue'
 </script>
 <template>
@@ -17,6 +18,9 @@ import Standalone from './examples/standalone.vue'
     </Variant>
     <Variant title="Range">
       <Range />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

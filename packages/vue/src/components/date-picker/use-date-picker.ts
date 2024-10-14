@@ -30,7 +30,7 @@ export interface UseDatePickerProps
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (
-  props: UseDatePickerProps,
+  props: UseDatePickerProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
   const id = useId()

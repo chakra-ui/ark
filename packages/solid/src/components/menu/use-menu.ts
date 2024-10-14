@@ -18,7 +18,7 @@ export interface UseMenuReturn {
   api: Accessor<menu.Api<PropTypes>>
 }
 
-export const useMenu = (props: UseMenuProps): UseMenuReturn => {
+export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

@@ -31,8 +31,8 @@ interface Collapsible extends collapsible.Api<PropTypes> {
 export interface UseCollapsibleReturn extends ComputedRef<Collapsible> {}
 
 export const useCollapsible = (
-  props: UseCollapsibleProps,
-  emits: EmitFn<RootEmits>,
+  props: UseCollapsibleProps = {},
+  emits?: EmitFn<RootEmits>,
 ): UseCollapsibleReturn => {
   const id = useId()
   const env = useEnvironmentContext()
@@ -44,10 +44,10 @@ export const useCollapsible = (
     open: props.defaultOpen,
     'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
-    onExitComplete: () => emits('exitComplete'),
+    onExitComplete: () => emits?.('exitComplete'),
     onOpenChange: (details) => {
-      emits('openChange', details)
-      emits('update:open', details.open)
+      emits?.('openChange', details)
+      emits?.('update:open', details.open)
     },
     ...cleanProps(props),
   }))

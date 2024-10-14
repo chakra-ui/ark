@@ -9,7 +9,7 @@ export interface UseProgressProps
 
 export interface UseProgressReturn extends progress.Api<PropTypes> {}
 
-export const useProgress = (props: UseProgressProps): UseProgressReturn => {
+export const useProgress = (props: UseProgressProps = {}): UseProgressReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 

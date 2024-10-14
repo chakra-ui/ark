@@ -13,7 +13,7 @@ export interface UseFileUploadProps
 export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropTypes>> {}
 
 export const useFileUpload = (
-  props: UseFileUploadProps,
+  props: UseFileUploadProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseFileUploadReturn => {
   const id = useId()

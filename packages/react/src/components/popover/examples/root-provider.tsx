@@ -1,6 +1,6 @@
 import { Popover, usePopover } from '@ark-ui/react/popover'
 
-export const WithRootProvider = () => {
+export const RootProvider = () => {
   const popover = usePopover({
     positioning: {
       placement: 'bottom-start',
@@ -8,16 +8,18 @@ export const WithRootProvider = () => {
   })
 
   return (
-    <Popover.RootProvider value={popover}>
+    <>
       <button onClick={() => popover.setOpen(true)}>
         Popover is {popover.open ? 'open' : 'closed'}
       </button>
-      <Popover.Positioner>
-        <Popover.Content>
-          <Popover.Title>Title</Popover.Title>
-          <Popover.Description>Description</Popover.Description>
-        </Popover.Content>
-      </Popover.Positioner>
-    </Popover.RootProvider>
+      <Popover.RootProvider value={popover}>
+        <Popover.Positioner>
+          <Popover.Content>
+            <Popover.Title>Title</Popover.Title>
+            <Popover.Description>Description</Popover.Description>
+          </Popover.Content>
+        </Popover.Positioner>
+      </Popover.RootProvider>
+    </>
   )
 }

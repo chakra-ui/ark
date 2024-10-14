@@ -9,7 +9,7 @@ export interface UseFileUploadProps
   extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseFileUploadReturn extends Accessor<fileUpload.Api<PropTypes>> {}
 
-export const useFileUpload = (props: UseFileUploadProps): UseFileUploadReturn => {
+export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

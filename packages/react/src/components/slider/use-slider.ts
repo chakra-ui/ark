@@ -16,7 +16,7 @@ export interface UseSliderProps
 
 export interface UseSliderReturn extends slider.Api<PropTypes> {}
 
-export const useSlider = (props: UseSliderProps): UseSliderReturn => {
+export const useSlider = (props: UseSliderProps = {}): UseSliderReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 

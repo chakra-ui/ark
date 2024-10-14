@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { RootProvider } from './examples/root-provider'
 export { Events } from './examples/events'
 export { Context } from './examples/context'
 export { Provider } from './examples/provider'

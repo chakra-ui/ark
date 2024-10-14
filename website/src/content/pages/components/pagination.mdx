@@ -35,6 +35,15 @@ You can customize the Pagination component by setting various props such as `dir
 
 <Example id="customized" />
 
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the pagination. It accepts the value of the `usePagination` hook.
+You can leverage it to access the component state and methods from outside the pagination.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
 ## API Reference
 
 <ComponentTypes id="pagination" />

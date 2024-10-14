@@ -15,7 +15,7 @@ export interface UseSwitchProps
 }
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
 
-export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
+export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

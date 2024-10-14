@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { RootProvider } from './examples/root-provider'
 export { Blurred } from './examples/blurred'
 export { Customized } from './examples/customized'
 export { InitialValue } from './examples/initial-value'

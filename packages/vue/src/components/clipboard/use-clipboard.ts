@@ -11,7 +11,7 @@ export interface UseClipboardProps
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}
 
 export const useClipboard = (
-  props: UseClipboardProps,
+  props: UseClipboardProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseClipboardReturn => {
   const id = useId()

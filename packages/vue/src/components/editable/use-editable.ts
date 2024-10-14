@@ -28,7 +28,7 @@ export interface UseEditableProps
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
 export const useEditable = (
-  props: UseEditableProps,
+  props: UseEditableProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseEditableReturn => {
   const id = useId()

@@ -17,7 +17,7 @@ export interface UseTabsProps
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
-export const useTabs = (props: UseTabsProps, emit?: EmitFn<RootEmits>): UseTabsReturn => {
+export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): UseTabsReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

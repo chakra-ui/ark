@@ -6,8 +6,8 @@ import Controlled from './examples/controlled.vue'
 import Disabled from './examples/disabled.vue'
 import Horizontal from './examples/horizontal.vue'
 import Multiple from './examples/multiple.vue'
-import Provider from './examples/provider.vue'
 import RenderProp from './examples/render-prop.vue'
+import RootProvider from './examples/root-provider.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
@@ -36,11 +36,11 @@ import Vertical from './examples/vertical.vue'
     <Variant title="Disabled">
       <Disabled />
     </Variant>
-    <Variant title="Provider">
-      <Provider />
-    </Variant>
     <Variant title="Closed">
       <Accordion multiple :items="['React', 'Solid', 'Vue']" />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

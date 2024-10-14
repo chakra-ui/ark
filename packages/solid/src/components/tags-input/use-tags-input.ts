@@ -15,7 +15,7 @@ export interface UseTagsInputProps
 }
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}
 
-export const useTagsInput = (props: UseTagsInputProps): UseTagsInputReturn => {
+export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
