@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Accordion } from '@ark-ui/vue/accordion'
 import { ref } from 'vue'
-import { ChevronDownIcon } from './icons'
+import { ChevronDownIcon } from '../icons'
 
 const items = ref([{ value: 'React' }, { value: 'Solid', disabled: true }, { value: 'Vue' }])
 </script>
