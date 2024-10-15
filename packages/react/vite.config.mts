@@ -75,7 +75,7 @@ export default defineConfig({
 
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
-  if (file.name === 'portal') {
+  if (['portal', 'frame'].includes(file.name)) {
     return `'use client';`
   }
   if (isBarrelComponent(file) || isSpecialFile(file)) {

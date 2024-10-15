@@ -8,7 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- Fixed an issue where `Portal` component was rendering twice.
+- Resolved an issue causing the `Portal` component to render twice.
+- Corrected missing `'use client'` annotation in the `Frame` component.
 
 ## [4.1.1] - 2024-10-09
 
