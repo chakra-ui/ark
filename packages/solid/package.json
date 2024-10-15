@@ -183,7 +183,7 @@
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.0.2",
     "jsdom": "25.0.1",
-    "lucide-solid": "0.451.0",
+    "lucide-solid": "0.452.0",
     "release-it": "17.8.2",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.2",
