@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.1.2] - 2024-10-15
+
 ### Fixed
 
 - Resolved an issue causing the `Portal` component to render twice.
