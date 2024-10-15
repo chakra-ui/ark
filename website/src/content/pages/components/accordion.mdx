@@ -76,11 +76,11 @@ Use the `--height` and/or `--width` CSS variables to animate the size of the con
   }
 }
 
-[data-scope="accordion"][data-part="item-content"][data-state="open"] {
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
   animation: slideDown 250ms ease-in-out;
 }
 
-[data-scope="accordion"][data-part="item-content"][data-state="closed"] {
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
   animation: slideUp 200ms ease-in-out;
 }
 ```
@@ -93,6 +93,30 @@ You can leverage it to access the component state and methods from outside the a
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+### Acessing the focused item
+
+Use the `focusedValue` property to get the value of the focused accordion item.
+
+<Example id="context/focusedValue" />
+
+### Acessing the selected items
+
+Use the `value` property to get the selected accordion items.
+
+<Example id="context/value" />
+
+### Setting the selected items
+
+Use the `setValue` method to set the selected accordion items.
+
+<Example id="context/setValue" />
+
+### Accessing an item's state
+
+Use the `getItemState` method to get the state of an accordion item.
+
+<Example id="context/getItemState" />
 
 ## API Reference
 
