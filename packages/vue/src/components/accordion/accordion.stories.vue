@@ -47,16 +47,16 @@ import Vertical from './examples/vertical.vue'
       <RootProvider />
     </Variant>
     <Variant title="ContextFocusedValue">
-      <RootProvider />
+      <ContextFocusedValue />
     </Variant>
     <Variant title="ContextValue">
-      <RootProvider />
+      <ContextValue />
     </Variant>
     <Variant title="ContextSetValue">
-      <RootProvider />
+      <ContextSetValue />
     </Variant>
     <Variant title="ContextGetItemState">
-      <RootProvider />
+      <ContextGetItemState />
     </Variant>
   </Story>
 </template>
