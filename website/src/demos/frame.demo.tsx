@@ -5,7 +5,9 @@ import { css } from 'styled-system/css'
 
 export const Demo = () => {
   const { resolvedTheme } = useTheme()
+
   const color = resolvedTheme === 'dark' ? '#FFF' : '#000'
+  const bg = resolvedTheme === 'dark' ? '#111110' : '#FFF'
   return (
     <Frame
       className={css({
@@ -14,7 +16,9 @@ export const Demo = () => {
         borderWidth: '1px',
         height: 'calc(var(--height) + 2px)',
       })}
-      head={<style>{'.frame-root {font-family:sans-serif; padding: 24px}'}</style>}
+      head={
+        <style>{`.frame-root {font-family:sans-serif; padding: 24px} body{background: ${bg} }`}</style>
+      }
     >
       <h1 style={{ color }}>Ark UI / Frame</h1>
       <p style={{ marginBottom: '10px', marginTop: '4px', color }}>
