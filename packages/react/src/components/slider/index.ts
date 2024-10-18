@@ -12,6 +12,11 @@ export {
   type SliderControlProps,
 } from './slider-control'
 export {
+  SliderDraggingIndicator,
+  type SliderDraggingIndicatorBaseProps,
+  type SliderDraggingIndicatorProps,
+} from './slider-dragging-indicator'
+export {
   SliderHiddenInput,
   type SliderHiddenInputBaseProps,
   type SliderHiddenInputProps,

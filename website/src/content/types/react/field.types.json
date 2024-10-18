@@ -39,6 +39,20 @@
     },
     "element": "HTMLLabelElement"
   },
+  "RequiredIndicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "fallback": {
+        "type": "type ONLY_FOR_FORMAT =\n  | string\n  | number\n  | boolean\n  | ReactElement<any, string | JSXElementConstructor<any>>\n  | Iterable<ReactNode>\n  | ReactPortal",
+        "isRequired": false
+      }
+    },
+    "element": "HTMLSpanElement"
+  },
   "Root": {
     "props": {
       "asChild": {
@@ -77,7 +91,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement>; }; ... 10 more ...; getErrorTextProps: () => Omit<...>; }",
+        "type": "{ ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: RefObject<HTMLDivElement>; }; ... 11 more ...; getRequiredIndicatorProps: () => Omit<...>; }",
         "isRequired": true
       },
       "asChild": {

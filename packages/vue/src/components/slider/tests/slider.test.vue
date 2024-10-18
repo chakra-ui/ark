@@ -13,6 +13,7 @@ const sliderValue = ref([-20, 20])
         <Slider.Range />
       </Slider.Track>
       <Slider.Thumb v-for="(_, index) in sliderValue" :key="index" :index="index">
+        <Slider.DraggingIndicator />
         <Slider.HiddenInput />
       </Slider.Thumb>
     </Slider.Control>

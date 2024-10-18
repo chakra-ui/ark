@@ -43,7 +43,7 @@ export interface RootProps {
   /**
    * The element to focus on when the popover is opened.
    */
-  initialFocusEl?: () => HTMLElement
+  initialFocusEl?: () => HTMLElement | null
   /**
    * Whether the popover should be modal. When set to `true`:
    * - interaction with outside elements will be disabled
@@ -63,7 +63,7 @@ export interface RootProps {
    * - should not have pointer-events disabled
    * - should not trigger the dismiss event
    */
-  persistentElements?: (() => Element)[]
+  persistentElements?: (() => Element | null)[]
   /**
    * Whether the popover is portalled. This will proxy the tabbing behavior regardless of the DOM position
    * of the popover content.

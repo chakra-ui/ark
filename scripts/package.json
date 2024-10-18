@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "22.7.5",
+    "@types/node": "22.7.6",
     "@types/voca": "1.4.6",
     "find-packages": "10.0.4",
     "find-up": "7.0.0",
@@ -30,7 +30,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "ts-morph": "24.0.0",
-    "ts-pattern": "5.4.0",
+    "ts-pattern": "5.5.0",
     "typescript": "5.6.3",
     "voca": "1.4.1"
   }

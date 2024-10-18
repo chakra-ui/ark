@@ -35,6 +35,19 @@
       }
     }
   },
+  "RequiredIndicator": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "fallback": {
+        "type": "number | boolean | Node | ArrayElement | (string & {})",
+        "isRequired": false
+      }
+    }
+  },
   "Root": {
     "props": {
       "asChild": {
@@ -72,7 +85,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "Accessor<{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: HTMLDivElement | undefined; }; disabled: boolean; ... 9 more ...; getErrorTextProps: () => { ...; }; }>",
+        "type": "Accessor<{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: HTMLDivElement | undefined; }; disabled: boolean; ... 10 more ...; getRequiredIndicatorProps: () => { ...; }; }>",
         "isRequired": true
       },
       "asChild": {

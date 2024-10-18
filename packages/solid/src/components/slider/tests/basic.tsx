@@ -20,6 +20,7 @@ export const ComponentUnderTest = (props: Slider.RootProps) => {
         <Index each={value()}>
           {(_value, index) => (
             <Slider.Thumb index={index}>
+              <Slider.DraggingIndicator />
               <Slider.HiddenInput />
             </Slider.Thumb>
           )}

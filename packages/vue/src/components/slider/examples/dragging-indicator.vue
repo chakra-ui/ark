@@ -3,14 +3,15 @@ import { Slider } from '@ark-ui/vue/slider'
 </script>
 
 <template>
-  <Slider.Root origin="center">
+  <Slider.Root>
     <Slider.Label>Label</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-        <Slider.Thumb :index="0">
+      <Slider.Thumb :index="0">
+        <Slider.DraggingIndicator />
         <Slider.HiddenInput />
       </Slider.Thumb>
     </Slider.Control>

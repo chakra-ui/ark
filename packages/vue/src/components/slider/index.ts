@@ -9,6 +9,11 @@ export {
   type SliderControlProps,
 } from './slider-control.vue'
 export {
+  default as SliderDraggingIndicator,
+  type SliderDraggingIndicatorBaseProps,
+  type SliderDraggingIndicatorProps,
+} from './slider-dragging-indicator.vue'
+export {
   default as SliderHiddenInput,
   type SliderHiddenInputBaseProps,
   type SliderHiddenInputProps,

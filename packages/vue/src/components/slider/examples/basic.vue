@@ -10,7 +10,9 @@ import { Slider } from '@ark-ui/vue/slider'
       <Slider.Track>
         <Slider.Range />
       </Slider.Track>
-      <Slider.Thumb :index="0" />
+      <Slider.Thumb :index="0">
+        <Slider.HiddenInput />
+      </Slider.Thumb>
     </Slider.Control>
   </Slider.Root>
 </template>
