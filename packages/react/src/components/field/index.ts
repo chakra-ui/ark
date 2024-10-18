@@ -23,6 +23,11 @@ export {
   type FieldTextareaBaseProps,
   type FieldTextareaProps,
 } from './field-textarea'
+export {
+  FieldRequiredIndicator,
+  type FieldRequiredIndicatorProps,
+  type FieldRequiredIndicatorBaseProps,
+} from './field-required-indicator'
 export { fieldAnatomy } from './field.anatomy'
 export { useFieldContext, type UseFieldContext } from './use-field-context'
 

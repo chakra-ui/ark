@@ -148,6 +148,11 @@ export const useField = (props: UseFieldProps) => {
     'aria-live': 'polite',
   })
 
+  const getRequiredIndicatorProps = () => ({
+    'aria-hidden': true,
+    ...parts.requiredIndicator.attrs,
+  })
+
   return createMemo(() => ({
     ariaDescribedby: labelIds.join(' '),
     ids: {
@@ -170,5 +175,6 @@ export const useField = (props: UseFieldProps) => {
     getSelectProps,
     getHelperTextProps,
     getErrorTextProps,
+    getRequiredIndicatorProps,
   }))
 }

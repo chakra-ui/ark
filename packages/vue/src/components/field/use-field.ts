@@ -131,6 +131,11 @@ export const useField = (props: UseFieldProps) => {
     'aria-live': 'polite',
   })
 
+  const getRequiredIndicatorProps = (): HTMLAttributes => ({
+    'aria-hidden': true,
+    ...parts.requiredIndicator.attrs,
+  })
+
   return computed(() => ({
     ariaDescribedby: labelIds.join(' '),
     ids: {
@@ -153,5 +158,6 @@ export const useField = (props: UseFieldProps) => {
     getSelectProps,
     getHelperTextProps,
     getErrorTextProps,
+    getRequiredIndicatorProps,
   }))
 }

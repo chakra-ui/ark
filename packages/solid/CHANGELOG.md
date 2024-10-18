@@ -6,6 +6,21 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Field**: Added `Field.RequiredIndicator` component to render a required indicator (or asterisk)
+  when the `required` prop is set.
+
+```tsx
+<Field.Root required>
+  <Field.Label>
+    Username
+    <Field.RequiredIndicator />
+  </Field.Label>
+  <Field.Input placeholder="Enter your username" />
+</Field.Root>
+```
+
 ## [4.2.1] - 2024-10-09
 
 ### Changed

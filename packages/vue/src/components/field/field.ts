@@ -42,3 +42,8 @@ export {
   default as Context,
   type FieldContextProps as ContextProps,
 } from './field-context.vue'
+export {
+  default as RequiredIndicator,
+  type FieldRequiredIndicatorProps as RequiredIndicatorProps,
+  type FieldRequiredIndicatorBaseProps as RequiredIndicatorBaseProps,
+} from './field-required-indicator.vue'

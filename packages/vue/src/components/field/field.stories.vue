@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import InputControlled from './examples/input-controlled.vue'
 import Input from './examples/input.vue'
+import RequiredIndicator from './examples/required-indicator.vue'
 import SelectControlled from './examples/select-controlled.vue'
 import Select from './examples/select.vue'
 import TextareaControlled from './examples/textarea-controlled.vue'
@@ -25,6 +26,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Textarea Controlled">
       <TextareaControlled />
+    </Variant>
+    <Variant title="Required Indicator">
+      <RequiredIndicator />
     </Variant>
   </Story>
 </template>

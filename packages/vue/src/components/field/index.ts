@@ -20,6 +20,11 @@ export {
   type FieldLabelProps,
 } from './field-label.vue'
 export {
+  default as FieldRequiredIndicator,
+  type FieldRequiredIndicatorBaseProps,
+  type FieldRequiredIndicatorProps,
+} from './field-required-indicator.vue'
+export {
   default as FieldRootProvider,
   type FieldRootProviderBaseProps,
   type FieldRootProviderProps,

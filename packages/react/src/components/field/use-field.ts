@@ -178,6 +178,15 @@ export const useField = (props: UseFieldProps) => {
     [errorTextId],
   )
 
+  const getRequiredIndicatorProps = useMemo(
+    () => () =>
+      ({
+        'aria-hidden': true,
+        ...parts.requiredIndicator.attrs,
+      }) as HTMLProps<'span'>,
+    [],
+  )
+
   return {
     ariaDescribedby: labelIds,
     ids: {
@@ -201,5 +210,6 @@ export const useField = (props: UseFieldProps) => {
     getSelectProps,
     getHelperTextProps,
     getErrorTextProps,
+    getRequiredIndicatorProps,
   }
 }
