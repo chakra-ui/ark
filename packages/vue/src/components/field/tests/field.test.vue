@@ -4,8 +4,11 @@ const model = defineModel()
 </script>
 
 <template>
-  <Field.Root invalid>
-    <Field.Label>Label</Field.Label>
+  <Field.Root invalid required>
+    <Field.Label>
+      Label
+      <Field.RequiredIndicator />
+    </Field.Label>
     <Field.Input v-model="model" />
     <Field.HelperText>Some additional Info</Field.HelperText>
     <Field.ErrorText>Error Info</Field.ErrorText>

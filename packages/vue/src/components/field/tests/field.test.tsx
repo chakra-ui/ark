@@ -20,6 +20,7 @@ describe('Field', () => {
   it('should set textbox as required', async () => {
     render(ComponentUnderTest, { props: { required: true } })
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
+    expect(screen.getByText('*')).toBeInTheDocument()
   })
 
   it('should set textbox as disabled', async () => {

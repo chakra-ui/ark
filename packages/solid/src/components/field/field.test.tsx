@@ -5,7 +5,10 @@ import { getExports, getParts } from '../../setup-test'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>
-    <Field.Label>Label</Field.Label>
+    <Field.Label>
+      Label
+      <Field.RequiredIndicator />
+    </Field.Label>
     <Field.Input />
     <Field.HelperText>Some additional Info</Field.HelperText>
     <Field.ErrorText>Error Info</Field.ErrorText>
@@ -16,7 +19,7 @@ describe('Field / Parts & Exports', () => {
   it.each(
     getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
   )('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest invalid />)
+    render(() => <ComponentUnderTest invalid required />)
 
     expect(document.querySelector(part)).toBeInTheDocument()
   })
@@ -30,6 +33,7 @@ describe('Field / Input', () => {
   it('should set textbox as required', async () => {
     render(() => <ComponentUnderTest required />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
+    expect(screen.getByText('*')).toBeInTheDocument()
   })
 
   it('should set textbox as disabled', async () => {
