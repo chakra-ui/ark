@@ -1,1 +1,1 @@
-export { default as ClientOnly } from './client-only.vue'
+export { default as ClientOnly, type ClientOnlyProps } from './client-only.vue'

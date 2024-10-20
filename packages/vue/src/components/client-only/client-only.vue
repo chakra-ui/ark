@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
+export type ClientOnlyProps = {}
+
 const isClient = ref(false)
 
 onMounted(() => {
