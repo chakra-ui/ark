@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
+import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useFloatingPanelContext } from './use-floating-panel-context'
@@ -15,7 +16,7 @@ export const FloatingPanelContent = forwardRef<HTMLDivElement, FloatingPanelCont
     const presence = usePresenceContext()
     const mergedProps = mergeProps(
       floatingPanel.getContentProps(),
-      presence.getPresenceProps(ref),
+      presence.getPresenceProps(),
       props,
     )
 
@@ -23,7 +24,7 @@ export const FloatingPanelContent = forwardRef<HTMLDivElement, FloatingPanelCont
       return null
     }
 
-    return <ark.div {...mergedProps} />
+    return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
   },
 )
 
