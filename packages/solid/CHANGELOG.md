@@ -8,8 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Field**: Added `Field.RequiredIndicator` component to render a required indicator (or asterisk)
-  when the `required` prop is set.
+- **Slider**: Introduced `Slider.DraggingIndicator` for displaying an indicator when dragging a thumb.
+- **Field**: Added `Field.RequiredIndicator` to show a required indicator (e.g., an asterisk) when the `required` prop is set.
 
 ```tsx
 <Field.Root required>
@@ -20,6 +20,21 @@ description: All notable changes will be documented in this file.
   <Field.Input placeholder="Enter your username" />
 </Field.Root>
 ```
+
+### Fixed
+
+- **TagsInput**: Resolved an issue where `api.addTag(...)` was not functioning correctly.
+- **RatingGroup**: Fixed a bug where both the rating group and rating item received focus when `readOnly` was set to `true`.
+- **Combobox**: Corrected behavior where `getSelectionValue` was called multiple times; it now triggers only when a selection is made.
+- **HoverCard**: Removed `preventDefault` calls on the `touchstart` event to avoid browser error logs.
+- **Popover**: Fixed a race condition in iOS Safari where switching between popovers caused them to close unexpectedly.
+- **Presence**: Addressed an issue where elements using the presence machine did not exit the unmounting state if closed with a delay while switching tabs.
+
+### Changed
+
+- **Editable**:
+  - Added `data-autoresize` attribute to both editable and preview elements when `autoResize` is enabled.
+  - Removed the default `all: unset` style from the input when `autoResize` is enabled, allowing for user-defined CSS.
 
 ## [4.2.1] - 2024-10-09
 
