@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.2.0] - 2024-10-26
+
 ### Added
 
 - **Slider**: Introduced `Slider.DraggingIndicator` for displaying an indicator when dragging a thumb.
