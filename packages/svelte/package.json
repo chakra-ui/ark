@@ -18,7 +18,7 @@
   },
   "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
   "peerDependencies": {
-    "svelte": "5.0.3"
+    "svelte": "5.1.3"
   },
   "dependencies": {
     "@zag-js/avatar": "0.76.0",
