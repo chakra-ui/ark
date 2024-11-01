@@ -20,7 +20,7 @@ export const FileUploadItemPreviewImage = (props: FileUploadItemPreviewImageProp
   })
 
   const mergedProps = mergeProps(
-    fileUpload().getItemPreviewImageProps({ ...itemProps, url: url() }),
+    () => fileUpload().getItemPreviewImageProps({ ...itemProps, url: url() }),
     props,
   )
 
