@@ -11,14 +11,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((page) => ({ url: `https://ark-ui.com/${framework}/docs/${page.slug}` })),
   )
 
-  const showcasePages = frameworks.map((framework) => ({
-    url: `https://ark-ui.com/${framework}/showcase`,
-  }))
-
   const examples = await fetchExamples()
   const examplePages = frameworks.flatMap((framework) =>
     examples.map((example) => ({ url: `https://ark-ui.com/${framework}/examples/${example.id}` })),
   )
 
-  return [{ url: 'https://ark-ui.com' }, ...docsPages, ...showcasePages, ...examplePages]
+  return [{ url: 'https://ark-ui.com' }, ...docsPages, ...examplePages]
 }

@@ -14,7 +14,7 @@ export const Navbar = () => (
         background="bg.default"
         borderRadius="l2"
         boxShadow="xs"
-        gap="10"
+        gap={{ base: '8', md: '10' }}
         justify="space-between"
         h="12"
         px="3"
@@ -31,7 +31,7 @@ export const Navbar = () => (
               fontWeight: 'medium',
               color: 'fg.emphasized',
               _hover: {
-                color: 'fg.default',
+                color: 'accent.default',
               },
             })}
           >
@@ -44,7 +44,7 @@ export const Navbar = () => (
               fontWeight: 'medium',
               color: 'fg.emphasized',
               _hover: {
-                color: 'fg.default',
+                color: 'accent.default',
               },
               display: {
                 base: 'none',
@@ -63,8 +63,9 @@ export const Navbar = () => (
               textStyle: 'sm',
               fontWeight: 'medium',
               color: 'fg.emphasized',
+              whiteSpace: 'nowrap',
               _hover: {
-                color: 'fg.default',
+                color: 'accent.default',
               },
               '& svg': {
                 width: '4',
@@ -73,11 +74,11 @@ export const Navbar = () => (
               },
             })}
           >
-            Plus <SparklesIcon />
+            Ark Plus <SparklesIcon />
           </NextLink>
         </HStack>
         <HStack gap="1">
-          <IconButton asChild variant="ghost">
+          <IconButton asChild variant="ghost" hideBelow="sm">
             <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">
               <SiGithub />
             </a>

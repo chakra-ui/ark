@@ -57,12 +57,6 @@ export const MobileNavbarLinks = (props: Props) => {
         Examples
       </NavbarLink>
       <NavbarLink
-        href={`/${framework}/showcase`}
-        aria-current={pathname.startsWith(`/${framework}/showcase`) ? 'page' : undefined}
-      >
-        Showcase
-      </NavbarLink>
-      <NavbarLink
         href={`/${framework}/plus`}
         aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
       >

@@ -1,28 +1,29 @@
-import type { Metadata } from 'next'
 import { cva } from 'styled-system/css'
-import { Container, Grid, GridItem, Stack, styled } from 'styled-system/jsx'
-import { PageHeader } from '~/components/page-header'
-import { Card } from '~/components/ui/card'
+import { Box, Container, Grid, GridItem, Stack, styled } from 'styled-system/jsx'
+import { SectionHeader } from '../section-header'
+import { Card } from '../ui/card'
 import { showcases } from '.velite'
 
-export default function Page() {
+export const Showcases = () => {
   return (
-    <Container py="12" maxW="7xl">
-      <Stack gap={{ base: '8', md: '12' }}>
-        <PageHeader
-          heading="Showcase"
-          subHeading="Community"
-          description="Discover amazing projects built with Ark UI. Share your own by opening an issue on our GitHub repository."
+    <Container py={{ base: '16', md: '24' }}>
+      <Stack gap={{ base: '12', md: '16' }}>
+        <SectionHeader
+          tagline="Built with Ark UI"
+          headline="See What's Possible"
+          description="Explore real-world applications built by developers who trust Ark UI. From startups to enterprises, see how our headless components power modern web experiences."
+          alignItems="center"
+          textAlign="center"
         />
         <Grid columns={{ base: 1, md: 2, lg: 3 }} gap={{ base: '4', md: '8' }}>
           {showcases.map((showcase) => (
             <GridItem key={showcase.url} display="flex">
               <a href={showcase.url} className={link} target="_blank" rel="noreferrer">
                 <Card.Root boxShadow="none">
-                  <Card.Header px="4" pt="4" pb="3">
+                  <Card.Header px="4" pt="4" pb="3" maxH="13rem" overflow="hidden">
                     <styled.img src={showcase.image} alt={showcase.title} borderRadius="l2" />
                   </Card.Header>
-                  <Card.Body px="4" pt="0" pb="4">
+                  <Card.Body p="4">
                     <Card.Title textStyle="md">{showcase.title}</Card.Title>
                     <Card.Description>{showcase.description}</Card.Description>
                   </Card.Body>
@@ -34,11 +35,6 @@ export default function Page() {
       </Stack>
     </Container>
   )
-}
-
-export const metadata: Metadata = {
-  title: 'Showcase',
-  description: 'Discover amazing projects built with Ark UI.',
 }
 
 const link = cva({

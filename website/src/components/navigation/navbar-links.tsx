@@ -20,6 +20,7 @@ const link = cva({
     transitionDuration: 'normal',
     transitionProperty: 'color',
     transitionTimingFunction: 'default',
+    whiteSpace: 'nowrap',
     '& svg': {
       width: '3.5',
       height: '3.5',
@@ -56,17 +57,10 @@ export const NavbarLinks = (props: Props) => {
         Examples
       </NavbarLink>
       <NavbarLink
-        href={`/${framework}/showcase`}
-        aria-current={pathname.startsWith(`/${framework}/showcase`) ? 'page' : undefined}
-        display={{ base: 'none', lg: 'flex' }}
-      >
-        Showcase
-      </NavbarLink>
-      <NavbarLink
         href={`/${framework}/plus`}
         aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
       >
-        Plus
+        Ark Plus
         <SparklesIcon />
       </NavbarLink>
     </HStack>

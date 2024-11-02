@@ -7,64 +7,69 @@ import { CodeExamples } from './code-examples'
 const features = [
   {
     icon: Paintbrush,
-    title: 'Unstyled',
+    title: 'Zero-Styling Freedom',
     description:
-      'Style the components according to your design system, rather than being limited by predefined styles.',
+      'Your design system, your rules. Every component starts as a blank canvas ready for your creativity.',
   },
   {
     icon: Braces,
-    title: 'Composable',
+    title: 'Truly Composable',
     description:
-      'The components are built using a declarative syntax, which makes them easier to reason about and understand.',
+      'Build complex UIs effortlessly with modular components that work seamlessly together.',
   },
   {
     icon: Keyboard,
-    title: 'Accessible',
+    title: 'Accessibility-First',
     description:
-      'Ark follows accessibility standards and guidelines, ensuring that the components can be accessed and used by all users.',
+      'Ship with confidence. Every component is WCAG compliant and thoroughly tested for accessibility.',
   },
   {
     icon: Orbit,
-    title: 'Reliable',
+    title: 'State Machine Powered',
     description:
-      'Using state machines, Ark can help you create more reliable user interfaces, with less room for bugs and unexpected behavior.',
+      'Predictable behavior, fewer bugs. State machines ensure rock-solid component interactions.',
   },
 ]
 
 export const Highlights = () => {
   return (
     <Container py={{ base: '16', md: '24' }}>
-      <Grid columns={{ base: 1, md: 2 }} gap={{ base: '16', lg: '24' }}>
-        <Stack width="full" gap={{ base: '10', md: '12' }}>
-          <Heading textStyle={{ base: '3xl', md: '4xl' }} fontWeight="semibold">
-            Composable API design for a delightful experience
-          </Heading>
-          <Stack gap="10">
-            {features.map((feature) => (
-              <Stack key={feature.title} direction="row" gap={{ base: '5', md: '6' }}>
-                <Flex
-                  align="center"
-                  justify="center"
-                  background="bg.default"
-                  borderRadius="l2"
-                  borderWidth="1px"
-                  color="accent.default"
-                  flexShrink={0}
-                  height={{ base: '10', md: '12' }}
-                  width={{ base: '10', md: '12' }}
-                >
-                  <feature.icon size="20" />
-                </Flex>
-                <Stack gap={{ base: '1', md: '2' }}>
-                  <Heading textStyle="lg" fontWeight="semibold">
-                    {feature.title}
-                  </Heading>
-                  <Text color="fg.muted">{feature.description}</Text>
-                </Stack>
-              </Stack>
-            ))}
-          </Stack>
-        </Stack>
+      <Grid columns={{ base: 1, md: 2 }} gap={{ base: '8', lg: '24' }}>
+        <Grid
+          columns={{ base: 1, sm: 2 }}
+          gap={{ base: '8', lg: '12' }}
+          justifyContent="center"
+          alignContent="center"
+          alignItems="stretch"
+          height="full"
+        >
+          {features.map((feature) => (
+            <Stack
+              key={feature.title}
+              gap={{ base: '3', md: '4' }}
+              height="full"
+              justify="flex-start"
+            >
+              <Flex
+                align="center"
+                justify="center"
+                background="bg.default"
+                borderRadius="l2"
+                borderWidth="1px"
+                color="accent.default"
+                flexShrink={0}
+                height={{ base: '10', md: '12' }}
+                width={{ base: '10', md: '12' }}
+              >
+                <feature.icon size="20" />
+              </Flex>
+              <Heading as="h3" textStyle={{ base: 'lg', md: '2xl' }} fontWeight="semibold">
+                {feature.title}
+              </Heading>
+              <Text color="fg.muted">{feature.description}</Text>
+            </Stack>
+          ))}
+        </Grid>
         <CodeExamples />
       </Grid>
     </Container>

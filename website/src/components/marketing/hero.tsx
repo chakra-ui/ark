@@ -17,10 +17,10 @@ export const Hero = () => {
       backgroundPosition="calc(50% + 250px) 25px"
       backgroundRepeat="no-repeat"
     >
-      <Container pt={{ base: '16', md: '32' }} pb={{ base: '16', md: '24' }}>
-        <Stack gap={{ base: '8', md: '12' }} maxW="3xl">
-          <Stack gap={{ base: '4', md: '6' }}>
-            <Stack gap="4">
+      <Container pt={{ base: '16', md: '32' }} pb="8">
+        <Stack gap={{ base: '6', md: '8' }} maxW="3xl">
+          <Stack gap={{ base: '5', md: '6' }}>
+            <Stack gap={{ base: '3', md: '4' }}>
               <NextLink href="/react/plus">
                 <Badge size="lg" variant="outline">
                   <RocketIcon />
@@ -28,7 +28,7 @@ export const Hero = () => {
                   <ArrowRightIcon />
                 </Badge>
               </NextLink>
-              <Heading fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
+              <Heading as="h1" fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
                 Fully <styled.span color="accent.default">customizable</styled.span> and{' '}
                 <styled.span color="accent.default">accessible</styled.span> UI components
               </Heading>

@@ -15,7 +15,7 @@ export const Universe = () => {
         }}
         backgroundRepeat="repeat-x"
         width="full"
-        mt={{ base: '16', md: '24' }}
+        mt={{ base: '16', md: '16' }}
       >
         <Container pt={{ base: '16', md: '40' }}>
           <Heading textAlign="center" textStyle="4xl" maxW="3xl" mx="auto" fontWeight="semibold">
