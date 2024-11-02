@@ -2,8 +2,8 @@ import { cleanup, render } from '@testing-library/react/pure'
 import { axe } from 'vitest-axe'
 import { TreeView } from '..'
 import { getExports, getParts } from '../../../setup-test'
+import { Basic as ComponentUnderTest } from '../examples/basic'
 import { treeViewAnatomy } from '../tree-view.anatomy'
-import { ComponentUnderTest } from './basic'
 
 describe('TreeView', () => {
   afterAll(() => {

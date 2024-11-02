@@ -32,7 +32,6 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'disabled',
     'disableLayer',
     'form',
-    'getSelectionValue',
     'highlightedValue',
     'id',
     'ids',

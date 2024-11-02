@@ -4,9 +4,10 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
+import type { TreeCollection, TreeNode } from '../collection'
 
-export interface UseTreeViewProps
-  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseTreeViewProps<T extends TreeNode>
+  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
    * The initial selected items of the tree view.
    * Use this when you do not need to control the state of the tree view.
@@ -17,11 +18,17 @@ export interface UseTreeViewProps
    * Use this when you do not need to control the state of the tree view.
    */
   defaultExpandedValue?: treeView.Context['expandedValue']
+  /**
+   * The collection of items
+   */
+  collection: TreeCollection<T>
 }
 
-export interface UseTreeViewReturn extends treeView.Api<PropTypes> {}
+export interface UseTreeViewReturn<T extends TreeNode> extends treeView.Api<PropTypes, T> {}
 
-export const useTreeView = (props: UseTreeViewProps = {}): UseTreeViewReturn => {
+export const useTreeView = <T extends TreeNode>(
+  props: UseTreeViewProps<T>,
+): UseTreeViewReturn<T> => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 

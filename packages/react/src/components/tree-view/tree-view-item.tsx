@@ -1,36 +1,25 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewDepthContext } from './use-tree-view-depth-context'
-import { TreeViewItemProvider } from './use-tree-view-item-context'
 import {
-  TreeViewItemPropsProvider,
-  type UseTreeViewItemPropsContext,
-} from './use-tree-view-item-props-context'
+  TreeViewNodePropsProvider,
+  useTreeViewNodePropsContext,
+} from './use-tree-view-node-props-context'
 
-export interface TreeViewItemBaseProps extends UseTreeViewItemPropsContext, PolymorphicProps {}
-export interface TreeViewItemProps extends Assign<HTMLProps<'li'>, TreeViewItemBaseProps> {}
+export interface TreeViewItemBaseProps extends PolymorphicProps {}
+export interface TreeViewItemProps extends Assign<HTMLProps<'div'>, TreeViewItemBaseProps> {}
 
-export const TreeViewItem = forwardRef<HTMLLIElement, TreeViewItemProps>((props, ref) => {
-  const [{ value, disabled }, localProps] = createSplitProps<UseTreeViewItemPropsContext>()(props, [
-    'disabled',
-    'value',
-  ])
+export const TreeViewItem = forwardRef<HTMLDivElement, TreeViewItemProps>((props, ref) => {
   const treeView = useTreeViewContext()
-  const depth = useTreeViewDepthContext()
-  const itemProps = { value, disabled, depth }
-  const mergedProps = mergeProps(treeView.getItemProps(itemProps), localProps)
-  const itemState = treeView.getItemState(itemProps)
+  const nodeProps = useTreeViewNodePropsContext()
+  const mergedProps = mergeProps(treeView.getItemProps(nodeProps), props)
 
   return (
-    <TreeViewItemPropsProvider value={itemProps}>
-      <TreeViewItemProvider value={itemState}>
-        <ark.li {...mergedProps} ref={ref} />
-      </TreeViewItemProvider>
-    </TreeViewItemPropsProvider>
+    <TreeViewNodePropsProvider value={nodeProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </TreeViewNodePropsProvider>
   )
 })
 

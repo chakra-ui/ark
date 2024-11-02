@@ -1,31 +1,63 @@
-[data-scope='tree-view'][data-part='tree'] {
-  margin: 0;
+[data-scope="tree-view"][data-part="tree"] {
   margin-top: 20px;
-  padding: 0;
-  list-style: none;
+  width: 240px;
 }
 
-[data-scope='tree-view'][data-part='item'],
-[data-scope='tree-view'][data-part='branch-control'] {
-  display: flex;
-  gap: 4px;
-  padding-inline: 6px;
-  padding-block: 4px;
+[data-scope="tree-view"][data-part="item"],
+[data-scope="tree-view"][data-part="branch-control"] {
   user-select: none;
+  --padding-inline: 16px;
+  padding-inline-start: calc(var(--depth) * var(--padding-inline));
+  padding-inline-end: var(--padding-inline);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 2px;
+  min-height: 32px;
+
+  & svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background: rgb(243, 243, 243);
+  }
+
+  &[data-selected] {
+    background: rgb(226, 226, 226);
+  }
+
+  &:focus {
+    outline: 1px solid rgb(148, 148, 148);
+    outline-offset: -1px;
+  }
 }
 
-[data-scope='tree-view'][data-part='item'][data-selected],
-[data-scope='tree-view'][data-part='branch-control'][data-selected] {
-  background: lightblue;
+[data-scope="tree-view"][data-part="item-text"],
+[data-scope="tree-view"][data-part="branch-text"] {
+  flex: 1;
 }
 
-[data-scope='tree-view'][data-part='branch-content'] {
-  list-style: none;
-  padding-inline-start: 12px;
+[data-scope="tree-view"][data-part="branch-content"] {
+  position: relative;
+  isolation: isolate;
 }
 
-[data-scope='tree-view'][data-part='branch-content'] [data-part='item'] {
-  --dx: calc(var(--depth) + 1);
-  padding-inline-start: calc(var(--dx) * 4px);
-  border-inline-start: 1px solid lightgray;
+[data-scope="tree-view"][data-part="branch-indent-guide"] {
+  position: absolute;
+  content: "";
+  border-left: 1px solid rgb(226, 226, 226);
+  height: 100%;
+  translate: calc(var(--depth) * 1.25rem);
+  z-index: 0;
+}
+
+[data-scope="tree-view"][data-part="branch-indicator"] {
+  display: flex;
+  align-items: center;
+  &[data-state="open"] svg {
+    transform: rotate(90deg);
+  }
 }

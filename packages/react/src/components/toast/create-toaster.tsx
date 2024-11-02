@@ -3,8 +3,7 @@ import * as toast from '@zag-js/toast'
 import type { ReactNode } from 'react'
 import type { Optional } from '../../types'
 
-export interface CreateToasterProps
-  extends Optional<Partial<toast.GroupMachineContext<ReactNode>>, 'id'> {
+export interface CreateToasterProps extends Optional<Partial<toast.GroupMachineContext>, 'id'> {
   placement: toast.Placement
 }
 
