@@ -8,13 +8,9 @@ import { fetchExamplesGroupedByCategory } from '~/lib/examples'
 
 const styles = layout()
 
-interface Props {
-  params: { component: string; framework: string; id: string }
-}
-
 const exampleGroups = await fetchExamplesGroupedByCategory()
 
-export default async function Layout(props: PropsWithChildren<Props>) {
+export default async function Layout(props: PropsWithChildren) {
   return (
     <>
       <ExamplesNavbar>

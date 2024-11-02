@@ -8,13 +8,12 @@ import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
 
 interface Props {
-  searchParams: {
-    callbackUrl?: string
-  }
+  searchParams: Promise<{ callbackUrl?: string }>
 }
 
 export default async function Page(props: Props) {
-  const redirectTo = props.searchParams.callbackUrl ?? '/'
+  const { callbackUrl } = await props.searchParams
+  const redirectTo = callbackUrl ?? '/'
 
   return (
     <Container display="flex" flex="1" alignItems="center" maxW="27rem">

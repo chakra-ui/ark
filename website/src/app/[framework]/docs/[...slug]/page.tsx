@@ -11,17 +11,19 @@ import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
 interface Props {
-  params: { framework: string; slug: string[] }
+  params: Promise<{ framework: string; slug: string[] }>
 }
 
-export default function Page(props: Props) {
-  const currentPage = getPageBySlug(props.params.slug, props.params.framework)
-  const nextPage = getNextPage(props.params.slug)
-  const prevPage = getPrevPage(props.params.slug)
+export default async function Page(props: Props) {
+  const params = await props.params
+
+  const currentPage = getPageBySlug(params.slug, params.framework)
+  const nextPage = getNextPage(params.slug)
+  const prevPage = getPrevPage(params.slug)
 
   const serverContext = getServerContext()
-  serverContext.framework = props.params.framework
-  serverContext.component = props.params.slug[1]
+  serverContext.framework = params.framework
+  serverContext.component = params.slug[1]
 
   if (currentPage) {
     return (
@@ -49,8 +51,9 @@ export default function Page(props: Props) {
   return notFound()
 }
 
-export const generateMetadata = (props: Props): Metadata => {
-  const page = getPageBySlug(props.params.slug)
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params
+  const page = getPageBySlug(params.slug)
 
   if (page) {
     return { title: page.title, description: page.description }

@@ -7,7 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const docsPages = frameworks.flatMap((framework) =>
     getSidebarGroups()
-      .flatMap((group) => group)
+      .flat()
       .map((page) => ({ url: `https://ark-ui.com/${framework}/docs/${page.slug}` })),
   )
 

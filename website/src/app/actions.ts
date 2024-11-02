@@ -4,23 +4,22 @@ import { Effect, Match, pipe } from 'effect'
 import { auth } from '~/lib/auth'
 import { prisma } from '~/lib/prisma'
 
-export const findLicenseKeysByOrderId = async (externalId: string): Promise<string | string[]> =>
+export const findLicenseKeysByOrderId = async (externalId: string): Promise<string> =>
   Effect.runPromise(
     pipe(
       Effect.tryPromise({
         try: () =>
           prisma.order.findUniqueOrThrow({
-            where: { externalId },
+            where: {
+              externalId,
+              createdAt: { gt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2) },
+            },
             include: { orderItems: { include: { licenseKey: true } } },
           }),
-        catch: (e) =>
-          Match.value(e).pipe(
-            Match.when({ code: 'P2025' }, () => new NotFoundError(externalId)),
-            Match.orElse(() => new InternalServerError()),
-          ),
+        catch: () => new Error(),
       }),
-      Effect.map((order) => order.orderItems.map((item) => item.licenseKey.key)),
-      Effect.catchAll(() => Effect.succeed([])),
+      Effect.map((order) => order.orderItems.map((item) => item.licenseKey.key)[0]),
+      Effect.catchAll(() => Effect.succeed('')),
     ),
   )
 
