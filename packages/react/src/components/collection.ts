@@ -1,10 +1,12 @@
 import {
   type CollectionItem,
   type CollectionOptions,
+  type FilePathTreeNode,
   ListCollection,
   TreeCollection,
   type TreeCollectionOptions,
   type TreeNode,
+  filePathToTree,
 } from '@zag-js/collection'
 import { ref } from '@zag-js/core'
 
@@ -19,3 +21,6 @@ export type { TreeCollection, TreeNode } from '@zag-js/collection'
 export const createTreeCollection = <T extends TreeNode>(
   options: TreeCollectionOptions<T>,
 ): TreeCollection<T> => ref(new TreeCollection(options))
+
+export const createFileTreeCollection = (paths: string[]): TreeCollection<FilePathTreeNode> =>
+  ref(filePathToTree(paths))

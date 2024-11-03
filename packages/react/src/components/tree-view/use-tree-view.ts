@@ -1,6 +1,6 @@
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import * as treeView from '@zag-js/tree-view'
-import { useId } from 'react'
+import { useEffect, useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
@@ -29,27 +29,40 @@ export interface UseTreeViewReturn<T extends TreeNode> extends treeView.Api<Prop
 export const useTreeView = <T extends TreeNode>(
   props: UseTreeViewProps<T>,
 ): UseTreeViewReturn<T> => {
-  const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { collection, ...treeViewProps } = props
+  const locale = useLocaleContext()
+  const environment = useEnvironmentContext()
 
   const initialContext: treeView.Context = {
     id: useId(),
-    dir,
-    getRootNode,
+    dir: locale.dir,
+    getRootNode: environment.getRootNode,
     selectedValue: props.defaultSelectedValue,
     expandedValue: props.defaultExpandedValue,
-    ...props,
+    collection,
+    ...treeViewProps,
   }
 
-  const context: treeView.Context = {
-    ...initialContext,
-    selectedValue: props.selectedValue,
-    expandedValue: props.expandedValue,
-    onFocusChange: useEvent(props.onFocusChange, { sync: true }),
-    onExpandedChange: useEvent(props.onExpandedChange),
-    onSelectionChange: useEvent(props.onSelectionChange),
-  }
+  const context = (() => {
+    const { collection: _, ...restProps } = initialContext
+    return {
+      ...restProps,
+      selectedValue: props.selectedValue,
+      expandedValue: props.expandedValue,
+      onFocusChange: useEvent(props.onFocusChange),
+      onExpandedChange: useEvent(props.onExpandedChange, { sync: true }),
+      onSelectionChange: useEvent(props.onSelectionChange, { sync: true }),
+    }
+  })()
 
-  const [state, send] = useMachine(treeView.machine(initialContext), { context })
+  const [state, send, service] = useMachine(treeView.machine(initialContext), {
+    context,
+  })
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    service.setContext({ collection })
+  }, [collection])
+
   return treeView.connect(state, send, normalizeProps)
 }

@@ -1,8 +1,7 @@
-import type { ReactNode } from 'react'
 import { type UseTreeViewNodeContext, useTreeViewNodeContext } from './use-tree-view-node-context'
 
 export interface TreeViewNodeContextProps {
-  children: (context: UseTreeViewNodeContext) => ReactNode
+  children: (context: UseTreeViewNodeContext) => React.ReactNode
 }
 
 export const TreeViewNodeContext = (props: TreeViewNodeContextProps) =>
