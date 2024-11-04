@@ -1,5 +1,5 @@
 import type * as select from '@zag-js/select'
-import type { CollectionItem, ListCollection } from '../select'
+import type { CollectionItem, ListCollection } from '../collection'
 
 export interface RootProps<T extends CollectionItem> {
   /**

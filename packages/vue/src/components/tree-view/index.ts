@@ -3,6 +3,7 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
+export { createTreeCollection, type TreeNode } from '../collection'
 export {
   default as TreeViewBranchContent,
   type TreeViewBranchContentBaseProps,
@@ -34,10 +35,6 @@ export {
   type TreeViewBranchProps,
 } from './tree-view-branch.vue'
 export { default as TreeViewContext, type TreeViewContextProps } from './tree-view-context.vue'
-export {
-  default as TreeViewItemContext,
-  type TreeViewItemContextProps,
-} from './tree-view-item-context.vue'
 export {
   default as TreeViewItemIndicator,
   type TreeViewItemIndicatorBaseProps,
@@ -77,6 +74,6 @@ export {
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
 export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
-export { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
+export { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context'
 
 export * as TreeView from './tree-view'

@@ -1,6 +1,5 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { createSplitProps } from '../create-split-props'
 import type { PolymorphicProps } from '../factory'
 
 export interface AccordionItemContentBaseProps extends PolymorphicProps {}
@@ -15,16 +14,17 @@ interface VisibilityProps {
   hidden?: boolean
   'data-state'?: string
 }
-
-const splitVisibilityProps = createSplitProps<VisibilityProps>()
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Collapsible } from '../..'
 import { useForwardExpose } from '../../utils'
+import { createSplitProps } from '../create-split-props'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
+
+const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
 defineProps<AccordionItemContentProps>()
 const accordion = useAccordionContext()

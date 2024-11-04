@@ -4,10 +4,11 @@ import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
+import type { TreeCollection, TreeNode } from '../collection'
 import type { RootEmits } from './tree-view.types'
 
-export interface UseTreeViewProps
-  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseTreeViewProps<T extends TreeNode>
+  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
    * The initial selected items of the tree view.
    * Use this when you do not need to control the state of the tree view.
@@ -18,14 +19,19 @@ export interface UseTreeViewProps
    * Use this when you do not need to control the state of the tree view.
    */
   defaultExpandedValue?: treeView.Context['expandedValue']
+  /**
+   * The collection of tree nodes
+   */
+  collection: TreeCollection<T>
 }
 
-export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> {}
+export interface UseTreeViewReturn<T extends TreeNode>
+  extends ComputedRef<treeView.Api<PropTypes, T>> {}
 
-export const useTreeView = (
-  props: UseTreeViewProps = {},
+export const useTreeView = <T extends TreeNode>(
+  props: UseTreeViewProps<T>,
   emit?: EmitFn<RootEmits>,
-): UseTreeViewReturn => {
+): UseTreeViewReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

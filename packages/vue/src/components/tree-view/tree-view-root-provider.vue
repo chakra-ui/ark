@@ -1,10 +1,11 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
+import type { TreeNode } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { UseTreeViewReturn } from './use-tree-view'
 
-interface RootProviderProps {
-  value: UnwrapRef<UseTreeViewReturn>
+interface RootProviderProps<T extends TreeNode> {
+  value: UnwrapRef<UseTreeViewReturn<T>>
 }
 
 export interface TreeViewRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}

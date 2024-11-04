@@ -2,9 +2,9 @@
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface TreeViewBranchIndicatorBaseProps extends PolymorphicProps {}
-export interface TreeViewBranchIndicatorProps
-  extends TreeViewBranchIndicatorBaseProps,
+export interface TreeViewBranchIndentGuideBaseProps extends PolymorphicProps {}
+export interface TreeViewBranchIndentGuideProps
+  extends TreeViewBranchIndentGuideBaseProps,
     /**
      * @vue-ignore
      */
@@ -17,7 +17,7 @@ import { ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-defineProps<TreeViewBranchIndicatorProps>()
+defineProps<TreeViewBranchIndentGuideProps>()
 
 const treeView = useTreeViewContext()
 const nodeProps = useTreeViewNodePropsContext()
@@ -26,7 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="treeView.getBranchIndicatorProps(nodeProps)" :as-child="asChild">
+  <ark.div v-bind="treeView.getBranchIndentGuideProps(nodeProps)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
