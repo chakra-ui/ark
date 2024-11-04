@@ -3,8 +3,7 @@ import { type PropTypes, normalizeProps } from '@zag-js/vue'
 import type { VNodeChild } from 'vue'
 import type { Optional } from '../../types'
 
-export interface CreateToasterProps
-  extends Optional<Partial<toast.GroupMachineContext<VNodeChild>>, 'id'> {
+export interface CreateToasterProps extends Optional<Partial<toast.GroupMachineContext>, 'id'> {
   placement: toast.Placement
 }
 
