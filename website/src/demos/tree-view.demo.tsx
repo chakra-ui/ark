@@ -1,53 +1,52 @@
-import { TreeView, type TreeViewData } from '~/components/ui/tree-view'
+'use client'
+import { createTreeCollection } from '@ark-ui/react/tree-view'
+import { TreeView } from '~/components/ui/tree-view'
 
-export const Demo = () => {
-  return <TreeView data={data} maxW="2xs" />
+interface Node {
+  id: string
+  name: string
+  children?: Node[]
 }
 
-const data: TreeViewData = {
-  label: 'Root',
-  children: [
-    {
-      value: '1',
-      name: 'Item 1',
-      children: [
-        {
-          value: '1.1',
-          name: 'Item 1.1',
-        },
-        {
-          value: '1.2',
-          name: 'Item 1.2',
-          children: [
-            {
-              value: '1.2.1',
-              name: 'Item 1.2.1',
-            },
-            {
-              value: '1.2.2',
-              name: 'Item 1.2.2',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      value: '2',
-      name: 'Item 2',
-      children: [
-        {
-          value: '2.1',
-          name: 'Item 2.1',
-        },
-        {
-          value: '2.2',
-          name: 'Item 2.2',
-        },
-      ],
-    },
-    {
-      value: '3',
-      name: 'Item 3',
-    },
-  ],
+const collection = createTreeCollection<Node>({
+  nodeToValue: (node) => node.id,
+  nodeToString: (node) => node.name,
+  rootNode: {
+    id: 'ROOT',
+    name: '',
+    children: [
+      {
+        id: 'node_modules',
+        name: 'node_modules',
+        children: [
+          { id: 'node_modules/zag-js', name: 'zag-js' },
+          { id: 'node_modules/pandacss', name: 'panda' },
+          {
+            id: 'node_modules/@types',
+            name: '@types',
+            children: [
+              { id: 'node_modules/@types/react', name: 'react' },
+              { id: 'node_modules/@types/react-dom', name: 'react-dom' },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'src/app.tsx', name: 'app.tsx' },
+          { id: 'src/index.ts', name: 'index.ts' },
+        ],
+      },
+      { id: 'panda.config', name: 'panda.config.ts' },
+      { id: 'package.json', name: 'package.json' },
+      { id: 'renovate.json', name: 'renovate.json' },
+      { id: 'readme.md', name: 'README.md' },
+    ],
+  },
+})
+
+export const Demo = () => {
+  return <TreeView collection={collection} maxW="2xs" />
 }

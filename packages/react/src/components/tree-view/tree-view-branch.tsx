@@ -1,28 +1,31 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { type ItemProps, TreeViewBranchProvider } from './use-tree-view-branch-context'
+import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
+import { Collapsible } from '../collapsible'
+import type { HTMLProps, PolymorphicProps } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
-import { TreeViewDepthProvider, useTreeViewDepthContext } from './use-tree-view-depth-context'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-export interface TreeViewBranchBaseProps extends ItemProps, PolymorphicProps {}
-export interface TreeViewBranchProps extends Assign<HTMLProps<'li'>, TreeViewBranchBaseProps> {}
+export interface TreeViewBranchBaseProps extends PolymorphicProps {}
+export interface TreeViewBranchProps extends Assign<HTMLProps<'div'>, TreeViewBranchBaseProps> {}
 
-export const TreeViewBranch = forwardRef<HTMLLIElement, TreeViewBranchProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'value'])
+export const TreeViewBranch = forwardRef<HTMLDivElement, TreeViewBranchProps>((props, ref) => {
   const treeView = useTreeViewContext()
-  const depth = useTreeViewDepthContext()
-  const branchContext = { ...itemProps, depth }
-  const mergedProps = mergeProps(treeView.getBranchProps(branchContext), localProps)
+  const nodeProps = useTreeViewNodePropsContext()
+  const renderStrategyProps = useRenderStrategyPropsContext()
+  const node = treeView.getNodeState(nodeProps)
+  const mergedProps = mergeProps(treeView.getBranchProps(nodeProps), props)
+  const branchContentProps = treeView.getBranchContentProps(nodeProps)
 
   return (
-    <TreeViewDepthProvider value={depth + 1}>
-      <TreeViewBranchProvider value={branchContext}>
-        <ark.li {...mergedProps} ref={ref} />
-      </TreeViewBranchProvider>
-    </TreeViewDepthProvider>
+    <Collapsible.Root
+      ref={ref}
+      open={node.expanded}
+      ids={{ content: branchContentProps.id }}
+      {...renderStrategyProps}
+      {...mergedProps}
+    />
   )
 })
 
