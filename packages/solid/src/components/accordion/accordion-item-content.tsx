@@ -30,6 +30,7 @@ export const AccordionItemContent = (props: AccordionItemContentProps) => {
     ])
     return ownProps
   })
-  const mergedProps = mergeProps(itemContentProps, props)
+  const mergedProps = mergeProps(() => itemContentProps(), props)
+
   return <Collapsible.Content {...mergedProps} />
 }

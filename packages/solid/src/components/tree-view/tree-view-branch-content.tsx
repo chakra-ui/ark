@@ -30,7 +30,7 @@ export const TreeViewBranchContent = (props: TreeViewBranchContentProps) => {
     ])
     return ownProps
   })
-  const mergedProps = mergeProps(() => branchContentProps, props)
+  const mergedProps = mergeProps(() => branchContentProps(), props)
 
   return <Collapsible.Content {...mergedProps} />
 }
