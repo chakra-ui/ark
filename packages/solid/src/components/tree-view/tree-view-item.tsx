@@ -1,37 +1,16 @@
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
 import type { Assign } from '../../types'
-import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewDepthContext } from './use-tree-view-depth-context'
-import { TreeViewItemProvider } from './use-tree-view-item-context'
-import {
-  TreeViewItemPropsProvider,
-  type UseTreeViewItemPropsContext,
-} from './use-tree-view-item-props-context'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-export interface TreeViewItemBaseProps
-  extends UseTreeViewItemPropsContext,
-    PolymorphicProps<'li'> {}
-export interface TreeViewItemProps extends Assign<HTMLProps<'li'>, TreeViewItemBaseProps> {}
+export interface TreeViewItemBaseProps extends PolymorphicProps<'div'> {}
+export interface TreeViewItemProps extends Assign<HTMLProps<'div'>, TreeViewItemBaseProps> {}
 
 export const TreeViewItem = (props: TreeViewItemProps) => {
-  const [_itemProps, localProps] = createSplitProps<UseTreeViewItemPropsContext>()(props, [
-    'disabled',
-    'value',
-  ])
-  const api = useTreeViewContext()
-  const depth = useTreeViewDepthContext()
-  const itemProps = mergeProps(_itemProps, { depth })
-  const itemState = createMemo(() => api().getItemState(itemProps))
-  const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
+  const treeView = useTreeViewContext()
+  const nodeProps = useTreeViewNodePropsContext()
+  const mergedProps = mergeProps(() => treeView().getItemProps(nodeProps), props)
 
-  return (
-    <TreeViewItemPropsProvider value={itemProps}>
-      <TreeViewItemProvider value={itemState}>
-        <ark.li {...mergedProps} />
-      </TreeViewItemProvider>
-    </TreeViewItemPropsProvider>
-  )
+  return <ark.div {...mergedProps} />
 }

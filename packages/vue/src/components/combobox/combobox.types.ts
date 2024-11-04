@@ -1,6 +1,5 @@
-import type { ListCollection } from '@zag-js/collection'
 import type * as combobox from '@zag-js/combobox'
-import type { CollectionItem } from '../collection'
+import type { CollectionItem, ListCollection } from '../collection'
 
 export interface RootProps<T extends CollectionItem> {
   /**
@@ -42,10 +41,6 @@ export interface RootProps<T extends CollectionItem> {
    * The associate form of the combobox.
    */
   form?: string
-  /**
-   * Function to get the display value of the selected item
-   */
-  getSelectionValue?: (details: combobox.SelectionValueDetails<T>) => string
   /**
    * The active item's id. Used to set the `aria-activedescendant` attribute
    */

@@ -36,7 +36,6 @@ const ComboboxImpl = <T extends CollectionItem>(
     'disabled',
     'disableLayer',
     'form',
-    'getSelectionValue',
     'highlightedValue',
     'id',
     'ids',

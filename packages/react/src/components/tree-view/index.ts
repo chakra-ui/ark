@@ -3,6 +3,7 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
+export { createTreeCollection, type TreeNode } from '../collection'
 export {
   TreeViewBranch,
   type TreeViewBranchBaseProps,
@@ -19,6 +20,11 @@ export {
   type TreeViewBranchControlProps,
 } from './tree-view-branch-control'
 export {
+  TreeViewBranchIndentGuide,
+  type TreeViewBranchIndentGuideBaseProps,
+  type TreeViewBranchIndentGuideProps,
+} from './tree-view-branch-indent-guide'
+export {
   TreeViewBranchIndicator,
   type TreeViewBranchIndicatorBaseProps,
   type TreeViewBranchIndicatorProps,
@@ -34,18 +40,10 @@ export {
   type TreeViewBranchTriggerProps,
 } from './tree-view-branch-trigger'
 export {
-  TreeViewContext,
-  type TreeViewContextProps,
-} from './tree-view-context'
-export {
   TreeViewItem,
   type TreeViewItemBaseProps,
   type TreeViewItemProps,
 } from './tree-view-item'
-export {
-  TreeViewItemContext,
-  type TreeViewItemContextProps,
-} from './tree-view-item-context'
 export {
   TreeViewItemIndicator,
   type TreeViewItemIndicatorBaseProps,
@@ -61,6 +59,15 @@ export {
   type TreeViewLabelBaseProps,
   type TreeViewLabelProps,
 } from './tree-view-label'
+export {
+  TreeViewNodeContext,
+  type TreeViewNodeContextProps,
+} from './tree-view-node-context'
+export {
+  TreeViewNodeProvider,
+  type TreeViewNodeProviderBaseProps,
+  type TreeViewNodeProviderProps,
+} from './tree-view-node-provider'
 export {
   TreeViewRoot,
   type TreeViewRootBaseProps,
@@ -78,7 +85,5 @@ export {
 } from './tree-view-tree'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
-export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
-export { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
 
 export * as TreeView from './tree-view'

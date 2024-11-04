@@ -12,21 +12,21 @@ export interface TreeViewBranchTextProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useTreeViewBranchContext } from './use-tree-view-branch-context'
-import { useTreeViewContext } from './use-tree-view-context'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { useTreeViewContext } from './use-tree-view-context'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
 defineProps<TreeViewBranchTextProps>()
 
 const treeView = useTreeViewContext()
-const branchProps = useTreeViewBranchContext()
+const nodeProps = useTreeViewNodePropsContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="treeView.getBranchTextProps(branchProps)" :as-child="asChild">
+  <ark.span v-bind="treeView.getBranchTextProps(nodeProps)" :as-child="asChild">
     <slot />
   </ark.span>
 </template>

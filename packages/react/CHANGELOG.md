@@ -4,14 +4,28 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
-## [Unreleased]
+# [Unreleased]
+
+## Changed
+
+- **TreeView**: Redesigned using the new tree collection for improved rendering and logic
+  management. See the [TreeView documentation](https://ark-ui.com/docs/react/components/tree-view)
+  for details.
+
+## Fixed
+
+- **Dialog**: Fixed an issue where body styles weren't properly restored when `preventScroll` was
+  enabled.
+- **Toast**: Corrected type definitions in the `createToaster` function.
 
 ## [4.2.0] - 2024-10-26
 
 ### Added
 
-- **Slider**: Introduced `Slider.DraggingIndicator` for displaying an indicator when dragging a thumb.
-- **Field**: Added `Field.RequiredIndicator` to show a required indicator (e.g., an asterisk) when the `required` prop is set.
+- **Slider**: Introduced `Slider.DraggingIndicator` for displaying an indicator when dragging a
+  thumb.
+- **Field**: Added `Field.RequiredIndicator` to show a required indicator (e.g., an asterisk) when
+  the `required` prop is set.
 
 ```tsx
 <Field.Root required>
@@ -26,17 +40,24 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **TagsInput**: Resolved an issue where `api.addTag(...)` was not functioning correctly.
-- **RatingGroup**: Fixed a bug where both the rating group and rating item received focus when `readOnly` was set to `true`.
-- **Combobox**: Corrected behavior where `getSelectionValue` was called multiple times; it now triggers only when a selection is made.
-- **HoverCard**: Removed `preventDefault` calls on the `touchstart` event to avoid browser error logs.
-- **Popover**: Fixed a race condition in iOS Safari where switching between popovers caused them to close unexpectedly.
-- **Presence**: Addressed an issue where elements using the presence machine did not exit the unmounting state if closed with a delay while switching tabs.
+- **RatingGroup**: Fixed a bug where both the rating group and rating item received focus when
+  `readOnly` was set to `true`.
+- **Combobox**: Corrected behavior where `getSelectionValue` was called multiple times; it now
+  triggers only when a selection is made.
+- **HoverCard**: Removed `preventDefault` calls on the `touchstart` event to avoid browser error
+  logs.
+- **Popover**: Fixed a race condition in iOS Safari where switching between popovers caused them to
+  close unexpectedly.
+- **Presence**: Addressed an issue where elements using the presence machine did not exit the
+  unmounting state if closed with a delay while switching tabs.
 
 ### Changed
 
 - **Editable**:
-  - Added `data-autoresize` attribute to both editable and preview elements when `autoResize` is enabled.
-  - Removed the default `all: unset` style from the input when `autoResize` is enabled, allowing for user-defined CSS.
+  - Added `data-autoresize` attribute to both editable and preview elements when `autoResize` is
+    enabled.
+  - Removed the default `all: unset` style from the input when `autoResize` is enabled, allowing for
+    user-defined CSS.
 
 ## [4.1.2] - 2024-10-15
 

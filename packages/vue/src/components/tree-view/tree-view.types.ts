@@ -1,6 +1,11 @@
 import type * as treeView from '@zag-js/tree-view'
+import type { TreeCollection, TreeNode } from '../collection'
 
-export interface RootProps {
+export interface RootProps<T extends TreeNode> {
+  /**
+   * The collection of tree nodes
+   */
+  collection: TreeCollection<T>
   /**
    * The initial expanded items of the tree view.
    * Use this when you do not need to control the state of the tree view.
@@ -31,7 +36,7 @@ export interface RootProps {
   /**
    * The ids of the tree elements. Useful for composition.
    */
-  ids?: Partial<{ root: string; tree: string; label: string }>
+  ids?: Partial<{ root: string; tree: string; label: string; node(value: string): string }>
   /**
    * The id of the selected nodes
    */
