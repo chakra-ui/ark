@@ -14,15 +14,15 @@ export {
   type TreeViewBranchControlProps as BranchControlProps,
 } from './tree-view-branch-control.vue'
 export {
-  default as BranchIndicator,
-  type TreeViewBranchIndicatorBaseProps as BranchIndicatorBaseProps,
-  type TreeViewBranchIndicatorProps as BranchIndicatorProps,
-} from './tree-view-branch-indicator.vue'
-export {
   default as BranchIndentGuide,
   type TreeViewBranchIndentGuideBaseProps as BranchIndentGuideBaseProps,
   type TreeViewBranchIndentGuideProps as BranchIndentGuideProps,
 } from './tree-view-branch-indent-guide.vue'
+export {
+  default as BranchIndicator,
+  type TreeViewBranchIndicatorBaseProps as BranchIndicatorBaseProps,
+  type TreeViewBranchIndicatorProps as BranchIndicatorProps,
+} from './tree-view-branch-indicator.vue'
 export {
   default as BranchText,
   type TreeViewBranchTextBaseProps as BranchTextBaseProps,
@@ -63,6 +63,15 @@ export {
   type TreeViewLabelProps as LabelProps,
 } from './tree-view-label.vue'
 export {
+  default as NodeContext,
+  type TreeViewNodeContextProps as NodeContextProps,
+} from './tree-view-node-context.vue'
+export {
+  default as NodeProvider,
+  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
+  type TreeViewNodeProviderProps as NodeProviderProps,
+} from './tree-view-node-provider.vue'
+export {
   default as RootProvider,
   type TreeViewRootProviderBaseProps as RootProviderBaseProps,
   type TreeViewRootProviderProps as RootProviderProps,
@@ -78,8 +87,3 @@ export {
   type TreeViewTreeBaseProps as TreeBaseProps,
   type TreeViewTreeProps as TreeProps,
 } from './tree-view-tree.vue'
-export {
-  default as NodeProvider,
-  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
-  type TreeViewNodeProviderProps as NodeProviderProps,
-} from './tree-view-node-provider.vue'
