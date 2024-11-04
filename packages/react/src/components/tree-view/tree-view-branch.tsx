@@ -19,10 +19,17 @@ export const TreeViewBranch = forwardRef<HTMLDivElement, TreeViewBranchProps>((p
   const renderStrategy = useRenderStrategyPropsContext()
   const node = treeView.getNodeState(nodeProps)
   const mergedProps = mergeProps(treeView.getBranchProps(nodeProps), props)
+  const branchContentProps = treeView.getBranchContentProps(nodeProps)
 
   return (
     <TreeViewNodePropsProvider value={nodeProps}>
-      <Collapsible.Root ref={ref} open={node.expanded} {...renderStrategy} {...mergedProps} />
+      <Collapsible.Root
+        ref={ref}
+        open={node.expanded}
+        ids={{ content: branchContentProps.id }}
+        {...renderStrategy}
+        {...mergedProps}
+      />
     </TreeViewNodePropsProvider>
   )
 })

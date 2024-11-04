@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
-import { useTreeViewItemPropsContext } from './use-tree-view-item-props-context'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
 export interface TreeViewItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
 export interface TreeViewItemIndicatorProps
@@ -9,9 +9,9 @@ export interface TreeViewItemIndicatorProps
     TreeViewItemIndicatorBaseProps {}
 
 export const TreeViewItemIndicator = (props: TreeViewItemIndicatorProps) => {
-  const api = useTreeViewContext()
-  const itemProps = useTreeViewItemPropsContext()
-  const mergedProps = mergeProps(() => api().getItemIndicatorProps(itemProps), props)
+  const treeView = useTreeViewContext()
+  const nodeProps = useTreeViewNodePropsContext()
+  const mergedProps = mergeProps(() => treeView().getItemIndicatorProps(nodeProps), props)
 
   return <ark.div {...mergedProps} />
 }

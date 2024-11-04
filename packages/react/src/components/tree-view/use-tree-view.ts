@@ -19,7 +19,7 @@ export interface UseTreeViewProps<T extends TreeNode>
    */
   defaultExpandedValue?: treeView.Context['expandedValue']
   /**
-   * The collection of items
+   * The collection of tree nodes
    */
   collection: TreeCollection<T>
 }

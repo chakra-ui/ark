@@ -52,7 +52,6 @@ export const RootProvider = () => {
   return (
     <TreeView.RootProvider value={treeView}>
       <TreeView.Label>Tree</TreeView.Label>
-      <div>Selected: {treeView.selectedValue.length}</div>
       <TreeView.Tree>
         {collection.rootNode.children?.map((node, index) => (
           <TreeNode key={node.id} node={node} indexPath={[index]} />

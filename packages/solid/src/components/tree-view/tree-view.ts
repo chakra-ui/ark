@@ -5,74 +5,80 @@ export type {
 } from '@zag-js/tree-view'
 export {
   TreeViewBranch as Branch,
-  type TreeViewBranchProps as BranchProps,
   type TreeViewBranchBaseProps as BranchBaseProps,
+  type TreeViewBranchProps as BranchProps,
 } from './tree-view-branch'
 export {
   TreeViewBranchContent as BranchContent,
-  type TreeViewBranchContentProps as BranchContentProps,
   type TreeViewBranchContentBaseProps as BranchContentBaseProps,
+  type TreeViewBranchContentProps as BranchContentProps,
 } from './tree-view-branch-content'
 export {
   TreeViewBranchControl as BranchControl,
-  type TreeViewBranchControlProps as BranchControlProps,
   type TreeViewBranchControlBaseProps as BranchControlBaseProps,
+  type TreeViewBranchControlProps as BranchControlProps,
 } from './tree-view-branch-control'
 export {
+  TreeViewBranchIndentGuide as BranchIndentGuide,
+  type TreeViewBranchIndentGuideBaseProps as BranchIndentGuideBaseProps,
+  type TreeViewBranchIndentGuideProps as BranchIndentGuideProps,
+} from './tree-view-branch-indent-guide'
+export {
   TreeViewBranchIndicator as BranchIndicator,
-  type TreeViewBranchIndicatorProps as BranchIndicatorProps,
   type TreeViewBranchIndicatorBaseProps as BranchIndicatorBaseProps,
+  type TreeViewBranchIndicatorProps as BranchIndicatorProps,
 } from './tree-view-branch-indicator'
 export {
   TreeViewBranchText as BranchText,
-  type TreeViewBranchTextProps as BranchTextProps,
   type TreeViewBranchTextBaseProps as BranchTextBaseProps,
+  type TreeViewBranchTextProps as BranchTextProps,
 } from './tree-view-branch-text'
 export {
   TreeViewBranchTrigger as BranchTrigger,
-  type TreeViewBranchTriggerProps as BranchTriggerProps,
   type TreeViewBranchTriggerBaseProps as BranchTriggerBaseProps,
+  type TreeViewBranchTriggerProps as BranchTriggerProps,
 } from './tree-view-branch-trigger'
 export {
-  TreeViewContext as Context,
-  type TreeViewContextProps as ContextProps,
-} from './tree-view-context'
-export {
   TreeViewItem as Item,
-  type TreeViewItemProps as ItemProps,
   type TreeViewItemBaseProps as ItemBaseProps,
+  type TreeViewItemProps as ItemProps,
 } from './tree-view-item'
 export {
-  TreeViewItemContext as ItemContext,
-  type TreeViewItemContextProps as ItemContextProps,
-} from './tree-view-item-context'
-export {
   TreeViewItemIndicator as ItemIndicator,
-  type TreeViewItemIndicatorProps as ItemIndicatorProps,
   type TreeViewItemIndicatorBaseProps as ItemIndicatorBaseProps,
+  type TreeViewItemIndicatorProps as ItemIndicatorProps,
 } from './tree-view-item-indicator'
 export {
   TreeViewItemText as ItemText,
-  type TreeViewItemTextProps as ItemTextProps,
   type TreeViewItemTextBaseProps as ItemTextBaseProps,
+  type TreeViewItemTextProps as ItemTextProps,
 } from './tree-view-item-text'
 export {
   TreeViewLabel as Label,
-  type TreeViewLabelProps as LabelProps,
   type TreeViewLabelBaseProps as LabelBaseProps,
+  type TreeViewLabelProps as LabelProps,
 } from './tree-view-label'
 export {
+  TreeViewNodeContext as NodeContext,
+  type TreeViewNodeContextProps as NodeContextProps,
+} from './tree-view-node-context'
+export {
+  TreeViewNodeProvider as NodeProvider,
+  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
+  type TreeViewNodeProviderProps as NodeProviderProps,
+} from './tree-view-node-provider'
+export {
   TreeViewRoot as Root,
-  type TreeViewRootProps as RootProps,
   type TreeViewRootBaseProps as RootBaseProps,
+  type TreeViewRootProps as RootProps,
 } from './tree-view-root'
 export {
   TreeViewRootProvider as RootProvider,
-  type TreeViewRootProviderProps as RootProviderProps,
   type TreeViewRootProviderBaseProps as RootProviderBaseProps,
+  type TreeViewRootProviderProps as RootProviderProps,
 } from './tree-view-root-provider'
 export {
   TreeViewTree as Tree,
-  type TreeViewTreeProps as TreeProps,
   type TreeViewTreeBaseProps as TreeBaseProps,
+  type TreeViewTreeProps as TreeProps,
 } from './tree-view-tree'

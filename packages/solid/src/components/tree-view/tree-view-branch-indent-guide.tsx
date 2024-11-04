@@ -3,15 +3,15 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-export interface TreeViewBranchControlBaseProps extends PolymorphicProps<'div'> {}
-export interface TreeViewBranchControlProps
+export interface TreeViewBranchIndentGuideBaseProps extends PolymorphicProps<'div'> {}
+export interface TreeViewBranchIndentGuideProps
   extends HTMLProps<'div'>,
-    TreeViewBranchControlBaseProps {}
+    TreeViewBranchIndentGuideBaseProps {}
 
-export const TreeViewBranchControl = (props: TreeViewBranchControlProps) => {
+export const TreeViewBranchIndentGuide = (props: TreeViewBranchIndentGuideProps) => {
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
-  const mergedProps = mergeProps(() => treeView().getBranchControlProps(nodeProps), props)
+  const mergedProps = mergeProps(() => treeView().getBranchIndentGuideProps(nodeProps), props)
 
   return <ark.div {...mergedProps} />
 }
