@@ -6,10 +6,18 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Fixed
+## Changed
 
-- **FileUploadItemPreviewImage**: Fixed an issue where the image preview does not display preview
-  image when the file is changed.
+- **TreeView**: Redesigned using the new tree collection for improved rendering and logic
+  management. See the [TreeView documentation](https://ark-ui.com/docs/solid/components/tree-view) for
+  details.
+
+## Fixed
+
+- **Dialog**: Fixed an issue where body styles weren't properly restored when `preventScroll` was
+  enabled.
+- **Toast**: Corrected type definitions in the `createToaster` function.
+- **FileUpload**: Fixed an issue where image previews weren't updating when files were changed.
 
 ## [4.3.0] - 2024-10-26
 
