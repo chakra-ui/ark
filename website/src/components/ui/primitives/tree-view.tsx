@@ -1,6 +1,6 @@
 'use client'
 import type { Assign } from '@ark-ui/react'
-import { TreeView } from '@ark-ui/react/tree-view'
+import { type TreeNode, TreeView } from '@ark-ui/react/tree-view'
 import { type TreeViewVariantProps, treeView } from 'styled-system/recipes'
 import type { ComponentProps, HTMLStyledProps } from 'styled-system/types'
 import { createStyleContext } from '~/lib/create-style-context'
@@ -10,19 +10,28 @@ const { withProvider, withContext } = createStyleContext(treeView)
 export type RootProviderProps = ComponentProps<typeof RootProvider>
 export const RootProvider = withProvider<
   HTMLDivElement,
-  Assign<Assign<HTMLStyledProps<'div'>, TreeView.RootProviderBaseProps>, TreeViewVariantProps>
+  Assign<
+    Assign<HTMLStyledProps<'div'>, TreeView.RootProviderBaseProps<TreeNode>>,
+    TreeViewVariantProps
+  >
 >(TreeView.RootProvider, 'root')
 
 export type RootProps = ComponentProps<typeof Root>
 export const Root = withProvider<
   HTMLDivElement,
-  Assign<Assign<HTMLStyledProps<'div'>, TreeView.RootBaseProps>, TreeViewVariantProps>
+  Assign<Assign<HTMLStyledProps<'div'>, TreeView.RootBaseProps<TreeNode>>, TreeViewVariantProps>
 >(TreeView.Root, 'root')
 
 export const BranchContent = withContext<
-  HTMLUListElement,
-  Assign<HTMLStyledProps<'ul'>, TreeView.BranchContentBaseProps>
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, TreeView.BranchContentBaseProps>
 >(TreeView.BranchContent, 'branchContent')
+
+export const BranchIndentGuide = withContext<
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, TreeView.BranchIndentGuideBaseProps>
+  // @ts-expect-error
+>(TreeView.BranchIndentGuide, 'branchIndentGuide')
 
 export const BranchControl = withContext<
   HTMLDivElement,
@@ -35,8 +44,8 @@ export const BranchIndicator = withContext<
 >(TreeView.BranchIndicator, 'branchIndicator')
 
 export const Branch = withContext<
-  HTMLLIElement,
-  Assign<HTMLStyledProps<'li'>, TreeView.BranchBaseProps>
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, TreeView.BranchBaseProps>
 >(TreeView.Branch, 'branch')
 
 export const BranchText = withContext<
@@ -55,8 +64,8 @@ export const ItemIndicator = withContext<
 >(TreeView.ItemIndicator, 'itemIndicator')
 
 export const Item = withContext<
-  HTMLLIElement,
-  Assign<HTMLStyledProps<'li'>, TreeView.ItemBaseProps>
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, TreeView.ItemBaseProps>
 >(TreeView.Item, 'item')
 
 export const ItemText = withContext<
@@ -70,8 +79,11 @@ export const Label = withContext<
 >(TreeView.Label, 'label')
 
 export const Tree = withContext<
-  HTMLUListElement,
-  Assign<HTMLStyledProps<'ul'>, TreeView.TreeBaseProps>
+  HTMLDivElement,
+  Assign<HTMLStyledProps<'div'>, TreeView.TreeBaseProps>
 >(TreeView.Tree, 'tree')
 
 export const Context = TreeView.Context
+
+export type NodeProviderProps = TreeView.NodeProviderProps<TreeNode>
+export const NodeProvider = TreeView.NodeProvider
