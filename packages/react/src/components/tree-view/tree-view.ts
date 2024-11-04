@@ -63,6 +63,11 @@ export {
   type TreeViewNodeContextProps as NodeContextProps,
 } from './tree-view-node-context'
 export {
+  TreeViewNodeProvider as NodeProvider,
+  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
+  type TreeViewNodeProviderProps as NodeProviderProps,
+} from './tree-view-node-provider'
+export {
   TreeViewRoot as Root,
   type TreeViewRootBaseProps as RootBaseProps,
   type TreeViewRootProps as RootProps,
@@ -77,8 +82,3 @@ export {
   type TreeViewTreeBaseProps as TreeBaseProps,
   type TreeViewTreeProps as TreeProps,
 } from './tree-view-tree'
-export {
-  TreeViewNodeProvider as NodeProvider,
-  type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,
-  type TreeViewNodeProviderProps as NodeProviderProps,
-} from './tree-view-node-provider'
