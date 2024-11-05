@@ -11,6 +11,7 @@ description: All notable changes will be documented in this file.
 - **TreeView**: Redesigned using the new tree collection for improved rendering and logic
   management. See the [TreeView documentation](https://ark-ui.com/docs/solid/components/tree-view) for
   details.
+- **QrCode, SignaturePad, Timer**: Promoted from preview to stable release.
 
 ## Fixed
 
