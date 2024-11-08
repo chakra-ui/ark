@@ -25,7 +25,6 @@ import { createSplitProps } from '../create-split-props'
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
-
 defineProps<TreeViewBranchContentProps>()
 const treeView = useTreeViewContext()
 const ndoeProps = useTreeViewNodePropsContext()

@@ -23,7 +23,7 @@ export interface TreeViewRootProviderProps<T extends TreeNode>
 
 <script setup lang="ts" generic="T extends TreeNode">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose, } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { TreeViewProvider } from './use-tree-view-context'
 

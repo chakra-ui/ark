@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## Added
+
+- **Field**: Added `autoresize` prop to `Field.Textarea` for auto-resizing the textarea based on
+  content.
+
 ## Changed
 
 - **TreeView**: Redesigned using the new tree collection for improved rendering and logic

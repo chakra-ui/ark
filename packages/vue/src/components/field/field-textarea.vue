@@ -2,7 +2,13 @@
 import type { TextareaHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface FieldTextareaBaseProps extends PolymorphicProps {}
+export interface FieldTextareaBaseProps extends PolymorphicProps {
+  /**
+   * Whether the textarea should autoresize
+   * @default false
+   */
+  autoresize?: boolean
+}
 export interface FieldTextareaProps
   extends FieldTextareaBaseProps,
     /**
@@ -14,24 +20,26 @@ export interface FieldTextareaProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFieldContext } from './use-field-context'
+import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { useForwardExpose } from '../../utils'
+import { useFieldContext } from './use-field-context'
 
-defineProps<FieldTextareaProps>()
+const props = defineProps<FieldTextareaProps>()
 const field = useFieldContext()
 const emit = defineEmits(['update:modelValue'])
 
 useForwardExpose()
 </script>
 
+<!-- TODO use ark.textarea -->
 <template>
-  <ark.textarea
+  <textarea
+    :ref="autoresizeTextarea"
     v-bind="field.getTextareaProps()"
     :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
-    :as-child
+    :style="props.autoresize ? { resize: 'none', overflow: 'hidden' } : undefined"
   >
     <slot />
-  </ark.textarea>
+  </textarea>
 </template>
