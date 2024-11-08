@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "22.8.7",
+    "@types/node": "22.9.0",
     "@types/voca": "1.4.6",
     "find-packages": "10.0.4",
     "find-up": "7.0.0",
