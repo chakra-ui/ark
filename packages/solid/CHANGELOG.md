@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.4.0] - 2024-11-08
+
 ## Added
 
 - **Field**: Added `autoresize` prop to `Field.Textarea` for auto-resizing the textarea based on
