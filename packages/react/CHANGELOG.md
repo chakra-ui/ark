@@ -4,21 +4,21 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
-# [Unreleased]
+## [Unreleased]
 
-## Added
+### Added
 
 - **Field**: Added `autoresize` prop to `Field.Textarea` for auto-resizing the textarea based on
   content.
 
-## Changed
+### Changed
 
 - **TreeView**: Redesigned using the new tree collection for improved rendering and logic
   management. See the [TreeView documentation](https://ark-ui.com/docs/react/components/tree-view)
   for details.
 - **QrCode, SignaturePad, Timer**: Promoted from preview to stable release.
 
-## Fixed
+### Fixed
 
 - **Dialog**: Fixed an issue where body styles weren't properly restored when `preventScroll` was
   enabled.
