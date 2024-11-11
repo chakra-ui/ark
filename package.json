@@ -13,7 +13,6 @@
     "lint": "turbo run lint",
     "test": "turbo run test:ci",
     "typecheck": "turbo run typecheck",
-    "anatomy": "bun run --cwd packages/anatomy",
     "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",
     "solid": "bun run --cwd packages/solid",

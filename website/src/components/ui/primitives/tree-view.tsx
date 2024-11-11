@@ -1,7 +1,6 @@
 'use client'
-import { treeViewAnatomy } from '@ark-ui/anatomy'
 import type { Assign } from '@ark-ui/react'
-import { type TreeNode, TreeView } from '@ark-ui/react/tree-view'
+import { type TreeNode, TreeView, treeViewAnatomy } from '@ark-ui/react/tree-view'
 import { sva } from 'styled-system/css'
 import type { TreeViewVariantProps } from 'styled-system/recipes'
 import type { ComponentProps, HTMLStyledProps } from 'styled-system/types'

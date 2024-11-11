@@ -10,8 +10,9 @@ function generateConfig(jsx: boolean): Options {
     dts: !jsx,
     entry: [
       'src/index.tsx',
-      'src/components/factory.tsx',
+      'src/components/anatomy.ts',
       'src/components/collection.ts',
+      'src/components/factory.tsx',
       'src/**/*/index.tsx',
     ],
     outDir: 'dist/',

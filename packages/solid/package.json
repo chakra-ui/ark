@@ -63,6 +63,12 @@
       "solid": "./dist/index.jsx",
       "default": "./dist/index.js"
     },
+    "./anatomy": {
+      "source": "./src/components/anatomy.ts",
+      "types": "./dist/components/anatomy.d.ts",
+      "solid": "./dist/components/anatomy.jsx",
+      "default": "./dist/components/anatomy.js"
+    },
     "./collection": {
       "source": "./src/components/collection.ts",
       "types": "./dist/components/collection.d.ts",
@@ -108,6 +114,7 @@
   "clean-package": {
     "remove": [
       "exports.\\..source",
+      "exports.\\./anatomy.source",
       "exports.\\./collection.source",
       "exports.\\./factory.source",
       "exports.\\./environment.source",

@@ -70,6 +70,15 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./anatomy": {
+      "source": "./src/components/anatomy.ts",
+      "import": {
+        "types": "./dist/components/anatomy.d.ts"
+      },
+      "require": {
+        "types": "./dist/components/anatomy.d.cts"
+      }
+    },
     "./collection": {
       "source": "./src/components/collection.ts",
       "import": {
@@ -140,6 +149,7 @@
   "clean-package": {
     "remove": [
       "exports.\\..source",
+      "exports.\\./anatomy.source",
       "exports.\\./collection.source",
       "exports.\\./factory.source",
       "exports.\\./environment.source",

@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Exported `createAnatomy` utility for defining custom component anatomy. Now available via `import { createAnatomy } from '@ark-ui/react/anatomy'`.
+
 ### Fixed
 
 - **Combobox**: Resolved an timing issue with the `onValueChange` callback.
