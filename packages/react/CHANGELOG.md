@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Combobox**: Resolved an timing issue with the `onValueChange` callback.
+
 ## [4.3.0] - 2024-11-08
 
 ### Added

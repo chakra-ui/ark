@@ -63,7 +63,7 @@ export const useCombobox = <T extends CollectionItem>(
     return {
       ...restProps,
       value: props.value,
-      onValueChange: useEvent(props.onValueChange, { sync: true }),
+      onValueChange: useEvent(props.onValueChange),
       onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
       onHighlightChange: useEvent(props.onHighlightChange),
       onOpenChange: useEvent(props.onOpenChange),
