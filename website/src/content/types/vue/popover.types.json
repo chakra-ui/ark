@@ -135,7 +135,7 @@
         "description": "The ids of the elements in the popover. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement",
+        "type": "() => HTMLElement | null",
         "isRequired": false,
         "description": "The element to focus on when the popover is opened."
       },
@@ -157,7 +157,7 @@
         "description": "Whether the popover is open"
       },
       "persistentElements": {
-        "type": "(() => Element)[]",
+        "type": "(() => Element | null)[]",
         "isRequired": false,
         "description": "Returns the persistent elements that:\n- should not have pointer-events disabled\n- should not trigger the dismiss event"
       },

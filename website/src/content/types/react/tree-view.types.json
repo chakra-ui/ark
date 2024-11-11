@@ -7,9 +7,19 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLUListElement"
+    "element": "HTMLDivElement"
   },
   "BranchControl": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "BranchIndentGuide": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -31,23 +41,13 @@
   },
   "Branch": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The id of the item or branch"
-      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the item or branch is disabled"
       }
     },
-    "element": "HTMLLIElement"
+    "element": "HTMLDivElement"
   },
   "BranchText": {
     "props": {
@@ -81,23 +81,13 @@
   },
   "Item": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The id of the item or branch"
-      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the item or branch is disabled"
       }
     },
-    "element": "HTMLLIElement"
+    "element": "HTMLDivElement"
   },
   "ItemText": {
     "props": {
@@ -119,8 +109,23 @@
     },
     "element": "HTMLLabelElement"
   },
+  "NodeProvider": {
+    "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": true,
+        "description": "The index path of the tree node"
+      },
+      "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
+    }
+  },
   "Root": {
     "props": {
+      "collection": {
+        "type": "TreeCollection<T>",
+        "isRequired": true,
+        "description": "The collection of tree nodes"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -153,9 +158,15 @@
         "description": "The id of the focused node"
       },
       "ids": {
-        "type": "Partial<{ root: string; tree: string; label: string }>",
+        "type": "Partial<{\n  root: string\n  tree: string\n  label: string\n  node(value: string): string\n}>",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
       },
       "onExpandedChange": {
         "type": "(details: ExpandedChangeDetails) => void",
@@ -188,20 +199,36 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the tree supports typeahead search"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
       }
-    },
-    "element": "HTMLDivElement"
+    }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTreeViewReturn", "isRequired": true },
+      "value": { "type": "UseTreeViewReturn<T>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
       }
-    },
-    "element": "HTMLDivElement"
+    }
   },
   "Tree": {
     "props": {
@@ -211,6 +238,6 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLUListElement"
+    "element": "HTMLDivElement"
   }
 }

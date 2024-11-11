@@ -171,11 +171,6 @@
         "isRequired": false,
         "description": "The associate form of the combobox."
       },
-      "getSelectionValue": {
-        "type": "(details: SelectionValueDetails<T>) => string",
-        "isRequired": false,
-        "description": "Function to get the display value of the selected item"
-      },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,

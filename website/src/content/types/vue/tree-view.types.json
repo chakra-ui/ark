@@ -17,6 +17,15 @@
       }
     }
   },
+  "BranchIndentGuide": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "BranchIndicator": {
     "props": {
       "asChild": {
@@ -28,20 +37,10 @@
   },
   "Branch": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The id of the item or branch"
-      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the item or branch is disabled"
       }
     }
   },
@@ -74,20 +73,10 @@
   },
   "Item": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The id of the item or branch"
-      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the item or branch is disabled"
       }
     }
   },
@@ -109,28 +98,23 @@
       }
     }
   },
-  "Root": {
-    "emits": {
-      "expandedChange": {
-        "type": "[details: ExpandedChangeDetails]",
-        "isRequired": true,
-        "description": "Called when the tree is opened or closed"
-      },
-      "focusChange": {
-        "type": "[details: FocusChangeDetails]",
-        "isRequired": true,
-        "description": "Called when the focused node changes"
-      },
-      "selectionChange": {
-        "type": "[details: SelectionChangeDetails]",
-        "isRequired": true,
-        "description": "Called when the selection changes"
-      },
-      "update:expandedValue": { "type": "[value: string[]]", "isRequired": true },
-      "update:focusedValue": { "type": "[value: string | null]", "isRequired": true },
-      "update:selectedValue": { "type": "[value: string[]]", "isRequired": true }
-    },
+  "NodeProvider": {
     "props": {
+      "indexPath": {
+        "type": "number[]",
+        "isRequired": true,
+        "description": "The index path of the tree node"
+      },
+      "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
+    }
+  },
+  "Root": {
+    "props": {
+      "collection": {
+        "type": "TreeCollection<T>",
+        "isRequired": true,
+        "description": "The collection of tree nodes"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -168,9 +152,15 @@
         "description": "The unique identifier of the machine."
       },
       "ids": {
-        "type": "Partial<{ root: string; tree: string; label: string }>",
+        "type": "Partial<{\n  root: string\n  tree: string\n  label: string\n  node(value: string): string\n}>",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
       },
       "selectedValue": {
         "type": "string[]",
@@ -188,16 +178,34 @@
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the tree supports typeahead search"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "MachineApi<PropTypes, T>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
       }
     }
   },

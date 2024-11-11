@@ -158,7 +158,7 @@
         "description": "Whether the input should be auto-focused"
       },
       "blurBehavior": {
-        "type": "'clear' | 'add'",
+        "type": "'add' | 'clear'",
         "isRequired": false,
         "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"clear\"`: clear the input value"
       },

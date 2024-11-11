@@ -312,7 +312,7 @@
   },
   "TableCell": {
     "props": {
-      "value": { "type": "number | DateValue", "isRequired": true },
+      "value": { "type": "Reactive<number | DateValue>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
