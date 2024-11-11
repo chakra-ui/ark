@@ -8,53 +8,9 @@
 
 ## What is Ark UI?
 
-Ark UI is a headless, open-source UI library with over 30+ components designed for building
+Ark UI is a headless, open-source UI library with over45+ components designed for building
 reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering
 dedicated packages for each supported framework.
-
-## Components
-
-|                                                                                   | React | Solid | Svelte | Vue |
-| --------------------------------------------------------------------------------- | ----- | ----- | ------ | --- |
-| [Accordion](https://ark-ui.com/react/docs/components/accordion)                   | ✓     | ✓     |        | ✓   |
-| [Avatar](https://ark-ui.com/react/docs/components/avatar)                         | ✓     | ✓     |        | ✓   |
-| [Carousel](https://ark-ui.com/react/docs/components/carousel)                     | ✓     | ✓     |        | ✓   |
-| [Checkbox](https://ark-ui.com/react/docs/components/checkbox)                     | ✓     | ✓     |        | ✓   |
-| [Clipboard](https://ark-ui.com/react/docs/components/clipboard)                   | ✓     | ✓     |        | ✓   |
-| [Collapsible](https://ark-ui.com/react/docs/components/collapsible)               | ✓     | ✓     |        | ✓   |
-| [Color Picker](https://ark-ui.com/react/docs/components/color-picker)             | ✓     | ✓     |        | ✓   |
-| [Combobox](https://ark-ui.com/react/docs/components/combobox)                     | ✓     | ✓     |        | ✓   |
-| [Date Picker](https://ark-ui.com/react/docs/components/date-picker)               | ✓     | ✓     |        | ✓   |
-| [Dialog](https://ark-ui.com/react/docs/components/dialog)                         | ✓     | ✓     |        | ✓   |
-| [Editable](https://ark-ui.com/react/docs/components/editable)                     | ✓     | ✓     |        | ✓   |
-| [Field](https://ark-ui.com/react/docs/components/field)                           | ✓     | ✓     |        | ✓   |
-| [Fieldset](https://ark-ui.com/react/docs/components/fieldset)                     | ✓     | ✓     |        | ✓   |
-| [File Upload](https://ark-ui.com/react/docs/components/file-upload)               | ✓     | ✓     |        | ✓   |
-| [Hover Card](https://ark-ui.com/react/docs/components/hover-card)                 | ✓     | ✓     |        | ✓   |
-| [Menu](https://ark-ui.com/react/docs/components/menu)                             | ✓     | ✓     |        | ✓   |
-| [Number Input](https://ark-ui.com/react/docs/components/number-input)             | ✓     | ✓     |        | ✓   |
-| [Pagination](https://ark-ui.com/react/docs/components/pagination)                 | ✓     | ✓     |        | ✓   |
-| [Pin Input](https://ark-ui.com/react/docs/components/pin-input)                   | ✓     | ✓     |        | ✓   |
-| [Popover](https://ark-ui.com/react/docs/components/popover)                       | ✓     | ✓     |        | ✓   |
-| [Presence](https://ark-ui.com/react/docs/components/presence)                     | ✓     | ✓     |        | ✓   |
-| [Progress - Circular](https://ark-ui.com/react/docs/components/circular-progress) | ✓     | ✓     |        | ✓   |
-| [Progress - Linear](https://ark-ui.com/react/docs/components/linear-progress)     | ✓     | ✓     |        | ✓   |
-| [Radio Group](https://ark-ui.com/react/docs/components/radio-group)               | ✓     | ✓     |        | ✓   |
-| [Rating Group](https://ark-ui.com/react/docs/components/rating-group)             | ✓     | ✓     |        | ✓   |
-| [Segment Group](https://ark-ui.com/react/docs/components/segment-group)           | ✓     | ✓     |        | ✓   |
-| [Select](https://ark-ui.com/react/docs/components/select)                         | ✓     | ✓     |        | ✓   |
-| [Signature Pad](https://ark-ui.com/react/docs/components/signature-pad)           | ✓     | ✓     |        | ✓   |
-| [Slider](https://ark-ui.com/react/docs/components/slider)                         | ✓     | ✓     |        | ✓   |
-| [Splitter](https://ark-ui.com/react/docs/components/splitter)                     | ✓     | ✓     |        | ✓   |
-| [Switch](https://ark-ui.com/react/docs/components/switch)                         | ✓     | ✓     |        | ✓   |
-| [Tabs](https://ark-ui.com/react/docs/components/tabs)                             | ✓     | ✓     |        | ✓   |
-| [Tags Input](https://ark-ui.com/react/docs/components/tags-input)                 | ✓     | ✓     |        | ✓   |
-| [Time Picker](https://ark-ui.com/react/docs/components/time-picker)               | ✓     | ✓     |        | ✓   |
-| [Timer](https://ark-ui.com/react/docs/components/timer)                           | ✓     | ✓     |        | ✓   |
-| [Toast](https://ark-ui.com/react/docs/components/toast)                           | ✓     | ✓     |        | ✓   |
-| [Toggle Group](https://ark-ui.com/react/docs/components/toggle-group)             | ✓     | ✓     |        | ✓   |
-| [Tooltip](https://ark-ui.com/react/docs/components/tooltip)                       | ✓     | ✓     |        | ✓   |
-| [Tree View](https://ark-ui.com/react/docs/components/tree-view)                   | ✓     | ✓     |        | ✓   |
 
 ## Documentation
 
