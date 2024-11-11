@@ -8,9 +8,7 @@
 
 ## What is Ark UI?
 
-Ark UI is a headless, open-source UI library with over 45+ components designed for building
-reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering
-dedicated packages for each supported framework.
+Ark UI is a headless UI library with over 45+ components designed to build reusable, scalable Design Systems that works for a wide range of JS frameworks.
 
 ## Documentation
 

@@ -10,7 +10,7 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
 const description =
-  'A headless component library for building reusable, scalable design systems that works for a wide range of JS frameworks.'
+  'A headless UI library with over 45+ components designed to build reusable, scalable Design Systems that works for a wide range of JS frameworks.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ark-ui.com'),
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | Ark UI',
   },
   description,
-  keywords: ['Headless', 'Components', 'Library', 'React', 'Solid', 'Vue'],
+  keywords: ['react', 'solid', 'vue', 'design systems', 'headless', 'components', 'library'],
   openGraph: {
     type: 'website',
     locale: 'en_US',
