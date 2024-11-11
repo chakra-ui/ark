@@ -226,7 +226,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-frame-component": "5.2.7",
-    "react-hook-form": "7.53.1",
+    "react-hook-form": "7.53.2",
     "release-it": "17.10.0",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "8.4.2",
