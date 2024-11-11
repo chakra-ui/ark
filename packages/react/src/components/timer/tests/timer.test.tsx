@@ -1,7 +1,6 @@
-import { timerAnatomy } from '@ark-ui/anatomy'
 import { cleanup, render } from '@testing-library/react/pure'
 import { axe } from 'vitest-axe'
-import { Timer } from '../'
+import { Timer, timerAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 

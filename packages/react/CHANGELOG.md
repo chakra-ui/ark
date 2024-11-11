@@ -4,15 +4,25 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
+
 ## [Unreleased]
 
 ### Added
 
-- Exported `createAnatomy` utility for defining custom component anatomy. Now available via `import { createAnatomy } from '@ark-ui/react/anatomy'`.
+- **Utility**: Exported `createAnatomy` for defining custom component anatomy, now accessible via `import { createAnatomy } from '@ark-ui/react/anatomy'`.
 
 ### Fixed
 
-- **Combobox**: Resolved an timing issue with the `onValueChange` callback.
+- **ColorPicker**
+  - Added `--color` CSS variable to swatch and swatch trigger parts.
+  - Enabled clicking on swatch when in the open state.
+- **Combobox**: Fixed a timing issue with the `onValueChange` callback.
+- **Clipboard**: Corrected missing `type="button"` attribute on clipboard trigger.
+- **Field**
+  - Fixed cleanup issue with `resizeObserver` on `Field.Textarea`.
+  - Triggered resize when `rows` attribute or fonts change.
+- **TagsInput**: Resolved inconsistent delete behavior across states.
+- **TimePicker**: Exported missing `timePickerAnatomy`.
 
 ## [4.3.0] - 2024-11-08
 

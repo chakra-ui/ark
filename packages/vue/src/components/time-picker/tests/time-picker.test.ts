@@ -1,7 +1,6 @@
-import { timePickerAnatomy } from '@ark-ui/anatomy'
 import user from '@testing-library/user-event'
 import { cleanup, render, screen, waitFor } from '@testing-library/vue'
-import { TimePicker } from '../'
+import { TimePicker, timePickerAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './time-picker.test.vue'
 

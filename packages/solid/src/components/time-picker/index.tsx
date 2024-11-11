@@ -68,6 +68,7 @@ export {
   type TimePickerTriggerBaseProps,
   type TimePickerTriggerProps,
 } from './time-picker-trigger'
+export { timePickerAnatomy } from './time-picker.anatomy'
 export { useTimePicker, type UseTimePickerProps, type UseTimePickerReturn } from './use-time-picker'
 export { useTimePickerContext, type UseTimePickerContext } from './use-time-picker-context'
 
