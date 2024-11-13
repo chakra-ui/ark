@@ -10,6 +10,7 @@ const pages = defineCollection({
     .object({
       id: s.string(),
       title: s.string(),
+      subtitle: s.string().optional(),
       description: s.string(),
       metadata: s.metadata(),
       content: s.markdown(),

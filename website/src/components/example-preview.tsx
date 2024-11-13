@@ -53,7 +53,7 @@ export const ExamplePreview = async (props: Props) => {
       <Button variant="outline" asChild alignSelf="flex-end" borderColor="border.muted">
         <NextLink href="/react/plus">
           <LockIcon />
-          Unlock Ark UI Plus
+          Unlock Ark Plus
         </NextLink>
       </Button>
       <Box borderRadius="l3" overflow="hidden" minH="md" borderWidth="1px">

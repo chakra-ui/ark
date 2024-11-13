@@ -22,10 +22,9 @@ export const Faqs = () => {
       question: 'How does the Team license work?',
       answer: (
         <Text>
-          The license grants all employees and contractors of the licensee permission to access and
-          use the examples. When activating your team license, we recommend using a shared email
-          address that all employees can access. For more information on team licensing specifics,{' '}
-          <NextLink href="/license">read through our license</NextLink>.
+          The Team license lets all your employees and contractors access and use the examples. We
+          recommend activating your license with a shared email everyone on the team can access. For
+          full details, <NextLink href="/license">check out our license page</NextLink>.
         </Text>
       ),
     },
@@ -33,22 +32,19 @@ export const Faqs = () => {
       question: 'Do you offer a free trial?',
       answer: (
         <Text>
-          We do not offer a free trial. However, some of our examples are available for free.
+          We don't offer a free trial. However, several examples are available for free to explore.
         </Text>
       ),
     },
     {
       question: 'Which version of Ark UI do I need?',
-      answer: (
-        <Text>The examples shown on this page are built with the latest version of Ark UI.</Text>
-      ),
+      answer: <Text>The examples here use the latest version of Ark UI.</Text>,
     },
     {
-      question: 'Found an issue with an example?',
+      question: 'What if I find an issue with an example?',
       answer: (
         <Text>
-          Feel free to contact us at <MailToSupportLink subject="Bug Report" /> or create an issue
-          on our{' '}
+          Contact us via <MailToSupportLink subject="Bug Report" /> or create an issue on our{' '}
           <Link
             href="https://github.com/chakra-ui/ark/issues/new?assignees=&labels=&projects=&template=bug_report.yml"
             target="_blank"
@@ -57,6 +53,16 @@ export const Faqs = () => {
             GitHub repository
           </Link>
           .
+        </Text>
+      ),
+    },
+    {
+      question: 'What is your refund policy?',
+      answer: (
+        <Text>
+          We do not offer refunds. As our products are digital goods, they cannot be returned once
+          they have been accessed. This policy is in place to prevent abuse and is in line with
+          industry standards for digital sales.
         </Text>
       ),
     },
@@ -72,8 +78,7 @@ export const Faqs = () => {
           <Heading size={{ base: '3xl', md: '4xl' }}>FAQs</Heading>
         </Stack>
         <Text color="fg.muted" textStyle="lg">
-          Everything you need to know about Ark UI Plus. For questions about licensing, please see
-          our{' '}
+          Everything you need to know about Ark Plus. For questions about licensing, please see our{' '}
           <Link asChild>
             <NextLink href="/license">licensing page</NextLink>
           </Link>

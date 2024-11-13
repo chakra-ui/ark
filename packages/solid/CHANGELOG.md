@@ -446,7 +446,7 @@ import { Highlight } from '@ark-ui/solid'
 export const App = () => (
   <Highlight
     query={['Ark UI', 'exclusive examples']}
-    text="Unlock exclusive examples and support the development by getting Ark UI Plus."
+    text="Unlock exclusive examples and support the development by getting Ark Plus."
   />
 )
 ```

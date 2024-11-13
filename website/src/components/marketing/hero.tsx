@@ -24,7 +24,7 @@ export const Hero = () => {
               <NextLink href="/react/plus">
                 <Badge size="lg" variant="outline">
                   <RocketIcon />
-                  New: Launching Ark UI Plus
+                  New: Launching Ark Plus
                   <ArrowRightIcon />
                 </Badge>
               </NextLink>
