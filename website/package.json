@@ -16,7 +16,7 @@
     "@biomejs/biome": "1.9.4",
     "@effect/schema": "0.75.5",
     "@icons-pack/react-simple-icons": "10.1.0",
-    "@pandacss/dev": "0.47.1",
+    "@pandacss/dev": "0.48.0",
     "@park-ui/panda-preset": "0.42.0",
     "@prisma/client": "5.22.0",
     "@shikijs/transformers": "1.22.2",
