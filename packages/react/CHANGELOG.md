@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.4.1] - 2024-11-14
+
 ### Fixed
 
 - **Utility**: Incorrect entrypoint in `package.json` for `/anatomy`.
