@@ -6,11 +6,16 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Utility**: Incorrect entrypoint in `package.json` for `/anatomy`.
+
 ## [4.4.0] - 2024-11-11
 
 ### Added
 
-- **Utility**: Exported `createAnatomy` for defining custom component anatomy, now accessible via `import { createAnatomy } from '@ark-ui/vue/anatomy'`.
+- **Utility**: Exported `createAnatomy` for defining custom component anatomy, now accessible via
+  `import { createAnatomy } from '@ark-ui/vue/anatomy'`.
 
 ### Fixed
 

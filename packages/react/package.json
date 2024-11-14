@@ -73,10 +73,12 @@
     "./anatomy": {
       "source": "./src/components/anatomy.ts",
       "import": {
-        "types": "./dist/components/anatomy.d.ts"
+        "types": "./dist/components/anatomy.d.ts",
+        "default": "./dist/components/collection.js"
       },
       "require": {
-        "types": "./dist/components/anatomy.d.cts"
+        "types": "./dist/components/anatomy.d.cts",
+        "default": "./dist/components/anatomy.cjs"
       }
     },
     "./collection": {
