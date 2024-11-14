@@ -31,7 +31,7 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     lib: {
-      entry: globbySync('src/**/index.ts'),
+      entry: globbySync(['src/**/index.ts', 'src/components/anatomy.ts']),
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
@@ -89,4 +89,4 @@ const isBarrelComponent = (file: path.ParsedPath) =>
   file.dir.endsWith(file.name) && !['presence', 'environment', 'locale'].includes(file.dir)
 
 const isSpecialFile = (file: path.ParsedPath) =>
-  ['index', 'factory', 'compose-refs', 'collection'].includes(file.name)
+  ['index', 'factory', 'anatomy', 'compose-refs', 'collection'].includes(file.name)
