@@ -74,7 +74,7 @@
       "source": "./src/components/anatomy.ts",
       "import": {
         "types": "./dist/components/anatomy.d.ts",
-        "default": "./dist/components/collection.js"
+        "default": "./dist/components/anatomy.js"
       },
       "require": {
         "types": "./dist/components/anatomy.d.cts",
