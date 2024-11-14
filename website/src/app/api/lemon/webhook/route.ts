@@ -34,6 +34,7 @@ export const POST = async (request: NextRequest) => {
       ([text, signature]) => verifySignature(text, signature),
       () => new InternalServerError(),
     ),
+    Effect.tap(([text]) => console.log('Payload:', JSON.parse(text))),
     Effect.flatMap(([text]) => Schema.decodeUnknown(Payload)(JSON.parse(text))),
     Effect.flatMap(({ data, meta }) =>
       Match.value(meta.event_name).pipe(
