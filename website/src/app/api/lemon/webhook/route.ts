@@ -13,7 +13,7 @@ const Payload = Schema.Struct({
     id: Schema.String,
     attributes: Schema.Struct({
       first_order_item: Schema.Struct({
-        product_name: Schema.Literal('Ark Plus'),
+        product_name: Schema.Literal('Ark UI Plus'),
         variant_name: Schema.Literal('Personal', 'Team'),
       }),
     }),
