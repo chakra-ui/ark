@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.4.3] - 2024-11-14
+
 ### Fixed
 
 - **Anatomy**: Fixed an issue where the `anatomy` was not properly transpiled.
