@@ -8,7 +8,6 @@ export default defineConfig({
   preflight: true,
   validation: 'none',
   presets: [
-    '@pandacss/preset-base',
     createPreset({ grayColor: sand, accentColor: coral, radius: 'sm' }),
     typographyPreset({
       recipe: {
