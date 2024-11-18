@@ -29,7 +29,7 @@
     "@sveltejs/adapter-auto": "3.3.1",
     "@sveltejs/kit": "2.8.0",
     "@sveltejs/package": "2.3.7",
-    "@sveltejs/vite-plugin-svelte": "4.0.0",
+    "@sveltejs/vite-plugin-svelte": "4.0.1",
     "publint": "0.2.12",
     "svelte": "5.1.15",
     "svelte-check": "4.0.7",
