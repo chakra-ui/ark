@@ -64,7 +64,7 @@ export const treeView = sva({
       },
     },
     branchIndicator: {
-      color: 'accent.default',
+      color: 'colorPalette.default',
       transformOrigin: 'center',
       transitionDuration: 'normal',
       transitionProperty: 'transform',
@@ -106,11 +106,11 @@ export const treeView = sva({
         color: 'fg.default',
       },
       _selected: {
-        background: 'accent.a2',
-        color: 'accent.text',
+        background: 'colorPalette.a2',
+        color: 'colorPalette.text',
         _hover: {
-          background: 'accent.a2',
-          color: 'accent.text',
+          background: 'colorPalette.a2',
+          color: 'colorPalette.text',
         },
         _before: {
           content: '""',
@@ -119,7 +119,7 @@ export const treeView = sva({
           top: '0',
           width: '2px',
           height: 'full',
-          bg: 'accent.default',
+          bg: 'colorPalette.default',
           zIndex: '1',
         },
       },

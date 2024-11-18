@@ -113,7 +113,7 @@ export const CommandMenu = (props: Props) => {
                         >
                           <Stack gap="0">
                             <Text fontWeight="medium">{item.label}</Text>
-                            <Text textStyle="sm" fontWeight="medium" color="accent.default">
+                            <Text textStyle="sm" fontWeight="medium" color="colorPalette.default">
                               {item.category}
                             </Text>
                             <Text textStyle="sm" color="fg.muted" mt="0.5" lineClamp={2}>

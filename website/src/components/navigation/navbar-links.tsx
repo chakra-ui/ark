@@ -24,13 +24,13 @@ const link = cva({
     '& svg': {
       width: '3.5',
       height: '3.5',
-      color: 'accent.default',
+      color: 'colorPalette.default',
     },
     _hover: { color: 'fg.default' },
     _currentPage: {
-      color: 'accent.default',
+      color: 'colorPalette.default',
       _hover: {
-        color: 'accent.default',
+        color: 'colorPalette.default',
       },
     },
   },

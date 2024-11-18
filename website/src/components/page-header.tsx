@@ -14,7 +14,7 @@ export const PageHeader = (props: PropsWithChildren<Props>) => {
   return (
     <Stack gap={{ base: '4', md: '6' }} align="center" textAlign="center">
       <Stack gap="3">
-        <Text fontSize={{ base: 'sm', md: 'md' }} fontWeight="medium" color="accent.default">
+        <Text fontSize={{ base: 'sm', md: 'md' }} fontWeight="medium" color="colorPalette.default">
           {subHeading}
         </Text>
         <Heading as="h1" textStyle={{ base: '4xl', md: '5xl' }}>

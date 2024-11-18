@@ -56,7 +56,7 @@ export const Highlights = () => {
                 background="bg.default"
                 borderRadius="l2"
                 borderWidth="1px"
-                color="accent.default"
+                color="colorPalette.default"
                 flexShrink={0}
                 height={{ base: '10', md: '12' }}
                 width={{ base: '10', md: '12' }}

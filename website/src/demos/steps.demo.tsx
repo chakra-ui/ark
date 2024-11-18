@@ -29,12 +29,12 @@ export const Demo = () => {
                   textStyle: 'sm',
                   fontWeight: 'medium',
                   _current: {
-                    bg: 'accent.default',
-                    color: 'accent.fg',
+                    bg: 'color-palette.default',
+                    color: 'color-palette.fg',
                   },
                   '&[data-complete]': {
-                    bg: 'accent.default',
-                    color: 'accent.fg',
+                    bg: 'color-palette.default',
+                    color: 'color-palette.fg',
                   },
                 })}
               >

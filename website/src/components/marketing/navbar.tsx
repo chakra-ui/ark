@@ -31,7 +31,7 @@ export const Navbar = () => (
               fontWeight: 'medium',
               color: 'fg.emphasized',
               _hover: {
-                color: 'accent.default',
+                color: 'colorPalette.default',
               },
             })}
           >
@@ -44,7 +44,7 @@ export const Navbar = () => (
               fontWeight: 'medium',
               color: 'fg.emphasized',
               _hover: {
-                color: 'accent.default',
+                color: 'colorPalette.default',
               },
               display: {
                 base: 'none',
@@ -65,12 +65,12 @@ export const Navbar = () => (
               color: 'fg.emphasized',
               whiteSpace: 'nowrap',
               _hover: {
-                color: 'accent.default',
+                color: 'colorPalette.default',
               },
               '& svg': {
                 width: '4',
                 height: '4',
-                color: 'accent.default',
+                color: 'colorPalette.default',
               },
             })}
           >

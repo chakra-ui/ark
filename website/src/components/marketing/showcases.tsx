@@ -47,12 +47,12 @@ const link = cva({
     transitionTimingFunction: 'default',
     overflow: 'hidden',
     _hover: {
-      borderColor: 'accent.default',
+      borderColor: 'colorPalette.default',
       boxShadow: '0 0 0 1px var(--colors-accent-default)',
     },
     _focusVisible: {
       outline: 'none',
-      borderColor: 'accent.default',
+      borderColor: 'colorPalette.default',
       boxShadow: '0 0 0 1px var(--colors-accent-default)',
     },
   },

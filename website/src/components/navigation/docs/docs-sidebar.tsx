@@ -52,8 +52,8 @@ export const DocsSidebar = (props: Props) => {
                                 data-status={item.status}
                                 css={{
                                   '&[data-status=new]': {
-                                    bg: 'accent.default',
-                                    color: 'accent.fg',
+                                    bg: 'colorPalette.default',
+                                    color: 'colorPalette.fg',
                                   },
                                 }}
                               >

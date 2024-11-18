@@ -42,7 +42,7 @@ export const PropsTable = (props: Props) => {
           {Object.entries(properties).map(([name, property]) => (
             <Table.Row key={name}>
               <Table.Cell width="36" px="4" py="2" verticalAlign="top">
-                <Code size="sm" color="accent.default">
+                <Code size="sm" color="colorPalette.default">
                   {name}
                 </Code>
               </Table.Cell>

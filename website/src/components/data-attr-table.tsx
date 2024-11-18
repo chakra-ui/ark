@@ -39,7 +39,7 @@ export const DataAttrTable = (props: Props) => {
           {Object.entries(properties).map(([key, value]) => (
             <Table.Row key={key}>
               <Table.Cell px="4" py="2">
-                <Code size="sm" color="accent.default">
+                <Code size="sm" color="colorPalette.default">
                   [{key}]
                 </Code>
               </Table.Cell>

@@ -10,7 +10,13 @@ export const Demo = (props: Collapsible.RootProps) => {
           <Button variant="outline">Toggle</Button>
         </Collapsible.Trigger>
         <Collapsible.Content>
-          <Center bg="accent.default" color="accent.fg" p="10" borderRadius="l3" mt="3">
+          <Center
+            bg="color-palette.default"
+            color="color-palette.fg"
+            p="10"
+            borderRadius="l3"
+            mt="3"
+          >
             Content
           </Center>
         </Collapsible.Content>

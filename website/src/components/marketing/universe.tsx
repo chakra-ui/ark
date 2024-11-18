@@ -19,7 +19,7 @@ export const Universe = () => {
       >
         <Container pt={{ base: '16', md: '40' }}>
           <Heading textAlign="center" textStyle="4xl" maxW="3xl" mx="auto" fontWeight="semibold">
-            Driven by <span className={css({ color: 'accent.default' })}>State Machines</span>
+            Driven by <span className={css({ color: 'colorPalette.default' })}>State Machines</span>
             <br /> to make your life easier.
           </Heading>
         </Container>

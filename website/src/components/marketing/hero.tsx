@@ -29,8 +29,8 @@ export const Hero = () => {
                 </Badge>
               </NextLink>
               <Heading as="h1" fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
-                Fully <styled.span color="accent.default">customizable</styled.span> and{' '}
-                <styled.span color="accent.default">accessible</styled.span> UI components
+                Fully <styled.span color="colorPalette.default">customizable</styled.span> and{' '}
+                <styled.span color="colorPalette.default">accessible</styled.span> UI components
               </Heading>
             </Stack>
             <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">

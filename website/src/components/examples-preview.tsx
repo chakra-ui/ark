@@ -28,7 +28,7 @@ export const ExamplesPreview = async () => {
                 {relatedExample?.title}
               </Text>
               {relatedExample.accessLevel === 'paid' && (
-                <Icon width="3.5" height="3.5" color="accent.default">
+                <Icon width="3.5" height="3.5" color="colorPalette.default">
                   <SparklesIcon />
                 </Icon>
               )}
@@ -56,12 +56,12 @@ const link = cva({
     transitionProperty: 'border-color, box-shadow',
     transitionTimingFunction: 'default',
     _hover: {
-      borderColor: 'accent.default',
+      borderColor: 'colorPalette.default',
       boxShadow: '0 0 0 1px var(--colors-accent-default)',
     },
     _focusVisible: {
       outline: 'none',
-      borderColor: 'accent.default',
+      borderColor: 'colorPalette.default',
       boxShadow: '0 0 0 1px var(--colors-accent-default)',
     },
   },

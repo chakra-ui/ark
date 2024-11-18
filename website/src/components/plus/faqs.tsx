@@ -72,7 +72,11 @@ export const Faqs = () => {
     <Stack gap={{ base: '12', lg: '24' }} direction={{ base: 'column', lg: 'row' }} width="full">
       <Stack gap={{ base: '4', md: '5' }} maxW={{ lg: 'md' }}>
         <Stack gap="3">
-          <Text color="accent.default" textStyle={{ base: 'sm', md: 'md' }} fontWeight="semibold">
+          <Text
+            color="colorPalette.default"
+            textStyle={{ base: 'sm', md: 'md' }}
+            fontWeight="semibold"
+          >
             Support
           </Text>
           <Heading size={{ base: '3xl', md: '4xl' }}>FAQs</Heading>

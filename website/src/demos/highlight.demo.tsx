@@ -3,7 +3,7 @@ import { Highlight } from '@ark-ui/react/highlight'
 import { css } from 'styled-system/css'
 
 const markStyle = css({
-  bg: 'accent.default',
+  bg: 'color-palette.default',
   color: 'white',
   lineHeight: '1',
   mx: '1',

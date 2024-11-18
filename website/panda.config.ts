@@ -1,13 +1,15 @@
 import { defineConfig } from '@pandacss/dev'
 import { createPreset } from '@park-ui/panda-preset'
+import sand from '@park-ui/panda-preset/colors/sand'
 import typographyPreset from 'pandacss-preset-typography'
+import { coral } from '~/coral'
 
 export default defineConfig({
   preflight: true,
   validation: 'none',
   presets: [
     '@pandacss/preset-base',
-    createPreset({ grayColor: 'sand' }),
+    createPreset({ grayColor: sand, accentColor: coral, radius: 'sm' }),
     typographyPreset({
       recipe: {
         sizes: ['base'],
@@ -94,29 +96,6 @@ export default defineConfig({
           code: { value: 'var(--font-roboto-mono), monospace' },
         },
       },
-      semanticTokens: {
-        colors: {
-          accent: {
-            1: { value: { _light: '#fff8f7', _dark: '#1c1412' } },
-            2: { value: { _light: '#ffefef', _dark: '#391a18' } },
-            3: { value: { _light: '#ffe5e4', _dark: '#55221e' } },
-            4: { value: { _light: '#ffdbda', _dark: '#722b25' } },
-            5: { value: { _light: '#ffd2d1', _dark: '#8e342b' } },
-            6: { value: { _light: '#ffc9c8', _dark: '#aa3d32' } },
-            7: { value: { _light: '#ffbeb8', _dark: '#c6493a' } },
-            8: { value: { _light: '#ffb2a8', _dark: '#e2503f' } },
-            9: { value: { _light: '#EB5E41', _dark: '#EB5E41' } },
-            10: { value: { _light: '#de5045', _dark: '#ef6b4e' } },
-            11: { value: { _light: '#c9453b', _dark: '#f47a5c' } },
-            12: { value: { _light: '#762d25', _dark: '#faa19b' } },
-
-            default: { value: '{colors.accent.9}' },
-            emphasized: { value: '{colors.accent.10}' },
-            fg: { value: 'white' },
-          },
-        },
-      },
-
       slotRecipes: {
         field: {
           className: 'field',
