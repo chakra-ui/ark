@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **TreeView**: Exported missing `TreeViewContext`.
+
 ## [4.5.0] - 2024-11-11
 
 ### Added

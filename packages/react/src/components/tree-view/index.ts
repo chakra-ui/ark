@@ -39,6 +39,7 @@ export {
   type TreeViewBranchTriggerBaseProps,
   type TreeViewBranchTriggerProps,
 } from './tree-view-branch-trigger'
+export { TreeViewContext, type TreeViewContextProps } from './tree-view-context'
 export {
   TreeViewItem,
   type TreeViewItemBaseProps,
