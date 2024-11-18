@@ -223,7 +223,7 @@
     "@types/jsdom": "21.1.7",
     "@vitejs/plugin-vue": "5.1.5",
     "@vitejs/plugin-vue-jsx": "4.1.0",
-    "@vue/compiler-sfc": "3.5.12",
+    "@vue/compiler-sfc": "3.5.13",
     "clean-package": "2.2.0",
     "globby": "14.0.2",
     "histoire": "0.17.17",
@@ -235,7 +235,7 @@
     "vite": "5.4.11",
     "vite-plugin-dts": "4.3.0",
     "vitest": "2.1.4",
-    "vue": "3.5.12",
+    "vue": "3.5.13",
     "vue-tsc": "2.1.10"
   },
   "peerDependencies": {
