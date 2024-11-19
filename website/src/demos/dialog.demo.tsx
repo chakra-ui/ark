@@ -18,13 +18,13 @@ export const Demo = (props: Dialog.RootProps) => {
               <Dialog.Title>Dialog Title</Dialog.Title>
               <Dialog.Description>Dialog Description</Dialog.Description>
             </Stack>
-            <Stack gap="3" direction="row" width="full">
+            <Stack gap="3" justifyContent="flex-end" direction="row" width="full">
               <Dialog.CloseTrigger asChild>
-                <Button variant="outline" width="full">
+                <Button variant="outline" width="auto">
                   Cancel
                 </Button>
               </Dialog.CloseTrigger>
-              <Button width="full">Confirm</Button>
+              <Button width="auto">Confirm</Button>
             </Stack>
           </Stack>
           <Dialog.CloseTrigger asChild position="absolute" top="2" right="2">
