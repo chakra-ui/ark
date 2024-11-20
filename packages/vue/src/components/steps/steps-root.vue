@@ -24,7 +24,9 @@ const props = withDefaults(defineProps<StepsRootProps>(), {
   linear: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
-const steps = useSteps(props)
+const emit = defineEmits<StepsRootEmits>()
+
+const steps = useSteps(props, emit)
 
 StepsProvider(steps)
 
