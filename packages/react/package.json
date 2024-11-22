@@ -139,6 +139,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",
     "test:ci": "vitest --run",

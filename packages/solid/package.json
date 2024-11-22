@@ -102,6 +102,7 @@
   },
   "scripts": {
     "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" tsup",
+    "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",
     "test:ci": "vitest --run",

@@ -1,5 +1,6 @@
 name: 'Bug Report'
 description: 'Submit a bug report'
+labels: ["triage"]
 body:
   - type: 'markdown'
     attributes:

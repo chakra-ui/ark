@@ -137,6 +137,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "dev": "bun run storybook",
     "lint": "echo 'No linting configured for this package.'",
     "test": "vitest",
     "test:ci": "vitest --run",
