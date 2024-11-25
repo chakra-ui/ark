@@ -14,7 +14,7 @@ export type UsePresenceReturn = ReturnType<typeof usePresence>
 export const usePresence = (props: UsePresenceProps) => {
   const { lazyMount, unmountOnExit, ...rest } = props
   const wasEverPresent = useRef(false)
-  const present = useDebounce(props.present, 1)
+  const present = useDebounce(props.present, 0)
   const context: Partial<presence.Context> = {
     ...rest,
     present,
