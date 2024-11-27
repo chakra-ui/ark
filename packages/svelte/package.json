@@ -16,7 +16,7 @@
   "type": "module",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
+  "files": ["dist", "!dist/**/*.stories.*", "!dist/**/examples/**", "!dist/**/*.test.*"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
