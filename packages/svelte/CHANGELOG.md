@@ -9,3 +9,6 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - Added `Avatar` component.
+
+## [0.0.0] - 2024-11-27
+
