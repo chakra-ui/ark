@@ -7,10 +7,11 @@
 
 <script lang="ts">
   import { useAvatarContext } from './use-avatar-context'
+  import { mergeProps } from '@zag-js/svelte'
 
   const props: AvatarImageProps = $props()
   const avatar = useAvatarContext()
-  // const mergedProps = mergeProps(() => avatar().getImageProps(), props)
+  const mergedProps = $derived(mergeProps(avatar().getImageProps(), props))
 </script>
 
-<img {...avatar().getImageProps()} {...props} />
+<img {...mergedProps} />

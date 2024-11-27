@@ -7,12 +7,14 @@
 
 <script lang="ts">
   import { useAvatarContext } from './use-avatar-context'
+  import { mergeProps } from '@zag-js/svelte'
 
   const props: AvatarFallbackProps = $props()
+
   const avatar = useAvatarContext()
-  // const mergedProps = mergeProps(() => avatar().getFallbackProps(), props)
+  const mergedProps = $derived(mergeProps(avatar().getFallbackProps(), props))
 </script>
 
-<div {...avatar().getFallbackProps()} {...props}>
+<div {...mergedProps}>
   {@render props.children?.()}
 </div>

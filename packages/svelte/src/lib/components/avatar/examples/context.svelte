@@ -14,5 +14,5 @@
       </Avatar.Fallback>
     {/snippet}
   </Avatar.Context>
-  <Avatar.Image src="https://i.pravatar.cc/3000" alt="avatar" />
+  <Avatar.Image src="https://i.pravatar.cc/3000?u=b" alt="avatar" />
 </Avatar.Root>

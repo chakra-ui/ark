@@ -6,13 +6,15 @@
       console.log('status', status)
     },
   })
+
+  // biome-ignore lint/style/useConst: <explanation>
+  let counter = $state(0)
+  const src = $derived(`https://i.pravatar.cc/300?u=${counter}`)
 </script>
 
-<button onclick={() => avatar().setSrc('https://avatars.githubusercontent.com/u/6916170?v=4')}>
-  Change Avatar
-</button>
+<button onclick={() => counter++}>Change Avatar</button>
 
 <Avatar.RootProvider value={avatar}>
   <Avatar.Fallback>PA</Avatar.Fallback>
-  <Avatar.Image src="https://avatars.githubusercontent.com/u/1846056?v=4" alt="avatar" />
+  <Avatar.Image {src} alt="avatar" />
 </Avatar.RootProvider>
