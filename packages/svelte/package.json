@@ -19,11 +19,11 @@
   "files": ["dist", "!dist/**/*.stories.*", "!dist/**/examples/**", "!dist/**/*.test.*"],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./src/lib/index.ts",
       "svelte": "./src/lib/index.ts"
     },
     "./*": {
-      "types": "./dist/components/*/index.d.ts",
+      "types": "./src/lib/components/*/index.ts",
       "svelte": "./src/lib/components/*/index.ts"
     }
   },
@@ -41,7 +41,9 @@
   "clean-package": {
     "replace": {
       "exports.\\..svelte": "./dist/index.js",
-      "exports.\\./*.svelte": "./dist/components/*/index.js"
+      "exports.\\..types": "./dist/index.d.ts",
+      "exports.\\./*.svelte": "./dist/components/*/index.js",
+      "exports.\\./*.types": "./dist/components/*/index.d.ts"
     }
   },
   "publishConfig": {

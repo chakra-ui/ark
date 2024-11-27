@@ -6,3 +6,4 @@ export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
 export type CollectionItem = string | object
 
 export type HTMLProps<T extends keyof SvelteHTMLElements> = SvelteHTMLElements[T]
+export type Accessor<T> = () => T

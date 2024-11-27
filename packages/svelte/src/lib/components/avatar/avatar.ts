@@ -13,11 +13,11 @@ export {
   type AvatarImageProps as ImageProps,
   type AvatarImageBaseProps as ImageBaseProps,
 } from './avatar-image.svelte'
-// export {
-//   default as RootProvider,
-//   type AvatarRootProviderProps as RootProviderProps,
-//   type AvatarRootProviderBaseProps as RootProviderBaseProps,
-// } from './avatar-root-provider.svelte'
+export {
+  default as RootProvider,
+  type AvatarRootProviderProps as RootProviderProps,
+  type AvatarRootProviderBaseProps as RootProviderBaseProps,
+} from './avatar-root-provider.svelte'
 export {
   default as Root,
   type AvatarRootBaseProps as RootBaseProps,

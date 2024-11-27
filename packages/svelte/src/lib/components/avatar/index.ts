@@ -17,11 +17,11 @@ export {
 } from './avatar-root.svelte'
 export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
 export { useAvatar, type UseAvatarProps, type UseAvatarReturn } from './use-avatar.svelte'
-// export {
-//   default as AvatarRootProvider,
-//   type AvatarRootProviderProps,
-//   type AvatarRootProviderBaseProps,
-// } from './avatar-root-provider.svelte'
-// export { avatarAnatomy } from './avatar.anatomy'
+export {
+  default as AvatarRootProvider,
+  type AvatarRootProviderProps,
+  type AvatarRootProviderBaseProps,
+} from './avatar-root-provider.svelte'
+export { avatarAnatomy } from './avatar.anatomy'
 
 export * as Avatar from './avatar'

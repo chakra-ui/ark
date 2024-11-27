@@ -1,17 +1,15 @@
-import type { Optional } from '$lib/types'
+import type { Accessor, Optional } from '$lib/types'
 import { createId } from '$lib/utils/create-id'
 import * as avatar from '@zag-js/avatar'
-import { normalizeProps, useMachine } from '@zag-js/svelte'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 
 export interface UseAvatarProps
   extends Optional<Omit<avatar.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseAvatarReturn extends Accessor<avatar.Api<PropTypes>> {}
 
-export type UseAvatarReturn = ReturnType<typeof useAvatar>
-
-export const useAvatar = (props: UseAvatarProps) => {
-  const id = createId()
+export const useAvatar = (props: UseAvatarProps = {}) => {
   const context = $derived({
-    id,
+    id: createId(),
     ...props,
   })
 
