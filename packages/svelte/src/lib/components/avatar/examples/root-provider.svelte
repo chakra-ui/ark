@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Avatar, useAvatar } from '@ark-ui/svelte/avatar'
+  import { Avatar, useAvatar } from '@ark-ui/svelte/avatar'
 
-const avatar = useAvatar({
-  onStatusChange: (status) => {
-    console.log('status', status)
-  },
-})
+  const avatar = useAvatar({
+    onStatusChange: (status) => {
+      console.log('status', status)
+    },
+  })
 </script>
 
 <button onclick={() => avatar().setSrc('https://avatars.githubusercontent.com/u/6916170?v=4')}>
