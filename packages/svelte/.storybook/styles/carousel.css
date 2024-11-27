@@ -1,0 +1,5 @@
+[data-scope='carousel'][data-part='viewport'] {
+  max-width: 600px;
+  margin-top: 40px;
+  overflow-x: hidden;
+}

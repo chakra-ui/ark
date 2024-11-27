@@ -8,7 +8,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
-    "customConditions": ["source"]
+    "strict": true
   }
 }
