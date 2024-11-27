@@ -1,21 +1,28 @@
-<script context="module" lang="ts">
-export interface AvatarRootProps {
-  id?: string
-  children: Snippet
-}
+<script module lang="ts">
+  import type { Assign, HTMLProps } from '$lib/types'
+  import type { UseAvatarProps } from './use-avatar.svelte'
+
+  export interface AvatarRootBaseProps extends UseAvatarProps {}
+  export interface AvatarRootProps extends Assign<HTMLProps<'div'>, UseAvatarProps> {}
 </script>
 
 <script lang="ts">
-import type { Snippet } from "svelte"
-import { AvatarProvider } from "./use-avatar-context"
-import { useAvatar } from './use-avatar.svelte'
+  import { createSplitProps } from '../../utils/create-split-props'
+  import { AvatarProvider } from './use-avatar-context'
+  import { useAvatar } from './use-avatar.svelte'
 
-const { children, ...props }: AvatarRootProps = $props()
+  let props: AvatarRootProps = $props()
+  const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
+    'id',
+    'ids',
+    'onStatusChange',
+  ])
+  const avatar = useAvatar(useAvatarProps)
+  // const mergedProps = mergeProps(() => avatar().getRootProps(), localProps)
 
-const avatar = useAvatar(props)
-AvatarProvider(avatar)
+  AvatarProvider(avatar)
 </script>
-  
-<div {...avatar.getRootProps()}>
-  {@render children()}
+
+<div {...avatar().getRootProps()} {...localProps}>
+  {@render props.children?.()}
 </div>

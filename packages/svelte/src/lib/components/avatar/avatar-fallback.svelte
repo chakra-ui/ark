@@ -1,20 +1,18 @@
-<script context="module" lang="ts">
-export interface AvatarFallbackProps {
-  children: Snippet
-}
+<script module lang="ts">
+  import type { HTMLProps } from '$lib/types'
+
+  export type AvatarFallbackBaseProps = {}
+  export interface AvatarFallbackProps extends AvatarFallbackBaseProps, HTMLProps<'div'> {}
 </script>
-        
+
 <script lang="ts">
-import type { Snippet } from "svelte"
-import { useAvatarContext } from "./use-avatar-context"
+  import { useAvatarContext } from './use-avatar-context'
 
-const { children }: AvatarFallbackProps = $props()
-const avatar = useAvatarContext()
+  const props: AvatarFallbackProps = $props()
+  const avatar = useAvatarContext()
+  // const mergedProps = mergeProps(() => avatar().getFallbackProps(), props)
 </script>
 
-
-<div {...avatar.getFallbackProps()} >
-{@render children()}
+<div {...avatar().getFallbackProps()} {...props}>
+  {@render props.children?.()}
 </div>
-        
-          

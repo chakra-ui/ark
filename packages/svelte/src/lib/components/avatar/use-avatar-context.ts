@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '$lib/utils/create-context'
 import type { UseAvatarReturn } from './use-avatar.svelte'
 
 export interface UseAvatarContext extends UseAvatarReturn {}
