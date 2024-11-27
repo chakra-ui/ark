@@ -1,7 +1,7 @@
 export type { StatusChangeDetails } from '@zag-js/avatar'
 export {
   default as Context,
-  // type AvatarContextProps as ContextProps,
+  type AvatarContextProps as ContextProps,
 } from './avatar-context.svelte'
 export {
   default as Fallback,
