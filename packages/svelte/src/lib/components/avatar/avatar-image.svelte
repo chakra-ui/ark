@@ -6,10 +6,10 @@ export interface AvatarImageProps extends HTMLImgAttributes {
 </script>
     
 <script lang="ts">
-import { getAvatarContext } from "./use-avatar-context"
+import { useAvatarContext } from "./use-avatar-context"
 
 const { id, ...imageProps }: AvatarImageProps = $props()
-const avatar = getAvatarContext()
+const avatar = useAvatarContext()
 </script>
   
 <img {...avatar().getImageProps()} {...imageProps} />

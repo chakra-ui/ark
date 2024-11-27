@@ -6,7 +6,7 @@ export interface AvatarRootProps extends UseAvatarProps {
 
 <script lang="ts">
 import type { Snippet } from "svelte"
-import { setAvatarContext } from "./use-avatar-context"
+import { AvatarProvider } from "./use-avatar-context"
 import { useAvatar, type UseAvatarProps } from './use-avatar.svelte'
 import { createSplitProps } from "../../utils/create-split-props"
 import { mergeProps } from "@zag-js/svelte"
@@ -21,7 +21,7 @@ const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
 
   const mergedProps = mergeProps(avatar().getRootProps(), localProps)
 
-setAvatarContext(avatar)
+  AvatarProvider(avatar)
 </script>
   
 <div {...mergedProps}>

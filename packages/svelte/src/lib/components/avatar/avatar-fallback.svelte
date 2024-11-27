@@ -6,10 +6,10 @@ export interface AvatarFallbackProps {
         
 <script lang="ts">
 import type { Snippet } from "svelte"
-import { getAvatarContext } from "./use-avatar-context"
+import { useAvatarContext } from "./use-avatar-context"
 
 const { children }: AvatarFallbackProps = $props()
-const avatar = getAvatarContext()
+const avatar = useAvatarContext()
 </script>
 
 
