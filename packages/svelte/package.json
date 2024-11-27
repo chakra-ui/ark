@@ -23,7 +23,8 @@
   "dependencies": {
     "@zag-js/avatar": "0.77.1",
     "@zag-js/core": "0.77.1",
-    "@zag-js/svelte": "0.77.1"
+    "@zag-js/svelte": "0.77.1",
+    "nanoid": "5.0.9"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "3.3.1",
@@ -31,7 +32,7 @@
     "@sveltejs/package": "2.3.7",
     "@sveltejs/vite-plugin-svelte": "4.0.2",
     "publint": "0.2.12",
-    "svelte": "5.2.3",
+    "svelte": "5.2.8",
     "svelte-check": "4.1.0",
     "tslib": "2.8.1",
     "typescript": "5.6.3",

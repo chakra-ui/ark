@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 import type { HTMLImgAttributes } from 'svelte/elements'
 export interface AvatarImageProps extends HTMLImgAttributes {
   id?: string
@@ -6,13 +6,12 @@ export interface AvatarImageProps extends HTMLImgAttributes {
 </script>
     
 <script lang="ts">
-import { useAvatarContext } from "./use-avatar-context"
+import { getAvatarContext } from "./use-avatar-context"
 
 const { id, ...imageProps }: AvatarImageProps = $props()
-const avatar = useAvatarContext()
+const avatar = getAvatarContext()
 </script>
-      
-
-<img {...avatar.getImageProps()} {...imageProps} />
+  
+<img {...avatar().getImageProps()} {...imageProps} />
     
       

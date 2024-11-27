@@ -6,6 +6,6 @@ export {
   default as AvatarRoot,
   type AvatarRootProps,
 } from './avatar-root.svelte'
-export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
+// export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
 
 // export * as Avatar from './avatar'

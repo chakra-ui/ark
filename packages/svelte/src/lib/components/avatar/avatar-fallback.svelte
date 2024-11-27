@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 export interface AvatarFallbackProps {
   children: Snippet
 }
@@ -6,14 +6,14 @@ export interface AvatarFallbackProps {
         
 <script lang="ts">
 import type { Snippet } from "svelte"
-import { useAvatarContext } from "./use-avatar-context"
+import { getAvatarContext } from "./use-avatar-context"
 
 const { children }: AvatarFallbackProps = $props()
-const avatar = useAvatarContext()
+const avatar = getAvatarContext()
 </script>
 
 
-<div {...avatar.getFallbackProps()} >
+<div {...avatar().getFallbackProps()}>
 {@render children()}
 </div>
         
