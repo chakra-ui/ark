@@ -19,14 +19,12 @@
   "files": ["dist", "!dist/**/*.test.*", "!dist/**/*.spec.*"],
   "exports": {
     ".": {
-      "source": "./src/lib/index.ts",
       "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
+      "svelte": "./src/lib/index.ts"
     },
     "./*": {
-      "source": "./src/lib/components/*/index.ts",
       "types": "./dist/components/*/index.d.ts",
-      "svelte": "./dist/components/*/index.js"
+      "svelte": "./src/lib/components/*/index.ts"
     }
   },
   "scripts": {
@@ -41,7 +39,10 @@
     "postpack": "clean-package restore"
   },
   "clean-package": {
-    "remove": ["exports.\\..source", "exports.\\./*.source"]
+    "replace": {
+      "exports.\\..svelte": "./dist/index.js",
+      "exports.\\./*.svelte": "./dist/components/*/index.js"
+    }
   },
   "publishConfig": {
     "access": "public"

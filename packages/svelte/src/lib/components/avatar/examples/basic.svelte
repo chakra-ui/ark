@@ -1,5 +1,5 @@
 <script module lang="ts">
-import { Avatar } from '$lib/components/avatar'
+import { Avatar } from '@ark-ui/svelte/avatar'
 </script>
 
 <Avatar.Root>
