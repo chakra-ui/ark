@@ -9,7 +9,7 @@ export interface AvatarProps extends AvatarRootProps {
 </script>
 
 <script lang="ts">
-  let { src, name }: AvatarProps = $props()
+  let { src, name, ...rootProps }: AvatarProps = $props()
 
   const getInitials = $derived(() =>
     name
@@ -21,7 +21,7 @@ export interface AvatarProps extends AvatarRootProps {
   )
 </script>
 
-<Avatar.Root>
+<Avatar.Root {...rootProps}>
   <Avatar.Fallback>{getInitials()}</Avatar.Fallback>
   <Avatar.Image {src} alt={name} />
 </Avatar.Root>
