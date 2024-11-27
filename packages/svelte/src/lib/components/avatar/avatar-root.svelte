@@ -1,15 +1,15 @@
 <script module lang="ts">
-export interface AvatarRootProps extends UseAvatarProps {
-  children: Snippet
-}
+import type { Assign, HTMLProps } from '$lib/types'
+import type { UseAvatarProps } from './use-avatar.svelte'
+
+export interface AvatarRootBaseProps extends UseAvatarProps {}
+export interface AvatarRootProps extends Assign<HTMLProps<'div'>, UseAvatarProps> {}
 </script>
 
 <script lang="ts">
-  import type { Snippet } from 'svelte'
-  import { AvatarProvider } from './use-avatar-context'
-  import { useAvatar, type UseAvatarProps } from './use-avatar.svelte'
   import { createSplitProps } from '../../utils/create-split-props'
-  import { mergeProps } from '@zag-js/svelte'
+  import { AvatarProvider } from './use-avatar-context'
+  import { useAvatar } from './use-avatar.svelte'
 
   let props: AvatarRootProps = $props()
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
@@ -18,11 +18,11 @@ export interface AvatarRootProps extends UseAvatarProps {
     'onStatusChange',
   ])
   const avatar = useAvatar(useAvatarProps)
-  const mergedProps = mergeProps(avatar().getRootProps(), localProps)
+  // const mergedProps = mergeProps(() => avatar().getRootProps(), localProps)
 
   AvatarProvider(avatar)
 </script>
 
-<div {...mergedProps}>
-  {@render props.children()}
+<div {...avatar().getRootProps()} {...localProps}>
+  {@render props.children?.()}
 </div>

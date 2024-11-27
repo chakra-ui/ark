@@ -8,4 +8,4 @@ export {
 } from './avatar-root.svelte'
 // export { useAvatarContext, type UseAvatarContext } from './use-avatar-context'
 
-// export * as Avatar from './avatar'
+export * as Avatar from './avatar'
