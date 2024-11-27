@@ -1,10 +1,10 @@
 <script module lang="ts">
-import type { UseAvatarContext } from './use-avatar-context'
+  import type { UseAvatarContext } from './use-avatar-context'
 
-export interface AvatarContextProps {
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  api?: (avatar: UseAvatarContext) => any
-}
+  export interface AvatarContextProps {
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    api?: (avatar: UseAvatarContext) => any
+  }
 </script>
 
 <script lang="ts">
