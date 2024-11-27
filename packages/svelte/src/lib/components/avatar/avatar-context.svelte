@@ -2,6 +2,7 @@
 import type { UseAvatarContext } from './use-avatar-context'
 
 export interface AvatarContextProps {
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   api?: (avatar: UseAvatarContext) => any
 }
 </script>
