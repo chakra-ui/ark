@@ -15,6 +15,7 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
   import { AvatarProvider } from './use-avatar-context'
+  import Ark from '../ark.svelte'
 
   const props: AvatarRootProviderProps = $props()
   const [{ value: avatar }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
@@ -24,6 +25,4 @@
   const mergedProps = $derived(mergeProps(avatar().getRootProps(), localProps))
 </script>
 
-<div {...mergedProps}>
-  {@render props.children?.()}
-</div>
+<Ark as="div" {...mergedProps} />

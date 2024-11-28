@@ -1,17 +1,18 @@
 <script module lang="ts">
-  import type { HTMLProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps } from '$lib/types'
 
-  export type AvatarImageBaseProps = {}
-  export interface AvatarImageProps extends AvatarImageBaseProps, HTMLProps<'img'> {}
+  export interface AvatarImageBaseProps extends PolymorphicProps<'img'> {}
+  export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}
 </script>
 
 <script lang="ts">
-  import { useAvatarContext } from './use-avatar-context'
+  import Ark from '../ark.svelte'
   import { mergeProps } from '@zag-js/svelte'
+  import { useAvatarContext } from './use-avatar-context'
 
   const props: AvatarImageProps = $props()
   const avatar = useAvatarContext()
   const mergedProps = $derived(mergeProps(avatar().getImageProps(), props))
 </script>
 
-<img {...mergedProps} />
+<Ark as="img" {...mergedProps} />
