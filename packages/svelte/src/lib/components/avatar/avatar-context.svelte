@@ -1,9 +1,9 @@
 <script module lang="ts">
+  import type { Snippet } from 'svelte'
   import type { UseAvatarContext } from './use-avatar-context'
 
   export interface AvatarContextProps {
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    api?: (avatar: UseAvatarContext) => any
+    api?: Snippet<[UseAvatarContext]>
   }
 </script>
 
