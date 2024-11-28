@@ -8,8 +8,9 @@ description: All notable changes will be documented in this file.
 
 ## Added
 
-- Added `factory` component for `asChild` prop.
+- Added `Ark` factory component for `asChild` prop.
 - Added `Environment` component.
+- Added `Collection` helpers.
 
 ## [0.1.0] - 2024-11-27
 
