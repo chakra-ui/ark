@@ -1,6 +1,6 @@
 <script module lang="ts">
-  import type { Locale } from '@zag-js/i18n-utils'
   import type { Snippet } from 'svelte'
+  import type { UseLocaleContext } from './use-locale-context'
 
   export interface LocaleProviderProps {
     /**
@@ -21,7 +21,7 @@
 
   let { locale, children }: LocaleProviderProps = $props()
 
-  const context = $state<Locale>({
+  const context = $state<UseLocaleContext>({
     locale,
     dir: isRTL(locale) ? 'rtl' : 'ltr',
   })
