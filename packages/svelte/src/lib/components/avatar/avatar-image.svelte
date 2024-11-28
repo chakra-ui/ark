@@ -1,8 +1,8 @@
 <script module lang="ts">
-import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps } from '$lib/types'
 
-export interface AvatarImageBaseProps extends PolymorphicProps<'img'> {}
-export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}
+  export interface AvatarImageBaseProps extends PolymorphicProps<'img'> {}
+  export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}
 </script>
 
 <script lang="ts">

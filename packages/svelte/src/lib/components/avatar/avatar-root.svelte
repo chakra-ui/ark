@@ -1,9 +1,9 @@
 <script module lang="ts">
-import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
-import type { UseAvatarProps } from './use-avatar.svelte'
+  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { UseAvatarProps } from './use-avatar.svelte'
 
-export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
-export interface AvatarRootProps extends Assign<HTMLProps<'div'>, AvatarRootBaseProps> {}
+  export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
+  export interface AvatarRootProps extends Assign<HTMLProps<'div'>, AvatarRootBaseProps> {}
 </script>
 
 <script lang="ts">

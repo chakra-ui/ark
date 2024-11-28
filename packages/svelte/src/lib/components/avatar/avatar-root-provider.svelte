@@ -1,14 +1,14 @@
 <script module lang="ts">
-import type { Assign, HTMLProps } from '$lib/types'
-import type { UseAvatarReturn } from './use-avatar.svelte'
+  import type { Assign, HTMLProps } from '$lib/types'
+  import type { UseAvatarReturn } from './use-avatar.svelte'
 
-interface RootProviderProps {
-  value: UseAvatarReturn
-}
+  interface RootProviderProps {
+    value: UseAvatarReturn
+  }
 
-export interface AvatarRootProviderBaseProps extends RootProviderProps {}
-export interface AvatarRootProviderProps
-  extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
+  export interface AvatarRootProviderBaseProps extends RootProviderProps {}
+  export interface AvatarRootProviderProps
+    extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">

@@ -1,11 +1,11 @@
 <script lang="ts">
-import Ark from '../factory.svelte'
+  import Ark from '../factory.svelte'
 
-interface Props {
-  onClickParent?: () => void
-  onClickChild?: () => void
-}
-const { onClickParent, onClickChild }: Props = $props()
+  interface Props {
+    onClickParent?: () => void
+    onClickChild?: () => void
+  }
+  const { onClickParent, onClickChild }: Props = $props()
 </script>
 
 <Ark
