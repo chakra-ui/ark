@@ -1,11 +1,11 @@
 <script module lang="ts">
-import { Avatar, type AvatarRootProps } from '@ark-ui/svelte/avatar'
-import './avatar.css'
+  import { Avatar, type AvatarRootProps } from '@ark-ui/svelte/avatar'
+  import './avatar.css'
 
-export interface AvatarProps extends AvatarRootProps {
-  name: string
-  src?: string
-}
+  export interface AvatarProps extends AvatarRootProps {
+    name: string
+    src?: string
+  }
 </script>
 
 <script lang="ts">
