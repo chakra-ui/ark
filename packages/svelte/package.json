@@ -22,6 +22,10 @@
       "types": "./src/lib/index.ts",
       "svelte": "./src/lib/index.ts"
     },
+    "./locale": {
+      "types": "./src/lib/providers/locale/index.ts",
+      "svelte": "./src/lib/providers/locale/index.ts"
+    },
     "./*": {
       "types": "./src/lib/components/*/index.ts",
       "svelte": "./src/lib/components/*/index.ts"
@@ -42,6 +46,8 @@
     "replace": {
       "exports.\\..svelte": "./dist/index.js",
       "exports.\\..types": "./dist/index.d.ts",
+      "exports.\\./locale.svelte": "./dist/providers/locale/index.js",
+      "exports.\\./locale.types": "./dist/providers/locale/index.d.ts",
       "exports.\\./*.svelte": "./dist/components/*/index.js",
       "exports.\\./*.types": "./dist/components/*/index.d.ts"
     }
@@ -53,6 +59,7 @@
   "dependencies": {
     "@zag-js/avatar": "0.77.1",
     "@zag-js/core": "0.77.1",
+    "@zag-js/i18n-utils": "0.77.1",
     "@zag-js/svelte": "0.77.1",
     "nanoid": "5.0.9"
   },
