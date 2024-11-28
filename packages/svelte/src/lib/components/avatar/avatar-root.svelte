@@ -1,9 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
-  import type { UseAvatarProps } from './use-avatar.svelte'
+import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+import type { UseAvatarProps } from './use-avatar.svelte'
 
-  export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
-  export interface AvatarRootProps extends Assign<HTMLProps<'div'>, AvatarRootBaseProps> {}
+export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'div'> {}
+export interface AvatarRootProps extends Assign<HTMLProps<'div'>, AvatarRootBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -11,7 +11,7 @@
   import { createSplitProps } from '../../utils/create-split-props'
   import { AvatarProvider } from './use-avatar-context'
   import { useAvatar } from './use-avatar.svelte'
-  import Ark from '../ark.svelte'
+  import { Ark } from '../factory'
 
   let props: AvatarRootProps = $props()
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [

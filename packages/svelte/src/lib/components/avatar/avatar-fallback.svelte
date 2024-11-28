@@ -8,7 +8,7 @@
 <script lang="ts">
   import { useAvatarContext } from './use-avatar-context'
   import { mergeProps } from '@zag-js/svelte'
-  import Ark from '../ark.svelte'
+  import { Ark } from '../factory'
 
   const props: AvatarFallbackProps = $props()
 

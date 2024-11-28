@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Ark from '../components/ark.svelte'
+  import Ark from '../factory.svelte'
 </script>
 
 <Ark

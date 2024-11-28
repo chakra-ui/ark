@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/svelte'
 import { describe, expect, it } from 'vitest'
-import ComponentUnderTest from './factory.svelte'
+import ComponentUnderTest from './examples/basic.svelte'
 
 describe('Ark Factory', () => {
   it('should render only the child', () => {

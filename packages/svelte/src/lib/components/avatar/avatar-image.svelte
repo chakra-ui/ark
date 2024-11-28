@@ -1,12 +1,12 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+import type { HTMLProps, PolymorphicProps } from '$lib/types'
 
-  export interface AvatarImageBaseProps extends PolymorphicProps<'img'> {}
-  export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}
+export interface AvatarImageBaseProps extends PolymorphicProps<'img'> {}
+export interface AvatarImageProps extends HTMLProps<'img'>, AvatarImageBaseProps {}
 </script>
 
 <script lang="ts">
-  import Ark from '../ark.svelte'
+  import { Ark } from '../factory'
   import { mergeProps } from '@zag-js/svelte'
   import { useAvatarContext } from './use-avatar-context'
 

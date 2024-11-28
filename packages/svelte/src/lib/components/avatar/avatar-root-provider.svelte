@@ -1,21 +1,21 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps } from '$lib/types'
-  import type { UseAvatarReturn } from './use-avatar.svelte'
+import type { Assign, HTMLProps } from '$lib/types'
+import type { UseAvatarReturn } from './use-avatar.svelte'
 
-  interface RootProviderProps {
-    value: UseAvatarReturn
-  }
+interface RootProviderProps {
+  value: UseAvatarReturn
+}
 
-  export interface AvatarRootProviderBaseProps extends RootProviderProps {}
-  export interface AvatarRootProviderProps
-    extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
+export interface AvatarRootProviderBaseProps extends RootProviderProps {}
+export interface AvatarRootProviderProps
+  extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
   import { AvatarProvider } from './use-avatar-context'
-  import Ark from '../ark.svelte'
+  import { Ark } from '../factory'
 
   const props: AvatarRootProviderProps = $props()
   const [{ value: avatar }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
