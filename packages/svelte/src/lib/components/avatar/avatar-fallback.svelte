@@ -1,13 +1,14 @@
 <script module lang="ts">
-  import type { HTMLProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps } from '$lib/types'
 
-  export type AvatarFallbackBaseProps = {}
-  export interface AvatarFallbackProps extends AvatarFallbackBaseProps, HTMLProps<'div'> {}
+  export interface AvatarFallbackBaseProps extends PolymorphicProps<'span'> {}
+  export interface AvatarFallbackProps extends HTMLProps<'span'>, AvatarFallbackBaseProps {}
 </script>
 
 <script lang="ts">
   import { useAvatarContext } from './use-avatar-context'
   import { mergeProps } from '@zag-js/svelte'
+  import { Ark } from '../factory'
 
   const props: AvatarFallbackProps = $props()
 
@@ -15,6 +16,4 @@
   const mergedProps = $derived(mergeProps(avatar().getFallbackProps(), props))
 </script>
 
-<div {...mergedProps}>
-  {@render props.children?.()}
-</div>
+<Ark as="span" {...mergedProps} />
