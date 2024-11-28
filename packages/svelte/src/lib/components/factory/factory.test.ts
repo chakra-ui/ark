@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/svelte'
-import { describe, expect, it } from 'vitest'
+import user from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'
 
 describe('Ark Factory', () => {
@@ -27,38 +28,13 @@ describe('Ark Factory', () => {
     expect(screen.getByText('Ark UI')).toBeVisible()
   })
 
-  // it('should merge events', async () => {
-  //   const onClickParent = vi.fn()
-  //   const onClickChild = vi.fn()
-  //   render(
-  //     <ark.div data-testid="parent" onClick={onClickParent} asChild>
-  //       <ark.span data-testid="child" onClick={onClickChild} />
-  //     </ark.div>,
-  //   )
-  //   await user.click(screen.getByTestId('child'))
-  //   expect(onClickParent).toHaveBeenCalled()
-  //   expect(onClickChild).toHaveBeenCalled()
-  // })
+  it('should merge events', async () => {
+    const onClickParent = vi.fn()
+    const onClickChild = vi.fn()
+    render(ComponentUnderTest, { onClickParent, onClickChild })
+    await user.click(screen.getByTestId('child'))
 
-  // it('should propagate asChild', async () => {
-  //   render(
-  //     <ark.div data-testid="parent" asChild>
-  //       <ark.span asChild>
-  //         <ark.span>Ark UI</ark.span>
-  //       </ark.span>
-  //     </ark.div>,
-  //   )
-  //   expect(screen.getByText('Ark UI')).toHaveAttribute('data-testid', 'parent')
-  // })
-
-  // it('should stop propagate asChild', async () => {
-  //   render(
-  //     <ark.div data-testid="parent" asChild>
-  //       <ark.span asChild={false}>
-  //         <ark.span>Ark UI</ark.span>
-  //       </ark.span>
-  //     </ark.div>,
-  //   )
-  //   expect(screen.getByText('Ark UI')).not.toHaveAttribute('data-testid', 'parent')
-  // })
+    expect(onClickParent).toHaveBeenCalled()
+    expect(onClickChild).toHaveBeenCalled()
+  })
 })
