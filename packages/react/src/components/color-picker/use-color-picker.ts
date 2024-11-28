@@ -35,6 +35,7 @@ export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerR
     },
     dir,
     disabled: field?.disabled,
+    invalid: field?.invalid,
     readOnly: field?.readOnly,
     required: field?.required,
     getRootNode,

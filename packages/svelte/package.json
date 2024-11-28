@@ -57,10 +57,10 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/avatar": "0.77.1",
-    "@zag-js/core": "0.77.1",
-    "@zag-js/i18n-utils": "0.77.1",
-    "@zag-js/svelte": "0.77.1",
+    "@zag-js/avatar": "0.78.0",
+    "@zag-js/core": "0.78.0",
+    "@zag-js/i18n-utils": "0.78.0",
+    "@zag-js/svelte": "0.78.0",
     "nanoid": "5.0.9"
   },
   "devDependencies": {

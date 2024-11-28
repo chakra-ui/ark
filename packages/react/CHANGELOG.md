@@ -6,6 +6,14 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **ColorPicker**: Added support for `invalid` and `openAutoFocus` props.
+
+### Fixed
+
+- **Presence, Collapsible**: Resolved a potential memory leak occurring after component unmount.
+
 ## [4.4.4] - 2024-11-18
 
 ### Fixed

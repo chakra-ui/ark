@@ -44,6 +44,7 @@ export const useColorPicker = (
       input: field?.value.ids.control,
     },
     disabled: field?.value.disabled,
+    invalid: field?.value.invalid,
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,

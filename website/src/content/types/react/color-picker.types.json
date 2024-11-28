@@ -229,6 +229,11 @@
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the color picker is invalid"
+      },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -284,6 +289,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the color picker is open"
+      },
+      "openAutoFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to auto focus the color picker when it is opened"
       },
       "positioning": {
         "type": "PositioningOptions",

@@ -29,7 +29,9 @@ const props = withDefaults(defineProps<ColorPickerRootProps>(), {
   closeOnSelect: undefined,
   defaultOpen: undefined,
   disabled: undefined,
+  invalid: undefined,
   open: undefined,
+  openAutoFocus: undefined,
   readOnly: undefined,
   required: undefined,
 } satisfies BooleanDefaults<RootProps>)

@@ -53,6 +53,10 @@ export interface RootProps {
    */
   initialFocusEl?: () => HTMLElement | null
   /**
+   * Whether the color picker is invalid
+   */
+  invalid?: boolean
+  /**
    * The v-model value of the color picker
    */
   modelValue?: colorPicker.Color
@@ -64,6 +68,11 @@ export interface RootProps {
    * Whether the color picker is open
    */
   open?: boolean
+  /**
+   * Whether to auto focus the color picker when it is opened
+   * @default true
+   */
+  openAutoFocus?: boolean
   /**
    * The positioning options for the color picker
    */
