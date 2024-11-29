@@ -1,4 +1,4 @@
-import { useEnvironmentContext } from '../use-environment-context'
+import { useEnvironmentContext } from '@ark-ui/react/environment'
 
 export const Usage = () => {
   const { getRootNode } = useEnvironmentContext()

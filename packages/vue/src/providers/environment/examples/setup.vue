@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EnvironmentProvider } from '../'
+import { EnvironmentProvider } from '@ark-ui/vue/environment'
 </script>
 
 <template>
