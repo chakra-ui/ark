@@ -1,4 +1,4 @@
-import { LocaleProvider } from '../'
+import { LocaleProvider } from '@ark-ui/solid/locale'
 import { Usage } from './usage'
 
 export const Basic = () => {
