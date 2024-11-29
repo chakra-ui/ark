@@ -12,6 +12,8 @@ description: All notable changes will be documented in this file.
 - Added `Environment` component.
 - Added `Collection` helpers.
 - Added `Timer` component.
+- Added `Highlight` component.
+- Added `QrCode` component.
 
 ## [0.1.0] - 2024-11-27
 
