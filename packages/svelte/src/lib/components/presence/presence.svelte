@@ -11,12 +11,11 @@ export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}
   import { splitPresenceProps } from './split-presence-props.svelte'
 
   let props: PresenceProps = $props()
+  
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
+  const presence = $derived(usePresence(presenceProps))
 
-  const presence = () => usePresence(presenceProps)
-
-  // $inspect(presenceProps)
-  $inspect(presence())
+  $inspect(presence)
 
 </script>
 
