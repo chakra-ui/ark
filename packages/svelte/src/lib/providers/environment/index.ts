@@ -4,6 +4,6 @@ export {
 } from './environment-provider.svelte'
 export {
   useEnvironmentContext,
-  type EnvironmentContext,
+  type UseEnvironmentContext,
   type RootNode,
 } from './use-environment-context'

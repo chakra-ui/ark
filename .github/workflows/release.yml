@@ -74,14 +74,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Notification
-        if: github.event.inputs.preRelease == 'skip'
-        uses: slackapi/slack-github-action@v1.27.1
-        with:
-          payload: |
-            {
-              "package_name": "@ark-ui/${{ github.event.inputs.package }}",
-              "changelog_url": "https://ark-ui.com/docs/changelog/${{ github.event.inputs.package }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

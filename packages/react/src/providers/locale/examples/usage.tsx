@@ -1,4 +1,4 @@
-import { useLocaleContext } from '../use-locale-context'
+import { useLocaleContext } from '@ark-ui/react/locale'
 
 export const Usage = () => {
   const { locale, dir } = useLocaleContext()

@@ -10,6 +10,10 @@ description: All notable changes will be documented in this file.
 
 - **ColorPicker**: Added support for `invalid` and `openAutoFocus` props.
 
+- ### Changed
+
+- **Environment**: Deprecated `EnvironmentContext` in favor of `UseEnvironmentContext`.
+
 ### Fixed
 
 - **Presence, Collapsible**: Resolved a potential memory leak occurring after component unmount.

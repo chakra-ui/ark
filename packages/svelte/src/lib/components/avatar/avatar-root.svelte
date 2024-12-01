@@ -9,11 +9,11 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props'
+  import { Ark } from '../factory'
   import { AvatarProvider } from './use-avatar-context'
   import { useAvatar } from './use-avatar.svelte'
-  import { Ark } from '../factory'
 
-  let props: AvatarRootProps = $props()
+  const props: AvatarRootProps = $props()
   const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
     'id',
     'ids',

@@ -1,7 +1,6 @@
+import { EnvironmentProvider, useEnvironmentContext } from '@ark-ui/react/environment'
+import { Portal } from '@ark-ui/react/portal'
 import { useEffect, useState } from 'react'
-import { EnvironmentProvider, useEnvironmentContext } from '../'
-import { Portal } from '../../../components'
-import { Basic } from '../../../components/tooltip/examples/basic'
 
 export const ShadowRoot = () => {
   const [ref, setRef] = useState<HTMLDivElement | null>(null)
@@ -28,7 +27,6 @@ const PrintEnvironment = () => {
   return (
     <Portal>
       <pre>{JSON.stringify(getRootNode(), null, 2)}</pre>
-      <Basic />
     </Portal>
   )
 }
