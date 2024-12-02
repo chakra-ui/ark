@@ -223,7 +223,7 @@
     "@testing-library/vue": "8.0.3",
     "@types/jsdom": "21.1.7",
     "@vitejs/plugin-vue": "5.2.1",
-    "@vitejs/plugin-vue-jsx": "4.1.0",
+    "@vitejs/plugin-vue-jsx": "4.1.1",
     "@vue/compiler-sfc": "3.5.13",
     "clean-package": "2.2.0",
     "globby": "14.0.2",
