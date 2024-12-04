@@ -1,10 +1,32 @@
 import { expect, test } from '@playwright/test'
+import { gotoStory } from '../utils'
 
-test('has avatar image', async ({ page }) => {
-  // Using the sandbox to isolate the story from the rest of Histoire.
-  await page.goto('/__sandbox.html?storyId=avatar&variantId=basic')
+test.describe('basic variant', () => {
+  test('has avatar image', async ({ page }) => {
+    await gotoStory('avatar', 'basic', page)
 
-  await page.getByAltText('avatar').waitFor()
+    await page.getByAltText('avatar').waitFor()
+    expect(page.getByAltText('avatar')).toHaveAttribute('src', 'https://i.pravatar.cc/3000')
+  })
+})
 
-  expect(page.getByAltText('avatar')).toHaveAttribute('src', 'https://i.pravatar.cc/3000')
+test.describe('closed variant', () => {
+  test('displays avatar with name', async ({ page }) => {
+    await gotoStory('avatar', 'closed', page)
+
+    await page.getByAltText('Christian').waitFor()
+    expect(page.getByAltText('Christian')).toHaveAttribute(
+      'src',
+      'https://avatars.githubusercontent.com/u/1846056?v=4',
+    )
+  })
+})
+
+test.describe('root-provided variant', () => {
+  test('has avatar image', async ({ page }) => {
+    await gotoStory('avatar', 'root-provider', page)
+
+    await page.getByAltText('avatar').waitFor()
+    expect(page.getByAltText('avatar')).toHaveAttribute('src', 'https://i.pravatar.cc/3000')
+  })
 })
