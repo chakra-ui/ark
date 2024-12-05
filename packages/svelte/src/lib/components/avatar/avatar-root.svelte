@@ -7,20 +7,18 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps } from '@zag-js/svelte'
+  import { mergeProps, reflect } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props'
   import { Ark } from '../factory'
   import { AvatarProvider } from './use-avatar-context'
   import { useAvatar } from './use-avatar.svelte'
 
   const props: AvatarRootProps = $props()
-  const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
-    'id',
-    'ids',
-    'onStatusChange',
-  ])
+  const [useAvatarProps, localProps] = $derived(
+    createSplitProps<UseAvatarProps>()(props, ['id', 'ids', 'onStatusChange']),
+  )
 
-  const avatar = useAvatar(useAvatarProps)
+  const avatar = useAvatar(reflect(() => useAvatarProps))
   const mergedProps = $derived(mergeProps(avatar().getRootProps(), localProps))
 
   AvatarProvider(avatar)

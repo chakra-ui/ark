@@ -14,8 +14,8 @@
 
   const props: TimerRootProviderProps = $props()
   const { value: timer, ...localProps } = props
-
   const mergedProps = $derived(mergeProps(timer().getRootProps(), localProps))
+
   TimerProvider(timer)
 </script>
 

@@ -8,4 +8,4 @@
     <Timer.Separator>.</Timer.Separator>
     <Timer.Item type="milliseconds" />
   </Timer.Area>
-</Timer.Root> 
+</Timer.Root>

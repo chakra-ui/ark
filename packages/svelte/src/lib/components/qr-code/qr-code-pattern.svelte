@@ -11,7 +11,6 @@
   import { useQrCodeContext } from './use-qr-code-context'
 
   const props: QrCodePatternProps = $props()
-
   const qrCode = useQrCodeContext()
   const mergedProps = $derived(mergeProps(qrCode().getPatternProps(), props))
 </script>

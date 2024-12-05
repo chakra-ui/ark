@@ -6,4 +6,4 @@
   <QrCode.Frame>
     <QrCode.Pattern />
   </QrCode.Frame>
-</QrCode.Root> 
+</QrCode.Root>

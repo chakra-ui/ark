@@ -17,4 +17,4 @@
     <Timer.ActionTrigger action="resume">Resume</Timer.ActionTrigger>
     <Timer.ActionTrigger action="pause">Pause</Timer.ActionTrigger>
   </Timer.Control>
-</Timer.Root> 
+</Timer.Root>

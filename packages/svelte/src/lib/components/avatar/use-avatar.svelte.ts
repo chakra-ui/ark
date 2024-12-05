@@ -10,12 +10,14 @@ export interface UseAvatarProps
 export interface UseAvatarReturn extends Accessor<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps = {}) => {
-  const { dir } = useLocaleContext()
-  const { getRootNode } = useEnvironmentContext()
+  const id = createId()
+  const env = useEnvironmentContext()
+  const locale = useLocaleContext()
+
   const context = $derived({
-    id: createId(),
-    dir,
-    getRootNode,
+    id,
+    dir: locale.dir,
+    getRootNode: env.getRootNode,
     ...props,
   })
 

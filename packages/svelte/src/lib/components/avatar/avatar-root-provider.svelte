@@ -12,17 +12,15 @@
 </script>
 
 <script lang="ts">
-  import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
-  import { AvatarProvider } from './use-avatar-context'
   import { Ark } from '../factory'
+  import { AvatarProvider } from './use-avatar-context'
 
   const props: AvatarRootProviderProps = $props()
-  const [{ value: avatar }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const { value: avatar, ...localProps } = props
+  const mergedProps = $derived(mergeProps(avatar().getRootProps(), localProps))
 
   AvatarProvider(avatar)
-
-  const mergedProps = $derived(mergeProps(avatar().getRootProps(), localProps))
 </script>
 
 <Ark as="div" {...mergedProps} />

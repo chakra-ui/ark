@@ -7,21 +7,18 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps } from '@zag-js/svelte'
+  import { mergeProps, reflect } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props'
   import { Ark } from '../factory'
   import { QrCodeProvider } from './use-qr-code-context'
   import { useQrCode } from './use-qr-code.svelte'
 
   const props: QrCodeRootProps = $props()
-  const [useQrCodeProps, localProps] = createSplitProps<UseQrCodeProps>()(props, [
-    'id',
-    'ids',
-    'value',
-    'encoding',
-  ])
+  const [useQrCodeProps, localProps] = $derived(
+    createSplitProps<UseQrCodeProps>()(props, ['id', 'ids', 'value', 'encoding']),
+  )
 
-  const qrCode = useQrCode(useQrCodeProps)
+  const qrCode = useQrCode(reflect(() => useQrCodeProps))
   const mergedProps = $derived(mergeProps(qrCode().getRootProps(), localProps))
 
   QrCodeProvider(qrCode)

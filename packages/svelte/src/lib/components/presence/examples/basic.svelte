@@ -1,12 +1,12 @@
 <script lang="ts">
-import { Presence, type PresenceProps } from '@ark-ui/svelte/presence'
+  import { Presence, type PresenceProps } from '@ark-ui/svelte/presence'
 
-const props: PresenceProps = $props()
-let present = $state(false)
+  const props: PresenceProps = $props()
+  let present = $state(false)
 
-function toggle() {
-  present = !present
-}
+  function toggle() {
+    present = !present
+  }
 </script>
 
 <button onclick={toggle}>Toggle</button>

@@ -10,7 +10,7 @@
   export interface TimerItemProps extends HTMLProps<'div'>, TimerItemBaseProps {}
 
   const props: TimerItemProps = $props()
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['type'])
+  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['type']))
 
   const timer = useTimerContext()
   const mergedProps = $derived(mergeProps(timer().getItemProps(itemProps), localProps))

@@ -12,4 +12,4 @@
     <Timer.Separator>:</Timer.Separator>
     <Timer.Item type="seconds" />
   </Timer.Area>
-</Timer.Root> 
+</Timer.Root>

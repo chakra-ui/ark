@@ -28,4 +28,4 @@
   {:else}
     {text}
   {/if}
-{/each} 
+{/each}

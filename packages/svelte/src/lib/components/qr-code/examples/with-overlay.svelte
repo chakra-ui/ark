@@ -9,4 +9,4 @@
   <QrCode.Overlay>
     <img src="https://ark-ui.com/icon-192.png" alt="Ark UI Logo" />
   </QrCode.Overlay>
-</QrCode.Root> 
+</QrCode.Root>
