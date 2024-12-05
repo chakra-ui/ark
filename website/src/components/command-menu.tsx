@@ -57,7 +57,11 @@ export const CommandMenu = (props: Props) => {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner alignItems="start" top="5%" bottom="5%">
-          <Dialog.Content p="2" width={{ base: '100%', sm: 'md' }} _closed={{ animation: 'none' }}>
+          <Dialog.Content
+            p="2"
+            width={{ base: '100%', sm: 'md' }}
+            _closed={{ animationName: 'fade-out', animationDuration: '50ms' }}
+          >
             <Combobox.Root
               open
               disableLayer
