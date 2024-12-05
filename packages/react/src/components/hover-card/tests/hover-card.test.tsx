@@ -72,7 +72,7 @@ describe('HoverCard', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.unhover(screen.getByText('Hover me'))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

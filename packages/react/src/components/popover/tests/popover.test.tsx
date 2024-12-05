@@ -88,7 +88,7 @@ describe('Popover', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'click me' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

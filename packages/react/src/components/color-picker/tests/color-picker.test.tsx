@@ -41,7 +41,7 @@ describe('ColorPicker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByTestId('trigger'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByTestId('trigger'))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
