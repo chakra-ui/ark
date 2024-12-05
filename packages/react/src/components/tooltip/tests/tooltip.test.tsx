@@ -103,7 +103,7 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument())
 
     await user.keyboard('[Escape]')
     await waitFor(() => {
