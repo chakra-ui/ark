@@ -39,7 +39,7 @@ describe('Date Picker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
@@ -51,7 +51,7 @@ describe('Date Picker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeVisible())
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

@@ -63,7 +63,7 @@ describe('HoverCard', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
   })
 
   it('should lazy mount and unmount on exit', async () => {

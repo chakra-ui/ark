@@ -44,7 +44,7 @@ describe('Time Picker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
