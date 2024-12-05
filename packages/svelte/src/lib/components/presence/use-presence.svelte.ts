@@ -32,13 +32,13 @@ export const usePresence = (props: UsePresenceProps) => {
   )
 
   const result = $derived(() => ({
-    present: context.present,
-    unmounted,
-    setNode: api.setNode,
-    presenceProps: {
+    getPresenceProps: () => ({
+      'data-state': props.present ? 'open' : 'closed',
       hidden: !api.present,
-      'data-state': context.present ? 'open' : 'closed',
-    },
+    }),
+    present: api.present,
+    setNode: api.setNode,
+    unmounted,
   }))
 
   return result

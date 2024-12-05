@@ -11,4 +11,4 @@ function toggle() {
 
 <button onclick={toggle}>Toggle</button>
 
-<Presence {...props} {present}>Content</Presence>
+<Presence {...props} lazyMount unmountOnExit {present}>Content</Presence>

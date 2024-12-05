@@ -1,9 +1,9 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
-  import { type UsePresenceProps, usePresence } from './use-presence.svelte'
+import type { HTMLProps, PolymorphicProps } from '$lib/types'
+import { type UsePresenceProps, usePresence } from './use-presence.svelte'
 
-  export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps<'div'> {}
-  export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}
+export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps<'div'> {}
+export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}
 </script>
 
 <script lang="ts">
@@ -16,7 +16,7 @@
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
   const presence = usePresence(reflect(() => presenceProps))
-  const mergedProps = $derived(mergeProps(presence().presenceProps, localProps))
+  const mergedProps = $derived(mergeProps(presence().getPresenceProps(), localProps))
 
   onMount(() => presence().setNode(ref))
 </script>
