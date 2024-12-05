@@ -16,21 +16,22 @@
 </script>
 
 <script lang="ts">
-  import { EnvironmentContextProvider } from './use-environment-context'
   import { runIfFn } from '$lib/utils/run-if-fn'
+  import { reflect } from '@zag-js/svelte'
+  import { EnvironmentContextProvider } from './use-environment-context'
 
   const { value, children }: EnvironmentProviderProps = $props()
   let spanRef: HTMLSpanElement | null = $state(null)
 
   const getRootNode = () => runIfFn(value) ?? spanRef?.ownerDocument ?? document
 
-  const environment = $state({
+  const environment = $derived({
     getRootNode,
     getDocument: () => getDocument(getRootNode()),
     getWindow: () => getWindow(getRootNode()),
   })
 
-  EnvironmentContextProvider(environment)
+  EnvironmentContextProvider(reflect(() => environment))
 </script>
 
 {@render children?.()}
