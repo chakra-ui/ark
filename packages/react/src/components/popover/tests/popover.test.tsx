@@ -50,7 +50,7 @@ describe('Popover', () => {
     render(<ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('dialog')).toBeInTheDocument())
   })
 
   it('should allow controlled usage', async () => {
@@ -58,8 +58,7 @@ describe('Popover', () => {
     expect(screen.queryByText('title')).not.toBeVisible()
 
     await user.click(screen.getByRole('button', { name: /toggle/i }))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
-    expect(screen.queryByText('title')).toBeVisible()
+    await waitFor(() => expect(screen.getByRole('dialog')).toBeVisible())
 
     await user.click(screen.getByRole('button', { name: /toggle/i }))
     await waitFor(() => {
@@ -72,7 +71,7 @@ describe('Popover', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'click me' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeVisible())
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
@@ -89,7 +88,7 @@ describe('Popover', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'click me' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByRole('button', { name: 'close' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
