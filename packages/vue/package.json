@@ -216,6 +216,7 @@
     "@zag-js/vue": "0.77.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@biomejs/biome": "1.9.4",
     "@histoire/plugin-vue": "0.17.17",
     "@playwright/test": "^1.49.0",
