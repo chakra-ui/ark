@@ -3,7 +3,12 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export { createTreeCollection, type TreeNode } from '../collection'
+export {
+  createFileTreeCollection,
+  createTreeCollection,
+  type TreeCollection,
+  type TreeNode,
+} from '../collection'
 export {
   default as TreeViewBranchContent,
   type TreeViewBranchContentBaseProps,

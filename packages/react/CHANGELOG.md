@@ -9,8 +9,9 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **ColorPicker**: Added support for `invalid` and `openAutoFocus` props.
+- **TreeView**: Exported `TreeCollection` type.
 
-- ### Changed
+### Changed
 
 - **Environment**: Deprecated `EnvironmentContext` in favor of `UseEnvironmentContext`.
 

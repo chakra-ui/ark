@@ -3,7 +3,12 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export { createTreeCollection, type TreeNode } from '../collection'
+export {
+  createFileTreeCollection,
+  createTreeCollection,
+  type TreeCollection,
+  type TreeNode,
+} from '../collection'
 export {
   TreeViewBranch,
   type TreeViewBranchBaseProps,
@@ -40,11 +45,7 @@ export {
   type TreeViewBranchTriggerProps,
 } from './tree-view-branch-trigger'
 export { TreeViewContext, type TreeViewContextProps } from './tree-view-context'
-export {
-  TreeViewItem,
-  type TreeViewItemBaseProps,
-  type TreeViewItemProps,
-} from './tree-view-item'
+export { TreeViewItem, type TreeViewItemBaseProps, type TreeViewItemProps } from './tree-view-item'
 export {
   TreeViewItemIndicator,
   type TreeViewItemIndicatorBaseProps,
@@ -60,30 +61,19 @@ export {
   type TreeViewLabelBaseProps,
   type TreeViewLabelProps,
 } from './tree-view-label'
-export {
-  TreeViewNodeContext,
-  type TreeViewNodeContextProps,
-} from './tree-view-node-context'
+export { TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context'
 export {
   TreeViewNodeProvider,
   type TreeViewNodeProviderBaseProps,
   type TreeViewNodeProviderProps,
 } from './tree-view-node-provider'
-export {
-  TreeViewRoot,
-  type TreeViewRootBaseProps,
-  type TreeViewRootProps,
-} from './tree-view-root'
+export { TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootProps } from './tree-view-root'
 export {
   TreeViewRootProvider,
   type TreeViewRootProviderBaseProps,
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider'
-export {
-  TreeViewTree,
-  type TreeViewTreeBaseProps,
-  type TreeViewTreeProps,
-} from './tree-view-tree'
+export { TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
 

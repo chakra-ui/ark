@@ -9,8 +9,9 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **ColorPicker**: Added support for `invalid` and `openAutoFocus` props.
+- **TreeView**: Exported `TreeCollection` type.
 
-- ### Changed
+### Changed
 
 - **Environment**: Deprecated `EnvironmentContext` in favor of `UseEnvironmentContext`.
 
@@ -28,7 +29,8 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Utility**: Exported `createAnatomy` for defining custom component anatomy, now accessible via `import { createAnatomy } from '@ark-ui/solid/anatomy'`.
+- **Utility**: Exported `createAnatomy` for defining custom component anatomy, now accessible via
+  `import { createAnatomy } from '@ark-ui/solid/anatomy'`.
 
 ### Fixed
 
