@@ -6,7 +6,11 @@ test.describe('basic variant', () => {
     await gotoStory('avatar', 'basic', page)
 
     await page.getByAltText('avatar').waitFor()
-    expect(page.getByAltText('avatar')).toHaveAttribute('src', 'https://i.pravatar.cc/3000')
+    expect(page.getByAltText('avatar')).toHaveAttribute(
+      'src',
+      'https://avatars.githubusercontent.com/u/1846056?v=4',
+    )
+    expect(page).toHaveScreenshot()
   })
 })
 
@@ -19,6 +23,7 @@ test.describe('closed variant', () => {
       'src',
       'https://avatars.githubusercontent.com/u/1846056?v=4',
     )
+    expect(page).toHaveScreenshot()
   })
 })
 
@@ -27,6 +32,10 @@ test.describe('root-provided variant', () => {
     await gotoStory('avatar', 'root-provider', page)
 
     await page.getByAltText('avatar').waitFor()
-    expect(page.getByAltText('avatar')).toHaveAttribute('src', 'https://i.pravatar.cc/3000')
+    expect(page.getByAltText('avatar')).toHaveAttribute(
+      'src',
+      'https://avatars.githubusercontent.com/u/1846056?v=4',
+    )
+    expect(page).toHaveScreenshot()
   })
 })
