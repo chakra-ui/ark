@@ -15,7 +15,7 @@ test.describe('basic variant', () => {
 
     expect(page).toHaveScreenshot()
   })
-  test('has no a11y violations', async ({ page }) => {
+  test('has no a11y violations', async ({ page }, testInfo) => {
     await gotoStory('avatar', 'basic', page)
 
     await page.getByAltText('avatar').waitFor()
@@ -23,6 +23,11 @@ test.describe('basic variant', () => {
     const accessibilityScanResults = await new AxeBuilder({ page })
       .include('[data-scope="avatar"][data-part="root"]')
       .analyze()
+
+    await testInfo.attach('accessibility-scan-results', {
+      body: JSON.stringify(accessibilityScanResults, null, 2),
+      contentType: 'application/json',
+    })
 
     expect(accessibilityScanResults.violations).toEqual([])
   })
@@ -39,13 +44,18 @@ test.describe('closed variant', () => {
     )
     expect(page).toHaveScreenshot()
   })
-  test('has no a11y violations', async ({ page }) => {
+  test('has no a11y violations', async ({ page }, testInfo) => {
     await gotoStory('avatar', 'closed', page)
     await page.getByAltText('Christian').waitFor()
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .include('[data-scope="avatar"][data-part="root"]')
       .analyze()
+
+    await testInfo.attach('accessibility-scan-results', {
+      body: JSON.stringify(accessibilityScanResults, null, 2),
+      contentType: 'application/json',
+    })
 
     expect(accessibilityScanResults.violations).toEqual([])
   })
@@ -62,7 +72,7 @@ test.describe('root-provided variant', () => {
     )
     expect(page).toHaveScreenshot()
   })
-  test('has no a11y violations', async ({ page }) => {
+  test('has no a11y violations', async ({ page }, testInfo) => {
     await gotoStory('avatar', 'root-provider', page)
 
     await page.getByAltText('avatar').waitFor()
@@ -70,6 +80,11 @@ test.describe('root-provided variant', () => {
     const accessibilityScanResults = await new AxeBuilder({ page })
       .include('[data-scope="avatar"][data-part="root"]')
       .analyze()
+
+    await testInfo.attach('accessibility-scan-results', {
+      body: JSON.stringify(accessibilityScanResults, null, 2),
+      contentType: 'application/json',
+    })
 
     expect(accessibilityScanResults.violations).toEqual([])
   })
