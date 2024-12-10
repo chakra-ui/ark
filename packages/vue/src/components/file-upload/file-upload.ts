@@ -1,4 +1,9 @@
-export type { FileAcceptDetails, FileChangeDetails, FileRejectDetails } from '@zag-js/file-upload'
+export type {
+  FileAcceptDetails,
+  FileChangeDetails,
+  FileRejectDetails,
+  FileValidateDetails,
+} from '@zag-js/file-upload'
 export {
   default as ClearTrigger,
   type FileUploadClearTriggerBaseProps as ClearTriggerBaseProps,

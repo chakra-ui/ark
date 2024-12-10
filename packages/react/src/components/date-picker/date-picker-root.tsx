@@ -35,7 +35,6 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
     'locale',
     'max',
     'min',
-    'modal',
     'name',
     'numOfMonths',
     'onFocusChange',

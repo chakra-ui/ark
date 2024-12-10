@@ -27,7 +27,6 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   defaultOpen: undefined,
   disabled: undefined,
   fixedWeeks: undefined,
-  modal: undefined,
   open: undefined,
   readOnly: undefined,
 } satisfies BooleanDefaults<RootProps>)

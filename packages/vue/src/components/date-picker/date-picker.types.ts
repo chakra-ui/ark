@@ -79,11 +79,6 @@ export interface RootProps {
    */
   min?: datePicker.DateValue
   /**
-   * Whether the calendar should be modal. This means that the calendar will
-   * block interaction with the rest of the page, and trap focus within it.
-   */
-  modal?: boolean
-  /**
    * The v-model value of the date picker
    */
   modelValue?: datePicker.DateValue[]

@@ -33,7 +33,6 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
     'locale',
     'max',
     'min',
-    'modal',
     'name',
     'numOfMonths',
     'onFocusChange',

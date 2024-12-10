@@ -208,11 +208,6 @@
         "isRequired": false,
         "description": "The minimum date that can be selected."
       },
-      "modal": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the calendar should be modal. This means that the calendar will\nblock interaction with the rest of the page, and trap focus within it."
-      },
       "modelValue": {
         "type": "DateValue[]",
         "isRequired": false,

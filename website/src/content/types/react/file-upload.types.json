@@ -214,7 +214,7 @@
         "description": "The localized messages to use."
       },
       "validate": {
-        "type": "(file: File) => FileError[] | null",
+        "type": "(file: File, details: FileValidateDetails) => FileError[] | null",
         "isRequired": false,
         "description": "Function to validate a file"
       }
