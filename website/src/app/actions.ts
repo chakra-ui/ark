@@ -125,3 +125,37 @@ class ConflictError {
 class UnauthorizedError {
   readonly _tag = 'UnauthorizedError'
 }
+
+interface FormState {
+  success?: boolean | undefined
+  message: string
+}
+
+export const contact = async (_prevState: unknown, formData: FormData): Promise<FormState> => {
+  return Effect.runPromise(
+    pipe(
+      Effect.tryPromise({
+        try: () =>
+          fetch(process.env.SLACK_WEBHOOK_URL, {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify({
+              name: formData.get('name'),
+              subject: formData.get('subject'),
+              email: formData.get('email'),
+              message: formData.get('message'),
+              platform: 'Ark UI',
+            }),
+          }),
+        catch: () => new Error(),
+      }),
+      Effect.map(() => ({ success: true, message: 'Your message has been sent successfully.' })),
+      Effect.catchAll(() =>
+        Effect.succeed({
+          success: false,
+          message: 'Whoops! Something went wrong. Please try again.',
+        }),
+      ),
+    ),
+  )
+}

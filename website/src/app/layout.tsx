@@ -5,6 +5,8 @@ import Script from 'next/script'
 import type { PropsWithChildren } from 'react'
 import { cx } from 'styled-system/css'
 import './global.css'
+import { ContactDialog, FloatingContactButton } from '~/components/contact-dialog'
+import { Toaster } from '~/components/toaster'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
@@ -39,7 +41,13 @@ export default function RootLayout(props: PropsWithChildren) {
         <Script src="https://plausible.io/js/plausible.js" data-domain="ark-ui.com" />
       </head>
       <body>
-        <ThemeProvider attribute="class">{props.children}</ThemeProvider>
+        <ThemeProvider attribute="class">
+          {props.children}
+          <ContactDialog>
+            <FloatingContactButton />
+          </ContactDialog>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )
