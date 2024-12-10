@@ -38,7 +38,7 @@ describe('Popover', () => {
     render(<ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('dialog')).toBeInTheDocument())
 
     await user.click(screen.getByText('close'))
     await waitFor(() => {
