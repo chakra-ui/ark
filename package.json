@@ -34,16 +34,5 @@
     "vercel": "39.1.1"
   },
   "packageManager": "bun@1.1.37",
-  "trustedDependencies": [
-    "@ark-ui/website",
-    "@biomejs/biome",
-    "@prisma/client",
-    "@prisma/engines",
-    "@sveltejs/kit",
-    "esbuild",
-    "lefthook",
-    "prisma",
-    "root",
-    "sharp"
-  ]
+  "trustedDependencies": ["@ark-ui/website"]
 }
