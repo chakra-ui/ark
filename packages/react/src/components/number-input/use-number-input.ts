@@ -18,7 +18,7 @@ export interface UseNumberInputReturn extends numberInput.Api<PropTypes> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
   const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { dir, locale } = useLocaleContext()
   const field = useFieldContext()
 
   const initialContext: numberInput.Context = {
@@ -32,6 +32,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
     required: field?.required,
     invalid: field?.invalid,
     dir,
+    locale,
     getRootNode,
     value: props.defaultValue,
     ...props,

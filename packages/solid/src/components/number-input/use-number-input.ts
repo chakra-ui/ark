@@ -16,9 +16,9 @@ export interface UseNumberInputProps
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
   const field = useFieldContext()
 
   const context = createMemo(() => ({
@@ -32,6 +32,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
     required: field?.().required,
     invalid: field?.().invalid,
     dir: locale().dir,
+    locale: locale().locale,
     getRootNode: environment().getRootNode,
     value: props.defaultValue,
     ...props,

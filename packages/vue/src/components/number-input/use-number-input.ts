@@ -38,6 +38,7 @@ export const useNumberInput = (
     required: field?.value.required,
     invalid: field?.value.invalid,
     dir: locale.value.dir,
+    locale: locale.value.locale,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {

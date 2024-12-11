@@ -8,23 +8,26 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **ColorPicker**: Introduced `invalid` and `openAutoFocus` props.  
-- **TreeView**: Exported the `TreeCollection` type.  
-- **FileUpload**: Added `acceptedFiles` and `rejectedFiles` outputs to the `validate` method.  
+- **ColorPicker**: Introduced `invalid` and `openAutoFocus` props.
+- **TreeView**: Exported the `TreeCollection` type.
+- **FileUpload**: Added `acceptedFiles` and `rejectedFiles` outputs to the `validate` method.
 
 ### Changed
 
-- **Environment**: Deprecated `EnvironmentContext` in favor of `UseEnvironmentContext`.  
+- **Environment**: Deprecated `EnvironmentContext` in favor of `UseEnvironmentContext`.
 
 ### Fixed
 
-- **Presence, Collapsible**: Fixed a potential memory leak after component unmount.  
-- **Environment**: Correctly exported `EnvironmentContext`.  
-- **SignaturePad**: Resolved an issue where `getDataUrl(...)` rendered improperly scaled images in Firefox.  
+- **Presence, Collapsible**: Fixed a potential memory leak after component unmount.
+- **Environment**: Correctly exported `EnvironmentContext`.
+- **SignaturePad**: Resolved an issue where `getDataUrl(...)` rendered improperly scaled images in
+  Firefox.
+- **NumberInput**: Fixed an issue where the locale provided by `LocaleProvider` was not applied
+  correctly.
 
 ### Removed
 
-- **DatePicker**: Dropped the unimplemented `modal` prop.  
+- **DatePicker**: Dropped the unimplemented `modal` prop.
 
 ## [4.4.2] - 2024-11-18
 

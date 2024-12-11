@@ -39,7 +39,7 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument())
 
     await user.unhover(tooltipTrigger)
 
@@ -83,7 +83,7 @@ describe('Tooltip', () => {
     expect(screen.getByText('content')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument())
   })
 
   it('should have pointer-events none style if interactive is set to false', async () => {
