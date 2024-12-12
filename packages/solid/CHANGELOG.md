@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.6.0] - 2024-12-12
+
 ### Added
 
 - **ColorPicker**: Introduced `invalid` and `openAutoFocus` props.

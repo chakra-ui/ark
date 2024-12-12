@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.0] - 2024-12-12
+
 ## Added
 
 - Added `Ark` factory component for `asChild` prop.
