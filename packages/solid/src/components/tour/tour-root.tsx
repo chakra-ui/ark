@@ -1,0 +1,18 @@
+// const [useTourProps, localProps] = createSplitProps<UseTourProps>()(props, [
+//     'closeOnEscape',
+//     'closeOnInteractOutside',
+//     'id',
+//     'ids',
+//     'keyboardNavigation',
+//     'onFocusOutside',
+//     'onInteractOutside',
+//     'onPointerDownOutside',
+//     'onStatusChange',
+//     'onStepChange',
+//     'preventInteraction',
+//     'spotlightOffset',
+//     'spotlightRadius',
+//     'stepId',
+//     'steps',
+//     'translations',
+//   ])
