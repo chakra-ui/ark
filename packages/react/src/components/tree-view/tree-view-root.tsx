@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/react'
-import { type JSX, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
