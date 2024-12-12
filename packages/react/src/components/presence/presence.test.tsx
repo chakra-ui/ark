@@ -31,7 +31,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).not.toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).toBeVisible()
+    await waitFor(() => expect(screen.queryByTestId('box')).toBeVisible())
 
     await user.click(screen.getByRole('button'))
     await waitFor(() => {
@@ -44,7 +44,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).toBeVisible()
+    await waitFor(() => expect(screen.queryByTestId('box')).toBeVisible())
 
     await user.click(screen.getByRole('button'))
     await waitFor(() => {
@@ -57,7 +57,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).not.toBeVisible()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).toBeVisible()
+    await waitFor(() => expect(screen.queryByTestId('box')).toBeVisible())
 
     await user.click(screen.getByRole('button'))
     await waitFor(() => expect(screen.queryByTestId('box')).not.toBeInTheDocument())
@@ -69,7 +69,7 @@ describe('Presence', () => {
     expect(screen.queryByTestId('box')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button'))
-    expect(screen.queryByTestId('box')).toBeVisible()
+    await waitFor(() => expect(screen.queryByTestId('box')).toBeVisible())
 
     await user.click(screen.getByRole('button'))
     await waitFor(() => expect(screen.queryByTestId('box')).not.toBeInTheDocument())
