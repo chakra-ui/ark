@@ -8,7 +8,7 @@ const toaster = createToaster({
 })
 
 export const Update = () => {
-  const id = useRef<string>(undefined)
+  const id = useRef<string>()
 
   const createToast = () => {
     id.current = toaster.create({
