@@ -69,13 +69,13 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/anatomy": "0.78.2",
-    "@zag-js/avatar": "0.78.2",
-    "@zag-js/core": "0.78.2",
-    "@zag-js/collection": "0.78.2",
-    "@zag-js/dom-query": "0.78.2",
-    "@zag-js/i18n-utils": "0.78.2",
-    "@zag-js/svelte": "0.78.2",
+    "@zag-js/anatomy": "0.78.3",
+    "@zag-js/avatar": "0.78.3",
+    "@zag-js/core": "0.78.3",
+    "@zag-js/collection": "0.78.3",
+    "@zag-js/dom-query": "0.78.3",
+    "@zag-js/i18n-utils": "0.78.3",
+    "@zag-js/svelte": "0.78.3",
     "nanoid": "5.0.9"
   },
   "devDependencies": {
