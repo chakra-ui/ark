@@ -26,7 +26,7 @@
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.78.3",
     "@zag-js/docs": "0.78.3",
-    "effect": "3.11.4",
+    "effect": "3.11.7",
     "lucide-react": "0.462.0",
     "match-sorter": "8.0.0",
     "next": "15.0.3",
