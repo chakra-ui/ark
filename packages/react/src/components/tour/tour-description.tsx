@@ -10,7 +10,11 @@ export const TourDescription = forwardRef<HTMLDivElement, TourDescriptionProps>(
   const tour = useTourContext()
   const mergedProps = mergeProps(tour.getDescriptionProps(), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return (
+    <ark.div {...mergedProps} ref={ref}>
+      {mergedProps.children || tour.step?.description}
+    </ark.div>
+  )
 })
 
 TourDescription.displayName = 'TourDescription'

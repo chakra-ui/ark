@@ -7,18 +7,19 @@ import {
   splitPresenceProps,
   usePresence,
 } from '../presence'
-import { type UseTourProps, useTour } from './use-tour'
+import type { UseTourProps, UseTourReturn } from './use-tour'
 import { TourProvider } from './use-tour-context'
 
-export interface TourRootBaseProps extends UseTourProps, UsePresenceProps {}
+export interface TourRootBaseProps extends UseTourProps, UsePresenceProps {
+  tour: UseTourReturn
+}
 export interface TourRootProps extends TourRootBaseProps {
   children?: ReactNode
 }
 
 export const TourRoot = (props: TourRootProps) => {
-  const [presenceProps, { children, ...useTourProps }] = splitPresenceProps(props)
+  const [presenceProps, { children, tour }] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
-  const tour = useTour(useTourProps)
   const presence = usePresence(mergeProps({ present: tour.open }, presenceProps))
 
   return (

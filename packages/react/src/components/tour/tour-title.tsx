@@ -10,7 +10,11 @@ export const TourTitle = forwardRef<HTMLHeadingElement, TourTitleProps>((props, 
   const tour = useTourContext()
   const mergedProps = mergeProps(tour.getTitleProps(), props)
 
-  return <ark.h2 {...mergedProps} ref={ref} />
+  return (
+    <ark.h2 {...mergedProps} ref={ref}>
+      {mergedProps.children || tour.step?.title}
+    </ark.h2>
+  )
 })
 
 TourTitle.displayName = 'TourTitle'
