@@ -39,6 +39,7 @@
     "toast",
     "toggle group",
     "tooltip",
+    "tour",
     "tree view"
   ],
   "license": "MIT",
@@ -173,6 +174,7 @@
     "@zag-js/toast": "0.78.3",
     "@zag-js/toggle-group": "0.78.3",
     "@zag-js/tooltip": "0.78.3",
+    "@zag-js/tour": "0.78.3",
     "@zag-js/tree-view": "0.78.3",
     "@zag-js/types": "0.78.3"
   },
