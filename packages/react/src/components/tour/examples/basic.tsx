@@ -1,14 +1,17 @@
-import { Tour, type UseTourReturn, useTour } from '@ark-ui/react/tour'
+import { Tour, useTour } from '@ark-ui/react/tour'
 import type { StepDetails } from '@zag-js/tour'
 import { XIcon } from 'lucide-react'
+import { useEffect } from 'react'
 import { Frame } from '../../frame'
 
-interface Props {
-  tour: UseTourReturn
-}
+export const DemoTour = () => {
+  const tour = useTour({ steps: tourData })
 
-export const DemoTour = (props: Props) => {
-  const { tour } = props
+  // Start the tour when the component mounts
+  useEffect(() => {
+    tour.start()
+  }, [tour])
+
   return (
     <Tour.Root tour={tour}>
       <Tour.Backdrop />
@@ -36,12 +39,9 @@ export const DemoTour = (props: Props) => {
 }
 
 export const Basic = () => {
-  const tour = useTour({ steps: tourData })
-
   return (
     <main className="tour">
       <div>
-        <button onClick={() => tour.start()}>Start Tour</button>
         <div className="steps__container">
           <h3 id="step-1">Step 1</h3>
           <div className="overflow__container">
@@ -59,7 +59,7 @@ export const Basic = () => {
           <h3 id="step-3">Step 3</h3>
           <h3 id="step-4">Step 4</h3>
         </div>
-        <DemoTour tour={tour} />
+        <DemoTour />
       </div>
     </main>
   )

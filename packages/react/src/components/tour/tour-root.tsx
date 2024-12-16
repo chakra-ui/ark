@@ -7,10 +7,10 @@ import {
   splitPresenceProps,
   usePresence,
 } from '../presence'
-import type { UseTourProps, UseTourReturn } from './use-tour'
+import type { UseTourReturn } from './use-tour'
 import { TourProvider } from './use-tour-context'
 
-export interface TourRootBaseProps extends UseTourProps, UsePresenceProps {
+export interface TourRootBaseProps extends UsePresenceProps {
   tour: UseTourReturn
 }
 export interface TourRootProps extends TourRootBaseProps {
