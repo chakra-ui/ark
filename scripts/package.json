@@ -33,7 +33,7 @@
     "prettier-plugin-svelte": "3.3.2",
     "ts-morph": "24.0.0",
     "ts-pattern": "5.6.0",
-    "typescript": "5.6.3",
+    "typescript": "5.7.2",
     "voca": "1.4.1"
   }
 }
