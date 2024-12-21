@@ -1,9 +1,9 @@
 import * as timer from '@zag-js/timer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './timer.types'
 
 export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'getRootNode'>, 'id'> {}
@@ -11,7 +11,7 @@ export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'get
 export interface UseTimerReturn extends ComputedRef<timer.Api<PropTypes>> {}
 
 export const useTimer = (props: UseTimerProps, emit?: EmitFn<RootEmits>): UseTimerReturn => {
-  const id = useId()
+  const id = useId(props.id)
   const env = useEnvironmentContext()
 
   const context = computed<timer.Context>(() => ({

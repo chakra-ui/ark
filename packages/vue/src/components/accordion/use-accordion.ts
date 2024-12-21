@@ -1,9 +1,9 @@
 import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './accordion.types'
 
 export interface UseAccordionProps
@@ -25,7 +25,7 @@ export const useAccordion = (
   props: UseAccordionProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseAccordionReturn => {
-  const id = useId()
+  const id = useId(props.id)
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 

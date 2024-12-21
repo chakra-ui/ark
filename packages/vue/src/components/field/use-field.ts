@@ -2,6 +2,7 @@ import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
 import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
 import { parts } from './field.anatomy'
 import type { ElementIds } from './field.types'
+import { useId } from '../../utils'
 
 export interface UseFieldProps {
   /**
@@ -40,7 +41,7 @@ export const useField = (props: UseFieldProps) => {
     hasHelperText: false,
   })
 
-  const id = props.id ?? `field-${Math.random().toString(36).substr(2, 9)}`
+  const id = useId(props.id)
   const rootRef = ref(null)
 
   const rootId = ids?.control ?? `field::${id}`
