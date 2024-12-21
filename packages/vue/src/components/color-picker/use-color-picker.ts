@@ -1,9 +1,9 @@
 import * as colorPicker from '@zag-js/color-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './color-picker.types'
 
@@ -32,7 +32,7 @@ export const useColorPicker = (
   props: UseColorPickerProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseColorPickerReturn => {
-  const id = useId()
+  const id = useId(props.id)
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()

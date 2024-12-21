@@ -7,9 +7,9 @@ import {
   onMounted,
   reactive,
   ref,
-  useId,
 } from 'vue'
 import { parts } from './fieldset.anatomy'
+import { useId } from '../../utils'
 
 export interface UseFieldsetProps {
   /**
@@ -35,7 +35,7 @@ export const useFieldset = (props: UseFieldsetProps) => {
     hasHelperText: false,
   })
 
-  const id = props.id ?? useId()
+  const id = useId(props.id)
   const rootRef = ref(null)
   const errorTextId = `fieldset::${id}::error-text`
   const helperTextId = `fieldset::${id}::helper-text`

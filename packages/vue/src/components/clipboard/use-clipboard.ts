@@ -1,9 +1,9 @@
 import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps, useId } from '../../utils'
 import type { RootEmits } from './clipboard.types'
 
 export interface UseClipboardProps
@@ -14,7 +14,7 @@ export const useClipboard = (
   props: UseClipboardProps = {},
   emit?: EmitFn<RootEmits>,
 ): UseClipboardReturn => {
-  const id = useId()
+  const id = useId(props.id)
   const env = useEnvironmentContext()
   const context = computed<clipboard.Context>(() => ({
     id,

@@ -1,4 +1,5 @@
 export { cleanProps } from './clean-props'
+export { useId } from './use-id'
 export { createContext } from './create-context'
 export { runIfFn } from './run-if-fn'
 export { useEmitAsProps } from './use-emits-as-props'
