@@ -80,7 +80,7 @@ export const useField = (props: UseFieldProps) => {
 
   const getRootProps = () => ({
     ...parts.root.attrs,
-    id: rootId,
+    id: rootId.value,
     role: 'group',
     'data-disabled': dataAttr(props.disabled),
     'data-invalid': dataAttr(props.invalid),
@@ -89,11 +89,11 @@ export const useField = (props: UseFieldProps) => {
 
   const getLabelProps = () => ({
     ...parts.label.attrs,
-    id: labelId,
+    id: labelId.value,
     'data-disabled': dataAttr(props.disabled),
     'data-invalid': dataAttr(props.invalid),
     'data-readonly': dataAttr(props.readOnly),
-    htmlFor: id,
+    htmlFor: id.value,
   })
 
   const labelIds = computed(() => {
@@ -109,7 +109,7 @@ export const useField = (props: UseFieldProps) => {
     'data-invalid': dataAttr(props.invalid),
     'data-required': dataAttr(props.required),
     'data-readonly': dataAttr(props.readOnly),
-    id: id,
+    id: id.value,
     required: props.required,
     disabled: props.disabled,
     readOnly: props.readOnly,
@@ -131,7 +131,7 @@ export const useField = (props: UseFieldProps) => {
   })
 
   const getHelperTextProps = () => ({
-    id: helperTextId,
+    id: helperTextId.value,
     ...parts.helperText.attrs,
   })
 
@@ -149,10 +149,10 @@ export const useField = (props: UseFieldProps) => {
   return computed(() => ({
     ariaDescribedby: labelIds.value.join(' ') || undefined,
     ids: {
-      control: id,
-      label: labelId,
-      errorText: errorTextId,
-      helperText: helperTextId,
+      control: id.value,
+      label: labelId.value,
+      errorText: errorTextId.value,
+      helperText: helperTextId.value,
     },
     refs: {
       rootRef,
