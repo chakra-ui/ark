@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import InputControlled from './examples/input-controlled.vue'
 import Input from './examples/input.vue'
+import ReactiveInvalid from './examples/reactive-invalid.vue'
 import RequiredIndicator from './examples/required-indicator.vue'
 import SelectControlled from './examples/select-controlled.vue'
 import Select from './examples/select.vue'
@@ -29,6 +30,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Required Indicator">
       <RequiredIndicator />
+    </Variant>
+    <Variant title="Reactive Invalid">
+      <ReactiveInvalid />
     </Variant>
   </Story>
 </template>

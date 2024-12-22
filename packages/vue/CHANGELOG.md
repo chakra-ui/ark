@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Field**: Fixed issue where `invalid` and `disabled` prop was not reactive.
+
 ## [4.5.0] - 2024-12-12
 
 ### Added

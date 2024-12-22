@@ -33,20 +33,18 @@ export interface UseFieldProps {
 export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps) => {
-  const { required, disabled, invalid, readOnly, ids } = props
-
   const state = reactive({
     hasErrorText: false,
     hasHelperText: false,
   })
 
-  const id = props.id ?? `field-${Math.random().toString(36).substr(2, 9)}`
+  const id = computed(() => props.id ?? `field-${Math.random().toString(36).substring(2, 9)}`)
   const rootRef = ref(null)
 
-  const rootId = ids?.control ?? `field::${id}`
-  const errorTextId = ids?.errorText ?? `field::${id}::error-text`
-  const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
-  const labelId = ids?.label ?? `field::${id}::label`
+  const rootId = computed(() => props.ids?.control ?? `field::${id.value}`)
+  const errorTextId = computed(() => props.ids?.errorText ?? `field::${id.value}::error-text`)
+  const helperTextId = computed(() => props.ids?.helperText ?? `field::${id.value}::helper-text`)
+  const labelId = computed(() => props.ids?.label ?? `field::${id.value}::label`)
 
   onMounted(() => {
     const rootNode = rootRef.value
@@ -56,8 +54,8 @@ export const useField = (props: UseFieldProps) => {
     const doc = win.document
 
     const checkTextElements = () => {
-      state.hasErrorText = !!doc.getElementById(errorTextId)
-      state.hasHelperText = !!doc.getElementById(helperTextId)
+      state.hasErrorText = !!doc.getElementById(errorTextId.value)
+      state.hasHelperText = !!doc.getElementById(helperTextId.value)
     }
 
     checkTextElements()
@@ -74,35 +72,37 @@ export const useField = (props: UseFieldProps) => {
     ...parts.root.attrs,
     id: rootId,
     role: 'group',
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
+    'data-disabled': dataAttr(props.disabled),
+    'data-invalid': dataAttr(props.invalid),
+    'data-readonly': dataAttr(props.readOnly),
   })
 
   const getLabelProps = () => ({
     ...parts.label.attrs,
     id: labelId,
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
+    'data-disabled': dataAttr(props.disabled),
+    'data-invalid': dataAttr(props.invalid),
+    'data-readonly': dataAttr(props.readOnly),
     htmlFor: id,
   })
 
-  const labelIds: string[] = []
-
-  if (state.hasErrorText && invalid) labelIds.push(errorTextId)
-  if (state.hasHelperText) labelIds.push(helperTextId)
+  const labelIds = computed(() => {
+    const ids: string[] = []
+    if (state.hasErrorText && props.invalid) ids.push(errorTextId.value)
+    if (state.hasHelperText) ids.push(helperTextId.value)
+    return ids
+  })
 
   const getControlProps = () => ({
-    'aria-describedby': labelIds.join(' ') || undefined,
-    'aria-invalid': ariaAttr(invalid),
-    'data-invalid': dataAttr(invalid),
-    'data-required': dataAttr(required),
-    'data-readonly': dataAttr(readOnly),
-    id,
-    required,
-    disabled,
-    readOnly,
+    'aria-describedby': labelIds.value.join(' ') || undefined,
+    'aria-invalid': ariaAttr(props.invalid),
+    'data-invalid': dataAttr(props.invalid),
+    'data-required': dataAttr(props.required),
+    'data-readonly': dataAttr(props.readOnly),
+    id: id,
+    required: props.required,
+    disabled: props.disabled,
+    readOnly: props.readOnly,
   })
 
   const getInputProps = () => ({
@@ -126,7 +126,7 @@ export const useField = (props: UseFieldProps) => {
   })
 
   const getErrorTextProps = (): HTMLAttributes => ({
-    id: errorTextId,
+    id: errorTextId.value,
     ...parts.errorText.attrs,
     'aria-live': 'polite',
   })
@@ -137,7 +137,7 @@ export const useField = (props: UseFieldProps) => {
   })
 
   return computed(() => ({
-    ariaDescribedby: labelIds.join(' '),
+    ariaDescribedby: labelIds.value.join(' ') || undefined,
     ids: {
       control: id,
       label: labelId,
@@ -147,10 +147,10 @@ export const useField = (props: UseFieldProps) => {
     refs: {
       rootRef,
     },
-    disabled,
-    invalid,
-    readOnly,
-    required,
+    disabled: props.disabled,
+    invalid: props.invalid,
+    readOnly: props.readOnly,
+    required: props.required,
     getLabelProps,
     getRootProps,
     getInputProps,
