@@ -1,5 +1,13 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import {
+  type HTMLAttributes,
+  computed,
+  onBeforeUnmount,
+  onMounted,
+  reactive,
+  ref,
+  useId,
+} from 'vue'
 import { parts } from './field.anatomy'
 import type { ElementIds } from './field.types'
 
@@ -38,7 +46,9 @@ export const useField = (props: UseFieldProps) => {
     hasHelperText: false,
   })
 
-  const id = computed(() => props.id ?? `field-${Math.random().toString(36).substring(2, 9)}`)
+  const uid = useId()
+  const id = computed(() => props.id ?? `field::${uid}`)
+
   const rootRef = ref(null)
 
   const rootId = computed(() => props.ids?.control ?? `field::${id.value}`)
