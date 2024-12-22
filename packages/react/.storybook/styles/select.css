@@ -22,6 +22,11 @@
   justify-content: space-between;
 }
 
+[data-scope='select'][data-part='item'][data-highlighted] {
+  background: #0000ff;
+  color: white;
+}
+
 [data-scope='select'][data-part='item'][data-disabled] {
   color: silver;
 }

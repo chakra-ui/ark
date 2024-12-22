@@ -3,7 +3,6 @@ import { normalizeProps, useMachine } from '@zag-js/react'
 import { useRef } from 'react'
 import type { Optional } from '../../types'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
-import { useDebounce } from '../../utils/use-debounce'
 import { useEvent } from '../../utils/use-event'
 
 export interface UsePresenceProps
@@ -12,9 +11,8 @@ export interface UsePresenceProps
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps) => {
-  const { lazyMount, unmountOnExit, ...rest } = props
+  const { lazyMount, unmountOnExit, present, ...rest } = props
   const wasEverPresent = useRef(false)
-  const present = useDebounce(props.present, 0)
   const context: Partial<presence.Context> = {
     ...rest,
     present,

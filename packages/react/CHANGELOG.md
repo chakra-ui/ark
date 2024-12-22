@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Select**: Fixed regression where scroll restoration in overflowing select menus was not working.
+
 ## [4.5.0] - 2024-12-12
 
 ### Added

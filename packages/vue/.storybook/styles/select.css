@@ -26,6 +26,11 @@
   color: silver;
 }
 
+[data-scope='select'][data-part='item'][data-highlighted] {
+  background: #0000ff;
+  color: white;
+}
+
 [data-scope='select'][data-part='trigger'] {
   display: inline-flex;
   gap: 8px;
