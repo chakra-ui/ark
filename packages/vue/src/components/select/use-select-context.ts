@@ -6,4 +6,3 @@ export interface UseSelectContext<T extends CollectionItem> extends UseSelectRet
 
 export const [SelectProvider, useSelectContext] =
   createContext<UseSelectContext<CollectionItem>>('SelectContext')
-1
