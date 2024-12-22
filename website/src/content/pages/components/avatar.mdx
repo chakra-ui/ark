@@ -36,6 +36,42 @@ You can leverage it to access the component state and methods from outside the a
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+### Next.js Image
+
+Here's an example of how to use the `Image` component from `next/image`.
+
+```tsx
+import { Avatar, useAvatarContext } from '@ark-ui/react/avatar'
+import Image, { ImageProps } from 'next/image'
+
+const AvatarNextImage = (props: ImageProps) => {
+  const avatar = useAvatarContext()
+  const { hidden, ...imageProps } = avatar.getImageProps() as ImageProps
+  return (
+    <Image
+      {...imageProps}
+      {...props}
+      style={{
+        ...props.style,
+        visibility: hidden ? 'hidden' : 'visible',
+        objectFit: 'cover',
+      }}
+    />
+  )
+}
+
+const Demo = () => {
+  return (
+    <Avatar.Root>
+      <Avatar.Fallback>JD</Avatar.Fallback>
+      <AvatarNextImage src="..." width={80} height={80} />
+    </Avatar.Root>
+  )
+}
+```
+
+> Refer to this [Github Discussion](https://github.com/chakra-ui/ark/discussions/3147) for more information.
+
 ## API Reference
 
 <ComponentTypes id="avatar" />
