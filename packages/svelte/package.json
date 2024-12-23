@@ -84,7 +84,7 @@
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/sveltekit": "8.4.7",
     "@sveltejs/adapter-auto": "3.3.1",
-    "@sveltejs/kit": "2.11.1",
+    "@sveltejs/kit": "2.15.0",
     "@sveltejs/package": "2.3.7",
     "@sveltejs/vite-plugin-svelte": "4.0.3",
     "@testing-library/jest-dom": "6.6.3",
