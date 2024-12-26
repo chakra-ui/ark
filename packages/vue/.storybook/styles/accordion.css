@@ -40,8 +40,8 @@
 [data-scope="accordion"][data-part="item-content"] {
   overflow: hidden;
   max-width: 400px;
-  background-color: cadetblue;
-  color:white;
+  background-color: #004c4c;
+  color: white;
 }
 
 [data-scope="accordion"][data-part="item-content"][data-state="open"] {

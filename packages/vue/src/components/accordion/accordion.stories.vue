@@ -15,47 +15,47 @@ import RootProvider from './examples/root-provider.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
-  <Story title="Accordion">
-    <Variant title="Basic">
+  <Story id="accordion" title="Accordion">
+    <Variant id="basic" title="Basic">
       <Basic />
     </Variant>
-    <Variant title="RenderProp">
+    <Variant id="render-prop" title="RenderProp">
       <RenderProp />
     </Variant>
-    <Variant title="Collapsible">
+    <Variant id="collapsible" title="Collapsible">
       <Collapsible />
     </Variant>
-    <Variant title="Multiple">
+    <Variant id="multiple" title="Multiple">
       <Multiple />
     </Variant>
-    <Variant title="Controlled">
+    <Variant id="controlled" title="Controlled">
       <Controlled />
     </Variant>
-    <Variant title="Vertical">
+    <Variant id="vertical" title="Vertical">
       <Vertical />
     </Variant>
-    <Variant title="Horizontal">
+    <Variant id="horizontal" title="Horizontal">
       <Horizontal />
     </Variant>
-    <Variant title="Disabled">
+    <Variant id="disabled" title="Disabled">
       <Disabled />
     </Variant>
-    <Variant title="Closed">
+    <Variant id="closed" title="Closed">
       <Accordion multiple :items="['React', 'Solid', 'Vue']" />
     </Variant>
-    <Variant title="RootProvider">
+    <Variant id="root-provider" title="RootProvider">
       <RootProvider />
     </Variant>
-    <Variant title="ContextFocusedValue">
+    <Variant id="context-focusedValue" title="ContextFocusedValue">
       <ContextFocusedValue />
     </Variant>
-    <Variant title="ContextValue">
+    <Variant id="context-value" title="ContextValue">
       <ContextValue />
     </Variant>
-    <Variant title="ContextSetValue">
+    <Variant id="context-set-value" title="ContextSetValue">
       <ContextSetValue />
     </Variant>
-    <Variant title="ContextGetItemState">
+    <Variant id="context-get-item-state" title="ContextGetItemState">
       <ContextGetItemState />
     </Variant>
   </Story>
