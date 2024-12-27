@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import { Carousel } from '@ark-ui/vue/carousel'
 
-const images = [
-  'https://tinyurl.com/5b6ka8jd',
-  'https://tinyurl.com/7rmccdn5',
-  'https://tinyurl.com/59jxz9uu',
-  'https://tinyurl.com/6jurv23t',
-  'https://tinyurl.com/yp4rfum7',
-]
+const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
 </script>
 
 <template>
   <Carousel.Root>
     <Carousel.Control>
+      <Carousel.AutoplayTrigger>Play or Pause</Carousel.AutoplayTrigger>
       <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
       <Carousel.NextTrigger>Next</Carousel.NextTrigger>
     </Carousel.Control>

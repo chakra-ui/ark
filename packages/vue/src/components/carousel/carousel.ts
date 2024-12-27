@@ -1,4 +1,4 @@
-export type { SlideChangeDetails } from '@zag-js/carousel'
+export type { PageChangeDetails, AutoplayStatusDetails, DragStatusDetails } from '@zag-js/carousel'
 export {
   default as Context,
   type CarouselContextProps as ContextProps,
@@ -50,7 +50,7 @@ export {
   type CarouselRootProps as RootProps,
 } from './carousel-root.vue'
 export {
-  default as Viewport,
-  type CarouselViewportProps as ViewportProps,
-  type CarouselViewportBaseProps as ViewportBaseProps,
-} from './carousel-viewport.vue'
+  default as AutoplayTrigger,
+  type CarouselAutoplayTriggerProps as AutoplayTriggerProps,
+  type CarouselAutoplayTriggerBaseProps as AutoplayTriggerBaseProps,
+} from './carousel-autoplay-trigger.vue'
