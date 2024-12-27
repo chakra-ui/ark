@@ -116,7 +116,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseAccordionReturn", "isRequired": true },
+      "value": {
+        "type": "UseAccordionReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

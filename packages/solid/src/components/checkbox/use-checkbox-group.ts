@@ -38,7 +38,7 @@ export interface CheckboxGroupItemProps {
 }
 
 export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
-  const interative = createMemo(() => !(props.disabled || props.readOnly))
+  const interactive = createMemo(() => !(props.disabled || props.readOnly))
 
   const [value, setValue] = useControllableState({
     value: props.value,
@@ -56,13 +56,13 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
     }
 
     const addValue = (val: string) => {
-      if (!interative()) return
+      if (!interactive()) return
       if (isChecked(val)) return
       setValue(value().concat(val))
     }
 
     const removeValue = (val: string) => {
-      if (!interative()) return
+      if (!interactive()) return
       setValue(value().filter((v) => String(v) !== String(val)))
     }
 

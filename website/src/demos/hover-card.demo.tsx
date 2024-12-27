@@ -36,7 +36,7 @@ export const Demo = (props: HoverCard.RootProps) => {
                 <Icon size="sm">
                   <MapPinIcon />
                 </Icon>
-                <Text size="xs">Joined Dezember 2011</Text>
+                <Text size="xs">Joined December 2011</Text>
               </HStack>
             </Stack>
           </Stack>
