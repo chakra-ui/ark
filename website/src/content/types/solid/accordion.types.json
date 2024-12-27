@@ -83,7 +83,7 @@
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether multple accordion items can be expanded at the same time."
+        "description": "Whether multiple accordion items can be expanded at the same time."
       },
       "onFocusChange": {
         "type": "(details: FocusChangeDetails) => void",
@@ -116,7 +116,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseAccordionReturn", "isRequired": true },
+      "value": {
+        "type": "UseAccordionReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

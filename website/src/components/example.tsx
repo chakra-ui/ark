@@ -27,7 +27,7 @@ const findExamples = async (props: Props) => {
 
   return Promise.all(
     ['react', 'solid', 'vue'].map(async (framework) => {
-      const extenstion = Match.value(framework).pipe(
+      const extension = Match.value(framework).pipe(
         Match.when('vue', () => 'vue'),
         Match.orElse(() => 'tsx'),
       )
@@ -44,7 +44,7 @@ const findExamples = async (props: Props) => {
       )
 
       const basePath = `../packages/${framework}/src`
-      const fileName = [id, extenstion].join('.')
+      const fileName = [id, extension].join('.')
 
       const content = await readFile(
         join(process.cwd(), basePath, examplePath, fileName),
@@ -56,7 +56,7 @@ const findExamples = async (props: Props) => {
         .replace(/.*@ts-expect-error.*\n/g, '')
 
       const html = await codeToHtml(code, {
-        lang: extenstion,
+        lang: extension,
         theme: 'github-dark-default',
         transformers: [transformerNotationHighlight()],
       })

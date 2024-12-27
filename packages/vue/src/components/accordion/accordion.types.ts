@@ -34,7 +34,7 @@ export interface RootProps {
    */
   modelValue?: string[]
   /**
-   * Whether multple accordion items can be expanded at the same time.
+   * Whether multiple accordion items can be expanded at the same time.
    * @default false
    */
   multiple?: boolean

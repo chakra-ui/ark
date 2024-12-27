@@ -81,7 +81,7 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
         ConflictError: () =>
           Effect.succeed({ success: false, message: 'License key is already in use' }),
         InternalServerError: () =>
-          Effect.succeed({ success: false, message: 'An unexpcted error occured' }),
+          Effect.succeed({ success: false, message: 'An unexpected error occured' }),
       }),
     ),
   )
