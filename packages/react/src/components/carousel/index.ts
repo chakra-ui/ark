@@ -1,4 +1,8 @@
-export type { SlideChangeDetails as CarouselSlideChangeDetails } from '@zag-js/carousel'
+export type {
+  AutoplayStatusDetails as CarouselAutoplayStatusDetails,
+  DragStatusDetails as CarouselDragStatusDetails,
+  PageChangeDetails as CarouselPageChangeDetails,
+} from '@zag-js/carousel'
 export {
   CarouselContext,
   type CarouselContextProps,
@@ -48,11 +52,6 @@ export {
   type CarouselRootProviderBaseProps,
   type CarouselRootProviderProps,
 } from './carousel-root-provider'
-export {
-  CarouselViewport,
-  type CarouselViewportBaseProps,
-  type CarouselViewportProps,
-} from './carousel-viewport'
 export { carouselAnatomy } from './carousel.anatomy'
 export { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
 export { useCarouselContext, type UseCarouselContext } from './use-carousel-context'

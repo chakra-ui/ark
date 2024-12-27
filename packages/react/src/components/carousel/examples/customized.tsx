@@ -1,19 +1,10 @@
 import { Carousel } from '@ark-ui/react/carousel'
 
+const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
+
 export const Customized = () => {
-  const images = [
-    'https://tinyurl.com/5b6ka8jd',
-    'https://tinyurl.com/7rmccdn5',
-    'https://tinyurl.com/59jxz9uu',
-  ]
   return (
-    <Carousel.Root
-      align="center"
-      loop={true}
-      slidesPerView={2}
-      spacing="16px"
-      orientation="horizontal"
-    >
+    <Carousel.Root autoplay loop>
       <Carousel.Control>
         <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
         <Carousel.NextTrigger>Next</Carousel.NextTrigger>
@@ -25,15 +16,13 @@ export const Customized = () => {
           </Carousel.Indicator>
         ))}
       </Carousel.IndicatorGroup>
-      <Carousel.Viewport>
-        <Carousel.ItemGroup>
-          {images.map((image, index) => (
-            <Carousel.Item key={index} index={index}>
-              <img src={image} alt={`Slide ${index}`} />
-            </Carousel.Item>
-          ))}
-        </Carousel.ItemGroup>
-      </Carousel.Viewport>
+      <Carousel.ItemGroup>
+        {images.map((image, index) => (
+          <Carousel.Item key={index} index={index}>
+            <img src={image} alt={`Slide ${index}`} />
+          </Carousel.Item>
+        ))}
+      </Carousel.ItemGroup>
     </Carousel.Root>
   )
 }

@@ -1,11 +1,8 @@
 import { Carousel } from '../'
 
+const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
+
 export const ComponentUnderTest = (props: Carousel.RootProps) => {
-  const images = [
-    'https://tinyurl.com/5b6ka8jd',
-    'https://tinyurl.com/7rmccdn5',
-    'https://tinyurl.com/59jxz9uu',
-  ]
   return (
     <Carousel.Root {...props}>
       <Carousel.Control>
@@ -19,15 +16,13 @@ export const ComponentUnderTest = (props: Carousel.RootProps) => {
           </Carousel.Indicator>
         ))}
       </Carousel.IndicatorGroup>
-      <Carousel.Viewport>
-        <Carousel.ItemGroup>
-          {images.map((image, index) => (
-            <Carousel.Item key={index} index={index} data-testid="item">
-              <img src={image} alt="Slide #" />
-            </Carousel.Item>
-          ))}
-        </Carousel.ItemGroup>
-      </Carousel.Viewport>
+      <Carousel.ItemGroup>
+        {images.map((image, index) => (
+          <Carousel.Item key={index} index={index} data-testid="item">
+            <img src={image} alt="Slide #" />
+          </Carousel.Item>
+        ))}
+      </Carousel.ItemGroup>
     </Carousel.Root>
   )
 }
