@@ -4,7 +4,7 @@ const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
 
 export const Basic = () => {
   return (
-    <Carousel.Root autoplay={{ delay: 1000 }} loop>
+    <Carousel.Root>
       <Carousel.Control>
         <Carousel.AutoplayTrigger>Play or Pause</Carousel.AutoplayTrigger>
         <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
