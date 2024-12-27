@@ -11,7 +11,7 @@ interface CheckboxGroupItemProps {
 }
 
 export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
-  const interative = computed(() => !(props.disabled || props.readOnly))
+  const interactive = computed(() => !(props.disabled || props.readOnly))
 
   const { defaultValue } = toRefs(props)
 
@@ -30,13 +30,13 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
   }
 
   const addValue = (val: string) => {
-    if (!interative.value) return
+    if (!interactive.value) return
     if (isChecked(val)) return
     valueRef.value = valueRef.value.concat(val)
   }
 
   const removeValue = (val: string) => {
-    if (!interative.value) return
+    if (!interactive.value) return
     valueRef.value = valueRef.value.filter((v) => String(v) !== String(val))
   }
 

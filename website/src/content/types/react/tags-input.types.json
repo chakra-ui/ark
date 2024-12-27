@@ -71,14 +71,23 @@
   },
   "Item": {
     "props": {
-      "index": { "type": "string | number", "isRequired": true },
-      "value": { "type": "string", "isRequired": true },
+      "index": {
+        "type": "string | number",
+        "isRequired": true
+      },
+      "value": {
+        "type": "string",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      }
     },
     "element": "HTMLDivElement"
   },
@@ -248,13 +257,20 @@
         "isRequired": false,
         "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
       },
-      "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
+      "value": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The tag values"
+      }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTagsInputReturn", "isRequired": true },
+      "value": {
+        "type": "UseTagsInputReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

@@ -7,8 +7,8 @@ export const Dynamic = defineComponent({
   setup(_, { attrs, slots }) {
     return () => {
       if (!slots.default) return null
-      const childrens = renderSlotFragments(slots.default())
-      const [firstChildren, ...otherChildren] = childrens
+      const children = renderSlotFragments(slots.default())
+      const [firstChildren, ...otherChildren] = children
 
       if (Object.keys(attrs).length > 0) {
         // biome-ignore lint/performance/noDelete: <explanation>
@@ -22,10 +22,10 @@ export const Dynamic = defineComponent({
           }
         }
 
-        return childrens.length === 1 ? cloned : [cloned, ...otherChildren]
+        return children.length === 1 ? cloned : [cloned, ...otherChildren]
       }
 
-      return childrens
+      return children
     }
   },
 })

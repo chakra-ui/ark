@@ -126,7 +126,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseAccordionReturn", "isRequired": true },
+      "value": {
+        "type": "UseAccordionReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
