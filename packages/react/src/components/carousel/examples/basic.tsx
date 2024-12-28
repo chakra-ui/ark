@@ -1,8 +1,8 @@
 import { Carousel } from '@ark-ui/react/carousel'
 
-const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
-
 export const Basic = () => {
+  const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
+
   return (
     <Carousel.Root>
       <Carousel.Control>

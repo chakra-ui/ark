@@ -26,6 +26,16 @@ Array.prototype.toSorted = function () {
 
 Object.assign(global, { window, document: window.document })
 
+const IntersectionObserverMock = vi.fn(() => ({
+  disconnect: vi.fn(),
+  observe: vi.fn(),
+  takeRecords: vi.fn(),
+  unobserve: vi.fn(),
+}))
+
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock)
+window.IntersectionObserver = IntersectionObserverMock
+
 export const getParts = (anatomy: AnatomyInstance<string>) => {
   return Object.values(anatomy.build()).map(
     (x) => `[data-scope="${x.attrs['data-scope']}"][data-part="${x.attrs['data-part']}"]`,

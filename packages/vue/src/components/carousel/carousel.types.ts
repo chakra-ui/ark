@@ -46,9 +46,7 @@ export interface RootProps {
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: import(
-    '/Users/christian/Developer/ark/node_modules/@zag-js/types/dist/index',
-  ).Orientation
+  orientation?: carousel.Orientation
   /**
    * Defines the extra space added around the scrollable area,
    * enabling nearby items to remain partially in view.
@@ -106,4 +104,5 @@ export type RootEmits = {
    * Function called when the page changes.
    */
   pageChange: [details: carousel.PageChangeDetails]
+  'update:page': [page: number]
 }

@@ -28,6 +28,8 @@ export const useCarousel = (
     dir: locale.value.dir,
     index: props.defaultPage,
     getRootNode: env?.value.getRootNode,
+    onAutoplayStatusChange: (details) => emit?.('autoplayStatusChange', details),
+    onDragStatusChange: (details) => emit?.('dragStatusChange', details),
     onPageChange: (details) => {
       emit?.('pageChange', details)
       emit?.('update:page', details.page)

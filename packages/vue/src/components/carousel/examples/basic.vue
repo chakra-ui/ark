@@ -12,11 +12,8 @@ const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
       <Carousel.NextTrigger>Next</Carousel.NextTrigger>
     </Carousel.Control>
     <Carousel.IndicatorGroup>
-      <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx">
-        {{ idx + 1 }}
-      </Carousel.Indicator>
+      <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx" />
     </Carousel.IndicatorGroup>
-    <Carousel.Viewport>
       <Carousel.ItemGroup>
         <Carousel.Item v-for="(image, idx) in images" :key="idx" :index="idx">
           <img
@@ -26,6 +23,5 @@ const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
           />
         </Carousel.Item>
       </Carousel.ItemGroup>
-    </Carousel.Viewport>
   </Carousel.Root>
 </template>
