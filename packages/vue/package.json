@@ -223,21 +223,21 @@
     "@testing-library/vue": "8.0.3",
     "@types/jsdom": "21.1.7",
     "@vitejs/plugin-vue": "5.2.1",
-    "@vitejs/plugin-vue-jsx": "4.1.0",
+    "@vitejs/plugin-vue-jsx": "4.1.1",
     "@vue/compiler-sfc": "3.5.13",
     "clean-package": "2.2.0",
     "globby": "14.0.2",
     "histoire": "0.17.17",
     "jsdom": "25.0.1",
     "lucide-vue-next": "0.469.0",
-    "release-it": "17.10.0",
+    "release-it": "17.11.0",
     "resize-observer-polyfill": "1.5.1",
-    "typescript": "5.6.3",
+    "typescript": "5.7.2",
     "vite": "5.4.11",
     "vite-plugin-dts": "4.4.0",
     "vitest": "2.1.8",
     "vue": "3.5.13",
-    "vue-tsc": "2.1.10"
+    "vue-tsc": "2.2.0"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"

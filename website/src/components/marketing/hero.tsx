@@ -5,7 +5,7 @@ import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { ReactIcon, SolidIcon, VueIcon } from './icons'
+import { ReactIcon, SolidIcon, SvelteIcon, VueIcon } from './icons'
 
 export const Hero = () => {
   return (
@@ -59,10 +59,10 @@ export const Hero = () => {
               <VueIcon />
               <Text color="fg.muted">Vue</Text>
             </HStack>
-            {/* <HStack>
+            <HStack>
               <SvelteIcon />
               <Text color="fg.muted">Svelte</Text>
-            </HStack> */}
+            </HStack>
           </HStack>
         </Stack>
       </Container>
