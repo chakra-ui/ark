@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Carousel, useCarousel } from '@ark-ui/vue/carousel'
 
-const images = Array(5).fill('https://picsum.photos/seed/a/500/300')
+const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`)
 
 const carousel = useCarousel()
 </script>

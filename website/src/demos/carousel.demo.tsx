@@ -11,41 +11,35 @@ export const Demo = (props: Carousel.RootProps) => {
     'https://tinyurl.com/yp4rfum7',
   ]
   return (
-    <Carousel.Root {...props}>
-      <Carousel.Viewport>
-        <Carousel.ItemGroup>
-          {images.map((image, index) => (
-            <Carousel.Item key={index} index={index}>
-              <img
-                src={image}
-                alt={`Slide ${index}`}
-                style={{ height: '398px', width: '100%', objectFit: 'cover' }}
-              />
-            </Carousel.Item>
+    <Carousel.Root {...props} position="relative">
+      <Carousel.ItemGroup>
+        {images.map((image, index) => (
+          <Carousel.Item key={index} index={index}>
+            <img
+              src={image}
+              alt={`Slide ${index}`}
+              style={{ height: '398px', width: '100%', objectFit: 'cover' }}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel.ItemGroup>
+      <Carousel.Control>
+        <Carousel.PrevTrigger asChild>
+          <IconButton size="sm" variant="link" aria-label="Previous Slide">
+            <ChevronLeftIcon />
+          </IconButton>
+        </Carousel.PrevTrigger>
+        <Carousel.IndicatorGroup>
+          {images.map((_, index) => (
+            <Carousel.Indicator key={index} index={index} aria-label={`Goto slide ${index + 1}`} />
           ))}
-        </Carousel.ItemGroup>
-        <Carousel.Control>
-          <Carousel.PrevTrigger asChild>
-            <IconButton size="sm" variant="link" aria-label="Previous Slide">
-              <ChevronLeftIcon />
-            </IconButton>
-          </Carousel.PrevTrigger>
-          <Carousel.IndicatorGroup>
-            {images.map((_, index) => (
-              <Carousel.Indicator
-                key={index}
-                index={index}
-                aria-label={`Goto slide ${index + 1}`}
-              />
-            ))}
-          </Carousel.IndicatorGroup>
-          <Carousel.NextTrigger asChild>
-            <IconButton size="sm" variant="link" aria-label="Next Slide">
-              <ChevronRightIcon />
-            </IconButton>
-          </Carousel.NextTrigger>
-        </Carousel.Control>
-      </Carousel.Viewport>
+        </Carousel.IndicatorGroup>
+        <Carousel.NextTrigger asChild>
+          <IconButton size="sm" variant="link" aria-label="Next Slide">
+            <ChevronRightIcon />
+          </IconButton>
+        </Carousel.NextTrigger>
+      </Carousel.Control>
     </Carousel.Root>
   )
 }

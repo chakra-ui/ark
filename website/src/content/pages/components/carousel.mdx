@@ -1,11 +1,20 @@
 ---
 id: carousel
 title: Carousel
-status: preview
-description: A slideshow component that cycles through elements.
+description: An interactive slideshow component for cycling through elements.
+status: new
 ---
 
 <ComponentPreview id="Carousel" />
+
+## Features
+
+- Native CSS Scroll Snap integration for smooth, performant animations
+- Flexible orientation support (horizontal and vertical layouts)
+- Customizable slide alignment (start, center, or end positions)
+- Multi-slide display capabilities for complex layouts
+- Automatic playback with configurable looping behavior
+- Adjustable slide spacing and gap controls
 
 ## Anatomy
 
@@ -29,17 +38,15 @@ To create a controlled Carousel component, you can manage the state of the carou
 
 <Example id="controlled" />
 
-### Customizing the Carousel
+### Autoplay
 
-You can customize the Carousel component by setting various props. Here's an example of a customized
-Carousel:
+The Carousel can play automatically. Just add the `autoplay` prop. You'll probably want to add `loop` too, so it keeps going after the last slide.
 
-<Example id="customized" />
+<Example id="autoplay" />
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the carousel. It accepts the value of the `useCarousel` hook.
-You can leverage it to access the component state and methods from outside the carousel.
+The `RootProvider` sets up carousel context using the `useCarousel` hook, enabling external access to its state and methods.
 
 <Example id="root-provider" />
 
