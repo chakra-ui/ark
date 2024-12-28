@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { ButtonHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface CarouselViewportBaseProps extends PolymorphicProps {}
-export interface CarouselViewportProps
-  extends CarouselViewportBaseProps,
+export interface CarouselAutoplayTriggerBaseProps extends PolymorphicProps {}
+export interface CarouselAutoplayTriggerProps
+  extends CarouselAutoplayTriggerBaseProps,
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -16,14 +16,14 @@ import { ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
 import { useForwardExpose } from '../../utils'
 
-defineProps<CarouselViewportProps>()
+defineProps<CarouselAutoplayTriggerProps>()
 const carousel = useCarouselContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="carousel.getViewportProps()" :as-child="asChild">
+  <ark.button v-bind="carousel.getAutoplayTriggerProps()" :as-child="asChild">
     <slot />
-  </ark.div>
+  </ark.button>
 </template>

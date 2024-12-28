@@ -8,10 +8,10 @@ import { useEvent } from '../../utils/use-event'
 export interface UseCarouselProps
   extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial index of the carousel when it is first rendered.
+   * The initial page of the carousel when it is first rendered.
    * Use this when you do not need to control the state of the carousel.
    */
-  defaultIndex?: carousel.Context['index']
+  defaultPage?: carousel.Context['page']
 }
 
 export interface UseCarouselReturn extends carousel.Api<PropTypes> {}
@@ -24,14 +24,14 @@ export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => 
     id: useId(),
     dir,
     getRootNode,
-    index: props.defaultIndex,
+    page: props.defaultPage,
     ...props,
   }
 
   const context: carousel.Context = {
     ...initialContext,
-    index: props.index,
-    onIndexChange: useEvent(props.onIndexChange, { sync: true }),
+    page: props.page,
+    onPageChange: useEvent(props.onPageChange, { sync: true }),
   }
 
   const [state, send] = useMachine(carousel.machine(initialContext), { context })

@@ -21,7 +21,9 @@ import { CarouselProvider } from './use-carousel-context'
 import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<CarouselRootProps>(), {
+  allowMouseDrag: undefined,
   loop: undefined,
+  autoplay: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<CarouselRootEmits>()

@@ -6,10 +6,23 @@ import { vi } from 'vitest'
 import 'vitest-axe/extend-expect'
 
 const { window } = new JSDOM()
+/**
+ * IntersectionObserver
+ */
+const IntersectionObserverMock = vi.fn(() => ({
+  disconnect: vi.fn(),
+  observe: vi.fn(),
+  takeRecords: vi.fn(),
+  unobserve: vi.fn(),
+}))
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock)
+// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+window['IntersectionObserver'] = IntersectionObserverMock
 
 vi.stubGlobal('ResizeObserver', ResizeObserver)
 // biome-ignore lint/complexity/useLiteralKeys: <explanation>
 window['ResizeObserver'] = ResizeObserver
+
 window.Element.prototype.scrollTo = () => {}
 window.Element.prototype.scrollIntoView = () => {}
 window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)

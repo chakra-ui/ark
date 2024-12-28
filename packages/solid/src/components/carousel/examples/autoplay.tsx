@@ -3,12 +3,15 @@ import { Index } from 'solid-js'
 
 const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`)
 
-export const Basic = () => {
+export const Autoplay = () => {
   return (
-    <Carousel.Root>
+    <Carousel.Root autoplay loop>
       <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        <Carousel.AutoplayTrigger>
+          <Carousel.Context>
+            {(carousel) => (carousel().isPlaying ? 'Pause' : 'Play')}
+          </Carousel.Context>
+        </Carousel.AutoplayTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup>
         <Index each={images}>{(_, index) => <Carousel.Indicator index={index} />}</Index>

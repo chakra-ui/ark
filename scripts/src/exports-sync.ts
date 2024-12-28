@@ -7,7 +7,10 @@ const main = async () => {
 
   files
     .filter(
-      (file) => !['presence', 'portal', 'highlight', 'frame'].includes(basename(dirname(file))),
+      (file) =>
+        !['presence', 'portal', 'highlight', 'frame', 'client-only'].includes(
+          basename(dirname(file)),
+        ),
     )
     .map((file) => {
       try {

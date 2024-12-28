@@ -9,10 +9,10 @@ import type { RootEmits } from './carousel.types'
 export interface UseCarouselProps
   extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial index of the carousel when it is first rendered.
+   * The initial page of the carousel when it is first rendered.
    * Use this when you do not need to control the state of the carousel.
    */
-  defaultIndex?: carousel.Context['index']
+  defaultPage?: carousel.Context['page']
 }
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
@@ -26,11 +26,13 @@ export const useCarousel = (
   const context = computed<carousel.Context>(() => ({
     id,
     dir: locale.value.dir,
-    index: props.defaultIndex,
+    index: props.defaultPage,
     getRootNode: env?.value.getRootNode,
-    onIndexChange: (details) => {
-      emit?.('indexChange', details)
-      emit?.('update:index', details.index)
+    onAutoplayStatusChange: (details) => emit?.('autoplayStatusChange', details),
+    onDragStatusChange: (details) => emit?.('dragStatusChange', details),
+    onPageChange: (details) => {
+      emit?.('pageChange', details)
+      emit?.('update:page', details.page)
     },
     ...cleanProps(props),
   }))

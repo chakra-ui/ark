@@ -1,13 +1,14 @@
 import { Carousel } from '@ark-ui/react/carousel'
 
-export const Basic = () => {
-  const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`)
+const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`)
 
+export const Autoplay = () => {
   return (
-    <Carousel.Root>
+    <Carousel.Root autoplay loop>
       <Carousel.Control>
-        <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-        <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+        <Carousel.AutoplayTrigger>
+          <Carousel.Context>{({ isPlaying }) => (isPlaying ? 'Pause' : 'Play')}</Carousel.Context>
+        </Carousel.AutoplayTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup>
         {images.map((_, index) => (

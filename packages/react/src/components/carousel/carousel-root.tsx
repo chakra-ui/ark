@@ -10,16 +10,25 @@ export interface CarouselRootProps extends HTMLProps<'div'>, CarouselRootBasePro
 
 export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props, ref) => {
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
-    'align',
-    'defaultIndex',
+    'allowMouseDrag',
+    'autoplay',
+    'defaultPage',
     'id',
     'ids',
-    'index',
+    'inViewThreshold',
     'loop',
-    'onIndexChange',
+    'onAutoplayStatusChange',
+    'onDragStatusChange',
+    'onPageChange',
     'orientation',
-    'slidesPerView',
+    'padding',
+    'page',
+    'slideCount',
+    'slidesPerMove',
+    'slidesPerPage',
+    'snapType',
     'spacing',
+    'translations',
   ])
   const carousel = useCarousel(useCarouselProps)
   const mergedProps = mergeProps(carousel.getRootProps(), localProps)
