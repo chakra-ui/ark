@@ -150,7 +150,7 @@
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether a tag can be edited after creation, by presing `Enter` or double clicking."
+        "description": "Whether a tag can be edited after creation, by pressing `Enter` or double clicking."
       },
       "form": {
         "type": "string",

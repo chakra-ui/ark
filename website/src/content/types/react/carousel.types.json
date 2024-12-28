@@ -21,13 +21,22 @@
   },
   "Indicator": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The index of the indicator."
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "readOnly": { "type": "boolean", "isRequired": false }
+      "readOnly": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the indicator is read only."
+      }
     },
     "element": "HTMLButtonElement"
   },
@@ -48,6 +57,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "snapAlign": {
+        "type": "'center' | 'end' | 'start'",
+        "defaultValue": "\"start\"",
+        "isRequired": false,
+        "description": "The snap alignment of the item."
       }
     },
     "element": "HTMLDivElement"
@@ -74,56 +89,109 @@
   },
   "Root": {
     "props": {
-      "align": {
-        "type": "'center' | 'end' | 'start'",
-        "defaultValue": "\"start\"",
+      "allowMouseDrag": {
+        "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "The alignment of the slides in the carousel."
+        "description": "Whether to allow scrolling via dragging with mouse"
       },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "defaultIndex": {
+      "autoplay": {
+        "type": "boolean | { delay: number }",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to scroll automatically. The default delay is 4000ms."
+      },
+      "defaultPage": {
         "type": "number",
         "isRequired": false,
-        "description": "The initial index of the carousel when it is first rendered.\nUse this when you do not need to control the state of the carousel."
+        "description": "The initial page of the carousel when it is first rendered.\nUse this when you do not need to control the state of the carousel."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  viewport: string\n  item(index: number): string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
+        "type": "Partial<{\n  root: string\n  item(index: number): string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the carousel. Useful for composition."
       },
-      "index": { "type": "number", "isRequired": false, "description": "The current slide index." },
+      "inViewThreshold": {
+        "type": "number | number[]",
+        "defaultValue": "0.6",
+        "isRequired": false,
+        "description": "The threshold for determining if an item is in view."
+      },
       "loop": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the carousel should loop around."
       },
-      "onIndexChange": {
-        "type": "(details: SlideChangeDetails) => void",
+      "onAutoplayStatusChange": {
+        "type": "(details: AutoplayStatusDetails) => void",
         "isRequired": false,
-        "description": "Function called when the slide changes."
+        "description": "Function called when the autoplay status changes."
+      },
+      "onDragStatusChange": {
+        "type": "(details: DragStatusDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the drag status changes."
+      },
+      "onPageChange": {
+        "type": "(details: PageChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the page changes."
       },
       "orientation": {
-        "type": "'horizontal' | 'vertical'",
+        "type": "Orientation",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
-        "description": "The orientation of the carousel."
+        "description": "The orientation of the element."
       },
-      "slidesPerView": {
+      "padding": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Defines the extra space added around the scrollable area,\nenabling nearby items to remain partially in view."
+      },
+      "page": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The index of the active page."
+      },
+      "slideCount": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The total number of slides.\nUseful for SSR to render the initial ating the snap points."
+      },
+      "slidesPerMove": {
         "type": "number | 'auto'",
+        "defaultValue": "\"auto\"",
+        "isRequired": false,
+        "description": "The number of slides to scroll at a time.\n\nWhen set to `auto`, the number of slides to scroll is determined by the\n`slidesPerPage` property."
+      },
+      "slidesPerPage": {
+        "type": "number",
         "defaultValue": "1",
         "isRequired": false,
         "description": "The number of slides to show at a time."
+      },
+      "snapType": {
+        "type": "'proximity' | 'mandatory'",
+        "defaultValue": "\"mandatory\"",
+        "isRequired": false,
+        "description": "The snap type of the item."
       },
       "spacing": {
         "type": "string",
         "defaultValue": "\"0px\"",
         "isRequired": false,
-        "description": "The amount of space between slides."
+        "description": "The amount of space between items."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
       }
     },
     "element": "HTMLDivElement"
@@ -131,16 +199,6 @@
   "RootProvider": {
     "props": {
       "value": { "type": "UseCarouselReturn", "isRequired": true },
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    },
-    "element": "HTMLDivElement"
-  },
-  "Viewport": {
-    "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
