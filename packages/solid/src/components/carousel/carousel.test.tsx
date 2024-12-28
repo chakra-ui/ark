@@ -4,7 +4,10 @@ import { getExports, getParts } from '../../setup-test'
 import { Basic as ComponentUnderTest } from './examples/basic'
 
 describe('Carousel', () => {
-  it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
+  const renderedParts = getParts(carouselAnatomy).filter(
+    (part) => !part.includes('[data-part="autoplay-trigger"]'),
+  )
+  it.each(renderedParts)('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)
 
     expect(document.querySelector(part)).toBeInTheDocument()

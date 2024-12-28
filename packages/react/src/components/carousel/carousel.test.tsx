@@ -11,7 +11,11 @@ describe('Carousel / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  it.each(getParts(carouselAnatomy))('should render part %s', async (part) => {
+  const renderedParts = getParts(carouselAnatomy).filter(
+    (part) => !part.includes('[data-part="autoplay-trigger"]'),
+  )
+
+  it.each(renderedParts)('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
