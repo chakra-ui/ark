@@ -1,4 +1,3 @@
-'use server'
 import { Schema } from '@effect/schema'
 import { Effect, Match, pipe } from 'effect'
 import { auth } from '~/lib/auth'
