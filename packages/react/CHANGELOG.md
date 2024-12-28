@@ -6,9 +6,16 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Fixed
+### Added  
 
-- **Select**: Fixed regression where scroll restoration in overflowing select menus was not working.
+- **Carousel [Breaking]:** Redesigned the carousel for better touch handling and performance. See the [Carousel docs](https://ark-ui.com/docs/react/components/carousel) for more info.  
+
+### Fixed  
+
+- **FileUpload:** Resolved an issue where the `accept` attribute wasn’t applied to the hidden input.  
+- **NumberInput:** Fixed a bug where the input event wasn’t triggered on the first click of the increment/decrement controls.  
+- **TreeView:** Addressed a limitation where React elements couldn’t be used in the tree view. The machine store has been revamped to support complex objects like React and Vue elements.  
+- **Select:** Fixed a regression where scroll restoration didn’t work in overflowing select menus.  
 
 ## [4.5.0] - 2024-12-12
 
