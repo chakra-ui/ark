@@ -86,7 +86,7 @@
     "@sveltejs/adapter-auto": "3.3.1",
     "@sveltejs/kit": "2.15.1",
     "@sveltejs/package": "2.3.7",
-    "@sveltejs/vite-plugin-svelte": "5.0.3",
+    "@sveltejs/vite-plugin-svelte": "4.0.4",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/svelte": "5.2.6",
     "@testing-library/user-event": "14.5.2",
