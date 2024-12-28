@@ -7,7 +7,11 @@ export const Autoplay = () => {
   return (
     <Carousel.Root autoplay loop>
       <Carousel.Control>
-        <Carousel.AutoplayTrigger>Play or Pause</Carousel.AutoplayTrigger>
+        <Carousel.AutoplayTrigger>
+          <Carousel.Context>
+            {(carousel) => (carousel().isPlaying ? 'Pause' : 'Play')}
+          </Carousel.Context>
+        </Carousel.AutoplayTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup>
         <Index each={images}>{(_, index) => <Carousel.Indicator index={index} />}</Index>

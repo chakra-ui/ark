@@ -7,9 +7,11 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
 <template>
   <Carousel.Root autoplay loop>
     <Carousel.Control>
-      <Carousel.AutoplayTrigger>Play or Pause</Carousel.AutoplayTrigger>
-      <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-      <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+      <Carousel.AutoplayTrigger>
+        <Carousel.Context v-slot="context">
+            {{ context.isPlaying ? 'Pause' : 'Play' }}
+        </Carousel.Context>
+      </Carousel.AutoplayTrigger>
     </Carousel.Control>
     <Carousel.IndicatorGroup>
       <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx" />
