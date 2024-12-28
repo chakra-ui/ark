@@ -13,7 +13,6 @@ export interface SliderDraggingIndicatorProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { useSlots } from 'vue'
 import { useSliderContext } from './use-slider-context'
 import { useForwardExpose } from '../../utils'
 import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
@@ -21,7 +20,7 @@ import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 defineProps<SliderDraggingIndicatorProps>()
 const slider = useSliderContext()
 const thumbProps = useSliderThumbPropsContext()
-const slots = useSlots()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>

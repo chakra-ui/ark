@@ -12,7 +12,6 @@ export interface ColorPickerChannelSliderValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useSlots } from 'vue'
 import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
 import { ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
@@ -22,7 +21,7 @@ import { useForwardExpose } from '../../utils'
 defineProps<ColorPickerChannelSliderValueTextProps>()
 const colorPicker = useColorPickerContext()
 const channelProps = useColorPickerChannelPropsContext()
-const slots = useSlots()
+const slots = defineSlots()
 const localeContext = useLocaleContext(DEFAULT_LOCALE)
 
 useForwardExpose()

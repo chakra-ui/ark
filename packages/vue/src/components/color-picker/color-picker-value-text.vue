@@ -12,14 +12,14 @@ export interface ColorPickerValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useSlots } from 'vue'
+
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()
-const slots = useSlots()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>
