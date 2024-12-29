@@ -213,6 +213,7 @@
     "@zag-js/toast": "0.79.1",
     "@zag-js/toggle-group": "0.79.1",
     "@zag-js/tooltip": "0.79.1",
+    "@zag-js/tour": "0.79.1",
     "@zag-js/tree-view": "0.79.1",
     "@zag-js/types": "0.79.1"
   },
