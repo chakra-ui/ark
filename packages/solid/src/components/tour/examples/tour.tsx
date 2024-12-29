@@ -12,7 +12,7 @@ export const DemoTour = () => {
   // }, [tour])
 
   return (
-    <Tour.Root tour={tour()}>
+    <Tour.Root tour={tour}>
       <Tour.Backdrop />
       <Tour.Spotlight />
       <Tour.Positioner>

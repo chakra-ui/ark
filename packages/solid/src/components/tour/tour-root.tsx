@@ -11,7 +11,7 @@ import type { UseTourReturn } from './use-tour'
 import { TourProvider } from './use-tour-context'
 
 interface RootProps {
-  value: UseTourReturn
+  tour: UseTourReturn
 }
 
 export interface TourRootBaseProps extends RootProps, UsePresenceProps {}
@@ -20,17 +20,17 @@ export interface TourRootProps extends TourRootBaseProps {
 }
 
 export const TourRoot = (props: TourRootProps) => {
-  const [presenceProps, tourProps] = splitPresenceProps(props)
+  const [presenceProps, rootProps] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
 
   const presence = usePresence(
-    mergeProps(presenceProps, () => ({ present: tourProps.value().open })),
+    mergeProps(presenceProps, () => ({ present: rootProps.tour().open })),
   )
 
   return (
-    <TourProvider value={tourProps.value}>
+    <TourProvider value={rootProps.tour}>
       <RenderStrategyProvider value={renderStrategyProps}>
-        <PresenceProvider value={presence}>{tourProps.children}</PresenceProvider>
+        <PresenceProvider value={presence}>{rootProps.children}</PresenceProvider>
       </RenderStrategyProvider>
     </TourProvider>
   )
