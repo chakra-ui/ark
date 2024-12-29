@@ -1,15 +1,13 @@
 import { Tour, useTour } from '@ark-ui/solid/tour'
 import { XIcon } from 'lucide-solid'
-import { For } from 'solid-js'
+import { For, onMount } from 'solid-js'
 import { steps } from './steps'
 
 export const DemoTour = () => {
   const tour = useTour({ steps })
 
   // Start the tour when the component mounts
-  // useEffect(() => {
-  //   tour.start()
-  // }, [tour])
+  onMount(() => tour().start())
 
   return (
     <Tour.Root tour={tour}>
@@ -28,7 +26,7 @@ export const DemoTour = () => {
           </Tour.CloseTrigger>
           <Tour.Actions>
             {(actions) => (
-              <For each={actions}>{(action) => <Tour.ActionTrigger action={action} />}</For>
+              <For each={actions()}>{(action) => <Tour.ActionTrigger action={action} />}</For>
             )}
           </Tour.Actions>
         </Tour.Content>

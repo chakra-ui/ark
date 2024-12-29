@@ -9,5 +9,5 @@ export const TourTitle = (props: TourTitleProps) => {
   const tour = useTourContext()
   const mergedProps = mergeProps(() => tour().getTitleProps(), props)
 
-  return <ark.h2 {...mergedProps} />
+  return <ark.h2 {...mergedProps}>{mergedProps.children || tour().step?.title}</ark.h2>
 }

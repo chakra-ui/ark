@@ -18,7 +18,7 @@ export const TourActionTrigger = forwardRef<HTMLButtonElement, TourActionTrigger
 
     return (
       <ark.button {...mergedProps} ref={ref}>
-        {actionTriggerProps.action.label}
+        {mergedProps.children || actionTriggerProps.action.label}
       </ark.button>
     )
   },

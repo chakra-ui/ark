@@ -16,5 +16,9 @@ export const TourActionTrigger = (props: TourActionTriggerProps) => {
   const tour = useTourContext()
   const mergedProps = mergeProps(() => tour().getActionTriggerProps(actionTriggerProps), localProps)
 
-  return <ark.button {...mergedProps}>{actionTriggerProps.action.label}</ark.button>
+  return (
+    <ark.button {...mergedProps}>
+      {mergedProps.children || actionTriggerProps.action.label}
+    </ark.button>
+  )
 }
