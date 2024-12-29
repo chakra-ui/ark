@@ -1,7 +1,11 @@
 <script lang="ts">
-import type { BooleanDefaults } from '../../types'
+import type { UseTourReturn } from '../../../dist/components/tour'
 import type { RenderStrategyProps } from '../../utils'
-import type { RootEmits, RootProps } from './tour.types'
+import type { RootEmits } from './tour.types'
+
+interface RootProps {
+  tour: UnwrapRef<UseTourReturn>
+}
 
 export interface TourRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface TourRootProps extends TourRootBaseProps {}
@@ -9,20 +13,12 @@ export interface TourRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, type UnwrapRef } from 'vue'
 import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
-import { useTour } from './use-tour'
 import { TourProvider } from './use-tour-context'
 
-const props = withDefaults(defineProps<TourRootProps>(), {
-  closeOnEscape: undefined,
-  closeOnInteractOutside: undefined,
-  keyboardNavigation: undefined,
-  preventInteraction: undefined,
-} satisfies BooleanDefaults<RootProps>)
-
-const emits = defineEmits<TourRootEmits>()
-const tour = useTour(props, emits)
+const props = defineProps<TourRootProps>()
+const tour = computed(() => props.tour)
 
 TourProvider(tour)
 RenderStrategyPropsProvider(

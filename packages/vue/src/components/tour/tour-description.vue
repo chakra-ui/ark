@@ -18,12 +18,13 @@ import { useForwardExpose } from '../../utils'
 
 defineProps<TourDescriptionProps>()
 const tour = useTourContext()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>
 
 <template>
   <ark.div v-bind="tour.getDescriptionProps()" :as-child="asChild">
-    <slot />
+    <slot>{{ slots.default?.() || tour.step?.title}}</slot>
   </ark.div>
 </template>

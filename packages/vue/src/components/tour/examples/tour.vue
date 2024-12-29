@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Tour, useTour } from '@ark-ui/vue/tour'
+import { XIcon } from 'lucide-vue-next'
 import { onMounted } from 'vue'
 import { steps } from './steps'
 
@@ -23,7 +24,7 @@ onMounted(() => {
           <Tour.Description />
           <Tour.ProgressText />
           <Tour.CloseTrigger>
-            Close
+           <XIcon />
           </Tour.CloseTrigger>
           <Tour.Actions v-slot="actions">
             <Tour.ActionTrigger v-for="action in actions" :key="action.label" :action="action" />

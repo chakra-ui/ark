@@ -19,12 +19,13 @@ import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TourActionTriggerBaseProps>()
 const tour = useTourContext()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>
 
 <template>
   <ark.button v-bind="tour.getActionTriggerProps(props)" :as-child="asChild">
-    <slot />
+    <slot>{{ slots.default?.() || props.action.label}}</slot>
   </ark.button>
 </template>

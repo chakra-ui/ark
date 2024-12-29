@@ -13,6 +13,7 @@ export const useTour = (props: UseTourProps = {}, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
+
   const context = computed<tour.Context>(() => ({
     id,
     dir: locale.value.dir,
