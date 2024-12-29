@@ -1,20 +1,13 @@
-import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
+import { mergeProps } from '@zag-js/solid'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTourContext } from './use-tour-context'
 
-export interface TourTitleBaseProps extends PolymorphicProps {}
+export interface TourTitleBaseProps extends PolymorphicProps<'h2'> {}
 export interface TourTitleProps extends HTMLProps<'h2'>, TourTitleBaseProps {}
 
-export const TourTitle = forwardRef<HTMLHeadingElement, TourTitleProps>((props, ref) => {
+export const TourTitle = (props: TourTitleProps) => {
   const tour = useTourContext()
-  const mergedProps = mergeProps(tour.getTitleProps(), props)
+  const mergedProps = mergeProps(() => tour().getTitleProps(), props)
 
-  return (
-    <ark.h2 {...mergedProps} ref={ref}>
-      {mergedProps.children || tour.step?.title}
-    </ark.h2>
-  )
-})
-
-TourTitle.displayName = 'TourTitle'
+  return <ark.h2 {...mergedProps} />
+}

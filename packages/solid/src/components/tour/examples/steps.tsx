@@ -1,4 +1,4 @@
-import type { TourStepDetails } from '@ark-ui/react/tour'
+import type { TourStepDetails } from '@ark-ui/solid/tour'
 
 export const steps: TourStepDetails[] = [
   {

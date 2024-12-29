@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { useTourContext } from './use-tour-context'
 
 export interface TourActionsProps {
-  children: (context: StepAction[]) => ReactNode
+  children: (actions: StepAction[]) => ReactNode
 }
 
 export const TourActions = (props: TourActionsProps) =>

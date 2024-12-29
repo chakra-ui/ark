@@ -1,10 +1,11 @@
 import type { StepAction } from '@zag-js/tour'
-import type { ReactNode } from 'react'
+import type { JSX } from 'solid-js'
+
 import { useTourContext } from './use-tour-context'
 
 export interface TourActionsProps {
-  children: (context: StepAction[]) => ReactNode
+  children: (actions: StepAction[]) => JSX.Element
 }
 
 export const TourActions = (props: TourActionsProps) =>
-  props.children(useTourContext().step?.actions ?? [])
+  props.children(useTourContext()().step?.actions ?? [])

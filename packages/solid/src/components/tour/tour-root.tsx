@@ -1,6 +1,6 @@
-import { mergeProps } from '@zag-js/react'
-import type { ReactNode } from 'react'
-import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js'
+import { RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
 import {
   PresenceProvider,
   type UsePresenceProps,
@@ -10,23 +10,28 @@ import {
 import type { UseTourReturn } from './use-tour'
 import { TourProvider } from './use-tour-context'
 
-export interface TourRootBaseProps extends UsePresenceProps {
-  tour: UseTourReturn
+interface RootProps {
+  value: UseTourReturn
 }
+
+export interface TourRootBaseProps extends RootProps, UsePresenceProps {}
 export interface TourRootProps extends TourRootBaseProps {
-  children?: ReactNode
+  children?: JSX.Element
 }
 
 export const TourRoot = (props: TourRootProps) => {
-  const [presenceProps, { children, tour }] = splitPresenceProps(props)
+  const [presenceProps, tourProps] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
-  const presence = usePresence(mergeProps({ present: tour.open }, presenceProps))
+
+  const presence = usePresence(
+    mergeProps(presenceProps, () => ({ present: tourProps.value().open })),
+  )
 
   return (
-    <TourProvider value={tour}>
-      <RenderStrategyPropsProvider value={renderStrategyProps}>
-        <PresenceProvider value={presence}>{children}</PresenceProvider>
-      </RenderStrategyPropsProvider>
+    <TourProvider value={tourProps.value}>
+      <RenderStrategyProvider value={renderStrategyProps}>
+        <PresenceProvider value={presence}>{tourProps.children}</PresenceProvider>
+      </RenderStrategyProvider>
     </TourProvider>
   )
 }

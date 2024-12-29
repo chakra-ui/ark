@@ -1,17 +1,17 @@
-import { Frame } from '@ark-ui/react/frame'
+import { Frame } from '@ark-ui/solid/frame'
 import { DemoTour } from './tour'
 
 export const Basic = () => {
   return (
     <main>
       <DemoTour />
-      <div className="tour">
-        <div className="steps__container">
+      <div class="tour">
+        <div class="steps__container">
           <h3 id="step-1">Step 1</h3>
-          <div className="overflow__container">
-            <div className="h-200px" />
+          <div class="overflow__container">
+            <div class="h-200px" />
             <h3 id="step-2">Step 2</h3>
-            <div className="h-100px" />
+            <div class="h-100px" />
           </div>
           <Frame>
             <h1 id="step-2a">Iframe Content</h1>

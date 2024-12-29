@@ -1,25 +1,26 @@
-import { mergeProps } from '@zag-js/react'
-import { forwardRef } from 'react'
-import { composeRefs } from '../../utils/compose-refs'
-import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
+import { mergeProps } from '@zag-js/solid'
+import { Show } from 'solid-js'
+import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresence } from '../presence'
 import { useTourContext } from './use-tour-context'
 
-export interface TourBackdropBaseProps extends PolymorphicProps {}
+export interface TourBackdropBaseProps extends PolymorphicProps<'div'> {}
 export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}
 
-export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props, ref) => {
-  const tour = useTourContext()
-  const renderStrategyProps = useRenderStrategyPropsContext()
-  const presence = usePresence({ ...renderStrategyProps, present: tour.open })
-  const mergedProps = mergeProps(tour.getBackdropProps(), presence.getPresenceProps(), props)
+export const TourBackdrop = (props: TourBackdropProps) => {
+  const api = useTourContext()
+  const renderStrategyProps = useRenderStrategyContext()
+  const presence = usePresence(mergeProps(renderStrategyProps, () => ({ present: api().open })))
+  const mergedProps = mergeProps(
+    () => api().getBackdropProps(),
+    () => presence().presenceProps,
+    props,
+  )
 
-  if (presence.unmounted) {
-    return null
-  }
-
-  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-})
-
-TourBackdrop.displayName = 'TourBackdrop'
+  return (
+    <Show when={!presence().unmounted}>
+      <ark.div {...mergedProps} />
+    </Show>
+  )
+}
