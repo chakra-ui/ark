@@ -9,11 +9,11 @@ export interface TourBackdropBaseProps extends PolymorphicProps<'div'> {}
 export interface TourBackdropProps extends HTMLProps<'div'>, TourBackdropBaseProps {}
 
 export const TourBackdrop = (props: TourBackdropProps) => {
-  const api = useTourContext()
+  const tour = useTourContext()
   const renderStrategyProps = useRenderStrategyContext()
-  const presence = usePresence(mergeProps(renderStrategyProps, () => ({ present: api().open })))
+  const presence = usePresence(mergeProps(renderStrategyProps, () => ({ present: tour().open })))
   const mergedProps = mergeProps(
-    () => api().getBackdropProps(),
+    () => tour().getBackdropProps(),
     () => presence().presenceProps,
     props,
   )
