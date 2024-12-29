@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.6.0] - 2024-12-29
+
 ### Added  
 
 - **Carousel [Breaking]:** Redesigned the carousel for better touch handling and performance. See the [Carousel docs](https://ark-ui.com/docs/solid/components/carousel) for more info.  
