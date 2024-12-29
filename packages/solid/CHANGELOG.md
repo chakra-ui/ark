@@ -8,13 +8,12 @@ description: All notable changes will be documented in this file.
 
 ### Added  
 
-- **Carousel [Breaking]:** Redesigned the carousel for better touch handling and performance. See the [Carousel docs](https://ark-ui.com/docs/react/components/carousel) for more info.  
+- **Carousel [Breaking]:** Redesigned the carousel for better touch handling and performance. See the [Carousel docs](https://ark-ui.com/docs/solid/components/carousel) for more info.  
 
 ### Fixed  
 
 - **FileUpload:** Resolved an issue where the `accept` attribute wasn’t applied to the hidden input.  
 - **NumberInput:** Fixed a bug where the input event wasn’t triggered on the first click of the increment/decrement controls.  
-- **TreeView:** Addressed a limitation where React elements couldn’t be used in the tree view. The machine store has been revamped to support complex objects like React and Vue elements.  
 
 ## [4.6.0] - 2024-12-12
 

@@ -14,7 +14,7 @@ description: All notable changes will be documented in this file.
 
 - **FileUpload:** Resolved an issue where the `accept` attribute wasn’t applied to the hidden input.  
 - **NumberInput:** Fixed a bug where the input event wasn’t triggered on the first click of the increment/decrement controls.  
-- **TreeView:** Addressed a limitation where React elements couldn’t be used in the tree view. The machine store has been revamped to support complex objects like React and Vue elements.  
+- **TreeView:** Addressed a limitation where React elements couldn’t be used in the tree view.
 - **Select:** Fixed a regression where scroll restoration didn’t work in overflowing select menus.  
 
 ## [4.5.0] - 2024-12-12
