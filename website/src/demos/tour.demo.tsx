@@ -1,4 +1,5 @@
 'use client'
+import { Portal } from '@ark-ui/react/portal'
 import { XIcon } from 'lucide-react'
 import { Button } from '~/components/ui/button'
 import { IconButton } from '~/components/ui/icon-button'
@@ -11,34 +12,36 @@ export const Demo = () => {
     <>
       <Button onClick={() => tour.start()}>Start Tour</Button>
       <Tour.Root tour={tour}>
-        <Tour.Backdrop />
-        <Tour.Spotlight />
-        <Tour.Positioner>
-          <Tour.Content>
-            <Tour.Arrow>
-              <Tour.ArrowTip />
-            </Tour.Arrow>
-            <Tour.Title />
-            <Tour.Description />
-            <Tour.ProgressText />
-            <Tour.CloseTrigger asChild>
-              <IconButton size="sm" variant="link">
-                <XIcon />
-              </IconButton>
-            </Tour.CloseTrigger>
-            <Tour.Actions>
-              {(actions) =>
-                actions.map((action) => (
-                  <Tour.ActionTrigger key={action.label} action={action} asChild>
-                    <Button variant="link" size="sm">
-                      {action.label}
-                    </Button>
-                  </Tour.ActionTrigger>
-                ))
-              }
-            </Tour.Actions>
-          </Tour.Content>
-        </Tour.Positioner>
+        <Portal>
+          <Tour.Backdrop />
+          <Tour.Spotlight />
+          <Tour.Positioner>
+            <Tour.Content>
+              <Tour.Arrow>
+                <Tour.ArrowTip />
+              </Tour.Arrow>
+              <Tour.Title />
+              <Tour.Description />
+              <Tour.ProgressText />
+              <Tour.CloseTrigger asChild>
+                <IconButton size="sm" variant="link">
+                  <XIcon />
+                </IconButton>
+              </Tour.CloseTrigger>
+              <Tour.Actions>
+                {(actions) =>
+                  actions.map((action) => (
+                    <Tour.ActionTrigger key={action.label} action={action} asChild>
+                      <Button variant="link" size="sm">
+                        {action.label}
+                      </Button>
+                    </Tour.ActionTrigger>
+                  ))
+                }
+              </Tour.Actions>
+            </Tour.Content>
+          </Tour.Positioner>
+        </Portal>
       </Tour.Root>
     </>
   )
@@ -58,8 +61,8 @@ const steps: Tour.StepDetails[] = [
     title: 'Step 2. Inside a scrollable container',
     description: 'Using scrollIntoView(...) rocks!',
     target: () => document.querySelector<HTMLElement>('#framework-select'),
-    backdrop: false,
-    arrow: false,
+    // backdrop: false,
+    // arrow: false,
     actions: [
       { label: 'Prev', action: 'prev' },
       { label: 'Next', action: 'next' },
@@ -71,7 +74,7 @@ const steps: Tour.StepDetails[] = [
     title: 'Step 2. Inside a scrollable container',
     description: 'Using scrollIntoView(...) rocks!',
     target: () => document.querySelector<HTMLElement>('#version-select'),
-    backdrop: false,
+    // backdrop: false,
     actions: [
       { label: 'Prev', action: 'prev' },
       { label: 'Next', action: 'next' },

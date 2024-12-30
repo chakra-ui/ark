@@ -3,7 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev'
 
 export const field = defineSlotRecipe({
   className: 'field',
-  slots: fieldAnatomy.keys(),
+  slots: ['helperText', 'label', 'root'],
   base: {
     root: {
       display: 'flex',

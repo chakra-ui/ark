@@ -3,7 +3,19 @@ import { defineSlotRecipe } from '@pandacss/dev'
 
 export const tour = defineSlotRecipe({
   className: 'tour',
-  slots: tourAnatomy.keys(),
+  slots: [
+    'arrow',
+    'arrowTip',
+    'backdrop',
+    'closeTrigger',
+    'content',
+    'description',
+    'positioner',
+    'progressText',
+    'root',
+    'spotlight',
+    'title',
+  ],
   base: {
     backdrop: {
       backdropFilter: 'blur(4px)',
