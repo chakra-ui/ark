@@ -1,6 +1,7 @@
 'use client'
 import { XIcon } from 'lucide-react'
 import { Button } from '~/components/ui/button'
+import { IconButton } from '~/components/ui/icon-button'
 import { Tour, useTour } from '~/components/ui/tour'
 
 export const Demo = () => {
@@ -20,12 +21,20 @@ export const Demo = () => {
             <Tour.Title />
             <Tour.Description />
             <Tour.ProgressText />
-            <Tour.CloseTrigger>
-              <XIcon />
+            <Tour.CloseTrigger asChild>
+              <IconButton size="sm" variant="link">
+                <XIcon />
+              </IconButton>
             </Tour.CloseTrigger>
             <Tour.Actions>
               {(actions) =>
-                actions.map((action) => <Tour.ActionTrigger key={action.label} action={action} />)
+                actions.map((action) => (
+                  <Tour.ActionTrigger key={action.label} action={action} asChild>
+                    <Button variant="link" size="sm">
+                      {action.label}
+                    </Button>
+                  </Tour.ActionTrigger>
+                ))
               }
             </Tour.Actions>
           </Tour.Content>
