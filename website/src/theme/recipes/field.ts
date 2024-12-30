@@ -1,4 +1,3 @@
-import { fieldAnatomy } from '@ark-ui/react/field'
 import { defineSlotRecipe } from '@pandacss/dev'
 
 export const field = defineSlotRecipe({
