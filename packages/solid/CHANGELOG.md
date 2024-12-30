@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Dialog, Popover**: Resolved an issue where the dialog or popover would close if the focused element was removed from the DOM.  
+- **Collapsible**: Fixed a bug causing the opening animation to replay when re-rendering an open collapsible.  
+- **Focus Trap**: Properly cleaned up `requestAnimationFrame` to prevent memory leaks.  
+
 ## [4.7.0] - 2024-12-29
 
 ### Added  
