@@ -75,17 +75,17 @@ describe('Slider', () => {
 
     leftThumb.focus()
     await user.keyboard('[ArrowUp]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '-19')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '-19'))
 
     await user.keyboard('[ArrowDown]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '-20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '-20'))
 
     rightThumb.focus()
     await user.keyboard('[ArrowUp]')
-    expect(rightThumb).toHaveAttribute('aria-valuenow', '21')
+    await waitFor(() => expect(rightThumb).toHaveAttribute('aria-valuenow', '21'))
 
     await user.keyboard('[ArrowDown]')
-    expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(rightThumb).toHaveAttribute('aria-valuenow', '20'))
   })
 
   it('should handle disabled state', async () => {
