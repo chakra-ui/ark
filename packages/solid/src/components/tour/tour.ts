@@ -1,3 +1,19 @@
+export type {
+  Point,
+  ProgressTextDetails,
+  StatusChangeDetails,
+  StepAction,
+  StepActionMap,
+  StepActionTriggerProps,
+  StepBaseDetails,
+  StepChangeDetails,
+  StepDetails,
+  StepEffectArgs,
+  StepPlacement,
+  StepStatus,
+  StepType,
+  WaitOptions,
+} from '@zag-js/tour'
 export {
   TourActionTrigger as ActionTrigger,
   type TourActionTriggerBaseProps as ActionTriggerBaseProps,

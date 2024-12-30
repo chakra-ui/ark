@@ -3,6 +3,8 @@ import { createPreset } from '@park-ui/panda-preset'
 import sand from '@park-ui/panda-preset/colors/sand'
 import typographyPreset from 'pandacss-preset-typography'
 import { coral } from '~/coral'
+import { field } from '~/theme/recipes/field'
+import { tour } from '~/theme/recipes/tour'
 
 export default defineConfig({
   preflight: true,
@@ -58,6 +60,9 @@ export default defineConfig({
         flexGrow: '1',
         fontFamily: 'body',
       },
+      '*::selection': {
+        bg: 'gray.3',
+      },
       pre: {
         background: 'transparent!',
         overflowX: 'auto',
@@ -96,26 +101,8 @@ export default defineConfig({
         },
       },
       slotRecipes: {
-        field: {
-          className: 'field',
-          slots: ['root', 'label', 'input', 'textarea', 'select', 'helperText', 'errorText'],
-          base: {
-            root: {
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1.5',
-            },
-            label: {
-              color: 'fg.default',
-              fontWeight: 'medium',
-              textStyle: 'sm',
-            },
-            helperText: {
-              color: 'fg.muted',
-              textStyle: 'sm',
-            },
-          },
-        },
+        field,
+        tour,
         layout: {
           className: 'layout',
           slots: ['aside', 'main'],

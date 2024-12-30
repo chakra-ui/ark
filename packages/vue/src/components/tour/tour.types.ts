@@ -1,8 +1,3 @@
-import type {
-  FocusOutsideEvent,
-  InteractOutsideEvent,
-  PointerDownOutsideEvent,
-} from '@zag-js/select'
 import type * as tour from '@zag-js/tour'
 
 export interface RootProps {
@@ -45,10 +40,7 @@ export interface RootProps {
    * The offsets to apply to the spotlight
    * @default "{ x: 10, y: 10 }"
    */
-  spotlightOffset?: {
-    x: number
-    y: number
-  }
+  spotlightOffset?: tour.Point
   /**
    * The radius of the spotlight clip path
    * @default 4
@@ -72,15 +64,15 @@ export type RootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [event: FocusOutsideEvent]
+  focusOutside: [event: tour.FocusOutsideEvent]
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [event: InteractOutsideEvent]
+  interactOutside: [event: tour.InteractOutsideEvent]
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [event: PointerDownOutsideEvent]
+  pointerDownOutside: [event: tour.PointerDownOutsideEvent]
   /**
    * Callback when the tour is opened or closed
    */
