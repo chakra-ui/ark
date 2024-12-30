@@ -19,7 +19,7 @@ export const TourBackdrop = (props: TourBackdropProps) => {
   )
 
   return (
-    <Show when={!presence().unmounted}>
+    <Show when={!presence().unmounted || !tour().step?.backdrop}>
       <ark.div {...mergedProps} />
     </Show>
   )

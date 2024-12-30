@@ -10,7 +10,7 @@ export const TourArrow = forwardRef<HTMLDivElement, TourArrowProps>((props, ref)
   const tour = useTourContext()
   const mergedProps = mergeProps(tour.getArrowProps(), props)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return tour.step?.arrow ? <ark.div {...mergedProps} ref={ref} /> : null
 })
 
 TourArrow.displayName = 'TourArrow'

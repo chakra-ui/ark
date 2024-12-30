@@ -23,7 +23,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="tour.getArrowProps()" :as-child="asChild">
+  <ark.div v-if="tour.step?.arrow" v-bind="tour.getArrowProps()" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

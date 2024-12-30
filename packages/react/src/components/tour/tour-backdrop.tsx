@@ -15,7 +15,7 @@ export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props
   const presence = usePresence({ ...renderStrategyProps, present: tour.open })
   const mergedProps = mergeProps(tour.getBackdropProps(), presence.getPresenceProps(), props)
 
-  if (presence.unmounted) {
+  if (presence.unmounted || !tour.step?.backdrop) {
     return null
   }
 

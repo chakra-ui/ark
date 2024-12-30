@@ -24,19 +24,31 @@ export const tour = defineSlotRecipe({
         animation: 'backdrop-out',
       },
     },
-    positioner: {},
     content: {
       background: 'bg.default',
       borderRadius: 'l3',
       boxShadow: 'lg',
-      minW: 'sm',
-      position: 'relative',
-      _open: {
-        animation: 'dialog-in',
-      },
-      _closed: {
-        animation: 'dialog-out',
-      },
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: 'sm',
+      zIndex: 'popover',
+      p: '4',
+    },
+    arrow: {
+      '--arrow-size': 'var(--sizes-3)',
+      '--arrow-background': 'var(--colors-bg-default)',
+    },
+    arrowTip: {
+      borderTopWidth: '1px',
+      borderLeftWidth: '1px',
+    },
+    title: {
+      fontWeight: 'medium',
+      textStyle: 'sm',
+    },
+    description: {
+      color: 'fg.muted',
+      textStyle: 'sm',
     },
   },
 })

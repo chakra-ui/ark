@@ -25,6 +25,7 @@ useForwardExpose()
 
 <template>
   <Presence
+    v-if="tour.step?.backdrop"
     v-bind="tour.getBackdropProps()"
     :present="tour.open"
     :lazy-mount="renderStrategy.lazyMount"
