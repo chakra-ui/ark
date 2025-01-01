@@ -8,9 +8,11 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Dialog, Popover**: Resolved an issue where the dialog or popover would close if the focused element was removed from the DOM.  
-- **Collapsible**: Fixed a bug causing the opening animation to replay when re-rendering an open collapsible.  
-- **Focus Trap**: Properly cleaned up `requestAnimationFrame` to prevent memory leaks.  
+- **Dialog, Popover**: Fixed an issue where the dialog or popover would close if the focused element was removed from the DOM.  
+- **Collapsible**: Resolved a bug causing the opening animation to replay when an open collapsible was re-rendered.  
+- **Menu, Popover**:  
+  - Fixed inconsistent detection of interactions outside the component when the trigger is inside a scrollable container.  
+  - Resolved an issue where `positioning.hideWhenDetached` failed to remove `visibility: hidden` from the positioner when the reference element returned to view.  
 
 ## [4.7.0] - 2024-12-29
 
