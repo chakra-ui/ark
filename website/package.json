@@ -21,7 +21,7 @@
     "@prisma/client": "6.1.0",
     "@shikijs/transformers": "1.24.4",
     "@types/node": "22.10.2",
-    "@types/react": "19.0.1",
+    "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "@uidotdev/usehooks": "2.4.1",
     "@zag-js/anatomy-icons": "0.80.0",
