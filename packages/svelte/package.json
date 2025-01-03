@@ -97,7 +97,7 @@
     "svelte-check": "4.1.1",
     "tslib": "2.8.1",
     "typescript": "5.7.2",
-    "vite": "5.4.11",
+    "vite": "6.0.7",
     "vitest": "2.1.8"
   },
   "peerDependencies": {
