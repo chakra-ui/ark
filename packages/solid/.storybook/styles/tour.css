@@ -1,0 +1,130 @@
+[data-scope="tour"][data-part="positioner"][data-type="floating"] {
+  position: absolute;
+}
+
+[data-scope="tour"][data-part="positioner"][data-type="floating"][data-placement*="bottom"] {
+  bottom: 24px;
+}
+
+[data-scope="tour"][data-part="positioner"][data-type="floating"][data-placement*="top"] {
+  top: 24px;
+}
+
+[data-scope="tour"][data-part="positioner"][data-type="floating"][data-placement*="end"] {
+  inset-inline-end: 24px;
+}
+
+[data-scope="tour"][data-part="positioner"][data-type="floating"][data-placement*="start"] {
+  inset-inline-start: 24px;
+}
+
+[data-scope="tour"][data-part="positioner"][data-type="dialog"] {
+  width: 100%;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-scope="tour"][data-part="content"] {
+  --arrow-background: white;
+  --arrow-size: 10px;
+  background: white;
+  padding: 24px;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+[data-scope="tour"][data-part="content"][data-type="dialog"] {
+  width: 500px;
+  background: lightblue;
+}
+
+[data-scope="tour"][data-part="content"][data-type="floating"] {
+  width: 500px;
+  background: rgb(15, 39, 136);
+  color: white;
+}
+
+[data-scope="tour"][data-part="arrow"] {
+  --arrow-background: white;
+  --arrow-shadow-color: #ebebeb;
+  box-shadow: var(--box-shadow);
+}
+
+[data-scope="tour"][data-part="title"] {
+  font-weight: 600;
+}
+
+[data-scope="tour"][data-part="description"] {
+  margin-bottom: 20px;
+}
+
+[data-scope="tour"][data-part="progress-text"] {
+  margin-bottom: 20px;
+  opacity: 0.72;
+}
+
+[data-scope="tour"][data-part="backdrop"] {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+[data-scope="tour"][data-part="spotlight"] {
+  border: 3px solid pink;
+}
+
+[data-scope="tour"][data-part="close-trigger"] {
+  font-family: inherit;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.tour.button__group {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.tour .steps__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50vh;
+}
+
+.tour .overflow__container {
+  width: 500px;
+  height: 400px;
+  max-height: 200px;
+  overflow: auto;
+  border: 2px solid teal;
+  position: relative;
+}
+
+.tour .overflow__container::before {
+  content: "Overflow";
+  display: block;
+  position: sticky;
+  background-color: teal;
+  color: white;
+  padding: 2px 4px 3px;
+  top: 0px;
+}
+
+.tour .overflow__container .h-200px {
+  height: 200px;
+}
+
+.tour .overflow__container .h-100px {
+  height: 100px;
+}
