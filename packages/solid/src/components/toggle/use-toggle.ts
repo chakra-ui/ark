@@ -1,5 +1,5 @@
 import { dataAttr } from '@zag-js/dom-query'
-import { type Accessor, createMemo } from 'solid-js'
+import { type Accessor, type JSX, createMemo } from 'solid-js'
 import { useControllableState } from '../../utils/use-controllable-state'
 import { parts } from './toggle.anatomy'
 

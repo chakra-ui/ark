@@ -118,6 +118,8 @@ describe('Dialog', () => {
     expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open Dialog' }))
-    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument()
+    await waitFor(() =>
+      expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument(),
+    )
   })
 })

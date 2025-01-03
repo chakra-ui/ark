@@ -12,7 +12,7 @@ import { type RootNode, useEnvironmentContext } from '../../providers'
 
 export interface PortalProps {
   disabled?: boolean
-  container?: RefObject<HTMLElement>
+  container?: RefObject<HTMLElement | null>
 }
 
 export const Portal = (props: PropsWithChildren<PortalProps>) => {

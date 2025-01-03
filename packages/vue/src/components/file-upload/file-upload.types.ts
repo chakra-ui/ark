@@ -71,6 +71,11 @@ export interface RootProps {
    */
   name?: string
   /**
+   * Whether to prevent the drop event on the document
+   * @default true
+   */
+  preventDocumentDrop?: boolean
+  /**
    * Whether the file input is required
    */
   required?: boolean
