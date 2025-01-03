@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
 import { RatingGroup } from '@ark-ui/vue/rating-group'
-import { StarIcon, StarOutlineIcon } from './icons'
+import { StarIcon } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -12,8 +12,8 @@ import { StarIcon, StarOutlineIcon } from './icons'
         <RatingGroup.Context v-slot="{ items }">
           <RatingGroup.Item v-for="item in items" :key="item" :index="item">
             <RatingGroup.ItemContext v-slot="{ highlighted }">
-              <StarIcon v-if="highlighted" />
-              <StarOutlineIcon v-else />
+              <StarIcon v-if="highlighted" fill="current" />
+              <StarIcon v-else />
             </RatingGroup.ItemContext>
           </RatingGroup.Item>
         </RatingGroup.Context>

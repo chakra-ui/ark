@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
-import { CheckIcon } from './icons'
+import { CheckIcon } from 'lucide-vue-next'
 </script>
 
 <template>

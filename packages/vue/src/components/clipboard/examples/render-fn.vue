@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Clipboard } from '@ark-ui/vue/clipboard'
-import { CheckIcon, ClipboardCopyIcon } from './icons'
+import { CheckIcon, ClipboardCopyIcon } from 'lucide-vue-next'
 </script>
 
 <template>

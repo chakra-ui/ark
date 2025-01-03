@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from 'lucide-react'
 import { Accordion } from '../'
 
 export const ComponentUnderTest = (props: Accordion.RootProps) => {
@@ -13,7 +14,9 @@ export const ComponentUnderTest = (props: Accordion.RootProps) => {
         <Accordion.Item key={id} value={item.value} disabled={item.disabled}>
           <Accordion.ItemTrigger>
             {item.value} Trigger
-            <Accordion.ItemIndicator>{'>'}</Accordion.ItemIndicator>
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
           <Accordion.ItemContent>{item.value} Content</Accordion.ItemContent>
         </Accordion.Item>

@@ -1,4 +1,5 @@
 import { Popover, usePopover } from '@ark-ui/solid/popover'
+import { ChevronRightIcon } from 'lucide-solid'
 
 export const RootProvider = () => {
   const popover = usePopover()
@@ -11,7 +12,10 @@ export const RootProvider = () => {
 
       <Popover.RootProvider value={popover}>
         <Popover.Trigger>
-          Click Me <Popover.Indicator>{'>'}</Popover.Indicator>
+          Click Me
+          <Popover.Indicator>
+            <ChevronRightIcon />
+          </Popover.Indicator>
         </Popover.Trigger>
         <Popover.Positioner>
           <Popover.Content>

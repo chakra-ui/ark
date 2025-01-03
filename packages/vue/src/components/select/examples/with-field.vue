@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
 import { Select, createListCollection } from '@ark-ui/vue/select'
-import { ChevronDownIcon } from './icons'
+import { ChevronDownIcon } from 'lucide-vue-next'
 
 const collection = createListCollection({
   items: ['React', 'Solid', 'Vue'],

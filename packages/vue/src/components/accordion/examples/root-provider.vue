@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Accordion, useAccordion } from '@ark-ui/vue/accordion'
+import { ChevronRightIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
-import { ChevronDownIcon } from './icons'
 
 const items = ref(['React', 'Solid', 'Vue'])
 
@@ -16,7 +16,7 @@ const accordion = useAccordion({ defaultValue: ['React'] })
       <Accordion.ItemTrigger>
         What is {{ item }}?
         <Accordion.ItemIndicator>
-          <ChevronDownIcon />
+          <ChevronRightIcon />
         </Accordion.ItemIndicator>
       </Accordion.ItemTrigger>
       <Accordion.ItemContent>

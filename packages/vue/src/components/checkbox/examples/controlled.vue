@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Checkbox, type CheckboxCheckedState } from '@ark-ui/vue/checkbox'
+import { CheckIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
-import { CheckIcon } from './icons'
 
 const checked = ref<CheckboxCheckedState>(true)
 </script>
