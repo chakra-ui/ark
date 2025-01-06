@@ -1,5 +1,6 @@
 export * from './avatar'
 export * from './factory'
+export * from './format'
 export * from './frame'
 export * from './highlight'
 export * from './portal'
