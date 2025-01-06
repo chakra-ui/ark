@@ -1,7 +1,7 @@
 <script module lang="ts">
   export interface FormatNumberProps {
     /**
-     * The byte size to format
+     * The number to format
      */
     value: number
     compactDisplay?: 'short' | 'long' | undefined
@@ -10,8 +10,11 @@
     style?: string | undefined
     unit?: string | undefined
     unitDisplay?: 'short' | 'long' | 'narrow' | undefined
+    currency?: string | undefined
     currencyDisplay?: string | undefined
     currencySign?: string | undefined
+    maximumFractionDigits?: number | undefined
+    minimumFractionDigits?: number | undefined
   }
 </script>
 
