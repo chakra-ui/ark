@@ -1,6 +1,6 @@
 import { QrCode } from '@ark-ui/react/qr-code'
 
-export const Basic = () => {
+export const WithOverlay = () => {
   return (
     <QrCode.Root value="http://ark-ui.com" encoding={{ ecc: 'H' }}>
       <QrCode.Frame>

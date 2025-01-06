@@ -1,12 +1,19 @@
 import { QrCode, useQrCode } from '@ark-ui/react/qr-code'
+import { useState } from 'react'
 
 export const RootProvider = () => {
-  const qrCode = useQrCode({ value: 'http://ark-ui.com' })
+  const [value, setValue] = useState('http://ark-ui.com')
+  const qrCode = useQrCode({ value })
 
   return (
     <>
-      <button onClick={() => qrCode.setValue('https://ark-ui.com')}>Set Value</button>
-
+      <button
+        onClick={() => {
+          setValue('https://chakra-ui.com')
+        }}
+      >
+        Set Value
+      </button>
       <QrCode.RootProvider value={qrCode}>
         <QrCode.Frame>
           <QrCode.Pattern />

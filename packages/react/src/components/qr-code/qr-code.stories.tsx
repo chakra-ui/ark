@@ -8,3 +8,5 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { RootProvider } from './examples/root-provider'
+export { WithOverlay } from './examples/with-overlay'
+export { ErrorCorrection } from './examples/error-correction'
