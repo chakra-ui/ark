@@ -7,6 +7,7 @@ description: All notable changes will be documented in this file.
 ## [Unreleased]
 
 - Added `Format` component.
+- Added `Progress` component.
 
 ## [0.2.0] - 2024-12-12
 
