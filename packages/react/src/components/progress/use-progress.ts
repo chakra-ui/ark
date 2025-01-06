@@ -13,18 +13,13 @@ export const useProgress = (props: UseProgressProps = {}): UseProgressReturn => 
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const initialContext: progress.Context = {
+  const context: progress.Context = {
     id: useId(),
     dir,
     getRootNode,
     ...props,
   }
 
-  const context: progress.Context = {
-    ...initialContext,
-    value: props.value,
-  }
-
-  const [state, send] = useMachine(progress.machine(initialContext), { context })
+  const [state, send] = useMachine(progress.machine(context), { context })
   return progress.connect(state, send, normalizeProps)
 }
