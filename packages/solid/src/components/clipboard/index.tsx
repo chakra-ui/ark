@@ -1,8 +1,5 @@
 export type { CopyStatusDetails as ClipboardCopyStatusDetails } from '@zag-js/clipboard'
-export {
-  ClipboardContext,
-  type ClipboardContextProps,
-} from './clipboard-context'
+export { ClipboardContext, type ClipboardContextProps } from './clipboard-context'
 export {
   ClipboardControl,
   type ClipboardControlBaseProps,
@@ -38,6 +35,11 @@ export {
   type ClipboardTriggerBaseProps,
   type ClipboardTriggerProps,
 } from './clipboard-trigger'
+export {
+  ClipboardValueText,
+  type ClipboardValueTextBaseProps,
+  type ClipboardValueTextProps,
+} from './clipboard-value-text'
 export { clipboardAnatomy } from './clipboard.anatomy'
 export { useClipboard, type UseClipboardProps, type UseClipboardReturn } from './use-clipboard'
 export { useClipboardContext, type UseClipboardContext } from './use-clipboard-context'

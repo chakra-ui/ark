@@ -39,3 +39,8 @@ export {
   type ClipboardTriggerBaseProps as TriggerBaseProps,
   type ClipboardTriggerProps as TriggerProps,
 } from './clipboard-trigger.vue'
+export {
+  default as ValueText,
+  type ClipboardValueTextBaseProps as ValueTextBaseProps,
+  type ClipboardValueTextProps as ValueTextProps,
+} from './clipboard-value-text.vue'

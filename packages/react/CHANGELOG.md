@@ -12,6 +12,8 @@ description: All notable changes will be documented in this file.
   - Introduced the `preventDropOnDocument` property to block file drops on the document while using the file upload component. Enabled by default.  
   - Added `setClipboardFiles` to the `FileUpload` API, allowing files to be set from clipboard data.  
 
+- **Clipboard**: Added `Clipboard.ValueText` to render the clipboard value.
+
 ### Fixed
 
 - **Dialog, Popover**: Fixed an issue where the dialog or popover would close if the focused element was removed from the DOM.  

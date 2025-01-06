@@ -38,3 +38,8 @@ export {
   type ClipboardTriggerProps as TriggerProps,
   type ClipboardTriggerBaseProps as TriggerBaseProps,
 } from './clipboard-trigger'
+export {
+  ClipboardValueText as ValueText,
+  type ClipboardValueTextProps as ValueTextProps,
+  type ClipboardValueTextBaseProps as ValueTextBaseProps,
+} from './clipboard-value-text'
