@@ -1,10 +1,14 @@
 import user from '@testing-library/user-event'
-import { render, screen, waitFor } from '@testing-library/vue'
+import { cleanup, render, screen, waitFor } from '@testing-library/vue'
 import { Dialog, dialogAnatomy } from '../'
 import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './dialog.test.vue'
 
 describe('Dialog', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
     render(ComponentUnderTest)
 
