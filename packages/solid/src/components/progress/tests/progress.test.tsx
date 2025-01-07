@@ -14,7 +14,7 @@ describe('Progress', () => {
     expect(Progress[part]).toBeDefined()
   })
 
-  it('should handle default value', async () => {
+  it('should handle value', async () => {
     render(() => <ComponentUnderTest value={7} />)
 
     screen.getByText('7%')

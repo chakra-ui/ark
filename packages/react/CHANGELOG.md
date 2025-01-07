@@ -11,7 +11,6 @@ description: All notable changes will be documented in this file.
 - **FileUpload**:  
   - Introduced the `preventDropOnDocument` property to block file drops on the document while using the file upload component. Enabled by default.  
   - Added `setClipboardFiles` to the `FileUpload` API, allowing files to be set from clipboard data.  
-
 - **Clipboard**: Added `Clipboard.ValueText` to render the clipboard value.
 
 ### Fixed
@@ -19,7 +18,6 @@ description: All notable changes will be documented in this file.
 - **Dialog, Popover**: Fixed an issue where the dialog or popover would close if the focused element was removed from the DOM.  
 - **Collapsible**: Resolved a bug causing the opening animation to replay when an open collapsible was re-rendered. 
 - **FileUpload**: Fixed a bug causing the hidden input to desync from the accepted files.  
-- **Progress**: Removed unused initial context and fixed React examples in docs.
 - **QRCode**: Addressed an issue where `getDataUrl` did not generate a full-sized QR code.  
 - **Menu, Popover**: Fixed inconsistent detection of interactions outside the component when the trigger is inside a scrollable container.
 
