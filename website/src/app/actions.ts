@@ -1,6 +1,8 @@
+'use server'
 import { Schema } from '@effect/schema'
 import { Effect, Match, pipe } from 'effect'
 import { auth } from '~/lib/auth'
+import { ConflictError, InternalServerError, NotFoundError, UnauthorizedError } from '~/lib/errors'
 import { prisma } from '~/lib/prisma'
 
 export const findLicenseKeysByOrderId = async (externalId: string): Promise<string> =>
@@ -15,7 +17,7 @@ export const findLicenseKeysByOrderId = async (externalId: string): Promise<stri
             },
             include: { orderItems: { include: { licenseKey: true } } },
           }),
-        catch: () => new Error(),
+        catch: () => InternalServerError,
       }),
       Effect.map((order) => order.orderItems.map((item) => item.licenseKey.key)[0]),
       Effect.catchAll(() => Effect.succeed('')),
@@ -35,7 +37,7 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
           Effect.map((session) => session?.user?.id),
           Effect.filterOrFail(
             (userId): userId is string => typeof userId === 'string',
-            () => new UnauthorizedError(),
+            () => UnauthorizedError,
           ),
         ),
         pipe(
@@ -46,14 +48,14 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
               try: () => prisma.licenseKey.findUniqueOrThrow({ where: { key } }),
               catch: (e) =>
                 Match.value(e).pipe(
-                  Match.when({ code: 'P2025' }, () => new NotFoundError(key)),
-                  Match.orElse(() => new InternalServerError()),
+                  Match.when({ code: 'P2025' }, () => NotFoundError),
+                  Match.orElse(() => InternalServerError),
                 ),
             }),
           ),
           Effect.filterOrFail(
             (licenseKey) => licenseKey.userId === null,
-            () => new ConflictError(),
+            () => ConflictError,
           ),
         ),
       ]),
@@ -68,7 +70,7 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
                 },
               },
             }),
-          catch: () => new InternalServerError(),
+          catch: () => InternalServerError,
         }),
       ),
       Effect.map(() => ({ success: true, message: 'License key activated' })),
@@ -92,7 +94,7 @@ export const hasUserPermission = async () =>
       Effect.map((session) => session?.user?.id),
       Effect.filterOrFail(
         (userId): userId is string => typeof userId === 'string',
-        () => new UnauthorizedError(),
+        () => UnauthorizedError,
       ),
       Effect.flatMap((userId) =>
         Effect.tryPromise({
@@ -100,30 +102,13 @@ export const hasUserPermission = async () =>
             prisma.licenseKey.findFirst({
               where: { userId },
             }),
-          catch: () => new InternalServerError(),
+          catch: () => InternalServerError,
         }),
       ),
       Effect.map((license) => license !== null),
       Effect.catchAll(() => Effect.succeed(false)),
     ),
   )
-
-class InternalServerError {
-  readonly _tag = 'InternalServerError'
-}
-
-class NotFoundError {
-  readonly _tag = 'NotFoundError'
-  constructor(readonly id: string) {}
-}
-
-class ConflictError {
-  readonly _tag = 'ConflictError'
-}
-
-class UnauthorizedError {
-  readonly _tag = 'UnauthorizedError'
-}
 
 interface FormState {
   success?: boolean | undefined
@@ -146,7 +131,7 @@ export const contact = async (_prevState: unknown, formData: FormData): Promise<
               platform: 'Ark UI',
             }),
           }),
-        catch: () => new Error(),
+        catch: () => InternalServerError,
       }),
       Effect.map(() => ({ success: true, message: 'Your message has been sent successfully.' })),
       Effect.catchAll(() =>
