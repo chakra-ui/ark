@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.7.0] - 2025-01-08
+
 ### Added
 
 - **Clipboard**: Introduced `Clipboard.ValueText` to display clipboard content.
