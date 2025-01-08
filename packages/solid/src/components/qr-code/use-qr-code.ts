@@ -5,7 +5,13 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseQrCodeProps
-  extends Optional<Omit<qrCode.Context, 'dir' | 'getRootNode'>, 'id'> {}
+  extends Optional<Omit<qrCode.Context, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The initial value of the qr code when it is first rendered.
+   * Use when you do not need to control the state of the qr code.
+   */
+  defaultValue?: qrCode.Context['value']
+}
 
 export interface UseQrCodeReturn extends Accessor<qrCode.Api<PropTypes>> {}
 
@@ -18,11 +24,12 @@ export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    value: props.defaultValue,
     ...props,
   }))
+
   const [state, send] = useMachine(qrCode.machine(context()), {
     context,
   })
-
   return createMemo(() => qrCode.connect(state, send, normalizeProps))
 }

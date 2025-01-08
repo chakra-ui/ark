@@ -47,7 +47,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ refs: { rootRef: RefObject<HTMLFieldSetElement>; }; disabled: boolean; invalid: boolean; getRootProps: () => Omit<DetailedHTMLProps<FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>, \"ref\">; getLegendProps: () => Omit<...>; getHelperTextProps: () => Omit<...>; getErrorTextProps: () => Omit<...>; }",
+        "type": "{ refs: { rootRef: RefObject<HTMLFieldSetElement | null>; }; disabled: boolean; invalid: boolean; getRootProps: () => Omit<DetailedHTMLProps<FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>, \"ref\">; getLegendProps: () => Omit<...>; getHelperTextProps: () => Omit<...>; getErrorTextProps: () => Omit<....",
         "isRequired": true
       },
       "asChild": {

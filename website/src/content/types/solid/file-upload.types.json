@@ -79,7 +79,10 @@
   },
   "Item": {
     "props": {
-      "file": { "type": "File", "isRequired": true },
+      "file": {
+        "type": "File",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'li'>) => Element",
         "isRequired": false,
@@ -192,6 +195,12 @@
         "isRequired": false,
         "description": "Function called when the file is rejected"
       },
+      "preventDocumentDrop": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent the drop event on the document"
+      },
       "required": {
         "type": "boolean",
         "isRequired": false,
@@ -211,7 +220,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseFileUploadReturn", "isRequired": true },
+      "value": {
+        "type": "UseFileUploadReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

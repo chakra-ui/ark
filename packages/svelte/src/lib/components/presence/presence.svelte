@@ -1,9 +1,9 @@
 <script module lang="ts">
-import type { HTMLProps, PolymorphicProps } from '$lib/types'
-import { type UsePresenceProps, usePresence } from './use-presence.svelte'
+  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import { type UsePresenceProps, usePresence } from './use-presence.svelte'
 
-export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps<'div'> {}
-export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}
+  export interface PresenceBaseProps extends UsePresenceProps, PolymorphicProps<'div'> {}
+  export interface PresenceProps extends HTMLProps<'div'>, PresenceBaseProps {}
 </script>
 
 <script lang="ts">

@@ -1,9 +1,9 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
-  import type { UseProgressProps } from './use-progress.svelte'
+import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+import type { UseProgressProps } from './use-progress.svelte'
 
-  export interface ProgressRootBaseProps extends UseProgressProps, PolymorphicProps<'div'> {}
-  export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRootBaseProps> {}
+export interface ProgressRootBaseProps extends UseProgressProps, PolymorphicProps<'div'> {}
+export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRootBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -16,10 +16,12 @@
   const props: ProgressRootProps = $props()
   const [useProgressProps, localProps] = $derived(
     createSplitProps<UseProgressProps>()(props, [
+      'defaultValue',
       'id',
       'ids',
       'max',
       'min',
+      'onValueChange',
       'orientation',
       'translations',
       'value',

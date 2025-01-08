@@ -4,6 +4,11 @@ export {
   type QrCodeContextProps,
 } from './qr-code-context'
 export {
+  QrCodeDownloadTrigger,
+  type QrCodeDownloadTriggerBaseProps,
+  type QrCodeDownloadTriggerProps,
+} from './qr-code-download-trigger'
+export {
   QrCodeFrame,
   type QrCodeFrameBaseProps,
   type QrCodeFrameProps,

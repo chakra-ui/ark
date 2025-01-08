@@ -35,6 +35,5 @@ export const useTabs = (props: UseTabsProps = {}): UseTabsReturn => {
   }
 
   const [state, send] = useMachine(tabs.machine(initialContext), { context })
-
   return tabs.connect(state, send, normalizeProps)
 }

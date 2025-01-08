@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import type { RootProps } from './qr-code.types'
+import type { RootEmits, RootProps } from './qr-code.types'
 
 export interface QrCodeRootBaseProps extends RootProps, PolymorphicProps {}
 export interface QrCodeRootProps
@@ -10,6 +10,7 @@ export interface QrCodeRootProps
      * @vue-ignore
      */
     HTMLAttributes {}
+export interface QrCodeRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">

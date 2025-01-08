@@ -11,7 +11,7 @@ import { StarHalfIcon, StarIcon } from 'lucide-vue-next'
         <RatingGroup.Item v-for="item in items" :key="item" :index="item">
           <RatingGroup.ItemContext v-slot="{ highlighted, half }">
             <StarHalfIcon v-if="half" />
-            <StarIcon  v-else-if="highlighted" fill="current" />
+            <StarIcon v-else-if="highlighted" fill="current" />
             <StarIcon v-else />
           </RatingGroup.ItemContext>
         </RatingGroup.Item>

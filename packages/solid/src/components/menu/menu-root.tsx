@@ -37,6 +37,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onPointerDownOutside',
     'onSelect',
     'open',
+    'navigate',
     'positioning',
     'typeahead',
   ])

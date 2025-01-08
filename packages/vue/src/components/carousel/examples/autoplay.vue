@@ -9,7 +9,7 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
     <Carousel.Control>
       <Carousel.AutoplayTrigger>
         <Carousel.Context v-slot="context">
-            {{ context.isPlaying ? 'Pause' : 'Play' }}
+          {{ context.isPlaying ? 'Pause' : 'Play' }}
         </Carousel.Context>
       </Carousel.AutoplayTrigger>
     </Carousel.Control>

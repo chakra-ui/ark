@@ -25,6 +25,7 @@ export const TabsRoot = (props: TabsRootProps) => {
     'id',
     'ids',
     'loopFocus',
+    'navigate',
     'onFocusChange',
     'onValueChange',
     'orientation',

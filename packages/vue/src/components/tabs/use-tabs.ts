@@ -36,6 +36,5 @@ export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): Use
   }))
 
   const [state, send] = useMachine(tabs.machine(context.value), { context })
-
   return computed(() => tabs.connect(state.value, send, normalizeProps))
 }

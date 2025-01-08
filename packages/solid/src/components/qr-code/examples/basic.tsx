@@ -6,6 +6,9 @@ export const Basic = () => {
       <QrCode.Frame>
         <QrCode.Pattern />
       </QrCode.Frame>
+      <QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
+        Download
+      </QrCode.DownloadTrigger>
     </QrCode.Root>
   )
 }

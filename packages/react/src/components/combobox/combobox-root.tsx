@@ -45,6 +45,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'loopFocus',
     'multiple',
     'name',
+    'navigate',
     'onFocusOutside',
     'onHighlightChange',
     'onInputValueChange',

@@ -6,7 +6,6 @@ export const RootProvider = () => {
   return (
     <>
       <button onClick={() => progress.setToMax()}>Set to MAX</button>
-
       <Progress.RootProvider value={progress}>
         <Progress.Label>Label</Progress.Label>
         <Progress.ValueText />

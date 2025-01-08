@@ -76,7 +76,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "item": { "type": "any", "isRequired": false, "description": "The item to render" },
+      "item": {
+        "type": "any",
+        "isRequired": false,
+        "description": "The item to render"
+      },
       "persistFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -241,6 +245,11 @@
         "isRequired": false,
         "description": "The `name` attribute of the combobox's input. Useful for form submission"
       },
+      "navigate": {
+        "type": "(details: NavigateDetails) => void",
+        "isRequired": false,
+        "description": "Function to navigate to the selected item"
+      },
       "onExitComplete": {
         "type": "() => void",
         "isRequired": false,
@@ -360,7 +369,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseComboboxReturn<T>", "isRequired": true },
+      "value": {
+        "type": "UseComboboxReturn<T>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

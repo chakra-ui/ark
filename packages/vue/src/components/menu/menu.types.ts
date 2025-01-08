@@ -50,6 +50,10 @@ export interface RootProps {
    */
   loopFocus?: boolean
   /**
+   * Function to navigate to the selected item if it's an anchor element
+   */
+  navigate?: (details: menu.NavigateDetails) => void
+  /**
    * Whether the menu is open
    */
   open?: boolean

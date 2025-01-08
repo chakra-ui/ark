@@ -1,4 +1,28 @@
 {
+  "DownloadTrigger": {
+    "props": {
+      "fileName": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The name of the file."
+      },
+      "mimeType": {
+        "type": "DataUrlType",
+        "isRequired": true,
+        "description": "The mime type of the image."
+      },
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "quality": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The quality of the image."
+      }
+    }
+  },
   "Frame": {
     "props": {
       "asChild": {
@@ -33,6 +57,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial value of the qr code when it is first rendered.\nUse when you do not need to control the state of the qr code."
+      },
       "encoding": {
         "type": "QrCodeGenerateOptions",
         "isRequired": false,
@@ -43,12 +72,24 @@
         "isRequired": false,
         "description": "The element ids."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the value changes."
+      },
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The value to encode."
+      }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseQrCodeReturn", "isRequired": true },
+      "value": {
+        "type": "UseQrCodeReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

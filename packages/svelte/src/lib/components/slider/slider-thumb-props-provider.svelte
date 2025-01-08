@@ -6,4 +6,4 @@
   SliderThumbPropsProvider(value)
 </script>
 
-<slot /> 
+<slot />

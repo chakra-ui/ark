@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { QrCode } from '@ark-ui/svelte/qr-code'
-  import type { UseQrCodeContext } from '@ark-ui/svelte/qr-code'
+import { QrCode } from '@ark-ui/svelte/qr-code'
+import type { UseQrCodeContext } from '@ark-ui/svelte/qr-code'
 </script>
 
-<QrCode.Root value="http://ark-ui.com">
+<QrCode.Root defaultValue="http://ark-ui.com">
   <QrCode.Context>
     {#snippet api(qrCode: UseQrCodeContext)}
       <QrCode.Frame>

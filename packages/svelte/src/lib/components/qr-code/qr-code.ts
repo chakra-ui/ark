@@ -3,31 +3,36 @@ export type {
   QrCodeGenerateResult as GenerateResult,
 } from '@zag-js/qr-code'
 export {
-  default as Root,
-  type QrCodeRootProps as RootProps,
-  type QrCodeRootBaseProps as RootBaseProps,
-} from './qr-code-root.svelte'
-export {
-  default as Frame,
-  type QrCodeFrameProps as FrameProps,
-  type QrCodeFrameBaseProps as FrameBaseProps,
-} from './qr-code-frame.svelte'
-export {
-  default as Pattern,
-  type QrCodePatternProps as PatternProps,
-  type QrCodePatternBaseProps as PatternBaseProps,
-} from './qr-code-pattern.svelte'
-export {
-  default as Overlay,
-  type QrCodeOverlayProps as OverlayProps,
-  type QrCodeOverlayBaseProps as OverlayBaseProps,
-} from './qr-code-overlay.svelte'
-export {
-  default as RootProvider,
-  type QrCodeRootProviderProps as RootProviderProps,
-  type QrCodeRootProviderBaseProps as RootProviderBaseProps,
-} from './qr-code-root-provider.svelte'
-export {
   default as Context,
   type QrCodeContextProps as ContextProps,
 } from './qr-code-context.svelte'
+export {
+  default as DownloadTrigger,
+  type QrCodeDownloadTriggerBaseProps as DownloadTriggerBaseProps,
+  type QrCodeDownloadTriggerProps as DownloadTriggerProps,
+} from './qr-code-download-trigger.svelte'
+export {
+  default as Frame,
+  type QrCodeFrameBaseProps as FrameBaseProps,
+  type QrCodeFrameProps as FrameProps,
+} from './qr-code-frame.svelte'
+export {
+  default as Overlay,
+  type QrCodeOverlayBaseProps as OverlayBaseProps,
+  type QrCodeOverlayProps as OverlayProps,
+} from './qr-code-overlay.svelte'
+export {
+  default as Pattern,
+  type QrCodePatternBaseProps as PatternBaseProps,
+  type QrCodePatternProps as PatternProps,
+} from './qr-code-pattern.svelte'
+export {
+  default as RootProvider,
+  type QrCodeRootProviderBaseProps as RootProviderBaseProps,
+  type QrCodeRootProviderProps as RootProviderProps,
+} from './qr-code-root-provider.svelte'
+export {
+  default as Root,
+  type QrCodeRootBaseProps as RootBaseProps,
+  type QrCodeRootProps as RootProps,
+} from './qr-code-root.svelte'

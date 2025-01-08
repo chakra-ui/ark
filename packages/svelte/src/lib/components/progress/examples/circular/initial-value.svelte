@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Progress } from '@ark-ui/svelte/progress'
+import { Progress } from '@ark-ui/svelte/progress'
 </script>
 
-<Progress.Root value={70}>
+<Progress.Root defaultValue={70}>
   <Progress.Label>Label</Progress.Label>
   <Progress.ValueText />
   <Progress.Circle>
