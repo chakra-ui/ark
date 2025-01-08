@@ -38,10 +38,7 @@ export {
   type FieldErrorTextProps as ErrorTextProps,
   type FieldErrorTextBaseProps as ErrorTextBaseProps,
 } from './field-error-text.vue'
-export {
-  default as Context,
-  type FieldContextProps as ContextProps,
-} from './field-context.vue'
+export { default as Context, type FieldContextProps as ContextProps } from './field-context.vue'
 export {
   default as RequiredIndicator,
   type FieldRequiredIndicatorProps as RequiredIndicatorProps,

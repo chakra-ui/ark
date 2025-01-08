@@ -24,10 +24,7 @@ export {
   type PopoverContentProps as ContentProps,
   type PopoverContentBaseProps as ContentBaseProps,
 } from './popover-content.vue'
-export {
-  default as Context,
-  type PopoverContextProps as ContextProps,
-} from './popover-context.vue'
+export { default as Context, type PopoverContextProps as ContextProps } from './popover-context.vue'
 export {
   default as Description,
   type PopoverDescriptionProps as DescriptionProps,

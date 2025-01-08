@@ -1,4 +1,4 @@
-export type { PageChangeDetails, AutoplayStatusDetails, DragStatusDetails } from '@zag-js/carousel'
+export type { AutoplayStatusDetails, DragStatusDetails, PageChangeDetails } from '@zag-js/carousel'
 export {
   CarouselAutoplayTrigger as AutoplayTrigger,
   type CarouselAutoplayTriggerBaseProps as AutoplayTriggerBaseProps,

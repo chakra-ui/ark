@@ -7,10 +7,10 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { RootProvider } from './examples/root-provider'
-export { InitialValue } from './examples/initial-value'
-export { Customized } from './examples/customized'
 export { Blurred } from './examples/blurred'
+export { Customized } from './examples/customized'
+export { InitialValue } from './examples/initial-value'
 export { OTPMode } from './examples/otp-mode'
-export { WithMask } from './examples/with-mask'
+export { RootProvider } from './examples/root-provider'
 export { WithField } from './examples/with-field'
+export { WithMask } from './examples/with-mask'

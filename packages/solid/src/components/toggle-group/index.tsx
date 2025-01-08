@@ -1,8 +1,5 @@
 export type { ValueChangeDetails as ToggleGroupValueChangeDetails } from '@zag-js/toggle-group'
-export {
-  ToggleGroupContext,
-  type ToggleGroupContextProps,
-} from './toggle-group-context'
+export { ToggleGroupContext, type ToggleGroupContextProps } from './toggle-group-context'
 export {
   ToggleGroupItem,
   type ToggleGroupItemBaseProps,

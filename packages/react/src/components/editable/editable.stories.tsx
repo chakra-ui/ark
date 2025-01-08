@@ -7,7 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { RootProvider } from './examples/root-provider'
 export { CustomControls } from './examples/custom-controls'
 export { DoubleClick } from './examples/double-click'
+export { RootProvider } from './examples/root-provider'
 export { WithField } from './examples/with-field'

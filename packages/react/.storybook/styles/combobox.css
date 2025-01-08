@@ -19,7 +19,6 @@
   background-color: lightblue;
 }
 
-
 [data-scope='combobox'][data-part='item'][data-disabled] {
   color: silver;
 }

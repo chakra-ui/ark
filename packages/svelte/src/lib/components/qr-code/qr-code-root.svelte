@@ -1,9 +1,9 @@
 <script module lang="ts">
-import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
-import type { UseQrCodeProps } from './use-qr-code.svelte'
+  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { UseQrCodeProps } from './use-qr-code.svelte'
 
-export interface QrCodeRootBaseProps extends UseQrCodeProps, PolymorphicProps<'div'> {}
-export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBaseProps> {}
+  export interface QrCodeRootBaseProps extends UseQrCodeProps, PolymorphicProps<'div'> {}
+  export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBaseProps> {}
 </script>
 
 <script lang="ts">

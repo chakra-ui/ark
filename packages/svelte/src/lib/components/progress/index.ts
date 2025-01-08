@@ -50,7 +50,7 @@ export {
   type ProgressViewProps,
 } from './progress-view.svelte'
 export { progressAnatomy } from './progress.anatomy'
-export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress.svelte'
 export { useProgressContext, type UseProgressContext } from './use-progress-context'
+export { useProgress, type UseProgressProps, type UseProgressReturn } from './use-progress.svelte'
 
 export * as Progress from './progress'

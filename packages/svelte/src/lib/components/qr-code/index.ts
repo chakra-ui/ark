@@ -1,8 +1,5 @@
 export type { QrCodeGenerateOptions, QrCodeGenerateResult } from '@zag-js/qr-code'
-export {
-  default as QrCodeContext,
-  type QrCodeContextProps,
-} from './qr-code-context.svelte'
+export { default as QrCodeContext, type QrCodeContextProps } from './qr-code-context.svelte'
 export {
   default as QrCodeDownloadTrigger,
   type QrCodeDownloadTriggerBaseProps,

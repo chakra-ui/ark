@@ -8,10 +8,7 @@ export {
   type TagsInputClearTriggerBaseProps,
   type TagsInputClearTriggerProps,
 } from './tags-input-clear-trigger'
-export {
-  TagsInputContext,
-  type TagsInputContextProps,
-} from './tags-input-context'
+export { TagsInputContext, type TagsInputContextProps } from './tags-input-context'
 export {
   TagsInputControl,
   type TagsInputControlBaseProps,
@@ -32,10 +29,7 @@ export {
   type TagsInputItemBaseProps,
   type TagsInputItemProps,
 } from './tags-input-item'
-export {
-  TagsInputItemContext,
-  type TagsInputItemContextProps,
-} from './tags-input-item-context'
+export { TagsInputItemContext, type TagsInputItemContextProps } from './tags-input-item-context'
 export {
   TagsInputItemDeleteTrigger,
   type TagsInputItemDeleteTriggerBaseProps,

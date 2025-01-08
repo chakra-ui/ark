@@ -1,13 +1,13 @@
 export type { ValueChangeDetails } from '@zag-js/editable'
 export {
   EditableArea as Area,
-  type EditableAreaProps as AreaProps,
   type EditableAreaBaseProps as AreaBaseProps,
+  type EditableAreaProps as AreaProps,
 } from './editable-area'
 export {
   EditableCancelTrigger as CancelTrigger,
-  type EditableCancelTriggerProps as CancelTriggerProps,
   type EditableCancelTriggerBaseProps as CancelTriggerBaseProps,
+  type EditableCancelTriggerProps as CancelTriggerProps,
 } from './editable-cancel-trigger'
 export {
   EditableContext as Context,
@@ -15,41 +15,41 @@ export {
 } from './editable-context'
 export {
   EditableControl as Control,
-  type EditableControlProps as ControlProps,
   type EditableControlBaseProps as ControlBaseProps,
+  type EditableControlProps as ControlProps,
 } from './editable-control'
 export {
   EditableEditTrigger as EditTrigger,
-  type EditableEditTriggerProps as EditTriggerProps,
   type EditableEditTriggerBaseProps as EditTriggerBaseProps,
+  type EditableEditTriggerProps as EditTriggerProps,
 } from './editable-edit-trigger'
 export {
   EditableInput as Input,
-  type EditableInputProps as InputProps,
   type EditableInputBaseProps as InputBaseProps,
+  type EditableInputProps as InputProps,
 } from './editable-input'
 export {
   EditableLabel as Label,
-  type EditableLabelProps as LabelProps,
   type EditableLabelBaseProps as LabelBaseProps,
+  type EditableLabelProps as LabelProps,
 } from './editable-label'
 export {
   EditablePreview as Preview,
-  type EditablePreviewProps as PreviewProps,
   type EditablePreviewBaseProps as PreviewBaseProps,
+  type EditablePreviewProps as PreviewProps,
 } from './editable-preview'
 export {
   EditableRoot as Root,
-  type EditableRootProps as RootProps,
   type EditableRootBaseProps as RootBaseProps,
+  type EditableRootProps as RootProps,
 } from './editable-root'
 export {
   EditableRootProvider as RootProvider,
-  type EditableRootProviderProps as RootProviderProps,
   type EditableRootProviderBaseProps as RootProviderBaseProps,
+  type EditableRootProviderProps as RootProviderProps,
 } from './editable-root-provider'
 export {
   EditableSubmitTrigger as SubmitTrigger,
-  type EditableSubmitTriggerProps as SubmitTriggerProps,
   type EditableSubmitTriggerBaseProps as SubmitTriggerBaseProps,
+  type EditableSubmitTriggerProps as SubmitTriggerProps,
 } from './editable-submit-trigger'
