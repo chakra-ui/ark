@@ -12,11 +12,11 @@ description: All notable changes will be documented in this file.
 - **FileUpload**:  
   - Added `preventDropOnDocument` to block file drops on the document when the file upload component is active.
   - Added `setClipboardFiles` to the API for setting files from clipboard data.  
-- **QrCode**:  
-  - Added `QrCode.DownloadTrigger` to enable QR code image downloads.
-  - Added `defaultValue`, `onValueChange` and `v-model`.
-- **Progress**: Added `defaultValue`, `onValueChange` and `v-model`.
+- **Progress**: Added support for `defaultValue`, `onValueChange` and `v-model`.
 - **Tabs, Menu, Combobox**: Added `navigate` property for custom router navigation when selections render as links.
+- **QrCode**:  
+  - Added support for `defaultValue`, `onValueChange` and `v-model`.
+  - Added `QrCode.DownloadTrigger` to enable QR code image downloads.
 
 ### Fixed
 

@@ -20,7 +20,17 @@ Learn how to use the `QR Code` component in your project. Let's take a look at t
 
 <Example id="basic" />
 
-### With Overlay
+### Download a QR Code
+
+You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the `fileName` and the `mimeType` of the image.
+
+```tsx
+<QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
+  Download
+</QrCode.DownloadTrigger>
+```
+
+### Use an overlay
 
 You can also add a logo or overlay to the QR code. This is useful when you want to brand the QR code.
 

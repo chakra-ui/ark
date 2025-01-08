@@ -21,13 +21,7 @@ example:
 
 <Example id="basic" />
 
-### Setting the initial value
-
-To set the progress's initial value, set the `value` prop to a number.
-
-<Example id="initial-value" />
-
-### Specifying the minimum and maximum
+### Set a min and max value
 
 By default, the maximum is `100`. If that's not what you want, you can easily specify a different
 bound by changing the value of the `max` prop. You can do the same with the minimum value by setting
@@ -37,12 +31,10 @@ For example, to show the user a progress from `10` to `30`, you can use:
 
 <Example id="min-max" />
 
-### Using the indeterminate state
+### Indeterminate progress
 
 The progress component is determinate by default, with the value and max set to 50 and 100
-respectively.
-
-Set the `state` to `indeterminate` in `Progress.Indicator`:
+respectively. To render an indeterminate progress, you will have to set the `value` to `null`.
 
 <Example id="indeterminate" />
 
