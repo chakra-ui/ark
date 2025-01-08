@@ -17,7 +17,7 @@ describe('Progress', () => {
   it('should handle value', async () => {
     render(ComponentUnderTest, {
       props: {
-        value: 7,
+        defaultValue: 7,
       },
     })
 
@@ -27,7 +27,7 @@ describe('Progress', () => {
   it('should handle custom max range', async () => {
     render(ComponentUnderTest, {
       props: {
-        value: 30,
+        defaultValue: 30,
         max: 30,
       },
     })
