@@ -14,10 +14,10 @@ export interface RatingGroupItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 import { RatingGroupItemProvider } from './use-rating-group-item-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<RatingGroupItemProps>()
 const ratingGroup = useRatingGroupContext()

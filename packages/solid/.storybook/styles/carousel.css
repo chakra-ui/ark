@@ -1,25 +1,25 @@
-[data-scope='carousel'][data-part='root'] {
+[data-scope="carousel"][data-part="root"] {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   gap: 16px;
 }
 
-[data-scope='carousel'][data-part='root'][data-orientation='horizontal'] {
+[data-scope="carousel"][data-part="root"][data-orientation="horizontal"] {
   max-width: 400px;
 }
 
-[data-scope='carousel'][data-part='root'][data-orientation='vertical'] {
+[data-scope="carousel"][data-part="root"][data-orientation="vertical"] {
   max-height: 400px;
 }
 
-[data-scope='carousel'][data-part='control'] {
+[data-scope="carousel"][data-part="control"] {
   display: flex;
   gap: 8px;
   align-self: stretch;
 }
 
-[data-scope='carousel'][data-part='item-group'] {
+[data-scope="carousel"][data-part="item-group"] {
   align-self: stretch;
   /* Hide scrollbar */
   scrollbar-width: none;
@@ -30,7 +30,7 @@
   }
 }
 
-[data-scope='carousel'][data-part='item'] {
+[data-scope="carousel"][data-part="item"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,22 +38,22 @@
   border: 1px solid lightgray;
 }
 
-[data-scope='carousel'][data-part='item'] img {
+[data-scope="carousel"][data-part="item"] img {
   margin: 0;
   object-fit: cover;
 }
 
-[data-scope='carousel'][data-part='item'][data-orientation='horizontal'] img {
+[data-scope="carousel"][data-part="item"][data-orientation="horizontal"] img {
   height: 300px;
   width: 100%;
 }
 
-[data-scope='carousel'][data-part='item'][data-orientation='vertical'] img {
+[data-scope="carousel"][data-part="item"][data-orientation="vertical"] img {
   height: 100%;
   width: 400px;
 }
 
-[data-scope='carousel'][data-part='indicator-group'] {
+[data-scope="carousel"][data-part="indicator-group"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +61,7 @@
   gap: 8px;
 }
 
-[data-scope='carousel'][data-part='indicator'] {
+[data-scope="carousel"][data-part="indicator"] {
   display: flex;
   border: none;
   justify-content: center;
@@ -74,11 +74,11 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-[data-scope='carousel'][data-part='indicator'][data-current] {
+[data-scope="carousel"][data-part="indicator"][data-current] {
   background-color: blue;
 }
 
-[data-scope='carousel'][data-part='autoplay-trigger'] {
+[data-scope="carousel"][data-part="autoplay-trigger"] {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +88,7 @@
   flex-grow: 1;
 }
 
-[data-scope='carousel'][data-part='autoplay-trigger'] svg {
+[data-scope="carousel"][data-part="autoplay-trigger"] svg {
   width: 12px;
   height: 12px;
 }

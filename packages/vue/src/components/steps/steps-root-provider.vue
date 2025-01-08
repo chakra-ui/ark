@@ -17,10 +17,11 @@ export interface StepsRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { StepsProvider } from './use-steps-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<StepsRootProviderProps>()
 const steps = computed(() => props.value)
 

@@ -17,11 +17,11 @@ export interface NumberInputRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { NumberInputProvider } from './use-number-input-context'
-onst props = defineProps<NumberInputRootProviderProps>()
+import { useForwardExpose } from '../../utils'
+const props = defineProps<NumberInputRootProviderProps>()
 const numberInput = computed(() => props.value)
 
 NumberInputProvider(numberInput)

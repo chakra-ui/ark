@@ -16,11 +16,12 @@ export interface AccordionRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
+import { computed } from 'vue'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useAccordion } from './use-accordion'
 import { AccordionProvider } from './use-accordion-context'
+
 const props = withDefaults(defineProps<AccordionRootProps>(), {
   collapsible: undefined,
   disabled: undefined,

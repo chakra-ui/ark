@@ -14,11 +14,11 @@ export interface StepsItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { StepsItemProvider } from './use-steps-item-context'
 import { StepsItemPropsProvider } from './use-steps-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<StepsItemProps>()
 const steps = useStepsContext()

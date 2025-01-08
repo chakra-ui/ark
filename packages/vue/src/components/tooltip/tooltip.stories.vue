@@ -5,7 +5,6 @@ import Controlled from './examples/controlled.vue'
 import Positioning from './examples/positioning.vue'
 import RenderFn from './examples/render-fn.vue'
 import RootProvider from './examples/root-provider.vue'
-import Timings from './examples/timings.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Timings from './examples/timings.vue'
 </script>
 <template>

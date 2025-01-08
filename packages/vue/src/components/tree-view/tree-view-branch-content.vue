@@ -17,11 +17,12 @@ interface VisibilityProps {
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils'
 import { Collapsible } from '../collapsible'
-import { createSplitProps } from '../create-split-props'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+import { createSplitProps } from '../create-split-props'
+
 const splitVisibilityProps = createSplitProps<VisibilityProps>()
 
 defineProps<TreeViewBranchContentProps>()

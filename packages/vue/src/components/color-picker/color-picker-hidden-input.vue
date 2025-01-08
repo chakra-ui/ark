@@ -12,10 +12,10 @@ export interface ColorPickerHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerHiddenInputProps>()
 const colorPicker = useColorPickerContext()

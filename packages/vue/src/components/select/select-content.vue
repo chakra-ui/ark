@@ -14,9 +14,10 @@ export interface SelectContentProps
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils'
+
 defineProps<SelectContentProps>()
 const select = useSelectContext()
 const presence = usePresenceContext()

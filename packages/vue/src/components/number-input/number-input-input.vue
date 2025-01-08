@@ -12,10 +12,10 @@ export interface NumberInputInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useNumberInputContext } from './use-number-input-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<NumberInputInputProps>()
 const numberInput = useNumberInputContext()

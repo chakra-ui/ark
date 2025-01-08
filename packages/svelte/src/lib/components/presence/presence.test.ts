@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/svelte'
+import { queryByText, render, screen, waitFor } from '@testing-library/svelte'
 import user from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 import ComponentUnderTest from './examples/basic.svelte'

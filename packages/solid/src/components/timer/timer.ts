@@ -9,7 +9,10 @@ export {
   type TimerAreaBaseProps as AreaBaseProps,
   type TimerAreaProps as AreaProps,
 } from './timer-area'
-export { TimerContext as Context, type TimerContextProps as ContextProps } from './timer-context'
+export {
+  TimerContext as Context,
+  type TimerContextProps as ContextProps,
+} from './timer-context'
 export {
   TimerControl as Control,
   type TimerControlBaseProps as ControlBaseProps,

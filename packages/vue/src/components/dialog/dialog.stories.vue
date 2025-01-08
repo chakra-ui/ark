@@ -3,7 +3,6 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import LazyMount from './examples/lazy-mount.vue'
 import RenderFn from './examples/render-fn.vue'
-import RootProvider from './examples/root-provider.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>

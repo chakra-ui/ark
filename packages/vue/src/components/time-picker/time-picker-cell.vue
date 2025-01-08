@@ -18,10 +18,11 @@ export interface TimePickerCellProps
 </script>
 
 <script setup lang="ts">
-imimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
-onst props = defineProps<TimePickerCellProps>()
+import { useForwardExpose } from '../../utils'
+
+const props = defineProps<TimePickerCellProps>()
 const timePicker = useTimePickerContext()
 const columnProps = useTimePickerColumnPropsContext()
 

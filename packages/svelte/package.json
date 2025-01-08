@@ -2,10 +2,7 @@
   "name": "@ark-ui/svelte",
   "version": "0.3.0",
   "description": "A collection of unstyled, accessible UI components for Svelte",
-  "keywords": [
-    "avatar",
-    "svelte"
-  ],
+  "keywords": ["avatar", "svelte"],
   "license": "MIT",
   "homepage": "https://ark-ui.com",
   "repository": {
@@ -19,12 +16,7 @@
   "type": "module",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "!dist/**/*.stories.*",
-    "!dist/**/examples/**",
-    "!dist/**/*.test.*"
-  ],
+  "files": ["dist", "!dist/**/*.stories.*", "!dist/**/examples/**", "!dist/**/*.test.*"],
   "exports": {
     ".": {
       "types": "./src/lib/index.ts",

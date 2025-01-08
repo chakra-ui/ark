@@ -8,7 +8,6 @@ import OnOpenChange from './examples/on-open-change.vue'
 import Portalled from './examples/portalled.vue'
 import Positioning from './examples/positioning.vue'
 import RenderFn from './examples/render-fn.vue'
-import RootProvider from './examples/root-provider.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>

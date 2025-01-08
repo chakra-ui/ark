@@ -17,10 +17,11 @@ export interface FileUploadRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { FileUploadProvider } from './use-file-upload-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<FileUploadRootProviderProps>()
 const fileUpload = computed(() => props.value)
 

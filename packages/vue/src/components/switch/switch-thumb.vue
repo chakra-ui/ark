@@ -12,9 +12,9 @@ export interface SwitchThumbProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SwitchThumbProps>()
 const context = useSwitchContext()

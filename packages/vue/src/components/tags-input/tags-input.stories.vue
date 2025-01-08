@@ -8,7 +8,6 @@ import OnEvent from './examples/on-event.vue'
 import PasteBehavior from './examples/paste-behavior.vue'
 import RootProvider from './examples/root-provider.vue'
 import Validated from './examples/validated.vue'
-import WithField from './examples/with-field.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithField from './examples/with-field.vue'
 </script>
 <template>

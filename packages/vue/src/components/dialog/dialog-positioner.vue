@@ -13,10 +13,11 @@ export interface DialogPositionerProps
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { PresenceProvider,usePresence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
+import { useForwardExpose } from '../../utils'
+
 defineProps<DialogPositionerProps>()
 
 const dialog = useDialogContext()

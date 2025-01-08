@@ -13,10 +13,10 @@ export interface ColorPickerChannelSliderValueTextProps
 
 <script setup lang="ts">
 import { DEFAULT_LOCALE, useLocaleContext } from '../../providers'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerChannelSliderValueTextProps>()
 const colorPicker = useColorPickerContext()

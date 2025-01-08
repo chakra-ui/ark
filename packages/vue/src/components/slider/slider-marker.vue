@@ -13,9 +13,9 @@ export interface SliderMarkerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SliderMarkerProps>()
 const slider = useSliderContext()

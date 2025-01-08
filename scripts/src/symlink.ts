@@ -1,8 +1,8 @@
-import { findPackages } from 'find-packages'
-import { findUpSync } from 'find-up'
 import { spawnSync } from 'node:child_process'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
+import { findPackages } from 'find-packages'
+import { findUpSync } from 'find-up'
 
 async function getZagPackages(): Promise<Record<string, string>> {
   const lockFilePath = findUpSync('bun.lockb')

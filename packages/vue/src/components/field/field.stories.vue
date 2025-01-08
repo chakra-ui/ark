@@ -6,7 +6,6 @@ import RequiredIndicator from './examples/required-indicator.vue'
 import SelectControlled from './examples/select-controlled.vue'
 import Select from './examples/select.vue'
 import TextareaControlled from './examples/textarea-controlled.vue'
-import Textarea from './examples/textarea.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Textarea from './examples/textarea.vue'
 </script>
 <template>

@@ -12,9 +12,9 @@ export interface RatingGroupControlProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<RatingGroupControlProps>()
 

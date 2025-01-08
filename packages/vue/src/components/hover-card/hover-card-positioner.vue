@@ -12,10 +12,11 @@ export interface HoverCardPositionerProps
 </script>
 
 <script setup lang="ts">
-imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
-import { PresenceProvider,usePresence } from '../presence'
+import { useRenderStrategyProps, useForwardExpose } from '../../utils'
+import { PresenceProvider, usePresence } from '../presence'
 import { useHoverCardContext } from './use-hover-card-context'
-efineProps<HoverCardPositionerProps>()
+
+defineProps<HoverCardPositionerProps>()
 
 const hoverCard = useHoverCardContext()
 const renderStrategy = useRenderStrategyProps()

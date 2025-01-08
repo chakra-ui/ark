@@ -9,10 +9,11 @@ export interface PopoverRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
+import { computed } from 'vue'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
+
 const props = withDefaults(defineProps<PopoverRootProps>(), {
   autoFocus: undefined,
   closeOnEscape: undefined,

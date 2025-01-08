@@ -1,7 +1,7 @@
+import { basename, dirname, join, parse } from 'node:path'
 import { findUpSync } from 'find-up'
 import fs from 'fs-extra'
 import { globby } from 'globby'
-import { basename, dirname, join, parse } from 'node:path'
 import { match } from 'ts-pattern'
 
 /**

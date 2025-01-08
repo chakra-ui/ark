@@ -1,5 +1,5 @@
-import { pages } from '.velite'
 import { fetchExamplesGroupedByCategory } from './examples'
+import { pages } from '.velite'
 
 const components = pages
   .filter((page) => page.category === 'components')

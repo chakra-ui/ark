@@ -1,4 +1,3 @@
-import { pages } from '.velite'
 import NextLink from 'next/link'
 import { cva } from 'styled-system/css'
 import { Grid, Stack } from 'styled-system/jsx'
@@ -6,6 +5,7 @@ import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import type { Example } from '~/lib/examples'
 import { getServerContext } from '~/lib/server-context'
+import { pages } from '.velite'
 
 interface Props {
   example: Example

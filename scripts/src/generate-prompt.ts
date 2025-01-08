@@ -1,7 +1,7 @@
-import * as Bun from 'bun'
 import { parse } from 'node:path'
 import { join } from 'node:path/posix'
 import { parseArgs } from 'node:util'
+import * as Bun from 'bun'
 import { format } from 'prettier'
 
 const toTitleCase = (str: string) => {

@@ -14,9 +14,9 @@ export interface SelectValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SelectValueTextProps>()
 const select = useSelectContext()

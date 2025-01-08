@@ -17,10 +17,11 @@ export interface TagsInputRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { TagsInputProvider } from './use-tags-input-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<TagsInputRootProviderProps>()
 const tagsInput = computed(() => props.value)
 

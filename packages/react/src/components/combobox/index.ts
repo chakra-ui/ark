@@ -15,7 +15,10 @@ export {
   type ComboboxContentBaseProps,
   type ComboboxContentProps,
 } from './combobox-content'
-export { ComboboxContext, type ComboboxContextProps } from './combobox-context'
+export {
+  ComboboxContext,
+  type ComboboxContextProps,
+} from './combobox-context'
 export {
   ComboboxControl,
   type ComboboxControlBaseProps,
@@ -26,8 +29,15 @@ export {
   type ComboboxInputBaseProps,
   type ComboboxInputProps,
 } from './combobox-input'
-export { ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item'
-export { ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context'
+export {
+  ComboboxItem,
+  type ComboboxItemBaseProps,
+  type ComboboxItemProps,
+} from './combobox-item'
+export {
+  ComboboxItemContext,
+  type ComboboxItemContextProps,
+} from './combobox-item-context'
 export {
   ComboboxItemGroup,
   type ComboboxItemGroupBaseProps,
@@ -53,13 +63,21 @@ export {
   type ComboboxLabelBaseProps,
   type ComboboxLabelProps,
 } from './combobox-label'
-export { ComboboxList, type ComboboxListBaseProps, type ComboboxListProps } from './combobox-list'
+export {
+  ComboboxList,
+  type ComboboxListBaseProps,
+  type ComboboxListProps,
+} from './combobox-list'
 export {
   ComboboxPositioner,
   type ComboboxPositionerBaseProps,
   type ComboboxPositionerProps,
 } from './combobox-positioner'
-export { ComboboxRoot, type ComboboxRootBaseProps, type ComboboxRootProps } from './combobox-root'
+export {
+  ComboboxRoot,
+  type ComboboxRootBaseProps,
+  type ComboboxRootProps,
+} from './combobox-root'
 export {
   ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,

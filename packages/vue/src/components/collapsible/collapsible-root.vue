@@ -15,10 +15,11 @@ export interface CollapsibleRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   defaultOpen: undefined,
   disabled: undefined,

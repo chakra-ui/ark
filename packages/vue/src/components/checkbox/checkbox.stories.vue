@@ -5,7 +5,6 @@ import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
 import RootProvider from './examples/root-provider.vue'
-import WithField from './examples/with-field.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithField from './examples/with-field.vue'
 </script>
 

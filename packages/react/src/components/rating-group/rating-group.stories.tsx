@@ -7,11 +7,11 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
-export { Disabled } from './examples/disabled'
-export { FormUsage } from './examples/form-usage'
+export { RootProvider } from './examples/root-provider'
 export { HalfRatings } from './examples/half-ratings'
 export { InitialValue } from './examples/initial-value'
+export { Controlled } from './examples/controlled'
+export { Disabled } from './examples/disabled'
 export { ReadOnly } from './examples/read-only'
-export { RootProvider } from './examples/root-provider'
+export { FormUsage } from './examples/form-usage'
 export { WithField } from './examples/with-field'

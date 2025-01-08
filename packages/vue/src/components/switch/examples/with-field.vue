@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
-import { Switch } from '@ark-ui/vue/switch' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { Switch } from '@ark-ui/vue/switch'
 </script>
 

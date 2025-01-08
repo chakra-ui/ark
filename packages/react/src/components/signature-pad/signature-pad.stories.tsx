@@ -7,6 +7,6 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { ImagePreview } from './examples/image-preview'
 export { RootProvider } from './examples/root-provider'
+export { ImagePreview } from './examples/image-preview'
 export { WithField } from './examples/with-field'

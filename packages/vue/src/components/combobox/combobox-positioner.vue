@@ -12,10 +12,11 @@ export interface ComboboxPositionerProps
 </script>
 
 <script setup lang="ts">
-imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
-import { PresenceProvider,usePresence } from '../presence'
+import { useRenderStrategyProps, useForwardExpose } from '../../utils'
+import { PresenceProvider, usePresence } from '../presence'
 import { useComboboxContext } from './use-combobox-context'
-efineProps<ComboboxPositionerProps>()
+
+defineProps<ComboboxPositionerProps>()
 const combobox = useComboboxContext()
 const renderStrategy = useRenderStrategyProps()
 

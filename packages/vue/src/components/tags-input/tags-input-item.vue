@@ -14,11 +14,11 @@ export interface TagsInputItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { TagsInputItemProvider } from './use-tags-input-item-context'
 import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TagsInputItemProps>()
 const tagsInput = useTagsInputContext()

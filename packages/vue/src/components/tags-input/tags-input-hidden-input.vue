@@ -12,10 +12,10 @@ export interface TagsInputHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useTagsInputContext } from './use-tags-input-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TagsInputHiddenInputProps>()
 

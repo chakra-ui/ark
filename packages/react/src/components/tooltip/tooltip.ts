@@ -1,18 +1,18 @@
 export type { OpenChangeDetails } from '@zag-js/tooltip'
 export {
   TooltipArrow as Arrow,
-  type TooltipArrowBaseProps as ArrowBaseProps,
   type TooltipArrowProps as ArrowProps,
+  type TooltipArrowBaseProps as ArrowBaseProps,
 } from './tooltip-arrow'
 export {
   TooltipArrowTip as ArrowTip,
-  type TooltipArrowTipBaseProps as ArrowTipBaseProps,
   type TooltipArrowTipProps as ArrowTipProps,
+  type TooltipArrowTipBaseProps as ArrowTipBaseProps,
 } from './tooltip-arrow-tip'
 export {
   TooltipContent as Content,
-  type TooltipContentBaseProps as ContentBaseProps,
   type TooltipContentProps as ContentProps,
+  type TooltipContentBaseProps as ContentBaseProps,
 } from './tooltip-content'
 export {
   TooltipContext as Context,
@@ -20,21 +20,21 @@ export {
 } from './tooltip-context'
 export {
   TooltipPositioner as Positioner,
-  type TooltipPositionerBaseProps as PositionerBaseProps,
   type TooltipPositionerProps as PositionerProps,
+  type TooltipPositionerBaseProps as PositionerBaseProps,
 } from './tooltip-positioner'
 export {
   TooltipRoot as Root,
-  type TooltipRootBaseProps as RootBaseProps,
   type TooltipRootProps as RootProps,
+  type TooltipRootBaseProps as RootBaseProps,
 } from './tooltip-root'
 export {
   TooltipRootProvider as RootProvider,
-  type TooltipRootProviderBaseProps as RootProviderBaseProps,
   type TooltipRootProviderProps as RootProviderProps,
+  type TooltipRootProviderBaseProps as RootProviderBaseProps,
 } from './tooltip-root-provider'
 export {
   TooltipTrigger as Trigger,
-  type TooltipTriggerBaseProps as TriggerBaseProps,
   type TooltipTriggerProps as TriggerProps,
+  type TooltipTriggerBaseProps as TriggerBaseProps,
 } from './tooltip-trigger'

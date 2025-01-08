@@ -31,6 +31,6 @@ export {
 export {
   default as Root,
   type QrCodeRootBaseProps as RootBaseProps,
-  type QrCodeRootEmits as RootEmits,
   type QrCodeRootProps as RootProps,
+  type QrCodeRootEmits as RootEmits,
 } from './qr-code-root.vue'

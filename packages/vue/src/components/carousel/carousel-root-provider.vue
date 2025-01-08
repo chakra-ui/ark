@@ -17,10 +17,11 @@ export interface CarouselRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { CarouselProvider } from './use-carousel-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<CarouselRootProviderProps>()
 const carousel = computed(() => props.value)
 

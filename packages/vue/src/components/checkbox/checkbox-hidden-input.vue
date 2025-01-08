@@ -12,10 +12,10 @@ export interface CheckboxHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useCheckboxContext } from './use-checkbox-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CheckboxHiddenInputProps>()
 const checkbox = useCheckboxContext()

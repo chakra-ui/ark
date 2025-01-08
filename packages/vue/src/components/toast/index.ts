@@ -1,4 +1,8 @@
-export { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster'
+export {
+  createToaster,
+  type CreateToasterProps,
+  type CreateToasterReturn,
+} from './create-toaster'
 export {
   default as ToastActionTrigger,
   type ToastActionTriggerBaseProps,

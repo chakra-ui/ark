@@ -2,7 +2,6 @@
 import Basic from './examples/basic.vue'
 import LazyMountAndUnmountOnExit from './examples/lazy-mount-and-unmount-on-exit.vue'
 import LazyMount from './examples/lazy-mount.vue'
-import UnmountOnExit from './examples/unmount-on-exit.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import UnmountOnExit from './examples/unmount-on-exit.vue'
 </script>
 <template>

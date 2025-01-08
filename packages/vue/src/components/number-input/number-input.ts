@@ -9,47 +9,47 @@ export {
 } from './number-input-context.vue'
 export {
   default as Control,
-  type NumberInputControlBaseProps as ControlBaseProps,
   type NumberInputControlProps as ControlProps,
+  type NumberInputControlBaseProps as ControlBaseProps,
 } from './number-input-control.vue'
 export {
   default as DecrementTrigger,
-  type NumberInputDecrementTriggerBaseProps as DecrementTriggerBaseProps,
   type NumberInputDecrementTriggerProps as DecrementTriggerProps,
+  type NumberInputDecrementTriggerBaseProps as DecrementTriggerBaseProps,
 } from './number-input-decrement-trigger.vue'
 export {
   default as IncrementTrigger,
-  type NumberInputIncrementTriggerBaseProps as IncrementTriggerBaseProps,
   type NumberInputIncrementTriggerProps as IncrementTriggerProps,
+  type NumberInputIncrementTriggerBaseProps as IncrementTriggerBaseProps,
 } from './number-input-increment-trigger.vue'
 export {
+  default as ValueText,
+  type NumberInputValueTextProps as ValueTextProps,
+  type NumberInputValueTextBaseProps as ValueTextBaseProps,
+} from './number-input-value-text.vue'
+export {
   default as Input,
-  type NumberInputInputBaseProps as InputBaseProps,
   type NumberInputInputProps as InputProps,
+  type NumberInputInputBaseProps as InputBaseProps,
 } from './number-input-input.vue'
 export {
   default as Label,
-  type NumberInputLabelBaseProps as LabelBaseProps,
   type NumberInputLabelProps as LabelProps,
+  type NumberInputLabelBaseProps as LabelBaseProps,
 } from './number-input-label.vue'
 export {
   default as RootProvider,
-  type NumberInputRootProviderBaseProps as RootProviderBaseProps,
   type NumberInputRootProviderProps as RootProviderProps,
+  type NumberInputRootProviderBaseProps as RootProviderBaseProps,
 } from './number-input-root-provider.vue'
 export {
   default as Root,
-  type NumberInputRootBaseProps as RootBaseProps,
   type NumberInputRootEmits as RootEmits,
+  type NumberInputRootBaseProps as RootBaseProps,
   type NumberInputRootProps as RootProps,
 } from './number-input-root.vue'
 export {
   default as Scrubber,
-  type NumberInputScrubberBaseProps as ScrubberBaseProps,
   type NumberInputScrubberProps as ScrubberProps,
+  type NumberInputScrubberBaseProps as ScrubberBaseProps,
 } from './number-input-scrubber.vue'
-export {
-  default as ValueText,
-  type NumberInputValueTextBaseProps as ValueTextBaseProps,
-  type NumberInputValueTextProps as ValueTextProps,
-} from './number-input-value-text.vue'

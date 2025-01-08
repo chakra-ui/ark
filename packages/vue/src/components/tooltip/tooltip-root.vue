@@ -9,10 +9,11 @@ export interface TooltipRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
+import { computed } from 'vue'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
+
 const props = withDefaults(defineProps<TooltipRootProps>(), {
   closeOnClick: undefined,
   closeOnEscape: undefined,

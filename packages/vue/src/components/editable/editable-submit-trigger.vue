@@ -12,9 +12,9 @@ export interface EditableSubmitTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<EditableSubmitTriggerProps>()
 const editable = useEditableContext()

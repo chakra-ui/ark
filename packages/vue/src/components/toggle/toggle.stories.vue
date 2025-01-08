@@ -2,7 +2,6 @@
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Disabled from './examples/disabled.vue'
-import Indicator from './examples/indicator.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Indicator from './examples/indicator.vue'
 </script>
 

@@ -16,13 +16,13 @@ export interface MenuRadioItemProps
 </script>
 
 <script setup lang="ts">
-import { computed, type ComputedRef } from 'vue'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
+import { computed, type ComputedRef } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuRadioItemProps>(), {
   disabled: undefined,

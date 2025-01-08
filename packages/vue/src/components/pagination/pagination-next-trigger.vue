@@ -12,9 +12,9 @@ export interface PaginationNextTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<PaginationNextTriggerProps>()
 const pagination = usePaginationContext()

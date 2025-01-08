@@ -14,11 +14,11 @@ export interface ColorPickerChannelSliderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { ColorPickerChannelPropsProvider } from './use-color-picker-channel-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ColorPickerChannelSliderProps>()
 

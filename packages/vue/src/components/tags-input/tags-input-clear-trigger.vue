@@ -12,9 +12,9 @@ export interface TagsInputClearTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TagsInputClearTriggerProps>()
 const tagsInput = useTagsInputContext()

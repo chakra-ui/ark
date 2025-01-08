@@ -3,7 +3,10 @@ export type {
   ValueChangeDetails as NumberInputValueChangeDetails,
   ValueInvalidDetails as NumberInputValueInvalidDetails,
 } from '@zag-js/number-input'
-export { NumberInputContext, type NumberInputContextProps } from './number-input-context'
+export {
+  NumberInputContext,
+  type NumberInputContextProps,
+} from './number-input-context'
 export {
   NumberInputControl,
   type NumberInputControlBaseProps,

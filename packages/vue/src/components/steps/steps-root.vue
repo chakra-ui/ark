@@ -15,10 +15,11 @@ export interface StepsRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSteps } from './use-steps'
 import { StepsProvider } from './use-steps-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<StepsRootProps>(), {
   linear: undefined,
 } satisfies BooleanDefaults<RootProps>)

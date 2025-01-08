@@ -13,9 +13,9 @@ export interface ColorPickerChannelInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ColorPickerChannelInputProps>()
 const colorPicker = useColorPickerContext()

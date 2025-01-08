@@ -2,7 +2,10 @@ export type {
   CheckedChangeDetails as CheckboxCheckedChangeDetails,
   CheckedState as CheckboxCheckedState,
 } from '@zag-js/checkbox'
-export { CheckboxContext, type CheckboxContextProps } from './checkbox-context'
+export {
+  CheckboxContext,
+  type CheckboxContextProps,
+} from './checkbox-context'
 export {
   CheckboxControl,
   type CheckboxControlBaseProps,
@@ -28,7 +31,11 @@ export {
   type CheckboxLabelBaseProps,
   type CheckboxLabelProps,
 } from './checkbox-label'
-export { CheckboxRoot, type CheckboxRootBaseProps, type CheckboxRootProps } from './checkbox-root'
+export {
+  CheckboxRoot,
+  type CheckboxRootBaseProps,
+  type CheckboxRootProps,
+} from './checkbox-root'
 export {
   CheckboxRootProvider,
   type CheckboxRootProviderBaseProps,

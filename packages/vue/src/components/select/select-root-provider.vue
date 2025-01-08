@@ -22,10 +22,11 @@ export interface SelectRootProviderProps<T extends CollectionItem>
 </script>
 
 <script setup lang="ts" generic="T extends CollectionItem">
-iimport { computed } from 'vue'
-import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
+import { computed } from 'vue'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { SelectProvider } from './use-select-context'
+
 const props = defineProps<SelectRootProviderProps<T>>()
 const select = computed(() => props.value)
 

@@ -9,7 +9,6 @@ import NumberWithCompact from './examples/number-with-compact.vue'
 import NumberWithCurrency from './examples/number-with-currency.vue'
 import NumberWithLocale from './examples/number-with-locale.vue'
 import NumberWithPercentage from './examples/number-with-percentage.vue'
-import NumberWithUnit from './examples/number-with-unit.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import NumberWithUnit from './examples/number-with-unit.vue'
 </script>
 

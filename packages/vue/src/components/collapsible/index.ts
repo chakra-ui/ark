@@ -1,8 +1,8 @@
 export type { OpenChangeDetails as CollapsibleOpenChangeDetails } from '@zag-js/collapsible'
 export {
   default as CollapsibleContent,
-  type CollapsibleContentBaseProps,
   type CollapsibleContentProps,
+  type CollapsibleContentBaseProps,
 } from './collapsible-content.vue'
 export {
   default as CollapsibleContext,
@@ -10,26 +10,26 @@ export {
 } from './collapsible-context.vue'
 export {
   default as CollapsibleRootProvider,
-  type CollapsibleRootProviderBaseProps,
   type CollapsibleRootProviderProps,
+  type CollapsibleRootProviderBaseProps,
 } from './collapsible-root-provider.vue'
 export {
   default as CollapsibleRoot,
-  type CollapsibleRootBaseProps,
   type CollapsibleRootEmits,
+  type CollapsibleRootBaseProps,
   type CollapsibleRootProps,
 } from './collapsible-root.vue'
 export {
   default as CollapsibleTrigger,
-  type CollapsibleTriggerBaseProps,
   type CollapsibleTriggerProps,
+  type CollapsibleTriggerBaseProps,
 } from './collapsible-trigger.vue'
-export { collapsibleAnatomy } from './collapsible.anatomy'
 export {
   useCollapsible,
   type UseCollapsibleProps,
   type UseCollapsibleReturn,
 } from './use-collapsible'
 export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'
+export { collapsibleAnatomy } from './collapsible.anatomy'
 
 export * as Collapsible from './collapsible'

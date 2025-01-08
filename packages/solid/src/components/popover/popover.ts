@@ -1,28 +1,28 @@
 export type { OpenChangeDetails } from '@zag-js/popover'
 export {
   PopoverAnchor as Anchor,
-  type PopoverAnchorBaseProps as AnchorBaseProps,
   type PopoverAnchorProps as AnchorProps,
+  type PopoverAnchorBaseProps as AnchorBaseProps,
 } from './popover-anchor'
 export {
   PopoverArrow as Arrow,
-  type PopoverArrowBaseProps as ArrowBaseProps,
   type PopoverArrowProps as ArrowProps,
+  type PopoverArrowBaseProps as ArrowBaseProps,
 } from './popover-arrow'
 export {
   PopoverArrowTip as ArrowTip,
-  type PopoverArrowTipBaseProps as ArrowTipBaseProps,
   type PopoverArrowTipProps as ArrowTipProps,
+  type PopoverArrowTipBaseProps as ArrowTipBaseProps,
 } from './popover-arrow-tip'
 export {
   PopoverCloseTrigger as CloseTrigger,
-  type PopoverCloseTriggerBaseProps as CloseTriggerBaseProps,
   type PopoverCloseTriggerProps as CloseTriggerProps,
+  type PopoverCloseTriggerBaseProps as CloseTriggerBaseProps,
 } from './popover-close-trigger'
 export {
   PopoverContent as Content,
-  type PopoverContentBaseProps as ContentBaseProps,
   type PopoverContentProps as ContentProps,
+  type PopoverContentBaseProps as ContentBaseProps,
 } from './popover-content'
 export {
   PopoverContext as Context,
@@ -30,36 +30,36 @@ export {
 } from './popover-context'
 export {
   PopoverDescription as Description,
-  type PopoverDescriptionBaseProps as DescriptionBaseProps,
   type PopoverDescriptionProps as DescriptionProps,
+  type PopoverDescriptionBaseProps as DescriptionBaseProps,
 } from './popover-description'
 export {
   PopoverIndicator as Indicator,
-  type PopoverIndicatorBaseProps as IndicatorBaseProps,
   type PopoverIndicatorProps as IndicatorProps,
+  type PopoverIndicatorBaseProps as IndicatorBaseProps,
 } from './popover-indicator'
 export {
   PopoverPositioner as Positioner,
-  type PopoverPositionerBaseProps as PositionerBaseProps,
   type PopoverPositionerProps as PositionerProps,
+  type PopoverPositionerBaseProps as PositionerBaseProps,
 } from './popover-positioner'
 export {
   PopoverRoot as Root,
-  type PopoverRootBaseProps as RootBaseProps,
   type PopoverRootProps as RootProps,
+  type PopoverRootBaseProps as RootBaseProps,
 } from './popover-root'
 export {
   PopoverRootProvider as RootProvider,
-  type PopoverRootProviderBaseProps as RootProviderBaseProps,
   type PopoverRootProviderProps as RootProviderProps,
+  type PopoverRootProviderBaseProps as RootProviderBaseProps,
 } from './popover-root-provider'
 export {
   PopoverTitle as Title,
-  type PopoverTitleBaseProps as TitleBaseProps,
   type PopoverTitleProps as TitleProps,
+  type PopoverTitleBaseProps as TitleBaseProps,
 } from './popover-title'
 export {
   PopoverTrigger as Trigger,
-  type PopoverTriggerBaseProps as TriggerBaseProps,
   type PopoverTriggerProps as TriggerProps,
+  type PopoverTriggerBaseProps as TriggerBaseProps,
 } from './popover-trigger'

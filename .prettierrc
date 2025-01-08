@@ -5,14 +5,9 @@
   "arrowParens": "always",
   "semi": false,
   "htmlWhitespaceSensitivity": "ignore",
-  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-svelte"],
+  "plugins": ["prettier-plugin-svelte"],
   "overrides": [
-    {
-      "files": "*.svelte",
-      "options": {
-        "parser": "svelte"
-      }
-    },
+    { "files": "*.svelte", "options": { "parser": "svelte" } },
     {
       "files": "*.md",
       "options": {

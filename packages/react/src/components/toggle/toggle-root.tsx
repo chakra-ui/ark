@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
-import type { HTMLProps, PolymorphicProps } from '../factory'
 import { ark } from '../factory'
+import type { HTMLProps, PolymorphicProps } from '../factory'
 import { type UseToggleProps, useToggle } from './use-toggle'
 import { ToggleProvider } from './use-toggle-context'
 

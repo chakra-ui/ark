@@ -12,9 +12,9 @@ export interface TimePickerLabelProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TimePickerLabelProps>()
 const timePicker = useTimePickerContext()

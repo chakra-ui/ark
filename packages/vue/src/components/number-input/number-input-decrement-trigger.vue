@@ -12,9 +12,9 @@ export interface NumberInputDecrementTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<NumberInputDecrementTriggerProps>()
 const numberInput = useNumberInputContext()

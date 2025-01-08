@@ -9,10 +9,11 @@ export interface DialogRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
+import { computed } from 'vue'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
+
 const props = withDefaults(defineProps<DialogRootProps>(), {
   closeOnEscape: undefined,
   closeOnInteractOutside: undefined,

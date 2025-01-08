@@ -7,13 +7,13 @@ export type {
 export type { CollectionItem } from '../collection'
 export {
   ComboboxClearTrigger as ClearTrigger,
-  type ComboboxClearTriggerBaseProps as ClearTriggerBaseProps,
   type ComboboxClearTriggerProps as ClearTriggerProps,
+  type ComboboxClearTriggerBaseProps as ClearTriggerBaseProps,
 } from './combobox-clear-trigger'
 export {
   ComboboxContent as Content,
-  type ComboboxContentBaseProps as ContentBaseProps,
   type ComboboxContentProps as ContentProps,
+  type ComboboxContentBaseProps as ContentBaseProps,
 } from './combobox-content'
 export {
   ComboboxContext as Context,
@@ -21,18 +21,18 @@ export {
 } from './combobox-context'
 export {
   ComboboxControl as Control,
-  type ComboboxControlBaseProps as ControlBaseProps,
   type ComboboxControlProps as ControlProps,
+  type ComboboxControlBaseProps as ControlBaseProps,
 } from './combobox-control'
 export {
   ComboboxInput as Input,
-  type ComboboxInputBaseProps as InputBaseProps,
   type ComboboxInputProps as InputProps,
+  type ComboboxInputBaseProps as InputBaseProps,
 } from './combobox-input'
 export {
   ComboboxItem as Item,
-  type ComboboxItemBaseProps as ItemBaseProps,
   type ComboboxItemProps as ItemProps,
+  type ComboboxItemBaseProps as ItemBaseProps,
 } from './combobox-item'
 export {
   ComboboxItemContext as ItemContext,
@@ -40,51 +40,51 @@ export {
 } from './combobox-item-context'
 export {
   ComboboxItemGroup as ItemGroup,
-  type ComboboxItemGroupBaseProps as ItemGroupBaseProps,
   type ComboboxItemGroupProps as ItemGroupProps,
+  type ComboboxItemGroupBaseProps as ItemGroupBaseProps,
 } from './combobox-item-group'
 export {
   ComboboxItemGroupLabel as ItemGroupLabel,
-  type ComboboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,
   type ComboboxItemGroupLabelProps as ItemGroupLabelProps,
+  type ComboboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,
 } from './combobox-item-group-label'
 export {
   ComboboxItemIndicator as ItemIndicator,
-  type ComboboxItemIndicatorBaseProps as ItemIndicatorBaseProps,
   type ComboboxItemIndicatorProps as ItemIndicatorProps,
+  type ComboboxItemIndicatorBaseProps as ItemIndicatorBaseProps,
 } from './combobox-item-indicator'
 export {
   ComboboxItemText as ItemText,
-  type ComboboxItemTextBaseProps as ItemTextBaseProps,
   type ComboboxItemTextProps as ItemTextProps,
+  type ComboboxItemTextBaseProps as ItemTextBaseProps,
 } from './combobox-item-text'
 export {
   ComboboxLabel as Label,
-  type ComboboxLabelBaseProps as LabelBaseProps,
   type ComboboxLabelProps as LabelProps,
+  type ComboboxLabelBaseProps as LabelBaseProps,
 } from './combobox-label'
 export {
   ComboboxList as List,
-  type ComboboxListBaseProps as ListBaseProps,
   type ComboboxListProps as ListProps,
+  type ComboboxListBaseProps as ListBaseProps,
 } from './combobox-list'
 export {
   ComboboxPositioner as Positioner,
-  type ComboboxPositionerBaseProps as PositionerBaseProps,
   type ComboboxPositionerProps as PositionerProps,
+  type ComboboxPositionerBaseProps as PositionerBaseProps,
 } from './combobox-positioner'
 export {
   ComboboxRoot as Root,
-  type ComboboxRootBaseProps as RootBaseProps,
   type ComboboxRootProps as RootProps,
+  type ComboboxRootBaseProps as RootBaseProps,
 } from './combobox-root'
 export {
   ComboboxRootProvider as RootProvider,
-  type ComboboxRootProviderBaseProps as RootProviderBaseProps,
   type ComboboxRootProviderProps as RootProviderProps,
+  type ComboboxRootProviderBaseProps as RootProviderBaseProps,
 } from './combobox-root-provider'
 export {
   ComboboxTrigger as Trigger,
-  type ComboboxTriggerBaseProps as TriggerBaseProps,
   type ComboboxTriggerProps as TriggerProps,
+  type ComboboxTriggerBaseProps as TriggerBaseProps,
 } from './combobox-trigger'

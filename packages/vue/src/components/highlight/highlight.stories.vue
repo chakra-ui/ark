@@ -3,7 +3,6 @@ import Basic from './examples/basic.vue'
 import IgnoreCase from './examples/ignore-case.vue'
 import MatchAll from './examples/match-all.vue'
 import Multiple from './examples/multiple.vue'
-import WithInput from './examples/with-input.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithInput from './examples/with-input.vue'
 </script>
 

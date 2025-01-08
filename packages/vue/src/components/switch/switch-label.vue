@@ -12,9 +12,9 @@ export interface SwitchLabelProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSwitchContext } from './use-switch-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SwitchLabelProps>()
 const context = useSwitchContext()

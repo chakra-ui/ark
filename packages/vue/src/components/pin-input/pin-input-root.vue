@@ -15,10 +15,11 @@ export interface PinInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePinInput } from './use-pin-input'
 import { PinInputProvider } from './use-pin-input-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<PinInputRootProps>(), {
   autoFocus: undefined,
   blurOnComplete: undefined,

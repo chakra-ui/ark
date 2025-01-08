@@ -8,6 +8,7 @@ runs:
       with:
         bun-version: latest
 
+    
     - name: Setup Git User
       shell: bash
       run: |

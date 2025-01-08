@@ -12,7 +12,7 @@ export interface DialogBackdropProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose, useRenderStrategyProps } from '../../utils'
+import { useRenderStrategyProps, useForwardExpose } from '../../utils'
 import { Presence } from '../presence'
 import { useDialogContext } from './use-dialog-context'
 

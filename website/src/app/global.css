@@ -1,7 +1,7 @@
 @layer reset, base, tokens, recipes, utilities;
 
 .highlighted {
-  background-color: rgba(150, 150, 150, 0.16);
+  background-color: rgba(150, 150, 150, .16);
   display: inline-block;
   width: 100%;
 }

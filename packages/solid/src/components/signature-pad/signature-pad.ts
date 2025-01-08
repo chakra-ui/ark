@@ -1,8 +1,8 @@
 export type { DrawDetails, DrawEndDetails, DrawingOptions } from '@zag-js/signature-pad'
 export {
   SignaturePadClearTrigger as ClearTrigger,
-  type SignaturePadClearTriggerBaseProps as ClearTriggerBaseProps,
   type SignaturePadClearTriggerProps as ClearTriggerProps,
+  type SignaturePadClearTriggerBaseProps as ClearTriggerBaseProps,
 } from './signature-pad-clear-trigger'
 export {
   SignaturePadContext as Context,
@@ -10,36 +10,36 @@ export {
 } from './signature-pad-context'
 export {
   SignaturePadControl as Control,
-  type SignaturePadControlBaseProps as ControlBaseProps,
   type SignaturePadControlProps as ControlProps,
+  type SignaturePadControlBaseProps as ControlBaseProps,
 } from './signature-pad-control'
 export {
   SignaturePadGuide as Guide,
-  type SignaturePadGuideBaseProps as GuideBaseProps,
   type SignaturePadGuideProps as GuideProps,
+  type SignaturePadGuideBaseProps as GuideBaseProps,
 } from './signature-pad-guide'
 export {
   SignaturePadHiddenInput as HiddenInput,
-  type SignaturePadHiddenInputBaseProps as HiddenInputBaseProps,
   type SignaturePadHiddenInputProps as HiddenInputProps,
+  type SignaturePadHiddenInputBaseProps as HiddenInputBaseProps,
 } from './signature-pad-hidden-input'
 export {
   SignaturePadLabel as Label,
-  type SignaturePadLabelBaseProps as LabelBaseProps,
   type SignaturePadLabelProps as LabelProps,
+  type SignaturePadLabelBaseProps as LabelBaseProps,
 } from './signature-pad-label'
 export {
   SignaturePadRoot as Root,
-  type SignaturePadRootBaseProps as RootBaseProps,
   type SignaturePadRootProps as RootProps,
+  type SignaturePadRootBaseProps as RootBaseProps,
 } from './signature-pad-root'
 export {
   SignaturePadRootProvider as RootProvider,
-  type SignaturePadRootProviderBaseProps as RootProviderBaseProps,
   type SignaturePadRootProviderProps as RootProviderProps,
+  type SignaturePadRootProviderBaseProps as RootProviderBaseProps,
 } from './signature-pad-root-provider'
 export {
   SignaturePadSegment as Segment,
-  type SignaturePadSegmentBaseProps as SegmentBaseProps,
   type SignaturePadSegmentProps as SegmentProps,
+  type SignaturePadSegmentBaseProps as SegmentBaseProps,
 } from './signature-pad-segment'

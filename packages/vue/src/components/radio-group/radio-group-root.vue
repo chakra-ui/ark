@@ -15,10 +15,11 @@ export interface RadioGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useRadioGroup } from './use-radio-group'
 import { RadioGroupProvider } from './use-radio-group-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   disabled: undefined,
   readOnly: undefined,

@@ -5,36 +5,36 @@ export {
 } from './checkbox-context'
 export {
   CheckboxControl as Control,
-  type CheckboxControlBaseProps as ControlBaseProps,
   type CheckboxControlProps as ControlProps,
+  type CheckboxControlBaseProps as ControlBaseProps,
 } from './checkbox-control'
 export {
   CheckboxGroup as Group,
-  type CheckboxGroupBaseProps as GroupBaseProps,
   type CheckboxGroupProps as GroupProps,
+  type CheckboxGroupBaseProps as GroupBaseProps,
 } from './checkbox-group'
 export {
   CheckboxHiddenInput as HiddenInput,
-  type CheckboxHiddenInputBaseProps as HiddenInputBaseProps,
   type CheckboxHiddenInputProps as HiddenInputProps,
+  type CheckboxHiddenInputBaseProps as HiddenInputBaseProps,
 } from './checkbox-hidden-input'
 export {
   CheckboxIndicator as Indicator,
-  type CheckboxIndicatorBaseProps as IndicatorBaseProps,
   type CheckboxIndicatorProps as IndicatorProps,
+  type CheckboxIndicatorBaseProps as IndicatorBaseProps,
 } from './checkbox-indicator'
 export {
   CheckboxLabel as Label,
-  type CheckboxLabelBaseProps as LabelBaseProps,
   type CheckboxLabelProps as LabelProps,
+  type CheckboxLabelBaseProps as LabelBaseProps,
 } from './checkbox-label'
 export {
   CheckboxRoot as Root,
-  type CheckboxRootBaseProps as RootBaseProps,
   type CheckboxRootProps as RootProps,
+  type CheckboxRootBaseProps as RootBaseProps,
 } from './checkbox-root'
 export {
   CheckboxRootProvider as RootProvider,
-  type CheckboxRootProviderBaseProps as RootProviderBaseProps,
   type CheckboxRootProviderProps as RootProviderProps,
+  type CheckboxRootProviderBaseProps as RootProviderBaseProps,
 } from './checkbox-root-provider'

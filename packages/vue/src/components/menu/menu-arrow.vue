@@ -12,9 +12,9 @@ export interface MenuArrowProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<MenuArrowProps>()
 const menu = useMenuContext()

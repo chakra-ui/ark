@@ -1,8 +1,8 @@
 import { getWindow } from '@zag-js/dom-query'
 import { useId, useMemo, useRef } from 'react'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
 import { parts } from './fieldset.anatomy'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 
 export interface UseFieldsetProps {
   /**

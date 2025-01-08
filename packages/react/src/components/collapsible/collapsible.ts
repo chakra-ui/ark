@@ -1,8 +1,8 @@
 export type { OpenChangeDetails } from '@zag-js/collapsible'
 export {
   CollapsibleContent as Content,
-  type CollapsibleContentBaseProps as ContentBaseProps,
   type CollapsibleContentProps as ContentProps,
+  type CollapsibleContentBaseProps as ContentBaseProps,
 } from './collapsible-content'
 export {
   CollapsibleContext as Context,
@@ -10,16 +10,16 @@ export {
 } from './collapsible-context'
 export {
   CollapsibleRoot as Root,
-  type CollapsibleRootBaseProps as RootBaseProps,
   type CollapsibleRootProps as RootProps,
+  type CollapsibleRootBaseProps as RootBaseProps,
 } from './collapsible-root'
 export {
   CollapsibleRootProvider as RootProvider,
-  type CollapsibleRootProviderBaseProps as RootProviderBaseProps,
   type CollapsibleRootProviderProps as RootProviderProps,
+  type CollapsibleRootProviderBaseProps as RootProviderBaseProps,
 } from './collapsible-root-provider'
 export {
   CollapsibleTrigger as Trigger,
-  type CollapsibleTriggerBaseProps as TriggerBaseProps,
   type CollapsibleTriggerProps as TriggerProps,
+  type CollapsibleTriggerBaseProps as TriggerBaseProps,
 } from './collapsible-trigger'

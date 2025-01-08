@@ -15,10 +15,11 @@ export interface PresenceEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<PresenceProps>(), {
   immediate: undefined,
   lazyMount: undefined,

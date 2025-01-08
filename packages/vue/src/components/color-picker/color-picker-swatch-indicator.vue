@@ -12,10 +12,10 @@ export interface ColorPickerSwatchIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerSwatchIndicatorProps>()
 const colorPicker = useColorPickerContext()

@@ -12,9 +12,9 @@ export interface ProgressRangeProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ProgressRangeProps>()
 const progress = useProgressContext()

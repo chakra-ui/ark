@@ -12,10 +12,10 @@ export interface RatingGroupHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useRatingGroupContext } from './use-rating-group-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<RatingGroupHiddenInputProps>()
 

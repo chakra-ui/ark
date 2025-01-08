@@ -14,9 +14,10 @@ export interface DialogContentProps
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
+import { useForwardExpose } from '../../utils'
+
 defineProps<DialogContentProps>()
 
 const dialog = useDialogContext()

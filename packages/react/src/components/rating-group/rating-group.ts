@@ -5,18 +5,13 @@ export {
 } from './rating-group-context'
 export {
   RatingGroupControl as Control,
-  type RatingGroupControlBaseProps as ControlBaseProps,
   type RatingGroupControlProps as ControlProps,
+  type RatingGroupControlBaseProps as ControlBaseProps,
 } from './rating-group-control'
 export {
-  RatingGroupHiddenInput as HiddenInput,
-  type RatingGroupHiddenInputBaseProps as HiddenInputBaseProps,
-  type RatingGroupHiddenInputProps as HiddenInputProps,
-} from './rating-group-hidden-input'
-export {
   RatingGroupItem as Item,
-  type RatingGroupItemBaseProps as ItemBaseProps,
   type RatingGroupItemProps as ItemProps,
+  type RatingGroupItemBaseProps as ItemBaseProps,
 } from './rating-group-item'
 export {
   RatingGroupItemContext as ItemContext,
@@ -24,16 +19,21 @@ export {
 } from './rating-group-item-context'
 export {
   RatingGroupLabel as Label,
-  type RatingGroupLabelBaseProps as LabelBaseProps,
   type RatingGroupLabelProps as LabelProps,
+  type RatingGroupLabelBaseProps as LabelBaseProps,
 } from './rating-group-label'
 export {
   RatingGroupRoot as Root,
-  type RatingGroupRootBaseProps as RootBaseProps,
   type RatingGroupRootProps as RootProps,
+  type RatingGroupRootBaseProps as RootBaseProps,
 } from './rating-group-root'
 export {
   RatingGroupRootProvider as RootProvider,
-  type RatingGroupRootProviderBaseProps as RootProviderBaseProps,
   type RatingGroupRootProviderProps as RootProviderProps,
+  type RatingGroupRootProviderBaseProps as RootProviderBaseProps,
 } from './rating-group-root-provider'
+export {
+  RatingGroupHiddenInput as HiddenInput,
+  type RatingGroupHiddenInputProps as HiddenInputProps,
+  type RatingGroupHiddenInputBaseProps as HiddenInputBaseProps,
+} from './rating-group-hidden-input'

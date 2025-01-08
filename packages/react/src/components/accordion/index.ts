@@ -2,7 +2,10 @@ export type {
   FocusChangeDetails as AccordionFocusChangeDetails,
   ValueChangeDetails as AccordionValueChangeDetails,
 } from '@zag-js/accordion'
-export { AccordionContext, type AccordionContextProps } from './accordion-context'
+export {
+  AccordionContext,
+  type AccordionContextProps,
+} from './accordion-context'
 export {
   AccordionItem,
   type AccordionItemBaseProps,
@@ -13,7 +16,10 @@ export {
   type AccordionItemContentBaseProps,
   type AccordionItemContentProps,
 } from './accordion-item-content'
-export { AccordionItemContext, type AccordionItemContextProps } from './accordion-item-context'
+export {
+  AccordionItemContext,
+  type AccordionItemContextProps,
+} from './accordion-item-context'
 export {
   AccordionItemIndicator,
   type AccordionItemIndicatorBaseProps,

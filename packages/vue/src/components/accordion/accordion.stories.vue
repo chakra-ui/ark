@@ -12,7 +12,6 @@ import Horizontal from './examples/horizontal.vue'
 import Multiple from './examples/multiple.vue'
 import RenderProp from './examples/render-prop.vue'
 import RootProvider from './examples/root-provider.vue'
-import Vertical from './examples/vertical.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Vertical from './examples/vertical.vue'
 </script>
 <template>

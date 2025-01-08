@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { OptionItemProps } from '@zag-js/menu'
-import type { ComputedRef, HTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 
@@ -20,13 +21,14 @@ export type MenuCheckboxItemEmits = {
 </script>
 
 <script setup lang="ts">
-import { ark } from '../facimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
+import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
-(defineProps<MenuCheckboxItemProps>(), {
+import { useForwardExpose } from '../../utils'
+
+const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
   checked: undefined,
   disabled: undefined,
   closeOnSelect: undefined,

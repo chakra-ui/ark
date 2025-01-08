@@ -14,9 +14,10 @@ export interface MenuContentProps
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
+import { useForwardExpose } from '../../utils'
+
 defineProps<MenuContentProps>()
 
 const menu = useMenuContext()

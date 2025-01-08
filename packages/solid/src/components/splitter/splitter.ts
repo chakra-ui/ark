@@ -5,21 +5,21 @@ export {
 } from './splitter-context'
 export {
   SplitterPanel as Panel,
-  type SplitterPanelBaseProps as PanelBaseProps,
   type SplitterPanelProps as PanelProps,
+  type SplitterPanelBaseProps as PanelBaseProps,
 } from './splitter-panel'
 export {
   SplitterResizeTrigger as ResizeTrigger,
-  type SplitterResizeTriggerBaseProps as ResizeTriggerBaseProps,
   type SplitterResizeTriggerProps as ResizeTriggerProps,
+  type SplitterResizeTriggerBaseProps as ResizeTriggerBaseProps,
 } from './splitter-resize-trigger'
 export {
   SplitterRoot as Root,
-  type SplitterRootBaseProps as RootBaseProps,
   type SplitterRootProps as RootProps,
+  type SplitterRootBaseProps as RootBaseProps,
 } from './splitter-root'
 export {
   SplitterRootProvider as RootProvider,
-  type SplitterRootProviderBaseProps as RootProviderBaseProps,
   type SplitterRootProviderProps as RootProviderProps,
+  type SplitterRootProviderBaseProps as RootProviderBaseProps,
 } from './splitter-root-provider'

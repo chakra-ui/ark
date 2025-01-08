@@ -12,9 +12,9 @@ export interface HoverCardArrowTipProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useHoverCardContext } from './use-hover-card-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<HoverCardArrowTipProps>()
 const hoverCard = useHoverCardContext()

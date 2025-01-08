@@ -12,9 +12,9 @@ export interface FieldHelperTextProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<FieldHelperTextProps>()
 const field = useFieldContext()

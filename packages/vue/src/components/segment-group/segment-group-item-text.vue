@@ -12,11 +12,11 @@ export interface SegmentGroupItemTextProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
+import { parts } from './segment-group.anatomy'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SegmentGroupItemTextProps>()
 

@@ -12,10 +12,10 @@ export interface SegmentGroupIndicatorProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { parts } from './segment-group.anatomy'
 import { useSegmentGroupContext } from './use-segment-group-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SegmentGroupIndicatorProps>()
 const segmentGroup = useSegmentGroupContext()

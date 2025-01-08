@@ -15,10 +15,11 @@ export interface TagsInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTagsInput } from './use-tags-input'
 import { TagsInputProvider } from './use-tags-input-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<TagsInputRootProps>(), {
   addOnPaste: undefined,
   allowOverflow: undefined,

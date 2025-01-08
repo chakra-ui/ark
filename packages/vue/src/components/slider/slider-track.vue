@@ -12,9 +12,9 @@ export interface SliderTrackProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SliderTrackProps>()
 const slider = useSliderContext()

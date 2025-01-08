@@ -12,9 +12,9 @@ export interface ColorPickerFormatSelectProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<ColorPickerFormatSelectProps>()
 const colorPicker = useColorPickerContext()

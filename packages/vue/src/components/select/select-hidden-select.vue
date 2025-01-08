@@ -12,10 +12,10 @@ export interface SelectHiddenSelectProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useSelectContext } from './use-select-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectHiddenSelectProps>()
 

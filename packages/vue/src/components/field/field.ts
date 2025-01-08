@@ -1,46 +1,49 @@
-export { default as Context, type FieldContextProps as ContextProps } from './field-context.vue'
-export {
-  default as ErrorText,
-  type FieldErrorTextBaseProps as ErrorTextBaseProps,
-  type FieldErrorTextProps as ErrorTextProps,
-} from './field-error-text.vue'
-export {
-  default as HelperText,
-  type FieldHelperTextBaseProps as HelperTextBaseProps,
-  type FieldHelperTextProps as HelperTextProps,
-} from './field-helper-text.vue'
-export {
-  default as Input,
-  type FieldInputBaseProps as InputBaseProps,
-  type FieldInputProps as InputProps,
-} from './field-input.vue'
-export {
-  default as Label,
-  type FieldLabelBaseProps as LabelBaseProps,
-  type FieldLabelProps as LabelProps,
-} from './field-label.vue'
-export {
-  default as RequiredIndicator,
-  type FieldRequiredIndicatorBaseProps as RequiredIndicatorBaseProps,
-  type FieldRequiredIndicatorProps as RequiredIndicatorProps,
-} from './field-required-indicator.vue'
-export {
-  default as RootProvider,
-  type FieldRootProviderBaseProps as RootProviderBaseProps,
-  type FieldRootProviderProps as RootProviderProps,
-} from './field-root-provider.vue'
 export {
   default as Root,
-  type FieldRootBaseProps as RootBaseProps,
   type FieldRootProps as RootProps,
+  type FieldRootBaseProps as RootBaseProps,
 } from './field-root.vue'
 export {
-  default as Select,
-  type FieldSelectBaseProps as SelectBaseProps,
-  type FieldSelectProps as SelectProps,
-} from './field-select.vue'
+  default as RootProvider,
+  type FieldRootProviderProps as RootProviderProps,
+  type FieldRootProviderBaseProps as RootProviderBaseProps,
+} from './field-root-provider.vue'
+export {
+  default as Label,
+  type FieldLabelProps as LabelProps,
+  type FieldLabelBaseProps as LabelBaseProps,
+} from './field-label.vue'
+export {
+  default as Input,
+  type FieldInputProps as InputProps,
+  type FieldInputBaseProps as InputBaseProps,
+} from './field-input.vue'
 export {
   default as Textarea,
-  type FieldTextareaBaseProps as TextareaBaseProps,
   type FieldTextareaProps as TextareaProps,
+  type FieldTextareaBaseProps as TextareaBaseProps,
 } from './field-textarea.vue'
+export {
+  default as Select,
+  type FieldSelectProps as SelectProps,
+  type FieldSelectBaseProps as SelectBaseProps,
+} from './field-select.vue'
+export {
+  default as HelperText,
+  type FieldHelperTextProps as HelperTextProps,
+  type FieldHelperTextBaseProps as HelperTextBaseProps,
+} from './field-helper-text.vue'
+export {
+  default as ErrorText,
+  type FieldErrorTextProps as ErrorTextProps,
+  type FieldErrorTextBaseProps as ErrorTextBaseProps,
+} from './field-error-text.vue'
+export {
+  default as Context,
+  type FieldContextProps as ContextProps,
+} from './field-context.vue'
+export {
+  default as RequiredIndicator,
+  type FieldRequiredIndicatorProps as RequiredIndicatorProps,
+  type FieldRequiredIndicatorBaseProps as RequiredIndicatorBaseProps,
+} from './field-required-indicator.vue'

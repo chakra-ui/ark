@@ -21,10 +21,11 @@ export interface ColorPickerRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
+import { computed } from 'vue'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { ColorPickerProvider } from './use-color-picker-context'
+
 const props = defineProps<ColorPickerRootProviderProps>()
 const colorPicker = computed(() => props.value)
 

@@ -12,9 +12,9 @@ export interface CarouselPrevTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useCarouselContext } from './use-carousel-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<CarouselPrevTriggerProps>()
 const carousel = useCarouselContext()

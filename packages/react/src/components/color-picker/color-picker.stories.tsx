@@ -7,10 +7,10 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { RootProvider } from './examples/root-provider'
 export { Controlled } from './examples/controlled'
 export { Inline } from './examples/inline'
 export { OnChangeEnd } from './examples/on-change-end'
-export { RootProvider } from './examples/root-provider'
 export { SliderOnly } from './examples/slider-only'
 export { SwatchOnly } from './examples/swatch-only'
 export { WithField } from './examples/with-field'

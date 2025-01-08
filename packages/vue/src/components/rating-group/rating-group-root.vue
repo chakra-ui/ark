@@ -15,10 +15,11 @@ export interface RatingGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useRatingGroup } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
+import { useForwardExpose } from '../../utils'
+
 const props = withDefaults(defineProps<RatingGroupRootProps>(), {
   allowHalf: undefined,
   autoFocus: undefined,

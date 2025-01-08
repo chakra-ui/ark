@@ -1,24 +1,19 @@
 export type { StepChangeDetails } from '@zag-js/steps'
 export {
+  default as Content,
+  type StepsContentBaseProps as ContentBaseProps,
+  type StepsContentProps as ContentProps,
+} from './steps-content.vue'
+export {
   default as CompletedContent,
   type StepsCompletedContentBaseProps as CompletedContentBaseProps,
   type StepsCompletedContentProps as CompletedContentProps,
 } from './steps-completed-content.vue'
 export {
-  default as Content,
-  type StepsContentBaseProps as ContentBaseProps,
-  type StepsContentProps as ContentProps,
-} from './steps-content.vue'
-export { default as Context, type StepsContextProps as ContextProps } from './steps-context.vue'
-export {
   default as Indicator,
   type StepsIndicatorBaseProps as IndicatorBaseProps,
   type StepsIndicatorProps as IndicatorProps,
 } from './steps-indicator.vue'
-export {
-  default as ItemContext,
-  type StepsItemContextProps as ItemContextProps,
-} from './steps-item-context.vue'
 export {
   default as Item,
   type StepsItemBaseProps as ItemBaseProps,
@@ -51,8 +46,8 @@ export {
 } from './steps-root-provider.vue'
 export {
   default as Root,
-  type StepsRootBaseProps as RootBaseProps,
   type StepsRootEmits as RootEmits,
+  type StepsRootBaseProps as RootBaseProps,
   type StepsRootProps as RootProps,
 } from './steps-root.vue'
 export {
@@ -65,3 +60,8 @@ export {
   type StepsTriggerBaseProps as TriggerBaseProps,
   type StepsTriggerProps as TriggerProps,
 } from './steps-trigger.vue'
+export {
+  default as ItemContext,
+  type StepsItemContextProps as ItemContextProps,
+} from './steps-item-context.vue'
+export { default as Context, type StepsContextProps as ContextProps } from './steps-context.vue'

@@ -1,8 +1,8 @@
 export { default as Presence, type PresenceProps } from './presence.svelte'
 export { splitPresenceProps } from './split-presence-props.svelte'
+export { type UsePresenceProps, type UsePresenceReturn, usePresence } from './use-presence.svelte'
 export {
   PresenceProvider,
-  usePresenceContext,
   type UsePresenceContext,
+  usePresenceContext,
 } from './use-presence-context'
-export { usePresence, type UsePresenceProps, type UsePresenceReturn } from './use-presence.svelte'

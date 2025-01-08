@@ -5,13 +5,13 @@ export {
 } from './radio-group-context'
 export {
   RadioGroupIndicator as Indicator,
-  type RadioGroupIndicatorBaseProps as IndicatorBaseProps,
   type RadioGroupIndicatorProps as IndicatorProps,
+  type RadioGroupIndicatorBaseProps as IndicatorBaseProps,
 } from './radio-group-indicator'
 export {
   RadioGroupItem as Item,
-  type RadioGroupItemBaseProps as ItemBaseProps,
   type RadioGroupItemProps as ItemProps,
+  type RadioGroupItemBaseProps as ItemBaseProps,
 } from './radio-group-item'
 export {
   RadioGroupItemContext as ItemContext,
@@ -19,31 +19,31 @@ export {
 } from './radio-group-item-context'
 export {
   RadioGroupItemControl as ItemControl,
-  type RadioGroupItemControlBaseProps as ItemControlBaseProps,
   type RadioGroupItemControlProps as ItemControlProps,
+  type RadioGroupItemControlBaseProps as ItemControlBaseProps,
 } from './radio-group-item-control'
 export {
   RadioGroupItemHiddenInput as ItemHiddenInput,
-  type RadioGroupItemHiddenInputBaseProps as ItemHiddenInputBaseProps,
   type RadioGroupItemHiddenInputProps as ItemHiddenInputProps,
+  type RadioGroupItemHiddenInputBaseProps as ItemHiddenInputBaseProps,
 } from './radio-group-item-hidden-input'
 export {
   RadioGroupItemText as ItemText,
-  type RadioGroupItemTextBaseProps as ItemTextBaseProps,
   type RadioGroupItemTextProps as ItemTextProps,
+  type RadioGroupItemTextBaseProps as ItemTextBaseProps,
 } from './radio-group-item-text'
 export {
   RadioGroupLabel as Label,
-  type RadioGroupLabelBaseProps as LabelBaseProps,
   type RadioGroupLabelProps as LabelProps,
+  type RadioGroupLabelBaseProps as LabelBaseProps,
 } from './radio-group-label'
 export {
   RadioGroupRoot as Root,
-  type RadioGroupRootBaseProps as RootBaseProps,
   type RadioGroupRootProps as RootProps,
+  type RadioGroupRootBaseProps as RootBaseProps,
 } from './radio-group-root'
 export {
   RadioGroupRootProvider as RootProvider,
-  type RadioGroupRootProviderBaseProps as RootProviderBaseProps,
   type RadioGroupRootProviderProps as RootProviderProps,
+  type RadioGroupRootProviderBaseProps as RootProviderBaseProps,
 } from './radio-group-root-provider'

@@ -12,9 +12,9 @@ export interface NumberInputValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<NumberInputValueTextProps>()
 const numberInput = useNumberInputContext()

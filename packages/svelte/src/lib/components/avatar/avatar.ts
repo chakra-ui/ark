@@ -5,18 +5,18 @@ export {
 } from './avatar-context.svelte'
 export {
   default as Fallback,
-  type AvatarFallbackBaseProps as FallbackBaseProps,
   type AvatarFallbackProps as FallbackProps,
+  type AvatarFallbackBaseProps as FallbackBaseProps,
 } from './avatar-fallback.svelte'
 export {
   default as Image,
-  type AvatarImageBaseProps as ImageBaseProps,
   type AvatarImageProps as ImageProps,
+  type AvatarImageBaseProps as ImageBaseProps,
 } from './avatar-image.svelte'
 export {
   default as RootProvider,
-  type AvatarRootProviderBaseProps as RootProviderBaseProps,
   type AvatarRootProviderProps as RootProviderProps,
+  type AvatarRootProviderBaseProps as RootProviderBaseProps,
 } from './avatar-root-provider.svelte'
 export {
   default as Root,

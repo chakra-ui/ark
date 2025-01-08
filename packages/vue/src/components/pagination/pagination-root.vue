@@ -14,10 +14,11 @@ export interface PaginationRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<PaginationRootProps>()
 const emits = defineEmits<PaginationRootEmits>()
 

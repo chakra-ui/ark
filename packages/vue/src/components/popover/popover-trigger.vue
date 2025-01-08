@@ -12,9 +12,9 @@ export interface PopoverTriggerProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<PopoverTriggerProps>()
 const popover = usePopoverContext()

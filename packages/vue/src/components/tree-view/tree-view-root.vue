@@ -19,15 +19,16 @@ export type { RootEmits as TreeViewRootEmits } from './tree-view.types'
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">
-iimport { computed } from 'vue'
+import { computed } from 'vue'
 import {
-RenderStrategyPropsProvider,
-useForwardExpose,
-type RenderStrategyProps,
+  RenderStrategyPropsProvider,
+  useForwardExpose,
+  type RenderStrategyProps,
 } from '../../utils'
 import { ark } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
+
 const props = withDefaults(defineProps<TreeViewRootProps<T>>(), {
   expandOnClick: undefined,
   typeahead: undefined,

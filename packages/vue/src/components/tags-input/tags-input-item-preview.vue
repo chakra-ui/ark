@@ -12,10 +12,10 @@ export interface TagsInputItemPreviewProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<TagsInputItemPreviewProps>()
 

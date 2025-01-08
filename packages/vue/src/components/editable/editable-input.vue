@@ -12,10 +12,10 @@ export interface EditableInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { useFieldContext } from '../field'
 import { useEditableContext } from './use-editable-context'
+import { useFieldContext } from '../field'
+import { useForwardExpose } from '../../utils'
 
 defineProps<EditableInputProps>()
 const editable = useEditableContext()

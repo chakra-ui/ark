@@ -3,7 +3,10 @@ export type {
   PageChangeDetails as PaginationPageChangeDetails,
   PageSizeChangeDetails as PaginationPageSizeChangeDetails,
 } from '@zag-js/pagination'
-export { PaginationContext, type PaginationContextProps } from './pagination-context'
+export {
+  PaginationContext,
+  type PaginationContextProps,
+} from './pagination-context'
 export {
   PaginationEllipsis,
   type PaginationEllipsisBaseProps,

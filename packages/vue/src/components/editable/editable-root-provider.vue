@@ -17,10 +17,11 @@ export interface EditableRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { EditableProvider } from './use-editable-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<EditableRootProviderProps>()
 const editable = computed(() => props.value)
 

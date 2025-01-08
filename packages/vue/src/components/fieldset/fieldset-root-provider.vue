@@ -17,10 +17,11 @@ export interface FieldsetRootProviderProps
 </script>
 
 <script setup lang="ts">
-iimport { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { FieldsetProvider } from './use-fieldset-context'
+import { useForwardExpose } from '../../utils'
+
 const props = defineProps<FieldsetRootProviderProps>()
 const fieldset = computed(() => props.value)
 

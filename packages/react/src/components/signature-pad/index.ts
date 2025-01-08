@@ -8,7 +8,10 @@ export {
   type SignaturePadClearTriggerBaseProps,
   type SignaturePadClearTriggerProps,
 } from './signature-pad-clear-trigger'
-export { SignaturePadContext, type SignaturePadContextProps } from './signature-pad-context'
+export {
+  SignaturePadContext,
+  type SignaturePadContextProps,
+} from './signature-pad-context'
 export {
   SignaturePadControl,
   type SignaturePadControlBaseProps,

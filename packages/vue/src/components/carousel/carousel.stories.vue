@@ -2,7 +2,6 @@
 import Autoplay from './examples/autoplay.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
-import RootProvider from './examples/root-provider.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>

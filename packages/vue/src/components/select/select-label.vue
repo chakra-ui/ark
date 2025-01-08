@@ -12,9 +12,9 @@ export interface SelectLabelProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<SelectLabelProps>()
 const select = useSelectContext()

@@ -12,10 +12,12 @@ export interface TimePickerPositionerProps
 </script>
 
 <script setup lang="ts">
-imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
-import { PresenceProvider,usePresence } from '../presence'
+import { useRenderStrategyProps } from '../../utils'
+import { PresenceProvider, usePresence } from '../presence'
 import { useTimePickerContext } from './use-time-picker-context'
-efineProps<TimePickerPositionerProps>()
+import { useForwardExpose } from '../../utils'
+
+defineProps<TimePickerPositionerProps>()
 
 const timePicker = useTimePickerContext()
 const renderStrategy = useRenderStrategyProps()

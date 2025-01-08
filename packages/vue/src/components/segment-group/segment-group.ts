@@ -5,8 +5,8 @@ export {
 } from './segment-group-context.vue'
 export {
   default as Indicator,
-  type SegmentGroupIndicatorBaseProps as IndicatorBaseProps,
   type SegmentGroupIndicatorProps as IndicatorProps,
+  type SegmentGroupIndicatorBaseProps as IndicatorBaseProps,
 } from './segment-group-indicator.vue'
 export {
   default as ItemContext,
@@ -14,37 +14,37 @@ export {
 } from './segment-group-item-context.vue'
 export {
   default as ItemControl,
-  type SegmentGroupItemControlBaseProps as ItemControlBaseProps,
   type SegmentGroupItemControlProps as ItemControlProps,
+  type SegmentGroupItemControlBaseProps as ItemControlBaseProps,
 } from './segment-group-item-control.vue'
 export {
   default as ItemHiddenInput,
-  type SegmentGroupItemHiddenInputBaseProps as ItemHiddenInputBaseProps,
   type SegmentGroupItemHiddenInputProps as ItemHiddenInputProps,
+  type SegmentGroupItemHiddenInputBaseProps as ItemHiddenInputBaseProps,
 } from './segment-group-item-hidden-input.vue'
 export {
   default as ItemText,
-  type SegmentGroupItemTextBaseProps as ItemTextBaseProps,
   type SegmentGroupItemTextProps as ItemTextProps,
+  type SegmentGroupItemTextBaseProps as ItemTextBaseProps,
 } from './segment-group-item-text.vue'
 export {
   default as Item,
-  type SegmentGroupItemBaseProps as ItemBaseProps,
   type SegmentGroupItemProps as ItemProps,
+  type SegmentGroupItemBaseProps as ItemBaseProps,
 } from './segment-group-item.vue'
 export {
   default as Label,
-  type SegmentGroupLabelBaseProps as LabelBaseProps,
   type SegmentGroupLabelProps as LabelProps,
+  type SegmentGroupLabelBaseProps as LabelBaseProps,
 } from './segment-group-label.vue'
 export {
   default as RootProvider,
-  type SegmentGroupRootProviderBaseProps as RootProviderBaseProps,
   type SegmentGroupRootProviderProps as RootProviderProps,
+  type SegmentGroupRootProviderBaseProps as RootProviderBaseProps,
 } from './segment-group-root-provider.vue'
 export {
   default as Root,
-  type SegmentGroupRootBaseProps as RootBaseProps,
   type SegmentGroupRootEmits as RootEmits,
+  type SegmentGroupRootBaseProps as RootBaseProps,
   type SegmentGroupRootProps as RootProps,
 } from './segment-group-root.vue'

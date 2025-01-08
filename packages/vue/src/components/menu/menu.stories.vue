@@ -8,7 +8,6 @@ import Nested from './examples/nested.vue'
 import RadioGroup from './examples/radio-group.vue'
 import RenderProp from './examples/render-prop.vue'
 import RootProvider from './examples/root-provider.vue'
-import Separator from './examples/separator.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Separator from './examples/separator.vue'
 </script>
 <template>

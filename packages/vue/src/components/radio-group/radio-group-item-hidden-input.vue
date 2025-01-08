@@ -12,10 +12,10 @@ export interface RadioGroupItemHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
+import { useForwardExpose } from '../../utils'
 
 defineProps<RadioGroupItemHiddenInputProps>()
 

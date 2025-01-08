@@ -8,5 +8,5 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { LazyMount } from './examples/lazy-mount'
-export { LazyMountAndUnmountOnExit } from './examples/lazy-mount-and-unmount-on-exit'
 export { UnmountOnExit } from './examples/unmount-on-exit'
+export { LazyMountAndUnmountOnExit } from './examples/lazy-mount-and-unmount-on-exit'

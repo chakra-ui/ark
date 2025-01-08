@@ -12,8 +12,8 @@ export interface AvatarImageProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
+import { useForwardExpose } from '../../utils'
 import { useAvatarContext } from './use-avatar-context'
 
 defineProps<AvatarImageProps>()
