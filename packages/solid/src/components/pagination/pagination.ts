@@ -1,39 +1,35 @@
-export type {
-  ItemLabelDetails,
-  PageChangeDetails,
-  PageSizeChangeDetails,
-} from '@zag-js/pagination'
+export type { ItemLabelDetails, PageChangeDetails, PageSizeChangeDetails } from '@zag-js/pagination'
 export {
   PaginationContext as Context,
   type PaginationContextProps as ContextProps,
 } from './pagination-context'
 export {
   PaginationEllipsis as Ellipsis,
-  type PaginationEllipsisProps as EllipsisProps,
   type PaginationEllipsisBaseProps as EllipsisBaseProps,
+  type PaginationEllipsisProps as EllipsisProps,
 } from './pagination-ellipsis'
 export {
   PaginationItem as Item,
-  type PaginationItemProps as ItemProps,
   type PaginationItemBaseProps as ItemBaseProps,
+  type PaginationItemProps as ItemProps,
 } from './pagination-item'
 export {
   PaginationNextTrigger as NextTrigger,
-  type PaginationNextTriggerProps as NextTriggerProps,
   type PaginationNextTriggerBaseProps as NextTriggerBaseProps,
+  type PaginationNextTriggerProps as NextTriggerProps,
 } from './pagination-next-trigger'
 export {
   PaginationPrevTrigger as PrevTrigger,
-  type PaginationPrevTriggerProps as PrevTriggerProps,
   type PaginationPrevTriggerBaseProps as PrevTriggerBaseProps,
+  type PaginationPrevTriggerProps as PrevTriggerProps,
 } from './pagination-prev-trigger'
 export {
   PaginationRoot as Root,
-  type PaginationRootProps as RootProps,
   type PaginationRootBaseProps as RootBaseProps,
+  type PaginationRootProps as RootProps,
 } from './pagination-root'
 export {
   PaginationRootProvider as RootProvider,
-  type PaginationRootProviderProps as RootProviderProps,
   type PaginationRootProviderBaseProps as RootProviderBaseProps,
+  type PaginationRootProviderProps as RootProviderProps,
 } from './pagination-root-provider'

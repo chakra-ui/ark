@@ -4,11 +4,7 @@ export {
   type PopoverAnchorBaseProps,
   type PopoverAnchorProps,
 } from './popover-anchor'
-export {
-  PopoverArrow,
-  type PopoverArrowBaseProps,
-  type PopoverArrowProps,
-} from './popover-arrow'
+export { PopoverArrow, type PopoverArrowBaseProps, type PopoverArrowProps } from './popover-arrow'
 export {
   PopoverArrowTip,
   type PopoverArrowTipBaseProps,
@@ -24,10 +20,7 @@ export {
   type PopoverContentBaseProps,
   type PopoverContentProps,
 } from './popover-content'
-export {
-  PopoverContext,
-  type PopoverContextProps,
-} from './popover-context'
+export { PopoverContext, type PopoverContextProps } from './popover-context'
 export {
   PopoverDescription,
   type PopoverDescriptionBaseProps,
@@ -43,21 +36,13 @@ export {
   type PopoverPositionerBaseProps,
   type PopoverPositionerProps,
 } from './popover-positioner'
-export {
-  PopoverRoot,
-  type PopoverRootBaseProps,
-  type PopoverRootProps,
-} from './popover-root'
+export { PopoverRoot, type PopoverRootBaseProps, type PopoverRootProps } from './popover-root'
 export {
   PopoverRootProvider,
   type PopoverRootProviderBaseProps,
   type PopoverRootProviderProps,
 } from './popover-root-provider'
-export {
-  PopoverTitle,
-  type PopoverTitleBaseProps,
-  type PopoverTitleProps,
-} from './popover-title'
+export { PopoverTitle, type PopoverTitleBaseProps, type PopoverTitleProps } from './popover-title'
 export {
   PopoverTrigger,
   type PopoverTriggerBaseProps,

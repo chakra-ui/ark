@@ -11,6 +11,11 @@ export {
 } from './field-helper-text'
 export { FieldInput, type FieldInputBaseProps, type FieldInputProps } from './field-input'
 export { FieldLabel, type FieldLabelBaseProps, type FieldLabelProps } from './field-label'
+export {
+  FieldRequiredIndicator,
+  type FieldRequiredIndicatorBaseProps,
+  type FieldRequiredIndicatorProps,
+} from './field-required-indicator'
 export { FieldRoot, type FieldRootBaseProps, type FieldRootProps } from './field-root'
 export {
   FieldRootProvider,
@@ -23,11 +28,6 @@ export {
   type FieldTextareaBaseProps,
   type FieldTextareaProps,
 } from './field-textarea'
-export {
-  FieldRequiredIndicator,
-  type FieldRequiredIndicatorProps,
-  type FieldRequiredIndicatorBaseProps,
-} from './field-required-indicator'
 export { fieldAnatomy } from './field.anatomy'
 export { useFieldContext, type UseFieldContext } from './use-field-context'
 

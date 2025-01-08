@@ -1,8 +1,8 @@
+import { showcases } from '.velite'
 import { cva } from 'styled-system/css'
-import { Box, Container, Grid, GridItem, Stack, styled } from 'styled-system/jsx'
+import { Container, Grid, GridItem, Stack, styled } from 'styled-system/jsx'
 import { SectionHeader } from '../section-header'
 import { Card } from '../ui/card'
-import { showcases } from '.velite'
 
 export const Showcases = () => {
   return (

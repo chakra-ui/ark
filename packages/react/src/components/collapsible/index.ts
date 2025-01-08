@@ -4,10 +4,7 @@ export {
   type CollapsibleContentBaseProps,
   type CollapsibleContentProps,
 } from './collapsible-content'
-export {
-  CollapsibleContext,
-  type CollapsibleContextProps,
-} from './collapsible-context'
+export { CollapsibleContext, type CollapsibleContextProps } from './collapsible-context'
 export {
   CollapsibleRoot,
   type CollapsibleRootBaseProps,

@@ -1,6 +1,6 @@
+import { globby } from 'globby'
 import { readFileSync } from 'node:fs'
 import { basename, dirname } from 'node:path'
-import { globby } from 'globby'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
 
 const main = async () => {

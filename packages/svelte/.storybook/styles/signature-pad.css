@@ -1,23 +1,23 @@
-[data-scope=signature-pad][data-part=root] {
+[data-scope='signature-pad'][data-part='root'] {
   position: relative;
   display: flex;
   flex-direction: column;
   max-width: 400px;
-  width:100%;
+  width: 100%;
 }
 
-[data-scope=signature-pad][data-part=label] {
+[data-scope='signature-pad'][data-part='label'] {
   display: inline-block;
   margin-block-end: 8px;
 }
 
-[data-scope="signature-pad"][data-part="control"] {
+[data-scope='signature-pad'][data-part='control'] {
   height: 120px;
   background-color: #efefef;
   border-radius: 8px;
 }
 
-[data-scope=signature-pad][data-part=guide] {
+[data-scope='signature-pad'][data-part='guide'] {
   position: absolute;
   bottom: 12%;
   left: 8px;
@@ -25,7 +25,7 @@
   border-bottom: 1px dashed #2f2f2f;
 }
 
-[data-scope=signature-pad][data-part=clear-trigger] {
+[data-scope='signature-pad'][data-part='clear-trigger'] {
   position: absolute;
   top: 8px;
   right: 8px;

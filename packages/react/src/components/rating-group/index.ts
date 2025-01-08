@@ -2,10 +2,7 @@ export type {
   HoverChangeDetails as RatingGroupHoverChangeDetails,
   ValueChangeDetails as RatingGroupValueChangeDetails,
 } from '@zag-js/rating-group'
-export {
-  RatingGroupContext,
-  type RatingGroupContextProps,
-} from './rating-group-context'
+export { RatingGroupContext, type RatingGroupContextProps } from './rating-group-context'
 export {
   RatingGroupControl,
   type RatingGroupControlBaseProps,

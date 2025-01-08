@@ -1,8 +1,4 @@
-export type {
-  FocusChangeDetails,
-  OpenChangeDetails,
-  ValueChangeDetails,
-} from '@zag-js/time-picker'
+export type { FocusChangeDetails, OpenChangeDetails, ValueChangeDetails } from '@zag-js/time-picker'
 export {
   default as ClearTrigger,
   type TimePickerClearTriggerProps as ClearTriggerProps,

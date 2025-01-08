@@ -4,9 +4,9 @@ import { Outfit, Roboto_Mono } from 'next/font/google'
 import Script from 'next/script'
 import type { PropsWithChildren } from 'react'
 import { cx } from 'styled-system/css'
-import './global.css'
 import { ContactDialog, FloatingContactButton } from '~/components/contact-dialog'
 import { Toaster } from '~/components/toaster'
+import './global.css'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })

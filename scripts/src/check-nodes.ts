@@ -1,6 +1,6 @@
-import { parse } from 'node:path'
 import { readFileSync } from 'fs-extra'
 import { globby } from 'globby'
+import { parse } from 'node:path'
 
 const main = async () => {
   const components = await globby(['../packages/*/src/components/dialog/*.{tsx,vue}'])
