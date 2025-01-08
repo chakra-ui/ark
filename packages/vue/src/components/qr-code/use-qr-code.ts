@@ -9,8 +9,8 @@ import type { RootEmits } from './qr-code.types'
 export interface UseQrCodeProps
   extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The initial value of the qr code when it is first rendered.
+   * Use when you do not need to control the state of the qr code.
    */
   defaultValue?: qrcode.Context['value']
   /**

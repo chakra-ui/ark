@@ -72,7 +72,7 @@
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the tabs when it is first rendered.\nUse when you do not need to control the state of the tabs."
+        "description": "The initial value of the qr code when it is first rendered.\nUse when you do not need to control the state of the qr code."
       },
       "encoding": {
         "type": "QrCodeGenerateOptions",
