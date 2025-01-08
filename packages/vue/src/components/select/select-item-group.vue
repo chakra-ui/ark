@@ -14,10 +14,10 @@ export interface SelectItemGroupProps
 
 <script setup lang="ts">
 import { useId } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SelectItemGroupProps>()
 

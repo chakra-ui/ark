@@ -13,12 +13,12 @@ export interface RadioGroupItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
 import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { RadioGroupItemProvider } from './use-radio-group-item-context'
 import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<RadioGroupItemProps>()
 const radioGroup = useRadioGroupContext()

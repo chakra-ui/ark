@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { Field } from '@ark-ui/vue/field'
+import { Fieldset } from '@ark-ui/vue/fieldset' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { Fieldset } from '@ark-ui/vue/fieldset'
 </script>
 

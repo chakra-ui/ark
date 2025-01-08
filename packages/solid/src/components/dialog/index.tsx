@@ -14,10 +14,7 @@ export {
   type DialogContentBaseProps,
   type DialogContentProps,
 } from './dialog-content'
-export {
-  DialogContext,
-  type DialogContextProps,
-} from './dialog-context'
+export { DialogContext, type DialogContextProps } from './dialog-context'
 export {
   DialogDescription,
   type DialogDescriptionBaseProps,
@@ -28,21 +25,13 @@ export {
   type DialogPositionerBaseProps,
   type DialogPositionerProps,
 } from './dialog-positioner'
-export {
-  DialogRoot,
-  type DialogRootBaseProps,
-  type DialogRootProps,
-} from './dialog-root'
+export { DialogRoot, type DialogRootBaseProps, type DialogRootProps } from './dialog-root'
 export {
   DialogRootProvider,
   type DialogRootProviderBaseProps,
   type DialogRootProviderProps,
 } from './dialog-root-provider'
-export {
-  DialogTitle,
-  type DialogTitleBaseProps,
-  type DialogTitleProps,
-} from './dialog-title'
+export { DialogTitle, type DialogTitleBaseProps, type DialogTitleProps } from './dialog-title'
 export {
   DialogTrigger,
   type DialogTriggerBaseProps,

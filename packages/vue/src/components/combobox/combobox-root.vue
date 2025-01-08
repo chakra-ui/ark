@@ -20,12 +20,11 @@ export type { RootEmits as ComboboxRootEmits } from './combobox.types'
 </script>
 
 <script setup lang="ts" generic="T extends CollectionItem">
-import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+iimport { computed } from 'vue'
+import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
-
 const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   allowCustomValue: undefined,
   autoFocus: undefined,

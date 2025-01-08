@@ -14,11 +14,10 @@ export interface ProgressRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useProgress } from './use-progress'
 import { ProgressProvider } from './use-progress-context'
-
 const props = defineProps<ProgressRootProps>()
 const progress = useProgress(props)
 

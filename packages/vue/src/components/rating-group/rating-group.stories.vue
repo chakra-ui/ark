@@ -7,6 +7,7 @@ import HalfRatings from './examples/half-ratings.vue'
 import InitialValue from './examples/initial-value.vue'
 import ReadOnly from './examples/read-only.vue'
 import RootProvider from './examples/root-provider.vue'
+import WithField from './examples/with-field.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithField from './examples/with-field.vue'
 </script>
 <template>

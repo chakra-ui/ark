@@ -15,11 +15,10 @@ export interface NumberInputRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<NumberInputRootProps>(), {
   allowMouseWheel: undefined,
   allowOverflow: undefined,

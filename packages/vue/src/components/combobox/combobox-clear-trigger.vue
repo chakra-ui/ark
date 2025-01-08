@@ -12,9 +12,9 @@ export interface ComboboxClearTriggerProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<ComboboxClearTriggerProps>()
 const combobox = useComboboxContext()

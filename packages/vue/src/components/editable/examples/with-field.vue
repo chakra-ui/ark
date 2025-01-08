@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Editable } from '@ark-ui/vue/editable'
+import { Field } from '@ark-ui/vue/field' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { Field } from '@ark-ui/vue/field'
 </script>
 

@@ -12,9 +12,9 @@ export interface RadioGroupLabelProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<RadioGroupLabelProps>()
 const radioGroup = useRadioGroupContext()

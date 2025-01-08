@@ -8,6 +8,7 @@ import MouseWheel from './examples/mouse-wheel.vue'
 import NoClamp from './examples/no-clamp.vue'
 import RenderFn from './examples/render-fn.vue'
 import RootProvider from './examples/root-provider.vue'
+import Scrubber from './examples/scrubber.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Scrubber from './examples/scrubber.vue'
 </script>
 <template>

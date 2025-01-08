@@ -14,11 +14,10 @@ export interface AvatarRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useAvatar } from './use-avatar'
 import { AvatarProvider } from './use-avatar-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<AvatarRootProps>()
 const emits = defineEmits<AvatarRootEmits>()
 

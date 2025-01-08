@@ -13,9 +13,9 @@ export interface PaginationEllipsisProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePaginationContext } from './use-pagination-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<PaginationEllipsisProps>()
 const pagination = usePaginationContext()

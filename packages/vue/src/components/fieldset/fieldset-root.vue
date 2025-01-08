@@ -14,10 +14,10 @@ export interface FieldsetRootProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useFieldset } from './use-fieldset'
 import { FieldsetProvider } from './use-fieldset-context'
-import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<FieldsetRootProps>(), {
   disabled: undefined,

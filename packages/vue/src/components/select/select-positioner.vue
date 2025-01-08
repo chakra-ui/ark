@@ -12,12 +12,10 @@ export interface SelectPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils'
-import { PresenceProvider, usePresence } from '../presence'
+imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
+import { PresenceProvider,usePresence } from '../presence'
 import { useSelectContext } from './use-select-context'
-import { useForwardExpose } from '../../utils'
-
-defineProps<SelectPositionerProps>()
+efineProps<SelectPositionerProps>()
 
 const select = useSelectContext()
 const renderStrategy = useRenderStrategyProps()

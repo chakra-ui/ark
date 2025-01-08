@@ -12,10 +12,10 @@ export interface MenuItemGroupLabelProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<MenuItemGroupLabelProps>()
 

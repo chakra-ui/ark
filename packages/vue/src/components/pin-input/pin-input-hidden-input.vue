@@ -12,10 +12,10 @@ export interface PinInputHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { usePinInputContext } from './use-pin-input-context'
-import { useFieldContext } from '../field'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { useFieldContext } from '../field'
+import { usePinInputContext } from './use-pin-input-context'
 
 defineProps<PinInputHiddenInputProps>()
 

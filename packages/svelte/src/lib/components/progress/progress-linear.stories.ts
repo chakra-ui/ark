@@ -42,7 +42,6 @@ export const RootProvider = {
   }),
 }
 
-
 export const ValueText = {
   render: () => ({
     Component: ValueTextExample,

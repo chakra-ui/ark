@@ -17,11 +17,10 @@ export interface SliderRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { SliderProvider } from './use-slider-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<SliderRootProviderProps>()
 const slider = computed(() => props.value)
 

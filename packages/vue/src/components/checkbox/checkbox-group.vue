@@ -15,12 +15,11 @@ export interface CheckboxGroupEmits extends GroupEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { checkboxAnatomy } from './checkbox.anatomy'
 import { useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupProvider } from './use-checkbox-group-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   disabled: undefined,
   readOnly: undefined,

@@ -15,12 +15,11 @@ export interface SegmentGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
+import { parts } from './segment-group.anatomy'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,
   readOnly: undefined,

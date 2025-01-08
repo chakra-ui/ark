@@ -15,11 +15,10 @@ export interface EditableRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useEditable } from './use-editable'
 import { EditableProvider } from './use-editable-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<EditableRootProps>(), {
   autoResize: undefined,
   defaultEdit: undefined,

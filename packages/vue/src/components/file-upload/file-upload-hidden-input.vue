@@ -12,10 +12,10 @@ export interface FileUploadHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useFileUploadContext } from './use-file-upload-context'
-import { useFieldContext } from '../field'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { useFieldContext } from '../field'
+import { useFileUploadContext } from './use-file-upload-context'
 
 defineProps<FileUploadHiddenInputProps>()
 const fileUpload = useFileUploadContext()

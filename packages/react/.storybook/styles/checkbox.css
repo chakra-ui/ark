@@ -28,7 +28,6 @@
   }
 }
 
-
 [data-scope='checkbox'][data-part='indicator']:not([hidden]) {
   display: flex;
   align-items: center;

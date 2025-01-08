@@ -12,9 +12,9 @@ export interface CollapsibleContentProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useCollapsibleContext } from './use-collapsible-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<CollapsibleContentProps>()
 const collapsible = useCollapsibleContext()

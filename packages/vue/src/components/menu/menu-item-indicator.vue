@@ -12,10 +12,10 @@ export interface MenuItemIndicatorProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<MenuItemIndicatorProps>()
 

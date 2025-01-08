@@ -12,10 +12,10 @@ export interface FileUploadItemNameProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadItemNameProps>()
 const fileUpload = useFileUploadContext()

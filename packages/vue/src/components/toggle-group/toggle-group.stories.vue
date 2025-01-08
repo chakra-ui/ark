@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import InitialValue from './examples/initial-value.vue'
 import Multiple from './examples/multiple.vue'
+import RootProvider from './examples/root-provider.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>

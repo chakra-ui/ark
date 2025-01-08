@@ -6,11 +6,11 @@ const meta: Meta = {
 
 export default meta
 
-export { Basic } from './examples/linear/basic'
 export { Controlled } from './examples/circular/controlled'
 export { RootProvider } from './examples/circular/root-provider'
+export { Basic } from './examples/linear/basic'
+export { Indeterminate } from './examples/linear/indeterminate'
 export { InitialValue } from './examples/linear/initial-value'
 export { MinMax } from './examples/linear/min-max'
-export { Indeterminate } from './examples/linear/indeterminate'
 export { ValueText } from './examples/linear/value-text'
 export { Vertical } from './examples/linear/vertical'

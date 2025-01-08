@@ -12,9 +12,9 @@ export interface DialogCloseTriggerProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<DialogCloseTriggerProps>()
 const dialog = useDialogContext()

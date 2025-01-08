@@ -12,11 +12,10 @@ export interface ColorPickerPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps, useForwardExpose } from '../../utils'
-import { PresenceProvider, usePresence } from '../presence'
+imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
+import { PresenceProvider,usePresence } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
-
-defineProps<ColorPickerPositionerProps>()
+efineProps<ColorPickerPositionerProps>()
 const colorPicker = useColorPickerContext()
 const renderStrategy = useRenderStrategyProps()
 

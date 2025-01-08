@@ -12,12 +12,10 @@ export interface DatePickerPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils'
-import { PresenceProvider, usePresence } from '../presence'
+imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
+import { PresenceProvider,usePresence } from '../presence'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils'
-
-defineProps<DatePickerPositionerProps>()
+efineProps<DatePickerPositionerProps>()
 const datePicker = useDatePickerContext()
 const renderStrategy = useRenderStrategyProps()
 

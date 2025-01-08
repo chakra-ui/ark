@@ -8,7 +8,9 @@
     "start": "next start",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "db:reset": "prisma db push --force-reset"
+    "db:reset": "prisma db push --force-reset",
+    "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
+    "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env"
   },
   "dependencies": {
     "@ark-ui/react": "workspace:*",

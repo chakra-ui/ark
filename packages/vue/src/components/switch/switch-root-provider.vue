@@ -17,11 +17,10 @@ export interface SwitchRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { SwitchProvider } from './use-switch-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<SwitchRootProviderProps>()
 const api = computed(() => props.value)
 

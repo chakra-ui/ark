@@ -19,11 +19,11 @@ export type MenuRadioItemGroupEmits = {
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
 import { computed, useId } from 'vue'
+import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()

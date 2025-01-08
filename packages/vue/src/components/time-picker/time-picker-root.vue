@@ -15,12 +15,11 @@ export interface TimePickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { computed, type HTMLAttributes } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+iimport { computed,type HTMLAttributes } from 'vue'
+import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimePicker } from './use-time-picker'
 import { TimePickerProvider } from './use-time-picker-context'
-
 const props = withDefaults(defineProps<TimePickerRootProps>(), {
   allowSeconds: undefined,
   disabled: undefined,

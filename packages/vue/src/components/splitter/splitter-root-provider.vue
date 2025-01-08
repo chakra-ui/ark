@@ -17,11 +17,10 @@ export interface SplitterRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { SplitterProvider } from './use-splitter-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<SplitterRootProviderProps>()
 
 const splitter = computed(() => props.value)

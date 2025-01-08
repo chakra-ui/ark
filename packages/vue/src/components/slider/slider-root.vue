@@ -15,11 +15,10 @@ export interface SliderRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<SliderRootProps>(), {
   disabled: undefined,
   invalid: undefined,

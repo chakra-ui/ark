@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
+import { NumberInput } from '@ark-ui/vue/number-input' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { NumberInput } from '@ark-ui/vue/number-input'
 </script>
 

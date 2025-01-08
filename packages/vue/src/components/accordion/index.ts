@@ -5,8 +5,8 @@ export type {
 export { default as AccordionContext, type AccordionContextProps } from './accordion-context.vue'
 export {
   default as AccordionItemContent,
-  type AccordionItemContentProps,
   type AccordionItemContentBaseProps,
+  type AccordionItemContentProps,
 } from './accordion-item-content.vue'
 export {
   default as AccordionItemContext,
@@ -14,33 +14,33 @@ export {
 } from './accordion-item-context.vue'
 export {
   default as AccordionItemIndicator,
-  type AccordionItemIndicatorProps,
   type AccordionItemIndicatorBaseProps,
+  type AccordionItemIndicatorProps,
 } from './accordion-item-indicator.vue'
 export {
   default as AccordionItemTrigger,
-  type AccordionItemTriggerProps,
   type AccordionItemTriggerBaseProps,
+  type AccordionItemTriggerProps,
 } from './accordion-item-trigger.vue'
 export {
   default as AccordionItem,
-  type AccordionItemProps,
   type AccordionItemBaseProps,
+  type AccordionItemProps,
 } from './accordion-item.vue'
 export {
   default as AccordionRootProvider,
-  type AccordionRootProviderProps,
   type AccordionRootProviderBaseProps,
+  type AccordionRootProviderProps,
 } from './accordion-root-provider.vue'
 export {
   default as AccordionRoot,
-  type AccordionRootEmits,
   type AccordionRootBaseProps,
+  type AccordionRootEmits,
   type AccordionRootProps,
 } from './accordion-root.vue'
+export { accordionAnatomy } from './accordion.anatomy'
 export { useAccordion, type UseAccordionProps, type UseAccordionReturn } from './use-accordion'
 export { useAccordionContext, type UseAccordionContext } from './use-accordion-context'
 export { useAccordionItemContext, type UseAccordionItemContext } from './use-accordion-item-context'
-export { accordionAnatomy } from './accordion.anatomy'
 
 export * as Accordion from './accordion'

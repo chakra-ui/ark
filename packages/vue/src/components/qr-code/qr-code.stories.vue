@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import ErrorCorrection from './examples/error-correction.vue'
 import RootProvider from './examples/root-provider.vue'
+import WithOverlay from './examples/with-overlay.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithOverlay from './examples/with-overlay.vue'
 </script>
 <template>

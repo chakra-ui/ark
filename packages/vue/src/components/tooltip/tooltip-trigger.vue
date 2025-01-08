@@ -12,9 +12,9 @@ export interface TooltipTriggerProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<TooltipTriggerProps>()
 const tooltip = useTooltipContext()

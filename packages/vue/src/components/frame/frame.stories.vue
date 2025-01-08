@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Script from './examples/script.vue'
+import SrcDoc from './examples/src-doc.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import SrcDoc from './examples/src-doc.vue'
 </script>
 

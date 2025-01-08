@@ -12,11 +12,8 @@
     "document:tags": "bun run src/extend-types-with-tags.ts",
     "release:prepare": "bun run src/release-prepare.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
-    "postvue:props": "bun biome format --write ../packages/vue/src/",
+    "postvue:props": "bun prettier --write ../packages/vue",
     "play": "bun run src/play.ts",
-    "format:vue": "prettier --write '../**/*.vue'",
-    "format:svelte": "prettier --write '../**/*.svelte'",
-    "format:mdx": "prettier --write '../**/CHANGELOG.md'",
     "local:sync": "bun run src/symlink.ts"
   },
   "dependencies": {
@@ -28,9 +25,6 @@
     "fs-extra": "11.2.0",
     "globby": "14.0.2",
     "pkg-dir": "8.0.0",
-    "prettier": "3.4.2",
-    "prettier-plugin-organize-imports": "4.1.0",
-    "prettier-plugin-svelte": "3.3.2",
     "ts-morph": "24.0.0",
     "ts-pattern": "5.6.0",
     "typescript": "5.7.2",

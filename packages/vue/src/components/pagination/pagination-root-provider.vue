@@ -17,11 +17,10 @@ export interface PaginationRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { PaginationProvider } from './use-pagination-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<PaginationRootProviderProps>()
 const pagination = computed(() => props.value)
 

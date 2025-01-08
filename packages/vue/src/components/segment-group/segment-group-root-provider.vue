@@ -17,12 +17,11 @@ export interface SegmentGroupRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { ark } from '../factory'
-import { SegmentGroupProvider } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
+iimport { computed } from 'vue'
 import { useForwardExpose } from '../../utils'
-
+import { ark } from '../factory'
+import { parts } from './segment-group.anatomy'
+import { SegmentGroupProvider } from './use-segment-group-context'
 const props = defineProps<SegmentGroupRootProviderProps>()
 const segmentGroup = computed(() => props.value)
 

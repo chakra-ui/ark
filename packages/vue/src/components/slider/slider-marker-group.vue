@@ -12,9 +12,9 @@ export interface SliderMarkerGroupProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<SliderMarkerGroupProps>()
 const slider = useSliderContext()

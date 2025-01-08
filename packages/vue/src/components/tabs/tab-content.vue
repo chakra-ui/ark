@@ -13,10 +13,9 @@ export interface TabContentProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
-import { useRenderStrategyProps } from '../../utils'
-import { useTabsContext } from './use-tabs-context'
+import { useForwardExpose, useRenderStrategyProps } from '../../utils'
 import { Presence } from '../presence'
+import { useTabsContext } from './use-tabs-context'
 
 const props = defineProps<TabContentProps>()
 const tabs = useTabsContext()

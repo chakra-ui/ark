@@ -14,10 +14,9 @@ export interface TooltipContentProps
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTooltipContext } from './use-tooltip-context'
-import { useForwardExpose } from '../../utils'
-
 defineProps<TooltipContentProps>()
 
 const tooltip = useTooltipContext()

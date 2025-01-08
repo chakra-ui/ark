@@ -14,10 +14,7 @@ export {
   type SelectContentBaseProps,
   type SelectContentProps,
 } from './select-content'
-export {
-  SelectContext,
-  type SelectContextProps,
-} from './select-context'
+export { SelectContext, type SelectContextProps } from './select-context'
 export {
   SelectControl,
   type SelectControlBaseProps,
@@ -33,15 +30,8 @@ export {
   type SelectIndicatorBaseProps,
   type SelectIndicatorProps,
 } from './select-indicator'
-export {
-  SelectItem,
-  type SelectItemBaseProps,
-  type SelectItemProps,
-} from './select-item'
-export {
-  SelectItemContext,
-  type SelectItemContextProps,
-} from './select-item-context'
+export { SelectItem, type SelectItemBaseProps, type SelectItemProps } from './select-item'
+export { SelectItemContext, type SelectItemContextProps } from './select-item-context'
 export {
   SelectItemGroup,
   type SelectItemGroupBaseProps,
@@ -62,26 +52,14 @@ export {
   type SelectItemTextBaseProps,
   type SelectItemTextProps,
 } from './select-item-text'
-export {
-  SelectLabel,
-  type SelectLabelBaseProps,
-  type SelectLabelProps,
-} from './select-label'
-export {
-  SelectList,
-  type SelectListBaseProps,
-  type SelectListProps,
-} from './select-list'
+export { SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label'
+export { SelectList, type SelectListBaseProps, type SelectListProps } from './select-list'
 export {
   SelectPositioner,
   type SelectPositionerBaseProps,
   type SelectPositionerProps,
 } from './select-positioner'
-export {
-  SelectRoot,
-  type SelectRootBaseProps,
-  type SelectRootProps,
-} from './select-root'
+export { SelectRoot, type SelectRootBaseProps, type SelectRootProps } from './select-root'
 export {
   SelectRootProvider,
   type SelectRootProviderBaseProps,

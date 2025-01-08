@@ -12,9 +12,9 @@ export interface FieldsetHelperTextProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useFieldsetContext } from './use-fieldset-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<FieldsetHelperTextProps>()
 const fieldset = useFieldsetContext()

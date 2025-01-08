@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
 import { RatingGroup } from '@ark-ui/vue/rating-group'
+import { StarIcon } from 'lucide-vue-next' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { StarIcon } from 'lucide-vue-next'
 </script>
 

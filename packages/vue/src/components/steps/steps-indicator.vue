@@ -12,10 +12,10 @@ export interface StepsIndicatorProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { useStepsItemPropsContext } from './use-steps-item-props-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<StepsIndicatorProps>()
 const steps = useStepsContext()

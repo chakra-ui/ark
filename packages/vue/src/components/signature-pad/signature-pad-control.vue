@@ -12,9 +12,9 @@ export interface SignaturePadControlProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<SignaturePadControlProps>()
 const signaturePad = useSignaturePadContext()

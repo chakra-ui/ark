@@ -1,6 +1,6 @@
-import { basename, dirname } from 'node:path'
 import { copyFileSync } from 'fs-extra'
 import { globby } from 'globby'
+import { basename, dirname } from 'node:path'
 
 const main = async () => {
   const files = await globby(['../packages/react/src/components/*/index.ts'], {})

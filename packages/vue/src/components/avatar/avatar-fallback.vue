@@ -12,8 +12,8 @@ export interface AvatarFallbackProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 import { useAvatarContext } from './use-avatar-context'
 
 defineProps<AvatarFallbackProps>()

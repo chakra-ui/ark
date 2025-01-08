@@ -13,9 +13,9 @@ export interface AccordionItemTriggerProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
-import { computed } from 'vue'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 

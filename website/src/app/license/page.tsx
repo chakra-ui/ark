@@ -1,10 +1,10 @@
+import { pages } from '.velite'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Container, Stack } from 'styled-system/jsx'
 import { PageHeader } from '~/components/page-header'
 import { Prose } from '~/components/ui/prose'
 import { MDXContent } from '~/mdx-content'
-import { pages } from '.velite'
 
 export default function Page() {
   const page = getPageById('license')

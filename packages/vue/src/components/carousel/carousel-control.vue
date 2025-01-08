@@ -13,8 +13,8 @@ export interface CarouselControlProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 
 defineProps<CarouselControlProps>()
 const carousel = useCarouselContext()

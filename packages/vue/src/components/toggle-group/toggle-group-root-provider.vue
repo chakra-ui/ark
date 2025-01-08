@@ -17,11 +17,10 @@ export interface ToggleGroupRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { ToggleGroupProvider } from './use-toggle-group-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<ToggleGroupRootProviderProps>()
 const toggleGroup = computed(() => props.value)
 

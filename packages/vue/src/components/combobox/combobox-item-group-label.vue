@@ -12,10 +12,10 @@ export interface ComboboxItemGroupLabelProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<ComboboxItemGroupLabelProps>()
 const combobox = useComboboxContext()

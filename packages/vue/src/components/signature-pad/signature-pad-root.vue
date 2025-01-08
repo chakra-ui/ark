@@ -15,11 +15,10 @@ export interface SignaturePadRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSignaturePad } from './use-signature-pad'
 import { SignaturePadProvider } from './use-signature-pad-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<SignaturePadRootBaseProps>(), {
   readOnly: undefined,
   disabled: undefined,

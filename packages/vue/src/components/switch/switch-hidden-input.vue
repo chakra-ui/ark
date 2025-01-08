@@ -12,10 +12,10 @@ export interface SwitchHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSwitchContext } from './use-switch-context'
-import { useFieldContext } from '../field'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { useFieldContext } from '../field'
+import { useSwitchContext } from './use-switch-context'
 
 defineProps<SwitchHiddenInputProps>()
 

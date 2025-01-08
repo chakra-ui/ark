@@ -14,11 +14,11 @@ export interface MenuItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
 import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
-import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuItemProps>(), {
   disabled: undefined,

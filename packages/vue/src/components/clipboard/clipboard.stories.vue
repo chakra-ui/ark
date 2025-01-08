@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import RenderFn from './examples/render-fn.vue'
+import RootProvider from './examples/root-provider.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>

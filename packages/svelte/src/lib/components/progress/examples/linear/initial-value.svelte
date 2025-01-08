@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Progress } from '@ark-ui/svelte/progress'
+  import { Progress } from '@ark-ui/svelte/progress'
 </script>
 
 <Progress.Root defaultValue={70}>

@@ -19,7 +19,6 @@
     height: 0;
   }
 }
-  
 
 [data-scope='accordion'][data-part='item-indicator'][data-state='open'] {
   rotate: 90deg;
@@ -36,18 +35,17 @@
   height: 1em;
 }
 
-  
-[data-scope="accordion"][data-part="item-content"] {
+[data-scope='accordion'][data-part='item-content'] {
   overflow: hidden;
   max-width: 400px;
   background-color: cadetblue;
-  color:white;
+  color: white;
 }
 
-[data-scope="accordion"][data-part="item-content"][data-state="open"] {
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
   animation: slideDown 250ms cubic-bezier(0, 0, 0.38, 0.9);
 }
 
-[data-scope="accordion"][data-part="item-content"][data-state="closed"] {
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
   animation: slideUp 200ms cubic-bezier(0, 0, 0.38, 0.9);
 }

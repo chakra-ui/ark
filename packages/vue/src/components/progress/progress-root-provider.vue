@@ -17,10 +17,9 @@ export interface ProgressRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
 import { ark } from '../factory'
 import { ProgressProvider } from './use-progress-context'
-
 const props = defineProps<ProgressRootProviderProps>()
 const progress = computed(() => props.value)
 

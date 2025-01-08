@@ -14,12 +14,12 @@ export interface SegmentGroupItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
-import { SegmentGroupItemProvider } from './use-segment-group-item-context'
-import { ark } from '../factory'
-import { useSegmentGroupContext } from './use-segment-group-context'
-import { parts } from './segment-group.anatomy'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { parts } from './segment-group.anatomy'
+import { useSegmentGroupContext } from './use-segment-group-context'
+import { SegmentGroupItemProvider } from './use-segment-group-item-context'
+import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
 
 const props = defineProps<SegmentGroupItemProps>()
 const segmentGroup = useSegmentGroupContext()

@@ -5,22 +5,22 @@ export {
 } from './splitter-context.vue'
 export {
   default as Panel,
-  type SplitterPanelProps as PanelProps,
   type SplitterPanelBaseProps as PanelBaseProps,
+  type SplitterPanelProps as PanelProps,
 } from './splitter-panel.vue'
 export {
   default as ResizeTrigger,
-  type SplitterResizeTriggerProps as ResizeTriggerProps,
   type SplitterResizeTriggerBaseProps as ResizeTriggerBaseProps,
+  type SplitterResizeTriggerProps as ResizeTriggerProps,
 } from './splitter-resize-trigger.vue'
 export {
   default as RootProvider,
-  type SplitterRootProviderProps as RootProviderProps,
   type SplitterRootProviderBaseProps as RootProviderBaseProps,
+  type SplitterRootProviderProps as RootProviderProps,
 } from './splitter-root-provider.vue'
 export {
   default as Root,
-  type SplitterRootEmits as RootEmits,
   type SplitterRootBaseProps as RootBaseProps,
+  type SplitterRootEmits as RootEmits,
   type SplitterRootProps as RootProps,
 } from './splitter-root.vue'

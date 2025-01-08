@@ -15,9 +15,9 @@ export interface CheckboxIndicatorProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<CheckboxIndicatorProps>()
 const checkbox = useCheckboxContext()

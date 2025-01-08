@@ -5,6 +5,7 @@ import Controlled from './examples/controlled.vue'
 import Multiple from './examples/multiple.vue'
 import ReactiveCollection from './examples/reactive-collection.vue'
 import RootProvider from './examples/root-provider.vue'
+import WithField from './examples/with-field.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithField from './examples/with-field.vue'
 </script>
 

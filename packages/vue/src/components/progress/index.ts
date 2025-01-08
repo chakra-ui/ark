@@ -32,8 +32,8 @@ export {
 export {
   default as ProgressRoot,
   type ProgressRootBaseProps,
-  type ProgressRootProps,
   type ProgressRootEmits,
+  type ProgressRootProps,
 } from './progress-root.vue'
 export {
   default as ProgressTrack,

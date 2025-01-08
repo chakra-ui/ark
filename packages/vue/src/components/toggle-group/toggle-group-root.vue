@@ -15,10 +15,9 @@ export interface ToggleGroupRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
+iimport { ark } from '../factory'
 import { useToggleGroup } from './use-toggle-group'
 import { ToggleGroupProvider } from './use-toggle-group-context'
-
 const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   disabled: undefined,
   loopFocus: undefined,

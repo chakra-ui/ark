@@ -13,9 +13,9 @@ export interface TimerItemProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimerContext } from './use-timer-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TimerItemProps>()
 const timer = useTimerContext()

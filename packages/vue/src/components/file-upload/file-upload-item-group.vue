@@ -12,9 +12,9 @@ export interface FileUploadItemGroupProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadItemGroupProps>()
 const fileUpload = useFileUploadContext()

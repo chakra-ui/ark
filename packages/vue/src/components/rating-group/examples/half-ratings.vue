@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RatingGroup } from '@ark-ui/vue/rating-group'
+import { StarHalfIcon, StarIcon } from 'lucide-vue-next' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { StarHalfIcon, StarIcon } from 'lucide-vue-next'
 </script>
 

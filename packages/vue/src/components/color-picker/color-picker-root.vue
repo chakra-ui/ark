@@ -19,12 +19,11 @@ export interface ColorPickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { computed } from 'vue'
+import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
-import { computed } from 'vue'
-
 const props = withDefaults(defineProps<ColorPickerRootProps>(), {
   closeOnSelect: undefined,
   defaultOpen: undefined,

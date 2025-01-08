@@ -14,11 +14,10 @@ export interface ClipboardRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useClipboard } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<ClipboardRootProps>()
 const emits = defineEmits<ClipboardRootEmits>()
 

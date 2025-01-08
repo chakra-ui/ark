@@ -12,10 +12,10 @@ export interface SelectItemGroupLabelProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<SelectItemGroupLabelProps>()
 

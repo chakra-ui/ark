@@ -15,11 +15,10 @@ export interface SwitchRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<SwitchRootProps>(), {
   checked: undefined,
   defaultChecked: undefined,

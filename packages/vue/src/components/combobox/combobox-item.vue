@@ -13,12 +13,12 @@ export interface ComboboxItemProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
 import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemProvider } from './use-combobox-item-context'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ComboboxItemProps>()
 const combobox = useComboboxContext()

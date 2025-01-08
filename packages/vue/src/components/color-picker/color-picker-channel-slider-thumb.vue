@@ -13,11 +13,11 @@ export interface ColorPickerChannelSliderThumbProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ark } from '../factory'
-import { useColorPickerContext } from './use-color-picker-context'
-import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
-import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
+import { useColorPickerContext } from './use-color-picker-context'
+import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
 defineProps<ColorPickerChannelSliderThumbProps>()
 const colorPicker = useColorPickerContext()

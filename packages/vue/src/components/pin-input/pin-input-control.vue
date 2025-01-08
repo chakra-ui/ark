@@ -12,9 +12,9 @@ export interface PinInputControlProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { usePinInputContext } from './use-pin-input-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<PinInputControlProps>()
 const pinInput = usePinInputContext()

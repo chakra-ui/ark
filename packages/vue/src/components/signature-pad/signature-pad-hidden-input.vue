@@ -13,10 +13,10 @@ export interface SignaturePadHiddenInputProps
 </script>
 
 <script setup lang="ts">
-import { ark } from '../factory'
-import { useSignaturePadContext } from './use-signature-pad-context'
-import { useFieldContext } from '../field'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
+import { useFieldContext } from '../field'
+import { useSignaturePadContext } from './use-signature-pad-context'
 
 const props = defineProps<SignaturePadHiddenInputProps>()
 const signaturePad = useSignaturePadContext()

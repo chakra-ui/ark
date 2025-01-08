@@ -5,6 +5,7 @@ import Indeterminate from './examples/circular/indeterminate.vue'
 import InitialValue from './examples/circular/initial-value.vue'
 import MinMax from './examples/circular/min-max.vue'
 import RootProvider from './examples/circular/root-provider.vue'
+import ValueText from './examples/circular/value-text.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import ValueText from './examples/circular/value-text.vue'
 </script>
 <template>

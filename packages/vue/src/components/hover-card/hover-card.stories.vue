@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Positioning from './examples/positioning.vue'
 import RenderProp from './examples/render-prop.vue'
+import RootProvider from './examples/root-provider.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>

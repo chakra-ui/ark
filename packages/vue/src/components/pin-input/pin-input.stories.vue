@@ -6,6 +6,7 @@ import InitialValue from './examples/initial-value.vue'
 import OTPMode from './examples/otp-mode.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
+import WithMask from './examples/with-mask.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithMask from './examples/with-mask.vue'
 </script>
 <template>

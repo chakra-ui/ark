@@ -14,7 +14,7 @@ export interface AccordionItemProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRenderStrategyProps, useForwardExpose } from '../../utils'
+import { useForwardExpose, useRenderStrategyProps } from '../../utils'
 import { Collapsible } from '../collapsible'
 import { useAccordionContext } from './use-accordion-context'
 import { AccordionItemProvider } from './use-accordion-item-context'

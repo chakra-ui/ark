@@ -4,6 +4,7 @@ import LazyMountAndUnmountOnExit from './examples/lazy-mount-and-unmount-on-exit
 import LazyMount from './examples/lazy-mount.vue'
 import OnExitComplete from './examples/on-exit-complete.vue'
 import RootProvider from './examples/root-provider.vue'
+import UnMountOnExit from './examples/unmount-on-exit.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import UnMountOnExit from './examples/unmount-on-exit.vue'
 </script>
 

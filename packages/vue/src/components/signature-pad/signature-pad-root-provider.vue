@@ -17,11 +17,10 @@ export interface SignaturePadRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { SignaturePadProvider } from './use-signature-pad-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<SignaturePadRootProviderProps>()
 const signaturePad = computed(() => props.value)
 

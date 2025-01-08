@@ -15,11 +15,10 @@ export interface CheckboxRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
-import { useForwardExpose } from '../../utils'
-
 const props = withDefaults(defineProps<CheckboxRootProps>(), {
   checked: undefined,
   defaultChecked: undefined,

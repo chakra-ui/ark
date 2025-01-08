@@ -1,4 +1,5 @@
 'use client'
+import type { Pages } from '.velite'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { useParams } from 'next/navigation'
@@ -6,7 +7,6 @@ import { css, cva, cx } from 'styled-system/css'
 import { HStack, Stack } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
-import type { Pages } from '.velite'
 
 interface Props {
   prevPage?: Pages

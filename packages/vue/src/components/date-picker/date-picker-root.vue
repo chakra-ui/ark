@@ -16,12 +16,11 @@ export interface DatePickerRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+iimport { computed } from 'vue'
+import { RenderStrategyPropsProvider,useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
-
 const props = withDefaults(defineProps<DatePickerRootProps>(), {
   closeOnSelect: undefined,
   defaultOpen: undefined,

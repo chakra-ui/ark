@@ -24,10 +24,7 @@ export {
   type TimePickerContentBaseProps,
   type TimePickerContentProps,
 } from './time-picker-content'
-export {
-  TimePickerContext,
-  type TimePickerContextProps,
-} from './time-picker-context'
+export { TimePickerContext, type TimePickerContextProps } from './time-picker-context'
 export {
   TimePickerControl,
   type TimePickerControlBaseProps,

@@ -1,8 +1,5 @@
 pre-commit:
   commands:
-    check:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,vue}"
-      run: bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index --again
-
-
-      
+    format:
+      glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,vue}'
+      run: bun prettier {staged_files} --ignore-unknown --write

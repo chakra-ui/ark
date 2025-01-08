@@ -14,10 +14,10 @@ export interface FieldRootProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useField } from './use-field'
 import { FieldProvider } from './use-field-context'
-import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<FieldRootProps>(), {
   disabled: undefined,

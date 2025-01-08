@@ -7,6 +7,7 @@ import InitialTab from './examples/initial-tab.vue'
 import LazyMount from './examples/lazy-mount.vue'
 import Manual from './examples/manual.vue'
 import RootProvider from './examples/root-provider.vue'
+import Vertical from './examples/vertical.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import Vertical from './examples/vertical.vue'
 </script>
 <template>

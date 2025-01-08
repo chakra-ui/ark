@@ -12,11 +12,10 @@ export interface PopoverPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps, useForwardExpose } from '../../utils'
-import { PresenceProvider, usePresence } from '../presence'
+imimport { useForwardExpose,useRenderStrategyProps } from '../../utils'
+import { PresenceProvider,usePresence } from '../presence'
 import { usePopoverContext } from './use-popover-context'
-
-defineProps<PopoverPositionerProps>()
+efineProps<PopoverPositionerProps>()
 
 const popover = usePopoverContext()
 const renderStrategy = useRenderStrategyProps()

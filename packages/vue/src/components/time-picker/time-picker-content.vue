@@ -14,10 +14,9 @@ export interface TimePickerContentProps
 </script>
 
 <script setup lang="ts">
+iimport { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
-import { useForwardExpose } from '../../utils'
-
 defineProps<TimePickerContentProps>()
 
 const timePicker = useTimePickerContext()

@@ -17,11 +17,10 @@ export interface TimerRootProviderProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+iimport { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { TimerProvider } from './use-timer-context'
-import { useForwardExpose } from '../../utils'
-
 const props = defineProps<TimerRootProviderProps>()
 const timer = computed(() => props.value)
 

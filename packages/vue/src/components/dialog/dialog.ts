@@ -1,48 +1,48 @@
 export type { OpenChangeDetails } from '@zag-js/dialog'
 export {
   default as Backdrop,
-  type DialogBackdropProps as BackdropProps,
   type DialogBackdropBaseProps as BackdropBaseProps,
+  type DialogBackdropProps as BackdropProps,
 } from './dialog-backdrop.vue'
 export {
   default as CloseTrigger,
-  type DialogCloseTriggerProps as CloseTriggerProps,
   type DialogCloseTriggerBaseProps as CloseTriggerBaseProps,
+  type DialogCloseTriggerProps as CloseTriggerProps,
 } from './dialog-close-trigger.vue'
 export {
   default as Content,
-  type DialogContentProps as ContentProps,
   type DialogContentBaseProps as ContentBaseProps,
+  type DialogContentProps as ContentProps,
 } from './dialog-content.vue'
 export { default as Context, type DialogContextProps as ContextProps } from './dialog-context.vue'
 export {
   default as Description,
-  type DialogDescriptionProps as DescriptionProps,
   type DialogDescriptionBaseProps as DescriptionBaseProps,
+  type DialogDescriptionProps as DescriptionProps,
 } from './dialog-description.vue'
 export {
   default as Positioner,
-  type DialogPositionerProps as PositionerProps,
   type DialogPositionerBaseProps as PositionerBaseProps,
+  type DialogPositionerProps as PositionerProps,
 } from './dialog-positioner.vue'
 export {
   default as RootProvider,
-  type DialogRootProviderProps as RootProviderProps,
   type DialogRootProviderBaseProps as RootProviderBaseProps,
+  type DialogRootProviderProps as RootProviderProps,
 } from './dialog-root-provider.vue'
 export {
   default as Root,
-  type DialogRootEmits as RootEmits,
   type DialogRootBaseProps as RootBaseProps,
+  type DialogRootEmits as RootEmits,
   type DialogRootProps as RootProps,
 } from './dialog-root.vue'
 export {
   default as Title,
-  type DialogTitleProps as TitleProps,
   type DialogTitleBaseProps as TitleBaseProps,
+  type DialogTitleProps as TitleProps,
 } from './dialog-title.vue'
 export {
   default as Trigger,
-  type DialogTriggerProps as TriggerProps,
   type DialogTriggerBaseProps as TriggerBaseProps,
+  type DialogTriggerProps as TriggerProps,
 } from './dialog-trigger.vue'

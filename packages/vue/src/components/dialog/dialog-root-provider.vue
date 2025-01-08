@@ -13,9 +13,8 @@ export interface DialogRootProviderProps extends DialogRootProviderBaseProps {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
 import { DialogProvider } from './use-dialog-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<DialogRootProviderProps>()
 const dialog = computed(() => props.value)

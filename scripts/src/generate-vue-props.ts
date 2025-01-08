@@ -1,5 +1,5 @@
-import { parse } from 'node:path'
 import { globby } from 'globby'
+import { parse } from 'node:path'
 import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
 import { chain } from 'voca'
 

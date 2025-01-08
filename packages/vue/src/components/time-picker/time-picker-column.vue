@@ -14,9 +14,9 @@ export interface TimePickerColumnProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<TimePickerColumnProps>()
 

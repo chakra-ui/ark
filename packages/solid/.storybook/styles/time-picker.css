@@ -2,7 +2,7 @@
   display: none !important;
 }
 
-[data-scope="time-picker"][data-part="content"] {
+[data-scope='time-picker'][data-part='content'] {
   border: 1px solid gray;
   background: white;
   border-radius: 8px;
@@ -11,7 +11,7 @@
   max-height: 200px;
 }
 
-[data-scope="time-picker"][data-part="column"] {
+[data-scope='time-picker'][data-part='column'] {
   display: flex;
   gap: 4px;
   flex-direction: column;
@@ -33,13 +33,13 @@
   }
 }
 
-[data-scope="time-picker"][data-part="spacer"] {
+[data-scope='time-picker'][data-part='spacer'] {
   display: block;
   flex-shrink: 0;
   height: calc(100% - 36px);
 }
 
-[data-scope="time-picker"][data-part="cell"] {
+[data-scope='time-picker'][data-part='cell'] {
   background: none;
   border: none;
   padding: 8px;

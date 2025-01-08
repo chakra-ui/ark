@@ -8,6 +8,7 @@ import OnEvent from './examples/on-event.vue'
 import RootProvider from './examples/root-provider.vue'
 import Step from './examples/step.vue'
 import Vertical from './examples/vertical.vue'
+import WithMarks from './examples/with-marks.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import WithMarks from './examples/with-marks.vue'
 </script>
 <template>

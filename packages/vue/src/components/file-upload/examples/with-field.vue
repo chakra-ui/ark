@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Field } from '@ark-ui/vue/field'
+import { FileUpload } from '@ark-ui/vue/file-upload' /* PartiallyEnd: #3632/scriptSetup.vue */
 import { FileUpload } from '@ark-ui/vue/file-upload'
 </script>
 

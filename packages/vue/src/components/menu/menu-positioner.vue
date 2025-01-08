@@ -13,11 +13,10 @@ export interface MenuPositionerProps
 </script>
 
 <script setup lang="ts">
-import { PresenceProvider, usePresence } from '../presence'
+imimport { useForwardExpose } from '../../utils'
+import { PresenceProvider,usePresence } from '../presence'
 import { useMenuContext } from './use-menu-context'
-import { useForwardExpose } from '../../utils'
-
-defineProps<MenuPositionerProps>()
+efineProps<MenuPositionerProps>()
 
 const menu = useMenuContext()
 const renderStrategy = useRenderStrategyProps()

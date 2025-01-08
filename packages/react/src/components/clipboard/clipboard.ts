@@ -5,41 +5,41 @@ export {
 } from './clipboard-context'
 export {
   ClipboardControl as Control,
-  type ClipboardControlProps as ControlProps,
   type ClipboardControlBaseProps as ControlBaseProps,
+  type ClipboardControlProps as ControlProps,
 } from './clipboard-control'
 export {
   ClipboardIndicator as Indicator,
-  type ClipboardIndicatorProps as IndicatorProps,
   type ClipboardIndicatorBaseProps as IndicatorBaseProps,
+  type ClipboardIndicatorProps as IndicatorProps,
 } from './clipboard-indicator'
 export {
   ClipboardInput as Input,
-  type ClipboardInputProps as InputProps,
   type ClipboardInputBaseProps as InputBaseProps,
+  type ClipboardInputProps as InputProps,
 } from './clipboard-input'
 export {
   ClipboardLabel as Label,
-  type ClipboardLabelProps as LabelProps,
   type ClipboardLabelBaseProps as LabelBaseProps,
+  type ClipboardLabelProps as LabelProps,
 } from './clipboard-label'
 export {
   ClipboardRoot as Root,
-  type ClipboardRootProps as RootProps,
   type ClipboardRootBaseProps as RootBaseProps,
+  type ClipboardRootProps as RootProps,
 } from './clipboard-root'
 export {
   ClipboardRootProvider as RootProvider,
-  type ClipboardRootProviderProps as RootProviderProps,
   type ClipboardRootProviderBaseProps as RootProviderBaseProps,
+  type ClipboardRootProviderProps as RootProviderProps,
 } from './clipboard-root-provider'
 export {
   ClipboardTrigger as Trigger,
-  type ClipboardTriggerProps as TriggerProps,
   type ClipboardTriggerBaseProps as TriggerBaseProps,
+  type ClipboardTriggerProps as TriggerProps,
 } from './clipboard-trigger'
 export {
   ClipboardValueText as ValueText,
-  type ClipboardValueTextProps as ValueTextProps,
   type ClipboardValueTextBaseProps as ValueTextBaseProps,
+  type ClipboardValueTextProps as ValueTextProps,
 } from './clipboard-value-text'

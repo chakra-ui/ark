@@ -5,6 +5,7 @@ import Controlled from './examples/linear/controlled.vue'
 import Indeterminate from './examples/linear/indeterminate.vue'
 import InitialValue from './examples/linear/initial-value.vue'
 import MinMax from './examples/linear/min-max.vue'
+import ValueText from './examples/linear/value-text.vue' /* PartiallyEnd: #3632/scriptSetup.vue */
 import ValueText from './examples/linear/value-text.vue'
 </script>
 <template>
