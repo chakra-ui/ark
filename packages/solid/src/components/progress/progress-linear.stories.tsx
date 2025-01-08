@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/linear/basic'
+export { Controlled } from './examples/circular/controlled'
 export { RootProvider } from './examples/circular/root-provider'
 export { InitialValue } from './examples/linear/initial-value'
 export { MinMax } from './examples/linear/min-max'

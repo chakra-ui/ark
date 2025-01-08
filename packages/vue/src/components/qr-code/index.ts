@@ -1,6 +1,11 @@
 export type { QrCodeGenerateOptions, QrCodeGenerateResult } from '@zag-js/qr-code'
 export { default as QrCodeContext, type QrCodeContextProps } from './qr-code-context.vue'
 export {
+  default as QrCodeDownloadTrigger,
+  type QrCodeDownloadTriggerBaseProps,
+  type QrCodeDownloadTriggerProps,
+} from './qr-code-download-trigger.vue'
+export {
   default as QrCodeFrame,
   type QrCodeFrameBaseProps,
   type QrCodeFrameProps,
@@ -23,6 +28,7 @@ export {
 export {
   default as QrCodeRoot,
   type QrCodeRootBaseProps,
+  type QrCodeRootEmits,
   type QrCodeRootProps,
 } from './qr-code-root.vue'
 export { qrCodeAnatomy } from './qr-code.anatomy'

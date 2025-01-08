@@ -9,10 +9,12 @@ export interface ProgressRootProps extends HTMLProps<'div'>, ProgressRootBasePro
 
 export const ProgressRoot = (props: ProgressRootProps) => {
   const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
+    'defaultValue',
     'id',
     'ids',
     'max',
     'min',
+    'onValueChange',
     'orientation',
     'translations',
     'value',

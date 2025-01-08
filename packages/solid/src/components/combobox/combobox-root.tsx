@@ -41,6 +41,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'loopFocus',
     'multiple',
     'name',
+    'navigate',
     'onFocusOutside',
     'onHighlightChange',
     'onInputValueChange',

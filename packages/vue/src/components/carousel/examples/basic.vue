@@ -13,14 +13,10 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
     <Carousel.IndicatorGroup>
       <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx" />
     </Carousel.IndicatorGroup>
-      <Carousel.ItemGroup>
-        <Carousel.Item v-for="(image, idx) in images" :key="idx" :index="idx">
-          <img
-            :src="image"
-            alt=""
-            :style="{ height: '300px', width: '100%', objectFit: 'cover' }"
-          />
-        </Carousel.Item>
-      </Carousel.ItemGroup>
+    <Carousel.ItemGroup>
+      <Carousel.Item v-for="(image, idx) in images" :key="idx" :index="idx">
+        <img :src="image" alt="" :style="{ height: '300px', width: '100%', objectFit: 'cover' }" />
+      </Carousel.Item>
+    </Carousel.ItemGroup>
   </Carousel.Root>
 </template>

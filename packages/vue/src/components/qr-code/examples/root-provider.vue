@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { QrCode, useQrCode } from '@ark-ui/vue/qr-code'
 
-const qrCode = useQrCode({ value: 'http://ark-ui.com' })
+const qrCode = useQrCode({ defaultValue: 'http://ark-ui.com' })
 </script>
 
 <template>

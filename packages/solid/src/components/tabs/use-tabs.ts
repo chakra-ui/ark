@@ -25,7 +25,7 @@ export const useTabs = (props: UseTabsProps = {}): UseTabsReturn => {
     value: props.defaultValue,
     ...props,
   }))
-  const [state, send] = useMachine(tabs.machine(context()), { context })
 
+  const [state, send] = useMachine(tabs.machine(context()), { context })
   return createMemo(() => tabs.connect(state, send, normalizeProps))
 }

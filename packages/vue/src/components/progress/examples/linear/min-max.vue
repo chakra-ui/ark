@@ -3,7 +3,7 @@ import { Progress } from '@ark-ui/vue/progress'
 </script>
 
 <template>
-  <Progress.Root :value="20" :min="10" :max="30">
+  <Progress.Root :defaultValue="20" :min="10" :max="30">
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
     <Progress.Track>

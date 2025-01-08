@@ -1,7 +1,7 @@
 import { QrCode, useQrCode } from '@ark-ui/solid/qr-code'
 
 export const RootProvider = () => {
-  const qrCode = useQrCode({ value: 'http://ark-ui.com' })
+  const qrCode = useQrCode({ defaultValue: 'http://ark-ui.com' })
 
   return (
     <>

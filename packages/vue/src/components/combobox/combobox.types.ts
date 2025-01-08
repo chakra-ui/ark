@@ -107,6 +107,10 @@ export interface RootProps<T extends CollectionItem> {
    */
   name?: string
   /**
+   * Function to navigate to the selected item
+   */
+  navigate?: (details: combobox.NavigateDetails) => void
+  /**
    * Whether the combobox is open
    */
   open?: boolean

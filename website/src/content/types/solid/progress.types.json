@@ -51,6 +51,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "defaultValue": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The initial value of the progress when it is first rendered.\nUse when you do not need to control the state of the progress."
+      },
       "ids": {
         "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
         "isRequired": false,
@@ -67,6 +72,11 @@
         "defaultValue": "0",
         "isRequired": false,
         "description": "The minimum allowed value of the progress bar."
+      },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the value changes."
       },
       "orientation": {
         "type": "Orientation",
@@ -89,7 +99,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseProgressReturn", "isRequired": true },
+      "value": {
+        "type": "UseProgressReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -117,7 +130,10 @@
   },
   "View": {
     "props": {
-      "state": { "type": "ProgressState", "isRequired": true },
+      "state": {
+        "type": "ProgressState",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,

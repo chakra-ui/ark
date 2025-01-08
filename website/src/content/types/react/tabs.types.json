@@ -1,7 +1,11 @@
 {
   "TabContent": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the tab"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -32,7 +36,11 @@
   },
   "TabTrigger": {
     "props": {
-      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
+      "value": {
+        "type": "string",
+        "isRequired": true,
+        "description": "The value of the tab"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -96,6 +104,11 @@
         "isRequired": false,
         "description": "Whether the keyboard navigation will loop from last tab to first, and vice versa."
       },
+      "navigate": {
+        "type": "(details: NavigateDetails) => void",
+        "isRequired": false,
+        "description": "Function to navigate to the selected tab when clicking on it.\nUseful if tab triggers are anchor elements."
+      },
       "onFocusChange": {
         "type": "(details: FocusChangeDetails) => void",
         "isRequired": false,
@@ -123,13 +136,20 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The selected tab id"
+      }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTabsReturn", "isRequired": true },
+      "value": {
+        "type": "UseTabsReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

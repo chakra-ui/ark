@@ -1,17 +1,17 @@
 export {
   default as CircleRange,
-  type ProgressCircleRangeProps as CircleRangeProps,
   type ProgressCircleRangeBaseProps as CircleRangeBaseProps,
+  type ProgressCircleRangeProps as CircleRangeProps,
 } from './progress-circle-range.vue'
 export {
   default as CircleTrack,
-  type ProgressCircleTrackProps as CircleTrackProps,
   type ProgressCircleTrackBaseProps as CircleTrackBaseProps,
+  type ProgressCircleTrackProps as CircleTrackProps,
 } from './progress-circle-track.vue'
 export {
   default as Circle,
-  type ProgressCircleProps as CircleProps,
   type ProgressCircleBaseProps as CircleBaseProps,
+  type ProgressCircleProps as CircleProps,
 } from './progress-circle.vue'
 export {
   default as Context,
@@ -19,36 +19,37 @@ export {
 } from './progress-context.vue'
 export {
   default as Label,
-  type ProgressLabelProps as LabelProps,
   type ProgressLabelBaseProps as LabelBaseProps,
+  type ProgressLabelProps as LabelProps,
 } from './progress-label.vue'
 export {
   default as Range,
-  type ProgressRangeProps as RangeProps,
   type ProgressRangeBaseProps as RangeBaseProps,
+  type ProgressRangeProps as RangeProps,
 } from './progress-range.vue'
 export {
   default as RootProvider,
-  type ProgressRootProviderProps as RootProviderProps,
   type ProgressRootProviderBaseProps as RootProviderBaseProps,
+  type ProgressRootProviderProps as RootProviderProps,
 } from './progress-root-provider.vue'
 export {
   default as Root,
-  type ProgressRootProps as RootProps,
   type ProgressRootBaseProps as RootBaseProps,
+  type ProgressRootEmits as RootEmits,
+  type ProgressRootProps as RootProps,
 } from './progress-root.vue'
 export {
   default as Track,
-  type ProgressTrackProps as TrackProps,
   type ProgressTrackBaseProps as TrackBaseProps,
+  type ProgressTrackProps as TrackProps,
 } from './progress-track.vue'
 export {
   default as ValueText,
-  type ProgressValueTextProps as ValueTextProps,
   type ProgressValueTextBaseProps as ValueTextBaseProps,
+  type ProgressValueTextProps as ValueTextProps,
 } from './progress-value-text.vue'
 export {
   default as View,
-  type ProgressViewProps as ViewProps,
   type ProgressViewBaseProps as ViewBaseProps,
+  type ProgressViewProps as ViewProps,
 } from './progress-view.vue'

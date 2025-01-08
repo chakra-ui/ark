@@ -30,6 +30,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'id',
     'ids',
     'loopFocus',
+    'navigate',
     'onEscapeKeyDown',
     'onFocusOutside',
     'onHighlightChange',

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Controlled from './examples/controlled.vue'
 import ErrorCorrection from './examples/error-correction.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithOverlay from './examples/with-overlay.vue'
@@ -8,6 +9,9 @@ import WithOverlay from './examples/with-overlay.vue'
   <Story title="QR Code">
     <Variant title="Basic">
       <Basic />
+    </Variant>
+    <Variant title="Controlled">
+      <Controlled />
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />

@@ -9,9 +9,11 @@ export interface QrCodeRootProps extends HTMLProps<'div'>, QrCodeRootBaseProps {
 
 export const QrCodeRoot = (props: QrCodeRootProps) => {
   const [useQrCodeProps, restProps] = createSplitProps<UseQrCodeProps>()(props, [
+    'defaultValue',
     'encoding',
     'id',
     'ids',
+    'onValueChange',
     'value',
   ])
 

@@ -24,6 +24,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'id',
     'ids',
     'loopFocus',
+    'navigate',
     'onFocusChange',
     'onValueChange',
     'orientation',

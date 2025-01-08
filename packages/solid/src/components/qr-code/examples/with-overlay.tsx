@@ -2,7 +2,7 @@ import { QrCode } from '@ark-ui/solid/qr-code'
 
 export const WithOverlay = () => {
   return (
-    <QrCode.Root value="http://ark-ui.com">
+    <QrCode.Root defaultValue="http://ark-ui.com">
       <QrCode.Frame>
         <QrCode.Pattern />
       </QrCode.Frame>
