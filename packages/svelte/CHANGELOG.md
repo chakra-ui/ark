@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-01-08
+
 - Added `Format` component.
 - Added `Progress` component.
 
