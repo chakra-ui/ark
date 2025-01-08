@@ -8,18 +8,24 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
+- **Clipboard**: Introduced `Clipboard.ValueText` to display clipboard content.
 - **FileUpload**:  
-  - Introduced the `preventDropOnDocument` property to block file drops on the document while using the file upload component. Enabled by default.  
-  - Added `setClipboardFiles` to the `FileUpload` API, allowing files to be set from clipboard data.  
-- **Clipboard**: Added `Clipboard.ValueText` to render the clipboard value.
+  - Added `preventDropOnDocument` to block file drops on the document when the file upload component is active.
+  - Added `setClipboardFiles` to the API for setting files from clipboard data.  
+- **QrCode**:  
+  - Added `QrCode.DownloadTrigger` to enable QR code image downloads.
+  - Added `onValueChange` and `defaultValue`.
+- **Progress**: Added `onValueChange` and `defaultValue`.
+- **Tabs, Menu, Combobox**: Added `navigate` property for custom router navigation when selections render as links.
 
 ### Fixed
 
-- **Dialog, Popover**: Fixed an issue where the dialog or popover would close if the focused element was removed from the DOM.  
-- **Collapsible**: Resolved a bug causing the opening animation to replay when an open collapsible was re-rendered. 
-- **FileUpload**: Fixed a bug causing the hidden input to desync from the accepted files.  
-- **QRCode**: Addressed an issue where `getDataUrl` did not generate a full-sized QR code.  
-- **Menu, Popover**: Fixed inconsistent detection of interactions outside the component when the trigger is inside a scrollable container.
+- **Collapsible**: Fixed a bug where the opening animation replayed when an open collapsible was re-rendered.
+- **Dialog, Popover**: Resolved an issue causing dialogs or popovers to close if the focused element was removed from the DOM.  
+- **FileUpload**: Fixed a bug causing the hidden input to desync from accepted files.  
+- **Menu, Popover**: Fixed inconsistent interaction detection outside the component when the trigger was inside a scrollable container.
+- **Pagination**: Corrected an issue where the page range returned an incorrect `end` value when `pageSize` exceeded `count`.
+- **QRCode**: Fixed `getDataUrl` to generate a properly sized QR code.
 
 ## [4.6.0] - 2024-12-29
 
