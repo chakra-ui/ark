@@ -16,4 +16,4 @@
       <Slider.HiddenInput />
     </Slider.Thumb>
   </Slider.Control>
-</Slider.Root> 
+</Slider.Root>

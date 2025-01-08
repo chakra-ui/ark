@@ -15,7 +15,14 @@ export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBase
 
   const props: QrCodeRootProps = $props()
   const [useQrCodeProps, localProps] = $derived(
-    createSplitProps<UseQrCodeProps>()(props, ['id', 'ids', 'onValueChange', 'value', 'encoding']),
+    createSplitProps<UseQrCodeProps>()(props, [
+      'defaultValue',
+      'encoding',
+      'id',
+      'ids',
+      'onValueChange',
+      'value',
+    ]),
   )
 
   const qrCode = useQrCode(reflect(() => useQrCodeProps))

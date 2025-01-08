@@ -16,6 +16,7 @@ export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRoot
   const props: ProgressRootProps = $props()
   const [useProgressProps, localProps] = $derived(
     createSplitProps<UseProgressProps>()(props, [
+      'defaultValue',
       'id',
       'ids',
       'max',
