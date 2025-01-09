@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **[NEW] FocusTrap**: Added `FocusTrap` component for trapping focus within a container.
+
 ## [4.7.0] - 2025-01-08
 
 ### Added

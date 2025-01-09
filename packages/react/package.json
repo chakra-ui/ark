@@ -187,6 +187,7 @@
     "@zag-js/dom-query": "0.81.0",
     "@zag-js/editable": "0.81.0",
     "@zag-js/file-upload": "0.81.0",
+    "@zag-js/focus-trap": "0.81.0",
     "@zag-js/file-utils": "0.81.0",
     "@zag-js/highlight-word": "0.81.0",
     "@zag-js/hover-card": "0.81.0",
