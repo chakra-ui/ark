@@ -5,11 +5,24 @@ import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 
-export interface TrapOptions extends Omit<FocusTrapOptions, 'document' | 'trapStack'> {
+export interface TrapOptions
+  extends Pick<
+    FocusTrapOptions,
+    | 'onActivate'
+    | 'onDeactivate'
+    | 'initialFocus'
+    | 'fallbackFocus'
+    | 'returnFocusOnDeactivate'
+    | 'setReturnFocus'
+  > {
+  /**
+   * Whether the focus trap is disabled.
+   */
   disabled?: boolean
 }
 
 export interface FocusTrapBaseProps extends PolymorphicProps<'div'>, TrapOptions {}
+
 export interface FocusTrapProps extends Assign<HTMLProps<'div'>, FocusTrapBaseProps> {}
 
 export const FocusTrap = (props: FocusTrapProps) => {
@@ -18,26 +31,11 @@ export const FocusTrap = (props: FocusTrapProps) => {
   const [trapProps, localProps] = createSplitProps<TrapOptions>()(props, [
     'disabled',
     'onActivate',
-    'onPostActivate',
-    'onPause',
-    'onPostPause',
-    'onUnpause',
-    'onPostUnpause',
-    'checkCanFocusTrap',
     'onDeactivate',
-    'onPostDeactivate',
-    'checkCanReturnFocus',
     'initialFocus',
     'fallbackFocus',
     'returnFocusOnDeactivate',
     'setReturnFocus',
-    'escapeDeactivates',
-    'clickOutsideDeactivates',
-    'allowOutsideClick',
-    'preventScroll',
-    'delayInitialFocus',
-    'isKeyForward',
-    'isKeyBackward',
   ])
 
   createEffect(() => {

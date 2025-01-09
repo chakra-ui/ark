@@ -1,12 +1,24 @@
+import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
 import { forwardRef, useRef } from 'react'
-import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { trapFocus, type FocusTrapOptions } from '@zag-js/focus-trap'
-import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
-import { composeRefs } from '../../utils/compose-refs'
 import type { Assign } from '../../types'
+import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
+import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 
-export interface TrapOptions extends Omit<FocusTrapOptions, 'document' | 'trapStack'> {
+export interface TrapOptions
+  extends Pick<
+    FocusTrapOptions,
+    | 'onActivate'
+    | 'onDeactivate'
+    | 'initialFocus'
+    | 'fallbackFocus'
+    | 'returnFocusOnDeactivate'
+    | 'setReturnFocus'
+  > {
+  /**
+   * Whether the focus trap is disabled.
+   */
   disabled?: boolean
 }
 
@@ -19,26 +31,11 @@ export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref)
   const [trapProps, localProps] = createSplitProps<TrapOptions>()(props, [
     'disabled',
     'onActivate',
-    'onPostActivate',
-    'onPause',
-    'onPostPause',
-    'onUnpause',
-    'onPostUnpause',
-    'checkCanFocusTrap',
     'onDeactivate',
-    'onPostDeactivate',
-    'checkCanReturnFocus',
     'initialFocus',
     'fallbackFocus',
     'returnFocusOnDeactivate',
     'setReturnFocus',
-    'escapeDeactivates',
-    'clickOutsideDeactivates',
-    'allowOutsideClick',
-    'preventScroll',
-    'delayInitialFocus',
-    'isKeyForward',
-    'isKeyBackward',
   ])
 
   useSafeLayoutEffect(() => {
@@ -49,3 +46,5 @@ export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref)
 
   return <ark.div ref={composeRefs(localRef, ref)} {...localProps} />
 })
+
+FocusTrap.displayName = 'FocusTrap'

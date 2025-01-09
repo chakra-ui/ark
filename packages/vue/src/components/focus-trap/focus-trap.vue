@@ -23,17 +23,9 @@ const props = withDefaults(defineProps<FocusTrapProps>(), {
   disabled: undefined,
   allowOutsideClick: undefined,
   returnFocusOnDeactivate: undefined,
-  escapeDeactivates: undefined,
-  clickOutsideDeactivates: undefined,
-  preventScroll: undefined,
-  delayInitialFocus: undefined,
   initialFocus: undefined,
   fallbackFocus: undefined,
   setReturnFocus: undefined,
-  checkCanFocusTrap: undefined,
-  checkCanReturnFocus: undefined,
-  isKeyForward: undefined,
-  isKeyBackward: undefined,
 })
 
 const emits = defineEmits<BaseEmits>()
@@ -55,12 +47,6 @@ watchEffect(() => {
     ...trapProps,
     onActivate: () => emits('activate'),
     onDeactivate: () => emits('deactivate'),
-    onPause: () => emits('pause'),
-    onUnpause: () => emits('unpause'),
-    onPostActivate: () => emits('post-activate'),
-    onPostDeactivate: () => emits('post-deactivate'),
-    onPostPause: () => emits('post-pause'),
-    onPostUnpause: () => emits('post-unpause'),
   })
 
   onWatcherCleanup(() => cleanup?.())
