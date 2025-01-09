@@ -1,9 +1,9 @@
 import { type FocusTrapOptions, trapFocus } from '@zag-js/focus-trap'
+import { createEffect, onCleanup } from 'solid-js'
 import type { Assign } from '../../types'
+import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { createEffect } from 'solid-js'
-import { composeRefs } from '../../utils/compose-refs'
 
 export interface TrapOptions extends Omit<FocusTrapOptions, 'document' | 'trapStack'> {
   disabled?: boolean
@@ -13,7 +13,7 @@ export interface FocusTrapBaseProps extends PolymorphicProps<'div'>, TrapOptions
 export interface FocusTrapProps extends Assign<HTMLProps<'div'>, FocusTrapBaseProps> {}
 
 export const FocusTrap = (props: FocusTrapProps) => {
-  let localRef: HTMLDivElement | undefined
+  let localNode!: HTMLDivElement
 
   const [trapProps, localProps] = createSplitProps<TrapOptions>()(props, [
     'disabled',
@@ -41,9 +41,12 @@ export const FocusTrap = (props: FocusTrapProps) => {
   ])
 
   createEffect(() => {
-    if (!localRef || trapProps.disabled) return
-    return trapFocus(localRef, trapProps)
+    if (!localNode || trapProps.disabled) return
+    const autoFocusNode = localNode.querySelector<HTMLElement>('[autofocus], [data-autofocus]')
+    trapProps.initialFocus ||= autoFocusNode ?? undefined
+    onCleanup(trapFocus(localNode, trapProps))
   })
 
-  return <ark.div ref={composeRefs(localRef, props.ref)} {...localProps} />
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+  return <ark.div {...localProps} ref={composeRefs((el) => (localNode = el), props.ref)} />
 }

@@ -1,16 +1,16 @@
 import { FocusTrap } from '@ark-ui/solid/focus-trap'
-import { createSignal } from 'solid-js'
+import { createSignal, Show } from 'solid-js'
 
 export const Autofocus = () => {
   const [trapped, setTrapped] = createSignal(false)
-  let buttonRef: HTMLButtonElement | undefined
+  let buttonRef!: HTMLButtonElement
 
   return (
     <div>
       <button ref={buttonRef} onClick={() => setTrapped((v) => !v)}>
         {trapped() ? 'End Trap' : 'Start Trap'}
       </button>
-      {trapped() && (
+      <Show when={trapped()}>
         <FocusTrap disabled={!trapped()} setReturnFocus={buttonRef}>
           <div
             style={{
@@ -25,7 +25,7 @@ export const Autofocus = () => {
             <button onClick={() => setTrapped(false)}>End Trap</button>
           </div>
         </FocusTrap>
-      )}
+      </Show>
     </div>
   )
 }

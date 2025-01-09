@@ -3,7 +3,6 @@ import { createSignal } from 'solid-js'
 
 export const Basic = () => {
   const [trapped, setTrapped] = createSignal(false)
-
   return (
     <>
       <button onClick={() => setTrapped(true)}>Start Trap</button>

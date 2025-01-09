@@ -3,11 +3,13 @@ import { createSignal } from 'solid-js'
 
 export const InitialFocus = () => {
   const [trapped, setTrapped] = createSignal(false)
-  let inputRef: HTMLInputElement | undefined
+  const toggle = () => setTrapped((v) => !v)
+
+  let inputRef!: HTMLInputElement
 
   return (
     <div>
-      <button onClick={() => setTrapped((v) => !v)}>{trapped() ? 'End Trap' : 'Start Trap'}</button>
+      <button onClick={toggle}>{trapped() ? 'End Trap' : 'Start Trap'}</button>
       <FocusTrap disabled={!trapped()} initialFocus={() => inputRef}>
         <div
           style={{
@@ -20,7 +22,7 @@ export const InitialFocus = () => {
           <input type="text" placeholder="First input" />
           <input ref={inputRef} type="text" placeholder="Second input (initial focus)" />
           <textarea placeholder="textarea" />
-          <button onClick={() => setTrapped(false)}>End Trap</button>
+          <button onClick={toggle}>End Trap</button>
         </div>
       </FocusTrap>
     </div>
