@@ -1,7 +1,6 @@
 <script lang="ts">
-import type { FocusTrapOptions } from '@zag-js/focus-trap'
-import type { HTMLProps, PolymorphicProps } from '../factory'
-import type { Assign } from '../../types'
+import type { HTMLAttributes, VNodeRef } from 'vue'
+import type { PolymorphicProps } from '../factory'
 import type { BaseProps, BaseEmits } from './focus-trap.types'
 
 export interface FocusTrapBaseProps extends BaseProps, PolymorphicProps {}
@@ -15,9 +14,8 @@ export interface FocusTrapEmits extends BaseEmits {}
 </script>
 
 <script setup lang="ts">
-import { trapFocus } from '@zag-js/focus-trap'
+import { trapFocus, type FocusTrapOptions } from '@zag-js/focus-trap'
 import { watchEffect, ref, onWatcherCleanup, onBeforeUnmount } from 'vue'
-import { createSplitProps } from '../create-split-props'
 import { ark } from '../factory'
 import { useForwardExpose, cleanProps } from '../../utils'
 
@@ -37,21 +35,34 @@ const props = withDefaults(defineProps<FocusTrapProps>(), {
   isKeyForward: undefined,
   isKeyBackward: undefined,
 })
+
 const emits = defineEmits<BaseEmits>()
 
-const localRef = ref<HTMLDivElement>()
+const nodeRef = ref<VNodeRef | null>(null)
 let cleanup: (() => void) | undefined
 
 watchEffect(() => {
   if (props.disabled) return
-  const node = localRef.value?.$el
+  if (!nodeRef.value) return
+  const node: HTMLElement | null = nodeRef.value.$el ? nodeRef.value.$el : nodeRef.value
   if (!node) return
   const autoFocusNode = node.querySelector<HTMLElement>('[autofocus], [data-autofocus]')
 
-  const trapProps = cleanProps(props)
+  const trapProps = cleanProps(props) as FocusTrapOptions
   trapProps.initialFocus ||= autoFocusNode ?? undefined
 
-  cleanup = trapFocus(node, trapProps)
+  cleanup = trapFocus(node, {
+    ...trapProps,
+    onActivate: () => emits('activate'),
+    onDeactivate: () => emits('deactivate'),
+    onPause: () => emits('pause'),
+    onUnpause: () => emits('unpause'),
+    onPostActivate: () => emits('post-activate'),
+    onPostDeactivate: () => emits('post-deactivate'),
+    onPostPause: () => emits('post-pause'),
+    onPostUnpause: () => emits('post-unpause'),
+  })
+
   onWatcherCleanup(() => cleanup?.())
 })
 
@@ -63,7 +74,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div ref="localRef" :as-child="asChild">
+  <ark.div ref="nodeRef" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
