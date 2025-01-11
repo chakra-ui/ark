@@ -1,258 +1,260 @@
 {
-	"name": "@ark-ui/react",
-	"version": "4.7.0",
-	"description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
-	"keywords": [
-		"accordion",
-		"avatar",
-		"carousel",
-		"checkbox",
-		"clipboard",
-		"collapsible",
-		"color picker",
-		"combobox",
-		"date picker",
-		"dialog",
-		"editable",
-		"field",
-		"fieldset",
-		"file upload",
-		"frame",
-		"hover card",
-		"menu",
-		"number input",
-		"pagination",
-		"pin input",
-		"popover",
-		"portal",
-		"progress",
-		"radio group",
-		"rating group",
-		"segment group",
-		"select",
-		"signature pad",
-		"slider",
-		"splitter",
-		"switch",
-		"tabs",
-		"tags input",
-		"time picker",
-		"timer",
-		"toast",
-		"toggle group",
-		"tooltip",
-		"tree view"
-	],
-	"license": "MIT",
-	"homepage": "https://ark-ui.com",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/chakra-ui/ark.git",
-		"directory": "packages/react"
-	},
-	"bugs": {
-		"url": "https://github.com/chakra-ui/ark/issues"
-	},
-	"type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"files": ["dist"],
-	"exports": {
-		".": {
-			"source": "./src/index.ts",
-			"import": {
-				"types": "./dist/index.d.ts",
-				"default": "./dist/index.js"
-			},
-			"require": {
-				"types": "./dist/index.d.cts",
-				"default": "./dist/index.cjs"
-			}
-		},
-		"./anatomy": {
-			"source": "./src/components/anatomy.ts",
-			"import": {
-				"types": "./dist/components/anatomy.d.ts",
-				"default": "./dist/components/anatomy.js"
-			},
-			"require": {
-				"types": "./dist/components/anatomy.d.cts",
-				"default": "./dist/components/anatomy.cjs"
-			}
-		},
-		"./collection": {
-			"source": "./src/components/collection.ts",
-			"import": {
-				"types": "./dist/components/collection.d.ts",
-				"default": "./dist/components/collection.js"
-			},
-			"require": {
-				"types": "./dist/components/collection.d.cts",
-				"default": "./dist/components/collection.cjs"
-			}
-		},
-		"./factory": {
-			"source": "./src/components/factory.ts",
-			"import": {
-				"types": "./dist/components/factory.d.ts",
-				"default": "./dist/components/factory.js"
-			},
-			"require": {
-				"types": "./dist/components/factory.d.cts",
-				"default": "./dist/components/factory.cjs"
-			}
-		},
-		"./environment": {
-			"source": "./src/providers/environment/index.ts",
-			"import": {
-				"types": "./dist/providers/environment/index.d.ts",
-				"default": "./dist/providers/environment/index.js"
-			},
-			"require": {
-				"types": "./dist/providers/environment/index.d.cts",
-				"default": "./dist/providers/environment/index.cjs"
-			}
-		},
-		"./locale": {
-			"source": "./src/providers/locale/index.ts",
-			"import": {
-				"types": "./dist/providers/locale/index.d.ts",
-				"default": "./dist/providers/locale/index.js"
-			},
-			"require": {
-				"types": "./dist/providers/locale/index.d.cts",
-				"default": "./dist/providers/locale/index.cjs"
-			}
-		},
-		"./*": {
-			"source": "./src/components/*/index.ts",
-			"import": {
-				"types": "./dist/components/*/index.d.ts",
-				"default": "./dist/components/*/index.js"
-			},
-			"require": {
-				"types": "./dist/components/*/index.d.cts",
-				"default": "./dist/components/*/index.cjs"
-			}
-		}
-	},
-	"scripts": {
-		"build": "vite build",
-		"dev": "bun run storybook",
-		"lint": "biome lint ./src",
-		"test": "vitest",
-		"test:ci": "vitest --run",
-		"typecheck": "tsc",
-		"storybook": "storybook dev -p 6006",
-		"release-it": "release-it --config ../../release-it.json",
-		"prepack": "clean-package",
-		"postpack": "clean-package restore"
-	},
-	"clean-package": {
-		"remove": [
-			"exports.\\..source",
-			"exports.\\./anatomy.source",
-			"exports.\\./collection.source",
-			"exports.\\./factory.source",
-			"exports.\\./environment.source",
-			"exports.\\./locale.source",
-			"exports.\\./*.source"
-		]
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"sideEffects": false,
-	"dependencies": {
-		"@internationalized/date": "3.6.0",
-		"@zag-js/accordion": "0.81.1",
-		"@zag-js/anatomy": "0.81.1",
-		"@zag-js/auto-resize": "0.81.1",
-		"@zag-js/avatar": "0.81.1",
-		"@zag-js/carousel": "0.81.1",
-		"@zag-js/checkbox": "0.81.1",
-		"@zag-js/clipboard": "0.81.1",
-		"@zag-js/collapsible": "0.81.1",
-		"@zag-js/collection": "0.81.1",
-		"@zag-js/color-picker": "0.81.1",
-		"@zag-js/color-utils": "0.81.1",
-		"@zag-js/combobox": "0.81.1",
-		"@zag-js/core": "0.81.1",
-		"@zag-js/date-picker": "0.81.1",
-		"@zag-js/date-utils": "0.81.1",
-		"@zag-js/dialog": "0.81.1",
-		"@zag-js/dom-query": "0.81.1",
-		"@zag-js/editable": "0.81.1",
-		"@zag-js/file-upload": "0.81.1",
-		"@zag-js/file-utils": "0.81.1",
-		"@zag-js/focus-trap": "0.81.1",
-		"@zag-js/highlight-word": "0.81.1",
-		"@zag-js/hover-card": "0.81.1",
-		"@zag-js/i18n-utils": "0.81.1",
-		"@zag-js/menu": "0.81.1",
-		"@zag-js/number-input": "0.81.1",
-		"@zag-js/pagination": "0.81.1",
-		"@zag-js/pin-input": "0.81.1",
-		"@zag-js/popover": "0.81.1",
-		"@zag-js/presence": "0.81.1",
-		"@zag-js/progress": "0.81.1",
-		"@zag-js/qr-code": "0.81.1",
-		"@zag-js/radio-group": "0.81.1",
-		"@zag-js/rating-group": "0.81.1",
-		"@zag-js/react": "0.81.1",
-		"@zag-js/select": "0.81.1",
-		"@zag-js/signature-pad": "0.81.1",
-		"@zag-js/slider": "0.81.1",
-		"@zag-js/splitter": "0.81.1",
-		"@zag-js/steps": "0.81.1",
-		"@zag-js/switch": "0.81.1",
-		"@zag-js/tabs": "0.81.1",
-		"@zag-js/tags-input": "0.81.1",
-		"@zag-js/time-picker": "0.81.1",
-		"@zag-js/timer": "0.81.1",
-		"@zag-js/toast": "0.81.1",
-		"@zag-js/toggle-group": "0.81.1",
-		"@zag-js/tooltip": "0.81.1",
-		"@zag-js/tour": "0.81.1",
-		"@zag-js/tree-view": "0.81.1",
-		"@zag-js/types": "0.81.1"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"@release-it/keep-a-changelog": "5.0.0",
-		"@storybook/addon-a11y": "8.4.7",
-		"@storybook/addon-essentials": "8.4.7",
-		"@storybook/react-vite": "8.4.7",
-		"@storybook/react": "8.4.7",
-		"@testing-library/dom": "10.4.0",
-		"@testing-library/jest-dom": "6.6.3",
-		"@testing-library/react": "16.1.0",
-		"@testing-library/user-event": "14.5.2",
-		"@types/jsdom": "21.1.7",
-		"@types/react": "19.0.2",
-		"@types/react-dom": "19.0.2",
-		"@vitejs/plugin-react": "4.3.4",
-		"@zag-js/stringify-state": "0.81.1",
-		"clean-package": "2.2.0",
-		"globby": "14.0.2",
-		"jsdom": "25.0.1",
-		"lucide-react": "0.469.0",
-		"react": "19.0.0",
-		"react-dom": "19.0.0",
-		"react-frame-component": "5.2.7",
-		"react-hook-form": "7.54.2",
-		"release-it": "17.11.0",
-		"resize-observer-polyfill": "1.5.1",
-		"storybook": "8.4.7",
-		"typescript": "5.7.2",
-		"vite": "5.4.11",
-		"vite-plugin-dts": "4.4.0",
-		"vitest": "2.1.8",
-		"vitest-axe": "1.0.0-pre.3"
-	},
-	"peerDependencies": {
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
-	}
+  "name": "@ark-ui/react",
+  "version": "4.7.0",
+  "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
+  "keywords": [
+    "accordion",
+    "avatar",
+    "carousel",
+    "checkbox",
+    "clipboard",
+    "collapsible",
+    "color picker",
+    "combobox",
+    "date picker",
+    "dialog",
+    "editable",
+    "field",
+    "fieldset",
+    "file upload",
+    "frame",
+    "hover card",
+    "menu",
+    "number input",
+    "pagination",
+    "pin input",
+    "popover",
+    "portal",
+    "progress",
+    "radio group",
+    "rating group",
+    "segment group",
+    "select",
+    "signature pad",
+    "slider",
+    "splitter",
+    "switch",
+    "tabs",
+    "tags input",
+    "time picker",
+    "timer",
+    "toast",
+    "toggle group",
+    "tooltip",
+    "tree view"
+  ],
+  "license": "MIT",
+  "homepage": "https://ark-ui.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakra-ui/ark.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./anatomy": {
+      "source": "./src/components/anatomy.ts",
+      "import": {
+        "types": "./dist/components/anatomy.d.ts",
+        "default": "./dist/components/anatomy.js"
+      },
+      "require": {
+        "types": "./dist/components/anatomy.d.cts",
+        "default": "./dist/components/anatomy.cjs"
+      }
+    },
+    "./collection": {
+      "source": "./src/components/collection.ts",
+      "import": {
+        "types": "./dist/components/collection.d.ts",
+        "default": "./dist/components/collection.js"
+      },
+      "require": {
+        "types": "./dist/components/collection.d.cts",
+        "default": "./dist/components/collection.cjs"
+      }
+    },
+    "./factory": {
+      "source": "./src/components/factory.ts",
+      "import": {
+        "types": "./dist/components/factory.d.ts",
+        "default": "./dist/components/factory.js"
+      },
+      "require": {
+        "types": "./dist/components/factory.d.cts",
+        "default": "./dist/components/factory.cjs"
+      }
+    },
+    "./environment": {
+      "source": "./src/providers/environment/index.ts",
+      "import": {
+        "types": "./dist/providers/environment/index.d.ts",
+        "default": "./dist/providers/environment/index.js"
+      },
+      "require": {
+        "types": "./dist/providers/environment/index.d.cts",
+        "default": "./dist/providers/environment/index.cjs"
+      }
+    },
+    "./locale": {
+      "source": "./src/providers/locale/index.ts",
+      "import": {
+        "types": "./dist/providers/locale/index.d.ts",
+        "default": "./dist/providers/locale/index.js"
+      },
+      "require": {
+        "types": "./dist/providers/locale/index.d.cts",
+        "default": "./dist/providers/locale/index.cjs"
+      }
+    },
+    "./*": {
+      "source": "./src/components/*/index.ts",
+      "import": {
+        "types": "./dist/components/*/index.d.ts",
+        "default": "./dist/components/*/index.js"
+      },
+      "require": {
+        "types": "./dist/components/*/index.d.cts",
+        "default": "./dist/components/*/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "bun run storybook",
+    "lint": "biome lint ./src",
+    "test": "vitest",
+    "test:ci": "vitest --run",
+    "typecheck": "tsc",
+    "storybook": "storybook dev -p 6006",
+    "release-it": "release-it --config ../../release-it.json",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": {
+    "remove": [
+      "exports.\\..source",
+      "exports.\\./anatomy.source",
+      "exports.\\./collection.source",
+      "exports.\\./factory.source",
+      "exports.\\./environment.source",
+      "exports.\\./locale.source",
+      "exports.\\./*.source"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@internationalized/date": "3.6.0",
+    "@zag-js/accordion": "0.81.1",
+    "@zag-js/anatomy": "0.81.1",
+    "@zag-js/auto-resize": "0.81.1",
+    "@zag-js/avatar": "0.81.1",
+    "@zag-js/carousel": "0.81.1",
+    "@zag-js/checkbox": "0.81.1",
+    "@zag-js/clipboard": "0.81.1",
+    "@zag-js/collapsible": "0.81.1",
+    "@zag-js/collection": "0.81.1",
+    "@zag-js/color-picker": "0.81.1",
+    "@zag-js/color-utils": "0.81.1",
+    "@zag-js/combobox": "0.81.1",
+    "@zag-js/core": "0.81.1",
+    "@zag-js/date-picker": "0.81.1",
+    "@zag-js/date-utils": "0.81.1",
+    "@zag-js/dialog": "0.81.1",
+    "@zag-js/dom-query": "0.81.1",
+    "@zag-js/editable": "0.81.1",
+    "@zag-js/file-upload": "0.81.1",
+    "@zag-js/file-utils": "0.81.1",
+    "@zag-js/focus-trap": "0.81.1",
+    "@zag-js/highlight-word": "0.81.1",
+    "@zag-js/hover-card": "0.81.1",
+    "@zag-js/i18n-utils": "0.81.1",
+    "@zag-js/menu": "0.81.1",
+    "@zag-js/number-input": "0.81.1",
+    "@zag-js/pagination": "0.81.1",
+    "@zag-js/pin-input": "0.81.1",
+    "@zag-js/popover": "0.81.1",
+    "@zag-js/presence": "0.81.1",
+    "@zag-js/progress": "0.81.1",
+    "@zag-js/qr-code": "0.81.1",
+    "@zag-js/radio-group": "0.81.1",
+    "@zag-js/rating-group": "0.81.1",
+    "@zag-js/react": "0.81.1",
+    "@zag-js/select": "0.81.1",
+    "@zag-js/signature-pad": "0.81.1",
+    "@zag-js/slider": "0.81.1",
+    "@zag-js/splitter": "0.81.1",
+    "@zag-js/steps": "0.81.1",
+    "@zag-js/switch": "0.81.1",
+    "@zag-js/tabs": "0.81.1",
+    "@zag-js/tags-input": "0.81.1",
+    "@zag-js/time-picker": "0.81.1",
+    "@zag-js/timer": "0.81.1",
+    "@zag-js/toast": "0.81.1",
+    "@zag-js/toggle-group": "0.81.1",
+    "@zag-js/tooltip": "0.81.1",
+    "@zag-js/tour": "0.81.1",
+    "@zag-js/tree-view": "0.81.1",
+    "@zag-js/types": "0.81.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@release-it/keep-a-changelog": "5.0.0",
+    "@storybook/addon-a11y": "8.4.7",
+    "@storybook/addon-essentials": "8.4.7",
+    "@storybook/react-vite": "8.4.7",
+    "@storybook/react": "8.4.7",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.1.0",
+    "@testing-library/user-event": "14.5.2",
+    "@types/jsdom": "21.1.7",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "@vitejs/plugin-react": "4.3.4",
+    "@zag-js/stringify-state": "0.81.1",
+    "clean-package": "2.2.0",
+    "globby": "14.0.2",
+    "jsdom": "25.0.1",
+    "lucide-react": "0.469.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-frame-component": "5.2.7",
+    "react-hook-form": "7.54.2",
+    "release-it": "17.11.0",
+    "resize-observer-polyfill": "1.5.1",
+    "storybook": "8.4.7",
+    "typescript": "5.7.2",
+    "vite": "5.4.11",
+    "vite-plugin-dts": "4.4.0",
+    "vitest": "2.1.8",
+    "vitest-axe": "1.0.0-pre.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  }
 }

@@ -1,16 +1,16 @@
 <script lang="ts">
-import { mergeProps } from "@zag-js/vue";
-import { type HTMLAttributes, computed } from "vue";
-import type { PolymorphicProps } from "../factory";
-import { usePresenceContext } from "../presence";
+import { mergeProps } from '@zag-js/vue'
+import { type HTMLAttributes, computed } from 'vue'
+import type { PolymorphicProps } from '../factory'
+import { usePresenceContext } from '../presence'
 
 export interface TourContentBaseProps extends PolymorphicProps {}
 export interface TourContentProps
-	extends TourContentBaseProps,
-		/**
-		 * @vue-ignore
-		 */
-		HTMLAttributes {}
+  extends TourContentBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

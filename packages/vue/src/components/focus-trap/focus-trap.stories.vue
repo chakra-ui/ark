@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Autofocus from "./examples/autofocus.vue";
-import Basic from "./examples/basic.vue";
-import InitialFocus from "./examples/initial-focus.vue";
+import Autofocus from './examples/autofocus.vue'
+import Basic from './examples/basic.vue'
+import InitialFocus from './examples/initial-focus.vue'
 </script>
 
 <template>

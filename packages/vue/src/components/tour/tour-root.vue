@@ -1,10 +1,10 @@
 <script lang="ts">
-import type { RenderStrategyProps } from "../../utils";
-import type { RootEmits } from "./tour.types";
-import type { UseTourReturn } from "./use-tour";
+import type { RenderStrategyProps } from '../../utils'
+import type { RootEmits } from './tour.types'
+import type { UseTourReturn } from './use-tour'
 
 interface RootProps {
-	tour: UnwrapRef<UseTourReturn>;
+  tour: UnwrapRef<UseTourReturn>
 }
 
 export interface TourRootBaseProps extends RootProps, RenderStrategyProps {}

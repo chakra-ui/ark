@@ -1,11 +1,11 @@
 <script lang="ts">
-import type { StepAction } from "@zag-js/tour";
-import type { SlotsType, UnwrapRef } from "vue";
+import type { StepAction } from '@zag-js/tour'
+import type { SlotsType, UnwrapRef } from 'vue'
 
 export interface TourActionsProps
-	extends SlotsType<{
-		default: UnwrapRef<StepAction[]>;
-	}> {}
+  extends SlotsType<{
+    default: UnwrapRef<StepAction[]>
+  }> {}
 </script>
 
 <script setup lang="ts">

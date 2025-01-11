@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { FocusTrap } from "@ark-ui/vue/focus-trap";
-import { ref } from "vue";
+import { FocusTrap } from '@ark-ui/vue/focus-trap'
+import { ref } from 'vue'
 
-const trapped = ref(false);
-const buttonRef = ref<HTMLButtonElement>();
+const trapped = ref(false)
+const buttonRef = ref<HTMLButtonElement>()
 </script>
 
 <template>

@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { HTMLAttributes } from "vue";
-import type { PolymorphicProps } from "../factory";
+import type { HTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 
 export interface TourDescriptionBaseProps extends PolymorphicProps {}
 export interface TourDescriptionProps
-	extends TourDescriptionBaseProps,
-		/**
-		 * @vue-ignore
-		 */
-		HTMLAttributes {}
+  extends TourDescriptionBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

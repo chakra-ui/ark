@@ -1,15 +1,15 @@
 <script lang="ts">
-import { type HTMLAttributes, computed } from "vue";
-import { useRenderStrategyProps } from "../../utils";
-import type { PolymorphicProps } from "../factory";
+import { type HTMLAttributes, computed } from 'vue'
+import { useRenderStrategyProps } from '../../utils'
+import type { PolymorphicProps } from '../factory'
 
 export interface TourPositionerBaseProps extends PolymorphicProps {}
 export interface TourPositionerProps
-	extends TourPositionerBaseProps,
-		/**
-		 * @vue-ignore
-		 */
-		HTMLAttributes {}
+  extends TourPositionerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">

@@ -1,17 +1,15 @@
 <script lang="ts">
-import type { StepActionTriggerProps } from "@zag-js/tour";
-import type { ButtonHTMLAttributes } from "vue";
-import type { PolymorphicProps } from "../factory";
+import type { StepActionTriggerProps } from '@zag-js/tour'
+import type { ButtonHTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 
-export interface TourActionTriggerBaseProps
-	extends StepActionTriggerProps,
-		PolymorphicProps {}
+export interface TourActionTriggerBaseProps extends StepActionTriggerProps, PolymorphicProps {}
 export interface TourActionTriggerProps
-	extends TourActionTriggerBaseProps,
-		/**
-		 * @vue-ignore
-		 */
-		ButtonHTMLAttributes {}
+  extends TourActionTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

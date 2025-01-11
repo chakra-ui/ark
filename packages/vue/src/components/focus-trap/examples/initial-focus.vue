@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { FocusTrap } from "@ark-ui/vue/focus-trap";
-import { ref } from "vue";
+import { FocusTrap } from '@ark-ui/vue/focus-trap'
+import { ref } from 'vue'
 
-const trapped = ref(false);
-const inputRef = ref<HTMLInputElement>();
+const trapped = ref(false)
+const inputRef = ref<HTMLInputElement>()
 const toggle = () => {
-	trapped.value = !trapped.value;
-};
+  trapped.value = !trapped.value
+}
 </script>
 
 <template>

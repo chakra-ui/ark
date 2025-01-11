@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Basic from "./examples/basic.vue";
+import Basic from './examples/basic.vue'
 </script>
 
 <template>

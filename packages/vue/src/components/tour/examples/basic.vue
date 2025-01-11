@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Frame } from "@ark-ui/vue/frame";
-import DemoTour from "./tour.vue";
+import { Frame } from '@ark-ui/vue/frame'
+import DemoTour from './tour.vue'
 </script>
 
 <template>

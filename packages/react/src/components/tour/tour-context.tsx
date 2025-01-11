@@ -1,9 +1,8 @@
-import type { ReactNode } from "react";
-import { type UseTourContext, useTourContext } from "./use-tour-context";
+import type { ReactNode } from 'react'
+import { type UseTourContext, useTourContext } from './use-tour-context'
 
 export interface TourContextProps {
-	children: (context: UseTourContext) => ReactNode;
+  children: (context: UseTourContext) => ReactNode
 }
 
-export const TourContext = (props: TourContextProps) =>
-	props.children(useTourContext());
+export const TourContext = (props: TourContextProps) => props.children(useTourContext())

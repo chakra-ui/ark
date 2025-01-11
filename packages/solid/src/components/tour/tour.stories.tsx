@@ -1,9 +1,9 @@
-import type { Meta } from "storybook-solidjs";
+import type { Meta } from 'storybook-solidjs'
 
 const meta: Meta = {
-	title: "Components / Tour",
-};
+  title: 'Components / Tour',
+}
 
-export default meta;
+export default meta
 
-export { Basic } from "./examples/basic";
+export { Basic } from './examples/basic'

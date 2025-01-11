@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Tour, useTour } from "@ark-ui/vue/tour";
-import { XIcon } from "lucide-vue-next";
-import { onMounted } from "vue";
-import { steps } from "./steps";
+import { Tour, useTour } from '@ark-ui/vue/tour'
+import { XIcon } from 'lucide-vue-next'
+import { onMounted } from 'vue'
+import { steps } from './steps'
 
-const tour = useTour({ steps });
+const tour = useTour({ steps })
 
 onMounted(() => {
-	tour.value.start();
-});
+  tour.value.start()
+})
 </script>
 
 <template>

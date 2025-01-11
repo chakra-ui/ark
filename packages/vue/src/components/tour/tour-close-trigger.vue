@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { ButtonHTMLAttributes } from "vue";
-import type { PolymorphicProps } from "../factory";
+import type { ButtonHTMLAttributes } from 'vue'
+import type { PolymorphicProps } from '../factory'
 
 export interface TourCloseTriggerBaseProps extends PolymorphicProps {}
 export interface TourCloseTriggerProps
-	extends TourCloseTriggerBaseProps,
-		/**
-		 * @vue-ignore
-		 */
-		ButtonHTMLAttributes {}
+  extends TourCloseTriggerBaseProps,
+    /**
+     * @vue-ignore
+     */
+    ButtonHTMLAttributes {}
 </script>
 
 <script setup lang="ts">

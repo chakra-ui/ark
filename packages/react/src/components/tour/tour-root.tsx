@@ -1,37 +1,32 @@
-import { mergeProps } from "@zag-js/react";
-import type { ReactNode } from "react";
+import { mergeProps } from '@zag-js/react'
+import type { ReactNode } from 'react'
+import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
 import {
-	RenderStrategyPropsProvider,
-	splitRenderStrategyProps,
-} from "../../utils/render-strategy";
-import {
-	PresenceProvider,
-	type UsePresenceProps,
-	splitPresenceProps,
-	usePresence,
-} from "../presence";
-import type { UseTourReturn } from "./use-tour";
-import { TourProvider } from "./use-tour-context";
+  PresenceProvider,
+  type UsePresenceProps,
+  splitPresenceProps,
+  usePresence,
+} from '../presence'
+import type { UseTourReturn } from './use-tour'
+import { TourProvider } from './use-tour-context'
 
 export interface TourRootBaseProps extends UsePresenceProps {
-	tour: UseTourReturn;
+  tour: UseTourReturn
 }
 export interface TourRootProps extends TourRootBaseProps {
-	children?: ReactNode;
+  children?: ReactNode
 }
 
 export const TourRoot = (props: TourRootProps) => {
-	const [presenceProps, { children, tour }] = splitPresenceProps(props);
-	const [renderStrategyProps] = splitRenderStrategyProps(presenceProps);
-	const presence = usePresence(
-		mergeProps({ present: tour.open }, presenceProps),
-	);
+  const [presenceProps, { children, tour }] = splitPresenceProps(props)
+  const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
+  const presence = usePresence(mergeProps({ present: tour.open }, presenceProps))
 
-	return (
-		<TourProvider value={tour}>
-			<RenderStrategyPropsProvider value={renderStrategyProps}>
-				<PresenceProvider value={presence}>{children}</PresenceProvider>
-			</RenderStrategyPropsProvider>
-		</TourProvider>
-	);
-};
+  return (
+    <TourProvider value={tour}>
+      <RenderStrategyPropsProvider value={renderStrategyProps}>
+        <PresenceProvider value={presence}>{children}</PresenceProvider>
+      </RenderStrategyPropsProvider>
+    </TourProvider>
+  )
+}
