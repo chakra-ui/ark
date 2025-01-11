@@ -39,6 +39,7 @@
     "toast",
     "toggle group",
     "tooltip",
+    "tour",
     "tree view"
   ],
   "license": "MIT",
@@ -146,9 +147,9 @@
     "@zag-js/dialog": "0.81.1",
     "@zag-js/dom-query": "0.81.1",
     "@zag-js/editable": "0.81.1",
-    "@zag-js/focus-trap": "0.81.1",
     "@zag-js/file-upload": "0.81.1",
     "@zag-js/file-utils": "0.81.1",
+    "@zag-js/focus-trap": "0.81.1",
     "@zag-js/highlight-word": "0.81.1",
     "@zag-js/hover-card": "0.81.1",
     "@zag-js/i18n-utils": "0.81.1",
@@ -176,6 +177,7 @@
     "@zag-js/toast": "0.81.1",
     "@zag-js/toggle-group": "0.81.1",
     "@zag-js/tooltip": "0.81.1",
+    "@zag-js/tour": "0.81.1",
     "@zag-js/tree-view": "0.81.1",
     "@zag-js/types": "0.81.1"
   },

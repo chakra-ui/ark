@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, VNodeRef } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import type { BaseProps, BaseEmits } from './focus-trap.types'
+import type { BaseEmits, BaseProps } from './focus-trap.types'
 
 export interface FocusTrapBaseProps extends BaseProps, PolymorphicProps {}
 export interface FocusTrapProps

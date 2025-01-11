@@ -1,0 +1,205 @@
+---
+id: tour
+title: Tour
+description: A guided tour that helps users understand the interface.
+status: new
+---
+
+<ComponentPreview id="Tour" />
+
+## Features
+
+- Support for different step types such as "dialog", "floating", "tooltip" or "wait"
+- Support for customizable content per step
+- Wait steps for waiting for a specific selector to appear on the page before showing the next step
+- Flexible positioning of the tour dialog per step
+- Progress tracking shows users their progress through the tour
+
+## Anatomy
+
+To set up the tour correctly, it's essential to understand its anatomy and the naming of its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="tour" />
+
+## Steps
+
+### Using step types
+
+The tour machine supports different types of steps, allowing you to create a
+diverse and interactive tour experience. The available step types are defined in
+the `StepType` type:
+
+- `tooltip`: Displays the step content as a tooltip, typically positioned near
+  the target element.
+
+- `dialog`: Shows the step content in a modal dialog centered on screen,
+  useful for starting or ending the tour. This usually don't have a `target`
+  defined.
+
+- `floating`: Presents the step content as a floating element, which can be
+  positioned flexibly on the screen. This usually don't have a `target` defined.
+
+- `wait`: A special type that waits for a specific condition before proceeding
+  to the next step.
+
+```tsx
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'tooltip',
+    placement: 'top-start',
+    target: () => document.querySelector('#target-1'),
+    title: 'Tooltip Step',
+    description: 'This is a tooltip step',
+  },
+  {
+    id: 'step-2',
+    type: 'dialog',
+    title: 'Dialog Step',
+    description: 'This is a dialog step',
+  },
+  {
+    id: 'step-3',
+    type: 'floating',
+    placement: 'top-start',
+    title: 'Floating Step',
+    description: 'This is a floating step',
+  },
+  {
+    id: 'step-4',
+    type: 'wait',
+    title: 'Wait Step',
+    description: 'This is a wait step',
+    effect({ next }) {
+      // do something and go next
+      // you can also return a cleanup
+    },
+  },
+]
+```
+
+### Configuring actions
+
+Every step supports a list of actions that are rendered in the step footer.Use
+the `actions` property to define each action.
+
+```tsx
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'dialog',
+    title: 'Dialog Step',
+    description: 'This is a dialog step',
+    actions: [{ label: 'Show me a tour!', action: 'next' }],
+  },
+]
+```
+
+### Changing tooltip placement
+
+Use the `placement` property to define the placement of the tooltip.
+
+```tsx {5}
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'tooltip',
+    placement: 'top-start',
+    // ...
+  },
+]
+```
+
+### Hiding the arrow
+
+Set `arrow: false` in the step property to hide the tooltip arrow. This is only
+useful for tooltip steps.
+
+```tsx {5}
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'tooltip',
+    arrow: false,
+  },
+]
+```
+
+### Hiding the backdrop
+
+Set `backdrop: false` in the step property to hide the backdrop. This applies to
+all step types except the `wait` step.
+
+```tsx {5}
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'dialog',
+    backdrop: false,
+  },
+]
+```
+
+### Step Effects
+
+Step effects are functions that are called before a step is opened. They are
+useful for adding custom logic to a step.
+
+This function provides the following methods:
+
+- `next()`: Call this method to move to the next step.
+- `show()`: Call this method to show the current step.
+- `update(details: StepDetails)`: Call this method to update the details of the
+  current step (say, after data has been fetched).
+
+```tsx
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'tooltip',
+    effect({ next, show, update }) {
+      fetchData().then((res) => {
+        // update the step details
+        update({ title: res.title })
+        // then show show the step
+        show()
+      })
+
+      return () => {
+        // cleanup fetch data
+      }
+    },
+  },
+]
+```
+
+### Wait Steps
+
+Wait steps are useful when you need to wait for a specific condition before
+proceeding to the next step.
+
+Use the step `effect` function to perform an action and then call `next()` to
+move to the next step.
+
+> **Note:** You cannot call `show()` in a wait step.
+
+```tsx
+const steps: TourStepDetails[] = [
+  {
+    id: 'step-1',
+    type: 'wait',
+    effect({ next }) {
+      const button = document.querySelector('#button')
+      const listener = () => next()
+      button.addEventListener('click', listener)
+      return () => button.removeEventListener('click', listener)
+    },
+  },
+]
+```
+
+## API Reference
+
+<ComponentTypes id="tour" />

@@ -1,5 +1,4 @@
 'use client'
-import type { Pages } from '.velite'
 import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
@@ -7,6 +6,7 @@ import { useParams, usePathname } from 'next/navigation'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '~/components/ui/icon'
 import { recipe } from '../sidebar.recipe'
+import type { Pages } from '.velite'
 
 const styles = recipe()
 

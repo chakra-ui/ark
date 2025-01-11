@@ -9,7 +9,10 @@ import { Toaster } from '~/components/toaster'
 import './global.css'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
-const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
+const roboto = Roboto_Mono({
+  subsets: ['latin'],
+  variable: '--font-roboto-mono',
+})
 
 const description =
   'A headless UI library with over 45+ components designed to build reusable, scalable Design Systems that works for a wide range of JS frameworks.'

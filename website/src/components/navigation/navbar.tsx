@@ -26,7 +26,9 @@ export const Navbar = () => {
           <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
             <NavbarLinks framework={framework} />
             <Divider orientation="vertical" h="6" />
-            <FrameworkSelect />
+            <div id="framework-select">
+              <FrameworkSelect />
+            </div>
             <Divider orientation="vertical" h="6" />
             <HStack gap="2">
               <HStack gap="0">

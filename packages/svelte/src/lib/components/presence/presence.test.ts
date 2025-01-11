@@ -39,7 +39,9 @@ describe('Presence', () => {
   })
 
   it('should control presence when lazy mounting and unmounting on exit', async () => {
-    render(ComponentUnderTest, { props: { unmountOnExit: true, lazyMount: true } })
+    render(ComponentUnderTest, {
+      props: { unmountOnExit: true, lazyMount: true },
+    })
 
     expect(screen.queryByText('Content')).not.toBeInTheDocument()
 

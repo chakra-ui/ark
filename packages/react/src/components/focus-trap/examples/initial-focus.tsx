@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
 import { FocusTrap } from '../focus-trap'
 
 export const InitialFocus = () => {
@@ -12,7 +12,12 @@ export const InitialFocus = () => {
       <button onClick={toggle}>{trapped ? 'End Trap' : 'Start Trap'}</button>
       <FocusTrap disabled={!trapped} initialFocus={() => inputRef.current}>
         <div
-          style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingBlock: '1rem' }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            paddingBlock: '1rem',
+          }}
         >
           <input type="text" placeholder="First input" />
           <input ref={inputRef} type="text" placeholder="Second input (initial focus)" />

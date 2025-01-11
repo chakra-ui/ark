@@ -1,5 +1,5 @@
-import { globby } from 'globby'
 import { readFileSync } from 'node:fs'
+import { globby } from 'globby'
 import { type ExportDeclaration, Node, Project } from 'ts-morph'
 
 const frameworks = ['react', 'solid', 'vue']

@@ -20,7 +20,12 @@ export const Autofocus = () => {
       {trapped && (
         <FocusTrap disabled={!trapped} setReturnFocus={getButtonNode}>
           <div
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingBlock: '1rem' }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              paddingBlock: '1rem',
+            }}
           >
             <input type="text" placeholder="Regular input" />
             {/* biome-ignore lint/a11y/noAutofocus: <explanation> */}

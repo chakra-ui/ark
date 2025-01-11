@@ -1,6 +1,6 @@
+import { parse } from 'node:path'
 import { readFileSync, readJsonSync, writeJsonSync } from 'fs-extra'
 import { globby } from 'globby'
-import { parse } from 'node:path'
 
 const toPascalCase = (input: string): string =>
   input

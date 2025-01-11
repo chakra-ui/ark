@@ -1,10 +1,10 @@
-import { types } from '.velite'
 import { Fragment } from 'react'
 import { Heading } from '~/components/ui/heading'
 import { getServerContext } from '~/lib/server-context'
 import { DataAttrTable } from './data-attr-table'
 import { EmitsTable } from './emits-table'
 import { PropsTable } from './props-table'
+import { types } from '.velite'
 
 interface Props {
   id: string

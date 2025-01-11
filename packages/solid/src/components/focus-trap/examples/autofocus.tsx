@@ -1,5 +1,5 @@
 import { FocusTrap } from '@ark-ui/solid/focus-trap'
-import { createSignal, Show } from 'solid-js'
+import { Show, createSignal } from 'solid-js'
 
 export const Autofocus = () => {
   const [trapped, setTrapped] = createSignal(false)
