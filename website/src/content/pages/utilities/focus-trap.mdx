@@ -1,0 +1,35 @@
+---
+id: focus-trap
+title: Focus Trap
+description: Trap focus within a specified container.
+status: new
+---
+
+## Motivation
+
+Focus trapping is essential for modal interfaces and other interactive elements that require user
+attention.
+
+The `FocusTrap` component helps maintain accessibility by ensuring keyboard focus remains within a
+designated container until explicitly released.
+
+## Examples
+
+<Example id="basic" />
+
+### Autofocus
+
+The focus trap respects elements with the `autofocus` attribute.
+
+<Example id="autofocus" />
+
+### Initial Focus
+
+Use the `initialFocus` prop to set the element that should receive initial focus when the trap is
+activated.
+
+<Example id="initial-focus" />
+
+## API Reference
+
+<ComponentTypes id="focus-trap" />
