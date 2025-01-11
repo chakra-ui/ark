@@ -8,7 +8,15 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **[NEW] FocusTrap**: Added `FocusTrap` component for trapping focus within a container.
+- **[NEW] Tour**: Introduced the `Tour` component to guide users through the interface. For more
+  details, check the [Tour documentation](https://ark-ui.com/docs/react/components/tour).
+- **[NEW] FocusTrap**: Implemented the `FocusTrap` component to confine focus within a specified
+  container.
+
+### Fixed
+
+- **HoverCard, Tooltip**: Resolved an issue where the controlled open state could become
+  inconsistent during the `opening` or `closing` phases.
 
 ## [4.7.0] - 2025-01-08
 
