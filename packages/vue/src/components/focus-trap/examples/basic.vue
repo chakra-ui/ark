@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { FocusTrap } from '@ark-ui/vue/focus-trap'
+import { FocusTrap } from "@ark-ui/vue/focus-trap";
+import { ref } from "vue";
 
-const trapped = ref(false)
+const trapped = ref(false);
 </script>
 
 <template>
