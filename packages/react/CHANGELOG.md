@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.0] - 2025-01-11
+
 ### Added
 
 - **[NEW] Tour**: Introduced the `Tour` component to guide users through the interface. For more
