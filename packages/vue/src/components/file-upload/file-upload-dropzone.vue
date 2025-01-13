@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { DropzoneProps } from "@zag-js/file-upload";
 import type { HTMLAttributes } from "vue";
+import type { BooleanDefaults } from "../../types";
 import type { PolymorphicProps } from "../factory";
 
 export interface FileUploadDropzoneBaseProps
