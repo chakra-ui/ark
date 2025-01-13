@@ -201,7 +201,7 @@
     "lucide-solid": "0.469.0",
     "release-it": "17.11.0",
     "resize-observer-polyfill": "1.5.1",
-    "solid-js": "1.9.3",
+    "solid-js": "1.9.4",
     "storybook": "8.5.0-beta.7",
     "storybook-solidjs": "1.0.0-beta.6",
     "storybook-solidjs-vite": "1.0.0-beta.6",
