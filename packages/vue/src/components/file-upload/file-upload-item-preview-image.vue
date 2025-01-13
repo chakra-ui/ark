@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { ImgHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { ImgHTMLAttributes } from "vue";
+import type { PolymorphicProps } from "../factory";
 
 export interface FileUploadItemPreviewImageBaseProps extends PolymorphicProps {}
 export interface FileUploadItemPreviewImageProps
-  extends FileUploadItemPreviewImageBaseProps,
-    /**
-     * @vue-ignore
-     */
-    ImgHTMLAttributes {}
+	extends FileUploadItemPreviewImageBaseProps,
+		/**
+		 * @vue-ignore
+		 */
+		ImgHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -34,5 +34,5 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.img v-bind="fileUpload.getItemPreviewImageProps({ ...itemProps, url })" />
+  <ark.img v-if="url" v-bind="fileUpload.getItemPreviewImageProps({ ...itemProps, url })" />
 </template>

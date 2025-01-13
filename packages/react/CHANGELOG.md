@@ -6,6 +6,17 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.1] - 2025-01-13
+
+### Fixed
+
+- **FileUpload**
+
+  - Fixed issue where the preview image shows a brief warning when a new image file is added.
+  - Improve click detection for dropzone and add support for `disableClick` prop on dropzone.
+
+- **General**: Don't reset form-related components if reset event is cancelled
+
 ## [4.8.0] - 2025-01-11
 
 ### Added
