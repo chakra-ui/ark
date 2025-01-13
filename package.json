@@ -35,7 +35,7 @@
     "prettier": "3.4.2",
     "prettier-plugin-svelte": "3.3.2",
     "turbo": "2.3.3",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "vercel": "39.2.6"
   },
   "packageManager": "bun@1.1.42",
