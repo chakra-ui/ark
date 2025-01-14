@@ -15,14 +15,12 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
+- Resolved an issue where form-related components reset despite the reset event being cancelled.
 - **HoverCard, Tooltip**: Resolved an issue where the controlled open state could become
   inconsistent during the `opening` or `closing` phases.
-- **FileUpload**
-
-  - Fixed issue where the preview image shows a brief warning when a new image file is added.
-  - Improve click detection for dropzone and add support for `disableClick` prop on dropzone.
-
-- **General**: Don't reset form-related components if reset event is cancelled
+- **FileUpload**:
+  - Fixed a brief warning display when a new image file is added to the preview.
+  - Enhanced click detection for the dropzone and added support for the `disableClick` prop.
 
 ## [4.8.0] - 2025-01-08
 

@@ -30,7 +30,7 @@ export const FileUploadItemPreviewImage = (
 	);
 
 	return (
-		<Show when={url()} fallback={null}>
+		<Show when={url()}>
 			<ark.img {...mergedProps} />
 		</Show>
 	);
