@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.8.1] - 2025-01-14
+
 ### Fixed
 
 - Resolved an issue where form-related components reset despite the reset event being cancelled.
