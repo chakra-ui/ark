@@ -27,22 +27,18 @@ To set up the tour correctly, it's essential to understand its anatomy and the n
 
 ### Using step types
 
-The tour machine supports different types of steps, allowing you to create a
-diverse and interactive tour experience. The available step types are defined in
-the `StepType` type:
+The tour machine supports different types of steps, allowing you to create a diverse and interactive
+tour experience. The available step types are defined in the `StepType` type:
 
-- `tooltip`: Displays the step content as a tooltip, typically positioned near
-  the target element.
+- `tooltip`: Displays the step content as a tooltip, typically positioned near the target element.
 
-- `dialog`: Shows the step content in a modal dialog centered on screen,
-  useful for starting or ending the tour. This usually don't have a `target`
-  defined.
+- `dialog`: Shows the step content in a modal dialog centered on screen, useful for starting or
+  ending the tour. This usually don't have a `target` defined.
 
-- `floating`: Presents the step content as a floating element, which can be
-  positioned flexibly on the screen. This usually don't have a `target` defined.
+- `floating`: Presents the step content as a floating element, which can be positioned flexibly on
+  the screen. This usually don't have a `target` defined.
 
-- `wait`: A special type that waits for a specific condition before proceeding
-  to the next step.
+- `wait`: A special type that waits for a specific condition before proceeding to the next step.
 
 ```tsx
 const steps: TourStepDetails[] = [
@@ -82,8 +78,8 @@ const steps: TourStepDetails[] = [
 
 ### Configuring actions
 
-Every step supports a list of actions that are rendered in the step footer.Use
-the `actions` property to define each action.
+Every step supports a list of actions that are rendered in the step footer.Use the `actions`
+property to define each action.
 
 ```tsx
 const steps: TourStepDetails[] = [
@@ -114,8 +110,8 @@ const steps: TourStepDetails[] = [
 
 ### Hiding the arrow
 
-Set `arrow: false` in the step property to hide the tooltip arrow. This is only
-useful for tooltip steps.
+Set `arrow: false` in the step property to hide the tooltip arrow. This is only useful for tooltip
+steps.
 
 ```tsx {5}
 const steps: TourStepDetails[] = [
@@ -129,8 +125,8 @@ const steps: TourStepDetails[] = [
 
 ### Hiding the backdrop
 
-Set `backdrop: false` in the step property to hide the backdrop. This applies to
-all step types except the `wait` step.
+Set `backdrop: false` in the step property to hide the backdrop. This applies to all step types
+except the `wait` step.
 
 ```tsx {5}
 const steps: TourStepDetails[] = [
@@ -144,15 +140,15 @@ const steps: TourStepDetails[] = [
 
 ### Step Effects
 
-Step effects are functions that are called before a step is opened. They are
-useful for adding custom logic to a step.
+Step effects are functions that are called before a step is opened. They are useful for adding
+custom logic to a step.
 
 This function provides the following methods:
 
 - `next()`: Call this method to move to the next step.
 - `show()`: Call this method to show the current step.
-- `update(details: StepDetails)`: Call this method to update the details of the
-  current step (say, after data has been fetched).
+- `update(details: StepDetails)`: Call this method to update the details of the current step (say,
+  after data has been fetched).
 
 ```tsx
 const steps: TourStepDetails[] = [
@@ -177,11 +173,10 @@ const steps: TourStepDetails[] = [
 
 ### Wait Steps
 
-Wait steps are useful when you need to wait for a specific condition before
-proceeding to the next step.
+Wait steps are useful when you need to wait for a specific condition before proceeding to the next
+step.
 
-Use the step `effect` function to perform an action and then call `next()` to
-move to the next step.
+Use the step `effect` function to perform an action and then call `next()` to move to the next step.
 
 > **Note:** You cannot call `show()` in a wait step.
 
@@ -198,6 +193,24 @@ const steps: TourStepDetails[] = [
     },
   },
 ]
+```
+
+## Styling guide
+
+Ensure the `box-sizing` is set to `border-box` for the means of measuring the tour target.
+
+```css
+* {
+  box-sizing: border-box;
+}
+```
+
+Ensure the `body` has a `position` of `relative`.
+
+```css
+body {
+  position: relative;
+}
 ```
 
 ## API Reference
