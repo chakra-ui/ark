@@ -6,6 +6,34 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Color Picker, Hover Card, Tooltip**: Fix issue where placement could intermittently shift due to
+  `data-placement` being updated
+
+- **File Upload**
+
+  - Fixed an issue where change event is not fired when dropping files into the dropzone
+  - Fixed an issue where `api.setClipboardFiles(...)` was still called when file upload is disabled
+  - Fixed an issue where machine transitions to `dragging` when disabled
+  - Fixed an issue where rejected files could not be deleted using the item delete trigger
+  - Exposed disabled state via `api.disabled`
+
+- **Tour**: Fixed an issue where dialog tour step doesn't sync its z-index with the content
+
+### Added
+
+- **Date Picker**
+  - Added support for `minView` and `maxView` to provide better control of the datepicker views,
+    making it easier to build month and year only pickers
+  - Added new `parse` method to parse input value and return valid date, paired with `format` option
+    for better UX
+  - Added `locale` and `timeZone` to the `format` method
+  - Added support for `placeholder` context property to customize input placeholder text
+  - Fixed an issue where entering very large invalid dates in input field would cause crash
+  - Fixed an issue in year view where user is unable to select year when `min` and `max` dates are
+    less than 1 year and overlap 2 unique years
+
 ## [4.8.1] - 2025-01-14
 
 ### Fixed
