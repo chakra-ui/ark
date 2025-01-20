@@ -22,7 +22,7 @@
     "@types/voca": "1.4.6",
     "find-packages": "10.0.4",
     "find-up": "7.0.0",
-    "fs-extra": "11.2.0",
+    "fs-extra": "11.3.0",
     "globby": "14.0.2",
     "pkg-dir": "8.0.0",
     "ts-morph": "25.0.0",
