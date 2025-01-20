@@ -164,7 +164,7 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
-		"@internationalized/date": "3.6.0",
+		"@internationalized/date": "3.7.0",
 		"@zag-js/accordion": "0.81.2",
 		"@zag-js/anatomy": "0.81.2",
 		"@zag-js/auto-resize": "0.81.2",
