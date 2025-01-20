@@ -237,7 +237,7 @@
 		"clean-package": "2.2.0",
 		"globby": "14.0.2",
 		"jsdom": "25.0.1",
-		"lucide-react": "0.471.1",
+		"lucide-react": "0.473.0",
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
 		"react-frame-component": "5.2.7",
