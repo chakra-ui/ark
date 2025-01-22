@@ -24,11 +24,7 @@
         "isRequired": true,
         "description": "Whether the option is checked"
       },
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the option"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -164,23 +160,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "onValueChange": {
-        "type": "(e: ValueChangeDetails) => void",
-        "isRequired": false
-      },
-      "value": {
-        "type": "string",
-        "isRequired": false
-      }
+      "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
+      "value": { "type": "string", "isRequired": false }
     }
   },
   "RadioItem": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the option"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -309,11 +295,7 @@
         "isRequired": false,
         "description": "Function called when a menu item is selected."
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the menu is open"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the menu is open" },
       "positioning": {
         "type": "PositioningOptions",
         "isRequired": false,
@@ -340,10 +322,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseMenuReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseMenuReturn", "isRequired": true },
       "immediate": {
         "type": "boolean",
         "isRequired": false,

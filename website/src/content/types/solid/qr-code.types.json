@@ -1,11 +1,7 @@
 {
   "DownloadTrigger": {
     "props": {
-      "fileName": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The name of the file."
-      },
+      "fileName": { "type": "string", "isRequired": true, "description": "The name of the file." },
       "mimeType": {
         "type": "DataUrlType",
         "isRequired": true,
@@ -77,19 +73,12 @@
         "isRequired": false,
         "description": "Callback fired when the value changes."
       },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value to encode."
-      }
+      "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseQrCodeReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseQrCodeReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

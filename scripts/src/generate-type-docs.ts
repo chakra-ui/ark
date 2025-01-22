@@ -161,7 +161,7 @@ function extractTypeExports(fileContent?: string) {
 
 const extractTypesForFramework = async (framework: string) => {
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  const rootDir = dirname(findUpSync('bun.lockb')!)
+  const rootDir = dirname(findUpSync('bun.lock')!)
   process.chdir(path.join(rootDir, 'packages', framework))
 
   const outDir = path.join(rootDir, 'website', 'src', 'content', 'types')

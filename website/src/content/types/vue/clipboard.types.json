@@ -74,10 +74,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "MachineApi<PropTypes>",
-        "isRequired": true
-      },
+      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

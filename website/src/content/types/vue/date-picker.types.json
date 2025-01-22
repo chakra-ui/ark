@@ -33,7 +33,17 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": { "type": "number", "isRequired": false }
+      "fixOnBlur": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to fix the input value on blur."
+      },
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The index of the input to focus."
+      }
     }
   },
   "Label": {
@@ -117,7 +127,16 @@
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       },
-      "update:open": { "type": "[open: boolean]", "isRequired": true },
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the open state changes."
+      },
+      "update:view": {
+        "type": "[view: DateView]",
+        "isRequired": true,
+        "description": "The callback fired when the view changes."
+      },
       "valueChange": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
@@ -144,12 +163,17 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the date picker when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the date picker when it is first rendered."
       },
       "defaultValue": {
         "type": "DateValue[]",
         "isRequired": false,
-        "description": "The initial value of the date picker when it is first rendered.\nUse when you do not need to control the state of the date picker."
+        "description": "The initial value of the date picker when it is first rendered."
+      },
+      "defaultView": {
+        "type": "DateView",
+        "isRequired": false,
+        "description": "The initial view of the date picker when it is first rendered."
       },
       "disabled": {
         "type": "boolean",
@@ -167,7 +191,7 @@
         "description": "The focused date."
       },
       "format": {
-        "type": "(date: DateValue) => string",
+        "type": "(date: DateValue, details: LocaleDetails) => string",
         "isRequired": false,
         "description": "The format of the date to display in the input."
       },
@@ -203,10 +227,22 @@
         "isRequired": false,
         "description": "The maximum date that can be selected."
       },
+      "maxView": {
+        "type": "DateView",
+        "defaultValue": "\"year\"",
+        "isRequired": false,
+        "description": "The maximum view of the calendar"
+      },
       "min": {
         "type": "DateValue",
         "isRequired": false,
         "description": "The minimum date that can be selected."
+      },
+      "minView": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
+        "isRequired": false,
+        "description": "The minimum view of the calendar"
       },
       "modelValue": {
         "type": "DateValue[]",
@@ -227,6 +263,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the datepicker is open"
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text to display in the input."
       },
       "positioning": {
         "type": "PositioningOptions",

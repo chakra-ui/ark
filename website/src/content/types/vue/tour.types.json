@@ -1,5 +1,15 @@
 {
-  "Circle": {
+  "ActionTrigger": {
+    "props": {
+      "action": { "type": "StepAction", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Arrow": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -8,7 +18,7 @@
       }
     }
   },
-  "CircleRange": {
+  "ArrowTip": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -17,7 +27,7 @@
       }
     }
   },
-  "CircleTrack": {
+  "Backdrop": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -26,7 +36,7 @@
       }
     }
   },
-  "Label": {
+  "CloseTrigger": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -35,7 +45,43 @@
       }
     }
   },
-  "Range": {
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ProgressText": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -46,79 +92,49 @@
   },
   "Root": {
     "emits": {
-      "update:modelValue": {
-        "type": "[value: number | null]",
+      "focusOutside": {
+        "type": "[event: FocusOutsideEvent]",
         "isRequired": true,
-        "description": "The callback fired when the model value changes."
+        "description": "Function called when the focus is moved outside the component"
       },
-      "valueChange": {
-        "type": "[details: ValueChangeDetails]",
+      "interactOutside": {
+        "type": "[event: InteractOutsideEvent]",
         "isRequired": true,
-        "description": "Callback fired when the value changes."
+        "description": "Function called when an interaction happens outside the component"
+      },
+      "pointerDownOutside": {
+        "type": "[event: PointerDownOutsideEvent]",
+        "isRequired": true,
+        "description": "Function called when the pointer is pressed down outside the component"
+      },
+      "statusChange": {
+        "type": "[details: StatusChangeDetails]",
+        "isRequired": true,
+        "description": "Callback when the tour is opened or closed"
+      },
+      "stepChange": {
+        "type": "[details: StepChangeDetails]",
+        "isRequired": true,
+        "description": "Callback when the highlighted step changes"
       }
     },
     "props": {
-      "asChild": {
+      "tour": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "lazyMount": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Whether to enable lazy mounting"
       },
-      "defaultValue": {
-        "type": "number",
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "The initial value of the tabs when it is first rendered.\nUse when you do not need to control the state of the tabs."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
-      "ids": {
-        "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
-        "isRequired": false,
-        "description": "The ids of the elements in the progress bar. Useful for composition."
-      },
-      "max": {
-        "type": "number",
-        "defaultValue": "100",
-        "isRequired": false,
-        "description": "The maximum allowed value of the progress bar."
-      },
-      "min": {
-        "type": "number",
-        "defaultValue": "0",
-        "isRequired": false,
-        "description": "The minimum allowed value of the progress bar."
-      },
-      "modelValue": {
-        "type": "number",
-        "isRequired": false,
-        "description": "Use this prop to control the value of the progress."
-      },
-      "orientation": {
-        "type": "Orientation",
-        "defaultValue": "\"horizontal\"",
-        "isRequired": false,
-        "description": "The orientation of the element."
-      },
-      "translations": {
-        "type": "IntlTranslations",
-        "isRequired": false,
-        "description": "The localized messages to use."
+        "description": "Whether to unmount on exit."
       }
     }
   },
-  "RootProvider": {
-    "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Track": {
+  "Spotlight": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -127,18 +143,8 @@
       }
     }
   },
-  "ValueText": {
+  "Title": {
     "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "View": {
-    "props": {
-      "state": { "type": "ProgressState", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

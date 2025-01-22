@@ -69,11 +69,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "item": {
-        "type": "any",
-        "isRequired": false,
-        "description": "The item to render"
-      },
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" },
       "persistFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -352,10 +348,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseComboboxReturn<T>",
-        "isRequired": true
-      },
+      "value": { "type": "UseComboboxReturn<T>", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

@@ -1,11 +1,7 @@
 {
   "TabContent": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the tab"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -33,11 +29,7 @@
   },
   "TabTrigger": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the tab"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the tab" },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
@@ -127,19 +119,12 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The selected tab id"
-      }
+      "value": { "type": "string", "isRequired": false, "description": "The selected tab id" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseTabsReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseTabsReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

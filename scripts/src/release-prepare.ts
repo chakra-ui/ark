@@ -62,7 +62,7 @@ const generateKeywords = async (pkgJsonPath: string) => {
 
 const main = async () => {
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  const root = dirname(findUpSync('bun.lockb')!)
+  const root = dirname(findUpSync('bun.lock')!)
   const packages = await globby([join(root, 'packages/*/package.json')])
 
   for (const pkg of packages) {

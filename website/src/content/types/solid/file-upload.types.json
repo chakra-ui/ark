@@ -14,6 +14,11 @@
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disableClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disable the click event on the dropzone"
       }
     }
   },
@@ -79,10 +84,7 @@
   },
   "Item": {
     "props": {
-      "file": {
-        "type": "File",
-        "isRequired": true
-      },
+      "file": { "type": "File", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'li'>) => Element",
         "isRequired": false,
@@ -220,10 +222,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseFileUploadReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseFileUploadReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

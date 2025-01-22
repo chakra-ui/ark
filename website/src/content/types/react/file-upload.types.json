@@ -15,6 +15,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disableClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disable the click event on the dropzone"
       }
     },
     "element": "HTMLDivElement"

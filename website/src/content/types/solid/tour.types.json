@@ -1,41 +1,87 @@
 {
-  "Circle": {
+  "ActionTrigger": {
     "props": {
+      "action": { "type": "StepAction", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'svg'>) => Element",
+        "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
-  "CircleRange": {
+  "Arrow": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'circle'>) => Element",
+        "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
-  "CircleTrack": {
+  "ArrowTip": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'circle'>) => Element",
+        "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
-  "Label": {
+  "Backdrop": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'label'>) => Element",
+        "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
-  "Range": {
+  "CloseTrigger": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'div'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ProgressText": {
     "props": {
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
@@ -46,68 +92,37 @@
   },
   "Root": {
     "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+      "tour": { "type": "UseTourReturn", "isRequired": true },
+      "immediate": {
+        "type": "boolean",
         "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
-      "defaultValue": {
-        "type": "number",
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "The initial value of the progress when it is first rendered.\nUse when you do not need to control the state of the progress."
+        "description": "Whether to enable lazy mounting"
       },
-      "ids": {
-        "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
+      "onExitComplete": {
+        "type": "() => void",
         "isRequired": false,
-        "description": "The ids of the elements in the progress bar. Useful for composition."
+        "description": "Function called when the animation ends in the closed state"
       },
-      "max": {
-        "type": "number",
-        "defaultValue": "100",
+      "present": {
+        "type": "boolean",
         "isRequired": false,
-        "description": "The maximum allowed value of the progress bar."
+        "description": "Whether the node is present (controlled by the user)"
       },
-      "min": {
-        "type": "number",
-        "defaultValue": "0",
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "The minimum allowed value of the progress bar."
-      },
-      "onValueChange": {
-        "type": "(details: ValueChangeDetails) => void",
-        "isRequired": false,
-        "description": "Callback fired when the value changes."
-      },
-      "orientation": {
-        "type": "Orientation",
-        "defaultValue": "\"horizontal\"",
-        "isRequired": false,
-        "description": "The orientation of the element."
-      },
-      "translations": {
-        "type": "IntlTranslations",
-        "isRequired": false,
-        "description": "The localized messages to use."
-      },
-      "value": {
-        "type": "number",
-        "defaultValue": "50",
-        "isRequired": false,
-        "description": "The current value of the progress bar."
+        "description": "Whether to unmount on exit."
       }
     }
   },
-  "RootProvider": {
-    "props": {
-      "value": { "type": "UseProgressReturn", "isRequired": true },
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Track": {
+  "Spotlight": {
     "props": {
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
@@ -116,20 +131,10 @@
       }
     }
   },
-  "ValueText": {
+  "Title": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "View": {
-    "props": {
-      "state": { "type": "ProgressState", "isRequired": true },
-      "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "(props: ParentProps<'h2'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }

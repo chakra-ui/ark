@@ -36,7 +36,17 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": { "type": "number", "isRequired": false }
+      "fixOnBlur": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to fix the input value on blur."
+      },
+      "index": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The index of the input to focus."
+      }
     },
     "element": "HTMLInputElement"
   },
@@ -82,7 +92,10 @@
   },
   "PresetTrigger": {
     "props": {
-      "value": { "type": "PresetTriggerValue", "isRequired": true },
+      "value": {
+        "type": "PresetTriggerValue",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -127,12 +140,17 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the date picker when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the date picker when it is first rendered."
       },
       "defaultValue": {
         "type": "DateValue[]",
         "isRequired": false,
-        "description": "The initial value of the date picker when it is first rendered.\nUse when you do not need to control the state of the date picker."
+        "description": "The initial value of the date picker when it is first rendered."
+      },
+      "defaultView": {
+        "type": "DateView",
+        "isRequired": false,
+        "description": "The initial view of the date picker when it is first rendered."
       },
       "disabled": {
         "type": "boolean",
@@ -150,7 +168,7 @@
         "description": "The focused date."
       },
       "format": {
-        "type": "(date: DateValue) => string",
+        "type": "(date: DateValue, details: LocaleDetails) => string",
         "isRequired": false,
         "description": "The format of the date to display in the input."
       },
@@ -191,10 +209,22 @@
         "isRequired": false,
         "description": "The maximum date that can be selected."
       },
+      "maxView": {
+        "type": "DateView",
+        "defaultValue": "\"year\"",
+        "isRequired": false,
+        "description": "The maximum view of the calendar"
+      },
       "min": {
         "type": "DateValue",
         "isRequired": false,
         "description": "The minimum date that can be selected."
+      },
+      "minView": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
+        "isRequired": false,
+        "description": "The minimum view of the calendar"
       },
       "name": {
         "type": "string",
@@ -235,6 +265,16 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the datepicker is open"
+      },
+      "parse": {
+        "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
+        "isRequired": false,
+        "description": "Function to parse the date from the input back to a DateValue."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text to display in the input."
       },
       "positioning": {
         "type": "PositioningOptions",
@@ -295,7 +335,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseDatePickerReturn", "isRequired": true },
+      "value": {
+        "type": "UseDatePickerReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -343,15 +386,27 @@
   },
   "TableCell": {
     "props": {
-      "value": { "type": "number | DateValue", "isRequired": true },
+      "value": {
+        "type": "number | DateValue",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "columns": { "type": "number", "isRequired": false },
-      "disabled": { "type": "boolean", "isRequired": false },
-      "visibleRange": { "type": "VisibleRange", "isRequired": false }
+      "columns": {
+        "type": "number",
+        "isRequired": false
+      },
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      },
+      "visibleRange": {
+        "type": "VisibleRange",
+        "isRequired": false
+      }
     },
     "element": "HTMLTableCellElement"
   },
@@ -392,7 +447,10 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "columns": { "type": "number", "isRequired": false }
+      "columns": {
+        "type": "number",
+        "isRequired": false
+      }
     },
     "element": "HTMLTableElement"
   },
@@ -428,7 +486,10 @@
   },
   "View": {
     "props": {
-      "view": { "type": "DateView", "isRequired": true },
+      "view": {
+        "type": "DateView",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

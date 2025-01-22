@@ -5,8 +5,8 @@ import { findPackages } from 'find-packages'
 import { findUpSync } from 'find-up'
 
 async function getZagPackages(): Promise<Record<string, string>> {
-  const lockFilePath = findUpSync('bun.lockb')
-  if (!lockFilePath) throw new ReferenceError('bun.lockb not found')
+  const lockFilePath = findUpSync('bun.lock')
+  if (!lockFilePath) throw new ReferenceError('bun.lock not found')
 
   const rootDir = dirname(lockFilePath)
 
@@ -32,12 +32,12 @@ async function main() {
   const overrides = await getZagPackages()
 
   const revert = process.argv.includes('--revert')
-  const lockFilePath = resolve('../bun.lockb')
+  const lockFilePath = resolve('../bun.lock')
 
   const packageJson = JSON.parse(readFileSync('../package.json', 'utf-8'))
 
   if (revert) {
-    spawnSync('rm', ['-rf', '../bun.lockb'], { stdio: 'inherit' })
+    spawnSync('rm', ['-rf', '../bun.lock'], { stdio: 'inherit' })
 
     if (!packageJson.overrides) return
 
@@ -51,7 +51,7 @@ async function main() {
 
     writeFileSync('../package.json', JSON.stringify(packageJson, null, 2))
 
-    const oldLockFilePath = resolve('../bun.lockb.copy')
+    const oldLockFilePath = resolve('../bun.lock.copy')
     spawnSync('mv', [oldLockFilePath, lockFilePath], { stdio: 'inherit' })
 
     //
