@@ -8,8 +8,10 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **File Upload**: Fix issue where multiple files could get added a single upload operation.
-- **DatePicker**: Fix issue where setting `defaultView` doesn't switch the view to the correct view.
+- **FileUpload**: Resolved an issue where multiple files were added during a single upload
+  operation.
+- **DatePicker**: Fixed an issue where the `defaultView` property did not correctly switch to the
+  specified view.
 
 ## [4.9.0] - 2025-01-22
 
