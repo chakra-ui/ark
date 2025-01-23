@@ -184,7 +184,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@modular-forms/solid": "0.25.0",
-    "@release-it/keep-a-changelog": "5.0.0",
+    "@release-it/keep-a-changelog": "6.0.0",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "8.5.0-beta.7",
     "@storybook/addon-essentials": "8.5.0-beta.7",
