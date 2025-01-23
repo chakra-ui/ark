@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **File Upload**: Fix issue where multiple files could get added a single upload operation.
+
 ## [4.10.0] - 2025-01-22
 
 ### Added

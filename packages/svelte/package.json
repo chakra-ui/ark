@@ -1,111 +1,114 @@
 {
-	"name": "@ark-ui/svelte",
-	"version": "0.3.0",
-	"description": "A collection of unstyled, accessible UI components for Svelte",
-	"keywords": ["avatar", "svelte"],
-	"license": "MIT",
-	"homepage": "https://ark-ui.com",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/chakra-ui/ark.git",
-		"directory": "packages/svelte"
-	},
-	"bugs": {
-		"url": "https://github.com/chakra-ui/ark/issues"
-	},
-	"type": "module",
-	"svelte": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"files": [
-		"dist",
-		"!dist/**/*.stories.*",
-		"!dist/**/examples/**",
-		"!dist/**/*.test.*"
-	],
-	"exports": {
-		".": {
-			"types": "./src/lib/index.ts",
-			"svelte": "./src/lib/index.ts"
-		},
-		"./anatomy": {
-			"types": "./src/lib/components/anatomy.ts",
-			"svelte": "./src/lib/components/anatomy.ts"
-		},
-		"./environment": {
-			"types": "./src/lib/providers/environment/index.ts",
-			"svelte": "./src/lib/providers/environment/index.ts"
-		},
-		"./locale": {
-			"types": "./src/lib/providers/locale/index.ts",
-			"svelte": "./src/lib/providers/locale/index.ts"
-		},
-		"./*": {
-			"types": "./src/lib/components/*/index.ts",
-			"svelte": "./src/lib/components/*/index.ts"
-		}
-	},
-	"scripts": {
-		"build": "svelte-kit sync && svelte-package",
-		"dev": "vite dev",
-		"storybook": "storybook dev -p 6006",
-		"test": "vitest",
-		"test:ci": "vitest --run",
-		"typecheck": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"release-it": "release-it --config ../../release-it.json",
-		"prepack": "clean-package",
-		"postpack": "clean-package restore"
-	},
-	"clean-package": {
-		"replace": {
-			"exports.\\..svelte": "./dist/index.js",
-			"exports.\\..types": "./dist/index.d.ts",
-			"exports.\\./anatomy.svelte": "./dist/components/anatomy.js",
-			"exports.\\./anatomy.types": "./dist/components/anatomy.d.ts",
-			"exports.\\./locale.svelte": "./dist/providers/locale/index.js",
-			"exports.\\./locale.types": "./dist/providers/locale/index.d.ts",
-			"exports.\\./environment.svelte": "./dist/providers/environment/index.js",
-			"exports.\\./environment.types": "./dist/providers/environment/index.d.ts",
-			"exports.\\./*.svelte": "./dist/components/*/index.js",
-			"exports.\\./*.types": "./dist/components/*/index.d.ts"
-		}
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"sideEffects": false,
-	"dependencies": {
-		"@zag-js/anatomy": "0.82.0",
-		"@zag-js/avatar": "0.82.0",
-		"@zag-js/core": "0.82.0",
-		"@zag-js/collection": "0.82.0",
-		"@zag-js/dom-query": "0.82.0",
-		"@zag-js/i18n-utils": "0.82.0",
-		"@zag-js/svelte": "0.82.0",
-		"nanoid": "5.0.9"
-	},
-	"devDependencies": {
-		"@release-it/keep-a-changelog": "5.0.0",
-		"@storybook/addon-a11y": "8.4.7",
-		"@storybook/addon-essentials": "8.4.7",
-		"@storybook/sveltekit": "8.4.7",
-		"@sveltejs/adapter-auto": "3.3.1",
-		"@sveltejs/kit": "2.16.0",
-		"@sveltejs/package": "2.3.7",
-		"@sveltejs/vite-plugin-svelte": "4.0.4",
-		"@testing-library/jest-dom": "6.6.3",
-		"@testing-library/svelte": "5.2.6",
-		"@testing-library/user-event": "14.5.2",
-		"clean-package": "2.2.0",
-		"release-it": "17.11.0",
-		"storybook": "8.4.7",
-		"svelte": "5.19.0",
-		"svelte-check": "4.1.4",
-		"tslib": "2.8.1",
-		"typescript": "5.7.3",
-		"vite": "5.4.11",
-		"vitest": "2.1.8"
-	},
-	"peerDependencies": {
-		"svelte": ">=5.0.0"
-	}
+  "name": "@ark-ui/svelte",
+  "version": "0.3.0",
+  "description": "A collection of unstyled, accessible UI components for Svelte",
+  "keywords": [
+    "avatar",
+    "svelte"
+  ],
+  "license": "MIT",
+  "homepage": "https://ark-ui.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakra-ui/ark.git",
+    "directory": "packages/svelte"
+  },
+  "bugs": {
+    "url": "https://github.com/chakra-ui/ark/issues"
+  },
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/*.stories.*",
+    "!dist/**/examples/**",
+    "!dist/**/*.test.*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/lib/index.ts",
+      "svelte": "./src/lib/index.ts"
+    },
+    "./anatomy": {
+      "types": "./src/lib/components/anatomy.ts",
+      "svelte": "./src/lib/components/anatomy.ts"
+    },
+    "./environment": {
+      "types": "./src/lib/providers/environment/index.ts",
+      "svelte": "./src/lib/providers/environment/index.ts"
+    },
+    "./locale": {
+      "types": "./src/lib/providers/locale/index.ts",
+      "svelte": "./src/lib/providers/locale/index.ts"
+    },
+    "./*": {
+      "types": "./src/lib/components/*/index.ts",
+      "svelte": "./src/lib/components/*/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "svelte-kit sync && svelte-package",
+    "dev": "vite dev",
+    "storybook": "storybook dev -p 6006",
+    "test": "vitest",
+    "test:ci": "vitest --run",
+    "typecheck": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "release-it": "release-it --config ../../release-it.json",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": {
+    "replace": {
+      "exports.\\..svelte": "./dist/index.js",
+      "exports.\\..types": "./dist/index.d.ts",
+      "exports.\\./anatomy.svelte": "./dist/components/anatomy.js",
+      "exports.\\./anatomy.types": "./dist/components/anatomy.d.ts",
+      "exports.\\./locale.svelte": "./dist/providers/locale/index.js",
+      "exports.\\./locale.types": "./dist/providers/locale/index.d.ts",
+      "exports.\\./environment.svelte": "./dist/providers/environment/index.js",
+      "exports.\\./environment.types": "./dist/providers/environment/index.d.ts",
+      "exports.\\./*.svelte": "./dist/components/*/index.js",
+      "exports.\\./*.types": "./dist/components/*/index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@zag-js/anatomy": "0.82.1",
+    "@zag-js/avatar": "0.82.1",
+    "@zag-js/core": "0.82.1",
+    "@zag-js/collection": "0.82.1",
+    "@zag-js/dom-query": "0.82.1",
+    "@zag-js/i18n-utils": "0.82.1",
+    "@zag-js/svelte": "0.82.1",
+    "nanoid": "5.0.9"
+  },
+  "devDependencies": {
+    "@release-it/keep-a-changelog": "5.0.0",
+    "@storybook/addon-a11y": "8.4.7",
+    "@storybook/addon-essentials": "8.4.7",
+    "@storybook/sveltekit": "8.4.7",
+    "@sveltejs/adapter-auto": "3.3.1",
+    "@sveltejs/kit": "2.16.0",
+    "@sveltejs/package": "2.3.7",
+    "@sveltejs/vite-plugin-svelte": "4.0.4",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/svelte": "5.2.6",
+    "@testing-library/user-event": "14.5.2",
+    "clean-package": "2.2.0",
+    "release-it": "17.11.0",
+    "storybook": "8.4.7",
+    "svelte": "5.19.0",
+    "svelte-check": "4.1.4",
+    "tslib": "2.8.1",
+    "typescript": "5.7.3",
+    "vite": "5.4.11",
+    "vitest": "2.1.8"
+  },
+  "peerDependencies": {
+    "svelte": ">=5.0.0"
+  }
 }
