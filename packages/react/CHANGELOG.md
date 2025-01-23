@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.9.1] - 2025-01-23
+
 ### Fixed
 
 - **FileUpload**: Resolved an issue where multiple files were added during a single upload
