@@ -1,11 +1,11 @@
 import { getComputedStyle, getEventTarget, raf, setStyle } from '@zag-js/dom-query'
 import * as React from 'react'
 import { callAll } from '../../utils/call-all'
+import { flush } from '../../utils/flush'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 import { useRefs, useStateEffect, useStateValue, useUnmount } from '../../utils/use-state-value'
 import { useUpdateEffect } from '../../utils/use-update-effect'
-import { flushSync } from 'react-dom'
 
 interface PresenceApi {
   /**
@@ -77,7 +77,7 @@ export function usePresence(ctx: UsePresenceProps = {}) {
   })
   const invokeOnExitComplete = useEvent(() => ctx.onExitComplete?.())
   const setPrevAnimationName = useEvent(() => {
-    const exec = ctx.immediate ? flushSync : raf
+    const exec = ctx.immediate ? flush : raf
     exec(() => {
       refs.set({ prevAnimationName: getAnimationName(refs.get('styles')) })
     })
@@ -96,7 +96,7 @@ export function usePresence(ctx: UsePresenceProps = {}) {
       return send({ type: 'UNMOUNT', src: 'visibilitychange' })
     }
 
-    const exec = ctx.immediate ? flushSync : raf
+    const exec = ctx.immediate ? flush : raf
 
     exec(() => {
       const styles = refs.get('styles')
