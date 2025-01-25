@@ -19,8 +19,7 @@ export function useEvent<T extends AnyFunction>(callback: T | undefined, opts: O
   const callbackRef = useLatestRef(callback)
 
   return useCallback(
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    (...args: any[]) => {
+    (...args: Parameters<T>) => {
       if (sync) return queueMicrotask(() => callbackRef.current?.(...args))
       return callbackRef.current?.(...args)
     },

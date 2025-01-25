@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Checkbox, Tooltip, Presence, Collapsible**: Improve render performance by 42% by inlining the
+  state machine logic using our internal Zag.js compiler. This will reduce the number of re-renders
+  and improve the overall performance of the components.
+
 ## [4.9.1] - 2025-01-23
 
 ### Fixed

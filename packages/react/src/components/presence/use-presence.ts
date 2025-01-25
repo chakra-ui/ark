@@ -1,37 +1,239 @@
-import * as presence from '@zag-js/presence'
-import { normalizeProps, useMachine } from '@zag-js/react'
-import { useRef } from 'react'
-import type { Optional } from '../../types'
+import { getComputedStyle, getEventTarget, raf, setStyle } from '@zag-js/dom-query'
+import * as React from 'react'
+import { callAll } from '../../utils/call-all'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
+import { useRefs, useStateEffect, useStateValue, useUnmount } from '../../utils/use-state-value'
+import { useUpdateEffect } from '../../utils/use-update-effect'
+import { flushSync } from 'react-dom'
 
-export interface UsePresenceProps
-  extends Optional<presence.Context, 'present'>,
-    RenderStrategyProps {}
+interface PresenceApi {
+  /**
+   * Whether the animation should be skipped.
+   */
+  skip: boolean
+  /**
+   * Whether the node is present in the DOM.
+   */
+  present?: boolean
+  /**
+   * Function to set the node (as early as possible)
+   */
+  setNode(node: HTMLElement | null): void
+  /**
+   * Function to programmatically unmount the node
+   */
+  unmount(): void
+}
+
+export interface UsePresenceProps extends RenderStrategyProps {
+  /**
+   * Whether the node is present (controlled by the user)
+   */
+  present?: boolean
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  onExitComplete?(): void
+  /**
+   * Whether to synchronize the present change immediately or defer it to the next frame
+   */
+  immediate?: boolean | undefined
+}
+
+type PresenceState = 'mounted' | 'unmountSuspended' | 'unmounted'
+type PresenceRefs = {
+  node: HTMLElement | null
+  styles: CSSStyleDeclaration | null
+  unmountAnimationName: string | null
+  prevAnimationName: string | null
+}
+type PresenceEvent =
+  | { type: 'NODE.SET'; node: HTMLElement }
+  | { type: 'UNMOUNT'; src?: string }
+  | { type: 'UNMOUNT.SUSPEND' }
+  | { type: 'MOUNT'; src?: string }
+
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
-export const usePresence = (props: UsePresenceProps) => {
-  const { lazyMount, unmountOnExit, present, ...rest } = props
-  const wasEverPresent = useRef(false)
-  const context: Partial<presence.Context> = {
-    ...rest,
+export function usePresence(ctx: UsePresenceProps = {}) {
+  // Refs
+  const refs = useRefs<PresenceRefs>({
+    node: null,
+    styles: null,
+    unmountAnimationName: null,
+    prevAnimationName: null,
+  })
+
+  // State
+  const state = useStateValue<PresenceState>(ctx.present ? 'mounted' : 'unmounted')
+  const [initial, setInitial] = React.useState(false)
+
+  // Actions
+  const setInitialFn = useEvent(() => setInitial(true))
+  const clearInitialFn = useEvent(() => setInitial(false))
+  const cleanupNode = useEvent(() => {
+    refs.set({ node: null, styles: null })
+  })
+  const invokeOnExitComplete = useEvent(() => ctx.onExitComplete?.())
+  const setPrevAnimationName = useEvent(() => {
+    const exec = ctx.immediate ? flushSync : raf
+    exec(() => {
+      refs.set({ prevAnimationName: getAnimationName(refs.get('styles')) })
+    })
+  })
+  const clearPrevAnimationName = useEvent(() => {
+    refs.set({ prevAnimationName: null })
+  })
+  const syncPresence = useEvent(() => {
+    const node = refs.get('node')
+
+    if (ctx.present) {
+      return send({ type: 'MOUNT', src: 'presence.changed' })
+    }
+
+    if (!ctx.present && node?.ownerDocument.visibilityState === 'hidden') {
+      return send({ type: 'UNMOUNT', src: 'visibilitychange' })
+    }
+
+    const exec = ctx.immediate ? flushSync : raf
+
+    exec(() => {
+      const styles = refs.get('styles')
+      const animationName = getAnimationName(styles)
+      refs.set({ unmountAnimationName: animationName })
+      if (
+        animationName === 'none' ||
+        animationName === refs.get('prevAnimationName') ||
+        styles?.display === 'none' ||
+        styles?.animationDuration === '0s'
+      ) {
+        send({ type: 'UNMOUNT', src: 'presence.changed' })
+      } else {
+        send({ type: 'UNMOUNT.SUSPEND' })
+      }
+    })
+  })
+
+  // Activities
+  const trackAnimationEvents = useEvent(() => {
+    const node = refs.get('node')
+    if (!node) return
+
+    const onStart = (event: AnimationEvent) => {
+      const target = getEventTarget(event)
+      if (target === node) {
+        const animationName = getAnimationName(refs.get('styles'))
+        refs.set({ prevAnimationName: animationName })
+      }
+    }
+
+    const onEnd = (event: AnimationEvent) => {
+      const animationName = getAnimationName(refs.get('styles'))
+      const target = getEventTarget(event)
+      if (target === node && animationName === refs.get('unmountAnimationName')) {
+        send({ type: 'UNMOUNT' })
+      }
+    }
+
+    node.addEventListener('animationstart', onStart)
+    node.addEventListener('animationcancel', onEnd)
+    node.addEventListener('animationend', onEnd)
+    const cleanupStyles = setStyle(node, { animationFillMode: 'forwards' })
+
+    return () => {
+      node.removeEventListener('animationstart', onStart)
+      node.removeEventListener('animationcancel', onEnd)
+      node.removeEventListener('animationend', onEnd)
+      cleanupStyles()
+    }
+  })
+  const waitForAnimationEnd = useEvent(() => {
+    const ms = getAnimationDuration(refs.get('styles'))
+    const id = setTimeout(() => send({ type: 'UNMOUNT' }), ms)
+    return () => clearTimeout(id)
+  })
+
+  // Sender
+  const send = useEvent((event: PresenceEvent) => {
+    if (event.type === 'NODE.SET') {
+      refs.set({ node: event.node, styles: getComputedStyle(event.node) })
+      return
+    }
+
+    switch (state.ref.current) {
+      case 'mounted':
+        switch (event.type) {
+          case 'UNMOUNT': {
+            state.set('unmounted')
+            invokeOnExitComplete()
+            break
+          }
+          case 'UNMOUNT.SUSPEND': {
+            state.set('unmountSuspended')
+            break
+          }
+        }
+        break
+      case 'unmountSuspended':
+        switch (event.type) {
+          case 'UNMOUNT': {
+            state.set('unmounted')
+            invokeOnExitComplete()
+            break
+          }
+          case 'MOUNT': {
+            state.set('mounted')
+            setPrevAnimationName()
+            break
+          }
+        }
+        break
+      case 'unmounted':
+        switch (event.type) {
+          case 'MOUNT': {
+            state.set('mounted')
+            setPrevAnimationName()
+            break
+          }
+        }
+        break
+    }
+  })
+
+  // State Watchers
+  useStateEffect(state, 'unmountSuspended', callAll(trackAnimationEvents, waitForAnimationEnd))
+  useStateEffect(state, 'unmounted', clearPrevAnimationName)
+
+  // Context watchers
+  useUpdateEffect(callAll(setInitialFn, syncPresence), [ctx.present])
+
+  // Exit effects
+  useUnmount(callAll(clearInitialFn, cleanupNode))
+
+  const present = state.matches('mounted', 'unmountSuspended')
+
+  const api: PresenceApi = {
+    skip: !initial && present,
     present,
-    onExitComplete: useEvent(props.onExitComplete),
+    setNode(node: HTMLElement | null) {
+      if (!node) return
+      send({ type: 'NODE.SET', node })
+    },
+    unmount() {
+      send({ type: 'UNMOUNT' })
+    },
   }
 
-  const [state, send] = useMachine(presence.machine(context), { context })
-  const api = presence.connect(state, send, normalizeProps)
-
-  if (api.present) {
-    wasEverPresent.current = true
-  }
-
+  // Render strategy
+  const wasEverPresent = React.useRef(false)
+  if (api.present) wasEverPresent.current = true
   const unmounted =
-    (!api.present && !wasEverPresent.current && lazyMount) ||
-    (unmountOnExit && !api.present && wasEverPresent.current)
+    (!api.present && !wasEverPresent.current && ctx.lazyMount) ||
+    (ctx.unmountOnExit && !api.present && wasEverPresent.current)
 
   const getPresenceProps = () => ({
-    'data-state': present ? 'open' : 'closed',
+    'data-state': ctx.present ? 'open' : 'closed',
     hidden: !api.present,
   })
 
@@ -41,4 +243,20 @@ export const usePresence = (props: UsePresenceProps) => {
     present: api.present,
     unmounted,
   }
+}
+
+function getAnimationName(styles?: CSSStyleDeclaration | null) {
+  return styles?.animationName || 'none'
+}
+
+function parseMs(value: string | undefined) {
+  return Number.parseFloat(value || '0') * 1000
+}
+
+// Extra frame margin to account for event loop slowdowns
+const ANIMATION_TIMEOUT_MARGIN = 16.667
+function getAnimationDuration(styles?: CSSStyleDeclaration | null) {
+  return (
+    parseMs(styles?.animationDuration) + parseMs(styles?.animationDelay) + ANIMATION_TIMEOUT_MARGIN
+  )
 }

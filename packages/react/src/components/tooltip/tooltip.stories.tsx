@@ -9,6 +9,7 @@ export default meta
 export { Arrow } from './examples/arrow'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
+export { Multiple } from './examples/multiple'
 export { Positioning } from './examples/positioning'
 export { RenderFn } from './examples/render-fn'
 export { RootProvider } from './examples/root-provider'
