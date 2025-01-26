@@ -40,7 +40,7 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
   }, [ownProps, checkboxGroup, field])
 
   // Context
-  const ctx = useStateValue<CheckboxRefs>({
+  const ctx = useStateValue<CheckboxContext>({
     fieldsetDisabled: false,
     hovered: false,
     active: false,
@@ -96,7 +96,7 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
     const checked = _indeterminate ? true : !_checked
     set.checked(checked)
   })
-  const setContext = useEvent((context: Partial<CheckboxRefs>) => {
+  const setContext = useEvent((context: Partial<CheckboxContext>) => {
     ctx.set(context)
   })
 
@@ -378,9 +378,9 @@ export interface UseCheckboxProps {
 type CheckboxEvent =
   | { type: 'CHECKED.TOGGLE'; isTrusted?: boolean }
   | { type: 'CHECKED.SET'; checked: CheckedState; isTrusted?: boolean }
-  | { type: 'CONTEXT.SET'; context: Partial<CheckboxRefs> }
+  | { type: 'CONTEXT.SET'; context: Partial<CheckboxContext> }
 
-type CheckboxRefs = {
+type CheckboxContext = {
   fieldsetDisabled: boolean
   hovered: boolean
   active: boolean
