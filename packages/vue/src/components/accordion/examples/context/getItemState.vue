@@ -16,13 +16,13 @@ const items = ref([{ value: 'React' }, { value: 'Solid', disabled: true }, { val
     </Accordion.Context>
     <Accordion.Item v-for="item in items" :key="item.value" v-bind="item">
       <Accordion.ItemTrigger>
-        What is {{ item }}?
+        What is {{ item.value }}?
         <Accordion.ItemIndicator>
           <ChevronDownIcon />
         </Accordion.ItemIndicator>
       </Accordion.ItemTrigger>
       <Accordion.ItemContent>
-        {{ item }} is a JavaScript library for building user interfaces.
+        {{ item.value }} is a JavaScript library for building user interfaces.
       </Accordion.ItemContent>
     </Accordion.Item>
   </Accordion.Root>

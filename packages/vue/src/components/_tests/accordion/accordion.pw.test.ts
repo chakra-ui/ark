@@ -409,6 +409,7 @@ test.describe('Context value variant', () => {
   })
 })
 
+// Context set value variant tests
 test.describe('Context set value variant', () => {
   test.beforeEach(async ({ page }) => {
     await gotoStory('accordion', 'context-set-value', page)
@@ -438,5 +439,35 @@ test.describe('Context set value variant', () => {
   test('has no a11y violations', async ({ page }, testInfo) => {
     const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
     expect(accessibilityScanResults.violations).toEqual([])
+  })
+})
+
+// Context get item state value variant tests
+test.describe('Context get item state value variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'context-get-item-state', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has first item content about React open and Vue item state to not disabled, not expanded and not focused', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('Vue State:Disabled: NExpanded: NFocused: N')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('has item content about Vue clicked and Vue item state to expanded and focussed', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is Vue?' }).click()
+    expect(page.getByText('Vue State:Disabled: NExpanded: YFocused: Y')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('has item trigger about Vue focused and Vue item state to expanded and focussed', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is Vue?' }).focus()
+    expect(page.getByText('Vue State:Disabled: NExpanded: NFocused: Y')).toBeVisible()
+    expect(page).toHaveScreenshot()
   })
 })
