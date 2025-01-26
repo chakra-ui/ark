@@ -408,3 +408,35 @@ test.describe('Context value variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+test.describe('Context set value variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'context-set-value', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has first item content about React open', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page).toHaveScreenshot()
+  })
+  test('should open the Vue item content when the set value button is clicked', async ({ page }) => {
+    await page.getByRole('button', { name: 'Select Vue' }).click()
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page.getByRole('button', { name: 'What is Vue?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React is a JavaScript library for building user interfaces.')).not.toBeVisible()
+    expect(page.getByText('Vue is a JavaScript library for building user interfaces.')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+})
