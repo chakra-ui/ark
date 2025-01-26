@@ -6,57 +6,9 @@ import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 import { useRefs, useStateEffect, useStateValue, useUnmount } from '../../utils/use-state-value'
 import { useUpdateEffect } from '../../utils/use-update-effect'
+import type { PropTypes } from '@zag-js/react'
 
-interface PresenceApi {
-  /**
-   * Whether the animation should be skipped.
-   */
-  skip: boolean
-  /**
-   * Whether the node is present in the DOM.
-   */
-  present?: boolean
-  /**
-   * Function to set the node (as early as possible)
-   */
-  setNode(node: HTMLElement | null): void
-  /**
-   * Function to programmatically unmount the node
-   */
-  unmount(): void
-}
-
-export interface UsePresenceProps extends RenderStrategyProps {
-  /**
-   * Whether the node is present (controlled by the user)
-   */
-  present?: boolean
-  /**
-   * Function called when the animation ends in the closed state
-   */
-  onExitComplete?(): void
-  /**
-   * Whether to synchronize the present change immediately or defer it to the next frame
-   */
-  immediate?: boolean | undefined
-}
-
-type PresenceState = 'mounted' | 'unmountSuspended' | 'unmounted'
-type PresenceRefs = {
-  node: HTMLElement | null
-  styles: CSSStyleDeclaration | null
-  unmountAnimationName: string | null
-  prevAnimationName: string | null
-}
-type PresenceEvent =
-  | { type: 'NODE.SET'; node: HTMLElement }
-  | { type: 'UNMOUNT'; src?: string }
-  | { type: 'UNMOUNT.SUSPEND' }
-  | { type: 'MOUNT'; src?: string }
-
-export type UsePresenceReturn = ReturnType<typeof usePresence>
-
-export function usePresence(ctx: UsePresenceProps = {}) {
+export function usePresence(props: UsePresenceProps = {}): UsePresenceReturn {
   // Refs
   const refs = useRefs<PresenceRefs>({
     node: null,
@@ -66,7 +18,7 @@ export function usePresence(ctx: UsePresenceProps = {}) {
   })
 
   // State
-  const state = useStateValue<PresenceState>(ctx.present ? 'mounted' : 'unmounted')
+  const state = useStateValue<PresenceState>(props.present ? 'mounted' : 'unmounted')
   const [initial, setInitial] = React.useState(false)
 
   // Actions
@@ -75,9 +27,9 @@ export function usePresence(ctx: UsePresenceProps = {}) {
   const cleanupNode = useEvent(() => {
     refs.set({ node: null, styles: null })
   })
-  const invokeOnExitComplete = useEvent(() => ctx.onExitComplete?.())
+  const invokeOnExitComplete = useEvent(() => props.onExitComplete?.())
   const setPrevAnimationName = useEvent(() => {
-    const exec = ctx.immediate ? flush : raf
+    const exec = props.immediate ? flush : raf
     exec(() => {
       refs.set({ prevAnimationName: getAnimationName(refs.get('styles')) })
     })
@@ -88,15 +40,15 @@ export function usePresence(ctx: UsePresenceProps = {}) {
   const syncPresence = useEvent(() => {
     const node = refs.get('node')
 
-    if (ctx.present) {
+    if (props.present) {
       return send({ type: 'MOUNT', src: 'presence.changed' })
     }
 
-    if (!ctx.present && node?.ownerDocument.visibilityState === 'hidden') {
+    if (!props.present && node?.ownerDocument.visibilityState === 'hidden') {
       return send({ type: 'UNMOUNT', src: 'visibilitychange' })
     }
 
-    const exec = ctx.immediate ? flush : raf
+    const exec = props.immediate ? flush : raf
 
     exec(() => {
       const styles = refs.get('styles')
@@ -206,7 +158,7 @@ export function usePresence(ctx: UsePresenceProps = {}) {
   useStateEffect(state, 'unmounted', clearPrevAnimationName)
 
   // Context watchers
-  useUpdateEffect(callAll(setInitialFn, syncPresence), [ctx.present])
+  useUpdateEffect(callAll(setInitialFn, syncPresence), [props.present])
 
   // Exit effects
   useUnmount(callAll(clearInitialFn, cleanupNode))
@@ -229,19 +181,19 @@ export function usePresence(ctx: UsePresenceProps = {}) {
   const wasEverPresent = React.useRef(false)
   if (api.present) wasEverPresent.current = true
   const unmounted =
-    (!api.present && !wasEverPresent.current && ctx.lazyMount) ||
-    (ctx.unmountOnExit && !api.present && wasEverPresent.current)
+    (!api.present && !wasEverPresent.current && props.lazyMount) ||
+    (props.unmountOnExit && !api.present && wasEverPresent.current)
 
   const getPresenceProps = () => ({
-    'data-state': ctx.present ? 'open' : 'closed',
+    'data-state': props.present ? 'open' : 'closed',
     hidden: !api.present,
   })
 
   return {
     ref: api.setNode,
     getPresenceProps,
-    present: api.present,
-    unmounted,
+    present: !!api.present,
+    unmounted: !!unmounted,
   }
 }
 
@@ -259,4 +211,70 @@ function getAnimationDuration(styles?: CSSStyleDeclaration | null) {
   return (
     parseMs(styles?.animationDuration) + parseMs(styles?.animationDelay) + ANIMATION_TIMEOUT_MARGIN
   )
+}
+
+interface PresenceApi {
+  /**
+   * Whether the animation should be skipped.
+   */
+  skip: boolean
+  /**
+   * Whether the node is present in the DOM.
+   */
+  present?: boolean
+  /**
+   * Function to set the node (as early as possible)
+   */
+  setNode(node: HTMLElement | null): void
+  /**
+   * Function to programmatically unmount the node
+   */
+  unmount(): void
+}
+
+export interface UsePresenceProps extends RenderStrategyProps {
+  /**
+   * Whether the node is present (controlled by the user)
+   */
+  present?: boolean
+  /**
+   * Function called when the animation ends in the closed state
+   */
+  onExitComplete?(): void
+  /**
+   * Whether to synchronize the present change immediately or defer it to the next frame
+   */
+  immediate?: boolean | undefined
+}
+
+type PresenceState = 'mounted' | 'unmountSuspended' | 'unmounted'
+type PresenceRefs = {
+  node: HTMLElement | null
+  styles: CSSStyleDeclaration | null
+  unmountAnimationName: string | null
+  prevAnimationName: string | null
+}
+type PresenceEvent =
+  | { type: 'NODE.SET'; node: HTMLElement }
+  | { type: 'UNMOUNT'; src?: string }
+  | { type: 'UNMOUNT.SUSPEND' }
+  | { type: 'MOUNT'; src?: string }
+
+export type UsePresenceReturn = {
+  /**
+   * Ref to set the node (as early as possible)
+   */
+  ref: React.RefCallback<HTMLElement | null>
+  /**
+   * Whether the node is present in the DOM
+   */
+  present: boolean
+  /**
+   * Whether the node is unmounted
+   */
+  unmounted: boolean
+  /**
+   * Props to set the node
+   */
+  getPresenceProps: () => PropTypes['element']
 }
