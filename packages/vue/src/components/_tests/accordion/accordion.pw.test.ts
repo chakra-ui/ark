@@ -247,7 +247,7 @@ test.describe('controlled variant', () => {
 })
 
 // Vertical variant tests
-test.describe('vertical variant', () => {
+test.describe('Vertical variant', () => {
   test.beforeEach(async ({ page }) => {
     await gotoStory('accordion', 'vertical', page)
     await page.getByRole('button', { name: 'React trigger' }).waitFor()
@@ -256,6 +256,25 @@ test.describe('vertical variant', () => {
     expect(page.getByRole('button', { name: 'React trigger' })).toHaveAttribute(
       'data-orientation',
       'vertical',
+    )
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+})
+
+// Horizontal variant tests
+test.describe('Horizontal variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'horizontal', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has data orientation attribute set to horizontal', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-orientation',
+      'horizontal',
     )
     expect(page).toHaveScreenshot()
   })
