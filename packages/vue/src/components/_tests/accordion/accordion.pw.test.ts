@@ -148,3 +148,66 @@ test.describe('collapsible variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+// Multiple items variant tests
+test.describe('multiple variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'multiple', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has first item content about React closed', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations in closed state', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('has no a11y violations in open state', async ({ page }, testInfo) => {
+    await page.getByRole('button', { name: 'What is React?' }).click()
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('opens the content of the first item when clicking on the accordion item trigger', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is React?' }).click()
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React is a JavaScript library for building user interfaces.')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('closes the content of the first item when clicking on the accordion item trigger again', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is React?' }).click()
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    await page.getByRole('button', { name: 'What is React?' }).click()
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page.getByText('React is a JavaScript library for building user interfaces.')).not.toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('opens multiple content items of the accordion', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is React?' }).click()
+    await page.getByRole('button', { name: 'What is Solid?' }).click()
+
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByRole('button', { name: 'What is Solid?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React is a JavaScript library for building user interfaces.')).toBeVisible()
+    expect(page.getByText('Solid is a JavaScript library for building user interfaces.')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+})
