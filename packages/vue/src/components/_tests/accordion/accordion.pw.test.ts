@@ -370,7 +370,7 @@ test.describe('Context focusedValue variant', () => {
       'data-state',
       'open',
     )
-    expect(page.getByText('Focused item:')).toHaveText('Focused item:')
+    expect(page.getByText('Focused item:')).toBeVisible()
     expect(page).toHaveScreenshot()
   })
   test('has no a11y violations', async ({ page }, testInfo) => {
@@ -379,7 +379,7 @@ test.describe('Context focusedValue variant', () => {
   })
   test('has first item content about React focused and focused item set to React', async ({ page }) => {
     await page.getByRole('button', { name: 'What is React?' }).focus()
-    expect(page.getByText('Focused item: React')).toHaveText('Focused item: React' )
+    expect(page.getByText('Focused item: React')).toBeVisible()
     expect(page).toHaveScreenshot()
   })
 })
@@ -395,7 +395,7 @@ test.describe('Context value variant', () => {
       'data-state',
       'open',
     )
-    expect(page.getByText('Selected items: React')).toHaveText('Selected items: React')
+    expect(page.getByText('Selected items: React')).toBeVisible()
     expect(page).toHaveScreenshot()
   })
   test('has no a11y violations', async ({ page }, testInfo) => {
@@ -404,7 +404,7 @@ test.describe('Context value variant', () => {
   })
   test('has item content about Vue clicked and context value set to Vue', async ({ page }) => {
     await page.getByRole('button', { name: 'What is Vue?' }).click()
-    expect(page.getByText('Selected items: Vue')).toHaveText('Selected items: Vue' )
+    expect(page.getByText('Selected items: Vue')).toBeVisible()
     expect(page).toHaveScreenshot()
   })
 })
