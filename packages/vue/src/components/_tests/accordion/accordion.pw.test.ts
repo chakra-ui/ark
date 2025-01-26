@@ -245,3 +245,26 @@ test.describe('controlled variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+// Disabled variant tests
+test.describe('disabled variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'disabled', page)
+    await page.getByRole('button', { name: 'React trigger' }).waitFor()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('second trigger item for Solid is disabled', async ({ page }) => {
+    await expect(page.getByRole('button', { name: 'Solid trigger' })).toBeDisabled()
+    expect(page.getByRole('button', { name: 'Solid trigger' })).toHaveAttribute(
+      'disabled',
+    )
+    expect(page.getByRole('button', { name: 'Solid trigger' })).toHaveAttribute(
+      'aria-disabled',
+      'true',
+    )
+    expect(page).toHaveScreenshot()
+  })
+})
