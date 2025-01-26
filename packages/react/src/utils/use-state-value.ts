@@ -1,4 +1,5 @@
 import { getActiveElement, getDocument, getWindow } from '@zag-js/dom-query'
+import { isFunction } from '@zag-js/utils'
 import * as React from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../providers'
 import { flush } from './flush'
@@ -29,9 +30,8 @@ export function useStateValue<T>(value: T) {
       previousState.current = state
       flush(() => {
         setState((curr) => {
-          if (typeof value === 'object' && typeof value === 'function') {
-            // @ts-ignore
-            return { ...curr, ...value(curr) }
+          if (typeof value === 'object') {
+            return { ...curr, ...(isFunction(value) ? value(curr) : value) }
           }
           return typeof value === 'function' ? value(curr) : value
         })

@@ -1,7 +1,7 @@
 import { Tabs } from '@ark-ui/react/tabs'
 
 export const Basic = () => (
-  <Tabs.Root>
+  <Tabs.Root defaultValue="react">
     <Tabs.List>
       <Tabs.Trigger value="react">React</Tabs.Trigger>
       <Tabs.Trigger value="vue">Vue</Tabs.Trigger>

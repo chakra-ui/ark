@@ -218,7 +218,8 @@
     "@zag-js/tooltip": "0.82.1",
     "@zag-js/tour": "0.82.1",
     "@zag-js/tree-view": "0.82.1",
-    "@zag-js/types": "0.82.1"
+    "@zag-js/types": "0.82.1",
+    "@zag-js/utils": "0.82.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

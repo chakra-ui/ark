@@ -151,7 +151,6 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}) {
   })
   const syncInputElement = useEvent(() => {
     const inputEl = getHiddenInputEl()
-    console.log(inputEl)
     if (!inputEl) return
     setElementChecked(inputEl, _checked)
     inputEl.indeterminate = _indeterminate
