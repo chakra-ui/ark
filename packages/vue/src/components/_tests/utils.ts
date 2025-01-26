@@ -15,6 +15,7 @@ export const testA11yWithAttachedResults = async (
 ) => {
   const accessibilityScanResults = await new AxeBuilder({ page })
     .include(`[data-scope="${componentName}"][data-part="root"]`)
+    .disableRules('color-contrast') // This rule is not relevant since Ark components are not styled by default.
     .analyze()
 
   await testInfo.attach('accessibility-scan-results', {
