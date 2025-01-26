@@ -8,7 +8,7 @@ import {
   visuallyHiddenStyle,
 } from '@zag-js/dom-query'
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
-import { mergeProps, normalizeProps as normalize } from '@zag-js/react'
+import { type PropTypes, mergeProps, normalizeProps as normalize } from '@zag-js/react'
 import { useMemo } from 'react'
 import { callAll } from '../../utils/call-all'
 import { useEvent } from '../../utils/use-event'
@@ -19,81 +19,9 @@ import { useFieldContext } from '../field/use-field-context'
 import { checkboxAnatomy } from './checkbox.anatomy'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
-export type CheckedState = boolean | 'indeterminate'
-
-export interface UseCheckboxProps {
-  /**
-   * The id of the checkbox
-   */
-  id?: string
-  /**
-   * The checked state of the checkbox
-   */
-  checked?: CheckedState
-  /**
-   * The initial checked state when uncontrolled
-   */
-  defaultChecked?: CheckedState
-  /**
-   * Whether the checkbox is disabled
-   */
-  disabled?: boolean
-  /**
-   * Whether the checkbox is invalid
-   */
-  invalid?: boolean
-  /**
-   * Whether the checkbox is required
-   */
-  required?: boolean
-  /**
-   * Whether the checkbox is read-only
-   */
-  readOnly?: boolean
-  /**
-   * The callback invoked when the checked state changes.
-   */
-  onCheckedChange?(details: { checked: CheckedState }): void
-  /**
-   * The name of the input field. Useful for form submission.
-   */
-  name?: string
-  /**
-   * The id of the form that the checkbox belongs to.
-   */
-  form?: string
-  /**
-   * The value of checkbox input. Useful for form submission.
-   * @default "on"
-   */
-  value?: string
-  /**
-   * Custom ids for elements
-   */
-  ids?: {
-    root?: string
-    hiddenInput?: string
-    control?: string
-    label?: string
-  }
-}
-
-type CheckboxEvent =
-  | { type: 'CHECKED.TOGGLE'; isTrusted?: boolean }
-  | { type: 'CHECKED.SET'; checked: CheckedState; isTrusted?: boolean }
-  | { type: 'CONTEXT.SET'; context: Partial<CheckboxRefs> }
-
-type CheckboxRefs = {
-  fieldsetDisabled: boolean
-  hovered: boolean
-  active: boolean
-  focused: boolean
-  focusVisible: boolean
-}
-
 const parts = checkboxAnatomy.build()
 
-export function useCheckbox(ownProps: UseCheckboxProps = {}) {
+export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn {
   const checkboxGroup = useCheckboxGroupContext()
   const field = useFieldContext()
   const props = useMemo(() => {
@@ -346,4 +274,116 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}) {
   }
 }
 
-export type UseCheckboxReturn = ReturnType<typeof useCheckbox>
+export interface UseCheckboxReturn {
+  /**
+   * Whether the checkbox is checked
+   */
+  checked: boolean
+  /**
+   * Whether the checkbox is disabled
+   */
+  disabled: boolean | undefined
+  /**
+   * Whether the checkbox is indeterminate
+   */
+  indeterminate: boolean
+  /**
+   * Whether the checkbox is focused
+   */
+  focused: boolean | undefined
+  /**
+   *  The checked state of the checkbox
+   */
+  checkedState: CheckedState
+  /**
+   * Function to set the checked state of the checkbox
+   */
+  setChecked(checked: CheckedState): void
+  /**
+   * Function to toggle the checked state of the checkbox
+   */
+  toggleChecked(): void
+  getRootProps(): PropTypes['label']
+  getLabelProps(): PropTypes['element']
+  getControlProps(): PropTypes['element']
+  getHiddenInputProps(): PropTypes['input']
+  getIndicatorProps(): PropTypes['element']
+}
+
+export type CheckedState = boolean | 'indeterminate'
+
+export interface CheckedChangeDetails {
+  checked: CheckedState
+}
+
+export type ElementIds = Partial<{
+  root: string
+  hiddenInput: string
+  control: string
+  label: string
+}>
+
+export interface UseCheckboxProps {
+  /**
+   * The id of the checkbox
+   */
+  id?: string
+  /**
+   * The checked state of the checkbox
+   */
+  checked?: CheckedState
+  /**
+   * The initial checked state when uncontrolled
+   */
+  defaultChecked?: CheckedState
+  /**
+   * Whether the checkbox is disabled
+   */
+  disabled?: boolean
+  /**
+   * Whether the checkbox is invalid
+   */
+  invalid?: boolean
+  /**
+   * Whether the checkbox is required
+   */
+  required?: boolean
+  /**
+   * Whether the checkbox is read-only
+   */
+  readOnly?: boolean
+  /**
+   * The callback invoked when the checked state changes.
+   */
+  onCheckedChange?(details: CheckedChangeDetails): void
+  /**
+   * The name of the input field. Useful for form submission.
+   */
+  name?: string
+  /**
+   * The id of the form that the checkbox belongs to.
+   */
+  form?: string
+  /**
+   * The value of checkbox input. Useful for form submission.
+   * @default "on"
+   */
+  value?: string
+  /**
+   * Custom ids for elements
+   */
+  ids?: ElementIds
+}
+
+type CheckboxEvent =
+  | { type: 'CHECKED.TOGGLE'; isTrusted?: boolean }
+  | { type: 'CHECKED.SET'; checked: CheckedState; isTrusted?: boolean }
+  | { type: 'CONTEXT.SET'; context: Partial<CheckboxRefs> }
+
+type CheckboxRefs = {
+  fieldsetDisabled: boolean
+  hovered: boolean
+  active: boolean
+  focused: boolean
+  focusVisible: boolean
+}
