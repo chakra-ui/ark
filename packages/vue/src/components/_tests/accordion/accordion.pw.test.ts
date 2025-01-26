@@ -358,3 +358,28 @@ test.describe('Root provider variant', () => {
     expect(accessibilityScanResults.violations).toEqual([])
   })
 })
+
+// Context focusedValue variant tests
+test.describe('Context focusedValue variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'context-focusedValue', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has first item content about React open and focused item empty', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('Focused item:')).toHaveText('Focused item:')
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('has first item content about React focused and focused item set to React', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is React?' }).focus()
+    expect(page.getByText('Focused item: React')).toHaveText('Focused item: React' )
+    expect(page).toHaveScreenshot()
+  })
+})
