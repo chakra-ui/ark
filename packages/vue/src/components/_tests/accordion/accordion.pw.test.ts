@@ -33,3 +33,50 @@ test.describe('basic variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+test.describe('render prop variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'render-prop', page)
+    await page.getByRole('button', { name: 'Closed React' }).waitFor()
+  })
+  test('has first item content about React closed', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'Closed React' })).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations in closed state', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('has no a11y violations in open state', async ({ page }, testInfo) => {
+    await page.getByRole('button', { name: 'Closed React' }).click()
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('toggles content when clicking on the accordion item trigger', async ({ page }) => {
+    await page.getByRole('button', { name: 'Closed React' }).click()
+    expect(page.getByRole('button', { name: 'Expanded React' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React content')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('toggles content when clicking on another accordion item trigger', async ({ page }) => {
+    await page.getByRole('button', { name: 'Closed React' }).click()
+    await page.getByRole('button', { name: 'Closed Solid' }).click()
+    expect(page.getByRole('button', { name: 'Closed' }).first()).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page.getByRole('button', { name: 'Expanded' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React content')).not.toBeVisible()
+    expect(page.getByText('Solid content')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+})
