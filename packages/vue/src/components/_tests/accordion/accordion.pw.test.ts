@@ -211,3 +211,37 @@ test.describe('multiple variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+// Controlled variant tests
+test.describe('controlled variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'controlled', page)
+    await page.getByRole('button', { name: 'React trigger' }).waitFor()
+  })
+  test('has first item content about React open', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'React trigger' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React content')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('toggles content when clicking on another accordion item', async ({ page }) => {
+    await page.getByRole('button', { name: 'Vue trigger' }).click()
+    expect(page.getByRole('button', { name: 'React trigger' })).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page.getByRole('button', { name: 'Vue trigger' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('React content')).not.toBeVisible()
+    expect(page.getByText('Vue content')).toBeVisible()
+    expect(page).toHaveScreenshot()
+  })
+})
