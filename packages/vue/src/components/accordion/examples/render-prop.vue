@@ -9,7 +9,7 @@ const items = ref(['React', 'Solid', 'Vue'])
   <Accordion.Root>
     <Accordion.Item v-for="item in items" :key="item" :value="item">
       <Accordion.ItemContext v-slot="{ expanded }">
-        <Accordion.ItemTrigger>{{ expanded ? 'Expanded' : 'Closed' }}</Accordion.ItemTrigger>
+        <Accordion.ItemTrigger>{{ expanded ? 'Expanded' : 'Closed' }} {{ item }}</Accordion.ItemTrigger>
         <Accordion.ItemContent>{{ item }} content</Accordion.ItemContent>
       </Accordion.ItemContext>
     </Accordion.Item>
