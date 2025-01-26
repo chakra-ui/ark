@@ -383,3 +383,28 @@ test.describe('Context focusedValue variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+// Context value variant tests
+test.describe('Context value variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'context-value', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has first item content about React open and context value set to React', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'open',
+    )
+    expect(page.getByText('Selected items: React')).toHaveText('Selected items: React')
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+  test('has item content about Vue clicked and context value set to Vue', async ({ page }) => {
+    await page.getByRole('button', { name: 'What is Vue?' }).click()
+    expect(page.getByText('Selected items: Vue')).toHaveText('Selected items: Vue' )
+    expect(page).toHaveScreenshot()
+  })
+})
