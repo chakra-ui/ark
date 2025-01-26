@@ -1,8 +1,9 @@
 import { getComputedStyle, getEventTarget, raf, setStyle } from '@zag-js/dom-query'
-import { normalizeProps as normalize, type PropTypes } from '@zag-js/react'
+import { type PropTypes, normalizeProps as normalize } from '@zag-js/react'
 import { useRef } from 'react'
 import { flushSync } from 'react-dom'
 import { callAll } from '../../utils/call-all'
+import { flush } from '../../utils/flush'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 import {
@@ -44,7 +45,7 @@ export function useCollapsible(props: UseCollapsibleProps = {}): UseCollapsibleR
   const invokeOnClose = useEvent(() => props.onOpenChange?.({ open: false }))
   const invokeOnExitComplete = useEvent(() => props.onExitComplete?.())
   const toggleVisibility = useEvent(() => {
-    flushSync(() => {
+    flush(() => {
       send({ type: props.open ? 'CONTROLLED.OPEN' : 'CONTROLLED.CLOSE' })
     })
   })
@@ -53,7 +54,7 @@ export function useCollapsible(props: UseCollapsibleProps = {}): UseCollapsibleR
     const contentEl = getContentEl()
     if (!contentEl) return
     const rect = contentEl.getBoundingClientRect()
-    flushSync(() => {
+    flush(() => {
       dimensions.set({ height: rect.height, width: rect.width })
     })
   })
