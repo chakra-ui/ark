@@ -1,4 +1,5 @@
 import { getComputedStyle, getEventTarget, raf, setStyle } from '@zag-js/dom-query'
+import type { PropTypes } from '@zag-js/react'
 import * as React from 'react'
 import { callAll } from '../../utils/call-all'
 import { flush } from '../../utils/flush'
@@ -6,7 +7,6 @@ import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 import { useRefs, useStateEffect, useStateValue, useUnmount } from '../../utils/use-state-value'
 import { useUpdateEffect } from '../../utils/use-update-effect'
-import type { PropTypes } from '@zag-js/react'
 
 export function usePresence(props: UsePresenceProps = {}): UsePresenceReturn {
   // Refs
