@@ -88,7 +88,7 @@ export function useProgress(props: UseProgressProps = {}): UseProgressReturn {
   }
 
   return {
-    value: value,
+    value,
     valueAsString,
     min,
     max,
@@ -96,8 +96,8 @@ export function useProgress(props: UseProgressProps = {}): UseProgressReturn {
     percentAsString,
     indeterminate,
 
-    setValue(val: number | null) {
-      send({ type: 'VALUE.SET', value: val })
+    setValue(value) {
+      send({ type: 'VALUE.SET', value })
     },
     setToMax() {
       send({ type: 'VALUE.SET', value: max })
@@ -189,7 +189,7 @@ export function useProgress(props: UseProgressProps = {}): UseProgressReturn {
         },
       }),
 
-    getViewProps: (props: { state: ProgressState }) =>
+    getViewProps: (props) =>
       normalize.element({
         dir: scope.dir,
         ...parts.view.attrs,
