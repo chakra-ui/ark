@@ -246,6 +246,25 @@ test.describe('controlled variant', () => {
   })
 })
 
+// Vertical variant tests
+test.describe('vertical variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'vertical', page)
+    await page.getByRole('button', { name: 'React trigger' }).waitFor()
+  })
+  test('has data orientation attribute set to vertical', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'React trigger' })).toHaveAttribute(
+      'data-orientation',
+      'vertical',
+    )
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+})
+
 // Disabled variant tests
 test.describe('disabled variant', () => {
   test.beforeEach(async ({ page }) => {
