@@ -268,3 +268,22 @@ test.describe('disabled variant', () => {
     expect(page).toHaveScreenshot()
   })
 })
+
+// Closed variant tests
+test.describe('closed variant', () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoStory('accordion', 'closed', page)
+    await page.getByRole('button', { name: 'What is React?' }).waitFor()
+  })
+  test('has first item content about React closed', async ({ page }) => {
+    expect(page.getByRole('button', { name: 'What is React?' })).toHaveAttribute(
+      'data-state',
+      'closed',
+    )
+    expect(page).toHaveScreenshot()
+  })
+  test('has no a11y violations', async ({ page }, testInfo) => {
+    const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'accordion')
+    expect(accessibilityScanResults.violations).toEqual([])
+  })
+})
