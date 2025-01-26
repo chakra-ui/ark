@@ -1,5 +1,5 @@
 import { getComputedStyle, getEventTarget, raf, setStyle } from '@zag-js/dom-query'
-import { normalizeProps as normalize } from '@zag-js/react'
+import { normalizeProps as normalize, type PropTypes } from '@zag-js/react'
 import { useRef } from 'react'
 import { flushSync } from 'react-dom'
 import { callAll } from '../../utils/call-all'
@@ -15,62 +15,9 @@ import {
 import { useUpdateEffect } from '../../utils/use-update-effect'
 import { collapsibleAnatomy } from './collapsible.anatomy'
 
-export interface UseCollapsibleProps extends RenderStrategyProps {
-  /**
-   * The id of the collapsible
-   */
-  id?: string
-  /**
-   * Whether the collapsible is open
-   */
-  open?: boolean
-  /**
-   * The initial open state of the collapsible when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: boolean
-  /**
-   * Whether the collapsible is disabled
-   */
-  disabled?: boolean
-  /**
-   * Callback when open state changes
-   */
-  onOpenChange?(details: { open: boolean }): void
-  /**
-   * Callback when exit animation completes
-   */
-  onExitComplete?(): void
-  /**
-   * Custom ids for elements
-   */
-  ids?: {
-    root?: string
-    content?: string
-    trigger?: string
-  }
-}
-
-type CollapsibleState = 'open' | 'closed' | 'closing'
-type CollapsibleRefs = {
-  stylesRef: { animationName: string; animationDuration: string } | null
-  unmountAnimationName: string | null
-  rafCleanup?: VoidFunction
-}
-
-type CollapsibleEvent =
-  | { type: 'CONTROLLED.OPEN' }
-  | { type: 'CONTROLLED.CLOSE' }
-  | { type: 'OPEN'; src?: string }
-  | { type: 'CLOSE'; src?: string }
-  | { type: 'SIZE.MEASURE' }
-  | { type: 'ANIMATION.END' }
-
 const parts = collapsibleAnatomy.build()
 
-export type UseCollapsibleReturn = ReturnType<typeof useCollapsible>
-
-export function useCollapsible(props: UseCollapsibleProps = {}) {
+export function useCollapsible(props: UseCollapsibleProps = {}): UseCollapsibleReturn {
   // Refs
   const refs = useRefs<CollapsibleRefs>({
     stylesRef: null,
@@ -333,14 +280,14 @@ export function useCollapsible(props: UseCollapsibleProps = {}) {
     (props.unmountOnExit && !visible && wasVisible.current)
 
   return {
-    isUnmounted,
+    isUnmounted: !!isUnmounted,
     disabled: !!props.disabled,
     visible,
     open,
-    measureSize(): void {
+    measureSize() {
       send({ type: 'SIZE.MEASURE' })
     },
-    setOpen(nextOpen: boolean): void {
+    setOpen(nextOpen) {
       if (nextOpen === open) return
       send({ type: nextOpen ? 'OPEN' : 'CLOSE' })
     },
@@ -374,7 +321,7 @@ export function useCollapsible(props: UseCollapsibleProps = {}) {
         'data-disabled': props.disabled ? '' : undefined,
         'aria-controls': getContentId(),
         'aria-expanded': visible || false,
-        onClick(event: React.MouseEvent) {
+        onClick(event) {
           if (event.defaultPrevented) return
           if (props.disabled) return
           send({ type: open ? 'CLOSE' : 'OPEN', src: 'trigger.click' })
@@ -384,3 +331,91 @@ export function useCollapsible(props: UseCollapsibleProps = {}) {
 }
 
 const px = (v?: number) => (v != null ? `${v}px` : undefined)
+
+export type ElementIds = Partial<{
+  root: string
+  content: string
+  trigger: string
+}>
+
+export interface OpenChangeDetails {
+  open: boolean
+}
+
+export interface UseCollapsibleProps extends RenderStrategyProps {
+  /**
+   * The id of the collapsible
+   */
+  id?: string | undefined
+  /**
+   * Whether the collapsible is open
+   */
+  open?: boolean | undefined
+  /**
+   * The initial open state of the collapsible when it is first rendered.
+   * Use when you do not need to control its open state.
+   */
+  defaultOpen?: boolean | undefined
+  /**
+   * Whether the collapsible is disabled
+   */
+  disabled?: boolean | undefined
+  /**
+   * Callback when open state changes
+   */
+  onOpenChange?: ((details: OpenChangeDetails) => void) | undefined
+  /**
+   * Callback when exit animation completes
+   */
+  onExitComplete?: (() => void) | undefined
+  /**
+   * Custom ids for elements
+   */
+  ids?: ElementIds | undefined
+}
+
+type CollapsibleState = 'open' | 'closed' | 'closing'
+type CollapsibleRefs = {
+  stylesRef: { animationName: string; animationDuration: string } | null
+  unmountAnimationName: string | null
+  rafCleanup?: VoidFunction
+}
+
+type CollapsibleEvent =
+  | { type: 'CONTROLLED.OPEN' }
+  | { type: 'CONTROLLED.CLOSE' }
+  | { type: 'OPEN'; src?: string }
+  | { type: 'CLOSE'; src?: string }
+  | { type: 'SIZE.MEASURE' }
+  | { type: 'ANIMATION.END' }
+
+export interface UseCollapsibleReturn {
+  /**
+   * Whether the collapsible is unmounted
+   */
+  isUnmounted: boolean
+  /**
+   * Whether the collapsible is open.
+   */
+  open: boolean
+  /**
+   * Whether the collapsible is visible (open or closing)
+   */
+  visible: boolean
+  /**
+   * Whether the collapsible is disabled
+   */
+  disabled: boolean
+  /**
+   * Function to open or close the collapsible.
+   */
+  setOpen(open: boolean): void
+  /**
+   * Function to measure the size of the content.
+   */
+  measureSize(): void
+
+  getRootProps(): PropTypes['element']
+  getTriggerProps(): PropTypes['button']
+  getContentProps(): PropTypes['element']
+}
