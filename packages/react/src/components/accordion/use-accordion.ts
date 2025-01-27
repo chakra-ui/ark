@@ -90,53 +90,55 @@ export function useAccordion(props: UseAccordionProps = {}): UseAccordionReturn 
 
   // Sender
   const send = useEvent((event: AccordionEvent) => {
-    switch (event.type) {
-      case 'VALUE.SET':
-        setValue(event.value)
-        return
-      default:
-        break
+    const transitions: AccordionTransitionMap = {
+      on: {
+        'VALUE.SET': (event) => {
+          setValue(event.value)
+        },
+      },
+      states: {
+        idle: {
+          on: {
+            'TRIGGER.FOCUS': (event) => {
+              state.set('focused')
+              setFocusedValue(event.value)
+            },
+          },
+        },
+        focused: {
+          on: {
+            'GOTO.NEXT': () => {
+              focusNextTrigger()
+            },
+            'GOTO.PREV': () => {
+              focusPrevTrigger()
+            },
+            'TRIGGER.CLICK': (event) => {
+              if (isExpanded(event.value) && canToggle()) {
+                collapse(event.value)
+              } else if (!isExpanded(event.value)) {
+                expand(event.value)
+              }
+            },
+            'GOTO.FIRST': () => {
+              focusFirstTrigger()
+            },
+            'GOTO.LAST': () => {
+              focusLastTrigger()
+            },
+            'TRIGGER.BLUR': () => {
+              state.set('idle')
+              setFocusedValue(null)
+            },
+          },
+        },
+      },
     }
 
-    switch (state.ref.current) {
-      case 'idle':
-        switch (event.type) {
-          case 'TRIGGER.FOCUS':
-            state.set('focused')
-            setFocusedValue(event.value)
-            break
-        }
-        break
-
-      case 'focused':
-        switch (event.type) {
-          case 'GOTO.NEXT':
-            focusNextTrigger()
-            break
-          case 'GOTO.PREV':
-            focusPrevTrigger()
-            break
-          case 'TRIGGER.CLICK': {
-            if (isExpanded(event.value) && canToggle()) {
-              collapse(event.value)
-            } else if (!isExpanded(event.value)) {
-              expand(event.value)
-            }
-            break
-          }
-          case 'GOTO.FIRST':
-            focusFirstTrigger()
-            break
-          case 'GOTO.LAST':
-            focusLastTrigger()
-            break
-          case 'TRIGGER.BLUR':
-            state.set('idle')
-            setFocusedValue(null)
-            break
-        }
-        break
-    }
+    const handler =
+      transitions.on?.[event.type] ?? transitions.states?.[state.ref.current]?.on?.[event.type]
+    // @ts-expect-error
+    handler?.(event)
   })
 
   // Coarse value watcher
@@ -305,10 +307,28 @@ export function useAccordion(props: UseAccordionProps = {}): UseAccordionReturn 
 type AccordionState = 'idle' | 'focused'
 
 type AccordionEvent =
-  | { type: 'TRIGGER.FOCUS' | 'TRIGGER.BLUR'; value: string }
-  | { type: 'GOTO.NEXT' | 'GOTO.PREV' | 'GOTO.FIRST' | 'GOTO.LAST'; value?: string }
+  | { type: 'TRIGGER.FOCUS'; value: string }
+  | { type: 'TRIGGER.BLUR'; value: string }
+  | { type: 'GOTO.NEXT'; value?: string }
+  | { type: 'GOTO.PREV'; value?: string }
+  | { type: 'GOTO.FIRST'; value?: string }
+  | { type: 'GOTO.LAST'; value?: string }
   | { type: 'TRIGGER.CLICK'; value: string }
   | { type: 'VALUE.SET'; value: string[] }
+
+type EventHandler<E extends AccordionEvent['type']> = (
+  event: Extract<AccordionEvent, { type: E }>,
+) => void
+
+type EventHandlerMap = {
+  on?: { [E in AccordionEvent['type']]?: EventHandler<E> }
+}
+
+type AccordionTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in AccordionState]?: EventHandlerMap
+  }
+}
 
 export interface ValueChangeDetails {
   value: string[]

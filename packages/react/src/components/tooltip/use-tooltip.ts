@@ -18,9 +18,6 @@ const store = {
     this.listeners.add(listener)
     return () => this.listeners.delete(listener)
   },
-  getSnapshot() {
-    return { id: this.id, prevId: this.prevId }
-  },
   setId(val: string | null) {
     if (val === store.id) return
     this.prevId = this.id
@@ -186,167 +183,154 @@ export function useTooltip(props: UseTooltipProps = {}) {
   // Sender
   const send = useEvent((event: TooltipEvent) => {
     _event.set(event)
-    switch (state.ref.current) {
-      case 'closed': {
-        switch (event.type) {
-          case 'CONTROLLED.OPEN':
-            state.set('open')
-            break
-          case 'OPEN': {
-            if (isOpenControlled()) {
-              invokeOnOpen()
-            } else {
+    const transitions: TooltipTransitionMap = {
+      states: {
+        closed: {
+          on: {
+            'CONTROLLED.OPEN': () => {
               state.set('open')
-              invokeOnOpen()
-            }
-            break
-          }
-          case 'POINTER_LEAVE':
-            clearPointerMoveOpened()
-            break
-          case 'POINTER_MOVE': {
-            if (noVisibleTooltip() && !hasPointerMoveOpened()) {
-              state.set('opening')
-            } else if (!hasPointerMoveOpened()) {
+            },
+            OPEN: () => {
+              if (isOpenControlled()) {
+                invokeOnOpen()
+              } else {
+                state.set('open')
+                invokeOnOpen()
+              }
+            },
+            POINTER_LEAVE: () => {
+              clearPointerMoveOpened()
+            },
+            POINTER_MOVE: () => {
+              if (noVisibleTooltip() && !hasPointerMoveOpened()) {
+                state.set('opening')
+              } else if (!hasPointerMoveOpened()) {
+                state.set('open')
+                setPointerMoveOpened()
+                invokeOnOpen()
+              }
+            },
+          },
+        },
+        opening: {
+          on: {
+            'CONTROLLED.OPEN': () => {
               state.set('open')
-              setPointerMoveOpened()
-              invokeOnOpen()
-            }
-            break
-          }
-        }
-        break
-      }
-
-      case 'opening': {
-        switch (event.type) {
-          case 'CONTROLLED.OPEN':
-            state.set('open')
-            break
-          case 'CONTROLLED.CLOSE':
-            state.set('closed')
-            break
-          case 'OPEN': {
-            if (isOpenControlled()) {
-              invokeOnOpen()
-            } else {
+            },
+            'CONTROLLED.CLOSE': () => {
+              state.set('closed')
+            },
+            OPEN: () => {
+              if (isOpenControlled()) {
+                invokeOnOpen()
+              } else {
+                state.set('open')
+                invokeOnOpen()
+              }
+            },
+            POINTER_LEAVE: () => {
+              if (isOpenControlled()) {
+                clearPointerMoveOpened()
+                invokeOnClose()
+                toggleVisibility()
+              } else {
+                state.set('closed')
+                clearPointerMoveOpened()
+                invokeOnClose()
+              }
+            },
+            CLOSE: () => {
+              if (isOpenControlled()) {
+                invokeOnClose()
+                toggleVisibility()
+              } else {
+                state.set('closed')
+                invokeOnClose()
+              }
+            },
+          },
+        },
+        open: {
+          on: {
+            'CONTROLLED.CLOSE': () => {
+              state.set('closed')
+            },
+            CLOSE: () => {
+              if (isOpenControlled()) {
+                invokeOnClose()
+              } else {
+                state.set('closed')
+                invokeOnClose()
+              }
+            },
+            POINTER_LEAVE: () => {
+              if (isVisible()) {
+                state.set('closing')
+                clearPointerMoveOpened()
+              } else if (isOpenControlled()) {
+                clearPointerMoveOpened()
+                invokeOnClose()
+              } else {
+                state.set('closed')
+                clearPointerMoveOpened()
+                invokeOnClose()
+              }
+            },
+            'CONTENT.POINTER_LEAVE': () => {
+              if (interactive) {
+                state.set('closing')
+              }
+            },
+            'POSITIONING.SET': (event) => {
+              reposition(event.options)
+            },
+          },
+        },
+        closing: {
+          on: {
+            'CONTROLLED.CLOSE': () => {
+              state.set('closed')
+            },
+            'CONTROLLED.OPEN': () => {
               state.set('open')
-              invokeOnOpen()
-            }
-            break
-          }
-          case 'POINTER_LEAVE': {
-            if (isOpenControlled()) {
-              clearPointerMoveOpened()
-              invokeOnClose()
-              toggleVisibility()
-            } else {
-              state.set('closed')
-              clearPointerMoveOpened()
-              invokeOnClose()
-            }
-            break
-          }
-          case 'CLOSE': {
-            if (isOpenControlled()) {
-              invokeOnClose()
-              toggleVisibility()
-            } else {
-              state.set('closed')
-              invokeOnClose()
-            }
-            break
-          }
-        }
-        break
-      }
-
-      case 'open': {
-        switch (event.type) {
-          case 'CONTROLLED.CLOSE':
-            state.set('closed')
-            break
-          case 'CLOSE': {
-            if (isOpenControlled()) {
-              invokeOnClose()
-            } else {
-              state.set('closed')
-              invokeOnClose()
-            }
-            break
-          }
-          case 'POINTER_LEAVE': {
-            if (isVisible()) {
-              state.set('closing')
-              clearPointerMoveOpened()
-            } else if (isOpenControlled()) {
-              clearPointerMoveOpened()
-              invokeOnClose()
-            } else {
-              state.set('closed')
-              clearPointerMoveOpened()
-              invokeOnClose()
-            }
-            break
-          }
-          case 'CONTENT.POINTER_LEAVE': {
-            if (interactive) {
-              state.set('closing')
-            }
-            break
-          }
-          case 'POSITIONING.SET': {
-            reposition(event.options)
-            break
-          }
-        }
-        break
-      }
-
-      case 'closing': {
-        switch (event.type) {
-          case 'CONTROLLED.CLOSE':
-            state.set('closed')
-            break
-          case 'CONTROLLED.OPEN':
-            state.set('open')
-            break
-          case 'CLOSE': {
-            if (isOpenControlled()) {
-              invokeOnClose()
-            } else {
-              state.set('closed')
-              invokeOnClose()
-            }
-            break
-          }
-          case 'POINTER_MOVE': {
-            if (isOpenControlled()) {
-              setPointerMoveOpened()
-              invokeOnOpen()
-              toggleVisibility()
-            } else {
-              state.set('open')
-              setPointerMoveOpened()
-              invokeOnOpen()
-            }
-            break
-          }
-          case 'CONTENT.POINTER_MOVE': {
-            if (interactive) {
-              state.set('open')
-            }
-            break
-          }
-          case 'POSITIONING.SET': {
-            reposition(event.options)
-            break
-          }
-        }
-        break
-      }
+            },
+            CLOSE: () => {
+              if (isOpenControlled()) {
+                invokeOnClose()
+              } else {
+                state.set('closed')
+                invokeOnClose()
+              }
+            },
+            POINTER_MOVE: () => {
+              if (isOpenControlled()) {
+                setPointerMoveOpened()
+                invokeOnOpen()
+                toggleVisibility()
+              } else {
+                state.set('open')
+                setPointerMoveOpened()
+                invokeOnOpen()
+              }
+            },
+            'CONTENT.POINTER_MOVE': () => {
+              if (interactive) {
+                state.set('open')
+              }
+            },
+            'POSITIONING.SET': (event) => {
+              reposition(event.options)
+            },
+          },
+        },
+      },
     }
+
+    const handler = transitions.states?.[state.ref.current]?.on?.[event.type]
+    // @ts-expect-error
+    handler?.(event)
   })
+
   const waitForOpenDelay = useEvent(() => {
     const id = setTimeout(() => {
       if (isOpenControlled()) {
@@ -514,6 +498,20 @@ type TooltipEvent =
   | { type: 'OPEN' | 'CLOSE'; src?: string }
   | { type: 'POSITIONING.SET'; options?: Partial<PositioningOptions> }
 
+type EventHandler<E extends TooltipEvent['type']> = (
+  event: Extract<TooltipEvent, { type: E }>,
+) => void
+
+type EventHandlerMap = {
+  on?: { [E in TooltipEvent['type']]?: EventHandler<E> }
+}
+
+type TooltipTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in TooltipState]?: EventHandlerMap
+  }
+}
+
 export interface OpenChangeDetails {
   open: boolean
 }
@@ -571,7 +569,7 @@ export interface UseTooltipProps {
   /**
    * Function called when the tooltip is opened.
    */
-  onOpenChange?(details: { open: boolean }): void
+  onOpenChange?: (details: OpenChangeDetails) => void
   /**
    * Custom label for the tooltip.
    */

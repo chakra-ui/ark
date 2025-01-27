@@ -110,49 +110,51 @@ export function usePresence(props: UsePresenceProps = {}): UsePresenceReturn {
 
   // Sender
   const send = useEvent((event: PresenceEvent) => {
-    if (event.type === 'NODE.SET') {
-      refs.set({ node: event.node, styles: getComputedStyle(event.node) })
-      return
+    const transitions: PresenceTransitionMap = {
+      on: {
+        'NODE.SET': (event) => {
+          refs.set({ node: event.node, styles: getComputedStyle(event.node) })
+        },
+      },
+      states: {
+        mounted: {
+          on: {
+            UNMOUNT: () => {
+              state.set('unmounted')
+              invokeOnExitComplete()
+            },
+            'UNMOUNT.SUSPEND': () => {
+              state.set('unmountSuspended')
+            },
+          },
+        },
+        unmountSuspended: {
+          on: {
+            UNMOUNT: () => {
+              state.set('unmounted')
+              invokeOnExitComplete()
+            },
+            MOUNT: () => {
+              state.set('mounted')
+              setPrevAnimationName()
+            },
+          },
+        },
+        unmounted: {
+          on: {
+            MOUNT: () => {
+              state.set('mounted')
+              setPrevAnimationName()
+            },
+          },
+        },
+      },
     }
 
-    switch (state.ref.current) {
-      case 'mounted':
-        switch (event.type) {
-          case 'UNMOUNT': {
-            state.set('unmounted')
-            invokeOnExitComplete()
-            break
-          }
-          case 'UNMOUNT.SUSPEND': {
-            state.set('unmountSuspended')
-            break
-          }
-        }
-        break
-      case 'unmountSuspended':
-        switch (event.type) {
-          case 'UNMOUNT': {
-            state.set('unmounted')
-            invokeOnExitComplete()
-            break
-          }
-          case 'MOUNT': {
-            state.set('mounted')
-            setPrevAnimationName()
-            break
-          }
-        }
-        break
-      case 'unmounted':
-        switch (event.type) {
-          case 'MOUNT': {
-            state.set('mounted')
-            setPrevAnimationName()
-            break
-          }
-        }
-        break
-    }
+    const handler =
+      transitions.states?.[state.ref.current]?.on?.[event.type] ?? transitions.on?.[event.type]
+    // @ts-expect-error
+    handler?.(event)
   })
 
   // State Watchers
@@ -261,6 +263,20 @@ type PresenceEvent =
   | { type: 'UNMOUNT'; src?: string }
   | { type: 'UNMOUNT.SUSPEND' }
   | { type: 'MOUNT'; src?: string }
+
+type EventHandler<E extends PresenceEvent['type']> = (
+  event: Extract<PresenceEvent, { type: E }>,
+) => void
+
+type EventHandlerMap = {
+  on?: { [E in PresenceEvent['type']]?: EventHandler<E> }
+}
+
+type PresenceTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in PresenceState]?: EventHandlerMap
+  }
+}
 
 export type UsePresenceReturn = {
   /**

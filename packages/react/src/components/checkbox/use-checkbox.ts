@@ -9,8 +9,9 @@ import {
 } from '@zag-js/dom-query'
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
 import { type PropTypes, mergeProps, normalizeProps as normalize } from '@zag-js/react'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { callAll } from '../../utils/call-all'
+import { useControllableState } from '../../utils/use-controllable-state'
 import { useEvent } from '../../utils/use-event'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import { useElementScope, useStateValue } from '../../utils/use-state-value'
@@ -49,14 +50,14 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
   })
 
   // State
-  const checked = useStateValue<CheckedState>(props.defaultChecked || props.checked || false)
-  const set = {
-    checked: (nextChecked: CheckedState) => {
-      if (checked.ref.current === nextChecked) return
-      checked.set(nextChecked)
-      props.onCheckedChange?.({ checked: nextChecked })
+  const [initialChecked] = useState(props.defaultChecked || props.checked || false)
+  const [checked, setChecked] = useControllableState<CheckedState>({
+    defaultValue: initialChecked,
+    value: props.checked,
+    onChange(checked) {
+      props.onCheckedChange?.({ checked })
     },
-  }
+  })
 
   // Dom utils
   const scope = useElementScope(props.id)
@@ -69,14 +70,11 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
   const getHiddenInputEl = () => scope.getById<HTMLInputElement>(getHiddenInputId())
 
   // Computed state
-  const _indeterminate = checked.value === 'indeterminate'
-  const _checked = _indeterminate ? false : !!checked.value
+  const _indeterminate = checked === 'indeterminate'
+  const _checked = _indeterminate ? false : !!checked
   const _disabled = !!props.disabled || ctx.value.fieldsetDisabled
 
   // Actions
-  const setChecked = useEvent((nextChecked: CheckedState) => {
-    set.checked(nextChecked)
-  })
   const syncInputElement = useEvent(() => {
     const inputEl = getHiddenInputEl()
     if (!inputEl) return
@@ -94,7 +92,7 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
   })
   const toggleChecked = useEvent(() => {
     const checked = _indeterminate ? true : !_checked
-    set.checked(checked)
+    setChecked(checked)
   })
   const setContext = useEvent((context: Partial<CheckboxContext>) => {
     ctx.set(context)
@@ -124,7 +122,7 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
         ctx.set({ fieldsetDisabled: disabled })
       },
       onFormReset() {
-        send({ type: 'CHECKED.SET', checked: !!checked.initial })
+        send({ type: 'CHECKED.SET', checked: !!initialChecked })
       },
     })
   })
@@ -134,35 +132,34 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
 
   // Sender
   const send = useEvent((event: CheckboxEvent) => {
-    switch (event.type) {
-      case 'CHECKED.TOGGLE':
-        if (!event.isTrusted) {
-          toggleChecked()
-          dispatchChangeEvent()
-        } else {
-          toggleChecked()
-        }
-        break
-      case 'CHECKED.SET':
-        if (!event.isTrusted) {
-          setChecked(event.checked)
-          dispatchChangeEvent()
-        } else {
-          setChecked(event.checked)
-        }
-        break
-      case 'CONTEXT.SET':
-        setContext(event.context)
-        break
+    const transitions: CheckboxTransitionMap = {
+      on: {
+        'CHECKED.TOGGLE': (event) => {
+          if (!event.isTrusted) {
+            toggleChecked()
+            dispatchChangeEvent()
+          } else {
+            toggleChecked()
+          }
+        },
+        'CHECKED.SET': (event) => {
+          if (!event.isTrusted) {
+            setChecked(event.checked)
+            dispatchChangeEvent()
+          } else {
+            setChecked(event.checked)
+          }
+        },
+        'CONTEXT.SET': (event) => {
+          setContext(event.context)
+        },
+      },
     }
-  })
 
-  // Context watchers
-  useUpdateEffect(() => {
-    if (props.checked !== undefined) {
-      checked.set(props.checked)
-    }
-  }, [props.checked])
+    const transition = transitions.on?.[event.type]
+    //@ts-expect-error
+    transition?.(event)
+  })
 
   // Remove focus if disabled
   useUpdateEffect(removeFocusIfNeeded, [_disabled])
@@ -184,7 +181,7 @@ export function useCheckbox(ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
     disabled: _disabled,
     indeterminate: _indeterminate,
     focused: ctx.get('focused'),
-    checkedState: checked.value,
+    checkedState: checked,
 
     setChecked(checked: CheckedState) {
       send({ type: 'CHECKED.SET', checked, isTrusted: true })
@@ -386,4 +383,20 @@ type CheckboxContext = {
   active: boolean
   focused: boolean
   focusVisible: boolean
+}
+
+type EventHandler<E extends CheckboxEvent['type']> = (
+  event: Extract<CheckboxEvent, { type: E }>,
+) => void
+
+type EventHandlerMap = {
+  on?: { [E in CheckboxEvent['type']]?: EventHandler<E> }
+}
+
+type CheckboxState = 'ready'
+
+type CheckboxTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in CheckboxState]?: EventHandlerMap
+  }
 }

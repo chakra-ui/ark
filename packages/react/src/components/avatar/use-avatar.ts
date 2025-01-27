@@ -68,56 +68,56 @@ export function useAvatar(props: UseAvatarProps = {}): UseAvatarReturn {
 
   // Sender
   const send = useEvent((event: AvatarEvent) => {
-    switch (event.type) {
-      case 'SRC.CHANGE': {
-        state.set('loading')
-        checkImageStatus()
-        return
-      }
-      case 'SRC.SET': {
-        const imageEl = getImageEl()
-        if (imageEl) imageEl.src = event.value
-        return
-      }
-      case 'IMG.UNMOUNT':
-        state.set('error')
-        return
-      default:
-        break
+    const transitions: AvatarTransitionMap = {
+      on: {
+        'SRC.CHANGE': () => {
+          state.set('loading')
+          checkImageStatus()
+        },
+        'SRC.SET': (event) => {
+          const imageEl = getImageEl()
+          if (imageEl) imageEl.src = event.value
+        },
+        'IMG.UNMOUNT': () => {
+          state.set('error')
+        },
+      },
+      states: {
+        loading: {
+          on: {
+            'IMG.LOADED': () => {
+              state.set('loaded')
+              invokeOnLoad()
+            },
+            'IMG.ERROR': () => {
+              state.set('error')
+              invokeOnError()
+            },
+          },
+        },
+        error: {
+          on: {
+            'IMG.LOADED': () => {
+              state.set('loaded')
+              invokeOnLoad()
+            },
+          },
+        },
+        loaded: {
+          on: {
+            'IMG.ERROR': () => {
+              state.set('error')
+              invokeOnError()
+            },
+          },
+        },
+      },
     }
 
-    switch (state.ref.current) {
-      case 'loading':
-        switch (event.type) {
-          case 'IMG.LOADED':
-            state.set('loaded')
-            invokeOnLoad()
-            break
-          case 'IMG.ERROR':
-            state.set('error')
-            invokeOnError()
-            break
-        }
-        break
-
-      case 'error':
-        switch (event.type) {
-          case 'IMG.LOADED':
-            state.set('loaded')
-            invokeOnLoad()
-            break
-        }
-        break
-
-      case 'loaded':
-        switch (event.type) {
-          case 'IMG.ERROR':
-            state.set('error')
-            invokeOnError()
-            break
-        }
-        break
-    }
+    const handler =
+      transitions.on?.[event.type] ?? transitions.states?.[state.ref.current]?.on?.[event.type]
+    // @ts-expect-error
+    handler?.(event)
   })
 
   // Setup activities
@@ -209,6 +209,20 @@ type AvatarEvent =
   | { type: 'IMG.ERROR'; src?: string }
 
 type AvatarState = 'loading' | 'error' | 'loaded'
+
+type EventHandler<E extends AvatarEvent['type']> = (
+  event: Extract<AvatarEvent, { type: E }>,
+) => void
+
+type EventHandlerMap = {
+  on?: { [E in AvatarEvent['type']]?: EventHandler<E> }
+}
+
+type AvatarTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in AvatarState]?: EventHandlerMap
+  }
+}
 
 export interface UseAvatarReturn {
   /**

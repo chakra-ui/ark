@@ -180,84 +180,88 @@ export function useCollapsible(props: UseCollapsibleProps = {}): UseCollapsibleR
 
   // Sender
   const send = useEvent((event: CollapsibleEvent) => {
-    switch (state.ref.current) {
-      case 'closed':
-        switch (event.type) {
-          case 'CONTROLLED.OPEN':
-            state.set('open')
-            break
-          case 'OPEN':
-            if (props.open !== undefined) {
-              invokeOnOpen()
-            } else {
+    const transitions: CollapsibleTransitionMap = {
+      states: {
+        closed: {
+          on: {
+            'CONTROLLED.OPEN': () => {
               state.set('open')
-              setInitial()
-              computeSize()
-              invokeOnOpen()
-            }
-            break
-        }
-        break
-
-      case 'closing':
-        switch (event.type) {
-          case 'CONTROLLED.CLOSE':
-            state.set('closed')
-            break
-          case 'CONTROLLED.OPEN':
-            state.set('open')
-            break
-          case 'OPEN':
-            if (props.open !== undefined) {
-              invokeOnOpen()
-            } else {
-              state.set('open')
-              setInitial()
-              invokeOnOpen()
-            }
-            break
-          case 'CLOSE':
-            if (props.open !== undefined) {
-              invokeOnExitComplete()
-            } else {
+            },
+            OPEN: () => {
+              if (props.open !== undefined) {
+                invokeOnOpen()
+              } else {
+                state.set('open')
+                setInitial()
+                computeSize()
+                invokeOnOpen()
+              }
+            },
+          },
+        },
+        closing: {
+          on: {
+            'CONTROLLED.CLOSE': () => {
               state.set('closed')
-              setInitial()
-              computeSize()
+            },
+            'CONTROLLED.OPEN': () => {
+              state.set('open')
+            },
+            OPEN: () => {
+              if (props.open !== undefined) {
+                invokeOnOpen()
+              } else {
+                state.set('open')
+                setInitial()
+                invokeOnOpen()
+              }
+            },
+            CLOSE: () => {
+              if (props.open !== undefined) {
+                invokeOnExitComplete()
+              } else {
+                state.set('closed')
+                setInitial()
+                computeSize()
+                invokeOnExitComplete()
+              }
+            },
+            'ANIMATION.END': () => {
+              state.set('closed')
               invokeOnExitComplete()
-            }
-            break
-          case 'ANIMATION.END':
-            state.set('closed')
-            invokeOnExitComplete()
-            clearInitial()
-            break
-        }
-        break
-
-      case 'open':
-        switch (event.type) {
-          case 'CONTROLLED.CLOSE':
-            state.set('closing')
-            break
-          case 'CLOSE':
-            if (props.open !== undefined) {
-              invokeOnClose()
-            } else {
+              clearInitial()
+            },
+          },
+        },
+        open: {
+          on: {
+            'CONTROLLED.CLOSE': () => {
               state.set('closing')
-              setInitial()
-              computeSize()
-              invokeOnClose()
-            }
-            break
-          case 'SIZE.MEASURE':
-            measureSize()
-            break
-          case 'ANIMATION.END':
-            clearInitial()
-            break
-        }
-        break
+            },
+            CLOSE: () => {
+              if (props.open !== undefined) {
+                invokeOnClose()
+              } else {
+                state.set('closing')
+                setInitial()
+                computeSize()
+                invokeOnClose()
+              }
+            },
+            'SIZE.MEASURE': () => {
+              measureSize()
+            },
+            'ANIMATION.END': () => {
+              clearInitial()
+            },
+          },
+        },
+      },
     }
+
+    const handler = transitions.states?.[state.ref.current]?.on?.[event.type]
+    // @ts-expect-error
+    handler?.(event)
   })
 
   // State watchers
@@ -389,6 +393,20 @@ type CollapsibleEvent =
   | { type: 'CLOSE'; src?: string }
   | { type: 'SIZE.MEASURE' }
   | { type: 'ANIMATION.END' }
+
+type EventHandler<E extends CollapsibleEvent['type']> = (
+  event: Extract<CollapsibleEvent, { type: E }>,
+) => void
+
+type EventHandlerMap = {
+  on?: { [E in CollapsibleEvent['type']]?: EventHandler<E> }
+}
+
+type CollapsibleTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in CollapsibleState]?: EventHandlerMap
+  }
+}
 
 export interface UseCollapsibleReturn {
   /**

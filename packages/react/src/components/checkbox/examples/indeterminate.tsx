@@ -2,7 +2,7 @@ import { Checkbox } from '@ark-ui/react/checkbox'
 import { CheckIcon, MinusIcon } from 'lucide-react'
 
 export const Indeterminate = () => (
-  <Checkbox.Root checked="indeterminate">
+  <Checkbox.Root defaultChecked="indeterminate">
     <Checkbox.Label>Checkbox</Checkbox.Label>
     <Checkbox.Control>
       <Checkbox.Indicator>

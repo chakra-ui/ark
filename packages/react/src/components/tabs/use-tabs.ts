@@ -244,6 +244,7 @@ export function useTabs(props: UseTabsProps = {}): UseTabsReturn {
   })
   const cleanupObserver = useEvent(() => {
     indicatorCleanupRef.current?.()
+    indicatorCleanupRef.current = undefined
   })
   const syncSsr = useEvent(() => {
     ctx.set({ ssr: false })
@@ -254,85 +255,94 @@ export function useTabs(props: UseTabsProps = {}): UseTabsReturn {
 
   // Sender
   const send = useEvent((event: TabsEvent) => {
-    switch (event.type) {
-      case 'SET_VALUE':
-        return setValue(event.value)
-      case 'CLEAR_VALUE':
-        return clearValue()
-      case 'SET_INDICATOR_RECT':
-        return setIndicatorRect(event.id)
-      case 'SYNC_TAB_INDEX':
-        return syncTabIndex()
+    const transitions: TabsTransitionMap = {
+      on: {
+        SET_VALUE: ({ value }) => {
+          setValue(value)
+        },
+        CLEAR_VALUE: () => {
+          clearValue()
+        },
+        SET_INDICATOR_RECT: ({ id }) => {
+          setIndicatorRect(id)
+        },
+        SYNC_TAB_INDEX: () => {
+          syncTabIndex()
+        },
+      },
+      states: {
+        idle: {
+          on: {
+            TAB_FOCUS: (event) => {
+              state.set('focused')
+              setFocusedValue(event.value)
+            },
+            TAB_CLICK: (event) => {
+              state.set('focused')
+              setFocusedValue(event.value)
+              setValue(event.value)
+            },
+          },
+        },
+        focused: {
+          on: {
+            TAB_CLICK: (event) => {
+              setFocusedValue(event.value)
+              setValue(event.value)
+            },
+            ARROW_PREV: () => {
+              if (selectOnFocus()) {
+                focusPrevTab()
+                selectFocusedTab()
+              } else {
+                focusPrevTab()
+              }
+            },
+            ARROW_NEXT: () => {
+              if (selectOnFocus()) {
+                focusNextTab()
+                selectFocusedTab()
+              } else {
+                focusNextTab()
+              }
+            },
+            HOME: () => {
+              if (selectOnFocus()) {
+                focusFirstTab()
+                selectFocusedTab()
+              } else {
+                focusFirstTab()
+              }
+            },
+            END: () => {
+              if (selectOnFocus()) {
+                focusLastTab()
+                selectFocusedTab()
+              } else {
+                focusLastTab()
+              }
+            },
+            ENTER: () => {
+              if (!selectOnFocus()) {
+                selectFocusedTab()
+              }
+            },
+            TAB_FOCUS: (event) => {
+              setFocusedValue(event.value)
+            },
+            TAB_BLUR: () => {
+              state.set('idle')
+              clearFocusedValue()
+            },
+          },
+        },
+      },
     }
 
-    switch (state.ref.current) {
-      case 'idle':
-        switch (event.type) {
-          case 'TAB_FOCUS':
-            state.set('focused')
-            setFocusedValue(event.value)
-            break
-          case 'TAB_CLICK':
-            state.set('focused')
-            setFocusedValue(event.value)
-            setValue(event.value)
-            break
-        }
-        break
-
-      case 'focused':
-        switch (event.type) {
-          case 'TAB_CLICK':
-            setFocusedValue(event.value)
-            setValue(event.value)
-            break
-          case 'ARROW_PREV':
-            if (selectOnFocus()) {
-              focusPrevTab()
-              selectFocusedTab()
-            } else {
-              focusPrevTab()
-            }
-            break
-          case 'ARROW_NEXT':
-            if (selectOnFocus()) {
-              focusNextTab()
-              selectFocusedTab()
-            } else {
-              focusNextTab()
-            }
-            break
-          case 'HOME':
-            if (selectOnFocus()) {
-              focusFirstTab()
-              selectFocusedTab()
-            } else {
-              focusFirstTab()
-            }
-            break
-          case 'END':
-            if (selectOnFocus()) {
-              focusLastTab()
-              selectFocusedTab()
-            } else {
-              focusLastTab()
-            }
-            break
-          case 'ENTER':
-            if (!selectOnFocus()) {
-              selectFocusedTab()
-            }
-            break
-          case 'TAB_FOCUS':
-            setFocusedValue(event.value)
-            break
-          case 'TAB_BLUR':
-            state.set('idle')
-            clearFocusedValue()
-            break
-        }
-        break
-    }
+    const transition =
+      transitions.states?.[state.ref.current]?.on?.[event.type] ?? transitions.on?.[event.type]
+    //@ts-expect-error
+    transition?.(event)
   })
 
   const _selectedValue = selectedValue.value
@@ -731,3 +741,15 @@ type TabsEvent =
   | { type: 'HOME' }
   | { type: 'END' }
   | { type: 'ENTER' }
+
+type EventHandler<E extends TabsEvent['type']> = (event: Extract<TabsEvent, { type: E }>) => void
+
+type EventHandlerMap = {
+  on?: { [E in TabsEvent['type']]?: EventHandler<E> }
+}
+
+type TabsTransitionMap = EventHandlerMap & {
+  states?: {
+    [K in TabsState]?: EventHandlerMap
+  }
+}
