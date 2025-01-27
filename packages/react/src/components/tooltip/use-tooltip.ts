@@ -2,47 +2,13 @@ import { addDomEvent, dataAttr, getOverflowAncestors, isComposingEvent } from '@
 import { isFocusVisible, trackFocusVisible } from '@zag-js/focus-visible'
 import type { Placement, PositioningOptions } from '@zag-js/popper'
 import { getPlacement, getPlacementStyles } from '@zag-js/popper'
-import { normalizeProps as normalize } from '@zag-js/react'
+import { type PropTypes, normalizeProps as normalize } from '@zag-js/react'
 import { callAll } from '../../utils/call-all'
 import { useEvent } from '../../utils/use-event'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import { useElementScope, useStateEffect, useStateValue } from '../../utils/use-state-value'
 import { useUpdateEffect } from '../../utils/use-update-effect'
 import { tooltipAnatomy } from './tooltip.anatomy'
-
-export interface UseTooltipProps {
-  id?: string
-  openDelay?: number
-  closeDelay?: number
-  closeOnPointerDown?: boolean
-  closeOnEscape?: boolean
-  closeOnScroll?: boolean
-  closeOnClick?: boolean
-  interactive?: boolean
-  onOpenChange?(details: { open: boolean }): void
-  'aria-label'?: string
-  positioning?: PositioningOptions
-  disabled?: boolean
-  open?: boolean
-  defaultOpen?: boolean
-  ids?: {
-    trigger?: string
-    content?: string
-    arrow?: string
-    positioner?: string
-  }
-}
-
-type TooltipState = 'opening' | 'open' | 'closing' | 'closed'
-type TooltipRefs = {
-  currentPlacement?: Placement
-  hasPointerMoveOpened: boolean
-}
-type TooltipEvent =
-  | { type: 'CONTROLLED.OPEN' | 'CONTROLLED.CLOSE'; previousEvent?: TooltipEvent | null }
-  | { type: 'POINTER_MOVE' | 'POINTER_LEAVE' | 'CONTENT.POINTER_MOVE' | 'CONTENT.POINTER_LEAVE' }
-  | { type: 'OPEN' | 'CLOSE'; src?: string }
-  | { type: 'POSITIONING.SET'; options?: Partial<PositioningOptions> }
 
 const store = {
   id: null as string | null,
@@ -537,4 +503,118 @@ export function useTooltip(props: UseTooltipProps = {}) {
   }
 }
 
-export type UseTooltipReturn = ReturnType<typeof useTooltip>
+type TooltipState = 'opening' | 'open' | 'closing' | 'closed'
+type TooltipRefs = {
+  currentPlacement?: Placement
+  hasPointerMoveOpened: boolean
+}
+type TooltipEvent =
+  | { type: 'CONTROLLED.OPEN' | 'CONTROLLED.CLOSE'; previousEvent?: TooltipEvent | null }
+  | { type: 'POINTER_MOVE' | 'POINTER_LEAVE' | 'CONTENT.POINTER_MOVE' | 'CONTENT.POINTER_LEAVE' }
+  | { type: 'OPEN' | 'CLOSE'; src?: string }
+  | { type: 'POSITIONING.SET'; options?: Partial<PositioningOptions> }
+
+export interface OpenChangeDetails {
+  open: boolean
+}
+
+export type ElementIds = Partial<{
+  trigger: string
+  content: string
+  arrow: string
+  positioner: string
+}>
+
+export interface UseTooltipProps {
+  /**
+   * The `id` of the tooltip.
+   */
+  id?: string
+  /**
+   * The open delay of the tooltip.
+   * @default 1000
+   */
+  openDelay?: number
+  /**
+   * The close delay of the tooltip.
+   * @default 500
+   */
+  closeDelay?: number
+  /**
+   * Whether to close the tooltip on pointerdown.
+   * @default true
+   */
+  closeOnPointerDown?: boolean
+  /**
+   * Whether to close the tooltip when the Escape key is pressed.
+   * @default true
+   */
+  closeOnEscape?: boolean
+  /**
+   * Whether the tooltip should close on scroll
+   * @default true
+   */
+  closeOnScroll?: boolean
+  /**
+   * Whether the tooltip should close on click
+   * @default true
+   */
+  closeOnClick?: boolean
+  /**
+   * Whether the tooltip's content is interactive.
+   * In this mode, the tooltip will remain open when user hovers over the content.
+   * @see https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+   *
+   * @default false
+   */
+  interactive?: boolean
+  /**
+   * Function called when the tooltip is opened.
+   */
+  onOpenChange?(details: { open: boolean }): void
+  /**
+   * Custom label for the tooltip.
+   */
+  'aria-label'?: string
+  /**
+   * The user provided options used to position the popover content
+   */
+  positioning?: PositioningOptions
+  /**
+   * Whether the tooltip is disabled
+   */
+  disabled?: boolean
+  /**
+   * Whether the tooltip is open
+   */
+  open?: boolean
+  /**
+   * Whether the tooltip is open by default
+   */
+  defaultOpen?: boolean
+  /**
+   * The ids of the elements in the tooltip. Useful for composition.
+   */
+  ids?: ElementIds
+}
+
+export interface UseTooltipReturn {
+  /**
+   * Whether the tooltip is open.
+   */
+  open: boolean
+  /**
+   * Function to open the tooltip.
+   */
+  setOpen(open: boolean): void
+  /**
+   * Function to reposition the popover
+   */
+  reposition(options?: Partial<PositioningOptions>): void
+
+  getTriggerProps(): PropTypes['button']
+  getArrowProps(): PropTypes['element']
+  getArrowTipProps(): PropTypes['element']
+  getPositionerProps(): PropTypes['element']
+  getContentProps(): PropTypes['element']
+}

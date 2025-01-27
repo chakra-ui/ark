@@ -11,7 +11,7 @@
 }
 
 [data-scope='tooltip'][data-part='content'][data-state='closed'] {
-  animation: fadeOut 0.5s ease-in;
+  animation: fadeOut 0.2s ease-in;
 }
 
 [data-scope='tooltip'][data-part='arrow'] {

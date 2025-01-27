@@ -19,11 +19,13 @@ export function usePresence(props: UsePresenceProps = {}): UsePresenceReturn {
 
   // State
   const state = useStateValue<PresenceState>(props.present ? 'mounted' : 'unmounted')
-  const [initial, setInitial] = React.useState(false)
+
+  // Context
+  const ctx = useStateValue({ initial: false })
 
   // Actions
-  const setInitialFn = useEvent(() => setInitial(true))
-  const clearInitialFn = useEvent(() => setInitial(false))
+  const setInitial = useEvent(() => ctx.set({ initial: true }))
+  const clearInitial = useEvent(() => ctx.set({ initial: false }))
   const cleanupNode = useEvent(() => {
     refs.set({ node: null, styles: null })
   })
@@ -158,15 +160,15 @@ export function usePresence(props: UsePresenceProps = {}): UsePresenceReturn {
   useStateEffect(state, 'unmounted', clearPrevAnimationName)
 
   // Context watchers
-  useUpdateEffect(callAll(setInitialFn, syncPresence), [props.present])
+  useUpdateEffect(callAll(setInitial, syncPresence), [props.present])
 
   // Exit effects
-  useUnmount(callAll(clearInitialFn, cleanupNode))
+  useUnmount(callAll(clearInitial, cleanupNode))
 
   const present = state.matches('mounted', 'unmountSuspended')
 
   const api: PresenceApi = {
-    skip: !initial && present,
+    skip: !ctx.get('initial') && present,
     present,
     setNode(node: HTMLElement | null) {
       if (!node) return

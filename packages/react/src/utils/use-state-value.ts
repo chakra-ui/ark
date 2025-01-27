@@ -2,7 +2,6 @@ import { getActiveElement, getDocument, getWindow } from '@zag-js/dom-query'
 import { isFunction } from '@zag-js/utils'
 import * as React from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../providers'
-import { flush } from './flush'
 import { useEvent } from './use-event'
 import { useSafeLayoutEffect } from './use-safe-layout-effect'
 import { useUpdateEffect } from './use-update-effect'
@@ -28,13 +27,11 @@ export function useStateValue<T>(value: T) {
     },
     set(value: Partial<T> | ((prev: T) => Partial<T>)) {
       previousState.current = state
-      flush(() => {
-        setState((curr) => {
-          if (typeof value === 'object') {
-            return { ...curr, ...(isFunction(value) ? value(curr) : value) }
-          }
-          return typeof value === 'function' ? value(curr) : value
-        })
+      setState((curr) => {
+        if (typeof value === 'object') {
+          return { ...curr, ...(isFunction(value) ? value(curr) : value) }
+        }
+        return typeof value === 'function' ? value(curr) : value
       })
     },
     matches(...values: T[]) {
