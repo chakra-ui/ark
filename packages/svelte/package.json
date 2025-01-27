@@ -101,7 +101,7 @@
     "clean-package": "2.2.0",
     "release-it": "17.11.0",
     "storybook": "8.4.7",
-    "svelte": "5.19.0",
+    "svelte": "5.19.3",
     "svelte-check": "4.1.4",
     "tslib": "2.8.1",
     "typescript": "5.7.3",
