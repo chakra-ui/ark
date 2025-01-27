@@ -93,7 +93,7 @@
     "@storybook/sveltekit": "8.4.7",
     "@sveltejs/adapter-auto": "3.3.1",
     "@sveltejs/kit": "2.16.1",
-    "@sveltejs/package": "2.3.7",
+    "@sveltejs/package": "2.3.9",
     "@sveltejs/vite-plugin-svelte": "4.0.4",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/svelte": "5.2.6",
