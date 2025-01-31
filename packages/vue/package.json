@@ -221,7 +221,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@histoire/plugin-vue": "0.17.17",
-    "@release-it/keep-a-changelog": "5.0.0",
+    "@release-it/keep-a-changelog": "6.0.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/user-event": "14.5.2",

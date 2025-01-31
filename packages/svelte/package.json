@@ -87,7 +87,7 @@
     "nanoid": "5.0.9"
   },
   "devDependencies": {
-    "@release-it/keep-a-changelog": "5.0.0",
+    "@release-it/keep-a-changelog": "6.0.0",
     "@storybook/addon-a11y": "8.4.7",
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/sveltekit": "8.4.7",
