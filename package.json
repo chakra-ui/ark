@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/bun": "1.2.1",
+    "@types/bun": "1.2.2",
     "lefthook": "1.10.10",
     "prettier": "3.4.2",
     "prettier-plugin-svelte": "3.3.3",
