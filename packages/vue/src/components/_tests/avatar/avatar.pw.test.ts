@@ -7,15 +7,15 @@ test.describe('basic variant', () => {
     await page.getByAltText('avatar').waitFor()
   })
   test('has avatar image', async ({ page }) => {
-    expect(page.getByAltText('avatar')).toHaveAttribute(
+    await expect(page.getByAltText('avatar')).toHaveAttribute(
       'src',
       'https://avatars.githubusercontent.com/u/1846056?v=4',
     )
-    expect(page).toHaveScreenshot()
+    await expect(page).toHaveScreenshot()
   })
   test('has no a11y violations', async ({ page }, testInfo) => {
     const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'avatar')
-    expect(accessibilityScanResults.violations).toEqual([])
+    await expect(accessibilityScanResults.violations).toEqual([])
   })
 })
 
@@ -25,15 +25,15 @@ test.describe('closed variant', () => {
     await page.getByAltText('Christian').waitFor()
   })
   test('displays avatar with name', async ({ page }) => {
-    expect(page.getByAltText('Christian')).toHaveAttribute(
+    await expect(page.getByAltText('Christian')).toHaveAttribute(
       'src',
       'https://avatars.githubusercontent.com/u/1846056?v=4',
     )
-    expect(page).toHaveScreenshot()
+    await expect(page).toHaveScreenshot()
   })
   test('has no a11y violations', async ({ page }, testInfo) => {
     const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'avatar')
-    expect(accessibilityScanResults.violations).toEqual([])
+    await expect(accessibilityScanResults.violations).toEqual([])
   })
 })
 
@@ -43,14 +43,14 @@ test.describe('root-provided variant', () => {
     await page.getByAltText('avatar').waitFor()
   })
   test('has avatar image', async ({ page }) => {
-    expect(page.getByAltText('avatar')).toHaveAttribute(
+    await expect(page.getByAltText('avatar')).toHaveAttribute(
       'src',
       'https://avatars.githubusercontent.com/u/1846056?v=4',
     )
-    expect(page).toHaveScreenshot()
+    await expect(page).toHaveScreenshot()
   })
   test('has no a11y violations', async ({ page }, testInfo) => {
     const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'avatar')
-    expect(accessibilityScanResults.violations).toEqual([])
+    await expect(accessibilityScanResults.violations).toEqual([])
   })
 })
