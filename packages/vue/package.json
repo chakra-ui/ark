@@ -147,6 +147,9 @@
     "test:pw:ui": "playwright test --ui",
     "typecheck": "vue-tsc",
     "storybook": "histoire dev",
+    "story:dev": "histoire dev",
+    "story:build": "histoire build",
+    "story:preview": "histoire preview",
     "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
