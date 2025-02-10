@@ -10,7 +10,7 @@
         "@biomejs/biome": "1.9.4",
         "@types/bun": "1.2.2",
         "lefthook": "1.10.10",
-        "prettier": "3.4.2",
+        "prettier": "3.5.0",
         "prettier-plugin-svelte": "3.3.3",
         "turbo": "2.4.0",
         "typescript": "5.7.3",
@@ -2611,7 +2611,7 @@
 
     "prelude-ls": ["prelude-ls@1.2.1", "", {}, "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g=="],
 
-    "prettier": ["prettier@3.4.2", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ=="],
+    "prettier": ["prettier@3.5.0", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-quyMrVt6svPS7CjQ9gKb3GLEX/rl3BCL2oa/QkNcXv4YNVBC9olt3s+H7ukto06q7B1Qz46PbrKLO34PR6vXcA=="],
 
     "prettier-plugin-svelte": ["prettier-plugin-svelte@3.3.3", "", { "peerDependencies": { "prettier": "^3.0.0", "svelte": "^3.2.0 || ^4.0.0-next.0 || ^5.0.0-next.0" } }, "sha512-yViK9zqQ+H2qZD1w/bH7W8i+bVfKrD8GIFjkFe4Thl6kCT9SlAsXVNmt3jCvQOCsnOhcvYgsoVlRV/Eu6x5nNw=="],
 
@@ -3696,6 +3696,8 @@
     "root/@types/bun": ["@types/bun@1.1.17", "", { "dependencies": { "bun-types": "1.1.44" } }, "sha512-zZt0Kao/8hAwNOXh4bmt8nKbMEd4QD8n7PeTGF+NZTVY5ouXhU/TX7jUj4He1p7mgY+WdplnU1B6MB1j17vdzg=="],
 
     "root/lefthook": ["lefthook@1.10.9", "", { "optionalDependencies": { "lefthook-darwin-arm64": "1.10.9", "lefthook-darwin-x64": "1.10.9", "lefthook-freebsd-arm64": "1.10.9", "lefthook-freebsd-x64": "1.10.9", "lefthook-linux-arm64": "1.10.9", "lefthook-linux-x64": "1.10.9", "lefthook-openbsd-arm64": "1.10.9", "lefthook-openbsd-x64": "1.10.9", "lefthook-windows-arm64": "1.10.9", "lefthook-windows-x64": "1.10.9" }, "bin": { "lefthook": "bin/index.js" } }, "sha512-UNgvdOMxINultvtDQ0XgqMomMIeI2dyJM5hgOaqpC47SJvVPOy1Mk5i7QnFtfDK/bdB2pKaA61KxrIx6rCmL/w=="],
+
+    "root/prettier": ["prettier@3.4.2", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ=="],
 
     "root/root": ["root@file:.", {}],
 
