@@ -233,7 +233,7 @@
     "clean-package": "2.2.0",
     "globby": "14.1.0",
     "histoire": "0.17.17",
-    "jsdom": "25.0.1",
+    "jsdom": "26.0.0",
     "lucide-vue-next": "0.475.0",
     "release-it": "17.11.0",
     "resize-observer-polyfill": "1.5.1",

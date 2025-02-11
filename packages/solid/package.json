@@ -197,7 +197,7 @@
     "clean-package": "2.2.0",
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.1.0",
-    "jsdom": "25.0.1",
+    "jsdom": "26.0.0",
     "lucide-solid": "0.475.0",
     "release-it": "17.11.0",
     "resize-observer-polyfill": "1.5.1",
