@@ -244,7 +244,7 @@
     "react-dom": "19.0.0",
     "react-frame-component": "5.2.7",
     "react-hook-form": "7.54.2",
-    "release-it": "17.11.0",
+    "release-it": "18.1.2",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "8.4.7",
     "typescript": "5.7.3",
