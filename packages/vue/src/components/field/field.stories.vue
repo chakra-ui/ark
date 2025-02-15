@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Disabled from './examples/disabled.vue'
 import InputControlled from './examples/input-controlled.vue'
 import Input from './examples/input.vue'
 import ReactiveInvalid from './examples/reactive-invalid.vue'
@@ -21,6 +22,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Select Controlled">
       <SelectControlled />
+    </Variant>
+    <Variant title="Disabled">
+      <Disabled />
     </Variant>
     <Variant title="Textarea">
       <Textarea />
