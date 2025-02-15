@@ -140,6 +140,7 @@ export const useField = (props: UseFieldProps) => {
   const getHelperTextProps = () => ({
     id: helperTextId,
     ...parts.helperText.attrs,
+    'data-disabled': dataAttr(fieldProps.disabled),
   })
 
   const getErrorTextProps = () => ({
