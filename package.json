@@ -1,45 +1,39 @@
 {
-  "name": "root",
-  "type": "module",
-  "private": true,
-  "workspaces": [
-    "packages/*",
-    "scripts",
-    "website"
-  ],
-  "scripts": {
-    "postinstall": "lefthook install",
-    "build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
-    "exports:check": "bun scripts check:exports",
-    "exports:sync": "bun scripts exports:sync",
-    "local:sync": "bun scripts local:sync",
-    "local:revert": "bun scripts local:sync --revert",
-    "format": "bun prettier --write .",
-    "lint": "turbo run lint",
-    "test": "turbo run test:ci",
-    "typecheck": "turbo run typecheck",
-    "react": "bun run --cwd packages/react",
-    "scripts": "bun run --cwd scripts",
-    "solid": "bun run --cwd packages/solid",
-    "svelte": "bun run --cwd packages/svelte",
-    "vue": "bun run --cwd packages/vue",
-    "web": "bun run --cwd website"
-  },
-  "dependencies": {
-    "root": "."
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/bun": "1.2.2",
-    "lefthook": "1.10.10",
-    "prettier": "3.5.0",
-    "prettier-plugin-svelte": "3.3.3",
-    "turbo": "2.4.0",
-    "typescript": "5.7.3",
-    "vercel": "39.4.2"
-  },
-  "packageManager": "bun@1.2.0",
-  "trustedDependencies": [
-    "@ark-ui/website"
-  ]
+	"name": "root",
+	"type": "module",
+	"private": true,
+	"workspaces": ["packages/*", "scripts", "website"],
+	"scripts": {
+		"postinstall": "lefthook install",
+		"build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
+		"exports:check": "bun scripts check:exports",
+		"exports:sync": "bun scripts exports:sync",
+		"local:sync": "bun scripts local:sync",
+		"local:revert": "bun scripts local:sync --revert",
+		"format": "bun prettier --write .",
+		"lint": "turbo run lint",
+		"test": "turbo run test:ci",
+		"typecheck": "turbo run typecheck",
+		"react": "bun run --cwd packages/react",
+		"scripts": "bun run --cwd scripts",
+		"solid": "bun run --cwd packages/solid",
+		"svelte": "bun run --cwd packages/svelte",
+		"vue": "bun run --cwd packages/vue",
+		"web": "bun run --cwd website"
+	},
+	"dependencies": {
+		"root": "."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/bun": "1.2.2",
+		"lefthook": "1.10.10",
+		"prettier": "3.5.1",
+		"prettier-plugin-svelte": "3.3.3",
+		"turbo": "2.4.2",
+		"typescript": "5.7.3",
+		"vercel": "41.1.4"
+	},
+	"packageManager": "bun@1.2.2",
+	"trustedDependencies": ["@ark-ui/website"]
 }
