@@ -137,8 +137,9 @@ export const useField = (props: UseFieldProps) => {
       ({
         ...getControlProps(),
         ...parts.input.attrs,
+        'aria-describedby': helperTextId,
       }) as HTMLProps<'input'>,
-    [getControlProps],
+    [getControlProps, helperTextId],
   )
 
   const getTextareaProps = useMemo(
