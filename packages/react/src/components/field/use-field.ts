@@ -164,8 +164,9 @@ export const useField = (props: UseFieldProps) => {
       ({
         id: helperTextId,
         ...parts.helperText.attrs,
+        'data-disabled': dataAttr(disabled),
       }) as HTMLProps<'span'>,
-    [helperTextId],
+    [disabled, helperTextId],
   )
 
   const getErrorTextProps = useMemo(
