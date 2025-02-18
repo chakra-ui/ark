@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import InputControlled from './examples/input-controlled.vue'
-import Input from './examples/input.vue'
-import ReactiveInvalid from './examples/reactive-invalid.vue'
-import RequiredIndicator from './examples/required-indicator.vue'
-import SelectControlled from './examples/select-controlled.vue'
-import Select from './examples/select.vue'
-import TextareaControlled from './examples/textarea-controlled.vue'
-import Textarea from './examples/textarea.vue'
+import Disabled from "./examples/disabled.vue";
+import InputControlled from "./examples/input-controlled.vue";
+import Input from "./examples/input.vue";
+import ReactiveInvalid from "./examples/reactive-invalid.vue";
+import RequiredIndicator from "./examples/required-indicator.vue";
+import SelectControlled from "./examples/select-controlled.vue";
+import Select from "./examples/select.vue";
+import TextareaControlled from "./examples/textarea-controlled.vue";
+import Textarea from "./examples/textarea.vue";
 </script>
 <template>
   <Story title="Field">
@@ -21,6 +22,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Select Controlled">
       <SelectControlled />
+    </Variant>
+    <Variant title="Disabled">
+      <Disabled />
     </Variant>
     <Variant title="Textarea">
       <Textarea />

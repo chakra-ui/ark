@@ -1,12 +1,13 @@
-import type { Meta } from 'storybook-solidjs'
+import type { Meta } from "storybook-solidjs";
 
 const meta: Meta = {
-  title: 'Components / Field',
-}
+	title: "Components / Field",
+};
 
-export default meta
+export default meta;
 
-export { Input } from './examples/input'
-export { RequiredIndicator } from './examples/required-indicator'
-export { Select } from './examples/select'
-export { Textarea } from './examples/textarea'
+export { Input } from "./examples/input";
+export { RequiredIndicator } from "./examples/required-indicator";
+export { Select } from "./examples/select";
+export { Textarea } from "./examples/textarea";
+export { Disabled } from "./examples/disabled";

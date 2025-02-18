@@ -163,14 +163,14 @@ export const useField = (props: UseFieldProps) => {
 			}) as HTMLProps<"select">,
 		[getControlProps],
 	);
-
 	const getHelperTextProps = useMemo(
 		() => () =>
 			({
 				id: helperTextId,
 				...parts.helperText.attrs,
+				"data-disabled": dataAttr(disabled),
 			}) as HTMLProps<"span">,
-		[helperTextId],
+		[disabled, helperTextId],
 	);
 
 	const getErrorTextProps = useMemo(
