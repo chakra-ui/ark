@@ -9,22 +9,16 @@ import pkg from './package.json'
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
-    // dts({
-    //   entryRoot: 'src',
-    //   staticImport: true,
-    //   exclude: [
-    //     '**/*.stories.tsx',
-    //     '**/*.test.tsx',
-    //     '**/tests/*',
-    //     '**/examples/*',
-    //     '**/setup-test.ts',
-    //   ],
-    //   afterBuild: () => {
-    //     globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
-    //       copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
-    //     })
-    //   },
-    // }),
+    dts({
+      entryRoot: 'src',
+      staticImport: true,
+      exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
+      afterBuild: () => {
+        globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
+          copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
+        })
+      },
+    }),
     react(),
   ],
   build: {
