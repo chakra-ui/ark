@@ -3,28 +3,23 @@ import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import { useFieldContext } from "../field";
 
 export interface UseNumberInputProps
-	extends Optional<Omit<numberInput.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The initial value of the number input when it is first rendered.
-	 * Use when you do not need to control the state of the number input.
-	 */
-	defaultValue?: numberInput.Props["value"];
-}
+	extends Optional<Omit<numberInput.Props, "dir" | "getRootNode">, "id"> {}
+
 export interface UseNumberInputReturn extends numberInput.Api<PropTypes> {}
 
 export const useNumberInput = (
-	props: UseNumberInputProps = {},
+	props: UseNumberInputProps,
 ): UseNumberInputReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir, locale } = useLocaleContext();
 	const field = useFieldContext();
 
-	const initialContext: numberInput.Props = {
-		id: useId(),
+	const userProps: numberInput.Props = {
+		id,
 		ids: {
 			label: field?.ids.label,
 			input: field?.ids.control,
@@ -36,18 +31,9 @@ export const useNumberInput = (
 		dir,
 		locale,
 		getRootNode,
-		value: props.defaultValue,
 		...props,
 	};
 
-	const context: numberInput.Props = {
-		...initialContext,
-		value: props.value,
-		onValueChange: useEvent(props.onValueChange, { sync: true }),
-		onValueInvalid: useEvent(props.onValueInvalid),
-		onFocusChange: useEvent(props.onFocusChange),
-	};
-
-	const service = useMachine(numberInput.machine(initialContext), { context });
+	const service = useMachine(numberInput.machine, userProps);
 	return numberInput.connect(service, normalizeProps);
 };

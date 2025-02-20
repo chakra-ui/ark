@@ -3,7 +3,6 @@ import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import { useFieldContext } from "../field";
 
 export interface UseFileUploadProps
@@ -11,14 +10,15 @@ export interface UseFileUploadProps
 export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 
 export const useFileUpload = (
-	props: UseFileUploadProps = {},
+	props: UseFileUploadProps,
 ): UseFileUploadReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 	const field = useFieldContext();
 
-	const initialContext: fileUpload.Props = {
-		id: useId(),
+	const userProps: fileUpload.Props = {
+		id,
 		ids: {
 			label: field?.ids.label,
 			hiddenInput: field?.ids.control,
@@ -31,13 +31,6 @@ export const useFileUpload = (
 		...props,
 	};
 
-	const context: fileUpload.Props = {
-		...initialContext,
-		onFileAccept: useEvent(props.onFileAccept),
-		onFileReject: useEvent(props.onFileReject),
-		onFileChange: useEvent(props.onFileChange, { sync: true }),
-	};
-
-	const service = useMachine(fileUpload.machine(initialContext), { context });
+	const service = useMachine(fileUpload.machine, userProps);
 	return fileUpload.connect(service, normalizeProps);
 };

@@ -9,19 +9,15 @@ export interface UseClipboardProps
 export interface UseClipboardReturn extends clipboard.Api<PropTypes> {}
 
 export const useClipboard = (props: UseClipboardProps = {}) => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 
-	const initialContext: clipboard.Props = {
-		id: useId(),
+	const userProps: clipboard.Props = {
+		id,
 		getRootNode,
 		...props,
 	};
 
-	const context: clipboard.Props = {
-		...initialContext,
-	};
-
-	const service = useMachine(clipboard.machine(initialContext), { context });
-
+	const service = useMachine(clipboard.machine, userProps);
 	return clipboard.connect(service, normalizeProps);
 };

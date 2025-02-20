@@ -23,12 +23,13 @@ export interface UseSelectReturn<T extends CollectionItem>
 export const useSelect = <T extends CollectionItem>(
 	props: UseSelectProps<T>,
 ): UseSelectReturn<T> => {
-	const locale = useLocaleContext();
-	const environment = useEnvironmentContext();
+	const id = useId();
+	const { dir } = useLocaleContext();
+	const { getRootNode } = useEnvironmentContext();
 	const field = useFieldContext();
 
 	const userProps: select.Props<T> = {
-		id: useId(),
+		id,
 		ids: {
 			label: field?.ids.label,
 			hiddenSelect: field?.ids.control,
@@ -37,8 +38,8 @@ export const useSelect = <T extends CollectionItem>(
 		readOnly: field?.readOnly,
 		invalid: field?.invalid,
 		required: field?.required,
-		dir: locale.dir,
-		getRootNode: environment.getRootNode,
+		dir,
+		getRootNode,
 		...props,
 	};
 

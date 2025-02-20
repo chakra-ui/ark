@@ -8,24 +8,15 @@ import {
 import { useId, useMemo } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import { useFieldContext } from "../field";
 import { useCheckboxGroupContext } from "./use-checkbox-group-context";
 
 export interface UseCheckboxProps
-	extends Optional<Omit<checkbox.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The checked state of the checkbox when it is first rendered.
-	 * Use this when you do not need to control the state of the checkbox.
-	 */
-	defaultChecked?: checkbox.Props["checked"];
-}
+	extends Optional<Omit<checkbox.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseCheckboxReturn extends checkbox.Api<PropTypes> {}
 
-export const useCheckbox = (
-	ownProps: UseCheckboxProps = {},
-): UseCheckboxReturn => {
+export const useCheckbox = (ownProps: UseCheckboxProps): UseCheckboxReturn => {
 	const checkboxGroup = useCheckboxGroupContext();
 	const field = useFieldContext();
 
@@ -36,11 +27,12 @@ export const useCheckbox = (
 		);
 	}, [ownProps, checkboxGroup]);
 
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
-	const initialContext: checkbox.Props = {
-		id: useId(),
+	const userProps: checkbox.Props = {
+		id,
 		ids: {
 			label: field?.ids.label,
 			hiddenInput: field?.ids.control,
@@ -51,17 +43,9 @@ export const useCheckbox = (
 		invalid: field?.invalid,
 		required: field?.required,
 		getRootNode,
-		checked: props.defaultChecked,
 		...props,
 	};
 
-	const context: checkbox.Props = {
-		...initialContext,
-		checked: props.checked,
-		onCheckedChange: useEvent(props.onCheckedChange, { sync: true }),
-	};
-
-	const service = useMachine(checkbox.machine(initialContext), { context });
-
+	const service = useMachine(checkbox.machine, userProps);
 	return checkbox.connect(service, normalizeProps);
 };

@@ -3,46 +3,30 @@ import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 
 export interface UseMenuProps
-	extends Optional<
-		Omit<menu.Props, "open.controlled" | "dir" | "getRootNode">,
-		"id"
-	> {
-	/**
-	 * The initial open state of the menu when it is first rendered.
-	 * Use when you do not need to control its open state.
-	 */
-	defaultOpen?: menu.Props["open"];
-}
+	extends Optional<Omit<menu.Props, "dir" | "getRootNode">, "id"> {}
+
 export interface UseMenuReturn {
-	machine: menu.Service;
+	service: menu.Service;
 	api: menu.Api<PropTypes>;
 }
 
-export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
+export const useMenu = (props: UseMenuProps): UseMenuReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
-	const initialContext: menu.Props = {
-		id: useId(),
+	const userProps: menu.Props = {
+		id,
 		dir,
 		getRootNode,
 
 		...props,
 	};
 
-	const context: menu.Props = {
-		...initialContext,
-		onOpenChange: useEvent(props.onOpenChange),
-		onSelect: useEvent(props.onSelect),
-	};
-
-	const [service, machine] = useMachine(menu.machine(initialContext), {
-		context,
-	});
+	const service = useMachine(menu.machine, userProps);
 	const api = menu.connect(service, normalizeProps);
 
-	return { api, machine };
+	return { api, service };
 };

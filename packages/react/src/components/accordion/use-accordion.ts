@@ -9,14 +9,13 @@ export interface UseAccordionProps
 
 export interface UseAccordionReturn extends accordion.Api<PropTypes> {}
 
-export const useAccordion = (
-	props: UseAccordionProps = {},
-): UseAccordionReturn => {
+export const useAccordion = (props: UseAccordionProps): UseAccordionReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
 	const machineProps: accordion.Props = {
-		id: useId(),
+		id,
 		dir,
 		getRootNode,
 		...props,

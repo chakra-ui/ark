@@ -3,42 +3,26 @@ import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 
 export interface UseRadioGroupProps
-	extends Optional<Omit<radio.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The initial value of the radio group when it is first rendered.
-	 * Use when you do not need to control the state of the radio group.
-	 */
-	defaultValue?: radio.Props["value"];
-}
+	extends Optional<Omit<radio.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseRadioGroupReturn extends radio.Api<PropTypes> {}
 
 export const useRadioGroup = (
-	props: UseRadioGroupProps = {},
+	props: UseRadioGroupProps,
 ): UseRadioGroupReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
-	const initialContext: radio.Props = {
-		id: useId(),
+	const userProps: radio.Props = {
+		id,
 		dir,
 		getRootNode,
-		value: props.defaultValue,
 		...props,
 	};
 
-	const context: radio.Props = {
-		...initialContext,
-		value: props.value,
-		onValueChange: useEvent(props.onValueChange, { sync: true }),
-	};
-
-	const service = useMachine(radio.machine(initialContext), {
-		context,
-	});
-
+	const service = useMachine(radio.machine, userProps);
 	return radio.connect(service, normalizeProps);
 };

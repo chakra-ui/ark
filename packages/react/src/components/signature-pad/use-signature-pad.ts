@@ -3,7 +3,6 @@ import * as signaturePad from "@zag-js/signature-pad";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import { useFieldContext } from "../field";
 
 export interface UseSignaturePadProps
@@ -12,14 +11,15 @@ export interface UseSignaturePadProps
 export interface UseSignaturePadReturn extends signaturePad.Api<PropTypes> {}
 
 export const useSignaturePad = (
-	props: UseSignaturePadProps = {},
+	props: UseSignaturePadProps,
 ): UseSignaturePadReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 	const field = useFieldContext();
 
-	const initialContext: signaturePad.Props = {
-		id: useId(),
+	const userProps: signaturePad.Props = {
+		id,
 		ids: {
 			label: field?.ids.label,
 			hiddenInput: field?.ids.control,
@@ -32,14 +32,6 @@ export const useSignaturePad = (
 		...props,
 	};
 
-	const context: signaturePad.Props = {
-		...initialContext,
-		drawing: props.drawing,
-		onDraw: useEvent(props.onDraw),
-		onDrawEnd: useEvent(props.onDrawEnd),
-	};
-
-	const service = useMachine(signaturePad.machine(initialContext), { context });
-
+	const service = useMachine(signaturePad.machine, userProps);
 	return signaturePad.connect(service, normalizeProps);
 };

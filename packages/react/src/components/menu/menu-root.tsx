@@ -1,73 +1,81 @@
-import { mergeProps } from '@zag-js/react'
-import { type ReactNode, useCallback } from 'react'
-import { createSplitProps } from '../../utils/create-split-props'
-import { useEffectOnce } from '../../utils/use-effect-once'
+import { mergeProps } from "@zag-js/react";
+import { type ReactNode, useCallback } from "react";
+import { createSplitProps } from "../../utils/create-split-props";
+import { useEffectOnce } from "../../utils/use-effect-once";
 import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
-import { type UseMenuProps, useMenu } from './use-menu'
-import { MenuProvider, useMenuContext } from './use-menu-context'
-import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
-import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
+	PresenceProvider,
+	type UsePresenceProps,
+	splitPresenceProps,
+	usePresence,
+} from "../presence";
+import { type UseMenuProps, useMenu } from "./use-menu";
+import { MenuProvider, useMenuContext } from "./use-menu-context";
+import {
+	MenuMachineProvider,
+	useMenuMachineContext,
+} from "./use-menu-machine-context";
+import { MenuTriggerItemProvider } from "./use-menu-trigger-item-context";
 
 export interface MenuRootBaseProps extends UseMenuProps, UsePresenceProps {}
 export interface MenuRootProps extends MenuRootBaseProps {
-  children?: ReactNode
+	children?: ReactNode;
 }
 
 export const MenuRoot = (props: MenuRootProps) => {
-  const [presenceProps, menuProps] = splitPresenceProps(props)
-  const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
-    'anchorPoint',
-    'aria-label',
-    'closeOnSelect',
-    'composite',
-    'defaultOpen',
-    'highlightedValue',
-    'id',
-    'ids',
-    'loopFocus',
-    'navigate',
-    'onEscapeKeyDown',
-    'onFocusOutside',
-    'onHighlightChange',
-    'onInteractOutside',
-    'onOpenChange',
-    'onPointerDownOutside',
-    'onSelect',
-    'open',
-    'positioning',
-    'typeahead',
-  ])
+	const [presenceProps, menuProps] = splitPresenceProps(props);
+	const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(
+		menuProps,
+		[
+			"anchorPoint",
+			"aria-label",
+			"closeOnSelect",
+			"composite",
+			"defaultOpen",
+			"highlightedValue",
+			"id",
+			"ids",
+			"loopFocus",
+			"navigate",
+			"onEscapeKeyDown",
+			"onFocusOutside",
+			"onHighlightChange",
+			"onInteractOutside",
+			"onOpenChange",
+			"onPointerDownOutside",
+			"onSelect",
+			"open",
+			"positioning",
+			"typeahead",
+		],
+	);
 
-  const parentApi = useMenuContext()
-  const parentMachine = useMenuMachineContext()
-  const { api, machine } = useMenu(useMenuProps)
-  const presence = usePresence(mergeProps({ present: api.open }, presenceProps))
+	const parentApi = useMenuContext();
+	const parentMachine = useMenuMachineContext();
+	const { api, service } = useMenu(useMenuProps);
+	const presence = usePresence(
+		mergeProps({ present: api.open }, presenceProps),
+	);
 
-  useEffectOnce(() => {
-    if (!parentMachine) return
-    if (!parentApi) return
+	useEffectOnce(() => {
+		if (!parentMachine) return;
+		if (!parentApi) return;
 
-    parentApi.setChild(machine)
-    api.setParent(parentMachine)
-  })
+		parentApi.setChild(service);
+		api.setParent(parentMachine);
+	});
 
-  const triggerItemContext = useCallback(
-    () => parentApi?.getTriggerItemProps(api),
-    [api, parentApi],
-  )
+	const triggerItemContext = useCallback(
+		() => parentApi?.getTriggerItemProps(api),
+		[api, parentApi],
+	);
 
-  return (
-    <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={machine}>
-        <MenuProvider value={api}>
-          <PresenceProvider value={presence} {...localProps} />
-        </MenuProvider>
-      </MenuMachineProvider>
-    </MenuTriggerItemProvider>
-  )
-}
+	return (
+		<MenuTriggerItemProvider value={triggerItemContext}>
+			<MenuMachineProvider value={service}>
+				<MenuProvider value={api}>
+					<PresenceProvider value={presence} {...localProps} />
+				</MenuProvider>
+			</MenuMachineProvider>
+		</MenuTriggerItemProvider>
+	);
+};

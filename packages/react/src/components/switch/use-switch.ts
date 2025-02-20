@@ -3,27 +3,21 @@ import * as zagSwitch from "@zag-js/switch";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import { useFieldContext } from "../field";
 
 export interface UseSwitchProps
-	extends Optional<Omit<zagSwitch.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The checked state of the switch when it is first rendered.
-	 * Use this when you do not need to control the state of the switch.
-	 */
-	defaultChecked?: zagSwitch.Props["checked"];
-}
+	extends Optional<Omit<zagSwitch.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseSwitchReturn extends zagSwitch.Api<PropTypes> {}
 
-export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
+export const useSwitch = (props: UseSwitchProps): UseSwitchReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 	const field = useFieldContext();
 
-	const initialContext: zagSwitch.Props = {
-		id: useId(),
+	const userProps: zagSwitch.Props = {
+		id,
 		ids: {
 			label: field?.ids.label,
 			hiddenInput: field?.ids.control,
@@ -34,17 +28,9 @@ export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
 		invalid: field?.invalid,
 		required: field?.required,
 		getRootNode,
-		checked: props.defaultChecked,
 		...props,
 	};
 
-	const context: zagSwitch.Props = {
-		...initialContext,
-		checked: props.checked,
-		onCheckedChange: useEvent(props.onCheckedChange, { sync: true }),
-	};
-
-	const service = useMachine(zagSwitch.machine(initialContext), { context });
-
+	const service = useMachine(zagSwitch.machine, userProps);
 	return zagSwitch.connect(service, normalizeProps);
 };

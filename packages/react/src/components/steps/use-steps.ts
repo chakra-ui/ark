@@ -3,40 +3,24 @@ import * as steps from "@zag-js/steps";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 
 export interface UseStepsProps
-	extends Optional<Omit<steps.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The initial value of the step
-	 */
-	defaultStep?: number;
-}
+	extends Optional<Omit<steps.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseStepsReturn extends steps.Api<PropTypes> {}
 
-export function useSteps(props: UseStepsProps = {}): UseStepsReturn {
+export function useSteps(props: UseStepsProps): UseStepsReturn {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
-	const initialContext: steps.Props = {
-		id: useId(),
+	const userProps: steps.Props = {
+		id,
 		dir,
 		getRootNode,
-		step: props.defaultStep,
 		...props,
 	};
 
-	const context: steps.Props = {
-		...initialContext,
-		step: props.step,
-		onStepChange: useEvent(props.onStepChange),
-		onStepComplete: useEvent(props.onStepComplete),
-	};
-
-	const service = useMachine(steps.machine(initialContext), {
-		context,
-	});
-
+	const service = useMachine(steps.machine, userProps);
 	return steps.connect<PropTypes>(service, normalizeProps);
 }

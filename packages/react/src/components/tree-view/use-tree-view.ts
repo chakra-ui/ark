@@ -1,9 +1,8 @@
 import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
 import * as treeView from "@zag-js/tree-view";
-import { useEffect, useId } from "react";
+import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import type { TreeCollection, TreeNode } from "../collection";
 
 export interface UseTreeViewProps<T extends TreeNode>
@@ -11,16 +10,6 @@ export interface UseTreeViewProps<T extends TreeNode>
 		Omit<treeView.Props, "dir" | "getRootNode" | "collection">,
 		"id"
 	> {
-	/**
-	 * The initial selected items of the tree view.
-	 * Use this when you do not need to control the state of the tree view.
-	 */
-	defaultSelectedValue?: treeView.Props["selectedValue"];
-	/**
-	 * The initial expanded items of the tree view.
-	 * Use this when you do not need to control the state of the tree view.
-	 */
-	defaultExpandedValue?: treeView.Props["expandedValue"];
 	/**
 	 * The collection of tree nodes
 	 */
@@ -33,40 +22,17 @@ export interface UseTreeViewReturn<T extends TreeNode>
 export const useTreeView = <T extends TreeNode>(
 	props: UseTreeViewProps<T>,
 ): UseTreeViewReturn<T> => {
-	const { collection, ...treeViewProps } = props;
-	const locale = useLocaleContext();
-	const environment = useEnvironmentContext();
+	const id = useId();
+	const { dir } = useLocaleContext();
+	const { getRootNode } = useEnvironmentContext();
 
-	const initialContext: treeView.Props = {
-		id: useId(),
-		dir: locale.dir,
-		getRootNode: environment.getRootNode,
-		selectedValue: props.defaultSelectedValue,
-		expandedValue: props.defaultExpandedValue,
-		collection,
-		...treeViewProps,
+	const userProps: treeView.Props = {
+		id,
+		dir,
+		getRootNode,
+		...props,
 	};
 
-	const context = (() => {
-		const { collection: _, ...restProps } = initialContext;
-		return {
-			...restProps,
-			selectedValue: props.selectedValue,
-			expandedValue: props.expandedValue,
-			onFocusChange: useEvent(props.onFocusChange),
-			onExpandedChange: useEvent(props.onExpandedChange, { sync: true }),
-			onSelectionChange: useEvent(props.onSelectionChange, { sync: true }),
-		};
-	})();
-
-	const service = useMachine(treeView.machine(initialContext), {
-		context,
-	});
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-	useEffect(() => {
-		service.setContext({ collection });
-	}, [collection]);
-
+	const service = useMachine(treeView.machine, userProps);
 	return treeView.connect(service, normalizeProps);
 };

@@ -3,48 +3,26 @@ import * as timePicker from "@zag-js/time-picker";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 
 export interface UseTimePickerProps
-	extends Optional<Omit<timePicker.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The initial open state of the time picker when it is first rendered.
-	 * Use when you do not need to control its open state.
-	 */
-	defaultOpen?: timePicker.Props["open"];
-	/**
-	 * The initial value of the time picker when it is first rendered.
-	 * Use when you do not need to control the state of the time picker.
-	 */
-	defaultValue?: timePicker.Props["value"];
-}
+	extends Optional<Omit<timePicker.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseTimePickerReturn extends timePicker.Api<PropTypes> {}
 
 export const useTimePicker = (
-	props: UseTimePickerProps = {},
+	props: UseTimePickerProps,
 ): UseTimePickerReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
-	const initialContext: timePicker.Props = {
-		id: useId(),
+	const userProps: timePicker.Props = {
+		id,
 		dir,
 		getRootNode,
-
-		value: props.defaultValue,
 		...props,
 	};
 
-	const context: timePicker.Props = {
-		...initialContext,
-		value: props.value,
-		onValueChange: useEvent(props.onValueChange),
-		onFocusChange: useEvent(props.onFocusChange),
-		onOpenChange: useEvent(props.onOpenChange),
-	};
-
-	const service = useMachine(timePicker.machine(initialContext), { context });
-
+	const service = useMachine(timePicker.machine, userProps);
 	return timePicker.connect(service, normalizeProps);
 };

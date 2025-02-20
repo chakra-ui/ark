@@ -3,29 +3,23 @@ import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
 import { useId } from "react";
 import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Optional } from "../../types";
-import { useEvent } from "../../utils/use-event";
 import { useFieldContext } from "../field";
 
 export interface UseRatingGroupProps
-	extends Optional<Omit<rating.Props, "dir" | "getRootNode">, "id"> {
-	/**
-	 * The initial value of the rating group when it is first rendered.
-	 * Use when you do not need to control the state of the rating group.
-	 */
-	defaultValue?: rating.Props["value"];
-}
+	extends Optional<Omit<rating.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseRatingGroupReturn extends rating.Api<PropTypes> {}
 
 export const useRatingGroup = (
-	props: UseRatingGroupProps = {},
+	props: UseRatingGroupProps,
 ): UseRatingGroupReturn => {
+	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 	const field = useFieldContext();
 
-	const initialContext: rating.Props = {
-		id: useId(),
+	const userProps: rating.Props = {
+		id,
 		ids: {
 			label: field?.ids.label,
 			hiddenInput: field?.ids.control,
@@ -35,20 +29,9 @@ export const useRatingGroup = (
 		readOnly: field?.readOnly,
 		required: field?.required,
 		getRootNode,
-		value: props.defaultValue,
 		...props,
 	};
 
-	const context: rating.Props = {
-		...initialContext,
-		value: props.value,
-		onValueChange: useEvent(props.onValueChange, { sync: true }),
-		onHoverChange: useEvent(props.onHoverChange),
-	};
-
-	const service = useMachine(rating.machine(initialContext), {
-		context,
-	});
-
+	const service = useMachine(rating.machine, userProps);
 	return rating.connect(service, normalizeProps);
 };
