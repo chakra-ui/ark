@@ -10,7 +10,7 @@ export interface UseToggleGroupProps
 export interface UseToggleGroupReturn extends toggleGroup.Api<PropTypes> {}
 
 export const useToggleGroup = (
-	props: UseToggleGroupProps,
+	props: UseToggleGroupProps = {},
 ): UseToggleGroupReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

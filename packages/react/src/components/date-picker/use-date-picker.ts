@@ -10,7 +10,7 @@ export interface UseDatePickerProps
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
 
 export const useDatePicker = (
-	props: UseDatePickerProps,
+	props: UseDatePickerProps = {},
 ): UseDatePickerReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

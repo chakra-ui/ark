@@ -9,7 +9,9 @@ export interface UseHoverCardProps
 
 export interface UseHoverCardReturn extends hoverCard.Api<PropTypes> {}
 
-export const useHoverCard = (props: UseHoverCardProps): UseHoverCardReturn => {
+export const useHoverCard = (
+	props: UseHoverCardProps = {},
+): UseHoverCardReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

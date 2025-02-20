@@ -12,7 +12,7 @@ export interface UseMenuReturn {
 	api: menu.Api<PropTypes>;
 }
 
-export const useMenu = (props: UseMenuProps): UseMenuReturn => {
+export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

@@ -11,7 +11,7 @@ export interface UseColorPickerProps
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 
 export const useColorPicker = (
-	props: UseColorPickerProps,
+	props: UseColorPickerProps = {},
 ): UseColorPickerReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

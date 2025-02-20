@@ -11,7 +11,7 @@ export interface UseRatingGroupProps
 export interface UseRatingGroupReturn extends rating.Api<PropTypes> {}
 
 export const useRatingGroup = (
-	props: UseRatingGroupProps,
+	props: UseRatingGroupProps = {},
 ): UseRatingGroupReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

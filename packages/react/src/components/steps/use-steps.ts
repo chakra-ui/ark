@@ -9,7 +9,7 @@ export interface UseStepsProps
 
 export interface UseStepsReturn extends steps.Api<PropTypes> {}
 
-export function useSteps(props: UseStepsProps): UseStepsReturn {
+export function useSteps(props: UseStepsProps = {}): UseStepsReturn {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

@@ -10,7 +10,7 @@ export interface UseFileUploadProps
 export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 
 export const useFileUpload = (
-	props: UseFileUploadProps,
+	props: UseFileUploadProps = {},
 ): UseFileUploadReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

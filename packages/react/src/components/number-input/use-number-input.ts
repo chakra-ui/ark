@@ -11,7 +11,7 @@ export interface UseNumberInputProps
 export interface UseNumberInputReturn extends numberInput.Api<PropTypes> {}
 
 export const useNumberInput = (
-	props: UseNumberInputProps,
+	props: UseNumberInputProps = {},
 ): UseNumberInputReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

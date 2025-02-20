@@ -8,7 +8,7 @@ export interface UseTourProps
 	extends Optional<Omit<tour.Props, "dir" | "getRootNode">, "id"> {}
 export interface UseTourReturn extends tour.Api<PropTypes> {}
 
-export const useTour = (props: UseTourProps): UseTourReturn => {
+export const useTour = (props: UseTourProps = {}): UseTourReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

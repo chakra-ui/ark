@@ -10,7 +10,7 @@ export interface UseRadioGroupProps
 export interface UseRadioGroupReturn extends radio.Api<PropTypes> {}
 
 export const useRadioGroup = (
-	props: UseRadioGroupProps,
+	props: UseRadioGroupProps = {},
 ): UseRadioGroupReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

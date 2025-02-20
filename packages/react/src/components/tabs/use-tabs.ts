@@ -9,7 +9,7 @@ export interface UseTabsProps
 
 export interface UseTabsReturn extends tabs.Api<PropTypes> {}
 
-export const useTabs = (props: UseTabsProps): UseTabsReturn => {
+export const useTabs = (props: UseTabsProps = {}): UseTabsReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

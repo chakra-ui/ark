@@ -10,7 +10,7 @@ export interface UsePaginationProps
 export interface UsePaginationReturn extends pagination.Api<PropTypes> {}
 
 export const usePagination = (
-	props: UsePaginationProps,
+	props: UsePaginationProps = {},
 ): UsePaginationReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

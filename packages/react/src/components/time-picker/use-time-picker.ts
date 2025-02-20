@@ -10,7 +10,7 @@ export interface UseTimePickerProps
 export interface UseTimePickerReturn extends timePicker.Api<PropTypes> {}
 
 export const useTimePicker = (
-	props: UseTimePickerProps,
+	props: UseTimePickerProps = {},
 ): UseTimePickerReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

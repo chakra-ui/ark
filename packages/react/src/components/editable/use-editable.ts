@@ -14,7 +14,9 @@ export interface UseEditableProps
 
 export interface UseEditableReturn extends editable.Api<PropTypes> {}
 
-export const useEditable = (props: UseEditableProps): UseEditableReturn => {
+export const useEditable = (
+	props: UseEditableProps = {},
+): UseEditableReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

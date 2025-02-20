@@ -9,7 +9,7 @@ export interface UseQrCodeProps
 
 export interface UseQrCodeReturn extends qrcode.Api<PropTypes> {}
 
-export const useQrCode = (props: UseQrCodeProps): UseQrCodeReturn => {
+export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

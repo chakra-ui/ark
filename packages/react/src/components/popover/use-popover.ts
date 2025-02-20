@@ -9,7 +9,7 @@ export interface UsePopoverProps
 
 export interface UsePopoverReturn extends popover.Api<PropTypes> {}
 
-export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
+export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();

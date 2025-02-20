@@ -10,7 +10,7 @@ export interface UseSegmentGroupProps
 export interface UseSegmentGroupReturn extends segmentGroup.Api<PropTypes> {}
 
 export const useSegmentGroup = (
-	props: UseSegmentGroupProps,
+	props: UseSegmentGroupProps = {},
 ): UseSegmentGroupReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();

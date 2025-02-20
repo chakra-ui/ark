@@ -8,7 +8,7 @@ export interface UseAvatarProps
 	extends Optional<Omit<avatar.Props, "dir" | "getRootNode">, "id"> {}
 export interface UseAvatarReturn extends avatar.Api<PropTypes> {}
 
-export const useAvatar = (props: UseAvatarProps): UseAvatarReturn => {
+export const useAvatar = (props: UseAvatarProps = {}): UseAvatarReturn => {
 	const id = useId();
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
