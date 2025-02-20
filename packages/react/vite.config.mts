@@ -9,29 +9,29 @@ import pkg from './package.json'
 export default defineConfig({
   logLevel: 'warn',
   plugins: [
-    dts({
-      entryRoot: 'src',
-      staticImport: true,
-      exclude: [
-        '**/*.stories.tsx',
-        '**/*.test.tsx',
-        '**/tests/*',
-        '**/examples/*',
-        '**/setup-test.ts',
-      ],
-      afterBuild: () => {
-        globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
-          copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
-        })
-      },
-    }),
+    // dts({
+    //   entryRoot: 'src',
+    //   staticImport: true,
+    //   exclude: [
+    //     '**/*.stories.tsx',
+    //     '**/*.test.tsx',
+    //     '**/tests/*',
+    //     '**/examples/*',
+    //     '**/setup-test.ts',
+    //   ],
+    //   afterBuild: () => {
+    //     globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
+    //       copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
+    //     })
+    //   },
+    // }),
     react(),
   ],
   build: {
     target: 'esnext',
     minify: false,
     lib: {
-      entry: globbySync(['src/**/index.ts', 'src/components/anatomy.ts']),
+      entry: globbySync(['src/components/index.ts', 'src/components/anatomy.ts']),
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
