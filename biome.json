@@ -21,5 +21,8 @@
         "noLabelWithoutControl": "off"
       }
     }
+  },
+  "formatter": {
+    "enabled": false
   }
 }
