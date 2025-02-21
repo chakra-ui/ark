@@ -8,8 +8,11 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Select**: Resolved an issue where the option elements in hidden selects did not render the option label.
-- **Field**: Resolved an issue where the `data-disabled` attribute wasn't set on the field helper text when the field is disabled.
+- **Select**: Resolved an issue where the option elements in hidden selects did not render the
+  option label.
+- **Field**: Resolved an issue where the `data-disabled` attribute wasn't set on the field helper
+  text when the field is disabled.
+- **FocusTrap**: Added missing `FocusTrap` component to the `index` file.
 
 ## [4.9.1] - 2025-01-23
 
