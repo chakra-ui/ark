@@ -14,13 +14,21 @@ animate the open and closed states.
 
 ```css
 @keyframes slideDown {
-  from { height: 0; }
-  to { height: var(--height); }
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
 }
 
 @keyframes slideUp {
-  from { height: var(--height); }
-  to { height: 0; }
+  from {
+    height: var(--height);
+  }
+  to {
+    height: 0;
+  }
 }
 
 [data-scope='collapsible'][data-part='content'][data-state='open'] {
@@ -67,8 +75,9 @@ when the `Collapsible` is expanded and unmounted when it is collapsed:
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the collapsible. It accepts the value of the `useCollapsible` hook.
-You can leverage it to access the component state and methods from outside the collapsible.
+The `RootProvider` component provides a context for the collapsible. It accepts the value of the
+`useCollapsible` hook. You can leverage it to access the component state and methods from outside
+the collapsible.
 
 <Example id="root-provider" />
 

@@ -23,14 +23,16 @@ You can create a countdown timer by setting the `targetMs` prop to a future time
 The Timer component provides events that you can listen to for various timer-related actions.
 
 - The `onComplete` event is triggered when the timer reaches its target time.
-- The `onTick` event is called on each timer update, providing details about the current timer state.
+- The `onTick` event is called on each timer update, providing details about the current timer
+  state.
 
 <Example id="events" />
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the timer. It accepts the value of the `useTimer` hook.
-You can leverage it to access the component state and methods from outside the timer.
+The `RootProvider` component provides a context for the timer. It accepts the value of the
+`useTimer` hook. You can leverage it to access the component state and methods from outside the
+timer.
 
 <Example id="root-provider" />
 
