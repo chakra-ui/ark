@@ -22,7 +22,9 @@ export const SelectHiddenSelect = forwardRef<HTMLSelectElement, SelectHiddenSele
             key={index}
             value={select.collection.getItemValue(item) ?? ''}
             disabled={select.collection.getItemDisabled(item)}
-          />
+          >
+            {select.collection.stringifyItem(item)}
+          </option>
         ))}
       </ark.select>
     )

@@ -23,7 +23,9 @@ export const SelectHiddenSelect = (props: SelectHiddenSelectProps) => {
           <option
             value={select().collection.getItemValue(item()) ?? ''}
             disabled={select().collection.getItemDisabled(item())}
-          />
+          >
+            {select().collection.stringifyItem(item())}
+          </option>
         )}
       </Index>
     </ark.select>
