@@ -8,6 +8,7 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
+- **Select**: Resolved an issue where the option elements in hidden selects did not render the option label.
 - **Field**: Resolved an issue where the `data-disabled` attribute wasn't set on the field helper text when the field is disabled.
 
 ## [4.10.1] - 2025-01-23

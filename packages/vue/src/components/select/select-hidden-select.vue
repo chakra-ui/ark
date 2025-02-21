@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { SelectHTMLAttributes } from 'vue'
-import type { PolymorphicProps } from '../factory'
+import type { SelectHTMLAttributes } from "vue";
+import type { PolymorphicProps } from "../factory";
 
 export interface SelectHiddenSelectBaseProps extends PolymorphicProps {}
 export interface SelectHiddenSelectProps
-  extends SelectHiddenSelectBaseProps,
-    /**
-     * @vue-ignore
-     */
-    SelectHTMLAttributes {}
+	extends SelectHiddenSelectBaseProps,
+		/**
+		 * @vue-ignore
+		 */
+		SelectHTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -33,6 +33,9 @@ useForwardExpose()
       :key="item.value"
       :value="select.collection.getItemValue(item)"
       :disabled="select.collection.getItemDisabled(item)"
-    />
+    >
+      {{ select.collection.stringifyItem(item) }}
+      >
+    </option>
   </ark.select>
 </template>
