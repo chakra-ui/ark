@@ -29,11 +29,12 @@ const ComboboxImpl = <T extends CollectionItem>(
 		UseComboboxProps<T>
 	>()(comboboxProps, [
 		"allowCustomValue",
-		"defaultInputValue",
 		"autoFocus",
 		"closeOnSelect",
-		"composite",
 		"collection",
+		"composite",
+		"defaultHighlightedValue",
+		"defaultInputValue",
 		"defaultOpen",
 		"defaultValue",
 		"disabled",

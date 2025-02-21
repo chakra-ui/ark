@@ -74,13 +74,13 @@
 	},
 	"sideEffects": false,
 	"dependencies": {
-		"@zag-js/anatomy": "0.0.0-v1-beta-20250220125322",
-		"@zag-js/avatar": "0.0.0-v1-beta-20250220125322",
-		"@zag-js/core": "0.0.0-v1-beta-20250220125322",
-		"@zag-js/collection": "0.0.0-v1-beta-20250220125322",
-		"@zag-js/dom-query": "0.0.0-v1-beta-20250220125322",
-		"@zag-js/i18n-utils": "0.0.0-v1-beta-20250220125322",
-		"@zag-js/svelte": "0.0.0-v1-beta-20250220125322",
+		"@zag-js/anatomy": "0.0.0-v1-beta-20250221135618",
+		"@zag-js/avatar": "0.0.0-v1-beta-20250221135618",
+		"@zag-js/core": "0.0.0-v1-beta-20250221135618",
+		"@zag-js/collection": "0.0.0-v1-beta-20250221135618",
+		"@zag-js/dom-query": "0.0.0-v1-beta-20250221135618",
+		"@zag-js/i18n-utils": "0.0.0-v1-beta-20250221135618",
+		"@zag-js/svelte": "0.0.0-v1-beta-20250221135618",
 		"nanoid": "5.1.0"
 	},
 	"devDependencies": {

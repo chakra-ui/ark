@@ -30,6 +30,7 @@ export const MenuRoot = (props: MenuRootProps) => {
 			"aria-label",
 			"closeOnSelect",
 			"composite",
+			"defaultHighlightedValue",
 			"defaultOpen",
 			"highlightedValue",
 			"id",
