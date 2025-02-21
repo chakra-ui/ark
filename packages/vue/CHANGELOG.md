@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [4.9.2] - 2025-02-21
+
 ### Fixed
 
 - **Field**: Resolved an issue where the `data-disabled` attribute wasn't set on the field helper
