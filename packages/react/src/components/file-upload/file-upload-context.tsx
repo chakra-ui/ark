@@ -5,5 +5,4 @@ export interface FileUploadContextProps {
   children: (context: UseFileUploadContext) => ReactNode
 }
 
-export const FileUploadContext = (props: FileUploadContextProps) =>
-  props.children(useFileUploadContext())
+export const FileUploadContext = (props: FileUploadContextProps) => props.children(useFileUploadContext())

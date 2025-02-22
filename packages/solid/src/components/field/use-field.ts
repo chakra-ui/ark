@@ -1,12 +1,5 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import {
-  createEffect,
-  createMemo,
-  createSignal,
-  createUniqueId,
-  mergeProps,
-  onCleanup,
-} from 'solid-js'
+import { createEffect, createMemo, createSignal, createUniqueId, mergeProps, onCleanup } from 'solid-js'
 import { useFieldsetContext } from '../fieldset'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
 import { parts } from './field.anatomy'

@@ -17,9 +17,7 @@ export const getSidebarGroups = (): Pages[][] => {
 
   // Sort pages within the 'overview' category by priority
   if (sortedCategories.overview) {
-    sortedCategories.overview.sort(
-      (a, b) => overviewPriority.indexOf(a.id) - overviewPriority.indexOf(b.id),
-    )
+    sortedCategories.overview.sort((a, b) => overviewPriority.indexOf(a.id) - overviewPriority.indexOf(b.id))
   }
 
   return (

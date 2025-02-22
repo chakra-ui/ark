@@ -64,15 +64,12 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 const pages = getSidebarGroups().flat()
 
 export const generateStaticParams = () =>
-  ['react', 'solid', 'vue'].flatMap((framework) =>
-    pages.map((page) => ({ framework, slug: page.slug.split('/') })),
-  )
+  ['react', 'solid', 'vue'].flatMap((framework) => pages.map((page) => ({ framework, slug: page.slug.split('/') })))
 
 const getPageBySlug = (slug: string[], framework?: string) => {
   if (framework) {
     return pages.find(
-      (page) =>
-        page.slug === slug.join('/') && (page.framework === '*' || page.framework === framework),
+      (page) => page.slug === slug.join('/') && (page.framework === '*' || page.framework === framework),
     )
   }
   return pages.find((page) => page.slug === slug.join('/'))

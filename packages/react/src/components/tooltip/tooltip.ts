@@ -14,10 +14,7 @@ export {
   type TooltipContentBaseProps as ContentBaseProps,
   type TooltipContentProps as ContentProps,
 } from './tooltip-content'
-export {
-  TooltipContext as Context,
-  type TooltipContextProps as ContextProps,
-} from './tooltip-context'
+export { TooltipContext as Context, type TooltipContextProps as ContextProps } from './tooltip-context'
 export {
   TooltipPositioner as Positioner,
   type TooltipPositionerBaseProps as PositionerBaseProps,

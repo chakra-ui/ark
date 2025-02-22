@@ -20,9 +20,7 @@ const props = defineProps<PopoverRootProviderProps>()
 const popover = computed(() => props.value)
 
 PopoverProvider(popover)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

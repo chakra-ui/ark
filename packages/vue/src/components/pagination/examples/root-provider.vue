@@ -14,12 +14,7 @@ const pagination = usePagination({ count: 100, pageSize: 10, siblingCount: 2 })
     </Pagination.PrevTrigger>
     <Pagination.Context v-slot="pagination">
       <template v-for="(page, index) in pagination.pages">
-        <Pagination.Item
-          v-if="page.type === 'page'"
-          :key="index"
-          :value="page.value"
-          :type="page.type"
-        >
+        <Pagination.Item v-if="page.type === 'page'" :key="index" :value="page.value" :type="page.type">
           {{ page.value }}
         </Pagination.Item>
         <Pagination.Ellipsis v-else :key="'e' + index" :index="index">&#8230;</Pagination.Ellipsis>

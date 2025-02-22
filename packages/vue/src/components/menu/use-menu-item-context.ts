@@ -5,5 +5,4 @@ import { createContext } from '../../utils'
 
 export interface UseMenuItemContext extends ComputedRef<Optional<OptionItemState, 'checked'>> {}
 
-export const [MenuItemProvider, useMenuItemContext] =
-  createContext<UseMenuItemContext>('MenuItemContext')
+export const [MenuItemProvider, useMenuItemContext] = createContext<UseMenuItemContext>('MenuItemContext')

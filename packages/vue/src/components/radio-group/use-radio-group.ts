@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './radio-group.types'
 
-export interface UseRadioGroupProps
-  extends Optional<Omit<radioGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The initial value of the radio group when it is first rendered.
    * Use when you do not need to control the state of the radio group.
@@ -17,10 +16,7 @@ export interface UseRadioGroupProps
 }
 export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}
 
-export const useRadioGroup = (
-  props: UseRadioGroupProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseRadioGroupReturn => {
+export const useRadioGroup = (props: UseRadioGroupProps = {}, emit?: EmitFn<RootEmits>): UseRadioGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

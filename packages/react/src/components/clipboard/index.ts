@@ -1,40 +1,20 @@
 export type { CopyStatusDetails as ClipboardCopyStatusDetails } from '@zag-js/clipboard'
 export { ClipboardContext, type ClipboardContextProps } from './clipboard-context'
-export {
-  ClipboardControl,
-  type ClipboardControlBaseProps,
-  type ClipboardControlProps,
-} from './clipboard-control'
+export { ClipboardControl, type ClipboardControlBaseProps, type ClipboardControlProps } from './clipboard-control'
 export {
   ClipboardIndicator,
   type ClipboardIndicatorBaseProps,
   type ClipboardIndicatorProps,
 } from './clipboard-indicator'
-export {
-  ClipboardInput,
-  type ClipboardInputBaseProps,
-  type ClipboardInputProps,
-} from './clipboard-input'
-export {
-  ClipboardLabel,
-  type ClipboardLabelBaseProps,
-  type ClipboardLabelProps,
-} from './clipboard-label'
-export {
-  ClipboardRoot,
-  type ClipboardRootBaseProps,
-  type ClipboardRootProps,
-} from './clipboard-root'
+export { ClipboardInput, type ClipboardInputBaseProps, type ClipboardInputProps } from './clipboard-input'
+export { ClipboardLabel, type ClipboardLabelBaseProps, type ClipboardLabelProps } from './clipboard-label'
+export { ClipboardRoot, type ClipboardRootBaseProps, type ClipboardRootProps } from './clipboard-root'
 export {
   ClipboardRootProvider,
   type ClipboardRootProviderBaseProps,
   type ClipboardRootProviderProps,
 } from './clipboard-root-provider'
-export {
-  ClipboardTrigger,
-  type ClipboardTriggerBaseProps,
-  type ClipboardTriggerProps,
-} from './clipboard-trigger'
+export { ClipboardTrigger, type ClipboardTriggerBaseProps, type ClipboardTriggerProps } from './clipboard-trigger'
 export {
   ClipboardValueText,
   type ClipboardValueTextBaseProps,

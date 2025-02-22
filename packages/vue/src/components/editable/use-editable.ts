@@ -8,10 +8,7 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './editable'
 
 export interface UseEditableProps
-  extends Optional<
-    Omit<editable.Context, 'dir' | 'getRootNode' | 'value' | 'edit.controlled'>,
-    'id'
-  > {
+  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'value' | 'edit.controlled'>, 'id'> {
   /**
    * The initial edit state of the editable when it is first rendered.
    * Use when you do not need to control its edit state.
@@ -27,10 +24,7 @@ export interface UseEditableProps
 
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
-export const useEditable = (
-  props: UseEditableProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseEditableReturn => {
+export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmits>): UseEditableReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

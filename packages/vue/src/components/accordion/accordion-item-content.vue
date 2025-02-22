@@ -32,10 +32,7 @@ const itemProps = useAccordionItemPropsContext()
 
 const itemContentProps = computed(() => {
   const contentProps = accordion.value.getItemContentProps(itemProps)
-  const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, [
-    'hidden',
-    'data-state',
-  ])
+  const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
   return ownProps
 })
 useForwardExpose()

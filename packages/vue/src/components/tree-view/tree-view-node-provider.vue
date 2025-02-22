@@ -5,8 +5,7 @@ import type { TreeNode } from '../collection'
 export interface TreeViewNodeProviderBaseProps<T> extends NodeProps {
   node: T
 }
-export interface TreeViewNodeProviderProps<T extends TreeNode>
-  extends TreeViewNodeProviderBaseProps<T> {}
+export interface TreeViewNodeProviderProps<T extends TreeNode> extends TreeViewNodeProviderBaseProps<T> {}
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">

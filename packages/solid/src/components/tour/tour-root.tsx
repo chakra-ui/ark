@@ -1,12 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import type { UseTourReturn } from './use-tour'
 import { TourProvider } from './use-tour-context'
 
@@ -23,9 +18,7 @@ export const TourRoot = (props: TourRootProps) => {
   const [presenceProps, rootProps] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
 
-  const presence = usePresence(
-    mergeProps(presenceProps, () => ({ present: rootProps.tour().open })),
-  )
+  const presence = usePresence(mergeProps(presenceProps, () => ({ present: rootProps.tour().open })))
 
   return (
     <TourProvider value={rootProps.tour}>

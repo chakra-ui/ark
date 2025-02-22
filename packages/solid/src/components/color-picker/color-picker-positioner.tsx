@@ -5,9 +5,7 @@ import { usePresenceContext } from '../presence'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerPositionerBaseProps extends PolymorphicProps<'div'> {}
-export interface ColorPickerPositionerProps
-  extends HTMLProps<'div'>,
-    ColorPickerPositionerBaseProps {}
+export interface ColorPickerPositionerProps extends HTMLProps<'div'>, ColorPickerPositionerBaseProps {}
 
 export const ColorPickerPositioner = (props: ColorPickerPositionerProps) => {
   const api = useColorPickerContext()

@@ -14,26 +14,14 @@ export {
   type SignaturePadControlBaseProps,
   type SignaturePadControlProps,
 } from './signature-pad-control'
-export {
-  SignaturePadGuide,
-  type SignaturePadGuideBaseProps,
-  type SignaturePadGuideProps,
-} from './signature-pad-guide'
+export { SignaturePadGuide, type SignaturePadGuideBaseProps, type SignaturePadGuideProps } from './signature-pad-guide'
 export {
   SignaturePadHiddenInput,
   type SignaturePadHiddenInputBaseProps,
   type SignaturePadHiddenInputProps,
 } from './signature-pad-hidden-input'
-export {
-  SignaturePadLabel,
-  type SignaturePadLabelBaseProps,
-  type SignaturePadLabelProps,
-} from './signature-pad-label'
-export {
-  SignaturePadRoot,
-  type SignaturePadRootBaseProps,
-  type SignaturePadRootProps,
-} from './signature-pad-root'
+export { SignaturePadLabel, type SignaturePadLabelBaseProps, type SignaturePadLabelProps } from './signature-pad-label'
+export { SignaturePadRoot, type SignaturePadRootBaseProps, type SignaturePadRootProps } from './signature-pad-root'
 export {
   SignaturePadRootProvider,
   type SignaturePadRootProviderBaseProps,
@@ -45,11 +33,7 @@ export {
   type SignaturePadSegmentProps,
 } from './signature-pad-segment'
 export { signaturePadAnatomy } from './signature-pad.anatomy'
-export {
-  useSignaturePad,
-  type UseSignaturePadProps,
-  type UseSignaturePadReturn,
-} from './use-signature-pad'
+export { useSignaturePad, type UseSignaturePadProps, type UseSignaturePadReturn } from './use-signature-pad'
 export { useSignaturePadContext, type UseSignaturePadContext } from './use-signature-pad-context'
 
 export * as SignaturePad from './signature-pad'

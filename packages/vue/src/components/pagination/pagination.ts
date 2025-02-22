@@ -1,8 +1,5 @@
 export type { ItemLabelDetails, PageChangeDetails, PageSizeChangeDetails } from '@zag-js/pagination'
-export {
-  default as Context,
-  type PaginationContextProps as ContextProps,
-} from './pagination-context.vue'
+export { default as Context, type PaginationContextProps as ContextProps } from './pagination-context.vue'
 export {
   default as Ellipsis,
   type PaginationEllipsisProps as EllipsisProps,

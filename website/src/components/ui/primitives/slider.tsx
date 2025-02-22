@@ -19,45 +19,45 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Slider.RootBaseProps>, SliderVariantProps>
 >(Slider.Root, 'root')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Slider.ControlBaseProps>
->(Slider.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Slider.ControlBaseProps>>(
+  Slider.Control,
+  'control',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, Slider.LabelBaseProps>
->(Slider.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, Slider.LabelBaseProps>>(
+  Slider.Label,
+  'label',
+)
 
-export const MarkerGroup = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Slider.MarkerGroupBaseProps>
->(Slider.MarkerGroup, 'markerGroup')
+export const MarkerGroup = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Slider.MarkerGroupBaseProps>>(
+  Slider.MarkerGroup,
+  'markerGroup',
+)
 
-export const Marker = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Slider.MarkerBaseProps>
->(Slider.Marker, 'marker')
+export const Marker = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Slider.MarkerBaseProps>>(
+  Slider.Marker,
+  'marker',
+)
 
-export const Range = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Slider.RangeBaseProps>
->(Slider.Range, 'range')
+export const Range = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Slider.RangeBaseProps>>(
+  Slider.Range,
+  'range',
+)
 
-export const Thumb = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Slider.ThumbBaseProps>
->(Slider.Thumb, 'thumb')
+export const Thumb = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Slider.ThumbBaseProps>>(
+  Slider.Thumb,
+  'thumb',
+)
 
-export const Track = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Slider.TrackBaseProps>
->(Slider.Track, 'track')
+export const Track = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Slider.TrackBaseProps>>(
+  Slider.Track,
+  'track',
+)
 
-export const ValueText = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'span'>, Slider.ValueTextBaseProps>
->(Slider.ValueText, 'valueText')
+export const ValueText = withContext<HTMLDivElement, Assign<HTMLStyledProps<'span'>, Slider.ValueTextBaseProps>>(
+  Slider.ValueText,
+  'valueText',
+)
 
 export const Context = Slider.Context
 export const HiddenInput = Slider.HiddenInput

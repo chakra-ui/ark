@@ -8,18 +8,16 @@ import { useDatePickerContext } from './use-date-picker-context'
 export interface DatePickerContentBaseProps extends PolymorphicProps {}
 export interface DatePickerContentProps extends HTMLProps<'div'>, DatePickerContentBaseProps {}
 
-export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>(
-  (props, ref) => {
-    const datePicker = useDatePickerContext()
-    const presence = usePresenceContext()
-    const mergedProps = mergeProps(datePicker.getContentProps(), presence.getPresenceProps(), props)
+export const DatePickerContent = forwardRef<HTMLDivElement, DatePickerContentProps>((props, ref) => {
+  const datePicker = useDatePickerContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(datePicker.getContentProps(), presence.getPresenceProps(), props)
 
-    if (presence.unmounted) {
-      return null
-    }
+  if (presence.unmounted) {
+    return null
+  }
 
-    return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-  },
-)
+  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
+})
 
 DatePickerContent.displayName = 'DatePickerContent'

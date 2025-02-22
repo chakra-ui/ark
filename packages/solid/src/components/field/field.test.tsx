@@ -16,13 +16,14 @@ const ComponentUnderTest = (props: Field.RootProps) => (
 )
 
 describe('Field / Parts & Exports', () => {
-  it.each(
-    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
-  )('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest invalid required />)
+  it.each(getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
+    'should render part %s',
+    async (part) => {
+      render(() => <ComponentUnderTest invalid required />)
 
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
+      expect(document.querySelector(part)).toBeInTheDocument()
+    },
+  )
 
   it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
     expect(Field[part]).toBeDefined()

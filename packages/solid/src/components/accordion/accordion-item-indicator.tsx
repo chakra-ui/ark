@@ -4,9 +4,7 @@ import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
-export interface AccordionItemIndicatorProps
-  extends HTMLProps<'div'>,
-    AccordionItemIndicatorBaseProps {}
+export interface AccordionItemIndicatorProps extends HTMLProps<'div'>, AccordionItemIndicatorBaseProps {}
 
 export const AccordionItemIndicator = (props: AccordionItemIndicatorProps) => {
   const accordion = useAccordionContext()

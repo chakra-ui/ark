@@ -1,9 +1,6 @@
 import { forwardRef } from 'react'
 import { styled } from 'styled-system/jsx'
-import {
-  Spinner as StyledSpinner,
-  type SpinnerProps as StyledSpinnerProps,
-} from './primitives/spinner'
+import { Spinner as StyledSpinner, type SpinnerProps as StyledSpinnerProps } from './primitives/spinner'
 
 export interface SpinnerProps extends StyledSpinnerProps {
   /**
@@ -18,12 +15,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>((props, ref) => 
   const { label = 'Loading...', ...rest } = props
 
   return (
-    <StyledSpinner
-      ref={ref}
-      borderBottomColor="transparent"
-      borderLeftColor="transparent"
-      {...rest}
-    >
+    <StyledSpinner ref={ref} borderBottomColor="transparent" borderLeftColor="transparent" {...rest}>
       {label && <styled.span srOnly>{label}</styled.span>}
     </StyledSpinner>
   )

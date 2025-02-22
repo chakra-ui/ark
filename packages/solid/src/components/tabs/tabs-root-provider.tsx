@@ -1,10 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { createSplitProps } from '../../utils/create-split-props'
-import {
-  type RenderStrategyProps,
-  RenderStrategyProvider,
-  splitRenderStrategyProps,
-} from '../../utils/render-strategy'
+import { type RenderStrategyProps, RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseTabsReturn } from './use-tabs'
 import { TabsProvider } from './use-tabs-context'
@@ -13,10 +9,7 @@ interface RootProviderProps {
   value: UseTabsReturn
 }
 
-export interface TabsRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps<'div'> {}
+export interface TabsRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps<'div'> {}
 export interface TabsRootProviderProps extends HTMLProps<'div'>, TabsRootProviderBaseProps {}
 
 export const TabsRootProvider = (props: TabsRootProviderProps) => {

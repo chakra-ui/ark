@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface ProgressRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface ProgressRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    ProgressRootProviderBaseProps {}
+export interface ProgressRootProviderProps extends HTMLProps<'div'>, RootProviderProps, ProgressRootProviderBaseProps {}
 
 export const ProgressRootProvider = (props: ProgressRootProviderProps) => {
   const [{ value: progress }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

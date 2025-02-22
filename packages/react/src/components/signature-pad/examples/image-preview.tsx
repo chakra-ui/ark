@@ -6,9 +6,7 @@ export const ImagePreview = () => {
 
   return (
     <>
-      <SignaturePad.Root
-        onDrawEnd={(details) => details.getDataUrl('image/png').then((url) => setImageUrl(url))}
-      >
+      <SignaturePad.Root onDrawEnd={(details) => details.getDataUrl('image/png').then((url) => setImageUrl(url))}>
         <SignaturePad.Label>Sign below</SignaturePad.Label>
         <SignaturePad.Control>
           <SignaturePad.Segment fill="orange" />

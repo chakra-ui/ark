@@ -7,14 +7,12 @@ import { useTagsInputItemPropsContext } from './use-tags-input-item-props-contex
 export interface TagsInputItemInputBaseProps extends PolymorphicProps {}
 export interface TagsInputItemInputProps extends HTMLProps<'input'>, TagsInputItemInputBaseProps {}
 
-export const TagsInputItemInput = forwardRef<HTMLInputElement, TagsInputItemInputProps>(
-  (props, ref) => {
-    const tagsInput = useTagsInputContext()
-    const itemProps = useTagsInputItemPropsContext()
-    const mergedProps = mergeProps(tagsInput.getItemInputProps(itemProps), props)
+export const TagsInputItemInput = forwardRef<HTMLInputElement, TagsInputItemInputProps>((props, ref) => {
+  const tagsInput = useTagsInputContext()
+  const itemProps = useTagsInputItemPropsContext()
+  const mergedProps = mergeProps(tagsInput.getItemInputProps(itemProps), props)
 
-    return <ark.input {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.input {...mergedProps} ref={ref} />
+})
 
 TagsInputItemInput.displayName = 'TagsInputItemInput'

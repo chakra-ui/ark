@@ -25,11 +25,7 @@ useForwardExpose()
 <template>
   <ark.svg v-bind="signaturePad.getSegmentProps()" :as-child="asChild">
     <title>Signature</title>
-    <path
-      v-for="(path, i) in signaturePad.paths"
-      :key="i"
-      v-bind="signaturePad.getSegmentPathProps({ path })"
-    />
+    <path v-for="(path, i) in signaturePad.paths" :key="i" v-bind="signaturePad.getSegmentPathProps({ path })" />
     <path
       v-if="signaturePad.currentPath"
       v-bind="signaturePad.getSegmentPathProps({ path: signaturePad.currentPath })"

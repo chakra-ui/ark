@@ -23,9 +23,7 @@ defineProps<HoverCardContentProps>()
 const hoverCard = useHoverCardContext()
 const presence = usePresenceContext()
 
-const mergedProps = computed(() =>
-  mergeProps(hoverCard.value.getContentProps(), presence.value.presenceProps),
-)
+const mergedProps = computed(() => mergeProps(hoverCard.value.getContentProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>

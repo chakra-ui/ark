@@ -24,11 +24,12 @@ describe('Field / Parts & Exports', () => {
 
   render(<ComponentUnderTest invalid required />)
 
-  it.each(
-    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
-  )('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
+  it.each(getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
+    'should render part %s',
+    async (part) => {
+      expect(document.querySelector(part)).toBeInTheDocument()
+    },
+  )
 
   it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
     expect(Field[part]).toBeDefined()

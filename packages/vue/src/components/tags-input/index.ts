@@ -24,10 +24,7 @@ export {
   type TagsInputInputBaseProps,
   type TagsInputInputProps,
 } from './tags-input-input.vue'
-export {
-  default as TagsInputItemContext,
-  type TagsInputItemContextProps,
-} from './tags-input-item-context.vue'
+export { default as TagsInputItemContext, type TagsInputItemContextProps } from './tags-input-item-context.vue'
 export {
   default as TagsInputItemDeleteTrigger,
   type TagsInputItemDeleteTriggerBaseProps,
@@ -48,11 +45,7 @@ export {
   type TagsInputItemTextBaseProps,
   type TagsInputItemTextProps,
 } from './tags-input-item-text.vue'
-export {
-  default as TagsInputItem,
-  type TagsInputItemBaseProps,
-  type TagsInputItemProps,
-} from './tags-input-item.vue'
+export { default as TagsInputItem, type TagsInputItemBaseProps, type TagsInputItemProps } from './tags-input-item.vue'
 export {
   default as TagsInputLabel,
   type TagsInputLabelBaseProps,
@@ -72,9 +65,6 @@ export {
 export { tagsInputAnatomy } from './tags-input.anatomy'
 export { useTagsInput, type UseTagsInputProps, type UseTagsInputReturn } from './use-tags-input'
 export { useTagsInputContext, type UseTagsInputContext } from './use-tags-input-context'
-export {
-  useTagsInputItemContext,
-  type UseTagsInputItemContext,
-} from './use-tags-input-item-context'
+export { useTagsInputItemContext, type UseTagsInputItemContext } from './use-tags-input-item-context'
 
 export * as TagsInput from './tags-input'

@@ -50,29 +50,19 @@ export const Community = () => {
         py={{ base: '10', md: '16' }}
         borderWidth="1px"
       >
-        <Stack
-          direction={{ base: 'column', md: 'row' }}
-          justify="space-between"
-          gap={{ base: '8', md: '12' }}
-        >
+        <Stack direction={{ base: 'column', md: 'row' }} justify="space-between" gap={{ base: '8', md: '12' }}>
           <Stack gap="8">
             <Stack gap="5" maxW="2xl">
               <Heading as="h2" textStyle="3xl" fontWeight="semibold">
                 Join the Ark UI Community
               </Heading>
               <Text textStyle={{ base: 'lg', md: 'xl' }} color="fg.muted">
-                For insights, support, and updates, connect on Discord. For real-time news, follow
-                us on Twitter.
+                For insights, support, and updates, connect on Discord. For real-time news, follow us on Twitter.
               </Text>
             </Stack>
             <AvatarGroup avatars={contributors} />
           </Stack>
-          <Stack
-            gap="3"
-            flexShrink={0}
-            direction={{ base: 'column-reverse', lg: 'row' }}
-            justify="start"
-          >
+          <Stack gap="3" flexShrink={0} direction={{ base: 'column-reverse', lg: 'row' }} justify="start">
             <Button size={{ base: 'lg', md: 'xl' }} variant="outline" asChild>
               <a
                 className={button({ size: { base: 'lg', md: 'xl' }, variant: 'outline' })}

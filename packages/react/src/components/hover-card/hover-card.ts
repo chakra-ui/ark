@@ -14,10 +14,7 @@ export {
   type HoverCardContentBaseProps as ContentBaseProps,
   type HoverCardContentProps as ContentProps,
 } from './hover-card-content'
-export {
-  HoverCardContext as Context,
-  type HoverCardContextProps as ContextProps,
-} from './hover-card-context'
+export { HoverCardContext as Context, type HoverCardContextProps as ContextProps } from './hover-card-context'
 export {
   HoverCardPositioner as Positioner,
   type HoverCardPositionerBaseProps as PositionerBaseProps,

@@ -26,11 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input
-    :aria-describedby="field?.ariaDescribedby"
-    v-bind="ratingGroup.getHiddenInputProps()"
-    :as-child="asChild"
-  >
+  <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="ratingGroup.getHiddenInputProps()" :as-child="asChild">
     <slot />
   </ark.input>
 </template>

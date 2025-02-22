@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './accordion.types'
 
-export interface UseAccordionProps
-  extends Optional<Omit<accordion.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseAccordionProps extends Optional<Omit<accordion.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The accordion items that are currently expanded.
    * Use this prop to control the state of the items via v-model.
@@ -21,10 +20,7 @@ export interface UseAccordionProps
 }
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
-export const useAccordion = (
-  props: UseAccordionProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseAccordionReturn => {
+export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEmits>): UseAccordionReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

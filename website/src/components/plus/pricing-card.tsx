@@ -69,8 +69,7 @@ const licenses = {
     description: 'For individuals and freelancers',
     price: '$199',
     originalPrice: '$249',
-    checkoutUrl:
-      'https://chakra-pro.lemonsqueezy.com/buy/f7b5e908-749f-4930-b19e-0940b37abc3b?discount=0',
+    checkoutUrl: 'https://chakra-pro.lemonsqueezy.com/buy/f7b5e908-749f-4930-b19e-0940b37abc3b?discount=0',
     features: [
       {
         label: 'Access to All Examples',
@@ -80,8 +79,7 @@ const licenses = {
       },
       {
         label: 'One-time Purchase',
-        description:
-          ' — Pay once for lifetime access to all examples. No hidden fees, no recurring payments.',
+        description: ' — Pay once for lifetime access to all examples. No hidden fees, no recurring payments.',
         icon: ShoppingCartIcon,
       },
       {
@@ -101,8 +99,7 @@ const licenses = {
     features: [
       {
         label: 'Access for Your Entire Team',
-        description:
-          ' — Everyone on your team, including employees and contractors, can access and use the examples.',
+        description: ' — Everyone on your team, including employees and contractors, can access and use the examples.',
         icon: UsersIcon,
       },
     ],

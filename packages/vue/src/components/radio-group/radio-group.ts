@@ -1,8 +1,5 @@
 export type { ValueChangeDetails } from '@zag-js/radio-group'
-export {
-  default as Context,
-  type RadioGroupContextProps as ContextProps,
-} from './radio-group-context.vue'
+export { default as Context, type RadioGroupContextProps as ContextProps } from './radio-group-context.vue'
 export {
   default as Indicator,
   type RadioGroupIndicatorProps as IndicatorProps,

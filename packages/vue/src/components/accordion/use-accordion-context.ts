@@ -4,5 +4,4 @@ import type { UseAccordionReturn } from './use-accordion'
 
 export interface UseAccordionContext extends UseAccordionReturn, UsePresenceProps {}
 
-export const [AccordionProvider, useAccordionContext] =
-  createContext<UseAccordionContext>('AccordionContext')
+export const [AccordionProvider, useAccordionContext] = createContext<UseAccordionContext>('AccordionContext')

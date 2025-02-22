@@ -9,27 +9,15 @@ export {
   type CarouselAutoplayTriggerProps,
 } from './carousel-autoplay-trigger'
 export { CarouselContext, type CarouselContextProps } from './carousel-context'
-export {
-  CarouselControl,
-  type CarouselControlBaseProps,
-  type CarouselControlProps,
-} from './carousel-control'
-export {
-  CarouselIndicator,
-  type CarouselIndicatorBaseProps,
-  type CarouselIndicatorProps,
-} from './carousel-indicator'
+export { CarouselControl, type CarouselControlBaseProps, type CarouselControlProps } from './carousel-control'
+export { CarouselIndicator, type CarouselIndicatorBaseProps, type CarouselIndicatorProps } from './carousel-indicator'
 export {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupBaseProps,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group'
 export { CarouselItem, type CarouselItemBaseProps, type CarouselItemProps } from './carousel-item'
-export {
-  CarouselItemGroup,
-  type CarouselItemGroupBaseProps,
-  type CarouselItemGroupProps,
-} from './carousel-item-group'
+export { CarouselItemGroup, type CarouselItemGroupBaseProps, type CarouselItemGroupProps } from './carousel-item-group'
 export {
   CarouselNextTrigger,
   type CarouselNextTriggerBaseProps,

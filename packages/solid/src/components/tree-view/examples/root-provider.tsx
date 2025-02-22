@@ -54,9 +54,7 @@ export const RootProvider = () => {
     <TreeView.RootProvider value={treeView}>
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
-        <For each={collection.rootNode.children}>
-          {(node, index) => <TreeNode node={node} indexPath={[index()]} />}
-        </For>
+        <For each={collection.rootNode.children}>{(node, index) => <TreeNode node={node} indexPath={[index()]} />}</For>
       </TreeView.Tree>
     </TreeView.RootProvider>
   )

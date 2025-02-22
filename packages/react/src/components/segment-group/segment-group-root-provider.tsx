@@ -11,27 +11,17 @@ interface RootProviderProps {
 }
 
 export interface SegmentGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface SegmentGroupRootProviderProps
-  extends HTMLProps<'div'>,
-    SegmentGroupRootProviderBaseProps {}
+export interface SegmentGroupRootProviderProps extends HTMLProps<'div'>, SegmentGroupRootProviderBaseProps {}
 
-export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupRootProviderProps>(
-  (props, ref) => {
-    const [{ value: segmentGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(
-      segmentGroup.getRootProps(),
-      parts.root.attrs as Record<string, string>,
-      localProps,
-    )
+export const SegmentGroupRootProvider = forwardRef<HTMLDivElement, SegmentGroupRootProviderProps>((props, ref) => {
+  const [{ value: segmentGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(segmentGroup.getRootProps(), parts.root.attrs as Record<string, string>, localProps)
 
-    return (
-      <SegmentGroupProvider value={segmentGroup}>
-        <ark.div {...mergedProps} ref={ref} />
-      </SegmentGroupProvider>
-    )
-  },
-)
+  return (
+    <SegmentGroupProvider value={segmentGroup}>
+      <ark.div {...mergedProps} ref={ref} />
+    </SegmentGroupProvider>
+  )
+})
 
 SegmentGroupRootProvider.displayName = 'SegmentGroupRootProvider'

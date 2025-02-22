@@ -103,14 +103,8 @@ export const VueIcon = (props: SVGProps<SVGSVGElement>) => (
       d="M0 8.934l49.854.158 14.167 24.47 14.432-24.47L128 8.935l-63.834 110.14zm126.98.637l-24.36.02-38.476 66.053L25.691 9.592.942 9.572l63.211 107.89zm-25.149-.008l-22.745.168-15.053 24.647L49.216 9.73l-22.794-.168 37.731 64.476zm-75.834-.17l23.002.009m-23.002-.01l23.002.01"
       fill="none"
     />
-    <path
-      d="M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z"
-      fill="#35495e"
-    />
-    <path
-      d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401l25.11.026-62.966 108.06z"
-      fill="#41b883"
-    />
+    <path d="M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z" fill="#35495e" />
+    <path d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401l25.11.026-62.966 108.06z" fill="#41b883" />
   </svg>
 )
 
@@ -159,16 +153,10 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 190 162" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Solid Start Icon</title>
     <mask id="mask0_1_11" maskUnits="userSpaceOnUse" x="87" y="132" width="43" height="18">
-      <path
-        d="M87.8 149.1L114.7 147C114.7 147 123.9 145.5 129.3 136.6L110.3 132L87.8 149.1Z"
-        fill="white"
-      />
+      <path d="M87.8 149.1L114.7 147C114.7 147 123.9 145.5 129.3 136.6L110.3 132L87.8 149.1Z" fill="white" />
     </mask>
     <g mask="url(#mask0_1_11)">
-      <path
-        d="M132.6 132.7L127.7 157.2L84.4 148.4L89.4 123.9L132.6 132.7Z"
-        fill="url(#paint0_linear_1_11)"
-      />
+      <path d="M132.6 132.7L127.7 157.2L84.4 148.4L89.4 123.9L132.6 132.7Z" fill="url(#paint0_linear_1_11)" />
     </g>
     <mask id="mask1_1_11" maskUnits="userSpaceOnUse" x="27" y="86" width="103" height="53">
       <path
@@ -177,22 +165,13 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </mask>
     <g mask="url(#mask1_1_11)">
-      <path
-        d="M56.2 184L4.20001 100.7L100.8 40.4L152.9 123.7L56.2 184Z"
-        fill="url(#paint1_linear_1_11)"
-      />
+      <path d="M56.2 184L4.20001 100.7L100.8 40.4L152.9 123.7L56.2 184Z" fill="url(#paint1_linear_1_11)" />
     </g>
     <mask id="mask2_1_11" maskUnits="userSpaceOnUse" x="133" y="59" width="44" height="18">
-      <path
-        d="M133.8 76.7L161.5 75C161.5 75 171 73.6 176.4 64.8L156.7 59.9L133.8 76.7Z"
-        fill="white"
-      />
+      <path d="M133.8 76.7L161.5 75C161.5 75 171 73.6 176.4 64.8L156.7 59.9L133.8 76.7Z" fill="white" />
     </mask>
     <g mask="url(#mask2_1_11)">
-      <path
-        d="M143.9 94.8L126.6 63.8L166.3 41.7L183.6 72.7L143.9 94.8Z"
-        fill="url(#paint2_linear_1_11)"
-      />
+      <path d="M143.9 94.8L126.6 63.8L166.3 41.7L183.6 72.7L143.9 94.8Z" fill="url(#paint2_linear_1_11)" />
     </g>
     <mask id="mask3_1_11" maskUnits="userSpaceOnUse" x="71" y="12" width="106" height="55">
       <path
@@ -201,10 +180,7 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </mask>
     <g mask="url(#mask3_1_11)">
-      <path
-        d="M159.6 -25.9L196.1 57.6L88 104.8L51.5 21.3L159.6 -25.9Z"
-        fill="url(#paint3_linear_1_11)"
-      />
+      <path d="M159.6 -25.9L196.1 57.6L88 104.8L51.5 21.3L159.6 -25.9Z" fill="url(#paint3_linear_1_11)" />
     </g>
     <mask id="mask4_1_11" maskUnits="userSpaceOnUse" x="11" y="87" width="96" height="63">
       <path
@@ -213,10 +189,7 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </mask>
     <g mask="url(#mask4_1_11)">
-      <path
-        d="M137.2 109.8L73.9 197.4L-19.1 130.2L44.1 42.6L137.2 109.8Z"
-        fill="url(#paint4_linear_1_11)"
-      />
+      <path d="M137.2 109.8L73.9 197.4L-19.1 130.2L44.1 42.6L137.2 109.8Z" fill="url(#paint4_linear_1_11)" />
     </g>
     <mask id="mask5_1_11" maskUnits="userSpaceOnUse" x="55" y="14" width="99" height="63">
       <path
@@ -225,10 +198,7 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </mask>
     <g mask="url(#mask5_1_11)">
-      <path
-        d="M174.6 21.7L142.1 111.5L34.1 72.3L66.7 -17.5L174.6 21.7Z"
-        fill="url(#paint5_linear_1_11)"
-      />
+      <path d="M174.6 21.7L142.1 111.5L34.1 72.3L66.7 -17.5L174.6 21.7Z" fill="url(#paint5_linear_1_11)" />
     </g>
     <mask id="mask6_1_11" maskUnits="userSpaceOnUse" x="42" y="37" width="101" height="84">
       <path
@@ -237,10 +207,7 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </mask>
     <g mask="url(#mask6_1_11)">
-      <path
-        d="M80.2 170.1L2.7 68L108.1 -11.9L185.5 90.2L80.2 170.1Z"
-        fill="url(#paint6_linear_1_11)"
-      />
+      <path d="M80.2 170.1L2.7 68L108.1 -11.9L185.5 90.2L80.2 170.1Z" fill="url(#paint6_linear_1_11)" />
     </g>
     <mask id="mask7_1_11" maskUnits="userSpaceOnUse" x="38" y="39" width="82" height="82">
       <path
@@ -249,10 +216,7 @@ export const SolidStartIcon = (props: SVGProps<SVGSVGElement>) => (
       />
     </mask>
     <g mask="url(#mask7_1_11)">
-      <path
-        d="M155.5 55.9L105 155.5L2.90001 103.8L53.4 4.09998L155.5 55.9Z"
-        fill="url(#paint7_linear_1_11)"
-      />
+      <path d="M155.5 55.9L105 155.5L2.90001 103.8L53.4 4.09998L155.5 55.9Z" fill="url(#paint7_linear_1_11)" />
     </g>
     <defs>
       <linearGradient

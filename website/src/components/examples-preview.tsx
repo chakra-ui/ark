@@ -9,20 +9,14 @@ import { Icon } from './ui/icon'
 
 export const ExamplesPreview = async () => {
   const { framework, component } = getServerContext()
-  const examples = (await fetchExamples()).filter((example) =>
-    example.relatedComponents.includes(component ?? ''),
-  )
+  const examples = (await fetchExamples()).filter((example) => example.relatedComponents.includes(component ?? ''))
 
   return examples.length > 0 ? (
     <>
       <Text>You can explore the {component} component in the following curated examples.</Text>
       <Grid columns={{ base: 1, sm: 2 }} gap="6" className="not-prose">
         {examples.map((relatedExample) => (
-          <NextLink
-            key={relatedExample.id}
-            href={`/${framework}/examples/${relatedExample.id}`}
-            className={link}
-          >
+          <NextLink key={relatedExample.id} href={`/${framework}/examples/${relatedExample.id}`} className={link}>
             <HStack>
               <Text color="fg.default" fontWeight="medium">
                 {relatedExample?.title}

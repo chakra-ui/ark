@@ -31,10 +31,7 @@ const ndoeProps = useTreeViewNodePropsContext()
 
 const branchContentProps = computed(() => {
   const contentProps = treeView.value.getBranchContentProps(ndoeProps)
-  const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, [
-    'hidden',
-    'data-state',
-  ])
+  const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
   return ownProps
 })
 

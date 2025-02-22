@@ -13,27 +13,15 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, PolymorphicProps>, CardVariantProps>
 >(ark.div, 'root')
 
-export const Body = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(
+export const Body = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(ark.div, 'body')
+
+export const Description = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(
   ark.div,
-  'body',
+  'description',
 )
 
-export const Description = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, PolymorphicProps>
->(ark.div, 'description')
+export const Footer = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(ark.div, 'footer')
 
-export const Footer = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(
-  ark.div,
-  'footer',
-)
+export const Header = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(ark.div, 'header')
 
-export const Header = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(
-  ark.div,
-  'header',
-)
-
-export const Title = withContext<
-  HTMLHeadingElement,
-  Assign<HTMLStyledProps<'h3'>, HTMLArkProps<'h3'>>
->(ark.h3, 'title')
+export const Title = withContext<HTMLHeadingElement, Assign<HTMLStyledProps<'h3'>, HTMLArkProps<'h3'>>>(ark.h3, 'title')

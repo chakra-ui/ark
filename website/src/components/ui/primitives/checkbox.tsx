@@ -19,25 +19,25 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'label'>, Checkbox.RootBaseProps>, CheckboxVariantProps>
 >(Checkbox.Root, 'root')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Checkbox.ControlBaseProps>
->(Checkbox.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Checkbox.ControlBaseProps>>(
+  Checkbox.Control,
+  'control',
+)
 
-export const Group = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Checkbox.GroupBaseProps>
->(Checkbox.Group, 'group')
+export const Group = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Checkbox.GroupBaseProps>>(
+  Checkbox.Group,
+  'group',
+)
 
-export const Indicator = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Checkbox.IndicatorBaseProps>
->(Checkbox.Indicator, 'indicator')
+export const Indicator = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Checkbox.IndicatorBaseProps>>(
+  Checkbox.Indicator,
+  'indicator',
+)
 
-export const Label = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Checkbox.LabelBaseProps>
->(Checkbox.Label, 'label')
+export const Label = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Checkbox.LabelBaseProps>>(
+  Checkbox.Label,
+  'label',
+)
 
 export const Context = Checkbox.Context
 export const HiddenInput = Checkbox.HiddenInput

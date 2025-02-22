@@ -108,10 +108,7 @@ describe('NumberInput', () => {
 
   it('should handle min and max fraction digits', async () => {
     render(
-      <ComponentUnderTest
-        defaultValue="1.00"
-        formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }}
-      />,
+      <ComponentUnderTest defaultValue="1.00" formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }} />,
     )
 
     const input = screen.getByRole('spinbutton')

@@ -10,10 +10,7 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<
-    Omit<select.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'collection'>,
-    'id'
-  > {
+  extends Optional<Omit<select.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'collection'>, 'id'> {
   modelValue?: select.Context<T>['value']
   /**
    * The initial open state of the select when it is first rendered.
@@ -31,8 +28,7 @@ export interface UseSelectProps<T extends CollectionItem>
   collection: ListCollection<T>
 }
 
-export interface UseSelectReturn<T extends CollectionItem>
-  extends ComputedRef<select.Api<PropTypes, T>> {}
+export interface UseSelectReturn<T extends CollectionItem> extends ComputedRef<select.Api<PropTypes, T>> {}
 
 export const useSelect = <T extends CollectionItem>(
   props: UseSelectProps<T>,

@@ -6,8 +6,7 @@ import { usePresenceContext } from '../presence'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerContentBaseProps extends PolymorphicProps<'div'> {}
-export interface TimePickerContentProps
-  extends Assign<HTMLProps<'div'>, TimePickerContentBaseProps> {}
+export interface TimePickerContentProps extends Assign<HTMLProps<'div'>, TimePickerContentBaseProps> {}
 
 export const TimePickerContent = (props: TimePickerContentProps) => {
   const timePicker = useTimePickerContext()

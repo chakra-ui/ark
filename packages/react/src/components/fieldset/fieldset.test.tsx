@@ -25,13 +25,12 @@ describe('Fieldset / Parts & Exports', () => {
 
   render(<ComponentUnderTest invalid />)
 
-  it.each(
-    getParts(fieldsetAnatomy).filter(
-      (part) => !part.includes('select') && !part.includes('textarea'),
-    ),
-  )('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
+  it.each(getParts(fieldsetAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
+    'should render part %s',
+    async (part) => {
+      expect(document.querySelector(part)).toBeInTheDocument()
+    },
+  )
 
   it.each(getExports(fieldsetAnatomy))('should export %s', async (part) => {
     expect(Fieldset[part]).toBeDefined()

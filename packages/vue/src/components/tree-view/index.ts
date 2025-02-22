@@ -3,12 +3,7 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export {
-  createFileTreeCollection,
-  createTreeCollection,
-  type TreeCollection,
-  type TreeNode,
-} from '../collection'
+export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
 export {
   default as TreeViewBranchContent,
   type TreeViewBranchContentBaseProps,
@@ -55,20 +50,9 @@ export {
   type TreeViewItemTextBaseProps,
   type TreeViewItemTextProps,
 } from './tree-view-item-text.vue'
-export {
-  default as TreeViewItem,
-  type TreeViewItemBaseProps,
-  type TreeViewItemProps,
-} from './tree-view-item.vue'
-export {
-  default as TreeViewLabel,
-  type TreeViewLabelBaseProps,
-  type TreeViewLabelProps,
-} from './tree-view-label.vue'
-export {
-  default as TreeViewNodeContext,
-  type TreeViewNodeContextProps,
-} from './tree-view-node-context.vue'
+export { default as TreeViewItem, type TreeViewItemBaseProps, type TreeViewItemProps } from './tree-view-item.vue'
+export { default as TreeViewLabel, type TreeViewLabelBaseProps, type TreeViewLabelProps } from './tree-view-label.vue'
+export { default as TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context.vue'
 export {
   default as TreeViewNodeProvider,
   type TreeViewNodeProviderBaseProps,
@@ -79,16 +63,8 @@ export {
   type TreeViewRootProviderBaseProps,
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider.vue'
-export {
-  default as TreeViewRoot,
-  type TreeViewRootBaseProps,
-  type TreeViewRootProps,
-} from './tree-view-root.vue'
-export {
-  default as TreeViewTree,
-  type TreeViewTreeBaseProps,
-  type TreeViewTreeProps,
-} from './tree-view-tree.vue'
+export { default as TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootProps } from './tree-view-root.vue'
+export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.vue'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
 

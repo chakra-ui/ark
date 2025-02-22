@@ -14,10 +14,7 @@ interface RootProviderProps {
   value: UseTabsReturn
 }
 
-export interface TabsRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface TabsRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProviderProps extends HTMLProps<'div'>, TabsRootProviderBaseProps {}
 
 export const TabsRootProvider = forwardRef<HTMLDivElement, TabsRootProviderProps>((props, ref) => {

@@ -4,8 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface TimePickerTriggerProps
-  extends Assign<HTMLProps<'button'>, TimePickerTriggerBaseProps> {}
+export interface TimePickerTriggerProps extends Assign<HTMLProps<'button'>, TimePickerTriggerBaseProps> {}
 
 export const TimePickerTrigger = (props: TimePickerTriggerProps) => {
   const timePicker = useTimePickerContext()

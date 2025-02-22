@@ -6,9 +6,7 @@ export const RootProvider = () => {
 
   return (
     <>
-      <button onClick={() => popover().setOpen(true)}>
-        Popover is {popover().open ? 'open' : 'closed'}
-      </button>
+      <button onClick={() => popover().setOpen(true)}>Popover is {popover().open ? 'open' : 'closed'}</button>
 
       <Popover.RootProvider value={popover}>
         <Popover.Trigger>

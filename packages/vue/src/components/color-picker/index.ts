@@ -56,10 +56,7 @@ export {
   type ColorPickerContentBaseProps,
   type ColorPickerContentProps,
 } from './color-picker-content.vue'
-export {
-  default as ColorPickerContext,
-  type ColorPickerContextProps,
-} from './color-picker-context.vue'
+export { default as ColorPickerContext, type ColorPickerContextProps } from './color-picker-context.vue'
 export {
   default as ColorPickerControl,
   type ColorPickerControlBaseProps,
@@ -153,11 +150,7 @@ export {
   type ColorPickerViewProps,
 } from './color-picker-view.vue'
 export { colorPickerAnatomy } from './color-picker.anatomy'
-export {
-  useColorPicker,
-  type UseColorPickerProps,
-  type UseColorPickerReturn,
-} from './use-color-picker'
+export { useColorPicker, type UseColorPickerProps, type UseColorPickerReturn } from './use-color-picker'
 export { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
 
 export * as ColorPicker from './color-picker'

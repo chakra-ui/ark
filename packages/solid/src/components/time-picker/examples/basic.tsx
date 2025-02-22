@@ -19,27 +19,21 @@ export const Basic = (props: TimePicker.RootProps) => {
                   <TimePicker.Column unit="hour">
                     <TimePicker.Spacer />
                     <Index each={api().getHours()}>
-                      {(item) => (
-                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
-                      )}
+                      {(item) => <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>}
                     </Index>
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="minute">
                     <TimePicker.Spacer />
                     <Index each={api().getMinutes()}>
-                      {(item) => (
-                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
-                      )}
+                      {(item) => <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>}
                     </Index>
                     <TimePicker.Spacer />
                   </TimePicker.Column>
                   <TimePicker.Column unit="second">
                     <TimePicker.Spacer />
                     <Index each={api().getSeconds()}>
-                      {(item) => (
-                        <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>
-                      )}
+                      {(item) => <TimePicker.Cell value={item().value}>{item().label}</TimePicker.Cell>}
                     </Index>
                     <TimePicker.Spacer />
                   </TimePicker.Column>

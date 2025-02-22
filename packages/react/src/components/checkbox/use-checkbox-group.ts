@@ -38,15 +38,7 @@ export interface CheckboxGroupItemProps {
 }
 
 export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
-  const {
-    defaultValue,
-    value: controlledValue,
-    onValueChange,
-    disabled,
-    readOnly,
-    name,
-    invalid,
-  } = props
+  const { defaultValue, value: controlledValue, onValueChange, disabled, readOnly, name, invalid } = props
 
   const interactive = !(disabled || readOnly)
 

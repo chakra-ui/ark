@@ -23,9 +23,7 @@ defineProps<TimePickerContentProps>()
 const timePicker = useTimePickerContext()
 const presence = usePresenceContext()
 
-const mergedProps = computed(() =>
-  mergeProps(timePicker.value.getContentProps(), presence.value.presenceProps),
-)
+const mergedProps = computed(() => mergeProps(timePicker.value.getContentProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>

@@ -19,19 +19,13 @@ describe('Accordion', () => {
   it('should not have an expanded item by default', async () => {
     render(() => <ComponentUnderTest />)
 
-    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
-      'aria-expanded',
-      'false',
-    )
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('aria-expanded', 'false')
   })
 
   it('should open item specified in defaultValue', async () => {
     render(() => <ComponentUnderTest value={['Solid']} />)
 
-    expect(screen.getByRole('button', { name: 'Solid Trigger' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    )
+    expect(screen.getByRole('button', { name: 'Solid Trigger' })).toHaveAttribute('aria-expanded', 'true')
   })
 
   it('should collapse an expanded item when collapsible is true', async () => {
@@ -39,16 +33,10 @@ describe('Accordion', () => {
 
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
 
-    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    )
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('aria-expanded', 'true')
 
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
-    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
-      'aria-expanded',
-      'false',
-    )
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('aria-expanded', 'false')
   })
 
   it('should disable a single item', async () => {
@@ -72,14 +60,8 @@ describe('Accordion', () => {
     await user.click(screen.getByRole('button', { name: 'React Trigger' }))
     await user.click(screen.getByRole('button', { name: 'Vue Trigger' }))
 
-    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    )
-    expect(screen.getByRole('button', { name: 'Vue Trigger' })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    )
+    expect(screen.getByRole('button', { name: 'React Trigger' })).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getByRole('button', { name: 'Vue Trigger' })).toHaveAttribute('aria-expanded', 'true')
   })
 
   it('should call onValueChange when an item is clicked', async () => {

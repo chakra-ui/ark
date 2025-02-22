@@ -9,28 +9,22 @@ import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-
 interface ValueSwatchProps extends Omit<SwatchProps, 'value'> {}
 
 export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, PolymorphicProps {}
-export interface ColorPickerValueSwatchProps
-  extends HTMLProps<'div'>,
-    ColorPickerValueSwatchBaseProps {}
+export interface ColorPickerValueSwatchProps extends HTMLProps<'div'>, ColorPickerValueSwatchBaseProps {}
 
-export const ColorPickerValueSwatch = forwardRef<HTMLDivElement, ColorPickerValueSwatchProps>(
-  (props, ref) => {
-    const [{ respectAlpha }, localProps] = createSplitProps<ValueSwatchProps>()(props, [
-      'respectAlpha',
-    ])
-    const colorPicker = useColorPickerContext()
-    const swatchProps = {
-      respectAlpha,
-      value: colorPicker.valueAsString,
-    }
-    const mergedProps = mergeProps(colorPicker.getSwatchProps(swatchProps), localProps)
+export const ColorPickerValueSwatch = forwardRef<HTMLDivElement, ColorPickerValueSwatchProps>((props, ref) => {
+  const [{ respectAlpha }, localProps] = createSplitProps<ValueSwatchProps>()(props, ['respectAlpha'])
+  const colorPicker = useColorPickerContext()
+  const swatchProps = {
+    respectAlpha,
+    value: colorPicker.valueAsString,
+  }
+  const mergedProps = mergeProps(colorPicker.getSwatchProps(swatchProps), localProps)
 
-    return (
-      <ColorPickerSwatchPropsProvider value={swatchProps}>
-        <ark.div {...mergedProps} ref={ref} />
-      </ColorPickerSwatchPropsProvider>
-    )
-  },
-)
+  return (
+    <ColorPickerSwatchPropsProvider value={swatchProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </ColorPickerSwatchPropsProvider>
+  )
+})
 
 ColorPickerValueSwatch.displayName = 'ColorPickerValueSwatch'

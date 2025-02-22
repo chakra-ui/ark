@@ -18,15 +18,14 @@ const ComponentUnderTest = (props: Fieldset.RootProps) => (
 )
 
 describe('Fieldset / Parts & Exports', () => {
-  it.each(
-    getParts(fieldsetAnatomy).filter(
-      (part) => !part.includes('select') && !part.includes('textarea'),
-    ),
-  )('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest invalid />)
+  it.each(getParts(fieldsetAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
+    'should render part %s',
+    async (part) => {
+      render(() => <ComponentUnderTest invalid />)
 
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
+      expect(document.querySelector(part)).toBeInTheDocument()
+    },
+  )
 
   it.each(getExports(fieldsetAnatomy))('should export %s', async (part) => {
     expect(Fieldset[part]).toBeDefined()

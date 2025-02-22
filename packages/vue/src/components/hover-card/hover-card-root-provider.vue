@@ -20,9 +20,7 @@ const props = defineProps<HoverCardRootProviderProps>()
 const hoverCard = computed(() => props.value)
 
 HoverCardProvider(hoverCard)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

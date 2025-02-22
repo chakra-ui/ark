@@ -8,26 +8,22 @@ const features = [
   {
     icon: Paintbrush,
     title: 'Zero-Styling Freedom',
-    description:
-      'Your design system, your rules. Every component starts as a blank canvas ready for your creativity.',
+    description: 'Your design system, your rules. Every component starts as a blank canvas ready for your creativity.',
   },
   {
     icon: Braces,
     title: 'Truly Composable',
-    description:
-      'Build complex UIs effortlessly with modular components that work seamlessly together.',
+    description: 'Build complex UIs effortlessly with modular components that work seamlessly together.',
   },
   {
     icon: Keyboard,
     title: 'Accessibility-First',
-    description:
-      'Ship with confidence. Every component is WCAG compliant and thoroughly tested for accessibility.',
+    description: 'Ship with confidence. Every component is WCAG compliant and thoroughly tested for accessibility.',
   },
   {
     icon: Orbit,
     title: 'State Machine Powered',
-    description:
-      'Predictable behavior, fewer bugs. State machines ensure rock-solid component interactions.',
+    description: 'Predictable behavior, fewer bugs. State machines ensure rock-solid component interactions.',
   },
 ]
 
@@ -44,12 +40,7 @@ export const Highlights = () => {
           height="full"
         >
           {features.map((feature) => (
-            <Stack
-              key={feature.title}
-              gap={{ base: '3', md: '4' }}
-              height="full"
-              justify="flex-start"
-            >
+            <Stack key={feature.title} gap={{ base: '3', md: '4' }} height="full" justify="flex-start">
               <Flex
                 align="center"
                 justify="center"

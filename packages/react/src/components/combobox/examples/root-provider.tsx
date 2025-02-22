@@ -10,9 +10,7 @@ export const RootProvider = () => {
   const collection = useMemo(() => createListCollection({ items }), [items])
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(
-      initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())),
-    )
+    setItems(initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())))
   }
 
   const combobox = useCombobox({ collection: collection, onInputValueChange: handleInputChange })

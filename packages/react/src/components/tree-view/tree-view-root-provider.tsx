@@ -22,15 +22,9 @@ export interface TreeViewRootProviderProps<T extends TreeNode>
   extends HTMLProps<'div'>,
     TreeViewRootProviderBaseProps<T> {}
 
-const TreeViewImpl = <T extends TreeNode>(
-  props: TreeViewRootProviderProps<T>,
-  ref: React.Ref<HTMLDivElement>,
-) => {
+const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProviderProps<T>, ref: React.Ref<HTMLDivElement>) => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)
-  const [{ value: treeView }, localProps] = createSplitProps<RootProviderProps<T>>()(
-    treeViewProps,
-    ['value'],
-  )
+  const [{ value: treeView }, localProps] = createSplitProps<RootProviderProps<T>>()(treeViewProps, ['value'])
   const mergedProps = mergeProps(treeView.getRootProps(), localProps)
 
   return (

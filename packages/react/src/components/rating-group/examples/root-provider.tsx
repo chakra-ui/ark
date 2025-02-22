@@ -16,9 +16,7 @@ export const RootProvider = () => {
               items.map((item) => (
                 <RatingGroup.Item key={item} index={item}>
                   <RatingGroup.ItemContext>
-                    {({ highlighted }) =>
-                      highlighted ? <StarIcon fill="current" /> : <StarIcon />
-                    }
+                    {({ highlighted }) => (highlighted ? <StarIcon fill="current" /> : <StarIcon />)}
                   </RatingGroup.ItemContext>
                 </RatingGroup.Item>
               ))

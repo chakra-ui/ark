@@ -13,8 +13,8 @@ export const Faqs = () => {
       question: 'What do I get when I purchase Ark Plus?',
       answer: (
         <Text>
-          After purchasing a license from our payment provider, you will receive a license key. You
-          can then claim the license for yourself or share it with another person.
+          After purchasing a license from our payment provider, you will receive a license key. You can then claim the
+          license for yourself or share it with another person.
         </Text>
       ),
     },
@@ -22,19 +22,15 @@ export const Faqs = () => {
       question: 'How does the Team license work?',
       answer: (
         <Text>
-          The Team license lets all your employees and contractors access and use the examples. We
-          recommend activating your license with a shared email everyone on the team can access. For
-          full details, <NextLink href="/license">check out our license page</NextLink>.
+          The Team license lets all your employees and contractors access and use the examples. We recommend activating
+          your license with a shared email everyone on the team can access. For full details,{' '}
+          <NextLink href="/license">check out our license page</NextLink>.
         </Text>
       ),
     },
     {
       question: 'Do you offer a free trial?',
-      answer: (
-        <Text>
-          We don't offer a free trial. However, several examples are available for free to explore.
-        </Text>
-      ),
+      answer: <Text>We don't offer a free trial. However, several examples are available for free to explore.</Text>,
     },
     {
       question: 'Which version of Ark UI do I need?',
@@ -60,9 +56,8 @@ export const Faqs = () => {
       question: 'What is your refund policy?',
       answer: (
         <Text>
-          We do not offer refunds. As our products are digital goods, they cannot be returned once
-          they have been accessed. This policy is in place to prevent abuse and is in line with
-          industry standards for digital sales.
+          We do not offer refunds. As our products are digital goods, they cannot be returned once they have been
+          accessed. This policy is in place to prevent abuse and is in line with industry standards for digital sales.
         </Text>
       ),
     },
@@ -72,11 +67,7 @@ export const Faqs = () => {
     <Stack gap={{ base: '12', lg: '24' }} direction={{ base: 'column', lg: 'row' }} width="full">
       <Stack gap={{ base: '4', md: '5' }} maxW={{ lg: 'md' }}>
         <Stack gap="3">
-          <Text
-            color="colorPalette.default"
-            textStyle={{ base: 'sm', md: 'md' }}
-            fontWeight="semibold"
-          >
+          <Text color="colorPalette.default" textStyle={{ base: 'sm', md: 'md' }} fontWeight="semibold">
             Support
           </Text>
           <Heading size={{ base: '3xl', md: '4xl' }}>FAQs</Heading>

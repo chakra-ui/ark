@@ -16,8 +16,8 @@ export const Enterprise = () => {
                 Designed for product teams and organizations
               </Heading>
               <Text color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }}>
-                With support for a wide range of JS frameworks, you can create a design system that
-                can be seamlessly integrated across multiple platforms and applications.
+                With support for a wide range of JS frameworks, you can create a design system that can be seamlessly
+                integrated across multiple platforms and applications.
               </Text>
             </Stack>
             <Button size={{ base: 'lg', md: '2xl' }} variant="link" asChild>

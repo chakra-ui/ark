@@ -22,9 +22,7 @@ export const TourBackdrop = forwardRef<HTMLDivElement, TourBackdropProps>((props
     return null
   }
 
-  return (
-    <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} hidden={!tour.step?.backdrop} />
-  )
+  return <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} hidden={!tour.step?.backdrop} />
 })
 
 TourBackdrop.displayName = 'TourBackdrop'

@@ -14,12 +14,7 @@ const items = ref([
   <RadioGroup.Root>
     <RadioGroup.Label>Framework</RadioGroup.Label>
     <RadioGroup.Indicator />
-    <RadioGroup.Item
-      v-for="item in items"
-      :key="item.value"
-      :value="item.value"
-      :disabled="item.disabled"
-    >
+    <RadioGroup.Item v-for="item in items" :key="item.value" :value="item.value" :disabled="item.disabled">
       <RadioGroup.ItemText>{{ item.label }}</RadioGroup.ItemText>
       <RadioGroup.ItemControl />
       <RadioGroup.ItemHiddenInput />

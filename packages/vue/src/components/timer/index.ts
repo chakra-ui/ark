@@ -4,21 +4,9 @@ export {
   type TimerActionTriggerProps,
 } from './timer-action-trigger.vue'
 export { default as TimerContext, type TimerContextProps } from './timer-context.vue'
-export {
-  default as TimerItem,
-  type TimerItemBaseProps,
-  type TimerItemProps,
-} from './timer-item.vue'
-export {
-  default as TimerArea,
-  type TimerAreaBaseProps,
-  type TimerAreaProps,
-} from './timer-area.vue'
-export {
-  default as TimerControl,
-  type TimerControlBaseProps,
-  type TimerControlProps,
-} from './timer-control.vue'
+export { default as TimerItem, type TimerItemBaseProps, type TimerItemProps } from './timer-item.vue'
+export { default as TimerArea, type TimerAreaBaseProps, type TimerAreaProps } from './timer-area.vue'
+export { default as TimerControl, type TimerControlBaseProps, type TimerControlProps } from './timer-control.vue'
 export {
   default as TimerRootProvider,
   type TimerRootProviderBaseProps,

@@ -15,9 +15,7 @@ export interface RatingGroupRootProviderProps
     RatingGroupRootProviderBaseProps {}
 
 export const RatingGroupRootProvider = (props: RatingGroupRootProviderProps) => {
-  const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
-    'value',
-  ])
+  const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
   const mergedProps = mergeProps(() => ratingGroup().getRootProps(), localProps)
 
   return (

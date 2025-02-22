@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './progress.types'
 
-export interface UseProgressProps
-  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseProgressProps extends Optional<Omit<progress.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The initial value of the progress when it is first rendered.
    * Use when you do not need to control the state of the progress.
@@ -20,10 +19,7 @@ export interface UseProgressProps
 }
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
-export const useProgress = (
-  props: UseProgressProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseProgressReturn => {
+export const useProgress = (props: UseProgressProps = {}, emit?: EmitFn<RootEmits>): UseProgressReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

@@ -1,13 +1,5 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import {
-  type HTMLAttributes,
-  computed,
-  onBeforeUnmount,
-  onMounted,
-  reactive,
-  ref,
-  useId,
-} from 'vue'
+import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref, useId } from 'vue'
 import { parts } from './field.anatomy'
 import type { ElementIds } from './field.types'
 

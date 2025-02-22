@@ -9,10 +9,7 @@ export {
   type EditableCancelTriggerBaseProps as CancelTriggerBaseProps,
   type EditableCancelTriggerProps as CancelTriggerProps,
 } from './editable-cancel-trigger'
-export {
-  EditableContext as Context,
-  type EditableContextProps as ContextProps,
-} from './editable-context'
+export { EditableContext as Context, type EditableContextProps as ContextProps } from './editable-context'
 export {
   EditableControl as Control,
   type EditableControlBaseProps as ControlBaseProps,

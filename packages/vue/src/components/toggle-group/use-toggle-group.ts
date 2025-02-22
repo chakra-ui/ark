@@ -18,10 +18,7 @@ export interface UseToggleGroupProps
 
 export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTypes>> {}
 
-export const useToggleGroup = (
-  props: UseToggleGroupProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseToggleGroupReturn => {
+export const useToggleGroup = (props: UseToggleGroupProps = {}, emit?: EmitFn<RootEmits>): UseToggleGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

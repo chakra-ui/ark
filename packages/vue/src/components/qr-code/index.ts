@@ -5,21 +5,9 @@ export {
   type QrCodeDownloadTriggerBaseProps,
   type QrCodeDownloadTriggerProps,
 } from './qr-code-download-trigger.vue'
-export {
-  default as QrCodeFrame,
-  type QrCodeFrameBaseProps,
-  type QrCodeFrameProps,
-} from './qr-code-frame.vue'
-export {
-  default as QrCodeOverlay,
-  type QrCodeOverlayBaseProps,
-  type QrCodeOverlayProps,
-} from './qr-code-overlay.vue'
-export {
-  default as QrCodePattern,
-  type QrCodePatternBaseProps,
-  type QrCodePatternProps,
-} from './qr-code-pattern.vue'
+export { default as QrCodeFrame, type QrCodeFrameBaseProps, type QrCodeFrameProps } from './qr-code-frame.vue'
+export { default as QrCodeOverlay, type QrCodeOverlayBaseProps, type QrCodeOverlayProps } from './qr-code-overlay.vue'
+export { default as QrCodePattern, type QrCodePatternBaseProps, type QrCodePatternProps } from './qr-code-pattern.vue'
 export {
   default as QrCodeRootProvider,
   type QrCodeRootProviderBaseProps,

@@ -61,9 +61,7 @@ export const ColorPickerControl = () => {
       <ColorPicker.ValueText />
       <ColorPicker.Trigger>
         <ColorPicker.TransparencyGrid />
-        <ColorPicker.Context>
-          {(colorPicker) => <ColorPicker.Swatch value={colorPicker.value} />}
-        </ColorPicker.Context>
+        <ColorPicker.Context>{(colorPicker) => <ColorPicker.Swatch value={colorPicker.value} />}</ColorPicker.Context>
       </ColorPicker.Trigger>
     </ColorPicker.Control>
   )

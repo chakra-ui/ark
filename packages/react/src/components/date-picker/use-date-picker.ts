@@ -1,28 +1,25 @@
-import * as datePicker from "@zag-js/date-picker";
-import { type PropTypes, normalizeProps, useMachine } from "@zag-js/react";
-import { useId } from "react";
-import { useEnvironmentContext, useLocaleContext } from "../../providers";
-import type { Optional } from "../../types";
+import * as datePicker from '@zag-js/date-picker'
+import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
+import { useId } from 'react'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
+import type { Optional } from '../../types'
 
-export interface UseDatePickerProps
-	extends Optional<Omit<datePicker.Props, "dir" | "getRootNode">, "id"> {}
+export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
 
-export const useDatePicker = (
-	props: UseDatePickerProps = {},
-): UseDatePickerReturn => {
-	const id = useId();
-	const { getRootNode } = useEnvironmentContext();
-	const { dir } = useLocaleContext();
+export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
+  const id = useId()
+  const { getRootNode } = useEnvironmentContext()
+  const { dir } = useLocaleContext()
 
-	const userProps: datePicker.Props = {
-		id,
-		dir,
-		getRootNode,
-		...props,
-	};
+  const userProps: datePicker.Props = {
+    id,
+    dir,
+    getRootNode,
+    ...props,
+  }
 
-	const service = useMachine(datePicker.machine, userProps);
-	return datePicker.connect(service, normalizeProps);
-};
+  const service = useMachine(datePicker.machine, userProps)
+  return datePicker.connect(service, normalizeProps)
+}

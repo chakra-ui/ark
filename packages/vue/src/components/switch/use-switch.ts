@@ -7,8 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './switch'
 
-export interface UseSwitchProps
-  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSwitchProps extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The checked state of the switch when it is first rendered.
    * Use this when you do not need to control the state of the switch.
@@ -18,10 +17,7 @@ export interface UseSwitchProps
 
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
-export const useSwitch = (
-  props: UseSwitchProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseSwitchReturn => {
+export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

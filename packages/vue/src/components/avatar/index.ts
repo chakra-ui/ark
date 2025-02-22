@@ -5,11 +5,7 @@ export {
   type AvatarFallbackProps,
   type AvatarFallbackBaseProps,
 } from './avatar-fallback.vue'
-export {
-  default as AvatarImage,
-  type AvatarImageProps,
-  type AvatarImageBaseProps,
-} from './avatar-image.vue'
+export { default as AvatarImage, type AvatarImageProps, type AvatarImageBaseProps } from './avatar-image.vue'
 export {
   default as AvatarRoot,
   type AvatarRootEmits,

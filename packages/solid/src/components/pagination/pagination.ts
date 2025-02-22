@@ -1,8 +1,5 @@
 export type { ItemLabelDetails, PageChangeDetails, PageSizeChangeDetails } from '@zag-js/pagination'
-export {
-  PaginationContext as Context,
-  type PaginationContextProps as ContextProps,
-} from './pagination-context'
+export { PaginationContext as Context, type PaginationContextProps as ContextProps } from './pagination-context'
 export {
   PaginationEllipsis as Ellipsis,
   type PaginationEllipsisBaseProps as EllipsisBaseProps,

@@ -55,10 +55,7 @@ export {
   type ColorPickerContentProps as ContentProps,
   type ColorPickerContentBaseProps as ContentBaseProps,
 } from './color-picker-content.vue'
-export {
-  default as Context,
-  type ColorPickerContextProps as ContextProps,
-} from './color-picker-context.vue'
+export { default as Context, type ColorPickerContextProps as ContextProps } from './color-picker-context.vue'
 export {
   default as Control,
   type ColorPickerControlProps as ControlProps,

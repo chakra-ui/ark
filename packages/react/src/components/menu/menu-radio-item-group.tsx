@@ -8,26 +8,25 @@ import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-
 
 type OptionalUseMenuItemGroupContext = Optional<UseMenuItemGroupContext, 'id'>
 
-export interface MenuRadioItemGroupBaseProps
-  extends OptionalUseMenuItemGroupContext,
-    PolymorphicProps {}
+export interface MenuRadioItemGroupBaseProps extends OptionalUseMenuItemGroupContext, PolymorphicProps {}
 export interface MenuRadioItemGroupProps extends HTMLProps<'div'>, MenuRadioItemGroupBaseProps {}
 
-export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>(
-  (props, ref) => {
-    const [optionalItemGroupProps, localProps] =
-      createSplitProps<OptionalUseMenuItemGroupContext>()(props, ['id', 'onValueChange', 'value'])
-    const menu = useMenuContext()
-    const id = useId()
-    const itemGroupProps = { id, ...optionalItemGroupProps }
-    const mergedProps = mergeProps(menu.getItemGroupProps({ id: itemGroupProps.id }), localProps)
+export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>((props, ref) => {
+  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalUseMenuItemGroupContext>()(props, [
+    'id',
+    'onValueChange',
+    'value',
+  ])
+  const menu = useMenuContext()
+  const id = useId()
+  const itemGroupProps = { id, ...optionalItemGroupProps }
+  const mergedProps = mergeProps(menu.getItemGroupProps({ id: itemGroupProps.id }), localProps)
 
-    return (
-      <MenuItemGroupProvider value={itemGroupProps}>
-        <ark.div {...mergedProps} ref={ref} />
-      </MenuItemGroupProvider>
-    )
-  },
-)
+  return (
+    <MenuItemGroupProvider value={itemGroupProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </MenuItemGroupProvider>
+  )
+})
 
 MenuRadioItemGroup.displayName = 'MenuRadioItemGroup'

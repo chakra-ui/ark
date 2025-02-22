@@ -13,10 +13,7 @@ export {
   type ProgressCircleBaseProps as CircleBaseProps,
   type ProgressCircleProps as CircleProps,
 } from './progress-circle.vue'
-export {
-  default as Context,
-  type ProgressContextProps as ContextProps,
-} from './progress-context.vue'
+export { default as Context, type ProgressContextProps as ContextProps } from './progress-context.vue'
 export {
   default as Label,
   type ProgressLabelBaseProps as LabelBaseProps,

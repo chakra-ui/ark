@@ -18,10 +18,7 @@ export interface UseSegmentGroupProps
 
 export interface UseSegmentGroupReturn extends ComputedRef<segmentGroup.Api<PropTypes>> {}
 
-export const useSegmentGroup = (
-  props: UseSegmentGroupProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseSegmentGroupReturn => {
+export const useSegmentGroup = (props: UseSegmentGroupProps = {}, emit?: EmitFn<RootEmits>): UseSegmentGroupReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

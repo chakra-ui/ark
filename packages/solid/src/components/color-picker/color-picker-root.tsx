@@ -1,64 +1,51 @@
-import { mergeProps } from "@zag-js/solid";
-import { createSplitProps } from "../../utils/create-split-props";
-import { type HTMLProps, type PolymorphicProps, ark } from "../factory";
-import {
-	PresenceProvider,
-	type UsePresenceProps,
-	splitPresenceProps,
-	usePresence,
-} from "../presence";
-import { type UseColorPickerProps, useColorPicker } from "./use-color-picker";
-import { ColorPickerProvider } from "./use-color-picker-context";
+import { mergeProps } from '@zag-js/solid'
+import { createSplitProps } from '../../utils/create-split-props'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
+import { type UseColorPickerProps, useColorPicker } from './use-color-picker'
+import { ColorPickerProvider } from './use-color-picker-context'
 
-export interface ColorPickerRootBaseProps
-	extends UseColorPickerProps,
-		UsePresenceProps,
-		PolymorphicProps<"div"> {}
-export interface ColorPickerRootProps
-	extends HTMLProps<"div">,
-		ColorPickerRootBaseProps {}
+export interface ColorPickerRootBaseProps extends UseColorPickerProps, UsePresenceProps, PolymorphicProps<'div'> {}
+export interface ColorPickerRootProps extends HTMLProps<'div'>, ColorPickerRootBaseProps {}
 
 export const ColorPickerRoot = (props: ColorPickerRootProps) => {
-	const [presenceProps, colorPickerProps] = splitPresenceProps(props);
-	const [useColorPickerProps, localProps] =
-		createSplitProps<UseColorPickerProps>()(colorPickerProps, [
-			"closeOnSelect",
-			"defaultOpen",
-			"defaultValue",
-			"defaultFormat",
-			"disabled",
-			"format",
-			"id",
-			"ids",
-			"initialFocusEl",
-			"invalid",
-			"name",
-			"name",
-			"onFocusOutside",
-			"onFormatChange",
-			"onInteractOutside",
-			"onOpenChange",
-			"onPointerDownOutside",
-			"onValueChange",
-			"onValueChangeEnd",
-			"open",
-			"openAutoFocus",
-			"positioning",
-			"readOnly",
-			"required",
-			"value",
-		]);
-	const api = useColorPicker(useColorPickerProps);
-	const apiPresence = usePresence(
-		mergeProps(presenceProps, () => ({ present: api().open })),
-	);
-	const mergedProps = mergeProps(() => api().getRootProps(), localProps);
+  const [presenceProps, colorPickerProps] = splitPresenceProps(props)
+  const [useColorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(colorPickerProps, [
+    'closeOnSelect',
+    'defaultOpen',
+    'defaultValue',
+    'defaultFormat',
+    'disabled',
+    'format',
+    'id',
+    'ids',
+    'initialFocusEl',
+    'invalid',
+    'name',
+    'name',
+    'onFocusOutside',
+    'onFormatChange',
+    'onInteractOutside',
+    'onOpenChange',
+    'onPointerDownOutside',
+    'onValueChange',
+    'onValueChangeEnd',
+    'open',
+    'openAutoFocus',
+    'positioning',
+    'readOnly',
+    'required',
+    'value',
+  ])
+  const api = useColorPicker(useColorPickerProps)
+  const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
-	return (
-		<ColorPickerProvider value={api}>
-			<PresenceProvider value={apiPresence}>
-				<ark.div {...mergedProps} />
-			</PresenceProvider>
-		</ColorPickerProvider>
-	);
-};
+  return (
+    <ColorPickerProvider value={api}>
+      <PresenceProvider value={apiPresence}>
+        <ark.div {...mergedProps} />
+      </PresenceProvider>
+    </ColorPickerProvider>
+  )
+}

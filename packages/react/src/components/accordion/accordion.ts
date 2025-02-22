@@ -1,8 +1,5 @@
 export type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/accordion'
-export {
-  AccordionContext as Context,
-  type AccordionContextProps as ContextProps,
-} from './accordion-context'
+export { AccordionContext as Context, type AccordionContextProps as ContextProps } from './accordion-context'
 export {
   AccordionItem as Item,
   type AccordionItemBaseProps as ItemBaseProps,

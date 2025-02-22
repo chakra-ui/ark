@@ -7,19 +7,14 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerPresetTriggerBaseProps extends PresetTriggerProps, PolymorphicProps {}
-export interface DatePickerPresetTriggerProps
-  extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
+export interface DatePickerPresetTriggerProps extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
 
-export const DatePickerPresetTrigger = forwardRef<HTMLButtonElement, DatePickerPresetTriggerProps>(
-  (props, ref) => {
-    const [presetTriggerProps, localProps] = createSplitProps<PresetTriggerProps>()(props, [
-      'value',
-    ])
-    const datePicker = useDatePickerContext()
-    const mergedProps = mergeProps(datePicker.getPresetTriggerProps(presetTriggerProps), localProps)
+export const DatePickerPresetTrigger = forwardRef<HTMLButtonElement, DatePickerPresetTriggerProps>((props, ref) => {
+  const [presetTriggerProps, localProps] = createSplitProps<PresetTriggerProps>()(props, ['value'])
+  const datePicker = useDatePickerContext()
+  const mergedProps = mergeProps(datePicker.getPresetTriggerProps(presetTriggerProps), localProps)
 
-    return <ark.button {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.button {...mergedProps} ref={ref} />
+})
 
 DatePickerPresetTrigger.displayName = 'DatePickerPresetTrigger'

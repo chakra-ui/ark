@@ -24,11 +24,7 @@ export const SectionHeader = (props: SectionHeaderProps) => {
     <Stack gap={{ base: '6', md: '8' }} {...rootProps}>
       <Stack gap={{ base: '4', md: '5' }}>
         <Stack gap={{ base: '2', md: '3' }}>
-          <Text
-            textStyle={{ base: 'sm', md: 'md' }}
-            fontWeight="medium"
-            color="colorPalette.default"
-          >
+          <Text textStyle={{ base: 'sm', md: 'md' }} fontWeight="medium" color="colorPalette.default">
             {tagline}
           </Text>
           <Heading as="h2" textStyle={{ base: '3xl', md: '4xl' }}>

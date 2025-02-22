@@ -70,15 +70,12 @@ const highlighter = await getHighlighter({
 
 export const fetchCodeExamples = async (props: FetchCodeExamplesParams): Promise<CodeExample[]> => {
   const { id, framework } = props
-  const sources: SourceFile[] = await fetch(
-    `${ARK_PLUS_URL}/api/examples/${id}/sources/${framework}`,
-    {
-      headers: {
-        Authorization: ARK_PLUS_API_KEY,
-      },
-      cache: 'no-cache',
+  const sources: SourceFile[] = await fetch(`${ARK_PLUS_URL}/api/examples/${id}/sources/${framework}`, {
+    headers: {
+      Authorization: ARK_PLUS_API_KEY,
     },
-  ).then((res) => res.json())
+    cache: 'no-cache',
+  }).then((res) => res.json())
 
   return sources.map((source) => ({
     value: source.name,

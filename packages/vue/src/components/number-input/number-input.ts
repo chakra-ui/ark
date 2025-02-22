@@ -1,12 +1,5 @@
-export type {
-  FocusChangeDetails,
-  ValueChangeDetails,
-  ValueInvalidDetails,
-} from '@zag-js/number-input'
-export {
-  default as Context,
-  type NumberInputContextProps as ContextProps,
-} from './number-input-context.vue'
+export type { FocusChangeDetails, ValueChangeDetails, ValueInvalidDetails } from '@zag-js/number-input'
+export { default as Context, type NumberInputContextProps as ContextProps } from './number-input-context.vue'
 export {
   default as Control,
   type NumberInputControlProps as ControlProps,

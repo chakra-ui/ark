@@ -1,7 +1,4 @@
-export {
-  default as EnvironmentProvider,
-  type EnvironmentProviderProps,
-} from './environment-provider.vue'
+export { default as EnvironmentProvider, type EnvironmentProviderProps } from './environment-provider.vue'
 export {
   useEnvironmentContext,
   /**

@@ -19,15 +19,15 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Avatar.RootBaseProps>, AvatarVariantProps>
 >(Avatar.Root, 'root')
 
-export const Fallback = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Avatar.FallbackBaseProps>
->(Avatar.Fallback, 'fallback')
+export const Fallback = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Avatar.FallbackBaseProps>>(
+  Avatar.Fallback,
+  'fallback',
+)
 
-export const Image = withContext<
-  HTMLImageElement,
-  Assign<HTMLStyledProps<'img'>, Avatar.ImageBaseProps>
->(Avatar.Image, 'image')
+export const Image = withContext<HTMLImageElement, Assign<HTMLStyledProps<'img'>, Avatar.ImageBaseProps>>(
+  Avatar.Image,
+  'image',
+)
 
 export const Context = Avatar.Context
 export type StatusChangeDetails = Avatar.StatusChangeDetails

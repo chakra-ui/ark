@@ -2,9 +2,7 @@
   import type { HTMLProps, PolymorphicProps } from '$lib/types'
 
   export interface ProgressCircleTrackBaseProps extends PolymorphicProps<'circle'> {}
-  export interface ProgressCircleTrackProps
-    extends HTMLProps<'circle'>,
-      ProgressCircleTrackBaseProps {}
+  export interface ProgressCircleTrackProps extends HTMLProps<'circle'>, ProgressCircleTrackBaseProps {}
 </script>
 
 <script lang="ts">

@@ -7,9 +7,7 @@ export const ByteWithUnitDisplay = () => {
 
   return (
     <div>
-      <For each={unitDisplays}>
-        {(unitDisplay) => <Format.Byte value={value} unitDisplay={unitDisplay} />}
-      </For>
+      <For each={unitDisplays}>{(unitDisplay) => <Format.Byte value={value} unitDisplay={unitDisplay} />}</For>
     </div>
   )
 }

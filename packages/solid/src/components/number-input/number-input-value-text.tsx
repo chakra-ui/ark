@@ -3,9 +3,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 
 export interface NumberInputValueTextBaseProps extends PolymorphicProps<'span'> {}
-export interface NumberInputValueTextProps
-  extends HTMLProps<'span'>,
-    NumberInputValueTextBaseProps {}
+export interface NumberInputValueTextProps extends HTMLProps<'span'>, NumberInputValueTextBaseProps {}
 
 export const NumberInputValueText = (props: NumberInputValueTextProps) => {
   const numberInput = useNumberInputContext()

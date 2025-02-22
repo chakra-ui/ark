@@ -19,10 +19,10 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Splitter.RootBaseProps>, SplitterVariantProps>
 >(Splitter.Root, 'root')
 
-export const Panel = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Splitter.PanelBaseProps>
->(Splitter.Panel, 'panel')
+export const Panel = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Splitter.PanelBaseProps>>(
+  Splitter.Panel,
+  'panel',
+)
 
 export const ResizeTrigger = withContext<
   HTMLButtonElement,

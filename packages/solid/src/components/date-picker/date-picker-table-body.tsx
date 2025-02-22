@@ -4,9 +4,7 @@ import { useDatePickerContext } from './use-date-picker-context'
 import { useDatePickerTableContext } from './use-date-picker-table-props-context'
 
 export interface DatePickerTableBodyBaseProps extends PolymorphicProps<'tbody'> {}
-export interface DatePickerTableBodyProps
-  extends HTMLProps<'tbody'>,
-    DatePickerTableBodyBaseProps {}
+export interface DatePickerTableBodyProps extends HTMLProps<'tbody'>, DatePickerTableBodyBaseProps {}
 
 export const DatePickerTableBody = (props: DatePickerTableBodyProps) => {
   const api = useDatePickerContext()

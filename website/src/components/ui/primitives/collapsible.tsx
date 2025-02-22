@@ -19,14 +19,14 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Collapsible.RootBaseProps>, CollapsibleVariantProps>
 >(Collapsible.Root, 'root')
 
-export const Content = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Collapsible.ContentBaseProps>
->(Collapsible.Content, 'content')
+export const Content = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Collapsible.ContentBaseProps>>(
+  Collapsible.Content,
+  'content',
+)
 
-export const Trigger = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, Collapsible.TriggerBaseProps>
->(Collapsible.Trigger, 'trigger')
+export const Trigger = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, Collapsible.TriggerBaseProps>>(
+  Collapsible.Trigger,
+  'trigger',
+)
 
 export const Context = Collapsible.Context

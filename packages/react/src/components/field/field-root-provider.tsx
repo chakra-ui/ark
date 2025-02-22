@@ -12,17 +12,15 @@ interface RootProviderProps {
 export interface FieldRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FieldRootProviderProps extends HTMLProps<'div'>, FieldRootProviderBaseProps {}
 
-export const FieldRootProvider = forwardRef<HTMLDivElement, FieldRootProviderProps>(
-  (props, ref) => {
-    const [{ value: field }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-    const mergedProps = mergeProps<HTMLProps<'div'>>(field.getRootProps(), localProps)
+export const FieldRootProvider = forwardRef<HTMLDivElement, FieldRootProviderProps>((props, ref) => {
+  const [{ value: field }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps<HTMLProps<'div'>>(field.getRootProps(), localProps)
 
-    return (
-      <FieldProvider value={field}>
-        <ark.div {...mergedProps} ref={ref} />
-      </FieldProvider>
-    )
-  },
-)
+  return (
+    <FieldProvider value={field}>
+      <ark.div {...mergedProps} ref={ref} />
+    </FieldProvider>
+  )
+})
 
 FieldRootProvider.displayName = 'FieldRootProvider'

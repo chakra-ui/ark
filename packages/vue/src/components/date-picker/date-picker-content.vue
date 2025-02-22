@@ -21,9 +21,7 @@ import { useForwardExpose } from '../../utils'
 defineProps<DatePickerContentProps>()
 const datePicker = useDatePickerContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() =>
-  mergeProps(datePicker.value.getContentProps(), presence.value.presenceProps),
-)
+const mergedProps = computed(() => mergeProps(datePicker.value.getContentProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>

@@ -8,17 +8,11 @@ import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-
 
 interface ValueSwatchProps extends Omit<SwatchProps, 'value'> {}
 
-export interface ColorPickerValueSwatchBaseProps
-  extends ValueSwatchProps,
-    PolymorphicProps<'div'> {}
-export interface ColorPickerValueSwatchProps
-  extends HTMLProps<'div'>,
-    ColorPickerValueSwatchBaseProps {}
+export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, PolymorphicProps<'div'> {}
+export interface ColorPickerValueSwatchProps extends HTMLProps<'div'>, ColorPickerValueSwatchBaseProps {}
 
 export const ColorPickerValueSwatch = (props: ColorPickerValueSwatchProps) => {
-  const [{ respectAlpha }, localProps] = createSplitProps<ValueSwatchProps>()(props, [
-    'respectAlpha',
-  ])
+  const [{ respectAlpha }, localProps] = createSplitProps<ValueSwatchProps>()(props, ['respectAlpha'])
   const colorPicker = useColorPickerContext()
   const swatchProps = createMemo(() => ({
     respectAlpha,

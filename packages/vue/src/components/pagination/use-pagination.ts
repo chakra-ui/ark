@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './pagination'
 
-export interface UsePaginationProps
-  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UsePaginationProps extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial page of the pagination when it is first rendered.
    * Use when you do not need to control the state of the pagination.
@@ -16,10 +15,7 @@ export interface UsePaginationProps
 }
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
-export const usePagination = (
-  props: UsePaginationProps,
-  emit?: EmitFn<RootEmits>,
-): UsePaginationReturn => {
+export const usePagination = (props: UsePaginationProps, emit?: EmitFn<RootEmits>): UsePaginationReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

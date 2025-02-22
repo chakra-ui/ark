@@ -5,5 +5,4 @@ export interface ColorPickerContextProps {
   children: (context: UseColorPickerContext) => ReactNode
 }
 
-export const ColorPickerContext = (props: ColorPickerContextProps) =>
-  props.children(useColorPickerContext())
+export const ColorPickerContext = (props: ColorPickerContextProps) => props.children(useColorPickerContext())

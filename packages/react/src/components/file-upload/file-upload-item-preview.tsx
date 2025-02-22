@@ -11,20 +11,16 @@ export interface FileUploadItemPreviewBaseProps extends PolymorphicProps {
    */
   type?: string
 }
-export interface FileUploadItemPreviewProps
-  extends HTMLProps<'div'>,
-    FileUploadItemPreviewBaseProps {}
+export interface FileUploadItemPreviewProps extends HTMLProps<'div'>, FileUploadItemPreviewBaseProps {}
 
-export const FileUploadItemPreview = forwardRef<HTMLImageElement, FileUploadItemPreviewProps>(
-  (props, ref) => {
-    const fileUpload = useFileUploadContext()
-    const itemProps = useFileUploadItemPropsContext()
-    const mergedProps = mergeProps(fileUpload.getItemPreviewProps(itemProps), props)
+export const FileUploadItemPreview = forwardRef<HTMLImageElement, FileUploadItemPreviewProps>((props, ref) => {
+  const fileUpload = useFileUploadContext()
+  const itemProps = useFileUploadItemPropsContext()
+  const mergedProps = mergeProps(fileUpload.getItemPreviewProps(itemProps), props)
 
-    if (!itemProps.file.type.match(props.type ?? '.*')) return null
+  if (!itemProps.file.type.match(props.type ?? '.*')) return null
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})
 
 FileUploadItemPreview.displayName = 'FileUploadItemPreview'

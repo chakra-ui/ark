@@ -1,10 +1,7 @@
 import { NumberInput } from '@ark-ui/solid/number-input'
 
 export const FractionDigits = () => (
-  <NumberInput.Root
-    formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 4 }}
-    value="1.00"
-  >
+  <NumberInput.Root formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 4 }} value="1.00">
     <NumberInput.Scrubber />
     <NumberInput.Label>Label</NumberInput.Label>
     <NumberInput.Input />

@@ -4,9 +4,7 @@ import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
 export interface TreeViewBranchTriggerBaseProps extends PolymorphicProps<'div'> {}
-export interface TreeViewBranchTriggerProps
-  extends HTMLProps<'div'>,
-    TreeViewBranchTriggerBaseProps {}
+export interface TreeViewBranchTriggerProps extends HTMLProps<'div'>, TreeViewBranchTriggerBaseProps {}
 
 export const TreeViewBranchTrigger = (props: TreeViewBranchTriggerProps) => {
   const treeView = useTreeViewContext()

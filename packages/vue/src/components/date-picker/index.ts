@@ -16,10 +16,7 @@ export {
   type DatePickerContentBaseProps,
   type DatePickerContentProps,
 } from './date-picker-content.vue'
-export {
-  default as DatePickerContext,
-  type DatePickerContextProps,
-} from './date-picker-context.vue'
+export { default as DatePickerContext, type DatePickerContextProps } from './date-picker-context.vue'
 export {
   default as DatePickerControl,
   type DatePickerControlBaseProps,

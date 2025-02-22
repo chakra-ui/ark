@@ -7,10 +7,7 @@ interface RootProviderProps {
   value: UseMenuReturn
 }
 
-export interface MenuRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface MenuRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface MenuRootProviderProps extends MenuRootProviderBaseProps {}
 </script>
 
@@ -38,9 +35,7 @@ onMounted(() => {
 MenuTriggerItemProvider(computed(() => parentApi.value.getTriggerItemProps(api.value)))
 MenuMachineProvider(machine)
 MenuProvider(api)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

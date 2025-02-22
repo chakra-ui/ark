@@ -31,10 +31,7 @@ export {
   type SelectListProps as ListProps,
   type SelectListBaseProps as ListBaseProps,
 } from './select-list.vue'
-export {
-  default as ItemContext,
-  type SelectItemContextProps as ItemContextProps,
-} from './select-item-context.vue'
+export { default as ItemContext, type SelectItemContextProps as ItemContextProps } from './select-item-context.vue'
 export {
   default as ItemGroupLabel,
   type SelectItemGroupLabelProps as ItemGroupLabelProps,

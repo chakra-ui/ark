@@ -37,9 +37,7 @@ export const RootProvider = () => {
           )}
         </For>
 
-        <Steps.CompletedContent>
-          Steps Complete - Thank you for filling out the form!
-        </Steps.CompletedContent>
+        <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
 
         <div>
           <Steps.PrevTrigger>Back</Steps.PrevTrigger>

@@ -9,17 +9,9 @@ export {
   type SelectClearTriggerBaseProps,
   type SelectClearTriggerProps,
 } from './select-clear-trigger.vue'
-export {
-  default as SelectContent,
-  type SelectContentBaseProps,
-  type SelectContentProps,
-} from './select-content.vue'
+export { default as SelectContent, type SelectContentBaseProps, type SelectContentProps } from './select-content.vue'
 export { default as SelectContext, type SelectContextProps } from './select-context.vue'
-export {
-  default as SelectControl,
-  type SelectControlBaseProps,
-  type SelectControlProps,
-} from './select-control.vue'
+export { default as SelectControl, type SelectControlBaseProps, type SelectControlProps } from './select-control.vue'
 export {
   default as SelectHiddenSelect,
   type SelectHiddenSelectBaseProps,
@@ -30,10 +22,7 @@ export {
   type SelectIndicatorBaseProps,
   type SelectIndicatorProps,
 } from './select-indicator.vue'
-export {
-  default as SelectItemContext,
-  type SelectItemContextProps,
-} from './select-item-context.vue'
+export { default as SelectItemContext, type SelectItemContextProps } from './select-item-context.vue'
 export {
   default as SelectItemGroupLabel,
   type SelectItemGroupLabelBaseProps,
@@ -54,21 +43,9 @@ export {
   type SelectItemTextBaseProps,
   type SelectItemTextProps,
 } from './select-item-text.vue'
-export {
-  default as SelectItem,
-  type SelectItemBaseProps,
-  type SelectItemProps,
-} from './select-item.vue'
-export {
-  default as SelectLabel,
-  type SelectLabelBaseProps,
-  type SelectLabelProps,
-} from './select-label.vue'
-export {
-  default as SelectList,
-  type SelectListBaseProps,
-  type SelectListProps,
-} from './select-list.vue'
+export { default as SelectItem, type SelectItemBaseProps, type SelectItemProps } from './select-item.vue'
+export { default as SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label.vue'
+export { default as SelectList, type SelectListBaseProps, type SelectListProps } from './select-list.vue'
 export {
   default as SelectPositioner,
   type SelectPositionerBaseProps,
@@ -85,11 +62,7 @@ export {
   type SelectRootEmits,
   type SelectRootProps,
 } from './select-root.vue'
-export {
-  default as SelectTrigger,
-  type SelectTriggerBaseProps,
-  type SelectTriggerProps,
-} from './select-trigger.vue'
+export { default as SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.vue'
 export {
   default as SelectValueText,
   type SelectValueTextBaseProps,

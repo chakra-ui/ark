@@ -31,9 +31,7 @@ const props = defineProps<SelectRootProviderProps<T>>()
 const select = computed(() => props.value)
 
 SelectProvider(select)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

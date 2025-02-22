@@ -4,5 +4,4 @@ import { createContext } from '../../utils'
 
 export interface UseSelectItemContext extends ComputedRef<ItemState> {}
 
-export const [SelectItemProvider, useSelectItemContext] =
-  createContext<UseSelectItemContext>('SelectItemContext')
+export const [SelectItemProvider, useSelectItemContext] = createContext<UseSelectItemContext>('SelectItemContext')

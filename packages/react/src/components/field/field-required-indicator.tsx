@@ -6,9 +6,7 @@ import { useFieldContext } from './use-field-context'
 export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps {
   fallback?: React.ReactNode
 }
-export interface FieldRequiredIndicatorProps
-  extends HTMLProps<'span'>,
-    FieldRequiredIndicatorBaseProps {}
+export interface FieldRequiredIndicatorProps extends HTMLProps<'span'>, FieldRequiredIndicatorBaseProps {}
 
 export const FieldRequiredIndicator = forwardRef<HTMLSpanElement, FieldRequiredIndicatorProps>(
   ({ fallback, ...props }, ref) => {

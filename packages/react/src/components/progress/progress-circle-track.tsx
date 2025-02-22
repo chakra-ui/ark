@@ -4,17 +4,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
 export interface ProgressCircleTrackBaseProps extends PolymorphicProps {}
-export interface ProgressCircleTrackProps
-  extends HTMLProps<'circle'>,
-    ProgressCircleTrackBaseProps {}
+export interface ProgressCircleTrackProps extends HTMLProps<'circle'>, ProgressCircleTrackBaseProps {}
 
-export const ProgressCircleTrack = forwardRef<SVGCircleElement, ProgressCircleTrackProps>(
-  (props, ref) => {
-    const progress = useProgressContext()
-    const mergedProps = mergeProps(progress.getCircleTrackProps(), props)
+export const ProgressCircleTrack = forwardRef<SVGCircleElement, ProgressCircleTrackProps>((props, ref) => {
+  const progress = useProgressContext()
+  const mergedProps = mergeProps(progress.getCircleTrackProps(), props)
 
-    return <ark.circle ref={ref} {...mergedProps} />
-  },
-)
+  return <ark.circle ref={ref} {...mergedProps} />
+})
 
 ProgressCircleTrack.displayName = 'ProgressCircleTrack'

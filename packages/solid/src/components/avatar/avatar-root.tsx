@@ -8,11 +8,7 @@ export interface AvatarRootBaseProps extends UseAvatarProps, PolymorphicProps<'d
 export interface AvatarRootProps extends HTMLProps<'div'>, AvatarRootBaseProps {}
 
 export const AvatarRoot = (props: AvatarRootProps) => {
-  const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
-    'id',
-    'ids',
-    'onStatusChange',
-  ])
+  const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, ['id', 'ids', 'onStatusChange'])
 
   const context = useAvatar(useAvatarProps)
   const mergedProps = mergeProps(() => context().getRootProps(), localProps)

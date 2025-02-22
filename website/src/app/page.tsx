@@ -10,12 +10,7 @@ import { Universe } from '~/components/marketing/universe'
 
 export default function Home() {
   return (
-    <Box
-      minH="100%"
-      position="relative"
-      backgroundImage="url(/images/pattern.svg)"
-      backgroundRepeat="repeat-x"
-    >
+    <Box minH="100%" position="relative" backgroundImage="url(/images/pattern.svg)" backgroundRepeat="repeat-x">
       <Box
         position="absolute"
         display={{ base: 'none', sm: 'block' }}

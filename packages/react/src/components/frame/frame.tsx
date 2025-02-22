@@ -15,11 +15,9 @@ export interface FrameBaseProps {
   onUnmount?: () => void
 }
 
-export interface FrameProps
-  extends Assign<React.IframeHTMLAttributes<HTMLIFrameElement>, FrameBaseProps> {}
+export interface FrameProps extends Assign<React.IframeHTMLAttributes<HTMLIFrameElement>, FrameBaseProps> {}
 
-const resetStyle =
-  '<style>*,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }</style>'
+const resetStyle = '<style>*,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }</style>'
 
 const initialSrcDoc = `<html><head>${resetStyle}</head><body><div class="frame-root"></div></body></html>`
 
@@ -79,11 +77,7 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
 
   return (
     <EnvironmentProvider value={() => frameRef?.contentDocument ?? document}>
-      <iframe
-        title={`frame:${useId()}`}
-        ref={composeRefs<HTMLIFrameElement>(ref, setFrameRef)}
-        {...rest}
-      >
+      <iframe title={`frame:${useId()}`} ref={composeRefs<HTMLIFrameElement>(ref, setFrameRef)} {...rest}>
         {mountNode
           ? createPortal(
               <FrameContent onMount={onMount} onUnmount={onUnmount}>

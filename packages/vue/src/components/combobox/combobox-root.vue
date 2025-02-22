@@ -49,9 +49,7 @@ const emits = defineEmits<RootEmits<T>>()
 
 const combobox = useCombobox(props, emits)
 ComboboxProvider(combobox)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

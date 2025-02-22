@@ -3,21 +3,8 @@ import { render, screen } from '@testing-library/vue'
 import { ark } from './factory'
 
 const ComponentUnderTest = (
-  <ark.div
-    id="parent"
-    data-part="parent"
-    data-testid="parent"
-    className="parent"
-    style={{ background: 'red' }}
-    asChild
-  >
-    <ark.span
-      id="child"
-      data-part="child"
-      data-testid="child"
-      className="child"
-      style={{ color: 'blue' }}
-    >
+  <ark.div id="parent" data-part="parent" data-testid="parent" className="parent" style={{ background: 'red' }} asChild>
+    <ark.span id="child" data-part="child" data-testid="child" className="child" style={{ color: 'blue' }}>
       Ark UI
     </ark.span>
   </ark.div>

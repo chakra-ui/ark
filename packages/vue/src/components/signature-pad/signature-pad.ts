@@ -4,10 +4,7 @@ export {
   type SignaturePadClearTriggerProps as ClearTriggerProps,
   type SignaturePadClearTriggerBaseProps as ClearTriggerBaseProps,
 } from './signature-pad-clear-trigger.vue'
-export {
-  default as Context,
-  type SignaturePadContextProps as ContextProps,
-} from './signature-pad-context.vue'
+export { default as Context, type SignaturePadContextProps as ContextProps } from './signature-pad-context.vue'
 export {
   default as Control,
   type SignaturePadControlProps as ControlProps,
