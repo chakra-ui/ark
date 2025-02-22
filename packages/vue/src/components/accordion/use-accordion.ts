@@ -6,18 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './accordion.types'
 
-export interface UseAccordionProps extends Optional<Omit<accordion.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The accordion items that are currently expanded.
-   * Use this prop to control the state of the items via v-model.
-   */
-  modelValue?: accordion.Context['value']
-  /**
-   * The initial value of the accordion that are expanded.
-   * Use this when you do not need to control the state of the accordion.
-   */
-  defaultValue?: accordion.Context['value']
-}
+export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {}
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
 export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEmits>): UseAccordionReturn => {
@@ -25,10 +14,9 @@ export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEm
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<accordion.Context>(() => ({
+  const context = computed<accordion.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => emit?.('focusChange', details),
     onValueChange: (details) => {
@@ -37,7 +25,7 @@ export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEm
     },
     ...cleanProps(props),
   }))
-  const [state, send] = useMachine(accordion.machine(context.value), { context })
 
-  return computed(() => accordion.connect(state.value, send, normalizeProps))
+  const service = useMachine(accordion.machine, context)
+  return computed(() => accordion.connect(service, normalizeProps))
 }
