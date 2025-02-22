@@ -14,7 +14,7 @@ export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => 
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: pinInput.Props = {
+  const machineProps: pinInput.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -29,6 +29,6 @@ export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => 
     ...props,
   }
 
-  const service = useMachine(pinInput.machine, userProps)
+  const service = useMachine(pinInput.machine, machineProps)
   return pinInput.connect(service, normalizeProps)
 }

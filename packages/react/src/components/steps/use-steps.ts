@@ -13,13 +13,13 @@ export function useSteps(props: UseStepsProps = {}): UseStepsReturn {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: steps.Props = {
+  const machineProps: steps.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(steps.machine, userProps)
+  const service = useMachine(steps.machine, machineProps)
   return steps.connect<PropTypes>(service, normalizeProps)
 }

@@ -11,12 +11,12 @@ export const useClipboard = (props: UseClipboardProps = {}): UseClipboardReturn 
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
 
-  const userProps: clipboard.Props = {
+  const machineProps: clipboard.Props = {
     id,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(clipboard.machine, userProps)
+  const service = useMachine(clipboard.machine, machineProps)
   return clipboard.connect(service, normalizeProps)
 }

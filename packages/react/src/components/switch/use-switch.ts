@@ -14,7 +14,7 @@ export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: zagSwitch.Props = {
+  const machineProps: zagSwitch.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -29,6 +29,6 @@ export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
     ...props,
   }
 
-  const service = useMachine(zagSwitch.machine, userProps)
+  const service = useMachine(zagSwitch.machine, machineProps)
   return zagSwitch.connect(service, normalizeProps)
 }

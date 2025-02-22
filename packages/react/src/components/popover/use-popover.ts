@@ -13,13 +13,13 @@ export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: popover.Props = {
+  const machineProps: popover.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(popover.machine, userProps)
+  const service = useMachine(popover.machine, machineProps)
   return popover.connect(service, normalizeProps)
 }

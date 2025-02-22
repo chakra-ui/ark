@@ -25,7 +25,6 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupR
     required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    value: props.defaultValue,
     ...props,
   }))
 

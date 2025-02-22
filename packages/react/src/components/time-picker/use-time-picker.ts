@@ -13,13 +13,13 @@ export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerRetu
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: timePicker.Props = {
+  const machineProps: timePicker.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(timePicker.machine, userProps)
+  const service = useMachine(timePicker.machine, machineProps)
   return timePicker.connect(service, normalizeProps)
 }

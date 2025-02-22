@@ -14,7 +14,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: fileUpload.Props = {
+  const machineProps: fileUpload.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -28,6 +28,6 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
     ...props,
   }
 
-  const service = useMachine(fileUpload.machine, userProps)
+  const service = useMachine(fileUpload.machine, machineProps)
   return fileUpload.connect(service, normalizeProps)
 }

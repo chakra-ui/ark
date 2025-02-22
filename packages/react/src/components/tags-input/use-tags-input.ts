@@ -14,7 +14,7 @@ export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn 
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: tagsInput.Props = {
+  const machineProps: tagsInput.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -29,6 +29,6 @@ export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn 
     ...props,
   }
 
-  const service = useMachine(tagsInput.machine, userProps)
+  const service = useMachine(tagsInput.machine, machineProps)
   return tagsInput.connect(service, normalizeProps)
 }

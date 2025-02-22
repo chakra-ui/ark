@@ -12,13 +12,13 @@ export const useSplitter = (props: UseSplitterProps = {}): UseSplitterReturn => 
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: splitter.Props = {
+  const machineProps: splitter.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(splitter.machine, userProps)
+  const service = useMachine(splitter.machine, machineProps)
   return splitter.connect(service, normalizeProps)
 }

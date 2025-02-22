@@ -12,13 +12,13 @@ export const useTour = (props: UseTourProps = {}): UseTourReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: tour.Props = {
+  const machineProps: tour.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(tour.machine, userProps)
+  const service = useMachine(tour.machine, machineProps)
   return tour.connect(service, normalizeProps)
 }

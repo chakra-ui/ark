@@ -12,13 +12,13 @@ export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => 
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: carousel.Props = {
+  const machineProps: carousel.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(carousel.machine, userProps)
+  const service = useMachine(carousel.machine, machineProps)
   return carousel.connect(service, normalizeProps)
 }

@@ -14,7 +14,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
   const { dir, locale } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: numberInput.Props = {
+  const machineProps: numberInput.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -30,6 +30,6 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
     ...props,
   }
 
-  const service = useMachine(numberInput.machine, userProps)
+  const service = useMachine(numberInput.machine, machineProps)
   return numberInput.connect(service, normalizeProps)
 }

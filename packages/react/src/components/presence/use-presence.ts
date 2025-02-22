@@ -11,13 +11,13 @@ export type UsePresenceReturn = ReturnType<typeof usePresence>
 export const usePresence = (props: UsePresenceProps) => {
   const { lazyMount, unmountOnExit, present, ...rest } = props
   const wasEverPresent = useRef(false)
-  const userProps: Partial<presence.Props> = {
+  const machineProps: Partial<presence.Props> = {
     ...rest,
     present,
     onExitComplete: useEvent(props.onExitComplete),
   }
 
-  const service = useMachine(presence.machine, userProps)
+  const service = useMachine(presence.machine, machineProps)
   const api = presence.connect(service, normalizeProps)
 
   if (api.present) {

@@ -12,13 +12,13 @@ export const useSlider = (props: UseSliderProps = {}): UseSliderReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: slider.Props = {
+  const machineProps: slider.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(slider.machine, userProps)
+  const service = useMachine(slider.machine, machineProps)
   return slider.connect(service, normalizeProps)
 }

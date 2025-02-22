@@ -20,13 +20,13 @@ export const useTreeView = <T extends TreeNode>(props: UseTreeViewProps<T>): Use
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
 
-  const userProps: treeView.Props = {
+  const machineProps: treeView.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(treeView.machine, userProps)
+  const service = useMachine(treeView.machine, machineProps)
   return treeView.connect(service, normalizeProps)
 }

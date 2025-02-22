@@ -12,13 +12,13 @@ export const useSegmentGroup = (props: UseSegmentGroupProps = {}): UseSegmentGro
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: segmentGroup.Props = {
+  const machineProps: segmentGroup.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(segmentGroup.machine, userProps)
+  const service = useMachine(segmentGroup.machine, machineProps)
   return segmentGroup.connect(service, normalizeProps)
 }

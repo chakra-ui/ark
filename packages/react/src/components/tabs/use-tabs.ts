@@ -13,13 +13,13 @@ export const useTabs = (props: UseTabsProps = {}): UseTabsReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: tabs.Props = {
+  const machineProps: tabs.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(tabs.machine, userProps)
+  const service = useMachine(tabs.machine, machineProps)
   return tabs.connect(service, normalizeProps)
 }

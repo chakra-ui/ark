@@ -21,7 +21,7 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: checkbox.Props = {
+  const machineProps: checkbox.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -36,6 +36,6 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn 
     ...props,
   }
 
-  const service = useMachine(checkbox.machine, userProps)
+  const service = useMachine(checkbox.machine, machineProps)
   return checkbox.connect(service, normalizeProps)
 }

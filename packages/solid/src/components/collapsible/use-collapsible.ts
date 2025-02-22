@@ -29,10 +29,9 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
     ...collapsibleProps,
   }))
+
   const service = useMachine(collapsible.machine, machineProps)
   const [wasVisible, setWasVisible] = createSignal(false)
 

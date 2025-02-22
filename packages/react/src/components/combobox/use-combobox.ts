@@ -22,7 +22,7 @@ export const useCombobox = <T extends CollectionItem>(props: UseComboboxProps<T>
   const { getRootNode } = useEnvironmentContext()
   const field = useFieldContext()
 
-  const userProps: combobox.Props<T> = {
+  const machineProps: combobox.Props<T> = {
     id,
     ids: {
       label: field?.ids.label,
@@ -38,6 +38,6 @@ export const useCombobox = <T extends CollectionItem>(props: UseComboboxProps<T>
     ...props,
   }
 
-  const service = useMachine(combobox.machine, userProps)
+  const service = useMachine(combobox.machine, machineProps)
   return combobox.connect(service, normalizeProps)
 }

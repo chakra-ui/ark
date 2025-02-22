@@ -12,13 +12,13 @@ export const usePagination = (props: UsePaginationProps = {}): UsePaginationRetu
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: pagination.Props = {
+  const machineProps: pagination.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(pagination.machine, userProps)
+  const service = useMachine(pagination.machine, machineProps)
   return pagination.connect(service, normalizeProps)
 }

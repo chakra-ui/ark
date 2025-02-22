@@ -23,14 +23,14 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
 
-  const userProps: collapsible.Props = {
+  const machineProps: collapsible.Props = {
     id,
     dir,
     getRootNode,
     ...collapsibleProps,
   }
 
-  const service = useMachine(collapsible.machine, userProps)
+  const service = useMachine(collapsible.machine, machineProps)
   const api = collapsible.connect(service, normalizeProps)
 
   if (api.visible) {

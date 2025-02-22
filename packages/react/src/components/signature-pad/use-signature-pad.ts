@@ -14,7 +14,7 @@ export const useSignaturePad = (props: UseSignaturePadProps = {}): UseSignatureP
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: signaturePad.Props = {
+  const machineProps: signaturePad.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -28,6 +28,6 @@ export const useSignaturePad = (props: UseSignaturePadProps = {}): UseSignatureP
     ...props,
   }
 
-  const service = useMachine(signaturePad.machine, userProps)
+  const service = useMachine(signaturePad.machine, machineProps)
   return signaturePad.connect(service, normalizeProps)
 }

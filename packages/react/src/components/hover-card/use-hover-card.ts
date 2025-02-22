@@ -13,13 +13,13 @@ export const useHoverCard = (props: UseHoverCardProps = {}): UseHoverCardReturn 
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: hoverCard.Props = {
+  const machineProps: hoverCard.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(hoverCard.machine, userProps)
+  const service = useMachine(hoverCard.machine, machineProps)
   return hoverCard.connect(service, normalizeProps)
 }

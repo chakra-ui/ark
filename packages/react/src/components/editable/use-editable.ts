@@ -17,7 +17,7 @@ export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => 
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: editable.Props = {
+  const machineProps: editable.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -33,6 +33,6 @@ export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => 
     ...props,
   }
 
-  const service = useMachine(editable.machine, userProps)
+  const service = useMachine(editable.machine, machineProps)
   return editable.connect(service, normalizeProps)
 }

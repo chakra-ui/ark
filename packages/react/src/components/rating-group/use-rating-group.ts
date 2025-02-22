@@ -14,7 +14,7 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupR
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: rating.Props = {
+  const machineProps: rating.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -28,6 +28,6 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupR
     ...props,
   }
 
-  const service = useMachine(rating.machine, userProps)
+  const service = useMachine(rating.machine, machineProps)
   return rating.connect(service, normalizeProps)
 }

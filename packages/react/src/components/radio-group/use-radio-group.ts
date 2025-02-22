@@ -12,13 +12,13 @@ export const useRadioGroup = (props: UseRadioGroupProps = {}): UseRadioGroupRetu
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: radio.Props = {
+  const machineProps: radio.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(radio.machine, userProps)
+  const service = useMachine(radio.machine, machineProps)
   return radio.connect(service, normalizeProps)
 }

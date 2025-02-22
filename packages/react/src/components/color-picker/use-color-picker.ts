@@ -15,7 +15,7 @@ export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerR
   const { dir } = useLocaleContext()
   const field = useFieldContext()
 
-  const userProps: colorPicker.Props = {
+  const machineProps: colorPicker.Props = {
     id,
     ids: {
       label: field?.ids.label,
@@ -30,6 +30,6 @@ export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerR
     ...props,
   }
 
-  const service = useMachine(colorPicker.machine, userProps)
+  const service = useMachine(colorPicker.machine, machineProps)
   return colorPicker.connect(service, normalizeProps)
 }

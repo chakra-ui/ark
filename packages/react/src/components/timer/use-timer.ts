@@ -12,13 +12,13 @@ export const useTimer = (props: UseTimerProps = {}): UseTimerReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
 
-  const userProps: timer.Props = {
+  const machineProps: timer.Props = {
     id,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(timer.machine, userProps)
+  const service = useMachine(timer.machine, machineProps)
 
   return timer.connect(service, normalizeProps)
 }

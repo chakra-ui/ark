@@ -12,13 +12,13 @@ export const useToggleGroup = (props: UseToggleGroupProps = {}): UseToggleGroupR
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: toggleGroup.Props = {
+  const machineProps: toggleGroup.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(toggleGroup.machine, userProps)
+  const service = useMachine(toggleGroup.machine, machineProps)
   return toggleGroup.connect(service, normalizeProps)
 }

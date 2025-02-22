@@ -13,13 +13,13 @@ export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: dialog.Props = {
+  const machineProps: dialog.Props = {
     id,
     getRootNode,
     dir,
     ...props,
   }
 
-  const service = useMachine(dialog.machine, userProps)
+  const service = useMachine(dialog.machine, machineProps)
   return dialog.connect(service, normalizeProps)
 }

@@ -13,13 +13,13 @@ export const useTooltip = (props: UseTooltipProps = {}): UseTooltipReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: tooltip.Props = {
+  const machineProps: tooltip.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(tooltip.machine, userProps)
+  const service = useMachine(tooltip.machine, machineProps)
   return tooltip.connect(service, normalizeProps)
 }

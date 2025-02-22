@@ -22,7 +22,7 @@ export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): U
   const { getRootNode } = useEnvironmentContext()
   const field = useFieldContext()
 
-  const userProps: select.Props<T> = {
+  const machineProps: select.Props<T> = {
     id,
     ids: {
       label: field?.ids.label,
@@ -37,6 +37,6 @@ export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): U
     ...props,
   }
 
-  const service = useMachine(select.machine, userProps)
+  const service = useMachine(select.machine, machineProps)
   return select.connect(service, normalizeProps)
 }

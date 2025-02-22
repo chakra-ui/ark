@@ -12,13 +12,13 @@ export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: qrcode.Props = {
+  const machineProps: qrcode.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(qrcode.machine, userProps)
+  const service = useMachine(qrcode.machine, machineProps)
   return qrcode.connect(service, normalizeProps)
 }

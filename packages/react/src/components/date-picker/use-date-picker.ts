@@ -13,13 +13,13 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const userProps: datePicker.Props = {
+  const machineProps: datePicker.Props = {
     id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const service = useMachine(datePicker.machine, userProps)
+  const service = useMachine(datePicker.machine, machineProps)
   return datePicker.connect(service, normalizeProps)
 }
