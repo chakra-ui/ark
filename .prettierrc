@@ -1,9 +1,11 @@
 {
   "printWidth": 120,
   "singleQuote": true,
+  "tabWidth": 2,
   "trailingComma": "all",
   "arrowParens": "always",
   "semi": false,
+  "useTabs": false,
   "htmlWhitespaceSensitivity": "ignore",
   "plugins": ["prettier-plugin-svelte"],
   "overrides": [
@@ -16,7 +18,7 @@
     {
       "files": ["*.md", "*.mdx"],
       "options": {
-        "printWidth": 100,
+        "printWidth": 120,
         "proseWrap": "always"
       }
     }
