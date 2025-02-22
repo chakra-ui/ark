@@ -19,7 +19,7 @@
     },
     "packages/react": {
       "name": "@ark-ui/react",
-      "version": "4.9.1",
+      "version": "4.9.2",
       "dependencies": {
         "@internationalized/date": "3.7.0",
         "@zag-js/accordion": "0.82.2",
@@ -114,7 +114,7 @@
     },
     "packages/solid": {
       "name": "@ark-ui/solid",
-      "version": "4.10.1",
+      "version": "4.10.2",
       "dependencies": {
         "@internationalized/date": "3.7.0",
         "@zag-js/accordion": "0.82.2",
@@ -241,7 +241,7 @@
     },
     "packages/vue": {
       "name": "@ark-ui/vue",
-      "version": "4.9.1",
+      "version": "4.9.2",
       "dependencies": {
         "@internationalized/date": "3.7.0",
         "@zag-js/accordion": "0.82.2",
