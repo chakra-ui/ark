@@ -4,6 +4,7 @@ import { XIcon } from "lucide-react";
 const toaster = createToaster({
 	placement: "bottom-end",
 	overlap: true,
+	gap: 24,
 });
 
 export const Basic = () => {
@@ -21,7 +22,7 @@ export const Basic = () => {
 			>
 				Add Toast
 			</button>
-			<Toaster toaster={toaster} gap={24}>
+			<Toaster toaster={toaster}>
 				{(toast) => (
 					<Toast.Root key={toast.id}>
 						<Toast.Title>{toast.title}</Toast.Title>

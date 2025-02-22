@@ -4,7 +4,7 @@ import { useRef } from "react";
 const toaster = createToaster({
 	placement: "bottom-end",
 	overlap: true,
-	// gap: 24,
+	gap: 24,
 });
 
 export const Update = () => {

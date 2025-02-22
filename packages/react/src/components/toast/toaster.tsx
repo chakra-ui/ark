@@ -1,6 +1,7 @@
 import { mergeProps, normalizeProps, useMachine } from "@zag-js/react";
 import * as toast from "@zag-js/toast";
 import { type ReactNode, forwardRef, useId } from "react";
+import { useEnvironmentContext, useLocaleContext } from "../../providers";
 import type { Assign } from "../../types";
 import { type HTMLProps, type PolymorphicProps, ark } from "../factory";
 import type { CreateToasterReturn } from "./create-toaster";
@@ -12,15 +13,22 @@ export interface ToasterBaseProps
 	toaster: CreateToasterReturn;
 	children: (toast: toast.Options<ReactNode>) => ReactNode;
 }
+
 export interface ToasterProps
 	extends Assign<HTMLProps<"div">, ToasterBaseProps> {}
 
 export const Toaster = forwardRef<HTMLDivElement, ToasterProps>(
 	(props, ref) => {
 		const { toaster, children, ...localProps } = props;
+
+		const locale = useLocaleContext();
+		const env = useEnvironmentContext();
+
 		const service = useMachine(toast.group.machine, {
 			store: toaster,
 			id: useId(),
+			dir: locale?.dir,
+			getRootNode: () => env?.getDocument(),
 		});
 
 		const api = toast.group.connect(service, normalizeProps);
@@ -61,7 +69,9 @@ const ToastActor = (props: ToastActorProps) => {
 	};
 	const service = useMachine(toast.machine, { ...localProps });
 	const api = toast.connect(service, normalizeProps);
-	return <ToastProvider value={api}>{props.children(api)}</ToastProvider>;
+	return (
+		<ToastProvider value={api}>{props.children(props.value)}</ToastProvider>
+	);
 };
 
 ToastActor.displayName = "ToastActor";

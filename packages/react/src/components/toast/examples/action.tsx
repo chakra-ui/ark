@@ -2,7 +2,7 @@ import { Toast, Toaster, createToaster } from "@ark-ui/react/toast";
 
 const toaster = createToaster({
 	placement: "bottom-end",
-	// gap: 24,
+	gap: 24,
 });
 
 export const Action = () => {
