@@ -6,7 +6,6 @@ import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
 export interface UseSignaturePadProps extends Optional<Omit<signaturePad.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseSignaturePadReturn extends signaturePad.Api<PropTypes> {}
 
 export const useSignaturePad = (props: UseSignaturePadProps = {}): UseSignaturePadReturn => {

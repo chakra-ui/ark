@@ -5,7 +5,6 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseQrCodeReturn extends qrcode.Api<PropTypes> {}
 
 export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {

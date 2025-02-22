@@ -5,7 +5,6 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseSegmentGroupProps extends Optional<Omit<segmentGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseSegmentGroupReturn extends segmentGroup.Api<PropTypes> {}
 
 export const useSegmentGroup = (props: UseSegmentGroupProps = {}): UseSegmentGroupReturn => {

@@ -7,7 +7,6 @@ import { useFieldContext } from '../field'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
 export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseCheckboxReturn extends checkbox.Api<PropTypes> {}
 
 export const useCheckbox = (ownProps: UseCheckboxProps = {}): UseCheckboxReturn => {

@@ -6,7 +6,6 @@ import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
 export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseTagsInputReturn extends tagsInput.Api<PropTypes> {}
 
 export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn => {

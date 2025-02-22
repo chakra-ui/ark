@@ -5,7 +5,6 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseMenuReturn {
   api: Accessor<menu.Api<PropTypes>>
   service: menu.Service

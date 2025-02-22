@@ -6,7 +6,6 @@ import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
 export interface UseRatingGroupProps extends Optional<Omit<rating.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseRatingGroupReturn extends rating.Api<PropTypes> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupReturn => {

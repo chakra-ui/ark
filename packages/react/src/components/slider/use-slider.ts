@@ -5,7 +5,6 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
 export interface UseSliderProps extends Optional<Omit<slider.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
 export interface UseSliderReturn extends slider.Api<PropTypes> {}
 
 export const useSlider = (props: UseSliderProps = {}): UseSliderReturn => {
