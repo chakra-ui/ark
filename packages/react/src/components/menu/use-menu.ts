@@ -8,8 +8,8 @@ export interface UseMenuProps
 	extends Optional<Omit<menu.Props, "dir" | "getRootNode">, "id"> {}
 
 export interface UseMenuReturn {
-	service: menu.Service;
 	api: menu.Api<PropTypes>;
+	service: menu.Service;
 }
 
 export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
@@ -17,15 +17,14 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
 	const { getRootNode } = useEnvironmentContext();
 	const { dir } = useLocaleContext();
 
-	const userProps: menu.Props = {
+	const machineProps: menu.Props = {
 		id,
 		dir,
 		getRootNode,
-
 		...props,
 	};
 
-	const service = useMachine(menu.machine, userProps);
+	const service = useMachine(menu.machine, machineProps);
 	const api = menu.connect(service, normalizeProps);
 
 	return { api, service };

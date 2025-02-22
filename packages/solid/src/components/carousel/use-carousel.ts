@@ -1,32 +1,27 @@
-import * as carousel from '@zag-js/carousel'
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import * as carousel from "@zag-js/carousel";
+import { type PropTypes, normalizeProps, useMachine } from "@zag-js/solid";
+import { type Accessor, createMemo, createUniqueId } from "solid-js";
+import { useEnvironmentContext, useLocaleContext } from "../../providers";
+import type { Optional } from "../../types";
 
 export interface UseCarouselProps
-  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial page of the carousel when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
-   */
-  defaultPage?: carousel.Context['page']
-}
+	extends Optional<Omit<carousel.Props, "dir" | "getRootNode">, "id"> {}
 export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (props: UseCarouselProps = {}): UseCarouselReturn => {
-  const locale = useLocaleContext()
-  const environment = useEnvironmentContext()
-  const id = createUniqueId()
+export const useCarousel = (
+	props: UseCarouselProps = {},
+): UseCarouselReturn => {
+	const id = createUniqueId();
+	const locale = useLocaleContext();
+	const environment = useEnvironmentContext();
 
-  const context = createMemo(() => ({
-    id,
-    dir: locale().dir,
-    getRootNode: environment().getRootNode,
-    index: props.defaultPage,
-    ...props,
-  }))
+	const machineProps = createMemo(() => ({
+		id,
+		dir: locale().dir,
+		getRootNode: environment().getRootNode,
+		...props,
+	}));
 
-  const [state, send] = useMachine(carousel.machine(context()), { context })
-  return createMemo(() => carousel.connect(state, send, normalizeProps))
-}
+	const service = useMachine(carousel.machine, machineProps);
+	return createMemo(() => carousel.connect(service, normalizeProps));
+};

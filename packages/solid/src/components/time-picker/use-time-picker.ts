@@ -1,41 +1,28 @@
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import * as timePicker from '@zag-js/time-picker'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import { type PropTypes, normalizeProps, useMachine } from "@zag-js/solid";
+import * as timePicker from "@zag-js/time-picker";
+import { type Accessor, createMemo, createUniqueId } from "solid-js";
+import { useEnvironmentContext, useLocaleContext } from "../../providers";
+import type { Optional } from "../../types";
 
 export interface UseTimePickerProps
-  extends Optional<Omit<timePicker.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the time picker when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: timePicker.Context['open']
-  /**
-   * The initial value of the time picker when it is first rendered.
-   * Use when you do not need to control the state of the time picker.
-   */
-  defaultValue?: timePicker.Context['value']
-}
+	extends Optional<Omit<timePicker.Props, "dir" | "getRootNode">, "id"> {}
+export interface UseTimePickerReturn
+	extends Accessor<timePicker.Api<PropTypes>> {}
 
-export interface UseTimePickerReturn extends Accessor<timePicker.Api<PropTypes>> {}
+export const useTimePicker = (
+	props: UseTimePickerProps = {},
+): UseTimePickerReturn => {
+	const id = createUniqueId();
+	const locale = useLocaleContext();
+	const environment = useEnvironmentContext();
 
-export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerReturn => {
-  const locale = useLocaleContext()
-  const environment = useEnvironmentContext()
-  const id = createUniqueId()
+	const machineProps = createMemo<timePicker.Props>(() => ({
+		id,
+		dir: locale().dir,
+		getRootNode: environment().getRootNode,
+		...props,
+	}));
 
-  const context = createMemo(() => ({
-    id,
-    dir: locale().dir,
-    getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    value: props.defaultValue,
-    ...props,
-  }))
-
-  const [state, send] = useMachine(timePicker.machine(context()), { context })
-
-  return createMemo(() => timePicker.connect(state, send, normalizeProps))
-}
+	const service = useMachine(timePicker.machine, machineProps);
+	return createMemo(() => timePicker.connect(service, normalizeProps));
+};

@@ -1,42 +1,38 @@
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import * as tagsInput from '@zag-js/tags-input'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import { useFieldContext } from '../field'
+import { type PropTypes, normalizeProps, useMachine } from "@zag-js/solid";
+import * as tagsInput from "@zag-js/tags-input";
+import { type Accessor, createMemo, createUniqueId } from "solid-js";
+import { useEnvironmentContext, useLocaleContext } from "../../providers";
+import type { Optional } from "../../types";
+import { useFieldContext } from "../field";
 
 export interface UseTagsInputProps
-  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial value of the tags input when it is first rendered.
-   * Use when you do not need to control the state of the tags input.
-   */
-  defaultValue?: tagsInput.Context['value']
-}
-export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}
+	extends Optional<Omit<tagsInput.Props, "dir" | "getRootNode">, "id"> {}
+export interface UseTagsInputReturn
+	extends Accessor<tagsInput.Api<PropTypes>> {}
 
-export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn => {
-  const locale = useLocaleContext()
-  const environment = useEnvironmentContext()
-  const id = createUniqueId()
-  const field = useFieldContext()
+export const useTagsInput = (
+	props: UseTagsInputProps = {},
+): UseTagsInputReturn => {
+	const id = createUniqueId();
+	const locale = useLocaleContext();
+	const environment = useEnvironmentContext();
+	const field = useFieldContext();
 
-  const context = createMemo(() => ({
-    id,
-    ids: {
-      label: field?.().ids.label,
-      hiddenInput: field?.().ids.control,
-    },
-    dir: locale().dir,
-    disabled: field?.().disabled,
-    invalid: field?.().invalid,
-    readOnly: field?.().readOnly,
-    required: field?.().required,
-    getRootNode: environment().getRootNode,
-    value: props.defaultValue,
-    ...props,
-  }))
-  const [state, send] = useMachine(tagsInput.machine(context()), { context })
+	const machineProps = createMemo<tagsInput.Props>(() => ({
+		id,
+		ids: {
+			label: field?.().ids.label,
+			hiddenInput: field?.().ids.control,
+		},
+		dir: locale().dir,
+		disabled: field?.().disabled,
+		invalid: field?.().invalid,
+		readOnly: field?.().readOnly,
+		required: field?.().required,
+		getRootNode: environment().getRootNode,
+		...props,
+	}));
 
-  return createMemo(() => tagsInput.connect(state, send, normalizeProps))
-}
+	const service = useMachine(tagsInput.machine, machineProps);
+	return createMemo(() => tagsInput.connect(service, normalizeProps));
+};

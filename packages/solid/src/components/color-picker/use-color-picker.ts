@@ -1,49 +1,38 @@
-import * as colorPicker from '@zag-js/color-picker'
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
-import { useFieldContext } from '../field'
+import * as colorPicker from "@zag-js/color-picker";
+import { type PropTypes, normalizeProps, useMachine } from "@zag-js/solid";
+import { type Accessor, createMemo, createUniqueId } from "solid-js";
+import { useEnvironmentContext, useLocaleContext } from "../../providers";
+import type { Optional } from "../../types";
+import { useFieldContext } from "../field";
 
 export interface UseColorPickerProps
-  extends Optional<Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the color picker when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: colorPicker.Context['open']
-  /**
-   * The initial value of the color picker when it is first rendered.
-   * Use when you do not need to control the state of the color picker.
-   */
-  defaultValue?: colorPicker.Context['value']
-}
-export interface UseColorPickerReturn extends Accessor<colorPicker.Api<PropTypes>> {}
+	extends Optional<Omit<colorPicker.Props, "dir" | "getRootNode">, "id"> {}
+export interface UseColorPickerReturn
+	extends Accessor<colorPicker.Api<PropTypes>> {}
 
-export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerReturn => {
-  const locale = useLocaleContext()
-  const environment = useEnvironmentContext()
-  const field = useFieldContext()
-  const id = createUniqueId()
+export const useColorPicker = (
+	props: UseColorPickerProps = {},
+): UseColorPickerReturn => {
+	const id = createUniqueId();
+	const locale = useLocaleContext();
+	const environment = useEnvironmentContext();
+	const field = useFieldContext();
 
-  const context = createMemo(() => ({
-    id,
-    ids: {
-      label: field?.().ids.label,
-      input: field?.().ids.control,
-    },
-    dir: locale().dir,
-    disabled: field?.().disabled,
-    invalid: field?.().invalid,
-    readOnly: field?.().readOnly,
-    required: field?.().required,
-    getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    value: props.defaultValue,
-    ...props,
-  }))
-  const [state, send] = useMachine(colorPicker.machine(context()), { context })
+	const machineProps = createMemo<colorPicker.Props>(() => ({
+		id,
+		ids: {
+			label: field?.().ids.label,
+			input: field?.().ids.control,
+		},
+		dir: locale().dir,
+		disabled: field?.().disabled,
+		invalid: field?.().invalid,
+		readOnly: field?.().readOnly,
+		required: field?.().required,
+		getRootNode: environment().getRootNode,
+		...props,
+	}));
 
-  return createMemo(() => colorPicker.connect(state, send, normalizeProps))
-}
+	const service = useMachine(colorPicker.machine, machineProps);
+	return createMemo(() => colorPicker.connect(service, normalizeProps));
+};

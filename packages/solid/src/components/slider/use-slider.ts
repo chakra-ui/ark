@@ -1,32 +1,25 @@
-import * as slider from '@zag-js/slider'
-import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId } from 'solid-js'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import * as slider from "@zag-js/slider";
+import { type PropTypes, normalizeProps, useMachine } from "@zag-js/solid";
+import { type Accessor, createMemo, createUniqueId } from "solid-js";
+import { useEnvironmentContext, useLocaleContext } from "../../providers";
+import type { Optional } from "../../types";
 
 export interface UseSliderProps
-  extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial value of the slider when it is first rendered.
-   * Use when you do not need to control the state of the slider picker.
-   */
-  defaultValue?: slider.Context['value']
-}
+	extends Optional<Omit<slider.Props, "dir" | "getRootNode">, "id"> {}
 export interface UseSliderReturn extends Accessor<slider.Api<PropTypes>> {}
 
 export const useSlider = (props: UseSliderProps = {}): UseSliderReturn => {
-  const locale = useLocaleContext()
-  const environment = useEnvironmentContext()
-  const id = createUniqueId()
+	const id = createUniqueId();
+	const locale = useLocaleContext();
+	const environment = useEnvironmentContext();
 
-  const context = createMemo(() => ({
-    id,
-    dir: locale().dir,
-    getRootNode: environment().getRootNode,
-    value: props.defaultValue,
-    ...props,
-  }))
-  const [state, send] = useMachine(slider.machine(context()), { context })
+	const machineProps = createMemo<slider.Props>(() => ({
+		id,
+		dir: locale().dir,
+		getRootNode: environment().getRootNode,
+		...props,
+	}));
 
-  return createMemo(() => slider.connect(state, send, normalizeProps))
-}
+	const service = useMachine(slider.machine, machineProps);
+	return createMemo(() => slider.connect(service, normalizeProps));
+};
