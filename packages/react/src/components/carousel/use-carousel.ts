@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseCarouselProps
-  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseCarouselProps extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial page of the carousel when it is first rendered.
    * Use this when you do not need to control the state of the carousel.

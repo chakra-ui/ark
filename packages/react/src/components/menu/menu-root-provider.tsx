@@ -1,12 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import { type ReactNode, useCallback } from 'react'
 import { useEffectOnce } from '../../utils/use-effect-once'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import type { UseMenuReturn } from './use-menu'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
@@ -36,10 +31,7 @@ export const MenuRootProvider = (props: MenuRootProviderProps) => {
     api.setParent(parentMachine)
   })
 
-  const triggerItemContext = useCallback(
-    () => parentApi?.getTriggerItemProps(api),
-    [api, parentApi],
-  )
+  const triggerItemContext = useCallback(() => parentApi?.getTriggerItemProps(api), [api, parentApi])
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>

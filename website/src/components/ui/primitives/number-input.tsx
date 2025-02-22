@@ -19,10 +19,10 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, NumberInput.RootBaseProps>, NumberInputVariantProps>
 >(NumberInput.Root, 'root')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, NumberInput.ControlBaseProps>
->(NumberInput.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, NumberInput.ControlBaseProps>>(
+  NumberInput.Control,
+  'control',
+)
 
 export const DecrementTrigger = withContext<
   HTMLButtonElement,
@@ -34,24 +34,24 @@ export const IncrementTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, NumberInput.IncrementTriggerBaseProps>
 >(NumberInput.IncrementTrigger, 'incrementTrigger')
 
-export const Input = withContext<
-  HTMLInputElement,
-  Assign<HTMLStyledProps<'input'>, NumberInput.InputBaseProps>
->(NumberInput.Input, 'input')
+export const Input = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, NumberInput.InputBaseProps>>(
+  NumberInput.Input,
+  'input',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, NumberInput.LabelBaseProps>
->(NumberInput.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, NumberInput.LabelBaseProps>>(
+  NumberInput.Label,
+  'label',
+)
 
-export const Scrubber = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, NumberInput.ScrubberBaseProps>
->(NumberInput.Scrubber, 'scrubber')
+export const Scrubber = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, NumberInput.ScrubberBaseProps>>(
+  NumberInput.Scrubber,
+  'scrubber',
+)
 
-export const ValueText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, NumberInput.ValueTextBaseProps>
->(NumberInput.ValueText, 'valueText')
+export const ValueText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, NumberInput.ValueTextBaseProps>>(
+  NumberInput.ValueText,
+  'valueText',
+)
 
 export const Context = NumberInput.Context

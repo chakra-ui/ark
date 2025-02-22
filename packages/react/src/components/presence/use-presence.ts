@@ -5,9 +5,7 @@ import type { Optional } from '../../types'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePresenceProps
-  extends Optional<presence.Context, 'present'>,
-    RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Context, 'present'>, RenderStrategyProps {}
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps) => {
@@ -27,8 +25,7 @@ export const usePresence = (props: UsePresenceProps) => {
   }
 
   const unmounted =
-    (!api.present && !wasEverPresent.current && lazyMount) ||
-    (unmountOnExit && !api.present && wasEverPresent.current)
+    (!api.present && !wasEverPresent.current && lazyMount) || (unmountOnExit && !api.present && wasEverPresent.current)
 
   const getPresenceProps = () => ({
     'data-state': present ? 'open' : 'closed',

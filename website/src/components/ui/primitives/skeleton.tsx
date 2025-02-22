@@ -8,9 +8,7 @@ import type { JsxStyleProps } from 'styled-system/types'
 
 const StyledSkeleton = styled(ark.div, skeleton)
 
-export interface SkeletonProps
-  extends Assign<JsxStyleProps, HTMLArkProps<'div'>>,
-    SkeletonVariantProps {
+export interface SkeletonProps extends Assign<JsxStyleProps, HTMLArkProps<'div'>>, SkeletonVariantProps {
   /**
    *
    * @default false

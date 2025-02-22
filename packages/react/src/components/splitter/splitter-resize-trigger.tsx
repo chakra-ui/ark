@@ -7,21 +7,14 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useSplitterContext } from './use-splitter-context'
 
 export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
-export interface SplitterResizeTriggerProps
-  extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
+export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
 
-export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>(
-  (props, ref) => {
-    const [triggerProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, [
-      'disabled',
-      'id',
-      'step',
-    ])
-    const splitter = useSplitterContext()
-    const mergedProps = mergeProps(splitter.getResizeTriggerProps(triggerProps), localProps)
+export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>((props, ref) => {
+  const [triggerProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['disabled', 'id', 'step'])
+  const splitter = useSplitterContext()
+  const mergedProps = mergeProps(splitter.getResizeTriggerProps(triggerProps), localProps)
 
-    return <ark.button ref={ref} {...mergedProps} />
-  },
-)
+  return <ark.button ref={ref} {...mergedProps} />
+})
 
 SplitterResizeTrigger.displayName = 'SplitterResizeTrigger'

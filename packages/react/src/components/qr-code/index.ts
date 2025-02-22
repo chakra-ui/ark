@@ -6,16 +6,8 @@ export {
   type QrCodeDownloadTriggerProps,
 } from './qr-code-download-trigger'
 export { QrCodeFrame, type QrCodeFrameBaseProps, type QrCodeFrameProps } from './qr-code-frame'
-export {
-  QrCodeOverlay,
-  type QrCodeOverlayBaseProps,
-  type QrCodeOverlayProps,
-} from './qr-code-overlay'
-export {
-  QrCodePattern,
-  type QrCodePatternBaseProps,
-  type QrCodePatternProps,
-} from './qr-code-pattern'
+export { QrCodeOverlay, type QrCodeOverlayBaseProps, type QrCodeOverlayProps } from './qr-code-overlay'
+export { QrCodePattern, type QrCodePatternBaseProps, type QrCodePatternProps } from './qr-code-pattern'
 export { QrCodeRoot, type QrCodeRootBaseProps, type QrCodeRootProps } from './qr-code-root'
 export {
   QrCodeRootProvider,

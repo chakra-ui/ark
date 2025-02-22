@@ -30,15 +30,8 @@ export {
   type MenuIndicatorBaseProps as IndicatorBaseProps,
   type MenuIndicatorProps as IndicatorProps,
 } from './menu-indicator'
-export {
-  MenuItem as Item,
-  type MenuItemBaseProps as ItemBaseProps,
-  type MenuItemProps as ItemProps,
-} from './menu-item'
-export {
-  MenuItemContext as ItemContext,
-  type MenuItemContextProps as ItemContextProps,
-} from './menu-item-context'
+export { MenuItem as Item, type MenuItemBaseProps as ItemBaseProps, type MenuItemProps as ItemProps } from './menu-item'
+export { MenuItemContext as ItemContext, type MenuItemContextProps as ItemContextProps } from './menu-item-context'
 export {
   MenuItemGroup as ItemGroup,
   type MenuItemGroupBaseProps as ItemGroupBaseProps,
@@ -74,11 +67,7 @@ export {
   type MenuRadioItemGroupBaseProps as RadioItemGroupBaseProps,
   type MenuRadioItemGroupProps as RadioItemGroupProps,
 } from './menu-radio-item-group'
-export {
-  MenuRoot as Root,
-  type MenuRootBaseProps as RootBaseProps,
-  type MenuRootProps as RootProps,
-} from './menu-root'
+export { MenuRoot as Root, type MenuRootBaseProps as RootBaseProps, type MenuRootProps as RootProps } from './menu-root'
 export {
   MenuRootProvider as RootProvider,
   type MenuRootProviderBaseProps as RootProviderBaseProps,

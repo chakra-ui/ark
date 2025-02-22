@@ -24,9 +24,7 @@ const emits = defineEmits<HoverCardRootEmits>()
 const hoverCard = useHoverCard(props, emits)
 
 HoverCardProvider(hoverCard)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

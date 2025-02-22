@@ -3,12 +3,7 @@ import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import type { UseComboboxReturn } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
@@ -23,15 +18,9 @@ export interface ComboboxRootProviderProps<T extends CollectionItem>
   extends HTMLProps<'div'>,
     ComboboxRootProviderBaseProps<T> {}
 
-const ComboboxImpl = <T extends CollectionItem>(
-  props: ComboboxRootProviderProps<T>,
-  ref: Ref<HTMLDivElement>,
-) => {
+const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProviderProps<T>, ref: Ref<HTMLDivElement>) => {
   const [presenceProps, comboboxProps] = splitPresenceProps(props)
-  const [{ value: combobox }, localProps] = createSplitProps<RootProviderProps<T>>()(
-    comboboxProps,
-    ['value'],
-  )
+  const [{ value: combobox }, localProps] = createSplitProps<RootProviderProps<T>>()(comboboxProps, ['value'])
   const presence = usePresence(mergeProps({ present: combobox.open }, presenceProps))
   const mergedProps = mergeProps(combobox.getRootProps(), localProps)
 

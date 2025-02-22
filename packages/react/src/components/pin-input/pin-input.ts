@@ -1,8 +1,5 @@
 export type { ValueChangeDetails, ValueInvalidDetails } from '@zag-js/pin-input'
-export {
-  PinInputContext as Context,
-  type PinInputContextProps as ContextProps,
-} from './pin-input-context'
+export { PinInputContext as Context, type PinInputContextProps as ContextProps } from './pin-input-context'
 export {
   PinInputControl as Control,
   type PinInputControlBaseProps as ControlBaseProps,

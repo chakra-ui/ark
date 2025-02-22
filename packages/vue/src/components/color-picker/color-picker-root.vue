@@ -5,10 +5,7 @@ import type { RenderStrategyProps } from '../../utils'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './color-picker.types'
 
-export interface ColorPickerRootBaseProps
-  extends RootProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface ColorPickerRootBaseProps extends RootProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootProps
   extends ColorPickerRootBaseProps,
     /**
@@ -41,9 +38,7 @@ const emits = defineEmits<ColorPickerRootEmits>()
 const colorPicker = useColorPicker(props, emits)
 ColorPickerProvider(colorPicker)
 
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

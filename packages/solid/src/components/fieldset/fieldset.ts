@@ -1,7 +1,4 @@
-export {
-  FieldsetContext as Context,
-  type FieldsetContextProps as ContextProps,
-} from './fieldset-context'
+export { FieldsetContext as Context, type FieldsetContextProps as ContextProps } from './fieldset-context'
 export {
   FieldsetErrorText as ErrorText,
   type FieldsetErrorTextBaseProps as ErrorTextBaseProps,

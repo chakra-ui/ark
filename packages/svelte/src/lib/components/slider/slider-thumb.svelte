@@ -14,9 +14,7 @@
   import SliderThumbPropsProvider from './slider-thumb-props-provider.svelte'
 
   const props: SliderThumbProps = $props()
-  const [thumbProps, localProps] = $derived(
-    createSplitProps<ThumbProps>()(props, ['index', 'name']),
-  )
+  const [thumbProps, localProps] = $derived(createSplitProps<ThumbProps>()(props, ['index', 'name']))
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getThumbProps(thumbProps), localProps))
 </script>

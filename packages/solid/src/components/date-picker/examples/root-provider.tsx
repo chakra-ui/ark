@@ -38,9 +38,7 @@ export const RootProvider = () => {
                         <DatePicker.TableHead>
                           <DatePicker.TableRow>
                             <Index each={context().weekDays}>
-                              {(weekDay) => (
-                                <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>
-                              )}
+                              {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
                             </Index>
                           </DatePicker.TableRow>
                         </DatePicker.TableHead>
@@ -52,9 +50,7 @@ export const RootProvider = () => {
                                 <Index each={week()}>
                                   {(day) => (
                                     <DatePicker.TableCell value={day()}>
-                                      <DatePicker.TableCellTrigger>
-                                        {day().day}
-                                      </DatePicker.TableCellTrigger>
+                                      <DatePicker.TableCellTrigger>{day().day}</DatePicker.TableCellTrigger>
                                     </DatePicker.TableCell>
                                   )}
                                 </Index>
@@ -88,9 +84,7 @@ export const RootProvider = () => {
                                 <Index each={months()}>
                                   {(month) => (
                                     <DatePicker.TableCell value={month().value}>
-                                      <DatePicker.TableCellTrigger>
-                                        {month().label}
-                                      </DatePicker.TableCellTrigger>
+                                      <DatePicker.TableCellTrigger>{month().label}</DatePicker.TableCellTrigger>
                                     </DatePicker.TableCell>
                                   )}
                                 </Index>
@@ -124,9 +118,7 @@ export const RootProvider = () => {
                                 <Index each={years()}>
                                   {(year) => (
                                     <DatePicker.TableCell value={year().value}>
-                                      <DatePicker.TableCellTrigger>
-                                        {year().label}
-                                      </DatePicker.TableCellTrigger>
+                                      <DatePicker.TableCellTrigger>{year().label}</DatePicker.TableCellTrigger>
                                     </DatePicker.TableCell>
                                   )}
                                 </Index>

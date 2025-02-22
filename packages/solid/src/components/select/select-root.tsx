@@ -2,12 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import type { CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseSelectProps, useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
@@ -15,9 +10,7 @@ export interface SelectRootBaseProps<T extends CollectionItem>
   extends UseSelectProps<T>,
     UsePresenceProps,
     PolymorphicProps<'div'> {}
-export interface SelectRootProps<T extends CollectionItem>
-  extends HTMLProps<'div'>,
-    SelectRootBaseProps<T> {}
+export interface SelectRootProps<T extends CollectionItem> extends HTMLProps<'div'>, SelectRootBaseProps<T> {}
 
 export const SelectRoot = <T extends CollectionItem>(props: SelectRootProps<T>) => {
   const [presenceProps, selectProps] = splitPresenceProps(props)

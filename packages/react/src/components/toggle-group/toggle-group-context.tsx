@@ -5,5 +5,4 @@ export interface ToggleGroupContextProps {
   children: (context: UseToggleGroupContext) => ReactNode
 }
 
-export const ToggleGroupContext = (props: ToggleGroupContextProps) =>
-  props.children(useToggleGroupContext())
+export const ToggleGroupContext = (props: ToggleGroupContextProps) => props.children(useToggleGroupContext())

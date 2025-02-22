@@ -1,11 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import type { UseHoverCardReturn } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
@@ -20,9 +15,7 @@ export interface HoverCardRootProviderProps extends HoverCardRootProviderBasePro
 
 export const HoverCardRootProvider = (props: HoverCardRootProviderProps) => {
   const [presenceProps, hoverCardProps] = splitPresenceProps(props)
-  const presence = usePresence(
-    mergeProps(presenceProps, () => ({ present: hoverCardProps.value().open })),
-  )
+  const presence = usePresence(mergeProps(presenceProps, () => ({ present: hoverCardProps.value().open })))
 
   return (
     <HoverCardProvider value={hoverCardProps.value}>

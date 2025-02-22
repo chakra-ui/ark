@@ -9,5 +9,4 @@ export const DEFAULT_LOCALE: ComputedRef<LocaleContext> = computed(() => ({
   locale: 'en-US',
 }))
 
-export const [LocaleContextProvider, useLocaleContext] =
-  createContext<ComputedRef<LocaleContext>>('LocaleContext')
+export const [LocaleContextProvider, useLocaleContext] = createContext<ComputedRef<LocaleContext>>('LocaleContext')

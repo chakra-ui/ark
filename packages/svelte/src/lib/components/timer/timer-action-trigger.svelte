@@ -5,13 +5,9 @@
   import { Ark } from '../factory'
   import { useTimerContext } from './use-timer-context'
 
-  export interface TimerActionTriggerBaseProps
-    extends ActionTriggerProps,
-      PolymorphicProps<'button'> {}
+  export interface TimerActionTriggerBaseProps extends ActionTriggerProps, PolymorphicProps<'button'> {}
 
-  export interface TimerActionTriggerProps
-    extends HTMLProps<'button'>,
-      TimerActionTriggerBaseProps {}
+  export interface TimerActionTriggerProps extends HTMLProps<'button'>, TimerActionTriggerBaseProps {}
 
   const props: TimerActionTriggerProps = $props()
 

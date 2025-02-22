@@ -26,9 +26,7 @@ export const DemoTour = () => {
           </Tour.CloseTrigger>
           <Tour.Control>
             <Tour.Actions>
-              {(actions) => (
-                <For each={actions()}>{(action) => <Tour.ActionTrigger action={action} />}</For>
-              )}
+              {(actions) => <For each={actions()}>{(action) => <Tour.ActionTrigger action={action} />}</For>}
             </Tour.Actions>
           </Tour.Control>
         </Tour.Content>

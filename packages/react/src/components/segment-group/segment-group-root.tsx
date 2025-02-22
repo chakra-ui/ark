@@ -8,8 +8,7 @@ import { type UseSegmentGroupProps, useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 
 export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps {}
-export interface SegmentGroupRootProps
-  extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}
+export interface SegmentGroupRootProps extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}
 
 export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps>((props, ref) => {
   const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
@@ -25,11 +24,7 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)
-  const mergedProps = mergeProps(
-    segmentGroup.getRootProps(),
-    parts.root.attrs as Record<string, string>,
-    localProps,
-  )
+  const mergedProps = mergeProps(segmentGroup.getRootProps(), parts.root.attrs as Record<string, string>, localProps)
 
   return (
     <SegmentGroupProvider value={segmentGroup}>

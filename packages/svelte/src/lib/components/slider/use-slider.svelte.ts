@@ -5,8 +5,7 @@ import { createId } from '$lib/utils/create-id'
 import * as slider from '@zag-js/slider'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 
-export interface UseSliderProps
-  extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSliderProps extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the slider when it is first rendered.
    * Use when you do not need to control the state of the slider picker.

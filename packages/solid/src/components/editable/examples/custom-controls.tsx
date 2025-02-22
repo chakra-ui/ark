@@ -11,10 +11,7 @@ export const CustomControls = () => (
     <Editable.Context>
       {(editable) => (
         <Editable.Control>
-          <Show
-            when={editable().editing}
-            fallback={<Editable.EditTrigger>Edit</Editable.EditTrigger>}
-          >
+          <Show when={editable().editing} fallback={<Editable.EditTrigger>Edit</Editable.EditTrigger>}>
             <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
             <Editable.CancelTrigger>Canvel</Editable.CancelTrigger>
           </Show>

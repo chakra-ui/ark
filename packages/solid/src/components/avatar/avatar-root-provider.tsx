@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface AvatarRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface AvatarRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    AvatarRootProviderBaseProps {}
+export interface AvatarRootProviderProps extends HTMLProps<'div'>, RootProviderProps, AvatarRootProviderBaseProps {}
 
 export const AvatarRootProvider = (props: AvatarRootProviderProps) => {
   const [{ value: avatar }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

@@ -6,12 +6,7 @@ const main = async () => {
   const files = await globby(['../packages/react/src/components/*/index.ts'], {})
 
   files
-    .filter(
-      (file) =>
-        !['presence', 'portal', 'highlight', 'frame', 'client-only'].includes(
-          basename(dirname(file)),
-        ),
-    )
+    .filter((file) => !['presence', 'portal', 'highlight', 'frame', 'client-only'].includes(basename(dirname(file))))
     .map((file) => {
       try {
         // eg. copy `react/src/avatar/index.ts` to `solid/src/avatar/index.ts`

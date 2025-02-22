@@ -5,26 +5,23 @@ import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemPreviewImageBaseProps extends PolymorphicProps {}
-export interface FileUploadItemPreviewImageProps
-  extends HTMLProps<'img'>,
-    FileUploadItemPreviewImageBaseProps {}
+export interface FileUploadItemPreviewImageProps extends HTMLProps<'img'>, FileUploadItemPreviewImageBaseProps {}
 
-export const FileUploadItemPreviewImage = forwardRef<
-  HTMLImageElement,
-  FileUploadItemPreviewImageProps
->((props, ref) => {
-  const [url, setUrl] = useState<string>('')
-  const fileUpload = useFileUploadContext()
-  const itemProps = useFileUploadItemPropsContext()
-  const mergedProps = mergeProps(fileUpload.getItemPreviewImageProps({ ...itemProps, url }), props)
+export const FileUploadItemPreviewImage = forwardRef<HTMLImageElement, FileUploadItemPreviewImageProps>(
+  (props, ref) => {
+    const [url, setUrl] = useState<string>('')
+    const fileUpload = useFileUploadContext()
+    const itemProps = useFileUploadItemPropsContext()
+    const mergedProps = mergeProps(fileUpload.getItemPreviewImageProps({ ...itemProps, url }), props)
 
-  useEffect(() => {
-    return fileUpload.createFileUrl(itemProps.file, (url) => setUrl(url))
-  }, [itemProps, fileUpload])
+    useEffect(() => {
+      return fileUpload.createFileUrl(itemProps.file, (url) => setUrl(url))
+    }, [itemProps, fileUpload])
 
-  if (!url) return null
+    if (!url) return null
 
-  return <ark.img {...mergedProps} ref={ref} />
-})
+    return <ark.img {...mergedProps} ref={ref} />
+  },
+)
 
 FileUploadItemPreviewImage.displayName = 'FileUploadItemPreviewImage'

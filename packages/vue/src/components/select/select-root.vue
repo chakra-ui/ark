@@ -44,9 +44,7 @@ const emits = defineEmits<RootEmits<T>>()
 
 const select = useSelect(props, emits)
 SelectProvider(select)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

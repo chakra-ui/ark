@@ -31,9 +31,7 @@ const props = defineProps<ComboboxRootProviderProps<T>>()
 const combobox = computed(() => props.value)
 
 ComboboxProvider(combobox)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

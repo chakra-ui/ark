@@ -16,9 +16,7 @@ export const Demo = (props: Popover.RootProps) => (
         </Popover.Arrow>
         <Stack gap="1">
           <Popover.Title>Favorite Framework</Popover.Title>
-          <Popover.Description>
-            Tell us what is your favorite framework and why you love to use it.
-          </Popover.Description>
+          <Popover.Description>Tell us what is your favorite framework and why you love to use it.</Popover.Description>
         </Stack>
         <Box position="absolute" top="1" right="1">
           <Popover.CloseTrigger asChild>

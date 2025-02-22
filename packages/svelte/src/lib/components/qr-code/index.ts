@@ -5,11 +5,7 @@ export {
   type QrCodeDownloadTriggerBaseProps,
   type QrCodeDownloadTriggerProps,
 } from './qr-code-download-trigger.svelte'
-export {
-  default as QrCodeFrame,
-  type QrCodeFrameBaseProps,
-  type QrCodeFrameProps,
-} from './qr-code-frame.svelte'
+export { default as QrCodeFrame, type QrCodeFrameBaseProps, type QrCodeFrameProps } from './qr-code-frame.svelte'
 export {
   default as QrCodeOverlay,
   type QrCodeOverlayBaseProps,
@@ -25,11 +21,7 @@ export {
   type QrCodeRootProviderBaseProps,
   type QrCodeRootProviderProps,
 } from './qr-code-root-provider.svelte'
-export {
-  default as QrCodeRoot,
-  type QrCodeRootBaseProps,
-  type QrCodeRootProps,
-} from './qr-code-root.svelte'
+export { default as QrCodeRoot, type QrCodeRootBaseProps, type QrCodeRootProps } from './qr-code-root.svelte'
 export { qrCodeAnatomy } from './qr-code.anatomy'
 export { useQrCodeContext, type UseQrCodeContext } from './use-qr-code-context'
 export { useQrCode, type UseQrCodeProps, type UseQrCodeReturn } from './use-qr-code.svelte'

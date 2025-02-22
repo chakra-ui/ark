@@ -9,9 +9,7 @@ export const RenderProp = () => {
           <Accordion.ItemContext>
             {(accordionItem) => (
               <>
-                <Accordion.ItemTrigger>
-                  {accordionItem.expanded ? 'Expanded' : 'Closed'}
-                </Accordion.ItemTrigger>
+                <Accordion.ItemTrigger>{accordionItem.expanded ? 'Expanded' : 'Closed'}</Accordion.ItemTrigger>
                 <Accordion.ItemContent>{item} content</Accordion.ItemContent>
               </>
             )}

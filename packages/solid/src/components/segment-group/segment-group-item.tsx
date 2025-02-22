@@ -12,18 +12,10 @@ export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps<'
 export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupItemBaseProps {}
 
 export const SegmentGroupItem = (props: SegmentGroupItemProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
-    'value',
-    'disabled',
-    'invalid',
-  ])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid'])
 
   const segmentGroup = useSegmentGroupContext()
-  const mergedProps = mergeProps(
-    () => segmentGroup().getItemProps(itemProps),
-    parts.item.attrs,
-    localProps,
-  )
+  const mergedProps = mergeProps(() => segmentGroup().getItemProps(itemProps), parts.item.attrs, localProps)
 
   const itemState = createMemo(() => segmentGroup().getItemState(itemProps))
 

@@ -31,10 +31,7 @@ export {
   type MenuIndicatorProps as IndicatorProps,
   type MenuIndicatorBaseProps as IndicatorBaseProps,
 } from './menu-indicator.vue'
-export {
-  default as ItemContext,
-  type MenuItemContextProps as ItemContextProps,
-} from './menu-item-context.vue'
+export { default as ItemContext, type MenuItemContextProps as ItemContextProps } from './menu-item-context.vue'
 export {
   default as ItemGroupLabel,
   type MenuItemGroupLabelProps as ItemGroupLabelProps,

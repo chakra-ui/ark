@@ -10,23 +10,17 @@ interface RootProviderProps {
 }
 
 export interface TagsInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface TagsInputRootProviderProps
-  extends HTMLProps<'div'>,
-    TagsInputRootProviderBaseProps {}
+export interface TagsInputRootProviderProps extends HTMLProps<'div'>, TagsInputRootProviderBaseProps {}
 
-export const TagsInputRootProvider = forwardRef<HTMLDivElement, TagsInputRootProviderProps>(
-  (props, ref) => {
-    const [{ value: tagsInput }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(tagsInput.getRootProps(), localProps)
+export const TagsInputRootProvider = forwardRef<HTMLDivElement, TagsInputRootProviderProps>((props, ref) => {
+  const [{ value: tagsInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(tagsInput.getRootProps(), localProps)
 
-    return (
-      <TagsInputProvider value={tagsInput}>
-        <ark.div {...mergedProps} ref={ref} />
-      </TagsInputProvider>
-    )
-  },
-)
+  return (
+    <TagsInputProvider value={tagsInput}>
+      <ark.div {...mergedProps} ref={ref} />
+    </TagsInputProvider>
+  )
+})
 
 TagsInputRootProvider.displayName = 'TagsInputRootProvider'

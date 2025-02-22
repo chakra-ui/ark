@@ -30,9 +30,7 @@ export const RootProvider = () => {
             {item.title} - {item.description}
           </Steps.Content>
         ))}
-        <Steps.CompletedContent>
-          Steps Complete - Thank you for filling out the form!
-        </Steps.CompletedContent>
+        <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
         <div>
           <Steps.PrevTrigger>Back</Steps.PrevTrigger>
           <Steps.NextTrigger>Next</Steps.NextTrigger>

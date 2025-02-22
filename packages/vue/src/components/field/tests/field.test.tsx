@@ -5,13 +5,14 @@ import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './field.test.vue'
 
 describe('Field', () => {
-  it.each(
-    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
-  )('should render part %s', async (part) => {
-    render(ComponentUnderTest)
+  it.each(getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
+    'should render part %s',
+    async (part) => {
+      render(ComponentUnderTest)
 
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
+      expect(document.querySelector(part)).toBeInTheDocument()
+    },
+  )
 
   it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
     expect(Field[part]).toBeDefined()

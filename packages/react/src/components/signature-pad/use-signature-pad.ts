@@ -6,8 +6,7 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
-export interface UseSignaturePadProps
-  extends Optional<Omit<signaturePad.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSignaturePadProps extends Optional<Omit<signaturePad.Context, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseSignaturePadReturn extends signaturePad.Api<PropTypes> {}
 

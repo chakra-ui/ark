@@ -7,15 +7,11 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './file-upload'
 
-export interface UseFileUploadProps
-  extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseFileUploadProps extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropTypes>> {}
 
-export const useFileUpload = (
-  props: UseFileUploadProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseFileUploadReturn => {
+export const useFileUpload = (props: UseFileUploadProps = {}, emit?: EmitFn<RootEmits>): UseFileUploadReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

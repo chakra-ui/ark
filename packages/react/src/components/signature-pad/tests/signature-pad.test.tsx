@@ -14,9 +14,7 @@ describe('SignaturePad / Parts & Exports', () => {
 
   render(<ComponentUnderTest />)
 
-  const renderedParts = getParts(signaturePadAnatomy).filter(
-    (part) => !part.includes('[data-part="segment-path"]'),
-  )
+  const renderedParts = getParts(signaturePadAnatomy).filter((part) => !part.includes('[data-part="segment-path"]'))
 
   it.each(renderedParts)('should render part %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()

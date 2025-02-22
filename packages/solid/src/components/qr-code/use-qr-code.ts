@@ -4,8 +4,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseQrCodeProps
-  extends Optional<Omit<qrCode.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseQrCodeProps extends Optional<Omit<qrCode.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the qr code when it is first rendered.
    * Use when you do not need to control the state of the qr code.

@@ -14,9 +14,7 @@ export const WithNestedPopover = () => {
         <Popover.Positioner>
           <Popover.Content style={style}>
             <Popover.CloseTrigger>Close</Popover.CloseTrigger>
-            <Popover.Description>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Popover.Description>
+            <Popover.Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Popover.Description>
             {/* Nested Popover */}
             <Popover.Root positioning={{ placement: 'right' }}>
               <Popover.Trigger>Open Nested Dialog</Popover.Trigger>

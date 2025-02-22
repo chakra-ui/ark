@@ -9,11 +9,7 @@ export {
   type PaginationEllipsisBaseProps,
   type PaginationEllipsisProps,
 } from './pagination-ellipsis'
-export {
-  PaginationItem,
-  type PaginationItemBaseProps,
-  type PaginationItemProps,
-} from './pagination-item'
+export { PaginationItem, type PaginationItemBaseProps, type PaginationItemProps } from './pagination-item'
 export {
   PaginationNextTrigger,
   type PaginationNextTriggerBaseProps,
@@ -24,11 +20,7 @@ export {
   type PaginationPrevTriggerBaseProps,
   type PaginationPrevTriggerProps,
 } from './pagination-prev-trigger'
-export {
-  PaginationRoot,
-  type PaginationRootBaseProps,
-  type PaginationRootProps,
-} from './pagination-root'
+export { PaginationRoot, type PaginationRootBaseProps, type PaginationRootProps } from './pagination-root'
 export {
   PaginationRootProvider,
   type PaginationRootProviderBaseProps,

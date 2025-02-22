@@ -2,9 +2,7 @@ import { Menu } from '@ark-ui/react/menu'
 
 export const RenderProp = () => (
   <Menu.Root>
-    <Menu.Context>
-      {(menu) => <Menu.Trigger>Menu is {menu.open ? 'open' : 'closed'}</Menu.Trigger>}
-    </Menu.Context>
+    <Menu.Context>{(menu) => <Menu.Trigger>Menu is {menu.open ? 'open' : 'closed'}</Menu.Trigger>}</Menu.Context>
     <Menu.Positioner>
       <Menu.Content>
         <Menu.Item value="react">

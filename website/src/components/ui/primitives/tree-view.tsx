@@ -148,10 +148,7 @@ const { withProvider, withContext } = createStyleContext(treeView)
 export type RootProviderProps = ComponentProps<typeof RootProvider>
 export const RootProvider = withProvider<
   HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, TreeView.RootProviderBaseProps<TreeNode>>,
-    TreeViewVariantProps
-  >
+  Assign<Assign<HTMLStyledProps<'div'>, TreeView.RootProviderBaseProps<TreeNode>>, TreeViewVariantProps>
 >(TreeView.RootProvider, 'root')
 
 export type RootProps = ComponentProps<typeof Root>
@@ -180,15 +177,15 @@ export const BranchIndicator = withContext<
   Assign<HTMLStyledProps<'div'>, TreeView.BranchIndicatorBaseProps>
 >(TreeView.BranchIndicator, 'branchIndicator')
 
-export const Branch = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.BranchBaseProps>
->(TreeView.Branch, 'branch')
+export const Branch = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.BranchBaseProps>>(
+  TreeView.Branch,
+  'branch',
+)
 
-export const BranchText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, TreeView.BranchTextBaseProps>
->(TreeView.BranchText, 'branchText')
+export const BranchText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, TreeView.BranchTextBaseProps>>(
+  TreeView.BranchText,
+  'branchText',
+)
 
 export const BranchTrigger = withContext<
   HTMLDivElement,
@@ -200,25 +197,25 @@ export const ItemIndicator = withContext<
   Assign<HTMLStyledProps<'div'>, TreeView.ItemIndicatorBaseProps>
 >(TreeView.ItemIndicator, 'itemIndicator')
 
-export const Item = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.ItemBaseProps>
->(TreeView.Item, 'item')
+export const Item = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.ItemBaseProps>>(
+  TreeView.Item,
+  'item',
+)
 
-export const ItemText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, TreeView.ItemTextBaseProps>
->(TreeView.ItemText, 'itemText')
+export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, TreeView.ItemTextBaseProps>>(
+  TreeView.ItemText,
+  'itemText',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, TreeView.LabelBaseProps>
->(TreeView.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, TreeView.LabelBaseProps>>(
+  TreeView.Label,
+  'label',
+)
 
-export const Tree = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TreeView.TreeBaseProps>
->(TreeView.Tree, 'tree')
+export const Tree = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TreeView.TreeBaseProps>>(
+  TreeView.Tree,
+  'tree',
+)
 
 export const Context = TreeView.Context
 

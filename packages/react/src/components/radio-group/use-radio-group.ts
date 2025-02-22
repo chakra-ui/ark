@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseRadioGroupProps
-  extends Optional<Omit<radio.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseRadioGroupProps extends Optional<Omit<radio.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the radio group when it is first rendered.
    * Use when you do not need to control the state of the radio group.

@@ -30,10 +30,7 @@ interface Collapsible extends collapsible.Api<PropTypes> {
 
 export interface UseCollapsibleReturn extends ComputedRef<Collapsible> {}
 
-export const useCollapsible = (
-  props: UseCollapsibleProps = {},
-  emits?: EmitFn<RootEmits>,
-): UseCollapsibleReturn => {
+export const useCollapsible = (props: UseCollapsibleProps = {}, emits?: EmitFn<RootEmits>): UseCollapsibleReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

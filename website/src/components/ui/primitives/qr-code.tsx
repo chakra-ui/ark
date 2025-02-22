@@ -19,19 +19,19 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, QrCode.RootBaseProps>, QrCodeVariantProps>
 >(QrCode.Root, 'root')
 
-export const Frame = withContext<
-  SVGSVGElement,
-  Assign<HTMLStyledProps<'svg'>, QrCode.FrameBaseProps>
->(QrCode.Frame, 'frame')
+export const Frame = withContext<SVGSVGElement, Assign<HTMLStyledProps<'svg'>, QrCode.FrameBaseProps>>(
+  QrCode.Frame,
+  'frame',
+)
 
-export const Overlay = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, QrCode.OverlayBaseProps>
->(QrCode.Overlay, 'overlay')
+export const Overlay = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, QrCode.OverlayBaseProps>>(
+  QrCode.Overlay,
+  'overlay',
+)
 
-export const Pattern = withContext<
-  SVGPathElement,
-  Assign<HTMLStyledProps<'path'>, QrCode.PatternBaseProps>
->(QrCode.Pattern, 'pattern')
+export const Pattern = withContext<SVGPathElement, Assign<HTMLStyledProps<'path'>, QrCode.PatternBaseProps>>(
+  QrCode.Pattern,
+  'pattern',
+)
 
 export const Context = QrCode.Context

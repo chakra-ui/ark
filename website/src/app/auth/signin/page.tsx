@@ -27,9 +27,7 @@ export default async function Page(props: Props) {
             </Center>
             <Box>
               <Card.Title>Sign In</Card.Title>
-              <Card.Description>
-                Use your email address or social account to sign in.
-              </Card.Description>
+              <Card.Description>Use your email address or social account to sign in.</Card.Description>
             </Box>
           </Stack>
         </Card.Header>

@@ -6,8 +6,7 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
-export interface UseTagsInputProps
-  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseTagsInputProps extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the tags input when it is first rendered.
    * Use when you do not need to control the state of the tags input.

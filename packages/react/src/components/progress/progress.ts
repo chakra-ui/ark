@@ -13,10 +13,7 @@ export {
   type ProgressCircleTrackBaseProps as CircleTrackBaseProps,
   type ProgressCircleTrackProps as CircleTrackProps,
 } from './progress-circle-track'
-export {
-  ProgressContext as Context,
-  type ProgressContextProps as ContextProps,
-} from './progress-context'
+export { ProgressContext as Context, type ProgressContextProps as ContextProps } from './progress-context'
 export {
   ProgressLabel as Label,
   type ProgressLabelBaseProps as LabelBaseProps,

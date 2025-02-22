@@ -32,8 +32,7 @@ describe('Util: runIfFn', () => {
   })
 
   it('should infer the return type with explicit typings', () => {
-    const valueOrFn: ((suffix: string) => string) | string = (suffix: string) =>
-      `function result ${suffix}`
+    const valueOrFn: ((suffix: string) => string) | string = (suffix: string) => `function result ${suffix}`
     const result: string = runIfFn(valueOrFn, 'suffix')
     expect(result).toEqual('function result suffix')
   })

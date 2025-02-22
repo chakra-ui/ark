@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface SwitchRootProviderBaseProps extends PolymorphicProps<'label'> {}
-export interface SwitchRootProviderProps
-  extends HTMLProps<'label'>,
-    RootProviderProps,
-    SwitchRootProviderBaseProps {}
+export interface SwitchRootProviderProps extends HTMLProps<'label'>, RootProviderProps, SwitchRootProviderBaseProps {}
 
 export const SwitchRootProvider = (props: SwitchRootProviderProps) => {
   const [{ value: api }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

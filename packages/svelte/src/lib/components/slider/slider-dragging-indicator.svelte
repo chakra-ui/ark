@@ -2,9 +2,7 @@
   import type { HTMLProps, PolymorphicProps } from '$lib/types'
 
   export interface SliderDraggingIndicatorBaseProps extends PolymorphicProps<'span'> {}
-  export interface SliderDraggingIndicatorProps
-    extends HTMLProps<'span'>,
-      SliderDraggingIndicatorBaseProps {}
+  export interface SliderDraggingIndicatorProps extends HTMLProps<'span'>, SliderDraggingIndicatorBaseProps {}
 </script>
 
 <script lang="ts">

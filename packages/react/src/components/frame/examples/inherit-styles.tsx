@@ -20,9 +20,7 @@ export const InheritStyles = () => {
       }}
     >
       <h1>Ark UI / Frame</h1>
-      <p style={{ marginBottom: '10px', marginTop: '4px' }}>
-        This is a React component wrapped in an iframe.
-      </p>
+      <p style={{ marginBottom: '10px', marginTop: '4px' }}>This is a React component wrapped in an iframe.</p>
     </Frame>
   )
 }

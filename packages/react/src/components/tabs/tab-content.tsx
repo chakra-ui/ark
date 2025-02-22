@@ -23,17 +23,11 @@ export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, re
     immediate: true,
   })
 
-  const mergedProps = mergeProps(
-    tabs.getContentProps(contentProps),
-    presence.getPresenceProps(),
-    localProps,
-  )
+  const mergedProps = mergeProps(tabs.getContentProps(contentProps), presence.getPresenceProps(), localProps)
 
   return (
     <PresenceProvider value={presence}>
-      {presence.unmounted ? null : (
-        <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />
-      )}
+      {presence.unmounted ? null : <ark.div {...mergedProps} ref={composeRefs(presence.ref, ref)} />}
     </PresenceProvider>
   )
 })

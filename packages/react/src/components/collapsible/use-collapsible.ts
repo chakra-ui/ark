@@ -52,8 +52,7 @@ export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleR
   }
 
   const isUnmounted =
-    (!api.visible && !wasVisible.current && lazyMount) ||
-    (unmountOnExit && !api.visible && wasVisible.current)
+    (!api.visible && !wasVisible.current && lazyMount) || (unmountOnExit && !api.visible && wasVisible.current)
 
   return { ...api, isUnmounted }
 }

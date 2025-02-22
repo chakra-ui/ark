@@ -2,19 +2,11 @@ import { mergeProps } from '@zag-js/solid'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseTimePickerProps, useTimePicker } from './use-time-picker'
 import { TimePickerProvider } from './use-time-picker-context'
 
-export interface TimePickerRootBaseProps
-  extends UseTimePickerProps,
-    UsePresenceProps,
-    PolymorphicProps<'div'> {}
+export interface TimePickerRootBaseProps extends UseTimePickerProps, UsePresenceProps, PolymorphicProps<'div'> {}
 export interface TimePickerRootProps extends Assign<HTMLProps<'div'>, TimePickerRootBaseProps> {}
 
 export const TimePickerRoot = (props: TimePickerRootProps) => {

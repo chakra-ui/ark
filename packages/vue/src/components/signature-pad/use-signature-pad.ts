@@ -7,14 +7,10 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './signature-pad.types'
 
-export interface UseSignaturePadProps
-  extends Optional<Omit<signaturepad.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSignaturePadProps extends Optional<Omit<signaturepad.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSignaturePadReturn extends ComputedRef<signaturepad.Api<PropTypes>> {}
 
-export const useSignaturePad = (
-  props: UseSignaturePadProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseSignaturePadReturn => {
+export const useSignaturePad = (props: UseSignaturePadProps = {}, emit?: EmitFn<RootEmits>): UseSignaturePadReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

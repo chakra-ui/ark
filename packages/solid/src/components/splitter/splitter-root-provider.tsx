@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface SplitterRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface SplitterRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    SplitterRootProviderBaseProps {}
+export interface SplitterRootProviderProps extends HTMLProps<'div'>, RootProviderProps, SplitterRootProviderBaseProps {}
 
 export const SplitterRootProvider = (props: SplitterRootProviderProps) => {
   const [{ value: splitter }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

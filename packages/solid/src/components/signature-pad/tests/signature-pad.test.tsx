@@ -6,9 +6,7 @@ import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('SignaturePad / Parts & Exports', () => {
-  const renderedParts = getParts(signaturePadAnatomy).filter(
-    (part) => !part.includes('[data-part="segment-path"]'),
-  )
+  const renderedParts = getParts(signaturePadAnatomy).filter((part) => !part.includes('[data-part="segment-path"]'))
 
   it.each(renderedParts)('should render part %s', async (part) => {
     render(() => <ComponentUnderTest />)

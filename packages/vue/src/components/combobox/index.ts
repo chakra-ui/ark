@@ -21,15 +21,8 @@ export {
   type ComboboxControlBaseProps,
   type ComboboxControlProps,
 } from './combobox-control.vue'
-export {
-  default as ComboboxInput,
-  type ComboboxInputBaseProps,
-  type ComboboxInputProps,
-} from './combobox-input.vue'
-export {
-  default as ComboboxItemContext,
-  type ComboboxItemContextProps,
-} from './combobox-item-context.vue'
+export { default as ComboboxInput, type ComboboxInputBaseProps, type ComboboxInputProps } from './combobox-input.vue'
+export { default as ComboboxItemContext, type ComboboxItemContextProps } from './combobox-item-context.vue'
 export {
   default as ComboboxItemGroupLabel,
   type ComboboxItemGroupLabelBaseProps,
@@ -50,21 +43,9 @@ export {
   type ComboboxItemTextBaseProps,
   type ComboboxItemTextProps,
 } from './combobox-item-text.vue'
-export {
-  default as ComboboxItem,
-  type ComboboxItemBaseProps,
-  type ComboboxItemProps,
-} from './combobox-item.vue'
-export {
-  default as ComboboxLabel,
-  type ComboboxLabelBaseProps,
-  type ComboboxLabelProps,
-} from './combobox-label.vue'
-export {
-  default as ComboboxList,
-  type ComboboxListBaseProps,
-  type ComboboxListProps,
-} from './combobox-list.vue'
+export { default as ComboboxItem, type ComboboxItemBaseProps, type ComboboxItemProps } from './combobox-item.vue'
+export { default as ComboboxLabel, type ComboboxLabelBaseProps, type ComboboxLabelProps } from './combobox-label.vue'
+export { default as ComboboxList, type ComboboxListBaseProps, type ComboboxListProps } from './combobox-list.vue'
 export {
   default as ComboboxPositioner,
   type ComboboxPositionerBaseProps,

@@ -4,8 +4,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseMenuProps
-  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+export interface UseMenuProps extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the menu when it is first rendered.
    * Use when you do not need to control its open state.

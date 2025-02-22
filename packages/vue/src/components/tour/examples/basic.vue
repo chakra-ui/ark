@@ -17,8 +17,8 @@ import DemoTour from './tour.vue'
         <Frame>
           <h1 id="step-2a">Iframe Content</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
           </p>
         </Frame>
         <h3 id="step-3">Step 3</h3>

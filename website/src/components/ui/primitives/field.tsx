@@ -19,34 +19,34 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Field.RootBaseProps>, FieldVariantProps>
 >(Field.Root, 'root')
 
-export const ErrorText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Field.ErrorTextBaseProps>
->(Field.ErrorText, 'errorText')
+export const ErrorText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Field.ErrorTextBaseProps>>(
+  Field.ErrorText,
+  'errorText',
+)
 
-export const HelperText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Field.HelperTextBaseProps>
->(Field.HelperText, 'helperText')
+export const HelperText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Field.HelperTextBaseProps>>(
+  Field.HelperText,
+  'helperText',
+)
 
-export const Input = withContext<
-  HTMLInputElement,
-  Assign<HTMLStyledProps<'input'>, Field.InputBaseProps>
->(Field.Input, 'input')
+export const Input = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, Field.InputBaseProps>>(
+  Field.Input,
+  'input',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, Field.LabelBaseProps>
->(Field.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, Field.LabelBaseProps>>(
+  Field.Label,
+  'label',
+)
 
-export const Select = withContext<
-  HTMLSelectElement,
-  Assign<HTMLStyledProps<'select'>, Field.SelectBaseProps>
->(Field.Select, 'select')
+export const Select = withContext<HTMLSelectElement, Assign<HTMLStyledProps<'select'>, Field.SelectBaseProps>>(
+  Field.Select,
+  'select',
+)
 
-export const Textarea = withContext<
-  HTMLTextAreaElement,
-  Assign<HTMLStyledProps<'textarea'>, Field.TextareaBaseProps>
->(Field.Textarea, 'textarea')
+export const Textarea = withContext<HTMLTextAreaElement, Assign<HTMLStyledProps<'textarea'>, Field.TextareaBaseProps>>(
+  Field.Textarea,
+  'textarea',
+)
 
 export const Context = Field.Context

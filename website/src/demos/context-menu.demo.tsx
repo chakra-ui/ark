@@ -4,9 +4,7 @@ export const Demo = (props: Menu.RootProps) => {
   return (
     <Menu.Root {...props}>
       <Menu.ContextTrigger>
-        <div style={{ width: '100%', height: '20rem', border: '1px solid lightgray' }}>
-          Some content
-        </div>
+        <div style={{ width: '100%', height: '20rem', border: '1px solid lightgray' }}>Some content</div>
       </Menu.ContextTrigger>
       <Menu.Positioner>
         <Menu.Content>

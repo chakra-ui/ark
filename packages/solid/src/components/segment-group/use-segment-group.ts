@@ -4,8 +4,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseSegmentGroupProps
-  extends Optional<Omit<segmentGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSegmentGroupProps extends Optional<Omit<segmentGroup.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the segment group when it is first rendered.
    * Use when you do not need to control the state of the segment group.

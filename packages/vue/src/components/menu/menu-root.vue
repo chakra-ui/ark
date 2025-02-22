@@ -42,9 +42,7 @@ onMounted(() => {
 MenuTriggerItemProvider(computed(() => parentApi.value.getTriggerItemProps(api.value)))
 MenuMachineProvider(machine)
 MenuProvider(api)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

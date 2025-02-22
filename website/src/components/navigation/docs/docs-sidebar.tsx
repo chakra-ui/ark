@@ -76,5 +76,4 @@ export const DocsSidebar = (props: Props) => {
   )
 }
 
-const uniqueByTitle = (items: Pages[]): Pages[] =>
-  Array.from(new Map(items.map((item) => [item.title, item])).values())
+const uniqueByTitle = (items: Pages[]): Pages[] => Array.from(new Map(items.map((item) => [item.title, item])).values())

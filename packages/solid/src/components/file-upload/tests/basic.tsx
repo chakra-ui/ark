@@ -24,9 +24,7 @@ export const ComponentUnderTest = (props: FileUpload.RootProps) => (
                     </FileUpload.ItemPreview>
                     <FileUpload.ItemPreview>Any Icon</FileUpload.ItemPreview>
                     <FileUpload.ItemName>{file.name}</FileUpload.ItemName>
-                    <FileUpload.ItemSizeText>
-                      {fileUpload().getFileSize(file)}
-                    </FileUpload.ItemSizeText>
+                    <FileUpload.ItemSizeText>{fileUpload().getFileSize(file)}</FileUpload.ItemSizeText>
                     <FileUpload.ItemDeleteTrigger onClick={() => fileUpload().deleteFile(file)}>
                       Remove
                     </FileUpload.ItemDeleteTrigger>

@@ -21,11 +21,8 @@ export interface PolymorphicProps {
 }
 
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
-type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<
-  ArkPropsWithRef<E>
->
-type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> &
-  PolymorphicProps
+type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<ArkPropsWithRef<E>>
+type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & PolymorphicProps
 
 // Credits to the Radix team
 function getRef(element: React.ReactElement) {

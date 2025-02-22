@@ -7,8 +7,7 @@ import { TimePickerColumnPropsProvider } from './use-time-picker-column-props-co
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerColumnBaseProps extends ColumnProps, PolymorphicProps<'div'> {}
-export interface TimePickerColumnProps
-  extends Assign<HTMLProps<'div'>, TimePickerColumnBaseProps> {}
+export interface TimePickerColumnProps extends Assign<HTMLProps<'div'>, TimePickerColumnBaseProps> {}
 
 export const TimePickerColumn = (props: TimePickerColumnProps) => {
   const [columnProps, localProps] = createSplitProps<ColumnProps>()(props, ['unit'])

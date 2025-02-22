@@ -8,10 +8,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseColorPickerReturn>
 }
 
-export interface ColorPickerRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface ColorPickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface ColorPickerRootProviderProps
   extends ColorPickerRootProviderBaseProps,
     /**
@@ -30,9 +27,7 @@ const props = defineProps<ColorPickerRootProviderProps>()
 const colorPicker = computed(() => props.value)
 
 ColorPickerProvider(colorPicker)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

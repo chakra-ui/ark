@@ -9,11 +9,7 @@ const srcDoc = `<html><head>
 </script>
 
 <template>
-  <Frame
-    title="Custom Frame"
-    :style="{ border: '1px solid #ccc', width: '100%' }"
-    :src-doc="srcDoc"
-  >
+  <Frame title="Custom Frame" :style="{ border: '1px solid #ccc', width: '100%' }" :src-doc="srcDoc">
     <h1 style="font-family: 'Open Sans', sans-serif">Hello from inside the frame!</h1>
     <p>This content is rendered within our custom frame component using a Portal.</p>
   </Frame>

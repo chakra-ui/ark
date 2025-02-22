@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
-export interface UseTabsProps
-  extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The initial value of the tabs when it is first rendered.
    * Use when you do not need to control the state of the tabs.

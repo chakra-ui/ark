@@ -12,17 +12,15 @@ interface RootProviderProps {
 export interface TimerRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface TimerRootProviderProps extends HTMLProps<'div'>, TimerRootProviderBaseProps {}
 
-export const TimerRootProvider = forwardRef<HTMLDivElement, TimerRootProviderProps>(
-  (props, ref) => {
-    const [{ value: timer }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-    const mergedProps = mergeProps(timer.getRootProps(), localProps)
+export const TimerRootProvider = forwardRef<HTMLDivElement, TimerRootProviderProps>((props, ref) => {
+  const [{ value: timer }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(timer.getRootProps(), localProps)
 
-    return (
-      <TimerProvider value={timer}>
-        <ark.div {...mergedProps} ref={ref} />
-      </TimerProvider>
-    )
-  },
-)
+  return (
+    <TimerProvider value={timer}>
+      <ark.div {...mergedProps} ref={ref} />
+    </TimerProvider>
+  )
+})
 
 TimerRootProvider.displayName = 'TimerRootProvider'

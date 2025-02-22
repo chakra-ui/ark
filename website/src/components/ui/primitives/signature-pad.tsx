@@ -10,10 +10,7 @@ const { withProvider, withContext } = createStyleContext(signaturePad)
 export type RootProviderProps = ComponentProps<typeof RootProvider>
 export const RootProvider = withProvider<
   HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, SignaturePad.RootProviderBaseProps>,
-    SignaturePadVariantProps
-  >
+  Assign<Assign<HTMLStyledProps<'div'>, SignaturePad.RootProviderBaseProps>, SignaturePadVariantProps>
 >(SignaturePad.RootProvider, 'root')
 
 export type RootProps = ComponentProps<typeof Root>
@@ -27,25 +24,25 @@ export const ClearTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, SignaturePad.ClearTriggerBaseProps>
 >(SignaturePad.ClearTrigger, 'clearTrigger')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, SignaturePad.ControlBaseProps>
->(SignaturePad.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, SignaturePad.ControlBaseProps>>(
+  SignaturePad.Control,
+  'control',
+)
 
-export const Guide = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, SignaturePad.GuideBaseProps>
->(SignaturePad.Guide, 'guide')
+export const Guide = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, SignaturePad.GuideBaseProps>>(
+  SignaturePad.Guide,
+  'guide',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, SignaturePad.LabelBaseProps>
->(SignaturePad.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, SignaturePad.LabelBaseProps>>(
+  SignaturePad.Label,
+  'label',
+)
 
-export const Segment = withContext<
-  SVGSVGElement,
-  Assign<HTMLStyledProps<'svg'>, SignaturePad.SegmentBaseProps>
->(SignaturePad.Segment, 'segment')
+export const Segment = withContext<SVGSVGElement, Assign<HTMLStyledProps<'svg'>, SignaturePad.SegmentBaseProps>>(
+  SignaturePad.Segment,
+  'segment',
+)
 
 export const Context = SignaturePad.Context
 export const HiddenInput = SignaturePad.HiddenInput

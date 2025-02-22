@@ -29,11 +29,7 @@ export {
   type CarouselItemGroupBaseProps,
   type CarouselItemGroupProps,
 } from './carousel-item-group.vue'
-export {
-  default as CarouselItem,
-  type CarouselItemBaseProps,
-  type CarouselItemProps,
-} from './carousel-item.vue'
+export { default as CarouselItem, type CarouselItemBaseProps, type CarouselItemProps } from './carousel-item.vue'
 export {
   default as CarouselNextTrigger,
   type CarouselNextTriggerBaseProps,

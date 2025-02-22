@@ -4,9 +4,7 @@ import { useFieldContext } from '../field'
 import { usePinInputContext } from './use-pin-input-context'
 
 export interface PinInputHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface PinInputHiddenInputProps
-  extends HTMLProps<'input'>,
-    PinInputHiddenInputBaseProps {}
+export interface PinInputHiddenInputProps extends HTMLProps<'input'>, PinInputHiddenInputBaseProps {}
 
 export const PinInputHiddenInput = (props: PinInputHiddenInputProps) => {
   const pinInput = usePinInputContext()

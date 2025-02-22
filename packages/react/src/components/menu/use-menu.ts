@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseMenuProps
-  extends Optional<Omit<menu.Context, 'open.controlled' | 'dir' | 'getRootNode'>, 'id'> {
+export interface UseMenuProps extends Optional<Omit<menu.Context, 'open.controlled' | 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial open state of the menu when it is first rendered.
    * Use when you do not need to control its open state.

@@ -4,9 +4,7 @@ import { useTagsInputContext } from './use-tags-input-context'
 import { useTagsInputItemPropsContext } from './use-tags-input-item-props-context'
 
 export interface TagsInputItemPreviewBaseProps extends PolymorphicProps<'div'> {}
-export interface TagsInputItemPreviewProps
-  extends HTMLProps<'div'>,
-    TagsInputItemPreviewBaseProps {}
+export interface TagsInputItemPreviewProps extends HTMLProps<'div'>, TagsInputItemPreviewBaseProps {}
 
 export const TagsInputItemPreview = (props: TagsInputItemPreviewProps) => {
   const api = useTagsInputContext()

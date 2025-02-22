@@ -4,9 +4,7 @@ import { useFieldContext } from '../field'
 import { useTagsInputContext } from './use-tags-input-context'
 
 export interface TagsInputHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface TagsInputHiddenInputProps
-  extends HTMLProps<'input'>,
-    TagsInputHiddenInputBaseProps {}
+export interface TagsInputHiddenInputProps extends HTMLProps<'input'>, TagsInputHiddenInputBaseProps {}
 
 export const TagsInputHiddenInput = (props: TagsInputHiddenInputProps) => {
   const tagsInput = useTagsInputContext()

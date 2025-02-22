@@ -29,9 +29,7 @@ const emits = defineEmits<DialogRootEmits>()
 const dialog = useDialog(props, emits)
 
 DialogProvider(dialog)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

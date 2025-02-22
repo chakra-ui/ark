@@ -15,11 +15,7 @@ export default function Page() {
   return (
     <Container py={{ base: '16', md: '24' }} maxW="3xl">
       <Stack gap={{ base: '16', md: '24' }} alignItems="center">
-        <PageHeader
-          heading={page.title}
-          subHeading={page.subtitle ?? ''}
-          description={page.description}
-        />
+        <PageHeader heading={page.title} subHeading={page.subtitle ?? ''} description={page.description} />
         <Prose>
           <MDXContent code={page.code} />
         </Prose>

@@ -24,45 +24,45 @@ export const ClearTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, TagsInput.ClearTriggerBaseProps>
 >(TagsInput.ClearTrigger, 'clearTrigger')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TagsInput.ControlBaseProps>
->(TagsInput.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TagsInput.ControlBaseProps>>(
+  TagsInput.Control,
+  'control',
+)
 
-export const Input = withContext<
-  HTMLInputElement,
-  Assign<HTMLStyledProps<'input'>, TagsInput.InputBaseProps>
->(TagsInput.Input, 'input')
+export const Input = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, TagsInput.InputBaseProps>>(
+  TagsInput.Input,
+  'input',
+)
 
 export const ItemDeleteTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, TagsInput.ItemDeleteTriggerBaseProps>
 >(TagsInput.ItemDeleteTrigger, 'itemDeleteTrigger')
 
-export const ItemInput = withContext<
-  HTMLInputElement,
-  Assign<HTMLStyledProps<'input'>, TagsInput.ItemInputBaseProps>
->(TagsInput.ItemInput, 'itemInput')
+export const ItemInput = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, TagsInput.ItemInputBaseProps>>(
+  TagsInput.ItemInput,
+  'itemInput',
+)
 
-export const ItemPreview = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TagsInput.ItemPreviewBaseProps>
->(TagsInput.ItemPreview, 'itemPreview')
+export const ItemPreview = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TagsInput.ItemPreviewBaseProps>>(
+  TagsInput.ItemPreview,
+  'itemPreview',
+)
 
-export const Item = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, TagsInput.ItemBaseProps>
->(TagsInput.Item, 'item')
+export const Item = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, TagsInput.ItemBaseProps>>(
+  TagsInput.Item,
+  'item',
+)
 
-export const ItemText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, TagsInput.ItemTextBaseProps>
->(TagsInput.ItemText, 'itemText')
+export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, TagsInput.ItemTextBaseProps>>(
+  TagsInput.ItemText,
+  'itemText',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, TagsInput.LabelBaseProps>
->(TagsInput.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, TagsInput.LabelBaseProps>>(
+  TagsInput.Label,
+  'label',
+)
 
 export const Context = TagsInput.Context
 export const HiddenInput = TagsInput.HiddenInput

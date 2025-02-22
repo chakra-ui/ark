@@ -7,8 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
-export interface UseTagsInputProps
-  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTagsInputProps extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The initial value of the tags input when it is first rendered.
    * Use when you do not need to control the state of the tags input.
@@ -18,10 +17,7 @@ export interface UseTagsInputProps
 }
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
 
-export const useTagsInput = (
-  props: UseTagsInputProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseTagsInputReturn => {
+export const useTagsInput = (props: UseTagsInputProps = {}, emit?: EmitFn<RootEmits>): UseTagsInputReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

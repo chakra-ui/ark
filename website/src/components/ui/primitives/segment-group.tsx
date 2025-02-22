@@ -10,10 +10,7 @@ const { withProvider, withContext } = createStyleContext(segmentGroup)
 export type RootProviderProps = ComponentProps<typeof RootProvider>
 export const RootProvider = withProvider<
   HTMLDivElement,
-  Assign<
-    Assign<HTMLStyledProps<'div'>, SegmentGroup.RootProviderBaseProps>,
-    SegmentGroupVariantProps
-  >
+  Assign<Assign<HTMLStyledProps<'div'>, SegmentGroup.RootProviderBaseProps>, SegmentGroupVariantProps>
 >(SegmentGroup.RootProvider, 'root')
 
 export type RootProps = ComponentProps<typeof Root>
@@ -22,30 +19,30 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, SegmentGroup.RootBaseProps>, SegmentGroupVariantProps>
 >(SegmentGroup.Root, 'root')
 
-export const Indicator = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, SegmentGroup.IndicatorBaseProps>
->(SegmentGroup.Indicator, 'indicator')
+export const Indicator = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, SegmentGroup.IndicatorBaseProps>>(
+  SegmentGroup.Indicator,
+  'indicator',
+)
 
 export const ItemControl = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, SegmentGroup.ItemControlBaseProps>
 >(SegmentGroup.ItemControl, 'itemControl')
 
-export const Item = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, SegmentGroup.ItemBaseProps>
->(SegmentGroup.Item, 'item')
+export const Item = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, SegmentGroup.ItemBaseProps>>(
+  SegmentGroup.Item,
+  'item',
+)
 
-export const ItemText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, SegmentGroup.ItemTextBaseProps>
->(SegmentGroup.ItemText, 'itemText')
+export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, SegmentGroup.ItemTextBaseProps>>(
+  SegmentGroup.ItemText,
+  'itemText',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, SegmentGroup.LabelBaseProps>
->(SegmentGroup.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, SegmentGroup.LabelBaseProps>>(
+  SegmentGroup.Label,
+  'label',
+)
 
 export const Context = SegmentGroup.Context
 export const ItemHiddenInput = SegmentGroup.ItemHiddenInput

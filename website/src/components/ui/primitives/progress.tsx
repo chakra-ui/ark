@@ -19,10 +19,10 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Progress.RootBaseProps>, ProgressVariantProps>
 >(Progress.Root, 'root')
 
-export const Circle = withContext<
-  SVGSVGElement,
-  Assign<HTMLStyledProps<'svg'>, Progress.CircleBaseProps>
->(Progress.Circle, 'circle')
+export const Circle = withContext<SVGSVGElement, Assign<HTMLStyledProps<'svg'>, Progress.CircleBaseProps>>(
+  Progress.Circle,
+  'circle',
+)
 
 export const CircleRange = withContext<
   SVGCircleElement,
@@ -34,29 +34,29 @@ export const CircleTrack = withContext<
   Assign<HTMLStyledProps<'circle'>, Progress.CircleTrackBaseProps>
 >(Progress.CircleTrack, 'circleTrack')
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, Progress.LabelBaseProps>
->(Progress.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, Progress.LabelBaseProps>>(
+  Progress.Label,
+  'label',
+)
 
-export const Range = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Progress.RangeBaseProps>
->(Progress.Range, 'range')
+export const Range = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Progress.RangeBaseProps>>(
+  Progress.Range,
+  'range',
+)
 
-export const Track = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Progress.TrackBaseProps>
->(Progress.Track, 'track')
+export const Track = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Progress.TrackBaseProps>>(
+  Progress.Track,
+  'track',
+)
 
-export const ValueText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Progress.ValueTextBaseProps>
->(Progress.ValueText, 'valueText')
+export const ValueText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Progress.ValueTextBaseProps>>(
+  Progress.ValueText,
+  'valueText',
+)
 
-export const View = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Progress.ViewBaseProps>
->(Progress.View, 'view')
+export const View = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Progress.ViewBaseProps>>(
+  Progress.View,
+  'view',
+)
 
 export const Context = Progress.Context

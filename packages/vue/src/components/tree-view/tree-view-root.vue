@@ -20,11 +20,7 @@ export type { RootEmits as TreeViewRootEmits } from './tree-view.types'
 
 <script setup lang="ts" generic="T extends TreeNode">
 import { computed } from 'vue'
-import {
-  RenderStrategyPropsProvider,
-  useForwardExpose,
-  type RenderStrategyProps,
-} from '../../utils'
+import { RenderStrategyPropsProvider, useForwardExpose, type RenderStrategyProps } from '../../utils'
 import { ark } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
@@ -38,9 +34,7 @@ const emits = defineEmits<RootEmits>()
 
 const treeView = useTreeView(props, emits)
 TreeViewProvider(treeView)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

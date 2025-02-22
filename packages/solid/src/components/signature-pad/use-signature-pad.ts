@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseSignaturePadProps
-  extends Optional<Omit<signaturePad.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSignaturePadProps extends Optional<Omit<signaturePad.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSignaturePadReturn extends Accessor<signaturePad.Api<PropTypes>> {}
 
 export const useSignaturePad = (props: UseSignaturePadProps = {}): UseSignaturePadReturn => {

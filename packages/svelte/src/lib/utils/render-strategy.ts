@@ -14,10 +14,9 @@ export interface RenderStrategyProps {
   unmountOnExit?: boolean
 }
 
-export const [RenderStrategyProvider, useRenderStrategyContext] =
-  createContext<RenderStrategyProps>({
-    key: 'RenderStrategyContext',
-  })
+export const [RenderStrategyProvider, useRenderStrategyContext] = createContext<RenderStrategyProps>({
+  key: 'RenderStrategyContext',
+})
 
 export const splitRenderStrategyProps = <T extends RenderStrategyProps>(props: T) =>
   createSplitProps<RenderStrategyProps>()(props, ['lazyMount', 'unmountOnExit'])

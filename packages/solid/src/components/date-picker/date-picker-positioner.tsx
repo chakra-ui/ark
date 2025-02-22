@@ -5,9 +5,7 @@ import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerPositionerBaseProps extends PolymorphicProps<'div'> {}
-export interface DatePickerPositionerProps
-  extends HTMLProps<'div'>,
-    DatePickerPositionerBaseProps {}
+export interface DatePickerPositionerProps extends HTMLProps<'div'>, DatePickerPositionerBaseProps {}
 
 export const DatePickerPositioner = (props: DatePickerPositionerProps) => {
   const api = useDatePickerContext()

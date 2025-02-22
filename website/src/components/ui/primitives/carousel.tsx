@@ -19,30 +19,30 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Carousel.RootBaseProps>, CarouselVariantProps>
 >(Carousel.Root, 'root')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Carousel.ControlBaseProps>
->(Carousel.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Carousel.ControlBaseProps>>(
+  Carousel.Control,
+  'control',
+)
 
 export const IndicatorGroup = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, Carousel.IndicatorGroupBaseProps>
 >(Carousel.IndicatorGroup, 'indicatorGroup')
 
-export const Indicator = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, Carousel.IndicatorBaseProps>
->(Carousel.Indicator, 'indicator')
+export const Indicator = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, Carousel.IndicatorBaseProps>>(
+  Carousel.Indicator,
+  'indicator',
+)
 
-export const ItemGroup = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Carousel.ItemGroupBaseProps>
->(Carousel.ItemGroup, 'itemGroup')
+export const ItemGroup = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Carousel.ItemGroupBaseProps>>(
+  Carousel.ItemGroup,
+  'itemGroup',
+)
 
-export const Item = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Carousel.ItemBaseProps>
->(Carousel.Item, 'item')
+export const Item = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Carousel.ItemBaseProps>>(
+  Carousel.Item,
+  'item',
+)
 
 export const NextTrigger = withContext<
   HTMLButtonElement,

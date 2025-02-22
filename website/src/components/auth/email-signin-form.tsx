@@ -21,13 +21,7 @@ export const EmailSignInForm = (props: Props) => {
       }}
     >
       <Stack gap="3">
-        <Input
-          name="email"
-          type="email"
-          required
-          placeholder="Enter your email"
-          autoComplete="off"
-        />
+        <Input name="email" type="email" required placeholder="Enter your email" autoComplete="off" />
         <Button type="submit" width="full">
           Continue with Email
         </Button>

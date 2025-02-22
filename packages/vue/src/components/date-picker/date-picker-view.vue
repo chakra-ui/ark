@@ -29,11 +29,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-bind="datePickerAnatomy.build().view.attrs"
-    :hidden="datePicker.view !== view"
-    :as-child="asChild"
-  >
+  <ark.div v-bind="datePickerAnatomy.build().view.attrs" :hidden="datePicker.view !== view" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -24,15 +24,15 @@ export const AreaBackground = withContext<
   Assign<HTMLStyledProps<'div'>, ColorPicker.AreaBackgroundBaseProps>
 >(ColorPicker.AreaBackground, 'areaBackground')
 
-export const Area = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.AreaBaseProps>
->(ColorPicker.Area, 'area')
+export const Area = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.AreaBaseProps>>(
+  ColorPicker.Area,
+  'area',
+)
 
-export const AreaThumb = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.AreaThumbBaseProps>
->(ColorPicker.AreaThumb, 'areaThumb')
+export const AreaThumb = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.AreaThumbBaseProps>>(
+  ColorPicker.AreaThumb,
+  'areaThumb',
+)
 
 export const ChannelInput = withContext<
   HTMLInputElement,
@@ -64,15 +64,15 @@ export const ChannelSliderValueText = withContext<
   Assign<HTMLStyledProps<'span'>, ColorPicker.ChannelSliderValueTextBaseProps>
 >(ColorPicker.ChannelSliderValueText, 'channelSliderValueText')
 
-export const Content = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.ContentBaseProps>
->(ColorPicker.Content, 'content')
+export const Content = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.ContentBaseProps>>(
+  ColorPicker.Content,
+  'content',
+)
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.ControlBaseProps>
->(ColorPicker.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.ControlBaseProps>>(
+  ColorPicker.Control,
+  'control',
+)
 
 export const EyeDropperTrigger = withContext<
   HTMLButtonElement,
@@ -89,15 +89,15 @@ export const FormatTrigger = withContext<
   Assign<HTMLStyledProps<'button'>, ColorPicker.FormatTriggerBaseProps>
 >(ColorPicker.FormatTrigger, 'formatTrigger')
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, ColorPicker.LabelBaseProps>
->(ColorPicker.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, ColorPicker.LabelBaseProps>>(
+  ColorPicker.Label,
+  'label',
+)
 
-export const Positioner = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.PositionerBaseProps>
->(ColorPicker.Positioner, 'positioner')
+export const Positioner = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.PositionerBaseProps>>(
+  ColorPicker.Positioner,
+  'positioner',
+)
 
 export const SwatchGroup = withContext<
   HTMLDivElement,
@@ -109,10 +109,10 @@ export const SwatchIndicator = withContext<
   Assign<HTMLStyledProps<'div'>, ColorPicker.SwatchIndicatorBaseProps>
 >(ColorPicker.SwatchIndicator, 'swatchIndicator')
 
-export const Swatch = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.SwatchBaseProps>
->(ColorPicker.Swatch, 'swatch')
+export const Swatch = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.SwatchBaseProps>>(
+  ColorPicker.Swatch,
+  'swatch',
+)
 
 export const SwatchTrigger = withContext<
   HTMLButtonElement,
@@ -124,25 +124,25 @@ export const TransparencyGrid = withContext<
   Assign<HTMLStyledProps<'div'>, ColorPicker.TransparencyGridBaseProps>
 >(ColorPicker.TransparencyGrid, 'transparencyGrid')
 
-export const Trigger = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, ColorPicker.TriggerBaseProps>
->(ColorPicker.Trigger, 'trigger')
+export const Trigger = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, ColorPicker.TriggerBaseProps>>(
+  ColorPicker.Trigger,
+  'trigger',
+)
 
 export const ValueSwatch = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, ColorPicker.ValueSwatchBaseProps>
 >(ColorPicker.ValueSwatch, 'swatch')
 
-export const ValueText = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'span'>, ColorPicker.ValueTextBaseProps>
->(ColorPicker.ValueText, 'valueText')
+export const ValueText = withContext<HTMLDivElement, Assign<HTMLStyledProps<'span'>, ColorPicker.ValueTextBaseProps>>(
+  ColorPicker.ValueText,
+  'valueText',
+)
 
-export const View = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, ColorPicker.ViewBaseProps>
->(ColorPicker.View, 'view')
+export const View = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, ColorPicker.ViewBaseProps>>(
+  ColorPicker.View,
+  'view',
+)
 
 export const Context = ColorPicker.Context
 export const HiddenInput = ColorPicker.HiddenInput

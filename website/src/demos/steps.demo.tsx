@@ -60,9 +60,7 @@ export const Demo = () => {
         </Steps.Content>
       ))}
 
-      <Steps.CompletedContent>
-        Steps Complete - Thank you for filling out the form!
-      </Steps.CompletedContent>
+      <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
 
       <HStack>
         <Steps.PrevTrigger className={button({ variant: 'outline' })}>Back</Steps.PrevTrigger>

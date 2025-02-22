@@ -9,12 +9,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 export interface TrapOptions
   extends Pick<
     FocusTrapOptions,
-    | 'onActivate'
-    | 'onDeactivate'
-    | 'initialFocus'
-    | 'fallbackFocus'
-    | 'returnFocusOnDeactivate'
-    | 'setReturnFocus'
+    'onActivate' | 'onDeactivate' | 'initialFocus' | 'fallbackFocus' | 'returnFocusOnDeactivate' | 'setReturnFocus'
   > {
   /**
    * Whether the focus trap is disabled.

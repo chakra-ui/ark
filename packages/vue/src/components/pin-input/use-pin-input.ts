@@ -7,8 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './pin-input'
 
-export interface UsePinInputProps
-  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UsePinInputProps extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The initial value of the pin input when it is first rendered.
    * Use when you do not need to control the state of the pin input.

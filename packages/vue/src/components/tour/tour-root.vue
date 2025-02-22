@@ -21,9 +21,7 @@ const props = defineProps<TourRootProps>()
 const tour = computed(() => props.tour)
 
 TourProvider(tour)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

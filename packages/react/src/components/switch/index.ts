@@ -1,15 +1,7 @@
 export type { CheckedChangeDetails as SwitchCheckedChangeDetails } from '@zag-js/switch'
 export { SwitchContext, type SwitchContextProps } from './switch-context'
-export {
-  SwitchControl,
-  type SwitchControlBaseProps,
-  type SwitchControlProps,
-} from './switch-control'
-export {
-  SwitchHiddenInput,
-  type SwitchHiddenInputBaseProps,
-  type SwitchHiddenInputProps,
-} from './switch-hidden-input'
+export { SwitchControl, type SwitchControlBaseProps, type SwitchControlProps } from './switch-control'
+export { SwitchHiddenInput, type SwitchHiddenInputBaseProps, type SwitchHiddenInputProps } from './switch-hidden-input'
 export { SwitchLabel, type SwitchLabelBaseProps, type SwitchLabelProps } from './switch-label'
 export { SwitchRoot, type SwitchRootBaseProps, type SwitchRootProps } from './switch-root'
 export {

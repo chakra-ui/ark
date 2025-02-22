@@ -34,9 +34,7 @@ const emits = defineEmits<TimePickerRootEmits>()
 
 const timePicker = useTimePicker(props, emits)
 TimePickerProvider(timePicker)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

@@ -12,12 +12,9 @@ describe('Timer / Parts & Exports', () => {
   render(<ComponentUnderTest />)
 
   const renderedParts = getParts(timerAnatomy).filter(
-    (part) =>
-      !part.includes('[data-part="item-value"]') && !part.includes('[data-part="item-label"]'),
+    (part) => !part.includes('[data-part="item-value"]') && !part.includes('[data-part="item-label"]'),
   )
-  const exportedParts = getExports(timerAnatomy).filter(
-    (part) => !['ItemValue', 'ItemLabel'].includes(part),
-  )
+  const exportedParts = getExports(timerAnatomy).filter((part) => !['ItemValue', 'ItemLabel'].includes(part))
 
   it.each(renderedParts)('should render part! %s', async (part) => {
     expect(document.querySelector(part)).toBeInTheDocument()

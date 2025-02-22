@@ -7,14 +7,12 @@ import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-cont
 export interface MenuItemIndicatorBaseProps extends PolymorphicProps {}
 export interface MenuItemIndicatorProps extends HTMLProps<'div'>, MenuItemIndicatorBaseProps {}
 
-export const MenuItemIndicator = forwardRef<HTMLDivElement, MenuItemIndicatorProps>(
-  (props, ref) => {
-    const menu = useMenuContext()
-    const optionItemProps = useMenuOptionItemPropsContext()
-    const mergedProps = mergeProps(menu.getItemIndicatorProps(optionItemProps), props)
+export const MenuItemIndicator = forwardRef<HTMLDivElement, MenuItemIndicatorProps>((props, ref) => {
+  const menu = useMenuContext()
+  const optionItemProps = useMenuOptionItemPropsContext()
+  const mergedProps = mergeProps(menu.getItemIndicatorProps(optionItemProps), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})
 
 MenuItemIndicator.displayName = 'MenuItemIndicator'

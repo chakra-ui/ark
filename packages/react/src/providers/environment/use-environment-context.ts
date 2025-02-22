@@ -18,15 +18,14 @@ export interface UseEnvironmentContext {
   getWindow(): Window & typeof globalThis
 }
 
-export const [EnvironmentContextProvider, useEnvironmentContext] =
-  createContext<UseEnvironmentContext>({
-    name: 'EnvironmentContext',
-    hookName: 'useEnvironmentContext',
-    providerName: '<EnvironmentProvider />',
-    strict: false,
-    defaultValue: {
-      getRootNode: () => document,
-      getDocument: () => document,
-      getWindow: () => window,
-    },
-  })
+export const [EnvironmentContextProvider, useEnvironmentContext] = createContext<UseEnvironmentContext>({
+  name: 'EnvironmentContext',
+  hookName: 'useEnvironmentContext',
+  providerName: '<EnvironmentProvider />',
+  strict: false,
+  defaultValue: {
+    getRootNode: () => document,
+    getDocument: () => document,
+    getWindow: () => window,
+  },
+})

@@ -7,8 +7,7 @@
   }
 
   export interface QrCodeRootProviderBaseProps extends RootProviderProps {}
-  export interface QrCodeRootProviderProps
-    extends Assign<HTMLProps<'div'>, QrCodeRootProviderBaseProps> {}
+  export interface QrCodeRootProviderProps extends Assign<HTMLProps<'div'>, QrCodeRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">

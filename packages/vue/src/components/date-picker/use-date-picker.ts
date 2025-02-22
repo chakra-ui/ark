@@ -7,10 +7,7 @@ import { cleanProps } from '../../utils'
 import type { RootEmits } from './date-picker.types'
 
 export interface UseDatePickerProps
-  extends Optional<
-    Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled' | 'value'>,
-    'id'
-  > {
+  extends Optional<Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled' | 'value'>, 'id'> {
   /**
    * The v-model value of the date picker
    */
@@ -31,10 +28,7 @@ export interface UseDatePickerProps
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
 
-export const useDatePicker = (
-  props: UseDatePickerProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseDatePickerReturn => {
+export const useDatePicker = (props: UseDatePickerProps = {}, emit?: EmitFn<RootEmits>): UseDatePickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

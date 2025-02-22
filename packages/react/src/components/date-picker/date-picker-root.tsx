@@ -3,19 +3,11 @@ import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseDatePickerProps, useDatePicker } from './use-date-picker'
 import { DatePickerProvider } from './use-date-picker-context'
 
-export interface DatePickerRootBaseProps
-  extends UseDatePickerProps,
-    UsePresenceProps,
-    PolymorphicProps {}
+export interface DatePickerRootBaseProps extends UseDatePickerProps, UsePresenceProps, PolymorphicProps {}
 export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePickerRootBaseProps> {}
 
 export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((props, ref) => {

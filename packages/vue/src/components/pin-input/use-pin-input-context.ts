@@ -3,5 +3,4 @@ import type { UsePinInputReturn } from './use-pin-input'
 
 export interface UsePinInputContext extends UsePinInputReturn {}
 
-export const [PinInputProvider, usePinInputContext] =
-  createContext<UsePinInputContext>('PinInputContext')
+export const [PinInputProvider, usePinInputContext] = createContext<UsePinInputContext>('PinInputContext')

@@ -1,8 +1,5 @@
 export type { PageChangeDetails, AutoplayStatusDetails, DragStatusDetails } from '@zag-js/carousel'
-export {
-  default as Context,
-  type CarouselContextProps as ContextProps,
-} from './carousel-context.vue'
+export { default as Context, type CarouselContextProps as ContextProps } from './carousel-context.vue'
 export {
   default as Control,
   type CarouselControlProps as ControlProps,

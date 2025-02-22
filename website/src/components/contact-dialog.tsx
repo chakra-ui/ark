@@ -86,12 +86,7 @@ export const ContactDialog = (props: Props) => {
                   <Field.Root>
                     <Field.Label>Message</Field.Label>
                     <Field.Textarea autoresize asChild>
-                      <Textarea
-                        name="message"
-                        placeholder="How can we assist you?"
-                        required
-                        rows={4}
-                      />
+                      <Textarea name="message" placeholder="How can we assist you?" required rows={4} />
                     </Field.Textarea>
                   </Field.Root>
                   <Field.Root required>
@@ -124,31 +119,29 @@ export const ContactDialog = (props: Props) => {
   )
 }
 
-export const FloatingContactButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  (props, ref) => (
-    <IconButton
-      ref={ref}
-      borderRadius="full"
-      aria-label="Contact Us"
-      position="fixed"
-      bottom="6"
-      right="6"
-      boxShadow="lg"
-      css={{
-        '& svg': {
-          width: '6',
-          height: '6',
-        },
-        _hover: {
-          transform: 'scale(1.1)',
-        },
-      }}
-      size="xl"
-      {...props}
-    >
-      <MessageSquareIcon fill="white" />
-    </IconButton>
-  ),
-)
+export const FloatingContactButton = forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => (
+  <IconButton
+    ref={ref}
+    borderRadius="full"
+    aria-label="Contact Us"
+    position="fixed"
+    bottom="6"
+    right="6"
+    boxShadow="lg"
+    css={{
+      '& svg': {
+        width: '6',
+        height: '6',
+      },
+      _hover: {
+        transform: 'scale(1.1)',
+      },
+    }}
+    size="xl"
+    {...props}
+  >
+    <MessageSquareIcon fill="white" />
+  </IconButton>
+))
 
 FloatingContactButton.displayName = 'FloatingContactButton'

@@ -31,9 +31,7 @@ const props = defineProps<TreeViewRootProviderProps<T>>()
 const treeView = computed(() => props.value)
 
 TreeViewProvider(treeView)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

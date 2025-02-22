@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './menu'
 
-export interface UseMenuProps
-  extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
+export interface UseMenuProps extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the menu when it is first rendered.
    * Use when you do not need to control its open state.

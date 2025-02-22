@@ -15,9 +15,7 @@ export const RenderFn = () => {
           </Dialog.Content>
         </Dialog.Positioner>
       </Portal>
-      <Dialog.Context>
-        {(context) => <p>Dialog is {context().open ? 'open' : 'closed'}</p>}
-      </Dialog.Context>
+      <Dialog.Context>{(context) => <p>Dialog is {context().open ? 'open' : 'closed'}</p>}</Dialog.Context>
     </Dialog.Root>
   )
 }

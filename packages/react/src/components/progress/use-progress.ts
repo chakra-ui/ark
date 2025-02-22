@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UseProgressProps
-  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseProgressProps extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the progress when it is first rendered.
    * Use when you do not need to control the state of the progress.

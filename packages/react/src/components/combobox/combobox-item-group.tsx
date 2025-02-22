@@ -9,21 +9,19 @@ import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-
 export interface ComboboxItemGroupBaseProps extends PolymorphicProps {}
 export interface ComboboxItemGroupProps extends HTMLProps<'div'>, ComboboxItemGroupBaseProps {}
 
-export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>(
-  (props, ref) => {
-    const id = useId()
-    const [_itemGroupProps, localProps] = createSplitProps<Partial<ItemGroupProps>>()(props, ['id'])
-    const itemGroupProps = { id, ..._itemGroupProps }
+export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>((props, ref) => {
+  const id = useId()
+  const [_itemGroupProps, localProps] = createSplitProps<Partial<ItemGroupProps>>()(props, ['id'])
+  const itemGroupProps = { id, ..._itemGroupProps }
 
-    const combobox = useComboboxContext()
-    const mergedProps = mergeProps(combobox.getItemGroupProps(itemGroupProps), localProps)
+  const combobox = useComboboxContext()
+  const mergedProps = mergeProps(combobox.getItemGroupProps(itemGroupProps), localProps)
 
-    return (
-      <ComboboxItemGroupPropsProvider value={itemGroupProps}>
-        <ark.div {...mergedProps} ref={ref} />
-      </ComboboxItemGroupPropsProvider>
-    )
-  },
-)
+  return (
+    <ComboboxItemGroupPropsProvider value={itemGroupProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </ComboboxItemGroupPropsProvider>
+  )
+})
 
 ComboboxItemGroup.displayName = 'ComboboxItemGroup'

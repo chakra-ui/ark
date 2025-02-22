@@ -8,10 +8,7 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './color-picker.types'
 
 export interface UseColorPickerProps
-  extends Optional<
-    Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
-    'id'
-  > {
+  extends Optional<Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>, 'id'> {
   /**
    * The v-model value of the color picker
    */
@@ -28,10 +25,7 @@ export interface UseColorPickerProps
 }
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
-export const useColorPicker = (
-  props: UseColorPickerProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseColorPickerReturn => {
+export const useColorPicker = (props: UseColorPickerProps = {}, emit?: EmitFn<RootEmits>): UseColorPickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

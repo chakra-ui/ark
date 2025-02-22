@@ -5,19 +5,16 @@ import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps {}
-export interface SegmentGroupItemHiddenInputProps
-  extends HTMLProps<'input'>,
-    SegmentGroupItemHiddenInputBaseProps {}
+export interface SegmentGroupItemHiddenInputProps extends HTMLProps<'input'>, SegmentGroupItemHiddenInputBaseProps {}
 
-export const SegmentGroupItemHiddenInput = forwardRef<
-  HTMLInputElement,
-  SegmentGroupItemHiddenInputProps
->((props, ref) => {
-  const segmentGroup = useSegmentGroupContext()
-  const itemProps = useSegmentGroupItemPropsContext()
-  const mergedProps = mergeProps(segmentGroup.getItemHiddenInputProps(itemProps), props)
+export const SegmentGroupItemHiddenInput = forwardRef<HTMLInputElement, SegmentGroupItemHiddenInputProps>(
+  (props, ref) => {
+    const segmentGroup = useSegmentGroupContext()
+    const itemProps = useSegmentGroupItemPropsContext()
+    const mergedProps = mergeProps(segmentGroup.getItemHiddenInputProps(itemProps), props)
 
-  return <ark.input {...mergedProps} ref={ref} />
-})
+    return <ark.input {...mergedProps} ref={ref} />
+  },
+)
 
 SegmentGroupItemHiddenInput.displayName = 'SegmentGroupItemHiddenInput'

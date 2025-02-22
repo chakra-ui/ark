@@ -7,8 +7,7 @@
   }
 
   export interface SliderRootProviderBaseProps extends RootProviderProps {}
-  export interface SliderRootProviderProps
-    extends Assign<HTMLProps<'div'>, SliderRootProviderBaseProps> {}
+  export interface SliderRootProviderProps extends Assign<HTMLProps<'div'>, SliderRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">

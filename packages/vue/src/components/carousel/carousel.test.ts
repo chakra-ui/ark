@@ -4,9 +4,7 @@ import { getExports, getParts } from '../../setup-test'
 import ComponentUnderTest from './examples/basic.vue'
 
 describe('Carousel', () => {
-  const renderedParts = getParts(carouselAnatomy).filter(
-    (part) => !part.includes('[data-part="autoplay-trigger"]'),
-  )
+  const renderedParts = getParts(carouselAnatomy).filter((part) => !part.includes('[data-part="autoplay-trigger"]'))
   it.each(renderedParts)('should render part %s', async (part) => {
     render(ComponentUnderTest)
 

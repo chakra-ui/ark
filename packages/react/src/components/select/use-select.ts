@@ -8,10 +8,7 @@ import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<
-    Omit<select.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'collection'>,
-    'id'
-  > {
+  extends Optional<Omit<select.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'collection'>, 'id'> {
   /**
    * The initial open state of the select when it is first rendered.
    * Use when you do not need to control its open state.
@@ -30,9 +27,7 @@ export interface UseSelectProps<T extends CollectionItem>
 
 export interface UseSelectReturn<T extends CollectionItem> extends select.Api<PropTypes, T> {}
 
-export const useSelect = <T extends CollectionItem>(
-  props: UseSelectProps<T>,
-): UseSelectReturn<T> => {
+export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): UseSelectReturn<T> => {
   const { collection, ...selectProps } = props
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()

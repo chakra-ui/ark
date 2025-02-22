@@ -6,8 +6,7 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
-export interface UseSwitchProps
-  extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSwitchProps extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The checked state of the switch when it is first rendered.
    * Use this when you do not need to control the state of the switch.

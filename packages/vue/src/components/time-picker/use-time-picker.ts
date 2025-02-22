@@ -7,10 +7,7 @@ import { cleanProps } from '../../utils'
 import type { RootEmits } from './time-picker.types'
 
 export interface UseTimePickerProps
-  extends Optional<
-    Omit<timePicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
-    'id'
-  > {
+  extends Optional<Omit<timePicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>, 'id'> {
   /**
   /**
    * The initial open state of the time picker when it is first rendered.
@@ -30,10 +27,7 @@ export interface UseTimePickerProps
 
 export interface UseTimePickerReturn extends ComputedRef<timePicker.Api<PropTypes>> {}
 
-export const useTimePicker = (
-  props: UseTimePickerProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseTimePickerReturn => {
+export const useTimePicker = (props: UseTimePickerProps = {}, emit?: EmitFn<RootEmits>): UseTimePickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

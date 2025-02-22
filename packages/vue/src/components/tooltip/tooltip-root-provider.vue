@@ -19,9 +19,7 @@ const props = defineProps<TooltipRootProviderProps>()
 const tooltip = computed(() => props.value)
 
 TooltipProvider(tooltip)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

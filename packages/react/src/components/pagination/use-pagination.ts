@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePaginationProps
-  extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UsePaginationProps extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial page of the pagination when it is first rendered.
    * Use when you do not need to control the state of the pagination.

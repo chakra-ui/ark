@@ -32,10 +32,7 @@ export const Demo = () => {
                     {(actions) =>
                       actions.map((action) => (
                         <Tour.ActionTrigger key={action.label} action={action} asChild>
-                          <Button
-                            size="sm"
-                            variant={action.action === 'prev' ? 'outline' : 'solid'}
-                          >
+                          <Button size="sm" variant={action.action === 'prev' ? 'outline' : 'solid'}>
                             {action.label}
                           </Button>
                         </Tour.ActionTrigger>
@@ -93,8 +90,7 @@ const steps: Tour.StepDetails[] = [
     id: 'step-4',
     type: 'dialog',
     title: 'Tour Completed',
-    description:
-      'You have completed the tour. Now, learn how to build a tour for your design system.',
+    description: 'You have completed the tour. Now, learn how to build a tour for your design system.',
     actions: [
       { label: 'Prev', action: 'prev' },
       { label: 'Finish Tour', action: 'dismiss' },

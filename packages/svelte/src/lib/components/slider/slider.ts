@@ -1,8 +1,5 @@
 export type { FocusChangeDetails, ValueChangeDetails } from '@zag-js/slider'
-export {
-  default as Context,
-  type SliderContextProps as ContextProps,
-} from './slider-context.svelte'
+export { default as Context, type SliderContextProps as ContextProps } from './slider-context.svelte'
 export {
   default as Control,
   type SliderControlBaseProps as ControlBaseProps,

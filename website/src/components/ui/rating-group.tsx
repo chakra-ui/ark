@@ -14,9 +14,7 @@ export const RatingGroup = forwardRef<HTMLDivElement, RatingGroupProps>((props, 
           {({ items }) =>
             items.map((index) => (
               <ArkRatingGroup.Item key={index} index={index}>
-                <ArkRatingGroup.ItemContext>
-                  {(item) => <StarIcon isHalf={item.half} />}
-                </ArkRatingGroup.ItemContext>
+                <ArkRatingGroup.ItemContext>{(item) => <StarIcon isHalf={item.half} />}</ArkRatingGroup.ItemContext>
               </ArkRatingGroup.Item>
             ))
           }

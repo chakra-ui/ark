@@ -10,23 +10,17 @@ interface RootProviderProps {
 }
 
 export interface RatingGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface RatingGroupRootProviderProps
-  extends HTMLProps<'div'>,
-    RatingGroupRootProviderBaseProps {}
+export interface RatingGroupRootProviderProps extends HTMLProps<'div'>, RatingGroupRootProviderBaseProps {}
 
-export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRootProviderProps>(
-  (props, ref) => {
-    const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
+export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRootProviderProps>((props, ref) => {
+  const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
 
-    return (
-      <RatingGroupProvider value={ratingGroup}>
-        <ark.div {...mergedProps} ref={ref} />
-      </RatingGroupProvider>
-    )
-  },
-)
+  return (
+    <RatingGroupProvider value={ratingGroup}>
+      <ark.div {...mergedProps} ref={ref} />
+    </RatingGroupProvider>
+  )
+})
 
 RatingGroupRootProvider.displayName = 'RatingGroupRootProvider'

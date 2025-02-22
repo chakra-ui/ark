@@ -5,5 +5,4 @@ export interface AccordionContextProps {
   children: (context: UseAccordionContext) => ReactNode
 }
 
-export const AccordionContext = (props: AccordionContextProps) =>
-  props.children(useAccordionContext())
+export const AccordionContext = (props: AccordionContextProps) => props.children(useAccordionContext())

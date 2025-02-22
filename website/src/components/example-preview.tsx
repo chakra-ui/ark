@@ -19,9 +19,7 @@ export const ExamplePreview = async (props: Props) => {
   const { framework } = getServerContext()
 
   const codeExamplesAvailable = example.accessLevel === 'free' || (await hasUserPermission())
-  const codeExamples = codeExamplesAvailable
-    ? await fetchCodeExamples({ id: example.id, framework })
-    : []
+  const codeExamples = codeExamplesAvailable ? await fetchCodeExamples({ id: example.id, framework }) : []
 
   return codeExamplesAvailable ? (
     <Tabs.Root variant="enclosed" defaultValue="preview" size="sm" lazyMount>
@@ -42,10 +40,7 @@ export const ExamplePreview = async (props: Props) => {
         </Box>
       </Tabs.Content>
       <Tabs.Content value="code" px="!0">
-        <CodeTabs
-          examples={codeExamples}
-          defaultValue={framework === 'vue' ? 'index.vue' : 'index.tsx'}
-        />
+        <CodeTabs examples={codeExamples} defaultValue={framework === 'vue' ? 'index.vue' : 'index.tsx'} />
       </Tabs.Content>
     </Tabs.Root>
   ) : (

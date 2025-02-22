@@ -8,10 +8,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseTimePickerReturn>
 }
 
-export interface TimePickerRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface TimePickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface TimePickerRootProviderProps
   extends TimePickerRootProviderBaseProps,
     /**
@@ -30,9 +27,7 @@ const props = defineProps<TimePickerRootProviderProps>()
 const timePicker = computed(() => props.value)
 
 TimePickerProvider(timePicker)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

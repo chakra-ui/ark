@@ -4,9 +4,7 @@ import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
 export interface ComboboxItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
-export interface ComboboxItemIndicatorProps
-  extends HTMLProps<'div'>,
-    ComboboxItemIndicatorBaseProps {}
+export interface ComboboxItemIndicatorProps extends HTMLProps<'div'>, ComboboxItemIndicatorBaseProps {}
 
 export const ComboboxItemIndicator = (props: ComboboxItemIndicatorProps) => {
   const combobox = useComboboxContext()

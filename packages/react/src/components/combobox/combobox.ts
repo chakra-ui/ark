@@ -15,10 +15,7 @@ export {
   type ComboboxContentBaseProps as ContentBaseProps,
   type ComboboxContentProps as ContentProps,
 } from './combobox-content'
-export {
-  ComboboxContext as Context,
-  type ComboboxContextProps as ContextProps,
-} from './combobox-context'
+export { ComboboxContext as Context, type ComboboxContextProps as ContextProps } from './combobox-context'
 export {
   ComboboxControl as Control,
   type ComboboxControlBaseProps as ControlBaseProps,

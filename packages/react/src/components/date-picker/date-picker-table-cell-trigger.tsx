@@ -6,14 +6,9 @@ import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell
 import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context'
 
 export interface DatePickerTableCellTriggerBaseProps extends PolymorphicProps {}
-export interface DatePickerTableCellTriggerProps
-  extends HTMLProps<'div'>,
-    DatePickerTableCellTriggerBaseProps {}
+export interface DatePickerTableCellTriggerProps extends HTMLProps<'div'>, DatePickerTableCellTriggerBaseProps {}
 
-export const DatePickerTableCellTrigger = forwardRef<
-  HTMLDivElement,
-  DatePickerTableCellTriggerProps
->((props, ref) => {
+export const DatePickerTableCellTrigger = forwardRef<HTMLDivElement, DatePickerTableCellTriggerProps>((props, ref) => {
   const datePicker = useDatePickerContext()
   const tableCellProps = useDatePickerTableCellPropsContext()
   const viewProps = useDatePickerViewPropsContext()

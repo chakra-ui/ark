@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface SliderRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface SliderRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    SliderRootProviderBaseProps {}
+export interface SliderRootProviderProps extends HTMLProps<'div'>, RootProviderProps, SliderRootProviderBaseProps {}
 
 export const SliderRootProvider = (props: SliderRootProviderProps) => {
   const [{ value: slider }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

@@ -8,10 +8,7 @@ export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicP
 export interface CarouselIndicatorProps extends HTMLProps<'button'>, CarouselIndicatorBaseProps {}
 
 export const CarouselIndicator = (props: CarouselIndicatorProps) => {
-  const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, [
-    'index',
-    'readOnly',
-  ])
+  const [indicatorProps, localProps] = createSplitProps<IndicatorProps>()(props, ['index', 'readOnly'])
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().getIndicatorProps(indicatorProps), localProps)
 

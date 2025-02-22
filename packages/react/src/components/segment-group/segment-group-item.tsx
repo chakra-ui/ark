@@ -11,29 +11,23 @@ import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-co
 export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupItemBaseProps {}
 
-export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>(
-  (props, ref) => {
-    const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
-      'value',
-      'disabled',
-      'invalid',
-    ])
-    const segmentGroup = useSegmentGroupContext()
-    const mergedProps = mergeProps(
-      segmentGroup.getItemProps(itemProps),
-      parts.item.attrs as Record<string, string>,
-      localProps,
-    )
-    const itemState = segmentGroup.getItemState(itemProps)
+export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>((props, ref) => {
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid'])
+  const segmentGroup = useSegmentGroupContext()
+  const mergedProps = mergeProps(
+    segmentGroup.getItemProps(itemProps),
+    parts.item.attrs as Record<string, string>,
+    localProps,
+  )
+  const itemState = segmentGroup.getItemState(itemProps)
 
-    return (
-      <SegmentGroupItemPropsProvider value={itemProps}>
-        <SegmentGroupItemProvider value={itemState}>
-          <ark.label {...mergedProps} ref={ref} />
-        </SegmentGroupItemProvider>
-      </SegmentGroupItemPropsProvider>
-    )
-  },
-)
+  return (
+    <SegmentGroupItemPropsProvider value={itemProps}>
+      <SegmentGroupItemProvider value={itemState}>
+        <ark.label {...mergedProps} ref={ref} />
+      </SegmentGroupItemProvider>
+    </SegmentGroupItemPropsProvider>
+  )
+})
 
 SegmentGroupItem.displayName = 'SegmentGroupItem'
