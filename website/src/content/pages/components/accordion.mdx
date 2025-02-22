@@ -17,7 +17,8 @@ description: A collapsible component for displaying content in a vertical stack.
 
 ## Anatomy
 
-To set up the accordion correctly, it's essential to understand its anatomy and the naming of its parts.
+To set up the accordion correctly, it's essential to understand its anatomy and the naming of its
+parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -45,13 +46,15 @@ Use the `multiple` prop to allow multiple panels to be expanded simultaneously.
 
 ### Horizontal Orientation
 
-By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a horizontal layout.
+By default, the Accordion is oriented vertically. Use the `orientation` prop to switch to a
+horizontal layout.
 
 <Example id="horizontal" />
 
 ### Animate Content Size
 
-Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes:
+Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands
+or closes:
 
 ```css
 @keyframes slideDown {
@@ -87,8 +90,9 @@ Use the `--height` and/or `--width` CSS variables to animate the size of the con
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the accordion. It accepts the value of the `useAccordion` hook.
-You can leverage it to access the component state and methods from outside the accordion.
+The `RootProvider` component provides a context for the accordion. It accepts the value of the
+`useAccordion` hook. You can leverage it to access the component state and methods from outside the
+accordion.
 
 <Example id="root-provider" />
 
@@ -124,7 +128,8 @@ Use the `getItemState` method to get the state of an accordion item.
 
 ## Accessibility
 
-This component complies with the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+This component complies with the
+[Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
 
 ### Keyboard Support
 

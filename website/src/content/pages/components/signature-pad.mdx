@@ -8,7 +8,8 @@ description: A component that allows users to draw a signature using a signature
 
 ## Anatomy
 
-To set up the signature pad correctly, you'll need to understand its anatomy and how we name its parts.
+To set up the signature pad correctly, you'll need to understand its anatomy and how we name its
+parts.
 
 > Each part includes a `data-part` attribute to help identify them in the DOM.
 
@@ -23,22 +24,23 @@ example:
 
 ### Image Preview
 
-After the user draws a signature, you can display a preview of the signature as an image. This is useful
-when you want to show the user a preview of the signature before saving it.
+After the user draws a signature, you can display a preview of the signature as an image. This is
+useful when you want to show the user a preview of the signature before saving it.
 
 <Example id="image-preview" />
 
 ### Using the Field Component
 
-The `Field` component helps manage form-related state and accessibility attributes of a signature pad.
-It includes handling ARIA labels, helper text, and error text to ensure proper accessibility.
+The `Field` component helps manage form-related state and accessibility attributes of a signature
+pad. It includes handling ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the signature-pad. It accepts the value of the `useSignature-pad` hook.
-You can leverage it to access the component state and methods from outside the signature-pad.
+The `RootProvider` component provides a context for the signature-pad. It accepts the value of the
+`useSignature-pad` hook. You can leverage it to access the component state and methods from outside
+the signature-pad.
 
 <Example id="root-provider" />
 

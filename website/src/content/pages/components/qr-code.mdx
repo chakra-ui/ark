@@ -16,13 +16,15 @@ To set up the QR code correctly, you'll need to understand its anatomy and how w
 
 ## Examples
 
-Learn how to use the `QR Code` component in your project. Let's take a look at the most basic example:
+Learn how to use the `QR Code` component in your project. Let's take a look at the most basic
+example:
 
 <Example id="basic" />
 
 ### Download a QR Code
 
-You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the `fileName` and the `mimeType` of the image.
+You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the
+`fileName` and the `mimeType` of the image.
 
 ```tsx
 <QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
@@ -32,13 +34,15 @@ You can download the QR code by using the `QrCode.DownloadTrigger`. You will hav
 
 ### With Overlay
 
-You can also add a logo or overlay to the QR code. This is useful when you want to brand the QR code.
+You can also add a logo or overlay to the QR code. This is useful when you want to brand the QR
+code.
 
 <Example id="with-overlay" />
 
 ### Error Correction
 
-In cases where the link is too long or the logo overlay covers a significant area, the error correction level can be increased.
+In cases where the link is too long or the logo overlay covers a significant area, the error
+correction level can be increased.
 
 Use the `encoding.ecc` or `encoding.boostEcc` property to set the error correction level:
 
@@ -51,8 +55,9 @@ Use the `encoding.ecc` or `encoding.boostEcc` property to set the error correcti
 
 ### Using the Root Provider
 
-The `RootProvider` component provides a context for the QR code. It accepts the value of the `useQrCode` hook.
-You can leverage it to access the component state and methods from outside the QR code.
+The `RootProvider` component provides a context for the QR code. It accepts the value of the
+`useQrCode` hook. You can leverage it to access the component state and methods from outside the QR
+code.
 
 <Example id="root-provider" />
 
