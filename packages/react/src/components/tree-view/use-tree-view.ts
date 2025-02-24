@@ -26,9 +26,7 @@ export interface UseTreeViewProps<T extends TreeNode>
 
 export interface UseTreeViewReturn<T extends TreeNode> extends treeView.Api<PropTypes, T> {}
 
-export const useTreeView = <T extends TreeNode>(
-  props: UseTreeViewProps<T>,
-): UseTreeViewReturn<T> => {
+export const useTreeView = <T extends TreeNode>(props: UseTreeViewProps<T>): UseTreeViewReturn<T> => {
   const { collection, ...treeViewProps } = props
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()

@@ -5,5 +5,4 @@ export interface PaginationContextProps {
   children: (context: UsePaginationContext) => JSX.Element
 }
 
-export const PaginationContext = (props: PaginationContextProps) =>
-  props.children(usePaginationContext())
+export const PaginationContext = (props: PaginationContextProps) => props.children(usePaginationContext())

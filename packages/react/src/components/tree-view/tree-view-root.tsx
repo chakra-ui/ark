@@ -15,14 +15,9 @@ export interface TreeViewRootBaseProps<T extends TreeNode>
   extends UseTreeViewProps<T>,
     RenderStrategyProps,
     PolymorphicProps {}
-export interface TreeViewRootProps<T extends TreeNode>
-  extends HTMLProps<'div'>,
-    TreeViewRootBaseProps<T> {}
+export interface TreeViewRootProps<T extends TreeNode> extends HTMLProps<'div'>, TreeViewRootBaseProps<T> {}
 
-const TreeViewImpl = <T extends TreeNode>(
-  props: TreeViewRootProps<T>,
-  ref: React.Ref<HTMLDivElement>,
-) => {
+const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: React.Ref<HTMLDivElement>) => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps<T>>()(treeViewProps, [
     'collection',

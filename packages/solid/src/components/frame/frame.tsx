@@ -1,12 +1,4 @@
-import {
-  type JSX,
-  Show,
-  createEffect,
-  createMemo,
-  createSignal,
-  onCleanup,
-  splitProps,
-} from 'solid-js'
+import { type JSX, Show, createEffect, createMemo, createSignal, onCleanup, splitProps } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { EnvironmentProvider } from '../../providers'
 import type { Assign } from '../../types'
@@ -22,11 +14,9 @@ export interface FrameBaseProps {
   onUnmount?: () => void
 }
 
-export interface FrameProps
-  extends Assign<JSX.IframeHTMLAttributes<HTMLIFrameElement>, FrameBaseProps> {}
+export interface FrameProps extends Assign<JSX.IframeHTMLAttributes<HTMLIFrameElement>, FrameBaseProps> {}
 
-const resetStyle =
-  '<style>*,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }</style>'
+const resetStyle = '<style>*,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }</style>'
 
 const initialSrcDoc = `<html><head>${resetStyle}</head><body><div class="frame-root"></div></body></html>`
 
@@ -37,13 +27,7 @@ function getMountNode(frame: HTMLIFrameElement) {
 }
 
 export const Frame = (props: FrameProps) => {
-  const [frameProps, localProps] = splitProps(props, [
-    'children',
-    'head',
-    'onMount',
-    'onUnmount',
-    'srcdoc',
-  ])
+  const [frameProps, localProps] = splitProps(props, ['children', 'head', 'onMount', 'onUnmount', 'srcdoc'])
 
   const srcdoc = createMemo(() => frameProps.srcdoc ?? initialSrcDoc)
 

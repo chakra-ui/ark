@@ -8,10 +8,7 @@ export {
   type AccordionItemContentProps,
   type AccordionItemContentBaseProps,
 } from './accordion-item-content.vue'
-export {
-  default as AccordionItemContext,
-  type AccordionItemContextProps,
-} from './accordion-item-context.vue'
+export { default as AccordionItemContext, type AccordionItemContextProps } from './accordion-item-context.vue'
 export {
   default as AccordionItemIndicator,
   type AccordionItemIndicatorProps,
@@ -22,11 +19,7 @@ export {
   type AccordionItemTriggerProps,
   type AccordionItemTriggerBaseProps,
 } from './accordion-item-trigger.vue'
-export {
-  default as AccordionItem,
-  type AccordionItemProps,
-  type AccordionItemBaseProps,
-} from './accordion-item.vue'
+export { default as AccordionItem, type AccordionItemProps, type AccordionItemBaseProps } from './accordion-item.vue'
 export {
   default as AccordionRootProvider,
   type AccordionRootProviderProps,

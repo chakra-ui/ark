@@ -70,10 +70,7 @@ interface FlattenedTocEntry extends Omit<TocEntry, 'items'> {
 const flattenTocEntries = (entries: TocEntry[] = [], depth = 0): FlattenedTocEntry[] =>
   entries.reduce<FlattenedTocEntry[]>(
     (acc, entry) =>
-      acc.concat(
-        { title: entry.title, url: entry.url, depth },
-        flattenTocEntries(entry.items, depth + 1),
-      ),
+      acc.concat({ title: entry.title, url: entry.url, depth }, flattenTocEntries(entry.items, depth + 1)),
     [],
   )
 
@@ -83,9 +80,7 @@ const useScrollSpy = (selectors: string[]) => {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const elements = selectors.map((selector) =>
-      document.querySelector(`[id='${selector.replace('#', '')}']`),
-    )
+    const elements = selectors.map((selector) => document.querySelector(`[id='${selector.replace('#', '')}']`))
 
     observer.current = new IntersectionObserver(
       (entries) => {

@@ -1,8 +1,4 @@
-import {
-  type Context,
-  createContext as createSolidContext,
-  useContext as useSolidContext,
-} from 'solid-js'
+import { type Context, createContext as createSolidContext, useContext as useSolidContext } from 'solid-js'
 
 export interface CreateContextOptions<T> {
   strict?: boolean
@@ -19,13 +15,7 @@ function getErrorMessage(hook: string, provider: string) {
 }
 
 export function createContext<T>(options: CreateContextOptions<T> = {}) {
-  const {
-    strict = true,
-    hookName = 'useContext',
-    providerName = 'Provider',
-    errorMessage,
-    defaultValue,
-  } = options
+  const { strict = true, hookName = 'useContext', providerName = 'Provider', errorMessage, defaultValue } = options
 
   const Context = createSolidContext<T | undefined>(defaultValue)
 

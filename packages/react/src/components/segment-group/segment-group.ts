@@ -1,8 +1,5 @@
 export type { ValueChangeDetails } from '@zag-js/radio-group'
-export {
-  SegmentGroupContext as Context,
-  type SegmentGroupContextProps as ContextProps,
-} from './segment-group-context'
+export { SegmentGroupContext as Context, type SegmentGroupContextProps as ContextProps } from './segment-group-context'
 export {
   SegmentGroupIndicator as Indicator,
   type SegmentGroupIndicatorBaseProps as IndicatorBaseProps,

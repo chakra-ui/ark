@@ -16,9 +16,7 @@ export interface SegmentGroupRootProviderProps
     SegmentGroupRootProviderBaseProps {}
 
 export const SegmentGroupRootProvider = (props: SegmentGroupRootProviderProps) => {
-  const [{ value: segmentGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
-    'value',
-  ])
+  const [{ value: segmentGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
   const mergedProps = mergeProps(() => segmentGroup().getRootProps(), parts.root.attrs, localProps)
 
   return (

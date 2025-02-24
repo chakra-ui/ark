@@ -15,10 +15,7 @@ export {
   type DatePickerContentBaseProps as ContentBaseProps,
   type DatePickerContentProps as ContentProps,
 } from './date-picker-content'
-export {
-  DatePickerContext as Context,
-  type DatePickerContextProps as ContextProps,
-} from './date-picker-context'
+export { DatePickerContext as Context, type DatePickerContextProps as ContextProps } from './date-picker-context'
 export {
   DatePickerControl as Control,
   type DatePickerControlBaseProps as ControlBaseProps,

@@ -3,10 +3,7 @@ export type {
   ValueChangeDetails as NumberInputValueChangeDetails,
   ValueInvalidDetails as NumberInputValueInvalidDetails,
 } from '@zag-js/number-input'
-export {
-  default as NumberInputContext,
-  type NumberInputContextProps,
-} from './number-input-context.vue'
+export { default as NumberInputContext, type NumberInputContextProps } from './number-input-context.vue'
 export {
   default as NumberInputControl,
   type NumberInputControlBaseProps,
@@ -54,11 +51,7 @@ export {
   type NumberInputValueTextProps,
 } from './number-input-value-text.vue'
 export { numberInputAnatomy } from './number-input.anatomy'
-export {
-  useNumberInput,
-  type UseNumberInputProps,
-  type UseNumberInputReturn,
-} from './use-number-input'
+export { useNumberInput, type UseNumberInputProps, type UseNumberInputReturn } from './use-number-input'
 export { useNumberInputContext, type UseNumberInputContext } from './use-number-input-context'
 
 export * as NumberInput from './number-input'

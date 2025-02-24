@@ -4,10 +4,7 @@ export {
   type SignaturePadClearTriggerBaseProps as ClearTriggerBaseProps,
   type SignaturePadClearTriggerProps as ClearTriggerProps,
 } from './signature-pad-clear-trigger'
-export {
-  SignaturePadContext as Context,
-  type SignaturePadContextProps as ContextProps,
-} from './signature-pad-context'
+export { SignaturePadContext as Context, type SignaturePadContextProps as ContextProps } from './signature-pad-context'
 export {
   SignaturePadControl as Control,
   type SignaturePadControlBaseProps as ControlBaseProps,

@@ -33,13 +33,7 @@ const ViewTrigger = () => {
 
 export const MonthPicker = () => {
   return (
-    <DatePicker.Root
-      format={format}
-      parse={parse}
-      defaultView="month"
-      minView="month"
-      placeholder="mm/yyyy"
-    >
+    <DatePicker.Root format={format} parse={parse} defaultView="month" minView="month" placeholder="mm/yyyy">
       <DatePicker.Label>Label</DatePicker.Label>
       <DatePicker.Control>
         <DatePicker.Input />
@@ -55,19 +49,15 @@ export const MonthPicker = () => {
                 {(datePicker) => (
                   <DatePicker.Table>
                     <DatePicker.TableBody>
-                      {datePicker
-                        .getMonthsGrid({ columns: 4, format: 'short' })
-                        .map((months, id) => (
-                          <DatePicker.TableRow key={id}>
-                            {months.map((month, id) => (
-                              <DatePicker.TableCell key={id} value={month.value}>
-                                <DatePicker.TableCellTrigger>
-                                  {month.label}
-                                </DatePicker.TableCellTrigger>
-                              </DatePicker.TableCell>
-                            ))}
-                          </DatePicker.TableRow>
-                        ))}
+                      {datePicker.getMonthsGrid({ columns: 4, format: 'short' }).map((months, id) => (
+                        <DatePicker.TableRow key={id}>
+                          {months.map((month, id) => (
+                            <DatePicker.TableCell key={id} value={month.value}>
+                              <DatePicker.TableCellTrigger>{month.label}</DatePicker.TableCellTrigger>
+                            </DatePicker.TableCell>
+                          ))}
+                        </DatePicker.TableRow>
+                      ))}
                     </DatePicker.TableBody>
                   </DatePicker.Table>
                 )}
@@ -84,9 +74,7 @@ export const MonthPicker = () => {
                         <DatePicker.TableRow key={id}>
                           {years.map((year, id) => (
                             <DatePicker.TableCell key={id} value={year.value}>
-                              <DatePicker.TableCellTrigger>
-                                {year.label}
-                              </DatePicker.TableCellTrigger>
+                              <DatePicker.TableCellTrigger>{year.label}</DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           ))}
                         </DatePicker.TableRow>

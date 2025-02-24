@@ -33,13 +33,7 @@ const ViewTrigger = () => {
 
 export const YearPicker = () => {
   return (
-    <DatePicker.Root
-      format={format}
-      parse={parse}
-      defaultView="year"
-      minView="year"
-      placeholder="yyyy"
-    >
+    <DatePicker.Root format={format} parse={parse} defaultView="year" minView="year" placeholder="yyyy">
       <DatePicker.Label>Label</DatePicker.Label>
       <DatePicker.Control>
         <DatePicker.Input />
@@ -59,9 +53,7 @@ export const YearPicker = () => {
                         <DatePicker.TableRow key={id}>
                           {years.map((year, id) => (
                             <DatePicker.TableCell key={id} value={year.value}>
-                              <DatePicker.TableCellTrigger>
-                                {year.label}
-                              </DatePicker.TableCellTrigger>
+                              <DatePicker.TableCellTrigger>{year.label}</DatePicker.TableCellTrigger>
                             </DatePicker.TableCell>
                           ))}
                         </DatePicker.TableRow>

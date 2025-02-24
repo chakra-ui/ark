@@ -8,16 +8,15 @@ import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-
 
 type OptionalUseMenuItemGroupContext = Optional<UseMenuItemGroupContext, 'id'>
 
-export interface MenuRadioItemGroupBaseProps
-  extends OptionalUseMenuItemGroupContext,
-    PolymorphicProps<'div'> {}
+export interface MenuRadioItemGroupBaseProps extends OptionalUseMenuItemGroupContext, PolymorphicProps<'div'> {}
 export interface MenuRadioItemGroupProps extends HTMLProps<'div'>, MenuRadioItemGroupBaseProps {}
 
 export const MenuRadioItemGroup = (props: MenuRadioItemGroupProps) => {
-  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalUseMenuItemGroupContext>()(
-    props,
-    ['id', 'onValueChange', 'value'],
-  )
+  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalUseMenuItemGroupContext>()(props, [
+    'id',
+    'onValueChange',
+    'value',
+  ])
   const context = useMenuContext()
   const itemGroupProps = mergeProps({ id: createUniqueId() }, optionalItemGroupProps)
   const mergedProps = mergeProps(() => context().getItemGroupProps(itemGroupProps), localProps)

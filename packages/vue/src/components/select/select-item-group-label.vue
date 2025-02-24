@@ -26,10 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div
-    v-bind="select.getItemGroupLabelProps({ htmlFor: itemGroupProps.id })"
-    :as-child="asChild"
-  >
+  <ark.div v-bind="select.getItemGroupLabelProps({ htmlFor: itemGroupProps.id })" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

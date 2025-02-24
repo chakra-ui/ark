@@ -4,9 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
 export interface DatePickerMonthSelectBaseProps extends PolymorphicProps<'select'> {}
-export interface DatePickerMonthSelectProps
-  extends HTMLProps<'select'>,
-    DatePickerMonthSelectBaseProps {}
+export interface DatePickerMonthSelectProps extends HTMLProps<'select'>, DatePickerMonthSelectBaseProps {}
 
 export const DatePickerMonthSelect = (props: DatePickerMonthSelectProps) => {
   const datePicker = useDatePickerContext()
@@ -14,9 +12,7 @@ export const DatePickerMonthSelect = (props: DatePickerMonthSelectProps) => {
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={datePicker().getMonths()}>
-        {(month) => <option value={month().value}>{month().label}</option>}
-      </Index>
+      <Index each={datePicker().getMonths()}>{(month) => <option value={month().value}>{month().label}</option>}</Index>
     </ark.select>
   )
 }

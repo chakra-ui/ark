@@ -7,15 +7,10 @@ import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
 export interface ColorPickerChannelSliderBaseProps extends ChannelProps, PolymorphicProps<'div'> {}
-export interface ColorPickerChannelSliderProps
-  extends HTMLProps<'div'>,
-    ColorPickerChannelSliderBaseProps {}
+export interface ColorPickerChannelSliderProps extends HTMLProps<'div'>, ColorPickerChannelSliderBaseProps {}
 
 export const ColorPickerChannelSlider = (props: ColorPickerChannelSliderProps) => {
-  const [channelProps, localProps] = createSplitProps<ChannelProps>()(props, [
-    'channel',
-    'orientation',
-  ])
+  const [channelProps, localProps] = createSplitProps<ChannelProps>()(props, ['channel', 'orientation'])
 
   const api = useColorPickerContext()
 

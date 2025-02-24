@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
-export interface UseSplitterProps
-  extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSplitterProps extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial size of the panels when it is first rendered.
    * Use this when you do not need to control the state of the carousel.
@@ -17,10 +16,7 @@ export interface UseSplitterProps
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
-export const useSplitter = (
-  props: UseSplitterProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseSplitterReturn => {
+export const useSplitter = (props: UseSplitterProps = {}, emit?: EmitFn<RootEmits>): UseSplitterReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

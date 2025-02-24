@@ -4,12 +4,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
-export interface ColorPickerTransparencyGridBaseProps
-  extends TransparencyGridProps,
-    PolymorphicProps<'div'> {}
-export interface ColorPickerTransparencyGridProps
-  extends HTMLProps<'div'>,
-    ColorPickerTransparencyGridBaseProps {}
+export interface ColorPickerTransparencyGridBaseProps extends TransparencyGridProps, PolymorphicProps<'div'> {}
+export interface ColorPickerTransparencyGridProps extends HTMLProps<'div'>, ColorPickerTransparencyGridBaseProps {}
 
 export const ColorPickerTransparencyGrid = (props: ColorPickerTransparencyGridProps) => {
   const [gridProps, localProps] = createSplitProps<TransparencyGridProps>()(props, ['size'])

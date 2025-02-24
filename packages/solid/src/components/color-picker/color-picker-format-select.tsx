@@ -4,9 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerFormatSelectBaseProps extends PolymorphicProps<'select'> {}
-export interface ColorPickerFormatSelectProps
-  extends HTMLProps<'select'>,
-    ColorPickerFormatSelectBaseProps {}
+export interface ColorPickerFormatSelectProps extends HTMLProps<'select'>, ColorPickerFormatSelectBaseProps {}
 
 export const ColorPickerFormatSelect = (props: ColorPickerFormatSelectProps) => {
   const api = useColorPickerContext()
@@ -14,9 +12,7 @@ export const ColorPickerFormatSelect = (props: ColorPickerFormatSelectProps) => 
 
   return (
     <ark.select {...mergedProps}>
-      <Index each={['rgba', 'hsla', 'hsba']}>
-        {(format) => <ark.option value={format()}>{format()}</ark.option>}
-      </Index>
+      <Index each={['rgba', 'hsla', 'hsba']}>{(format) => <ark.option value={format()}>{format()}</ark.option>}</Index>
     </ark.select>
   )
 }

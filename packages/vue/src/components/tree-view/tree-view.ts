@@ -1,8 +1,4 @@
-export type {
-  ExpandedChangeDetails,
-  FocusChangeDetails,
-  SelectionChangeDetails,
-} from '@zag-js/tree-view'
+export type { ExpandedChangeDetails, FocusChangeDetails, SelectionChangeDetails } from '@zag-js/tree-view'
 export {
   default as BranchContent,
   type TreeViewBranchContentBaseProps as BranchContentBaseProps,
@@ -38,10 +34,7 @@ export {
   type TreeViewBranchBaseProps as BranchBaseProps,
   type TreeViewBranchProps as BranchProps,
 } from './tree-view-branch.vue'
-export {
-  default as Context,
-  type TreeViewContextProps as ContextProps,
-} from './tree-view-context.vue'
+export { default as Context, type TreeViewContextProps as ContextProps } from './tree-view-context.vue'
 export {
   default as ItemIndicator,
   type TreeViewItemIndicatorBaseProps as ItemIndicatorBaseProps,
@@ -62,10 +55,7 @@ export {
   type TreeViewLabelBaseProps as LabelBaseProps,
   type TreeViewLabelProps as LabelProps,
 } from './tree-view-label.vue'
-export {
-  default as NodeContext,
-  type TreeViewNodeContextProps as NodeContextProps,
-} from './tree-view-node-context.vue'
+export { default as NodeContext, type TreeViewNodeContextProps as NodeContextProps } from './tree-view-node-context.vue'
 export {
   default as NodeProvider,
   type TreeViewNodeProviderBaseProps as NodeProviderBaseProps,

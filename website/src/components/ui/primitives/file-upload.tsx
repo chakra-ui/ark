@@ -19,25 +19,25 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, FileUpload.RootBaseProps>, FileUploadVariantProps>
 >(FileUpload.Root, 'root')
 
-export const Dropzone = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, FileUpload.DropzoneBaseProps>
->(FileUpload.Dropzone, 'dropzone')
+export const Dropzone = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, FileUpload.DropzoneBaseProps>>(
+  FileUpload.Dropzone,
+  'dropzone',
+)
 
 export const ItemDeleteTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, FileUpload.ItemDeleteTriggerBaseProps>
 >(FileUpload.ItemDeleteTrigger, 'itemDeleteTrigger')
 
-export const ItemGroup = withContext<
-  HTMLUListElement,
-  Assign<HTMLStyledProps<'ul'>, FileUpload.ItemGroupBaseProps>
->(FileUpload.ItemGroup, 'itemGroup')
+export const ItemGroup = withContext<HTMLUListElement, Assign<HTMLStyledProps<'ul'>, FileUpload.ItemGroupBaseProps>>(
+  FileUpload.ItemGroup,
+  'itemGroup',
+)
 
-export const ItemName = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, FileUpload.ItemNameBaseProps>
->(FileUpload.ItemName, 'itemName')
+export const ItemName = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, FileUpload.ItemNameBaseProps>>(
+  FileUpload.ItemName,
+  'itemName',
+)
 
 export const ItemPreviewImage = withContext<
   HTMLImageElement,
@@ -49,25 +49,25 @@ export const ItemPreview = withContext<
   Assign<HTMLStyledProps<'div'>, FileUpload.ItemPreviewBaseProps>
 >(FileUpload.ItemPreview, 'itemPreview')
 
-export const Item = withContext<
-  HTMLLIElement,
-  Assign<HTMLStyledProps<'li'>, FileUpload.ItemBaseProps>
->(FileUpload.Item, 'item')
+export const Item = withContext<HTMLLIElement, Assign<HTMLStyledProps<'li'>, FileUpload.ItemBaseProps>>(
+  FileUpload.Item,
+  'item',
+)
 
 export const ItemSizeText = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, FileUpload.ItemSizeTextBaseProps>
 >(FileUpload.ItemSizeText, 'itemSizeText')
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, FileUpload.LabelBaseProps>
->(FileUpload.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, FileUpload.LabelBaseProps>>(
+  FileUpload.Label,
+  'label',
+)
 
-export const Trigger = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, FileUpload.TriggerBaseProps>
->(FileUpload.Trigger, 'trigger')
+export const Trigger = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, FileUpload.TriggerBaseProps>>(
+  FileUpload.Trigger,
+  'trigger',
+)
 
 export const Context = FileUpload.Context
 export const HiddenInput = FileUpload.HiddenInput

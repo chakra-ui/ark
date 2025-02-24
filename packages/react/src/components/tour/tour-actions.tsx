@@ -6,5 +6,4 @@ export interface TourActionsProps {
   children: (actions: StepAction[]) => ReactNode
 }
 
-export const TourActions = (props: TourActionsProps) =>
-  props.children(useTourContext().step?.actions ?? [])
+export const TourActions = (props: TourActionsProps) => props.children(useTourContext().step?.actions ?? [])

@@ -6,9 +6,7 @@ import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface AccordionItemTriggerProps
-  extends HTMLProps<'button'>,
-    AccordionItemTriggerBaseProps {}
+export interface AccordionItemTriggerProps extends HTMLProps<'button'>, AccordionItemTriggerBaseProps {}
 
 export const AccordionItemTrigger = (props: AccordionItemTriggerProps) => {
   const accordion = useAccordionContext()

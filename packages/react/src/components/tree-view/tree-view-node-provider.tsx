@@ -11,7 +11,5 @@ export interface TreeViewNodeProviderProps<T> extends TreeViewNodeProviderBasePr
 
 export function TreeViewNodeProvider<T>(props: TreeViewNodeProviderProps<T>) {
   const [nodeProps, localProps] = createSplitProps<NodeProps>()(props, ['indexPath', 'node'])
-  return (
-    <TreeViewNodePropsProvider value={nodeProps}>{localProps.children}</TreeViewNodePropsProvider>
-  )
+  return <TreeViewNodePropsProvider value={nodeProps}>{localProps.children}</TreeViewNodePropsProvider>
 }

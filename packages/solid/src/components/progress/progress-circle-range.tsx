@@ -3,9 +3,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 
 export interface ProgressCircleRangeBaseProps extends PolymorphicProps<'circle'> {}
-export interface ProgressCircleRangeProps
-  extends HTMLProps<'circle'>,
-    ProgressCircleRangeBaseProps {}
+export interface ProgressCircleRangeProps extends HTMLProps<'circle'>, ProgressCircleRangeBaseProps {}
 
 export const ProgressCircleRange = (props: ProgressCircleRangeProps) => {
   const api = useProgressContext()

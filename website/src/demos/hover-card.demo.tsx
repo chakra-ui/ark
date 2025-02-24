@@ -19,10 +19,7 @@ export const Demo = (props: HoverCard.RootProps) => {
             <HoverCard.ArrowTip />
           </HoverCard.Arrow>
           <Stack gap="4" direction="row">
-            <Avatar
-              name="Christian Schröter"
-              src="https://avatars.githubusercontent.com/u/1846056"
-            />
+            <Avatar name="Christian Schröter" src="https://avatars.githubusercontent.com/u/1846056" />
             <Stack gap="3">
               <Stack gap="1">
                 <Text size="sm" fontWeight="semibold">

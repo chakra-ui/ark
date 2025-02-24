@@ -12,9 +12,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   return (
     <ArkAvatar.Root ref={ref} {...rootProps}>
       <ArkAvatar.Fallback>{name ? getInitials(name) : <UserIcon />}</ArkAvatar.Fallback>
-      {src && (
-        <ArkAvatar.Image src={src} alt={name ?? 'User Profile'} referrerPolicy="no-referrer" />
-      )}
+      {src && <ArkAvatar.Image src={src} alt={name ?? 'User Profile'} referrerPolicy="no-referrer" />}
     </ArkAvatar.Root>
   )
 })
@@ -22,13 +20,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 Avatar.displayName = 'Avatar'
 
 const UserIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <title>User Icon</title>
     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />

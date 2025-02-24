@@ -10,23 +10,17 @@ interface RootProviderProps {
 }
 
 export interface CarouselRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface CarouselRootProviderProps
-  extends HTMLProps<'div'>,
-    CarouselRootProviderBaseProps {}
+export interface CarouselRootProviderProps extends HTMLProps<'div'>, CarouselRootProviderBaseProps {}
 
-export const CarouselRootProvider = forwardRef<HTMLDivElement, CarouselRootProviderProps>(
-  (props, ref) => {
-    const [{ value: carousel }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(carousel.getRootProps(), localProps)
+export const CarouselRootProvider = forwardRef<HTMLDivElement, CarouselRootProviderProps>((props, ref) => {
+  const [{ value: carousel }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(carousel.getRootProps(), localProps)
 
-    return (
-      <CarouselProvider value={carousel}>
-        <ark.div {...mergedProps} ref={ref} />
-      </CarouselProvider>
-    )
-  },
-)
+  return (
+    <CarouselProvider value={carousel}>
+      <ark.div {...mergedProps} ref={ref} />
+    </CarouselProvider>
+  )
+})
 
 CarouselRootProvider.displayName = 'CarouselRootProvider'

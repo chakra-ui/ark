@@ -13,9 +13,7 @@ export interface MenuItemGroupBaseProps extends OptionalItemGroupProps, Polymorp
 export interface MenuItemGroupProps extends HTMLProps<'div'>, MenuItemGroupBaseProps {}
 
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
-  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, [
-    'id',
-  ])
+  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, ['id'])
   const menu = useMenuContext()
   const id = useId()
   const itemGroupProps = { id, ...optionalItemGroupProps }

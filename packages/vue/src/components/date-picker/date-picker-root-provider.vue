@@ -8,10 +8,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseDatePickerReturn>
 }
 
-export interface DatePickerRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface DatePickerRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface DatePickerRootProviderProps
   extends DatePickerRootProviderBaseProps,
     /**
@@ -31,9 +28,7 @@ const props = defineProps<DatePickerRootProviderProps>()
 const datePicker = computed(() => props.value)
 
 DatePickerProvider(datePicker)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

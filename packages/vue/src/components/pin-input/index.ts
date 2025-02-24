@@ -13,16 +13,8 @@ export {
   type PinInputHiddenInputBaseProps,
   type PinInputHiddenInputProps,
 } from './pin-input-hidden-input.vue'
-export {
-  default as PinInputInput,
-  type PinInputInputBaseProps,
-  type PinInputInputProps,
-} from './pin-input-input.vue'
-export {
-  default as PinInputLabel,
-  type PinInputLabelBaseProps,
-  type PinInputLabelProps,
-} from './pin-input-label.vue'
+export { default as PinInputInput, type PinInputInputBaseProps, type PinInputInputProps } from './pin-input-input.vue'
+export { default as PinInputLabel, type PinInputLabelBaseProps, type PinInputLabelProps } from './pin-input-label.vue'
 export {
   default as PinInputRootProvider,
   type PinInputRootProviderBaseProps,

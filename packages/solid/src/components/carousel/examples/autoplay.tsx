@@ -8,9 +8,7 @@ export const Autoplay = () => {
     <Carousel.Root autoplay loop>
       <Carousel.Control>
         <Carousel.AutoplayTrigger>
-          <Carousel.Context>
-            {(carousel) => (carousel().isPlaying ? 'Pause' : 'Play')}
-          </Carousel.Context>
+          <Carousel.Context>{(carousel) => (carousel().isPlaying ? 'Pause' : 'Play')}</Carousel.Context>
         </Carousel.AutoplayTrigger>
       </Carousel.Control>
       <Carousel.IndicatorGroup>

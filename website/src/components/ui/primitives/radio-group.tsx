@@ -19,30 +19,30 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, RadioGroup.RootBaseProps>, RadioGroupVariantProps>
 >(RadioGroup.Root, 'root')
 
-export const Indicator = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, RadioGroup.IndicatorBaseProps>
->(RadioGroup.Indicator, 'indicator')
+export const Indicator = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, RadioGroup.IndicatorBaseProps>>(
+  RadioGroup.Indicator,
+  'indicator',
+)
 
-export const ItemControl = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, RadioGroup.ItemControlBaseProps>
->(RadioGroup.ItemControl, 'itemControl')
+export const ItemControl = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, RadioGroup.ItemControlBaseProps>>(
+  RadioGroup.ItemControl,
+  'itemControl',
+)
 
-export const Item = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, RadioGroup.ItemBaseProps>
->(RadioGroup.Item, 'item')
+export const Item = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, RadioGroup.ItemBaseProps>>(
+  RadioGroup.Item,
+  'item',
+)
 
-export const ItemText = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, RadioGroup.ItemTextBaseProps>
->(RadioGroup.ItemText, 'itemText')
+export const ItemText = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, RadioGroup.ItemTextBaseProps>>(
+  RadioGroup.ItemText,
+  'itemText',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, RadioGroup.LabelBaseProps>
->(RadioGroup.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, RadioGroup.LabelBaseProps>>(
+  RadioGroup.Label,
+  'label',
+)
 
 export const Context = RadioGroup.Context
 export const ItemHiddenInput = RadioGroup.ItemHiddenInput

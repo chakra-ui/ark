@@ -4,10 +4,7 @@ export {
   type CarouselAutoplayTriggerBaseProps as AutoplayTriggerBaseProps,
   type CarouselAutoplayTriggerProps as AutoplayTriggerProps,
 } from './carousel-autoplay-trigger'
-export {
-  CarouselContext as Context,
-  type CarouselContextProps as ContextProps,
-} from './carousel-context'
+export { CarouselContext as Context, type CarouselContextProps as ContextProps } from './carousel-context'
 export {
   CarouselControl as Control,
   type CarouselControlBaseProps as ControlBaseProps,

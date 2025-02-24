@@ -5,5 +5,4 @@ export interface SegmentGroupContextProps {
   children: (context: UseSegmentGroupContext) => ReactNode
 }
 
-export const SegmentGroupContext = (props: SegmentGroupContextProps) =>
-  props.children(useSegmentGroupContext())
+export const SegmentGroupContext = (props: SegmentGroupContextProps) => props.children(useSegmentGroupContext())

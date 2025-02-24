@@ -33,9 +33,7 @@ const emits = defineEmits<TabsRootEmits>()
 const tabs = useTabs(props, emits)
 
 TabsProvider(tabs)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

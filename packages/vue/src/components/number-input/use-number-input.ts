@@ -18,10 +18,7 @@ export interface UseNumberInputProps
 }
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
-export const useNumberInput = (
-  props: UseNumberInputProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseNumberInputReturn => {
+export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<RootEmits>): UseNumberInputReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

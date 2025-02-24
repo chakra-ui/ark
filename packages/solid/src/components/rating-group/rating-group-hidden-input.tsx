@@ -4,9 +4,7 @@ import { useFieldContext } from '../field'
 import { useRatingGroupContext } from './use-rating-group-context'
 
 export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface RatingGroupHiddenInputProps
-  extends HTMLProps<'input'>,
-    RatingGroupHiddenInputBaseProps {}
+export interface RatingGroupHiddenInputProps extends HTMLProps<'input'>, RatingGroupHiddenInputBaseProps {}
 
 export const RatingGroupHiddenInput = (props: RatingGroupHiddenInputProps) => {
   const ratingGroup = useRatingGroupContext()

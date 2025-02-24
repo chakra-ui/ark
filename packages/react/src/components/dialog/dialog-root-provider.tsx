@@ -12,10 +12,7 @@ interface RootProviderProps {
   value: UseDialogReturn
 }
 
-export interface DialogRootProviderBaseProps
-  extends RootProviderProps,
-    UsePresenceProps,
-    PolymorphicProps {}
+export interface DialogRootProviderBaseProps extends RootProviderProps, UsePresenceProps, PolymorphicProps {}
 export interface DialogRootProviderProps extends DialogRootProviderBaseProps {
   children?: ReactNode
 }

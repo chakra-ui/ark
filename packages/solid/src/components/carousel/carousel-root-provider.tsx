@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface CarouselRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface CarouselRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    CarouselRootProviderBaseProps {}
+export interface CarouselRootProviderProps extends HTMLProps<'div'>, RootProviderProps, CarouselRootProviderBaseProps {}
 
 export const CarouselRootProvider = (props: CarouselRootProviderProps) => {
   const [{ value: carousel }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

@@ -6,11 +6,7 @@ export const Controlled = () => {
   const [value, setValue] = createSignal(0)
 
   return (
-    <RatingGroup.Root
-      count={5}
-      value={value()}
-      onValueChange={(details) => setValue(details.value)}
-    >
+    <RatingGroup.Root count={5} value={value()} onValueChange={(details) => setValue(details.value)}>
       <RatingGroup.Label>Label</RatingGroup.Label>
       <RatingGroup.Control>
         <RatingGroup.Context>

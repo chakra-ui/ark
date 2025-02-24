@@ -3,10 +3,7 @@ import { NumberInput } from '@ark-ui/vue/number-input'
 </script>
 
 <template>
-  <NumberInput.Root
-    :formatOptions="{ minimumFractionDigits: 2, maximumFractionDigits: 3 }"
-    model-value="1.00"
-  >
+  <NumberInput.Root :formatOptions="{ minimumFractionDigits: 2, maximumFractionDigits: 3 }" model-value="1.00">
     <NumberInput.Scrubber />
     <NumberInput.Label>Label</NumberInput.Label>
     <NumberInput.Input />

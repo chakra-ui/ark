@@ -15,11 +15,7 @@ export const Demo = (props: Carousel.RootProps) => {
       <Carousel.ItemGroup>
         {images.map((image, index) => (
           <Carousel.Item key={index} index={index}>
-            <img
-              src={image}
-              alt={`Slide ${index}`}
-              style={{ height: '398px', width: '100%', objectFit: 'cover' }}
-            />
+            <img src={image} alt={`Slide ${index}`} style={{ height: '398px', width: '100%', objectFit: 'cover' }} />
           </Carousel.Item>
         ))}
       </Carousel.ItemGroup>

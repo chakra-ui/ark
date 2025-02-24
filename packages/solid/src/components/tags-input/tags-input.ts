@@ -1,17 +1,10 @@
-export type {
-  HighlightChangeDetails,
-  ValidityChangeDetails,
-  ValueChangeDetails,
-} from '@zag-js/tags-input'
+export type { HighlightChangeDetails, ValidityChangeDetails, ValueChangeDetails } from '@zag-js/tags-input'
 export {
   TagsInputClearTrigger as ClearTrigger,
   type TagsInputClearTriggerBaseProps as ClearTriggerBaseProps,
   type TagsInputClearTriggerProps as ClearTriggerProps,
 } from './tags-input-clear-trigger'
-export {
-  TagsInputContext as Context,
-  type TagsInputContextProps as ContextProps,
-} from './tags-input-context'
+export { TagsInputContext as Context, type TagsInputContextProps as ContextProps } from './tags-input-context'
 export {
   TagsInputControl as Control,
   type TagsInputControlBaseProps as ControlBaseProps,

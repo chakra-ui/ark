@@ -19,15 +19,15 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'nav'>, Pagination.RootBaseProps>, PaginationVariantProps>
 >(Pagination.Root, 'root')
 
-export const Ellipsis = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Pagination.EllipsisBaseProps>
->(Pagination.Ellipsis, 'ellipsis')
+export const Ellipsis = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Pagination.EllipsisBaseProps>>(
+  Pagination.Ellipsis,
+  'ellipsis',
+)
 
-export const Item = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, Pagination.ItemBaseProps>
->(Pagination.Item, 'item')
+export const Item = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, Pagination.ItemBaseProps>>(
+  Pagination.Item,
+  'item',
+)
 
 export const NextTrigger = withContext<
   HTMLButtonElement,

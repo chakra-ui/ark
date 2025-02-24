@@ -66,11 +66,7 @@ export {
   type TourProgressTextBaseProps as ProgressTextBaseProps,
   type TourProgressTextProps as ProgressTextProps,
 } from './tour-progress-text'
-export {
-  TourRoot as Root,
-  type TourRootBaseProps as RootBaseProps,
-  type TourRootProps as RootProps,
-} from './tour-root'
+export { TourRoot as Root, type TourRootBaseProps as RootBaseProps, type TourRootProps as RootProps } from './tour-root'
 export {
   TourSpotlight as Spotlight,
   type TourSpotlightBaseProps as SpotlightBaseProps,

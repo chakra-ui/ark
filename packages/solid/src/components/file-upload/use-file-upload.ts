@@ -5,8 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseFileUploadProps
-  extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseFileUploadProps extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseFileUploadReturn extends Accessor<fileUpload.Api<PropTypes>> {}
 
 export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {

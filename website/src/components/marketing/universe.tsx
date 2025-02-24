@@ -54,8 +54,8 @@ export const Universe = () => {
       <Container pb={{ base: '16', md: '24' }}>
         <Stack align="center" gap={{ base: '8', md: '10' }}>
           <Text color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }} textAlign="center" maxW="3xl">
-            Utilizing state machines, Ark UI substantially cuts down on errors while ensuring
-            predictable behavior in every component. Develop with confidence.
+            Utilizing state machines, Ark UI substantially cuts down on errors while ensuring predictable behavior in
+            every component. Develop with confidence.
           </Text>
         </Stack>
       </Container>

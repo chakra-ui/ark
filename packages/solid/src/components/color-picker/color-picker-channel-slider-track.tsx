@@ -5,9 +5,7 @@ import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
 export interface ColorPickerChannelSliderTrackBaseProps extends PolymorphicProps<'div'> {}
-export interface ColorPickerChannelSliderTrackProps
-  extends HTMLProps<'div'>,
-    ColorPickerChannelSliderTrackBaseProps {}
+export interface ColorPickerChannelSliderTrackProps extends HTMLProps<'div'>, ColorPickerChannelSliderTrackBaseProps {}
 
 export const ColorPickerChannelSliderTrack = (props: ColorPickerChannelSliderTrackProps) => {
   const api = useColorPickerContext()

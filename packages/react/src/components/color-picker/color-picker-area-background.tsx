@@ -5,18 +5,14 @@ import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-co
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerAreaBackgroundBaseProps extends PolymorphicProps {}
-export interface ColorPickerAreaBackgroundProps
-  extends HTMLProps<'div'>,
-    ColorPickerAreaBackgroundBaseProps {}
+export interface ColorPickerAreaBackgroundProps extends HTMLProps<'div'>, ColorPickerAreaBackgroundBaseProps {}
 
-export const ColorPickerAreaBackground = forwardRef<HTMLDivElement, ColorPickerAreaBackgroundProps>(
-  (props, ref) => {
-    const colorPicker = useColorPickerContext()
-    const areaProps = useColorPickerAreaPropsContext()
-    const mergedProps = mergeProps(colorPicker.getAreaBackgroundProps(areaProps), props)
+export const ColorPickerAreaBackground = forwardRef<HTMLDivElement, ColorPickerAreaBackgroundProps>((props, ref) => {
+  const colorPicker = useColorPickerContext()
+  const areaProps = useColorPickerAreaPropsContext()
+  const mergedProps = mergeProps(colorPicker.getAreaBackgroundProps(areaProps), props)
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})
 
 ColorPickerAreaBackground.displayName = 'ColorPickerAreaBackground'

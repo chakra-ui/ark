@@ -2,10 +2,7 @@ export type {
   HoverChangeDetails as RatingGroupHoverChangeDetails,
   ValueChangeDetails as RatingGroupValueChangeDetails,
 } from '@zag-js/rating-group'
-export {
-  default as RatingGroupContext,
-  type RatingGroupContextProps,
-} from './rating-group-context.vue'
+export { default as RatingGroupContext, type RatingGroupContextProps } from './rating-group-context.vue'
 export {
   default as RatingGroupControl,
   type RatingGroupControlBaseProps,
@@ -16,10 +13,7 @@ export {
   type RatingGroupHiddenInputBaseProps,
   type RatingGroupHiddenInputProps,
 } from './rating-group-hidden-input.vue'
-export {
-  default as RatingGroupItemContext,
-  type RatingGroupItemContextProps,
-} from './rating-group-item-context.vue'
+export { default as RatingGroupItemContext, type RatingGroupItemContextProps } from './rating-group-item-context.vue'
 export {
   default as RatingGroupItem,
   type RatingGroupItemBaseProps,
@@ -42,15 +36,8 @@ export {
   type RatingGroupRootProps,
 } from './rating-group-root.vue'
 export { ratingGroupAnatomy } from './rating-group.anatomy'
-export {
-  useRatingGroup,
-  type UseRatingGroupProps,
-  type UseRatingGroupReturn,
-} from './use-rating-group'
+export { useRatingGroup, type UseRatingGroupProps, type UseRatingGroupReturn } from './use-rating-group'
 export { useRatingGroupContext, type UseRatingGroupContext } from './use-rating-group-context'
-export {
-  useRatingGroupItemContext,
-  type UseRatingGroupItemContext,
-} from './use-rating-group-item-context'
+export { useRatingGroupItemContext, type UseRatingGroupItemContext } from './use-rating-group-item-context'
 
 export * as RatingGroup from './rating-group'

@@ -22,12 +22,9 @@ export interface UseTreeViewProps<T extends TreeNode>
    */
   collection: TreeCollection<T>
 }
-export interface UseTreeViewReturn<T extends TreeNode>
-  extends Accessor<treeView.Api<PropTypes, T>> {}
+export interface UseTreeViewReturn<T extends TreeNode> extends Accessor<treeView.Api<PropTypes, T>> {}
 
-export const useTreeView = <T extends TreeNode>(
-  props: UseTreeViewProps<T>,
-): UseTreeViewReturn<T> => {
+export const useTreeView = <T extends TreeNode>(props: UseTreeViewProps<T>): UseTreeViewReturn<T> => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

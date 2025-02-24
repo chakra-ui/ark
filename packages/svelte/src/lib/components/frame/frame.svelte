@@ -17,8 +17,7 @@
   export interface FrameProps extends Assign<HTMLIframeAttributes, FrameBaseProps> {}
 
   const CUSTOM_ROOT_CLASS = 'frame-root'
-  const resetStyle =
-    '<style>*,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }</style>'
+  const resetStyle = '<style>*,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }</style>'
   const initialSrcDoc = `<html><head>${resetStyle}</head><body><div class="${CUSTOM_ROOT_CLASS}"></div></body></html>`
 
   function getMountNode(frame: HTMLIFrameElement) {

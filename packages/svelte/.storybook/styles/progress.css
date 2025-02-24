@@ -27,8 +27,7 @@
 
 [data-scope='progress'][data-part='range'][data-state='indeterminate'] {
   width: 210%;
-  animation: 1s cubic-bezier(0.694, 0.0482, 0.335, 1) 0s infinite normal none running
-    progress-animation;
+  animation: 1s cubic-bezier(0.694, 0.0482, 0.335, 1) 0s infinite normal none running progress-animation;
 }
 
 [data-scope='progress'][data-part='circle'] {

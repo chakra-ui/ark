@@ -10,9 +10,7 @@ const items = ref(initialItems)
 const collection = computed(() => createListCollection({ items: items.value }))
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-  items.value = initialItems.filter((item) =>
-    item.toLowerCase().includes(details.inputValue.toLowerCase()),
-  )
+  items.value = initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase()))
 }
 
 const combobox = useCombobox({

@@ -22,9 +22,7 @@ defineProps<TourContentProps>()
 
 const tour = useTourContext()
 const presence = usePresenceContext()
-const mergedProps = computed(() =>
-  mergeProps(tour.value.getContentProps(), presence.value.presenceProps),
-)
+const mergedProps = computed(() => mergeProps(tour.value.getContentProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>

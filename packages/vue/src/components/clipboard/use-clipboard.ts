@@ -6,14 +6,10 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './clipboard.types'
 
-export interface UseClipboardProps
-  extends Optional<Omit<clipboard.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseClipboardProps extends Optional<Omit<clipboard.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}
 
-export const useClipboard = (
-  props: UseClipboardProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseClipboardReturn => {
+export const useClipboard = (props: UseClipboardProps = {}, emit?: EmitFn<RootEmits>): UseClipboardReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const context = computed<clipboard.Context>(() => ({

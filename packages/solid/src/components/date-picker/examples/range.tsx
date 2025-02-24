@@ -29,9 +29,7 @@ export const Range = () => {
                     <DatePicker.TableHead>
                       <DatePicker.TableRow>
                         <Index each={context().weekDays}>
-                          {(weekDay) => (
-                            <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>
-                          )}
+                          {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
                         </Index>
                       </DatePicker.TableRow>
                     </DatePicker.TableHead>
@@ -43,9 +41,7 @@ export const Range = () => {
                             <Index each={week()}>
                               {(day) => (
                                 <DatePicker.TableCell value={day()}>
-                                  <DatePicker.TableCellTrigger>
-                                    {day().day}
-                                  </DatePicker.TableCellTrigger>
+                                  <DatePicker.TableCellTrigger>{day().day}</DatePicker.TableCellTrigger>
                                 </DatePicker.TableCell>
                               )}
                             </Index>
@@ -65,9 +61,7 @@ export const Range = () => {
                       <DatePicker.TableHead>
                         <DatePicker.TableRow>
                           <Index each={context().weekDays}>
-                            {(weekDay) => (
-                              <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>
-                            )}
+                            {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
                           </Index>
                         </DatePicker.TableRow>
                       </DatePicker.TableHead>
@@ -78,13 +72,8 @@ export const Range = () => {
                             <DatePicker.TableRow>
                               <Index each={week()}>
                                 {(day) => (
-                                  <DatePicker.TableCell
-                                    value={day()}
-                                    visibleRange={offset().visibleRange}
-                                  >
-                                    <DatePicker.TableCellTrigger>
-                                      {day().day}
-                                    </DatePicker.TableCellTrigger>
+                                  <DatePicker.TableCell value={day()} visibleRange={offset().visibleRange}>
+                                    <DatePicker.TableCellTrigger>{day().day}</DatePicker.TableCellTrigger>
                                   </DatePicker.TableCell>
                                 )}
                               </Index>

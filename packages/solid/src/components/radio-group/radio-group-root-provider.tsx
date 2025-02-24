@@ -15,9 +15,7 @@ export interface RadioGroupRootProviderProps
     RadioGroupRootProviderBaseProps {}
 
 export const RadioGroupRootProvider = (props: RadioGroupRootProviderProps) => {
-  const [{ value: radioGroup }, localProps] = createSplitProps<RootProviderProps>()(props, [
-    'value',
-  ])
+  const [{ value: radioGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
   const mergedProps = mergeProps(() => radioGroup().getRootProps(), localProps)
 
   return (

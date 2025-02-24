@@ -4,5 +4,4 @@ import { createContext } from '../../utils'
 
 export interface UseStepsItemContext extends ComputedRef<ItemState> {}
 
-export const [StepsItemProvider, useStepsItemContext] =
-  createContext<UseStepsItemContext>('StepsItemContext')
+export const [StepsItemProvider, useStepsItemContext] = createContext<UseStepsItemContext>('StepsItemContext')

@@ -20,10 +20,7 @@ export {
   type StepsItemBaseProps as ItemBaseProps,
   type StepsItemProps as ItemProps,
 } from './steps-item'
-export {
-  StepsItemContext as ItemContext,
-  type StepsItemContextProps as ItemContextProps,
-} from './steps-item-context'
+export { StepsItemContext as ItemContext, type StepsItemContextProps as ItemContextProps } from './steps-item-context'
 export {
   StepsList as List,
   type StepsListBaseProps as ListBaseProps,

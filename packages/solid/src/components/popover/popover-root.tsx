@@ -1,12 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UsePopoverProps, usePopover } from './use-popover'
 import { PopoverProvider } from './use-popover-context'
 

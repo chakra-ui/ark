@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './steps.types'
 
-export interface UseStepsProps
-  extends Optional<Omit<steps.Context, 'dir' | 'getRootNode' | 'step'>, 'id'> {
+export interface UseStepsProps extends Optional<Omit<steps.Context, 'dir' | 'getRootNode' | 'step'>, 'id'> {
   /**
    * The initial value of the step
    */

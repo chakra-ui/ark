@@ -15,9 +15,7 @@ export interface SignaturePadRootProviderProps
     SignaturePadRootProviderBaseProps {}
 
 export const SignaturePadRootProvider = (props: SignaturePadRootProviderProps) => {
-  const [{ value: signaturePad }, localProps] = createSplitProps<RootProviderProps>()(props, [
-    'value',
-  ])
+  const [{ value: signaturePad }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
   const mergedProps = mergeProps(() => signaturePad().getRootProps(), localProps)
 
   return (

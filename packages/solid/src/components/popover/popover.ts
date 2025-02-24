@@ -24,10 +24,7 @@ export {
   type PopoverContentBaseProps as ContentBaseProps,
   type PopoverContentProps as ContentProps,
 } from './popover-content'
-export {
-  PopoverContext as Context,
-  type PopoverContextProps as ContextProps,
-} from './popover-context'
+export { PopoverContext as Context, type PopoverContextProps as ContextProps } from './popover-context'
 export {
   PopoverDescription as Description,
   type PopoverDescriptionBaseProps as DescriptionBaseProps,

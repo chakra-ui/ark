@@ -7,9 +7,7 @@ import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
 export interface AccordionItemContentBaseProps extends PolymorphicProps<'div'> {}
-export interface AccordionItemContentProps
-  extends HTMLProps<'div'>,
-    AccordionItemContentBaseProps {}
+export interface AccordionItemContentProps extends HTMLProps<'div'>, AccordionItemContentBaseProps {}
 
 interface VisibilityProps {
   hidden?: boolean
@@ -24,10 +22,7 @@ export const AccordionItemContent = (props: AccordionItemContentProps) => {
 
   const itemContentProps = createMemo(() => {
     const contentProps = accordion().getItemContentProps(itemProps)
-    const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, [
-      'hidden',
-      'data-state',
-    ])
+    const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
     return ownProps
   })
   const mergedProps = mergeProps(() => itemContentProps(), props)

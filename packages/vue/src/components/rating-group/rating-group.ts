@@ -1,8 +1,5 @@
 export type { HoverChangeDetails, ValueChangeDetails } from '@zag-js/rating-group'
-export {
-  default as Context,
-  type RatingGroupContextProps as ContextProps,
-} from './rating-group-context.vue'
+export { default as Context, type RatingGroupContextProps as ContextProps } from './rating-group-context.vue'
 export {
   default as Control,
   type RatingGroupControlProps as ControlProps,

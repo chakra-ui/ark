@@ -1,7 +1,4 @@
-export {
-  default as Context,
-  type FieldsetContextProps as ContextProps,
-} from './fieldset-context.vue'
+export { default as Context, type FieldsetContextProps as ContextProps } from './fieldset-context.vue'
 export {
   default as ErrorText,
   type FieldsetErrorTextBaseProps as ErrorTextBaseProps,

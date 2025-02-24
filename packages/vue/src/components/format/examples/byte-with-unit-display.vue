@@ -7,11 +7,6 @@ const unitDisplays = ['narrow', 'short', 'long'] as const
 
 <template>
   <div>
-    <Format.Byte
-      v-for="unitDisplay in unitDisplays"
-      :key="unitDisplay"
-      :value="value"
-      :unit-display="unitDisplay"
-    />
+    <Format.Byte v-for="unitDisplay in unitDisplays" :key="unitDisplay" :value="value" :unit-display="unitDisplay" />
   </div>
 </template>

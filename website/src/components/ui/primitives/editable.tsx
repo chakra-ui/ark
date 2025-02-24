@@ -19,40 +19,40 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Editable.RootBaseProps>, EditableVariantProps>
 >(Editable.Root, 'root')
 
-export const Area = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Editable.AreaBaseProps>
->(Editable.Area, 'area')
+export const Area = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Editable.AreaBaseProps>>(
+  Editable.Area,
+  'area',
+)
 
 export const CancelTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, Editable.CancelTriggerBaseProps>
 >(Editable.CancelTrigger, 'cancelTrigger')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Editable.ControlBaseProps>
->(Editable.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Editable.ControlBaseProps>>(
+  Editable.Control,
+  'control',
+)
 
 export const EditTrigger = withContext<
   HTMLButtonElement,
   Assign<HTMLStyledProps<'button'>, Editable.EditTriggerBaseProps>
 >(Editable.EditTrigger, 'editTrigger')
 
-export const Input = withContext<
-  HTMLInputElement,
-  Assign<HTMLStyledProps<'input'>, Editable.InputBaseProps>
->(Editable.Input, 'input')
+export const Input = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, Editable.InputBaseProps>>(
+  Editable.Input,
+  'input',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, Editable.LabelBaseProps>
->(Editable.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, Editable.LabelBaseProps>>(
+  Editable.Label,
+  'label',
+)
 
-export const Preview = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Editable.PreviewBaseProps>
->(Editable.Preview, 'preview')
+export const Preview = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Editable.PreviewBaseProps>>(
+  Editable.Preview,
+  'preview',
+)
 
 export const SubmitTrigger = withContext<
   HTMLButtonElement,

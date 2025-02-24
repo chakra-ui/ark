@@ -24,10 +24,7 @@ export {
   type TimePickerContentBaseProps,
   type TimePickerContentProps,
 } from './time-picker-content.vue'
-export {
-  default as TimePickerContext,
-  type TimePickerContextProps,
-} from './time-picker-context.vue'
+export { default as TimePickerContext, type TimePickerContextProps } from './time-picker-context.vue'
 export {
   default as TimePickerControl,
   type TimePickerControlBaseProps,

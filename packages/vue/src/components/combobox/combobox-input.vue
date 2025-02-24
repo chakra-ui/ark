@@ -24,11 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.input
-    :aria-describedby="field?.ariaDescribedby"
-    v-bind="combobox.getInputProps()"
-    :as-child="asChild"
-  >
+  <ark.input :aria-describedby="field?.ariaDescribedby" v-bind="combobox.getInputProps()" :as-child="asChild">
     <slot />
   </ark.input>
 </template>

@@ -32,9 +32,7 @@ const emits = defineEmits<AccordionRootEmits>()
 
 const accordion = useAccordion(props, emits)
 AccordionProvider(accordion)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 useForwardExpose()
 </script>
 

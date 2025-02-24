@@ -9,31 +9,15 @@ export {
   type EditableCancelTriggerProps,
 } from './editable-cancel-trigger'
 export { EditableContext, type EditableContextProps } from './editable-context'
-export {
-  EditableControl,
-  type EditableControlBaseProps,
-  type EditableControlProps,
-} from './editable-control'
+export { EditableControl, type EditableControlBaseProps, type EditableControlProps } from './editable-control'
 export {
   EditableEditTrigger,
   type EditableEditTriggerBaseProps,
   type EditableEditTriggerProps,
 } from './editable-edit-trigger'
-export {
-  EditableInput,
-  type EditableInputBaseProps,
-  type EditableInputProps,
-} from './editable-input'
-export {
-  EditableLabel,
-  type EditableLabelBaseProps,
-  type EditableLabelProps,
-} from './editable-label'
-export {
-  EditablePreview,
-  type EditablePreviewBaseProps,
-  type EditablePreviewProps,
-} from './editable-preview'
+export { EditableInput, type EditableInputBaseProps, type EditableInputProps } from './editable-input'
+export { EditableLabel, type EditableLabelBaseProps, type EditableLabelProps } from './editable-label'
+export { EditablePreview, type EditablePreviewBaseProps, type EditablePreviewProps } from './editable-preview'
 export { EditableRoot, type EditableRootBaseProps, type EditableRootProps } from './editable-root'
 export {
   EditableRootProvider,

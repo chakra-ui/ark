@@ -12,9 +12,8 @@ export const Faq = () => {
           <Link href="https://zagjs.com/" target="_blank">
             Zag.js
           </Link>{' '}
-          to provide support for multiple JavaScript frameworks. Zag.js is a lightweight library
-          that builds upon the latest concepts in Statecharts, enabling seamless integration across
-          different frameworks.
+          to provide support for multiple JavaScript frameworks. Zag.js is a lightweight library that builds upon the
+          latest concepts in Statecharts, enabling seamless integration across different frameworks.
         </div>
       ),
     },
@@ -26,8 +25,8 @@ export const Faq = () => {
           <Link href="https://zagjs.com/" target="_blank">
             Zag.js
           </Link>
-          , Ark UI currently supports the following JavaScript frameworks: React, Solid, and Vue. We
-          plan to extend support to Svelte later this year.
+          , Ark UI currently supports the following JavaScript frameworks: React, Solid, and Vue. We plan to extend
+          support to Svelte later this year.
         </div>
       ),
     },
@@ -35,9 +34,9 @@ export const Faq = () => {
       question: 'Why support various JavaScript frameworks?',
       answer: (
         <div>
-          Supporting multiple JavaScript frameworks enables flexible design systems that are
-          compatible across various platforms. This approach provides developers with the freedom to
-          select the tools that best suit their expertise and project requirements.
+          Supporting multiple JavaScript frameworks enables flexible design systems that are compatible across various
+          platforms. This approach provides developers with the freedom to select the tools that best suit their
+          expertise and project requirements.
         </div>
       ),
     },

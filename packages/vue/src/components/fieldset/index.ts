@@ -19,11 +19,7 @@ export {
   type FieldsetRootProviderBaseProps,
   type FieldsetRootProviderProps,
 } from './fieldset-root-provider.vue'
-export {
-  default as FieldsetRoot,
-  type FieldsetRootBaseProps,
-  type FieldsetRootProps,
-} from './fieldset-root.vue'
+export { default as FieldsetRoot, type FieldsetRootBaseProps, type FieldsetRootProps } from './fieldset-root.vue'
 export { fieldsetAnatomy } from './fieldset.anatomy'
 export { useFieldsetContext, type UseFieldsetContext } from './use-fieldset-context'
 

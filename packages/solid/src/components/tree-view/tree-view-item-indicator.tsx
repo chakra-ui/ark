@@ -4,9 +4,7 @@ import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
 export interface TreeViewItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
-export interface TreeViewItemIndicatorProps
-  extends HTMLProps<'div'>,
-    TreeViewItemIndicatorBaseProps {}
+export interface TreeViewItemIndicatorProps extends HTMLProps<'div'>, TreeViewItemIndicatorBaseProps {}
 
 export const TreeViewItemIndicator = (props: TreeViewItemIndicatorProps) => {
   const treeView = useTreeViewContext()

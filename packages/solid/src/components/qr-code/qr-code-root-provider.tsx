@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface QrCodeRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface QrCodeRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    QrCodeRootProviderBaseProps {}
+export interface QrCodeRootProviderProps extends HTMLProps<'div'>, RootProviderProps, QrCodeRootProviderBaseProps {}
 
 export const QrCodeRootProvider = (props: QrCodeRootProviderProps) => {
   const [{ value: qrCode }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

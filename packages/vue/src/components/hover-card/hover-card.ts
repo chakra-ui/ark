@@ -14,10 +14,7 @@ export {
   type HoverCardContentProps as ContentProps,
   type HoverCardContentBaseProps as ContentBaseProps,
 } from './hover-card-content.vue'
-export {
-  default as Context,
-  type HoverCardContextProps as ContextProps,
-} from './hover-card-context.vue'
+export { default as Context, type HoverCardContextProps as ContextProps } from './hover-card-context.vue'
 export {
   default as Positioner,
   type HoverCardPositionerProps as PositionerProps,

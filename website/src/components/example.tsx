@@ -46,10 +46,9 @@ const findExamples = async (props: Props) => {
       const basePath = `../packages/${framework}/src`
       const fileName = [id, extension].join('.')
 
-      const content = await readFile(
-        join(process.cwd(), basePath, examplePath, fileName),
-        'utf-8',
-      ).catch(() => 'Example not found')
+      const content = await readFile(join(process.cwd(), basePath, examplePath, fileName), 'utf-8').catch(
+        () => 'Example not found',
+      )
 
       const code = content
         .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)

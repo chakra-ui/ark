@@ -4,9 +4,7 @@ import { useFieldContext } from '../field'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface ColorPickerHiddenInputProps
-  extends HTMLProps<'input'>,
-    ColorPickerHiddenInputBaseProps {}
+export interface ColorPickerHiddenInputProps extends HTMLProps<'input'>, ColorPickerHiddenInputBaseProps {}
 
 export const ColorPickerHiddenInput = (props: ColorPickerHiddenInputProps) => {
   const colorPicker = useColorPickerContext()

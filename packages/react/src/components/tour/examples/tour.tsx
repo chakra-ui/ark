@@ -31,9 +31,7 @@ export const DemoTour = () => {
             </Tour.CloseTrigger>
             <Tour.Control>
               <Tour.Actions>
-                {(actions) =>
-                  actions.map((action) => <Tour.ActionTrigger key={action.label} action={action} />)
-                }
+                {(actions) => actions.map((action) => <Tour.ActionTrigger key={action.label} action={action} />)}
               </Tour.Actions>
             </Tour.Control>
           </Tour.Content>

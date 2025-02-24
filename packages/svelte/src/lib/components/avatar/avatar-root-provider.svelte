@@ -7,8 +7,7 @@
   }
 
   export interface AvatarRootProviderBaseProps extends RootProviderProps {}
-  export interface AvatarRootProviderProps
-    extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
+  export interface AvatarRootProviderProps extends Assign<HTMLProps<'div'>, AvatarRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">

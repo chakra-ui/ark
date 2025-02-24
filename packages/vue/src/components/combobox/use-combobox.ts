@@ -10,10 +10,7 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<
-    Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>,
-    'id'
-  > {
+  extends Optional<Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>, 'id'> {
   modelValue?: combobox.Context<T>['value']
   /**
    * The initial open state of the combobox when it is first rendered.
@@ -27,8 +24,7 @@ export interface UseComboboxProps<T extends CollectionItem>
   defaultValue?: combobox.Context['value']
 }
 
-export interface UseComboboxReturn<T extends CollectionItem>
-  extends ComputedRef<combobox.Api<PropTypes, T>> {}
+export interface UseComboboxReturn<T extends CollectionItem> extends ComputedRef<combobox.Api<PropTypes, T>> {}
 
 export const useCombobox = <T extends CollectionItem>(
   props: UseComboboxProps<T>,

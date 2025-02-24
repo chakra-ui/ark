@@ -1,12 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import { type JSX, createEffect } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseMenuProps, useMenu } from './use-menu'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'

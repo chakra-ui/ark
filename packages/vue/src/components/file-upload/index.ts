@@ -9,10 +9,7 @@ export {
   type FileUploadClearTriggerBaseProps,
   type FileUploadClearTriggerProps,
 } from './file-upload-clear-trigger.vue'
-export {
-  default as FileUploadContext,
-  type FileUploadContextProps,
-} from './file-upload-context.vue'
+export { default as FileUploadContext, type FileUploadContextProps } from './file-upload-context.vue'
 export {
   default as FileUploadDropzone,
   type FileUploadDropzoneBaseProps,

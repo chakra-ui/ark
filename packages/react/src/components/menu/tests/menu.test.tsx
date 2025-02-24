@@ -111,9 +111,7 @@ describe('Menu', () => {
 
     const button = screen.getByRole('button', { name: /open menu/i })
     fireEvent.click(button)
-    await waitFor(() =>
-      expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'),
-    )
+    await waitFor(() => expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'))
   })
 
   it('should control the open state', async () => {

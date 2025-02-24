@@ -16,14 +16,10 @@ export const Demo = () => {
         borderWidth: '1px',
         height: 'calc(var(--height) + 2px)',
       })}
-      head={
-        <style>{`.frame-root {font-family:sans-serif; padding: 24px} body{background: ${bg} }`}</style>
-      }
+      head={<style>{`.frame-root {font-family:sans-serif; padding: 24px} body{background: ${bg} }`}</style>}
     >
       <h1 style={{ color }}>Ark UI / Frame</h1>
-      <p style={{ marginBottom: '10px', marginTop: '4px', color }}>
-        This is a React component wrapped in an iframe.
-      </p>
+      <p style={{ marginBottom: '10px', marginTop: '4px', color }}>This is a React component wrapped in an iframe.</p>
       <button style={{ padding: '5px' }}>Click me</button>
     </Frame>
   )

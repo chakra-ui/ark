@@ -8,8 +8,6 @@ const isPresent = ref(false)
 <template>
   <div>
     <button @click="isPresent = !isPresent">Toggle</button>
-    <Presence :present="isPresent" lazyMount unmountOnExit>
-      Lazy Mount and Unmounted on Exit
-    </Presence>
+    <Presence :present="isPresent" lazyMount unmountOnExit>Lazy Mount and Unmounted on Exit</Presence>
   </div>
 </template>

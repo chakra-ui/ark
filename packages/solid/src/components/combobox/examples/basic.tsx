@@ -10,9 +10,7 @@ export const Basic = () => {
   const collection = createMemo(() => createListCollection({ items: items() }))
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(
-      initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())),
-    )
+    setItems(initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())))
   }
 
   return (

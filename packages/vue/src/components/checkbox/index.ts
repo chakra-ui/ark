@@ -8,11 +8,7 @@ export {
   type CheckboxControlProps,
   type CheckboxControlBaseProps,
 } from './checkbox-control.vue'
-export {
-  default as CheckboxGroup,
-  type CheckboxGroupProps,
-  type CheckboxGroupBaseProps,
-} from './checkbox-group.vue'
+export { default as CheckboxGroup, type CheckboxGroupProps, type CheckboxGroupBaseProps } from './checkbox-group.vue'
 export {
   default as CheckboxHiddenInput,
   type CheckboxHiddenInputProps,
@@ -23,11 +19,7 @@ export {
   type CheckboxIndicatorProps,
   type CheckboxIndicatorBaseProps,
 } from './checkbox-indicator.vue'
-export {
-  default as CheckboxLabel,
-  type CheckboxLabelProps,
-  type CheckboxLabelBaseProps,
-} from './checkbox-label.vue'
+export { default as CheckboxLabel, type CheckboxLabelProps, type CheckboxLabelBaseProps } from './checkbox-label.vue'
 export {
   default as CheckboxRootProvider,
   type CheckboxRootProviderProps,
@@ -41,11 +33,7 @@ export {
 } from './checkbox-root.vue'
 export { useCheckbox, type UseCheckboxProps, type UseCheckboxReturn } from './use-checkbox'
 export { useCheckboxContext, type UseCheckboxContext } from './use-checkbox-context'
-export {
-  useCheckboxGroup,
-  type UseCheckboxGroupProps,
-  type UseCheckboxGroupReturn,
-} from './use-checkbox-group'
+export { useCheckboxGroup, type UseCheckboxGroupProps, type UseCheckboxGroupReturn } from './use-checkbox-group'
 export { useCheckboxGroupContext, type UseCheckboxGroupContext } from './use-checkbox-group-context'
 export { checkboxAnatomy } from './checkbox.anatomy'
 

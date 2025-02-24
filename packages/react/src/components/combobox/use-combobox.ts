@@ -8,10 +8,7 @@ import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<
-    Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>,
-    'id'
-  > {
+  extends Optional<Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>, 'id'> {
   /**
    * The initial open state of the combobox when it is first rendered.
    * Use when you do not need to control its open state.
@@ -30,9 +27,7 @@ export interface UseComboboxProps<T extends CollectionItem>
 
 export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Api<PropTypes, T> {}
 
-export const useCombobox = <T extends CollectionItem>(
-  props: UseComboboxProps<T>,
-): UseComboboxReturn<T> => {
+export const useCombobox = <T extends CollectionItem>(props: UseComboboxProps<T>): UseComboboxReturn<T> => {
   const { collection, ...comboboxProps } = props
 
   const { dir } = useLocaleContext()

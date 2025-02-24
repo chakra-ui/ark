@@ -1,8 +1,5 @@
 export type { CheckedChangeDetails, CheckedState } from '@zag-js/checkbox'
-export {
-  default as Context,
-  type CheckboxContextProps as ContextProps,
-} from './checkbox-context.vue'
+export { default as Context, type CheckboxContextProps as ContextProps } from './checkbox-context.vue'
 export {
   default as Control,
   type CheckboxControlBaseProps as ControlBaseProps,

@@ -8,10 +8,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseAccordionReturn>
 }
 
-export interface AccordionRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface AccordionRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProviderProps
   extends AccordionRootProviderBaseProps,
     /**
@@ -30,9 +27,7 @@ const props = defineProps<AccordionRootProviderProps>()
 const accordion = computed(() => props.value)
 
 AccordionProvider(accordion)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 useForwardExpose()
 </script>
 

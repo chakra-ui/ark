@@ -7,15 +7,11 @@ import { useDatePickerContext } from './use-date-picker-context'
 import { DatePickerTableProvider } from './use-date-picker-table-props-context'
 import { useDatePickerViewContext } from './use-date-picker-view-props-context'
 
-export interface DatePickerTableBaseProps
-  extends Pick<TableProps, 'columns'>,
-    PolymorphicProps<'table'> {}
+export interface DatePickerTableBaseProps extends Pick<TableProps, 'columns'>, PolymorphicProps<'table'> {}
 export interface DatePickerTableProps extends HTMLProps<'table'>, DatePickerTableBaseProps {}
 
 export const DatePickerTable = (props: DatePickerTableProps) => {
-  const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, [
-    'columns',
-  ])
+  const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, ['columns'])
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
   const tableProps = { columns, id: createUniqueId(), ...viewProps }

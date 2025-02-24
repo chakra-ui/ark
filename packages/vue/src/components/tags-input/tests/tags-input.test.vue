@@ -10,12 +10,7 @@ const frameworks = ref(['react', 'solid', 'vue'])
     <TagsInput.Context v-slot="tagsInput">
       <TagsInput.Label>Frameworks</TagsInput.Label>
       <TagsInput.Control>
-        <TagsInput.Item
-          v-for="(value, index) in tagsInput.value"
-          :key="index"
-          :index="index"
-          :value="value"
-        >
+        <TagsInput.Item v-for="(value, index) in tagsInput.value" :key="index" :index="index" :value="value">
           <TagsInput.ItemPreview>
             <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
             <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>

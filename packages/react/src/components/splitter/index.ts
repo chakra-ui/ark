@@ -1,10 +1,6 @@
 export type { SizeChangeDetails as SplitterSizeChangeDetails } from '@zag-js/splitter'
 export { SplitterContext, type SplitterContextProps } from './splitter-context'
-export {
-  SplitterPanel,
-  type SplitterPanelBaseProps,
-  type SplitterPanelProps,
-} from './splitter-panel'
+export { SplitterPanel, type SplitterPanelBaseProps, type SplitterPanelProps } from './splitter-panel'
 export {
   SplitterResizeTrigger,
   type SplitterResizeTriggerBaseProps,

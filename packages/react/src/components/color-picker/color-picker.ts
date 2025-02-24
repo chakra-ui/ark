@@ -55,10 +55,7 @@ export {
   type ColorPickerContentBaseProps as ContentBaseProps,
   type ColorPickerContentProps as ContentProps,
 } from './color-picker-content'
-export {
-  ColorPickerContext as Context,
-  type ColorPickerContextProps as ContextProps,
-} from './color-picker-context'
+export { ColorPickerContext as Context, type ColorPickerContextProps as ContextProps } from './color-picker-context'
 export {
   ColorPickerControl as Control,
   type ColorPickerControlBaseProps as ControlBaseProps,

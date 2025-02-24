@@ -5,5 +5,4 @@ export interface TreeViewNodeContextProps {
   children: (context: UseTreeViewNodeContext) => JSX.Element
 }
 
-export const TreeViewNodeContext = (props: TreeViewNodeContextProps) =>
-  props.children(useTreeViewNodeContext())
+export const TreeViewNodeContext = (props: TreeViewNodeContextProps) => props.children(useTreeViewNodeContext())

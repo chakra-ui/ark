@@ -6,8 +6,7 @@ import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
-export interface UseCheckboxProps
-  extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseCheckboxProps extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The checked state of the checkbox when it is first rendered.
    * Use this when you do not need to control the state of the checkbox.

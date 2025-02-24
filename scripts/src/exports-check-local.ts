@@ -51,9 +51,7 @@ const getExportsFromSourceFile = (path: string): string[] => {
     .forEachDescendantAsArray()
     .filter((node): node is ExportDeclaration => Node.isExportDeclaration(node))
     .flatMap((node) =>
-      node
-        .getNamedExports()
-        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
+      node.getNamedExports().map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
     )
 }
 

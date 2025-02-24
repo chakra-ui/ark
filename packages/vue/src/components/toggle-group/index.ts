@@ -1,8 +1,5 @@
 export type { ValueChangeDetails as ToggleGroupValueChangeDetails } from '@zag-js/toggle-group'
-export {
-  default as ToggleGroupContext,
-  type ToggleGroupContextProps,
-} from './toggle-group-context.vue'
+export { default as ToggleGroupContext, type ToggleGroupContextProps } from './toggle-group-context.vue'
 export {
   default as ToggleGroupItem,
   type ToggleGroupItemBaseProps,
@@ -20,11 +17,7 @@ export {
   type ToggleGroupRootProps,
 } from './toggle-group-root.vue'
 export { toggleGroupAnatomy } from './toggle-group.anatomy'
-export {
-  useToggleGroup,
-  type UseToggleGroupProps,
-  type UseToggleGroupReturn,
-} from './use-toggle-group'
+export { useToggleGroup, type UseToggleGroupProps, type UseToggleGroupReturn } from './use-toggle-group'
 export { useToggleGroupContext, type UseToggleGroupContext } from './use-toggle-group-context'
 
 export * as ToggleGroup from './toggle-group'

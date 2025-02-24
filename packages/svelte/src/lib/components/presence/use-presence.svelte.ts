@@ -3,9 +3,7 @@ import { type RenderStrategyProps, splitRenderStrategyProps } from '$lib/utils/r
 import * as presence from '@zag-js/presence'
 import { normalizeProps, reflect, useMachine } from '@zag-js/svelte'
 
-export interface UsePresenceProps
-  extends Optional<presence.Context, 'present'>,
-    RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Context, 'present'>, RenderStrategyProps {}
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
 export const usePresence = (props: UsePresenceProps) => {

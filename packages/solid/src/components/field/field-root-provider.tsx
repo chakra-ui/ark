@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface FieldRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface FieldRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    FieldRootProviderBaseProps {}
+export interface FieldRootProviderProps extends HTMLProps<'div'>, RootProviderProps, FieldRootProviderBaseProps {}
 
 export const FieldRootProvider = (props: FieldRootProviderProps) => {
   const [{ value: field }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

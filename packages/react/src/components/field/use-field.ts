@@ -44,13 +44,7 @@ export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps) => {
   const fieldset = useFieldsetContext()
-  const {
-    ids,
-    disabled = Boolean(fieldset?.disabled),
-    invalid = false,
-    readOnly = false,
-    required = false,
-  } = props
+  const { ids, disabled = Boolean(fieldset?.disabled), invalid = false, readOnly = false, required = false } = props
 
   const hasErrorText = useRef(false)
   const hasHelperText = useRef(false)

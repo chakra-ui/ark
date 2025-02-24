@@ -63,9 +63,7 @@ export const PropsTable = (props: Props) => {
                     <Text as="span">
                       For more details, read our{' '}
                       <Link asChild>
-                        <NextLink href={`/${framework}/docs/guides/composition`}>
-                          Composition
-                        </NextLink>
+                        <NextLink href={`/${framework}/docs/guides/composition`}>Composition</NextLink>
                       </Link>{' '}
                       guide.
                     </Text>

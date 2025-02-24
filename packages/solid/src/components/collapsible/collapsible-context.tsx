@@ -5,5 +5,4 @@ export interface CollapsibleContextProps {
   children: (context: UseCollapsibleContext) => JSX.Element
 }
 
-export const CollapsibleContext = (props: CollapsibleContextProps) =>
-  props.children(useCollapsibleContext())
+export const CollapsibleContext = (props: CollapsibleContextProps) => props.children(useCollapsibleContext())

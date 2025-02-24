@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface PinInputRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface PinInputRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    PinInputRootProviderBaseProps {}
+export interface PinInputRootProviderProps extends HTMLProps<'div'>, RootProviderProps, PinInputRootProviderBaseProps {}
 
 export const PinInputRootProvider = (props: PinInputRootProviderProps) => {
   const [{ value: pinInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

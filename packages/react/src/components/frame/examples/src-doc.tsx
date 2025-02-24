@@ -8,11 +8,7 @@ const srcDoc = `<html><head>
 
 export const SrcDoc = () => {
   return (
-    <Frame
-      title="Custom Frame"
-      style={{ border: '1px solid #ccc', maxWidth: '800px', width: '100%' }}
-      srcDoc={srcDoc}
-    >
+    <Frame title="Custom Frame" style={{ border: '1px solid #ccc', maxWidth: '800px', width: '100%' }} srcDoc={srcDoc}>
       <h1 style={{ fontFamily: 'Open Sans, sans-serif' }}>Hello from inside the frame!</h1>
       <p>This content is rendered within our custom frame component using a Portal.</p>
       <p>The frame has custom initial content, including Font Awesome and Open Sans font.</p>

@@ -1,8 +1,7 @@
 import { Button, type ButtonProps } from '~/components/ui/button'
 import { Link, type LinkProps } from '~/components/ui/link'
 
-const createHref = (subject = '') =>
-  `mailto:support@chakra-ui.com?subject=${encodeURIComponent(subject)}`
+const createHref = (subject = '') => `mailto:support@chakra-ui.com?subject=${encodeURIComponent(subject)}`
 
 interface MailToSupportLinkProps extends LinkProps {
   subject?: string

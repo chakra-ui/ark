@@ -81,26 +81,15 @@ describe('PinInput', () => {
     await user.type(screen.getByLabelText('pin code 2 of 3'), '2')
     await user.type(screen.getByLabelText('pin code 3 of 3'), '3')
 
-    await waitFor(() =>
-      expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }),
-    )
+    await waitFor(() => expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }))
   })
 
   it('should set one-time-code for autocomplete on fields', async () => {
     render(<ComponentUnderTest otp />)
 
-    expect(screen.getByLabelText('pin code 1 of 3')).toHaveAttribute(
-      'autocomplete',
-      'one-time-code',
-    )
-    expect(screen.getByLabelText('pin code 2 of 3')).toHaveAttribute(
-      'autocomplete',
-      'one-time-code',
-    )
-    expect(screen.getByLabelText('pin code 3 of 3')).toHaveAttribute(
-      'autocomplete',
-      'one-time-code',
-    )
+    expect(screen.getByLabelText('pin code 1 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
+    expect(screen.getByLabelText('pin code 2 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
+    expect(screen.getByLabelText('pin code 3 of 3')).toHaveAttribute('autocomplete', 'one-time-code')
   })
 
   it('should replace last input calls onComplete correctly', async () => {
@@ -115,18 +104,14 @@ describe('PinInput', () => {
     await user.type(input2, '2')
     await user.type(input3, '3')
 
-    await waitFor(() =>
-      expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }),
-    )
+    await waitFor(() => expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }))
     onComplete.mockClear()
 
     await user.type(input3, '{selectall}{backspace}')
     await waitFor(() => expect(input3).toHaveValue(''))
 
     await user.type(input3, '3')
-    await waitFor(() =>
-      expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }),
-    )
+    await waitFor(() => expect(onComplete).toHaveBeenCalledWith({ value: ['1', '2', '3'], valueAsString: '123' }))
   })
 })
 

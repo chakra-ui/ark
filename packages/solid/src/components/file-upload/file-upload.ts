@@ -1,18 +1,10 @@
-export type {
-  FileAcceptDetails,
-  FileChangeDetails,
-  FileRejectDetails,
-  FileValidateDetails,
-} from '@zag-js/file-upload'
+export type { FileAcceptDetails, FileChangeDetails, FileRejectDetails, FileValidateDetails } from '@zag-js/file-upload'
 export {
   FileUploadClearTrigger as ClearTrigger,
   type FileUploadClearTriggerBaseProps as ClearTriggerBaseProps,
   type FileUploadClearTriggerProps as ClearTriggerProps,
 } from './file-upload-clear-trigger'
-export {
-  FileUploadContext as Context,
-  type FileUploadContextProps as ContextProps,
-} from './file-upload-context'
+export { FileUploadContext as Context, type FileUploadContextProps as ContextProps } from './file-upload-context'
 export {
   FileUploadDropzone as Dropzone,
   type FileUploadDropzoneBaseProps as DropzoneBaseProps,

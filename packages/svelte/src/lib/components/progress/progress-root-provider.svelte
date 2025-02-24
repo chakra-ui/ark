@@ -7,8 +7,7 @@
   }
 
   export interface ProgressRootProviderBaseProps extends RootProviderProps {}
-  export interface ProgressRootProviderProps
-    extends Assign<HTMLProps<'div'>, ProgressRootProviderBaseProps> {}
+  export interface ProgressRootProviderProps extends Assign<HTMLProps<'div'>, ProgressRootProviderBaseProps> {}
 </script>
 
 <script lang="ts">

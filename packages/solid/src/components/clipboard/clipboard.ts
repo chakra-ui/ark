@@ -1,8 +1,5 @@
 export type { CopyStatusDetails } from '@zag-js/clipboard'
-export {
-  ClipboardContext as Context,
-  type ClipboardContextProps as ContextProps,
-} from './clipboard-context'
+export { ClipboardContext as Context, type ClipboardContextProps as ContextProps } from './clipboard-context'
 export {
   ClipboardControl as Control,
   type ClipboardControlBaseProps as ControlBaseProps,

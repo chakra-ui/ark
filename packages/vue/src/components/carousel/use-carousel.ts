@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './carousel.types'
 
-export interface UseCarouselProps
-  extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseCarouselProps extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial page of the carousel when it is first rendered.
    * Use this when you do not need to control the state of the carousel.
@@ -16,10 +15,7 @@ export interface UseCarouselProps
 }
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (
-  props: UseCarouselProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseCarouselReturn => {
+export const useCarousel = (props: UseCarouselProps = {}, emit?: EmitFn<RootEmits>): UseCarouselReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

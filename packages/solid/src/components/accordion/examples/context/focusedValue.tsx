@@ -5,9 +5,7 @@ import { Index } from 'solid-js'
 export const ContextFocusedValue = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      <Accordion.Context>
-        {(context) => <span>Focused item: {context().focusedValue}</span>}
-      </Accordion.Context>
+      <Accordion.Context>{(context) => <span>Focused item: {context().focusedValue}</span>}</Accordion.Context>
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>

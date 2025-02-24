@@ -6,8 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './qr-code.types'
 
-export interface UseQrCodeProps
-  extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseQrCodeProps extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The initial value of the qr code when it is first rendered.
    * Use when you do not need to control the state of the qr code.
@@ -21,10 +20,7 @@ export interface UseQrCodeProps
 
 export interface UseQrCodeReturn extends ComputedRef<qrcode.Api<PropTypes>> {}
 
-export const useQrCode = (
-  props: UseQrCodeProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseQrCodeReturn => {
+export const useQrCode = (props: UseQrCodeProps = {}, emit?: EmitFn<RootEmits>): UseQrCodeReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

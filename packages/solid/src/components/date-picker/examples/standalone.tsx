@@ -20,9 +20,7 @@ export const Standalone = () => {
                 <DatePicker.TableHead>
                   <DatePicker.TableRow>
                     <Index each={context().weekDays}>
-                      {(weekDay) => (
-                        <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>
-                      )}
+                      {(weekDay) => <DatePicker.TableHeader>{weekDay().short}</DatePicker.TableHeader>}
                     </Index>
                   </DatePicker.TableRow>
                 </DatePicker.TableHead>

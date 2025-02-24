@@ -6,8 +6,7 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
-export interface UsePinInputProps
-  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UsePinInputProps extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the pin input when it is first rendered.
    * Use when you do not need to control the state of the pin input

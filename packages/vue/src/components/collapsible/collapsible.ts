@@ -4,10 +4,7 @@ export {
   type CollapsibleContentProps as ContentProps,
   type CollapsibleContentBaseProps as ContentBaseProps,
 } from './collapsible-content.vue'
-export {
-  default as Context,
-  type CollapsibleContextProps as ContextProps,
-} from './collapsible-context.vue'
+export { default as Context, type CollapsibleContextProps as ContextProps } from './collapsible-context.vue'
 export {
   default as RootProvider,
   type CollapsibleRootProviderProps as RootProviderProps,

@@ -5,11 +5,8 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 
-export interface DatePickerPresetTriggerBaseProps
-  extends PresetTriggerProps,
-    PolymorphicProps<'button'> {}
-export interface DatePickerPresetTriggerProps
-  extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
+export interface DatePickerPresetTriggerBaseProps extends PresetTriggerProps, PolymorphicProps<'button'> {}
+export interface DatePickerPresetTriggerProps extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
 
 export const DatePickerPresetTrigger = (props: DatePickerPresetTriggerProps) => {
   const [presetTriggerProps, localProps] = createSplitProps<PresetTriggerProps>()(props, ['value'])

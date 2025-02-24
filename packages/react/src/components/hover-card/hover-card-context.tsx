@@ -5,5 +5,4 @@ export interface HoverCardContextProps {
   children: (context: UseHoverCardContext) => ReactNode
 }
 
-export const HoverCardContext = (props: HoverCardContextProps) =>
-  props.children(useHoverCardContext())
+export const HoverCardContext = (props: HoverCardContextProps) => props.children(useHoverCardContext())

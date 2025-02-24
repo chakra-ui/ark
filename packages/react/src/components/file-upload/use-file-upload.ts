@@ -6,8 +6,7 @@ import type { Optional } from '../../types'
 import { useEvent } from '../../utils/use-event'
 import { useFieldContext } from '../field'
 
-export interface UseFileUploadProps
-  extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseFileUploadProps extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 
 export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {

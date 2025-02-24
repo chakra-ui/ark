@@ -10,8 +10,7 @@ export interface UseMenuItemGroupContext {
   onValueChange?: (e: ValueChangeDetails) => void
 }
 
-export const [MenuItemGroupProvider, useMenuItemGroupContext] =
-  createContext<UseMenuItemGroupContext>({
-    hookName: 'useMenuItemGroupContext',
-    providerName: '<MenuItemGroupProvider />',
-  })
+export const [MenuItemGroupProvider, useMenuItemGroupContext] = createContext<UseMenuItemGroupContext>({
+  hookName: 'useMenuItemGroupContext',
+  providerName: '<MenuItemGroupProvider />',
+})

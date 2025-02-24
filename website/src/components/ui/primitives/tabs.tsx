@@ -19,24 +19,21 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Tabs.RootBaseProps>, TabsVariantProps>
 >(Tabs.Root, 'root')
 
-export const Content = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Tabs.ContentBaseProps>
->(Tabs.Content, 'content')
-
-export const Indicator = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Tabs.IndicatorBaseProps>
->(Tabs.Indicator, 'indicator')
-
-export const List = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Tabs.ListBaseProps>>(
-  Tabs.List,
-  'list',
+export const Content = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Tabs.ContentBaseProps>>(
+  Tabs.Content,
+  'content',
 )
 
-export const Trigger = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, Tabs.TriggerBaseProps>
->(Tabs.Trigger, 'trigger')
+export const Indicator = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Tabs.IndicatorBaseProps>>(
+  Tabs.Indicator,
+  'indicator',
+)
+
+export const List = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Tabs.ListBaseProps>>(Tabs.List, 'list')
+
+export const Trigger = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, Tabs.TriggerBaseProps>>(
+  Tabs.Trigger,
+  'trigger',
+)
 
 export const Context = Tabs.Context

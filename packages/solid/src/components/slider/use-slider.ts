@@ -4,8 +4,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseSliderProps
-  extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSliderProps extends Optional<Omit<slider.Context, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The initial value of the slider when it is first rendered.
    * Use when you do not need to control the state of the slider picker.

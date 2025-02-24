@@ -19,20 +19,20 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, RatingGroup.RootBaseProps>, RatingGroupVariantProps>
 >(RatingGroup.Root, 'root')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, RatingGroup.ControlBaseProps>
->(RatingGroup.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, RatingGroup.ControlBaseProps>>(
+  RatingGroup.Control,
+  'control',
+)
 
-export const Item = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, RatingGroup.ItemBaseProps>
->(RatingGroup.Item, 'item')
+export const Item = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, RatingGroup.ItemBaseProps>>(
+  RatingGroup.Item,
+  'item',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, RatingGroup.LabelBaseProps>
->(RatingGroup.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, RatingGroup.LabelBaseProps>>(
+  RatingGroup.Label,
+  'label',
+)
 
 export const Context = RatingGroup.Context
 export const ItemContext = RatingGroup.ItemContext

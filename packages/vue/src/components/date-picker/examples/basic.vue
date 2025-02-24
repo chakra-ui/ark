@@ -56,11 +56,7 @@ import { DatePicker } from '@ark-ui/vue/date-picker'
                   v-for="(months, id) in api.getMonthsGrid({ columns: 4, format: 'short' })"
                   :key="id"
                 >
-                  <DatePicker.TableCell
-                    v-for="(month, id) in months"
-                    :key="id"
-                    :value="month.value"
-                  >
+                  <DatePicker.TableCell v-for="(month, id) in months" :key="id" :value="month.value">
                     <DatePicker.TableCellTrigger>{{ month.label }}</DatePicker.TableCellTrigger>
                   </DatePicker.TableCell>
                 </DatePicker.TableRow>
@@ -79,10 +75,7 @@ import { DatePicker } from '@ark-ui/vue/date-picker'
             </DatePicker.ViewControl>
             <DatePicker.Table>
               <DatePicker.TableBody>
-                <DatePicker.TableRow
-                  v-for="(years, id) in api.getYearsGrid({ columns: 4 })"
-                  :key="id"
-                >
+                <DatePicker.TableRow v-for="(years, id) in api.getYearsGrid({ columns: 4 })" :key="id">
                   <DatePicker.TableCell v-for="(year, id) in years" :key="id" :value="year.value">
                     <DatePicker.TableCellTrigger>{{ year.label }}</DatePicker.TableCellTrigger>
                   </DatePicker.TableCell>

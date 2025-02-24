@@ -5,5 +5,4 @@ export interface SignaturePadContextProps {
   children: (context: UseSignaturePadContext) => ReactNode
 }
 
-export const SignaturePadContext = (props: SignaturePadContextProps) =>
-  props.children(useSignaturePadContext())
+export const SignaturePadContext = (props: SignaturePadContextProps) => props.children(useSignaturePadContext())

@@ -4,11 +4,7 @@ export {
   type TooltipArrowTipBaseProps,
   type TooltipArrowTipProps,
 } from './tooltip-arrow-tip.vue'
-export {
-  default as TooltipArrow,
-  type TooltipArrowBaseProps,
-  type TooltipArrowProps,
-} from './tooltip-arrow.vue'
+export { default as TooltipArrow, type TooltipArrowBaseProps, type TooltipArrowProps } from './tooltip-arrow.vue'
 export {
   default as TooltipContent,
   type TooltipContentBaseProps,

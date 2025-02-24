@@ -16,10 +16,7 @@ export interface UseHoverCardProps
 }
 export interface UseHoverCardReturn extends ComputedRef<hoverCard.Api<PropTypes>> {}
 
-export const useHoverCard = (
-  props: UseHoverCardProps = {},
-  emit?: EmitFn<RootEmits>,
-): UseHoverCardReturn => {
+export const useHoverCard = (props: UseHoverCardProps = {}, emit?: EmitFn<RootEmits>): UseHoverCardReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)

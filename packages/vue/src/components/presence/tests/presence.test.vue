@@ -13,11 +13,7 @@ const isPresent = ref(false)
 <template>
   <div>
     <button @click="isPresent = !isPresent">Toggle</button>
-    <Presence
-      :present="isPresent"
-      :lazy-mount="props.lazyMount"
-      :unmount-on-exit="props.unmountOnExit"
-    >
+    <Presence :present="isPresent" :lazy-mount="props.lazyMount" :unmount-on-exit="props.unmountOnExit">
       <div data-testid="box">Content!</div>
     </Presence>
   </div>

@@ -6,12 +6,7 @@ import { Input } from '~/components/ui/input'
 
 export const Demo = (props: DatePicker.RootProps) => {
   return (
-    <DatePicker.Root
-      {...props}
-      positioning={{ sameWidth: true }}
-      startOfWeek={1}
-      selectionMode="range"
-    >
+    <DatePicker.Root {...props} positioning={{ sameWidth: true }} startOfWeek={1} selectionMode="range">
       <DatePicker.Label>Date Picker</DatePicker.Label>
       <DatePicker.Control>
         <DatePicker.Input asChild>

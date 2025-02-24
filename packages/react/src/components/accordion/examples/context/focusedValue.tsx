@@ -4,9 +4,7 @@ import { ChevronDownIcon } from 'lucide-react'
 export const ContextFocusedValue = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      <Accordion.Context>
-        {(context) => <span>Focused item: {context.focusedValue}</span>}
-      </Accordion.Context>
+      <Accordion.Context>{(context) => <span>Focused item: {context.focusedValue}</span>}</Accordion.Context>
       {['React', 'Solid', 'Vue'].map((item) => (
         <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
@@ -15,9 +13,7 @@ export const ContextFocusedValue = () => {
               <ChevronDownIcon />
             </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
-            {item} is a JavaScript library for building user interfaces.
-          </Accordion.ItemContent>
+          <Accordion.ItemContent>{item} is a JavaScript library for building user interfaces.</Accordion.ItemContent>
         </Accordion.Item>
       ))}
     </Accordion.Root>

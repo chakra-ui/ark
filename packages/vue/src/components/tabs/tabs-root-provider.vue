@@ -8,10 +8,7 @@ interface RootProviderProps {
   value: UnwrapRef<UseTabsReturn>
 }
 
-export interface TabsRootProviderBaseProps
-  extends RootProviderProps,
-    RenderStrategyProps,
-    PolymorphicProps {}
+export interface TabsRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProviderProps
   extends TabsRootProviderBaseProps,
     /**
@@ -30,9 +27,7 @@ const props = defineProps<TabsRootProviderProps>()
 const tabs = computed(() => props.value)
 
 TabsProvider(tabs)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

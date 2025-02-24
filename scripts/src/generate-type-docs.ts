@@ -61,8 +61,7 @@ async function extractPropertiesOfTypeName(
       const typeName = typeChecker.typeToString(nonNullableType)
       const isRequired = nonNullableType === type && typeName !== 'any'
 
-      const defaultValue = property.getJsDocTags().filter((tag) => tag.name === 'default')[0]
-        ?.text?.[0].text
+      const defaultValue = property.getJsDocTags().filter((tag) => tag.name === 'default')[0]?.text?.[0].text
 
       if (shouldIgnoreProperty(property)) {
         continue
@@ -112,12 +111,9 @@ async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSea
   return async (searchTerm: Parameters<typeof extractPropertiesOfTypeName>[0]) => {
     const results: Record<string, TypeProperties> = {}
     for (const sourceFile of sourceFiles) {
-      const typeInfo = await extractPropertiesOfTypeName(
-        searchTerm,
-        sourceFile,
-        program.getTypeChecker(),
-        { shouldIgnoreProperty },
-      )
+      const typeInfo = await extractPropertiesOfTypeName(searchTerm, sourceFile, program.getTypeChecker(), {
+        shouldIgnoreProperty,
+      })
       Object.assign(results, typeInfo)
     }
     return results
@@ -135,8 +131,7 @@ function getSourceFileName(symbol: ts.Symbol): string | undefined {
 
 function shouldIgnoreProperty(property: ts.Symbol) {
   const sourceFileName = getSourceFileName(property)
-  const isExternal =
-    sourceFileName?.includes('node_modules') && !sourceFileName?.includes('@zag-js')
+  const isExternal = sourceFileName?.includes('node_modules') && !sourceFileName?.includes('@zag-js')
   const isExcludedByName = ['children'].includes(property.getName())
   return isExternal || isExcludedByName
 }
@@ -173,12 +168,9 @@ const extractTypesForFramework = async (framework: string) => {
   const componentExportMap: Record<string, string[]> = Object.fromEntries(
     await Promise.all(
       components.map(async (component) => {
-        const fileContent = await readFile(
-          path.join(component, framework === 'solid' ? 'index.tsx' : 'index.ts'),
-          {
-            encoding: 'utf8',
-          },
-        ).catch(() => undefined)
+        const fileContent = await readFile(path.join(component, framework === 'solid' ? 'index.tsx' : 'index.ts'), {
+          encoding: 'utf8',
+        }).catch(() => undefined)
         return [component, extractTypeExports(fileContent)]
       }),
     ),
@@ -190,9 +182,7 @@ const extractTypesForFramework = async (framework: string) => {
 
   const result = await Promise.all(
     Object.entries(componentExportMap).flatMap(async ([component, typeExports]) => {
-      const resolvedTypeExports = await Promise.all(
-        typeExports.map(async (type) => await searchType(type)),
-      )
+      const resolvedTypeExports = await Promise.all(typeExports.map(async (type) => await searchType(type)))
       return {
         component,
         typeExports: resolvedTypeExports
@@ -208,10 +198,7 @@ const extractTypesForFramework = async (framework: string) => {
                   )
 
                   const newName =
-                    voca.isEmpty(shortName) ||
-                    shortName === 'Emits' ||
-                    shortName === 'Provider' ||
-                    shortName === 'er'
+                    voca.isEmpty(shortName) || shortName === 'Emits' || shortName === 'Provider' || shortName === 'er'
                       ? x[0]
                       : shortName
 

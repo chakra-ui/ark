@@ -7,9 +7,7 @@ import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
 export interface TreeViewBranchContentBaseProps extends PolymorphicProps<'div'> {}
-export interface TreeViewBranchContentProps
-  extends HTMLProps<'div'>,
-    TreeViewBranchContentBaseProps {}
+export interface TreeViewBranchContentProps extends HTMLProps<'div'>, TreeViewBranchContentBaseProps {}
 
 interface VisibilityProps {
   hidden?: boolean
@@ -24,10 +22,7 @@ export const TreeViewBranchContent = (props: TreeViewBranchContentProps) => {
 
   const branchContentProps = createMemo(() => {
     const contentProps = treeView().getBranchContentProps(nodeProps)
-    const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, [
-      'hidden',
-      'data-state',
-    ])
+    const [, ownProps] = splitVisibilityProps(contentProps as VisibilityProps, ['hidden', 'data-state'])
     return ownProps
   })
   const mergedProps = mergeProps(() => branchContentProps(), props)

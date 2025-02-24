@@ -5,5 +5,4 @@ export interface AccordionItemContextProps {
   children: (context: UseAccordionItemContext) => JSX.Element
 }
 
-export const AccordionItemContext = (props: AccordionItemContextProps) =>
-  props.children(useAccordionItemContext())
+export const AccordionItemContext = (props: AccordionItemContextProps) => props.children(useAccordionItemContext())
