@@ -9,7 +9,7 @@ export interface StepsItemProps
     /**
      * @vue-ignore
      */
-    LiHTMLAttributes {}
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -31,7 +31,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.li v-bind="steps.getItemProps(props)" :as-child="asChild">
+  <ark.div v-bind="steps.getItemProps(props)" :as-child="asChild">
     <slot />
-  </ark.li>
+  </ark.div>
 </template>

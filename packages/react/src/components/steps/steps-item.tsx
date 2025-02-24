@@ -8,9 +8,9 @@ import { StepsItemProvider } from './use-steps-item-context'
 import { StepsItemPropsProvider } from './use-steps-item-props-context'
 
 export interface StepsItemBaseProps extends ItemProps, PolymorphicProps {}
-export interface StepsItemProps extends HTMLProps<'li'>, StepsItemBaseProps {}
+export interface StepsItemProps extends HTMLProps<'div'>, StepsItemBaseProps {}
 
-export const StepsItem = forwardRef<HTMLLIElement, StepsItemProps>((props, ref) => {
+export const StepsItem = forwardRef<HTMLDivElement, StepsItemProps>((props, ref) => {
   const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
   const steps = useStepsContext()
   const mergedProps = mergeProps(steps.getItemProps(itemProps), localProps)
@@ -19,7 +19,7 @@ export const StepsItem = forwardRef<HTMLLIElement, StepsItemProps>((props, ref) 
   return (
     <StepsItemPropsProvider value={itemProps}>
       <StepsItemProvider value={itemState}>
-        <ark.li {...mergedProps} ref={ref} />
+        <ark.div {...mergedProps} ref={ref} />
       </StepsItemProvider>
     </StepsItemPropsProvider>
   )

@@ -23,7 +23,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.ol v-bind="steps.getListProps()" :as-child="asChild">
+  <ark.div v-bind="steps.getListProps()" :as-child="asChild">
     <slot />
-  </ark.ol>
+  </ark.div>
 </template>
