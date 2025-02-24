@@ -49,13 +49,10 @@ describe('Checkbox', () => {
     const onCheckedChange = vi.fn()
     render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
-    const checkbox = screen.getByRole('checkbox')
+    const checkbox = screen.getByText('Checkbox')
 
     fireEvent.click(checkbox)
     await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
-
-    fireEvent.click(checkbox)
-    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {

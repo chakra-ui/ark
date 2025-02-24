@@ -57,7 +57,7 @@ export default defineConfig({
   },
   test: {
     setupFiles: 'src/setup-test.ts',
-    retry: 2,
+    retry: 0,
     globals: true,
     environment: 'jsdom',
     css: false,

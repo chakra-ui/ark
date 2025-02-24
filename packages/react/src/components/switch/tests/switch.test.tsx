@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Switch, switchAnatomy } from '../'
@@ -38,10 +38,10 @@ describe('Switch', () => {
     const onCheckedChange = vi.fn()
     render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
-    const switchControl = screen.getByRole('checkbox')
-    await user.click(switchControl)
+    const switchControl = screen.getByText('Label')
+    fireEvent.click(switchControl)
 
-    expect(onCheckedChange).toHaveBeenCalledWith({ checked: true })
+    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
   })
 
   it('should not toggle when disabled', async () => {

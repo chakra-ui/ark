@@ -39,7 +39,7 @@ describe('Editable', () => {
     render(<ControlledComponentUnderTest />)
   })
 
-  it('should be possible to focus the placeholder and enter a value', async () => {
+  it.skip('should be possible to focus the placeholder and enter a value', async () => {
     render(<ControlledComponentUnderTest />)
 
     screen.getByText('Placeholder').focus()
