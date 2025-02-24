@@ -4,7 +4,7 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
 
 export const Autoplay = () => {
   return (
-    <Carousel.Root autoplay loop>
+    <Carousel.Root slideCount={images.length} autoplay loop>
       <Carousel.Control>
         <Carousel.AutoplayTrigger>
           <Carousel.Context>{({ isPlaying }) => (isPlaying ? 'Pause' : 'Play')}</Carousel.Context>
