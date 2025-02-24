@@ -6,9 +6,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseEditableProps
-  extends Optional<Omit<editable.Props, 'dir' | 'getRootNode' | 'edit.controlled'>, 'id'> {}
-
+export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseEditableReturn extends editable.Api<PropTypes> {}
 
 export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => {
@@ -29,7 +27,6 @@ export const useEditable = (props: UseEditableProps = {}): UseEditableReturn => 
     readOnly: field?.readOnly,
     required: field?.required,
     getRootNode,
-
     ...props,
   }
 
