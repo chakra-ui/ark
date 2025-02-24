@@ -7,16 +7,9 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './rating-group'
 
-export interface UseRatingGroupProps
-  extends Optional<Omit<ratingGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The initial value of the rating group when it is first rendered.
-   * Use when you do not need to control the state of the rating group.
-   */
-  defaultValue?: ratingGroup.Context['value']
-  modelValue?: ratingGroup.Context['value']
+export interface UseRatingGroupProps extends Optional<Omit<ratingGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: ratingGroup.Props['value']
 }
-
 export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTypes>> {}
 
 export const useRatingGroup = (props: UseRatingGroupProps = {}, emit?: EmitFn<RootEmits>): UseRatingGroupReturn => {
@@ -25,7 +18,7 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}, emit?: EmitFn<Ro
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<ratingGroup.Context>(() => ({
+  const context = computed<ratingGroup.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -45,7 +38,6 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}, emit?: EmitFn<Ro
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(ratingGroup.machine(context.value), { context })
-
-  return computed(() => ratingGroup.connect(state.value, send, normalizeProps))
+  const service = useMachine(ratingGroup.machine, context)
+  return computed(() => ratingGroup.connect(service, normalizeProps))
 }

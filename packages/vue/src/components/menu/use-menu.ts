@@ -6,13 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './menu'
 
-export interface UseMenuProps extends Optional<Omit<menu.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the menu when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: menu.Context['open']
-}
+export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
@@ -24,11 +18,10 @@ export const useMenu = (props: UseMenuProps = {}, emit?: EmitFn<RootEmits>): Use
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<menu.Context>(() => ({
+  const context = computed<menu.Props>(() => ({
     id,
     dir: locale.value.dir,
-    open: props.open ?? props.defaultOpen,
-    'open.controlled': props.open !== undefined,
+
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
       emit?.('openChange', details)
@@ -43,8 +36,8 @@ export const useMenu = (props: UseMenuProps = {}, emit?: EmitFn<RootEmits>): Use
     ...cleanProps(props),
   }))
 
-  const [state, send, machine] = useMachine(menu.machine(context.value), { context })
-  const api = computed(() => menu.connect(state.value, send, normalizeProps))
+  const machine = useMachine(menu.machine, context)
+  const api = computed(() => menu.connect(machine, normalizeProps))
 
   return {
     api,

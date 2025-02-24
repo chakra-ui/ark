@@ -6,23 +6,11 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './time-picker.types'
 
-export interface UseTimePickerProps
-  extends Optional<Omit<timePicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>, 'id'> {
-  /**
-  /**
-   * The initial open state of the time picker when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: timePicker.Context['open']
-  /**
-   * The initial value of the time picker when it is first rendered.
-   * Use when you do not need to control the state of the time picker.
-   */
-  defaultValue?: timePicker.Context['value']
+export interface UseTimePickerProps extends Optional<Omit<timePicker.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The v-model value of the time picker
    */
-  modelValue?: timePicker.Context['value']
+  modelValue?: timePicker.Props['value']
 }
 
 export interface UseTimePickerReturn extends ComputedRef<timePicker.Api<PropTypes>> {}
@@ -32,12 +20,10 @@ export const useTimePicker = (props: UseTimePickerProps = {}, emit?: EmitFn<Root
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<timePicker.Context>(() => {
+  const context = computed<timePicker.Props>(() => {
     return {
       id,
       dir: locale.value.dir,
-      open: props.defaultOpen,
-      'open.controlled': props.open !== undefined,
       value: props.defaultValue ?? props.modelValue,
       getRootNode: env?.value.getRootNode,
       onFocusChange: (details) => emit?.('focusChange', details),
@@ -53,7 +39,6 @@ export const useTimePicker = (props: UseTimePickerProps = {}, emit?: EmitFn<Root
     }
   })
 
-  const [state, send] = useMachine(timePicker.machine(context.value), { context })
-
-  return computed(() => timePicker.connect(state.value, send, normalizeProps))
+  const service = useMachine(timePicker.machine, context)
+  return computed(() => timePicker.connect(service, normalizeProps))
 }

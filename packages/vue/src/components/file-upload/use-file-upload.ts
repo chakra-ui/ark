@@ -7,7 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './file-upload'
 
-export interface UseFileUploadProps extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseFileUploadProps extends Optional<Omit<fileUpload.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropTypes>> {}
 
@@ -17,7 +17,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}, emit?: EmitFn<Root
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<fileUpload.Context>(() => ({
+  const context = computed<fileUpload.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -34,7 +34,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}, emit?: EmitFn<Root
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(fileUpload.machine(context.value), { context })
+  const service = useMachine(fileUpload.machine, context)
 
-  return computed(() => fileUpload.connect(state.value, send, normalizeProps))
+  return computed(() => fileUpload.connect(service, normalizeProps))
 }

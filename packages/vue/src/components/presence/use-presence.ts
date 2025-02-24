@@ -4,7 +4,7 @@ import { type MaybeRef, type VNodeRef, computed, ref, watch } from 'vue'
 import type { EmitFn, Optional } from '../../types'
 import type { RootEmits } from './presence.types'
 
-export interface UsePresenceProps extends Optional<presence.Context, 'present'> {
+export interface UsePresenceProps extends Optional<presence.Props, 'present'> {
   /**
    * Whether to enable lazy mounting
    * @default false
@@ -24,14 +24,11 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
   const wasEverPresent = ref(false)
   const nodeRef = ref<VNodeRef | null>(null)
 
-  const [state, send] = useMachine(
-    presence.machine({
-      ...context.value,
-      onExitComplete: () => emit?.('exitComplete'),
-    }),
-    { context },
-  )
-  const api = computed(() => presence.connect(state.value, send, normalizeProps))
+  const service = useMachine(presence.machine, {
+    ...context.value,
+    onExitComplete: () => emit?.('exitComplete'),
+  })
+  const api = computed(() => presence.connect(service, normalizeProps))
 
   watch(
     () => api.value.present,

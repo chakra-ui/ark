@@ -7,21 +7,9 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './editable'
 
-export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'value' | 'edit.controlled'>, 'id'> {
-  /**
-   * The initial edit state of the editable when it is first rendered.
-   * Use when you do not need to control its edit state.
-   */
-  defaultEdit?: editable.Context['edit']
-  /**
-   * The initial value of the editable when it is first rendered.
-   * Use when you do not need to control the state of the editable.
-   */
-  defaultValue?: editable.Context['value']
-  modelValue?: editable.Context['value']
+export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: editable.Props['value']
 }
-
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
 export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmits>): UseEditableReturn => {
@@ -29,7 +17,8 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
-  const context = computed<editable.Context>(() => ({
+
+  const context = computed<editable.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -40,8 +29,6 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
-    edit: props.defaultEdit,
-    'edit.controlled': props.edit !== undefined,
     value: props.modelValue ?? props.defaultValue,
     getRootNode: env?.value.getRootNode,
     onEditChange: (details) => {
@@ -60,6 +47,6 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(editable.machine(context.value), { context })
-  return computed(() => editable.connect(state.value, send, normalizeProps))
+  const service = useMachine(editable.machine, context)
+  return computed(() => editable.connect(service, normalizeProps))
 }

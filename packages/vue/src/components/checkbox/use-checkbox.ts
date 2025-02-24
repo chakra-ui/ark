@@ -8,14 +8,7 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './checkbox'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
-export interface UseCheckboxProps extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The checked state of the checkbox when it is first rendered.
-   * Use this when you do not need to control the state of the checkbox.
-   */
-  defaultChecked?: checkbox.Context['checked']
-}
-
+export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (ownProps: UseCheckboxProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -29,7 +22,7 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}, emit?: EmitFn<RootE
     return mergeProps(ownProps, checkboxGroup?.value.getItemProps({ value: ownProps.value }) ?? {})
   })
 
-  const context = computed<checkbox.Context>(() => ({
+  const context = computed<checkbox.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -40,7 +33,6 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}, emit?: EmitFn<RootE
     invalid: field?.value.invalid,
     required: field?.value.required,
     dir: locale.value.dir,
-    checked: props.value.defaultChecked,
     getRootNode: env?.value.getRootNode,
     onCheckedChange(details) {
       emit?.('checkedChange', details)
@@ -49,7 +41,7 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}, emit?: EmitFn<RootE
     ...cleanProps(props.value),
   }))
 
-  const [state, send] = useMachine(checkbox.machine(context.value), { context })
+  const service = useMachine(checkbox.machine, context)
 
-  return computed(() => checkbox.connect(state.value, send, normalizeProps))
+  return computed(() => checkbox.connect(service, normalizeProps))
 }

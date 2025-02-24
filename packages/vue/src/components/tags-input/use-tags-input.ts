@@ -7,13 +7,8 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
-export interface UseTagsInputProps extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The initial value of the tags input when it is first rendered.
-   * Use when you do not need to control the state of the tags input.
-   */
-  defaultValue?: tagsInput.Context['value']
-  modelValue?: tagsInput.Context['value']
+export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: tagsInput.Props['value']
 }
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
 
@@ -23,7 +18,7 @@ export const useTagsInput = (props: UseTagsInputProps = {}, emit?: EmitFn<RootEm
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<tagsInput.Context>(() => ({
+  const context = computed<tagsInput.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -49,7 +44,6 @@ export const useTagsInput = (props: UseTagsInputProps = {}, emit?: EmitFn<RootEm
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(tagsInput.machine(context.value), { context })
-
-  return computed(() => tagsInput.connect(state.value, send, normalizeProps))
+  const service = useMachine(tagsInput.machine, context)
+  return computed(() => tagsInput.connect(service, normalizeProps))
 }

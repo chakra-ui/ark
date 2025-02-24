@@ -6,13 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
-export interface UseSplitterProps extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial size of the panels when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
-   */
-  defaultSize?: splitter.Context['size']
-}
+export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
@@ -21,16 +15,15 @@ export const useSplitter = (props: UseSplitterProps = {}, emit?: EmitFn<RootEmit
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<splitter.Context>(() => ({
+  const context = computed<splitter.Props>(() => ({
     id,
     dir: locale.value.dir,
-    size: props.size ?? props.defaultSize,
     getRootNode: env?.value.getRootNode,
     onSizeChange: (details) => emit?.('sizeChange', details),
     onSizeChangeEnd: (details) => emit?.('sizeChangeEnd', details),
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(splitter.machine(context.value), { context })
-  return computed(() => splitter.connect(state.value, send, normalizeProps))
+  const service = useMachine(splitter.machine, context)
+  return computed(() => splitter.connect(service, normalizeProps))
 }

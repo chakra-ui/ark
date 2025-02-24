@@ -6,15 +6,14 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './timer.types'
 
-export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'getRootNode'>, 'id'> {}
-
+export interface UseTimerProps extends Optional<Omit<timer.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTimerReturn extends ComputedRef<timer.Api<PropTypes>> {}
 
 export const useTimer = (props: UseTimerProps, emit?: EmitFn<RootEmits>): UseTimerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
 
-  const context = computed<timer.Context>(() => ({
+  const context = computed<timer.Props>(() => ({
     id,
     getRootNode: env?.value.getRootNode,
     onComplete: () => emit?.('complete'),
@@ -22,7 +21,6 @@ export const useTimer = (props: UseTimerProps, emit?: EmitFn<RootEmits>): UseTim
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(timer.machine(context.value), { context })
-
-  return computed(() => timer.connect(state.value, send, normalizeProps))
+  const service = useMachine(timer.machine, context)
+  return computed(() => timer.connect(service, normalizeProps))
 }

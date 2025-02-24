@@ -6,11 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './steps.types'
 
-export interface UseStepsProps extends Optional<Omit<steps.Context, 'dir' | 'getRootNode' | 'step'>, 'id'> {
-  /**
-   * The initial value of the step
-   */
-  defaultStep?: number
+export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the step
    */
@@ -24,7 +20,7 @@ export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): U
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const id = useId()
 
-  const context = computed<steps.Context>(() => ({
+  const context = computed<steps.Props>(() => ({
     id,
     dir: locale.value.dir,
     getRootNode: env?.value?.getRootNode,
@@ -37,7 +33,6 @@ export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): U
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(steps.machine(context.value), { context })
-
-  return computed(() => steps.connect(state.value, send, normalizeProps))
+  const service = useMachine(steps.machine, context)
+  return computed(() => steps.connect(service, normalizeProps))
 }

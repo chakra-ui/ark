@@ -6,13 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './radio-group.types'
 
-export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The initial value of the radio group when it is first rendered.
-   * Use when you do not need to control the state of the radio group.
-   */
-  defaultValue?: radioGroup.Context['value']
-  modelValue?: radioGroup.Context['value']
+export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: radioGroup.Props['value']
 }
 export interface UseRadioGroupReturn extends ComputedRef<radioGroup.Api<PropTypes>> {}
 
@@ -20,7 +15,7 @@ export const useRadioGroup = (props: UseRadioGroupProps = {}, emit?: EmitFn<Root
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed<radioGroup.Context>(() => ({
+  const context = computed<radioGroup.Props>(() => ({
     id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
@@ -32,7 +27,6 @@ export const useRadioGroup = (props: UseRadioGroupProps = {}, emit?: EmitFn<Root
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(radioGroup.machine(context.value), { context })
-
-  return computed(() => radioGroup.connect(state.value, send, normalizeProps))
+  const service = useMachine(radioGroup.machine, context)
+  return computed(() => radioGroup.connect(service, normalizeProps))
 }

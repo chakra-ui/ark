@@ -9,18 +9,7 @@ import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
   extends RenderStrategyProps,
-    Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the collapsible when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: collapsible.Context['open']
-  /**
-   * The controlled open state of the collapsible. Can be binded with v-model.
-   */
-  open?: collapsible.Context['open']
-}
-
+    Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'> {}
 interface Collapsible extends collapsible.Api<PropTypes> {
   /**
    * Whether the content is unmounted
@@ -35,11 +24,9 @@ export const useCollapsible = (props: UseCollapsibleProps = {}, emits?: EmitFn<R
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<collapsible.Context>(() => ({
+  const context = computed<collapsible.Props>(() => ({
     id,
     dir: locale.value.dir,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onExitComplete: () => emits?.('exitComplete'),
     onOpenChange: (details) => {
@@ -49,8 +36,8 @@ export const useCollapsible = (props: UseCollapsibleProps = {}, emits?: EmitFn<R
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(collapsible.machine(context.value), { context })
-  const api = computed(() => collapsible.connect(state.value, send, normalizeProps))
+  const service = useMachine(collapsible.machine, context)
+  const api = computed(() => collapsible.connect(service, normalizeProps))
 
   const wasVisible = ref(false)
   watch(

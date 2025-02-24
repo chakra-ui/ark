@@ -6,26 +6,19 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './dialog'
 
-export interface UseDialogProps
-  extends Optional<Omit<dialog.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the dialog when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: dialog.Context['open']
-}
-
+export interface UseDialogProps extends Optional<Omit<dialog.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps = {}, emit?: EmitFn<RootEmits>) => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed<dialog.Context>(() => ({
+
+  const context = computed<dialog.Props>(() => ({
     id,
     dir: locale.value.dir,
     open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
+
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
       emit?.('openChange', details)
@@ -38,7 +31,6 @@ export const useDialog = (props: UseDialogProps = {}, emit?: EmitFn<RootEmits>) 
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(dialog.machine(context.value), { context })
-
-  return computed(() => dialog.connect(state.value, send, normalizeProps))
+  const service = useMachine(dialog.machine, context)
+  return computed(() => dialog.connect(service, normalizeProps))
 }

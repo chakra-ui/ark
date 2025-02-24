@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './tour'
 
-export interface UseTourProps extends Optional<Omit<tour.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseTourProps extends Optional<Omit<tour.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTourReturn extends ComputedRef<tour.Api<PropTypes>> {}
 
 export const useTour = (props: UseTourProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -14,7 +14,7 @@ export const useTour = (props: UseTourProps = {}, emit?: EmitFn<RootEmits>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<tour.Context>(() => ({
+  const context = computed<tour.Props>(() => ({
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
@@ -26,7 +26,6 @@ export const useTour = (props: UseTourProps = {}, emit?: EmitFn<RootEmits>) => {
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(tour.machine(context.value), { context })
-
-  return computed(() => tour.connect(state.value, send, normalizeProps))
+  const service = useMachine(tour.machine, context)
+  return computed(() => tour.connect(service, normalizeProps))
 }

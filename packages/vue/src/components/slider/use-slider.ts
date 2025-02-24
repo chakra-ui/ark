@@ -6,13 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './slider'
 
-export interface UseSliderProps extends Optional<Omit<slider.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The initial value of the slider when it is first rendered.
-   * Use when you do not need to control the state of the slider.
-   */
-  defaultValue?: slider.Context['value']
-  modelValue?: slider.Context['value']
+export interface UseSliderProps extends Optional<Omit<slider.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: slider.Props['value']
 }
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
@@ -20,7 +15,7 @@ export const useSlider = (props: UseSliderProps = {}, emit?: EmitFn<RootEmits>):
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed<slider.Context>(() => ({
+  const context = computed<slider.Props>(() => ({
     id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
@@ -34,6 +29,6 @@ export const useSlider = (props: UseSliderProps = {}, emit?: EmitFn<RootEmits>):
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(slider.machine(context.value), { context })
-  return computed(() => slider.connect(state.value, send, normalizeProps))
+  const service = useMachine(slider.machine, context)
+  return computed(() => slider.connect(service, normalizeProps))
 }

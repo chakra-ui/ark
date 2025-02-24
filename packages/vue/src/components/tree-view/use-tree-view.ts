@@ -8,17 +8,7 @@ import type { TreeCollection, TreeNode } from '../collection'
 import type { RootEmits } from './tree-view.types'
 
 export interface UseTreeViewProps<T extends TreeNode>
-  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
-  /**
-   * The initial selected items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
-   */
-  defaultSelectedValue?: treeView.Context['selectedValue']
-  /**
-   * The initial expanded items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
-   */
-  defaultExpandedValue?: treeView.Context['expandedValue']
+  extends Optional<Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
    * The collection of tree nodes
    */
@@ -35,11 +25,9 @@ export const useTreeView = <T extends TreeNode>(
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<treeView.Context>(() => ({
+  const context = computed<treeView.Props>(() => ({
     id,
     dir: locale.value.dir,
-    expandedValue: props.expandedValue ?? props.defaultExpandedValue,
-    selectedValue: props.selectedValue ?? props.defaultSelectedValue,
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => {
       emit?.('focusChange', details)
@@ -56,7 +44,6 @@ export const useTreeView = <T extends TreeNode>(
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(treeView.machine(context.value), { context })
-
-  return computed(() => treeView.connect(state.value, send, normalizeProps))
+  const service = useMachine(treeView.machine, context)
+  return computed(() => treeView.connect(service, normalizeProps))
 }

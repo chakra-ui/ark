@@ -6,14 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './toggle-group'
 
-export interface UseToggleGroupProps
-  extends Optional<Omit<toggleGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The initial value of the toggle group when it is first rendered.
-   * Use when you do not need to control the state of the toggle group.
-   */
-  defaultValue?: toggleGroup.Context['value']
-  modelValue?: toggleGroup.Context['value']
+export interface UseToggleGroupProps extends Optional<Omit<toggleGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: toggleGroup.Props['value']
 }
 
 export interface UseToggleGroupReturn extends ComputedRef<toggleGroup.Api<PropTypes>> {}
@@ -23,7 +17,7 @@ export const useToggleGroup = (props: UseToggleGroupProps = {}, emit?: EmitFn<Ro
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<toggleGroup.Context>(() => ({
+  const context = computed<toggleGroup.Props>(() => ({
     id,
     dir: locale.value.dir,
     value: props.modelValue ?? props.defaultValue,
@@ -35,7 +29,6 @@ export const useToggleGroup = (props: UseToggleGroupProps = {}, emit?: EmitFn<Ro
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(toggleGroup.machine(context.value), { context })
-
-  return computed(() => toggleGroup.connect(state.value, send, normalizeProps))
+  const service = useMachine(toggleGroup.machine, context)
+  return computed(() => toggleGroup.connect(service, normalizeProps))
 }

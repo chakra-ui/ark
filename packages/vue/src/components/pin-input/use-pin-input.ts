@@ -7,13 +7,8 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './pin-input'
 
-export interface UsePinInputProps extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The initial value of the pin input when it is first rendered.
-   * Use when you do not need to control the state of the pin input.
-   */
-  defaultValue?: pinInput.Context['value']
-  modelValue?: pinInput.Context['value']
+export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: pinInput.Props['value']
 }
 
 export interface UsePinInputReturn extends ComputedRef<pinInput.Api<PropTypes>> {}
@@ -24,7 +19,7 @@ export const usePinInput = (props: UsePinInputProps = {}, emit?: EmitFn<RootEmit
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<pinInput.Context>(() => ({
+  const context = computed<pinInput.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -46,7 +41,6 @@ export const usePinInput = (props: UsePinInputProps = {}, emit?: EmitFn<RootEmit
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(pinInput.machine(context.value), { context })
-
-  return computed(() => pinInput.connect(state.value, send, normalizeProps))
+  const service = useMachine(pinInput.machine, context)
+  return computed(() => pinInput.connect(service, normalizeProps))
 }

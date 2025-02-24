@@ -6,15 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './popover.types'
 
-export interface UsePopoverProps
-  extends Optional<Omit<popover.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the popover when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: popover.Context['open']
-}
-
+export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -22,11 +14,9 @@ export const usePopover = (props: UsePopoverProps = {}, emit?: EmitFn<RootEmits>
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<popover.Context>(() => ({
+  const context = computed<popover.Props>(() => ({
     id,
     dir: locale.value.dir,
-    open: props.open ?? props.defaultOpen,
-    'open.controlled': props.open !== undefined,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
       emit?.('openChange', details)
@@ -39,7 +29,6 @@ export const usePopover = (props: UsePopoverProps = {}, emit?: EmitFn<RootEmits>
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(popover.machine(context.value), { context })
-
-  return computed(() => popover.connect(state.value, send, normalizeProps))
+  const service = useMachine(popover.machine, context)
+  return computed(() => popover.connect(service, normalizeProps))
 }

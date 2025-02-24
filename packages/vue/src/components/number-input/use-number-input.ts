@@ -7,14 +7,8 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './number-input.types'
 
-export interface UseNumberInputProps
-  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  modelValue?: numberInput.Context['value']
-  /**
-   * The initial value of the number input when it is first rendered.
-   * Use when you do not need to control the state of the number input.
-   */
-  defaultValue?: numberInput.Context['value']
+export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  modelValue?: numberInput.Props['value']
 }
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
@@ -24,7 +18,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<Ro
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<numberInput.Context>(() => ({
+  const context = computed<numberInput.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -47,7 +41,6 @@ export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<Ro
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(numberInput.machine(context.value), { context })
-
-  return computed(() => numberInput.connect(state.value, send, normalizeProps))
+  const service = useMachine(numberInput.machine, context)
+  return computed(() => numberInput.connect(service, normalizeProps))
 }

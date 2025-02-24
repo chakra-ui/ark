@@ -7,14 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './switch'
 
-export interface UseSwitchProps extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The checked state of the switch when it is first rendered.
-   * Use this when you do not need to control the state of the switch.
-   */
-  defaultChecked?: zagSwitch.Context['checked']
-}
-
+export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
@@ -23,7 +16,7 @@ export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>):
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<zagSwitch.Context>(() => ({
+  const context = computed<zagSwitch.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -34,7 +27,6 @@ export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>):
     invalid: field?.value.invalid,
     required: field?.value.required,
     dir: locale.value.dir,
-    checked: props.defaultChecked,
     getRootNode: env?.value.getRootNode,
     onCheckedChange(details) {
       emit?.('checkedChange', details)
@@ -43,7 +35,6 @@ export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>):
     ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(zagSwitch.machine(context.value), { context })
-
-  return computed(() => zagSwitch.connect(state.value, send, normalizeProps))
+  const service = useMachine(zagSwitch.machine, context)
+  return computed(() => zagSwitch.connect(service, normalizeProps))
 }

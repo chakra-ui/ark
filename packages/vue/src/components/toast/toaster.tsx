@@ -12,9 +12,9 @@ export interface ToasterProps extends ToasterBaseProps, HTMLAttributes {
 
 export const Toaster = defineComponent<ToasterProps>(
   (props, { attrs, slots }) => {
-    const [state, send] = useMachine(props.toaster.machine)
+    const service = useMachine(props.toaster.machine)
     const placement = state.value.context.placement
-    const toaster = computed(() => toast.group.connect(state.value, send, normalizeProps))
+    const toaster = computed(() => toast.group.connect(service, normalizeProps))
 
     return () => (
       <ark.div {...toaster.value.getGroupProps({ placement })} {...attrs}>
@@ -46,8 +46,8 @@ interface ToastActorProps {
 
 const ToastActor = defineComponent<ToastActorProps>(
   (props, { slots }) => {
-    const [state, send] = useActor(props.value)
-    const api = computed(() => toast.connect(state.value, send, normalizeProps))
+    const service = useActor(props.value)
+    const api = computed(() => toast.connect(service, normalizeProps))
 
     ToastProvider(api)
     return () => slots.default?.(state.value.context)
