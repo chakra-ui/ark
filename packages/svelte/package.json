@@ -84,7 +84,7 @@
     "@zag-js/dom-query": "0.82.2",
     "@zag-js/i18n-utils": "0.82.2",
     "@zag-js/svelte": "0.82.2",
-    "nanoid": "5.1.0"
+    "nanoid": "5.1.2"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "6.0.0",
