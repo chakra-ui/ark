@@ -1,6 +1,6 @@
 import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
-import { type Accessor, createMemo, createUniqueId, splitProps } from 'solid-js'
+import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { CollectionItem, Optional } from '../../types'
 import type { ListCollection } from '../collection'
@@ -22,7 +22,7 @@ export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): U
   const environment = useEnvironmentContext()
   const field = useFieldContext()
 
-  const initialContext = createMemo(() => ({
+  const machineProps = createMemo(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -36,11 +36,6 @@ export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): U
     getRootNode: environment().getRootNode,
     ...props,
   }))
-
-  const machineProps = createMemo(() => {
-    const [, restProps] = splitProps(initialContext(), ['collection'])
-    return restProps
-  })
 
   const service = useMachine(select.machine, machineProps)
   return createMemo(() => select.connect<PropTypes, T>(service, normalizeProps))
