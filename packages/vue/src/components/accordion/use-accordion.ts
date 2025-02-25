@@ -6,7 +6,12 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './accordion.types'
 
-export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {}
+export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The model value of the accordion
+   */
+  modelValue?: accordion.Props['value']
+}
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
 export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEmits>): UseAccordionReturn => {
@@ -19,6 +24,7 @@ export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEm
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => emit?.('focusChange', details),
+    value: props.modelValue,
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)

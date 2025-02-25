@@ -8,11 +8,22 @@ import type { TreeCollection, TreeNode } from '../collection'
 import type { RootEmits } from './tree-view.types'
 
 export interface UseTreeViewProps<T extends TreeNode>
-  extends Optional<Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+  extends Optional<
+    Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection' | 'selectedValue' | 'expandedValue'>,
+    'id'
+  > {
   /**
    * The collection of tree nodes
    */
   collection: TreeCollection<T>
+  /**
+   * The v-model value of the tree view
+   */
+  modelSelectedValue?: treeView.Props['selectedValue']
+  /**
+   * The v-model expanded value of the tree view
+   */
+  modelExpandedValue?: treeView.Props['expandedValue']
 }
 
 export interface UseTreeViewReturn<T extends TreeNode> extends ComputedRef<treeView.Api<PropTypes, T>> {}
@@ -29,6 +40,8 @@ export const useTreeView = <T extends TreeNode>(
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
+    selectedValue: props.modelSelectedValue,
+    expandedValue: props.modelExpandedValue,
     onFocusChange: (details) => {
       emit?.('focusChange', details)
       emit?.('update:focusedValue', details.focusedValue)

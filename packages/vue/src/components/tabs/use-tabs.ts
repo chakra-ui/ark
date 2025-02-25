@@ -7,6 +7,9 @@ import { cleanProps } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
 export interface UseTabsProps extends Optional<Omit<tabs.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the tabs
+   */
   modelValue?: tabs.Props['value']
 }
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
@@ -19,7 +22,7 @@ export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): Use
   const context = computed<tabs.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => emit?.('focusChange', details),
     onValueChange: (details) => {

@@ -8,6 +8,9 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './pin-input'
 
 export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the pin input
+   */
   modelValue?: pinInput.Props['value']
 }
 
@@ -30,7 +33,7 @@ export const usePinInput = (props: UsePinInputProps = {}, emit?: EmitFn<RootEmit
     required: field?.value.required,
     invalid: field?.value.invalid,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
       emit?.('valueChange', details)

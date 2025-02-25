@@ -98,5 +98,12 @@ export type RootEmits = {
    * Function called when the pointer is pressed down outside the component
    */
   pointerDownOutside: [event: popover.PointerDownOutsideEvent]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [open: boolean]
 }

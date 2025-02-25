@@ -6,7 +6,12 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './menu'
 
-export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The v-model value of the menu
+   */
+  modelValue?: menu.Props['open']
+}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
@@ -21,11 +26,12 @@ export const useMenu = (props: UseMenuProps = {}, emit?: EmitFn<RootEmits>): Use
   const context = computed<menu.Props>(() => ({
     id,
     dir: locale.value.dir,
-
+    open: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open)
+      emit?.('update:open', details.open) // TODO: remove this
+      emit?.('update:modelValue', details.open)
     },
     onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
     onFocusOutside: (details) => emit?.('focusOutside', details),

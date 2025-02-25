@@ -10,7 +10,14 @@ import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
   extends Optional<Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+  /**
+   * The model value of the select
+   */
   modelValue?: select.Props<T>['value']
+  /**
+   * The model open state of the select
+   */
+  modelOpen?: select.Props<T>['open']
   /**
    * The collection of items
    */
@@ -39,8 +46,8 @@ export const useSelect = <T extends CollectionItem>(
     invalid: field?.value.invalid,
     required: field?.value.required,
     dir: locale.value.dir,
-
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
+    open: props.modelOpen,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
       emit?.('valueChange', details)
@@ -49,7 +56,8 @@ export const useSelect = <T extends CollectionItem>(
     onHighlightChange: (details) => emit?.('highlightChange', details),
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open)
+      emit?.('update:open', details.open) // TODO: remove this
+      emit?.('update:modelOpen', details.open)
     },
     onFocusOutside: (details) => emit?.('focusOutside', details),
     onInteractOutside: (details) => emit?.('interactOutside', details),

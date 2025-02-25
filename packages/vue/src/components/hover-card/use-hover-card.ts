@@ -6,7 +6,12 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './hover-card.types'
 
-export interface UseHoverCardProps extends Optional<Omit<hoverCard.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseHoverCardProps extends Optional<Omit<hoverCard.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
+  /**
+   * The v-model open state of the hover card
+   */
+  modelValue?: hoverCard.Props['open']
+}
 export interface UseHoverCardReturn extends ComputedRef<hoverCard.Api<PropTypes>> {}
 
 export const useHoverCard = (props: UseHoverCardProps = {}, emit?: EmitFn<RootEmits>): UseHoverCardReturn => {
@@ -18,9 +23,11 @@ export const useHoverCard = (props: UseHoverCardProps = {}, emit?: EmitFn<RootEm
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
+    open: props.modelValue,
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open)
+      emit?.('update:open', details.open) // TODO: remove this
+      emit?.('update:modelValue', details.open)
     },
     ...cleanProps(props),
   }))

@@ -9,8 +9,15 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'value' | 'open'>, 'id'> {
+  /**
+   * The v-model value of the combobox
+   */
   modelValue?: combobox.Props<T>['value']
+  /**
+   * The v-model open state of the combobox
+   */
+  modelOpen?: combobox.Props<T>['open']
 }
 
 export interface UseComboboxReturn<T extends CollectionItem> extends ComputedRef<combobox.Api<PropTypes, T>> {}
@@ -36,9 +43,8 @@ export const useCombobox = <T extends CollectionItem>(
       required: field?.value.required,
       invalid: field?.value.invalid,
       dir: locale.value.dir,
-      open: props.defaultOpen,
-
-      value: props.modelValue ?? props.defaultValue,
+      open: props.modelOpen,
+      value: props.modelValue,
       getRootNode: env?.value.getRootNode,
       onFocusOutside: (details) => emit?.('focusOutside', details),
       onHighlightChange: (details) => emit?.('highlightChange', details),
@@ -47,7 +53,8 @@ export const useCombobox = <T extends CollectionItem>(
       onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
       onOpenChange: (details) => {
         emit?.('openChange', details)
-        emit?.('update:open', details.open)
+        emit?.('update:open', details.open) // TODO: remove this
+        emit?.('update:modelOpen', details.open)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)

@@ -75,5 +75,12 @@ export type RootEmits = {
    * Function called when the tooltip is opened.
    */
   openChange: [details: tooltip.OpenChangeDetails]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:modelOpen': [open: boolean]
 }

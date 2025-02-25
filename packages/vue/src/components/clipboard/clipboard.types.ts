@@ -20,9 +20,22 @@ export interface RootProps {
   value?: string
 }
 
+// TODO: Remove in next version
+type ValueChangeDetails = {
+  value: string
+}
+
 export type RootEmits = {
   /**
    * The function to be called when the value is copied to the clipboard
    */
   statusChange: [details: clipboard.CopyStatusDetails]
+  /**
+   * The function to be called when the value is copied to the clipboard
+   */
+  valueChange: [details: ValueChangeDetails]
+  /**
+   * The function to be called when the value is copied to the clipboard
+   */
+  'update:modelValue': [value: string]
 }

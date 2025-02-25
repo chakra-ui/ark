@@ -6,7 +6,12 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './dialog'
 
-export interface UseDialogProps extends Optional<Omit<dialog.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseDialogProps extends Optional<Omit<dialog.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
+  /**
+   * The v-model open state of the dialog
+   */
+  modelValue?: dialog.Props['open']
+}
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -17,12 +22,12 @@ export const useDialog = (props: UseDialogProps = {}, emit?: EmitFn<RootEmits>) 
   const context = computed<dialog.Props>(() => ({
     id,
     dir: locale.value.dir,
-    open: props.defaultOpen,
-
+    open: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open)
+      emit?.('update:open', details.open) // TODO: remove this
+      emit?.('update:modelValue', details.open)
     },
     onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
     onFocusOutside: (details) => emit?.('focusOutside', details),

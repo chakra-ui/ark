@@ -55,6 +55,12 @@ export type RootEmits = {
    * The callback invoked when the checked state changes.
    */
   checkedChange: [details: checkbox.CheckedChangeDetails]
-
+  /**
+   * The callback invoked when the checked state changes.
+   */
   'update:checked': [checked: checkbox.CheckedState]
+  /**
+   * The callback invoked when the checked state changes.
+   */
+  'update:modelValue': [checked: checkbox.CheckedState]
 }

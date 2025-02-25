@@ -104,5 +104,12 @@ export type RootEmits = {
    * Function called when the page changes.
    */
   pageChange: [details: carousel.PageChangeDetails]
+  /**
+   * The callback fired when the carousel page changes.
+   */
+  'update:modelValue': [page: number]
+  /**
+   * The callback fired when the carousel page changes.
+   */
   'update:page': [page: number]
 }

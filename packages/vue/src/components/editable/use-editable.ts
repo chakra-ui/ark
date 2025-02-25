@@ -7,8 +7,16 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './editable'
 
-export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseEditableProps
+  extends Optional<Omit<editable.Props, 'dir' | 'getRootNode' | 'value' | 'edit'>, 'id'> {
+  /**
+   * The v-model value of the editable
+   */
   modelValue?: editable.Props['value']
+  /**
+   * The v-model edit state of the editable
+   */
+  modelEdit?: editable.Props['edit']
 }
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
@@ -29,11 +37,13 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
+    edit: props.modelEdit,
     getRootNode: env?.value.getRootNode,
     onEditChange: (details) => {
       emit?.('editChange', details)
-      emit?.('update:edit', details.edit)
+      emit?.('update:edit', details.edit) // TODO: remove this
+      emit?.('update:modelEdit', details.edit)
     },
     onValueChange(details) {
       emit?.('valueChange', details)

@@ -8,6 +8,9 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
 export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the tags input
+   */
   modelValue?: tagsInput.Props['value']
 }
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
@@ -29,7 +32,7 @@ export const useTagsInput = (props: UseTagsInputProps = {}, emit?: EmitFn<RootEm
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
       emit?.('valueChange', details)

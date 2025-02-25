@@ -9,7 +9,13 @@ import type { RootEmits } from './collapsible.types'
 
 export interface UseCollapsibleProps
   extends RenderStrategyProps,
-    Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'> {}
+    Optional<Omit<collapsible.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
+  /**
+   * The v-model value of the collapsible
+   */
+  modelValue?: collapsible.Props['open']
+}
+
 interface Collapsible extends collapsible.Api<PropTypes> {
   /**
    * Whether the content is unmounted
@@ -28,10 +34,12 @@ export const useCollapsible = (props: UseCollapsibleProps = {}, emits?: EmitFn<R
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
+    open: props.modelValue,
     onExitComplete: () => emits?.('exitComplete'),
     onOpenChange: (details) => {
       emits?.('openChange', details)
-      emits?.('update:open', details.open)
+      emits?.('update:open', details.open) // TODO: remove this
+      emits?.('update:modelValue', details.open)
     },
     ...cleanProps(props),
   }))

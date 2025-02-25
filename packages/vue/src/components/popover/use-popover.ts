@@ -6,7 +6,12 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './popover.types'
 
-export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The v-model open state of the popover
+   */
+  modelValue?: popover.Props['open']
+}
 export interface UsePopoverReturn extends ComputedRef<popover.Api<PropTypes>> {}
 
 export const usePopover = (props: UsePopoverProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -17,10 +22,12 @@ export const usePopover = (props: UsePopoverProps = {}, emit?: EmitFn<RootEmits>
   const context = computed<popover.Props>(() => ({
     id,
     dir: locale.value.dir,
+    open: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open)
+      emit?.('update:open', details.open) // TODO: remove this
+      emit?.('update:modelValue', details.open)
     },
     onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
     onFocusOutside: (details) => emit?.('focusOutside', details),

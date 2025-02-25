@@ -8,6 +8,9 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './number-input.types'
 
 export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the number input
+   */
   modelValue?: numberInput.Props['value']
 }
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
@@ -30,7 +33,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<Ro
     invalid: field?.value.invalid,
     dir: locale.value.dir,
     locale: locale.value.locale,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
       emit?.('valueChange', details)

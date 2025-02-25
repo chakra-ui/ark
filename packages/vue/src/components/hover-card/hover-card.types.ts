@@ -39,5 +39,12 @@ export type RootEmits = {
    * Function called when the hover card opens or closes.
    */
   openChange: [details: hoverCard.OpenChangeDetails]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:modelValue': [open: boolean]
 }

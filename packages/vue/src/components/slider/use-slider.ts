@@ -7,6 +7,9 @@ import { cleanProps } from '../../utils'
 import type { RootEmits } from './slider'
 
 export interface UseSliderProps extends Optional<Omit<slider.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the slider
+   */
   modelValue?: slider.Props['value']
 }
 export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
@@ -18,7 +21,7 @@ export const useSlider = (props: UseSliderProps = {}, emit?: EmitFn<RootEmits>):
   const context = computed<slider.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => emit?.('focusChange', details),
     onValueChangeEnd: (details) => emit?.('valueChangeEnd', details),

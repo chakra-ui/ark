@@ -180,7 +180,15 @@ export type RootEmits = {
    */
   'update:open': [open: boolean]
   /**
+   * The callback fired when the open state changes.
+   */
+  'update:modelOpen': [open: boolean]
+  /**
    * The callback fired when the view changes.
    */
   'update:view': [view: datePicker.DateView]
+  /**
+   * The callback fired when the view changes.
+   */
+  'update:modelView': [view: datePicker.DateView]
 }

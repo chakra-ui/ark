@@ -23,7 +23,7 @@ export const useQrCode = (props: UseQrCodeProps = {}, emit?: EmitFn<RootEmits>):
   const context = computed<qrcode.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
       emit?.('valueChange', details)

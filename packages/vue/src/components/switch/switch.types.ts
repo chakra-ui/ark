@@ -69,4 +69,8 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:checked': [checked: boolean]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [checked: boolean]
 }

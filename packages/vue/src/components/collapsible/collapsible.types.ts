@@ -47,4 +47,8 @@ export type RootEmits = {
    * Event handler called when the open state of the collapsible changes.
    */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [open: boolean]
 }

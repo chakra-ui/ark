@@ -137,4 +137,8 @@ export type RootEmits<T extends CollectionItem> = {
    * The callback fired when the open state changes.
    */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the model open state changes.
+   */
+  'update:modelOpen': [open: boolean]
 }

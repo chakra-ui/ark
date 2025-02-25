@@ -38,4 +38,8 @@ export type RootEmits = {
    * Function called when the splitter resize ends.
    */
   sizeChangeEnd: [details: splitter.SizeChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [size: splitter.PanelSizeData[]]
 }

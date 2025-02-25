@@ -7,6 +7,9 @@ import { cleanProps } from '../../utils'
 import type { RootEmits } from './toggle-group'
 
 export interface UseToggleGroupProps extends Optional<Omit<toggleGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the toggle group
+   */
   modelValue?: toggleGroup.Props['value']
 }
 
@@ -20,7 +23,7 @@ export const useToggleGroup = (props: UseToggleGroupProps = {}, emit?: EmitFn<Ro
   const context = computed<toggleGroup.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onValueChange: (details) => {
       emit?.('valueChange', details)

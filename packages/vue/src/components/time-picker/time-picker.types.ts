@@ -99,5 +99,12 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: timePicker.Time | null]
+  /**
+   * The callback fired when the model open state changes.
+   */
+  'update:modelOpen': [open: boolean]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
 }

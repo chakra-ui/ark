@@ -144,4 +144,8 @@ export type RootEmits = {
    * Event handler called when the edit state of the combobox changes.
    */
   'update:edit': [edit: boolean]
+  /**
+   * Event handler called when the edit state of the combobox changes.
+   */
+  'update:modelEdit': [edit: boolean]
 }

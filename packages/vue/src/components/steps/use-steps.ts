@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './steps.types'
 
-export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
   /**
    * The v-model value of the step
    */
@@ -24,7 +24,7 @@ export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): U
     id,
     dir: locale.value.dir,
     getRootNode: env?.value?.getRootNode,
-    step: props.modelValue ?? props.defaultStep,
+    value: props.modelValue,
     onStepChange: (details) => {
       emit?.('stepChange', details)
       emit?.('update:modelValue', details.step)

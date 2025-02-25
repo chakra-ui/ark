@@ -120,5 +120,12 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: colorPicker.Color]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:modelOpen': [open: boolean]
 }

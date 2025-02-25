@@ -204,4 +204,8 @@ export type RootEmits<T extends CollectionItem> = {
    * Event handler called when the open state of the combobox changes.
    */
   'update:open': [open: boolean]
+  /**
+   * Event handler called when the open state of the combobox changes.
+   */
+  'update:modelOpen': [open: boolean]
 }

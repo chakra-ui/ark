@@ -8,6 +8,9 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './rating-group'
 
 export interface UseRatingGroupProps extends Optional<Omit<ratingGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+  /**
+   * The v-model value of the rating group
+   */
   modelValue?: ratingGroup.Props['value']
 }
 export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTypes>> {}
@@ -28,7 +31,7 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}, emit?: EmitFn<Ro
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
     onValueChange(details) {
       emit?.('valueChange', details)

@@ -101,4 +101,8 @@ export type RootEmits = {
    * Function called when the menu is opened or closed.
    */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [open: boolean]
 }
