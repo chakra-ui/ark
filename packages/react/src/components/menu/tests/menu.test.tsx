@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import user from '@testing-library/user-event'
+// import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Menu, menuAnatomy } from '..'
 import { getExports, getParts } from '../../../setup-test'
