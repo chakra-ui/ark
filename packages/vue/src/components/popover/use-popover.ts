@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './popover.types'
 
-export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode'>, 'id'> {
+export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
   /**
    * The v-model open state of the popover
    */

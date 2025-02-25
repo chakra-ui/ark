@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
-export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode' | 'size'>, 'id'> {
   /**
    * The v-model value of the splitter
    */

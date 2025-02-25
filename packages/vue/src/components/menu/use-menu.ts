@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './menu'
 
-export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
   /**
    * The v-model value of the menu
    */

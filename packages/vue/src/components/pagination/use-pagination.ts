@@ -6,7 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './pagination'
 
-export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {
+export interface UsePaginationProps
+  extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode' | 'page' | 'pageSize'>, 'id'> {
   /**
    * The v-model value of the pagination
    */
