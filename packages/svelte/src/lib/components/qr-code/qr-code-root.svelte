@@ -15,7 +15,15 @@
 
   const props: QrCodeRootProps = $props()
   const [useQrCodeProps, localProps] = $derived(
-    createSplitProps<UseQrCodeProps>()(props, ['defaultValue', 'encoding', 'id', 'ids', 'onValueChange', 'value']),
+    createSplitProps<UseQrCodeProps>()(props, [
+      'defaultValue',
+      'encoding',
+      'id',
+      'ids',
+      'onValueChange',
+      'value',
+      'pixelSize',
+    ]),
   )
 
   const qrCode = useQrCode(reflect(() => useQrCodeProps))
