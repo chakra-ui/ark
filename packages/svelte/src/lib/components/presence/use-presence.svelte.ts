@@ -3,18 +3,15 @@ import { type RenderStrategyProps, splitRenderStrategyProps } from '$lib/utils/r
 import * as presence from '@zag-js/presence'
 import { normalizeProps, reflect, useMachine } from '@zag-js/svelte'
 
-export interface UsePresenceProps extends Optional<presence.Context, 'present'>, RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {}
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
 export const usePresence = (props: UsePresenceProps) => {
-  const [renderStrategyProps, context] = $derived(splitRenderStrategyProps(props))
+  const [renderStrategyProps, machineProps] = $derived(splitRenderStrategyProps(props))
 
-  const [state, send] = useMachine(
-    presence.machine(context),
-    reflect(() => ({ context })),
-  )
+  const service = useMachine(presence.machine, () => machineProps)
 
-  const api = $derived(presence.connect(state, send, normalizeProps))
+  const api = $derived(presence.connect(service, normalizeProps))
 
   let wasEverPresent = $state(false)
 
