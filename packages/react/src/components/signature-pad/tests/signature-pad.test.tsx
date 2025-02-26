@@ -52,7 +52,7 @@ describe('Signature Pad / Field', () => {
 
   it('should set signature pad as readonly', async () => {
     render(<WithField readOnly />)
-    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
+    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly', '')
   })
 
   it('should display helper text', async () => {
