@@ -7,7 +7,7 @@ import { WithField } from '../examples/with-field'
 import { fileUploadAnatomy } from '../file-upload.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe.skip('File Upload / Parts & Exports', () => {
+describe('File Upload / Parts & Exports', () => {
   afterAll(() => {
     cleanup()
   })

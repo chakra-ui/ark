@@ -5,8 +5,8 @@ import { getParts } from '../../../setup-test'
 import { toastAnatomy } from '../toast.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe.skip('Toast / Parts & Exports', () => {
-  afterEach(() => {
+describe('Toast / Parts & Exports', () => {
+  afterAll(() => {
     cleanup()
   })
 

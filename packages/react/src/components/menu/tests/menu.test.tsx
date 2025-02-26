@@ -59,11 +59,17 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
   )
 }
 
-describe.skip('Menu / Parts & Exports', async () => {
-  it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
+describe('Menu / Parts & Exports', async () => {
+  const parts = getParts(menuAnatomy).filter((part) => !part.includes('context-trigger'))
+  it.each(parts)('should render part! %s', async (part) => {
+    const { container } = render(<ComponentUnderTest />)
 
-    await waitFor(() => expect(document.querySelector(part)).toBeInTheDocument())
+    const button = screen.getByRole('button', { name: /open menu/i })
+    await user.click(button)
+
+    await waitFor(async () => {
+      expect(container.querySelector(part)).toBeInTheDocument()
+    })
   })
 
   it.each(getExports(menuAnatomy))('should export %s', async (part) => {
