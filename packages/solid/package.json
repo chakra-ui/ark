@@ -1,5 +1,6 @@
 {
   "name": "@ark-ui/solid",
+  "type": "module",
   "version": "4.10.2",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [
@@ -52,56 +53,17 @@
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
   },
-  "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
-    ".": {
-      "source": "./src/index.tsx",
-      "types": "./dist/index.d.ts",
-      "solid": "./dist/index.jsx",
-      "default": "./dist/index.js"
-    },
-    "./anatomy": {
-      "source": "./src/components/anatomy.ts",
-      "types": "./dist/components/anatomy.d.ts",
-      "solid": "./dist/components/anatomy.jsx",
-      "default": "./dist/components/anatomy.js"
-    },
-    "./collection": {
-      "source": "./src/components/collection.ts",
-      "types": "./dist/components/collection.d.ts",
-      "solid": "./dist/components/collection.jsx",
-      "default": "./dist/components/collection.js"
-    },
-    "./factory": {
-      "source": "./src/components/factory.tsx",
-      "types": "./dist/components/factory.d.ts",
-      "solid": "./dist/components/factory.jsx",
-      "default": "./dist/components/factory.js"
-    },
-    "./environment": {
-      "source": "./src/providers/environment/index.tsx",
-      "types": "./dist/providers/environment/index.d.ts",
-      "solid": "./dist/providers/environment/index.jsx",
-      "default": "./dist/providers/environment/index.js"
-    },
-    "./locale": {
-      "source": "./src/providers/locale/index.tsx",
-      "types": "./dist/providers/locale/index.d.ts",
-      "solid": "./dist/providers/locale/index.jsx",
-      "default": "./dist/providers/locale/index.js"
-    },
-    "./*": {
-      "source": "./src/components/*/index.tsx",
-      "types": "./dist/components/*/index.d.ts",
-      "solid": "./dist/components/*/index.jsx",
-      "default": "./dist/components/*/index.js"
-    }
+    ".": "./src/index.tsx",
+    "./anatomy": "./src/components/anatomy.ts",
+    "./collection": "./src/components/collection.ts",
+    "./environment": "./src/providers/environment/index.tsx",
+    "./factory": "./src/components/factory.tsx",
+    "./locale": "./src/providers/locale/index.tsx",
+    "./*": "./src/components/*/index.tsx"
   },
   "scripts": {
     "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" tsup",
@@ -114,17 +76,6 @@
     "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
-  },
-  "clean-package": {
-    "remove": [
-      "exports.\\..source",
-      "exports.\\./anatomy.source",
-      "exports.\\./collection.source",
-      "exports.\\./factory.source",
-      "exports.\\./environment.source",
-      "exports.\\./locale.source",
-      "exports.\\./*.source"
-    ]
   },
   "publishConfig": {
     "access": "public"

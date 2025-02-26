@@ -29,6 +29,5 @@
       "matchPackagePrefixes": ["lucide"]
     }
   ],
-  "ignoreDeps": ["@types/node", "@ark-ui/solid"],
-  "ignorePaths": ["templates/**"]
+  "ignoreDeps": ["@types/node", "@ark-ui/solid"]
 }

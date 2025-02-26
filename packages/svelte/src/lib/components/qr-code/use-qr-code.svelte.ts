@@ -1,20 +1,17 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
-import { createId } from '$lib/utils/create-id'
+import type { Accessor } from '$lib/types'
 import * as qrcode from '@zag-js/qr-code'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 
-export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseQrCodeProps extends Omit<qrcode.Props, 'dir' | 'getRootNode'> {}
 export interface UseQrCodeReturn extends Accessor<qrcode.Api<PropTypes>> {}
 
-export const useQrCode = (props: UseQrCodeProps = {}) => {
-  const id = createId()
+export const useQrCode = (props: UseQrCodeProps) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 
   const machineProps = $derived({
-    id,
     dir: locale.dir,
     getRootNode: env.getRootNode,
     ...props,

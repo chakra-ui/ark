@@ -1,21 +1,17 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
-import { createId } from '$lib/utils/create-id'
+import type { Accessor } from '$lib/types'
 import * as progress from '@zag-js/progress'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 
-export interface UseProgressProps extends Optional<Omit<progress.Props, 'dir' | 'getRootNode'>, 'id'> {}
-
+export interface UseProgressProps extends Omit<progress.Props, 'dir' | 'getRootNode'> {}
 export interface UseProgressReturn extends Accessor<progress.Api<PropTypes>> {}
 
-export const useProgress = (props: UseProgressProps = {}) => {
-  const id = createId()
+export const useProgress = (props: UseProgressProps) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 
   const machineProps = $derived({
-    id,
     dir: locale.dir,
     getRootNode: env.getRootNode,
     ...props,

@@ -1,3 +1,4 @@
+'use client'
 import { Toggle } from '@ark-ui/react/toggle'
 import { Volume2, VolumeX } from 'lucide-react'
 import { Fragment } from 'react'

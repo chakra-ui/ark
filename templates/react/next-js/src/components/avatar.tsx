@@ -1,3 +1,4 @@
+'use client'
 import { Avatar as ArkAvatar, type AvatarRootProps } from '@ark-ui/react/avatar'
 import { forwardRef } from 'react'
 import './avatar.css'

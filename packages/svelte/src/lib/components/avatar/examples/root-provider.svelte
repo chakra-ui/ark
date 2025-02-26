@@ -1,7 +1,9 @@
 <script lang="ts">
   import { Avatar, useAvatar } from '@ark-ui/svelte/avatar'
 
+  const id = $props.id()
   const avatar = useAvatar({
+    id,
     onStatusChange: (status) => {
       console.log('status', status)
     },

@@ -1,4 +1,5 @@
-import { Format } from '@ark-ui/react'
+'use client'
+import { Format } from '@ark-ui/react/format'
 import { VStack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'

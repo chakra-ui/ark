@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps } from '$lib/types'
   import type { UseQrCodeProps } from './use-qr-code.svelte'
 
-  export interface QrCodeRootBaseProps extends UseQrCodeProps, PolymorphicProps<'div'> {}
+  export interface QrCodeRootBaseProps extends Optional<UseQrCodeProps, 'id'>, PolymorphicProps<'div'> {}
   export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBaseProps> {}
 </script>
 
@@ -13,9 +13,11 @@
   import { QrCodeProvider } from './use-qr-code-context'
   import { useQrCode } from './use-qr-code.svelte'
 
-  const props: QrCodeRootProps = $props()
+  const _props: QrCodeRootProps = $props()
+  const providedId = $props.id()
+
   const [useQrCodeProps, localProps] = $derived(
-    createSplitProps<UseQrCodeProps>()(props, [
+    createSplitProps<Optional<UseQrCodeProps, 'id'>>()(_props, [
       'defaultValue',
       'encoding',
       'id',
@@ -26,7 +28,12 @@
     ]),
   )
 
-  const qrCode = useQrCode(reflect(() => useQrCodeProps))
+  const resolvedProps = $derived({
+    ...useQrCodeProps,
+    id: providedId,
+  })
+
+  const qrCode = useQrCode(reflect(() => resolvedProps))
   const mergedProps = $derived(mergeProps(qrCode().getRootProps(), localProps))
 
   QrCodeProvider(qrCode)
