@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Menu, menuAnatomy } from '..'
@@ -6,16 +6,17 @@ import { getExports, getParts } from '../../../setup-test'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
+  contextMenu?: boolean
 }
 
 const ComponentUnderTest = (props: ComponentUnderTestProps) => {
-  const { onValueChange, ...rest } = props
+  const { onValueChange, contextMenu, ...rest } = props
   return (
     <Menu.Root {...rest}>
       <Menu.Trigger>
         Open menu <Menu.Indicator />
       </Menu.Trigger>
-      <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
+      {contextMenu && <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>}
       <Menu.Positioner data-testid="positioner">
         <Menu.Content>
           <Menu.Arrow>
@@ -106,15 +107,12 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   })
 
-  it.skip('should accept a custom placement', async () => {
+  it('should accept a custom placement', async () => {
     render(<ComponentUnderTest positioning={{ placement: 'left-start' }} />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
     await user.click(button)
-
-    await act(async () => {})
-    screen.debug()
-    await waitFor(() => expect(screen.getByRole('menu')).toHaveAttribute('data-placement'))
+    await waitFor(() => expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'))
   })
 
   it('should control the open state', async () => {
@@ -159,7 +157,7 @@ describe('Menu', () => {
   })
 
   it('should open on context menu', async () => {
-    render(<ComponentUnderTest />)
+    render(<ComponentUnderTest contextMenu />)
 
     const button = screen.getByRole('button', { name: /Open Context Menu/i })
 
