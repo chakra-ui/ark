@@ -5,7 +5,7 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
 
 export const Basic = () => {
   return (
-    <Carousel.Root>
+    <Carousel.Root slideCount={images.length}>
       <Carousel.Control>
         <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
         <Carousel.NextTrigger>Next</Carousel.NextTrigger>
