@@ -4,8 +4,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "templates/react/next-js",
-    "templates/solid/solid-start",
+    "templates/**",
     "scripts",
     "website"
   ],
