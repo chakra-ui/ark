@@ -30,7 +30,7 @@ describe.skip('File Upload / Parts & Exports', () => {
   })
 })
 
-describe.skip('File Upload / Field', () => {
+describe('File Upload / Field', () => {
   afterEach(() => {
     cleanup()
   })
@@ -43,11 +43,6 @@ describe.skip('File Upload / Field', () => {
   it('should set file upload as disabled', async () => {
     render(<WithField disabled />)
     expect(screen.getByTestId('input')).toBeDisabled()
-  })
-
-  it.skip('should set file upload as readonly', async () => {
-    render(<WithField readOnly />)
-    expect(screen.getByRole('button', { name: /select/i })).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
