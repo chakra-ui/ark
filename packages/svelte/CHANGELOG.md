@@ -6,7 +6,7 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Change
+### Changed
 
 - Replaced custom ID generator with `$props.id()` rune.
 

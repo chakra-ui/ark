@@ -1,4 +1,4 @@
-import { Field } from '@ark-ui/solid'
+import { Field } from '@ark-ui/solid/field'
 import { Avatar } from '~/components/avatar'
 
 export default function Home() {

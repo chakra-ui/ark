@@ -4,6 +4,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
+    "templates/**",
     "scripts",
     "website"
   ],
