@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "preserve",
@@ -10,7 +10,7 @@
     "allowJs": true,
     "strict": true,
     "noEmit": true,
-    "types": ["vinxi/client", "vite/client"],
+    "types": ["vinxi/types/client"],
     "isolatedModules": true,
     "paths": {
       "~/*": ["./src/*"]
