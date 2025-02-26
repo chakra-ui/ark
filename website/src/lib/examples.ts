@@ -1,4 +1,4 @@
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 export interface Example {
   id: string
@@ -63,7 +63,7 @@ interface FetchCodeExamplesParams {
   framework: string
 }
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: ['github-dark-default'],
   langs: ['tsx', 'vue'],
 })
