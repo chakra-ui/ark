@@ -198,18 +198,18 @@
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.1.0",
     "jsdom": "26.0.0",
-    "lucide-solid": "0.475.0",
+    "lucide-solid": "0.476.0",
     "release-it": "18.1.2",
     "resize-observer-polyfill": "1.5.1",
-    "solid-js": "1.9.4",
+    "solid-js": "1.9.5",
     "storybook": "8.6.0",
     "storybook-solidjs": "1.0.0-beta.6",
     "storybook-solidjs-vite": "1.0.0-beta.6",
-    "tsup": "8.3.6",
+    "tsup": "8.4.0",
     "typescript": "5.7.3",
-    "vite": "5.4.14",
-    "vite-plugin-solid": "2.11.1",
-    "vitest": "3.0.5"
+    "vite": "6.2.0",
+    "vite-plugin-solid": "2.11.4",
+    "vitest": "3.0.7"
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
