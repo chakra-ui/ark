@@ -5,8 +5,9 @@ import { toastAnatomy } from '../toast.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast', () => {
-  it.skip.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
+    await user.click(screen.getByText('Create Toast'))
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
