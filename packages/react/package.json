@@ -1,5 +1,6 @@
 {
   "name": "@ark-ui/react",
+  "type": "module",
   "version": "4.9.2",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
@@ -53,13 +54,12 @@
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
   },
-  "type": "module",
   "files": [
     "dist"
   ],
   "exports": {
     ".": "./src/index.ts",
-    "./anatomy": "./src/components/anatomy/anatomy.ts",
+    "./anatomy": "./src/components/anatomy.ts",
     "./collection": "./src/components/collection.ts",
     "./environment": "./src/providers/environment/index.ts",
     "./factory": "./src/components/factory.ts",

@@ -309,3 +309,6 @@ vite.config.mts.timestamp-*
 
 # Claude
 *.prompt.md
+
+# Solid Start
+.vinxi

@@ -20,7 +20,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "customConditions": ["source"],
     "types": ["vitest/globals"]
   }
 }
