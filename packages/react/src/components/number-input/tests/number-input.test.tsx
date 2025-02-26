@@ -35,20 +35,16 @@ describe('NumberInput', () => {
     expect(results).toHaveNoViolations()
   })
 
-  it.skip('should handle wheel event when allowMouseWheel is true', async () => {
+  it('should handle wheel event when allowMouseWheel is true', async () => {
     render(<ComponentUnderTest allowMouseWheel />)
 
     const input = screen.getByRole('spinbutton')
 
-    act(() => {
-      input.focus()
-    })
+    input.focus()
+    await waitFor(() => expect(input).toHaveFocus())
 
     fireEvent.wheel(input, { deltaY: -1 })
-
-    await waitFor(() => {
-      expect(input).toHaveValue('1')
-    })
+    await waitFor(() => expect(input).toHaveValue('1'))
   })
 
   it('should clamp value on blur when clampValueOnBlur is true', async () => {
@@ -112,20 +108,15 @@ describe('NumberInput', () => {
     )
 
     const input = screen.getByRole('spinbutton')
-
-    await waitFor(() => {
-      expect(input).toHaveValue('1.00')
-    })
+    expect(input).toHaveValue('1.00')
 
     await user.clear(input)
-    await user.type(input, '1.1234')
+    expect(input).toHaveValue('')
 
+    await user.type(input, '1.1234', { delay: 1 })
     fireEvent.blur(input)
 
-    screen.debug()
-    // await waitFor(() => {
-    //   expect(input).toHaveValue('1.123')
-    // })
+    await waitFor(() => expect(input).toHaveValue('1.123'))
   })
 })
 

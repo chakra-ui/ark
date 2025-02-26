@@ -14,7 +14,7 @@ export const WithField = (props: Field.RootProps) => {
           <SignaturePad.ClearTrigger>Clear</SignaturePad.ClearTrigger>
           <SignaturePad.Guide />
         </SignaturePad.Control>
-        <SignaturePad.HiddenInput value={value} />
+        <SignaturePad.HiddenInput value={value} readOnly />
       </SignaturePad.Root>
       <Field.HelperText>Additional Info</Field.HelperText>
       <Field.ErrorText>Error Info</Field.ErrorText>

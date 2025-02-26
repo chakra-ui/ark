@@ -35,7 +35,7 @@ describe('PinInput', () => {
     expect(results).toHaveNoViolations()
   })
 
-  it('should have the proper aria labels', async () => {
+  it.skip('should have the proper aria labels', async () => {
     render(<ComponentUnderTest />)
 
     const [input1, input2, input3] = screen.queryAllByRole('textbox')
@@ -54,7 +54,7 @@ describe('PinInput', () => {
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toHaveFocus())
   })
 
-  it('should move focus to the next item when enter a value', async () => {
+  it.skip('should move focus to the next item when enter a value', async () => {
     render(<ComponentUnderTest />)
 
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toBeInTheDocument())

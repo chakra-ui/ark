@@ -20,10 +20,12 @@ describe('SignaturePad / Parts & Exports', () => {
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
-  it.skip.each(getExports(signaturePadAnatomy))('should export %s', async (part) => {
-    // @ts-expect-error
-    expect(SignaturePad[part]).toBeDefined()
-  })
+  it.each(getExports(signaturePadAnatomy).filter((part) => part !== 'SegmentPath'))(
+    'should export %s',
+    async (part) => {
+      expect(SignaturePad[part]).toBeDefined()
+    },
+  )
 
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)

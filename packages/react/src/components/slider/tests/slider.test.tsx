@@ -119,7 +119,7 @@ describe('Slider', () => {
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it.skip('should emit correct onValueChange events', async () => {
+  it('should emit correct onValueChange events', async () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
