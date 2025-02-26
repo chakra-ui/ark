@@ -20,7 +20,9 @@ describe('Carousel', () => {
     const prevButton = screen.getByRole('button', { name: 'Previous slide' })
     const nextButton = screen.getByRole('button', { name: 'Next slide' })
 
-    await waitFor(() => expect(prevButton).toBeDisabled())
-    await waitFor(() => expect(nextButton).toBeEnabled())
+    await waitFor(() => {
+      expect(prevButton).toBeDisabled()
+      expect(nextButton).toBeEnabled()
+    })
   })
 })

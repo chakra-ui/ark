@@ -23,7 +23,7 @@ describe('Accordion', () => {
   })
 
   it('should open item specified in defaultValue', async () => {
-    render(() => <ComponentUnderTest value={['Solid']} />)
+    render(() => <ComponentUnderTest defaultValue={['Solid']} />)
 
     expect(screen.getByRole('button', { name: 'Solid Trigger' })).toHaveAttribute('aria-expanded', 'true')
   })

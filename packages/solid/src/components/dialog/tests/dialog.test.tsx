@@ -26,11 +26,11 @@ describe('Dialog', () => {
   })
 
   it('should invoke onClose if dialog is closed', async () => {
-    const onClose = vi.fn()
-    render(() => <ComponentUnderTest open onOpenChange={onClose} />)
+    const onOpenChange = vi.fn()
+    render(() => <ComponentUnderTest open onOpenChange={onOpenChange} />)
     await user.click(screen.getByText('Close'))
 
-    expect(onClose).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it('should be able to lazy mount', async () => {

@@ -40,7 +40,7 @@ describe('Editable', () => {
   })
 
   it('should be possible to edit an existing value', async () => {
-    render(() => <ControlledComponentUnderTest activationMode="dblclick" value="React" />)
+    render(() => <ControlledComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
 
