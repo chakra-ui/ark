@@ -35,7 +35,7 @@ describe('PinInput', () => {
     expect(results).toHaveNoViolations()
   })
 
-  it.skip('should have the proper aria labels', async () => {
+  it('should have the proper aria labels', async () => {
     render(<ComponentUnderTest />)
 
     const [input1, input2, input3] = screen.queryAllByRole('textbox')

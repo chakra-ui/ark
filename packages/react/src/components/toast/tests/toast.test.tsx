@@ -24,14 +24,26 @@ describe('Toast', () => {
     cleanup()
   })
 
-  it.skip('should have no a11y violations', async () => {
+  it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
   })
 
-  it.skip('should show and hide a toast message', async () => {
+  it('should show and hide a toast message', async () => {
+    let now = 1000
+
+    vi.spyOn(globalThis.performance, 'now').mockImplementation(() => now)
+
+    vi.stubGlobal('requestAnimationFrame', (fn: FrameRequestCallback) => {
+      now += 16 // Simulate frame progression (~16ms per frame at 60fps)
+      setTimeout(() => fn(now), 0)
+      return 1
+    })
+
+    vi.stubGlobal('cancelAnimationFrame', vi.fn())
+
     render(<ComponentUnderTest />)
 
     await user.click(screen.getByText('Create Toast'))
