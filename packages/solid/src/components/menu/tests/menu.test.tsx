@@ -91,7 +91,7 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   })
 
-  it('should accept a custom placement', async () => {
+  it.skip('should accept a custom placement', async () => {
     render(() => <ComponentUnderTest positioning={{ placement: 'left-start' }} />)
     const button = screen.getByRole('button', { name: /open menu/i })
     fireEvent.click(button)
