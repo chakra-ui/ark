@@ -7,7 +7,7 @@ export default defineConfig({
   test: {
     globals: true,
     setupFiles: ['src/setup-test.ts'],
-    retry: 2,
+    retry: 0,
     css: false,
   },
   resolve: {
