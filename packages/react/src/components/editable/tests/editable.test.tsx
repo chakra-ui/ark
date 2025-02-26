@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Editable, editableAnatomy } from '../'
@@ -39,22 +39,33 @@ describe('Editable', () => {
     render(<ControlledComponentUnderTest />)
   })
 
-  it.skip('should be possible to focus the placeholder and enter a value', async () => {
+  it('should be possible to focus the placeholder and enter a value', async () => {
     render(<ControlledComponentUnderTest />)
 
     screen.getByText('Placeholder').focus()
+    await waitFor(() => expect(screen.getByText('Placeholder')).toHaveFocus())
 
-    await user.type(screen.getByLabelText('editable input'), 'React')
-    expect(await screen.findByText('React')).toBeInTheDocument()
+    const input = screen.getByRole('textbox')
+
+    await user.clear(input)
+    await waitFor(() => expect(input).toHaveValue(''))
+
+    await user.type(input, 'React{enter}')
+
+    await screen.findByText('React')
   })
 
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(<ControlledComponentUnderTest activationMode="dblclick" />)
 
     await user.dblClick(screen.getByText('Placeholder'))
-    await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'React')
 
+    const input = screen.getByRole('textbox')
+
+    await user.clear(input)
+    await waitFor(() => expect(input).toHaveValue(''))
+
+    await user.type(input, 'React{enter}', { delay: 10 })
     await screen.findByText('React')
   })
 
@@ -62,8 +73,12 @@ describe('Editable', () => {
     render(<ControlledComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
-    await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'Solid')
+
+    const input = screen.getByRole('textbox')
+    await user.clear(input)
+    await waitFor(() => expect(input).toHaveValue(''))
+
+    await user.type(input, 'Solid', { delay: 10 })
     await user.click(screen.getByText('Save'))
 
     await screen.findByText('Solid')
