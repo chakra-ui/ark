@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Slider, useSlider } from '@ark-ui/svelte/slider'
-
-  const slider = useSlider()
+  const id = $props.id()
+  const slider = useSlider({ id })
 </script>
 
 <button onclick={() => slider().focus()}>Focus</button>

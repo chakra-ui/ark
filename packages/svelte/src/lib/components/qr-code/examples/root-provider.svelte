@@ -1,7 +1,8 @@
 <script lang="ts">
   import { QrCode, useQrCode } from '@ark-ui/svelte/qr-code'
 
-  const qrCode = useQrCode({ value: 'http://ark-ui.com' })
+  const id = $props.id()
+  const qrCode = useQrCode({ id, value: 'http://ark-ui.com' })
   const setValue = () => qrCode().setValue('https://ark-ui.com')
 </script>
 

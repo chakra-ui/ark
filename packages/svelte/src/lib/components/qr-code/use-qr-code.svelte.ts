@@ -1,11 +1,10 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import { useLocaleContext } from '$lib/providers/locale'
-import type { Accessor, Optional } from '$lib/types'
-import { createId } from '$lib/utils/create-id'
+import type { Accessor } from '$lib/types'
 import * as qrcode from '@zag-js/qr-code'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/svelte'
 
-export interface UseQrCodeProps extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseQrCodeProps extends Omit<qrcode.Context, 'dir' | 'getRootNode'> {
   /**
    * The initial value of the slider when it is first rendered.
    * Use when you do not need to control the state of the slider.
@@ -14,13 +13,11 @@ export interface UseQrCodeProps extends Optional<Omit<qrcode.Context, 'dir' | 'g
 }
 export interface UseQrCodeReturn extends Accessor<qrcode.Api<PropTypes>> {}
 
-export const useQrCode = (props: UseQrCodeProps = {}) => {
-  const id = createId()
+export const useQrCode = (props: UseQrCodeProps) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 
   const initialContext = $derived({
-    id,
     dir: locale.dir,
     value: props.defaultValue,
     getRootNode: env.getRootNode,
