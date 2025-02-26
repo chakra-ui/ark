@@ -175,6 +175,7 @@
     "@zag-js/time-picker": "1.2.0",
     "@zag-js/timer": "1.2.0",
     "@zag-js/toast": "1.2.0",
+    "@zag-js/toggle": "1.2.0",
     "@zag-js/toggle-group": "1.2.0",
     "@zag-js/tooltip": "1.2.0",
     "@zag-js/tour": "1.2.0",
