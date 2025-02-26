@@ -5,16 +5,17 @@ import { getExports, getParts } from '../../../setup-test'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
+  contextMenu?: boolean
 }
 
 const ComponentUnderTest = (props: ComponentUnderTestProps) => {
-  const [radioGroupProps, localProps] = splitProps(props, ['onValueChange'])
+  const [{ contextMenu, onValueChange }, rootProps] = splitProps(props, ['onValueChange', 'contextMenu'])
   return (
-    <Menu.Root {...localProps}>
+    <Menu.Root {...rootProps}>
       <Menu.Trigger>
         Open menu <Menu.Indicator />
       </Menu.Trigger>
-      <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
+      {contextMenu && <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>}
       <Menu.Positioner data-testid="positioner">
         <Menu.Content>
           <Menu.Arrow>
@@ -32,7 +33,7 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
             <Menu.ItemText>Check me</Menu.ItemText>
           </Menu.CheckboxItem>
           <Menu.Separator />
-          <Menu.RadioItemGroup value="react" {...radioGroupProps}>
+          <Menu.RadioItemGroup value="react" onValueChange={onValueChange}>
             <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
             <Index each={['react', 'solid', 'svelte', 'vue']}>
               {(framework) => (
@@ -60,9 +61,10 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
 }
 
 describe('Menu / Parts & Exports', () => {
-  it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
+  it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
     render(() => <ComponentUnderTest />)
-
+    const button = screen.getByRole('button', { name: /open menu/i })
+    fireEvent.click(button)
     expect(document.querySelector(part)).toBeInTheDocument()
   })
 
