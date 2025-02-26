@@ -1,5 +1,5 @@
 'use client'
-import { Frame } from '@ark-ui/react'
+import { Frame } from '@ark-ui/react/frame'
 import { useTheme } from 'next-themes'
 import { css } from 'styled-system/css'
 

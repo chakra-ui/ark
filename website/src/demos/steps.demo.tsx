@@ -1,3 +1,4 @@
+'use client'
 import { Steps } from '@ark-ui/react/steps'
 import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'

@@ -54,90 +54,17 @@
     "url": "https://github.com/chakra-ui/ark/issues"
   },
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
-    ".": {
-      "source": "./src/index.ts",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    },
-    "./anatomy": {
-      "source": "./src/components/anatomy.ts",
-      "import": {
-        "types": "./dist/components/anatomy.d.ts",
-        "default": "./dist/components/anatomy.js"
-      },
-      "require": {
-        "types": "./dist/components/anatomy.d.cts",
-        "default": "./dist/components/anatomy.cjs"
-      }
-    },
-    "./collection": {
-      "source": "./src/components/collection.ts",
-      "import": {
-        "types": "./dist/components/collection.d.ts",
-        "default": "./dist/components/collection.js"
-      },
-      "require": {
-        "types": "./dist/components/collection.d.cts",
-        "default": "./dist/components/collection.cjs"
-      }
-    },
-    "./factory": {
-      "source": "./src/components/factory.ts",
-      "import": {
-        "types": "./dist/components/factory.d.ts",
-        "default": "./dist/components/factory.js"
-      },
-      "require": {
-        "types": "./dist/components/factory.d.cts",
-        "default": "./dist/components/factory.cjs"
-      }
-    },
-    "./environment": {
-      "source": "./src/providers/environment/index.ts",
-      "import": {
-        "types": "./dist/providers/environment/index.d.ts",
-        "default": "./dist/providers/environment/index.js"
-      },
-      "require": {
-        "types": "./dist/providers/environment/index.d.cts",
-        "default": "./dist/providers/environment/index.cjs"
-      }
-    },
-    "./locale": {
-      "source": "./src/providers/locale/index.ts",
-      "import": {
-        "types": "./dist/providers/locale/index.d.ts",
-        "default": "./dist/providers/locale/index.js"
-      },
-      "require": {
-        "types": "./dist/providers/locale/index.d.cts",
-        "default": "./dist/providers/locale/index.cjs"
-      }
-    },
-    "./*": {
-      "source": "./src/components/*/index.ts",
-      "import": {
-        "types": "./dist/components/*/index.d.ts",
-        "default": "./dist/components/*/index.js"
-      },
-      "require": {
-        "types": "./dist/components/*/index.d.cts",
-        "default": "./dist/components/*/index.cjs"
-      }
-    }
+    ".": "./src/index.ts",
+    "./anatomy": "./src/components/anatomy/anatomy.ts",
+    "./collection": "./src/components/collection.ts",
+    "./environment": "./src/providers/environment/index.ts",
+    "./factory": "./src/components/factory.ts",
+    "./locale": "./src/providers/locale/index.ts",
+    "./*": "./src/components/*/index.ts"
   },
   "scripts": {
     "build": "vite build",
@@ -150,17 +77,6 @@
     "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
-  },
-  "clean-package": {
-    "remove": [
-      "exports.\\..source",
-      "exports.\\./anatomy.source",
-      "exports.\\./collection.source",
-      "exports.\\./factory.source",
-      "exports.\\./environment.source",
-      "exports.\\./locale.source",
-      "exports.\\./*.source"
-    ]
   },
   "publishConfig": {
     "access": "public"

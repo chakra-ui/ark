@@ -1,3 +1,4 @@
+'use client'
 import { QrCode } from '@ark-ui/react/qr-code'
 import { DownloadIcon } from 'lucide-react'
 import { sva } from 'styled-system/css'

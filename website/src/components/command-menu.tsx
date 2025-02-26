@@ -1,5 +1,5 @@
 'use client'
-import { createListCollection } from '@ark-ui/react'
+import { createListCollection } from '@ark-ui/react/collection'
 import { useEnvironmentContext } from '@ark-ui/react/environment'
 import { Portal } from '@ark-ui/react/portal'
 import { SearchIcon } from 'lucide-react'
