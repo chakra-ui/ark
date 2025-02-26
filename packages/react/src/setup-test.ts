@@ -25,7 +25,17 @@ window['ResizeObserver'] = ResizeObserver
 
 window.Element.prototype.scrollTo = () => {}
 window.Element.prototype.scrollIntoView = () => {}
-window.requestAnimationFrame = (cb) => setTimeout(cb, 1000 / 60)
+
+// Mock performance.now and requestAnimationFrame
+let now = 1000
+vi.spyOn(globalThis.performance, 'now').mockImplementation(() => now)
+vi.stubGlobal('requestAnimationFrame', (fn: FrameRequestCallback) => {
+  now += 16
+  setTimeout(() => fn(now), 0)
+  return 1
+})
+vi.stubGlobal('cancelAnimationFrame', vi.fn())
+
 window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
 window.URL.revokeObjectURL = () => {}
 
@@ -36,11 +46,6 @@ Object.defineProperty(window, 'navigator', {
     },
   },
 })
-
-// stub Array.prototype.toSorted (used in zag.js collection)
-Array.prototype.toSorted = function () {
-  return [...this].sort()
-}
 
 Object.assign(global, { window, document: window.document })
 
