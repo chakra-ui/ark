@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, createEffect } from 'solid-js'
+import { type JSX, onMount } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseMenuProps, useMenu } from './use-menu'
@@ -43,7 +43,7 @@ export const MenuRoot = (props: MenuRootProps) => {
   const menu = useMenu(useMenuProps)
   const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().open })))
 
-  createEffect(() => {
+  onMount(() => {
     if (!parentMachine) return
     parentApi?.().setChild(menu.service)
     menu.api().setParent(parentMachine)
