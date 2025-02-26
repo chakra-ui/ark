@@ -7,7 +7,7 @@ const size = ref([
   { id: 'b', size: 50 },
 ])
 
-const splitter = useSplitter({ size: size.value })
+const splitter = useSplitter({ modelValue: size.value })
 </script>
 
 <template>

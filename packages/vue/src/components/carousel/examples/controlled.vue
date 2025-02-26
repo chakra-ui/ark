@@ -7,7 +7,7 @@ const page = ref(0)
 </script>
 
 <template>
-  <Carousel.Root v-model:page="page">
+  <Carousel.Root v-model="page" :slide-count="images.length">
     <Carousel.Control>
       <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
       <Carousel.NextTrigger>Next</Carousel.NextTrigger>

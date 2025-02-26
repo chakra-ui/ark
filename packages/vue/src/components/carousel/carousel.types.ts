@@ -60,7 +60,7 @@ export interface RootProps {
    * The total number of slides.
    * Useful for SSR to render the initial ating the snap points.
    */
-  slideCount?: number
+  slideCount: number
   /**
    * The number of slides to scroll at a time.
    *

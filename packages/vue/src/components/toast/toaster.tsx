@@ -1,6 +1,15 @@
 import * as toast from '@zag-js/toast'
-import { normalizeProps, useActor, useMachine } from '@zag-js/vue'
-import { type HTMLAttributes, type PropType, type SlotsType, type VNodeChild, computed, defineComponent } from 'vue'
+import { normalizeProps, useMachine } from '@zag-js/vue'
+import {
+  type HTMLAttributes,
+  type PropType,
+  type SlotsType,
+  type VNodeChild,
+  computed,
+  defineComponent,
+  useId,
+} from 'vue'
+import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import { type PolymorphicProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
@@ -12,16 +21,24 @@ export interface ToasterProps extends ToasterBaseProps, HTMLAttributes {
 
 export const Toaster = defineComponent<ToasterProps>(
   (props, { attrs, slots }) => {
-    const service = useMachine(props.toaster.machine)
-    const placement = state.value.context.placement
-    const toaster = computed(() => toast.group.connect(service, normalizeProps))
+    const locale = useLocaleContext()
+    const env = useEnvironmentContext()
+
+    const service = useMachine(toast.group.machine, {
+      store: props.toaster,
+      id: useId(),
+      dir: locale?.value.dir,
+      getRootNode: env?.value.getRootNode,
+    })
+
+    const api = computed(() => toast.group.connect(service, normalizeProps))
 
     return () => (
-      <ark.div {...toaster.value.getGroupProps({ placement })} {...attrs}>
-        {toaster.value.getToastsByPlacement(placement).map((toast) => (
-          <ToastActor value={toast} key={toast.id}>
+      <ark.div {...api.value.getGroupProps()} {...attrs}>
+        {api.value.getToasts().map((toast, index) => (
+          <ToastItem value={toast} key={toast.id} parent={service} index={index}>
             {(toast: toast.Options<VNodeChild>) => slots.default?.(toast)}
-          </ToastActor>
+          </ToastItem>
         ))}
       </ark.div>
     )
@@ -40,23 +57,38 @@ export const Toaster = defineComponent<ToasterProps>(
   },
 )
 
-interface ToastActorProps {
-  value: toast.Service<VNodeChild>
+interface ToastItemProps {
+  value: toast.Props
+  index: number
+  parent: toast.GroupService
 }
 
-const ToastActor = defineComponent<ToastActorProps>(
+const ToastItem = defineComponent<ToastItemProps>(
   (props, { slots }) => {
-    const service = useActor(props.value)
+    const machineProps = computed(() => ({
+      ...props.value,
+      index: props.index,
+      parent: props.parent,
+    }))
+    const service = useMachine(toast.machine, machineProps.value)
     const api = computed(() => toast.connect(service, normalizeProps))
 
     ToastProvider(api)
-    return () => slots.default?.(state.value.context)
+    return () => slots.default?.(props.value)
   },
   {
-    name: 'ToastActor',
+    name: 'ToastItem',
     props: {
       value: {
-        type: Object as PropType<toast.Service<VNodeChild>>,
+        type: Object as PropType<toast.Props<VNodeChild>>,
+        required: true,
+      },
+      index: {
+        type: Number,
+        required: true,
+      },
+      parent: {
+        type: Object as PropType<toast.GroupService>,
         required: true,
       },
     },

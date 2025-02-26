@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Pagination, usePagination } from '@ark-ui/vue/pagination'
 
-const pagination = usePagination({ count: 100, pageSize: 10, siblingCount: 2 })
+const pagination = usePagination({ count: 100, modelPageSize: 10, siblingCount: 2 })
 </script>
 
 <template>
