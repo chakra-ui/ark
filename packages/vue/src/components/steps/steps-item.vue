@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/steps'
-import type { LiHTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
 export interface StepsItemBaseProps extends ItemProps, PolymorphicProps {}
