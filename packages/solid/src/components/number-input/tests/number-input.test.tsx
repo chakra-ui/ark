@@ -28,7 +28,7 @@ describe('NumberInput', () => {
   })
 
   it('should clamp value on blur when clampValueOnBlur is true', async () => {
-    render(() => <ComponentUnderTest clampValueOnBlur min={0} max={10} value="15" />)
+    render(() => <ComponentUnderTest clampValueOnBlur min={0} max={10} defaultValue="15" />)
     const input = screen.getByRole('spinbutton')
     input.focus()
     input.blur()
@@ -39,20 +39,13 @@ describe('NumberInput', () => {
   })
 
   it('should allow value to exceed max when allowOverflow is true', async () => {
-    render(() => <ComponentUnderTest allowOverflow max={10} value="15" />)
+    render(() => <ComponentUnderTest allowOverflow max={10} defaultValue="15" />)
     const input = screen.getByRole('spinbutton')
     expect(input).toHaveValue('15')
   })
 
   it('should handle custom format and parse functions', async () => {
-    render(() => (
-      <ComponentUnderTest
-        formatOptions={{
-          currency: 'USD',
-        }}
-        value="5"
-      />
-    ))
+    render(() => <ComponentUnderTest formatOptions={{ currency: 'USD' }} defaultValue="5" />)
     const input = screen.getByRole('spinbutton')
 
     await waitFor(() => {
@@ -61,7 +54,7 @@ describe('NumberInput', () => {
   })
 
   it('should increment value by step when using increment button', async () => {
-    render(() => <ComponentUnderTest step={5} value="0" />)
+    render(() => <ComponentUnderTest step={5} defaultValue="0" />)
     const incrementBtn = screen.getByText('+1')
     await user.click(incrementBtn)
 
@@ -73,7 +66,7 @@ describe('NumberInput', () => {
 
   it.skip('should handle min and max fraction digits', async () => {
     render(() => (
-      <ComponentUnderTest value="1.00" formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }} />
+      <ComponentUnderTest defaultValue="1.00" formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 3 }} />
     ))
     const input = screen.getByRole('spinbutton')
     await waitFor(() => {
