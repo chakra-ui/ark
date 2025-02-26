@@ -40,7 +40,6 @@ describe('PinInput', () => {
 
     const [input1, input2, input3] = screen.queryAllByRole('textbox')
 
-    // wait for labels to be in the document
     await screen.findByLabelText('pin code 1 of 3')
 
     expect(input1).toHaveAttribute('aria-label', 'pin code 1 of 3')
@@ -54,7 +53,7 @@ describe('PinInput', () => {
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toHaveFocus())
   })
 
-  it.skip('should move focus to the next item when enter a value', async () => {
+  it('should move focus to the next item when enter a value', async () => {
     render(<ComponentUnderTest />)
 
     await waitFor(() => expect(screen.getByLabelText('pin code 1 of 3')).toBeInTheDocument())
