@@ -1,7 +1,8 @@
 <script lang="ts">
   import { Progress, useProgress } from '@ark-ui/svelte/progress'
 
-  const progress = useProgress()
+  const id = $props.id()
+  const progress = useProgress({ id })
 </script>
 
 <button onclick={() => progress().setToMax()}>Set to MAX</button>

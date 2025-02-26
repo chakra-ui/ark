@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Change
+
+- Replaced custom ID generator with `$props.id()` rune.
+
 ## [0.3.0] - 2025-01-08
 
 - Added `Format` component.

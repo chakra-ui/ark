@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps } from '$lib/types'
   import type { UseSliderProps } from './use-slider.svelte'
 
-  export interface SliderRootBaseProps extends UseSliderProps, PolymorphicProps<'div'> {}
+  export interface SliderRootBaseProps extends Optional<UseSliderProps, 'id'>, PolymorphicProps<'div'> {}
   export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBaseProps> {}
 </script>
 
@@ -13,9 +13,11 @@
   import { SliderProvider } from './use-slider-context'
   import { useSlider } from './use-slider.svelte'
 
-  const props: SliderRootProps = $props()
+  const _props: SliderRootProps = $props()
+  const providedId = $props.id()
+
   const [useSliderProps, localProps] = $derived(
-    createSplitProps<UseSliderProps>()(props, [
+    createSplitProps<Optional<UseSliderProps, 'id'>>()(_props, [
       'id',
       'ids',
       'value',
@@ -42,7 +44,12 @@
     ]),
   )
 
-  const slider = useSlider(reflect(() => useSliderProps))
+  const resolvedProps = $derived({
+    ...useSliderProps,
+    id: providedId,
+  })
+
+  const slider = useSlider(reflect(() => resolvedProps))
   const mergedProps = $derived(mergeProps(slider().getRootProps(), localProps))
 
   SliderProvider(slider)

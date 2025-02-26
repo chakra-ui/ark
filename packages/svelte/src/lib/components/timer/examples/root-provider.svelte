@@ -1,7 +1,8 @@
 <script lang="ts">
   import { Timer, useTimer } from '@ark-ui/svelte/timer'
 
-  const timer = useTimer({ targetMs: 60 * 60 * 1000 })
+  const id = $props.id()
+  const timer = useTimer({ id, targetMs: 60 * 60 * 1000 })
 </script>
 
 <button onclick={() => timer().pause()}>Pause</button>
