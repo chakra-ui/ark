@@ -30,15 +30,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/bun": "1.2.3",
-    "lefthook": "1.10.10",
+    "@types/bun": "1.2.4",
+    "lefthook": "1.11.2",
     "prettier": "3.5.2",
     "prettier-plugin-svelte": "3.3.3",
-    "turbo": "2.4.2",
+    "turbo": "2.4.4",
     "typescript": "5.7.3",
-    "vercel": "41.1.4"
+    "vercel": "41.2.2"
   },
-  "packageManager": "bun@1.2.3",
+  "packageManager": "bun@1.2.4",
   "trustedDependencies": [
     "@ark-ui/website"
   ]
