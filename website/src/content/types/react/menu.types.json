@@ -241,15 +241,20 @@
         "isRequired": false,
         "description": "Whether the menu is a composed with other composite widgets like a combobox or tabs"
       },
+      "defaultHighlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial highlighted value of the menu item when rendered.\nUse when you don't need to control the highlighted value of the menu item."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the menu when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the menu when rendered.\nUse when you don't need to control the open state of the menu."
       },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The value of the highlighted menu item."
+        "description": "The controlled highlighted value of the menu item."
       },
       "id": {
         "type": "string",
@@ -289,7 +294,7 @@
         "description": "Function called when the escape key is pressed"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -326,7 +331,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the menu is open"
+        "description": "The controlled open state of the menu"
       },
       "positioning": {
         "type": "PositioningOptions",
@@ -370,7 +375,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },

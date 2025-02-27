@@ -15,10 +15,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "copied": {
-        "type": "number | boolean | Node | ArrayElement | (string & {})",
-        "isRequired": false
-      }
+      "copied": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false }
     }
   },
   "Input": {
@@ -46,6 +43,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial value to be copied to the clipboard when rendered.\nUse when you don't need to control the value of the clipboard."
+      },
       "ids": {
         "type": "Partial<{ root: string; input: string; label: string }>",
         "isRequired": false,
@@ -56,25 +58,23 @@
         "isRequired": false,
         "description": "The function to be called when the value is copied to the clipboard"
       },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "The function to be called when the value changes"
+      },
       "timeout": {
         "type": "number",
         "defaultValue": "3000",
         "isRequired": false,
         "description": "The timeout for the copy operation"
       },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value to be copied to the clipboard"
-      }
+      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the clipboard" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseClipboardReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseClipboardReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

@@ -37,11 +37,7 @@
   },
   "Root": {
     "props": {
-      "aria-label": {
-        "type": "string",
-        "isRequired": false,
-        "description": "Custom label for the tooltip."
-      },
+      "aria-label": { "type": "string", "isRequired": false, "description": "Custom label for the tooltip." },
       "closeDelay": {
         "type": "number",
         "defaultValue": "500",
@@ -75,16 +71,12 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the tooltip when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the tooltip when rendered.\nUse when you don't need to control the open state of the tooltip."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the tooltip is disabled"
-      },
-      "id": { "type": "string", "isRequired": false, "description": "The `id` of the tooltip." },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the tooltip is disabled" },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string\n  content: string\n  arrow: string\n  positioner: string\n}>",
+        "type": "Partial<{ trigger: string; content: string; arrow: string; positioner: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the tooltip. Useful for composition."
       },
@@ -106,7 +98,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -115,11 +107,7 @@
         "isRequired": false,
         "description": "Function called when the tooltip is opened."
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the tooltip is open"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the tooltip" },
       "openDelay": {
         "type": "number",
         "defaultValue": "1000",
@@ -159,7 +147,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },

@@ -42,10 +42,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "fallback": {
-        "type": "number | boolean | Node | ArrayElement | (string & {})",
-        "isRequired": false
-      }
+      "fallback": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false }
     }
   },
   "Root": {
@@ -55,31 +52,15 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is disabled."
-      },
-      "ids": {
-        "type": "ElementIds",
-        "isRequired": false,
-        "description": "The ids of the field parts."
-      },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is invalid."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,
         "description": "Indicates whether the field is read-only."
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is required."
-      }
+      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
     }
   },
   "RootProvider": {

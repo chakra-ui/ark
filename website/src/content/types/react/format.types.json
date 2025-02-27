@@ -1,7 +1,11 @@
 {
   "Byte": {
     "props": {
-      "value": { "type": "number", "isRequired": true, "description": "The byte size to format" },
+      "value": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The byte size to format"
+      },
       "unit": {
         "type": "'bit' | 'byte'",
         "isRequired": false,
@@ -16,7 +20,11 @@
   },
   "Number": {
     "props": {
-      "value": { "type": "number", "isRequired": true, "description": "The number to format" }
+      "value": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The number to format"
+      }
     }
   }
 }

@@ -6,12 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './carousel.types'
 
-export interface UseCarouselProps extends Optional<Omit<carousel.Props, 'dir' | 'getRootNode' | 'page'>, 'id'> {
-  /**
-   * The model value of the carousel
-   */
-  modelValue?: carousel.Props['page']
-}
+export interface UseCarouselProps extends Optional<Omit<carousel.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
 export const useCarousel = (props: UseCarouselProps, emit?: EmitFn<RootEmits>): UseCarouselReturn => {
@@ -22,13 +17,12 @@ export const useCarousel = (props: UseCarouselProps, emit?: EmitFn<RootEmits>): 
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    page: props.modelValue,
+
     onAutoplayStatusChange: (details) => emit?.('autoplayStatusChange', details),
     onDragStatusChange: (details) => emit?.('dragStatusChange', details),
     onPageChange: (details) => {
       emit?.('pageChange', details)
-      emit?.('update:page', details.page) // TODO: remove this
-      emit?.('update:modelValue', details.page)
+      emit?.('update:page', details.page)
     },
     ...cleanProps(props),
   }))

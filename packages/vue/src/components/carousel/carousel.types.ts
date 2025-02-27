@@ -12,8 +12,9 @@ export interface RootProps {
    */
   autoplay?: boolean | { delay: number }
   /**
-   * The initial page of the carousel when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
+   * The initial page to scroll to when rendered.
+   * Use when you don't need to control the page of the carousel.
+   * @default 0
    */
   defaultPage?: number
   /**
@@ -46,14 +47,14 @@ export interface RootProps {
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: carousel.Orientation
+  orientation?: 'horizontal' | 'vertical'
   /**
    * Defines the extra space added around the scrollable area,
    * enabling nearby items to remain partially in view.
    */
   padding?: string
   /**
-   * The index of the active page.
+   * The controlled page of the carousel.
    */
   page?: number
   /**
@@ -104,10 +105,6 @@ export type RootEmits = {
    * Function called when the page changes.
    */
   pageChange: [details: carousel.PageChangeDetails]
-  /**
-   * The callback fired when the carousel page changes.
-   */
-  'update:modelValue': [page: number]
   /**
    * The callback fired when the carousel page changes.
    */

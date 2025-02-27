@@ -8,12 +8,7 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './checkbox'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
-export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode' | 'checked'>, 'id'> {
-  /**
-   * The model value of the checkbox
-   */
-  modelValue?: checkbox.Props['checked']
-}
+export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> {}
 
 export const useCheckbox = (ownProps: UseCheckboxProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -39,11 +34,9 @@ export const useCheckbox = (ownProps: UseCheckboxProps = {}, emit?: EmitFn<RootE
     required: field?.value.required,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    checked: props.value.modelValue,
     onCheckedChange(details) {
       emit?.('checkedChange', details)
-      emit?.('update:checked', details.checked) // TODO: remove this
-      emit?.('update:modelValue', details.checked)
+      emit?.('update:checked', details.checked)
     },
     ...cleanProps(props.value),
   }))
