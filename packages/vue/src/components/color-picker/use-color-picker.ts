@@ -7,17 +7,13 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './color-picker.types'
 
-export interface UseColorPickerProps
-  extends Optional<Omit<colorPicker.Props, 'dir' | 'getRootNode' | 'value' | 'open'>, 'id'> {
+export interface UseColorPickerProps extends Optional<Omit<colorPicker.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the color picker
    */
-  modelValue?: colorPicker.Props['value']
-  /**
-   * The v-model open state of the color picker
-   */
-  modelOpen?: colorPicker.Props['open']
+  modelValue?: colorPicker.Color
 }
+
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (props: UseColorPickerProps = {}, emit?: EmitFn<RootEmits>): UseColorPickerReturn => {
@@ -38,23 +34,39 @@ export const useColorPicker = (props: UseColorPickerProps = {}, emit?: EmitFn<Ro
     required: field?.value.required,
     dir: locale.value.dir,
     value: props.modelValue,
-    open: props.modelOpen,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onOpenChange(details) {
       emit?.('openChange', details)
-      emit?.('update:open', details.open) // TODO: remove this
-      emit?.('update:modelOpen', details.open)
+      emit?.('update:open', details.open)
+      props.onOpenChange?.(details)
     },
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onFormatChange: (details) => emit?.('formatChange', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onValueChangeEnd: (details) => emit?.('valueChangeEnd', details),
-    ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onFormatChange: (details) => {
+      emit?.('formatChange', details)
+      emit?.('update:format', details.format)
+      props.onFormatChange?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onValueChangeEnd: (details) => {
+      emit?.('valueChangeEnd', details)
+      props.onValueChangeEnd?.(details)
+    },
   }))
 
   const service = useMachine(colorPicker.machine, context)
