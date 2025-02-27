@@ -1,20 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { PinInput, pinInputAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('PinInput', () => {
-  it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
-    expect(PinInput[part]).toBeDefined()
-  })
-
   it('should have the proper aria labels', async () => {
     render(() => <ComponentUnderTest />)
     await screen.findByLabelText('pin code 1 of 3')

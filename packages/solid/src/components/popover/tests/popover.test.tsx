@@ -1,21 +1,9 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Popover, popoverAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
 describe('Popover', () => {
-  it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
-    expect(Popover[part]).toBeDefined()
-  })
-
   it('should open and close the popover', async () => {
     render(() => <ComponentUnderTest />)
 

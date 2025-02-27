@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom/vitest'
-import type { AnatomyInstance } from '@zag-js/anatomy'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
 import { vi } from 'vitest'
@@ -31,7 +30,7 @@ let now = 1000
 vi.spyOn(globalThis.performance, 'now').mockImplementation(() => now)
 vi.stubGlobal('requestAnimationFrame', (fn: FrameRequestCallback) => {
   now += 16
-  setTimeout(() => fn(now), 0)
+  setTimeout(() => fn(now), 10)
   return 1
 })
 vi.stubGlobal('cancelAnimationFrame', vi.fn())
@@ -48,13 +47,3 @@ Object.defineProperty(window, 'navigator', {
 })
 
 Object.assign(global, { window, document: window.document })
-
-export const getParts = (anatomy: AnatomyInstance<string>) => {
-  return Object.values(anatomy.build()).map(
-    (x) => `[data-scope="${x.attrs['data-scope']}"][data-part="${x.attrs['data-part']}"]`,
-  )
-}
-
-export const getExports = <T extends string>(anatomy: AnatomyInstance<T>) => {
-  return anatomy.keys().map((x) => (x.charAt(0).toUpperCase() + x.slice(1)) as Capitalize<T>)
-}

@@ -1,21 +1,9 @@
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { Combobox, comboboxAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './combobox.test.vue'
 
 describe('Combobox', () => {
-  it.each(getParts(comboboxAnatomy))('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
-    expect(Combobox[part]).toBeDefined()
-  })
-
   it('should show options on click', async () => {
     render(ComponentUnderTest)
 

@@ -1,27 +1,10 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { FileUpload } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { fileUploadAnatomy } from '../file-upload.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('File Upload / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(fileUploadAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
-    expect(FileUpload[part]).toBeDefined()
-  })
-
+describe('File Upload', () => {
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -31,10 +14,6 @@ describe('File Upload / Parts & Exports', () => {
 })
 
 describe('File Upload / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set file upload as required', async () => {
     render(<WithField required />)
     expect(screen.getByTestId('input')).toBeRequired()

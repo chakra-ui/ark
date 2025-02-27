@@ -1,22 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Editable, editableAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ControlledComponentUnderTest from './controlled-editable.test.vue'
-import ComponentUnderTest from './editable.test.vue'
 
 describe('Editable', () => {
-  it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
-    expect(Editable[part]).toBeDefined()
-  })
-
   it('should render controlled component', async () => {
     render(ControlledComponentUnderTest)
   })

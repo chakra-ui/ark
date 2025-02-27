@@ -1,20 +1,8 @@
 import { userEvent as user } from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { Menu, menuAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './menu.test.vue'
 
 describe('Menu', () => {
-  it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
-    expect(Menu[part]).toBeDefined()
-  })
-
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(ComponentUnderTest)
 

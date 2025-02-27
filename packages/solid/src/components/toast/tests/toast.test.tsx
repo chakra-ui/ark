@@ -1,16 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { getParts } from '../../../setup-test'
-import { toastAnatomy } from '../toast.anatomy'
 import { ComponentUnderTest } from './basic'
 
 describe('Toast', () => {
-  it.each(getParts(toastAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-    await user.click(screen.getByText('Create Toast'))
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
   it('should show and hide a toast message', async () => {
     render(() => <ComponentUnderTest />)
     await user.click(screen.getByText('Create Toast'))

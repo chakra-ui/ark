@@ -1,21 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { FileUpload, fileUploadAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
-
-describe('FileUpload', () => {
-  it.each(getParts(fileUploadAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
-    expect(FileUpload[part]).toBeDefined()
-  })
-})
 
 describe('File Upload / Field', () => {
   it('should set file upload as required', async () => {

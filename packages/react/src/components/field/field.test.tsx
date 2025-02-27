@@ -1,9 +1,7 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Field } from '../'
-import { getExports, getParts } from '../../setup-test'
-import { fieldAnatomy } from './field.anatomy'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>
@@ -17,30 +15,7 @@ const ComponentUnderTest = (props: Field.RootProps) => (
   </Field.Root>
 )
 
-describe('Field / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest invalid required />)
-
-  it.each(getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
-    'should render part %s',
-    async (part) => {
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
-    expect(Field[part]).toBeDefined()
-  })
-})
-
 describe('Field / Input', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

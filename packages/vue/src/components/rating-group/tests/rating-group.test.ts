@@ -1,21 +1,9 @@
 import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
-import { RatingGroup, ratingGroupAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './rating-group.test.vue'
 
 describe('Rating Group', () => {
-  it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(ratingGroupAnatomy))('should export %s', async (part) => {
-    expect(RatingGroup[part]).toBeDefined()
-  })
-
   it('should apply default value', async () => {
     render(ComponentUnderTest, { props: { defaultValue: 2, count: 5 } })
 

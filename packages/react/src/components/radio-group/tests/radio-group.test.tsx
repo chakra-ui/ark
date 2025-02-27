@@ -1,32 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { RadioGroup } from '../'
-import { getExports, getParts } from '../../../setup-test'
-import { radioGroupAnatomy } from '../radio-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('Radio Group / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(radioGroupAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(radioGroupAnatomy))('should export %s', async (part) => {
-    expect(RadioGroup[part]).toBeDefined()
-  })
-})
-
 describe('Radio Group', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

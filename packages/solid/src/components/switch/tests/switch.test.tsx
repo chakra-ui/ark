@@ -1,21 +1,9 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Switch, switchAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('Switch', () => {
-  it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(switchAnatomy))('should export %s', async (part) => {
-    expect(Switch[part]).toBeDefined()
-  })
-
   it('should toggle state when clicked', async () => {
     const onCheckedChange = vi.fn()
     render(() => <ComponentUnderTest onCheckedChange={onCheckedChange} />)

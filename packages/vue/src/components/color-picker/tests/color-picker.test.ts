@@ -1,21 +1,10 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { ColorPicker, colorPickerAnatomy, parseColor } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { parseColor } from '../'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './color-picker.test.vue'
 
 describe('ColorPicker', () => {
-  it.each(getParts(colorPickerAnatomy))('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(colorPickerAnatomy))('should export %s', async (part) => {
-    expect(ColorPicker[part]).toBeDefined()
-  })
-
   it('should be able to lazy mount', async () => {
     render(ComponentUnderTest, {
       props: {

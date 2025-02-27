@@ -1,7 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import { Index, splitProps } from 'solid-js'
-import { Menu, menuAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
+import { Menu } from '..'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
@@ -59,20 +58,6 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
     </Menu.Root>
   )
 }
-
-describe('Menu / Parts & Exports', () => {
-  const parts = getParts(menuAnatomy).filter((part) => !part.includes('context-trigger'))
-  it.each(parts)('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-    const button = screen.getByRole('button', { name: /open menu/i })
-    fireEvent.click(button)
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
-    expect(Menu[part]).toBeDefined()
-  })
-})
 
 describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {

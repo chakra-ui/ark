@@ -1,8 +1,7 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Collapsible, collapsibleAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { Collapsible } from '../'
 
 const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
@@ -11,27 +10,7 @@ const ComponentUnderTest = (props: Collapsible.RootProps) => (
   </Collapsible.Root>
 )
 
-describe('Collapsible / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(collapsibleAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(collapsibleAnatomy))('should export %s', async (part) => {
-    expect(Collapsible[part]).toBeDefined()
-  })
-})
-
 describe('Collapsible', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

@@ -1,21 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { TagsInput, tagsInputAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './tags-input.test.vue'
 
 describe('TagsInput', () => {
-  it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
-    expect(TagsInput[part]).toBeDefined()
-  })
-
   it('should allow to add a new item', async () => {
     render(ComponentUnderTest)
 

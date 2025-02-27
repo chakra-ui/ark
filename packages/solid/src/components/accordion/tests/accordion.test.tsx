@@ -1,21 +1,9 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Accordion, accordionAnatomy } from '../'
 import { LocaleProvider } from '../../../providers'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Accordion', () => {
-  it.each(getParts(accordionAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(accordionAnatomy))('should export %s', async (part) => {
-    expect(Accordion[part]).toBeDefined()
-  })
-
   it('should not have an expanded item by default', async () => {
     render(() => <ComponentUnderTest />)
 

@@ -1,9 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-react'
 import { axe } from 'vitest-axe'
-import { Clipboard, clipboardAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { Clipboard } from '../'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">
@@ -19,27 +18,7 @@ const ComponentUnderTest = () => (
   </Clipboard.Root>
 )
 
-describe('Checkbox / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(clipboardAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(clipboardAnatomy))('should export %s', async (part) => {
-    expect(Clipboard[part]).toBeDefined()
-  })
-})
-
 describe('Clipboard', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

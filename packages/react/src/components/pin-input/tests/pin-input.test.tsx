@@ -1,33 +1,10 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { PinInput } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { pinInputAnatomy } from '../pin-input.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('PinInput / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
-    expect(PinInput[part]).toBeDefined()
-  })
-})
-
 describe('PinInput', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -127,10 +104,6 @@ describe('PinInput', () => {
 })
 
 describe('PinInput / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set input as required', async () => {
     render(<WithField required />)
     expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()

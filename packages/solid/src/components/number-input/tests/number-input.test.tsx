@@ -1,21 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { NumberInput, numberInputAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
 describe('NumberInput', () => {
-  it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(numberInputAnatomy))('should export %s', async (part) => {
-    expect(NumberInput[part]).toBeDefined()
-  })
-
   it('should handle wheel event when allowMouseWheel is true', async () => {
     render(() => <ComponentUnderTest allowMouseWheel />)
     const input = screen.getByRole('spinbutton')

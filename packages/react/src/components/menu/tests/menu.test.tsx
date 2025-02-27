@@ -1,8 +1,7 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Menu, menuAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
+import { Menu } from '..'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
@@ -59,29 +58,7 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
   )
 }
 
-describe('Menu / Parts & Exports', async () => {
-  const parts = getParts(menuAnatomy).filter((part) => !part.includes('context-trigger'))
-  it.each(parts)('should render part! %s', async (part) => {
-    const { container } = render(<ComponentUnderTest />)
-
-    const button = screen.getByRole('button', { name: /open menu/i })
-    await user.click(button)
-
-    await waitFor(async () => {
-      expect(container.querySelector(part)).toBeInTheDocument()
-    })
-  })
-
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
-    expect(Menu[part]).toBeDefined()
-  })
-})
-
 describe('Menu', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

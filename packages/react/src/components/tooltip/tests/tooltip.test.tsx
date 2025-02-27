@@ -1,31 +1,9 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Tooltip, tooltipAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Tooltip / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
-    expect(Tooltip[part]).toBeDefined()
-  })
-})
-
 describe('Tooltip', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

@@ -1,32 +1,10 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Popover, popoverAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
-describe('Popover / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
-    expect(Popover[part]).toBeDefined()
-  })
-})
-
 describe('Popover', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

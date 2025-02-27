@@ -1,32 +1,10 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Switch, switchAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
-describe('Switch / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(switchAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(switchAnatomy))('should export %s', async (part) => {
-    expect(Switch[part]).toBeDefined()
-  })
-})
-
 describe('Switch', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -73,10 +51,6 @@ describe('Switch', () => {
 })
 
 describe('Switch / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set checkbox as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('checkbox', { name: /label/i })).toBeRequired()

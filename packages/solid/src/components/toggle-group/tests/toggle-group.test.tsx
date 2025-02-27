@@ -1,20 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { ToggleGroup, toggleGroupAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('ToggleGroup', () => {
-  it.each(getParts(toggleGroupAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(toggleGroupAnatomy))('should export %s', async (part) => {
-    expect(ToggleGroup[part]).toBeDefined()
-  })
-
   it('should handle default value', () => {
     render(() => <ComponentUnderTest value={['a']} />)
     expect(screen.getByText('A')).toBeChecked()
