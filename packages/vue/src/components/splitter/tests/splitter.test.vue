@@ -8,7 +8,7 @@ const size = ref([
 ])
 </script>
 <template>
-  <Splitter.Root :size="size">
+  <Splitter.Root v-model:size="size">
     <Splitter.Panel id="a">A</Splitter.Panel>
     <Splitter.ResizeTrigger id="a:b">
       <div className="bar"></div>

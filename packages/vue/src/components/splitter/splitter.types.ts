@@ -2,8 +2,8 @@ import type * as splitter from '@zag-js/splitter'
 
 export interface RootProps {
   /**
-   * The initial size of the panels when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
+   * The initial size of the panels when rendered.
+   * Use when you don't need to control the size of the panels.
    */
   defaultSize?: splitter.PanelSizeData[]
   /**
@@ -21,10 +21,11 @@ export interface RootProps {
   }>
   /**
    * The orientation of the splitter. Can be `horizontal` or `vertical`
+   * @default "horizontal"
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * The size data of the panels
+   * The controlled size data of the panels
    */
   size?: splitter.PanelSizeData[]
 }
@@ -41,5 +42,5 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [size: splitter.PanelSizeData[]]
+  'update:size': [size: splitter.PanelSizeData[]]
 }

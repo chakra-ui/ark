@@ -6,12 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './splitter.types'
 
-export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode' | 'size'>, 'id'> {
-  /**
-   * The v-model value of the splitter
-   */
-  modelValue?: splitter.Props['size']
-}
+export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
@@ -23,14 +18,17 @@ export const useSplitter = (props: UseSplitterProps = {}, emit?: EmitFn<RootEmit
   const context = computed<splitter.Props>(() => ({
     id,
     dir: locale.value.dir,
-    defaultValue: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onSizeChange: (details) => {
       emit?.('sizeChange', details)
-      emit?.('update:modelValue', details.size)
+      emit?.('update:size', details.size)
+      props.onSizeChange?.(details)
     },
-    onSizeChangeEnd: (details) => emit?.('sizeChangeEnd', details),
-    ...cleanProps(props),
+    onSizeChangeEnd: (details) => {
+      emit?.('sizeChangeEnd', details)
+      props.onSizeChangeEnd?.(details)
+    },
   }))
 
   const service = useMachine(splitter.machine, context)
