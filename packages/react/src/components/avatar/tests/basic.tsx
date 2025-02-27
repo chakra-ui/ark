@@ -1,10 +1,15 @@
 import { Avatar } from '../'
 
-export const ComponentUnderTest = (props: Avatar.RootProps) => {
+interface Props extends Avatar.RootProps {
+  src?: string
+}
+
+export const ComponentUnderTest = (props: Props) => {
+  const { src, ...rest } = props
   return (
-    <Avatar.Root {...props}>
+    <Avatar.Root {...rest}>
       <Avatar.Fallback>PA</Avatar.Fallback>
-      <Avatar.Image src="https://i.pravatar.cc/300" alt="avatar" />
+      <Avatar.Image src={src} alt="avatar" />
     </Avatar.Root>
   )
 }
