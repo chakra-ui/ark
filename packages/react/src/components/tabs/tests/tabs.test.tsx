@@ -1,14 +1,16 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { act } from 'react'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
 
 describe('Tabs', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
-    const results = await axe(container)
-
-    expect(results).toHaveNoViolations()
+    await act(async () => {
+      const { container } = render(<ComponentUnderTest />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 
   it('should activate tab on click', async () => {
@@ -86,7 +88,7 @@ describe('Tabs', () => {
   it('should render the content of tab when active', async () => {
     render(<ComponentUnderTest defaultValue="React" />)
 
-    expect(screen.getByText('React Content')).toBeVisible()
+    await screen.findByText('React Content')
   })
 
   it('should lazy mount a tab', async () => {

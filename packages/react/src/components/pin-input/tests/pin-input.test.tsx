@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { WithField } from '../examples/with-field'
@@ -6,7 +6,7 @@ import { ComponentUnderTest } from './basic'
 
 describe('PinInput', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -75,7 +75,7 @@ describe('PinInput', () => {
   it('should set one-time-code for autocomplete on fields', async () => {
     render(<ComponentUnderTest otp />)
 
-    const [input1, input2, input3] = screen.queryAllByRole('textbox')
+    const [input1, input2, input3] = await screen.findAllByRole('textbox')
 
     expect(input1).toHaveAttribute('autocomplete', 'one-time-code')
     expect(input2).toHaveAttribute('autocomplete', 'one-time-code')
@@ -106,37 +106,37 @@ describe('PinInput', () => {
 describe('PinInput / Field', () => {
   it('should set input as required', async () => {
     render(<WithField required />)
-    expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeRequired()
+    expect((await screen.findAllByRole('textbox', { hidden: true }))[3]).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
     render(<WithField disabled />)
-    expect(screen.getAllByRole('textbox', { hidden: true })[3]).toBeDisabled()
+    expect((await screen.findAllByRole('textbox', { hidden: true }))[3]).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
     render(<WithField readOnly />)
-    expect(screen.getAllByRole('textbox', { hidden: true })[3]).toHaveAttribute('readonly')
+    expect((await screen.findAllByRole('textbox', { hidden: true }))[3]).toHaveAttribute('readonly')
   })
 
   it('should display helper text', async () => {
     render(<WithField />)
-    expect(screen.getByText('Additional Info')).toBeInTheDocument()
+    expect(await screen.findByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
     render(<WithField invalid />)
-    expect(screen.getByText('Error Info')).toBeInTheDocument()
+    await screen.findByText('Error Info')
   })
 
   it('should focus on input when label is clicked', async () => {
     render(<WithField />)
-    await user.click(screen.getByText(/label/i))
+    await user.click(await screen.findByText(/label/i))
     expect(screen.getByRole('textbox', { name: /pin code 1 of 3/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(<WithField />)
+    await act(async () => render(<WithField />))
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })

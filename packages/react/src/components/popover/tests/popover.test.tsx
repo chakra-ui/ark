@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
@@ -6,7 +6,7 @@ import { ControlledComponentUnderTest } from './controlled'
 
 describe('Popover', () => {
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -74,6 +74,6 @@ describe('Popover', () => {
 
   it('should open by default', async () => {
     render(<ComponentUnderTest defaultOpen />)
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(await screen.findByRole('dialog')).toBeInTheDocument()
   })
 })

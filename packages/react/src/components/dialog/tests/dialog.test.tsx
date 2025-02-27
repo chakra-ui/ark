@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
@@ -61,7 +61,6 @@ describe('Dialog', () => {
 
   it('should be fully controlled (true)', async () => {
     render(<ComponentUnderTest open={true} />)
-
     expect(screen.queryByRole('button', { name: 'Close' })).toBeVisible()
 
     await user.click(screen.getByRole('button', { name: 'Close' }))

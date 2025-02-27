@@ -19,6 +19,10 @@ const ComponentUnderTest = () => (
 )
 
 describe('Clipboard', () => {
+  beforeEach(() => {
+    vi.spyOn(window.navigator.clipboard, 'writeText').mockResolvedValue(undefined)
+  })
+
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

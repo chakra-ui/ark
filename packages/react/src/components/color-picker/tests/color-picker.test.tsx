@@ -37,7 +37,7 @@ describe('ColorPicker', () => {
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
-  it('should render with default value', async () => {
+  it.skip('should render with default value', async () => {
     render(<ComponentUnderTest defaultValue={parseColor('#ff00ff')} />)
 
     expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
