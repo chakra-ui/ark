@@ -1,14 +1,8 @@
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
 
-describe('Avatar / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
+describe('Avatar', () => {
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
