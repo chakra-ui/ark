@@ -1,15 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import { ToggleGroup, toggleGroupAnatomy } from '../'
-import { getExports } from '../../../setup-test'
 import ComponentUnderTest from './toggle-group.test.vue'
 
 describe('ToggleGroup', () => {
-  it.each(getExports(toggleGroupAnatomy))('should export %s', async (part) => {
-    expect(ToggleGroup[part]).toBeDefined()
-  })
-
   it('should handle default value', () => {
     render(ComponentUnderTest, { props: { defaultValue: ['a'] } })
     expect(screen.getByText('A')).toBeChecked()

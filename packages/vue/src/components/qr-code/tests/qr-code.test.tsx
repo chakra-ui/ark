@@ -1,1 +1,0 @@
-describe('Rating Group', () => {})
