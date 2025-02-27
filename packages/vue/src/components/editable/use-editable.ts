@@ -7,17 +7,13 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './editable'
 
-export interface UseEditableProps
-  extends Optional<Omit<editable.Props, 'dir' | 'getRootNode' | 'value' | 'edit'>, 'id'> {
+export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the editable
    */
   modelValue?: editable.Props['value']
-  /**
-   * The v-model edit state of the editable
-   */
-  modelEdit?: editable.Props['edit']
 }
+
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
 
 export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmits>): UseEditableReturn => {
@@ -38,23 +34,38 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
     required: field?.value.required,
     dir: locale.value.dir,
     value: props.modelValue,
-    edit: props.modelEdit,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onEditChange: (details) => {
       emit?.('editChange', details)
-      emit?.('update:edit', details.edit) // TODO: remove this
-      emit?.('update:modelEdit', details.edit)
+      emit?.('update:edit', details.edit)
+      props.onEditChange?.(details)
     },
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onValueCommit: (details) => emit?.('valueCommit', details),
-    onValueRevert: (details) => emit?.('valueRevert', details),
-    ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onValueCommit: (details) => {
+      emit?.('valueCommit', details)
+      props.onValueCommit?.(details)
+    },
+    onValueRevert: (details) => {
+      emit?.('valueRevert', details)
+      props.onValueRevert?.(details)
+    },
   }))
 
   const service = useMachine(editable.machine, context)
