@@ -6,12 +6,13 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
-export interface UseTabsProps extends Optional<Omit<tabs.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTabsProps extends Optional<Omit<tabs.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the tabs
    */
   modelValue?: tabs.Props['value']
 }
+
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
 export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): UseTabsReturn => {
@@ -24,12 +25,16 @@ export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): Use
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit?.('focusChange', details),
+    ...cleanProps(props),
+    onFocusChange: (details) => {
+      emit?.('focusChange', details)
+      props.onFocusChange?.(details)
+    },
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(tabs.machine, context)
