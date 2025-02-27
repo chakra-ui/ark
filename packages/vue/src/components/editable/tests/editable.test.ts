@@ -29,19 +29,19 @@ describe('Editable', () => {
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it.skip('should be possible to dbl click the placeholder to enter a value', async () => {
+  it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(ControlledComponentUnderTest, { props: { activationMode: 'dblclick' } })
     await user.dblClick(screen.getByText('Placeholder'))
 
     await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'React')
+    await user.type(screen.getByRole('textbox'), 'React', { delay: 10 })
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it.skip('should be possible to edit an existing value', async () => {
+  it('should be possible to edit an existing value', async () => {
     render(ControlledComponentUnderTest, {
-      props: { activationMode: 'dblclick', modelValue: 'React' },
+      props: { activationMode: 'dblclick', defaultValue: 'React' },
     })
 
     await user.dblClick(screen.getByText('React'))
