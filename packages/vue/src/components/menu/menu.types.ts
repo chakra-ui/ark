@@ -20,12 +20,17 @@ export interface RootProps {
    */
   composite?: boolean
   /**
-   * The initial open state of the menu when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial highlighted value of the menu item when rendered.
+   * Use when you don't need to control the highlighted value of the menu item.
+   */
+  defaultHighlightedValue?: string
+  /**
+   * The initial open state of the menu when rendered.
+   * Use when you don't need to control the open state of the menu.
    */
   defaultOpen?: boolean
   /**
-   * The value of the highlighted menu item.
+   * The controlled highlighted value of the menu item.
    */
   highlightedValue?: string
   /**
@@ -54,7 +59,7 @@ export interface RootProps {
    */
   navigate?: (details: menu.NavigateDetails) => void
   /**
-   * Whether the menu is open
+   * The controlled open state of the menu
    */
   open?: boolean
   /**
@@ -102,7 +107,7 @@ export type RootEmits = {
    */
   'update:open': [open: boolean]
   /**
-   * The callback fired when the model value changes.
+   * Function called when the highlighted menu item changes.
    */
-  'update:modelValue': [open: boolean]
+  'update:highlightedValue': [highlightedValue: string | null]
 }

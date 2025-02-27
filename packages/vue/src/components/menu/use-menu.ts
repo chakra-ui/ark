@@ -6,12 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './menu'
 
-export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
-  /**
-   * The v-model value of the menu
-   */
-  modelValue?: menu.Props['open']
-}
+export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseMenuReturn {
   api: ComputedRef<menu.Api<PropTypes>>
@@ -26,20 +21,38 @@ export const useMenu = (props: UseMenuProps = {}, emit?: EmitFn<RootEmits>): Use
   const context = computed<menu.Props>(() => ({
     id,
     dir: locale.value.dir,
-    open: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open) // TODO: remove this
-      emit?.('update:modelValue', details.open)
+      emit?.('update:open', details.open)
+      props.onOpenChange?.(details)
     },
-    onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onHighlightChange: (details) => emit?.('highlightChange', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onSelect: (details) => emit?.('select', details),
-    ...cleanProps(props),
+    onEscapeKeyDown: (details) => {
+      emit?.('escapeKeyDown', details)
+      props.onEscapeKeyDown?.(details)
+    },
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onHighlightChange: (details) => {
+      emit?.('highlightChange', details)
+      emit?.('update:highlightedValue', details.highlightedValue)
+      props.onHighlightChange?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onSelect: (details) => {
+      emit?.('select', details)
+      props.onSelect?.(details)
+    },
   }))
 
   const machine = useMachine(menu.machine, context)
