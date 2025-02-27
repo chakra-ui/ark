@@ -2,8 +2,8 @@ import type * as toggleGroup from '@zag-js/toggle-group'
 
 export interface RootProps {
   /**
-   * The initial value of the toggle group when it is first rendered.
-   * Use when you do not need to control the state of the toggle group.
+   * The initial selected value of the toggle group when rendered.
+   * Use when you don't need to control the selected value of the toggle group.
    */
   defaultValue?: string[]
   /**
@@ -23,6 +23,9 @@ export interface RootProps {
    * @default true
    */
   loopFocus?: boolean
+  /**
+   * The v-model value of the toggle group
+   */
   modelValue?: string[]
   /**
    * Whether to allow multiple toggles to be selected.

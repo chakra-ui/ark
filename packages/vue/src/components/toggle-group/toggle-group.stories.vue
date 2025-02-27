@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Controlled from './examples/controlled.vue'
 import InitialValue from './examples/initial-value.vue'
 import Multiple from './examples/multiple.vue'
 import RootProvider from './examples/root-provider.vue'
@@ -17,6 +18,9 @@ import RootProvider from './examples/root-provider.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="Controlled">
+      <Controlled />
     </Variant>
   </Story>
 </template>
