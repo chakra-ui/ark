@@ -3,9 +3,9 @@ import { ComponentUnderTest } from './basic'
 
 describe('Progress', () => {
   it('should handle value', async () => {
-    render(() => <ComponentUnderTest value={7} />)
+    render(() => <ComponentUnderTest value={42} />)
 
-    screen.getByText('7%')
+    screen.getByText('42%')
   })
 
   it('should handle custom max range', async () => {

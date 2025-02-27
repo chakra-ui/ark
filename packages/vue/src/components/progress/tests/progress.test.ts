@@ -5,11 +5,11 @@ describe('Progress', () => {
   it('should handle value', async () => {
     render(ComponentUnderTest, {
       props: {
-        defaultValue: 7,
+        defaultValue: 42,
       },
     })
 
-    screen.getByText('7%')
+    screen.getByText('42%')
   })
 
   it('should handle custom max range', async () => {
