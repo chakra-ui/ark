@@ -7,12 +7,13 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './number-input.types'
 
-export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the number input
    */
   modelValue?: numberInput.Props['value']
 }
+
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<RootEmits>): UseNumberInputReturn => {
@@ -35,13 +36,20 @@ export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<Ro
     locale: locale.value.locale,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusChange: (details) => emit?.('focusChange', details),
-    onValueInvalid: (details) => emit?.('valueInvalid', details),
-    ...cleanProps(props),
+    onFocusChange: (details) => {
+      emit?.('focusChange', details)
+      props.onFocusChange?.(details)
+    },
+    onValueInvalid: (details) => {
+      emit?.('valueInvalid', details)
+      props.onValueInvalid?.(details)
+    },
   }))
 
   const service = useMachine(numberInput.machine, context)
