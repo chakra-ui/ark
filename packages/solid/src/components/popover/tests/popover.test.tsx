@@ -26,11 +26,11 @@ describe('Popover', () => {
     await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
-  it.skip('should hide the popover when escape is pressed', async () => {
+  it('should hide the popover when escape is pressed', async () => {
     render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
-    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
+    await waitFor(() => expect(screen.queryByText('title')).toBeVisible())
 
     await user.keyboard('[Escape]')
     await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())

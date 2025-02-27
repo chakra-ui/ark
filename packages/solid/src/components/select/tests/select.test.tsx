@@ -16,7 +16,7 @@ describe('Select', () => {
     expect(Select[part]).toBeDefined()
   })
 
-  it.skip('should handle item selection', async () => {
+  it('should handle item selection', async () => {
     render(() => <ComponentUnderTest />)
     const trigger = screen.getByRole('combobox', { name: 'Framework' })
     await user.click(trigger)
@@ -56,7 +56,7 @@ describe('Select', () => {
     await waitFor(() => expect(trigger).toHaveTextContent('React, Vue'))
   })
 
-  it.skip('should call onValueChange when item is selected', async () => {
+  it('should call onValueChange when item is selected', async () => {
     const onValueChange = vi.fn()
     render(() => <ComponentUnderTest onValueChange={onValueChange} />)
 
@@ -94,7 +94,7 @@ describe('Select', () => {
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
   })
 
-  it.skip('should be able to lazy mount and unmount its items', async () => {
+  it('should be able to lazy mount and unmount its items', async () => {
     render(() => <ComponentUnderTest lazyMount unmountOnExit />)
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 

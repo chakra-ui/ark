@@ -74,7 +74,7 @@ describe('Menu / Parts & Exports', () => {
   })
 })
 
-describe.skip('Menu', () => {
+describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(() => <ComponentUnderTest />)
     expect(screen.getByText('Dialog')).toHaveAttribute('aria-disabled', 'true')
@@ -94,7 +94,7 @@ describe.skip('Menu', () => {
     await waitFor(() => expect(screen.getAllByRole('group')).toHaveLength(2))
   })
 
-  it.skip('should accept a custom placement', async () => {
+  it('should accept a custom placement', async () => {
     render(() => <ComponentUnderTest positioning={{ placement: 'left-start' }} />)
     const button = screen.getByRole('button', { name: /open menu/i })
     fireEvent.click(button)
@@ -134,7 +134,7 @@ describe.skip('Menu', () => {
   })
 
   it('should open on context menu', async () => {
-    render(() => <ComponentUnderTest />)
+    render(() => <ComponentUnderTest contextMenu />)
     const button = screen.getByRole('button', { name: /Open Context Menu/i })
     fireEvent.contextMenu(button)
     await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())
