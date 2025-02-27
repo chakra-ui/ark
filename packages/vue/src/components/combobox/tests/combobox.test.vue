@@ -10,11 +10,11 @@ const frameworks = createListCollection({
     { label: 'Svelte', value: 'svelte', disabled: true },
   ],
 })
-const testProps = ref<string[]>([])
+const value = ref<string[]>([])
 </script>
 
 <template>
-  <Combobox.Root :collection="frameworks" v-model="testProps">
+  <Combobox.Root :collection="frameworks" v-model="value">
     <Combobox.Label>Framework</Combobox.Label>
     <Combobox.Control>
       <Combobox.Input data-testid="input" />

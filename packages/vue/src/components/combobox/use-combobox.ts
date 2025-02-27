@@ -9,15 +9,11 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './combobox'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'value' | 'open'>, 'id'> {
+  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the combobox
    */
   modelValue?: combobox.Props<T>['value']
-  /**
-   * The v-model open state of the combobox
-   */
-  modelOpen?: combobox.Props<T>['open']
 }
 
 export interface UseComboboxReturn<T extends CollectionItem> extends ComputedRef<combobox.Api<PropTypes, T>> {}
@@ -43,24 +39,41 @@ export const useCombobox = <T extends CollectionItem>(
       required: field?.value.required,
       invalid: field?.value.invalid,
       dir: locale.value.dir,
-      open: props.modelOpen,
       value: props.modelValue,
       getRootNode: env?.value.getRootNode,
-      onFocusOutside: (details) => emit?.('focusOutside', details),
-      onHighlightChange: (details) => emit?.('highlightChange', details),
-      onInputValueChange: (details) => emit?.('inputValueChange', details),
-      onInteractOutside: (details) => emit?.('interactOutside', details),
-      onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
+      ...cleanProps(props),
+      onFocusOutside: (details) => {
+        emit?.('focusOutside', details)
+        props.onFocusOutside?.(details)
+      },
+      onHighlightChange: (details) => {
+        emit?.('highlightChange', details)
+        emit?.('update:highlightedValue', details.highlightedValue)
+        props.onHighlightChange?.(details)
+      },
+      onInputValueChange: (details) => {
+        emit?.('inputValueChange', details)
+        emit?.('update:inputValue', details.inputValue)
+        props.onInputValueChange?.(details)
+      },
+      onInteractOutside: (details) => {
+        emit?.('interactOutside', details)
+        props.onInteractOutside?.(details)
+      },
+      onPointerDownOutside: (details) => {
+        emit?.('pointerDownOutside', details)
+        props.onPointerDownOutside?.(details)
+      },
       onOpenChange: (details) => {
         emit?.('openChange', details)
-        emit?.('update:open', details.open) // TODO: remove this
-        emit?.('update:modelOpen', details.open)
+        emit?.('update:open', details.open)
+        props.onOpenChange?.(details)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)
+        props.onValueChange?.(details)
       },
-      ...cleanProps(props),
     }
   })
 
