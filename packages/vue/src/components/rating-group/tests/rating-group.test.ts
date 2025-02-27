@@ -17,7 +17,7 @@ describe('Rating Group', () => {
   })
 
   it('should apply default value', async () => {
-    render(ComponentUnderTest, { props: { modelValue: 2, count: 5 } })
+    render(ComponentUnderTest, { props: { defaultValue: 2, count: 5 } })
 
     const input = screen.getByRole('textbox', { hidden: true })
 
@@ -26,7 +26,7 @@ describe('Rating Group', () => {
 
   it('should trigger onValueChange on click', async () => {
     const onValueChange = vi.fn()
-    render(ComponentUnderTest, { props: { modelValue: 1, onValueChange, count: 5 } })
+    render(ComponentUnderTest, { props: { defaultValue: 1, onValueChange, count: 5 } })
 
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })
     fireEvent.click(maxStarRadio)
@@ -35,7 +35,7 @@ describe('Rating Group', () => {
   })
 
   it('should update rating on click', async () => {
-    render(ComponentUnderTest, { props: { modelValue: 0, count: 5 } })
+    render(ComponentUnderTest, { props: { defaultValue: 0, count: 5 } })
 
     const input = screen.getByRole('textbox', { hidden: true })
     const maxStarRadio = screen.getByRole('radio', { name: '5 stars' })
