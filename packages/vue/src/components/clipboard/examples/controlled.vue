@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { Clipboard, useClipboard } from '@ark-ui/vue/clipboard'
+import { Clipboard } from '@ark-ui/vue/clipboard'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-vue-next'
+import { ref } from 'vue'
 
-const clipboard = useClipboard({ value: 'https.//ark-ui.com' })
+const url = ref('https://ark-ui.com')
+const setUrl = () => {
+  url.value = 'https://chakra-ui.com'
+}
 </script>
 
 <template>
-  <button @click="clipboard.copy()">Copy</button>
-
-  <Clipboard.RootProvider :value="clipboard">
+  <Clipboard.Root v-model="url">
     <Clipboard.Label>Copy this link</Clipboard.Label>
     <Clipboard.Control>
       <Clipboard.Input />
@@ -21,5 +23,7 @@ const clipboard = useClipboard({ value: 'https.//ark-ui.com' })
         </Clipboard.Indicator>
       </Clipboard.Trigger>
     </Clipboard.Control>
-  </Clipboard.RootProvider>
+
+    <button @click="setUrl">Change Url</button>
+  </Clipboard.Root>
 </template>

@@ -4,14 +4,12 @@ import { type ComputedRef, computed, useId } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
-import type { RootEmits } from './clipboard.types'
+import type { RootEmits, RootProps } from './clipboard.types'
 
-export interface UseClipboardProps extends Optional<Omit<clipboard.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The model value of the clipboard
-   */
-  modelValue?: clipboard.Props['value']
-}
+export interface UseClipboardProps
+  extends Optional<Omit<clipboard.Props, 'dir' | 'getRootNode'>, 'id'>,
+    Pick<RootProps, 'modelValue'> {}
+
 export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>> {}
 
 export const useClipboard = (props: UseClipboardProps = {}, emit?: EmitFn<RootEmits>): UseClipboardReturn => {

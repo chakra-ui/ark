@@ -2,6 +2,11 @@ import type * as clipboard from '@zag-js/clipboard'
 
 export interface RootProps {
   /**
+   * The initial value to be copied to the clipboard when rendered.
+   * Use when you don't need to control the value of the clipboard.
+   */
+  defaultValue?: string
+  /**
    * The unique identifier of the machine.
    */
   id?: string
@@ -10,19 +15,14 @@ export interface RootProps {
    */
   ids?: Partial<{ root: string; input: string; label: string }>
   /**
+   * The model value of the clipboard
+   */
+  modelValue?: string
+  /**
    * The timeout for the copy operation
    * @default 3000
    */
   timeout?: number
-  /**
-   * The value to be copied to the clipboard
-   */
-  value?: string
-}
-
-// TODO: Remove in next version
-type ValueChangeDetails = {
-  value: string
 }
 
 export type RootEmits = {
@@ -31,11 +31,11 @@ export type RootEmits = {
    */
   statusChange: [details: clipboard.CopyStatusDetails]
   /**
-   * The function to be called when the value is copied to the clipboard
+   * The function to be called when the value changes
    */
-  valueChange: [details: ValueChangeDetails]
+  valueChange: [details: clipboard.ValueChangeDetails]
   /**
-   * The function to be called when the value is copied to the clipboard
+   * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string]
 }
