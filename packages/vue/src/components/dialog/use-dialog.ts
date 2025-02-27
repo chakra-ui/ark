@@ -6,12 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './dialog'
 
-export interface UseDialogProps extends Optional<Omit<dialog.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
-  /**
-   * The v-model open state of the dialog
-   */
-  modelValue?: dialog.Props['open']
-}
+export interface UseDialogProps extends Optional<Omit<dialog.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseDialogReturn extends ComputedRef<dialog.Api<PropTypes>> {}
 
 export const useDialog = (props: UseDialogProps = {}, emit?: EmitFn<RootEmits>) => {
@@ -22,18 +17,29 @@ export const useDialog = (props: UseDialogProps = {}, emit?: EmitFn<RootEmits>) 
   const context = computed<dialog.Props>(() => ({
     id,
     dir: locale.value.dir,
-    open: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open) // TODO: remove this
-      emit?.('update:modelValue', details.open)
+      emit?.('update:open', details.open)
+      props.onOpenChange?.(details)
     },
-    onEscapeKeyDown: (details) => emit?.('escapeKeyDown', details),
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    ...cleanProps(props),
+    onEscapeKeyDown: (details) => {
+      emit?.('escapeKeyDown', details)
+      props.onEscapeKeyDown?.(details)
+    },
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
   }))
 
   const service = useMachine(dialog.machine, context)

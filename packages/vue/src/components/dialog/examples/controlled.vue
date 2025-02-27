@@ -6,7 +6,7 @@ const open = ref(false)
 </script>
 
 <template>
-  <button @click="() => (open = true)">Open Dialog</button>
+  <button @click="() => (open = true)">{{ open ? 'Close' : 'Open' }} Dialog</button>
   <Dialog.Root v-model:open="open">
     <Teleport to="body">
       <Dialog.Backdrop />
