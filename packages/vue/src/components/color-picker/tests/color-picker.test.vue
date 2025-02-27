@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { ColorPicker, parseColor } from '..'
 import type { ColorPickerRootBaseProps } from '..'
+import { ColorPicker, parseColor } from '..'
 
 const props = defineProps<ColorPickerRootBaseProps>()
 
