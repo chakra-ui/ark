@@ -18,8 +18,11 @@ export const useAvatar = (props: UseAvatarProps = {}, emit?: EmitFn<RootEmits>):
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onStatusChange: (details) => emit?.('statusChange', details),
     ...cleanProps(props),
+    onStatusChange: (details) => {
+      emit?.('statusChange', details)
+      props.onStatusChange?.(details)
+    },
   }))
 
   const service = useMachine(avatar.machine, context)

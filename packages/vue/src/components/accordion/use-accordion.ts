@@ -4,14 +4,13 @@ import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
+import type { RootProps } from './accordion'
 import type { RootEmits } from './accordion.types'
 
-export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The model value of the accordion
-   */
-  modelValue?: accordion.Props['value']
-}
+export interface UseAccordionProps
+  extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode'>, 'id'>,
+    Pick<RootProps, 'modelValue'> {}
+
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
 export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEmits>): UseAccordionReturn => {
@@ -25,11 +24,12 @@ export const useAccordion = (props: UseAccordionProps = {}, emit?: EmitFn<RootEm
     getRootNode: env?.value.getRootNode,
     onFocusChange: (details) => emit?.('focusChange', details),
     value: props.modelValue,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(accordion.machine, context)

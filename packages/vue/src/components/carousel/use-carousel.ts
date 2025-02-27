@@ -17,14 +17,20 @@ export const useCarousel = (props: UseCarouselProps, emit?: EmitFn<RootEmits>): 
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-
-    onAutoplayStatusChange: (details) => emit?.('autoplayStatusChange', details),
-    onDragStatusChange: (details) => emit?.('dragStatusChange', details),
+    ...cleanProps(props),
+    onAutoplayStatusChange: (details) => {
+      emit?.('autoplayStatusChange', details)
+      props.onAutoplayStatusChange?.(details)
+    },
+    onDragStatusChange: (details) => {
+      emit?.('dragStatusChange', details)
+      props.onDragStatusChange?.(details)
+    },
     onPageChange: (details) => {
       emit?.('pageChange', details)
       emit?.('update:page', details.page)
+      props.onPageChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(carousel.machine, context)
