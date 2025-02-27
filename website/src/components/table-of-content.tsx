@@ -37,7 +37,7 @@ export const TableOfContent = (props: Props) => {
         On this page
       </Text>
       <SegmentGroup.Root
-        onValueChange={(details) => router.push(details.value)}
+        onValueChange={(details) => router.push(details.value ?? '/')}
         value={y && y > 32 ? activeItem : ''}
         orientation="vertical"
         size={{ base: 'md', md: 'sm' }}
