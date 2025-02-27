@@ -28,10 +28,19 @@ export const useFileUpload = (props: UseFileUploadProps = {}, emit?: EmitFn<Root
     invalid: field?.value.invalid,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onFileChange: (details) => emit?.('fileChange', details),
-    onFileAccept: (details) => emit?.('fileAccept', details),
-    onFileReject: (details) => emit?.('fileReject', details),
     ...cleanProps(props),
+    onFileChange: (details) => {
+      emit?.('fileChange', details)
+      props.onFileChange?.(details)
+    },
+    onFileAccept: (details) => {
+      emit?.('fileAccept', details)
+      props.onFileAccept?.(details)
+    },
+    onFileReject: (details) => {
+      emit?.('fileReject', details)
+      props.onFileReject?.(details)
+    },
   }))
 
   const service = useMachine(fileUpload.machine, context)
