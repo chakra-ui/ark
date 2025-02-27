@@ -7,12 +7,8 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './switch'
 
-export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode' | 'checked'>, 'id'> {
-  /**
-   * The v-model value of the switch
-   */
-  modelValue?: zagSwitch.Props['checked']
-}
+export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
+
 export interface UseSwitchReturn extends ComputedRef<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>): UseSwitchReturn => {
@@ -32,14 +28,13 @@ export const useSwitch = (props: UseSwitchProps = {}, emit?: EmitFn<RootEmits>):
     invalid: field?.value.invalid,
     required: field?.value.required,
     dir: locale.value.dir,
-    checked: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onCheckedChange(details) {
       emit?.('checkedChange', details)
-      emit?.('update:checked', details.checked) // TODO: remove this
-      emit?.('update:modelValue', details.checked)
+      emit?.('update:checked', details.checked)
+      props.onCheckedChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(zagSwitch.machine, context)

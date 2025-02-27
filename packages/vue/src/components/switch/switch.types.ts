@@ -2,12 +2,12 @@ import type * as zagSwitch from '@zag-js/switch'
 
 export interface RootProps {
   /**
-   * Whether the switch is checked.
+   * The controlled checked state of the switch
    */
   checked?: boolean
   /**
-   * The checked state of the switch when it is first rendered.
-   * Use this when you do not need to control the state of the switch.
+   * The initial checked state of the switch when rendered.
+   * Use when you don't need to control the checked state of the switch.
    */
   defaultChecked?: boolean
   /**
@@ -25,13 +25,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the switch. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    hiddenInput: string
-    control: string
-    label: string
-    thumb: string
-  }>
+  ids?: Partial<{ root: string; hiddenInput: string; control: string; label: string; thumb: string }>
   /**
    * If `true`, the switch is marked as invalid.
    */
@@ -69,8 +63,4 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:checked': [checked: boolean]
-  /**
-   * The callback fired when the model value changes.
-   */
-  'update:modelValue': [checked: boolean]
 }
