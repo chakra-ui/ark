@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './slider'
 
-export interface UseSliderProps extends Optional<Omit<slider.Props, 'value'>, 'id'> {
+export interface UseSliderProps extends Optional<slider.Props, 'id'> {
   /**
    * The v-model value of the slider
    */
@@ -23,13 +23,20 @@ export const useSlider = (props: UseSliderProps = {}, emit?: EmitFn<RootEmits>):
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit?.('focusChange', details),
-    onValueChangeEnd: (details) => emit?.('valueChangeEnd', details),
+    ...cleanProps(props),
+    onFocusChange: (details) => {
+      emit?.('focusChange', details)
+      props.onFocusChange?.(details)
+    },
+    onValueChangeEnd: (details) => {
+      emit?.('valueChangeEnd', details)
+      props.onValueChangeEnd?.(details)
+    },
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(slider.machine, context)
