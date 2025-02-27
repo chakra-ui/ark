@@ -2,12 +2,12 @@ import type * as collapsible from '@zag-js/collapsible'
 
 export interface RootProps {
   /**
-   * The initial open state of the collapsible when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial open state of the collapsible when rendered.
+   * Use when you don't need to control the open state of the collapsible.
    */
   defaultOpen?: boolean
   /**
-   * Whether the collapsible is disabled
+   * Whether the collapsible is disabled.
    */
   disabled?: boolean
   /**
@@ -24,7 +24,7 @@ export interface RootProps {
    */
   lazyMount?: boolean
   /**
-   * The controlled open state of the collapsible. Can be binded with v-model.
+   * The controlled open state of the collapsible.
    */
   open?: boolean
   /**
@@ -36,19 +36,15 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
-   * Function called when the animation ends in the closed state.
+   * The callback invoked when the exit animation completes.
    */
   exitComplete: []
   /**
-   * Function called when the popup is opened
+   * The callback invoked when the open state changes.
    */
   openChange: [details: collapsible.OpenChangeDetails]
   /**
    * Event handler called when the open state of the collapsible changes.
    */
   'update:open': [open: boolean]
-  /**
-   * The callback fired when the model value changes.
-   */
-  'update:modelValue': [open: boolean]
 }
