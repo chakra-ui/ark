@@ -191,8 +191,8 @@
         "resize-observer-polyfill": "1.5.1",
         "solid-js": "1.9.5",
         "storybook": "8.6.2",
-        "storybook-solidjs": "1.0.0-beta.2",
-        "storybook-solidjs-vite": "1.0.0-beta.2",
+        "storybook-solidjs": "1.0.0-beta.6",
+        "storybook-solidjs-vite": "1.0.0-beta.6",
         "tsup": "8.4.0",
         "typescript": "5.7.3",
         "vite": "6.2.0",
@@ -3405,9 +3405,9 @@
 
     "storybook": ["storybook@8.6.2", "", { "dependencies": { "@storybook/core": "8.6.2" }, "peerDependencies": { "prettier": "^2 || ^3" }, "optionalPeers": ["prettier"], "bin": { "sb": "./bin/index.cjs", "storybook": "./bin/index.cjs", "getstorybook": "./bin/index.cjs" } }, "sha512-IkQGRNImyN14+tx/9KLg9k5xKBgrkWaPFhfwTCxUZUzLNClbVrxkkXyjFaks9kPVQIEUVPGQCiGFqypUiwoM6g=="],
 
-    "storybook-solidjs": ["storybook-solidjs@1.0.0-beta.2", "", { "peerDependencies": { "babel-preset-solid": "^1.6.6", "solid-js": "^1.6.6" } }, "sha512-wXjM/uH29IPjgxlPvQVNTM/7iBFNNzjuOugpk7iM2oy+sZl7K70eBjvOqGgX5v35pNHTaA8Ju3BlLdp+O20abg=="],
+    "storybook-solidjs": ["storybook-solidjs@1.0.0-beta.6", "", { "dependencies": { "@babel/standalone": "^7.26.2" }, "peerDependencies": { "solid-js": "^1.9.3" } }, "sha512-QlnDo0zljwr/GToBe+JmRrw9dsmY8mR1RzRa7ugG0PPzzLVMU9hL1rqtT6qnVVIjqZTMCce3FNCxPZLrxQZaWA=="],
 
-    "storybook-solidjs-vite": ["storybook-solidjs-vite@1.0.0-beta.2", "", { "dependencies": { "@storybook/builder-vite": "next" } }, "sha512-dD+VMYC5fBBQNesVb+mjB0LOkZIf100SQFbjAt9/sDstNUvc5ce3yZwLYXzgcOc7jcSMkrBu/cZNRzEM4YIAyw=="],
+    "storybook-solidjs-vite": ["storybook-solidjs-vite@1.0.0-beta.6", "", { "dependencies": { "@storybook/builder-vite": "next", "magic-string": "^0.30.11", "vite-plugin-solid": "^2.10.2" } }, "sha512-+gggXbzmM+p1dA5EdvlfzMPzIB6Nar1WAzDND63wJeDfqHfpL+yYZqewEJm5woLhMLCqhBIMjfei/TXgjVDJXg=="],
 
     "stream-to-array": ["stream-to-array@2.3.0", "", { "dependencies": { "any-promise": "^1.1.0" } }, "sha512-UsZtOYEn4tWU2RGLOXr/o/xjRBftZRlG3dEWoaHr8j4GuypJ3isitGbVyjQKAuMu+xbiop8q224TjiZWc4XTZA=="],
 
@@ -4509,7 +4509,7 @@
 
     "source-map-support/source-map": ["source-map@0.6.1", "", {}, "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="],
 
-    "storybook-solidjs-vite/@storybook/builder-vite": ["@storybook/builder-vite@9.0.0-alpha.0", "", { "dependencies": { "@storybook/csf-plugin": "9.0.0-alpha.0", "browser-assert": "^1.2.1", "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^9.0.0-alpha.0", "vite": "^4.0.0 || ^5.0.0 || ^6.0.0" } }, "sha512-YlztKWdrlLOYbeuEIbLu3dicwaxsne+cbWBlO1KEnnhHJSVDnodtWGcbfertPKeBvP4+RQ5ph0muIsSy7VWjrQ=="],
+    "storybook-solidjs-vite/@storybook/builder-vite": ["@storybook/builder-vite@9.0.0-alpha.1", "", { "dependencies": { "@storybook/csf-plugin": "9.0.0-alpha.1", "browser-assert": "^1.2.1", "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^9.0.0-alpha.1", "vite": "^4.0.0 || ^5.0.0 || ^6.0.0" } }, "sha512-uIcc85jwjZNHJuUrWqs5ADB2ge+4mMTIblJf+6gvqYMMj53MyzDtpci7pkT2daKcO03n2VB6pcjW21T/LEqL3g=="],
 
     "string-width-cjs/emoji-regex": ["emoji-regex@8.0.0", "", {}, "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="],
 
@@ -5457,7 +5457,7 @@
 
     "source-map/whatwg-url/webidl-conversions": ["webidl-conversions@4.0.2", "", {}, "sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg=="],
 
-    "storybook-solidjs-vite/@storybook/builder-vite/@storybook/csf-plugin": ["@storybook/csf-plugin@9.0.0-alpha.0", "", { "dependencies": { "unplugin": "^1.3.1" }, "peerDependencies": { "storybook": "^9.0.0-alpha.0" } }, "sha512-KG733ndqAREFJ3zWyf7qe4F6XbWT/aodBNcSEVOR6xyUlec5hhgzUNYUYRJYfMOKqr3KkncLmJ9yGOumY56MEg=="],
+    "storybook-solidjs-vite/@storybook/builder-vite/@storybook/csf-plugin": ["@storybook/csf-plugin@9.0.0-alpha.1", "", { "dependencies": { "unplugin": "^1.3.1" }, "peerDependencies": { "storybook": "^9.0.0-alpha.1" } }, "sha512-ax1VSSbm/5k2XQWe15A4VItG5iUM85pQmRP2p4tlS76bDIOLCuHwzYKuGmb4ILOQFM3UQAH3obHFeOaKpcTuog=="],
 
     "storybook-solidjs-vite/@storybook/builder-vite/storybook": ["storybook@9.0.0-alpha.0", "", { "dependencies": { "@storybook/core": "9.0.0-alpha.0" }, "peerDependencies": { "prettier": "^2 || ^3" }, "optionalPeers": ["prettier"], "bin": { "getstorybook": "./bin/index.cjs", "sb": "./bin/index.cjs", "storybook": "./bin/index.cjs" } }, "sha512-bH0qBHIhhvwxCOpUtGLBB1+5zlb22rv4JSxh/8vsiif8fE5yyI9kH4XXxDR5I4ds20ZSVFjuuNRGEVlSx5ZgrQ=="],
 
