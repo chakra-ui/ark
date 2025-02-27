@@ -1,3 +1,4 @@
+import type { FocusOutsideEvent, InteractOutsideEvent, PointerDownOutsideEvent } from '@zag-js/dismissable'
 import type * as hoverCard from '@zag-js/hover-card'
 
 export interface RootProps {
@@ -7,8 +8,8 @@ export interface RootProps {
    */
   closeDelay?: number
   /**
-   * The initial open state of the hover card when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial open state of the hover card when rendered.
+   * Use when you don't need to control the open state of the hover card.
    */
   defaultOpen?: boolean
   /**
@@ -20,7 +21,7 @@ export interface RootProps {
    */
   ids?: Partial<{ trigger: string; content: string; positioner: string; arrow: string }>
   /**
-   * Whether the hover card is open
+   * The controlled open state of the hover card
    */
   open?: boolean
   /**
@@ -36,15 +37,23 @@ export interface RootProps {
 
 export type RootEmits = {
   /**
+   * Function called when the focus is moved outside the component
+   */
+  focusOutside: [event: FocusOutsideEvent]
+  /**
+   * Function called when an interaction happens outside the component
+   */
+  interactOutside: [event: InteractOutsideEvent]
+  /**
    * Function called when the hover card opens or closes.
    */
   openChange: [details: hoverCard.OpenChangeDetails]
   /**
-   * The callback fired when the open state changes.
+   * Function called when the pointer is pressed down outside the component
    */
-  'update:open': [open: boolean]
+  pointerDownOutside: [event: PointerDownOutsideEvent]
   /**
    * The callback fired when the open state changes.
    */
-  'update:modelValue': [open: boolean]
+  'update:open': [open: boolean]
 }
