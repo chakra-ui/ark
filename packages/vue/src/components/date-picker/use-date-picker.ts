@@ -6,20 +6,11 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './date-picker.types'
 
-export interface UseDatePickerProps
-  extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode' | 'value' | 'view' | 'open'>, 'id'> {
+export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the date picker
    */
   modelValue?: datePicker.Props['value']
-  /**
-   * The v-model view of the date picker
-   */
-  modelView?: datePicker.Props['view']
-  /**
-   * The v-model open state of the date picker
-   */
-  modelOpen?: datePicker.Props['open']
 }
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
@@ -34,25 +25,29 @@ export const useDatePicker = (props: UseDatePickerProps = {}, emit?: EmitFn<Root
       id,
       dir: locale.value.dir,
       value: props.modelValue,
-      view: props.modelView,
-      open: props.modelOpen,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit?.('focusChange', details),
+      ...cleanProps(props),
+      onFocusChange: (details) => {
+        emit?.('focusChange', details)
+        emit?.('update:focusedValue', details.focusedValue)
+        props.onFocusChange?.(details)
+      },
       onViewChange: (details) => {
         emit?.('viewChange', details)
-        emit?.('update:view', details.view) // TODO: remove this
-        emit?.('update:modelView', details.view)
+        emit?.('update:view', details.view)
+        props.onViewChange?.(details)
       },
       onOpenChange: (details) => {
         emit?.('openChange', details)
-        emit?.('update:open', details.open) // TODO: remove this
-        emit?.('update:modelOpen', details.open)
+        emit?.('update:open', details.open)
+        props.onOpenChange?.(details)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
+        console.log('valueChange', details)
         emit?.('update:modelValue', details.value)
+        props.onValueChange?.(details)
       },
-      ...cleanProps(props),
     }
   })
 
