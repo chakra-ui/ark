@@ -16,9 +16,15 @@ export const useTimer = (props: UseTimerProps, emit?: EmitFn<RootEmits>): UseTim
   const context = computed<timer.Props>(() => ({
     id,
     getRootNode: env?.value.getRootNode,
-    onComplete: () => emit?.('complete'),
-    onTick: (details) => emit?.('tick', details),
     ...cleanProps(props),
+    onComplete: () => {
+      emit?.('complete')
+      props.onComplete?.()
+    },
+    onTick: (details) => {
+      emit?.('tick', details)
+      props.onTick?.(details)
+    },
   }))
 
   const service = useMachine(timer.machine, context)

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import BlurBehavior from './examples/blur-behavior.vue'
+import Controlled from './examples/controlled.vue'
 import DisabledEditing from './examples/disabled-editing.vue'
 import InitialValue from './examples/initial-value.vue'
 import MaxWithOverflow from './examples/max-with-overflow.vue'
@@ -14,6 +15,9 @@ import WithField from './examples/with-field.vue'
   <Story title="TagsInput">
     <Variant title="Basic">
       <Basic />
+    </Variant>
+    <Variant title="Controlled">
+      <Controlled />
     </Variant>
     <Variant title="InitialValue">
       <InitialValue />

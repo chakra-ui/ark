@@ -7,12 +7,13 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
-export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the tags input
    */
   modelValue?: tagsInput.Props['value']
 }
+
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
 
 export const useTagsInput = (props: UseTagsInputProps = {}, emit?: EmitFn<RootEmits>): UseTagsInputReturn => {
@@ -34,17 +35,37 @@ export const useTagsInput = (props: UseTagsInputProps = {}, emit?: EmitFn<RootEm
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
-    onValueChange(details) {
+    ...cleanProps(props),
+    onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onHighlightChange: (details) => emit?.('highlightChange', details),
-    onInputValueChange: (details) => emit?.('inputValueChange', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onValueInvalid: (details) => emit?.('valueInvalid', details),
-    ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onHighlightChange: (details) => {
+      emit?.('highlightChange', details)
+      props.onHighlightChange?.(details)
+    },
+    onInputValueChange: (details) => {
+      emit?.('inputValueChange', details)
+      emit?.('update:inputValue', details.inputValue)
+      props.onInputValueChange?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onValueInvalid: (details) => {
+      emit?.('valueInvalid', details)
+      props.onValueInvalid?.(details)
+    },
   }))
 
   const service = useMachine(tagsInput.machine, context)
