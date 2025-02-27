@@ -6,12 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './steps.types'
 
-export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  /**
-   * The v-model value of the step
-   */
-  modelValue?: number
-}
+export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseStepsReturn extends ComputedRef<steps.Api<PropTypes>> {}
 
@@ -24,13 +19,16 @@ export function useSteps(props: UseStepsProps = {}, emit?: EmitFn<RootEmits>): U
     id,
     dir: locale.value.dir,
     getRootNode: env?.value?.getRootNode,
-    value: props.modelValue,
+    ...cleanProps(props),
     onStepChange: (details) => {
       emit?.('stepChange', details)
-      emit?.('update:modelValue', details.step)
+      emit?.('update:step', details.step)
+      props.onStepChange?.(details)
     },
-    onStepComplete: () => emit?.('stepComplete'),
-    ...cleanProps(props),
+    onStepComplete: () => {
+      emit?.('stepComplete')
+      props.onStepComplete?.()
+    },
   }))
 
   const service = useMachine(steps.machine, context)
