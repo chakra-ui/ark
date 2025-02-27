@@ -4,12 +4,14 @@ import { type ComputedRef, computed, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
-import type { RootProps } from './accordion'
 import type { RootEmits } from './accordion.types'
 
-export interface UseAccordionProps
-  extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode'>, 'id'>,
-    Pick<RootProps, 'modelValue'> {}
+export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The v-model value of the accordion
+   */
+  modelValue?: accordion.Props['value']
+}
 
 export interface UseAccordionReturn extends ComputedRef<accordion.Api<PropTypes>> {}
 
