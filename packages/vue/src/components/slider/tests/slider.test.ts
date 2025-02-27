@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, screen, waitFor } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import ComponentUnderTest from './slider.test.vue'
 
 describe('Slider', () => {
