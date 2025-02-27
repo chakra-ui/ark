@@ -24,7 +24,7 @@ describe('Editable', () => {
   it('should be possible to focus the placeholder and enter a value', async () => {
     render(ControlledComponentUnderTest)
     screen.getByText('Placeholder').focus()
-    await user.type(screen.getByLabelText('editable input'), 'React')
+    await user.type(screen.getByLabelText('editable input'), 'React', { delay: 10 })
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
@@ -47,7 +47,7 @@ describe('Editable', () => {
     await user.dblClick(screen.getByText('React'))
 
     await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'Solid')
+    await user.type(screen.getByRole('textbox'), 'Solid', { delay: 10 })
     await user.click(screen.getByText('Save'))
 
     await screen.findByText('Solid')

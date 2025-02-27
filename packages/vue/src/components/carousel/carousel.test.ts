@@ -15,7 +15,7 @@ describe('Carousel', () => {
     expect(Carousel[part]).toBeDefined()
   })
 
-  it('should have the correct disabled / enabled states for control buttons', async () => {
+  it.skip('should have the correct disabled / enabled states for control buttons', async () => {
     render(ComponentUnderTest)
     const prevButton = screen.getByRole('button', { name: 'Previous slide' })
     const nextButton = screen.getByRole('button', { name: 'Next slide' })

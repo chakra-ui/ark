@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ColorPicker, type ColorPickerRootBaseProps, parseColor } from '@ark-ui/vue/color-picker'
+import { ColorPicker, parseColor } from '@ark-ui/vue/color-picker'
 import { Field } from '@ark-ui/vue/field'
 
 const defaultValue = parseColor('hsl(20, 100%, 50%)')
-defineProps<ColorPickerRootBaseProps>()
 </script>
 
 <template>

@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './slider'
 
-export interface UseSliderProps extends Optional<Omit<slider.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseSliderProps extends Optional<Omit<slider.Props, 'value'>, 'id'> {
   /**
    * The v-model value of the slider
    */

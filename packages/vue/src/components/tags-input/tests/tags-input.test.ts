@@ -40,11 +40,11 @@ describe('TagsInput', () => {
     expect(screen.queryByText('angular')).not.toBeInTheDocument()
   })
 
-  it.skip('should allow to modify an added item', async () => {
+  it('should allow to modify an added item', async () => {
     render(ComponentUnderTest)
 
     const input = screen.getByPlaceholderText('Add tag')
-    await user.type(input, 'angular[enter]')
+    await user.type(input, 'angular[enter]', { delay: 10 })
 
     expect(screen.getByText('angular')).toBeInTheDocument()
 
@@ -53,7 +53,7 @@ describe('TagsInput', () => {
     await user.type(input, '[ArrowLeft]')
     await user.type(input, '[ArrowLeft]')
     await user.clear(input)
-    await user.type(input, 'svelte')
+    await user.type(input, 'svelte', { delay: 10 })
     await user.keyboard('[Enter]')
 
     expect(await screen.findByText('svelte')).toBeInTheDocument()

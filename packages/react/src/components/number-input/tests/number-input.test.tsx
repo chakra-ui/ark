@@ -113,7 +113,7 @@ describe('NumberInput', () => {
     await user.clear(input)
     expect(input).toHaveValue('')
 
-    await user.type(input, '1.1234', { delay: 10 })
+    await user.type(input, '1.1234', { delay: 20 })
     fireEvent.blur(input)
 
     await waitFor(() => expect(input).toHaveValue('1.123'))
