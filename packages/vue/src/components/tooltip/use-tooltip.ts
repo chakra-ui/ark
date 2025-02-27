@@ -6,12 +6,8 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './tooltip.types'
 
-export interface UseTooltipProps extends Optional<Omit<tooltip.Props, 'dir' | 'getRootNode' | 'open'>, 'id'> {
-  /**
-   * The v-model open state of the tooltip
-   */
-  modelOpen?: tooltip.Props['open']
-}
+export interface UseTooltipProps extends Optional<Omit<tooltip.Props, 'dir' | 'getRootNode'>, 'id'> {}
+
 export interface UseTooltipReturn extends ComputedRef<tooltip.Api<PropTypes>> {}
 
 export const useTooltip = (props: UseTooltipProps = {}, emit?: EmitFn<RootEmits>): UseTooltipReturn => {
@@ -23,13 +19,12 @@ export const useTooltip = (props: UseTooltipProps = {}, emit?: EmitFn<RootEmits>
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    open: props.modelOpen,
+    ...cleanProps(props),
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open) // TODO: remove this
-      emit?.('update:modelOpen', details.open)
+      emit?.('update:open', details.open)
+      props.onOpenChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(tooltip.machine, context)

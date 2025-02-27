@@ -18,12 +18,27 @@ export const useTour = (props: UseTourProps = {}, emit?: EmitFn<RootEmits>) => {
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onStatusChange: (details) => emit?.('statusChange', details),
-    onStepChange: (details) => emit?.('stepChange', details),
     ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onStatusChange: (details) => {
+      emit?.('statusChange', details)
+      props.onStatusChange?.(details)
+    },
+    onStepChange: (details) => {
+      emit?.('stepChange', details)
+      props.onStepChange?.(details)
+    },
   }))
 
   const service = useMachine(tour.machine, context)
