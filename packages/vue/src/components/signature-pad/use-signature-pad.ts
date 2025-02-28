@@ -27,9 +27,15 @@ export const useSignaturePad = (props: UseSignaturePadProps = {}, emit?: EmitFn<
     required: field?.value.required,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onDraw: (details) => emit?.('draw', details),
-    onDrawEnd: (details) => emit?.('drawEnd', details),
     ...cleanProps(props),
+    onDraw: (details) => {
+      emit?.('draw', details)
+      props.onDraw?.(details)
+    },
+    onDrawEnd: (details) => {
+      emit?.('drawEnd', details)
+      props.onDrawEnd?.(details)
+    },
   }))
 
   const service = useMachine(signaturepad.machine, context)

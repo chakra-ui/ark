@@ -9,15 +9,11 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection' | 'value' | 'open'>, 'id'> {
+  extends Optional<Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
    * The model value of the select
    */
   modelValue?: select.Props<T>['value']
-  /**
-   * The model open state of the select
-   */
-  modelOpen?: select.Props<T>['open']
   /**
    * The collection of items
    */
@@ -47,22 +43,35 @@ export const useSelect = <T extends CollectionItem>(
     required: field?.value.required,
     dir: locale.value.dir,
     value: props.modelValue,
-    open: props.modelOpen,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onHighlightChange: (details) => emit?.('highlightChange', details),
+    onHighlightChange: (details) => {
+      emit?.('highlightChange', details)
+      emit?.('update:highlightedValue', details.highlightedValue)
+      props.onHighlightChange?.(details)
+    },
     onOpenChange: (details) => {
       emit?.('openChange', details)
-      emit?.('update:open', details.open) // TODO: remove this
-      emit?.('update:modelOpen', details.open)
+      emit?.('update:open', details.open)
+      props.onOpenChange?.(details)
     },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
   }))
 
   const service = useMachine(select.machine, context)

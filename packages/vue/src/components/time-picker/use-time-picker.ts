@@ -6,16 +6,11 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './time-picker.types'
 
-export interface UseTimePickerProps
-  extends Optional<Omit<timePicker.Props, 'dir' | 'getRootNode' | 'value' | 'open'>, 'id'> {
+export interface UseTimePickerProps extends Optional<Omit<timePicker.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the time picker
    */
   modelValue?: timePicker.Props['value']
-  /**
-   * The v-model value of the time picker open state
-   */
-  modelOpen?: timePicker.Props['open']
 }
 
 export interface UseTimePickerReturn extends ComputedRef<timePicker.Api<PropTypes>> {}
@@ -30,19 +25,22 @@ export const useTimePicker = (props: UseTimePickerProps = {}, emit?: EmitFn<Root
       id,
       dir: locale.value.dir,
       value: props.modelValue,
-      open: props.modelOpen,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit?.('focusChange', details),
+      ...cleanProps(props),
+      onFocusChange: (details) => {
+        emit?.('focusChange', details)
+        props.onFocusChange?.(details)
+      },
       onOpenChange: (details) => {
         emit?.('openChange', details)
-        emit?.('update:open', details.open) // TODO: remove this
-        emit?.('update:modelOpen', details.open)
+        emit?.('update:open', details.open)
+        props.onOpenChange?.(details)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)
+        props.onValueChange?.(details)
       },
-      ...cleanProps(props),
     }
   })
 

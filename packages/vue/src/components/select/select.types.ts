@@ -17,13 +17,17 @@ export interface RootProps<T extends CollectionItem> {
    */
   composite?: boolean
   /**
-   * The initial open state of the select when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial value of the highlighted item when opened.
+   * Use when you don't need to control the highlighted value of the select.
+   */
+  defaultHighlightedValue?: string
+  /**
+   * Whether the select's open state is controlled by the user
    */
   defaultOpen?: boolean
   /**
-   * The initial value of the select when it is first rendered.
-   * Use when you do not need to control the state of the select.
+   * The initial default value of the select when rendered.
+   * Use when you don't need to control the value of the select.
    */
   defaultValue?: string[]
   /**
@@ -41,7 +45,7 @@ export interface RootProps<T extends CollectionItem> {
    */
   form?: string
   /**
-   * The key of the highlighted item
+   * The controlled key of the highlighted item
    */
   highlightedValue?: string
   /**
@@ -73,6 +77,9 @@ export interface RootProps<T extends CollectionItem> {
    * @default false
    */
   loopFocus?: boolean
+  /**
+   * The model value of the select
+   */
   modelValue?: string[]
   /**
    * Whether to allow multiple selection
@@ -138,7 +145,7 @@ export type RootEmits<T extends CollectionItem> = {
    */
   'update:open': [open: boolean]
   /**
-   * The callback fired when the model open state changes.
+   * The callback fired when the highlighted value changes.
    */
-  'update:modelOpen': [open: boolean]
+  'update:highlightedValue': [value: string | null]
 }
