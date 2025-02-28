@@ -2,8 +2,8 @@ import type * as qrcode from '@zag-js/qr-code'
 
 export interface RootProps {
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The initial value to encode when rendered.
+   * Use when you don't need to control the value of the qr code.
    */
   defaultValue?: string
   /**
@@ -19,9 +19,17 @@ export interface RootProps {
    */
   ids?: Partial<{ root: string; frame: string }>
   /**
-   * Use this prop to control the value of the qr code via v-model.
+   * The v-model value of the qr code
    */
   modelValue?: string
+  /**
+   * The pixel size of the qr code.
+   */
+  pixelSize?: number
+  /**
+   * The controlled value to encode.
+   */
+  value?: string
 }
 
 export type RootEmits = {

@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './radio-group.types'
 
-export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the radio group
    */
@@ -23,11 +23,12 @@ export const useRadioGroup = (props: UseRadioGroupProps = {}, emit?: EmitFn<Root
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(radioGroup.machine, context)

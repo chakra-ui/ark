@@ -23,11 +23,12 @@ export const useClipboard = (props: UseClipboardProps = {}, emit?: EmitFn<RootEm
     getRootNode: env?.value.getRootNode,
     value: props.modelValue,
     onStatusChange: (details) => emit?.('statusChange', details),
+    ...cleanProps(props),
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(clipboard.machine, context)

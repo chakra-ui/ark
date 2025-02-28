@@ -7,7 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './pin-input'
 
-export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the pin input
    */
@@ -35,13 +35,20 @@ export const usePinInput = (props: UsePinInputProps = {}, emit?: EmitFn<RootEmit
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onValueComplete: (details) => emit?.('valueComplete', details),
-    onValueInvalid: (details) => emit?.('valueInvalid', details),
-    ...cleanProps(props),
+    onValueComplete: (details) => {
+      emit?.('valueComplete', details)
+      props.onValueComplete?.(details)
+    },
+    onValueInvalid: (details) => {
+      emit?.('valueInvalid', details)
+      props.onValueInvalid?.(details)
+    },
   }))
 
   const service = useMachine(pinInput.machine, context)

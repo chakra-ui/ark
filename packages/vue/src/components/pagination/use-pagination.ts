@@ -30,15 +30,17 @@ export const usePagination = (props: UsePaginationProps, emit?: EmitFn<RootEmits
     page: props.modelValue,
     pageSize: props.modelPageSize,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onPageChange: (details) => {
       emit?.('pageChange', details)
       emit?.('update:modelValue', details.page)
+      props.onPageChange?.(details)
     },
     onPageSizeChange: (details) => {
       emit?.('pageSizeChange', details)
       emit?.('update:modelPageSize', details.pageSize)
+      props.onPageSizeChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(pagination.machine, context)

@@ -6,9 +6,9 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './qr-code.types'
 
-export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * Use this prop to control the value of the qr code.
+   * The v-model value of the qr code
    */
   modelValue?: qrcode.Props['value']
 }
@@ -25,11 +25,12 @@ export const useQrCode = (props: UseQrCodeProps = {}, emit?: EmitFn<RootEmits>):
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(qrcode.machine, context)

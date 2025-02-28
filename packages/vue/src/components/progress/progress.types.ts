@@ -2,8 +2,9 @@ import type * as progress from '@zag-js/progress'
 
 export interface RootProps {
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The initial value of the progress bar when rendered.
+   * Use when you don't need to control the value of the progress bar.
+   * @default 50
    */
   defaultValue?: number | null
   /**
@@ -25,18 +26,22 @@ export interface RootProps {
    */
   min?: number
   /**
-   * Use this prop to control the value of the progress.
+   * The v-model value of the progress
    */
   modelValue?: number | null
   /**
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: progress.Orientation
+  orientation?: 'horizontal' | 'vertical'
   /**
    * The localized messages to use.
    */
   translations?: progress.IntlTranslations
+  /**
+   * The controlled value of the progress bar.
+   */
+  value?: number | null
 }
 
 export type RootEmits = {

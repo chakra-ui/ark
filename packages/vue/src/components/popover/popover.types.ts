@@ -19,8 +19,8 @@ export interface RootProps {
    */
   closeOnInteractOutside?: boolean
   /**
-   * The initial open state of the popover when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial open state of the popover when rendered.
+   * Use when you don't need to control the open state of the popover.
    */
   defaultOpen?: boolean
   /**
@@ -55,7 +55,7 @@ export interface RootProps {
    */
   modal?: boolean
   /**
-   * Whether the popover is open
+   * The controlled open state of the popover
    */
   open?: boolean
   /**
@@ -102,8 +102,4 @@ export type RootEmits = {
    * The callback fired when the open state changes.
    */
   'update:open': [open: boolean]
-  /**
-   * The callback fired when the model value changes.
-   */
-  'update:modelValue': [open: boolean]
 }

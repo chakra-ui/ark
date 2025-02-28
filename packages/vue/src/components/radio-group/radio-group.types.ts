@@ -2,10 +2,10 @@ import type * as radioGroup from '@zag-js/radio-group'
 
 export interface RootProps {
   /**
-   * The initial value of the radio group when it is first rendered.
-   * Use when you do not need to control the state of the radio group.
+   * The initial value of the checked radio when rendered.
+   * Use when you don't need to control the value of the radio group.
    */
-  defaultValue?: string
+  defaultValue?: string | null
   /**
    * If `true`, the radio group will be disabled
    */
@@ -30,7 +30,10 @@ export interface RootProps {
     itemControl(value: string): string
     itemHiddenInput(value: string): string
   }>
-  modelValue?: string
+  /**
+   * The v-model value of the radio group
+   */
+  modelValue?: string | null
   /**
    * The name of the input fields in the radio
    * (Useful for form submission).
@@ -44,12 +47,15 @@ export interface RootProps {
    * Whether the checkbox is read-only
    */
   readOnly?: boolean
+  /**
+   * The controlled value of the radio group
+   */
+  value?: string | null
 }
 
 export type RootEmits = {
   /**
    * Function called once a radio is checked
-   * @param value the value of the checked radio
    */
   valueChange: [details: radioGroup.ValueChangeDetails]
   /**

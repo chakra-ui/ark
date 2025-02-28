@@ -6,9 +6,9 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './progress.types'
 
-export interface UseProgressProps extends Optional<Omit<progress.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseProgressProps extends Optional<Omit<progress.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * Use this prop to control the value of the progress.
+   * The v-model value of the progress
    */
   modelValue?: progress.Props['value']
 }
@@ -24,11 +24,12 @@ export const useProgress = (props: UseProgressProps = {}, emit?: EmitFn<RootEmit
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
   const service = useMachine(progress.machine, context)

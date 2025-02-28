@@ -10,8 +10,13 @@ export interface RootProps {
    */
   blurOnComplete?: boolean
   /**
-   * The initial value of the pin input when it is first rendered.
-   * Use when you do not need to control the state of the pin input.
+   * The number of inputs to render to improve SSR aria attributes.
+   * This will be required in next major version.
+   */
+  count?: number
+  /**
+   * The initial value of the the pin input when rendered.
+   * Use when you don't need to control the value of the pin input.
    */
   defaultValue?: string[]
   /**
@@ -29,13 +34,7 @@ export interface RootProps {
   /**
    * The ids of the elements in the pin input. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    hiddenInput: string
-    label: string
-    control: string
-    input(id: string): string
-  }>
+  ids?: Partial<{ root: string; hiddenInput: string; label: string; control: string; input(id: string): string }>
   /**
    * Whether the pin input is in the invalid state
    */
@@ -44,6 +43,9 @@ export interface RootProps {
    * If `true`, the input's value will be masked just like `type=password`
    */
   mask?: boolean
+  /**
+   * The v-model value of the pin input
+   */
   modelValue?: string[]
   /**
    * The name of the input element. Useful for form submission.
