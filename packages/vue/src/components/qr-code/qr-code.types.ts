@@ -26,10 +26,6 @@ export interface RootProps {
    * The pixel size of the qr code.
    */
   pixelSize?: number
-  /**
-   * The controlled value to encode.
-   */
-  value?: string
 }
 
 export type RootEmits = {

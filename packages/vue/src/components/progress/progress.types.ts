@@ -38,10 +38,6 @@ export interface RootProps {
    * The localized messages to use.
    */
   translations?: progress.IntlTranslations
-  /**
-   * The controlled value of the progress bar.
-   */
-  value?: number | null
 }
 
 export type RootEmits = {

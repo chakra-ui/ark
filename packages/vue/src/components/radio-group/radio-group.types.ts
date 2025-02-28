@@ -47,10 +47,6 @@ export interface RootProps {
    * Whether the checkbox is read-only
    */
   readOnly?: boolean
-  /**
-   * The controlled value of the radio group
-   */
-  value?: string | null
 }
 
 export type RootEmits = {
