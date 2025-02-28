@@ -7,7 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './rating-group'
 
-export interface UseRatingGroupProps extends Optional<Omit<ratingGroup.Props, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseRatingGroupProps extends Optional<Omit<ratingGroup.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the rating group
    */
@@ -33,12 +33,16 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}, emit?: EmitFn<Ro
     dir: locale.value.dir,
     value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onHoverChange: (details) => emit?.('hoverChange', details),
-    ...cleanProps(props),
+    onHoverChange: (details) => {
+      emit?.('hoverChange', details)
+      props.onHoverChange?.(details)
+    },
   }))
 
   const service = useMachine(ratingGroup.machine, context)

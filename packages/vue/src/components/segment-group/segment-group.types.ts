@@ -7,7 +7,7 @@ export interface RootProps {
    */
   defaultValue?: string
   /**
-   * If `true`, the radio group will be disabled
+   * If `true`, the segment group will be disabled
    */
   disabled?: boolean
   /**
@@ -30,6 +30,9 @@ export interface RootProps {
     itemControl(value: string): string
     itemHiddenInput(value: string): string
   }>
+  /**
+   * The v-model value of the segment group
+   */
   modelValue?: string
   /**
    * The name of the input fields in the radio
@@ -37,11 +40,11 @@ export interface RootProps {
    */
   name?: string
   /**
-   * Orientation of the radio group
+   * Orientation of the segment group
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * Whether the checkbox is read-only
+   * Whether the segment group is read-only
    */
   readOnly?: boolean
 }
@@ -49,7 +52,6 @@ export interface RootProps {
 export type RootEmits = {
   /**
    * Function called once a radio is checked
-   * @param value the value of the checked radio
    */
   valueChange: [details: segmentGroup.ValueChangeDetails]
   /**

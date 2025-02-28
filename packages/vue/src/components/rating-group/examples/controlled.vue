@@ -7,8 +7,8 @@ const value = ref(0)
 </script>
 
 <template>
-  <RatingGroup.Root :count="5" v-model="value" allowHalf>
-    <RatingGroup.Label>Label</RatingGroup.Label>
+  <RatingGroup.Root :count="5" v-model="value">
+    <RatingGroup.Label>Label {{ value }}</RatingGroup.Label>
     <RatingGroup.Control>
       <RatingGroup.Context v-slot="{ items }">
         <RatingGroup.Item v-for="item in items" :key="item" :index="item">
