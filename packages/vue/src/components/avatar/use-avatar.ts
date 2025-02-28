@@ -6,7 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './avatar.types'
 
-export interface UseAvatarProps extends Optional<Omit<avatar.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseAvatarProps extends Optional<Omit<avatar.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAvatarReturn extends ComputedRef<avatar.Api<PropTypes>> {}
 
 export const useAvatar = (props: UseAvatarProps = {}, emit?: EmitFn<RootEmits>): UseAvatarReturn => {
@@ -14,14 +14,17 @@ export const useAvatar = (props: UseAvatarProps = {}, emit?: EmitFn<RootEmits>):
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<avatar.Context>(() => ({
+  const context = computed<avatar.Props>(() => ({
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onStatusChange: (details) => emit?.('statusChange', details),
     ...cleanProps(props),
+    onStatusChange: (details) => {
+      emit?.('statusChange', details)
+      props.onStatusChange?.(details)
+    },
   }))
 
-  const [state, send] = useMachine(avatar.machine(context.value), { context })
-  return computed(() => avatar.connect(state.value, send, normalizeProps))
+  const service = useMachine(avatar.machine, context)
+  return computed(() => avatar.connect(service, normalizeProps))
 }

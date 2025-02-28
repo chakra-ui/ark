@@ -6,7 +6,7 @@ import { StarIcon } from 'lucide-vue-next'
 
 <template>
   <Field.Root>
-    <RatingGroup.Root :count="5" :model-value="3">
+    <RatingGroup.Root :count="5" :default-value="3">
       <RatingGroup.Label>Label</RatingGroup.Label>
       <RatingGroup.Control>
         <RatingGroup.Context v-slot="{ items }">

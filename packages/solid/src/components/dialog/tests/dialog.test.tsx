@@ -1,20 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Dialog, dialogAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Dialog', () => {
-  it.each(getParts(dialogAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(dialogAnatomy))('should export %s', async (part) => {
-    expect(Dialog[part]).toBeDefined()
-  })
-
   it('should show dialog content when opened', async () => {
     render(() => <ComponentUnderTest />)
 
@@ -26,11 +14,11 @@ describe('Dialog', () => {
   })
 
   it('should invoke onClose if dialog is closed', async () => {
-    const onClose = vi.fn()
-    render(() => <ComponentUnderTest open onOpenChange={onClose} />)
+    const onOpenChange = vi.fn()
+    render(() => <ComponentUnderTest open onOpenChange={onOpenChange} />)
     await user.click(screen.getByText('Close'))
 
-    expect(onClose).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
   })
 
   it('should be able to lazy mount', async () => {

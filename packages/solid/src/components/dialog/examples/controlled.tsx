@@ -3,14 +3,14 @@ import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
 export const Controlled = () => {
-  const [isOpen, setIsOpen] = createSignal(false)
+  const [open, setOpen] = createSignal(false)
 
   return (
     <>
-      <button type="button" onClick={() => setIsOpen(true)}>
+      <button type="button" onClick={() => setOpen(true)}>
         Open Dialog
       </button>
-      <Dialog.Root open={isOpen()} onOpenChange={() => setIsOpen(false)}>
+      <Dialog.Root open={open()} onOpenChange={() => setOpen(false)}>
         <Portal>
           <Dialog.Backdrop />
           <Dialog.Positioner>

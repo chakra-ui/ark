@@ -33,7 +33,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="field.getRootProps()" :as-child="asChild">
+  <ark.div v-bind="field.getRootProps()" :ref="field.refs.rootRef" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

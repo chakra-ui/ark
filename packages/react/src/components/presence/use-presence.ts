@@ -5,20 +5,20 @@ import type { Optional } from '../../types'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePresenceProps extends Optional<presence.Context, 'present'>, RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {}
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps) => {
   const { lazyMount, unmountOnExit, present, ...rest } = props
   const wasEverPresent = useRef(false)
-  const context: Partial<presence.Context> = {
+  const machineProps: Partial<presence.Props> = {
     ...rest,
     present,
     onExitComplete: useEvent(props.onExitComplete),
   }
 
-  const [state, send] = useMachine(presence.machine(context), { context })
-  const api = presence.connect(state, send, normalizeProps)
+  const service = useMachine(presence.machine, machineProps)
+  const api = presence.connect(service, normalizeProps)
 
   if (api.present) {
     wasEverPresent.current = true

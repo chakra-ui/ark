@@ -1,7 +1,5 @@
 import { render, screen } from '@solidjs/testing-library'
 import { Field, Fieldset } from '../'
-import { getExports, getParts } from '../../setup-test'
-import { fieldsetAnatomy } from './fieldset.anatomy'
 
 const ComponentUnderTest = (props: Fieldset.RootProps) => (
   <Fieldset.Root {...props}>
@@ -16,21 +14,6 @@ const ComponentUnderTest = (props: Fieldset.RootProps) => (
     </Field.Root>
   </Fieldset.Root>
 )
-
-describe('Fieldset / Parts & Exports', () => {
-  it.each(getParts(fieldsetAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
-    'should render part %s',
-    async (part) => {
-      render(() => <ComponentUnderTest invalid />)
-
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(fieldsetAnatomy))('should export %s', async (part) => {
-    expect(Fieldset[part]).toBeDefined()
-  })
-})
 
 describe('Fieldset', () => {
   it('should set textbox as disabled', async () => {

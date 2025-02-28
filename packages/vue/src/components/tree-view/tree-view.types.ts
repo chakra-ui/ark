@@ -69,7 +69,16 @@ export type RootEmits = {
    * Called when the selection changes
    */
   selectionChange: [details: treeView.SelectionChangeDetails]
+  /**
+   * Called when the expanded value changes
+   */
   'update:expandedValue': [value: string[]]
+  /**
+   * Called when the focused value changes
+   */
   'update:focusedValue': [value: string | null]
+  /**
+   * Called when the selected value changes
+   */
   'update:selectedValue': [value: string[]]
 }

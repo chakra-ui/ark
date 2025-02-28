@@ -2,21 +2,13 @@
   "DownloadTrigger": {
     "props": {
       "fileName": { "type": "string", "isRequired": true, "description": "The name of the file." },
-      "mimeType": {
-        "type": "DataUrlType",
-        "isRequired": true,
-        "description": "The mime type of the image."
-      },
+      "mimeType": { "type": "DataUrlType", "isRequired": true, "description": "The mime type of the image." },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "quality": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The quality of the image."
-      }
+      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." }
     }
   },
   "Frame": {
@@ -56,7 +48,7 @@
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the qr code when it is first rendered.\nUse when you do not need to control the state of the qr code."
+        "description": "The initial value to encode when rendered.\nUse when you don't need to control the value of the qr code."
       },
       "encoding": {
         "type": "QrCodeGenerateOptions",
@@ -73,7 +65,8 @@
         "isRequired": false,
         "description": "Callback fired when the value changes."
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value to encode." }
+      "pixelSize": { "type": "number", "isRequired": false, "description": "The pixel size of the qr code." },
+      "value": { "type": "string", "isRequired": false, "description": "The controlled value to encode." }
     }
   },
   "RootProvider": {

@@ -20,7 +20,7 @@ export interface ToggleRootEmits extends RootEmits {}
 const props = withDefaults(defineProps<ToggleRootProps>(), {
   disabled: undefined,
   defaultPressed: undefined,
-  modelValue: undefined,
+  pressed: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emit = defineEmits<ToggleRootEmits>()

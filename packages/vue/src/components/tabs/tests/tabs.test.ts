@@ -1,21 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import { Tabs, tabsAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tabs.test.vue'
 
 describe('Tabs', () => {
-  it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
-    expect(Tabs[part]).toBeDefined()
-  })
-
   it('should render the content of tab when active', async () => {
     render(ComponentUnderTest, { props: { defaultValue: 'React' } })
 

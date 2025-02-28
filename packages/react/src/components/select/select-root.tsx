@@ -20,6 +20,7 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: Re
     'closeOnSelect',
     'collection',
     'composite',
+    'defaultHighlightedValue',
     'defaultOpen',
     'defaultValue',
     'deselectable',

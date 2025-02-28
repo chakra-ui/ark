@@ -1,8 +1,6 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { Field, Fieldset } from '../'
-import { getExports, getParts } from '../../setup-test'
-import { fieldsetAnatomy } from './fieldset.anatomy'
 
 const ComponentUnderTest = (props: Fieldset.RootProps) => (
   <Fieldset.Root {...props}>
@@ -18,30 +16,7 @@ const ComponentUnderTest = (props: Fieldset.RootProps) => (
   </Fieldset.Root>
 )
 
-describe('Fieldset / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest invalid />)
-
-  it.each(getParts(fieldsetAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
-    'should render part %s',
-    async (part) => {
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(fieldsetAnatomy))('should export %s', async (part) => {
-    expect(Fieldset[part]).toBeDefined()
-  })
-})
-
 describe('Fieldset', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)

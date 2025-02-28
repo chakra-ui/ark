@@ -15,8 +15,8 @@ export interface RootProps {
    */
   count?: number
   /**
-   * The initial value of the rating group when it is first rendered.
-   * Use when you do not need to control the state of the rating group.
+   * The initial value of the rating when rendered.
+   * Use when you don't need to control the value of the rating.
    */
   defaultValue?: number
   /**
@@ -34,13 +34,10 @@ export interface RootProps {
   /**
    * The ids of the elements in the rating. Useful for composition.
    */
-  ids?: Partial<{
-    root: string
-    label: string
-    hiddenInput: string
-    control: string
-    item(id: string): string
-  }>
+  ids?: Partial<{ root: string; label: string; hiddenInput: string; control: string; item(id: string): string }>
+  /**
+   * The v-model value of the rating group
+   */
   modelValue?: number
   /**
    * The name attribute of the rating element (used in forms).

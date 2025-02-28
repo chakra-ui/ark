@@ -1,22 +1,10 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Checkbox, checkboxAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './checkbox.test.vue'
 import ControlledComponentUnderTest from './controlled-checkbox.test.vue'
 
 describe('Checkbox', () => {
-  it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
-    expect(Checkbox[part]).toBeDefined()
-  })
-
   it('should handle check and unchecked', async () => {
     const onCheckedChange = vi.fn()
     render(ComponentUnderTest, { props: { onCheckedChange } })

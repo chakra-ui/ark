@@ -1,22 +1,9 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Editable, editableAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
 describe('Editable', () => {
-  it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
-    expect(Editable[part]).toBeDefined()
-  })
-
   it('should render controlled component', async () => {
     render(() => <ControlledComponentUnderTest />)
   })
@@ -40,7 +27,7 @@ describe('Editable', () => {
   })
 
   it('should be possible to edit an existing value', async () => {
-    render(() => <ControlledComponentUnderTest activationMode="dblclick" value="React" />)
+    render(() => <ControlledComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
 

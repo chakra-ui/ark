@@ -14,7 +14,7 @@
   "ResizeTrigger": {
     "props": {
       "id": {
-        "type": "type ONLY_FOR_FORMAT =\n  | `${string}:${string}`\n  | `${string}:${number}`\n  | `${number}:${string}`\n  | `${number}:${number}`",
+        "type": "`${string}:${string}` | `${string}:${number}` | `${number}:${string}` | `${number}:${number}`",
         "isRequired": true
       },
       "asChild": {
@@ -37,7 +37,7 @@
       "defaultSize": {
         "type": "PanelSizeData[]",
         "isRequired": false,
-        "description": "The initial size of the panels when it is first rendered.\nUse this when you do not need to control the state of the carousel."
+        "description": "The initial size of the panels when rendered.\nUse when you don't need to control the size of the panels."
       },
       "ids": {
         "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
@@ -56,13 +56,14 @@
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
       },
       "size": {
         "type": "PanelSizeData[]",
         "isRequired": false,
-        "description": "The size data of the panels"
+        "description": "The controlled size data of the panels"
       }
     },
     "element": "HTMLDivElement"

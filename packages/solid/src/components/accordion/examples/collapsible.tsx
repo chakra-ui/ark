@@ -4,7 +4,7 @@ import { Index } from 'solid-js'
 
 export const Collapsible = () => {
   return (
-    <Accordion.Root value={['React']} collapsible>
+    <Accordion.Root defaultValue={['React']} collapsible>
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>

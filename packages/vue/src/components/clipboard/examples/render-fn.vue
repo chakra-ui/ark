@@ -4,7 +4,7 @@ import { CheckIcon, ClipboardCopyIcon } from 'lucide-vue-next'
 </script>
 
 <template>
-  <Clipboard.Root value="https.//ark-ui.com">
+  <Clipboard.Root default-value="https.//ark-ui.com">
     <Clipboard.Label>Copy this link</Clipboard.Label>
     <Clipboard.Control>
       <Clipboard.Input />

@@ -2,7 +2,7 @@
 import { RatingGroup, useRatingGroup } from '@ark-ui/vue/rating-group'
 import { StarIcon } from 'lucide-vue-next'
 
-const ratingGroup = useRatingGroup({ count: 5, modelValue: 3 })
+const ratingGroup = useRatingGroup({ count: 5, defaultValue: 3 })
 </script>
 
 <template>

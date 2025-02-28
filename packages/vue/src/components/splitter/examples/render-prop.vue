@@ -9,7 +9,7 @@ const size = ref([
 </script>
 
 <template>
-  <Splitter.Root :size="size">
+  <Splitter.Root v-model:size="size">
     <Splitter.Context v-slot="splitter">
       <Splitter.Panel id="a">
         <button @click="splitter.setSize('a', 10)">Set A to 10%</button>

@@ -14,6 +14,7 @@ export const QrCodeRoot = (props: QrCodeRootProps) => {
     'id',
     'ids',
     'onValueChange',
+    'pixelSize',
     'value',
   ])
 

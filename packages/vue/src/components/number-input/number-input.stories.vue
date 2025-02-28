@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import Controlled from './examples/controlled.vue'
 import FormUsage from './examples/form-usage.vue'
 import Formatted from './examples/formatted.vue'
 import FractionDigits from './examples/fraction-digits.vue'
@@ -14,6 +15,9 @@ import Scrubber from './examples/scrubber.vue'
   <Story title="NumberInput">
     <Variant title="Basic">
       <Basic />
+    </Variant>
+    <Variant title="Controlled">
+      <Controlled />
     </Variant>
     <Variant title="MinMax">
       <MinMax />

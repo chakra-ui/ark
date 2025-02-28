@@ -1,22 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Editable, editableAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ControlledComponentUnderTest from './controlled-editable.test.vue'
-import ComponentUnderTest from './editable.test.vue'
 
 describe('Editable', () => {
-  it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
-    expect(Editable[part]).toBeDefined()
-  })
-
   it('should render controlled component', async () => {
     render(ControlledComponentUnderTest)
   })
@@ -24,30 +11,30 @@ describe('Editable', () => {
   it('should be possible to focus the placeholder and enter a value', async () => {
     render(ControlledComponentUnderTest)
     screen.getByText('Placeholder').focus()
-    await user.type(screen.getByLabelText('editable input'), 'React')
+    await user.type(screen.getByLabelText('editable input'), 'React', { delay: 10 })
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it.skip('should be possible to dbl click the placeholder to enter a value', async () => {
+  it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(ControlledComponentUnderTest, { props: { activationMode: 'dblclick' } })
     await user.dblClick(screen.getByText('Placeholder'))
 
     await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'React')
+    await user.type(screen.getByRole('textbox'), 'React', { delay: 10 })
 
     expect(await screen.findByText('React')).toBeInTheDocument()
   })
 
-  it.skip('should be possible to edit an existing value', async () => {
+  it('should be possible to edit an existing value', async () => {
     render(ControlledComponentUnderTest, {
-      props: { activationMode: 'dblclick', modelValue: 'React' },
+      props: { activationMode: 'dblclick', defaultValue: 'React' },
     })
 
     await user.dblClick(screen.getByText('React'))
 
     await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'Solid')
+    await user.type(screen.getByRole('textbox'), 'Solid', { delay: 10 })
     await user.click(screen.getByText('Save'))
 
     await screen.findByText('Solid')

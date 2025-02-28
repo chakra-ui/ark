@@ -21,7 +21,7 @@ export interface UseFieldsetProps {
 
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
-export const useFieldset = (props: UseFieldsetProps) => {
+export const useFieldset = (props: UseFieldsetProps = {}) => {
   const { disabled = false, invalid = false } = props
   const hasErrorText = useRef(false)
   const hasHelperText = useRef(false)

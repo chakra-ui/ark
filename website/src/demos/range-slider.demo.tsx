@@ -3,7 +3,7 @@ import { Slider, type SliderProps } from '~/components/ui/slider'
 export const Demo = (props: SliderProps) => {
   return (
     <Slider
-      value={[33, 66]}
+      defaultValue={[33, 66]}
       marks={[
         { value: 25, label: '25' },
         { value: 50, label: '50' },

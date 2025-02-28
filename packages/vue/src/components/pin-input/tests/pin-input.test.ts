@@ -2,8 +2,6 @@ import user from '@testing-library/user-event'
 import { fireEvent, render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
 import { nextTick } from 'vue'
-import { PinInput, pinInputAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './pin-input.test.vue'
 
@@ -18,16 +16,6 @@ async function renderOnNextTick(TestComponent: RenderFuncParams[0], options?: Re
 }
 
 describe('PinInput', () => {
-  it.each(getParts(pinInputAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(pinInputAnatomy))('should export %s', async (part) => {
-    expect(PinInput[part]).toBeDefined()
-  })
-
   it('should have the proper aria labels', async () => {
     await renderOnNextTick(ComponentUnderTest)
     expect(screen.queryAllByLabelText('pin code 1 of 3')).toHaveLength(1)

@@ -1,5 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
-import { type JSX, createEffect } from 'solid-js'
+import { type JSX, onMount } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseMenuProps, useMenu } from './use-menu'
@@ -19,11 +19,13 @@ export const MenuRoot = (props: MenuRootProps) => {
     'aria-label',
     'closeOnSelect',
     'composite',
+    'defaultHighlightedValue',
     'defaultOpen',
     'highlightedValue',
     'id',
     'ids',
     'loopFocus',
+    'navigate',
     'onEscapeKeyDown',
     'onFocusOutside',
     'onHighlightChange',
@@ -32,7 +34,6 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onPointerDownOutside',
     'onSelect',
     'open',
-    'navigate',
     'positioning',
     'typeahead',
   ])
@@ -42,9 +43,9 @@ export const MenuRoot = (props: MenuRootProps) => {
   const menu = useMenu(useMenuProps)
   const presenceApi = usePresence(mergeProps(presenceProps, () => ({ present: menu.api().open })))
 
-  createEffect(() => {
+  onMount(() => {
     if (!parentMachine) return
-    parentApi?.().setChild(menu.machine)
+    parentApi?.().setChild(menu.service)
     menu.api().setParent(parentMachine)
   })
 
@@ -52,7 +53,7 @@ export const MenuRoot = (props: MenuRootProps) => {
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={menu.machine}>
+      <MenuMachineProvider value={menu.service}>
         <MenuProvider value={menu.api}>
           <PresenceProvider value={presenceApi}>{localProps.children}</PresenceProvider>
         </MenuProvider>

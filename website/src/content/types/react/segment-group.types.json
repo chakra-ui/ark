@@ -72,23 +72,15 @@
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the segment group when it is first rendered.\nUse when you do not need to control the state of the segment group."
+        "description": "The initial value of the checked radio when rendered.\nUse when you don't need to control the value of the radio group."
       },
       "disabled": {
         "type": "boolean",
         "isRequired": false,
         "description": "If `true`, the radio group will be disabled"
       },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The associate form of the underlying input."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying input." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  item(value: string): string\n  itemLabel(value: string): string\n  itemControl(value: string): string\n  itemHiddenInput(value: string): string\n}>",
         "isRequired": false,
@@ -109,16 +101,8 @@
         "isRequired": false,
         "description": "Orientation of the radio group"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the checkbox is read-only"
-      },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value of the checked radio"
-      }
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is read-only" },
+      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the radio group" }
     },
     "element": "HTMLDivElement"
   },

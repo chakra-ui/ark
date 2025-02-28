@@ -6,16 +6,11 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './qr-code.types'
 
-export interface UseQrCodeProps extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the qr code when it is first rendered.
-   * Use when you do not need to control the state of the qr code.
+   * The v-model value of the qr code
    */
-  defaultValue?: qrcode.Context['value']
-  /**
-   * Use this prop to control the value of the qr code.
-   */
-  modelValue?: qrcode.Context['value']
+  modelValue?: qrcode.Props['value']
 }
 
 export interface UseQrCodeReturn extends ComputedRef<qrcode.Api<PropTypes>> {}
@@ -25,18 +20,19 @@ export const useQrCode = (props: UseQrCodeProps = {}, emit?: EmitFn<RootEmits>):
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<qrcode.Context>(() => ({
+  const context = computed<qrcode.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(qrcode.machine(context.value), { context })
-  return computed(() => qrcode.connect(state.value, send, normalizeProps))
+  const service = useMachine(qrcode.machine, context)
+  return computed(() => qrcode.connect(service, normalizeProps))
 }

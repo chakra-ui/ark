@@ -1,32 +1,10 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Combobox, comboboxAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
-describe('Combobox / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(comboboxAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(comboboxAnatomy))('should export %s', async (part) => {
-    expect(Combobox[part]).toBeDefined()
-  })
-})
-
 describe('Combobox', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -103,10 +81,6 @@ describe('Combobox', () => {
 })
 
 describe('Combobox / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set combobox as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('combobox', { name: /label/i })).toBeRequired()

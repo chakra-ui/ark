@@ -10,7 +10,7 @@ export interface SliderRootProps
     /**
      * @vue-ignore
      */
-    Omit<HTMLAttributes, 'aria-labelledby' | 'aria-label'> {}
+    Omit<HTMLAttributes, 'aria-labelledby' | 'aria-label' | 'dir'> {}
 export interface SliderRootEmits extends RootEmits {}
 </script>
 

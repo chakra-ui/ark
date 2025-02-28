@@ -3,7 +3,8 @@ import { Index, createSignal } from 'solid-js'
 
 export const Controlled = () => {
   const frameworks = ['React', 'Solid', 'Svelte', 'Vue']
-  const [value, setValue] = createSignal('React')
+  const [value, setValue] = createSignal<string | null>('React')
+
   return (
     <SegmentGroup.Root value={value()} onValueChange={(e) => setValue(e.value)}>
       <SegmentGroup.Indicator />

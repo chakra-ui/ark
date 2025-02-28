@@ -137,20 +137,26 @@
         "isRequired": false,
         "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
       },
+      "defaultFocusedValue": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The initial focused date when rendered.\nUse when you don't need to control the focused date of the date picker."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the date picker when it is first rendered."
+        "description": "The initial open state of the date picker when rendered.\nUse when you don't need to control the open state of the date picker."
       },
       "defaultValue": {
         "type": "DateValue[]",
         "isRequired": false,
-        "description": "The initial value of the date picker when it is first rendered."
+        "description": "The initial selected date(s) when rendered.\nUse when you don't need to control the selected date(s) of the date picker."
       },
       "defaultView": {
         "type": "DateView",
+        "defaultValue": "\"day\"",
         "isRequired": false,
-        "description": "The initial view of the date picker when it is first rendered."
+        "description": "The default view of the calendar"
       },
       "disabled": {
         "type": "boolean",
@@ -165,7 +171,7 @@
       "focusedValue": {
         "type": "DateValue",
         "isRequired": false,
-        "description": "The focused date."
+        "description": "The controlled focused date."
       },
       "format": {
         "type": "(date: DateValue, details: LocaleDetails) => string",
@@ -237,7 +243,7 @@
         "description": "The number of months to display."
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -264,7 +270,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the datepicker is open"
+        "description": "The controlled open state of the date picker"
       },
       "parse": {
         "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
@@ -322,11 +328,10 @@
       "value": {
         "type": "DateValue[]",
         "isRequired": false,
-        "description": "The selected date(s)."
+        "description": "The controlled selected date(s)."
       },
       "view": {
         "type": "DateView",
-        "defaultValue": "\"day\"",
         "isRequired": false,
         "description": "The view of the calendar"
       }
@@ -356,7 +361,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },

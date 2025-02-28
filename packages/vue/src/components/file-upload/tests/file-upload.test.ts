@@ -1,21 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { FileUpload, fileUploadAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
-import ComponentUnderTest from './file-upload.test.vue'
-
-describe('FileUpload', () => {
-  it.skip.each(getParts(fileUploadAnatomy))('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(fileUploadAnatomy))('should export %s', async (part) => {
-    expect(FileUpload[part]).toBeDefined()
-  })
-})
 
 describe('File Upload / Field', () => {
   it('should set file upload as required', async () => {

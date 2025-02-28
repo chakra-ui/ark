@@ -3,7 +3,7 @@ import { Splitter } from '~/components/ui/splitter'
 export const Demo = (props: Splitter.RootProps) => {
   return (
     <Splitter.Root
-      size={[
+      defaultSize={[
         { id: 'a', size: 50 },
         { id: 'b', size: 50 },
       ]}

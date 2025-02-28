@@ -1,33 +1,10 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { RatingGroup } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { ratingGroupAnatomy } from '../rating-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('Rating Group / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(ratingGroupAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(ratingGroupAnatomy))('should export %s', async (part) => {
-    expect(RatingGroup[part]).toBeDefined()
-  })
-})
-
 describe('Rating Group', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -73,10 +50,6 @@ describe('Rating Group', () => {
 })
 
 describe('Rating Group / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set rating group as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()

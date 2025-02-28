@@ -70,11 +70,12 @@
       },
       "defaultOpen": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "The initial open state of the dialog when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the dialog when rendered.\nUse when you don't need to control the open state of the dialog."
       },
       "finalFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => MaybeElement",
         "isRequired": false,
         "description": "Element to receive focus when the dialog is closed"
       },
@@ -94,7 +95,7 @@
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement | null",
+        "type": "() => MaybeElement",
         "isRequired": false,
         "description": "Element to receive focus when the dialog is opened"
       },
@@ -116,7 +117,7 @@
         "description": "Function called when the escape key is pressed"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -133,7 +134,7 @@
       "onOpenChange": {
         "type": "(details: OpenChangeDetails) => void",
         "isRequired": false,
-        "description": "Callback to be invoked when the dialog is opened or closed"
+        "description": "Function to call when the dialog's open state changes"
       },
       "onPointerDownOutside": {
         "type": "(event: PointerDownOutsideEvent) => void",
@@ -143,7 +144,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the dialog is open"
+        "description": "The controlled open state of the dialog"
       },
       "persistentElements": {
         "type": "(() => Element | null)[]",
@@ -188,7 +189,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseDialogReturn", "isRequired": true },
+      "value": {
+        "type": "UseDialogReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -206,7 +210,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },

@@ -10,10 +10,15 @@ export interface RootProps {
    */
   'aria-labelledby'?: string[]
   /**
-   * The initial value of the slider when it is first rendered.
-   * Use when you do not need to control the state of the slider.
+   * The initial value of the slider when rendered.
+   * Use when you don't need to control the value of the slider.
    */
   defaultValue?: number[]
+  /**
+   * The document's text/writing direction.
+   * @default "ltr"
+   */
+  dir?: 'ltr' | 'rtl'
   /**
    * Whether the slider is disabled
    */
@@ -27,11 +32,15 @@ export interface RootProps {
    */
   getAriaValueText?: (details: slider.ValueTextDetails) => string
   /**
+   * A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+   */
+  getRootNode?: () => ShadowRoot | Document | Node
+  /**
    * The unique identifier of the machine.
    */
   id?: string
   /**
-   * The ids of the elements in the range slider. Useful for composition.
+   * The ids of the elements in the slider. Useful for composition.
    */
   ids?: Partial<{
     root: string
@@ -63,6 +72,9 @@ export interface RootProps {
    * @default 0
    */
   minStepsBetweenThumbs?: number
+  /**
+   * The v-model value of the slider
+   */
   modelValue?: number[]
   /**
    * The name associated with each slider thumb (when used in a form)
