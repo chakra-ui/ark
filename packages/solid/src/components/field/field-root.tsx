@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseFieldProps, useField } from './use-field'
@@ -21,7 +22,7 @@ export const FieldRoot = (props: FieldRootProps) => {
 
   return (
     <FieldProvider value={field}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} ref={composeRefs(field().refs.rootRef, props.ref)} />
     </FieldProvider>
   )
 }

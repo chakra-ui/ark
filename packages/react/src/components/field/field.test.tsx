@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Field } from '../'
@@ -61,5 +61,11 @@ describe('Field / Input', () => {
   it('should not display error text when no error is present', async () => {
     render(<ComponentUnderTest />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should set aria-describedby to the ids of the error and helper text', async () => {
+    render(<ComponentUnderTest />)
+    const textbox = screen.getByRole('textbox', { name: /label/i })
+    await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
   })
 })

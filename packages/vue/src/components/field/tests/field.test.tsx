@@ -1,5 +1,5 @@
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
+import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './field.test.vue'
 
 describe('Field', () => {
@@ -47,5 +47,11 @@ describe('Field', () => {
     render(ComponentUnderTest, { props: { modelValue: 'Input is controlled' } })
 
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('Input is controlled')
+  })
+
+  it('should set aria-describedby to the ids of the error and helper text', async () => {
+    render(ComponentUnderTest)
+    const textbox = screen.getByRole('textbox', { name: /label/i })
+    await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
   })
 })

@@ -1,5 +1,5 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import { useId, useMemo, useRef } from 'react'
+import { useId, useMemo, useRef, useState } from 'react'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context'
@@ -46,8 +46,8 @@ export const useField = (props: UseFieldProps = {}) => {
   const fieldset = useFieldsetContext()
   const { ids, disabled = Boolean(fieldset?.disabled), invalid = false, readOnly = false, required = false } = props
 
-  const hasErrorText = useRef(false)
-  const hasHelperText = useRef(false)
+  const [hasErrorText, setHasErrorText] = useState(false)
+  const [hasHelperText, setHasHelperText] = useState(false)
 
   const id = props.id ?? useId()
   const rootRef = useRef<HTMLDivElement>(null)
@@ -65,8 +65,8 @@ export const useField = (props: UseFieldProps = {}) => {
     const doc = win.document
 
     const checkTextElements = () => {
-      hasErrorText.current = !!doc.getElementById(errorTextId)
-      hasHelperText.current = !!doc.getElementById(helperTextId)
+      setHasErrorText(!!doc.getElementById(errorTextId))
+      setHasHelperText(!!doc.getElementById(helperTextId))
     }
 
     checkTextElements()
@@ -78,10 +78,10 @@ export const useField = (props: UseFieldProps = {}) => {
 
   const labelIds = useMemo(() => {
     const ids: string[] = []
-    if (hasErrorText.current && invalid) ids.push(errorTextId)
-    if (hasHelperText.current) ids.push(helperTextId)
+    if (hasErrorText && invalid) ids.push(errorTextId)
+    if (hasHelperText) ids.push(helperTextId)
     return ids.join(' ') || undefined
-  }, [invalid, errorTextId, helperTextId])
+  }, [invalid, errorTextId, helperTextId, hasErrorText, hasHelperText])
 
   const getRootProps = useMemo(
     () => () =>

@@ -1,5 +1,6 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
 import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref, useId } from 'vue'
+import { unrefElement } from '../../utils/unref-element'
 import { parts } from './field.anatomy'
 import type { ElementIds } from './field.types'
 
@@ -39,7 +40,7 @@ export const useField = (props: UseFieldProps) => {
   })
 
   const uid = useId()
-  const id = computed(() => props.id ?? `field::${uid}`)
+  const id = computed(() => props.id ?? uid)
 
   const rootRef = ref(null)
 
@@ -49,7 +50,7 @@ export const useField = (props: UseFieldProps) => {
   const labelId = computed(() => props.ids?.label ?? `field::${id.value}::label`)
 
   onMounted(() => {
-    const rootNode = rootRef.value
+    const rootNode = unrefElement(rootRef)
     if (!rootNode) return
 
     const win = getWindow(rootNode)
