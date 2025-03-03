@@ -6,9 +6,27 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+Welcome to Ark UI v5.
+
+### Added:
+
+- **Carousel** : Breaking change: Added required propt `slideCount` to `Carousel.Root` component.
+- **Clipboard**: Added `onValueChange` and `defaultValue` props to the `Clipboard` component.
+- **ColorPicker**: Added `defaultFormat` prop to the `ColorPicker` component.
+- **Combobox**: Added `defaultHighlightedValue` and `defaultInputValue` props to the `Combobox` component.
+- **DatePicker**: Added `defaultFocusedValue` prop to the `DatePicker` component.
+- **Menu**: Added `defaultHighlightedValue` prop to the `Menu` component.
+- **Pagination**: Added `defaultPageSize` prop to the `Pagination` component.
+- **PinInput**: Added `count` prop to the `PinInput` component.
+- **Progress**: Added `locale` and `formatOptions` prop to the `Progress` component.
+- **QrCode**: Added `pixelSize` prop to the `QrCode` component.
+- **Select**: Added `defaultHighlightedValue` props to the `Select` component.
+- **TagsInput**: Added `defaultInputValue` prop to the `TagsInput` component.
+
 ### Fixed
 
 - **Steps**: Ensured ARIA attributes use valid values and wrapped `<li>` elements correctly within `<ul>` or `<ol>`.
+- **Timer**: Resolved an issue that `action` prop was passed to the `ActionTrigger` component.
 
 ## [4.9.2] - 2025-02-21
 
