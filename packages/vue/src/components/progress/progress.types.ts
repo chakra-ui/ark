@@ -8,6 +8,11 @@ export interface RootProps {
    */
   defaultValue?: number | null
   /**
+   * The options to use for formatting the value.
+   * @default { style: "percent" }
+   */
+  formatOptions?: Intl.NumberFormatOptions
+  /**
    * The unique identifier of the machine.
    */
   id?: string
@@ -15,6 +20,11 @@ export interface RootProps {
    * The ids of the elements in the progress bar. Useful for composition.
    */
   ids?: Partial<{ root: string; track: string; label: string; circle: string }>
+  /**
+   * The locale to use for formatting the value.
+   * @default "en-US"
+   */
+  locale?: string
   /**
    * The maximum allowed value of the progress bar.
    * @default 100
@@ -28,7 +38,7 @@ export interface RootProps {
   /**
    * The v-model value of the progress
    */
-  modelValue?: number | null
+  modelValue?: number
   /**
    * The orientation of the element.
    * @default "horizontal"
