@@ -17,7 +17,7 @@
     "local:revert": "bun scripts local:sync --revert",
     "format": "bun prettier --write .",
     "lint": "turbo run lint",
-    "test": "turbo run test:ci",
+    "test": "turbo run test:ci --concurrency=1",
     "typecheck": "turbo run typecheck",
     "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",

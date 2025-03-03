@@ -30,7 +30,7 @@ describe('Ark Factory', () => {
     render(<ComponentUnderTest />)
     const child = screen.getByTestId('child')
     expect(child).toHaveStyle({ background: 'red' })
-    expect(child).toHaveStyle({ color: 'rgb(0, 0, 255)' })
+    expect(child).toHaveStyle({ color: 'blue' })
     expect(child).toHaveClass('child parent')
     expect(screen.getByText('Ark UI')).toBeVisible()
   })

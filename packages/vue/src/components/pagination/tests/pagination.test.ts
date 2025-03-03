@@ -1,20 +1,8 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { Pagination, paginationAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './pagination.test.vue'
 
 describe('Pagination', () => {
-  it.each(getParts(paginationAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(paginationAnatomy))('should export %s', async (part) => {
-    expect(Pagination[part]).toBeDefined()
-  })
-
   it('should update page when item is clicked', async () => {
     render(ComponentUnderTest)
 

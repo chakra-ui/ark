@@ -16,8 +16,8 @@ export interface RootProps {
    */
   clampValueOnBlur?: boolean
   /**
-   * The initial value of the number input when it is first rendered.
-   * Use when you do not need to control the state of the number input.
+   * The initial value of the input when rendered.
+   * Use when you don't need to control the value of the input.
    */
   defaultValue?: string
   /**
@@ -77,6 +77,9 @@ export interface RootProps {
    * @default Number.MIN_SAFE_INTEGER
    */
   min?: number
+  /**
+   * The v-model value of the number input
+   */
   modelValue?: string
   /**
    * The name attribute of the number input. Useful for form submission.

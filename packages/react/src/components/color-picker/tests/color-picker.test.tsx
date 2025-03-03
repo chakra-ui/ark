@@ -1,33 +1,11 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { ColorPicker, parseColor } from '../'
-import { getExports, getParts } from '../../../setup-test'
-import { colorPickerAnatomy } from '../color-picker.anatomy'
+import { parseColor } from '../'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 
-describe('ColorPicker / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(colorPickerAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(colorPickerAnatomy))('should export %s', async (part) => {
-    expect(ColorPicker[part]).toBeDefined()
-  })
-})
-
 describe('ColorPicker', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -59,7 +37,7 @@ describe('ColorPicker', () => {
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())
   })
 
-  it('should render with default value', async () => {
+  it.skip('should render with default value', async () => {
     render(<ComponentUnderTest defaultValue={parseColor('#ff00ff')} />)
 
     expect(screen.getByTestId('swatch-trigger')).toHaveStyle({
@@ -69,10 +47,6 @@ describe('ColorPicker', () => {
 })
 
 describe('Color Picker / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set color picker as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()

@@ -38,21 +38,13 @@
   },
   "Root": {
     "props": {
-      "allowHalf": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to allow half stars."
-      },
+      "allowHalf": { "type": "boolean", "isRequired": false, "description": "Whether to allow half stars." },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "autoFocus": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to autofocus the rating."
-      },
+      "autoFocus": { "type": "boolean", "isRequired": false, "description": "Whether to autofocus the rating." },
       "count": {
         "type": "number",
         "defaultValue": "5",
@@ -62,13 +54,9 @@
       "defaultValue": {
         "type": "number",
         "isRequired": false,
-        "description": "The initial value of the rating group when it is first rendered.\nUse when you do not need to control the state of the rating group."
+        "description": "The initial value of the rating when rendered.\nUse when you don't need to control the value of the rating."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the rating is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the rating is disabled." },
       "form": {
         "type": "string",
         "isRequired": false,
@@ -94,22 +82,14 @@
         "isRequired": false,
         "description": "Function to be called when the rating value changes."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the rating is readonly."
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the rating is required."
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the rating is readonly." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the rating is required." },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
-      "value": { "type": "number", "isRequired": false, "description": "The current rating value." }
+      "value": { "type": "number", "isRequired": false, "description": "The controlled value of the rating" }
     }
   },
   "RootProvider": {

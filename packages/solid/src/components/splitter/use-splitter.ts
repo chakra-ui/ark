@@ -4,13 +4,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseSplitterProps extends Optional<Omit<splitter.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial size of the panels when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
-   */
-  defaultSize?: splitter.Context['size']
-}
+export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 
 export const useSplitter = (props: UseSplitterProps = {}): UseSplitterReturn => {
@@ -18,14 +12,13 @@ export const useSplitter = (props: UseSplitterProps = {}): UseSplitterReturn => 
   const environment = useEnvironmentContext()
   const id = createUniqueId()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<splitter.Props>(() => ({
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    size: props.defaultSize,
     ...props,
   }))
-  const [state, send] = useMachine(splitter.machine(context()), { context })
 
-  return createMemo(() => splitter.connect(state, send, normalizeProps))
+  const service = useMachine(splitter.machine, machineProps)
+  return createMemo(() => splitter.connect(service, normalizeProps))
 }

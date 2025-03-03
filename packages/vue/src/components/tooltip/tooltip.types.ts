@@ -31,8 +31,8 @@ export interface RootProps {
    */
   closeOnScroll?: boolean
   /**
-   * The initial open state of the tooltip when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial open state of the tooltip when rendered.
+   * Use when you don't need to control the open state of the tooltip.
    */
   defaultOpen?: boolean
   /**
@@ -40,7 +40,7 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
-   * The `id` of the tooltip.
+   * The unique identifier of the machine.
    */
   id?: string
   /**
@@ -56,7 +56,7 @@ export interface RootProps {
    */
   interactive?: boolean
   /**
-   * Whether the tooltip is open
+   * The controlled open state of the tooltip
    */
   open?: boolean
   /**
@@ -75,5 +75,8 @@ export type RootEmits = {
    * Function called when the tooltip is opened.
    */
   openChange: [details: tooltip.OpenChangeDetails]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
 }

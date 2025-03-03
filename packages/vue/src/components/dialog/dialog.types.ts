@@ -16,14 +16,15 @@ export interface RootProps {
    */
   closeOnInteractOutside?: boolean
   /**
-   * The initial open state of the dialog when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial open state of the dialog when rendered.
+   * Use when you don't need to control the open state of the dialog.
+   * @default false
    */
   defaultOpen?: boolean
   /**
    * Element to receive focus when the dialog is closed
    */
-  finalFocusEl?: () => HTMLElement
+  finalFocusEl?: () => HTMLElement | null
   /**
    * The unique identifier of the machine.
    */
@@ -43,14 +44,14 @@ export interface RootProps {
   /**
    * Element to receive focus when the dialog is opened
    */
-  initialFocusEl?: () => HTMLElement
+  initialFocusEl?: () => HTMLElement | null
   /**
    * Whether to prevent pointer interaction outside the element and hide all content below it
    * @default true
    */
   modal?: boolean
   /**
-   * Whether the dialog is open
+   * The controlled open state of the dialog
    */
   open?: boolean
   /**
@@ -58,7 +59,7 @@ export interface RootProps {
    * - should not have pointer-events disabled
    * - should not trigger the dismiss event
    */
-  persistentElements?: (() => Element)[]
+  persistentElements?: (() => Element | null)[]
   /**
    * Whether to prevent scrolling behind the dialog when it's opened
    * @default true
@@ -94,12 +95,15 @@ export type RootEmits = {
    */
   interactOutside: [event: dialog.InteractOutsideEvent]
   /**
-   * Callback to be invoked when the dialog is opened or closed
+   * Function to call when the dialog's open state changes
    */
   openChange: [details: dialog.OpenChangeDetails]
   /**
    * Function called when the pointer is pressed down outside the component
    */
   pointerDownOutside: [event: dialog.PointerDownOutsideEvent]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
 }

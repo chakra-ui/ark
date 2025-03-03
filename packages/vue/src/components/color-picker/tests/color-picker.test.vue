@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import type { ColorPickerRootBaseProps } from '..'
 import { ColorPicker, parseColor } from '..'
 
-const value = ref(parseColor('#eb5e41'))
+const props = defineProps<ColorPickerRootBaseProps>()
+
+const defaultValue = props.defaultValue ?? parseColor('#eb5e41')
 </script>
 
 <template>
-  <ColorPicker.Root v-model="value">
+  <ColorPicker.Root :default-value="defaultValue" :lazy-mount="lazyMount" :unmount-on-exit="unmountOnExit">
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />

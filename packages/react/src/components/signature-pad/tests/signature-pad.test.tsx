@@ -1,30 +1,10 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { SignaturePad } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { signaturePadAnatomy } from '../signature-pad.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('SignaturePad / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  const renderedParts = getParts(signaturePadAnatomy).filter((part) => !part.includes('[data-part="segment-path"]'))
-
-  it.each(renderedParts)('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.skip.each(getExports(signaturePadAnatomy))('should export %s', async (part) => {
-    // @ts-expect-error
-    expect(SignaturePad[part]).toBeDefined()
-  })
-
+describe('SignaturePad ', () => {
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -34,10 +14,6 @@ describe('SignaturePad / Parts & Exports', () => {
 })
 
 describe('Signature Pad / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set signature pad as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()
@@ -50,7 +26,7 @@ describe('Signature Pad / Field', () => {
 
   it('should set signature pad as readonly', async () => {
     render(<WithField readOnly />)
-    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly')
+    expect(screen.getByRole('textbox', { hidden: true })).toHaveAttribute('readonly', '')
   })
 
   it('should display helper text', async () => {

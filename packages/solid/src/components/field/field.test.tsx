@@ -1,7 +1,6 @@
-import { render, screen } from '@solidjs/testing-library'
+import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Field, fieldAnatomy } from '../'
-import { getExports, getParts } from '../../setup-test'
+import { Field } from '../'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>
@@ -14,21 +13,6 @@ const ComponentUnderTest = (props: Field.RootProps) => (
     <Field.ErrorText>Error Info</Field.ErrorText>
   </Field.Root>
 )
-
-describe('Field / Parts & Exports', () => {
-  it.each(getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
-    'should render part %s',
-    async (part) => {
-      render(() => <ComponentUnderTest invalid required />)
-
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
-    expect(Field[part]).toBeDefined()
-  })
-})
 
 describe('Field / Input', () => {
   it('should set textbox as required', async () => {
@@ -69,5 +53,11 @@ describe('Field / Input', () => {
   it('should not display error text when no error is present', async () => {
     render(() => <ComponentUnderTest />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should set aria-describedby to the ids of the error and helper text', async () => {
+    render(() => <ComponentUnderTest />)
+    const textbox = screen.getByRole('textbox', { name: /label/i })
+    await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
   })
 })

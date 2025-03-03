@@ -58,14 +58,11 @@
       },
       "defaultValue": {
         "type": "number",
+        "defaultValue": "50",
         "isRequired": false,
-        "description": "The initial value of the progress when it is first rendered.\nUse when you do not need to control the state of the progress."
+        "description": "The initial value of the progress bar when rendered.\nUse when you don't need to control the value of the progress bar."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
         "isRequired": false,
@@ -89,7 +86,7 @@
         "description": "Callback fired when the value changes."
       },
       "orientation": {
-        "type": "Orientation",
+        "type": "'horizontal' | 'vertical'",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the element."
@@ -99,21 +96,13 @@
         "isRequired": false,
         "description": "The localized messages to use."
       },
-      "value": {
-        "type": "number",
-        "defaultValue": "50",
-        "isRequired": false,
-        "description": "The current value of the progress bar."
-      }
+      "value": { "type": "number", "isRequired": false, "description": "The controlled value of the progress bar." }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseProgressReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseProgressReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -144,10 +133,7 @@
   },
   "View": {
     "props": {
-      "state": {
-        "type": "ProgressState",
-        "isRequired": true
-      },
+      "state": { "type": "ProgressState", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

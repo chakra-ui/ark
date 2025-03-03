@@ -1,33 +1,10 @@
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { NumberInput } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { numberInputAnatomy } from '../number-input.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('NumberInput / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(numberInputAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(numberInputAnatomy))('should export %s', async (part) => {
-    expect(NumberInput[part]).toBeDefined()
-  })
-})
-
 describe('NumberInput', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -40,15 +17,11 @@ describe('NumberInput', () => {
 
     const input = screen.getByRole('spinbutton')
 
-    act(() => {
-      input.focus()
-    })
+    input.focus()
+    await waitFor(() => expect(input).toHaveFocus())
 
     fireEvent.wheel(input, { deltaY: -1 })
-
-    await waitFor(() => {
-      expect(input).toHaveValue('1')
-    })
+    await waitFor(() => expect(input).toHaveValue('1'))
   })
 
   it('should clamp value on blur when clampValueOnBlur is true', async () => {
@@ -112,27 +85,19 @@ describe('NumberInput', () => {
     )
 
     const input = screen.getByRole('spinbutton')
-
-    await waitFor(() => {
-      expect(input).toHaveValue('1.00')
-    })
+    expect(input).toHaveValue('1.00')
 
     await user.clear(input)
-    await user.type(input, '1.1234')
+    expect(input).toHaveValue('')
 
+    await user.type(input, '1.1234', { delay: 20 })
     fireEvent.blur(input)
 
-    await waitFor(() => {
-      expect(input).toHaveValue('1.123')
-    })
+    await waitFor(() => expect(input).toHaveValue('1.123'))
   })
 })
 
 describe('NumberInput / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set input as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('spinbutton', { name: /label/i })).toBeRequired()

@@ -14,8 +14,8 @@ export interface RootProps {
    */
   composite?: boolean
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The initial selected tab value when rendered.
+   * Use when you don't need to control the selected tab value.
    */
   defaultValue?: string
   /**
@@ -35,7 +35,15 @@ export interface RootProps {
    * @default true
    */
   loopFocus?: boolean
+  /**
+   * The v-model value of the tabs
+   */
   modelValue?: string
+  /**
+   * Function to navigate to the selected tab when clicking on it.
+   * Useful if tab triggers are anchor elements.
+   */
+  navigate?: (details: tabs.NavigateDetails) => void
   /**
    * The orientation of the tabs. Can be `horizontal` or `vertical`
    * - `horizontal`: only left and right arrow key navigation will work.

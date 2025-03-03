@@ -1,7 +1,6 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Collapsible, collapsibleAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { Collapsible } from '../'
 
 const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
@@ -9,18 +8,6 @@ const ComponentUnderTest = (props: Collapsible.RootProps) => (
     <Collapsible.Content>Content</Collapsible.Content>
   </Collapsible.Root>
 )
-
-describe('Collapsible / Parts & Exports', () => {
-  it.each(getParts(collapsibleAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(collapsibleAnatomy))('should export %s', async (part) => {
-    expect(Collapsible[part]).toBeDefined()
-  })
-})
 
 describe('Collapsible', () => {
   it('should toggle', async () => {

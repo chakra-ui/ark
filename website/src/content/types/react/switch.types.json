@@ -39,15 +39,11 @@
       "checked": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the switch is checked."
+        "description": "The controlled checked state of the switch"
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the switch is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the switch is disabled." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  control: string\n  label: string\n  thumb: string\n}>",
+        "type": "Partial<{ root: string; hiddenInput: string; control: string; label: string; thumb: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the switch. Useful for composition."
       },
@@ -71,11 +67,7 @@
         "isRequired": false,
         "description": "Function to call when the switch is clicked."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the switch is read-only"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the switch is read-only" },
       "required": {
         "type": "boolean",
         "isRequired": false,

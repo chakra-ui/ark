@@ -59,4 +59,12 @@ export type RootEmits = {
    * Called when the page size is changed
    */
   pageSizeChange: [details: pagination.PageSizeChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelValue': [page: pagination.PageChangeDetails['page']]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:modelPageSize': [pageSize: pagination.PageSizeChangeDetails['pageSize']]
 }

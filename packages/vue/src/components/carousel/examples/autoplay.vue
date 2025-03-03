@@ -5,7 +5,7 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
 </script>
 
 <template>
-  <Carousel.Root autoplay loop>
+  <Carousel.Root :slide-count="images.length" autoplay loop>
     <Carousel.Control>
       <Carousel.AutoplayTrigger>
         <Carousel.Context v-slot="context">

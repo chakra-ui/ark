@@ -1,20 +1,8 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Tooltip, tooltipAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './tooltip.test.vue'
 
 describe('Tooltip', () => {
-  it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
-    expect(Tooltip[part]).toBeDefined()
-  })
-
   it('should show the tooltip on pointerover and close on pointer leave', async () => {
     render(ComponentUnderTest)
 

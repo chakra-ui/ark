@@ -8,15 +8,23 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
-   * The initial open state of the date picker when it is first rendered.
+   * The initial focused date when rendered.
+   * Use when you don't need to control the focused date of the date picker.
+   */
+  defaultFocusedValue?: datePicker.DateValue
+  /**
+   * The initial open state of the date picker when rendered.
+   * Use when you don't need to control the open state of the date picker.
    */
   defaultOpen?: boolean
   /**
-   * The initial value of the date picker when it is first rendered.
+   * The initial selected date(s) when rendered.
+   * Use when you don't need to control the selected date(s) of the date picker.
    */
   defaultValue?: datePicker.DateValue[]
   /**
-   * The initial view of the date picker when it is first rendered.
+   * The default view of the calendar
+   * @default "day"
    */
   defaultView?: datePicker.DateView
   /**
@@ -29,7 +37,7 @@ export interface RootProps {
    */
   fixedWeeks?: boolean
   /**
-   * The focused date.
+   * The controlled focused date.
    */
   focusedValue?: datePicker.DateValue
   /**
@@ -103,9 +111,13 @@ export interface RootProps {
    */
   numOfMonths?: number
   /**
-   * Whether the datepicker is open
+   * The controlled open state of the date picker
    */
   open?: boolean
+  /**
+   * Function to parse the date from the input back to a DateValue.
+   */
+  parse?: (value: string, details: datePicker.LocaleDetails) => datePicker.DateValue | undefined
   /**
    * The placeholder text to display in the input.
    */
@@ -149,7 +161,6 @@ export interface RootProps {
   translations?: datePicker.IntlTranslations
   /**
    * The view of the calendar
-   * @default "day"
    */
   view?: datePicker.DateView
 }
@@ -183,4 +194,8 @@ export type RootEmits = {
    * The callback fired when the view changes.
    */
   'update:view': [view: datePicker.DateView]
+  /**
+   * The callback fired when the focused date changes.
+   */
+  'update:focusedValue': [focusedValue: datePicker.DateValue]
 }

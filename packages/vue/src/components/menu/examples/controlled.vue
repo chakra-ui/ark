@@ -7,7 +7,7 @@ const isOpen = ref(false)
 
 <template>
   <button @click="isOpen = !isOpen">Trigger from the outside</button>
-  <Menu.Root :open="isOpen">
+  <Menu.Root v-model:open="isOpen">
     <Menu.Trigger>Open menu</Menu.Trigger>
     <Menu.Positioner>
       <Menu.Content>

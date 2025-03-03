@@ -9,7 +9,8 @@ export const WithSlider = () => {
           <Accordion.ItemTrigger>What is {item}?</Accordion.ItemTrigger>
           <Accordion.ItemContent>
             {item} is a JavaScript library for building user interfaces.
-            <Slider.Root style={{ marginBlock: '20px' }}>
+            <Slider.Root>
+              <Slider.Label>Slider</Slider.Label>
               <Slider.Control>
                 <Slider.Track>
                   <Slider.Range />

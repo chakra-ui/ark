@@ -11,6 +11,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
   const [usePaginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
     'count',
     'defaultPage',
+    'defaultPageSize',
     'id',
     'ids',
     'onPageChange',

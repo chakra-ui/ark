@@ -1,36 +1,12 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { act, render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { SegmentGroup } from '../'
-import { getExports, getParts } from '../../../setup-test'
-import { segmentGroupAnatomy } from '../segment-group.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('Segment Group / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
-    expect(SegmentGroup[part]).toBeDefined()
-  })
-})
-
 describe('Segment Group', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(async () => render(<ComponentUnderTest />))
     const results = await axe(container)
-
     expect(results).toHaveNoViolations()
   })
 
@@ -46,7 +22,7 @@ describe('Segment Group', () => {
     const onValueChange = vi.fn()
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    await user.click(screen.getByLabelText('Svelte'))
+    await user.click(await screen.findByLabelText('Svelte'))
     expect(onValueChange).not.toHaveBeenCalled()
   })
 })

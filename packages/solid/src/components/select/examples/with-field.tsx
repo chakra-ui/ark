@@ -19,7 +19,6 @@ export const WithField = (props: Field.RootProps) => {
           </Select.Trigger>
         </Select.Control>
         <Select.Positioner>
-          ̦
           <Select.Content>
             <Select.ItemGroup>
               <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>

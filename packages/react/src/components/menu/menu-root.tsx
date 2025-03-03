@@ -20,6 +20,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'aria-label',
     'closeOnSelect',
     'composite',
+    'defaultHighlightedValue',
     'defaultOpen',
     'highlightedValue',
     'id',
@@ -40,14 +41,14 @@ export const MenuRoot = (props: MenuRootProps) => {
 
   const parentApi = useMenuContext()
   const parentMachine = useMenuMachineContext()
-  const { api, machine } = useMenu(useMenuProps)
+  const { api, service } = useMenu(useMenuProps)
   const presence = usePresence(mergeProps({ present: api.open }, presenceProps))
 
   useEffectOnce(() => {
     if (!parentMachine) return
     if (!parentApi) return
 
-    parentApi.setChild(machine)
+    parentApi.setChild(service)
     api.setParent(parentMachine)
   })
 
@@ -55,7 +56,7 @@ export const MenuRoot = (props: MenuRootProps) => {
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={machine}>
+      <MenuMachineProvider value={service}>
         <MenuProvider value={api}>
           <PresenceProvider value={presence} {...localProps} />
         </MenuProvider>

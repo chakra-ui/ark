@@ -24,6 +24,7 @@
       'ids',
       'onValueChange',
       'value',
+      'pixelSize',
     ]),
   )
 

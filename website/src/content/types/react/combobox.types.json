@@ -162,15 +162,27 @@
         "isRequired": false,
         "description": "Whether the combobox is a composed with other composite widgets like tabs"
       },
+      "defaultHighlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial highlighted value of the combobox when rendered.\nUse when you don't need to control the highlighted value of the combobox."
+      },
+      "defaultInputValue": {
+        "type": "string",
+        "defaultValue": "\"\"",
+        "isRequired": false,
+        "description": "The initial value of the combobox's input when rendered.\nUse when you don't need to control the value of the combobox's input."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the combobox when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the combobox when rendered.\nUse when you don't need to control the open state of the combobox."
       },
       "defaultValue": {
         "type": "string[]",
+        "defaultValue": "[]",
         "isRequired": false,
-        "description": "The initial value of the combobox when it is first rendered.\nUse when you do not need to control the state of the combobox."
+        "description": "The initial value of the combobox's selected items when rendered.\nUse when you don't need to control the value of the combobox's selected items."
       },
       "disabled": {
         "type": "boolean",
@@ -190,7 +202,7 @@
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The active item's id. Used to set the `aria-activedescendant` attribute"
+        "description": "The controlled highlighted value of the combobox"
       },
       "id": {
         "type": "string",
@@ -216,7 +228,7 @@
       "inputValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The current value of the combobox's input"
+        "description": "The controlled value of the combobox's input"
       },
       "invalid": {
         "type": "boolean",
@@ -251,7 +263,7 @@
         "description": "Function to navigate to the selected item"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -293,7 +305,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the combobox is open"
+        "description": "The controlled open state of the combobox"
       },
       "openOnChange": {
         "type": "boolean | ((details: InputValueChangeDetails) => boolean)",
@@ -320,6 +332,7 @@
       },
       "positioning": {
         "type": "PositioningOptions",
+        "defaultValue": "{ placement: \"bottom-start\" }",
         "isRequired": false,
         "description": "The positioning options to dynamically position the menu"
       },
@@ -363,7 +376,7 @@
       "value": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The keys of the selected items"
+        "description": "The controlled value of the combobox's selected items"
       }
     }
   },
@@ -390,7 +403,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },

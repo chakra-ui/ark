@@ -3,7 +3,7 @@ import { Slider } from '@ark-ui/vue/slider'
 </script>
 
 <template>
-  <Slider.Root orientation="vertical">
+  <Slider.Root :default-value="[42]" orientation="vertical">
     <Slider.Label>Label</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>

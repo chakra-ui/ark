@@ -7,22 +7,13 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './color-picker.types'
 
-export interface UseColorPickerProps
-  extends Optional<Omit<colorPicker.Context, 'dir' | 'getRootNode' | 'open.controlled' | 'value'>, 'id'> {
+export interface UseColorPickerProps extends Optional<Omit<colorPicker.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the color picker
    */
-  modelValue?: colorPicker.Context['value']
-  /**
-   * The initial open state of the color picker.
-   */
-  defaultOpen?: colorPicker.Context['open']
-  /**
-   * The initial value of the color picker when it is first rendered.
-   * Use when you do not need to control the state of the color picker.
-   */
-  defaultValue?: colorPicker.Context['value']
+  modelValue?: colorPicker.Color
 }
+
 export interface UseColorPickerReturn extends ComputedRef<colorPicker.Api<PropTypes>> {}
 
 export const useColorPicker = (props: UseColorPickerProps = {}, emit?: EmitFn<RootEmits>): UseColorPickerReturn => {
@@ -31,7 +22,7 @@ export const useColorPicker = (props: UseColorPickerProps = {}, emit?: EmitFn<Ro
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<colorPicker.Context>(() => ({
+  const context = computed<colorPicker.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -42,26 +33,42 @@ export const useColorPicker = (props: UseColorPickerProps = {}, emit?: EmitFn<Ro
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    value: props.defaultValue ?? props.modelValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onOpenChange(details) {
       emit?.('openChange', details)
       emit?.('update:open', details.open)
+      props.onOpenChange?.(details)
     },
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onFormatChange: (details) => emit?.('formatChange', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onValueChangeEnd: (details) => emit?.('valueChangeEnd', details),
-    ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onFormatChange: (details) => {
+      emit?.('formatChange', details)
+      emit?.('update:format', details.format)
+      props.onFormatChange?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onValueChangeEnd: (details) => {
+      emit?.('valueChangeEnd', details)
+      props.onValueChangeEnd?.(details)
+    },
   }))
-  const [state, send] = useMachine(colorPicker.machine(context.value), { context })
 
-  return computed(() => colorPicker.connect(state.value, send, normalizeProps))
+  const service = useMachine(colorPicker.machine, context)
+  return computed(() => colorPicker.connect(service, normalizeProps))
 }

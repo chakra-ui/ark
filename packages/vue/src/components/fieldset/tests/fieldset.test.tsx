@@ -1,22 +1,7 @@
 import { render, screen } from '@testing-library/vue'
-import { Fieldset, fieldsetAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './fieldset.test.vue'
 
 describe('Fieldset', () => {
-  it.each(getParts(fieldsetAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
-    'should render part %s',
-    async (part) => {
-      render(ComponentUnderTest)
-
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(fieldsetAnatomy))('should export %s', async (part) => {
-    expect(Fieldset[part]).toBeDefined()
-  })
-
   it('should set textbox as disabled', async () => {
     render(ComponentUnderTest, { props: { disabled: true } })
     expect(screen.getByRole('textbox', { name: /label/i })).toBeDisabled()

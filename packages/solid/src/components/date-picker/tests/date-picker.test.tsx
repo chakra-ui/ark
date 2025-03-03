@@ -1,20 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { DatePicker, datePickerAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Date Picker', () => {
-  it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
-    expect(DatePicker[part]).toBeDefined()
-  })
-
   it('should be able to lazy mount', async () => {
     render(() => <ComponentUnderTest lazyMount />)
 

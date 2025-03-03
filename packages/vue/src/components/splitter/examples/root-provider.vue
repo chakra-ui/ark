@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { Splitter, useSplitter } from '@ark-ui/vue/splitter'
-import { ref } from 'vue'
 
-const size = ref([
-  { id: 'a', size: 50 },
-  { id: 'b', size: 50 },
-])
-
-const splitter = useSplitter({ size: size.value })
+const splitter = useSplitter({
+  defaultSize: [
+    { id: 'a', size: 50 },
+    { id: 'b', size: 50 },
+  ],
+})
 </script>
 
 <template>

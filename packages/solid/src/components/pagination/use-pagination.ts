@@ -4,13 +4,7 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UsePaginationProps extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial page of the pagination when it is first rendered.
-   * Use when you do not need to control the state of the pagination.
-   */
-  defaultPage?: pagination.Context['page']
-}
+export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends Accessor<pagination.Api<PropTypes>> {}
 
 export const usePagination = (props: UsePaginationProps): UsePaginationReturn => {
@@ -18,14 +12,13 @@ export const usePagination = (props: UsePaginationProps): UsePaginationReturn =>
   const environment = useEnvironmentContext()
   const id = createUniqueId()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<pagination.Props>(() => ({
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    page: props.defaultPage,
     ...props,
   }))
 
-  const [state, send] = useMachine(pagination.machine(context()), { context })
-  return createMemo(() => pagination.connect(state, send, normalizeProps))
+  const service = useMachine(pagination.machine, machineProps)
+  return createMemo(() => pagination.connect(service, normalizeProps))
 }

@@ -14,6 +14,7 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
     'closeOnSelect',
     'defaultOpen',
     'defaultValue',
+    'defaultFormat',
     'disabled',
     'format',
     'id',

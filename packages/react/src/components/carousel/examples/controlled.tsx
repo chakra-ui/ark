@@ -7,7 +7,7 @@ export const Controlled = () => {
   const [page, setPage] = useState(0)
 
   return (
-    <Carousel.Root page={page} onPageChange={(e) => setPage(e.page)}>
+    <Carousel.Root slideCount={images.length} page={page} onPageChange={(e) => setPage(e.page)}>
       <Carousel.Control>
         <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
         <Carousel.NextTrigger>Next</Carousel.NextTrigger>

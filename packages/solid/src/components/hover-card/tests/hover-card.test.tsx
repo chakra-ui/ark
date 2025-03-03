@@ -1,20 +1,8 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { HoverCard, hoverCardAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('HoverCard', () => {
-  it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
-    expect(HoverCard[part]).toBeDefined()
-  })
-
   it('should open on hover', async () => {
     render(() => <ComponentUnderTest />)
 

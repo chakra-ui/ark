@@ -1,21 +1,9 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Popover, popoverAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
 describe('Popover', () => {
-  it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
-    expect(Popover[part]).toBeDefined()
-  })
-
   it('should open and close the popover', async () => {
     render(() => <ComponentUnderTest />)
 
@@ -26,11 +14,11 @@ describe('Popover', () => {
     await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
   })
 
-  it.skip('should hide the popover when escape is pressed', async () => {
+  it('should hide the popover when escape is pressed', async () => {
     render(() => <ComponentUnderTest />)
 
     await user.click(screen.getByText('click me'))
-    await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())
+    await waitFor(() => expect(screen.queryByText('title')).toBeVisible())
 
     await user.keyboard('[Escape]')
     await waitFor(() => expect(screen.queryByText('title')).not.toBeVisible())

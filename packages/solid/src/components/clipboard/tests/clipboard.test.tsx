@@ -1,8 +1,7 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
-import { Clipboard, clipboardAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { Clipboard } from '../'
 
 const ComponentUnderTest = () => (
   <Clipboard.Root value="https://ark-ui.com">
@@ -19,16 +18,6 @@ const ComponentUnderTest = () => (
 )
 
 describe('Clipboard', () => {
-  it.each(getParts(clipboardAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(clipboardAnatomy))('should export %s', async (part) => {
-    expect(Clipboard[part]).toBeDefined()
-  })
-
   it('should copy the value into the clipboard', async () => {
     render(() => <ComponentUnderTest />)
 

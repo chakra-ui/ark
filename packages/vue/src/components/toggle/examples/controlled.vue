@@ -8,7 +8,7 @@ const pressed = ref(false)
 
 <template>
   <div>
-    <Toggle.Root v-model="pressed">
+    <Toggle.Root v-model:pressed="pressed">
       <component :is="pressed ? Volume : VolumeOff" />
     </Toggle.Root>
     <p>Volume is {{ pressed ? 'unmuted' : 'muted' }}</p>

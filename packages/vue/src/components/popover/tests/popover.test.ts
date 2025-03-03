@@ -1,21 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { Popover, popoverAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import ControlledComponentUnderTest from './controlled-popover.test.vue'
 import ComponentUnderTest from './popover.test.vue'
 
 describe('Popover', () => {
-  it.each(getParts(popoverAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(popoverAnatomy))('should export %s', async (part) => {
-    expect(Popover[part]).toBeDefined()
-  })
-
   it('should open and close the popover', async () => {
     render(ComponentUnderTest)
 

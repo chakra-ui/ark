@@ -4,7 +4,7 @@ import { Index } from 'solid-js'
 const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`)
 
 export const RootProvider = () => {
-  const carousel = useCarousel()
+  const carousel = useCarousel({ slideCount: images.length })
   return (
     <>
       <button onClick={() => carousel().scrollToIndex(2)}>Scroll to #3</button>
