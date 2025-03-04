@@ -15,7 +15,7 @@ export interface RootProps {
    */
   ids?: Partial<{ root: string; input: string; label: string }>
   /**
-   * The model value of the clipboard
+   * The v-model value of the clipboard
    */
   modelValue?: string
   /**

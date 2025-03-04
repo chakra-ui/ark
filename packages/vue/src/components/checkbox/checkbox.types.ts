@@ -2,12 +2,12 @@ import type * as checkbox from '@zag-js/checkbox'
 
 export interface RootProps {
   /**
-   * The checked state of the checkbox
+   * The controlled checked state of the checkbox
    */
   checked?: checkbox.CheckedState
   /**
-   * The checked state of the checkbox when it is first rendered.
-   * Use this when you do not need to control the state of the checkbox.
+   * The initial checked state of the checkbox when rendered.
+   * Use when you don't need to control the checked state of the checkbox.
    */
   defaultChecked?: checkbox.CheckedState
   /**
@@ -43,11 +43,6 @@ export interface RootProps {
    * Whether the checkbox is required
    */
   required?: boolean
-  /**
-   * The value of checkbox input. Useful for form submission.
-   * @default "on"
-   */
-  value?: string
 }
 
 export type RootEmits = {

@@ -81,4 +81,8 @@ export type RootEmits = {
    * Callback when the highlighted step changes
    */
   stepChange: [details: tour.StepChangeDetails]
+  /**
+   * Callback when the steps change
+   */
+  stepsChange: [details: { steps: tour.StepDetails[] }]
 }

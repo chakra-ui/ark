@@ -4,12 +4,19 @@ export interface RootProps {
   /**
    * Total number of data items
    */
-  count: number
+  count?: number
   /**
-   * The initial page of the pagination when it is first rendered.
-   * Use when you do not need to control the state of the pagination.
+   * The initial active page when rendered.
+   * Use when you don't need to control the active page of the pagination.
+   * @default 1
    */
   defaultPage?: number
+  /**
+   * The initial number of data items per page when rendered.
+   * Use when you don't need to control the page size of the pagination.
+   * @default 10
+   */
+  defaultPageSize?: number
   /**
    * The unique identifier of the machine.
    */
@@ -25,15 +32,13 @@ export interface RootProps {
     item(page: number): string
   }>
   /**
-   * The active page
-   * @default 1
+   * The v-model value of the pagination page size
    */
-  page?: number
+  modelPageSize?: number
   /**
-   * Number of data items per page
-   * @default 10
+   * The v-model value of the pagination
    */
-  pageSize?: number
+  modelValue?: number
   /**
    * Number of pages to show beside active page
    * @default 1

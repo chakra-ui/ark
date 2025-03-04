@@ -29,7 +29,7 @@ export interface RootProps {
     itemTrigger(value: string): string
   }>
   /**
-   * The model value of the accordion
+   * The v-model value of the accordion
    */
   modelValue?: string[]
   /**

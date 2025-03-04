@@ -39,6 +39,10 @@ export const useTour = (props: UseTourProps = {}, emit?: EmitFn<RootEmits>) => {
       emit?.('stepChange', details)
       props.onStepChange?.(details)
     },
+    onStepsChange(details) {
+      emit?.('stepsChange', details)
+      props.onStepsChange?.(details)
+    },
   }))
 
   const service = useMachine(tour.machine, context)

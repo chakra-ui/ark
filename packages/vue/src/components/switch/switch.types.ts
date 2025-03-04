@@ -47,11 +47,6 @@ export interface RootProps {
    * If `true`, the switch input is marked as required,
    */
   required?: boolean
-  /**
-   * The value of switch input. Useful for form submission.
-   * @default "on"
-   */
-  value?: string | number
 }
 
 export type RootEmits = {

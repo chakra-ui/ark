@@ -1,4 +1,3 @@
-import type { FocusOutsideEvent, InteractOutsideEvent, PointerDownOutsideEvent } from '@zag-js/dismissable'
 import type * as hoverCard from '@zag-js/hover-card'
 
 export interface RootProps {
@@ -39,11 +38,11 @@ export type RootEmits = {
   /**
    * Function called when the focus is moved outside the component
    */
-  focusOutside: [event: FocusOutsideEvent]
+  focusOutside: [event: hoverCard.FocusOutsideEvent]
   /**
    * Function called when an interaction happens outside the component
    */
-  interactOutside: [event: InteractOutsideEvent]
+  interactOutside: [event: hoverCard.InteractOutsideEvent]
   /**
    * Function called when the hover card opens or closes.
    */
@@ -51,7 +50,7 @@ export type RootEmits = {
   /**
    * Function called when the pointer is pressed down outside the component
    */
-  pointerDownOutside: [event: PointerDownOutsideEvent]
+  pointerDownOutside: [event: hoverCard.PointerDownOutsideEvent]
   /**
    * The callback fired when the open state changes.
    */

@@ -7,13 +7,13 @@ export interface RootProps<T extends TreeNode> {
    */
   collection: TreeCollection<T>
   /**
-   * The initial expanded items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
+   * The initial expanded node ids when rendered.
+   * Use when you don't need to control the expanded node ids.
    */
   defaultExpandedValue?: string[]
   /**
-   * The initial selected items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
+   * The initial selected node ids when rendered.
+   * Use when you don't need to control the selected node ids.
    */
   defaultSelectedValue?: string[]
   /**
@@ -22,7 +22,7 @@ export interface RootProps<T extends TreeNode> {
    */
   expandOnClick?: boolean
   /**
-   * The id of the expanded nodes
+   * The controlled expanded node ids
    */
   expandedValue?: string[]
   /**
@@ -38,7 +38,7 @@ export interface RootProps<T extends TreeNode> {
    */
   ids?: Partial<{ root: string; tree: string; label: string; node(value: string): string }>
   /**
-   * The id of the selected nodes
+   * The controlled selected node ids
    */
   selectedValue?: string[]
   /**
