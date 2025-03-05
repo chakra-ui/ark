@@ -52,24 +52,16 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the signature pad is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is disabled." },
       "drawing": {
         "type": "DrawingOptions",
         "defaultValue": "'{ size: 2, simulatePressure: true }'",
         "isRequired": false,
         "description": "The drawing options."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  control: string\n  hiddenInput: string\n  label: string\n}>",
+        "type": "Partial<{ root: string; control: string; hiddenInput: string; label: string }>",
         "isRequired": false,
         "description": "The ids of the signature pad elements. Useful for composition."
       },
@@ -78,16 +70,8 @@
         "isRequired": false,
         "description": "The name of the signature pad. Useful for form submission."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the signature pad is read-only."
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the signature pad is required."
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is read-only." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is required." },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -97,7 +81,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "SignaturePadApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

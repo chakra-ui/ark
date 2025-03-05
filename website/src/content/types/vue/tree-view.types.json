@@ -100,21 +100,13 @@
   },
   "NodeProvider": {
     "props": {
-      "indexPath": {
-        "type": "number[]",
-        "isRequired": true,
-        "description": "The index path of the tree node"
-      },
+      "indexPath": { "type": "number[]", "isRequired": true, "description": "The index path of the tree node" },
       "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
     }
   },
   "Root": {
     "props": {
-      "collection": {
-        "type": "TreeCollection<T>",
-        "isRequired": true,
-        "description": "The collection of tree nodes"
-      },
+      "collection": { "type": "TreeCollection<T>", "isRequired": true, "description": "The collection of tree nodes" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -123,36 +115,24 @@
       "defaultExpandedValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial expanded items of the tree view.\nUse this when you do not need to control the state of the tree view."
+        "description": "The initial expanded node ids when rendered.\nUse when you don't need to control the expanded node ids."
       },
       "defaultSelectedValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial selected items of the tree view.\nUse this when you do not need to control the state of the tree view."
+        "description": "The initial selected node ids when rendered.\nUse when you don't need to control the selected node ids."
       },
-      "expandedValue": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The id of the expanded nodes"
-      },
+      "expandedValue": { "type": "string[]", "isRequired": false, "description": "The controlled expanded node ids" },
       "expandOnClick": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether clicking on a branch should open it or not"
       },
-      "focusedValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the focused node"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "focusedValue": { "type": "string", "isRequired": false, "description": "The id of the focused node" },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  tree: string\n  label: string\n  node(value: string): string\n}>",
+        "type": "Partial<{ root: string; tree: string; label: string; node(value: string): string }>",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
       },
@@ -162,11 +142,7 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
-      "selectedValue": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The id of the selected nodes"
-      },
+      "selectedValue": { "type": "string[]", "isRequired": false, "description": "The controlled selected node ids" },
       "selectionMode": {
         "type": "'multiple' | 'single'",
         "defaultValue": "\"single\"",
@@ -189,7 +165,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes, T>", "isRequired": true },
+      "value": { "type": "TreeViewApi<PropTypes, T>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

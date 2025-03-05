@@ -41,6 +41,16 @@
         "type": "[details: CopyStatusDetails]",
         "isRequired": true,
         "description": "The function to be called when the value is copied to the clipboard"
+      },
+      "update:modelValue": {
+        "type": "[value: string]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "The function to be called when the value changes"
       }
     },
     "props": {
@@ -48,6 +58,11 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial value to be copied to the clipboard when rendered.\nUse when you don't need to control the value of the clipboard."
       },
       "id": {
         "type": "string",
@@ -59,22 +74,25 @@
         "isRequired": false,
         "description": "The ids of the elements in the clipboard. Useful for composition."
       },
+      "modelValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The v-model value of the clipboard"
+      },
       "timeout": {
         "type": "number",
         "defaultValue": "3000",
         "isRequired": false,
         "description": "The timeout for the copy operation"
-      },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The value to be copied to the clipboard"
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": {
+        "type": "ClipboardApi<PropTypes>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

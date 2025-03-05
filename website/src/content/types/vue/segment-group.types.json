@@ -59,7 +59,7 @@
   "Root": {
     "emits": {
       "update:modelValue": {
-        "type": "[value: string]",
+        "type": "[value: string | null]",
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       },
@@ -83,24 +83,16 @@
       "disabled": {
         "type": "boolean",
         "isRequired": false,
-        "description": "If `true`, the radio group will be disabled"
+        "description": "If `true`, the segment group will be disabled"
       },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The associate form of the underlying input."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying input." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  item(value: string): string\n  itemLabel(value: string): string\n  itemControl(value: string): string\n  itemHiddenInput(value: string): string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the radio. Useful for composition."
       },
-      "modelValue": { "type": "string", "isRequired": false },
+      "modelValue": { "type": "string", "isRequired": false, "description": "The v-model value of the segment group" },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -109,18 +101,14 @@
       "orientation": {
         "type": "'horizontal' | 'vertical'",
         "isRequired": false,
-        "description": "Orientation of the radio group"
+        "description": "Orientation of the segment group"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the checkbox is read-only"
-      }
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the segment group is read-only" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "RadioGroupApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

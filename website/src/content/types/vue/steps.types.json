@@ -80,46 +80,31 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "count": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The total number of steps"
-      },
+      "count": { "type": "number", "isRequired": false, "description": "The total number of steps" },
       "defaultStep": {
         "type": "number",
         "isRequired": false,
-        "description": "The initial value of the step"
+        "description": "The initial value of the stepper when rendered.\nUse when you don't need to control the value of the stepper."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
-      "ids": {
-        "type": "ElementIds",
-        "isRequired": false,
-        "description": "The custom ids for the stepper elements"
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The custom ids for the stepper elements" },
       "linear": {
         "type": "boolean",
         "isRequired": false,
         "description": "If `true`, the stepper requires the user to complete the steps in order"
       },
-      "modelValue": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The v-model value of the step"
-      },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the stepper"
-      }
+      },
+      "step": { "type": "number", "isRequired": false, "description": "The controlled value of the stepper" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "StepsApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

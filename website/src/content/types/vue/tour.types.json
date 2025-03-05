@@ -116,10 +116,15 @@
         "type": "[details: StepChangeDetails]",
         "isRequired": true,
         "description": "Callback when the highlighted step changes"
+      },
+      "stepsChange": {
+        "type": "[details: { steps: StepDetails[] }]",
+        "isRequired": true,
+        "description": "Callback when the steps change"
       }
     },
     "props": {
-      "tour": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "tour": { "type": "TourApi<PropTypes>", "isRequired": true },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

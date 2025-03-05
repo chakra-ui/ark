@@ -24,7 +24,10 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "modelValue": { "type": "any", "isRequired": false }
+      "modelValue": {
+        "type": "any",
+        "isRequired": false
+      }
     }
   },
   "Label": {
@@ -57,7 +60,11 @@
         "isRequired": false,
         "description": "Indicates whether the field is disabled."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the field."
+      },
       "ids": {
         "type": "ElementIds",
         "isRequired": false,
@@ -100,7 +107,10 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "modelValue": { "type": "any", "isRequired": false }
+      "modelValue": {
+        "type": "any",
+        "isRequired": false
+      }
     }
   },
   "Textarea": {
@@ -116,7 +126,10 @@
         "isRequired": false,
         "description": "Whether the textarea should autoresize"
       },
-      "modelValue": { "type": "string | number | readonly string[]", "isRequired": false }
+      "modelValue": {
+        "type": "string | number | readonly string[]",
+        "isRequired": false
+      }
     }
   }
 }

@@ -78,7 +78,7 @@
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial value of the accordion that are expanded.\nUse this when you do not need to control the state of the accordion."
+        "description": "The initial value of the expanded accordion items.\nUse when you don't need to control the value of the accordion."
       },
       "disabled": {
         "type": "boolean",
@@ -104,7 +104,7 @@
       "modelValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The accordion items that are currently expanded.\nUse this prop to control the state of the items via v-model."
+        "description": "The v-model value of the accordion"
       },
       "multiple": {
         "type": "boolean",
@@ -128,7 +128,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": {
+        "type": "AccordionApi<PropTypes>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

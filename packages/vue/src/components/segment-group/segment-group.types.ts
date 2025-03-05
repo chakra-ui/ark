@@ -57,5 +57,5 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: string]
+  'update:modelValue': [value: string | null]
 }

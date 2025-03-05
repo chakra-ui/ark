@@ -38,7 +38,11 @@
         "isRequired": false,
         "description": "Indicates whether the fieldset is disabled."
       },
-      "id": { "type": "string", "isRequired": false, "description": "The id of the fieldset." },
+      "id": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the fieldset."
+      },
       "invalid": {
         "type": "boolean",
         "isRequired": false,

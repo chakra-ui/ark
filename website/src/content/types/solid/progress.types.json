@@ -57,10 +57,22 @@
         "isRequired": false,
         "description": "The initial value of the progress bar when rendered.\nUse when you don't need to control the value of the progress bar."
       },
+      "formatOptions": {
+        "type": "NumberFormatOptions",
+        "defaultValue": "{ style: \"percent\" }",
+        "isRequired": false,
+        "description": "The options to use for formatting the value."
+      },
       "ids": {
         "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the progress bar. Useful for composition."
+      },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The locale to use for formatting the value."
       },
       "max": {
         "type": "number",
@@ -90,12 +102,19 @@
         "isRequired": false,
         "description": "The localized messages to use."
       },
-      "value": { "type": "number", "isRequired": false, "description": "The controlled value of the progress bar." }
+      "value": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled value of the progress bar."
+      }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseProgressReturn", "isRequired": true },
+      "value": {
+        "type": "UseProgressReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -123,7 +142,10 @@
   },
   "View": {
     "props": {
-      "state": { "type": "ProgressState", "isRequired": true },
+      "state": {
+        "type": "ProgressState",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,

@@ -67,7 +67,7 @@
       "editChange": {
         "type": "[details: EditChangeDetails]",
         "isRequired": true,
-        "description": "The callback that is called when the edit mode is changed"
+        "description": "Function to call when the edit mode changes."
       },
       "focusOutside": {
         "type": "[event: FocusOutsideEvent]",
@@ -87,7 +87,7 @@
       "update:edit": {
         "type": "[edit: boolean]",
         "isRequired": true,
-        "description": "Event handler called when the edit state of the combobox changes."
+        "description": "Event handler called when the edit state of the editable changes."
       },
       "update:modelValue": {
         "type": "[value: string]",
@@ -97,17 +97,17 @@
       "valueChange": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
-        "description": "The callback that is called when the editable's value is changed"
+        "description": "Function to call when the value changes."
       },
       "valueCommit": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
-        "description": "The callback that is called when the editable's value is submitted."
+        "description": "Function to call when the value is committed."
       },
       "valueRevert": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
-        "description": "The callback that is called when the esc key is pressed or the cancel button is clicked"
+        "description": "Function to call when the value is reverted."
       }
     },
     "props": {
@@ -130,54 +130,34 @@
       "defaultEdit": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial edit state of the editable when it is first rendered.\nUse when you do not need to control its edit state."
+        "description": "Whether the editable is in edit mode by default."
       },
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the editable when it is first rendered.\nUse when you do not need to control the state of the editable."
+        "description": "The initial value of the editable when rendered.\nUse when you don't need to control the value of the editable."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the editable is disabled"
-      },
-      "edit": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the editable is in edit mode."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the editable is disabled." },
+      "edit": { "type": "boolean", "isRequired": false, "description": "Whether the editable is in edit mode." },
       "finalFocusEl": {
         "type": "() => HTMLElement | null",
         "isRequired": false,
-        "description": "The element that should receive focus when the editable is closed.\nBy default, it will focus on the trigger element."
+        "description": "The element to receive focus when the editable is closed."
       },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The associate form of the underlying input."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying input." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  area: string\n  label: string\n  preview: string\n  input: string\n  control: string\n  submitTrigger: string\n  cancelTrigger: string\n  editTrigger: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the editable. Useful for composition."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the input's value is invalid."
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the input's value is invalid." },
       "maxLength": {
         "type": "number",
         "isRequired": false,
         "description": "The maximum number of characters allowed in the editable"
       },
-      "modelValue": { "type": "string", "isRequired": false },
+      "modelValue": { "type": "string", "isRequired": false, "description": "The v-model value of the editable" },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -186,18 +166,10 @@
       "placeholder": {
         "type": "string | { edit: string; preview: string }",
         "isRequired": false,
-        "description": "The placeholder value to show when the `value` is empty"
+        "description": "The placeholder text for the editable."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the editable is readonly"
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the editable is required"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the editable is read-only." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the editable is required." },
       "selectOnFocus": {
         "type": "boolean",
         "defaultValue": "true",
@@ -213,13 +185,13 @@
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
-        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+        "description": "The translations for the editable."
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "EditableApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
