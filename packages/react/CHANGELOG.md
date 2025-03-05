@@ -25,7 +25,7 @@ Most component updates are non-breaking, but due to this change, some tests may 
 
 ```jsx
 // Before
-it('should open by default', async () => {
+it('should open by default', () => {
   render(<ComponentUnderTest defaultOpen />)
   expect(screen.getByRole('dialog')).toBeInTheDocument()
 })
