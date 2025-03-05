@@ -6,27 +6,71 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-Welcome to Ark UI v5.
+Ark UI just got a major performance boost! 🚀
 
-### Added:
+### What’s new in v5?
 
-- **Carousel** : Breaking change: Added required propt `slideCount` to `Carousel.Root` component.
-- **Clipboard**: Added `onValueChange` and `defaultValue` props to the `Clipboard` component.
-- **ColorPicker**: Added `defaultFormat` prop to the `ColorPicker` component.
-- **Combobox**: Added `defaultHighlightedValue` and `defaultInputValue` props to the `Combobox` component.
-- **DatePicker**: Added `defaultFocusedValue` prop to the `DatePicker` component.
-- **Menu**: Added `defaultHighlightedValue` prop to the `Menu` component.
-- **Pagination**: Added `defaultPageSize` prop to the `Pagination` component.
-- **PinInput**: Added `count` prop to the `PinInput` component.
-- **Progress**: Added `locale` and `formatOptions` prop to the `Progress` component.
-- **QrCode**: Added `pixelSize` prop to the `QrCode` component.
-- **Select**: Added `defaultHighlightedValue` props to the `Select` component.
-- **TagsInput**: Added `defaultInputValue` prop to the `TagsInput` component.
+- **Blazing-fast performance** – Every component runs smoother and renders faster.
+- **Smaller bundle size** – Leaner components and adapters for a more efficient build.
 
-### Fixed
+We made this happen by using React’s native reactive primitives instead of external stores.
 
+In our stress tests with **10,000 components**, Ark v5 delivered **1.5x–4x** better performance across the board.
+
+![Performance comparison showing Ark v5 is 1.5x-4x faster than other libraries](./v5.svg)
+
+### A quick note on tests
+
+Most component updates are non-breaking, but due to this change, some tests may need adjustments. For example:
+
+```jsx
+// Before
+it('should open by default', async () => {
+  render(<ComponentUnderTest defaultOpen />)
+  expect(screen.getByRole('dialog')).toBeInTheDocument()
+})
+
+// After
+it('should open by default', async () => {
+  render(<ComponentUnderTest defaultOpen />)
+  expect(await screen.findByRole('dialog')).toBeInTheDocument()
+})
+```
+
+#### Added
+
+- **Carousel**: ⚠️ Breaking change: Added required prop `slideCount` to `Carousel.Root` component.
+- **Clipboard**: Added `onValueChange` and `defaultValue` props.
+- **ColorPicker**: Added `defaultFormat` prop.
+- **Combobox**: Added `defaultHighlightedValue` and `defaultInputValue` props.
+- **DatePicker**: Added `defaultFocusedValue` prop, `getViewProps`, and `visibleRangeText`.
+- **HoverCard**: Expanded interaction handlers.
+- **Menu**: Added `defaultHighlightedValue` prop.
+- **Pagination**: Added `defaultPageSize` prop.
+- **PinInput**: Added `count` prop for better SSR aria-label.
+- **Progress**: Added `locale` and `formatOptions` props.
+- **QrCode**: Added `pixelSize` prop.
+- **Select**: Added `defaultHighlightedValue` prop.
+- **TagsInput**: Added `defaultInputValue` prop.
+- **Toggle**: Reintroduced toggle machine.
+
+#### Fixed
+
+- **Accordion**: Fixed issue in Safari where clicking triggers didn't show content.
+- **Avatar**: Fixed `api.setSrc` not working.
+- **Carousel**: Fixed pagination sync and initial page issues.
+- **File Upload**: Fixed drag-and-drop when `directory: true`.
+- **Menu**: Fixed context menu positioning not updating on right-click.
+- **Number Input**: Fixed `value` prop not being consumed.
+- **Pin Input**: Fixed focus warnings and editing issues.
+- **Progress**: Allowed more precise (decimal) values.
+- **Radio Group, Switch**: Improved focus behavior in Safari.
+- **Select**: Fixed regression where `multiple: true` didn't work.
 - **Steps**: Ensured ARIA attributes use valid values and wrapped `<li>` elements correctly within `<ul>` or `<ol>`.
-- **Timer**: Resolved an issue that `action` prop was passed to the `ActionTrigger` component.
+- **Textarea**: Fixed `ResizeObserver` warning.
+- **Timer**: Fixed stopping issue when switching tabs; resolved issue where `action` prop was passed to `ActionTrigger`.
+- **Toast**: Fixed keyboard navigation skipping close button.
+- **Toggle Group**: Fixed `data-focus` not being removed on blur.
 
 ## [4.9.2] - 2025-02-21
 
@@ -1215,11 +1259,9 @@ strings.
 
 ### Fixed
 
-- Resolved an issue that NextJS would throw a false error because of `use client` annotation.
-
-### Removed
-
-- Removed `isOpen` from `Popover`. Please use `open` instead.
+- Resolved an issue where the `SegmentGroup` component would not animate on the first click.
+- Fixed an issue where standalone imports were not working as expected.
+- Resolved an issue whre the `Toast` component would not render custom content.
 
 ## [0.8.0] - 2023-07-19
 
