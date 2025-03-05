@@ -21,7 +21,7 @@ const extractTypes = (component: string) => {
 
   const props: OptionalKind<PropertySignatureStructure>[] = propperties
     .filter((property) => !property.getName().startsWith('on'))
-    .filter((property) => property.getName() !== 'value')
+    .filter((property) => property.getName() !== 'value' && ['checkbox', 'switch'].includes(component))
     .map((property) => {
       const comment = property
         .getDeclarations()

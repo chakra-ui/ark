@@ -6,17 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './pagination'
 
-export interface UsePaginationProps
-  extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode' | 'page' | 'pageSize'>, 'id'> {
-  /**
-   * The v-model value of the pagination
-   */
-  modelValue?: pagination.Props['page']
-  /**
-   * The v-model value of the pagination page size
-   */
-  modelPageSize?: pagination.Props['pageSize']
-}
+export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (props: UsePaginationProps, emit?: EmitFn<RootEmits>): UsePaginationReturn => {
@@ -27,18 +17,16 @@ export const usePagination = (props: UsePaginationProps, emit?: EmitFn<RootEmits
   const context = computed<pagination.Props>(() => ({
     id,
     dir: locale.value.dir,
-    page: props.modelValue,
-    pageSize: props.modelPageSize,
     getRootNode: env?.value.getRootNode,
     ...cleanProps(props),
     onPageChange: (details) => {
       emit?.('pageChange', details)
-      emit?.('update:modelValue', details.page)
+      emit?.('update:page', details.page)
       props.onPageChange?.(details)
     },
     onPageSizeChange: (details) => {
       emit?.('pageSizeChange', details)
-      emit?.('update:modelPageSize', details.pageSize)
+      emit?.('update:pageSize', details.pageSize)
       props.onPageSizeChange?.(details)
     },
   }))

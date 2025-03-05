@@ -32,13 +32,13 @@ export interface RootProps {
     item(page: number): string
   }>
   /**
-   * The v-model value of the pagination page size
+   * The controlled active page
    */
-  modelPageSize?: number
+  page?: number
   /**
-   * The v-model value of the pagination
+   * The controlled number of data items per page
    */
-  modelValue?: number
+  pageSize?: number
   /**
    * Number of pages to show beside active page
    * @default 1
@@ -67,9 +67,9 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [page: pagination.PageChangeDetails['page']]
+  'update:page': [page: pagination.PageChangeDetails['page']]
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelPageSize': [pageSize: pagination.PageSizeChangeDetails['pageSize']]
+  'update:pageSize': [pageSize: pagination.PageSizeChangeDetails['pageSize']]
 }

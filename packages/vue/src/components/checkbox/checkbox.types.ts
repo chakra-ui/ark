@@ -43,6 +43,11 @@ export interface RootProps {
    * Whether the checkbox is required
    */
   required?: boolean
+  /**
+   * The value of checkbox input. Useful for form submission.
+   * @default "on"
+   */
+  value?: string
 }
 
 export type RootEmits = {
