@@ -6,12 +6,7 @@ import { useMemo } from 'react'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
 
-interface Props {
-  latest: string
-}
-
-export const VersionSelect = (props: Props) => {
-  const { latest } = props
+export const VersionSelect = () => {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -19,22 +14,26 @@ export const VersionSelect = (props: Props) => {
     () =>
       createListCollection({
         items: [
-          { label: `v${latest}`, value: latest },
+          { label: 'v5', value: 'v5' },
+          { label: 'v4', value: 'v4' },
           { label: 'v3', value: 'v3' },
         ],
       }),
-    [latest],
+    [],
   )
 
   const handleValueChange = (value: Select.ValueChangeDetails) => {
     if (value.value.includes('v3')) {
       router.push(`https://v3.ark-ui.com${pathname}`)
     }
+    if (value.value.includes('v5')) {
+      router.push(`https://ark-ui.com${pathname}`)
+    }
   }
 
   return (
     <Select.Root
-      defaultValue={[latest]}
+      defaultValue={['v4']}
       onValueChange={handleValueChange}
       size={{ base: 'md', md: 'sm' }}
       collection={collection}
