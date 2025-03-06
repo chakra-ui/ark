@@ -40,7 +40,7 @@ export const Navbar = () => {
             </HStack>
           </HStack>
           <HStack gap="1" py="0.5" display={{ base: 'flex', md: 'none' }}>
-            <CommandMenu data={data} />
+            {/* <CommandMenu data={data} /> */}
             <MobileNavbar>
               <Stack gap="0" width="17rem">
                 <MobileNavbarLinks framework={framework} />

@@ -71,8 +71,10 @@ export const CommandMenu = (props: Props) => {
               loopFocus={false}
               collection={collection}
               onValueChange={(e) => {
-                setOpen(false)
                 router.push(`/${params.framework}/${e.value}`)
+                requestAnimationFrame(() => {
+                  setOpen(false)
+                })
               }}
               onInputValueChange={({ inputValue }) => setInputValue(inputValue)}
             >
