@@ -15,6 +15,7 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
   const machineProps = createMemo<datePicker.Props>(() => ({
     id,
     dir: locale().dir,
+    locale: locale().locale,
     getRootNode: environment().getRootNode,
     ...props,
   }))

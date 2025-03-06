@@ -11,7 +11,7 @@ export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { dir, locale } = useLocaleContext()
   const field = useFieldContext()
 
   const machineProps: fileUpload.Props = {
@@ -22,6 +22,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
     },
     dir,
     disabled: field?.disabled,
+    locale,
     required: field?.required,
     invalid: field?.invalid,
     getRootNode,

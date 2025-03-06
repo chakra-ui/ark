@@ -24,6 +24,7 @@ export const useTimePicker = (props: UseTimePickerProps = {}, emit?: EmitFn<Root
     return {
       id,
       dir: locale.value.dir,
+      locale: locale.value.locale,
       value: props.modelValue,
       getRootNode: env?.value.getRootNode,
       ...cleanProps(props),

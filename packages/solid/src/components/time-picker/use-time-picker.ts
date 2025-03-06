@@ -16,6 +16,7 @@ export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerRetu
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
+    locale: locale().locale,
     ...props,
   }))
 

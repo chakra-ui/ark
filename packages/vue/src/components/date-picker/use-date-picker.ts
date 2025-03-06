@@ -24,6 +24,7 @@ export const useDatePicker = (props: UseDatePickerProps = {}, emit?: EmitFn<Root
     return {
       id,
       dir: locale.value.dir,
+      locale: locale.value.locale,
       value: props.modelValue,
       getRootNode: env?.value.getRootNode,
       ...cleanProps(props),

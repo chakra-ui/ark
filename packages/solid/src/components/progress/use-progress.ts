@@ -15,6 +15,7 @@ export const useProgress = (props: UseProgressProps = {}): UseProgressReturn => 
   const machineProps = createMemo<progress.Props>(() => ({
     id,
     dir: locale().dir,
+    locale: locale().locale,
     getRootNode: environment().getRootNode,
     ...props,
   }))

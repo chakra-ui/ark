@@ -11,11 +11,12 @@ export interface UseTimePickerReturn extends timePicker.Api<PropTypes> {}
 export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { dir, locale } = useLocaleContext()
 
   const machineProps: timePicker.Props = {
     id,
     dir,
+    locale,
     getRootNode,
     ...props,
   }

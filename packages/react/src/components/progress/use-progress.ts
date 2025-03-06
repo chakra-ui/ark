@@ -10,11 +10,12 @@ export interface UseProgressReturn extends progress.Api<PropTypes> {}
 export const useProgress = (props: UseProgressProps = {}): UseProgressReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { dir, locale } = useLocaleContext()
 
   const machineProps: progress.Props = {
     id,
     dir,
+    locale,
     getRootNode,
     ...props,
   }

@@ -19,8 +19,10 @@
   const [useProgressProps, localProps] = $derived(
     createSplitProps<Optional<UseProgressProps, 'id'>>()(_props, [
       'defaultValue',
+      'formatOptions',
       'id',
       'ids',
+      'locale',
       'max',
       'min',
       'onValueChange',

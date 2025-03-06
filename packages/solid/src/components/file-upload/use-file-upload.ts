@@ -22,6 +22,7 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
     },
     dir: locale().dir,
     disabled: field?.().disabled,
+    locale: locale().locale,
     required: field?.().required,
     invalid: field?.().invalid,
     getRootNode: environment().getRootNode,

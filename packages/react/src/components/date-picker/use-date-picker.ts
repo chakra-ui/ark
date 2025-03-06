@@ -11,11 +11,12 @@ export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
 export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { dir, locale } = useLocaleContext()
 
   const machineProps: datePicker.Props = {
     id,
     dir,
+    locale,
     getRootNode,
     ...props,
   }
