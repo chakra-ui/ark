@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.2] - 2025-03-06
+
 ### Fixed
 
 - **Steps**: Fixed issue where `Steps.X` namespace was not exported.
