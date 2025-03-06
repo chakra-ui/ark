@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Steps**: Fixed issue where `Steps.X` namespace was not exported.
+
 ## [5.0.1] - 2025-03-06
 
 Ark UI just got a major performance boost! 🚀

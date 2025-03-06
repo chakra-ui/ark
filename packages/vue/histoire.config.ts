@@ -6,4 +6,9 @@ export default defineConfig({
   storyMatch: ['**/*.stories.vue'],
   setupFile: '.storybook/main.ts',
   viteNodeInlineDeps: [/lucide-vue-next/],
+  vite: {
+    resolve: {
+      preserveSymlinks: true,
+    },
+  },
 })
