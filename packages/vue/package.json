@@ -1,7 +1,7 @@
 {
   "name": "@ark-ui/vue",
   "type": "module",
-  "version": "4.9.2",
+  "version": "5.0.1",
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",

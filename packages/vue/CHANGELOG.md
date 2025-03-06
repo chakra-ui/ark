@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.1] - 2025-03-06
+
 Ark UI just got a major performance boost! 🚀
 
 ### What’s new in v5?
