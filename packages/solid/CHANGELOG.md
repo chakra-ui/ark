@@ -6,10 +6,6 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
-### Fixed
-
-- **Steps**: Ensured ARIA attributes use valid values and wrapped `<li>` elements correctly within `<ul>` or `<ol>`.
-
 ## [4.10.2] - 2025-02-21
 
 ### Fixed
