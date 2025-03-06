@@ -11,12 +11,7 @@ export const Quickstart = () => {
   return (
     <Grid gap={{ base: '4', md: '6' }} columns={{ base: 2, sm: 3, xl: 5 }} className="not-prose">
       {frameworks.map(({ name, icon: Icon, slug }) => (
-        <a
-          key={name}
-          href={`https://stackblitz.com/github/chakra-ui/ark/tree/main/${slug}`}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a key={name} href={`https://github.com/chakra-ui/ark/tree/main/${slug}`} target="_blank" rel="noreferrer">
           <Flex
             borderRadius="l3"
             borderWidth="1px"
