@@ -57,10 +57,8 @@ export default defineConfig({
   },
   test: {
     setupFiles: 'src/setup-test.ts',
-    retry: 2,
     globals: true,
-    environment: 'jsdom',
-    css: false,
+    environment: 'happy-dom',
   },
   resolve: {
     conditions: ['source'],

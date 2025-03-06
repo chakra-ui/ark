@@ -1,5 +1,5 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import { createEffect, createMemo, createSignal, createUniqueId, mergeProps, onCleanup } from 'solid-js'
+import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
 import { useFieldsetContext } from '../fieldset'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
 import { parts } from './field.anatomy'
@@ -53,15 +53,15 @@ export const useField = (props: UseFieldProps) => {
   const [hasHelperText, setHasHelperText] = createSignal(false)
 
   const id = fieldProps.id ?? createUniqueId()
-  let rootRef: HTMLDivElement | undefined
+  const [rootRef, setRootRef] = createSignal<HTMLDivElement | undefined>(undefined)
 
   const rootId = fieldProps.ids?.control ?? `field::${id}`
   const errorTextId = fieldProps.ids?.errorText ?? `field::${id}::error-text`
   const helperTextId = fieldProps.ids?.helperText ?? `field::${id}::helper-text`
   const labelId = fieldProps.ids?.label ?? `field::${id}::label`
 
-  createEffect(() => {
-    const rootNode = rootRef
+  onMount(() => {
+    const rootNode = rootRef()
     if (!rootNode) return
 
     const win = getWindow(rootNode)
@@ -98,13 +98,15 @@ export const useField = (props: UseFieldProps) => {
     htmlFor: id,
   })
 
-  const labelIds: string[] = []
-
-  if (hasErrorText() && fieldProps.invalid) labelIds.push(errorTextId)
-  if (hasHelperText()) labelIds.push(helperTextId)
+  const labelIds = createMemo(() => {
+    const ids: string[] = []
+    if (hasErrorText() && fieldProps.invalid) ids.push(errorTextId)
+    if (hasHelperText()) ids.push(helperTextId)
+    return ids
+  })
 
   const getControlProps = () => ({
-    'aria-describedby': labelIds.join(' ') || undefined,
+    'aria-describedby': labelIds().join(' ') || undefined,
     'aria-invalid': ariaAttr(fieldProps.invalid),
     'data-invalid': dataAttr(fieldProps.invalid),
     'data-required': dataAttr(fieldProps.required),
@@ -148,7 +150,7 @@ export const useField = (props: UseFieldProps) => {
   })
 
   return createMemo(() => ({
-    ariaDescribedby: labelIds.join(' '),
+    ariaDescribedby: labelIds().join(' '),
     ids: {
       control: id,
       label: labelId,
@@ -156,7 +158,7 @@ export const useField = (props: UseFieldProps) => {
       helperText: helperTextId,
     },
     refs: {
-      rootRef,
+      rootRef: setRootRef,
     },
     disabled: fieldProps.disabled,
     invalid: fieldProps.invalid,

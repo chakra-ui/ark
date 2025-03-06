@@ -6,14 +6,12 @@ export interface RootProps {
    */
   allowSeconds?: boolean
   /**
-      /**
-       * The initial open state of the time picker when it is first rendered.
-       * Use when you do not need to control its open state.
-       */
+   * Whether the timepicker open state is controlled by the user
+   */
   defaultOpen?: boolean
   /**
-   * The initial value of the time picker when it is first rendered.
-   * Use when you do not need to control the state of the time picker.
+   * The initial selected time when rendered.
+   * Use when you don't need to control the selected time.
    */
   defaultValue?: timePicker.Time
   /**
@@ -99,5 +97,8 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: timePicker.Time | null]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
 }

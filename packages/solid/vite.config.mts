@@ -5,10 +5,9 @@ export default defineConfig({
   logLevel: 'warn',
   plugins: [solid()],
   test: {
+    environment: 'jsdom',
     globals: true,
     setupFiles: ['src/setup-test.ts'],
-    retry: 2,
-    css: false,
   },
   resolve: {
     conditions: ['source'],

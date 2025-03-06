@@ -7,15 +7,13 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './number-input.types'
 
-export interface UseNumberInputProps
-  extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
-  modelValue?: numberInput.Context['value']
+export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the number input when it is first rendered.
-   * Use when you do not need to control the state of the number input.
+   * The v-model value of the number input
    */
-  defaultValue?: numberInput.Context['value']
+  modelValue?: numberInput.Props['value']
 }
+
 export interface UseNumberInputReturn extends ComputedRef<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<RootEmits>): UseNumberInputReturn => {
@@ -24,7 +22,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<Ro
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<numberInput.Context>(() => ({
+  const context = computed<numberInput.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -36,18 +34,24 @@ export const useNumberInput = (props: UseNumberInputProps = {}, emit?: EmitFn<Ro
     invalid: field?.value.invalid,
     dir: locale.value.dir,
     locale: locale.value.locale,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusChange: (details) => emit?.('focusChange', details),
-    onValueInvalid: (details) => emit?.('valueInvalid', details),
-    ...cleanProps(props),
+    onFocusChange: (details) => {
+      emit?.('focusChange', details)
+      props.onFocusChange?.(details)
+    },
+    onValueInvalid: (details) => {
+      emit?.('valueInvalid', details)
+      props.onValueInvalid?.(details)
+    },
   }))
 
-  const [state, send] = useMachine(numberInput.machine(context.value), { context })
-
-  return computed(() => numberInput.connect(state.value, send, normalizeProps))
+  const service = useMachine(numberInput.machine, context)
+  return computed(() => numberInput.connect(service, normalizeProps))
 }

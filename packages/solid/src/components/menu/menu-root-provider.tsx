@@ -23,7 +23,7 @@ export const MenuRootProvider = (props: MenuRootProviderProps) => {
 
   createEffect(() => {
     if (!parentMachine) return
-    parentApi?.().setChild(menuProps.value.machine)
+    parentApi?.().setChild(menuProps.value.service)
     menuProps.value.api().setParent(parentMachine)
   })
 
@@ -31,7 +31,7 @@ export const MenuRootProvider = (props: MenuRootProviderProps) => {
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={menuProps.value.machine}>
+      <MenuMachineProvider value={menuProps.value.service}>
         <MenuProvider value={menuProps.value.api}>
           <PresenceProvider value={presenceApi}>{menuProps.children}</PresenceProvider>
         </MenuProvider>

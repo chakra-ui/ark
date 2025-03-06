@@ -6,13 +6,7 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './pagination'
 
-export interface UsePaginationProps extends Optional<Omit<pagination.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial page of the pagination when it is first rendered.
-   * Use when you do not need to control the state of the pagination.
-   */
-  defaultPage?: pagination.Context['page']
-}
+export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends ComputedRef<pagination.Api<PropTypes>> {}
 
 export const usePagination = (props: UsePaginationProps, emit?: EmitFn<RootEmits>): UsePaginationReturn => {
@@ -20,16 +14,24 @@ export const usePagination = (props: UsePaginationProps, emit?: EmitFn<RootEmits
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<pagination.Context>(() => ({
+  const context = computed<pagination.Props>(() => ({
     id,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onPageChange: (details) => emit?.('pageChange', details),
-    value: props.defaultPage,
     ...cleanProps(props),
+    onPageChange: (details) => {
+      emit?.('pageChange', details)
+      emit?.('update:page', details.page)
+      props.onPageChange?.(details)
+    },
+    onPageSizeChange: (details) => {
+      emit?.('pageSizeChange', details)
+      emit?.('update:pageSize', details.pageSize)
+      props.onPageSizeChange?.(details)
+    },
   }))
 
-  const [state, send] = useMachine(pagination.machine(context.value), { context })
+  const service = useMachine(pagination.machine, context)
 
-  return computed(() => pagination.connect(state.value, send, normalizeProps))
+  return computed(() => pagination.connect(service, normalizeProps))
 }

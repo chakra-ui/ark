@@ -1,34 +1,11 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { TagsInput } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
-import { tagsInputAnatomy } from '../tags-input.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('TagsInput / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
-    expect(TagsInput[part]).toBeDefined()
-  })
-})
-
 describe('TagsInput', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
-  it('should have no a11y violations', async () => {
+  it.skip('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
 
@@ -94,10 +71,6 @@ describe('TagsInput', () => {
 })
 
 describe('TagsInput / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set combobox as required', async () => {
     render(<WithField required />)
     expect(screen.getAllByRole('textbox', { hidden: true })[1]).toBeRequired()

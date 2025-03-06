@@ -16,17 +16,16 @@ export interface RootProps {
    */
   autoResize?: boolean
   /**
-   * The initial edit state of the editable when it is first rendered.
-   * Use when you do not need to control its edit state.
+   * Whether the editable is in edit mode by default.
    */
   defaultEdit?: boolean
   /**
-   * The initial value of the editable when it is first rendered.
-   * Use when you do not need to control the state of the editable.
+   * The initial value of the editable when rendered.
+   * Use when you don't need to control the value of the editable.
    */
   defaultValue?: string
   /**
-   * Whether the editable is disabled
+   * Whether the editable is disabled.
    */
   disabled?: boolean
   /**
@@ -34,8 +33,7 @@ export interface RootProps {
    */
   edit?: boolean
   /**
-   * The element that should receive focus when the editable is closed.
-   * By default, it will focus on the trigger element.
+   * The element to receive focus when the editable is closed.
    */
   finalFocusEl?: () => HTMLElement | null
   /**
@@ -68,21 +66,24 @@ export interface RootProps {
    * The maximum number of characters allowed in the editable
    */
   maxLength?: number
+  /**
+   * The v-model value of the editable
+   */
   modelValue?: string
   /**
    * The name attribute of the editable component. Used for form submission.
    */
   name?: string
   /**
-   * The placeholder value to show when the `value` is empty
+   * The placeholder text for the editable.
    */
   placeholder?: string | { edit: string; preview: string }
   /**
-   * Whether the editable is readonly
+   * Whether the editable is read-only.
    */
   readOnly?: boolean
   /**
-   * Whether the editable is required
+   * Whether the editable is required.
    */
   required?: boolean
   /**
@@ -102,14 +103,14 @@ export interface RootProps {
    */
   submitMode?: editable.SubmitMode
   /**
-   * Specifies the localized strings that identifies the accessibility elements and their states
+   * The translations for the editable.
    */
   translations?: editable.IntlTranslations
 }
 
 export type RootEmits = {
   /**
-   * The callback that is called when the edit mode is changed
+   * Function to call when the edit mode changes.
    */
   editChange: [details: editable.EditChangeDetails]
   /**
@@ -125,15 +126,15 @@ export type RootEmits = {
    */
   pointerDownOutside: [event: editable.PointerDownOutsideEvent]
   /**
-   * The callback that is called when the editable's value is changed
+   * Function to call when the value changes.
    */
   valueChange: [details: editable.ValueChangeDetails]
   /**
-   * The callback that is called when the editable's value is submitted.
+   * Function to call when the value is committed.
    */
   valueCommit: [details: editable.ValueChangeDetails]
   /**
-   * The callback that is called when the esc key is pressed or the cancel button is clicked
+   * Function to call when the value is reverted.
    */
   valueRevert: [details: editable.ValueChangeDetails]
   /**
@@ -141,7 +142,7 @@ export type RootEmits = {
    */
   'update:modelValue': [value: string]
   /**
-   * Event handler called when the edit state of the combobox changes.
+   * Event handler called when the edit state of the editable changes.
    */
   'update:edit': [edit: boolean]
 }

@@ -6,7 +6,6 @@ export const ComponentUnderTest = (props: FileUpload.RootProps) => (
       {(fileUpload) => {
         if (fileUpload.acceptedFiles.length < 1)
           fileUpload.setFiles([new File([''], 'test.jpg', { type: 'image/jpg' })])
-
         return (
           <>
             <FileUpload.Label>Drag your file(s) here</FileUpload.Label>

@@ -10,11 +10,11 @@ export const InheritStyles = () => {
         const node = ref.current?.contentDocument?.head
         if (!node) return
         const parentStyles = document.head.querySelectorAll('style')
-        for (const style of parentStyles) {
+        for (const style of Array.from(parentStyles)) {
           node.appendChild(style.cloneNode(true))
         }
         const linkTags = document.head.querySelectorAll('link[rel="stylesheet"]')
-        for (const link of linkTags) {
+        for (const link of Array.from(linkTags)) {
           node.appendChild(link.cloneNode(true))
         }
       }}

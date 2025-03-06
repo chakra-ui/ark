@@ -7,7 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './signature-pad.types'
 
-export interface UseSignaturePadProps extends Optional<Omit<signaturepad.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseSignaturePadProps extends Optional<Omit<signaturepad.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSignaturePadReturn extends ComputedRef<signaturepad.Api<PropTypes>> {}
 
 export const useSignaturePad = (props: UseSignaturePadProps = {}, emit?: EmitFn<RootEmits>): UseSignaturePadReturn => {
@@ -16,7 +16,7 @@ export const useSignaturePad = (props: UseSignaturePadProps = {}, emit?: EmitFn<
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<signaturepad.Context>(() => ({
+  const context = computed<signaturepad.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -27,11 +27,17 @@ export const useSignaturePad = (props: UseSignaturePadProps = {}, emit?: EmitFn<
     required: field?.value.required,
     dir: locale.value.dir,
     getRootNode: env?.value.getRootNode,
-    onDraw: (details) => emit?.('draw', details),
-    onDrawEnd: (details) => emit?.('drawEnd', details),
     ...cleanProps(props),
+    onDraw: (details) => {
+      emit?.('draw', details)
+      props.onDraw?.(details)
+    },
+    onDrawEnd: (details) => {
+      emit?.('drawEnd', details)
+      props.onDrawEnd?.(details)
+    },
   }))
 
-  const [state, send] = useMachine(signaturepad.machine(context.value), { context })
-  return computed(() => signaturepad.connect(state.value, send, normalizeProps))
+  const service = useMachine(signaturepad.machine, context)
+  return computed(() => signaturepad.connect(service, normalizeProps))
 }

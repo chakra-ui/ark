@@ -6,7 +6,8 @@ export interface RootProps {
    */
   count?: number
   /**
-   * The initial value of the step
+   * The initial value of the stepper when rendered.
+   * Use when you don't need to control the value of the stepper.
    */
   defaultStep?: number
   /**
@@ -22,13 +23,14 @@ export interface RootProps {
    */
   linear?: boolean
   /**
-   * The v-model value of the step
-   */
-  modelValue?: number
-  /**
    * The orientation of the stepper
+   * @default "horizontal"
    */
   orientation?: 'horizontal' | 'vertical'
+  /**
+   * The controlled value of the stepper
+   */
+  step?: number
 }
 
 export type RootEmits = {
@@ -43,5 +45,5 @@ export type RootEmits = {
   /**
    * The callback fired when the model value changes.
    */
-  'update:modelValue': [value: number]
+  'update:step': [step: number]
 }

@@ -7,7 +7,7 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './file-upload'
 
-export interface UseFileUploadProps extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseFileUploadProps extends Optional<Omit<fileUpload.Props, 'dir' | 'getRootNode'>, 'id'> {}
 
 export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropTypes>> {}
 
@@ -17,24 +17,34 @@ export const useFileUpload = (props: UseFileUploadProps = {}, emit?: EmitFn<Root
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<fileUpload.Context>(() => ({
+  const context = computed<fileUpload.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
       hiddenInput: field?.value.ids.control,
     },
-    disabled: field?.value.disabled,
-    required: field?.value.required,
-    invalid: field?.value.invalid,
     dir: locale.value.dir,
+    disabled: field?.value.disabled,
+    invalid: field?.value.invalid,
+    locale: locale.value.locale,
+    required: field?.value.required,
     getRootNode: env?.value.getRootNode,
-    onFileChange: (details) => emit?.('fileChange', details),
-    onFileAccept: (details) => emit?.('fileAccept', details),
-    onFileReject: (details) => emit?.('fileReject', details),
     ...cleanProps(props),
+    onFileChange: (details) => {
+      emit?.('fileChange', details)
+      props.onFileChange?.(details)
+    },
+    onFileAccept: (details) => {
+      emit?.('fileAccept', details)
+      props.onFileAccept?.(details)
+    },
+    onFileReject: (details) => {
+      emit?.('fileReject', details)
+      props.onFileReject?.(details)
+    },
   }))
 
-  const [state, send] = useMachine(fileUpload.machine(context.value), { context })
+  const service = useMachine(fileUpload.machine, context)
 
-  return computed(() => fileUpload.connect(state.value, send, normalizeProps))
+  return computed(() => fileUpload.connect(service, normalizeProps))
 }

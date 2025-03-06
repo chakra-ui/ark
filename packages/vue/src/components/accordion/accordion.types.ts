@@ -7,8 +7,8 @@ export interface RootProps {
    */
   collapsible?: boolean
   /**
-   * The initial value of the accordion that are expanded.
-   * Use this when you do not need to control the state of the accordion.
+   * The initial value of the expanded accordion items.
+   * Use when you don't need to control the value of the accordion.
    */
   defaultValue?: string[]
   /**
@@ -29,8 +29,7 @@ export interface RootProps {
     itemTrigger(value: string): string
   }>
   /**
-   * The accordion items that are currently expanded.
-   * Use this prop to control the state of the items via v-model.
+   * The v-model value of the accordion
    */
   modelValue?: string[]
   /**

@@ -15,8 +15,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "xChannel": { "type": "ColorChannel", "isRequired": false },
-      "yChannel": { "type": "ColorChannel", "isRequired": false }
+      "xChannel": {
+        "type": "ColorChannel",
+        "isRequired": false
+      },
+      "yChannel": {
+        "type": "ColorChannel",
+        "isRequired": false
+      }
     }
   },
   "AreaThumb": {
@@ -30,13 +36,19 @@
   },
   "ChannelInput": {
     "props": {
-      "channel": { "type": "ExtendedColorChannel", "isRequired": true },
+      "channel": {
+        "type": "ExtendedColorChannel",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": {
+        "type": "Orientation",
+        "isRequired": false
+      }
     }
   },
   "ChannelSliderLabel": {
@@ -50,13 +62,19 @@
   },
   "ChannelSlider": {
     "props": {
-      "channel": { "type": "ColorChannel", "isRequired": true },
+      "channel": {
+        "type": "ColorChannel",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": {
+        "type": "Orientation",
+        "isRequired": false
+      }
     }
   },
   "ChannelSliderThumb": {
@@ -207,12 +225,21 @@
         "isRequired": true,
         "description": "Function called when the pointer is pressed down outside the component"
       },
+      "update:format": {
+        "type": "[format: ColorFormat]",
+        "isRequired": true,
+        "description": "The callback fired when the format changes."
+      },
       "update:modelValue": {
         "type": "[value: Color]",
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       },
-      "update:open": { "type": "[open: boolean]", "isRequired": true },
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the open state changes."
+      },
       "valueChange": {
         "type": "[details: ValueChangeDetails]",
         "isRequired": true,
@@ -236,15 +263,22 @@
         "isRequired": false,
         "description": "Whether to close the color picker when a swatch is selected"
       },
+      "defaultFormat": {
+        "type": "ColorFormat",
+        "defaultValue": "\"rgba\"",
+        "isRequired": false,
+        "description": "The initial color format when rendered.\nUse when you don't need to control the color format of the color picker."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the color picker."
+        "description": "The initial open state of the color picker when rendered.\nUse when you don't need to control the open state of the color picker."
       },
       "defaultValue": {
         "type": "Color",
+        "defaultValue": "#000000",
         "isRequired": false,
-        "description": "The initial value of the color picker when it is first rendered.\nUse when you do not need to control the state of the color picker."
+        "description": "The initial color value when rendered.\nUse when you don't need to control the color value of the color picker."
       },
       "disabled": {
         "type": "boolean",
@@ -253,9 +287,8 @@
       },
       "format": {
         "type": "ColorFormat",
-        "defaultValue": "\"rgba\"",
         "isRequired": false,
-        "description": "The color format to use"
+        "description": "The controlled color format to use"
       },
       "id": {
         "type": "string",
@@ -296,7 +329,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the color picker is open"
+        "description": "The controlled open state of the color picker"
       },
       "openAutoFocus": {
         "type": "boolean",
@@ -329,7 +362,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": {
+        "type": "ColorPickerApi<PropTypes>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -369,7 +405,11 @@
   },
   "Swatch": {
     "props": {
-      "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+      "value": {
+        "type": "string | Color",
+        "isRequired": true,
+        "description": "The color value"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -384,7 +424,11 @@
   },
   "SwatchTrigger": {
     "props": {
-      "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
+      "value": {
+        "type": "string | Color",
+        "isRequired": true,
+        "description": "The color value"
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -404,7 +448,10 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "size": { "type": "string", "isRequired": false }
+      "size": {
+        "type": "string",
+        "isRequired": false
+      }
     }
   },
   "Trigger": {
@@ -441,7 +488,10 @@
   },
   "View": {
     "props": {
-      "format": { "type": "ColorFormat", "isRequired": true },
+      "format": {
+        "type": "ColorFormat",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

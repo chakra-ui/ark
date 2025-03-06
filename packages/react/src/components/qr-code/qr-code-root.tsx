@@ -16,6 +16,7 @@ export const QrCodeRoot = forwardRef<HTMLDivElement, QrCodeRootProps>((props, re
     'id',
     'ids',
     'onValueChange',
+    'pixelSize',
     'value',
   ])
   const qrCode = useQrCode(qrcodeProps)

@@ -7,19 +7,11 @@ import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './editable'
 
-export interface UseEditableProps
-  extends Optional<Omit<editable.Context, 'dir' | 'getRootNode' | 'value' | 'edit.controlled'>, 'id'> {
+export interface UseEditableProps extends Optional<Omit<editable.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial edit state of the editable when it is first rendered.
-   * Use when you do not need to control its edit state.
+   * The v-model value of the editable
    */
-  defaultEdit?: editable.Context['edit']
-  /**
-   * The initial value of the editable when it is first rendered.
-   * Use when you do not need to control the state of the editable.
-   */
-  defaultValue?: editable.Context['value']
-  modelValue?: editable.Context['value']
+  modelValue?: editable.Props['value']
 }
 
 export interface UseEditableReturn extends ComputedRef<editable.Api<PropTypes>> {}
@@ -29,7 +21,8 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
-  const context = computed<editable.Context>(() => ({
+
+  const context = computed<editable.Props>(() => ({
     id,
     ids: {
       label: field?.value.ids.label,
@@ -40,26 +33,41 @@ export const useEditable = (props: UseEditableProps = {}, emit?: EmitFn<RootEmit
     readOnly: field?.value.readOnly,
     required: field?.value.required,
     dir: locale.value.dir,
-    edit: props.defaultEdit,
-    'edit.controlled': props.edit !== undefined,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
+    ...cleanProps(props),
     onEditChange: (details) => {
       emit?.('editChange', details)
       emit?.('update:edit', details.edit)
+      props.onEditChange?.(details)
     },
     onValueChange(details) {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onValueCommit: (details) => emit?.('valueCommit', details),
-    onValueRevert: (details) => emit?.('valueRevert', details),
-    ...cleanProps(props),
+    onFocusOutside: (details) => {
+      emit?.('focusOutside', details)
+      props.onFocusOutside?.(details)
+    },
+    onInteractOutside: (details) => {
+      emit?.('interactOutside', details)
+      props.onInteractOutside?.(details)
+    },
+    onPointerDownOutside: (details) => {
+      emit?.('pointerDownOutside', details)
+      props.onPointerDownOutside?.(details)
+    },
+    onValueCommit: (details) => {
+      emit?.('valueCommit', details)
+      props.onValueCommit?.(details)
+    },
+    onValueRevert: (details) => {
+      emit?.('valueRevert', details)
+      props.onValueRevert?.(details)
+    },
   }))
 
-  const [state, send] = useMachine(editable.machine(context.value), { context })
-  return computed(() => editable.connect(state.value, send, normalizeProps))
+  const service = useMachine(editable.machine, context)
+  return computed(() => editable.connect(service, normalizeProps))
 }

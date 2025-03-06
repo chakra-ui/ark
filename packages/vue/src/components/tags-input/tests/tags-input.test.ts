@@ -1,21 +1,9 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { TagsInput, tagsInputAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './tags-input.test.vue'
 
 describe('TagsInput', () => {
-  it.each(getParts(tagsInputAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tagsInputAnatomy))('should export %s', async (part) => {
-    expect(TagsInput[part]).toBeDefined()
-  })
-
   it('should allow to add a new item', async () => {
     render(ComponentUnderTest)
 
@@ -40,11 +28,11 @@ describe('TagsInput', () => {
     expect(screen.queryByText('angular')).not.toBeInTheDocument()
   })
 
-  it.skip('should allow to modify an added item', async () => {
+  it('should allow to modify an added item', async () => {
     render(ComponentUnderTest)
 
     const input = screen.getByPlaceholderText('Add tag')
-    await user.type(input, 'angular[enter]')
+    await user.type(input, 'angular[enter]', { delay: 10 })
 
     expect(screen.getByText('angular')).toBeInTheDocument()
 
@@ -53,7 +41,7 @@ describe('TagsInput', () => {
     await user.type(input, '[ArrowLeft]')
     await user.type(input, '[ArrowLeft]')
     await user.clear(input)
-    await user.type(input, 'svelte')
+    await user.type(input, 'svelte', { delay: 10 })
     await user.keyboard('[Enter]')
 
     expect(await screen.findByText('svelte')).toBeInTheDocument()

@@ -137,11 +137,7 @@
   },
   "Root": {
     "props": {
-      "collection": {
-        "type": "ListCollection<T>",
-        "isRequired": true,
-        "description": "The collection of items"
-      },
+      "collection": { "type": "ListCollection<T>", "isRequired": true, "description": "The collection of items" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -159,41 +155,34 @@
         "isRequired": false,
         "description": "Whether the select is a composed with other composite widgets like tabs or combobox"
       },
+      "defaultHighlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial value of the highlighted item when opened.\nUse when you don't need to control the highlighted value of the select."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the select when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "Whether the select's open state is controlled by the user"
       },
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial value of the select when it is first rendered.\nUse when you do not need to control the state of the select."
+        "description": "The initial default value of the select when rendered.\nUse when you don't need to control the value of the select."
       },
       "deselectable": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the value can be cleared by clicking the selected item.\n\n**Note:** this is only applicable for single selection"
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the select is disabled"
-      },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The associate form of the underlying select."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the select is disabled" },
+      "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying select." },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The key of the highlighted item"
+        "description": "The controlled key of the highlighted item"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
         "isRequired": false,
@@ -204,11 +193,7 @@
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the select is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the select is invalid" },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -221,18 +206,14 @@
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation through the options"
       },
-      "multiple": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to allow multiple selection"
-      },
+      "multiple": { "type": "boolean", "isRequired": false, "description": "Whether to allow multiple selection" },
       "name": {
         "type": "string",
         "isRequired": false,
         "description": "The `name` attribute of the underlying select."
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -266,11 +247,7 @@
         "isRequired": false,
         "description": "The callback fired when the selected item changes."
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the select menu is open"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the select menu is open" },
       "positioning": {
         "type": "PositioningOptions",
         "isRequired": false,
@@ -281,16 +258,8 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the select is read-only"
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the select is required"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the select is read-only" },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the select is required" },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",
         "isRequired": false,
@@ -302,11 +271,7 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The keys of the selected items"
-      }
+      "value": { "type": "string[]", "isRequired": false, "description": "The controlled keys of the selected items" }
     }
   },
   "RootProvider": {
@@ -329,7 +294,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },

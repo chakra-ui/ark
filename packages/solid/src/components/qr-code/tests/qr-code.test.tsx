@@ -1,16 +1,12 @@
 import { render } from '@solidjs/testing-library'
-import { QrCode, qrCodeAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
 
-describe('QrCode', () => {
-  it.each(getParts(qrCodeAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
+describe('QR-Code', () => {
+  it('should have no a11y violations', async () => {
+    const { container } = render(() => <ComponentUnderTest />)
+    const results = await axe(container)
 
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(qrCodeAnatomy))('should export %s', async (part) => {
-    expect(QrCode[part]).toBeDefined()
+    expect(results).toHaveNoViolations()
   })
 })

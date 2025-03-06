@@ -6,7 +6,7 @@ const collection = createListCollection({
   items: ['React', 'Solid', 'Vue'],
 })
 
-const select = useSelect({ collection: collection })
+const select = useSelect({ collection })
 </script>
 
 <template>

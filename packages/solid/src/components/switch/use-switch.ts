@@ -5,22 +5,16 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseSwitchProps extends Optional<Omit<zagSwitch.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The checked state of the switch when it is first rendered.
-   * Use this when you do not need to control the state of the switch.
-   */
-  defaultChecked?: zagSwitch.Context['checked']
-}
+export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSwitchReturn extends Accessor<zagSwitch.Api<PropTypes>> {}
 
 export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<zagSwitch.Props>(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -32,11 +26,9 @@ export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
     required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    checked: props.defaultChecked,
     ...props,
   }))
 
-  const [state, send] = useMachine(zagSwitch.machine(context()), { context })
-
-  return createMemo(() => zagSwitch.connect(state, send, normalizeProps))
+  const service = useMachine(zagSwitch.machine, machineProps)
+  return createMemo(() => zagSwitch.connect(service, normalizeProps))
 }

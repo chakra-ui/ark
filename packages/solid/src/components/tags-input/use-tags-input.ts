@@ -5,22 +5,16 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseTagsInputProps extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial value of the tags input when it is first rendered.
-   * Use when you do not need to control the state of the tags input.
-   */
-  defaultValue?: tagsInput.Context['value']
-}
+export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTagsInputReturn extends Accessor<tagsInput.Api<PropTypes>> {}
 
 export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<tagsInput.Props>(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -32,10 +26,9 @@ export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn 
     readOnly: field?.().readOnly,
     required: field?.().required,
     getRootNode: environment().getRootNode,
-    value: props.defaultValue,
     ...props,
   }))
-  const [state, send] = useMachine(tagsInput.machine(context()), { context })
 
-  return createMemo(() => tagsInput.connect(state, send, normalizeProps))
+  const service = useMachine(tagsInput.machine, machineProps)
+  return createMemo(() => tagsInput.connect(service, normalizeProps))
 }

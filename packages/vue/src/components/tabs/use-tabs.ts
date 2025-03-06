@@ -6,14 +6,13 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
-export interface UseTabsProps extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTabsProps extends Optional<Omit<tabs.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The v-model value of the tabs
    */
-  defaultValue?: tabs.Context['value']
-  modelValue?: tabs.Context['value']
+  modelValue?: tabs.Props['value']
 }
+
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
 export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): UseTabsReturn => {
@@ -21,19 +20,23 @@ export const useTabs = (props: UseTabsProps = {}, emit?: EmitFn<RootEmits>): Use
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<tabs.Context>(() => ({
+  const context = computed<tabs.Props>(() => ({
     id,
     dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
+    value: props.modelValue,
     getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit?.('focusChange', details),
+    ...cleanProps(props),
+    onFocusChange: (details) => {
+      emit?.('focusChange', details)
+      props.onFocusChange?.(details)
+    },
     onValueChange: (details) => {
       emit?.('valueChange', details)
       emit?.('update:modelValue', details.value)
+      props.onValueChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(tabs.machine(context.value), { context })
-  return computed(() => tabs.connect(state.value, send, normalizeProps))
+  const service = useMachine(tabs.machine, context)
+  return computed(() => tabs.connect(service, normalizeProps))
 }

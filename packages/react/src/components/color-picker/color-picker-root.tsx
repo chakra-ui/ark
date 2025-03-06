@@ -16,6 +16,7 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
     'closeOnSelect',
     'defaultOpen',
     'defaultValue',
+    'defaultFormat',
     'disabled',
     'format',
     'id',

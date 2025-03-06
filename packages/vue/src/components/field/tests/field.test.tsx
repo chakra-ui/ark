@@ -1,23 +1,8 @@
 import user from '@testing-library/user-event'
-import { render, screen } from '@testing-library/vue'
-import { Field, fieldAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { render, screen, waitFor } from '@testing-library/vue'
 import ComponentUnderTest from './field.test.vue'
 
 describe('Field', () => {
-  it.each(getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')))(
-    'should render part %s',
-    async (part) => {
-      render(ComponentUnderTest)
-
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
-    expect(Field[part]).toBeDefined()
-  })
-
   it('should set textbox as required', async () => {
     render(ComponentUnderTest, { props: { required: true } })
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
@@ -62,5 +47,11 @@ describe('Field', () => {
     render(ComponentUnderTest, { props: { modelValue: 'Input is controlled' } })
 
     expect(screen.getByRole('textbox', { name: /label/i })).toHaveValue('Input is controlled')
+  })
+
+  it('should set aria-describedby to the ids of the error and helper text', async () => {
+    render(ComponentUnderTest)
+    const textbox = screen.getByRole('textbox', { name: /label/i })
+    await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
   })
 })

@@ -2,21 +2,13 @@
   "DownloadTrigger": {
     "props": {
       "fileName": { "type": "string", "isRequired": true, "description": "The name of the file." },
-      "mimeType": {
-        "type": "DataUrlType",
-        "isRequired": true,
-        "description": "The mime type of the image."
-      },
+      "mimeType": { "type": "DataUrlType", "isRequired": true, "description": "The mime type of the image." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "quality": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The quality of the image."
-      }
+      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." }
     }
   },
   "Frame": {
@@ -68,33 +60,26 @@
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the tabs when it is first rendered.\nUse when you do not need to control the state of the tabs."
+        "description": "The initial value to encode when rendered.\nUse when you don't need to control the value of the qr code."
       },
       "encoding": {
         "type": "QrCodeGenerateOptions",
         "isRequired": false,
         "description": "The qr code encoding options."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; frame: string }>",
         "isRequired": false,
         "description": "The element ids."
       },
-      "modelValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "Use this prop to control the value of the qr code via v-model."
-      }
+      "modelValue": { "type": "string", "isRequired": false, "description": "The v-model value of the qr code" },
+      "pixelSize": { "type": "number", "isRequired": false, "description": "The pixel size of the qr code." }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "QrCodeApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

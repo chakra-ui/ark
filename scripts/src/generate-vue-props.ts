@@ -21,6 +21,12 @@ const extractTypes = (component: string) => {
 
   const props: OptionalKind<PropertySignatureStructure>[] = propperties
     .filter((property) => !property.getName().startsWith('on'))
+    .filter((property) => {
+      if (['checkbox', 'switch'].includes(component)) {
+        return true
+      }
+      return !['value'].includes(property.getName())
+    })
     .map((property) => {
       const comment = property
         .getDeclarations()
@@ -109,7 +115,7 @@ const main = async () => {
   Promise.all(
     components
       .map((component) => parse(component).base)
-      .filter((x) => !['format', 'toast', 'highlight', 'frame', 'client-only'].includes(x))
+      .filter((x) => !['format', 'toast', 'highlight', 'frame', 'client-only', 'focus-trap'].includes(x))
       .map(extractTypes),
   )
 }

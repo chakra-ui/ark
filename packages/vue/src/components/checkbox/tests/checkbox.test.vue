@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { CheckIcon, MinusIcon } from 'lucide-vue-next'
 import { Checkbox, type CheckboxRootProps } from '../'
+
 const props = defineProps<CheckboxRootProps>()
 </script>
 

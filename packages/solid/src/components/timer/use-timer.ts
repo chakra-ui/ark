@@ -4,20 +4,19 @@ import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseTimerProps extends Optional<Omit<timer.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTimerReturn extends Accessor<timer.Api<PropTypes>> {}
 
 export const useTimer = (props: UseTimerProps = {}): UseTimerReturn => {
-  const env = useEnvironmentContext()
   const id = createUniqueId()
+  const environment = useEnvironmentContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<timer.Props>(() => ({
     id,
-    getRootNode: env().getRootNode,
+    getRootNode: environment().getRootNode,
     ...props,
   }))
 
-  const [state, send] = useMachine(timer.machine(context()), { context })
-
-  return createMemo(() => timer.connect(state, send, normalizeProps))
+  const service = useMachine(timer.machine, machineProps)
+  return createMemo(() => timer.connect(service, normalizeProps))
 }

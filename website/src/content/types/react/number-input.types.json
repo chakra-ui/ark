@@ -76,7 +76,7 @@
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the number input when it is first rendered.\nUse when you do not need to control the state of the number input."
+        "description": "The initial value of the input when rendered.\nUse when you don't need to control the value of the input."
       },
       "disabled": {
         "type": "boolean",
@@ -191,13 +191,20 @@
         "isRequired": false,
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
+      "value": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled value of the input"
+      }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseNumberInputReturn", "isRequired": true },
+      "value": {
+        "type": "UseNumberInputReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

@@ -5,13 +5,7 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseNumberInputProps extends Optional<Omit<numberInput.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial value of the number input when it is first rendered.
-   * Use when you do not need to control the state of the number input.
-   */
-  defaultValue?: numberInput.Context['value']
-}
+export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
 export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
@@ -20,7 +14,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
   const environment = useEnvironmentContext()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<numberInput.Props>(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -33,11 +27,9 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
     dir: locale().dir,
     locale: locale().locale,
     getRootNode: environment().getRootNode,
-    value: props.defaultValue,
     ...props,
   }))
 
-  const [state, send] = useMachine(numberInput.machine(context()), { context })
-
-  return createMemo(() => numberInput.connect(state, send, normalizeProps))
+  const service = useMachine(numberInput.machine, machineProps)
+  return createMemo(() => numberInput.connect(service, normalizeProps))
 }

@@ -57,7 +57,11 @@
   },
   "Item": {
     "props": {
-      "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
+      "index": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The index of the item."
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -106,9 +110,18 @@
         "isRequired": true,
         "description": "Function called when the page changes."
       },
-      "update:page": { "type": "[page: number]", "isRequired": true }
+      "update:page": {
+        "type": "[page: number]",
+        "isRequired": true,
+        "description": "The callback fired when the carousel page changes."
+      }
     },
     "props": {
+      "slideCount": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The total number of slides.\nUseful for SSR to render the initial ating the snap points."
+      },
       "allowMouseDrag": {
         "type": "boolean",
         "defaultValue": "false",
@@ -128,8 +141,9 @@
       },
       "defaultPage": {
         "type": "number",
+        "defaultValue": "0",
         "isRequired": false,
-        "description": "The initial page of the carousel when it is first rendered.\nUse this when you do not need to control the state of the carousel."
+        "description": "The initial page to scroll to when rendered.\nUse when you don't need to control the page of the carousel."
       },
       "id": {
         "type": "string",
@@ -154,7 +168,7 @@
         "description": "Whether the carousel should loop around."
       },
       "orientation": {
-        "type": "Orientation",
+        "type": "'horizontal' | 'vertical'",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the element."
@@ -167,12 +181,7 @@
       "page": {
         "type": "number",
         "isRequired": false,
-        "description": "The index of the active page."
-      },
-      "slideCount": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The total number of slides.\nUseful for SSR to render the initial ating the snap points."
+        "description": "The controlled page of the carousel."
       },
       "slidesPerMove": {
         "type": "number | 'auto'",
@@ -207,7 +216,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": {
+        "type": "CarouselApi<PropTypes>",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

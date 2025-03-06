@@ -17,6 +17,7 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
     'defaultOpen',
     'defaultValue',
     'defaultView',
+    'defaultFocusedValue',
     'disabled',
     'fixedWeeks',
     'focusedValue',

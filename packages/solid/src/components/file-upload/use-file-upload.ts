@@ -5,16 +5,16 @@ import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { useFieldContext } from '../field'
 
-export interface UseFileUploadProps extends Optional<Omit<fileUpload.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseFileUploadProps extends Optional<Omit<fileUpload.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseFileUploadReturn extends Accessor<fileUpload.Api<PropTypes>> {}
 
 export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<fileUpload.Props>(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -22,13 +22,13 @@ export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadRetu
     },
     dir: locale().dir,
     disabled: field?.().disabled,
+    locale: locale().locale,
     required: field?.().required,
     invalid: field?.().invalid,
     getRootNode: environment().getRootNode,
     ...props,
   }))
 
-  const [state, send] = useMachine(fileUpload.machine(context()), { context })
-
-  return createMemo(() => fileUpload.connect(state, send, normalizeProps))
+  const service = useMachine(fileUpload.machine, machineProps)
+  return createMemo(() => fileUpload.connect(service, normalizeProps))
 }

@@ -171,27 +171,25 @@
         "isRequired": false,
         "description": "Whether to close the color picker when a swatch is selected"
       },
-      "defaultOpen": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "The initial open state of the color picker when it is first rendered.\nUse when you do not need to control its open state."
-      },
-      "defaultValue": {
-        "type": "Color",
-        "isRequired": false,
-        "description": "The initial value of the color picker when it is first rendered.\nUse when you do not need to control the state of the color picker."
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is disabled"
-      },
-      "format": {
+      "defaultFormat": {
         "type": "ColorFormat",
         "defaultValue": "\"rgba\"",
         "isRequired": false,
-        "description": "The color format to use"
+        "description": "The initial color format when rendered.\nUse when you don't need to control the color format of the color picker."
       },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the color picker when rendered.\nUse when you don't need to control the open state of the color picker."
+      },
+      "defaultValue": {
+        "type": "Color",
+        "defaultValue": "#000000",
+        "isRequired": false,
+        "description": "The initial color value when rendered.\nUse when you don't need to control the color value of the color picker."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is disabled" },
+      "format": { "type": "ColorFormat", "isRequired": false, "description": "The controlled color format to use" },
       "ids": {
         "type": "Partial<{ root: string; control: string; trigger: string; label: string; input: string; hiddenInput: string; content: string; area: string; areaGradient: string; positioner: string; formatSelect: string; areaThumb: string; channelInput(id: string): string; channelSliderTrack(id: ColorChannel): string; channelSliderT...",
         "isRequired": false,
@@ -207,24 +205,16 @@
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is invalid" },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The name for the form input"
-      },
+      "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -266,7 +256,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "Whether the color picker is open"
+        "description": "The controlled open state of the color picker"
       },
       "openAutoFocus": {
         "type": "boolean",
@@ -284,28 +274,15 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is read-only"
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is required"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is read-only" },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is required" },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": {
-        "type": "Color",
-        "defaultValue": "#000000",
-        "isRequired": false,
-        "description": "The current color value"
-      }
+      "value": { "type": "Color", "isRequired": false, "description": "The controlled color value of the color picker" }
     }
   },
   "RootProvider": {
@@ -328,7 +305,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -386,11 +363,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the swatch trigger is disabled"
-      }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the swatch trigger is disabled" }
     }
   },
   "TransparencyGrid": {

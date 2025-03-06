@@ -31,11 +31,7 @@
         "isRequired": false,
         "description": "Event handler called when the pressed state of the toggle changes."
       },
-      "pressed": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "The pressed state of the toggle."
-      }
+      "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." }
     },
     "element": "HTMLButtonElement"
   }

@@ -3,27 +3,22 @@ import * as tour from '@zag-js/tour'
 import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useEvent } from '../../utils/use-event'
 
-export interface UseTourProps extends Optional<Omit<tour.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseTourProps extends Optional<Omit<tour.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTourReturn extends tour.Api<PropTypes> {}
 
 export const useTour = (props: UseTourProps = {}): UseTourReturn => {
+  const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const initialContext: tour.Context = {
-    id: useId(),
+  const machineProps: tour.Props = {
+    id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const context: tour.Context = {
-    ...initialContext,
-    onStatusChange: useEvent(props.onStatusChange),
-  }
-
-  const [state, send] = useMachine(tour.machine(initialContext), { context })
-  return tour.connect(state, send, normalizeProps)
+  const service = useMachine(tour.machine, machineProps)
+  return tour.connect(service, normalizeProps)
 }

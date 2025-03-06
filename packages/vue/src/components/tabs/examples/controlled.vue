@@ -6,6 +6,7 @@ const value = ref('react')
 </script>
 
 <template>
+  <p>Selected tab: {{ value }}</p>
   <Tabs.Root v-model="value">
     <Tabs.List>
       <Tabs.Trigger value="react">React</Tabs.Trigger>

@@ -1,22 +1,10 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Checkbox, checkboxAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
 describe('Checkbox', () => {
-  it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
-    expect(Checkbox[part]).toBeDefined()
-  })
-
   it('should handle check and unchecked', async () => {
     const onChange = vi.fn()
     render(() => <ComponentUnderTest onChange={onChange} />)

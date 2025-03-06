@@ -4,17 +4,10 @@ import { useId, useRef } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
-import { useEvent } from '../../utils/use-event'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'>,
-    RenderStrategyProps {
-  /**
-   * The initial open state of the collapsible when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: collapsible.Context['open']
-}
+  extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>,
+    RenderStrategyProps {}
 
 export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
   /**
@@ -25,27 +18,20 @@ export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
   const { lazyMount, unmountOnExit, ...collapsibleProps } = props
+  const id = useId()
   const wasVisible = useRef(false)
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
 
-  const initialContext: collapsible.Context = {
-    id: useId(),
+  const machineProps: collapsible.Props = {
+    id,
     dir,
     getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
     ...collapsibleProps,
   }
 
-  const context: collapsible.Context = {
-    ...initialContext,
-    open: props.open,
-    onOpenChange: useEvent(props.onOpenChange, { sync: true }),
-  }
-
-  const [state, send] = useMachine(collapsible.machine(initialContext), { context })
-  const api = collapsible.connect(state, send, normalizeProps)
+  const service = useMachine(collapsible.machine, machineProps)
+  const api = collapsible.connect(service, normalizeProps)
 
   if (api.visible) {
     wasVisible.current = true

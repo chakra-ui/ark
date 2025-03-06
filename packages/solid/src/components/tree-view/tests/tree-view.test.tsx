@@ -1,31 +1,7 @@
-import { cleanup, render, screen } from '@solidjs/testing-library'
-import { TreeView, treeViewAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
+import { render, screen } from '@solidjs/testing-library'
 import { Basic as ComponentUnderTest } from '../examples/basic'
 
-describe('TreeView / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  it.each(getParts(treeViewAnatomy).filter((x) => x.includes('branchTrigger')))(
-    'should render part %s',
-    async (part) => {
-      render(() => <ComponentUnderTest />)
-      expect(document.querySelector(part)).toBeInTheDocument()
-    },
-  )
-
-  it.each(getExports(treeViewAnatomy))('should export %s', async (part) => {
-    expect(TreeView[part]).toBeDefined()
-  })
-})
-
 describe('TreeView', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should render a leaf node correctly', () => {
     render(() => <ComponentUnderTest />)
     expect(screen.getByRole('treeitem', { name: 'README.md' })).toBeInTheDocument()

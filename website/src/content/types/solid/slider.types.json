@@ -46,7 +46,10 @@
   },
   "Marker": {
     "props": {
-      "value": { "type": "number", "isRequired": true },
+      "value": {
+        "type": "number",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,
@@ -83,7 +86,7 @@
       "defaultValue": {
         "type": "number[]",
         "isRequired": false,
-        "description": "The initial value of the slider when it is first rendered.\nUse when you do not need to control the state of the slider picker."
+        "description": "The initial value of the slider when rendered.\nUse when you don't need to control the value of the slider."
       },
       "disabled": {
         "type": "boolean",
@@ -108,7 +111,7 @@
       "ids": {
         "type": "Partial<{\n  root: string\n  thumb(index: number): string\n  hiddenInput(index: number): string\n  control: string\n  track: string\n  range: string\n  label: string\n  valueText: string\n  marker(index: number): string\n}>",
         "isRequired": false,
-        "description": "The ids of the elements in the range slider. Useful for composition."
+        "description": "The ids of the elements in the slider. Useful for composition."
       },
       "invalid": {
         "type": "boolean",
@@ -190,13 +193,16 @@
       "value": {
         "type": "number[]",
         "isRequired": false,
-        "description": "The value of the range slider"
+        "description": "The controlled value of the slider"
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseSliderReturn", "isRequired": true },
+      "value": {
+        "type": "UseSliderReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -206,13 +212,19 @@
   },
   "Thumb": {
     "props": {
-      "index": { "type": "number", "isRequired": true },
+      "index": {
+        "type": "number",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "name": { "type": "string", "isRequired": false }
+      "name": {
+        "type": "string",
+        "isRequired": false
+      }
     }
   },
   "Track": {

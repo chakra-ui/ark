@@ -6,33 +6,33 @@ import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './carousel.types'
 
-export interface UseCarouselProps extends Optional<Omit<carousel.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial page of the carousel when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
-   */
-  defaultPage?: carousel.Context['page']
-}
+export interface UseCarouselProps extends Optional<Omit<carousel.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCarouselReturn extends ComputedRef<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (props: UseCarouselProps = {}, emit?: EmitFn<RootEmits>): UseCarouselReturn => {
+export const useCarousel = (props: UseCarouselProps, emit?: EmitFn<RootEmits>): UseCarouselReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed<carousel.Context>(() => ({
+  const context = computed<carousel.Props>(() => ({
     id,
     dir: locale.value.dir,
-    index: props.defaultPage,
     getRootNode: env?.value.getRootNode,
-    onAutoplayStatusChange: (details) => emit?.('autoplayStatusChange', details),
-    onDragStatusChange: (details) => emit?.('dragStatusChange', details),
+    ...cleanProps(props),
+    onAutoplayStatusChange: (details) => {
+      emit?.('autoplayStatusChange', details)
+      props.onAutoplayStatusChange?.(details)
+    },
+    onDragStatusChange: (details) => {
+      emit?.('dragStatusChange', details)
+      props.onDragStatusChange?.(details)
+    },
     onPageChange: (details) => {
       emit?.('pageChange', details)
       emit?.('update:page', details.page)
+      props.onPageChange?.(details)
     },
-    ...cleanProps(props),
   }))
 
-  const [state, send] = useMachine(carousel.machine(context.value), { context })
-  return computed(() => carousel.connect(state.value, send, normalizeProps))
+  const service = useMachine(carousel.machine, context)
+  return computed(() => carousel.connect(service, normalizeProps))
 }

@@ -2,10 +2,16 @@ import type * as progress from '@zag-js/progress'
 
 export interface RootProps {
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The initial value of the progress bar when rendered.
+   * Use when you don't need to control the value of the progress bar.
+   * @default 50
    */
   defaultValue?: number | null
+  /**
+   * The options to use for formatting the value.
+   * @default { style: "percent" }
+   */
+  formatOptions?: Intl.NumberFormatOptions
   /**
    * The unique identifier of the machine.
    */
@@ -14,6 +20,11 @@ export interface RootProps {
    * The ids of the elements in the progress bar. Useful for composition.
    */
   ids?: Partial<{ root: string; track: string; label: string; circle: string }>
+  /**
+   * The locale to use for formatting the value.
+   * @default "en-US"
+   */
+  locale?: string
   /**
    * The maximum allowed value of the progress bar.
    * @default 100
@@ -25,14 +36,14 @@ export interface RootProps {
    */
   min?: number
   /**
-   * Use this prop to control the value of the progress.
+   * The v-model value of the progress
    */
-  modelValue?: number | null
+  modelValue?: number
   /**
    * The orientation of the element.
    * @default "horizontal"
    */
-  orientation?: progress.Orientation
+  orientation?: 'horizontal' | 'vertical'
   /**
    * The localized messages to use.
    */

@@ -5,7 +5,7 @@ import { useEnvironmentContext } from './use-environment-context'
 const PrintEnvironment = () => {
   const { getRootNode } = useEnvironmentContext()
 
-  return <pre data-testid="output">{JSON.stringify(getRootNode(), null, 2)}</pre>
+  return <pre data-testid="output">{getRootNode()?.nodeName}</pre>
 }
 
 describe('EnvironmentProvider', () => {

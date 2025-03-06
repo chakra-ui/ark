@@ -10,7 +10,7 @@ const size = ref([
 
 <template>
   <Splitter.Root
-    :size="size"
+    v-model:size="size"
     @size-change="(details) => console.log('onSizeChange', details)"
     @size-change-end="(details) => console.log('onSizeChangeEnd', details)"
   >
