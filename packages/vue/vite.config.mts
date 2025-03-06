@@ -34,7 +34,7 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     lib: {
-      entry: globbySync('src/**/index.ts'),
+      entry: globbySync(['src/**/index.ts', 'src/components/anatomy.ts']),
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
