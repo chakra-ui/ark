@@ -1,0 +1,21 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:pw": "playwright test",
+    "test:pw:ui": "playwright test --ui",
+    "test:pw:update": "playwright test --trace on --update-snapshots",
+    "react:storybook": "bun run --cwd ../../packages/react storybook",
+    "vue:storybook": "bun run --cwd ../../packages/vue storybook",
+    "solid:storybook": "bun run --cwd ../../packages/solid storybook"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10"
+  }
+}
