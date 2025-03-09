@@ -371,7 +371,6 @@
         "@solidjs/meta": "0.29.4",
         "@solidjs/router": "0.15.3",
         "@solidjs/start": "1.1.2",
-        "lucide-solid": "0.479.0",
         "solid-js": "1.9.5",
         "vinxi": "0.5.3",
       },
@@ -3934,8 +3933,6 @@
     "@ark-ui/anatomy/@zag-js/tooltip": ["@zag-js/tooltip@0.62.1", "", { "dependencies": { "@zag-js/anatomy": "0.62.1", "@zag-js/core": "0.62.1", "@zag-js/dom-event": "0.62.1", "@zag-js/dom-query": "0.62.1", "@zag-js/popper": "0.62.1", "@zag-js/types": "0.62.1", "@zag-js/utils": "0.62.1" } }, "sha512-318EJU6B4FR0nMNU79qMAgdOiVM6vbDiRWBHjGLDBK3z5No3lKfo4TZb/NqBmmi2W7ZFPiPwvLFsTql+H0xDbA=="],
 
     "@ark-ui/anatomy/@zag-js/tree-view": ["@zag-js/tree-view@0.62.1", "", { "dependencies": { "@zag-js/anatomy": "0.62.1", "@zag-js/core": "0.62.1", "@zag-js/dom-event": "0.62.1", "@zag-js/dom-query": "0.62.1", "@zag-js/types": "0.62.1", "@zag-js/utils": "0.62.1" } }, "sha512-Y7qj16X18uElsD5jA9l03+rKEg1/5JIGRutO+NlEbs9Ffb7y34vqcEWquA+YgDfqXVWk2b5v9xcU1iKuKhOagQ=="],
-
-    "@ark-ui/solid-start/lucide-solid": ["lucide-solid@0.479.0", "", { "peerDependencies": { "solid-js": "^1.4.7" } }, "sha512-e7e6r0eWLE90c7flMrzzwwXOS3E1zemoQB9c4LUB3i4v/xH3UdhaNX5Y4FIdXSrBxMSaLCVm6rCqg9qdT9ugzw=="],
 
     "@auth/core/jose": ["jose@6.0.8", "", {}, "sha512-EyUPtOKyTYq+iMOszO42eobQllaIjJnwkZ2U93aJzNyPibCy7CEvT9UQnaCVB51IAd49gbNdCew1c0LcLTCB2g=="],
 
