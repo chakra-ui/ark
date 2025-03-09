@@ -14,7 +14,7 @@ for (const packageName of packages) {
         'src',
         'https://i.pravatar.cc/300?u=a042581f4e29026704d',
       )
-      await expect(page.locator('#storybook-root')).toHaveScreenshot()
+      await expect(page).toHaveScreenshot()
     })
   })
 }
