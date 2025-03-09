@@ -1,4 +1,5 @@
-import type { Page } from '@playwright/test'
+import AxeBuilder from '@axe-core/playwright'
+import type { Page, TestInfo } from '@playwright/test'
 
 export type PackageName = 'react' | 'vue'
 
@@ -19,4 +20,17 @@ export const gotoStory = async (storyId: string, variantId: string, page: Page, 
       await page.goto('/')
       break
   }
+}
+
+export const testA11yWithAttachedResults = async (page: Page, testInfo: TestInfo, componentName: string) => {
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .include(`[data-scope="${componentName}"][data-part="root"]`)
+    .disableRules('color-contrast') // This rule is not relevant since Ark components are not styled by default.
+    .analyze()
+
+  await testInfo.attach('accessibility-scan-results', {
+    body: JSON.stringify(accessibilityScanResults, null, 2),
+    contentType: 'application/json',
+  })
+  return accessibilityScanResults
 }

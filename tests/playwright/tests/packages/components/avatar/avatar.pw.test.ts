@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { type PackageName, gotoStory } from '../../components/utils'
+import { type PackageName, gotoStory, testA11yWithAttachedResults } from '../../components/utils'
 
 const packages: PackageName[] = ['react', 'vue']
 
@@ -15,6 +15,10 @@ for (const packageName of packages) {
         'https://i.pravatar.cc/300?u=a042581f4e29026704d',
       )
       await expect(page.locator('#storybook-root')).toHaveScreenshot()
+    })
+    test('has no a11y violations', async ({ page }, testInfo) => {
+      const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'avatar')
+      await expect(accessibilityScanResults.violations).toEqual([])
     })
   })
 }
