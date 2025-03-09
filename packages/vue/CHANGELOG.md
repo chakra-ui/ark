@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **PinInput**: Fixed OTP SMS autofill not working as expected.
+- **RatingGroup**: Fixed incorrect focus placement on the label.
+- **Checkbox**: Prevented `data-invalid` from being set when `invalid` is `false`.
+
 ## [5.0.2] - 2025-03-06
 
 ### Fixed

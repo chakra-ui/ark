@@ -6,6 +6,13 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **General**: Flushed effects synchronously instead of using a microtask.
+- **PinInput**: Fixed OTP SMS autofill not working as expected.
+- **RatingGroup**: Fixed incorrect focus placement on the label.
+- **Checkbox**: Prevented `data-invalid` from being set when `invalid` is `false`.
+
 ## [5.0.0] - 2025-03-06
 
 Ark UI just got a major performance boost! 🚀

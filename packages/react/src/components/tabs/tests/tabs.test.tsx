@@ -44,7 +44,7 @@ describe('Tabs', () => {
     expect(firstContent).not.toBeVisible()
 
     await user.click(firstTab)
-    expect(firstContent).toBeVisible()
+    await waitFor(() => expect(firstContent).toBeVisible())
   })
 
   it('should loop focus by default', async () => {
