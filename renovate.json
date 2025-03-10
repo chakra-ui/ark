@@ -8,25 +8,14 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "prConcurrentLimit": 30,
+  "prConcurrentLimit": 5,
   "prHourlyLimit": 0,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "extends": "monorepo:zag-js",
-      "schedule": "at any time"
-    },
-    {
-      "extends": "monorepo:panda-css",
-      "schedule": "at any time"
-    },
-    {
-      "groupName": "lucide-icons",
-      "matchPackagePrefixes": ["lucide"]
+      "automerge": true,
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
     }
-  ],
-  "ignoreDeps": ["@types/node", "@ark-ui/solid"]
+  ]
 }
