@@ -6,8 +6,7 @@
   "rebaseWhen": "conflicted",
   "timezone": "UTC",
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": "before 6:00am on the first day of the month"
+    "enabled": true
   },
   "prConcurrentLimit": 30,
   "prHourlyLimit": 0,
