@@ -8,7 +8,7 @@ import { useEvent } from '../../utils/use-event'
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {}
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
-export const usePresence = (props: UsePresenceProps) => {
+export const usePresence = (props: UsePresenceProps = {}) => {
   const { lazyMount, unmountOnExit, present, ...rest } = props
   const wasEverPresent = useRef(false)
   const machineProps: Partial<presence.Props> = {

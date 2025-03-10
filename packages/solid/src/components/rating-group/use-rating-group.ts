@@ -2,13 +2,14 @@ import * as ratingGroup from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import { useFieldContext } from '../field'
 
 export interface UseRatingGroupProps extends Optional<Omit<ratingGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRatingGroupReturn extends Accessor<ratingGroup.Api<PropTypes>> {}
 
-export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupReturn => {
+export const useRatingGroup = (props?: MaybeAccessor<UseRatingGroupProps>): UseRatingGroupReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -25,7 +26,7 @@ export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupR
     required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(ratingGroup.machine, machineProps)

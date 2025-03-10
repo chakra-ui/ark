@@ -9,7 +9,7 @@ export interface UseColorPickerProps extends Optional<Omit<colorPicker.Props, 'd
 
 export interface UseColorPickerReturn extends colorPicker.Api<PropTypes> {}
 
-export const useColorPicker = (props: UseColorPickerProps = {}): UseColorPickerReturn => {
+export const useColorPicker = (props?: UseColorPickerProps): UseColorPickerReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

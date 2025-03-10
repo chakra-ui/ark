@@ -7,7 +7,7 @@ import type { Optional } from '../../types'
 export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSplitterReturn extends splitter.Api<PropTypes> {}
 
-export const useSplitter = (props: UseSplitterProps = {}): UseSplitterReturn => {
+export const useSplitter = (props?: UseSplitterProps): UseSplitterReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

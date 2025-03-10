@@ -8,7 +8,7 @@ import { useFieldContext } from '../field'
 export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTagsInputReturn extends tagsInput.Api<PropTypes> {}
 
-export const useTagsInput = (props: UseTagsInputProps = {}): UseTagsInputReturn => {
+export const useTagsInput = (props?: UseTagsInputProps): UseTagsInputReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

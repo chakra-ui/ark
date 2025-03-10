@@ -1,6 +1,6 @@
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
@@ -19,7 +19,7 @@ export interface UseComboboxProps<T extends CollectionItem>
 export interface UseComboboxReturn<T extends CollectionItem> extends ComputedRef<combobox.Api<PropTypes, T>> {}
 
 export const useCombobox = <T extends CollectionItem>(
-  props: UseComboboxProps<T>,
+  props: MaybeRef<UseComboboxProps<T>>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseComboboxReturn<T> => {
   const id = useId()
@@ -28,6 +28,8 @@ export const useCombobox = <T extends CollectionItem>(
   const field = useFieldContext()
 
   const context = computed<combobox.Props<T>>(() => {
+    const localeProps = toValue<UseComboboxProps<T>>(props)
+
     return {
       id,
       ids: {
@@ -39,40 +41,40 @@ export const useCombobox = <T extends CollectionItem>(
       required: field?.value.required,
       invalid: field?.value.invalid,
       dir: locale.value.dir,
-      value: props.modelValue,
+      value: localeProps.modelValue,
       getRootNode: env?.value.getRootNode,
-      ...cleanProps(props),
+      ...cleanProps(localeProps),
       onFocusOutside: (details) => {
         emit?.('focusOutside', details)
-        props.onFocusOutside?.(details)
+        localeProps.onFocusOutside?.(details)
       },
       onHighlightChange: (details) => {
         emit?.('highlightChange', details)
         emit?.('update:highlightedValue', details.highlightedValue)
-        props.onHighlightChange?.(details)
+        localeProps.onHighlightChange?.(details)
       },
       onInputValueChange: (details) => {
         emit?.('inputValueChange', details)
         emit?.('update:inputValue', details.inputValue)
-        props.onInputValueChange?.(details)
+        localeProps.onInputValueChange?.(details)
       },
       onInteractOutside: (details) => {
         emit?.('interactOutside', details)
-        props.onInteractOutside?.(details)
+        localeProps.onInteractOutside?.(details)
       },
       onPointerDownOutside: (details) => {
         emit?.('pointerDownOutside', details)
-        props.onPointerDownOutside?.(details)
+        localeProps.onPointerDownOutside?.(details)
       },
       onOpenChange: (details) => {
         emit?.('openChange', details)
         emit?.('update:open', details.open)
-        props.onOpenChange?.(details)
+        localeProps.onOpenChange?.(details)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)
-        props.onValueChange?.(details)
+        localeProps.onValueChange?.(details)
       },
     }
   })

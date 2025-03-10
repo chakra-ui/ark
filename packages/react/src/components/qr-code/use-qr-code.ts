@@ -7,7 +7,7 @@ import type { Optional } from '../../types'
 export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseQrCodeReturn extends qrcode.Api<PropTypes> {}
 
-export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {
+export const useQrCode = (props?: UseQrCodeProps): UseQrCodeReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

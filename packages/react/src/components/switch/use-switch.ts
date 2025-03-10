@@ -8,7 +8,7 @@ import { useFieldContext } from '../field'
 export interface UseSwitchProps extends Optional<Omit<zagSwitch.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSwitchReturn extends zagSwitch.Api<PropTypes> {}
 
-export const useSwitch = (props: UseSwitchProps = {}): UseSwitchReturn => {
+export const useSwitch = (props?: UseSwitchProps): UseSwitchReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

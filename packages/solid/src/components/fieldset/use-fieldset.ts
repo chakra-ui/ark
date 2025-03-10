@@ -1,5 +1,7 @@
 import { getWindow } from '@zag-js/dom-query'
-import { createEffect, createMemo, createSignal, createUniqueId, onCleanup } from 'solid-js'
+import { createEffect, createMemo, createSignal, createUniqueId, mergeProps, onCleanup } from 'solid-js'
+import type { MaybeAccessor } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import { parts } from './fieldset.anatomy'
 
 export interface UseFieldsetProps {
@@ -19,10 +21,11 @@ export interface UseFieldsetProps {
 
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
-export const useFieldset = (props: UseFieldsetProps) => {
-  const { disabled = false, invalid = false } = props
+export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
+  const mergedProps = mergeProps({ disabled: false, invalid: false }, runIfFn(props))
+
   let rootRef: HTMLFieldSetElement | undefined
-  const id = props.id ?? createUniqueId()
+  const id = mergedProps.id ?? createUniqueId()
 
   const errorTextId = `fieldset::${id}::error-text`
   const helperTextId = `fieldset::${id}::helper-text`
@@ -51,21 +54,21 @@ export const useFieldset = (props: UseFieldsetProps) => {
 
   const labelIds: string[] = []
 
-  if (hasErrorText() && invalid) labelIds.push(errorTextId)
+  if (hasErrorText() && mergedProps.invalid) labelIds.push(errorTextId)
   if (hasHelperText()) labelIds.push(helperTextId)
 
   const getRootProps = () => ({
     ...parts.root.attrs,
-    disabled,
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
+    disabled: mergedProps.disabled,
+    'data-disabled': dataAttr(mergedProps.disabled),
+    'data-invalid': dataAttr(mergedProps.invalid),
     'aria-describedby': labelIds.join(' ') || undefined,
   })
 
   const getLegendProps = () => ({
     ...parts.legend.attrs,
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
+    'data-disabled': dataAttr(mergedProps.disabled),
+    'data-invalid': dataAttr(mergedProps.invalid),
   })
 
   const getHelperTextProps = () => ({
@@ -83,8 +86,8 @@ export const useFieldset = (props: UseFieldsetProps) => {
     refs: {
       rootRef,
     },
-    disabled,
-    invalid,
+    disabled: mergedProps.disabled,
+    invalid: mergedProps.invalid,
     getRootProps,
     getLegendProps,
     getHelperTextProps,

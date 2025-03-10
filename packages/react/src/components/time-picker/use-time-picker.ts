@@ -8,7 +8,7 @@ export interface UseTimePickerProps extends Optional<Omit<timePicker.Props, 'dir
 
 export interface UseTimePickerReturn extends timePicker.Api<PropTypes> {}
 
-export const useTimePicker = (props: UseTimePickerProps = {}): UseTimePickerReturn => {
+export const useTimePicker = (props?: UseTimePickerProps): UseTimePickerReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir, locale } = useLocaleContext()

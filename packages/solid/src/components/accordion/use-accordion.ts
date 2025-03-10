@@ -2,12 +2,13 @@ import * as accordion from '@zag-js/accordion'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAccordionReturn extends Accessor<accordion.Api<PropTypes>> {}
 
-export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn => {
+export const useAccordion = (props?: MaybeAccessor<UseAccordionProps>): UseAccordionReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -16,7 +17,7 @@ export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn 
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(accordion.machine, machineProps)

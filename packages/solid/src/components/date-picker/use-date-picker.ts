@@ -2,12 +2,13 @@ import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
-export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
+export const useDatePicker = (props?: MaybeAccessor<UseDatePickerProps>): UseDatePickerReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -17,7 +18,7 @@ export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerRetu
     dir: locale().dir,
     locale: locale().locale,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(datePicker.machine, machineProps)

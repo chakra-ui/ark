@@ -10,7 +10,7 @@ export interface UseMenuReturn {
   service: menu.Service
 }
 
-export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
+export const useMenu = (props?: UseMenuProps): UseMenuReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

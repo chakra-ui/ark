@@ -2,7 +2,8 @@ import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { CollectionItem, Optional } from '../../types'
+import type { CollectionItem, MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import type { ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
@@ -16,7 +17,7 @@ export interface UseSelectProps<T extends CollectionItem>
 
 export interface UseSelectReturn<T extends CollectionItem> extends Accessor<select.Api<PropTypes, T>> {}
 
-export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): UseSelectReturn<T> => {
+export const useSelect = <T extends CollectionItem>(props: MaybeAccessor<UseSelectProps<T>>): UseSelectReturn<T> => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -34,7 +35,7 @@ export const useSelect = <T extends CollectionItem>(props: UseSelectProps<T>): U
     required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(select.machine, machineProps)

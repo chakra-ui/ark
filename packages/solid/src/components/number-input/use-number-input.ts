@@ -2,13 +2,14 @@ import * as numberInput from '@zag-js/number-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import { useFieldContext } from '../field'
 
 export interface UseNumberInputProps extends Optional<Omit<numberInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseNumberInputReturn extends Accessor<numberInput.Api<PropTypes>> {}
 
-export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputReturn => {
+export const useNumberInput = (props?: MaybeAccessor<UseNumberInputProps>): UseNumberInputReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -27,7 +28,7 @@ export const useNumberInput = (props: UseNumberInputProps = {}): UseNumberInputR
     dir: locale().dir,
     locale: locale().locale,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(numberInput.machine, machineProps)

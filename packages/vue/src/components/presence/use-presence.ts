@@ -23,10 +23,13 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
   const wasEverPresent = ref(false)
   const nodeRef = ref<VNodeRef | null>(null)
 
-  const machineProps = computed(() => ({
-    present: toValue(props).present,
-    onExitComplete: () => emit?.('exitComplete'),
-  }))
+  const machineProps = computed(() => {
+    const presenceProps = toValue(props)
+    return {
+      present: presenceProps.present,
+      onExitComplete: () => emit?.('exitComplete'),
+    }
+  })
 
   const service = useMachine(presence.machine, machineProps)
   const api = computed(() => presence.connect(service, normalizeProps))
