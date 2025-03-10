@@ -22,6 +22,38 @@ for (const packageName of packages) {
     })
   })
 
+  test.describe(`${packageName}: events variant`, () => {
+    test.beforeEach(async ({ page }) => {
+      await gotoStory('avatar', 'events', page, packageName)
+      await page.getByAltText('avatar').waitFor()
+    })
+    test('has avatar image', async ({ page }) => {
+      await expect(page.getByAltText('avatar')).toHaveAttribute(
+        'src',
+        'https://i.pravatar.cc/300?u=a042581f4e29026704d',
+      )
+      await expect(page.locator('#storybook-root')).toHaveScreenshot()
+    })
+    test('has no a11y violations', async ({ page }, testInfo) => {
+      const accessibilityScanResults = await testA11yWithAttachedResults(page, testInfo, 'avatar')
+      await expect(accessibilityScanResults.violations).toEqual([])
+    })
+    test('emits status-change event and logs to console', async ({ page }) => {
+      const consoleMessages: string[] = []
+      page.on('console', (msg) => {
+        if (msg.type() === 'log') {
+          consoleMessages.push(msg.text())
+        }
+      })
+
+      await gotoStory('avatar', 'events', page, packageName)
+      await page.getByAltText('avatar').waitFor()
+
+      const hasStatusChangeEvent = consoleMessages.some((msg) => msg.includes('loaded'))
+      expect(hasStatusChangeEvent).toBeTruthy()
+    })
+  })
+
   test.describe(`${packageName}: root-provider variant`, () => {
     test.beforeEach(async ({ page }) => {
       await gotoStory('avatar', 'root-provider', page, packageName)
