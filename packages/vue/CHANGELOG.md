@@ -24,9 +24,14 @@ const accordion = useAccordion(accordionProps)
 
 ### Fixed
 
-- **PinInput**: Fixed OTP SMS autofill not working as expected.
+- **Checkbox**: `data-invalid` is no longer set when `invalid` is `false`.
+- **Combobox**: Fixed unexpected cursor movement when editing input.
+- **PinInput**: OTP SMS autofill now works as expected.
 - **RatingGroup**: Fixed incorrect focus placement on the label.
-- **Checkbox**: Prevented `data-invalid` from being set when `invalid` is `false`.
+- **TagsInput**: Improved caret detection to prevent unintended tag removal.
+- **Timer**
+  - Fixed slowdown when switching tabs/windows.
+  - Changed default `interval` from `250` to `1000`.
 
 ## [5.0.2] - 2025-03-06
 
