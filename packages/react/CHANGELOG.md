@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.1] - 2025-03-11
+
 ### Fixed
 
 - **General**: Effects now flush synchronously instead of using a microtask.
