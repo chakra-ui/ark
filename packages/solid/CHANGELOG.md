@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.1.0] - 2025-03-11
+
 ### Added
 
 - Implemented support for reactive props in `use-*.ts` functions.
