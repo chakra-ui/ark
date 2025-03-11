@@ -8,7 +8,7 @@ import { useFieldContext } from '../field'
 export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePinInputReturn extends pinInput.Api<PropTypes> {}
 
-export const usePinInput = (props: UsePinInputProps = {}): UsePinInputReturn => {
+export const usePinInput = (props?: UsePinInputProps): UsePinInputReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

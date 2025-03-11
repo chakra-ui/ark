@@ -1,6 +1,6 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, ref, useId, watch } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, ref, toValue, useId, watch } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
@@ -20,26 +20,33 @@ interface Collapsible extends collapsible.Api<PropTypes> {
 
 export interface UseCollapsibleReturn extends ComputedRef<Collapsible> {}
 
-export const useCollapsible = (props: UseCollapsibleProps = {}, emits?: EmitFn<RootEmits>): UseCollapsibleReturn => {
+export const useCollapsible = (
+  props: MaybeRef<UseCollapsibleProps> = {},
+  emits?: EmitFn<RootEmits>,
+): UseCollapsibleReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<collapsible.Props>(() => ({
-    id,
-    dir: locale.value.dir,
-    getRootNode: env?.value.getRootNode,
-    ...cleanProps(props),
-    onExitComplete: () => {
-      emits?.('exitComplete')
-      props.onExitComplete?.()
-    },
-    onOpenChange: (details) => {
-      emits?.('openChange', details)
-      emits?.('update:open', details.open)
-      props.onOpenChange?.(details)
-    },
-  }))
+  const context = computed<collapsible.Props>(() => {
+    const localeProps = toValue<UseCollapsibleProps>(props)
+
+    return {
+      id,
+      dir: locale.value.dir,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localeProps),
+      onExitComplete: () => {
+        emits?.('exitComplete')
+        localeProps.onExitComplete?.()
+      },
+      onOpenChange: (details) => {
+        emits?.('openChange', details)
+        emits?.('update:open', details.open)
+        localeProps.onOpenChange?.(details)
+      },
+    }
+  })
 
   const service = useMachine(collapsible.machine, context)
   const api = computed(() => collapsible.connect(service, normalizeProps))
@@ -54,10 +61,14 @@ export const useCollapsible = (props: UseCollapsibleProps = {}, emits?: EmitFn<R
     },
   )
 
-  return computed(() => ({
-    ...api.value,
-    unmounted:
-      (!api.value.visible && !wasVisible.value && props.lazyMount) ||
-      (props.unmountOnExit && !api.value.visible && wasVisible.value),
-  }))
+  return computed(() => {
+    const localeProps = toValue<UseCollapsibleProps>(props)
+
+    return {
+      ...api.value,
+      unmounted:
+        (!api.value.visible && !wasVisible.value && localeProps.lazyMount) ||
+        (localeProps.unmountOnExit && !api.value.visible && wasVisible.value),
+    }
+  })
 }

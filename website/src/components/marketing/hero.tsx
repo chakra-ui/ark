@@ -1,10 +1,11 @@
-import { ArrowRightIcon, RocketIcon } from 'lucide-react'
+import { ArrowRightIcon, SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { Box, Container, HStack, Stack, styled } from 'styled-system/jsx'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
+import { Icon } from '../ui/icon'
 import { ReactIcon, SolidIcon, SvelteIcon, VueIcon } from './icons'
 
 export const Hero = () => {
@@ -21,10 +22,12 @@ export const Hero = () => {
         <Stack gap={{ base: '6', md: '8' }} maxW="3xl">
           <Stack gap={{ base: '5', md: '6' }}>
             <Stack gap={{ base: '3', md: '4' }}>
-              <NextLink href="/react/plus">
+              <NextLink href="/react/examples/combobox-in-textarea">
                 <Badge size="lg" variant="outline">
-                  <RocketIcon />
-                  New: Launching Ark Plus
+                  <Icon color="colorPalette.default">
+                    <SparklesIcon />
+                  </Icon>
+                  New: Combobox in Textarea
                   <ArrowRightIcon />
                 </Badge>
               </NextLink>

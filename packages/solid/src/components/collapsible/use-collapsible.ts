@@ -2,8 +2,9 @@ import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createEffect, createMemo, createSignal, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseCollapsibleProps
   extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>,
@@ -19,11 +20,11 @@ export interface UseCollapsibleReturn
     }
   > {}
 
-export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {
+export const useCollapsible = (props: MaybeAccessor<UseCollapsibleProps> = {}): UseCollapsibleReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
+  const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(runIfFn(props))
 
   const machineProps = createMemo(() => ({
     id,

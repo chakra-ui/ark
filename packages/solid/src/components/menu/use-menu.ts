@@ -2,7 +2,8 @@ import * as menu from '@zag-js/menu'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseMenuProps extends Optional<Omit<menu.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseMenuReturn {
@@ -10,7 +11,7 @@ export interface UseMenuReturn {
   service: menu.Service
 }
 
-export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
+export const useMenu = (props?: MaybeAccessor<UseMenuProps>): UseMenuReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -19,7 +20,7 @@ export const useMenu = (props: UseMenuProps = {}): UseMenuReturn => {
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(menu.machine, machineProps)

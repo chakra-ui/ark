@@ -6,6 +6,20 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.1] - 2025-03-11
+
+### Fixed
+
+- **General**: Effects now flush synchronously instead of using a microtask.
+- **Checkbox**: `data-invalid` is no longer set when `invalid` is `false`.
+- **Combobox**: Fixed unexpected cursor movement when editing input.
+- **PinInput**: OTP SMS autofill now works as expected.
+- **RatingGroup**: Fixed incorrect focus placement on the label.
+- **TagsInput**: Improved caret detection to prevent unintended tag removal.
+- **Timer**
+  - Fixed slowdown when switching tabs/windows.
+  - Changed default `interval` from `250` to `1000`.
+
 ## [5.0.0] - 2025-03-06
 
 Ark UI just got a major performance boost! 🚀

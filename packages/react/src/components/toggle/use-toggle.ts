@@ -5,7 +5,7 @@ export interface UseToggleProps extends toggle.Props {}
 
 export interface UseToggleReturn extends toggle.Api<PropTypes> {}
 
-export function useToggle(props: UseToggleProps): UseToggleReturn {
+export function useToggle(props?: UseToggleProps): UseToggleReturn {
   const service = useMachine(toggle.machine, props)
   return toggle.connect(service, normalizeProps)
 }

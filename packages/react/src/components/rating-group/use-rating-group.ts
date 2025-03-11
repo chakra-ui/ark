@@ -8,7 +8,7 @@ import { useFieldContext } from '../field'
 export interface UseRatingGroupProps extends Optional<Omit<rating.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseRatingGroupReturn extends rating.Api<PropTypes> {}
 
-export const useRatingGroup = (props: UseRatingGroupProps = {}): UseRatingGroupReturn => {
+export const useRatingGroup = (props?: UseRatingGroupProps): UseRatingGroupReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

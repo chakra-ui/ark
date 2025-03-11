@@ -1,6 +1,6 @@
 import * as timePicker from '@zag-js/time-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
@@ -15,32 +15,37 @@ export interface UseTimePickerProps extends Optional<Omit<timePicker.Props, 'dir
 
 export interface UseTimePickerReturn extends ComputedRef<timePicker.Api<PropTypes>> {}
 
-export const useTimePicker = (props: UseTimePickerProps = {}, emit?: EmitFn<RootEmits>): UseTimePickerReturn => {
+export const useTimePicker = (
+  props: MaybeRef<UseTimePickerProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseTimePickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<timePicker.Props>(() => {
+    const localProps = toValue<UseTimePickerProps>(props)
+
     return {
       id,
       dir: locale.value.dir,
       locale: locale.value.locale,
-      value: props.modelValue,
+      value: localProps.modelValue,
       getRootNode: env?.value.getRootNode,
-      ...cleanProps(props),
+      ...cleanProps(localProps),
       onFocusChange: (details) => {
         emit?.('focusChange', details)
-        props.onFocusChange?.(details)
+        localProps.onFocusChange?.(details)
       },
       onOpenChange: (details) => {
         emit?.('openChange', details)
         emit?.('update:open', details.open)
-        props.onOpenChange?.(details)
+        localProps.onOpenChange?.(details)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
         emit?.('update:modelValue', details.value)
-        props.onValueChange?.(details)
+        localProps.onValueChange?.(details)
       },
     }
   })

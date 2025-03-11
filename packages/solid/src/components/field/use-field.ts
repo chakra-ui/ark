@@ -1,5 +1,6 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
+import type { MaybeAccessor } from '../../types'
 import { useFieldsetContext } from '../fieldset'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
 import { parts } from './field.anatomy'
@@ -41,7 +42,7 @@ export interface UseFieldProps {
 
 export type UseFieldReturn = ReturnType<typeof useField>
 
-export const useField = (props: UseFieldProps) => {
+export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   const fieldset: UseFieldsetReturn | undefined = useFieldsetContext()
 
   const fieldProps = mergeProps(

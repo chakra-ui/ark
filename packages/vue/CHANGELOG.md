@@ -6,6 +6,35 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.1.0] - 2025-03-11
+
+### Added
+
+- Implemented support for reactive props in `use-*.ts` functions.
+
+```tsx
+const value = ref(['React'])
+
+const accordionProps = computed<UseAccordionProps>(() => ({
+  multiple: true,
+  value: value.value,
+  onValueChange: (e) => (value.value = e.value),
+}))
+
+const accordion = useAccordion(accordionProps)
+```
+
+### Fixed
+
+- **Checkbox**: `data-invalid` is no longer set when `invalid` is `false`.
+- **Combobox**: Fixed unexpected cursor movement when editing input.
+- **PinInput**: OTP SMS autofill now works as expected.
+- **RatingGroup**: Fixed incorrect focus placement on the label.
+- **TagsInput**: Improved caret detection to prevent unintended tag removal.
+- **Timer**
+  - Fixed slowdown when switching tabs/windows.
+  - Changed default `interval` from `250` to `1000`.
+
 ## [5.0.2] - 2025-03-06
 
 ### Fixed

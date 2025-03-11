@@ -7,7 +7,7 @@ import type { Optional } from '../../types'
 export interface UsePaginationProps extends Optional<Omit<pagination.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePaginationReturn extends pagination.Api<PropTypes> {}
 
-export const usePagination = (props: UsePaginationProps = {}): UsePaginationReturn => {
+export const usePagination = (props?: UsePaginationProps): UsePaginationReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

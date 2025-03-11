@@ -2,7 +2,8 @@ import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { CollectionItem, Optional } from '../../types'
+import type { CollectionItem, MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import type { ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
@@ -16,7 +17,9 @@ export interface UseComboboxProps<T extends CollectionItem>
 
 export interface UseComboboxReturn<T extends CollectionItem> extends Accessor<combobox.Api<PropTypes, T>> {}
 
-export const useCombobox = <T extends CollectionItem>(props: UseComboboxProps<T>): UseComboboxReturn<T> => {
+export const useCombobox = <T extends CollectionItem>(
+  props: MaybeAccessor<UseComboboxProps<T>>,
+): UseComboboxReturn<T> => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()
@@ -34,7 +37,7 @@ export const useCombobox = <T extends CollectionItem>(props: UseComboboxProps<T>
     invalid: field?.().invalid,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(combobox.machine, machineProps)

@@ -62,7 +62,7 @@ describe('Rating Group / Field', () => {
   it('should focus on rating group when label is clicked', async () => {
     render(() => <WithField />)
     await user.click(screen.getByText(/label/i))
-    expect(screen.getByRole('radio', { name: /1 stars/i })).toHaveFocus()
+    await waitFor(() => expect(screen.getByRole('radio', { name: /3 stars/i })).toHaveFocus())
   })
 
   it('should not display error text when no error is present', async () => {

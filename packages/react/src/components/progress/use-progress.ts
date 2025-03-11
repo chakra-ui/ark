@@ -7,7 +7,7 @@ import type { Optional } from '../../types'
 export interface UseProgressProps extends Optional<Omit<progress.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseProgressReturn extends progress.Api<PropTypes> {}
 
-export const useProgress = (props: UseProgressProps = {}): UseProgressReturn => {
+export const useProgress = (props?: UseProgressProps): UseProgressReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir, locale } = useLocaleContext()
