@@ -156,7 +156,7 @@
     "clean-package": "2.2.0",
     "globby": "14.1.0",
     "happy-dom": "17.4.3",
-    "lucide-react": "0.477.0",
+    "lucide-react": "0.479.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-frame-component": "5.2.7",
