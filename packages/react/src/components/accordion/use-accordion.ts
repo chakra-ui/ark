@@ -7,7 +7,7 @@ import type { Optional } from '../../types'
 export interface UseAccordionProps extends Optional<Omit<accordion.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseAccordionReturn extends accordion.Api<PropTypes> {}
 
-export const useAccordion = (props: UseAccordionProps = {}): UseAccordionReturn => {
+export const useAccordion = (props?: UseAccordionProps): UseAccordionReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

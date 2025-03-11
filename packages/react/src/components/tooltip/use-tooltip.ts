@@ -8,7 +8,7 @@ export interface UseTooltipProps extends Optional<Omit<tooltip.Props, 'dir' | 'g
 
 export interface UseTooltipReturn extends tooltip.Api<PropTypes> {}
 
-export const useTooltip = (props: UseTooltipProps = {}): UseTooltipReturn => {
+export const useTooltip = (props?: UseTooltipProps): UseTooltipReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

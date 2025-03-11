@@ -2,12 +2,13 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import * as toggleGroup from '@zag-js/toggle-group'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseToggleGroupProps extends Optional<Omit<toggleGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseToggleGroupReturn extends Accessor<toggleGroup.Api<PropTypes>> {}
 
-export const useToggleGroup = (props: UseToggleGroupProps = {}): UseToggleGroupReturn => {
+export const useToggleGroup = (props?: MaybeAccessor<UseToggleGroupProps>): UseToggleGroupReturn => {
   const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
@@ -16,7 +17,7 @@ export const useToggleGroup = (props: UseToggleGroupProps = {}): UseToggleGroupR
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    ...props,
+    ...runIfFn(props),
   }))
 
   const service = useMachine(toggleGroup.machine, machineProps)

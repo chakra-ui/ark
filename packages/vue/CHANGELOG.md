@@ -6,6 +6,22 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Implemented support for reactive props in `use-*.ts` functions.
+
+```tsx
+const value = ref(['React'])
+
+const accordionProps = computed<UseAccordionProps>(() => ({
+  multiple: true,
+  value: value.value,
+  onValueChange: (e) => (value.value = e.value),
+}))
+
+const accordion = useAccordion(accordionProps)
+```
+
 ### Fixed
 
 - **PinInput**: Fixed OTP SMS autofill not working as expected.

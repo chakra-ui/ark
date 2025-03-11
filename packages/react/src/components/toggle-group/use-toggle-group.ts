@@ -7,7 +7,7 @@ import type { Optional } from '../../types'
 export interface UseToggleGroupProps extends Optional<Omit<toggleGroup.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseToggleGroupReturn extends toggleGroup.Api<PropTypes> {}
 
-export const useToggleGroup = (props: UseToggleGroupProps = {}): UseToggleGroupReturn => {
+export const useToggleGroup = (props?: UseToggleGroupProps): UseToggleGroupReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

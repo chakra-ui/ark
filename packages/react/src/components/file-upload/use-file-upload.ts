@@ -8,7 +8,7 @@ import { useFieldContext } from '../field'
 export interface UseFileUploadProps extends Optional<Omit<fileUpload.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseFileUploadReturn extends fileUpload.Api<PropTypes> {}
 
-export const useFileUpload = (props: UseFileUploadProps = {}): UseFileUploadReturn => {
+export const useFileUpload = (props?: UseFileUploadProps): UseFileUploadReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir, locale } = useLocaleContext()

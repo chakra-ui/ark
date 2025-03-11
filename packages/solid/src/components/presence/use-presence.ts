@@ -1,14 +1,15 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createEffect, createMemo, createSignal } from 'solid-js'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {}
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
-export const usePresence = (props: UsePresenceProps) => {
-  const [renderStrategyProps, context] = splitRenderStrategyProps(props)
+export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
+  const [renderStrategyProps, context] = splitRenderStrategyProps(runIfFn(props))
   const [wasEverPresent, setWasEverPresent] = createSignal(false)
 
   const service = useMachine(presence.machine, props)

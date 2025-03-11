@@ -1,6 +1,6 @@
 import * as fileUpload from '@zag-js/file-upload'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
@@ -11,38 +11,45 @@ export interface UseFileUploadProps extends Optional<Omit<fileUpload.Props, 'dir
 
 export interface UseFileUploadReturn extends ComputedRef<fileUpload.Api<PropTypes>> {}
 
-export const useFileUpload = (props: UseFileUploadProps = {}, emit?: EmitFn<RootEmits>): UseFileUploadReturn => {
+export const useFileUpload = (
+  props: MaybeRef<UseFileUploadProps> = {},
+  emit?: EmitFn<RootEmits>,
+): UseFileUploadReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<fileUpload.Props>(() => ({
-    id,
-    ids: {
-      label: field?.value.ids.label,
-      hiddenInput: field?.value.ids.control,
-    },
-    dir: locale.value.dir,
-    disabled: field?.value.disabled,
-    invalid: field?.value.invalid,
-    locale: locale.value.locale,
-    required: field?.value.required,
-    getRootNode: env?.value.getRootNode,
-    ...cleanProps(props),
-    onFileChange: (details) => {
-      emit?.('fileChange', details)
-      props.onFileChange?.(details)
-    },
-    onFileAccept: (details) => {
-      emit?.('fileAccept', details)
-      props.onFileAccept?.(details)
-    },
-    onFileReject: (details) => {
-      emit?.('fileReject', details)
-      props.onFileReject?.(details)
-    },
-  }))
+  const context = computed<fileUpload.Props>(() => {
+    const localeProps = toValue<UseFileUploadProps>(props)
+
+    return {
+      id,
+      ids: {
+        label: field?.value.ids.label,
+        hiddenInput: field?.value.ids.control,
+      },
+      dir: locale.value.dir,
+      disabled: field?.value.disabled,
+      invalid: field?.value.invalid,
+      locale: locale.value.locale,
+      required: field?.value.required,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localeProps),
+      onFileChange: (details) => {
+        emit?.('fileChange', details)
+        localeProps.onFileChange?.(details)
+      },
+      onFileAccept: (details) => {
+        emit?.('fileAccept', details)
+        localeProps.onFileAccept?.(details)
+      },
+      onFileReject: (details) => {
+        emit?.('fileReject', details)
+        localeProps.onFileReject?.(details)
+      },
+    }
+  })
 
   const service = useMachine(fileUpload.machine, context)
 

@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { Accordion, useAccordion } from '@ark-ui/vue/accordion'
+import { Accordion, type UseAccordionProps, useAccordion } from '@ark-ui/vue/accordion'
 import { ChevronRightIcon } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const items = ref(['React', 'Solid', 'Vue'])
+const value = ref(['React'])
 
-const accordion = useAccordion({ defaultValue: ['React'] })
+const accordionProps = computed<UseAccordionProps>(() => ({
+  multiple: true,
+  value: value.value,
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+  onValueChange: (e) => (value.value = e.value),
+}))
+
+const accordion = useAccordion(accordionProps)
 </script>
 
 <template>

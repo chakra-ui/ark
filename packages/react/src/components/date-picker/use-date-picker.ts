@@ -8,7 +8,7 @@ export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir
 
 export interface UseDatePickerReturn extends datePicker.Api<PropTypes> {}
 
-export const useDatePicker = (props: UseDatePickerProps = {}): UseDatePickerReturn => {
+export const useDatePicker = (props?: UseDatePickerProps): UseDatePickerReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir, locale } = useLocaleContext()

@@ -8,7 +8,7 @@ export interface UseDialogProps extends Optional<Omit<dialog.Props, 'getRootNode
 
 export interface UseDialogReturn extends dialog.Api<PropTypes> {}
 
-export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
+export const useDialog = (props?: UseDialogProps): UseDialogReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

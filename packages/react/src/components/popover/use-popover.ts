@@ -8,7 +8,7 @@ export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'g
 
 export interface UsePopoverReturn extends popover.Api<PropTypes> {}
 
-export const usePopover = (props: UsePopoverProps = {}): UsePopoverReturn => {
+export const usePopover = (props?: UsePopoverProps): UsePopoverReturn => {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()

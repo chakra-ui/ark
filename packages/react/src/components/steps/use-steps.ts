@@ -8,7 +8,7 @@ export interface UseStepsProps extends Optional<Omit<steps.Props, 'dir' | 'getRo
 
 export interface UseStepsReturn extends steps.Api<PropTypes> {}
 
-export function useSteps(props: UseStepsProps = {}): UseStepsReturn {
+export function useSteps(props?: UseStepsProps): UseStepsReturn {
   const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
