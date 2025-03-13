@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Added support for clean up function in `ref`.
+
 ## [5.0.1] - 2025-03-11
 
 ### Fixed

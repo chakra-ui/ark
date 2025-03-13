@@ -1,17 +1,28 @@
-type PossibleRef<T> = React.Ref<T | null> | undefined
+import type { Ref } from 'react'
 
-function setRef<T>(ref: PossibleRef<T>, value: T) {
-  if (typeof ref === 'function') {
-    ref(value)
-  } else if (ref !== null && ref !== undefined) {
-    ;(ref as React.MutableRefObject<T>).current = value
-  }
-}
+type PossibleRef<T> = Ref<T | null> | undefined
 
 export function composeRefs<T>(...refs: PossibleRef<T>[]): (node: T | null) => void {
   return (node) => {
+    const cleanUps: VoidFunction[] = []
+
     for (const ref of refs) {
-      setRef(ref, node)
+      if (typeof ref === 'function') {
+        const cb = ref(node)
+        if (typeof cb === 'function') {
+          cleanUps.push(cb)
+        }
+      } else if (ref) {
+        ref.current = node
+      }
+    }
+
+    if (cleanUps.length) {
+      return () => {
+        for (const cleanUp of cleanUps) {
+          cleanUp()
+        }
+      }
     }
   }
 }
