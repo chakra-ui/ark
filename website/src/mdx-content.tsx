@@ -14,6 +14,7 @@ import { Quickstart } from './components/quickstart'
 import { Story } from './components/story'
 
 import { Step, Steps } from '~/components/ui/stepper'
+import { ThemeImage } from './components/theme-image'
 
 const sharedComponents = {
   a: Link,
@@ -31,6 +32,7 @@ const sharedComponents = {
   Step,
   Steps,
   Story,
+  ThemeImage,
 }
 
 const useMDXComponent = (code: string) => {
