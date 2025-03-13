@@ -11,8 +11,6 @@
 Ark UI is a headless UI library with over 45+ components designed to build reusable, scalable Design Systems that works
 for a wide range of JS frameworks.
 
-![Performance comparison showing Ark v5 is 1.5x-4x faster than other libraries](./.github/architecture.svg)
-
 ## Documentation
 
 For more detailed documentation and examples, please visit the [official documentation](https://ark-ui.com/).
