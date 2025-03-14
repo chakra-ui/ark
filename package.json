@@ -5,6 +5,7 @@
   "workspaces": [
     "packages/*",
     "templates/**",
+    "tests/*",
     "scripts",
     "website"
   ],
@@ -18,6 +19,7 @@
     "format": "bun prettier --write .",
     "lint": "turbo run lint",
     "test": "turbo run test:ci --concurrency=1",
+    "tests:playwright": "bun run --cwd tests/playwright",
     "typecheck": "turbo run typecheck",
     "react": "bun run --cwd packages/react",
     "scripts": "bun run --cwd scripts",
