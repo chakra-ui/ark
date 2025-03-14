@@ -49,20 +49,20 @@ export const Hero = () => {
               <NextLink href="/react/docs/components/accordion">Show Components</NextLink>
             </Button>
           </Stack>
-          <HStack gap="10">
-            <HStack>
+          <HStack gap={{ base: '4', md: '8' }}>
+            <HStack gap={{ base: '1', md: '2' }}>
               <ReactIcon />
               <Text color="fg.muted">React</Text>
             </HStack>
-            <HStack>
+            <HStack gap={{ base: '1', md: '2' }}>
               <SolidIcon />
               <Text color="fg.muted">Solid</Text>
             </HStack>
-            <HStack>
+            <HStack gap={{ base: '1', md: '2' }}>
               <VueIcon />
               <Text color="fg.muted">Vue</Text>
             </HStack>
-            <HStack>
+            <HStack gap={{ base: '1', md: '2' }}>
               <SvelteIcon />
               <Text color="fg.muted">Svelte</Text>
             </HStack>
