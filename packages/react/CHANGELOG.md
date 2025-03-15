@@ -8,13 +8,18 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- Added support for clean up function in `ref`.
+- Support for cleanup function in `ref`.
+
+### Fixed
+
+- **NumberInput**: `onValueChange` now correctly receives `valueAsNumber`.
+- **Slider**: Thumbs now initialize correctly when `min` is set to a non-zero value.
 
 ## [5.0.1] - 2025-03-11
 
 ### Fixed
 
-- **General**: Effects now flush synchronously instead of using a microtask.
+- Effects now flush synchronously instead of using a microtask.
 - **Checkbox**: `data-invalid` is no longer set when `invalid` is `false`.
 - **Combobox**: Fixed unexpected cursor movement when editing input.
 - **PinInput**: OTP SMS autofill now works as expected.
