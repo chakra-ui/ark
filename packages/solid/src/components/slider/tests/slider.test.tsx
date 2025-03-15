@@ -30,10 +30,10 @@ describe('Slider', () => {
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
     leftThumb.focus()
     await user.keyboard('[End]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '20'))
 
     await user.keyboard('[ArrowRight]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '20'))
   })
 
   it('should be possible to control it with the arrow keys in rtl mode', async () => {
