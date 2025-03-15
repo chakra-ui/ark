@@ -8,8 +8,9 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **NumberInput**: `onValueChange` now correctly receives `valueAsNumber`.
-- **Slider**: Thumbs now initialize correctly when `min` is set to a non-zero value.
+- **Field**: Exported the missing `useField` hook.
+- **NumberInput**: `onValueChange` correctly received `valueAsNumber`.
+- **Slider**: Thumbs initialized correctly when `min` was set to a non-zero value.
 
 ## [5.1.0] - 2025-03-11
 

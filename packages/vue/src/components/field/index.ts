@@ -25,6 +25,7 @@ export { default as FieldRoot, type FieldRootBaseProps, type FieldRootProps } fr
 export { default as FieldSelect, type FieldSelectBaseProps, type FieldSelectProps } from './field-select.vue'
 export { default as FieldTextarea, type FieldTextareaBaseProps, type FieldTextareaProps } from './field-textarea.vue'
 export { fieldAnatomy } from './field.anatomy'
+export { useField, type UseFieldProps, type UseFieldReturn } from './use-field'
 export { useFieldContext, type UseFieldContext } from './use-field-context'
 
 export * as Field from './field'

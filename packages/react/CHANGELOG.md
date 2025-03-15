@@ -8,12 +8,13 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- Support for cleanup function in `ref`.
+- Added support for a cleanup function in `ref`.
 
 ### Fixed
 
-- **NumberInput**: `onValueChange` now correctly receives `valueAsNumber`.
-- **Slider**: Thumbs now initialize correctly when `min` is set to a non-zero value.
+- **Field**: Exported the missing `useField` hook.
+- **NumberInput**: `onValueChange` correctly received `valueAsNumber`.
+- **Slider**: Thumbs initialized correctly when `min` was set to a non-zero value.
 
 ## [5.0.1] - 2025-03-11
 

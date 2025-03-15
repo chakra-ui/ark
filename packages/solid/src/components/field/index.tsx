@@ -13,6 +13,7 @@ export { FieldRootProvider, type FieldRootProviderBaseProps, type FieldRootProvi
 export { FieldSelect, type FieldSelectBaseProps, type FieldSelectProps } from './field-select'
 export { FieldTextarea, type FieldTextareaBaseProps, type FieldTextareaProps } from './field-textarea'
 export { fieldAnatomy } from './field.anatomy'
+export { useField, type UseFieldProps, type UseFieldReturn } from './use-field'
 export { useFieldContext, type UseFieldContext } from './use-field-context'
 
 export * as Field from './field'

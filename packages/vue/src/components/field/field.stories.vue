@@ -4,6 +4,7 @@ import InputControlled from './examples/input-controlled.vue'
 import Input from './examples/input.vue'
 import ReactiveInvalid from './examples/reactive-invalid.vue'
 import RequiredIndicator from './examples/required-indicator.vue'
+import RootProvider from './examples/root-provider.vue'
 import SelectControlled from './examples/select-controlled.vue'
 import Select from './examples/select.vue'
 import TextareaControlled from './examples/textarea-controlled.vue'
@@ -37,6 +38,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Reactive Invalid">
       <ReactiveInvalid />
+    </Variant>
+    <Variant title="Root Provider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>
