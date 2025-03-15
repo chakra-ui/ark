@@ -312,3 +312,6 @@ vite.config.mts.timestamp-*
 
 # Solid Start
 .vinxi
+
+# Storybook
+*storybook.log
