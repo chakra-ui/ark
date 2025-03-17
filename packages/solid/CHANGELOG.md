@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.1.1] - 2025-03-17
+
 ### Fixed
 
 - **Field**: Exported the missing `useField` hook.
