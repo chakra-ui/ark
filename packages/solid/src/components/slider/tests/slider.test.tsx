@@ -24,7 +24,7 @@ describe('Slider', () => {
     expect(rightThumb).toHaveAttribute('aria-valuenow', '20')
   })
 
-  it.skip('should not be possible to overlap the right thumb with the left thumb', async () => {
+  it('should not be possible to overlap the right thumb with the left thumb', async () => {
     render(() => <ComponentUnderTest />)
 
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
