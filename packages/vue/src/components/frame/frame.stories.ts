@@ -5,7 +5,7 @@ import ScriptExample from './examples/script.vue'
 import SrcDocExample from './examples/src-doc.vue'
 
 const meta = {
-  title: 'Frame',
+  title: 'Components / Frame',
 } as Meta
 
 export default meta

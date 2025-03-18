@@ -3,7 +3,7 @@ import WithCheckboxExample from './examples/with-checkbox.vue'
 import WithFieldExample from './examples/with-field.vue'
 
 export default {
-  title: 'Fieldset',
+  title: 'Components / Fieldset',
 };
 
 export const Basic = {

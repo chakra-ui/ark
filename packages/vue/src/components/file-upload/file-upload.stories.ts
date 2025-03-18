@@ -3,7 +3,7 @@ import WithFieldExample from './examples/with-field.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 export default {
-  title: 'File Upload',
+  title: 'Components / File Upload',
 };
 
 export const Basic = {

@@ -7,7 +7,7 @@ import MultipleExample from './examples/multiple.vue'
 import WithInputExample from './examples/with-input.vue'
 
 const meta = {
-  title: 'Highlight',
+  title: 'Components / Highlight',
 } as Meta
 
 export default meta

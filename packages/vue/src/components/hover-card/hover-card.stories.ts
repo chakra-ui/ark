@@ -7,7 +7,7 @@ import RenderPropExample from './examples/render-prop.vue'
 import RootProviderExample from './examples/root-provider.vue'
 
 const meta = {
-  title: 'HoverCard',
+  title: 'Components / HoverCard',
 } as Meta
 
 export default meta

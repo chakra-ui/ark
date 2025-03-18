@@ -13,7 +13,7 @@ import NumberWithPercentageExample from './examples/number-with-percentage.vue'
 import NumberWithUnitExample from './examples/number-with-unit.vue'
 
 const meta = {
-  title: 'Format',
+  title: 'Components / Format',
 } as Meta
 
 export default meta
