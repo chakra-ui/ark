@@ -72,7 +72,6 @@
     "test": "vitest",
     "test:ci": "vitest --run",
     "typecheck": "vue-tsc",
-    "histoire": "histoire dev",
     "storybook": "storybook dev -p 6009",
     "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
@@ -140,7 +139,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@chromatic-com/storybook": "^3",
-    "@histoire/plugin-vue": "0.17.17",
     "@release-it/keep-a-changelog": "6.0.0",
     "@storybook/addon-essentials": "^8.6.7",
     "@storybook/blocks": "^8.6.7",
@@ -160,7 +158,6 @@
     "@vue/compiler-sfc": "3.5.13",
     "clean-package": "2.2.0",
     "globby": "14.1.0",
-    "histoire": "0.17.17",
     "jsdom": "26.0.0",
     "lucide-vue-next": "0.482.0",
     "playwright": "1.51.1",
