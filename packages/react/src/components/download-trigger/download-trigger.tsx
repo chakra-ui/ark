@@ -1,4 +1,5 @@
 import { type FileMimeType, downloadFile } from '@zag-js/file-utils'
+import { isFunction } from '@zag-js/utils'
 import { forwardRef } from 'react'
 import { useEnvironmentContext } from '../../providers'
 import type { MaybePromise } from '../../types'
@@ -33,7 +34,7 @@ export const DownloadTrigger = forwardRef<HTMLButtonElement, DownloadTriggerProp
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(e)
     if (e.defaultPrevented) return
-    if (typeof data === 'function') {
+    if (isFunction(data)) {
       const maybePromise = data()
       if (maybePromise instanceof Promise) {
         maybePromise.then((data) => download(data))
