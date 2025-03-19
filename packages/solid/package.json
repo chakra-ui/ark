@@ -70,6 +70,7 @@
     "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "test:ci": "vitest --run",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
@@ -164,6 +165,7 @@
     "vite": "6.2.2",
     "vite-plugin-solid": "2.11.6",
     "vitest": "3.0.9",
+    "@vitest/coverage-v8": "3.0.8",
     "vitest-axe": "1.0.0-pre.5"
   },
   "peerDependencies": {

@@ -26,6 +26,9 @@ export default defineConfig({
     setupFiles: 'src/setup-test.ts',
     globals: true,
     environment: 'jsdom',
+    coverage: {
+      provider: 'v8'
+    },
     testTransformMode: {
       web: ['/.[tj]sx$/'],
     },
