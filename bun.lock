@@ -90,7 +90,7 @@
         "@types/react": "19.0.10",
         "@types/react-dom": "19.0.4",
         "@vitejs/plugin-react": "4.3.4",
-        "@vitest/coverage-v8": "3.0.8",
+        "@vitest/coverage-v8": "3.0.9",
         "@zag-js/stringify-state": "1.4.1",
         "clean-package": "2.2.0",
         "globby": "14.1.0",
@@ -183,6 +183,7 @@
         "@testing-library/jest-dom": "6.6.3",
         "@testing-library/user-event": "14.6.1",
         "@types/jsdom": "21.1.7",
+        "@vitest/coverage-v8": "3.0.9",
         "@zag-js/stringify-state": "1.4.1",
         "clean-package": "2.2.0",
         "esbuild-plugin-solid": "0.6.0",
@@ -231,6 +232,7 @@
         "@testing-library/jest-dom": "6.6.3",
         "@testing-library/svelte": "5.2.7",
         "@testing-library/user-event": "14.6.1",
+        "@vitest/coverage-v8": "3.0.9",
         "clean-package": "2.2.0",
         "release-it": "18.1.2",
         "storybook": "8.6.7",
@@ -313,6 +315,7 @@
         "@types/jsdom": "21.1.7",
         "@vitejs/plugin-vue": "5.2.3",
         "@vitejs/plugin-vue-jsx": "4.1.2",
+        "@vitest/coverage-v8": "3.0.9",
         "@vue/compiler-sfc": "3.5.13",
         "clean-package": "2.2.0",
         "globby": "14.1.0",
@@ -1393,7 +1396,7 @@
 
     "@vitejs/plugin-vue-jsx": ["@vitejs/plugin-vue-jsx@4.1.2", "", { "dependencies": { "@babel/core": "^7.26.7", "@babel/plugin-transform-typescript": "^7.26.7", "@vue/babel-plugin-jsx": "^1.2.5" }, "peerDependencies": { "vite": "^5.0.0 || ^6.0.0", "vue": "^3.0.0" } }, "sha512-4Rk0GdE0QCdsIkuMmWeg11gmM4x8UmTnZR/LWPm7QJ7+BsK4tq08udrN0isrrWqz5heFy9HLV/7bOLgFS8hUjA=="],
 
-    "@vitest/coverage-v8": ["@vitest/coverage-v8@3.0.8", "", { "dependencies": { "@ampproject/remapping": "^2.3.0", "@bcoe/v8-coverage": "^1.0.2", "debug": "^4.4.0", "istanbul-lib-coverage": "^3.2.2", "istanbul-lib-report": "^3.0.1", "istanbul-lib-source-maps": "^5.0.6", "istanbul-reports": "^3.1.7", "magic-string": "^0.30.17", "magicast": "^0.3.5", "std-env": "^3.8.0", "test-exclude": "^7.0.1", "tinyrainbow": "^2.0.0" }, "peerDependencies": { "@vitest/browser": "3.0.8", "vitest": "3.0.8" }, "optionalPeers": ["@vitest/browser"] }, "sha512-y7SAKsQirsEJ2F8bulBck4DoluhI2EEgTimHd6EEUgJBGKy9tC25cpywh1MH4FvDGoG2Unt7+asVd1kj4qOSAw=="],
+    "@vitest/coverage-v8": ["@vitest/coverage-v8@3.0.9", "", { "dependencies": { "@ampproject/remapping": "^2.3.0", "@bcoe/v8-coverage": "^1.0.2", "debug": "^4.4.0", "istanbul-lib-coverage": "^3.2.2", "istanbul-lib-report": "^3.0.1", "istanbul-lib-source-maps": "^5.0.6", "istanbul-reports": "^3.1.7", "magic-string": "^0.30.17", "magicast": "^0.3.5", "std-env": "^3.8.0", "test-exclude": "^7.0.1", "tinyrainbow": "^2.0.0" }, "peerDependencies": { "@vitest/browser": "3.0.9", "vitest": "3.0.9" }, "optionalPeers": ["@vitest/browser"] }, "sha512-15OACZcBtQ34keIEn19JYTVuMFTlFrClclwWjHo/IRPg/8ELpkgNTl0o7WLP9WO9XGH6+tip9CPYtEOrIDJvBA=="],
 
     "@vitest/expect": ["@vitest/expect@3.0.9", "", { "dependencies": { "@vitest/spy": "3.0.9", "@vitest/utils": "3.0.9", "chai": "^5.2.0", "tinyrainbow": "^2.0.0" } }, "sha512-5eCqRItYgIML7NNVgJj6TVCmdzE7ZVgJhruW0ziSQV4V7PvLkDL1bBkBdcTs/VuIz0IxPb5da1IDSqc1TR9eig=="],
 

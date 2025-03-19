@@ -165,7 +165,7 @@
     "vite": "6.2.2",
     "vite-plugin-solid": "2.11.6",
     "vitest": "3.0.9",
-    "@vitest/coverage-v8": "3.0.8",
+    "@vitest/coverage-v8": "3.0.9",
     "vitest-axe": "1.0.0-pre.5"
   },
   "peerDependencies": {
