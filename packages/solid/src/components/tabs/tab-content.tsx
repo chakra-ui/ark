@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import type { ContentProps } from '@zag-js/tabs'
 import { Show } from 'solid-js'
+import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -29,7 +30,7 @@ export const TabContent = (props: TabContentProps) => {
   return (
     <PresenceProvider value={presenceApi}>
       <Show when={!presenceApi().unmounted}>
-        <ark.div {...mergedProps} />
+        <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
       </Show>
     </PresenceProvider>
   )

@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
+import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { splitPresenceProps } from './split-presence-props'
 import { type UsePresenceProps, usePresence } from './use-presence'
@@ -14,7 +15,7 @@ export const Presence = (props: PresenceProps) => {
 
   return (
     <Show when={!api().unmounted}>
-      <ark.div {...mergedProps} data-scope="presence" data-part="root" />
+      <ark.div {...mergedProps} ref={composeRefs(api().ref, props.ref)} data-scope="presence" data-part="root" />
     </Show>
   )
 }
