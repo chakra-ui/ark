@@ -24,7 +24,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
     store: toaster,
     id: useId(),
     dir: locale?.dir,
-    getRootNode: () => env?.getDocument(),
+    getRootNode: env?.getRootNode,
   })
 
   const api = toast.group.connect(service, normalizeProps)
