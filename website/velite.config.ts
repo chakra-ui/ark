@@ -18,6 +18,9 @@ const pages = defineCollection({
       status: s.string().optional(),
       toc: s.toc(),
       code: s.mdx(),
+      llm: s.custom().transform((_data, { meta }) => {
+        return meta.content
+      }),
     })
     .transform((data, { meta }) => {
       if (data.id === 'changelog') {

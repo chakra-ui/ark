@@ -10,17 +10,17 @@ export const InstallCmd = async () => {
 
 type PackageManger = 'npm' | 'pnpm' | 'yarn' | 'bun'
 
+export const cmdMap: Record<PackageManger, string> = {
+  npm: 'npm install',
+  pnpm: 'pnpm install',
+  yarn: 'yarn add',
+  bun: 'bun add',
+}
+
 const getInstallCmds = async () => {
   const serverContext = getServerContext()
   const framework = serverContext.framework
   const pkgmanagers = ['npm', 'pnpm', 'yarn', 'bun'] as const
-
-  const cmdMap: Record<PackageManger, string> = {
-    npm: 'npm install',
-    pnpm: 'pnpm install',
-    yarn: 'yarn add',
-    bun: 'bun add',
-  }
 
   return Promise.all(
     pkgmanagers.map(async (pkgManager) => {
