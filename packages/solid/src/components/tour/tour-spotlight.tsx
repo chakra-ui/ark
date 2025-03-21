@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
+import { composeRefs } from '../../utils/compose-refs'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresence } from '../presence'
@@ -20,7 +21,11 @@ export const TourSpotlight = (props: TourSpotlightProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} hidden={!tour().open || !tour().step?.target?.()} />
+      <ark.div
+        {...mergedProps}
+        hidden={!tour().open || !tour().step?.target?.()}
+        ref={composeRefs(presenceApi().ref, props.ref)}
+      />
     </Show>
   )
 }

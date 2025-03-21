@@ -25,8 +25,8 @@ export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
       (!api().present && !wasEverPresent() && renderStrategyProps.lazyMount) ||
       (renderStrategyProps.unmountOnExit && !api().present && wasEverPresent()),
     present: api().present,
+    ref: api().setNode,
     presenceProps: {
-      ref: api().setNode,
       hidden: !api().present,
       'data-state': context.present ? 'open' : 'closed',
     },

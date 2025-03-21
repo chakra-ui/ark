@@ -6,6 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **[NEW] DownloadTrigger**: Component for downloading any a blob or file.
+
+### Fixed
+
+- **Presence**: Fixed issue where `onExitComplete` was not being called.
+- **Toaster**: Fixed issue where `--index` was not applied correctly.
+
 ## [5.1.1] - 2025-03-17
 
 ### Fixed

@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
+import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useDatePickerContext } from './use-date-picker-context'
@@ -18,7 +19,7 @@ export const DatePickerContent = (props: DatePickerContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
     </Show>
   )
 }
