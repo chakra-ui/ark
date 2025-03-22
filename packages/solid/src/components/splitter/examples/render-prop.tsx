@@ -10,7 +10,7 @@ export const RenderProp = () => (
               Set to 10%
             </button>
           </Splitter.Panel>
-          <Splitter.ResizeTrigger id="a:b" />
+          <Splitter.ResizeTrigger id="a:b" aria-label="Resize" />
           <Splitter.Panel id="b">
             <button type="button" onClick={() => api().resizePanel('b', 10)}>
               Set to 10%

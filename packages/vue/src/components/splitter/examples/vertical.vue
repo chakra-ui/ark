@@ -8,7 +8,7 @@ const panels = ref([{ id: 'a' }, { id: 'b' }])
 <template>
   <Splitter.Root orientation="vertical" :panels="panels">
     <Splitter.Panel id="a">A</Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.ResizeTrigger id="a:b" aria-label="Resize" />
     <Splitter.Panel id="b">B</Splitter.Panel>
   </Splitter.Root>
 </template>

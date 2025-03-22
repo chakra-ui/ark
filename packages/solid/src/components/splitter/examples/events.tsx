@@ -10,7 +10,7 @@ export const Events = () => (
     onCollapse={(details) => console.log('onCollapse', details)}
   >
     <Splitter.Panel id="a">A</Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.ResizeTrigger id="a:b" aria-label="Resize" />
     <Splitter.Panel id="b">B</Splitter.Panel>
   </Splitter.Root>
 )

@@ -12,7 +12,7 @@ const splitter = useSplitter({
 
   <Splitter.RootProvider :value="splitter">
     <Splitter.Panel id="a">A</Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b" />
+    <Splitter.ResizeTrigger id="a:b" aria-label="Resize" />
     <Splitter.Panel id="b">B</Splitter.Panel>
   </Splitter.RootProvider>
 </template>
