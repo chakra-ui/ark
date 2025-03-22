@@ -8,7 +8,36 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **[NEW] DownloadTrigger**: Component for downloading any a blob or file.
+- **[NEW] DownloadTrigger**: Added Component for downloading a blob or file, whether retrieved synchronously or
+  asynchronously.
+
+```tsx
+import { DownloadTrigger } from '@ark-ui/react/download-trigger'
+
+export const DownloadImage = () => {
+  async function fetchImage() {
+    const response = await fetch('https://picsum.photos/200/300')
+    return response.blob()
+  }
+
+  return (
+    <DownloadTrigger data={fetchImage} fileName="avatar.jpeg" mimeType="image/jpeg">
+      Download Image
+    </DownloadTrigger>
+  )
+}
+```
+
+### Changed
+
+- **NumberInput**: Set the default step to `0.01` when `formatOptions.style` was set to `percent`.
+- **[Breaking] Splitter**: Redesigned splitter machine to support more use cases and improve DX. Check out the
+  [Splitter](https://ark-ui.com/react/docs/components/splitter) documentation for more details.
+
+### Fixed
+
+- **Toast**: Fixed issue where setting `offsets` to `undefined` caused the machine to throw.
+- **Select**: Fixed issue where select `valueAsString` lost reactivity.
 
 ## [5.1.0] - 2025-03-17
 
