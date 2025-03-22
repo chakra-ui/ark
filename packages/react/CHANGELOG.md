@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.2.0] - 2025-03-22
+
 ### Added
 
 - **[NEW] DownloadTrigger**: Added Component for downloading a blob or file, whether retrieved synchronously or
