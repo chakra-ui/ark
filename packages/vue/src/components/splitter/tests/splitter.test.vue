@@ -2,13 +2,11 @@
 import { ref } from 'vue'
 import { Splitter } from '../'
 
-const size = ref([
-  { id: 'a', size: 50 },
-  { id: 'b', size: 50 },
-])
+const panels = ref([{ id: 'a' }, { id: 'b' }])
 </script>
+
 <template>
-  <Splitter.Root v-model:size="size">
+  <Splitter.Root :panels="panels">
     <Splitter.Panel id="a">A</Splitter.Panel>
     <Splitter.ResizeTrigger id="a:b">
       <div className="bar"></div>

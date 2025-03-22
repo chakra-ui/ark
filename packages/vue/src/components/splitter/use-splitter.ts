@@ -10,7 +10,7 @@ export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 
 
 export interface UseSplitterReturn extends ComputedRef<splitter.Api<PropTypes>> {}
 
-export const useSplitter = (props: MaybeRef<UseSplitterProps> = {}, emit?: EmitFn<RootEmits>): UseSplitterReturn => {
+export const useSplitter = (props: MaybeRef<UseSplitterProps>, emit?: EmitFn<RootEmits>): UseSplitterReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
@@ -23,14 +23,26 @@ export const useSplitter = (props: MaybeRef<UseSplitterProps> = {}, emit?: EmitF
       dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
       ...cleanProps(localProps),
-      onSizeChange: (details) => {
-        emit?.('sizeChange', details)
+      onResize: (details) => {
+        emit?.('resize', details)
         emit?.('update:size', details.size)
-        localProps.onSizeChange?.(details)
+        localProps.onResize?.(details)
       },
-      onSizeChangeEnd: (details) => {
-        emit?.('sizeChangeEnd', details)
-        localProps.onSizeChangeEnd?.(details)
+      onResizeEnd: (details) => {
+        emit?.('resizeEnd', details)
+        localProps.onResizeEnd?.(details)
+      },
+      onCollapse: (details) => {
+        emit?.('collapse', details)
+        localProps.onCollapse?.(details)
+      },
+      onExpand: (details) => {
+        emit?.('expand', details)
+        localProps.onExpand?.(details)
+      },
+      onResizeStart() {
+        emit?.('resizeStart')
+        localProps.onResizeStart?.()
       },
     }
   })

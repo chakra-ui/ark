@@ -12,9 +12,15 @@ export const SplitterRoot = (props: SplitterRootProps) => {
     'defaultSize',
     'id',
     'ids',
-    'onSizeChange',
-    'onSizeChangeEnd',
+    'keyboardResizeBy',
+    'nonce',
+    'onCollapse',
+    'onExpand',
+    'onResize',
+    'onResizeEnd',
+    'onResizeStart',
     'orientation',
+    'panels',
     'size',
   ])
   const api = useSplitter(useSplitterProps)

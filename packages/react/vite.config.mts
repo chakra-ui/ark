@@ -60,8 +60,8 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom',
     coverage: {
-      provider: 'v8'
-    }
+      provider: 'v8',
+    },
   },
   resolve: {
     conditions: ['source'],

@@ -1,23 +1,18 @@
 import { Splitter } from '@ark-ui/solid/splitter'
 
 export const RenderProp = () => (
-  <Splitter.Root
-    size={[
-      { id: 'a', size: 50 },
-      { id: 'b', size: 50 },
-    ]}
-  >
+  <Splitter.Root defaultSize={[50, 50]} panels={[{ id: 'a' }, { id: 'b' }]}>
     <Splitter.Context>
       {(api) => (
         <>
           <Splitter.Panel id="a">
-            <button type="button" onClick={() => api().setSize('a', 10)}>
+            <button type="button" onClick={() => api().resizePanel('a', 10)}>
               Set to 10%
             </button>
           </Splitter.Panel>
           <Splitter.ResizeTrigger id="a:b" />
           <Splitter.Panel id="b">
-            <button type="button" onClick={() => api().setSize('b', 10)}>
+            <button type="button" onClick={() => api().resizePanel('b', 10)}>
               Set to 10%
             </button>
           </Splitter.Panel>

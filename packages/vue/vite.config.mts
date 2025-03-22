@@ -27,7 +27,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     coverage: {
-      provider: 'v8'
+      provider: 'v8',
     },
     testTransformMode: {
       web: ['/.[tj]sx$/'],

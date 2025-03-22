@@ -1,19 +1,21 @@
 {
   "Panel": {
     "props": {
-      "id": { "type": "PanelId", "isRequired": true },
+      "id": {
+        "type": "string",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "snapSize": { "type": "number", "isRequired": false }
+      }
     }
   },
   "ResizeTrigger": {
     "props": {
       "id": {
-        "type": "`${string}:${string}` | `${string}:${number}` | `${number}:${string}` | `${number}:${number}`",
+        "type": "`${string}:${string}`",
         "isRequired": true
       },
       "asChild": {
@@ -21,19 +23,26 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false },
-      "step": { "type": "number", "isRequired": false }
+      "disabled": {
+        "type": "boolean",
+        "isRequired": false
+      }
     }
   },
   "Root": {
     "props": {
+      "panels": {
+        "type": "PanelData[]",
+        "isRequired": true,
+        "description": "The size constraints of the panels."
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "defaultSize": {
-        "type": "PanelSizeData[]",
+        "type": "number[]",
         "isRequired": false,
         "description": "The initial size of the panels when rendered.\nUse when you don't need to control the size of the panels."
       },
@@ -42,15 +51,40 @@
         "isRequired": false,
         "description": "The ids of the elements in the splitter. Useful for composition."
       },
-      "onSizeChange": {
-        "type": "(details: SizeChangeDetails) => void",
+      "keyboardResizeBy": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The number of pixels to resize the panel by when the keyboard is used."
+      },
+      "nonce": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The nonce for the injected splitter cursor stylesheet."
+      },
+      "onCollapse": {
+        "type": "(details: ExpandCollapseDetails) => void",
+        "isRequired": false,
+        "description": "Function called when a panel is collapsed."
+      },
+      "onExpand": {
+        "type": "(details: ExpandCollapseDetails) => void",
+        "isRequired": false,
+        "description": "Function called when a panel is expanded."
+      },
+      "onResize": {
+        "type": "(details: ResizeDetails) => void",
         "isRequired": false,
         "description": "Function called when the splitter is resized."
       },
-      "onSizeChangeEnd": {
-        "type": "(details: SizeChangeDetails) => void",
+      "onResizeEnd": {
+        "type": "(details: ResizeEndDetails) => void",
         "isRequired": false,
         "description": "Function called when the splitter resize ends."
+      },
+      "onResizeStart": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the splitter resize starts."
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
@@ -59,7 +93,7 @@
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
       },
       "size": {
-        "type": "PanelSizeData[]",
+        "type": "number[]",
         "isRequired": false,
         "description": "The controlled size data of the panels"
       }
@@ -67,7 +101,10 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseSplitterReturn", "isRequired": true },
+      "value": {
+        "type": "UseSplitterReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

@@ -9,8 +9,8 @@ export default defineConfig({
     globals: true,
     setupFiles: ['src/setup-test.ts'],
     coverage: {
-      provider: 'v8'
-    }
+      provider: 'v8',
+    },
   },
   resolve: {
     conditions: ['source'],

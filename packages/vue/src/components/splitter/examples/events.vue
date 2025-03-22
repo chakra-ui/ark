@@ -2,17 +2,17 @@
 import { Splitter } from '@ark-ui/vue/splitter'
 import { ref } from 'vue'
 
-const size = ref([
-  { id: 'a', size: 50 },
-  { id: 'b', size: 50 },
-])
+const panels = ref([{ id: 'a' }, { id: 'b' }])
 </script>
 
 <template>
   <Splitter.Root
-    v-model:size="size"
-    @size-change="(details) => console.log('onSizeChange', details)"
-    @size-change-end="(details) => console.log('onSizeChangeEnd', details)"
+    :panels="panels"
+    @resize="(details) => console.log('onResize', details)"
+    @resize-start="() => console.log('onResizeStart')"
+    @resize-end="(details) => console.log('onResizeEnd', details)"
+    @expand="(details) => console.log('onExpand', details)"
+    @collapse="(details) => console.log('onCollapse', details)"
   >
     <Splitter.Panel id="a">A</Splitter.Panel>
     <Splitter.ResizeTrigger id="a:b" />
