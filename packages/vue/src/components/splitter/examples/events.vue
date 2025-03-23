@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { Splitter } from '@ark-ui/vue/splitter'
-import { ref } from 'vue'
-
-const panels = ref([{ id: 'a' }, { id: 'b' }])
 </script>
 
 <template>
   <Splitter.Root
-    :panels="panels"
+    :panels="[{ id: 'a' }, { id: 'b' }]"
     @resize="(details) => console.log('onResize', details)"
     @resize-start="() => console.log('onResizeStart')"
     @resize-end="(details) => console.log('onResizeEnd', details)"
