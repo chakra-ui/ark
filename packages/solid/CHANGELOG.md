@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed an issue where a function was imported from a package that wasn't declared as a dependency.
+
 ## [5.3.0] - 2025-03-24
 
 ### Added
