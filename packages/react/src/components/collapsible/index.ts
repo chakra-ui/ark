@@ -5,6 +5,11 @@ export {
   type CollapsibleContentProps,
 } from './collapsible-content'
 export { CollapsibleContext, type CollapsibleContextProps } from './collapsible-context'
+export {
+  CollapsibleIndicator,
+  type CollapsibleIndicatorBaseProps,
+  type CollapsibleIndicatorProps,
+} from './collapsible-indicator'
 export { CollapsibleRoot, type CollapsibleRootBaseProps, type CollapsibleRootProps } from './collapsible-root'
 export {
   CollapsibleRootProvider,

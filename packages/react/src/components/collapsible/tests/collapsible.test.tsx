@@ -1,11 +1,17 @@
 import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { ChevronDownIcon } from 'lucide-react'
 import { axe } from 'vitest-axe'
 import { Collapsible } from '../'
 
 const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
-    <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+    <Collapsible.Trigger>
+      Toggle
+      <Collapsible.Indicator>
+        <ChevronDownIcon />
+      </Collapsible.Indicator>
+    </Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>
   </Collapsible.Root>
 )
