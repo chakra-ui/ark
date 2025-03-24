@@ -6,6 +6,7 @@ import { Collapsible } from '../'
 const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
     <Collapsible.Trigger>
+      Toggle
       <Collapsible.Indicator>
         <ChevronDownIcon />
       </Collapsible.Indicator>
