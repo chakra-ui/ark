@@ -34,5 +34,11 @@
     "description": "AI-powered Personalised Recipe Search Engine",
     "url": "https://www.gumbo.kitchen/",
     "image": "https://i.imgur.com/y76kzDu.png"
+  },
+  {
+    "title": "Promptmetheus",
+    "description": "Forge better Prompts for your LLM-powered Apps",
+    "url": "https://promptmetheus.com/",
+    "image": "https://promptmetheus.com/og-image.jpg"
   }
 ]
