@@ -1,8 +1,14 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerValueTextBaseProps extends PolymorphicProps {}
+type ColorHexFormat = 'hex' | 'hexa'
+type ColorFormat = 'rgba' | 'hsla' | 'hsba'
+type ColorStringFormat = ColorHexFormat | ColorFormat | 'rgb' | 'hsl' | 'hsb' | 'css'
+
+export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
+  format?: ColorStringFormat
+}
 export interface ColorPickerValueTextProps
   extends ColorPickerValueTextBaseProps,
     /**
@@ -16,17 +22,21 @@ import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useForwardExpose } from '../../utils'
 
-defineProps<ColorPickerValueTextProps>()
+const props = defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()
 const slots = defineSlots()
 
 useForwardExpose()
+
+const valueAsString = computed(() =>
+  props.format ? colorPicker.value.value.toString(props.format) : colorPicker.value.valueAsString,
+)
 </script>
 
 <template>
   <ark.span v-bind="colorPicker.getValueTextProps()" :as-child="asChild">
     <slot>
-      {{ slots.default?.() || colorPicker.valueAsString }}
+      {{ slots.default?.() || valueAsString }}
     </slot>
   </ark.span>
 </template>

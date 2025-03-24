@@ -6,6 +6,14 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **ColorPicker**: Added the option to format the `ValueText` component.
+
+```tsx
+<ColorPicker.ValueText format="hex" /> // #ff0000
+```
+
 ## [5.2.0] - 2025-03-22
 
 ### Added
