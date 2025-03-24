@@ -3,7 +3,13 @@ import { type RenderStrategyProps, splitRenderStrategyProps } from '$lib/utils/r
 import * as presence from '@zag-js/presence'
 import { normalizeProps, reflect, useMachine } from '@zag-js/svelte'
 
-export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
+  /**
+   * Whether to allow the initial presence animation.
+   * @default true
+   */
+  initial?: boolean
+}
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
 export const usePresence = (props: UsePresenceProps) => {
@@ -26,9 +32,11 @@ export const usePresence = (props: UsePresenceProps) => {
       (renderStrategyProps.unmountOnExit && !api.present && wasEverPresent),
   )
 
+  const initial = $derived(props.initial ?? true)
+
   const result = $derived(() => ({
     getPresenceProps: () => ({
-      'data-state': props.present ? 'open' : 'closed',
+      'data-state': api.skip && !initial ? undefined : props.present ? 'open' : 'closed',
       hidden: !api.present,
     }),
     present: api.present,
