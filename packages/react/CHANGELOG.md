@@ -14,6 +14,10 @@ description: All notable changes will be documented in this file.
 <ColorPicker.ValueText format="hex" /> // #ff0000
 ```
 
+### Fixed
+
+- **DownloadTrigger**: Added missing `use client` directive.
+
 ## [5.2.0] - 2025-03-22
 
 ### Added
