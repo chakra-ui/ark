@@ -31,11 +31,7 @@
   },
   "Indicator": {
     "props": {
-      "index": {
-        "type": "number",
-        "isRequired": true,
-        "description": "The index of the indicator."
-      },
+      "index": { "type": "number", "isRequired": true, "description": "The index of the indicator." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -62,11 +58,7 @@
   },
   "Item": {
     "props": {
-      "index": {
-        "type": "number",
-        "isRequired": true,
-        "description": "The index of the item."
-      },
+      "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -174,11 +166,7 @@
         "isRequired": false,
         "description": "Defines the extra space added around the scrollable area,\nenabling nearby items to remain partially in view."
       },
-      "page": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The controlled page of the carousel."
-      },
+      "page": { "type": "number", "isRequired": false, "description": "The controlled page of the carousel." },
       "slidesPerMove": {
         "type": "number | 'auto'",
         "defaultValue": "\"auto\"",
@@ -213,10 +201,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseCarouselReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseCarouselReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

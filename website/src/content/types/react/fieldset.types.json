@@ -36,11 +36,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the fieldset is invalid."
-      }
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the fieldset is invalid." }
     },
     "element": "HTMLFieldSetElement"
   },
