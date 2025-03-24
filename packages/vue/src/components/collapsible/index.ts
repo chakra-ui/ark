@@ -21,6 +21,11 @@ export {
   type CollapsibleTriggerProps,
   type CollapsibleTriggerBaseProps,
 } from './collapsible-trigger.vue'
+export {
+  default as CollapsibleIndicator,
+  type CollapsibleIndicatorProps,
+  type CollapsibleIndicatorBaseProps,
+} from './collapsible-indicator.vue'
 export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible'
 export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'
 export { collapsibleAnatomy } from './collapsible.anatomy'

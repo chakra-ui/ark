@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Collapsible**: Added an `Indicator` part to display whether the collapsible was open or closed.
+- **ColorPicker**: Added support for formatting the `ValueText` component.
+
 ## [5.2.0] - 2025-03-22
 
 ### Added

@@ -20,3 +20,8 @@ export {
   type CollapsibleTriggerBaseProps as TriggerBaseProps,
   type CollapsibleTriggerProps as TriggerProps,
 } from './collapsible-trigger'
+export {
+  CollapsibleIndicator as Indicator,
+  type CollapsibleIndicatorBaseProps as IndicatorBaseProps,
+  type CollapsibleIndicatorProps as IndicatorProps,
+} from './collapsible-indicator'
