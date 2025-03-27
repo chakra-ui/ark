@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Field**: Fixed issue where `Textarea` doesn't use the `ark.textarea` component, there by not supporting the
+  `asChild` prop.
+
 ## [5.3.0] - 2025-03-24
 
 ### Added
