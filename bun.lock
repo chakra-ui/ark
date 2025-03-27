@@ -24,6 +24,7 @@
         "@internationalized/date": "3.7.0",
         "@zag-js/accordion": "1.6.0",
         "@zag-js/anatomy": "1.6.0",
+        "@zag-js/angle-slider": "1.6.0",
         "@zag-js/auto-resize": "1.6.0",
         "@zag-js/avatar": "1.6.0",
         "@zag-js/carousel": "1.6.0",
@@ -1467,6 +1468,8 @@
     "@zag-js/anatomy": ["@zag-js/anatomy@1.6.0", "", {}, "sha512-ZsYKPtKgQEIc7VcyTBMDGLnEFJztAvkcUKb/+yDxWZWpfk+eh63QUpDUfQqcwdfP1iB3mrDmw/0ZVxjweMh9Lg=="],
 
     "@zag-js/anatomy-icons": ["@zag-js/anatomy-icons@1.6.0", "", { "dependencies": { "@svgr/core": "8.1.0", "@svgr/plugin-jsx": "8.1.0", "color2k": "2.0.3" }, "peerDependencies": { "react": ">=16.8.0" } }, "sha512-l0uNNL/F8GG4fujxVFbR7mujqH/FQzIg52cdKTYsdccZrt1YPMUp+72SsJCBHvkJCmvGq2gtAUYm1zvauCLczQ=="],
+
+    "@zag-js/angle-slider": ["@zag-js/angle-slider@1.6.0", "", { "dependencies": { "@zag-js/anatomy": "1.6.0", "@zag-js/core": "1.6.0", "@zag-js/dom-query": "1.6.0", "@zag-js/rect-utils": "1.6.0", "@zag-js/types": "1.6.0", "@zag-js/utils": "1.6.0" } }, "sha512-acE2pOlh7gxOp2U/fGznOKX9cpmm6iQBn2HJRqDzhW+YyECrvDDpIvkpUInKFHkdIq9V5B8qUT8nGuOWsnkqew=="],
 
     "@zag-js/aria-hidden": ["@zag-js/aria-hidden@1.6.0", "", {}, "sha512-x8vsYqJzH2zkY7qqBMCCBgfeYqMZQgLDWaObNQfw8BGQLlm3bBEPj0Va0U+JSYciXQ+X5CNjMrrBk0vTBANR9Q=="],
 
