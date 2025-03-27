@@ -1,6 +1,7 @@
 import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { mergeProps } from '@zag-js/solid'
-import { createEffect } from 'solid-js'
+import { onCleanup, onMount, splitProps } from 'solid-js'
+import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
@@ -16,26 +17,20 @@ export interface FieldTextareaProps extends HTMLProps<'textarea'>, FieldTextarea
 export const FieldTextarea = (props: FieldTextareaProps) => {
   const field = useFieldContext()
   let textareaRef: HTMLTextAreaElement
-  const { autoresize, ...textareaProps } = props
+  const [autoresizeProps, textareaProps] = splitProps(props, ['autoresize'])
 
   const mergedProps = mergeProps(
     () => field?.().getTextareaProps(),
-    () => ({ style: { resize: autoresize ? 'none' : undefined } }),
+    () => ({ style: { resize: autoresizeProps.autoresize ? 'none' : undefined } }),
     textareaProps,
   )
 
-  createEffect(() => {
-    if (!autoresize) return
+  onMount(() => {
+    if (!autoresizeProps.autoresize) return
     const cleanup = autoresizeTextarea(textareaRef)
-    return cleanup
+    onCleanup(() => cleanup?.())
   })
 
-  return (
-    <ark.textarea
-      {...mergedProps}
-      ref={(el) => {
-        textareaRef = el
-      }}
-    />
-  )
+  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+  return <ark.textarea {...mergedProps} ref={composeRefs((el) => (textareaRef = el), props.ref)} />
 }

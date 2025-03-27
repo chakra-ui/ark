@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **DatePicker**: Improve reactivity for `columns` prop in `DatePicker.Table` component.
+- **Field**: Improve reactivity for `value` prop in `Field.Textarea` component.
+- **Toggle**: Improve reactivity for `children` and `fallback` props in `Toggle.Indicator` component.
+
 ## [5.3.1] - 2025-03-24
 
 ### Fixed
