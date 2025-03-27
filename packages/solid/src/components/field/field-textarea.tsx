@@ -1,6 +1,6 @@
 import { autoresizeTextarea } from '@zag-js/auto-resize'
 import { mergeProps } from '@zag-js/solid'
-import { createEffect } from 'solid-js'
+import { createEffect, splitProps } from 'solid-js'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
@@ -16,7 +16,7 @@ export interface FieldTextareaProps extends HTMLProps<'textarea'>, FieldTextarea
 export const FieldTextarea = (props: FieldTextareaProps) => {
   const field = useFieldContext()
   let textareaRef: HTMLTextAreaElement
-  const { autoresize, ...textareaProps } = props
+  const [autoresize, textareaProps] = splitProps(props, ["autoresize"])
 
   const mergedProps = mergeProps(
     () => field?.().getTextareaProps(),
