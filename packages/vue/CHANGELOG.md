@@ -6,6 +6,17 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Slider**
+
+  - Add support for `origin: end` to align the thumb to the end of the track.
+  - Expose `thumbSize` as CSS variables in the root element. Can be useful for styling the slider.
+
+- **Menu**
+
+  - Added `select` emit event to the `Menu.Item` component.
+
 ### Fixed
 
 - Ensured each component's state machine starts before processing events.
