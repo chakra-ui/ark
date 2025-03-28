@@ -355,7 +355,7 @@
         "voca": "1.4.1",
       },
     },
-    "templates/react/next-js": {
+    "templates/next-js": {
       "name": "@ark-ui/next-js",
       "dependencies": {
         "@ark-ui/react": "workspace:*",
@@ -370,7 +370,16 @@
         "typescript": "5.8.2",
       },
     },
-    "templates/solid/solid-start": {
+    "templates/nuxt": {
+      "name": "@ark-ui/nuxt",
+      "dependencies": {
+        "@ark-ui/vue": "workspace:*",
+        "nuxt": "3.16.1",
+        "vue": "3.5.13",
+        "vue-router": "4.5.0",
+      },
+    },
+    "templates/solid-start": {
       "name": "@ark-ui/solid-start",
       "dependencies": {
         "@ark-ui/solid": "workspace*",
@@ -379,15 +388,6 @@
         "@solidjs/start": "1.1.3",
         "solid-js": "1.9.5",
         "vinxi": "0.5.3",
-      },
-    },
-    "templates/vue/nuxt": {
-      "name": "@ark-ui/nuxt",
-      "dependencies": {
-        "@ark-ui/vue": "workspace:*",
-        "nuxt": "3.16.1",
-        "vue": "3.5.13",
-        "vue-router": "4.5.0",
       },
     },
     "website": {
@@ -440,9 +440,9 @@
 
     "@ark-ui/anatomy": ["@ark-ui/anatomy@3.5.0", "", { "dependencies": { "@zag-js/accordion": "0.62.1", "@zag-js/anatomy": "0.62.1", "@zag-js/avatar": "0.62.1", "@zag-js/carousel": "0.62.1", "@zag-js/checkbox": "0.62.1", "@zag-js/clipboard": "0.62.1", "@zag-js/collapsible": "0.62.1", "@zag-js/color-picker": "0.62.1", "@zag-js/color-utils": "0.62.1", "@zag-js/combobox": "0.62.1", "@zag-js/date-picker": "0.62.1", "@zag-js/date-utils": "0.62.1", "@zag-js/dialog": "0.62.1", "@zag-js/editable": "0.62.1", "@zag-js/file-upload": "0.62.1", "@zag-js/hover-card": "0.62.1", "@zag-js/menu": "0.62.1", "@zag-js/number-input": "0.62.1", "@zag-js/pagination": "0.62.1", "@zag-js/pin-input": "0.62.1", "@zag-js/popover": "0.62.1", "@zag-js/presence": "0.62.1", "@zag-js/progress": "0.62.1", "@zag-js/qr-code": "0.62.1", "@zag-js/radio-group": "0.62.1", "@zag-js/rating-group": "0.62.1", "@zag-js/select": "0.62.1", "@zag-js/signature-pad": "0.62.1", "@zag-js/slider": "0.62.1", "@zag-js/splitter": "0.62.1", "@zag-js/switch": "0.62.1", "@zag-js/tabs": "0.62.1", "@zag-js/tags-input": "0.62.1", "@zag-js/time-picker": "0.62.1", "@zag-js/toast": "0.62.1", "@zag-js/toggle-group": "0.62.1", "@zag-js/tooltip": "0.62.1", "@zag-js/tree-view": "0.62.1" } }, "sha512-KoROLVVT23BvFHcye/GYhG8NJ2CH0C+CaoJhXrkEjvk8pbEx80Xk5NIUy5gL7xmX+LDD7kY5t3NotBqCu+2L2w=="],
 
-    "@ark-ui/next-js": ["@ark-ui/next-js@workspace:templates/react/next-js"],
+    "@ark-ui/next-js": ["@ark-ui/next-js@workspace:templates/next-js"],
 
-    "@ark-ui/nuxt": ["@ark-ui/nuxt@workspace:templates/vue/nuxt"],
+    "@ark-ui/nuxt": ["@ark-ui/nuxt@workspace:templates/nuxt"],
 
     "@ark-ui/react": ["@ark-ui/react@workspace:packages/react"],
 
@@ -450,7 +450,7 @@
 
     "@ark-ui/solid": ["@ark-ui/solid@workspace:packages/solid"],
 
-    "@ark-ui/solid-start": ["@ark-ui/solid-start@workspace:templates/solid/solid-start"],
+    "@ark-ui/solid-start": ["@ark-ui/solid-start@workspace:templates/solid-start"],
 
     "@ark-ui/svelte": ["@ark-ui/svelte@workspace:packages/svelte"],
 
