@@ -8,8 +8,10 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Field**: Fixed issue where `Textarea` doesn't use the `ark.textarea` component, there by not supporting the
-  `asChild` prop.
+- Ensured each component's state machine starts before processing events.
+- **HoverCard, ColorPicker**: Added missing `tabIndex` for better dialog support.
+- **Menu**: Assigned unique IDs to menu items to improve accessibility and HTML validation.
+- **Field**: Fixed `Textarea` to use `ark.textarea`, ensuring support for the `asChild` prop.
 
 ## [5.3.0] - 2025-03-24
 

@@ -8,9 +8,12 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **DatePicker**: Improve reactivity for `columns` prop in `DatePicker.Table` component.
-- **Field**: Improve reactivity for `value` prop in `Field.Textarea` component.
-- **Toggle**: Improve reactivity for `children` and `fallback` props in `Toggle.Indicator` component.
+- Ensured each component's state machine starts before processing events.
+- **HoverCard, ColorPicker**: Added missing `tabIndex` for better dialog support.
+- **Menu**: Assigned unique IDs to menu items to improve accessibility and HTML validation.
+- **DatePicker**: Improved reactivity of the `columns` prop in `DatePicker.Table`.
+- **Field**: Improved reactivity of the `value` prop in `Field.Textarea`.
+- **Toggle**: Improved reactivity of the `children` and `fallback` props in `Toggle.Indicator`.
 
 ## [5.3.1] - 2025-03-24
 

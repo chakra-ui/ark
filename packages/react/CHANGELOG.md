@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Ensured each component's state machine starts before processing events.
+- **HoverCard, ColorPicker**: Added missing `tabIndex` for better dialog support.
+- **Menu**: Assigned unique IDs to menu items to improve accessibility and HTML validation.
+
 ## [5.3.1] - 2025-03-24
 
 ### Fixed
