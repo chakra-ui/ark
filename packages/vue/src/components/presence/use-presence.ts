@@ -15,6 +15,11 @@ export interface UsePresenceProps extends Optional<presence.Props, 'present'> {
    * @default false
    */
   unmountOnExit?: boolean
+  /**
+   * Whether to allow the initial presence animation.
+   * @default true
+   */
+  initial?: boolean
 }
 
 export type UsePresenceReturn = ReturnType<typeof usePresence>
@@ -51,6 +56,8 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
     }
   })
 
+  const initial = computed(() => toValue(props).initial ?? true)
+
   return computed(() => {
     const localProps = toValue(props)
     return {
@@ -61,7 +68,7 @@ export const usePresence = (props: MaybeRef<UsePresenceProps>, emit?: EmitFn<Roo
       presenceProps: {
         ref: nodeRef,
         hidden: !api.value.present,
-        'data-state': localProps?.present ? 'open' : 'closed',
+        'data-state': api.value.skip && !initial.value ? undefined : localProps?.present ? 'open' : 'closed',
       },
     }
   })
