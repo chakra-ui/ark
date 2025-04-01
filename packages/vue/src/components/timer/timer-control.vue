@@ -23,5 +23,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="timer.getControlProps()" :as-child="asChild" />
+  <ark.div v-bind="timer.getControlProps()" :as-child="asChild">
+    <slot />
+  </ark.div>
 </template>
