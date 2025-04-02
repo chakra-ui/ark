@@ -1,7 +1,7 @@
 {
   "name": "@ark-ui/solid",
   "type": "module",
-  "version": "5.3.1",
+  "version": "5.4.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
@@ -154,7 +154,7 @@
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.1.0",
     "jsdom": "26.0.0",
-    "lucide-solid": "0.484.0",
+    "lucide-solid": "0.486.0",
     "release-it": "18.1.2",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.5",
@@ -163,10 +163,10 @@
     "storybook-solidjs-vite": "1.0.0-beta.6",
     "tsup": "8.4.0",
     "typescript": "5.8.2",
-    "vite": "6.2.3",
+    "vite": "6.2.4",
     "vite-plugin-solid": "2.11.6",
-    "vitest": "3.0.9",
-    "@vitest/coverage-v8": "3.0.9",
+    "vitest": "3.1.1",
+    "@vitest/coverage-v8": "3.1.1",
     "vitest-axe": "1.0.0-pre.5"
   },
   "peerDependencies": {
