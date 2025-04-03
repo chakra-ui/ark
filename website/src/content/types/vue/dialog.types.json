@@ -106,11 +106,7 @@
         "isRequired": false,
         "description": "Element to receive focus when the dialog is closed"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  trigger: string\n  positioner: string\n  backdrop: string\n  content: string\n  closeTrigger: string\n  title: string\n  description: string\n}>",
         "isRequired": false,
@@ -133,11 +129,7 @@
         "isRequired": false,
         "description": "Whether to prevent pointer interaction outside the element and hide all content below it"
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "The controlled open state of the dialog"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the dialog" },
       "persistentElements": {
         "type": "(() => Element | null)[]",
         "isRequired": false,
@@ -176,10 +168,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "DialogApi<PropTypes>",
-        "isRequired": true
-      },
+      "value": { "type": "DialogApi<PropTypes>", "isRequired": true },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

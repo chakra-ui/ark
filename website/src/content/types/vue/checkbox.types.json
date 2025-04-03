@@ -25,11 +25,7 @@
         "isRequired": false,
         "description": "If `true`, the checkbox group is disabled"
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "If `true`, the checkbox group is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "If `true`, the checkbox group is invalid" },
       "modelValue": {
         "type": "string[]",
         "isRequired": false,
@@ -63,10 +59,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "indeterminate": {
-        "type": "boolean",
-        "isRequired": false
-      }
+      "indeterminate": { "type": "boolean", "isRequired": false }
     }
   },
   "Label": {
@@ -107,46 +100,26 @@
         "isRequired": false,
         "description": "The initial checked state of the checkbox when rendered.\nUse when you don't need to control the checked state of the checkbox."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the checkbox is disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is disabled" },
       "form": {
         "type": "string",
         "isRequired": false,
         "description": "The id of the form that the checkbox belongs to."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; hiddenInput: string; control: string; label: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the checkbox. Useful for composition."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the checkbox is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is invalid" },
       "name": {
         "type": "string",
         "isRequired": false,
         "description": "The name of the input field in a checkbox.\nUseful for form submission."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the checkbox is read-only"
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the checkbox is required"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is read-only" },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is required" },
       "value": {
         "type": "string",
         "defaultValue": "\"on\"",
@@ -157,10 +130,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "CheckboxApi<PropTypes>",
-        "isRequired": true
-      },
+      "value": { "type": "CheckboxApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

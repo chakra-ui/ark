@@ -15,14 +15,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "xChannel": {
-        "type": "ColorChannel",
-        "isRequired": false
-      },
-      "yChannel": {
-        "type": "ColorChannel",
-        "isRequired": false
-      }
+      "xChannel": { "type": "ColorChannel", "isRequired": false },
+      "yChannel": { "type": "ColorChannel", "isRequired": false }
     }
   },
   "AreaThumb": {
@@ -36,19 +30,13 @@
   },
   "ChannelInput": {
     "props": {
-      "channel": {
-        "type": "ExtendedColorChannel",
-        "isRequired": true
-      },
+      "channel": { "type": "ExtendedColorChannel", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'input'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": {
-        "type": "Orientation",
-        "isRequired": false
-      }
+      "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
   "ChannelSliderLabel": {
@@ -62,19 +50,13 @@
   },
   "ChannelSlider": {
     "props": {
-      "channel": {
-        "type": "ColorChannel",
-        "isRequired": true
-      },
+      "channel": { "type": "ColorChannel", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": {
-        "type": "Orientation",
-        "isRequired": false
-      }
+      "orientation": { "type": "Orientation", "isRequired": false }
     }
   },
   "ChannelSliderThumb": {
@@ -206,16 +188,8 @@
         "isRequired": false,
         "description": "The initial color value when rendered.\nUse when you don't need to control the color value of the color picker."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is disabled"
-      },
-      "format": {
-        "type": "ColorFormat",
-        "isRequired": false,
-        "description": "The controlled color format to use"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is disabled" },
+      "format": { "type": "ColorFormat", "isRequired": false, "description": "The controlled color format to use" },
       "ids": {
         "type": "Partial<{ root: string; control: string; trigger: string; label: string; input: string; hiddenInput: string; content: string; area: string; areaGradient: string; positioner: string; formatSelect: string; areaThumb: string; channelInput(id: string): string; channelSliderTrack(id: ColorChannel): string; channelSliderT...",
         "isRequired": false,
@@ -231,22 +205,14 @@
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is invalid" },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The name for the form input"
-      },
+      "name": { "type": "string", "isRequired": false, "description": "The name for the form input" },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
@@ -308,15 +274,13 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": {
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is read-only" },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is required" },
+      "skipAnimationOnMount": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether the color picker is read-only"
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the color picker is required"
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",
@@ -324,19 +288,12 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": {
-        "type": "Color",
-        "isRequired": false,
-        "description": "The controlled color value of the color picker"
-      }
+      "value": { "type": "Color", "isRequired": false, "description": "The controlled color value of the color picker" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseColorPickerReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseColorPickerReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -362,6 +319,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",
@@ -391,11 +354,7 @@
   },
   "Swatch": {
     "props": {
-      "value": {
-        "type": "string | Color",
-        "isRequired": true,
-        "description": "The color value"
-      },
+      "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -410,21 +369,13 @@
   },
   "SwatchTrigger": {
     "props": {
-      "value": {
-        "type": "string | Color",
-        "isRequired": true,
-        "description": "The color value"
-      },
+      "value": { "type": "string | Color", "isRequired": true, "description": "The color value" },
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the swatch trigger is disabled"
-      }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the swatch trigger is disabled" }
     }
   },
   "TransparencyGrid": {
@@ -434,10 +385,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "size": {
-        "type": "string",
-        "isRequired": false
-      }
+      "size": { "type": "string", "isRequired": false }
     }
   },
   "Trigger": {
@@ -470,18 +418,12 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "format": {
-        "type": "ColorStringFormat",
-        "isRequired": false
-      }
+      "format": { "type": "ColorStringFormat", "isRequired": false }
     }
   },
   "View": {
     "props": {
-      "format": {
-        "type": "ColorFormat",
-        "isRequired": true
-      },
+      "format": { "type": "ColorFormat", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
