@@ -41,17 +41,26 @@ Here's an example of how to use the `Image` component from `next/image`.
 
 ```tsx
 import { Avatar, useAvatarContext } from '@ark-ui/react/avatar'
-import Image, { ImageProps } from 'next/image'
+import { getImageProps, ImageProps } from 'next/image'
 
 const AvatarNextImage = (props: ImageProps) => {
   const avatar = useAvatarContext()
-  const { hidden, ...imageProps } = avatar.getImageProps() as ImageProps
+
+  // exclude hidden prop from ark image props
+  const { hidden, ...arkImageProps } = avatar.getImageProps()
+
+  // get next image props
+  const { props: nextImageProps } = getNextImageProps(props)
+
+  // merge props
+  const mergedProps = { ...arkImageProps, ...nextImageProps }
+
   return (
     <Image
-      {...imageProps}
-      {...props}
+      {...mergedProps}
       style={{
         ...props.style,
+        // use visibility instead
         visibility: hidden ? 'hidden' : 'visible',
         objectFit: 'cover',
       }}

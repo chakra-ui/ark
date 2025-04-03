@@ -6,6 +6,49 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.4.0] - 2025-03-28
+
+### Added
+
+- **Slider**
+
+  - Add support for `origin: end` to align the thumb to the end of the track.
+  - Expose `thumbSize` as CSS variables in the root element. Can be useful for styling the slider.
+
+- **Menu**
+
+  - Added `onSelect` event to the `Menu.Item` component.
+
+### Fixed
+
+- Ensured each component's state machine starts before processing events.
+- **HoverCard, ColorPicker**: Added missing `tabIndex` for better dialog support.
+- **Menu**: Assigned unique IDs to menu items to improve accessibility and HTML validation.
+
+## [5.3.1] - 2025-03-24
+
+### Fixed
+
+- Fixed an issue where a function was imported from a package that wasn't declared as a dependency.
+
+## [5.3.0] - 2025-03-24
+
+### Added
+
+- **Collapsible**: Added an `Indicator` part to display whether the collapsible was open or closed.
+- **ColorPicker**: Added support for formatting the `ValueText` component.
+
+```tsx
+<ColorPicker.ValueText format="hex" /> // #ff0000
+```
+
+### Fixed
+
+- **Combobox**: Fixed an issue where `onOpenChange` was called with the same `open` value.
+- **DownloadTrigger**: Added the missing `use client` directive.
+- **Splitter**: Fixed an issue where `onResizeStart` and `onResizeEnd` callbacks weren't triggered during keyboard
+  interactions.
+
 ## [5.2.0] - 2025-03-22
 
 ### Added

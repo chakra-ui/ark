@@ -21,16 +21,8 @@
   },
   "CheckboxItem": {
     "props": {
-      "checked": {
-        "type": "boolean",
-        "isRequired": true,
-        "description": "Whether the option is checked"
-      },
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the option"
-      },
+      "checked": { "type": "boolean", "isRequired": true, "description": "Whether the option is checked" },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -41,11 +33,7 @@
         "isRequired": false,
         "description": "Whether the menu should be closed when the option is selected."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the menu item is disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the menu item is disabled" },
       "onCheckedChange": {
         "type": "(checked: boolean) => void",
         "isRequired": false,
@@ -121,11 +109,7 @@
   },
   "Item": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The unique value of the menu item option."
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The unique value of the menu item option." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -136,11 +120,7 @@
         "isRequired": false,
         "description": "Whether the menu should be closed when the option is selected."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the menu item is disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the menu item is disabled" },
       "valueText": {
         "type": "string",
         "isRequired": false,
@@ -176,24 +156,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "onValueChange": {
-        "type": "(e: ValueChangeDetails) => void",
-        "isRequired": false
-      },
-      "value": {
-        "type": "string",
-        "isRequired": false
-      }
+      "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
+      "value": { "type": "string", "isRequired": false }
     },
     "element": "HTMLDivElement"
   },
   "RadioItem": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the option"
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the option" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -204,11 +174,7 @@
         "isRequired": false,
         "description": "Whether the menu should be closed when the option is selected."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the menu item is disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the menu item is disabled" },
       "valueText": {
         "type": "string",
         "isRequired": false,
@@ -224,11 +190,7 @@
         "isRequired": false,
         "description": "The positioning point for the menu. Can be set by the context menu trigger or the button trigger."
       },
-      "aria-label": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The accessibility label for the menu"
-      },
+      "aria-label": { "type": "string", "isRequired": false, "description": "The accessibility label for the menu" },
       "closeOnSelect": {
         "type": "boolean",
         "defaultValue": "true",
@@ -256,11 +218,7 @@
         "isRequired": false,
         "description": "The controlled highlighted value of the menu item."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  groupLabel(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
         "isRequired": false,
@@ -328,11 +286,7 @@
         "isRequired": false,
         "description": "Function called when a menu item is selected."
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "The controlled open state of the menu"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the menu" },
       "positioning": {
         "type": "PositioningOptions",
         "isRequired": false,
@@ -359,10 +313,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseMenuReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseMenuReturn", "isRequired": true },
       "immediate": {
         "type": "boolean",
         "isRequired": false,

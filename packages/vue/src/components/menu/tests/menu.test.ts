@@ -11,7 +11,11 @@ describe('Menu', () => {
 
   it('should not fire onValueChange on disabled MenuItems', async () => {
     const { emitted } = render(ComponentUnderTest)
-    await user.click(screen.getByText(/svelte/i))
+    expect(emitted()).not.toHaveProperty('valueChange')
+
+    const menuItem = screen.getByText(/svelte/i)
+    fireEvent.click(menuItem)
+
     expect(emitted()).not.toHaveProperty('valueChange')
   })
 

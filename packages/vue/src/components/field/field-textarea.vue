@@ -21,25 +21,37 @@ export interface FieldTextareaProps
 
 <script setup lang="ts">
 import { autoresizeTextarea } from '@zag-js/auto-resize'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useForwardExpose } from '../../utils'
+import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
+import { unrefElement } from '../../utils/unref-element'
 
 const props = defineProps<FieldTextareaProps>()
 const field = useFieldContext()
 const emit = defineEmits(['update:modelValue'])
 
+const textareaRef = ref<HTMLTextAreaElement>()
+
+onMounted(() => {
+  const node = unrefElement(textareaRef)
+  if (!node || !props.autoresize) return
+  const cleanup = autoresizeTextarea(node)
+  onBeforeUnmount(() => cleanup?.())
+})
+
 useForwardExpose()
 </script>
 
-<!-- TODO use ark.textarea -->
 <template>
-  <textarea
-    :ref="autoresizeTextarea"
+  <ark.textarea
+    ref="textareaRef"
     v-bind="field.getTextareaProps()"
     :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLTextAreaElement).value)"
     :style="props.autoresize ? { resize: 'none', overflow: 'hidden' } : undefined"
+    :as-child="asChild"
   >
     <slot />
-  </textarea>
+  </ark.textarea>
 </template>

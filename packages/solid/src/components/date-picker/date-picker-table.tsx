@@ -11,10 +11,11 @@ export interface DatePickerTableBaseProps extends Pick<TableProps, 'columns'>, P
 export interface DatePickerTableProps extends HTMLProps<'table'>, DatePickerTableBaseProps {}
 
 export const DatePickerTable = (props: DatePickerTableProps) => {
-  const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, ['columns'])
+  const [columnProps, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, ['columns'])
   const api = useDatePickerContext()
   const viewProps = useDatePickerViewContext()
-  const tableProps = { columns, id: createUniqueId(), ...viewProps }
+  const id = createUniqueId()
+  const tableProps = mergeProps(() => ({ columns: columnProps.columns, id }), viewProps)
   const mergedProps = mergeProps(() => api().getTableProps(tableProps), localProps)
 
   return (

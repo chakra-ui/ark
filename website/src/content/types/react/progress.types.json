@@ -68,11 +68,7 @@
         "isRequired": false,
         "description": "The options to use for formatting the value."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
         "isRequired": false,
@@ -112,20 +108,13 @@
         "isRequired": false,
         "description": "The localized messages to use."
       },
-      "value": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The controlled value of the progress bar."
-      }
+      "value": { "type": "number", "isRequired": false, "description": "The controlled value of the progress bar." }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseProgressReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseProgressReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -156,10 +145,7 @@
   },
   "View": {
     "props": {
-      "state": {
-        "type": "ProgressState",
-        "isRequired": true
-      },
+      "state": { "type": "ProgressState", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

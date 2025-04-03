@@ -7,6 +7,7 @@ import RequiredIndicator from './examples/required-indicator.vue'
 import RootProvider from './examples/root-provider.vue'
 import SelectControlled from './examples/select-controlled.vue'
 import Select from './examples/select.vue'
+import TextareaAutoresize from './examples/textarea-autoresize.vue'
 import TextareaControlled from './examples/textarea-controlled.vue'
 import Textarea from './examples/textarea.vue'
 </script>
@@ -32,6 +33,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Textarea Controlled">
       <TextareaControlled />
+    </Variant>
+    <Variant title="Textarea Autoresize">
+      <TextareaAutoresize />
     </Variant>
     <Variant title="Required Indicator">
       <RequiredIndicator />
