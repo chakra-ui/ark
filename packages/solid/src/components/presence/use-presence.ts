@@ -8,9 +8,9 @@ import { runIfFn } from '../../utils/run-if-fn'
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
   /**
    * Whether to allow the initial presence animation.
-   * @default true
+   * @default false
    */
-  initial?: boolean
+  skipAnimationOnMount?: boolean
 }
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
@@ -26,8 +26,6 @@ export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
     if (present) setWasEverPresent(true)
   })
 
-  const initial = createMemo(() => localProps.initial ?? true)
-
   return createMemo(() => ({
     unmounted:
       (!api().present && !wasEverPresent() && renderStrategyProps.lazyMount) ||
@@ -36,7 +34,7 @@ export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
     ref: api().setNode,
     presenceProps: {
       hidden: !api().present,
-      'data-state': api().skip && !initial() ? undefined : localProps.present ? 'open' : 'closed',
+      'data-state': api().skip && localProps.skipAnimationOnMount ? undefined : localProps.present ? 'open' : 'closed',
     },
   }))
 }

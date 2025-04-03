@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<PresenceProps>(), {
   immediate: undefined,
   lazyMount: undefined,
   present: undefined,
+  skipAnimationOnMount: undefined,
   unmountOnExit: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

@@ -8,14 +8,14 @@ import { useEvent } from '../../utils/use-event'
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
   /**
    * Whether to allow the initial presence animation.
-   * @default true
+   * @default false
    */
-  initial?: boolean
+  skipAnimationOnMount?: boolean
 }
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
 export const usePresence = (props: UsePresenceProps = {}) => {
-  const { lazyMount, unmountOnExit, present, initial = true, ...rest } = props
+  const { lazyMount, unmountOnExit, present, skipAnimationOnMount = false, ...rest } = props
   const wasEverPresent = useRef(false)
   const machineProps: Partial<presence.Props> = {
     ...rest,
@@ -34,7 +34,7 @@ export const usePresence = (props: UsePresenceProps = {}) => {
     (!api.present && !wasEverPresent.current && lazyMount) || (unmountOnExit && !api.present && wasEverPresent.current)
 
   const getPresenceProps = () => ({
-    'data-state': api.skip && !initial ? undefined : present ? 'open' : 'closed',
+    'data-state': api.skip && skipAnimationOnMount ? undefined : present ? 'open' : 'closed',
     hidden: !api.present,
   })
 
