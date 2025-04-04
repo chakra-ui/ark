@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Presence**: Added support for skipping the initial animation when the component is mounted. This can be used in all
+  disclosure components (e.g., `Dialog`, `DatePicker`, `Menu` etc).
+
 ## [5.4.0] - 2025-03-28
 
 ### Added

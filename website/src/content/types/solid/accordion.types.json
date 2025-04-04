@@ -19,21 +19,13 @@
   },
   "Item": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the accordion item."
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the accordion item." },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the accordion item is disabled."
-      }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion item is disabled." }
     }
   },
   "ItemTrigger": {
@@ -63,11 +55,7 @@
         "isRequired": false,
         "description": "The initial value of the expanded accordion items.\nUse when you don't need to control the value of the accordion."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the accordion items are disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion items are disabled" },
       "ids": {
         "type": "Partial<{\n  root: string\n  item(value: string): string\n  itemContent(value: string): string\n  itemTrigger(value: string): string\n}>",
         "isRequired": false,
@@ -116,10 +104,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseAccordionReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseAccordionReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

@@ -5,11 +5,17 @@ import type { MaybeAccessor, Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
 import { runIfFn } from '../../utils/run-if-fn'
 
-export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
+  /**
+   * Whether to allow the initial presence animation.
+   * @default false
+   */
+  skipAnimationOnMount?: boolean
+}
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
 export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
-  const [renderStrategyProps, context] = splitRenderStrategyProps(runIfFn(props))
+  const [renderStrategyProps, localProps] = splitRenderStrategyProps(runIfFn(props))
   const [wasEverPresent, setWasEverPresent] = createSignal(false)
 
   const service = useMachine(presence.machine, props)
@@ -28,7 +34,7 @@ export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
     ref: api().setNode,
     presenceProps: {
       hidden: !api().present,
-      'data-state': context.present ? 'open' : 'closed',
+      'data-state': api().skip && localProps.skipAnimationOnMount ? undefined : localProps.present ? 'open' : 'closed',
     },
   }))
 }
