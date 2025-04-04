@@ -5,6 +5,7 @@
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
+    "angle slider",
     "avatar",
     "carousel",
     "checkbox",
@@ -87,6 +88,7 @@
     "@internationalized/date": "3.7.0",
     "@zag-js/accordion": "1.7.0",
     "@zag-js/anatomy": "1.7.0",
+    "@zag-js/angle-slider": "1.7.0",
     "@zag-js/auto-resize": "1.7.0",
     "@zag-js/avatar": "1.7.0",
     "@zag-js/carousel": "1.7.0",
