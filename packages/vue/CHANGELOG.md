@@ -11,6 +11,20 @@ description: All notable changes will be documented in this file.
 - **Presence**: Added support for skipping the initial animation when the component is mounted. This can be used in all
   disclosure components (e.g., `Dialog`, `DatePicker`, `Menu` etc).
 
+### Fixed
+
+- **Tabs**: Fixed issue where tabs indicator animation behaves inconsistently.
+
+- **Date Picker**
+
+  - Fixed issue where datepicker throws error when navigating month view.
+  - Fixed issue where range selection doesn't reset correctly when clicking the same start date.
+
+- **Disclosure Components**
+
+  - Fixed issue where pointerdown outside doesn't work consistently on mobile devices.
+  - Improved pointerdown outside click detection in shadow DOM environments.
+
 ## [5.4.0] - 2025-03-28
 
 ### Added
