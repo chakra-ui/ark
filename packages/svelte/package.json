@@ -78,14 +78,14 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/anatomy": "1.8.1",
-    "@zag-js/avatar": "1.8.1",
-    "@zag-js/core": "1.8.1",
-    "@zag-js/toggle": "1.8.1",
-    "@zag-js/collection": "1.8.1",
-    "@zag-js/dom-query": "1.8.1",
-    "@zag-js/i18n-utils": "1.8.1",
-    "@zag-js/svelte": "1.8.1"
+    "@zag-js/anatomy": "1.8.2",
+    "@zag-js/avatar": "1.8.2",
+    "@zag-js/core": "1.8.2",
+    "@zag-js/toggle": "1.8.2",
+    "@zag-js/collection": "1.8.2",
+    "@zag-js/dom-query": "1.8.2",
+    "@zag-js/i18n-utils": "1.8.2",
+    "@zag-js/svelte": "1.8.2"
   },
   "devDependencies": {
     "@release-it/keep-a-changelog": "6.0.0",
