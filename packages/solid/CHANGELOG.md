@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.5.0] - 2025-04-05
+
 ### Added
 
 - **Presence**: Added support for skipping the initial animation when the component is mounted. This can be used in all
