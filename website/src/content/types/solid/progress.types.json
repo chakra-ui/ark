@@ -102,19 +102,12 @@
         "isRequired": false,
         "description": "The localized messages to use."
       },
-      "value": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The controlled value of the progress bar."
-      }
+      "value": { "type": "number", "isRequired": false, "description": "The controlled value of the progress bar." }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseProgressReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseProgressReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -142,10 +135,7 @@
   },
   "View": {
     "props": {
-      "state": {
-        "type": "ProgressState",
-        "isRequired": true
-      },
+      "state": { "type": "ProgressState", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,

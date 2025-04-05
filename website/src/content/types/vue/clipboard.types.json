@@ -64,21 +64,13 @@
         "isRequired": false,
         "description": "The initial value to be copied to the clipboard when rendered.\nUse when you don't need to control the value of the clipboard."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; input: string; label: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the clipboard. Useful for composition."
       },
-      "modelValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The v-model value of the clipboard"
-      },
+      "modelValue": { "type": "string", "isRequired": false, "description": "The v-model value of the clipboard" },
       "timeout": {
         "type": "number",
         "defaultValue": "3000",
@@ -89,10 +81,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "ClipboardApi<PropTypes>",
-        "isRequired": true
-      },
+      "value": { "type": "ClipboardApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

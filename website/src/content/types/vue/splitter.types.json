@@ -1,10 +1,7 @@
 {
   "Panel": {
     "props": {
-      "id": {
-        "type": "string",
-        "isRequired": true
-      },
+      "id": { "type": "string", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -14,19 +11,13 @@
   },
   "ResizeTrigger": {
     "props": {
-      "id": {
-        "type": "`${string}:${string}`",
-        "isRequired": true
-      },
+      "id": { "type": "`${string}:${string}`", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false
-      }
+      "disabled": { "type": "boolean", "isRequired": false }
     }
   },
   "Root": {
@@ -63,11 +54,7 @@
       }
     },
     "props": {
-      "panels": {
-        "type": "PanelData[]",
-        "isRequired": true,
-        "description": "The size constraints of the panels."
-      },
+      "panels": { "type": "PanelData[]", "isRequired": true, "description": "The size constraints of the panels." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -78,11 +65,7 @@
         "isRequired": false,
         "description": "The initial size of the panels when rendered.\nUse when you don't need to control the size of the panels."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
         "isRequired": false,
@@ -104,19 +87,12 @@
         "isRequired": false,
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
       },
-      "size": {
-        "type": "number[]",
-        "isRequired": false,
-        "description": "The controlled size data of the panels"
-      }
+      "size": { "type": "number[]", "isRequired": false, "description": "The controlled size data of the panels" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "SplitterApi<PropTypes>",
-        "isRequired": true
-      },
+      "value": { "type": "SplitterApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

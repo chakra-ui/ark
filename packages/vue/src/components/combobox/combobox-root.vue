@@ -15,7 +15,7 @@ export interface ComboboxRootProps<T extends CollectionItem>
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    Omit<HTMLAttributes, 'onSelect'> {}
 export type { RootEmits as ComboboxRootEmits } from './combobox.types'
 </script>
 

@@ -112,6 +112,11 @@
         "description": "Whether the menu should be closed when the option is selected."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the menu item is disabled" },
+      "onSelect": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "The function to call when the item is selected"
+      },
       "valueText": {
         "type": "string",
         "isRequired": false,
@@ -283,6 +288,12 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
       "typeahead": {
         "type": "boolean",
         "defaultValue": "true",
@@ -320,6 +331,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",
