@@ -41,7 +41,7 @@ Here's an example of how to use the `Image` component from `next/image`.
 
 ```tsx
 import { Avatar, useAvatarContext } from '@ark-ui/react/avatar'
-import { getImageProps, ImageProps } from 'next/image'
+import Image, { getImageProps, type ImageProps } from 'next/image'
 
 const AvatarNextImage = (props: ImageProps) => {
   const avatar = useAvatarContext()
