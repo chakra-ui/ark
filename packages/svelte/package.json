@@ -92,7 +92,7 @@
     "@storybook/addon-a11y": "8.6.11",
     "@storybook/addon-essentials": "8.6.11",
     "@storybook/sveltekit": "8.6.11",
-    "@sveltejs/adapter-auto": "5.0.0",
+    "@sveltejs/adapter-auto": "6.0.0",
     "@sveltejs/kit": "2.20.2",
     "@sveltejs/package": "2.3.10",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
