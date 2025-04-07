@@ -74,7 +74,6 @@
     "test:ci": "vitest --run",
     "typecheck": "vue-tsc",
     "storybook": "histoire dev",
-    "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
@@ -139,7 +138,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@histoire/plugin-vue": "0.17.17",
-    "@release-it/keep-a-changelog": "6.0.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/user-event": "14.6.1",
@@ -153,7 +151,6 @@
     "histoire": "0.17.17",
     "jsdom": "26.0.0",
     "lucide-vue-next": "0.486.0",
-    "release-it": "18.1.2",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.8.2",
     "vite": "6.2.4",

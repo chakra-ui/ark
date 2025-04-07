@@ -74,7 +74,6 @@
     "test:ci": "vitest --run",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
@@ -138,7 +137,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@modular-forms/solid": "0.25.1",
-    "@release-it/keep-a-changelog": "6.0.0",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "8.6.11",
     "@storybook/addon-essentials": "8.6.11",
@@ -155,7 +153,6 @@
     "globby": "14.1.0",
     "jsdom": "26.0.0",
     "lucide-solid": "0.486.0",
-    "release-it": "18.1.2",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.5",
     "storybook": "8.6.11",

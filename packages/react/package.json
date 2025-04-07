@@ -75,7 +75,6 @@
     "test:ci": "vitest --run",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
-    "release-it": "release-it --config ../../release-it.json",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
@@ -141,7 +140,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@release-it/keep-a-changelog": "6.0.0",
     "@storybook/addon-a11y": "8.6.11",
     "@storybook/addon-essentials": "8.6.11",
     "@storybook/react": "8.6.11",
@@ -163,7 +161,6 @@
     "react-dom": "19.0.0",
     "react-frame-component": "5.2.7",
     "react-hook-form": "7.55.0",
-    "release-it": "18.1.2",
     "resize-observer-polyfill": "1.5.1",
     "storybook": "8.6.11",
     "typescript": "5.8.2",
