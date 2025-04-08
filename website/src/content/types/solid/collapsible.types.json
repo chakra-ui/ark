@@ -29,11 +29,7 @@
         "isRequired": false,
         "description": "The initial open state of the collapsible when rendered.\nUse when you don't need to control the open state of the collapsible."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the collapsible is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the collapsible is disabled." },
       "ids": {
         "type": "Partial<{ root: string; content: string; trigger: string }>",
         "isRequired": false,
@@ -70,10 +66,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseCollapsibleReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseCollapsibleReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,

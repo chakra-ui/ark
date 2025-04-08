@@ -210,6 +210,10 @@ export type RootEmits<T extends CollectionItem> = {
    */
   valueChange: [details: combobox.ValueChangeDetails<T>]
   /**
+   * Function called when an item is selected
+   */
+  select: [details: { value: string[]; itemValue: string }]
+  /**
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string[]]
