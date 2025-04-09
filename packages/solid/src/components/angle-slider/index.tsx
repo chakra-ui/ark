@@ -1,5 +1,10 @@
 export { angleSliderAnatomy } from './angle-slider.anatomy'
 export { AngleSliderRoot, type AngleSliderRootProps, type AngleSliderRootBaseProps } from './angle-slider-root'
+export {
+  AngleSliderRootProvider,
+  type AngleSliderRootProviderProps,
+  type AngleSliderRootProviderBaseProps,
+} from './angle-slider-root-provider'
 export { AngleSliderLabel, type AngleSliderLabelBaseProps, type AngleSliderLabelProps } from './angle-slider-label'
 export {
   AngleSliderControl,

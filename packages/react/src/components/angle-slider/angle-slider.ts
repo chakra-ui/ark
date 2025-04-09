@@ -5,6 +5,11 @@ export {
   type AngleSliderRootBaseProps as RootBaseProps,
 } from './angle-slider-root'
 export {
+  AngleSliderRootProvider as RootProvider,
+  type AngleSliderRootProviderProps as RootProviderProps,
+  type AngleSliderRootProviderBaseProps as RootProviderBaseProps,
+} from './angle-slider-root-provider'
+export {
   AngleSliderLabel as Label,
   type AngleSliderLabelBaseProps as LabelBaseProps,
   type AngleSliderLabelProps as LabelProps,
