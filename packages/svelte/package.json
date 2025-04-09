@@ -87,11 +87,11 @@
     "@zag-js/svelte": "1.9.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "8.6.11",
-    "@storybook/addon-essentials": "8.6.11",
-    "@storybook/sveltekit": "8.6.11",
+    "@storybook/addon-a11y": "8.6.12",
+    "@storybook/addon-essentials": "8.6.12",
+    "@storybook/sveltekit": "8.6.12",
     "@sveltejs/adapter-auto": "6.0.0",
-    "@sveltejs/kit": "2.20.2",
+    "@sveltejs/kit": "2.20.5",
     "@sveltejs/package": "2.3.10",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
     "@testing-library/jest-dom": "6.6.3",
@@ -99,12 +99,12 @@
     "@testing-library/user-event": "14.6.1",
     "@vitest/coverage-v8": "3.1.1",
     "clean-package": "2.2.0",
-    "storybook": "8.6.11",
-    "svelte": "5.25.6",
+    "storybook": "8.6.12",
+    "svelte": "5.25.9",
     "svelte-check": "4.1.5",
     "tslib": "2.8.1",
-    "typescript": "5.8.2",
-    "vite": "6.2.4",
+    "typescript": "5.8.3",
+    "vite": "6.2.5",
     "vitest": "3.1.1"
   },
   "peerDependencies": {
