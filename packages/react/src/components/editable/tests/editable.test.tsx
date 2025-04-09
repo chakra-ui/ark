@@ -28,7 +28,8 @@ describe('Editable', () => {
     await user.clear(input)
     await waitFor(() => expect(input).toHaveValue(''))
 
-    await user.type(input, 'React{enter}')
+    await user.type(input, 'React')
+    await user.keyboard('{enter}')
 
     await screen.findByText('React')
   })

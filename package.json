@@ -48,5 +48,8 @@
   "packageManager": "bun@1.2.9",
   "trustedDependencies": [
     "@ark-ui/website"
-  ]
+  ],
+  "patchedDependencies": {
+    "happy-dom@17.4.4": "patches/happy-dom@17.4.4.patch"
+  }
 }
