@@ -3,7 +3,7 @@ import { svelteTesting } from '@testing-library/svelte/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  // @ts-expect-error
+  // @ts-ignore
   plugins: [sveltekit(), svelteTesting()],
   test: {
     environment: 'jsdom',

@@ -5,6 +5,7 @@
   "description": "A collection of unstyled, accessible UI components for Vue, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
+    "angle slider",
     "avatar",
     "carousel",
     "checkbox",
@@ -84,6 +85,7 @@
   "dependencies": {
     "@internationalized/date": "3.7.0",
     "@zag-js/accordion": "1.9.0",
+    "@zag-js/angle-slider": "1.9.0",
     "@zag-js/anatomy": "1.9.0",
     "@zag-js/auto-resize": "1.9.0",
     "@zag-js/avatar": "1.9.0",
