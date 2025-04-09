@@ -1,11 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@1.4.0/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    {
-      "repo": "chakra-ui/ark"
-    }
-  ],
+  "changelog": false,
   "commit": false,
   "access": "public",
   "baseBranch": "main",
