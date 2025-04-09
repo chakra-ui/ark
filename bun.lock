@@ -48,6 +48,7 @@
         "@zag-js/highlight-word": "1.9.0",
         "@zag-js/hover-card": "1.9.0",
         "@zag-js/i18n-utils": "1.9.0",
+        "@zag-js/listbox": "1.9.0",
         "@zag-js/menu": "1.9.0",
         "@zag-js/number-input": "1.9.0",
         "@zag-js/pagination": "1.9.0",
@@ -1487,6 +1488,8 @@
     "@zag-js/i18n-utils": ["@zag-js/i18n-utils@1.9.0", "", { "dependencies": { "@zag-js/dom-query": "1.9.0" } }, "sha512-opoI2MR+BlKyL1ZSCTMpSMSS0Hv0vvol8Duww1qPHUVCmdHNDnYnRd36L253y+106FIUhY73r/i+2kaKQ3Kitg=="],
 
     "@zag-js/interact-outside": ["@zag-js/interact-outside@1.9.0", "", { "dependencies": { "@zag-js/dom-query": "1.9.0", "@zag-js/utils": "1.9.0" } }, "sha512-trjNrAR1Cty+mF2Zk9AcMKByrJKztokn6kDWzgpu9EAbhARFhroRStrHzTwHuirx8/+Jz+j5FgPjWITzO4TmKA=="],
+
+    "@zag-js/listbox": ["@zag-js/listbox@1.9.0", "", { "dependencies": { "@zag-js/anatomy": "1.9.0", "@zag-js/collection": "1.9.0", "@zag-js/core": "1.9.0", "@zag-js/dom-query": "1.9.0", "@zag-js/focus-visible": "1.9.0", "@zag-js/types": "1.9.0", "@zag-js/utils": "1.9.0" } }, "sha512-LW7ZuHENL3ATch5d91LAM5mIUdjIt6DcxZtCq1gQTPMerpXaV5JM29yDq7fty9QPm+7Q2kzmKeUPmqQeb3fIrQ=="],
 
     "@zag-js/live-region": ["@zag-js/live-region@1.9.0", "", {}, "sha512-VF8z+r1+awK54Pm/wf0kxmKkdXBWie65IsAU07fHBmqi+FYtkSDLukHf8wrGyOcOdWGRqBgE9PpiwbANsdtPYg=="],
 
