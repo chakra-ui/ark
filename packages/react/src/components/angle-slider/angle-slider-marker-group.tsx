@@ -1,9 +1,10 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
-import { type HTMLProps, ark } from '../factory'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAngleSliderContext } from './use-angle-slider-context'
 
-export interface AngleSliderMarkerGroupProps extends HTMLProps<'div'> {}
+export interface AngleSliderMarkerGroupBaseProps extends PolymorphicProps {}
+export interface AngleSliderMarkerGroupProps extends HTMLProps<'div'>, AngleSliderMarkerGroupBaseProps {}
 
 export const AngleSliderMarkerGroup = forwardRef<HTMLDivElement, AngleSliderMarkerGroupProps>((props, ref) => {
   const angleSlider = useAngleSliderContext()

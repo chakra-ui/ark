@@ -86,6 +86,7 @@
   "dependencies": {
     "@internationalized/date": "3.7.0",
     "@zag-js/accordion": "1.9.0",
+    "@zag-js/angle-slider": "1.9.0",
     "@zag-js/anatomy": "1.9.0",
     "@zag-js/auto-resize": "1.9.0",
     "@zag-js/avatar": "1.9.0",

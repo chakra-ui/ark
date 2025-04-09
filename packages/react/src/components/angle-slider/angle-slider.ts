@@ -1,5 +1,9 @@
 export { AngleSliderContext as Context, type AngleSliderContextProps as ContextProps } from './angle-slider-context'
-export { AngleSliderRoot as Root, type AngleSliderRootProps as RootProps } from './angle-slider-root'
+export {
+  AngleSliderRoot as Root,
+  type AngleSliderRootProps as RootProps,
+  type AngleSliderRootBaseProps as RootBaseProps,
+} from './angle-slider-root'
 export {
   AngleSliderLabel as Label,
   type AngleSliderLabelBaseProps as LabelBaseProps,
@@ -17,6 +21,7 @@ export {
 } from './angle-slider-thumb'
 export {
   AngleSliderMarkerGroup as MarkerGroup,
+  type AngleSliderMarkerGroupBaseProps as MarkerGroupBaseProps,
   type AngleSliderMarkerGroupProps as MarkerGroupProps,
 } from './angle-slider-marker-group'
 export {
@@ -26,6 +31,7 @@ export {
 } from './angle-slider-marker'
 export {
   AngleSliderValueText as ValueText,
+  type AngleSliderValueTextBaseProps as ValueTextBaseProps,
   type AngleSliderValueTextProps as ValueTextProps,
 } from './angle-slider-value-text'
 export {

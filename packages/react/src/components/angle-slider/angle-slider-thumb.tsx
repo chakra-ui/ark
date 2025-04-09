@@ -4,7 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useAngleSliderContext } from './use-angle-slider-context'
 
 export interface AngleSliderThumbBaseProps extends PolymorphicProps {}
-export interface AngleSliderThumbProps extends HTMLProps<'span'>, AngleSliderThumbBaseProps {}
+export interface AngleSliderThumbProps extends HTMLProps<'div'>, AngleSliderThumbBaseProps {}
 
 export const AngleSliderThumb = forwardRef<HTMLDivElement, AngleSliderThumbProps>((props, ref) => {
   const angleSlider = useAngleSliderContext()
