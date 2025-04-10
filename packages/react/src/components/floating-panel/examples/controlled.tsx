@@ -15,15 +15,15 @@ export const Controlled = () => {
               <FloatingPanel.Header>
                 <FloatingPanel.Title>Floating Panel</FloatingPanel.Title>
                 <div data-scope="floating-panel" data-part="trigger-group">
-                  <FloatingPanel.MinimizeTrigger>
+                  <FloatingPanel.StageTrigger stage="minimized">
                     <Minus />
-                  </FloatingPanel.MinimizeTrigger>
-                  <FloatingPanel.MaximizeTrigger>
+                  </FloatingPanel.StageTrigger>
+                  <FloatingPanel.StageTrigger stage="maximized">
                     <Maximize2 />
-                  </FloatingPanel.MaximizeTrigger>
-                  <FloatingPanel.RestoreTrigger>
+                  </FloatingPanel.StageTrigger>
+                  <FloatingPanel.StageTrigger stage="default">
                     <ArrowDownLeft />
-                  </FloatingPanel.RestoreTrigger>
+                  </FloatingPanel.StageTrigger>
                   <FloatingPanel.CloseTrigger>
                     <XIcon />
                   </FloatingPanel.CloseTrigger>

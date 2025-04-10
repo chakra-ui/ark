@@ -1,7 +1,7 @@
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
+import { createSplitProps } from '../../utils/create-split-props'
 import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import type { PolymorphicProps } from '../factory'
 import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
@@ -12,23 +12,22 @@ interface RootProviderProps {
   value: UseFloatingPanelReturn
 }
 
-export interface FloatingPanelRootProviderBaseProps
-  extends RootProviderProps,
-    UsePresenceProps,
-    PolymorphicProps {}
+export interface FloatingPanelRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface FloatingPanelRootProviderProps extends FloatingPanelRootProviderBaseProps {
   children?: ReactNode
 }
 
 export const FloatingPanelRootProvider = (props: FloatingPanelRootProviderProps) => {
-  const [presenceProps, { value: floatingPanel, children }] = splitPresenceProps(props)
+  const [presenceProps, baseProps] = splitPresenceProps(props)
   const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
+
+  const [{ value: floatingPanel }, localProps] = createSplitProps<RootProviderProps>()(baseProps, ['value'])
   const presence = usePresence(mergeProps({ present: floatingPanel.open }, presenceProps))
 
   return (
     <FloatingPanelProvider value={floatingPanel}>
       <RenderStrategyPropsProvider value={renderStrategyProps}>
-        <PresenceProvider value={presence}>{children}</PresenceProvider>
+        <PresenceProvider value={presence}>{localProps.children}</PresenceProvider>
       </RenderStrategyPropsProvider>
     </FloatingPanelProvider>
   )

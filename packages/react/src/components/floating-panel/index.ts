@@ -1,9 +1,5 @@
 export type { OpenChangeDetails as FloatingPanelOpenChangeDetails } from '@zag-js/floating-panel'
-export {
-  FloatingPanelBody,
-  type FloatingPanelBodyProps,
-  type FloatingPanelBodyBaseProps,
-} from './floating-panel-body'
+export { FloatingPanelBody, type FloatingPanelBodyProps, type FloatingPanelBodyBaseProps } from './floating-panel-body'
 export {
   FloatingPanelCloseTrigger,
   type FloatingPanelCloseTriggerProps,
@@ -14,15 +10,8 @@ export {
   type FloatingPanelContentProps,
   type FloatingPanelContentBaseProps,
 } from './floating-panel-content'
-export {
-  FloatingPanelDock,
-  type FloatingPanelDockProps,
-  type FloatingPanelDockBaseProps,
-} from './floating-panel-dock'
-export {
-  FloatingPanelContext,
-  type FloatingPanelContextProps,
-} from './floating-panel-context'
+export { FloatingPanelDock, type FloatingPanelDockProps, type FloatingPanelDockBaseProps } from './floating-panel-dock'
+export { FloatingPanelContext, type FloatingPanelContextProps } from './floating-panel-context'
 export {
   FloatingPanelDragTrigger,
   type FloatingPanelDragTriggerProps,
@@ -34,16 +23,6 @@ export {
   type FloatingPanelHeaderBaseProps,
 } from './floating-panel-header'
 export {
-  FloatingPanelMaximizeTrigger,
-  type FloatingPanelMaximizeTriggerProps,
-  type FloatingPanelMaximizeTriggerBaseProps,
-} from './floating-panel-maximize-trigger'
-export {
-  FloatingPanelMinimizeTrigger,
-  type FloatingPanelMinimizeTriggerProps,
-  type FloatingPanelMinimizeTriggerBaseProps,
-} from './floating-panel-minimize-trigger'
-export {
   FloatingPanelPositioner,
   type FloatingPanelPositionerProps,
   type FloatingPanelPositionerBaseProps,
@@ -54,15 +33,11 @@ export {
   type FloatingPanelResizeTriggerBaseProps,
 } from './floating-panel-resize-trigger'
 export {
-  FloatingPanelRestoreTrigger,
-  type FloatingPanelRestoreTriggerProps,
-  type FloatingPanelRestoreTriggerBaseProps,
-} from './floating-panel-restore-trigger'
-export {
-  FloatingPanelRoot,
-  type FloatingPanelRootProps,
-  type FloatingPanelRootBaseProps,
-} from './floating-panel-root'
+  FloatingPanelStageTrigger,
+  type FloatingPanelStageTriggerProps,
+  type FloatingPanelStageTriggerBaseProps,
+} from './floating-panel-stage-trigger'
+export { FloatingPanelRoot, type FloatingPanelRootProps, type FloatingPanelRootBaseProps } from './floating-panel-root'
 export {
   FloatingPanelRootProvider,
   type FloatingPanelRootProviderProps,
@@ -78,11 +53,7 @@ export {
   type FloatingPanelTriggerProps,
   type FloatingPanelTriggerBaseProps,
 } from './floating-panel-trigger'
-export {
-  useFloatingPanel,
-  type UseFloatingPanelProps,
-  type UseFloatingPanelReturn,
-} from './use-floating-panel'
+export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel'
 export { useFloatingPanelContext, type UseFloatingPanelContext } from './use-floating-panel-context'
 export { floatingPanelAnatomy } from './floating-panel.anatomy'
 

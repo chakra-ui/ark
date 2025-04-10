@@ -1,6 +1,5 @@
-import { FloatingPanel, Portal } from '../..'
-
 import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-react'
+import { FloatingPanel, Portal } from '../..'
 
 export const LazyMount = () => (
   <FloatingPanel.Root lazyMount onExitComplete={() => console.log('onExitComplete invoked')}>
@@ -12,15 +11,15 @@ export const LazyMount = () => (
             <FloatingPanel.Header>
               <FloatingPanel.Title>Floating Panel</FloatingPanel.Title>
               <div data-scope="floating-panel" data-part="trigger-group">
-                <FloatingPanel.MinimizeTrigger>
+                <FloatingPanel.StageTrigger stage="minimized">
                   <Minus />
-                </FloatingPanel.MinimizeTrigger>
-                <FloatingPanel.MaximizeTrigger>
+                </FloatingPanel.StageTrigger>
+                <FloatingPanel.StageTrigger stage="maximized">
                   <Maximize2 />
-                </FloatingPanel.MaximizeTrigger>
-                <FloatingPanel.RestoreTrigger>
+                </FloatingPanel.StageTrigger>
+                <FloatingPanel.StageTrigger stage="default">
                   <ArrowDownLeft />
-                </FloatingPanel.RestoreTrigger>
+                </FloatingPanel.StageTrigger>
                 <FloatingPanel.CloseTrigger>
                   <XIcon />
                 </FloatingPanel.CloseTrigger>

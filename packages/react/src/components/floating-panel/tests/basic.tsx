@@ -10,9 +10,9 @@ export const ComponentUnderTest = (props: FloatingPanelRootProps) => (
           <FloatingPanel.DragTrigger>
             <FloatingPanel.Header>
               <FloatingPanel.Title>FloatingPanel Title</FloatingPanel.Title>
-              <FloatingPanel.MinimizeTrigger>minimize window</FloatingPanel.MinimizeTrigger>
-              <FloatingPanel.MaximizeTrigger>maximize window</FloatingPanel.MaximizeTrigger>
-              <FloatingPanel.RestoreTrigger>restore window</FloatingPanel.RestoreTrigger>
+              <FloatingPanel.StageTrigger stage="minimized">minimize window</FloatingPanel.StageTrigger>
+              <FloatingPanel.StageTrigger stage="maximized">maximize window</FloatingPanel.StageTrigger>
+              <FloatingPanel.StageTrigger stage="default">restore window</FloatingPanel.StageTrigger>
               <FloatingPanel.CloseTrigger>close window</FloatingPanel.CloseTrigger>
             </FloatingPanel.Header>
           </FloatingPanel.DragTrigger>

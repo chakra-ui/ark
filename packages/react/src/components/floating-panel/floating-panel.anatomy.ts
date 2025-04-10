@@ -1,1 +1,1 @@
-export { anatomy as floatingPanelAnatomy } from '@zag-js/floating-panel'
+export { floating as floatingPanelAnatomy } from '@zag-js/floating-panel'

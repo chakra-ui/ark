@@ -1,6 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import type { ReactNode } from 'react'
-import { RenderStrategyPropsProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { createSplitProps } from '../../utils/create-split-props'
 import type { UsePresenceProps } from '../presence'
 import { PresenceProvider, usePresence } from '../presence'
 import { splitPresenceProps } from '../presence/split-presence-props'
@@ -13,16 +13,47 @@ export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {
 }
 
 export const FloatingPanelRoot = (props: FloatingPanelRootProps) => {
-  const [presenceProps, { children, ...localProps }] = splitPresenceProps(props)
-  const [renderStrategyProps] = splitRenderStrategyProps(presenceProps)
-  const floatingPanel = useFloatingPanel(localProps)
-  const presence = usePresence(mergeProps({ present: floatingPanel.open }, presenceProps))
+  const [presenceProps, otherProps] = splitPresenceProps(props)
+  const [useFloatingPanelProps, localProps] = createSplitProps<UseFloatingPanelProps>()(otherProps, [
+    'allowOverflow',
+    'closeOnEscape',
+    'defaultOpen',
+    'defaultPosition',
+    'defaultSize',
+    'dir',
+    'disabled',
+    'draggable',
+    'getAnchorPosition',
+    'getBoundaryEl',
+    'gridSize',
+    'id',
+    'ids',
+    'lockAspectRatio',
+    'maxSize',
+    'minSize',
+    'onOpenChange',
+    'onPositionChange',
+    'onPositionChangeEnd',
+    'onSizeChange',
+    'onSizeChangeEnd',
+    'onStageChange',
+    'open',
+    'persistRect',
+    'position',
+    'resizable',
+    'size',
+    'strategy',
+    'translations',
+  ])
+
+  const floatingPanel = useFloatingPanel(useFloatingPanelProps)
+
+  const usePresenceProps = mergeProps({ present: floatingPanel.open }, presenceProps)
+  const presence = usePresence(usePresenceProps)
 
   return (
     <FloatingPanelProvider value={floatingPanel}>
-      <RenderStrategyPropsProvider value={renderStrategyProps}>
-        <PresenceProvider value={presence}>{children}</PresenceProvider>
-      </RenderStrategyPropsProvider>
+      <PresenceProvider value={presence}>{localProps.children}</PresenceProvider>
     </FloatingPanelProvider>
   )
 }

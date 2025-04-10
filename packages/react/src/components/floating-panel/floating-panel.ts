@@ -1,4 +1,9 @@
-export type { OpenChangeDetails } from '@zag-js/floating-panel'
+export type {
+  OpenChangeDetails,
+  SizeChangeDetails,
+  StageChangeDetails,
+  PositionChangeDetails,
+} from '@zag-js/floating-panel'
 export {
   FloatingPanelBody as Body,
   type FloatingPanelBodyProps as BodyProps,
@@ -34,16 +39,6 @@ export {
   type FloatingPanelHeaderBaseProps as HeaderBaseProps,
 } from './floating-panel-header'
 export {
-  FloatingPanelMaximizeTrigger as MaximizeTrigger,
-  type FloatingPanelMaximizeTriggerProps as MaximizeTriggerProps,
-  type FloatingPanelMaximizeTriggerBaseProps as MaximizeTriggerBaseProps,
-} from './floating-panel-maximize-trigger'
-export {
-  FloatingPanelMinimizeTrigger as MinimizeTrigger,
-  type FloatingPanelMinimizeTriggerProps as MinimizeTriggerProps,
-  type FloatingPanelMinimizeTriggerBaseProps as MinimizeTriggerBaseProps,
-} from './floating-panel-minimize-trigger'
-export {
   FloatingPanelPositioner as Positioner,
   type FloatingPanelPositionerProps as PositionerProps,
   type FloatingPanelPositionerBaseProps as PositionerBaseProps,
@@ -54,10 +49,10 @@ export {
   type FloatingPanelResizeTriggerBaseProps as ResizeTriggerBaseProps,
 } from './floating-panel-resize-trigger'
 export {
-  FloatingPanelRestoreTrigger as RestoreTrigger,
-  type FloatingPanelRestoreTriggerProps as RestoreTriggerProps,
-  type FloatingPanelRestoreTriggerBaseProps as RestoreTriggerBaseProps,
-} from './floating-panel-restore-trigger'
+  FloatingPanelStageTrigger as StageTrigger,
+  type FloatingPanelStageTriggerProps as StageTriggerProps,
+  type FloatingPanelStageTriggerBaseProps as StageTriggerBaseProps,
+} from './floating-panel-stage-trigger'
 export {
   FloatingPanelRoot as Root,
   type FloatingPanelRootProps as RootProps,

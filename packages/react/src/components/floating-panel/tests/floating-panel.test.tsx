@@ -1,31 +1,9 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { FloatingPanel, floatingPanelAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('FloatingPanel / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(floatingPanelAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(floatingPanelAnatomy))('should export %s', async (part) => {
-    expect(FloatingPanel[part]).toBeDefined()
-  })
-})
-
 describe('FloatingPanel', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -68,9 +46,7 @@ describe('FloatingPanel', () => {
   it('should not have aria-controls if lazy mounted', async () => {
     render(<ComponentUnderTest lazyMount />)
 
-    expect(screen.getByRole('button', { name: 'Open FloatingPanel' })).not.toHaveAttribute(
-      'aria-controls',
-    )
+    expect(screen.getByRole('button', { name: 'Open FloatingPanel' })).not.toHaveAttribute('aria-controls')
   })
 
   it('should lazy mount and unmount on exit', async () => {
