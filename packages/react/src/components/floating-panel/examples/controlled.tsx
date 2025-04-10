@@ -14,7 +14,7 @@ export const Controlled = () => {
             <FloatingPanel.DragTrigger>
               <FloatingPanel.Header>
                 <FloatingPanel.Title>Floating Panel</FloatingPanel.Title>
-                <div data-scope="floating-panel" data-part="trigger-group">
+                <FloatingPanel.Control>
                   <FloatingPanel.StageTrigger stage="minimized">
                     <Minus />
                   </FloatingPanel.StageTrigger>
@@ -27,7 +27,7 @@ export const Controlled = () => {
                   <FloatingPanel.CloseTrigger>
                     <XIcon />
                   </FloatingPanel.CloseTrigger>
-                </div>
+                </FloatingPanel.Control>
               </FloatingPanel.Header>
             </FloatingPanel.DragTrigger>
             <FloatingPanel.Body>

@@ -1,4 +1,9 @@
-export type { OpenChangeDetails as FloatingPanelOpenChangeDetails } from '@zag-js/floating-panel'
+export type {
+  OpenChangeDetails as FloatingPanelOpenChangeDetails,
+  PositionChangeDetails as FloatingPanelPositionChangeDetails,
+  SizeChangeDetails as FloatingPanelSizeChangeDetails,
+  StageChangeDetails as FloatingPanelStageChangeDetails,
+} from '@zag-js/floating-panel'
 export { FloatingPanelBody, type FloatingPanelBodyProps, type FloatingPanelBodyBaseProps } from './floating-panel-body'
 export {
   FloatingPanelCloseTrigger,
@@ -53,6 +58,12 @@ export {
   type FloatingPanelTriggerProps,
   type FloatingPanelTriggerBaseProps,
 } from './floating-panel-trigger'
+export {
+  FloatingPanelControl,
+  type FloatingPanelControlProps,
+  type FloatingPanelControlBaseProps,
+} from './floating-panel-control'
+
 export { useFloatingPanel, type UseFloatingPanelProps, type UseFloatingPanelReturn } from './use-floating-panel'
 export { useFloatingPanelContext, type UseFloatingPanelContext } from './use-floating-panel-context'
 export { floatingPanelAnatomy } from './floating-panel.anatomy'
