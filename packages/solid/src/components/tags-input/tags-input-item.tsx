@@ -11,11 +11,7 @@ export interface TagsInputItemBaseProps extends ItemProps, PolymorphicProps<'div
 export interface TagsInputItemProps extends HTMLProps<'div'>, TagsInputItemBaseProps {}
 
 export const TagsInputItem = (props: TagsInputItemProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
-    'disabled',
-    'index',
-    'value',
-  ])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['disabled', 'index', 'value'])
   const api = useTagsInputContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => api().getItemState(itemProps))

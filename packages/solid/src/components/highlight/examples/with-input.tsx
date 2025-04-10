@@ -5,12 +5,7 @@ export const WithInput = () => {
   const [query, setQuery] = createSignal('ipsum')
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search"
-        value={query()}
-        onInput={(e) => setQuery(e.target.value)}
-      />
+      <input type="text" placeholder="Search" value={query()} onInput={(e) => setQuery(e.target.value)} />
       <br />
       <Highlight
         ignoreCase={false}

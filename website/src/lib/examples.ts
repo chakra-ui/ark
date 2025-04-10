@@ -1,4 +1,4 @@
-import { getHighlighter } from 'shiki'
+import { createHighlighter } from 'shiki'
 
 export interface Example {
   id: string
@@ -63,22 +63,19 @@ interface FetchCodeExamplesParams {
   framework: string
 }
 
-const highlighter = await getHighlighter({
+const highlighter = await createHighlighter({
   themes: ['github-dark-default'],
   langs: ['tsx', 'vue'],
 })
 
 export const fetchCodeExamples = async (props: FetchCodeExamplesParams): Promise<CodeExample[]> => {
   const { id, framework } = props
-  const sources: SourceFile[] = await fetch(
-    `${ARK_PLUS_URL}/api/examples/${id}/sources/${framework}`,
-    {
-      headers: {
-        Authorization: ARK_PLUS_API_KEY,
-      },
-      cache: 'no-cache',
+  const sources: SourceFile[] = await fetch(`${ARK_PLUS_URL}/api/examples/${id}/sources/${framework}`, {
+    headers: {
+      Authorization: ARK_PLUS_API_KEY,
     },
-  ).then((res) => res.json())
+    cache: 'no-cache',
+  }).then((res) => res.json())
 
   return sources.map((source) => ({
     value: source.name,

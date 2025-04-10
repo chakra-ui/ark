@@ -6,9 +6,7 @@ export const RenderProp = () => (
       <Switch.Thumb />
     </Switch.Control>
     <Switch.Context>
-      {(context) => (
-        <Switch.Label>Feature is {context().checked ? 'enabled' : 'disabled'}</Switch.Label>
-      )}
+      {(context) => <Switch.Label>Feature is {context().checked ? 'enabled' : 'disabled'}</Switch.Label>}
     </Switch.Context>
     <Switch.HiddenInput />
   </Switch.Root>

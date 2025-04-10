@@ -1,20 +1,20 @@
 import { fireEvent, render, screen, waitFor } from '@solidjs/testing-library'
 import { Index, splitProps } from 'solid-js'
-import { Menu, menuAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
+import { Menu } from '..'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
+  contextMenu?: boolean
 }
 
 const ComponentUnderTest = (props: ComponentUnderTestProps) => {
-  const [radioGroupProps, localProps] = splitProps(props, ['onValueChange'])
+  const [{ contextMenu, onValueChange }, rootProps] = splitProps(props, ['onValueChange', 'contextMenu'])
   return (
-    <Menu.Root {...localProps}>
+    <Menu.Root {...rootProps}>
       <Menu.Trigger>
         Open menu <Menu.Indicator />
       </Menu.Trigger>
-      <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
+      {contextMenu && <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>}
       <Menu.Positioner data-testid="positioner">
         <Menu.Content>
           <Menu.Arrow>
@@ -32,7 +32,7 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
             <Menu.ItemText>Check me</Menu.ItemText>
           </Menu.CheckboxItem>
           <Menu.Separator />
-          <Menu.RadioItemGroup value="react" {...radioGroupProps}>
+          <Menu.RadioItemGroup value="react" onValueChange={onValueChange}>
             <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
             <Index each={['react', 'solid', 'svelte', 'vue']}>
               {(framework) => (
@@ -59,18 +59,6 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
   )
 }
 
-describe('Menu / Parts & Exports', () => {
-  it.skip.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
-    expect(Menu[part]).toBeDefined()
-  })
-})
-
 describe('Menu', () => {
   it('should set correct aria attributes on disabled MenuItems', () => {
     render(() => <ComponentUnderTest />)
@@ -96,9 +84,7 @@ describe('Menu', () => {
     const button = screen.getByRole('button', { name: /open menu/i })
     fireEvent.click(button)
 
-    await waitFor(() =>
-      expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'),
-    )
+    await waitFor(() => expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'))
   })
 
   it('should control the open state', async () => {
@@ -133,7 +119,7 @@ describe('Menu', () => {
   })
 
   it('should open on context menu', async () => {
-    render(() => <ComponentUnderTest />)
+    render(() => <ComponentUnderTest contextMenu />)
     const button = screen.getByRole('button', { name: /Open Context Menu/i })
     fireEvent.contextMenu(button)
     await waitFor(() => expect(screen.getByText(/Ark UI/i)).toBeVisible())

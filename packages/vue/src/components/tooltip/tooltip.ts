@@ -14,10 +14,7 @@ export {
   type TooltipContentProps as ContentProps,
   type TooltipContentBaseProps as ContentBaseProps,
 } from './tooltip-content.vue'
-export {
-  default as Context,
-  type TooltipContextProps as ContextProps,
-} from './tooltip-context.vue'
+export { default as Context, type TooltipContextProps as ContextProps } from './tooltip-context.vue'
 export {
   default as Positioner,
   type TooltipPositionerProps as PositionerProps,

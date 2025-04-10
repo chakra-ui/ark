@@ -1,33 +1,11 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Tooltip, tooltipAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Tooltip / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(tooltipAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tooltipAnatomy))('should export %s', async (part) => {
-    expect(Tooltip[part]).toBeDefined()
-  })
-})
-
 describe('Tooltip', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+    const { container } = await act(() => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -39,7 +17,7 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument())
 
     await user.unhover(tooltipTrigger)
 
@@ -49,9 +27,9 @@ describe('Tooltip', () => {
   })
 
   it('should show on pointerover if isDisabled has a falsy value', async () => {
-    render(<ComponentUnderTest disabled={false} />)
+    render(<ComponentUnderTest />)
 
-    const tooltipTrigger = screen.getByText('hover me')
+    const tooltipTrigger = await screen.findByText('hover me')
     await user.hover(tooltipTrigger)
 
     await screen.findByRole('tooltip')
@@ -76,20 +54,20 @@ describe('Tooltip', () => {
   it('should not hide the tooltip when escape is pressed if closeOnEsc is set to false', async () => {
     render(<ComponentUnderTest closeOnEscape={false} />)
 
-    const tooltipTrigger = screen.getByText('hover me')
+    const tooltipTrigger = await screen.findByText('hover me')
     await user.hover(tooltipTrigger)
 
     await screen.findByRole('tooltip')
     expect(screen.getByText('content')).toBeInTheDocument()
 
     await user.keyboard('[Escape]')
-    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument())
   })
 
   it('should have pointer-events none style if interactive is set to false', async () => {
     render(<ComponentUnderTest interactive={false} />)
 
-    const tooltipTrigger = screen.getByText('hover me')
+    const tooltipTrigger = await screen.findByText('hover me')
     await user.hover(tooltipTrigger)
 
     const tooltipContent = screen.getByText('content')
@@ -103,7 +81,7 @@ describe('Tooltip', () => {
     const tooltipTrigger = screen.getByText('hover me')
     await user.hover(tooltipTrigger)
 
-    expect(screen.getByRole('tooltip')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByRole('tooltip')).toBeInTheDocument())
 
     await user.keyboard('[Escape]')
     await waitFor(() => {

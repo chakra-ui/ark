@@ -37,7 +37,7 @@ export const TableOfContent = (props: Props) => {
         On this page
       </Text>
       <SegmentGroup.Root
-        onValueChange={(details) => router.push(details.value)}
+        onValueChange={(details) => router.push(details.value ?? '/')}
         value={y && y > 32 ? activeItem : ''}
         orientation="vertical"
         size={{ base: 'md', md: 'sm' }}
@@ -70,10 +70,7 @@ interface FlattenedTocEntry extends Omit<TocEntry, 'items'> {
 const flattenTocEntries = (entries: TocEntry[] = [], depth = 0): FlattenedTocEntry[] =>
   entries.reduce<FlattenedTocEntry[]>(
     (acc, entry) =>
-      acc.concat(
-        { title: entry.title, url: entry.url, depth },
-        flattenTocEntries(entry.items, depth + 1),
-      ),
+      acc.concat({ title: entry.title, url: entry.url, depth }, flattenTocEntries(entry.items, depth + 1)),
     [],
   )
 
@@ -83,9 +80,7 @@ const useScrollSpy = (selectors: string[]) => {
   const observer = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    const elements = selectors.map((selector) =>
-      document.querySelector(`[id='${selector.replace('#', '')}']`),
-    )
+    const elements = selectors.map((selector) => document.querySelector(`[id='${selector.replace('#', '')}']`))
 
     observer.current = new IntersectionObserver(
       (entries) => {

@@ -5,5 +5,4 @@ export interface ClipboardContextProps {
   children: (context: UseClipboardContext) => ReactNode
 }
 
-export const ClipboardContext = (props: ClipboardContextProps) =>
-  props.children(useClipboardContext())
+export const ClipboardContext = (props: ClipboardContextProps) => props.children(useClipboardContext())

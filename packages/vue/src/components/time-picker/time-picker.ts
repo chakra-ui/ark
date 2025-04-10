@@ -1,8 +1,4 @@
-export type {
-  FocusChangeDetails,
-  OpenChangeDetails,
-  ValueChangeDetails,
-} from '@zag-js/time-picker'
+export type { FocusChangeDetails, OpenChangeDetails, ValueChangeDetails } from '@zag-js/time-picker'
 export {
   default as ClearTrigger,
   type TimePickerClearTriggerProps as ClearTriggerProps,
@@ -18,10 +14,7 @@ export {
   type TimePickerContentProps as ContentProps,
   type TimePickerContentBaseProps as ContentBaseProps,
 } from './time-picker-content.vue'
-export {
-  default as Context,
-  type TimePickerContextProps as ContextProps,
-} from './time-picker-context.vue'
+export { default as Context, type TimePickerContextProps as ContextProps } from './time-picker-context.vue'
 export {
   default as Control,
   type TimePickerControlProps as ControlProps,

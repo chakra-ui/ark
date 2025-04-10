@@ -1,23 +1,11 @@
 import { render, screen } from '@solidjs/testing-library'
-import { Progress, progressAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Progress', () => {
-  it.each(getParts(progressAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
+  it('should handle value', async () => {
+    render(() => <ComponentUnderTest value={42} />)
 
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(progressAnatomy))('should export %s', async (part) => {
-    expect(Progress[part]).toBeDefined()
-  })
-
-  it('should handle default value', async () => {
-    render(() => <ComponentUnderTest value={7} />)
-
-    screen.getByText('7%')
+    screen.getByText('42%')
   })
 
   it('should handle custom max range', async () => {

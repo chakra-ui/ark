@@ -4,22 +4,21 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseQrCodeProps
-  extends Optional<Omit<qrcode.Context, 'dir' | 'getRootNode'>, 'id'> {}
-
+export interface UseQrCodeProps extends Optional<Omit<qrcode.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseQrCodeReturn extends qrcode.Api<PropTypes> {}
 
-export const useQrCode = (props: UseQrCodeProps = {}): UseQrCodeReturn => {
+export const useQrCode = (props?: UseQrCodeProps): UseQrCodeReturn => {
+  const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const context: qrcode.Context = {
-    id: useId(),
+  const machineProps: qrcode.Props = {
+    id,
     dir,
     getRootNode,
     ...props,
   }
 
-  const [state, send] = useMachine(qrcode.machine(context), { context })
-  return qrcode.connect(state, send, normalizeProps)
+  const service = useMachine(qrcode.machine, machineProps)
+  return qrcode.connect(service, normalizeProps)
 }

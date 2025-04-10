@@ -4,12 +4,7 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseSelectProps, useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
 
@@ -17,18 +12,15 @@ export interface SelectRootBaseProps<T extends CollectionItem>
   extends UseSelectProps<T>,
     UsePresenceProps,
     PolymorphicProps {}
-export interface SelectRootProps<T extends CollectionItem>
-  extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
+export interface SelectRootProps<T extends CollectionItem> extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
 
-const SelectImpl = <T extends CollectionItem>(
-  props: SelectRootProps<T>,
-  ref: React.Ref<HTMLDivElement>,
-) => {
+const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: React.Ref<HTMLDivElement>) => {
   const [presenceProps, selectProps] = splitPresenceProps(props)
   const [useSelectProps, localProps] = createSplitProps<UseSelectProps<T>>()(selectProps, [
     'closeOnSelect',
     'collection',
     'composite',
+    'defaultHighlightedValue',
     'defaultOpen',
     'defaultValue',
     'deselectable',

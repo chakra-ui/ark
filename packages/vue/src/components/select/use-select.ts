@@ -1,7 +1,6 @@
 import * as select from '@zag-js/select'
-import { omit } from '@zag-js/utils'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId, watch } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
@@ -10,32 +9,21 @@ import { useFieldContext } from '../field'
 import type { RootEmits } from './select'
 
 export interface UseSelectProps<T extends CollectionItem>
-  extends Optional<
-    Omit<select.Context<T>, 'dir' | 'getRootNode' | 'open.controlled' | 'collection'>,
-    'id'
-  > {
-  modelValue?: select.Context<T>['value']
+  extends Optional<Omit<select.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
-   * The initial open state of the select when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The model value of the select
    */
-  defaultOpen?: select.Context<T>['open']
-  /**
-   * The initial value of the select when it is first rendered.
-   * Use when you do not need to control the state of the select.
-   */
-  defaultValue?: select.Context<T>['value']
+  modelValue?: select.Props<T>['value']
   /**
    * The collection of items
    */
   collection: ListCollection<T>
 }
 
-export interface UseSelectReturn<T extends CollectionItem>
-  extends ComputedRef<select.Api<PropTypes, T>> {}
+export interface UseSelectReturn<T extends CollectionItem> extends ComputedRef<select.Api<PropTypes, T>> {}
 
 export const useSelect = <T extends CollectionItem>(
-  props: UseSelectProps<T>,
+  props: MaybeRef<UseSelectProps<T>>,
   emit?: EmitFn<RootEmits<T>>,
 ): UseSelectReturn<T> => {
   const id = useId()
@@ -43,46 +31,53 @@ export const useSelect = <T extends CollectionItem>(
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const initialContext = computed<select.Context<T>>(() => ({
-    id,
-    ids: {
-      label: field?.value.ids.label,
-      hiddenSelect: field?.value.ids.control,
-    },
-    disabled: field?.value.disabled,
-    readOnly: field?.value.readOnly,
-    invalid: field?.value.invalid,
-    required: field?.value.required,
-    dir: locale.value.dir,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    value: props.modelValue ?? props.defaultValue,
-    getRootNode: env?.value.getRootNode,
-    onValueChange: (details) => {
-      emit?.('valueChange', details)
-      emit?.('update:modelValue', details.value)
-    },
-    onHighlightChange: (details) => emit?.('highlightChange', details),
-    onOpenChange: (details) => {
-      emit?.('openChange', details)
-      emit?.('update:open', details.open)
-    },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    ...cleanProps(props),
-  }))
+  const context = computed<select.Props<T>>(() => {
+    const localProps = toValue<UseSelectProps<T>>(props)
 
-  const [state, send, service] = useMachine(select.machine(initialContext.value), {
-    context: computed(() => omit(initialContext.value, ['collection'])),
+    return {
+      id,
+      ids: {
+        label: field?.value.ids.label,
+        hiddenSelect: field?.value.ids.control,
+      },
+      disabled: field?.value.disabled,
+      readOnly: field?.value.readOnly,
+      invalid: field?.value.invalid,
+      required: field?.value.required,
+      dir: locale.value.dir,
+      value: localProps.modelValue,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localProps),
+      onValueChange: (details) => {
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
+        localProps.onValueChange?.(details)
+      },
+      onHighlightChange: (details) => {
+        emit?.('highlightChange', details)
+        emit?.('update:highlightedValue', details.highlightedValue)
+        localProps.onHighlightChange?.(details)
+      },
+      onOpenChange: (details) => {
+        emit?.('openChange', details)
+        emit?.('update:open', details.open)
+        localProps.onOpenChange?.(details)
+      },
+      onFocusOutside: (details) => {
+        emit?.('focusOutside', details)
+        localProps.onFocusOutside?.(details)
+      },
+      onInteractOutside: (details) => {
+        emit?.('interactOutside', details)
+        localProps.onInteractOutside?.(details)
+      },
+      onPointerDownOutside: (details) => {
+        emit?.('pointerDownOutside', details)
+        localProps.onPointerDownOutside?.(details)
+      },
+    }
   })
 
-  watch(
-    () => props.collection,
-    (collection) => {
-      service.setContext({ collection })
-    },
-  )
-
-  return computed(() => select.connect(state.value, send, normalizeProps))
+  const service = useMachine(select.machine, context)
+  return computed(() => select.connect(service, normalizeProps))
 }

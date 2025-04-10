@@ -19,20 +19,20 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'label'>, Switch.RootBaseProps>, SwitchRecipeVariantProps>
 >(Switch.Root, 'root')
 
-export const Control = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Switch.ControlBaseProps>
->(Switch.Control, 'control')
+export const Control = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Switch.ControlBaseProps>>(
+  Switch.Control,
+  'control',
+)
 
-export const Label = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Switch.LabelBaseProps>
->(Switch.Label, 'label')
+export const Label = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Switch.LabelBaseProps>>(
+  Switch.Label,
+  'label',
+)
 
-export const Thumb = withContext<
-  HTMLSpanElement,
-  Assign<HTMLStyledProps<'span'>, Switch.ThumbBaseProps>
->(Switch.Thumb, 'thumb')
+export const Thumb = withContext<HTMLSpanElement, Assign<HTMLStyledProps<'span'>, Switch.ThumbBaseProps>>(
+  Switch.Thumb,
+  'thumb',
+)
 
 export const Context = Switch.Context
 export const HiddenInput = Switch.HiddenInput

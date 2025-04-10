@@ -8,3 +8,4 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { RenderFn } from './examples/render-fn'
+export { RootProvider } from './examples/root-provider'

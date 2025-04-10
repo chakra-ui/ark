@@ -13,15 +13,13 @@ export const Pomodoro = () => {
   }
 
   return (
-    <Timer.Root
-      targetMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000}
-      countdown
-      onComplete={handleComplete}
-    >
+    <Timer.Root startMs={isWorking ? 25 * 60 * 1000 : 5 * 60 * 1000} countdown onComplete={handleComplete}>
       <h2>{isWorking ? 'Work Session' : 'Break Session'}</h2>
-      <Timer.Item type="minutes" />
-      <Timer.Separator>:</Timer.Separator>
-      <Timer.Item type="seconds" />
+      <Timer.Area>
+        <Timer.Item type="minutes" />
+        <Timer.Separator>:</Timer.Separator>
+        <Timer.Item type="seconds" />
+      </Timer.Area>
 
       <Timer.Control>
         <Timer.ActionTrigger action="start">Start</Timer.ActionTrigger>

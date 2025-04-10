@@ -8,6 +8,7 @@ import OnOpenChange from './examples/on-open-change.vue'
 import Portalled from './examples/portalled.vue'
 import Positioning from './examples/positioning.vue'
 import RenderFn from './examples/render-fn.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
   <Story title="Popover">
@@ -37,6 +38,9 @@ import RenderFn from './examples/render-fn.vue'
     </Variant>
     <Variant title="Modal">
       <Modal />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

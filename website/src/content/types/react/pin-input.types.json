@@ -47,36 +47,29 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "autoFocus": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to auto-focus the first input."
-      },
+      "autoFocus": { "type": "boolean", "isRequired": false, "description": "Whether to auto-focus the first input." },
       "blurOnComplete": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to blur the input when the value is complete"
       },
+      "count": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The number of inputs to render to improve SSR aria attributes.\nThis will be required in next major version."
+      },
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial value of the pin input when it is first rendered.\nUse when you do not need to control the state of the pin input"
+        "description": "The initial value of the the pin input when rendered.\nUse when you don't need to control the value of the pin input."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the inputs are disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the inputs are disabled" },
       "form": {
         "type": "string",
         "isRequired": false,
         "description": "The associate form of the underlying input element."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
         "isRequired": false,
@@ -133,11 +126,7 @@
         "isRequired": false,
         "description": "Whether the pin input is in the valid state"
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the pin input is required"
-      },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the pin input is required" },
       "selectOnFocus": {
         "type": "boolean",
         "isRequired": false,
@@ -154,11 +143,7 @@
         "isRequired": false,
         "description": "The type of value the pin-input should allow"
       },
-      "value": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The value of the the pin input."
-      }
+      "value": { "type": "string[]", "isRequired": false, "description": "The controlled value of the the pin input." }
     },
     "element": "HTMLDivElement"
   },

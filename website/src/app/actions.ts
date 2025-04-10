@@ -2,25 +2,25 @@
 import { Schema } from '@effect/schema'
 import { Effect, Match, pipe } from 'effect'
 import { auth } from '~/lib/auth'
+import { ConflictError, InternalServerError, NotFoundError, UnauthorizedError } from '~/lib/errors'
 import { prisma } from '~/lib/prisma'
 
-export const findLicenseKeysByOrderId = async (externalId: string): Promise<string | string[]> =>
+export const findLicenseKeysByOrderId = async (externalId: string): Promise<string> =>
   Effect.runPromise(
     pipe(
       Effect.tryPromise({
         try: () =>
           prisma.order.findUniqueOrThrow({
-            where: { externalId },
+            where: {
+              externalId,
+              createdAt: { gt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2) },
+            },
             include: { orderItems: { include: { licenseKey: true } } },
           }),
-        catch: (e) =>
-          Match.value(e).pipe(
-            Match.when({ code: 'P2025' }, () => new NotFoundError(externalId)),
-            Match.orElse(() => new InternalServerError()),
-          ),
+        catch: () => InternalServerError,
       }),
-      Effect.map((order) => order.orderItems.map((item) => item.licenseKey.key)),
-      Effect.catchAll(() => Effect.succeed([])),
+      Effect.map((order) => order.orderItems.map((item) => item.licenseKey.key)[0]),
+      Effect.catchAll(() => Effect.succeed('')),
     ),
   )
 
@@ -37,7 +37,7 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
           Effect.map((session) => session?.user?.id),
           Effect.filterOrFail(
             (userId): userId is string => typeof userId === 'string',
-            () => new UnauthorizedError(),
+            () => UnauthorizedError,
           ),
         ),
         pipe(
@@ -48,14 +48,14 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
               try: () => prisma.licenseKey.findUniqueOrThrow({ where: { key } }),
               catch: (e) =>
                 Match.value(e).pipe(
-                  Match.when({ code: 'P2025' }, () => new NotFoundError(key)),
-                  Match.orElse(() => new InternalServerError()),
+                  Match.when({ code: 'P2025' }, () => NotFoundError),
+                  Match.orElse(() => InternalServerError),
                 ),
             }),
           ),
           Effect.filterOrFail(
             (licenseKey) => licenseKey.userId === null,
-            () => new ConflictError(),
+            () => ConflictError,
           ),
         ),
       ]),
@@ -70,7 +70,7 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
                 },
               },
             }),
-          catch: () => new InternalServerError(),
+          catch: () => InternalServerError,
         }),
       ),
       Effect.map(() => ({ success: true, message: 'License key activated' })),
@@ -79,10 +79,8 @@ export const activateLicense = async (_: unknown, formData: FormData) =>
         UnauthorizedError: () =>
           Effect.succeed({ success: false, message: 'Please log in to activate your license key' }),
         NotFoundError: () => Effect.succeed({ success: false, message: 'License key not found' }),
-        ConflictError: () =>
-          Effect.succeed({ success: false, message: 'License key is already in use' }),
-        InternalServerError: () =>
-          Effect.succeed({ success: false, message: 'An unexpcted error occured' }),
+        ConflictError: () => Effect.succeed({ success: false, message: 'License key is already in use' }),
+        InternalServerError: () => Effect.succeed({ success: false, message: 'An unexpected error occured' }),
       }),
     ),
   )
@@ -94,7 +92,7 @@ export const hasUserPermission = async () =>
       Effect.map((session) => session?.user?.id),
       Effect.filterOrFail(
         (userId): userId is string => typeof userId === 'string',
-        () => new UnauthorizedError(),
+        () => UnauthorizedError,
       ),
       Effect.flatMap((userId) =>
         Effect.tryPromise({
@@ -102,7 +100,7 @@ export const hasUserPermission = async () =>
             prisma.licenseKey.findFirst({
               where: { userId },
             }),
-          catch: () => new InternalServerError(),
+          catch: () => InternalServerError,
         }),
       ),
       Effect.map((license) => license !== null),
@@ -110,19 +108,36 @@ export const hasUserPermission = async () =>
     ),
   )
 
-class InternalServerError {
-  readonly _tag = 'InternalServerError'
+interface FormState {
+  success?: boolean | undefined
+  message: string
 }
 
-class NotFoundError {
-  readonly _tag = 'NotFoundError'
-  constructor(readonly id: string) {}
-}
-
-class ConflictError {
-  readonly _tag = 'ConflictError'
-}
-
-class UnauthorizedError {
-  readonly _tag = 'UnauthorizedError'
+export const contact = async (_prevState: unknown, formData: FormData): Promise<FormState> => {
+  return Effect.runPromise(
+    pipe(
+      Effect.tryPromise({
+        try: () =>
+          fetch(process.env.SLACK_WEBHOOK_URL, {
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST',
+            body: JSON.stringify({
+              name: formData.get('name'),
+              subject: formData.get('subject'),
+              email: formData.get('email'),
+              message: formData.get('message'),
+              platform: 'Ark UI',
+            }),
+          }),
+        catch: () => InternalServerError,
+      }),
+      Effect.map(() => ({ success: true, message: 'Your message has been sent successfully.' })),
+      Effect.catchAll(() =>
+        Effect.succeed({
+          success: false,
+          message: 'Whoops! Something went wrong. Please try again.',
+        }),
+      ),
+    ),
+  )
 }

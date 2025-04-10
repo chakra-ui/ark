@@ -52,11 +52,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the signature pad is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is disabled." },
       "drawing": {
         "type": "DrawingOptions",
         "defaultValue": "'{ size: 2, simulatePressure: true }'",
@@ -64,7 +60,7 @@
         "description": "The drawing options."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  control: string\n  hiddenInput: string\n  label: string\n}>",
+        "type": "Partial<{ root: string; control: string; hiddenInput: string; label: string }>",
         "isRequired": false,
         "description": "The ids of the signature pad elements. Useful for composition."
       },
@@ -83,16 +79,8 @@
         "isRequired": false,
         "description": "Callback when the signature pad is done drawing."
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the signature pad is read-only."
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the signature pad is required."
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is read-only." },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is required." },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,

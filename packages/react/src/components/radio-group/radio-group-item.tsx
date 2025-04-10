@@ -11,11 +11,7 @@ export interface RadioGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface RadioGroupItemProps extends HTMLProps<'label'>, RadioGroupItemBaseProps {}
 
 export const RadioGroupItem = forwardRef<HTMLLabelElement, RadioGroupItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
-    'value',
-    'disabled',
-    'invalid',
-  ])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid'])
   const radioGroup = useRadioGroupContext()
   const mergedProps = mergeProps(radioGroup.getItemProps(itemProps), localProps)
   const itemState = radioGroup.getItemState(itemProps)

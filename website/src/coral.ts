@@ -1,0 +1,55 @@
+import { defineSemanticTokens, defineTokens } from '@pandacss/dev'
+
+export const coral = {
+  name: 'coral',
+  tokens: defineTokens.colors({
+    light: {
+      '1': { value: '#fff8f7' },
+      '2': { value: '#ffefef' },
+      '3': { value: '#ffe5e4' },
+      '4': { value: '#ffdbda' },
+      '5': { value: '#ffd2d1' },
+      '6': { value: '#ffc9c8' },
+      '7': { value: '#ffbeb8' },
+      '8': { value: '#ffb2a8' },
+      '9': { value: '#EB5E41' },
+      '10': { value: '#de5045' },
+      '11': { value: '#c9453b' },
+      '12': { value: '#762d25' },
+    },
+    dark: {
+      '1': { value: '#1c1412' },
+      '2': { value: '#391a18' },
+      '3': { value: '#55221e' },
+      '4': { value: '#722b25' },
+      '5': { value: '#8e342b' },
+      '6': { value: '#aa3d32' },
+      '7': { value: '#c6493a' },
+      '8': { value: '#e2503f' },
+      '9': { value: '#EB5E41' },
+      '10': { value: '#ef6b4e' },
+      '11': { value: '#f47a5c' },
+      '12': { value: '#faa19b' },
+    },
+  }),
+
+  semanticTokens: defineSemanticTokens.colors({
+    '1': { value: { _light: '{colors.coral.light.1}', _dark: '{colors.coral.dark.1}' } },
+    '2': { value: { _light: '{colors.coral.light.2}', _dark: '{colors.coral.dark.2}' } },
+    '3': { value: { _light: '{colors.coral.light.3}', _dark: '{colors.coral.dark.3}' } },
+    '4': { value: { _light: '{colors.coral.light.4}', _dark: '{colors.coral.dark.4}' } },
+    '5': { value: { _light: '{colors.coral.light.5}', _dark: '{colors.coral.dark.5}' } },
+    '6': { value: { _light: '{colors.coral.light.6}', _dark: '{colors.coral.dark.6}' } },
+    '7': { value: { _light: '{colors.coral.light.7}', _dark: '{colors.coral.dark.7}' } },
+    '8': { value: { _light: '{colors.coral.light.8}', _dark: '{colors.coral.dark.8}' } },
+    '9': { value: { _light: '{colors.coral.light.9}', _dark: '{colors.coral.dark.9}' } },
+    '10': { value: { _light: '{colors.coral.light.10}', _dark: '{colors.coral.dark.10}' } },
+    '11': { value: { _light: '{colors.coral.light.11}', _dark: '{colors.coral.dark.11}' } },
+    '12': { value: { _light: '{colors.coral.light.12}', _dark: '{colors.coral.dark.12}' } },
+
+    default: { value: { _light: '{colors.coral.light.9}', _dark: '{colors.coral.dark.9}' } },
+    emphasized: { value: { _light: '{colors.coral.light.10}', _dark: '{colors.coral.dark.10}' } },
+    fg: { value: { _light: 'white', _dark: 'white' } },
+    text: { value: { _light: '{colors.coral.light.11}', _dark: '{colors.coral.dark.11}' } },
+  }),
+}

@@ -6,6 +6,7 @@ import Indicator from './examples/indicator.vue'
 import InitialTab from './examples/initial-tab.vue'
 import LazyMount from './examples/lazy-mount.vue'
 import Manual from './examples/manual.vue'
+import RootProvider from './examples/root-provider.vue'
 import Vertical from './examples/vertical.vue'
 </script>
 <template>
@@ -33,6 +34,9 @@ import Vertical from './examples/vertical.vue'
     </Variant>
     <Variant title="Manual">
       <Manual />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

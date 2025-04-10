@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import Autoplay from './examples/autoplay.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
-import Customized from './examples/customized.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
   <Story title="Carousel">
@@ -11,8 +12,11 @@ import Customized from './examples/customized.vue'
     <Variant title="Controlled">
       <Controlled />
     </Variant>
-    <Variant title="Customized">
-      <Customized />
+    <Variant title="Autoplay">
+      <Autoplay />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

@@ -20,6 +20,7 @@ export const VersionSelect = (props: Props) => {
       createListCollection({
         items: [
           { label: `v${latest}`, value: latest },
+          { label: 'v4', value: 'v4' },
           { label: 'v3', value: 'v3' },
         ],
       }),
@@ -30,11 +31,14 @@ export const VersionSelect = (props: Props) => {
     if (value.value.includes('v3')) {
       router.push(`https://v3.ark-ui.com${pathname}`)
     }
+    if (value.value.includes('v4')) {
+      router.push(`https://v4.ark-ui.com${pathname}`)
+    }
   }
 
   return (
     <Select.Root
-      defaultValue={[latest]}
+      value={[latest]}
       onValueChange={handleValueChange}
       size={{ base: 'md', md: 'sm' }}
       collection={collection}

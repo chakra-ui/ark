@@ -9,10 +9,7 @@ interface RootProviderProps {
 }
 
 export interface EditableRootProviderBaseProps extends PolymorphicProps<'div'> {}
-export interface EditableRootProviderProps
-  extends HTMLProps<'div'>,
-    RootProviderProps,
-    EditableRootProviderBaseProps {}
+export interface EditableRootProviderProps extends HTMLProps<'div'>, RootProviderProps, EditableRootProviderBaseProps {}
 
 export const EditableRootProvider = (props: EditableRootProviderProps) => {
   const [{ value: editable }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

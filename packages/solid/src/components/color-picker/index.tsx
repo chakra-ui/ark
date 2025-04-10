@@ -6,11 +6,7 @@ export type {
   OpenChangeDetails as ColorPickerOpenChangeDetails,
   ValueChangeDetails as ColorPickerValueChangeDetails,
 } from '@zag-js/color-picker'
-export {
-  ColorPickerArea,
-  type ColorPickerAreaBaseProps,
-  type ColorPickerAreaProps,
-} from './color-picker-area'
+export { ColorPickerArea, type ColorPickerAreaBaseProps, type ColorPickerAreaProps } from './color-picker-area'
 export {
   ColorPickerAreaBackground,
   type ColorPickerAreaBackgroundBaseProps,
@@ -56,10 +52,7 @@ export {
   type ColorPickerContentBaseProps,
   type ColorPickerContentProps,
 } from './color-picker-content'
-export {
-  ColorPickerContext,
-  type ColorPickerContextProps,
-} from './color-picker-context'
+export { ColorPickerContext, type ColorPickerContextProps } from './color-picker-context'
 export {
   ColorPickerControl,
   type ColorPickerControlBaseProps,
@@ -85,31 +78,19 @@ export {
   type ColorPickerHiddenInputBaseProps,
   type ColorPickerHiddenInputProps,
 } from './color-picker-hidden-input'
-export {
-  ColorPickerLabel,
-  type ColorPickerLabelBaseProps,
-  type ColorPickerLabelProps,
-} from './color-picker-label'
+export { ColorPickerLabel, type ColorPickerLabelBaseProps, type ColorPickerLabelProps } from './color-picker-label'
 export {
   ColorPickerPositioner,
   type ColorPickerPositionerBaseProps,
   type ColorPickerPositionerProps,
 } from './color-picker-positioner'
-export {
-  ColorPickerRoot,
-  type ColorPickerRootBaseProps,
-  type ColorPickerRootProps,
-} from './color-picker-root'
+export { ColorPickerRoot, type ColorPickerRootBaseProps, type ColorPickerRootProps } from './color-picker-root'
 export {
   ColorPickerRootProvider,
   type ColorPickerRootProviderBaseProps,
   type ColorPickerRootProviderProps,
 } from './color-picker-root-provider'
-export {
-  ColorPickerSwatch,
-  type ColorPickerSwatchBaseProps,
-  type ColorPickerSwatchProps,
-} from './color-picker-swatch'
+export { ColorPickerSwatch, type ColorPickerSwatchBaseProps, type ColorPickerSwatchProps } from './color-picker-swatch'
 export {
   ColorPickerSwatchGroup,
   type ColorPickerSwatchGroupBaseProps,
@@ -145,17 +126,9 @@ export {
   type ColorPickerValueTextBaseProps,
   type ColorPickerValueTextProps,
 } from './color-picker-value-text'
-export {
-  ColorPickerView,
-  type ColorPickerViewBaseProps,
-  type ColorPickerViewProps,
-} from './color-picker-view'
+export { ColorPickerView, type ColorPickerViewBaseProps, type ColorPickerViewProps } from './color-picker-view'
 export { colorPickerAnatomy } from './color-picker.anatomy'
-export {
-  useColorPicker,
-  type UseColorPickerProps,
-  type UseColorPickerReturn,
-} from './use-color-picker'
+export { useColorPicker, type UseColorPickerProps, type UseColorPickerReturn } from './use-color-picker'
 export { useColorPickerContext, type UseColorPickerContext } from './use-color-picker-context'
 
 export * as ColorPicker from './color-picker'

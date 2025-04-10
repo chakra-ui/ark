@@ -6,8 +6,8 @@ export interface TreeViewLabelBaseProps extends PolymorphicProps<'label'> {}
 export interface TreeViewLabelProps extends HTMLProps<'label'>, TreeViewLabelBaseProps {}
 
 export const TreeViewLabel = (props: TreeViewLabelProps) => {
-  const api = useTreeViewContext()
-  const mergedProps = mergeProps(() => api().getLabelProps(), props)
+  const treeView = useTreeViewContext()
+  const mergedProps = mergeProps(() => treeView().getLabelProps(), props)
 
   return <ark.label {...mergedProps} />
 }

@@ -2,7 +2,7 @@ import { Editable } from '@ark-ui/solid/editable'
 import { Show } from 'solid-js'
 
 export const CustomControls = () => (
-  <Editable.Root placeholder="enter a value" value="Chakra">
+  <Editable.Root placeholder="enter a value" defaultValue="Chakra">
     <Editable.Label>Label</Editable.Label>
     <Editable.Area>
       <Editable.Input />
@@ -11,10 +11,7 @@ export const CustomControls = () => (
     <Editable.Context>
       {(editable) => (
         <Editable.Control>
-          <Show
-            when={editable().editing}
-            fallback={<Editable.EditTrigger>Edit</Editable.EditTrigger>}
-          >
+          <Show when={editable().editing} fallback={<Editable.EditTrigger>Edit</Editable.EditTrigger>}>
             <Editable.SubmitTrigger>Save</Editable.SubmitTrigger>
             <Editable.CancelTrigger>Canvel</Editable.CancelTrigger>
           </Show>

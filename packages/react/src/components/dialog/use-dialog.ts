@@ -3,40 +3,23 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
 import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useEvent } from '../../utils/use-event'
 
-export interface UseDialogProps
-  extends Optional<Omit<dialog.Context, 'getRootNode' | 'dir' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the dialog when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: dialog.Context['open']
-}
+export interface UseDialogProps extends Optional<Omit<dialog.Props, 'getRootNode' | 'dir'>, 'id'> {}
 
 export interface UseDialogReturn extends dialog.Api<PropTypes> {}
 
-export const useDialog = (props: UseDialogProps = {}): UseDialogReturn => {
+export const useDialog = (props?: UseDialogProps): UseDialogReturn => {
+  const id = useId()
   const { getRootNode } = useEnvironmentContext()
   const { dir } = useLocaleContext()
 
-  const initialContext: dialog.Context = {
-    id: useId(),
+  const machineProps: dialog.Props = {
+    id,
     getRootNode,
     dir,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
     ...props,
   }
 
-  const context: dialog.Context = {
-    ...initialContext,
-    open: props.open,
-    onOpenChange: useEvent(props.onOpenChange, { sync: true }),
-    onEscapeKeyDown: useEvent(props.onEscapeKeyDown),
-    onInteractOutside: useEvent(props.onInteractOutside),
-  }
-
-  const [state, send] = useMachine(dialog.machine(initialContext), { context })
-  return dialog.connect(state, send, normalizeProps)
+  const service = useMachine(dialog.machine, machineProps)
+  return dialog.connect(service, normalizeProps)
 }

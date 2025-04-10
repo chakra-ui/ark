@@ -9,10 +9,7 @@ export {
   type EditableCancelTriggerProps as CancelTriggerProps,
   type EditableCancelTriggerBaseProps as CancelTriggerBaseProps,
 } from './editable-cancel-trigger.vue'
-export {
-  default as Context,
-  type EditableContextProps as ContextProps,
-} from './editable-context.vue'
+export { default as Context, type EditableContextProps as ContextProps } from './editable-context.vue'
 export {
   default as Control,
   type EditableControlProps as ControlProps,

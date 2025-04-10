@@ -2,33 +2,28 @@ import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import { useFieldContext } from '../field'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'
 
-export interface UseCheckboxProps
-  extends Optional<Omit<checkbox.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The checked state of the checkbox when it is first rendered.
-   * Use this when you do not need to control the state of the checkbox.
-   */
-  defaultChecked?: checkbox.Context['checked']
-}
+export interface UseCheckboxProps extends Optional<Omit<checkbox.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCheckboxReturn extends Accessor<checkbox.Api<PropTypes>> {}
 
-export const useCheckbox = (ownProps: UseCheckboxProps): UseCheckboxReturn => {
+export const useCheckbox = (ownProps: MaybeAccessor<UseCheckboxProps> = {}): UseCheckboxReturn => {
   const checkboxGroup = useCheckboxGroupContext()
 
   const props = createMemo(() => {
-    return mergeProps(ownProps, checkboxGroup?.().getItemProps({ value: ownProps.value }) ?? {})
+    const resolvedProps = runIfFn(ownProps)
+    return mergeProps(resolvedProps, checkboxGroup?.().getItemProps({ value: resolvedProps.value }) ?? {})
   }, [ownProps, checkboxGroup])
 
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -40,11 +35,9 @@ export const useCheckbox = (ownProps: UseCheckboxProps): UseCheckboxReturn => {
     required: field?.().required,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    checked: props().defaultChecked,
     ...props(),
   }))
 
-  const [state, send] = useMachine(checkbox.machine(context()), { context })
-
-  return createMemo(() => checkbox.connect(state, send, normalizeProps))
+  const service = useMachine(checkbox.machine, machineProps)
+  return createMemo(() => checkbox.connect(service, normalizeProps))
 }

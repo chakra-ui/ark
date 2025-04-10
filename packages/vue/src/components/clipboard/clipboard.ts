@@ -1,8 +1,5 @@
 export type { CopyStatusDetails } from '@zag-js/clipboard'
-export {
-  default as Context,
-  type ClipboardContextProps as ContextProps,
-} from './clipboard-context.vue'
+export { default as Context, type ClipboardContextProps as ContextProps } from './clipboard-context.vue'
 export {
   default as Control,
   type ClipboardControlBaseProps as ControlBaseProps,
@@ -39,3 +36,8 @@ export {
   type ClipboardTriggerBaseProps as TriggerBaseProps,
   type ClipboardTriggerProps as TriggerProps,
 } from './clipboard-trigger.vue'
+export {
+  default as ValueText,
+  type ClipboardValueTextBaseProps as ValueTextBaseProps,
+  type ClipboardValueTextProps as ValueTextProps,
+} from './clipboard-value-text.vue'

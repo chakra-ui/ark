@@ -66,12 +66,12 @@ const link = cva({
     transitionProperty: 'border-color, box-shadow',
     transitionTimingFunction: 'default',
     _hover: {
-      borderColor: 'accent.default',
+      borderColor: 'colorPalette.default',
       boxShadow: '0 0 0 1px var(--colors-accent-default)',
     },
     _focusVisible: {
       outline: 'none',
-      borderColor: 'accent.default',
+      borderColor: 'colorPalette.default',
       boxShadow: '0 0 0 1px var(--colors-accent-default)',
     },
   },

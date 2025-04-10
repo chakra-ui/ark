@@ -3,21 +3,8 @@ import user from '@testing-library/user-event'
 import { ark } from './factory'
 
 const ComponentUnderTest = () => (
-  <ark.div
-    id="parent"
-    data-part="parent"
-    data-testid="parent"
-    className="parent"
-    style={{ background: 'red' }}
-    asChild
-  >
-    <ark.span
-      id="child"
-      data-part="child"
-      data-testid="child"
-      className="child"
-      style={{ color: 'blue' }}
-    >
+  <ark.div id="parent" data-part="parent" data-testid="parent" className="parent" style={{ background: 'red' }} asChild>
+    <ark.span id="child" data-part="child" data-testid="child" className="child" style={{ color: 'blue' }}>
       Ark UI
     </ark.span>
   </ark.div>
@@ -43,7 +30,7 @@ describe('Ark Factory', () => {
     render(<ComponentUnderTest />)
     const child = screen.getByTestId('child')
     expect(child).toHaveStyle({ background: 'red' })
-    expect(child).toHaveStyle({ color: 'rgb(0, 0, 255)' })
+    expect(child).toHaveStyle({ color: 'blue' })
     expect(child).toHaveClass('child parent')
     expect(screen.getByText('Ark UI')).toBeVisible()
   })

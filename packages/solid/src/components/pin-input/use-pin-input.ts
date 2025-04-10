@@ -2,26 +2,20 @@ import * as pinInput from '@zag-js/pin-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 import { useFieldContext } from '../field'
 
-export interface UsePinInputProps
-  extends Optional<Omit<pinInput.Context, 'dir' | 'getRootNode'>, 'id'> {
-  /**
-   * The initial value of the pin input when it is first rendered.
-   * Use when you do not need to control the state of the pin input
-   */
-  defaultValue?: pinInput.Context['value']
-}
+export interface UsePinInputProps extends Optional<Omit<pinInput.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePinInputReturn extends Accessor<pinInput.Api<PropTypes>> {}
 
-export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
+export const usePinInput = (props?: MaybeAccessor<UsePinInputProps>): UsePinInputReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
   const field = useFieldContext()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<pinInput.Props>(() => ({
     id,
     ids: {
       label: field?.().ids.label,
@@ -33,10 +27,9 @@ export const usePinInput = (props: UsePinInputProps): UsePinInputReturn => {
     invalid: field?.().invalid,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    value: props.defaultValue,
-    ...props,
+    ...runIfFn(props),
   }))
-  const [state, send] = useMachine(pinInput.machine(context()), { context })
 
-  return createMemo(() => pinInput.connect(state, send, normalizeProps))
+  const service = useMachine(pinInput.machine, machineProps)
+  return createMemo(() => pinInput.connect(service, normalizeProps))
 }

@@ -7,5 +7,6 @@ export const splitPresenceProps = <T extends UsePresenceProps>(props: T) =>
     'lazyMount',
     'onExitComplete',
     'present',
+    'skipAnimationOnMount',
     'unmountOnExit',
   ])

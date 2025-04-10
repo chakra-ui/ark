@@ -21,21 +21,13 @@
   },
   "Item": {
     "props": {
-      "value": {
-        "type": "string",
-        "isRequired": true,
-        "description": "The value of the accordion item."
-      },
+      "value": { "type": "string", "isRequired": true, "description": "The value of the accordion item." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the accordion item is disabled."
-      }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion item is disabled." }
     },
     "element": "HTMLDivElement"
   },
@@ -65,18 +57,10 @@
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial value of the accordion when it is first rendered.\nUse when you do not need to control the state of the accordion."
+        "description": "The initial value of the expanded accordion items.\nUse when you don't need to control the value of the accordion."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the accordion items are disabled"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion items are disabled" },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  item(value: string): string\n  itemContent(value: string): string\n  itemTrigger(value: string): string\n}>",
         "isRequired": false,
@@ -92,7 +76,7 @@
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether multple accordion items can be expanded at the same time."
+        "description": "Whether multiple accordion items can be expanded at the same time."
       },
       "onFocusChange": {
         "type": "(details: FocusChangeDetails) => void",
@@ -119,7 +103,7 @@
       "value": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The `value` of the accordion items that are currently being expanded."
+        "description": "The controlled value of the expanded accordion items."
       }
     },
     "element": "HTMLDivElement"

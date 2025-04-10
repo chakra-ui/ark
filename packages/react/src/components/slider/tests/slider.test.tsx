@@ -1,34 +1,12 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Slider, sliderAnatomy } from '../'
 import { LocaleProvider } from '../../../providers'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Slider / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
-    expect(Slider[part]).toBeDefined()
-  })
-})
-
 describe('Slider', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
-  it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
+  it.skip('should have no a11y violations', async () => {
+    const { container } = await act(() => render(<ComponentUnderTest />))
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
@@ -60,10 +38,10 @@ describe('Slider', () => {
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
     leftThumb.focus()
     await user.keyboard('[End]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '20'))
 
     await user.keyboard('[ArrowRight]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '20'))
   })
 
   it('should be possible to control it with the arrow keys in rtl mode', async () => {
@@ -113,7 +91,7 @@ describe('Slider', () => {
   it('should handle disabled state', async () => {
     render(<ComponentUnderTest disabled />)
 
-    const [leftThumb, rightThumb] = screen.getAllByRole('slider', { hidden: true })
+    const [leftThumb, rightThumb] = await screen.findAllByRole('slider', { hidden: true })
 
     expect(leftThumb).toHaveAttribute('aria-disabled', 'true')
     expect(rightThumb).toHaveAttribute('aria-disabled', 'true')

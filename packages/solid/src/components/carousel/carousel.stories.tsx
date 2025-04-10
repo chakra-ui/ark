@@ -6,6 +6,7 @@ const meta: Meta = {
 
 export default meta
 
+export { Autoplay } from './examples/autoplay'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
-export { Customized } from './examples/customized'
+export { RootProvider } from './examples/root-provider'

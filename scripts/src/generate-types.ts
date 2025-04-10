@@ -3,9 +3,7 @@ import { Project } from 'ts-morph'
 const extractTypes = () => {
   const project = new Project()
 
-  const sourceFile = project.addSourceFileAtPath(
-    '../packages/react/src/components/accordion/accordion-root.tsx',
-  )
+  const sourceFile = project.addSourceFileAtPath('../packages/react/src/components/accordion/accordion-root.tsx')
 
   const propperties = sourceFile
     .getInterfaceOrThrow('AccordionRootProps')
@@ -28,9 +26,7 @@ const extractTypes = () => {
     .map((property) => {
       const comment = property
         .getDeclarations()
-        .flatMap((declaration) =>
-          declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`),
-        )
+        .flatMap((declaration) => declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`))
       return {
         name: escapePropertyName(property.getName()),
         type: property.getTypeAtLocation(sourceFile).getText(),

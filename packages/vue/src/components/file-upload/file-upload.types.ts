@@ -71,6 +71,11 @@ export interface RootProps {
    */
   name?: string
   /**
+   * Whether to prevent the drop event on the document
+   * @default true
+   */
+  preventDocumentDrop?: boolean
+  /**
    * Whether the file input is required
    */
   required?: boolean
@@ -81,7 +86,7 @@ export interface RootProps {
   /**
    * Function to validate a file
    */
-  validate?: (file: File) => fileUpload.FileError[] | null
+  validate?: (file: File, details: fileUpload.FileValidateDetails) => fileUpload.FileError[] | null
 }
 
 export type RootEmits = {

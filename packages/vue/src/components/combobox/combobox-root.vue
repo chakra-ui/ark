@@ -15,7 +15,7 @@ export interface ComboboxRootProps<T extends CollectionItem>
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    Omit<HTMLAttributes, 'onSelect'> {}
 export type { RootEmits as ComboboxRootEmits } from './combobox.types'
 </script>
 
@@ -49,9 +49,7 @@ const emits = defineEmits<RootEmits<T>>()
 
 const combobox = useCombobox(props, emits)
 ComboboxProvider(combobox)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

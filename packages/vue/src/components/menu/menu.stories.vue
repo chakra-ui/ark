@@ -7,6 +7,8 @@ import Group from './examples/group.vue'
 import Nested from './examples/nested.vue'
 import RadioGroup from './examples/radio-group.vue'
 import RenderProp from './examples/render-prop.vue'
+import RootProvider from './examples/root-provider.vue'
+import SelectEvent from './examples/select-event.vue'
 import Separator from './examples/separator.vue'
 </script>
 <template>
@@ -37,6 +39,12 @@ import Separator from './examples/separator.vue'
     </Variant>
     <Variant title="RadioGroup">
       <RadioGroup />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
+    </Variant>
+    <Variant title="SelectEvent">
+      <SelectEvent />
     </Variant>
   </Story>
 </template>

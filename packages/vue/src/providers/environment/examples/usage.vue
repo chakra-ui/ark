@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useEnvironmentContext } from '../'
+import { useEnvironmentContext } from '@ark-ui/vue/environment'
 
 const environment = useEnvironmentContext()
 </script>

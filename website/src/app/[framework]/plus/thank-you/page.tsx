@@ -6,31 +6,34 @@ import { ActivationForm } from '~/components/plus/activation-form'
 import { auth } from '~/lib/auth'
 
 interface Props {
-  searchParams: {
-    orderId: string
-  }
+  searchParams: Promise<{ orderId: string }>
 }
 
 export default async function Page(props: Props) {
-  const licenseKeys = await findLicenseKeysByOrderId(props.searchParams.orderId)
+  const { orderId } = await props.searchParams
+  const licenseKey = await findLicenseKeysByOrderId(orderId)
   const session = await auth()
   const authenticated = session !== null
-
-  if (!licenseKeys) {
-    return <div>Order not found</div>
-  }
 
   return (
     <Container py="12" maxW="7xl">
       <Stack gap={{ base: '8', md: '12' }}>
-        <PageHeader
-          heading="Thank you!"
-          subHeading="Ark UI Plus"
-          description="We're thrilled to have you on board. Below you'll find your license key, which will give
-          you access to all the examples."
-        />
+        {licenseKey ? (
+          <PageHeader
+            heading="Welcome aboard!"
+            subHeading="Activation"
+            description="Your license key is ready! Activate it or share with someone to unlock full access to all examples."
+          />
+        ) : (
+          <PageHeader
+            heading="Activate Your License"
+            subHeading="License Activation"
+            description="Enter your license key below to unlock access to all examples. If you don't have one, check your order confirmation."
+          />
+        )}
+
         <Box maxW="lg" mx="auto" width="full">
-          <ActivationForm authenticated={authenticated} licenseKey={licenseKeys[0]} />
+          <ActivationForm authenticated={authenticated} licenseKey={licenseKey} />
         </Box>
       </Stack>
     </Container>

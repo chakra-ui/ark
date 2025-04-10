@@ -2,10 +2,10 @@ import type * as splitter from '@zag-js/splitter'
 
 export interface RootProps {
   /**
-   * The initial size of the panels when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
+   * The initial size of the panels when rendered.
+   * Use when you don't need to control the size of the panels.
    */
-  defaultSize?: splitter.PanelSizeData[]
+  defaultSize?: number[]
   /**
    * The unique identifier of the machine.
    */
@@ -20,22 +20,51 @@ export interface RootProps {
     panel(id: string | number): string
   }>
   /**
+   * The number of pixels to resize the panel by when the keyboard is used.
+   */
+  keyboardResizeBy?: number
+  /**
+   * The nonce for the injected splitter cursor stylesheet.
+   */
+  nonce?: string
+  /**
    * The orientation of the splitter. Can be `horizontal` or `vertical`
+   * @default "horizontal"
    */
   orientation?: 'horizontal' | 'vertical'
   /**
-   * The size data of the panels
+   * The size constraints of the panels.
    */
-  size?: splitter.PanelSizeData[]
+  panels: splitter.PanelData[]
+  /**
+   * The controlled size data of the panels
+   */
+  size?: number[]
 }
 
 export type RootEmits = {
   /**
+   * Function called when a panel is collapsed.
+   */
+  collapse: [details: splitter.ExpandCollapseDetails]
+  /**
+   * Function called when a panel is expanded.
+   */
+  expand: [details: splitter.ExpandCollapseDetails]
+  /**
    * Function called when the splitter is resized.
    */
-  sizeChange: [details: splitter.SizeChangeDetails]
+  resize: [details: splitter.ResizeDetails]
   /**
    * Function called when the splitter resize ends.
    */
-  sizeChangeEnd: [details: splitter.SizeChangeDetails]
+  resizeEnd: [details: splitter.ResizeEndDetails]
+  /**
+   * Function called when the splitter resize starts.
+   */
+  resizeStart: []
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:size': [size: number[]]
 }

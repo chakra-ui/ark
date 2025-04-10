@@ -33,7 +33,13 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "index": { "type": "number", "isRequired": false }
+      "fixOnBlur": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to fix the input value on blur."
+      },
+      "index": { "type": "number", "isRequired": false, "description": "The index of the input to focus." }
     }
   },
   "Label": {
@@ -113,33 +119,36 @@
         "isRequired": false,
         "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
       },
+      "defaultFocusedValue": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The initial focused date when rendered.\nUse when you don't need to control the focused date of the date picker."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the date picker when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the date picker when rendered.\nUse when you don't need to control the open state of the date picker."
       },
       "defaultValue": {
         "type": "DateValue[]",
         "isRequired": false,
-        "description": "The initial value of the date picker when it is first rendered.\nUse when you do not need to control the state of the date picker."
+        "description": "The initial selected date(s) when rendered.\nUse when you don't need to control the selected date(s) of the date picker."
       },
-      "disabled": {
-        "type": "boolean",
+      "defaultView": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
         "isRequired": false,
-        "description": "Whether the calendar is disabled."
+        "description": "The default view of the calendar"
       },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is disabled." },
       "fixedWeeks": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
       },
-      "focusedValue": {
-        "type": "DateValue",
-        "isRequired": false,
-        "description": "The focused date."
-      },
+      "focusedValue": { "type": "DateValue", "isRequired": false, "description": "The controlled focused date." },
       "format": {
-        "type": "(date: DateValue) => string",
+        "type": "(date: DateValue, details: LocaleDetails) => string",
         "isRequired": false,
         "description": "The format of the date to display in the input."
       },
@@ -170,33 +179,24 @@
         "isRequired": false,
         "description": "The locale (BCP 47 language tag) to use when formatting the date."
       },
-      "max": {
-        "type": "DateValue",
+      "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
+      "maxView": {
+        "type": "DateView",
+        "defaultValue": "\"year\"",
         "isRequired": false,
-        "description": "The maximum date that can be selected."
+        "description": "The maximum view of the calendar"
       },
-      "min": {
-        "type": "DateValue",
+      "min": { "type": "DateValue", "isRequired": false, "description": "The minimum date that can be selected." },
+      "minView": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
         "isRequired": false,
-        "description": "The minimum date that can be selected."
+        "description": "The minimum view of the calendar"
       },
-      "modal": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the calendar should be modal. This means that the calendar will\nblock interaction with the rest of the page, and trap focus within it."
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The `name` attribute of the input element."
-      },
-      "numOfMonths": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The number of months to display."
-      },
+      "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
+      "numOfMonths": { "type": "number", "isRequired": false, "description": "The number of months to display." },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -220,10 +220,16 @@
         "isRequired": false,
         "description": "Function called when the view changes."
       },
-      "open": {
-        "type": "boolean",
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the date picker" },
+      "parse": {
+        "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
         "isRequired": false,
-        "description": "Whether the datepicker is open"
+        "description": "Function to parse the date from the input back to a DateValue."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text to display in the input."
       },
       "positioning": {
         "type": "PositioningOptions",
@@ -235,16 +241,18 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the calendar is read-only."
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is read-only." },
       "selectionMode": {
         "type": "SelectionMode",
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "The selection mode of the calendar.\n- `single` - only one date can be selected\n- `multiple` - multiple dates can be selected\n- `range` - a range of dates can be selected"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "startOfWeek": {
         "type": "number",
@@ -268,17 +276,8 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": {
-        "type": "DateValue[]",
-        "isRequired": false,
-        "description": "The selected date(s)."
-      },
-      "view": {
-        "type": "DateView",
-        "defaultValue": "\"day\"",
-        "isRequired": false,
-        "description": "The view of the calendar"
-      }
+      "value": { "type": "DateValue[]", "isRequired": false, "description": "The controlled selected date(s)." },
+      "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
     }
   },
   "RootProvider": {
@@ -301,7 +300,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -309,6 +308,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",

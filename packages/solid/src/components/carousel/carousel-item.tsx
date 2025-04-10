@@ -8,7 +8,7 @@ export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps<'div'
 export interface CarouselItemProps extends HTMLProps<'div'>, CarouselItemBaseProps {}
 
 export const CarouselItem = (props: CarouselItemProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index', 'snapAlign'])
   const api = useCarouselContext()
   const mergedProps = mergeProps(() => api().getItemProps(itemProps), localProps)
 

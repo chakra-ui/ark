@@ -1,8 +1,4 @@
-export type {
-  FocusChangeDetails,
-  OpenChangeDetails,
-  ValueChangeDetails,
-} from '@zag-js/time-picker'
+export type { FocusChangeDetails, OpenChangeDetails, ValueChangeDetails } from '@zag-js/time-picker'
 export {
   TimePickerCell as Cell,
   type TimePickerCellBaseProps as CellBaseProps,
@@ -23,10 +19,7 @@ export {
   type TimePickerContentBaseProps as ContentBaseProps,
   type TimePickerContentProps as ContentProps,
 } from './time-picker-content'
-export {
-  TimePickerContext as Context,
-  type TimePickerContextProps as ContextProps,
-} from './time-picker-context'
+export { TimePickerContext as Context, type TimePickerContextProps as ContextProps } from './time-picker-context'
 export {
   TimePickerControl as Control,
   type TimePickerControlBaseProps as ControlBaseProps,

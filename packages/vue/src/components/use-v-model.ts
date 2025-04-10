@@ -47,12 +47,7 @@ export function useVModel<P extends object, K extends keyof P, Name extends stri
   options?: UseVModelOptions<P[K], true>,
 ): Ref<UnwrapRef<P[K]>>
 
-export function useVModel<
-  P extends object,
-  K extends keyof P,
-  Name extends string,
-  Passive extends boolean,
->(
+export function useVModel<P extends object, K extends keyof P, Name extends string, Passive extends boolean>(
   props: P,
   key?: K,
   emit?: (name: Name, ...args: undefined[]) => void,

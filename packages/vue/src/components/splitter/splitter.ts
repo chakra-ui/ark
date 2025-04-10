@@ -1,8 +1,5 @@
-export type { SizeChangeDetails } from '@zag-js/splitter'
-export {
-  default as Context,
-  type SplitterContextProps as ContextProps,
-} from './splitter-context.vue'
+export type { ExpandCollapseDetails, PanelData, ResizeDetails, ResizeEndDetails } from '@zag-js/splitter'
+export { default as Context, type SplitterContextProps as ContextProps } from './splitter-context.vue'
 export {
   default as Panel,
   type SplitterPanelProps as PanelProps,

@@ -1,28 +1,36 @@
 import * as timer from '@zag-js/timer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './timer.types'
 
-export interface UseTimerProps extends Optional<Omit<timer.Context, 'dir' | 'getRootNode'>, 'id'> {}
-
+export interface UseTimerProps extends Optional<Omit<timer.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseTimerReturn extends ComputedRef<timer.Api<PropTypes>> {}
 
-export const useTimer = (props: UseTimerProps, emit?: EmitFn<RootEmits>): UseTimerReturn => {
+export const useTimer = (props: MaybeRef<UseTimerProps>, emit?: EmitFn<RootEmits>): UseTimerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
 
-  const context = computed<timer.Context>(() => ({
-    id,
-    getRootNode: env?.value.getRootNode,
-    onComplete: () => emit?.('complete'),
-    onTick: (details) => emit?.('tick', details),
-    ...cleanProps(props),
-  }))
+  const context = computed<timer.Props>(() => {
+    const localProps = toValue<UseTimerProps>(props)
 
-  const [state, send] = useMachine(timer.machine(context.value), { context })
+    return {
+      id,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localProps),
+      onComplete: () => {
+        emit?.('complete')
+        localProps.onComplete?.()
+      },
+      onTick: (details) => {
+        emit?.('tick', details)
+        localProps.onTick?.(details)
+      },
+    }
+  })
 
-  return computed(() => timer.connect(state.value, send, normalizeProps))
+  const service = useMachine(timer.machine, context)
+  return computed(() => timer.connect(service, normalizeProps))
 }

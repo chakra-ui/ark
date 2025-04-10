@@ -4,5 +4,4 @@ import { createContext } from '../../utils'
 
 export interface UseCheckboxContext extends ComputedRef<ReturnType<typeof connect>> {}
 
-export const [CheckboxProvider, useCheckboxContext] =
-  createContext<UseCheckboxContext>('CheckboxContext')
+export const [CheckboxProvider, useCheckboxContext] = createContext<UseCheckboxContext>('CheckboxContext')

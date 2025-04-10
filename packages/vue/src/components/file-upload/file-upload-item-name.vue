@@ -15,13 +15,12 @@ export interface FileUploadItemNameProps
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
-import { useSlots } from 'vue'
 import { useForwardExpose } from '../../utils'
 
 defineProps<FileUploadItemNameProps>()
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
-const slots = useSlots()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>

@@ -8,27 +8,15 @@ import { createStyleContext } from '~/lib/create-style-context'
 const { withProvider, withContext } = createStyleContext(alert)
 
 export type RootProps = ComponentProps<typeof Root>
-export const Root = withProvider<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(
+export const Root = withProvider<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(ark.div, 'root')
+
+export const Content = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(ark.div, 'content')
+
+export const Description = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PolymorphicProps>>(
   ark.div,
-  'root',
+  'description',
 )
 
-export const Content = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, PolymorphicProps>
->(ark.div, 'content')
+export const Icon = withContext<HTMLOrSVGElement, Assign<HTMLStyledProps<'svg'>, PolymorphicProps>>(ark.svg, 'icon')
 
-export const Description = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, PolymorphicProps>
->(ark.div, 'description')
-
-export const Icon = withContext<HTMLOrSVGElement, Assign<HTMLStyledProps<'svg'>, PolymorphicProps>>(
-  ark.svg,
-  'icon',
-)
-
-export const Title = withContext<
-  HTMLHeadingElement,
-  Assign<HTMLStyledProps<'h5'>, PolymorphicProps>
->(ark.h5, 'title')
+export const Title = withContext<HTMLHeadingElement, Assign<HTMLStyledProps<'h5'>, PolymorphicProps>>(ark.h5, 'title')

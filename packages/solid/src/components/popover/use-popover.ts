@@ -2,32 +2,24 @@ import * as popover from '@zag-js/popover'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
-export interface UsePopoverProps
-  extends Optional<Omit<popover.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the popover when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: popover.Context['open']
-}
+export interface UsePopoverProps extends Optional<Omit<popover.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UsePopoverReturn extends Accessor<popover.Api<PropTypes>> {}
 
-export const usePopover = (props: UsePopoverProps): UsePopoverReturn => {
+export const usePopover = (props?: MaybeAccessor<UsePopoverProps>): UsePopoverReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<popover.Props>(() => ({
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    ...props,
+    ...runIfFn(props),
   }))
 
-  const [state, send] = useMachine(popover.machine(context()), { context })
-  return createMemo(() => popover.connect(state, send, normalizeProps))
+  const service = useMachine(popover.machine, machineProps)
+  return createMemo(() => popover.connect(service, normalizeProps))
 }

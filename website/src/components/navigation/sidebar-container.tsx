@@ -22,7 +22,9 @@ export const SidebarContainer = async (props: PropsWithChildren<Props>) => {
           <NextLink href="/" aria-label="Go to start page">
             <Logo />
           </NextLink>
-          <VersionSelect latest={version} />
+          <div id="version-select">
+            <VersionSelect latest={version} />
+          </div>
         </HStack>
       </Box>
       {props.children}

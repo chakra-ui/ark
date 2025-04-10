@@ -13,9 +13,7 @@ export const SignaturePadSegment = (props: SignaturePadSegmentProps) => {
   return (
     <ark.svg {...mergedProps}>
       <title>Signature</title>
-      <For each={signaturePad().paths}>
-        {(path) => <path {...signaturePad().getSegmentPathProps({ path })} />}
-      </For>
+      <For each={signaturePad().paths}>{(path) => <path {...signaturePad().getSegmentPathProps({ path })} />}</For>
       <Show when={signaturePad().currentPath}>
         {/* @ts-expect-error */}
         <path {...signaturePad().getSegmentPathProps({ path: signaturePad().currentPath })} />

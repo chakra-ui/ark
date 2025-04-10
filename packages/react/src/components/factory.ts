@@ -21,11 +21,8 @@ export interface PolymorphicProps {
 }
 
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
-type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<
-  ArkPropsWithRef<E>
->
-type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> &
-  PolymorphicProps
+type ArkForwardRefComponent<E extends React.ElementType> = React.ForwardRefExoticComponent<ArkPropsWithRef<E>>
+type ArkPropsWithRef<E extends React.ElementType> = React.ComponentPropsWithRef<E> & PolymorphicProps
 
 // Credits to the Radix team
 function getRef(element: React.ReactElement) {
@@ -41,11 +38,11 @@ function getRef(element: React.ReactElement) {
   getter = Object.getOwnPropertyDescriptor(element, 'ref')?.get
   mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning
   if (mayWarn) {
-    return element.props.ref
+    return (element.props as { ref?: React.Ref<unknown> }).ref
   }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  return element.props.ref || (element as any).ref
+  return (element.props as { ref?: React.Ref<unknown> }).ref || (element as any).ref
 }
 
 const withAsChild = (Component: React.ElementType) => {
@@ -59,7 +56,7 @@ const withAsChild = (Component: React.ElementType) => {
 
       const onlyChild: React.ReactNode = Children.only(children)
 
-      if (!isValidElement(onlyChild)) {
+      if (!isValidElement<Record<string, unknown>>(onlyChild)) {
         return null
       }
 

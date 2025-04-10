@@ -23,12 +23,7 @@ export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>(
 
   return (
     <ColorPickerFormatPropsProvider value={formatProps}>
-      <ark.div
-        ref={ref}
-        data-format={props.format}
-        {...colorPickerAnatomy.build().view.attrs}
-        {...restProps}
-      />
+      <ark.div ref={ref} data-format={props.format} {...colorPickerAnatomy.build().view.attrs} {...restProps} />
     </ColorPickerFormatPropsProvider>
   )
 })

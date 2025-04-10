@@ -1,7 +1,10 @@
 {
   "Cell": {
     "props": {
-      "value": { "type": "number | TimePeriod", "isRequired": true },
+      "value": {
+        "type": "number | TimePeriod",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -22,7 +25,10 @@
   },
   "Column": {
     "props": {
-      "unit": { "type": "TimeUnit", "isRequired": true },
+      "unit": {
+        "type": "TimeUnit",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -96,12 +102,12 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the time picker when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "Whether the timepicker open state is controlled by the user"
       },
       "defaultValue": {
         "type": "Time",
         "isRequired": false,
-        "description": "The initial value of the time picker when it is first rendered.\nUse when you do not need to control the state of the time picker."
+        "description": "The initial selected time when rendered.\nUse when you don't need to control the selected time."
       },
       "disabled": {
         "type": "boolean",
@@ -155,7 +161,7 @@
         "description": "The `name` attribute of the input element."
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -199,8 +205,14 @@
         "isRequired": false,
         "description": "Whether the time picker is read-only."
       },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
       "steps": {
-        "type": "{\n  hour?: number | undefined\n  minute?: number | undefined\n  second?: number | undefined\n}",
+        "type": "{ hour?: number | undefined; minute?: number | undefined; second?: number | undefined }",
         "isRequired": false,
         "description": "The steps of each time unit."
       },
@@ -210,13 +222,20 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "Time", "isRequired": false, "description": "The selected time." }
+      "value": {
+        "type": "Time",
+        "isRequired": false,
+        "description": "The controlled selected time."
+      }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTimePickerReturn", "isRequired": true },
+      "value": {
+        "type": "UseTimePickerReturn",
+        "isRequired": true
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -234,7 +253,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -242,6 +261,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",

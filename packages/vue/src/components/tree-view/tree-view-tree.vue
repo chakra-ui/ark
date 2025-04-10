@@ -23,7 +23,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.ul v-bind="treeView.getTreeProps()" :as-child="asChild">
+  <ark.div v-bind="treeView.getTreeProps()" :as-child="asChild">
     <slot />
-  </ark.ul>
+  </ark.div>
 </template>

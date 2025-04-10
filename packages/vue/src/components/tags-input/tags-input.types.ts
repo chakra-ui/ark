@@ -22,8 +22,13 @@ export interface RootProps {
    */
   blurBehavior?: 'clear' | 'add'
   /**
-   * The initial value of the tags input when it is first rendered.
-   * Use when you do not need to control the state of the tags input.
+   * The initial tag input value when rendered.
+   * Use when you don't need to control the tag input value.
+   */
+  defaultInputValue?: string
+  /**
+   * The initial tag value when rendered.
+   * Use when you don't need to control the tag value.
    */
   defaultValue?: string[]
   /**
@@ -39,7 +44,7 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
-   * Whether a tag can be edited after creation, by presing `Enter` or double clicking.
+   * Whether a tag can be edited after creation, by pressing `Enter` or double clicking.
    * @default true
    */
   editable?: boolean
@@ -66,7 +71,7 @@ export interface RootProps {
     itemInput(opts: tagsInput.ItemProps): string
   }>
   /**
-   * The tag input's value
+   * The controlled tag input's value
    */
   inputValue?: string
   /**
@@ -82,6 +87,9 @@ export interface RootProps {
    * The max length of the input.
    */
   maxLength?: number
+  /**
+   * The v-model value of the tags input
+   */
   modelValue?: string[]
   /**
    * The name attribute for the input. Useful for form submissions
@@ -139,4 +147,8 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string[]]
+  /**
+   * The callback fired when the input value changes.
+   */
+  'update:inputValue': [value: string]
 }

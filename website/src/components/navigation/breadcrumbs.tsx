@@ -18,13 +18,7 @@ export const Breadcrumbs = () => {
     <HStack gap="1">
       {crumbs?.map((crumb, index, arr) => (
         <Fragment key={index}>
-          <Text
-            as="span"
-            textStyle="sm"
-            color="fg.muted"
-            fontWeight="medium"
-            textTransform="capitalize"
-          >
+          <Text as="span" textStyle="sm" color="fg.muted" fontWeight="medium" textTransform="capitalize">
             {crumb}
           </Text>
           {arr.length - 1 !== index && (

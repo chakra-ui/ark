@@ -1,6 +1,5 @@
 'use client'
-
-import { Timer } from '@ark-ui/react'
+import { Timer } from '@ark-ui/react/timer'
 import { LucidePause, LucidePlay, LucideRotateCcw } from 'lucide-react'
 import { css } from 'styled-system/css'
 import { HStack, VStack } from 'styled-system/jsx'

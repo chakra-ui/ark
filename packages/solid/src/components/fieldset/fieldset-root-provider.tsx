@@ -8,12 +8,8 @@ interface RootProviderProps {
   value: UseFieldsetReturn
 }
 
-export interface FieldsetRootProviderBaseProps
-  extends RootProviderProps,
-    PolymorphicProps<'fieldset'> {}
-export interface FieldsetRootProviderProps
-  extends HTMLProps<'fieldset'>,
-    FieldsetRootProviderBaseProps {}
+export interface FieldsetRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'fieldset'> {}
+export interface FieldsetRootProviderProps extends HTMLProps<'fieldset'>, FieldsetRootProviderBaseProps {}
 
 export const FieldsetRootProvider = (props: FieldsetRootProviderProps) => {
   const [{ value: fieldset }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])

@@ -116,11 +116,6 @@
   },
   "Root": {
     "props": {
-      "collection": {
-        "type": "ListCollection<T>",
-        "isRequired": true,
-        "description": "The collection of items to display in the combobox"
-      },
       "allowCustomValue": {
         "type": "boolean",
         "isRequired": false,
@@ -131,62 +126,54 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "autoFocus": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to autofocus the input on mount"
-      },
+      "autoFocus": { "type": "boolean", "isRequired": false, "description": "Whether to autofocus the input on mount" },
       "closeOnSelect": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to close the combobox when an item is selected."
       },
+      "collection": { "type": "ListCollection<T>", "isRequired": false, "description": "The collection of items" },
       "composite": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether the combobox is a composed with other composite widgets like tabs"
       },
+      "defaultHighlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial highlighted value of the combobox when rendered.\nUse when you don't need to control the highlighted value of the combobox."
+      },
+      "defaultInputValue": {
+        "type": "string",
+        "defaultValue": "\"\"",
+        "isRequired": false,
+        "description": "The initial value of the combobox's input when rendered.\nUse when you don't need to control the value of the combobox's input."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the combobox when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the combobox when rendered.\nUse when you don't need to control the open state of the combobox."
       },
       "defaultValue": {
         "type": "string[]",
+        "defaultValue": "[]",
         "isRequired": false,
-        "description": "The initial value of the combobox when it is first rendered.\nUse when you do not need to control the state of the combobox."
+        "description": "The initial value of the combobox's selected items when rendered.\nUse when you don't need to control the value of the combobox's selected items."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the combobox is disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the combobox is disabled" },
       "disableLayer": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to disable registering this a dismissable layer"
       },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The associate form of the combobox."
-      },
-      "getSelectionValue": {
-        "type": "(details: SelectionValueDetails<T>) => string",
-        "isRequired": false,
-        "description": "Function to get the display value of the selected item"
-      },
+      "form": { "type": "string", "isRequired": false, "description": "The associate form of the combobox." },
       "highlightedValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The active item's id. Used to set the `aria-activedescendant` attribute"
+        "description": "The controlled highlighted value of the combobox"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item(id: string, index?: number | undefined): string\n  positioner: string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
         "isRequired": false,
@@ -201,13 +188,9 @@
       "inputValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The current value of the combobox's input"
+        "description": "The controlled value of the combobox's input"
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the combobox is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the combobox is invalid" },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -220,11 +203,7 @@
         "isRequired": false,
         "description": "Whether to loop the keyboard navigation through the items"
       },
-      "modelValue": {
-        "type": "string[]",
-        "isRequired": false,
-        "description": "The current selected values of the combobox's input"
-      },
+      "modelValue": { "type": "string[]", "isRequired": false, "description": "The v-model value of the combobox" },
       "multiple": {
         "type": "boolean",
         "isRequired": false,
@@ -235,11 +214,12 @@
         "isRequired": false,
         "description": "The `name` attribute of the combobox's input. Useful for form submission"
       },
-      "open": {
-        "type": "boolean",
+      "navigate": {
+        "type": "(details: NavigateDetails) => void",
         "isRequired": false,
-        "description": "Whether the combobox is open"
+        "description": "Function to navigate to the selected item"
       },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the combobox" },
       "openOnChange": {
         "type": "boolean | ((details: InputValueChangeDetails) => boolean)",
         "defaultValue": "true",
@@ -265,6 +245,7 @@
       },
       "positioning": {
         "type": "PositioningOptions",
+        "defaultValue": "{ placement: \"bottom-start\" }",
         "isRequired": false,
         "description": "The positioning options to dynamically position the menu"
       },
@@ -273,11 +254,7 @@
         "isRequired": false,
         "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the combobox is required"
-      },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the combobox is required" },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",
         "isRequired": false,
@@ -304,7 +281,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes, T>", "isRequired": true },
+      "value": { "type": "ComboboxApi<PropTypes, T>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -331,11 +308,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "focusable": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the trigger is focusable"
-      }
+      "focusable": { "type": "boolean", "isRequired": false, "description": "Whether the trigger is focusable" }
     }
   }
 }

@@ -5,16 +5,12 @@ import { Footer } from '~/components/marketing/footer'
 import { Hero } from '~/components/marketing/hero'
 import { Highlights } from '~/components/marketing/highlights'
 import { Navbar } from '~/components/marketing/navbar'
+import { Showcases } from '~/components/marketing/showcases'
 import { Universe } from '~/components/marketing/universe'
 
 export default function Home() {
   return (
-    <Box
-      minH="100%"
-      position="relative"
-      backgroundImage="url(/images/pattern.svg)"
-      backgroundRepeat="repeat-x"
-    >
+    <Box minH="100%" position="relative" backgroundImage="url(/images/pattern.svg)" backgroundRepeat="repeat-x">
       <Box
         position="absolute"
         display={{ base: 'none', sm: 'block' }}
@@ -27,6 +23,7 @@ export default function Home() {
       <Hero />
       <Highlights />
       <Enterprise />
+      <Showcases />
       <Universe />
       <Community />
       <Footer />

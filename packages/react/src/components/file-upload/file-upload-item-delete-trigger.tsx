@@ -5,19 +5,16 @@ import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps {}
-export interface FileUploadItemDeleteTriggerProps
-  extends HTMLProps<'button'>,
-    FileUploadItemDeleteTriggerBaseProps {}
+export interface FileUploadItemDeleteTriggerProps extends HTMLProps<'button'>, FileUploadItemDeleteTriggerBaseProps {}
 
-export const FileUploadItemDeleteTrigger = forwardRef<
-  HTMLButtonElement,
-  FileUploadItemDeleteTriggerProps
->((props, ref) => {
-  const fileUpload = useFileUploadContext()
-  const itemProps = useFileUploadItemPropsContext()
-  const mergedProps = mergeProps(fileUpload.getItemDeleteTriggerProps(itemProps), props)
+export const FileUploadItemDeleteTrigger = forwardRef<HTMLButtonElement, FileUploadItemDeleteTriggerProps>(
+  (props, ref) => {
+    const fileUpload = useFileUploadContext()
+    const itemProps = useFileUploadItemPropsContext()
+    const mergedProps = mergeProps(fileUpload.getItemDeleteTriggerProps(itemProps), props)
 
-  return <ark.button {...mergedProps} ref={ref} />
-})
+    return <ark.button {...mergedProps} ref={ref} />
+  },
+)
 
 FileUploadItemDeleteTrigger.displayName = 'FileUploadItemDeleteTrigger'

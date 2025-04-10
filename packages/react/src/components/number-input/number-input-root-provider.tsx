@@ -10,23 +10,17 @@ interface RootProviderProps {
 }
 
 export interface NumberInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface NumberInputRootProviderProps
-  extends HTMLProps<'div'>,
-    NumberInputRootProviderBaseProps {}
+export interface NumberInputRootProviderProps extends HTMLProps<'div'>, NumberInputRootProviderBaseProps {}
 
-export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRootProviderProps>(
-  (props, ref) => {
-    const [{ value: numberInput }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(numberInput.getRootProps(), localProps)
+export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRootProviderProps>((props, ref) => {
+  const [{ value: numberInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(numberInput.getRootProps(), localProps)
 
-    return (
-      <NumberInputProvider value={numberInput}>
-        <ark.div {...mergedProps} ref={ref} />
-      </NumberInputProvider>
-    )
-  },
-)
+  return (
+    <NumberInputProvider value={numberInput}>
+      <ark.div {...mergedProps} ref={ref} />
+    </NumberInputProvider>
+  )
+})
 
 NumberInputRootProvider.displayName = 'NumberInputRootProvider'

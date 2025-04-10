@@ -98,7 +98,11 @@
         "isRequired": true,
         "description": "Function called when the pointer is pressed down outside the component"
       },
-      "update:open": { "type": "[open: boolean]", "isRequired": true }
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the open state changes."
+      }
     },
     "props": {
       "autoFocus": {
@@ -122,20 +126,16 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the popover when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the popover when rendered.\nUse when you don't need to control the open state of the popover."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  anchor: string\n  trigger: string\n  content: string\n  title: string\n  description: string\n  closeTrigger: string\n  positioner: string\n  arrow: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the popover. Useful for composition."
       },
       "initialFocusEl": {
-        "type": "() => HTMLElement",
+        "type": "() => HTMLElement | null",
         "isRequired": false,
         "description": "The element to focus on when the popover is opened."
       },
@@ -151,13 +151,9 @@
         "isRequired": false,
         "description": "Whether the popover should be modal. When set to `true`:\n- interaction with outside elements will be disabled\n- only popover content will be visible to screen readers\n- scrolling is blocked\n- focus is trapped within the popover"
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the popover is open"
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the popover" },
       "persistentElements": {
-        "type": "(() => Element)[]",
+        "type": "(() => Element | null)[]",
         "isRequired": false,
         "description": "Returns the persistent elements that:\n- should not have pointer-events disabled\n- should not trigger the dismiss event"
       },
@@ -182,7 +178,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "PopoverApi<PropTypes>", "isRequired": true },
       "lazyMount": {
         "type": "boolean",
         "defaultValue": "false",

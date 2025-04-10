@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import ControlledOpen from './examples/controlled-open.vue'
 import Controlled from './examples/controlled.vue'
+import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
 </script>
 <template>
@@ -11,8 +13,14 @@ import WithField from './examples/with-field.vue'
     <Variant title="Controlled">
       <Controlled />
     </Variant>
+    <Variant title="Controlled Open">
+      <ControlledOpen />
+    </Variant>
     <Variant title="With Field">
       <WithField />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

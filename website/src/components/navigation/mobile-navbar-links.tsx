@@ -24,13 +24,13 @@ const link = cva({
     '& svg': {
       width: '4',
       height: '4',
-      color: 'accent.default',
+      color: 'colorPalette.default',
     },
     _hover: { color: 'fg.default' },
     _currentPage: {
-      color: 'accent.default',
+      color: 'colorPalette.default',
       _hover: {
-        color: 'accent.default',
+        color: 'colorPalette.default',
       },
     },
   },
@@ -55,12 +55,6 @@ export const MobileNavbarLinks = (props: Props) => {
         aria-current={pathname.startsWith(`/${framework}/examples`) ? 'page' : undefined}
       >
         Examples
-      </NavbarLink>
-      <NavbarLink
-        href={`/${framework}/showcase`}
-        aria-current={pathname.startsWith(`/${framework}/showcase`) ? 'page' : undefined}
-      >
-        Showcase
       </NavbarLink>
       <NavbarLink
         href={`/${framework}/plus`}

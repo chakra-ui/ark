@@ -1,36 +1,16 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
+import { act } from 'react'
 import { axe } from 'vitest-axe'
-import { Tabs, tabsAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Tabs / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(tabsAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(tabsAnatomy))('should export %s', async (part) => {
-    expect(Tabs[part]).toBeDefined()
-  })
-})
-
 describe('Tabs', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
-    const { container } = render(<ComponentUnderTest />)
-    const results = await axe(container)
-
-    expect(results).toHaveNoViolations()
+    await act(async () => {
+      const { container } = render(<ComponentUnderTest />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 
   it('should activate tab on click', async () => {
@@ -64,7 +44,7 @@ describe('Tabs', () => {
     expect(firstContent).not.toBeVisible()
 
     await user.click(firstTab)
-    expect(firstContent).toBeVisible()
+    await waitFor(() => expect(firstContent).toBeVisible())
   })
 
   it('should loop focus by default', async () => {
@@ -108,7 +88,7 @@ describe('Tabs', () => {
   it('should render the content of tab when active', async () => {
     render(<ComponentUnderTest defaultValue="React" />)
 
-    expect(screen.getByText('React Content')).toBeVisible()
+    await screen.findByText('React Content')
   })
 
   it('should lazy mount a tab', async () => {

@@ -2,15 +2,21 @@ import type * as carousel from '@zag-js/carousel'
 
 export interface RootProps {
   /**
-   * The alignment of the slides in the carousel.
-   * @default "start"
+   * Whether to allow scrolling via dragging with mouse
+   * @default false
    */
-  align?: 'start' | 'center' | 'end'
+  allowMouseDrag?: boolean
   /**
-   * The initial index of the carousel when it is first rendered.
-   * Use this when you do not need to control the state of the carousel.
+   * Whether to scroll automatically. The default delay is 4000ms.
+   * @default false
    */
-  defaultIndex?: number
+  autoplay?: boolean | { delay: number }
+  /**
+   * The initial page to scroll to when rendered.
+   * Use when you don't need to control the page of the carousel.
+   * @default 0
+   */
+  defaultPage?: number
   /**
    * The unique identifier of the machine.
    */
@@ -20,7 +26,6 @@ export interface RootProps {
    */
   ids?: Partial<{
     root: string
-    viewport: string
     item(index: number): string
     itemGroup: string
     nextTrigger: string
@@ -29,35 +34,79 @@ export interface RootProps {
     indicator(index: number): string
   }>
   /**
-   * The current slide index.
+   * The threshold for determining if an item is in view.
+   * @default 0.6
    */
-  index?: number
+  inViewThreshold?: number | number[]
   /**
    * Whether the carousel should loop around.
    * @default false
    */
   loop?: boolean
   /**
-   * The orientation of the carousel.
+   * The orientation of the element.
    * @default "horizontal"
    */
   orientation?: 'horizontal' | 'vertical'
   /**
+   * Defines the extra space added around the scrollable area,
+   * enabling nearby items to remain partially in view.
+   */
+  padding?: string
+  /**
+   * The controlled page of the carousel.
+   */
+  page?: number
+  /**
+   * The total number of slides.
+   * Useful for SSR to render the initial ating the snap points.
+   */
+  slideCount: number
+  /**
+   * The number of slides to scroll at a time.
+   *
+   * When set to `auto`, the number of slides to scroll is determined by the
+   * `slidesPerPage` property.
+   *
+   * @default "auto"
+   */
+  slidesPerMove?: number | 'auto'
+  /**
    * The number of slides to show at a time.
    * @default 1
    */
-  slidesPerView?: number | 'auto'
+  slidesPerPage?: number
   /**
-   * The amount of space between slides.
+   * The snap type of the item.
+   * @default "mandatory"
+   */
+  snapType?: 'proximity' | 'mandatory'
+  /**
+   * The amount of space between items.
    * @default "0px"
    */
   spacing?: string
+  /**
+   * The localized messages to use.
+   */
+  translations?: carousel.IntlTranslations
 }
 
 export type RootEmits = {
   /**
-   * Function called when the slide changes.
+   * Function called when the autoplay status changes.
    */
-  indexChange: [details: carousel.SlideChangeDetails]
-  'update:index': [index: number]
+  autoplayStatusChange: [details: carousel.AutoplayStatusDetails]
+  /**
+   * Function called when the drag status changes.
+   */
+  dragStatusChange: [details: carousel.DragStatusDetails]
+  /**
+   * Function called when the page changes.
+   */
+  pageChange: [details: carousel.PageChangeDetails]
+  /**
+   * The callback fired when the carousel page changes.
+   */
+  'update:page': [page: number]
 }

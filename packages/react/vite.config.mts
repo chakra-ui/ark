@@ -1,7 +1,7 @@
-import { copyFileSync } from 'node:fs'
-import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import { globbySync } from 'globby'
+import { copyFileSync } from 'node:fs'
+import path from 'node:path'
 import dts from 'vite-plugin-dts'
 import { defineConfig } from 'vitest/config'
 import pkg from './package.json'
@@ -12,13 +12,7 @@ export default defineConfig({
     dts({
       entryRoot: 'src',
       staticImport: true,
-      exclude: [
-        '**/*.stories.tsx',
-        '**/*.test.tsx',
-        '**/tests/*',
-        '**/examples/*',
-        '**/setup-test.ts',
-      ],
+      exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
       afterBuild: () => {
         globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
           copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
@@ -31,7 +25,7 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     lib: {
-      entry: globbySync('src/**/index.ts'),
+      entry: globbySync(['src/**/index.ts', 'src/components/anatomy.ts']),
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
@@ -63,10 +57,11 @@ export default defineConfig({
   },
   test: {
     setupFiles: 'src/setup-test.ts',
-    retry: 2,
     globals: true,
-    environment: 'jsdom',
-    css: false,
+    environment: 'happy-dom',
+    coverage: {
+      provider: 'v8',
+    },
   },
   resolve: {
     conditions: ['source'],
@@ -75,7 +70,7 @@ export default defineConfig({
 
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
-  if (file.name === 'portal') {
+  if (['portal', 'frame', 'client-only', 'focus-trap', 'download-trigger'].includes(file.name)) {
     return `'use client';`
   }
   if (isBarrelComponent(file) || isSpecialFile(file)) {
@@ -89,4 +84,4 @@ const isBarrelComponent = (file: path.ParsedPath) =>
   file.dir.endsWith(file.name) && !['presence', 'environment', 'locale'].includes(file.dir)
 
 const isSpecialFile = (file: path.ParsedPath) =>
-  ['index', 'factory', 'compose-refs', 'collection'].includes(file.name)
+  ['index', 'factory', 'anatomy', 'compose-refs', 'collection'].includes(file.name)

@@ -2,18 +2,13 @@ import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createEffect, createMemo, createSignal, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { runIfFn } from '../../utils/run-if-fn'
 
 export interface UseCollapsibleProps
-  extends Optional<Omit<collapsible.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'>,
-    RenderStrategyProps {
-  /**
-   * The initial open state of the collapsible when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: collapsible.Context['open']
-}
+  extends Optional<Omit<collapsible.Props, 'dir' | 'getRootNode'>, 'id'>,
+    RenderStrategyProps {}
 
 export interface UseCollapsibleReturn
   extends Accessor<
@@ -25,21 +20,20 @@ export interface UseCollapsibleReturn
     }
   > {}
 
-export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn => {
+export const useCollapsible = (props: MaybeAccessor<UseCollapsibleProps> = {}): UseCollapsibleReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(props)
-  const id = createUniqueId()
+  const [renderStrategyProps, collapsibleProps] = splitRenderStrategyProps(runIfFn(props))
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo(() => ({
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
     ...collapsibleProps,
   }))
-  const [state, send] = useMachine(collapsible.machine(context()), { context })
+
+  const service = useMachine(collapsible.machine, machineProps)
   const [wasVisible, setWasVisible] = createSignal(false)
 
   createEffect(() => {
@@ -47,7 +41,7 @@ export const useCollapsible = (props: UseCollapsibleProps): UseCollapsibleReturn
     if (isPresent) setWasVisible(true)
   })
 
-  const api = createMemo(() => collapsible.connect(state, send, normalizeProps))
+  const api = createMemo(() => collapsible.connect(service, normalizeProps))
 
   return createMemo(() => ({
     ...api(),

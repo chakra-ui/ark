@@ -75,11 +75,7 @@
   },
   "Root": {
     "props": {
-      "allowSeconds": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether to show the seconds."
-      },
+      "allowSeconds": { "type": "boolean", "isRequired": false, "description": "Whether to show the seconds." },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -88,28 +84,20 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the time picker when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "Whether the timepicker open state is controlled by the user"
       },
       "defaultValue": {
         "type": "Time",
         "isRequired": false,
-        "description": "The initial value of the time picker when it is first rendered.\nUse when you do not need to control the state of the time picker."
+        "description": "The initial selected time when rendered.\nUse when you don't need to control the selected time."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the time picker is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the time picker is disabled." },
       "disableLayer": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether to disable the interaction outside logic"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  trigger: string\n  input: string\n  positioner: string\n  content: string\n  clearTrigger: string\n  control: string\n  column(unit: TimeUnit): string\n}>",
         "isRequired": false,
@@ -131,23 +119,11 @@
         "isRequired": false,
         "description": "The locale (BCP 47 language tag) to use when formatting the time."
       },
-      "max": {
-        "type": "Time",
-        "isRequired": false,
-        "description": "The maximum time that can be selected."
-      },
-      "min": {
-        "type": "Time",
-        "isRequired": false,
-        "description": "The minimum time that can be selected."
-      },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The `name` attribute of the input element."
-      },
+      "max": { "type": "Time", "isRequired": false, "description": "The maximum time that can be selected." },
+      "min": { "type": "Time", "isRequired": false, "description": "The minimum time that can be selected." },
+      "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -166,16 +142,8 @@
         "isRequired": false,
         "description": "Function called when the value changes."
       },
-      "open": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the timepicker is open"
-      },
-      "placeholder": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The placeholder text of the input."
-      },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the timepicker is open" },
+      "placeholder": { "type": "string", "isRequired": false, "description": "The placeholder text of the input." },
       "positioning": {
         "type": "PositioningOptions",
         "isRequired": false,
@@ -186,13 +154,15 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": {
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the time picker is read-only." },
+      "skipAnimationOnMount": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether the time picker is read-only."
+        "description": "Whether to allow the initial presence animation."
       },
       "steps": {
-        "type": "{\n  hour?: number | undefined\n  minute?: number | undefined\n  second?: number | undefined\n}",
+        "type": "{ hour?: number | undefined; minute?: number | undefined; second?: number | undefined }",
         "isRequired": false,
         "description": "The steps of each time unit."
       },
@@ -202,7 +172,7 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "value": { "type": "Time", "isRequired": false, "description": "The selected time." }
+      "value": { "type": "Time", "isRequired": false, "description": "The controlled selected time." }
     }
   },
   "RootProvider": {
@@ -225,7 +195,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -233,6 +203,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",

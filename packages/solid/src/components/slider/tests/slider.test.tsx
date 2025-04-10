@@ -1,21 +1,9 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { Slider, sliderAnatomy } from '../'
 import { LocaleProvider } from '../../../providers'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Slider', () => {
-  it.each(getParts(sliderAnatomy))('should render part %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(sliderAnatomy))('should export %s', async (part) => {
-    expect(Slider[part]).toBeDefined()
-  })
-
   it('should be possible to control it with the arrow keys', async () => {
     render(() => <ComponentUnderTest />)
 
@@ -42,10 +30,10 @@ describe('Slider', () => {
     const [leftThumb] = screen.getAllByRole('slider', { hidden: true })
     leftThumb.focus()
     await user.keyboard('[End]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '20'))
 
     await user.keyboard('[ArrowRight]')
-    expect(leftThumb).toHaveAttribute('aria-valuenow', '20')
+    await waitFor(() => expect(leftThumb).toHaveAttribute('aria-valuenow', '20'))
   })
 
   it('should be possible to control it with the arrow keys in rtl mode', async () => {

@@ -3,5 +3,6 @@ namespace NodeJS {
     ARK_PLUS_URL: string
     ARK_PLUS_API_KEY: string
     LEMON_SQUEEZY_WEBHOOK_SECRET: string
+    SLACK_WEBHOOK_URL: string
   }
 }

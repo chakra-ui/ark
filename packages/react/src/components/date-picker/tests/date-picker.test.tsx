@@ -1,31 +1,9 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { DatePicker, datePickerAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Date Picker / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(datePickerAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(datePickerAnatomy))('should export %s', async (part) => {
-    expect(DatePicker[part]).toBeDefined()
-  })
-})
-
 describe('Date Picker', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -39,7 +17,7 @@ describe('Date Picker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()
@@ -51,7 +29,7 @@ describe('Date Picker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeVisible())
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

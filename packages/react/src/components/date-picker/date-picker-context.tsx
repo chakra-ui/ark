@@ -5,5 +5,4 @@ export interface DatePickerContextProps {
   children: (context: UseDatePickerContext) => ReactNode
 }
 
-export const DatePickerContext = (props: DatePickerContextProps) =>
-  props.children(useDatePickerContext())
+export const DatePickerContext = (props: DatePickerContextProps) => props.children(useDatePickerContext())

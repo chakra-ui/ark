@@ -1,15 +1,16 @@
-import path from 'node:path'
+import { join } from 'node:path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
 
 const pages = defineCollection({
   name: 'Pages',
-  pattern: ['website/src/content/pages/**/*.mdx', 'packages/*/CHANGELOG.md'],
+  pattern: ['pages/**/*.mdx', '../../../packages/*/CHANGELOG.md'],
   schema: s
     .object({
       id: s.string(),
       title: s.string(),
+      subtitle: s.string().optional(),
       description: s.string(),
       metadata: s.metadata(),
       content: s.markdown(),
@@ -17,6 +18,9 @@ const pages = defineCollection({
       status: s.string().optional(),
       toc: s.toc(),
       code: s.mdx(),
+      llm: s.custom().transform((_data, { meta }) => {
+        return meta.content
+      }),
     })
     .transform((data, { meta }) => {
       if (data.id === 'changelog') {
@@ -38,7 +42,7 @@ const pages = defineCollection({
 
 const showcases = defineCollection({
   name: 'Showcases',
-  pattern: 'website/src/content/showcases.json',
+  pattern: 'showcases.json',
   schema: s.object({
     title: s.string(),
     description: s.string(),
@@ -56,7 +60,7 @@ const PropDefintion = s.object({
 
 const types = defineCollection({
   name: 'Types',
-  pattern: 'website/src/content/types/**/*.json',
+  pattern: 'types/**/*.json',
   schema: s
     .record(
       s.string(),
@@ -75,7 +79,7 @@ const types = defineCollection({
 })
 
 export default defineConfig({
-  root: path.join(process.cwd(), '../'),
+  root: join(process.cwd(), './src/content'),
   collections: { pages, types, showcases },
   mdx: {
     rehypePlugins: [

@@ -10,23 +10,17 @@ interface RootProviderProps {
 }
 
 export interface PaginationRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface PaginationRootProviderProps
-  extends HTMLProps<'nav'>,
-    PaginationRootProviderBaseProps {}
+export interface PaginationRootProviderProps extends HTMLProps<'nav'>, PaginationRootProviderBaseProps {}
 
-export const PaginationRootProvider = forwardRef<HTMLElement, PaginationRootProviderProps>(
-  (props, ref) => {
-    const [{ value: pagination }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(pagination.getRootProps(), localProps)
+export const PaginationRootProvider = forwardRef<HTMLElement, PaginationRootProviderProps>((props, ref) => {
+  const [{ value: pagination }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(pagination.getRootProps(), localProps)
 
-    return (
-      <PaginationProvider value={pagination}>
-        <ark.nav {...mergedProps} ref={ref} />
-      </PaginationProvider>
-    )
-  },
-)
+  return (
+    <PaginationProvider value={pagination}>
+      <ark.nav {...mergedProps} ref={ref} />
+    </PaginationProvider>
+  )
+})
 
 PaginationRootProvider.displayName = 'PaginationRootProvider'

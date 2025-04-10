@@ -2,12 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import type { CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseComboboxProps, useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
@@ -15,8 +10,9 @@ export interface ComboboxRootBaseProps<T extends CollectionItem>
   extends UseComboboxProps<T>,
     UsePresenceProps,
     PolymorphicProps<'div'> {}
+
 export interface ComboboxRootProps<T extends CollectionItem>
-  extends HTMLProps<'div'>,
+  extends Omit<HTMLProps<'div'>, 'onSelect'>,
     ComboboxRootBaseProps<T> {}
 
 export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<T>) => {
@@ -27,12 +23,13 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'closeOnSelect',
     'collection',
     'composite',
+    'defaultHighlightedValue',
+    'defaultInputValue',
     'defaultOpen',
     'defaultValue',
     'disabled',
     'disableLayer',
     'form',
-    'getSelectionValue',
     'highlightedValue',
     'id',
     'ids',
@@ -42,6 +39,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'loopFocus',
     'multiple',
     'name',
+    'navigate',
     'onFocusOutside',
     'onHighlightChange',
     'onInputValueChange',
@@ -50,6 +48,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'onOpenChange',
     'onPointerDownOutside',
     'onValueChange',
+    'onSelect',
     'open',
     'openOnChange',
     'openOnClick',

@@ -3,9 +3,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 
 export interface EditableEditTriggerBaseProps extends PolymorphicProps<'button'> {}
-export interface EditableEditTriggerProps
-  extends HTMLProps<'button'>,
-    EditableEditTriggerBaseProps {}
+export interface EditableEditTriggerProps extends HTMLProps<'button'>, EditableEditTriggerBaseProps {}
 
 export const EditableEditTrigger = (props: EditableEditTriggerProps) => {
   const api = useEditableContext()

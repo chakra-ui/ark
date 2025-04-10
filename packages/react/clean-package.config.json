@@ -1,0 +1,79 @@
+{
+  "replace": {
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        },
+        "require": {
+          "types": "./dist/index.d.cts",
+          "default": "./dist/index.cjs"
+        }
+      },
+      "./anatomy": {
+        "import": {
+          "types": "./dist/components/anatomy.d.ts",
+          "default": "./dist/components/anatomy.js"
+        },
+        "require": {
+          "types": "./dist/components/anatomy.d.cts",
+          "default": "./dist/components/anatomy.cjs"
+        }
+      },
+      "./collection": {
+        "import": {
+          "types": "./dist/components/collection.d.ts",
+          "default": "./dist/components/collection.js"
+        },
+        "require": {
+          "types": "./dist/components/collection.d.cts",
+          "default": "./dist/components/collection.cjs"
+        }
+      },
+      "./factory": {
+        "import": {
+          "types": "./dist/components/factory.d.ts",
+          "default": "./dist/components/factory.js"
+        },
+        "require": {
+          "types": "./dist/components/factory.d.cts",
+          "default": "./dist/components/factory.cjs"
+        }
+      },
+      "./environment": {
+        "import": {
+          "types": "./dist/providers/environment/index.d.ts",
+          "default": "./dist/providers/environment/index.js"
+        },
+        "require": {
+          "types": "./dist/providers/environment/index.d.cts",
+          "default": "./dist/providers/environment/index.cjs"
+        }
+      },
+      "./locale": {
+        "import": {
+          "types": "./dist/providers/locale/index.d.ts",
+          "default": "./dist/providers/locale/index.js"
+        },
+        "require": {
+          "types": "./dist/providers/locale/index.d.cts",
+          "default": "./dist/providers/locale/index.cjs"
+        }
+      },
+      "./*": {
+        "import": {
+          "types": "./dist/components/*/index.d.ts",
+          "default": "./dist/components/*/index.js"
+        },
+        "require": {
+          "types": "./dist/components/*/index.d.cts",
+          "default": "./dist/components/*/index.cjs"
+        }
+      }
+    }
+  }
+}

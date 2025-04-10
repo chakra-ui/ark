@@ -1,12 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseHoverCardProps, useHoverCard } from './use-hover-card'
 import { HoverCardProvider } from './use-hover-card-context'
 
@@ -22,7 +17,10 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
     'defaultOpen',
     'id',
     'ids',
+    'onFocusOutside',
+    'onInteractOutside',
     'onOpenChange',
+    'onPointerDownOutside',
     'open',
     'openDelay',
     'positioning',

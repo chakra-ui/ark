@@ -7,17 +7,10 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerSwatchTriggerBaseProps extends SwatchTriggerProps, PolymorphicProps {}
-export interface ColorPickerSwatchTriggerProps
-  extends Assign<HTMLProps<'button'>, ColorPickerSwatchTriggerBaseProps> {}
+export interface ColorPickerSwatchTriggerProps extends Assign<HTMLProps<'button'>, ColorPickerSwatchTriggerBaseProps> {}
 
-export const ColorPickerSwatchTrigger = forwardRef<
-  HTMLButtonElement,
-  ColorPickerSwatchTriggerProps
->((props, ref) => {
-  const [triggerProps, localProps] = createSplitProps<SwatchTriggerProps>()(props, [
-    'value',
-    'disabled',
-  ])
+export const ColorPickerSwatchTrigger = forwardRef<HTMLButtonElement, ColorPickerSwatchTriggerProps>((props, ref) => {
+  const [triggerProps, localProps] = createSplitProps<SwatchTriggerProps>()(props, ['value', 'disabled'])
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getSwatchTriggerProps(triggerProps), localProps)
 

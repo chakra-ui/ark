@@ -1,0 +1,122 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+[data-scope='toast'][data-part='root'] {
+  background: white;
+  padding: 8px 12px;
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.1),
+    0 3px 3px rgba(0, 0, 0, 0.05);
+  width: 360px;
+  overflow-wrap: anywhere;
+  translate: var(--x) var(--y);
+  scale: var(--scale);
+  z-index: var(--z-index);
+  height: var(--height);
+  opacity: var(--opacity);
+
+  will-change: translate, opacity, scale;
+  transition:
+    translate 400ms,
+    scale 400ms,
+    opacity 400ms,
+    height 400ms,
+    box-shadow 200ms;
+  transition-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1);
+
+  &[data-state='closed'] {
+    transition:
+      translate 400ms,
+      scale 400ms,
+      opacity 200ms;
+    transition-timing-function: cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}
+
+[data-scope='toast'][data-part='close-trigger'] {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 18px;
+  padding: 0;
+
+  & svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+[data-scope='toast'][data-part='title'] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+[data-scope='toast'][data-part='root'][data-type='error'] {
+  background: red;
+  color: white;
+}
+
+[data-scope='toast'][data-part='root'][data-type='info'] {
+  background: blue;
+  color: white;
+}
+
+[data-scope='toast'][data-part='root'][data-type='warning'] {
+  background: orange;
+}
+
+[data-scope='toast'][data-part='root'][data-type='success'] {
+  background: green;
+  color: white;
+}
+
+[data-scope='toast'] .spinner {
+  animation: spin 1s linear infinite;
+}
+
+[data-scope='toast'][data-part='progressbar'] {
+  height: 4px;
+  background: rgb(116, 116, 116);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  animation-name: shrink;
+  animation-fill-mode: forwards;
+}
+
+[data-scope='toast'][data-part='progressbar'][data-type='loading'] {
+  animation-name: none;
+}
+
+@media (max-width: 640px) {
+  [data-scope='toast'][data-part='group'] {
+    width: 100%;
+  }
+
+  [data-scope='toast'][data-part='root'] {
+    inset-inline: 0;
+    width: calc(100% - var(--gap) * 2);
+  }
+}

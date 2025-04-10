@@ -14,12 +14,7 @@ const items = ref([
   <SegmentGroup.Root>
     <SegmentGroup.Label>Framework</SegmentGroup.Label>
     <SegmentGroup.Indicator />
-    <SegmentGroup.Item
-      v-for="item in items"
-      :key="item.value"
-      :value="item.value"
-      :disabled="item.disabled"
-    >
+    <SegmentGroup.Item v-for="item in items" :key="item.value" :value="item.value" :disabled="item.disabled">
       <SegmentGroup.ItemText>{{ item.label }}</SegmentGroup.ItemText>
       <SegmentGroup.ItemControl />
       <SegmentGroup.ItemHiddenInput />

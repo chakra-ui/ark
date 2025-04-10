@@ -1,37 +1,9 @@
-import { timePickerAnatomy } from '@ark-ui/anatomy'
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { TimePicker } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
-describe('Time Picker / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  const parts = getParts(timePickerAnatomy).filter((part) => part.includes('Cell'))
-  it.each(parts)('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  const exports = getExports(timePickerAnatomy)
-  const exportsWithoutCell = exports.filter(
-    (part): part is Exclude<(typeof exports)[number], 'Cell'> => part !== 'Cell',
-  )
-  it.each(exportsWithoutCell)('should export %s', async (part) => {
-    expect(TimePicker[part]).toBeDefined()
-  })
-})
-
 describe('Time Picker', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -45,7 +17,7 @@ describe('Time Picker', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Open calendar' }))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.click(screen.getByRole('button', { name: 'Close calendar' }))
     expect(screen.getByTestId('positioner')).toBeInTheDocument()

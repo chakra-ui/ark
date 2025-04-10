@@ -1,26 +1,22 @@
 import * as ratingGroup from '@zag-js/rating-group'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './rating-group'
 
-export interface UseRatingGroupProps
-  extends Optional<Omit<ratingGroup.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseRatingGroupProps extends Optional<Omit<ratingGroup.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the rating group when it is first rendered.
-   * Use when you do not need to control the state of the rating group.
+   * The v-model value of the rating group
    */
-  defaultValue?: ratingGroup.Context['value']
-  modelValue?: ratingGroup.Context['value']
+  modelValue?: ratingGroup.Props['value']
 }
-
 export interface UseRatingGroupReturn extends ComputedRef<ratingGroup.Api<PropTypes>> {}
 
 export const useRatingGroup = (
-  props: UseRatingGroupProps,
+  props: MaybeRef<UseRatingGroupProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseRatingGroupReturn => {
   const id = useId()
@@ -28,27 +24,34 @@ export const useRatingGroup = (
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<ratingGroup.Context>(() => ({
-    id,
-    ids: {
-      label: field?.value.ids.label,
-      hiddenInput: field?.value.ids.control,
-    },
-    disabled: field?.value.disabled,
-    readOnly: field?.value.readOnly,
-    required: field?.value.required,
-    dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
-    getRootNode: env?.value.getRootNode,
-    onValueChange(details) {
-      emit?.('valueChange', details)
-      emit?.('update:modelValue', details.value)
-    },
-    onHoverChange: (details) => emit?.('hoverChange', details),
-    ...cleanProps(props),
-  }))
+  const context = computed<ratingGroup.Props>(() => {
+    const localProps = toValue<UseRatingGroupProps>(props)
 
-  const [state, send] = useMachine(ratingGroup.machine(context.value), { context })
+    return {
+      id,
+      ids: {
+        label: field?.value.ids.label,
+        hiddenInput: field?.value.ids.control,
+      },
+      disabled: field?.value.disabled,
+      readOnly: field?.value.readOnly,
+      required: field?.value.required,
+      dir: locale.value.dir,
+      value: localProps.modelValue,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localProps),
+      onValueChange(details) {
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
+        localProps.onValueChange?.(details)
+      },
+      onHoverChange: (details) => {
+        emit?.('hoverChange', details)
+        localProps.onHoverChange?.(details)
+      },
+    }
+  })
 
-  return computed(() => ratingGroup.connect(state.value, send, normalizeProps))
+  const service = useMachine(ratingGroup.machine, context)
+  return computed(() => ratingGroup.connect(service, normalizeProps))
 }

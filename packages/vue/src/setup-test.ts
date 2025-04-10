@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom'
-import type { AnatomyInstance } from '@zag-js/anatomy'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
 import { vi } from 'vitest'
@@ -26,12 +25,12 @@ Array.prototype.toSorted = function () {
 
 Object.assign(global, { window, document: window.document })
 
-export const getParts = (anatomy: AnatomyInstance<string>) => {
-  return Object.values(anatomy.build()).map(
-    (x) => `[data-scope="${x.attrs['data-scope']}"][data-part="${x.attrs['data-part']}"]`,
-  )
-}
+const IntersectionObserverMock = vi.fn(() => ({
+  disconnect: vi.fn(),
+  observe: vi.fn(),
+  takeRecords: vi.fn(),
+  unobserve: vi.fn(),
+}))
 
-export const getExports = <T extends string>(anatomy: AnatomyInstance<T>) => {
-  return anatomy.keys().map((x) => (x.charAt(0).toUpperCase() + x.slice(1)) as Capitalize<T>)
-}
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock)
+window.IntersectionObserver = IntersectionObserverMock

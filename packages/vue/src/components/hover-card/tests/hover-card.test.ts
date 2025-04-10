@@ -1,20 +1,8 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
-import { HoverCard, hoverCardAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import ComponentUnderTest from './hover-card.test.vue'
 
 describe('Hover Card', () => {
-  it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
-    expect(HoverCard[part]).toBeDefined()
-  })
-
   it('should open on hover', async () => {
     render(ComponentUnderTest)
 

@@ -29,9 +29,7 @@ const emits = defineEmits<PopoverRootEmits>()
 const popover = usePopover(props, emits)
 
 PopoverProvider(popover)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

@@ -1,42 +1,21 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
 import { Field } from '../'
-import { getExports, getParts } from '../../setup-test'
-import { fieldAnatomy } from './field.anatomy'
 
 const ComponentUnderTest = (props: Field.RootProps) => (
   <Field.Root {...props}>
-    <Field.Label>Label</Field.Label>
+    <Field.Label>
+      Label
+      <Field.RequiredIndicator />
+    </Field.Label>
     <Field.Input />
     <Field.HelperText>Some additional Info</Field.HelperText>
     <Field.ErrorText>Error Info</Field.ErrorText>
   </Field.Root>
 )
 
-describe('Field / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest invalid />)
-
-  it.each(
-    getParts(fieldAnatomy).filter((part) => !part.includes('select') && !part.includes('textarea')),
-  )('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(fieldAnatomy))('should export %s', async (part) => {
-    expect(Field[part]).toBeDefined()
-  })
-})
-
 describe('Field / Input', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -47,11 +26,15 @@ describe('Field / Input', () => {
   it('should set textbox as required', async () => {
     render(<ComponentUnderTest required />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeRequired()
+    expect(screen.getByText('*')).toBeInTheDocument()
   })
 
   it('should set textbox as disabled', async () => {
     render(<ComponentUnderTest disabled />)
     expect(screen.getByRole('textbox', { name: /label/i })).toBeDisabled()
+    expect(document.querySelector('[data-part="root"]')).toHaveAttribute('data-disabled')
+    expect(screen.getByText('Label')).toHaveAttribute('data-disabled')
+    expect(screen.getByText('Some additional Info')).toHaveAttribute('data-disabled')
   })
 
   it('should set textbox as readonly', async () => {
@@ -78,5 +61,11 @@ describe('Field / Input', () => {
   it('should not display error text when no error is present', async () => {
     render(<ComponentUnderTest />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
+  })
+
+  it('should set aria-describedby to the ids of the error and helper text', async () => {
+    render(<ComponentUnderTest />)
+    const textbox = screen.getByRole('textbox', { name: /label/i })
+    await waitFor(() => expect(textbox).toHaveAttribute('aria-describedby'))
   })
 })

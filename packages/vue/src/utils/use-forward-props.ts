@@ -1,11 +1,4 @@
-import {
-  type MaybeRefOrGetter,
-  type UnwrapRef,
-  camelize,
-  computed,
-  getCurrentInstance,
-  toRef,
-} from 'vue'
+import { type MaybeRefOrGetter, type UnwrapRef, camelize, computed, getCurrentInstance, toRef } from 'vue'
 
 interface PropOptions {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>

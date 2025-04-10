@@ -3,7 +3,7 @@ import { TagsInput } from '../'
 
 export const ComponentUnderTest = (props: TagsInput.RootProps) => {
   return (
-    <TagsInput.Root value={['react', 'solid', 'vue']} {...props}>
+    <TagsInput.Root defaultValue={['react', 'solid', 'vue']} {...props}>
       <TagsInput.Context>
         {(api) => (
           <>

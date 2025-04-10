@@ -4,13 +4,7 @@ import { Slider } from '../'
 export const ComponentUnderTest = (props: Slider.RootProps) => {
   const [value, setValue] = createSignal([-20, 20])
   return (
-    <Slider.Root
-      min={-50}
-      max={50}
-      value={value()}
-      onValueChange={(e) => setValue(e.value)}
-      {...props}
-    >
+    <Slider.Root min={-50} max={50} value={value()} onValueChange={(e) => setValue(e.value)} {...props}>
       <Slider.Label>Quantity: </Slider.Label>
       <Slider.ValueText />
       <Slider.Control>
@@ -20,6 +14,7 @@ export const ComponentUnderTest = (props: Slider.RootProps) => {
         <Index each={value()}>
           {(_value, index) => (
             <Slider.Thumb index={index}>
+              <Slider.DraggingIndicator />
               <Slider.HiddenInput />
             </Slider.Thumb>
           )}

@@ -1,22 +1,10 @@
 import user from '@testing-library/user-event'
 import { render, screen, waitFor } from '@testing-library/vue'
 import { vi } from 'vitest'
-import { Select, selectAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
 import ComponentUnderTest from './select.test.vue'
 
 describe('Select', () => {
-  it.each(getParts(selectAnatomy))('should render part! %s', async (part) => {
-    render(ComponentUnderTest)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(selectAnatomy))('should export %s', async (part) => {
-    expect(Select[part]).toBeDefined()
-  })
-
   it('should handle item selection', async () => {
     render(ComponentUnderTest)
 

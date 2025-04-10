@@ -1,4 +1,4 @@
-import { EnvironmentProvider } from '../..'
+import { EnvironmentProvider } from '@ark-ui/solid/environment'
 
 export const App = () => {
   return (

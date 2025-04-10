@@ -4,6 +4,7 @@ import Controlled from './examples/controlled.vue'
 import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
+import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
 </script>
 
@@ -26,6 +27,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="With Field">
       <WithField />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

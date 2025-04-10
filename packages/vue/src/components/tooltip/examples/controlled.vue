@@ -7,7 +7,7 @@ const isOpen = ref(false)
 
 <template>
   <button @click="isOpen = !isOpen">Toggle</button>
-  <Tooltip.Root :open="isOpen">
+  <Tooltip.Root v-model:open="isOpen">
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Tooltip.Positioner>
       <Tooltip.Content>I am a tooltip!</Tooltip.Content>

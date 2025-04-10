@@ -2,32 +2,24 @@ import * as dialog from '@zag-js/dialog'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
-export interface UseDialogProps
-  extends Optional<Omit<dialog.Context, 'dir' | 'getRootNode' | 'open.controlled'>, 'id'> {
-  /**
-   * The initial open state of the dialog when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: dialog.Context['open']
-}
+export interface UseDialogProps extends Optional<Omit<dialog.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseDialogReturn extends Accessor<dialog.Api<PropTypes>> {}
 
-export const useDialog = (props: UseDialogProps): UseDialogReturn => {
+export const useDialog = (props?: MaybeAccessor<UseDialogProps>): UseDialogReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<dialog.Props>(() => ({
     id,
     dir: locale().dir,
     getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    ...props,
+    ...runIfFn(props),
   }))
-  const [state, send] = useMachine(dialog.machine(context()), { context })
 
-  return createMemo(() => dialog.connect(state, send, normalizeProps))
+  const service = useMachine(dialog.machine, machineProps)
+  return createMemo(() => dialog.connect(service, normalizeProps))
 }

@@ -36,6 +36,15 @@
       }
     }
   },
+  "RequiredIndicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
       "asChild": {
@@ -43,38 +52,22 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
       "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
-      "ids": {
-        "type": "ElementIds",
-        "isRequired": false,
-        "description": "The ids of the field parts."
-      },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is invalid."
-      },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,
         "description": "Indicates whether the field is read-only."
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is required."
-      }
+      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
     }
   },
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ ariaDescribedby: string; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null, null>; }; disabled: boolean | undefined; invalid: boolean | undefined; ... 8 more ...; getErrorTextProps: () => HTMLAttributes; }",
+        "type": "{ ariaDescribedby: string | undefined; ids: { control: string; label: string; errorText: string; helperText: string; }; refs: { rootRef: Ref<null, null>; }; disabled: boolean | undefined; ... 10 more ...; getRequiredIndicatorProps: () => HTMLAttributes; }",
         "isRequired": true
       },
       "asChild": {
@@ -100,6 +93,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoresize": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the textarea should autoresize"
       },
       "modelValue": { "type": "string | number | readonly string[]", "isRequired": false }
     }

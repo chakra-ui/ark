@@ -4,9 +4,7 @@ import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
 export interface RadioGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface RadioGroupItemHiddenInputProps
-  extends HTMLProps<'input'>,
-    RadioGroupItemHiddenInputBaseProps {}
+export interface RadioGroupItemHiddenInputProps extends HTMLProps<'input'>, RadioGroupItemHiddenInputBaseProps {}
 
 export const RadioGroupItemHiddenInput = (props: RadioGroupItemHiddenInputProps) => {
   const radioGroup = useRadioGroupContext()

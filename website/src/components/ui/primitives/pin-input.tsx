@@ -19,20 +19,20 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, PinInput.RootBaseProps>, PinInputVariantProps>
 >(PinInput.Root, 'root')
 
-export const Control = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, PinInput.ControlBaseProps>
->(PinInput.Control, 'control')
+export const Control = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, PinInput.ControlBaseProps>>(
+  PinInput.Control,
+  'control',
+)
 
-export const Input = withContext<
-  HTMLInputElement,
-  Assign<HTMLStyledProps<'input'>, PinInput.InputBaseProps>
->(PinInput.Input, 'input')
+export const Input = withContext<HTMLInputElement, Assign<HTMLStyledProps<'input'>, PinInput.InputBaseProps>>(
+  PinInput.Input,
+  'input',
+)
 
-export const Label = withContext<
-  HTMLLabelElement,
-  Assign<HTMLStyledProps<'label'>, PinInput.LabelBaseProps>
->(PinInput.Label, 'label')
+export const Label = withContext<HTMLLabelElement, Assign<HTMLStyledProps<'label'>, PinInput.LabelBaseProps>>(
+  PinInput.Label,
+  'label',
+)
 
 export const Context = PinInput.Context
 export const HiddenInput = PinInput.HiddenInput

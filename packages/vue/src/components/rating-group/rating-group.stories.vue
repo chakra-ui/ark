@@ -6,6 +6,7 @@ import FormUsage from './examples/form-usage.vue'
 import HalfRatings from './examples/half-ratings.vue'
 import InitialValue from './examples/initial-value.vue'
 import ReadOnly from './examples/read-only.vue'
+import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
 </script>
 <template>
@@ -33,6 +34,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="With Field">
       <WithField />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

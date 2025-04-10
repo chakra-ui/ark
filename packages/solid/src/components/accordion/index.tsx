@@ -2,24 +2,14 @@ export type {
   FocusChangeDetails as AccordionFocusChangeDetails,
   ValueChangeDetails as AccordionValueChangeDetails,
 } from '@zag-js/accordion'
-export {
-  AccordionContext,
-  type AccordionContextProps,
-} from './accordion-context'
-export {
-  AccordionItem,
-  type AccordionItemBaseProps,
-  type AccordionItemProps,
-} from './accordion-item'
+export { AccordionContext, type AccordionContextProps } from './accordion-context'
+export { AccordionItem, type AccordionItemBaseProps, type AccordionItemProps } from './accordion-item'
 export {
   AccordionItemContent,
   type AccordionItemContentBaseProps,
   type AccordionItemContentProps,
 } from './accordion-item-content'
-export {
-  AccordionItemContext,
-  type AccordionItemContextProps,
-} from './accordion-item-context'
+export { AccordionItemContext, type AccordionItemContextProps } from './accordion-item-context'
 export {
   AccordionItemIndicator,
   type AccordionItemIndicatorBaseProps,
@@ -30,11 +20,7 @@ export {
   type AccordionItemTriggerBaseProps,
   type AccordionItemTriggerProps,
 } from './accordion-item-trigger'
-export {
-  AccordionRoot,
-  type AccordionRootBaseProps,
-  type AccordionRootProps,
-} from './accordion-root'
+export { AccordionRoot, type AccordionRootBaseProps, type AccordionRootProps } from './accordion-root'
 export {
   AccordionRootProvider,
   type AccordionRootProviderBaseProps,

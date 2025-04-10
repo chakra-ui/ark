@@ -31,11 +31,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; image: string; fallback: string }>",
         "isRequired": false,
@@ -45,7 +41,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "AvatarApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

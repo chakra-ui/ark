@@ -8,7 +8,7 @@ export interface DatePickerInputBaseProps extends InputProps, PolymorphicProps<'
 export interface DatePickerInputProps extends HTMLProps<'input'>, DatePickerInputBaseProps {}
 
 export const DatePickerInput = (props: DatePickerInputProps) => {
-  const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])
+  const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index', 'fixOnBlur'])
   const datePicker = useDatePickerContext()
   const mergedProps = mergeProps(() => datePicker().getInputProps(inputProps), localProps)
 

@@ -14,10 +14,7 @@ export {
   type ComboboxContentProps as ContentProps,
   type ComboboxContentBaseProps as ContentBaseProps,
 } from './combobox-content.vue'
-export {
-  default as Context,
-  type ComboboxContextProps as ContextProps,
-} from './combobox-context.vue'
+export { default as Context, type ComboboxContextProps as ContextProps } from './combobox-context.vue'
 export {
   default as Control,
   type ComboboxControlProps as ControlProps,
@@ -28,10 +25,7 @@ export {
   type ComboboxInputProps as InputProps,
   type ComboboxInputBaseProps as InputBaseProps,
 } from './combobox-input.vue'
-export {
-  default as ItemContext,
-  type ComboboxItemContextProps as ItemContextProps,
-} from './combobox-item-context.vue'
+export { default as ItemContext, type ComboboxItemContextProps as ItemContextProps } from './combobox-item-context.vue'
 export {
   default as ItemGroupLabel,
   type ComboboxItemGroupLabelProps as ItemGroupLabelProps,

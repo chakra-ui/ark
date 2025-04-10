@@ -1,57 +1,56 @@
 import * as treeView from '@zag-js/tree-view'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
+import type { TreeCollection, TreeNode } from '../collection'
 import type { RootEmits } from './tree-view.types'
 
-export interface UseTreeViewProps
-  extends Optional<Omit<treeView.Context, 'dir' | 'getRootNode'>, 'id'> {
+export interface UseTreeViewProps<T extends TreeNode>
+  extends Optional<Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
-   * The initial selected items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
+   * The collection of tree nodes
    */
-  defaultSelectedValue?: treeView.Context['selectedValue']
-  /**
-   * The initial expanded items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
-   */
-  defaultExpandedValue?: treeView.Context['expandedValue']
+  collection: TreeCollection<T>
 }
 
-export interface UseTreeViewReturn extends ComputedRef<treeView.Api<PropTypes>> {}
+export interface UseTreeViewReturn<T extends TreeNode> extends ComputedRef<treeView.Api<PropTypes, T>> {}
 
-export const useTreeView = (
-  props: UseTreeViewProps,
+export const useTreeView = <T extends TreeNode>(
+  props: MaybeRef<UseTreeViewProps<T>>,
   emit?: EmitFn<RootEmits>,
-): UseTreeViewReturn => {
+): UseTreeViewReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<treeView.Context>(() => ({
-    id,
-    dir: locale.value.dir,
-    expandedValue: props.expandedValue ?? props.defaultExpandedValue,
-    selectedValue: props.selectedValue ?? props.defaultSelectedValue,
-    getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => {
-      emit?.('focusChange', details)
-      emit?.('update:focusedValue', details.focusedValue)
-    },
-    onExpandedChange: (details) => {
-      emit?.('expandedChange', details)
-      emit?.('update:expandedValue', details.expandedValue)
-    },
-    onSelectionChange: (details) => {
-      emit?.('selectionChange', details)
-      emit?.('update:selectedValue', details.selectedValue)
-    },
-    ...cleanProps(props),
-  }))
+  const context = computed<treeView.Props>(() => {
+    const localeProps = toValue<UseTreeViewProps<T>>(props)
 
-  const [state, send] = useMachine(treeView.machine(context.value), { context })
+    return {
+      id,
+      dir: locale.value.dir,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localeProps),
+      onFocusChange: (details) => {
+        emit?.('focusChange', details)
+        emit?.('update:focusedValue', details.focusedValue)
+        localeProps.onFocusChange?.(details)
+      },
+      onExpandedChange: (details) => {
+        emit?.('expandedChange', details)
+        emit?.('update:expandedValue', details.expandedValue)
+        localeProps.onExpandedChange?.(details)
+      },
+      onSelectionChange: (details) => {
+        emit?.('selectionChange', details)
+        emit?.('update:selectedValue', details.selectedValue)
+        localeProps.onSelectionChange?.(details)
+      },
+    }
+  })
 
-  return computed(() => treeView.connect(state.value, send, normalizeProps))
+  const service = useMachine(treeView.machine, context)
+  return computed(() => treeView.connect(service, normalizeProps))
 }

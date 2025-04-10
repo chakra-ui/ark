@@ -1,32 +1,9 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { HoverCard } from '../'
-import { getExports, getParts } from '../../../setup-test'
-import { hoverCardAnatomy } from '../hover-card.anatomy'
 import { ComponentUnderTest } from './basic'
 
-describe('HoverCard / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(hoverCardAnatomy))('should render part! %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(hoverCardAnatomy))('should export %s', async (part) => {
-    expect(HoverCard[part]).toBeDefined()
-  })
-})
-
 describe('HoverCard', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -63,7 +40,7 @@ describe('HoverCard', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
   })
 
   it('should lazy mount and unmount on exit', async () => {
@@ -72,7 +49,7 @@ describe('HoverCard', () => {
     expect(screen.queryByTestId('positioner')).not.toBeInTheDocument()
 
     await user.hover(screen.getByText('Hover me'))
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     await user.unhover(screen.getByText('Hover me'))
     await waitFor(() => expect(screen.queryByTestId('positioner')).not.toBeInTheDocument())

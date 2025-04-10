@@ -27,7 +27,6 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   defaultOpen: undefined,
   disabled: undefined,
   fixedWeeks: undefined,
-  modal: undefined,
   open: undefined,
   readOnly: undefined,
 } satisfies BooleanDefaults<RootProps>)
@@ -36,9 +35,7 @@ const emits = defineEmits<DatePickerRootEmits>()
 
 const datePicker = useDatePicker(props, emits)
 DatePickerProvider(datePicker)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

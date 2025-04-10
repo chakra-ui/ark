@@ -6,29 +6,20 @@
   "rebaseWhen": "conflicted",
   "timezone": "UTC",
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": "before 6:00am on the first day of the month"
+    "enabled": true
   },
-  "prConcurrentLimit": 30,
+  "prConcurrentLimit": 20,
   "prHourlyLimit": 0,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
+      "automerge": true,
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
     },
     {
-      "extends": "monorepo:zag-js",
-      "schedule": "at any time"
-    },
-    {
-      "extends": "monorepo:panda-css",
-      "schedule": "at any time"
-    },
-    {
-      "groupName": "lucide-icons",
-      "matchPackagePrefixes": ["lucide"]
+      "matchPackageNames": ["@testing-library/vue"],
+      "enabled": false
     }
-  ],
-  "ignoreDeps": ["@types/node", "@ark-ui/solid"],
-  "ignorePaths": ["templates/**"]
+  ]
 }

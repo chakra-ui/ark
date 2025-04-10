@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background and grid -->
+  <rect width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Grid lines with folded scale -->
+  <line x1="100" y1="500" x2="700" y2="500" stroke="#e0e0e0" stroke-width="1" />
+  <line x1="100" y1="450" x2="700" y2="450" stroke="#e0e0e0" stroke-width="1" />
+  <line x1="100" y1="400" x2="700" y2="400" stroke="#e0e0e0" stroke-width="1" />
+  <line x1="100" y1="350" x2="700" y2="350" stroke="#e0e0e0" stroke-width="1" />
+  <!-- Break in scale indicator -->
+  <line x1="100" y1="350" x2="700" y2="350" stroke="#e0e0e0" stroke-width="3" stroke-dasharray="10,5" />
+  <line x1="100" y1="300" x2="700" y2="300" stroke="#e0e0e0" stroke-width="1" />
+  <line x1="100" y1="250" x2="700" y2="250" stroke="#e0e0e0" stroke-width="1" />
+  <line x1="100" y1="200" x2="700" y2="200" stroke="#e0e0e0" stroke-width="1" />
+  
+  <!-- Scale break indicators (zigzag lines) -->
+  <path d="M 90,350 L 95,345 L 100,350 L 105,345 L 110,350" stroke="#333" stroke-width="1" fill="none" />
+  <path d="M 90,300 L 95,295 L 100,300 L 105,295 L 110,300" stroke="#333" stroke-width="1" fill="none" />
+  
+  <!-- Y-axis -->
+  <line x1="100" y1="200" x2="100" y2="500" stroke="#333" stroke-width="2" />
+  <!-- X-axis -->
+  <line x1="100" y1="500" x2="700" y2="500" stroke="#333" stroke-width="2" />
+  
+  <!-- Y-axis labels with folded scale -->
+  <text x="85" y="500" text-anchor="end" font-family="Arial" font-size="14">0%</text>
+  <text x="85" y="450" text-anchor="end" font-family="Arial" font-size="14">100%</text>
+  <text x="85" y="400" text-anchor="end" font-family="Arial" font-size="14">200%</text>
+  <text x="85" y="350" text-anchor="end" font-family="Arial" font-size="14">400%</text>
+  <!-- Gap in scale -->
+  <text x="85" y="300" text-anchor="end" font-family="Arial" font-size="14">1200%</text>
+  <text x="85" y="250" text-anchor="end" font-family="Arial" font-size="14">1300%</text>
+  <text x="85" y="200" text-anchor="end" font-family="Arial" font-size="14">1400%</text>
+  
+  <!-- Baseline reference line -->
+  <line x1="100" y1="450" x2="700" y2="450" stroke="#4285F4" stroke-width="2" stroke-dasharray="5,5" />
+  <text x="705" y="450" text-anchor="start" font-family="Arial" font-size="12" fill="#4285F4">100% (Baseline)</text>
+  
+  <!-- Bars - PROPERLY POSITIONED with folded scale -->
+  <!-- Ark v5 - 100% -->
+  <rect x="150" y="450" width="80" height="50" fill="#4285F4" rx="5" ry="5" />
+  
+  <!-- Ark v4 - 309% - positioned between 200% and 400% -->
+  <rect x="275" y="370" width="80" height="130" fill="#DB4437" rx="5" ry="5" />
+  
+  <!-- Radix - 183% - positioned between 100% and 200% -->
+  <rect x="400" y="420" width="80" height="80" fill="#0F9D58" rx="5" ry="5" />
+  
+  <!-- AriaKit - 1371% - positioned between 1300% and 1400% -->
+  <rect x="525" y="220" width="80" height="280" fill="#F4B400" rx="5" ry="5" />
+  
+  <!-- Bar labels - percentages -->
+  <text x="190" y="480" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white">100%</text>
+  <text x="315" y="425" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white">309%</text>
+  <text x="440" y="455" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white">183%</text>
+  <text x="565" y="260" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="white">1371%</text>
+  
+  <!-- Bar labels - times slower -->
+  <text x="190" y="495" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Baseline</text>
+  <text x="315" y="445" text-anchor="middle" font-family="Arial" font-size="14" fill="white">3.1x slower</text>
+  <text x="440" y="475" text-anchor="middle" font-family="Arial" font-size="14" fill="white">1.8x slower</text>
+  <text x="565" y="280" text-anchor="middle" font-family="Arial" font-size="14" fill="white">13.7x slower</text>
+  
+  <!-- Millisecond labels -->
+  <text x="190" y="520" text-anchor="middle" font-family="Arial" font-size="14">413ms</text>
+  <text x="315" y="520" text-anchor="middle" font-family="Arial" font-size="14">1278ms</text>
+  <text x="440" y="520" text-anchor="middle" font-family="Arial" font-size="14">756.7ms</text>
+  <text x="565" y="520" text-anchor="middle" font-family="Arial" font-size="14">5661ms</text>
+  
+  <!-- X-axis labels -->
+  <text x="190" y="545" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Ark v5</text>
+  <text x="315" y="545" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Ark v4</text>
+  <text x="440" y="545" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Radix</text>
+  <text x="565" y="545" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">AriaKit</text>
+  
+  <!-- Title and subtitle -->
+  <text x="400" y="50" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">10,000 Tooltips Rendering Time Comparison</text>
+  <text x="400" y="80" text-anchor="middle" font-family="Arial" font-size="16">(Relative to Ark v5 = 100%, Lower is Better)</text>
+  
+  <!-- Y-axis title -->
+  <text x="40" y="300" text-anchor="middle" font-family="Arial" font-size="16" transform="rotate(-90, 40, 300)">Relative Performance (%)</text>
+  
+  <!-- X-axis title -->
+  <text x="400" y="580" text-anchor="middle" font-family="Arial" font-size="16">Rendering time in milliseconds for 10,000 tooltips</text>
+  
+  <!-- Note about scale break -->
+  <text x="400" y="330" text-anchor="middle" font-family="Arial" font-size="12" font-style="italic">Note: Scale break between 400% and 1200%</text>
+</svg>

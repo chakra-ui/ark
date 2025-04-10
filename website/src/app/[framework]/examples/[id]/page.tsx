@@ -8,11 +8,11 @@ import { Text } from '~/components/ui/text'
 import { fetchExample } from '~/lib/examples'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default async function Page(props: Props) {
-  const { id } = props.params
+  const { id } = await props.params
   const example = await fetchExample(id)
 
   return (
@@ -38,16 +38,7 @@ export default async function Page(props: Props) {
 }
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
-  const { id } = props.params
+  const { id } = await props.params
   const example = await fetchExample(id)
   return example ? { title: example.title, description: example.description } : {}
 }
-
-// TODO this should work
-// export const generateStaticParams = async () => {
-//   const examples = await fetchExamples()
-
-//   return ['react', 'solid', 'vue'].flatMap((framework) =>
-//     examples.map((example) => ({ framework, id: example.id })),
-//   )
-// }

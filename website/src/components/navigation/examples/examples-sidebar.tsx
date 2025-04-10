@@ -47,7 +47,7 @@ export const ExamplesSidebar = (props: Props) => {
                             <Flex gap="2" align="center">
                               <Text as="span">{item.title}</Text>
                               {item.accessLevel === 'paid' && (
-                                <Icon width="3.5" height="3.5" color="accent.default">
+                                <Icon width="3.5" height="3.5" color="colorPalette.default">
                                   <SparklesIcon />
                                 </Icon>
                               )}

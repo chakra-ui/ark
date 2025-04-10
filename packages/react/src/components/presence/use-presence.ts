@@ -5,32 +5,36 @@ import type { Optional } from '../../types'
 import type { RenderStrategyProps } from '../../utils/render-strategy'
 import { useEvent } from '../../utils/use-event'
 
-export interface UsePresenceProps
-  extends Optional<presence.Context, 'present'>,
-    RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
+  /**
+   * Whether to allow the initial presence animation.
+   * @default false
+   */
+  skipAnimationOnMount?: boolean
+}
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 
-export const usePresence = (props: UsePresenceProps) => {
-  const { lazyMount, unmountOnExit, ...rest } = props
+export const usePresence = (props: UsePresenceProps = {}) => {
+  const { lazyMount, unmountOnExit, present, skipAnimationOnMount = false, ...rest } = props
   const wasEverPresent = useRef(false)
-  const context: Partial<presence.Context> = {
+  const machineProps: Partial<presence.Props> = {
     ...rest,
+    present,
     onExitComplete: useEvent(props.onExitComplete),
   }
 
-  const [state, send] = useMachine(presence.machine(context), { context })
-  const api = presence.connect(state, send, normalizeProps)
+  const service = useMachine(presence.machine, machineProps)
+  const api = presence.connect(service, normalizeProps)
 
   if (api.present) {
     wasEverPresent.current = true
   }
 
   const unmounted =
-    (!api.present && !wasEverPresent.current && lazyMount) ||
-    (unmountOnExit && !api.present && wasEverPresent.current)
+    (!api.present && !wasEverPresent.current && lazyMount) || (unmountOnExit && !api.present && wasEverPresent.current)
 
   const getPresenceProps = () => ({
-    'data-state': props.present ? 'open' : 'closed',
+    'data-state': api.skip && skipAnimationOnMount ? undefined : present ? 'open' : 'closed',
     hidden: !api.present,
   })
 

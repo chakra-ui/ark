@@ -25,7 +25,7 @@ class InternalServerError {
 }
 
 export const POST = async (request: NextRequest) => {
-  const programm = pipe(
+  const program = pipe(
     Effect.all([
       Effect.promise(() => request.text()),
       Effect.fromNullable(Buffer.from(request.headers.get('x-signature') as string, 'utf8')),
@@ -34,6 +34,7 @@ export const POST = async (request: NextRequest) => {
       ([text, signature]) => verifySignature(text, signature),
       () => new InternalServerError(),
     ),
+    Effect.tap(([text]) => console.log('Payload:', JSON.parse(text))),
     Effect.flatMap(([text]) => Schema.decodeUnknown(Payload)(JSON.parse(text))),
     Effect.flatMap(({ data, meta }) =>
       Match.value(meta.event_name).pipe(
@@ -94,7 +95,7 @@ export const POST = async (request: NextRequest) => {
       InternalServerError: () => Effect.succeed({ status: 500, message: 'Invalid signature' }),
     }),
   )
-  const data = await Effect.runPromise(programm)
+  const data = await Effect.runPromise(program)
 
   return Response.json(data, { status: data.status })
 }

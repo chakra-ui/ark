@@ -2,42 +2,25 @@ import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
+import { runIfFn } from '../../utils/run-if-fn'
 
-export interface UseDatePickerProps
-  extends Optional<
-    Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled'>,
-    'id'
-  > {
-  /**
-   * The initial open state of the date picker when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: datePicker.Context['open']
-  /**
-   * The initial value of the date picker when it is first rendered.
-   * Use when you do not need to control the state of the date picker.
-   */
-  defaultValue?: datePicker.Context['value']
-}
+export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseDatePickerReturn extends Accessor<datePicker.Api<PropTypes>> {}
 
-export const useDatePicker = (props: UseDatePickerProps): UseDatePickerReturn => {
+export const useDatePicker = (props?: MaybeAccessor<UseDatePickerProps>): UseDatePickerReturn => {
+  const id = createUniqueId()
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
-  const id = createUniqueId()
 
-  const context = createMemo(() => ({
+  const machineProps = createMemo<datePicker.Props>(() => ({
     id,
     dir: locale().dir,
+    locale: locale().locale,
     getRootNode: environment().getRootNode,
-    open: props.defaultOpen,
-    'open.controlled': props.open !== undefined,
-    value: props.defaultValue,
-    ...props,
+    ...runIfFn(props),
   }))
 
-  const [state, send] = useMachine(datePicker.machine(context()), { context })
-
-  return createMemo(() => datePicker.connect(state, send, normalizeProps))
+  const service = useMachine(datePicker.machine, machineProps)
+  return createMemo(() => datePicker.connect(service, normalizeProps))
 }

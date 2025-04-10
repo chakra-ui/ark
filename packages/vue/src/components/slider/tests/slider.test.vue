@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Slider } from '../'
+import { Slider, type SliderRootBaseProps, type SliderRootEmits } from '../'
+import { useForwardPropsEmits } from '../../../utils'
 
-const sliderValue = ref([-20, 20])
+const props = defineProps<SliderRootBaseProps>()
+const emits = defineEmits<SliderRootEmits>()
+
+const forwarded = useForwardPropsEmits(props, emits)
+
+const sliderValue = [-20, 20]
 </script>
 <template>
-  <Slider.Root :min="-50" :max="50" v-model="sliderValue">
+  <Slider.Root v-bind="forwarded" :min="-50" :max="50" :default-value="sliderValue">
     <Slider.Label>Quantity:</Slider.Label>
     <Slider.ValueText />
     <Slider.Control>
@@ -13,6 +18,7 @@ const sliderValue = ref([-20, 20])
         <Slider.Range />
       </Slider.Track>
       <Slider.Thumb v-for="(_, index) in sliderValue" :key="index" :index="index">
+        <Slider.DraggingIndicator />
         <Slider.HiddenInput />
       </Slider.Thumb>
     </Slider.Control>

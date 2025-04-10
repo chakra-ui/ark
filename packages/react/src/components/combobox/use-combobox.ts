@@ -1,27 +1,13 @@
 import * as combobox from '@zag-js/combobox'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/react'
-import { useEffect, useId } from 'react'
+import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { useEvent } from '../../utils/use-event'
 import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseComboboxProps<T extends CollectionItem>
-  extends Optional<
-    Omit<combobox.Context<T>, 'dir' | 'getRootNode' | 'collection' | 'open.controlled'>,
-    'id'
-  > {
-  /**
-   * The initial open state of the combobox when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: combobox.Context['open']
-  /**
-   * The initial value of the combobox when it is first rendered.
-   * Use when you do not need to control the state of the combobox.
-   */
-  defaultValue?: combobox.Context<T>['value']
+  extends Optional<Omit<combobox.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
    * The collection of items
    */
@@ -30,17 +16,14 @@ export interface UseComboboxProps<T extends CollectionItem>
 
 export interface UseComboboxReturn<T extends CollectionItem> extends combobox.Api<PropTypes, T> {}
 
-export const useCombobox = <T extends CollectionItem>(
-  props: UseComboboxProps<T>,
-): UseComboboxReturn<T> => {
-  const { collection, ...comboboxProps } = props
-
+export const useCombobox = <T extends CollectionItem>(props: UseComboboxProps<T>): UseComboboxReturn<T> => {
+  const id = useId()
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
   const field = useFieldContext()
 
-  const initialContext: combobox.Context<T> = {
-    id: useId(),
+  const machineProps: combobox.Props<T> = {
+    id,
     ids: {
       label: field?.ids.label,
       input: field?.ids.control,
@@ -51,33 +34,10 @@ export const useCombobox = <T extends CollectionItem>(
     invalid: field?.invalid,
     dir,
     getRootNode,
-    collection,
-    open: props.defaultOpen,
-    value: props.defaultValue,
-    'open.controlled': props.open !== undefined,
-    ...comboboxProps,
+
+    ...props,
   }
 
-  const context = (() => {
-    const { collection: _, ...restProps } = initialContext
-    return {
-      ...restProps,
-      value: props.value,
-      onValueChange: useEvent(props.onValueChange, { sync: true }),
-      onInputValueChange: useEvent(props.onInputValueChange, { sync: true }),
-      onHighlightChange: useEvent(props.onHighlightChange),
-      onOpenChange: useEvent(props.onOpenChange),
-    }
-  })()
-
-  const [state, send, service] = useMachine(combobox.machine(initialContext), {
-    context,
-  })
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    service.setContext({ collection })
-  }, [collection])
-
-  return combobox.connect(state, send, normalizeProps)
+  const service = useMachine(combobox.machine, machineProps)
+  return combobox.connect(service, normalizeProps)
 }

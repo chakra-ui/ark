@@ -1,12 +1,10 @@
 import type { NextRequest } from 'next/server'
 import { types } from '.velite'
 
-interface Params {
-  framework: string
-}
+type Params = Promise<{ framework: string }>
 
-export const GET = async (_: NextRequest, { params }: { params: Params }) => {
-  const { framework } = params
+export const GET = async (_: NextRequest, segmentData: { params: Params }) => {
+  const { framework } = await segmentData.params
   const components = types.filter((type) => type.framework === framework).map((x) => x.component)
 
   if (!components) {

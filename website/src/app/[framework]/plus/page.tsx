@@ -10,7 +10,7 @@ export default function Page() {
     <Container py="12" maxW="7xl">
       <Stack gap={{ base: '16', md: '24' }} alignItems="center">
         <PageHeader
-          heading="Ark UI Plus"
+          heading="Ark Plus"
           subHeading="Pricing"
           description="Unlock exclusive examples and support the development of Ark UI"
         />
@@ -26,7 +26,7 @@ export default function Page() {
 }
 
 export const metadata: Metadata = {
-  title: 'Ark UI Plus',
+  title: 'Ark Plus',
   description:
     'Discover amazing projects built with Ark UI. Share your own by opening an issue on our GitHub repository.',
 }

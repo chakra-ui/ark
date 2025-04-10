@@ -4,8 +4,7 @@ import { createContext } from '../../utils/create-context'
 
 export interface UseSegmentGroupItemContext extends Accessor<ItemState> {}
 
-export const [SegmentGroupItemProvider, useSegmentGroupItemContext] =
-  createContext<UseSegmentGroupItemContext>({
-    hookName: 'useSegmentGroupItemContext',
-    providerName: '<SegmentGroupItemProvider />',
-  })
+export const [SegmentGroupItemProvider, useSegmentGroupItemContext] = createContext<UseSegmentGroupItemContext>({
+  hookName: 'useSegmentGroupItemContext',
+  providerName: '<SegmentGroupItemProvider />',
+})

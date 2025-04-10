@@ -1,5 +1,5 @@
 'use client'
-import { createListCollection } from '@ark-ui/react'
+import { createListCollection } from '@ark-ui/react/collection'
 import { useEnvironmentContext } from '@ark-ui/react/environment'
 import { Portal } from '@ark-ui/react/portal'
 import { SearchIcon } from 'lucide-react'
@@ -57,7 +57,11 @@ export const CommandMenu = (props: Props) => {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner alignItems="start" top="5%" bottom="5%">
-          <Dialog.Content p="2" width={{ base: '100%', sm: 'md' }} _closed={{ animation: 'none' }}>
+          <Dialog.Content
+            p="2"
+            width={{ base: '100%', sm: 'md' }}
+            _closed={{ animationName: 'fade-out', animationDuration: '50ms' }}
+          >
             <Combobox.Root
               open
               disableLayer
@@ -67,8 +71,10 @@ export const CommandMenu = (props: Props) => {
               loopFocus={false}
               collection={collection}
               onValueChange={(e) => {
-                setOpen(false)
                 router.push(`/${params.framework}/${e.value}`)
+                requestAnimationFrame(() => {
+                  setOpen(false)
+                })
               }}
               onInputValueChange={({ inputValue }) => setInputValue(inputValue)}
             >
@@ -77,14 +83,7 @@ export const CommandMenu = (props: Props) => {
                   <Input />
                 </Combobox.Input>
               </Combobox.Control>
-              <Combobox.Content
-                boxShadow="none"
-                px="0"
-                py="0"
-                overflow="auto"
-                maxH="68vh"
-                overscrollBehavior="contain"
-              >
+              <Combobox.Content boxShadow="none" px="0" py="0" overflow="auto" maxH="68vh" overscrollBehavior="contain">
                 <Combobox.List>
                   {matchEntries.length === 0 && (
                     <Center p="3" minH="40">
@@ -95,25 +94,14 @@ export const CommandMenu = (props: Props) => {
                   )}
                   {matchEntries.map(([key, items]) => (
                     <Combobox.ItemGroup key={key}>
-                      <Combobox.ItemGroupLabel
-                        textTransform="capitalize"
-                        color="fg.muted"
-                        fontWeight="medium"
-                      >
+                      <Combobox.ItemGroupLabel textTransform="capitalize" color="fg.muted" fontWeight="medium">
                         {key}
                       </Combobox.ItemGroupLabel>
                       {items.map((item) => (
-                        <Combobox.Item
-                          key={item.value}
-                          item={item}
-                          persistFocus
-                          height="auto"
-                          px="4"
-                          py="3"
-                        >
+                        <Combobox.Item key={item.value} item={item} persistFocus height="auto" px="4" py="3">
                           <Stack gap="0">
                             <Text fontWeight="medium">{item.label}</Text>
-                            <Text textStyle="sm" fontWeight="medium" color="accent.default">
+                            <Text textStyle="sm" fontWeight="medium" color="colorPalette.default">
                               {item.category}
                             </Text>
                             <Text textStyle="sm" color="fg.muted" mt="0.5" lineClamp={2}>

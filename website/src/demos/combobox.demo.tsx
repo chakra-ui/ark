@@ -23,9 +23,7 @@ export const Demo = (props: Omit<Combobox.RootProps, 'collection'>) => {
       item.label.toLowerCase().includes(inputValue.toLowerCase()),
     )
 
-    setCollection(
-      filtered.length > 0 ? createListCollection({ items: filtered }) : initialCollection,
-    )
+    setCollection(filtered.length > 0 ? createListCollection({ items: filtered }) : initialCollection)
   }
 
   const handleOpenChange = () => {

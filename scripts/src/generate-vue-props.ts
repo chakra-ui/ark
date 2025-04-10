@@ -8,16 +8,10 @@ const extractTypes = (component: string) => {
   const camelCaseComponent = chain(component).camelCase().value()
 
   const project = new Project()
-  const sourceFile = project.addSourceFileAtPath(
-    `../packages/vue/src/components/${component}/use-${component}.ts`,
-  )
-  const outputFile = project.createSourceFile(
-    `../packages/vue/src/components/${component}/${component}.types.ts`,
-    '',
-    {
-      overwrite: true,
-    },
-  )
+  const sourceFile = project.addSourceFileAtPath(`../packages/vue/src/components/${component}/use-${component}.ts`)
+  const outputFile = project.createSourceFile(`../packages/vue/src/components/${component}/${component}.types.ts`, '', {
+    overwrite: true,
+  })
 
   const propperties = sourceFile
     .getInterfaceOrThrow(`Use${chain(component).camelCase().capitalize().value()}Props`)
@@ -27,12 +21,16 @@ const extractTypes = (component: string) => {
 
   const props: OptionalKind<PropertySignatureStructure>[] = propperties
     .filter((property) => !property.getName().startsWith('on'))
+    .filter((property) => {
+      if (['checkbox', 'switch'].includes(component)) {
+        return true
+      }
+      return !['value'].includes(property.getName())
+    })
     .map((property) => {
       const comment = property
         .getDeclarations()
-        .flatMap((declaration) =>
-          declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`),
-        )
+        .flatMap((declaration) => declaration.getLeadingCommentRanges().map((comment) => `${comment.getText()}\n`))
       return {
         name: escapePropertyName(property.getName()),
         type: property.getTypeAtLocation(sourceFile).getText(sourceFile),
@@ -50,19 +48,14 @@ const extractTypes = (component: string) => {
         .replace(/^(.)/, (c) => c.toLowerCase()),
       comment: property
         .getDeclarations()
-        .flatMap((declaration) =>
-          declaration.getLeadingCommentRanges().map((comment) => comment.getText()),
-        ),
+        .flatMap((declaration) => declaration.getLeadingCommentRanges().map((comment) => comment.getText())),
       type: property
         .getTypeAtLocation(sourceFile)
         .getCallSignatures()
         .flatMap((signature) =>
           signature
             .getParameters()
-            .map((param) => [
-              param.getName(),
-              param.getTypeAtLocation(sourceFile).getText(sourceFile),
-            ]),
+            .map((param) => [param.getName(), param.getTypeAtLocation(sourceFile).getText(sourceFile)]),
         ),
     }))
 
@@ -122,7 +115,7 @@ const main = async () => {
   Promise.all(
     components
       .map((component) => parse(component).base)
-      .filter((x) => !['format', 'toast', 'highlight', 'frame'].includes(x))
+      .filter((x) => !['format', 'toast', 'highlight', 'frame', 'client-only', 'focus-trap'].includes(x))
       .map(extractTypes),
   )
 }

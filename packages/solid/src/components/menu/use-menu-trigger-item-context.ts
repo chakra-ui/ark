@@ -4,9 +4,8 @@ import { createContext } from '../../utils/create-context'
 
 export type UseMenuTriggerItemContext = Accessor<ReturnType<Api['getTriggerItemProps']> | undefined>
 
-export const [MenuTriggerItemProvider, useMenuTriggerItemContext] =
-  createContext<UseMenuTriggerItemContext>({
-    hookName: 'useMenuMachineContext',
-    providerName: '<MenuMachineProvider />',
-    strict: false,
-  })
+export const [MenuTriggerItemProvider, useMenuTriggerItemContext] = createContext<UseMenuTriggerItemContext>({
+  hookName: 'useMenuMachineContext',
+  providerName: '<MenuMachineProvider />',
+  strict: false,
+})

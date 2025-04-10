@@ -7,12 +7,20 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
-   * The initial open state of the color picker.
+   * The initial color format when rendered.
+   * Use when you don't need to control the color format of the color picker.
+   * @default "rgba"
+   */
+  defaultFormat?: colorPicker.ColorFormat
+  /**
+   * The initial open state of the color picker when rendered.
+   * Use when you don't need to control the open state of the color picker.
    */
   defaultOpen?: boolean
   /**
-   * The initial value of the color picker when it is first rendered.
-   * Use when you do not need to control the state of the color picker.
+   * The initial color value when rendered.
+   * Use when you don't need to control the color value of the color picker.
+   * @default #000000
    */
   defaultValue?: colorPicker.Color
   /**
@@ -20,8 +28,7 @@ export interface RootProps {
    */
   disabled?: boolean
   /**
-   * The color format to use
-   * @default "rgba"
+   * The controlled color format to use
    */
   format?: colorPicker.ColorFormat
   /**
@@ -53,6 +60,10 @@ export interface RootProps {
    */
   initialFocusEl?: () => HTMLElement | null
   /**
+   * Whether the color picker is invalid
+   */
+  invalid?: boolean
+  /**
    * The v-model value of the color picker
    */
   modelValue?: colorPicker.Color
@@ -61,9 +72,14 @@ export interface RootProps {
    */
   name?: string
   /**
-   * Whether the color picker is open
+   * The controlled open state of the color picker
    */
   open?: boolean
+  /**
+   * Whether to auto focus the color picker when it is opened
+   * @default true
+   */
+  openAutoFocus?: boolean
   /**
    * The positioning options for the color picker
    */
@@ -111,5 +127,12 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: colorPicker.Color]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the format changes.
+   */
+  'update:format': [format: colorPicker.ColorFormat]
 }

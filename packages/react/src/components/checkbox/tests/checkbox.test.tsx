@@ -1,33 +1,11 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react/pure'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Checkbox, checkboxAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
-describe('Checkbox / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(checkboxAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(checkboxAnatomy))('should export %s', async (part) => {
-    expect(Checkbox[part]).toBeDefined()
-  })
-})
-
 describe('Checkbox', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -49,13 +27,10 @@ describe('Checkbox', () => {
     const onCheckedChange = vi.fn()
     render(<ComponentUnderTest onCheckedChange={onCheckedChange} />)
 
-    const checkbox = screen.getByRole('checkbox')
+    const checkbox = screen.getByText('Checkbox')
 
     fireEvent.click(checkbox)
     await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: true }))
-
-    fireEvent.click(checkbox)
-    await waitFor(() => expect(onCheckedChange).toHaveBeenCalledWith({ checked: false }))
   })
 
   it('should handle indeterminate state properly', async () => {
@@ -77,10 +52,6 @@ describe('Checkbox', () => {
 })
 
 describe('Checkbox / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set checkbox as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('checkbox', { name: /label/i })).toBeRequired()

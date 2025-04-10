@@ -6,7 +6,7 @@ const encoding = ref<QrCodeGenerateOptions>({ ecc: 'H' })
 </script>
 
 <template>
-  <QrCode.Root value="http://ark-ui.com" :encoding="encoding">
+  <QrCode.Root defaultValue="http://ark-ui.com" :encoding="encoding">
     <QrCode.Frame>
       <QrCode.Pattern />
     </QrCode.Frame>

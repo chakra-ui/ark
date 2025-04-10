@@ -1,59 +1,77 @@
 import * as tagsInput from '@zag-js/tags-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './tags-input.types'
 
-export interface UseTagsInputProps
-  extends Optional<Omit<tagsInput.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTagsInputProps extends Optional<Omit<tagsInput.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the tags input when it is first rendered.
-   * Use when you do not need to control the state of the tags input.
+   * The v-model value of the tags input
    */
-  defaultValue?: tagsInput.Context['value']
-  modelValue?: tagsInput.Context['value']
+  modelValue?: tagsInput.Props['value']
 }
+
 export interface UseTagsInputReturn extends ComputedRef<tagsInput.Api<PropTypes>> {}
 
-export const useTagsInput = (
-  props: UseTagsInputProps,
-  emit?: EmitFn<RootEmits>,
-): UseTagsInputReturn => {
+export const useTagsInput = (props: MaybeRef<UseTagsInputProps> = {}, emit?: EmitFn<RootEmits>): UseTagsInputReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
-  const context = computed<tagsInput.Context>(() => ({
-    id,
-    ids: {
-      label: field?.value.ids.label,
-      hiddenInput: field?.value.ids.control,
-    },
-    disabled: field?.value.disabled,
-    invalid: field?.value.invalid,
-    readOnly: field?.value.readOnly,
-    required: field?.value.required,
-    dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
-    getRootNode: env?.value.getRootNode,
-    onValueChange(details) {
-      emit?.('valueChange', details)
-      emit?.('update:modelValue', details.value)
-    },
-    onFocusOutside: (details) => emit?.('focusOutside', details),
-    onHighlightChange: (details) => emit?.('highlightChange', details),
-    onInputValueChange: (details) => emit?.('inputValueChange', details),
-    onInteractOutside: (details) => emit?.('interactOutside', details),
-    onPointerDownOutside: (details) => emit?.('pointerDownOutside', details),
-    onValueInvalid: (details) => emit?.('valueInvalid', details),
-    ...cleanProps(props),
-  }))
+  const context = computed<tagsInput.Props>(() => {
+    const localProps = toValue<UseTagsInputProps>(props)
 
-  const [state, send] = useMachine(tagsInput.machine(context.value), { context })
+    return {
+      id,
+      ids: {
+        label: field?.value.ids.label,
+        hiddenInput: field?.value.ids.control,
+      },
+      disabled: field?.value.disabled,
+      invalid: field?.value.invalid,
+      readOnly: field?.value.readOnly,
+      required: field?.value.required,
+      dir: locale.value.dir,
+      value: localProps.modelValue,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localProps),
+      onValueChange: (details) => {
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
+        localProps.onValueChange?.(details)
+      },
+      onFocusOutside: (details) => {
+        emit?.('focusOutside', details)
+        localProps.onFocusOutside?.(details)
+      },
+      onHighlightChange: (details) => {
+        emit?.('highlightChange', details)
+        localProps.onHighlightChange?.(details)
+      },
+      onInputValueChange: (details) => {
+        emit?.('inputValueChange', details)
+        emit?.('update:inputValue', details.inputValue)
+        localProps.onInputValueChange?.(details)
+      },
+      onInteractOutside: (details) => {
+        emit?.('interactOutside', details)
+        localProps.onInteractOutside?.(details)
+      },
+      onPointerDownOutside: (details) => {
+        emit?.('pointerDownOutside', details)
+        localProps.onPointerDownOutside?.(details)
+      },
+      onValueInvalid: (details) => {
+        emit?.('valueInvalid', details)
+        localProps.onValueInvalid?.(details)
+      },
+    }
+  })
 
-  return computed(() => tagsInput.connect(state.value, send, normalizeProps))
+  const service = useMachine(tagsInput.machine, context)
+  return computed(() => tagsInput.connect(service, normalizeProps))
 }

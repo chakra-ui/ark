@@ -3,11 +3,8 @@ export type {
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
-export {
-  TreeViewBranch,
-  type TreeViewBranchBaseProps,
-  type TreeViewBranchProps,
-} from './tree-view-branch'
+export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
+export { TreeViewBranch, type TreeViewBranchBaseProps, type TreeViewBranchProps } from './tree-view-branch'
 export {
   TreeViewBranchContent,
   type TreeViewBranchContentBaseProps,
@@ -18,6 +15,11 @@ export {
   type TreeViewBranchControlBaseProps,
   type TreeViewBranchControlProps,
 } from './tree-view-branch-control'
+export {
+  TreeViewBranchIndentGuide,
+  type TreeViewBranchIndentGuideBaseProps,
+  type TreeViewBranchIndentGuideProps,
+} from './tree-view-branch-indent-guide'
 export {
   TreeViewBranchIndicator,
   type TreeViewBranchIndicatorBaseProps,
@@ -33,52 +35,29 @@ export {
   type TreeViewBranchTriggerBaseProps,
   type TreeViewBranchTriggerProps,
 } from './tree-view-branch-trigger'
-export {
-  TreeViewContext,
-  type TreeViewContextProps,
-} from './tree-view-context'
-export {
-  TreeViewItem,
-  type TreeViewItemBaseProps,
-  type TreeViewItemProps,
-} from './tree-view-item'
-export {
-  TreeViewItemContext,
-  type TreeViewItemContextProps,
-} from './tree-view-item-context'
+export { TreeViewContext, type TreeViewContextProps } from './tree-view-context'
+export { TreeViewItem, type TreeViewItemBaseProps, type TreeViewItemProps } from './tree-view-item'
 export {
   TreeViewItemIndicator,
   type TreeViewItemIndicatorBaseProps,
   type TreeViewItemIndicatorProps,
 } from './tree-view-item-indicator'
+export { TreeViewItemText, type TreeViewItemTextBaseProps, type TreeViewItemTextProps } from './tree-view-item-text'
+export { TreeViewLabel, type TreeViewLabelBaseProps, type TreeViewLabelProps } from './tree-view-label'
+export { TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context'
 export {
-  TreeViewItemText,
-  type TreeViewItemTextBaseProps,
-  type TreeViewItemTextProps,
-} from './tree-view-item-text'
-export {
-  TreeViewLabel,
-  type TreeViewLabelBaseProps,
-  type TreeViewLabelProps,
-} from './tree-view-label'
-export {
-  TreeViewRoot,
-  type TreeViewRootBaseProps,
-  type TreeViewRootProps,
-} from './tree-view-root'
+  TreeViewNodeProvider,
+  type TreeViewNodeProviderBaseProps,
+  type TreeViewNodeProviderProps,
+} from './tree-view-node-provider'
+export { TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootProps } from './tree-view-root'
 export {
   TreeViewRootProvider,
   type TreeViewRootProviderBaseProps,
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider'
-export {
-  TreeViewTree,
-  type TreeViewTreeBaseProps,
-  type TreeViewTreeProps,
-} from './tree-view-tree'
+export { TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
-export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
-export { useTreeViewItemContext, type UseTreeViewItemContext } from './use-tree-view-item-context'
 
 export * as TreeView from './tree-view'

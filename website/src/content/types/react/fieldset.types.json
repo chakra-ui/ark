@@ -36,18 +36,14 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the fieldset is invalid."
-      }
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the fieldset is invalid." }
     },
     "element": "HTMLFieldSetElement"
   },
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ refs: { rootRef: RefObject<HTMLFieldSetElement>; }; disabled: boolean; invalid: boolean; getRootProps: () => Omit<DetailedHTMLProps<FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>, \"ref\">; getLegendProps: () => Omit<...>; getHelperTextProps: () => Omit<...>; getErrorTextProps: () => Omit<...>; }",
+        "type": "{ refs: { rootRef: RefObject<HTMLFieldSetElement | null>; }; disabled: boolean; invalid: boolean; getRootProps: () => Omit<DetailedHTMLProps<FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>, \"ref\">; getLegendProps: () => Omit<...>; getHelperTextProps: () => Omit<...>; getErrorTextProps: () => Omit<....",
         "isRequired": true
       },
       "asChild": {

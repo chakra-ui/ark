@@ -76,34 +76,22 @@
       "defaultValue": {
         "type": "string",
         "isRequired": false,
-        "description": "The initial value of the number input when it is first rendered.\nUse when you do not need to control the state of the number input."
+        "description": "The initial value of the input when rendered.\nUse when you don't need to control the value of the input."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the number input is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the number input is disabled." },
       "focusInputOnChange": {
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
         "description": "Whether to focus input when the value changes"
       },
-      "form": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The associate form of the input element."
-      },
+      "form": { "type": "string", "isRequired": false, "description": "The associate form of the input element." },
       "formatOptions": {
         "type": "NumberFormatOptions",
         "isRequired": false,
         "description": "The options to pass to the `Intl.NumberFormat` constructor"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  label: string\n  input: string\n  incrementTrigger: string\n  decrementTrigger: string\n  scrubber: string\n}>",
         "isRequired": false,
@@ -164,16 +152,8 @@
         "isRequired": false,
         "description": "The pattern used to check the <input> element's value against"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the number input is readonly"
-      },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the number input is required"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the number input is readonly" },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the number input is required" },
       "spinOnPress": {
         "type": "boolean",
         "defaultValue": "true",
@@ -191,7 +171,7 @@
         "isRequired": false,
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
-      "value": { "type": "string", "isRequired": false, "description": "The value of the input" }
+      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the input" }
     },
     "element": "HTMLDivElement"
   },

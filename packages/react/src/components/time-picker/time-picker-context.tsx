@@ -5,5 +5,4 @@ export interface TimePickerContextProps {
   children: (context: UseTimePickerContext) => ReactNode
 }
 
-export const TimePickerContext = (props: TimePickerContextProps) =>
-  props.children(useTimePickerContext())
+export const TimePickerContext = (props: TimePickerContextProps) => props.children(useTimePickerContext())

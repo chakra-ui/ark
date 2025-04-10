@@ -1,21 +1,25 @@
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/solid'
 import { createEffect, createMemo, createSignal } from 'solid-js'
-import type { Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '../../utils/render-strategy'
+import { runIfFn } from '../../utils/run-if-fn'
 
-export interface UsePresenceProps
-  extends Optional<presence.Context, 'present'>,
-    RenderStrategyProps {}
+export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
+  /**
+   * Whether to allow the initial presence animation.
+   * @default false
+   */
+  skipAnimationOnMount?: boolean
+}
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
-export const usePresence = (props: UsePresenceProps) => {
-  const [renderStrategyProps, context] = splitRenderStrategyProps(props)
+export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
+  const [renderStrategyProps, localProps] = splitRenderStrategyProps(runIfFn(props))
   const [wasEverPresent, setWasEverPresent] = createSignal(false)
-  const [state, send] = useMachine(presence.machine(context), {
-    context,
-  })
-  const api = createMemo(() => presence.connect(state, send, normalizeProps))
+
+  const service = useMachine(presence.machine, props)
+  const api = createMemo(() => presence.connect(service, normalizeProps))
 
   createEffect(() => {
     const present = api().present
@@ -27,10 +31,10 @@ export const usePresence = (props: UsePresenceProps) => {
       (!api().present && !wasEverPresent() && renderStrategyProps.lazyMount) ||
       (renderStrategyProps.unmountOnExit && !api().present && wasEverPresent()),
     present: api().present,
+    ref: api().setNode,
     presenceProps: {
-      ref: api().setNode,
       hidden: !api().present,
-      'data-state': context.present ? 'open' : 'closed',
+      'data-state': api().skip && localProps.skipAnimationOnMount ? undefined : localProps.present ? 'open' : 'closed',
     },
   }))
 }

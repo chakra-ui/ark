@@ -1,6 +1,5 @@
-import type { ListCollection } from '@zag-js/collection'
 import type * as combobox from '@zag-js/combobox'
-import type { CollectionItem } from '../collection'
+import type { CollectionItem, ListCollection } from '../collection'
 
 export interface RootProps<T extends CollectionItem> {
   /**
@@ -16,18 +15,34 @@ export interface RootProps<T extends CollectionItem> {
    */
   closeOnSelect?: boolean
   /**
+   * The collection of items
+   */
+  collection?: ListCollection<T>
+  /**
    * Whether the combobox is a composed with other composite widgets like tabs
    * @default true
    */
   composite?: boolean
   /**
-   * The initial open state of the combobox when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial highlighted value of the combobox when rendered.
+   * Use when you don't need to control the highlighted value of the combobox.
+   */
+  defaultHighlightedValue?: string
+  /**
+   * The initial value of the combobox's input when rendered.
+   * Use when you don't need to control the value of the combobox's input.
+   * @default ""
+   */
+  defaultInputValue?: string
+  /**
+   * The initial open state of the combobox when rendered.
+   * Use when you don't need to control the open state of the combobox.
    */
   defaultOpen?: boolean
   /**
-   * The initial value of the combobox when it is first rendered.
-   * Use when you do not need to control the state of the combobox.
+   * The initial value of the combobox's selected items when rendered.
+   * Use when you don't need to control the value of the combobox's selected items.
+   * @default []
    */
   defaultValue?: string[]
   /**
@@ -43,11 +58,7 @@ export interface RootProps<T extends CollectionItem> {
    */
   form?: string
   /**
-   * Function to get the display value of the selected item
-   */
-  getSelectionValue?: (details: combobox.SelectionValueDetails<T>) => string
-  /**
-   * The active item's id. Used to set the `aria-activedescendant` attribute
+   * The controlled highlighted value of the combobox
    */
   highlightedValue?: string
   /**
@@ -80,7 +91,7 @@ export interface RootProps<T extends CollectionItem> {
    */
   inputBehavior?: 'autohighlight' | 'autocomplete' | 'none'
   /**
-   * The current value of the combobox's input
+   * The controlled value of the combobox's input
    */
   inputValue?: string
   /**
@@ -88,16 +99,12 @@ export interface RootProps<T extends CollectionItem> {
    */
   invalid?: boolean
   /**
-   * The collection of items to display in the combobox
-   */
-  collection: ListCollection<T>
-  /**
    * Whether to loop the keyboard navigation through the items
    * @default true
    */
   loopFocus?: boolean
   /**
-   * The current selected values of the combobox's input
+   * The v-model value of the combobox
    */
   modelValue?: string[]
   /**
@@ -112,7 +119,11 @@ export interface RootProps<T extends CollectionItem> {
    */
   name?: string
   /**
-   * Whether the combobox is open
+   * Function to navigate to the selected item
+   */
+  navigate?: (details: combobox.NavigateDetails) => void
+  /**
+   * The controlled open state of the combobox
    */
   open?: boolean
   /**
@@ -136,6 +147,7 @@ export interface RootProps<T extends CollectionItem> {
   placeholder?: string
   /**
    * The positioning options to dynamically position the menu
+   * @default { placement: "bottom-start" }
    */
   positioning?: combobox.PositioningOptions
   /**
@@ -198,11 +210,23 @@ export type RootEmits<T extends CollectionItem> = {
    */
   valueChange: [details: combobox.ValueChangeDetails<T>]
   /**
+   * Function called when an item is selected
+   */
+  select: [details: { value: string[]; itemValue: string }]
+  /**
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: string[]]
   /**
-   * Event handler called when the open state of the combobox changes.
+   * The callback fired when the highlighted value changes.
    */
-  'update:open': [open: boolean]
+  'update:highlightedValue': [value: string | null]
+  /**
+   * The callback fired when the input value changes.
+   */
+  'update:inputValue': [value: string]
+  /**
+   * The callback fired when the open state changes.
+   */
+  'update:open': [value: boolean]
 }

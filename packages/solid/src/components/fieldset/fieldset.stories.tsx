@@ -7,5 +7,5 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { WithField } from './examples/with-field'
 export { WithCheckbox } from './examples/with-checkbox'
+export { WithField } from './examples/with-field'

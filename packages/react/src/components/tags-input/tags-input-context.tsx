@@ -5,5 +5,4 @@ export interface TagsInputContextProps {
   children: (context: UseTagsInputContext) => ReactNode
 }
 
-export const TagsInputContext = (props: TagsInputContextProps) =>
-  props.children(useTagsInputContext())
+export const TagsInputContext = (props: TagsInputContextProps) => props.children(useTagsInputContext())

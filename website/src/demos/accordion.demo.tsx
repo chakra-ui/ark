@@ -14,8 +14,8 @@ export const Demo = (props: Accordion.RootProps) => {
             </Accordion.ItemIndicator>
           </Accordion.ItemTrigger>
           <Accordion.ItemContent>
-            Pudding donut gummies chupa chups oat cake marzipan biscuit tart. Dessert macaroon ice
-            cream bonbon jelly. Jelly topping tiramisu halvah lollipop.
+            Pudding donut gummies chupa chups oat cake marzipan biscuit tart. Dessert macaroon ice cream bonbon jelly.
+            Jelly topping tiramisu halvah lollipop.
           </Accordion.ItemContent>
         </Accordion.Item>
       ))}

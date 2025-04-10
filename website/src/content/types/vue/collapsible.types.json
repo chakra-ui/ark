@@ -8,17 +8,26 @@
       }
     }
   },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "emits": {
       "exitComplete": {
         "type": "[]",
         "isRequired": true,
-        "description": "Function called when the animation ends in the closed state."
+        "description": "The callback invoked when the exit animation completes."
       },
       "openChange": {
         "type": "[details: OpenChangeDetails]",
         "isRequired": true,
-        "description": "Function called when the popup is opened"
+        "description": "The callback invoked when the open state changes."
       },
       "update:open": {
         "type": "[open: boolean]",
@@ -35,18 +44,10 @@
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The initial open state of the collapsible when it is first rendered.\nUse when you do not need to control its open state."
+        "description": "The initial open state of the collapsible when rendered.\nUse when you don't need to control the open state of the collapsible."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the collapsible is disabled"
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the collapsible is disabled." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; content: string; trigger: string }>",
         "isRequired": false,
@@ -61,7 +62,7 @@
       "open": {
         "type": "boolean",
         "isRequired": false,
-        "description": "The controlled open state of the collapsible. Can be binded with v-model."
+        "description": "The controlled open state of the collapsible."
       },
       "unmountOnExit": {
         "type": "boolean",

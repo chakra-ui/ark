@@ -26,7 +26,9 @@ export const Navbar = () => {
           <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
             <NavbarLinks framework={framework} />
             <Divider orientation="vertical" h="6" />
-            <FrameworkSelect />
+            <div id="framework-select">
+              <FrameworkSelect />
+            </div>
             <Divider orientation="vertical" h="6" />
             <HStack gap="2">
               <HStack gap="0">
@@ -38,7 +40,7 @@ export const Navbar = () => {
             </HStack>
           </HStack>
           <HStack gap="1" py="0.5" display={{ base: 'flex', md: 'none' }}>
-            <CommandMenu data={data} />
+            {/* <CommandMenu data={data} /> */}
             <MobileNavbar>
               <Stack gap="0" width="17rem">
                 <MobileNavbarLinks framework={framework} />

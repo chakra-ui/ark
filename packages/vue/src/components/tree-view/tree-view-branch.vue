@@ -1,9 +1,8 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import type { ItemProps } from './use-tree-view-branch-context'
 
-export interface TreeViewBranchBaseProps extends ItemProps, PolymorphicProps {}
+export interface TreeViewBranchBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchProps
   extends TreeViewBranchBaseProps,
     /**
@@ -13,27 +12,31 @@ export interface TreeViewBranchProps
 </script>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { ark } from '../factory'
-import { TreeViewBranchProvider } from './use-tree-view-branch-context'
+import { useForwardExpose, useRenderStrategyProps } from '../../utils'
+import { Collapsible } from '../collapsible'
 import { useTreeViewContext } from './use-tree-view-context'
-import { TreeViewDepthProvider, useTreeViewDepthContext } from './use-tree-view-depth-context'
-import { useForwardExpose } from '../../utils'
+import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-const props = defineProps<TreeViewBranchProps>()
+defineProps<TreeViewBranchProps>()
 
 const treeView = useTreeViewContext()
-const depth = useTreeViewDepthContext()
-const branchProps = computed(() => ({ ...props, depth }))
-
-TreeViewBranchProvider(branchProps.value)
-TreeViewDepthProvider(depth + 1)
+const nodeProps = useTreeViewNodePropsContext()
+const renderStrategyProps = useRenderStrategyProps()
+const nodeState = computed(() => treeView.value.getNodeState(nodeProps))
+const branchContentProps = computed(() => treeView.value.getBranchContentProps(nodeProps))
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.li v-bind="treeView.getBranchProps(branchProps)" :as-child="asChild">
+  <Collapsible.Root
+    :open="nodeState.expanded"
+    :ids="{ content: branchContentProps.id }"
+    v-bind="treeView.getBranchProps(nodeProps)"
+    :lazy-mount="renderStrategyProps.lazyMount"
+    :unmount-on-exit="renderStrategyProps.unmountOnExit"
+    :as-child="asChild"
+  >
     <slot />
-  </ark.li>
+  </Collapsible.Root>
 </template>

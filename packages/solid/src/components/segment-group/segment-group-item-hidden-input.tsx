@@ -4,9 +4,7 @@ import { useSegmentGroupContext } from './use-segment-group-context'
 import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
 export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface SegmentGroupItemHiddenInputProps
-  extends HTMLProps<'input'>,
-    SegmentGroupItemHiddenInputBaseProps {}
+export interface SegmentGroupItemHiddenInputProps extends HTMLProps<'input'>, SegmentGroupItemHiddenInputBaseProps {}
 
 export const SegmentGroupItemHiddenInput = (props: SegmentGroupItemHiddenInputProps) => {
   const segmentGroup = useSegmentGroupContext()

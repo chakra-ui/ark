@@ -4,27 +4,22 @@ import { useId } from 'react'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 
-export interface UseProgressProps
-  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {}
-
+export interface UseProgressProps extends Optional<Omit<progress.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseProgressReturn extends progress.Api<PropTypes> {}
 
-export const useProgress = (props: UseProgressProps): UseProgressReturn => {
+export const useProgress = (props?: UseProgressProps): UseProgressReturn => {
+  const id = useId()
   const { getRootNode } = useEnvironmentContext()
-  const { dir } = useLocaleContext()
+  const { dir, locale } = useLocaleContext()
 
-  const initialContext: progress.Context = {
-    id: useId(),
+  const machineProps: progress.Props = {
+    id,
     dir,
+    locale,
     getRootNode,
     ...props,
   }
 
-  const context: progress.Context = {
-    ...initialContext,
-    value: props.value,
-  }
-
-  const [state, send] = useMachine(progress.machine(initialContext), { context })
-  return progress.connect(state, send, normalizeProps)
+  const service = useMachine(progress.machine, machineProps)
+  return progress.connect(service, normalizeProps)
 }

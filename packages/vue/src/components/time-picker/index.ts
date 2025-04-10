@@ -24,10 +24,7 @@ export {
   type TimePickerContentBaseProps,
   type TimePickerContentProps,
 } from './time-picker-content.vue'
-export {
-  default as TimePickerContext,
-  type TimePickerContextProps,
-} from './time-picker-context.vue'
+export { default as TimePickerContext, type TimePickerContextProps } from './time-picker-context.vue'
 export {
   default as TimePickerControl,
   type TimePickerControlBaseProps,
@@ -68,6 +65,7 @@ export {
   type TimePickerTriggerBaseProps,
   type TimePickerTriggerProps,
 } from './time-picker-trigger.vue'
+export { timePickerAnatomy } from './time-picker.anatomy'
 export { useTimePicker, type UseTimePickerProps, type UseTimePickerReturn } from './use-time-picker'
 export { useTimePickerContext, type UseTimePickerContext } from './use-time-picker-context'
 

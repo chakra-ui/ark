@@ -1,8 +1,8 @@
 import { type Pages, pages } from '.velite'
 
+export const categories = ['overview', 'guides', 'components', 'utilities']
 export const getSidebarGroups = (): Pages[][] => {
-  const categories = ['overview', 'guides', 'components', 'utilities']
-  const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about']
+  const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about', 'llms.txt']
 
   const sortedCategories = pages.reduce<Record<string, Pages[]>>((acc, page) => {
     const category = page.category
@@ -17,9 +17,7 @@ export const getSidebarGroups = (): Pages[][] => {
 
   // Sort pages within the 'overview' category by priority
   if (sortedCategories.overview) {
-    sortedCategories.overview.sort(
-      (a, b) => overviewPriority.indexOf(a.id) - overviewPriority.indexOf(b.id),
-    )
+    sortedCategories.overview.sort((a, b) => overviewPriority.indexOf(a.id) - overviewPriority.indexOf(b.id))
   }
 
   return (

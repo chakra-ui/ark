@@ -1,27 +1,42 @@
 import * as progress from '@zag-js/progress'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { Optional } from '../../types'
+import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
+import type { RootEmits } from './progress.types'
 
-export interface UseProgressProps
-  extends Optional<Omit<progress.Context, 'dir' | 'getRootNode'>, 'id'> {}
+export interface UseProgressProps extends Optional<Omit<progress.Props, 'dir' | 'getRootNode'>, 'id'> {
+  /**
+   * The v-model value of the progress
+   */
+  modelValue?: progress.Props['value']
+}
 export interface UseProgressReturn extends ComputedRef<progress.Api<PropTypes>> {}
 
-export const useProgress = (props: UseProgressProps): UseProgressReturn => {
+export const useProgress = (props: MaybeRef<UseProgressProps> = {}, emit?: EmitFn<RootEmits>): UseProgressReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<progress.Context>(() => ({
-    id,
-    dir: locale.value.dir,
-    getRootNode: env?.value.getRootNode,
-    ...cleanProps(props),
-  }))
+  const context = computed<progress.Props>(() => {
+    const localeProps = toValue<UseProgressProps>(props)
 
-  const [state, send] = useMachine(progress.machine(context.value), { context })
+    return {
+      id,
+      dir: locale.value.dir,
+      locale: locale.value.locale,
+      value: localeProps.modelValue,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localeProps),
+      onValueChange: (details) => {
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
+        localeProps.onValueChange?.(details)
+      },
+    }
+  })
 
-  return computed(() => progress.connect(state.value, send, normalizeProps))
+  const service = useMachine(progress.machine, context)
+  return computed(() => progress.connect(service, normalizeProps))
 }

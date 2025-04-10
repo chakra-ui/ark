@@ -3,7 +3,7 @@ import { Portal } from 'solid-js/web'
 
 export const Basic = () => {
   return (
-    <Dialog.Root open>
+    <Dialog.Root defaultOpen>
       <Dialog.Trigger>Open Dialog</Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />

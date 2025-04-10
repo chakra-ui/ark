@@ -11,10 +11,7 @@ export interface ColorPickerChannelSliderLabelProps
 export const ColorPickerChannelSliderLabel = (props: ColorPickerChannelSliderLabelProps) => {
   const colorPicker = useColorPickerContext()
   const channelProps = useColorPickerChannelPropsContext()
-  const mergedProps = mergeProps(
-    () => colorPicker().getChannelSliderLabelProps(channelProps),
-    props,
-  )
+  const mergedProps = mergeProps(() => colorPicker().getChannelSliderLabelProps(channelProps), props)
 
   return <ark.label {...mergedProps} />
 }

@@ -1,1 +1,1 @@
-import './main.css'
+import '@ark-ui/shared/styles.css'

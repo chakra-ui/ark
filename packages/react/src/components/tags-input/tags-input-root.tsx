@@ -15,6 +15,7 @@ export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((pro
     'allowOverflow',
     'autoFocus',
     'blurBehavior',
+    'defaultInputValue',
     'defaultValue',
     'delimiter',
     'disabled',

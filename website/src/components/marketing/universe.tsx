@@ -15,11 +15,11 @@ export const Universe = () => {
         }}
         backgroundRepeat="repeat-x"
         width="full"
-        mt={{ base: '16', md: '24' }}
+        mt={{ base: '16', md: '16' }}
       >
         <Container pt={{ base: '16', md: '40' }}>
           <Heading textAlign="center" textStyle="4xl" maxW="3xl" mx="auto" fontWeight="semibold">
-            Driven by <span className={css({ color: 'accent.default' })}>State Machines</span>
+            Driven by <span className={css({ color: 'colorPalette.default' })}>State Machines</span>
             <br /> to make your life easier.
           </Heading>
         </Container>
@@ -54,8 +54,8 @@ export const Universe = () => {
       <Container pb={{ base: '16', md: '24' }}>
         <Stack align="center" gap={{ base: '8', md: '10' }}>
           <Text color="fg.muted" textStyle={{ base: 'lg', md: 'xl' }} textAlign="center" maxW="3xl">
-            Utilizing state machines, Ark UI substantially cuts down on errors while ensuring
-            predictable behavior in every component. Develop with confidence.
+            Utilizing state machines, Ark UI substantially cuts down on errors while ensuring predictable behavior in
+            every component. Develop with confidence.
           </Text>
         </Stack>
       </Container>

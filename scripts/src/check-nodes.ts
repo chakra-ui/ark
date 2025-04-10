@@ -39,9 +39,7 @@ function groupItems(items: Item[]): void {
     }
   }
 
-  const result = Array.from(groupedItems).filter(
-    ([_, nodes]) => nodes.length > 1 && new Set(nodes).size > 1,
-  )
+  const result = Array.from(groupedItems).filter(([_, nodes]) => nodes.length > 1 && new Set(nodes).size > 1)
 
   if (result.length > 0) {
     console.log('The following components have mixed nodes:')

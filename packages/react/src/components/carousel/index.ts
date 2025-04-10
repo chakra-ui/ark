@@ -1,33 +1,23 @@
-export type { SlideChangeDetails as CarouselSlideChangeDetails } from '@zag-js/carousel'
+export type {
+  AutoplayStatusDetails as CarouselAutoplayStatusDetails,
+  DragStatusDetails as CarouselDragStatusDetails,
+  PageChangeDetails as CarouselPageChangeDetails,
+} from '@zag-js/carousel'
 export {
-  CarouselContext,
-  type CarouselContextProps,
-} from './carousel-context'
-export {
-  CarouselControl,
-  type CarouselControlBaseProps,
-  type CarouselControlProps,
-} from './carousel-control'
-export {
-  CarouselIndicator,
-  type CarouselIndicatorBaseProps,
-  type CarouselIndicatorProps,
-} from './carousel-indicator'
+  CarouselAutoplayTrigger,
+  type CarouselAutoplayTriggerBaseProps,
+  type CarouselAutoplayTriggerProps,
+} from './carousel-autoplay-trigger'
+export { CarouselContext, type CarouselContextProps } from './carousel-context'
+export { CarouselControl, type CarouselControlBaseProps, type CarouselControlProps } from './carousel-control'
+export { CarouselIndicator, type CarouselIndicatorBaseProps, type CarouselIndicatorProps } from './carousel-indicator'
 export {
   CarouselIndicatorGroup,
   type CarouselIndicatorGroupBaseProps,
   type CarouselIndicatorGroupProps,
 } from './carousel-indicator-group'
-export {
-  CarouselItem,
-  type CarouselItemBaseProps,
-  type CarouselItemProps,
-} from './carousel-item'
-export {
-  CarouselItemGroup,
-  type CarouselItemGroupBaseProps,
-  type CarouselItemGroupProps,
-} from './carousel-item-group'
+export { CarouselItem, type CarouselItemBaseProps, type CarouselItemProps } from './carousel-item'
+export { CarouselItemGroup, type CarouselItemGroupBaseProps, type CarouselItemGroupProps } from './carousel-item-group'
 export {
   CarouselNextTrigger,
   type CarouselNextTriggerBaseProps,
@@ -38,21 +28,12 @@ export {
   type CarouselPrevTriggerBaseProps,
   type CarouselPrevTriggerProps,
 } from './carousel-prev-trigger'
-export {
-  CarouselRoot,
-  type CarouselRootBaseProps,
-  type CarouselRootProps,
-} from './carousel-root'
+export { CarouselRoot, type CarouselRootBaseProps, type CarouselRootProps } from './carousel-root'
 export {
   CarouselRootProvider,
   type CarouselRootProviderBaseProps,
   type CarouselRootProviderProps,
 } from './carousel-root-provider'
-export {
-  CarouselViewport,
-  type CarouselViewportBaseProps,
-  type CarouselViewportProps,
-} from './carousel-viewport'
 export { carouselAnatomy } from './carousel.anatomy'
 export { useCarousel, type UseCarouselProps, type UseCarouselReturn } from './use-carousel'
 export { useCarouselContext, type UseCarouselContext } from './use-carousel-context'

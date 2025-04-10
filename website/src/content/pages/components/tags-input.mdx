@@ -16,18 +16,17 @@ To set up the tags input correctly, you'll need to understand its anatomy and ho
 
 ## Examples
 
-Learn how to use the `TagsInput` component in your project. Let's take a look at the most basic
-example:
+Learn how to use the `TagsInput` component in your project. Let's take a look at the most basic example:
 
 <Example id="basic" />
 
 ### Navigating and Editing tags
 
-When the input has an empty value or the caret is at the start position, the tags can be selected by
-using the arrow left and arrow right keys. When "visual" focus in on any tag:
+When the input has an empty value or the caret is at the start position, the tags can be selected by using the arrow
+left and arrow right keys. When "visual" focus in on any tag:
 
-- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit mode, allowing the
-  user change its value and press <kbd>Enter</kbd> to commit the changes.
+- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit mode, allowing the user change its value
+  and press <kbd>Enter</kbd> to commit the changes.
 - Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that has _visual_ focus.
 
 ### Setting the initial tags
@@ -38,18 +37,16 @@ To set the initial tag values, set the `defaultValue` prop.
 
 ### Limiting the number of tags
 
-To limit the number of tags within the component, you can set the `max` property to the limit you
-want. The default value is `Infinity`.
+To limit the number of tags within the component, you can set the `max` property to the limit you want. The default
+value is `Infinity`.
 
-When the tag reaches the limit, new tags cannot be added except the `allowOverflow` prop is set to
-`true`.
+When the tag reaches the limit, new tags cannot be added except the `allowOverflow` prop is set to `true`.
 
 <Example id="max-with-overflow" />
 
 ### Validating Tags
 
-Before a tag is added, the `validate` function is called to determine whether to accept or reject a
-tag.
+Before a tag is added, the `validate` function is called to determine whether to accept or reject a tag.
 
 A common use-case for validating tags is preventing duplicates or validating the data type.
 
@@ -57,8 +54,8 @@ A common use-case for validating tags is preventing duplicates or validating the
 
 ### Blur behavior
 
-When the tags input is blurred, you can configure the action the component should take by passing
-the `blurBehavior` prop.
+When the tags input is blurred, you can configure the action the component should take by passing the `blurBehavior`
+prop.
 
 - `add` — Adds the tag to the list of tags.
 - `clear` — Clears the tags input value.
@@ -90,17 +87,25 @@ During the lifetime of the tags input interaction, here's a list of events we em
 
 - `onValueChange` — invoked when the tag value changes.
 - `onHighlightChange` — invoked when a tag has visual focus.
-- `onValueInvalid` — invoked when the max tag count is reached or the `validate` function returns
-  `false`.
+- `onValueInvalid` — invoked when the max tag count is reached or the `validate` function returns `false`.
 
 <Example id="on-event" />
 
 ### Using the Field Component
 
-The `Field` component helps manage form-related state and accessibility attributes of a tags input.
-It includes handling ARIA labels, helper text, and error text to ensure proper accessibility.
+The `Field` component helps manage form-related state and accessibility attributes of a tags input. It includes handling
+ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
+
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the tags-input. It accepts the value of the `useTags-input` hook.
+You can leverage it to access the component state and methods from outside the tags-input.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ## API Reference
 

@@ -19,9 +19,9 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, ToggleGroup.RootBaseProps>, ToggleGroupVariantProps>
 >(ToggleGroup.Root, 'root')
 
-export const Item = withContext<
-  HTMLButtonElement,
-  Assign<HTMLStyledProps<'button'>, ToggleGroup.ItemBaseProps>
->(ToggleGroup.Item, 'item')
+export const Item = withContext<HTMLButtonElement, Assign<HTMLStyledProps<'button'>, ToggleGroup.ItemBaseProps>>(
+  ToggleGroup.Item,
+  'item',
+)
 
 export const Context = ToggleGroup.Context

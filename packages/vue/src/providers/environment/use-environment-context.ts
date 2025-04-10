@@ -3,7 +3,7 @@ import { createContext } from '../../utils'
 
 export type RootNode = ShadowRoot | Document | Node
 
-export interface EnvironmentContext {
+export interface UseEnvironmentContext {
   /**
    * The root node of the application.
    * This is used to determine the window and document objects.
@@ -20,4 +20,4 @@ export interface EnvironmentContext {
 }
 
 export const [EnvironmentContextProvider, useEnvironmentContext] =
-  createContext<ComputedRef<EnvironmentContext> | null>('EnvironmentContext')
+  createContext<ComputedRef<UseEnvironmentContext> | null>('EnvironmentContext')

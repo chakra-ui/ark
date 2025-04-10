@@ -1,21 +1,35 @@
 import { ChevronDownIcon } from 'lucide-react'
 import { Accordion } from '~/components/ui/accordion'
-import { Icon } from '~/components/ui/icon'
 import { Link } from '~/components/ui/link'
 
 export const Faq = () => {
   const questions = [
     {
-      question: 'How does Ark UI support multiple JavaScript frameworks?',
+      question: 'What is Ark UI?',
       answer: (
         <div>
-          Ark UI leverages{' '}
-          <Link href="https://zagjs.com/" target="_blank">
-            Zag.js
-          </Link>{' '}
-          to provide support for multiple JavaScript frameworks. Zag.js is a lightweight library
-          that builds upon the latest concepts in Statecharts, enabling seamless integration across
-          different frameworks.
+          Ark UI is a powerful headless component library that provides more than 40+ components and tools to help you
+          build accessible, complex, and feature-rich UI design systems.
+        </div>
+      ),
+    },
+    {
+      question: "Isn't support for multiple frameworks bad for performance?",
+      answer: (
+        <div>
+          No - in fact, the opposite is true. In our latest release, Ark UI{' '}
+          <Link href="/react/docs/overview/changelog#500---2025-03-06">outperformed</Link> other headless component
+          libraries that were built exclusively for a single framework.
+        </div>
+      ),
+    },
+    {
+      question: "Isn't supporting multiple frameworks time-consuming?",
+      answer: (
+        <div>
+          Not really. At its core, most components are designed as finite state machines that interact solely with the
+          DOM. Framework-specific adapters handle events and state management, ensuring that multi-framework support
+          remains lightweight and highly efficient.
         </div>
       ),
     },
@@ -23,27 +37,11 @@ export const Faq = () => {
       question: 'Which JavaScript frameworks are supported?',
       answer: (
         <div>
-          Built on{' '}
-          <Link href="https://zagjs.com/" target="_blank">
-            Zag.js
-          </Link>
-          , Ark UI currently supports the following JavaScript frameworks: React, Solid, and Vue. We
-          plan to extend support to Svelte later this year.
-        </div>
-      ),
-    },
-    {
-      question: 'Why support various JavaScript frameworks?',
-      answer: (
-        <div>
-          Supporting multiple JavaScript frameworks enables flexible design systems that are
-          compatible across various platforms. This approach provides developers with the freedom to
-          select the tools that best suit their expertise and project requirements.
+          Ark UI currently supports React, Solid, and Vue. We began development for Svelte support earlier this year.
         </div>
       ),
     },
   ]
-
   return (
     <Accordion.Root defaultValue={[questions[0].question]} multiple className="not-prose">
       {questions.map((item, id) => (

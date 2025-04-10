@@ -1,16 +1,12 @@
 import { render } from '@solidjs/testing-library'
-import { Splitter, splitterAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
+import { axe } from 'vitest-axe'
 import { ComponentUnderTest } from './basic'
 
 describe('Splitter', () => {
-  it.each(getParts(splitterAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
+  it('should have no a11y violations', async () => {
+    const { container } = render(() => <ComponentUnderTest />)
+    const results = await axe(container)
 
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(splitterAnatomy))('should export %s', async (part) => {
-    expect(Splitter[part]).toBeDefined()
+    expect(results).toHaveNoViolations()
   })
 })

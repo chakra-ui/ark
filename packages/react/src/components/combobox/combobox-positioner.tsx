@@ -7,18 +7,16 @@ import { useComboboxContext } from './use-combobox-context'
 export interface ComboboxPositionerBaseProps extends PolymorphicProps {}
 export interface ComboboxPositionerProps extends HTMLProps<'div'>, ComboboxPositionerBaseProps {}
 
-export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>(
-  (props, ref) => {
-    const combobox = useComboboxContext()
-    const presence = usePresenceContext()
-    const mergedProps = mergeProps(combobox.getPositionerProps(), props)
+export const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>((props, ref) => {
+  const combobox = useComboboxContext()
+  const presence = usePresenceContext()
+  const mergedProps = mergeProps(combobox.getPositionerProps(), props)
 
-    if (presence.unmounted) {
-      return null
-    }
+  if (presence.unmounted) {
+    return null
+  }
 
-    return <ark.div {...mergedProps} ref={ref} />
-  },
-)
+  return <ark.div {...mergedProps} ref={ref} />
+})
 
 ComboboxPositioner.displayName = 'ComboboxPositioner'

@@ -26,6 +26,9 @@ export default defineConfig({
     setupFiles: 'src/setup-test.ts',
     globals: true,
     environment: 'jsdom',
+    coverage: {
+      provider: 'v8',
+    },
     testTransformMode: {
       web: ['/.[tj]sx$/'],
     },
@@ -34,14 +37,11 @@ export default defineConfig({
     target: 'esnext',
     minify: false,
     lib: {
-      entry: globbySync('src/**/index.ts'),
+      entry: globbySync(['src/**/index.ts', 'src/components/anatomy.ts']),
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
-      external: [
-        ...Object.keys(pkg.dependencies ?? {}),
-        ...Object.keys(pkg.peerDependencies ?? {}),
-      ],
+      external: [...Object.keys(pkg.dependencies ?? {}), ...Object.keys(pkg.peerDependencies ?? {})],
       output: [
         {
           format: 'cjs',

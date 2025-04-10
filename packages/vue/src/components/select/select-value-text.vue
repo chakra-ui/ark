@@ -14,14 +14,13 @@ export interface SelectValueTextProps
 </script>
 
 <script setup lang="ts">
-import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useForwardExpose } from '../../utils'
 
 const props = defineProps<SelectValueTextProps>()
 const select = useSelectContext()
-const slots = useSlots()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>

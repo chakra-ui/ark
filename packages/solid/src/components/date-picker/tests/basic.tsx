@@ -69,9 +69,7 @@ export const ComponentUnderTest = (props: DatePicker.RootProps) => (
                           <DatePicker.TableRow>
                             {months.map((month) => (
                               <DatePicker.TableCell value={month.value}>
-                                <DatePicker.TableCellTrigger>
-                                  {month.label}
-                                </DatePicker.TableCellTrigger>
+                                <DatePicker.TableCellTrigger>{month.label}</DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             ))}
                           </DatePicker.TableRow>
@@ -101,9 +99,7 @@ export const ComponentUnderTest = (props: DatePicker.RootProps) => (
                           <DatePicker.TableRow>
                             {years.map((year) => (
                               <DatePicker.TableCell value={year.value}>
-                                <DatePicker.TableCellTrigger>
-                                  {year.label}
-                                </DatePicker.TableCellTrigger>
+                                <DatePicker.TableCellTrigger>{year.label}</DatePicker.TableCellTrigger>
                               </DatePicker.TableCell>
                             ))}
                           </DatePicker.TableRow>

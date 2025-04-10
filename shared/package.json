@@ -1,0 +1,6 @@
+{
+  "name": "@ark-ui/shared",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "private": true
+}

@@ -21,9 +21,7 @@ const props = defineProps<DialogRootProviderProps>()
 const dialog = computed(() => props.value)
 
 DialogProvider(dialog)
-RenderStrategyPropsProvider(
-  computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })),
-)
+RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
 
 useForwardExpose()
 </script>

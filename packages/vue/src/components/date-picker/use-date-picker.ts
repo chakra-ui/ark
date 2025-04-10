@@ -1,64 +1,62 @@
 import * as datePicker from '@zag-js/date-picker'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './date-picker.types'
 
-export interface UseDatePickerProps
-  extends Optional<
-    Omit<datePicker.Context, 'dir' | 'getRootNode' | 'parse' | 'open.controlled' | 'value'>,
-    'id'
-  > {
+export interface UseDatePickerProps extends Optional<Omit<datePicker.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
    * The v-model value of the date picker
    */
-  modelValue?: datePicker.Context['value']
-  /**
-   * The initial open state of the date picker when it is first rendered.
-   * Use when you do not need to control its open state.
-   */
-  defaultOpen?: datePicker.Context['open']
-  /**
-   * The initial value of the date picker when it is first rendered.
-   * Use when you do not need to control the state of the date picker.
-   */
-  defaultValue?: datePicker.Context['value']
+  modelValue?: datePicker.Props['value']
 }
 
 export interface UseDatePickerReturn extends ComputedRef<datePicker.Api<PropTypes>> {}
 
 export const useDatePicker = (
-  props: UseDatePickerProps,
+  props: MaybeRef<UseDatePickerProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseDatePickerReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
-  const context = computed<datePicker.Context>(() => {
+
+  const context = computed<datePicker.Props>(() => {
+    const localeProps = toValue<UseDatePickerProps>(props)
+
     return {
       id,
       dir: locale.value.dir,
-      open: props.open ?? props.defaultOpen,
-      'open.controlled': props.open !== undefined,
-      value: props.defaultValue ?? props.modelValue,
+      locale: locale.value.locale,
+      value: localeProps.modelValue,
       getRootNode: env?.value.getRootNode,
-      onFocusChange: (details) => emit?.('focusChange', details),
-      onViewChange: (details) => emit?.('viewChange', details),
+      ...cleanProps(localeProps),
+      onFocusChange: (details) => {
+        emit?.('focusChange', details)
+        emit?.('update:focusedValue', details.focusedValue)
+        localeProps.onFocusChange?.(details)
+      },
+      onViewChange: (details) => {
+        emit?.('viewChange', details)
+        emit?.('update:view', details.view)
+        localeProps.onViewChange?.(details)
+      },
       onOpenChange: (details) => {
         emit?.('openChange', details)
         emit?.('update:open', details.open)
+        localeProps.onOpenChange?.(details)
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
+        console.log('valueChange', details)
         emit?.('update:modelValue', details.value)
+        localeProps.onValueChange?.(details)
       },
-      ...cleanProps(props),
     }
   })
 
-  const [state, send] = useMachine(datePicker.machine(context.value), { context })
-
-  return computed(() => datePicker.connect(state.value, send, normalizeProps))
+  const service = useMachine(datePicker.machine, context)
+  return computed(() => datePicker.connect(service, normalizeProps))
 }

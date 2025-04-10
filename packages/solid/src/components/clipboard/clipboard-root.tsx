@@ -9,9 +9,11 @@ export interface ClipboardRootProps extends HTMLProps<'div'>, ClipboardRootBaseP
 
 export const ClipboardRoot = (props: ClipboardRootProps) => {
   const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [
+    'defaultValue',
     'id',
     'ids',
     'onStatusChange',
+    'onValueChange',
     'timeout',
     'value',
   ])

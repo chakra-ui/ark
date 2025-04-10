@@ -1,14 +1,19 @@
 import type * as treeView from '@zag-js/tree-view'
+import type { TreeCollection, TreeNode } from '../collection'
 
-export interface RootProps {
+export interface RootProps<T extends TreeNode> {
   /**
-   * The initial expanded items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
+   * The collection of tree nodes
+   */
+  collection: TreeCollection<T>
+  /**
+   * The initial expanded node ids when rendered.
+   * Use when you don't need to control the expanded node ids.
    */
   defaultExpandedValue?: string[]
   /**
-   * The initial selected items of the tree view.
-   * Use this when you do not need to control the state of the tree view.
+   * The initial selected node ids when rendered.
+   * Use when you don't need to control the selected node ids.
    */
   defaultSelectedValue?: string[]
   /**
@@ -17,7 +22,7 @@ export interface RootProps {
    */
   expandOnClick?: boolean
   /**
-   * The id of the expanded nodes
+   * The controlled expanded node ids
    */
   expandedValue?: string[]
   /**
@@ -31,9 +36,9 @@ export interface RootProps {
   /**
    * The ids of the tree elements. Useful for composition.
    */
-  ids?: Partial<{ root: string; tree: string; label: string }>
+  ids?: Partial<{ root: string; tree: string; label: string; node(value: string): string }>
   /**
-   * The id of the selected nodes
+   * The controlled selected node ids
    */
   selectedValue?: string[]
   /**
@@ -64,7 +69,16 @@ export type RootEmits = {
    * Called when the selection changes
    */
   selectionChange: [details: treeView.SelectionChangeDetails]
+  /**
+   * Called when the expanded value changes
+   */
   'update:expandedValue': [value: string[]]
+  /**
+   * Called when the focused value changes
+   */
   'update:focusedValue': [value: string | null]
+  /**
+   * Called when the selected value changes
+   */
   'update:selectedValue': [value: string[]]
 }

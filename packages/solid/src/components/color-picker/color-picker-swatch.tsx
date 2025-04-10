@@ -9,10 +9,7 @@ export interface ColorPickerSwatchBaseProps extends SwatchProps, PolymorphicProp
 export interface ColorPickerSwatchProps extends HTMLProps<'div'>, ColorPickerSwatchBaseProps {}
 
 export const ColorPickerSwatch = (props: ColorPickerSwatchProps) => {
-  const [swatchProps, localProps] = createSplitProps<SwatchProps>()(props, [
-    'respectAlpha',
-    'value',
-  ])
+  const [swatchProps, localProps] = createSplitProps<SwatchProps>()(props, ['respectAlpha', 'value'])
   const api = useColorPickerContext()
   const mergedProps = mergeProps(() => api().getSwatchProps(swatchProps), localProps)
 

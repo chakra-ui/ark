@@ -5,5 +5,4 @@ export interface SelectItemContextProps {
   children: (context: UseSelectItemContext) => JSX.Element
 }
 
-export const SelectItemContext = (props: SelectItemContextProps) =>
-  props.children(useSelectItemContext())
+export const SelectItemContext = (props: SelectItemContextProps) => props.children(useSelectItemContext())

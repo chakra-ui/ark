@@ -9,21 +9,15 @@ export interface ColorPickerChannelSliderValueTextProps
   extends HTMLProps<'div'>,
     ColorPickerChannelSliderValueTextBaseProps {}
 
-export const ColorPickerChannelSliderValueText = (
-  props: ColorPickerChannelSliderValueTextProps,
-) => {
+export const ColorPickerChannelSliderValueText = (props: ColorPickerChannelSliderValueTextProps) => {
   const colorPicker = useColorPickerContext()
   const localeContext = useLocaleContext()
   const channelProps = useColorPickerChannelPropsContext()
-  const mergedProps = mergeProps(
-    () => colorPicker().getChannelSliderValueTextProps(channelProps),
-    props,
-  )
+  const mergedProps = mergeProps(() => colorPicker().getChannelSliderValueTextProps(channelProps), props)
 
   return (
     <ark.span {...mergedProps}>
-      {props.children ||
-        colorPicker().getChannelValueText(channelProps.channel, localeContext().locale)}
+      {props.children || colorPicker().getChannelValueText(channelProps.channel, localeContext().locale)}
     </ark.span>
   )
 }

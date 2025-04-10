@@ -1,17 +1,11 @@
 export type { ValueChangeDetails as SegmentGroupValueChangeDetails } from '@zag-js/radio-group'
-export {
-  default as SegmentGroupContext,
-  type SegmentGroupContextProps,
-} from './segment-group-context.vue'
+export { default as SegmentGroupContext, type SegmentGroupContextProps } from './segment-group-context.vue'
 export {
   default as SegmentGroupIndicator,
   type SegmentGroupIndicatorBaseProps,
   type SegmentGroupIndicatorProps,
 } from './segment-group-indicator.vue'
-export {
-  default as SegmentGroupItemContext,
-  type SegmentGroupItemContextProps,
-} from './segment-group-item-context.vue'
+export { default as SegmentGroupItemContext, type SegmentGroupItemContextProps } from './segment-group-item-context.vue'
 export {
   default as SegmentGroupItemControl,
   type SegmentGroupItemControlBaseProps,
@@ -49,15 +43,8 @@ export {
   type SegmentGroupRootProps,
 } from './segment-group-root.vue'
 export { segmentGroupAnatomy } from './segment-group.anatomy'
-export {
-  useSegmentGroup,
-  type UseSegmentGroupProps,
-  type UseSegmentGroupReturn,
-} from './use-segment-group'
+export { useSegmentGroup, type UseSegmentGroupProps, type UseSegmentGroupReturn } from './use-segment-group'
 export { useSegmentGroupContext, type UseSegmentGroupContext } from './use-segment-group-context'
-export {
-  useSegmentGroupItemContext,
-  type UseSegmentGroupItemContext,
-} from './use-segment-group-item-context'
+export { useSegmentGroupItemContext, type UseSegmentGroupItemContext } from './use-segment-group-item-context'
 
 export * as SegmentGroup from './segment-group'

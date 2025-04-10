@@ -8,15 +8,25 @@ export interface RootProps {
    */
   closeOnSelect?: boolean
   /**
-   * The initial open state of the date picker when it is first rendered.
-   * Use when you do not need to control its open state.
+   * The initial focused date when rendered.
+   * Use when you don't need to control the focused date of the date picker.
+   */
+  defaultFocusedValue?: datePicker.DateValue
+  /**
+   * The initial open state of the date picker when rendered.
+   * Use when you don't need to control the open state of the date picker.
    */
   defaultOpen?: boolean
   /**
-   * The initial value of the date picker when it is first rendered.
-   * Use when you do not need to control the state of the date picker.
+   * The initial selected date(s) when rendered.
+   * Use when you don't need to control the selected date(s) of the date picker.
    */
   defaultValue?: datePicker.DateValue[]
+  /**
+   * The default view of the calendar
+   * @default "day"
+   */
+  defaultView?: datePicker.DateView
   /**
    * Whether the calendar is disabled.
    */
@@ -27,13 +37,13 @@ export interface RootProps {
    */
   fixedWeeks?: boolean
   /**
-   * The focused date.
+   * The controlled focused date.
    */
   focusedValue?: datePicker.DateValue
   /**
    * The format of the date to display in the input.
    */
-  format?: (date: datePicker.DateValue) => string
+  format?: (date: datePicker.DateValue, details: datePicker.LocaleDetails) => string
   /**
    * The unique identifier of the machine.
    */
@@ -75,14 +85,19 @@ export interface RootProps {
    */
   max?: datePicker.DateValue
   /**
+   * The maximum view of the calendar
+   * @default "year"
+   */
+  maxView?: datePicker.DateView
+  /**
    * The minimum date that can be selected.
    */
   min?: datePicker.DateValue
   /**
-   * Whether the calendar should be modal. This means that the calendar will
-   * block interaction with the rest of the page, and trap focus within it.
+   * The minimum view of the calendar
+   * @default "day"
    */
-  modal?: boolean
+  minView?: datePicker.DateView
   /**
    * The v-model value of the date picker
    */
@@ -96,9 +111,17 @@ export interface RootProps {
    */
   numOfMonths?: number
   /**
-   * Whether the datepicker is open
+   * The controlled open state of the date picker
    */
   open?: boolean
+  /**
+   * Function to parse the date from the input back to a DateValue.
+   */
+  parse?: (value: string, details: datePicker.LocaleDetails) => datePicker.DateValue | undefined
+  /**
+   * The placeholder text to display in the input.
+   */
+  placeholder?: string
   /**
    * The user provided options used to position the date picker content
    */
@@ -138,7 +161,6 @@ export interface RootProps {
   translations?: datePicker.IntlTranslations
   /**
    * The view of the calendar
-   * @default "day"
    */
   view?: datePicker.DateView
 }
@@ -164,5 +186,16 @@ export type RootEmits = {
    * The callback fired when the model value changes.
    */
   'update:modelValue': [value: datePicker.DateValue[]]
+  /**
+   * The callback fired when the open state changes.
+   */
   'update:open': [open: boolean]
+  /**
+   * The callback fired when the view changes.
+   */
+  'update:view': [view: datePicker.DateView]
+  /**
+   * The callback fired when the focused date changes.
+   */
+  'update:focusedValue': [focusedValue: datePicker.DateValue]
 }

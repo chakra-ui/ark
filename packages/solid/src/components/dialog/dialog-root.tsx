@@ -2,12 +2,7 @@ import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
 import { createSplitProps } from '../../utils/create-split-props'
 import { RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseDialogProps, useDialog } from './use-dialog'
 import { DialogProvider } from './use-dialog-context'
 

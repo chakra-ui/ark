@@ -12,9 +12,7 @@ interface Props {
 
 export const ComponentTypes = (props: Props) => {
   const serverContext = getServerContext()
-  const api = types.find(
-    (type) => type.component === props.id && type.framework === serverContext.framework,
-  )
+  const api = types.find((type) => type.component === props.id && type.framework === serverContext.framework)
 
   if (!api) {
     return null

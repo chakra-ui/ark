@@ -1,65 +1,44 @@
-<h1 align="center">@ark</h1>
+<br /><br />
 
 <p align="center">
-  <img alt="License" src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" />
-  <img alt="GitHub Stars" src="https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge" />
-  <img alt="Downloads" src="https://img.shields.io/npm/dt/@zag-js/core?style=for-the-badge" />
+  <a href="https://github.com/chakra-ui/ark">
+    <img src="https://raw.githubusercontent.com/chakra-ui/ark/refs/heads/main/.media/ark-logo-on-brand.svg" alt="Ark UI" width="120" />
+  </a>
 </p>
 
-## What is Ark UI?
+<h1 align="center">
+Ark UI
+</h1>
 
-Ark UI is a headless, open-source UI library with over 30+ components designed for building
-reusable, scalable Design Systems. It supports a wide range of JavaScript frameworks, offering
-dedicated packages for each supported framework.
+<p align="center">
+Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a>, and <a href="https://solidjs.com/">Solid</a>
+</p>
 
-## Components
+<p align="center">
+<a href="https://www.npmjs.com/package/@ark-ui/react" target="__blank"><img src="https://img.shields.io/npm/v/@ark-ui/react" alt="NPM version"/></a>
+<a href="https://www.npmjs.com/package/@ark-ui/react" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@ark-ui/react"/></a>
+<a href="https://github.com/chakra-ui/ark" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/chakra-ui/ark"/></a>
+</p>
 
-|                                                                                   | React | Solid | Svelte | Vue |
-| --------------------------------------------------------------------------------- | ----- | ----- | ------ | --- |
-| [Accordion](https://ark-ui.com/react/docs/components/accordion)                   | ✓     | ✓     |        | ✓   |
-| [Avatar](https://ark-ui.com/react/docs/components/avatar)                         | ✓     | ✓     |        | ✓   |
-| [Carousel](https://ark-ui.com/react/docs/components/carousel)                     | ✓     | ✓     |        | ✓   |
-| [Checkbox](https://ark-ui.com/react/docs/components/checkbox)                     | ✓     | ✓     |        | ✓   |
-| [Clipboard](https://ark-ui.com/react/docs/components/clipboard)                   | ✓     | ✓     |        | ✓   |
-| [Collapsible](https://ark-ui.com/react/docs/components/collapsible)               | ✓     | ✓     |        | ✓   |
-| [Color Picker](https://ark-ui.com/react/docs/components/color-picker)             | ✓     | ✓     |        | ✓   |
-| [Combobox](https://ark-ui.com/react/docs/components/combobox)                     | ✓     | ✓     |        | ✓   |
-| [Date Picker](https://ark-ui.com/react/docs/components/date-picker)               | ✓     | ✓     |        | ✓   |
-| [Dialog](https://ark-ui.com/react/docs/components/dialog)                         | ✓     | ✓     |        | ✓   |
-| [Editable](https://ark-ui.com/react/docs/components/editable)                     | ✓     | ✓     |        | ✓   |
-| [Field](https://ark-ui.com/react/docs/components/field)                           | ✓     | ✓     |        | ✓   |
-| [Fieldset](https://ark-ui.com/react/docs/components/fieldset)                     | ✓     | ✓     |        | ✓   |
-| [File Upload](https://ark-ui.com/react/docs/components/file-upload)               | ✓     | ✓     |        | ✓   |
-| [Hover Card](https://ark-ui.com/react/docs/components/hover-card)                 | ✓     | ✓     |        | ✓   |
-| [Menu](https://ark-ui.com/react/docs/components/menu)                             | ✓     | ✓     |        | ✓   |
-| [Number Input](https://ark-ui.com/react/docs/components/number-input)             | ✓     | ✓     |        | ✓   |
-| [Pagination](https://ark-ui.com/react/docs/components/pagination)                 | ✓     | ✓     |        | ✓   |
-| [Pin Input](https://ark-ui.com/react/docs/components/pin-input)                   | ✓     | ✓     |        | ✓   |
-| [Popover](https://ark-ui.com/react/docs/components/popover)                       | ✓     | ✓     |        | ✓   |
-| [Presence](https://ark-ui.com/react/docs/components/presence)                     | ✓     | ✓     |        | ✓   |
-| [Progress - Circular](https://ark-ui.com/react/docs/components/circular-progress) | ✓     | ✓     |        | ✓   |
-| [Progress - Linear](https://ark-ui.com/react/docs/components/linear-progress)     | ✓     | ✓     |        | ✓   |
-| [Radio Group](https://ark-ui.com/react/docs/components/radio-group)               | ✓     | ✓     |        | ✓   |
-| [Rating Group](https://ark-ui.com/react/docs/components/rating-group)             | ✓     | ✓     |        | ✓   |
-| [Segment Group](https://ark-ui.com/react/docs/components/segment-group)           | ✓     | ✓     |        | ✓   |
-| [Select](https://ark-ui.com/react/docs/components/select)                         | ✓     | ✓     |        | ✓   |
-| [Signature Pad](https://ark-ui.com/react/docs/components/signature-pad)           | ✓     | ✓     |        | ✓   |
-| [Slider](https://ark-ui.com/react/docs/components/slider)                         | ✓     | ✓     |        | ✓   |
-| [Splitter](https://ark-ui.com/react/docs/components/splitter)                     | ✓     | ✓     |        | ✓   |
-| [Switch](https://ark-ui.com/react/docs/components/switch)                         | ✓     | ✓     |        | ✓   |
-| [Tabs](https://ark-ui.com/react/docs/components/tabs)                             | ✓     | ✓     |        | ✓   |
-| [Tags Input](https://ark-ui.com/react/docs/components/tags-input)                 | ✓     | ✓     |        | ✓   |
-| [Time Picker](https://ark-ui.com/react/docs/components/time-picker)               | ✓     | ✓     |        | ✓   |
-| [Timer](https://ark-ui.com/react/docs/components/timer)                           | ✓     | ✓     |        | ✓   |
-| [Toast](https://ark-ui.com/react/docs/components/toast)                           | ✓     | ✓     |        | ✓   |
-| [Toggle Group](https://ark-ui.com/react/docs/components/toggle-group)             | ✓     | ✓     |        | ✓   |
-| [Tooltip](https://ark-ui.com/react/docs/components/tooltip)                       | ✓     | ✓     |        | ✓   |
-| [Tree View](https://ark-ui.com/react/docs/components/tree-view)                   | ✓     | ✓     |        | ✓   |
+![hero image](https://ark-ui.com/images/og-image.png)
+
+## Installation
+
+```bash
+pnpm add @ark-ui/{react,vue,solid}
+```
+
+```bash
+npm install @ark-ui/{react,vue,solid}
+```
+
+```bash
+yarn add @ark-ui/{react,vue,solid}
+```
 
 ## Documentation
 
-For more detailed documentation and examples, please visit the
-[official documentation](https://ark-ui.com/).
+For more detailed documentation and examples, please visit the [official documentation](https://ark-ui.com/).
 
 ## Roadmap
 
@@ -68,10 +47,9 @@ You can request, vote for, and check upcoming features on our [roadmap](https://
 ## Contribution
 
 We welcome contributions to Ark UI. Please read our
-[contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more
-information on how to contribute.
+[contributing guidelines](https://github.com/chakra-ui/ark/blob/main/CONTRIBUTING.md) for more information on how to
+contribute.
 
 ## License
 
-This project is licensed under the terms of the
-[MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).
+This project is licensed under the terms of the [MIT license](https://github.com/chakra-ui/ark/blob/main/LICENSE).

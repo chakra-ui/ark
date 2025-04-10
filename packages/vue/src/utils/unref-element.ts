@@ -9,9 +9,7 @@ export type UnRefElementReturn<T extends MaybeElement = MaybeElement> = T extend
   ? Exclude<MaybeElement, VueInstance>
   : T | undefined
 
-export function unrefElement<T extends MaybeElement>(
-  elRef: MaybeComputedElementRef<T>,
-): UnRefElementReturn<T> {
+export function unrefElement<T extends MaybeElement>(elRef: MaybeComputedElementRef<T>): UnRefElementReturn<T> {
   const plain = toValue(elRef)
   return (plain as VueInstance)?.$el ?? plain
 }

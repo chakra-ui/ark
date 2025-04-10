@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useForwardPropsEmits } from '@ark-ui/vue'
 import { Accordion, type AccordionRootEmits, type AccordionRootProps } from '@ark-ui/vue/accordion'
-import { ChevronDownIcon } from './icons'
+import { ChevronRightIcon } from 'lucide-vue-next'
 
 export interface AccordionProps extends AccordionRootProps {
   items: string[]
@@ -19,12 +19,10 @@ const forwarded = useForwardPropsEmits(props, emits)
       <Accordion.ItemTrigger>
         What is {{ item }}?
         <Accordion.ItemIndicator>
-          <ChevronDownIcon />
+          <ChevronRightIcon />
         </Accordion.ItemIndicator>
       </Accordion.ItemTrigger>
-      <Accordion.ItemContent>
-        {{ item }} is a JavaScript library for building user interfaces.
-      </Accordion.ItemContent>
+      <Accordion.ItemContent>{{ item }} is a JavaScript library for building user interfaces.</Accordion.ItemContent>
     </Accordion.Item>
   </Accordion.Root>
 </template>

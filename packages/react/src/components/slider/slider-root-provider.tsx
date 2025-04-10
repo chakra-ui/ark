@@ -12,17 +12,15 @@ interface RootProviderProps {
 export interface SliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SliderRootProviderProps extends HTMLProps<'div'>, SliderRootProviderBaseProps {}
 
-export const SliderRootProvider = forwardRef<HTMLDivElement, SliderRootProviderProps>(
-  (props, ref) => {
-    const [{ value: slider }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
-    const mergedProps = mergeProps(slider.getRootProps(), localProps)
+export const SliderRootProvider = forwardRef<HTMLDivElement, SliderRootProviderProps>((props, ref) => {
+  const [{ value: slider }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(slider.getRootProps(), localProps)
 
-    return (
-      <SliderProvider value={slider}>
-        <ark.div {...mergedProps} ref={ref} />
-      </SliderProvider>
-    )
-  },
-)
+  return (
+    <SliderProvider value={slider}>
+      <ark.div {...mergedProps} ref={ref} />
+    </SliderProvider>
+  )
+})
 
 SliderRootProvider.displayName = 'SliderRootProvider'

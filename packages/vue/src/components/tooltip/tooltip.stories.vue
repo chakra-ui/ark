@@ -4,6 +4,7 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Positioning from './examples/positioning.vue'
 import RenderFn from './examples/render-fn.vue'
+import RootProvider from './examples/root-provider.vue'
 import Timings from './examples/timings.vue'
 </script>
 <template>
@@ -25,6 +26,9 @@ import Timings from './examples/timings.vue'
     </Variant>
     <Variant title="Positioning">
       <Positioning />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

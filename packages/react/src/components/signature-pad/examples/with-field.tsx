@@ -7,9 +7,7 @@ export const WithField = (props: Field.RootProps) => {
 
   return (
     <Field.Root {...props}>
-      <SignaturePad.Root
-        onDrawEnd={(details) => details.getDataUrl('image/png').then((url) => setValue(url))}
-      >
+      <SignaturePad.Root onDrawEnd={(details) => details.getDataUrl('image/png').then((url) => setValue(url))}>
         <SignaturePad.Label>Label</SignaturePad.Label>
         <SignaturePad.Control>
           <SignaturePad.Segment />

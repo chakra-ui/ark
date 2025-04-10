@@ -1,5 +1,16 @@
 import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
-import { type HTMLAttributes, computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import {
+  type HTMLAttributes,
+  type MaybeRef,
+  computed,
+  onBeforeUnmount,
+  onMounted,
+  reactive,
+  ref,
+  toValue,
+  useId,
+} from 'vue'
+import { unrefElement } from '../../utils/unref-element'
 import { parts } from './field.anatomy'
 import type { ElementIds } from './field.types'
 
@@ -32,32 +43,32 @@ export interface UseFieldProps {
 
 export type UseFieldReturn = ReturnType<typeof useField>
 
-export const useField = (props: UseFieldProps) => {
-  const { required, disabled, invalid, readOnly, ids } = props
-
+export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
   const state = reactive({
     hasErrorText: false,
     hasHelperText: false,
   })
 
-  const id = props.id ?? `field-${Math.random().toString(36).substr(2, 9)}`
+  const uid = useId()
+  const id = computed(() => toValue(props).id ?? uid)
+
   const rootRef = ref(null)
 
-  const rootId = ids?.control ?? `field::${id}`
-  const errorTextId = ids?.errorText ?? `field::${id}::error-text`
-  const helperTextId = ids?.helperText ?? `field::${id}::helper-text`
-  const labelId = ids?.label ?? `field::${id}::label`
+  const rootId = computed(() => toValue(props).ids?.control ?? `field::${id.value}`)
+  const errorTextId = computed(() => toValue(props).ids?.errorText ?? `field::${id.value}::error-text`)
+  const helperTextId = computed(() => toValue(props).ids?.helperText ?? `field::${id.value}::helper-text`)
+  const labelId = computed(() => toValue(props).ids?.label ?? `field::${id.value}::label`)
 
   onMounted(() => {
-    const rootNode = rootRef.value
+    const rootNode = unrefElement(rootRef)
     if (!rootNode) return
 
     const win = getWindow(rootNode)
     const doc = win.document
 
     const checkTextElements = () => {
-      state.hasErrorText = !!doc.getElementById(errorTextId)
-      state.hasHelperText = !!doc.getElementById(helperTextId)
+      state.hasErrorText = !!doc.getElementById(errorTextId.value)
+      state.hasHelperText = !!doc.getElementById(helperTextId.value)
     }
 
     checkTextElements()
@@ -70,40 +81,52 @@ export const useField = (props: UseFieldProps) => {
     })
   })
 
-  const getRootProps = () => ({
-    ...parts.root.attrs,
-    id: rootId,
-    role: 'group',
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
+  const getRootProps = () => {
+    const values = toValue(props)
+    return {
+      ...parts.root.attrs,
+      id: rootId.value,
+      role: 'group',
+      'data-disabled': dataAttr(values.disabled),
+      'data-invalid': dataAttr(values.invalid),
+      'data-readonly': dataAttr(values.readOnly),
+    }
+  }
+
+  const getLabelProps = () => {
+    const values = toValue(props)
+    return {
+      ...parts.label.attrs,
+      id: labelId.value,
+      'data-disabled': dataAttr(values.disabled),
+      'data-invalid': dataAttr(values.invalid),
+      'data-readonly': dataAttr(values.readOnly),
+      htmlFor: id.value,
+    }
+  }
+
+  const labelIds = computed(() => {
+    const values = toValue(props)
+    const ids: string[] = []
+    if (state.hasErrorText && values.invalid) ids.push(errorTextId.value)
+    if (state.hasHelperText) ids.push(helperTextId.value)
+    return ids
   })
 
-  const getLabelProps = () => ({
-    ...parts.label.attrs,
-    id: labelId,
-    'data-disabled': dataAttr(disabled),
-    'data-invalid': dataAttr(invalid),
-    'data-readonly': dataAttr(readOnly),
-    htmlFor: id,
-  })
-
-  const labelIds: string[] = []
-
-  if (state.hasErrorText && invalid) labelIds.push(errorTextId)
-  if (state.hasHelperText) labelIds.push(helperTextId)
-
-  const getControlProps = () => ({
-    'aria-describedby': labelIds.join(' ') || undefined,
-    'aria-invalid': ariaAttr(invalid),
-    'data-invalid': dataAttr(invalid),
-    'data-required': dataAttr(required),
-    'data-readonly': dataAttr(readOnly),
-    id,
-    required,
-    disabled,
-    readOnly,
-  })
+  const getControlProps = () => {
+    const values = toValue(props)
+    return {
+      'aria-describedby': labelIds.value.join(' ') || undefined,
+      'aria-invalid': ariaAttr(values.invalid),
+      'data-invalid': dataAttr(values.invalid),
+      'data-required': dataAttr(values.required),
+      'data-readonly': dataAttr(values.readOnly),
+      id: id.value,
+      required: values.required,
+      disabled: values.disabled,
+      readOnly: values.readOnly,
+    }
+  }
 
   const getInputProps = () => ({
     ...getControlProps(),
@@ -120,38 +143,51 @@ export const useField = (props: UseFieldProps) => {
     ...parts.select.attrs,
   })
 
-  const getHelperTextProps = () => ({
-    id: helperTextId,
-    ...parts.helperText.attrs,
-  })
+  const getHelperTextProps = () => {
+    const values = toValue(props)
+    return {
+      id: helperTextId.value,
+      ...parts.helperText.attrs,
+      'data-disabled': dataAttr(values.disabled),
+    }
+  }
 
   const getErrorTextProps = (): HTMLAttributes => ({
-    id: errorTextId,
+    id: errorTextId.value,
     ...parts.errorText.attrs,
     'aria-live': 'polite',
   })
 
-  return computed(() => ({
-    ariaDescribedby: labelIds.join(' '),
-    ids: {
-      control: id,
-      label: labelId,
-      errorText: errorTextId,
-      helperText: helperTextId,
-    },
-    refs: {
-      rootRef,
-    },
-    disabled,
-    invalid,
-    readOnly,
-    required,
-    getLabelProps,
-    getRootProps,
-    getInputProps,
-    getTextareaProps,
-    getSelectProps,
-    getHelperTextProps,
-    getErrorTextProps,
-  }))
+  const getRequiredIndicatorProps = (): HTMLAttributes => ({
+    'aria-hidden': true,
+    ...parts.requiredIndicator.attrs,
+  })
+
+  return computed(() => {
+    const values = toValue(props)
+    return {
+      ariaDescribedby: labelIds.value.join(' ') || undefined,
+      ids: {
+        control: id.value,
+        label: labelId.value,
+        errorText: errorTextId.value,
+        helperText: helperTextId.value,
+      },
+      refs: {
+        rootRef,
+      },
+      disabled: values.disabled,
+      invalid: values.invalid,
+      readOnly: values.readOnly,
+      required: values.required,
+      getLabelProps,
+      getRootProps,
+      getInputProps,
+      getTextareaProps,
+      getSelectProps,
+      getHelperTextProps,
+      getErrorTextProps,
+      getRequiredIndicatorProps,
+    }
+  })
 }

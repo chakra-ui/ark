@@ -12,7 +12,6 @@ export interface FileUploadItemSizeTextProps
 </script>
 
 <script setup lang="ts">
-import { useSlots } from 'vue'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
@@ -22,7 +21,7 @@ defineProps<FileUploadItemSizeTextProps>()
 
 const fileUpload = useFileUploadContext()
 const itemProps = useFileUploadItemPropsContext()
-const slots = useSlots()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>

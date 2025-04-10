@@ -18,7 +18,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "onExitComplete": {
-        "type": "() => void",
+        "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
@@ -26,6 +26,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",

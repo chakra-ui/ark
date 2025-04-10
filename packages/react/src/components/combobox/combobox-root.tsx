@@ -4,12 +4,7 @@ import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseComboboxProps, useCombobox } from './use-combobox'
 import { ComboboxProvider } from './use-combobox-context'
 
@@ -20,23 +15,21 @@ export interface ComboboxRootBaseProps<T extends CollectionItem>
 export interface ComboboxRootProps<T extends CollectionItem>
   extends Assign<HTMLProps<'div'>, ComboboxRootBaseProps<T>> {}
 
-const ComboboxImpl = <T extends CollectionItem>(
-  props: ComboboxRootProps<T>,
-  ref: Ref<HTMLDivElement>,
-) => {
+const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProps<T>, ref: Ref<HTMLDivElement>) => {
   const [presenceProps, comboboxProps] = splitPresenceProps(props)
   const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
     'allowCustomValue',
     'autoFocus',
     'closeOnSelect',
-    'composite',
     'collection',
+    'composite',
+    'defaultHighlightedValue',
+    'defaultInputValue',
     'defaultOpen',
     'defaultValue',
     'disabled',
     'disableLayer',
     'form',
-    'getSelectionValue',
     'highlightedValue',
     'id',
     'ids',
@@ -46,6 +39,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'loopFocus',
     'multiple',
     'name',
+    'navigate',
     'onFocusOutside',
     'onHighlightChange',
     'onInputValueChange',
@@ -53,6 +47,7 @@ const ComboboxImpl = <T extends CollectionItem>(
     'onOpenChange',
     'onOpenChange',
     'onPointerDownOutside',
+    'onSelect',
     'onValueChange',
     'open',
     'openOnChange',

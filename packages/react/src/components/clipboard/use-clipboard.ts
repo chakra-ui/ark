@@ -4,23 +4,19 @@ import { useId } from 'react'
 import { useEnvironmentContext } from '../../providers/environment'
 import type { Optional } from '../../types'
 
-export interface UseClipboardProps extends Optional<Omit<clipboard.Context, 'getRootNode'>, 'id'> {}
+export interface UseClipboardProps extends Optional<Omit<clipboard.Props, 'getRootNode'>, 'id'> {}
 export interface UseClipboardReturn extends clipboard.Api<PropTypes> {}
 
-export const useClipboard = (props: UseClipboardProps) => {
+export const useClipboard = (props?: UseClipboardProps): UseClipboardReturn => {
+  const id = useId()
   const { getRootNode } = useEnvironmentContext()
 
-  const initialContext: clipboard.Context = {
-    id: useId(),
+  const machineProps: clipboard.Props = {
+    id,
     getRootNode,
     ...props,
   }
 
-  const context: clipboard.Context = {
-    ...initialContext,
-  }
-
-  const [state, send] = useMachine(clipboard.machine(initialContext), { context })
-
-  return clipboard.connect(state, send, normalizeProps)
+  const service = useMachine(clipboard.machine, machineProps)
+  return clipboard.connect(service, normalizeProps)
 }

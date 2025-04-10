@@ -1,33 +1,11 @@
-import { cleanup, render, screen } from '@testing-library/react/pure'
+import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Editable, editableAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
-describe('Editable / Parts & Exports', () => {
-  afterAll(() => {
-    cleanup()
-  })
-
-  render(<ComponentUnderTest />)
-
-  it.each(getParts(editableAnatomy))('should render part %s', async (part) => {
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(editableAnatomy))('should export %s', async (part) => {
-    expect(Editable[part]).toBeDefined()
-  })
-})
-
 describe('Editable', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -43,18 +21,30 @@ describe('Editable', () => {
     render(<ControlledComponentUnderTest />)
 
     screen.getByText('Placeholder').focus()
+    await waitFor(() => expect(screen.getByText('Placeholder')).toHaveFocus())
 
-    await user.type(screen.getByLabelText('editable input'), 'React')
-    expect(await screen.findByText('React')).toBeInTheDocument()
+    const input = screen.getByRole('textbox')
+
+    await user.clear(input)
+    await waitFor(() => expect(input).toHaveValue(''))
+
+    await user.type(input, 'React')
+    await user.keyboard('{enter}')
+
+    await screen.findByText('React')
   })
 
   it('should be possible to dbl click the placeholder to enter a value', async () => {
     render(<ControlledComponentUnderTest activationMode="dblclick" />)
 
     await user.dblClick(screen.getByText('Placeholder'))
-    await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'React')
 
+    const input = screen.getByRole('textbox')
+
+    await user.clear(input)
+    await waitFor(() => expect(input).toHaveValue(''))
+
+    await user.type(input, 'React{enter}', { delay: 10 })
     await screen.findByText('React')
   })
 
@@ -62,8 +52,12 @@ describe('Editable', () => {
     render(<ControlledComponentUnderTest activationMode="dblclick" defaultValue="React" />)
 
     await user.dblClick(screen.getByText('React'))
-    await user.clear(screen.getByRole('textbox'))
-    await user.type(screen.getByRole('textbox'), 'Solid')
+
+    const input = screen.getByRole('textbox')
+    await user.clear(input)
+    await waitFor(() => expect(input).toHaveValue(''))
+
+    await user.type(input, 'Solid', { delay: 10 })
     await user.click(screen.getByText('Save'))
 
     await screen.findByText('Solid')
@@ -88,10 +82,6 @@ describe('Editable', () => {
 })
 
 describe('Editable / Field', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should set editable as required', async () => {
     render(<WithField required />)
     expect(screen.getByRole('textbox', { hidden: true })).toBeRequired()

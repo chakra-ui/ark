@@ -4,9 +4,7 @@ import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
 export interface RadioGroupItemControlBaseProps extends PolymorphicProps<'div'> {}
-export interface RadioGroupItemControlProps
-  extends HTMLProps<'div'>,
-    RadioGroupItemControlBaseProps {}
+export interface RadioGroupItemControlProps extends HTMLProps<'div'>, RadioGroupItemControlBaseProps {}
 
 export const RadioGroupItemControl = (props: RadioGroupItemControlProps) => {
   const radioGroup = useRadioGroupContext()

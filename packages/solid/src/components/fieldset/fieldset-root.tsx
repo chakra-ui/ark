@@ -8,11 +8,7 @@ export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProp
 export interface FieldsetRootProps extends HTMLProps<'fieldset'>, FieldsetRootBaseProps {}
 
 export const FieldsetRoot = (props: FieldsetRootProps) => {
-  const [useFieldsetProps, localProps] = createSplitProps<UseFieldsetProps>()(props, [
-    'id',
-    'disabled',
-    'invalid',
-  ])
+  const [useFieldsetProps, localProps] = createSplitProps<UseFieldsetProps>()(props, ['id', 'disabled', 'invalid'])
   const fieldset = useFieldset(useFieldsetProps)
   const mergedProps = mergeProps(() => fieldset().getRootProps(), localProps)
 

@@ -1,21 +1,21 @@
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { Menu, menuAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
+import { Menu } from '..'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
   onValueChange?: (e: { value: string }) => void
+  contextMenu?: boolean
 }
 
 const ComponentUnderTest = (props: ComponentUnderTestProps) => {
-  const { onValueChange, ...rest } = props
+  const { onValueChange, contextMenu, ...rest } = props
   return (
     <Menu.Root {...rest}>
       <Menu.Trigger>
         Open menu <Menu.Indicator />
       </Menu.Trigger>
-      <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
+      {contextMenu && <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>}
       <Menu.Positioner data-testid="positioner">
         <Menu.Content>
           <Menu.Arrow>
@@ -58,23 +58,7 @@ const ComponentUnderTest = (props: ComponentUnderTestProps) => {
   )
 }
 
-describe('Menu / Parts & Exports', () => {
-  it.each(getParts(menuAnatomy))('should render part! %s', async (part) => {
-    render(<ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(menuAnatomy))('should export %s', async (part) => {
-    expect(Menu[part]).toBeDefined()
-  })
-})
-
 describe('Menu', () => {
-  afterEach(() => {
-    cleanup()
-  })
-
   it('should have no a11y violations', async () => {
     const { container } = render(<ComponentUnderTest />)
     const results = await axe(container)
@@ -93,7 +77,7 @@ describe('Menu', () => {
 
     render(<ComponentUnderTest onValueChange={onValueChange} />)
 
-    await user.click(screen.getByText(/svelte/i))
+    fireEvent.click(screen.getByText(/svelte/i))
     expect(onValueChange).not.toHaveBeenCalled()
   })
 
@@ -110,10 +94,8 @@ describe('Menu', () => {
     render(<ComponentUnderTest positioning={{ placement: 'left-start' }} />)
 
     const button = screen.getByRole('button', { name: /open menu/i })
-    fireEvent.click(button)
-    await waitFor(() =>
-      expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'),
-    )
+    await user.click(button)
+    await waitFor(() => expect(screen.getByRole('menu')).toHaveAttribute('data-placement', 'left-start'))
   })
 
   it('should control the open state', async () => {
@@ -134,7 +116,7 @@ describe('Menu', () => {
     await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
 
     fireEvent.click(trigger)
-    expect(screen.getByTestId('positioner')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByTestId('positioner')).toBeInTheDocument())
   })
 
   it('should not have aria-controls if lazy mounted', async () => {
@@ -158,7 +140,7 @@ describe('Menu', () => {
   })
 
   it('should open on context menu', async () => {
-    render(<ComponentUnderTest />)
+    render(<ComponentUnderTest contextMenu />)
 
     const button = screen.getByRole('button', { name: /Open Context Menu/i })
 

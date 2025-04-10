@@ -1,25 +1,6 @@
 import user from '@testing-library/user-event'
 import { render, screen } from '@testing-library/vue'
-import { SignaturePad, signaturePadAnatomy } from '..'
-import { getExports, getParts } from '../../../setup-test'
 import WithField from '../examples/with-field.vue'
-import ComponentUnderTest from './signature-pad.test.vue'
-
-describe('Signature Pad', () => {
-  const renderedParts = getParts(signaturePadAnatomy).filter(
-    (part) => !part.includes('[data-part="segment-path"]'),
-  )
-
-  it.each(renderedParts)('should render part %s', async (part) => {
-    render(ComponentUnderTest)
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.skip.each(getExports(signaturePadAnatomy))('should export %s', async (part) => {
-    // @ts-expect-error
-    expect(SignaturePad[part]).toBeDefined()
-  })
-})
 
 describe('Signature Pad / Field', () => {
   it('should set signature pad as required', async () => {

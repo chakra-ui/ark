@@ -15,7 +15,7 @@
     "title": "Typebot",
     "description": "Open-source conversational apps builder",
     "url": "https://typebot.io/",
-    "image": "https://home.typebot.io/images/preview.png"
+    "image": "https://typebot.io/images/default-og.png"
   },
   {
     "title": "Inkeep",
@@ -27,12 +27,18 @@
     "title": "RELAND",
     "description": "Marketplace for rural real estate in Brazil",
     "url": "https://reland.com.br/",
-    "image": "https://reland.com.br/opengraph-image.png"
+    "image": "https://assets.reland.com.br/brand/opengraph-pt-br.png"
   },
   {
     "title": "Gumbo",
     "description": "AI-powered Personalised Recipe Search Engine",
     "url": "https://www.gumbo.kitchen/",
     "image": "https://i.imgur.com/y76kzDu.png"
+  },
+  {
+    "title": "Promptmetheus",
+    "description": "Forge better Prompts for your LLM-powered Apps",
+    "url": "https://promptmetheus.com/",
+    "image": "https://promptmetheus.com/og-image.jpg"
   }
 ]

@@ -34,5 +34,5 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.img v-bind="fileUpload.getItemPreviewImageProps({ ...itemProps, url })" />
+  <ark.img v-if="url" v-bind="fileUpload.getItemPreviewImageProps({ ...itemProps, url })" />
 </template>

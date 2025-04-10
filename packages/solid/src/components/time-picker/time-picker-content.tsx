@@ -1,13 +1,13 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
 import type { Assign } from '../../types'
+import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerContentBaseProps extends PolymorphicProps<'div'> {}
-export interface TimePickerContentProps
-  extends Assign<HTMLProps<'div'>, TimePickerContentBaseProps> {}
+export interface TimePickerContentProps extends Assign<HTMLProps<'div'>, TimePickerContentBaseProps> {}
 
 export const TimePickerContent = (props: TimePickerContentProps) => {
   const timePicker = useTimePickerContext()
@@ -20,7 +20,7 @@ export const TimePickerContent = (props: TimePickerContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
     </Show>
   )
 }

@@ -1,41 +1,46 @@
 import * as tabs from '@zag-js/tabs'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
-import { type ComputedRef, computed, useId } from 'vue'
+import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './tabs.types'
 
-export interface UseTabsProps
-  extends Optional<Omit<tabs.Context, 'dir' | 'getRootNode' | 'value'>, 'id'> {
+export interface UseTabsProps extends Optional<Omit<tabs.Props, 'dir' | 'getRootNode'>, 'id'> {
   /**
-   * The initial value of the tabs when it is first rendered.
-   * Use when you do not need to control the state of the tabs.
+   * The v-model value of the tabs
    */
-  defaultValue?: tabs.Context['value']
-  modelValue?: tabs.Context['value']
+  modelValue?: tabs.Props['value']
 }
+
 export interface UseTabsReturn extends ComputedRef<tabs.Api<PropTypes>> {}
 
-export const useTabs = (props: UseTabsProps, emit?: EmitFn<RootEmits>): UseTabsReturn => {
+export const useTabs = (props: MaybeRef<UseTabsProps> = {}, emit?: EmitFn<RootEmits>): UseTabsReturn => {
   const id = useId()
   const env = useEnvironmentContext()
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
-  const context = computed<tabs.Context>(() => ({
-    id,
-    dir: locale.value.dir,
-    value: props.modelValue ?? props.defaultValue,
-    getRootNode: env?.value.getRootNode,
-    onFocusChange: (details) => emit?.('focusChange', details),
-    onValueChange: (details) => {
-      emit?.('valueChange', details)
-      emit?.('update:modelValue', details.value)
-    },
-    ...cleanProps(props),
-  }))
+  const context = computed<tabs.Props>(() => {
+    const localProps = toValue<UseTabsProps>(props)
 
-  const [state, send] = useMachine(tabs.machine(context.value), { context })
+    return {
+      id,
+      dir: locale.value.dir,
+      value: localProps.modelValue,
+      getRootNode: env?.value.getRootNode,
+      ...cleanProps(localProps),
+      onFocusChange: (details) => {
+        emit?.('focusChange', details)
+        localProps.onFocusChange?.(details)
+      },
+      onValueChange: (details) => {
+        emit?.('valueChange', details)
+        emit?.('update:modelValue', details.value)
+        localProps.onValueChange?.(details)
+      },
+    }
+  })
 
-  return computed(() => tabs.connect(state.value, send, normalizeProps))
+  const service = useMachine(tabs.machine, context)
+  return computed(() => tabs.connect(service, normalizeProps))
 }

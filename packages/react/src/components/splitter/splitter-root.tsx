@@ -1,21 +1,28 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseSplitterProps, useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
 
 export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps {}
-export interface SplitterRootProps extends HTMLProps<'div'>, SplitterRootBaseProps {}
+export interface SplitterRootProps extends Assign<HTMLProps<'div'>, SplitterRootBaseProps> {}
 
 export const SplitterRoot = forwardRef<HTMLDivElement, SplitterRootProps>((props, ref) => {
   const [useSplitterProps, localProps] = createSplitProps<UseSplitterProps>()(props, [
     'defaultSize',
     'id',
     'ids',
-    'onSizeChange',
-    'onSizeChangeEnd',
+    'keyboardResizeBy',
+    'nonce',
+    'onCollapse',
+    'onExpand',
+    'onResize',
+    'onResizeEnd',
+    'onResizeStart',
     'orientation',
+    'panels',
     'size',
   ])
   const splitter = useSplitter(useSplitterProps)

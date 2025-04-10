@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ItemProps } from '@zag-js/steps'
-import type { LiHTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
 export interface StepsItemBaseProps extends ItemProps, PolymorphicProps {}
@@ -9,16 +9,16 @@ export interface StepsItemProps
     /**
      * @vue-ignore
      */
-    LiHTMLAttributes {}
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { StepsItemProvider } from './use-steps-item-context'
 import { StepsItemPropsProvider } from './use-steps-item-props-context'
-import { useForwardExpose } from '../../utils'
 
 const props = defineProps<StepsItemProps>()
 const steps = useStepsContext()
@@ -31,7 +31,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.li v-bind="steps.getItemProps(props)" :as-child="asChild">
+  <ark.div v-bind="steps.getItemProps(props)" :as-child="asChild">
     <slot />
-  </ark.li>
+  </ark.div>
 </template>

@@ -46,9 +46,9 @@ export const recipe = sva({
         color: 'fg.default',
       },
       _currentPage: {
-        color: 'accent.default',
+        color: 'colorPalette.default',
         _hover: {
-          color: 'accent.default',
+          color: 'colorPalette.default',
         },
       },
     },

@@ -45,21 +45,47 @@
     }
   },
   "Root": {
+    "emits": {
+      "update:modelValue": {
+        "type": "[value: number | null]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "valueChange": {
+        "type": "[details: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Callback fired when the value changes."
+      }
+    },
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "id": {
-        "type": "string",
+      "defaultValue": {
+        "type": "number",
+        "defaultValue": "50",
         "isRequired": false,
-        "description": "The unique identifier of the machine."
+        "description": "The initial value of the progress bar when rendered.\nUse when you don't need to control the value of the progress bar."
       },
+      "formatOptions": {
+        "type": "NumberFormatOptions",
+        "defaultValue": "{ style: \"percent\" }",
+        "isRequired": false,
+        "description": "The options to use for formatting the value."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; track: string; label: string; circle: string }>",
         "isRequired": false,
         "description": "The ids of the elements in the progress bar. Useful for composition."
+      },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The locale to use for formatting the value."
       },
       "max": {
         "type": "number",
@@ -73,8 +99,9 @@
         "isRequired": false,
         "description": "The minimum allowed value of the progress bar."
       },
+      "modelValue": { "type": "number", "isRequired": false, "description": "The v-model value of the progress" },
       "orientation": {
-        "type": "Orientation",
+        "type": "'horizontal' | 'vertical'",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the element."
@@ -83,18 +110,12 @@
         "type": "IntlTranslations",
         "isRequired": false,
         "description": "The localized messages to use."
-      },
-      "value": {
-        "type": "number",
-        "defaultValue": "50",
-        "isRequired": false,
-        "description": "The current value of the progress bar."
       }
     }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "ProgressApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

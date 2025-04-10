@@ -4,7 +4,7 @@ import { Index } from 'solid-js'
 
 export const Multiple = () => {
   return (
-    <Accordion.Root value={['React']} multiple>
+    <Accordion.Root defaultValue={['React']} multiple>
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>

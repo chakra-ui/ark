@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Positioning from './examples/positioning.vue'
 import RenderProp from './examples/render-prop.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
   <Story title="HoverCard">
@@ -17,6 +18,9 @@ import RenderProp from './examples/render-prop.vue'
     </Variant>
     <Variant title="RenderProp">
       <RenderProp />
+    </Variant>
+    <Variant title="RootProvider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

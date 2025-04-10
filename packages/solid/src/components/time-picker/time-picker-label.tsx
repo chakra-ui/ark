@@ -4,8 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTimePickerContext } from './use-time-picker-context'
 
 export interface TimePickerLabelBaseProps extends PolymorphicProps<'label'> {}
-export interface TimePickerLabelProps
-  extends Assign<HTMLProps<'label'>, TimePickerLabelBaseProps> {}
+export interface TimePickerLabelProps extends Assign<HTMLProps<'label'>, TimePickerLabelBaseProps> {}
 
 export const TimePickerLabel = (props: TimePickerLabelProps) => {
   const timePicker = useTimePickerContext()

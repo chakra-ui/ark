@@ -19,20 +19,20 @@ export const Root = withProvider<
   Assign<Assign<HTMLStyledProps<'div'>, Accordion.RootBaseProps>, AccordionVariantProps>
 >(Accordion.Root, 'root')
 
-export const ItemContent = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Accordion.ItemContentBaseProps>
->(Accordion.ItemContent, 'itemContent')
+export const ItemContent = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Accordion.ItemContentBaseProps>>(
+  Accordion.ItemContent,
+  'itemContent',
+)
 
 export const ItemIndicator = withContext<
   HTMLDivElement,
   Assign<HTMLStyledProps<'div'>, Accordion.ItemIndicatorBaseProps>
 >(Accordion.ItemIndicator, 'itemIndicator')
 
-export const Item = withContext<
-  HTMLDivElement,
-  Assign<HTMLStyledProps<'div'>, Accordion.ItemBaseProps>
->(Accordion.Item, 'item')
+export const Item = withContext<HTMLDivElement, Assign<HTMLStyledProps<'div'>, Accordion.ItemBaseProps>>(
+  Accordion.Item,
+  'item',
+)
 
 export const ItemTrigger = withContext<
   HTMLButtonElement,

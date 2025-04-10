@@ -10,23 +10,17 @@ interface RootProviderProps {
 }
 
 export interface CollapsibleRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
-export interface CollapsibleRootProviderProps
-  extends HTMLProps<'div'>,
-    CollapsibleRootProviderBaseProps {}
+export interface CollapsibleRootProviderProps extends HTMLProps<'div'>, CollapsibleRootProviderBaseProps {}
 
-export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRootProviderProps>(
-  (props, ref) => {
-    const [{ value: collapsible }, localProps] = createSplitProps<RootProviderProps>()(props, [
-      'value',
-    ])
-    const mergedProps = mergeProps(collapsible.getRootProps(), localProps)
+export const CollapsibleRootProvider = forwardRef<HTMLDivElement, CollapsibleRootProviderProps>((props, ref) => {
+  const [{ value: collapsible }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const mergedProps = mergeProps(collapsible.getRootProps(), localProps)
 
-    return (
-      <CollapsibleProvider value={collapsible}>
-        <ark.div {...mergedProps} ref={ref} />
-      </CollapsibleProvider>
-    )
-  },
-)
+  return (
+    <CollapsibleProvider value={collapsible}>
+      <ark.div {...mergedProps} ref={ref} />
+    </CollapsibleProvider>
+  )
+})
 
 CollapsibleRootProvider.displayName = 'CollapsibleRootProvider'

@@ -52,8 +52,9 @@ export const DocsSidebar = (props: Props) => {
                                 data-status={item.status}
                                 css={{
                                   '&[data-status=new]': {
-                                    bg: 'accent.default',
-                                    color: 'accent.fg',
+                                    bg: 'colorPalette.default',
+                                    color: 'colorPalette.fg',
+                                    borderColor: 'transparent',
                                   },
                                 }}
                               >
@@ -75,5 +76,4 @@ export const DocsSidebar = (props: Props) => {
   )
 }
 
-const uniqueByTitle = (items: Pages[]): Pages[] =>
-  Array.from(new Map(items.map((item) => [item.title, item])).values())
+const uniqueByTitle = (items: Pages[]): Pages[] => Array.from(new Map(items.map((item) => [item.title, item])).values())

@@ -1,7 +1,5 @@
-import { MinusIcon } from 'lucide-react'
 import { Box, Stack } from 'styled-system/jsx'
 import { Code } from '~/components/ui/code'
-import { Icon } from '~/components/ui/icon'
 import { Table } from '~/components/ui/table'
 import { Text } from '~/components/ui/text'
 
@@ -41,7 +39,7 @@ export const EmitsTable = (props: Props) => {
           {Object.entries(emits).map(([name, property]) => (
             <Table.Row key={name}>
               <Table.Cell width="36" px="4" py="2" verticalAlign="top">
-                <Code size="sm" color="accent.default">
+                <Code size="sm" color="colorPalette.default">
                   {name}
                 </Code>
               </Table.Cell>

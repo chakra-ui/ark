@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LocaleProvider } from '../'
+import { LocaleProvider } from '@ark-ui/vue/locale'
 import Usage from './usage.vue'
 </script>
 

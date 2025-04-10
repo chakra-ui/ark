@@ -4,10 +4,7 @@ export {
   type CollapsibleContentProps as ContentProps,
   type CollapsibleContentBaseProps as ContentBaseProps,
 } from './collapsible-content.vue'
-export {
-  default as Context,
-  type CollapsibleContextProps as ContextProps,
-} from './collapsible-context.vue'
+export { default as Context, type CollapsibleContextProps as ContextProps } from './collapsible-context.vue'
 export {
   default as RootProvider,
   type CollapsibleRootProviderProps as RootProviderProps,
@@ -24,3 +21,8 @@ export {
   type CollapsibleTriggerProps as TriggerProps,
   type CollapsibleTriggerBaseProps as TriggerBaseProps,
 } from './collapsible-trigger.vue'
+export {
+  default as Indicator,
+  type CollapsibleIndicatorProps as IndicatorProps,
+  type CollapsibleIndicatorBaseProps as IndicatorBaseProps,
+} from './collapsible-indicator.vue'

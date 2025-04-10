@@ -10,12 +10,12 @@ export interface MenuItemProps
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    Omit<HTMLAttributes, 'onSelect'> {}
 </script>
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useForwardExpose } from '../../utils'
@@ -25,9 +25,19 @@ const props = withDefaults(defineProps<MenuItemProps>(), {
   closeOnSelect: undefined,
 } satisfies BooleanDefaults<ItemProps>)
 
-const menu = useMenuContext()
+const emit = defineEmits<{
+  (e: 'select'): void
+}>()
 
-MenuItemProvider(computed(() => menu.value.getItemState(props)))
+const menu = useMenuContext()
+const itemState = computed(() => menu.value.getItemState(props))
+
+MenuItemProvider(itemState)
+
+watchEffect((onCleanup) => {
+  const cleanup = menu.value.addItemListener({ id: itemState.value.id, onSelect: () => emit('select') })
+  onCleanup(() => cleanup?.())
+})
 
 useForwardExpose()
 </script>

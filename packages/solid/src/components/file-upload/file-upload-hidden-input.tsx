@@ -4,9 +4,7 @@ import { useFieldContext } from '../field'
 import { useFileUploadContext } from './use-file-upload-context'
 
 export interface FileUploadHiddenInputBaseProps extends PolymorphicProps<'input'> {}
-export interface FileUploadHiddenInputProps
-  extends HTMLProps<'input'>,
-    FileUploadHiddenInputBaseProps {}
+export interface FileUploadHiddenInputProps extends HTMLProps<'input'>, FileUploadHiddenInputBaseProps {}
 
 export const FileUploadHiddenInput = (props: FileUploadHiddenInputProps) => {
   const fileUpload = useFileUploadContext()

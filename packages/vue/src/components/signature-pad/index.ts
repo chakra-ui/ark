@@ -8,10 +8,7 @@ export {
   type SignaturePadClearTriggerBaseProps,
   type SignaturePadClearTriggerProps,
 } from './signature-pad-clear-trigger.vue'
-export {
-  default as SignaturePadContext,
-  type SignaturePadContextProps,
-} from './signature-pad-context.vue'
+export { default as SignaturePadContext, type SignaturePadContextProps } from './signature-pad-context.vue'
 export {
   default as SignaturePadControl,
   type SignaturePadControlBaseProps,
@@ -48,11 +45,7 @@ export {
   type SignaturePadSegmentProps,
 } from './signature-pad-segment.vue'
 export { signaturePadAnatomy } from './signature-pad.anatomy'
-export {
-  useSignaturePad,
-  type UseSignaturePadProps,
-  type UseSignaturePadReturn,
-} from './use-signature-pad'
+export { useSignaturePad, type UseSignaturePadProps, type UseSignaturePadReturn } from './use-signature-pad'
 export { useSignaturePadContext, type UseSignaturePadContext } from './use-signature-pad-context'
 
 export * as SignaturePad from './signature-pad'

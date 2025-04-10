@@ -11,9 +11,7 @@ export interface DatePickerTableBaseProps extends Pick<TableProps, 'columns'>, P
 export interface DatePickerTableProps extends HTMLProps<'table'>, DatePickerTableBaseProps {}
 
 export const DatePickerTable = forwardRef<HTMLTableElement, DatePickerTableProps>((props, ref) => {
-  const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, [
-    'columns',
-  ])
+  const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, ['columns'])
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
   const tableProps = { columns, id: useId(), ...viewProps }

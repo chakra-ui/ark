@@ -2,12 +2,7 @@ import { mergeProps } from '@zag-js/react'
 import { type ReactNode, useCallback } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useEffectOnce } from '../../utils/use-effect-once'
-import {
-  PresenceProvider,
-  type UsePresenceProps,
-  splitPresenceProps,
-  usePresence,
-} from '../presence'
+import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseMenuProps, useMenu } from './use-menu'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
@@ -25,11 +20,13 @@ export const MenuRoot = (props: MenuRootProps) => {
     'aria-label',
     'closeOnSelect',
     'composite',
+    'defaultHighlightedValue',
     'defaultOpen',
     'highlightedValue',
     'id',
     'ids',
     'loopFocus',
+    'navigate',
     'onEscapeKeyDown',
     'onFocusOutside',
     'onHighlightChange',
@@ -44,25 +41,22 @@ export const MenuRoot = (props: MenuRootProps) => {
 
   const parentApi = useMenuContext()
   const parentMachine = useMenuMachineContext()
-  const { api, machine } = useMenu(useMenuProps)
+  const { api, service } = useMenu(useMenuProps)
   const presence = usePresence(mergeProps({ present: api.open }, presenceProps))
 
   useEffectOnce(() => {
     if (!parentMachine) return
     if (!parentApi) return
 
-    parentApi.setChild(machine)
+    parentApi.setChild(service)
     api.setParent(parentMachine)
   })
 
-  const triggerItemContext = useCallback(
-    () => parentApi?.getTriggerItemProps(api),
-    [api, parentApi],
-  )
+  const triggerItemContext = useCallback(() => parentApi?.getTriggerItemProps(api), [api, parentApi])
 
   return (
     <MenuTriggerItemProvider value={triggerItemContext}>
-      <MenuMachineProvider value={machine}>
+      <MenuMachineProvider value={service}>
         <MenuProvider value={api}>
           <PresenceProvider value={presence} {...localProps} />
         </MenuProvider>

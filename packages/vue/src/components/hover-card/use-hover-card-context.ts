@@ -3,5 +3,4 @@ import type { UseHoverCardReturn } from './use-hover-card'
 
 export interface UseHoverCardContext extends UseHoverCardReturn {}
 
-export const [HoverCardProvider, useHoverCardContext] =
-  createContext<UseHoverCardContext>('HoverCardContext')
+export const [HoverCardProvider, useHoverCardContext] = createContext<UseHoverCardContext>('HoverCardContext')

@@ -119,6 +119,11 @@
         "isRequired": true,
         "description": "Function called when the pointer is pressed down outside the component"
       },
+      "update:inputValue": {
+        "type": "[value: string]",
+        "isRequired": true,
+        "description": "The callback fired when the input value changes."
+      },
       "update:modelValue": {
         "type": "[value: string[]]",
         "isRequired": true,
@@ -158,14 +163,19 @@
         "description": "Whether the input should be auto-focused"
       },
       "blurBehavior": {
-        "type": "'clear' | 'add'",
+        "type": "'add' | 'clear'",
         "isRequired": false,
         "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"clear\"`: clear the input value"
+      },
+      "defaultInputValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial tag input value when rendered.\nUse when you don't need to control the tag input value."
       },
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial value of the tags input when it is first rendered.\nUse when you do not need to control the state of the tags input."
+        "description": "The initial tag value when rendered.\nUse when you don't need to control the tag value."
       },
       "delimiter": {
         "type": "string | RegExp",
@@ -182,45 +192,29 @@
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether a tag can be edited after creation, by presing `Enter` or double clicking."
+        "description": "Whether a tag can be edited after creation, by pressing `Enter` or double clicking."
       },
       "form": {
         "type": "string",
         "isRequired": false,
         "description": "The associate form of the underlying input element."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item(opts: ItemProps): string\n  itemDeleteTrigger(opts: ItemProps): string\n  itemInput(opts: ItemProps): string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the tags input. Useful for composition."
       },
-      "inputValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The tag input's value"
-      },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the tags input is invalid"
-      },
+      "inputValue": { "type": "string", "isRequired": false, "description": "The controlled tag input's value" },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is invalid" },
       "max": {
         "type": "number",
         "defaultValue": "Infinity",
         "isRequired": false,
         "description": "The max number of tags"
       },
-      "maxLength": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The max length of the input."
-      },
-      "modelValue": { "type": "string[]", "isRequired": false },
+      "maxLength": { "type": "number", "isRequired": false, "description": "The max length of the input." },
+      "modelValue": { "type": "string[]", "isRequired": false, "description": "The v-model value of the tags input" },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -231,11 +225,7 @@
         "isRequired": false,
         "description": "Whether the tags input should be read-only"
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the tags input is required"
-      },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is required" },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -250,7 +240,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "MachineApi<PropTypes>", "isRequired": true },
+      "value": { "type": "TagsInputApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

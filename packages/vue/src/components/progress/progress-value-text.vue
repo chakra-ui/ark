@@ -15,11 +15,10 @@ export interface ProgressValueTextProps
 import { ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
 import { useForwardExpose } from '../../utils'
-import { useSlots } from 'vue'
 
 defineProps<ProgressValueTextProps>()
 const progress = useProgressContext()
-const slots = useSlots()
+const slots = defineSlots()
 
 useForwardExpose()
 </script>

@@ -3,20 +3,13 @@ export type {
   PageChangeDetails as PaginationPageChangeDetails,
   PageSizeChangeDetails as PaginationPageSizeChangeDetails,
 } from '@zag-js/pagination'
-export {
-  PaginationContext,
-  type PaginationContextProps,
-} from './pagination-context'
+export { PaginationContext, type PaginationContextProps } from './pagination-context'
 export {
   PaginationEllipsis,
   type PaginationEllipsisBaseProps,
   type PaginationEllipsisProps,
 } from './pagination-ellipsis'
-export {
-  PaginationItem,
-  type PaginationItemBaseProps,
-  type PaginationItemProps,
-} from './pagination-item'
+export { PaginationItem, type PaginationItemBaseProps, type PaginationItemProps } from './pagination-item'
 export {
   PaginationNextTrigger,
   type PaginationNextTriggerBaseProps,
@@ -27,11 +20,7 @@ export {
   type PaginationPrevTriggerBaseProps,
   type PaginationPrevTriggerProps,
 } from './pagination-prev-trigger'
-export {
-  PaginationRoot,
-  type PaginationRootBaseProps,
-  type PaginationRootProps,
-} from './pagination-root'
+export { PaginationRoot, type PaginationRootBaseProps, type PaginationRootProps } from './pagination-root'
 export {
   PaginationRootProvider,
   type PaginationRootProviderBaseProps,

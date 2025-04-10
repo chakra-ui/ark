@@ -1,20 +1,8 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { SegmentGroup, segmentGroupAnatomy } from '../'
-import { getExports, getParts } from '../../../setup-test'
 import { ComponentUnderTest } from './basic'
 
 describe('Segment Group', () => {
-  it.each(getParts(segmentGroupAnatomy))('should render part! %s', async (part) => {
-    render(() => <ComponentUnderTest />)
-
-    expect(document.querySelector(part)).toBeInTheDocument()
-  })
-
-  it.each(getExports(segmentGroupAnatomy))('should export %s', async (part) => {
-    expect(SegmentGroup[part]).toBeDefined()
-  })
-
   it('should invoke onValueChange if another value has selected', async () => {
     const onValueChange = vi.fn()
     render(() => <ComponentUnderTest onValueChange={onValueChange} />)

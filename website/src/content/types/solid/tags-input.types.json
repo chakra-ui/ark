@@ -120,10 +120,15 @@
         "isRequired": false,
         "description": "The behavior of the tags input when the input is blurred\n- `\"add\"`: add the input value as a new tag\n- `\"clear\"`: clear the input value"
       },
+      "defaultInputValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial tag input value when rendered.\nUse when you don't need to control the tag input value."
+      },
       "defaultValue": {
         "type": "string[]",
         "isRequired": false,
-        "description": "The initial value of the tags input when it is first rendered.\nUse when you do not need to control the state of the tags input."
+        "description": "The initial tag value when rendered.\nUse when you don't need to control the tag value."
       },
       "delimiter": {
         "type": "string | RegExp",
@@ -140,7 +145,7 @@
         "type": "boolean",
         "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether a tag can be edited after creation, by presing `Enter` or double clicking."
+        "description": "Whether a tag can be edited after creation, by pressing `Enter` or double clicking."
       },
       "form": {
         "type": "string",
@@ -152,27 +157,15 @@
         "isRequired": false,
         "description": "The ids of the elements in the tags input. Useful for composition."
       },
-      "inputValue": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The tag input's value"
-      },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the tags input is invalid"
-      },
+      "inputValue": { "type": "string", "isRequired": false, "description": "The controlled tag input's value" },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is invalid" },
       "max": {
         "type": "number",
         "defaultValue": "Infinity",
         "isRequired": false,
         "description": "The max number of tags"
       },
-      "maxLength": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The max length of the input."
-      },
+      "maxLength": { "type": "number", "isRequired": false, "description": "The max length of the input." },
       "name": {
         "type": "string",
         "isRequired": false,
@@ -218,11 +211,7 @@
         "isRequired": false,
         "description": "Whether the tags input should be read-only"
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the tags input is required"
-      },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is required" },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -233,7 +222,7 @@
         "isRequired": false,
         "description": "Returns a boolean that determines whether a tag can be added.\nUseful for preventing duplicates or invalid tag values."
       },
-      "value": { "type": "string[]", "isRequired": false, "description": "The tag values" }
+      "value": { "type": "string[]", "isRequired": false, "description": "The controlled tag value" }
     }
   },
   "RootProvider": {

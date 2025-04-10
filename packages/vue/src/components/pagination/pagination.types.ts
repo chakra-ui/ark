@@ -4,12 +4,19 @@ export interface RootProps {
   /**
    * Total number of data items
    */
-  count: number
+  count?: number
   /**
-   * The initial page of the pagination when it is first rendered.
-   * Use when you do not need to control the state of the pagination.
+   * The initial active page when rendered.
+   * Use when you don't need to control the active page of the pagination.
+   * @default 1
    */
   defaultPage?: number
+  /**
+   * The initial number of data items per page when rendered.
+   * Use when you don't need to control the page size of the pagination.
+   * @default 10
+   */
+  defaultPageSize?: number
   /**
    * The unique identifier of the machine.
    */
@@ -25,13 +32,11 @@ export interface RootProps {
     item(page: number): string
   }>
   /**
-   * The active page
-   * @default 1
+   * The controlled active page
    */
   page?: number
   /**
-   * Number of data items per page
-   * @default 10
+   * The controlled number of data items per page
    */
   pageSize?: number
   /**
@@ -59,4 +64,12 @@ export type RootEmits = {
    * Called when the page size is changed
    */
   pageSizeChange: [details: pagination.PageSizeChangeDetails]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:page': [page: pagination.PageChangeDetails['page']]
+  /**
+   * The callback fired when the model value changes.
+   */
+  'update:pageSize': [pageSize: pagination.PageSizeChangeDetails['pageSize']]
 }

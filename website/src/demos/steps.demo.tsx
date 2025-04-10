@@ -1,3 +1,4 @@
+'use client'
 import { Steps } from '@ark-ui/react/steps'
 import { css } from 'styled-system/css'
 import { HStack } from 'styled-system/jsx'
@@ -29,12 +30,12 @@ export const Demo = () => {
                   textStyle: 'sm',
                   fontWeight: 'medium',
                   _current: {
-                    bg: 'accent.default',
-                    color: 'accent.fg',
+                    bg: 'colorPalette.default',
+                    color: 'colorPalette.fg',
                   },
                   '&[data-complete]': {
-                    bg: 'accent.default',
-                    color: 'accent.fg',
+                    bg: 'colorPalette.default',
+                    color: 'colorPalette.fg',
                   },
                 })}
               >
@@ -60,9 +61,7 @@ export const Demo = () => {
         </Steps.Content>
       ))}
 
-      <Steps.CompletedContent>
-        Steps Complete - Thank you for filling out the form!
-      </Steps.CompletedContent>
+      <Steps.CompletedContent>Steps Complete - Thank you for filling out the form!</Steps.CompletedContent>
 
       <HStack>
         <Steps.PrevTrigger className={button({ variant: 'outline' })}>Back</Steps.PrevTrigger>

@@ -17,3 +17,4 @@ type BooleanKey<T> = {
 export type BooleanDefaults<T> = {
   [K in BooleanKey<T>]: undefined
 }
+export type MaybePromise<T> = T | Promise<T>

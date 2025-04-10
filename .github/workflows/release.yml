@@ -1,87 +1,33 @@
-name: Release
+name: Publish
 
 on:
-  workflow_dispatch:
-    inputs:
-      package:
-        description: 'Package'
-        required: true
-        type: choice
-        options:
-          - anatomy
-          - react
-          - solid
-          - vue
-      increment:
-        description: 'Increment'
-        required: true
-        default: 'patch'
-        type: choice
-        options:
-          - major
-          - minor
-          - patch
-      preRelease:
-        description: 'Pre Release'
-        required: true
-        default: 'skip'
-        type: choice
-        options:
-          - create
-          - continue
-          - skip
+  push:
+    paths:
+      - '.changeset/**'
+      - 'packages/**'
+    branches:
+      - main
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-    
-      - name: Setup Git User
-        shell: bash
-        run: |
-          git config --global user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          git config --global user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Install Dependencies
-        run: bun install
+      - name: Install
+        uses: ./.github/composite-actions/install
 
-      - name: Build
-        run: bun ${{ github.event.inputs.package }} build
+      - name: Build packages
+        run: bun run build
 
-      - name: Create Pre-Release
-        if: github.event.inputs.preRelease == 'create'
-        run: bun ${{ github.event.inputs.package }} release-it ${{ github.event.inputs.increment }} --preRelease=beta --ci
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Continue Pre-Release
-        if: github.event.inputs.preRelease == 'continue'
-        run: bun ${{ github.event.inputs.package }} release-it --preRelease --ci
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Release
-        if: github.event.inputs.preRelease == 'skip'
-        run: bun ${{ github.event.inputs.package }} release-it --ci --increment ${{ github.event.inputs.increment }}
-        env:
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Notification
-        if: github.event.inputs.preRelease == 'skip'
-        uses: slackapi/slack-github-action@v1.27.0
+      - name: Publish packages
+        id: changesets
+        uses: changesets/action@v1
         with:
-          payload: |
-            {
-              "package_name": "@ark-ui/${{ github.event.inputs.package }}",
-              "changelog_url": "https://ark-ui.com/docs/changelog/${{ github.event.inputs.package }}"
-            }
+          publish: bun run release
+          commit: 'ci(changesets): version packages'
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

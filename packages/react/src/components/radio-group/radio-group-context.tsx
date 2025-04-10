@@ -5,5 +5,4 @@ export interface RadioGroupContextProps {
   children: (context: UseRadioGroupContext) => ReactNode
 }
 
-export const RadioGroupContext = (props: RadioGroupContextProps) =>
-  props.children(useRadioGroupContext())
+export const RadioGroupContext = (props: RadioGroupContextProps) => props.children(useRadioGroupContext())

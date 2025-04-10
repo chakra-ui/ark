@@ -5,5 +5,4 @@ export interface RatingGroupContextProps {
   children: (context: UseRatingGroupContext) => ReactNode
 }
 
-export const RatingGroupContext = (props: RatingGroupContextProps) =>
-  props.children(useRatingGroupContext())
+export const RatingGroupContext = (props: RatingGroupContextProps) => props.children(useRatingGroupContext())

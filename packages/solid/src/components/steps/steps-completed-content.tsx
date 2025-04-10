@@ -3,9 +3,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 
 export interface StepsCompletedContentBaseProps extends PolymorphicProps<'div'> {}
-export interface StepsCompletedContentProps
-  extends HTMLProps<'div'>,
-    StepsCompletedContentBaseProps {}
+export interface StepsCompletedContentProps extends HTMLProps<'div'>, StepsCompletedContentBaseProps {}
 
 export const StepsCompletedContent = (props: StepsCompletedContentProps) => {
   const steps = useStepsContext()
