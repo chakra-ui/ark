@@ -80,6 +80,7 @@
         "@zag-js/utils": "1.9.0",
       },
       "devDependencies": {
+        "@ark-ui/shared": "workspace:*",
         "@biomejs/biome": "1.9.4",
         "@storybook/addon-a11y": "8.6.12",
         "@storybook/addon-essentials": "8.6.12",
@@ -174,6 +175,7 @@
         "@zag-js/utils": "1.9.0",
       },
       "devDependencies": {
+        "@ark-ui/shared": "workspace:*",
         "@biomejs/biome": "1.9.4",
         "@modular-forms/solid": "0.25.1",
         "@solidjs/testing-library": "0.8.10",
@@ -223,6 +225,7 @@
         "@zag-js/toggle": "1.9.0",
       },
       "devDependencies": {
+        "@ark-ui/shared": "workspace:*",
         "@storybook/addon-a11y": "8.6.12",
         "@storybook/addon-essentials": "8.6.12",
         "@storybook/sveltekit": "8.6.12",
@@ -306,6 +309,7 @@
         "@zag-js/vue": "1.9.0",
       },
       "devDependencies": {
+        "@ark-ui/shared": "workspace:*",
         "@biomejs/biome": "1.9.4",
         "@histoire/plugin-vue": "0.17.17",
         "@testing-library/dom": "10.4.0",
@@ -351,6 +355,10 @@
         "typescript": "5.8.3",
         "voca": "1.4.1",
       },
+    },
+    "shared": {
+      "name": "@ark-ui/shared",
+      "version": "0.0.1",
     },
     "templates/next-js": {
       "name": "@ark-ui/next-js",
@@ -447,6 +455,8 @@
     "@ark-ui/react": ["@ark-ui/react@workspace:packages/react"],
 
     "@ark-ui/scripts": ["@ark-ui/scripts@workspace:scripts"],
+
+    "@ark-ui/shared": ["@ark-ui/shared@workspace:shared"],
 
     "@ark-ui/solid": ["@ark-ui/solid@workspace:packages/solid"],
 

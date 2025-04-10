@@ -4,5 +4,12 @@
   "commit": false,
   "access": "public",
   "baseBranch": "main",
-  "ignore": ["@ark-ui/next-js", "@ark-ui/nuxt", "@ark-ui/scripts", "@ark-ui/solid-start", "@ark-ui/website"]
+  "ignore": [
+    "@ark-ui/next-js",
+    "@ark-ui/nuxt",
+    "@ark-ui/scripts",
+    "@ark-ui/solid-start",
+    "@ark-ui/website",
+    "@ark-ui/shared"
+  ]
 }

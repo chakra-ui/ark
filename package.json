@@ -6,7 +6,8 @@
     "packages/*",
     "templates/**",
     "scripts",
-    "website"
+    "website",
+    "shared"
   ],
   "scripts": {
     "postinstall": "lefthook install",

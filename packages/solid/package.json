@@ -137,6 +137,7 @@
     "@zag-js/utils": "1.9.0"
   },
   "devDependencies": {
+    "@ark-ui/shared": "workspace:*",
     "@biomejs/biome": "1.9.4",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",

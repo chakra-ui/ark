@@ -138,6 +138,7 @@
     "@zag-js/vue": "1.9.0"
   },
   "devDependencies": {
+    "@ark-ui/shared": "workspace:*",
     "@biomejs/biome": "1.9.4",
     "@histoire/plugin-vue": "0.17.17",
     "@testing-library/dom": "10.4.0",
