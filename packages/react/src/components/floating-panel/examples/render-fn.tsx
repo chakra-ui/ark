@@ -4,6 +4,9 @@ import { FloatingPanel, Portal } from '../..'
 export const RenderFn = () => (
   <FloatingPanel.Root>
     <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
+    <FloatingPanel.Context>
+      {(floatingPanel) => <p>floatingPanel. is {floatingPanel.open ? 'open' : 'closed'}</p>}
+    </FloatingPanel.Context>
     <Portal>
       <FloatingPanel.Positioner>
         <FloatingPanel.Content>
@@ -41,8 +44,5 @@ export const RenderFn = () => (
         </FloatingPanel.Content>
       </FloatingPanel.Positioner>
     </Portal>
-    <FloatingPanel.Context>
-      {(floatingPanel) => <p>floatingPanel. is {floatingPanel.open ? 'open' : 'closed'}</p>}
-    </FloatingPanel.Context>
   </FloatingPanel.Root>
 )
