@@ -7,7 +7,7 @@ export const Controlled = () => {
 
   return (
     <FloatingPanel.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
-      <FloatingPanel.Trigger onClick={() => setIsOpen(true)}>Toggle Panel</FloatingPanel.Trigger>
+      <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
       <Portal>
         <FloatingPanel.Positioner>
           <FloatingPanel.Content>

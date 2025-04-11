@@ -4,11 +4,11 @@ import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
 export const Controlled = () => {
-  const [isOpen, setIsOpen] = createSignal(false)
+  const [open, setOpen] = createSignal(false)
 
   return (
-    <FloatingPanel.Root open={isOpen()} onOpenChange={(e) => setIsOpen(e.open)}>
-      <FloatingPanel.Trigger onClick={() => setIsOpen(true)}>Toggle Panel</FloatingPanel.Trigger>
+    <FloatingPanel.Root open={open()} onOpenChange={(e) => setOpen(e.open)}>
+      <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
       <Portal>
         <FloatingPanel.Positioner>
           <FloatingPanel.Content>

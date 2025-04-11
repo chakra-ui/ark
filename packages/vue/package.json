@@ -103,6 +103,7 @@
     "@zag-js/file-upload": "1.9.2",
     "@zag-js/file-utils": "1.9.2",
     "@zag-js/focus-trap": "1.9.2",
+    "@zag-js/floating-panel": "1.9.2",
     "@zag-js/highlight-word": "1.9.2",
     "@zag-js/hover-card": "1.9.2",
     "@zag-js/i18n-utils": "1.9.2",
