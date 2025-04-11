@@ -37,6 +37,33 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
   })
 
   const rootRef = ref(null)
+  let observer: MutationObserver | null = null
+
+  onMounted(() => {
+    const rootNode = rootRef.value
+    if (!rootNode) return
+
+    const win = getWindow(rootNode)
+    const doc = win.document
+
+    const checkTextElements = () => {
+      const fieldsetProps = toValue<UseFieldsetProps>(props)
+      const id = fieldsetProps.id ?? useId()
+      const errorTextId = `fieldset::${id}::error-text`
+      const helperTextId = `fieldset::${id}::helper-text`
+
+      state.hasErrorText = !!doc.getElementById(errorTextId)
+      state.hasHelperText = !!doc.getElementById(helperTextId)
+    }
+
+    checkTextElements()
+    observer = new win.MutationObserver(checkTextElements)
+    observer.observe(rootNode, { childList: true, subtree: true })
+  })
+
+  onBeforeUnmount(() => {
+    observer?.disconnect()
+  })
 
   return computed(() => {
     const fieldsetProps = toValue<UseFieldsetProps>(props)
@@ -50,28 +77,6 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
     const labelIds: string[] = []
     if (state.hasErrorText && invalid) labelIds.push(errorTextId)
     if (state.hasHelperText) labelIds.push(helperTextId)
-
-    onMounted(() => {
-      const rootNode = rootRef.value
-      if (!rootNode) return
-
-      const win = getWindow(rootNode)
-      const doc = win.document
-
-      const checkTextElements = () => {
-        state.hasErrorText = !!doc.getElementById(errorTextId)
-        state.hasHelperText = !!doc.getElementById(helperTextId)
-      }
-
-      checkTextElements()
-      const observer = new win.MutationObserver(checkTextElements)
-
-      observer.observe(rootNode, { childList: true, subtree: true })
-
-      onBeforeUnmount(() => {
-        observer.disconnect()
-      })
-    })
 
     const getRootProps = () =>
       ({
