@@ -9,13 +9,13 @@ export interface FloatingPanelTriggerProps extends HTMLProps<'button'>, Floating
 export const FloatingPanelTrigger = (props: FloatingPanelTriggerProps) => {
   const floatingPanel = useFloatingPanelContext()
   const presence = usePresenceContext()
-  const mergedProps = mergeProps(
-    () => ({
-      ...floatingPanel().getTriggerProps(),
-      'aria-controls': presence().unmounted ? undefined : floatingPanel().getTriggerProps()['aria-controls'],
-    }),
-    props,
-  )
+  const mergedProps = mergeProps(() => {
+    const triggerProps = floatingPanel().getTriggerProps()
+    return {
+      ...triggerProps,
+      'aria-controls': presence().unmounted ? undefined : triggerProps['aria-controls'],
+    }
+  }, props)
 
   return <ark.button {...mergedProps} />
 }
