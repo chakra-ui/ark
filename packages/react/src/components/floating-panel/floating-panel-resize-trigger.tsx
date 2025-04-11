@@ -6,19 +6,14 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFloatingPanelContext } from './use-floating-panel-context'
 
 export interface FloatingPanelResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
-export interface FloatingPanelResizeTriggerProps
-  extends HTMLProps<'button'>,
-    FloatingPanelResizeTriggerBaseProps {}
+export interface FloatingPanelResizeTriggerProps extends HTMLProps<'div'>, FloatingPanelResizeTriggerBaseProps {}
 
-export const FloatingPanelResizeTrigger = forwardRef<
-  HTMLButtonElement,
-  FloatingPanelResizeTriggerProps
->((props, ref) => {
+export const FloatingPanelResizeTrigger = forwardRef<HTMLDivElement, FloatingPanelResizeTriggerProps>((props, ref) => {
   const [resizeProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['axis'])
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(floatingPanel.getResizeTriggerProps(resizeProps), localProps)
 
-  return <ark.button {...mergedProps} ref={ref} />
+  return <ark.div {...mergedProps} ref={ref} />
 })
 
 FloatingPanelResizeTrigger.displayName = 'FloatingPanelResizeTrigger'

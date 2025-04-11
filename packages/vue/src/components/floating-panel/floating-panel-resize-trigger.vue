@@ -24,7 +24,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="floatingPanel.getResizeTriggerProps(props)" :as-child="asChild">
+  <ark.div v-bind="floatingPanel.getResizeTriggerProps(props)" :as-child="asChild">
     <slot />
-  </ark.button>
+  </ark.div>
 </template>
