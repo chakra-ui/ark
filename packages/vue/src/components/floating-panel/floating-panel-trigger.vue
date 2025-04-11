@@ -22,10 +22,13 @@ defineProps<FloatingPanelTriggerProps>()
 const floatingPanel = useFloatingPanelContext()
 const presence = usePresenceContext()
 
-const triggerProps = computed(() => ({
-  ...floatingPanel.value.getTriggerProps(),
-  'aria-controls': presence.value.unmounted ? undefined : floatingPanel.value.getTriggerProps()['aria-controls'],
-}))
+const triggerProps = computed(() => {
+  const localProps = floatingPanel.value.getTriggerProps()
+  return {
+    ...localProps,
+    'aria-controls': presence.value.unmounted ? undefined : localProps['aria-controls'],
+  }
+})
 
 useForwardExpose()
 </script>
