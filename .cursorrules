@@ -57,3 +57,7 @@ const props = withDefaults(defineProps<SliderRootProps>(), {
   readOnly: undefined,
 } satisfies BooleanDefaults<RootProps>)
 ```
+
+- When writing examples, no need to use `useForwardExpose()`
+
+- All icons should be imported from `lucide-vue-next`
