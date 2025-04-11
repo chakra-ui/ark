@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { FloatingPanel } from '@ark-ui/vue/floating-panel'
 import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-vue-next'
-import { Teleport } from 'vue'
 </script>
 
 <template>
