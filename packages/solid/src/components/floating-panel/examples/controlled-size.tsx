@@ -3,11 +3,11 @@ import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-solid'
 import { createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
-export const Controlled = () => {
-  const [open, setOpen] = createSignal(false)
+export const ControlledSize = () => {
+  const [size, setSize] = createSignal({ width: 400, height: 300 })
 
   return (
-    <FloatingPanel.Root open={open()} onOpenChange={(e) => setOpen(e.open)}>
+    <FloatingPanel.Root size={size()} onSizeChange={(e) => setSize(e.size)}>
       <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
       <Portal>
         <FloatingPanel.Positioner>

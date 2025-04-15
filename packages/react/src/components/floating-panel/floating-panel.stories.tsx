@@ -6,7 +6,10 @@ const meta: Meta = {
 
 export default meta
 
+export { AnchorPosition } from './examples/anchor-position'
 export { Basic } from './examples/basic'
-export { Controlled } from './examples/controlled'
+export { ControlledOpen } from './examples/controlled-open'
+export { ControlledPosition } from './examples/controlled-position'
+export { ControlledSize } from './examples/controlled-size'
 export { LazyMount } from './examples/lazy-mount'
 export { RenderFn } from './examples/render-fn'

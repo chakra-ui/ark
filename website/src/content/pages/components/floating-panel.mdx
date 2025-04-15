@@ -1,0 +1,66 @@
+---
+id: floating-panel
+title: Floating Panel
+description: Used to display content in a non-modal floating window.
+status: new
+---
+
+<ComponentPreview id="FloatingPanel" />
+
+## Anatomy
+
+To set up the editable correctly, you'll need to understand its anatomy and how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+<Anatomy id="floating-panel" />
+
+## Examples
+
+Learn how to use the `FloatingPanel` component in your project. Let's take a look at the most basic example:
+
+<Example id="basic" />
+
+### Controlling the size
+
+To control the size of the floating panel programmatically, you can pass the `size` `onResize` prop to the machine.
+
+<Example id="controlled-size" />
+
+### Controlling the position
+
+To control the position of the floating panel programmatically, you can pass the `position` and `onPositionChange` prop
+to the machine.
+
+<Example id="controlled-position" />
+
+### Anchor position
+
+Use the `getAnchorPosition` function to compute the initial position of the floating panel. This function is called when
+the panel is opened and receives the `triggerRect` and `boundaryRect`.
+
+<Example id="anchor-position" />
+
+### Controlling the open state
+
+To control the open state of the floating panel programmatically, you can pass the `open` and `onOpenChange` prop to the
+machine.
+
+<Example id="controlled-open" />
+
+### Lazy mounting
+
+To lazy mount the floating panel, you can pass the `lazyMount` prop to the machine.
+
+<Example id="lazy-mount" />
+
+### Context
+
+To access the context of the floating panel, you can use the `useFloatingPanelContext` hook or the
+`FloatingPanel.Context` component.
+
+<Example id="render-fn" />
+
+## API Reference
+
+<ComponentTypes id="floating-panel" />

@@ -1,13 +1,13 @@
-import { FloatingPanel } from '@ark-ui/react/floating-panel'
-import { Portal } from '@ark-ui/react/portal'
-import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-react'
-import { useState } from 'react'
+import { FloatingPanel } from '@ark-ui/solid/floating-panel'
+import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-solid'
+import { createSignal } from 'solid-js'
+import { Portal } from 'solid-js/web'
 
-export const Controlled = () => {
-  const [isOpen, setIsOpen] = useState(false)
+export const ControlledOpen = () => {
+  const [open, setOpen] = createSignal(false)
 
   return (
-    <FloatingPanel.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
+    <FloatingPanel.Root open={open()} onOpenChange={(e) => setOpen(e.open)}>
       <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
       <Portal>
         <FloatingPanel.Positioner>
