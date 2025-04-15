@@ -1,5 +1,6 @@
+import { FloatingPanel } from '@ark-ui/react/floating-panel'
+import { Portal } from '@ark-ui/react/portal'
 import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-react'
-import { FloatingPanel, Portal } from '../..'
 
 export const LazyMount = () => (
   <FloatingPanel.Root lazyMount onExitComplete={() => console.log('onExitComplete invoked')}>
