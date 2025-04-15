@@ -1,4 +1,5 @@
 export { Demo as Accordion } from './accordion.demo'
+export { Demo as AngleSlider } from './angle-slider.demo'
 export { Demo as Avatar } from './avatar.demo'
 export { Demo as Carousel } from './carousel.demo'
 export { Demo as Checkbox } from './checkbox.demo'
