@@ -269,6 +269,11 @@
         "isRequired": false,
         "description": "Function called when the pointer is pressed down outside the component"
       },
+      "onSelect": {
+        "type": "(details: SelectionDetails) => void",
+        "isRequired": false,
+        "description": "Function called when an item is selected"
+      },
       "onValueChange": {
         "type": "(details: ValueChangeDetails<T>) => void",
         "isRequired": false,

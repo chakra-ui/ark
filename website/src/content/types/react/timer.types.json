@@ -1,10 +1,7 @@
 {
   "ActionTrigger": {
     "props": {
-      "action": {
-        "type": "TimerAction",
-        "isRequired": true
-      },
+      "action": { "type": "TimerAction", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -35,10 +32,7 @@
   },
   "Item": {
     "props": {
-      "type": {
-        "type": "keyof Time<number>",
-        "isRequired": true
-      },
+      "type": { "type": "keyof Time<number>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -100,10 +94,7 @@
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseTimerReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseTimerReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

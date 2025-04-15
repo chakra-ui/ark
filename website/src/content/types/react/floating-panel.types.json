@@ -1,28 +1,6 @@
 {
-  "Cell": {
+  "Body": {
     "props": {
-      "value": { "type": "number | TimePeriod", "isRequired": true },
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    },
-    "element": "HTMLButtonElement"
-  },
-  "ClearTrigger": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    },
-    "element": "HTMLButtonElement"
-  },
-  "Column": {
-    "props": {
-      "unit": { "type": "TimeUnit", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -30,6 +8,16 @@
       }
     },
     "element": "HTMLDivElement"
+  },
+  "CloseTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement"
   },
   "Content": {
     "props": {
@@ -51,7 +39,7 @@
     },
     "element": "HTMLDivElement"
   },
-  "Input": {
+  "DragTrigger": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -59,9 +47,9 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLInputElement"
+    "element": "HTMLDivElement"
   },
-  "Label": {
+  "Header": {
     "props": {
       "asChild": {
         "type": "boolean",
@@ -69,7 +57,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLabelElement"
+    "element": "HTMLDivElement"
   },
   "Positioner": {
     "props": {
@@ -81,35 +69,76 @@
     },
     "element": "HTMLDivElement"
   },
-  "Root": {
+  "ResizeTrigger": {
     "props": {
-      "allowSeconds": { "type": "boolean", "isRequired": false, "description": "Whether to show the seconds." },
+      "axis": { "type": "ResizeTriggerAxis", "isRequired": true, "description": "The axis of the resize handle" },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Root": {
+    "props": {
+      "allowOverflow": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the panel should be strictly contained within the boundary when dragging"
+      },
+      "closeOnEscape": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the panel should close when the escape key is pressed"
       },
       "defaultOpen": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "Whether the timepicker open state is controlled by the user"
+        "description": "The initial open state of the panel when rendered.\nUse when you don't need to control the open state of the panel."
       },
-      "defaultValue": {
-        "type": "Time",
+      "defaultPosition": {
+        "type": "Point",
         "isRequired": false,
-        "description": "The initial selected time when rendered.\nUse when you don't need to control the selected time."
+        "description": "The initial position of the panel when rendered.\nUse when you don't need to control the position of the panel."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the time picker is disabled." },
-      "disableLayer": {
+      "defaultSize": { "type": "Size", "isRequired": false, "description": "The default size of the panel" },
+      "dir": {
+        "type": "'ltr' | 'rtl'",
+        "defaultValue": "\"ltr\"",
+        "isRequired": false,
+        "description": "The document's text/writing direction."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the panel is disabled" },
+      "draggable": {
         "type": "boolean",
+        "defaultValue": "true",
         "isRequired": false,
-        "description": "Whether to disable the interaction outside logic"
+        "description": "Whether the panel is draggable"
+      },
+      "getAnchorPosition": {
+        "type": "(details: AnchorPositionDetails) => Point",
+        "isRequired": false,
+        "description": "Function that returns the initial position of the panel when it is opened.\nIf provided, will be used instead of the default position."
+      },
+      "getBoundaryEl": {
+        "type": "() => HTMLElement | null",
+        "isRequired": false,
+        "description": "The boundary of the panel. Useful for recalculating the boundary rect when\nthe it is resized."
+      },
+      "gridSize": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The snap grid for the panel"
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string\n  input: string\n  positioner: string\n  content: string\n  clearTrigger: string\n  control: string\n  column(unit: TimeUnit): string\n}>",
+        "type": "Partial<{ trigger: string; positioner: string; content: string; title: string; header: string }>",
         "isRequired": false,
-        "description": "The ids of the elements in the date picker. Useful for composition."
+        "description": "The ids of the elements in the floating panel. Useful for composition."
       },
       "immediate": {
         "type": "boolean",
@@ -122,76 +151,95 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
-      "locale": {
-        "type": "string",
+      "lockAspectRatio": {
+        "type": "boolean",
         "isRequired": false,
-        "description": "The locale (BCP 47 language tag) to use when formatting the time."
+        "description": "Whether the panel is locked to its aspect ratio"
       },
-      "max": { "type": "Time", "isRequired": false, "description": "The maximum time that can be selected." },
-      "min": { "type": "Time", "isRequired": false, "description": "The minimum time that can be selected." },
-      "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
+      "maxSize": { "type": "Size", "isRequired": false, "description": "The maximum size of the panel" },
+      "minSize": { "type": "Size", "isRequired": false, "description": "The minimum size of the panel" },
       "onExitComplete": {
         "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
       },
-      "onFocusChange": {
-        "type": "(details: FocusChangeDetails) => void",
-        "isRequired": false,
-        "description": "Function called when the focused date changes."
-      },
       "onOpenChange": {
         "type": "(details: OpenChangeDetails) => void",
         "isRequired": false,
-        "description": "Function called when the time picker opens or closes."
+        "description": "Function called when the panel is opened or closed"
       },
-      "onValueChange": {
-        "type": "(value: ValueChangeDetails) => void",
+      "onPositionChange": {
+        "type": "(details: PositionChangeDetails) => void",
         "isRequired": false,
-        "description": "Function called when the value changes."
+        "description": "Function called when the position of the panel changes via dragging"
       },
-      "open": { "type": "boolean", "isRequired": false, "description": "Whether the timepicker is open" },
-      "placeholder": { "type": "string", "isRequired": false, "description": "The placeholder text of the input." },
-      "positioning": {
-        "type": "PositioningOptions",
+      "onPositionChangeEnd": {
+        "type": "(details: PositionChangeDetails) => void",
         "isRequired": false,
-        "description": "The user provided options used to position the time picker content"
+        "description": "Function called when the position of the panel changes via dragging ends"
       },
+      "onSizeChange": {
+        "type": "(details: SizeChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the size of the panel changes via resizing"
+      },
+      "onSizeChangeEnd": {
+        "type": "(details: SizeChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the size of the panel changes via resizing ends"
+      },
+      "onStageChange": {
+        "type": "(details: StageChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the stage of the panel changes"
+      },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the panel" },
+      "persistRect": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the panel size and position should be preserved when it is closed"
+      },
+      "position": { "type": "Point", "isRequired": false, "description": "The controlled position of the panel" },
       "present": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
-      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the time picker is read-only." },
+      "resizable": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the panel is resizable"
+      },
+      "size": { "type": "Size", "isRequired": false, "description": "The size of the panel" },
       "skipAnimationOnMount": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to allow the initial presence animation."
       },
-      "steps": {
-        "type": "{ hour?: number | undefined; minute?: number | undefined; second?: number | undefined }",
+      "strategy": {
+        "type": "'absolute' | 'fixed'",
+        "defaultValue": "\"absolute\"",
         "isRequired": false,
-        "description": "The steps of each time unit."
+        "description": "The strategy to use for positioning"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The translations for the floating panel."
       },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to unmount on exit."
-      },
-      "value": { "type": "Time", "isRequired": false, "description": "The controlled selected time." }
-    },
-    "element": "HTMLDivElement"
+      }
+    }
   },
   "RootProvider": {
     "props": {
-      "value": { "type": "UseTimePickerReturn", "isRequired": true },
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
+      "value": { "type": "UseFloatingPanelReturn", "isRequired": true },
       "immediate": {
         "type": "boolean",
         "isRequired": false,
@@ -207,11 +255,6 @@
         "type": "VoidFunction",
         "isRequired": false,
         "description": "Function called when the animation ends in the closed state"
-      },
-      "present": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the node is present (controlled by the user)"
       },
       "skipAnimationOnMount": {
         "type": "boolean",
@@ -225,10 +268,20 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       }
-    },
-    "element": "HTMLDivElement"
+    }
   },
-  "Spacer": {
+  "StageTrigger": {
+    "props": {
+      "stage": { "type": "Stage", "isRequired": true, "description": "The stage of the panel" },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement"
+  },
+  "Title": {
     "props": {
       "asChild": {
         "type": "boolean",
