@@ -60,7 +60,7 @@ export const NavbarLinks = (props: Props) => {
         href={`/${framework}/plus`}
         aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
       >
-        Ark Plus
+        Plus
         <SparklesIcon />
       </NavbarLink>
     </HStack>

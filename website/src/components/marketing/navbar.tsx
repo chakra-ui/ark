@@ -74,7 +74,7 @@ export const Navbar = () => (
               },
             })}
           >
-            Ark Plus <SparklesIcon />
+            Plus <SparklesIcon />
           </NextLink>
         </HStack>
         <HStack gap="1">
