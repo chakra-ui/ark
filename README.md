@@ -2,13 +2,9 @@
 
 <p align="center">
   <a href="https://github.com/chakra-ui/ark">
-    <img src="https://raw.githubusercontent.com/chakra-ui/ark/refs/heads/main/.media/ark-logo-on-brand.svg" alt="Ark UI" width="120" />
+    <img src="https://ark-ui.com/images/ark-logo-on-brand.svg" alt="Ark UI" width="120" />
   </a>
 </p>
-
-<h1 align="center">
-Ark UI
-</h1>
 
 <p align="center">
 Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a>, and <a href="https://solidjs.com/">Solid</a>
@@ -20,7 +16,8 @@ Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a 
 <a href="https://github.com/chakra-ui/ark" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/chakra-ui/ark"/></a>
 </p>
 
-![hero image](https://ark-ui.com/images/og-image.png)
+<!-- Enable when we have a new og image -->
+<!-- ![hero image](https://ark-ui.com/images/og-image.png) -->
 
 ## Installation
 
