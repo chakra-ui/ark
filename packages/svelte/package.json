@@ -87,7 +87,6 @@
     "@zag-js/svelte": "1.10.0"
   },
   "devDependencies": {
-    "@ark-ui/shared": "workspace:*",
     "@storybook/addon-a11y": "8.6.12",
     "@storybook/addon-essentials": "8.6.12",
     "@storybook/sveltekit": "8.6.12",

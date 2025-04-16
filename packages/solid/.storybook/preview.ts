@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react'
-import '@ark-ui/shared/styles.css'
+import '../../../.storybook/styles.css'
 
 const preview: Preview = {
   parameters: {

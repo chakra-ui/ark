@@ -1,1 +1,1 @@
-import '@ark-ui/shared/styles.css'
+import '../../../.storybook/styles.css'
