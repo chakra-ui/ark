@@ -11,18 +11,10 @@ Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a 
 </p>
 
 <p align="center">
-<img alt="License" src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" />
+<!-- Using @zag-js/react as this number is closer to the actual combined dl numbers of solid and vue -->
+<img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@zag-js/react?style=for-the-badge"/>
 <img alt="GitHub stars" src="https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge" />
-</p>
-
-<p align="center">
-
-| Package                                                                               | Version                                                                                                                                                                  | Downloads                                                                                                                                                                                      |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <a href="https://github.com/chakra-ui/ark/tree/main/packages/react">@ark-ui/react</a> | <a href="https://www.npmjs.com/package/@ark-ui/react" target="__blank"><img src="https://img.shields.io/npm/v/@ark-ui/react?style=for-the-badge" alt="NPM version"/></a> | <a href="https://img.shields.io/npm/v/@ark-ui/react?style=for-the-badge" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@ark-ui/react?style=for-the-badge"/></a> |
-| <a href="https://github.com/chakra-ui/ark/tree/main/packages/solid">@ark-ui/solid</a> | <a href="https://www.npmjs.com/package/@ark-ui/solid" target="__blank"><img src="https://img.shields.io/npm/v/@ark-ui/solid?style=for-the-badge" alt="NPM version"/></a> | <a href="https://www.npmjs.com/package/@ark-ui/solid?" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@ark-ui/solid?style=for-the-badge"/></a>                   |
-| <a href="https://github.com/chakra-ui/ark/tree/main/packages/vue">@ark-ui/vue</a>     | <a href="https://www.npmjs.com/package/@ark-ui/vue" target="__blank"><img src="https://img.shields.io/npm/v/@ark-ui/vue?style=for-the-badge" alt="NPM version"/></a>     | <a href="https://www.npmjs.com/package/@ark-ui/vue" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@ark-ui/vue?style=for-the-badge"/></a>                        |
-
+<img alt="License" src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" />
 </p>
 
 <!-- Enable when we have a new og image -->
