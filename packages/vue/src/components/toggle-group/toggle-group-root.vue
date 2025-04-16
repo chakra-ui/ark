@@ -21,6 +21,7 @@ import { ToggleGroupProvider } from './use-toggle-group-context'
 
 const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   disabled: undefined,
+  deselectable: undefined,
   loopFocus: undefined,
   multiple: undefined,
   rovingFocus: undefined,

@@ -212,7 +212,7 @@
       },
       "strategy": {
         "type": "'fixed' | 'absolute'",
-        "defaultValue": "\"absolute\"",
+        "defaultValue": "\"fixed\"",
         "isRequired": false,
         "description": "The strategy to use for positioning"
       },

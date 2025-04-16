@@ -77,14 +77,14 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/anatomy": "1.9.2",
-    "@zag-js/avatar": "1.9.2",
-    "@zag-js/core": "1.9.2",
-    "@zag-js/toggle": "1.9.2",
-    "@zag-js/collection": "1.9.2",
-    "@zag-js/dom-query": "1.9.2",
-    "@zag-js/i18n-utils": "1.9.2",
-    "@zag-js/svelte": "1.9.2"
+    "@zag-js/anatomy": "1.10.0",
+    "@zag-js/avatar": "1.10.0",
+    "@zag-js/core": "1.10.0",
+    "@zag-js/toggle": "1.10.0",
+    "@zag-js/collection": "1.10.0",
+    "@zag-js/dom-query": "1.10.0",
+    "@zag-js/i18n-utils": "1.10.0",
+    "@zag-js/svelte": "1.10.0"
   },
   "devDependencies": {
     "@ark-ui/shared": "workspace:*",
