@@ -22,12 +22,12 @@ export const Hero = () => {
         <Stack gap={{ base: '6', md: '8' }} maxW="3xl">
           <Stack gap={{ base: '5', md: '6' }}>
             <Stack gap={{ base: '3', md: '4' }}>
-              <NextLink href="/react/examples/combobox-in-textarea">
+              <NextLink href="/react/docs/components/floating-panel">
                 <Badge size="lg" variant="outline">
                   <Icon color="colorPalette.default">
                     <SparklesIcon />
                   </Icon>
-                  New: Combobox in Textarea
+                  New: Floating Panel component
                   <ArrowRightIcon />
                 </Badge>
               </NextLink>

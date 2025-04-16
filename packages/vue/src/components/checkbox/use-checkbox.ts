@@ -24,7 +24,7 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
   })
 
   const context = computed<checkbox.Props>(() => {
-    const propsValue = toValue<UseCheckboxProps>(props)
+    const localProps = toValue<UseCheckboxProps>(computedProps)
 
     return {
       id,
@@ -38,11 +38,11 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
       required: field?.value.required,
       dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
-      ...cleanProps(computedProps.value),
+      ...cleanProps(localProps),
       onCheckedChange(details) {
         emit?.('checkedChange', details)
         emit?.('update:checked', details.checked)
-        propsValue.onCheckedChange?.(details)
+        localProps.onCheckedChange?.(details)
       },
     }
   })

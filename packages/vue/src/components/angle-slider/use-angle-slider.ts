@@ -1,7 +1,7 @@
 import * as angleSlider from '@zag-js/angle-slider'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type EmitFn, type MaybeRef, computed, toValue, useId } from 'vue'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './angle-slider.types'
@@ -20,7 +20,7 @@ export const useAngleSlider = (
 ): UseAngleSliderReturn => {
   const id = useId()
   const env = useEnvironmentContext()
-  const locale = useLocaleContext()
+  const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<angleSlider.Props>(() => {
     const localProps = toValue<UseAngleSliderProps>(props)
