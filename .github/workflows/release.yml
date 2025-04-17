@@ -32,5 +32,5 @@ jobs:
           publish: bun run release
           commit: 'ci(changesets): version packages'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
