@@ -1,10 +1,10 @@
 import { Listbox, createListCollection } from '@ark-ui/react/listbox'
 
-export const Basic = () => {
+export const Multiple = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
 
   return (
-    <Listbox.Root collection={collection}>
+    <Listbox.Root collection={collection} selectionMode="multiple">
       <Listbox.Label>Select your Framework</Listbox.Label>
       <Listbox.Content>
         {collection.items.map((item) => (

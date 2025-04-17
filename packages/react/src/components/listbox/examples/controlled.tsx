@@ -1,10 +1,12 @@
 import { Listbox, createListCollection } from '@ark-ui/react/listbox'
+import { useState } from 'react'
 
-export const Basic = () => {
+export const Controlled = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const [value, setValue] = useState(['React'])
 
   return (
-    <Listbox.Root collection={collection}>
+    <Listbox.Root value={value} onValueChange={(e) => setValue(e.value)} collection={collection}>
       <Listbox.Label>Select your Framework</Listbox.Label>
       <Listbox.Content>
         {collection.items.map((item) => (

@@ -1,10 +1,11 @@
-import { Listbox, createListCollection } from '@ark-ui/react/listbox'
+import { Listbox, createListCollection, useListbox } from '@ark-ui/react/listbox'
 
-export const Basic = () => {
+export const RootProvider = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const listbox = useListbox({ collection: collection })
 
   return (
-    <Listbox.Root collection={collection}>
+    <Listbox.RootProvider value={listbox}>
       <Listbox.Label>Select your Framework</Listbox.Label>
       <Listbox.Content>
         {collection.items.map((item) => (
@@ -14,6 +15,6 @@ export const Basic = () => {
           </Listbox.Item>
         ))}
       </Listbox.Content>
-    </Listbox.Root>
+    </Listbox.RootProvider>
   )
 }
