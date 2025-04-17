@@ -56,12 +56,42 @@ describe('Listbox', () => {
   })
 
   it('should invoke onValueChange callback when an option is selected', async () => {
-    const mock = vi.fn()
-    render(<ComponentUnderTest onValueChange={mock} />)
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest onValueChange={onValueChange} />)
 
+    await user.click(await screen.findByRole('option', { name: 'React' }))
+
+    expect(onValueChange).toHaveBeenNthCalledWith(1, { items: [{ label: 'React', value: 'react' }], value: ['react'] })
+  })
+
+  it('should invoke onSelect callback when an option is selected', async () => {
+    const onSelect = vi.fn()
+    render(<ComponentUnderTest onSelect={onSelect} />)
+
+    await user.click(await screen.findByRole('option', { name: 'React' }))
+
+    expect(onSelect).toHaveBeenCalledWith({ value: 'react' })
+  })
+
+  it('should mark the default selected option with aria-selected attribute', async () => {
+    render(<ComponentUnderTest defaultValue={['react']} />)
     const option = await screen.findByRole('option', { name: 'React' })
-    await user.click(option)
 
-    expect(mock).toHaveBeenNthCalledWith(1, { items: [{ label: 'React', value: 'react' }], value: ['react'] })
+    expect(option).toHaveAttribute('aria-selected', 'true')
+  })
+
+  it('should allow multiple selections when selectionMode is multiple', async () => {
+    const onValueChange = vi.fn()
+    render(<ComponentUnderTest defaultValue={['react']} onValueChange={onValueChange} selectionMode="multiple" />)
+
+    await user.click(await screen.findByRole('option', { name: 'Solid' }))
+
+    expect(onValueChange).toHaveBeenNthCalledWith(1, {
+      items: [
+        { label: 'React', value: 'react' },
+        { label: 'Solid', value: 'solid' },
+      ],
+      value: ['react', 'solid'],
+    })
   })
 })
