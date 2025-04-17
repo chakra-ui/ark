@@ -55,11 +55,13 @@ describe('Listbox', () => {
     expect(svelte).toHaveAttribute('aria-disabled', 'true')
   })
 
-  it.skip('should invoke onValueChange callback when an option is selected', async () => {
+  it('should invoke onValueChange callback when an option is selected', async () => {
     const mock = vi.fn()
     render(<ComponentUnderTest onValueChange={mock} />)
 
     const option = await screen.findByRole('option', { name: 'React' })
     await user.click(option)
+
+    expect(mock).toHaveBeenNthCalledWith(1, { items: [{ label: 'React', value: 'react' }], value: ['react'] })
   })
 })
