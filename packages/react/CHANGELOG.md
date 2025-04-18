@@ -4,55 +4,28 @@ title: Changelog
 description: All notable changes will be documented in this file.
 ---
 
+### Unreleased
+
+### Added
+
+- **[NEW] Listbox**: Introduced the `Listbox` component for selecting a single or multiple items from a list. See the
+  [documentation](https://ark-ui.com/react/docs/components/listbox) for details.
+
 ## [5.6.0] - 2025-04-15
 
 ### Added
 
-- **[NEW] AngleSlider**: Added `AngleSlider` component for selecting an angle.
-
-```tsx
-<AngleSlider.Root>
-  <AngleSlider.Label />
-  <AngleSlider.Control>
-    <AngleSlider.Thumb />
-  </AngleSlider.Control>
-  <AngleSlider.ValueText />
-  <AngleSlider.HiddenInput />
-</AngleSlider.Root>
-```
-
-- **[NEW] FloatingPanel**: Added `FloatingPanel` component for creating floating windows.
-
-```tsx
-<FloatingPanel.Root>
-  <FloatingPanel.Trigger />
-  <FloatingPanel.Positioner>
-    <FloatingPanel.Content>
-      <FloatingPanel.DragTrigger>
-        <FloatingPanel.Header>
-          <FloatingPanel.Title />
-          <FloatingPanel.Control>
-            <FloatingPanel.StageTrigger />
-          </FloatingPanel.Control>
-        </FloatingPanel.Header>
-      </FloatingPanel.DragTrigger>
-      <FloatingPanel.Body />
-      <FloatingPanel.ResizeTrigger />
-    </FloatingPanel.Content>
-  </FloatingPanel.Positioner>
-</FloatingPanel.Root>
-```
-
-- **Toast**: Add support for queuing toasts that exceed the maximum limit. When the maximum number of toasts is reached:
-
-  - New toasts are added to a queue instead of being dropped
-  - Queued toasts are automatically displayed when space becomes available
-  - Queue is cleared when all toasts are removed
-
+- **[NEW] AngleSlider**: Introduced the `AngleSlider` component for selecting an angle. See the
+  [documentation](https://ark-ui.com/react/docs/components/angle-slider) for details.
+- **[NEW] FloatingPanel**: Introduced the `FloatingPanel` component for creating floating windows. See the
+  [documentation](https://ark-ui.com/react/docs/components/floating-panel) for details.
+- **Toast**: Added toast queuing when the max limit is reached:
+  - New toasts were queued instead of dropped
+  - Queued toasts were shown when space became available
+  - Queue cleared when all toasts were removed
 - **Combobox**:
-
-  - Fallback to trigger element as the positioning anchor
-  - Add `data-empty` attribute to the listbox and content to indicate when the listbox is empty
+  - Fallbacked to the trigger element as the positioning anchor
+  - Added `data-empty` attribute to indicate an empty listbox or content
 
 ## [5.5.0] - 2025-04-05
 
