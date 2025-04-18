@@ -21,18 +21,13 @@ import { ark } from '../factory'
 import { useListbox } from './use-listbox'
 import { ListboxProvider } from './use-listbox-context'
 
-const props = withDefaults(defineProps<ListboxRootProps<T>>(), {
-  closeOnListbox: undefined,
-  composite: undefined,
-  defaultOpen: undefined,
-  delistboxable: undefined,
+const props = withDefaults(defineProps<ListboxRootBaseProps<T>>(), {
+  deselectable: undefined,
   disabled: undefined,
-  invalid: undefined,
+  disallowSelectAll: undefined,
   loopFocus: undefined,
-  multiple: undefined,
-  open: undefined,
-  readOnly: undefined,
-  required: undefined,
+  selectOnHighlight: undefined,
+  typeahead: undefined,
 } satisfies BooleanDefaults<RootProps<T>>)
 
 const emits = defineEmits<RootEmits<T>>()

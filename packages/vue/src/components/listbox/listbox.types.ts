@@ -1,5 +1,5 @@
 import type * as listbox from '@zag-js/listbox'
-import type { CollectionItem, ListCollection } from '../collection'
+import type { CollectionItem, ListCollection, SelectionMode } from '../collection'
 
 export interface RootProps<T extends CollectionItem> {
   /**
@@ -80,7 +80,7 @@ export interface RootProps<T extends CollectionItem> {
    *
    * @default "single"
    */
-  selectionMode?: import('/Users/christian/Developer/ark/node_modules/@zag-js/collection/dist/index').SelectionMode
+  selectionMode?: SelectionMode
   /**
    * Whether to enable typeahead on the listbox
    */

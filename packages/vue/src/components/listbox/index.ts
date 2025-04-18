@@ -4,7 +4,7 @@ export type {
   SelectionDetails,
   ValueChangeDetails,
 } from '@zag-js/listbox'
-export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
+export { createListCollection, type CollectionItem, type ListCollection, type SelectionMode } from '../collection'
 export {
   default as ListboxContent,
   type ListboxContentBaseProps,

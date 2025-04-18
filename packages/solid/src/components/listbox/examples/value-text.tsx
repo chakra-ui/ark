@@ -1,4 +1,5 @@
-import { Listbox, createListCollection } from '@ark-ui/react/listbox'
+import { Listbox, createListCollection } from '@ark-ui/solid/listbox'
+import { Index } from 'solid-js'
 
 export const ValueText = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
@@ -9,12 +10,14 @@ export const ValueText = () => {
         Select your Framework: <Listbox.ValueText />
       </Listbox.Label>
       <Listbox.Content>
-        {collection.items.map((item) => (
-          <Listbox.Item key={item} item={item}>
-            <Listbox.ItemText>{item}</Listbox.ItemText>
-            <Listbox.ItemIndicator />
-          </Listbox.Item>
-        ))}
+        <Index each={collection.items}>
+          {(item) => (
+            <Listbox.Item item={item()}>
+              <Listbox.ItemText>{item()}</Listbox.ItemText>
+              <Listbox.ItemIndicator />
+            </Listbox.Item>
+          )}
+        </Index>
       </Listbox.Content>
     </Listbox.Root>
   )
