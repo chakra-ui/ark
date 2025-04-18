@@ -4,7 +4,7 @@ export const Basic = () => {
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
 
   return (
-    <Listbox.Root defaultValue={['React']} onValueChange={(e) => console.log(e)} collection={collection}>
+    <Listbox.Root collection={collection}>
       <Listbox.Label>Select your Framework</Listbox.Label>
       <Listbox.Content>
         {collection.items.map((item) => (
