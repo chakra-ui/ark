@@ -5,5 +5,4 @@ export interface FloatingPanelContextProps {
   children: (context: UseFloatingPanelContext) => ReactNode
 }
 
-export const FloatingPanelContext = (props: FloatingPanelContextProps) =>
-  props.children(useFloatingPanelContext())
+export const FloatingPanelContext = (props: FloatingPanelContextProps) => props.children(useFloatingPanelContext())

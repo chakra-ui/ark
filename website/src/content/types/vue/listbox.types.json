@@ -1,0 +1,174 @@
+{
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroupLabel": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "id": { "type": "string", "isRequired": false }
+    }
+  },
+  "ItemIndicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "highlightOnHover": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to highlight the item on hover"
+      },
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" }
+    }
+  },
+  "ItemText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "collection": { "type": "ListCollection<T>", "isRequired": true, "description": "The collection of items" },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultHighlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The initial value of the highlighted item when opened.\nUse when you don't need to control the highlighted value of the listbox."
+      },
+      "defaultValue": {
+        "type": "string[]",
+        "defaultValue": "[]",
+        "isRequired": false,
+        "description": "The initial default value of the listbox when rendered.\nUse when you don't need to control the value of the listbox."
+      },
+      "deselectable": { "type": "boolean", "isRequired": false, "description": "Whether to disallow empty selection" },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the listbox is disabled" },
+      "disallowSelectAll": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disallow selecting all items when `meta+a` is pressed"
+      },
+      "highlightedValue": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The controlled key of the highlighted item"
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the listbox. Useful for composition."
+      },
+      "loopFocus": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to loop the keyboard navigation through the options"
+      },
+      "modelValue": { "type": "string[]", "isRequired": false, "description": "The model value of the listbox" },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the element."
+      },
+      "scrollToIndexFn": {
+        "type": "(details: ScrollToIndexDetails) => void",
+        "isRequired": false,
+        "description": "Function to scroll to a specific index"
+      },
+      "selectionMode": {
+        "type": "SelectionMode",
+        "defaultValue": "\"single\"",
+        "isRequired": false,
+        "description": "How multiple selection should behave in the listbox.\n\n- `single`: The user can select a single item.\n- `multiple`: The user can select multiple items without using modifier keys.\n- `extended`: The user can select multiple items by using modifier keys."
+      },
+      "selectOnHighlight": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to select the item when it is highlighted"
+      },
+      "typeahead": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to enable typeahead on the listbox"
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "ListboxApi<PropTypes, T>", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "placeholder": { "type": "string", "isRequired": false }
+    }
+  }
+}

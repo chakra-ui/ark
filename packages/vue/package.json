@@ -107,6 +107,7 @@
     "@zag-js/highlight-word": "1.10.0",
     "@zag-js/hover-card": "1.10.0",
     "@zag-js/i18n-utils": "1.10.0",
+    "@zag-js/listbox": "1.10.0",
     "@zag-js/menu": "1.10.0",
     "@zag-js/number-input": "1.10.0",
     "@zag-js/pagination": "1.10.0",

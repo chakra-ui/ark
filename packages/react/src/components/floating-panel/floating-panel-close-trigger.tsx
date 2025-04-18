@@ -4,14 +4,9 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFloatingPanelContext } from './use-floating-panel-context'
 
 export interface FloatingPanelCloseTriggerBaseProps extends PolymorphicProps {}
-export interface FloatingPanelCloseTriggerProps
-  extends HTMLProps<'button'>,
-    FloatingPanelCloseTriggerBaseProps {}
+export interface FloatingPanelCloseTriggerProps extends HTMLProps<'button'>, FloatingPanelCloseTriggerBaseProps {}
 
-export const FloatingPanelCloseTrigger = forwardRef<
-  HTMLButtonElement,
-  FloatingPanelCloseTriggerProps
->((props, ref) => {
+export const FloatingPanelCloseTrigger = forwardRef<HTMLButtonElement, FloatingPanelCloseTriggerProps>((props, ref) => {
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(floatingPanel.getCloseTriggerProps(), props)
 
