@@ -1,7 +1,7 @@
 {
   "name": "@ark-ui/react",
   "type": "module",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "description": "A collection of unstyled, accessible UI components for React, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
