@@ -3,6 +3,7 @@ import { Flex } from 'styled-system/jsx'
 import { layout } from 'styled-system/recipes'
 import { DocsNavbar } from '~/components/navigation/docs/docs-navbar'
 import { DocsSidebar } from '~/components/navigation/docs/docs-sidebar'
+import { Navbar } from '~/components/navigation/navbar'
 import { SidebarContainer } from '~/components/navigation/sidebar-container'
 import { getSidebarGroups } from '~/lib/sidebar'
 
@@ -13,6 +14,9 @@ export default function Layout(props: PropsWithChildren) {
 
   return (
     <>
+      <header>
+        <Navbar />
+      </header>
       <DocsNavbar />
       <Flex pt={{ base: '28', md: '16' }}>
         <SidebarContainer className={styles.aside}>

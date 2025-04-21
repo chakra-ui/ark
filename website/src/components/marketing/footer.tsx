@@ -33,7 +33,7 @@ export const Footer = () => {
             <Text color="fg.muted">A project by Chakra Systems</Text>
           </Stack>
           <Stack direction="row" gap="8">
-            <NextLink href="/react/docs/overview/getting-started">Docs</NextLink>
+            <NextLink href="/docs/overview/getting-started">Docs</NextLink>
             {resources.map((resource) => (
               <a key={resource.name} href={resource.href} target="_blank" rel="noreferrer">
                 {resource.name}

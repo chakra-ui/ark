@@ -2,7 +2,7 @@ import NextLink from 'next/link'
 import type { PropsWithChildren } from 'react'
 import { Box, HStack } from 'styled-system/jsx'
 import { Logo } from '~/components/logo'
-import { getServerContext } from '~/lib/server-context'
+import { getFramework } from '~/lib/frameworks'
 import { VersionSelect } from './version-select'
 
 interface Props {
@@ -11,8 +11,8 @@ interface Props {
 
 export const SidebarContainer = async (props: PropsWithChildren<Props>) => {
   const { className } = props
-  const { framework } = getServerContext()
 
+  const framework = await getFramework()
   const version = await fetchLatestVersion(framework)
 
   return (

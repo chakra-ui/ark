@@ -15,10 +15,11 @@ interface Props extends Tabs.RootProps {
 }
 
 export const CodeTabs = (props: Props) => {
-  const { examples, ...rootProps } = props
+  const { examples, defaultValue, ...rootProps } = props
 
   return (
     <Tabs.Root
+      defaultValue={defaultValue}
       variant="line"
       borderWidth="1px"
       borderRadius="lg"

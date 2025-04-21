@@ -1,5 +1,5 @@
 import { cleanupPageContent } from '~/app/(llms)/shared'
-import { frameworks } from '~/app/sitemap'
+import { frameworks } from '~/lib/frameworks'
 import { categories, getSidebarGroups } from '~/lib/sidebar'
 import type { Pages } from '.velite'
 
