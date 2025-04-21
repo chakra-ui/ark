@@ -6,18 +6,19 @@ import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
 import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
+import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
 
 interface Props {
-  params: Promise<{ framework: string; slug: string[] }>
+  params: Promise<{ slug: string[] }>
 }
 
 export default async function Page(props: Props) {
   const params = await props.params
-
-  const currentPage = getPageBySlug(params.slug, params.framework)
+  const framework = await getFramework()
+  const currentPage = getPageBySlug(params.slug, framework)
   const nextPage = getNextPage(params.slug)
   const prevPage = getPrevPage(params.slug)
 
