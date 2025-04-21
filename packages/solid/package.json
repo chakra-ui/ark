@@ -154,7 +154,7 @@
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.1.0",
     "jsdom": "26.1.0",
-    "lucide-solid": "0.488.0",
+    "lucide-solid": "0.501.0",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.5",
     "storybook": "8.6.12",
