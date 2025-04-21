@@ -3,6 +3,7 @@ import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { Match } from 'effect'
 import { codeToHtml } from 'shiki'
+import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CodeTabs } from './code-tabs'
 
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export const Example = async (props: Props) => {
-  const framework = getServerContext().framework ?? 'react'
+  const framework = await getFramework()
   const examples = await findExamples(props)
 
   return <CodeTabs examples={examples} defaultValue={framework} />

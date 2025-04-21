@@ -22,7 +22,6 @@ export default async function Page(props: Props) {
   const prevPage = getPrevPage(params.slug)
 
   const serverContext = getServerContext()
-  serverContext.framework = params.framework
   serverContext.component = params.slug[1]
 
   if (currentPage) {

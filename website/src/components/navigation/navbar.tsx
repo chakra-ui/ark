@@ -2,8 +2,8 @@ import NextLink from 'next/link'
 import { Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
+import { getFramework } from '~/lib/frameworks'
 import { data } from '~/lib/search'
-import { getServerContext } from '~/lib/server-context'
 import { UserButton } from '../auth/user-button'
 import { CommandMenu } from '../command-menu'
 import { FrameworkSelect } from './framework-select'
@@ -13,8 +13,8 @@ import { MobileNavbarLinks } from './mobile-navbar-links'
 import { NavbarContainer } from './navbar-container'
 import { NavbarLinks } from './navbar-links'
 
-export const Navbar = () => {
-  const { framework } = getServerContext()
+export const Navbar = async () => {
+  const framework = await getFramework()
 
   return (
     <>
@@ -24,10 +24,10 @@ export const Navbar = () => {
             <Logo />
           </NextLink>
           <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
-            <NavbarLinks framework={framework} />
+            <NavbarLinks />
             <Divider orientation="vertical" h="6" />
             <div id="framework-select">
-              <FrameworkSelect />
+              <FrameworkSelect framework={framework} />
             </div>
             <Divider orientation="vertical" h="6" />
             <HStack gap="2">
@@ -40,11 +40,10 @@ export const Navbar = () => {
             </HStack>
           </HStack>
           <HStack gap="1" py="0.5" display={{ base: 'flex', md: 'none' }}>
-            {/* <CommandMenu data={data} /> */}
             <MobileNavbar>
               <Stack gap="0" width="17rem">
-                <MobileNavbarLinks framework={framework} />
-                <FrameworkSelect />
+                <MobileNavbarLinks />
+                <FrameworkSelect framework={framework} />
                 <Divider />
                 <HStack gap="3" justifyContent="center" px="3" pt="6">
                   <ColorModeButton />

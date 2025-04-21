@@ -1,7 +1,6 @@
 'use client'
 import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
-import { useParams, usePathname, useRouter } from 'next/navigation'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
 
@@ -13,15 +12,19 @@ const collection = createListCollection({
   ],
 })
 
-export const FrameworkSelect = () => {
-  const router = useRouter()
-  const params = useParams<{ framework: string }>()
-  const pathname = usePathname()
+interface Props {
+  framework: string
+}
 
+export const FrameworkSelect = (props: Props) => {
+  const { framework } = props
   return (
     <Select.Root
-      defaultValue={[params.framework]}
-      onValueChange={(e) => router.push(pathname.replace(params.framework, e.value[0]))}
+      defaultValue={[framework]}
+      onValueChange={(e) => {
+        document.cookie = `framework=${e.value[0]}; path=/; max-age=31536000;`
+        window.location.reload()
+      }}
       size={{ base: 'md', md: 'sm' }}
       collection={collection}
       variant="ghost"

@@ -5,10 +5,6 @@ import { usePathname } from 'next/navigation'
 import { cva } from 'styled-system/css'
 import { styled } from 'styled-system/jsx'
 
-interface Props {
-  framework: string
-}
-
 const link = cva({
   base: {
     borderBottomWidth: '1px',
@@ -38,28 +34,18 @@ const link = cva({
 
 const NavbarLink = styled(NextLink, link)
 
-export const MobileNavbarLinks = (props: Props) => {
-  const { framework } = props
+export const MobileNavbarLinks = () => {
   const pathname = usePathname()
 
   return (
     <>
-      <NavbarLink
-        href={`/${framework}/docs/overview/introduction`}
-        aria-current={pathname.startsWith(`/${framework}/docs`) ? 'page' : undefined}
-      >
+      <NavbarLink href="/docs/overview/introduction" aria-current={pathname.startsWith('/docs') ? 'page' : undefined}>
         Docs
       </NavbarLink>
-      <NavbarLink
-        href={`/${framework}/examples`}
-        aria-current={pathname.startsWith(`/${framework}/examples`) ? 'page' : undefined}
-      >
+      <NavbarLink href="/examples" aria-current={pathname.startsWith('/examples') ? 'page' : undefined}>
         Examples
       </NavbarLink>
-      <NavbarLink
-        href={`/${framework}/plus`}
-        aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
-      >
+      <NavbarLink href="/plus" aria-current={pathname.startsWith('/plus') ? 'page' : undefined}>
         Plus
         <SparklesIcon />
       </NavbarLink>

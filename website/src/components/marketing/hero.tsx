@@ -22,7 +22,7 @@ export const Hero = () => {
         <Stack gap={{ base: '6', md: '8' }} maxW="3xl">
           <Stack gap={{ base: '5', md: '6' }}>
             <Stack gap={{ base: '3', md: '4' }}>
-              <NextLink href="/react/docs/components/floating-panel">
+              <NextLink href="/docs/components/floating-panel">
                 <Badge size="lg" variant="outline">
                   <Icon color="colorPalette.default">
                     <SparklesIcon />
@@ -43,10 +43,10 @@ export const Hero = () => {
           </Stack>
           <Stack direction={{ base: 'column', sm: 'row' }} gap="3">
             <Button asChild size={{ base: 'xl', md: '2xl' }}>
-              <NextLink href="/react/docs/overview/introduction">Get Started</NextLink>
+              <NextLink href="/docs/overview/introduction">Get Started</NextLink>
             </Button>
             <Button asChild size={{ base: 'xl', md: '2xl' }} variant="outline">
-              <NextLink href="/react/docs/components/accordion">Show Components</NextLink>
+              <NextLink href="/docs/components/accordion">Show Components</NextLink>
             </Button>
           </Stack>
           <HStack gap={{ base: '4', md: '8' }}>

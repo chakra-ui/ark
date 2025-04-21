@@ -1,7 +1,6 @@
 'use client'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
-import { useParams } from 'next/navigation'
 import { css, cva, cx } from 'styled-system/css'
 import { HStack, Stack } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
@@ -15,8 +14,7 @@ interface Props {
 
 export const DocsFooter = (props: Props) => {
   const { prevPage, nextPage } = props
-  const params = useParams<{ framework: string }>()
-  const basepath = `/${params.framework}//docs`
+  const basepath = '/docs'
 
   return (
     <Stack justify="space-between" gap="3" direction={{ base: 'column-reverse', sm: 'row' }}>

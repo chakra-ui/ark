@@ -18,8 +18,8 @@ export const Faq = () => {
       answer: (
         <div>
           No - in fact, the opposite is true. In our latest release, Ark UI{' '}
-          <Link href="/react/docs/overview/changelog#500---2025-03-06">outperformed</Link> other headless component
-          libraries that were built exclusively for a single framework.
+          <Link href="/docs/overview/changelog#500---2025-03-06">outperformed</Link> other headless component libraries
+          that were built exclusively for a single framework.
         </div>
       ),
     },

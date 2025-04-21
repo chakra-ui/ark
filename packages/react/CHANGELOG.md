@@ -9,7 +9,7 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **[NEW] Listbox**: Introduced the `Listbox` component for selecting a single or multiple items from a list. See the
-  [documentation](https://ark-ui.com/react/docs/components/listbox) for details.
+  [documentation](https://ark-ui.com/docs/components/listbox) for details.
 - Improved support for grouping collection items. Check the `Listbox`, `Select` or `Combobox` documentation for more
   details.
 
@@ -22,9 +22,9 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **[NEW] AngleSlider**: Introduced the `AngleSlider` component for selecting an angle. See the
-  [documentation](https://ark-ui.com/react/docs/components/angle-slider) for details.
+  [documentation](https://ark-ui.com/docs/components/angle-slider) for details.
 - **[NEW] FloatingPanel**: Introduced the `FloatingPanel` component for creating floating windows. See the
-  [documentation](https://ark-ui.com/react/docs/components/floating-panel) for details.
+  [documentation](https://ark-ui.com/docs/components/floating-panel) for details.
 - **Toast**: Added toast queuing when the max limit is reached:
   - New toasts were queued instead of dropped
   - Queued toasts were shown when space became available
@@ -125,7 +125,7 @@ export const DownloadImage = () => {
 
 - **NumberInput**: Set the default step to `0.01` when `formatOptions.style` was set to `percent`.
 - **[Breaking] Splitter**: Redesigned splitter machine to support more use cases and improve DX. Check out the
-  [Splitter](https://ark-ui.com/react/docs/components/splitter) documentation for more details.
+  [Splitter](https://ark-ui.com/docs/components/splitter) documentation for more details.
 
 ### Fixed
 

@@ -6,14 +6,9 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:framework/examples',
-        destination: '/:framework/examples/checkbox-group',
+        source: '/examples',
+        destination: '/examples/checkbox-group',
         permanent: false,
-      },
-      {
-        source: '/docs/:framework/:slug*',
-        destination: '/:framework/docs/:slug*',
-        permanent: true,
       },
     ]
   },

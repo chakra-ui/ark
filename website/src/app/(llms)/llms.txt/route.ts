@@ -1,4 +1,4 @@
-import { frameworks } from '~/app/sitemap'
+import { frameworks } from '~/lib/frameworks'
 import { categories, getSidebarGroups } from '~/lib/sidebar'
 
 export const dynamic = 'force-static'

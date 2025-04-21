@@ -2,7 +2,7 @@
 import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
-import { useParams, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Badge } from '~/components/ui/badge'
 import { Icon } from '~/components/ui/icon'
 import { recipe } from '../sidebar.recipe'
@@ -17,7 +17,6 @@ interface Props {
 export const DocsSidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
-  const params = useParams<{ framework: string }>()
 
   return (
     <nav>
@@ -36,7 +35,7 @@ export const DocsSidebar = (props: Props) => {
                 <Collapsible.Content>
                   <ul>
                     {uniqueGroup.map((item) => {
-                      const href = `/${params.framework}/docs/${item.slug}`
+                      const href = `/docs/${item.slug}`
                       return (
                         <li key={item.id}>
                           <NextLink

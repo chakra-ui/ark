@@ -2,7 +2,7 @@
 import { Collapsible } from '@ark-ui/react/collapsible'
 import { ChevronRightIcon, SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
-import { useParams, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Flex } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
@@ -18,7 +18,6 @@ interface Props {
 export const ExamplesSidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
-  const params = useParams<{ framework: string }>()
 
   return (
     <nav>
@@ -36,7 +35,7 @@ export const ExamplesSidebar = (props: Props) => {
                 <Collapsible.Content>
                   <ul>
                     {group.items.map((item) => {
-                      const href = `/${params.framework}/examples/${item.id}`
+                      const href = `/examples/${item.id}`
                       return (
                         <li key={item.id}>
                           <NextLink
