@@ -4,11 +4,13 @@ import { Portal } from '@ark-ui/react/portal'
 export const Advanced = () => {
   const collection = createListCollection({
     items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
+      { label: 'React', value: 'react', type: 'JS' },
+      { label: 'Solid', value: 'solid', type: 'JS' },
+      { label: 'Vue', value: 'vue', type: 'JS' },
+      { label: 'Panda', value: 'panda', type: 'CSS' },
+      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
     ],
+    groupBy: (item) => item.type,
   })
 
   return (
@@ -22,15 +24,17 @@ export const Advanced = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              {collection.items.map((item) => (
-                <Combobox.Item key={item.value} item={item}>
-                  <Combobox.ItemText>{item.label}</Combobox.ItemText>
-                  <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                </Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
+            {collection.group().map(([type, group]) => (
+              <Combobox.ItemGroup key={type}>
+                <Combobox.ItemGroupLabel>{type}</Combobox.ItemGroupLabel>
+                {group.map((item) => (
+                  <Combobox.Item key={item.value} item={item}>
+                    <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                  </Combobox.Item>
+                ))}
+              </Combobox.ItemGroup>
+            ))}
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

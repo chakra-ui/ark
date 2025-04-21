@@ -5,14 +5,16 @@ import { Portal } from 'solid-js/web'
 export const Advanced = () => {
   const collection = createListCollection({
     items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
+      { label: 'React', value: 'react', type: 'JS' },
+      { label: 'Solid', value: 'solid', type: 'JS' },
+      { label: 'Vue', value: 'vue', type: 'JS' },
+      { label: 'Panda', value: 'panda', type: 'CSS' },
+      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
     ],
+    groupBy: (item) => item.type,
   })
   return (
-    <Combobox.Root collection={collection}>
+    <Combobox.Root collection={collection} multiple>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -22,17 +24,21 @@ export const Advanced = () => {
       <Portal>
         <Combobox.Positioner>
           <Combobox.Content>
-            <Combobox.ItemGroup>
-              <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-              <For each={collection.items}>
-                {(item) => (
-                  <Combobox.Item item={item}>
-                    <Combobox.ItemText>{item.label}</Combobox.ItemText>
-                    <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
-                  </Combobox.Item>
-                )}
-              </For>
-            </Combobox.ItemGroup>
+            <For each={collection.group()}>
+              {([type, group]) => (
+                <Combobox.ItemGroup>
+                  <Combobox.ItemGroupLabel>{type}</Combobox.ItemGroupLabel>
+                  <For each={group}>
+                    {(item) => (
+                      <Combobox.Item item={item}>
+                        <Combobox.ItemText>{item.label}</Combobox.ItemText>
+                        <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
+                      </Combobox.Item>
+                    )}
+                  </For>
+                </Combobox.ItemGroup>
+              )}
+            </For>
           </Combobox.Content>
         </Combobox.Positioner>
       </Portal>

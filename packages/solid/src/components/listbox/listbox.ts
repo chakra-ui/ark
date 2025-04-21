@@ -2,6 +2,7 @@ export type {
   HighlightChangeDetails,
   ScrollToIndexDetails,
   SelectionDetails,
+  SelectionMode,
   ValueChangeDetails,
 } from '@zag-js/listbox'
 export {

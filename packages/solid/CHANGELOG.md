@@ -10,6 +10,8 @@ description: All notable changes will be documented in this file.
 
 - **[NEW] Listbox**: Introduced the `Listbox` component for selecting a single or multiple items from a list. See the
   [documentation](https://ark-ui.com/solid/docs/components/listbox) for details.
+- Improved support for grouping collection items. Check the `Listbox`, `Select` or `Combobox` documentation for more
+  details.
 
 ## [5.6.0] - 2025-04-15
 

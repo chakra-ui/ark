@@ -2,6 +2,7 @@ export type {
   HighlightChangeDetails,
   ScrollToIndexDetails,
   SelectionDetails,
+  SelectionMode,
   ValueChangeDetails,
 } from '@zag-js/listbox'
 export {
@@ -15,20 +16,15 @@ export {
   type ListboxInputProps as InputProps,
 } from './listbox-input.vue'
 export {
-  default as Item,
-  type ListboxItemBaseProps as ItemBaseProps,
-  type ListboxItemProps as ItemProps,
-} from './listbox-item.vue'
+  default as ItemGroupLabel,
+  type ListboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,
+  type ListboxItemGroupLabelProps as ItemGroupLabelProps,
+} from './listbox-item-group-label.vue'
 export {
   default as ItemGroup,
   type ListboxItemGroupBaseProps as ItemGroupBaseProps,
   type ListboxItemGroupProps as ItemGroupProps,
 } from './listbox-item-group.vue'
-export {
-  default as ItemGroupLabel,
-  type ListboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,
-  type ListboxItemGroupLabelProps as ItemGroupLabelProps,
-} from './listbox-item-group-label.vue'
 export {
   default as ItemIndicator,
   type ListboxItemIndicatorBaseProps as ItemIndicatorBaseProps,
@@ -40,21 +36,26 @@ export {
   type ListboxItemTextProps as ItemTextProps,
 } from './listbox-item-text.vue'
 export {
+  default as Item,
+  type ListboxItemBaseProps as ItemBaseProps,
+  type ListboxItemProps as ItemProps,
+} from './listbox-item.vue'
+export {
   default as Label,
   type ListboxLabelBaseProps as LabelBaseProps,
   type ListboxLabelProps as LabelProps,
 } from './listbox-label.vue'
 export {
-  default as Root,
-  type ListboxRootEmits as RootEmits,
-  type ListboxRootBaseProps as RootBaseProps,
-  type ListboxRootProps as RootProps,
-} from './listbox-root.vue'
-export {
   default as RootProvider,
   type ListboxRootProviderBaseProps as RootProviderBaseProps,
   type ListboxRootProviderProps as RootProviderProps,
 } from './listbox-root-provider.vue'
+export {
+  default as Root,
+  type ListboxRootBaseProps as RootBaseProps,
+  type ListboxRootEmits as RootEmits,
+  type ListboxRootProps as RootProps,
+} from './listbox-root.vue'
 export {
   default as ValueText,
   type ListboxValueTextBaseProps as ValueTextBaseProps,

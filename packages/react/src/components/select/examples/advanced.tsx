@@ -5,11 +5,13 @@ import { ChevronDownIcon } from 'lucide-react'
 export const Advanced = () => {
   const collection = createListCollection({
     items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
+      { label: 'React', value: 'react', type: 'JS' },
+      { label: 'Solid', value: 'solid', type: 'JS' },
+      { label: 'Vue', value: 'vue', type: 'JS' },
+      { label: 'Panda', value: 'panda', type: 'CSS' },
+      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
     ],
+    groupBy: (item) => item.type,
   })
 
   return (
@@ -27,15 +29,17 @@ export const Advanced = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            <Select.ItemGroup>
-              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              {collection.items.map((item) => (
-                <Select.Item key={item.value} item={item}>
-                  <Select.ItemText>{item.label}</Select.ItemText>
-                  <Select.ItemIndicator>✓</Select.ItemIndicator>
-                </Select.Item>
-              ))}
-            </Select.ItemGroup>
+            {collection.group().map(([type, group]) => (
+              <Select.ItemGroup key={type}>
+                <Select.ItemGroupLabel>{type}</Select.ItemGroupLabel>
+                {group.map((item) => (
+                  <Select.Item key={item.value} item={item}>
+                    <Select.ItemText>{item.label}</Select.ItemText>
+                    <Select.ItemIndicator>✓</Select.ItemIndicator>
+                  </Select.Item>
+                ))}
+              </Select.ItemGroup>
+            ))}
           </Select.Content>
         </Select.Positioner>
       </Portal>

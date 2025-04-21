@@ -1,10 +1,11 @@
 export type {
-  HighlightChangeDetails,
-  ScrollToIndexDetails,
-  SelectionDetails,
-  ValueChangeDetails,
+  HighlightChangeDetails as ListboxHighlightChangeDetails,
+  ScrollToIndexDetails as ListboxScrollToIndexDetails,
+  SelectionDetails as ListboxSelectionDetails,
+  SelectionMode as ListboxSelectionMode,
+  ValueChangeDetails as ListboxValueChangeDetails,
 } from '@zag-js/listbox'
-export { createListCollection, type CollectionItem, type ListCollection, type SelectionMode } from '../collection'
+export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
 export {
   default as ListboxContent,
   type ListboxContentBaseProps,
