@@ -13,6 +13,10 @@ description: All notable changes will be documented in this file.
 - Improved support for grouping collection items. Check the `Listbox`, `Select` or `Combobox` documentation for more
   details.
 
+### Changed
+
+- Added `package.json` to `exports` for improved compatibility with tools like Vite.
+
 ## [5.6.0] - 2025-04-15
 
 ### Added

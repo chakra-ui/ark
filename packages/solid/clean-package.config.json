@@ -38,7 +38,8 @@
         "types": "./dist/components/*/index.d.ts",
         "solid": "./dist/components/*/index.jsx",
         "default": "./dist/components/*/index.js"
-      }
+      },
+      "./package.json": "./package.json"
     }
   }
 }
