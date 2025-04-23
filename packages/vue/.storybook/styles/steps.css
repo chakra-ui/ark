@@ -1,0 +1,118 @@
+[data-scope='steps'][data-part='root'] {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  gap: 16px;
+
+  &[data-orientation='vertical'] {
+    flex-direction: row;
+  }
+  &[data-orientation='horizontal'] {
+    flex-direction: column;
+  }
+}
+
+[data-scope='steps'][data-part='list'] {
+  display: flex;
+  justify-content: space-between;
+  --steps-gutter: 12px;
+  --steps-size: 24px;
+  --steps-icon-size: 20px;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+[data-scope='steps'][data-part='separator'] {
+  flex: 1;
+  background-color: gray;
+
+  &[data-orientation='vertical'] {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    max-height: calc(100% - var(--steps-size) - var(--steps-gutter) * 2);
+    top: calc(var(--steps-size) + var(--steps-gutter));
+    inset-inline-start: calc(var(--steps-size) / 2 - 1px);
+  }
+
+  &[data-orientation='horizontal'] {
+    width: 100%;
+    height: 2px;
+    margin-inline: var(--steps-gutter);
+  }
+
+  &[data-complete] {
+    background-color: blue;
+  }
+}
+
+[data-scope='steps'][data-part='indicator'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  font-weight: 600;
+  width: var(--steps-size);
+  height: var(--steps-size);
+
+  & svg {
+    flex-shrink: 0;
+    width: var(--steps-icon-size);
+    height: var(--steps-icon-size);
+  }
+
+  &[data-incomplete] {
+    border-width: 2px;
+  }
+
+  &[data-current] {
+    background-color: lightgray;
+    border-width: 2px;
+    border-color: blue;
+    color: darkblue;
+  }
+
+  &[data-complete] {
+    background-color: blue;
+    color: white;
+  }
+}
+
+[data-scope='steps'][data-part='item'] {
+  position: relative;
+  display: flex;
+  flex: 1 0 0;
+
+  &:last-of-type {
+    flex: initial;
+
+    & [data-part='separator'] {
+      display: none;
+    }
+  }
+
+  &[data-orientation='vertical'] {
+    align-items: flex-start;
+  }
+
+  &[data-orientation='horizontal'] {
+    align-items: center;
+  }
+}
+
+[data-scope='steps'][data-part='trigger'] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: start;
+  border-radius: 5px;
+}

@@ -63,9 +63,6 @@ export default defineConfig({
       provider: 'v8',
     },
   },
-  resolve: {
-    conditions: ['source'],
-  },
 })
 
 const renderBanner = (fileName: string) => {

@@ -2,7 +2,9 @@ import * as runtime from 'react/jsx-runtime'
 import { Code } from '~/components/ui/code'
 import { Kbd } from '~/components/ui/kbd'
 import { Link } from '~/components/ui/link'
+import { Step, Steps } from '~/components/ui/stepper'
 import { Anatomy } from './components/anatomy'
+import { ComponentLivePreview } from './components/component-live-preview'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
 import { Example } from './components/example'
@@ -11,8 +13,6 @@ import { InstallCmd } from './components/install-cmd'
 import { KeyBindingsTable } from './components/key-bindings-table'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
-
-import { Step, Steps } from '~/components/ui/stepper'
 import { ThemeImage } from './components/theme-image'
 
 const sharedComponents = {
@@ -21,6 +21,7 @@ const sharedComponents = {
   code: Code,
   ComponentPreview,
   ComponentTypes,
+  ComponentLivePreview,
   Example,
   Faq,
   InstallCmd,

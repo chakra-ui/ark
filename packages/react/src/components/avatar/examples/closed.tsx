@@ -1,4 +1,4 @@
-import { Avatar as ArkAvatar } from '@ark-ui/react/avatar'
+import { Avatar as ArkAvatar } from '@ark-ui/design-system/avatar'
 import { UserIcon } from 'lucide-react'
 import { forwardRef } from 'react'
 

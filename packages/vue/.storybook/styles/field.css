@@ -1,0 +1,6 @@
+[data-scope='field'][data-part='root'] {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: start;
+}

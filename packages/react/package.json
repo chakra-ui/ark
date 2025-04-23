@@ -63,6 +63,7 @@
     "./anatomy": "./src/components/anatomy.ts",
     "./collection": "./src/components/collection.ts",
     "./environment": "./src/providers/environment/index.ts",
+    "./examples": "./src/examples.ts",
     "./factory": "./src/components/factory.ts",
     "./locale": "./src/providers/locale/index.ts",
     "./*": "./src/components/*/index.ts"
@@ -143,6 +144,7 @@
     "@zag-js/utils": "1.11.0"
   },
   "devDependencies": {
+    "@ark-ui/design-system": "workspace:*",
     "@biomejs/biome": "1.9.4",
     "@storybook/addon-a11y": "8.6.12",
     "@storybook/addon-essentials": "8.6.12",
