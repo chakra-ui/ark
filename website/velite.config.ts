@@ -8,10 +8,11 @@ const pages = defineCollection({
   pattern: ['pages/**/*.mdx', '../../../packages/*/CHANGELOG.md'],
   schema: s
     .object({
-      id: s.string(),
-      title: s.string(),
+      // TODO create a changelog collection instead
+      id: s.string().default('changelog'),
+      title: s.string().default('Changelog'),
       subtitle: s.string().optional(),
-      description: s.string(),
+      description: s.string().default('All notable changes will be documented in this file.'),
       metadata: s.metadata(),
       content: s.markdown(),
       framework: s.string().default('*'),
