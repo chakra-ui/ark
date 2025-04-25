@@ -1,1 +1,1 @@
-import '../../../.storybook/styles.css'
+import './index.css'

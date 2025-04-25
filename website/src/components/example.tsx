@@ -43,7 +43,10 @@ export const frameworkExample = async (framework: string, component: string, id:
     () => 'Example not found',
   )
 
-  const code = content.replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`).replace(/.*@ts-expect-error.*\n/g, '')
+  const code = content
+    .replaceAll(/from '\.\/icons'/g, `from 'lucide-vue-next'`)
+    .replace(/.*@ts-expect-error.*\n/g, '')
+    .replace(/@ark-ui\/design-system/g, '@ark-ui/react')
   return { code, extension }
 }
 

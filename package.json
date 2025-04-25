@@ -3,9 +3,10 @@
   "type": "module",
   "private": true,
   "workspaces": [
+    "design-system",
     "packages/*",
-    "templates/**",
     "scripts",
+    "templates/*",
     "website"
   ],
   "scripts": {
@@ -25,6 +26,7 @@
     "svelte": "bun run --cwd packages/svelte",
     "vue": "bun run --cwd packages/vue",
     "web": "bun run --cwd website",
+    "ds": "bun run --cwd design-system",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env",
     "version": "changeset version",
@@ -35,8 +37,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "2.29.2",
     "@changesets/changelog-github": "0.5.1",
+    "@changesets/cli": "2.29.2",
     "@types/bun": "1.2.10",
     "lefthook": "1.11.10",
     "prettier": "3.5.3",
@@ -47,9 +49,13 @@
   },
   "packageManager": "bun@1.2.10",
   "trustedDependencies": [
-    "@ark-ui/website"
+    "@ark-ui/website",
+    "@ark-ui/design-system"
   ],
   "patchedDependencies": {
     "happy-dom@17.4.4": "patches/happy-dom@17.4.4.patch"
+  },
+  "overrides": {
+    "flexsearch": "0.8.158"
   }
 }

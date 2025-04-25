@@ -1,0 +1,14 @@
+[data-scope='tags-input'][data-part='item-preview'] {
+  border-radius: 4px;
+  padding: 0 8px;
+  margin-right: 8px;
+}
+
+[data-scope='tags-input'][data-part='control'] {
+  display: flex;
+  gap: 2px;
+}
+
+[data-scope='tags-input'][data-part='item-preview'][data-highlighted] {
+  background-color: aqua;
+}

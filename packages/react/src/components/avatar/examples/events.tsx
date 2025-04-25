@@ -1,4 +1,4 @@
-import { Avatar } from '@ark-ui/react/avatar'
+import { Avatar } from '@ark-ui/design-system/avatar'
 
 export const Events = () => {
   const handleStatusChange = (details: Avatar.StatusChangeDetails) => {

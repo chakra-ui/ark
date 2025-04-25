@@ -1,0 +1,27 @@
+[data-scope='splitter'][data-part='root'] {
+  gap: 4px;
+}
+
+[data-scope='splitter'][data-part='root'][data-orientation='horizontal'] {
+  min-height: 300px;
+}
+
+[data-scope='splitter'][data-part='root'][data-orientation='vertical'] {
+  min-height: 300px;
+}
+
+[data-scope='splitter'][data-part='panel'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid lightgray;
+  overflow: auto;
+}
+
+[data-scope='splitter'][data-part='panel']:has([data-scope='splitter'][data-part='panel']) {
+  border: none;
+}
+
+[data-scope='splitter'][data-part='resize-trigger'][data-orientation='vertical'] {
+  min-height: 12px;
+}
