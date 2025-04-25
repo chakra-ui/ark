@@ -33,15 +33,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@release-it/keep-a-changelog": "6.0.0",
+    "@release-it/keep-a-changelog": "7.0.0",
     "@types/bun": "1.2.10",
-    "lefthook": "1.11.10",
-    "release-it": "18.1.2",
+    "lefthook": "1.11.11",
+    "release-it": "19.0.1",
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.3.3",
-    "turbo": "2.5.0",
+    "turbo": "2.5.1",
     "typescript": "5.8.3",
-    "vercel": "41.6.1"
+    "vercel": "41.6.2"
   },
   "packageManager": "bun@1.2.10",
   "trustedDependencies": [
