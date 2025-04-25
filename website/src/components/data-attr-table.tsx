@@ -7,10 +7,18 @@ import { Table } from '~/components/ui/table'
 interface Props {
   component: string
   part: string
+  replace?: Record<string, string>
 }
 
 export const DataAttrTable = (props: Props) => {
-  const { component, part } = props
+  const { component, part, replace } = props
+
+  const replaceFn = (value: string) => {
+    if (!replace) return value
+    return Object.entries(replace).reduce((acc, [key, value]) => {
+      return acc.replaceAll(key, value)
+    }, value)
+  }
 
   const properties = Effect.runSync(
     pipe(
@@ -44,7 +52,7 @@ export const DataAttrTable = (props: Props) => {
                 </Code>
               </Table.Cell>
               <Table.Cell px="4" py="2">
-                {value}
+                {replaceFn(value)}
               </Table.Cell>
             </Table.Row>
           ))}

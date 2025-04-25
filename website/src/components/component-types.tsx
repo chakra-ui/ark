@@ -8,6 +8,7 @@ import { types } from '.velite'
 
 interface Props {
   id: string
+  replace?: Record<string, string>
 }
 
 export const ComponentTypes = async (props: Props) => {
@@ -23,9 +24,9 @@ export const ComponentTypes = async (props: Props) => {
     .map(([key, types]) => (
       <Fragment key={key}>
         <Heading as="h3">{key}</Heading>
-        <PropsTable properties={types.props} framework={framework} />
+        <PropsTable properties={types.props} framework={framework} replace={props.replace} />
         <EmitsTable emits={types.emits} />
-        <DataAttrTable component={props.id} part={key} />
+        <DataAttrTable component={props.id} part={key} replace={props.replace} />
       </Fragment>
     ))
 }
