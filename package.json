@@ -26,19 +26,17 @@
     "vue": "bun run --cwd packages/vue",
     "web": "bun run --cwd website",
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
-    "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env",
-    "version": "changeset version",
-    "release": "changeset publish"
+    "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env"
   },
   "dependencies": {
     "root": "."
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "2.29.2",
-    "@changesets/changelog-github": "0.5.1",
+    "@release-it/keep-a-changelog": "6.0.0",
     "@types/bun": "1.2.10",
     "lefthook": "1.11.10",
+    "release-it": "18.1.2",
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.3.3",
     "turbo": "2.5.0",

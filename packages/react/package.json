@@ -77,7 +77,8 @@
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
     "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "postpack": "clean-package restore",
+    "release-it": "release-it --config ../../release-it.json"
   },
   "publishConfig": {
     "access": "public"

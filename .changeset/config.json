@@ -1,8 +1,0 @@
-{
-  "$schema": "https://unpkg.com/@changesets/config@1.4.0/schema.json",
-  "changelog": false,
-  "commit": false,
-  "access": "public",
-  "baseBranch": "main",
-  "ignore": ["@ark-ui/next-js", "@ark-ui/nuxt", "@ark-ui/scripts", "@ark-ui/solid-start", "@ark-ui/website"]
-}
