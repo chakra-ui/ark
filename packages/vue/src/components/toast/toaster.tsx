@@ -65,10 +65,13 @@ interface ToastItemProps {
 
 const ToastItem = defineComponent<ToastItemProps>(
   (props, { slots }) => {
+    const env = useEnvironmentContext()
+
     const machineProps = computed(() => ({
       ...props.value,
       index: props.index,
       parent: props.parent,
+      getRootNode: env?.value.getRootNode,
     }))
     const service = useMachine(toast.machine, machineProps.value)
     const api = computed(() => toast.connect(service, normalizeProps))
