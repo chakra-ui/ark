@@ -1,4 +1,4 @@
-## Unreleased
+## [Unreleased]
 
 ### Added
 
