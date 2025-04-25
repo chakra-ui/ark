@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.7.0] - 2025-04-25
+
 ### Added
 
 - **[NEW] Listbox**: Introduced the `Listbox` component for selecting a single or multiple items from a list. See the
