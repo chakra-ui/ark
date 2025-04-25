@@ -433,6 +433,9 @@
   "patchedDependencies": {
     "happy-dom@17.4.4": "patches/happy-dom@17.4.4.patch",
   },
+  "overrides": {
+    "flexsearch": "0.8.158",
+  },
   "packages": {
     "@adobe/css-tools": ["@adobe/css-tools@4.4.2", "", {}, "sha512-baYZExFpsdkBNuvGKTKWCwKH57HRZLVtycZS05WTQNVOiXVSeAki3nU35zlRbToeMW8aHlJfyS+1C4BOv27q0A=="],
 
@@ -2296,7 +2299,7 @@
 
     "flatted": ["flatted@3.3.3", "", {}, "sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg=="],
 
-    "flexsearch": ["flexsearch@0.7.21", "", {}, "sha512-W7cHV7Hrwjid6lWmy0IhsWDFQboWSng25U3VVywpHOTJnnAZNPScog67G+cVpeX9f7yDD21ih0WDrMMT+JoaYg=="],
+    "flexsearch": ["flexsearch@0.8.158", "", {}, "sha512-UBOzX2rxIrhAeSSCesTI0qB2Q+75n66rofJx5ppZm5tjXV2P6BxOS3VHKsoSdJhIPg9IMzQl3qkVeSFyq3BUdw=="],
 
     "fn.name": ["fn.name@1.1.0", "", {}, "sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw=="],
 

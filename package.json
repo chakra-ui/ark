@@ -51,5 +51,8 @@
   ],
   "patchedDependencies": {
     "happy-dom@17.4.4": "patches/happy-dom@17.4.4.patch"
+  },
+  "overrides": {
+    "flexsearch": "0.8.158"
   }
 }
