@@ -4,4 +4,4 @@
 '@ark-ui/vue': patch
 ---
 
-Integrate latest zag.js
+Integrate latest zag.js!
