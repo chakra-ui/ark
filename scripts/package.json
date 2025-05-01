@@ -11,7 +11,6 @@
     "document:types": "bun run src/generate-type-docs.ts",
     "document:tags": "bun run src/extend-types-with-tags.ts",
     "vue:props": "bun run src/generate-vue-props.ts",
-    "postvue:props": "bun prettier --write ../packages/vue",
     "play": "bun run src/play.ts",
     "local:sync": "bun run src/symlink.ts"
   },

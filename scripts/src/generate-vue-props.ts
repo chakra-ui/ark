@@ -1,5 +1,7 @@
-import { parse } from 'node:path'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { parse, resolve } from 'node:path'
 import { globby } from 'globby'
+import prettier from 'prettier'
 import { type OptionalKind, Project, type PropertySignatureStructure } from 'ts-morph'
 import { chain } from 'voca'
 
@@ -104,7 +106,7 @@ const main = async () => {
 
   if (component) {
     extractTypes(component)
-    return
+    return formatFile(resolve(`../packages/vue/src/components/${component}/${component}.types.ts`))
   }
 
   console.log('Generating props for all components')
@@ -124,6 +126,16 @@ main().catch((err) => {
   console.error(err.message)
   process.exit(1)
 })
+
+async function formatFile(filePath: string) {
+  const config = await prettier.resolveConfig(resolve(__dirname, '../.prettierrc'))
+  const content = readFileSync(filePath, 'utf-8')
+  const formatted = await prettier.format(content, {
+    ...config,
+    parser: 'typescript',
+  })
+  writeFileSync(filePath, formatted)
+}
 
 function escapePropertyName(name: string): string {
   if (/[^a-zA-Z0-9_]/.test(name)) {
