@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.8.0] - 2025-05-01
+
 ### Added
 
 - **Date Picker**: Added support for `outsideDaySelectable` prop to allow selecting days outside the current month (on
