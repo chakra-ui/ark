@@ -5,6 +5,10 @@
 - **Date Picker**: Added support for `outsideDaySelectable` prop to allow selecting days outside the current month (on
   the same visible date range)
 
+### Fixed
+
+- **Collapsible**: Fixed issue in React.js <= v18.x where collapse animation might not work as expected
+
 ## [5.7.0] - 2025-04-25
 
 ### Added
