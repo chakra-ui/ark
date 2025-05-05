@@ -34,16 +34,16 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.10",
-    "lefthook": "1.11.11",
-    "release-it": "19.0.1",
+    "@types/bun": "1.2.12",
+    "lefthook": "1.11.12",
+    "release-it": "19.0.2",
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.3.3",
     "turbo": "2.5.2",
     "typescript": "5.8.3",
-    "vercel": "41.6.2"
+    "vercel": "41.7.0"
   },
-  "packageManager": "bun@1.2.10",
+  "packageManager": "bun@1.2.12",
   "trustedDependencies": [
     "@ark-ui/website"
   ],

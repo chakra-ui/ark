@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type RenderStrategyProps, RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
 import type { TreeNode } from '../collection'
@@ -10,7 +11,7 @@ export interface TreeViewRootBaseProps<T extends TreeNode>
   extends UseTreeViewProps<T>,
     RenderStrategyProps,
     PolymorphicProps<'div'> {}
-export interface TreeViewRootProps<T extends TreeNode> extends HTMLProps<'div'>, TreeViewRootBaseProps<T> {}
+export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<'div'>, TreeViewRootBaseProps<T>> {}
 
 export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)

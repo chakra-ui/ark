@@ -91,7 +91,7 @@
     "@storybook/addon-essentials": "8.6.12",
     "@storybook/sveltekit": "8.6.12",
     "@sveltejs/adapter-auto": "6.0.0",
-    "@sveltejs/kit": "2.20.7",
+    "@sveltejs/kit": "2.20.8",
     "@sveltejs/package": "2.3.11",
     "@sveltejs/vite-plugin-svelte": "5.0.3",
     "@testing-library/jest-dom": "6.6.3",
@@ -101,10 +101,10 @@
     "clean-package": "2.2.0",
     "storybook": "8.6.12",
     "svelte": "5.28.2",
-    "svelte-check": "4.1.6",
+    "svelte-check": "4.1.7",
     "tslib": "2.8.1",
     "typescript": "5.8.3",
-    "vite": "6.3.3",
+    "vite": "6.3.5",
     "vitest": "3.1.2"
   },
   "peerDependencies": {

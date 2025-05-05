@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [sveltekit(), svelteTesting()],
+  // @ts-expect-error Fix types
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
