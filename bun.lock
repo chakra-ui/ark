@@ -430,6 +430,9 @@
   "trustedDependencies": [
     "@ark-ui/website",
   ],
+  "patchedDependencies": {
+    "happy-dom@17.4.6": "patches/happy-dom@17.4.4.patch",
+  },
   "overrides": {
     "flexsearch": "0.8.158",
   },
