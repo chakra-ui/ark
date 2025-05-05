@@ -312,4 +312,7 @@ vite.config.mts.timestamp-*
 
 # Solid Start
 .vinxi
+
+# Release
 .npmrc
+.release.sh
