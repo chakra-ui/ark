@@ -3,6 +3,7 @@
 ### Added
 
 - **Locale**: Added `useFilter` composable to filter data based on the current locale.
+- **Format**: Added `FormatRelativeTime` component for formatting relative time.
 
 ## [5.8.0] - 2025-05-01
 
