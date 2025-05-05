@@ -1,0 +1,31 @@
+---
+id: format-relative-time
+title: Format Relative Time
+description: Used to format relative time to a specific locale and options
+status: new
+---
+
+<ComponentPreview id="FormatRelativeTime" />
+
+## Usage
+
+The relative time formatting logic is handled by the native `Intl.RelativeTimeFormat` API and smartly cached to avoid
+performance issues when using the same locale and options.
+
+```jsx
+import { Format } from '@ark-ui/react'
+```
+
+## Examples
+
+### Basic
+
+Use the `Format.RelativeTime` component to format a relative time with default options.
+
+<Example component="format" id="relative-time-basic" />
+
+### Short
+
+Use the `style="short"` prop to format the relative time in short format.
+
+<Example component="format" id="relative-time-short" />
