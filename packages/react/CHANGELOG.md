@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Locale**: Added `useFilter` hook to filter data based on the current locale.
+
 ## [5.8.0] - 2025-05-01
 
 ### Added
