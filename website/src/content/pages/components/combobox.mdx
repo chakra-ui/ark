@@ -48,6 +48,28 @@ Use the `asChild` prop to render the combobox items as links.
 
 <Example id="links" />
 
+For custom router links, you can customize the `navigate` prop on the `Combobox.Root` component.
+
+Here's an example of using the Tanstack Router.
+
+```tsx
+import { Combobox } from '@ark-ui/react/combobox'
+import { useNavigate } from '@tanstack/react-router'
+
+function Demo() {
+  const navigate = useNavigate()
+  return (
+    <Combobox.Root
+      navigate={(e) => {
+        navigate({ to: e.node.href })
+      }}
+    >
+      {/* ... */}
+    </Combobox.Root>
+  )
+}
+```
+
 ## API Reference
 
 <ComponentTypes id="combobox" />
