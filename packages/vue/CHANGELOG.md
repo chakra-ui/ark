@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.9.1] - 2025-05-12
+
 ### Fixed
 
 - **Combobox**
