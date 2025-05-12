@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Combobox**: Fixed issue where `focusable` prop was not being applied to the trigger element.
+
 ## [5.9.0] - 2025-05-05
 
 ### Added
