@@ -45,7 +45,6 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'onInputValueChange',
     'onInteractOutside',
     'onOpenChange',
-    'onOpenChange',
     'onPointerDownOutside',
     'onValueChange',
     'onSelect',

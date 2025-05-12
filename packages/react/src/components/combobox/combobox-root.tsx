@@ -45,7 +45,6 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProps<T>, ref
     'onInputValueChange',
     'onInteractOutside',
     'onOpenChange',
-    'onOpenChange',
     'onPointerDownOutside',
     'onSelect',
     'onValueChange',
