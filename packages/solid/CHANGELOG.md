@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Collection**: Fix issue where `getNextValue` and `getPreviousValue` doesn't work as expected when `groupBy` is used.
+
 ## [5.9.0] - 2025-05-05
 
 ### Added

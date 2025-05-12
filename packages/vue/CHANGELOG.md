@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Combobox**
+
+  - Fixed issue where `focusable` prop was not being applied to the trigger element.
+  - Fixed issue where combobox doesn't work for items rendered as links.
+
+- **Collection**: Fix issue where `getNextValue` and `getPreviousValue` doesn't work as expected when `groupBy` is used.
+
 ## [5.9.0] - 2025-05-05
 
 ### Added
