@@ -10,5 +10,10 @@ export default defineConfig({
     resolve: {
       preserveSymlinks: true,
     },
+    server: {
+      fs: {
+        allow: ['**/*'],
+      },
+    },
   },
 })

@@ -2,6 +2,7 @@
 import Advanced from './examples/advanced.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Links from './examples/links.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
 </script>
@@ -12,6 +13,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Advanced">
       <Advanced />
+    </Variant>
+    <Variant title="Links">
+      <Links />
     </Variant>
     <Variant title="With Field">
       <WithField />
