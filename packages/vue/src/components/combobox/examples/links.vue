@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // biome-ignore lint/style/useImportType: <explanation>
 import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
-import { Teleport, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const frameworks = [
   { label: 'React', href: 'https://react.dev', value: 'react' },
