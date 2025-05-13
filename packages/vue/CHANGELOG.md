@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Collection**: Export `CollectionOptions`, `TreeCollectionOptions`, `GridCollectionOptions` types.
+
 ## [5.9.1] - 2025-05-12
 
 ### Fixed
