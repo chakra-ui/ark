@@ -60,6 +60,14 @@ leverage it to access the component state and methods from outside the select.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+### Usage in Popover or Dialog
+
+When using the Select component within a `Popover` or `Dialog`, avoid rendering its content within a `Portal` or
+`Teleport`.
+
+This ensures the Select's content stays within the Popover/Dialog's DOM hierarchy rather than being portalled to the
+document body, maintaining proper interaction and accessibility behavior.
+
 ## API Reference
 
 <ComponentTypes id="select" />
