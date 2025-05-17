@@ -4,6 +4,17 @@
 
 - **Collection**: Export `CollectionOptions`, `TreeCollectionOptions`, `GridCollectionOptions` types.
 
+- **Carousel**
+
+  - Fix issue where focusing on carousel region and navigating with keyboard doesn't work as expected
+  - Fix issue when `allowMouseDrag` is set where carousel no longer snaps after mouse interaction
+
+- **Combobox**: Fix issue where `onInputValueChange` doesn't get called when `autoFocus` is set to `true`
+
+- **Slider**: Fix issue where slider could throw a error when rendered in an popover or dialog
+
+- **Tour**: Fix issue where calling `api.start(<id>)` with a step id doesn't work as expected
+
 ## [5.9.1] - 2025-05-12
 
 ### Fixed
