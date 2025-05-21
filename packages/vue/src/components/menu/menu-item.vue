@@ -15,7 +15,7 @@ export interface MenuItemProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { computed, watchEffect } from 'vue'
+import { computed, onBeforeUnmount, onMounted } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useForwardExpose } from '../../utils'
@@ -34,9 +34,9 @@ const itemState = computed(() => menu.value.getItemState(props))
 
 MenuItemProvider(itemState)
 
-watchEffect((onCleanup) => {
+onMounted(() => {
   const cleanup = menu.value.addItemListener({ id: itemState.value.id, onSelect: () => emit('select') })
-  onCleanup(() => cleanup?.())
+  onBeforeUnmount(() => cleanup?.())
 })
 
 useForwardExpose()

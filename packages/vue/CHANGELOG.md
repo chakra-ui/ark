@@ -15,6 +15,8 @@
 
 - **Tour**: Fix issue where calling `api.start(<id>)` with a step id doesn't work as expected
 
+- **Menu**: Fix issue where `Menu.Item` throws a `document is not defined` error when used in a Nuxt app.
+
 ## [5.9.1] - 2025-05-12
 
 ### Fixed
