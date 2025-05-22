@@ -27,7 +27,7 @@ interface Props extends Tabs.RootProps {
   defaultValue: string
   examples: CodeExample[]
   styles?: string
-  meta: ExampleMeta
+  meta?: ExampleMeta
 }
 
 export const CodeTabs = (props: Props) => {
@@ -66,9 +66,11 @@ export const CodeTabs = (props: Props) => {
           </Tabs.Trigger>
         ))}
         <Tabs.Indicator />
-        <Box pos="absolute" right="1.5" top="1" className="dark">
-          <StackblitzButton examples={examples} styles={styles} meta={meta} />
-        </Box>
+        {meta && (
+          <Box pos="absolute" right="1.5" top="1" className="dark">
+            <StackblitzButton examples={examples} styles={styles} meta={meta} />
+          </Box>
+        )}
       </Tabs.List>
       {examples.map((example) => (
         <Tabs.Content key={example.value} value={example.value} pt="0">
