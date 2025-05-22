@@ -1,5 +1,4 @@
-import { Fieldset } from '@ark-ui/react/fieldset'
-import { useFieldset } from '../use-fieldset'
+import { Fieldset, useFieldset } from '@ark-ui/react/fieldset'
 
 export const RootProvider = () => {
   const fieldset = useFieldset({
