@@ -1,6 +1,14 @@
 'use client'
+
+import { useTabsContext } from '@ark-ui/react'
+import { SiStackblitz } from '@icons-pack/react-simple-icons'
+import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui/tabs'
+import { openInStackblitzReact } from '~/lib/stackblitz-react'
+import { openInStackblitzSolid } from '~/lib/stackblitz-solid'
+import { openInStackblitzVue } from '~/lib/stackblitz-vue'
 import { CodePreview } from './code-preview'
+import { IconButton } from './ui/icon-button'
 
 interface CodeExample {
   label: string
@@ -9,13 +17,21 @@ interface CodeExample {
   html: string
 }
 
+interface ExampleMeta {
+  id: string
+  component?: string
+  framework: string
+}
+
 interface Props extends Tabs.RootProps {
   defaultValue: string
   examples: CodeExample[]
+  styles?: string
+  meta: ExampleMeta
 }
 
 export const CodeTabs = (props: Props) => {
-  const { examples, defaultValue, ...rootProps } = props
+  const { examples, defaultValue, meta, styles, ...rootProps } = props
 
   return (
     <Tabs.Root
@@ -50,6 +66,9 @@ export const CodeTabs = (props: Props) => {
           </Tabs.Trigger>
         ))}
         <Tabs.Indicator />
+        <Box pos="absolute" right="1.5" top="1" className="dark">
+          <StackblitzButton examples={examples} styles={styles} meta={meta} />
+        </Box>
       </Tabs.List>
       {examples.map((example) => (
         <Tabs.Content key={example.value} value={example.value} pt="0">
@@ -57,5 +76,42 @@ export const CodeTabs = (props: Props) => {
         </Tabs.Content>
       ))}
     </Tabs.Root>
+  )
+}
+
+function StackblitzButton(props: { examples: CodeExample[]; styles: string | undefined; meta: ExampleMeta }) {
+  const {
+    examples,
+    styles = '',
+    meta: { id, component, framework },
+  } = props
+
+  const tabs = useTabsContext()
+
+  const example = examples.find((example) => example.value === tabs.value)
+  if (!example) return null
+
+  return (
+    <IconButton
+      size="xs"
+      scale="0.9"
+      onClick={() => {
+        const selectedFramework = tabs.value ?? framework
+        const fn = {
+          react: openInStackblitzReact,
+          solid: openInStackblitzSolid,
+          vue: openInStackblitzVue,
+        }[selectedFramework]
+
+        fn?.({
+          code: example.code,
+          css: styles,
+          id,
+          component: component ?? 'Example',
+        })
+      }}
+    >
+      <SiStackblitz />
+    </IconButton>
   )
 }

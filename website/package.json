@@ -22,6 +22,7 @@
     "@park-ui/panda-preset": "0.43.1",
     "@prisma/client": "6.6.0",
     "@shikijs/transformers": "3.3.0",
+    "@stackblitz/sdk": "1.11.0",
     "@types/node": "22.15.3",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.3",

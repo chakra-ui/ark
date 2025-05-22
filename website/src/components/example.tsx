@@ -15,8 +15,19 @@ interface Props {
 export const Example = async (props: Props) => {
   const framework = await getFramework()
   const examples = await findExamples(props)
+  const styles = await fetchStyle(props.component)
 
-  return <CodeTabs examples={examples} defaultValue={framework} />
+  return (
+    <CodeTabs
+      examples={examples}
+      defaultValue={framework}
+      styles={styles}
+      meta={{
+        ...props,
+        framework,
+      }}
+    />
+  )
 }
 
 export const frameworkExample = async (framework: string, component: string, id: string) => {
@@ -72,4 +83,13 @@ const findExamples = async (props: Props) => {
       }
     }),
   )
+}
+
+export const fetchStyle = async (comp: string | undefined) => {
+  const serverContext = getServerContext()
+
+  const component = comp ?? serverContext.component
+  if (!component) return ''
+
+  return readFile(join(process.cwd(), '..', '.storybook', 'styles', `${component}.css`), 'utf-8')
 }
