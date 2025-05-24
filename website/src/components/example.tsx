@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
@@ -85,11 +86,20 @@ const findExamples = async (props: Props) => {
   )
 }
 
+const replacementMap = {
+  'progress-circular': 'progress',
+  'progress-linear': 'progress',
+}
+
 export const fetchStyle = async (comp: string | undefined) => {
   const serverContext = getServerContext()
 
   const component = comp ?? serverContext.component
   if (!component) return ''
-
-  return readFile(join(process.cwd(), '..', '.storybook', 'styles', `${component}.css`), 'utf-8')
+  const cm = replacementMap[component as keyof typeof replacementMap] ?? component
+  const filePath = join(process.cwd(), '..', '.storybook', 'styles', `${cm}.css`)
+  if (existsSync(filePath)) {
+    return readFile(filePath, 'utf-8')
+  }
+  return ''
 }
