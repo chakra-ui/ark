@@ -86,8 +86,9 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
   )
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const blog = blogs.find((blog) => blog.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const blog = blogs.find((blog) => blog.slug === slug)
   if (!blog) return {}
 
   return {
