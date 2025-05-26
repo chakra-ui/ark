@@ -23,7 +23,7 @@
     "fs-extra": "11.3.0",
     "globby": "14.1.0",
     "pkg-dir": "8.0.0",
-    "ts-morph": "25.0.1",
+    "ts-morph": "26.0.0",
     "ts-pattern": "5.7.0",
     "typescript": "5.8.3",
     "voca": "1.4.1"
