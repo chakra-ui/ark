@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+### Added
+
+- **Select**: Added `onSelect` callback that gets fired when an item is selected via keyboard/mouse.
+
+### Fixed
+
+- **Color Picker**: Fixed issue where value change end event is invoked when committing via an input.
+
+- **Toast**: Fixed issue where calling `toast.remove()` without an id shows a TypeScript error.
+
 ## [5.9.2] - 2025-05-24
 
 ### Fixed
@@ -8,14 +18,14 @@
 
 - **Carousel**
 
-  - Fix issue where focusing on carousel region and navigating with keyboard doesn't work as expected
-  - Fix issue when `allowMouseDrag` is set where carousel no longer snaps after mouse interaction
+  - Fixed issue where focusing on carousel region and navigating with keyboard doesn't work as expected
+  - Fixed issue when `allowMouseDrag` is set where carousel no longer snaps after mouse interaction
 
-- **Combobox**: Fix issue where `onInputValueChange` doesn't get called when `autoFocus` is set to `true`
+- **Combobox**: Fixed issue where `onInputValueChange` doesn't get called when `autoFocus` is set to `true`
 
-- **Slider**: Fix issue where slider could throw a error when rendered in an popover or dialog
+- **Slider**: Fixed issue where slider could throw a error when rendered in an popover or dialog
 
-- **Tour**: Fix issue where calling `api.start(<id>)` with a step id doesn't work as expected
+- **Tour**: Fixed issue where calling `api.start(<id>)` with a step id doesn't work as expected
 
 ## [5.9.1] - 2025-05-12
 
@@ -23,7 +33,8 @@
 
 - **Combobox**: Fixed issue where `focusable` prop was not being applied to the trigger element.
 
-- **Collection**: Fix issue where `getNextValue` and `getPreviousValue` doesn't work as expected when `groupBy` is used.
+- **Collection**: Fixed issue where `getNextValue` and `getPreviousValue` doesn't work as expected when `groupBy` is
+  used.
 
 ## [5.9.0] - 2025-05-05
 

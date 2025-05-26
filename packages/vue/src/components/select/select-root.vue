@@ -15,7 +15,7 @@ export interface SelectRootProps<T extends CollectionItem>
     /**
      * @vue-ignore
      */
-    HTMLAttributes {}
+    Omit<HTMLAttributes, 'onSelect'> {}
 export type { RootEmits as SelectRootEmits } from './select.types'
 </script>
 
@@ -44,7 +44,13 @@ const emits = defineEmits<RootEmits<T>>()
 
 const select = useSelect(props, emits)
 SelectProvider(select)
-RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
+
+RenderStrategyPropsProvider(
+  computed(() => ({
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+)
 
 useForwardExpose()
 </script>

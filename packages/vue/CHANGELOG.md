@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+### Added
+
+- **Select**: Added `onSelect` callback that gets fired when an item is selected via keyboard/mouse.
+
+### Fixed
+
+- **Color Picker**: Fixed issue where value change end event is invoked when committing via an input.
+
+- **Toast**: Fixed issue where calling `toast.remove()` without an id shows a TypeScript error.
+
 ## [5.9.2] - 2025-05-24
 
 ### Fixed

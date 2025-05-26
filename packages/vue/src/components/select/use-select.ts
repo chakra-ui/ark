@@ -75,6 +75,10 @@ export const useSelect = <T extends CollectionItem>(
         emit?.('pointerDownOutside', details)
         localProps.onPointerDownOutside?.(details)
       },
+      onSelect(details) {
+        emit?.('select', details)
+        localProps.onSelect?.(details)
+      },
     }
   })
 

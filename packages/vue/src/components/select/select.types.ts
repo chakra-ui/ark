@@ -133,6 +133,10 @@ export type RootEmits<T extends CollectionItem> = {
    */
   pointerDownOutside: [event: select.PointerDownOutsideEvent]
   /**
+   * Function called when an item is selected
+   */
+  select: [details: select.SelectionDetails]
+  /**
    * The callback fired when the selected item changes.
    */
   valueChange: [details: select.ValueChangeDetails<T>]
