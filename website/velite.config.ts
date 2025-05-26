@@ -41,6 +41,29 @@ const pages = defineCollection({
     }),
 })
 
+const blogs = defineCollection({
+  name: 'Blogs',
+  pattern: 'blog/**/*.mdx',
+  schema: s
+    .object({
+      title: s.string(),
+      description: s.string(),
+      date: s.isodate(),
+      author: s.string().optional(),
+      tags: s.array(s.string()).optional(),
+      image: s.string().optional(),
+      metadata: s.metadata(),
+      content: s.markdown(),
+      toc: s.toc(),
+      code: s.mdx(),
+    })
+    .transform((data, { meta }) => ({
+      ...data,
+      slug: meta.path.replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
+      category: 'blog',
+    })),
+})
+
 const showcases = defineCollection({
   name: 'Showcases',
   pattern: 'showcases.json',
@@ -81,7 +104,7 @@ const types = defineCollection({
 
 export default defineConfig({
   root: join(process.cwd(), './src/content'),
-  collections: { pages, types, showcases },
+  collections: { pages, blogs, types, showcases },
   mdx: {
     rehypePlugins: [
       rehypeSlug,
