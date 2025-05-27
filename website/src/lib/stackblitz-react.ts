@@ -36,6 +36,7 @@ const packageJson = {
     'react-dom': 'latest',
     '@ark-ui/react': '5',
     'lucide-react': 'latest',
+    'react-shadow': 'latest',
   },
   devDependencies: {
     '@types/react': 'latest',

@@ -1,6 +1,6 @@
+import { EnvironmentProvider } from '@ark-ui/react/environment'
 import { Field } from '@ark-ui/react/field'
 import root from 'react-shadow'
-import { EnvironmentProvider } from '../../../providers'
 
 // biome-ignore lint/complexity/useLiteralKeys: <explanation>
 const Host = root['div']
