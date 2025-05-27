@@ -32,11 +32,11 @@ export interface DownloadTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { downloadFile } from '@zag-js/file-utils'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
 import { useForwardExpose } from '../../utils'
 const props = defineProps<DownloadTriggerProps>()
 
-const env = useEnvironmentContext()
+const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 
 const download = (data: DownloadableData) => {
   downloadFile({ file: data, name: props.fileName, type: props.mimeType, win: env?.value.getWindow() || window })

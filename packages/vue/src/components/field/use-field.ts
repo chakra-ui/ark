@@ -1,4 +1,4 @@
-import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
+import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import {
   type HTMLAttributes,
   type MaybeRef,
@@ -10,6 +10,8 @@ import {
   toValue,
   useId,
 } from 'vue'
+import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT } from '../../providers/environment/use-environment-context'
 import { unrefElement } from '../../utils/unref-element'
 import { parts } from './field.anatomy'
 import type { ElementIds } from './field.types'
@@ -44,6 +46,8 @@ export interface UseFieldProps {
 export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
+
   const state = reactive({
     hasErrorText: false,
     hasHelperText: false,
@@ -63,17 +67,16 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
     const rootNode = unrefElement(rootRef)
     if (!rootNode) return
 
-    const win = getWindow(rootNode)
-    const doc = win.document
-
     const checkTextElements = () => {
-      state.hasErrorText = !!doc.getElementById(errorTextId.value)
-      state.hasHelperText = !!doc.getElementById(helperTextId.value)
+      const docOrShadowRoot = env.value.getRootNode() as ShadowRoot | Document
+      state.hasErrorText = !!docOrShadowRoot.getElementById(errorTextId.value)
+      state.hasHelperText = !!docOrShadowRoot.getElementById(helperTextId.value)
     }
 
     checkTextElements()
-    const observer = new win.MutationObserver(checkTextElements)
 
+    const win = env.value.getWindow()
+    const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
     onBeforeUnmount(() => {

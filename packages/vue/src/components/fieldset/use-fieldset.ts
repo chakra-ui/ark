@@ -1,4 +1,4 @@
-import { getWindow } from '@zag-js/dom-query'
+import { dataAttr } from '@zag-js/dom-query'
 import {
   type FieldsetHTMLAttributes,
   type HTMLAttributes,
@@ -11,6 +11,7 @@ import {
   toValue,
   useId,
 } from 'vue'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
 import { parts } from './fieldset.anatomy'
 
 export interface UseFieldsetProps {
@@ -31,48 +32,51 @@ export interface UseFieldsetProps {
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
 export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const state = reactive({
     hasErrorText: false,
     hasHelperText: false,
   })
 
   const rootRef = ref(null)
-  let observer: MutationObserver | null = null
+
+  const uuid = useId()
+
+  const ids = computed(() => {
+    const fieldsetProps = toValue<UseFieldsetProps>(props)
+    const id = fieldsetProps.id ?? uuid
+    return {
+      labelId: `fieldset::${id}::label`,
+      errorTextId: `fieldset::${id}::error-text`,
+      helperTextId: `fieldset::${id}::helper-text`,
+    }
+  })
 
   onMounted(() => {
     const rootNode = rootRef.value
     if (!rootNode) return
 
-    const win = getWindow(rootNode)
-    const doc = win.document
-
     const checkTextElements = () => {
-      const fieldsetProps = toValue<UseFieldsetProps>(props)
-      const id = fieldsetProps.id ?? useId()
-      const errorTextId = `fieldset::${id}::error-text`
-      const helperTextId = `fieldset::${id}::helper-text`
-
-      state.hasErrorText = !!doc.getElementById(errorTextId)
-      state.hasHelperText = !!doc.getElementById(helperTextId)
+      const { errorTextId, helperTextId } = ids.value
+      const docOrShadowRoot = env.value.getRootNode() as ShadowRoot | Document
+      state.hasErrorText = !!docOrShadowRoot.getElementById(errorTextId)
+      state.hasHelperText = !!docOrShadowRoot.getElementById(helperTextId)
     }
 
     checkTextElements()
-    observer = new win.MutationObserver(checkTextElements)
-    observer.observe(rootNode, { childList: true, subtree: true })
-  })
 
-  onBeforeUnmount(() => {
-    observer?.disconnect()
+    const win = env.value.getWindow()
+    const observer = new win.MutationObserver(checkTextElements)
+    observer.observe(rootNode, { childList: true, subtree: true })
+
+    onBeforeUnmount(() => {
+      observer.disconnect()
+    })
   })
 
   return computed(() => {
-    const fieldsetProps = toValue<UseFieldsetProps>(props)
-    const { disabled, invalid } = fieldsetProps
-
-    const id = fieldsetProps.id ?? useId()
-    const errorTextId = `fieldset::${id}::error-text`
-    const helperTextId = `fieldset::${id}::helper-text`
-    const labelId = `fieldset::${id}::label`
+    const { disabled, invalid } = toValue<UseFieldsetProps>(props)
+    const { labelId, errorTextId, helperTextId } = ids.value
 
     const labelIds: string[] = []
     if (state.hasErrorText && invalid) labelIds.push(errorTextId)
@@ -82,16 +86,16 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
       ({
         ...parts.root.attrs,
         disabled,
-        'data-disabled': disabled ? 'true' : undefined,
-        'data-invalid': invalid ? 'true' : undefined,
+        'data-disabled': dataAttr(!!disabled),
+        'data-invalid': dataAttr(invalid),
         'aria-describedby': labelIds.join(' '),
       }) as FieldsetHTMLAttributes
 
     const getLegendProps = () => ({
       id: labelId,
       ...parts.legend.attrs,
-      'data-disabled': disabled ? 'true' : undefined,
-      'data-invalid': invalid ? 'true' : undefined,
+      'data-disabled': dataAttr(!!disabled),
+      'data-invalid': dataAttr(!!invalid),
     })
 
     const getHelperTextProps = () => ({

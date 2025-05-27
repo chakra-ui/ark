@@ -31,6 +31,8 @@ export const Basic = () => (
 
 - **Toast**: Fixed issue where calling `toast.remove()` without an id shows a TypeScript error.
 
+- **Field**: Fixed issue where helper text and error text could not be detected in shadow DOM environments.
+
 ## [5.9.2] - 2025-05-24
 
 ### Fixed

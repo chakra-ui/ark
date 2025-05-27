@@ -13,7 +13,7 @@ export const EnvironmentProvider = (props: EnvironmentProviderProps) => {
   const [spanRef, setSpanRef] = useState<HTMLSpanElement | null>()
 
   const getRootNode = useMemo(() => {
-    return () => runIfFn(value) ?? spanRef?.ownerDocument ?? document
+    return () => runIfFn(value) ?? spanRef?.getRootNode() ?? document
   }, [value, spanRef])
 
   const environment = useMemo(

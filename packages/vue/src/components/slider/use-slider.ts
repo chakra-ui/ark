@@ -1,7 +1,7 @@
 import * as slider from '@zag-js/slider'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './slider'
@@ -16,7 +16,7 @@ export interface UseSliderReturn extends ComputedRef<slider.Api<PropTypes>> {}
 
 export const useSlider = (props: MaybeRef<UseSliderProps> = {}, emit?: EmitFn<RootEmits>): UseSliderReturn => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<slider.Props>(() => {

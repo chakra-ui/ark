@@ -1,7 +1,7 @@
 import * as passwordInput from '@zag-js/password-input'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
@@ -13,7 +13,7 @@ export interface UsePasswordInputReturn extends ComputedRef<passwordInput.Api<Pr
 
 export const usePasswordInput = (props: MaybeRef<UsePasswordInputProps> = {}, emit?: EmitFn<RootEmits>) => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 

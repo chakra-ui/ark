@@ -2,7 +2,7 @@ import * as floatingPanel from '@zag-js/floating-panel'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, useId } from 'vue'
 import { type EmitFn, type MaybeRef, computed, toValue } from 'vue'
-import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './floating-panel.types'
@@ -15,7 +15,7 @@ export const useFloatingPanel = (
   props: MaybeRef<UseFloatingPanelProps> = {},
   emit?: EmitFn<RootEmits>,
 ): UseFloatingPanelReturn => {
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const id = useId()
 

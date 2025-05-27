@@ -1,5 +1,6 @@
-import { getWindow } from '@zag-js/dom-query'
+import { dataAttr } from '@zag-js/dom-query'
 import { createEffect, createMemo, createSignal, createUniqueId, mergeProps, onCleanup } from 'solid-js'
+import { useEnvironmentContext } from '../../providers'
 import type { MaybeAccessor } from '../../types'
 import { runIfFn } from '../../utils/run-if-fn'
 import { parts } from './fieldset.anatomy'
@@ -22,6 +23,8 @@ export interface UseFieldsetProps {
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
 export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
+  const env = useEnvironmentContext()
+
   const mergedProps = mergeProps({ disabled: false, invalid: false }, runIfFn(props))
 
   let rootRef: HTMLFieldSetElement | undefined
@@ -37,15 +40,15 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     const rootNode = rootRef
     if (!rootNode) return
 
-    const win = getWindow(rootNode)
-    const doc = win.document
-
     const checkTextElements = () => {
-      setHasErrorText(!!doc.getElementById(errorTextId))
-      setHasHelperText(!!doc.getElementById(helperTextId))
+      const docOrShadowRoot = env().getRootNode() as DocumentFragment
+      setHasErrorText(!!docOrShadowRoot.getElementById(errorTextId))
+      setHasHelperText(!!docOrShadowRoot.getElementById(helperTextId))
     }
 
     checkTextElements()
+
+    const win = env().getWindow()
     const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
@@ -94,6 +97,3 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     getErrorTextProps,
   }))
 }
-
-type Booleanish = boolean | 'true' | 'false'
-const dataAttr = (condition: boolean | undefined) => (condition ? '' : undefined) as Booleanish

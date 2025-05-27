@@ -1,5 +1,6 @@
-import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
+import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { useId, useMemo, useRef, useState } from 'react'
+import { useEnvironmentContext } from '../../providers'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
 import { useFieldsetContext } from '../fieldset/use-fieldset-context'
@@ -44,6 +45,8 @@ export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props: UseFieldProps = {}) => {
   const fieldset = useFieldsetContext()
+  const env = useEnvironmentContext()
+
   const { ids, disabled = Boolean(fieldset?.disabled), invalid = false, readOnly = false, required = false } = props
 
   const [hasErrorText, setHasErrorText] = useState(false)
@@ -61,20 +64,20 @@ export const useField = (props: UseFieldProps = {}) => {
     const rootNode = rootRef.current
     if (!rootNode) return
 
-    const win = getWindow(rootNode)
-    const doc = win.document
-
     const checkTextElements = () => {
-      setHasErrorText(!!doc.getElementById(errorTextId))
-      setHasHelperText(!!doc.getElementById(helperTextId))
+      const docOrShadowRoot = env.getRootNode() as ShadowRoot | Document
+      setHasErrorText(!!docOrShadowRoot.getElementById(errorTextId))
+      setHasHelperText(!!docOrShadowRoot.getElementById(helperTextId))
     }
 
     checkTextElements()
+
+    const win = env.getWindow()
     const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
     return () => observer.disconnect()
-  }, [errorTextId, helperTextId])
+  }, [env, errorTextId, helperTextId])
 
   const labelIds = useMemo(() => {
     const ids: string[] = []

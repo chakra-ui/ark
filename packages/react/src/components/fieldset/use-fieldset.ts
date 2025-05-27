@@ -1,5 +1,6 @@
-import { getWindow } from '@zag-js/dom-query'
+import { dataAttr } from '@zag-js/dom-query'
 import { useId, useMemo, useRef } from 'react'
+import { useEnvironmentContext } from '../../providers'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
 import { parts } from './fieldset.anatomy'
@@ -23,6 +24,9 @@ export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
 export const useFieldset = (props: UseFieldsetProps = {}) => {
   const { disabled = false, invalid = false } = props
+
+  const env = useEnvironmentContext()
+
   const hasErrorText = useRef(false)
   const hasHelperText = useRef(false)
 
@@ -36,20 +40,20 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
     const rootNode = rootRef.current
     if (!rootNode) return
 
-    const win = getWindow(rootNode)
-    const doc = win.document
-
     const checkTextElements = () => {
-      hasErrorText.current = !!doc.getElementById(errorTextId)
-      hasHelperText.current = !!doc.getElementById(helperTextId)
+      const docOrShadowRoot = env.getRootNode() as ShadowRoot | Document
+      hasErrorText.current = !!docOrShadowRoot.getElementById(errorTextId)
+      hasHelperText.current = !!docOrShadowRoot.getElementById(helperTextId)
     }
 
     checkTextElements()
+
+    const win = env.getWindow()
     const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
     return () => observer.disconnect()
-  }, [errorTextId, helperTextId])
+  }, [env, errorTextId, helperTextId])
 
   const labelIds = useMemo(() => {
     const ids: string[] = []
@@ -64,8 +68,8 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
         ...parts.root.attrs,
         ref: rootRef,
         disabled,
-        'data-disabled': disabled ? 'true' : undefined,
-        'data-invalid': invalid ? 'true' : undefined,
+        'data-disabled': dataAttr(disabled),
+        'data-invalid': dataAttr(invalid),
         'aria-describedby': labelIds,
       }) as HTMLProps<'fieldset'>,
     [disabled, invalid, labelIds],
@@ -75,8 +79,8 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
     () => () =>
       ({
         ...parts.legend.attrs,
-        'data-disabled': disabled ? 'true' : undefined,
-        'data-invalid': invalid ? 'true' : undefined,
+        'data-disabled': dataAttr(disabled),
+        'data-invalid': dataAttr(invalid),
       }) as HTMLProps<'legend'>,
     [disabled, invalid],
   )

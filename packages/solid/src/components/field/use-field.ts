@@ -1,5 +1,6 @@
-import { ariaAttr, dataAttr, getWindow } from '@zag-js/dom-query'
+import { ariaAttr, dataAttr } from '@zag-js/dom-query'
 import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
+import { useEnvironmentContext } from '../../providers'
 import type { MaybeAccessor } from '../../types'
 import { useFieldsetContext } from '../fieldset'
 import type { UseFieldsetReturn } from '../fieldset/use-fieldset'
@@ -44,6 +45,7 @@ export type UseFieldReturn = ReturnType<typeof useField>
 
 export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
   const fieldset: UseFieldsetReturn | undefined = useFieldsetContext()
+  const env = useEnvironmentContext()
 
   const fieldProps = mergeProps(
     { disabled: Boolean(fieldset?.().disabled), required: false, invalid: false, readOnly: false },
@@ -65,17 +67,16 @@ export const useField = (props?: MaybeAccessor<UseFieldProps>) => {
     const rootNode = rootRef()
     if (!rootNode) return
 
-    const win = getWindow(rootNode)
-    const doc = win.document
-
     const checkTextElements = () => {
-      setHasErrorText(!!doc.getElementById(errorTextId))
-      setHasHelperText(!!doc.getElementById(helperTextId))
+      const docOrShadowRoot = env().getRootNode() as ShadowRoot | Document
+      setHasErrorText(!!docOrShadowRoot.getElementById(errorTextId))
+      setHasHelperText(!!docOrShadowRoot.getElementById(helperTextId))
     }
 
     checkTextElements()
-    const observer = new win.MutationObserver(checkTextElements)
 
+    const win = env().getWindow()
+    const observer = new win.MutationObserver(checkTextElements)
     observer.observe(rootNode, { childList: true, subtree: true })
 
     onCleanup(() => observer.disconnect())

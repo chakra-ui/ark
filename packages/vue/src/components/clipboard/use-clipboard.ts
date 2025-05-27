@@ -1,7 +1,7 @@
 import * as clipboard from '@zag-js/clipboard'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './clipboard.types'
@@ -17,7 +17,7 @@ export interface UseClipboardReturn extends ComputedRef<clipboard.Api<PropTypes>
 
 export const useClipboard = (props: MaybeRef<UseClipboardProps> = {}, emit?: EmitFn<RootEmits>): UseClipboardReturn => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const context = computed<clipboard.Props>(() => {
     const localeProps = toValue<UseClipboardProps>(props)
 
