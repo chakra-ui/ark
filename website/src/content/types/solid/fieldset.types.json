@@ -39,7 +39,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "Accessor<{ refs: { rootRef: HTMLFieldSetElement | undefined; }; disabled: boolean; invalid: boolean; getRootProps: () => { disabled: boolean; 'data-disabled': Booleanish; 'data-invalid': Booleanish; 'aria-describedby': string | undefined; \"data-scope\": string; \"data-part\": string; }; getLegendProps: () => { ...; }; ...",
+        "type": "Accessor<{ refs: { rootRef: HTMLFieldSetElement | undefined; }; disabled: boolean; invalid: boolean; getRootProps: () => { disabled: boolean; 'data-disabled': boolean | \"true\" | \"false\"; 'data-invalid': boolean | ... 1 more ... | \"false\"; 'aria-describedby': string | undefined; \"data-scope\": string; \"data-part\": str...",
         "isRequired": true
       },
       "asChild": {

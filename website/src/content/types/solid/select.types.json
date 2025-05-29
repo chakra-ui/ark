@@ -169,6 +169,7 @@
         "isRequired": false,
         "description": "The controlled key of the highlighted item"
       },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  content: string\n  control: string\n  trigger: string\n  clearTrigger: string\n  label: string\n  hiddenSelect: string\n  positioner: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
         "isRequired": false,
@@ -227,6 +228,11 @@
         "type": "(event: PointerDownOutsideEvent) => void",
         "isRequired": false,
         "description": "Function called when the pointer is pressed down outside the component"
+      },
+      "onSelect": {
+        "type": "(details: SelectionDetails) => void",
+        "isRequired": false,
+        "description": "Function called when an item is selected"
       },
       "onValueChange": {
         "type": "(details: ValueChangeDetails<T>) => void",

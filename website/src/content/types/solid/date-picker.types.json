@@ -221,6 +221,12 @@
         "description": "Function called when the view changes."
       },
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the date picker" },
+      "outsideDaySelectable": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether day outside the visible range can be selected."
+      },
       "parse": {
         "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
         "isRequired": false,

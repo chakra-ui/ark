@@ -43,7 +43,8 @@
     "toast",
     "toggle group",
     "tooltip",
-    "tree view"
+    "tree view",
+    "password input"
   ],
   "license": "MIT",
   "homepage": "https://ark-ui.com",

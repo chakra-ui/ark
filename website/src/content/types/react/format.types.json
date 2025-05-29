@@ -6,5 +6,6 @@
       "unitDisplay": { "type": "'long' | 'short' | 'narrow'", "isRequired": false, "description": "The unit display" }
     }
   },
-  "Number": { "props": { "value": { "type": "number", "isRequired": true, "description": "The number to format" } } }
+  "Number": { "props": { "value": { "type": "number", "isRequired": true, "description": "The number to format" } } },
+  "RelativeTime": { "props": { "value": { "type": "Date", "isRequired": true, "description": "The date to format" } } }
 }

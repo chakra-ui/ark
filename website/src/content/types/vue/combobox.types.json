@@ -180,7 +180,7 @@
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
       "inputBehavior": {
-        "type": "'none' | 'autocomplete' | 'autohighlight'",
+        "type": "'autocomplete' | 'none' | 'autohighlight'",
         "defaultValue": "\"none\"",
         "isRequired": false,
         "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"
@@ -261,7 +261,7 @@
         "description": "Function to scroll to a specific index"
       },
       "selectionBehavior": {
-        "type": "'preserve' | 'replace' | 'clear'",
+        "type": "'replace' | 'clear' | 'preserve'",
         "defaultValue": "\"replace\"",
         "isRequired": false,
         "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"

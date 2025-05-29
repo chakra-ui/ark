@@ -42,7 +42,8 @@
     "toggle group",
     "tooltip",
     "tour",
-    "tree view"
+    "tree view",
+    "password input"
   ],
   "license": "MIT",
   "homepage": "https://ark-ui.com",

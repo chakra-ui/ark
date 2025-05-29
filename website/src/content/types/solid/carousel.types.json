@@ -60,7 +60,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "snapAlign": {
-        "type": "'start' | 'end' | 'center'",
+        "type": "'center' | 'start' | 'end'",
         "defaultValue": "\"start\"",
         "isRequired": false,
         "description": "The snap alignment of the item."
