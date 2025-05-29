@@ -77,14 +77,14 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@zag-js/anatomy": "1.13.1",
-    "@zag-js/avatar": "1.13.1",
-    "@zag-js/core": "1.13.1",
-    "@zag-js/toggle": "1.13.1",
-    "@zag-js/collection": "1.13.1",
-    "@zag-js/dom-query": "1.13.1",
-    "@zag-js/i18n-utils": "1.13.1",
-    "@zag-js/svelte": "1.13.1"
+    "@zag-js/anatomy": "1.14.0",
+    "@zag-js/avatar": "1.14.0",
+    "@zag-js/core": "1.14.0",
+    "@zag-js/toggle": "1.14.0",
+    "@zag-js/collection": "1.14.0",
+    "@zag-js/dom-query": "1.14.0",
+    "@zag-js/i18n-utils": "1.14.0",
+    "@zag-js/svelte": "1.14.0"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "8.6.12",

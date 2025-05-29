@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Added
+
+- **File Upload**: Added support for transforming uploaded files via `transformFiles` context property.
+
+### Fixed
+
+- **Slider**: Fixed issue where `minStepsBetweenThumbs` isn't computed correctly when interacting with pointer or
+  keyboard.
+
 ## [5.10.0] - 2025-05-29
 
 ### Added

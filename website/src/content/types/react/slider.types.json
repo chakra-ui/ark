@@ -126,7 +126,7 @@
         "type": "number",
         "defaultValue": "0",
         "isRequired": false,
-        "description": "The minimum permitted steps between multiple thumbs."
+        "description": "The minimum permitted steps between multiple thumbs.\n\n`minStepsBetweenThumbs` * `step` should reflect the gap between the thumbs.\n\n- `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10`\n- `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20`"
       },
       "name": {
         "type": "string",

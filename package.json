@@ -34,7 +34,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.12",
+    "@types/bun": "1.2.15",
     "lefthook": "1.11.12",
     "release-it": "19.0.2",
     "prettier": "3.5.3",

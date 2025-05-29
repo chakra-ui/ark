@@ -87,6 +87,10 @@ export interface RootProps {
    * Function to validate a file
    */
   validate?: (file: File, details: fileUpload.FileValidateDetails) => fileUpload.FileError[] | null
+  /**
+   * Function to transform the files
+   */
+  transformFiles?: (files: File[]) => Promise<File[]>
 }
 
 export type RootEmits = {
