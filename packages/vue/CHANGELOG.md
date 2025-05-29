@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.10.0] - 2025-05-29
+
 ### Added
 
 - **[NEW] Password Input**: Added `PasswordInput` component for collecting secure text inputs.
