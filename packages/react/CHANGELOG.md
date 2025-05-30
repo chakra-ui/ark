@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.11.0] - 2025-05-30
+
 ### Added
 
 - **File Upload**: Added support for transforming uploaded files via `transformFiles` context property.
