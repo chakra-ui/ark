@@ -3,6 +3,7 @@ export type {
   InputValueChangeDetails,
   OpenChangeDetails,
   ValueChangeDetails,
+  SelectionDetails,
 } from '@zag-js/combobox'
 export type { CollectionItem } from '../collection'
 export {
