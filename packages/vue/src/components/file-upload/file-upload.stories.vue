@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import WithDirectoryUpload from './examples/directory-upload.vue'
 import RootProvider from './examples/root-provider.vue'
+import WithValidation from './examples/validation.vue'
 import WithField from './examples/with-field.vue'
 </script>
 <template>
@@ -13,6 +15,12 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="With Validation">
+      <WithValidation />
+    </Variant>
+    <Variant title="With Directory Upload">
+      <WithDirectoryUpload />
     </Variant>
   </Story>
 </template>
