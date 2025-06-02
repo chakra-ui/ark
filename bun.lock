@@ -400,7 +400,7 @@
         "@auth/prisma-adapter": "2.9.0",
         "@biomejs/biome": "1.9.4",
         "@effect/schema": "0.75.5",
-        "@icons-pack/react-simple-icons": "12.9.0",
+        "@icons-pack/react-simple-icons": "13.0.0",
         "@pandacss/dev": "0.53.7",
         "@park-ui/panda-preset": "0.43.1",
         "@prisma/client": "6.6.0",
@@ -734,7 +734,7 @@
 
     "@humanwhocodes/object-schema": ["@humanwhocodes/object-schema@1.2.1", "", {}, "sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA=="],
 
-    "@icons-pack/react-simple-icons": ["@icons-pack/react-simple-icons@12.9.0", "", { "peerDependencies": { "react": "^16.13 || ^17 || ^18 || ^19" } }, "sha512-GLb2ayO78ZjjmI7GMpCDlXcELEr3DPO89nordI/JC8dMiJDMzuPb3qeOTt+SWcFOyJ+SAh9C/feUCpiBSM8ZLQ=="],
+    "@icons-pack/react-simple-icons": ["@icons-pack/react-simple-icons@13.0.0", "", { "peerDependencies": { "react": "^16.13 || ^17 || ^18 || ^19" } }, "sha512-Dmofr27ZlfBHS/2HDBKodKTUTnIjhH7cjw36WPt1CLg+1gytjr+LeabwWZ6khu/QUxmLjs3e1KrNPiuvOkEpJQ=="],
 
     "@img/sharp-darwin-arm64": ["@img/sharp-darwin-arm64@0.34.1", "", { "optionalDependencies": { "@img/sharp-libvips-darwin-arm64": "1.1.0" }, "os": "darwin", "cpu": "arm64" }, "sha512-pn44xgBtgpEbZsu+lWf2KNb6OAf70X68k+yk69Ic2Xz11zHR/w24/U49XT7AeRwJ0Px+mhALhU5LPci1Aymk7A=="],
 
