@@ -21,14 +21,42 @@ Learn how to use the `TreeView` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Using the Root Provider
+### Controlled Expanded
 
-The `RootProvider` component provides a context for the tree-view. It accepts the value of the `useTree-view` hook. You
-can leverage it to access the component state and methods from outside the tree-view.
+Pass the `expandedValue` and `onExpandedChange` props to the `TreeView.Root` component to control the expanded state of
+the tree view.
+
+<Example id="controlled-expanded" />
+
+### Controlled Selection
+
+Pass the `selectedValue` and `onSelectionChange` props to the `TreeView.Root` component to control the selected state of
+the tree view.
+
+<Example id="controlled-selected" />
+
+### Root Provider
+
+Use the `useTreeView` hook to create the tree view store and pass it to the `TreeView.RootProvider` component. This
+allows you to have maximum control over the tree view programmatically.
 
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+### Lazy Loading
+
+Lazy loading is a feature that allows the tree view to load children of a node on demand (or async). This helps to
+improve the initial load time and memory usage.
+
+To use this, you need to provide the following:
+
+- `loadChildren` — A function that is used to load the children of a node.
+- `onLoadChildrenComplete` — A callback that is called when the children of a node are loaded. Used to update the tree
+  collection.
+- `childrenCount` — A number that indicates the number of children of a branch node.
+
+<Example id="async-loading" />
 
 ## API Reference
 

@@ -4,5 +4,5 @@ import { createContext } from '../../utils'
 
 export interface UseTreeViewNodeContext extends ComputedRef<NodeState> {}
 
-export const [TreeViewNodeProvider, useTreeViewNodeContext] =
+export const [TreeViewNodeStateProvider, useTreeViewNodeContext] =
   createContext<UseTreeViewNodeContext>('TreeViewNodeContext')

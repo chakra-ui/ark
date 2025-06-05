@@ -6,5 +6,8 @@ const meta: Meta = {
 
 export default meta
 
+export { AsyncLoading } from './examples/async-loading'
 export { Basic } from './examples/basic'
+export { ControlledExpanded } from './examples/controlled-expanded'
+export { ControlledSelected } from './examples/controlled-selected'
 export { RootProvider } from './examples/root-provider'

@@ -1,14 +1,26 @@
 <script setup lang="ts">
+import AsyncLoading from './examples/async-loading.vue'
 import Basic from './examples/basic.vue'
-// import RootProvider from './examples/root-provider.vue'
+import ControlledExpanded from './examples/controlled-expanded.vue'
+import ControlledSelected from './examples/controlled-selected.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
   <Story title="TreeView">
     <Variant title="Basic">
       <Basic />
     </Variant>
-    <!-- <Variant title="RootProvider">
+    <Variant title="RootProvider">
       <RootProvider />
-    </Variant> -->
+    </Variant>
+    <Variant title="AsyncLoading">
+      <AsyncLoading />
+    </Variant>
+    <Variant title="ControlledExpanded">
+      <ControlledExpanded />
+    </Variant>
+    <Variant title="ControlledSelected">
+      <ControlledSelected />
+    </Variant>
   </Story>
 </template>

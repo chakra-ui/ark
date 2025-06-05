@@ -60,7 +60,7 @@ export interface RootProps<T extends TreeNode> {
   loadChildren?: (details: treeView.LoadChildrenDetails<T>) => Promise<T[]>
 }
 
-export type RootEmits = {
+export type RootEmits<T extends TreeNode> = {
   /**
    * Called when the tree is opened or closed
    */
@@ -76,7 +76,7 @@ export type RootEmits = {
   /**
    * A function that is called when the children are loaded.
    */
-  loadChildrenComplete: [details: treeView.LoadChildrenCompleteDetails]
+  loadChildrenComplete: [details: treeView.LoadChildrenCompleteDetails<T>]
   /**
    * Called when the expanded value changes
    */

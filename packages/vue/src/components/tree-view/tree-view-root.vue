@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<TreeViewRootProps<T>>(), {
   typeahead: undefined,
 } satisfies BooleanDefaults<RootProps<T>>)
 
-const emits = defineEmits<RootEmits>()
+const emits = defineEmits<RootEmits<T>>()
 
 const treeView = useTreeView(props, emits)
 TreeViewProvider(treeView)
