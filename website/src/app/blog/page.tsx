@@ -49,9 +49,9 @@ export default async function Page() {
         <Grid columns={{ base: 1, md: 2 }} gap="6" mt="12">
           {blogs.map((blog, index) => (
             <NextLink href={`/blog/${blog.slug}`} key={index}>
-              <Card.Root>
+              <Card.Root h="100%">
                 <Card.Header gap="2">
-                  <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }}>
+                  <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }} minH="2lh">
                     {blog.title}
                   </Card.Title>
                   <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
