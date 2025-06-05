@@ -18,11 +18,11 @@ export const navLinks: NavLinkItem[] = [
     href: '/examples',
     hrefPrefix: '/examples',
   },
-  // {
-  //   label: 'Blog',
-  //   href: '/blog',
-  //   hrefPrefix: '/blog',
-  // },
+  {
+    label: 'Blog',
+    href: '/blog',
+    hrefPrefix: '/blog',
+  },
   {
     label: 'Plus',
     href: '/plus',
