@@ -54,6 +54,10 @@ export interface RootProps<T extends TreeNode> {
    * @default true
    */
   typeahead?: boolean
+  /**
+   * A function that loads the children of a node.
+   */
+  loadChildren?: (details: treeView.LoadChildrenDetails<T>) => Promise<T[]>
 }
 
 export type RootEmits = {
@@ -69,6 +73,10 @@ export type RootEmits = {
    * Called when the selection changes
    */
   selectionChange: [details: treeView.SelectionChangeDetails]
+  /**
+   * A function that is called when the children are loaded.
+   */
+  loadChildrenComplete: [details: treeView.LoadChildrenCompleteDetails]
   /**
    * Called when the expanded value changes
    */

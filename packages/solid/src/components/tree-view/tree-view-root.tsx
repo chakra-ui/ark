@@ -30,6 +30,8 @@ export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) =>
     'selectedValue',
     'selectionMode',
     'typeahead',
+    'loadChildren',
+    'onLoadChildrenComplete',
   ])
   const treeView = useTreeView(useTreeViewProps)
   const mergedProps = mergeProps(() => treeView().getRootProps(), localProps)
