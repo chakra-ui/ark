@@ -19,7 +19,7 @@ export interface UseTreeViewReturn<T extends TreeNode> extends ComputedRef<treeV
 
 export const useTreeView = <T extends TreeNode>(
   props: MaybeRef<UseTreeViewProps<T>>,
-  emit?: EmitFn<RootEmits>,
+  emit?: EmitFn<RootEmits<T>>,
 ): UseTreeViewReturn<T> => {
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
