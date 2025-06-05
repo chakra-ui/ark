@@ -30,7 +30,7 @@ export const WithFormLibrary = () => {
           {(field, props) => (
             <Select.Root
               collection={frameworks}
-              value={field.value ? [field.value] : undefined}
+              value={field.value ? [field.value] : []}
               invalid={!!field.error}
               name={field.name}
               onValueChange={(e) => {
