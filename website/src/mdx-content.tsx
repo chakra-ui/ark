@@ -12,6 +12,7 @@ import { KeyBindingsTable } from './components/key-bindings-table'
 import { Pre } from './components/pre'
 import { Quickstart } from './components/quickstart'
 
+import { BlogCardGroup } from '~/components/blog-card'
 import { Step, Steps } from '~/components/ui/stepper'
 import { ThemeImage } from './components/theme-image'
 
@@ -31,6 +32,7 @@ const sharedComponents = {
   Step,
   Steps,
   ThemeImage,
+  BlogCardGroup,
 }
 
 const useMDXComponent = (code: string) => {

@@ -39,7 +39,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
       backgroundRepeat="repeat-x"
     >
       <Navbar />
-      <Container py={{ base: '16', md: '24' }} maxW="5xl" flex="1">
+      <Container py={{ base: '16', md: '24' }} maxW="4xl" flex="1">
         <Stack pb="10" gap="3">
           <Link
             href="/blog"
@@ -54,17 +54,17 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
             })}
           >
             <ArrowLeftIcon />
-            Blog
+            Back to Blog
           </Link>
-          <Heading as="h1" size="4xl" mb="4">
+          <Heading as="h1" size="5xl" mt="4">
             {blog.title}
           </Heading>
-          <HStack gap="2" className={css({ color: 'fg.muted' })}>
-            <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-            <span>/</span>
-            <Text>{blog.author}</Text>
-          </HStack>
           <Text color="fg.muted">{blog.description}</Text>
+          <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
+            <Text>{blog.author}</Text>
+            <span>/</span>
+            <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+          </HStack>
         </Stack>
 
         <div
@@ -76,7 +76,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
           })}
         />
 
-        <Prose>
+        <Prose maxW="inherit">
           <MDXContent code={blog.code} />
         </Prose>
       </Container>
