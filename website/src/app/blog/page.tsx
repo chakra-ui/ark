@@ -49,7 +49,7 @@ export default async function Page() {
         <Grid columns={{ base: 1, md: 2 }} gap="6" mt="12">
           {blogs.map((blog, index) => (
             <NextLink href={`/blog/${blog.slug}`} key={index}>
-              <Card.Root>
+              <Card.Root h="100%">
                 <Card.Header gap="2">
                   <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }}>
                     {blog.title}
@@ -61,7 +61,7 @@ export default async function Page() {
                   </HStack>
                 </Card.Header>
                 <Card.Body>
-                  <Text>{blog.description}</Text>
+                  <Text minH="2lh">{blog.description}</Text>
                   <Text mt="2" fontWeight="medium" color="colorPalette.default">
                     Read more
                   </Text>
