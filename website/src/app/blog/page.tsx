@@ -51,7 +51,7 @@ export default async function Page() {
             <NextLink href={`/blog/${blog.slug}`} key={index}>
               <Card.Root h="100%">
                 <Card.Header gap="2">
-                  <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }} minH="2lh">
+                  <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }}>
                     {blog.title}
                   </Card.Title>
                   <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
@@ -61,7 +61,7 @@ export default async function Page() {
                   </HStack>
                 </Card.Header>
                 <Card.Body>
-                  <Text>{blog.description}</Text>
+                  <Text minH="2lh">{blog.description}</Text>
                   <Text mt="2" fontWeight="medium" color="colorPalette.default">
                     Read more
                   </Text>
