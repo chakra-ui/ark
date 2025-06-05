@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.12.0] - 2025-06-05
+
 ### Added
 
 - **Tree View**: Add support for lazy loading node children. To use this, you need to provide:
