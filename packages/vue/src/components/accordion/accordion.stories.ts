@@ -1,7 +1,12 @@
 import { action } from '@storybook/addon-actions'
 import type { Meta } from '@storybook/vue3'
 
-import AccordionExample, { type AccordionProps } from './examples/accordion.vue'
+import type { EmitHandlers } from '../../../.storybook/storybook.types'
+
+import type { AccordionRootEmits } from './accordion-root.vue'
+import type { AccordionProps } from './examples/accordion.vue'
+
+import AccordionExample from './examples/accordion.vue'
 import BasicExample from './examples/basic.vue'
 import CollapsibleExample from './examples/collapsible.vue'
 import ContextFocusedValueExample from './examples/context/focusedValue.vue'
@@ -78,21 +83,32 @@ export const Disabled = {
   }),
 }
 
+interface ClosedArgs {
+  props: AccordionProps
+  emits: EmitHandlers<AccordionRootEmits>
+}
+
 export const Closed = {
-  render: (args: AccordionProps) => ({
+  render: (args: ClosedArgs) => ({
     components: { AccordionExample },
     setup() {
       return {
         args,
-        onValueChange: action('value changed'),
       }
     },
-    template: `<AccordionExample v-bind="args" @value-change="onValueChange" />`,
+    template: `<AccordionExample v-bind="args.props" v-on="args.emits" />`,
   }),
   args: {
-    items: ['React', 'Solid', 'Vue'],
-    multiple: true,
-  } satisfies AccordionProps,
+    props: {
+      items: ['React', 'Solid', 'Vue'],
+      multiple: true,
+    },
+    emits: {
+      focusChange: (details) => action('focus changed')(details),
+      valueChange: (details) => action('value changed')(details),
+      'update:modelValue': (value) => action('model value updated')(value),
+    },
+  } satisfies ClosedArgs,
 }
 
 export const RootProvider = {

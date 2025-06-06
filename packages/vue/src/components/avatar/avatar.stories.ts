@@ -1,6 +1,9 @@
 import { action } from '@storybook/addon-actions'
 import type { Meta } from '@storybook/vue3'
 
+import type { EmitHandlers } from '../../../.storybook/storybook.types'
+
+import type { AvatarRootEmits } from './avatar-root.vue'
 import type { AvatarProps } from './examples/closed.vue'
 
 import BasicExample from './examples/basic.vue'
@@ -28,21 +31,30 @@ export const Events = {
   }),
 }
 
+interface ClosedArgs {
+  props: AvatarProps
+  emits: EmitHandlers<AvatarRootEmits>
+}
+
 export const Closed = {
-  render: (args: AvatarProps) => ({
+  render: (args: ClosedArgs) => ({
     components: { ClosedExample },
     setup() {
       return {
         args,
-        onStatusChange: action('status changed'),
       }
     },
-    template: '<ClosedExample v-bind="args" @status-change="onStatusChange" />',
+    template: '<ClosedExample v-bind="args.props" v-on="args.emits" />',
   }),
   args: {
-    name: 'Christian',
-    src: 'https://avatars.githubusercontent.com/u/1846056?v=4',
-  } satisfies AvatarProps,
+    props: {
+      name: 'Christian',
+      src: 'https://avatars.githubusercontent.com/u/1846056?v=4',
+    },
+    emits: {
+      statusChange: (details) => action('status changed')(details),
+    },
+  } satisfies ClosedArgs,
 }
 
 export const RootProvider = {
