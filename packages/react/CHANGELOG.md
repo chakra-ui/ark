@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Progress**: Export `ProgressValueChangeDetails` and `ProgressValueTranslationDetails` types from `@zag-js/progress`
+
 ## [5.12.0] - 2025-06-05
 
 ### Added
