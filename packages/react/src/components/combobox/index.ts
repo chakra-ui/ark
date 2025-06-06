@@ -2,10 +2,16 @@ export type {
   HighlightChangeDetails as ComboboxHighlightChangeDetails,
   InputValueChangeDetails as ComboboxInputValueChangeDetails,
   OpenChangeDetails as ComboboxOpenChangeDetails,
-  ValueChangeDetails as ComboboxValueChangeDetails,
   SelectionDetails as ComboboxSelectionDetails,
+  ValueChangeDetails as ComboboxValueChangeDetails,
 } from '@zag-js/combobox'
-export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
+export {
+  createListCollection,
+  useListCollection,
+  type CollectionItem,
+  type ListCollection,
+  type UseListCollectionProps,
+} from '../collection'
 export {
   ComboboxClearTrigger,
   type ComboboxClearTriggerBaseProps,

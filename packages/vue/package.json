@@ -61,7 +61,6 @@
   "exports": {
     ".": "./src/index.ts",
     "./anatomy": "./src/components/anatomy.ts",
-    "./collection": "./src/components/collection.ts",
     "./environment": "./src/providers/environment/index.ts",
     "./factory": "./src/components/factory.ts",
     "./locale": "./src/providers/locale/index.ts",

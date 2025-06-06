@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Collection**: Add new `useListCollection` hook to create a dynamic list collection.
+
 ### Fixed
 
 - **Progress**: Export `ProgressValueChangeDetails` and `ProgressValueTranslationDetails` types from `@zag-js/progress`
