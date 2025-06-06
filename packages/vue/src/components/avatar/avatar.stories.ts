@@ -1,4 +1,7 @@
+import { action } from '@storybook/addon-actions'
 import type { Meta } from '@storybook/vue3'
+
+import type { AvatarProps } from './examples/closed.vue'
 
 import BasicExample from './examples/basic.vue'
 import ClosedExample from './examples/closed.vue'
@@ -26,16 +29,20 @@ export const Events = {
 }
 
 export const Closed = {
-  render: () => ({
+  render: (args: AvatarProps) => ({
     components: { ClosedExample },
-    template: `
-      <ClosedExample
-        name="Christian"
-        src="https://avatars.githubusercontent.com/u/1846056?v=4"
-        @status-change="(e) => console.log(e.status)"
-      />
-      `,
+    setup() {
+      return {
+        args,
+        onStatusChange: action('status changed'),
+      }
+    },
+    template: '<ClosedExample v-bind="args" @status-change="onStatusChange" />',
   }),
+  args: {
+    name: 'Christian',
+    src: 'https://avatars.githubusercontent.com/u/1846056?v=4',
+  } satisfies AvatarProps,
 }
 
 export const RootProvider = {

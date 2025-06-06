@@ -1,6 +1,7 @@
+import { action } from '@storybook/addon-actions'
 import type { Meta } from '@storybook/vue3'
 
-import AccordionExample from './examples/accordion.vue'
+import AccordionExample, { type AccordionProps } from './examples/accordion.vue'
 import BasicExample from './examples/basic.vue'
 import CollapsibleExample from './examples/collapsible.vue'
 import ContextFocusedValueExample from './examples/context/focusedValue.vue'
@@ -78,10 +79,20 @@ export const Disabled = {
 }
 
 export const Closed = {
-  render: () => ({
+  render: (args: AccordionProps) => ({
     components: { AccordionExample },
-    template: `<AccordionExample multiple :items="['React', 'Solid', 'Vue']" />`,
+    setup() {
+      return {
+        args,
+        onValueChange: action('value changed'),
+      }
+    },
+    template: `<AccordionExample v-bind="args" @value-change="onValueChange" />`,
   }),
+  args: {
+    items: ['React', 'Solid', 'Vue'],
+    multiple: true,
+  } satisfies AccordionProps,
 }
 
 export const RootProvider = {
