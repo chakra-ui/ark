@@ -20,17 +20,30 @@ Learn how to use the `FileUpload` component in your project. Let's take a look a
 
 <Example id="basic" />
 
-### Using the Field Component
+### Validation
 
-The `Field` component helps manage form-related state and accessibility attributes of an file upload. It includes
-handling ARIA labels, helper text, and error text to ensure proper accessibility.
+Use the `validate` prop to validate the files before they are uploaded. The return value of the function should map to:
+
+- `TOO_MANY_FILES`: If the user tries to upload more files than the `maxFiles` prop allows.
+- `FILE_INVALID_TYPE`: If the file is of an invalid type.
+- `FILE_TOO_LARGE`: If the file is too large.
+- `FILE_TOO_SMALL`: If the file is too small.
+- `FILE_INVALID`: If the file is invalid (for any other reason).
+- `FILE_EXISTS`: If the file already exists.
+
+<Example id="validation" />
+
+### Field
+
+Here's an example of how to use the `FileUpload` component with the `Field` component to provide a error and helper
+text.
 
 <Example id="with-field" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the file-upload. It accepts the value of the `useFile-upload` hook.
-You can leverage it to access the component state and methods from outside the file-upload.
+Use the `useFileUpload` hook to create the file upload store and pass it to the `FileUpload.RootProvider` component.
+This allows you to have maximum control over the file upload programmatically.
 
 <Example id="root-provider" />
 

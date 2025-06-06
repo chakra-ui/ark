@@ -21,3 +21,8 @@ export {
   type CollapsibleTriggerProps as TriggerProps,
   type CollapsibleTriggerBaseProps as TriggerBaseProps,
 } from './collapsible-trigger.vue'
+export {
+  default as Indicator,
+  type CollapsibleIndicatorProps as IndicatorProps,
+  type CollapsibleIndicatorBaseProps as IndicatorBaseProps,
+} from './collapsible-indicator.vue'

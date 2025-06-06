@@ -30,7 +30,7 @@ control and allows you to modify the size of the panels programmatically:
 
 ### Handling Events
 
-Splitter also provides `onSizeChangeStart` and `onSizeChangeEnd` events which can be useful to perform some actions
+Splitter also provides `onResizeStart`, `onResize`, and `onResizeEnd` events which can be useful to perform some actions
 during the start and end of the resizing process:
 
 <Example id="events" />
@@ -40,6 +40,21 @@ during the start and end of the resizing process:
 By default, the Splitter component is horizontal. If you need a vertical splitter, use the `orientation` prop:
 
 <Example id="vertical" />
+
+### Collapsible Panels
+
+To make a panel collapsible, set the `collapsible` prop to `true` on the panel you want to make collapsible.
+Additionally, you can use the `collapsedSize` prop to set the size of the panel when it's collapsed.
+
+> This can be useful for building sidebar layouts.
+
+<Example id="collapsible" />
+
+### Multiple Panels
+
+Here's an example of how to use the `Splitter` component with multiple panels.
+
+<Example id="multiple-panels" />
 
 ### Using the Root Provider
 

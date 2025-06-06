@@ -18,10 +18,19 @@ interface Props {
       description?: string | undefined
     }
   >
+  replace?: Record<string, string>
 }
 
 export const PropsTable = (props: Props) => {
-  const { properties, framework } = props
+  const { properties, framework, replace } = props
+
+  const replaceFn = (value: string | undefined) => {
+    if (!replace || !value) return value
+    return Object.entries(replace).reduce((acc, [key, value]) => {
+      return acc.replaceAll(key, value)
+    }, value)
+  }
+
   return (
     <Box borderWidth="1px" borderRadius="lg" overflowX="auto" className="not-prose" my="8">
       <Table.Root variant="outline" size="sm" border={0}>
@@ -58,7 +67,7 @@ export const PropsTable = (props: Props) => {
               <Table.Cell px="4" py="2" verticalAlign="top">
                 <Stack gap="1" align="start">
                   <Code size="sm">{property.type}</Code>
-                  <Text>{property.description}</Text>
+                  <Text>{replaceFn(property.description)}</Text>
                   {name === 'asChild' && (
                     <Text as="span">
                       For more details, read our{' '}

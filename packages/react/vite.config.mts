@@ -59,6 +59,9 @@ export default defineConfig({
     setupFiles: 'src/setup-test.ts',
     globals: true,
     environment: 'happy-dom',
+    coverage: {
+      provider: 'v8',
+    },
   },
   resolve: {
     conditions: ['source'],
@@ -67,7 +70,7 @@ export default defineConfig({
 
 const renderBanner = (fileName: string) => {
   const file = path.parse(fileName)
-  if (['portal', 'frame', 'client-only', 'focus-trap'].includes(file.name)) {
+  if (['portal', 'frame', 'client-only', 'focus-trap', 'download-trigger'].includes(file.name)) {
     return `'use client';`
   }
   if (isBarrelComponent(file) || isSpecialFile(file)) {

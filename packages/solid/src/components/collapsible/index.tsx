@@ -16,6 +16,11 @@ export {
   type CollapsibleTriggerBaseProps,
   type CollapsibleTriggerProps,
 } from './collapsible-trigger'
+export {
+  CollapsibleIndicator,
+  type CollapsibleIndicatorBaseProps,
+  type CollapsibleIndicatorProps,
+} from './collapsible-indicator'
 export { collapsibleAnatomy } from './collapsible.anatomy'
 export { useCollapsible, type UseCollapsibleProps, type UseCollapsibleReturn } from './use-collapsible'
 export { useCollapsibleContext, type UseCollapsibleContext } from './use-collapsible-context'

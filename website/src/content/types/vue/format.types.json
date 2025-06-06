@@ -13,9 +13,29 @@
       "currencyDisplay": { "type": "string", "isRequired": false },
       "currencySign": { "type": "string", "isRequired": false },
       "notation": { "type": "'standard' | 'scientific' | 'engineering' | 'compact'", "isRequired": false },
-      "signDisplay": { "type": "'auto' | 'never' | 'always' | 'exceptZero'", "isRequired": false },
+      "signDisplay": { "type": "'auto' | 'always' | 'never' | 'exceptZero'", "isRequired": false },
       "unit": { "type": "string", "isRequired": false },
       "unitDisplay": { "type": "'long' | 'short' | 'narrow'", "isRequired": false }
+    }
+  },
+  "RelativeTime": {
+    "props": {
+      "value": { "type": "Date", "isRequired": true, "description": "The date to format" },
+      "localeMatcher": {
+        "type": "RelativeTimeFormatLocaleMatcher",
+        "isRequired": false,
+        "description": "The locale matching algorithm to use. For information about this option, see [Intl page](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_negotiation)."
+      },
+      "numeric": {
+        "type": "RelativeTimeFormatNumeric",
+        "isRequired": false,
+        "description": "The format of output message."
+      },
+      "style": {
+        "type": "RelativeTimeFormatStyle",
+        "isRequired": false,
+        "description": "The length of the internationalized message."
+      }
     }
   }
 }

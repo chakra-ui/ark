@@ -1,13 +1,24 @@
 import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
 import { Field } from '@ark-ui/solid/field'
-import { For } from 'solid-js'
+import { useFilter } from '@ark-ui/solid/locale'
+import { For, createMemo, createSignal } from 'solid-js'
+
+const initialItems = ['React', 'Solid', 'Vue']
 
 export const WithField = (props: Field.RootProps) => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const [items, setItems] = createSignal(initialItems)
+
+  const collection = createMemo(() => createListCollection({ items: items() }))
+
+  const filter = useFilter({ sensitivity: 'base' })
+
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+    setItems(initialItems.filter((item) => filter().contains(item, details.inputValue)))
+  }
 
   return (
     <Field.Root {...props}>
-      <Combobox.Root collection={collection}>
+      <Combobox.Root collection={collection()} onInputValueChange={handleInputChange}>
         <Combobox.Label>Label</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input />
@@ -16,7 +27,7 @@ export const WithField = (props: Field.RootProps) => {
         </Combobox.Control>
         <Combobox.Positioner>
           <Combobox.Content>
-            <For each={collection.items}>
+            <For each={collection().items}>
               {(item) => (
                 <Combobox.Item item={item}>
                   <Combobox.ItemText>{item}</Combobox.ItemText>

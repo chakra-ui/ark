@@ -97,7 +97,7 @@ describe('Tabs', () => {
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
 
     await user.click(screen.getByText('React Trigger'))
-    expect(screen.getByText('React Content')).toBeInTheDocument()
+    await waitFor(() => expect(screen.getByText('React Content')).toBeInTheDocument())
   })
 
   it('should lazy mount and unmount on exit a tab', async () => {
@@ -106,7 +106,7 @@ describe('Tabs', () => {
     expect(screen.queryByText('React Content')).not.toBeInTheDocument()
 
     await user.click(screen.getByText('React Trigger'))
-    expect(screen.queryByText('React Content')).toBeVisible()
+    await waitFor(() => expect(screen.queryByText('React Content')).toBeVisible())
 
     await user.click(screen.getByText('Solid Trigger'))
     await waitFor(() => expect(screen.queryByText('React Content')).not.toBeInTheDocument())

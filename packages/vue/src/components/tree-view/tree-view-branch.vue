@@ -16,13 +16,16 @@ import { useForwardExpose, useRenderStrategyProps } from '../../utils'
 import { Collapsible } from '../collapsible'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
+import { useTreeViewNodeContext } from './use-tree-view-node-context'
 
 defineProps<TreeViewBranchProps>()
 
 const treeView = useTreeViewContext()
+
 const nodeProps = useTreeViewNodePropsContext()
+const nodeState = useTreeViewNodeContext()
+
 const renderStrategyProps = useRenderStrategyProps()
-const nodeState = computed(() => treeView.value.getNodeState(nodeProps))
 const branchContentProps = computed(() => treeView.value.getBranchContentProps(nodeProps))
 
 useForwardExpose()

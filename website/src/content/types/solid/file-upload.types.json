@@ -192,6 +192,11 @@
         "description": "Whether to prevent the drop event on the document"
       },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the file input is required" },
+      "transformFiles": {
+        "type": "(files: File[]) => Promise<File[]>",
+        "isRequired": false,
+        "description": "Function to transform the accepted files to apply transformations"
+      },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,

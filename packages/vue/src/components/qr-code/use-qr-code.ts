@@ -1,7 +1,7 @@
 import * as qrcode from '@zag-js/qr-code'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './qr-code.types'
@@ -17,7 +17,7 @@ export interface UseQrCodeReturn extends ComputedRef<qrcode.Api<PropTypes>> {}
 
 export const useQrCode = (props: MaybeRef<UseQrCodeProps> = {}, emit?: EmitFn<RootEmits>): UseQrCodeReturn => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<qrcode.Props>(() => {

@@ -39,11 +39,7 @@
         "isRequired": false,
         "description": "Whether to fix the input value on blur."
       },
-      "index": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The index of the input to focus."
-      }
+      "index": { "type": "number", "isRequired": false, "description": "The index of the input to focus." }
     }
   },
   "Label": {
@@ -84,10 +80,7 @@
   },
   "PresetTrigger": {
     "props": {
-      "value": {
-        "type": "PresetTriggerValue",
-        "isRequired": true
-      },
+      "value": { "type": "PresetTriggerValue", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -189,31 +182,19 @@
         "isRequired": false,
         "description": "The default view of the calendar"
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the calendar is disabled."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is disabled." },
       "fixedWeeks": {
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
       },
-      "focusedValue": {
-        "type": "DateValue",
-        "isRequired": false,
-        "description": "The controlled focused date."
-      },
+      "focusedValue": { "type": "DateValue", "isRequired": false, "description": "The controlled focused date." },
       "format": {
         "type": "(date: DateValue, details: LocaleDetails) => string",
         "isRequired": false,
         "description": "The format of the date to display in the input."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; label(index: number): string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; ... 10 more ...; positioner: string; }>",
         "isRequired": false,
@@ -236,22 +217,14 @@
         "isRequired": false,
         "description": "The locale (BCP 47 language tag) to use when formatting the date."
       },
-      "max": {
-        "type": "DateValue",
-        "isRequired": false,
-        "description": "The maximum date that can be selected."
-      },
+      "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
       "maxView": {
         "type": "DateView",
         "defaultValue": "\"year\"",
         "isRequired": false,
         "description": "The maximum view of the calendar"
       },
-      "min": {
-        "type": "DateValue",
-        "isRequired": false,
-        "description": "The minimum date that can be selected."
-      },
+      "min": { "type": "DateValue", "isRequired": false, "description": "The minimum date that can be selected." },
       "minView": {
         "type": "DateView",
         "defaultValue": "\"day\"",
@@ -263,20 +236,14 @@
         "isRequired": false,
         "description": "The v-model value of the date picker"
       },
-      "name": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The `name` attribute of the input element."
-      },
-      "numOfMonths": {
-        "type": "number",
-        "isRequired": false,
-        "description": "The number of months to display."
-      },
-      "open": {
+      "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
+      "numOfMonths": { "type": "number", "isRequired": false, "description": "The number of months to display." },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the date picker" },
+      "outsideDaySelectable": {
         "type": "boolean",
+        "defaultValue": "false",
         "isRequired": false,
-        "description": "The controlled open state of the date picker"
+        "description": "Whether day outside the visible range can be selected."
       },
       "parse": {
         "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
@@ -293,11 +260,7 @@
         "isRequired": false,
         "description": "The user provided options used to position the date picker content"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the calendar is read-only."
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is read-only." },
       "selectionMode": {
         "type": "SelectionMode",
         "defaultValue": "\"single\"",
@@ -326,19 +289,12 @@
         "isRequired": false,
         "description": "Whether to unmount on exit."
       },
-      "view": {
-        "type": "DateView",
-        "isRequired": false,
-        "description": "The view of the calendar"
-      }
+      "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "DatePickerApi<PropTypes>",
-        "isRequired": true
-      },
+      "value": { "type": "DatePickerApi<PropTypes>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -369,27 +325,15 @@
   },
   "TableCell": {
     "props": {
-      "value": {
-        "type": "Reactive<number | DateValue>",
-        "isRequired": true
-      },
+      "value": { "type": "Reactive<number | DateValue>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "columns": {
-        "type": "number",
-        "isRequired": false
-      },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false
-      },
-      "visibleRange": {
-        "type": "VisibleRange",
-        "isRequired": false
-      }
+      "columns": { "type": "number", "isRequired": false },
+      "disabled": { "type": "boolean", "isRequired": false },
+      "visibleRange": { "type": "VisibleRange", "isRequired": false }
     }
   },
   "TableCellTrigger": {
@@ -426,18 +370,9 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "columns": {
-        "type": "number",
-        "isRequired": false
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false
-      },
-      "view": {
-        "type": "DateView",
-        "isRequired": false
-      }
+      "columns": { "type": "number", "isRequired": false },
+      "id": { "type": "string", "isRequired": false },
+      "view": { "type": "DateView", "isRequired": false }
     }
   },
   "TableRow": {
@@ -469,10 +404,7 @@
   },
   "View": {
     "props": {
-      "view": {
-        "type": "DateView",
-        "isRequired": true
-      },
+      "view": { "type": "DateView", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

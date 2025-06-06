@@ -1,4 +1,4 @@
-import type { ComputedRef } from 'vue'
+import { type ComputedRef, computed } from 'vue'
 import { createContext } from '../../utils'
 
 export type RootNode = ShadowRoot | Document | Node
@@ -20,4 +20,10 @@ export interface UseEnvironmentContext {
 }
 
 export const [EnvironmentContextProvider, useEnvironmentContext] =
-  createContext<ComputedRef<UseEnvironmentContext> | null>('EnvironmentContext')
+  createContext<ComputedRef<UseEnvironmentContext>>('EnvironmentContext')
+
+export const DEFAULT_ENVIRONMENT: ComputedRef<UseEnvironmentContext> = computed(() => ({
+  getRootNode: () => document,
+  getDocument: () => document,
+  getWindow: () => window,
+}))

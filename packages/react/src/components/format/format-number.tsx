@@ -10,10 +10,13 @@ export interface FormatNumberProps extends Intl.NumberFormatOptions {
 }
 
 export const FormatNumber = (props: FormatNumberProps) => {
-  const { value, ...intlOptions } = props
   const { locale } = useLocaleContext()
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  const text = useMemo(() => formatNumber(value, locale, intlOptions), [value, locale, intlOptions])
+
+  const text = useMemo(() => {
+    const { value, ...intlOptions } = props
+    return formatNumber(value, locale, intlOptions)
+  }, [props, locale])
+
   return <>{text}</>
 }
 

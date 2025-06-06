@@ -1,5 +1,5 @@
 import { formatBytes } from '@zag-js/i18n-utils'
-import { createMemo, splitProps } from 'solid-js'
+import { createMemo } from 'solid-js'
 import { useLocaleContext } from '../../providers'
 
 export interface FormatByteProps {
@@ -18,9 +18,11 @@ export interface FormatByteProps {
 }
 
 export const FormatByte = (props: FormatByteProps) => {
-  const [valueProps, intlProps] = splitProps(props, ['value'])
   const ctx = useLocaleContext()
-  const text = createMemo(() => formatBytes(valueProps.value, ctx().locale, intlProps))
+  const text = createMemo(() => {
+    const { value, ...intlOptions } = props
+    return formatBytes(value, ctx().locale, intlOptions)
+  })
 
-  return <>{text}</>
+  return <>{text()}</>
 }

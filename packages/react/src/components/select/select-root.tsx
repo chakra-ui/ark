@@ -38,6 +38,7 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: Re
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
+    'onSelect',
     'onValueChange',
     'open',
     'positioning',

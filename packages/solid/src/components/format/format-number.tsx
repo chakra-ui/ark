@@ -1,5 +1,5 @@
 import { formatNumber } from '@zag-js/i18n-utils'
-import { createMemo, splitProps } from 'solid-js'
+import { createMemo } from 'solid-js'
 import { useLocaleContext } from '../../providers'
 
 export interface FormatNumberProps extends Intl.NumberFormatOptions {
@@ -10,9 +10,11 @@ export interface FormatNumberProps extends Intl.NumberFormatOptions {
 }
 
 export const FormatNumber = (props: FormatNumberProps) => {
-  const [valueProps, intlProps] = splitProps(props, ['value'])
   const ctx = useLocaleContext()
-  const text = createMemo(() => formatNumber(valueProps.value, ctx().locale, intlProps))
+  const text = createMemo(() => {
+    const { value, ...intlOptions } = props
+    return formatNumber(value, ctx().locale, intlOptions)
+  })
 
-  return <>{text}</>
+  return <>{text()}</>
 }

@@ -1,17 +1,9 @@
 import { Splitter } from '../'
 
-export const ComponentUnderTest = (props: Splitter.RootProps) => (
-  <Splitter.Root
-    size={[
-      { id: 'a', size: 50 },
-      { id: 'b', size: 50 },
-    ]}
-    {...props}
-  >
+export const ComponentUnderTest = () => (
+  <Splitter.Root panels={[{ id: 'a' }, { id: 'b' }]}>
     <Splitter.Panel id="a">A</Splitter.Panel>
-    <Splitter.ResizeTrigger id="a:b">
-      <div class="bar" />
-    </Splitter.ResizeTrigger>
+    <Splitter.ResizeTrigger id="a:b" aria-label="Resize" />
     <Splitter.Panel id="b">B</Splitter.Panel>
   </Splitter.Root>
 )

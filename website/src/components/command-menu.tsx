@@ -30,8 +30,6 @@ export const CommandMenu = (props: Props) => {
   const [inputValue, setInputValue] = useState('')
   const { matchEntries, filteredItems } = useFilteredItems(data, inputValue)
   const router = useRouter()
-  const params = useParams<{ framework: string }>()
-
   const collection = createListCollection({ items: filteredItems })
 
   useHotkey(setOpen)
@@ -71,7 +69,7 @@ export const CommandMenu = (props: Props) => {
               loopFocus={false}
               collection={collection}
               onValueChange={(e) => {
-                router.push(`/${params.framework}/${e.value}`)
+                router.push(e.value[0])
                 requestAnimationFrame(() => {
                   setOpen(false)
                 })

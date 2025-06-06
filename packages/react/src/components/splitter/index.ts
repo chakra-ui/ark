@@ -1,4 +1,9 @@
-export type { SizeChangeDetails as SplitterSizeChangeDetails } from '@zag-js/splitter'
+export type {
+  ExpandCollapseDetails as SplitterExpandCollapseDetails,
+  PanelData as SplitterPanelData,
+  ResizeDetails as SplitterResizeDetails,
+  ResizeEndDetails as SplitterResizeEndDetails,
+} from '@zag-js/splitter'
 export { SplitterContext, type SplitterContextProps } from './splitter-context'
 export { SplitterPanel, type SplitterPanelBaseProps, type SplitterPanelProps } from './splitter-panel'
 export {

@@ -10,7 +10,10 @@ export interface ComboboxRootBaseProps<T extends CollectionItem>
   extends UseComboboxProps<T>,
     UsePresenceProps,
     PolymorphicProps<'div'> {}
-export interface ComboboxRootProps<T extends CollectionItem> extends HTMLProps<'div'>, ComboboxRootBaseProps<T> {}
+
+export interface ComboboxRootProps<T extends CollectionItem>
+  extends Omit<HTMLProps<'div'>, 'onSelect'>,
+    ComboboxRootBaseProps<T> {}
 
 export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<T>) => {
   const [presenceProps, comboboxProps] = splitPresenceProps(props)
@@ -42,9 +45,9 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
     'onInputValueChange',
     'onInteractOutside',
     'onOpenChange',
-    'onOpenChange',
     'onPointerDownOutside',
     'onValueChange',
+    'onSelect',
     'open',
     'openOnChange',
     'openOnClick',

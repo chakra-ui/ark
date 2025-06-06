@@ -16,7 +16,7 @@ We use GitHub issues to track public bugs. Report a bug by
 ## License
 
 By contributing, you agree that your contributions will be licensed under its
-[Licesne](https://github.com/chakra-ui/ark/blob/main/LICENSE).
+[License](https://github.com/chakra-ui/ark/blob/main/LICENSE).
 
 ## Discuss changes before starting to work on them
 

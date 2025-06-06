@@ -3,7 +3,7 @@ import { createContext } from '../../utils/create-context'
 
 export interface UseTreeViewNodeContext extends NodeState {}
 
-export const [TreeViewNodeProvider, useTreeViewNodeContext] = createContext<UseTreeViewNodeContext>({
+export const [TreeViewNodeStateProvider, useTreeViewNodeContext] = createContext<UseTreeViewNodeContext>({
   name: 'TreeViewNodeContext',
   hookName: 'useTreeViewNodeContext',
   providerName: '<TreeViewNodeProvider />',

@@ -1,56 +1,67 @@
 {
   "Panel": {
     "props": {
-      "id": { "type": "PanelId", "isRequired": true },
+      "id": { "type": "string", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      },
-      "snapSize": { "type": "number", "isRequired": false }
+      }
     }
   },
   "ResizeTrigger": {
     "props": {
-      "id": {
-        "type": "`${string}:${string}` | `${string}:${number}` | `${number}:${string}` | `${number}:${number}`",
-        "isRequired": true
-      },
+      "id": { "type": "`${string}:${string}`", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false },
-      "step": { "type": "number", "isRequired": false }
+      "disabled": { "type": "boolean", "isRequired": false }
     }
   },
   "Root": {
     "emits": {
-      "sizeChange": {
-        "type": "[details: SizeChangeDetails]",
+      "collapse": {
+        "type": "[details: ExpandCollapseDetails]",
+        "isRequired": true,
+        "description": "Function called when a panel is collapsed."
+      },
+      "expand": {
+        "type": "[details: ExpandCollapseDetails]",
+        "isRequired": true,
+        "description": "Function called when a panel is expanded."
+      },
+      "resize": {
+        "type": "[details: ResizeDetails]",
         "isRequired": true,
         "description": "Function called when the splitter is resized."
       },
-      "sizeChangeEnd": {
-        "type": "[details: SizeChangeDetails]",
+      "resizeEnd": {
+        "type": "[details: ResizeEndDetails]",
         "isRequired": true,
         "description": "Function called when the splitter resize ends."
       },
+      "resizeStart": {
+        "type": "[]",
+        "isRequired": true,
+        "description": "Function called when the splitter resize starts."
+      },
       "update:size": {
-        "type": "[size: PanelSizeData[]]",
+        "type": "[size: number[]]",
         "isRequired": true,
         "description": "The callback fired when the model value changes."
       }
     },
     "props": {
+      "panels": { "type": "PanelData[]", "isRequired": true, "description": "The size constraints of the panels." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "defaultSize": {
-        "type": "PanelSizeData[]",
+        "type": "number[]",
         "isRequired": false,
         "description": "The initial size of the panels when rendered.\nUse when you don't need to control the size of the panels."
       },
@@ -60,17 +71,23 @@
         "isRequired": false,
         "description": "The ids of the elements in the splitter. Useful for composition."
       },
+      "keyboardResizeBy": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The number of pixels to resize the panel by when the keyboard is used."
+      },
+      "nonce": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The nonce for the injected splitter cursor stylesheet."
+      },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
         "defaultValue": "\"horizontal\"",
         "isRequired": false,
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
       },
-      "size": {
-        "type": "PanelSizeData[]",
-        "isRequired": false,
-        "description": "The controlled size data of the panels"
-      }
+      "size": { "type": "number[]", "isRequired": false, "description": "The controlled size data of the panels" }
     }
   },
   "RootProvider": {

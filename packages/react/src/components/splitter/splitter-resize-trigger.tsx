@@ -10,7 +10,7 @@ export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, Poly
 export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
 
 export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>((props, ref) => {
-  const [triggerProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['disabled', 'id', 'step'])
+  const [triggerProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['disabled', 'id'])
   const splitter = useSplitterContext()
   const mergedProps = mergeProps(splitter.getResizeTriggerProps(triggerProps), localProps)
 

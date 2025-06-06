@@ -8,7 +8,7 @@ import { runIfFn } from '../../utils/run-if-fn'
 export interface UseSplitterProps extends Optional<Omit<splitter.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseSplitterReturn extends Accessor<splitter.Api<PropTypes>> {}
 
-export const useSplitter = (props?: MaybeAccessor<UseSplitterProps>): UseSplitterReturn => {
+export const useSplitter = (props: MaybeAccessor<UseSplitterProps>): UseSplitterReturn => {
   const locale = useLocaleContext()
   const environment = useEnvironmentContext()
   const id = createUniqueId()

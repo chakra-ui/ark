@@ -1,4 +1,5 @@
 import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
+import { useFilter } from '@ark-ui/solid/locale'
 import { For, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
@@ -9,8 +10,10 @@ export const Basic = () => {
 
   const collection = createMemo(() => createListCollection({ items: items() }))
 
+  const filter = useFilter({ sensitivity: 'base' })
+
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())))
+    setItems(initialItems.filter((item) => filter().contains(item, details.inputValue)))
   }
 
   return (

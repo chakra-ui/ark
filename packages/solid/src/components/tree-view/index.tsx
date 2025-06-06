@@ -2,6 +2,8 @@ export type {
   ExpandedChangeDetails as TreeViewExpandedChangeDetails,
   FocusChangeDetails as TreeViewFocusChangeDetails,
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
+  LoadChildrenDetails as TreeViewLoadChildrenDetails,
+  LoadChildrenCompleteDetails as TreeViewLoadChildrenCompleteDetails,
 } from '@zag-js/tree-view'
 export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
 export { TreeViewBranch, type TreeViewBranchBaseProps, type TreeViewBranchProps } from './tree-view-branch'
@@ -59,5 +61,6 @@ export {
 export { TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
+export { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context'
 
 export * as TreeView from './tree-view'

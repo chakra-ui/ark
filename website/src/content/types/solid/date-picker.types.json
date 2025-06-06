@@ -221,6 +221,12 @@
         "description": "Function called when the view changes."
       },
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the date picker" },
+      "outsideDaySelectable": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether day outside the visible range can be selected."
+      },
       "parse": {
         "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
         "isRequired": false,
@@ -247,6 +253,12 @@
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "The selection mode of the calendar.\n- `single` - only one date can be selected\n- `multiple` - multiple dates can be selected\n- `range` - a range of dates can be selected"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "startOfWeek": {
         "type": "number",
@@ -302,6 +314,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",

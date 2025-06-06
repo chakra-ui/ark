@@ -8,16 +8,20 @@ const pages = defineCollection({
   pattern: ['pages/**/*.mdx', '../../../packages/*/CHANGELOG.md'],
   schema: s
     .object({
-      id: s.string(),
-      title: s.string(),
+      // TODO create a changelog collection instead
+      id: s.string().default('changelog'),
+      title: s.string().default('Changelog'),
       subtitle: s.string().optional(),
-      description: s.string(),
+      description: s.string().default('All notable changes will be documented in this file.'),
       metadata: s.metadata(),
       content: s.markdown(),
       framework: s.string().default('*'),
       status: s.string().optional(),
       toc: s.toc(),
       code: s.mdx(),
+      llm: s.custom().transform((_data, { meta }) => {
+        return meta.content
+      }),
     })
     .transform((data, { meta }) => {
       if (data.id === 'changelog') {
@@ -35,6 +39,29 @@ const pages = defineCollection({
         category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }
     }),
+})
+
+const blogs = defineCollection({
+  name: 'Blogs',
+  pattern: 'blog/**/*.mdx',
+  schema: s
+    .object({
+      title: s.string(),
+      description: s.string(),
+      date: s.isodate(),
+      author: s.string().optional(),
+      tags: s.array(s.string()).optional(),
+      image: s.string().optional(),
+      metadata: s.metadata(),
+      content: s.markdown(),
+      toc: s.toc(),
+      code: s.mdx(),
+    })
+    .transform((data, { meta }) => ({
+      ...data,
+      slug: meta.path.replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
+      category: 'blog',
+    })),
 })
 
 const showcases = defineCollection({
@@ -77,7 +104,7 @@ const types = defineCollection({
 
 export default defineConfig({
   root: join(process.cwd(), './src/content'),
-  collections: { pages, types, showcases },
+  collections: { pages, blogs, types, showcases },
   mdx: {
     rehypePlugins: [
       rehypeSlug,

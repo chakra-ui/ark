@@ -21,7 +21,7 @@ export const Enterprise = () => {
               </Text>
             </Stack>
             <Button size={{ base: 'lg', md: '2xl' }} variant="link" asChild>
-              <NextLink href="/react/docs/overview/introduction">
+              <NextLink href="/docs/overview/introduction">
                 Get started <ArrowRight />
               </NextLink>
             </Button>

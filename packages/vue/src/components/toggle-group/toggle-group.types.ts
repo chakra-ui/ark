@@ -7,6 +7,13 @@ export interface RootProps {
    */
   defaultValue?: string[]
   /**
+   * Whether the toggle group allows empty selection.
+   * **Note:** This is ignored if `multiple` is `true`.
+   *
+   * @default true
+   */
+  deselectable?: boolean
+  /**
    * Whether the toggle is disabled.
    */
   disabled?: boolean
@@ -37,7 +44,7 @@ export interface RootProps {
    */
   orientation?: toggleGroup.Orientation
   /**
-   *  Whether to use roving tab index to manage focus.
+   * Whether to use roving tab index to manage focus.
    * @default true
    */
   rovingFocus?: boolean

@@ -1,4 +1,5 @@
 import { Code2Icon, EyeIcon, LockIcon } from 'lucide-react'
+import { cookies } from 'next/headers'
 import NextLink from 'next/link'
 import { Box, Stack } from 'styled-system/jsx'
 import { hasUserPermission } from '~/app/actions'
@@ -6,7 +7,7 @@ import { Button } from '~/components/ui/button'
 import { Tabs } from '~/components/ui/tabs'
 import { Text } from '~/components/ui/text'
 import { type Example, fetchCodeExamples } from '~/lib/examples'
-import { getServerContext } from '~/lib/server-context'
+import { getFramework } from '~/lib/frameworks'
 import { CodeTabs } from './code-tabs'
 import { IFrameExample } from './iframe-example'
 
@@ -16,7 +17,7 @@ interface Props {
 
 export const ExamplePreview = async (props: Props) => {
   const { example } = props
-  const { framework } = getServerContext()
+  const framework = await getFramework()
 
   const codeExamplesAvailable = example.accessLevel === 'free' || (await hasUserPermission())
   const codeExamples = codeExamplesAvailable ? await fetchCodeExamples({ id: example.id, framework }) : []
@@ -46,7 +47,7 @@ export const ExamplePreview = async (props: Props) => {
   ) : (
     <Stack gap="3.5">
       <Button variant="outline" asChild alignSelf="flex-end" borderColor="border.muted">
-        <NextLink href="/react/plus">
+        <NextLink href="/plus">
           <LockIcon />
           Unlock Ark Plus
         </NextLink>

@@ -13,8 +13,9 @@ export const Faqs = () => {
       question: 'What do I get when I purchase Ark Plus?',
       answer: (
         <Text>
-          After purchasing a license from our payment provider, you will receive a license key. You can then claim the
-          license for yourself or share it with another person.
+          After purchasing a license from our payment provider, you will receive a license key. You can then{' '}
+          <Link href="/plus/thank-you">activate the license</Link> and access the plus{' '}
+          <Link href="/examples">example code</Link>.
         </Text>
       ),
     },

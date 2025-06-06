@@ -256,6 +256,11 @@
         "isRequired": false,
         "description": "Function called when the pointer is pressed down outside the component"
       },
+      "onSelect": {
+        "type": "(details: SelectionDetails) => void",
+        "isRequired": false,
+        "description": "Function called when an item is selected"
+      },
       "onValueChange": {
         "type": "(details: ValueChangeDetails<T>) => void",
         "isRequired": false,
@@ -313,6 +318,12 @@
         "isRequired": false,
         "description": "The behavior of the combobox input when an item is selected\n\n- `replace`: The selected item string is set as the input value\n- `clear`: The input value is cleared\n- `preserve`: The input value is preserved"
       },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -359,6 +370,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",

@@ -10,6 +10,7 @@ export interface ToggleGroupRootProps extends HTMLProps<'div'>, ToggleGroupRootB
 export const ToggleGroupRoot = (props: ToggleGroupRootProps) => {
   const [useToggleGroupProps, restProps] = createSplitProps<UseToggleGroupProps>()(props, [
     'defaultValue',
+    'deselectable',
     'disabled',
     'id',
     'ids',

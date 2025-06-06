@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
 import { Show } from 'solid-js'
+import { composeRefs } from '../../utils/compose-refs'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { usePresenceContext } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
@@ -18,7 +19,7 @@ export const TooltipContent = (props: TooltipContentProps) => {
 
   return (
     <Show when={!presenceApi().unmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
     </Show>
   )
 }

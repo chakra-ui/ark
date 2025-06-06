@@ -1,7 +1,7 @@
 import * as collapsible from '@zag-js/collapsible'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, ref, toValue, useId, watch } from 'vue'
-import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy'
@@ -25,7 +25,7 @@ export const useCollapsible = (
   emits?: EmitFn<RootEmits>,
 ): UseCollapsibleReturn => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
 
   const context = computed<collapsible.Props>(() => {

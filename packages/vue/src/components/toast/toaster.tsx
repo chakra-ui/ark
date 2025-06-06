@@ -9,7 +9,7 @@ import {
   defineComponent,
   useId,
 } from 'vue'
-import { useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import { type PolymorphicProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
@@ -21,8 +21,8 @@ export interface ToasterProps extends ToasterBaseProps, HTMLAttributes {
 
 export const Toaster = defineComponent<ToasterProps>(
   (props, { attrs, slots }) => {
-    const locale = useLocaleContext()
-    const env = useEnvironmentContext()
+    const locale = useLocaleContext(DEFAULT_LOCALE)
+    const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 
     const service = useMachine(toast.group.machine, {
       store: props.toaster,
@@ -65,10 +65,13 @@ interface ToastItemProps {
 
 const ToastItem = defineComponent<ToastItemProps>(
   (props, { slots }) => {
+    const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
+
     const machineProps = computed(() => ({
       ...props.value,
       index: props.index,
       parent: props.parent,
+      getRootNode: env?.value.getRootNode,
     }))
     const service = useMachine(toast.machine, machineProps.value)
     const api = computed(() => toast.connect(service, normalizeProps))

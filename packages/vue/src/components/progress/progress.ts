@@ -1,3 +1,4 @@
+export type { ValueChangeDetails, ValueTranslationDetails } from '@zag-js/progress'
 export {
   default as CircleRange,
   type ProgressCircleRangeBaseProps as CircleRangeBaseProps,

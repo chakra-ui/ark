@@ -23,13 +23,13 @@ export const Toaster = (props: ToasterProps) => {
     store: toasterProps.toaster,
     id: createUniqueId(),
     dir: locale()?.dir,
-    getRootNode: () => env()?.getDocument(),
+    getRootNode: env()?.getRootNode,
   }))
 
   const api = createMemo(() => toast.group.connect(service, normalizeProps))
   const toasts = createMemo(() => api().getToasts())
 
-  const mergedProps = mergeProps(api().getGroupProps(), localProps)
+  const mergedProps = mergeProps(() => api().getGroupProps(), localProps)
 
   return (
     <ark.div {...mergedProps}>
@@ -52,11 +52,14 @@ interface ToastActorProps {
 }
 
 const ToastActor = (props: ToastActorProps) => {
+  const env = useEnvironmentContext()
   const localProps = createMemo(() => ({
     ...props.value(),
     parent: props.parent,
-    index: props.index,
+    index: props.index(),
+    getRootNode: env().getRootNode,
   }))
+
   const service = useMachine(toast.machine, localProps)
   const api = createMemo(() => toast.connect(service, normalizeProps))
   return <ToastProvider value={api}>{props.children(props.value)}</ToastProvider>

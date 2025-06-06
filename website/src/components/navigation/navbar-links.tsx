@@ -1,13 +1,9 @@
 'use client'
-import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cva } from 'styled-system/css'
 import { HStack, styled } from 'styled-system/jsx'
-
-interface Props {
-  framework: string
-}
+import { navLinks } from '~/lib/nav-links'
 
 const link = cva({
   base: {
@@ -38,31 +34,21 @@ const link = cva({
 
 const NavbarLink = styled(NextLink, link)
 
-export const NavbarLinks = (props: Props) => {
-  const { framework } = props
+export const NavbarLinks = () => {
   const pathname = usePathname()
 
   return (
     <HStack gap="6" me="2">
-      <NavbarLink
-        href={`/${framework}/docs/overview/introduction`}
-        aria-current={pathname.startsWith(`/${framework}/docs`) ? 'page' : undefined}
-      >
-        Docs
-      </NavbarLink>
-      <NavbarLink
-        href={`/${framework}/examples`}
-        aria-current={pathname.startsWith(`/${framework}/examples`) ? 'page' : undefined}
-      >
-        Examples
-      </NavbarLink>
-      <NavbarLink
-        href={`/${framework}/plus`}
-        aria-current={pathname.startsWith(`/${framework}/plus`) ? 'page' : undefined}
-      >
-        Ark Plus
-        <SparklesIcon />
-      </NavbarLink>
+      {navLinks.map((link) => (
+        <NavbarLink
+          key={link.href}
+          href={link.href}
+          aria-current={pathname.startsWith(link.hrefPrefix) ? 'page' : undefined}
+        >
+          {link.label}
+          {link.icon && <link.icon />}
+        </NavbarLink>
+      ))}
     </HStack>
   )
 }

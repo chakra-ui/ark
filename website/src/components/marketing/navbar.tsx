@@ -1,9 +1,9 @@
 import { SiGithub } from '@icons-pack/react-simple-icons'
-import { SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Flex, HStack } from 'styled-system/jsx'
 import { IconButton } from '~/components/ui/icon-button'
+import { navLinks } from '~/lib/nav-links'
 import { ColorModeButton } from '../color-mode-button'
 import { Logo } from '../logo'
 
@@ -23,60 +23,36 @@ export const Navbar = () => (
         <NextLink href="/" aria-label="Back home">
           <Logo />
         </NextLink>
+
         <HStack gap="8">
-          <NextLink
-            href="/react/docs/overview/introduction"
-            className={css({
-              textStyle: 'sm',
-              fontWeight: 'medium',
-              color: 'fg.emphasized',
-              _hover: {
-                color: 'colorPalette.default',
-              },
-            })}
-          >
-            Docs
-          </NextLink>
-          <NextLink
-            href="/react/examples"
-            className={css({
-              textStyle: 'sm',
-              fontWeight: 'medium',
-              color: 'fg.emphasized',
-              _hover: {
-                color: 'colorPalette.default',
-              },
-              display: {
-                base: 'none',
-                md: 'block',
-              },
-            })}
-          >
-            Examples
-          </NextLink>
-          <NextLink
-            href="/react/plus"
-            className={css({
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1.5',
-              textStyle: 'sm',
-              fontWeight: 'medium',
-              color: 'fg.emphasized',
-              whiteSpace: 'nowrap',
-              _hover: {
-                color: 'colorPalette.default',
-              },
-              '& svg': {
-                width: '4',
-                height: '4',
-                color: 'colorPalette.default',
-              },
-            })}
-          >
-            Ark Plus <SparklesIcon />
-          </NextLink>
+          {navLinks.map((link) => (
+            <NextLink
+              key={link.href}
+              href={link.href}
+              className={css({
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1.5',
+                textStyle: 'sm',
+                fontWeight: 'medium',
+                color: 'fg.emphasized',
+                whiteSpace: 'nowrap',
+                _hover: {
+                  color: 'colorPalette.default',
+                },
+                '& svg': {
+                  width: '4',
+                  height: '4',
+                  color: 'colorPalette.default',
+                },
+              })}
+            >
+              {link.label}
+              {link.icon && <link.icon />}
+            </NextLink>
+          ))}
         </HStack>
+
         <HStack gap="1">
           <IconButton asChild variant="ghost" hideBelow="sm">
             <a href="https://github.com/chakra-ui/ark" target="_blank" rel="noreferrer">

@@ -115,6 +115,11 @@ export interface RootProps {
    */
   open?: boolean
   /**
+   * Whether day outside the visible range can be selected.
+   * @default false
+   */
+  outsideDaySelectable?: boolean
+  /**
    * Function to parse the date from the input back to a DateValue.
    */
   parse?: (value: string, details: datePicker.LocaleDetails) => datePicker.DateValue | undefined

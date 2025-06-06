@@ -73,7 +73,8 @@
           "types": "./dist/components/*/index.d.cts",
           "default": "./dist/components/*/index.cjs"
         }
-      }
+      },
+      "./package.json": "./package.json"
     }
   }
 }

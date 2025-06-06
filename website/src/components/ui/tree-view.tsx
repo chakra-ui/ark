@@ -1,13 +1,8 @@
 'use client'
-import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
+import { useTreeViewNodeContext } from '@ark-ui/react'
+import { ChevronRightIcon, FileIcon, FolderIcon, FolderOpenIcon } from 'lucide-react'
 import { forwardRef } from 'react'
 import * as ArkTreeView from './primitives/tree-view'
-
-interface Node {
-  id: string
-  name: string
-  children?: Node[]
-}
 
 export const TreeView = forwardRef<HTMLDivElement, ArkTreeView.RootProps>((props, ref) => {
   return (
@@ -24,6 +19,11 @@ export const TreeView = forwardRef<HTMLDivElement, ArkTreeView.RootProps>((props
 
 TreeView.displayName = 'TreeView'
 
+function BranchIcon() {
+  const nodeState = useTreeViewNodeContext()
+  return nodeState.expanded ? <FolderOpenIcon /> : <FolderIcon />
+}
+
 const TreeNode = (props: ArkTreeView.NodeProviderProps) => {
   const { node, indexPath } = props
   return (
@@ -31,12 +31,12 @@ const TreeNode = (props: ArkTreeView.NodeProviderProps) => {
       {node.children ? (
         <ArkTreeView.Branch>
           <ArkTreeView.BranchControl>
-            <ArkTreeView.BranchText>
-              <FolderIcon /> {node.name}
-            </ArkTreeView.BranchText>
             <ArkTreeView.BranchIndicator>
               <ChevronRightIcon />
             </ArkTreeView.BranchIndicator>
+            <ArkTreeView.BranchText>
+              <BranchIcon /> {node.name}
+            </ArkTreeView.BranchText>
           </ArkTreeView.BranchControl>
           <ArkTreeView.BranchContent>
             <ArkTreeView.BranchIndentGuide />
@@ -48,9 +48,6 @@ const TreeNode = (props: ArkTreeView.NodeProviderProps) => {
         </ArkTreeView.Branch>
       ) : (
         <ArkTreeView.Item>
-          <ArkTreeView.ItemIndicator>
-            <CheckSquareIcon />
-          </ArkTreeView.ItemIndicator>
           <ArkTreeView.ItemText>
             <FileIcon />
             {node.name}

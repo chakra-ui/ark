@@ -130,6 +130,7 @@
         "description": "Whether clicking on a branch should open it or not"
       },
       "focusedValue": { "type": "string", "isRequired": false, "description": "The id of the focused node" },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; tree: string; label: string; node(value: string): string }>",
         "isRequired": false,

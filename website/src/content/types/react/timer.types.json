@@ -65,7 +65,7 @@
       },
       "interval": {
         "type": "number",
-        "defaultValue": "250",
+        "defaultValue": "1000",
         "isRequired": false,
         "description": "The interval in milliseconds to update the timer count."
       },

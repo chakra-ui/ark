@@ -55,11 +55,7 @@
         "isRequired": false,
         "description": "The initial value to be copied to the clipboard when rendered.\nUse when you don't need to control the value of the clipboard."
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; input: string; label: string }>",
         "isRequired": false,
@@ -81,20 +77,13 @@
         "isRequired": false,
         "description": "The timeout for the copy operation"
       },
-      "value": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The controlled value of the clipboard"
-      }
+      "value": { "type": "string", "isRequired": false, "description": "The controlled value of the clipboard" }
     },
     "element": "HTMLDivElement"
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseClipboardReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseClipboardReturn", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,

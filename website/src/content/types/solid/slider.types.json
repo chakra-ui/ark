@@ -46,10 +46,7 @@
   },
   "Marker": {
     "props": {
-      "value": {
-        "type": "number",
-        "isRequired": true
-      },
+      "value": { "type": "number", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,
@@ -88,11 +85,7 @@
         "isRequired": false,
         "description": "The initial value of the slider when rendered.\nUse when you don't need to control the value of the slider."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the slider is disabled"
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the slider is disabled" },
       "form": {
         "type": "string",
         "isRequired": false,
@@ -103,21 +96,13 @@
         "isRequired": false,
         "description": "Function that returns a human readable value for the slider thumb"
       },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The unique identifier of the machine."
-      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  thumb(index: number): string\n  hiddenInput(index: number): string\n  control: string\n  track: string\n  range: string\n  label: string\n  valueText: string\n  marker(index: number): string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the slider. Useful for composition."
       },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the slider is invalid"
-      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the slider is invalid" },
       "max": {
         "type": "number",
         "defaultValue": "100",
@@ -134,7 +119,7 @@
         "type": "number",
         "defaultValue": "0",
         "isRequired": false,
-        "description": "The minimum permitted steps between multiple thumbs."
+        "description": "The minimum permitted steps between multiple thumbs.\n\n`minStepsBetweenThumbs` * `step` should reflect the gap between the thumbs.\n\n- `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10`\n- `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20`"
       },
       "name": {
         "type": "string",
@@ -163,16 +148,12 @@
         "description": "The orientation of the slider"
       },
       "origin": {
-        "type": "'start' | 'center'",
+        "type": "'center' | 'start' | 'end'",
         "defaultValue": "\"start\"",
         "isRequired": false,
-        "description": "The origin of the slider range\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
+        "description": "The origin of the slider range. The track is filled from the origin\nto the thumb for single values.\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)\n- \"end\": Useful when the value represents an offset from the end"
       },
-      "readOnly": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Whether the slider is read-only"
-      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the slider is read-only" },
       "step": {
         "type": "number",
         "defaultValue": "1",
@@ -190,19 +171,12 @@
         "isRequired": false,
         "description": "The slider thumbs dimensions"
       },
-      "value": {
-        "type": "number[]",
-        "isRequired": false,
-        "description": "The controlled value of the slider"
-      }
+      "value": { "type": "number[]", "isRequired": false, "description": "The controlled value of the slider" }
     }
   },
   "RootProvider": {
     "props": {
-      "value": {
-        "type": "UseSliderReturn",
-        "isRequired": true
-      },
+      "value": { "type": "UseSliderReturn", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -212,19 +186,13 @@
   },
   "Thumb": {
     "props": {
-      "index": {
-        "type": "number",
-        "isRequired": true
-      },
+      "index": { "type": "number", "isRequired": true },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "name": {
-        "type": "string",
-        "isRequired": false
-      }
+      "name": { "type": "string", "isRequired": false }
     }
   },
   "Track": {

@@ -1,12 +1,22 @@
 import { Combobox, createListCollection } from '@ark-ui/react/combobox'
 import { Field } from '@ark-ui/react/field'
+import { useFilter } from '@ark-ui/react/locale'
+import { useMemo, useState } from 'react'
 
 export const WithField = (props: Field.RootProps) => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const [items, setItems] = useState(initialItems)
+
+  const { contains } = useFilter({ sensitivity: 'base' })
+
+  const collection = useMemo(() => createListCollection({ items }), [items])
+
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+    setItems(initialItems.filter((item) => contains(item, details.inputValue)))
+  }
 
   return (
     <Field.Root {...props}>
-      <Combobox.Root collection={collection}>
+      <Combobox.Root collection={collection} onInputValueChange={handleInputChange}>
         <Combobox.Label>Label</Combobox.Label>
         <Combobox.Control>
           <Combobox.Input />
@@ -29,3 +39,5 @@ export const WithField = (props: Field.RootProps) => {
     </Field.Root>
   )
 }
+
+const initialItems = ['React', 'Solid', 'Vue']

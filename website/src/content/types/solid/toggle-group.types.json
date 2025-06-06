@@ -22,6 +22,12 @@
         "isRequired": false,
         "description": "The initial selected value of the toggle group when rendered.\nUse when you don't need to control the selected value of the toggle group."
       },
+      "deselectable": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the toggle group allows empty selection.\n**Note:** This is ignored if `multiple` is `true`."
+      },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
       "ids": {
         "type": "Partial<{ root: string; item(value: string): string }>",

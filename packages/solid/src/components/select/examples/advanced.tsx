@@ -1,14 +1,16 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
-import { Index, Portal } from 'solid-js/web'
+import { For, Portal } from 'solid-js/web'
 
 export const Advanced = () => {
   const collection = createListCollection({
     items: [
-      { label: 'React', value: 'react' },
-      { label: 'Solid', value: 'solid' },
-      { label: 'Vue', value: 'vue' },
-      { label: 'Svelte', value: 'svelte', disabled: true },
+      { label: 'React', value: 'react', type: 'JS' },
+      { label: 'Solid', value: 'solid', type: 'JS' },
+      { label: 'Vue', value: 'vue', type: 'JS' },
+      { label: 'Panda', value: 'panda', type: 'CSS' },
+      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
     ],
+    groupBy: (item) => item.type,
   })
   return (
     <Select.Root collection={collection}>
@@ -22,17 +24,21 @@ export const Advanced = () => {
       <Portal>
         <Select.Positioner>
           <Select.Content>
-            <Select.ItemGroup>
-              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              <Index each={collection.items}>
-                {(item) => (
-                  <Select.Item item={item()}>
-                    <Select.ItemText>{item().label}</Select.ItemText>
-                    <Select.ItemIndicator>✓</Select.ItemIndicator>
-                  </Select.Item>
-                )}
-              </Index>
-            </Select.ItemGroup>
+            <For each={collection.group()}>
+              {([type, group]) => (
+                <Select.ItemGroup>
+                  <Select.ItemGroupLabel>{type}</Select.ItemGroupLabel>
+                  <For each={group}>
+                    {(item) => (
+                      <Select.Item item={item}>
+                        <Select.ItemText>{item.label}</Select.ItemText>
+                        <Select.ItemIndicator>✓</Select.ItemIndicator>
+                      </Select.Item>
+                    )}
+                  </For>
+                </Select.ItemGroup>
+              )}
+            </For>
           </Select.Content>
         </Select.Positioner>
       </Portal>

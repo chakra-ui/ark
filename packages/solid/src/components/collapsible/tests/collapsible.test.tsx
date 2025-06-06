@@ -1,10 +1,16 @@
 import { render, screen, waitFor } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
+import { ChevronDownIcon } from 'lucide-solid'
 import { Collapsible } from '../'
 
 const ComponentUnderTest = (props: Collapsible.RootProps) => (
   <Collapsible.Root {...props}>
-    <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+    <Collapsible.Trigger>
+      Toggle
+      <Collapsible.Indicator>
+        <ChevronDownIcon />
+      </Collapsible.Indicator>
+    </Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>
   </Collapsible.Root>
 )

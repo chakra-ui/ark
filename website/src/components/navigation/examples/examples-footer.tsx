@@ -4,7 +4,6 @@ import { Grid, Stack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import type { Example } from '~/lib/examples'
-import { getServerContext } from '~/lib/server-context'
 import { pages } from '.velite'
 
 interface Props {
@@ -13,7 +12,6 @@ interface Props {
 
 export const ExamplesFooter = (props: Props) => {
   const { example } = props
-  const { framework } = getServerContext()
 
   return (
     <Stack gap="12">
@@ -23,7 +21,7 @@ export const ExamplesFooter = (props: Props) => {
           {example.relatedComponents.map((component) => {
             const page = pages.find((page) => page.id === component)
             return (
-              <NextLink key={component} href={`/${framework}/docs/components/${component}`} className={link}>
+              <NextLink key={component} href={`/docs/components/${component}`} className={link}>
                 <Text fontWeight="medium">{page?.title}</Text>
                 <Text color="fg.muted" textStyle="sm">
                   {page?.description}
@@ -39,7 +37,7 @@ export const ExamplesFooter = (props: Props) => {
           <Grid columns={{ base: 1, sm: 2, md: 3 }} gap="8">
             {example.relatedExamples.map((relatedExample) => {
               return (
-                <NextLink key={relatedExample.id} href={`/${framework}/examples/${relatedExample.id}`} className={link}>
+                <NextLink key={relatedExample.id} href={`/examples/${relatedExample.id}`} className={link}>
                   <Text fontWeight="medium">{relatedExample?.title}</Text>
                   <Text color="fg.muted" textStyle="sm">
                     {relatedExample?.description}

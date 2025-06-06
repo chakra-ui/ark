@@ -24,10 +24,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "modelValue": {
-        "type": "any",
-        "isRequired": false
-      }
+      "modelValue": { "type": "any", "isRequired": false }
     }
   },
   "Label": {
@@ -55,36 +52,16 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is disabled."
-      },
-      "id": {
-        "type": "string",
-        "isRequired": false,
-        "description": "The id of the field."
-      },
-      "ids": {
-        "type": "ElementIds",
-        "isRequired": false,
-        "description": "The ids of the field parts."
-      },
-      "invalid": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is invalid."
-      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
+      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
       "readOnly": {
         "type": "boolean",
         "isRequired": false,
         "description": "Indicates whether the field is read-only."
       },
-      "required": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Indicates whether the field is required."
-      }
+      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
     }
   },
   "RootProvider": {
@@ -107,10 +84,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "modelValue": {
-        "type": "any",
-        "isRequired": false
-      }
+      "modelValue": { "type": "any", "isRequired": false }
     }
   },
   "Textarea": {
@@ -126,10 +100,7 @@
         "isRequired": false,
         "description": "Whether the textarea should autoresize"
       },
-      "modelValue": {
-        "type": "string | number | readonly string[]",
-        "isRequired": false
-      }
+      "modelValue": { "type": "string | number | readonly string[]", "isRequired": false }
     }
   }
 }

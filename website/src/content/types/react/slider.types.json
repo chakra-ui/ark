@@ -126,7 +126,7 @@
         "type": "number",
         "defaultValue": "0",
         "isRequired": false,
-        "description": "The minimum permitted steps between multiple thumbs."
+        "description": "The minimum permitted steps between multiple thumbs.\n\n`minStepsBetweenThumbs` * `step` should reflect the gap between the thumbs.\n\n- `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10`\n- `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20`"
       },
       "name": {
         "type": "string",
@@ -155,10 +155,10 @@
         "description": "The orientation of the slider"
       },
       "origin": {
-        "type": "'center' | 'start'",
+        "type": "'center' | 'end' | 'start'",
         "defaultValue": "\"start\"",
         "isRequired": false,
-        "description": "The origin of the slider range\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)"
+        "description": "The origin of the slider range. The track is filled from the origin\nto the thumb for single values.\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)\n- \"end\": Useful when the value represents an offset from the end"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the slider is read-only" },
       "step": {

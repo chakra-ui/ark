@@ -8,7 +8,7 @@
   "lockFileMaintenance": {
     "enabled": true
   },
-  "prConcurrentLimit": 5,
+  "prConcurrentLimit": 20,
   "prHourlyLimit": 0,
   "packageRules": [
     {
@@ -18,7 +18,7 @@
       "groupSlug": "all-minor-patch"
     },
     {
-      "matchPackageNames": ["@testing-library/vue"],
+      "matchPackageNames": ["@testing-library/vue", "storybook-solidjs", "storybook-solidjs-vite"],
       "enabled": false
     }
   ]

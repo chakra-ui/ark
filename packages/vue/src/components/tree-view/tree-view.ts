@@ -1,4 +1,10 @@
-export type { ExpandedChangeDetails, FocusChangeDetails, SelectionChangeDetails } from '@zag-js/tree-view'
+export type {
+  ExpandedChangeDetails,
+  FocusChangeDetails,
+  SelectionChangeDetails,
+  LoadChildrenDetails,
+  LoadChildrenCompleteDetails,
+} from '@zag-js/tree-view'
 export {
   default as BranchContent,
   type TreeViewBranchContentBaseProps as BranchContentBaseProps,

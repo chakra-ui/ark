@@ -1,5 +1,5 @@
 import { codeToHtml } from 'shiki'
-import { getServerContext } from '~/lib/server-context'
+import { getFramework } from '~/lib/frameworks'
 import { CodeTabs } from './code-tabs'
 
 export const InstallCmd = async () => {
@@ -10,17 +10,16 @@ export const InstallCmd = async () => {
 
 type PackageManger = 'npm' | 'pnpm' | 'yarn' | 'bun'
 
-const getInstallCmds = async () => {
-  const serverContext = getServerContext()
-  const framework = serverContext.framework
-  const pkgmanagers = ['npm', 'pnpm', 'yarn', 'bun'] as const
+export const cmdMap: Record<PackageManger, string> = {
+  npm: 'npm install',
+  pnpm: 'pnpm install',
+  yarn: 'yarn add',
+  bun: 'bun add',
+}
 
-  const cmdMap: Record<PackageManger, string> = {
-    npm: 'npm install',
-    pnpm: 'pnpm install',
-    yarn: 'yarn add',
-    bun: 'bun add',
-  }
+const getInstallCmds = async () => {
+  const framework = await getFramework()
+  const pkgmanagers = ['npm', 'pnpm', 'yarn', 'bun'] as const
 
   return Promise.all(
     pkgmanagers.map(async (pkgManager) => {

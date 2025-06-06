@@ -1,6 +1,6 @@
 import { Field } from '@ark-ui/solid/field'
 
-export const Textarea = () => {
+export const TextareaAutoresize = () => {
   return (
     <Field.Root>
       <Field.Label>Label</Field.Label>

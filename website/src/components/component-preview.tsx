@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+import { Suspense, lazy, useMemo } from 'react'
 import { Flex } from 'styled-system/jsx'
 import { ExamplesPreview } from './examples-preview'
 
@@ -6,10 +6,23 @@ interface Props {
   id: string
 }
 
+function dashCase(string: string) {
+  return string.replace(/[A-Z]/g, ' $&').toLowerCase().trim().split(' ').join('-')
+}
+
 export const ComponentPreview = (props: Props) => {
   const { id } = props
-  // @ts-expect-error
-  const Demo = dynamic(() => import('~/demos').then((mod) => mod[id]).catch(() => null))
+
+  const Demo = useMemo(() => {
+    return lazy(() =>
+      import(`~/demos/${dashCase(id)}.demo.tsx`)
+        .then((mod) => ({ default: mod.Demo }))
+        .catch((error) => {
+          console.error(`Failed to load demo for ${id}:`, error)
+          return { default: () => <div>Demo not found</div> }
+        }),
+    )
+  }, [id])
 
   return (
     <>
@@ -24,7 +37,9 @@ export const ComponentPreview = (props: Props) => {
         my="12"
       >
         <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
-          <Demo />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Demo />
+          </Suspense>
         </Flex>
       </Flex>
       <ExamplesPreview />

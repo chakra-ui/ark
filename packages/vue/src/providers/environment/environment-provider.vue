@@ -11,7 +11,7 @@ export interface EnvironmentProviderProps {
 const props = defineProps<EnvironmentProviderProps>()
 const spanRef = ref<HTMLSpanElement | null>(null)
 
-const getRootNode = () => runIfFn(props.value) ?? spanRef.value?.ownerDocument ?? document
+const getRootNode = () => runIfFn(props.value) ?? spanRef.value?.getRootNode() ?? document
 
 const environment = computed(() => ({
   getRootNode,

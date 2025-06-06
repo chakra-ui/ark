@@ -1,8 +1,11 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
+import type { ColorStringFormat } from '@zag-js/color-utils'
+import { type HTMLAttributes, computed } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface ColorPickerValueTextBaseProps extends PolymorphicProps {}
+export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
+  format?: ColorStringFormat
+}
 export interface ColorPickerValueTextProps
   extends ColorPickerValueTextBaseProps,
     /**
@@ -12,21 +15,25 @@ export interface ColorPickerValueTextProps
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils'
 
-defineProps<ColorPickerValueTextProps>()
+const props = defineProps<ColorPickerValueTextProps>()
 const colorPicker = useColorPickerContext()
 const slots = defineSlots()
 
 useForwardExpose()
+
+const valueAsString = computed(() =>
+  props.format ? colorPicker.value.value.toString(props.format) : colorPicker.value.valueAsString,
+)
 </script>
 
 <template>
   <ark.span v-bind="colorPicker.getValueTextProps()" :as-child="asChild">
     <slot>
-      {{ slots.default?.() || colorPicker.valueAsString }}
+      {{ slots.default?.() || valueAsString }}
     </slot>
   </ark.span>
 </template>

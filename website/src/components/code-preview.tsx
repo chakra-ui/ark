@@ -13,7 +13,7 @@ export const CodePreview = (props: Props) => {
       <Box position="absolute" top="2" right="3" className="dark">
         <CopyToClipboardButton content={code} />
       </Box>
-      <Box maxH="xl" overflow="auto" p="4" dangerouslySetInnerHTML={{ __html: html }} />
+      <Box maxH="xl" overflow="auto" p="4" colorScheme="dark" dangerouslySetInnerHTML={{ __html: html }} />
     </Box>
   )
 }

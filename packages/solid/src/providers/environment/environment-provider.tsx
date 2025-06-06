@@ -10,7 +10,7 @@ export interface EnvironmentProviderProps {
 
 export const EnvironmentProvider = (props: EnvironmentProviderProps) => {
   const [spanRef, setSpanRef] = createSignal<HTMLSpanElement>()
-  const getRootNode = () => runIfFn(props.value) ?? spanRef()?.ownerDocument ?? document
+  const getRootNode = () => runIfFn(props.value) ?? spanRef()?.getRootNode() ?? document
 
   const environment = createMemo(() => ({
     getRootNode,

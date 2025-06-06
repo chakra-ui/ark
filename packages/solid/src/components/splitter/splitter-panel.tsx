@@ -9,7 +9,7 @@ export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps<'di
 export interface SplitterPanelProps extends Assign<HTMLProps<'div'>, SplitterPanelBaseProps> {}
 
 export const SplitterPanel = (props: SplitterPanelProps) => {
-  const [panelProps, restProps] = createSplitProps<PanelProps>()(props, ['id', 'snapSize'])
+  const [panelProps, restProps] = createSplitProps<PanelProps>()(props, ['id'])
   const api = useSplitterContext()
   const mergedProps = mergeProps(() => api().getPanelProps(panelProps), restProps)
 

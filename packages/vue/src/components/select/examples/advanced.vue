@@ -4,11 +4,13 @@ import { ChevronDownIcon } from 'lucide-vue-next'
 
 const collection = createListCollection({
   items: [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
+    { label: 'React', value: 'react', type: 'JS' },
+    { label: 'Solid', value: 'solid', type: 'JS' },
+    { label: 'Vue', value: 'vue', type: 'JS' },
+    { label: 'Panda', value: 'panda', type: 'CSS' },
+    { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
   ],
+  groupBy: (item) => item.type,
 })
 </script>
 
@@ -27,9 +29,9 @@ const collection = createListCollection({
     <Teleport to="body">
       <Select.Positioner>
         <Select.Content>
-          <Select.ItemGroup>
-            <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Select.ItemGroup v-for="[type, group] in collection.group()" :key="type">
+            <Select.ItemGroupLabel>{{ type }}</Select.ItemGroupLabel>
+            <Select.Item v-for="item in group" :key="item.value" :item="item">
               <Select.ItemText>{{ item.label }}</Select.ItemText>
               <Select.ItemIndicator>✓</Select.ItemIndicator>
             </Select.Item>

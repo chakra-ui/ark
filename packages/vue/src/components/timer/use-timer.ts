@@ -1,7 +1,7 @@
 import * as timer from '@zag-js/timer'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { useEnvironmentContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import type { RootEmits } from './timer.types'
@@ -11,7 +11,7 @@ export interface UseTimerReturn extends ComputedRef<timer.Api<PropTypes>> {}
 
 export const useTimer = (props: MaybeRef<UseTimerProps>, emit?: EmitFn<RootEmits>): UseTimerReturn => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
 
   const context = computed<timer.Props>(() => {
     const localProps = toValue<UseTimerProps>(props)

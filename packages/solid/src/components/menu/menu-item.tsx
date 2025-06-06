@@ -1,24 +1,38 @@
 import type { ItemProps } from '@zag-js/menu'
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
+import { createEffect, createMemo, onCleanup } from 'solid-js'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 
-export interface MenuItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
-export interface MenuItemProps extends HTMLProps<'div'>, MenuItemBaseProps {}
+interface ItemBaseProps extends ItemProps {
+  /**
+   * The function to call when the item is selected
+   */
+  onSelect?: VoidFunction
+}
+
+export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div'> {}
+export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProps> {}
 
 export const MenuItem = (props: MenuItemProps) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, [
+  const [itemProps, localProps] = createSplitProps<ItemBaseProps>()(props, [
     'closeOnSelect',
     'disabled',
     'value',
     'valueText',
+    'onSelect',
   ])
   const context = useMenuContext()
   const mergedProps = mergeProps(() => context().getItemProps(itemProps), localProps)
   const itemState = createMemo(() => context().getItemState(itemProps))
+
+  createEffect(() => {
+    const cleanup = context().addItemListener({ id: itemState().id, onSelect: itemProps.onSelect })
+    onCleanup(() => cleanup?.())
+  })
 
   return (
     <MenuItemProvider value={itemState}>

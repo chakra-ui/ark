@@ -1,7 +1,7 @@
 import * as checkbox from '@zag-js/checkbox'
 import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
-import { DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
+import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
 import { cleanProps } from '../../utils'
 import { useFieldContext } from '../field'
@@ -13,7 +13,7 @@ export interface UseCheckboxReturn extends ComputedRef<checkbox.Api<PropTypes>> 
 
 export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitFn<RootEmits>) => {
   const id = useId()
-  const env = useEnvironmentContext()
+  const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
   const field = useFieldContext()
 
@@ -24,7 +24,7 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
   })
 
   const context = computed<checkbox.Props>(() => {
-    const propsValue = toValue<UseCheckboxProps>(props)
+    const localProps = toValue<UseCheckboxProps>(computedProps)
 
     return {
       id,
@@ -38,11 +38,11 @@ export const useCheckbox = (props: MaybeRef<UseCheckboxProps> = {}, emit?: EmitF
       required: field?.value.required,
       dir: locale.value.dir,
       getRootNode: env?.value.getRootNode,
-      ...cleanProps(computedProps.value),
+      ...cleanProps(localProps),
       onCheckedChange(details) {
         emit?.('checkedChange', details)
         emit?.('update:checked', details.checked)
-        propsValue.onCheckedChange?.(details)
+        localProps.onCheckedChange?.(details)
       },
     }
   })

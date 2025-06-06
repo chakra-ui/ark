@@ -34,6 +34,8 @@ const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: Reac
     'selectedValue',
     'selectionMode',
     'typeahead',
+    'loadChildren',
+    'onLoadChildrenComplete',
   ])
 
   const treeView = useTreeView(useTreeViewProps)

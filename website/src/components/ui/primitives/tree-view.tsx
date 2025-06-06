@@ -7,24 +7,11 @@ import type { ComponentProps, HTMLStyledProps } from 'styled-system/types'
 import { createStyleContext } from '~/lib/create-style-context'
 
 export const treeView = sva({
-  className: 'treeView',
   slots: treeViewAnatomy.keys(),
   base: {
     root: {
       width: 'full',
-    },
-    branch: {
-      "&[data-depth='1'] > [data-part='branch-content']": {
-        _before: {
-          bg: 'border.default',
-          content: '""',
-          height: 'full',
-          left: '3',
-          position: 'absolute',
-          width: '1px',
-          zIndex: '1',
-        },
-      },
+      color: 'fg.default',
     },
     branchContent: {
       position: 'relative',
@@ -39,28 +26,34 @@ export const treeView = sva({
         animation: 'collapse-out',
       },
     },
+    branchIndentGuide: {
+      height: '100%',
+      width: '1px',
+      bg: 'border.default',
+      position: 'absolute',
+      left: 'calc((var(--depth) - 1) * 29px)',
+      "&[data-depth='1']": {
+        left: '3',
+      },
+    },
     branchControl: {
       alignItems: 'center',
       borderRadius: 'l2',
       display: 'flex',
-      fontWeight: 'medium',
       gap: '1.5',
       ps: 'calc((var(--depth) - 1) * 22px)',
       py: '1.5',
-      justifyContent: 'space-between',
-      transitionDuration: 'normal',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
+      cursor: 'pointer',
+      userSelect: 'none',
       "&[data-depth='1']": {
         ps: '1',
-      },
-      "&[data-depth='1'] > [data-part='branch-text'] ": {
-        fontWeight: 'semibold',
-        color: 'fg.default',
       },
       _hover: {
         background: 'gray.a2',
         color: 'fg.default',
+      },
+      _selected: {
+        color: 'colorPalette.default!',
       },
     },
     branchIndicator: {
@@ -69,11 +62,7 @@ export const treeView = sva({
       transitionDuration: 'normal',
       transitionProperty: 'transform',
       transitionTimingFunction: 'default',
-      '& svg': {
-        fontSize: 'md',
-        width: '4',
-        height: '4',
-      },
+
       _open: {
         transform: 'rotate(90deg)',
       },
@@ -84,44 +73,19 @@ export const treeView = sva({
       gap: '2',
       borderRadius: 'l2',
       cursor: 'pointer',
-      fontWeight: 'medium',
       position: 'relative',
       ps: 'calc(((var(--depth) - 1) * 22px) + 22px)',
       py: '1.5',
-      transitionDuration: 'normal',
-      transitionProperty: 'background, color',
-      transitionTimingFunction: 'default',
       "&[data-depth='1']": {
         ps: '6',
-        fontWeight: 'semibold',
         color: 'fg.default',
-        _selected: {
-          _before: {
-            bg: 'transparent',
-          },
-        },
       },
       _hover: {
         background: 'gray.a2',
         color: 'fg.default',
       },
       _selected: {
-        background: 'colorPalette.a2',
-        color: 'colorPalette.text',
-        _hover: {
-          background: 'colorPalette.a2',
-          color: 'colorPalette.text',
-        },
-        _before: {
-          content: '""',
-          position: 'absolute',
-          left: '3',
-          top: '0',
-          width: '2px',
-          height: 'full',
-          bg: 'colorPalette.default',
-          zIndex: '1',
-        },
+        color: 'colorPalette.default!',
       },
     },
     itemText: {
@@ -134,11 +98,20 @@ export const treeView = sva({
       alignItems: 'center',
       gap: '2',
     },
+    itemIndicator: {
+      _icon: {
+        width: '3',
+        height: '3',
+      },
+    },
     tree: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '3',
       textStyle: 'sm',
+      '& svg': {
+        width: '4',
+        height: '4',
+      },
     },
   },
 })

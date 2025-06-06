@@ -24,7 +24,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>((props, ref) => 
     store: toaster,
     id: useId(),
     dir: locale?.dir,
-    getRootNode: () => env?.getDocument(),
+    getRootNode: env?.getRootNode,
   })
 
   const api = toast.group.connect(service, normalizeProps)
@@ -52,11 +52,14 @@ interface ToastActorProps {
 }
 
 const ToastActor = (props: ToastActorProps) => {
+  const env = useEnvironmentContext()
   const localProps = {
     ...props.value,
     parent: props.parent,
     index: props.index,
+    getRootNode: env.getRootNode,
   }
+
   const service = useMachine(toast.machine, { ...localProps })
   const api = toast.connect(service, normalizeProps)
   return <ToastProvider value={api}>{props.children(props.value)}</ToastProvider>

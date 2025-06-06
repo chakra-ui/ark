@@ -276,6 +276,12 @@
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is read-only" },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is required" },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -313,6 +319,12 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
       },
       "unmountOnExit": {
         "type": "boolean",
@@ -405,7 +417,8 @@
         "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "format": { "type": "ColorStringFormat", "isRequired": false }
     }
   },
   "View": {
