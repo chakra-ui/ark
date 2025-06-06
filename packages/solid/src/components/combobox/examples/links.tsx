@@ -1,14 +1,21 @@
 import { Combobox, createListCollection } from '@ark-ui/solid/combobox'
+import { useFilter } from '@ark-ui/solid/locale'
 import { For, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
 export const Links = () => {
-  const [items, setItems] = createSignal(frameworks)
+  const [items, setItems] = createSignal(initialItems)
 
-  const collection = createMemo(() => createListCollection({ items: items() }))
+  const collection = createMemo(() =>
+    createListCollection({
+      items: items(),
+    }),
+  )
+
+  const filter = useFilter({ sensitivity: 'base' })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(frameworks.filter((item) => item.label.toLowerCase().includes(details.inputValue.toLowerCase())))
+    setItems(initialItems.filter((item) => filter().contains(item.label, details.inputValue)))
   }
 
   return (
@@ -35,7 +42,7 @@ export const Links = () => {
   )
 }
 
-const frameworks = [
+const initialItems = [
   { label: 'React', href: 'https://react.dev', value: 'react' },
   { label: 'Solid', href: 'https://solidjs.com', value: 'solid' },
   { label: 'Vue', href: 'https://vuejs.org', value: 'vue' },

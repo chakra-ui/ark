@@ -1,4 +1,5 @@
 import { Combobox, createListCollection, useCombobox } from '@ark-ui/react/combobox'
+import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
 import { useMemo, useState } from 'react'
 
@@ -9,11 +10,16 @@ export const RootProvider = () => {
 
   const collection = useMemo(() => createListCollection({ items }), [items])
 
+  const { contains } = useFilter({ sensitivity: 'base' })
+
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase())))
+    setItems(initialItems.filter((item) => contains(item, details.inputValue)))
   }
 
-  const combobox = useCombobox({ collection: collection, onInputValueChange: handleInputChange })
+  const combobox = useCombobox({
+    collection,
+    onInputValueChange: handleInputChange,
+  })
 
   return (
     <>

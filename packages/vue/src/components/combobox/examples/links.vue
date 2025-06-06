@@ -1,9 +1,10 @@
 <script setup lang="ts">
 // biome-ignore lint/style/useImportType: <explanation>
 import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
+import { useFilter } from '@ark-ui/vue/locale'
 import { computed, ref } from 'vue'
 
-const frameworks = [
+const initialItems = [
   { label: 'React', href: 'https://react.dev', value: 'react' },
   { label: 'Solid', href: 'https://solidjs.com', value: 'solid' },
   { label: 'Vue', href: 'https://vuejs.org', value: 'vue' },
@@ -19,12 +20,14 @@ const frameworks = [
   { label: 'Astro', href: 'https://astro.build', value: 'astro' },
 ]
 
-const items = ref(frameworks)
+const items = ref(initialItems)
 
 const collection = computed(() => createListCollection({ items: items.value }))
 
+const filter = useFilter({ sensitivity: 'base' })
+
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-  items.value = frameworks.filter((item) => item.label.toLowerCase().includes(details.inputValue.toLowerCase()))
+  items.value = initialItems.filter((item) => filter.value.contains(item.label, details.inputValue))
 }
 </script>
 

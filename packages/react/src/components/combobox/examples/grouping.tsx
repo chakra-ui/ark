@@ -1,20 +1,28 @@
 import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
+import { useMemo, useState } from 'react'
 
-export const Advanced = () => {
-  const collection = createListCollection({
-    items: [
-      { label: 'React', value: 'react', type: 'JS' },
-      { label: 'Solid', value: 'solid', type: 'JS' },
-      { label: 'Vue', value: 'vue', type: 'JS' },
-      { label: 'Panda', value: 'panda', type: 'CSS' },
-      { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
-    ],
-    groupBy: (item) => item.type,
-  })
+export const Grouping = () => {
+  const [items, setItems] = useState(initialItems)
+
+  const collection = useMemo(
+    () =>
+      createListCollection({
+        items,
+        groupBy: (item) => item.type,
+      }),
+    [items],
+  )
+
+  const { contains } = useFilter({ sensitivity: 'base' })
+
+  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+    setItems(initialItems.filter((item) => contains(item.label, details.inputValue)))
+  }
 
   return (
-    <Combobox.Root collection={collection} multiple>
+    <Combobox.Root collection={collection} onInputValueChange={handleInputChange}>
       <Combobox.Label>Framework</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -41,3 +49,11 @@ export const Advanced = () => {
     </Combobox.Root>
   )
 }
+
+const initialItems = [
+  { label: 'React', value: 'react', type: 'JS' },
+  { label: 'Solid', value: 'solid', type: 'JS' },
+  { label: 'Vue', value: 'vue', type: 'JS' },
+  { label: 'Panda', value: 'panda', type: 'CSS' },
+  { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
+]

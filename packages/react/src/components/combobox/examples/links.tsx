@@ -1,14 +1,17 @@
 import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
 import { useMemo, useState } from 'react'
 
 export const Links = () => {
-  const [items, setItems] = useState(frameworks)
+  const [items, setItems] = useState(initialItems)
 
   const collection = useMemo(() => createListCollection({ items }), [items])
 
+  const { contains } = useFilter({ sensitivity: 'base' })
+
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(frameworks.filter((item) => item.label.toLowerCase().includes(details.inputValue.toLowerCase())))
+    setItems(initialItems.filter((item) => contains(item.label, details.inputValue)))
   }
 
   return (
@@ -35,7 +38,7 @@ export const Links = () => {
   )
 }
 
-const frameworks = [
+const initialItems = [
   { label: 'React', href: 'https://react.dev', value: 'react' },
   { label: 'Solid', href: 'https://solidjs.com', value: 'solid' },
   { label: 'Vue', href: 'https://vuejs.org', value: 'vue' },

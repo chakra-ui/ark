@@ -1,15 +1,26 @@
 <script setup lang="ts">
+// biome-ignore lint/style/useImportType: <explanation>
 import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
 import { Field } from '@ark-ui/vue/field'
+import { useFilter } from '@ark-ui/vue/locale'
+import { computed, ref } from 'vue'
 
-const frameworks = createListCollection({
-  items: ['React', 'Solid', 'Vue'],
-})
+const initialItems = ['React', 'Solid', 'Vue']
+
+const items = ref(initialItems)
+
+const collection = computed(() => createListCollection({ items: items.value }))
+
+const filter = useFilter({ sensitivity: 'base' })
+
+const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
+  items.value = initialItems.filter((item) => filter.value.contains(item, details.inputValue))
+}
 </script>
 
 <template>
   <Field.Root>
-    <Combobox.Root :collection="frameworks">
+    <Combobox.Root :collection="collection" @input-value-change="handleInputChange">
       <Combobox.Label>Label</Combobox.Label>
       <Combobox.Control>
         <Combobox.Input />
@@ -20,7 +31,7 @@ const frameworks = createListCollection({
         <Combobox.Content>
           <Combobox.ItemGroup>
             <Combobox.ItemGroupLabel>Frameworks</Combobox.ItemGroupLabel>
-            <Combobox.Item v-for="item in frameworks.items" :key="item" :item="item">
+            <Combobox.Item v-for="item in collection.items" :key="item" :item="item">
               <Combobox.ItemText>{{ item }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>
             </Combobox.Item>
