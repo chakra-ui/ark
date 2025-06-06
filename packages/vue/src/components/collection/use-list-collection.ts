@@ -1,4 +1,4 @@
-import { type MaybeRef, computed, ref, toValue } from 'vue'
+import { type MaybeRef, type Ref, computed, ref, toValue } from 'vue'
 import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
@@ -35,7 +35,7 @@ export function useListCollection<T>(props: MaybeRef<UseListCollectionProps<T>>)
     )
   }
 
-  const collection = ref(init())
+  const collection = ref(init()) as Ref<ListCollection<T>>
 
   const setCollection = (newCollection: ListCollection<T>) => {
     const [localProps] = resolvedProps.value

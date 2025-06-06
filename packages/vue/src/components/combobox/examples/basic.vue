@@ -1,16 +1,17 @@
 <script setup lang="ts">
 // biome-ignore lint/style/useImportType: <explanation>
-import { Combobox, createListCollection } from '@ark-ui/vue/combobox'
-import { computed, ref } from 'vue'
+import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
+import { useFilter } from '@ark-ui/vue/locale'
 
-const initialItems = ['React', 'Solid', 'Vue']
+const filters = useFilter({ sensitivity: 'base' })
 
-const items = ref(initialItems)
-
-const collection = computed(() => createListCollection({ items: items.value }))
+const { collection, filter } = useListCollection({
+  initialItems: ['React', 'Solid', 'Vue'],
+  filter: filters.value.contains,
+})
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-  items.value = initialItems.filter((item) => item.toLowerCase().includes(details.inputValue.toLowerCase()))
+  filter(details.inputValue)
 }
 </script>
 
