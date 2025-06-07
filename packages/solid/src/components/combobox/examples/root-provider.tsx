@@ -1,26 +1,23 @@
-import { Combobox, createListCollection, useCombobox } from '@ark-ui/solid/combobox'
+import { Combobox, useCombobox, useListCollection } from '@ark-ui/solid/combobox'
 import { useFilter } from '@ark-ui/solid/locale'
-import { For, createMemo, createSignal } from 'solid-js'
+import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
-const initialItems = ['React', 'Solid', 'Vue']
-
 export const RootProvider = () => {
-  const [items, setItems] = createSignal(initialItems)
+  const filterFn = useFilter({ sensitivity: 'base' })
 
-  const collection = createMemo(() => createListCollection({ items: items() }))
-
-  const filter = useFilter({ sensitivity: 'base' })
-
-  const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(initialItems.filter((item) => filter().contains(item, details.inputValue)))
-  }
+  const { collection, filter } = useListCollection({
+    initialItems: ['React', 'Solid', 'Vue'],
+    filter: filterFn().contains,
+  })
 
   const combobox = useCombobox({
     get collection() {
       return collection()
     },
-    onInputValueChange: handleInputChange,
+    onInputValueChange(details) {
+      filter(details.inputValue)
+    },
   })
 
   return (

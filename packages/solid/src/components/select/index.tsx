@@ -3,7 +3,13 @@ export type {
   OpenChangeDetails as SelectOpenChangeDetails,
   ValueChangeDetails as SelectValueChangeDetails,
 } from '@zag-js/select'
-export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
+export {
+  createListCollection,
+  type CollectionItem,
+  type ListCollection,
+  useListCollection,
+  type UseListCollectionProps,
+} from '../collection'
 export {
   SelectClearTrigger,
   type SelectClearTriggerBaseProps,

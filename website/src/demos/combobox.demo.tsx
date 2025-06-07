@@ -1,33 +1,30 @@
 'use client'
-import { createListCollection } from '@ark-ui/react/combobox'
+import { useListCollection } from '@ark-ui/react/combobox'
+import { useFilter } from '@ark-ui/react/locale'
 import { CheckIcon, ChevronsUpDownIcon } from 'lucide-react'
-import { useState } from 'react'
 import { Combobox } from '~/components/ui/combobox'
 import { IconButton } from '~/components/ui/icon-button'
 import { Input } from '~/components/ui/input'
 
-const initialCollection = createListCollection({
-  items: [
-    { label: 'React', value: 'react' },
-    { label: 'Solid', value: 'solid' },
-    { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte', disabled: true },
-  ],
-})
-
 export const Demo = (props: Omit<Combobox.RootProps, 'collection'>) => {
-  const [collection, setCollection] = useState(initialCollection)
+  const { contains } = useFilter({ sensitivity: 'base' })
+
+  const { collection, filter, reset } = useListCollection({
+    initialItems: [
+      { label: 'React', value: 'react' },
+      { label: 'Solid', value: 'solid' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte', disabled: true },
+    ],
+    filter: contains,
+  })
 
   const handleInputChange = ({ inputValue }: Combobox.InputValueChangeDetails) => {
-    const filtered = initialCollection.items.filter((item) =>
-      item.label.toLowerCase().includes(inputValue.toLowerCase()),
-    )
-
-    setCollection(filtered.length > 0 ? createListCollection({ items: filtered }) : initialCollection)
+    filter(inputValue)
   }
 
   const handleOpenChange = () => {
-    setCollection(initialCollection)
+    reset()
   }
 
   return (

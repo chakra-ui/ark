@@ -5,7 +5,13 @@ export type {
   ValueChangeDetails as ComboboxValueChangeDetails,
   SelectionDetails as ComboboxSelectionDetails,
 } from '@zag-js/combobox'
-export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
+export {
+  createListCollection,
+  type CollectionItem,
+  type ListCollection,
+  useListCollection,
+  type UseListCollectionProps,
+} from '../collection'
 export {
   ComboboxClearTrigger,
   type ComboboxClearTriggerBaseProps,

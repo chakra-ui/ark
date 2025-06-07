@@ -69,6 +69,7 @@ export { default as TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootP
 export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.vue'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
+export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'
 export { useTreeViewNodeContext, type UseTreeViewNodeContext } from './use-tree-view-node-context'
 
 export * as TreeView from './tree-view'

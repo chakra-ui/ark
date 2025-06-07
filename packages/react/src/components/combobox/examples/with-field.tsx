@@ -1,17 +1,17 @@
-import { Combobox, createListCollection } from '@ark-ui/react/combobox'
+import { Combobox, useListCollection } from '@ark-ui/react/combobox'
 import { Field } from '@ark-ui/react/field'
 import { useFilter } from '@ark-ui/react/locale'
-import { useMemo, useState } from 'react'
 
 export const WithField = (props: Field.RootProps) => {
-  const [items, setItems] = useState(initialItems)
-
   const { contains } = useFilter({ sensitivity: 'base' })
 
-  const collection = useMemo(() => createListCollection({ items }), [items])
+  const { collection, filter } = useListCollection({
+    initialItems,
+    filter: contains,
+  })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
-    setItems(initialItems.filter((item) => contains(item, details.inputValue)))
+    filter(details.inputValue)
   }
 
   return (
