@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.13.0] - 2025-06-07
+
 ### Added
 
 - **Collection**: Add new `useListCollection` hook to create a dynamic list collection.
