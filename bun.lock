@@ -21,7 +21,7 @@
     },
     "packages/react": {
       "name": "@ark-ui/react",
-      "version": "5.12.0",
+      "version": "5.13.0",
       "dependencies": {
         "@internationalized/date": "3.8.1",
         "@zag-js/accordion": "1.15.0",
@@ -122,7 +122,7 @@
     },
     "packages/solid": {
       "name": "@ark-ui/solid",
-      "version": "5.12.0",
+      "version": "5.13.0",
       "dependencies": {
         "@internationalized/date": "3.8.1",
         "@zag-js/accordion": "1.15.0",
@@ -253,7 +253,7 @@
     },
     "packages/vue": {
       "name": "@ark-ui/vue",
-      "version": "5.12.0",
+      "version": "5.13.0",
       "dependencies": {
         "@internationalized/date": "3.8.1",
         "@zag-js/accordion": "1.15.0",
@@ -351,7 +351,7 @@
         "find-up": "7.0.0",
         "fs-extra": "11.3.0",
         "globby": "14.1.0",
-        "pkg-dir": "8.0.0",
+        "pkg-dir": "9.0.0",
         "ts-morph": "25.0.1",
         "ts-pattern": "5.7.0",
         "typescript": "5.8.3",
@@ -3260,7 +3260,7 @@
 
     "pirates": ["pirates@4.0.7", "", {}, "sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA=="],
 
-    "pkg-dir": ["pkg-dir@8.0.0", "", { "dependencies": { "find-up-simple": "^1.0.0" } }, "sha512-4peoBq4Wks0riS0z8741NVv+/8IiTvqnZAr8QGgtdifrtpdXbNw/FxRS1l6NFqm4EMzuS0EDqNNx4XGaz8cuyQ=="],
+    "pkg-dir": ["pkg-dir@9.0.0", "", { "dependencies": { "find-up-simple": "^1.0.0" } }, "sha512-BMmxOuokumBehLGYwCKMBJxpAGSBbvGTtDn1yUV9UpCAvC4F7UWHoPTGSDGPV8eQPkYq/G8b0g1W5vIc5K/EhA=="],
 
     "pkg-types": ["pkg-types@2.1.0", "", { "dependencies": { "confbox": "^0.2.1", "exsolve": "^1.0.1", "pathe": "^2.0.3" } }, "sha512-wmJwA+8ihJixSoHKxZJRBQG1oY8Yr9pGLzRmSsNms0iNWyHHAlZCa7mmKiFR10YPZuz/2k169JiS/inOjBCZ2A=="],
 

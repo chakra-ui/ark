@@ -22,7 +22,7 @@
     "find-up": "7.0.0",
     "fs-extra": "11.3.0",
     "globby": "14.1.0",
-    "pkg-dir": "8.0.0",
+    "pkg-dir": "9.0.0",
     "ts-morph": "25.0.1",
     "ts-pattern": "5.7.0",
     "typescript": "5.8.3",
