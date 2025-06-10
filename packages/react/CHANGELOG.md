@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.14.0] - 2025-06-10
+
 ### Added
 
 - **Editable**: Added support for `activationMode=none`
