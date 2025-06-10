@@ -1,24 +1,36 @@
 ## [Unreleased]
 
+### Added
+
+- **Editable**: Added support for `activationMode=none`
+- **Collection**
+  - Exposed `copy` method
+  - Added support for `getParentNodes` to accept a value or index path
+
 ### Fixed
 
-- Entrypoint export for `/collection`
+- **Collection**: Fixed issue where entrypoint export for `/collection` was not working as expected
+- **Carousel**: Fixed issue where carousel crashes when `slidesPerPage` is 0
+- **File Upload**: Prevented `undefined` in `acceptedFiles` when no files accepted
+- **Select**: Fixed issue where highlighted item could be cleared when navigating up/down the list with keyboard
+- **Tabs**: Fixed issue where tabs with links should not trigger tab change upon cmd/middle click
 
 ## [5.13.0] - 2025-06-07
 
 ### Added
 
-- **Collection**: Add new `useListCollection` hook to create a dynamic list collection.
+- **Collection**: Added new `useListCollection` hook to create a dynamic list collection.
 
 ### Fixed
 
-- **Progress**: Export `ProgressValueChangeDetails` and `ProgressValueTranslationDetails` types from `@zag-js/progress`
+- **Progress**: Exported `ProgressValueChangeDetails` and `ProgressValueTranslationDetails` types from
+  `@zag-js/progress`
 
 ## [5.12.0] - 2025-06-05
 
 ### Added
 
-- **Tree View**: Add support for lazy loading node children. To use this, you need to provide:
+- **Tree View**: Added support for lazy loading node children. To use this, you need to provide:
 
   - `loadChildren` is a function that is used to load the children of a node.
   - `onLoadChildrenComplete` is a callback that is called when the children of a node are loaded. Used to update the

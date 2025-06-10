@@ -1,5 +1,19 @@
 ## [Unreleased]
 
+### Added
+
+- **Editable**: Added support for `activationMode=none`
+- **Collection**
+  - Exposed `copy` method
+  - Added support for `getParentNodes` to accept a value or index path
+
+### Fixed
+
+- **Carousel**: Fixed issue where carousel crashes when `slidesPerPage` is 0
+- **File Upload**: Prevented `undefined` in `acceptedFiles` when no files accepted
+- **Select**: Fixed issue where highlighted item could be cleared when navigating up/down the list with keyboard
+- **Tabs**: Fixed issue where tabs with links should not trigger tab change upon cmd/middle click
+
 ## [5.13.0] - 2025-06-07
 
 ### Added
