@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- Entrypoint export for `/collection`
+
 ## [5.13.0] - 2025-06-07
 
 ### Added
