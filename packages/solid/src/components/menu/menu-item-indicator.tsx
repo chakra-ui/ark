@@ -9,7 +9,7 @@ export interface MenuItemIndicatorProps extends HTMLProps<'div'>, MenuItemIndica
 export const MenuItemIndicator = (props: MenuItemIndicatorProps) => {
   const context = useMenuContext()
   const itemProps = useMenuItemPropsContext()
-  // @ts-expect-error - TODO: fix this
+
   const mergedProps = mergeProps(() => context().getItemIndicatorProps(itemProps), props)
 
   return <ark.div {...mergedProps} />

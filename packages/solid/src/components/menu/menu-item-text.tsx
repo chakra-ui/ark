@@ -9,7 +9,7 @@ export interface MenuItemTextProps extends HTMLProps<'div'>, MenuItemTextBasePro
 export const MenuItemText = (props: MenuItemTextProps) => {
   const context = useMenuContext()
   const itemProps = useMenuItemPropsContext()
-  // @ts-expect-error - TODO: fix this
+
   const mergedProps = mergeProps(() => context().getItemTextProps(itemProps), props)
 
   return <ark.div {...mergedProps} />

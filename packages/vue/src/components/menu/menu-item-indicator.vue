@@ -20,13 +20,13 @@ import { useForwardExpose } from '../../utils'
 defineProps<MenuItemIndicatorProps>()
 
 const menu = useMenuContext()
-const optionItemProps = useMenuItemPropsContext()
+const itemProps = useMenuItemPropsContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="menu.getItemIndicatorProps(optionItemProps as any)" :as-child="asChild">
+  <ark.div v-bind="menu.getItemIndicatorProps(itemProps)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>
