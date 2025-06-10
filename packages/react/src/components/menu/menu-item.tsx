@@ -6,6 +6,7 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 interface ItemBaseProps extends ItemProps {
   /**
@@ -37,9 +38,11 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
   }, [itemState.id, itemProps.onSelect])
 
   return (
-    <MenuItemProvider value={itemState}>
-      <ark.div {...mergedProps} ref={ref} />
-    </MenuItemProvider>
+    <MenuItemPropsProvider value={itemProps}>
+      <MenuItemProvider value={itemState}>
+        <ark.div {...mergedProps} ref={ref} />
+      </MenuItemProvider>
+    </MenuItemPropsProvider>
   )
 })
 

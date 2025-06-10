@@ -21,7 +21,7 @@ import { computed, type ComputedRef } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuRadioItemProps>(), {
@@ -42,7 +42,7 @@ const optionItemProps: ComputedRef<OptionItemProps> = computed(() => ({
 const optionItemState = computed(() => menu.value.getOptionItemState(optionItemProps.value))
 
 MenuItemProvider(optionItemState)
-MenuOptionItemPropsProvider(optionItemProps)
+MenuItemPropsProvider(optionItemProps)
 
 useForwardExpose()
 </script>

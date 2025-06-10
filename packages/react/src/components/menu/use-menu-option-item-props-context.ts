@@ -1,8 +1,12 @@
-import type { OptionItemProps } from '@zag-js/menu'
 import { createContext } from '../../utils/create-context'
 
-export const [MenuOptionItemPropsProvider, useMenuOptionItemPropsContext] = createContext<OptionItemProps>({
-  name: 'MenuOptionItemPropsContext',
-  hookName: 'useMenuOptionItemPropsContext',
-  providerName: '<MenuOptionItemPropsProvider />',
+export interface BaseItemProps {
+  checked?: boolean
+  value: string
+}
+
+export const [MenuItemPropsProvider, useMenuItemPropsContext] = createContext<BaseItemProps>({
+  name: 'MenuItemPropsContext',
+  hookName: 'useMenuItemPropsContext',
+  providerName: '<MenuItemPropsProvider />',
 })

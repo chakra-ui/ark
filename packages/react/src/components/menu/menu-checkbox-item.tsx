@@ -5,7 +5,7 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
-import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 
@@ -30,11 +30,11 @@ export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps
   const optionItemState = menu.getOptionItemState(optionItemProps)
 
   return (
-    <MenuOptionItemPropsProvider value={optionItemProps}>
+    <MenuItemPropsProvider value={optionItemProps}>
       <MenuItemProvider value={optionItemState}>
         <ark.div {...mergedProps} ref={ref} />
       </MenuItemProvider>
-    </MenuOptionItemPropsProvider>
+    </MenuItemPropsProvider>
   )
 })
 

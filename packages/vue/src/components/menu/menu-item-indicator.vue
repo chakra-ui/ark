@@ -14,19 +14,19 @@ export interface MenuItemIndicatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
-import { useMenuOptionItemPropsContext } from './use-menu-option-item-props-context'
+import { useMenuItemPropsContext } from './use-menu-option-item-props-context'
 import { useForwardExpose } from '../../utils'
 
 defineProps<MenuItemIndicatorProps>()
 
 const menu = useMenuContext()
-const optionItemProps = useMenuOptionItemPropsContext()
+const optionItemProps = useMenuItemPropsContext()
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="menu.getItemIndicatorProps(optionItemProps)" :as-child="asChild">
+  <ark.div v-bind="menu.getItemIndicatorProps(optionItemProps as any)" :as-child="asChild">
     <slot />
   </ark.div>
 </template>

@@ -19,6 +19,7 @@ import { computed, onBeforeUnmount, onMounted } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useForwardExpose } from '../../utils'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 const props = withDefaults(defineProps<MenuItemProps>(), {
   disabled: undefined,
@@ -32,6 +33,7 @@ const emit = defineEmits<{
 const menu = useMenuContext()
 const itemState = computed(() => menu.value.getItemState(props))
 
+MenuItemPropsProvider(computed(() => props))
 MenuItemProvider(itemState)
 
 onMounted(() => {

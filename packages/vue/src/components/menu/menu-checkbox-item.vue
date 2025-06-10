@@ -25,7 +25,7 @@ import { ark } from '../factory'
 import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
-import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
@@ -46,7 +46,7 @@ const optionItemProps: ComputedRef<OptionItemProps> = computed(() => ({
 const optionItemState = computed(() => menu.value.getOptionItemState(optionItemProps.value))
 
 MenuItemProvider(optionItemState)
-MenuOptionItemPropsProvider(optionItemProps)
+MenuItemPropsProvider(optionItemProps)
 
 useForwardExpose()
 </script>

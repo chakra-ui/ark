@@ -6,7 +6,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { MenuOptionItemPropsProvider } from './use-menu-option-item-props-context'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
@@ -32,11 +32,11 @@ export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((pro
   const optionItemState = menu.getOptionItemState(optionItemProps)
 
   return (
-    <MenuOptionItemPropsProvider value={optionItemProps}>
+    <MenuItemPropsProvider value={optionItemProps}>
       <MenuItemProvider value={optionItemState}>
         <ark.div {...mergedProps} ref={ref} />
       </MenuItemProvider>
-    </MenuOptionItemPropsProvider>
+    </MenuItemPropsProvider>
   )
 })
 
