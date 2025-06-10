@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { TagsInput } from '@ark-ui/vue/tags-input'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <TagsInput.Root>
       <TagsInput.Context v-slot="tagsInput">
         <TagsInput.Label>Label</TagsInput.Label>

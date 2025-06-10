@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { NumberInput } from '@ark-ui/vue/number-input'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <NumberInput.Root>
       <NumberInput.Label>Label</NumberInput.Label>
       <NumberInput.Input />

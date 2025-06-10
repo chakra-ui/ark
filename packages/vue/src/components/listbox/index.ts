@@ -34,7 +34,12 @@ export {
   type ListboxItemTextProps,
 } from './listbox-item-text.vue'
 export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.vue'
-export { default as ListboxRoot, type ListboxRootBaseProps, type ListboxRootProps } from './listbox-root.vue'
+export {
+  default as ListboxRoot,
+  type ListboxRootBaseProps,
+  type ListboxRootProps,
+  type ListboxRootEmits,
+} from './listbox-root.vue'
 export {
   default as ListboxRootProvider,
   type ListboxRootProviderBaseProps,

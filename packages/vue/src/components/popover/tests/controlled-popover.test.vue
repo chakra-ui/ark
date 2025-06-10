@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Popover } from '../'
+import { Popover, type PopoverRootEmits, type PopoverRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<PopoverRootProps>()
+const emits = defineEmits<PopoverRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 
 const open = ref(false)
 </script>
@@ -8,7 +13,7 @@ const open = ref(false)
 <template>
   <Fragment>
     <button @click="() => (open = !open)">toggle</button>
-    <Popover.Root v-model="open">
+    <Popover.Root v-bind="localProps" v-model="open">
       <Popover.Trigger>
         click me
         <Popover.Indicator />

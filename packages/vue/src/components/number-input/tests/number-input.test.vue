@@ -1,9 +1,14 @@
 <script lang="ts" setup>
-import { NumberInput } from '../'
+import { NumberInput, type NumberInputRootEmits, type NumberInputRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<NumberInputRootProps>()
+const emits = defineEmits<NumberInputRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <NumberInput.Root>
+  <NumberInput.Root v-bind="localProps">
     <NumberInput.Label>
       Label:
       <NumberInput.ValueText />

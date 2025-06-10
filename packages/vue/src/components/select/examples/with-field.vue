@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { Select, createListCollection } from '@ark-ui/vue/select'
 import { ChevronDownIcon } from 'lucide-vue-next'
 
 const collection = createListCollection({
   items: ['React', 'Solid', 'Vue'],
 })
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <Select.Root :collection="collection">
       <Select.Label>Label</Select.Label>
       <Select.Control>

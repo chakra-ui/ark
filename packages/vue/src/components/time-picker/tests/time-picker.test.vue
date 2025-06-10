@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { TimePicker } from '../..'
+import { TimePicker, type TimePickerRootEmits, type TimePickerRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<TimePickerRootProps>()
+const emits = defineEmits<TimePickerRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <TimePicker.Root>
+  <TimePicker.Root v-bind="localProps">
     <TimePicker.Control>
       <TimePicker.Input />
       <TimePicker.Trigger>🗓</TimePicker.Trigger>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RadioGroup } from '../'
+import { RadioGroup, type RadioGroupRootEmits, type RadioGroupRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
 
 const items = ref([
   { label: 'React', value: 'react' },
@@ -8,10 +9,14 @@ const items = ref([
   { label: 'Vue', value: 'vue' },
   { label: 'Svelte', value: 'svelte', disabled: true },
 ])
+
+const props = defineProps<RadioGroupRootProps>()
+const emits = defineEmits<RadioGroupRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <RadioGroup.Root>
+  <RadioGroup.Root v-bind="localProps">
     <RadioGroup.Label>Framework</RadioGroup.Label>
     <RadioGroup.Indicator />
     <RadioGroup.Item v-for="item in items" :key="item.value" :value="item.value" :disabled="item.disabled">

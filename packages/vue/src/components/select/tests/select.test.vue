@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { Select, createListCollection } from '../..'
+import { Select, type SelectRootEmits, type SelectRootProps, createListCollection } from '../..'
+import { useForwardPropsEmits } from '../../..'
 
-const collection = createListCollection({
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const collection = createListCollection<Item>({
   items: [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -9,10 +16,14 @@ const collection = createListCollection({
     { label: 'Svelte', value: 'svelte', disabled: true },
   ],
 })
+
+const props = defineProps<Omit<SelectRootProps<Item>, 'collection'>>()
+const emits = defineEmits<SelectRootEmits<Item>>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Select.Root :collection="collection" :openDelay="0" :closeDelay="0">
+  <Select.Root :collection="collection" :openDelay="0" :closeDelay="0" v-bind="localProps">
     <Select.Label>Framework</Select.Label>
     <Select.Control>
       <Select.Trigger>

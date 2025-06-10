@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { Dialog } from '../'
+import { Dialog, type DialogRootEmits, type DialogRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<DialogRootProps>()
+const emits = defineEmits<DialogRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Dialog.Root>
+  <Dialog.Root v-bind="localProps">
     <Dialog.Trigger>Open Dialog</Dialog.Trigger>
     <Teleport to="body">
       <Dialog.Backdrop />

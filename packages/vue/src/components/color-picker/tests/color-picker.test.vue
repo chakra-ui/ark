@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import type { ColorPickerRootBaseProps } from '..'
-import { ColorPicker, parseColor } from '..'
+import { ColorPicker, type ColorPickerRootBaseProps, type ColorPickerRootEmits, parseColor } from '..'
+import { useForwardPropsEmits } from '../../..'
 
 const props = defineProps<ColorPickerRootBaseProps>()
+const emits = defineEmits<ColorPickerRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 
 const defaultValue = props.defaultValue ?? parseColor('#eb5e41')
 </script>
 
 <template>
-  <ColorPicker.Root :default-value="defaultValue" :lazy-mount="lazyMount" :unmount-on-exit="unmountOnExit">
+  <ColorPicker.Root :default-value="defaultValue" v-bind="localProps">
     <ColorPicker.Label>Color</ColorPicker.Label>
     <ColorPicker.Control>
       <ColorPicker.ChannelInput channel="hex" />

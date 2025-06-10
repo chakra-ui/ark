@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { CheckIcon, MinusIcon } from 'lucide-vue-next'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <Checkbox.Root>
       <Checkbox.Label>Label</Checkbox.Label>
       <Checkbox.Control>

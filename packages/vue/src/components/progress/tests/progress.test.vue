@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { Progress } from '../'
+import { Progress, type ProgressRootEmits, type ProgressRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<ProgressRootProps>()
+const emits = defineEmits<ProgressRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Progress.Root>
+  <Progress.Root v-bind="localProps">
     <Progress.Label>Label</Progress.Label>
     <Progress.ValueText />
     <Progress.View state="loading" />

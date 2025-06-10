@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { Editable } from '@ark-ui/vue/editable'
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <Editable.Root placeholder="Placeholder" activationMode="dblclick">
       <Editable.Label>Label</Editable.Label>
       <Editable.Area>

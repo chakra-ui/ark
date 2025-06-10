@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { DatePicker } from '../'
+import { DatePicker, type DatePickerRootEmits, type DatePickerRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<DatePickerRootProps>()
+const emits = defineEmits<DatePickerRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <DatePicker.Root>
+  <DatePicker.Root v-bind="localProps">
     <DatePicker.Label>Label</DatePicker.Label>
     <DatePicker.Control>
       <DatePicker.Input />

@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { Popover } from '../'
+import { Popover, type PopoverRootEmits, type PopoverRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<PopoverRootProps>()
+const emits = defineEmits<PopoverRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Popover.Root>
+  <Popover.Root v-bind="localProps">
     <Popover.Trigger>
       click me
       <Popover.Indicator />

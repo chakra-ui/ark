@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { QrCode } from '../..'
+import { QrCode, type QrCodeRootEmits, type QrCodeRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<QrCodeRootProps>()
+const emits = defineEmits<QrCodeRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <QrCode.Root value="http://ark-ui.com">
+  <QrCode.Root value="http://ark-ui.com" v-bind="localProps">
     <QrCode.Frame>
       <QrCode.Pattern />
     </QrCode.Frame>

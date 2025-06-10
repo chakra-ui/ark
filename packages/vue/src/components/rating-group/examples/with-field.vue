@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { RatingGroup } from '@ark-ui/vue/rating-group'
 import { StarIcon } from 'lucide-vue-next'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <RatingGroup.Root :count="5" :default-value="3">
       <RatingGroup.Label>Label</RatingGroup.Label>
       <RatingGroup.Control>

@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { FileUpload } from '@ark-ui/vue/file-upload'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <FileUpload.Root :maxFiles="5">
       <FileUpload.Label>Label</FileUpload.Label>
       <FileUpload.Trigger>Select</FileUpload.Trigger>

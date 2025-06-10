@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // biome-ignore lint/style/useImportType: <explanation>
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { useFilter } from '@ark-ui/vue/locale'
 
 const filters = useFilter({ sensitivity: 'base' })
@@ -14,10 +14,12 @@ const { collection, filter } = useListCollection({
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
   filter(details.inputValue)
 }
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <Combobox.Root :collection="collection" @input-value-change="handleInputChange">
       <Combobox.Label>Label</Combobox.Label>
       <Combobox.Control>

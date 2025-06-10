@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { Field } from '@ark-ui/vue/field'
+import { Field, type FieldRootProps } from '@ark-ui/vue/field'
 import { Switch } from '@ark-ui/vue/switch'
+
+const props = defineProps<FieldRootProps>()
 </script>
 
 <template>
-  <Field.Root>
+  <Field.Root v-bind="props">
     <Switch.Root>
       <Switch.Control>
         <Switch.Thumb />

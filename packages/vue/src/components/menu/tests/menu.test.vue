@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Menu } from '../'
+import { Menu, type MenuRootEmits, type MenuRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<MenuRootProps & { contextMenu?: boolean; dir?: 'ltr' | 'rtl' }>()
+const emits = defineEmits<MenuRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 
 const items = ref(['react', 'solid', 'vue', 'svelte'])
 const checked = ref(false)
 </script>
 
 <template>
-  <Menu.Root>
-    <Menu.Trigger>
+  <Menu.Root v-bind="localProps">
+    <Menu.Trigger v-if="!contextMenu">
       Open menu
       <Menu.Indicator />
     </Menu.Trigger>
-    <Menu.ContextTrigger>Open Context Menu</Menu.ContextTrigger>
+    <Menu.ContextTrigger v-if="contextMenu">Open Context Menu</Menu.ContextTrigger>
     <Menu.Positioner data-testid="positioner">
       <Menu.Content>
         <Menu.Arrow>

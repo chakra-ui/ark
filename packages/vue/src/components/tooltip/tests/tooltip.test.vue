@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { Tooltip } from '../'
+import { Tooltip, type TooltipRootEmits, type TooltipRootProps } from '../'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<TooltipRootProps>()
+const emits = defineEmits<TooltipRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 <template>
-  <Tooltip.Root :openDelay="0" :closeDelay="0">
+  <Tooltip.Root :openDelay="0" :closeDelay="0" v-bind="localProps">
     <Tooltip.Trigger>hover me</Tooltip.Trigger>
     <Tooltip.Positioner>
       <Tooltip.Arrow>

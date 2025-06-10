@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { Field, Fieldset } from '../..'
+import { Field, Fieldset, type FieldsetRootProps } from '../..'
+
+const props = defineProps<FieldsetRootProps>()
 </script>
 
 <template>
-  <Fieldset.Root invalid>
+  <Fieldset.Root v-bind="props">
     <Fieldset.Legend>Legend</Fieldset.Legend>
     <Fieldset.HelperText>Fieldset Helper Text</Fieldset.HelperText>
     <Fieldset.ErrorText>Fieldset Error Text</Fieldset.ErrorText>

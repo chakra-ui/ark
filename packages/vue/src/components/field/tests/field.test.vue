@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { Field } from '../..'
+import { Field, type FieldRootProps } from '../..'
+
+const props = defineProps<FieldRootProps>()
 const model = defineModel()
 </script>
 
 <template>
-  <Field.Root invalid required>
+  <Field.Root v-bind="props">
     <Field.Label>
       Label
       <Field.RequiredIndicator />

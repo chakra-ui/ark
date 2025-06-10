@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { RatingGroup } from '..'
+import { RatingGroup, type RatingGroupRootEmits, type RatingGroupRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<RatingGroupRootProps>()
+const emits = defineEmits<RatingGroupRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <RatingGroup.Root>
+  <RatingGroup.Root v-bind="localProps">
     <RatingGroup.Label>Label</RatingGroup.Label>
     <RatingGroup.Control>
       <RatingGroup.Context v-slot="ratingGroup">

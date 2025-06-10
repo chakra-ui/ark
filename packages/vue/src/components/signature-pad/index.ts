@@ -38,6 +38,7 @@ export {
   default as SignaturePadRoot,
   type SignaturePadRootBaseProps,
   type SignaturePadRootProps,
+  type SignaturePadRootEmits,
 } from './signature-pad-root.vue'
 export {
   default as SignaturePadSegment,

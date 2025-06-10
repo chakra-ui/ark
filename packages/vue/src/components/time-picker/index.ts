@@ -54,6 +54,7 @@ export {
   default as TimePickerRoot,
   type TimePickerRootBaseProps,
   type TimePickerRootProps,
+  type TimePickerRootEmits,
 } from './time-picker-root.vue'
 export {
   default as TimePickerSpacer,

@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/sveltekit'
 import '../../../.storybook/styles.css'
 
 const preview: Preview = {
@@ -9,6 +9,10 @@ const preview: Preview = {
       },
     },
     layout: 'padded',
+    actions: { disable: true },
+    controls: { disable: true },
+    backgrounds: { disable: true },
+    viewport: { disable: true },
   },
 }
 

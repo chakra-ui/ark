@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { Pagination } from '..'
+import { Pagination, type PaginationRootEmits, type PaginationRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<PaginationRootProps>()
+const emits = defineEmits<PaginationRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 <template>
-  <Pagination.Root :count="100" :page-size="10" :sibling-count="2">
+  <Pagination.Root :count="100" :page-size="10" :sibling-count="2" v-bind="localProps">
     <Pagination.PrevTrigger>
       Previous
       <span className="visually-hidden">Page</span>

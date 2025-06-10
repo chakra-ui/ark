@@ -49,7 +49,7 @@ describe('ToggleGroup', () => {
   })
 
   it('should not loop focus if disabled', async () => {
-    render(ComponentUnderTest, { props: { loop: false } })
+    render(ComponentUnderTest, { props: { loopFocus: false } })
 
     const firstToggle = screen.getByText('A')
     const lastToggle = screen.getByText('C')

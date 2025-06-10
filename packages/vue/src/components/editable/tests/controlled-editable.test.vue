@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { Editable } from '..'
+import { Editable, type EditableRootEmits, type EditableRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+const props = defineProps<EditableRootProps>()
+const emits = defineEmits<EditableRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Editable.Root placeholder="Placeholder">
+  <Editable.Root placeholder="Placeholder" v-bind="localProps">
     <Editable.Label>Label</Editable.Label>
     <Editable.Area>
       <Editable.Input />

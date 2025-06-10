@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Combobox, createListCollection } from '../..'
+import { Combobox, type ComboboxRootEmits, type ComboboxRootProps, createListCollection } from '../..'
+import { useForwardPropsEmits } from '../../..'
 
-const frameworks = createListCollection({
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const props = defineProps<ComboboxRootProps<Item>>()
+const emits = defineEmits<ComboboxRootEmits<Item>>()
+const localProps = useForwardPropsEmits(props, emits)
+
+const frameworks = createListCollection<Item>({
   items: [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -14,7 +25,7 @@ const value = ref<string[]>([])
 </script>
 
 <template>
-  <Combobox.Root :collection="frameworks" v-model="value">
+  <Combobox.Root :collection="frameworks" v-model="value" v-bind="localProps">
     <Combobox.Label>Framework</Combobox.Label>
     <Combobox.Control>
       <Combobox.Input data-testid="input" />

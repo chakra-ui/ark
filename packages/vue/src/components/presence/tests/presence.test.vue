@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Presence } from '../'
+import { Presence, type PresenceEmits, type PresenceProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
 
-const props = defineProps({
-  lazyMount: Boolean,
-  unmountOnExit: Boolean,
-})
+const props = defineProps<PresenceProps>()
+const emits = defineEmits<PresenceEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 
 const isPresent = ref(false)
 </script>
@@ -13,7 +13,7 @@ const isPresent = ref(false)
 <template>
   <div>
     <button @click="isPresent = !isPresent">Toggle</button>
-    <Presence :present="isPresent" :lazy-mount="props.lazyMount" :unmount-on-exit="props.unmountOnExit">
+    <Presence v-bind="localProps" :present="isPresent">
       <div data-testid="box">Content!</div>
     </Presence>
   </div>

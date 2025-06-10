@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { Collapsible } from '@ark-ui/vue/collapsible'
+import { useForwardPropsEmits } from '@ark-ui/vue'
+import { Collapsible, type CollapsibleRootEmits, type CollapsibleRootProps } from '@ark-ui/vue/collapsible'
 import { ChevronDownIcon } from 'lucide-vue-next'
+
+const props = defineProps<CollapsibleRootProps>()
+const emits = defineEmits<CollapsibleRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <Collapsible.Root>
+  <Collapsible.Root v-bind="localProps">
     <Collapsible.Trigger>
       Toggle
       <Collapsible.Indicator>

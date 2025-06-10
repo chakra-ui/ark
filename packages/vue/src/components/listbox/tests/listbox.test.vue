@@ -1,5 +1,16 @@
 <script setup lang="ts">
-import { Listbox, createListCollection } from '@ark-ui/vue/listbox'
+import { Listbox, type ListboxRootEmits, type ListboxRootProps, createListCollection } from '../..'
+import { useForwardPropsEmits } from '../../..'
+
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const props = defineProps<Omit<ListboxRootProps<Item>, 'collection'>>()
+const emits = defineEmits<ListboxRootEmits<Item>>()
+const localProps = useForwardPropsEmits(props, emits)
 
 const collection = createListCollection({
   items: [
@@ -12,7 +23,7 @@ const collection = createListCollection({
 </script>
 
 <template>
-  <Listbox.Root :collection="collection">
+  <Listbox.Root :collection="collection" v-bind="localProps">
     <Listbox.Label>
       Select your Framework:
       <Listbox.ValueText />

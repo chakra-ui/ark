@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { FileUpload } from '../'
+import { FileUpload, type FileUploadRootEmits, type FileUploadRootProps } from '../..'
+import { useForwardPropsEmits } from '../../..'
 
 const testProps = ref<string[]>([])
+
+const props = defineProps<FileUploadRootProps>()
+const emits = defineEmits<FileUploadRootEmits>()
+const localProps = useForwardPropsEmits(props, emits)
 </script>
 
 <template>
-  <FileUpload.Root v-model="testProps">
+  <FileUpload.Root v-model="testProps" v-bind="localProps">
     <FileUpload.Dropzone>
       <FileUpload.Label>Drag your file(s) here</FileUpload.Label>
     </FileUpload.Dropzone>
