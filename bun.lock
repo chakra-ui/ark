@@ -429,7 +429,6 @@
   ],
   "overrides": {
     "flexsearch": "0.8.158",
-    "solid-js": "1.9.7",
   },
   "packages": {
     "@adobe/css-tools": ["@adobe/css-tools@4.4.2", "", {}, "sha512-baYZExFpsdkBNuvGKTKWCwKH57HRZLVtycZS05WTQNVOiXVSeAki3nU35zlRbToeMW8aHlJfyS+1C4BOv27q0A=="],

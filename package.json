@@ -48,7 +48,6 @@
     "@ark-ui/website"
   ],
   "overrides": {
-    "flexsearch": "0.8.158",
-    "solid-js": "1.9.7"
+    "flexsearch": "0.8.158"
   }
 }

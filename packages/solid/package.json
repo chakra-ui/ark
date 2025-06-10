@@ -168,5 +168,8 @@
   },
   "peerDependencies": {
     "solid-js": ">=1.6.0"
+  },
+  "overrides": {
+    "solid-js": "1.9.7"
   }
 }
