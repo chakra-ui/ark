@@ -87,9 +87,9 @@
     "@zag-js/svelte": "1.15.1"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "8.6.12",
+    "@storybook/addon-a11y": "9.0.8",
     "@storybook/addon-essentials": "8.6.12",
-    "@storybook/sveltekit": "8.6.12",
+    "@storybook/sveltekit": "9.0.8",
     "@sveltejs/adapter-auto": "6.0.0",
     "@sveltejs/kit": "2.20.8",
     "@sveltejs/package": "2.3.11",
@@ -99,7 +99,7 @@
     "@testing-library/user-event": "14.6.1",
     "@vitest/coverage-v8": "3.1.2",
     "clean-package": "2.2.0",
-    "storybook": "8.6.12",
+    "storybook": "9.0.8",
     "svelte": "5.28.2",
     "svelte-check": "4.1.7",
     "tslib": "2.8.1",
