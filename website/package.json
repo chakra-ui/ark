@@ -43,6 +43,6 @@
     "rehype-slug": "6.0.0",
     "shiki": "3.6.0",
     "typescript": "5.8.3",
-    "velite": "0.2.4"
+    "velite": "0.2.2"
   }
 }
