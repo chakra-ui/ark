@@ -9,7 +9,7 @@
 
 ### Fixed
 
-- **Collection**: Fixed issue where entrypoint export for `/collection` was not working as expected
+- **Collection**: Fixed issue where entrypoint `@ark-ui/react/collection` was not working as expected
 - **Carousel**: Fixed issue where carousel crashes when `slidesPerPage` is 0
 - **File Upload**: Prevented `undefined` in `acceptedFiles` when no files accepted
 - **Select**: Fixed issue where highlighted item could be cleared when navigating up/down the list with keyboard

@@ -14,11 +14,6 @@
         "solid": "./dist/components/anatomy.jsx",
         "default": "./dist/components/anatomy.js"
       },
-      "./collection": {
-        "types": "./dist/components/collection.d.ts",
-        "solid": "./dist/components/collection.jsx",
-        "default": "./dist/components/collection.js"
-      },
       "./factory": {
         "types": "./dist/components/factory.d.ts",
         "solid": "./dist/components/factory.jsx",
