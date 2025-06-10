@@ -48,6 +48,6 @@
     "@ark-ui/website"
   ],
   "overrides": {
-    "flexsearch": "0.8.158"
+    "flexsearch": "0.8.205"
   }
 }
