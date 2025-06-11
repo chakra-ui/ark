@@ -29,17 +29,15 @@ Learn how to use the `Checkbox` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Controlled Checkbox
+### Controlled
 
-To create a controlled Checkbox component, manage the state of the checked status using the `checked` prop and update it
-when the `onCheckedChange` event handler is called:
+Use the `checked` and `onCheckedChange` props to programatically control the checkbox's state.
 
 <Example id="controlled" />
 
-### Indeterminate Checkbox
+### Indeterminate
 
-In some cases, you may need a checkbox to represent a state that is neither checked nor unchecked, known as the
-indeterminate state. This can be achieved by setting the `checked` prop to `indeterminate`:
+Use the `indeterminate` prop to create a checkbox in an indeterminate state (partially checked).
 
 <Example id="indeterminate" />
 
@@ -50,28 +48,27 @@ state of the checkboxes and provides a way to access the checked values:
 
 <Example id="group" />
 
-### Render Prop Usage
+### Access Checkbox state
 
-For cases where you need more flexibility in rendering, the Checkbox component offers the use of a render prop. The
-render prop function gives you access to the checkbox's API, allowing you to customize the checkbox control's rendering:
+Use the `Checkbox.Context` and its render prop to access the checkbox's state and methods.
 
 <Example id="render-prop" />
 
-### Using the Field Component
+### Field
 
-The `Field` component helps manage form-related state and accessibility attributes of a checkbox. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
+The checkbox integrates smoothly with the `Field` component to handle form state, helper text, and error text for proper
+accessibility.
 
 <Example id="with-field" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the checkbox. It accepts the value of the `useCheckbox` hook. You
-can leverage it to access the component state and methods from outside the checkbox.
+Use the `useCheckbox` hook to create the checkbox store and pass it to the `Checkbox.RootProvider` component. This
+allows you to have maximum control over the checkbox programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `Checkbox.RootProvider` component, you don't need to use the `Checkbox.Root` component.
 
 ## API Reference
 
