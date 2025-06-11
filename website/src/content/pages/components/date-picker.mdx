@@ -26,7 +26,7 @@ To create a Date Picker that allows a range selection, set the `selectionMode` p
 
 <Example id="range" />
 
-### Standalone Date Picker
+### Standalone
 
 In some cases, you might want to display a non-dismissible date picker. This can be achieved by setting the `open` prop
 to `true` and `closeOnSelect` prop to `false`.
@@ -35,14 +35,14 @@ to `true` and `closeOnSelect` prop to `false`.
 
 <Example id="standalone" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the date-picker. It accepts the value of the `useDate-picker` hook.
-You can leverage it to access the component state and methods from outside the date-picker.
+Use the `useDatePicker` hook to create the date picker store and pass it to the `DatePicker.RootProvider` component.
+This allows you to have maximum control over the date picker programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `DatePicker.RootProvider` component, you don't need to use the `DatePicker.Root` component.
 
 ## API Reference
 

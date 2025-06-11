@@ -41,43 +41,43 @@ You can use CSS animations to create smooth transitions for opening and closing 
 
 ## Examples
 
-Learn how to use the `Collapsible` component in your project. Let's examine the most basic example:
+Learn how to use the `Collapsible` component in your project. Let's examine the most basic example
 
 <Example id="basic" />
 
 ### Events
 
-You can listen for the `onExitComplete` event to know when the `Collapsible.Content` is no longer visible:
+Use `onExitComplete` callback to listen for when the `Collapsible.Content` is no longer visible
 
 <Example id="on-exit-complete" />
 
 ### Lazy Mount
 
-To delay the mounting of the `Collapsible.Content`, use the `lazyMount` prop:
+To delay the mounting of the `Collapsible.Content`, use the `lazyMount` prop
 
 <Example id="lazy-mount" />
 
 ### Unmount on Exit
 
-To remove the `Collapsible.Content` from the DOM when it is not visible, use the `unmountOnExit` prop:
+To remove the `Collapsible.Content` from the DOM when it is not visible, use the `unmountOnExit` prop
 
 <Example id="unmount-on-exit" />
 
-### Combining Lazy Mount and Unmount on Exit
+### Lazy Mount + Unmount on Exit
 
 Both `lazyMount` and `unmountOnExit` can be combined to ensure that the component is mounted only when the `Collapsible`
 is expanded and unmounted when it is collapsed:
 
 <Example id="lazy-mount-and-unmount-on-exit" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the collapsible. It accepts the value of the `useCollapsible` hook.
-You can leverage it to access the component state and methods from outside the collapsible.
+Use the `useCollapsible` hook to create the collapsible store and pass it to the `Collapsible.RootProvider` component.
+This allows you to have maximum control over the collapsible programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `Collapsible.RootProvider` component, you don't need to use the `Collapsible.Root` component.
 
 ## API Reference
 

@@ -36,21 +36,20 @@ This example demonstrates how to integrate the `Field` component with a select d
 
 <Example id="select" />
 
-### Using Ark Components
+### Checkbox
 
-This example demonstrates how to integrate the `Field` and `Checkbox` components. For more examples of using the `Field`
-component with various Ark UI elements, refer to their respective documentation.
+This example demonstrates how to integrate the `Field` and `Checkbox` components.
 
 <Example component="checkbox" id="with-field" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the field. It accepts the value of the `useField` hook. You can
-leverage it to access the component state and methods from outside the field.
+Use the `useField` hook to create the field store and pass it to the `Field.RootProvider` component. This allows you to
+have maximum control over the field programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `Field.RootProvider` component, you don't need to use the `Field.Root` component.
 
 ## API Reference
 

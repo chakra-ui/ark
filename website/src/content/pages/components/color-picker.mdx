@@ -20,28 +20,29 @@ Learn how to use the `ColorPicker` component in your project. Let's take a look 
 
 <Example id="basic" />
 
-### Controlled Color Picker
+### Controlled
 
-To create a controlled Color Picker component, manage the state of the current color using the `value` prop and update
-it when the `onValueChange` or `onValueChangeEnd` event handler is called:
+Use the `value` and `onValueChange` props to programatically control the color picker's state.
 
 <Example id="controlled" />
 
-### Using the Field Component
+> Alternatively, the `onValueChangeEnd` prop can be used to listen for when the user has finished selecting a color.
+
+### Field
 
 The `Field` component helps manage form-related state and accessibility attributes of a color picker. It includes
 handling ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the color-picker. It accepts the value of the `useColor-picker`
-hook. You can leverage it to access the component state and methods from outside the color-picker.
+Use the `useColorPicker` hook to create the color picker store and pass it to the `ColorPicker.RootProvider` component.
+This allows you to have maximum control over the color picker programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `ColorPicker.RootProvider` component, you don't need to use the `ColorPicker.Root` component.
 
 ## API Reference
 

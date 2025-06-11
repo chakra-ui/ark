@@ -29,7 +29,7 @@ Learn how to use the `Carousel` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Controlled Carousel
+### Controlled
 
 To create a controlled Carousel component, you can manage the state of the carousel using the `index` prop and update it
 when the `onIndexChange` event handler is called:
@@ -43,14 +43,14 @@ going after the last slide.
 
 <Example id="autoplay" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` sets up carousel context using the `useCarousel` hook, enabling external access to its state and
-methods.
+Use the `useCarousel` hook to create the carousel store and pass it to the `Carousel.RootProvider` component. This
+allows you to have maximum control over the carousel programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `Carousel.RootProvider` component, you don't need to use the `Carousel.Root` component.
 
 ## API Reference
 

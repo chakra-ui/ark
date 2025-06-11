@@ -20,13 +20,13 @@ Learn how to use the `Dialog` component in your project. Let's take a look at th
 
 <Example id="basic" />
 
-### Controlled Dialog
+### Controlled
 
 To create a controlled Dialog component, manage the state of the dialog using the `open` and `onOpenChange` props:
 
 <Example id="controlled" />
 
-### Lazy Mounting
+### Lazy Mount
 
 Lazy mounting is a feature that allows the content of a dialog to be rendered only when the dialog is first opened. This
 is useful for performance optimization, especially when dialog content is large or complex. To enable lazy mounting, use
@@ -37,21 +37,20 @@ Dialog is closed, freeing up resources. The next time the dialog is activated, i
 
 <Example id="lazy-mount" />
 
-### Using Render Function
+### Render Function
 
-The Dialog component supports the use of a render function as a child for more control. This allows access to dialog
-states like `isOpen`:
+Use the `Dialog.Context` component to access the dialog's state and methods.
 
 <Example id="render-fn" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the dialog. It accepts the value of the `useDialog` hook. You can
-leverage it to access the component state and methods from outside the dialog.
+Use the `useDialog` hook to create the dialog store and pass it to the `Dialog.RootProvider` component. This allows you
+to have maximum control over the dialog programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `Dialog.RootProvider` component, you don't need to use the `Dialog.Root` component.
 
 ## API Reference
 

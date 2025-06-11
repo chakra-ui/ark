@@ -20,14 +20,14 @@ Learn how to use the `Editable` component in your project. Let's take a look at 
 
 <Example id="basic" />
 
-### Using custom controls
+### Custom controls
 
 In some cases, you might need to use custom controls to toggle the edit and read mode. We use the render prop pattern to
 provide access to the internal state of the component.
 
 <Example id="custom-controls" />
 
-### Auto-resizing the editable
+### Auto-resizing
 
 To auto-grow the editable as the content changes, set the `autoResize` prop to `true`.
 
@@ -37,7 +37,7 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to `
 </Editable.Root>
 ```
 
-### Setting a maxWidth
+### Max width
 
 It is a common pattern to set a maximum of the editable as it auto-grows. To achieve this, set the `maxWidth` prop to
 the desired value.
@@ -48,7 +48,7 @@ the desired value.
 </Editable.Root>
 ```
 
-### Editing with double click
+### Double click activation
 
 The editable supports two modes of activating the "edit" state:
 
@@ -63,21 +63,21 @@ To change the mode to double-click, pass the prop `activationMode="dblclick"`.
 </Editable.Root>
 ```
 
-### Using the Field Component
+### Field
 
 The `Field` component helps manage form-related state and accessibility attributes of an editable. It includes handling
 ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
-### Using the Root Provider
+### Root Provider
 
-The `RootProvider` component provides a context for the editable. It accepts the value of the `useEditable` hook. You
-can leverage it to access the component state and methods from outside the editable.
+Use the `useEditable` hook to create the editable store and pass it to the `Editable.RootProvider` component. This
+allows you to have maximum control over the editable programmatically.
 
 <Example id="root-provider" />
 
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+> If you're using the `Editable.RootProvider` component, you don't need to use the `Editable.Root` component.
 
 ## API Reference
 
