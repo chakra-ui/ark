@@ -3,15 +3,15 @@
   import type { UseSliderContext } from './use-slider-context'
 
   export interface SliderContextProps {
-    api?: Snippet<[UseSliderContext]>
+    render?: Snippet<[UseSliderContext]>
   }
 </script>
 
 <script lang="ts">
   import { useSliderContext } from './use-slider-context'
 
-  const { api }: SliderContextProps = $props()
+  const { render }: SliderContextProps = $props()
   const slider = useSliderContext()
 </script>
 
-{@render api?.(slider)}
+{@render render?.(slider)}

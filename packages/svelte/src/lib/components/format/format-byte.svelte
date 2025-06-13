@@ -20,10 +20,12 @@
   import { useLocaleContext } from '../../providers'
 
   const props: FormatByteProps = $props()
+
   const locale = useLocaleContext()
+
   const text = $derived(() => {
     const { value, ...intlProps } = props
-    return formatBytes(value, locale.locale, intlProps)
+    return formatBytes(value, locale().locale, intlProps)
   })
 </script>
 

@@ -7,7 +7,7 @@ import RootProviderExample from './examples/circular/root-provider.svelte'
 import ValueTextExample from './examples/circular/value-text.svelte'
 
 const meta = {
-  title: 'Components / Progress / Circular',
+  title: 'Components / Progress - Circular',
 } as Meta
 
 export default meta

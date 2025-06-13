@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Tabs } from '../'
+  import { Tabs } from '@ark-ui/svelte/tabs'
 
   let value = $state<string | null>('react')
 </script>

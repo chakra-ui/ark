@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/linear/basic.svelte'
+import ControlledExample from './examples/linear/controlled.svelte'
 import IndeterminateExample from './examples/linear/indeterminate.svelte'
 import InitialValueExample from './examples/linear/initial-value.svelte'
 import MinMaxExample from './examples/linear/min-max.svelte'
@@ -7,7 +8,7 @@ import RootProviderExample from './examples/linear/root-provider.svelte'
 import ValueTextExample from './examples/linear/value-text.svelte'
 
 const meta = {
-  title: 'Components / Progress / Linear',
+  title: 'Components / Progress - Linear',
 } as Meta
 
 export default meta
@@ -45,5 +46,11 @@ export const RootProvider = {
 export const ValueText = {
   render: () => ({
     Component: ValueTextExample,
+  }),
+}
+
+export const Controlled = {
+  render: () => ({
+    Component: ControlledExample,
   }),
 }

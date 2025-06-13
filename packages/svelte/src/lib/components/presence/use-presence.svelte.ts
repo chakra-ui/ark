@@ -2,6 +2,7 @@ import type { Optional } from '$lib/types'
 import { type RenderStrategyProps, splitRenderStrategyProps } from '$lib/utils/render-strategy'
 import * as presence from '@zag-js/presence'
 import { normalizeProps, useMachine } from '@zag-js/svelte'
+import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
 export interface UsePresenceProps extends Optional<presence.Props, 'present'>, RenderStrategyProps {
   /**
@@ -12,8 +13,9 @@ export interface UsePresenceProps extends Optional<presence.Props, 'present'>, R
 }
 export interface UsePresenceReturn extends ReturnType<typeof usePresence> {}
 
-export const usePresence = (props: UsePresenceProps) => {
-  const [renderStrategyProps, machineProps] = $derived(splitRenderStrategyProps(props))
+export const usePresence = (props: MaybeFunction<UsePresenceProps>) => {
+  const resolvedProps = $derived(runIfFn(props))
+  const [renderStrategyProps, machineProps] = $derived(splitRenderStrategyProps(resolvedProps))
 
   const service = useMachine(presence.machine, () => machineProps)
 
@@ -32,15 +34,16 @@ export const usePresence = (props: UsePresenceProps) => {
       (renderStrategyProps.unmountOnExit && !api.present && wasEverPresent),
   )
 
-  const result = $derived(() => ({
+  const result = $derived({
     getPresenceProps: () => ({
-      'data-state': api.skip && props.skipAnimationOnMount ? undefined : props.present ? 'open' : 'closed',
+      'data-state':
+        api.skip && resolvedProps.skipAnimationOnMount ? undefined : resolvedProps.present ? 'open' : 'closed',
       hidden: !api.present,
     }),
     present: api.present,
     setNode: api.setNode,
     unmounted,
-  }))
+  })
 
-  return result
+  return () => result
 }

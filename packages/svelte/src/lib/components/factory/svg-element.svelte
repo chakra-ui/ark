@@ -7,9 +7,10 @@
   type Props = HTMLProps<T> &
     PolymorphicProps<T> & {
       as: T
+      ref?: Element | null
     }
 
-  const { as, ...props }: Props = $props()
+  let { as, ref = $bindable<Element | null>(null), ...props }: Props = $props()
 </script>
 
-<svelte:element this={as} {...props} />
+<svelte:element this={as} {...props} bind:this={ref} />

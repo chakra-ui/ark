@@ -7,7 +7,7 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps, reflect } from '@zag-js/svelte'
+  import { mergeProps } from '@zag-js/svelte'
   import { splitPresenceProps } from './split-presence-props.svelte'
 
   let props: PresenceProps = $props()
@@ -15,7 +15,7 @@
   let called = $state(false)
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
-  const presence = usePresence(reflect(() => presenceProps))
+  const presence = usePresence(() => presenceProps)
   const mergedProps = $derived(mergeProps(presence().getPresenceProps(), localProps))
 
   $effect(() => {

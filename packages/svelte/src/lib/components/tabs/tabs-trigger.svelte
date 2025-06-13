@@ -12,10 +12,10 @@
   import { Ark } from '../factory'
   import { useTabsContext } from './use-tabs-context'
 
-  const _props: TabsTriggerProps = $props()
-  const [triggerProps, localProps] = createSplitProps<TriggerProps>()(_props, ['value', 'disabled'])
+  const props: TabsTriggerProps = $props()
+  const [triggerProps, localProps] = createSplitProps<TriggerProps>()(props, ['value', 'disabled'])
   const tabs = useTabsContext()
-  const mergedProps = $derived(mergeProps(tabs.getTriggerProps(triggerProps), localProps))
+  const mergedProps = $derived(mergeProps(tabs().getTriggerProps(triggerProps), localProps))
 </script>
 
 <Ark as="button" {...mergedProps} />

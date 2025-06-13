@@ -18,9 +18,9 @@
   import { TabsProvider } from './use-tabs-context'
   import { useTabs } from './use-tabs.svelte'
 
-  let { value = $bindable(), ..._props }: TabsRootProps = $props()
+  let { value = $bindable(), ...props }: TabsRootProps = $props()
 
-  const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(_props)
+  const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
 
   const id = $props.id()
 
@@ -51,7 +51,7 @@
       if (value != null) value = details.value
     },
   }))
-  const mergedProps = $derived(mergeProps(tabs.getRootProps(), localProps))
+  const mergedProps = $derived(mergeProps(tabs().getRootProps(), localProps))
 
   TabsProvider(tabs)
   RenderStrategyPropsProvider(renderStrategyProps)

@@ -7,17 +7,17 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps, reflect } from '@zag-js/svelte'
+  import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '../../utils/create-split-props'
   import { Ark } from '../factory'
   import { ProgressProvider } from './use-progress-context'
   import { useProgress } from './use-progress.svelte'
 
-  const _props: ProgressRootProps = $props()
+  let { value = $bindable(), ...props }: ProgressRootProps = $props()
   const providedId = $props.id()
 
   const [useProgressProps, localProps] = $derived(
-    createSplitProps<Optional<UseProgressProps, 'id'>>()(_props, [
+    createSplitProps<Optional<UseProgressProps, 'id'>>()(props, [
       'defaultValue',
       'formatOptions',
       'id',
@@ -31,12 +31,17 @@
       'value',
     ]),
   )
-  const resolvedProps = $derived({
+  const resolvedProps = $derived<UseProgressProps>({
     ...useProgressProps,
-    id: providedId,
+    id: useProgressProps.id ?? providedId,
+    value,
+    onValueChange(details) {
+      value = details.value
+      useProgressProps.onValueChange?.(details)
+    },
   })
 
-  const progress = useProgress(reflect(() => resolvedProps))
+  const progress = useProgress(() => resolvedProps)
   const mergedProps = $derived(mergeProps(progress().getRootProps(), localProps))
 
   ProgressProvider(progress)

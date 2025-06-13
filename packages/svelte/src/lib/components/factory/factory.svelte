@@ -8,9 +8,10 @@
   type Props = HTMLProps<T> &
     PolymorphicProps<T> & {
       as: T
+      ref?: Element | null
     }
 
-  const { asChild = false, children, render, as, ...rest }: Props = $props()
+  let { asChild = false, children, render, as, ref = $bindable<Element | null>(null), ...rest }: Props = $props()
 
   const propsFn: PropsFn<T> = (props) => mergeProps(rest, props ?? {})
 </script>
@@ -18,11 +19,11 @@
 {#if asChild}
   {@render render?.(propsFn)}
 {:else if isVoidSVGTag(as)}
-  <SvgElement {as} {...rest} />
+  <SvgElement {as} {...rest} bind:ref />
 {:else if isVoidHTMLTag(as)}
-  <svelte:element this={as} {...rest} />
+  <svelte:element this={as} {...rest} bind:this={ref} />
 {:else}
-  <svelte:element this={as} {...rest}>
+  <svelte:element this={as} {...rest} bind:this={ref}>
     {@render children?.()}
   </svelte:element>
 {/if}

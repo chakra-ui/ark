@@ -12,7 +12,7 @@
 
   const props: TabsIndicatorProps = $props()
   const tabs = useTabsContext()
-  const mergedProps = $derived(mergeProps(tabs.getIndicatorProps(), props))
+  const mergedProps = $derived(mergeProps(tabs().getIndicatorProps(), props))
 </script>
 
 <Ark as="div" {...mergedProps} />

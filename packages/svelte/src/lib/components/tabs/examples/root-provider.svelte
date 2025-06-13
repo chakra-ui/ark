@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Tabs, useTabs } from '../'
+  import { Tabs, useTabs } from '@ark-ui/svelte/tabs'
 
   const id = $props.id()
 
@@ -9,7 +9,7 @@
   })
 </script>
 
-<button onclick={() => tabs.focus()}>Focus</button>
+<button onclick={() => tabs().focus()}>Focus</button>
 
 <Tabs.RootProvider value={tabs}>
   <Tabs.List>

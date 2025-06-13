@@ -14,8 +14,8 @@
   import { useTabsContext } from './use-tabs-context'
   import { PresenceProvider, usePresence } from '../presence'
 
-  const _props: TabsContentProps = $props()
-  const [contentProps, localProps] = createSplitProps<ContentProps>()(_props, ['value'])
+  const props: TabsContentProps = $props()
+  const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
 
   const tabs = useTabsContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
@@ -23,12 +23,12 @@
   const presence = usePresence({
     ...renderStrategyProps,
     get present() {
-      return tabs.value === contentProps.value
+      return tabs().value === contentProps.value
     },
     immediate: true,
   })
 
-  const mergedProps = $derived(mergeProps(tabs.getContentProps(contentProps), localProps))
+  const mergedProps = $derived(mergeProps(tabs().getContentProps(contentProps), localProps))
 
   PresenceProvider(presence)
 </script>
