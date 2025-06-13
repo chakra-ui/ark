@@ -1,0 +1,1720 @@
+---
+title: 'Design System #2: Menu component'
+description: How to build a menu component with Ark UI and Panda CSS
+date: '2025-06-13'
+author: 'Esther Adebayo'
+tags: ['menu', 'ark-ui', 'design-system']
+---
+
+The [Menu component](https://ark-ui.com/docs/components/menu) is used in web apps for dropdowns, actions, or contextual
+options.
+
+In this tutorial, we'll dive deep into styling a feature-rich Menu component. Here are the key styles and
+functionalities we'll cover:
+
+- **Size Variants:** Add support for small, medium, and large menu sizes. This lets you adjust things like padding, font
+  size, and spacing for different use cases.
+- **Disabled States:** Some menu items won’t always be clickable. We’ll show how to visually communicate that with
+  styles that indicate disabled behavior.
+- **Menu Indicator:** You’ll learn how to style and animate the indicator that signals when the menu is open or closed.
+- **Grouped Sections:** We’ll style grouped menu items, including section labels and visual separators, to help organize
+  long lists.
+- **Checkbox & Radio Items:** Ark UI supports checkboxes and radio buttons inside menus. We’ll organize long lists of
+  menu items with styled section labels and visual separators.
+- **Icons and Commands:** Add styles for menus that include icons and keyboard shortcuts with command text.
+
+By the end of this guide, you’ll have a scalable approach for styling menus, whether you prefer Vanilla CSS or Panda
+CSS.
+
+<video src="/blog/avatar/avatar-intro.mp4" autoPlay loop muted playsinline />
+
+## Anatomy
+
+To style the menu correctly, you'll need to understand its anatomy and part names. Each part includes
+a `data-part` attribute to help identify them in the DOM.
+
+![CleanShot 2025-06-05 at 14.20.25@2x.png](attachment:f4f3cd98-f96c-4628-8a16-154d03ee85b1:CleanShot_2025-06-05_at_14.20.252x.png)
+
+### Key Menu Parts
+
+- **`trigger`** – The button or element used to open and close the menu.
+- **`content`** – The dropdown panel that appears when the menu is open. It wraps all menu items.
+- **`item`** – An individual selectable option within the menu.
+- **`itemText`** – The label text inside a menu item.
+
+### Optional Parts
+
+- **`indicator`** – An icon (e.g. chevron) placed in the trigger.
+- **`itemIndicator`** – A small visual icon (e.g. checkmark) used to indicate selected state for checkbox or radio
+  items.
+- **`trigger item`** – A nested menu item that acts as a trigger for a submenu.
+- **`option item`** – A special menu item used in multi-select patterns, often seen with
+- **`itemGroupLabel`** – A label for grouped menu items, useful for categorizing sections in long lists.
+- **`separator`** – A thin divider used to separate groups of menu items for better visual structure.checkboxes or
+  filters.
+
+### Basic Usage
+
+Here’s a simple example of how to use the `Menu` component in your code:
+
+```jsx
+import { Menu } from '@ark-ui/react/menu'
+
+export const Basic = () => (
+  <Menu.Root>
+    <Menu.Trigger>
+      Open menu <Menu.Indicator>➡️</Menu.Indicator>
+    </Menu.Trigger>
+    <Menu.Positioner>
+      <Menu.Content>
+        <Menu.Item value="react">React</Menu.Item>
+        <Menu.Item value="solid">Solid</Menu.Item>
+        <Menu.Item value="vue">Vue</Menu.Item>
+      </Menu.Content>
+    </Menu.Positioner>
+  </Menu.Root>
+)
+```
+
+When rendered in the DOM, here’s what the menu looks like when it is open:
+
+```html
+<div data-scope="menu" data-part="root">
+  <button data-scope="menu" data-part="trigger" aria-haspopup="menu" aria-expanded="false">
+    Open menu
+    <span data-scope="menu" data-part="indicator">➡️</span>
+  </button>
+
+  <!-- When menu is open -->
+  <div data-scope="menu" data-part="positioner">
+    <div data-scope="menu" data-part="content" role="menu">
+      <div data-scope="menu" data-part="item" role="menuitem" data-value="react">React</div>
+
+      <div data-scope="menu" data-part="item" role="menuitem" data-value="solid">Solid</div>
+
+      <div data-scope="menu" data-part="item" role="menuitem" data-value="vue">Vue</div>
+    </div>
+  </div>
+</div>
+```
+
+Each part of the menu component comes with data attributes like:
+
+- **`data-scope="menu"`** which scopes all menu parts under the `menu` namespace, ensuring styles don’t clash with other
+  components.
+- **`data-part="..."`** which identifies the specific slot or part of the component, such as `content`, `item` and more.
+- **`data-state="..."`** which reflects dynamic states such as `data-state="open"` or `data-state="closed"` .
+
+## Styling with Vanilla CSS
+
+To create a design system for the menu component using Vanilla CSS, it is important to start **_thinking in recipes_**.
+
+A recipe is a structured way to define styles for a component including all its parts and variants in one place. With a
+recipe, you can:
+
+- Set up **base styles** that apply to every instance of the component.
+- Add **size variants** (e.g., `sm`, `md`) that adjust dimensions and font size
+
+Essentially, recipes help you group related styles together and reuse them in a consistent way.
+
+### Setting Up Global Styles
+
+When building a design system, maintaining consistency is key. To support that, we’ll create a `shared` directory to
+house global styles that can be reused across components.
+
+Here’s what to include:
+
+**CSS Reset Styles:** Start with a CSS reset to remove default browser inconsistencies. This ensures every component starts from the same baseline, no matter the browser. [Access the code here] 
+
+```tsx
+/** CSS Reset inspired by createPreflight **/
+
+html {
+  line-height: 1.5;
+  --font-fallback: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: var(--global-font-body, var(--font-fallback));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  word-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*, *::before, *::after, *::backdrop {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--global-color-border, currentColor);
+}
+
+hr {
+  height: 0;
+  color: inherit;
+  border-top-width: 1px;
+}
+
+body {
+  min-height: 100dvh;
+  position: relative;
+}
+
+img {
+  border-style: none;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+}
+
+iframe {
+  border: none;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+code, kbd, pre, samp {
+  font-size: 1em;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+}
+
+button, select {
+  text-transform: none;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+*::placeholder {
+  opacity: unset;
+  color: #9ca3af;
+  user-select: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+summary {
+  display: list-item;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+dialog {
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp, pre {
+  font-size: 1em;
+  --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New';
+  font-family: var(--global-font-mono, var(--font-mono-fallback));
+}
+
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-search-decoration, ::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+[hidden]:where(:not([hidden='until-found'])) {
+  display: none !important;
+}
+
+```
+
+
+**Button Styles:** Since menu triggers are typically buttons, it’s a good idea to define global button styles. Create a
+`button.css` file so the button design can be reused anywhere in your system, not just for the menu.
+
+```css
+.button {
+  display: inline-flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-width: 1px;
+  border-color: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  outline: 0;
+  line-height: 1.2;
+  isolation: isolate;
+  font-weight: 500;
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.2s;
+}
+.button:focus-visible {
+  outline: 2px solid #c4c4c4;
+  outline-offset: 2px;
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.button svg {
+  flex-shrink: 0;
+}
+
+/* Size Variants */
+.button--size-sm {
+  height: 2.25rem;
+  min-width: 2.25rem;
+  font-size: 0.875rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  gap: 0.5rem;
+}
+.button--size-sm svg {
+  width: 1rem;
+  height: 1rem;
+}
+.button--size-md {
+  height: 2.5rem;
+  min-width: 2.5rem;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  gap: 0.5rem;
+}
+.button--size-md svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.button--size-lg {
+  height: 2.75rem;
+  min-width: 2.75rem;
+  font-size: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  gap: 0.75rem;
+}
+.button--size-lg svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Variant: solid */
+.button--variant-solid {
+  background: var(--accent-solid);
+  color: var(--fg-inverted);
+  border-color: transparent;
+}
+.button--variant-solid:hover,
+.button--variant-solid[aria-expanded='true'] {
+  background: color-mix(in srgb, var(--accent-solid) 80%, #000 20%);
+}
+
+/* Variant: subtle */
+.button--variant-subtle {
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  border-color: transparent;
+}
+.button--variant-subtle:hover,
+.button--variant-subtle[aria-expanded='true'] {
+  background: color-mix(in srgb, var(--bg-emphasized) 80%, #000 20%);
+}
+
+/* Variant: outline */
+.button--variant-outline {
+  border-width: 1px;
+  border-color: var(--border);
+  color: var(--fg-muted);
+  background: transparent;
+}
+.button--variant-outline:hover,
+.button--variant-outline[aria-expanded='true'] {
+  background: var(--bg-subtle);
+}
+```
+
+**Design Tokens:** To keep your styles scalable, define reusable CSS variables for things like color, border radius,
+etc. Add these to a `tokens.css` file.
+
+```css
+/* shared/tokens.css */
+
+:root {
+  --bg: #fff;
+  --bg-subtle: #f9fafb;
+  --bg-muted: #f3f4f6;
+  --bg-emphasized: #e5e7eb;
+  --bg-inverted: #000;
+  --bg-panel: #fff;
+  --bg-error: #fef2f2;
+  --bg-warning: #fff7ed;
+  --bg-success: #f0fdf4;
+  --bg-info: #eff6ff;
+  --border: #e5e7eb;
+  --border-muted: #f3f4f6;
+  --border-subtle: #f9fafb;
+  --border-emphasized: #d1d5db;
+  --border-inverted: #1f2937;
+  --border-error: #ef4444;
+  --border-warning: #f59e42;
+  --border-success: #22c55e;
+  --border-info: #3b82f6;
+  --fg: #000000;
+  --fg-muted: #4b5563;
+  --fg-subtle: #9ca3af;
+  --fg-inverted: #f9fafb;
+  --fg-error: #ef4444;
+  --fg-warning: #ea580c;
+  --fg-success: #16a34a;
+  --fg-info: #2563eb;
+  --accent-contrast: #000;
+  --accent-fg: #c2410c;
+  --accent-subtle: #ffedd5;
+  --accent-muted: #fed7aa;
+  --accent-emphasized: #fdba74;
+  --accent-solid: #ea580c;
+  --accent-focusRing: #fb923c;
+
+  --shadow-sm: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.14);
+  --shadow-lg: 0 8px 24px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.08);
+}
+```
+
+**Keyframe Animations:** Define reusable keyframe animations like `slide-fade-in` and `slide-fade-out` . These will be
+used to give the menu smooth transitions.
+
+```css
+/* shared/keyframes.css */
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+```
+
+Inside the `shared` folder, create a `global.css` file and import all the file styles:
+
+```css
+/* shared/global.css */
+
+@import url(./reset.css);
+
+@import url(./tokens.css);
+@import url(./keyframes.css);
+
+@import url(./button.css);
+```
+
+Finally, make sure to import `shared/global.css` at the root of your app to ensure all global styles are loaded
+correctly.
+
+### Base Styles
+
+These are the core styles that give the menu component a consistent foundation, even before any variants are applied.
+
+Ark UI exposes helpful attributes like `data-scope="menu"` and `data-part="..."` for every part of the menu, making it
+easy to target each piece directly in CSS.
+
+**Styling the Menu Content**
+
+The menu content is the floating container that holds all the items inside the dropdown. Add the content styles in a
+`menu.css` stylesheet:
+
+```css
+/* Menu content */
+[data-scope='menu'][data-part='content'] {
+  outline: 0;
+  background: var(--bg-panel);
+  box-shadow: var(--shadow-md);
+  color: var(--fg);
+  z-index: 1100;
+  border-radius: 8px;
+  overflow: hidden;
+  overflow-y: auto;
+  min-width: 8rem;
+  max-height: 300px;
+  padding: var(--menu-content-padding);
+}
+```
+
+Notice the use of the **`--menu-content-padding`** CSS variable. We'll define the actual value of this variable when we
+set up our size variants shorty.
+
+**Animating Open and Close Transitions**
+
+To provide a smooth user experience, we'll add subtle animations for when the menu opens and closes. We defined the
+keyframes earlier so apply these animations using Ark UI’s built-in `data-state="open"` or `data-state="closed"`
+attribute:
+
+```tsx
+[data-scope='menu'][data-part='content'][data-state='open'] {
+  animation: slide-fade-in 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-scope='menu'][data-part='content'][data-state='closed'] {
+  animation: slide-fade-out 100ms cubic-bezier(0.4, 0, 1, 1);
+}
+```
+
+**Styling Menu Items**
+
+Each individual `item` can be styled like this:
+
+```tsx
+[data-scope='menu'][data-part='item'] {
+  text-decoration: none;
+  color: var(--fg);
+  user-select: none;
+  border-radius: 6px;
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  text-align: start;
+  position: relative;
+  flex: 0 0 auto;
+  outline: 0;
+  transition: background 0.2s;
+  gap: var(--menu-item-gap);
+  font-size: var(--menu-item-font-size);
+  padding: var(--menu-item-padding);
+  &[data-highlighted] {
+    background: var(--bg-muted);
+  }
+}
+```
+
+Within the base styles for each menu item, notice the use of CSS variables like `--menu-item-gap`,
+`--menu-item-font-size`, and `--menu-item-padding`. These variables act as placeholders, allowing us to control
+item-specific properties such as spacing between elements, text size, and internal padding. The actual values for these
+variables will be dynamically set by the size variants we’ll define later.
+
+**Highlighted & Disabled States**
+
+- **Highlighted state:** When a user hovers over a menu item or navigates to it using the keyboard, Ark UI automatically
+  applies the `data-highlighted` attribute. We can use this to indicate the active item
+
+  ```tsx
+   [data-scope='menu'][data-part='item'] {
+    // other styles here
+    &[data-highlighted] {
+      background: var(--bg-muted);
+    }
+  }
+
+  ```
+
+- **Disabled state:** In many menus, not all option are available. For example, a "Delete" option may be unavailable for
+  users without permission. Ark UI provides the `data-disabled` attribute to style the disabled styles
+  ```css
+  [data-scope='menu'][data-part='item'] {
+  	// item styles here
+    }
+   &[data-disabled] {
+      color: var(--fg-subtle);
+      cursor: not-allowed;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+  ```
+
+**Styling the Indicator**
+
+The indicator automatically receives the `data-part="indicator"` attribute, making it easy to style.
+
+```css
+[data-scope='menu'][data-part='indicator'] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  &[data-state='open'] {
+    transform: rotate(90deg);
+  }
+}
+```
+
+Ark UI automatically applies `data-state="open"` when the menu is expanded. We added a style such that when the menu
+opens, the indicator smoothly rotates to point right
+
+**Styling Checkboxes and Radios within Menu Items**
+
+Menus sometimes contain interactive selectable options like checkboxes (for multi-selection) or radios (for
+single-selection).
+
+When an item is selected, Ark UI applies `data-state="checked"` attribute for styling.
+
+```css
+[data-scope='menu'][data-part='item'] {
+  // item styles here
+ &[data-state='checked'] {
+    font-weight: 500;
+  }
+  &[data-type] {
+    padding-inline-start: var(--menu-option-offset);
+  }
+}
+```
+
+- `data-state="checked"`: When an item is selected, Ark UI applies this attribute, allowing us to visually distinguish
+  it (e.g., by making the font bold).
+- `data-type`: This attribute is present on all `Menu.CheckboxItem` and `Menu.RadioItem` elements. We use it to create
+  the necessary space at the beginning of the item for the checkmark or radio dot icon, ensuring the item's text aligns
+  perfectly with other menu items.
+
+**Styling Menu Groups and Separators**
+
+For organizing long lists of menu items, Ark UI offers grouping capabilities with labels and visual separators:
+
+- **Group Labels:** The `item-group-label` is used for headings above related sets of menu items.
+
+  ```css
+  [data-scope='menu'][data-part='item-group-label'] {
+    padding-inline: 0.5rem;
+    padding-block: 0.375rem;
+    font-size: var(--menu-item-font-size);
+    font-weight: 500;
+  }
+  ```
+
+- **Separators**: The `separator` part is a visual line used to divide logical groups of menu items.
+  ```css
+  [data-scope='menu'][data-part='separator'] {
+    height: 1px;
+    border-color: var(--border);
+    margin-block: var(--menu-content-padding);
+    margin-inline: calc(-1 * var(--menu-content-padding));
+  }
+  ```
+
+**Styling Item Content: Text, Icons, and Commands**
+
+Menu items can include more than just text. We often want to add leading icons or trailing keyboard shortcut hints
+(commands).
+
+Ark UI automatically applies `data-part="item-text"`, `"data-part='item-indicator"` and `data-part="item-command"`to the
+relevant parts.
+
+```css
+[data-scope='menu'][data-part='item-text'] {
+  flex: 1;
+}
+
+[data-scope='menu'][data-part='item-indicator'] {
+  position: absolute;
+  inset-inline-start: 4px;
+}
+
+[data-scope='menu'][data-part='item-command'] {
+  opacity: 0.6;
+  font-size: 0.75rem;
+  margin-inline-start: auto;
+  padding-inline-start: 1rem;
+  letter-spacing: 0.1em;
+  font-family: inherit;
+}
+```
+
+The combination of `flex: 1` on `item-text` and `margin-inline-start: auto` on `item-command` acts like a flexbox to
+push the command text to the right, which creates an aligned layout.
+
+### Size Variant
+
+Finally, to create our `small`, `medium`, and `large` menu sizes, we'll define the CSS classes that set the values for
+all our custom CSS variables. These variables will then cascade down to all the menu's parts, adjusting their dimensions
+and spacing, thanks to the `data-scope` and `data-part` selectors.
+
+```css
+.menu--sm {
+  --menu-content-padding: 0.25rem;
+  --menu-item-gap: 0.25rem;
+  --menu-item-font-size: 0.875rem;
+  --menu-item-padding: 0.25rem 0.75rem;
+  --menu-item-icon-size: 1rem;
+  --menu-option-offset: 1.5rem;
+}
+
+.menu--md {
+  --menu-content-padding: 0.25rem;
+  --menu-item-gap: 0.5rem;
+  --menu-item-font-size: 0.925rem;
+  --menu-item-padding: 0.25rem 0.75rem;
+  --menu-item-icon-size: 2rem;
+  --menu-option-offset: 1.25rem;
+}
+
+.menu--lg {
+  --menu-content-padding: 0.5rem;
+  --menu-item-gap: 0.5rem;
+  --menu-item-font-size: 1rem;
+  --menu-item-padding: 0.5rem 0.925rem;
+  --menu-item-icon-size: 2.5rem;
+  --menu-option-offset: 1.5rem;
+}
+```
+
+## Using The Vanilla CSS Classes in Your Component
+
+With these base styles and size variants defined in your `menu.css` , applying them to your Ark UI Menu component is a
+matter of adding the correct `className` to the `Menu.Trigger`, `Menu.Content` and other parts.
+
+Here’s how you would use these classes in a React component:
+
+```
+ <Menu.Root>
+          <Menu.Trigger className='button button--variant-outline button--size-sm'>
+            Open menu
+          </Menu.Trigger>
+          <Menu.Positioner>
+            <Menu.Content className='menu--sm'>
+              <Menu.Item value='react'>React</Menu.Item>
+              <Menu.Item value='solid'>Solid</Menu.Item>
+              <Menu.Item value='vue'>Vue</Menu.Item>
+            </Menu.Content>
+          </Menu.Positioner>
+        </Menu.Root>
+```
+
+You can also combine these styles with checkbox/radio behavior:
+
+```tsx
+<Menu.Root>
+  <Menu.Trigger className="button button--variant-outline button--size-sm">Open menu</Menu.Trigger>
+  <Menu.Positioner>
+    <Menu.Content className="menu--sm">
+      {items.map(({ title, value }) => (
+        <Menu.CheckboxItem
+          key={value}
+          value={value}
+          checked={group.isChecked(value)}
+          onCheckedChange={() => group.toggleValue(value)}
+        >
+          <Menu.ItemIndicator>
+            <CheckIcon />
+          </Menu.ItemIndicator>
+          <Menu.ItemText>{title}</Menu.ItemText>
+        </Menu.CheckboxItem>
+      ))}
+    </Menu.Content>
+  </Menu.Positioner>
+</Menu.Root>
+```
+
+To explore all the styles defined and see them in action, check out Storybook.
+
+## Styling with Panda CSS
+
+If you're using Panda CSS, you can still follow the same design system approach, but with some important differences.
+Panda offers a recipe-based styling system, that styles the different parts of the component.
+
+Just like with Vanilla CSS, we’ll:
+
+- Define base styles for the menu and all its parts
+- Apply interactive states like `highlighted`, `disabled`, and `checked`
+- Set up size variants (`sm`, `md`, `lg`)
+
+### Setting Up Global Styles and Design Tokens
+
+Panda CSS makes managing global styles and design tokens straightforward by abstracting away the need for separate
+`.css` files for tokens, resets, or keyframes.
+
+Start by extending your `panda.config.ts` with the **semantic tokens,** **shadows** and **keyframes**.
+
+```tsx
+// panda.config.ts
+
+ theme: {
+    extend: {
+      semanticTokens: {
+        colors: {
+          bg: {
+            DEFAULT: { value: '#fff' },
+            subtle: { value: '#f9fafb' },
+            muted: { value: '#f3f4f6' },
+            emphasized: { value: '#e5e7eb' },
+            inverted: { value: '#000' },
+            panel: { value: '#fff' },
+            error: { value: '#fef2f2' },
+            warning: { value: '#fff7ed' },
+            success: { value: '#f0fdf4' },
+            info: { value: '#eff6ff' },
+          },
+
+          border: {
+            DEFAULT: { value: '#e5e7eb' },
+            muted: { value: '#f3f4f6' },
+            subtle: { value: '#f9fafb' },
+            emphasized: { value: '#d1d5db' },
+            inverted: { value: '#1f2937' },
+            error: { value: '#ef4444' },
+            warning: { value: '#f59e42' },
+            success: { value: '#22c55e' },
+            info: { value: '#3b82f6' },
+          },
+
+          fg: {
+            DEFAULT: { value: '#000000' },
+            muted: { value: '#4b5563' },
+            subtle: { value: '#9ca3af' },
+            inverted: { value: '#f9fafb' },
+            error: { value: '#ef4444' },
+            warning: { value: '#ea580c' },
+            success: { value: '#16a34a' },
+            info: { value: '#2563eb' },
+          },
+
+          accent: {
+            contrast: { value: '#000' },
+            fg: { value: '#c2410c' },
+            subtle: { value: '#ffedd5' },
+            muted: { value: '#fed7aa' },
+            emphasized: { value: '#fdba74' },
+            solid: { value: '#ea580c' },
+            focusRing: { value: '#fb923c' },
+          },
+        },
+        shadows: {
+          sm: {
+            value: '0 1px 2px 0 rgba(16, 24, 40, 0.05)',
+          },
+          md: {
+            value:
+              '0 4px 8px -2px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.14)',
+          },
+          lg: {
+            value:
+              '0 8px 24px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.08)',
+          },
+        },
+      },
+      keyframes: {
+        'slide-fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(-8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-fade-out': {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(-8px)' },
+        },
+      },
+    },
+  },
+```
+
+The keyframes will be used shortly when defining the menu recipe.
+
+### **Creating the Recipe for the Trigger**
+
+The `Menu.Trigger` is essentially a button, and since it doesn't have multiple parts, we’ll define its styles using
+Panda CSS’s `cva()` function.
+
+Add the following recipe in your `button.ts` file:
+
+```tsx
+// src/recipes/button.ts
+
+import { cva } from '../../styled-system/css'
+
+export const buttonRecipe = cva({
+  base: {
+    display: 'inline-flex',
+    appearance: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    userSelect: 'none',
+    position: 'relative',
+    borderRadius: 'md',
+    whiteSpace: 'nowrap',
+    verticalAlign: 'middle',
+    borderWidth: '1px',
+    borderColor: 'transparent',
+    cursor: 'button',
+    flexShrink: '0',
+    outline: '0',
+    lineHeight: '1.2',
+    isolation: 'isolate',
+    fontWeight: 'medium',
+    transitionProperty: 'common',
+    transitionDuration: 'moderate',
+    _disabled: {
+      color: 'fg-subtle',
+      cursor: 'not-allowed',
+      opacity: '0.6',
+      pointerEvents: 'none',
+    },
+    _icon: {
+      flexShrink: '0',
+    },
+    _focusVisible: {
+      outline: '2px solid #c4c4c4',
+      outlineOffset: '2px',
+    },
+  },
+  variants: {
+    size: {
+      sm: {
+        h: '9',
+        minW: '9',
+        px: '3.5',
+        textStyle: 'sm',
+        gap: '2',
+        _icon: {
+          width: '4',
+          height: '4',
+        },
+      },
+      md: {
+        h: '10',
+        minW: '10',
+        textStyle: 'sm',
+        px: '4',
+        gap: '2',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+      lg: {
+        h: '11',
+        minW: '11',
+        textStyle: 'md',
+        px: '5',
+        gap: '3',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+    },
+
+    variant: {
+      solid: {
+        bg: 'accent.solid',
+        color: 'fg.inverted',
+        borderColor: 'transparent',
+        '--button-bg': 'colors.accent.solid',
+        _hover: {
+          bg: 'color-mix(in srgb, var(--button-bg) 80%, #000 20%)',
+        },
+        _expanded: {
+          bg: 'color-mix(in srgb, var(--button-bg) 80%, #000 20%)',
+        },
+      },
+
+      subtle: {
+        bg: 'bg.subtle',
+        color: 'fg.muted',
+        borderColor: 'transparent',
+        _hover: {
+          bg: 'bg.emphasized',
+        },
+        _expanded: {
+          bg: 'bg.emphasized',
+        },
+      },
+      outline: {
+        borderWidth: '1px',
+        borderColor: 'border',
+        color: 'fg.muted',
+        _hover: {
+          bg: 'bg.subtle',
+        },
+        _expanded: {
+          bg: 'bg.subtle',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: 'sm',
+    variant: 'outline',
+  },
+})
+```
+
+- The `base` property defines the foundational styles that are applied to _every_ instance of the button, regardless of
+  any variants you might apply.
+- The `variants` property is where you define different visual configurations of your component. Each key within
+  `variants` represents a category of variation (e.g., `size`, `variant`), and each nested object defines the specific
+  styles for each option within that category.
+- The `defaultVariants` section sets the **fallback values** when no specific size or variant is passed.
+
+### **Creating the Recipe for All Menu Parts**
+
+To style each part of the menu component, we’ll create a **slot recipe** using Panda’s `sva()` function. This approach
+lets us apply scoped styles to all the distinct parts of the menu, like `item`, `content`, `separator`, `indicator`, and
+more.
+
+We also use `menuAnatomy.keys()` to automatically retrieve all the part names defined in Ark UI’s anatomy for the menu
+component.
+
+We’ll begin by adding the base styles for each part. These are the default, foundational styles that give the `Menu`
+component a consistent foundation, even before any variants are applied.
+
+**Styling the Menu Content**
+
+The menu content is the main dropdown panel that holds all the interactive items.
+
+Here's how we define the `content` part within our `menuRecipe`:
+
+```tsx
+// src/recipes/menu.ts
+
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+      outline: '0',
+      bg: 'bg.panel',
+      boxShadow: 'md',
+      color: 'fg',
+      zIndex: 'dropdown',
+      borderRadius: 'md',
+      overflow: 'hidden',
+      overflowY: 'auto',
+      minW: '8rem',
+      maxHeight: '300px',
+      padding: 'var(--menu-content-padding)',
+    },
+  },
+})
+```
+
+You'll notice the use of the `var(--menu-content-padding)` \*\*\*\*CSS variable for the padding property. The actual
+value for this padding will be set later when we define our size variants.
+
+**Animating Open and Close Transitions**
+
+Let’s add subtle animations for the opening and closing transitions. Panda CSS makes this easy, since we've already
+defined our keyframes in our `panda.config.ts`.
+
+Styling the `_open` and `_closed` properties will now make the menu open and close smoothly.
+
+```tsx
+// src/recipes/menu.ts
+
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+      outline: '0',
+      bg: 'bg.panel',
+      boxShadow: 'md',
+      color: 'fg',
+      zIndex: 'dropdown',
+      borderRadius: 'md',
+      overflow: 'hidden',
+      overflowY: 'auto',
+      minW: '8rem',
+      maxHeight: '300px',
+      padding: 'var(--menu-content-padding)',
+      _open: {
+        animation: 'slide-fade-in 150ms cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      _closed: {
+        animation: 'slide-fade-out 100ms cubic-bezier(0.4, 0, 1, 1)',
+      },
+    },
+  },
+})
+```
+
+**Styling Individual Menu Items**
+
+Define the base styles for the menu item by adding the styles to the `item` property within the `base` key of our
+`menuRecipe`.
+
+```tsx
+// src/recipes/menu.ts
+
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+      // content styles here
+    },
+    item: {
+      textDecoration: 'none',
+      color: 'fg',
+      userSelect: 'none',
+      borderRadius: 'sm',
+      width: '100%',
+      display: 'flex',
+      cursor: 'pointer',
+      alignItems: 'center',
+      textAlign: 'start',
+      position: 'relative',
+      flex: '0 0 auto',
+      outline: '0',
+      transition: 'background 0.2s',
+      gap: 'var(--menu-item-gap)',
+      fontSize: 'var(--menu-item-font-size)',
+      padding: 'var(--menu-item-padding)',
+    },
+  },
+})
+```
+
+We've used CSS variables (`--menu-item-gap`, `--menu-item-font-size`, `--menu-item-padding`) to control item-specific
+properties. The actual values will be defined later by our size variants.
+
+**Styling Item States: Highlighted & Disabled**
+
+Menu items are interactive elements, and providing clear visual feedback for their various states is important for user
+experience. Target these states using Panda CSS `_highlighted` and `_disabled` selectors.
+
+```tsx
+// src/recipes/menu.ts
+
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+      // content styles here
+    },
+    item: {
+      textDecoration: 'none',
+      color: 'fg',
+      userSelect: 'none',
+      borderRadius: 'sm',
+      width: '100%',
+      display: 'flex',
+      cursor: 'pointer',
+      alignItems: 'center',
+      textAlign: 'start',
+      position: 'relative',
+      flex: '0 0 auto',
+      outline: '0',
+      transition: 'background 0.2s',
+      gap: 'var(--menu-item-gap)',
+      fontSize: 'var(--menu-item-font-size)',
+      padding: 'var(--menu-item-padding)',
+      _highlighted: {
+        bg: 'bg.muted',
+      },
+      _disabled: {
+        color: 'fg.subtle',
+        cursor: 'not-allowed',
+        opacity: '0.6',
+        pointerEvents: 'none',
+      },
+    },
+  },
+})
+```
+
+**Styling the Indicator**
+
+The indicator automatically receives the `data-part="indicator"` attribute, making it easy to style.
+
+Here's how we define the `indicator`'s base styles, including its dynamic behavior:
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+      // content styles here
+    },
+    item: {
+      // item styles here
+    },
+    indicator: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: '0',
+      transition: 'transform 0.2s',
+      _open: {
+        transform: 'rotate(90deg)',
+      },
+    },
+  },
+})
+```
+
+Notice how we’ve used the `_open` pseudo-selector within the `indicator` part's styles. This is a feature in Panda CSS
+that targets the `[data-state='open']` attribute. Now, when the menu is opened, the indicator rotates 90 degrees.
+
+**Styling Checkboxes and Radios**
+
+When building interactive menus, you often need to include selectable items like checkboxes and radio buttons. Ark UI
+provides dedicated components like `Menu.CheckboxItem` and `Menu.RadioItem` for this purpose.
+
+We'll define their styles directly within the `item` part of our recipe:
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+      // content styles here
+    },
+    item: {
+      // other item styles here
+      _checked: {
+        fontWeight: 'medium',
+      },
+      '&[data-type]': {
+        paddingInlineStart: 'var(--menu-option-offset)',
+      },
+    },
+  },
+})
+```
+
+Here's a breakdown of the key styling approaches used here:
+
+- The `_checked` pseudo selector targets any menu item that is in a "checked" state. When an item is checked, its
+  `fontWeight` will be set to `'medium'`.
+- The `&[data-type]` selector targets all menu items that have a `data-type` attribute. Ark UI assigns
+  `data-type="checkbox"` to `Menu.CheckboxItem` and `data-type="radio"` to `Menu.RadioItem`. This ensures that any type
+  of selectable "option" item receives the specific styles.
+
+**Styling Menu Groups**
+
+For organizing longer lists of menu items into logical sections, Ark UI provides support for menu groups. This includes
+dedicated parts for both group labels and visual separators.
+
+Here's how we style the `itemGroupLabel` and `separator` parts:
+
+```css
+import { sva } from '../../styled-system/css';
+import { menuAnatomy } from '@ark-ui/react/menu';
+
+export const menuRecipe = sva({
+  slots: menuAnatomy.keys(),
+  className: 'menu',
+  base: {
+    content: {
+     // content styles here
+    },
+    item: {
+    // other item styles here
+    },
+    itemGroupLabel: {
+      paddingInline: '2',
+      paddingBlock: '1.5',
+      fontSize: 'var(--menu-item-font-size)',
+      fontWeight: '500',
+    },
+    separator: {
+      height: '1px',
+      borderColor: 'border',
+      marginBlock: 'var(--menu-content-padding)',
+      marginInline: 'calc(-1 * var(--menu-content-padding))',
+    },
+  },
+});
+```
+
+- The `itemGroupLabel` is designed to display clear heading text above a group of related menu items.
+- The `separator` provides a subtle visual divider, breaking up long lists of menu items into segments.
+
+**Styling the Item with Icon and Command**
+
+To create richer menu experiences, it’s common to enhance each item with an icon on the left and a keyboard shortcut
+(command) on the right, just like in modern design systems.
+
+Ark UI provides the `itemText` and `itemIndicator` parts, but for a custom "command" text, we'll extend our recipe.
+
+**Extending the Menu Anatomy for Custom Parts**
+
+Panda CSS's recipe system is quite flexible. While `menuAnatomy.keys()` gives us all the standard parts exposed by Ark
+UI, we can easily add our own by introducing a custom slot named `itemCommand`.
+
+This explicitly tells Panda CSS to expect and generate styles for this new part, even though it's not part of Ark UI's
+default structure.
+
+Add `'itemCommand'` to the array of slots when defining our `menuRecipe`:
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: [...menuAnatomy.keys(), 'itemCommand'],
+  className: 'menu',
+  base: {
+    // base styles here
+  },
+})
+```
+
+**Defining Base Styles for Text, Icons, and Commands**
+
+Now that Panda CSS knows about our `itemText`, `itemIndicator`, and `itemCommand` slots, we can define their base styles
+directly within our `menuRecipe`'s `base` property.
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuSlotRecipe = sva({
+  slots: [...menuAnatomy.keys(), 'itemCommand'],
+  className: 'menu',
+  base: {
+    // other base styles here
+    itemText: {
+      flex: '1',
+    },
+    itemIndicator: {
+      position: 'absolute',
+      insetInlineStart: '1',
+    },
+    itemCommand: {
+      opacity: '0.6',
+      fontSize: 'xs',
+      marginInlineStart: 'auto',
+      paddingInlineStart: '4',
+      letterSpacing: 'widest',
+      fontFamily: 'inherit',
+    },
+  },
+})
+```
+
+The combination of `flex: 1` on `itemText` and `marginInlineStart: 'auto’`on `itemCommand` acts like a flexbox to push
+the command text to the right, which creates an aligned layout.
+
+### Size Variant
+
+One of the most powerful features of using a recipe-based approach with Panda CSS is the ability to easily define
+variants. For our menu component, we'll create size variants that allow us to dynamically adjust its dimensions and
+spacing for different contexts.
+
+To achieve this, we'll add a `size` key within the `variants` property of our `menuRecipe`. Each size variant will then
+set specific values for the CSS variables we introduced earlier. These variables will cascade down to all the menu's
+internal parts.
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuRecipe = sva({
+  slots: [...menuAnatomy.keys(), 'itemCommand'],
+  className: 'menu',
+  base: {
+    // base styles here
+  },
+  variants: {
+    size: {
+      sm: {
+        content: {
+          '--menu-content-padding': '0.25rem',
+          '--menu-item-gap': '0.25rem',
+          '--menu-item-font-size': '0.875rem',
+          '--menu-item-padding': '0.25rem 0.75rem',
+          '--menu-item-icon-size': '1rem',
+          '--menu-option-offset': '1.5rem',
+        },
+      },
+      md: {
+        content: {
+          '--menu-content-padding': '0.25rem',
+          '--menu-item-gap': '0.5rem',
+          '--menu-item-font-size': '0.925rem',
+          '--menu-item-padding': '0.25rem 0.75rem',
+          '--menu-item-icon-size': '2rem',
+          '--menu-option-offset': '1.5rem',
+        },
+      },
+      lg: {
+        content: {
+          '--menu-content-padding': '0.5rem',
+          '--menu-item-gap': '0.5rem',
+          '--menu-item-font-size': '1rem',
+          '--menu-item-padding': '0.5rem 0.925rem',
+          '--menu-item-icon-size': '2.5rem',
+          '--menu-option-offset': '1.5rem',
+        },
+      },
+    },
+  },
+})
+```
+
+Each variant defines tokens like:
+
+- `-menu-content-padding` adds padding within the content
+- `-menu-item-font-size` controls text scale
+- `-menu-item-padding` controls spacing around items
+- `-menu-item-icon-size` sets the icon size
+- `-menu-option-offset` aligns checkbox and radio items
+
+## Bringing It All Together
+
+We've explored how to define base styles, create flexible size variants using CSS variables, handle interactive states,
+and integrate custom parts like the item command.
+
+Now let’s put everything together. Here’s what a complete recipe might look like:
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { menuAnatomy } from '@ark-ui/react/menu'
+
+export const menuSlotRecipe = sva({
+  slots: [...menuAnatomy.keys(), 'itemCommand'],
+  className: 'menu',
+  base: {
+    content: {
+      outline: '0',
+      bg: 'bg.panel',
+      boxShadow: 'md',
+      color: 'fg',
+      zIndex: 'dropdown',
+      borderRadius: 'md',
+      overflow: 'hidden',
+      overflowY: 'auto',
+      minW: '8rem',
+      maxHeight: '300px',
+      padding: 'var(--menu-content-padding)',
+      _open: {
+        animation: 'slide-fade-in 150ms cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      _closed: {
+        animation: 'slide-fade-out 100ms cubic-bezier(0.4, 0, 1, 1)',
+      },
+    },
+    item: {
+      textDecoration: 'none',
+      color: 'fg',
+      userSelect: 'none',
+      borderRadius: 'sm',
+      width: '100%',
+      display: 'flex',
+      cursor: 'pointer',
+      alignItems: 'center',
+      textAlign: 'start',
+      position: 'relative',
+      flex: '0 0 auto',
+      outline: '0',
+      transition: 'background 0.2s',
+      gap: 'var(--menu-item-gap)',
+      fontSize: 'var(--menu-item-font-size)',
+      padding: 'var(--menu-item-padding)',
+      _highlighted: {
+        bg: 'bg.muted',
+      },
+      _disabled: {
+        color: 'fg.subtle',
+        cursor: 'not-allowed',
+        opacity: '0.6',
+        pointerEvents: 'none',
+      },
+      _checked: {
+        fontWeight: 'medium',
+      },
+      '&[data-type]': {
+        paddingInlineStart: 'var(--menu-option-offset)',
+      },
+      _icon: {
+        width: 'var(--menu-item-icon-size)',
+        height: 'var(--menu-item-icon-size)',
+      },
+    },
+    indicator: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: '0',
+      transition: 'transform 0.2s',
+      _open: {
+        transform: 'rotate(90deg)',
+      },
+    },
+    itemGroupLabel: {
+      paddingInline: '2',
+      paddingBlock: '1.5',
+      fontSize: 'var(--menu-item-font-size)',
+      fontWeight: '500',
+    },
+    separator: {
+      height: '1px',
+      borderColor: 'border',
+      marginBlock: 'var(--menu-content-padding)',
+      marginInline: 'calc(-1 * var(--menu-content-padding))',
+    },
+    itemText: {
+      flex: '1',
+    },
+    itemIndicator: {
+      position: 'absolute',
+      insetInlineStart: '1',
+    },
+    itemCommand: {
+      opacity: '0.6',
+      fontSize: 'xs',
+      marginInlineStart: 'auto',
+      paddingInlineStart: '4',
+      letterSpacing: 'widest',
+      fontFamily: 'inherit',
+    },
+  },
+
+  variants: {
+    size: {
+      sm: {
+        content: {
+          '--menu-content-padding': '0.25rem',
+          '--menu-item-gap': '0.25rem',
+          '--menu-item-font-size': '0.875rem',
+          '--menu-item-padding': '0.25rem 0.75rem',
+          '--menu-item-icon-size': '1rem',
+          '--menu-option-offset': '1.5rem',
+        },
+      },
+      md: {
+        content: {
+          '--menu-content-padding': '0.25rem',
+          '--menu-item-gap': '0.5rem',
+          '--menu-item-font-size': '0.925rem',
+          '--menu-item-padding': '0.25rem 0.75rem',
+          '--menu-item-icon-size': '2rem',
+          '--menu-option-offset': '1.5rem',
+        },
+      },
+      lg: {
+        content: {
+          '--menu-content-padding': '0.5rem',
+          '--menu-item-gap': '0.5rem',
+          '--menu-item-font-size': '1rem',
+          '--menu-item-padding': '0.5rem 0.925rem',
+          '--menu-item-icon-size': '2.5rem',
+          '--menu-option-offset': '1.5rem',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: 'md',
+  },
+})
+```
+
+## Integrating Your Menu Recipe into React Components
+
+With your menu recipe now fully defined, applying these styles to your Ark UI components is a seamless process.
+
+**1. Import Your Recipes**
+
+Start by importing your `menuRecipe` and `buttonRecipe` into your React component file:
+
+```tsx
+// menu.tsx
+
+import { buttonRecipe } from './recipes/button'
+import { menuRecipe } from './recipes/menu'
+```
+
+**2. Generate Component Classes**
+
+Next, invoke your recipes to generate the specific class names needed for each part of your component. When you call
+`menuRecipe()`, it returns a plain JavaScript object.
+
+Each key in this object corresponds to a slot defined in your recipe (e.g., `content`, `item`, `itemCommand`), and its
+value is the dynamically generated CSS class string for that particular part.
+
+You can also pass specific **variants** to the recipe call. For example, to get the styles for a 'small' menu, you would
+pass `{ size: 'sm' }` .
+
+```tsx
+// Generate classes for the menu
+const menuClasses = menuRecipe()
+
+// Generate classes for a specific size, like 'sm'
+const menuClasses = menuSlotRecipe({ size: 'sm' })
+
+// Generate button classes
+const buttonClasses = buttonRecipe()
+```
+
+**3. Apply Classes to Ark UI Parts**
+
+Finally, apply the generated class names to the corresponding Ark UI component parts using the `className` prop.
+
+Here's an example showcasing various styled menu items:
+
+```tsx
+export const Basic = () => {
+  const buttonClass = buttonRecipe({ size: 'sm' })
+  const menuClasses = menuRecipe({ size: 'sm' })
+
+  return (
+    <Menu.Root>
+      <Menu.Trigger className={buttonClass}>Open menu</Menu.Trigger>
+      <Menu.Positioner>
+        <Menu.Content className={menuClasses.content}>
+          <Menu.Item className={menuClasses.item} value="react" disabled>
+            React
+          </Menu.Item>
+          <Menu.Item className={menuClasses.item} value="solid">
+            Solid
+          </Menu.Item>
+          <Menu.Item className={menuClasses.item} value="vue">
+            Vue
+          </Menu.Item>
+        </Menu.Content>
+      </Menu.Positioner>
+    </Menu.Root>
+  )
+}
+```
+
+To explore all of the menu styles and their variations, be sure to check out the Storybook examples.
+
+## **Conclusion**
+
+Styling Ark UI’s Menu component is flexible whether you’re working with Vanilla CSS or Panda CSS.
+
+If you’re using Vanilla CSS, you can target parts of the component using the `data-scope="menu"` and `data-part="..."`
+attributes. This gives you complete control over styling, allowing you to write custom CSS styles for each slot like
+content, item, indicator, and more.
+
+However, if you want a more scalable and design-token-friendly approach for your design system, Panda CSS with slot
+recipes is the way to go.
+
+Try out both approaches and see which fits your team’s workflow best.
