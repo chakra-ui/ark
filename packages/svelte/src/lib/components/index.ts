@@ -1,4 +1,5 @@
 export * from './avatar'
+export * from './collection'
 export * from './download-trigger'
 export * from './factory'
 export * from './format'
