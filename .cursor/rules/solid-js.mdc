@@ -1,4 +1,8 @@
-## Solid.js
+---
+description: 
+globs: packages/solid/**/*.tsx
+alwaysApply: false
+---
 
 When writing code for Solid.js, follow these rules:
 
@@ -24,7 +28,6 @@ const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
 
 ```tsx
 import type { Meta } from 'storybook-solidjs'
-
 const meta: Meta = {
   title: 'Components / Avatar',
 }
@@ -34,30 +37,3 @@ export default meta
 
 - DO NOT destructure `props` in components, use `createSplitProps` or `splitProps` instead.
 
-## Vue.js
-
-When writing code for Vue.js, follow these rules:
-
-- Always use the `ark` factory and forward the `asChild` props
-
-- Always add `useForwardExpose()` at the end of the script setup
-
-```vue
-<script setup lang="ts">
-useForwardExpose()
-</script>
-```
-
-- For boolean props, always use the `withDefaults` function to define the defaults as `undefined`
-
-```tsx
-const props = withDefaults(defineProps<SliderRootProps>(), {
-  disabled: undefined,
-  invalid: undefined,
-  readOnly: undefined,
-} satisfies BooleanDefaults<RootProps>)
-```
-
-- When writing examples, no need to use `useForwardExpose()`
-
-- All icons should be imported from `lucide-vue-next`

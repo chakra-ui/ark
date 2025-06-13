@@ -1,0 +1,30 @@
+---
+description: 
+globs: packages/vue/**/*.vue
+alwaysApply: false
+---
+When writing code for Vue.js, follow these rules:
+
+- Always use the `ark` factory and forward the `asChild` props
+
+- Always add `useForwardExpose()` at the end of the script setup
+
+```vue
+<script setup lang="ts">
+useForwardExpose()
+</script>
+```
+
+- For boolean props, always use the `withDefaults` function to define the defaults as `undefined`
+
+```tsx
+const props = withDefaults(defineProps<SliderRootProps>(), {
+  disabled: undefined,
+  invalid: undefined,
+  readOnly: undefined,
+} satisfies BooleanDefaults<RootProps>)
+```
+
+- When writing examples, no need to use `useForwardExpose()`
+
+- All icons should be imported from `lucide-vue-next`
