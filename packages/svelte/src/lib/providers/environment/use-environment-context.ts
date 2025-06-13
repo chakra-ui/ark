@@ -22,7 +22,8 @@ export interface UseEnvironmentContext {
 }
 
 export const [EnvironmentContextProvider, useEnvironmentContext] = createContext<UseEnvironmentContext>({
-  key: 'EnvironmentContext',
+  name: 'EnvironmentContext',
+  strict: false,
   defaultValue: {
     getRootNode: () => document,
     getDocument: () => document,

@@ -4,5 +4,5 @@ import type { UsePresenceReturn } from './use-presence.svelte'
 export interface UsePresenceContext extends UsePresenceReturn {}
 
 export const [PresenceProvider, usePresenceContext] = createContext<UsePresenceContext>({
-  key: 'PresenceContext',
+  name: 'PresenceContext',
 })

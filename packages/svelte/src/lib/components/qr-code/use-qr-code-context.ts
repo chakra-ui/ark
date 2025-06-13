@@ -3,5 +3,5 @@ import type { UseQrCodeReturn } from './use-qr-code.svelte'
 
 export interface UseQrCodeContext extends UseQrCodeReturn {}
 export const [QrCodeProvider, useQrCodeContext] = createContext<UseQrCodeContext>({
-  key: 'QrCodeContext',
+  name: 'QrCodeContext',
 })

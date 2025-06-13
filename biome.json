@@ -19,6 +19,9 @@
       "a11y": {
         "useButtonType": "off",
         "noLabelWithoutControl": "off"
+      },
+      "style": {
+        "useConst": "off"
       }
     }
   },
