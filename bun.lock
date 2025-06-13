@@ -21,7 +21,7 @@
     },
     "packages/react": {
       "name": "@ark-ui/react",
-      "version": "5.13.0",
+      "version": "5.14.0",
       "dependencies": {
         "@internationalized/date": "3.8.2",
         "@zag-js/accordion": "1.15.2",
@@ -120,7 +120,7 @@
     },
     "packages/solid": {
       "name": "@ark-ui/solid",
-      "version": "5.13.0",
+      "version": "5.14.0",
       "dependencies": {
         "@internationalized/date": "3.8.2",
         "@zag-js/accordion": "1.15.2",
@@ -217,9 +217,12 @@
         "@zag-js/collection": "1.15.2",
         "@zag-js/core": "1.15.2",
         "@zag-js/dom-query": "1.15.2",
+        "@zag-js/file-utils": "1.15.2",
         "@zag-js/i18n-utils": "1.15.2",
+        "@zag-js/qr-code": "1.15.2",
         "@zag-js/svelte": "1.15.2",
         "@zag-js/toggle": "1.15.2",
+        "@zag-js/utils": "1.15.2",
       },
       "devDependencies": {
         "@storybook/addon-a11y": "9.0.8",
@@ -247,7 +250,7 @@
     },
     "packages/vue": {
       "name": "@ark-ui/vue",
-      "version": "5.13.0",
+      "version": "5.14.0",
       "dependencies": {
         "@internationalized/date": "3.8.2",
         "@zag-js/accordion": "1.15.2",
