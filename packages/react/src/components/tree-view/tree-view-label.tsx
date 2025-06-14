@@ -4,13 +4,13 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 
 export interface TreeViewLabelBaseProps extends PolymorphicProps {}
-export interface TreeViewLabelProps extends HTMLProps<'label'>, TreeViewLabelBaseProps {}
+export interface TreeViewLabelProps extends HTMLProps<'h3'>, TreeViewLabelBaseProps {}
 
-export const TreeViewLabel = forwardRef<HTMLLabelElement, TreeViewLabelProps>((props, ref) => {
+export const TreeViewLabel = forwardRef<HTMLHeadingElement, TreeViewLabelProps>((props, ref) => {
   const treeView = useTreeViewContext()
   const mergedProps = mergeProps(treeView.getLabelProps(), props)
 
-  return <ark.label {...mergedProps} ref={ref} />
+  return <ark.h3 {...mergedProps} ref={ref} />
 })
 
 TreeViewLabel.displayName = 'TreeViewLabel'
