@@ -4,3 +4,19 @@
   gap: 6px;
   align-items: start;
 }
+
+[data-scope='field'][data-part='input'][data-invalid] {
+  border-color: red;
+}
+
+[data-scope='field'][data-part='error-text'] {
+  color: red;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+[data-scope='field'][data-part='helper-text'] {
+  color: #666;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
