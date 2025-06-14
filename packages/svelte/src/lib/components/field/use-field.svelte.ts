@@ -47,12 +47,15 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
   const fieldset = useFieldsetContext()
   const env = useEnvironmentContext()
 
-  const props = $derived(runIfFn(inProps))
+  const props = $derived.by<UseFieldProps>(() => {
+    const resolvedProps = runIfFn(inProps)
+    ensureProps(resolvedProps, ['id'])
+    return resolvedProps
+  })
 
-  ensureProps(props, ['id'])
   const id = $derived(props.id)
-
   const ids = $derived(props.ids)
+
   const disabled = $derived(props.disabled ?? Boolean(fieldset?.().disabled))
   const invalid = $derived(props.invalid ?? false)
   const readOnly = $derived(props.readOnly ?? false)

@@ -4,7 +4,6 @@ import { runIfFn } from '$lib/utils/run-if-fn'
 import { dataAttr } from '@zag-js/dom-query'
 import { type MaybeFunction, ensureProps } from '@zag-js/utils'
 import { onMount } from 'svelte'
-import { createAttachmentKey } from 'svelte/attachments'
 import { parts } from './fieldset.anatomy'
 
 export interface UseFieldsetProps {
@@ -25,11 +24,14 @@ export interface UseFieldsetProps {
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
 export const useFieldset = (inProps: MaybeFunction<UseFieldsetProps> = {}) => {
-  const props = $derived(runIfFn(inProps))
-
-  ensureProps(props, ['id'])
+  const props = $derived.by<UseFieldsetProps>(() => {
+    const resolvedProps = runIfFn(inProps)
+    ensureProps(resolvedProps, ['id'])
+    return resolvedProps
+  })
 
   const id = $derived(props.id)
+
   const disabled = $derived(props.disabled ?? false)
   const invalid = $derived(props.invalid ?? false)
 
