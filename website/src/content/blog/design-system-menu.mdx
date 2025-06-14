@@ -26,14 +26,14 @@ functionalities we'll cover:
 By the end of this guide, you’ll have a scalable approach for styling menus, whether you prefer Vanilla CSS or Panda
 CSS.
 
-<video src="/blog/avatar/avatar-intro.mp4" autoPlay loop muted playsinline />
+<video src="/blog/menu/menu.mp4" autoPlay loop muted playsinline />
 
 ## Anatomy
 
 To style the menu correctly, you'll need to understand its anatomy and part names. Each part includes
 a `data-part` attribute to help identify them in the DOM.
 
-![CleanShot 2025-06-05 at 14.20.25@2x.png](attachment:f4f3cd98-f96c-4628-8a16-154d03ee85b1:CleanShot_2025-06-05_at_14.20.252x.png)
+<Anatomy id="menu" />
 
 ### Key Menu Parts
 
@@ -113,18 +113,19 @@ A recipe is a structured way to define styles for a component including all its 
 recipe, you can:
 
 - Set up **base styles** that apply to every instance of the component.
-- Add **size variants** (e.g., `sm`, `md`) that adjust dimensions and font size
+- Add **size variants** (e.g., `sm`, `md`, `lg`) that adjust dimensions and font size
 
 Essentially, recipes help you group related styles together and reuse them in a consistent way.
 
 ### Setting Up Global Styles
 
-When building a design system, maintaining consistency is key. To support that, we’ll create a `shared` directory to
-house global styles that can be reused across components.
+To create a consistent design system, create a `shared` directory to house global styles that can be reused across
+components.
 
 Here’s what to include:
 
-**CSS Reset Styles:** Start with a CSS reset to remove default browser inconsistencies. This ensures every component starts from the same baseline, no matter the browser. [Access the code here] 
+**CSS Reset Styles:** Start with a CSS reset to remove default browser inconsistencies. This ensures every component
+starts from the same baseline, no matter the browser.
 
 ```tsx
 /** CSS Reset inspired by createPreflight **/
@@ -316,7 +317,6 @@ input[type='number'] {
 
 ```
 
-
 **Button Styles:** Since menu triggers are typically buttons, it’s a good idea to define global button styles. Create a
 `button.css` file so the button design can be reused anywhere in your system, not just for the menu.
 
@@ -430,8 +430,8 @@ input[type='number'] {
 }
 ```
 
-**Design Tokens:** To keep your styles scalable, define reusable CSS variables for things like color, border radius,
-etc. Add these to a `tokens.css` file.
+**Design Tokens:** Define design tokens with CSS variables for things like color, border radius, etc. Add these to a
+`tokens.css` file.
 
 ```css
 /* shared/tokens.css */
@@ -478,8 +478,8 @@ etc. Add these to a `tokens.css` file.
 }
 ```
 
-**Keyframe Animations:** Define reusable keyframe animations like `slide-fade-in` and `slide-fade-out` . These will be
-used to give the menu smooth transitions.
+**Keyframe Animations:** Finally, add in reusable keyframe animations like `slide-fade-in` and `slide-fade-out` . These
+will be used to give the menu smooth transitions.
 
 ```css
 /* shared/keyframes.css */
@@ -507,7 +507,7 @@ used to give the menu smooth transitions.
 }
 ```
 
-Inside the `shared` folder, create a `global.css` file and import all the file styles:
+Now, inside the `shared` folder, create a `global.css` file and import all the file styles:
 
 ```css
 /* shared/global.css */
@@ -520,15 +520,14 @@ Inside the `shared` folder, create a `global.css` file and import all the file s
 @import url(./button.css);
 ```
 
-Finally, make sure to import `shared/global.css` at the root of your app to ensure all global styles are loaded
-correctly.
+Make sure you import `shared/global.css` at the root of your app to ensure all global styles are loaded correctly.
 
 ### Base Styles
 
 These are the core styles that give the menu component a consistent foundation, even before any variants are applied.
 
-Ark UI exposes helpful attributes like `data-scope="menu"` and `data-part="..."` for every part of the menu, making it
-easy to target each piece directly in CSS.
+Ark UI exposes helpful attributes like `data-scope="menu"` and `data-part="..."` for every part of the menu, which we'll
+use to style each part.
 
 **Styling the Menu Content**
 
@@ -552,8 +551,8 @@ The menu content is the floating container that holds all the items inside the d
 }
 ```
 
-Notice the use of the **`--menu-content-padding`** CSS variable. We'll define the actual value of this variable when we
-set up our size variants shorty.
+> Notice the use of the **`--menu-content-padding`** CSS variable. We'll define the actual value of this variable when
+> we set up our size variants shorty.
 
 **Animating Open and Close Transitions**
 
@@ -599,12 +598,14 @@ Each individual `item` can be styled like this:
 }
 ```
 
-Within the base styles for each menu item, notice the use of CSS variables like `--menu-item-gap`,
-`--menu-item-font-size`, and `--menu-item-padding`. These variables act as placeholders, allowing us to control
-item-specific properties such as spacing between elements, text size, and internal padding. The actual values for these
-variables will be dynamically set by the size variants we’ll define later.
+> Within the base styles for each menu item, notice the use of CSS variables like `--menu-item-gap`,
+> `--menu-item-font-size`, and `--menu-item-padding`.
 
-**Highlighted & Disabled States**
+These variables act as placeholders, allowing us to control item-specific properties such as spacing between elements,
+text size, and internal padding. The actual values for these variables will be dynamically set by the size variants
+we’ll define later.
+
+**Styling the Highlighted & Disabled States**
 
 - **Highlighted state:** When a user hovers over a menu item or navigates to it using the keyboard, Ark UI automatically
   applies the `data-highlighted` attribute. We can use this to indicate the active item
@@ -777,22 +778,20 @@ matter of adding the correct `className` to the `Menu.Trigger`, `Menu.Content` a
 
 Here’s how you would use these classes in a React component:
 
-```
- <Menu.Root>
-          <Menu.Trigger className='button button--variant-outline button--size-sm'>
-            Open menu
-          </Menu.Trigger>
-          <Menu.Positioner>
-            <Menu.Content className='menu--sm'>
-              <Menu.Item value='react'>React</Menu.Item>
-              <Menu.Item value='solid'>Solid</Menu.Item>
-              <Menu.Item value='vue'>Vue</Menu.Item>
-            </Menu.Content>
-          </Menu.Positioner>
-        </Menu.Root>
+```tsx
+<Menu.Root>
+  <Menu.Trigger className="button button--variant-outline button--size-sm">Open menu</Menu.Trigger>
+  <Menu.Positioner>
+    <Menu.Content className="menu--sm">
+      <Menu.Item value="react">React</Menu.Item>
+      <Menu.Item value="solid">Solid</Menu.Item>
+      <Menu.Item value="vue">Vue</Menu.Item>
+    </Menu.Content>
+  </Menu.Positioner>
+</Menu.Root>
 ```
 
-You can also combine these styles with checkbox/radio behavior:
+You can also combine these styles for the checkbox interaction:
 
 ```tsx
 <Menu.Root>
@@ -817,7 +816,8 @@ You can also combine these styles with checkbox/radio behavior:
 </Menu.Root>
 ```
 
-To explore all the styles defined and see them in action, check out Storybook.
+To explore all the styles defined and see them in action,
+[check out Storybook](https://github.com/estheragbaje/ark-react-vanilla-css/blob/main/stories/menu/menu.stories.tsx).
 
 ## Styling with Panda CSS
 
@@ -922,8 +922,8 @@ The keyframes will be used shortly when defining the menu recipe.
 
 ### **Creating the Recipe for the Trigger**
 
-The `Menu.Trigger` is essentially a button, and since it doesn't have multiple parts, we’ll define its styles using
-Panda CSS’s `cva()` function.
+The menu trigger is essentially a button, and since it doesn't have multiple parts, we’ll define its styles using
+Panda's [atomic recipe](https://panda-css.com/docs/concepts/recipes#atomic-recipe-or-cva) `cva()` function.
 
 Add the following recipe in your `button.ts` file:
 
@@ -1059,8 +1059,9 @@ export const buttonRecipe = cva({
 
 ### **Creating the Recipe for All Menu Parts**
 
-To style each part of the menu component, we’ll create a **slot recipe** using Panda’s `sva()` function. This approach
-lets us apply scoped styles to all the distinct parts of the menu, like `item`, `content`, `separator`, `indicator`, and
+To style each part of the menu component, we’ll create a
+**[slot recipe](https://panda-css.com/docs/concepts/slot-recipes)** using Panda’s `sva()` function. This approach lets
+us apply scoped styles to all the distinct parts of the menu, like `item`, `content`, `separator`, `indicator`, and
 more.
 
 We also use `menuAnatomy.keys()` to automatically retrieve all the part names defined in Ark UI’s anatomy for the menu
@@ -1704,7 +1705,8 @@ export const Basic = () => {
 }
 ```
 
-To explore all of the menu styles and their variations, be sure to check out the Storybook examples.
+To explore all of the menu styles and their variations, be sure to check out the
+[Storybook examples](https://github.com/estheragbaje/ark-react-panda-css/tree/main/src/stories/menu).
 
 ## **Conclusion**
 
