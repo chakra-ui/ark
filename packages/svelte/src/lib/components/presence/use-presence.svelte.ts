@@ -18,7 +18,6 @@ export const usePresence = (props: MaybeFunction<UsePresenceProps>) => {
   const [renderStrategyProps, machineProps] = $derived(splitRenderStrategyProps(resolvedProps))
 
   const service = useMachine(presence.machine, () => machineProps)
-
   const api = $derived(presence.connect(service, normalizeProps))
 
   let wasEverPresent = $state(false)
@@ -28,6 +27,10 @@ export const usePresence = (props: MaybeFunction<UsePresenceProps>) => {
       wasEverPresent = true
     }
   })
+
+  const setNode = (node: Element | null) => {
+    service.send({ type: 'NODE.SET', node })
+  }
 
   const unmounted = $derived(
     (!api.present && !wasEverPresent && renderStrategyProps.lazyMount) ||
@@ -41,7 +44,7 @@ export const usePresence = (props: MaybeFunction<UsePresenceProps>) => {
       hidden: !api.present,
     }),
     present: api.present,
-    setNode: api.setNode,
+    setNode,
     unmounted,
   })
 

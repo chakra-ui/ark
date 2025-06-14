@@ -31,7 +31,12 @@
   })
 
   const tooltip = useTooltip(() => resolvedProps)
-  const presence = usePresence(() => ({ ...presenceProps, present: tooltip().open }))
+  const machineProps = $derived<UsePresenceProps>({
+    ...presenceProps,
+    present: tooltip().open,
+  })
+
+  const presence = usePresence(() => machineProps)
 
   TooltipProvider(tooltip)
   PresenceProvider(presence)

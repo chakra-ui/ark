@@ -1,8 +1,12 @@
 [data-scope='checkbox'][data-part='root'] {
   cursor: pointer;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 8px;
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
 }
 
 [data-scope='checkbox'][data-part='group'] {
@@ -24,7 +28,7 @@
   }
 
   &[data-disabled] {
-    opacity: 0.5;
+    background-color: #b7b7b7;
   }
 }
 

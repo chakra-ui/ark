@@ -1,4 +1,5 @@
 export * from './avatar'
+export * from './checkbox'
 export * from './client-only'
 export * from './collapsible'
 export * from './collection'
