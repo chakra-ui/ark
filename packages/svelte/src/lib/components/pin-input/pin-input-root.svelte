@@ -63,6 +63,4 @@
   PinInputProvider(pinInput)
 </script>
 
-<Ark as="div" {...mergedProps}>
-  {@render props.children?.()}
-</Ark>
+<Ark as="div" {...mergedProps} />

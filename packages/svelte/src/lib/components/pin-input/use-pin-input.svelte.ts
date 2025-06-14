@@ -22,6 +22,7 @@ export const usePinInput = (props?: MaybeFunction<UsePinInputProps>): UsePinInpu
   })
 
   const service = useMachine(pinInput.machine, () => machineProps)
+  $inspect(service.context.get('focusedIndex'))
   const api = $derived(pinInput.connect(service, normalizeProps))
   return () => api
 }

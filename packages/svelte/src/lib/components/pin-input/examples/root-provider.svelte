@@ -1,7 +1,12 @@
 <script lang="ts">
   import { PinInput, usePinInput } from '@ark-ui/svelte/pin-input'
 
-  const pinInput = usePinInput({ id: 'pin-input-provider' })
+  const id = $props.id()
+
+  const pinInput = usePinInput({
+    id,
+    count: 3,
+  })
 </script>
 
 <div>
