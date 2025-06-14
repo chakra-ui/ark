@@ -283,6 +283,7 @@
         "@testing-library/user-event": "14.6.1",
         "@vitest/coverage-v8": "3.2.3",
         "clean-package": "2.2.0",
+        "lucide-svelte": "0.515.0",
         "storybook": "9.0.8",
         "svelte": "5.33.19",
         "svelte-check": "4.2.1",
@@ -2850,6 +2851,8 @@
     "lucide-react": ["lucide-react@0.514.0", "", { "peerDependencies": { "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-HXD0OAMd+JM2xCjlwG1EGW9Nuab64dhjO3+MvdyD+pSUeOTBaVAPhQblKIYmmX4RyBYbdzW0VWnJpjJmxWGr6w=="],
 
     "lucide-solid": ["lucide-solid@0.514.0", "", { "peerDependencies": { "solid-js": "^1.4.7" } }, "sha512-wBdi46WTZk3UrM4xoi65BXKlHecrI4ZFZVa1DTP01cSLNCQauF1CXtuZA3a4CCrVCBY9DUgWQLwu6+mOovs3sA=="],
+
+    "lucide-svelte": ["lucide-svelte@0.515.0", "", { "peerDependencies": { "svelte": "^3 || ^4 || ^5.0.0-next.42" } }, "sha512-uJfdXnbl2EJ6dhopBAJoRkshuulb1G6bVq1AXgu9j7cH/8CvWj3hXmRYGzehWYX+bwbUQURORIVYcIfpdaHcSA=="],
 
     "lucide-vue-next": ["lucide-vue-next@0.514.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-rZUuw7l8NTa2OZPo1RT/UPQLAWOAgZjDKv4tRyAXyjB1SWl/Bb7EhGjHYadfjMFSdaAYdfgiYGh5z/zIzl59zQ=="],
 

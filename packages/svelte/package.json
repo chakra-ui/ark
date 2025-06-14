@@ -148,6 +148,7 @@
     "@testing-library/user-event": "14.6.1",
     "@vitest/coverage-v8": "3.2.3",
     "clean-package": "2.2.0",
+    "lucide-svelte": "0.515.0",
     "storybook": "9.0.8",
     "svelte": "5.33.19",
     "svelte-check": "4.2.1",
