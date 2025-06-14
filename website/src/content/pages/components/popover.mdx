@@ -88,6 +88,29 @@ leverage it to access the component state and methods from outside the popover.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+## Guides
+
+### Available height and width
+
+The following css variables are exposed to the `Popover.Positioner` which you can use to style the `Popover.Content`
+
+```css
+/* width of the popover trigger */
+--reference-width: <pixel-value>;
+/* width of the available viewport */
+--available-width: <pixel-value>;
+/* height of the available viewport */
+--available-height: <pixel-value>;
+```
+
+For example, if you want to make sure the maximum height doesn't exceed the available height, use the following css:
+
+```css
+[data-scope='popover'][data-part='content'] {
+  max-height: calc(var(--available-height) - 100px);
+}
+```
+
 ## API Reference
 
 <ComponentTypes id="popover" />

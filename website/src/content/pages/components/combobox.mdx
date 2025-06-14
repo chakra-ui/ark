@@ -71,6 +71,29 @@ function Demo() {
 }
 ```
 
+## Guides
+
+### Available height and width
+
+The following css variables are exposed to the `Combobox.Positioner` which you can use to style the `Combobox.Content`
+
+```css
+/* width of the combobox control */
+--reference-width: <pixel-value>;
+/* width of the available viewport */
+--available-width: <pixel-value>;
+/* height of the available viewport */
+--available-height: <pixel-value>;
+```
+
+For example, if you want to make sure the maximum height doesn't exceed the available height, you can use the following:
+
+```css
+[data-scope='combobox'][data-part='content'] {
+  max-height: calc(var(--available-height) - 100px);
+}
+```
+
 ## API Reference
 
 <ComponentTypes id="combobox" />
