@@ -9,7 +9,7 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
-  import { splitEditableProps } from './split-editable-props'
+  import { splitEditableProps } from './editable-split-props'
   import { EditableProvider } from './use-editable-context'
   import { useEditable } from './use-editable.svelte'
 

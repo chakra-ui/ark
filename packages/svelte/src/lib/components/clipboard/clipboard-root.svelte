@@ -9,8 +9,8 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
+  import { splitClipboardProps } from './clipboard-split-props.svelte'
   import { ClipboardProvider } from './use-clipboard-context'
-  import { splitClipboardProps } from './split-clipboard-props.svelte'
   import { useClipboard } from './use-clipboard.svelte'
 
   let { value = $bindable(), ...props }: ClipboardRootProps = $props()
