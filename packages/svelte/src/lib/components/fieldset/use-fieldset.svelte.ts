@@ -45,8 +45,8 @@ export const useFieldset = (inProps: MaybeFunction<UseFieldsetProps> = {}) => {
     rootRef = el
   }
 
-  const errorTextId = `fieldset::${id}::error-text`
-  const helperTextId = `fieldset::${id}::helper-text`
+  const errorTextId = $derived(`fieldset::${id}::error-text`)
+  const helperTextId = $derived(`fieldset::${id}::helper-text`)
 
   const checkTextElements = () => {
     if (!rootRef) return

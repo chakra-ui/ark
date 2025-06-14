@@ -1,5 +1,6 @@
 import type { Accessor } from '$lib/types'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
+import { untrack } from 'svelte'
 
 export interface UseCheckboxGroupProps {
   /**
@@ -42,14 +43,14 @@ export type UseCheckboxGroupReturn = ReturnType<typeof useCheckboxGroup>
 export const useCheckboxGroup = (props: MaybeFunction<UseCheckboxGroupProps> = {}) => {
   const resolvedProps = $derived(runIfFn(props) || {})
 
-  let internalValue = $state<string[]>(resolvedProps.defaultValue || [])
+  let valueState = $state<string[]>(untrack(() => resolvedProps.defaultValue) ?? [])
+  const value = $derived(resolvedProps.value !== undefined ? resolvedProps.value : valueState)
 
-  const value = $derived(resolvedProps.value !== undefined ? resolvedProps.value : internalValue)
   const interactive = $derived(!(resolvedProps.disabled || resolvedProps.readOnly))
 
   const setValue = (newValue: string[]) => {
     if (resolvedProps.value === undefined) {
-      internalValue = newValue
+      valueState = newValue
     }
     resolvedProps.onValueChange?.(newValue)
   }

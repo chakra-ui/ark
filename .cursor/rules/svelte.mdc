@@ -8,4 +8,5 @@ alwaysApply: false
 - Every `use*` hook must return and `Accessor<T>`
 - For `*-root.svelte` files where `value` or `open` is a valid prop, make sure you setup the `$bindable()` for it.
 - For `*-context.svelte` files, prefer to use `render` not `children` prop
-
+- Always export pattern is `export { default as Component}`
+- All imports in examples must use `@ark-ui/svelte/<component>`
