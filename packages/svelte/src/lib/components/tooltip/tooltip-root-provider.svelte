@@ -22,12 +22,12 @@
 
   const [presenceProps, rootProviderProps] = $derived(splitPresenceProps(props))
 
-  const presence = usePresence(() => ({
+  const machineProps = $derived.by<UsePresenceProps>(() => ({
     ...presenceProps,
-    get present() {
-      return rootProviderProps.value().open
-    },
+    present: rootProviderProps.value().open,
   }))
+
+  const presence = usePresence(() => machineProps)
 
   TooltipProvider(() => rootProviderProps.value())
   PresenceProvider(presence)

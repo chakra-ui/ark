@@ -1,6 +1,6 @@
 ---
 description: 
-globs: *.svelte
+globs: *.svelte,**/**/*.svelte
 alwaysApply: false
 ---
 - Make sure to export the `*BaseProps`
