@@ -1,5 +1,6 @@
 export * from './avatar'
 export * from './collection'
+export * from './collapsible'
 export * from './download-trigger'
 export * from './factory'
 export * from './format'
