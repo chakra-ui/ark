@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Clipboard } from '../'
+  import { Clipboard } from '@ark-ui/svelte/clipboard'
   import { CheckIcon, ClipboardCopyIcon } from 'lucide-svelte'
 </script>
 
