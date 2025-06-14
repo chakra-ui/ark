@@ -1,4 +1,5 @@
 export * from './avatar'
+export * from './client-only'
 export * from './collection'
 export * from './collapsible'
 export * from './download-trigger'
