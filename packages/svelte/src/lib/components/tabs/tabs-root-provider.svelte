@@ -23,12 +23,13 @@
 
   const props: TabsRootProviderProps = $props()
 
-  const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
-  const [rootProviderProps, localProps] = createSplitProps<RootProviderProps>()(tabsProps, ['value'])
+  const [renderStrategyProps, tabsProps] = $derived(splitRenderStrategyProps(props))
+  const [rootProviderProps, localProps] = $derived(createSplitProps<RootProviderProps>()(tabsProps, ['value']))
+
   const mergedProps = $derived(mergeProps(rootProviderProps.value().getRootProps(), localProps))
 
-  TabsProvider(rootProviderProps.value)
-  RenderStrategyPropsProvider(renderStrategyProps)
+  TabsProvider(() => rootProviderProps.value())
+  RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 
 <Ark as="div" {...mergedProps} />

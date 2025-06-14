@@ -21,9 +21,9 @@
 
   const providedId = $props.id()
   const machineProps = $derived.by<UseSelectProps<T>>(() => ({
-    value,
-    id: providedId,
     ...props,
+    id: props.id ?? providedId,
+    value,
     onValueChange(details) {
       value = details.value
       props.onValueChange?.(details)

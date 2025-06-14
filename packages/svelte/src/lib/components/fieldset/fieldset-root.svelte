@@ -14,7 +14,6 @@
   import { Ark } from '../factory'
   import { FieldsetProvider } from './use-fieldset-context'
   import { useFieldset } from './use-fieldset.svelte'
-  import { composeRefs } from '$lib/utils/compose-refs'
 
   let { ref = $bindable<Element | null>(null), ...props }: FieldsetRootProps = $props()
 
@@ -35,13 +34,11 @@
   const mergedProps = $derived(mergeProps(fieldset().getRootProps(), localProps))
 
   FieldsetProvider(fieldset)
-</script>
 
-<Ark
-  as="fieldset"
-  {...mergedProps}
-  {...composeRefs((node) => {
+  function setNode(node: Element | null) {
     fieldset().setRootRef(node)
     ref = node
-  })}
-/>
+  }
+</script>
+
+<Ark as="fieldset" {...mergedProps} {@attach setNode} />

@@ -43,18 +43,21 @@
     ])
   })
 
-  const tabs = useTabs(() => ({
+  const machineProps = $derived.by<UseTabsProps>(() => ({
     ...useTabsProps,
     id: useTabsProps.id ?? id,
+    value,
     onValueChange(details) {
       useTabsProps.onValueChange?.(details)
-      if (value != null) value = details.value
+      value = details.value
     },
   }))
+
+  const tabs = useTabs(() => machineProps)
   const mergedProps = $derived(mergeProps(tabs().getRootProps(), localProps))
 
   TabsProvider(tabs)
-  RenderStrategyPropsProvider(renderStrategyProps)
+  RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 
 <Ark as="div" {...mergedProps} />

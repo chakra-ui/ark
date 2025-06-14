@@ -9,12 +9,11 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
+  import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { FieldProvider } from './use-field-context'
   import { useField } from './use-field.svelte'
-  import { composeRefs } from '$lib/utils/compose-refs'
 
   let { ref = $bindable<Element | null>(null), ...props }: FieldRootProps = $props()
 
@@ -35,13 +34,11 @@
   const mergedProps = $derived(mergeProps(field().getRootProps(), localProps))
 
   FieldProvider(field)
-</script>
 
-<Ark
-  as="div"
-  {...mergedProps}
-  {...composeRefs((node) => {
+  function setNode(node: Element | null) {
     field().setRootRef(node)
     ref = node
-  })}
-/>
+  }
+</script>
+
+<Ark as="div" {...mergedProps} {@attach setNode} />

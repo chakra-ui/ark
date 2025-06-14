@@ -46,7 +46,8 @@
 
   const resolvedProps = $derived<UseSliderProps>({
     ...useSliderProps,
-    id: providedId,
+    id: useSliderProps.id ?? providedId,
+    value,
     onValueChange(details) {
       value = details.value
       useSliderProps.onValueChange?.(details)
