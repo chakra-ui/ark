@@ -1,4 +1,6 @@
+export * from './accordion'
 export * from './avatar'
+export * from './carousel'
 export * from './checkbox'
 export * from './client-only'
 export * from './clipboard'
