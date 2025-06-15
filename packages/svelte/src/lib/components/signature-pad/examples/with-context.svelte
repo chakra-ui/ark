@@ -18,6 +18,4 @@
       </div>
     {/snippet}
   </SignaturePad.Context>
-
-  <SignaturePad.HiddenInput />
 </SignaturePad.Root>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { Accordion, type UseAccordionProps, useAccordion } from '@ark-ui/vue/accordion'
+import { Accordion, useAccordion } from '@ark-ui/vue/accordion'
 import { ChevronRightIcon } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
 
 const items = ['React', 'Solid', 'Vue']
 
