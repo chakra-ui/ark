@@ -8,7 +8,7 @@ import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 export interface UseCarouselProps extends Optional<Omit<carousel.Props, 'dir' | 'getRootNode'>, 'id'> {}
 export interface UseCarouselReturn extends Accessor<carousel.Api<PropTypes>> {}
 
-export const useCarousel = (props?: MaybeFunction<UseCarouselProps>): UseCarouselReturn => {
+export const useCarousel = (props?: MaybeFunction<UseCarouselProps>) => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

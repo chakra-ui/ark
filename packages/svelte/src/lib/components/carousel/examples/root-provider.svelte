@@ -2,7 +2,13 @@
   import { Carousel, useCarousel } from '@ark-ui/svelte/carousel'
 
   const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/${i + 1}/500/300`)
-  const carousel = useCarousel({ defaultPage: 0, slideCount: images.length })
+
+  const id = $props.id()
+  const carousel = useCarousel({
+    id,
+    defaultPage: 0,
+    slideCount: images.length,
+  })
 </script>
 
 <div>

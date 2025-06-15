@@ -9,14 +9,36 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
-  import CarouselContext from './carousel-context.svelte'
-  import { splitCarouselProps } from './split-carousel-props.svelte'
   import { useCarousel } from './use-carousel.svelte'
+  import { CarouselProvider } from './use-carousel-context'
+  import { createSplitProps } from '$lib/utils/create-split-props'
 
   let { page = $bindable(), ...props }: CarouselRootProps = $props()
   const providedId = $props.id()
 
-  const [useCarouselProps, localProps] = $derived(splitCarouselProps(props))
+  const [useCarouselProps, localProps] = $derived(
+    createSplitProps<UseCarouselProps>()(props, [
+      'allowMouseDrag',
+      'autoplay',
+      'defaultPage',
+      'id',
+      'ids',
+      'inViewThreshold',
+      'loop',
+      'onAutoplayStatusChange',
+      'onDragStatusChange',
+      'onPageChange',
+      'orientation',
+      'padding',
+      'page',
+      'slideCount',
+      'slidesPerMove',
+      'slidesPerPage',
+      'snapType',
+      'spacing',
+      'translations',
+    ]),
+  )
 
   const resolvedProps = $derived<UseCarouselProps>({
     ...useCarouselProps,
@@ -24,16 +46,14 @@
     page,
     onPageChange(details) {
       useCarouselProps.onPageChange?.(details)
-      page = details.page
+      if (page !== undefined) page = details.page
     },
   })
 
   const carousel = useCarousel(() => resolvedProps)
   const mergedProps = $derived(mergeProps(carousel().getRootProps(), localProps))
+
+  CarouselProvider(carousel)
 </script>
 
-<CarouselContext value={carousel}>
-  {#snippet render()}
-    <Ark as="div" {...mergedProps} />
-  {/snippet}
-</CarouselContext>
+<Ark as="div" {...mergedProps} />

@@ -1,19 +1,17 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { UseCarouselReturn } from './use-carousel.svelte'
 
   export interface CarouselContextProps {
-    value: UseCarouselReturn
-    render: Snippet
+    render: Snippet<[UseCarouselContext]>
   }
 </script>
 
 <script lang="ts">
-  import { setContext } from 'svelte'
+  import { useCarouselContext, type UseCarouselContext } from './use-carousel-context'
 
-  let { value, render }: CarouselContextProps = $props()
+  let { render }: CarouselContextProps = $props()
 
-  setContext('carousel', value)
+  const carousel = useCarouselContext()
 </script>
 
-{@render render()}
+{@render render(carousel)}

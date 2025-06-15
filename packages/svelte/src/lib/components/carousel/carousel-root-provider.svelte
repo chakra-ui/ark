@@ -11,15 +11,12 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
-  import CarouselContext from './carousel-context.svelte'
+  import { CarouselProvider } from './use-carousel-context'
 
   let { value, ...props }: CarouselRootProviderProps = $props()
-
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
+
+  CarouselProvider(value)
 </script>
 
-<CarouselContext {value}>
-  {#snippet render()}
-    <Ark as="div" {...mergedProps} />
-  {/snippet}
-</CarouselContext>
+<Ark as="div" {...mergedProps} />

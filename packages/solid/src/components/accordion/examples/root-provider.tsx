@@ -1,15 +1,12 @@
-import { Accordion, type UseAccordionProps, useAccordion } from '@ark-ui/solid/accordion'
+import { Accordion, useAccordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
-import { Index, createMemo, createSignal } from 'solid-js'
+import { Index } from 'solid-js'
 
 export const RootProvider = () => {
-  const [value, setValue] = createSignal(['React'])
-  const accordionProps = createMemo<UseAccordionProps>(() => ({
+  const accordion = useAccordion({
     multiple: true,
-    value: value(),
-    onValueChange: (e) => setValue(e.value),
-  }))
-  const accordion = useAccordion(accordionProps)
+    defaultValue: ['React'],
+  })
 
   return (
     <>

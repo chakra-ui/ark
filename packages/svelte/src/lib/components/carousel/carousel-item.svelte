@@ -1,21 +1,23 @@
 <script module lang="ts">
-  import type { ItemProps } from '@zag-js/carousel'
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { ItemProps } from '@zag-js/carousel'
 
   export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
   export interface CarouselItemProps extends Assign<HTMLProps<'div'>, CarouselItemBaseProps> {}
 </script>
 
 <script lang="ts">
+  import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  let { index, snapAlign, ...props }: CarouselItemProps = $props()
+  const props: CarouselItemProps = $props()
+
+  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index', 'snapAlign']))
 
   const carousel = useCarouselContext()
-  const itemProps = $derived({ index, snapAlign })
-  const mergedProps = $derived(mergeProps(carousel().getItemProps(itemProps), props))
+  const mergedProps = $derived(mergeProps(carousel().getItemProps(itemProps), localProps))
 </script>
 
 <Ark as="div" {...mergedProps} />

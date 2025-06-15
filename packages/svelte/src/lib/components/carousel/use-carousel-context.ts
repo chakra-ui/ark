@@ -1,8 +1,10 @@
-import { getContext } from 'svelte'
+import { createContext } from '$lib/utils/create-context'
 import type { UseCarouselReturn } from './use-carousel.svelte'
 
 export interface UseCarouselContext extends UseCarouselReturn {}
 
-export const useCarouselContext = (): UseCarouselContext => {
-  return getContext('carousel')
-}
+export const [CarouselProvider, useCarouselContext] = createContext<UseCarouselContext>({
+  name: 'CarouselContext',
+  hookName: 'useCarouselContext',
+  providerName: '<CarouselProvider />',
+})

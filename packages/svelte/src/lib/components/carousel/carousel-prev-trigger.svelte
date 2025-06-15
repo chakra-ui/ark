@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  let { ...props }: CarouselPrevTriggerProps = $props()
+  const props: CarouselPrevTriggerProps = $props()
 
   const carousel = useCarouselContext()
   const mergedProps = $derived(mergeProps(carousel().getPrevTriggerProps(), props))
