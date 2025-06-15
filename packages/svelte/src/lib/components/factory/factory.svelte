@@ -11,13 +11,13 @@
       ref?: Element | null
     }
 
-  let { asChild = false, children, render, as, ref = $bindable<Element | null>(null), ...rest }: Props = $props()
+  let { asChild, children, as, ref = $bindable<Element | null>(null), ...rest }: Props = $props()
 
   const propsFn: PropsFn<T> = (props) => mergeProps(rest, props ?? {})
 </script>
 
 {#if asChild}
-  {@render render?.(propsFn)}
+  {@render asChild?.(propsFn)}
 {:else if isVoidSVGTag(as)}
   <Svg {as} {...rest} bind:ref />
 {:else if isVoidHTMLTag(as)}

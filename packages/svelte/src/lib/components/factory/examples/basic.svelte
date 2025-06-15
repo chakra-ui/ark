@@ -5,12 +5,12 @@
     onClickParent?: () => void
     onClickChild?: () => void
   }
+
   const { onClickParent, onClickChild }: Props = $props()
 </script>
 
 <Ark
   as="div"
-  asChild
   id="parent"
   data-testid="parent"
   data-part="parent"
@@ -18,7 +18,7 @@
   style="background: red"
   onclick={onClickParent}
 >
-  {#snippet render(props)}
+  {#snippet asChild(props)}
     <Ark
       as="span"
       {...props({ id: 'child', class: 'child', style: 'color: blue', onclick: onClickChild })}
