@@ -2,7 +2,7 @@ export type {
   CheckedChangeDetails as CheckboxCheckedChangeDetails,
   CheckedState as CheckboxCheckedState,
 } from '@zag-js/checkbox'
-export { default as CheckboxContext, type CheckboxContextProps as ContextProps } from './checkbox-context.svelte'
+export { default as CheckboxContext, type CheckboxContextProps } from './checkbox-context.svelte'
 export {
   default as CheckboxControl,
   type CheckboxControlBaseProps,
