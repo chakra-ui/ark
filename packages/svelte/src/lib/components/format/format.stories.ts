@@ -10,6 +10,8 @@ import NumberWithCurrencyExample from './examples/number-with-currency.svelte'
 import NumberWithLocaleExample from './examples/number-with-locale.svelte'
 import NumberWithPercentageExample from './examples/number-with-percentage.svelte'
 import NumberWithUnitExample from './examples/number-with-unit.svelte'
+import RelativeTimeBasicExample from './examples/relative-time-basic.svelte'
+import RelativeTimeShortExample from './examples/relative-time-short.svelte'
 
 const meta = {
   title: 'Components / Format',
@@ -80,5 +82,17 @@ export const ByteWithUnit = {
 export const ByteWithUnitDisplay = {
   render: () => ({
     Component: ByteWithUnitDisplayExample,
+  }),
+}
+
+export const RelativeTimeBasic = {
+  render: () => ({
+    Component: RelativeTimeBasicExample,
+  }),
+}
+
+export const RelativeTimeShort = {
+  render: () => ({
+    Component: RelativeTimeShortExample,
   }),
 }
