@@ -1,3 +1,4 @@
+export type { ValueChangeDetails as ToggleGroupValueChangeDetails } from '@zag-js/toggle-group'
 export { default as ToggleGroupContext, type ToggleGroupContextProps } from './toggle-group-context.svelte'
 export {
   default as ToggleGroupItem,
