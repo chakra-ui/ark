@@ -6,6 +6,7 @@ export type {
   ValueChangeDetails as ListboxValueChangeDetails,
 } from '@zag-js/listbox'
 export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
+export { default as ListboxContext, type ListboxContextProps } from './listbox-context.vue'
 export {
   default as ListboxContent,
   type ListboxContentBaseProps,

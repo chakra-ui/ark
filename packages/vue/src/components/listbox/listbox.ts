@@ -5,6 +5,7 @@ export type {
   SelectionMode,
   ValueChangeDetails,
 } from '@zag-js/listbox'
+export { default as Context, type ListboxContextProps as ContextProps } from './listbox-context.vue'
 export {
   default as Content,
   type ListboxContentBaseProps as ContentBaseProps,
