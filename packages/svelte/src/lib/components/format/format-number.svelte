@@ -9,14 +9,11 @@
 
 <script lang="ts">
   import { formatNumber } from '@zag-js/i18n-utils'
-  import { useLocaleContext } from '../../providers'
+  import { useLocaleContext } from '$lib/providers/locale'
 
-  const props: FormatNumberProps = $props()
+  const { value, ...props }: FormatNumberProps = $props()
   const locale = useLocaleContext()
-  const text = $derived(() => {
-    const { value, ...intlProps } = props
-    return formatNumber(value, locale().locale, intlProps)
-  })
+  const text = $derived(formatNumber(value, locale().locale, props))
 </script>
 
-{text()}
+{text}

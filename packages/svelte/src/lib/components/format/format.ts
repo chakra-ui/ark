@@ -8,3 +8,8 @@ export {
   type FormatNumberProps as NumberBaseProps,
   type FormatNumberProps as NumberProps,
 } from './format-number.svelte'
+export {
+  default as RelativeTime,
+  type FormatRelativeTimeProps as RelativeTimeBaseProps,
+  type FormatRelativeTimeProps as RelativeTimeProps,
+} from './format-relative-time.svelte'
