@@ -60,7 +60,11 @@ export {
   type ComboboxLabelProps as LabelProps,
   type ComboboxLabelBaseProps as LabelBaseProps,
 } from './combobox-label.svelte'
-export { default as List, type ComboboxListProps as ListProps } from './combobox-list.svelte'
+export {
+  default as List,
+  type ComboboxListProps as ListProps,
+  type ComboboxListBaseProps as ListBaseProps,
+} from './combobox-list.svelte'
 export {
   default as Positioner,
   type ComboboxPositionerProps,
@@ -71,6 +75,11 @@ export {
   type ComboboxRootBaseProps as RootBaseProps,
   type ComboboxRootProps as RootProps,
 } from './combobox-root.svelte'
+export {
+  default as RootProvider,
+  type ComboboxRootProviderBaseProps as RootProviderBaseProps,
+  type ComboboxRootProviderProps as RootProviderProps,
+} from './combobox-root-provider.svelte'
 export {
   default as Trigger,
   type ComboboxTriggerProps as TriggerProps,

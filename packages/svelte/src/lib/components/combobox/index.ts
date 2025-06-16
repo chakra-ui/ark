@@ -52,13 +52,18 @@ export {
   type ComboboxItemTextBaseProps,
 } from './combobox-item-text.svelte'
 export { default as ComboboxLabel, type ComboboxLabelProps, type ComboboxLabelBaseProps } from './combobox-label.svelte'
-export { default as ComboboxList, type ComboboxListProps } from './combobox-list.svelte'
+export { default as ComboboxList, type ComboboxListProps, type ComboboxListBaseProps } from './combobox-list.svelte'
 export {
   default as ComboboxPositioner,
   type ComboboxPositionerProps,
   type ComboboxPositionerBaseProps,
 } from './combobox-positioner.svelte'
 export { default as ComboboxRoot, type ComboboxRootBaseProps, type ComboboxRootProps } from './combobox-root.svelte'
+export {
+  default as ComboboxRootProvider,
+  type ComboboxRootProviderBaseProps,
+  type ComboboxRootProviderProps,
+} from './combobox-root-provider.svelte'
 export {
   default as ComboboxTrigger,
   type ComboboxTriggerProps,

@@ -4,6 +4,7 @@ import ControlledExample from './examples/controlled.svelte'
 import GroupingExample from './examples/grouping.svelte'
 import LinksExample from './examples/links.svelte'
 import RenderFnExample from './examples/render-fn.svelte'
+import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -38,5 +39,11 @@ export const Grouping = {
 export const Links = {
   render: () => ({
     Component: LinksExample,
+  }),
+}
+
+export const RootProvider = {
+  render: () => ({
+    Component: RootProviderExample,
   }),
 }
