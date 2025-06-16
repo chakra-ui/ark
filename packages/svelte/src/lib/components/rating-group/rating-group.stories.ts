@@ -1,12 +1,14 @@
 import type { Meta } from '@storybook/svelte'
+
 import BasicExample from './examples/basic.svelte'
+import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
-import InitialValueExample from './examples/initial-value.svelte'
-import OnEventExample from './examples/on-event.svelte'
+import ReadOnlyExample from './examples/read-only.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
-  title: 'Components / Radio Group',
+  title: 'Components / Rating Group',
 }
 
 export default meta
@@ -17,26 +19,32 @@ export const Basic = {
   }),
 }
 
+export const Controlled = {
+  render: () => ({
+    Component: ControlledExample,
+  }),
+}
+
 export const Disabled = {
   render: () => ({
     Component: DisabledExample,
   }),
 }
 
-export const InitialValue = {
+export const ReadOnly = {
   render: () => ({
-    Component: InitialValueExample,
-  }),
-}
-
-export const OnEvent = {
-  render: () => ({
-    Component: OnEventExample,
+    Component: ReadOnlyExample,
   }),
 }
 
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    Component: WithFieldExample,
   }),
 }
