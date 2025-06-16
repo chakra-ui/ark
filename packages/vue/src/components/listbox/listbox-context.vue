@@ -1,20 +1,21 @@
 <script lang="ts">
 import type { SlotsType, UnwrapRef } from 'vue'
+import type { CollectionItem } from '../collection'
 import type { UseListboxContext } from './use-listbox-context'
 
-export interface ListboxContextProps
+export interface ListboxContextProps<T extends CollectionItem>
   extends SlotsType<{
-    default: UnwrapRef<UseListboxContext>
+    default: UnwrapRef<UseListboxContext<T>>
   }> {}
 </script>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends CollectionItem">
 import { useListboxContext } from './use-listbox-context'
 
 const listbox = useListboxContext()
 
 defineSlots<{
-  default(listbox: UnwrapRef<UseListboxContext>): unknown
+  default(listbox: UnwrapRef<UseListboxContext<T>>): unknown
 }>()
 </script>
 
