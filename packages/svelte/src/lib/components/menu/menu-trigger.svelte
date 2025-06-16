@@ -19,6 +19,4 @@
   const mergedProps = $derived(mergeProps(menu().getTriggerProps(), triggerItemProps?.() || {}, props))
 </script>
 
-<Ark as="button" data-scope="menu" data-part="trigger" {...mergedProps}>
-  <slot />
-</Ark>
+<Ark as="button" data-scope="menu" data-part="trigger" {...mergedProps} />
