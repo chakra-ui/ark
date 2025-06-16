@@ -65,8 +65,6 @@
     ]),
   )
 
-  $inspect(useDatePickerProps)
-
   const resolvedProps = $derived<UseDatePickerProps>({
     ...useDatePickerProps,
     id: useDatePickerProps.id ?? providedId,

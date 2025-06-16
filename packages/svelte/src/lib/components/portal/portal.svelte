@@ -13,7 +13,7 @@
   import { getAllContexts, mount, unmount } from 'svelte'
   import PortalConsumer from './portal-consumer.svelte'
 
-  const { container = document.body, children }: PortalProps = $props()
+  const { container = globalThis?.document?.body, children }: PortalProps = $props()
 
   const context = getAllContexts()
 
