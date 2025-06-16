@@ -159,7 +159,7 @@
     "@zag-js/stringify-state": "1.15.3",
     "clean-package": "2.2.0",
     "globby": "14.1.0",
-    "happy-dom": "17.6.3",
+    "happy-dom": "18.0.1",
     "lucide-react": "0.514.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
