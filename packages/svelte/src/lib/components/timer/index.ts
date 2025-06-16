@@ -5,6 +5,7 @@ export {
   type TimerActionTriggerProps,
 } from './timer-action-trigger.svelte'
 export { default as TimerArea, type TimerAreaBaseProps, type TimerAreaProps } from './timer-area.svelte'
+export { default as TimerContext, type TimerContextProps } from './timer-context.svelte'
 export { default as TimerControl, type TimerControlBaseProps, type TimerControlProps } from './timer-control.svelte'
 export { default as TimerItem, type TimerItemBaseProps, type TimerItemProps } from './timer-item.svelte'
 export {

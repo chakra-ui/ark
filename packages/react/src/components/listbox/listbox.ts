@@ -5,6 +5,7 @@ export type {
   SelectionMode,
   ValueChangeDetails,
 } from '@zag-js/listbox'
+export { ListboxContext as Context, type ListboxContextProps as ContextProps } from './listbox-context'
 export {
   ListboxContent as Content,
   type ListboxContentBaseProps as ContentBaseProps,
