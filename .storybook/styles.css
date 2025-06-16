@@ -43,6 +43,7 @@
 body {
   position: relative;
   font-size: 15px;
+  min-height: 100dvh;
 }
 
 * {
