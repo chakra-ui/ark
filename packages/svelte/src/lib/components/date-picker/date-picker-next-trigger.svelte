@@ -1,0 +1,21 @@
+<script module lang="ts">
+  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+
+  export interface DatePickerNextTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface DatePickerNextTriggerProps extends Assign<HTMLProps<'button'>, DatePickerNextTriggerBaseProps> {}
+</script>
+
+<script lang="ts">
+  import { mergeProps } from '@zag-js/svelte'
+  import { Ark } from '../factory/index.js'
+  import { useDatePickerContext } from './use-date-picker-context.js'
+  import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
+
+  const props: DatePickerNextTriggerProps = $props()
+
+  const datePicker = useDatePickerContext()
+  const viewProps = useDatePickerViewPropsContext()
+  const mergedProps = $derived(mergeProps(datePicker().getNextTriggerProps(viewProps()), props))
+</script>
+
+<Ark as="button" {...mergedProps} /> 

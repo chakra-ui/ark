@@ -8,14 +8,17 @@ alwaysApply: false
 - Every `use*` hook must return and `Accessor<T>`
 - For `*-root.svelte` files where `value` or `open` is a valid prop, make sure you setup the `$bindable()` for it.
 - For `*-context.svelte` files, prefer to use `render` not `children` prop
-- Always export pattern is `export { default as Component}`
-- All imports in examples must use `@ark-ui/svelte/<component>`
 
+### Exporting Files
+
+- Always export pattern is `export { default as Component }`
+- Check the exports against the react package and make sure they're the same
 
 ### Creating Stories
 
 - When creating stories, keep the format simple
 - Imports must have a `Example` suffix
+- All imports in examples must use `@ark-ui/svelte/<component>`
 
 ```tsx
 import BasicExample from "./examples/basic.svelte"
@@ -32,3 +35,4 @@ export const Basic = {
   }),
 }
 ```
+
