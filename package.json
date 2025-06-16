@@ -34,8 +34,8 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.15",
-    "lefthook": "1.11.13",
+    "@types/bun": "1.2.16",
+    "lefthook": "1.11.14",
     "release-it": "19.0.3",
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.4.0",
