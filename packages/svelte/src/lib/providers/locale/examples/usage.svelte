@@ -4,4 +4,4 @@
   const locale = useLocaleContext()
 </script>
 
-<pre>{JSON.stringify(locale, null, 2)}</pre>
+<pre>{JSON.stringify(locale(), null, 2)}</pre>

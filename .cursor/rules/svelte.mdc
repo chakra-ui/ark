@@ -1,0 +1,34 @@
+---
+description: 
+globs: *.svelte,**/**/*.svelte
+alwaysApply: false
+---
+- Make sure to export the `*BaseProps`
+- `children?: Snippet` already exists in `HTMLArkProps<X>` so no need to define it
+- Every `use*` hook must return and `Accessor<T>`
+- For `*-root.svelte` files where `value` or `open` is a valid prop, make sure you setup the `$bindable()` for it.
+- For `*-context.svelte` files, prefer to use `render` not `children` prop
+- Always export pattern is `export { default as Component}`
+- All imports in examples must use `@ark-ui/svelte/<component>`
+
+
+### Creating Stories
+
+- When creating stories, keep the format simple
+- Imports must have a `Example` suffix
+
+```tsx
+import BasicExample from "./examples/basic.svelte"
+
+const meta: Meta = {
+  title: 'Components / <component>',
+}
+
+export default meta
+
+export const Basic = {
+  render: () => ({
+    Component: BasicExample,
+  }),
+}
+```

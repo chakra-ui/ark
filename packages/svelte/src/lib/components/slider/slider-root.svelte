@@ -13,11 +13,11 @@
   import { SliderProvider } from './use-slider-context'
   import { useSlider } from './use-slider.svelte'
 
-  const _props: SliderRootProps = $props()
+  let { value = $bindable(), ...props }: SliderRootProps = $props()
   const providedId = $props.id()
 
   const [useSliderProps, localProps] = $derived(
-    createSplitProps<Optional<UseSliderProps, 'id'>>()(_props, [
+    createSplitProps<Optional<UseSliderProps, 'id'>>()(props, [
       'id',
       'ids',
       'value',
@@ -44,12 +44,17 @@
     ]),
   )
 
-  const resolvedProps = $derived({
+  const resolvedProps = $derived<UseSliderProps>({
     ...useSliderProps,
-    id: providedId,
+    id: useSliderProps.id ?? providedId,
+    value,
+    onValueChange(details) {
+      value = details.value
+      useSliderProps.onValueChange?.(details)
+    },
   })
 
-  const slider = useSlider(reflect(() => resolvedProps))
+  const slider = useSlider(() => resolvedProps)
   const mergedProps = $derived(mergeProps(slider().getRootProps(), localProps))
 
   SliderProvider(slider)

@@ -8,7 +8,7 @@ export const Controlled = () => {
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
         Toggle
       </button>
-      <Popover.Root open={isOpen}>
+      <Popover.Root open={isOpen} closeOnInteractOutside={false}>
         <Popover.Anchor>Anchor</Popover.Anchor>
         <Popover.Positioner>
           <Popover.Content>

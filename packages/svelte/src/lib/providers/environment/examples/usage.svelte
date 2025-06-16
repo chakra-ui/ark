@@ -4,4 +4,4 @@
   const environment = useEnvironmentContext()
 </script>
 
-<pre>{JSON.stringify(environment?.getRootNode(), null, 2)}</pre>
+<pre>{JSON.stringify(environment().getRootNode(), null, 2)}</pre>

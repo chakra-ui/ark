@@ -1,5 +1,35 @@
 [data-scope='number-input'][data-part='scrubber'] {
-  width: 16px;
-  height: 16px;
-  background-color: red;
+  width: 32px;
+  height: 32px;
+  background: red;
+}
+
+[data-scope='number-input'][data-part='control'] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+[data-scope='number-input'][data-part='input'] {
+  flex: 1;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 8px;
+  text-align: center;
+  font-size: 16px;
+}
+
+[data-scope='number-input'][data-part='increment-trigger'],
+[data-scope='number-input'][data-part='decrement-trigger'] {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
 }

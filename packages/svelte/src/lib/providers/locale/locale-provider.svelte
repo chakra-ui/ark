@@ -21,12 +21,12 @@
 
   let { locale, children }: LocaleProviderProps = $props()
 
-  const context = $state<UseLocaleContext>({
+  const context = $derived<ReturnType<UseLocaleContext>>({
     locale,
     dir: isRTL(locale) ? 'rtl' : 'ltr',
   })
 
-  LocaleContextProvider(context)
+  LocaleContextProvider(() => context)
 </script>
 
 {@render children?.()}

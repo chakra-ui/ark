@@ -13,11 +13,11 @@
   import { QrCodeProvider } from './use-qr-code-context'
   import { useQrCode } from './use-qr-code.svelte'
 
-  const _props: QrCodeRootProps = $props()
+  let { value = $bindable(), ...props }: QrCodeRootProps = $props()
   const providedId = $props.id()
 
   const [useQrCodeProps, localProps] = $derived(
-    createSplitProps<Optional<UseQrCodeProps, 'id'>>()(_props, [
+    createSplitProps<Optional<UseQrCodeProps, 'id'>>()(props, [
       'defaultValue',
       'encoding',
       'id',
@@ -28,12 +28,17 @@
     ]),
   )
 
-  const resolvedProps = $derived({
+  const resolvedProps = $derived<UseQrCodeProps>({
     ...useQrCodeProps,
     id: providedId,
+    value,
+    onValueChange(details) {
+      value = details.value
+      useQrCodeProps.onValueChange?.(details)
+    },
   })
 
-  const qrCode = useQrCode(reflect(() => resolvedProps))
+  const qrCode = useQrCode(() => resolvedProps)
   const mergedProps = $derived(mergeProps(qrCode().getRootProps(), localProps))
 
   QrCodeProvider(qrCode)

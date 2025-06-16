@@ -10,11 +10,11 @@
   export interface TimerRootBaseProps extends Optional<UseTimerProps, 'id'>, PolymorphicProps<'div'> {}
   export interface TimerRootProps extends Assign<HTMLProps<'div'>, TimerRootBaseProps> {}
 
-  const _props: TimerRootProps = $props()
+  const props: TimerRootProps = $props()
   const providedId = $props.id()
 
   const [useTimerProps, localProps] = $derived(
-    createSplitProps<Optional<UseTimerProps, 'id'>>()(_props, [
+    createSplitProps<Optional<UseTimerProps, 'id'>>()(props, [
       'id',
       'ids',
       'autoStart',

@@ -12,8 +12,12 @@ export type HTMLTag = keyof SvelteHTMLElements
 export type PropsFn<T extends HTMLTag> = (props?: HTMLProps<T>) => HTMLAttributes<HTMLElement>
 
 export type HTMLProps<T extends HTMLTag> = SvelteHTMLElements[T]
+
 export type PolymorphicProps<T extends HTMLTag> = {
-  asChild?: boolean
   children?: Snippet
-  render?: Snippet<[PropsFn<T>]>
+  asChild?: Snippet<[PropsFn<T>]>
+}
+
+export interface RefAttribute<T extends Element = Element> {
+  ref?: T | null | undefined
 }

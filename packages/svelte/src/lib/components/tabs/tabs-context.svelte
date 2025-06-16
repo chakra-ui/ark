@@ -8,8 +8,9 @@
 </script>
 
 <script lang="ts">
-  const _props: TabsContextProps = $props()
+  const { render }: TabsContextProps = $props()
+
   const context = useTabsContext()
 </script>
 
-{@render _props.render?.(context)}
+{@render render?.(context)}

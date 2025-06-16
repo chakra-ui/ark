@@ -776,7 +776,7 @@ and spacing, thanks to the `data-scope` and `data-part` selectors.
 With these base styles and size variants defined in your `menu.css` , applying them to your Ark UI Menu component is a
 matter of adding the correct `className` to the `Menu.Trigger`, `Menu.Content` and other parts.
 
-Here’s how you would use these classes in a React component:
+Here's how you would use these classes in a React component:
 
 ```tsx
 <Menu.Root>
@@ -824,7 +824,7 @@ To explore all the styles defined and see them in action,
 If you're using Panda CSS, you can still follow the same design system approach, but with some important differences.
 Panda offers a recipe-based styling system, that styles the different parts of the component.
 
-Just like with Vanilla CSS, we’ll:
+Just like with Vanilla CSS, we'll:
 
 - Define base styles for the menu and all its parts
 - Apply interactive states like `highlighted`, `disabled`, and `checked`
@@ -922,7 +922,7 @@ The keyframes will be used shortly when defining the menu recipe.
 
 ### **Creating the Recipe for the Trigger**
 
-The menu trigger is essentially a button, and since it doesn't have multiple parts, we’ll define its styles using
+The menu trigger is essentially a button, and since it doesn't have multiple parts, we'll define its styles using
 Panda's [atomic recipe](https://panda-css.com/docs/concepts/recipes#atomic-recipe-or-cva) `cva()` function.
 
 Add the following recipe in your `button.ts` file:
@@ -1059,8 +1059,8 @@ export const buttonRecipe = cva({
 
 ### **Creating the Recipe for All Menu Parts**
 
-To style each part of the menu component, we’ll create a
-**[slot recipe](https://panda-css.com/docs/concepts/slot-recipes)** using Panda’s `sva()` function. This approach lets
+To style each part of the menu component, we'll create a
+**[slot recipe](https://panda-css.com/docs/concepts/slot-recipes)** using Panda's `sva()` function. This approach lets
 us apply scoped styles to all the distinct parts of the menu, like `item`, `content`, `separator`, `indicator`, and
 more.
 

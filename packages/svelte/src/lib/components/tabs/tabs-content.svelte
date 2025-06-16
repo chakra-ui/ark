@@ -7,28 +7,28 @@
 </script>
 
 <script lang="ts">
-  import { mergeProps } from '@zag-js/svelte'
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
+  import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
+  import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
   import { useTabsContext } from './use-tabs-context'
-  import { PresenceProvider, usePresence } from '../presence'
 
-  const _props: TabsContentProps = $props()
-  const [contentProps, localProps] = createSplitProps<ContentProps>()(_props, ['value'])
+  const props: TabsContentProps = $props()
+  const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
 
   const tabs = useTabsContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
-  const presence = usePresence({
+  const machineProps = $derived.by<UsePresenceProps>(() => ({
     ...renderStrategyProps,
-    get present() {
-      return tabs.value === contentProps.value
-    },
+    present: tabs().value === contentProps.value,
     immediate: true,
-  })
+  }))
 
-  const mergedProps = $derived(mergeProps(tabs.getContentProps(contentProps), localProps))
+  const presence = usePresence(() => machineProps)
+
+  const mergedProps = $derived(mergeProps(tabs().getContentProps(contentProps), localProps))
 
   PresenceProvider(presence)
 </script>

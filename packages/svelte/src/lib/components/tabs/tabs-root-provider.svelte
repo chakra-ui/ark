@@ -21,14 +21,15 @@
     type RenderStrategyProps,
   } from '$lib/utils/render-strategy'
 
-  const _props: TabsRootProviderProps = $props()
+  const props: TabsRootProviderProps = $props()
 
-  const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(_props)
-  const [rootProviderProps, localProps] = createSplitProps<RootProviderProps>()(tabsProps, ['value'])
-  const mergedProps = $derived(mergeProps(rootProviderProps.value.getRootProps(), localProps))
+  const [renderStrategyProps, tabsProps] = $derived(splitRenderStrategyProps(props))
+  const [rootProviderProps, localProps] = $derived(createSplitProps<RootProviderProps>()(tabsProps, ['value']))
 
-  TabsProvider(rootProviderProps.value)
-  RenderStrategyPropsProvider(renderStrategyProps)
+  const mergedProps = $derived(mergeProps(rootProviderProps.value().getRootProps(), localProps))
+
+  TabsProvider(() => rootProviderProps.value())
+  RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 
 <Ark as="div" {...mergedProps} />

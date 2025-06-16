@@ -1,4 +1,5 @@
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
+import { flushSync, untrack } from 'svelte'
 import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
@@ -27,14 +28,16 @@ export function useListCollection<T>(inProps: MaybeFunction<UseListCollectionPro
     return createListCollection({ ...collectionOptions, items })
   }
 
-  let collection = $state(create(props.limit != null ? props.initialItems.slice(0, props.limit) : props.initialItems))
+  let collection = $state(
+    untrack(() => create(props.limit != null ? props.initialItems.slice(0, props.limit) : props.initialItems)),
+  )
 
   const setCollection = (v: ListCollection<T>) => {
     collection = props.limit == null ? v : v.copy(v.items.slice(0, props.limit))
   }
 
   return {
-    get collection() {
+    collection() {
       return collection
     },
     filter: (inputValue: string) => {

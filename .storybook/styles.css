@@ -39,3 +39,19 @@
 @import url('./styles/tooltip.css');
 @import url('./styles/tour.css');
 @import url('./styles/tree-view.css');
+
+body {
+  position: relative;
+  font-size: 15px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+[hidden] {
+  display: none !important;
+}

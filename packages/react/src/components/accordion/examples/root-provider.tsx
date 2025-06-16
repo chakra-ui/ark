@@ -1,13 +1,10 @@
 import { Accordion, useAccordion } from '@ark-ui/react/accordion'
 import { ChevronDownIcon } from 'lucide-react'
-import { useState } from 'react'
 
 export const RootProvider = () => {
-  const [value, setValue] = useState(['React'])
   const accordion = useAccordion({
     multiple: true,
-    value,
-    onValueChange: (e) => setValue(e.value),
+    defaultValue: ['React'],
   })
 
   return (

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Tabs } from '../'
+  import { Tabs } from '@ark-ui/svelte/tabs'
 </script>
 
 <Tabs.Root defaultValue="react">

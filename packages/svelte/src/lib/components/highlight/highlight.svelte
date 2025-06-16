@@ -15,14 +15,14 @@
     'matchAll',
   ])
 
-  if (typeof highlightProps.text !== 'string') {
+  if (typeof props.text !== 'string') {
     throw new Error('[ark-ui/highlight] text must be a string')
   }
 
   const chunks = useHighlight(highlightProps)
 </script>
 
-{#each chunks as { text, match }, i}
+{#each chunks() as { text, match }, i}
   {#if match}
     <mark {...localProps}>{text}</mark>
   {:else}
