@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.14.1] - 2025-06-17
+
 ### Fixed
 
 - **Popover**: Fixed issue where `onOpenChange` could be called twice when controlled
