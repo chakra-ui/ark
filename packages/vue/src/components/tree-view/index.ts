@@ -4,6 +4,8 @@ export type {
   SelectionChangeDetails as TreeViewSelectionChangeDetails,
   LoadChildrenDetails as TreeViewLoadChildrenDetails,
   LoadChildrenCompleteDetails as TreeViewLoadChildrenCompleteDetails,
+  NodeState as TreeViewNodeState,
+  NodeProps as TreeViewNodeProps,
 } from '@zag-js/tree-view'
 export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
 export {

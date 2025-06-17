@@ -8,6 +8,8 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
+- **Tree View**: Exported `TreeViewNodeState` and `TreeViewNodeProps` types from `@zag-js/tree-view`
+
 - **Collection**: Export `CollectionOptions`, `TreeCollectionOptions`, `GridCollectionOptions` types.
 
 - **Carousel**

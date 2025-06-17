@@ -4,6 +4,8 @@ export type {
   SelectionChangeDetails,
   LoadChildrenDetails,
   LoadChildrenCompleteDetails,
+  NodeState,
+  NodeProps,
 } from '@zag-js/tree-view'
 export {
   default as Branch,

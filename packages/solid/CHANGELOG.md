@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Tree View**: Exported `TreeViewNodeState` and `TreeViewNodeProps` types from `@zag-js/tree-view`
+
 ## [5.14.1] - 2025-06-17
 
 ### Fixed
