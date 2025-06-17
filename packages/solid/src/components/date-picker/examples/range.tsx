@@ -4,7 +4,7 @@ import { Portal } from 'solid-js/web'
 
 export const Range = () => {
   return (
-    <DatePicker.Root selectionMode="range" numOfMonths={2}>
+    <DatePicker.Root selectionMode="range">
       <DatePicker.Label>Label</DatePicker.Label>
 
       <DatePicker.Control>

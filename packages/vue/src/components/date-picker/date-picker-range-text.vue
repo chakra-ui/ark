@@ -12,18 +12,25 @@ export interface DatePickerRangeTextProps
 </script>
 
 <script setup lang="ts">
+import { uniq } from '@zag-js/utils'
+import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils'
 
 defineProps<DatePickerRangeTextProps>()
 const datePicker = useDatePickerContext()
+
+const visibleRangeText = computed(() => {
+  const { start, end } = datePicker.value.visibleRangeText
+  return uniq([start, end]).filter(Boolean).join(' - ')
+})
 
 useForwardExpose()
 </script>
 
 <template>
   <ark.div v-bind="datePicker.getRangeTextProps()" :as-child="asChild">
-    {{ datePicker.visibleRangeText.start }}
+    {{ visibleRangeText }}
   </ark.div>
 </template>

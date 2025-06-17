@@ -7,6 +7,7 @@
 
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
+  import { uniq } from '@zag-js/utils'
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
@@ -14,8 +15,13 @@
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getRangeTextProps(), props))
+
+  const visibleRangeText = $derived.by(() => {
+    const { start, end } = datePicker().visibleRangeText
+    return uniq([start, end]).filter(Boolean).join(' - ')
+  })
 </script>
 
 <Ark as="div" {...mergedProps}>
-  {datePicker().visibleRangeText.start}
+  {visibleRangeText}
 </Ark>

@@ -20,11 +20,30 @@ Learn how to use the `DatePicker` component in your project. Let's take a look a
 
 <Example id="basic" />
 
+### Controlled
+
+Use the `value` and `onValueChange` prop to control the date picker's value.
+
+<Example id="controlled" />
+
 ### Range Selection
 
-To create a Date Picker that allows a range selection, set the `selectionMode` prop to `range`.
+To create a date picker that allows a range selection, you need to:
+
+- Set the `selectionMode` prop to `range`.
+- Render multiple inputs with the `index` prop set to `0` and `1`.
+- Render a `DatePicker.RangeText` component to display the range text.
 
 <Example id="range" />
+
+### Multiple Months
+
+To create a date picker that allows multiple months, you need to:
+
+- Set the `numOfMonths` prop to the number of months you want to display.
+- Use the `datePicker.getOffset({ months: 1 })` prop to offset the date picker to the next month.
+
+<Example id="multiple-months" />
 
 ### Standalone
 
