@@ -1,4 +1,4 @@
-<script setup lang="tsx">
+<script setup lang="ts">
 import { Toast, Toaster, createToaster } from '@ark-ui/vue/toast'
 
 const toaster = createToaster({ placement: 'bottom-end', overlap: true, gap: 24 })

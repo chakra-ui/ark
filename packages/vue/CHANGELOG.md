@@ -5,6 +5,7 @@
 - **Popover**: Fixed issue where `onOpenChange` could be called twice when controlled
 - **File Utils**: Improved `downloadFile` function to handle webview scenarios
 - **Combobox**: Fixed issue where `onInputValueChange` could be called twice when selecting an item
+- **Toast**: Fixed issue where toast's CSS variables don't apply correctly
 
 ## [5.14.0] - 2025-06-10
 

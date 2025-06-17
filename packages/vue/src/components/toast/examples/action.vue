@@ -25,11 +25,11 @@ const addToast = () => {
   <div>
     <button type="button" @click="addToast">Add Toast</button>
     <Toaster :toaster="toaster" v-slot="toast">
-      <ToastRoot :key="toast.id">
+      <Toast.Root>
         <Toast.Title>{{ toast.title }}</Toast.Title>
         <Toast.Description>{{ toast.description }}</Toast.Description>
         <Toast.ActionTrigger v-if="toast.action">{{ toast.action?.label }}</Toast.ActionTrigger>
-      </ToastRoot>
+      </Toast.Root>
     </Toaster>
   </div>
 </template>
