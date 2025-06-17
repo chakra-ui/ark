@@ -32,7 +32,6 @@ To create a date picker that allows a range selection, you need to:
 
 - Set the `selectionMode` prop to `range`.
 - Render multiple inputs with the `index` prop set to `0` and `1`.
-- Render a `DatePicker.RangeText` component to display the range text.
 
 <Example id="range" />
 
@@ -42,6 +41,7 @@ To create a date picker that allows multiple months, you need to:
 
 - Set the `numOfMonths` prop to the number of months you want to display.
 - Use the `datePicker.getOffset({ months: 1 })` prop to offset the date picker to the next month.
+- Render a `DatePicker.RangeText` component to display the range text.
 
 <Example id="multiple-months" />
 
