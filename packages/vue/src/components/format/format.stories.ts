@@ -11,6 +11,8 @@ import NumberWithCurrencyExample from './examples/number-with-currency.vue'
 import NumberWithLocaleExample from './examples/number-with-locale.vue'
 import NumberWithPercentageExample from './examples/number-with-percentage.vue'
 import NumberWithUnitExample from './examples/number-with-unit.vue'
+import RelativeTimeBasicExample from './examples/relative-time-basic.vue'
+import RelativeTimeShortExample from './examples/relative-time-short.vue'
 
 const meta = {
   title: 'Components / Format',
@@ -43,6 +45,13 @@ export const NumberWithPercentage = {
   render: () => ({
     components: { NumberWithPercentageExample },
     template: '<NumberWithPercentageExample />',
+  }),
+}
+
+export const NumberWithCurrency = {
+  render: () => ({
+    components: { NumberWithCurrencyExample },
+    template: '<NumberWithCurrencyExample />',
   }),
 }
 
@@ -88,9 +97,16 @@ export const ByteWithUnitDisplay = {
   }),
 }
 
-export const NumberWithCurrency = {
+export const RelativeTimeBasic = {
   render: () => ({
-    components: { NumberWithCurrencyExample },
-    template: '<NumberWithCurrencyExample />',
+    components: { RelativeTimeBasicExample },
+    template: '<RelativeTimeBasicExample />',
+  }),
+}
+
+export const RelativeTimeShort = {
+  render: () => ({
+    components: { RelativeTimeShortExample },
+    template: '<RelativeTimeShortExample />',
   }),
 }
