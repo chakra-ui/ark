@@ -210,7 +210,7 @@
     },
     "packages/svelte": {
       "name": "@ark-ui/svelte",
-      "version": "0.4.0",
+      "version": "4.0.0",
       "dependencies": {
         "@internationalized/date": "3.8.2",
         "@zag-js/accordion": "1.15.6",
