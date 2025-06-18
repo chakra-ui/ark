@@ -1,8 +1,9 @@
 import type { Meta } from '@storybook/vue3'
 
-import AdvancedExample from './examples/advanced.vue'
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
+import GroupingExample from './examples/grouping.vue'
+import LinksExample from './examples/links.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
 
@@ -19,10 +20,17 @@ export const Basic = {
   }),
 }
 
-export const Advanced = {
+export const Grouping = {
   render: () => ({
-    components: { AdvancedExample },
-    template: '<AdvancedExample />',
+    components: { GroupingExample },
+    template: '<GroupingExample />',
+  }),
+}
+
+export const Links = {
+  render: () => ({
+    components: { LinksExample },
+    template: '<LinksExample />',
   }),
 }
 
