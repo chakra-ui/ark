@@ -1,7 +1,9 @@
 import type { Meta } from '@storybook/vue3'
 
 import BasicExample from './examples/basic.vue'
+import CollapsibleExample from './examples/collapsible.vue'
 import EventsExample from './examples/events.vue'
+import MultiplePanelsExample from './examples/multiple-panels.vue'
 import RenderPropExample from './examples/render-prop.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import VerticalExample from './examples/vertical.vue'
@@ -16,6 +18,20 @@ export const Basic = {
   render: () => ({
     components: { BasicExample },
     template: '<BasicExample />',
+  }),
+}
+
+export const Collapsible = {
+  render: () => ({
+    components: { CollapsibleExample },
+    template: '<CollapsibleExample />',
+  }),
+}
+
+export const MultiplePanels = {
+  render: () => ({
+    components: { MultiplePanelsExample },
+    template: '<MultiplePanelsExample />',
   }),
 }
 
