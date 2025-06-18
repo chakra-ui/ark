@@ -3,6 +3,7 @@ import type { Meta } from '@storybook/vue3'
 import BasicExample from './examples/basic.vue'
 import LazyMountAndUnmountOnExitExample from './examples/lazy-mount-and-unmount-on-exit.vue'
 import LazyMountExample from './examples/lazy-mount.vue'
+import SkipAnimationOnMountExample from './examples/skip-animation-on-mount.vue'
 import UnmountOnExitExample from './examples/unmount-on-exit.vue'
 
 const meta = {
@@ -29,6 +30,13 @@ export const UnmountOnExit = {
   render: () => ({
     components: { UnmountOnExitExample },
     template: '<UnmountOnExitExample />',
+  }),
+}
+
+export const SkipAnimationOnMount = {
+  render: () => ({
+    components: { SkipAnimationOnMountExample },
+    template: '<SkipAnimationOnMountExample />',
   }),
 }
 
