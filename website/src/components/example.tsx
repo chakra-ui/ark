@@ -34,6 +34,7 @@ export const Example = async (props: Props) => {
 export const frameworkExample = async (framework: string, component: string, id: string) => {
   const extension = Match.value(framework).pipe(
     Match.when('vue', () => 'vue'),
+    Match.when('svelte', () => 'svelte'),
     Match.orElse(() => 'tsx'),
   )
   const examplePath = Match.value(component).pipe(
@@ -48,7 +49,11 @@ export const frameworkExample = async (framework: string, component: string, id:
     Match.orElse(() => `components/${component}/examples`),
   )
 
-  const basePath = `../packages/${framework}/src`
+  const srcPath = Match.value(framework).pipe(
+    Match.when('svelte', () => 'src/lib'),
+    Match.orElse(() => 'src'),
+  )
+  const basePath = `../packages/${framework}/${srcPath}`
   const fileName = [id, extension].join('.')
 
   const content = await readFile(join(process.cwd(), basePath, examplePath, fileName), 'utf-8').catch(
