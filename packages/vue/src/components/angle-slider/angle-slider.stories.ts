@@ -5,7 +5,7 @@ import ControlledExample from './examples/controlled.vue'
 import StepsExample from './examples/steps.vue'
 
 const meta = {
-  title: 'Components / AngleSlider',
+  title: 'Components / Angle Slider',
 } as Meta
 
 export default meta

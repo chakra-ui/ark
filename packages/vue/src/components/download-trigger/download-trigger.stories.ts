@@ -5,7 +5,7 @@ import SvgExample from './examples/svg.vue'
 import WithPromiseExample from './examples/with-promise.vue'
 
 const meta = {
-  title: 'Components / DownloadTrigger',
+  title: 'Components / Download Trigger',
 } as Meta
 
 export default meta
