@@ -2,7 +2,35 @@
 
 ### Fixed
 
+- **General**: Ensure pointerdown or click event handlers only execute when the main button is clicked
 - **Tree View**: Exported `TreeViewNodeState` and `TreeViewNodeProps` types from `@zag-js/tree-view`
+
+### Changed
+
+- **Collection**: Improve the APIs around `tree.flatten(...)` and `flattenedToTree` to ensure the original node
+  properties are preserved.
+
+  > Previously, `tree.flatten()` would return an array of objects with `value` and `label` stripping out the original
+  > node properties.
+
+  ```ts
+  const tree = new TreeCollection({
+    rootNode: {
+      value: 'ROOT',
+      children: [{ value: 'child1' }, { value: 'child2' }],
+    },
+  })
+
+  const flattened = tree.flatten()
+  const reconstructed = flattenedToTree(flattened)
+
+  console.log(reconstructed.rootNode)
+
+  // {
+  //   value: "ROOT",
+  //   children: [{ value: "child1" }, { value: "child2" }],
+  // }
+  ```
 
 ## [5.14.1] - 2025-06-17
 
