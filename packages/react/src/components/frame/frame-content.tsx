@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 
 interface FrameContentProps {
-  onMount?(): void
-  onUnmount?(): void
+  onMount?: VoidFunction | undefined
+  onUnmount?: VoidFunction | undefined
   children?: React.ReactNode | undefined
 }
 
