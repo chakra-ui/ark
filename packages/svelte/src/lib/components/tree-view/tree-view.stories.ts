@@ -3,6 +3,7 @@ import AsyncLoadingExample from './examples/async-loading.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExpandedExample from './examples/controlled-expanded.svelte'
 import ControlledSelectedExample from './examples/controlled-selected.svelte'
+import FilteringExample from './examples/filtering.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -38,5 +39,11 @@ export const RootProvider = {
 export const AsyncLoading = {
   render: () => ({
     Component: AsyncLoadingExample,
+  }),
+}
+
+export const Filtering = {
+  render: () => ({
+    Component: FilteringExample,
   }),
 }

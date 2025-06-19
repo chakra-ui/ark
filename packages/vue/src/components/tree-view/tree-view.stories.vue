@@ -3,8 +3,10 @@ import AsyncLoading from './examples/async-loading.vue'
 import Basic from './examples/basic.vue'
 import ControlledExpanded from './examples/controlled-expanded.vue'
 import ControlledSelected from './examples/controlled-selected.vue'
+import Filtering from './examples/filtering.vue'
 import RootProvider from './examples/root-provider.vue'
 </script>
+
 <template>
   <Story title="TreeView">
     <Variant title="Basic">
@@ -21,6 +23,9 @@ import RootProvider from './examples/root-provider.vue'
     </Variant>
     <Variant title="ControlledSelected">
       <ControlledSelected />
+    </Variant>
+    <Variant title="Filtering">
+      <Filtering />
     </Variant>
   </Story>
 </template>
