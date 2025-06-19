@@ -4,7 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useClipboardContext } from './use-clipboard-context'
 
 export interface ClipboardIndicatorBaseProps extends PolymorphicProps {
-  copied?: ReactNode
+  copied?: ReactNode | undefined
 }
 export interface ClipboardIndicatorProps extends HTMLProps<'div'>, ClipboardIndicatorBaseProps {}
 

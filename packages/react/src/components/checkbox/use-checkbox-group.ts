@@ -5,32 +5,32 @@ export interface UseCheckboxGroupProps {
   /**
    * The initial value of `value` when uncontrolled
    */
-  defaultValue?: string[]
+  defaultValue?: string[] | undefined
   /**
    * The controlled value of the checkbox group
    */
-  value?: string[]
+  value?: string[] | undefined
   /**
    * The name of the input fields in the checkbox group
    * (Useful for form submission).
    */
-  name?: string
+  name?: string | undefined
   /**
    * The callback to call when the value changes
    */
-  onValueChange?: (value: string[]) => void
+  onValueChange?: ((value: string[]) => void) | undefined
   /**
    * If `true`, the checkbox group is disabled
    */
-  disabled?: boolean
+  disabled?: boolean | undefined
   /**
    * If `true`, the checkbox group is read-only
    */
-  readOnly?: boolean
+  readOnly?: boolean | undefined
   /**
    * If `true`, the checkbox group is invalid
    */
-  invalid?: boolean
+  invalid?: boolean | undefined
 }
 
 export interface CheckboxGroupItemProps {

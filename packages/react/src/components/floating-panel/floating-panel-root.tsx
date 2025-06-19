@@ -9,7 +9,7 @@ import { FloatingPanelProvider } from './use-floating-panel-context'
 
 export interface FloatingPanelRootBaseProps extends UseFloatingPanelProps, UsePresenceProps {}
 export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const FloatingPanelRoot = (props: FloatingPanelRootProps) => {

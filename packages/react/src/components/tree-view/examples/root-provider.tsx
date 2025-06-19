@@ -4,7 +4,7 @@ import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-
 interface Node {
   id: string
   name: string
-  children?: Node[]
+  children?: Node[] | undefined
 }
 
 const collection = createTreeCollection<Node>({

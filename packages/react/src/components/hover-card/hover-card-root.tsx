@@ -8,7 +8,7 @@ import { HoverCardProvider } from './use-hover-card-context'
 
 export interface HoverCardRootBaseProps extends UseHoverCardProps, UsePresenceProps {}
 export interface HoverCardRootProps extends HoverCardRootBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const HoverCardRoot = (props: HoverCardRootProps) => {

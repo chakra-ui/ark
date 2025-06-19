@@ -7,7 +7,7 @@ type Options = {
   /**
    * Whether to use flushSync or not
    */
-  sync?: boolean
+  sync?: boolean | undefined
 }
 
 /**

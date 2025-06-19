@@ -8,7 +8,7 @@ export interface TreeViewNodeProviderBaseProps<T> extends NodeProps {
   node: T
 }
 export interface TreeViewNodeProviderProps<T> extends TreeViewNodeProviderBaseProps<T> {
-  children?: React.ReactNode
+  children?: React.ReactNode | undefined
 }
 
 export function TreeViewNodeProvider<T>(props: TreeViewNodeProviderProps<T>) {

@@ -13,7 +13,7 @@ export interface UseCollapsibleReturn extends collapsible.Api<PropTypes> {
   /**
    * Whether the content is unmounted
    */
-  isUnmounted?: boolean
+  isUnmounted?: boolean | undefined
 }
 
 export const useCollapsible = (props: UseCollapsibleProps = {}): UseCollapsibleReturn => {

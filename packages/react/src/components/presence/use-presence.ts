@@ -10,7 +10,7 @@ export interface UsePresenceProps extends Optional<presence.Props, 'present'>, R
    * Whether to allow the initial presence animation.
    * @default false
    */
-  skipAnimationOnMount?: boolean
+  skipAnimationOnMount?: boolean | undefined
 }
 export type UsePresenceReturn = ReturnType<typeof usePresence>
 

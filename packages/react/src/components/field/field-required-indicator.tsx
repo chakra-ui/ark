@@ -4,7 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useFieldContext } from './use-field-context'
 
 export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps {
-  fallback?: React.ReactNode
+  fallback?: React.ReactNode | undefined
 }
 export interface FieldRequiredIndicatorProps extends HTMLProps<'span'>, FieldRequiredIndicatorBaseProps {}
 

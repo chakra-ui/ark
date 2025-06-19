@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react'
 
 export interface UseControllableStateProps<T> {
-  value?: T
-  defaultValue?: T
-  onChange?: (value: T) => void
+  value?: T | undefined
+  defaultValue?: T | undefined
+  onChange?: ((value: T) => void) | undefined
 }
 
 export function useControllableState<T>(props: UseControllableStateProps<T>) {

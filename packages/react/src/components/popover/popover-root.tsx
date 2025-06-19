@@ -8,7 +8,7 @@ import { PopoverProvider } from './use-popover-context'
 
 export interface PopoverRootBaseProps extends UsePopoverProps, UsePresenceProps {}
 export interface PopoverRootProps extends PopoverRootBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const PopoverRoot = (props: PopoverRootProps) => {

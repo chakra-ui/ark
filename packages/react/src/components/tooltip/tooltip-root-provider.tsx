@@ -12,7 +12,7 @@ interface RootProviderProps {
 
 export interface TooltipRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface TooltipRootProviderProps extends TooltipRootProviderBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const TooltipRootProvider = (props: TooltipRootProviderProps) => {

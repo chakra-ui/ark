@@ -10,8 +10,8 @@ export interface TreeViewBranchContentBaseProps extends PolymorphicProps {}
 export interface TreeViewBranchContentProps extends HTMLProps<'div'>, TreeViewBranchContentBaseProps {}
 
 interface VisibilityProps {
-  hidden?: boolean
-  'data-state'?: string
+  hidden?: boolean | undefined
+  'data-state'?: string | undefined
 }
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()

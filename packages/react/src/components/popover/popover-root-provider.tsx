@@ -12,7 +12,7 @@ interface RootProviderProps {
 
 export interface PopoverRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface PopoverRootProviderProps extends PopoverRootProviderBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const PopoverRootProvider = (props: PopoverRootProviderProps) => {

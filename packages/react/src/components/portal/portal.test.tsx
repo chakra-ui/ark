@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import { EnvironmentProvider } from '../../providers'
 import { Portal } from './portal'
 
-const PortalWithContainerTest = (props: { disabled?: boolean }) => {
+const PortalWithContainerTest = (props: { disabled?: boolean | undefined }) => {
   const container = useRef<HTMLDivElement>(null)
   return (
     <div>

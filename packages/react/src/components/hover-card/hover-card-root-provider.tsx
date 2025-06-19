@@ -12,7 +12,7 @@ interface RootProviderProps {
 
 export interface HoverCardRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface HoverCardRootProviderProps extends HoverCardRootProviderBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const HoverCardRootProvider = (props: HoverCardRootProviderProps) => {

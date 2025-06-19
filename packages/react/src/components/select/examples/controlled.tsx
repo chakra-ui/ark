@@ -6,7 +6,7 @@ import { useState } from 'react'
 interface Item {
   label: string
   value: string
-  disabled?: boolean
+  disabled?: boolean | undefined
 }
 
 export const Controlled = () => {

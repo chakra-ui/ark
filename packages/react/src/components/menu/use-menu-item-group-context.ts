@@ -6,8 +6,8 @@ export interface ValueChangeDetails {
 
 export interface UseMenuItemGroupContext {
   id: string
-  value?: string
-  onValueChange?: (e: ValueChangeDetails) => void
+  value?: string | undefined
+  onValueChange?: ((e: ValueChangeDetails) => void) | undefined
 }
 
 export const [MenuItemGroupProvider, useMenuItemGroupContext] = createContext<UseMenuItemGroupContext>({

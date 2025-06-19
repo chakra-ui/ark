@@ -13,7 +13,7 @@ interface RootProviderProps {
 
 export interface FloatingPanelRootProviderBaseProps extends RootProviderProps, Omit<UsePresenceProps, 'present'> {}
 export interface FloatingPanelRootProviderProps extends FloatingPanelRootProviderBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const FloatingPanelRootProvider = (props: FloatingPanelRootProviderProps) => {

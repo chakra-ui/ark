@@ -8,7 +8,7 @@ export interface ToggleIndicatorBaseProps {
   /**
    * The fallback content to render when the toggle is not pressed.
    */
-  fallback?: React.ReactNode
+  fallback?: React.ReactNode | undefined
 }
 
 export interface ToggleIndicatorProps extends HTMLArkProps<'div'>, ToggleIndicatorBaseProps {}

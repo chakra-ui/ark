@@ -4,7 +4,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useCheckboxContext } from './use-checkbox-context'
 
 export interface CheckboxIndicatorBaseProps extends PolymorphicProps {
-  indeterminate?: boolean
+  indeterminate?: boolean | undefined
 }
 export interface CheckboxIndicatorProps extends HTMLProps<'div'>, CheckboxIndicatorBaseProps {}
 

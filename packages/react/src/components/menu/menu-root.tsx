@@ -10,7 +10,7 @@ import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'
 
 export interface MenuRootBaseProps extends UseMenuProps, UsePresenceProps {}
 export interface MenuRootProps extends MenuRootBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const MenuRoot = (props: MenuRootProps) => {
