@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/chakra-ui/ark/issues"
   },
-  "svelte": "./dist/index.js",
+  "svelte": "./src/lib/index.ts",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -48,7 +48,7 @@
     }
   },
   "scripts": {
-    "build": "svelte-kit sync && svelte-package",
+    "build": "svelte-kit sync && svelte-package --tsconfig ./tsconfig.build.json",
     "start": "svelte-kit sync && vite dev",
     "dev": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
@@ -61,6 +61,7 @@
   },
   "clean-package": {
     "replace": {
+      "svelte": "./dist/index.js",
       "exports.\\..svelte": "./dist/index.js",
       "exports.\\..types": "./dist/index.d.ts",
       "exports.\\./anatomy.svelte": "./dist/components/anatomy.js",
