@@ -9,7 +9,7 @@ export interface FileUploadItemPreviewBaseProps extends PolymorphicProps {
    * The file type to match against. Matches all file types by default.
    * @default '.*'
    */
-  type?: string
+  type?: string | undefined
 }
 export interface FileUploadItemPreviewProps extends HTMLProps<'div'>, FileUploadItemPreviewBaseProps {}
 

@@ -5,7 +5,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 
 export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
-  format?: ColorStringFormat
+  format?: ColorStringFormat | undefined
 }
 export interface ColorPickerValueTextProps extends HTMLProps<'span'>, ColorPickerValueTextBaseProps {}
 

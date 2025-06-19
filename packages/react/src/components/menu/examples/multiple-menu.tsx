@@ -9,7 +9,7 @@ interface Props {
   id: string
   label: string
   items: Item[]
-  onSelect?: (uid: string) => void
+  onSelect?: ((uid: string) => void) | undefined
 }
 
 const Menu = (props: Props) => {

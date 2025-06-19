@@ -1,7 +1,7 @@
 import { Avatar } from '../'
 
 interface Props extends Avatar.RootProps {
-  src?: string
+  src?: string | undefined
 }
 
 export const ComponentUnderTest = (props: Props) => {

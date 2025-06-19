@@ -11,7 +11,7 @@ interface ItemBaseProps extends ItemProps {
   /**
    * The function to call when the item is selected
    */
-  onSelect?: VoidFunction
+  onSelect?: VoidFunction | undefined
 }
 
 export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps {}

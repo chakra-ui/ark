@@ -13,7 +13,7 @@ interface RootProviderProps {
 
 export interface MenuRootProviderBaseProps extends RootProviderProps, UsePresenceProps {}
 export interface MenuRootProviderProps extends MenuRootProviderBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const MenuRootProvider = (props: MenuRootProviderProps) => {

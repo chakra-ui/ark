@@ -10,8 +10,8 @@ export interface AccordionItemContentBaseProps extends PolymorphicProps {}
 export interface AccordionItemContentProps extends HTMLProps<'div'>, AccordionItemContentBaseProps {}
 
 interface VisibilityProps {
-  hidden?: boolean
-  'data-state'?: string
+  hidden?: boolean | undefined
+  'data-state'?: string | undefined
 }
 
 const splitVisibilityProps = createSplitProps<VisibilityProps>()

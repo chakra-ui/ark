@@ -10,7 +10,7 @@ export interface FieldTextareaBaseProps extends PolymorphicProps {
    * Whether the textarea should autoresize
    * @default false
    */
-  autoresize?: boolean
+  autoresize?: boolean | undefined
 }
 export interface FieldTextareaProps extends HTMLProps<'textarea'>, FieldTextareaBaseProps {}
 

@@ -8,15 +8,15 @@ export interface UseFieldsetProps {
   /**
    * The id of the fieldset.
    */
-  id?: string
+  id?: string | undefined
   /**
    * Indicates whether the fieldset is disabled.
    */
-  disabled?: boolean
+  disabled?: boolean | undefined
   /**
    * Indicates whether the fieldset is invalid.
    */
-  invalid?: boolean
+  invalid?: boolean | undefined
 }
 
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>

@@ -4,8 +4,8 @@ import { createPortal } from 'react-dom'
 import { type RootNode, useEnvironmentContext } from '../../providers'
 
 export interface PortalProps {
-  disabled?: boolean
-  container?: RefObject<HTMLElement | null>
+  disabled?: boolean | undefined
+  container?: RefObject<HTMLElement | null> | undefined
 }
 
 export const Portal = (props: PropsWithChildren<PortalProps>) => {

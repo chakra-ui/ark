@@ -17,7 +17,7 @@ export interface PolymorphicProps {
   /**
    * Use the provided child element as the default rendered element, combining their props and behavior.
    */
-  asChild?: boolean
+  asChild?: boolean | undefined
 }
 
 type JsxElements = { [E in keyof JSX.IntrinsicElements]: ArkForwardRefComponent<E> }
@@ -38,11 +38,11 @@ function getRef(element: React.ReactElement) {
   getter = Object.getOwnPropertyDescriptor(element, 'ref')?.get
   mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning
   if (mayWarn) {
-    return (element.props as { ref?: React.Ref<unknown> }).ref
+    return (element.props as { ref?: React.Ref<unknown> | undefined }).ref
   }
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  return (element.props as { ref?: React.Ref<unknown> }).ref || (element as any).ref
+  return (element.props as { ref?: React.Ref<unknown> | undefined }).ref || (element as any).ref
 }
 
 const withAsChild = (Component: React.ElementType) => {

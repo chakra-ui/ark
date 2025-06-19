@@ -4,8 +4,8 @@ import { axe } from 'vitest-axe'
 import { Menu } from '..'
 
 interface ComponentUnderTestProps extends Menu.RootProps {
-  onValueChange?: (e: { value: string }) => void
-  contextMenu?: boolean
+  onValueChange?: ((e: { value: string }) => void) | undefined
+  contextMenu?: boolean | undefined
 }
 
 const ComponentUnderTest = (props: ComponentUnderTestProps) => {

@@ -9,7 +9,7 @@ export interface TourRootBaseProps extends UsePresenceProps {
   tour: UseTourReturn
 }
 export interface TourRootProps extends TourRootBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const TourRoot = (props: TourRootProps) => {

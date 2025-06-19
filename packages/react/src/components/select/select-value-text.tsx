@@ -7,7 +7,7 @@ export interface SelectValueTextBaseProps extends PolymorphicProps {
   /**
    * Text to display when no value is selected.
    */
-  placeholder?: string
+  placeholder?: string | undefined
 }
 export interface SelectValueTextProps extends HTMLProps<'span'>, SelectValueTextBaseProps {}
 

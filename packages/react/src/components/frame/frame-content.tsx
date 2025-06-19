@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 interface FrameContentProps {
   onMount?(): void
   onUnmount?(): void
-  children?: React.ReactNode
+  children?: React.ReactNode | undefined
 }
 
 export const FrameContent = (props: FrameContentProps) => {

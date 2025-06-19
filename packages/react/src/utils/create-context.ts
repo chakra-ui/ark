@@ -1,12 +1,12 @@
 import { createContext as createReactContext, useContext as useReactContext } from 'react'
 
 interface CreateContextOptions<T> {
-  strict?: boolean
-  hookName?: string
-  providerName?: string
-  errorMessage?: string
-  name?: string
-  defaultValue?: T
+  strict?: boolean | undefined
+  hookName?: string | undefined
+  providerName?: string | undefined
+  errorMessage?: string | undefined
+  name?: string | undefined
+  defaultValue?: T | undefined
 }
 
 type CreateContextReturn<T> = [React.Provider<T>, () => T, React.Context<T>]

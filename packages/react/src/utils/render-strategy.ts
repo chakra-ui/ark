@@ -6,12 +6,12 @@ export interface RenderStrategyProps {
    * Whether to enable lazy mounting
    * @default false
    */
-  lazyMount?: boolean
+  lazyMount?: boolean | undefined
   /**
    * Whether to unmount on exit.
    * @default false
    */
-  unmountOnExit?: boolean
+  unmountOnExit?: boolean | undefined
 }
 
 export const [RenderStrategyPropsProvider, useRenderStrategyPropsContext] = createContext<RenderStrategyProps>({

@@ -8,7 +8,7 @@ import { TooltipProvider } from './use-tooltip-context'
 
 export interface TooltipRootBaseProps extends UseTooltipProps, UsePresenceProps {}
 export interface TooltipRootProps extends TooltipRootBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const TooltipRoot = (props: TooltipRootProps) => {

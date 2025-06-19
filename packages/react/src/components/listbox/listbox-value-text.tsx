@@ -7,7 +7,7 @@ export interface ListboxValueTextBaseProps extends PolymorphicProps {
   /**
    * Text to display when no value is listboxed.
    */
-  placeholder?: string
+  placeholder?: string | undefined
 }
 export interface ListboxValueTextProps extends HTMLProps<'span'>, ListboxValueTextBaseProps {}
 

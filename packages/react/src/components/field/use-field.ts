@@ -6,38 +6,38 @@ import { useFieldsetContext } from '../fieldset/use-fieldset-context'
 import { parts } from './field.anatomy'
 
 export interface ElementIds {
-  root?: string
-  control?: string
-  label?: string
-  errorText?: string
-  helperText?: string
+  root?: string | undefined
+  control?: string | undefined
+  label?: string | undefined
+  errorText?: string | undefined
+  helperText?: string | undefined
 }
 
 export interface UseFieldProps {
   /**
    * The id of the field.
    */
-  id?: string
+  id?: string | undefined
   /**
    * The ids of the field parts.
    */
-  ids?: ElementIds
+  ids?: ElementIds | undefined
   /**
    * Indicates whether the field is required.
    */
-  required?: boolean
+  required?: boolean | undefined
   /**
    * Indicates whether the field is disabled.
    */
-  disabled?: boolean
+  disabled?: boolean | undefined
   /**
    * Indicates whether the field is invalid.
    */
-  invalid?: boolean
+  invalid?: boolean | undefined
   /**
    * Indicates whether the field is read-only.
    */
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 export type UseFieldReturn = ReturnType<typeof useField>

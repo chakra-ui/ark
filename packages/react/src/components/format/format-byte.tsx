@@ -6,11 +6,11 @@ export interface FormatByteProps {
   /**
    * The unit granularity to display
    */
-  unit?: 'bit' | 'byte'
+  unit?: 'bit' | 'byte' | undefined
   /**
    * The unit display
    */
-  unitDisplay?: 'long' | 'short' | 'narrow'
+  unitDisplay?: 'long' | 'short' | 'narrow' | undefined
   /**
    * The byte size to format
    */

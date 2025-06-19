@@ -14,7 +14,7 @@ export interface TrapOptions
   /**
    * Whether the focus trap is disabled.
    */
-  disabled?: boolean
+  disabled?: boolean | undefined
 }
 
 export interface FocusTrapBaseProps extends PolymorphicProps, TrapOptions {}

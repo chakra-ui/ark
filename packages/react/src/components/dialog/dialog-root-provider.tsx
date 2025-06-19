@@ -14,7 +14,7 @@ interface RootProviderProps {
 
 export interface DialogRootProviderBaseProps extends RootProviderProps, UsePresenceProps, PolymorphicProps {}
 export interface DialogRootProviderProps extends DialogRootProviderBaseProps {
-  children?: ReactNode
+  children?: ReactNode | undefined
 }
 
 export const DialogRootProvider = (props: DialogRootProviderProps) => {

@@ -4,8 +4,8 @@ import { runIfFn } from '../../utils/run-if-fn'
 import { EnvironmentContextProvider, type RootNode } from './use-environment-context'
 
 export interface EnvironmentProviderProps {
-  children?: ReactNode
-  value?: RootNode | (() => RootNode)
+  children?: ReactNode | undefined
+  value?: RootNode | (() => RootNode) | undefined
 }
 
 export const EnvironmentProvider = (props: EnvironmentProviderProps) => {

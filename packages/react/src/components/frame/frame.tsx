@@ -8,11 +8,11 @@ import { FrameContent } from './frame-content'
 
 export interface FrameBaseProps {
   /** Additional content to be inserted into the frame's <head> */
-  head?: React.ReactNode
+  head?: React.ReactNode | undefined
   /** Callback function to be executed when the frame is mounted */
-  onMount?: () => void
+  onMount?: (() => void) | undefined
   /** Callback function to be executed when the frame is unmounted */
-  onUnmount?: () => void
+  onUnmount?: (() => void) | undefined
 }
 
 export interface FrameProps extends Assign<React.IframeHTMLAttributes<HTMLIFrameElement>, FrameBaseProps> {}

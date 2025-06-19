@@ -3,8 +3,8 @@ import { UserIcon } from 'lucide-react'
 import { forwardRef } from 'react'
 
 export interface AvatarProps extends ArkAvatar.RootProps {
-  name?: string
-  src?: string
+  name?: string | undefined
+  src?: string | undefined
 }
 
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
