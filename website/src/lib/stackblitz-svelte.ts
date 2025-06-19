@@ -55,6 +55,10 @@ const packageJson = {
     preview: 'vite preview',
     check: 'svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json',
   },
+  dependencies: {
+    '@ark-ui/svelte': 'latest',
+    'lucide-svelte': 'latest',
+  },
   devDependencies: {
     '@sveltejs/vite-plugin-svelte': '^5',
     '@tsconfig/svelte': '^5',
