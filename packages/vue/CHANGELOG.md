@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.14.2] - 2025-06-19
+
 ### Fixed
 
 - **General**: Ensure pointerdown or click event handlers only execute when the main button is clicked
