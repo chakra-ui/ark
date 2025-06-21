@@ -6,21 +6,26 @@ const splitFn = createSplitProps<UseTreeViewProps<TreeNode>>()
 
 export function splitTreeViewProps<T extends UseTreeViewProps<TreeNode>>(props: T) {
   return splitFn(props, [
+    'checkedValue',
     'collection',
+    'defaultCheckedValue',
     'defaultExpandedValue',
+    'defaultFocusedValue',
     'defaultSelectedValue',
     'expandedValue',
     'expandOnClick',
     'focusedValue',
     'id',
     'ids',
+    'loadChildren',
+    'onCheckedChange',
     'onExpandedChange',
     'onFocusChange',
+    'onLoadChildrenComplete',
+    'onLoadChildrenError',
     'onSelectionChange',
     'selectedValue',
     'selectionMode',
     'typeahead',
-    'loadChildren',
-    'onLoadChildrenComplete',
   ])
 }

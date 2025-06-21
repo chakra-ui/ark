@@ -27,6 +27,7 @@
     expandedValue = $bindable<string[]>(),
     selectedValue = $bindable<string[]>(),
     focusedValue = $bindable<string>(),
+    checkedValue = $bindable<string[]>(),
     ...props
   }: TreeViewRootProps<T> = $props()
 
@@ -35,23 +36,28 @@
 
   const id = $props.id()
 
-  const machineProps = $derived.by(() => ({
+  const machineProps = $derived.by<UseTreeViewProps<T>>(() => ({
     ...useTreeViewProps,
     id: useTreeViewProps.id ?? id,
     selectedValue,
     expandedValue,
     focusedValue,
-    onExpandedChange: (details: any) => {
+    checkedValue,
+    onExpandedChange: (details) => {
       useTreeViewProps.onExpandedChange?.(details)
       expandedValue = details.expandedValue
     },
-    onFocusChange: (details: any) => {
+    onFocusChange: (details) => {
       useTreeViewProps.onFocusChange?.(details)
       focusedValue = details.focusedValue
     },
-    onSelectionChange: (details: any) => {
+    onSelectionChange: (details) => {
       useTreeViewProps.onSelectionChange?.(details)
       selectedValue = details.selectedValue
+    },
+    onCheckedChange: (details) => {
+      useTreeViewProps.onCheckedChange?.(details)
+      checkedValue = details.checkedValue
     },
   }))
 

@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### Added
+
+- **Tree View**
+
+  - Add support for checkbox state for checkbox trees via `defaultCheckedValue`, `checkedValue`, `onCheckedChange` props
+  - Add callback for when `loadChildren` fails via `onLoadChildrenError` prop
+
 ## [5.14.2] - 2025-06-19
 
 ### Fixed

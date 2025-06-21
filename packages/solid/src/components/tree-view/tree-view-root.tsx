@@ -16,22 +16,27 @@ export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<
 export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps<T>>()(treeViewProps, [
+    'checkedValue',
     'collection',
+    'defaultCheckedValue',
     'defaultExpandedValue',
+    'defaultFocusedValue',
     'defaultSelectedValue',
     'expandedValue',
     'expandOnClick',
     'focusedValue',
     'id',
     'ids',
+    'loadChildren',
+    'onCheckedChange',
     'onExpandedChange',
     'onFocusChange',
+    'onLoadChildrenComplete',
+    'onLoadChildrenError',
     'onSelectionChange',
     'selectedValue',
     'selectionMode',
     'typeahead',
-    'loadChildren',
-    'onLoadChildrenComplete',
   ])
   const treeView = useTreeView(useTreeViewProps)
   const mergedProps = mergeProps(() => treeView().getRootProps(), localProps)

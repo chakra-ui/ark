@@ -7,22 +7,36 @@ export interface RootProps<T extends TreeNode> {
    */
   collection: TreeCollection<T>
   /**
-   * The initial expanded node ids when rendered.
-   * Use when you don't need to control the expanded node ids.
+   * The initial expanded node values when rendered.
+   * Use when you don't need to control the expanded node values.
    */
   defaultExpandedValue?: string[]
   /**
-   * The initial selected node ids when rendered.
-   * Use when you don't need to control the selected node ids.
+   * The initial selected node values when rendered.
+   * Use when you don't need to control the selected node values.
    */
   defaultSelectedValue?: string[]
+  /**
+   * The initial checked node values when rendered.
+   * Use when you don't need to control the checked node values.
+   */
+  defaultCheckedValue?: string[]
+  /**
+   * The initial focused node value when rendered.
+   * Use when you don't need to control the focused node value.
+   */
+  defaultFocusedValue?: string
+  /**
+   * The controlled checked node values
+   */
+  checkedValue?: string[]
   /**
    * Whether clicking on a branch should open it or not
    * @default true
    */
   expandOnClick?: boolean
   /**
-   * The controlled expanded node ids
+   * The controlled expanded node values
    */
   expandedValue?: string[]
   /**
@@ -38,7 +52,7 @@ export interface RootProps<T extends TreeNode> {
    */
   ids?: Partial<{ root: string; tree: string; label: string; node(value: string): string }>
   /**
-   * The controlled selected node ids
+   * The controlled selected node values
    */
   selectedValue?: string[]
   /**
@@ -74,9 +88,17 @@ export type RootEmits<T extends TreeNode> = {
    */
   selectionChange: [details: treeView.SelectionChangeDetails]
   /**
-   * A function that is called when the children are loaded.
+   * Called when the checked value changes
+   */
+  checkedChange: [details: treeView.CheckedChangeDetails]
+  /**
+   * A function that is called when the children are loaded successfully.
    */
   loadChildrenComplete: [details: treeView.LoadChildrenCompleteDetails<T>]
+  /**
+   * A function that is called when there is an error loading the children.
+   */
+  loadChildrenError: [details: treeView.LoadChildrenErrorDetails<T>]
   /**
    * Called when the expanded value changes
    */
@@ -89,4 +111,8 @@ export type RootEmits<T extends TreeNode> = {
    * Called when the selected value changes
    */
   'update:selectedValue': [value: string[]]
+  /**
+   * Called when the checked value changes
+   */
+  'update:checkedValue': [value: string[]]
 }

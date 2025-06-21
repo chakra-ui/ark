@@ -48,9 +48,18 @@ export const useTreeView = <T extends TreeNode>(
         emit?.('update:selectedValue', details.selectedValue)
         localeProps.onSelectionChange?.(details)
       },
+      onCheckedChange: (details) => {
+        emit?.('checkedChange', details)
+        emit?.('update:checkedValue', details.checkedValue)
+        localeProps.onCheckedChange?.(details)
+      },
       onLoadChildrenComplete: (details) => {
         emit?.('loadChildrenComplete', details)
         localeProps.onLoadChildrenComplete?.(details)
+      },
+      onLoadChildrenError: (details) => {
+        emit?.('loadChildrenError', details)
+        localeProps.onLoadChildrenError?.(details)
       },
     }
   })
