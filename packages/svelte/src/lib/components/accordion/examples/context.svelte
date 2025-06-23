@@ -9,7 +9,7 @@
       <div>
         <span>Selected items: {context().value.join(', ')}</span>
         <span>Focused item: {context().focusedValue}</span>
-        <button on:click={() => context().setValue(['React', 'Solid'])}>Set value</button>
+        <button onclick={() => context().setValue(['React', 'Solid'])}>Set value</button>
       </div>
     {/snippet}
   </Accordion.Context>
