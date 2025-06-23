@@ -1,0 +1,70 @@
+---
+title: 'Introducing Ark UI Svelte'
+description: A headless component library for Svelte 5 apps and design systems
+date: '2025-06-23'
+author: 'Esther Adebayo'
+tags: ['svelte', 'design-system', 'headless-components']
+---
+
+From the onset, Ark UI supported React, Solid and Vue. Today, we're excited to announce that Ark UI now officially
+supports Svelte! 🎉
+
+This means you can now build accessible, scalable design systems using the **45+ components** in Ark UI, while keeping
+that reactive Svelte experience you already love (`$state`, `$derived`, `$effect`, you get the gist!).
+
+## Why Svelte?
+
+Svelte has become a go-to for developers who care about speed and minimal overhead. That lines up perfectly with how Ark
+UI is built - totally unopinionated. In other words, you get all the complex accessibility logic handled for you, while
+maintaining complete control over styling and behavior.
+
+## Getting Started
+
+> **Note:** Ark UI only works for Svelte 5 apps and design systems.
+
+To get started with Ark UI, install the `@ark-ui/svelte` package directly via your package manager:
+
+```bash
+npm i @ark-ui/svelte
+# or
+yarn add @ark-ui/svelte
+# or
+pnpm add @ark-ui/svelte
+```
+
+## Quick Demo
+
+Here's a quick example of how to use `Slider` component in Svelte:
+
+```svelte
+<script lang="ts">
+  import { Slider } from '@ark-ui/svelte/slider'
+
+  let value = $state(0)
+</script>
+
+<Slider.Root bind:value>
+  <Slider.Label>Label</Slider.Label>
+  <Slider.ValueText />
+  <Slider.Control>
+    <Slider.Track>
+      <Slider.Range />
+    </Slider.Track>
+    <Slider.Thumb index={0}>
+      <Slider.HiddenInput />
+    </Slider.Thumb>
+  </Slider.Control>
+</Slider.Root>
+```
+
+What to see it in action? Check out the [Stackblitz](https://stackblitz.com/edit/ark-ui-svelte-slider?file=index.svelte)
+example.
+
+## Conclusion
+
+There are already **45+ components** available in Ark UI, so whether you're building a product or a design system, you
+can now ship Svelte apps faster!
+
+Explore Svelte in Ark UI now: [ark-ui.com](/docs/overview/getting-started)
+
+We can't wait to see what you build with it!
