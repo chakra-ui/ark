@@ -88,7 +88,7 @@ const indexHtml = `<!doctype html>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Svelte + TS</title>
+    <title>Ark UI  / Svelte</title>
   </head>
   <body>
     <div id="app"></div>
@@ -96,10 +96,11 @@ const indexHtml = `<!doctype html>
   </body>
 </html>`
 
-const main = `import './app.css'
+const main = `import { mount } from 'svelte'
+import './app.css'
 import App from './App.svelte'
 
-const app = new App({
+const app = mount(App, {
   target: document.getElementById('app')!,
 })
 
