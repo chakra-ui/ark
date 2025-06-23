@@ -22,7 +22,7 @@ export const Quickstart = () => {
             align="center"
             justify="center"
           >
-            <Stack gap="2.5">
+            <Stack gap="2.5" align="center">
               <Icon height="48" />
               <Text textStyle="sm" textAlign="center">
                 {name}
