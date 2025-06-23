@@ -16,7 +16,7 @@
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
 
-  const mergedProps = $derived(mergeProps(treeView().getItemCheckboxProps(nodeProps()), props))
+  const mergedProps = $derived(mergeProps(treeView().getNodeCheckboxProps(nodeProps()), props))
 </script>
 
 <Ark as="span" {...mergedProps} />

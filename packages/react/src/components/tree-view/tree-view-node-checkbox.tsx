@@ -10,7 +10,7 @@ export interface TreeViewNodeCheckboxProps extends HTMLProps<'span'>, TreeViewNo
 export const TreeViewNodeCheckbox = forwardRef<HTMLSpanElement, TreeViewNodeCheckboxProps>((props, ref) => {
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
-  const mergedProps = mergeProps(treeView.getItemCheckboxProps(nodeProps), props)
+  const mergedProps = mergeProps(treeView.getNodeCheckboxProps(nodeProps), props)
 
   return <ark.span {...mergedProps} ref={ref} />
 })

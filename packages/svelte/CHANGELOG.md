@@ -13,6 +13,12 @@ description: All notable changes will be documented in this file.
   - Add support for checkbox state for checkbox trees via `defaultCheckedValue`, `checkedValue`, `onCheckedChange` props
   - Add callback for when `loadChildren` fails via `onLoadChildrenError` prop
 
+### Fixed
+
+- **Progress**
+  - Fix issue where setting orientation to `vertical` don't work
+  - Fix issue where setting `defaultValue` to `null` doesn't show indeterminate state
+
 ## [5.0.0-0] - 2025-06-19
 
 ### Added

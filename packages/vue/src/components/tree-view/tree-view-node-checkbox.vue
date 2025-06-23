@@ -26,7 +26,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.span v-bind="treeView.getItemCheckboxProps(nodeProps)" :as-child="asChild">
+  <ark.span v-bind="treeView.getNodeCheckboxProps(nodeProps)" :as-child="asChild">
     <slot />
   </ark.span>
 </template>
