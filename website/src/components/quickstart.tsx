@@ -5,7 +5,7 @@ import { NextJsIcon, NuxtIcon, SolidStartIcon } from './marketing/icons'
 export const quickstartFrameworks = [
   { name: 'Next.js', icon: NextJsIcon, href: 'https://stackblitz.com/edit/github-qcm2dskf' },
   { name: 'Solid Start', icon: SolidStartIcon, href: 'https://stackblitz.com/edit/github-1hgkbbln' },
-  { name: 'Nuxt', icon: NuxtIcon, shreflug: 'https://stackblitz.com/edit/github-s3sg6syq' },
+  { name: 'Nuxt', icon: NuxtIcon, href: 'https://stackblitz.com/edit/github-s3sg6syq' },
 ]
 export const Quickstart = () => {
   return (
