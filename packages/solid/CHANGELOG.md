@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.15.0] - 2025-06-23
+
 ### Added
 
 - **Tree View**
