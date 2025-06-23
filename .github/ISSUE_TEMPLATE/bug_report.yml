@@ -56,6 +56,7 @@ body:
         - label: 'React'
         - label: 'Solid'
         - label: 'Vue'
+        - label: 'Svelte'
   - type: 'input'
     id: 'browser'
     attributes:

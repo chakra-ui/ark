@@ -23,15 +23,15 @@ Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a 
 ## Installation
 
 ```bash
-pnpm add @ark-ui/{react,vue,solid}
+pnpm add @ark-ui/{react,vue,solid,svelte}
 ```
 
 ```bash
-npm install @ark-ui/{react,vue,solid}
+npm install @ark-ui/{react,vue,solid,svelte}
 ```
 
 ```bash
-yarn add @ark-ui/{react,vue,solid}
+yarn add @ark-ui/{react,vue,solid,svelte}
 ```
 
 ## Documentation

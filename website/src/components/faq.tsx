@@ -35,11 +35,7 @@ export const Faq = () => {
     },
     {
       question: 'Which JavaScript frameworks are supported?',
-      answer: (
-        <div>
-          Ark UI currently supports React, Solid, and Vue. We began development for Svelte support earlier this year.
-        </div>
-      ),
+      answer: <div>Ark UI currently supports React, Solid, Vue, and Svelte.</div>,
     },
   ]
   return (
