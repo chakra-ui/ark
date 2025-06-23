@@ -22,12 +22,12 @@ export const Hero = () => {
         <Stack gap={{ base: '6', md: '8' }} maxW="3xl">
           <Stack gap={{ base: '5', md: '6' }}>
             <Stack gap={{ base: '3', md: '4' }}>
-              <NextLink href="/docs/components/password-input">
+              <NextLink href="/blog/introducing-ark-ui-svelte">
                 <Badge size="lg" variant="outline">
                   <Icon color="colorPalette.default">
                     <SparklesIcon />
                   </Icon>
-                  [New] Password Input component
+                  [New] Introducing Ark UI Svelte
                   <ArrowRightIcon />
                 </Badge>
               </NextLink>
