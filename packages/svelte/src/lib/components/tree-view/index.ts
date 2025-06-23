@@ -62,6 +62,16 @@ export {
 } from './tree-view-label.svelte'
 export { default as TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context.svelte'
 export {
+  default as TreeViewNodeCheckbox,
+  type TreeViewNodeCheckboxBaseProps,
+  type TreeViewNodeCheckboxProps,
+} from './tree-view-node-checkbox.svelte'
+export {
+  default as TreeViewNodeCheckboxIndicator,
+  type TreeViewNodeCheckboxIndicatorBaseProps,
+  type TreeViewNodeCheckboxIndicatorProps,
+} from './tree-view-node-checkbox-indicator.svelte'
+export {
   default as TreeViewNodeProvider,
   type TreeViewNodeProviderBaseProps,
   type TreeViewNodeProviderProps,

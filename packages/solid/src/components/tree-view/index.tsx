@@ -48,6 +48,16 @@ export {
 } from './tree-view-item-indicator'
 export { TreeViewItemText, type TreeViewItemTextBaseProps, type TreeViewItemTextProps } from './tree-view-item-text'
 export { TreeViewLabel, type TreeViewLabelBaseProps, type TreeViewLabelProps } from './tree-view-label'
+export {
+  TreeViewNodeCheckbox,
+  type TreeViewNodeCheckboxBaseProps,
+  type TreeViewNodeCheckboxProps,
+} from './tree-view-node-checkbox'
+export {
+  TreeViewNodeCheckboxIndicator,
+  type TreeViewNodeCheckboxIndicatorBaseProps,
+  type TreeViewNodeCheckboxIndicatorProps,
+} from './tree-view-node-checkbox-indicator'
 export { TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context'
 export {
   TreeViewNodeProvider,

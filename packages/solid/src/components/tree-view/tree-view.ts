@@ -64,6 +64,16 @@ export {
   type TreeViewLabelProps as LabelProps,
 } from './tree-view-label'
 export {
+  TreeViewNodeCheckbox as NodeCheckbox,
+  type TreeViewNodeCheckboxBaseProps as NodeCheckboxBaseProps,
+  type TreeViewNodeCheckboxProps as NodeCheckboxProps,
+} from './tree-view-node-checkbox'
+export {
+  TreeViewNodeCheckboxIndicator as NodeCheckboxIndicator,
+  type TreeViewNodeCheckboxIndicatorBaseProps as NodeCheckboxIndicatorBaseProps,
+  type TreeViewNodeCheckboxIndicatorProps as NodeCheckboxIndicatorProps,
+} from './tree-view-node-checkbox-indicator'
+export {
   TreeViewNodeContext as NodeContext,
   type TreeViewNodeContextProps as NodeContextProps,
 } from './tree-view-node-context'

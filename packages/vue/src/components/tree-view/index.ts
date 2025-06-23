@@ -56,6 +56,16 @@ export {
 } from './tree-view-item-text.vue'
 export { default as TreeViewItem, type TreeViewItemBaseProps, type TreeViewItemProps } from './tree-view-item.vue'
 export { default as TreeViewLabel, type TreeViewLabelBaseProps, type TreeViewLabelProps } from './tree-view-label.vue'
+export {
+  default as TreeViewNodeCheckbox,
+  type TreeViewNodeCheckboxBaseProps,
+  type TreeViewNodeCheckboxProps,
+} from './tree-view-node-checkbox.vue'
+export {
+  default as TreeViewNodeCheckboxIndicator,
+  type TreeViewNodeCheckboxIndicatorBaseProps,
+  type TreeViewNodeCheckboxIndicatorProps,
+} from './tree-view-node-checkbox-indicator.vue'
 export { default as TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context.vue'
 export {
   default as TreeViewNodeProvider,

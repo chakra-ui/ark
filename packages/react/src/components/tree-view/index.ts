@@ -61,6 +61,16 @@ export {
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider'
 export { TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree'
+export {
+  TreeViewNodeCheckbox,
+  type TreeViewNodeCheckboxBaseProps,
+  type TreeViewNodeCheckboxProps,
+} from './tree-view-node-checkbox'
+export {
+  TreeViewNodeCheckboxIndicator,
+  type TreeViewNodeCheckboxIndicatorBaseProps,
+  type TreeViewNodeCheckboxIndicatorProps,
+} from './tree-view-node-checkbox-indicator'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'
 export { useTreeViewContext, type UseTreeViewContext } from './use-tree-view-context'

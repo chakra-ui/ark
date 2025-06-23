@@ -8,6 +8,7 @@ export default meta
 
 export { AsyncLoading } from './examples/async-loading'
 export { Basic } from './examples/basic'
+export { CheckboxTree } from './examples/checkbox-tree'
 export { ControlledExpanded } from './examples/controlled-expanded'
 export { ControlledSelected } from './examples/controlled-selected'
 export { Filtering } from './examples/filtering'
