@@ -2,13 +2,14 @@
 
 import { useTabsContext } from '@ark-ui/react'
 import { SiStackblitz } from '@icons-pack/react-simple-icons'
+import { css } from 'styled-system/css'
 import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui/tabs'
 import { openInStackblitzReact } from '~/lib/stackblitz-react'
 import { openInStackblitzSolid } from '~/lib/stackblitz-solid'
 import { openInStackblitzVue } from '~/lib/stackblitz-vue'
 import { CodePreview } from './code-preview'
-import { IconButton } from './ui/icon-button'
+import { Button } from './ui/primitives/button'
 
 interface CodeExample {
   label: string
@@ -94,7 +95,7 @@ function StackblitzButton(props: { examples: CodeExample[]; styles: string | und
   if (!example) return null
 
   return (
-    <IconButton
+    <Button
       size="xs"
       scale="0.9"
       onClick={() => {
@@ -114,6 +115,7 @@ function StackblitzButton(props: { examples: CodeExample[]; styles: string | und
       }}
     >
       <SiStackblitz />
-    </IconButton>
+      <span className={css({ textStyle: 'sm' })}>Stackblitz</span>
+    </Button>
   )
 }
