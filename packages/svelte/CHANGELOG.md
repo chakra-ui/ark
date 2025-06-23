@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.0] - 2025-06-23
+
 ### Added
 
 - **Tree View**
