@@ -1,11 +1,12 @@
 import { Flex, Grid, Stack } from 'styled-system/jsx'
 import { Text } from '~/components/ui/text'
-import { NextJsIcon, NuxtIcon, SolidStartIcon } from './marketing/icons'
+import { NextJsIcon, NuxtIcon, SolidStartIcon, SvelteIcon } from './marketing/icons'
 
 export const quickstartFrameworks = [
   { name: 'Next.js', icon: NextJsIcon, href: 'https://stackblitz.com/edit/github-qcm2dskf' },
   { name: 'Solid Start', icon: SolidStartIcon, href: 'https://stackblitz.com/edit/github-1hgkbbln' },
   { name: 'Nuxt', icon: NuxtIcon, href: 'https://stackblitz.com/edit/github-s3sg6syq' },
+  { name: 'Svelte', icon: SvelteIcon, href: 'https://stackblitz.com/edit/ark-ui-svelte' },
 ]
 export const Quickstart = () => {
   return (
