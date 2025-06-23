@@ -16,6 +16,8 @@ function formatDate(date: string) {
   })
 }
 
+const sortedBlogs = blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+
 export default async function Page() {
   return (
     <Flex
@@ -47,7 +49,7 @@ export default async function Page() {
         </Stack>
 
         <Grid columns={{ base: 1, md: 2 }} gap="6" mt="12">
-          {blogs.map((blog, index) => (
+          {sortedBlogs.map((blog, index) => (
             <NextLink href={`/blog/${blog.slug}`} key={index}>
               <Card.Root h="100%">
                 <Card.Header gap="2">

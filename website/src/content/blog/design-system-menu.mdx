@@ -2,7 +2,7 @@
 title: 'Design System #2: Menu component'
 description: How to build a menu component with Ark UI and Panda CSS
 date: '2025-06-13'
-author: 'Esther Adebayo'
+author: 'Esther'
 tags: ['menu', 'ark-ui', 'design-system']
 ---
 
@@ -14,16 +14,16 @@ functionalities we'll cover:
 
 - **Size Variants:** Add support for small, medium, and large menu sizes. This lets you adjust things like padding, font
   size, and spacing for different use cases.
-- **Disabled States:** Some menu items won’t always be clickable. We’ll show how to visually communicate that with
+- **Disabled States:** Some menu items won't always be clickable. We'll show how to visually communicate that with
   styles that indicate disabled behavior.
-- **Menu Indicator:** You’ll learn how to style and animate the indicator that signals when the menu is open or closed.
-- **Grouped Sections:** We’ll style grouped menu items, including section labels and visual separators, to help organize
+- **Menu Indicator:** You'll learn how to style and animate the indicator that signals when the menu is open or closed.
+- **Grouped Sections:** We'll style grouped menu items, including section labels and visual separators, to help organize
   long lists.
-- **Checkbox & Radio Items:** Ark UI supports checkboxes and radio buttons inside menus. We’ll organize long lists of
+- **Checkbox & Radio Items:** Ark UI supports checkboxes and radio buttons inside menus. We'll organize long lists of
   menu items with styled section labels and visual separators.
 - **Icons and Commands:** Add styles for menus that include icons and keyboard shortcuts with command text.
 
-By the end of this guide, you’ll have a scalable approach for styling menus, whether you prefer Vanilla CSS or Panda
+By the end of this guide, you'll have a scalable approach for styling menus, whether you prefer Vanilla CSS or Panda
 CSS.
 
 <video src="/blog/menu/menu.mp4" autoPlay loop muted playsinline />
@@ -55,7 +55,7 @@ a `data-part` attribute to help identify them in the DOM.
 
 ### Basic Usage
 
-Here’s a simple example of how to use the `Menu` component in your code:
+Here's a simple example of how to use the `Menu` component in your code:
 
 ```jsx
 import { Menu } from '@ark-ui/react/menu'
@@ -76,7 +76,7 @@ export const Basic = () => (
 )
 ```
 
-When rendered in the DOM, here’s what the menu looks like when it is open:
+When rendered in the DOM, here's what the menu looks like when it is open:
 
 ```html
 <div data-scope="menu" data-part="root">
@@ -100,7 +100,7 @@ When rendered in the DOM, here’s what the menu looks like when it is open:
 
 Each part of the menu component comes with data attributes like:
 
-- **`data-scope="menu"`** which scopes all menu parts under the `menu` namespace, ensuring styles don’t clash with other
+- **`data-scope="menu"`** which scopes all menu parts under the `menu` namespace, ensuring styles don't clash with other
   components.
 - **`data-part="..."`** which identifies the specific slot or part of the component, such as `content`, `item` and more.
 - **`data-state="..."`** which reflects dynamic states such as `data-state="open"` or `data-state="closed"` .
@@ -122,7 +122,7 @@ Essentially, recipes help you group related styles together and reuse them in a 
 To create a consistent design system, create a `shared` directory to house global styles that can be reused across
 components.
 
-Here’s what to include:
+Here's what to include:
 
 **CSS Reset Styles:** Start with a CSS reset to remove default browser inconsistencies. This ensures every component
 starts from the same baseline, no matter the browser.
@@ -317,7 +317,7 @@ input[type='number'] {
 
 ```
 
-**Button Styles:** Since menu triggers are typically buttons, it’s a good idea to define global button styles. Create a
+**Button Styles:** Since menu triggers are typically buttons, it's a good idea to define global button styles. Create a
 `button.css` file so the button design can be reused anywhere in your system, not just for the menu.
 
 ```css
@@ -557,7 +557,7 @@ The menu content is the floating container that holds all the items inside the d
 **Animating Open and Close Transitions**
 
 To provide a smooth user experience, we'll add subtle animations for when the menu opens and closes. We defined the
-keyframes earlier so apply these animations using Ark UI’s built-in `data-state="open"` or `data-state="closed"`
+keyframes earlier so apply these animations using Ark UI's built-in `data-state="open"` or `data-state="closed"`
 attribute:
 
 ```tsx
@@ -603,7 +603,7 @@ Each individual `item` can be styled like this:
 
 These variables act as placeholders, allowing us to control item-specific properties such as spacing between elements,
 text size, and internal padding. The actual values for these variables will be dynamically set by the size variants
-we’ll define later.
+we'll define later.
 
 **Styling the Highlighted & Disabled States**
 
@@ -1064,10 +1064,10 @@ To style each part of the menu component, we'll create a
 us apply scoped styles to all the distinct parts of the menu, like `item`, `content`, `separator`, `indicator`, and
 more.
 
-We also use `menuAnatomy.keys()` to automatically retrieve all the part names defined in Ark UI’s anatomy for the menu
+We also use `menuAnatomy.keys()` to automatically retrieve all the part names defined in Ark UI's anatomy for the menu
 component.
 
-We’ll begin by adding the base styles for each part. These are the default, foundational styles that give the `Menu`
+We'll begin by adding the base styles for each part. These are the default, foundational styles that give the `Menu`
 component a consistent foundation, even before any variants are applied.
 
 **Styling the Menu Content**
@@ -1108,7 +1108,7 @@ value for this padding will be set later when we define our size variants.
 
 **Animating Open and Close Transitions**
 
-Let’s add subtle animations for the opening and closing transitions. Panda CSS makes this easy, since we've already
+Let's add subtle animations for the opening and closing transitions. Panda CSS makes this easy, since we've already
 defined our keyframes in our `panda.config.ts`.
 
 Styling the `_open` and `_closed` properties will now make the menu open and close smoothly.
@@ -1272,7 +1272,7 @@ export const menuRecipe = sva({
 })
 ```
 
-Notice how we’ve used the `_open` pseudo-selector within the `indicator` part's styles. This is a feature in Panda CSS
+Notice how we've used the `_open` pseudo-selector within the `indicator` part's styles. This is a feature in Panda CSS
 that targets the `[data-state='open']` attribute. Now, when the menu is opened, the indicator rotates 90 degrees.
 
 **Styling Checkboxes and Radios**
@@ -1356,7 +1356,7 @@ export const menuRecipe = sva({
 
 **Styling the Item with Icon and Command**
 
-To create richer menu experiences, it’s common to enhance each item with an icon on the left and a keyboard shortcut
+To create richer menu experiences, it's common to enhance each item with an icon on the left and a keyboard shortcut
 (command) on the right, just like in modern design systems.
 
 Ark UI provides the `itemText` and `itemIndicator` parts, but for a custom "command" text, we'll extend our recipe.
@@ -1417,7 +1417,7 @@ export const menuSlotRecipe = sva({
 })
 ```
 
-The combination of `flex: 1` on `itemText` and `marginInlineStart: 'auto’`on `itemCommand` acts like a flexbox to push
+The combination of `flex: 1` on `itemText` and `marginInlineStart: 'auto'`on `itemCommand` acts like a flexbox to push
 the command text to the right, which creates an aligned layout.
 
 ### Size Variant
@@ -1490,7 +1490,7 @@ Each variant defines tokens like:
 We've explored how to define base styles, create flexible size variants using CSS variables, handle interactive states,
 and integrate custom parts like the item command.
 
-Now let’s put everything together. Here’s what a complete recipe might look like:
+Now let's put everything together. Here's what a complete recipe might look like:
 
 ```tsx
 import { sva } from '../../styled-system/css'
@@ -1710,13 +1710,13 @@ To explore all of the menu styles and their variations, be sure to check out the
 
 ## **Conclusion**
 
-Styling Ark UI’s Menu component is flexible whether you’re working with Vanilla CSS or Panda CSS.
+Styling Ark UI's Menu component is flexible whether you're working with Vanilla CSS or Panda CSS.
 
-If you’re using Vanilla CSS, you can target parts of the component using the `data-scope="menu"` and `data-part="..."`
+If you're using Vanilla CSS, you can target parts of the component using the `data-scope="menu"` and `data-part="..."`
 attributes. This gives you complete control over styling, allowing you to write custom CSS styles for each slot like
 content, item, indicator, and more.
 
 However, if you want a more scalable and design-token-friendly approach for your design system, Panda CSS with slot
 recipes is the way to go.
 
-Try out both approaches and see which fits your team’s workflow best.
+Try out both approaches and see which fits your team's workflow best.
