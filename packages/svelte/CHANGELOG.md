@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.1] - 2025-06-23
+
 ### Fixed
 
 - **Accordion**: Fix issue where `Accordion.ItemContext` doesn't work
