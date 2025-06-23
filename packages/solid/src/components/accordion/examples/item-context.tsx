@@ -2,10 +2,9 @@ import { Accordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 
-export const ContextValue = () => {
+export const ItemContext = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      <Accordion.Context>{(context) => <span>Selected items: {context().value.join(', ')}</span>}</Accordion.Context>
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
@@ -14,6 +13,15 @@ export const ContextValue = () => {
               <Accordion.ItemIndicator>
                 <ChevronDownIcon />
               </Accordion.ItemIndicator>
+              <Accordion.ItemContext>
+                {(context) => (
+                  <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
+                    <span>Expanded: {String(context().expanded)}</span>
+                    <span>Focused: {String(context().focused)}</span>
+                    <span>Disabled: {String(context().disabled)}</span>
+                  </div>
+                )}
+              </Accordion.ItemContext>
             </Accordion.ItemTrigger>
             <Accordion.ItemContent>
               {item()} is a JavaScript library for building user interfaces.

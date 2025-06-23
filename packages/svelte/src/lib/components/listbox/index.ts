@@ -14,6 +14,7 @@ export {
 export { default as ListboxContext, type ListboxContextProps } from './listbox-context.svelte'
 export { default as ListboxInput, type ListboxInputBaseProps, type ListboxInputProps } from './listbox-input.svelte'
 export { default as ListboxItem, type ListboxItemBaseProps, type ListboxItemProps } from './listbox-item.svelte'
+export { default as ListboxItemContext, type ListboxItemContextProps } from './listbox-item-context.svelte'
 export {
   default as ListboxItemGroup,
   type ListboxItemGroupBaseProps,

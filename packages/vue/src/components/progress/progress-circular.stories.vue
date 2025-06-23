@@ -8,7 +8,7 @@ import RootProvider from './examples/circular/root-provider.vue'
 import ValueText from './examples/circular/value-text.vue'
 </script>
 <template>
-  <Story title="Progress / Circular">
+  <Story title="Progress - Circular">
     <Variant title="Basic">
       <Basic />
     </Variant>

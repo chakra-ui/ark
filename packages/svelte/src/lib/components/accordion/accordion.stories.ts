@@ -1,9 +1,11 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import CollapsibleExample from './examples/collapsible.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import HorizontalExample from './examples/horizontal.svelte'
+import ItemContextExample from './examples/item-context.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -59,5 +61,17 @@ export const LazyMount = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
+  }),
+}
+
+export const ItemContext = {
+  render: () => ({
+    Component: ItemContextExample,
   }),
 }

@@ -10,6 +10,7 @@ export { ListboxContext, type ListboxContextProps } from './listbox-context'
 export { ListboxContent, type ListboxContentBaseProps, type ListboxContentProps } from './listbox-content'
 export { ListboxInput, type ListboxInputBaseProps, type ListboxInputProps } from './listbox-input'
 export { ListboxItem, type ListboxItemBaseProps, type ListboxItemProps } from './listbox-item'
+export { ListboxItemContext, type ListboxItemContextProps } from './listbox-item-context'
 export { ListboxItemGroup, type ListboxItemGroupBaseProps, type ListboxItemGroupProps } from './listbox-item-group'
 export {
   ListboxItemGroupLabel,

@@ -14,6 +14,7 @@ export {
   type ListboxItemBaseProps as ItemBaseProps,
   type ListboxItemProps as ItemProps,
 } from './listbox-item.svelte'
+export { default as ItemContext, type ListboxItemContextProps as ItemContextProps } from './listbox-item-context.svelte'
 export {
   default as ItemGroup,
   type ListboxItemGroupBaseProps as ItemGroupBaseProps,

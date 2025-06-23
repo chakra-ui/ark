@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Listbox**: Fix issue where `Listbox.ItemContext` was not exported
+
 ## [5.15.0] - 2025-06-23
 
 ### Added

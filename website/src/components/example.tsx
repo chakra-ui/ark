@@ -64,6 +64,8 @@ export const frameworkExample = async (framework: string, component: string, id:
   return { code, extension }
 }
 
+const frameworks = ['react', 'solid', 'vue', 'svelte']
+
 const findExamples = async (props: Props) => {
   const id = props.id
   const serverContext = getServerContext()
@@ -72,7 +74,7 @@ const findExamples = async (props: Props) => {
   if (!component) return []
 
   return Promise.all(
-    ['react', 'solid', 'vue'].map(async (framework) => {
+    frameworks.map(async (framework) => {
       const { code, extension } = await frameworkExample(framework, component, id)
 
       const html = await codeToHtml(code, {

@@ -1,12 +1,19 @@
 import { Accordion } from '@ark-ui/react/accordion'
 import { ChevronDownIcon } from 'lucide-react'
 
-export const ContextSetValue = () => {
+export const Context = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
       <Accordion.Context>
-        {(context) => <button onClick={() => context.setValue(['Vue'])}>Select Vue</button>}
+        {(context) => (
+          <div>
+            <span>Selected items: {context.value.join(', ')}</span>
+            <span>Focused item: {context.focusedValue}</span>
+            <button onClick={() => context.setValue(['React', 'Solid'])}>Set value</button>
+          </div>
+        )}
       </Accordion.Context>
+
       {['React', 'Solid', 'Vue'].map((item) => (
         <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>

@@ -2,13 +2,11 @@
 import Accordion from './examples/accordion.vue'
 import Basic from './examples/basic.vue'
 import Collapsible from './examples/collapsible.vue'
-import ContextFocusedValue from './examples/context/focusedValue.vue'
-import ContextGetItemState from './examples/context/getItemState.vue'
-import ContextSetValue from './examples/context/setValue.vue'
-import ContextValue from './examples/context/value.vue'
+import Context from './examples/context.vue'
 import Controlled from './examples/controlled.vue'
 import Disabled from './examples/disabled.vue'
 import Horizontal from './examples/horizontal.vue'
+import ItemContext from './examples/item-context.vue'
 import Multiple from './examples/multiple.vue'
 import RenderProp from './examples/render-prop.vue'
 import RootProvider from './examples/root-provider.vue'
@@ -46,17 +44,11 @@ import Vertical from './examples/vertical.vue'
     <Variant title="RootProvider">
       <RootProvider />
     </Variant>
-    <Variant title="ContextFocusedValue">
-      <ContextFocusedValue />
+    <Variant title="Context">
+      <Context />
     </Variant>
-    <Variant title="ContextValue">
-      <ContextValue />
-    </Variant>
-    <Variant title="ContextSetValue">
-      <ContextSetValue />
-    </Variant>
-    <Variant title="ContextGetItemState">
-      <ContextGetItemState />
+    <Variant title="ItemContext">
+      <ItemContext />
     </Variant>
   </Story>
 </template>

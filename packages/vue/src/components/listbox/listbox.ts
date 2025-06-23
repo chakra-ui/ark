@@ -16,6 +16,7 @@ export {
   type ListboxInputBaseProps as InputBaseProps,
   type ListboxInputProps as InputProps,
 } from './listbox-input.vue'
+export { default as ItemContext, type ListboxItemContextProps as ItemContextProps } from './listbox-item-context.vue'
 export {
   default as ItemGroupLabel,
   type ListboxItemGroupLabelBaseProps as ItemGroupLabelBaseProps,

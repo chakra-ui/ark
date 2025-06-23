@@ -1,8 +1,9 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
+  import type { UseAccordionItemContext } from './use-accordion-item-context'
 
   export interface AccordionItemContextProps {
-    render: Snippet
+    render: Snippet<[UseAccordionItemContext]>
   }
 </script>
 
@@ -15,4 +16,4 @@
   AccordionItemProvider(itemState)
 </script>
 
-{@render render()}
+{@render render(itemState)}

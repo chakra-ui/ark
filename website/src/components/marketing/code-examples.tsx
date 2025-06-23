@@ -3,6 +3,13 @@ import { Tabs } from '~/components/ui/tabs'
 import { CodePreview } from '../code-preview'
 import * as snippets from './code-snippets'
 
+const frameworks = {
+  react: { lang: 'tsx', theme: 'github-dark-default' },
+  solid: { lang: 'tsx', theme: 'github-dark-default' },
+  vue: { lang: 'vue', theme: 'github-dark-default' },
+  svelte: { lang: 'svelte', theme: 'github-dark-default' },
+}
+
 export const CodeExamples = async () => {
   return (
     <Tabs.Root
@@ -21,7 +28,7 @@ export const CodeExamples = async () => {
         pt="2"
         px="4"
       >
-        {['react', 'solid', 'vue'].map((framework) => (
+        {Object.keys(frameworks).map((framework) => (
           <Tabs.Trigger
             key={framework}
             value={framework}
@@ -35,10 +42,7 @@ export const CodeExamples = async () => {
         <Tabs.Indicator />
       </Tabs.List>
       {Object.entries(snippets).map(async ([key, code]) => {
-        const html = await codeToHtml(code, {
-          lang: key === 'vue' ? 'vue' : 'tsx',
-          theme: 'github-dark-default',
-        })
+        const html = await codeToHtml(code, frameworks[key as keyof typeof frameworks])
         return (
           <Tabs.Content key={key} value={key} pt="0">
             <CodePreview code={code} html={html} />

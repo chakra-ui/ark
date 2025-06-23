@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Accordion**: Fix issue where `Accordion.ItemContext` doesn't work
+- **Listbox**: Fix issue where `Listbox.ItemContext` was not exported
+
 ## [5.0.0] - 2025-06-23
 
 ### Added

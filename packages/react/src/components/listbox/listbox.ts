@@ -22,6 +22,10 @@ export {
   type ListboxItemProps as ItemProps,
 } from './listbox-item'
 export {
+  ListboxItemContext as ItemContext,
+  type ListboxItemContextProps as ItemContextProps,
+} from './listbox-item-context'
+export {
   ListboxItemGroup as ItemGroup,
   type ListboxItemGroupBaseProps as ItemGroupBaseProps,
   type ListboxItemGroupProps as ItemGroupProps,

@@ -94,29 +94,25 @@ can leverage it to access the component state and methods from outside the accor
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
-### Accessing the focused item
+### Accessing context
 
-Use the `focusedValue` property to get the value of the focused accordion item.
+Use the `useAccordionContext` hook to access the state of an accordion item. It exposes the following properties:
 
-<Example id="context/focusedValue" />
+- `focusedValue`: The value of the focused accordion item.
+- `value`: The value of the selected accordion items.
+- `setValue`: A method to set the selected accordion items.
 
-### Accessing the selected items
+<Example id="context" />
 
-Use the `value` property to get the selected accordion items.
+### Accessing the item context
 
-<Example id="context/value" />
+Use the `useAccordionItemContext` hook to access the state of an accordion item. It exposes the following properties:
 
-### Setting the selected items
+- `expanded`: Whether the accordion item is expanded.
+- `focused`: Whether the accordion item is focused.
+- `disabled`: Whether the accordion item is disabled.
 
-Use the `setValue` method to set the selected accordion items.
-
-<Example id="context/setValue" />
-
-### Accessing an item's state
-
-Use the `getItemState` method to get the state of an accordion item.
-
-<Example id="context/getItemState" />
+<Example id="item-context" />
 
 ## API Reference
 

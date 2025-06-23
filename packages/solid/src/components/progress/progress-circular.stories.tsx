@@ -1,7 +1,7 @@
 import type { Meta } from 'storybook-solidjs'
 
 const meta: Meta = {
-  title: 'Components / Progress / Circular',
+  title: 'Components / Progress - Circular',
 }
 
 export default meta

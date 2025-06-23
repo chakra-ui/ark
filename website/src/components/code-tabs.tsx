@@ -7,6 +7,7 @@ import { Box } from 'styled-system/jsx'
 import { Tabs } from '~/components/ui/tabs'
 import { openInStackblitzReact } from '~/lib/stackblitz-react'
 import { openInStackblitzSolid } from '~/lib/stackblitz-solid'
+import { openInStackblitzSvelte } from '~/lib/stackblitz-svelte'
 import { openInStackblitzVue } from '~/lib/stackblitz-vue'
 import { CodePreview } from './code-preview'
 import { Button } from './ui/primitives/button'
@@ -104,6 +105,7 @@ function StackblitzButton(props: { examples: CodeExample[]; styles: string | und
           react: openInStackblitzReact,
           solid: openInStackblitzSolid,
           vue: openInStackblitzVue,
+          svelte: openInStackblitzSvelte,
         }[selectedFramework]
 
         fn?.({

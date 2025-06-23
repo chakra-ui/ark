@@ -8,7 +8,7 @@ import MinMax from './examples/linear/min-max.vue'
 import ValueText from './examples/linear/value-text.vue'
 </script>
 <template>
-  <Story title="Progress / Linear">
+  <Story title="Progress - Linear">
     <Variant title="Basic">
       <Basic />
     </Variant>

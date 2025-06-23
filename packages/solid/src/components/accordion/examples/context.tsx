@@ -2,10 +2,19 @@ import { Accordion } from '@ark-ui/solid/accordion'
 import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 
-export const ContextFocusedValue = () => {
+export const Context = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      <Accordion.Context>{(accordion) => <span>Focused item: {accordion().focusedValue}</span>}</Accordion.Context>
+      <Accordion.Context>
+        {(context) => (
+          <div>
+            <span>Selected items: {context().value.join(', ')}</span>
+            <span>Focused item: {context().focusedValue}</span>
+            <button onClick={() => context().setValue(['React', 'Solid'])}>Set value</button>
+          </div>
+        )}
+      </Accordion.Context>
+
       <Index each={['React', 'Solid', 'Vue']}>
         {(item) => (
           <Accordion.Item value={item()}>
