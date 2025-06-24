@@ -16,6 +16,7 @@ Ark UI is available for the following JavaScript frameworks:
 - **React**: `@ark-ui/react`
 - **Solid**: `@ark-ui/solid`
 - **Vue**: `@ark-ui/vue`
+- **Svelte**: `@ark-ui/svelte`
 
 ## Available Components
 

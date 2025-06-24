@@ -25,4 +25,5 @@ const items = [
   { value: 'react', label: 'React' },
   { value: 'solid', label: 'Solid' },
   { value: 'vue', label: 'Vue' },
+  { value: 'svelte', label: 'Svelte' },
 ]

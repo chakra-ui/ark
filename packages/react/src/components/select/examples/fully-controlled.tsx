@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export const FullyControlled = () => {
   const [value, setValue] = useState(['React'])
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   return (
     <Select.Root value={value} collection={collection} onValueChange={(e) => setValue(e.value)}>

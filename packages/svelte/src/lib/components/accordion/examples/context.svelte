@@ -14,7 +14,7 @@
     {/snippet}
   </Accordion.Context>
 
-  {#each ['React', 'Solid', 'Vue'] as item}
+  {#each ['React', 'Solid', 'Vue', 'Svelte'] as item}
     <Accordion.Item value={item}>
       <Accordion.ItemTrigger>
         What is {item}?

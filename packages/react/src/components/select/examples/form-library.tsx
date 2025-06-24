@@ -7,7 +7,7 @@ interface Inputs {
 }
 
 export const FormLibrary = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
   const { register, handleSubmit } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => window.alert(JSON.stringify(data))

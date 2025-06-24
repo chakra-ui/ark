@@ -7,7 +7,7 @@ import { ref } from 'vue'
 const filters = useFilter({ sensitivity: 'base' })
 
 const { collection, filter } = useListCollection({
-  initialItems: ['React', 'Solid', 'Vue'],
+  initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
   filter: filters.value.contains,
 })
 

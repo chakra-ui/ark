@@ -5,7 +5,7 @@
 
 <div style="display: flex; max-width: 900px;">
   <Accordion.Root defaultValue={['React']} orientation="horizontal">
-    {#each ['React', 'Solid', 'Vue'] as item (item)}
+    {#each ['React', 'Solid', 'Vue', 'Svelte'] as item (item)}
       <Accordion.Item value={item} style="display: flex; flex-direction: column;">
         <Accordion.ItemTrigger style="min-height: 2rem; writing-mode: vertical-lr;">
           What is {item}?

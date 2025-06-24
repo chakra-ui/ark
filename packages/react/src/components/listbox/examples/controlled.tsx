@@ -2,7 +2,7 @@ import { Listbox, createListCollection } from '@ark-ui/react/listbox'
 import { useState } from 'react'
 
 export const Controlled = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
   const [value, setValue] = useState(['React'])
 
   return (

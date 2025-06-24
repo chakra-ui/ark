@@ -8,7 +8,7 @@
       </div>
     </Accordion.Context>
 
-    <Accordion.Item v-for="item in ['React', 'Solid', 'Vue']" :key="item" :value="item">
+    <Accordion.Item v-for="item in ['React', 'Solid', 'Vue', 'Svelte']" :key="item" :value="item">
       <Accordion.ItemTrigger>
         What is {{ item }}?
         <Accordion.ItemIndicator>

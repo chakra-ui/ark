@@ -4,7 +4,7 @@ import { ChevronDownIcon } from 'lucide-solid'
 import { Index } from 'solid-js/web'
 
 export const WithField = (props: Field.RootProps) => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   return (
     <Field.Root {...props}>

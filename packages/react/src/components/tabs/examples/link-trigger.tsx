@@ -12,9 +12,13 @@ export const WithLinkTrigger = () => (
       <Tabs.Trigger value="solid" asChild>
         <a href="#solid">Solid</a>
       </Tabs.Trigger>
+      <Tabs.Trigger value="svelte" asChild>
+        <a href="#svelte">Svelte</a>
+      </Tabs.Trigger>
     </Tabs.List>
     <Tabs.Content value="react">React Content</Tabs.Content>
     <Tabs.Content value="vue">Vue Content</Tabs.Content>
     <Tabs.Content value="solid">Solid Content</Tabs.Content>
+    <Tabs.Content value="svelte">Svelte Content</Tabs.Content>
   </Tabs.Root>
 )

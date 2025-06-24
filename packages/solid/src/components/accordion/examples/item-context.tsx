@@ -5,7 +5,7 @@ import { Index } from 'solid-js'
 export const ItemContext = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      <Index each={['React', 'Solid', 'Vue']}>
+      <Index each={['React', 'Solid', 'Vue', 'Svelte']}>
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>

@@ -40,4 +40,4 @@ export const WithField = (props: Field.RootProps) => {
   )
 }
 
-const initialItems = ['React', 'Solid', 'Vue']
+const initialItems = ['React', 'Solid', 'Vue', 'Svelte']

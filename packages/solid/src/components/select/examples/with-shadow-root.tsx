@@ -4,7 +4,7 @@ import { Index, Portal } from 'solid-js/web'
 
 export const WithShadowRoot = () => {
   let portalNode: (HTMLDivElement & { shadowRoot: ShadowRoot }) | undefined
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   return (
     <Portal ref={portalNode} useShadow={true}>

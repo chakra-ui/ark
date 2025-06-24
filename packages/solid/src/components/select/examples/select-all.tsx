@@ -21,7 +21,7 @@ const SelectAllButton = () => {
 }
 
 export const SelectAll = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   return (
     <Select.Root collection={collection}>

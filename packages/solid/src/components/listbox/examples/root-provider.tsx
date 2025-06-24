@@ -2,7 +2,7 @@ import { Listbox, createListCollection, useListbox } from '@ark-ui/solid/listbox
 import { Index } from 'solid-js'
 
 export const RootProvider = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
   const listbox = useListbox({ collection: collection })
 
   return (

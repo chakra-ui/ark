@@ -8,7 +8,7 @@
 <div>
   <div>Value: {JSON.stringify(value)}</div>
   <Accordion.Root bind:value>
-    {#each ['React', 'Solid', 'Vue'] as item (item)}
+    {#each ['React', 'Solid', 'Vue', 'Svelte'] as item (item)}
       <Accordion.Item value={item}>
         <Accordion.ItemTrigger>
           What is {item}?

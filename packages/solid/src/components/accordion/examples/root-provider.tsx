@@ -13,7 +13,7 @@ export const RootProvider = () => {
       <button onClick={() => accordion().setValue(['Vue'])}>Set to Vue</button>
 
       <Accordion.RootProvider value={accordion}>
-        <Index each={['React', 'Solid', 'Vue']}>
+        <Index each={['React', 'Solid', 'Vue', 'Svelte']}>
           {(item) => (
             <Accordion.Item value={item()}>
               <Accordion.ItemTrigger>

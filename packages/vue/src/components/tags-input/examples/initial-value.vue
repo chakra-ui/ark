@@ -2,7 +2,7 @@
 import { TagsInput } from '@ark-ui/vue/tags-input'
 import { ref } from 'vue'
 
-const frameworks = ref(['React', 'Solid', 'Vue'])
+const frameworks = ref(['React', 'Solid', 'Vue', 'Svelte'])
 </script>
 
 <template>

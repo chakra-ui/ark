@@ -3,7 +3,7 @@ import { Select, createListCollection } from '@ark-ui/vue/select'
 import { ChevronDownIcon } from 'lucide-vue-next'
 
 const collection = createListCollection({
-  items: ['React', 'Solid', 'Vue'],
+  items: ['React', 'Solid', 'Vue', 'Svelte'],
 })
 </script>
 

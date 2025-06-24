@@ -5,6 +5,7 @@ const items = [
   { label: 'React', value: 'react' },
   { label: 'Solid', value: 'solid' },
   { label: 'Vue', value: 'vue' },
+  { label: 'Svelte', value: 'svelte' },
 ]
 
 export const Group = () => (

@@ -2,7 +2,7 @@ import { Select, createListCollection, useSelect } from '@ark-ui/solid/select'
 import { Index, Portal } from 'solid-js/web'
 
 export const RootProvider = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   const select = useSelect({ collection: collection })
 

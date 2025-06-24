@@ -2,7 +2,7 @@
 import { Accordion } from '@ark-ui/vue/accordion'
 import { ref } from 'vue'
 
-const items = ref(['React', 'Solid', 'Vue'])
+const items = ref(['React', 'Solid', 'Vue', 'Svelte'])
 const value = ref(['React'])
 </script>
 

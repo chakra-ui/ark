@@ -7,7 +7,7 @@
   const filters = useFilter({ sensitivity: 'base' })
 
   const { collection, filter } = useListCollection({
-    initialItems: ['React', 'Solid', 'Vue'],
+    initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
     filter: (...args) => filters().contains(...args),
   })
 

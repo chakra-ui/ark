@@ -6,7 +6,7 @@ import { TagsInput } from '~/components/ui/tags-input'
 
 export const Demo = (props: TagsInput.RootProps) => {
   return (
-    <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']} maxW="xs" {...props}>
+    <TagsInput.Root defaultValue={['React', 'Solid', 'Vue', 'Svelte']} maxW="xs" {...props}>
       <TagsInput.Context>
         {(api) => (
           <>

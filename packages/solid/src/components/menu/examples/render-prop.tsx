@@ -14,6 +14,7 @@ export const RenderProp = () => (
           </Menu.ItemContext>
         </Menu.Item>
         <Menu.Item value="vue">Vue</Menu.Item>
+        <Menu.Item value="svelte">Svelte</Menu.Item>
       </Menu.Content>
     </Menu.Positioner>
   </Menu.Root>

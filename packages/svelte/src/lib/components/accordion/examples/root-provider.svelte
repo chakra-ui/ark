@@ -12,7 +12,7 @@
 <div>
   <div>Open items: {JSON.stringify(accordion().value)}</div>
   <Accordion.RootProvider value={accordion}>
-    {#each ['React', 'Solid', 'Vue'] as item (item)}
+    {#each ['React', 'Solid', 'Vue', 'Svelte'] as item (item)}
       <Accordion.Item value={item}>
         <Accordion.ItemTrigger>
           What is {item}?

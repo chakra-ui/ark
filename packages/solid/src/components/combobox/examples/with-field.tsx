@@ -3,7 +3,7 @@ import { Field } from '@ark-ui/solid/field'
 import { useFilter } from '@ark-ui/solid/locale'
 import { For } from 'solid-js'
 
-const initialItems = ['React', 'Solid', 'Vue']
+const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
 
 export const WithField = (props: Field.RootProps) => {
   const filterFn = useFilter({ sensitivity: 'base' })

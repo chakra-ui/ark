@@ -2,7 +2,7 @@ import { RadioGroup } from '@ark-ui/solid/radio-group'
 import { Index } from 'solid-js'
 
 export const OnEvent = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
 
   return (
     <RadioGroup.Root onValueChange={(details) => console.log(details.value)}>
