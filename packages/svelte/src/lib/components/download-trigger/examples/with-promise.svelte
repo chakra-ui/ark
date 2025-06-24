@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DownloadTrigger } from '../'
+  import { DownloadTrigger } from '@ark-ui/svelte/download-trigger'
 
   const fetchImage = async () => {
     const response = await fetch('https://picsum.photos/200/300')
