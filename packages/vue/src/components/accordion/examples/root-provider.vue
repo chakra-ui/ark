@@ -2,7 +2,7 @@
 import { Accordion, useAccordion } from '@ark-ui/vue/accordion'
 import { ChevronRightIcon } from 'lucide-vue-next'
 
-const items = ['React', 'Solid', 'Vue']
+const items = ['React', 'Solid', 'Vue', 'Svelte']
 
 const accordion = useAccordion({
   multiple: true,

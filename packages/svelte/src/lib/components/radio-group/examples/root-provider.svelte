@@ -1,7 +1,7 @@
 <script>
   import { RadioGroup, useRadioGroup } from '@ark-ui/svelte/radio-group'
 
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
 
   const id = $props.id()
   const radioGroup = useRadioGroup({ id })

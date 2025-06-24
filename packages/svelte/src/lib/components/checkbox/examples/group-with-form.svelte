@@ -5,6 +5,7 @@
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
+    { label: 'Svelte', value: 'svelte' },
     { label: 'Vue', value: 'vue' },
   ]
 </script>

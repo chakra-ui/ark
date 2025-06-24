@@ -4,7 +4,7 @@ import { ChevronDownIcon } from 'lucide-react'
 export const ItemContext = () => {
   return (
     <Accordion.Root defaultValue={['React']}>
-      {['React', 'Solid', 'Vue'].map((item) => (
+      {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
         <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
             What is {item}?

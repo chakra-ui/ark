@@ -3,7 +3,7 @@ import { Index } from 'solid-js'
 
 export const InitialValue = () => {
   return (
-    <TagsInput.Root value={['React', 'Solid', 'Vue']}>
+    <TagsInput.Root value={['React', 'Solid', 'Vue', 'Svelte']}>
       <TagsInput.Context>
         {(api) => (
           <>

@@ -1,7 +1,7 @@
 import { RadioGroup } from '@ark-ui/react/radio-group'
 
 export const Basic = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
 
   return (
     <RadioGroup.Root>

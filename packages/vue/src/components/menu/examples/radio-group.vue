@@ -3,7 +3,7 @@ import { Menu } from '@ark-ui/vue/menu'
 import { ref } from 'vue'
 
 const value = ref('React')
-const items = ref(['React', 'Solid', 'Vue'])
+const items = ref(['React', 'Solid', 'Vue', 'Svelte'])
 </script>
 
 <template>

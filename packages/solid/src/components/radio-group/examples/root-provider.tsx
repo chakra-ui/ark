@@ -2,7 +2,7 @@ import { RadioGroup, useRadioGroup } from '@ark-ui/solid/radio-group'
 import { Index } from 'solid-js'
 
 export const RootProvider = () => {
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
 
   const radioGroup = useRadioGroup()
 

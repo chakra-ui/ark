@@ -2,7 +2,7 @@
 import { RadioGroup, useRadioGroup } from '@ark-ui/vue/radio-group'
 import { ref } from 'vue'
 
-const frameworks = ref(['React', 'Solid', 'Vue'])
+const frameworks = ref(['React', 'Solid', 'Vue', 'Svelte'])
 
 const radioGroup = useRadioGroup()
 </script>

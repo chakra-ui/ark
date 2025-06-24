@@ -3,7 +3,7 @@ import { createMemo, createSignal } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
 
 export const DynamicItems = () => {
-  const [items, setItems] = createSignal(['React', 'Solid', 'Vue'])
+  const [items, setItems] = createSignal(['React', 'Solid', 'Vue', 'Svelte'])
   const collection = createMemo(() =>
     createListCollection({
       items: items(),

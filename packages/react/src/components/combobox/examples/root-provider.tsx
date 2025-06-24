@@ -2,7 +2,7 @@ import { Combobox, useCombobox, useListCollection } from '@ark-ui/react/combobox
 import { useFilter } from '@ark-ui/react/locale'
 import { Portal } from '@ark-ui/react/portal'
 
-const initialItems = ['React', 'Solid', 'Vue']
+const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
 
 export const RootProvider = () => {
   const { contains } = useFilter({ sensitivity: 'base' })

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Listbox, createListCollection } from '@ark-ui/svelte/listbox'
 
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   let value = $state(['React'])
 </script>

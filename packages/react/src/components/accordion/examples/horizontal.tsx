@@ -4,7 +4,7 @@ import { ChevronDownIcon } from 'lucide-react'
 export const Horizontal = () => {
   return (
     <Accordion.Root defaultValue={['React']} orientation="horizontal">
-      {['React', 'Solid', 'Vue'].map((item) => (
+      {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
         <Accordion.Item key={item} value={item}>
           <Accordion.ItemTrigger>
             What is {item}?

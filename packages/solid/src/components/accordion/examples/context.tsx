@@ -15,7 +15,7 @@ export const Context = () => {
         )}
       </Accordion.Context>
 
-      <Index each={['React', 'Solid', 'Vue']}>
+      <Index each={['React', 'Solid', 'Vue', 'Svelte']}>
         {(item) => (
           <Accordion.Item value={item()}>
             <Accordion.ItemTrigger>

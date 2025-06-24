@@ -1,7 +1,7 @@
 <script>
   import { RadioGroup } from '@ark-ui/svelte/radio-group'
 
-  const frameworks = ['React', 'Solid', 'Vue']
+  const frameworks = ['React', 'Solid', 'Vue', 'Svelte']
 </script>
 
 <RadioGroup.Root disabled>

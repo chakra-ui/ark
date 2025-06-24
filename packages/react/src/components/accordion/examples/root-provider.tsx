@@ -12,7 +12,7 @@ export const RootProvider = () => {
       <button onClick={() => accordion.setValue(['Vue'])}>Set to Vue</button>
 
       <Accordion.RootProvider value={accordion}>
-        {['React', 'Solid', 'Vue'].map((item) => (
+        {['React', 'Solid', 'Vue', 'Svelte'].map((item) => (
           <Accordion.Item key={item} value={item}>
             <Accordion.ItemTrigger>
               What is {item}?

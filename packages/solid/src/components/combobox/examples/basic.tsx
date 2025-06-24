@@ -3,7 +3,7 @@ import { useFilter } from '@ark-ui/solid/locale'
 import { For } from 'solid-js'
 import { Portal } from 'solid-js/web'
 
-const initialItems = ['React', 'Solid', 'Vue']
+const initialItems = ['React', 'Solid', 'Vue', 'Svelte']
 
 export const Basic = () => {
   const filterFn = useFilter({ sensitivity: 'base' })

@@ -39,7 +39,7 @@ import Vertical from './examples/vertical.vue'
       <Disabled />
     </Variant>
     <Variant title="Closed">
-      <Accordion multiple :items="['React', 'Solid', 'Vue']" />
+      <Accordion multiple :items="['React', 'Solid', 'Vue', 'Svelte']" />
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />

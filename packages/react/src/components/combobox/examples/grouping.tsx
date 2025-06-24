@@ -48,6 +48,7 @@ const initialItems = [
   { label: 'React', value: 'react', type: 'JS' },
   { label: 'Solid', value: 'solid', type: 'JS' },
   { label: 'Vue', value: 'vue', type: 'JS' },
+  { label: 'Svelte', value: 'svelte', type: 'JS' },
   { label: 'Panda', value: 'panda', type: 'CSS' },
   { label: 'Tailwind', value: 'tailwind', type: 'CSS' },
 ]

@@ -2,7 +2,7 @@ import { TagsInput } from '@ark-ui/react/tags-input'
 
 export const InitialValue = () => {
   return (
-    <TagsInput.Root defaultValue={['React', 'Solid', 'Vue']}>
+    <TagsInput.Root defaultValue={['React', 'Solid', 'Vue', 'Svelte']}>
       <TagsInput.Context>
         {(tagsInput) => (
           <>

@@ -11,7 +11,7 @@ export const RadioGroup = () => {
         <Menu.Content>
           <Menu.RadioItemGroup value={value} onValueChange={(e) => setValue(e.value)}>
             <Menu.ItemGroupLabel>JS Frameworks</Menu.ItemGroupLabel>
-            {['React', 'Solid', 'Vue'].map((framework) => (
+            {['React', 'Solid', 'Vue', 'Svelte'].map((framework) => (
               <Menu.RadioItem key={framework} value={framework}>
                 <Menu.ItemIndicator>✅</Menu.ItemIndicator>
                 <Menu.ItemText>{framework}</Menu.ItemText>

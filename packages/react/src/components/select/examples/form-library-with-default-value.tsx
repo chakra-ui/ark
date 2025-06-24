@@ -11,7 +11,7 @@ export const FormLibraryWithDefaultValue = () => {
     defaultValues: { framework: 'React' },
   })
 
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
   const defaultValue = getValues('framework')
 
   const onSubmit: SubmitHandler<Inputs> = (data) => window.alert(JSON.stringify(data))

@@ -1,7 +1,7 @@
 import { Listbox, createListCollection } from '@ark-ui/react/listbox'
 
 export const Basic = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 
   return (
     <Listbox.Root collection={collection}>

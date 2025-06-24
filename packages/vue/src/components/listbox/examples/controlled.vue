@@ -3,7 +3,7 @@ import { Listbox, createListCollection } from '@ark-ui/vue/listbox'
 import { ref } from 'vue'
 
 const collection = createListCollection({
-  items: ['React', 'Solid', 'Vue'],
+  items: ['React', 'Solid', 'Vue', 'Svelte'],
 })
 const value = ref(['React'])
 </script>

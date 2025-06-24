@@ -2,7 +2,7 @@ import { Listbox, createListCollection } from '@ark-ui/solid/listbox'
 import { Index, createSignal } from 'solid-js'
 
 export const Controlled = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue'] })
+  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
   const [value, setValue] = createSignal(['React'])
 
   return (

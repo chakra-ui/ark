@@ -2,7 +2,7 @@
   import { Accordion } from '@ark-ui/svelte/accordion'
   import { ChevronDownIcon } from 'lucide-svelte'
 
-  const items = ['React', 'Solid', 'Vue']
+  const items = ['React', 'Solid', 'Vue', 'Svelte']
 </script>
 
 <Accordion.Root defaultValue={['React']}>
