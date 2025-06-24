@@ -1,5 +1,17 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Date Picker**: Fix issue with keyboard selection where setting unavailable date causes month view to behave
+  differently from clicking with mouse
+
+- **Toast**: Fix issue where app crashes when `toaster.promise` is called without loading option. The `loading` option
+  is now required. A warning will be logged if it is not provided
+
+- **Tree View**
+  - Fix issue where clicking a branch with indeterminate state doesn't check its child nodes
+  - Remove `aria-busy` attribute from branch trigger when not loading children
+
 ## [5.15.1] - 2025-06-23
 
 ### Fixed
