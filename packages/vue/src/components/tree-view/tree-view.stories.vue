@@ -4,6 +4,7 @@ import Basic from './examples/basic.vue'
 import ControlledExpanded from './examples/controlled-expanded.vue'
 import ControlledSelected from './examples/controlled-selected.vue'
 import Filtering from './examples/filtering.vue'
+import LazyMount from './examples/lazy-mount.vue'
 import RootProvider from './examples/root-provider.vue'
 </script>
 
@@ -26,6 +27,9 @@ import RootProvider from './examples/root-provider.vue'
     </Variant>
     <Variant title="Filtering">
       <Filtering />
+    </Variant>
+    <Variant title="LazyMount">
+      <LazyMount />
     </Variant>
   </Story>
 </template>

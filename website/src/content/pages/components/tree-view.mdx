@@ -58,6 +58,17 @@ To use this, you need to provide the following:
 
 <Example id="async-loading" />
 
+### Lazy Mount
+
+Lazy mounting is a feature that allows the content of a tree view to be rendered only when it is expanded. This is
+useful for performance optimization, especially when tree content is large or complex. To enable lazy mounting, use the
+`lazyMount` prop on the `TreeView.Root` component.
+
+In addition, the `unmountOnExit` prop can be used in conjunction with `lazyMount` to unmount the tree view content when
+branches are collapsed, freeing up resources. The next time a branch is expanded, its content will be re-rendered.
+
+<Example id="lazy-mount" />
+
 ### Filtering
 
 Filtering is useful when you have a large tree and you want to filter the nodes to only show the ones that match the

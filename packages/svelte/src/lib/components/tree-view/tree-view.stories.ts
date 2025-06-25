@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExpandedExample from './examples/controlled-expanded.svelte'
 import ControlledSelectedExample from './examples/controlled-selected.svelte'
 import FilteringExample from './examples/filtering.svelte'
+import LazyMountExample from './examples/lazy-mount.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -45,5 +46,11 @@ export const AsyncLoading = {
 export const Filtering = {
   render: () => ({
     Component: FilteringExample,
+  }),
+}
+
+export const LazyMount = {
+  render: () => ({
+    Component: LazyMountExample,
   }),
 }
