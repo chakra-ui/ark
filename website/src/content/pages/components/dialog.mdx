@@ -37,6 +37,32 @@ Dialog is closed, freeing up resources. The next time the dialog is activated, i
 
 <Example id="lazy-mount" />
 
+### Lazy Mount and Dynamic Imports
+
+When using `lazyMount` and dynamically rendering components in the dialog (via `React.lazy`, Next.js `dynamic`), wrap
+the imported component in a `Suspense` component to render a fallback.
+
+```tsx
+import { Dialog } from '@ark-ui/react/dialog'
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+
+const HeavyComponent = dynamic(() => import('./HeavyComponent'))
+
+export default function DialogExample() {
+  return (
+    <Dialog.Root lazyMount>
+      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog.Content>
+        <Suspense fallback={<div>Loading...</div>}>
+          <HeavyComponent />
+        </Suspense>
+      </Dialog.Content>
+    </Dialog.Root>
+  )
+}
+```
+
 ### Render Function
 
 Use the `Dialog.Context` component to access the dialog's state and methods.
