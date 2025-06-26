@@ -185,6 +185,7 @@
     "@sveltejs/kit": "2.21.5",
     "@sveltejs/package": "2.3.11",
     "@sveltejs/vite-plugin-svelte": "5.1.0",
+    "@tanstack/svelte-form": "1.12.3",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/svelte": "5.2.8",
     "@testing-library/user-event": "14.6.1",
