@@ -71,7 +71,36 @@ function Demo() {
 }
 ```
 
+### Rehydrate Value
+
+In some cases, where a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, here's how to
+rehydrate the value and populate the input value.
+
+<Example id="rehydrate-value" />
+
 ## Guides
+
+### Custom Objects
+
+By default, the combobox collection expects an array of objects with `label` and `value` properties. In some cases, you
+may need to deal with custom objects.
+
+Use the `itemToString` and `itemToValue` props to map the custom object to the required interface.
+
+```tsx
+const items = [
+  { country: 'United States', code: 'US', flag: '🇺🇸' },
+  { country: 'Canada', code: 'CA', flag: '🇨🇦' },
+  { country: 'Australia', code: 'AU', flag: '🇦🇺' },
+  // ...
+]
+
+const { collection } = useListCollection({
+  initialItems: items,
+  itemToString: (item) => item.country,
+  itemToValue: (item) => item.code,
+})
+```
 
 ### Available height and width
 
