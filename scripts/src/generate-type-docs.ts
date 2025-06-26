@@ -155,12 +155,17 @@ function extractTypeExports(fileContent?: string) {
 }
 
 const extractTypesForFramework = async (framework: string) => {
+  const config = frameworkConfig[framework]
+  if (!config) {
+    throw new Error(`Framework ${framework} not supported`)
+  }
+
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const rootDir = dirname(findUpSync('bun.lock')!)
   process.chdir(path.join(rootDir, 'packages', framework))
 
   const outDir = path.join(rootDir, 'website', 'src', 'content', 'types')
-  const components = await globby(['src/components', 'src/providers'], {
+  const components = await globby(config.componentsDir, {
     onlyDirectories: true,
     deep: 1,
   })
@@ -168,7 +173,7 @@ const extractTypesForFramework = async (framework: string) => {
   const componentExportMap: Record<string, string[]> = Object.fromEntries(
     await Promise.all(
       components.map(async (component) => {
-        const fileContent = await readFile(path.join(component, framework === 'solid' ? 'index.tsx' : 'index.ts'), {
+        const fileContent = await readFile(path.join(component, config.indexFile), {
           encoding: 'utf8',
         }).catch(() => undefined)
         return [component, extractTypeExports(fileContent)]
@@ -276,6 +281,39 @@ const extractTypesForFramework = async (framework: string) => {
       )
     }),
   )
+}
+
+interface FrameworkConfig {
+  prepare?(): Promise<void>
+  componentsDir: string[]
+  indexFile: string
+}
+
+const frameworkConfig: Record<string, FrameworkConfig> = {
+  svelte: {
+    prepare: async () => {
+      const svelteProjectPath = path.join('..', 'packages', 'svelte')
+      const distPath = path.join(svelteProjectPath, 'dist')
+
+      if (!fs.existsSync(distPath)) {
+        throw new Error(
+          'Svelte project dist folder not found. Please build the svelte project first by running: `bun svelte build`',
+        )
+      }
+    },
+    componentsDir: ['dist/components', 'dist/providers'],
+    indexFile: 'index.d.ts',
+  },
+
+  solid: {
+    componentsDir: ['src/components', 'src/providers'],
+    indexFile: 'index.tsx',
+  },
+
+  react: {
+    componentsDir: ['src/components', 'src/providers'],
+    indexFile: 'index.ts',
+  },
 }
 
 const main = async () => {

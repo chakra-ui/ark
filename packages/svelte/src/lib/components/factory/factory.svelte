@@ -7,7 +7,13 @@
 
   type Props = HTMLProps<T> &
     PolymorphicProps<T> & {
+      /**
+       * The HTML tag of the component.
+       */
       as: T
+      /**
+       * The bindable ref of the component.
+       */
       ref?: Element | null
     }
 

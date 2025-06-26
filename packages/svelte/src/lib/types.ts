@@ -14,7 +14,13 @@ export type PropsFn<T extends HTMLTag> = (props?: HTMLProps<T>) => HTMLAttribute
 export type HTMLProps<T extends HTMLTag> = SvelteHTMLElements[T]
 
 export type PolymorphicProps<T extends HTMLTag> = {
+  /**
+   * The children snippet of the component.
+   */
   children?: Snippet
+  /**
+   * Use the provided child element as the default rendered element, combining their props and behavior.
+   */
   asChild?: Snippet<[PropsFn<T>]>
 }
 
