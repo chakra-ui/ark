@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.2] - 2025-06-26
+
 ### Fixed
 
 - **Date Picker**: Fix issue with keyboard selection where setting unavailable date causes month view to behave
