@@ -1,0 +1,205 @@
+{
+  "AutoplayTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseCarouselContext]>", "isRequired": true } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "IndicatorGroup": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Indicator": {
+    "props": {
+      "index": { "type": "number", "isRequired": true, "description": "The index of the indicator." },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "readOnly": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the indicator is read only."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "index": { "type": "number", "isRequired": true, "description": "The index of the item." },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "snapAlign": {
+        "type": "'center' | 'end' | 'start'",
+        "defaultValue": "\"start\"",
+        "isRequired": false,
+        "description": "The snap alignment of the item."
+      }
+    }
+  },
+  "NextTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "PrevTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "slideCount": {
+        "type": "number",
+        "isRequired": true,
+        "description": "The total number of slides.\nUseful for SSR to render the initial ating the snap points."
+      },
+      "allowMouseDrag": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow scrolling via dragging with mouse"
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoplay": {
+        "type": "boolean | { delay: number }",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to scroll automatically. The default delay is 4000ms."
+      },
+      "defaultPage": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial page to scroll to when rendered.\nUse when you don't need to control the page of the carousel."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  item(index: number): string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the carousel. Useful for composition."
+      },
+      "inViewThreshold": {
+        "type": "number | number[]",
+        "defaultValue": "0.6",
+        "isRequired": false,
+        "description": "The threshold for determining if an item is in view."
+      },
+      "loop": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the carousel should loop around."
+      },
+      "onAutoplayStatusChange": {
+        "type": "(details: AutoplayStatusDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the autoplay status changes."
+      },
+      "onDragStatusChange": {
+        "type": "(details: DragStatusDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the drag status changes."
+      },
+      "onPageChange": {
+        "type": "(details: PageChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the page changes."
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the element."
+      },
+      "padding": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Defines the extra space added around the scrollable area,\nenabling nearby items to remain partially in view."
+      },
+      "page": { "type": "number", "isRequired": false, "description": "The controlled page of the carousel." },
+      "slidesPerMove": {
+        "type": "number | 'auto'",
+        "defaultValue": "\"auto\"",
+        "isRequired": false,
+        "description": "The number of slides to scroll at a time.\n\nWhen set to `auto`, the number of slides to scroll is determined by the\n`slidesPerPage` property."
+      },
+      "slidesPerPage": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The number of slides to show at a time."
+      },
+      "snapType": {
+        "type": "'proximity' | 'mandatory'",
+        "defaultValue": "\"mandatory\"",
+        "isRequired": false,
+        "description": "The snap type of the item."
+      },
+      "spacing": {
+        "type": "string",
+        "defaultValue": "\"0px\"",
+        "isRequired": false,
+        "description": "The amount of space between items."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCarouselReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

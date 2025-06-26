@@ -1,0 +1,108 @@
+{
+  "Context": { "props": { "render": { "type": "Snippet<[UseSwitchContext]>", "isRequired": true } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'input'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'label'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "checked": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled checked state of the switch"
+      },
+      "defaultChecked": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial checked state of the switch when rendered.\nUse when you don't need to control the checked state of the switch."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the switch is disabled." },
+      "form": { "type": "string", "isRequired": false, "description": "The id of the form that the switch belongs to" },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; hiddenInput: string; control: string; label: string; thumb: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the switch. Useful for composition."
+      },
+      "invalid": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the switch is marked as invalid."
+      },
+      "label": {
+        "type": "string",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identifies the accessibility elements and their states"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name of the input field in a switch\n(Useful for form submission)."
+      },
+      "onCheckedChange": {
+        "type": "(details: CheckedChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function to call when the switch is clicked."
+      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the switch is read-only" },
+      "required": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "If `true`, the switch input is marked as required,"
+      },
+      "value": {
+        "type": "string | number",
+        "defaultValue": "\"on\"",
+        "isRequired": false,
+        "description": "The value of switch input. Useful for form submission."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSwitchReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'label'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Thumb": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

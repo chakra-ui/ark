@@ -1,0 +1,86 @@
+{
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseCollapsibleContext]>", "isRequired": false } } },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the collapsible when rendered.\nUse when you don't need to control the open state of the collapsible."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the collapsible is disabled." },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; content: string; trigger: string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the collapsible. Useful for composition."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the content should be lazy mounted"
+      },
+      "onExitComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Callback fired when the animation ends"
+      },
+      "onOpenChange": {
+        "type": "(details: OpenChangeDetails) => void",
+        "isRequired": false,
+        "description": "The callback invoked when the open state changes."
+      },
+      "open": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The controlled open state of the collapsible."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the content should be unmounted when collapsed"
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseCollapsibleReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

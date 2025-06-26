@@ -1,0 +1,9 @@
+{
+  "DownloadTrigger": {
+    "props": {
+      "fileName": { "type": "string", "isRequired": true, "description": "The name of the file." },
+      "mimeType": { "type": "DataUrlType", "isRequired": true, "description": "The mime type of the image." },
+      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." }
+    }
+  }
+}

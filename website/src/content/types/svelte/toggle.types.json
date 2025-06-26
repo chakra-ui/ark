@@ -1,0 +1,38 @@
+{
+  "Context": { "props": { "render": { "type": "Snippet<[UseToggleContext]>", "isRequired": true } } },
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "fallback": {
+        "type": "Snippet<[]>",
+        "isRequired": false,
+        "description": "The fallback content to render when the toggle is not pressed."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultPressed": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The default pressed state of the toggle."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
+      "onPressedChange": {
+        "type": "(pressed: boolean) => void",
+        "isRequired": false,
+        "description": "Event handler called when the pressed state of the toggle changes."
+      },
+      "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." }
+    }
+  }
+}

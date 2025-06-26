@@ -2,16 +2,17 @@
   "BranchContent": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'ul'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "BranchControl": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -20,7 +21,7 @@
   "BranchIndentGuide": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -29,7 +30,7 @@
   "BranchIndicator": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -38,7 +39,7 @@
   "Branch": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'li'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -47,7 +48,7 @@
   "BranchText": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -56,16 +57,17 @@
   "BranchTrigger": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
+  "Context": { "props": { "render": { "type": "Snippet<[UseTreeViewContext<any>]>", "isRequired": true } } },
   "ItemIndicator": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -74,7 +76,7 @@
   "Item": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'li'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -83,7 +85,7 @@
   "ItemText": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -92,7 +94,7 @@
   "Label": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'h3'>) => Element",
+        "type": "Snippet<[PropsFn<'h3'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
@@ -100,34 +102,35 @@
   },
   "NodeCheckboxIndicator": {
     "props": {
-      "fallback": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false },
-      "indeterminate": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false }
+      "fallback": { "type": "Snippet<[]>", "isRequired": false },
+      "indeterminate": { "type": "Snippet<[]>", "isRequired": false }
     }
   },
   "NodeCheckbox": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     }
   },
+  "NodeContext": { "props": { "render": { "type": "Snippet<[UseTreeViewNodeContext]>", "isRequired": true } } },
   "NodeProvider": {
     "props": {
-      "indexPath": { "type": "number[]", "isRequired": true, "description": "The index path of the tree node" },
-      "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
+      "indexPath": { "type": "number[]", "isRequired": true },
+      "node": { "type": "NonNullable<T>", "isRequired": false }
     }
   },
   "Root": {
     "props": {
-      "collection": { "type": "TreeCollection<T>", "isRequired": true, "description": "The collection of tree nodes" },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node value" },
+      "collection": { "type": "TreeCollection<T>", "isRequired": false, "description": "The tree collection data" },
       "defaultCheckedValue": {
         "type": "string[]",
         "isRequired": false,
@@ -169,7 +172,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "loadChildren": {
-        "type": "(details: LoadChildrenDetails<any>) => Promise<any[]>",
+        "type": "(details: LoadChildrenDetails<T>) => Promise<T[]>",
         "isRequired": false,
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
@@ -189,12 +192,12 @@
         "description": "Called when the focused node changes"
       },
       "onLoadChildrenComplete": {
-        "type": "(details: LoadChildrenCompleteDetails<any>) => void",
+        "type": "(details: LoadChildrenCompleteDetails<T>) => void",
         "isRequired": false,
         "description": "Called when a node finishes loading children"
       },
       "onLoadChildrenError": {
-        "type": "(details: LoadChildrenErrorDetails<any>) => void",
+        "type": "(details: LoadChildrenErrorDetails<T>) => void",
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
       },
@@ -228,7 +231,7 @@
     "props": {
       "value": { "type": "UseTreeViewReturn<T>", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -249,7 +252,7 @@
   "Tree": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'ul'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }

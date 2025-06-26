@@ -1,0 +1,232 @@
+{
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseFileUploadContext]>", "isRequired": false } } },
+  "Dropzone": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disableClick": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to disable the click event on the dropzone"
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'input'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemDeleteTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemGroup": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemName": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemPreviewImage": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'img'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemPreview": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "type": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The file type to match against. Matches all file types by default."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "file": { "type": "File", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'li'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ItemSizeText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'label'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "accept": {
+        "type": "FileMimeType | Record<string, string[]> | FileMimeType[]",
+        "isRequired": false,
+        "description": "The accept file types"
+      },
+      "allowDrop": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to allow drag and drop in the dropzone element"
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "capture": {
+        "type": "'user' | 'environment'",
+        "isRequired": false,
+        "description": "The default camera to use when capturing media"
+      },
+      "directory": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to accept directories, only works in webkit browsers"
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the file input is disabled" },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  dropzone: string\n  hiddenInput: string\n  trigger: string\n  label: string\n  item(id: string): string\n  itemName(id: string): string\n  itemSizeText(id: string): string\n  itemPreview(id: string): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements. Useful for composition."
+      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the file input is invalid" },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The current locale. Based on the BCP 47 definition."
+      },
+      "maxFiles": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The maximum number of files"
+      },
+      "maxFileSize": {
+        "type": "number",
+        "defaultValue": "Infinity",
+        "isRequired": false,
+        "description": "The maximum file size in bytes"
+      },
+      "minFileSize": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The minimum file size in bytes"
+      },
+      "name": { "type": "string", "isRequired": false, "description": "The name of the underlying file input" },
+      "onFileAccept": {
+        "type": "(details: FileAcceptDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the file is accepted"
+      },
+      "onFileChange": {
+        "type": "(details: FileChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the value changes, whether accepted or rejected"
+      },
+      "onFileReject": {
+        "type": "(details: FileRejectDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the file is rejected"
+      },
+      "preventDocumentDrop": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent the drop event on the document"
+      },
+      "required": { "type": "boolean", "isRequired": false, "description": "Whether the file input is required" },
+      "transformFiles": {
+        "type": "(files: File[]) => Promise<File[]>",
+        "isRequired": false,
+        "description": "Function to transform the accepted files to apply transformations"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      },
+      "validate": {
+        "type": "(file: File, details: FileValidateDetails) => FileError[] | null",
+        "isRequired": false,
+        "description": "Function to validate a file"
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseFileUploadReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}
