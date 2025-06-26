@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.15.2] - 2025-06-26
+
 ### Fixed
 
 - **General**: Fix issue where some Zag packages were not included in the package.json `dependencies` and
