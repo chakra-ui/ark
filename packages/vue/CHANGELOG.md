@@ -2,6 +2,9 @@
 
 ### Fixed
 
+- **General**: Fix issue where some Zag packages were not included in the package.json `dependencies` and
+  `devDependencies`. This causes import errors when using the `@ark-ui/vue` package.
+
 - **Date Picker**: Fix issue with keyboard selection where setting unavailable date causes month view to behave
   differently from clicking with mouse
 
@@ -12,9 +15,15 @@
 
   - Fix issue where clicking a branch with indeterminate state doesn't check its child nodes
   - Remove `aria-busy` attribute from branch trigger when not loading children
+  - Expose node details in `onExpandChange`, `onSelectionChange` and `onFocusChange`
 
-- **General**: Fix issue where some Zag packages were not included in the package.json `dependencies` and
-  `devDependencies`. This causes import errors when using the `@ark-ui/vue` package.
+- **Angle Slider**: Fix issue where scrubbing doesn't feel smooth on touch devices
+
+- **Timer**:
+
+  - Fix issue where timer could continue beyond `targetMs` when window is not visible
+  - Add validation to ensure `startMs` and `targetMs` are configured correctly
+  - Fix `progressPercent` calculation for countdown timers
 
 ## [5.15.1] - 2025-06-23
 
