@@ -76,3 +76,6 @@ jobs:
 
       - name: Check for same HTML tags
         run: bun scripts check:nodes
+
+      - name: Check for Zag package and versions
+        run: bun scripts check:zag

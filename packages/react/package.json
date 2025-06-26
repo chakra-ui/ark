@@ -156,7 +156,6 @@
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@vitejs/plugin-react": "4.5.2",
-    "@zag-js/stringify-state": "1.17.1",
     "clean-package": "2.2.0",
     "globby": "14.1.0",
     "happy-dom": "18.0.1",

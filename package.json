@@ -11,7 +11,8 @@
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**' --filter='!./website/**'",
-    "exports:check": "bun scripts check:exports",
+    "check:exports": "bun scripts check:exports",
+    "check:zag": "bun scripts check:zag",
     "exports:sync": "bun scripts exports:sync",
     "local:sync": "bun scripts local:sync",
     "local:revert": "bun scripts local:sync --revert",

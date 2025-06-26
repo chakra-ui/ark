@@ -9,8 +9,12 @@
   is now required. A warning will be logged if it is not provided
 
 - **Tree View**
+
   - Fix issue where clicking a branch with indeterminate state doesn't check its child nodes
   - Remove `aria-busy` attribute from branch trigger when not loading children
+
+- **General**: Fix issue where some Zag packages were not included in the package.json `dependencies` and
+  `devDependencies`. This causes import errors when using the `@ark-ui/vue` package.
 
 ## [5.15.1] - 2025-06-23
 

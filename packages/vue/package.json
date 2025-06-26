@@ -96,8 +96,11 @@
     "@zag-js/collapsible": "1.17.1",
     "@zag-js/collection": "1.17.1",
     "@zag-js/color-picker": "1.17.1",
+    "@zag-js/color-utils": "1.17.1",
     "@zag-js/combobox": "1.17.1",
+    "@zag-js/core": "1.17.1",
     "@zag-js/date-picker": "1.17.1",
+    "@zag-js/date-utils": "1.17.1",
     "@zag-js/dialog": "1.17.1",
     "@zag-js/dom-query": "1.17.1",
     "@zag-js/editable": "1.17.1",
@@ -112,6 +115,7 @@
     "@zag-js/menu": "1.17.1",
     "@zag-js/number-input": "1.17.1",
     "@zag-js/pagination": "1.17.1",
+    "@zag-js/password-input": "1.17.1",
     "@zag-js/pin-input": "1.17.1",
     "@zag-js/popover": "1.17.1",
     "@zag-js/presence": "1.17.1",
@@ -137,7 +141,6 @@
     "@zag-js/types": "1.17.1",
     "@zag-js/utils": "1.17.1",
     "@zag-js/steps": "1.17.1",
-    "@zag-js/store": "1.17.1",
     "@zag-js/vue": "1.17.1"
   },
   "devDependencies": {
