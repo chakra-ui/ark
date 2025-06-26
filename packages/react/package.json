@@ -163,6 +163,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-shadow": "20.6.0",
+    "react-use": "17.6.0",
     "react-frame-component": "5.2.7",
     "react-hook-form": "7.57.0",
     "resize-observer-polyfill": "1.5.1",
