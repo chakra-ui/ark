@@ -1,0 +1,208 @@
+{
+  "Context": { "props": { "render": { "type": "Snippet<[UseSliderContext]>", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "DraggingIndicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HiddenInput": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'input'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'label'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "MarkerGroup": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Marker": {
+    "props": {
+      "value": { "type": "number", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Range": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "aria-label": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The aria-label of each slider thumb. Useful for providing an accessible name to the slider"
+      },
+      "aria-labelledby": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The `id` of the elements that labels each slider thumb. Useful for providing an accessible name to the slider"
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultValue": {
+        "type": "number[]",
+        "isRequired": false,
+        "description": "The initial value of the slider when rendered.\nUse when you don't need to control the value of the slider."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the slider is disabled" },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The associate form of the underlying input element."
+      },
+      "getAriaValueText": {
+        "type": "(details: ValueTextDetails) => string",
+        "isRequired": false,
+        "description": "Function that returns a human readable value for the slider thumb"
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  thumb(index: number): string\n  hiddenInput(index: number): string\n  control: string\n  track: string\n  range: string\n  label: string\n  valueText: string\n  marker(index: number): string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the slider. Useful for composition."
+      },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the slider is invalid" },
+      "max": {
+        "type": "number",
+        "defaultValue": "100",
+        "isRequired": false,
+        "description": "The maximum value of the slider"
+      },
+      "min": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The minimum value of the slider"
+      },
+      "minStepsBetweenThumbs": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The minimum permitted steps between multiple thumbs.\n\n`minStepsBetweenThumbs` * `step` should reflect the gap between the thumbs.\n\n- `step: 1` and `minStepsBetweenThumbs: 10` => gap is `10`\n- `step: 10` and `minStepsBetweenThumbs: 2` => gap is `20`"
+      },
+      "name": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The name associated with each slider thumb (when used in a form)"
+      },
+      "onFocusChange": {
+        "type": "(details: FocusChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function invoked when the slider's focused index changes"
+      },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function invoked when the value of the slider changes"
+      },
+      "onValueChangeEnd": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function invoked when the slider value change is done"
+      },
+      "orientation": {
+        "type": "'horizontal' | 'vertical'",
+        "defaultValue": "\"horizontal\"",
+        "isRequired": false,
+        "description": "The orientation of the slider"
+      },
+      "origin": {
+        "type": "'center' | 'end' | 'start'",
+        "defaultValue": "\"start\"",
+        "isRequired": false,
+        "description": "The origin of the slider range. The track is filled from the origin\nto the thumb for single values.\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)\n- \"end\": Useful when the value represents an offset from the end"
+      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the slider is read-only" },
+      "step": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The step value of the slider"
+      },
+      "thumbAlignment": {
+        "type": "'center' | 'contain'",
+        "defaultValue": "\"contain\"",
+        "isRequired": false,
+        "description": "The alignment of the slider thumb relative to the track\n- `center`: the thumb will extend beyond the bounds of the slider track.\n- `contain`: the thumb will be contained within the bounds of the track."
+      },
+      "thumbSize": {
+        "type": "{ width: number; height: number }",
+        "isRequired": false,
+        "description": "The slider thumbs dimensions"
+      },
+      "value": { "type": "number[]", "isRequired": false, "description": "The controlled value of the slider" }
+    }
+  },
+  "RootProvider": { "props": { "value": { "type": "UseSliderReturn", "isRequired": true } } },
+  "Thumb": {
+    "props": {
+      "index": { "type": "number", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "name": { "type": "string", "isRequired": false }
+    }
+  },
+  "Track": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ValueText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

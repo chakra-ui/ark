@@ -1,0 +1,113 @@
+{
+  "Context": {
+    "props": {
+      "render": {
+        "type": "Snippet<[() => { setRootRef: (el: Element | null) => void; ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; ... 11 more ...; getRequiredIndicatorProps: () => HTMLAttributes<...>; }]>",
+        "isRequired": true
+      }
+    }
+  },
+  "ErrorText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "HelperText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'input'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'label'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "RequiredIndicator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "fallback": { "type": "Snippet<[]>", "isRequired": false }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is disabled." },
+      "id": { "type": "string", "isRequired": false, "description": "The id of the field." },
+      "ids": { "type": "ElementIds", "isRequired": false, "description": "The ids of the field parts." },
+      "invalid": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is invalid." },
+      "readOnly": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Indicates whether the field is read-only."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "required": { "type": "boolean", "isRequired": false, "description": "Indicates whether the field is required." }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": {
+        "type": "() => { setRootRef: (el: Element | null) => void; ariaDescribedby: string | undefined; ids: { root: string; control: string; label: string; errorText: string; helperText: string; }; ... 11 more ...; getRequiredIndicatorProps: () => HTMLAttributes<...>; }",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Select": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'select'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Textarea": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'textarea'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoresize": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the textarea should autoresize"
+      }
+    }
+  }
+}

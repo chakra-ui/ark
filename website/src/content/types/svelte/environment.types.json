@@ -1,0 +1,11 @@
+{
+  "EnvironmentProvider": {
+    "props": {
+      "value": {
+        "type": "MaybeFunction<RootNode>",
+        "isRequired": false,
+        "description": "The root node to use for the environment."
+      }
+    }
+  }
+}

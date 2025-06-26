@@ -1,0 +1,111 @@
+{
+  "ActionTrigger": {
+    "props": {
+      "action": { "type": "TimerAction", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Area": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Context": { "props": { "api": { "type": "Snippet<[UseTimerContext]>", "isRequired": false } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Item": {
+    "props": {
+      "type": { "type": "keyof Time<number>", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoStart": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the timer should start automatically"
+      },
+      "countdown": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the timer should countdown, decrementing the timer on each tick."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; area: string }>",
+        "isRequired": false,
+        "description": "The ids of the timer parts"
+      },
+      "interval": {
+        "type": "number",
+        "defaultValue": "1000",
+        "isRequired": false,
+        "description": "The interval in milliseconds to update the timer count."
+      },
+      "onComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function invoked when the timer is completed"
+      },
+      "onTick": {
+        "type": "(details: TickDetails) => void",
+        "isRequired": false,
+        "description": "Function invoked when the timer ticks"
+      },
+      "startMs": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The total duration of the timer in milliseconds."
+      },
+      "targetMs": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The minimum count of the timer in milliseconds."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseTimerReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Separator": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}

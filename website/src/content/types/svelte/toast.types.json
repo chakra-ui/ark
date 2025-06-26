@@ -1,0 +1,64 @@
+{
+  "ActionTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "CloseTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseToastContext]>", "isRequired": true } } },
+  "Description": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Title": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Toaster": {
+    "props": {
+      "toaster": { "type": "CreateToasterReturn", "isRequired": true, "description": "The toaster instance." },
+      "dir": {
+        "type": "'ltr' | 'rtl'",
+        "defaultValue": "\"ltr\"",
+        "isRequired": false,
+        "description": "The document's text/writing direction."
+      },
+      "getRootNode": {
+        "type": "() => Node | ShadowRoot | Document",
+        "isRequired": false,
+        "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
+      }
+    }
+  }
+}

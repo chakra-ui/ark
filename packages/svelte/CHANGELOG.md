@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.2] - 2025-06-26
+
 ### Fixed
 
 - **Date Picker**: Fix issue with keyboard selection where setting unavailable date causes month view to behave
@@ -15,8 +17,18 @@ description: All notable changes will be documented in this file.
   is now required. A warning will be logged if it is not provided
 
 - **Tree View**
+
   - Fix issue where clicking a branch with indeterminate state doesn't check its child nodes
   - Remove `aria-busy` attribute from branch trigger when not loading children
+  - Expose node details in `onExpandChange`, `onSelectionChange` and `onFocusChange`
+
+- **Angle Slider**: Fix issue where scrubbing doesn't feel smooth on touch devices
+
+- **Timer**
+
+  - Fix issue where timer could continue beyond `targetMs` when window is not visible
+  - Add validation to ensure `startMs` and `targetMs` are configured correctly
+  - Fix `progressPercent` calculation for countdown timers
 
 ## [5.0.1] - 2025-06-23
 

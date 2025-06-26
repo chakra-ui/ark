@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import GroupingExample from './examples/grouping.svelte'
 import LinksExample from './examples/links.svelte'
+import RehydrateValueExample from './examples/rehydrate-value.svelte'
 import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
@@ -45,5 +46,11 @@ export const Links = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const RehydrateValue = {
+  render: () => ({
+    Component: RehydrateValueExample,
   }),
 }

@@ -4,6 +4,7 @@ import AdvancedExample from './examples/advanced.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
+import FormLibraryExample from './examples/form-library.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import ReactiveCollectionExample from './examples/reactive-collection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -63,5 +64,11 @@ export const WithField = {
     props: {
       invalid: true,
     },
+  }),
+}
+
+export const FormLibrary = {
+  render: () => ({
+    Component: FormLibraryExample,
   }),
 }

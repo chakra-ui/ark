@@ -1,0 +1,449 @@
+{
+  "ClearTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "Context": { "props": { "render": { "type": "Snippet<[UseDatePickerContext]>", "isRequired": true } } },
+  "Control": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Input": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'input'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "fixOnBlur": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to fix the input value on blur."
+      },
+      "index": { "type": "number", "isRequired": false, "description": "The index of the input to focus." }
+    }
+  },
+  "Label": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'label'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "MonthSelect": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'select'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "NextTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Positioner": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "PresetTrigger": {
+    "props": {
+      "value": { "type": "PresetTriggerValue", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "PrevTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "RangeText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "closeOnSelect": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the calendar should close after the date selection is complete.\nThis is ignored when the selection mode is `multiple`."
+      },
+      "defaultFocusedValue": {
+        "type": "DateValue",
+        "isRequired": false,
+        "description": "The initial focused date when rendered.\nUse when you don't need to control the focused date of the date picker."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the date picker when rendered.\nUse when you don't need to control the open state of the date picker."
+      },
+      "defaultValue": {
+        "type": "DateValue[]",
+        "isRequired": false,
+        "description": "The initial selected date(s) when rendered.\nUse when you don't need to control the selected date(s) of the date picker."
+      },
+      "defaultView": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
+        "isRequired": false,
+        "description": "The default view of the calendar"
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is disabled." },
+      "fixedWeeks": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the calendar should have a fixed number of weeks.\nThis renders the calendar with 6 weeks instead of 5 or 6."
+      },
+      "focusedValue": { "type": "DateValue", "isRequired": false, "description": "The controlled focused date." },
+      "format": {
+        "type": "(date: DateValue, details: LocaleDetails) => string",
+        "isRequired": false,
+        "description": "The format of the date to display in the input."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{ root: string; label(index: number): string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; ... 10 more ...; positioner: string; }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the date picker. Useful for composition."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "isDateUnavailable": {
+        "type": "(date: DateValue, locale: string) => boolean",
+        "isRequired": false,
+        "description": "Returns whether a date of the calendar is available."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "locale": {
+        "type": "string",
+        "defaultValue": "\"en-US\"",
+        "isRequired": false,
+        "description": "The locale (BCP 47 language tag) to use when formatting the date."
+      },
+      "max": { "type": "DateValue", "isRequired": false, "description": "The maximum date that can be selected." },
+      "maxView": {
+        "type": "DateView",
+        "defaultValue": "\"year\"",
+        "isRequired": false,
+        "description": "The maximum view of the calendar"
+      },
+      "min": { "type": "DateValue", "isRequired": false, "description": "The minimum date that can be selected." },
+      "minView": {
+        "type": "DateView",
+        "defaultValue": "\"day\"",
+        "isRequired": false,
+        "description": "The minimum view of the calendar"
+      },
+      "name": { "type": "string", "isRequired": false, "description": "The `name` attribute of the input element." },
+      "numOfMonths": { "type": "number", "isRequired": false, "description": "The number of months to display." },
+      "onExitComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "onFocusChange": {
+        "type": "(details: FocusChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the focused date changes."
+      },
+      "onOpenChange": {
+        "type": "(details: OpenChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the calendar opens or closes."
+      },
+      "onValueChange": {
+        "type": "(details: ValueChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the value changes."
+      },
+      "onViewChange": {
+        "type": "(details: ViewChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the view changes."
+      },
+      "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the date picker" },
+      "outsideDaySelectable": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether day outside the visible range can be selected."
+      },
+      "parse": {
+        "type": "(value: string, details: LocaleDetails) => DateValue | undefined",
+        "isRequired": false,
+        "description": "Function to parse the date from the input back to a DateValue."
+      },
+      "placeholder": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The placeholder text to display in the input."
+      },
+      "positioning": {
+        "type": "PositioningOptions",
+        "isRequired": false,
+        "description": "The user provided options used to position the date picker content"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is read-only." },
+      "selectionMode": {
+        "type": "SelectionMode",
+        "defaultValue": "\"single\"",
+        "isRequired": false,
+        "description": "The selection mode of the calendar.\n- `single` - only one date can be selected\n- `multiple` - multiple dates can be selected\n- `range` - a range of dates can be selected"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "startOfWeek": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The first day of the week.\n `0` - Sunday\n `1` - Monday\n `2` - Tuesday\n `3` - Wednesday\n `4` - Thursday\n `5` - Friday\n `6` - Saturday"
+      },
+      "timeZone": {
+        "type": "string",
+        "defaultValue": "\"UTC\"",
+        "isRequired": false,
+        "description": "The time zone to use"
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      },
+      "value": { "type": "DateValue[]", "isRequired": false, "description": "The controlled selected date(s)." },
+      "view": { "type": "DateView", "isRequired": false, "description": "The view of the calendar" }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseDatePickerReturn", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "TableBody": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'tbody'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "TableCell": {
+    "props": {
+      "value": { "type": "number | DateValue", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'td'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "columns": { "type": "number", "isRequired": false },
+      "disabled": { "type": "boolean", "isRequired": false },
+      "visibleRange": { "type": "VisibleRange", "isRequired": false }
+    }
+  },
+  "TableCellTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "TableHead": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'thead'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "TableHeader": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'th'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Table": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'table'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "columns": { "type": "number", "isRequired": false }
+    }
+  },
+  "TableRow": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'tr'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ViewControl": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "View": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "view": { "type": "DateView", "isRequired": false }
+    }
+  },
+  "ViewTrigger": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "YearSelect": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'select'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  }
+}
