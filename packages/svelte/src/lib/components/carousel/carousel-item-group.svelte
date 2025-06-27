@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CarouselItemGroupBaseProps extends PolymorphicProps<'div'> {}
+  export interface CarouselItemGroupBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface CarouselItemGroupProps extends Assign<HTMLProps<'div'>, CarouselItemGroupBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  const props: CarouselItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: CarouselItemGroupProps = $props()
 
   const carousel = useCarouselContext()
   const mergedProps = $derived(mergeProps(carousel().getItemGroupProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

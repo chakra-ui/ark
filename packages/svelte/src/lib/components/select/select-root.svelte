@@ -1,11 +1,12 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { CollectionItem } from '../collection'
   import type { UseSelectProps } from './use-select.svelte'
 
   export interface SelectRootBaseProps<T extends CollectionItem = CollectionItem>
     extends UseSelectProps<T>,
-      PolymorphicProps<'div'> {}
+      PolymorphicProps<'div'>,
+      RefAttribute {}
 
   export interface SelectRootProps<T extends CollectionItem = CollectionItem>
     extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
@@ -17,7 +18,7 @@
   import { SelectProvider } from './use-select-context'
   import { useSelect } from './use-select.svelte'
 
-  let { value = $bindable<string[] | undefined>(), ...props }: SelectRootProps<T> = $props()
+  let { ref = $bindable(null), value = $bindable<string[] | undefined>(), ...props }: SelectRootProps<T> = $props()
 
   const providedId = $props.id()
   const machineProps = $derived.by<UseSelectProps<T>>(() => ({
@@ -36,4 +37,4 @@
   SelectProvider(select)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

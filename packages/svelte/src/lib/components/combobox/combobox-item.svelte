@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxItemBaseProps extends PolymorphicProps<'div'> {
+  export interface ComboboxItemBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     item: unknown
     persistFocus?: boolean
   }
@@ -16,7 +16,7 @@
   import { ComboboxItemProvider } from './use-combobox-item-context'
   import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
 
-  const props: ComboboxItemProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxItemProps = $props()
 
   const [itemProps, localProps] = $derived(
     createSplitProps<{ item: any; persistFocus?: boolean }>()(props, ['item', 'persistFocus']),
@@ -30,4 +30,4 @@
   ComboboxItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

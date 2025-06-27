@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewBranchContentBaseProps extends PolymorphicProps<'ul'> {
+  export interface TreeViewBranchContentBaseProps extends PolymorphicProps<'ul'>, RefAttribute {
     ref?: Element | null
   }
   export interface TreeViewBranchContentProps extends Assign<HTMLProps<'ul'>, TreeViewBranchContentBaseProps> {}
@@ -19,7 +19,7 @@
   import { useTreeViewContext } from './use-tree-view-context'
   import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-  const props: TreeViewBranchContentProps = $props()
+  let { ref = $bindable(null), ...props }: TreeViewBranchContentProps = $props()
 
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()
@@ -32,4 +32,4 @@
   const mergedProps = $derived(mergeProps(branchContentProps, props))
 </script>
 
-<Collapsible.Content {...mergedProps} />
+<Collapsible.Content bind:ref {...mergedProps} />

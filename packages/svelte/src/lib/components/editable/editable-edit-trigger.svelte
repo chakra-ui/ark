@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditableEditTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface EditableEditTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface EditableEditTriggerProps extends Assign<HTMLProps<'button'>, EditableEditTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useEditableContext } from './use-editable-context'
 
-  const props: EditableEditTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: EditableEditTriggerProps = $props()
 
   const editable = useEditableContext()
   const mergedProps = $derived(mergeProps(editable().getEditTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} /> 
+<Ark as="button" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SliderHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface SliderHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface SliderHiddenInputProps extends HTMLProps<'input'>, SliderHiddenInputBaseProps {}
 </script>
 
@@ -11,10 +11,10 @@
   import { useSliderContext } from './use-slider-context'
   import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
-  const props: SliderHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: SliderHiddenInputProps = $props()
   const slider = useSliderContext()
   const thumbProps = useSliderThumbPropsContext()
   const mergedProps = $derived(mergeProps(slider().getHiddenInputProps(thumbProps), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { CollectionItem } from '../collection'
   import type { UsePresenceProps } from '../presence'
   import type { UseComboboxProps } from './use-combobox.svelte'
@@ -7,7 +7,9 @@
   export interface ComboboxRootBaseProps<T extends CollectionItem>
     extends UseComboboxProps<T>,
       UsePresenceProps,
-      PolymorphicProps<'div'> {}
+      PolymorphicProps<'div'>,
+      RefAttribute {}
+
   export interface ComboboxRootProps<T extends CollectionItem>
     extends Assign<HTMLProps<'div'>, ComboboxRootBaseProps<T>> {}
 </script>
@@ -21,6 +23,7 @@
   import { useCombobox } from './use-combobox.svelte'
 
   let {
+    ref = $bindable(null),
     open = $bindable<boolean>(),
     value = $bindable<string[]>(),
     inputValue = $bindable<string>(),
@@ -105,4 +108,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

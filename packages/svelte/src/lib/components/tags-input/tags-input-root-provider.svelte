@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseTagsInputReturn } from './use-tags-input.svelte'
 
-  export interface TagsInputRootProviderBaseProps extends PolymorphicProps<'div'> {
+  export interface TagsInputRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseTagsInputReturn
   }
   export interface TagsInputRootProviderProps extends Assign<HTMLProps<'div'>, TagsInputRootProviderBaseProps> {}
@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { TagsInputProvider } from './use-tags-input-context'
 
-  const { value, ...props }: TagsInputRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: TagsInputRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   TagsInputProvider(value)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

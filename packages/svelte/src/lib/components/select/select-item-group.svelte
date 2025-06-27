@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SelectItemGroupBaseProps extends PolymorphicProps<'div'> {
+  export interface SelectItemGroupBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     id?: string
   }
   export interface SelectItemGroupProps extends Assign<HTMLProps<'div'>, SelectItemGroupBaseProps> {}
@@ -13,7 +13,7 @@
   import { useSelectContext } from './use-select-context'
   import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
 
-  const props: SelectItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: SelectItemGroupProps = $props()
   const providedId = $props.id()
 
   const groupProps = $derived({ id: props.id ?? providedId })
@@ -23,4 +23,4 @@
   SelectItemGroupPropsProvider(() => groupProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

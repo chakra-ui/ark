@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerAreaBackgroundBaseProps extends PolymorphicProps<'div'> {}
+  export interface ColorPickerAreaBackgroundBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerAreaBackgroundProps
     extends Assign<HTMLProps<'div'>, ColorPickerAreaBackgroundBaseProps> {}
 </script>
@@ -12,7 +12,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
 
-  const props: ColorPickerAreaBackgroundProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerAreaBackgroundProps = $props()
 
   const colorPicker = useColorPickerContext()
   const areaProps = useColorPickerAreaPropsContext()
@@ -20,4 +20,4 @@
   const mergedProps = $derived(mergeProps(colorPicker().getAreaBackgroundProps(areaProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

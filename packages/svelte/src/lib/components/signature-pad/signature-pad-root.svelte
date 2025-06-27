@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSignaturePadProps } from './use-signature-pad.svelte'
 
-  export interface SignaturePadRootBaseProps extends UseSignaturePadProps, PolymorphicProps<'div'> {}
+  export interface SignaturePadRootBaseProps extends UseSignaturePadProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SignaturePadRootProps extends Assign<HTMLProps<'div'>, SignaturePadRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useSignaturePad } from './use-signature-pad.svelte'
   import { SignaturePadProvider } from './use-signature-pad-context'
 
-  const props: SignaturePadRootProps = $props()
+  let { ref = $bindable(null), ...props }: SignaturePadRootProps = $props()
   const providedId = $props.id()
 
   const [useSignaturePadProps, localProps] = $derived(
@@ -42,4 +42,4 @@
   SignaturePadProvider(signaturePad)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

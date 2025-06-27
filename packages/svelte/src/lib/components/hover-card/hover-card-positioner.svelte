@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface HoverCardPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface HoverCardPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface HoverCardPositionerProps extends Assign<HTMLProps<'div'>, HoverCardPositionerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useHoverCardContext } from './use-hover-card-context'
 
-  const props: HoverCardPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: HoverCardPositionerProps = $props()
 
   const hoverCard = useHoverCardContext()
   const presence = usePresenceContext()
@@ -19,5 +19,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

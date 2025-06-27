@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ItemProps } from '@zag-js/accordion'
 
-  export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+  export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface AccordionItemProps extends Assign<HTMLProps<'div'>, AccordionItemBaseProps> {}
 </script>
 
@@ -15,7 +15,7 @@
   import { AccordionItemProvider } from './use-accordion-item-context'
   import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
-  const props: AccordionItemProps = $props()
+  let { ref = $bindable(null), ...props }: AccordionItemProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled']))
 
   const accordion = useAccordionContext()
@@ -31,6 +31,7 @@
 </script>
 
 <CollapsibleRoot
+  bind:ref
   open={itemState.expanded}
   ids={{ content: itemContentProps.id ?? undefined }}
   {...renderStrategy()}

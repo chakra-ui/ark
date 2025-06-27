@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ItemProps } from '@zag-js/radio-group'
 
-  export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps<'label'> {}
+  export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps<'label'>, RefAttribute {}
   export interface SegmentGroupItemProps extends Assign<HTMLProps<'label'>, SegmentGroupItemBaseProps> {}
 </script>
 
@@ -15,7 +15,7 @@
   import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  const props: SegmentGroupItemProps = $props()
+  let { ref = $bindable(null), ...props }: SegmentGroupItemProps = $props()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid']))
 
@@ -28,4 +28,4 @@
   SegmentGroupItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

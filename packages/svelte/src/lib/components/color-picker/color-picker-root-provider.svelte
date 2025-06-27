@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseColorPickerReturn } from './use-color-picker.svelte'
 
-  export interface ColorPickerRootProviderBaseProps extends PolymorphicProps<'div'>, UsePresenceProps {
+  export interface ColorPickerRootProviderBaseProps extends PolymorphicProps<'div'>, UsePresenceProps, RefAttribute {
     value: UseColorPickerReturn
   }
   export interface ColorPickerRootProviderProps extends Assign<HTMLProps<'div'>, ColorPickerRootProviderBaseProps> {}
@@ -14,7 +14,7 @@
   import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
   import { ColorPickerProvider } from './use-color-picker-context'
 
-  let { value, ...props }: ColorPickerRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: ColorPickerRootProviderProps = $props()
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
 
@@ -25,4 +25,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

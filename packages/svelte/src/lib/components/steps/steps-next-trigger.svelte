@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsNextTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface StepsNextTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface StepsNextTriggerProps extends Assign<HTMLProps<'button'>, StepsNextTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  const props: StepsNextTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: StepsNextTriggerProps = $props()
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getNextTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

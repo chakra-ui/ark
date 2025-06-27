@@ -1,12 +1,12 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ColorFormat } from '@zag-js/color-picker'
 
   interface FormatOptions {
     format: ColorFormat
   }
 
-  export interface ColorPickerViewBaseProps extends FormatOptions, PolymorphicProps<'div'> {}
+  export interface ColorPickerViewBaseProps extends FormatOptions, PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerViewProps extends Assign<HTMLProps<'div'>, ColorPickerViewBaseProps> {}
 </script>
 
@@ -17,7 +17,7 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 
-  const props: ColorPickerViewProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerViewProps = $props()
   const [formatProps, localProps] = $derived(createSplitProps<FormatOptions>()(props, ['format']))
 
   const colorPicker = useColorPickerContext()
@@ -26,5 +26,5 @@
 </script>
 
 {#if colorPicker().format === formatProps.format}
-  <Ark as="div" data-format={formatProps.format} {...colorPickerAnatomy.build().view.attrs} {...localProps} />
+  <Ark as="div" bind:ref data-format={formatProps.format} {...colorPickerAnatomy.build().view.attrs} {...localProps} />
 {/if}

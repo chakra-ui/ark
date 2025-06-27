@@ -1,8 +1,11 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, Optional, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseProgressProps } from './use-progress.svelte'
 
-  export interface ProgressRootBaseProps extends Optional<UseProgressProps, 'id'>, PolymorphicProps<'div'> {}
+  export interface ProgressRootBaseProps
+    extends Optional<UseProgressProps, 'id'>,
+      PolymorphicProps<'div'>,
+      RefAttribute {}
   export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRootBaseProps> {}
 </script>
 
@@ -13,7 +16,7 @@
   import { ProgressProvider } from './use-progress-context'
   import { useProgress } from './use-progress.svelte'
 
-  let { value = $bindable(), ...props }: ProgressRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: ProgressRootProps = $props()
   const providedId = $props.id()
 
   const [useProgressProps, localProps] = $derived(
@@ -47,4 +50,4 @@
   ProgressProvider(progress)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

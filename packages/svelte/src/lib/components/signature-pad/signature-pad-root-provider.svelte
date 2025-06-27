@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSignaturePadReturn } from './use-signature-pad.svelte'
 
-  export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div'> {
+  export interface SignaturePadRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseSignaturePadReturn
   }
   export interface SignaturePadRootProviderProps extends Assign<HTMLProps<'div'>, SignaturePadRootProviderBaseProps> {}
@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { SignaturePadProvider } from './use-signature-pad-context'
 
-  let { value, ...props }: SignaturePadRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: SignaturePadRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   SignaturePadProvider(value)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface RatingGroupLabelBaseProps extends PolymorphicProps<'label'> {}
+  export interface RatingGroupLabelBaseProps extends PolymorphicProps<'label'>, RefAttribute {}
   export interface RatingGroupLabelProps extends Assign<HTMLProps<'label'>, RatingGroupLabelBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useRatingGroupContext } from './use-rating-group-context'
 
-  const props: RatingGroupLabelProps = $props()
+  let { ref = $bindable(null), ...props }: RatingGroupLabelProps = $props()
   const ratingGroup = useRatingGroupContext()
   const mergedProps = $derived(mergeProps(ratingGroup().getLabelProps(), props))
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

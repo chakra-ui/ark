@@ -1,8 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { CollectionItem } from '../collection'
 
-  export interface SelectItemBaseProps<T extends CollectionItem = CollectionItem> extends PolymorphicProps<'div'> {
+  export interface SelectItemBaseProps<T extends CollectionItem = CollectionItem>
+    extends PolymorphicProps<'div'>,
+      RefAttribute {
     item: T
     disabled?: boolean
   }
@@ -17,7 +19,7 @@
   import { SelectItemProvider } from './use-select-item-context'
   import { SelectItemPropsProvider } from './use-select-item-props-context'
 
-  const props: SelectItemProps<T> = $props()
+  let { ref = $bindable(null), ...props }: SelectItemProps<T> = $props()
 
   const select = useSelectContext()
   const itemProps = $derived({ item: props.item, disabled: props.disabled })
@@ -27,4 +29,4 @@
   SelectItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

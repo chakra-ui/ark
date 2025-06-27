@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import { getWindow } from '@zag-js/dom-query'
   import { type FileMimeType, downloadFile } from '@zag-js/file-utils'
   import { isFunction } from '@zag-js/utils'
@@ -8,7 +8,7 @@
   export type DownloadableData = string | Blob | File
   export type MaybePromise<T> = T | Promise<T>
 
-  export interface DownloadTriggerBaseProps extends PolymorphicProps<'button'> {
+  export interface DownloadTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {
     fileName: string
     data: DownloadableData | (() => MaybePromise<DownloadableData>)
     mimeType: FileMimeType
@@ -16,7 +16,7 @@
 
   export interface DownloadTriggerProps extends Assign<HTMLProps<'button'>, DownloadTriggerBaseProps> {}
 
-  const { fileName, data, mimeType, onclick, ...restProps }: DownloadTriggerProps = $props()
+  let { ref = $bindable(null), fileName, data, mimeType, onclick, ...restProps }: DownloadTriggerProps = $props()
 
   const download = (fileData: DownloadableData, win: Window & typeof globalThis) => {
     downloadFile({ file: fileData, name: fileName, type: mimeType, win })
@@ -40,4 +40,4 @@
   }
 </script>
 
-<Ark as="button" {...restProps} type="button" onclick={handleClick} />
+<Ark as="button" bind:ref {...restProps} type="button" onclick={handleClick} />

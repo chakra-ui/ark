@@ -1,7 +1,7 @@
 <script lang="ts" module>
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface FloatingPanelDragTriggerBaseProps extends PolymorphicProps<'div'> {}
+  export interface FloatingPanelDragTriggerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface FloatingPanelDragTriggerProps extends Assign<HTMLProps<'div'>, FloatingPanelDragTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let props: FloatingPanelDragTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FloatingPanelDragTriggerProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = $derived(mergeProps(floatingPanel().getDragTriggerProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

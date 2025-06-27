@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsSeparatorBaseProps extends PolymorphicProps<'div'> {}
+  export interface StepsSeparatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsSeparatorProps extends Assign<HTMLProps<'div'>, StepsSeparatorBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useStepsContext } from './use-steps-context'
   import { useStepsItemPropsContext } from './use-steps-item-props-context'
 
-  const props: StepsSeparatorProps = $props()
+  let { ref = $bindable(null), ...props }: StepsSeparatorProps = $props()
 
   const steps = useStepsContext()
   const itemProps = useStepsItemPropsContext()
   const mergedProps = $derived(mergeProps(steps().getSeparatorProps(itemProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

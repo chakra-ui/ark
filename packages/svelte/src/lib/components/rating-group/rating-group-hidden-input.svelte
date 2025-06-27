@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface RatingGroupHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface RatingGroupHiddenInputProps extends Assign<HTMLProps<'input'>, RatingGroupHiddenInputBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useRatingGroupContext } from './use-rating-group-context'
 
-  const props: RatingGroupHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: RatingGroupHiddenInputProps = $props()
   const ratingGroup = useRatingGroupContext()
   const mergedProps = $derived(mergeProps(ratingGroup().getHiddenInputProps(), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

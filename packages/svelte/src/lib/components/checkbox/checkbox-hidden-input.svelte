@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CheckboxHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface CheckboxHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface CheckboxHiddenInputProps extends Assign<HTMLProps<'input'>, CheckboxHiddenInputBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useFieldContext } from '../field'
   import { useCheckboxContext } from './use-checkbox-context'
 
-  const props: CheckboxHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: CheckboxHiddenInputProps = $props()
 
   const checkbox = useCheckboxContext()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(checkbox().getHiddenInputProps(), props))
 </script>
 
-<Ark as="input" aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />
+<Ark as="input" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

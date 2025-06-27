@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface MenuTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface MenuTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface MenuTriggerProps extends Assign<HTMLProps<'button'>, MenuTriggerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useMenuContext } from './use-menu-context'
   import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
 
-  const props: MenuTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: MenuTriggerProps = $props()
 
   const menu = useMenuContext()
   const triggerItemProps = useMenuTriggerItemContext()
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(menu().getTriggerProps(), triggerItemProps?.() || {}, props))
 </script>
 
-<Ark as="button" data-scope="menu" data-part="trigger" {...mergedProps} />
+<Ark as="button" bind:ref data-scope="menu" data-part="trigger" {...mergedProps} />

@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let { ref = $bindable(), ...props }: FloatingPanelContentProps = $props()
+  let { ref = $bindable(null), ...props }: FloatingPanelContentProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const presence = usePresenceContext()
@@ -20,10 +20,9 @@
 
   function setNode(node: HTMLElement) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} />
 {/if}

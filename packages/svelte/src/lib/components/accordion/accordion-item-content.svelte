@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface AccordionItemContentBaseProps extends PolymorphicProps<'div'> {}
+  export interface AccordionItemContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface AccordionItemContentProps extends Assign<HTMLProps<'div'>, AccordionItemContentBaseProps> {}
 </script>
 
@@ -12,7 +12,7 @@
   import { useAccordionContext } from './use-accordion-context'
   import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-  const props: AccordionItemContentProps = $props()
+  let { ref = $bindable(null), ...props }: AccordionItemContentProps = $props()
 
   const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()
@@ -23,4 +23,4 @@
   const mergedProps = $derived(mergeProps(itemContentProps, props))
 </script>
 
-<CollapsibleContent {...mergedProps} />
+<CollapsibleContent bind:ref {...mergedProps} />

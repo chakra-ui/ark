@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **General**: Fix issue where `bind:ref` doesn't work with components, making it impossible to access the underlying
+  DOM element.
+
 ## [5.0.4] - 2025-06-27
 
 ### Fixed

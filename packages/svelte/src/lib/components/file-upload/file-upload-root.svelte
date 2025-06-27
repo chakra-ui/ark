@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFileUploadProps } from './use-file-upload.svelte'
 
-  export interface FileUploadRootBaseProps extends UseFileUploadProps, PolymorphicProps<'div'> {}
+  export interface FileUploadRootBaseProps extends UseFileUploadProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface FileUploadRootProps extends Assign<HTMLProps<'div'>, FileUploadRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { FileUploadProvider } from './use-file-upload-context'
   import { useFileUpload } from './use-file-upload.svelte'
 
-  const props: FileUploadRootProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadRootProps = $props()
   const providedId = $props.id()
 
   const [useFileUploadProps, localProps] = $derived(
@@ -53,4 +53,4 @@
   FileUploadProvider(fileUpload)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

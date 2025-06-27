@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerTableBodyBaseProps extends PolymorphicProps<'tbody'> {}
+  export interface DatePickerTableBodyBaseProps extends PolymorphicProps<'tbody'>, RefAttribute {}
   export interface DatePickerTableBodyProps extends Assign<HTMLProps<'tbody'>, DatePickerTableBodyBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  const props: DatePickerTableBodyProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerTableBodyProps = $props()
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getTableBodyProps(), props))
 </script>
 
-<Ark as="tbody" {...mergedProps} />
+<Ark as="tbody" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface PopoverTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface PopoverTriggerProps extends Assign<HTMLProps<'button'>, PopoverTriggerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { usePopoverContext } from './use-popover-context'
 
-  const props: PopoverTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PopoverTriggerProps = $props()
 
   const popover = usePopoverContext()
   const presence = usePresenceContext()
@@ -26,4 +26,4 @@
   )
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSplitterProps } from './use-splitter.svelte'
 
-  export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps<'div'> {}
+  export interface SplitterRootBaseProps extends UseSplitterProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SplitterRootProps extends Assign<HTMLProps<'div'>, SplitterRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { SplitterProvider } from './use-splitter-context'
   import { useSplitter } from './use-splitter.svelte'
 
-  let { size = $bindable<number[]>(), ...props }: SplitterRootProps = $props()
+  let { ref = $bindable(null), size = $bindable<number[]>(), ...props }: SplitterRootProps = $props()
 
   const [useSplitterProps, localProps] = $derived(splitSplitterProps(props))
 
@@ -35,4 +35,4 @@
   SplitterProvider(splitter)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

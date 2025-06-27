@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxListBaseProps extends PolymorphicProps<'div'> {}
+  export interface ComboboxListBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ComboboxListProps extends Assign<HTMLProps<'div'>, ComboboxListBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useComboboxContext } from './use-combobox-context'
 
-  const props: ComboboxListProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxListProps = $props()
 
   const combobox = useComboboxContext()
   const mergedProps = $derived(mergeProps(combobox().getListProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

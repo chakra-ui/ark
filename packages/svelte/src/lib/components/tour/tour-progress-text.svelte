@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourProgressTextBaseProps extends PolymorphicProps<'div'> {}
+  export interface TourProgressTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TourProgressTextProps extends HTMLProps<'div'>, TourProgressTextBaseProps {}
 </script>
 
@@ -10,14 +10,14 @@
   import { Ark } from '../factory'
   import { useTourContext } from './use-tour-context'
 
-  const props: TourProgressTextProps = $props()
+  let { ref = $bindable(null), ...props }: TourProgressTextProps = $props()
 
   const tour = useTourContext()
 
   const mergedProps = $derived(mergeProps(tour().getProgressTextProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps}>
+<Ark as="div" bind:ref {...mergedProps}>
   {#if props.children}
     {@render props.children()}
   {:else}

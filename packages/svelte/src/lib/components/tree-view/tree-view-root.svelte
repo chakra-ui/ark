@@ -1,12 +1,13 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { TreeNode } from '../collection'
   import type { UseTreeViewProps } from './use-tree-view.svelte'
 
   export interface TreeViewRootBaseProps<T extends TreeNode>
     extends UseTreeViewProps<T>,
       RenderStrategyProps,
-      PolymorphicProps<'div'> {}
+      PolymorphicProps<'div'>,
+      RefAttribute {}
 
   export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<'div'>, TreeViewRootBaseProps<T>> {}
 </script>
@@ -24,6 +25,7 @@
   import { useTreeView } from './use-tree-view.svelte'
 
   let {
+    ref = $bindable(null),
     expandedValue = $bindable<string[]>(),
     selectedValue = $bindable<string[]>(),
     focusedValue = $bindable<string>(),
@@ -68,4 +70,4 @@
   RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

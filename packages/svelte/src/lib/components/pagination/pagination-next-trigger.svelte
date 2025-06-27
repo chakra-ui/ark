@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PaginationNextTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface PaginationNextTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface PaginationNextTriggerProps extends Assign<HTMLProps<'button'>, PaginationNextTriggerBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { usePaginationContext } from './use-pagination-context'
 
-  const props: PaginationNextTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PaginationNextTriggerProps = $props()
   const pagination = usePaginationContext()
   const mergedProps = $derived(mergeProps(pagination().getNextTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

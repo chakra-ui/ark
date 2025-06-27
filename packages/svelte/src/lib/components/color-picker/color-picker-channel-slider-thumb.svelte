@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerChannelSliderThumbBaseProps extends PolymorphicProps<'div'> {}
+  export interface ColorPickerChannelSliderThumbBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerChannelSliderThumbProps
     extends Assign<HTMLProps<'div'>, ColorPickerChannelSliderThumbBaseProps> {}
 </script>
@@ -13,7 +13,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
-  const props: ColorPickerChannelSliderThumbProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerChannelSliderThumbProps = $props()
 
   const colorPicker = useColorPickerContext()
 
@@ -24,4 +24,4 @@
   const mergedProps = $derived(mergeProps(colorPicker().getChannelSliderThumbProps(channelSliderProps), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

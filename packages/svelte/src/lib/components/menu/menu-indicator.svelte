@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface MenuIndicatorBaseProps extends PolymorphicProps<'div'> {}
+  export interface MenuIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuIndicatorProps extends Assign<HTMLProps<'div'>, MenuIndicatorBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useMenuContext } from './use-menu-context'
 
-  const props: MenuIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: MenuIndicatorProps = $props()
 
   const menu = useMenuContext()
   const mergedProps = $derived(mergeProps(menu().getIndicatorProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

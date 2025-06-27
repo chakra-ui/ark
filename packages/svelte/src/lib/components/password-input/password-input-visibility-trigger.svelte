@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface PasswordInputVisibilityTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface PasswordInputVisibilityTriggerProps
     extends Assign<HTMLProps<'button'>, PasswordInputVisibilityTriggerBaseProps> {}
 </script>
@@ -11,9 +11,9 @@
   import { Ark } from '../factory'
   import { usePasswordInputContext } from './use-password-input-context'
 
-  const props: PasswordInputVisibilityTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PasswordInputVisibilityTriggerProps = $props()
   const passwordInput = usePasswordInputContext()
   const mergedProps = $derived(mergeProps(passwordInput().getVisibilityTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

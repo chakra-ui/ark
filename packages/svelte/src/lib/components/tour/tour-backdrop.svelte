@@ -12,7 +12,7 @@
   import { useTourContext } from './use-tour-context'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
 
-  let { ref = $bindable(), ...props }: TourBackdropProps = $props()
+  let { ref = $bindable(null), ...props }: TourBackdropProps = $props()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
   const tour = useTourContext()
@@ -25,10 +25,9 @@
 
   function setNode(node: Element | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} {@attach setNode} hidden={!tour().step?.backdrop} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} hidden={!tour().step?.backdrop} />
 {/if}

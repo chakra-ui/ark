@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldsetErrorTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface FieldsetErrorTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface FieldsetErrorTextProps extends Assign<HTMLProps<'span'>, FieldsetErrorTextBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useFieldsetContext } from './use-fieldset-context'
 
-  const props: FieldsetErrorTextProps = $props()
+  let { ref = $bindable(null), ...props }: FieldsetErrorTextProps = $props()
   const fieldset = useFieldsetContext()
   const mergedProps = $derived(mergeProps(fieldset?.().getErrorTextProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

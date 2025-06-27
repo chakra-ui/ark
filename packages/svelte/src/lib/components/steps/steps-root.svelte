@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseStepsProps } from './use-steps.svelte'
 
-  export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps<'div'> {}
+  export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsRootProps extends Assign<HTMLProps<'div'>, StepsRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useSteps } from './use-steps.svelte'
   import { StepsProvider } from './use-steps-context'
 
-  let { step = $bindable(), ...props }: StepsRootProps = $props()
+  let { ref = $bindable(null), step = $bindable(), ...props }: StepsRootProps = $props()
   const providedId = $props.id()
 
   const [useStepsProps, localProps] = $derived(
@@ -46,4 +46,4 @@
   StepsProvider(stepsApi)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

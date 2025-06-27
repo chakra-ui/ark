@@ -1,8 +1,12 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAccordionProps } from './use-accordion.svelte'
 
-  export interface AccordionRootBaseProps extends UseAccordionProps, RenderStrategyProps, PolymorphicProps<'div'> {}
+  export interface AccordionRootBaseProps
+    extends UseAccordionProps,
+      RenderStrategyProps,
+      PolymorphicProps<'div'>,
+      RefAttribute {}
   export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 </script>
 
@@ -18,7 +22,7 @@
   import { AccordionProvider } from './use-accordion-context'
   import { useAccordion } from './use-accordion.svelte'
 
-  let { value = $bindable(), ...props }: AccordionRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: AccordionRootProps = $props()
   const providedId = $props.id()
 
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
@@ -52,4 +56,4 @@
   AccordionProvider(accordion)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,9 +1,13 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { UseDatePickerProps } from './use-date-picker.svelte.js'
   import type { UsePresenceProps } from '../presence/index.js'
 
-  export interface DatePickerRootBaseProps extends UseDatePickerProps, UsePresenceProps, PolymorphicProps<'div'> {}
+  export interface DatePickerRootBaseProps
+    extends UseDatePickerProps,
+      UsePresenceProps,
+      PolymorphicProps<'div'>,
+      RefAttribute {}
   export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePickerRootBaseProps> {}
 </script>
 
@@ -16,6 +20,7 @@
   import { DatePickerProvider } from './use-date-picker-context.js'
 
   let {
+    ref = $bindable(null),
     value = $bindable(),
     focusedValue = $bindable(),
     open = $bindable(),
@@ -98,4 +103,4 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ListboxItemTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface ListboxItemTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface ListboxItemTextProps extends Assign<HTMLProps<'span'>, ListboxItemTextBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useListboxContext } from './use-listbox-context.js'
   import { useListboxItemPropsContext } from './use-listbox-item-props-context.js'
 
-  const props: ListboxItemTextProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxItemTextProps = $props()
 
   const listbox = useListboxContext()
   const itemProps = useListboxItemPropsContext()
   const mergedProps = $derived(mergeProps(listbox().getItemTextProps(itemProps()), props))
 </script>
 
-<Ark as="span" {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

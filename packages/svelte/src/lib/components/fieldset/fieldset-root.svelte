@@ -1,10 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFieldsetProps } from './use-fieldset.svelte'
 
-  export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps<'fieldset'> {
-    ref?: Element | null
-  }
+  export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps<'fieldset'>, RefAttribute {}
   export interface FieldsetRootProps extends Assign<HTMLProps<'fieldset'>, FieldsetRootBaseProps> {}
 </script>
 
@@ -35,10 +33,9 @@
 
   FieldsetProvider(fieldset)
 
-  function setNode(node: Element | null) {
+  function setNode(node: HTMLFieldSetElement | null) {
     fieldset().setRootRef(node)
-    ref = node
   }
 </script>
 
-<Ark as="fieldset" {...mergedProps} {@attach setNode} />
+<Ark as="fieldset" bind:ref {...mergedProps} {@attach setNode} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SwitchHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface SwitchHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface SwitchHiddenInputProps extends Assign<HTMLProps<'input'>, SwitchHiddenInputBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useSwitchContext } from './use-switch-context'
 
-  const props: SwitchHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: SwitchHiddenInputProps = $props()
 
   const switchMachine = useSwitchContext()
   const mergedProps = $derived(mergeProps(switchMachine().getHiddenInputProps(), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

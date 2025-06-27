@@ -1,8 +1,11 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { DownloadTriggerProps } from '@zag-js/qr-code'
 
-  export interface QrCodeDownloadTriggerBaseProps extends DownloadTriggerProps, PolymorphicProps<'button'> {}
+  export interface QrCodeDownloadTriggerBaseProps
+    extends DownloadTriggerProps,
+      PolymorphicProps<'button'>,
+      RefAttribute {}
 
   export interface QrCodeDownloadTriggerProps extends HTMLProps<'button'>, QrCodeDownloadTriggerBaseProps {}
 </script>
@@ -13,7 +16,7 @@
   import { Ark } from '../factory'
   import { useQrCodeContext } from './use-qr-code-context'
 
-  const props: QrCodeDownloadTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: QrCodeDownloadTriggerProps = $props()
   const [downloadTriggerProps, localProps] = $derived(
     createSplitProps<DownloadTriggerProps>()(props, ['fileName', 'mimeType', 'quality']),
   )
@@ -21,4 +24,4 @@
   const mergedProps = $derived(mergeProps(qrCode().getDownloadTriggerProps(downloadTriggerProps), localProps))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

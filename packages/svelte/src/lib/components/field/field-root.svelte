@@ -1,10 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFieldProps } from './use-field.svelte'
 
-  export interface FieldRootBaseProps extends UseFieldProps, PolymorphicProps<'div'> {
-    ref?: Element | null
-  }
+  export interface FieldRootBaseProps extends UseFieldProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface FieldRootProps extends Assign<HTMLProps<'div'>, FieldRootBaseProps> {}
 </script>
 
@@ -37,8 +35,7 @@
 
   function setNode(node: Element | null) {
     field().setRootRef(node)
-    ref = node
   }
 </script>
 
-<Ark as="div" {...mergedProps} {@attach setNode} />
+<Ark as="div" bind:ref {...mergedProps} {@attach setNode} />

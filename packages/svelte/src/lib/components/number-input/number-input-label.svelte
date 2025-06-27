@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NumberInputLabelBaseProps extends PolymorphicProps<'label'> {}
+  export interface NumberInputLabelBaseProps extends PolymorphicProps<'label'>, RefAttribute {}
   export interface NumberInputLabelProps extends Assign<HTMLProps<'label'>, NumberInputLabelBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  const props: NumberInputLabelProps = $props()
+  let { ref = $bindable(null), ...props }: NumberInputLabelProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getLabelProps(), props))
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

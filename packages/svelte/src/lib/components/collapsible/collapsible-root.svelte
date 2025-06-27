@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCollapsibleProps } from './use-collapsible.svelte'
 
-  export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div'> {}
+  export interface CollapsibleRootBaseProps extends UseCollapsibleProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface CollapsibleRootProps extends Assign<HTMLProps<'div'>, CollapsibleRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { splitCollapsibleProps } from './split-collapsible-props.svelte'
   import { useCollapsible } from './use-collapsible.svelte'
 
-  let { open = $bindable(), ...props }: CollapsibleRootProps = $props()
+  let { ref = $bindable(null), open = $bindable(), ...props }: CollapsibleRootProps = $props()
   const providedId = $props.id()
 
   const [useCollapsibleProps, localProps] = $derived(splitCollapsibleProps(props))
@@ -34,4 +34,4 @@
   CollapsibleProvider(collapsible)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />
