@@ -54,8 +54,7 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
 let hydrated = false
 watchEffect(() => {
   if (combobox.value.value.length && combobox.value.collection.size && !hydrated) {
-    const inputValue = combobox.value.collection.stringify(combobox.value.value[0])
-    combobox.value.setInputValue(inputValue || '')
+    combobox.value.syncSelectedItems()
     hydrated = true
   }
 })
