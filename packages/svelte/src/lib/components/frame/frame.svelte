@@ -11,8 +11,10 @@
     onMount?: () => void
     /** Callback function to be executed when the frame is unmounted */
     onUnmount?: () => void
+    /** The source document to be displayed in the frame */
     srcdoc?: string
-    ref?: HTMLIFrameElement
+    /** The bindable ref of the iframe */
+    ref?: HTMLIFrameElement | null
   }
   export interface FrameProps extends Assign<HTMLIframeAttributes, FrameBaseProps> {}
 
@@ -36,7 +38,7 @@
 
   let { head, onMount, onUnmount, srcdoc, ref = $bindable(null), ...localProps }: FrameProps = $props()
 
-  let frameRef: HTMLIFrameElement | undefined = $state()
+  let frameRef: HTMLIFrameElement | null = $state(null)
   let mountNode: HTMLElement | null = $derived(frameRef ? getMountNode(frameRef) : null)
 
   $effect(() => {
@@ -78,9 +80,13 @@
       resizeObserver.disconnect()
     }
   })
+
+  function setFrameNode(node: HTMLIFrameElement | null) {
+    frameRef = node
+  }
 </script>
 
-<iframe bind:this={frameRef} bind:this={ref} {...localProps}>
+<iframe bind:this={ref} {@attach setFrameNode} {...localProps}>
   <EnvironmentProvider value={() => frameRef?.contentDocument ?? document}>
     {#if mountNode}
       <Portal container={mountNode}>
