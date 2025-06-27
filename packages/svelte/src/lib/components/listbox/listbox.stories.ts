@@ -1,5 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
+import ControlledExample from './examples/controlled.svelte'
+import DisabledExample from './examples/disabled.svelte'
 import GroupExample from './examples/group.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -13,6 +15,18 @@ export default meta
 export const Basic = {
   render: () => ({
     Component: BasicExample,
+  }),
+}
+
+export const Controlled = {
+  render: () => ({
+    Component: ControlledExample,
+  }),
+}
+
+export const Disabled = {
+  render: () => ({
+    Component: DisabledExample,
   }),
 }
 

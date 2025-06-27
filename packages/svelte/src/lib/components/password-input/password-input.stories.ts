@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledVisibilityExample from './examples/controlled-visibility.svelte'
 import IgnorePasswordManagerExample from './examples/ignore-password-manager.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithFieldExample from './examples/with-field.svelte'
 import WithValidationExample from './examples/with-validation.svelte'
 
 const meta: Meta = {
@@ -33,6 +34,12 @@ export const ControlledVisibility = {
 export const IgnorePasswordManager = {
   render: () => ({
     Component: IgnorePasswordManagerExample,
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    Component: WithFieldExample,
   }),
 }
 

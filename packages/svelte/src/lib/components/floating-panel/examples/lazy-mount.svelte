@@ -2,13 +2,9 @@
   import { FloatingPanel } from '@ark-ui/svelte/floating-panel'
   import { Portal } from '@ark-ui/svelte/portal'
   import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-svelte'
-
-  function handleExitComplete() {
-    console.log('onExitComplete invoked')
-  }
 </script>
 
-<FloatingPanel.Root lazyMount onExitComplete={handleExitComplete}>
+<FloatingPanel.Root lazyMount onExitComplete={() => console.log('onExitComplete invoked')}>
   <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
   <Portal>
     <FloatingPanel.Positioner>

@@ -1,6 +1,8 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import PositioningExample from './examples/positioning.svelte'
+import RenderPropExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithContextExample from './examples/with-context.svelte'
 
@@ -19,6 +21,18 @@ export const Basic = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const Positioning = {
+  render: () => ({
+    Component: PositioningExample,
+  }),
+}
+
+export const RenderProp = {
+  render: () => ({
+    Component: RenderPropExample,
   }),
 }
 
