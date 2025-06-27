@@ -3,6 +3,9 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
+import FormUsageExample from './examples/form-usage.svelte'
+import HalfRatingsExample from './examples/half-ratings.svelte'
+import InitialValueExample from './examples/initial-value.svelte'
 import ReadOnlyExample from './examples/read-only.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
@@ -28,6 +31,24 @@ export const Controlled = {
 export const Disabled = {
   render: () => ({
     Component: DisabledExample,
+  }),
+}
+
+export const FormUsage = {
+  render: () => ({
+    Component: FormUsageExample,
+  }),
+}
+
+export const HalfRatings = {
+  render: () => ({
+    Component: HalfRatingsExample,
+  }),
+}
+
+export const InitialValue = {
+  render: () => ({
+    Component: InitialValueExample,
   }),
 }
 
