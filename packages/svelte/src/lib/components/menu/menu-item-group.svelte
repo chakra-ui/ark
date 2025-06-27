@@ -1,10 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, Optional, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ItemGroupProps } from '@zag-js/menu'
 
   type OptionalItemGroupProps = Optional<ItemGroupProps, 'id'>
 
-  export interface MenuItemGroupBaseProps extends OptionalItemGroupProps, PolymorphicProps<'div'> {}
+  export interface MenuItemGroupBaseProps extends OptionalItemGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuItemGroupProps extends Assign<HTMLProps<'div'>, MenuItemGroupBaseProps> {}
 </script>
 
@@ -14,7 +14,7 @@
   import { useMenuContext } from './use-menu-context'
   import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
-  const props: MenuItemGroupProps = $props()
+  let { ref = $bindable(), ...props }: MenuItemGroupProps = $props()
 
   const menu = useMenuContext()
   const id = $props.id()
@@ -24,4 +24,4 @@
   MenuItemGroupProvider(() => itemGroupProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

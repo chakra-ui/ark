@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface TourPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TourPositionerProps extends HTMLProps<'div'>, TourPositionerBaseProps {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useTourContext } from './use-tour-context'
 
-  const props: TourPositionerProps = $props()
+  let { ref = $bindable(), ...props }: TourPositionerProps = $props()
 
   const tour = useTourContext()
   const presence = usePresenceContext()
@@ -20,5 +20,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

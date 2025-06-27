@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { EllipsisProps } from '@zag-js/pagination'
 
-  export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps<'div'> {}
+  export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface PaginationEllipsisProps extends Assign<HTMLProps<'div'>, PaginationEllipsisBaseProps> {}
 </script>
 
@@ -11,9 +11,9 @@
   import { Ark } from '../factory'
   import { usePaginationContext } from './use-pagination-context'
 
-  const props: PaginationEllipsisProps = $props()
+  let { ref = $bindable(), ...props }: PaginationEllipsisProps = $props()
   const pagination = usePaginationContext()
   const mergedProps = $derived(mergeProps(pagination().getEllipsisProps(props), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

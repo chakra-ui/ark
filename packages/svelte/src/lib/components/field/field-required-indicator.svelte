@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { Snippet } from 'svelte'
 
-  export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps<'span'> {
+  export interface FieldRequiredIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     fallback?: Snippet
   }
   export interface FieldRequiredIndicatorProps extends Assign<HTMLProps<'span'>, FieldRequiredIndicatorBaseProps> {}
@@ -13,13 +13,13 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  const props: FieldRequiredIndicatorProps = $props()
+  let { ref = $bindable(), ...props }: FieldRequiredIndicatorProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getRequiredIndicatorProps() ?? {}, props))
 </script>
 
 {#if field?.().required}
-  <Ark as="span" {...mergedProps}>
+  <Ark as="span" bind:ref {...mergedProps}>
     {#if props.children}
       {@render props.children?.()}
     {:else}

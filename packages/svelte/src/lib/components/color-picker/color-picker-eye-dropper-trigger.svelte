@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerEyeDropperTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface ColorPickerEyeDropperTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface ColorPickerEyeDropperTriggerProps
     extends Assign<HTMLProps<'button'>, ColorPickerEyeDropperTriggerBaseProps> {}
 </script>
@@ -11,10 +11,10 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  const props: ColorPickerEyeDropperTriggerProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerEyeDropperTriggerProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getEyeDropperTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

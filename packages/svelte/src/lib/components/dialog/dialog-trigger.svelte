@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface DialogTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface DialogTriggerProps extends Assign<HTMLProps<'button'>, DialogTriggerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useDialogContext } from './use-dialog-context'
 
-  const props: DialogTriggerProps = $props()
+  let { ref = $bindable(), ...props }: DialogTriggerProps = $props()
 
   const dialog = useDialogContext()
   const presence = usePresenceContext()
@@ -26,4 +26,4 @@
   )
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

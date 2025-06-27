@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxItemGroupLabelBaseProps extends PolymorphicProps<'div'> {}
+  export interface ComboboxItemGroupLabelBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ComboboxItemGroupLabelProps extends Assign<HTMLProps<'div'>, ComboboxItemGroupLabelBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useComboboxContext } from './use-combobox-context'
   import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
 
-  const props: ComboboxItemGroupLabelProps = $props()
+  let { ref = $bindable(), ...props }: ComboboxItemGroupLabelProps = $props()
 
   const combobox = useComboboxContext()
   const groupProps = useComboboxItemGroupPropsContext()
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(combobox().getItemGroupLabelProps({ htmlFor: groupProps().id }), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

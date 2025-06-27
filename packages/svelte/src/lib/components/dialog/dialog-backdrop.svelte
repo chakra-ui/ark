@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogBackdropBaseProps extends PolymorphicProps<'div'> {
+  export interface DialogBackdropBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     ref?: Element | null
   }
   export interface DialogBackdropProps extends Assign<HTMLProps<'div'>, DialogBackdropBaseProps> {}
@@ -24,10 +24,9 @@
 
   function setNode(node: Element | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

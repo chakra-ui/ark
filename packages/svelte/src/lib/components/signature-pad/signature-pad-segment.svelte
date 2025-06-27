@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SignaturePadSegmentBaseProps extends PolymorphicProps<'svg'> {}
+  export interface SignaturePadSegmentBaseProps extends PolymorphicProps<'svg'>, RefAttribute {}
   export interface SignaturePadSegmentProps extends Assign<HTMLProps<'svg'>, SignaturePadSegmentBaseProps> {}
 </script>
 
@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useSignaturePadContext } from './use-signature-pad-context'
 
-  const props: SignaturePadSegmentProps = $props()
+  let { ref = $bindable(), ...props }: SignaturePadSegmentProps = $props()
 
   const signaturePad = useSignaturePadContext()
   const mergedProps = $derived(mergeProps(signaturePad().getSegmentProps(), props))
@@ -18,7 +18,7 @@
   const currentPath = $derived(signaturePad().currentPath)
 </script>
 
-<Ark as="svg" {...mergedProps}>
+<Ark as="svg" bind:ref {...mergedProps}>
   <title>Signature</title>
   {#each signaturePad().paths as path, i}
     <path {...signaturePad().getSegmentPathProps({ path })} />

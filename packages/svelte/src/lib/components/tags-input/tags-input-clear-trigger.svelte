@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TagsInputClearTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface TagsInputClearTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface TagsInputClearTriggerProps extends Assign<HTMLProps<'button'>, TagsInputClearTriggerBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useTagsInputContext } from './use-tags-input-context'
 
-  const props: TagsInputClearTriggerProps = $props()
+  let { ref = $bindable(), ...props }: TagsInputClearTriggerProps = $props()
   const tagsInput = useTagsInputContext()
   const mergedProps = $derived(mergeProps(tagsInput().getClearTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SelectPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface SelectPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface SelectPositionerProps extends Assign<HTMLProps<'div'>, SelectPositionerBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '$lib/components/factory'
   import { useSelectContext } from './use-select-context'
 
-  const props: SelectPositionerProps = $props()
+  let { ref = $bindable(), ...props }: SelectPositionerProps = $props()
   const select = useSelectContext()
   const mergedProps = $derived(mergeProps(select().getPositionerProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface MenuPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface MenuPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuPositionerProps extends Assign<HTMLProps<'div'>, MenuPositionerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useMenuContext } from './use-menu-context'
 
-  const props: MenuPositionerProps = $props()
+  let { ref = $bindable(), ...props }: MenuPositionerProps = $props()
 
   const menu = useMenuContext()
   const presence = usePresenceContext()
@@ -19,5 +19,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

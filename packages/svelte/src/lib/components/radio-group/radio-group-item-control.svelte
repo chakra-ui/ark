@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface RadioGroupItemControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface RadioGroupItemControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface RadioGroupItemControlProps extends Assign<HTMLProps<'div'>, RadioGroupItemControlBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useRadioGroupContext } from './use-radio-group-context'
   import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
-  const props: RadioGroupItemControlProps = $props()
+  let { ref = $bindable(), ...props }: RadioGroupItemControlProps = $props()
 
   const radioGroup = useRadioGroupContext()
   const itemProps = useRadioGroupItemPropsContext()
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(radioGroup().getItemControlProps(itemProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

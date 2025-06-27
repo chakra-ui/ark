@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseSwitchProps } from './use-switch.svelte'
 
-  export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<'label'> {}
+  export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps<'label'>, RefAttribute {}
   export interface SwitchRootProps extends Assign<HTMLProps<'label'>, SwitchRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useSwitch } from './use-switch.svelte'
   import { SwitchProvider } from './use-switch-context'
 
-  let { checked = $bindable(), ...props }: SwitchRootProps = $props()
+  let { ref = $bindable(), checked = $bindable(), ...props }: SwitchRootProps = $props()
   const providedId = $props.id()
 
   const [useSwitchProps, localProps] = $derived(
@@ -50,4 +50,4 @@
   SwitchProvider(switchMachine)
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

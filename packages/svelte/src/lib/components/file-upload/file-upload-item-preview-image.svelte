@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadItemPreviewImageBaseProps extends PolymorphicProps<'img'> {}
+  export interface FileUploadItemPreviewImageBaseProps extends PolymorphicProps<'img'>, RefAttribute {}
   export interface FileUploadItemPreviewImageProps
     extends Assign<HTMLProps<'img'>, FileUploadItemPreviewImageBaseProps> {}
 </script>
@@ -12,7 +12,7 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-  const props: FileUploadItemPreviewImageProps = $props()
+  let { ref = $bindable(), ...props }: FileUploadItemPreviewImageProps = $props()
 
   let url = $state('')
   const fileUpload = useFileUploadContext()
@@ -28,5 +28,5 @@
 </script>
 
 {#if url}
-  <Ark as="img" {...mergedProps} />
+  <Ark as="img" bind:ref {...mergedProps} />
 {/if}

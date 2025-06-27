@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TreeViewTreeBaseProps extends PolymorphicProps<'ul'> {}
+  export interface TreeViewTreeBaseProps extends PolymorphicProps<'ul'>, RefAttribute {}
   export interface TreeViewTreeProps extends Assign<HTMLProps<'ul'>, TreeViewTreeBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useTreeViewContext } from './use-tree-view-context'
 
-  const props: TreeViewTreeProps = $props()
+  let { ref = $bindable(), ...props }: TreeViewTreeProps = $props()
 
   const treeView = useTreeViewContext()
   const mergedProps = $derived(mergeProps(treeView().getTreeProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

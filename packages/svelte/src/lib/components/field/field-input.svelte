@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface FieldInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface FieldInputProps extends Assign<HTMLProps<'input'>, FieldInputBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  const props: FieldInputProps = $props()
+  let { ref = $bindable(), ...props }: FieldInputProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getInputProps() ?? {}, props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

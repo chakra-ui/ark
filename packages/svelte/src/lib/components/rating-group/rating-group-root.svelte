@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseRatingGroupProps } from './use-rating-group.svelte'
 
-  export interface RatingGroupRootBaseProps extends UseRatingGroupProps, PolymorphicProps<'div'> {}
+  export interface RatingGroupRootBaseProps extends UseRatingGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface RatingGroupRootProps extends Assign<HTMLProps<'div'>, RatingGroupRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useRatingGroup } from './use-rating-group.svelte'
   import { RatingGroupProvider } from './use-rating-group-context'
 
-  let { value = $bindable(), ...props }: RatingGroupRootProps = $props()
+  let { ref = $bindable(), value = $bindable(), ...props }: RatingGroupRootProps = $props()
   const providedId = $props.id()
 
   const [ratingGroupProps, localProps] = $derived(splitRatingGroupProps(props))
@@ -34,4 +34,4 @@
   RatingGroupProvider(ratingGroup)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

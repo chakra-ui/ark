@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ContentProps } from '@zag-js/tabs'
 
-  export interface TabsContentBaseProps extends ContentProps, PolymorphicProps<'div'> {}
+  export interface TabsContentBaseProps extends ContentProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TabsContentProps extends Assign<HTMLProps<'div'>, TabsContentBaseProps> {}
 </script>
 
@@ -14,7 +14,7 @@
   import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
   import { useTabsContext } from './use-tabs-context'
 
-  const props: TabsContentProps = $props()
+  let { ref = $bindable(), ...props }: TabsContentProps = $props()
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
 
   const tabs = useTabsContext()
@@ -31,8 +31,12 @@
   const mergedProps = $derived(mergeProps(tabs().getContentProps(contentProps), localProps))
 
   PresenceProvider(presence)
+
+  function setNode(node: Element | null) {
+    presence().setNode(node)
+  }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

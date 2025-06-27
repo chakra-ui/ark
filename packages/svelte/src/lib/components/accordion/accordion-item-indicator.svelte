@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface AccordionItemIndicatorBaseProps extends PolymorphicProps<'div'> {}
+  export interface AccordionItemIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface AccordionItemIndicatorProps extends Assign<HTMLProps<'div'>, AccordionItemIndicatorBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useAccordionContext } from './use-accordion-context'
   import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-  const props: AccordionItemIndicatorProps = $props()
+  let { ref = $bindable(), ...props }: AccordionItemIndicatorProps = $props()
 
   const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(accordion().getItemIndicatorProps(itemProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

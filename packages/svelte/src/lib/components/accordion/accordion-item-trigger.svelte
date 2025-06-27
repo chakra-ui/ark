@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface AccordionItemTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface AccordionItemTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface AccordionItemTriggerProps extends Assign<HTMLProps<'button'>, AccordionItemTriggerBaseProps> {}
 </script>
 
@@ -12,7 +12,7 @@
   import { useAccordionContext } from './use-accordion-context'
   import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-  const props: AccordionItemTriggerProps = $props()
+  let { ref = $bindable(), ...props }: AccordionItemTriggerProps = $props()
 
   const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()
@@ -31,4 +31,4 @@
   )
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark bind:ref as="button" {...mergedProps} />

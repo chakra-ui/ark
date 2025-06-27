@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TooltipArrowTipBaseProps extends PolymorphicProps<'div'> {}
+  export interface TooltipArrowTipBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TooltipArrowTipProps extends Assign<HTMLProps<'div'>, TooltipArrowTipBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useTooltipContext } from './use-tooltip-context'
 
-  const props: TooltipArrowTipProps = $props()
+  let { ref = $bindable(), ...props }: TooltipArrowTipProps = $props()
   const tooltip = useTooltipContext()
   const mergedProps = $derived(mergeProps(tooltip().getArrowTipProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

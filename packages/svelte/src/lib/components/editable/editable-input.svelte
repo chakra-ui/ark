@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditableInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface EditableInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface EditableInputProps extends Assign<HTMLProps<'input'>, EditableInputBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useEditableContext } from './use-editable-context'
 
-  const props: EditableInputProps = $props()
+  let { ref = $bindable(), ...props }: EditableInputProps = $props()
 
   const editable = useEditableContext()
   const mergedProps = $derived(mergeProps(editable().getInputProps(), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

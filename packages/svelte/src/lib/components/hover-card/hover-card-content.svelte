@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useHoverCardContext } from './use-hover-card-context'
 
-  let { ref = $bindable<Element | null>(), ...props }: HoverCardContentProps = $props()
+  let { ref = $bindable(), ...props }: HoverCardContentProps = $props()
 
   const hoverCard = useHoverCardContext()
   const presence = usePresenceContext()
@@ -19,10 +19,9 @@
 
   function setNode(node: HTMLElement | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} />
 {/if}

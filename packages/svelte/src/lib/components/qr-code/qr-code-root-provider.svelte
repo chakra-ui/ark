@@ -1,12 +1,12 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps } from '$lib/types'
+  import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
   import type { UseQrCodeReturn } from './use-qr-code.svelte'
 
   interface RootProviderProps {
     value: UseQrCodeReturn
   }
 
-  export interface QrCodeRootProviderBaseProps extends RootProviderProps {}
+  export interface QrCodeRootProviderBaseProps extends RootProviderProps, RefAttribute {}
   export interface QrCodeRootProviderProps extends Assign<HTMLProps<'div'>, QrCodeRootProviderBaseProps> {}
 </script>
 
@@ -15,11 +15,11 @@
   import { Ark } from '../factory'
   import { QrCodeProvider } from './use-qr-code-context'
 
-  const props: QrCodeRootProviderProps = $props()
+  let { ref = $bindable(), ...props }: QrCodeRootProviderProps = $props()
   const { value: qrCode, ...localProps } = props
   const mergedProps = $derived(mergeProps(qrCode().getRootProps(), localProps))
 
   QrCodeProvider(qrCode)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

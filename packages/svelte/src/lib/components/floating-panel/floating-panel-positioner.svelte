@@ -1,7 +1,7 @@
 <script lang="ts" module>
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface FloatingPanelPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface FloatingPanelPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface FloatingPanelPositionerProps extends Assign<HTMLProps<'div'>, FloatingPanelPositionerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let props: FloatingPanelPositionerProps = $props()
+  let { ref = $bindable(), ...props }: FloatingPanelPositionerProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const presence = usePresenceContext()
@@ -20,5 +20,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

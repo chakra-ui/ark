@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface DialogPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface DialogPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface DialogPositionerProps extends Assign<HTMLProps<'div'>, DialogPositionerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useDialogContext } from './use-dialog-context'
 
-  const props: DialogPositionerProps = $props()
+  let { ref = $bindable(), ...props }: DialogPositionerProps = $props()
 
   const dialog = useDialogContext()
   const presence = usePresenceContext()
@@ -19,5 +19,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

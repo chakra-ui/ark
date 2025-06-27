@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { InputProps } from '@zag-js/pin-input'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PinInputInputBaseProps extends InputProps, PolymorphicProps<'input'> {}
+  export interface PinInputInputBaseProps extends InputProps, PolymorphicProps<'input'>, RefAttribute {}
   export interface PinInputInputProps extends Assign<HTMLProps<'input'>, PinInputInputBaseProps> {}
 </script>
 
@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { usePinInputContext } from './use-pin-input-context'
 
-  const props: PinInputInputProps = $props()
+  let { ref = $bindable(), ...props }: PinInputInputProps = $props()
   const pinInput = usePinInputContext()
 
   const [inputProps, localProps] = $derived(createSplitProps<InputProps>()(props, ['index']))
@@ -20,4 +20,4 @@
   const mergedProps = $derived(mergeProps(pinInput().getInputProps(inputProps), localProps))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

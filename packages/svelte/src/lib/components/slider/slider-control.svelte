@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SliderControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface SliderControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface SliderControlProps extends HTMLProps<'div'>, SliderControlBaseProps {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useSliderContext } from './use-slider-context'
 
-  const props: SliderControlProps = $props()
+  let { ref = $bindable(), ...props }: SliderControlProps = $props()
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getControlProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

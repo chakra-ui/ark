@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerViewControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface DatePickerViewControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerViewControlProps extends Assign<HTMLProps<'div'>, DatePickerViewControlBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
 
-  const props: DatePickerViewControlProps = $props()
+  let { ref = $bindable(), ...props }: DatePickerViewControlProps = $props()
 
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
   const mergedProps = $derived(mergeProps(datePicker().getViewControlProps(viewProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

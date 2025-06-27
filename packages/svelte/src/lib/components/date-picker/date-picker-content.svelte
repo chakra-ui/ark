@@ -11,7 +11,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { usePresenceContext } from '../presence/index.js'
 
-  let { ref, ...props }: DatePickerContentProps = $props()
+  let { ref = $bindable(), ...props }: DatePickerContentProps = $props()
 
   const datePicker = useDatePickerContext()
   const presence = usePresenceContext()
@@ -19,10 +19,9 @@
 
   function setNode(node: HTMLElement) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

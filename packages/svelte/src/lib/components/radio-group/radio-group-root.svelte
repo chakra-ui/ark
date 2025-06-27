@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ValueChangeDetails } from '@zag-js/radio-group'
   import type { UseRadioGroupProps } from './use-radio-group.svelte'
 
@@ -7,7 +7,7 @@
     valueChange: ValueChangeDetails
   }
 
-  export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps<'div'> {}
+  export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface RadioGroupRootProps extends Assign<HTMLProps<'div'>, RadioGroupRootBaseProps> {}
 </script>
 
@@ -18,7 +18,7 @@
   import { RadioGroupProvider } from './use-radio-group-context'
   import { useRadioGroup } from './use-radio-group.svelte'
 
-  let { value = $bindable(), ...props }: RadioGroupRootProps = $props()
+  let { ref = $bindable(), value = $bindable(), ...props }: RadioGroupRootProps = $props()
   const providedId = $props.id()
 
   const [radioGroupProps, localProps] = $derived(
@@ -52,4 +52,4 @@
   RadioGroupProvider(radioGroup)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCheckboxProps } from './use-checkbox.svelte'
 
-  export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps<'label'> {}
+  export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps<'label'>, RefAttribute {}
   export interface CheckboxRootProps extends Assign<HTMLProps<'label'>, CheckboxRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { splitCheckboxProps } from './split-checkbox-props.svelte'
   import { useCheckbox } from './use-checkbox.svelte'
 
-  let { checked = $bindable(), ...props }: CheckboxRootProps = $props()
+  let { ref = $bindable(), checked = $bindable(), ...props }: CheckboxRootProps = $props()
   const providedId = $props.id()
 
   const [useCheckboxProps, localProps] = $derived(splitCheckboxProps(props))
@@ -34,4 +34,4 @@
   CheckboxProvider(checkbox)
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

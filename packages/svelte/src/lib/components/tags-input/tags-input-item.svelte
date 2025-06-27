@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TagsInputItemBaseProps extends PolymorphicProps<'div'> {
+  export interface TagsInputItemBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     index: number
     value: string
     disabled?: boolean
@@ -16,7 +16,7 @@
   import { TagsInputItemProvider } from './use-tags-input-item-context'
   import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
 
-  const props: TagsInputItemProps = $props()
+  let { ref = $bindable(), ...props }: TagsInputItemProps = $props()
   const tagsInput = useTagsInputContext()
   const itemProps = $derived({ index: props.index, value: props.value, disabled: props.disabled })
   const mergedProps = $derived(mergeProps(tagsInput().getItemProps(itemProps), props))
@@ -25,4 +25,4 @@
   TagsInputItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

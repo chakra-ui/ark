@@ -1,10 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { OptionItemProps } from '@zag-js/menu'
 
   type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 
-  export interface MenuCheckboxItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div'> {}
+  export interface MenuCheckboxItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuCheckboxItemProps extends Assign<HTMLProps<'div'>, MenuCheckboxItemBaseProps> {}
 </script>
 
@@ -16,7 +16,7 @@
   import { MenuItemProvider } from './use-menu-item-context'
   import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
-  let { checked = $bindable<boolean>(), ...props }: MenuCheckboxItemProps = $props()
+  let { ref = $bindable(), checked = $bindable<boolean>(), ...props }: MenuCheckboxItemProps = $props()
 
   const [partialOptionItemProps, localProps] = $derived(
     // @ts-expect-error - TODO: fix this
@@ -48,4 +48,4 @@
   MenuItemProvider(() => optionItemState)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

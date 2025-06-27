@@ -25,10 +25,9 @@
 
   function setNode(node: Element | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} {@attach setNode} hidden={!tour().step?.backdrop} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} hidden={!tour().step?.backdrop} />
 {/if}

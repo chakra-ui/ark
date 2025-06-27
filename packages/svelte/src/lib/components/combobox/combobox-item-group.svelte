@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ItemGroupProps } from '@zag-js/combobox'
 
-  export interface ComboboxItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps<'div'> {}
+  export interface ComboboxItemGroupBaseProps extends Partial<ItemGroupProps>, PolymorphicProps<'div'>, RefAttribute {}
   export interface ComboboxItemGroupProps extends Assign<HTMLProps<'div'>, ComboboxItemGroupBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useComboboxContext } from './use-combobox-context'
   import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-context'
 
-  const props: ComboboxItemGroupProps = $props()
+  let { ref = $bindable(), ...props }: ComboboxItemGroupProps = $props()
   const providedId = $props.id()
 
   const [itemGroupProps, localProps] = $derived(createSplitProps<Partial<ItemGroupProps>>()(props, ['id']))
@@ -26,4 +26,4 @@
   ComboboxItemGroupPropsProvider(() => groupProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

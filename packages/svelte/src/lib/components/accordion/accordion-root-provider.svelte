@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAccordionReturn } from './use-accordion.svelte'
 
-  export interface AccordionRootProviderBaseProps extends PolymorphicProps<'div'>, RenderStrategyProps {
+  export interface AccordionRootProviderBaseProps extends PolymorphicProps<'div'>, RenderStrategyProps, RefAttribute {
     value: UseAccordionReturn
   }
   export interface AccordionRootProviderProps extends Assign<HTMLProps<'div'>, AccordionRootProviderBaseProps> {}
@@ -18,7 +18,7 @@
   import { Ark } from '../factory'
   import { AccordionProvider } from './use-accordion-context'
 
-  let { value, ...props }: AccordionRootProviderProps = $props()
+  let { ref = $bindable(), value, ...props }: AccordionRootProviderProps = $props()
 
   const [renderStrategyProps, localProps] = $derived(splitRenderStrategyProps(props))
   const mergedProps = $derived(mergeProps(value().getRootProps(), localProps))
@@ -27,4 +27,4 @@
   RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark bind:ref as="div" {...mergedProps} />

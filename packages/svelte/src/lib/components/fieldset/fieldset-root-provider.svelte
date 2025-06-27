@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseFieldsetReturn } from './use-fieldset.svelte'
 
-  export interface FieldsetRootProviderBaseProps extends PolymorphicProps<'fieldset'> {
+  export interface FieldsetRootProviderBaseProps extends PolymorphicProps<'fieldset'>, RefAttribute {
     value: UseFieldsetReturn
   }
   export interface FieldsetRootProviderProps extends Assign<HTMLProps<'fieldset'>, FieldsetRootProviderBaseProps> {}
@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { FieldsetProvider } from './use-fieldset-context'
 
-  const props: FieldsetRootProviderProps = $props()
+  let { ref = $bindable(), ...props }: FieldsetRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
 
   FieldsetProvider(props.value)
 </script>
 
-<Ark as="fieldset" {...mergedProps} />
+<Ark as="fieldset" bind:ref {...mergedProps} />

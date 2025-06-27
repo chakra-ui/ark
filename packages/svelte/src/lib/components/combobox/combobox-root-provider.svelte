@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { Snippet } from 'svelte'
   import type { CollectionItem } from '../collection/index.js'
   import type { UsePresenceProps } from '../presence/use-presence.svelte.js'
@@ -12,7 +12,8 @@
   export interface ComboboxRootProviderBaseProps<T extends CollectionItem>
     extends RootProviderProps<T>,
       UsePresenceProps,
-      PolymorphicProps<'div'> {
+      PolymorphicProps<'div'>,
+      RefAttribute {
     children?: Snippet
   }
   export interface ComboboxRootProviderProps<T extends CollectionItem>
@@ -25,7 +26,7 @@
   import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.js'
   import { ComboboxProvider } from './use-combobox-context.js'
 
-  let { value, children, ...props }: ComboboxRootProviderProps<T> = $props()
+  let { ref = $bindable(), value, children, ...props }: ComboboxRootProviderProps<T> = $props()
 
   const [presenceProps, otherProps] = splitPresenceProps(props)
   const presence = usePresence(() => mergeProps({ present: value().open }, presenceProps))
@@ -35,6 +36,6 @@
   PresenceProvider(presence)
 </script>
 
-<Ark as="div" {...mergedProps}>
+<Ark as="div" bind:ref {...mergedProps}>
   {@render children?.()}
 </Ark>

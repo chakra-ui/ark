@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCheckboxReturn } from './use-checkbox.svelte'
 
-  export interface CheckboxRootProviderBaseProps extends PolymorphicProps<'label'> {
+  export interface CheckboxRootProviderBaseProps extends PolymorphicProps<'label'>, RefAttribute {
     value: UseCheckboxReturn
   }
   export interface CheckboxRootProviderProps extends Assign<HTMLProps<'label'>, CheckboxRootProviderBaseProps> {}
@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { CheckboxProvider } from './use-checkbox-context'
 
-  const { value, ...props }: CheckboxRootProviderProps = $props()
+  let { ref = $bindable(), value, ...props }: CheckboxRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   CheckboxProvider(value)
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

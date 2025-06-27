@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ProgressCircleTrackBaseProps extends PolymorphicProps<'circle'> {}
+  export interface ProgressCircleTrackBaseProps extends PolymorphicProps<'circle'>, RefAttribute {}
   export interface ProgressCircleTrackProps extends HTMLProps<'circle'>, ProgressCircleTrackBaseProps {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useProgressContext } from './use-progress-context'
 
-  const props: ProgressCircleTrackProps = $props()
+  let { ref = $bindable(), ...props }: ProgressCircleTrackProps = $props()
   const progress = useProgressContext()
   const mergedProps = $derived(mergeProps(progress().getCircleTrackProps(), props))
 </script>
 
-<Ark as="circle" {...mergedProps} />
+<Ark as="circle" bind:ref {...mergedProps} />

@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseNumberInputProps } from './use-number-input.svelte'
 
-  export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps<'div'> {}
+  export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { splitNumberInputProps } from './split-number-input-props.svelte'
   import { useNumberInput } from './use-number-input.svelte'
 
-  let { value = $bindable(), ...props }: NumberInputRootProps = $props()
+  let { ref = $bindable(), value = $bindable(), ...props }: NumberInputRootProps = $props()
   const providedId = $props.id()
 
   const [useNumberInputProps, localProps] = $derived(splitNumberInputProps(props))
@@ -34,4 +34,4 @@
   NumberInputProvider(numberInput)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

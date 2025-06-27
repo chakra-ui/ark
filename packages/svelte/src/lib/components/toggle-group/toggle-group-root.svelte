@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseToggleGroupProps } from './use-toggle-group.svelte'
 
-  export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div'> {}
+  export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGroupRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { ToggleGroupProvider } from './use-toggle-group-context'
   import { useToggleGroup } from './use-toggle-group.svelte'
 
-  let { value = $bindable<string[]>(), ...props }: ToggleGroupRootProps = $props()
+  let { ref = $bindable(), value = $bindable<string[]>(), ...props }: ToggleGroupRootProps = $props()
 
   const [useToggleGroupProps, localProps] = $derived(
     createSplitProps<UseToggleGroupProps>()(props, [
@@ -49,4 +49,4 @@
   ToggleGroupProvider(toggleGroup)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

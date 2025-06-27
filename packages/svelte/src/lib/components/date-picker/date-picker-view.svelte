@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { ViewProps } from '@zag-js/date-picker'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerViewBaseProps extends ViewProps, PolymorphicProps<'div'> {}
+  export interface DatePickerViewBaseProps extends ViewProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerViewProps extends Assign<HTMLProps<'div'>, DatePickerViewBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context.js'
 
-  const props: DatePickerViewProps = $props()
+  let { ref = $bindable(), ...props }: DatePickerViewProps = $props()
 
   const [viewProps, localProps] = $derived(createSplitProps<ViewProps>()(props, ['view']))
   const datePicker = useDatePickerContext()
@@ -22,4 +22,4 @@
   DatePickerViewPropsProvider(() => viewProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

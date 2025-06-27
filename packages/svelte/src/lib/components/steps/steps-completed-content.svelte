@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsCompletedContentBaseProps extends PolymorphicProps<'div'> {}
+  export interface StepsCompletedContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsCompletedContentProps extends Assign<HTMLProps<'div'>, StepsCompletedContentBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  const props: StepsCompletedContentProps = $props()
+  let { ref = $bindable(), ...props }: StepsCompletedContentProps = $props()
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getContentProps({ index: steps().count }), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

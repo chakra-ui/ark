@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SegmentGroupItemTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface SegmentGroupItemTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface SegmentGroupItemTextProps extends Assign<HTMLProps<'span'>, SegmentGroupItemTextBaseProps> {}
 </script>
 
@@ -12,11 +12,11 @@
   import { useSegmentGroupContext } from './use-segment-group-context'
   import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-  const props: SegmentGroupItemTextProps = $props()
+  let { ref = $bindable(), ...props }: SegmentGroupItemTextProps = $props()
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
 
   const mergedProps = $derived(mergeProps(segmentGroup().getItemTextProps(itemProps()), parts.itemText.attrs, props))
 </script>
 
-<Ark as="span" {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

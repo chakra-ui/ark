@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ColorStringFormat } from '@zag-js/color-utils'
 
-  export interface ColorPickerValueTextBaseProps extends PolymorphicProps<'span'> {
+  export interface ColorPickerValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     format?: ColorStringFormat
   }
   export interface ColorPickerValueTextProps extends Assign<HTMLProps<'span'>, ColorPickerValueTextBaseProps> {}
@@ -13,14 +13,14 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  let { children, format, ...props }: ColorPickerValueTextProps = $props()
+  let { ref = $bindable(), children, format, ...props }: ColorPickerValueTextProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getValueTextProps(), props))
   const valueAsString = $derived(format ? colorPicker().value.toString(format) : colorPicker().valueAsString)
 </script>
 
-<Ark as="span" {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if children}
     {@render children()}
   {:else}

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsListBaseProps extends PolymorphicProps<'ol'> {}
+  export interface StepsListBaseProps extends PolymorphicProps<'ol'>, RefAttribute {}
   export interface StepsListProps extends Assign<HTMLProps<'ol'>, StepsListBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  const props: StepsListProps = $props()
+  let { ref = $bindable(), ...props }: StepsListProps = $props()
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getListProps(), props))
 </script>
 
-<Ark as="ol" {...mergedProps} />
+<Ark as="ol" bind:ref {...mergedProps} />

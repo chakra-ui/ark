@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerChannelSliderValueTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface ColorPickerChannelSliderValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface ColorPickerChannelSliderValueTextProps
     extends Assign<HTMLProps<'span'>, ColorPickerChannelSliderValueTextBaseProps> {}
 </script>
@@ -13,7 +13,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useLocaleContext } from '$lib/providers'
 
-  const props: ColorPickerChannelSliderValueTextProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerChannelSliderValueTextProps = $props()
 
   const locale = useLocaleContext()
 
@@ -22,7 +22,7 @@
   const mergedProps = $derived(mergeProps(colorPicker().getChannelSliderValueTextProps(channelProps()), props))
 </script>
 
-<Ark as="span" {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if props.children}
     {@render props.children()}
   {:else}

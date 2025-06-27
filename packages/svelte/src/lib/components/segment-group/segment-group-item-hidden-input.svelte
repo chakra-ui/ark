@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface SegmentGroupItemHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface SegmentGroupItemHiddenInputProps
     extends Assign<HTMLProps<'input'>, SegmentGroupItemHiddenInputBaseProps> {}
 </script>
@@ -12,11 +12,11 @@
   import { useSegmentGroupContext } from './use-segment-group-context'
   import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-  const props: SegmentGroupItemHiddenInputProps = $props()
+  let { ref = $bindable(), ...props }: SegmentGroupItemHiddenInputProps = $props()
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
 
   const mergedProps = $derived(mergeProps(segmentGroup().getItemHiddenInputProps(itemProps()), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

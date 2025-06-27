@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SelectItemGroupLabelBaseProps extends PolymorphicProps<'div'> {}
+  export interface SelectItemGroupLabelBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface SelectItemGroupLabelProps extends Assign<HTMLProps<'div'>, SelectItemGroupLabelBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useSelectContext } from './use-select-context'
   import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
 
-  const props: SelectItemGroupLabelProps = $props()
+  let { ref = $bindable(), ...props }: SelectItemGroupLabelProps = $props()
 
   const select = useSelectContext()
   const groupProps = useSelectItemGroupPropsContext()
@@ -19,4 +19,4 @@
   const mergedProps = $derived(mergeProps(select().getItemGroupLabelProps({ htmlFor: groupProps().id }), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerSwatchGroupBaseProps extends PolymorphicProps<'div'> {}
+  export interface ColorPickerSwatchGroupBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerSwatchGroupProps extends Assign<HTMLProps<'div'>, ColorPickerSwatchGroupBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  const props: ColorPickerSwatchGroupProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerSwatchGroupProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getSwatchGroupProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

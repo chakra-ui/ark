@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Assign, HTMLProps, Optional, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { mergeProps, reflect } from '@zag-js/svelte'
   import { Ark } from '../factory'
@@ -7,10 +7,10 @@
   import type { UseTimerProps } from './use-timer.svelte'
   import { useTimer } from './use-timer.svelte'
 
-  export interface TimerRootBaseProps extends Optional<UseTimerProps, 'id'>, PolymorphicProps<'div'> {}
+  export interface TimerRootBaseProps extends Optional<UseTimerProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerRootProps extends Assign<HTMLProps<'div'>, TimerRootBaseProps> {}
 
-  const props: TimerRootProps = $props()
+  let { ref = $bindable(), ...props }: TimerRootProps = $props()
   const providedId = $props.id()
 
   const [useTimerProps, localProps] = $derived(
@@ -38,4 +38,4 @@
   TimerProvider(timer)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

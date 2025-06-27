@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SignaturePadControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface SignaturePadControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface SignaturePadControlProps extends Assign<HTMLProps<'div'>, SignaturePadControlBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useSignaturePadContext } from './use-signature-pad-context'
 
-  const props: SignaturePadControlProps = $props()
+  let { ref = $bindable(), ...props }: SignaturePadControlProps = $props()
 
   const signaturePad = useSignaturePadContext()
   const mergedProps = $derived(mergeProps(signaturePad().getControlProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

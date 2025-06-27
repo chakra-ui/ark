@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SwitchThumbBaseProps extends PolymorphicProps<'span'> {}
+  export interface SwitchThumbBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface SwitchThumbProps extends Assign<HTMLProps<'span'>, SwitchThumbBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useSwitchContext } from './use-switch-context'
 
-  const props: SwitchThumbProps = $props()
+  let { ref = $bindable(), ...props }: SwitchThumbProps = $props()
 
   const switchMachine = useSwitchContext()
   const mergedProps = $derived(mergeProps(switchMachine().getThumbProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NumberInputScrubberBaseProps extends PolymorphicProps<'span'> {}
+  export interface NumberInputScrubberBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface NumberInputScrubberProps extends Assign<HTMLProps<'span'>, NumberInputScrubberBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  const props: NumberInputScrubberProps = $props()
+  let { ref = $bindable(), ...props }: NumberInputScrubberProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getScrubberProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

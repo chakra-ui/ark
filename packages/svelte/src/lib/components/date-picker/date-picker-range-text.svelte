@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerRangeTextBaseProps extends PolymorphicProps<'div'> {}
+  export interface DatePickerRangeTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerRangeTextProps extends Assign<HTMLProps<'div'>, DatePickerRangeTextBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  const props: DatePickerRangeTextProps = $props()
+  let { ref = $bindable(), ...props }: DatePickerRangeTextProps = $props()
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getRangeTextProps(), props))
@@ -22,6 +22,6 @@
   })
 </script>
 
-<Ark as="div" {...mergedProps}>
+<Ark as="div" bind:ref {...mergedProps}>
   {visibleRangeText}
 </Ark>

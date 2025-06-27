@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldHelperTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface FieldHelperTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface FieldHelperTextProps extends Assign<HTMLProps<'span'>, FieldHelperTextBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  const props: FieldHelperTextProps = $props()
+  let { ref = $bindable(), ...props }: FieldHelperTextProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getHelperTextProps() ?? {}, props))
 </script>
 
-<Ark as="span" {...mergedProps} />
+<Ark as="span" bind:ref {...mergedProps} />

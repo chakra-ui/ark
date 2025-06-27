@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCarouselProps } from './use-carousel.svelte'
 
-  export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps<'div'> {}
+  export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface CarouselRootProps extends Assign<HTMLProps<'div'>, CarouselRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { CarouselProvider } from './use-carousel-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  let { page = $bindable(), ...props }: CarouselRootProps = $props()
+  let { ref = $bindable(), page = $bindable(), ...props }: CarouselRootProps = $props()
   const providedId = $props.id()
 
   const [useCarouselProps, localProps] = $derived(
@@ -56,4 +56,4 @@
   CarouselProvider(carousel)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,8 +1,11 @@
 <script module lang="ts">
   import type { PresetTriggerProps } from '@zag-js/date-picker'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerPresetTriggerBaseProps extends PresetTriggerProps, PolymorphicProps<'button'> {}
+  export interface DatePickerPresetTriggerBaseProps
+    extends PresetTriggerProps,
+      PolymorphicProps<'button'>,
+      RefAttribute {}
   export interface DatePickerPresetTriggerProps extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
 </script>
 
@@ -12,11 +15,11 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  const props: DatePickerPresetTriggerProps = $props()
+  let { ref = $bindable(), ...props }: DatePickerPresetTriggerProps = $props()
 
   const [presetTriggerProps, localProps] = $derived(createSplitProps<PresetTriggerProps>()(props, ['value']))
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getPresetTriggerProps(presetTriggerProps), localProps))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useMenuContext } from './use-menu-context'
 
-  let { ref = $bindable<Element | null>(), ...props }: MenuContentProps = $props()
+  let { ref = $bindable(), ...props }: MenuContentProps = $props()
 
   const menu = useMenuContext()
   const presence = usePresenceContext()
@@ -19,10 +19,9 @@
 
   function setNode(node: HTMLElement | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {@attach setNode} {...mergedProps} />
+  <Ark as="div" bind:ref {@attach setNode} {...mergedProps} />
 {/if}

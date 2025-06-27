@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, Optional, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAvatarProps } from './use-avatar.svelte'
 
-  export interface AvatarRootBaseProps extends Optional<UseAvatarProps, 'id'>, PolymorphicProps<'div'> {}
+  export interface AvatarRootBaseProps extends Optional<UseAvatarProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface AvatarRootProps extends Assign<HTMLProps<'div'>, AvatarRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { AvatarProvider } from './use-avatar-context'
   import { useAvatar } from './use-avatar.svelte'
 
-  const props: AvatarRootProps = $props()
+  let { ref = $bindable(), ...props }: AvatarRootProps = $props()
   const providedId = $props.id()
 
   const [useAvatarProps, localProps] = $derived(
@@ -31,4 +31,4 @@
   AvatarProvider(avatar)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

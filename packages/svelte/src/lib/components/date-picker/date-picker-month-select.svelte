@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerMonthSelectBaseProps extends PolymorphicProps<'select'> {}
+  export interface DatePickerMonthSelectBaseProps extends PolymorphicProps<'select'>, RefAttribute {}
   export interface DatePickerMonthSelectProps extends Assign<HTMLProps<'select'>, DatePickerMonthSelectBaseProps> {}
 </script>
 
@@ -10,13 +10,13 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  const props: DatePickerMonthSelectProps = $props()
+  let { ref = $bindable(), ...props }: DatePickerMonthSelectProps = $props()
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getMonthSelectProps(), props))
 </script>
 
-<Ark as="select" {...mergedProps}>
+<Ark as="select" bind:ref {...mergedProps}>
   {#each datePicker().getMonths() as month, i}
     <option value={month.value}>
       {month.label}

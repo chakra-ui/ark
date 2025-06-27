@@ -40,9 +40,8 @@
   })
 
   function setNode(node: HTMLDivElement | null) {
-    ref = node
     localNode = node
   }
 </script>
 
-<Ark as="div" {@attach setNode} {...localProps} />
+<Ark as="div" bind:ref {@attach setNode} {...localProps} />

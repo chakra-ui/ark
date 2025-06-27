@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldErrorTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface FieldErrorTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface FieldErrorTextProps extends Assign<HTMLProps<'span'>, FieldErrorTextBaseProps> {}
 </script>
 
@@ -10,11 +10,11 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  const props: FieldErrorTextProps = $props()
+  let { ref = $bindable(), ...props }: FieldErrorTextProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getErrorTextProps() ?? {}, props))
 </script>
 
 {#if field?.().invalid}
-  <Ark as="span" {...mergedProps} />
+  <Ark as="span" bind:ref {...mergedProps} />
 {/if}

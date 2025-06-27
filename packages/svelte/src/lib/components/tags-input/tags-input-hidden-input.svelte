@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TagsInputHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface TagsInputHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface TagsInputHiddenInputProps extends Assign<HTMLProps<'input'>, TagsInputHiddenInputBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useTagsInputContext } from './use-tags-input-context'
 
-  const props: TagsInputHiddenInputProps = $props()
+  let { ref = $bindable(), ...props }: TagsInputHiddenInputProps = $props()
   const tagsInput = useTagsInputContext()
   const mergedProps = $derived(mergeProps(tagsInput().getHiddenInputProps(), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

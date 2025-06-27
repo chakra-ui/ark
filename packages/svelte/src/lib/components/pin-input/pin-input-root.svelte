@@ -1,9 +1,9 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePinInputProps } from './use-pin-input.svelte'
 
-  export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps<'div'> {}
+  export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface PinInputRootProps extends Assign<HTMLProps<'div'>, PinInputRootBaseProps> {
     children?: Snippet
   }
@@ -16,7 +16,7 @@
   import { PinInputProvider } from './use-pin-input-context'
   import { usePinInput } from './use-pin-input.svelte'
 
-  let { value = $bindable(), ...props }: PinInputRootProps = $props()
+  let { ref = $bindable(), value = $bindable(), ...props }: PinInputRootProps = $props()
   const providedId = $props.id()
 
   const [usePinInputProps, localProps] = $derived(
@@ -63,4 +63,4 @@
   PinInputProvider(pinInput)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

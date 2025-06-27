@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface QrCodeFrameBaseProps extends PolymorphicProps<'svg'> {}
+  export interface QrCodeFrameBaseProps extends PolymorphicProps<'svg'>, RefAttribute {}
   export interface QrCodeFrameProps extends HTMLProps<'svg'>, QrCodeFrameBaseProps {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useQrCodeContext } from './use-qr-code-context'
 
-  const props: QrCodeFrameProps = $props()
+  let { ref = $bindable(), ...props }: QrCodeFrameProps = $props()
   const qrCode = useQrCodeContext()
   const mergedProps = $derived(mergeProps(qrCode().getFrameProps(), props))
 </script>
 
-<Ark as="svg" {...mergedProps} />
+<Ark as="svg" bind:ref {...mergedProps} />

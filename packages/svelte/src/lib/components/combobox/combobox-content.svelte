@@ -19,10 +19,9 @@
 
   function setNode(node: HTMLDivElement) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if presence().present}
-  <Ark as="div" {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

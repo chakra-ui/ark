@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { ItemProps } from '@zag-js/file-upload'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadItemBaseProps extends ItemProps, PolymorphicProps<'li'> {}
+  export interface FileUploadItemBaseProps extends ItemProps, PolymorphicProps<'li'>, RefAttribute {}
   export interface FileUploadItemProps extends Assign<HTMLProps<'li'>, FileUploadItemBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-  const props: FileUploadItemProps = $props()
+  let { ref = $bindable(), ...props }: FileUploadItemProps = $props()
   const fileUpload = useFileUploadContext()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['file']))
@@ -23,4 +23,4 @@
   FileUploadItemPropsProvider(() => itemProps)
 </script>
 
-<Ark as="li" {...mergedProps} />
+<Ark as="li" bind:ref {...mergedProps} />

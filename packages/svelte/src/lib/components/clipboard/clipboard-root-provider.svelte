@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseClipboardReturn } from './use-clipboard.svelte'
 
-  export interface ClipboardRootProviderBaseProps extends PolymorphicProps<'div'> {
+  export interface ClipboardRootProviderBaseProps extends PolymorphicProps<'div'>, RefAttribute {
     value: UseClipboardReturn
   }
   export interface ClipboardRootProviderProps extends Assign<HTMLProps<'div'>, ClipboardRootProviderBaseProps> {}
@@ -13,11 +13,11 @@
   import { Ark } from '../factory'
   import { ClipboardProvider } from './use-clipboard-context'
 
-  const { value, ...props }: ClipboardRootProviderProps = $props()
+  let { ref = $bindable(), value, ...props }: ClipboardRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   ClipboardProvider(value)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

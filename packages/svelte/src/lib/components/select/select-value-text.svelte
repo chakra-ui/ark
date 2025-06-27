@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SelectValueTextBaseProps extends PolymorphicProps<'span'> {
+  export interface SelectValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     placeholder?: string
   }
   export interface SelectValueTextProps extends Assign<HTMLProps<'span'>, SelectValueTextBaseProps> {}
@@ -12,12 +12,12 @@
   import { Ark } from '$lib/components/factory'
   import { useSelectContext } from './use-select-context'
 
-  const props: SelectValueTextProps = $props()
+  let { ref = $bindable(), ...props }: SelectValueTextProps = $props()
   const select = useSelectContext()
   const mergedProps = $derived(mergeProps(select().getValueTextProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if props.children}
     {@render props.children()}
   {:else}

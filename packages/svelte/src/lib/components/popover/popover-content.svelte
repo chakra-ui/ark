@@ -1,9 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverContentBaseProps extends PolymorphicProps<'div'> {
-    ref?: Element | null
-  }
+  export interface PopoverContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface PopoverContentProps extends Assign<HTMLProps<'div'>, PopoverContentBaseProps> {}
 </script>
 
@@ -13,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { usePopoverContext } from './use-popover-context'
 
-  let { ref = $bindable<Element | null>(), ...props }: PopoverContentProps = $props()
+  let { ref = $bindable(), ...props }: PopoverContentProps = $props()
 
   const popover = usePopoverContext()
   const presence = usePresenceContext()
@@ -21,10 +19,9 @@
 
   function setNode(node: Element | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} {@attach setNode} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface TourArrowBaseProps extends PolymorphicProps<'div'> {}
+  export interface TourArrowBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TourArrowProps extends HTMLProps<'div'>, TourArrowBaseProps {}
 </script>
 
@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTourContext } from './use-tour-context'
 
-  const props: TourArrowProps = $props()
+  let { ref = $bindable(), ...props }: TourArrowProps = $props()
 
   const tour = useTourContext()
 
@@ -18,5 +18,5 @@
 </script>
 
 {#if tour().step?.arrow}
-  <Ark as="div" {...mergedProps} />
+  <Ark bind:ref as="div" {...mergedProps} />
 {/if}

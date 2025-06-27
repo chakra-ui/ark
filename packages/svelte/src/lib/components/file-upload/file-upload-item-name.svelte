@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadItemNameBaseProps extends PolymorphicProps<'div'> {}
+  export interface FileUploadItemNameBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface FileUploadItemNameProps extends Assign<HTMLProps<'div'>, FileUploadItemNameBaseProps> {}
 </script>
 
@@ -11,13 +11,13 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-  const props: FileUploadItemNameProps = $props()
+  let { ref = $bindable(), ...props }: FileUploadItemNameProps = $props()
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
   const mergedProps = $derived(mergeProps(fileUpload().getItemNameProps(itemProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps}>
+<Ark as="div" bind:ref {...mergedProps}>
   {#if props.children}
     {@render props.children?.()}
   {:else}

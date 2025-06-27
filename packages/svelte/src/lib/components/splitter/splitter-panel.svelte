@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { PanelProps } from '@zag-js/splitter'
 
-  export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps<'div'> {}
+  export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SplitterPanelProps extends Assign<HTMLProps<'div'>, SplitterPanelBaseProps> {}
 </script>
 
@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useSplitterContext } from './use-splitter-context'
 
-  const props: SplitterPanelProps = $props()
+  let { ref = $bindable(), ...props }: SplitterPanelProps = $props()
 
   const [splitterPanelProps, localProps] = $derived(createSplitProps<PanelProps>()(props, ['id']))
 
@@ -20,4 +20,4 @@
   const mergedProps = $derived(mergeProps(splitter().getPanelProps(splitterPanelProps), localProps))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

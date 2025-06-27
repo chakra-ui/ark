@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PinInputControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface PinInputControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface PinInputControlProps extends Assign<HTMLProps<'div'>, PinInputControlBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { usePinInputContext } from './use-pin-input-context'
 
-  const props: PinInputControlProps = $props()
+  let { ref = $bindable(), ...props }: PinInputControlProps = $props()
   const pinInput = usePinInputContext()
   const mergedProps = $derived(mergeProps(pinInput().getControlProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

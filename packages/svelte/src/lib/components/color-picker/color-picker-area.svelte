@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { AreaProps } from '@zag-js/color-picker'
 
-  export interface ColorPickerAreaBaseProps extends AreaProps, PolymorphicProps<'div'> {}
+  export interface ColorPickerAreaBaseProps extends AreaProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerAreaProps extends Assign<HTMLProps<'div'>, ColorPickerAreaBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
 
-  const props: ColorPickerAreaProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerAreaProps = $props()
 
   const [areaProps, localProps] = $derived(createSplitProps<AreaProps>()(props, ['xChannel', 'yChannel']))
 
@@ -23,4 +23,4 @@
   ColorPickerAreaPropsProvider(() => areaProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

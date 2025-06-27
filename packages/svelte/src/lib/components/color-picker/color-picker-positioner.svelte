@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface ColorPickerPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerPositionerProps extends Assign<HTMLProps<'div'>, ColorPickerPositionerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { usePresenceContext } from '../presence'
 
-  const props: ColorPickerPositionerProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerPositionerProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getPositionerProps(), props))
@@ -20,5 +20,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

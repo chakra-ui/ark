@@ -1,7 +1,7 @@
 <script lang="ts" module>
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface FloatingPanelControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface FloatingPanelControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface FloatingPanelControlProps extends Assign<HTMLProps<'div'>, FloatingPanelControlBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let props: FloatingPanelControlProps = $props()
+  let { ref = $bindable(), ...props }: FloatingPanelControlProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = $derived(mergeProps(floatingPanel().getControlProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadLabelBaseProps extends PolymorphicProps<'label'> {}
+  export interface FileUploadLabelBaseProps extends PolymorphicProps<'label'>, RefAttribute {}
   export interface FileUploadLabelProps extends Assign<HTMLProps<'label'>, FileUploadLabelBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useFileUploadContext } from './use-file-upload-context'
 
-  const props: FileUploadLabelProps = $props()
+  let { ref = $bindable(), ...props }: FileUploadLabelProps = $props()
   const fileUpload = useFileUploadContext()
   const mergedProps = $derived(mergeProps(fileUpload().getLabelProps(), props))
 </script>
 
-<Ark as="label" {...mergedProps} />
+<Ark as="label" bind:ref {...mergedProps} />

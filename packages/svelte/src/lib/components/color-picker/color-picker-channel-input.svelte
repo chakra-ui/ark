@@ -1,8 +1,11 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ChannelInputProps } from '@zag-js/color-picker'
 
-  export interface ColorPickerChannelInputBaseProps extends ChannelInputProps, PolymorphicProps<'input'> {}
+  export interface ColorPickerChannelInputBaseProps
+    extends ChannelInputProps,
+      PolymorphicProps<'input'>,
+      RefAttribute {}
   export interface ColorPickerChannelInputProps extends Assign<HTMLProps<'input'>, ColorPickerChannelInputBaseProps> {}
 </script>
 
@@ -12,7 +15,7 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  const props: ColorPickerChannelInputProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerChannelInputProps = $props()
 
   const [channelProps, localProps] = $derived(createSplitProps<ChannelInputProps>()(props, ['channel', 'orientation']))
 
@@ -20,4 +23,4 @@
   const mergedProps = $derived(mergeProps(colorPicker().getChannelInputProps(channelProps), localProps))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface HoverCardTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface HoverCardTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface HoverCardTriggerProps extends Assign<HTMLProps<'button'>, HoverCardTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useHoverCardContext } from './use-hover-card-context'
 
-  const props: HoverCardTriggerProps = $props()
+  let { ref = $bindable(), ...props }: HoverCardTriggerProps = $props()
 
   const hoverCard = useHoverCardContext()
   const mergedProps = $derived(mergeProps(hoverCard().getTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

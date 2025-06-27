@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   interface ItemBaseProps extends ItemProps {
     /**
@@ -8,7 +8,7 @@
     onSelect?: VoidFunction
   }
 
-  export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div'> {}
+  export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProps> {}
 </script>
 
@@ -21,7 +21,7 @@
   import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  const props: MenuItemProps = $props()
+  let { ref = $bindable(), ...props }: MenuItemProps = $props()
 
   const [itemProps, localProps] = $derived(
     createSplitProps<ItemBaseProps>()(props, ['closeOnSelect', 'disabled', 'value', 'valueText', 'onSelect']),
@@ -42,4 +42,4 @@
   MenuItemProvider(() => itemState)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

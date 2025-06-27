@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface NumberInputDecrementTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface NumberInputDecrementTriggerProps
     extends Assign<HTMLProps<'button'>, NumberInputDecrementTriggerBaseProps> {}
 </script>
@@ -11,10 +11,10 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  const props: NumberInputDecrementTriggerProps = $props()
+  let { ref = $bindable(), ...props }: NumberInputDecrementTriggerProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getDecrementTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

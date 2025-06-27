@@ -1,10 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { SwatchProps } from '@zag-js/color-picker'
 
   interface ValueSwatchProps extends Omit<SwatchProps, 'value'> {}
 
-  export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, PolymorphicProps<'div'> {}
+  export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ColorPickerValueSwatchProps extends Assign<HTMLProps<'div'>, ColorPickerValueSwatchBaseProps> {}
 </script>
 
@@ -15,7 +15,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
 
-  const props: ColorPickerValueSwatchProps = $props()
+  let { ref = $bindable(), ...props }: ColorPickerValueSwatchProps = $props()
 
   const [valueSwatchProps, localProps] = $derived(createSplitProps<ValueSwatchProps>()(props, ['respectAlpha']))
 
@@ -31,4 +31,4 @@
   ColorPickerSwatchPropsProvider(() => swatchProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

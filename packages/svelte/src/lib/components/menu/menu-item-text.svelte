@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface MenuItemTextBaseProps extends PolymorphicProps<'div'> {}
+  export interface MenuItemTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuItemTextProps extends Assign<HTMLProps<'div'>, MenuItemTextBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useMenuContext } from './use-menu-context'
   import { useMenuItemPropsContext } from './use-menu-option-item-props-context'
 
-  const props: MenuItemTextProps = $props()
+  let { ref = $bindable(), ...props }: MenuItemTextProps = $props()
 
   const menu = useMenuContext()
   const itemProps = useMenuItemPropsContext()
   const mergedProps = $derived(mergeProps(menu().getItemTextProps(itemProps()), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

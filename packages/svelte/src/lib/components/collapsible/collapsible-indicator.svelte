@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CollapsibleIndicatorBaseProps extends PolymorphicProps<'div'> {}
+  export interface CollapsibleIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface CollapsibleIndicatorProps extends Assign<HTMLProps<'div'>, CollapsibleIndicatorBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useCollapsibleContext } from './use-collapsible-context'
 
-  const props: CollapsibleIndicatorProps = $props()
+  let { ref = $bindable(), ...props }: CollapsibleIndicatorProps = $props()
   const collapsible = useCollapsibleContext()
   const mergedProps = $derived(mergeProps(collapsible().getIndicatorProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

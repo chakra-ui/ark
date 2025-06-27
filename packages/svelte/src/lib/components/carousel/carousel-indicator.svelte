@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { IndicatorProps } from '@zag-js/carousel'
 
-  export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'button'> {}
+  export interface CarouselIndicatorBaseProps extends IndicatorProps, PolymorphicProps<'button'>, RefAttribute {}
   export interface CarouselIndicatorProps extends Assign<HTMLProps<'button'>, CarouselIndicatorBaseProps> {}
 </script>
 
@@ -12,11 +12,11 @@
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  const props: CarouselIndicatorProps = $props()
+  let { ref = $bindable(), ...props }: CarouselIndicatorProps = $props()
   const [indicatorProps, localProps] = $derived(createSplitProps<IndicatorProps>()(props, ['index', 'readOnly']))
 
   const carousel = useCarouselContext()
   const mergedProps = $derived(mergeProps(carousel().getIndicatorProps(indicatorProps), localProps))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

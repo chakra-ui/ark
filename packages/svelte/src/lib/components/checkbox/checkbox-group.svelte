@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseCheckboxGroupProps } from './use-checkbox-group.svelte'
 
-  export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps, PolymorphicProps<'div'> {}
+  export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface CheckboxGroupProps extends Assign<HTMLProps<'div'>, CheckboxGroupBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { splitCheckboxGroupProps } from './split-checkbox-group-props.svelte'
   import { useCheckboxGroup } from './use-checkbox-group.svelte'
 
-  let { value = $bindable(), ...props }: CheckboxGroupProps = $props()
+  let { ref = $bindable(), value = $bindable(), ...props }: CheckboxGroupProps = $props()
 
   const [checkboxGroupProps, localProps] = $derived(splitCheckboxGroupProps(props))
 
@@ -31,4 +31,4 @@
   CheckboxGroupProvider(checkboxGroup)
 </script>
 
-<Ark as="div" role="group" {...checkboxAnatomy.build().group.attrs} {...localProps} />
+<Ark as="div" bind:ref role="group" {...checkboxAnatomy.build().group.attrs} {...localProps} />

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SignaturePadHiddenInputBaseProps extends PolymorphicProps<'input'>, HiddenInputProps {}
+  export interface SignaturePadHiddenInputBaseProps extends PolymorphicProps<'input'>, HiddenInputProps, RefAttribute {}
   export interface SignaturePadHiddenInputProps extends Assign<HTMLProps<'input'>, SignaturePadHiddenInputBaseProps> {}
 </script>
 
@@ -12,11 +12,11 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import type { HiddenInputProps } from '@zag-js/signature-pad'
 
-  const props: SignaturePadHiddenInputProps = $props()
+  let { ref = $bindable(), ...props }: SignaturePadHiddenInputProps = $props()
   const [hiddenInputProps, localProps] = createSplitProps<HiddenInputProps>()(props, ['value'])
 
   const signaturePad = useSignaturePadContext()
   const mergedProps = $derived(mergeProps(signaturePad().getHiddenInputProps(hiddenInputProps), localProps))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

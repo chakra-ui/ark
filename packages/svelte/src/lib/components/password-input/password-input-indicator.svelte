@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PasswordInputIndicatorBaseProps extends PolymorphicProps<'span'> {
+  export interface PasswordInputIndicatorBaseProps extends PolymorphicProps<'span'>, RefAttribute {
     /**
      * The fallback content to display when the password is not visible.
      */
@@ -18,12 +18,12 @@
   import { Ark } from '../factory'
   import { usePasswordInputContext } from './use-password-input-context'
 
-  const { fallback, children, ...props }: PasswordInputIndicatorProps = $props()
+  let { ref = $bindable(), fallback, children, ...props }: PasswordInputIndicatorProps = $props()
   const passwordInput = usePasswordInputContext()
   const mergedProps = $derived(mergeProps(passwordInput().getIndicatorProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if passwordInput().visible}
     {@render children?.()}
   {:else}
