@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Tree View**: Fix tree traversal for querying last node
+
 ## [5.15.2] - 2025-06-26
 
 ### Fixed
