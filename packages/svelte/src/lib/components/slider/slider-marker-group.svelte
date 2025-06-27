@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useSliderContext } from './use-slider-context'
 
-  let { ref = $bindable(), ...props }: SliderMarkerGroupProps = $props()
+  let { ref = $bindable(null), ...props }: SliderMarkerGroupProps = $props()
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getMarkerGroupProps(), props))
 </script>

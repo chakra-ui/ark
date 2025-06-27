@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useSwitchContext } from './use-switch-context'
 
-  let { ref = $bindable(), ...props }: SwitchThumbProps = $props()
+  let { ref = $bindable(null), ...props }: SwitchThumbProps = $props()
 
   const switchMachine = useSwitchContext()
   const mergedProps = $derived(mergeProps(switchMachine().getThumbProps(), props))

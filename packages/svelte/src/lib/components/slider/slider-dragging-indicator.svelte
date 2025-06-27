@@ -11,7 +11,7 @@
   import { useSliderContext } from './use-slider-context'
   import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
-  let { ref = $bindable(), ...props }: SliderDraggingIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: SliderDraggingIndicatorProps = $props()
   const slider = useSliderContext()
   const { index } = useSliderThumbPropsContext()
   const mergedProps = $derived(mergeProps(slider().getDraggingIndicatorProps({ index }), props))

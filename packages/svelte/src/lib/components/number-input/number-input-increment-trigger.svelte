@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  let { ref = $bindable(), ...props }: NumberInputIncrementTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: NumberInputIncrementTriggerProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getIncrementTriggerProps(), props))

@@ -13,7 +13,7 @@
   import { splitCheckboxProps } from './split-checkbox-props.svelte'
   import { useCheckbox } from './use-checkbox.svelte'
 
-  let { ref = $bindable(), checked = $bindable(), ...props }: CheckboxRootProps = $props()
+  let { ref = $bindable(null), checked = $bindable(), ...props }: CheckboxRootProps = $props()
   const providedId = $props.id()
 
   const [useCheckboxProps, localProps] = $derived(splitCheckboxProps(props))

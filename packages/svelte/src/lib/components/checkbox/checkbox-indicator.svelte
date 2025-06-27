@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useCheckboxContext } from './use-checkbox-context'
 
-  let { ref = $bindable(), indeterminate, ...rest }: CheckboxIndicatorProps = $props()
+  let { ref = $bindable(null), indeterminate, ...rest }: CheckboxIndicatorProps = $props()
 
   const checkbox = useCheckboxContext()
   const mergedProps = $derived(mergeProps(checkbox().getIndicatorProps(), rest))

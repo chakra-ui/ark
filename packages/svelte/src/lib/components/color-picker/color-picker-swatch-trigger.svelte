@@ -2,7 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { SwatchTriggerProps } from '@zag-js/color-picker'
 
-  export interface ColorPickerSwatchTriggerBaseProps extends SwatchTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface ColorPickerSwatchTriggerBaseProps
+    extends SwatchTriggerProps,
+      PolymorphicProps<'button'>,
+      RefAttribute {}
   export interface ColorPickerSwatchTriggerProps
     extends Assign<HTMLProps<'button'>, ColorPickerSwatchTriggerBaseProps> {}
 </script>
@@ -13,7 +16,7 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerSwatchTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerSwatchTriggerProps = $props()
 
   const [swatchTriggerProps, localProps] = $derived(
     createSplitProps<SwatchTriggerProps>()(props, ['value', 'disabled']),

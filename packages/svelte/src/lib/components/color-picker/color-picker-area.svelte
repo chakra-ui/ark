@@ -13,7 +13,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerAreaProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerAreaProps = $props()
 
   const [areaProps, localProps] = $derived(createSplitProps<AreaProps>()(props, ['xChannel', 'yChannel']))
 

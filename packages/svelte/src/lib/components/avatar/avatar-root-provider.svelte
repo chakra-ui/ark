@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { AvatarProvider } from './use-avatar-context'
 
-  let { ref = $bindable(), ...props }: AvatarRootProviderProps = $props()
+  let { ref = $bindable(null), ...props }: AvatarRootProviderProps = $props()
   const { value: avatar, ...localProps } = props
   const mergedProps = $derived(mergeProps(avatar().getRootProps(), localProps))
 

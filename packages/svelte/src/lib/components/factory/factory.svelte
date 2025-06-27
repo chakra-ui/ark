@@ -17,7 +17,7 @@
       ref?: Element | null
     }
 
-  let { asChild, children, as, ref = $bindable<Element | null>(null), ...rest }: Props = $props()
+  let { asChild, children, as, ref = $bindable(null), ...rest }: Props = $props()
 
   const propsFn: PropsFn<T> = (props) => mergeProps(rest, props ?? {})
 </script>

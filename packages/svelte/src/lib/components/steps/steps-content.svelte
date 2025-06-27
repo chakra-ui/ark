@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  let { ref = $bindable(), ...props }: StepsContentProps = $props()
+  let { ref = $bindable(null), ...props }: StepsContentProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))
 
   const steps = useStepsContext()

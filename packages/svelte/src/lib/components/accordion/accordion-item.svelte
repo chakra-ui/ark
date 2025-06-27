@@ -15,7 +15,7 @@
   import { AccordionItemProvider } from './use-accordion-item-context'
   import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 
-  let { ref = $bindable(), ...props }: AccordionItemProps = $props()
+  let { ref = $bindable(null), ...props }: AccordionItemProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled']))
 
   const accordion = useAccordionContext()

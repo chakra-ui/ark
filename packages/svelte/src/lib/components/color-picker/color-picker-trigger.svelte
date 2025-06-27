@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerTriggerProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getTriggerProps(), props))

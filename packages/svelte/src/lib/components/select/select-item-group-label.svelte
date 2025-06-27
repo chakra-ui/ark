@@ -11,7 +11,7 @@
   import { useSelectContext } from './use-select-context'
   import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
 
-  let { ref = $bindable(), ...props }: SelectItemGroupLabelProps = $props()
+  let { ref = $bindable(null), ...props }: SelectItemGroupLabelProps = $props()
 
   const select = useSelectContext()
   const groupProps = useSelectItemGroupPropsContext()

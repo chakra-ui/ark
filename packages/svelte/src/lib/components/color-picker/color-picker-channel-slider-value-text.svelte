@@ -13,7 +13,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useLocaleContext } from '$lib/providers'
 
-  let { ref = $bindable(), ...props }: ColorPickerChannelSliderValueTextProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerChannelSliderValueTextProps = $props()
 
   const locale = useLocaleContext()
 

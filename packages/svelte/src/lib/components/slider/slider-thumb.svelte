@@ -13,7 +13,7 @@
   import { useSliderContext } from './use-slider-context'
   import SliderThumbPropsProvider from './slider-thumb-props-provider.svelte'
 
-  let { ref = $bindable(), ...props }: SliderThumbProps = $props()
+  let { ref = $bindable(null), ...props }: SliderThumbProps = $props()
   const [thumbProps, localProps] = $derived(createSplitProps<ThumbProps>()(props, ['index', 'name']))
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getThumbProps(thumbProps), localProps))

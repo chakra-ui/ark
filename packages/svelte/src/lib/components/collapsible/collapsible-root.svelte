@@ -13,7 +13,7 @@
   import { splitCollapsibleProps } from './split-collapsible-props.svelte'
   import { useCollapsible } from './use-collapsible.svelte'
 
-  let { ref = $bindable(), open = $bindable(), ...props }: CollapsibleRootProps = $props()
+  let { ref = $bindable(null), open = $bindable(), ...props }: CollapsibleRootProps = $props()
   const providedId = $props.id()
 
   const [useCollapsibleProps, localProps] = $derived(splitCollapsibleProps(props))

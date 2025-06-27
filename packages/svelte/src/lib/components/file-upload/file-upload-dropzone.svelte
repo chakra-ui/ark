@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useFileUploadContext } from './use-file-upload-context'
 
-  let { ref = $bindable(), ...props }: FileUploadDropzoneProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadDropzoneProps = $props()
   const fileUpload = useFileUploadContext()
 
   const [dropzoneProps, localProps] = $derived(createSplitProps<DropzoneProps>()(props, ['disableClick']))

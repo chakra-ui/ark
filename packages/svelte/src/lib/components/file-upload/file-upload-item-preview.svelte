@@ -16,7 +16,7 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-  let { ref = $bindable(), type, ...props }: FileUploadItemPreviewProps = $props()
+  let { ref = $bindable(null), type, ...props }: FileUploadItemPreviewProps = $props()
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
   const mergedProps = $derived(mergeProps(fileUpload().getItemPreviewProps(itemProps()), props))

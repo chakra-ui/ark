@@ -8,7 +8,7 @@
 
   export interface ToastTitleProps extends Assign<HTMLProps<'div'>, ToastTitleBaseProps> {}
 
-  let { ref = $bindable(), ...props }: ToastTitleProps = $props()
+  let { ref = $bindable(null), ...props }: ToastTitleProps = $props()
 
   const toast = useToastContext()
   const mergedProps = $derived(mergeProps(toast().getTitleProps(), props))

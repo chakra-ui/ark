@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useComboboxContext } from './use-combobox-context'
 
-  let { ref = $bindable(), ...props }: ComboboxControlProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxControlProps = $props()
 
   const combobox = useComboboxContext()
   const mergedProps = $derived(mergeProps(combobox().getControlProps(), props))

@@ -14,7 +14,7 @@
   import { ListboxItemProvider } from './use-listbox-item-context.js'
   import { ListboxItemPropsProvider } from './use-listbox-item-props-context.js'
 
-  let { ref = $bindable(), ...props }: ListboxItemProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxItemProps = $props()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['item', 'highlightOnHover']))
   const listbox = useListboxContext()

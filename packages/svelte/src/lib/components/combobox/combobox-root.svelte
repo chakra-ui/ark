@@ -23,7 +23,7 @@
   import { useCombobox } from './use-combobox.svelte'
 
   let {
-    ref = $bindable(),
+    ref = $bindable(null),
     open = $bindable<boolean>(),
     value = $bindable<string[]>(),
     inputValue = $bindable<string>(),

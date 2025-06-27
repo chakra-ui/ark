@@ -11,7 +11,7 @@
   import { useTreeViewContext } from './use-tree-view-context'
   import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-  let { ref = $bindable(), ...props }: TreeViewNodeCheckboxProps = $props()
+  let { ref = $bindable(null), ...props }: TreeViewNodeCheckboxProps = $props()
 
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()

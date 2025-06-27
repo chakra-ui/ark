@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  let { ref = $bindable(), ...props }: CarouselItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: CarouselItemGroupProps = $props()
 
   const carousel = useCarouselContext()
   const mergedProps = $derived(mergeProps(carousel().getItemGroupProps(), props))

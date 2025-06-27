@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useQrCodeContext } from './use-qr-code-context'
 
-  let { ref = $bindable(), ...props }: QrCodeFrameProps = $props()
+  let { ref = $bindable(null), ...props }: QrCodeFrameProps = $props()
   const qrCode = useQrCodeContext()
   const mergedProps = $derived(mergeProps(qrCode().getFrameProps(), props))
 </script>

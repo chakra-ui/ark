@@ -18,7 +18,7 @@
   import { TabsProvider } from './use-tabs-context'
   import { useTabs } from './use-tabs.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: TabsRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: TabsRootProps = $props()
 
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
 

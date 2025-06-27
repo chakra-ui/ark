@@ -12,7 +12,7 @@
   import { useSegmentGroupContext } from './use-segment-group-context'
   import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-  let { ref = $bindable(), ...props }: SegmentGroupItemControlProps = $props()
+  let { ref = $bindable(null), ...props }: SegmentGroupItemControlProps = $props()
 
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()

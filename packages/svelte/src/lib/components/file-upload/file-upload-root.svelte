@@ -13,7 +13,7 @@
   import { FileUploadProvider } from './use-file-upload-context'
   import { useFileUpload } from './use-file-upload.svelte'
 
-  let { ref = $bindable(), ...props }: FileUploadRootProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadRootProps = $props()
   const providedId = $props.id()
 
   const [useFileUploadProps, localProps] = $derived(

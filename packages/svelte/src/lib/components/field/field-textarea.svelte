@@ -17,7 +17,7 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let { ref = $bindable(), autoresize, ...props }: FieldTextareaProps = $props()
+  let { ref = $bindable(null), autoresize, ...props }: FieldTextareaProps = $props()
 
   let textareaRef = $state<HTMLTextAreaElement | null>(null)
 

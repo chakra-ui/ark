@@ -13,7 +13,7 @@
   import { QrCodeProvider } from './use-qr-code-context'
   import { useQrCode } from './use-qr-code.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: QrCodeRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: QrCodeRootProps = $props()
   const providedId = $props.id()
 
   const [useQrCodeProps, localProps] = $derived(

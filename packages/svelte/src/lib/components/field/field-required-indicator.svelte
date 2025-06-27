@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let { ref = $bindable(), ...props }: FieldRequiredIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: FieldRequiredIndicatorProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getRequiredIndicatorProps() ?? {}, props))
 </script>

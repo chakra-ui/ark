@@ -13,7 +13,7 @@
   import { EditableProvider } from './use-editable-context'
   import { useEditable } from './use-editable.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: EditableRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: EditableRootProps = $props()
 
   const providedId = $props.id()
 

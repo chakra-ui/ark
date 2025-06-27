@@ -16,7 +16,7 @@
   import { ComboboxItemProvider } from './use-combobox-item-context'
   import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
 
-  let { ref = $bindable(), ...props }: ComboboxItemProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxItemProps = $props()
 
   const [itemProps, localProps] = $derived(
     createSplitProps<{ item: any; persistFocus?: boolean }>()(props, ['item', 'persistFocus']),

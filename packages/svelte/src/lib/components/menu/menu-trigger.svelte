@@ -11,7 +11,7 @@
   import { useMenuContext } from './use-menu-context'
   import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
 
-  let { ref = $bindable(), ...props }: MenuTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: MenuTriggerProps = $props()
 
   const menu = useMenuContext()
   const triggerItemProps = useMenuTriggerItemContext()

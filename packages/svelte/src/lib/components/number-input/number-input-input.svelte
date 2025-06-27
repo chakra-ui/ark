@@ -11,7 +11,7 @@
   import { useFieldContext } from '../field'
   import { useNumberInputContext } from './use-number-input-context'
 
-  let { ref = $bindable(), ...props }: NumberInputInputProps = $props()
+  let { ref = $bindable(null), ...props }: NumberInputInputProps = $props()
 
   const numberInput = useNumberInputContext()
   const field = useFieldContext()

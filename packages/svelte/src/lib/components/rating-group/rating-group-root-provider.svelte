@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { RatingGroupProvider } from './use-rating-group-context'
 
-  let { ref = $bindable(), ...props }: RatingGroupRootProviderProps = $props()
+  let { ref = $bindable(null), ...props }: RatingGroupRootProviderProps = $props()
   const { value: ratingGroup, ...localProps } = props
   const mergedProps = $derived(mergeProps(ratingGroup().getRootProps(), localProps))
 

@@ -21,7 +21,7 @@
   import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  let { ref = $bindable(), ...props }: MenuItemProps = $props()
+  let { ref = $bindable(null), ...props }: MenuItemProps = $props()
 
   const [itemProps, localProps] = $derived(
     createSplitProps<ItemBaseProps>()(props, ['closeOnSelect', 'disabled', 'value', 'valueText', 'onSelect']),

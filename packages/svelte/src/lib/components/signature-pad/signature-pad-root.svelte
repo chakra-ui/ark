@@ -13,7 +13,7 @@
   import { useSignaturePad } from './use-signature-pad.svelte'
   import { SignaturePadProvider } from './use-signature-pad-context'
 
-  let { ref = $bindable(), ...props }: SignaturePadRootProps = $props()
+  let { ref = $bindable(null), ...props }: SignaturePadRootProps = $props()
   const providedId = $props.id()
 
   const [useSignaturePadProps, localProps] = $derived(

@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useMenuContext } from './use-menu-context'
 
-  let { ref = $bindable(), ...props }: MenuContextTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: MenuContextTriggerProps = $props()
 
   const menu = useMenuContext()
   const mergedProps = $derived(mergeProps(menu().getContextTriggerProps(), props))

@@ -11,7 +11,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useColorPickerAreaPropsContext } from './use-color-picker-area-props-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerAreaThumbProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerAreaThumbProps = $props()
 
   const colorPicker = useColorPickerContext()
   const areaProps = useColorPickerAreaPropsContext()

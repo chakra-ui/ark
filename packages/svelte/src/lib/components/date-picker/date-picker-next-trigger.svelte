@@ -11,7 +11,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerNextTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerNextTriggerProps = $props()
 
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()

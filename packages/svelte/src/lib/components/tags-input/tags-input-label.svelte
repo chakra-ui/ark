@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTagsInputContext } from './use-tags-input-context'
 
-  let { ref = $bindable(), ...props }: TagsInputLabelProps = $props()
+  let { ref = $bindable(null), ...props }: TagsInputLabelProps = $props()
   const tagsInput = useTagsInputContext()
   const mergedProps = $derived(mergeProps(tagsInput().getLabelProps(), props))
 </script>

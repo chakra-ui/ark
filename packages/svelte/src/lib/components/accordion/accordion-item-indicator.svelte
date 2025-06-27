@@ -11,7 +11,7 @@
   import { useAccordionContext } from './use-accordion-context'
   import { useAccordionItemPropsContext } from './use-accordion-item-props-context'
 
-  let { ref = $bindable(), ...props }: AccordionItemIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: AccordionItemIndicatorProps = $props()
 
   const accordion = useAccordionContext()
   const itemProps = useAccordionItemPropsContext()

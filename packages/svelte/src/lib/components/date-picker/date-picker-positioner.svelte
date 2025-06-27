@@ -11,7 +11,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { usePresenceContext } from '../presence/index.js'
 
-  let { ref = $bindable(), ...props }: DatePickerPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerPositionerProps = $props()
 
   const datePicker = useDatePickerContext()
   const presence = usePresenceContext()

@@ -9,7 +9,7 @@
 
   export interface TimerActionTriggerProps extends HTMLProps<'button'>, TimerActionTriggerBaseProps {}
 
-  let { ref = $bindable(), ...props }: TimerActionTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: TimerActionTriggerProps = $props()
 
   const timer = useTimerContext()
   const mergedProps = $derived(mergeProps(timer().getActionTriggerProps(props), props))

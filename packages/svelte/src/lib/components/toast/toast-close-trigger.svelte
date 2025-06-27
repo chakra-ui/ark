@@ -8,7 +8,7 @@
 
   export interface ToastCloseTriggerProps extends Assign<HTMLProps<'button'>, ToastCloseTriggerBaseProps> {}
 
-  let { ref = $bindable(), ...props }: ToastCloseTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: ToastCloseTriggerProps = $props()
 
   const toast = useToastContext()
   const mergedProps = $derived(mergeProps(toast().getCloseTriggerProps(), props))

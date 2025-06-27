@@ -17,7 +17,7 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerViewProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerViewProps = $props()
   const [formatProps, localProps] = $derived(createSplitProps<FormatOptions>()(props, ['format']))
 
   const colorPicker = useColorPickerContext()

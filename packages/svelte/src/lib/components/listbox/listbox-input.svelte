@@ -12,7 +12,7 @@
   import { Ark } from '../factory/index.js'
   import { useListboxContext } from './use-listbox-context.js'
 
-  let { ref = $bindable(), ...props }: ListboxInputProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxInputProps = $props()
 
   const [inputProps, localProps] = $derived(createSplitProps<InputProps>()(props, ['autoHighlight']))
   const listbox = useListboxContext()

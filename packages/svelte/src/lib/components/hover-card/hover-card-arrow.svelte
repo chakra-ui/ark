@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useHoverCardContext } from './use-hover-card-context'
 
-  let { ref = $bindable(), ...props }: HoverCardArrowProps = $props()
+  let { ref = $bindable(null), ...props }: HoverCardArrowProps = $props()
 
   const hoverCard = useHoverCardContext()
   const mergedProps = $derived(mergeProps(hoverCard().getArrowProps(), props))

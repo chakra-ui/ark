@@ -13,7 +13,7 @@
   import { useComboboxContext } from './use-combobox-context'
   import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-context'
 
-  let { ref = $bindable(), ...props }: ComboboxItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxItemGroupProps = $props()
   const providedId = $props.id()
 
   const [itemGroupProps, localProps] = $derived(createSplitProps<Partial<ItemGroupProps>>()(props, ['id']))

@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTabsContext } from './use-tabs-context'
 
-  let { ref = $bindable(), ...props }: TabsIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: TabsIndicatorProps = $props()
   const tabs = useTabsContext()
   const mergedProps = $derived(mergeProps(tabs().getIndicatorProps(), props))
 </script>

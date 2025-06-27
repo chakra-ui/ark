@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useSliderContext } from './use-slider-context'
 
-  let { ref = $bindable(), ...props }: SliderMarkerProps = $props()
+  let { ref = $bindable(null), ...props }: SliderMarkerProps = $props()
   const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getMarkerProps(markerProps), localProps))

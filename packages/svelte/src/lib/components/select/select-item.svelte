@@ -19,7 +19,7 @@
   import { SelectItemProvider } from './use-select-item-context'
   import { SelectItemPropsProvider } from './use-select-item-props-context'
 
-  let { ref = $bindable(), ...props }: SelectItemProps<T> = $props()
+  let { ref = $bindable(null), ...props }: SelectItemProps<T> = $props()
 
   const select = useSelectContext()
   const itemProps = $derived({ item: props.item, disabled: props.disabled })

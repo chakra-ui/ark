@@ -11,7 +11,7 @@
   import { useComboboxContext } from './use-combobox-context'
   import { useComboboxItemPropsContext } from './use-combobox-item-props-context'
 
-  let { ref = $bindable(), ...props }: ComboboxItemTextProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxItemTextProps = $props()
 
   const combobox = useComboboxContext()
   const itemProps = useComboboxItemPropsContext()

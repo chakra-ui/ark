@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFileUploadContext } from './use-file-upload-context'
 
-  let { ref = $bindable(), ...props }: FileUploadItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadItemGroupProps = $props()
   const fileUpload = useFileUploadContext()
   const mergedProps = $derived(mergeProps(fileUpload().getItemGroupProps(), props))
 </script>

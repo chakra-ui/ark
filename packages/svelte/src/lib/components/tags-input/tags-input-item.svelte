@@ -16,7 +16,7 @@
   import { TagsInputItemProvider } from './use-tags-input-item-context'
   import { TagsInputItemPropsProvider } from './use-tags-input-item-props-context'
 
-  let { ref = $bindable(), ...props }: TagsInputItemProps = $props()
+  let { ref = $bindable(null), ...props }: TagsInputItemProps = $props()
   const tagsInput = useTagsInputContext()
   const itemProps = $derived({ index: props.index, value: props.value, disabled: props.disabled })
   const mergedProps = $derived(mergeProps(tagsInput().getItemProps(itemProps), props))

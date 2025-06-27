@@ -18,7 +18,7 @@
   import { PinInputProvider } from './use-pin-input-context'
   import { Ark } from '../factory'
 
-  let { ref = $bindable(), value, ...props }: PinInputRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: PinInputRootProviderProps = $props()
 
   PinInputProvider(value)
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))

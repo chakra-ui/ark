@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { SwitchProvider } from './use-switch-context'
 
-  let { ref = $bindable(), value, ...props }: SwitchRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: SwitchRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

@@ -15,7 +15,7 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerPresetTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerPresetTriggerProps = $props()
 
   const [presetTriggerProps, localProps] = $derived(createSplitProps<PresetTriggerProps>()(props, ['value']))
   const datePicker = useDatePickerContext()

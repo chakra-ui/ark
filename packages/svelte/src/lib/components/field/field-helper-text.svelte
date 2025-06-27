@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let { ref = $bindable(), ...props }: FieldHelperTextProps = $props()
+  let { ref = $bindable(null), ...props }: FieldHelperTextProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getHelperTextProps() ?? {}, props))
 </script>

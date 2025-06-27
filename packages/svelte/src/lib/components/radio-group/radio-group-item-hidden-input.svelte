@@ -12,7 +12,7 @@
   import { useRadioGroupContext } from './use-radio-group-context'
   import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
 
-  let { ref = $bindable(), ...props }: RadioGroupItemHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: RadioGroupItemHiddenInputProps = $props()
 
   const radioGroup = useRadioGroupContext()
   const itemProps = useRadioGroupItemPropsContext()

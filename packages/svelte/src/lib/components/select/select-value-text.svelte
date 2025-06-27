@@ -12,7 +12,7 @@
   import { Ark } from '$lib/components/factory'
   import { useSelectContext } from './use-select-context'
 
-  let { ref = $bindable(), ...props }: SelectValueTextProps = $props()
+  let { ref = $bindable(null), ...props }: SelectValueTextProps = $props()
   const select = useSelectContext()
   const mergedProps = $derived(mergeProps(select().getValueTextProps(), props))
 </script>

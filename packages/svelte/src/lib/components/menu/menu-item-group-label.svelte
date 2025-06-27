@@ -11,7 +11,7 @@
   import { useMenuContext } from './use-menu-context'
   import { useMenuItemGroupContext } from './use-menu-item-group-context'
 
-  let { ref = $bindable(), ...props }: MenuItemGroupLabelProps = $props()
+  let { ref = $bindable(null), ...props }: MenuItemGroupLabelProps = $props()
 
   const menu = useMenuContext()
   const itemGroup = useMenuItemGroupContext()

@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { usePaginationContext } from './use-pagination-context'
 
-  let { ref = $bindable(), ...props }: PaginationNextTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PaginationNextTriggerProps = $props()
   const pagination = usePaginationContext()
   const mergedProps = $derived(mergeProps(pagination().getNextTriggerProps(), props))
 </script>

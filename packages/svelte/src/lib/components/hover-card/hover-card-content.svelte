@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useHoverCardContext } from './use-hover-card-context'
 
-  let { ref = $bindable(), ...props }: HoverCardContentProps = $props()
+  let { ref = $bindable(null), ...props }: HoverCardContentProps = $props()
 
   const hoverCard = useHoverCardContext()
   const presence = usePresenceContext()

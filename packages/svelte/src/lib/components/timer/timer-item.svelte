@@ -9,7 +9,7 @@
   export interface TimerItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerItemProps extends HTMLProps<'div'>, TimerItemBaseProps {}
 
-  let { ref = $bindable(), ...props }: TimerItemProps = $props()
+  let { ref = $bindable(null), ...props }: TimerItemProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['type']))
 
   const timer = useTimerContext()

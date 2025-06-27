@@ -16,7 +16,7 @@
   import { PinInputProvider } from './use-pin-input-context'
   import { usePinInput } from './use-pin-input.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: PinInputRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: PinInputRootProps = $props()
   const providedId = $props.id()
 
   const [usePinInputProps, localProps] = $derived(

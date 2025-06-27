@@ -11,7 +11,7 @@
   import { useStepsContext } from './use-steps-context'
   import { useStepsItemPropsContext } from './use-steps-item-props-context'
 
-  let { ref = $bindable(), ...props }: StepsIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: StepsIndicatorProps = $props()
 
   const steps = useStepsContext()
   const itemProps = useStepsItemPropsContext()

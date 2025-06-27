@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useMenuContext } from './use-menu-context'
 
-  let { ref = $bindable(), ...props }: MenuContentProps = $props()
+  let { ref = $bindable(null), ...props }: MenuContentProps = $props()
 
   const menu = useMenuContext()
   const presence = usePresenceContext()

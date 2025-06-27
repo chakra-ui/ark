@@ -17,7 +17,7 @@
   import { Ark } from '../factory'
   import { useToggleContext } from './use-toggle-context'
 
-  let { ref = $bindable(), children, fallback, ...props }: ToggleIndicatorProps = $props()
+  let { ref = $bindable(null), children, fallback, ...props }: ToggleIndicatorProps = $props()
 
   const toggle = useToggleContext()
   const mergedProps = $derived(mergeProps(toggle().getIndicatorProps(), props))

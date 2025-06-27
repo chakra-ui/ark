@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { usePinInputContext } from './use-pin-input-context'
 
-  let { ref = $bindable(), ...props }: PinInputInputProps = $props()
+  let { ref = $bindable(null), ...props }: PinInputInputProps = $props()
   const pinInput = usePinInputContext()
 
   const [inputProps, localProps] = $derived(createSplitProps<InputProps>()(props, ['index']))

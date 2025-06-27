@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  let { ref = $bindable(), children, ...props }: NumberInputValueTextProps = $props()
+  let { ref = $bindable(null), children, ...props }: NumberInputValueTextProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getValueTextProps(), props))

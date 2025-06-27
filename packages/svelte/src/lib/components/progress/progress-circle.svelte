@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useProgressContext } from './use-progress-context'
 
-  let { ref = $bindable(), ...props }: ProgressCircleProps = $props()
+  let { ref = $bindable(null), ...props }: ProgressCircleProps = $props()
   const progress = useProgressContext()
   const mergedProps = $derived(mergeProps(progress().getCircleProps(), props))
 </script>

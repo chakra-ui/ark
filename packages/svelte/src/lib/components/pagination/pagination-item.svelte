@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { usePaginationContext } from './use-pagination-context'
 
-  let { ref = $bindable(), ...props }: PaginationItemProps = $props()
+  let { ref = $bindable(null), ...props }: PaginationItemProps = $props()
   const pagination = usePaginationContext()
   const mergedProps = $derived(mergeProps(pagination().getItemProps(props), props))
 </script>

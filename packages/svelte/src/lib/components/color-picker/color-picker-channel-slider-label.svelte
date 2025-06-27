@@ -12,7 +12,7 @@
   import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerChannelSliderLabelProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerChannelSliderLabelProps = $props()
 
   const colorPicker = useColorPickerContext()
   const channelProps = useColorPickerChannelPropsContext()

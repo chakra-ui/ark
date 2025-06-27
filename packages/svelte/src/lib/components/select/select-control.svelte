@@ -10,7 +10,7 @@
   import { Ark } from '$lib/components/factory'
   import { useSelectContext } from './use-select-context'
 
-  let { ref = $bindable(), ...props }: SelectControlProps = $props()
+  let { ref = $bindable(null), ...props }: SelectControlProps = $props()
   const select = useSelectContext()
   const mergedProps = $derived(mergeProps(select().getControlProps(), props))
 </script>

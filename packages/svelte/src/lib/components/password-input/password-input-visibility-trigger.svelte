@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { usePasswordInputContext } from './use-password-input-context'
 
-  let { ref = $bindable(), ...props }: PasswordInputVisibilityTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PasswordInputVisibilityTriggerProps = $props()
   const passwordInput = usePasswordInputContext()
   const mergedProps = $derived(mergeProps(passwordInput().getVisibilityTriggerProps(), props))
 </script>

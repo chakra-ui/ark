@@ -4,7 +4,10 @@
 
   type OptionalUseMenuItemGroupContext = Optional<ReturnType<UseMenuItemGroupContext>, 'id'>
 
-  export interface MenuRadioItemGroupBaseProps extends OptionalUseMenuItemGroupContext, PolymorphicProps<'div'>, RefAttribute {}
+  export interface MenuRadioItemGroupBaseProps
+    extends OptionalUseMenuItemGroupContext,
+      PolymorphicProps<'div'>,
+      RefAttribute {}
   export interface MenuRadioItemGroupProps extends Assign<HTMLProps<'div'>, MenuRadioItemGroupBaseProps> {}
 </script>
 
@@ -15,7 +18,7 @@
   import { useMenuContext } from './use-menu-context'
   import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
-  let { ref = $bindable(), ...props }: MenuRadioItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: MenuRadioItemGroupProps = $props()
   const id = $props.id()
 
   const [optionalItemGroupProps, localProps] = $derived(

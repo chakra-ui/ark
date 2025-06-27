@@ -13,7 +13,7 @@
   import { splitNumberInputProps } from './split-number-input-props.svelte'
   import { useNumberInput } from './use-number-input.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: NumberInputRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: NumberInputRootProps = $props()
   const providedId = $props.id()
 
   const [useNumberInputProps, localProps] = $derived(splitNumberInputProps(props))

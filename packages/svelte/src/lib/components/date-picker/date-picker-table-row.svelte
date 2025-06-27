@@ -11,7 +11,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { useDatePickerTablePropsContext } from './use-date-picker-table-props-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerTableRowProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerTableRowProps = $props()
 
   const datePicker = useDatePickerContext()
   const tableProps = useDatePickerTablePropsContext()

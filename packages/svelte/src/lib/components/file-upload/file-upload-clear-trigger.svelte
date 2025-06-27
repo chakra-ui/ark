@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFileUploadContext } from './use-file-upload-context'
 
-  let { ref = $bindable(), ...props }: FileUploadClearTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadClearTriggerProps = $props()
   const fileUpload = useFileUploadContext()
   const mergedProps = $derived(mergeProps(fileUpload().getClearTriggerProps(), props))
 </script>

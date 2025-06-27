@@ -9,7 +9,7 @@
   import { Ark } from '../factory'
   import { useClipboardContext } from './use-clipboard-context'
 
-  let { ref = $bindable(), children, ...props }: ClipboardValueTextProps = $props()
+  let { ref = $bindable(null), children, ...props }: ClipboardValueTextProps = $props()
 
   const clipboard = useClipboardContext()
 </script>

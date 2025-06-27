@@ -22,7 +22,7 @@
   export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}
 
   const id = $props.id()
-  let { ref = $bindable(), toaster, children, ...otherProps }: ToasterProps = $props()
+  let { ref = $bindable(null), toaster, children, ...otherProps }: ToasterProps = $props()
 
   const locale = useLocaleContext()
   const env = useEnvironmentContext()

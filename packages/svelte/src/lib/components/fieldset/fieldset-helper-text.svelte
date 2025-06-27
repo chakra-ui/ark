@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFieldsetContext } from './use-fieldset-context'
 
-  let { ref = $bindable(), ...props }: FieldsetHelperTextProps = $props()
+  let { ref = $bindable(null), ...props }: FieldsetHelperTextProps = $props()
   const fieldset = useFieldsetContext()
   const mergedProps = $derived(mergeProps(fieldset?.().getHelperTextProps(), props))
 </script>

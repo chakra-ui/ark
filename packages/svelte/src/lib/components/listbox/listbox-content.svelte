@@ -10,7 +10,7 @@
   import { Ark } from '../factory/index.js'
   import { useListboxContext } from './use-listbox-context.js'
 
-  let { ref = $bindable(), ...props }: ListboxContentProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxContentProps = $props()
 
   const listbox = useListboxContext()
   const mergedProps = $derived(mergeProps(listbox().getContentProps(), props))

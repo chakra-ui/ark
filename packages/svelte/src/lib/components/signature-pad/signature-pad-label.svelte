@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useSignaturePadContext } from './use-signature-pad-context'
 
-  let { ref = $bindable(), ...props }: SignaturePadLabelProps = $props()
+  let { ref = $bindable(null), ...props }: SignaturePadLabelProps = $props()
 
   const signaturePad = useSignaturePadContext()
   const mergedProps = $derived(mergeProps(signaturePad().getLabelProps(), props))

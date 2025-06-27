@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { useProgressContext } from './use-progress-context'
 
-  let { ref = $bindable(), ...props }: ProgressViewProps = $props()
+  let { ref = $bindable(null), ...props }: ProgressViewProps = $props()
   const progress = useProgressContext()
   const mergedProps = $derived(mergeProps(progress().getViewProps(props), props))
 </script>

@@ -7,7 +7,7 @@
   export interface ToastRootBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ToastRootProps extends Assign<HTMLProps<'div'>, ToastRootBaseProps> {}
 
-  let { ref = $bindable(), ...props }: ToastRootProps = $props()
+  let { ref = $bindable(null), ...props }: ToastRootProps = $props()
 
   const toast = useToastContext()
   const mergedProps = $derived(mergeProps(toast().getRootProps(), props))

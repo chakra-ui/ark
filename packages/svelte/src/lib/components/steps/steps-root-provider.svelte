@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { StepsProvider } from './use-steps-context'
 
-  let { ref = $bindable(), value, ...props }: StepsRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: StepsRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

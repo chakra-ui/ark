@@ -16,7 +16,7 @@
   import { parts } from './segment-group.anatomy'
   import { SegmentGroupProvider } from './use-segment-group-context'
 
-  let { ref = $bindable(), value, ...props }: SegmentGroupRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: SegmentGroupRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), parts.root.attrs, props))
 

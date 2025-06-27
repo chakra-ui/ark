@@ -16,7 +16,7 @@
   import { MenuItemProvider } from './use-menu-item-context'
   import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
-  let { ref = $bindable(), checked = $bindable<boolean>(), ...props }: MenuCheckboxItemProps = $props()
+  let { ref = $bindable(null), checked = $bindable<boolean>(), ...props }: MenuCheckboxItemProps = $props()
 
   const [partialOptionItemProps, localProps] = $derived(
     // @ts-expect-error - TODO: fix this

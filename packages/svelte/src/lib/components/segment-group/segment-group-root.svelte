@@ -19,7 +19,7 @@
   import { useSegmentGroup } from './use-segment-group.svelte'
   import { SegmentGroupProvider } from './use-segment-group-context'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: SegmentGroupRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: SegmentGroupRootProps = $props()
   const providedId = $props.id()
 
   const [segmentGroupProps, localProps] = $derived(splitSegmentGroupProps(props))

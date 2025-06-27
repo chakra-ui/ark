@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { ClipboardProvider } from './use-clipboard-context'
 
-  let { ref = $bindable(), value, ...props }: ClipboardRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: ClipboardRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  let { ref = $bindable(), ...props }: NumberInputDecrementTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: NumberInputDecrementTriggerProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getDecrementTriggerProps(), props))

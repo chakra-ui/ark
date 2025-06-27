@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useDialogContext } from './use-dialog-context'
 
-  let { ref = $bindable(), ...props }: DialogTitleProps = $props()
+  let { ref = $bindable(null), ...props }: DialogTitleProps = $props()
 
   const dialog = useDialogContext()
   const mergedProps = $derived(mergeProps(dialog().getTitleProps(), props))

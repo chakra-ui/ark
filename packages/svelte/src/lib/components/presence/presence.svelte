@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { splitPresenceProps } from './split-presence-props.svelte'
 
-  let { ref = $bindable(), ...props }: PresenceProps = $props()
+  let { ref = $bindable(null), ...props }: PresenceProps = $props()
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
   const presence = usePresence(() => presenceProps)

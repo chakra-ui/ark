@@ -10,7 +10,7 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
 
-  let { ref = $bindable(), ...props }: AvatarFallbackProps = $props()
+  let { ref = $bindable(null), ...props }: AvatarFallbackProps = $props()
 
   const avatar = useAvatarContext()
   const mergedProps = $derived(mergeProps(avatar().getFallbackProps(), props))

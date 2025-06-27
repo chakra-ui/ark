@@ -13,7 +13,7 @@
   import { PaginationProvider } from './use-pagination-context'
   import { usePagination } from './use-pagination.svelte'
 
-  let { ref = $bindable(), page = $bindable(), pageSize = $bindable(), ...props }: PaginationRootProps = $props()
+  let { ref = $bindable(null), page = $bindable(), pageSize = $bindable(), ...props }: PaginationRootProps = $props()
   const providedId = $props.id()
 
   const [paginationProps, localProps] = $derived(

@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useEditableContext } from './use-editable-context'
 
-  let { ref = $bindable(), ...props }: EditableAreaProps = $props()
+  let { ref = $bindable(null), ...props }: EditableAreaProps = $props()
 
   const editable = useEditableContext()
   const mergedProps = $derived(mergeProps(editable().getAreaProps(), props))

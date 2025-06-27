@@ -15,7 +15,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerValueSwatchProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerValueSwatchProps = $props()
 
   const [valueSwatchProps, localProps] = $derived(createSplitProps<ValueSwatchProps>()(props, ['respectAlpha']))
 

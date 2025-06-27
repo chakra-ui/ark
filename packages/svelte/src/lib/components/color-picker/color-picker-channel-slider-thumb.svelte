@@ -13,7 +13,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerChannelSliderThumbProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerChannelSliderThumbProps = $props()
 
   const colorPicker = useColorPickerContext()
 

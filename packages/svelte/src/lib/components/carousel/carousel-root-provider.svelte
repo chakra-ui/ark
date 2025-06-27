@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { CarouselProvider } from './use-carousel-context'
 
-  let { ref = $bindable(), value, ...props }: CarouselRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: CarouselRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   CarouselProvider(value)

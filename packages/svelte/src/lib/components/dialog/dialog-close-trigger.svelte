@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useDialogContext } from './use-dialog-context'
 
-  let { ref = $bindable(), ...props }: DialogCloseTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DialogCloseTriggerProps = $props()
 
   const dialog = useDialogContext()
   const mergedProps = $derived(mergeProps(dialog().getCloseTriggerProps(), props))

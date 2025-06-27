@@ -16,7 +16,7 @@
   import { Ark } from '../factory/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let { ref = $bindable(), ...props }: FloatingPanelResizeTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FloatingPanelResizeTriggerProps = $props()
   const [resizeProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['axis'])
 
   const floatingPanel = useFloatingPanelContext()

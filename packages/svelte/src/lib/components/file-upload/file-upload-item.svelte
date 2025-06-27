@@ -13,7 +13,7 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-  let { ref = $bindable(), ...props }: FileUploadItemProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadItemProps = $props()
   const fileUpload = useFileUploadContext()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['file']))

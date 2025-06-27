@@ -11,7 +11,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useFieldContext } from '../field'
 
-  let { ref = $bindable(), ...props }: ColorPickerHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerHiddenInputProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getHiddenInputProps(), props))

@@ -13,7 +13,7 @@
   import { SplitterProvider } from './use-splitter-context'
   import { useSplitter } from './use-splitter.svelte'
 
-  let { ref = $bindable(), size = $bindable<number[]>(), ...props }: SplitterRootProps = $props()
+  let { ref = $bindable(null), size = $bindable<number[]>(), ...props }: SplitterRootProps = $props()
 
   const [useSplitterProps, localProps] = $derived(splitSplitterProps(props))
 

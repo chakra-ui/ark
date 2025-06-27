@@ -23,7 +23,7 @@
   import { Ark } from '../factory'
   import { TreeViewProvider } from './use-tree-view-context'
 
-  let { ref = $bindable(), value, ...props }: TreeViewRootProviderProps<T> = $props()
+  let { ref = $bindable(null), value, ...props }: TreeViewRootProviderProps<T> = $props()
 
   const [renderStrategyProps, treeViewProps] = $derived(splitRenderStrategyProps(props))
   const mergedProps = $derived(mergeProps(value().getRootProps(), treeViewProps))

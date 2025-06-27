@@ -13,7 +13,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { DatePickerViewPropsProvider } from './use-date-picker-view-props-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerViewProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerViewProps = $props()
 
   const [viewProps, localProps] = $derived(createSplitProps<ViewProps>()(props, ['view']))
   const datePicker = useDatePickerContext()

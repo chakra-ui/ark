@@ -13,7 +13,7 @@
   import { useRatingGroup } from './use-rating-group.svelte'
   import { RatingGroupProvider } from './use-rating-group-context'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: RatingGroupRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: RatingGroupRootProps = $props()
   const providedId = $props.id()
 
   const [ratingGroupProps, localProps] = $derived(splitRatingGroupProps(props))

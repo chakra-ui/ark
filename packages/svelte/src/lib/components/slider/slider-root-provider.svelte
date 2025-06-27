@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { SliderProvider } from './use-slider-context'
 
-  let { ref = $bindable(), value: slider, ...localProps }: SliderRootProviderProps = $props()
+  let { ref = $bindable(null), value: slider, ...localProps }: SliderRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(slider().getRootProps(), localProps))
 
   SliderProvider(slider)

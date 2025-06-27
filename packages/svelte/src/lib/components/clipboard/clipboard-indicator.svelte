@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { useClipboardContext } from './use-clipboard-context'
 
-  let { ref = $bindable(), children, copied, ...localProps }: ClipboardIndicatorProps = $props()
+  let { ref = $bindable(null), children, copied, ...localProps }: ClipboardIndicatorProps = $props()
 
   const clipboard = useClipboardContext()
   const mergedProps = $derived(mergeProps(clipboard().getIndicatorProps({ copied: clipboard().copied }), localProps))

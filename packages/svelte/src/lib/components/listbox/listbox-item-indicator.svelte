@@ -11,7 +11,7 @@
   import { useListboxContext } from './use-listbox-context.js'
   import { useListboxItemPropsContext } from './use-listbox-item-props-context.js'
 
-  let { ref = $bindable(), ...props }: ListboxItemIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxItemIndicatorProps = $props()
 
   const listbox = useListboxContext()
   const itemProps = useListboxItemPropsContext()

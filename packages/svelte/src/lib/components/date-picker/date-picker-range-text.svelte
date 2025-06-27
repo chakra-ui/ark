@@ -11,7 +11,7 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerRangeTextProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerRangeTextProps = $props()
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getRangeTextProps(), props))

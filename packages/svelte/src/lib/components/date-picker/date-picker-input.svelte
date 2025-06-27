@@ -12,7 +12,7 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerInputProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerInputProps = $props()
 
   const [inputProps, localProps] = $derived(createSplitProps<InputProps>()(props, ['index', 'fixOnBlur']))
   const datePicker = useDatePickerContext()

@@ -12,7 +12,7 @@
   import { useTourContext } from './use-tour-context'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
 
-  let { ref = $bindable(), ...props }: TourBackdropProps = $props()
+  let { ref = $bindable(null), ...props }: TourBackdropProps = $props()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
   const tour = useTourContext()

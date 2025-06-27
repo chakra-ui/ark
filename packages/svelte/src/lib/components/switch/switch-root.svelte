@@ -13,7 +13,7 @@
   import { useSwitch } from './use-switch.svelte'
   import { SwitchProvider } from './use-switch-context'
 
-  let { ref = $bindable(), checked = $bindable(), ...props }: SwitchRootProps = $props()
+  let { ref = $bindable(null), checked = $bindable(), ...props }: SwitchRootProps = $props()
   const providedId = $props.id()
 
   const [useSwitchProps, localProps] = $derived(

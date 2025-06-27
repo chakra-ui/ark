@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  let { ref = $bindable(), ...props }: StepsPrevTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: StepsPrevTriggerProps = $props()
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getPrevTriggerProps(), props))

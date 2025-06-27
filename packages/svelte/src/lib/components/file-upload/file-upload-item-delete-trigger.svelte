@@ -12,7 +12,7 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-  let { ref = $bindable(), ...props }: FileUploadItemDeleteTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadItemDeleteTriggerProps = $props()
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
   const mergedProps = $derived(mergeProps(fileUpload().getItemDeleteTriggerProps(itemProps()), props))

@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { ToggleGroupProvider } from './use-toggle-group-context'
 
-  let { ref = $bindable(), value, ...props }: ToggleGroupRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: ToggleGroupRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

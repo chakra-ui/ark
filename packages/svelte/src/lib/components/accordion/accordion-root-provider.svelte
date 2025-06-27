@@ -18,7 +18,7 @@
   import { Ark } from '../factory'
   import { AccordionProvider } from './use-accordion-context'
 
-  let { ref = $bindable(), value, ...props }: AccordionRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: AccordionRootProviderProps = $props()
 
   const [renderStrategyProps, localProps] = $derived(splitRenderStrategyProps(props))
   const mergedProps = $derived(mergeProps(value().getRootProps(), localProps))

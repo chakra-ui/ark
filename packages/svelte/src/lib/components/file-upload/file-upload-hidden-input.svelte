@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFileUploadContext } from './use-file-upload-context'
 
-  let { ref = $bindable(), ...props }: FileUploadHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadHiddenInputProps = $props()
   const fileUpload = useFileUploadContext()
   const mergedProps = $derived(mergeProps(fileUpload().getHiddenInputProps(), props))
 </script>

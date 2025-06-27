@@ -15,7 +15,7 @@
   import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  let { ref = $bindable(), ...props }: SegmentGroupItemProps = $props()
+  let { ref = $bindable(null), ...props }: SegmentGroupItemProps = $props()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid']))
 

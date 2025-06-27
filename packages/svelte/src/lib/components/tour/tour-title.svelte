@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTourContext } from './use-tour-context'
 
-  let { ref = $bindable(), ...props }: TourTitleProps = $props()
+  let { ref = $bindable(null), ...props }: TourTitleProps = $props()
 
   const tour = useTourContext()
 

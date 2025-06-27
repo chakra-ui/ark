@@ -13,7 +13,7 @@
   import { useDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.js'
   import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
 
-  let { ref = $bindable(), ...props }: DatePickerTableCellTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerTableCellTriggerProps = $props()
 
   const datePicker = useDatePickerContext()
   const cellProps = useDatePickerTableCellPropsContext()

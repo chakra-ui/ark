@@ -12,7 +12,7 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
   import type { HiddenInputProps } from '@zag-js/signature-pad'
 
-  let { ref = $bindable(), ...props }: SignaturePadHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: SignaturePadHiddenInputProps = $props()
   const [hiddenInputProps, localProps] = createSplitProps<HiddenInputProps>()(props, ['value'])
 
   const signaturePad = useSignaturePadContext()

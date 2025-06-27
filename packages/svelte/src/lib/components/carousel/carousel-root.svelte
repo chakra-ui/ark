@@ -13,7 +13,7 @@
   import { CarouselProvider } from './use-carousel-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
-  let { ref = $bindable(), page = $bindable(), ...props }: CarouselRootProps = $props()
+  let { ref = $bindable(null), page = $bindable(), ...props }: CarouselRootProps = $props()
   const providedId = $props.id()
 
   const [useCarouselProps, localProps] = $derived(

@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  let { ref = $bindable(), ...props }: CarouselIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: CarouselIndicatorProps = $props()
   const [indicatorProps, localProps] = $derived(createSplitProps<IndicatorProps>()(props, ['index', 'readOnly']))
 
   const carousel = useCarouselContext()

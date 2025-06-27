@@ -19,7 +19,7 @@
   import { useTreeViewContext } from './use-tree-view-context'
   import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'
 
-  let { ref = $bindable(), ...props }: TreeViewBranchContentProps = $props()
+  let { ref = $bindable(null), ...props }: TreeViewBranchContentProps = $props()
 
   const treeView = useTreeViewContext()
   const nodeProps = useTreeViewNodePropsContext()

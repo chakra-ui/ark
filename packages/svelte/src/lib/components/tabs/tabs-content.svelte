@@ -14,7 +14,7 @@
   import { PresenceProvider, usePresence, type UsePresenceProps } from '../presence'
   import { useTabsContext } from './use-tabs-context'
 
-  let { ref = $bindable(), ...props }: TabsContentProps = $props()
+  let { ref = $bindable(null), ...props }: TabsContentProps = $props()
   const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
 
   const tabs = useTabsContext()

@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useTabsContext } from './use-tabs-context'
 
-  let { ref = $bindable(), ...props }: TabsTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: TabsTriggerProps = $props()
   const [triggerProps, localProps] = createSplitProps<TriggerProps>()(props, ['value', 'disabled'])
   const tabs = useTabsContext()
   const mergedProps = $derived(mergeProps(tabs().getTriggerProps(triggerProps), localProps))

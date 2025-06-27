@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useSplitterContext } from './use-splitter-context'
 
-  let { ref = $bindable(), ...props }: SplitterPanelProps = $props()
+  let { ref = $bindable(null), ...props }: SplitterPanelProps = $props()
 
   const [splitterPanelProps, localProps] = $derived(createSplitProps<PanelProps>()(props, ['id']))
 

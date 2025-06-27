@@ -11,7 +11,7 @@
   import { useMenuContext } from './use-menu-context'
   import { useMenuItemPropsContext } from './use-menu-option-item-props-context'
 
-  let { ref = $bindable(), ...props }: MenuItemTextProps = $props()
+  let { ref = $bindable(null), ...props }: MenuItemTextProps = $props()
 
   const menu = useMenuContext()
   const itemProps = useMenuItemPropsContext()

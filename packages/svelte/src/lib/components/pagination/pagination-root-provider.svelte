@@ -17,7 +17,7 @@
   import { Ark } from '../factory'
   import { PaginationProvider } from './use-pagination-context'
 
-  let { ref = $bindable(), value, ...props }: PaginationRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: PaginationRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

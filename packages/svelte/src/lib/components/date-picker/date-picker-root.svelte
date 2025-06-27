@@ -20,7 +20,7 @@
   import { DatePickerProvider } from './use-date-picker-context.js'
 
   let {
-    ref = $bindable(),
+    ref = $bindable(null),
     value = $bindable(),
     focusedValue = $bindable(),
     open = $bindable(),

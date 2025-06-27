@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { FileUploadProvider } from './use-file-upload-context'
 
-  let { ref = $bindable(), value, ...props }: FileUploadRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: FileUploadRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 
   FileUploadProvider(value)

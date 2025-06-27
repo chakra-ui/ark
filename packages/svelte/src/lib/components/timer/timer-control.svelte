@@ -7,7 +7,7 @@
   export interface TimerControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerControlProps extends HTMLProps<'div'>, TimerControlBaseProps {}
 
-  let { ref = $bindable(), ...props }: TimerControlProps = $props()
+  let { ref = $bindable(null), ...props }: TimerControlProps = $props()
   const timer = useTimerContext()
   const mergedProps = $derived(mergeProps(timer().getControlProps(), props))
 </script>

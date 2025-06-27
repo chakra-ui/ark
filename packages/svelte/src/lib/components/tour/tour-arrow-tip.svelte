@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTourContext } from './use-tour-context'
 
-  let { ref = $bindable(), ...props }: TourArrowTipProps = $props()
+  let { ref = $bindable(null), ...props }: TourArrowTipProps = $props()
 
   const tour = useTourContext()
   const mergedProps = $derived(mergeProps(tour().getArrowTipProps(), props))

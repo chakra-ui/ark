@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useMenuContext } from './use-menu-context'
 
-  let { ref = $bindable(), ...props }: MenuSeparatorProps = $props()
+  let { ref = $bindable(null), ...props }: MenuSeparatorProps = $props()
 
   const menu = useMenuContext()
   const mergedProps = $derived(mergeProps(menu().getSeparatorProps(), props))

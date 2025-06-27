@@ -16,7 +16,7 @@
 
   export interface DownloadTriggerProps extends Assign<HTMLProps<'button'>, DownloadTriggerBaseProps> {}
 
-  let { ref = $bindable(), fileName, data, mimeType, onclick, ...restProps }: DownloadTriggerProps = $props()
+  let { ref = $bindable(null), fileName, data, mimeType, onclick, ...restProps }: DownloadTriggerProps = $props()
 
   const download = (fileData: DownloadableData, win: Window & typeof globalThis) => {
     downloadFile({ file: fileData, name: fileName, type: mimeType, win })

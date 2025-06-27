@@ -13,7 +13,7 @@
   import { useSteps } from './use-steps.svelte'
   import { StepsProvider } from './use-steps-context'
 
-  let { ref = $bindable(), step = $bindable(), ...props }: StepsRootProps = $props()
+  let { ref = $bindable(null), step = $bindable(), ...props }: StepsRootProps = $props()
   const providedId = $props.id()
 
   const [useStepsProps, localProps] = $derived(

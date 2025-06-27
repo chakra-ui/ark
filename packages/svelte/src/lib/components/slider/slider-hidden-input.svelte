@@ -11,7 +11,7 @@
   import { useSliderContext } from './use-slider-context'
   import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
-  let { ref = $bindable(), ...props }: SliderHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: SliderHiddenInputProps = $props()
   const slider = useSliderContext()
   const thumbProps = useSliderThumbPropsContext()
   const mergedProps = $derived(mergeProps(slider().getHiddenInputProps(thumbProps), props))

@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useRatingGroupContext } from './use-rating-group-context'
 
-  let { ref = $bindable(), ...props }: RatingGroupHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: RatingGroupHiddenInputProps = $props()
   const ratingGroup = useRatingGroupContext()
   const mergedProps = $derived(mergeProps(ratingGroup().getHiddenInputProps(), props))
 </script>

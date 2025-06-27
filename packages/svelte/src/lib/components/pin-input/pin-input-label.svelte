@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { usePinInputContext } from './use-pin-input-context'
 
-  let { ref = $bindable(), ...props }: PinInputLabelProps = $props()
+  let { ref = $bindable(null), ...props }: PinInputLabelProps = $props()
   const pinInput = usePinInputContext()
   const mergedProps = $derived(mergeProps(pinInput().getLabelProps(), props))
 </script>

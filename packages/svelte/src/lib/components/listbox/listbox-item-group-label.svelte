@@ -11,7 +11,7 @@
   import { useListboxContext } from './use-listbox-context.js'
   import { useListboxItemGroupPropsContext } from './use-listbox-item-group-props.js'
 
-  let { ref = $bindable(), ...props }: ListboxItemGroupLabelProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxItemGroupLabelProps = $props()
 
   const listbox = useListboxContext()
   const groupProps = useListboxItemGroupPropsContext()

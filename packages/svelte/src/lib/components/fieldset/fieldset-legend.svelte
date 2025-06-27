@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFieldsetContext } from './use-fieldset-context'
 
-  let { ref = $bindable(), ...props }: FieldsetLegendProps = $props()
+  let { ref = $bindable(null), ...props }: FieldsetLegendProps = $props()
   const fieldset = useFieldsetContext()
   const mergedProps = $derived(mergeProps(fieldset?.().getLegendProps(), props))
 </script>

@@ -10,7 +10,7 @@
   export interface TimerRootBaseProps extends Optional<UseTimerProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerRootProps extends Assign<HTMLProps<'div'>, TimerRootBaseProps> {}
 
-  let { ref = $bindable(), ...props }: TimerRootProps = $props()
+  let { ref = $bindable(null), ...props }: TimerRootProps = $props()
   const providedId = $props.id()
 
   const [useTimerProps, localProps] = $derived(

@@ -25,7 +25,7 @@
     type RenderStrategyProps,
   } from '$lib/utils/render-strategy'
 
-  let { ref = $bindable(), ...props }: TabsRootProviderProps = $props()
+  let { ref = $bindable(null), ...props }: TabsRootProviderProps = $props()
 
   const [renderStrategyProps, tabsProps] = $derived(splitRenderStrategyProps(props))
   const [rootProviderProps, localProps] = $derived(createSplitProps<RootProviderProps>()(tabsProps, ['value']))

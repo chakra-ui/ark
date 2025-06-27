@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  let { ref = $bindable(), ...props }: StepsProgressProps = $props()
+  let { ref = $bindable(null), ...props }: StepsProgressProps = $props()
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getProgressProps(), props))

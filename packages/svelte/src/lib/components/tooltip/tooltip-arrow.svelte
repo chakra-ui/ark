@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTooltipContext } from './use-tooltip-context'
 
-  let { ref = $bindable(), ...props }: TooltipArrowProps = $props()
+  let { ref = $bindable(null), ...props }: TooltipArrowProps = $props()
   const tooltip = useTooltipContext()
   const mergedProps = $derived(mergeProps(tooltip().getArrowProps(), props))
 </script>

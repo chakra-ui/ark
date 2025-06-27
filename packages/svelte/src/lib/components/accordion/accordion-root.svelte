@@ -22,7 +22,7 @@
   import { AccordionProvider } from './use-accordion-context'
   import { useAccordion } from './use-accordion.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: AccordionRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: AccordionRootProps = $props()
   const providedId = $props.id()
 
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)

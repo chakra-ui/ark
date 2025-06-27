@@ -13,7 +13,7 @@
   import { useSelectContext } from './use-select-context'
   import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
 
-  let { ref = $bindable(), ...props }: SelectItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: SelectItemGroupProps = $props()
   const providedId = $props.id()
 
   const groupProps = $derived({ id: props.id ?? providedId })

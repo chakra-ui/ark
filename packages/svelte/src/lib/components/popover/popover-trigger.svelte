@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { usePopoverContext } from './use-popover-context'
 
-  let { ref = $bindable(), ...props }: PopoverTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PopoverTriggerProps = $props()
 
   const popover = usePopoverContext()
   const presence = usePresenceContext()

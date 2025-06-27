@@ -11,7 +11,7 @@
   import { Ark } from '../factory'
   import { usePaginationContext } from './use-pagination-context'
 
-  let { ref = $bindable(), ...props }: PaginationEllipsisProps = $props()
+  let { ref = $bindable(null), ...props }: PaginationEllipsisProps = $props()
   const pagination = usePaginationContext()
   const mergedProps = $derived(mergeProps(pagination().getEllipsisProps(props), props))
 </script>

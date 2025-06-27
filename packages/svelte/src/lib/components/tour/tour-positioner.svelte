@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useTourContext } from './use-tour-context'
 
-  let { ref = $bindable(), ...props }: TourPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: TourPositionerProps = $props()
 
   const tour = useTourContext()
   const presence = usePresenceContext()

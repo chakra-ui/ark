@@ -7,7 +7,7 @@
   export interface TimerAreaBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerAreaProps extends HTMLProps<'div'>, TimerAreaBaseProps {}
 
-  let { ref = $bindable(), ...props }: TimerAreaProps = $props()
+  let { ref = $bindable(null), ...props }: TimerAreaProps = $props()
   const timer = useTimerContext()
   const mergedProps = $derived(mergeProps(timer().getAreaProps(), props))
 </script>

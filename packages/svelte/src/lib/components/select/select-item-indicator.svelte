@@ -11,7 +11,7 @@
   import { useSelectContext } from './use-select-context'
   import { useSelectItemPropsContext } from './use-select-item-props-context'
 
-  let { ref = $bindable(), ...props }: SelectItemIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: SelectItemIndicatorProps = $props()
   const select = useSelectContext()
   const itemProps = useSelectItemPropsContext()
   const mergedProps = $derived(mergeProps(select().getItemIndicatorProps(itemProps()), props))

@@ -12,7 +12,7 @@
   import { Ark } from '../factory'
   import { useToggleGroupContext } from './use-toggle-group-context'
 
-  let { ref = $bindable(), ...props }: ToggleGroupItemProps = $props()
+  let { ref = $bindable(null), ...props }: ToggleGroupItemProps = $props()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['value', 'disabled']))
 

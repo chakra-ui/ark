@@ -13,7 +13,7 @@
   import { AvatarProvider } from './use-avatar-context'
   import { useAvatar } from './use-avatar.svelte'
 
-  let { ref = $bindable(), ...props }: AvatarRootProps = $props()
+  let { ref = $bindable(null), ...props }: AvatarRootProps = $props()
   const providedId = $props.id()
 
   const [useAvatarProps, localProps] = $derived(

@@ -34,7 +34,7 @@
 
   import FrameContent from './frame-content.svelte'
 
-  let { head, onMount, onUnmount, srcdoc, ref = $bindable(), ...localProps }: FrameProps = $props()
+  let { head, onMount, onUnmount, srcdoc, ref = $bindable(null), ...localProps }: FrameProps = $props()
 
   let frameRef: HTMLIFrameElement | undefined = $state()
   let mountNode: HTMLElement | null = $derived(frameRef ? getMountNode(frameRef) : null)

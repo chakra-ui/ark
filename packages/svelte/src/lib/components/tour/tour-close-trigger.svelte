@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTourContext } from './use-tour-context'
 
-  let { ref = $bindable(), ...props }: TourCloseTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: TourCloseTriggerProps = $props()
 
   const tour = useTourContext()
 

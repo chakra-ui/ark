@@ -12,7 +12,7 @@
   import { useRatingGroupContext } from './use-rating-group-context'
   import { RatingGroupItemProvider } from './use-rating-group-item-context'
 
-  let { ref = $bindable(), ...props }: RatingGroupItemProps = $props()
+  let { ref = $bindable(null), ...props }: RatingGroupItemProps = $props()
   const ratingGroup = useRatingGroupContext()
 
   const itemState = $derived(ratingGroup().getItemState(props))

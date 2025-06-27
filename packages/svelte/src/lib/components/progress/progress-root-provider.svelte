@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { ProgressProvider } from './use-progress-context'
 
-  let { ref = $bindable(), value: progress, ...localProps }: ProgressRootProviderProps = $props()
+  let { ref = $bindable(null), value: progress, ...localProps }: ProgressRootProviderProps = $props()
   const mergedProps = $derived(mergeProps(progress().getRootProps(), localProps))
 
   ProgressProvider(progress)

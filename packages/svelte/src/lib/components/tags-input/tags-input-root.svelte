@@ -14,7 +14,7 @@
   import { useTagsInput } from './use-tags-input.svelte'
 
   let {
-    ref = $bindable(),
+    ref = $bindable(null),
     value = $bindable<string[]>(),
     inputValue = $bindable<string>(),
     ...props

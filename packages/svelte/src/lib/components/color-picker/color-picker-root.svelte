@@ -21,7 +21,7 @@
   import { useColorPicker } from './use-color-picker.svelte'
 
   let {
-    ref = $bindable(),
+    ref = $bindable(null),
     value = $bindable<Color>(),
     open = $bindable<boolean>(),
     ...props

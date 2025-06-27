@@ -10,7 +10,7 @@
   import { Ark } from '$lib/components/factory'
   import { useSelectContext } from './use-select-context'
 
-  let { ref = $bindable(), ...props }: SelectPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: SelectPositionerProps = $props()
   const select = useSelectContext()
   const mergedProps = $derived(mergeProps(select().getPositionerProps(), props))
 </script>

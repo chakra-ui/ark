@@ -11,7 +11,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { usePresenceContext } from '../presence'
 
-  let { ref = $bindable(), ...props }: ColorPickerPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerPositionerProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getPositionerProps(), props))

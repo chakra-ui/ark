@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useSelectContext } from './use-select-context'
 
-  let { ref = $bindable(), ...props }: SelectContentProps = $props()
+  let { ref = $bindable(null), ...props }: SelectContentProps = $props()
   const select = useSelectContext()
   const presence = usePresenceContext()
   const mergedProps = $derived(mergeProps(select().getContentProps(), presence().getPresenceProps(), props))

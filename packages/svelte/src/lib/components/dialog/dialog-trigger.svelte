@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useDialogContext } from './use-dialog-context'
 
-  let { ref = $bindable(), ...props }: DialogTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DialogTriggerProps = $props()
 
   const dialog = useDialogContext()
   const presence = usePresenceContext()

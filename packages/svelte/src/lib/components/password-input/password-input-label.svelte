@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { usePasswordInputContext } from './use-password-input-context'
 
-  let { ref = $bindable(), ...props }: PasswordInputLabelProps = $props()
+  let { ref = $bindable(null), ...props }: PasswordInputLabelProps = $props()
   const passwordInput = usePasswordInputContext()
   const mergedProps = $derived(mergeProps(passwordInput().getLabelProps(), props))
 </script>

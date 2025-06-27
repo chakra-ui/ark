@@ -25,7 +25,7 @@
   import { useTreeView } from './use-tree-view.svelte'
 
   let {
-    ref = $bindable(),
+    ref = $bindable(null),
     expandedValue = $bindable<string[]>(),
     selectedValue = $bindable<string[]>(),
     focusedValue = $bindable<string>(),

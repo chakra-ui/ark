@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { usePopoverContext } from './use-popover-context'
 
-  let { ref = $bindable(), ...props }: PopoverDescriptionProps = $props()
+  let { ref = $bindable(null), ...props }: PopoverDescriptionProps = $props()
 
   const popover = usePopoverContext()
   const mergedProps = $derived(mergeProps(popover().getDescriptionProps(), props))

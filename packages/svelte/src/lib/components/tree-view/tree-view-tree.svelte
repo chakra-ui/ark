@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTreeViewContext } from './use-tree-view-context'
 
-  let { ref = $bindable(), ...props }: TreeViewTreeProps = $props()
+  let { ref = $bindable(null), ...props }: TreeViewTreeProps = $props()
 
   const treeView = useTreeViewContext()
   const mergedProps = $derived(mergeProps(treeView().getTreeProps(), props))

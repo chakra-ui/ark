@@ -9,7 +9,7 @@
   import { Ark } from '../factory'
   import { tourAnatomy } from './tour.anatomy'
 
-  let { ref = $bindable(), ...props }: TourControlProps = $props()
+  let { ref = $bindable(null), ...props }: TourControlProps = $props()
 </script>
 
 <Ark as="div" bind:ref {...tourAnatomy.build().control.attrs} {...props} />

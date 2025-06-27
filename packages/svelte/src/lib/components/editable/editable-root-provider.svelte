@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { EditableProvider } from './use-editable-context'
 
-  let { ref = $bindable(), value, ...props }: EditableRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: EditableRootProviderProps = $props()
 
   EditableProvider(value)
 

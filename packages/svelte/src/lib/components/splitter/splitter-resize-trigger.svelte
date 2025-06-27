@@ -2,7 +2,10 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ResizeTriggerProps } from '@zag-js/splitter'
 
-  export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps<'button'>, RefAttribute {}
+  export interface SplitterResizeTriggerBaseProps
+    extends ResizeTriggerProps,
+      PolymorphicProps<'button'>,
+      RefAttribute {}
   export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
 </script>
 
@@ -12,7 +15,7 @@
   import { Ark } from '../factory'
   import { useSplitterContext } from './use-splitter-context'
 
-  let { ref = $bindable(), ...props }: SplitterResizeTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: SplitterResizeTriggerProps = $props()
 
   const [triggerProps, localProps] = $derived(createSplitProps<ResizeTriggerProps>()(props, ['disabled', 'id']))
 

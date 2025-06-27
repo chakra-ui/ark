@@ -14,7 +14,7 @@
   import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
   import { ColorPickerProvider } from './use-color-picker-context'
 
-  let { ref = $bindable(), value, ...props }: ColorPickerRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: ColorPickerRootProviderProps = $props()
 
   const [presenceProps, localProps] = $derived(splitPresenceProps(props))
 

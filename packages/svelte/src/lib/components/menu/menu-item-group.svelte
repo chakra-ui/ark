@@ -14,7 +14,7 @@
   import { useMenuContext } from './use-menu-context'
   import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
-  let { ref = $bindable(), ...props }: MenuItemGroupProps = $props()
+  let { ref = $bindable(null), ...props }: MenuItemGroupProps = $props()
 
   const menu = useMenuContext()
   const id = $props.id()

@@ -15,7 +15,7 @@
   import { Ark } from '../factory'
   import { RadioGroupProvider } from './use-radio-group-context'
 
-  let { ref = $bindable(), value, ...props }: RadioGroupRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: RadioGroupRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

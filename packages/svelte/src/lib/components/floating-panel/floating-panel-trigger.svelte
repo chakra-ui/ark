@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let { ref = $bindable(), ...props }: FloatingPanelTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FloatingPanelTriggerProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const presence = usePresenceContext()

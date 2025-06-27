@@ -11,7 +11,7 @@
   import { useFieldContext } from '../field'
   import { useCheckboxContext } from './use-checkbox-context'
 
-  let { ref = $bindable(), ...props }: CheckboxHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: CheckboxHiddenInputProps = $props()
 
   const checkbox = useCheckboxContext()
   const field = useFieldContext()

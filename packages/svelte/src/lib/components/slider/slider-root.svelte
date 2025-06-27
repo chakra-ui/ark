@@ -13,7 +13,7 @@
   import { SliderProvider } from './use-slider-context'
   import { useSlider } from './use-slider.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: SliderRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: SliderRootProps = $props()
   const providedId = $props.id()
 
   const [useSliderProps, localProps] = $derived(

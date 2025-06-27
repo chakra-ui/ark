@@ -26,7 +26,7 @@
   import { PresenceProvider, splitPresenceProps, usePresence } from '../presence/index.js'
   import { ComboboxProvider } from './use-combobox-context.js'
 
-  let { ref = $bindable(), value, children, ...props }: ComboboxRootProviderProps<T> = $props()
+  let { ref = $bindable(null), value, children, ...props }: ComboboxRootProviderProps<T> = $props()
 
   const [presenceProps, otherProps] = splitPresenceProps(props)
   const presence = usePresence(() => mergeProps({ present: value().open }, presenceProps))

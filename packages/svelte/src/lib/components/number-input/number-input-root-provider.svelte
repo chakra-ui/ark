@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { NumberInputProvider } from './use-number-input-context'
 
-  let { ref = $bindable(), value, ...props }: NumberInputRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: NumberInputRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

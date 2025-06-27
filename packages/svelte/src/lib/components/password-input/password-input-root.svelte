@@ -16,7 +16,7 @@
   import { PasswordInputProvider } from './use-password-input-context'
   import { usePasswordInput } from './use-password-input.svelte'
 
-  let { ref = $bindable(), visible = $bindable(), ...props }: PasswordInputRootProps = $props()
+  let { ref = $bindable(null), visible = $bindable(), ...props }: PasswordInputRootProps = $props()
   const providedId = $props.id()
 
   const [usePasswordInputProps, localProps] = $derived(

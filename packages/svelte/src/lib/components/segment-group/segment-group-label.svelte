@@ -11,7 +11,7 @@
   import { parts } from './segment-group.anatomy'
   import { useSegmentGroupContext } from './use-segment-group-context'
 
-  let { ref = $bindable(), ...props }: SegmentGroupLabelProps = $props()
+  let { ref = $bindable(null), ...props }: SegmentGroupLabelProps = $props()
 
   const segmentGroup = useSegmentGroupContext()
   const mergedProps = $derived(mergeProps(segmentGroup().getLabelProps(), parts.label.attrs, props))

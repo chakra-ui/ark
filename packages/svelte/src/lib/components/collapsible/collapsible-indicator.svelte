@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useCollapsibleContext } from './use-collapsible-context'
 
-  let { ref = $bindable(), ...props }: CollapsibleIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: CollapsibleIndicatorProps = $props()
   const collapsible = useCollapsibleContext()
   const mergedProps = $derived(mergeProps(collapsible().getIndicatorProps(), props))
 </script>

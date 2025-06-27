@@ -17,7 +17,7 @@
   import { useMenuItemGroupContext } from './use-menu-item-group-context'
   import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
-  let { ref = $bindable(), ...props }: MenuRadioItemProps = $props()
+  let { ref = $bindable(null), ...props }: MenuRadioItemProps = $props()
 
   const [partialItemProps, localProps] = $derived(
     createSplitProps<PartialOptionItemProps>()(props, ['closeOnSelect', 'disabled', 'value', 'valueText']),

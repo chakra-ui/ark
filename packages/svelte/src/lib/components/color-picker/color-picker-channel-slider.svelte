@@ -14,7 +14,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerChannelSliderProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerChannelSliderProps = $props()
 
   const [channelProps, localProps] = $derived(createSplitProps<ChannelProps>()(props, ['channel', 'orientation']))
 

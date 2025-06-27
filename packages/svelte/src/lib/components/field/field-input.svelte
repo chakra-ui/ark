@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let { ref = $bindable(), ...props }: FieldInputProps = $props()
+  let { ref = $bindable(null), ...props }: FieldInputProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getInputProps() ?? {}, props))
 </script>

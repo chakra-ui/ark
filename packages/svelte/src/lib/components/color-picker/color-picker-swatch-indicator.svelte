@@ -12,7 +12,7 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useColorPickerSwatchPropsContext } from './use-color-picker-swatch-props-context'
 
-  let { ref = $bindable(), ...props }: ColorPickerSwatchIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerSwatchIndicatorProps = $props()
 
   const colorPicker = useColorPickerContext()
   const swatchProps = useColorPickerSwatchPropsContext()

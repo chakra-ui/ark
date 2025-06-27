@@ -18,7 +18,7 @@
   import { SelectProvider } from './use-select-context'
   import { useSelect } from './use-select.svelte'
 
-  let { ref = $bindable(), value = $bindable<string[] | undefined>(), ...props }: SelectRootProps<T> = $props()
+  let { ref = $bindable(null), value = $bindable<string[] | undefined>(), ...props }: SelectRootProps<T> = $props()
 
   const providedId = $props.id()
   const machineProps = $derived.by<UseSelectProps<T>>(() => ({

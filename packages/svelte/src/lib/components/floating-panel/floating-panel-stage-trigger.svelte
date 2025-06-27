@@ -15,7 +15,7 @@
   import { Ark } from '../factory/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let { ref = $bindable(), stage, ...props }: FloatingPanelStageTriggerProps = $props()
+  let { ref = $bindable(null), stage, ...props }: FloatingPanelStageTriggerProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = $derived(mergeProps(floatingPanel().getStageTriggerProps({ stage }), props))

@@ -13,7 +13,7 @@
   import { ToggleGroupProvider } from './use-toggle-group-context'
   import { useToggleGroup } from './use-toggle-group.svelte'
 
-  let { ref = $bindable(), value = $bindable<string[]>(), ...props }: ToggleGroupRootProps = $props()
+  let { ref = $bindable(null), value = $bindable<string[]>(), ...props }: ToggleGroupRootProps = $props()
 
   const [useToggleGroupProps, localProps] = $derived(
     createSplitProps<UseToggleGroupProps>()(props, [

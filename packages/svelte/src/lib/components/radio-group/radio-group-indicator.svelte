@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useRadioGroupContext } from './use-radio-group-context'
 
-  let { ref = $bindable(), ...props }: RadioGroupIndicatorProps = $props()
+  let { ref = $bindable(null), ...props }: RadioGroupIndicatorProps = $props()
 
   const radioGroup = useRadioGroupContext()
   const mergedProps = $derived(mergeProps(radioGroup().getIndicatorProps(), props))

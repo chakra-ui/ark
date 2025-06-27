@@ -13,7 +13,7 @@
   import { ClipboardProvider } from './use-clipboard-context'
   import { useClipboard } from './use-clipboard.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: ClipboardRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: ClipboardRootProps = $props()
   const providedId = $props.id()
 
   const [useClipboardProps, localProps] = $derived(splitClipboardProps(props))

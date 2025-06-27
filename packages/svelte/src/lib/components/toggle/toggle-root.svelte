@@ -13,7 +13,7 @@
   import { useToggle } from './use-toggle.svelte'
   import { ToggleProvider } from './use-toggle-context'
 
-  let { ref = $bindable(), pressed = $bindable<boolean>(), ...props }: ToggleRootProps = $props()
+  let { ref = $bindable(null), pressed = $bindable<boolean>(), ...props }: ToggleRootProps = $props()
 
   const [useToggleProps, localProps] = $derived(
     createSplitProps<UseToggleProps>()(props, ['pressed', 'defaultPressed', 'disabled', 'onPressedChange']),

@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useTooltipContext } from './use-tooltip-context'
 
-  let { ref = $bindable(), ...props }: TooltipPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: TooltipPositionerProps = $props()
   const tooltip = useTooltipContext()
   const presence = usePresenceContext()
   const mergedProps = $derived(mergeProps(tooltip().getPositionerProps(), props))

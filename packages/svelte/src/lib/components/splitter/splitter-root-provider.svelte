@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { SplitterProvider } from './use-splitter-context'
 
-  let { ref = $bindable(), value, ...props }: SplitterRootProviderProps = $props()
+  let { ref = $bindable(null), value, ...props }: SplitterRootProviderProps = $props()
 
   const mergedProps = $derived(mergeProps(value().getRootProps(), props))
 

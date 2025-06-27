@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useCollapsibleContext } from './use-collapsible-context'
 
-  let { ref = $bindable(), ...props }: CollapsibleContentProps = $props()
+  let { ref = $bindable(null), ...props }: CollapsibleContentProps = $props()
 
   const collapsible = useCollapsibleContext()
   const mergedProps = $derived(mergeProps(collapsible().getContentProps(), props))

@@ -18,7 +18,7 @@
   import { RadioGroupProvider } from './use-radio-group-context'
   import { useRadioGroup } from './use-radio-group.svelte'
 
-  let { ref = $bindable(), value = $bindable(), ...props }: RadioGroupRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: RadioGroupRootProps = $props()
   const providedId = $props.id()
 
   const [radioGroupProps, localProps] = $derived(

@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useTabsContext } from './use-tabs-context'
 
-  let { ref = $bindable(), ...props }: TabsListProps = $props()
+  let { ref = $bindable(null), ...props }: TabsListProps = $props()
   const tabs = useTabsContext()
 
   const mergedProps = $derived(mergeProps(tabs().getListProps(), props))

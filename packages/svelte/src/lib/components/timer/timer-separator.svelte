@@ -7,7 +7,7 @@
   export interface TimerSeparatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerSeparatorProps extends HTMLProps<'div'>, TimerSeparatorBaseProps {}
 
-  let { ref = $bindable(), ...props }: TimerSeparatorProps = $props()
+  let { ref = $bindable(null), ...props }: TimerSeparatorProps = $props()
   const timer = useTimerContext()
   const mergedProps = $derived(mergeProps(timer().getSeparatorProps(), props))
 </script>

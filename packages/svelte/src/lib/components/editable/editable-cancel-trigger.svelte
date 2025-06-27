@@ -10,7 +10,7 @@
   import { Ark } from '../factory'
   import { useEditableContext } from './use-editable-context'
 
-  let { ref = $bindable(), ...props }: EditableCancelTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: EditableCancelTriggerProps = $props()
 
   const editable = useEditableContext()
   const mergedProps = $derived(mergeProps(editable().getCancelTriggerProps(), props))

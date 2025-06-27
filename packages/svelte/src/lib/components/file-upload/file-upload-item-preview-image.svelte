@@ -12,7 +12,7 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-  let { ref = $bindable(), ...props }: FileUploadItemPreviewImageProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadItemPreviewImageProps = $props()
 
   let url = $state('')
   const fileUpload = useFileUploadContext()

@@ -13,7 +13,7 @@
   import { RadioGroupItemProvider } from './use-radio-group-item-context'
   import { RadioGroupItemPropsProvider } from './use-radio-group-item-props-context'
 
-  let { ref = $bindable(), ...props }: RadioGroupItemProps = $props()
+  let { ref = $bindable(null), ...props }: RadioGroupItemProps = $props()
   const radioGroup = useRadioGroupContext()
 
   const itemState = $derived(radioGroup().getItemState(props))

@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useEditableContext } from './use-editable-context'
 
-  let { ref = $bindable(), ...props }: EditableSubmitTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: EditableSubmitTriggerProps = $props()
 
   const editable = useEditableContext()
   const mergedProps = $derived(mergeProps(editable().getSubmitTriggerProps(), props))
 </script>
 
-<Ark as="button" bind:ref {...mergedProps} /> 
+<Ark as="button" bind:ref {...mergedProps} />

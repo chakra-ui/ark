@@ -8,7 +8,7 @@
 
   export interface ToastActionTriggerProps extends Assign<HTMLProps<'button'>, ToastActionTriggerBaseProps> {}
 
-  let { ref = $bindable(), ...props }: ToastActionTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: ToastActionTriggerProps = $props()
 
   const toast = useToastContext()
   const mergedProps = $derived(mergeProps(toast().getActionTriggerProps(), props))

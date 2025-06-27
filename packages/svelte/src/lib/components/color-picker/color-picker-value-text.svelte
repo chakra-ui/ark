@@ -13,7 +13,7 @@
   import { Ark } from '../factory'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  let { ref = $bindable(), children, format, ...props }: ColorPickerValueTextProps = $props()
+  let { ref = $bindable(null), children, format, ...props }: ColorPickerValueTextProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getValueTextProps(), props))

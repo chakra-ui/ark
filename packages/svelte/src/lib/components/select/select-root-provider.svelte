@@ -18,7 +18,7 @@
   import { Ark } from '$lib/components/factory'
   import { SelectProvider } from './use-select-context'
 
-  let { ref = $bindable(), ...props }: SelectRootProviderProps<T> = $props()
+  let { ref = $bindable(null), ...props }: SelectRootProviderProps<T> = $props()
 
   const mergedProps = $derived(mergeProps(props.value().getRootProps(), props))
 
