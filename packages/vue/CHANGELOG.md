@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.15.3] - 2025-06-27
+
 ### Fixed
 
 - **Combobox, Select, Listbox**: Fix issue where rehydrating `defaultValue` or `value` after fetching items doesn't
