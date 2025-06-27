@@ -1,16 +1,12 @@
 <script lang="ts">
-  import { FloatingPanel, type FloatingPanelSizeChangeDetails } from '@ark-ui/svelte/floating-panel'
+  import { FloatingPanel } from '@ark-ui/svelte/floating-panel'
   import { Portal } from '@ark-ui/svelte/portal'
   import { ArrowDownLeft, Maximize2, Minus, XIcon } from 'lucide-svelte'
 
   let size = $state({ width: 400, height: 300 })
-
-  function handleSizeChange(e: FloatingPanelSizeChangeDetails) {
-    size = e.size
-  }
 </script>
 
-<FloatingPanel.Root {size} onSizeChange={handleSizeChange}>
+<FloatingPanel.Root bind:size>
   <FloatingPanel.Trigger>Toggle Panel</FloatingPanel.Trigger>
   <Portal>
     <FloatingPanel.Positioner>
