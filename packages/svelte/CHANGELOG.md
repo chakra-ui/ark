@@ -8,8 +8,25 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **General**: Fix issue where `bind:ref` doesn't work with components, making it impossible to access the underlying
-  DOM element.
+- Fix issue where `bind:ref` doesn't work with components, making it impossible to access the underlying DOM element.
+  Now, you can pass `bind:ref` to all components.
+
+  ```svelte
+  <script lang="ts">
+    let rootNode = $state<HTMLDivElement | null>(null)
+
+    $inspect(rootNode)
+  </script>
+
+  <Accordion.Root bind:ref={rootNode}>
+    <Accordion.Item value="item-1">
+      <Accordion.Trigger>Item 1</Accordion.Trigger>
+      <Accordion.Content>Content 1</Accordion.Content>
+    </Accordion.Item>
+  </Accordion.Root>
+  ```
+
+- Improve prop reactivity across all components.
 
 ## [5.0.4] - 2025-06-27
 
