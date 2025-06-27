@@ -13,7 +13,7 @@
   import type { HiddenInputProps } from '@zag-js/signature-pad'
 
   let { ref = $bindable(null), ...props }: SignaturePadHiddenInputProps = $props()
-  const [hiddenInputProps, localProps] = createSplitProps<HiddenInputProps>()(props, ['value'])
+  const [hiddenInputProps, localProps] = $derived(createSplitProps<HiddenInputProps>()(props, ['value']))
 
   const signaturePad = useSignaturePadContext()
   const mergedProps = $derived(mergeProps(signaturePad().getHiddenInputProps(hiddenInputProps), localProps))

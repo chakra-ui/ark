@@ -16,7 +16,7 @@
   import { useTourContext } from './use-tour-context'
 
   let { ref = $bindable(null), ...props }: TourActionTriggerProps = $props()
-  const [actionTriggerProps, localProps] = createSplitProps<StepActionTriggerProps>()(props, ['action'])
+  const [actionTriggerProps, localProps] = $derived(createSplitProps<StepActionTriggerProps>()(props, ['action']))
 
   const tour = useTourContext()
 

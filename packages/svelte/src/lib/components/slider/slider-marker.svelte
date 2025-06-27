@@ -13,7 +13,8 @@
   import { useSliderContext } from './use-slider-context'
 
   let { ref = $bindable(null), ...props }: SliderMarkerProps = $props()
-  const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])
+  const [markerProps, localProps] = $derived(createSplitProps<MarkerProps>()(props, ['value']))
+
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getMarkerProps(markerProps), localProps))
 </script>

@@ -25,19 +25,21 @@
   let { ref = $bindable(null), value = $bindable(), ...props }: AccordionRootProps = $props()
   const providedId = $props.id()
 
-  const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
-  const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
-    'collapsible',
-    'defaultValue',
-    'disabled',
-    'id',
-    'ids',
-    'multiple',
-    'onFocusChange',
-    'onValueChange',
-    'orientation',
-    'value',
-  ])
+  const [renderStrategyProps, accordionProps] = $derived(splitRenderStrategyProps(props))
+  const [useAccordionProps, localProps] = $derived(
+    createSplitProps<UseAccordionProps>()(accordionProps, [
+      'collapsible',
+      'defaultValue',
+      'disabled',
+      'id',
+      'ids',
+      'multiple',
+      'onFocusChange',
+      'onValueChange',
+      'orientation',
+      'value',
+    ]),
+  )
 
   const resolvedProps = $derived<UseAccordionProps>({
     ...useAccordionProps,

@@ -14,27 +14,29 @@
   let { highlightedValue = $bindable(), value = $bindable(), ...props }: ListboxRootProps<T> = $props()
   const providedId = $props.id()
 
-  const [listboxProps, localProps] = createSplitProps<UseListboxProps<T>>()(props, [
-    'collection',
-    'defaultHighlightedValue',
-    'defaultValue',
-    'deselectable',
-    'disabled',
-    'disallowSelectAll',
-    'highlightedValue',
-    'id',
-    'ids',
-    'loopFocus',
-    'onHighlightChange',
-    'onSelect',
-    'onValueChange',
-    'orientation',
-    'scrollToIndexFn',
-    'selectionMode',
-    'selectOnHighlight',
-    'typeahead',
-    'value',
-  ])
+  const [listboxProps, localProps] = $derived(
+    createSplitProps<UseListboxProps<T>>()(props, [
+      'collection',
+      'defaultHighlightedValue',
+      'defaultValue',
+      'deselectable',
+      'disabled',
+      'disallowSelectAll',
+      'highlightedValue',
+      'id',
+      'ids',
+      'loopFocus',
+      'onHighlightChange',
+      'onSelect',
+      'onValueChange',
+      'orientation',
+      'scrollToIndexFn',
+      'selectionMode',
+      'selectOnHighlight',
+      'typeahead',
+      'value',
+    ]),
+  )
 
   const resolvedProps = $derived<UseListboxProps<T>>({
     ...listboxProps,

@@ -15,7 +15,7 @@
   import { useTabsContext } from './use-tabs-context'
 
   let { ref = $bindable(null), ...props }: TabsContentProps = $props()
-  const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
+  const [contentProps, localProps] = $derived(createSplitProps<ContentProps>()(props, ['value']))
 
   const tabs = useTabsContext()
   const renderStrategyProps = useRenderStrategyPropsContext()

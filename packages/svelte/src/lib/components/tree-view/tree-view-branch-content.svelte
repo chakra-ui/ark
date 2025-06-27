@@ -26,7 +26,7 @@
 
   const contentProps = $derived(treeView().getBranchContentProps(nodeProps()))
 
-  const splitVisibilityProps = createSplitProps<VisibilityProps>()
+  const splitVisibilityProps = $derived(createSplitProps<VisibilityProps>())
   const [, branchContentProps] = $derived(splitVisibilityProps(contentProps as any, ['hidden', 'data-state']))
 
   const mergedProps = $derived(mergeProps(branchContentProps, props))
