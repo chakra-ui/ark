@@ -1,7 +1,7 @@
 {
   "name": "@ark-ui/svelte",
   "type": "module",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "A collection of unstyled, accessible UI components for Svelte",
   "keywords": [
     "accordion",

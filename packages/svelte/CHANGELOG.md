@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.0.3] - 2025-06-27
+
 ### Fixed
 
 - **Tree View**: Fix tree traversal for querying last node
