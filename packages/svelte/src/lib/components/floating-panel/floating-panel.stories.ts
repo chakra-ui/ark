@@ -4,6 +4,7 @@ import AnchorPositionExample from './examples/anchor-position.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledOpenExample from './examples/controlled-open.svelte'
 import ControlledPositionExample from './examples/controlled-position.svelte'
+import ControlledSizeExample from './examples/controlled-size.svelte'
 import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
@@ -28,6 +29,12 @@ export const ControlledOpen = {
 export const ControlledPosition = {
   render: () => ({
     Component: ControlledPositionExample,
+  }),
+}
+
+export const ControlledSize = {
+  render: () => ({
+    Component: ControlledSizeExample,
   }),
 }
 
