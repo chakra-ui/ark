@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import DisabledExample from './examples/disabled.svelte'
 import IndicatorExample from './examples/indicator.svelte'
 import RenderFnExample from './examples/render-fn.svelte'
 
@@ -19,6 +20,12 @@ export const Basic = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const Disabled = {
+  render: () => ({
+    Component: DisabledExample,
   }),
 }
 

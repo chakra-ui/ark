@@ -6,6 +6,7 @@ import InitialValueExample from './examples/linear/initial-value.svelte'
 import MinMaxExample from './examples/linear/min-max.svelte'
 import RootProviderExample from './examples/linear/root-provider.svelte'
 import ValueTextExample from './examples/linear/value-text.svelte'
+import VerticalExample from './examples/linear/vertical.svelte'
 
 const meta = {
   title: 'Components / Progress - Linear',
@@ -52,5 +53,11 @@ export const ValueText = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const Vertical = {
+  render: () => ({
+    Component: VerticalExample,
   }),
 }
