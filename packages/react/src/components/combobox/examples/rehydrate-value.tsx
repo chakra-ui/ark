@@ -9,8 +9,7 @@ function ComboboxRehydrateValue() {
   const combobox = useComboboxContext()
   const hydrated = useRef(false)
   if (combobox.value.length && combobox.collection.size && !hydrated.current) {
-    const inputValue = combobox.collection.stringify(combobox.value[0])
-    combobox.setInputValue(inputValue || '')
+    combobox.syncSelectedItems()
     hydrated.current = true
   }
   return null

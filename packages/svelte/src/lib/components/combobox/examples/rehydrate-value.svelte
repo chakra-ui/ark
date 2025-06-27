@@ -48,8 +48,7 @@
   let hydrated = false
   $effect.pre(() => {
     if (combobox().value.length && combobox().collection.size && !hydrated) {
-      const inputValue = combobox().collection.stringify(combobox().value[0])
-      combobox().setInputValue(inputValue || '')
+      combobox().syncSelectedItems()
       hydrated = true
     }
   })

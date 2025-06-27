@@ -1,5 +1,18 @@
 ## [Unreleased]
 
+## [5.15.4] - 2025-06-27
+
+### Fixed
+
+- **Combobox, Select, Listbox**: Fix issue where rehydrating `defaultValue` or `value` after fetching items doesn't
+  update the `valueAsString`
+
+## [5.15.3] - 2025-06-27
+
+### Fixed
+
+- **Tree View**: Fix tree traversal for querying last node
+
 ## [5.15.2] - 2025-06-26
 
 ### Fixed
