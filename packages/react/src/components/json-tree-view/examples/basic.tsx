@@ -3,8 +3,7 @@ import { ChevronRightIcon } from 'lucide-react'
 
 export const Basic = () => {
   return (
-    <JsonTreeView
-      arrowIcon={<ChevronRightIcon />}
+    <JsonTreeView.Root
       data={{
         name: 'John Doe',
         age: 30,
@@ -17,6 +16,8 @@ export const Basic = () => {
           zip: '12345',
         },
       }}
-    />
+    >
+      <JsonTreeView.Tree arrowIcon={<ChevronRightIcon />} />
+    </JsonTreeView.Root>
   )
 }

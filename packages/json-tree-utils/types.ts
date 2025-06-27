@@ -52,7 +52,7 @@ export type JsonNodeSyntaxKind =
   | 'error-stack'
 
 export interface JsonNodeElement {
-  type: 'span' | 'div'
+  type: 'span' | 'div' | 'a'
   props: {
     nodeType?: string
     kind?: JsonNodeSyntaxKind

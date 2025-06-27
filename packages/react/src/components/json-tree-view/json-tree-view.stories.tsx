@@ -7,4 +7,4 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
-export { ArrayWithNonEnumerable } from './examples/array-with-non-enumerable'
+export { ArrayData } from './examples/array-data'
