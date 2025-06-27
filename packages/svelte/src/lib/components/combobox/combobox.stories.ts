@@ -6,6 +6,7 @@ import LinksExample from './examples/links.svelte'
 import RehydrateValueExample from './examples/rehydrate-value.svelte'
 import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -52,5 +53,11 @@ export const RootProvider = {
 export const RehydrateValue = {
   render: () => ({
     Component: RehydrateValueExample,
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    Component: WithFieldExample,
   }),
 }

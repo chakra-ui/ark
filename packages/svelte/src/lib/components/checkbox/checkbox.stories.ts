@@ -9,6 +9,7 @@ import GroupExample from './examples/group.svelte'
 import IndeterminateExample from './examples/indeterminate.svelte'
 import ContextExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
   title: 'Components/Checkbox',
@@ -76,5 +77,11 @@ export const GroupWithSelectAll = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    Component: WithFieldExample,
   }),
 }
