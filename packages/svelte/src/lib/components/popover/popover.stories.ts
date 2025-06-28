@@ -1,8 +1,10 @@
 import type { Meta } from '@storybook/svelte'
 import ArrowExample from './examples/arrow.svelte'
+import AsChildExample from './examples/as-child.svelte'
 import BasicExample from './examples/basic.svelte'
 import CloseBehaviorExample from './examples/close-behavior.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import FactoryExample from './examples/factory.svelte'
 import ModalExample from './examples/modal.svelte'
 import OnOpenChangeExample from './examples/on-open-change.svelte'
 import PortalledExample from './examples/portalled.svelte'
@@ -30,6 +32,18 @@ export const Controlled = {
 export const Arrow = {
   render: () => ({
     Component: ArrowExample,
+  }),
+}
+
+export const AsChild = {
+  render: () => ({
+    Component: AsChildExample,
+  }),
+}
+
+export const Factory = {
+  render: () => ({
+    Component: FactoryExample,
   }),
 }
 
