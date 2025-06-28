@@ -18,7 +18,7 @@
   import { useMenuContext } from './use-menu-context'
   import { MenuItemGroupProvider } from './use-menu-item-group-context'
 
-  let { ref = $bindable(null), ...props }: MenuRadioItemGroupProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: MenuRadioItemGroupProps = $props()
   const id = $props.id()
 
   const [optionalItemGroupProps, localProps] = $derived(
@@ -26,7 +26,16 @@
   )
 
   const menu = useMenuContext()
-  const itemGroupProps = $derived({ id, ...optionalItemGroupProps })
+
+  const itemGroupProps = $derived<ReturnType<UseMenuItemGroupContext>>({
+    id: optionalItemGroupProps.id ?? id,
+    value,
+    onValueChange(e) {
+      value = e.value
+      optionalItemGroupProps?.onValueChange?.(e)
+    },
+  })
+
   const mergedProps = $derived(mergeProps(menu().getItemGroupProps({ id: itemGroupProps.id }), localProps))
 
   MenuItemGroupProvider(() => itemGroupProps)

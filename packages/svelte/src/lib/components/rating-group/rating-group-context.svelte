@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
   import type { UseRatingGroupContext } from './use-rating-group-context'
-type A = UseRatingGroupContext
+
   export interface RatingGroupContextProps {
     render: Snippet<[UseRatingGroupContext]>
   }
@@ -14,4 +14,4 @@ type A = UseRatingGroupContext
   const context = useRatingGroupContext()
 </script>
 
-{@render render(context)} 
+{@render render(context)}
