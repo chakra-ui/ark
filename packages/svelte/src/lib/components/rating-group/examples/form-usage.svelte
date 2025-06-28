@@ -7,12 +7,12 @@
   <RatingGroup.Label>Label</RatingGroup.Label>
   <RatingGroup.Control>
     <RatingGroup.Context>
-      {#snippet render({ items })}
-        {#each items as item (item)}
+      {#snippet render(ratingGroup)}
+        {#each ratingGroup().items as item (item)}
           <RatingGroup.Item index={item}>
             <RatingGroup.ItemContext>
-              {#snippet render({ highlighted })}
-                {#if highlighted}
+              {#snippet render(itemState)}
+                {#if itemState().highlighted}
                   <StarIcon fill="current" />
                 {:else}
                   <StarIcon />

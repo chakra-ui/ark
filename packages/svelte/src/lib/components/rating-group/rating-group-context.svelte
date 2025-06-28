@@ -1,7 +1,7 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
   import type { UseRatingGroupContext } from './use-rating-group-context'
-
+type A = UseRatingGroupContext
   export interface RatingGroupContextProps {
     render: Snippet<[UseRatingGroupContext]>
   }
