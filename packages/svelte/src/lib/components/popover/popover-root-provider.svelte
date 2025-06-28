@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { UsePresenceProps, UsePresenceReturn } from '../presence'
+  import type { UsePresenceProps } from '../presence'
   import type { UsePopoverReturn } from './use-popover.svelte'
 
   interface RootProviderProps {
