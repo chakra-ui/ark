@@ -38,11 +38,11 @@
     open,
     onValueChange(details) {
       useColorPickerProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
     onOpenChange(details) {
       useColorPickerProps.onOpenChange?.(details)
-      open = details.open
+      if (open !== undefined) open = details.open
     },
   })
 

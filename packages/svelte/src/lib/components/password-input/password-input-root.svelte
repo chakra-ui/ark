@@ -43,7 +43,7 @@
     visible,
     onVisibilityChange(details) {
       usePasswordInputProps.onVisibilityChange?.(details)
-      visible = details.visible
+      if (visible !== undefined) visible = details.visible
     },
   })
 

@@ -49,7 +49,7 @@
     value,
     onValueChange(details) {
       useTabsProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   }))
 

@@ -49,8 +49,8 @@
     id: useSliderProps.id ?? providedId,
     value,
     onValueChange(details) {
-      value = details.value
       useSliderProps.onValueChange?.(details)
+      if (value !== undefined) value = details.value
     },
   })
 

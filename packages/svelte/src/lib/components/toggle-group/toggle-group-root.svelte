@@ -39,7 +39,7 @@
     value,
     onValueChange(details) {
       useToggleGroupProps.onValueChange?.(details)
-      if (value != null) value = details.value
+      if (value !== undefined) value = details.value
     },
   }))
 

@@ -88,15 +88,15 @@
     inputValue,
     onOpenChange(details) {
       useComboboxProps.onOpenChange?.(details)
-      if (open != null) open = details.open
+      if (open !== undefined) open = details.open
     },
     onValueChange(details) {
       useComboboxProps.onValueChange?.(details)
-      if (value != null) value = details.value
+      if (value !== undefined) value = details.value
     },
     onInputValueChange(details) {
       useComboboxProps.onInputValueChange?.(details)
-      if (inputValue != null) inputValue = details.inputValue
+      if (inputValue !== undefined) inputValue = details.inputValue
     },
   }))
 

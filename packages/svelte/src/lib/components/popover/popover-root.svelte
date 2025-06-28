@@ -28,7 +28,7 @@
       open,
       onOpenChange(details) {
         localProps.onOpenChange?.(details)
-        open = details.open
+        if (open !== undefined) open = details.open
       },
     }
   })

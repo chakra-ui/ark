@@ -33,8 +33,8 @@
     id: providedId,
     value,
     onValueChange(details) {
-      value = details.value
       useQrCodeProps.onValueChange?.(details)
+      if (value !== undefined) value = details.value
     },
   })
 

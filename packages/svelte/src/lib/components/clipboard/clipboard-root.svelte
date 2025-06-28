@@ -24,7 +24,7 @@
     value,
     onValueChange(details) {
       useClipboardProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   })
 

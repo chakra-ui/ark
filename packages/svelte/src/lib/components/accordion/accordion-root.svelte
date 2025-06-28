@@ -47,7 +47,7 @@
     value,
     onValueChange(details) {
       useAccordionProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   })
 

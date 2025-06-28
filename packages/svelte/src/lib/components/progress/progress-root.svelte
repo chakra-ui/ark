@@ -39,8 +39,8 @@
     id: useProgressProps.id ?? providedId,
     value,
     onValueChange(details) {
-      value = details.value
       useProgressProps.onValueChange?.(details)
+      if (value !== undefined) value = details.value
     },
   })
 

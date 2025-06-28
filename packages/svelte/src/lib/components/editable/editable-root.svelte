@@ -26,7 +26,7 @@
       value,
       onValueChange(details) {
         useEditableProps.onValueChange?.(details)
-        value = details.value
+        if (value !== undefined) value = details.value
       },
     }
   })

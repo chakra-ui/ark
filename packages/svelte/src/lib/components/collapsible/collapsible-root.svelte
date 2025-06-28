@@ -24,7 +24,7 @@
     open,
     onOpenChange(details) {
       useCollapsibleProps.onOpenChange?.(details)
-      open = details.open
+      if (open !== undefined) open = details.open
     },
   })
 

@@ -24,7 +24,7 @@
     checked,
     onCheckedChange(details) {
       useCheckboxProps.onCheckedChange?.(details)
-      checked = details.checked
+      if (checked !== undefined) checked = details.checked
     },
   })
 

@@ -53,7 +53,7 @@
     value,
     onValueChange(details) {
       usePinInputProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   })
 

@@ -64,8 +64,8 @@
     id: props.id ?? providedId,
     value,
     onValueChange(details) {
-      if (value !== undefined) value = details.value
       useSelectProps.onValueChange?.(details)
+      if (value !== undefined) value = details.value
     },
   }))
 
