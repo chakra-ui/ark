@@ -53,6 +53,31 @@ To style a component based on its state, use the `data-state` attribute:
 > **Tip:** If you prefer using classes instead of data attributes, utilize the `class` or `className` prop to add custom
 > classes to Ark UI components.
 
+### Class Names
+
+If you prefer using classes instead of data attributes, utilize `class` or `className` prop to add custom classes to Ark
+UI components.
+
+Pass a class:
+
+```jsx
+<Accordion.Root>
+  <Accordion.Item className="AccordionItem">{/* … */}</Accordion.Item>
+</Accordion.Root>
+```
+
+Then use in styles:
+
+```css
+.AccordionItem {
+  border-bottom: 1px solid #e5e5e5;
+
+  &[data-state='open'] {
+    background-color: #f5f5f5;
+  }
+}
+```
+
 ## Styling with Panda CSS
 
 [Panda CSS](https://panda-css.com) is a build-time CSS-in-JS framework that integrates seamlessly with Ark UI, providing

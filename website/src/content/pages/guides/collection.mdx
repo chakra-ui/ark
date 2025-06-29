@@ -121,3 +121,289 @@ collection.reorder(fromIndex, toIndex)
 
 console.log(collection.items) // [{ label: "Banana", value: "banana" }, { label: "Apple", value: "apple" }]
 ```
+
+## Tree Collection
+
+A tree collection is designed to manage hierarchical data structures like file systems, navigation menus, or
+organization charts. It provides powerful methods for traversing, manipulating, and querying tree structures.
+
+```ts
+import { TreeCollection } from '@zag-js/collection'
+
+const treeData = {
+  value: 'root',
+  label: 'Root',
+  children: [
+    {
+      value: 'folder1',
+      label: 'Folder 1',
+      children: [
+        { value: 'file1', label: 'File 1.txt' },
+        { value: 'file2', label: 'File 2.txt' },
+      ],
+    },
+    {
+      value: 'folder2',
+      label: 'Folder 2',
+      children: [
+        {
+          value: 'subfolder1',
+          label: 'Subfolder 1',
+          children: [{ value: 'file3', label: 'File 3.txt' }],
+        },
+      ],
+    },
+  ],
+}
+
+const tree = new TreeCollection({ rootNode: treeData })
+```
+
+### Navigation Methods
+
+The tree collection provides various methods to navigate through the hierarchical structure.
+
+#### Getting First and Last Nodes
+
+```ts
+const firstNode = tree.getFirstNode()
+console.log(firstNode?.value) // "folder1"
+
+const lastNode = tree.getLastNode()
+console.log(lastNode?.value) // "folder2"
+```
+
+#### Sequential Navigation
+
+Navigate to the next or previous node in the tree traversal order:
+
+```ts
+const nextNode = tree.getNextNode('file1')
+console.log(nextNode?.value) // "file2"
+
+const previousNode = tree.getPreviousNode('file2')
+console.log(previousNode?.value) // "file1"
+```
+
+### Hierarchical Relationships
+
+#### Parent and Children
+
+Get parent and descendant nodes:
+
+```ts
+// Get parent node
+const parentNode = tree.getParentNode('file1')
+console.log(parentNode?.value) // "folder1"
+
+// Get all ancestor nodes
+const ancestors = tree.getParentNodes('file3')
+console.log(ancestors.map((n) => n.value)) // ["folder2", "subfolder1"]
+
+// Get all descendant nodes
+const descendants = tree.getDescendantNodes('folder1')
+console.log(descendants.map((n) => n.value)) // ["file1", "file2"]
+
+// Get descendant values only
+const descendantValues = tree.getDescendantValues('folder2')
+console.log(descendantValues) // ["subfolder1", "file3"]
+```
+
+#### Sibling Navigation
+
+Navigate between sibling nodes:
+
+```ts
+// Assuming we have the index path of "file1"
+const indexPath = tree.getIndexPath('file1') // [0, 0]
+
+const nextSibling = tree.getNextSibling(indexPath)
+console.log(nextSibling?.value) // "file2"
+
+const previousSibling = tree.getPreviousSibling(indexPath)
+console.log(previousSibling) // undefined (no previous sibling)
+
+// Get all siblings
+const siblings = tree.getSiblingNodes(indexPath)
+console.log(siblings.map((n) => n.value)) // ["file1", "file2"]
+```
+
+### Index Path Operations
+
+Work with index paths to identify node positions:
+
+```ts
+// Get index path for a value
+const indexPath = tree.getIndexPath('file3')
+console.log(indexPath) // [1, 0, 0]
+
+// Get value from index path
+const value = tree.getValue([1, 0, 0])
+console.log(value) // "file3"
+
+// Get full value path (all ancestors + node)
+const valuePath = tree.getValuePath([1, 0, 0])
+console.log(valuePath) // ["folder2", "subfolder1", "file3"]
+
+// Get node at specific index path
+const node = tree.at([1, 0])
+console.log(node?.value) // "subfolder1"
+```
+
+### Tree Queries
+
+#### Branch and Leaf Detection
+
+```ts
+// Check if a node is a branch (has children)
+const folder1Node = tree.findNode('folder1')
+const isBranch = tree.isBranchNode(folder1Node!)
+console.log(isBranch) // true
+
+// Get all branch values
+const branchValues = tree.getBranchValues()
+console.log(branchValues) // ["folder1", "folder2", "subfolder1"]
+```
+
+#### Tree Traversal
+
+Visit all nodes with custom logic:
+
+```ts
+tree.visit({
+  onEnter: (node, indexPath) => {
+    console.log(`Visiting: ${node.value} at depth ${indexPath.length}`)
+
+    // Skip certain branches
+    if (node.value === 'folder2') {
+      return 'skip' // Skip this branch and its children
+    }
+  },
+})
+```
+
+#### Filtering
+
+Create a new tree with filtered nodes:
+
+```ts
+// Keep only nodes that match criteria
+const filteredTree = tree.filter((node, indexPath) => {
+  return node.value.includes('file') // Only keep files
+})
+
+console.log(filteredTree.getValues()) // ["file1", "file2", "file3"]
+```
+
+### Tree Manipulation
+
+#### Adding Nodes
+
+```ts
+const newFile = { value: 'newfile', label: 'New File.txt' }
+
+// Insert after a specific node
+const indexPath = tree.getIndexPath('file1')
+const updatedTree = tree.insertAfter(indexPath!, [newFile])
+
+// Insert before a specific node
+const updatedTree2 = tree.insertBefore(indexPath!, [newFile])
+```
+
+#### Removing Nodes
+
+```ts
+const indexPath = tree.getIndexPath('file2')
+const updatedTree = tree.remove([indexPath!])
+
+console.log(updatedTree.getValues()) // file2 is removed
+```
+
+#### Moving Nodes
+
+```ts
+const fromIndexPaths = [tree.getIndexPath('file1')!]
+const toIndexPath = tree.getIndexPath('folder2')!
+
+const updatedTree = tree.move(fromIndexPaths, toIndexPath)
+// file1 is now moved under folder2
+```
+
+#### Replacing Nodes
+
+```ts
+const indexPath = tree.getIndexPath('file1')!
+const newNode = { value: 'replacedfile', label: 'Replaced File.txt' }
+
+const updatedTree = tree.replace(indexPath, newNode)
+```
+
+### Utility Methods
+
+#### Flattening
+
+Convert the tree to a flat structure:
+
+```ts
+const flatNodes = tree.flatten()
+console.log(flatNodes.map((n) => ({ value: n.value, depth: n._indexPath.length })))
+// [{ value: "folder1", depth: 1 }, { value: "file1", depth: 2 }, ...]
+```
+
+#### Getting All Values
+
+```ts
+const allValues = tree.getValues()
+console.log(allValues) // ["folder1", "file1", "file2", "folder2", "subfolder1", "file3"]
+```
+
+#### Depth Calculation
+
+```ts
+const depth = tree.getDepth('file3')
+console.log(depth) // 3 (root -> folder2 -> subfolder1 -> file3)
+```
+
+### Working with Custom Node Types
+
+You can customize how the tree collection interprets your data:
+
+```ts
+interface CustomNode {
+  id: string
+  name: string
+  items?: CustomNode[]
+  isDisabled?: boolean
+}
+
+const customTree = new TreeCollection<CustomNode>({
+  rootNode: {
+    id: 'root',
+    name: 'Root',
+    items: [
+      { id: '1', name: 'Item 1', isDisabled: false },
+      { id: '2', name: 'Item 2', isDisabled: true },
+    ],
+  },
+  nodeToValue: (node) => node.id,
+  nodeToString: (node) => node.name,
+  nodeToChildren: (node) => node.items,
+  isNodeDisabled: (node) => node.isDisabled ?? false,
+})
+```
+
+### Creating Trees from File Paths
+
+Create a tree structure from file paths:
+
+```ts
+import { filePathToTree } from '@zag-js/collection'
+
+const paths = ['src/components/Button.tsx', 'src/components/Input.tsx', 'src/utils/helpers.ts', 'docs/README.md']
+
+const fileTree = filePathToTree(paths)
+console.log(fileTree.getBranchValues()) // ["src", "components", "utils", "docs"]
+```
+
+> **Good to know**: Tree collections are immutable - all modification methods return a new tree instance rather than
+> modifying the original.
