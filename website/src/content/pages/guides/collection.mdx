@@ -128,7 +128,7 @@ A tree collection is designed to manage hierarchical data structures like file s
 organization charts. It provides powerful methods for traversing, manipulating, and querying tree structures.
 
 ```ts
-import { TreeCollection } from '@zag-js/collection'
+import { createTreeCollection } from '@ark-ui/react/collection'
 
 const treeData = {
   value: 'root',
@@ -156,7 +156,7 @@ const treeData = {
   ],
 }
 
-const tree = new TreeCollection({ rootNode: treeData })
+const tree = createTreeCollection({ rootNode: treeData })
 ```
 
 ### Navigation Methods
@@ -376,7 +376,7 @@ interface CustomNode {
   isDisabled?: boolean
 }
 
-const customTree = new TreeCollection<CustomNode>({
+const customTree = createTreeCollection<CustomNode>({
   rootNode: {
     id: 'root',
     name: 'Root',
@@ -397,11 +397,11 @@ const customTree = new TreeCollection<CustomNode>({
 Create a tree structure from file paths:
 
 ```ts
-import { filePathToTree } from '@zag-js/collection'
+import { createFileTreeCollection } from '@ark-ui/react/collection'
 
 const paths = ['src/components/Button.tsx', 'src/components/Input.tsx', 'src/utils/helpers.ts', 'docs/README.md']
 
-const fileTree = filePathToTree(paths)
+const fileTree = createFileTreeCollection(paths)
 console.log(fileTree.getBranchValues()) // ["src", "components", "utils", "docs"]
 ```
 
