@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Add `AngleSlider` component for angle selection.
+
 ## [5.0.5] - 2025-06-28
 
 ### Fixed
