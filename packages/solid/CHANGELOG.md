@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.16.0] - 2025-07-01
+
 ### Added
 
 - **Color Picker**: Add support for `inline` prop to render color picker inline
