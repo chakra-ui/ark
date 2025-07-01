@@ -15,7 +15,7 @@ export const SupportAd = () => {
           <SparkleIcon className={css({ pos: 'absolute', top: '5', right: '5', color: 'colorPalette.9' })} />
         </Card.Title>
         <Text textStyle="sm" color="fg.muted">
-          Supercharge your team with support from the creators of Ark UI
+          Supercharge your team with design system support from the creators of Ark UI
         </Text>
 
         <Button
@@ -30,7 +30,7 @@ export const SupportAd = () => {
           <Link
             target="_blank"
             referrerPolicy="no-referrer"
-            href="https://chakra-pro.lemonsqueezy.com/buy/604cf94a-e4c4-4199-aeb6-a27afc30c815"
+            href="mailto:support@chakra-ui.com?subject=Design System Support"
           >
             Get Pro Support
           </Link>
