@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.1.0] - 2025-07-01
+
 ### Added
 
 - **Angle Slider [New]**: Add support for angle slider component for angle selection.
