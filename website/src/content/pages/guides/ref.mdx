@@ -1,16 +1,14 @@
 ---
-title: Ref
+id: ref
+title: Refs
 description: Ways to access the underlying HTML elements in Ark UI components
 status: new
 ---
 
-The `ref` prop allows you to obtain a reference to the underlying HTML elements within Ark UI components, giving you
-direct access to the DOM when needed.
-
 ## React
 
-Most React components that accept `ref` prop can be used to access the rendered element. Use the `useRef` hook to create
-a reference and pass it to the component.
+In React, the `ref` prop can be used to access the rendered element. Use the `useRef` hook to create a reference and
+pass it to the component.
 
 ```tsx
 import { Slider } from '@ark-ui/react/slider'
@@ -24,7 +22,7 @@ export const MySlider = () => {
 
 ## Solid
 
-Most Solid components that accept `ref` prop can be used to access the rendered element.
+In Solid, the `ref` prop can be used to access the rendered element.
 
 ```tsx
 import { Slider } from '@ark-ui/solid/slider'
@@ -49,7 +47,7 @@ export const MySlider = () => {
 
 ## Vue
 
-To obtain the element reference with Vue's composition API, use the `ref` function.
+In Vue, pass the `ref` prop to the component to access the rendered element via the `$el` property.
 
 ```vue
 <script setup lang="ts">
@@ -65,7 +63,7 @@ const rootRef = ref<{ $el: HTMLDivElement } | null>(null)
 
 ## Svelte
 
-To obtain the element reference in Svelte 5, use the `bind:ref` directive.
+In Svelte 5, use the `bind:ref` directive to access the rendered element.
 
 ```svelte
 <script lang="ts">
