@@ -102,6 +102,18 @@ const { collection } = useListCollection({
 })
 ```
 
+### Limit Large Datasets
+
+The recommended way of managing large lists is to use the `limit` property on the `useListCollection` hook. This will
+limit the number of rendered items in the DOM to improve performance.
+
+```tsx {3}
+const { collection } = useListCollection({
+  initialItems: items,
+  limit: 10,
+})
+```
+
 ### Available height and width
 
 The following css variables are exposed to the `Combobox.Positioner` which you can use to style the `Combobox.Content`
