@@ -1,0 +1,78 @@
+---
+title: Ref
+description: Ways to access the underlying HTML elements in Ark UI components
+status: new
+---
+
+The `ref` prop allows you to obtain a reference to the underlying HTML elements within Ark UI components, giving you
+direct access to the DOM when needed.
+
+## React
+
+Most React components that accept `ref` prop can be used to access the rendered element. Use the `useRef` hook to create
+a reference and pass it to the component.
+
+```tsx
+import { Slider } from '@ark-ui/react/slider'
+import { useRef } from 'react'
+
+export const MySlider = () => {
+  const rootRef = useRef<HTMLDivElement | null>(null)
+  return <Slider.Root ref={rootRef}>{/* ... */}</Slider.Root>
+}
+```
+
+## Solid
+
+Most Solid components that accept `ref` prop can be used to access the rendered element.
+
+```tsx
+import { Slider } from '@ark-ui/solid/slider'
+
+export const MySlider = () => {
+  let rootRef!: HTMLDivElement
+  return <Slider.Root ref={(el) => (rootRef = el)}>{/* ... */}</Slider.Root>
+}
+```
+
+Alternatively, you can assign refs to Solid.js signals via the `createSignal` function.
+
+```tsx
+import { Slider } from '@ark-ui/solid/slider'
+import { createSignal } from 'solid-js'
+
+export const MySlider = () => {
+  const [rootRef, setRootRef] = createSignal<HTMLDivElement | null>(null)
+  return <Slider.Root ref={setRootRef}>{/* ... */}</Slider.Root>
+}
+```
+
+## Vue
+
+To obtain the element reference with Vue's composition API, use the `ref` function.
+
+```vue
+<script setup lang="ts">
+import { Slider } from '@ark-ui/vue/slider'
+
+const rootRef = ref<{ $el: HTMLDivElement } | null>(null)
+</script>
+
+<template>
+  <Slider.Root ref="rootRef">{/* ... */}</Slider.Root>
+</template>
+```
+
+## Svelte
+
+To obtain the element reference in Svelte 5, use the `bind:ref` directive.
+
+```svelte
+<script lang="ts">
+  import { Slider } from '@ark-ui/svelte/slider'
+
+  let rootRef = $state<HTMLDivElement | null>(null)
+</script>
+
+<Slider.Root bind:ref={rootRef}>{/* ... */}</Slider.Root>
+```
