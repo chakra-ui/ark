@@ -8,7 +8,15 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- Add `AngleSlider` component for angle selection.
+- **Angle Slider [New]**: Add support for angle slider component for angle selection.
+- **Color Picker**: Add support for `inline` prop to render color picker inline
+- **Date Picker**: Add support for `inline` prop to render the date calendar inline
+
+### Fixed
+
+- **Color Picker**: Auto-prefix Hex values with `#` if missing when using the `hex` channel input
+- **Menu**: Fix interaction outside detection for focusable context trigger
+- **Tree View**: Improve support for rendering tree items as links
 
 ## [5.0.5] - 2025-06-28
 

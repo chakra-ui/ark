@@ -46,6 +46,7 @@ export const DatePickerRoot = (props: DatePickerRootProps) => {
     'translations',
     'value',
     'view',
+    'inline',
   ])
   const api = useDatePicker(useDatePickerProps)
   const apiPresence = usePresence(mergeProps(presenceProps, () => ({ present: api().open })))

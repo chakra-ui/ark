@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<ColorPickerRootProps>(), {
   openAutoFocus: undefined,
   readOnly: undefined,
   required: undefined,
+  inline: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<ColorPickerRootEmits>()

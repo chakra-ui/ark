@@ -67,6 +67,7 @@
       'translations',
       'value',
       'view',
+      'inline',
     ]),
   )
 

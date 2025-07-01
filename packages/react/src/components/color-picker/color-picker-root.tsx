@@ -37,6 +37,7 @@ export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>(
     'positioning',
     'readOnly',
     'required',
+    'inline',
     'value',
   ])
   const colorPicker = useColorPicker(useColorPickerProps)

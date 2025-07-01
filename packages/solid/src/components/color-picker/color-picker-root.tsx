@@ -35,6 +35,7 @@ export const ColorPickerRoot = (props: ColorPickerRootProps) => {
     'positioning',
     'readOnly',
     'required',
+    'inline',
     'value',
   ])
   const api = useColorPicker(useColorPickerProps)

@@ -92,6 +92,10 @@ export interface RootProps {
    * Whether the color picker is required
    */
   required?: boolean
+  /**
+   * Whether the color picker is inline
+   */
+  inline?: boolean
 }
 
 export type RootEmits = {
