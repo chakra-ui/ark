@@ -1,5 +1,5 @@
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
-import { flushSync, untrack } from 'svelte'
+import { untrack } from 'svelte'
 import { type CollectionOptions, type ListCollection, createListCollection } from './list-collection'
 
 export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'items'> {
@@ -10,7 +10,7 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   /**
    * The filter function to use to filter the items.
    */
-  filter?: (itemText: string, filterText: string) => boolean
+  filter?: (itemText: string, filterText: string, item: T) => boolean
   /**
    * The maximum number of items to display in the collection.
    * Useful for performance when you have a large number of items.
@@ -40,10 +40,12 @@ export function useListCollection<T>(inProps: MaybeFunction<UseListCollectionPro
     collection() {
       return collection
     },
-    filter: (inputValue: string) => {
+    filter: (inputValue = '') => {
       const filterFn = props.filter
       if (!filterFn) return
-      const filtered = create(props.initialItems).filter((itemString) => filterFn(itemString, inputValue))
+      const filtered = create(props.initialItems).filter((itemString, _index, item) =>
+        filterFn(itemString, inputValue, item),
+      )
       setCollection(filtered)
     },
     set: (items: T[]) => {
@@ -78,6 +80,9 @@ export function useListCollection<T>(inProps: MaybeFunction<UseListCollectionPro
     },
     reorder: (from: number, to: number) => {
       setCollection(collection.reorder(from, to))
+    },
+    append: (...items: T[]) => {
+      setCollection(collection.append(...items))
     },
     prepend: (...items: T[]) => {
       setCollection(collection.prepend(...items))

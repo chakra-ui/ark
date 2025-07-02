@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Grouping from './examples/grouping.vue'
 import Links from './examples/links.vue'
+import Multiple from './examples/multiple.vue'
 import RehydrateValue from './examples/rehydrate-value.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
@@ -29,6 +30,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Rehydrate Value">
       <RehydrateValue />
+    </Variant>
+    <Variant title="Multiple">
+      <Multiple />
     </Variant>
   </Story>
 </template>

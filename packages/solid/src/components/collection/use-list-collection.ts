@@ -10,7 +10,7 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   /**
    * The filter function to use to filter the items.
    */
-  filter?: (itemText: string, filterText: string) => boolean
+  filter?: (itemText: string, filterText: string, item: T) => boolean
   /**
    * The maximum number of items to display in the collection.
    * Useful for performance when you have a large number of items.
@@ -47,13 +47,15 @@ export function useListCollection<T>(props: MaybeAccessor<UseListCollectionProps
 
   return {
     collection,
-    filter: (inputValue: string) => {
+    filter: (inputValue = '') => {
       const [localProps] = splittedProps()
 
       const filter = localProps.filter
       if (!filter) return
 
-      const filtered = create(localProps.initialItems).filter((itemString) => filter(itemString, inputValue))
+      const filtered = create(localProps.initialItems).filter((itemString, _index, item) =>
+        filter(itemString, inputValue, item),
+      )
       setCollection(filtered)
     },
     set: (items: T[]) => {
