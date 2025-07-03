@@ -1,5 +1,27 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Combobox**
+
+  - Expose `reason` to `onOpenChange` and `onInputValueChange` callbacks
+  - Expose `api.clearHighlightedValue` function to clear highlighted value
+
+- **Date Picker**: Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
+
+- **Listbox**: Select highlighted item only if it exists in the collection
+
+- **Progress**: Improve `valueAsString` formatting
+
+- **Select**
+
+  - Select highlighted item only if it exists in the collection
+  - Expose `api.clearHighlightedValue` function to clear highlighted value
+
+- **Tour**: Fix an issue where the `goto` function in `StepActionMap` doesn't work when passing step IDs (string)
+
+- **Tree View**: Expose `id` in the tree node state
+
 ## [5.16.0] - 2025-07-01
 
 ### Added

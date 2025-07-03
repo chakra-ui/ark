@@ -8,7 +8,9 @@
 
   const { collection, filter } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
-    filter: (...args) => filters().contains(...args),
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText)
+    },
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
