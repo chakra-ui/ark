@@ -17,7 +17,7 @@
   <Select.Label>Framework</Select.Label>
   <Select.Control>
     <Select.Trigger>
-      <Select.ValueText placeholder="Select Frameworks" />
+      <Select.ValueText placeholder="Select a Framework" />
       <Select.Indicator>
         <ChevronDownIcon />
       </Select.Indicator>
