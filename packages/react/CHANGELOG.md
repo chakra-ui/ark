@@ -7,7 +7,12 @@
   - Expose `reason` to `onOpenChange` and `onInputValueChange` callbacks
   - Expose `api.clearHighlightedValue` function to clear highlighted value
 
-- **Date Picker**: Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
+- **Date Picker**
+
+  - Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
+  - Fix issue where `focusedValue` could not be fully controlled
+
+- **Toast**: Fix issue where toast `title` or `description` could not accept React or Vue elements
 
 - **Listbox**: Select highlighted item only if it exists in the collection
 

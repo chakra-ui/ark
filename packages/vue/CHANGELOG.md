@@ -7,7 +7,10 @@
   - Expose `reason` to `onOpenChange` and `onInputValueChange` callbacks
   - Expose `api.clearHighlightedValue` function to clear highlighted value
 
-- **Date Picker**: Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
+- **Date Picker**
+
+  - Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
+  - Fix issue where `focusedValue` could not be fully controlled
 
 - **Listbox**: Select highlighted item only if it exists in the collection
 
