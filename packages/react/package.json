@@ -145,7 +145,7 @@
     "@zag-js/utils": "1.18.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.6",
     "@storybook/addon-a11y": "9.0.15",
     "@storybook/react-vite": "9.0.15",
     "@testing-library/dom": "10.4.0",

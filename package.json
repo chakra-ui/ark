@@ -33,7 +33,7 @@
     "root": "."
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.6",
     "@release-it/keep-a-changelog": "7.0.0",
     "@types/bun": "1.2.16",
     "lefthook": "1.11.13",

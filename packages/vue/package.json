@@ -144,7 +144,7 @@
     "@zag-js/vue": "1.18.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.0.6",
     "@histoire/plugin-vue": "0.17.17",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
