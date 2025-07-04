@@ -20,6 +20,12 @@ Learn how to use the `Select` component in your project. Let's take a look at th
 
 <Example id="basic" />
 
+### Controlled Value
+
+Use the `value` and `onValueChange` props to control the selected items.
+
+<Example id="controlled" />
+
 ### Grouping
 
 Grouping related options can be useful for organizing options into categories.
@@ -36,26 +42,26 @@ To enable `multiple` item selection:
 
 <Example id="multiple" />
 
-### Controlled Component
+### Form Library
 
-For scenarios where you want to control the Select component's state:
-
-<Example id="controlled" />
-
-### Usage with a Form Library
-
-See how to use the Select component with popular form libraries:
+Here's an example of integrating the `Select` component with a form library.
 
 <Example id="form-library" />
 
-### Using the Field Component
+### Field Component
 
 The `Field` component helps manage form-related state and accessibility attributes of a select. It includes handling
 ARIA labels, helper text, and error text to ensure proper accessibility.
 
 <Example id="with-field" />
 
-### Using the Root Provider
+### Async Loading
+
+Here's an example of how to load the items asynchronously when the select is opened.
+
+<Example id="async" />
+
+### Root Provider
 
 The `RootProvider` component provides a context for the select. It accepts the value of the `useSelect` hook. You can
 leverage it to access the component state and methods from outside the select.
@@ -64,6 +70,8 @@ leverage it to access the component state and methods from outside the select.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+## Guides
+
 ### Usage in Popover or Dialog
 
 When using the Select component within a `Popover` or `Dialog`, avoid rendering its content within a `Portal` or
@@ -71,8 +79,6 @@ When using the Select component within a `Popover` or `Dialog`, avoid rendering 
 
 This ensures the Select's content stays within the Popover/Dialog's DOM hierarchy rather than being portalled to the
 document body, maintaining proper interaction and accessibility behavior.
-
-## Guides
 
 ### Available height and width
 

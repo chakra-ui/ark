@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Async from './examples/async.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Grouping from './examples/grouping.vue'
@@ -12,6 +13,9 @@ import WithField from './examples/with-field.vue'
   <Story title="Select">
     <Variant title="Basic">
       <Basic />
+    </Variant>
+    <Variant title="Async">
+      <Async />
     </Variant>
     <Variant title="Grouping">
       <Grouping />

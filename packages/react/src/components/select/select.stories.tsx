@@ -6,11 +6,12 @@ const meta: Meta = {
 
 export default meta
 
-export { Grouping } from './examples/grouping'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
+export { Async } from './examples/async'
 export { FormLibrary } from './examples/form-library'
 export { FullyControlled } from './examples/fully-controlled'
+export { Grouping } from './examples/grouping'
 export { Multiple } from './examples/multiple'
 export { Overflow } from './examples/overflow'
 export { ReactiveCollection } from './examples/reactive-collection'

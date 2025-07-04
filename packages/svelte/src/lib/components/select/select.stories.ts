@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/svelte'
 
+import AsyncExample from './examples/async.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
@@ -19,6 +20,12 @@ export default meta
 export const Basic = {
   render: () => ({
     Component: BasicExample,
+  }),
+}
+
+export const Async = {
+  render: () => ({
+    Component: AsyncExample,
   }),
 }
 
