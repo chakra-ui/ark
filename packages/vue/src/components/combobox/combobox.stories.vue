@@ -7,6 +7,7 @@ import Multiple from './examples/multiple.vue'
 import RehydrateValue from './examples/rehydrate-value.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
+import WithHighlight from './examples/with-highlight.vue'
 </script>
 <template>
   <Story title="Combobox">
@@ -33,6 +34,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Multiple">
       <Multiple />
+    </Variant>
+    <Variant title="With Highlight">
+      <WithHighlight />
     </Variant>
   </Story>
 </template>

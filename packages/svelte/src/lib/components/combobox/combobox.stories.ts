@@ -8,6 +8,7 @@ import RehydrateValueExample from './examples/rehydrate-value.svelte'
 import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
+import WithHighlightExample from './examples/with-highlight.svelte'
 
 const meta: Meta = {
   title: 'Components / Combobox',
@@ -66,5 +67,11 @@ export const WithField = {
 export const Multiple = {
   render: () => ({
     Component: MultipleExample,
+  }),
+}
+
+export const WithHighlight = {
+  render: () => ({
+    Component: WithHighlightExample,
   }),
 }
