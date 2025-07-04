@@ -6,6 +6,7 @@ import Grouping from './examples/grouping.vue'
 import Multiple from './examples/multiple.vue'
 import ReactiveCollection from './examples/reactive-collection.vue'
 import RootProvider from './examples/root-provider.vue'
+import SelectOnHighlight from './examples/select-on-highlight.vue'
 import WithField from './examples/with-field.vue'
 </script>
 
@@ -34,6 +35,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="Select On Highlight">
+      <SelectOnHighlight />
     </Variant>
   </Story>
 </template>

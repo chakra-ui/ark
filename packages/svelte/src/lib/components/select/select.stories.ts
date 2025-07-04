@@ -9,6 +9,7 @@ import GroupingExample from './examples/grouping.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import ReactiveCollectionExample from './examples/reactive-collection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import SelectOnHighlightExample from './examples/select-on-highlight.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
@@ -77,5 +78,11 @@ export const WithField = {
 export const FormLibrary = {
   render: () => ({
     Component: FormLibraryExample,
+  }),
+}
+
+export const SelectOnHighlight = {
+  render: () => ({
+    Component: SelectOnHighlightExample,
   }),
 }
