@@ -8,10 +8,9 @@ export const Multiple = () => {
 
   const [selectedValue, setSelectedValue] = createSignal<string[]>([])
 
-  const { collection, filter } = useListCollection({
+  const { collection, filter, remove } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
-    filter: (itemString, filterText) =>
-      filterFn().contains(itemString, filterText) && !selectedValue().includes(itemString),
+    filter: filterFn().contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -20,7 +19,7 @@ export const Multiple = () => {
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     setSelectedValue(details.value)
-    filter()
+    remove(...details.value)
   }
 
   return (

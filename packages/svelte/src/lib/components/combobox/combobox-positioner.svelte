@@ -9,11 +9,15 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useComboboxContext } from './use-combobox-context'
+  import { usePresenceContext } from '../presence'
 
   let { ref = $bindable(null), ...props }: ComboboxPositionerProps = $props()
 
   const combobox = useComboboxContext()
+  const presence = usePresenceContext()
   const mergedProps = $derived(mergeProps(combobox().getPositionerProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+{#if !presence().unmounted}
+  <Ark as="div" bind:ref {...mergedProps} />
+{/if}

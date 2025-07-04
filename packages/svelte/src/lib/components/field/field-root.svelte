@@ -13,7 +13,7 @@
   import { FieldProvider } from './use-field-context'
   import { useField } from './use-field.svelte'
 
-  let { ref = $bindable<Element | null>(null), ...props }: FieldRootProps = $props()
+  let { ref = $bindable(null), ...props }: FieldRootProps = $props()
 
   const [useFieldProps, localProps] = $derived(
     createSplitProps<UseFieldProps>()(props, ['id', 'ids', 'disabled', 'invalid', 'readOnly', 'required']),

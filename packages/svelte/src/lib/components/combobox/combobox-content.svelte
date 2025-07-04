@@ -11,7 +11,7 @@
   import { useComboboxContext } from './use-combobox-context'
   import { usePresenceContext } from '../presence'
 
-  let { ref = $bindable<Element | null>(), ...props }: ComboboxContentProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxContentProps = $props()
 
   const combobox = useComboboxContext()
   const presence = usePresenceContext()
@@ -22,6 +22,6 @@
   }
 </script>
 
-{#if presence().present}
+{#if !presence().unmounted}
   <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

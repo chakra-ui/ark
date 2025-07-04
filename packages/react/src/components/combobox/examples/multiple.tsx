@@ -8,11 +8,9 @@ export const Multiple = () => {
 
   const selectedValue = useRef<string[]>([])
 
-  const { collection, filter } = useListCollection({
+  const { collection, filter, remove } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
-    filter(itemString, filterText) {
-      return contains(itemString, filterText) && !selectedValue.current.includes(itemString)
-    },
+    filter: contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -21,7 +19,7 @@ export const Multiple = () => {
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     selectedValue.current = details.value
-    filter()
+    remove(...details.value)
   }
 
   return (

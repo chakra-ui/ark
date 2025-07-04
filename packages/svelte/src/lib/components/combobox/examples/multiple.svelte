@@ -8,10 +8,9 @@
 
   let selectedValue: string[] = $state([])
 
-  const { collection, filter } = useListCollection({
+  const { collection, filter, remove } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
-    filter: (itemString, filterText) =>
-      filters().contains(itemString, filterText) && !selectedValue.includes(itemString),
+    filter: filters().contains,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -20,7 +19,7 @@
 
   const handleValueChange = (details: Combobox.ValueChangeDetails) => {
     selectedValue = details.value
-    filter()
+    remove(...details.value)
   }
 </script>
 

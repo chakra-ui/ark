@@ -13,7 +13,7 @@
   import { FieldsetProvider } from './use-fieldset-context'
   import { useFieldset } from './use-fieldset.svelte'
 
-  let { ref = $bindable<Element | null>(null), ...props }: FieldsetRootProps = $props()
+  let { ref = $bindable(null), ...props }: FieldsetRootProps = $props()
 
   const [useFieldsetProps, localProps] = $derived(
     createSplitProps<UseFieldsetProps>()(props, ['id', 'disabled', 'invalid']),

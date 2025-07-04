@@ -10,7 +10,7 @@
       ref?: Element | null
     }
 
-  let { as, ref = $bindable<Element | null>(null), ...props }: Props = $props()
+  let { as, ref = $bindable(null), ...props }: Props = $props()
 </script>
 
 <svelte:element this={as} {...props} bind:this={ref} />

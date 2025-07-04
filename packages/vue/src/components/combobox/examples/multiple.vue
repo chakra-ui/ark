@@ -8,10 +8,9 @@ const filters = useFilter({ sensitivity: 'base' })
 
 const selectedValue = ref<string[]>([])
 
-const { collection, filter } = useListCollection({
+const { collection, filter, remove } = useListCollection({
   initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
-  filter: (itemString, filterText) =>
-    filters.value.contains(itemString, filterText) && !selectedValue.value.includes(itemString),
+  filter: filters.value.contains,
 })
 
 const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
@@ -20,7 +19,7 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
 
 const handleValueChange = (details: Combobox.ValueChangeDetails) => {
   selectedValue.value = details.value
-  filter()
+  remove(...details.value)
 }
 </script>
 
