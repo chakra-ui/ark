@@ -7,14 +7,18 @@ interface Inputs {
 }
 
 export const FormLibrary = () => {
+  const { register, handleSubmit, getValues } = useForm<Inputs>({
+    defaultValues: { framework: 'React' },
+  })
+
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
-  const { register, handleSubmit } = useForm<Inputs>()
+  const defaultValue = getValues('framework')
 
   const onSubmit: SubmitHandler<Inputs> = (data) => window.alert(JSON.stringify(data))
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Select.Root collection={collection}>
+      <Select.Root collection={collection} defaultValue={[defaultValue]}>
         <Select.Label>Framework</Select.Label>
         <Select.HiddenSelect {...register('framework')} />
         <Select.Control>
