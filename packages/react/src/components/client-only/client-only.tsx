@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react'
 
 export interface ClientOnlyProps {
-  children: React.ReactNode
+  children: React.ReactNode | (() => React.ReactNode)
   fallback?: React.ReactNode | undefined
 }
 
@@ -20,5 +20,5 @@ export const ClientOnly = (props: ClientOnlyProps): React.ReactNode => {
     return fallback
   }
 
-  return <>{children}</>
+  return <>{typeof children === 'function' ? children() : children}</>
 }

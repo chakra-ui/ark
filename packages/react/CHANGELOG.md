@@ -22,6 +22,8 @@
 
 - **Tree View**: Expose `id` in the tree node state
 
+- **ClientOnly**: Support `children` as a function
+
 ## [5.16.0] - 2025-07-01
 
 ### Added
