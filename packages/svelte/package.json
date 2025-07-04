@@ -179,8 +179,8 @@
     "@zag-js/utils": "1.18.2"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "9.0.10",
-    "@storybook/sveltekit": "9.0.10",
+    "@storybook/addon-a11y": "9.0.15",
+    "@storybook/sveltekit": "9.0.15",
     "@sveltejs/adapter-auto": "6.0.1",
     "@sveltejs/kit": "2.21.5",
     "@sveltejs/package": "2.3.11",
@@ -192,7 +192,7 @@
     "@vitest/coverage-v8": "3.2.3",
     "clean-package": "2.2.0",
     "lucide-svelte": "0.515.0",
-    "storybook": "9.0.10",
+    "storybook": "9.0.15",
     "svelte": "5.34.3",
     "svelte-check": "4.2.1",
     "tslib": "2.8.1",
