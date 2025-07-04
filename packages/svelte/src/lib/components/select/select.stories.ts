@@ -6,6 +6,7 @@ import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import FormLibraryExample from './examples/form-library.svelte'
 import GroupingExample from './examples/grouping.svelte'
+import MaxSelectedExample from './examples/max-selected.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import ReactiveCollectionExample from './examples/reactive-collection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -84,5 +85,11 @@ export const FormLibrary = {
 export const SelectOnHighlight = {
   render: () => ({
     Component: SelectOnHighlightExample,
+  }),
+}
+
+export const MaxSelected = {
+  render: () => ({
+    Component: MaxSelectedExample,
   }),
 }

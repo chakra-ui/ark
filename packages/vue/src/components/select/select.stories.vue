@@ -3,6 +3,7 @@ import Async from './examples/async.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Grouping from './examples/grouping.vue'
+import MaxSelected from './examples/max-selected.vue'
 import Multiple from './examples/multiple.vue'
 import ReactiveCollection from './examples/reactive-collection.vue'
 import RootProvider from './examples/root-provider.vue'
@@ -38,6 +39,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Select On Highlight">
       <SelectOnHighlight />
+    </Variant>
+    <Variant title="Max Selected">
+      <MaxSelected />
     </Variant>
   </Story>
 </template>
