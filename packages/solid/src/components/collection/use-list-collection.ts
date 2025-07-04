@@ -110,10 +110,8 @@ export function useListCollection<T>(props: MaybeAccessor<UseListCollectionProps
       setItems(newItems)
     },
     upsert: (value, item, mode = 'append') => {
-      let collection = create(items())
-      const updateFn = mode === 'append' ? collection.append : collection.prepend
-      collection = collection.has(value) ? collection.update(value, item) : updateFn(item)
-      setItems(collection.items)
+      const newItems = create(items()).upsert(value, item, mode).items
+      setItems(newItems)
     },
     prepend: (...itemsToPrepend) => {
       const newItems = create(items()).prepend(...itemsToPrepend).items

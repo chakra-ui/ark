@@ -100,10 +100,8 @@ export function useListCollection<T>(props: UseListCollectionProps<T>): UseListC
       setItems(newItems)
     }),
     upsert: useEvent((value, item, mode = 'append') => {
-      let collection = create(items)
-      const updateFn = mode === 'append' ? collection.append : collection.prepend
-      collection = collection.has(value) ? collection.update(value, item) : updateFn(item)
-      setItems(collection.items)
+      const newItems = create(items).upsert(value, item, mode).items
+      setItems(newItems)
     }),
     prepend: useEvent((...itemsToPrepend) => {
       const newItems = create(items).prepend(...itemsToPrepend).items
