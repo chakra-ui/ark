@@ -14,7 +14,7 @@
   import { usePresence } from '../presence'
   import { useDialogContext } from './use-dialog-context'
 
-  let { ref = $bindable<Element | null>(), ...props }: DialogBackdropProps = $props()
+  let { ref = $bindable(null), ...props }: DialogBackdropProps = $props()
 
   const dialog = useDialogContext()
   const renderStrategyProps = useRenderStrategyPropsContext()

@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence'
   import { useColorPickerContext } from './use-color-picker-context'
 
-  let { ref = $bindable<Element | null>(), ...props }: ColorPickerContentProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerContentProps = $props()
 
   const colorPicker = useColorPickerContext()
   const presence = usePresenceContext()

@@ -18,7 +18,7 @@
   export interface FocusTrapBaseProps extends PolymorphicProps<'div'>, RefAttribute, TrapOptions {}
   export interface FocusTrapProps extends Assign<HTMLProps<'div'>, FocusTrapBaseProps> {}
 
-  let { ref = $bindable<Element | null>(), ...props }: FocusTrapProps = $props()
+  let { ref = $bindable(null), ...props }: FocusTrapProps = $props()
 
   const [trapProps, localProps] = $derived(
     createSplitProps<TrapOptions>()(props, [
