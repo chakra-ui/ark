@@ -6,11 +6,11 @@ const meta: Meta = {
 
 export default meta
 
-export { Advanced } from './examples/advanced'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
 export { DynamicItems } from './examples/dynamic-items'
-export { WithFormLibrary } from './examples/form-library'
+export { FormLibrary } from './examples/form-library'
+export { Grouping } from './examples/grouping'
 export { Multiple } from './examples/multiple'
 export { ReactiveCollection } from './examples/reactive-collection'
 export { RootProvider } from './examples/root-provider'

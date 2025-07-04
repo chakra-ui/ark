@@ -6,11 +6,10 @@ const meta: Meta = {
 
 export default meta
 
-export { Advanced } from './examples/advanced'
+export { Grouping } from './examples/grouping'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
 export { FormLibrary } from './examples/form-library'
-export { FormLibraryWithDefaultValue } from './examples/form-library-with-default-value'
 export { FullyControlled } from './examples/fully-controlled'
 export { Multiple } from './examples/multiple'
 export { Overflow } from './examples/overflow'

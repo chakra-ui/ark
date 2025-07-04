@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Advanced from './examples/advanced.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Grouping from './examples/grouping.vue'
 import Multiple from './examples/multiple.vue'
 import ReactiveCollection from './examples/reactive-collection.vue'
 import RootProvider from './examples/root-provider.vue'
@@ -13,8 +13,8 @@ import WithField from './examples/with-field.vue'
     <Variant title="Basic">
       <Basic />
     </Variant>
-    <Variant title="Advanced">
-      <Advanced />
+    <Variant title="Grouping">
+      <Grouping />
     </Variant>
     <Variant title="Multiple">
       <Multiple />

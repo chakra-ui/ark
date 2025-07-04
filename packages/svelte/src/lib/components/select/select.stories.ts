@@ -1,10 +1,10 @@
 import type { Meta } from '@storybook/svelte'
 
-import AdvancedExample from './examples/advanced.svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import FormLibraryExample from './examples/form-library.svelte'
+import GroupingExample from './examples/grouping.svelte'
 import MultipleExample from './examples/multiple.svelte'
 import ReactiveCollectionExample from './examples/reactive-collection.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -22,9 +22,9 @@ export const Basic = {
   }),
 }
 
-export const Advanced = {
+export const Grouping = {
   render: () => ({
-    Component: AdvancedExample,
+    Component: GroupingExample,
   }),
 }
 
