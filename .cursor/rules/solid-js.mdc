@@ -1,5 +1,5 @@
 ---
-description: 
+description:
 globs: packages/solid/**/*.tsx
 alwaysApply: false
 ---
@@ -27,7 +27,7 @@ const [useAvatarProps, localProps] = createSplitProps<UseAvatarProps>()(props, [
 - When creating stories, use `storybook-solidjs` to create stories.
 
 ```tsx
-import type { Meta } from 'storybook-solidjs'
+import type { Meta } from 'storybook-solidjs-vite'
 const meta: Meta = {
   title: 'Components / Avatar',
 }
@@ -36,4 +36,3 @@ export default meta
 ```
 
 - DO NOT destructure `props` in components, use `createSplitProps` or `splitProps` instead.
-

@@ -1,4 +1,4 @@
-import type { Meta } from 'storybook-solidjs'
+import type { Meta } from 'storybook-solidjs-vite'
 
 const meta: Meta = {
   title: 'Components / Switch',

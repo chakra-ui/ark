@@ -18,7 +18,7 @@
       "groupSlug": "all-minor-patch"
     },
     {
-      "matchPackageNames": ["@testing-library/vue", "storybook-solidjs", "storybook-solidjs-vite"],
+      "matchPackageNames": ["@testing-library/vue", "storybook-solidjs-vite"],
       "enabled": false
     }
   ]

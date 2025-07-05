@@ -6,7 +6,7 @@ export function useAsync<T>(fn: (signal: AbortSignal | null) => Promise<T>) {
 
   let controller: AbortController | null = null
   const abort = () => {
-    controller?.abort()
+    controller?.abort('useAsync')
   }
 
   const load = async () => {
