@@ -153,20 +153,20 @@
     "@types/jsdom": "21.1.7",
     "@vitejs/plugin-vue": "6.0.0",
     "@vitejs/plugin-vue-jsx": "5.0.1",
-    "@vue/compiler-sfc": "3.5.16",
+    "@vue/compiler-sfc": "3.5.17",
     "clean-package": "2.2.0",
     "globby": "14.1.0",
     "histoire": "0.17.17",
     "jsdom": "26.1.0",
-    "lucide-vue-next": "0.515.0",
+    "lucide-vue-next": "0.525.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.8.3",
-    "vite": "6.3.5",
+    "vite": "7.0.2",
     "vite-plugin-dts": "4.5.4",
-    "vitest": "3.2.3",
-    "@vitest/coverage-v8": "3.2.3",
-    "vue": "3.5.16",
-    "vue-tsc": "2.2.10"
+    "vitest": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
+    "vue": "3.5.17",
+    "vue-tsc": "3.0.1"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"
