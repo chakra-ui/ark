@@ -12,7 +12,7 @@
   - Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
   - Fix issue where `focusedValue` could not be fully controlled
 
-- **Toast**: Fix issue where toast `title` or `description` could not accept React or Vue elements
+- **Toast**: Fix issue where toast `title` or `description` could not accept React element
 
 - **Listbox**: Select highlighted item only if it exists in the collection
 
