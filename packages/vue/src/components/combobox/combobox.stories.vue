@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Dynamic from './examples/dynamic.vue'
 import Grouping from './examples/grouping.vue'
 import Links from './examples/links.vue'
 import Multiple from './examples/multiple.vue'
@@ -28,6 +29,9 @@ import WithHighlight from './examples/with-highlight.vue'
     </Variant>
     <Variant title="Controlled">
       <Controlled />
+    </Variant>
+    <Variant title="Dynamic">
+      <Dynamic />
     </Variant>
     <Variant title="Rehydrate Value">
       <RehydrateValue />
