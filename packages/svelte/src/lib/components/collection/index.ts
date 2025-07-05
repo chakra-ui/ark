@@ -14,4 +14,8 @@ export {
   type TreeCollectionOptions,
   type TreeNode,
 } from './tree-collection'
-export { useListCollection, type UseListCollectionProps } from './use-list-collection.svelte'
+export {
+  useListCollection,
+  type UseListCollectionProps,
+  type UseListCollectionReturn,
+} from './use-list-collection.svelte'

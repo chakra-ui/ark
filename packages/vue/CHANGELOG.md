@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Collection**: Export `UseListCollectionReturn` type
+
 ## [5.16.1] - 2025-07-05
 
 ### Fixed
