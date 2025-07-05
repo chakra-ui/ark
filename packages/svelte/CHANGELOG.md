@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.1.1] - 2025-07-05
+
 ### Fixed
 
 - **Combobox**
