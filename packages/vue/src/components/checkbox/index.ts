@@ -10,6 +10,11 @@ export {
 } from './checkbox-control.vue'
 export { default as CheckboxGroup, type CheckboxGroupProps, type CheckboxGroupBaseProps } from './checkbox-group.vue'
 export {
+  default as CheckboxGroupProvider,
+  type CheckboxGroupProviderProps,
+  type CheckboxGroupProviderBaseProps,
+} from './checkbox-group-provider.vue'
+export {
   default as CheckboxHiddenInput,
   type CheckboxHiddenInputProps,
   type CheckboxHiddenInputBaseProps,

@@ -11,6 +11,11 @@ export {
   type CheckboxGroupProps as GroupProps,
 } from './checkbox-group'
 export {
+  CheckboxGroupProvider as GroupProvider,
+  type CheckboxGroupProviderBaseProps as GroupProviderBaseProps,
+  type CheckboxGroupProviderProps as GroupProviderProps,
+} from './checkbox-group-provider'
+export {
   CheckboxHiddenInput as HiddenInput,
   type CheckboxHiddenInputBaseProps as HiddenInputBaseProps,
   type CheckboxHiddenInputProps as HiddenInputProps,

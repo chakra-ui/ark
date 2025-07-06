@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
+import GroupProviderExample from './examples/group-provider.svelte'
 import GroupWithFormExample from './examples/group-with-form.svelte'
 import GroupWithInvalidExample from './examples/group-with-invalid.svelte'
 import GroupWithSelectAllExample from './examples/group-with-select-all.svelte'
@@ -83,5 +84,11 @@ export const RootProvider = {
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
+  }),
+}
+
+export const GroupProvider = {
+  render: () => ({
+    Component: GroupProviderExample,
   }),
 }

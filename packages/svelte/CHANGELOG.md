@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
+
 ### Fixed
 
 - **Collection**: Export `UseListCollectionReturn` type

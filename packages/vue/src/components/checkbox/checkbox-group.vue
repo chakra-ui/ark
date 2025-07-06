@@ -18,7 +18,7 @@ export interface CheckboxGroupEmits extends GroupEmits {}
 import { ark } from '../factory'
 import { checkboxAnatomy } from './checkbox.anatomy'
 import { useCheckboxGroup } from './use-checkbox-group'
-import { CheckboxGroupProvider } from './use-checkbox-group-context'
+import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 import { useForwardExpose } from '../../utils'
 
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<CheckboxGroupProps>(), {
 const emits = defineEmits<CheckboxGroupEmits>()
 
 const checkboxGroup = useCheckboxGroup(props, emits)
-CheckboxGroupProvider(checkboxGroup)
+CheckboxGroupContextProvider(checkboxGroup)
 
 useForwardExpose()
 </script>

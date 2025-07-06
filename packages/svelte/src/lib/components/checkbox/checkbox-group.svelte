@@ -9,7 +9,7 @@
 <script lang="ts">
   import { Ark } from '../factory'
   import { checkboxAnatomy } from './checkbox.anatomy'
-  import { CheckboxGroupProvider } from './use-checkbox-group-context'
+  import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
   import { splitCheckboxGroupProps } from './split-checkbox-group-props.svelte'
   import { useCheckboxGroup } from './use-checkbox-group.svelte'
 
@@ -28,7 +28,7 @@
 
   const checkboxGroup = useCheckboxGroup(() => resolvedProps)
 
-  CheckboxGroupProvider(checkboxGroup)
+  CheckboxGroupContextProvider(checkboxGroup)
 </script>
 
 <Ark as="div" bind:ref role="group" {...checkboxAnatomy.build().group.attrs} {...localProps} />
