@@ -3,6 +3,9 @@ export type {
   FileChangeDetails as FileUploadFileChangeDetails,
   FileRejectDetails as FileUploadFileRejectDetails,
   FileValidateDetails as FileUploadFileValidateDetails,
+  FileError as FileUploadFileError,
+  FileMimeType as FileUploadFileMimeType,
+  FileRejection as FileUploadFileRejection,
 } from '@zag-js/file-upload'
 export {
   FileUploadClearTrigger,

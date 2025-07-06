@@ -9,6 +9,7 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Collection**: Export `UseListCollectionReturn` type
+- **File Upload**: Export `FileError`, `FileMimeType`, and `FileRejection` types
 
 ## [5.1.1] - 2025-07-05
 

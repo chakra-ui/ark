@@ -3,6 +3,7 @@
 ### Fixed
 
 - **Collection**: Export `UseListCollectionReturn` type
+- **File Upload**: Export `FileError`, `FileMimeType`, and `FileRejection` types
 
 ## [5.16.1] - 2025-07-05
 
