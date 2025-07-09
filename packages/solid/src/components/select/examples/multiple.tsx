@@ -1,4 +1,5 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
+import { ChevronDownIcon } from 'lucide-solid'
 import { Index, Portal } from 'solid-js/web'
 
 export const Multiple = () => {
@@ -16,6 +17,9 @@ export const Multiple = () => {
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select a Framework" />
+          <Select.Indicator>
+            <ChevronDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
         <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
@@ -23,6 +27,7 @@ export const Multiple = () => {
         <Select.Positioner>
           <Select.Content>
             <Select.ItemGroup>
+              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
               <Index each={collection.items}>
                 {(item) => (
                   <Select.Item item={item()}>

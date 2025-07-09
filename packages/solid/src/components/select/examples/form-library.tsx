@@ -3,7 +3,7 @@ import { createForm, getValue, setValue } from '@modular-forms/solid'
 import { createMemo } from 'solid-js'
 import { Index, Portal } from 'solid-js/web'
 
-export const WithFormLibrary = () => {
+export const FormLibrary = () => {
   const frameworks = createListCollection({
     items: [
       { label: 'React', value: 'react' },

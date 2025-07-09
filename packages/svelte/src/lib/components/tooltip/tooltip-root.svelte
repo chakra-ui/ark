@@ -26,7 +26,7 @@
     id: providedId,
     onOpenChange(details) {
       useTooltipProps.onOpenChange?.(details)
-      open = details.open
+      if (open !== undefined) open = details.open
     },
   })
 

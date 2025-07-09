@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { ItemProps } from '@zag-js/steps'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsContentBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+  export interface StepsContentBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsContentProps extends Assign<HTMLProps<'div'>, StepsContentBaseProps> {}
 </script>
 
@@ -12,11 +12,11 @@
   import { Ark } from '../factory'
   import { useStepsContext } from './use-steps-context'
 
-  const props: StepsContentProps = $props()
+  let { ref = $bindable(null), ...props }: StepsContentProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))
 
   const steps = useStepsContext()
   const mergedProps = $derived(mergeProps(steps().getContentProps(itemProps), localProps))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

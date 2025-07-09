@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface DatePickerPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface DatePickerPositionerProps extends Assign<HTMLProps<'div'>, DatePickerPositionerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { usePresenceContext } from '../presence/index.js'
 
-  const props: DatePickerPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerPositionerProps = $props()
 
   const datePicker = useDatePickerContext()
   const presence = usePresenceContext()
@@ -19,5 +19,5 @@
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 {/if}

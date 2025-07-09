@@ -6,6 +6,11 @@ export { CheckboxContext, type CheckboxContextProps } from './checkbox-context'
 export { CheckboxControl, type CheckboxControlBaseProps, type CheckboxControlProps } from './checkbox-control'
 export { CheckboxGroup, type CheckboxGroupBaseProps, type CheckboxGroupProps } from './checkbox-group'
 export {
+  CheckboxGroupProvider,
+  type CheckboxGroupProviderBaseProps,
+  type CheckboxGroupProviderProps,
+} from './checkbox-group-provider'
+export {
   CheckboxHiddenInput,
   type CheckboxHiddenInputBaseProps,
   type CheckboxHiddenInputProps,

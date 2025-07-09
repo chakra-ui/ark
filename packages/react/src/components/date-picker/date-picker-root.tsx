@@ -48,6 +48,7 @@ export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((p
     'translations',
     'value',
     'view',
+    'inline',
   ])
   const datePicker = useDatePicker(useDatePickerProps)
   const presence = usePresence(mergeProps({ present: datePicker.open }, presenceProps))

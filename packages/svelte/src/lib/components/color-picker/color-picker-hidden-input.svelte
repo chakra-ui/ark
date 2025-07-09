@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface ColorPickerHiddenInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface ColorPickerHiddenInputProps extends Assign<HTMLProps<'input'>, ColorPickerHiddenInputBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useColorPickerContext } from './use-color-picker-context'
   import { useFieldContext } from '../field'
 
-  const props: ColorPickerHiddenInputProps = $props()
+  let { ref = $bindable(null), ...props }: ColorPickerHiddenInputProps = $props()
 
   const colorPicker = useColorPickerContext()
   const mergedProps = $derived(mergeProps(colorPicker().getHiddenInputProps(), props))
   const field = useFieldContext()
 </script>
 
-<Ark as="input" aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />
+<Ark as="input" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

@@ -1,10 +1,10 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { OptionItemProps } from '@zag-js/menu'
 
   type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onCheckedChange'>
 
-  export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div'> {}
+  export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface MenuRadioItemProps extends Assign<HTMLProps<'div'>, MenuRadioItemBaseProps> {}
 </script>
 
@@ -17,7 +17,7 @@
   import { useMenuItemGroupContext } from './use-menu-item-group-context'
   import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
-  const props: MenuRadioItemProps = $props()
+  let { ref = $bindable(null), ...props }: MenuRadioItemProps = $props()
 
   const [partialItemProps, localProps] = $derived(
     createSplitProps<PartialOptionItemProps>()(props, ['closeOnSelect', 'disabled', 'value', 'valueText']),
@@ -40,4 +40,4 @@
   MenuItemProvider(() => optionItemState)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

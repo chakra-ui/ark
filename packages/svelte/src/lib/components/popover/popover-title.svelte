@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverTitleBaseProps extends PolymorphicProps<'h2'> {}
+  export interface PopoverTitleBaseProps extends PolymorphicProps<'h2'>, RefAttribute {}
   export interface PopoverTitleProps extends Assign<HTMLProps<'h2'>, PopoverTitleBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { usePopoverContext } from './use-popover-context'
 
-  const props: PopoverTitleProps = $props()
+  let { ref = $bindable(null), ...props }: PopoverTitleProps = $props()
 
   const popover = usePopoverContext()
   const mergedProps = $derived(mergeProps(popover().getTitleProps(), props))
 </script>
 
-<Ark as="h2" {...mergedProps} />
+<Ark as="h2" bind:ref {...mergedProps} />

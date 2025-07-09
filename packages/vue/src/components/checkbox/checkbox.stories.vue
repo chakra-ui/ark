@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import GroupControlled from './examples/group-controlled.vue'
+import GroupProvider from './examples/group-provider.vue'
 import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
@@ -34,6 +35,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Group Controlled">
       <GroupControlled />
+    </Variant>
+    <Variant title="Group Provider">
+      <GroupProvider />
     </Variant>
   </Story>
 </template>

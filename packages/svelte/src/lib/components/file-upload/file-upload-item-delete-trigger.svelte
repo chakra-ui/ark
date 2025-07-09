@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface FileUploadItemDeleteTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface FileUploadItemDeleteTriggerProps
     extends Assign<HTMLProps<'button'>, FileUploadItemDeleteTriggerBaseProps> {}
 </script>
@@ -12,10 +12,10 @@
   import { useFileUploadContext } from './use-file-upload-context'
   import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
 
-  const props: FileUploadItemDeleteTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FileUploadItemDeleteTriggerProps = $props()
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
   const mergedProps = $derived(mergeProps(fileUpload().getItemDeleteTriggerProps(itemProps()), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

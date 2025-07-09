@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseTagsInputProps } from './use-tags-input.svelte'
 
-  export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps<'div'> {}
+  export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRootBaseProps> {}
 </script>
 
@@ -13,7 +13,12 @@
   import { TagsInputProvider } from './use-tags-input-context'
   import { useTagsInput } from './use-tags-input.svelte'
 
-  let { value = $bindable<string[]>(), inputValue = $bindable<string>(), ...props }: TagsInputRootProps = $props()
+  let {
+    ref = $bindable(null),
+    value = $bindable<string[]>(),
+    inputValue = $bindable<string>(),
+    ...props
+  }: TagsInputRootProps = $props()
 
   const [useTagsInputProps, localProps] = $derived(
     createSplitProps<UseTagsInputProps>()(props, [
@@ -74,4 +79,4 @@
   TagsInputProvider(tagsInput)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

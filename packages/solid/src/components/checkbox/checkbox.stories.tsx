@@ -1,4 +1,4 @@
-import type { Meta } from 'storybook-solidjs'
+import type { Meta } from 'storybook-solidjs-vite'
 
 const meta: Meta = {
   title: 'Components / Checkbox',
@@ -13,3 +13,4 @@ export { Indeterminate } from './examples/indeterminate'
 export { RenderProp } from './examples/render-prop'
 export { RootProvider } from './examples/root-provider'
 export { WithField } from './examples/with-field'
+export { GroupProvider } from './examples/group-provider'

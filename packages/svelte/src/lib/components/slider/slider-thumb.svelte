@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ThumbProps } from '@zag-js/slider'
 
-  export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div'> {}
+  export interface SliderThumbBaseProps extends ThumbProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SliderThumbProps extends HTMLProps<'div'>, SliderThumbBaseProps {}
 </script>
 
@@ -13,12 +13,12 @@
   import { useSliderContext } from './use-slider-context'
   import SliderThumbPropsProvider from './slider-thumb-props-provider.svelte'
 
-  const props: SliderThumbProps = $props()
+  let { ref = $bindable(null), ...props }: SliderThumbProps = $props()
   const [thumbProps, localProps] = $derived(createSplitProps<ThumbProps>()(props, ['index', 'name']))
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getThumbProps(thumbProps), localProps))
 </script>
 
 <SliderThumbPropsProvider value={thumbProps}>
-  <Ark as="div" {...mergedProps} />
+  <Ark as="div" bind:ref {...mergedProps} />
 </SliderThumbPropsProvider>

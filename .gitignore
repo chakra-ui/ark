@@ -315,4 +315,4 @@ vite.config.mts.timestamp-*
 
 # Release
 .npmrc
-.release.sh
+release.sh

@@ -9,6 +9,7 @@ import RootProviderExample from './examples/root-provider.svelte'
 import SingleFileExample from './examples/single-file.svelte'
 import SizeLimitsExample from './examples/size-limits.svelte'
 import ValidationExample from './examples/validation.svelte'
+import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
   title: 'Components/FileUpload',
@@ -67,5 +68,11 @@ export const SizeLimits = {
 export const Validation = {
   render: () => ({
     Component: ValidationExample,
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    Component: WithFieldExample,
   }),
 }

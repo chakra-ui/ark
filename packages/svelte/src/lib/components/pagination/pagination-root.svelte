@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UsePaginationProps } from './use-pagination.svelte'
 
-  export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps<'nav'> {}
+  export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps<'nav'>, RefAttribute {}
   export interface PaginationRootProps extends Assign<HTMLProps<'nav'>, PaginationRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { PaginationProvider } from './use-pagination-context'
   import { usePagination } from './use-pagination.svelte'
 
-  let { page = $bindable(), pageSize = $bindable(), ...props }: PaginationRootProps = $props()
+  let { ref = $bindable(null), page = $bindable(), pageSize = $bindable(), ...props }: PaginationRootProps = $props()
   const providedId = $props.id()
 
   const [paginationProps, localProps] = $derived(
@@ -54,4 +54,4 @@
   PaginationProvider(pagination)
 </script>
 
-<Ark as="nav" {...mergedProps} />
+<Ark as="nav" bind:ref {...mergedProps} />

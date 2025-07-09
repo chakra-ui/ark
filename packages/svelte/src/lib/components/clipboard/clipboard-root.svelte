@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseClipboardProps } from './use-clipboard.svelte'
 
-  export interface ClipboardRootBaseProps extends UseClipboardProps, PolymorphicProps<'div'> {}
+  export interface ClipboardRootBaseProps extends UseClipboardProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ClipboardRootProps extends Assign<HTMLProps<'div'>, ClipboardRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { ClipboardProvider } from './use-clipboard-context'
   import { useClipboard } from './use-clipboard.svelte'
 
-  let { value = $bindable(), ...props }: ClipboardRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: ClipboardRootProps = $props()
   const providedId = $props.id()
 
   const [useClipboardProps, localProps] = $derived(splitClipboardProps(props))
@@ -24,7 +24,7 @@
     value,
     onValueChange(details) {
       useClipboardProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   })
 
@@ -34,4 +34,4 @@
   ClipboardProvider(clipboard)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark bind:ref as="div" {...mergedProps} />

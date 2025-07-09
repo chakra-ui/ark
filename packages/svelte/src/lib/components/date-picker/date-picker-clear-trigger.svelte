@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerClearTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface DatePickerClearTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface DatePickerClearTriggerProps extends Assign<HTMLProps<'button'>, DatePickerClearTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  const props: DatePickerClearTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerClearTriggerProps = $props()
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getClearTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark bind:ref as="button" {...mergedProps} />

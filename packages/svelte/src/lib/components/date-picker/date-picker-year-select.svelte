@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerYearSelectBaseProps extends PolymorphicProps<'select'> {}
+  export interface DatePickerYearSelectBaseProps extends PolymorphicProps<'select'>, RefAttribute {}
   export interface DatePickerYearSelectProps extends Assign<HTMLProps<'select'>, DatePickerYearSelectBaseProps> {}
 </script>
 
@@ -10,13 +10,13 @@
   import { Ark } from '../factory/index.js'
   import { useDatePickerContext } from './use-date-picker-context.js'
 
-  const props: DatePickerYearSelectProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerYearSelectProps = $props()
 
   const datePicker = useDatePickerContext()
   const mergedProps = $derived(mergeProps(datePicker().getYearSelectProps(), props))
 </script>
 
-<Ark as="select" {...mergedProps}>
+<Ark as="select" bind:ref {...mergedProps}>
   {#each datePicker().getYears() as year, i}
     <option value={year.value}>
       {year.label}

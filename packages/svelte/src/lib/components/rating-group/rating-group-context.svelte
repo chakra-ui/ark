@@ -14,4 +14,4 @@
   const context = useRatingGroupContext()
 </script>
 
-{@render render(context)} 
+{@render render(context)}

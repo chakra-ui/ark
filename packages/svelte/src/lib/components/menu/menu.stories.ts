@@ -2,11 +2,14 @@ import type { Meta } from '@storybook/svelte'
 
 import BasicExample from './examples/basic.svelte'
 import CheckboxExample from './examples/checkbox.svelte'
+import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import GroupExample from './examples/group.svelte'
 import NestedExample from './examples/nested.svelte'
+import RadioGroupExample from './examples/radio-group.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectEventExample from './examples/select-event.svelte'
+import SeparatorExample from './examples/separator.svelte'
 import WithContextExample from './examples/with-context.svelte'
 
 const meta: Meta = {
@@ -24,6 +27,24 @@ export const Basic = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const Context = {
+  render: () => ({
+    Component: ContextExample,
+  }),
+}
+
+export const RadioGroup = {
+  render: () => ({
+    Component: RadioGroupExample,
+  }),
+}
+
+export const Separator = {
+  render: () => ({
+    Component: SeparatorExample,
   }),
 }
 

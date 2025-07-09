@@ -10,7 +10,7 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   /**
    * The filter function to use to filter the items.
    */
-  filter?: (itemText: string, filterText: string) => boolean
+  filter?: (itemText: string, filterText: string, item: T) => boolean
   /**
    * The maximum number of items to display in the collection.
    * Useful for performance when you have a large number of items.
@@ -18,86 +18,179 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   limit?: number
 }
 
-export function useListCollection<T>(props: MaybeAccessor<UseListCollectionProps<T>>) {
+export function useListCollection<T>(props: MaybeAccessor<UseListCollectionProps<T>>): UseListCollectionReturn<T> {
   const splittedProps = createMemo(() => {
     const rawProps = typeof props === 'function' ? props() : props
     return splitProps(rawProps, ['initialItems', 'filter', 'limit'])
   })
 
-  const create = (items: T[]) => {
-    const [, collectionProps] = splittedProps()
-    return createListCollection({ ...collectionProps, items })
-  }
-
   const init = () => {
     const [localProps] = splittedProps()
-    return create(
-      localProps.limit != null ? localProps.initialItems.slice(0, localProps.limit) : localProps.initialItems,
-    )
+    return localProps.initialItems
   }
 
-  const [collection, setCollectionImpl] = createSignal(init())
+  const [items, setItemsImpl] = createSignal<T[]>(init())
+  const [filterText, setFilterText] = createSignal('')
 
-  const setCollection = (collection: ListCollection<T>) => {
-    const [localProps] = splittedProps()
-    setCollectionImpl(
-      localProps.limit == null ? collection : collection.copy(collection.items.slice(0, localProps.limit)),
-    )
+  const setItems = (newItems: T[]) => {
+    setItemsImpl(newItems)
+    setFilterText('')
   }
+
+  const create = (itemsToCreate: T[]) => {
+    const [, collectionOptions] = splittedProps()
+    return createListCollection({ ...collectionOptions, items: itemsToCreate })
+  }
+
+  const collection = createMemo(() => {
+    const [localProps, collectionOptions] = splittedProps()
+    const filter = localProps.filter
+
+    let activeItems = items()
+
+    // Apply filter if we have filter text and a filter function
+    if (filterText() && filter) {
+      activeItems = create(items()).filter((itemString, _index, item) => filter(itemString, filterText(), item)).items
+    }
+
+    // Apply limit
+    const limitedItems = localProps.limit == null ? activeItems : activeItems.slice(0, localProps.limit)
+    return createListCollection({ ...collectionOptions, items: limitedItems })
+  })
 
   return {
     collection,
-    filter: (inputValue: string) => {
-      const [localProps] = splittedProps()
-
-      const filter = localProps.filter
-      if (!filter) return
-
-      const filtered = create(localProps.initialItems).filter((itemString) => filter(itemString, inputValue))
-      setCollection(filtered)
+    filter: (inputValue = '') => {
+      setFilterText(inputValue)
     },
-    set: (items: T[]) => {
-      setCollection(create(items))
+    set: (newItems) => {
+      setItems(newItems)
     },
     reset: () => {
       const [localProps] = splittedProps()
-      setCollection(create(localProps.initialItems))
+      setItems(localProps.initialItems)
     },
     clear: () => {
-      setCollection(create([]))
+      setItems([])
     },
-    insert: (index: number, ...items: T[]) => {
-      setCollection(collection().insert(index, ...items))
+    insert: (index, ...itemsToInsert) => {
+      const newItems = create(items()).insert(index, ...itemsToInsert).items
+      setItems(newItems)
     },
-    insertBefore: (value: string, ...items: T[]) => {
-      setCollection(collection().insertBefore(value, ...items))
+    insertBefore: (value, ...itemsToInsert) => {
+      const newItems = create(items()).insertBefore(value, ...itemsToInsert).items
+      setItems(newItems)
     },
-    insertAfter: (value: string, ...items: T[]) => {
-      setCollection(collection().insertAfter(value, ...items))
+    insertAfter: (value, ...itemsToInsert) => {
+      const newItems = create(items()).insertAfter(value, ...itemsToInsert).items
+      setItems(newItems)
     },
-    remove: (...itemOrValues: T[]) => {
-      setCollection(collection().remove(...itemOrValues))
+    remove: (...itemOrValues) => {
+      const newItems = create(items()).remove(...itemOrValues).items
+      setItems(newItems)
     },
-    move: (value: string, to: number) => {
-      setCollection(collection().move(value, to))
+    move: (value, to) => {
+      const newItems = create(items()).move(value, to).items
+      setItems(newItems)
     },
-    moveBefore: (value: string, ...values: string[]) => {
-      setCollection(collection().moveBefore(value, ...values))
+    moveBefore: (value, ...values) => {
+      const newItems = create(items()).moveBefore(value, ...values).items
+      setItems(newItems)
     },
-    moveAfter: (value: string, ...values: string[]) => {
-      setCollection(collection().moveAfter(value, ...values))
+    moveAfter: (value, ...values) => {
+      const newItems = create(items()).moveAfter(value, ...values).items
+      setItems(newItems)
     },
     reorder: (from: number, to: number) => {
-      setCollection(collection().reorder(from, to))
+      const newItems = create(items()).reorder(from, to).items
+      setItems(newItems)
     },
-    append: (...items: T[]) => {
-      setCollection(collection().append(...items))
+    append: (...itemsToAppend) => {
+      const newItems = create(items()).append(...itemsToAppend).items
+      setItems(newItems)
     },
-    prepend: (...items: T[]) => {
-      setCollection(collection().prepend(...items))
+    upsert: (value, item, mode = 'append') => {
+      const newItems = create(items()).upsert(value, item, mode).items
+      setItems(newItems)
     },
-    update: (value: string, item: T) => {
-      setCollection(collection().update(value, item))
+    prepend: (...itemsToPrepend) => {
+      const newItems = create(items()).prepend(...itemsToPrepend).items
+      setItems(newItems)
+    },
+    update: (value, item) => {
+      const newItems = create(items()).update(value, item).items
+      setItems(newItems)
     },
   }
+}
+
+export interface UseListCollectionReturn<T> {
+  /**
+   * The collection of items.
+   */
+  collection: () => ListCollection<T>
+  /**
+   * The function to filter the items.
+   */
+  filter: (inputValue: string) => void
+  /**
+   * The function to set the items.
+   */
+  set: (items: T[]) => void
+  /**
+   * The function to reset the items.
+   */
+  reset: () => void
+  /**
+   * The function to clear the items.
+   */
+  clear: () => void
+  /**
+   * The function to insert items at a specific index.
+   */
+  insert: (index: number, ...items: T[]) => void
+  /**
+   * The function to insert items before a specific value.
+   */
+  insertBefore: (value: string, ...items: T[]) => void
+  /**
+   * The function to insert items after a specific value.
+   */
+  insertAfter: (value: string, ...items: T[]) => void
+  /**
+   * The function to remove items.
+   */
+  remove: (...itemOrValues: Array<T | string>) => void
+  /**
+   * The function to move an item to a specific index.
+   */
+  move: (value: string, to: number) => void
+  /**
+   * The function to move an item before a specific value.
+   */
+  moveBefore: (value: string, ...values: string[]) => void
+  /**
+   * The function to move an item after a specific value.
+   */
+  moveAfter: (value: string, ...values: string[]) => void
+  /**
+   * The function to reorder items.
+   */
+  reorder: (from: number, to: number) => void
+  /**
+   * The function to append items.
+   */
+  append: (...items: T[]) => void
+  /**
+   * The function to upsert an item.
+   */
+  upsert: (value: string, item: T, mode?: 'append' | 'prepend') => void
+  /**
+   * The function to prepend items.
+   */
+  prepend: (...items: T[]) => void
+  /**
+   * The function to update an item.
+   */
+  update: (value: string, item: T) => void
 }

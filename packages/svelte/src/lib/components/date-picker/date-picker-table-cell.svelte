@@ -1,10 +1,11 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import type { UseDatePickerTableCellPropsContext } from './use-date-picker-table-cell-props-context.js'
 
   export interface DatePickerTableCellBaseProps
     extends ReturnType<UseDatePickerTableCellPropsContext>,
-      PolymorphicProps<'td'> {}
+      PolymorphicProps<'td'>,
+      RefAttribute {}
   export interface DatePickerTableCellProps extends Assign<HTMLProps<'td'>, DatePickerTableCellBaseProps> {}
 </script>
 
@@ -16,7 +17,7 @@
   import { DatePickerTableCellPropsProvider } from './use-date-picker-table-cell-props-context.js'
   import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
 
-  const props: DatePickerTableCellProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerTableCellProps = $props()
 
   const [cellProps, localProps] = $derived(
     createSplitProps<ReturnType<UseDatePickerTableCellPropsContext>>()(props, [
@@ -46,4 +47,4 @@
   DatePickerTableCellPropsProvider(() => cellProps)
 </script>
 
-<Ark as="td" {...mergedProps} />
+<Ark as="td" bind:ref {...mergedProps} />

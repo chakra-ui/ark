@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseToggleProps } from './use-toggle.svelte'
 
-  export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps<'button'> {}
+  export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps<'button'>, RefAttribute {}
   export interface ToggleRootProps extends Assign<HTMLProps<'button'>, ToggleRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { useToggle } from './use-toggle.svelte'
   import { ToggleProvider } from './use-toggle-context'
 
-  let { pressed = $bindable<boolean>(), ...props }: ToggleRootProps = $props()
+  let { ref = $bindable(null), pressed = $bindable<boolean>(), ...props }: ToggleRootProps = $props()
 
   const [useToggleProps, localProps] = $derived(
     createSplitProps<UseToggleProps>()(props, ['pressed', 'defaultPressed', 'disabled', 'onPressedChange']),
@@ -34,4 +34,4 @@
   ToggleProvider(toggle)
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

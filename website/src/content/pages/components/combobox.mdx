@@ -78,6 +78,19 @@ rehydrate the value and populate the input value.
 
 <Example id="rehydrate-value" />
 
+### Highlight Matching Text
+
+Here's an example of highlighting the search text in combobox items based on the user's input.
+
+<Example id="with-highlight" />
+
+### Dynamic Items
+
+Generate combobox items dynamically based on user input. This is useful for creating suggestions or autocomplete
+functionality.
+
+<Example id="dynamic" />
+
 ## Guides
 
 ### Custom Objects
@@ -99,6 +112,18 @@ const { collection } = useListCollection({
   initialItems: items,
   itemToString: (item) => item.country,
   itemToValue: (item) => item.code,
+})
+```
+
+### Limit Large Datasets
+
+The recommended way of managing large lists is to use the `limit` property on the `useListCollection` hook. This will
+limit the number of rendered items in the DOM to improve performance.
+
+```tsx {3}
+const { collection } = useListCollection({
+  initialItems: items,
+  limit: 10,
 })
 ```
 

@@ -8,18 +8,15 @@
 
   const props: HighlightProps = $props()
 
-  const [highlightProps, localProps] = createSplitProps<HighlightBaseProps>()(props, [
-    'query',
-    'text',
-    'ignoreCase',
-    'matchAll',
-  ])
+  const [highlightProps, localProps] = $derived(
+    createSplitProps<HighlightBaseProps>()(props, ['query', 'text', 'ignoreCase', 'matchAll']),
+  )
 
   if (typeof props.text !== 'string') {
     throw new Error('[ark-ui/highlight] text must be a string')
   }
 
-  const chunks = useHighlight(highlightProps)
+  const chunks = useHighlight(() => highlightProps)
 </script>
 
 {#each chunks() as { text, match }, i}

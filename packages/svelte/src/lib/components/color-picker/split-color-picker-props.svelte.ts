@@ -29,4 +29,5 @@ export const splitColorPickerProps = <T extends UseColorPickerProps>(props: T) =
     'readOnly',
     'required',
     'value',
+    'inline',
   ])

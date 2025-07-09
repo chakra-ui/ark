@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SegmentGroupItemControlBaseProps extends PolymorphicProps<'div'> {}
+  export interface SegmentGroupItemControlBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface SegmentGroupItemControlProps extends Assign<HTMLProps<'div'>, SegmentGroupItemControlBaseProps> {}
 </script>
 
@@ -12,7 +12,7 @@
   import { useSegmentGroupContext } from './use-segment-group-context'
   import { useSegmentGroupItemPropsContext } from './use-segment-group-item-props-context'
 
-  const props: SegmentGroupItemControlProps = $props()
+  let { ref = $bindable(null), ...props }: SegmentGroupItemControlProps = $props()
 
   const segmentGroup = useSegmentGroupContext()
   const itemProps = useSegmentGroupItemPropsContext()
@@ -22,4 +22,4 @@
   )
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

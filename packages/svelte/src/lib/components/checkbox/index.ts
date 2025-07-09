@@ -10,6 +10,11 @@ export {
 } from './checkbox-control.svelte'
 export { default as CheckboxGroup, type CheckboxGroupBaseProps, type CheckboxGroupProps } from './checkbox-group.svelte'
 export {
+  default as CheckboxGroupProvider,
+  type CheckboxGroupProviderBaseProps,
+  type CheckboxGroupProviderProps,
+} from './checkbox-group-provider.svelte'
+export {
   default as CheckboxHiddenInput,
   type CheckboxHiddenInputBaseProps,
   type CheckboxHiddenInputProps,
@@ -29,7 +34,7 @@ export { default as CheckboxRoot, type CheckboxRootBaseProps, type CheckboxRootP
 export { checkboxAnatomy } from './checkbox.anatomy'
 export { CheckboxProvider, useCheckboxContext } from './use-checkbox-context'
 export type { UseCheckboxContext } from './use-checkbox-context'
-export { CheckboxGroupProvider, useCheckboxGroupContext } from './use-checkbox-group-context'
+export { useCheckboxGroupContext } from './use-checkbox-group-context'
 export type { UseCheckboxGroupContext } from './use-checkbox-group-context'
 export { useCheckboxGroup } from './use-checkbox-group.svelte'
 export type { UseCheckboxGroupProps, UseCheckboxGroupReturn } from './use-checkbox-group.svelte'

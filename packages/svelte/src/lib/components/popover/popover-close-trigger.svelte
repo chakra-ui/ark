@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface PopoverCloseTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface PopoverCloseTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface PopoverCloseTriggerProps extends Assign<HTMLProps<'button'>, PopoverCloseTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { usePopoverContext } from './use-popover-context'
 
-  const props: PopoverCloseTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: PopoverCloseTriggerProps = $props()
 
   const popover = usePopoverContext()
   const mergedProps = $derived(mergeProps(popover().getCloseTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

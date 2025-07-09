@@ -25,7 +25,9 @@
 
   const { collection, filter } = useListCollection({
     initialItems,
-    filter: (...args) => filters().contains(...args),
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText)
+    },
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {

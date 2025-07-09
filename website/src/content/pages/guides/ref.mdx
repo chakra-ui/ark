@@ -1,0 +1,76 @@
+---
+id: ref
+title: Refs
+description: Ways to access the underlying HTML elements in Ark UI components
+status: new
+---
+
+## React
+
+In React, the `ref` prop can be used to access the rendered element. Use the `useRef` hook to create a reference and
+pass it to the component.
+
+```tsx
+import { Slider } from '@ark-ui/react/slider'
+import { useRef } from 'react'
+
+export const MySlider = () => {
+  const rootRef = useRef<HTMLDivElement | null>(null)
+  return <Slider.Root ref={rootRef}>{/* ... */}</Slider.Root>
+}
+```
+
+## Solid
+
+In Solid, the `ref` prop can be used to access the rendered element.
+
+```tsx
+import { Slider } from '@ark-ui/solid/slider'
+
+export const MySlider = () => {
+  let rootRef!: HTMLDivElement
+  return <Slider.Root ref={(el) => (rootRef = el)}>{/* ... */}</Slider.Root>
+}
+```
+
+Alternatively, you can assign refs to Solid.js signals via the `createSignal` function.
+
+```tsx
+import { Slider } from '@ark-ui/solid/slider'
+import { createSignal } from 'solid-js'
+
+export const MySlider = () => {
+  const [rootRef, setRootRef] = createSignal<HTMLDivElement | null>(null)
+  return <Slider.Root ref={setRootRef}>{/* ... */}</Slider.Root>
+}
+```
+
+## Vue
+
+In Vue, pass the `ref` prop to the component to access the rendered element via the `$el` property.
+
+```vue
+<script setup lang="ts">
+import { Slider } from '@ark-ui/vue/slider'
+
+const rootRef = ref<{ $el: HTMLDivElement } | null>(null)
+</script>
+
+<template>
+  <Slider.Root ref="rootRef">{/* ... */}</Slider.Root>
+</template>
+```
+
+## Svelte
+
+In Svelte 5, use the `bind:ref` directive to access the rendered element.
+
+```svelte
+<script lang="ts">
+  import { Slider } from '@ark-ui/svelte/slider'
+
+  let rootRef = $state<HTMLDivElement | null>(null)
+</script>
+
+<Slider.Root bind:ref={rootRef}>{/* ... */}</Slider.Root>
+```

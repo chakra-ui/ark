@@ -6,7 +6,7 @@
     render: Snippet<[UseTourContext]>
   }
 
-  let { render }: TourContextProps = $props()
+  const { render }: TourContextProps = $props()
 
   const tour = useTourContext()
 </script>

@@ -10,7 +10,7 @@
   <PasswordInput.Root invalid={!isValid && password.length > 0}>
     <PasswordInput.Label>Password (min 8 characters)</PasswordInput.Label>
     <PasswordInput.Control>
-      <PasswordInput.Input oninput={(e) => (password = (e.target as HTMLInputElement).value)} />
+      <PasswordInput.Input oninput={(e) => (password = e.currentTarget.value)} />
       <PasswordInput.VisibilityTrigger>
         <PasswordInput.Indicator>
           {#snippet fallback()}

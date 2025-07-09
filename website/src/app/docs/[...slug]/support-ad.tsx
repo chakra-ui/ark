@@ -11,11 +11,11 @@ export const SupportAd = () => {
     <Card.Root maxW="200px" mt="8">
       <Card.Body gap="2" pt="5" pos="relative">
         <Card.Title textStyle="xl" fontWeight="medium" lineHeight="1.3">
-          <span className={css({ color: 'colorPalette.9' })}>Pro Support</span> and Training{' '}
+          <span className={css({ color: 'colorPalette.9' })}>Design System</span> Support{' '}
           <SparkleIcon className={css({ pos: 'absolute', top: '5', right: '5', color: 'colorPalette.9' })} />
         </Card.Title>
         <Text textStyle="sm" color="fg.muted">
-          Supercharge your team with support from the creators of Ark UI
+          Expert design system support from the creators of Ark UI
         </Text>
 
         <Button
@@ -30,9 +30,9 @@ export const SupportAd = () => {
           <Link
             target="_blank"
             referrerPolicy="no-referrer"
-            href="https://chakra-pro.lemonsqueezy.com/buy/604cf94a-e4c4-4199-aeb6-a27afc30c815"
+            href="mailto:support@chakra-ui.com?subject=Design System Support"
           >
-            Get Pro Support
+            Get Support
           </Link>
         </Button>
       </Card.Body>

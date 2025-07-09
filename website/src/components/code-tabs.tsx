@@ -117,7 +117,7 @@ function StackblitzButton(props: { examples: CodeExample[]; styles: string | und
       }}
     >
       <SiStackblitz />
-      <span className={css({ textStyle: 'sm' })}>Stackblitz</span>
+      <span className={css({ textStyle: 'sm', hideBelow: 'sm' })}>Stackblitz</span>
     </Button>
   )
 }

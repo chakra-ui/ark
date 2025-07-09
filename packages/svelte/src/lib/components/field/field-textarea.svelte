@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldTextareaBaseProps extends PolymorphicProps<'textarea'> {
+  export interface FieldTextareaBaseProps extends PolymorphicProps<'textarea'>, RefAttribute {
     /**
      * Whether the textarea should autoresize
      * @default false
@@ -17,9 +17,9 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let textareaRef = $state<HTMLTextAreaElement | null>(null)
+  let { ref = $bindable(null), autoresize, ...props }: FieldTextareaProps = $props()
 
-  const { autoresize, ...props }: FieldTextareaProps = $props()
+  let textareaRef = $state<HTMLTextAreaElement | null>(null)
 
   const field = useFieldContext()
   const mergedProps = $derived(
@@ -30,6 +30,10 @@
     if (!autoresize) return
     return autoresizeTextarea(textareaRef)
   })
+
+  function setNode(node: HTMLTextAreaElement | null) {
+    textareaRef = node
+  }
 </script>
 
-<Ark as="textarea" {...mergedProps} bind:ref={textareaRef} />
+<Ark as="textarea" bind:ref {...mergedProps} {@attach setNode} />

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import Advanced from './examples/advanced.vue'
+import Async from './examples/async.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Grouping from './examples/grouping.vue'
+import MaxSelected from './examples/max-selected.vue'
 import Multiple from './examples/multiple.vue'
 import ReactiveCollection from './examples/reactive-collection.vue'
 import RootProvider from './examples/root-provider.vue'
+import SelectOnHighlight from './examples/select-on-highlight.vue'
 import WithField from './examples/with-field.vue'
 </script>
 
@@ -13,8 +16,11 @@ import WithField from './examples/with-field.vue'
     <Variant title="Basic">
       <Basic />
     </Variant>
-    <Variant title="Advanced">
-      <Advanced />
+    <Variant title="Async">
+      <Async />
+    </Variant>
+    <Variant title="Grouping">
+      <Grouping />
     </Variant>
     <Variant title="Multiple">
       <Multiple />
@@ -30,6 +36,12 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="Select On Highlight">
+      <SelectOnHighlight />
+    </Variant>
+    <Variant title="Max Selected">
+      <MaxSelected />
     </Variant>
   </Story>
 </template>

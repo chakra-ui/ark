@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NumberInputValueTextBaseProps extends PolymorphicProps<'span'> {}
+  export interface NumberInputValueTextBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface NumberInputValueTextProps extends Assign<HTMLProps<'span'>, NumberInputValueTextBaseProps> {}
 </script>
 
@@ -10,13 +10,13 @@
   import { Ark } from '../factory'
   import { useNumberInputContext } from './use-number-input-context'
 
-  let { children, ...props }: NumberInputValueTextProps = $props()
+  let { ref = $bindable(null), children, ...props }: NumberInputValueTextProps = $props()
 
   const numberInput = useNumberInputContext()
   const mergedProps = $derived(mergeProps(numberInput().getValueTextProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if children}
     {@render children()}
   {:else}

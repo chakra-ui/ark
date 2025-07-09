@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ListboxContentBaseProps extends PolymorphicProps<'div'> {}
+  export interface ListboxContentBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ListboxContentProps extends Assign<HTMLProps<'div'>, ListboxContentBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory/index.js'
   import { useListboxContext } from './use-listbox-context.js'
 
-  const props: ListboxContentProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxContentProps = $props()
 
   const listbox = useListboxContext()
   const mergedProps = $derived(mergeProps(listbox().getContentProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

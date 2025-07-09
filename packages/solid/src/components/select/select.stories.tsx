@@ -1,4 +1,4 @@
-import type { Meta } from 'storybook-solidjs'
+import type { Meta } from 'storybook-solidjs-vite'
 
 const meta: Meta = {
   title: 'Components / Select',
@@ -6,13 +6,16 @@ const meta: Meta = {
 
 export default meta
 
-export { Advanced } from './examples/advanced'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
 export { DynamicItems } from './examples/dynamic-items'
-export { WithFormLibrary } from './examples/form-library'
+export { FormLibrary } from './examples/form-library'
+export { Grouping } from './examples/grouping'
 export { Multiple } from './examples/multiple'
 export { ReactiveCollection } from './examples/reactive-collection'
 export { RootProvider } from './examples/root-provider'
 export { WithField } from './examples/with-field'
-export { WithShadowRoot } from './examples/with-shadow-root'
+export { ShadowRoot } from './examples/shadow-root'
+export { Async } from './examples/async'
+export { SelectOnHighlight } from './examples/select-on-highlight'
+export { MaxSelected } from './examples/max-selected'

@@ -1,24 +1,29 @@
 <script module lang="ts">
+  import type { UsePresenceProps } from '../presence'
   import type { UsePopoverReturn } from './use-popover.svelte'
-  import type { UsePresenceReturn } from '../presence'
-  import type { Snippet } from 'svelte'
 
-  export interface PopoverRootProviderBaseProps {
+  interface RootProviderProps {
     value: UsePopoverReturn
-    presence: UsePresenceReturn
+  }
+
+  export interface PopoverRootProviderBaseProps extends RootProviderProps, UsePresenceProps {
     children?: Snippet
   }
   export interface PopoverRootProviderProps extends PopoverRootProviderBaseProps {}
 </script>
 
 <script lang="ts">
-  import { PresenceProvider } from '../presence'
+  import type { Snippet } from 'svelte'
+  import { PresenceProvider, splitPresenceProps, usePresence } from '../presence'
   import { PopoverProvider } from './use-popover-context'
 
-  const { value, presence, children }: PopoverRootProviderProps = $props()
+  const { value, ...props }: PopoverRootProviderProps = $props()
+
+  const [presenceProps, localProps] = $derived(splitPresenceProps(props))
+  const presence = usePresence(() => ({ present: value().open, ...presenceProps }))
 
   PopoverProvider(value)
   PresenceProvider(presence)
 </script>
 
-{@render children?.()}
+{@render localProps.children?.()}

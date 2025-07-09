@@ -9,7 +9,9 @@
 
   const { collection, filter } = useListCollection({
     initialItems: ['React', 'Solid', 'Vue', 'Svelte'],
-    filter: (...args) => filters().contains(...args),
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText)
+    },
   })
 
   let value = $state<string[]>([])

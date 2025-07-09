@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { ItemProps } from '@zag-js/listbox'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+  export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface ListboxItemProps extends Assign<HTMLProps<'div'>, ListboxItemBaseProps> {}
 </script>
 
@@ -14,7 +14,7 @@
   import { ListboxItemProvider } from './use-listbox-item-context.js'
   import { ListboxItemPropsProvider } from './use-listbox-item-props-context.js'
 
-  const props: ListboxItemProps = $props()
+  let { ref = $bindable(null), ...props }: ListboxItemProps = $props()
 
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['item', 'highlightOnHover']))
   const listbox = useListboxContext()
@@ -25,4 +25,4 @@
   ListboxItemProvider(() => itemState)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

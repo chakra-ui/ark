@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ClipboardInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface ClipboardInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface ClipboardInputProps extends Assign<HTMLProps<'input'>, ClipboardInputBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useClipboardContext } from './use-clipboard-context'
 
-  const props: ClipboardInputProps = $props()
+  let { ref = $bindable(null), ...props }: ClipboardInputProps = $props()
 
   const clipboard = useClipboardContext()
   const mergedProps = $derived(mergeProps(clipboard().getInputProps(), props))
 </script>
 
-<Ark as="input" {...mergedProps} />
+<Ark as="input" bind:ref {...mergedProps} />

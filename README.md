@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a>, and <a href="https://solidjs.com/">Solid</a>
+Build scalable design systems with <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a>, <a href="https://solidjs.com/">Solid</a>, and <a href="https://svelte.dev/">Svelte</a>
 </p>
 
 <p align="center">

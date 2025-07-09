@@ -1,7 +1,7 @@
 <script lang="ts" module>
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface FloatingPanelTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface FloatingPanelTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface FloatingPanelTriggerProps extends Assign<HTMLProps<'button'>, FloatingPanelTriggerBaseProps> {}
 </script>
 
@@ -11,7 +11,7 @@
   import { usePresenceContext } from '../presence/index.js'
   import { useFloatingPanelContext } from './use-floating-panel-context.js'
 
-  let props: FloatingPanelTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: FloatingPanelTriggerProps = $props()
 
   const floatingPanel = useFloatingPanelContext()
   const presence = usePresenceContext()
@@ -28,4 +28,4 @@
   )
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

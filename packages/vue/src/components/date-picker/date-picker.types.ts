@@ -168,6 +168,10 @@ export interface RootProps {
    * The view of the calendar
    */
   view?: datePicker.DateView
+  /**
+   * Whether the date picker is inline
+   */
+  inline?: boolean
 }
 
 export type RootEmits = {

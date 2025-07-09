@@ -6,6 +6,7 @@ import InitialValueExample from './examples/initial-value.svelte'
 import OtpModeExample from './examples/otp-mode.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithAutofocusExample from './examples/with-autofocus.svelte'
+import WithFieldExample from './examples/with-field.svelte'
 import WithMaskExample from './examples/with-mask.svelte'
 
 const meta: Meta = {
@@ -41,6 +42,12 @@ export const OtpMode = {
 export const WithAutofocus = {
   render: () => ({
     Component: WithAutofocusExample,
+  }),
+}
+
+export const WithField = {
+  render: () => ({
+    Component: WithFieldExample,
   }),
 }
 

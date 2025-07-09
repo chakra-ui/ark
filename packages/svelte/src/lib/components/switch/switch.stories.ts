@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import InitialValueExample from './examples/initial-value.svelte'
+import RenderPropExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
@@ -34,6 +35,12 @@ export const Disabled = {
 export const InitialValue = {
   render: () => ({
     Component: InitialValueExample,
+  }),
+}
+
+export const RenderProp = {
+  render: () => ({
+    Component: RenderPropExample,
   }),
 }
 

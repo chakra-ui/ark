@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { TimerProvider } from './use-timer-context'
@@ -9,14 +9,14 @@
     value: UseTimerReturn
   }
 
-  export interface TimerRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'> {}
+  export interface TimerRootProviderBaseProps extends RootProviderProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TimerRootProviderProps extends HTMLProps<'div'>, TimerRootProviderBaseProps {}
 
-  const props: TimerRootProviderProps = $props()
+  let { ref = $bindable(null), ...props }: TimerRootProviderProps = $props()
   const { value: timer, ...localProps } = props
   const mergedProps = $derived(mergeProps(timer().getRootProps(), localProps))
 
   TimerProvider(timer)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

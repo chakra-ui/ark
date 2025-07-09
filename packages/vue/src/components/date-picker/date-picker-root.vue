@@ -30,6 +30,7 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   open: undefined,
   readOnly: undefined,
   outsideDaySelectable: undefined,
+  inline: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<DatePickerRootEmits>()

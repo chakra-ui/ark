@@ -1,4 +1,5 @@
 export * from './accordion'
+export * from './angle-slider'
 export * from './avatar'
 export * from './carousel'
 export * from './checkbox'

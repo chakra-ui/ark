@@ -1,5 +1,6 @@
 <script lang="ts" module>
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { PolymorphicProps } from '$lib/types.js'
+  import type { Snippet } from 'svelte'
   import type { UsePresenceProps } from '../presence/use-presence.svelte.js'
   import type { UseFloatingPanelProps } from './use-floating-panel.svelte.js'
 
@@ -7,7 +8,9 @@
     extends UseFloatingPanelProps,
       UsePresenceProps,
       PolymorphicProps<'div'> {}
-  export interface FloatingPanelRootProps extends Assign<HTMLProps<'div'>, FloatingPanelRootBaseProps> {}
+  export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {
+    children?: Snippet
+  }
 </script>
 
 <script lang="ts">
@@ -20,38 +23,40 @@
   let { open = $bindable(), position = $bindable(), size = $bindable(), ...props }: FloatingPanelRootProps = $props()
   const providedId = $props.id()
 
-  const [presenceProps, otherProps] = splitPresenceProps(props)
-  const [floatingPanelProps, localProps] = createSplitProps<UseFloatingPanelProps>()(otherProps, [
-    'allowOverflow',
-    'closeOnEscape',
-    'defaultOpen',
-    'defaultPosition',
-    'defaultSize',
-    'dir',
-    'disabled',
-    'draggable',
-    'getAnchorPosition',
-    'getBoundaryEl',
-    'gridSize',
-    'id',
-    'ids',
-    'lockAspectRatio',
-    'maxSize',
-    'minSize',
-    'onOpenChange',
-    'onPositionChange',
-    'onPositionChangeEnd',
-    'onSizeChange',
-    'onSizeChangeEnd',
-    'onStageChange',
-    'open',
-    'persistRect',
-    'position',
-    'resizable',
-    'size',
-    'strategy',
-    'translations',
-  ])
+  const [presenceProps, otherProps] = $derived(splitPresenceProps(props))
+  const [floatingPanelProps, localProps] = $derived(
+    createSplitProps<UseFloatingPanelProps>()(otherProps, [
+      'allowOverflow',
+      'closeOnEscape',
+      'defaultOpen',
+      'defaultPosition',
+      'defaultSize',
+      'dir',
+      'disabled',
+      'draggable',
+      'getAnchorPosition',
+      'getBoundaryEl',
+      'gridSize',
+      'id',
+      'ids',
+      'lockAspectRatio',
+      'maxSize',
+      'minSize',
+      'onOpenChange',
+      'onPositionChange',
+      'onPositionChangeEnd',
+      'onSizeChange',
+      'onSizeChangeEnd',
+      'onStageChange',
+      'open',
+      'persistRect',
+      'position',
+      'resizable',
+      'size',
+      'strategy',
+      'translations',
+    ]),
+  )
 
   const resolvedProps = $derived<UseFloatingPanelProps>({
     ...floatingPanelProps,
@@ -82,4 +87,4 @@
   PresenceProvider(presence)
 </script>
 
-{@render props.children?.()}
+{@render localProps.children?.()}

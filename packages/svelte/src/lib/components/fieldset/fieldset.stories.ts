@@ -3,7 +3,9 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import DisabledExample from './examples/disabled.svelte'
 import InvalidExample from './examples/invalid.svelte'
+import PhoneInputExample from './examples/phone-input.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithCheckboxExample from './examples/with-checkbox.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
@@ -30,6 +32,12 @@ export const Invalid = {
   }),
 }
 
+export const PhoneInput = {
+  render: () => ({
+    Component: PhoneInputExample,
+  }),
+}
+
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
@@ -39,5 +47,11 @@ export const WithField = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithCheckbox = {
+  render: () => ({
+    Component: WithCheckboxExample,
   }),
 }

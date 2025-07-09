@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps } from '$lib/types'
+  import type { Assign, HTMLProps, RefAttribute } from '$lib/types'
   import type { UseEditableProps } from './use-editable.svelte'
 
-  export interface EditableRootBaseProps extends UseEditableProps {}
+  export interface EditableRootBaseProps extends UseEditableProps, RefAttribute {}
   export interface EditableRootProps extends Assign<HTMLProps<'div'>, EditableRootBaseProps> {}
 </script>
 
@@ -13,7 +13,7 @@
   import { EditableProvider } from './use-editable-context'
   import { useEditable } from './use-editable.svelte'
 
-  let { value = $bindable(), ...props }: EditableRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: EditableRootProps = $props()
 
   const providedId = $props.id()
 
@@ -26,7 +26,7 @@
       value,
       onValueChange(details) {
         useEditableProps.onValueChange?.(details)
-        value = details.value
+        if (value !== undefined) value = details.value
       },
     }
   })
@@ -37,4 +37,4 @@
   EditableProvider(editable)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

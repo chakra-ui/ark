@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ComboboxPositionerBaseProps extends PolymorphicProps<'div'> {}
+  export interface ComboboxPositionerBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
   export interface ComboboxPositionerProps extends Assign<HTMLProps<'div'>, ComboboxPositionerBaseProps> {}
 </script>
 
@@ -9,11 +9,15 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useComboboxContext } from './use-combobox-context'
+  import { usePresenceContext } from '../presence'
 
-  const props: ComboboxPositionerProps = $props()
+  let { ref = $bindable(null), ...props }: ComboboxPositionerProps = $props()
 
   const combobox = useComboboxContext()
+  const presence = usePresenceContext()
   const mergedProps = $derived(mergeProps(combobox().getPositionerProps(), props))
 </script>
 
-<Ark as="div" {...mergedProps} />
+{#if !presence().unmounted}
+  <Ark as="div" bind:ref {...mergedProps} />
+{/if}

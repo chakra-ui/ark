@@ -1,5 +1,5 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { ValueChangeDetails } from '@zag-js/radio-group'
   import type { UseSegmentGroupProps } from './use-segment-group.svelte'
 
@@ -7,7 +7,7 @@
     valueChange: ValueChangeDetails
   }
 
-  export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps<'div'> {}
+  export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface SegmentGroupRootProps extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}
 </script>
 
@@ -19,7 +19,7 @@
   import { useSegmentGroup } from './use-segment-group.svelte'
   import { SegmentGroupProvider } from './use-segment-group-context'
 
-  let { value = $bindable(), ...props }: SegmentGroupRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: SegmentGroupRootProps = $props()
   const providedId = $props.id()
 
   const [segmentGroupProps, localProps] = $derived(splitSegmentGroupProps(props))
@@ -40,4 +40,4 @@
   SegmentGroupProvider(segmentGroup)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

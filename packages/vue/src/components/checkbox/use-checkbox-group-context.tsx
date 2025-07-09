@@ -3,6 +3,6 @@ import type { UseCheckboxGroupReturn } from './use-checkbox-group'
 
 export interface UseCheckboxGroupContext extends UseCheckboxGroupReturn {}
 
-export const [CheckboxGroupProvider, useCheckboxGroupContext] = createContext<UseCheckboxGroupContext | undefined>(
-  'CheckboxGroupContext',
-)
+export const [CheckboxGroupContextProvider, useCheckboxGroupContext] = createContext<
+  UseCheckboxGroupContext | undefined
+>('CheckboxGroupContext')

@@ -12,7 +12,7 @@
   import { usePresence } from '../presence'
   import { useTourContext } from './use-tour-context'
 
-  let { ref = $bindable(), ...props }: TourSpotlightProps = $props()
+  let { ref = $bindable(null), ...props }: TourSpotlightProps = $props()
 
   const tour = useTourContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
@@ -27,10 +27,9 @@
 
   function setNode(node: Element | null) {
     presence().setNode(node)
-    ref = node
   }
 </script>
 
 {#if !presence().unmounted}
-  <Ark as="div" {...mergedProps} {@attach setNode} {hidden} />
+  <Ark as="div" bind:ref {...mergedProps} {@attach setNode} {hidden} />
 {/if}

@@ -1,17 +1,17 @@
 <script lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory/index.js'
   import { useToastContext } from './use-toast-context.js'
 
-  export interface ToastCloseTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface ToastCloseTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
 
   export interface ToastCloseTriggerProps extends Assign<HTMLProps<'button'>, ToastCloseTriggerBaseProps> {}
 
-  const props: ToastCloseTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: ToastCloseTriggerProps = $props()
 
   const toast = useToastContext()
   const mergedProps = $derived(mergeProps(toast().getCloseTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

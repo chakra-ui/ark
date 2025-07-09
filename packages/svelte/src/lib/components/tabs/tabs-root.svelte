@@ -1,8 +1,8 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseTabsProps } from './use-tabs.svelte'
 
-  export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps<'div'> {}
+  export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProps> {}
 </script>
 
@@ -18,7 +18,7 @@
   import { TabsProvider } from './use-tabs-context'
   import { useTabs } from './use-tabs.svelte'
 
-  let { value = $bindable(), ...props }: TabsRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: TabsRootProps = $props()
 
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
 
@@ -49,7 +49,7 @@
     value,
     onValueChange(details) {
       useTabsProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   }))
 
@@ -60,4 +60,4 @@
   RenderStrategyPropsProvider(() => renderStrategyProps)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

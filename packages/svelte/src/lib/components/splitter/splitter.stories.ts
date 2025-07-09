@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/svelte'
 
 import BasicExample from './examples/basic.svelte'
 import CollapsibleExample from './examples/collapsible.svelte'
+import EventsExample from './examples/events.svelte'
 import MultiplePanelsExample from './examples/multiple-panels.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import VerticalExample from './examples/vertical.svelte'
@@ -33,6 +34,12 @@ export const MultiplePanels = {
 export const Collapsible = {
   render: () => ({
     Component: CollapsibleExample,
+  }),
+}
+
+export const Events = {
+  render: () => ({
+    Component: EventsExample,
   }),
 }
 

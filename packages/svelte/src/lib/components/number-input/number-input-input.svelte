@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface NumberInputInputBaseProps extends PolymorphicProps<'input'> {}
+  export interface NumberInputInputBaseProps extends PolymorphicProps<'input'>, RefAttribute {}
   export interface NumberInputInputProps extends Assign<HTMLProps<'input'>, NumberInputInputBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useFieldContext } from '../field'
   import { useNumberInputContext } from './use-number-input-context'
 
-  const props: NumberInputInputProps = $props()
+  let { ref = $bindable(null), ...props }: NumberInputInputProps = $props()
 
   const numberInput = useNumberInputContext()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(numberInput().getInputProps(), props))
 </script>
 
-<Ark as="input" aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />
+<Ark as="input" bind:ref aria-describedby={field?.()?.ariaDescribedby} {...mergedProps} />

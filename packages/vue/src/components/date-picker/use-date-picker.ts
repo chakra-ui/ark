@@ -50,7 +50,6 @@ export const useDatePicker = (
       },
       onValueChange: (details) => {
         emit?.('valueChange', details)
-        console.log('valueChange', details)
         emit?.('update:modelValue', details.value)
         localeProps.onValueChange?.(details)
       },

@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface EditablePreviewBaseProps extends PolymorphicProps<'span'> {}
+  export interface EditablePreviewBaseProps extends PolymorphicProps<'span'>, RefAttribute {}
   export interface EditablePreviewProps extends Assign<HTMLProps<'span'>, EditablePreviewBaseProps> {}
 </script>
 
@@ -10,13 +10,13 @@
   import { Ark } from '../factory'
   import { useEditableContext } from './use-editable-context'
 
-  const props: EditablePreviewProps = $props()
+  let { ref = $bindable(null), ...props }: EditablePreviewProps = $props()
 
   const editable = useEditableContext()
   const mergedProps = $derived(mergeProps(editable().getPreviewProps(), props))
 </script>
 
-<Ark as="span" {...mergedProps}>
+<Ark as="span" bind:ref {...mergedProps}>
   {#if props.children}
     {@render props.children()}
   {:else}

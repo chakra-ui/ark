@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types.js'
 
-  export interface DatePickerNextTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface DatePickerNextTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface DatePickerNextTriggerProps extends Assign<HTMLProps<'button'>, DatePickerNextTriggerBaseProps> {}
 </script>
 
@@ -11,11 +11,11 @@
   import { useDatePickerContext } from './use-date-picker-context.js'
   import { useDatePickerViewPropsContext } from './use-date-picker-view-props-context.js'
 
-  const props: DatePickerNextTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: DatePickerNextTriggerProps = $props()
 
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
   const mergedProps = $derived(mergeProps(datePicker().getNextTriggerProps(viewProps()), props))
 </script>
 
-<Ark as="button" {...mergedProps} /> 
+<Ark as="button" bind:ref {...mergedProps} />

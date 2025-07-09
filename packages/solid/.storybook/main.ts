@@ -1,29 +1,26 @@
-import { dirname, join } from 'node:path'
+import { mergeConfig } from 'vite'
+
 import type { StorybookConfig } from 'storybook-solidjs-vite'
 
-function getAbsolutePath(value: string): string {
-  return dirname(require.resolve(join(value, 'package.json')))
-}
-
-const config: StorybookConfig = {
-  stories: ['../src/components/**/*.stories.tsx'],
-  addons: [
-    // getAbsolutePath('@storybook/addon-links'),
-    // {
-    //   name: getAbsolutePath('@storybook/addon-essentials'),
-    //   options: { backgrounds: false, actions: false },
-    // },
-    // getAbsolutePath('@storybook/addon-interactions'),
-    // getAbsolutePath('@storybook/addon-a11y'),
-  ],
-  framework: {
-    // @ts-ignore
-    name: getAbsolutePath('storybook-solidjs-vite'),
-    options: {},
+export default <StorybookConfig>{
+  framework: 'storybook-solidjs-vite',
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      define: {
+        'process.env': {},
+      },
+    })
   },
-  core: {
-    disableTelemetry: true,
+  docs: {
+    autodocs: false,
+  },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      propFilter: (prop: Record<string, any>) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
   },
 }
-
-export default config

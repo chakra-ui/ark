@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { ItemProps } from '@zag-js/steps'
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface StepsItemBaseProps extends ItemProps, PolymorphicProps<'div'> {}
+  export interface StepsItemBaseProps extends ItemProps, PolymorphicProps<'div'>, RefAttribute {}
   export interface StepsItemProps extends Assign<HTMLProps<'div'>, StepsItemBaseProps> {}
 </script>
 
@@ -14,7 +14,7 @@
   import { StepsItemProvider } from './use-steps-item-context'
   import { StepsItemPropsProvider } from './use-steps-item-props-context'
 
-  const props: StepsItemProps = $props()
+  let { ref = $bindable(null), ...props }: StepsItemProps = $props()
   const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['index']))
 
   const steps = useStepsContext()
@@ -25,4 +25,4 @@
   StepsItemProvider(() => itemState)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

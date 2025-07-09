@@ -6,15 +6,17 @@ const meta: Meta = {
 
 export default meta
 
-export { Advanced } from './examples/advanced'
+export { Async } from './examples/async'
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
 export { FormLibrary } from './examples/form-library'
-export { FormLibraryWithDefaultValue } from './examples/form-library-with-default-value'
 export { FullyControlled } from './examples/fully-controlled'
+export { Grouping } from './examples/grouping'
+export { MaxSelected } from './examples/max-selected'
 export { Multiple } from './examples/multiple'
 export { Overflow } from './examples/overflow'
 export { ReactiveCollection } from './examples/reactive-collection'
 export { RootProvider } from './examples/root-provider'
 export { SelectAll } from './examples/select-all'
+export { SelectOnHighlight } from './examples/select-on-highlight'
 export { WithField } from './examples/with-field'

@@ -1,8 +1,62 @@
 ## [Unreleased]
 
+### Added
+
+- **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
+
 ### Fixed
 
-- **Tree View**: Fix tree traversal for querying last node
+- **Collection**: Export `UseListCollectionReturn` type
+- **File Upload**: Export `FileError`, `FileMimeType`, and `FileRejection` types
+
+## [5.16.1] - 2025-07-05
+
+### Fixed
+
+- **Combobox**
+
+  - Expose `reason` to `onOpenChange` and `onInputValueChange` callbacks
+  - Expose `api.clearHighlightedValue` function to clear highlighted value
+
+- **Date Picker**
+
+  - Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
+  - Fix issue where `focusedValue` could not be fully controlled
+
+- **Toast**: Fix issue where toast `title` or `description` could not accept VNodes.
+
+- **Listbox**: Select highlighted item only if it exists in the collection
+
+- **Progress**: Improve `valueAsString` formatting
+
+- **Select**
+
+  - Select highlighted item only if it exists in the collection
+  - Expose `api.clearHighlightedValue` function to clear highlighted value
+
+- **Tour**: Fix an issue where the `goto` function in `StepActionMap` doesn't work when passing step IDs (string)
+
+- **Tree View**: Expose `id` in the tree node state
+
+## [5.16.0] - 2025-07-01
+
+### Added
+
+- **Color Picker**: Add support for `inline` prop to render color picker inline
+- **Date Picker**: Add support for `inline` prop to render the date calendar inline
+
+### Fixed
+
+- **Color Picker**: Auto-prefix Hex values with `#` if missing when using the `hex` channel input
+- **Menu**: Fix interaction outside detection for focusable context trigger
+- **Tree View**: Improve support for rendering tree items as links
+
+## [5.15.3] - 2025-06-27
+
+### Fixed
+
+- **Combobox, Select, Listbox**: Fix issue where rehydrating `defaultValue` or `value` after fetching items doesn't
+  update the `valueAsString`
 
 ## [5.15.2] - 2025-06-26
 

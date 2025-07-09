@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface CarouselAutoplayTriggerBaseProps extends PolymorphicProps<'button'> {}
+  export interface CarouselAutoplayTriggerBaseProps extends PolymorphicProps<'button'>, RefAttribute {}
   export interface CarouselAutoplayTriggerProps extends Assign<HTMLProps<'button'>, CarouselAutoplayTriggerBaseProps> {}
 </script>
 
@@ -10,10 +10,10 @@
   import { Ark } from '../factory'
   import { useCarouselContext } from './use-carousel-context'
 
-  const props: CarouselAutoplayTriggerProps = $props()
+  let { ref = $bindable(null), ...props }: CarouselAutoplayTriggerProps = $props()
 
   const carousel = useCarouselContext()
   const mergedProps = $derived(mergeProps(carousel().getAutoplayTriggerProps(), props))
 </script>
 
-<Ark as="button" {...mergedProps} />
+<Ark as="button" bind:ref {...mergedProps} />

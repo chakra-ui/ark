@@ -1,8 +1,12 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseAccordionProps } from './use-accordion.svelte'
 
-  export interface AccordionRootBaseProps extends UseAccordionProps, RenderStrategyProps, PolymorphicProps<'div'> {}
+  export interface AccordionRootBaseProps
+    extends UseAccordionProps,
+      RenderStrategyProps,
+      PolymorphicProps<'div'>,
+      RefAttribute {}
   export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 </script>
 
@@ -18,22 +22,24 @@
   import { AccordionProvider } from './use-accordion-context'
   import { useAccordion } from './use-accordion.svelte'
 
-  let { value = $bindable(), ...props }: AccordionRootProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: AccordionRootProps = $props()
   const providedId = $props.id()
 
-  const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
-  const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
-    'collapsible',
-    'defaultValue',
-    'disabled',
-    'id',
-    'ids',
-    'multiple',
-    'onFocusChange',
-    'onValueChange',
-    'orientation',
-    'value',
-  ])
+  const [renderStrategyProps, accordionProps] = $derived(splitRenderStrategyProps(props))
+  const [useAccordionProps, localProps] = $derived(
+    createSplitProps<UseAccordionProps>()(accordionProps, [
+      'collapsible',
+      'defaultValue',
+      'disabled',
+      'id',
+      'ids',
+      'multiple',
+      'onFocusChange',
+      'onValueChange',
+      'orientation',
+      'value',
+    ]),
+  )
 
   const resolvedProps = $derived<UseAccordionProps>({
     ...useAccordionProps,
@@ -41,7 +47,7 @@
     value,
     onValueChange(details) {
       useAccordionProps.onValueChange?.(details)
-      value = details.value
+      if (value !== undefined) value = details.value
     },
   })
 
@@ -52,4 +58,4 @@
   AccordionProvider(accordion)
 </script>
 
-<Ark as="div" {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />

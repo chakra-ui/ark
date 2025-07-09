@@ -2,7 +2,7 @@ import { EnvironmentProvider } from '@ark-ui/solid/environment'
 import { Select, createListCollection } from '@ark-ui/solid/select'
 import { Index, Portal } from 'solid-js/web'
 
-export const WithShadowRoot = () => {
+export const ShadowRoot = () => {
   let portalNode: (HTMLDivElement & { shadowRoot: ShadowRoot }) | undefined
   const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
 

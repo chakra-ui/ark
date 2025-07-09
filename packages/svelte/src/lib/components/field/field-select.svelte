@@ -1,7 +1,7 @@
 <script module lang="ts">
-  import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldSelectBaseProps extends PolymorphicProps<'select'> {}
+  export interface FieldSelectBaseProps extends PolymorphicProps<'select'>, RefAttribute {}
   export interface FieldSelectProps extends Assign<HTMLProps<'select'>, FieldSelectBaseProps> {}
 </script>
 
@@ -10,9 +10,9 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  const props: FieldSelectProps = $props()
+  let { ref = $bindable(null), ...props }: FieldSelectProps = $props()
   const field = useFieldContext()
   const mergedProps = $derived(mergeProps(field?.().getSelectProps() ?? {}, props))
 </script>
 
-<Ark as="select" {...mergedProps} />
+<Ark as="select" bind:ref {...mergedProps} />

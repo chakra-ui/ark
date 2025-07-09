@@ -18,7 +18,9 @@
 
   const { collection, filter } = useListCollection({
     initialItems,
-    filter: (...args) => filters().contains(...args),
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText)
+    },
     groupBy: (item) => item.type,
   })
 
