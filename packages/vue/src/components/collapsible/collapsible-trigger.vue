@@ -23,7 +23,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.button v-bind="collapsible.getTriggerProps()">
+  <ark.button v-bind="collapsible.getTriggerProps()" :as-child="asChild">
     <slot />
   </ark.button>
 </template>
