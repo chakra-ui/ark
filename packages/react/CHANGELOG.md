@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
+
 ### Fixed
 
 - **Collection**: Export `UseListCollectionReturn` type
