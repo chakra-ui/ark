@@ -39,7 +39,640 @@ You'll also start to think in recipes, a concept where styles for each component
 shape, or visual style) are bundled into a single, reusable definition. Recipes help you create consistent, modular, and
 scalable components for your design system needs.
 
-Let's dive in!
+## Setting up the Global Styles for Vanilla CSS
+
+To create a consistent design system, start by setting up shared global styles that every component can rely on. Create
+a `shared` directory to house global styles that can be reused across components.
+
+Here's what to include:
+
+**CSS Reset Styles:** Start with a CSS reset to remove default browser inconsistencies. This ensures every component
+starts from the same baseline, no matter the browser.
+
+```tsx
+/** CSS Reset inspired by createPreflight **/
+
+html {
+  line-height: 1.5;
+  --font-fallback: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: var(--global-font-body, var(--font-fallback));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  word-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*, *::before, *::after, *::backdrop {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--global-color-border, currentColor);
+}
+
+hr {
+  height: 0;
+  color: inherit;
+  border-top-width: 1px;
+}
+
+body {
+  min-height: 100dvh;
+  position: relative;
+}
+
+img {
+  border-style: none;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+}
+
+iframe {
+  border: none;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+code, kbd, pre, samp {
+  font-size: 1em;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+}
+
+button, select {
+  text-transform: none;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+*::placeholder {
+  opacity: unset;
+  color: #9ca3af;
+  user-select: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+summary {
+  display: list-item;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+dialog {
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp, pre {
+  font-size: 1em;
+  --font-mono-fallback: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New';
+  font-family: var(--global-font-mono, var(--font-mono-fallback));
+}
+
+input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type='search'] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-search-decoration, ::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+:-moz-focusring {
+  outline: auto;
+}
+
+[hidden]:where(:not([hidden='until-found'])) {
+  display: none !important;
+}
+
+```
+
+**Design Tokens:** Define design tokens with CSS variables for things like color, border radius, etc. Add these to a
+`tokens.css` file.
+
+```css
+/* shared/tokens.css */
+
+:root {
+  --bg: #fff;
+  --bg-subtle: #f9fafb;
+  --bg-muted: #f3f4f6;
+  --bg-emphasized: #e5e7eb;
+  --bg-inverted: #000;
+  --bg-panel: #fff;
+  --bg-error: #fef2f2;
+  --bg-warning: #fff7ed;
+  --bg-success: #f0fdf4;
+  --bg-info: #eff6ff;
+  --border: #e5e7eb;
+  --border-muted: #f3f4f6;
+  --border-subtle: #f9fafb;
+  --border-emphasized: #d1d5db;
+  --border-inverted: #1f2937;
+  --border-error: #ef4444;
+  --border-warning: #f59e42;
+  --border-success: #22c55e;
+  --border-info: #3b82f6;
+  --fg: #000000;
+  --fg-muted: #4b5563;
+  --fg-subtle: #9ca3af;
+  --fg-inverted: #f9fafb;
+  --fg-error: #ef4444;
+  --fg-warning: #ea580c;
+  --fg-success: #16a34a;
+  --fg-info: #2563eb;
+  --accent-contrast: #000;
+  --accent-fg: #c2410c;
+  --accent-subtle: #ffedd5;
+  --accent-muted: #fed7aa;
+  --accent-emphasized: #fdba74;
+  --accent-solid: #ea580c;
+  --accent-focusRing: #fb923c;
+
+  --shadow-sm: 0 1px 2px 0 rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.14);
+  --shadow-lg: 0 8px 24px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.08);
+}
+```
+
+**Keyframe Animations:** Define reusable animations to be shared across components.
+
+```css
+/* shared/keyframes.css */
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+```
+
+**Button Styles:** Since buttons appear across multiple components (menus, dialogs, etc.), define reusable button
+styles. Create a `button.css` file and add the following:
+
+```css
+.button {
+  display: inline-flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-width: 1px;
+  border-color: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  outline: 0;
+  line-height: 1.2;
+  isolation: isolate;
+  font-weight: 500;
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.2s;
+}
+.button:focus-visible {
+  outline: 2px solid #c4c4c4;
+  outline-offset: 2px;
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.button svg {
+  flex-shrink: 0;
+}
+
+/* Size Variants */
+.button--size-sm {
+  height: 2.25rem;
+  min-width: 2.25rem;
+  font-size: 0.875rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  gap: 0.5rem;
+}
+.button--size-sm svg {
+  width: 1rem;
+  height: 1rem;
+}
+.button--size-md {
+  height: 2.5rem;
+  min-width: 2.5rem;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  gap: 0.5rem;
+}
+.button--size-md svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.button--size-lg {
+  height: 2.75rem;
+  min-width: 2.75rem;
+  font-size: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  gap: 0.75rem;
+}
+.button--size-lg svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Variant: solid */
+.button--variant-solid {
+  background: var(--accent-solid);
+  color: var(--fg-inverted);
+  border-color: transparent;
+}
+.button--variant-solid:hover,
+.button--variant-solid[aria-expanded='true'] {
+  background: color-mix(in srgb, var(--accent-solid) 80%, #000 20%);
+}
+
+/* Variant: subtle */
+.button--variant-subtle {
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  border-color: transparent;
+}
+.button--variant-subtle:hover,
+.button--variant-subtle[aria-expanded='true'] {
+  background: color-mix(in srgb, var(--bg-emphasized) 80%, #000 20%);
+}
+
+/* Variant: outline */
+.button--variant-outline {
+  border-width: 1px;
+  border-color: var(--border);
+  color: var(--fg-muted);
+  background: transparent;
+}
+.button--variant-outline:hover,
+.button--variant-outline[aria-expanded='true'] {
+  background: var(--bg-subtle);
+}
+```
+
+### Import Global Styles
+
+Now, inside the `shared` folder, create a `global.css` file and import all the file styles:
+
+```css
+/* shared/global.css */
+
+@import url(./reset.css);
+
+@import url(./tokens.css);
+@import url(./keyframes.css);
+
+@import url(./button.css);
+```
+
+With the global styles now set up, you're ready to start styling individual components.
+
+## Setting up the Global Styles for Panda CSS
+
+Panda CSS makes managing global styles and design tokens straightforward by abstracting away the need for separate
+`.css` files for tokens, resets, or keyframes.
+
+Start by extending your `panda.config.ts` with the **semantic tokens,** **shadows** and **keyframes**.
+
+```tsx
+// panda.config.ts
+
+ theme: {
+    extend: {
+      semanticTokens: {
+        colors: {
+          bg: {
+            DEFAULT: { value: '#fff' },
+            subtle: { value: '#f9fafb' },
+            muted: { value: '#f3f4f6' },
+            emphasized: { value: '#e5e7eb' },
+            inverted: { value: '#000' },
+            panel: { value: '#fff' },
+            error: { value: '#fef2f2' },
+            warning: { value: '#fff7ed' },
+            success: { value: '#f0fdf4' },
+            info: { value: '#eff6ff' },
+          },
+
+          border: {
+            DEFAULT: { value: '#e5e7eb' },
+            muted: { value: '#f3f4f6' },
+            subtle: { value: '#f9fafb' },
+            emphasized: { value: '#d1d5db' },
+            inverted: { value: '#1f2937' },
+            error: { value: '#ef4444' },
+            warning: { value: '#f59e42' },
+            success: { value: '#22c55e' },
+            info: { value: '#3b82f6' },
+          },
+
+          fg: {
+            DEFAULT: { value: '#000000' },
+            muted: { value: '#4b5563' },
+            subtle: { value: '#9ca3af' },
+            inverted: { value: '#f9fafb' },
+            error: { value: '#ef4444' },
+            warning: { value: '#ea580c' },
+            success: { value: '#16a34a' },
+            info: { value: '#2563eb' },
+          },
+
+          accent: {
+            contrast: { value: '#000' },
+            fg: { value: '#c2410c' },
+            subtle: { value: '#ffedd5' },
+            muted: { value: '#fed7aa' },
+            emphasized: { value: '#fdba74' },
+            solid: { value: '#ea580c' },
+            focusRing: { value: '#fb923c' },
+          },
+        },
+        shadows: {
+          sm: {
+            value: '0 1px 2px 0 rgba(16, 24, 40, 0.05)',
+          },
+          md: {
+            value:
+              '0 4px 8px -2px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.14)',
+          },
+          lg: {
+            value:
+              '0 8px 24px rgba(16, 24, 40, 0.18), 0 1.5px 4px rgba(16, 24, 40, 0.08)',
+          },
+        },
+      },
+      keyframes: {
+        'slide-fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(-8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-fade-out': {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(-8px)' },
+        },
+      },
+    },
+  },
+```
+
+### Creating the Button Recipe 
+
+Buttons appear across multiple components (menus, dialogs, etc.), so create a reusable button
+recipe that will be used across different components. Since buttons don't have multiple parts, we'll define its styles using
+Panda's [atomic recipe](https://panda-css.com/docs/concepts/recipes#atomic-recipe-or-cva) `cva()` function.
+
+Add the following recipe in your `button.ts` file:
+
+```tsx
+// src/recipes/button.ts
+
+import { cva } from '../../styled-system/css'
+
+export const buttonRecipe = cva({
+  base: {
+    display: 'inline-flex',
+    appearance: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    userSelect: 'none',
+    position: 'relative',
+    borderRadius: 'md',
+    whiteSpace: 'nowrap',
+    verticalAlign: 'middle',
+    borderWidth: '1px',
+    borderColor: 'transparent',
+    cursor: 'button',
+    flexShrink: '0',
+    outline: '0',
+    lineHeight: '1.2',
+    isolation: 'isolate',
+    fontWeight: 'medium',
+    transitionProperty: 'common',
+    transitionDuration: 'moderate',
+    _disabled: {
+      color: 'fg-subtle',
+      cursor: 'not-allowed',
+      opacity: '0.6',
+      pointerEvents: 'none',
+    },
+    _icon: {
+      flexShrink: '0',
+    },
+    _focusVisible: {
+      outline: '2px solid #c4c4c4',
+      outlineOffset: '2px',
+    },
+  },
+  variants: {
+    size: {
+      sm: {
+        h: '9',
+        minW: '9',
+        px: '3.5',
+        textStyle: 'sm',
+        gap: '2',
+        _icon: {
+          width: '4',
+          height: '4',
+        },
+      },
+      md: {
+        h: '10',
+        minW: '10',
+        textStyle: 'sm',
+        px: '4',
+        gap: '2',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+      lg: {
+        h: '11',
+        minW: '11',
+        textStyle: 'md',
+        px: '5',
+        gap: '3',
+        _icon: {
+          width: '5',
+          height: '5',
+        },
+      },
+    },
+
+    variant: {
+      solid: {
+        bg: 'accent.solid',
+        color: 'fg.inverted',
+        borderColor: 'transparent',
+        '--button-bg': 'colors.accent.solid',
+        _hover: {
+          bg: 'color-mix(in srgb, var(--button-bg) 80%, #000 20%)',
+        },
+        _expanded: {
+          bg: 'color-mix(in srgb, var(--button-bg) 80%, #000 20%)',
+        },
+      },
+
+      subtle: {
+        bg: 'bg.subtle',
+        color: 'fg.muted',
+        borderColor: 'transparent',
+        _hover: {
+          bg: 'bg.emphasized',
+        },
+        _expanded: {
+          bg: 'bg.emphasized',
+        },
+      },
+      outline: {
+        borderWidth: '1px',
+        borderColor: 'border',
+        color: 'fg.muted',
+        _hover: {
+          bg: 'bg.subtle',
+        },
+        _expanded: {
+          bg: 'bg.subtle',
+        },
+      },
+    },
+  },
+
+  defaultVariants: {
+    size: 'sm',
+    variant: 'outline',
+  },
+})
+```
+
+- The `base` property defines the foundational styles that are applied to _every_ instance of the button, regardless of
+  any variants you might apply.
+- The `variants` property is where you define different visual configurations of your component. Each key within
+  `variants` represents a category of variation (e.g., `size`, `variant`), and each nested object defines the specific
+  styles for each option within that category.
+- The `defaultVariants` section sets the **fallback values** when no specific size or variant is passed.
+
+
+With the global styles properly set up, we're now ready to start styling individual components. Let's dive in!
 
 ## Components
 
