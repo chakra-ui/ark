@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import CustomObject from './examples/custom-object.vue'
 import Dynamic from './examples/dynamic.vue'
 import Grouping from './examples/grouping.vue'
 import Links from './examples/links.vue'
@@ -41,6 +42,9 @@ import WithHighlight from './examples/with-highlight.vue'
     </Variant>
     <Variant title="With Highlight">
       <WithHighlight />
+    </Variant>
+    <Variant title="Custom Object">
+      <CustomObject />
     </Variant>
   </Story>
 </template>
