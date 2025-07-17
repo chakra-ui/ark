@@ -21,7 +21,9 @@ import { useForwardExpose } from '../../utils'
 
 const props = defineProps<ComboboxItemGroupProps>()
 const combobox = useComboboxContext()
-const id = props.id ?? useId()
+
+const uid = useId()
+const id = props.id ?? uid
 
 ComboboxItemGroupPropsProvider({ id })
 useForwardExpose()

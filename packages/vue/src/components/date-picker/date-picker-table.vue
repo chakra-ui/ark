@@ -23,7 +23,10 @@ import { useForwardExpose } from '../../utils'
 const props = defineProps<DatePickerTableProps>()
 const datePicker = useDatePickerContext()
 const viewProps = useDatePickerViewPropsContext()
-const id = props.id ?? useId()
+
+const uid = useId()
+const id = props.id ?? uid
+
 DatePickerTablePropsProvider({ ...props, id, ...viewProps })
 
 useForwardExpose()

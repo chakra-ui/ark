@@ -1,9 +1,19 @@
 ## [Unreleased]
 
+### Added
+
+- **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
+
 ### Fixed
 
+- **Carousel**: Fix issue where full page carousel could trap scrolling
 - **Collection**: Export `UseListCollectionReturn` type
-- **File Upload**: Export `FileError`, `FileMimeType`, and `FileRejection` types
+- **File Upload**:
+  - Export `FileError`, `FileMimeType`, and `FileRejection` types
+  - Fix issue where calling `api.setFiles` invokes validation with incorrect `acceptedFiles`
+  - Fix issue where the browser might not be able to infer the mime type of a file due to limitations, drag source or
+    security restrictions. As a fallback in the file validation logic, we now infer the mime type from the file
+    extension.
 
 ## [5.16.1] - 2025-07-05
 

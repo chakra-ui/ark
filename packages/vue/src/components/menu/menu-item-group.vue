@@ -22,7 +22,10 @@ import { useForwardExpose } from '../../utils'
 const props = defineProps<MenuItemGroupProps>()
 
 const menu = useMenuContext()
-const id = props.id ?? useId()
+
+const uid = useId()
+const id = props.id ?? uid
+
 const itemGroupProps = computed(() => ({ id }))
 
 MenuItemGroupProvider(itemGroupProps)

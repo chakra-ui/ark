@@ -10,14 +10,14 @@ export interface ColorPickerValueTextBaseProps extends PolymorphicProps {
 export interface ColorPickerValueTextProps extends HTMLProps<'span'>, ColorPickerValueTextBaseProps {}
 
 export const ColorPickerValueText = forwardRef<HTMLDivElement, ColorPickerValueTextProps>((props, ref) => {
-  const { children, format, ...localprops } = props
+  const { children, format, ...localProps } = props
   const colorPicker = useColorPickerContext()
-  const mergedProps = mergeProps(colorPicker.getValueTextProps(), localprops)
+  const mergedProps = mergeProps(colorPicker.getValueTextProps(), localProps)
   const valueAsString = format ? colorPicker.value.toString(format) : colorPicker.valueAsString
 
   return (
     <ark.span {...mergedProps} ref={ref}>
-      {props.children || valueAsString}
+      {children || valueAsString}
     </ark.span>
   )
 })

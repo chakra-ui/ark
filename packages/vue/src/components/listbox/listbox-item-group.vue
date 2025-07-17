@@ -22,7 +22,9 @@ import { useForwardExpose } from '../../utils'
 const props = defineProps<ListboxItemGroupProps>()
 
 const listbox = useListboxContext()
-const id = props.id ?? useId()
+
+const uid = useId()
+const id = props.id ?? uid
 
 ListboxItemGroupPropsProvider({ id })
 
