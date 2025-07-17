@@ -305,8 +305,11 @@ accordion variants: `outline`, `subtle`, and `enclosed`.
 
 #### Outline
 
-The `outline` variant adds a clean separator between items using a bottom border. This works well for minimalist
-interfaces. In your `accordion.css` stylesheet, add the following styles:
+The `outline` variant adds a clean separator between items using a bottom border.
+
+<img src="/blog/accordion/accordion-outline.png" alt="outline-variant" />
+
+This works well for minimalist interfaces. In your `accordion.css` stylesheet, add the following styles:
 
 ```css
 .accordion--variant-outline [data-scope='accordion'][data-part='item'] {
@@ -317,6 +320,8 @@ interfaces. In your `accordion.css` stylesheet, add the following styles:
 #### Subtle
 
 The `subtle` variant uses a soft background and padding to distinguish accordion items.
+
+<img src="/blog/accordion/accordion-subtle.png" alt="subtle-variant" />
 
 ```css
 .accordion--variant-subtle {
@@ -338,6 +343,8 @@ The `subtle` variant uses a soft background and padding to distinguish accordion
 #### Enclosed
 
 The `enclosed` variant visually groups all accordion items inside a bordered box, giving card-like structure.
+
+<img src="/blog/accordion/accordion-enclosed.png" alt="enclosed-variant" />
 
 ```css
 .accordion--variant-enclosed [data-scope='accordion'][data-part='root'] {
@@ -369,6 +376,8 @@ The `enclosed` variant visually groups all accordion items inside a bordered box
 
 To make your Accordion responsive to different layouts, we’ll add small, medium and large variants using the `sm`, `md`,
 and `lg` classes.
+
+<img src="/blog/accordion/accordion-sizes.png" alt="size-variants" />
 
 Each size sets its own padding, border radius, and font size using CSS variables:
 
@@ -827,6 +836,8 @@ maintain consistent spacing between the trigger and content body.
 A flexible design system supports different visual variants to fit design needs. We’ll support the `outline`, `subtle`,
 and `enclosed` visual variants to align with different UI patterns.
 
+<img src="/blog/accordion/accordion-variants.png" alt="visual-variants" />
+
 Within the `variants` key of your recipe, define the visual variants:
 
 ```tsx
@@ -891,6 +902,8 @@ variants: {
 
 We also support `sm`, `md`, and `lg` size variants. These define CSS variables that affect padding, border radius, and
 font size.
+
+<img src="/blog/accordion/accordion-sizes.png" alt="size-variants" />
 
 Within the `size` key of your recipe, define the size variants:
 
