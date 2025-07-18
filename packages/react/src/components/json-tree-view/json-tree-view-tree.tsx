@@ -9,7 +9,7 @@ export const JsonTreeViewTree = (props: JsonTreeViewTreeProps) => {
   const tree = useTreeViewContext()
   const children = tree.collection.getNodeChildren(tree.collection.rootNode)
   return (
-    <TreeView.Tree {...treeProps}>
+    <TreeView.Tree data-scope="json-tree-view" {...treeProps}>
       {children.map((child, index) => (
         <JsonTreeViewNode key={child.id} node={child} indexPath={[index]} {...nodeProps} />
       ))}

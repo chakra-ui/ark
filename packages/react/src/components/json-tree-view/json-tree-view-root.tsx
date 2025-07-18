@@ -17,5 +17,5 @@ export function JsonTreeViewRoot<T = unknown>(props: JsonTreeViewRootProps<T>) {
     })
   }, [data])
 
-  return <TreeView.Root typeahead={false} collection={collection} {...restProps} />
+  return <TreeView.Root data-scope="json-tree-view" typeahead={false} collection={collection} {...restProps} />
 }
