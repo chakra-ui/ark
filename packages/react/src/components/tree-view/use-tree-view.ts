@@ -6,7 +6,7 @@ import type { Optional } from '../../types'
 import type { TreeCollection, TreeNode } from '../collection'
 
 export interface UseTreeViewProps<T extends TreeNode>
-  extends Optional<Omit<treeView.Props, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
+  extends Optional<Omit<treeView.Props<T>, 'dir' | 'getRootNode' | 'collection'>, 'id'> {
   /**
    * The collection of tree nodes
    */

@@ -1,12 +1,12 @@
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-import { useMemo } from 'react'
+import { forwardRef, useMemo } from 'react'
 import { TreeView, createTreeCollection } from '../tree-view'
 
-export interface JsonTreeViewRootProps<T = unknown> extends Omit<TreeView.RootProps<JsonNode>, 'collection'> {
-  data: T
+export interface JsonTreeViewRootProps extends Omit<TreeView.RootProps<JsonNode>, 'collection'> {
+  data: unknown
 }
 
-export function JsonTreeViewRoot<T = unknown>(props: JsonTreeViewRootProps<T>) {
+export const JsonTreeViewRoot = forwardRef<HTMLDivElement, JsonTreeViewRootProps>((props, ref) => {
   const { data, ...restProps } = props
 
   const collection = useMemo(() => {
@@ -17,5 +17,9 @@ export function JsonTreeViewRoot<T = unknown>(props: JsonTreeViewRootProps<T>) {
     })
   }, [data])
 
-  return <TreeView.Root data-scope="json-tree-view" typeahead={false} collection={collection} {...restProps} />
-}
+  return (
+    <TreeView.Root data-scope="json-tree-view" collection={collection} {...restProps} ref={ref} typeahead={false} />
+  )
+})
+
+JsonTreeViewRoot.displayName = 'JsonTreeViewRoot'
