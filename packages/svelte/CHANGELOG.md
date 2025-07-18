@@ -13,13 +13,21 @@ description: All notable changes will be documented in this file.
 ### Fixed
 
 - **Carousel**: Fix issue where full page carousel could trap scrolling
-- **Collection**: Export `UseListCollectionReturn` type
-- **File Upload**:
+
+- **ListCollection**: Export `UseListCollectionReturn` type
+
+- **TreeCollection**: Fix issue where the `filter` method completely deletes the children key from the node when there
+  are no matching children
+
+- **Number Input**: Fix issue where default pattern does not allow negative numbers with decimal point
+
+- **File Upload**
   - Export `FileError`, `FileMimeType`, and `FileRejection` types
   - Fix issue where calling `api.setFiles` invokes validation with incorrect `acceptedFiles`
   - Fix issue where the browser might not be able to infer the mime type of a file due to limitations, drag source or
     security restrictions. As a fallback in the file validation logic, we now infer the mime type from the file
     extension.
+
 - **Portal**: Fix issue where `lifecycle_double_unmount` warning could be triggered.
 
 ## [5.1.1] - 2025-07-05
