@@ -1,4 +1,4 @@
-import type { JsonNode } from '../../../../json-tree-utils'
+import type { JsonNode } from '@zag-js/json-tree-utils'
 import { TreeView } from '../tree-view'
 
 export interface JsonTreeViewRootProviderProps extends TreeView.RootProviderProps<JsonNode> {}

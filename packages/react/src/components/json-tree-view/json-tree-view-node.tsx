@@ -1,9 +1,4 @@
-import {
-  type JsonNode,
-  errorStackToElement,
-  getAccessibleDescription,
-  jsonNodeToElement,
-} from '../../../../json-tree-utils'
+import { type JsonNode, getAccessibleDescription, jsonNodeToElement } from '@zag-js/json-tree-utils'
 import { TreeView } from '../tree-view'
 import { JsonTreeViewKeyNode } from './json-tree-view-key-node'
 import { JsonTreeViewValueNode } from './json-tree-view-value-node'
@@ -48,11 +43,7 @@ export function JsonTreeViewNode(props: JsonTreeViewNodeProps) {
         <TreeView.Item aria-label={getAccessibleDescription(node)}>
           <TreeView.ItemText>
             {node.key && <JsonTreeViewKeyNode node={node} />}
-            {node.key === 'stack' && typeof node.value === 'string' ? (
-              <JsonTreeViewValueNode node={errorStackToElement(node.value)} />
-            ) : (
-              <JsonTreeViewValueNode node={jsonNodeToElement(node)} />
-            )}
+            <JsonTreeViewValueNode node={jsonNodeToElement(node)} />
           </TreeView.ItemText>
         </TreeView.Item>
       )}

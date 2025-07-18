@@ -111,6 +111,7 @@
     "@zag-js/highlight-word": "1.18.4",
     "@zag-js/hover-card": "1.18.4",
     "@zag-js/i18n-utils": "1.18.4",
+    "@zag-js/json-tree-utils": "1.18.4",
     "@zag-js/listbox": "1.18.4",
     "@zag-js/menu": "1.18.4",
     "@zag-js/number-input": "1.18.4",

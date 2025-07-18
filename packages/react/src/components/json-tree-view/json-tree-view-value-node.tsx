@@ -1,19 +1,28 @@
-import type { JsonNodeElement } from '../../../../json-tree-utils'
+import type { JsonNodeHastElement } from '@zag-js/json-tree-utils'
 
 interface JsonTreeViewValueNodeProps {
-  node: JsonNodeElement
+  node: JsonNodeHastElement
 }
 export const JsonTreeViewValueNode = (props: JsonTreeViewValueNodeProps): React.ReactNode => {
   const { node } = props
+
+  // Handle text nodes
+  if (node.type === 'text') {
+    return <>{node.value}</>
+  }
+
+  // Handle element nodes
+  const Element = node.tagName
   return (
-    <span data-type={node.props.nodeType} data-kind={node.props.kind}>
-      {Array.isArray(node.props.children)
-        ? node.props.children.map((child, index) => (
-            <span key={index} data-type={child.props.nodeType} data-kind={child.props.kind}>
-              <JsonTreeViewValueNode node={child} />
-            </span>
-          ))
-        : node.props.children}
-    </span>
+    <Element
+      data-root={node.properties.root ? '' : undefined}
+      data-type={node.properties.nodeType}
+      data-kind={node.properties.kind}
+      suppressHydrationWarning
+    >
+      {node.children.map((child, index) => (
+        <JsonTreeViewValueNode key={index} node={child} />
+      ))}
+    </Element>
   )
 }

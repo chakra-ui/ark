@@ -1,5 +1,5 @@
+import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
 import { useMemo } from 'react'
-import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '../../../../json-tree-utils'
 import { type UseTreeViewProps, type UseTreeViewReturn, createTreeCollection, useTreeView } from '../tree-view'
 
 export interface UseJsonTreeViewProps<T = unknown> extends Omit<UseTreeViewProps<JsonNode>, 'collection'> {

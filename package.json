@@ -49,6 +49,7 @@
     "@ark-ui/website"
   ],
   "overrides": {
+    "entities": "4.5.0",
     "flexsearch": "0.8.205"
   }
 }
