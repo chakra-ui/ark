@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.2.0] - 2025-07-18
+
 ### Added
 
 - **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
