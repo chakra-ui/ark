@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.17.0] - 2025-07-18
+
 ### Added
 
 - **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
