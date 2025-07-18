@@ -1,25 +1,38 @@
 ## [Unreleased]
 
+## [5.17.0] - 2025-07-18
+
 ### Added
 
 - **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
 
 ### Fixed
 
-- **Collection**: Export `UseListCollectionReturn` type
-- **File Upload**: Export `FileError`, `FileMimeType`, and `FileRejection` types
+- **Carousel**: Fix issue where full page carousel could trap scrolling
+
+- **ListCollection**: Export `UseListCollectionReturn` type
+
+- **TreeCollection**: Fix issue where the `filter` method completely deletes the children key from the node when there
+  are no matching children
+
+- **Number Input**: Fix issue where default pattern does not allow negative numbers with decimal point
+
+- **File Upload**
+  - Export `FileError`, `FileMimeType`, and `FileRejection` types
+  - Fix issue where calling `api.setFiles` invokes validation with incorrect `acceptedFiles`
+  - Fix issue where the browser might not be able to infer the mime type of a file due to limitations, drag source or
+    security restrictions. As a fallback in the file validation logic, we now infer the mime type from the file
+    extension.
 
 ## [5.16.1] - 2025-07-05
 
 ### Fixed
 
 - **Combobox**
-
   - Expose `reason` to `onOpenChange` and `onInputValueChange` callbacks
   - Expose `api.clearHighlightedValue` function to clear highlighted value
 
 - **Date Picker**
-
   - Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
   - Fix issue where `focusedValue` could not be fully controlled
 
@@ -28,7 +41,6 @@
 - **Progress**: Improve `valueAsString` formatting
 
 - **Select**
-
   - Select highlighted item only if it exists in the collection
   - Expose `api.clearHighlightedValue` function to clear highlighted value
 
@@ -73,7 +85,6 @@
   is now required. A warning will be logged if it is not provided
 
 - **Tree View**
-
   - Fix issue where clicking a branch with indeterminate state doesn't check its child nodes
   - Remove `aria-busy` attribute from branch trigger when not loading children
   - Expose node details in `onExpandChange`, `onSelectionChange` and `onFocusChange`
@@ -81,7 +92,6 @@
 - **Angle Slider**: Fix issue where scrubbing doesn't feel smooth on touch devices
 
 - **Timer**
-
   - Fix issue where timer could continue beyond `targetMs` when window is not visible
   - Add validation to ensure `startMs` and `targetMs` are configured correctly
   - Fix `progressPercent` calculation for countdown timers
@@ -97,7 +107,6 @@
 ### Added
 
 - **Tree View**
-
   - Add support for checkbox state for checkbox trees via `defaultCheckedValue`, `checkedValue`, `onCheckedChange` props
   - Add callback for when `loadChildren` fails via `onLoadChildrenError` prop
 
@@ -184,7 +193,6 @@
 ### Added
 
 - **Tree View**: Add support for lazy loading node children. To use this, you need to provide:
-
   - `loadChildren` is a function that is used to load the children of a node.
   - `onLoadChildrenComplete` is a callback that is called when the children of a node are loaded. Used to update the
     tree collection.
@@ -193,7 +201,6 @@
 ### Fixed
 
 - **Slider**
-
   - Fixed issue where `Shift` + `ArrowRight` set value to `0` instead of `max` when step is too large (e.g. `20`)
   - Fixed issue where `onValueChangeEnd` doesn't return the latest value when dragging very fast
 
@@ -250,7 +257,6 @@ export const Basic = () => (
 - **Collection**: Export `CollectionOptions`, `TreeCollectionOptions`, `GridCollectionOptions` types.
 
 - **Carousel**
-
   - Fix issue where focusing on carousel region and navigating with keyboard doesn't work as expected
   - Fix issue when `allowMouseDrag` is set where carousel no longer snaps after mouse interaction
 
@@ -321,12 +327,10 @@ export const Basic = () => (
 - **Tabs**: Fixed issue where tabs indicator animation behaves inconsistently.
 
 - **Date Picker**
-
   - Fixed issue where datepicker throws error when navigating month view.
   - Fixed issue where range selection doesn't reset correctly when clicking the same start date.
 
 - **Disclosure Components**
-
   - Fixed issue where pointerdown outside doesn't work consistently on mobile devices.
   - Improved pointerdown outside click detection in shadow DOM environments.
 
@@ -335,12 +339,10 @@ export const Basic = () => (
 ### Added
 
 - **Slider**
-
   - Add support for `origin: end` to align the thumb to the end of the track.
   - Expose `thumbSize` as CSS variables in the root element. Can be useful for styling the slider.
 
 - **Menu**
-
   - Added `onSelect` event to the `Menu.Item` component.
 
 ### Fixed

@@ -22,7 +22,9 @@ import { useForwardExpose } from '../../utils'
 const props = defineProps<SelectItemGroupProps>()
 
 const select = useSelectContext()
-const id = props.id ?? useId()
+
+const uid = useId()
+const id = props.id ?? uid
 
 SelectItemGroupPropsProvider({ id })
 

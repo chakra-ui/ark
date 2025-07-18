@@ -1,4 +1,5 @@
-import { type JSX, Show, createEffect, createMemo, createSignal, onCleanup, splitProps } from 'solid-js'
+import type { JSX } from 'solid-js'
+import { Show, createEffect, createMemo, createSignal, onCleanup, splitProps } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { EnvironmentProvider } from '../../providers'
 import type { Assign } from '../../types'

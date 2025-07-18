@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import CustomObjectExample from './examples/custom-object.svelte'
 import DynamicExample from './examples/dynamic.svelte'
 import GroupingExample from './examples/grouping.svelte'
 import LinksExample from './examples/links.svelte'
@@ -80,5 +81,11 @@ export const Multiple = {
 export const WithHighlight = {
   render: () => ({
     Component: WithHighlightExample,
+  }),
+}
+
+export const CustomObject = {
+  render: () => ({
+    Component: CustomObjectExample,
   }),
 }

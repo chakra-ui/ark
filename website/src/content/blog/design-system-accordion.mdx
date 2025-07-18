@@ -1,0 +1,1208 @@
+---
+title: 'Design System #3: Accordion component'
+description: How to build an accordion component with Ark UI and Panda CSS
+date: '2025-06-15'
+author: 'Esther'
+tags: ['accordion', 'ark-ui', 'design-system']
+---
+
+The [Accordion](/docs/components/accordion) is typically used for displaying collapsible content like FAQs,
+documentation sections, or grouped settings. It helps keep interfaces clean and focused by allowing users to toggle
+visibility without overwhelming them with information.
+
+With Ark UI, you get unstyled but accessible building blocks. This means you have full control and can style the
+accordion to match your design system by simply targeting the right `data-scope` and `data-part` attributes.
+
+In this post, you’ll learn how to:
+
+- **Define Base Styles**: Set the default and foundational styles for each part of the accordion.
+- **Add Size Variants:** Support small, medium, and large accordions by adjusting padding, font size, and spacing to fit
+  different layouts and use cases.
+- **Customize Visual Variants:** Create variants like `outline`, `subtle`, and `enclosed` to match your design system’s
+  look and feel.
+- **Style Disabled States:** Apply styles that visually indicate when specific accordion items are unclickable or
+  inactive.
+- **Add an Action Button:** Place actionable elements like buttons inside the accordion trigger for improved user
+  interaction.
+
+By the end, you’ll have a flexible, scalable pattern for styling accordions that fit into your design system.
+
+<video src="/blog/accordion/accordion.mp4" autoPlay loop muted playsinline />
+
+## Anatomy
+
+Before we dive into specific styles, it's essential to understand the parts that make up the Ark UI Accordion component.
+Each part supports the `data-scope` and `data-part` attributes, which you can target in both Vanilla CSS and Panda CSS.
+
+<Anatomy id="accordion" />
+
+- **`root`** – the wrapper that contains all accordion items.
+- **`item`** – represents a single section in the accordion.
+- **`item-trigger`** – The interactive header of each accordion item that toggles the accordion open or closed.
+- **`item-indicator`** – Typically an icon placed within the trigger that visually shows when the accordion is expanded
+  or collapsed.
+- **`item-content`** – The section that expands or collapses to show or hide content.
+
+### **Basic Usage**
+
+Here's a simple example of how to use the `Accordion` component in your code:
+
+```tsx
+import { Accordion } from '@ark-ui/react/accordion'
+import { ChevronDownIcon } from 'lucide-react'
+
+export const Basic = () => {
+  return (
+    <Accordion.Root defaultValue={['React']}>
+      {['React', 'Solid'].map((item) => (
+        <Accordion.Item key={item} value={item}>
+          <Accordion.ItemTrigger>
+            What is {item}?
+            <Accordion.ItemIndicator>
+              <ChevronDownIcon />
+            </Accordion.ItemIndicator>
+          </Accordion.ItemTrigger>
+          <Accordion.ItemContent>{item} is a JavaScript library for building user interfaces.</Accordion.ItemContent>
+        </Accordion.Item>
+      ))}
+    </Accordion.Root>
+  )
+}
+```
+
+From the above code, it is worth noting that:
+
+- We have two accordion items (`React` and `Solid`)
+- Only one item (`React`) is open by default
+
+When rendered, the structure looks like this in the DOM:
+
+```tsx
+<div data-scope="accordion" data-part="root">
+  <div data-part="item" data-state="open">
+    <button data-part="item-trigger">
+      What is React?
+      <span data-part="item-indicator">▼</span>
+    </button>
+    <div data-part="item-content">
+      React is a JavaScript library for building user interfaces.
+    </div>
+  </div>
+  <!-- Other accordion item here -->
+</div>
+```
+
+Each part of the accordion component comes with data attributes like:
+
+- **`data-scope="accordion"`** which scopes all accordion parts under the `accordion` namespace, ensuring styles don't
+  clash with other components.
+- **`data-part="..."`** breaks the component down into its internal parts so you can style them individually such
+  as `data-part="item”`, `data-part="item-trigger”` and more.
+- **`data-state="..."`** tells you what state a component is in. For example, `data-state="open"` means the item is
+  currently expanded
+
+## Styling with Vanilla CSS
+
+When styling the Accordion component in a design system using **Vanilla CSS**, it’s helpful to start thinking in
+**recipes**.
+
+A recipe is a structured approach to defining styles for all parts of a component, including its base styles, size
+variants, and visual variants.
+
+With a recipe for Accordion, you can:
+
+- Set up **base styles** that apply to every accordion instance (like spacing, layout, and transitions).
+- Add **size variants** (`sm`, `md`, `lg`) that adjust padding, font sizes, and spacing.
+- Define **visual variants** like `outline`, `subtle`, or `enclosed`, each with a different look and feel.
+
+### Base Styles
+
+We’ll start by defining foundational styles for each part of the `Accordion` component using Ark UI’s attributes like
+`data-scope="accordion"` and `data-part="..."`.
+
+Before defining the base styles for the Accordion, **make sure your project includes the shared global styles** we use
+across the design system, such as reset styles, tokens, keyframes, and base button styles.
+
+> If you haven’t set that up yet, head over to the [Design System Intro](/blog/design-system-series) to see how to
+> configure your global styles directory.
+
+#### Styling the Accordion Root and Items
+
+Let's define the base styles of the accordion. Add the following styles to your `accordion.css` stylesheet:
+
+```css
+[data-scope='accordion'][data-part='root'] {
+  width: 100%;
+  border-radius: var(--accordion-radius);
+}
+
+[data-scope='accordion'][data-part='item'] {
+  overflow-anchor: none;
+}
+```
+
+The CSS variable `--accordion-radius` makes the `root` flexible to customize across different sizes.
+
+Applying `overflow-anchor: none` to the `item` prevents scroll anchoring issues, which can occur when an item is
+expanded or collapsed.
+
+#### Styling the Item Trigger
+
+The `item-trigger` is the clickable header that users interact with to expand or collapse content. To style it, add the
+following styles to your `accordion.css` stylesheet:
+
+```css
+[data-scope='accordion'][data-part='item-trigger'] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.75rem;
+  font-weight: 500;
+  text-align: start;
+  outline: 0;
+  border-radius: var(--accordion-radius);
+  padding: var(--accordion-padding-y) var(--accordion-padding-x);
+  background: transparent;
+}
+
+[data-scope='accordion'][data-part='item-trigger']:focus-visible {
+  outline: 2px solid var(--accordion-focus-ring, #3b82f6);
+}
+
+[data-scope='accordion'][data-part='item-trigger']:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+```
+
+Let's break down the CSS properties applied:
+
+- The trigger spans the `width: 100%`, has a `font-weight` of `500` and other responsive styles. These create a
+  horizontally aligned layout.
+- The `:focus-visible` pseudo-class is an accessibility feature. Unlike `:focus` (which applies on click and keyboard
+  focus), `:focus-visible` only triggers when the element is focused via keyboard navigation.
+- The `:disabled` pseudo-class allows you to apply styles that visually communicate when the accordion items are not
+  clickable.
+
+#### Styling the Item Content
+
+The `item-content` is the container that expands and collapses to reveal or hide the content of an accordion item.
+
+Add the following styles to the stylesheet.
+
+```tsx
+[data-scope='accordion'][data-part='item-content'] {
+  overflow: hidden;
+  border-radius: var(--accordion-radius);
+  padding-inline: var(--accordion-padding-x);
+}
+```
+
+> CSS variables make it easy to adjust spacing across size variants.
+
+While the above styles define its static appearance, we need to **add smooth transitions** to the `item-content` for
+improved visual experience of your component.
+
+Inside your global `keyframes.css` stylesheet, define the animations:
+
+```tsx
+@keyframes expand-height {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--height);
+  }
+}
+
+@keyframes collapse-height {
+  from {
+    height: var(--height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+```
+
+Now, use the `data-state='open'` and `data-state='closed'`, to add beautiful entry and exit animations to the item
+content.
+
+```css
+[data-scope='accordion'][data-part='item-content'][data-state='open'] {
+  animation-name: expand-height, fade-in;
+  animation-duration: 200ms;
+}
+
+[data-scope='accordion'][data-part='item-content'][data-state='closed'] {
+  animation-name: collapse-height, fade-out;
+  animation-duration: 200ms;
+}
+```
+
+#### Styling the Indicator
+
+The indicator typically is an arrow or chevron icon that rotates when the accordion item is expanded or collapsed.
+
+```css
+[data-scope='accordion'][data-part='item-indicator'] {
+  transition: rotate 0.2s;
+  transform-origin: center;
+  color: var(--accordion-text-subtle, #a1a1aa);
+}
+
+[data-scope='accordion'][data-part='item-indicator'][data-state='open'] {
+  transform: rotate(180deg);
+}
+
+[data-scope='accordion'][data-part='item-indicator'] svg {
+  width: 1.2em;
+  height: 1.2em;
+}
+```
+
+These styles animate the indicator's rotation smoothly from its center and rotates the icon 180° when the accordion is
+open.
+
+#### Styling the Item Body (Custom Part)
+
+Although Ark UI doesn’t include an `item-body` part by default, we’ll create this part ourselves when applying styles.
+The item body serves as a wrapper around the content inside each accordion item. Let's style it:
+
+```tsx
+[data-scope='accordion'][data-part='item-body'] {
+  padding-top: var(--accordion-padding-y);
+  padding-bottom: calc(var(--accordion-padding-y) * 2);
+}
+
+```
+
+This custom `item-body` helps you gain more control over vertical spacing inside your accordion content.
+
+### Visual Variants
+
+A flexible design system supports different visual variants to fit design needs. We’ll define the styles for three
+accordion variants: `outline`, `subtle`, and `enclosed`.
+
+#### Outline
+
+The `outline` variant adds a clean separator between items using a bottom border.
+
+<img src="/blog/accordion/accordion-outline.png" alt="outline-variant" />
+
+This works well for minimalist interfaces. In your `accordion.css` stylesheet, add the following styles:
+
+```css
+.accordion--variant-outline [data-scope='accordion'][data-part='item'] {
+  border-bottom: 1px solid var(--accordion-border, #e2e8f0);
+}
+```
+
+#### Subtle
+
+The `subtle` variant uses a soft background and padding to distinguish accordion items.
+
+<img src="/blog/accordion/accordion-subtle.png" alt="subtle-variant" />
+
+```css
+.accordion--variant-subtle {
+  [data-scope='accordion'][data-part='item-trigger'],
+  [data-scope='accordion'][data-part='item-content'] {
+    padding-inline: var(--accordion-padding-x);
+  }
+
+  [data-scope='accordion'][data-part='item'] {
+    border-radius: var(--accordion-radius);
+  }
+
+  [data-scope='accordion'][data-part='item'][data-state='open'] {
+    background-color: var(--accordion-bg-subtle, #f4f4f5);
+  }
+}
+```
+
+#### Enclosed
+
+The `enclosed` variant visually groups all accordion items inside a bordered box, giving card-like structure.
+
+<img src="/blog/accordion/accordion-enclosed.png" alt="enclosed-variant" />
+
+```css
+.accordion--variant-enclosed [data-scope='accordion'][data-part='root'] {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--accordion-radius);
+  overflow: hidden;
+}
+
+.accordion--variant-enclosed {
+  [data-scope='accordion'][data-part='item-trigger'],
+  [data-scope='accordion'][data-part='item-content'] {
+    padding-inline: var(--accordion-padding-x);
+  }
+
+  [data-scope='accordion'][data-part='item'] ~ [data-part='item'] {
+    border-top: 1px solid #e2e8f0;
+  }
+
+  [data-scope='accordion'][data-part='item'][data-state='open'] {
+    background-color: #fafafa;
+  }
+}
+```
+
+> This `~` rule **adds a top border to every item that follows another item** (i.e., not the first one). It creates a
+> visual separation between accordion items **inside the enclosed box**, without doubling borders.
+
+### Size Variants
+
+To make your Accordion responsive to different layouts, we’ll add small, medium and large variants using the `sm`, `md`,
+and `lg` classes.
+
+<img src="/blog/accordion/accordion-sizes.png" alt="size-variants" />
+
+Each size sets its own padding, border radius, and font size using CSS variables:
+
+```css
+.accordion--size-sm {
+  --accordion-padding-x: 0.75rem;
+  --accordion-padding-y: 0.5rem;
+  --accordion-radius: 0.25rem;
+}
+
+.accordion--size-md {
+  --accordion-padding-x: 1rem;
+  --accordion-padding-y: 0.5rem;
+  --accordion-radius: 0.375rem;
+}
+
+.accordion--size-lg {
+  --accordion-padding-x: 1.5rem;
+  --accordion-padding-y: 0.75rem;
+  --accordion-radius: 0.5rem;
+}
+```
+
+You can also customize the **font size** for the item trigger in each size variant:
+
+```css
+.accordion--size-sm [data-part='item-trigger'] {
+  font-size: 0.875rem;
+}
+
+.accordion--size-md [data-part='item-trigger'] {
+  font-size: 1rem;
+}
+
+.accordion--size-lg [data-part='item-trigger'] {
+  font-size: 1.125rem;
+}
+```
+
+### Putting It All Together
+
+We've covered how to define base styles using `data-scope` and `data-part` attributes, create scalable variants using
+CSS custom properties, apply smooth animations, and even introduce custom parts like `item-body`.
+
+Here's what the complete `accordion.css` stylesheet will look like:
+
+```tsx
+/* Base Styles */
+[data-scope='accordion'][data-part='root'] {
+  width: 100%;
+  border-radius: var(--accordion-radius);
+}
+
+[data-scope='accordion'][data-part='item'] {
+  overflow-anchor: none;
+}
+
+[data-scope='accordion'][data-part='item-trigger'] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: start;
+  width: 100%;
+  outline: 0;
+  gap: 0.75rem;
+  font-weight: 500;
+  border-radius: var(--accordion-radius);
+  padding: var(--accordion-padding-y) var(--accordion-padding-x);
+  background: transparent;
+
+  &:focus-visible {
+    outline: 2px solid var(--accordion-focus-ring, #3b82f6);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+[data-scope='accordion'][data-part='item-content'] {
+  overflow: hidden;
+  border-radius: var(--accordion-radius);
+  padding-inline: var(--accordion-padding-x);
+
+  &[data-state='open'] {
+    animation-name: expand-height, fade-in;
+    animation-duration: 200ms;
+  }
+
+  &[data-state='closed'] {
+    animation-name: collapse-height, fade-out;
+    animation-duration: 200ms;
+  }
+}
+
+[data-scope='accordion'][data-part='item-body'] {
+  padding-top: var(--accordion-padding-y);
+  padding-bottom: calc(var(--accordion-padding-y) * 2);
+}
+
+[data-scope='accordion'][data-part='item-indicator'] {
+  transition: rotate 0.2s;
+  transform-origin: center;
+  color: var(--accordion-text-subtle, #a1a1aa);
+
+  &[data-state='open'] {
+    transform: rotate(180deg);
+  }
+
+  & svg {
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+
+/* Variants */
+.accordion--variant-outline [data-scope='accordion'][data-part='item'] {
+  border-bottom: 1px solid var(--accordion-border, #e2e8f0);
+}
+
+.accordion--variant-subtle {
+  [data-scope='accordion'][data-part='item-trigger'],
+  [data-scope='accordion'][data-part='item-content'] {
+    padding-inline: var(--accordion-padding-x);
+  }
+
+  [data-scope='accordion'][data-part='item'] {
+    border-radius: var(--accordion-radius);
+    &[data-state='open'] {
+      background-color: var(--accordion-bg-subtle, #f4f4f5);
+    }
+  }
+}
+
+.accordion--variant-enclosed {
+  &[data-scope='accordion'][data-part='root'] {
+    border: 1px solid #e2e8f0;
+    border-radius: var(--accordion-radius);
+    overflow: hidden;
+  }
+  [data-scope='accordion'][data-part='item-trigger'],
+  [data-scope='accordion'][data-part='item-content'] {
+    padding-inline: var(--accordion-padding-x);
+  }
+  [data-scope='accordion'][data-part='item'] {
+    & ~ & {
+      border-top: 1px solid #e2e8f0;
+    }
+
+    &[data-state='open'] {
+      background-color: #fafafa;
+    }
+  }
+}
+
+/* Sizes */
+
+.accordion--size-sm {
+  --accordion-padding-x: 0.75rem;
+  --accordion-padding-y: 0.5rem;
+  --accordion-radius: 0.25rem;
+
+  [data-scope='accordion'][data-part='item-trigger'] {
+    font-size: 0.875rem;
+  }
+}
+
+.accordion--size-md {
+  --accordion-padding-x: 1rem;
+  --accordion-padding-y: 0.5rem;
+  --accordion-radius: 0.375rem;
+
+  [data-scope='accordion'][data-part='item-trigger'] {
+    font-size: 1rem;
+  }
+}
+
+.accordion--size-lg {
+  --accordion-padding-x: 1.5rem;
+  --accordion-padding-y: 0.75rem;
+  --accordion-radius: 0.5rem;
+
+  [data-scope='accordion'][data-part='item-trigger'] {
+    font-size: 1.125rem;
+  }
+}
+
+```
+
+### Using The Vanilla CSS Classes in Your Component
+
+Once you've defined your accordion styles in `accordion.css`, you can apply them in your components by adding the
+appropriate utility classes.
+
+Let’s say you want a **medium-sized**, **subtle** accordion. You’d apply both classes to the root element:
+
+```tsx
+import { Accordion } from '@ark-ui/react'
+import { ChevronDownIcon } from 'lucide-react'
+
+// Define the custom item body part
+const AccordionItemBody = ({ children }: { children: React.ReactNode }) => (
+  <div data-scope="accordion" data-part="item-body">
+    {children}
+  </div>
+)
+
+// Define the full accordion component
+export const VanillaCSSAccordion = () => {
+  return (
+    <Accordion.Root className="accordion--size-md accordion--variant-subtle" defaultValue="react">
+      <Accordion.Item value="react">
+        <Accordion.ItemTrigger>
+          What is React?
+          <Accordion.ItemIndicator>
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent>
+          <AccordionItemBody>React is a JavaScript library for building UIs.</AccordionItemBody>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
+  )
+}
+```
+
+To explore all the styles defined and see them in
+action, [**check out Storybook**](https://github.com/estheragbaje/ark-react-vanilla-css/blob/main/stories/menu/menu.stories.tsx).
+
+## Styling with Panda CSS
+
+If you're using [Panda CSS](https://panda-css.com/), you can follow the same design system approach, but with a few key
+differences. Panda provides a recipe-based styling system that allows you to define styles for each part of a component
+in a structured way.
+
+For the accordion, we’ll:
+
+- Define base styles for the root, item, trigger, content, indicator, and custom parts like `item-body`
+- Apply interaction states such as `open`, `disabled`, and `focus-visible`
+- Set up variants (`outline`, `subtle` and `enclosed`)
+- Set up size variants (`sm`, `md`, `lg`)
+
+### Creating the Accordion Recipe
+
+To style each part of the Accordion component with Panda CSS, we'll define a
+[slot recipe](https://panda-css.com/docs/concepts/slot-recipes) using Panda’s `sva()` utility. This allows us to scope
+styles to all the individual parts of the Accordion like `root`, `item`, `item-trigger`, `item-content`,
+`item-indicator`, and more.
+
+We also use `accordionAnatomy.keys()` from Ark UI to automatically pull in all the part names for the Accordion
+component.
+
+Let’s start by setting up base styles for each slot. In your project, create an `accordion.ts` file to hold the
+accordion recipe.
+
+#### Styling the Accordion Root and Item
+
+The accordion root is the container that holds all items. Define the base styles in your Panda CSS recipe.
+
+```tsx
+// src/recipes/accordion.ts
+
+import { sva } from '../../styled-system/css'
+import { accordionAnatomy } from '@ark-ui/react/accordion'
+
+export const accordionRecipe = sva({
+  slots: accordionAnatomy(),
+  className: 'accordion',
+  base: {
+    root: {
+      width: 'full',
+      borderRadius: 'var(--accordion-radius)',
+    },
+    item: {
+      overflowAnchor: 'none',
+    },
+  },
+})
+```
+
+The `--accordion-radius` CSS variable ensures the component can easily scale across size variants.
+
+#### Styling the Item Trigger
+
+The `itemTrigger` is the clickable header that users interact with to expand or collapse content.
+
+```tsx
+itemTrigger: {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  textAlign: 'start',
+  width: 'full',
+  outline: 0,
+  gap: '3',
+  fontWeight: 'medium',
+  borderRadius: 'var(--accordion-radius)',
+  padding: 'var(--accordion-padding-y) var(--accordion-padding-x)',
+  background: 'transparent',
+  _focusVisible: {
+    outline: '2px solid var(--accordion-focus-ring, #3b82f6)',
+  },
+  _disabled: {
+    opacity: 0.5,
+    cursor: 'not-allowed',
+  },
+},
+```
+
+Let’s break down what each of these styles does:
+
+- The trigger spans a full width, has a font weight of medium and contains other styles. These styles create a
+  responsive and horizontally aligned layout.
+- `_focusVisible`: Targets keyboard navigation focus only, adding a clear, accessible outline using the
+  `-accordion-focus-ring` variable or a fallback color.
+- `_disabled`: Reduces opacity and disables pointer interaction when the trigger is in a disabled state.
+
+#### Styling the Item Content
+
+The `itemContent` is the container that expands and collapses to reveal or hide the content of an accordion item.
+
+```tsx
+itemContent: {
+  overflow: 'hidden',
+  borderRadius: 'var(--accordion-radius)',
+  paddingInline: 'var(--accordion-padding-x)',
+},
+```
+
+> The CSS variables make it easy to adjust spacing across size variants.
+
+The core styles define its static appearance, however, we need to add smooth transitions for better maintaining the
+visual integrity of your component.
+
+Inside your `panda.config.ts` file, add some more keyframes to define the animations for the item content:
+
+```tsx
+theme: {
+    extend: {
+      semanticTokens: {},
+      keyframes: {
+       ...
+        'expand-height': {
+          '0%': { height: '0' },
+          '100%': { height: 'var(--height)' },
+        },
+        'collapse-height': {
+          '0%': { height: 'var(--height)' },
+          '100%': { height: '0' },
+        },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'fade-out': {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+      },
+    },
+  },
+```
+
+Now, use the `_open` and `_close` selectors, to add beautiful entry and exit animations to the item content.
+
+```tsx
+   itemContent: {
+      overflow: 'hidden',
+      borderRadius: 'var(--accordion-radius)',
+      paddingInline: 'var(--accordion-padding-x)',
+      _open: {
+        animationName: 'expand-height, fade-in',
+        animationDuration: '200ms',
+      },
+      _closed: {
+        animationName: 'collapse-height, fade-out',
+        animationDuration: '200ms',
+      },
+    },
+```
+
+#### Styling the Indicator
+
+The indicator typically is an arrow or chevron icon that rotates based on whether the accordion item is expanded or
+collapsed. Add these styles to your accordion recipe:
+
+```tsx
+itemIndicator: {
+  transition: 'rotate 0.2s',
+  transformOrigin: 'center',
+  color: 'fg.subtle',
+  _open: {
+    transform: 'rotate(180deg)',
+  },
+  _icon: {
+    width: '1.2em',
+    height: '1.2em',
+  },
+},
+```
+
+The `_icon` key ensures the SVG maintains consistent dimensions.
+
+#### Styling the Item Body (Custom Part)
+
+Although not provided by default in Ark UI, we’ll add a custom `itemBody` part to manage spacing within item content. To
+style this custom part, we’ll need to extend our accordion recipe.
+
+**Extending the Accordion Anatomy for Custom Parts**
+
+Panda CSS's recipe system is quite flexible. While **`accordionAnatomy.keys()`** gives us all the standard parts exposed
+by Ark UI, we can easily add our own by introducing a custom slot named **`itemBody`**.
+
+This explicitly tells Panda CSS to expect and generate styles for this new part, even though it's not part of Ark UI's
+default structure.
+
+Add **`'itemBody'`** to the array of slots when defining our **`accordionRecipe`**:
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { accordionAnatomy } from '@ark-ui/react/accordion'
+
+export const accordionRecipe = sva({
+  slots: [...accordionAnatomy.keys(), 'itemBody'],
+  className: 'accordion',
+	...
+})
+
+```
+
+Now, add the base styles for the `itemBody`
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { accordionAnatomy } from '@ark-ui/react/accordion'
+
+export const accordionRecipe = sva({
+  slots: [...accordionAnatomy.keys(), 'itemBody'],
+  className: 'accordion',
+  base: {
+    itemBody: {
+      paddingTop: 'var(--accordion-padding-y)',
+      paddingBottom: 'calc(var(--accordion-padding-y) * 2)',
+    },
+  },
+})
+```
+
+This custom `itemBody` helps you gain more control over vertical spacing inside your accordion content.This helps
+maintain consistent spacing between the trigger and content body.
+
+### Visual Variants
+
+A flexible design system supports different visual variants to fit design needs. We’ll support the `outline`, `subtle`,
+and `enclosed` visual variants to align with different UI patterns.
+
+<img src="/blog/accordion/accordion-variants.png" alt="visual-variants" />
+
+Within the `variants` key of your recipe, define the visual variants:
+
+```tsx
+variants: {
+  variant: {
+    outline: {
+      item: {
+        borderBottom: '1px solid',
+        borderColor: 'border',
+      },
+    },
+    subtle: {
+      itemTrigger: {
+        paddingInline: 'var(--accordion-padding-x)',
+      },
+      itemContent: {
+        paddingInline: 'var(--accordion-padding-x)',
+      },
+      item: {
+        borderRadius: 'var(--accordion-radius)',
+        _open: {
+          background: 'bg.muted',
+        },
+      },
+    },
+    enclosed: {
+      root: {
+        border: '1px solid',
+        borderColor: 'border',
+        borderRadius: 'var(--accordion-radius)',
+        overflow: 'hidden',
+      },
+      itemTrigger: {
+        paddingInline: 'var(--accordion-padding-x)',
+      },
+      itemContent: {
+        paddingInline: 'var(--accordion-padding-x)',
+      },
+      item: {
+        '& + &': {
+          borderTop: '1px solid',
+          borderColor: 'border',
+        },
+        _open: {
+          background: 'bg.subtle',
+        },
+      },
+    },
+  },
+
+```
+
+- The `outline` variant adds a clean separator between items using a bottom border. This works well for minimalist
+  interfaces.
+- The `subtle` variant uses a soft background and padding to distinguish accordion items.
+- The `enclosed` variant visually groups all accordion items inside a bordered box, giving card-like structure.
+
+> The `& + &` selector is a combinator that applies styles only to accordion items that are immediately preceded by
+> another accordion item.
+
+### Size Variants
+
+We also support `sm`, `md`, and `lg` size variants. These define CSS variables that affect padding, border radius, and
+font size.
+
+<img src="/blog/accordion/accordion-sizes.png" alt="size-variants" />
+
+Within the `size` key of your recipe, define the size variants:
+
+```tsx
+size: {
+  sm: {
+    root: {
+      '--accordion-padding-x': '0.75rem',
+      '--accordion-padding-y': '0.5rem',
+      '--accordion-radius': '0.25rem',
+    },
+    itemTrigger: {
+      fontSize: 'sm',
+    },
+  },
+  md: {
+    root: {
+      '--accordion-padding-x': '1rem',
+      '--accordion-padding-y': '0.5rem',
+      '--accordion-radius': '0.375rem',
+    },
+    itemTrigger: {
+      fontSize: 'md',
+    },
+  },
+  lg: {
+    root: {
+      '--accordion-padding-x': '1.5rem',
+      '--accordion-padding-y': '0.75rem',
+      '--accordion-radius': '0.5rem',
+    },
+    itemTrigger: {
+      fontSize: 'lg',
+    },
+  },
+},
+```
+
+These variables cascade throughout the component, keeping spacing and text scale consistent.
+
+### Putting It All Together
+
+We've explored how to define base styles, create flexible size variants using CSS variables, handle interactive states,
+and integrate custom parts like the `itemBody`.
+
+Now let's bring everything together. **Here's what the complete accordion recipe will look like**:
+
+```tsx
+import { sva } from '../../styled-system/css'
+import { accordionAnatomy } from '@ark-ui/react/accordion'
+
+export const accordionRecipe = sva({
+  slots: [...accordionAnatomy.keys(), 'itemBody'],
+  className: 'accordion',
+  base: {
+    root: {
+      width: 'full',
+      borderRadius: 'var(--accordion-radius)',
+    },
+    item: {
+      overflowAnchor: 'none',
+    },
+    itemTrigger: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      textAlign: 'start',
+      width: 'full',
+      outline: 0,
+      gap: '3',
+      fontWeight: 'medium',
+      borderRadius: 'var(--accordion-radius)',
+      padding: 'var(--accordion-padding-y) var(--accordion-padding-x)',
+      background: 'transparent',
+      _focusVisible: {
+        outline: '2px solid var(--accordion-focus-ring, #3b82f6)',
+      },
+      _disabled: {
+        opacity: 0.5,
+        cursor: 'not-allowed',
+      },
+    },
+    itemContent: {
+      overflow: 'hidden',
+      borderRadius: 'var(--accordion-radius)',
+      paddingInline: 'var(--accordion-padding-x)',
+      _open: {
+        animationName: 'expand-height, fade-in',
+        animationDuration: '200ms',
+      },
+      _closed: {
+        animationName: 'collapse-height, fade-out',
+        animationDuration: '200ms',
+      },
+    },
+    itemBody: {
+      paddingTop: 'var(--accordion-padding-y)',
+      paddingBottom: 'calc(var(--accordion-padding-y) * 2)',
+    },
+    itemIndicator: {
+      transition: 'rotate 0.2s',
+      transformOrigin: 'center',
+      color: 'fg.subtle',
+      _open: {
+        transform: 'rotate(180deg)',
+      },
+      _icon: {
+        width: '1.2em',
+        height: '1.2em',
+      },
+    },
+  },
+  variants: {
+    variant: {
+      outline: {
+        item: {
+          borderBottom: '1px solid',
+          borderColor: 'border',
+        },
+      },
+
+      subtle: {
+        itemTrigger: {
+          paddingInline: 'var(--accordion-padding-x)',
+        },
+        itemContent: {
+          paddingInline: 'var(--accordion-padding-x)',
+        },
+        item: {
+          borderRadius: 'var(--accordion-radius)',
+          _open: {
+            background: 'bg.muted',
+          },
+        },
+      },
+
+      enclosed: {
+        root: {
+          border: '1px solid',
+          borderColor: 'border',
+          borderRadius: 'var(--accordion-radius)',
+          overflow: 'hidden',
+        },
+        itemTrigger: {
+          paddingInline: 'var(--accordion-padding-x)',
+        },
+        itemContent: {
+          paddingInline: 'var(--accordion-padding-x)',
+        },
+        item: {
+          '& + &': {
+            borderTop: '1px solid',
+            borderColor: 'border',
+          },
+          _open: {
+            background: 'bg.subtle',
+          },
+        },
+      },
+    },
+    size: {
+      sm: {
+        root: {
+          '--accordion-padding-x': '0.75rem',
+          '--accordion-padding-y': '0.5rem',
+          '--accordion-radius': '0.25rem',
+        },
+        itemTrigger: {
+          fontSize: 'sm',
+        },
+      },
+      md: {
+        root: {
+          '--accordion-padding-x': '1rem',
+          '--accordion-padding-y': '0.5rem',
+          '--accordion-radius': '0.375rem',
+        },
+        itemTrigger: {
+          fontSize: 'md',
+        },
+      },
+      lg: {
+        root: {
+          '--accordion-padding-x': '1.5rem',
+          '--accordion-padding-y': '0.75rem',
+          '--accordion-radius': '0.5rem',
+        },
+        itemTrigger: {
+          fontSize: 'lg',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+    variant: 'outline',
+  },
+})
+```
+
+### Using Your Accordion Recipe in a React Component
+
+With your `accordionRecipe` fully defined, let’s put it to work in a React component.
+
+#### 1. Import Your Accordion Recipe
+
+Start by importing the `accordionRecipe` into your component file.
+
+```tsx
+// accordion.tsx
+
+import { accordionRecipe } from './recipes/accordion'
+```
+
+#### 2. Generate Component Classes
+
+Next, generate the class names needed for each part of your Accordion. Calling `accordionRecipe()` returns an object
+where each key matches a slot name (e.g., `root`, `itemTrigger`, `itemContent`) and its value is the generated class
+string.
+
+You can also pass `size` and `variant` values as recipe options. For example:
+
+```tsx
+// Generate default styles (uses defaultVariants)
+const accordionClasses = accordionRecipe()
+
+// Generate styles for a medium-sized, subtle accordion
+const accordionClasses = accordionRecipe({
+  size: 'md',
+  variant: 'subtle',
+})
+```
+
+#### 3. Apply Classes to Ark UI Parts
+
+Now apply the generated class names to each corresponding Ark UI component part using the `className` prop.
+
+Here’s a complete example using all styled parts:
+
+```tsx
+import { Accordion } from '@ark-ui/react'
+import { ChevronDownIcon } from 'lucide-react'
+import { accordionRecipe } from './recipes/accordion'
+
+const AccordionItemBody = ({ children }: { children: React.ReactNode }) => (
+  <div data-scope="accordion" data-part="itemBody">
+    {children}
+  </div>
+)
+
+export const PandaStyledAccordion = () => {
+  const accordionClasses = accordionRecipe({ size: 'md', variant: 'subtle' })
+
+  return (
+    <Accordion.Root className={accordionClasses.root}>
+      <Accordion.Item className={accordionClasses.item} value="react">
+        <Accordion.ItemTrigger className={accordionClasses.itemTrigger}>
+          What is React?
+          <Accordion.ItemIndicator className={accordionClasses.itemIndicator}>
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent className={accordionClasses.itemContent}>
+          <AccordionItemBody className={accordionClasses.itemBody}>
+            React is a JavaScript library for building UIs.
+          </AccordionItemBody>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+
+      <Accordion.Item className={accordionClasses.item} value="vue">
+        <Accordion.ItemTrigger className={accordionClasses.itemTrigger}>
+          What is Vue?
+          <Accordion.ItemIndicator className={accordionClasses.itemIndicator}>
+            <ChevronDownIcon />
+          </Accordion.ItemIndicator>
+        </Accordion.ItemTrigger>
+        <Accordion.ItemContent className={accordionClasses.itemContent}>
+          <AccordionItemBody className={accordionClasses.itemBody}>
+            Vue is a progressive JavaScript framework.
+          </AccordionItemBody>
+        </Accordion.ItemContent>
+      </Accordion.Item>
+    </Accordion.Root>
+  )
+}
+```
+
+To explore all of the accordion styles and their variations, be sure to check out
+the [**Storybook examples**](https://github.com/estheragbaje/ark-react-panda-css/tree/main/src/stories/menu).
+
+## Conclusion
+
+You’ve just built a fully custom-styled Accordion component using Ark UI, with support for Vanilla CSS or Panda CSS.
+
+We walked through the base styles, size and visual variants, and added a custom part (`item-body`) to give you more
+layout control.
+
+A headless library like Ark UI means that whichever style pattern you decide to use, you're in control of your design
+system and can scale as your team grows. and keep things clean.
+
+Feel free to explore the [GitHub repo](https://github.com/estheragbaje/ark-react-panda-css) or
+[Storybook examples](https://github.com/estheragbaje/ark-react-panda-css/tree/main/src/stories/accordion).

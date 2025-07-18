@@ -28,7 +28,9 @@ import { useForwardExpose } from '../../utils'
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()
 const menu = useMenuContext()
-const id = props.id ?? useId()
+
+const uid = useId()
+const id = props.id ?? uid
 
 const itemGroupProps: UseMenuItemGroupContext = computed(() => ({
   id,

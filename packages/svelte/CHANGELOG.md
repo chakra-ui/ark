@@ -6,26 +6,41 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.2.0] - 2025-07-18
+
 ### Added
 
 - **Checkbox**: Add `CheckboxGroupProvider` component for external checkbox group state management
 
 ### Fixed
 
-- **Collection**: Export `UseListCollectionReturn` type
-- **File Upload**: Export `FileError`, `FileMimeType`, and `FileRejection` types
+- **Carousel**: Fix issue where full page carousel could trap scrolling
+
+- **ListCollection**: Export `UseListCollectionReturn` type
+
+- **TreeCollection**: Fix issue where the `filter` method completely deletes the children key from the node when there
+  are no matching children
+
+- **Number Input**: Fix issue where default pattern does not allow negative numbers with decimal point
+
+- **File Upload**
+  - Export `FileError`, `FileMimeType`, and `FileRejection` types
+  - Fix issue where calling `api.setFiles` invokes validation with incorrect `acceptedFiles`
+  - Fix issue where the browser might not be able to infer the mime type of a file due to limitations, drag source or
+    security restrictions. As a fallback in the file validation logic, we now infer the mime type from the file
+    extension.
+
+- **Portal**: Fix issue where `lifecycle_double_unmount` warning could be triggered.
 
 ## [5.1.1] - 2025-07-05
 
 ### Fixed
 
 - **Combobox**
-
   - Expose `reason` to `onOpenChange` and `onInputValueChange` callbacks
   - Expose `api.clearHighlightedValue` function to clear highlighted value
 
 - **Date Picker**
-
   - Fix issue where datepicker errors when setting `selectionMode=range` and `minView=year`
   - Fix issue where `focusedValue` could not be fully controlled
 
@@ -34,7 +49,6 @@ description: All notable changes will be documented in this file.
 - **Progress**: Improve `valueAsString` formatting
 
 - **Select**
-
   - Select highlighted item only if it exists in the collection
   - Expose `api.clearHighlightedValue` function to clear highlighted value
 
@@ -104,7 +118,6 @@ description: All notable changes will be documented in this file.
   is now required. A warning will be logged if it is not provided
 
 - **Tree View**
-
   - Fix issue where clicking a branch with indeterminate state doesn't check its child nodes
   - Remove `aria-busy` attribute from branch trigger when not loading children
   - Expose node details in `onExpandChange`, `onSelectionChange` and `onFocusChange`
@@ -112,7 +125,6 @@ description: All notable changes will be documented in this file.
 - **Angle Slider**: Fix issue where scrubbing doesn't feel smooth on touch devices
 
 - **Timer**
-
   - Fix issue where timer could continue beyond `targetMs` when window is not visible
   - Add validation to ensure `startMs` and `targetMs` are configured correctly
   - Fix `progressPercent` calculation for countdown timers
@@ -129,7 +141,6 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Tree View**
-
   - Add support for checkbox state for checkbox trees via `defaultCheckedValue`, `checkedValue`, `onCheckedChange` props
   - Add callback for when `loadChildren` fails via `onLoadChildrenError` prop
 

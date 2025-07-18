@@ -30,7 +30,8 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
   const hasErrorText = useRef(false)
   const hasHelperText = useRef(false)
 
-  const id = props.id ?? useId()
+  const uid = useId()
+  const id = props.id ?? uid
   const rootRef = useRef<HTMLFieldSetElement>(null)
 
   const errorTextId = `fieldset::${id}::error-text`
