@@ -17,7 +17,7 @@ export const Basic = () => {
         },
       }}
     >
-      <JsonTreeView.Tree arrowIcon={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
     </JsonTreeView.Root>
   )
 }

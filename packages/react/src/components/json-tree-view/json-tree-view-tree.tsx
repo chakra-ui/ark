@@ -5,8 +5,10 @@ import { JsonTreeViewNode, type JsonTreeViewNodeBaseProps } from './json-tree-vi
 
 export interface JsonTreeViewTreeProps extends TreeView.TreeProps, JsonTreeViewNodeBaseProps {}
 
+const splitTreeNodeProps = createSplitProps<JsonTreeViewNodeBaseProps>()
+
 export const JsonTreeViewTree = forwardRef<HTMLDivElement, JsonTreeViewTreeProps>((props, ref) => {
-  const [nodeProps, treeProps] = createSplitProps<JsonTreeViewNodeBaseProps>()(props, ['arrowIcon', 'showIndentGuide'])
+  const [nodeProps, treeProps] = splitTreeNodeProps(props, ['arrow', 'indentGuide', 'quotesOnKeys'])
   const tree = useTreeViewContext()
   const children = tree.collection.getNodeChildren(tree.collection.rootNode)
   return (

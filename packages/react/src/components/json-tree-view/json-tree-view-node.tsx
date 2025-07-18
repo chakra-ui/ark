@@ -4,8 +4,18 @@ import { JsonTreeViewKeyNode } from './json-tree-view-key-node'
 import { JsonTreeViewValueNode } from './json-tree-view-value-node'
 
 export interface JsonTreeViewNodeBaseProps {
-  arrowIcon?: React.ReactElement
-  showIndentGuide?: boolean
+  /**
+   * The icon to use for the arrow.
+   */
+  arrow?: React.ReactElement
+  /**
+   * The indent guide to use for the tree.
+   */
+  indentGuide?: boolean | React.ReactElement
+  /**
+   * Whether to show quotes on the keys.
+   */
+  quotesOnKeys?: boolean
 }
 
 export interface JsonTreeViewNodeProps extends JsonTreeViewNodeBaseProps {
@@ -18,7 +28,7 @@ const scopeProps = {
 }
 
 export function JsonTreeViewNode(props: JsonTreeViewNodeProps) {
-  const { node, indexPath, arrowIcon, showIndentGuide } = props
+  const { node, indexPath, arrow: arrowIcon, indentGuide, quotesOnKeys } = props
   return (
     <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
       {node.children && node.children.length > 0 ? (
@@ -26,19 +36,20 @@ export function JsonTreeViewNode(props: JsonTreeViewNodeProps) {
           <TreeView.BranchControl {...scopeProps} aria-label={getAccessibleDescription(node)}>
             {arrowIcon && <TreeView.BranchIndicator {...scopeProps}>{arrowIcon}</TreeView.BranchIndicator>}
             <TreeView.BranchText {...scopeProps}>
-              {node.key && <JsonTreeViewKeyNode node={node} />}
+              {node.key && <JsonTreeViewKeyNode node={node} showQuotes={quotesOnKeys} />}
               <JsonTreeViewValueNode node={jsonNodeToElement(node)} />
             </TreeView.BranchText>
           </TreeView.BranchControl>
           <TreeView.BranchContent {...scopeProps}>
-            {showIndentGuide && <TreeView.BranchIndentGuide />}
+            {typeof indentGuide === 'boolean' ? <TreeView.BranchIndentGuide /> : indentGuide}
             {node.children.map((child, index) => (
               <JsonTreeViewNode
                 key={child.id}
                 node={child}
                 indexPath={[...indexPath, index]}
-                arrowIcon={arrowIcon}
-                showIndentGuide={showIndentGuide}
+                arrow={arrowIcon}
+                indentGuide={indentGuide}
+                quotesOnKeys={quotesOnKeys}
               />
             ))}
           </TreeView.BranchContent>
@@ -46,7 +57,7 @@ export function JsonTreeViewNode(props: JsonTreeViewNodeProps) {
       ) : (
         <TreeView.Item {...scopeProps} aria-label={getAccessibleDescription(node)}>
           <TreeView.ItemText {...scopeProps}>
-            {node.key && <JsonTreeViewKeyNode node={node} />}
+            {node.key && <JsonTreeViewKeyNode node={node} showQuotes={quotesOnKeys} />}
             <JsonTreeViewValueNode node={jsonNodeToElement(node)} />
           </TreeView.ItemText>
         </TreeView.Item>

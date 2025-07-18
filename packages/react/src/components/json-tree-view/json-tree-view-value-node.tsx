@@ -6,12 +6,10 @@ interface JsonTreeViewValueNodeProps {
 export const JsonTreeViewValueNode = (props: JsonTreeViewValueNodeProps): React.ReactNode => {
   const { node } = props
 
-  // Handle text nodes
   if (node.type === 'text') {
     return <>{node.value}</>
   }
 
-  // Handle element nodes
   const Element = node.tagName
   return (
     <Element

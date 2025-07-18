@@ -21,7 +21,7 @@ export const ArrayData = () => {
         })(),
       }}
     >
-      <JsonTreeView.Tree arrowIcon={<ChevronRightIcon />} />
+      <JsonTreeView.Tree arrow={<ChevronRightIcon />} />
     </JsonTreeView.Root>
   )
 }
