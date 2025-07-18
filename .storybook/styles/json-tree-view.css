@@ -1,0 +1,101 @@
+[data-scope='json-tree-view'][data-part='tree'] {
+  margin-top: 20px;
+  --padding-inline: 8px;
+  --icon-size: 16px;
+  --half-icon-size: calc(var(--icon-size) / 2);
+
+  * {
+    font-family: monospace;
+    font-size: 12px;
+  }
+}
+
+[data-scope='json-tree-view'][data-part='item'],
+[data-scope='json-tree-view'][data-part='branch-control'] {
+  user-select: none;
+  padding-inline-start: calc(var(--depth) * var(--padding-inline));
+  padding-inline-end: var(--padding-inline);
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  min-height: 18px;
+
+  & svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background: rgb(243, 243, 243);
+  }
+
+  &[data-selected] {
+    background: rgb(226, 226, 226);
+  }
+
+  &:focus {
+    outline: 1px solid rgb(148, 148, 148);
+    outline-offset: -1px;
+  }
+}
+
+[data-scope='json-tree-view'][data-part='item'] {
+  padding-inline-start: calc(var(--depth) * var(--padding-inline) + var(--half-icon-size));
+  padding-inline-end: var(--padding-inline);
+}
+
+[data-scope='json-tree-view'][data-part='item-text'],
+[data-scope='json-tree-view'][data-part='branch-text'] {
+  flex: 1;
+}
+
+[data-scope='json-tree-view'][data-part='branch-content'] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-scope='json-tree-view'][data-part='branch-indent-guide'] {
+  position: absolute;
+  content: '';
+  border-left: 1px solid rgb(226, 226, 226);
+  height: 100%;
+  translate: calc(var(--depth) * 1.25rem);
+  z-index: 0;
+}
+
+[data-scope='json-tree-view'][data-part='branch-indicator'] {
+  display: flex;
+  align-items: center;
+  &[data-state='open'] svg {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0.01;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: var(--height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    height: var(--height);
+  }
+  to {
+    opacity: 0.01;
+    height: 0;
+  }
+}
+
+[data-scope='json-tree-view'][data-part='item-checkbox'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
