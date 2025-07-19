@@ -8,13 +8,13 @@ export interface JsonTreeViewTreeProps extends TreeView.TreeProps, JsonTreeViewN
 const splitTreeNodeProps = createSplitProps<JsonTreeViewNodeBaseProps>()
 
 export const JsonTreeViewTree = forwardRef<HTMLDivElement, JsonTreeViewTreeProps>((props, ref) => {
-  const [nodeProps, treeProps] = splitTreeNodeProps(props, ['arrow', 'indentGuide', 'quotesOnKeys'])
+  const [nodeProps, treeProps] = splitTreeNodeProps(props, ['arrow', 'indentGuide', 'renderValue'])
   const tree = useTreeViewContext()
   const children = tree.collection.getNodeChildren(tree.collection.rootNode)
   return (
     <TreeView.Tree data-scope="json-tree-view" {...treeProps} ref={ref}>
       {children.map((child, index) => (
-        <JsonTreeViewNode key={child.id} node={child} indexPath={[index]} {...nodeProps} />
+        <JsonTreeViewNode key={index} node={child} indexPath={[index]} {...nodeProps} />
       ))}
     </TreeView.Tree>
   )

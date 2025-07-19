@@ -1,4 +1,4 @@
-import type { JsonNode } from '@zag-js/json-tree-utils'
+import { type JsonNode, keyPathToKey } from '@zag-js/json-tree-utils'
 
 interface JsonTreeViewKeyNodeProps {
   /**
@@ -10,12 +10,14 @@ interface JsonTreeViewKeyNodeProps {
    */
   showQuotes?: boolean
 }
+
 export const JsonTreeViewKeyNode = (props: JsonTreeViewKeyNodeProps): React.ReactNode => {
   const { node, showQuotes } = props
+  const key = keyPathToKey(node.keyPath)
   return (
     <>
       <span data-kind="key" data-non-enumerable={node.isNonEnumerable ? '' : undefined}>
-        {showQuotes ? `"${node.key}"` : node.key}
+        {showQuotes ? `"${key}"` : key}
       </span>
       <span data-kind="colon">: </span>
     </>

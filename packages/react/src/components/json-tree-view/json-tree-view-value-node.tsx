@@ -2,12 +2,14 @@ import type { JsonNodeHastElement } from '@zag-js/json-tree-utils'
 
 interface JsonTreeViewValueNodeProps {
   node: JsonNodeHastElement
+  renderValue?: (node: JsonNodeHastElement) => React.ReactNode
 }
+
 export const JsonTreeViewValueNode = (props: JsonTreeViewValueNodeProps): React.ReactNode => {
-  const { node } = props
+  const { node, renderValue } = props
 
   if (node.type === 'text') {
-    return <>{node.value}</>
+    return <>{renderValue?.(node) ?? node.value}</>
   }
 
   const Element = node.tagName
@@ -19,7 +21,7 @@ export const JsonTreeViewValueNode = (props: JsonTreeViewValueNodeProps): React.
       suppressHydrationWarning
     >
       {node.children.map((child, index) => (
-        <JsonTreeViewValueNode key={index} node={child} />
+        <JsonTreeViewValueNode key={index} node={child} renderValue={renderValue} />
       ))}
     </Element>
   )
