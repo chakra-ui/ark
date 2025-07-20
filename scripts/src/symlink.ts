@@ -64,8 +64,9 @@ async function main() {
       stdio: 'inherit',
     })
   }
-
-  spawnSync('rm', ['-rf', '**/node_modules'], { stdio: 'inherit' })
+  spawnSync('rm', ['-rf', 'node_modules', '**/node_modules', '**/*/node_modules'], {
+    stdio: 'inherit',
+  })
 
   spawnSync('bun', ['install', '--force'], { stdio: 'inherit' })
 }

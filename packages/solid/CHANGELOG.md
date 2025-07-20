@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### Added
+
+- **File Upload**: Add support for programmatically controlling the accepted files via `acceptedFiles` and
+  `defaultAcceptedFiles`
+
+- **Signature Pad**: Add support for programmatically controlling the paths via `paths` and `defaultPaths` props.
+
 ## [5.17.0] - 2025-07-18
 
 ### Added

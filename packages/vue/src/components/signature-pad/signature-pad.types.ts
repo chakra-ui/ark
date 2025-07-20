@@ -11,6 +11,10 @@ export interface RootProps {
    */
   drawing?: signaturePad.DrawingOptions
   /**
+   * The default paths of the signature pad.
+   */
+  defaultPaths?: string[]
+  /**
    * The unique identifier of the machine.
    */
   id?: string
@@ -37,6 +41,10 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Callback when the paths change.
+   */
+  'update:paths': [paths: string[]]
   /**
    * Callback when the signature pad is drawing.
    */

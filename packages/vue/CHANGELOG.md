@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### Added
+
+- **File Upload**: Add support for `v-model:acceptedFiles` and `defaultAcceptedFiles` to programmatically control the
+  accepted files
+
+- **Signature Pad**: Add support for `v-model:paths` and `defaultPaths` to programmatically control the paths
+
 ## [5.17.0] - 2025-07-18
 
 ### Added

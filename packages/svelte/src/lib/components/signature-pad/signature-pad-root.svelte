@@ -13,30 +13,37 @@
   import { useSignaturePad } from './use-signature-pad.svelte'
   import { SignaturePadProvider } from './use-signature-pad-context'
 
-  let { ref = $bindable(null), ...props }: SignaturePadRootProps = $props()
+  let { ref = $bindable(null), paths = $bindable(), ...props }: SignaturePadRootProps = $props()
   const providedId = $props.id()
 
   const [useSignaturePadProps, localProps] = $derived(
     createSplitProps<UseSignaturePadProps>()(props, [
       'id',
       'ids',
+      'defaultPaths',
       'drawing',
       'disabled',
       'readOnly',
       'name',
       'onDraw',
       'onDrawEnd',
+      'paths',
       'required',
       'translations',
     ]),
   )
 
-  const resolvedProps = $derived<UseSignaturePadProps>({
+  const machineProps = $derived<UseSignaturePadProps>({
     ...useSignaturePadProps,
     id: useSignaturePadProps.id ?? providedId,
+    paths,
+    onDraw: (details) => {
+      useSignaturePadProps.onDraw?.(details)
+      if (paths !== undefined) paths = details.paths
+    },
   })
 
-  const signaturePad = useSignaturePad(() => resolvedProps)
+  const signaturePad = useSignaturePad(() => machineProps)
   const mergedProps = $derived(mergeProps(signaturePad().getRootProps(), localProps))
 
   SignaturePadProvider(signaturePad)

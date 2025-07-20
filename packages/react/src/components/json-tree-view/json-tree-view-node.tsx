@@ -2,7 +2,6 @@ import {
   type JsonNode,
   type JsonNodeHastElement,
   getAccessibleDescription,
-  isRootKeyPath,
   jsonNodeToElement,
   keyPathToId,
   keyPathToKey,

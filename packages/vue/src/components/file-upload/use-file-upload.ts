@@ -37,6 +37,7 @@ export const useFileUpload = (
       getRootNode: env?.value.getRootNode,
       ...cleanProps(localeProps),
       onFileChange: (details) => {
+        emit?.('update:acceptedFiles', details.acceptedFiles)
         emit?.('fileChange', details)
         localeProps.onFileChange?.(details)
       },

@@ -35,6 +35,7 @@ export const useSignaturePad = (
       getRootNode: env?.value.getRootNode,
       ...cleanProps(localProps),
       onDraw: (details) => {
+        emit?.('update:paths', details.paths)
         emit?.('draw', details)
         localProps.onDraw?.(details)
       },

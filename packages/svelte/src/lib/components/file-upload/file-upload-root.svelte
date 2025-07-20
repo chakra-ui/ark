@@ -13,14 +13,16 @@
   import { FileUploadProvider } from './use-file-upload-context'
   import { useFileUpload } from './use-file-upload.svelte'
 
-  let { ref = $bindable(null), ...props }: FileUploadRootProps = $props()
+  let { ref = $bindable(null), acceptedFiles = $bindable(), ...props }: FileUploadRootProps = $props()
   const providedId = $props.id()
 
   const [useFileUploadProps, localProps] = $derived(
     createSplitProps<UseFileUploadProps>()(props, [
       'accept',
+      'acceptedFiles',
       'allowDrop',
       'capture',
+      'defaultAcceptedFiles',
       'directory',
       'disabled',
       'id',
@@ -45,6 +47,11 @@
   const resolvedProps = $derived<UseFileUploadProps>({
     ...useFileUploadProps,
     id: useFileUploadProps.id ?? providedId,
+    acceptedFiles,
+    onFileChange: (details) => {
+      useFileUploadProps.onFileChange?.(details)
+      if (acceptedFiles !== undefined) acceptedFiles = details.acceptedFiles
+    },
   })
 
   const fileUpload = useFileUpload(() => resolvedProps)

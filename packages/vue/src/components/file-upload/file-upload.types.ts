@@ -6,6 +6,10 @@ export interface RootProps {
    */
   accept?: Record<string, string[]> | fileUpload.FileMimeType | fileUpload.FileMimeType[]
   /**
+   * The default accepted files
+   */
+  defaultAcceptedFiles?: File[]
+  /**
    * Whether to allow drag and drop in the dropzone element
    * @default true
    */
@@ -94,6 +98,10 @@ export interface RootProps {
 }
 
 export type RootEmits = {
+  /**
+   * Function called when the accepted files change
+   */
+  'update:acceptedFiles': [files: File[]]
   /**
    * Function called when the file is accepted
    */

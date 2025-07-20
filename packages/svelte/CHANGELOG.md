@@ -6,6 +6,13 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **File Upload**: Add support for `bind:acceptedFiles` and `defaultAcceptedFiles` to programmatically control the
+  accepted files
+
+- **Signature Pad**: Add support for `bind:paths` and `defaultPaths` to programmatically control the paths
+
 ## [5.2.0] - 2025-07-18
 
 ### Added
