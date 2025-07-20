@@ -1,7 +1,5 @@
-import { runIfFn } from '$lib/utils/run-if-fn'
 import { type JsonNode, getRootNode, nodeToString, nodeToValue } from '@zag-js/json-tree-utils'
-import type { MaybeFunction } from '@zag-js/utils'
-import { untrack } from 'svelte'
+import { type MaybeRef, computed, toValue } from 'vue'
 import { type UseTreeViewProps, type UseTreeViewReturn, createTreeCollection, useTreeView } from '../tree-view'
 import { getBranchValues } from './get-branch-value'
 
@@ -12,9 +10,9 @@ export interface UseJsonTreeViewProps extends Omit<UseTreeViewProps<JsonNode>, '
 
 export interface UseJsonTreeViewReturn extends UseTreeViewReturn<JsonNode> {}
 
-export const useJsonTreeView = (props: MaybeFunction<UseJsonTreeViewProps>): UseJsonTreeViewReturn => {
-  const machineProps = $derived.by<UseTreeViewProps<JsonNode>>(() => {
-    const { data, defaultExpandedDepth, ...restProps } = runIfFn(props)
+export const useJsonTreeView = (props: MaybeRef<UseJsonTreeViewProps>): UseJsonTreeViewReturn => {
+  const machineProps = computed<UseTreeViewProps<JsonNode>>(() => {
+    const { data, defaultExpandedDepth, ...restProps } = toValue(props)
 
     const collection = createTreeCollection<JsonNode>({
       nodeToValue,
@@ -22,17 +20,16 @@ export const useJsonTreeView = (props: MaybeFunction<UseJsonTreeViewProps>): Use
       rootNode: getRootNode(data),
     })
 
-    const defaultExpandedValue = untrack(() =>
-      defaultExpandedDepth != null ? getBranchValues(collection, defaultExpandedDepth) : undefined,
-    )
+    const defaultExpandedValue =
+      defaultExpandedDepth != null ? getBranchValues(collection, defaultExpandedDepth) : undefined
 
     return {
-      collection,
       defaultExpandedValue,
       ...restProps,
+      collection,
       typeahead: false,
     }
   })
 
-  return useTreeView(() => machineProps)
+  return useTreeView(machineProps)
 }
