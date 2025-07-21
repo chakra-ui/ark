@@ -52,9 +52,9 @@ const nodeProps = computed(() => {
 })
 
 defineSlots<{
-  default(props: { node: JsonNodeHastElement }): unknown
   arrow(): unknown
   indentGuide(): unknown
+  renderValue(props: { node: JsonNodeHastElement }): unknown
 }>()
 </script>
 
@@ -68,8 +68,8 @@ defineSlots<{
         <TreeViewBranchText data-scope="json-tree-view">
           <JsonTreeViewKeyNode v-if="key" :node="node" :show-quotes="options.quotesOnKeys" />
           <JsonTreeViewValueNode :node="valueNode">
-            <template #default="{ node: childNode }">
-              <slot :node="childNode" />
+            <template #renderValue="{ node: childNode }">
+              <slot name="renderValue" :node="childNode" />
             </template>
           </JsonTreeViewValueNode>
         </TreeViewBranchText>
@@ -84,14 +84,14 @@ defineSlots<{
           :node="child"
           :index-path="[...indexPath, index]"
         >
-          <template #default="{ node: childNode }">
-            <slot :node="childNode" />
-          </template>
           <template #arrow>
             <slot name="arrow" />
           </template>
           <template #indentGuide>
             <slot name="indentGuide" />
+          </template>
+          <template #renderValue="{ node: childNode }">
+            <slot name="renderValue" :node="childNode" />
           </template>
         </JsonTreeViewNode>
       </TreeViewBranchContent>
@@ -100,8 +100,8 @@ defineSlots<{
       <TreeViewItemText data-scope="json-tree-view">
         <JsonTreeViewKeyNode v-if="key" :node="node" :show-quotes="options.quotesOnKeys" />
         <JsonTreeViewValueNode :node="valueNode">
-          <template #default="{ node: childNode }">
-            <slot :node="childNode" />
+          <template #renderValue="{ node: childNode }">
+            <slot name="renderValue" :node="childNode" />
           </template>
         </JsonTreeViewValueNode>
       </TreeViewItemText>

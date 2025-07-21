@@ -24,9 +24,9 @@ const tree = useTreeViewContext()
 const children = computed(() => tree.value.collection.getNodeChildren(tree.value.collection.rootNode))
 
 defineSlots<{
-  default(props: { node: JsonNodeHastElement }): unknown
   arrow(): unknown
   indentGuide(): unknown
+  renderValue(props: { node: JsonNodeHastElement }): unknown
 }>()
 </script>
 
@@ -39,14 +39,14 @@ defineSlots<{
       :index-path="[index]"
       v-bind="nodeProps"
     >
-      <template #default="{ node: childNode }">
-        <slot :node="childNode" />
-      </template>
       <template #arrow>
         <slot name="arrow" />
       </template>
       <template #indentGuide>
         <slot name="indentGuide" />
+      </template>
+      <template #renderValue="{ node: childNode }">
+        <slot name="renderValue" :node="childNode" />
       </template>
     </JsonTreeViewNode>
   </TreeViewTree>

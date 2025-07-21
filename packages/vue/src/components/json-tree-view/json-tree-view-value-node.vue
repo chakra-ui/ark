@@ -8,13 +8,16 @@ interface JsonTreeViewValueNodeProps {
 defineProps<JsonTreeViewValueNodeProps>()
 
 defineSlots<{
-  default(props: { node: JsonNodeHastElement }): unknown
+  renderValue(props: { node: JsonNodeHastElement }): unknown
 }>()
 </script>
 
 <template>
   <template v-if="node.type === 'text'">
-    {{ node.value }}
+    <template v-if="$slots.renderValue">
+      <slot name="renderValue" :node="node">{{ node.value }}</slot>
+    </template>
+    <template v-else>{{ node.value }}</template>
   </template>
   <component
     v-else
@@ -24,8 +27,8 @@ defineSlots<{
     :data-kind="node.properties.kind"
   >
     <JsonTreeViewValueNode v-for="(child, index) in node.children" :key="index" :node="child">
-      <template #default="{ node: childNode }">
-        <slot :node="childNode" />
+      <template #renderValue="{ node: childNode }">
+        <slot name="renderValue" :node="childNode" />
       </template>
     </JsonTreeViewValueNode>
   </component>
