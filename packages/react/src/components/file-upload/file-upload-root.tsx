@@ -11,8 +11,10 @@ export interface FileUploadRootProps extends HTMLProps<'div'>, FileUploadRootBas
 export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((props, ref) => {
   const [useFileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
     'accept',
+    'acceptedFiles',
     'allowDrop',
     'capture',
+    'defaultAcceptedFiles',
     'directory',
     'disabled',
     'id',

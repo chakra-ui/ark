@@ -28,7 +28,10 @@ import { TreeViewProvider } from './use-tree-view-context'
 const props = withDefaults(defineProps<TreeViewRootProps<T>>(), {
   expandOnClick: undefined,
   typeahead: undefined,
-} satisfies BooleanDefaults<RootProps<T>>)
+  lazyMount: undefined,
+  unmountOnExit: undefined,
+  asChild: undefined,
+} satisfies BooleanDefaults<TreeViewRootBaseProps<T>>)
 
 const emits = defineEmits<RootEmits<T>>()
 
