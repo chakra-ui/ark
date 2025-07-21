@@ -1,13 +1,17 @@
 <script lang="ts">
 import type { JsonNode } from '@zag-js/json-tree-utils'
-import type { TreeViewRootProps } from '../tree-view'
+import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types'
+import type { TreeViewRootBaseProps } from '../tree-view'
 import type { JsonTreeViewOptions } from './json-tree-view-props-context'
 
-export interface JsonTreeViewRootBaseProps extends JsonTreeViewOptions {
+export interface JsonTreeViewRootBaseProps
+  extends JsonTreeViewOptions,
+    Omit<TreeViewRootBaseProps<JsonNode>, 'collection'> {
   /**
    * The data to display in the tree.
    */
-  data: unknown
+  data: object
   /**
    * The default expand level.
    */
@@ -15,8 +19,11 @@ export interface JsonTreeViewRootBaseProps extends JsonTreeViewOptions {
 }
 
 export interface JsonTreeViewRootProps
-  extends Omit<TreeViewRootProps<JsonNode>, 'collection'>,
-    JsonTreeViewRootBaseProps {}
+  extends JsonTreeViewRootBaseProps,
+    /**
+     * @vue-ignore
+     */
+    HTMLAttributes {}
 </script>
 
 <script setup lang="ts">
@@ -27,8 +34,15 @@ import { TreeView, createTreeCollection } from '../tree-view'
 import { getBranchValues } from './get-branch-value'
 import { JsonTreeViewPropsProvider } from './json-tree-view-props-context'
 
-/* @vue-ignore */
-const props = defineProps<JsonTreeViewRootProps>()
+const props = withDefaults(defineProps<JsonTreeViewRootProps>(), {
+  expandOnClick: undefined,
+  typeahead: undefined,
+  lazyMount: undefined,
+  unmountOnExit: undefined,
+  asChild: undefined,
+  showNonenumerable: undefined,
+  quotesOnKeys: undefined,
+} satisfies BooleanDefaults<JsonTreeViewRootBaseProps>)
 
 const splitJsonTreeViewProps = createSplitProps<JsonTreeViewOptions>()
 const [jsonTreeProps, localProps] = splitJsonTreeViewProps(props, [
@@ -61,9 +75,10 @@ JsonTreeViewPropsProvider(computed(() => jsonTreeProps))
 <template>
   <TreeView.Root
     data-scope="json-tree-view"
-    :collection="collection"
     v-bind="restProps"
+    :collection="collection"
     :defaultExpandedValue="defaultExpandedValue"
+    :typeahead="false"
   >
     <slot />
   </TreeView.Root>

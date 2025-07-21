@@ -1,9 +1,20 @@
+<script setup lang="ts">
+import type { JsonNodeHastElement } from '@zag-js/json-tree-utils'
+
+interface JsonTreeViewValueNodeProps {
+  node: JsonNodeHastElement
+}
+
+defineProps<JsonTreeViewValueNodeProps>()
+
+defineSlots<{
+  default(props: { node: JsonNodeHastElement }): unknown
+}>()
+</script>
+
 <template>
   <template v-if="node.type === 'text'">
-    <slot v-if="$slots.default" :node="node" />
-    <template v-else>
-      {{ node.value }}
-    </template>
+    {{ node.value }}
   </template>
   <component
     v-else
@@ -19,17 +30,3 @@
     </JsonTreeViewValueNode>
   </component>
 </template>
-
-<script setup lang="ts">
-import type { JsonNodeHastElement } from '@zag-js/json-tree-utils'
-
-interface JsonTreeViewValueNodeProps {
-  node: JsonNodeHastElement
-}
-
-defineProps<JsonTreeViewValueNodeProps>()
-
-defineSlots<{
-  default(props: { node: JsonNodeHastElement }): unknown
-}>()
-</script>
