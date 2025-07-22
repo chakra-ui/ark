@@ -175,7 +175,7 @@
       },
       "focusedValue": { "type": "string", "isRequired": false, "description": "The value of the focused node" },
       "ids": {
-        "type": "Partial<{ root: string; tree: string; label: string; node(value: string): string }>",
+        "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
       },
@@ -186,7 +186,7 @@
         "description": "Whether to enable lazy mounting"
       },
       "loadChildren": {
-        "type": "(details: LoadChildrenDetails<any>) => Promise<any[]>",
+        "type": "(details: LoadChildrenDetails<T>) => Promise<T[]>",
         "isRequired": false,
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
@@ -196,27 +196,27 @@
         "description": "Called when the checked value changes"
       },
       "onExpandedChange": {
-        "type": "(details: ExpandedChangeDetails<any>) => void",
+        "type": "(details: ExpandedChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the tree is opened or closed"
       },
       "onFocusChange": {
-        "type": "(details: FocusChangeDetails<any>) => void",
+        "type": "(details: FocusChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the focused node changes"
       },
       "onLoadChildrenComplete": {
-        "type": "(details: LoadChildrenCompleteDetails<any>) => void",
+        "type": "(details: LoadChildrenCompleteDetails<T>) => void",
         "isRequired": false,
         "description": "Called when a node finishes loading children"
       },
       "onLoadChildrenError": {
-        "type": "(details: LoadChildrenErrorDetails<any>) => void",
+        "type": "(details: LoadChildrenErrorDetails<T>) => void",
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
       },
       "onSelectionChange": {
-        "type": "(details: SelectionChangeDetails<any>) => void",
+        "type": "(details: SelectionChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the selection changes"
       },

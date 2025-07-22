@@ -7,7 +7,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -18,7 +19,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "NextTrigger": {
@@ -27,7 +29,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "PrevTrigger": {
@@ -36,7 +39,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -61,7 +65,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  ellipsis(index: number): string\n  prevTrigger: string\n  nextTrigger: string\n  item(page: number): string\n}>",
+        "type": "Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  prevTrigger: string\n  nextTrigger: string\n  item: (page: number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the accordion. Useful for composition."
       },
@@ -81,6 +85,7 @@
         "isRequired": false,
         "description": "The controlled number of data items per page"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "siblingCount": {
         "type": "number",
         "defaultValue": "1",
@@ -107,7 +112,8 @@
         "type": "Snippet<[PropsFn<'nav'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

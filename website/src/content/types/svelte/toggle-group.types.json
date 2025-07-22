@@ -8,7 +8,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false }
+      "disabled": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -32,7 +33,7 @@
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; item(value: string): string }>",
+        "type": "Partial<{ root: string; item: (value: string) => string }>",
         "isRequired": false,
         "description": "The ids of the elements in the toggle. Useful for composition."
       },
@@ -58,6 +59,7 @@
         "isRequired": false,
         "description": "The orientation of the toggle group."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "rovingFocus": {
         "type": "boolean",
         "defaultValue": "true",
@@ -78,7 +80,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

@@ -6,7 +6,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "DraggingIndicator": {
@@ -15,7 +16,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HiddenInput": {
@@ -24,7 +26,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -33,7 +36,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "MarkerGroup": {
@@ -42,7 +46,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Marker": {
@@ -52,7 +57,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Range": {
@@ -61,7 +67,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -99,7 +106,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  thumb(index: number): string\n  hiddenInput(index: number): string\n  control: string\n  track: string\n  range: string\n  label: string\n  valueText: string\n  marker(index: number): string\n}>",
+        "type": "Partial<{\n  root: string\n  thumb: (index: number) => string\n  hiddenInput: (index: number) => string\n  control: string\n  track: string\n  range: string\n  label: string\n  valueText: string\n  marker: (index: number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the slider. Useful for composition."
       },
@@ -155,6 +162,7 @@
         "description": "The origin of the slider range. The track is filled from the origin\nto the thumb for single values.\n- \"start\": Useful when the value represents an absolute value\n- \"center\": Useful when the value represents an offset (relative)\n- \"end\": Useful when the value represents an offset from the end"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the slider is read-only" },
+      "ref": { "type": "Element", "isRequired": false },
       "step": {
         "type": "number",
         "defaultValue": "1",
@@ -175,7 +183,12 @@
       "value": { "type": "number[]", "isRequired": false, "description": "The controlled value of the slider" }
     }
   },
-  "RootProvider": { "props": { "value": { "type": "UseSliderReturn", "isRequired": true } } },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseSliderReturn", "isRequired": true },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
   "Thumb": {
     "props": {
       "index": { "type": "number", "isRequired": true },
@@ -184,7 +197,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "name": { "type": "string", "isRequired": false }
+      "name": { "type": "string", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Track": {
@@ -193,7 +207,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ValueText": {
@@ -202,7 +217,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

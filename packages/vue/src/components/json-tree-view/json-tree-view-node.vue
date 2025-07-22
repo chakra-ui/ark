@@ -52,9 +52,9 @@ const nodeProps = computed(() => {
 })
 
 defineSlots<{
-  arrow(): unknown
-  indentGuide(): unknown
-  renderValue(props: { node: JsonNodeHastElement }): unknown
+  arrow?(): unknown
+  indentGuide?(): unknown
+  renderValue?(props: { node: JsonNodeHastElement }): unknown
 }>()
 </script>
 

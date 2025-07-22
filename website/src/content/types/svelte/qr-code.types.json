@@ -9,7 +9,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." }
+      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Frame": {
@@ -18,7 +19,8 @@
         "type": "Snippet<[PropsFn<'svg'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Overlay": {
@@ -27,7 +29,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Pattern": {
@@ -36,7 +39,8 @@
         "type": "Snippet<[PropsFn<'path'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -68,8 +72,14 @@
         "description": "Callback fired when the value changes."
       },
       "pixelSize": { "type": "number", "isRequired": false, "description": "The pixel size of the qr code." },
+      "ref": { "type": "Element", "isRequired": false },
       "value": { "type": "string", "isRequired": false, "description": "The controlled value to encode." }
     }
   },
-  "RootProvider": { "props": { "value": { "type": "UseQrCodeReturn", "isRequired": true } } }
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseQrCodeReturn", "isRequired": true },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  }
 }

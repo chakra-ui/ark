@@ -8,7 +8,7 @@ interface JsonTreeViewValueNodeProps {
 defineProps<JsonTreeViewValueNodeProps>()
 
 defineSlots<{
-  renderValue(props: { node: JsonNodeHastElement }): unknown
+  renderValue?(props: { node: JsonNodeHastElement }): unknown
 }>()
 </script>
 

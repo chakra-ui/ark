@@ -99,7 +99,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string\n  input: string\n  positioner: string\n  content: string\n  clearTrigger: string\n  control: string\n  column(unit: TimeUnit): string\n}>",
+        "type": "Partial<{\n  trigger: string\n  input: string\n  positioner: string\n  content: string\n  clearTrigger: string\n  control: string\n  column: (unit: TimeUnit) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },

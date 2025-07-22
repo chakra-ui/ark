@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseSignaturePadContext]>", "isRequired": true } } },
@@ -15,7 +16,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Guide": {
@@ -24,7 +26,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HiddenInput": {
@@ -34,7 +37,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -43,7 +47,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -52,6 +57,11 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultPaths": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default paths of the signature pad.\nUse when you don't need to control the paths of the signature pad."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is disabled." },
       "drawing": {
@@ -81,7 +91,9 @@
         "isRequired": false,
         "description": "Callback when the signature pad is done drawing."
       },
+      "paths": { "type": "string[]", "isRequired": false, "description": "The controlled paths of the signature pad." },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is read-only." },
+      "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is required." },
       "translations": {
         "type": "IntlTranslations",
@@ -97,7 +109,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Segment": {
@@ -106,7 +119,8 @@
         "type": "Snippet<[PropsFn<'svg'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

@@ -126,6 +126,11 @@
         "type": "[details: FileRejectDetails]",
         "isRequired": true,
         "description": "Function called when the file is rejected"
+      },
+      "update:acceptedFiles": {
+        "type": "[files: File[]]",
+        "isRequired": true,
+        "description": "Function called when the accepted files change"
       }
     },
     "props": {
@@ -150,6 +155,7 @@
         "isRequired": false,
         "description": "The default camera to use when capturing media"
       },
+      "defaultAcceptedFiles": { "type": "File[]", "isRequired": false, "description": "The default accepted files" },
       "directory": {
         "type": "boolean",
         "isRequired": false,

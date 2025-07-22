@@ -35,7 +35,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
+        "type": "Partial<{\n  root: string\n  resizeTrigger: (id: string) => string\n  label: (id: string) => string\n  panel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the splitter. Useful for composition."
       },

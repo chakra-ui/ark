@@ -200,6 +200,7 @@
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },
+      "inline": { "type": "boolean", "isRequired": false, "description": "Whether the date picker is inline" },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
         "isRequired": false,

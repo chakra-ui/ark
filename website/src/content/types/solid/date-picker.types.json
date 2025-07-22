@@ -153,7 +153,7 @@
         "description": "The format of the date to display in the input."
       },
       "ids": {
-        "type": "Partial<{ root: string; label(index: number): string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; ... 10 more ...; positioner: string; }>",
+        "type": "Partial<{ root: string; label: (index: number) => string; table: (id: string) => string; tableHeader: (id: string) => string; tableBody: (id: string) => string; tableRow: (id: string) => string; content: string; ... 10 more ...; positioner: string; }>",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },
@@ -162,6 +162,7 @@
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
+      "inline": { "type": "boolean", "isRequired": false, "description": "Whether to render the date picker inline" },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
         "isRequired": false,

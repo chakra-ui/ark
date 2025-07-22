@@ -6,7 +6,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HiddenInput": {
@@ -15,7 +16,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Input": {
@@ -25,7 +27,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -34,7 +37,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -68,7 +72,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
+        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input: (id: string) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the pin input. Useful for composition."
       },
@@ -123,6 +127,7 @@
         "isRequired": false,
         "description": "Whether the pin input is in the valid state"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the pin input is required" },
       "selectOnFocus": {
         "type": "boolean",
@@ -150,7 +155,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

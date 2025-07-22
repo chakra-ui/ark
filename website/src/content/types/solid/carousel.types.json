@@ -116,7 +116,7 @@
         "description": "The initial page to scroll to when rendered.\nUse when you don't need to control the page of the carousel."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  item(index: number): string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
+        "type": "Partial<{\n  root: string\n  item: (index: number) => string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator: (index: number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the carousel. Useful for composition."
       },

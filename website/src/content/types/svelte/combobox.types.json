@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Content": {
@@ -25,7 +26,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Input": {
@@ -34,7 +36,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseComboboxItemContext]>", "isRequired": true } } },
@@ -44,7 +47,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemGroup": {
@@ -54,7 +58,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "id": { "type": "string", "isRequired": false }
+      "id": { "type": "string", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemIndicator": {
@@ -63,7 +68,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -74,7 +80,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "item": { "type": "{}", "isRequired": false },
-      "persistFocus": { "type": "boolean", "isRequired": false }
+      "persistFocus": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemText": {
@@ -83,7 +90,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -92,7 +100,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "List": {
@@ -101,7 +110,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Positioner": {
@@ -110,7 +120,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -178,7 +189,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item(id: string, index?: number | undefined): string\n  positioner: string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  control: string\n  input: string\n  content: string\n  trigger: string\n  clearTrigger: string\n  item: (id: string, index?: number | undefined) => string\n  positioner: string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the combobox. Useful for composition."
       },
@@ -311,6 +322,7 @@
         "isRequired": false,
         "description": "Whether the combobox is readonly. This puts the combobox in a \"non-editable\" mode\nbut the user can still interact with it"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the combobox is required" },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",
@@ -376,6 +388,7 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "skipAnimationOnMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -396,7 +409,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

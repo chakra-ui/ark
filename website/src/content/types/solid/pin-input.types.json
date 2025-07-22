@@ -66,7 +66,7 @@
         "description": "The associate form of the underlying input element."
       },
       "ids": {
-        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input(id: string): string\n}>",
+        "type": "Partial<{\n  root: string\n  hiddenInput: string\n  label: string\n  control: string\n  input: (id: string) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the pin input. Useful for composition."
       },

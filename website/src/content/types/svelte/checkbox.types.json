@@ -6,7 +6,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Group": {
@@ -42,7 +43,22 @@
         "isRequired": false,
         "description": "If `true`, the checkbox group is read-only"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "value": { "type": "string[]", "isRequired": false, "description": "The controlled value of the checkbox group" }
+    }
+  },
+  "GroupProvider": {
+    "props": {
+      "value": {
+        "type": "() => { isChecked: (val: string | undefined) => boolean; value: string[]; name: string | undefined; disabled: boolean; readOnly: boolean; invalid: boolean; setValue: (newValue: string[]) => void; addValue: (val: string) => void; toggleValue: (val: string) => void; getItemProps: (itemProps: CheckboxGroupItemProps) =>...",
+        "isRequired": true
+      },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HiddenInput": {
@@ -51,7 +67,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Indicator": {
@@ -61,7 +78,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "indeterminate": { "type": "boolean", "isRequired": false }
+      "indeterminate": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -70,7 +88,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -114,6 +133,7 @@
         "description": "The callback invoked when the checked state changes."
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is read-only" },
+      "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is required" },
       "value": {
         "type": "string",
@@ -130,7 +150,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

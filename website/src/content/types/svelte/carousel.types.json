@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseCarouselContext]>", "isRequired": true } } },
@@ -15,7 +16,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "IndicatorGroup": {
@@ -24,7 +26,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Indicator": {
@@ -40,7 +43,8 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the indicator is read only."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemGroup": {
@@ -49,7 +53,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -60,6 +65,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "snapAlign": {
         "type": "'center' | 'end' | 'start'",
         "defaultValue": "\"start\"",
@@ -74,7 +80,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "PrevTrigger": {
@@ -83,7 +90,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -118,7 +126,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  item(index: number): string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator(index: number): string\n}>",
+        "type": "Partial<{\n  root: string\n  item: (index: number) => string\n  itemGroup: string\n  nextTrigger: string\n  prevTrigger: string\n  indicatorGroup: string\n  indicator: (index: number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the carousel. Useful for composition."
       },
@@ -161,6 +169,7 @@
         "description": "Defines the extra space added around the scrollable area,\nenabling nearby items to remain partially in view."
       },
       "page": { "type": "number", "isRequired": false, "description": "The controlled page of the carousel." },
+      "ref": { "type": "Element", "isRequired": false },
       "slidesPerMove": {
         "type": "number | 'auto'",
         "defaultValue": "\"auto\"",
@@ -199,7 +208,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

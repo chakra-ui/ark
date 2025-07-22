@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseTagsInputReturn]>", "isRequired": true } } },
@@ -15,7 +16,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HiddenInput": {
@@ -24,7 +26,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Input": {
@@ -33,7 +36,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseTagsInputItemContext]>", "isRequired": true } } },
@@ -43,7 +47,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemInput": {
@@ -52,7 +57,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemPreview": {
@@ -61,7 +67,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -73,7 +80,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false }
+      "disabled": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemText": {
@@ -82,7 +90,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -91,7 +100,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -156,7 +166,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item(opts: ItemProps): string\n  itemDeleteTrigger(opts: ItemProps): string\n  itemInput(opts: ItemProps): string\n}>",
+        "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item: (opts: ItemProps) => string\n  itemDeleteTrigger: (opts: ItemProps) => string\n  itemInput: (opts: ItemProps) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the tags input. Useful for composition."
       },
@@ -214,6 +224,7 @@
         "isRequired": false,
         "description": "Whether the tags input should be read-only"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the tags input is required" },
       "translations": {
         "type": "IntlTranslations",
@@ -235,7 +246,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

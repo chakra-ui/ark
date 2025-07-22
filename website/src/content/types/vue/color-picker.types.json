@@ -283,6 +283,7 @@
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },
+      "inline": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is inline" },
       "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is invalid" },
       "lazyMount": {
         "type": "boolean",

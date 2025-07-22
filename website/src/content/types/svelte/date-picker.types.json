@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Content": {
@@ -25,7 +26,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Input": {
@@ -41,7 +43,8 @@
         "isRequired": false,
         "description": "Whether to fix the input value on blur."
       },
-      "index": { "type": "number", "isRequired": false, "description": "The index of the input to focus." }
+      "index": { "type": "number", "isRequired": false, "description": "The index of the input to focus." },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -50,7 +53,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "MonthSelect": {
@@ -59,7 +63,8 @@
         "type": "Snippet<[PropsFn<'select'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "NextTrigger": {
@@ -68,7 +73,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Positioner": {
@@ -77,7 +83,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "PresetTrigger": {
@@ -87,7 +94,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "PrevTrigger": {
@@ -96,7 +104,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "RangeText": {
@@ -105,7 +114,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -156,7 +166,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; label(index: number): string; table(id: string): string; tableHeader(id: string): string; tableBody(id: string): string; tableRow(id: string): string; content: string; ... 10 more ...; positioner: string; }>",
+        "type": "Partial<{ root: string; label: (index: number) => string; table: (id: string) => string; tableHeader: (id: string) => string; tableBody: (id: string) => string; tableRow: (id: string) => string; content: string; ... 10 more ...; positioner: string; }>",
         "isRequired": false,
         "description": "The ids of the elements in the date picker. Useful for composition."
       },
@@ -165,6 +175,7 @@
         "isRequired": false,
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
+      "inline": { "type": "boolean", "isRequired": false, "description": "Whether to render the date picker inline" },
       "isDateUnavailable": {
         "type": "(date: DateValue, locale: string) => boolean",
         "isRequired": false,
@@ -251,6 +262,7 @@
         "description": "Whether the node is present (controlled by the user)"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the calendar is read-only." },
+      "ref": { "type": "Element", "isRequired": false },
       "selectionMode": {
         "type": "SelectionMode",
         "defaultValue": "\"single\"",
@@ -338,7 +350,8 @@
         "type": "Snippet<[PropsFn<'tbody'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "TableCell": {
@@ -351,6 +364,7 @@
       },
       "columns": { "type": "number", "isRequired": false },
       "disabled": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false },
       "visibleRange": { "type": "VisibleRange", "isRequired": false }
     }
   },
@@ -360,7 +374,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "TableHead": {
@@ -369,7 +384,8 @@
         "type": "Snippet<[PropsFn<'thead'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "TableHeader": {
@@ -378,7 +394,8 @@
         "type": "Snippet<[PropsFn<'th'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Table": {
@@ -397,7 +414,8 @@
         "type": "Snippet<[PropsFn<'tr'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Trigger": {
@@ -406,7 +424,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ViewControl": {
@@ -415,7 +434,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "View": {
@@ -425,6 +445,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "view": { "type": "DateView", "isRequired": false }
     }
   },
@@ -434,7 +455,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "YearSelect": {
@@ -443,7 +465,8 @@
         "type": "Snippet<[PropsFn<'select'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

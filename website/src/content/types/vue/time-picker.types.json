@@ -74,6 +74,33 @@
     }
   },
   "Root": {
+    "emits": {
+      "focusChange": {
+        "type": "[details: FocusChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the focused date changes."
+      },
+      "openChange": {
+        "type": "[details: OpenChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the time picker opens or closes."
+      },
+      "update:modelValue": {
+        "type": "[value: Time | null]",
+        "isRequired": true,
+        "description": "The callback fired when the model value changes."
+      },
+      "update:open": {
+        "type": "[open: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the open state changes."
+      },
+      "valueChange": {
+        "type": "[value: ValueChangeDetails]",
+        "isRequired": true,
+        "description": "Function called when the value changes."
+      }
+    },
     "props": {
       "allowSeconds": { "type": "boolean", "isRequired": false, "description": "Whether to show the seconds." },
       "asChild": {

@@ -143,7 +143,7 @@
       },
       "pattern": {
         "type": "string",
-        "defaultValue": "\"[0-9]*(.[0-9]+)?\"",
+        "defaultValue": "\"-?[0-9]*(.[0-9]+)?\"",
         "isRequired": false,
         "description": "The pattern used to check the <input> element's value against"
       },

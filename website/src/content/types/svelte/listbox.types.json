@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseListboxContext<T>]>", "isRequired": true } } },
@@ -21,7 +22,8 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether to automatically highlight the item when typing"
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseListboxItemContext]>", "isRequired": true } } },
@@ -31,7 +33,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemGroup": {
@@ -40,7 +43,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemIndicator": {
@@ -49,7 +53,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -64,7 +69,8 @@
         "isRequired": false,
         "description": "Whether to highlight the item on hover"
       },
-      "item": { "type": "any", "isRequired": false, "description": "The item to render" }
+      "item": { "type": "any", "isRequired": false, "description": "The item to render" },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemText": {
@@ -73,7 +79,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -82,7 +89,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -118,7 +126,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item(id: string | number): string\n  itemGroup(id: string | number): string\n  itemGroupLabel(id: string | number): string\n}>",
+        "type": "Partial<{\n  root: string\n  content: string\n  label: string\n  item: (id: string | number) => string\n  itemGroup: (id: string | number) => string\n  itemGroupLabel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the listbox. Useful for composition."
       },

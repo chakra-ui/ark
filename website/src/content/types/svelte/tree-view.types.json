@@ -15,7 +15,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "BranchIndentGuide": {
@@ -24,7 +25,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "BranchIndicator": {
@@ -33,7 +35,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Branch": {
@@ -42,7 +45,8 @@
         "type": "Snippet<[PropsFn<'li'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "BranchText": {
@@ -51,7 +55,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "BranchTrigger": {
@@ -60,7 +65,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseTreeViewContext<any>]>", "isRequired": true } } },
@@ -70,7 +76,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -79,7 +86,8 @@
         "type": "Snippet<[PropsFn<'li'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemText": {
@@ -88,7 +96,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -97,7 +106,8 @@
         "type": "Snippet<[PropsFn<'h3'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "NodeCheckboxIndicator": {
@@ -112,7 +122,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "NodeContext": { "props": { "render": { "type": "Snippet<[UseTreeViewNodeContext]>", "isRequired": true } } },
@@ -161,7 +172,7 @@
       "focusedValue": { "type": "string", "isRequired": false, "description": "The value of the focused node" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; tree: string; label: string; node(value: string): string }>",
+        "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
         "isRequired": false,
         "description": "The ids of the tree elements. Useful for composition."
       },
@@ -182,12 +193,12 @@
         "description": "Called when the checked value changes"
       },
       "onExpandedChange": {
-        "type": "(details: ExpandedChangeDetails<any>) => void",
+        "type": "(details: ExpandedChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the tree is opened or closed"
       },
       "onFocusChange": {
-        "type": "(details: FocusChangeDetails<any>) => void",
+        "type": "(details: FocusChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the focused node changes"
       },
@@ -202,10 +213,11 @@
         "description": "Called when loading children fails for one or more nodes"
       },
       "onSelectionChange": {
-        "type": "(details: SelectionChangeDetails<any>) => void",
+        "type": "(details: SelectionChangeDetails<T>) => void",
         "isRequired": false,
         "description": "Called when the selection changes"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "selectedValue": { "type": "string[]", "isRequired": false, "description": "The controlled selected node value" },
       "selectionMode": {
         "type": "'multiple' | 'single'",
@@ -241,6 +253,7 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -255,7 +268,8 @@
         "type": "Snippet<[PropsFn<'ul'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

@@ -6,7 +6,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseAccordionItemContext]>", "isRequired": true } } },
@@ -16,7 +17,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -27,7 +29,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion item is disabled." }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion item is disabled." },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemTrigger": {
@@ -36,7 +39,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -60,7 +64,7 @@
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the accordion items are disabled" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  item(value: string): string\n  itemContent(value: string): string\n  itemTrigger(value: string): string\n}>",
+        "type": "Partial<{\n  root: string\n  item: (value: string) => string\n  itemContent: (value: string) => string\n  itemTrigger: (value: string) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the accordion. Useful for composition."
       },
@@ -92,6 +96,7 @@
         "isRequired": false,
         "description": "The orientation of the accordion items."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -119,6 +124,7 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",

@@ -7,7 +7,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ResizeTrigger": {
@@ -18,7 +19,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false }
+      "disabled": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -36,7 +38,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  resizeTrigger(id: string): string\n  label(id: string): string\n  panel(id: string | number): string\n}>",
+        "type": "Partial<{\n  root: string\n  resizeTrigger: (id: string) => string\n  label: (id: string) => string\n  panel: (id: string | number) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the splitter. Useful for composition."
       },
@@ -81,6 +83,7 @@
         "isRequired": false,
         "description": "The orientation of the splitter. Can be `horizontal` or `vertical`"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "size": { "type": "number[]", "isRequired": false, "description": "The controlled size data of the panels" }
     }
   },
@@ -91,7 +94,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

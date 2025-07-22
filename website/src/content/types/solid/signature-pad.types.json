@@ -52,6 +52,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "defaultPaths": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default paths of the signature pad.\nUse when you don't need to control the paths of the signature pad."
+      },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is disabled." },
       "drawing": {
         "type": "DrawingOptions",
@@ -79,6 +84,7 @@
         "isRequired": false,
         "description": "Callback when the signature pad is done drawing."
       },
+      "paths": { "type": "string[]", "isRequired": false, "description": "The controlled paths of the signature pad." },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is read-only." },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is required." },
       "translations": {

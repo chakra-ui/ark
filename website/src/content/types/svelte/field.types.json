@@ -13,7 +13,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HelperText": {
@@ -22,7 +23,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Input": {
@@ -31,7 +33,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -40,7 +43,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "RequiredIndicator": {
@@ -50,7 +54,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "fallback": { "type": "Snippet<[]>", "isRequired": false }
+      "fallback": { "type": "Snippet<[]>", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -92,7 +97,8 @@
         "type": "Snippet<[PropsFn<'select'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Textarea": {
@@ -107,7 +113,8 @@
         "defaultValue": "false",
         "isRequired": false,
         "description": "Whether the textarea should autoresize"
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

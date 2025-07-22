@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'svg'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "CircleRange": {
@@ -14,7 +15,8 @@
         "type": "Snippet<[PropsFn<'circle'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "CircleTrack": {
@@ -23,7 +25,8 @@
         "type": "Snippet<[PropsFn<'circle'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Context": { "props": { "api": { "type": "Snippet<[UseProgressContext]>", "isRequired": false } } },
@@ -33,7 +36,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Range": {
@@ -42,7 +46,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -99,6 +104,7 @@
         "isRequired": false,
         "description": "The orientation of the element."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -107,14 +113,20 @@
       "value": { "type": "number", "isRequired": false, "description": "The controlled value of the progress bar." }
     }
   },
-  "RootProvider": { "props": { "value": { "type": "UseProgressReturn", "isRequired": true } } },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseProgressReturn", "isRequired": true },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
   "Track": {
     "props": {
       "asChild": {
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ValueText": {
@@ -123,7 +135,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "View": {
@@ -133,7 +146,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

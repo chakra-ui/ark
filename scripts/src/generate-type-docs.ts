@@ -310,6 +310,21 @@ const frameworkConfig: Record<string, FrameworkConfig> = {
     indexFile: 'index.tsx',
   },
 
+  vue: {
+    prepare: async () => {
+      const vueProjectPath = path.join('..', 'packages', 'vue')
+      const distPath = path.join(vueProjectPath, 'dist')
+
+      if (!fs.existsSync(distPath)) {
+        throw new Error(
+          'Vue project dist folder not found. Please build the vue project first by running: `bun vue build`',
+        )
+      }
+    },
+    componentsDir: ['dist/components', 'dist/providers'],
+    indexFile: 'index.d.ts',
+  },
+
   react: {
     componentsDir: ['src/components', 'src/providers'],
     indexFile: 'index.ts',

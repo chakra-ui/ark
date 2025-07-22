@@ -30,7 +30,7 @@
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
       "ids": {
-        "type": "Partial<{ root: string; item(value: string): string }>",
+        "type": "Partial<{ root: string; item: (value: string) => string }>",
         "isRequired": false,
         "description": "The ids of the elements in the toggle. Useful for composition."
       },

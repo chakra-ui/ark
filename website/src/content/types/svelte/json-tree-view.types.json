@@ -1,138 +1,20 @@
 {
-  "BranchContent": {
+  "JsonTreeViewRoot": {
     "props": {
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchControl": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchIndentGuide": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchIndicator": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Branch": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchText": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchTrigger": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "ItemIndicator": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Item": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "ItemText": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Label": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'h3'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "NodeCheckboxIndicator": {
-    "props": {
-      "fallback": { "type": "number | boolean | Node | (string & {}) | ArrayElement", "isRequired": false },
-      "indeterminate": { "type": "number | boolean | Node | (string & {}) | ArrayElement", "isRequired": false }
-    }
-  },
-  "NodeCheckbox": {
-    "props": {
-      "asChild": {
-        "type": "(props: ParentProps<'span'>) => Element",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "NodeProvider": {
-    "props": {
-      "indexPath": { "type": "number[]", "isRequired": true, "description": "The index path of the tree node" },
-      "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
-    }
-  },
-  "Root": {
-    "props": {
-      "collection": { "type": "TreeCollection<T>", "isRequired": true, "description": "The collection of tree nodes" },
-      "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node value" },
+      "collapseStringsAfterLength": { "type": "number", "isRequired": false },
+      "data": { "type": "{}", "isRequired": false, "description": "The data to display in the tree." },
       "defaultCheckedValue": {
         "type": "string[]",
         "isRequired": false,
         "description": "The initial checked node value when rendered.\nUse when you don't need to control the checked node value."
       },
+      "defaultExpandedDepth": { "type": "number", "isRequired": false, "description": "The default expand level." },
       "defaultExpandedValue": {
         "type": "string[]",
         "isRequired": false,
@@ -156,6 +38,7 @@
         "description": "Whether clicking on a branch should open it or not"
       },
       "focusedValue": { "type": "string", "isRequired": false, "description": "The value of the focused node" },
+      "groupArraysAfterLength": { "type": "number", "isRequired": false },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; tree: string; label: string; node: (value: string) => string }>",
@@ -169,40 +52,43 @@
         "description": "Whether to enable lazy mounting"
       },
       "loadChildren": {
-        "type": "(details: LoadChildrenDetails<any>) => Promise<any[]>",
+        "type": "(details: LoadChildrenDetails<JsonNode<any>>) => Promise<JsonNode<any>[]>",
         "isRequired": false,
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
+      "maxPreviewItems": { "type": "number", "isRequired": false },
       "onCheckedChange": {
         "type": "(details: CheckedChangeDetails) => void",
         "isRequired": false,
         "description": "Called when the checked value changes"
       },
       "onExpandedChange": {
-        "type": "(details: ExpandedChangeDetails<any>) => void",
+        "type": "(details: ExpandedChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when the tree is opened or closed"
       },
       "onFocusChange": {
-        "type": "(details: FocusChangeDetails<any>) => void",
+        "type": "(details: FocusChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when the focused node changes"
       },
       "onLoadChildrenComplete": {
-        "type": "(details: LoadChildrenCompleteDetails<any>) => void",
+        "type": "(details: LoadChildrenCompleteDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when a node finishes loading children"
       },
       "onLoadChildrenError": {
-        "type": "(details: LoadChildrenErrorDetails<any>) => void",
+        "type": "(details: LoadChildrenErrorDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
       },
       "onSelectionChange": {
-        "type": "(details: SelectionChangeDetails<any>) => void",
+        "type": "(details: SelectionChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
         "description": "Called when the selection changes"
       },
+      "quotesOnKeys": { "type": "boolean", "isRequired": false, "description": "Whether to show quotes on the keys." },
+      "ref": { "type": "Element", "isRequired": false },
       "selectedValue": { "type": "string[]", "isRequired": false, "description": "The controlled selected node value" },
       "selectionMode": {
         "type": "'multiple' | 'single'",
@@ -210,6 +96,7 @@
         "isRequired": false,
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
       },
+      "showNonenumerable": { "type": "boolean", "isRequired": false },
       "typeahead": {
         "type": "boolean",
         "defaultValue": "true",
@@ -224,11 +111,11 @@
       }
     }
   },
-  "RootProvider": {
+  "JsonTreeViewRootProvider": {
     "props": {
-      "value": { "type": "UseTreeViewReturn<T>", "isRequired": true },
+      "value": { "type": "UseTreeViewReturn<JsonNode<any>>", "isRequired": true },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
@@ -238,6 +125,7 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",
@@ -246,12 +134,24 @@
       }
     }
   },
-  "Tree": {
+  "JsonTreeViewTree": {
     "props": {
+      "arrow": { "type": "Snippet<[]>", "isRequired": false, "description": "The icon to use for the arrow." },
       "asChild": {
-        "type": "(props: ParentProps<'div'>) => Element",
+        "type": "Snippet<[PropsFn<'ul'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "indentGuide": {
+        "type": "boolean | Snippet<[]>",
+        "isRequired": false,
+        "description": "The indent guide to use for the tree."
+      },
+      "ref": { "type": "Element", "isRequired": false },
+      "renderValue": {
+        "type": "Snippet<[JsonNodeHastElement]>",
+        "isRequired": false,
+        "description": "The function to render the value of the node."
       }
     }
   }

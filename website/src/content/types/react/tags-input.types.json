@@ -164,7 +164,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item(opts: ItemProps): string\n  itemDeleteTrigger(opts: ItemProps): string\n  itemInput(opts: ItemProps): string\n}>",
+        "type": "Partial<{\n  root: string\n  input: string\n  hiddenInput: string\n  clearBtn: string\n  label: string\n  control: string\n  item: (opts: ItemProps) => string\n  itemDeleteTrigger: (opts: ItemProps) => string\n  itemInput: (opts: ItemProps) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the tags input. Useful for composition."
       },

@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Area": {
@@ -15,6 +16,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "xChannel": { "type": "ColorChannel", "isRequired": false },
       "yChannel": { "type": "ColorChannel", "isRequired": false }
     }
@@ -25,7 +27,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ChannelInput": {
@@ -36,7 +39,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": { "type": "Orientation", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ChannelSliderLabel": {
@@ -45,7 +49,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ChannelSlider": {
@@ -56,7 +61,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "orientation": { "type": "Orientation", "isRequired": false }
+      "orientation": { "type": "Orientation", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ChannelSliderThumb": {
@@ -65,7 +71,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ChannelSliderTrack": {
@@ -74,7 +81,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ChannelSliderValueText": {
@@ -83,7 +91,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Content": {
@@ -103,7 +112,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "EyeDropperTrigger": {
@@ -112,7 +122,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "FormatSelect": {
@@ -121,7 +132,8 @@
         "type": "Snippet<[PropsFn<'select'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "FormatTrigger": {
@@ -130,7 +142,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "HiddenInput": {
@@ -139,7 +152,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -148,7 +162,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Positioner": {
@@ -157,7 +172,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -194,7 +210,7 @@
       "format": { "type": "ColorFormat", "isRequired": false, "description": "The controlled color format to use" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; control: string; trigger: string; label: string; input: string; hiddenInput: string; content: string; area: string; areaGradient: string; positioner: string; formatSelect: string; areaThumb: string; channelInput(id: string): string; channelSliderTrack(id: ColorChannel): string; channelSliderT...",
+        "type": "Partial<{ root: string; control: string; trigger: string; label: string; input: string; hiddenInput: string; content: string; area: string; areaGradient: string; positioner: string; formatSelect: string; areaThumb: string; channelInput: (id: string) => string; channelSliderTrack: (id: ColorChannel) => string; channe...",
         "isRequired": false,
         "description": "The ids of the elements in the color picker. Useful for composition."
       },
@@ -208,6 +224,7 @@
         "isRequired": false,
         "description": "The initial focus element when the color picker is opened."
       },
+      "inline": { "type": "boolean", "isRequired": false, "description": "Whether to render the color picker inline" },
       "invalid": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is invalid" },
       "lazyMount": {
         "type": "boolean",
@@ -278,6 +295,7 @@
         "description": "Whether the node is present (controlled by the user)"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is read-only" },
+      "ref": { "type": "Element", "isRequired": false },
       "required": { "type": "boolean", "isRequired": false, "description": "Whether the color picker is required" },
       "skipAnimationOnMount": {
         "type": "boolean",
@@ -323,6 +341,7 @@
         "isRequired": false,
         "description": "Whether the node is present (controlled by the user)"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "skipAnimationOnMount": {
         "type": "boolean",
         "defaultValue": "false",
@@ -343,7 +362,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "SwatchIndicator": {
@@ -352,7 +372,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Swatch": {
@@ -363,6 +384,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "respectAlpha": {
         "type": "boolean",
         "isRequired": false,
@@ -378,7 +400,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the swatch trigger is disabled" }
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the swatch trigger is disabled" },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "TransparencyGrid": {
@@ -388,6 +411,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "size": { "type": "string", "isRequired": false }
     }
   },
@@ -397,7 +421,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ValueSwatch": {
@@ -407,6 +432,7 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "respectAlpha": {
         "type": "boolean",
         "isRequired": false,
@@ -421,7 +447,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "format": { "type": "ColorStringFormat", "isRequired": false }
+      "format": { "type": "ColorStringFormat", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "View": {
@@ -431,7 +458,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

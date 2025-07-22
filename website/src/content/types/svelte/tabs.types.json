@@ -63,6 +63,7 @@
         "isRequired": false,
         "description": "The orientation of the tabs. Can be `horizontal` or `vertical`\n- `horizontal`: only left and right arrow key navigation will work.\n- `vertical`: only up and down arrow key navigation will work."
       },
+      "ref": { "type": "Element", "isRequired": false },
       "translations": {
         "type": "IntlTranslations",
         "isRequired": false,
@@ -91,6 +92,7 @@
         "isRequired": false,
         "description": "Whether to enable lazy mounting"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "unmountOnExit": {
         "type": "boolean",
         "defaultValue": "false",

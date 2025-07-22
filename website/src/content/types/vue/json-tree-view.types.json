@@ -1,138 +1,20 @@
 {
-  "BranchContent": {
+  "JsonTreeViewRoot": {
     "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchControl": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchIndentGuide": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchIndicator": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Branch": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchText": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "BranchTrigger": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "ItemIndicator": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Item": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "ItemText": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "Label": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "NodeCheckboxIndicator": {
-    "props": {
-      "fallback": { "type": "{}", "isRequired": false },
-      "indeterminate": { "type": "{}", "isRequired": false }
-    }
-  },
-  "NodeCheckbox": {
-    "props": {
-      "asChild": {
-        "type": "boolean",
-        "isRequired": false,
-        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
-    }
-  },
-  "NodeProvider": {
-    "props": {
-      "indexPath": { "type": "number[]", "isRequired": true, "description": "The index path of the tree node" },
-      "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
-    }
-  },
-  "Root": {
-    "props": {
-      "collection": { "type": "TreeCollection<T>", "isRequired": true, "description": "The collection of tree nodes" },
+      "data": { "type": "object", "isRequired": true, "description": "The data to display in the tree." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node values" },
+      "collapseStringsAfterLength": { "type": "number", "isRequired": false },
       "defaultCheckedValue": {
         "type": "string[]",
         "isRequired": false,
         "description": "The initial checked node values when rendered.\nUse when you don't need to control the checked node values."
       },
+      "defaultExpandedDepth": { "type": "number", "isRequired": false, "description": "The default expand level." },
       "defaultExpandedValue": {
         "type": "string[]",
         "isRequired": false,
@@ -160,6 +42,7 @@
         "description": "Whether clicking on a branch should open it or not"
       },
       "focusedValue": { "type": "string", "isRequired": false, "description": "The id of the focused node" },
+      "groupArraysAfterLength": { "type": "number", "isRequired": false },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ root: string; tree: string; label: string; node(value: string): string }>",
@@ -173,10 +56,12 @@
         "description": "Whether to enable lazy mounting"
       },
       "loadChildren": {
-        "type": "(details: LoadChildrenDetails<T>) => Promise<T[]>",
+        "type": "(details: LoadChildrenDetails<JsonNode<any>>) => Promise<JsonNode<any>[]>",
         "isRequired": false,
         "description": "A function that loads the children of a node."
       },
+      "maxPreviewItems": { "type": "number", "isRequired": false },
+      "quotesOnKeys": { "type": "boolean", "isRequired": false, "description": "Whether to show quotes on the keys." },
       "selectedValue": {
         "type": "string[]",
         "isRequired": false,
@@ -188,6 +73,7 @@
         "isRequired": false,
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"
       },
+      "showNonenumerable": { "type": "boolean", "isRequired": false },
       "typeahead": {
         "type": "boolean",
         "defaultValue": "true",
@@ -202,9 +88,9 @@
       }
     }
   },
-  "RootProvider": {
+  "JsonTreeViewRootProvider": {
     "props": {
-      "value": { "type": "TreeViewApi<PropTypes, T>", "isRequired": true },
+      "value": { "type": "TreeViewApi<PropTypes, JsonNode<any>>", "isRequired": true },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -224,13 +110,14 @@
       }
     }
   },
-  "Tree": {
+  "JsonTreeViewTree": {
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "indentGuide": { "type": "boolean", "isRequired": false }
     }
   }
 }

@@ -46,11 +46,33 @@
     }
   },
   "Root": {
+    "emits": {
+      "draw": {
+        "type": "[details: DrawDetails]",
+        "isRequired": true,
+        "description": "Callback when the signature pad is drawing."
+      },
+      "drawEnd": {
+        "type": "[details: DrawEndDetails]",
+        "isRequired": true,
+        "description": "Callback when the signature pad is done drawing."
+      },
+      "update:paths": {
+        "type": "[paths: string[]]",
+        "isRequired": true,
+        "description": "Callback when the paths change."
+      }
+    },
     "props": {
       "asChild": {
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultPaths": {
+        "type": "string[]",
+        "isRequired": false,
+        "description": "The default paths of the signature pad."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the signature pad is disabled." },
       "drawing": {

@@ -5,7 +5,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ArrowTip": {
@@ -14,7 +15,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "CheckboxItem": {
@@ -37,6 +39,7 @@
         "isRequired": false,
         "description": "Function called when the option state is changed"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "valueText": {
         "type": "string",
         "isRequired": false,
@@ -61,7 +64,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Indicator": {
@@ -70,7 +74,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseMenuItemContext]>", "isRequired": true } } },
@@ -80,7 +85,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemGroup": {
@@ -94,7 +100,8 @@
         "type": "string",
         "isRequired": false,
         "description": "The `id` of the element that provides accessibility label to the option group"
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemIndicator": {
@@ -103,7 +110,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -125,6 +133,7 @@
         "isRequired": false,
         "description": "The function to call when the item is selected"
       },
+      "ref": { "type": "Element", "isRequired": false },
       "valueText": {
         "type": "string",
         "isRequired": false,
@@ -138,7 +147,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Positioner": {
@@ -147,7 +157,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "RadioItemGroup": {
@@ -159,6 +170,7 @@
       },
       "id": { "type": "string", "isRequired": false },
       "onValueChange": { "type": "(e: ValueChangeDetails) => void", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false },
       "value": { "type": "string", "isRequired": false }
     }
   },
@@ -176,6 +188,7 @@
         "description": "Whether the menu should be closed when the option is selected."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the menu item is disabled" },
+      "ref": { "type": "Element", "isRequired": false },
       "valueText": {
         "type": "string",
         "isRequired": false,
@@ -220,7 +233,7 @@
       },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  groupLabel(id: string): string\n  group(id: string): string\n  positioner: string\n  arrow: string\n}>",
+        "type": "Partial<{\n  trigger: string\n  contextTrigger: string\n  content: string\n  groupLabel: (id: string) => string\n  group: (id: string) => string\n  positioner: string\n  arrow: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the menu. Useful for composition."
       },
@@ -361,7 +374,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "TriggerItem": {
@@ -370,7 +384,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Trigger": {
@@ -379,7 +394,8 @@
         "type": "Snippet<[PropsFn<'button'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

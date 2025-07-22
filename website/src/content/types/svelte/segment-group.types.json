@@ -6,7 +6,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemContext": { "props": { "render": { "type": "Snippet<[UseSegmentGroupItemContext]>", "isRequired": true } } },
@@ -16,7 +17,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemHiddenInput": {
@@ -25,7 +27,8 @@
         "type": "Snippet<[PropsFn<'input'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Item": {
@@ -37,7 +40,8 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "disabled": { "type": "boolean", "isRequired": false },
-      "invalid": { "type": "boolean", "isRequired": false }
+      "invalid": { "type": "boolean", "isRequired": false },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "ItemText": {
@@ -46,7 +50,8 @@
         "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Label": {
@@ -55,7 +60,8 @@
         "type": "Snippet<[PropsFn<'label'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   },
   "Root": {
@@ -78,7 +84,7 @@
       "form": { "type": "string", "isRequired": false, "description": "The associate form of the underlying input." },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  item(value: string): string\n  itemLabel(value: string): string\n  itemControl(value: string): string\n  itemHiddenInput(value: string): string\n}>",
+        "type": "Partial<{\n  root: string\n  label: string\n  indicator: string\n  item: (value: string) => string\n  itemLabel: (value: string) => string\n  itemControl: (value: string) => string\n  itemHiddenInput: (value: string) => string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the radio. Useful for composition."
       },
@@ -98,6 +104,7 @@
         "description": "Orientation of the radio group"
       },
       "readOnly": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is read-only" },
+      "ref": { "type": "Element", "isRequired": false },
       "value": { "type": "string", "isRequired": false, "description": "The controlled value of the radio group" }
     }
   },
@@ -108,7 +115,8 @@
         "type": "Snippet<[PropsFn<'div'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }
