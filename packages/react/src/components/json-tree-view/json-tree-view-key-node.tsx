@@ -16,7 +16,7 @@ export const JsonTreeViewKeyNode = (props: JsonTreeViewKeyNodeProps): React.Reac
   const key = keyPathToKey(node.keyPath)
   return (
     <>
-      <span data-kind="key" data-non-enumerable={node.isNonEnumerable ? '' : undefined}>
+      <span data-kind="key" suppressHydrationWarning data-non-enumerable={node.isNonEnumerable ? '' : undefined}>
         {showQuotes ? `"${key}"` : key}
       </span>
       <span data-kind="colon">: </span>

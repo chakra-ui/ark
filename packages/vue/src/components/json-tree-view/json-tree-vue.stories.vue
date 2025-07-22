@@ -7,6 +7,7 @@ import Functions from './examples/functions.vue'
 import MapAndSet from './examples/map-and-set.vue'
 import Regex from './examples/regex.vue'
 import RenderValue from './examples/render-value.vue'
+import RootProvider from './examples/root-provider.vue'
 </script>
 
 <template>
@@ -34,6 +35,9 @@ import RenderValue from './examples/render-value.vue'
     </Variant>
     <Variant title="Errors">
       <Errors />
+    </Variant>
+    <Variant title="Root Provider">
+      <RootProvider />
     </Variant>
   </Story>
 </template>

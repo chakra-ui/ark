@@ -7,6 +7,7 @@ import FunctionsExample from './examples/functions.svelte'
 import MapAndSetExample from './examples/map-and-set.svelte'
 import RegexExample from './examples/regex.svelte'
 import RenderValueExample from './examples/render-value.svelte'
+import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
   title: 'Components / Json Tree View',
@@ -53,5 +54,11 @@ export const ExpandLevel = {
 export const RenderValue = {
   render: () => ({
     Component: RenderValueExample,
+  }),
+}
+
+export const RootProvider = {
+  render: () => ({
+    Component: RootProviderExample,
   }),
 }
