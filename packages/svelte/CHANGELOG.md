@@ -8,15 +8,16 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Collection**: Add `useListSelection` function for managing collection item selection with support for single/multiple selection modes
+- **Collection**: Add `useListSelection` function for managing collection item selection with support for
+  single/multiple selection modes
 
   ```js
   const collection = createListCollection({ items: ['React', 'Vue', 'Angular'] })
   const selection = useListSelection({ collection })
-  
+
   // Check if item is selected
   const isSelected = selection.isSelected('Svelte')
-  
+
   // Select/deselect items
   selection.select('Svelte')
   selection.toggle('Angular')
@@ -26,6 +27,19 @@ description: All notable changes will be documented in this file.
   accepted files
 
 - **Signature Pad**: Add support for `bind:paths` and `defaultPaths` to programmatically control the paths
+
+- **Date Picker**: Added hover range preview support for date picker range selection. Added `inHoveredRange`,
+  `firstInHoveredRange`, and `lastInHoveredRange` properties to `DayTableCellState` with corresponding data attributes
+  `data-in-hover-range`, `data-hover-range-start`, and `data-hover-range-end`.
+
+  Hover range states are only active when not overlapping with actual selected range, enabling distinct styling for
+  hover preview vs actual selection in range mode.
+
+### Fixed
+
+- **Date Picker**: Fix date comparison issues when time components are involved. This resolves critical issues with date
+  comparison operations when different date types (`CalendarDate`, `CalendarDateTime`, `ZonedDateTime`) are mixed,
+  particularly in scenarios involving time components.
 
 ## [5.2.0] - 2025-07-18
 
