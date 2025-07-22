@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.3.0] - 2025-07-22
+
 ### Added
 
 - **Collection**: Add `useListSelection` function for managing collection item selection with support for
