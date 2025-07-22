@@ -8,6 +8,20 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
+- **Collection**: Add `useListSelection` function for managing collection item selection with support for single/multiple selection modes
+
+  ```js
+  const collection = createListCollection({ items: ['React', 'Vue', 'Angular'] })
+  const selection = useListSelection({ collection })
+  
+  // Check if item is selected
+  const isSelected = selection.isSelected('Svelte')
+  
+  // Select/deselect items
+  selection.select('Svelte')
+  selection.toggle('Angular')
+  ```
+
 - **File Upload**: Add support for `bind:acceptedFiles` and `defaultAcceptedFiles` to programmatically control the
   accepted files
 

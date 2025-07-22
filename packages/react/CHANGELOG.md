@@ -2,6 +2,20 @@
 
 ### Added
 
+- **Collection**: Add `useListSelection` hook for managing collection item selection with support for single/multiple selection modes
+
+  ```jsx
+  const collection = createListCollection({ items: ['React', 'Vue', 'Angular'] })
+  const selection = useListSelection({ collection })
+  
+  // Check if item is selected
+  const isSelected = selection.isSelected('React')
+  
+  // Select/deselect items
+  selection.select('React')
+  selection.toggle('Vue')
+  ```
+
 - **File Upload**: Add support for programmatically controlling the accepted files via `acceptedFiles` and
   `defaultAcceptedFiles`
 

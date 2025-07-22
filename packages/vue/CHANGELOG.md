@@ -2,6 +2,22 @@
 
 ### Added
 
+- **Collection**: Add `useListSelection` composable for managing collection item selection with support for single/multiple selection modes
+
+  ```vue
+  <script setup>
+  const collection = createListCollection({ items: ['React', 'Vue', 'Angular'] })
+  const selection = useListSelection({ collection })
+  
+  // Check if item is selected
+  const isSelected = selection.isSelected('Vue')
+  
+  // Select/deselect items
+  selection.select('Vue')
+  selection.toggle('Angular')
+  </script>
+  ```
+
 - **File Upload**: Add support for `v-model:acceptedFiles` and `defaultAcceptedFiles` to programmatically control the
   accepted files
 

@@ -15,3 +15,4 @@ export {
   type TreeNode,
 } from './tree-collection'
 export { useListCollection, type UseListCollectionProps, type UseListCollectionReturn } from './use-list-collection'
+export { useListSelection, type UseListSelectionProps, type UseListSelectionReturn } from './use-list-selection'

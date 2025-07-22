@@ -19,3 +19,4 @@ export {
   type UseListCollectionProps,
   type UseListCollectionReturn,
 } from './use-list-collection.svelte'
+export { useListSelection, type UseListSelectionProps, type UseListSelectionReturn } from './use-list-selection.svelte'
