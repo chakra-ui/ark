@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.18.0] - 2025-07-22
+
 ### Added
 
 - **Collection**: Add `useListSelection` composable for managing collection item selection with support for
