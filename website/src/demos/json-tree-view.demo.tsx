@@ -22,7 +22,7 @@ const data = {
 
   // Date objects
   createdAt: new Date('2024-01-15T14:22:00Z'),
-  lastLogin: new Date(),
+  lastLogin: new Date('2024-01-12'),
 
   // Arrays
   tags: ['user', 'premium', 'verified'],
