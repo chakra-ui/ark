@@ -1,5 +1,5 @@
-<script module lang="ts">
-  import type { Snippet } from 'svelte'
+<script lang="ts">
+  import { type Snippet, getAllContexts, mount, tick, unmount } from 'svelte'
 
   export interface PortalProps {
     /**
@@ -15,42 +15,30 @@
      */
     children: Snippet
   }
-</script>
 
-<script lang="ts">
-  /**
-   * @see https://github.com/sveltejs/svelte/issues/7082
-   */
-  import { getAllContexts, mount, unmount } from 'svelte'
-  import PortalConsumer from './portal-consumer.svelte'
-
-  const { container = globalThis?.document?.body, children, disabled = false }: PortalProps = $props()
+  let { children, container = globalThis.document?.body, disabled = false }: PortalProps = $props()
 
   const context = getAllContexts()
 
-  let instance: ReturnType<typeof mount> | null = null
-
-  const unmountInstance = () => {
-    if (instance) {
-      unmount(instance)
-      instance = null
-    }
-  }
-
+  let instance: any = null
   $effect(() => {
-    if (disabled || !container) {
-      unmountInstance()
+    const cleanup = () => {
+      if (instance) {
+        void unmount(instance)
+        instance = null
+      }
+    }
+
+    if (disabled) {
+      cleanup()
       return
     }
 
-    instance = mount(PortalConsumer, {
-      target: container,
-      props: { children },
-      context,
+    tick().then(() => {
+      instance = mount(children, { target: container, context })
     })
-
     return () => {
-      unmountInstance()
+      cleanup()
     }
   })
 </script>

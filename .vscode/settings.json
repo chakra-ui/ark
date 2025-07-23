@@ -11,5 +11,8 @@
   "material-icon-theme.folders.associations": {
     "react": "React-components",
     "solid": "Core"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

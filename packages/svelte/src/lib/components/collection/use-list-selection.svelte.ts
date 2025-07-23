@@ -1,5 +1,6 @@
 import { Selection, type SelectionMode } from '@zag-js/collection'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
+import { untrack } from 'svelte'
 import type { CollectionItem, ListCollection } from './list-collection'
 
 export interface UseListSelectionProps<T extends CollectionItem> {
@@ -52,7 +53,8 @@ export function useListSelection<T extends CollectionItem>(
     return selection
   }
 
-  let selection = $state(createSelection(localProps.initialSelectedValues))
+  const initialSelectedValues = untrack(() => localProps.initialSelectedValues)
+  let selection = $state(createSelection(initialSelectedValues))
 
   // Watch for collection changes and reset selection if needed
   $effect(() => {

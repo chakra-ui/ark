@@ -12,6 +12,8 @@ description: All notable changes will be documented in this file.
 
 - **Tree View**: Fixed issue where tree view doesn't scroll into view when content overflows.
 
+- **Portal**: Fix issue in SvelteKit where `Portal` component doesn't work as expected.
+
 ## [5.3.0] - 2025-07-22
 
 ### Added
