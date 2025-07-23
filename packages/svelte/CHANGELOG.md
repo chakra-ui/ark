@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.3.1] - 2025-07-23
+
 ### Fixed
 
 - **Date Picker**: Fixed issue where hovered range was connect to selected values, when it shouldn't
