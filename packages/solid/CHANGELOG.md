@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Date Picker**: Fixed issue where hovered range was connect to selected values, when it shouldn't
+
+- **Tree View**: Fixed issue where tree view doesn't scroll into view when content overflows.
+
 ## [5.18.0] - 2025-07-22
 
 ### Added
