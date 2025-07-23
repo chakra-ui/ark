@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Menu**: Fixed hydration issue when rendering `Menu.Separator`
+
 ## [5.18.0] - 2025-07-22
 
 ### Added
