@@ -1,0 +1,92 @@
+---
+id: list-selection
+title: List Selection
+description: Used for managing selection state in list collections.
+status: preview
+---
+
+The `useListSelection` hook manages selection state in lists and collections. It supports single and multiple selection
+modes with operations like select, deselect, toggle, and clear.
+
+```tsx
+import { createListCollection, useListSelection } from '@ark-ui/react/collection'
+
+const collection = createListCollection({
+  items: [
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Cherry', value: 'cherry' },
+  ],
+})
+
+const selection = useListSelection({
+  collection,
+  selectionMode: 'single',
+  deselectable: true,
+})
+
+console.log(selection.selectedValues) // ['apple', 'banana', 'cherry']
+```
+
+## Examples
+
+### Basic
+
+By default, the hook supports single selection mode that can be deselected.
+
+> Set `deselectable` to `false` to prevent deselecting the current selection.
+
+<Example id="list-selection" component="collection" />
+
+### Multiple Selection
+
+Set `selectionMode` to `multiple` to allow multiple items to be selected.
+
+<Example id="list-selection-multiple" component="collection" />
+
+### Range Selection
+
+Here's an example of how to implement range selection that extends the selection from the first selected item to the
+clicked item.
+
+<Example id="list-selection-range" component="collection" />
+
+## API Reference
+
+### Props
+
+- **collection** (`ListCollection<T>`) - The collection to manage selection for
+- **selectionMode** (`'single' | 'multiple' | 'none'`, default: `'single'`) - The selection mode
+- **deselectable** (`boolean`, default: `true`) - Whether selected items can be deselected
+- **initialSelectedValues** (`string[]`, default: `[]`) - Initial selected values
+- **resetOnCollectionChange** (`boolean`, default: `false`) - Whether to reset selection when collection changes
+
+### Return Value
+
+The hook returns an object with the following properties and methods:
+
+#### State Properties
+
+- **selectedValues** (`string[]`) - Array of currently selected values
+- **isEmpty** (`boolean`) - Whether no items are selected
+- **firstSelectedValue** (`string | null`) - The first selected value in collection order
+- **lastSelectedValue** (`string | null`) - The last selected value in collection order
+
+#### Query Methods
+
+- **isSelected** (`(value: string | null) => boolean`) - Check if a value is selected
+- **canSelect** (`(value: string) => boolean`) - Check if a value can be selected
+- **isAllSelected** (`() => boolean`) - Check if all items are selected
+- **isSomeSelected** (`() => boolean`) - Check if some items are selected
+
+#### Selection Methods
+
+- **select** (`(value: string, forceToggle?: boolean) => void`) - Select a value
+- **deselect** (`(value: string) => void`) - Deselect a value
+- **toggle** (`(value: string) => void`) - Toggle selection of a value
+- **replace** (`(value: string | null) => void`) - Replace selection with a single value
+- **extend** (`(anchorValue: string, targetValue: string) => void`) - Extend selection from anchor to target
+- **setSelectedValues** (`(values: string[]) => void`) - Set the selected values
+- **setSelection** (`(values: string[]) => void`) - Set the selection (alias for setSelectedValues)
+- **clear** (`() => void`) - Clear all selections
+- **resetSelection** (`() => void`) - Reset selection to initial state

@@ -2,17 +2,32 @@
 import { createListCollection, useListSelection } from '@ark-ui/vue/collection'
 
 const collection = createListCollection({
-  items: ['React', 'Vue', 'Angular'],
+  items: ['React', 'Vue', 'Angular', 'Svelte', 'Solid'],
 })
 
 const selection = useListSelection({
   collection,
+  selectionMode: 'multiple',
 })
+
+const handleSelectAll = () => {
+  if (selection.isAllSelected()) {
+    selection.clear()
+  } else {
+    selection.setSelectedValues(collection.getValues())
+  }
+}
 </script>
 
 <template>
   <div>
-    <pre>{{ JSON.stringify(selection.selectedValues.value) }}</pre>
+    <div :style="{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '16px' }">
+      <button @click="handleSelectAll">
+        {{ selection.isAllSelected() ? 'Deselect All' : 'Select All' }}
+      </button>
+      <span>{{ selection.selectedValues.value.length }} of {{ collection.items.length }} selected</span>
+    </div>
+
     <label
       v-for="item in collection.items"
       :key="item"

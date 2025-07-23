@@ -1,6 +1,6 @@
 import { type Pages, pages } from '.velite'
 
-export const categories = ['overview', 'guides', 'components', 'utilities']
+export const categories = ['overview', 'guides', 'collections', 'components', 'utilities']
 export const getSidebarGroups = (): Pages[][] => {
   const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about', 'llms.txt']
 

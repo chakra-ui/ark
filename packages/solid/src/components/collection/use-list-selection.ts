@@ -136,19 +136,6 @@ export function useListSelection<T extends CollectionItem>(
     resetSelection: () => {
       setSelection(createSelection())
     },
-    setSelection: (newSelection: string[]) => {
-      setSelection(selection().setSelection(newSelection))
-    },
-    setSelectionMode: (mode: SelectionMode) => {
-      const newSelection = selection().copy()
-      newSelection.selectionMode = mode
-      setSelection(newSelection)
-    },
-    setDeselectable: (deselectable: boolean) => {
-      const newSelection = selection().copy()
-      newSelection.deselectable = deselectable
-      setSelection(newSelection)
-    },
   }
 }
 
@@ -217,16 +204,4 @@ export interface UseListSelectionReturn {
    * Returns true if at least one item from the collection is selected.
    */
   isSomeSelected: () => boolean
-  /**
-   * Set the selection to a specific array of items.
-   */
-  setSelection: (selection: string[]) => void
-  /**
-   * Set the selection mode.
-   */
-  setSelectionMode: (mode: SelectionMode) => void
-  /**
-   * Set whether the selection is deselectable.
-   */
-  setDeselectable: (deselectable: boolean) => void
 }
