@@ -20,22 +20,27 @@ Learn how to use the `FileUpload` component in your project. Let's take a look a
 
 <Example id="basic" />
 
+### Initial Files
+
+Use the `defaultAcceptedFiles` prop to set the initial files in the file upload component.
+
+<Example id="initial-files" />
+
 ### Clear Trigger
 
-Use the `FileUpload.ClearTrigger` component to provide users with a way to remove all uploaded files at once. This
-trigger will clear both accepted and rejected files from the upload component.
+Use the `ClearTrigger` component to provide users with a way to remove all uploaded files at once. This trigger will
+clear both accepted and rejected files from the upload component.
 
 <Example id="clear-trigger" />
 
 ### Drag & Drop
 
-Use the `FileUpload.Dropzone` component to enable drag-and-drop functionality. The dropzone provides visual feedback
-during drag operations and allows users to drop files directly onto the component. This example shows a minimal
-drag-and-drop interface with just the dropzone and file previews.
+Use the `Dropzone` component to enable drag-and-drop functionality. The dropzone provides adds a `data-dragging`
+attribute while dragging for styling purposes.
 
 <Example id="drag-and-drop" />
 
-#### Disable dropzone
+**Disable dropzone**
 
 To disable drag-and-drop functionality, set the `allowDrop` prop to `false`.
 
@@ -43,7 +48,7 @@ To disable drag-and-drop functionality, set the `allowDrop` prop to `false`.
 <FileUpload.Root allowDrop={false}>{/* ... */}</FileUpload.Root>
 ```
 
-#### Prevent document drop
+**Prevent document drop**
 
 By default, when the dropzone is active, we prevent accidental navigation when files are dropped outside the dropzone.
 To prevent this behavior, set the `preventDocumentDrop` prop to `false`.
@@ -60,13 +65,11 @@ Use the `accept` prop to restrict the file types that can be uploaded. This prop
 When users attempt to upload files that don't match the accepted types, these files will be automatically rejected and
 appear in the `rejectedFiles` array with a `FILE_INVALID_TYPE` error code.
 
-The example below demonstrates how to accept only PNG and JPEG images using `accept="image/png,image/jpeg"`.
-
 <Example id="accepted-file-types" />
 
-### Error Handling & Validation Details
+### Error Handling
 
-The FileUpload component provides comprehensive validation and error handling capabilities. You can set various
+The `FileUpload` component provides comprehensive validation and error handling capabilities. You can set various
 constraints and handle different types of validation errors:
 
 **Built-in Validation Props:**
@@ -85,16 +88,7 @@ constraints and handle different types of validation errors:
 - `FILE_INVALID` - Generic validation failure
 - `FILE_EXISTS` - Duplicate file detected
 
-The example below demonstrates comprehensive error handling with file size limits (1KB-1MB), file count limits (max 3),
-type restrictions (images and PDFs), and how to display both accepted and rejected files with detailed error messages.
-
 <Example id="error-handling" />
-
-### Initial Files
-
-Use the `defaultAcceptedFiles` prop to set the initial files in the file upload component.
-
-<Example id="initial-files" />
 
 ### Custom Validation
 
@@ -111,12 +105,12 @@ text.
 
 ### Root Provider
 
-Use the `useFileUpload` hook to create the file upload store and pass it to the `FileUpload.RootProvider` component.
-This allows you to have maximum control over the file upload programmatically.
-
-<Example id="root-provider" />
+Use the `useFileUpload` hook to create the file upload store and pass it to the `RootProvider` component. This allows
+you to have maximum control over the file upload programmatically.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+<Example id="root-provider" />
 
 ### Pasting Files
 
