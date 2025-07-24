@@ -5,6 +5,7 @@ import InitialFiles from './examples/initial-files.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithValidation from './examples/validation.vue'
 import WithField from './examples/with-field.vue'
+import WithPaste from './examples/with-paste.vue'
 </script>
 <template>
   <Story title="FileUpload">
@@ -25,6 +26,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="With Directory Upload">
       <WithDirectoryUpload />
+    </Variant>
+    <Variant title="With Paste">
+      <WithPaste />
     </Variant>
   </Story>
 </template>

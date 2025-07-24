@@ -11,6 +11,7 @@ import SingleFileExample from './examples/single-file.svelte'
 import SizeLimitsExample from './examples/size-limits.svelte'
 import ValidationExample from './examples/validation.svelte'
 import WithFieldExample from './examples/with-field.svelte'
+import WithPasteExample from './examples/with-paste.svelte'
 
 const meta: Meta = {
   title: 'Components/FileUpload',
@@ -81,5 +82,11 @@ export const Validation = {
 export const WithField = {
   render: () => ({
     Component: WithFieldExample,
+  }),
+}
+
+export const WithPaste = {
+  render: () => ({
+    Component: WithPasteExample,
   }),
 }
