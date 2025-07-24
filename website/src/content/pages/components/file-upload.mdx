@@ -42,11 +42,13 @@ attribute while dragging for styling purposes.
 
 ### Directory Upload
 
-Use the `directory` prop to allow users to upload entire folders. This enables selecting multiple files from a directory structure while preserving the folder hierarchy.
+Use the `directory` prop to allow users to upload entire folders. This enables selecting multiple files from a directory
+structure while preserving the folder hierarchy.
 
 <Example id="directory-upload" />
 
-The `file.webkitRelativePath` property contains the full path of each file within the uploaded directory, allowing you to display the folder structure or process files based on their location.
+The `file.webkitRelativePath` property contains the full path of each file within the uploaded directory, allowing you
+to display the folder structure or process files based on their location.
 
 ### Accepted File Types
 
@@ -80,6 +82,21 @@ constraints and handle different types of validation errors:
 - `FILE_EXISTS` - Duplicate file detected
 
 <Example id="error-handling" />
+
+### File Transformations
+
+Use the `transformFiles` prop to process files before they're added to the accepted files list. This is useful for file
+compression, format conversion, or adding metadata.
+
+**Common transformation use cases:**
+
+- **Image compression**: Use `image-conversion`, `browser-image-compression`, or similar libraries
+- **Format conversion**: Convert files to different formats (e.g., HEIC to JPEG)
+- **Metadata extraction**: Add EXIF data or other file information
+- **File validation**: Perform additional checks beyond basic validation
+- **Resizing**: Automatically resize images to specific dimensions
+
+<Example id="file-transformations" />
 
 ### Custom Validation
 

@@ -156,6 +156,7 @@
     "@testing-library/user-event": "14.6.1",
     "@types/jsdom": "21.1.7",
     "clean-package": "2.2.0",
+    "image-conversion": "2.1.1",
     "esbuild-plugin-solid": "0.6.0",
     "globby": "14.1.0",
     "jsdom": "26.1.0",

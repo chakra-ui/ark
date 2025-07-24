@@ -6,6 +6,7 @@ import ClearTriggerExample from './examples/clear-trigger.svelte'
 import DirectoryUploadExample from './examples/directory-upload.svelte'
 import DragAndDropExample from './examples/drag-and-drop.svelte'
 import ErrorHandlingExample from './examples/error-handling.svelte'
+import FileTransformationsExample from './examples/file-transformations.svelte'
 import InitialFilesExample from './examples/initial-files.svelte'
 import MediaCaptureExample from './examples/media-capture.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -48,6 +49,12 @@ export const DragAndDrop = {
 export const ErrorHandling = {
   render: () => ({
     Component: ErrorHandlingExample,
+  }),
+}
+
+export const FileTransformations = {
+  render: () => ({
+    Component: FileTransformationsExample,
   }),
 }
 

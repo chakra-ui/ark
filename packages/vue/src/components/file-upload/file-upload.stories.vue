@@ -5,6 +5,7 @@ import ClearTrigger from './examples/clear-trigger.vue'
 import DirectoryUpload from './examples/directory-upload.vue'
 import DragAndDrop from './examples/drag-and-drop.vue'
 import ErrorHandling from './examples/error-handling.vue'
+import FileTransformations from './examples/file-transformations.vue'
 import InitialFiles from './examples/initial-files.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithValidation from './examples/validation.vue'
@@ -27,6 +28,9 @@ import WithPaste from './examples/with-paste.vue'
     </Variant>
     <Variant title="Error Handling">
       <ErrorHandling />
+    </Variant>
+    <Variant title="File Transformations">
+      <FileTransformations />
     </Variant>
     <Variant title="Initial Files">
       <InitialFiles />
