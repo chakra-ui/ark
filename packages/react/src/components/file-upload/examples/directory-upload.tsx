@@ -1,6 +1,6 @@
 import { FileUpload } from '@ark-ui/react/file-upload'
 
-export const WithDirectoryUpload = () => {
+export const DirectoryUpload = () => {
   return (
     <FileUpload.Root directory>
       <FileUpload.Trigger>Upload Folder</FileUpload.Trigger>

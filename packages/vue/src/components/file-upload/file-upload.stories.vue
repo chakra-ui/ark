@@ -2,7 +2,7 @@
 import AcceptedFileTypes from './examples/accepted-file-types.vue'
 import Basic from './examples/basic.vue'
 import ClearTrigger from './examples/clear-trigger.vue'
-import WithDirectoryUpload from './examples/directory-upload.vue'
+import DirectoryUpload from './examples/directory-upload.vue'
 import DragAndDrop from './examples/drag-and-drop.vue'
 import ErrorHandling from './examples/error-handling.vue'
 import InitialFiles from './examples/initial-files.vue'
@@ -40,8 +40,8 @@ import WithPaste from './examples/with-paste.vue'
     <Variant title="With Validation">
       <WithValidation />
     </Variant>
-    <Variant title="With Directory Upload">
-      <WithDirectoryUpload />
+    <Variant title="Directory Upload">
+      <DirectoryUpload />
     </Variant>
     <Variant title="With Paste">
       <WithPaste />

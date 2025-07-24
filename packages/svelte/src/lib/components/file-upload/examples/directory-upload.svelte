@@ -6,8 +6,8 @@
   <FileUpload.Trigger>Upload Folder</FileUpload.Trigger>
   <FileUpload.ItemGroup>
     <FileUpload.Context>
-      {#snippet render(context)}
-        {#each context().acceptedFiles as file (file.name)}
+      {#snippet render(fileUpload)}
+        {#each fileUpload().acceptedFiles as file (file.name)}
           <FileUpload.Item {file}>
             <FileUpload.ItemName>
               {file.webkitRelativePath ?? file.name}
