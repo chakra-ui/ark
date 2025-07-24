@@ -40,23 +40,6 @@ attribute while dragging for styling purposes.
 
 <Example id="drag-and-drop" />
 
-**Disable dropzone**
-
-To disable drag-and-drop functionality, set the `allowDrop` prop to `false`.
-
-```tsx
-<FileUpload.Root allowDrop={false}>{/* ... */}</FileUpload.Root>
-```
-
-**Prevent document drop**
-
-By default, when the dropzone is active, we prevent accidental navigation when files are dropped outside the dropzone.
-To prevent this behavior, set the `preventDocumentDrop` prop to `false`.
-
-```tsx
-<FileUpload.Root preventDocumentDrop={false}>{/* ... */}</FileUpload.Root>
-```
-
 ### Accepted File Types
 
 Use the `accept` prop to restrict the file types that can be uploaded. This prop accepts MIME types (e.g., `image/png`,
@@ -119,6 +102,60 @@ Use the `setClipboardFiles` method to enable pasting images directly from the cl
 > You can access the `fileUpload` store from `FileUpload.Context` as well.
 
 <Example id="with-paste" />
+
+## Guides
+
+### File Previews
+
+The `FileUpload` component provides flexible preview options for different file types. Use `ItemPreview` with type
+matching to show appropriate previews based on file format.
+
+**Preview Types:**
+
+- `type="image/*"`: Shows image thumbnails using `ItemPreviewImage`
+- `type="video/*"`: For video file previews
+- `type="application/pdf"`: For PDF files
+- `type=".*"`: Generic fallback for any file type
+
+```tsx
+<FileUpload.ItemPreview type="image/*">
+  <FileUpload.ItemPreviewImage />
+</FileUpload.ItemPreview>
+
+<FileUpload.ItemPreview type="video/*">
+  <VideoIcon />
+</FileUpload.ItemPreview>
+
+<FileUpload.ItemPreview type="application/pdf">
+  <PdfIcon />
+</FileUpload.ItemPreview>
+
+<FileUpload.ItemPreview type=".*">
+  <FileIcon />
+</FileUpload.ItemPreview>
+```
+
+**File Metadata Display:**
+
+- `ItemName` - Shows the file name
+- `ItemSizeText` - Shows formatted file size (e.g., "2.5 MB")
+
+### Disable dropzone
+
+To disable drag-and-drop functionality, set the `allowDrop` prop to `false`.
+
+```tsx
+<FileUpload.Root allowDrop={false}>{/* ... */}</FileUpload.Root>
+```
+
+### Prevent document drop
+
+By default, when the dropzone is active, we prevent accidental navigation when files are dropped outside the dropzone.
+To prevent this behavior, set the `preventDocumentDrop` prop to `false`.
+
+```tsx
+<FileUpload.Root preventDocumentDrop={false}>{/* ... */}</FileUpload.Root>
+```
 
 ## API Reference
 
