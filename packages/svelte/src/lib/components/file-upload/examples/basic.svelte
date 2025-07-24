@@ -5,7 +5,6 @@
 
 <FileUpload.Root maxFiles={5}>
   <FileUpload.Label>File Upload</FileUpload.Label>
-  <FileUpload.Dropzone>Drag your file(s) here</FileUpload.Dropzone>
   <FileUpload.Trigger>Choose file(s)</FileUpload.Trigger>
   <FileUpload.ItemGroup>
     <FileUpload.Context>

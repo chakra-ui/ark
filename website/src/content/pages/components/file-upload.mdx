@@ -22,9 +22,35 @@ Learn how to use the `FileUpload` component in your project. Let's take a look a
 
 ### Clear Trigger
 
-Use the `FileUpload.ClearTrigger` component to provide users with a way to remove all uploaded files at once. This trigger will clear both accepted and rejected files from the upload component.
+Use the `FileUpload.ClearTrigger` component to provide users with a way to remove all uploaded files at once. This
+trigger will clear both accepted and rejected files from the upload component.
 
 <Example id="clear-trigger" />
+
+### Drag & Drop
+
+Use the `FileUpload.Dropzone` component to enable drag-and-drop functionality. The dropzone provides visual feedback
+during drag operations and allows users to drop files directly onto the component. This example shows a minimal
+drag-and-drop interface with just the dropzone and file previews.
+
+<Example id="drag-and-drop" />
+
+#### Disable dropzone
+
+To disable drag-and-drop functionality, set the `allowDrop` prop to `false`.
+
+```tsx
+<FileUpload.Root allowDrop={false}>{/* ... */}</FileUpload.Root>
+```
+
+#### Prevent document drop
+
+By default, when the dropzone is active, we prevent accidental navigation when files are dropped outside the dropzone.
+To prevent this behavior, set the `preventDocumentDrop` prop to `false`.
+
+```tsx
+<FileUpload.Root preventDocumentDrop={false}>{/* ... */}</FileUpload.Root>
+```
 
 ### Accepted File Types
 
@@ -40,15 +66,18 @@ The example below demonstrates how to accept only PNG and JPEG images using `acc
 
 ### Error Handling & Validation Details
 
-The FileUpload component provides comprehensive validation and error handling capabilities. You can set various constraints and handle different types of validation errors:
+The FileUpload component provides comprehensive validation and error handling capabilities. You can set various
+constraints and handle different types of validation errors:
 
 **Built-in Validation Props:**
+
 - `maxFiles` - Maximum number of files allowed
 - `maxFileSize` - Maximum file size in bytes
-- `minFileSize` - Minimum file size in bytes  
+- `minFileSize` - Minimum file size in bytes
 - `accept` - Allowed MIME types or file extensions
 
 **Built-in Error Types:**
+
 - `TOO_MANY_FILES` - Exceeds maxFiles limit
 - `FILE_INVALID_TYPE` - File type not in accept list
 - `FILE_TOO_LARGE` - File size exceeds maxFileSize
@@ -56,7 +85,8 @@ The FileUpload component provides comprehensive validation and error handling ca
 - `FILE_INVALID` - Generic validation failure
 - `FILE_EXISTS` - Duplicate file detected
 
-The example below demonstrates comprehensive error handling with file size limits (1KB-1MB), file count limits (max 3), type restrictions (images and PDFs), and how to display both accepted and rejected files with detailed error messages.
+The example below demonstrates comprehensive error handling with file size limits (1KB-1MB), file count limits (max 3),
+type restrictions (images and PDFs), and how to display both accepted and rejected files with detailed error messages.
 
 <Example id="error-handling" />
 

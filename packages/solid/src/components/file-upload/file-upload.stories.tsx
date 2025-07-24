@@ -9,6 +9,7 @@ export default meta
 export { AcceptedFileTypes } from './examples/accepted-file-types'
 export { Basic } from './examples/basic'
 export { ClearTrigger } from './examples/clear-trigger'
+export { DragAndDrop } from './examples/drag-and-drop'
 export { ErrorHandling } from './examples/error-handling'
 export { InitialFiles } from './examples/initial-files'
 export { RootProvider } from './examples/root-provider'
