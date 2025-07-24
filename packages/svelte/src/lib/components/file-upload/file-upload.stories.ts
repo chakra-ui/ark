@@ -4,6 +4,7 @@ import AcceptedFileTypesExample from './examples/accepted-file-types.svelte'
 import BasicExample from './examples/basic.svelte'
 import ClearTriggerExample from './examples/clear-trigger.svelte'
 import DirectoryUploadExample from './examples/directory-upload.svelte'
+import InitialFilesExample from './examples/initial-files.svelte'
 import MediaCaptureExample from './examples/media-capture.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SingleFileExample from './examples/single-file.svelte'
@@ -38,6 +39,12 @@ export const ClearTrigger = {
 export const DirectoryUpload = {
   render: () => ({
     Component: DirectoryUploadExample,
+  }),
+}
+
+export const InitialFiles = {
+  render: () => ({
+    Component: InitialFilesExample,
   }),
 }
 
