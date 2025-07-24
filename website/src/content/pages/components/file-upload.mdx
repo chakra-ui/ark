@@ -157,6 +157,18 @@ To prevent this behavior, set the `preventDocumentDrop` prop to `false`.
 <FileUpload.Root preventDocumentDrop={false}>{/* ... */}</FileUpload.Root>
 ```
 
+### Prevent double open
+
+When you want to delegate clicking to the trigger and remove the dropzone from the tab order, you can use the
+`disableClick` prop. This prevents the the file picker from opening twice.
+
+```tsx
+<FileUpload.Dropzone disableClick>
+  <FileUpload.Trigger>Choose Files</FileUpload.Trigger>
+  Drag files here
+</FileUpload.Dropzone>
+```
+
 ## API Reference
 
 <ComponentTypes id="file-upload" />
