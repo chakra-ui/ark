@@ -20,6 +20,18 @@ Learn how to use the `FileUpload` component in your project. Let's take a look a
 
 <Example id="basic" />
 
+### Accepted File Types
+
+Use the `accept` prop to restrict the file types that can be uploaded. This prop accepts MIME types (e.g., `image/png`,
+`image/jpeg`) or file extensions (e.g., `.pdf`, `.txt`).
+
+When users attempt to upload files that don't match the accepted types, these files will be automatically rejected and
+appear in the `rejectedFiles` array with a `FILE_INVALID_TYPE` error code.
+
+The example below demonstrates how to accept only PNG and JPEG images using `accept="image/png,image/jpeg"`.
+
+<Example id="accepted-file-types" />
+
 ### Initial Files
 
 Use the `defaultAcceptedFiles` prop to set the initial files in the file upload component.

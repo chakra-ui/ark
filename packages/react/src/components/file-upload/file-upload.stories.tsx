@@ -6,7 +6,7 @@ const meta: Meta = {
 
 export default meta
 
-export { WithAcceptedFileTypes } from './examples/accepted-file-types'
+export { AcceptedFileTypes } from './examples/accepted-file-types'
 export { Basic } from './examples/basic'
 export { WithClearTrigger } from './examples/clear-trigger'
 export { WithDirectoryUpload } from './examples/directory-upload'

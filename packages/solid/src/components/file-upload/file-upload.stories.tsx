@@ -6,6 +6,7 @@ const meta: Meta = {
 
 export default meta
 
+export { AcceptedFileTypes } from './examples/accepted-file-types'
 export { Basic } from './examples/basic'
 export { InitialFiles } from './examples/initial-files'
 export { RootProvider } from './examples/root-provider'

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AcceptedFileTypes from './examples/accepted-file-types.vue'
 import Basic from './examples/basic.vue'
 import WithDirectoryUpload from './examples/directory-upload.vue'
 import InitialFiles from './examples/initial-files.vue'
@@ -9,6 +10,9 @@ import WithPaste from './examples/with-paste.vue'
 </script>
 <template>
   <Story title="FileUpload">
+    <Variant title="Accepted File Types">
+      <AcceptedFileTypes />
+    </Variant>
     <Variant title="Basic">
       <Basic />
     </Variant>
