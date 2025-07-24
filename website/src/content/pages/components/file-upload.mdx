@@ -20,6 +20,12 @@ Learn how to use the `FileUpload` component in your project. Let's take a look a
 
 <Example id="basic" />
 
+### Clear Trigger
+
+Use the `FileUpload.ClearTrigger` component to provide users with a way to remove all uploaded files at once. This trigger will clear both accepted and rejected files from the upload component.
+
+<Example id="clear-trigger" />
+
 ### Accepted File Types
 
 Use the `accept` prop to restrict the file types that can be uploaded. This prop accepts MIME types (e.g., `image/png`,
@@ -32,22 +38,37 @@ The example below demonstrates how to accept only PNG and JPEG images using `acc
 
 <Example id="accepted-file-types" />
 
+### Error Handling & Validation Details
+
+The FileUpload component provides comprehensive validation and error handling capabilities. You can set various constraints and handle different types of validation errors:
+
+**Built-in Validation Props:**
+- `maxFiles` - Maximum number of files allowed
+- `maxFileSize` - Maximum file size in bytes
+- `minFileSize` - Minimum file size in bytes  
+- `accept` - Allowed MIME types or file extensions
+
+**Built-in Error Types:**
+- `TOO_MANY_FILES` - Exceeds maxFiles limit
+- `FILE_INVALID_TYPE` - File type not in accept list
+- `FILE_TOO_LARGE` - File size exceeds maxFileSize
+- `FILE_TOO_SMALL` - File size below minFileSize
+- `FILE_INVALID` - Generic validation failure
+- `FILE_EXISTS` - Duplicate file detected
+
+The example below demonstrates comprehensive error handling with file size limits (1KB-1MB), file count limits (max 3), type restrictions (images and PDFs), and how to display both accepted and rejected files with detailed error messages.
+
+<Example id="error-handling" />
+
 ### Initial Files
 
 Use the `defaultAcceptedFiles` prop to set the initial files in the file upload component.
 
 <Example id="initial-files" />
 
-### Validation
+### Custom Validation
 
-Use the `validate` prop to validate the files before they are uploaded. The return value of the function should map to:
-
-- `TOO_MANY_FILES`: If the user tries to upload more files than the `maxFiles` prop allows.
-- `FILE_INVALID_TYPE`: If the file is of an invalid type.
-- `FILE_TOO_LARGE`: If the file is too large.
-- `FILE_TOO_SMALL`: If the file is too small.
-- `FILE_INVALID`: If the file is invalid (for any other reason).
-- `FILE_EXISTS`: If the file already exists.
+Use the `validate` prop to implement custom validation logic beyond the built-in constraints.
 
 <Example id="validation" />
 

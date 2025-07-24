@@ -8,7 +8,8 @@ export default meta
 
 export { AcceptedFileTypes } from './examples/accepted-file-types'
 export { Basic } from './examples/basic'
-export { WithClearTrigger } from './examples/clear-trigger'
+export { ClearTrigger } from './examples/clear-trigger'
+export { ErrorHandling } from './examples/error-handling'
 export { WithDirectoryUpload } from './examples/directory-upload'
 export { WithFormRegister } from './examples/form-register'
 export { WithFormSetValue } from './examples/form-set-value'
