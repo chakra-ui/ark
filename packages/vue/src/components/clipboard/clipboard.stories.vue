@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Context from './examples/context.vue'
 import Controlled from './examples/controlled.vue'
+import CustomTimeout from './examples/custom-timeout.vue'
 import RootProvider from './examples/root-provider.vue'
 </script>
 <template>
@@ -14,6 +15,9 @@ import RootProvider from './examples/root-provider.vue'
     </Variant>
     <Variant title="Controlled">
       <Controlled />
+    </Variant>
+    <Variant title="CustomTimeout">
+      <CustomTimeout />
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />

@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import CustomTimeoutExample from './examples/custom-timeout.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -25,6 +26,12 @@ export const Context = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const CustomTimeout = {
+  render: () => ({
+    Component: CustomTimeoutExample,
   }),
 }
 

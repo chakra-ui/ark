@@ -9,4 +9,5 @@ export default meta
 export { Basic } from './examples/basic'
 export { Context } from './examples/context'
 export { Controlled } from './examples/controlled'
+export { CustomTimeout } from './examples/custom-timeout'
 export { RootProvider } from './examples/root-provider'

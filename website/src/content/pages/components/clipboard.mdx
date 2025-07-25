@@ -22,7 +22,8 @@ Learn how to use the `Clipboard` component in your project. Let's take a look at
 
 ### Using Context
 
-Access the clipboard state and methods using `Clipboard.Context`. This provides access to properties like `copied`, `value`, `setValue`, and `copyCalled`.
+Access the clipboard state and methods using `Clipboard.Context`. This provides access to properties like `copied`,
+`value`, and `setValue`
 
 <Example id="context" />
 
@@ -37,9 +38,15 @@ Control the clipboard value externally by managing the state yourself and using 
 Use the `useClipboard` hook to create the clipboard store and pass it to the `Clipboard.RootProvider` component. This
 allows you to have maximum control over the clipboard programmatically.
 
+> If you're using the `Clipboard.RootProvider` component, you don't need to use the `Clipboard.Root` component.
+
 <Example id="root-provider" />
 
-> If you're using the `Clipboard.RootProvider` component, you don't need to use the `Clipboard.Root` component.
+### Custom Timeout
+
+Configure the copy status timeout duration using the `timeout` prop. Default is 3000ms (3 seconds).
+
+<Example id="custom-timeout" />
 
 ## API Reference
 
