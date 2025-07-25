@@ -37,13 +37,12 @@ To auto-grow the editable as the content changes, set the `autoResize` prop to `
 </Editable.Root>
 ```
 
-### Max width
+### Max Length
 
-It is a common pattern to set a maximum of the editable as it auto-grows. To achieve this, set the `maxWidth` prop to
-the desired value.
+Use the `maxLength` prop to set a maximum number of characters that can be entered into the editable.
 
 ```tsx
-<Editable.Root placeholder="Placeholder" autoResize maxWidth="320px">
+<Editable.Root placeholder="Placeholder" autoResize maxLength={10}>
   {/*...*/}
 </Editable.Root>
 ```
