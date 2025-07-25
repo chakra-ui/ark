@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import CopyStatusExample from './examples/copy-status.svelte'
 import CustomTimeoutExample from './examples/custom-timeout.svelte'
 import ProgrammaticExample from './examples/programmatic.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -28,6 +29,12 @@ export const Context = {
 export const Controlled = {
   render: () => ({
     Component: ControlledExample,
+  }),
+}
+
+export const CopyStatus = {
+  render: () => ({
+    Component: CopyStatusExample,
   }),
 }
 

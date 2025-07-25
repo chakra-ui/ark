@@ -29,6 +29,13 @@ Access the clipboard state and methods using `Clipboard.Context`. This provides 
 
 <Example id="context" />
 
+### Copy Status
+
+Use the `onStatusChange` prop to listen for copy operations. It exposes a `copied` property that you can use to display
+a success message.
+
+<Example id="copy-status" />
+
 ### Controlled
 
 Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
