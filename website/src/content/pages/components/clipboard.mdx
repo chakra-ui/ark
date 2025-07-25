@@ -20,6 +20,18 @@ Learn how to use the `Clipboard` component in your project. Let's take a look at
 
 <Example id="basic" />
 
+### Using Context
+
+Access the clipboard state and methods using `Clipboard.Context`. This provides access to properties like `copied`, `value`, `setValue`, and `copyCalled`.
+
+<Example id="context" />
+
+### Controlled
+
+Control the clipboard value externally by managing the state yourself and using `onValueChange` to handle updates.
+
+<Example id="controlled" />
+
 ### Root Provider
 
 Use the `useClipboard` hook to create the clipboard store and pass it to the `Clipboard.RootProvider` component. This

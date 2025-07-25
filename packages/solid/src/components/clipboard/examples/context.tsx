@@ -2,18 +2,25 @@ import { Clipboard } from '@ark-ui/solid/clipboard'
 import { CheckIcon, ClipboardCopyIcon } from 'lucide-solid'
 import { Show } from 'solid-js'
 
-export const RenderFn = () => {
+export const Context = () => {
   return (
     <Clipboard.Root value="https://ark-ui.com">
       <Clipboard.Label>Copy this link</Clipboard.Label>
       <Clipboard.Control>
-        <Clipboard.Input />
         <Clipboard.Trigger>
           <Clipboard.Context>
-            {(context) => (
-              <Show when={context().copied} fallback={<ClipboardCopyIcon />}>
-                <CheckIcon />
-              </Show>
+            {(clipboard) => (
+              <div>
+                <Show when={clipboard().copied} fallback={<ClipboardCopyIcon />}>
+                  <CheckIcon />
+                </Show>
+                <span>
+                  <Show when={clipboard().copied} fallback="Copy">
+                    Copied!
+                  </Show>
+                </span>
+                <small>Value: {clipboard().value}</small>
+              </div>
             )}
           </Clipboard.Context>
         </Clipboard.Trigger>
