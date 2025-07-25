@@ -4,6 +4,7 @@ import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import CustomTimeoutExample from './examples/custom-timeout.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import ValueTextExample from './examples/value-text.svelte'
 
 const meta: Meta = {
   title: 'Components/Clipboard',
@@ -38,5 +39,11 @@ export const CustomTimeout = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const ValueText = {
+  render: () => ({
+    Component: ValueTextExample,
   }),
 }

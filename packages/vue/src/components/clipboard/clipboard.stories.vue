@@ -4,6 +4,7 @@ import Context from './examples/context.vue'
 import Controlled from './examples/controlled.vue'
 import CustomTimeout from './examples/custom-timeout.vue'
 import RootProvider from './examples/root-provider.vue'
+import ValueText from './examples/value-text.vue'
 </script>
 <template>
   <Story title="Clipboard">
@@ -21,6 +22,9 @@ import RootProvider from './examples/root-provider.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="ValueText">
+      <ValueText />
     </Variant>
   </Story>
 </template>
