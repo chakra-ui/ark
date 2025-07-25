@@ -3,6 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import CustomTimeoutExample from './examples/custom-timeout.svelte'
+import ProgrammaticExample from './examples/programmatic.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ValueTextExample from './examples/value-text.svelte'
 
@@ -33,6 +34,12 @@ export const Controlled = {
 export const CustomTimeout = {
   render: () => ({
     Component: CustomTimeoutExample,
+  }),
+}
+
+export const Programmatic = {
+  render: () => ({
+    Component: ProgrammaticExample,
   }),
 }
 

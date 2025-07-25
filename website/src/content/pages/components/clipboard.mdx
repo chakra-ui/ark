@@ -25,6 +25,8 @@ Learn how to use the `Clipboard` component in your project. Let's take a look at
 Access the clipboard state and methods using `Clipboard.Context`. This provides access to properties like `copied`,
 `value`, and `setValue`
 
+> Alternatively, you can use the `useClipboardContext` hook to access the clipboard context.
+
 <Example id="context" />
 
 ### Controlled
@@ -47,6 +49,12 @@ allows you to have maximum control over the clipboard programmatically.
 Configure the copy status timeout duration using the `timeout` prop. Default is 3000ms (3 seconds).
 
 <Example id="custom-timeout" />
+
+### Programmatic Copy
+
+Trigger copy operations programmatically using the context's `copy()` method.
+
+<Example id="programmatic" />
 
 ### Value Text
 

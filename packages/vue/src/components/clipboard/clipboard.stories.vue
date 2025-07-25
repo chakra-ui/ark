@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Context from './examples/context.vue'
 import Controlled from './examples/controlled.vue'
 import CustomTimeout from './examples/custom-timeout.vue'
+import Programmatic from './examples/programmatic.vue'
 import RootProvider from './examples/root-provider.vue'
 import ValueText from './examples/value-text.vue'
 </script>
@@ -19,6 +20,9 @@ import ValueText from './examples/value-text.vue'
     </Variant>
     <Variant title="CustomTimeout">
       <CustomTimeout />
+    </Variant>
+    <Variant title="Programmatic">
+      <Programmatic />
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
