@@ -34,7 +34,36 @@ You can customize the Pagination component by setting various props such as `dir
 
 <Example id="customized" />
 
-### Using the Root Provider
+### Using Context
+
+The `Context` component provides access to the pagination state and methods through a render prop pattern. This allows
+you to access methods like `setPage`, `setPageSize`, `goToNextPage`, `goToPrevPage`, `goToFirstPage`, `goToLastPage`, as
+well as properties like `totalPages` and `pageRange`.
+
+<Example id="context" />
+
+### Data Slicing
+
+Use the `slice()` method to paginate actual data arrays. This method automatically slices your data based on the current
+page and page size.
+
+<Example id="data-slicing" />
+
+### Page Range Display
+
+Display the current page range information using the `pageRange` property. This shows which items are currently visible
+(e.g., "Showing 1-10 of 100 results").
+
+<Example id="page-range" />
+
+### Page Size Control
+
+Control the number of items per page dynamically using `setPageSize()`. This example shows how to integrate a native
+select element to change the page size.
+
+<Example id="page-size-control" />
+
+### Root Provider
 
 The `RootProvider` component provides a context for the pagination. It accepts the value of the `usePagination` hook.
 You can leverage it to access the component state and methods from outside the pagination.
