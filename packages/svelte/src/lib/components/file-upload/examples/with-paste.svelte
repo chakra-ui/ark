@@ -10,7 +10,7 @@
   <textarea
     placeholder="Paste image here..."
     onpaste={(e) => fileUpload().setClipboardFiles(e.clipboardData)}
-  />
+  ></textarea>
   <FileUpload.ItemGroup>
     {#each fileUpload().acceptedFiles as file (file.name)}
       <FileUpload.Item {file}>
