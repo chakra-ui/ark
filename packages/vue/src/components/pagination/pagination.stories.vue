@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Context from './examples/context.vue'
 import Customized from './examples/customized.vue'
 import DataSlicing from './examples/data-slicing.vue'
+import Link from './examples/link.vue'
 import PageRange from './examples/page-range.vue'
 import PageSizeControl from './examples/page-size-control.vue'
 import RootProvider from './examples/root-provider.vue'
@@ -20,6 +21,9 @@ import RootProvider from './examples/root-provider.vue'
     </Variant>
     <Variant title="DataSlicing">
       <DataSlicing />
+    </Variant>
+    <Variant title="Link">
+      <Link />
     </Variant>
     <Variant title="PageRange">
       <PageRange />
