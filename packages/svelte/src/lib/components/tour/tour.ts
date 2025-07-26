@@ -1,3 +1,4 @@
+export type { WaitForOptions as WaitOptions } from '@zag-js/dom-query'
 export type {
   Point,
   ProgressTextDetails,
@@ -12,7 +13,6 @@ export type {
   StepPlacement,
   StepStatus,
   StepType,
-  WaitOptions,
 } from '@zag-js/tour'
 export {
   default as ActionTrigger,
