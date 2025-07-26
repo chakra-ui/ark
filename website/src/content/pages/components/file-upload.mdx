@@ -50,6 +50,9 @@ structure while preserving the folder hierarchy.
 The `file.webkitRelativePath` property contains the full path of each file within the uploaded directory, allowing you
 to display the folder structure or process files based on their location.
 
+> **Important**: When uploading directories with many files, set `maxFiles` to a higher value (e.g., `maxFiles={100}`)
+> or remove the limit entirely to prevent files from being rejected due to the default file count restriction.
+
 ### Accepted File Types
 
 Use the `accept` prop to restrict the file types that can be uploaded. This prop accepts MIME types (e.g., `image/png`,
