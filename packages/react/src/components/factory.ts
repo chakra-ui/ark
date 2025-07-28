@@ -58,7 +58,7 @@ const withAsChild = (Component: React.ElementType) => {
         return null
       }
 
-      const onlyChild: React.ReactNode = Children.only(children)
+      const onlyChild: React.ReactElement<Record<string, unknown>> = Children.only(children)
 
       const childRef = getRef(onlyChild)
 
