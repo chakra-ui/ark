@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Factory**: Check if `children` is a valid React element before calling `Children.only()`
+
 ## [5.18.2] - 2025-07-26
 
 ### Fixed
