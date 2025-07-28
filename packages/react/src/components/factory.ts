@@ -53,12 +53,12 @@ const withAsChild = (Component: React.ElementType) => {
       if (!asChild) {
         return createElement(Component, { ...restProps, ref }, children)
       }
-
-      const onlyChild: React.ReactNode = Children.only(children)
-
-      if (!isValidElement<Record<string, unknown>>(onlyChild)) {
+      
+      if (!isValidElement<Record<string, unknown>>(children)) {
         return null
       }
+
+      const onlyChild: React.ReactNode = Children.only(children)
 
       const childRef = getRef(onlyChild)
 
