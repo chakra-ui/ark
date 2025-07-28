@@ -33,7 +33,7 @@
     "root": "."
   },
   "devDependencies": {
-    "entities": "4.5.0",
+    "entities": "6.0.1",
     "@biomejs/biome": "1.9.4",
     "@release-it/keep-a-changelog": "7.0.0",
     "@types/bun": "1.2.19",
