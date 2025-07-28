@@ -9,6 +9,7 @@ export const Grouping = () => {
   const { collection, filter } = useListCollection({
     initialItems,
     filter: filterFn().contains,
+    groupBy: (item) => item.type,
   })
 
   const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
