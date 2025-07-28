@@ -6,6 +6,7 @@
   padding: 5px;
   border: 1px solid lightgray;
   list-style-type: none;
+  z-index: var(--layer-index);
 }
 [data-scope='menu'][data-part='trigger'] {
   display: flex;
