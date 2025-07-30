@@ -60,3 +60,13 @@ export async function getExample({
 
   return response.json() as Promise<GetExampleResponse>
 }
+
+export async function getComponentDataAttributes(component: string): Promise<GetExampleResponse> {
+  const response = await fetch(`https://ark-ui.com/api/data-attr/${component}`)
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch examples: ${response.status} ${response.statusText}`)
+  }
+
+  return response.json() as Promise<GetExampleResponse>
+}

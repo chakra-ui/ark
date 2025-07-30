@@ -1,10 +1,11 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import type { Tool, ToolConfig } from '../lib/types.js'
+import { stylingGuideTool } from './get-data-attributes.js'
 import { getExampleTool } from './get-example.js'
 import { listComponentsTool } from './list-components.js'
 import { listExamplesTool } from './list-examples.js'
 
-const tools: Tool[] = [listComponentsTool, listExamplesTool, getExampleTool]
+const tools: Tool[] = [listComponentsTool, listExamplesTool, getExampleTool, stylingGuideTool]
 
 const registeredToolCache = new Map<string, Tool>()
 
