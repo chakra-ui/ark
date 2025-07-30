@@ -12,6 +12,12 @@
     "image": "https://park-ui.com/opengraph-image.png"
   },
   {
+    "title": "Tark UI",
+    "description": "Beautiful UI components with Ark UI and Tailwind",
+    "url": "https://tarkui.com",
+    "image": "https://tarkui.com/open-graph.png"
+  },
+  {
     "title": "Typebot",
     "description": "Open-source conversational apps builder",
     "url": "https://typebot.io/",
