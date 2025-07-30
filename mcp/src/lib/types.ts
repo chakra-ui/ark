@@ -14,3 +14,36 @@ export interface Tool<T = unknown> {
     opts: { ctx: T; name: string; description: string; config?: ToolConfig },
   ): Promise<void> | undefined
 }
+export interface ListExamplesResponse {
+  framework: string
+  components: {
+    component: string
+    examples: {
+      id: string
+      path: string
+    }[]
+  }[]
+}
+
+export interface ListComponentExamplesResponse {
+  framework: string
+  component: string
+  count: number
+  examples: Example[]
+  path: string
+}
+
+export interface GetExampleResponse {
+  id: string
+  framework: string
+  component: string
+  files: { name: string; content: string; npmDependencies: string[] }[]
+}
+
+export interface Example {
+  id: string
+  filename: string
+  url: string
+}
+
+export const FRAMEWORKS = ['react', 'vue', 'svelte', 'solid'] as const
