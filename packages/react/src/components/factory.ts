@@ -30,7 +30,6 @@ function getRef(element: React.ReactElement) {
   let getter = Object.getOwnPropertyDescriptor(element.props, 'ref')?.get
   let mayWarn = getter && 'isReactWarning' in getter && getter.isReactWarning
   if (mayWarn) {
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     return (element as any).ref
   }
 
@@ -41,7 +40,6 @@ function getRef(element: React.ReactElement) {
     return (element.props as { ref?: React.Ref<unknown> | undefined }).ref
   }
 
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   return (element.props as { ref?: React.Ref<unknown> | undefined }).ref || (element as any).ref
 }
 
@@ -53,7 +51,7 @@ const withAsChild = (Component: React.ElementType) => {
       if (!asChild) {
         return createElement(Component, { ...restProps, ref }, children)
       }
-      
+
       if (!isValidElement<Record<string, unknown>>(children)) {
         return null
       }
