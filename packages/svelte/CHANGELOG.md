@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Carousel**: Fix issue where controlled carousel ignores last slide
+
 ## [5.3.2] - 2025-07-26
 
 ### Fixed

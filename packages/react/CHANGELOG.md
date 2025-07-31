@@ -4,6 +4,8 @@
 
 - **Factory**: Check if `children` is a valid React element before calling `Children.only()`
 
+- **Carousel**: Fix issue where controlled carousel ignores last slide
+
 ## [5.18.2] - 2025-07-26
 
 ### Fixed
