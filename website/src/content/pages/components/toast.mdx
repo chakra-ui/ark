@@ -47,6 +47,92 @@ To add an action to a toast, use the `toast.action` property.
 
 <Example id="action" />
 
+## Styling guide
+
+There's a minimal styling required for the toast to work correctly.
+
+### Toast root
+
+The toast root will be assigned these css properties at runtime:
+
+- `--x` - The x position
+- `--y` - The y position
+- `--scale` - The scale
+- `--z-index` - The z-index
+- `--height` - The height
+- `--opacity` - The opacity
+- `--gap` - The gap between toasts
+
+```css
+[data-scope='toast'][data-part='root'] {
+  translate: var(--x) var(--y);
+  scale: var(--scale);
+  z-index: var(--z-index);
+  height: var(--height);
+  opacity: var(--opacity);
+  will-change: translate, opacity, scale;
+  transition:
+    translate 400ms,
+    scale 400ms,
+    opacity 400ms,
+    height 400ms,
+    box-shadow 200ms;
+  transition-timing-function: cubic-bezier(0.21, 1.02, 0.73, 1);
+
+  &[data-state='closed'] {
+    transition:
+      translate 400ms,
+      scale 400ms,
+      opacity 200ms;
+    transition-timing-function: cubic-bezier(0.06, 0.71, 0.55, 1);
+  }
+}
+```
+
+### Styling based on type
+
+You can also style based on the `data-type` attribute.
+
+```css
+[data-scope='toast'][data-part='root'] {
+  &[data-type='error'] {
+    background: red;
+    color: white;
+  }
+
+  &[data-type='info'] {
+    background: blue;
+    color: white;
+  }
+
+  &[data-type='warning'] {
+    background: orange;
+  }
+
+  &[data-type='success'] {
+    background: green;
+    color: white;
+  }
+}
+```
+
+### Mobile considerations
+
+A very common use case is to adjust the toast width on mobile so it spans the full width of the screen.
+
+```css
+@media (max-width: 640px) {
+  [data-scope='toast'][data-part='group'] {
+    width: 100%;
+  }
+
+  [data-scope='toast'][data-part='root'] {
+    inset-inline: 0;
+    width: calc(100% - var(--gap) * 2);
+  }
+}
+```
+
 ## API Reference
 
 <ComponentTypes id="toast" />
