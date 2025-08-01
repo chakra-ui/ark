@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.18.3] - 2025-08-01
+
 ### Fixed
 
 - **General**: Fix issue where presence closing animation doesn't work as expected
