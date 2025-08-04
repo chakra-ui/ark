@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+## [5.18.3] - 2025-08-01
+
+### Fixed
+
+- **Carousel**: Fix issue where controlled carousel ignores last slide
+
 ## [5.18.2] - 2025-07-26
 
 ### Fixed

@@ -19,7 +19,6 @@ export default <StorybookConfig>{
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       propFilter: (prop: Record<string, any>) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },

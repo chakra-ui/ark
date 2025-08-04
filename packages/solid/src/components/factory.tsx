@@ -9,10 +9,7 @@ type JsxElements = {
   [E in ElementType]: ArkComponent<E>
 }
 
-type ParentProps<T extends ElementType> = (
-  userProps?: JSX.IntrinsicElements[T],
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-) => JSX.HTMLAttributes<any>
+type ParentProps<T extends ElementType> = (userProps?: JSX.IntrinsicElements[T]) => JSX.HTMLAttributes<any>
 
 export type PolymorphicProps<T extends ElementType> = {
   /**

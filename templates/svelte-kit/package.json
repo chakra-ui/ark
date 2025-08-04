@@ -12,7 +12,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@ark-ui/svelte": "workspace:*"
+    "@ark-ui/svelte": "5.3.2"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.0.0",
