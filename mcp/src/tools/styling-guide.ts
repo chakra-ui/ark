@@ -156,6 +156,7 @@ data-type: error, info, warning, success
   Root: Use variables like --slider-thumb-width, --slider-thumb-height, --slider-track-height css variables.
   Marker: data-state that can be either over-value, under-value, or at-value.
   Thumb: No need to include positioning styles (position, left, top, transform), we add them automatically.
+  Range: Style the range based on the orientation (height: 100%, width: 100% as needed)
 
   All parts: Don't include any transition styles.
   
