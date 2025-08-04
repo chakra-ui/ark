@@ -6,7 +6,8 @@
     "packages/*",
     "templates/**",
     "scripts",
-    "website"
+    "website",
+    "mcp"
   ],
   "scripts": {
     "postinstall": "lefthook install",
