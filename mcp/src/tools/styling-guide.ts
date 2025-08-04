@@ -79,9 +79,15 @@ const indicatorStyleGuide = `
 Indicator: We expose --width and --height css variables that matches the width and height of the active trigger
 `
 
+const orientationStyleGuide = `
+All parts: Use [data-orientation='horizontal'] or [data-orientation='vertical'] to style based on the orientation.
+`
+
 const customGuides: Record<string, string> = {
   collapsible: collapsibleStyleGuide,
-  accordion: collapsibleStyleGuide,
+  accordion: [collapsibleStyleGuide, orientationStyleGuide].join('\n'),
+
+  carousel: [orientationStyleGuide].join('\n'),
 
   'angle-slider': `
 Root: --value and --angle css variables.
@@ -141,11 +147,16 @@ data-type: error, info, warning, success
   To animate the height of the branch content, apply the following keyframes when data-state is open or closed: ${collapseKeyframes}
   `,
 
-  tabs: indicatorStyleGuide,
-  'radio-group': indicatorStyleGuide,
+  tabs: [indicatorStyleGuide, orientationStyleGuide].join('\n'),
+  'radio-group': [indicatorStyleGuide, orientationStyleGuide].join('\n'),
+
+  splitter: [orientationStyleGuide].join('\n'),
 
   slider: `
   Root: Use variables like --slider-thumb-width, --slider-thumb-height, --slider-track-height css variables.
+  Marker: data-state that can be either over-value, under-value, or at-value.
+  
+  ${orientationStyleGuide}
   `,
 
   tooltip: popperStyleGuide,
@@ -164,6 +175,10 @@ data-type: error, info, warning, success
   'hover-card': [popperStyleGuide, dismissibleStyleGuide].join('\n'),
   combobox: [popperStyleGuide, dismissibleStyleGuide].join('\n'),
 
+  'toggle-group': [orientationStyleGuide].join('\n'),
+
+  listbox: [orientationStyleGuide].join('\n'),
+
   dialog: [dismissibleStyleGuide, dialogStyleGuide].join('\n'),
 
   'qr-code': `
@@ -171,6 +186,8 @@ data-type: error, info, warning, success
   `,
 
   progress: `
+  ${orientationStyleGuide}
+
   If it's a circular progress:
   - use the --size, --thickness css variables to style the circle.
   - When [data-state='indeterminate'], consider animating the stroke-dasharray and stroke-dashoffset. Similar to this animation: ${circularProgressKeyframes}
