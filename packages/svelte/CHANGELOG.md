@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **TagsInput**: Export `InputValueChangeDetails` type
+
 ## [5.3.3] - 2025-08-01
 
 ### Fixed

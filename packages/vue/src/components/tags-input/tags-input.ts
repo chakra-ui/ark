@@ -1,4 +1,9 @@
-export type { HighlightChangeDetails, ValidityChangeDetails, ValueChangeDetails } from '@zag-js/tags-input'
+export type {
+  HighlightChangeDetails,
+  ValidityChangeDetails,
+  ValueChangeDetails,
+  InputValueChangeDetails,
+} from '@zag-js/tags-input'
 export {
   default as ClearTrigger,
   type TagsInputClearTriggerProps as ClearTriggerProps,

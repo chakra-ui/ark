@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **TagsInput**: Export `InputValueChangeDetails` type
+
 ## [5.18.3] - 2025-08-01
 
 ### Fixed
