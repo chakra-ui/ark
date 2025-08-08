@@ -10,7 +10,6 @@ import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { getSidebarGroups } from '~/lib/sidebar'
 import { MDXContent } from '~/mdx-content'
-import { SupportAd } from './support-ad'
 
 interface Props {
   params: Promise<{ slug: string[] }>
@@ -44,7 +43,6 @@ export default async function Page(props: Props) {
         <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
           <Box position="fixed">
             <TableOfContent entries={currentPage.toc} />
-            <SupportAd />
           </Box>
         </Box>
       </Container>
