@@ -3,6 +3,8 @@
 ### Fixed
 
 - **TagsInput**: Export `InputValueChangeDetails` type
+- **Field**: Fix issue where `asChild` prop is not being applied to the input and select components, leading to
+  hydration mismatch.
 
 ## [5.18.3] - 2025-08-01
 
