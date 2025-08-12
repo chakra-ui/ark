@@ -1,7 +1,7 @@
 'use client'
 import { createListCollection } from '@ark-ui/react/collection'
 import { CheckIcon, ChevronDownIcon } from 'lucide-react'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import { Icon } from '~/components/ui/icon'
 import { Select } from '~/components/ui/select'
@@ -13,7 +13,6 @@ interface Props {
 export const VersionSelect = (props: Props) => {
   const { latest } = props
   const router = useRouter()
-  const pathname = usePathname()
 
   const collection = useMemo(
     () =>
@@ -29,10 +28,10 @@ export const VersionSelect = (props: Props) => {
 
   const handleValueChange = (value: Select.ValueChangeDetails) => {
     if (value.value.includes('v3')) {
-      router.push(`https://v3.ark-ui.com${pathname}`)
+      router.push('https://v3.ark-ui.com')
     }
     if (value.value.includes('v4')) {
-      router.push(`https://v4.ark-ui.com${pathname}`)
+      router.push('https://v4.ark-ui.com')
     }
   }
 
