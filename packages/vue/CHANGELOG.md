@@ -2,6 +2,18 @@
 
 ### Fixed
 
+- **Carousel**:
+  - Fix an issue where the carousel would not update when `slideCount` or `autoplay` props change.
+  - Fix an issue where `loop: false` was ignored when using autoplay. Now, the carousel will stop when it gets to the
+    last slide.
+
+- **Date Picker**: Expose `data-inline` attribute on Content part to enable distinct styling for inline date pickers
+  versus popover date pickers.
+
+- **Menu**: Fix issue where `onCheckedChange` could be called twice on checkbox or radio item
+
+- **Radio Group**: Fixed issue where arrow key navigation doesn't apply `data-focus-visible` on the newly focused item.
+
 - **TagsInput**: Export `InputValueChangeDetails` type
 - **Field**: Fix issue where `asChild` prop is not being applied to the input and select components, leading to
   hydration mismatch.
