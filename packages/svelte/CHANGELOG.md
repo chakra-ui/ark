@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.3.4] - 2025-08-14
+
 ### Fixed
 
 - **Listbox**: Add support for navigating grid collections
