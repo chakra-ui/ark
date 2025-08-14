@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --open",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
@@ -12,7 +12,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "dependencies": {
-    "@ark-ui/svelte": "5.3.3"
+    "@ark-ui/svelte": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.1.0",
