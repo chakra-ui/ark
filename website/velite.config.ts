@@ -19,8 +19,8 @@ const pages = defineCollection({
       status: s.string().optional(),
       toc: s.toc(),
       code: s.mdx(),
-      llm: s.custom().transform((_data, { meta }) => {
-        return meta.content
+      llm: s.custom<string>().transform((_data, { meta }) => {
+        return meta.content as string
       }),
     })
     .transform((data, { meta }) => {
@@ -29,14 +29,14 @@ const pages = defineCollection({
           ...data,
           slug: 'overview/changelog',
           category: 'overview',
-          framework: meta.path.replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
+          framework: (meta.path as string).replace(/.*\/packages\//, '').replace(/\/[^/]*$/, ''),
           toc: data.toc.map((entry) => ({ ...entry, items: [] })),
         }
       }
       return {
         ...data,
-        slug: meta.path.replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
-        category: meta.path.replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
+        slug: (meta.path as string).replace(/.*\/pages\//, '').replace(/\.mdx$/, ''),
+        category: (meta.path as string).replace(/.*\/pages\//, '').replace(/\/[^/]*$/, ''),
       }
     }),
 })
@@ -59,7 +59,7 @@ const blogs = defineCollection({
     })
     .transform((data, { meta }) => ({
       ...data,
-      slug: meta.path.replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
+      slug: (meta.path as string).replace(/.*\/blog\//, '').replace(/\.mdx$/, ''),
       category: 'blog',
     })),
 })
@@ -97,8 +97,8 @@ const types = defineCollection({
     )
     .transform((data, { meta }) => ({
       parts: data,
-      component: meta.basename?.split('.')[0] ?? '',
-      framework: meta.path.replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
+      component: (meta.basename as string)?.split('.')[0] ?? '',
+      framework: (meta.path as string).replace(/.*\/types\//, '').replace(/\/[^/]*$/, ''),
     })),
 })
 
