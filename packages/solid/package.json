@@ -67,7 +67,7 @@
     "./*": "./src/components/*/index.tsx"
   },
   "scripts": {
-    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" tsup",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=16384 --max-semi-space-size=512\" tsup",
     "dev": "bun run storybook",
     "lint": "biome lint ./src",
     "test": "vitest",
