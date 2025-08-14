@@ -1,5 +1,5 @@
 'use client'
-import { useFormState } from 'react-dom'
+import { useActionState } from 'react'
 import { Stack } from 'styled-system/jsx'
 import { activateLicense } from '~/app/actions'
 import { Button } from '~/components/ui/button'
@@ -14,7 +14,7 @@ interface Props {
 
 export const ActivationForm = (props: Props) => {
   const { licenseKey, authenticated } = props
-  const [state, formAction] = useFormState(activateLicense, { message: '', success: false })
+  const [state, formAction] = useActionState(activateLicense, { message: '', success: false })
 
   return (
     <form action={formAction}>

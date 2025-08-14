@@ -11,10 +11,7 @@ export const findLicenseKeysByOrderId = async (externalId: string): Promise<stri
       Effect.tryPromise({
         try: () =>
           prisma.order.findUniqueOrThrow({
-            where: {
-              externalId,
-              createdAt: { gt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2) },
-            },
+            where: { externalId },
             include: { orderItems: { include: { licenseKey: true } } },
           }),
         catch: () => InternalServerError,
