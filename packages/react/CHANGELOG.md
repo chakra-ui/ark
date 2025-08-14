@@ -2,6 +2,8 @@
 
 ### Fixed
 
+- **Listbox**: Add support for navigating grid collections
+
 - **Carousel**:
   - Fix an issue where the carousel would not update when `slideCount` or `autoplay` props change.
   - Fix an issue where `loop: false` was ignored when using autoplay. Now, the carousel will stop when it gets to the
@@ -15,6 +17,10 @@
 - **Radio Group**: Fixed issue where arrow key navigation doesn't apply `data-focus-visible` on the newly focused item.
 
 - **TagsInput**: Export `InputValueChangeDetails` type
+
+### Changed
+
+- **Async List**: Improve type inference for descriptors
 
 ## [5.18.3] - 2025-08-01
 

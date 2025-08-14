@@ -2,6 +2,8 @@
 
 ### Fixed
 
+- **Listbox**: Add support for navigating grid collections
+
 - **Carousel**:
   - Fix an issue where the carousel would not update when `slideCount` or `autoplay` props change.
   - Fix an issue where `loop: false` was ignored when using autoplay. Now, the carousel will stop when it gets to the
@@ -17,6 +19,12 @@
 - **TagsInput**: Export `InputValueChangeDetails` type
 - **Field**: Fix issue where `asChild` prop is not being applied to the input and select components, leading to
   hydration mismatch.
+
+### Changed
+
+- **Async List**: Improve type inference for descriptors
+
+- **Framework Components**: Improve runtime performance of components
 
 ## [5.18.3] - 2025-08-01
 
