@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.18.4] - 2025-08-14
+
 ### Fixed
 
 - **Listbox**: Add support for navigating grid collections
