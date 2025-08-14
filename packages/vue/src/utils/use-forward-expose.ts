@@ -3,12 +3,12 @@
 import { type ComponentPublicInstance, computed, getCurrentInstance, ref } from 'vue'
 import { unrefElement } from './unref-element'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const isElement = (el: any): el is Element =>
+  // biome-ignore lint/suspicious/noPrototypeBuiltins: <explanation>
   Object.prototype.hasOwnProperty.call(el, 'nodeName') && typeof el.nodeName === 'string'
 
 export function useForwardExpose() {
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  // biome-ignore lint/style/noNonNullAssertion: intentional
   const instance = getCurrentInstance()!
 
   const currentRef = ref<Element | ComponentPublicInstance | null>()
@@ -24,9 +24,9 @@ export function useForwardExpose() {
   })
 
   // localExpose should only be assigned once else will create infinite loop
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
   const localExpose: Record<string, any> | null = Object.assign({}, instance.exposed)
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
   const ret: Record<string, any> = {}
 
   // retrieve props for current instance
@@ -44,7 +44,7 @@ export function useForwardExpose() {
       Object.defineProperty(ret, key, {
         enumerable: true,
         configurable: true,
-        // biome-ignore lint/style/noNonNullAssertion: <explanation>
+        // biome-ignore lint/style/noNonNullAssertion: intentional
         get: () => localExpose![key],
       })
     }

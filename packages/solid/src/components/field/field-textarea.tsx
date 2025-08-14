@@ -31,6 +31,5 @@ export const FieldTextarea = (props: FieldTextareaProps) => {
     onCleanup(() => cleanup?.())
   })
 
-  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
   return <ark.textarea {...mergedProps} ref={composeRefs((el) => (textareaRef = el), props.ref)} />
 }

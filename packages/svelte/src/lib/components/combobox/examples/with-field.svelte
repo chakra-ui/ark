@@ -1,5 +1,5 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: <explanation>
+  // biome-ignore lint/style/useImportType: intentional
   import { Combobox, useListCollection } from '@ark-ui/svelte/combobox'
   import { Field } from '@ark-ui/svelte/field'
   import { useFilter } from '@ark-ui/svelte/locale'

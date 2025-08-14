@@ -11,7 +11,7 @@ export const FrameContent = (props: FrameContentProps) => {
   const mountedRef = useRef(false)
   const calledRef = useRef(false)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
     if (!mountedRef.current && !calledRef.current) {
       onMount?.()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// biome-ignore lint/style/useImportType: <explanation>
+// biome-ignore lint/style/useImportType: intentional
 import { Combobox, type UseComboboxProps, useCombobox, useListCollection } from '@ark-ui/vue/combobox'
 import { computed, ref, watch, watchEffect } from 'vue'
 import { useAsync } from './use-async'

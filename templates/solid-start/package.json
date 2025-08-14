@@ -13,8 +13,8 @@
     "@solidjs/meta": "0.29.4",
     "@solidjs/router": "0.15.3",
     "@solidjs/start": "1.1.7",
-    "solid-js": "1.9.7",
+    "solid-js": "1.9.9",
     "vinxi": "0.5.8",
-    "lucide-solid": "0.525.0"
+    "lucide-solid": "0.539.0"
   }
 }

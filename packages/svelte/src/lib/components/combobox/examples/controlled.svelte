@@ -1,7 +1,7 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: <explanation>
-  import { Combobox } from '@ark-ui/svelte/combobox'
   import { useListCollection } from '@ark-ui/svelte/collection'
+  // biome-ignore lint/style/useImportType: intentional
+  import { Combobox } from '@ark-ui/svelte/combobox'
   import { useFilter } from '@ark-ui/svelte/locale'
   import { Portal } from '@ark-ui/svelte/portal'
 

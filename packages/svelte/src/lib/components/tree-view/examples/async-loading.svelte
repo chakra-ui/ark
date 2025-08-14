@@ -1,5 +1,5 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: <explanation>
+  // biome-ignore lint/style/useImportType: intentional
   import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
   import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon, Loader2Icon } from 'lucide-svelte'
 

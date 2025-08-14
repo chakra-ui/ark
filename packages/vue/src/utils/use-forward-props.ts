@@ -1,10 +1,9 @@
 import { type MaybeRefOrGetter, type UnwrapRef, camelize, computed, getCurrentInstance, toRef } from 'vue'
 
 interface PropOptions {
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   type?: any
   required?: boolean
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
   default?: any
 }
 
@@ -12,11 +11,7 @@ interface PropOptions {
  * Attribution: Radix Vue Team
  * Retrieved from: https://www.radix-vue.com/utilities/use-forward-props.html
  */
-export function useForwardProps<
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  T extends MaybeRefOrGetter<Record<string, any>>,
-  U extends UnwrapRef<T>,
->(props: T) {
+export function useForwardProps<T extends MaybeRefOrGetter<Record<string, any>>, U extends UnwrapRef<T>>(props: T) {
   const vm = getCurrentInstance()
   // Default value for declared props
   const defaultProps = Object.keys(vm?.type.props ?? {}).reduce((prev, curr) => {
@@ -30,7 +25,6 @@ export function useForwardProps<
     const preservedProps = {} as U
     const assignedProps = vm?.vnode.props ?? {}
 
-    // biome-ignore lint/complexity/noForEach: <explanation>
     Object.keys(assignedProps).forEach((key) => {
       preservedProps[camelize(key) as keyof U] = assignedProps[key]
     })

@@ -1,5 +1,5 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: <explanation>
+  // biome-ignore lint/style/useImportType: intentional
   import { Field } from '@ark-ui/svelte/field'
   import { Switch } from '@ark-ui/svelte/switch'
 

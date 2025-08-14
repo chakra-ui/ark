@@ -1,7 +1,11 @@
 {
-  "extends": ["../../biome.json"],
+  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": "//",
   "linter": {
     "rules": {
+      "suspicious": {
+        "noAssignInExpressions": "off"
+      },
       "correctness": {
         "useJsxKeyInIterable": "off"
       }

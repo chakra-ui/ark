@@ -47,7 +47,7 @@ export function useListSelection<T extends CollectionItem>(props: UseListSelecti
 
   const [selection, setSelectionState] = useState(() => createSelection(initialSelectedValues))
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
     if (resetOnCollectionChange) {
       setSelectionState(createSelection())

@@ -91,7 +91,7 @@ export const Frame = (props: FrameProps) => {
           )}
         </Show>
         <Show when={mountNode()}>
-          {/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
+          {/* biome-ignore lint/style/noNonNullAssertion: intentional */}
           <Portal mount={frameRef()!.contentDocument!.head}>{frameProps.head}</Portal>
         </Show>
       </iframe>

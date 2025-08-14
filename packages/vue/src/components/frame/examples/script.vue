@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// biome-ignore lint/style/useImportType: <explanation>
+// biome-ignore lint/style/useImportType: intentional
 import { Frame } from '@ark-ui/vue/frame'
 import { ref } from 'vue'
 

@@ -32,7 +32,7 @@ export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) =
   const mergedProps = mergeProps(menu.getItemProps(itemProps), localProps)
   const itemState = menu.getItemState(itemProps)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
     return menu.addItemListener({ id: itemState.id, onSelect: itemProps.onSelect })
   }, [itemState.id, itemProps.onSelect])

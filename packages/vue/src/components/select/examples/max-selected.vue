@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// biome-ignore lint/style/useImportType: <explanation>
+// biome-ignore lint/style/useImportType: intentional
 import { Select, createListCollection } from '@ark-ui/vue/select'
 import { ChevronDownIcon } from 'lucide-vue-next'
 import { computed, ref } from 'vue'

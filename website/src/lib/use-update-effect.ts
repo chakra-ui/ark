@@ -6,7 +6,6 @@ export const useUpdateEffect: typeof useEffect = (effect, deps) => {
   const renderCycleRef = useRef(false)
   const effectCycleRef = useRef(false)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const isMounted = renderCycleRef.current
     const shouldRun = isMounted && effectCycleRef.current
@@ -14,6 +13,7 @@ export const useUpdateEffect: typeof useEffect = (effect, deps) => {
       return effect()
     }
     effectCycleRef.current = true
+    // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   }, deps)
 
   useEffect(() => {
