@@ -46,12 +46,14 @@ export const ContactDialog = (props: Props) => {
   }
 
   useUpdateEffect(() => {
-    if (state.success) {
-      setOpen(false)
-      toaster.create({ title: state.message })
-    } else {
-      toaster.error({ title: state.message })
-    }
+    queueMicrotask(() => {
+      if (state.success) {
+        setOpen(false)
+        toaster.create({ title: state.message })
+      } else {
+        toaster.error({ title: state.message })
+      }
+    })
   }, [state])
 
   return (
