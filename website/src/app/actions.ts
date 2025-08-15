@@ -133,7 +133,7 @@ const createSupportTicket = (formData: FormData) =>
     catch: () => InternalServerError,
   })
 
-const _sendSlackMessage = (formData: FormData) =>
+const sendSlackMessage = (formData: FormData) =>
   Effect.tryPromise({
     try: () =>
       fetch(process.env.SLACK_WEBHOOK_URL, {
@@ -153,7 +153,7 @@ const _sendSlackMessage = (formData: FormData) =>
 export const contact = async (_prevState: unknown, formData: FormData): Promise<FormState> => {
   return Effect.runPromise(
     pipe(
-      createSupportTicket(formData),
+      Effect.all([createSupportTicket(formData), sendSlackMessage(formData)]),
       Effect.map(() => ({ success: true, message: 'Your message has been sent successfully.' })),
       Effect.catchAll(() =>
         Effect.succeed({
