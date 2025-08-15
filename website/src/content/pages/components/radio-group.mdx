@@ -14,15 +14,6 @@ To set up the radio group correctly, you'll need to understand its anatomy and h
 
 <Anatomy id="radio-group" />
 
-### Design impact on the asChild property
-
-The `RadioGroup.Item` element of the radio group is a `label` element. This is because the radio group is a form control
-and should be associated with a label to provide context and meaning to the user. Otherwise, the HTML and accessibility
-structure will be invalid.
-
-> If you need to use the `asChild` property, make sure that the `label` element is the direct child of the
-> `RadioGroup.Item` component.
-
 ## Examples
 
 Learn how to use the `RadioGroup` component in your project. Let's take a look at the most basic example:
@@ -56,6 +47,64 @@ You can leverage it to access the component state and methods from outside the r
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+## Guides
+
+### Using `asChild`
+
+The `RadioGroup.Item` component renders as a `label` element by default. This ensures proper form semantics and
+accessibility, as radio groups are form controls that require labels to provide meaningful context for users.
+
+When using the `asChild` prop, you must **render a `label` element** as the direct child of `RadioGroup.Item` to
+maintain valid HTML structure and accessibility compliance.
+
+```tsx
+// INCORRECT usage ❌
+<RadioGroup.Item asChild>
+  <div>
+    <RadioGroup.ItemHiddenInput />
+    <RadioGroup.ItemText>
+      <RadioGroup.ItemControl />
+    </RadioGroup.ItemText>
+  </div>
+</RadioGroup.Item>
+
+// CORRECT usage ✅
+<RadioGroup.Item asChild>
+  <label>
+    <RadioGroup.ItemHiddenInput />
+    <RadioGroup.ItemText>
+      <RadioGroup.ItemControl />
+    </RadioGroup.ItemText>
+  </label>
+</RadioGroup.Item>
+```
+
+### Why `ItemHiddenInput` is required
+
+The `RadioGroup.ItemHiddenInput` component renders a hidden HTML input element that enables proper form submission and
+integration with native form behaviors. This component is essential for the radio group to function correctly as it:
+
+- Provides the underlying input element that browsers use for form submission
+- Enables integration with form libraries and validation systems
+- Ensures the radio group works with native form reset functionality
+
+```tsx
+// INCORRECT usage ❌
+<RadioGroup.Item>
+  <RadioGroup.ItemText>
+    <RadioGroup.ItemControl />
+  </RadioGroup.ItemText>
+</RadioGroup.Item>
+
+// CORRECT usage ✅
+<RadioGroup.Item>
+  <RadioGroup.ItemHiddenInput />
+  <RadioGroup.ItemText>
+    <RadioGroup.ItemControl />
+  </RadioGroup.ItemText>
+</RadioGroup.Item>
+```
 
 ## API Reference
 
