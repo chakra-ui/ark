@@ -47,11 +47,43 @@ To add an action to a toast, use the `toast.action` property.
 
 <Example id="action" />
 
-## Styling guide
+## Guides
+
+### Creating Toast in Effects
+
+When creating a toast inside React effects (like `useEffect`, `useLayoutEffect`, or event handlers that trigger during
+render), you may encounter a "flushSync" warning. To avoid this, wrap the toast call in `queueMicrotask`:
+
+```tsx
+import { useEffect } from 'react'
+
+export const EffectToast = () => {
+  useEffect(() => {
+    // ❌ This may cause flushSync warnings
+    // toaster.create({ title: 'Effect triggered!' })
+
+    // ✅ Wrap in queueMicrotask to avoid warnings
+    queueMicrotask(() => {
+      toaster.create({
+        title: 'Effect triggered!',
+        description: 'This toast was called safely from an effect',
+        type: 'success',
+      })
+    })
+  }, [])
+
+  return <div>Component content</div>
+}
+```
+
+This ensures the toast creation is deferred until after the current execution context, preventing React's concurrent
+rendering warnings.
+
+### Styling the toast
 
 There's a minimal styling required for the toast to work correctly.
 
-### Toast root
+#### Toast root
 
 The toast root will be assigned these css properties at runtime:
 
@@ -89,7 +121,7 @@ The toast root will be assigned these css properties at runtime:
 }
 ```
 
-### Styling based on type
+#### Styling based on type
 
 You can also style based on the `data-type` attribute.
 
@@ -116,7 +148,7 @@ You can also style based on the `data-type` attribute.
 }
 ```
 
-### Mobile considerations
+#### Mobile considerations
 
 A very common use case is to adjust the toast width on mobile so it spans the full width of the screen.
 
