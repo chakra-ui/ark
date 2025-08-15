@@ -60,6 +60,7 @@
   ],
   "exports": {
     ".": "./src/index.tsx",
+    "./utils": "./src/utils/index.ts",
     "./anatomy": "./src/components/anatomy.ts",
     "./environment": "./src/providers/environment/index.tsx",
     "./factory": "./src/components/factory.tsx",

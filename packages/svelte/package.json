@@ -69,6 +69,10 @@
       "types": "./src/lib/index.ts",
       "svelte": "./src/lib/index.ts"
     },
+    "./utils": {
+      "types": "./src/lib/utils/index.ts",
+      "svelte": "./src/lib/utils/index.ts"
+    },
     "./anatomy": {
       "types": "./src/lib/components/anatomy.ts",
       "svelte": "./src/lib/components/anatomy.ts"
