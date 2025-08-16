@@ -2,7 +2,7 @@
 
 ### Fixed
 
-**ClientOnly**: Fixed issue where `ClientOnly` component was not exported correctly in the Solid package.
+**ClientOnly**: Fixed issue where `ClientOnly` component was not exported correctly.
 
 ## [5.18.4] - 2025-08-14
 
