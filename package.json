@@ -41,9 +41,9 @@
     "release-it": "19.0.4",
     "prettier": "3.6.2",
     "prettier-plugin-svelte": "3.4.0",
-    "turbo": "2.5.5",
+    "turbo": "2.5.6",
     "typescript": "5.9.2",
-    "vercel": "45.0.9"
+    "vercel": "46.0.1"
   },
   "packageManager": "bun@1.2.20",
   "trustedDependencies": [
