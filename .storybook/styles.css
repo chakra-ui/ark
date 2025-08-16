@@ -25,6 +25,7 @@
 @import url('./styles/qr-code.css');
 @import url('./styles/radio-group.css');
 @import url('./styles/segment-group.css');
+@import url('./styles/scroll-area.css');
 @import url('./styles/select.css');
 @import url('./styles/signature-pad.css');
 @import url('./styles/slider.css');
@@ -47,7 +48,10 @@ body {
   min-height: 100dvh;
 }
 
-* {
+*,
+*::before,
+*::after {
+  margin: 0;
   box-sizing: border-box;
   font-family:
     -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
