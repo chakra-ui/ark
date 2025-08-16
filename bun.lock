@@ -65,6 +65,7 @@
         "@zag-js/radio-group": "1.21.3",
         "@zag-js/rating-group": "1.21.3",
         "@zag-js/react": "1.21.3",
+        "@zag-js/scroll-area": "1.21.3",
         "@zag-js/select": "1.21.3",
         "@zag-js/signature-pad": "1.21.3",
         "@zag-js/slider": "1.21.3",
@@ -165,6 +166,7 @@
         "@zag-js/qr-code": "1.21.3",
         "@zag-js/radio-group": "1.21.3",
         "@zag-js/rating-group": "1.21.3",
+        "@zag-js/scroll-area": "1.21.3",
         "@zag-js/select": "1.21.3",
         "@zag-js/signature-pad": "1.21.3",
         "@zag-js/slider": "1.21.3",
@@ -262,6 +264,7 @@
         "@zag-js/qr-code": "1.21.3",
         "@zag-js/radio-group": "1.21.3",
         "@zag-js/rating-group": "1.21.3",
+        "@zag-js/scroll-area": "1.21.3",
         "@zag-js/select": "1.21.3",
         "@zag-js/signature-pad": "1.21.3",
         "@zag-js/slider": "1.21.3",
@@ -353,6 +356,7 @@
         "@zag-js/qr-code": "1.21.3",
         "@zag-js/radio-group": "1.21.3",
         "@zag-js/rating-group": "1.21.3",
+        "@zag-js/scroll-area": "1.21.3",
         "@zag-js/select": "1.21.3",
         "@zag-js/signature-pad": "1.21.3",
         "@zag-js/slider": "1.21.3",
@@ -1756,6 +1760,8 @@
     "@zag-js/rect-utils": ["@zag-js/rect-utils@1.21.3", "", {}, "sha512-5HF8bu9/ELQ4wEpImPNo0e7j4JzQMLMwBnKuaT/UrqcwA+JeNMRL90w4w+dNZXvV0aD6duh+7n9mDNdMxhQyTg=="],
 
     "@zag-js/remove-scroll": ["@zag-js/remove-scroll@1.21.3", "", { "dependencies": { "@zag-js/dom-query": "1.21.3" } }, "sha512-7MqOGEcVUTOj5OhQQ6BVu2i4FxNPfg6h3DeHdVv66hSD3Kn+/xTSnqVL4AG5GsAUt4fHVrwUJlmiRCZ9QP//pg=="],
+
+    "@zag-js/scroll-area": ["@zag-js/scroll-area@1.21.3", "", { "dependencies": { "@zag-js/anatomy": "1.21.3", "@zag-js/core": "1.21.3", "@zag-js/dom-query": "1.21.3", "@zag-js/types": "1.21.3", "@zag-js/utils": "1.21.3" } }, "sha512-tbQvh6X7KNRW877dP4Eds3Tk4hv0kSbB10SKZaq8E+IdYsDTKd2P/fmWwDp97Xlab1bja8x9Dptzm2g4JncPFw=="],
 
     "@zag-js/scroll-snap": ["@zag-js/scroll-snap@1.21.3", "", { "dependencies": { "@zag-js/dom-query": "1.21.3" } }, "sha512-cYm9y4zSbFN1LiQjnzIFIMGPBUhwu6jRt5WL2wSSBVD6MfKQma+BQ1/NvMj0cD2wEnezpe+2cpN2Oqsu8nfZLw=="],
 
