@@ -2,9 +2,9 @@
   import { ScrollArea } from '@ark-ui/svelte/scroll-area'
 </script>
 
-<ScrollArea.Root>
-  <ScrollArea.Viewport>
-    <ScrollArea.Content>
+<ScrollArea.Root style="height: 8.5rem;">
+  <ScrollArea.Viewport style="height: 100%;">
+    <ScrollArea.Content style="padding: 1rem 1rem 1.5rem;">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

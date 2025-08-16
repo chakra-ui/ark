@@ -2,10 +2,10 @@
   import { ScrollArea } from '@ark-ui/svelte/scroll-area'
 </script>
 
-<ScrollArea.Root>
-  <ScrollArea.Viewport>
-    <ScrollArea.Content>
-      <div>
+<ScrollArea.Root style="height: 300px; width: 300px;">
+  <ScrollArea.Viewport style="width: 100%; height: 100%;">
+    <ScrollArea.Content style="padding: 1rem;">
+      <div style="width: 50vw;">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

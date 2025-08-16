@@ -10,9 +10,9 @@ const scrollArea = useScrollArea()
     <button @click="scrollArea.scrollToEdge({ edge: 'bottom' })">Scroll to Bottom</button>
   </div>
 
-  <ScrollArea.RootProvider :value="scrollArea">
-    <ScrollArea.Viewport>
-      <ScrollArea.Content>
+  <ScrollArea.RootProvider :value="scrollArea" :style="{ height: '8.5rem' }">
+    <ScrollArea.Viewport :style="{ height: '100%' }">
+      <ScrollArea.Content :style="{ padding: '1rem 1rem 1.5rem' }">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
