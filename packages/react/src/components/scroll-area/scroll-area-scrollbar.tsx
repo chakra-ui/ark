@@ -4,6 +4,7 @@ import { forwardRef } from 'react'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useScrollAreaContext } from './use-scroll-area-context'
+import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context'
 
 interface ScrollbarProps {
   orientation?: Orientation
@@ -17,7 +18,11 @@ export const ScrollAreaScrollbar = forwardRef<HTMLDivElement, ScrollAreaScrollba
   const scrollAreaApi = useScrollAreaContext()
   const mergedProps = mergeProps(scrollAreaApi.getScrollbarProps(scrollbarProps), localProps)
 
-  return <ark.div {...mergedProps} ref={ref} />
+  return (
+    <ScrollAreaScrollbarProvider value={scrollbarProps}>
+      <ark.div {...mergedProps} ref={ref} />
+    </ScrollAreaScrollbarProvider>
+  )
 })
 
 ScrollAreaScrollbar.displayName = 'ScrollAreaScrollbar'

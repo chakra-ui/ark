@@ -13,7 +13,6 @@ export {
 export {
   default as Root,
   type ScrollAreaRootBaseProps as RootBaseProps,
-  type ScrollAreaRootEmits as RootEmits,
   type ScrollAreaRootProps as RootProps,
 } from './scroll-area-root.vue'
 export {

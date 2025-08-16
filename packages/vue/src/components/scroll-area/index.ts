@@ -19,7 +19,6 @@ export {
 export {
   default as ScrollAreaRoot,
   type ScrollAreaRootBaseProps,
-  type ScrollAreaRootEmits,
   type ScrollAreaRootProps,
 } from './scroll-area-root.vue'
 export {

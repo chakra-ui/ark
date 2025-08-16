@@ -1,6 +1,6 @@
 <script lang="ts">
-import type { HTMLAttributes } from 'vue'
 import type { Orientation } from '@zag-js/types'
+import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
 interface ScrollbarProps {
@@ -17,12 +17,16 @@ export interface ScrollAreaScrollbarProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useScrollAreaContext } from './use-scroll-area-context'
+import { ScrollAreaScrollbarPropsProvider } from './use-scroll-area-scrollbar-props-context'
 
 const props = defineProps<ScrollAreaScrollbarBaseProps>()
 const scrollArea = useScrollAreaContext()
+
+ScrollAreaScrollbarPropsProvider(computed(() => props))
 
 useForwardExpose()
 </script>

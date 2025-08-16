@@ -15,15 +15,16 @@
   import { createSplitProps } from '$lib/utils/create-split-props.js'
   import { Ark } from '../factory/index.js'
   import { useScrollAreaContext } from './use-scroll-area-context.js'
+  import { ScrollAreaScrollbarProvider } from './use-scroll-area-scrollbar-context.js'
 
   let { ref = $bindable(null), ...props }: ScrollAreaScrollbarProps = $props()
 
-  const [scrollbarProps, localProps] = $derived(
-    createSplitProps<ScrollbarProps>()(props, ['orientation'])
-  )
+  const [scrollbarProps, localProps] = $derived(createSplitProps<ScrollbarProps>()(props, ['orientation']))
 
   const scrollAreaApi = useScrollAreaContext()
   const mergedProps = $derived(mergeProps(scrollAreaApi().getScrollbarProps(scrollbarProps), localProps))
+
+  ScrollAreaScrollbarProvider(() => scrollbarProps)
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />
