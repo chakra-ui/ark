@@ -12,7 +12,6 @@
 }
 
 [data-scope='listbox'][data-part='content'] {
-  padding: 0px;
   list-style: none;
   width: 400px;
   margin: 0;
@@ -48,7 +47,6 @@
     justify-content: center;
     min-height: 40px;
     border: 1px solid #ccc;
-    padding: 8px;
 
     > * {
       flex: 0 0 auto;
