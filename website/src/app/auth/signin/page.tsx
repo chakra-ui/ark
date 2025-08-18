@@ -3,16 +3,17 @@ import { Box, Center, Container, Divider, HStack, Stack } from 'styled-system/js
 import { EmailSignInForm } from '~/components/auth/email-signin-form'
 import { GitHubSignInButton } from '~/components/auth/github-signin-button'
 import { GoogleSignInButton } from '~/components/auth/google-signin-button'
+import { OTPForm } from '~/components/auth/otp-form'
 import { Logo } from '~/components/logo'
 import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
 
 interface Props {
-  searchParams: Promise<{ callbackUrl?: string }>
+  searchParams: Promise<{ callbackUrl?: string; email?: string }>
 }
 
 export default async function Page(props: Props) {
-  const { callbackUrl } = await props.searchParams
+  const { callbackUrl, email } = await props.searchParams
   const redirectTo = callbackUrl ?? '/'
 
   return (
@@ -33,7 +34,7 @@ export default async function Page(props: Props) {
         </Card.Header>
         <Card.Body>
           <Stack gap="6">
-            <EmailSignInForm redirectTo={redirectTo} />
+            {email ? <OTPForm email={email} redirectTo="/examples" /> : <EmailSignInForm redirectTo={redirectTo} />}
             <HStack>
               <Divider />
               <Text textStyle="sm" color="fg.muted">
