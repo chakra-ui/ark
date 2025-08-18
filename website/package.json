@@ -31,7 +31,7 @@
     "@zag-js/anatomy-icons": "1.21.6",
     "@zag-js/docs": "1.21.6",
     "effect": "3.17.7",
-    "lucide-react": "0.539.0",
+    "lucide-react": "0.540.0",
     "match-sorter": "8.1.0",
     "next": "15.4.6",
     "next-auth": "5.0.0-beta.29",

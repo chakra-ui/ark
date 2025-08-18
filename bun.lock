@@ -102,7 +102,7 @@
         "globby": "14.1.0",
         "happy-dom": "18.0.1",
         "image-conversion": "2.1.1",
-        "lucide-react": "0.539.0",
+        "lucide-react": "0.540.0",
         "react": "19.1.1",
         "react-dom": "19.1.1",
         "react-frame-component": "5.2.7",
@@ -204,7 +204,7 @@
         "globby": "14.1.0",
         "image-conversion": "2.1.1",
         "jsdom": "26.1.0",
-        "lucide-solid": "0.539.0",
+        "lucide-solid": "0.540.0",
         "resize-observer-polyfill": "1.5.1",
         "solid-js": "1.9.9",
         "storybook": "9.1.2",
@@ -299,9 +299,9 @@
         "@vitest/coverage-v8": "3.2.4",
         "clean-package": "2.2.0",
         "image-conversion": "2.1.1",
-        "lucide-svelte": "0.539.0",
+        "lucide-svelte": "0.540.0",
         "storybook": "9.1.2",
-        "svelte": "5.38.1",
+        "svelte": "5.38.2",
         "svelte-check": "4.3.1",
         "tslib": "2.8.1",
         "typescript": "5.9.2",
@@ -394,7 +394,7 @@
         "histoire": "0.17.17",
         "image-conversion": "2.1.1",
         "jsdom": "26.1.0",
-        "lucide-vue-next": "0.539.0",
+        "lucide-vue-next": "0.540.0",
         "resize-observer-polyfill": "1.5.1",
         "typescript": "5.9.2",
         "vite": "7.1.2",
@@ -429,7 +429,7 @@
       "name": "@ark-ui/next-js",
       "dependencies": {
         "@ark-ui/react": "workspace:*",
-        "lucide-react": "0.539.0",
+        "lucide-react": "0.540.0",
         "next": "15.4.6",
         "react": "19.1.1",
         "react-dom": "19.1.1",
@@ -445,7 +445,7 @@
       "name": "@ark-ui/nuxt",
       "dependencies": {
         "@ark-ui/vue": "workspace:*",
-        "lucide-vue-next": "0.539.0",
+        "lucide-vue-next": "0.540.0",
         "nuxt": "4.0.3",
         "vue": "3.5.18",
         "vue-router": "4.5.1",
@@ -458,7 +458,7 @@
         "@solidjs/meta": "0.29.4",
         "@solidjs/router": "0.15.3",
         "@solidjs/start": "1.1.7",
-        "lucide-solid": "0.539.0",
+        "lucide-solid": "0.540.0",
         "solid-js": "1.9.9",
         "vinxi": "0.5.8",
       },
@@ -473,8 +473,8 @@
         "@sveltejs/adapter-auto": "^6.1.0",
         "@sveltejs/kit": "^2.31.1",
         "@sveltejs/vite-plugin-svelte": "^6.1.2",
-        "lucide-svelte": "0.539.0",
-        "svelte": "^5.38.1",
+        "lucide-svelte": "0.540.0",
+        "svelte": "^5.38.2",
         "svelte-check": "^4.3.1",
         "typescript": "^5.9.2",
         "vite": "^7.1.2",
@@ -501,7 +501,7 @@
         "@zag-js/anatomy-icons": "1.21.6",
         "@zag-js/docs": "1.21.6",
         "effect": "3.17.7",
-        "lucide-react": "0.539.0",
+        "lucide-react": "0.540.0",
         "match-sorter": "8.1.0",
         "next": "15.4.6",
         "next-auth": "5.0.0-beta.29",
@@ -2925,13 +2925,13 @@
 
     "lru-cache": ["lru-cache@7.18.3", "", {}, "sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA=="],
 
-    "lucide-react": ["lucide-react@0.539.0", "", { "peerDependencies": { "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-VVISr+VF2krO91FeuCrm1rSOLACQUYVy7NQkzrOty52Y8TlTPcXcMdQFj9bYzBgXbWCiywlwSZ3Z8u6a+6bMlg=="],
+    "lucide-react": ["lucide-react@0.540.0", "", { "peerDependencies": { "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-armkCAqQvO62EIX4Hq7hqX/q11WSZu0Jd23cnnqx0/49yIxGXyL/zyZfBxNN9YDx0ensPTb4L+DjTh3yQXUxtQ=="],
 
-    "lucide-solid": ["lucide-solid@0.539.0", "", { "peerDependencies": { "solid-js": "^1.4.7" } }, "sha512-fdvf68Qb2ggi4szaVSCJI11MkJw4pqOf8tmVcAEKpUvW9CQ1mZnq8FjAeWkI2mxhbqP8jNCfJq9ybeRxerlTWg=="],
+    "lucide-solid": ["lucide-solid@0.540.0", "", { "peerDependencies": { "solid-js": "^1.4.7" } }, "sha512-qYvgbEQpYRJo5gIUKsT87lR5BG6ZziVOa0AUspSVwITP7LzsPHzGszaBS540TjETjYldUeEFWr/sQSNcs4kHTA=="],
 
-    "lucide-svelte": ["lucide-svelte@0.539.0", "", { "peerDependencies": { "svelte": "^3 || ^4 || ^5.0.0-next.42" } }, "sha512-p4k3GOje/9Si1eIkg1W1OQUhozeja5Ka5shjVpfyP5X2ye+B7sfyMnX3d5D2et+MYJwUFGrMna5MIYgq6bLfqw=="],
+    "lucide-svelte": ["lucide-svelte@0.540.0", "", { "peerDependencies": { "svelte": "^3 || ^4 || ^5.0.0-next.42" } }, "sha512-jedJgKrrsT1B6mAMHGMmk6dIZKhorLq4KO7v+j7hYfeGR0LRe3W+SvwpWF1E6WT2/AY9IAm8KT/G+Nzf+0lW3g=="],
 
-    "lucide-vue-next": ["lucide-vue-next@0.539.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-8Y75ekxsBqW+9YZPCbxE6KXoCbNmJYUujKP+nK2cIqmONJXvUSeyroEW4DV1Kjlw8ZvmfKwP0FpdjPzuKvRsQw=="],
+    "lucide-vue-next": ["lucide-vue-next@0.540.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-H7qhKVNKLyoFMo05pWcGSWBiLPiI3zJmWV65SuXWHlrIGIcvDer10xAyWcRJ0KLzIH5k5+yi7AGw/Xi1VF8Pbw=="],
 
     "luxon": ["luxon@3.7.1", "", {}, "sha512-RkRWjA926cTvz5rAb1BqyWkKbbjzCGchDUIKMCUvNi17j6f6j8uHGDV82Aqcqtzd+icoYpELmG3ksgGiFNNcNg=="],
 
@@ -3779,7 +3779,7 @@
 
     "supports-preserve-symlinks-flag": ["supports-preserve-symlinks-flag@1.0.0", "", {}, "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="],
 
-    "svelte": ["svelte@5.38.1", "", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "@jridgewell/sourcemap-codec": "^1.5.0", "@sveltejs/acorn-typescript": "^1.0.5", "@types/estree": "^1.0.5", "acorn": "^8.12.1", "aria-query": "^5.3.1", "axobject-query": "^4.1.0", "clsx": "^2.1.1", "esm-env": "^1.2.1", "esrap": "^2.1.0", "is-reference": "^3.0.3", "locate-character": "^3.0.0", "magic-string": "^0.30.11", "zimmerframe": "^1.1.2" } }, "sha512-fO6CLDfJYWHgfo6lQwkQU2vhCiHc2MBl6s3vEhK+sSZru17YL4R5s1v14ndRpqKAIkq8nCz6MTk1yZbESZWeyQ=="],
+    "svelte": ["svelte@5.38.2", "", { "dependencies": { "@jridgewell/remapping": "^2.3.4", "@jridgewell/sourcemap-codec": "^1.5.0", "@sveltejs/acorn-typescript": "^1.0.5", "@types/estree": "^1.0.5", "acorn": "^8.12.1", "aria-query": "^5.3.1", "axobject-query": "^4.1.0", "clsx": "^2.1.1", "esm-env": "^1.2.1", "esrap": "^2.1.0", "is-reference": "^3.0.3", "locate-character": "^3.0.0", "magic-string": "^0.30.11", "zimmerframe": "^1.1.2" } }, "sha512-iAcp/oFAWauVSGILdD67n7DiwgLHXZzWZIdzl7araRxu72jUr7PFAo2Iie7gXt0IbnlYvhxCb9GT3ZJUquO3PA=="],
 
     "svelte-check": ["svelte-check@4.3.1", "", { "dependencies": { "@jridgewell/trace-mapping": "^0.3.25", "chokidar": "^4.0.1", "fdir": "^6.2.0", "picocolors": "^1.0.0", "sade": "^1.7.4" }, "peerDependencies": { "svelte": "^4.0.0 || ^5.0.0-next.0", "typescript": ">=5.0.0" }, "bin": { "svelte-check": "bin/svelte-check" } }, "sha512-lkh8gff5gpHLjxIV+IaApMxQhTGnir2pNUAqcNgeKkvK5bT/30Ey/nzBxNLDlkztCH4dP7PixkMt9SWEKFPBWg=="],
 

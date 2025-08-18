@@ -12,7 +12,7 @@
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "next": "15.4.6",
-    "lucide-react": "0.539.0"
+    "lucide-react": "0.540.0"
   },
   "devDependencies": {
     "@types/node": "24.3.0",
