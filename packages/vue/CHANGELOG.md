@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.19.0] - 2025-08-18
+
 ### Added
 
 - **ScrollArea [NEW]**: Add support for new scroll area component.
