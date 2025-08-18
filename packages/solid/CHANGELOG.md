@@ -1,8 +1,22 @@
 ## [Unreleased]
 
+### Added
+
+- **ScrollArea [NEW]**: Add support for new scroll area component.
+
 ### Fixed
 
-**ClientOnly**: Fixed issue where `ClientOnly` component was not exported correctly.
+- **ListCollection**
+  - Avoid recomputing groups on every call to `at()` and `indexOf()`
+  - Fixed bug in `find()` method (was checking `!= null` instead of `!== -1`)
+
+- **GridCollection**: Avoid recomputing rows on every call to `getRows()`
+
+- **Menu**
+  - Add `data-state` attribute for context menu trigger
+  - Fix context menu positioning bug where reopening at the same coordinates fails to reposition
+
+- **ClientOnly**: Fixed issue where `ClientOnly` component was not exported correctly.
 
 ## [5.18.4] - 2025-08-14
 
