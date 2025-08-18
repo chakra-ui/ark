@@ -27,7 +27,7 @@
   opacity: 0;
   transition: opacity 150ms 300ms;
 
-  &[data-hovering],
+  &[data-hover],
   &[data-scrolling] {
     opacity: 1;
     transition-duration: 75ms;
