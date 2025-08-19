@@ -8,6 +8,20 @@ import { Text } from '~/components/ui/text'
 import { Icon } from '../ui/icon'
 import { ReactIcon, SolidIcon, SvelteIcon, VueIcon } from './icons'
 
+const Announcement = () => {
+  return (
+    <NextLink href="/docs/components/scroll-area">
+      <Badge size="lg" variant="outline">
+        <Icon color="colorPalette.default">
+          <SparklesIcon />
+        </Icon>
+        [New] Scroll Area component
+        <ArrowRightIcon />
+      </Badge>
+    </NextLink>
+  )
+}
+
 export const Hero = () => {
   return (
     <Box
@@ -22,15 +36,7 @@ export const Hero = () => {
         <Stack gap={{ base: '6', md: '8' }} maxW="3xl">
           <Stack gap={{ base: '5', md: '6' }}>
             <Stack gap={{ base: '3', md: '4' }}>
-              <NextLink href="/docs/utilities/json-tree-view">
-                <Badge size="lg" variant="outline">
-                  <Icon color="colorPalette.default">
-                    <SparklesIcon />
-                  </Icon>
-                  [New] JSON Tree View component
-                  <ArrowRightIcon />
-                </Badge>
-              </NextLink>
+              <Announcement />
               <Heading as="h1" fontWeight="bold" textStyle={{ base: '4xl', md: '6xl' }}>
                 Fully <styled.span color="colorPalette.default">customizable</styled.span> and{' '}
                 <styled.span color="colorPalette.default">accessible</styled.span> UI components
