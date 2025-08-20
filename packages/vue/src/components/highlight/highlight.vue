@@ -18,6 +18,7 @@ import { useHighlight } from './use-highlight'
 const props = withDefaults(defineProps<HighlightProps>(), {
   ignoreCase: undefined,
   matchAll: undefined,
+  exactMatch: undefined,
 })
 
 if (typeof props.text !== 'string') {

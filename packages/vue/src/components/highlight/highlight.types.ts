@@ -15,6 +15,10 @@ export interface UseHighlightProps {
    * Whether to match multiple instances of the query
    */
   matchAll?: boolean
+  /**
+   * Whether to match the exact query
+   */
+  exactMatch?: boolean
 }
 
 export interface HighlightChunk {

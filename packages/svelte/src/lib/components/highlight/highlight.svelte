@@ -9,7 +9,7 @@
   const props: HighlightProps = $props()
 
   const [highlightProps, localProps] = $derived(
-    createSplitProps<HighlightBaseProps>()(props, ['query', 'text', 'ignoreCase', 'matchAll']),
+    createSplitProps<HighlightBaseProps>()(props, ['query', 'text', 'ignoreCase', 'matchAll', 'exactMatch']),
   )
 
   if (typeof props.text !== 'string') {

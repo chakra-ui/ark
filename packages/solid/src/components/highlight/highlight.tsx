@@ -18,6 +18,7 @@ export const Highlight = (props: HighlightProps) => {
     'text',
     'ignoreCase',
     'matchAll',
+    'exactMatch',
   ])
 
   const chunks = useHighlight(highlightProps)
