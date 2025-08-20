@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { ExactMatch } from './examples/exact-match'
 export { IgnoreCase } from './examples/ignore-case'
 export { MatchAll } from './examples/match-all'
 export { Multiple } from './examples/multiple'
