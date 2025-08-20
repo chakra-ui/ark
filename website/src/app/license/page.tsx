@@ -1,10 +1,10 @@
+import { pages } from '.velite'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { css } from 'styled-system/css'
 import { Container, Stack } from 'styled-system/jsx'
 import { PageHeader } from '~/components/page-header'
-import { Prose } from '~/components/ui/prose'
 import { MDXContent } from '~/mdx-content'
-import { pages } from '.velite'
 
 export default function Page() {
   const page = getPageById('license')
@@ -16,9 +16,9 @@ export default function Page() {
     <Container py={{ base: '16', md: '24' }} maxW="3xl">
       <Stack gap={{ base: '16', md: '24' }} alignItems="center">
         <PageHeader heading={page.title} subHeading={page.subtitle ?? ''} description={page.description} />
-        <Prose>
+        <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
           <MDXContent code={page.code} />
-        </Prose>
+        </article>
       </Stack>
     </Container>
   )

@@ -1,4 +1,4 @@
-import { codeToHtml } from 'shiki'
+import { getHighlighter } from '~/lib/highlighter'
 import { getFramework } from '~/lib/frameworks'
 import { CodeTabs } from './code-tabs'
 
@@ -20,12 +20,13 @@ export const cmdMap: Record<PackageManger, string> = {
 const getInstallCmds = async () => {
   const framework = await getFramework()
   const pkgmanagers = ['npm', 'pnpm', 'yarn', 'bun'] as const
+  const highlighter = await getHighlighter()
 
   return Promise.all(
     pkgmanagers.map(async (pkgManager) => {
       const packageName = `@ark-ui/${framework}`
       const code = `${cmdMap[pkgManager]} ${packageName}`
-      const html = await codeToHtml(code, {
+      const html = highlighter.codeToHtml(code, {
         lang: 'bash',
         theme: 'github-dark-default',
       })

@@ -13,7 +13,7 @@ export const ExamplesPreview = async () => {
 
   return examples.length > 0 ? (
     <>
-      <Text>You can explore the {component} component in the following curated examples.</Text>
+      <Text mb="4">You can explore the {component} component in the following curated examples.</Text>
       <Grid columns={{ base: 1, sm: 2 }} gap="6" className="not-prose">
         {examples.map((relatedExample) => (
           <NextLink key={relatedExample.id} href={`/examples/${relatedExample.id}`} className={link}>

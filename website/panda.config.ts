@@ -47,7 +47,6 @@ export default defineConfig({
     extend: {
       html: {
         scrollPaddingTop: '6rem',
-        scrollBehavior: 'smooth',
         minHeight: '100%',
       },
       'html, body': {
@@ -65,9 +64,11 @@ export default defineConfig({
         bg: 'gray.3',
       },
       pre: {
-        background: 'transparent!',
         overflowX: 'auto',
         fontSize: '13px !important',
+        fontWeight: '500',
+        bg: 'gray.dark.2!',
+        lineHeight: '1.75!',
       },
       blockquote: {
         fontStyle: 'normal!',
@@ -77,7 +78,7 @@ export default defineConfig({
         color: 'fg.default!',
       },
       code: {
-        fontFamily: 'code',
+        fontFamily: 'code!',
         '::selection': {
           bg: 'gray.dark.a4',
         },

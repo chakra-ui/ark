@@ -1,5 +1,4 @@
 import { Code2Icon, EyeIcon, LockIcon } from 'lucide-react'
-import { cookies } from 'next/headers'
 import NextLink from 'next/link'
 import { Box, Stack } from 'styled-system/jsx'
 import { hasUserPermission } from '~/app/actions'

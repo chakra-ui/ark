@@ -1,4 +1,4 @@
-import { codeToHtml } from 'shiki'
+import { getHighlighter } from '~/lib/highlighter'
 import { Tabs } from '~/components/ui/tabs'
 import { CodePreview } from '../code-preview'
 import * as snippets from './code-snippets'
@@ -11,6 +11,7 @@ const frameworks = {
 }
 
 export const CodeExamples = async () => {
+  const highlighter = await getHighlighter()
   return (
     <Tabs.Root
       defaultValue="react"
@@ -42,7 +43,7 @@ export const CodeExamples = async () => {
         <Tabs.Indicator />
       </Tabs.List>
       {Object.entries(snippets).map(async ([key, code]) => {
-        const html = await codeToHtml(code, frameworks[key as keyof typeof frameworks])
+        const html = highlighter.codeToHtml(code, frameworks[key as keyof typeof frameworks])
         return (
           <Tabs.Content key={key} value={key} pt="0">
             <CodePreview code={code} html={html} />

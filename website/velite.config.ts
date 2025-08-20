@@ -1,3 +1,12 @@
+import rehypeShiki from '@shikijs/rehype'
+import {
+  transformerMetaHighlight,
+  transformerMetaWordHighlight,
+  transformerNotationDiff,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+  transformerNotationWordHighlight,
+} from '@shikijs/transformers'
 import { join } from 'node:path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
@@ -108,6 +117,20 @@ export default defineConfig({
   mdx: {
     rehypePlugins: [
       rehypeSlug,
+      [
+        rehypeShiki,
+        {
+          transformers: [
+            transformerNotationDiff(),
+            transformerNotationFocus(),
+            transformerNotationHighlight(),
+            transformerNotationWordHighlight(),
+            transformerMetaHighlight(),
+            transformerMetaWordHighlight(),
+          ],
+          theme: 'github-dark-default',
+        },
+      ],
       [
         rehypeAutolinkHeadings,
         {

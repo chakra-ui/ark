@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import { css } from 'styled-system/css'
 import { Box, Container, Stack } from 'styled-system/jsx'
 import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
-import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
@@ -29,15 +29,24 @@ export default async function Page(props: Props) {
     return (
       <Container display="flex" py="12" gap="8" justifyContent="center">
         <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
-          <Prose css={{ maxWidth: '45rem', mx: 'auto', width: '100%' }}>
-            <Heading as="h1" fontWeight="bold">
+          <article
+            className={css({
+              lineHeight: '1.75',
+              color: 'var(--colors-prose-body)',
+              maxW: '45rem',
+              mx: 'auto',
+              width: '100%',
+            })}
+          >
+            <Heading as="h1" fontWeight="bold" size="4xl">
               {currentPage.title === 'Introduction' ? 'Welcome to Ark UI' : currentPage.title}
             </Heading>
-            <Text className="lead" color="fg.muted" mb="6">
+            <Text className="lead" color="fg.muted" my="6" size="xl">
               {currentPage.description}
             </Text>
             <MDXContent code={currentPage.code} />
-          </Prose>
+          </article>
+
           <DocsFooter nextPage={nextPage} prevPage={prevPage} />
         </Stack>
         <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
