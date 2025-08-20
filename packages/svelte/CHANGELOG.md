@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.5.0] - 2025-08-20
+
 ### Added
 
 - **Highlight Word**: Add `exactMatch` option that enables whole-word matching using regex word boundaries.
