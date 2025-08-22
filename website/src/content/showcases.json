@@ -7,7 +7,7 @@
   },
   {
     "title": "Park UI",
-    "description": "Build your own Design System",
+    "description": "Build your own Design System with Panda and Ark UI",
     "url": "https://park-ui.com",
     "image": "https://park-ui.com/opengraph-image.png"
   },
@@ -18,16 +18,22 @@
     "image": "https://tarkui.com/open-graph.png"
   },
   {
+    "title": "Pando Design System",
+    "description": "PluralSight's Design System",
+    "url": "https://pando.pluralsight.com/92687036d/p/498dc1-pando-design-system",
+    "image": "/images/pando-design-system.png"
+  },
+  {
+    "title": "OVHCloud Design System",
+    "description": "The design system of OVHCloud",
+    "url": "https://ovh.github.io/design-system/latest",
+    "image": "/images/ovh-design-system.png"
+  },
+  {
     "title": "Typebot",
     "description": "Open-source conversational apps builder",
     "url": "https://typebot.io/",
     "image": "https://typebot.io/images/default-og.png"
-  },
-  {
-    "title": "Inkeep",
-    "description": "ChatGPT for your docs",
-    "url": "https://inkeep.com/",
-    "image": "https://marketing-hh1wdbx9b-inkeep.vercel.app/opengraph-image.png?2ddf48b899c7adb1"
   },
   {
     "title": "RELAND",
