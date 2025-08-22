@@ -88,6 +88,7 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
         disabled,
         'data-disabled': dataAttr(!!disabled),
         'data-invalid': dataAttr(invalid),
+        'aria-labelledby': labelId,
         'aria-describedby': labelIds.join(' '),
       }) as FieldsetHTMLAttributes
 
@@ -95,7 +96,7 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
       id: labelId,
       ...parts.legend.attrs,
       'data-disabled': dataAttr(!!disabled),
-      'data-invalid': dataAttr(!!invalid),
+      'data-invalid': dataAttr(invalid),
     })
 
     const getHelperTextProps = () => ({

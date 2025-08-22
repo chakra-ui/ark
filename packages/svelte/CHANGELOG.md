@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- **Fieldset**: Update Legend component to render as `div` instead of `legend` element for improved styling flexibility
+- **Fieldset**: Add `aria-labelledby` attribute to fieldset root for better accessibility by linking to legend
+
 ## [5.5.0] - 2025-08-20
 
 ### Added

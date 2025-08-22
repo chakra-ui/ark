@@ -34,6 +34,7 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
   const id = props.id ?? uid
   const rootRef = useRef<HTMLFieldSetElement>(null)
 
+  const legendId = `fieldset::${id}::legend`
   const errorTextId = `fieldset::${id}::error-text`
   const helperTextId = `fieldset::${id}::helper-text`
 
@@ -71,19 +72,21 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
         disabled,
         'data-disabled': dataAttr(disabled),
         'data-invalid': dataAttr(invalid),
+        'aria-labelledby': legendId,
         'aria-describedby': labelIds,
       }) as HTMLProps<'fieldset'>,
-    [disabled, invalid, labelIds],
+    [disabled, invalid, legendId, labelIds],
   )
 
   const getLegendProps = useMemo(
     () => () =>
       ({
+        id: legendId,
         ...parts.legend.attrs,
         'data-disabled': dataAttr(disabled),
         'data-invalid': dataAttr(invalid),
       }) as HTMLProps<'legend'>,
-    [disabled, invalid],
+    [legendId, disabled, invalid],
   )
 
   const getHelperTextProps = useMemo(

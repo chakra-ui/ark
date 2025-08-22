@@ -45,6 +45,7 @@ export const useFieldset = (inProps: MaybeFunction<UseFieldsetProps> = {}) => {
     rootRef = el
   }
 
+  const legendId = $derived(`fieldset::${id}::legend`)
   const errorTextId = $derived(`fieldset::${id}::error-text`)
   const helperTextId = $derived(`fieldset::${id}::helper-text`)
 
@@ -80,11 +81,13 @@ export const useFieldset = (inProps: MaybeFunction<UseFieldsetProps> = {}) => {
       disabled,
       'data-disabled': dataAttr(disabled),
       'data-invalid': dataAttr(invalid),
+      'aria-labelledby': legendId,
       'aria-describedby': labelIds(),
     }) as HTMLProps<'fieldset'>
 
   const getLegendProps = () =>
     ({
+      id: legendId,
       ...parts.legend.attrs,
       'data-disabled': dataAttr(disabled),
       'data-invalid': dataAttr(invalid),

@@ -1,8 +1,8 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface FieldsetLegendBaseProps extends PolymorphicProps<'legend'>, RefAttribute {}
-  export interface FieldsetLegendProps extends Assign<HTMLProps<'legend'>, FieldsetLegendBaseProps> {}
+  export interface FieldsetLegendBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface FieldsetLegendProps extends Assign<HTMLProps<'div'>, FieldsetLegendBaseProps> {}
 </script>
 
 <script lang="ts">
@@ -15,4 +15,4 @@
   const mergedProps = $derived(mergeProps(fieldset?.().getLegendProps(), props))
 </script>
 
-<Ark as="legend" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps} />
