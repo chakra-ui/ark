@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import StandaloneExample from './examples/standalone.svelte'
+import InlineExample from './examples/inline.svelte'
 
 const meta: Meta = {
   title: 'Components / DatePicker',
@@ -21,8 +21,8 @@ export const RootProvider = {
   }),
 }
 
-export const Standalone = {
+export const Inline = {
   render: () => ({
-    Component: StandaloneExample,
+    Component: InlineExample,
   }),
 }

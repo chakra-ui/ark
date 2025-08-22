@@ -1,6 +1,6 @@
 import { DatePicker } from '@ark-ui/react/date-picker'
 
-export const Standalone = () => {
+export const Inline = () => {
   return (
     <DatePicker.Root open>
       <DatePicker.Input />

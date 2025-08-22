@@ -45,14 +45,14 @@ To create a date picker that allows multiple months, you need to:
 
 <Example id="multiple-months" />
 
-### Standalone
+### Inline
 
-In some cases, you might want to display a non-dismissible date picker. This can be achieved by setting the `open` prop
-to `true` and `closeOnSelect` prop to `false`.
+In some cases, you might want to display an inline date picker without a popup. This can be achieved by passing the
+`inline` prop and avoiding the use of `Portal`, `Positioner` and `Content` components.
 
-> Important to note that standalone date picker doesn't use the `Portal`, `Positioner` and `Content` components.
+> Important to note that inline date picker doesn't use the `Portal` and `Positioner` components.
 
-<Example id="standalone" />
+<Example id="inline" />
 
 ### Root Provider
 
