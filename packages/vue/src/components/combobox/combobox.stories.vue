@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Creatable from './examples/creatable.vue'
 import CustomObject from './examples/custom-object.vue'
 import Dynamic from './examples/dynamic.vue'
 import Grouping from './examples/grouping.vue'
@@ -30,6 +31,9 @@ import WithHighlight from './examples/with-highlight.vue'
     </Variant>
     <Variant title="Controlled">
       <Controlled />
+    </Variant>
+    <Variant title="Creatable">
+      <Creatable />
     </Variant>
     <Variant title="Dynamic">
       <Dynamic />
