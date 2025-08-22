@@ -86,6 +86,19 @@ hook. You can leverage it to access the component state and methods from outside
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+## Guides
+
+### Using the Scrubber
+
+The `NumberInput.Scrubber` component provides an interactive scrub area that allows users to drag to change the input
+value. It renders as a `<div>` element and displays a custom cursor element during scrubbing interactions.
+
+This component utilizes the [Pointer Lock API](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API) for
+smooth dragging interactions.
+
+> **Note:** Browsers may show a notification when the Pointer Lock API is activated. The scrubber is automatically
+> disabled in Safari to prevent layout shifts.
+
 ## API Reference
 
 <ComponentTypes id="number-input" />
