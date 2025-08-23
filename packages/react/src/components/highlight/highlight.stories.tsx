@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 
 const meta: Meta = {
-  title: 'Components / Highlight',
+  title: 'Utilities / Highlight',
 }
 
 export default meta

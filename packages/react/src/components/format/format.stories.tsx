@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 
 const meta: Meta = {
-  title: 'Components / Format',
+  title: 'Utilities / Format',
 }
 
 export default meta

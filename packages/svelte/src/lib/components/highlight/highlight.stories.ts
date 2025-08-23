@@ -6,7 +6,7 @@ import MatchAllExample from './examples/match-all.svelte'
 import MultipleExample from './examples/multiple.svelte'
 
 const meta = {
-  title: 'Components / Highlight',
+  title: 'Utilities / Highlight',
 } as Meta
 
 export default meta

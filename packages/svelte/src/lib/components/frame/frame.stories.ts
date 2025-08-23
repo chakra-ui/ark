@@ -4,7 +4,7 @@ import ScriptExample from './examples/script.svelte'
 import SrcDocExample from './examples/src-doc.svelte'
 
 const meta = {
-  title: 'Components / Frame',
+  title: 'Utilities / Frame',
 } as Meta
 
 export default meta

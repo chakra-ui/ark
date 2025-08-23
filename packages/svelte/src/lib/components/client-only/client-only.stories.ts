@@ -4,7 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import WithFallbackExample from './examples/with-fallback.svelte'
 
 const meta: Meta = {
-  title: 'Components/ClientOnly',
+  title: 'Utilities / ClientOnly',
 }
 
 export default meta

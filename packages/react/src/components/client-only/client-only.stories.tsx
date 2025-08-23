@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react-vite'
 
 const meta: Meta = {
-  title: 'Components / ClientOnly',
+  title: 'Utilities / ClientOnly',
 }
 
 export default meta
