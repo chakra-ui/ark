@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Hooks**: Add `useAsyncList` and `useCollator` hooks for managing asynchronous list operations and locale-aware string comparison
+
 ### Changed
 
 - **Fieldset**

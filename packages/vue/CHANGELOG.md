@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Composables**: Add `useAsyncList` and `useCollator` composables for managing asynchronous list operations and locale-aware string comparison
+
 ### Changed
 
 - **Fieldset**

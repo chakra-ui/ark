@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Functions**: Add `useAsyncList` and `useCollator` functions for managing asynchronous list operations and locale-aware string comparison
+
 ### Changed
 
 - **Fieldset**
