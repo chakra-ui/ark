@@ -1,33 +1,18 @@
 import { createListCollection, useListSelection } from '@ark-ui/solid/collection'
 import { For } from 'solid-js'
 
-export const ListSelectionMultiple = () => {
+export const Basic = () => {
   const collection = createListCollection({
-    items: ['React', 'Vue', 'Angular', 'Svelte', 'Solid'],
+    items: ['React', 'Vue', 'Angular'],
   })
 
   const selection = useListSelection({
     collection,
-    selectionMode: 'multiple',
   })
-
-  const handleSelectAll = () => {
-    if (selection.isAllSelected()) {
-      selection.clear()
-    } else {
-      selection.setSelectedValues(collection.getValues())
-    }
-  }
 
   return (
     <div>
-      <div style={{ 'margin-bottom': '16px', display: 'flex', 'align-items': 'center', gap: '16px' }}>
-        <button onClick={handleSelectAll}>{selection.isAllSelected() ? 'Deselect All' : 'Select All'}</button>
-        <span>
-          {selection.selectedValues().length} of {collection.items.length} selected
-        </span>
-      </div>
-
+      <pre>{JSON.stringify(selection.selectedValues())}</pre>
       <For each={collection.items}>
         {(item) => (
           <label

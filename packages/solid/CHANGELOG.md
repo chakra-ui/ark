@@ -2,8 +2,32 @@
 
 ### Changed
 
-- **Fieldset**: Update Legend component to render as `div` instead of `legend` element for improved styling flexibility
-- **Fieldset**: Add `aria-labelledby` attribute to fieldset root for better accessibility by linking to legend
+- **Fieldset**:
+  - Update Legend component to render as `div` instead of `legend` element for improved styling flexibility
+  - Add `aria-labelledby` attribute to fieldset root for better accessibility by linking to legend
+
+### Fixed
+
+- **Date Picker**
+  - Clear hovered range state after completing range selection instead of waiting for pointer to leave the calendar
+    area.
+  - Fix issue where month and year select labels don't update correctly when using `min`/`max` constraints.
+  - Expose `disabled` on `api.getMonths()` and `api.getYears()` results to indicate options out of range for current
+    constraints.
+
+- **Listbox**
+  - Fix issue where first enabled item should be highlighted by default when listbox receives focus and no item is
+    currently highlighted.
+  - Add `getElement` to `scrollToIndexFn` details
+  - Track collection changes and clear `highlightedValue` if the item is no longer in the collection.
+
+- **ScrollArea**
+  - Avoid detecting hover state from portalled descendants.
+  - Add `data-dragging` attribute to scroll area parts.
+
+- **Select**: Add `getElement` to `scrollToIndexFn` details
+
+- **Combobox**: Add `getElement` to `scrollToIndexFn` details
 
 ## [5.20.0] - 2025-08-20
 

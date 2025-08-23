@@ -1,7 +1,7 @@
 import { createListCollection, useListSelection } from '@ark-ui/solid/collection'
 import { For } from 'solid-js'
 
-export const ListSelectionRange = () => {
+export const Range = () => {
   const items = [
     { value: 'react', label: 'React' },
     { value: 'vue', label: 'Vue' },

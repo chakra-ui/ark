@@ -14,5 +14,6 @@ export {
   type TreeCollectionOptions,
   type TreeNode,
 } from './tree-collection'
+export { useAsyncList, type UseAsyncListProps, type UseAsyncListReturn } from './use-async-list'
 export { useListCollection, type UseListCollectionProps, type UseListCollectionReturn } from './use-list-collection'
 export { useListSelection, type UseListSelectionProps, type UseListSelectionReturn } from './use-list-selection'

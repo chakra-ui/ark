@@ -1,6 +1,6 @@
 import { createListCollection, useListSelection } from '@ark-ui/react/collection'
 
-export const ListSelectionRange = () => {
+export const Range = () => {
   const collection = createListCollection({
     items: [
       { value: 'react', label: 'React' },
