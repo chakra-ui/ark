@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.6.0] - 2025-08-24
+
 ### Added
 
 - **Functions**: Add `useAsyncList` and `useCollator` functions for managing asynchronous list operations and
