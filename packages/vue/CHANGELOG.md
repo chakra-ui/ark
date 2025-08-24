@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.21.0] - 2025-08-24
+
 ### Added
 
 - **Composables**: Add `useAsyncList` and `useCollator` composables for managing asynchronous list operations and
