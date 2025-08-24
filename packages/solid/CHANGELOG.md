@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.21.0] - 2025-08-24
+
 ### Added
 
 - **Hooks**: Add `useAsyncList` and `useCollator` hooks for managing asynchronous list operations and locale-aware
