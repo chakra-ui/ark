@@ -14,9 +14,9 @@ export const navLinks: NavLinkItem[] = [
     hrefPrefix: '/docs',
   },
   {
-    label: 'Examples',
-    href: '/examples',
-    hrefPrefix: '/examples',
+    label: 'Showcase',
+    href: '/showcase',
+    hrefPrefix: '/showcase',
   },
   {
     label: 'Blog',

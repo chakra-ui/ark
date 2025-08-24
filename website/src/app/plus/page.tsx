@@ -1,32 +1,36 @@
 import type { Metadata } from 'next'
-import { Container, Stack } from 'styled-system/jsx'
-import { PageHeader } from '~/components/page-header'
+import { Box, Stack } from 'styled-system/jsx'
+import { Footer } from '~/components/marketing/footer'
+import { ExamplesShowcase } from '~/components/plus/examples-showcase'
 import { Faqs } from '~/components/plus/faqs'
 import { GetInTouch } from '~/components/plus/get-in-touch'
-import { PricingCard } from '~/components/plus/pricing-card'
+import { PlusHero } from '~/components/plus/plus-hero'
+import { PricingSection } from '~/components/plus/pricing-section'
 
 export default function Page() {
   return (
-    <Container py="12" maxW="7xl">
-      <Stack gap={{ base: '16', md: '24' }} alignItems="center">
-        <PageHeader
-          heading="Ark Plus"
-          subHeading="Pricing"
-          description="Unlock exclusive examples and support the development of Ark UI"
-        />
-        <Stack direction={{ base: 'column', sm: 'row' }} gap="8" align="start" maxW="4xl">
-          <PricingCard variant="personal" />
-          <PricingCard variant="team" />
-        </Stack>
+    <Box minH="100%" position="relative" backgroundImage="url(/images/pattern.svg)" backgroundRepeat="repeat-x">
+      <Box
+        position="absolute"
+        display={{ base: 'none', sm: 'block' }}
+        inset="0"
+        height="830px"
+        background="radial-gradient(42.48% 42.48% at calc(50% + 100vw / 2) center, #EB5E41 0%, rgba(235, 94, 65, 0) 100%)"
+        filter="blur(282px)"
+      />
+      <Stack gap={{ base: '16', md: '24' }} position="relative">
+        <PlusHero />
+        <ExamplesShowcase />
+        <PricingSection />
         <Faqs />
         <GetInTouch />
       </Stack>
-    </Container>
+      <Footer />
+    </Box>
   )
 }
 
 export const metadata: Metadata = {
   title: 'Ark Plus',
-  description:
-    'Discover amazing projects built with Ark UI. Share your own by opening an issue on our GitHub repository.',
+  description: 'Level up your design system with Ark Plus. Accelerate your usage of Ark UI with exclusive examples.',
 }

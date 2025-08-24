@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from 'lucide-react'
 import NextLink from 'next/link'
-import { Stack } from 'styled-system/jsx'
+import { Container, Stack } from 'styled-system/jsx'
 import { Accordion } from '~/components/ui/accordion'
 import { Heading } from '~/components/ui/heading'
 import { Link } from '~/components/ui/link'
@@ -65,38 +65,40 @@ export const Faqs = () => {
   ]
 
   return (
-    <Stack gap={{ base: '12', lg: '24' }} direction={{ base: 'column', lg: 'row' }} width="full">
-      <Stack gap={{ base: '4', md: '5' }} maxW={{ lg: 'md' }}>
-        <Stack gap="3">
-          <Text color="colorPalette.default" textStyle={{ base: 'sm', md: 'md' }} fontWeight="semibold">
-            Support
+    <Container py="16" maxW="7xl">
+      <Stack gap={{ base: '12', lg: '24' }} direction={{ base: 'column', lg: 'row' }} width="full">
+        <Stack gap={{ base: '4', md: '5' }} maxW={{ lg: 'md' }}>
+          <Stack gap="3">
+            <Text color="colorPalette.default" textStyle={{ base: 'sm', md: 'md' }} fontWeight="semibold">
+              Support
+            </Text>
+            <Heading size={{ base: '3xl', md: '4xl' }}>FAQs</Heading>
+          </Stack>
+          <Text color="fg.muted" textStyle="lg">
+            Everything you need to know about Ark Plus. For questions about licensing, please see our{' '}
+            <Link asChild>
+              <NextLink href="/license">licensing page</NextLink>
+            </Link>
+            .
           </Text>
-          <Heading size={{ base: '3xl', md: '4xl' }}>FAQs</Heading>
         </Stack>
-        <Text color="fg.muted" textStyle="lg">
-          Everything you need to know about Ark Plus. For questions about licensing, please see our{' '}
-          <Link asChild>
-            <NextLink href="/license">licensing page</NextLink>
-          </Link>
-          .
-        </Text>
-      </Stack>
 
-      <Stack gap="8" flex="1">
-        <Accordion.Root defaultValue={[questions[0].question]} multiple>
-          {questions.map((item, id) => (
-            <Accordion.Item key={id} value={item.question}>
-              <Accordion.ItemTrigger>
-                {item.question}
-                <Accordion.ItemIndicator>
-                  <ChevronDownIcon />
-                </Accordion.ItemIndicator>
-              </Accordion.ItemTrigger>
-              <Accordion.ItemContent textAlign="start">{item.answer}</Accordion.ItemContent>
-            </Accordion.Item>
-          ))}
-        </Accordion.Root>
+        <Stack gap="8" flex="1">
+          <Accordion.Root defaultValue={[questions[0].question]} multiple>
+            {questions.map((item, id) => (
+              <Accordion.Item key={id} value={item.question}>
+                <Accordion.ItemTrigger>
+                  {item.question}
+                  <Accordion.ItemIndicator>
+                    <ChevronDownIcon />
+                  </Accordion.ItemIndicator>
+                </Accordion.ItemTrigger>
+                <Accordion.ItemContent textAlign="start">{item.answer}</Accordion.ItemContent>
+              </Accordion.Item>
+            ))}
+          </Accordion.Root>
+        </Stack>
       </Stack>
-    </Stack>
+    </Container>
   )
 }

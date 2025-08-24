@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Box minH="100vh" bg="bg.default">
+    <Box minH="100vh">
       <Navbar />
       <Container pt={{ base: '32', md: '40' }} pb="20">
         <Stack gap={{ base: '12', md: '16' }}>
