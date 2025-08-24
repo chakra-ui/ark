@@ -8,4 +8,6 @@ export default meta
 
 export { Action } from './examples/action'
 export { Basic } from './examples/basic'
+export { PromiseToast } from './examples/promise-toast'
+export { Types } from './examples/types'
 export { Update } from './examples/update'

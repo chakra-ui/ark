@@ -2,7 +2,10 @@
 
 ### Added
 
-- **Hooks**: Add `useAsyncList` and `useCollator` hooks for managing asynchronous list operations and locale-aware string comparison
+- **Hooks**: Add `useAsyncList` and `useCollator` hooks for managing asynchronous list operations and locale-aware
+  string comparison
+- **Toast**: Export type definitions `ToastActionOptions`, `ToastPlacement`, `ToastPromiseOptions`, `ToastStatus`,
+  `ToastStatusChangeDetails`, and `ToastType`
 
 ### Changed
 

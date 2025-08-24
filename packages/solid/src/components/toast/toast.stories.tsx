@@ -7,3 +7,5 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { PromiseToast } from './examples/promise-toast'
+export { Types } from './examples/types'

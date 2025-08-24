@@ -35,6 +35,28 @@ Here's an example of creating a toast using the `toast.create` method.
 
 <Example id="basic" />
 
+### Toast Types
+
+You can create different types of toasts (`success`, `error`, `warning`, `info`) with appropriate styling. For example,
+to create a success toast, you can do:
+
+```ts
+toaster.success({
+  title: 'Success!',
+  description: 'Your changes have been saved.',
+})
+```
+
+<Example id="types" />
+
+### Promise
+
+You can use `toaster.promise()` to automatically handle the different states of an asynchronous operation. It provides
+options for the `success`, `error`, and `loading` states of the promise and will automatically update the toast when the
+promise resolves or rejects.
+
+<Example id="promise-toast" />
+
 ### Update Toast
 
 To update a toast, use the `toast.update` method.

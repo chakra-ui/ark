@@ -8,7 +8,10 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
-- **Functions**: Add `useAsyncList` and `useCollator` functions for managing asynchronous list operations and locale-aware string comparison
+- **Functions**: Add `useAsyncList` and `useCollator` functions for managing asynchronous list operations and
+  locale-aware string comparison
+- **Toast**: Export type definitions `ToastActionOptions`, `ToastPlacement`, `ToastPromiseOptions`, `ToastStatus`,
+  `ToastStatusChangeDetails`, and `ToastType`
 
 ### Changed
 

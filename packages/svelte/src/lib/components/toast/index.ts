@@ -1,3 +1,11 @@
+export type {
+  ActionOptions as ToastActionOptions,
+  Placement as ToastPlacement,
+  PromiseOptions as ToastPromiseOptions,
+  Status as ToastStatus,
+  StatusChangeDetails as ToastStatusChangeDetails,
+  Type as ToastType,
+} from '@zag-js/toast'
 export { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster.js'
 export {
   default as ToastActionTrigger,

@@ -2,7 +2,10 @@
 
 ### Added
 
-- **Composables**: Add `useAsyncList` and `useCollator` composables for managing asynchronous list operations and locale-aware string comparison
+- **Composables**: Add `useAsyncList` and `useCollator` composables for managing asynchronous list operations and
+  locale-aware string comparison
+- **Toast**: Export type definitions `ToastActionOptions`, `ToastPlacement`, `ToastPromiseOptions`, `ToastStatus`,
+  `ToastStatusChangeDetails`, and `ToastType`
 
 ### Changed
 
