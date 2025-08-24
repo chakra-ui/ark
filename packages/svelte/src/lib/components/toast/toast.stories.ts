@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/svelte'
 import ActionExample from './examples/action.svelte'
 import BasicExample from './examples/basic.svelte'
 import DurationExample from './examples/duration.svelte'
+import MaxToastsExample from './examples/max-toasts.svelte'
 import PromiseExample from './examples/promise-toast.svelte'
 import TypesExample from './examples/types.svelte'
 import UpdateExample from './examples/update.svelte'
@@ -21,6 +22,12 @@ export const Basic = {
 export const Duration = {
   render: () => ({
     Component: DurationExample,
+  }),
+}
+
+export const MaxToasts = {
+  render: () => ({
+    Component: MaxToastsExample,
   }),
 }
 
