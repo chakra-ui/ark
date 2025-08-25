@@ -1,20 +1,17 @@
 import NextLink from 'next/link'
 import { Box, Center, Container, Divider, HStack, Stack } from 'styled-system/jsx'
 import { EmailSignInForm } from '~/components/auth/email-signin-form'
-import { GitHubSignInButton } from '~/components/auth/github-signin-button'
-import { GoogleSignInButton } from '~/components/auth/google-signin-button'
-import { OTPForm } from '~/components/auth/otp-form'
+import { OAuthSignInButtons } from '~/components/auth/oauth-signin-buttons'
 import { Logo } from '~/components/logo'
 import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
 
 interface Props {
-  searchParams: Promise<{ callbackUrl?: string; email?: string }>
+  searchParams: Promise<{ callbackURL?: string }>
 }
 
 export default async function Page(props: Props) {
-  const { callbackUrl, email } = await props.searchParams
-  const redirectTo = callbackUrl ?? '/'
+  const { callbackURL = '/' } = await props.searchParams
 
   return (
     <Container display="flex" flex="1" alignItems="center" maxW="27rem">
@@ -34,7 +31,7 @@ export default async function Page(props: Props) {
         </Card.Header>
         <Card.Body>
           <Stack gap="6">
-            {email ? <OTPForm email={email} redirectTo="/examples" /> : <EmailSignInForm redirectTo={redirectTo} />}
+            <EmailSignInForm callbackURL={callbackURL} />
             <HStack>
               <Divider />
               <Text textStyle="sm" color="fg.muted">
@@ -42,10 +39,7 @@ export default async function Page(props: Props) {
               </Text>
               <Divider />
             </HStack>
-            <Stack gap="3">
-              <GoogleSignInButton redirectTo={redirectTo} />
-              <GitHubSignInButton redirectTo={redirectTo} />
-            </Stack>
+            <OAuthSignInButtons callbackURL={callbackURL} />
           </Stack>
         </Card.Body>
       </Card.Root>
