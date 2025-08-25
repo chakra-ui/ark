@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Combobox**: Add `ComboboxEmpty` component to display content when the combobox has no items
+
 ## [5.6.0] - 2025-08-24
 
 ### Added

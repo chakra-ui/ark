@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Combobox**: Add `ComboboxEmpty` component to display content when the combobox has no items
+
 ## [5.21.0] - 2025-08-24
 
 ### Added
