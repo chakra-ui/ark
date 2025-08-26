@@ -1,54 +1,73 @@
 'use client'
-
-import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useState, type FormEvent } from 'react'
 import { Stack } from 'styled-system/jsx'
+import { toaster } from '~/components/toaster'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
+import { emailOtp } from '~/lib/auth-client'
+import { VerfiyOtpDialog } from './verify-otp-dialog'
 
 interface Props {
-  redirectTo: string
+  callbackURL: string
 }
 
 export const EmailSignInForm = (props: Props) => {
-  const { redirectTo } = props
-  const router = useRouter()
+  const { callbackURL } = props
+  const [email, setEmail] = useState('')
+  const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+
+    await emailOtp
+      .sendVerificationOtp({
+        email,
+        type: 'sign-in',
+        fetchOptions: {
+          onSuccess: () => {
+            setOpen(true)
+          },
+          onError: () => {
+            toaster.create({
+              title: 'An error occurred while sending the OTP. Please try again later.',
+              type: 'error',
+            })
+          },
+        },
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
 
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault()
-        const formData = new FormData(e.currentTarget)
-        const email = formData.get('email') as string
-        try {
-          // Use signIn with postmark provider to send the email
-          const response = await signIn('postmark', {
-            email,
-            redirect: false,
-            callbackUrl: redirectTo,
-          })
-
-          if (response?.error) {
-            console.error('SignIn error:', response.error)
-            router.replace(`/auth/signin?error=${encodeURIComponent(response.error)}`)
-          } else {
-            // Add email to URL query to show OTP form
-            const searchParams = new URLSearchParams(window.location.search)
-            searchParams.set('email', email)
-            router.replace(`${window.location.pathname}?${searchParams.toString()}`)
-          }
-        } catch (error) {
-          console.error('Authentication error:', error)
-          router.replace('/auth/signin?error=Authentication failed')
-        }
-      }}
-    >
-      <Stack gap="3">
-        <Input autoFocus name="email" type="email" required placeholder="Enter your email" autoComplete="off" />
-        <Button type="submit" width="full">
-          Continue with Email
-        </Button>
-      </Stack>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <Stack gap="3">
+          <Input
+            name="email"
+            type="email"
+            required
+            placeholder="Enter your email"
+            autoComplete="off"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button type="submit" width="full" loading={loading}>
+            Continue with Email
+          </Button>
+        </Stack>
+      </form>
+      <VerfiyOtpDialog
+        onSuccess={() => {
+          window.location.href = callbackURL
+        }}
+        open={open}
+        onOpenChange={(e) => setOpen(e.open)}
+        email={email}
+      />
+    </>
   )
 }

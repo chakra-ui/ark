@@ -1,16 +1,18 @@
 'use client'
-import { useRouter } from 'next/navigation'
+import NextLink from 'next/link'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { Button, type ButtonProps } from '~/components/ui/button'
 
 export const SignInButton = (props: ButtonProps) => {
-  const router = useRouter()
+  const { children, ...buttonProps } = props
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-  const handleClick = () => {
-    router.push(
-      `/auth/signin?${new URLSearchParams({
-        callbackUrl: window.location.href,
-      })}`,
-    )
-  }
-  return <Button {...props} onClick={handleClick} />
+  const callbackURL = searchParams.toString() ? `${pathname}?${searchParams.toString()}` : pathname
+
+  return (
+    <Button asChild {...buttonProps}>
+      <NextLink href={{ pathname: '/auth/signin', query: { callbackURL } }}>{children || 'Sign In'}</NextLink>
+    </Button>
+  )
 }
