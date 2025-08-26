@@ -11,6 +11,7 @@ export const auth = betterAuth({
   database: new Pool({
     connectionString: process.env.AUTH_DATABASE_URL,
   }),
+  telemetry: { enabled: false },
   plugins: [
     emailOTP({
       async sendVerificationOTP({ email, otp }) {
