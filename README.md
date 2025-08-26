@@ -15,60 +15,6 @@ Ark UI is a headless component library to build scalable Design Systems for  <a 
 Check out the [official docs](https://ark-ui.com/) for full guides, detailed API reference, and plenty of examples to
 get you started.
 
-## Components
-
-|                        | [Ark UI](https://ark-ui.com) | [Radix Primitives](https://www.radix-ui.com/primitives) | [Headless UI](https://headlessui.com/) | [Aria Kit](https://ariakit.org) |
-| ---------------------- | ---------------------------- | ------------------------------------------------------- | -------------------------------------- | ------------------------------- |
-| Accordion              | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Angle Slider           | ✅                           |                                                         |                                        |                                 |
-| Avatar                 | ✅                           | ✅                                                      |                                        |                                 |
-| Carousel               | ✅                           |                                                         |                                        |                                 |
-| Checkbox               | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Clipboard              | ✅                           |                                                         |                                        |                                 |
-| Collapsible            | ✅                           | ✅                                                      |                                        |                                 |
-| Color Picker           | ✅                           |                                                         |                                        |                                 |
-| Combobox               | ✅                           |                                                         | ✅                                     | ✅                              |
-| Date Picker            | ✅                           |                                                         |                                        |                                 |
-| Dialog                 | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Editable               | ✅                           |                                                         |                                        |                                 |
-| Field (Form)           | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Fieldset               | ✅                           | ✅                                                      | ✅                                     |                                 |
-| File Upload            | ✅                           |                                                         |                                        |                                 |
-| Floating Panel         | ✅                           |                                                         |                                        |                                 |
-| Hover Card             | ✅                           | ✅                                                      |                                        | ✅                              |
-| Listbox                | ✅                           |                                                         | ✅                                     |                                 |
-| Menu                   | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Number Input           | ✅                           |                                                         |                                        |                                 |
-| Navigation Menu        |                              | ✅                                                      |                                        | ✅                              |
-| Pagination             | ✅                           |                                                         |                                        |                                 |
-| Password Input         | ✅                           | ✅                                                      |                                        |                                 |
-| Pin Input              | ✅                           |                                                         |                                        |                                 |
-| Popover                | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Progress               | ✅                           | ✅                                                      |                                        |                                 |
-| QR Code                | ✅                           |                                                         |                                        |                                 |
-| Radio Group            | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Rating Group           | ✅                           |                                                         |                                        |                                 |
-| Scroll Area            | ✅                           | ✅                                                      |                                        |                                 |
-| Segment Group          | ✅                           |                                                         |                                        |                                 |
-| Select                 | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Signature Pad          | ✅                           |                                                         |                                        |                                 |
-| Slider                 | ✅                           | ✅                                                      |                                        |                                 |
-| Splitter               | ✅                           |                                                         |                                        |                                 |
-| Steps                  | ✅                           |                                                         |                                        |                                 |
-| Switch                 | ✅                           | ✅                                                      | ✅                                     |                                 |
-| Tabs                   | ✅                           | ✅                                                      | ✅                                     | ✅                              |
-| Tags Input             | ✅                           |                                                         |                                        |                                 |
-| Textarea               | ✅                           |                                                         | ✅                                     |                                 |
-| Timer                  | ✅                           |                                                         |                                        |                                 |
-| Toast                  | ✅                           | ✅                                                      |                                        |                                 |
-| Toggle Group (Toolbar) | ✅                           | ✅                                                      |                                        | ✅                              |
-| Toggle                 | ✅                           | ✅                                                      |                                        |                                 |
-| Tooltip                | ✅                           | ✅                                                      |                                        | ✅                              |
-| Tour                   | ✅                           |                                                         |                                        |                                 |
-| Tree View              | ✅                           |                                                         |                                        |                                 |
-
-> This comparison was prepared to the best of our knowledge and belief as of the end of August 2025.
-
 ## Roadmap
 
 You can request, vote for, and check upcoming features on our [roadmap](https://ark-ui.canny.io/).
