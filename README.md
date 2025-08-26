@@ -1,15 +1,11 @@
-# Ark UI &middot; [![GitHub license](https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge)](https://github.com/chakra-ui/ark/blob/main/LICENSE) [![npm downloads](https://img.shields.io/npm/dm/@zag-js/react?style=for-the-badge)](https://www.npmjs.com/package/@ark-ui/react) [![GitHub stars](https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge)](https://github.com/chakra-ui/ark/)
+<a href="https://github.com/chakra-ui/ark"> <img src="https://ark-ui.com/images/ark-logo-on-brand.svg" alt="Ark UI" height="28" /></a> &middot; [![GitHub license](https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge)](https://github.com/chakra-ui/ark/blob/main/LICENSE) [![npm downloads](https://img.shields.io/npm/dm/@zag-js/react?style=for-the-badge)](https://www.npmjs.com/package/@ark-ui/react) [![GitHub stars](https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge)](https://github.com/chakra-ui/ark/)
 
 Ark UI is a headless component library to build scalable design systems for [React](https://reactjs.org/),
 [Vue](https://vuejs.org/), [Solid](https://solidjs.com/), and [Svelte](https://svelte.dev/).
 
 ## Components
 
-> **Disclaimer**  
-> This comparison was generated to the best of my knowledge as of end of August 2025.
-
-
-| Component              | [Ark UI](https://ark-ui.com) | [Radix Primitives](https://www.radix-ui.com/primitives) | [Headless UI](https://headlessui.com/) | [Aria Kit](https://ariakit.org) |
+|               | [Ark UI](https://ark-ui.com) | [Radix Primitives](https://www.radix-ui.com/primitives) | [Headless UI](https://headlessui.com/) | [Aria Kit](https://ariakit.org) |
 | ---------------------- | ---------------------------- | ------------------------------------------------------- | -------------------------------------- | ------------------------------- |
 | Accordion              | ✅                           | ✅                                                      | ✅                                     | ✅                              |
 | Angle Slider           | ✅                           |                                                         |                                        |                                 |
@@ -58,6 +54,9 @@ Ark UI is a headless component library to build scalable design systems for [Rea
 | Tooltip                | ✅                           | ✅                                                      |                                        | ✅                              |
 | Tour                   | ✅                           |                                                         |                                        |                                 |
 | Tree View              | ✅                           |                                                         |                                        |                                 |
+
+
+> This comparison was prepared to the best of our knowledge and belief as of the end of August 2025.
 
 ## Documentation
 
