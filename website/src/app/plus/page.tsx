@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Box, Stack } from 'styled-system/jsx'
 import { Footer } from '~/components/marketing/footer'
 import { ClaimPurchaseDialog } from '~/components/plus/claim-purchase-dialog'
@@ -27,7 +28,9 @@ export default function Page() {
         <GetInTouch />
       </Stack>
       <Footer />
-      <ClaimPurchaseDialog />
+      <Suspense>
+        <ClaimPurchaseDialog />
+      </Suspense>
     </Box>
   )
 }
