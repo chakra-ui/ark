@@ -9,6 +9,12 @@
 Ark UI is a headless component library to build scalable Design Systems for  <a href="https://reactjs.org/">React</a>,<a href="https://solidjs.com/">Solid</a>, <a href="https://svelte.dev/">Svelte</a> and  <a href="https://vuejs.org/">Vue</a>.
 </p>
 
+
+## Documentation
+
+Check out the [official docs](https://ark-ui.com/) for full guides, detailed API reference, and plenty of examples to
+get you started.
+
 ## Components
 
 |               | [Ark UI](https://ark-ui.com) | [Radix Primitives](https://www.radix-ui.com/primitives) | [Headless UI](https://headlessui.com/) | [Aria Kit](https://ariakit.org) |
@@ -63,11 +69,6 @@ Ark UI is a headless component library to build scalable Design Systems for  <a 
 
 
 >This comparison was prepared to the best of our knowledge and belief as of the end of August 2025.
-
-## Documentation
-
-Check out the [official docs](https://ark-ui.com/) for full guides, detailed API reference, and plenty of examples to
-get you started.
 
 ## Roadmap
 
