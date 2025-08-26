@@ -41,7 +41,7 @@ export const ClaimPurchaseDialog = () => {
           title: 'Purchase claimed successfully!',
           type: 'success',
         })
-        router.push('/blocks')
+        router.push('/examples')
       } else {
         toaster.create({
           title: data?.message || 'An unexpected error occurred',

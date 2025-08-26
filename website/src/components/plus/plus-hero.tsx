@@ -16,7 +16,7 @@ const ExistingCustomerBadge = () => {
       <NextLink
         href={{
           pathname: '/auth/signin',
-          query: { callbackUrl: `${getPublicUrl()}/examples` },
+          query: { callbackURL: `${getPublicUrl()}/examples` },
         }}
         className={hstack({
           gap: '1',
