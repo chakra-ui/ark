@@ -1,1 +1,3 @@
-export { anatomy as listboxAnatomy } from '@zag-js/listbox'
+import { anatomy } from '@zag-js/listbox'
+
+export const listboxAnatomy = anatomy.extendWith('empty')

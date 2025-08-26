@@ -10,6 +10,8 @@ description: All notable changes will be documented in this file.
 
 - **Combobox**: Add `ComboboxEmpty` component to display content when the combobox has no items
 
+- **Listbox**: Add `ListboxEmpty` component to display content when the listbox has no items
+
 ## [5.6.0] - 2025-08-24
 
 ### Added

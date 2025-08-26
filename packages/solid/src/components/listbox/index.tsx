@@ -8,6 +8,7 @@ export type {
 export { createListCollection, type CollectionItem, type ListCollection } from '../collection'
 export { ListboxContext, type ListboxContextProps } from './listbox-context'
 export { ListboxContent, type ListboxContentBaseProps, type ListboxContentProps } from './listbox-content'
+export { ListboxEmpty, type ListboxEmptyBaseProps, type ListboxEmptyProps } from './listbox-empty'
 export { ListboxInput, type ListboxInputBaseProps, type ListboxInputProps } from './listbox-input'
 export { ListboxItem, type ListboxItemBaseProps, type ListboxItemProps } from './listbox-item'
 export { ListboxItemContext, type ListboxItemContextProps } from './listbox-item-context'
