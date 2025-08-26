@@ -8,7 +8,7 @@
 <p align="center">
 Ark UI is a headless component library to build scalable Design Systems for  <a href="https://reactjs.org/">React</a>, <a href="https://solidjs.com/">Solid</a>, <a href="https://svelte.dev/">Svelte</a> and <a href="https://vuejs.org/">Vue</a>.
 </p>
-
+<br />
 
 ## Documentation
 
@@ -17,7 +17,7 @@ get you started.
 
 ## Components
 
-|               | [Ark UI](https://ark-ui.com) | [Radix Primitives](https://www.radix-ui.com/primitives) | [Headless UI](https://headlessui.com/) | [Aria Kit](https://ariakit.org) |
+|                        | [Ark UI](https://ark-ui.com) | [Radix Primitives](https://www.radix-ui.com/primitives) | [Headless UI](https://headlessui.com/) | [Aria Kit](https://ariakit.org) |
 | ---------------------- | ---------------------------- | ------------------------------------------------------- | -------------------------------------- | ------------------------------- |
 | Accordion              | ✅                           | ✅                                                      | ✅                                     | ✅                              |
 | Angle Slider           | ✅                           |                                                         |                                        |                                 |
@@ -31,7 +31,7 @@ get you started.
 | Date Picker            | ✅                           |                                                         |                                        |                                 |
 | Dialog                 | ✅                           | ✅                                                      | ✅                                     | ✅                              |
 | Editable               | ✅                           |                                                         |                                        |                                 |
-| Field                  | ✅                           | ✅                                                      | ✅                                     | ✅                              |
+| Field (Form)           | ✅                           | ✅                                                      | ✅                                     | ✅                              |
 | Fieldset               | ✅                           | ✅                                                      | ✅                                     |                                 |
 | File Upload            | ✅                           |                                                         |                                        |                                 |
 | Floating Panel         | ✅                           |                                                         |                                        |                                 |
@@ -67,8 +67,7 @@ get you started.
 | Tour                   | ✅                           |                                                         |                                        |                                 |
 | Tree View              | ✅                           |                                                         |                                        |                                 |
 
-
->This comparison was prepared to the best of our knowledge and belief as of the end of August 2025.
+> This comparison was prepared to the best of our knowledge and belief as of the end of August 2025.
 
 ## Roadmap
 
