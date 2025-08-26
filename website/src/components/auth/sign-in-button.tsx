@@ -12,7 +12,7 @@ export const SignInButton = (props: ButtonProps) => {
 
   return (
     <Button asChild {...buttonProps}>
-      <NextLink href={{ pathname: '/login', query: { callbackURL } }}>{children || 'Sign In'}</NextLink>
+      <NextLink href={{ pathname: '/auth/signin', query: { callbackURL } }}>{children || 'Sign In'}</NextLink>
     </Button>
   )
 }

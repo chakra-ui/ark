@@ -33,11 +33,11 @@ export default async function Page(props: Props) {
           <Stack gap="6">
             <EmailSignInForm callbackURL={callbackURL} />
             <HStack>
-              <Divider />
+              <Divider borderBottomWidth="1px" h="1px" />
               <Text textStyle="sm" color="fg.muted">
                 OR
               </Text>
-              <Divider />
+              <Divider borderBottomWidth="1px" h="1px" />
             </HStack>
             <OAuthSignInButtons callbackURL={callbackURL} />
           </Stack>

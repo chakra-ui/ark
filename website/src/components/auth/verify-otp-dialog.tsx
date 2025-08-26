@@ -1,5 +1,5 @@
 'use client'
-import { SendIcon } from 'lucide-react'
+import { SendIcon, XIcon } from 'lucide-react'
 import { type FormEvent, useState } from 'react'
 import { Box, Center, Stack, styled } from 'styled-system/jsx'
 import { toaster } from '~/components/toaster'
@@ -9,6 +9,7 @@ import { Dialog } from '~/components/ui/dialog'
 import { Icon } from '~/components/ui/icon'
 import { PinInput } from '~/components/ui/pin-input'
 import { signIn } from '~/lib/auth-client'
+import { IconButton } from '../ui/icon-button'
 
 interface Props extends Omit<Dialog.RootProps, 'children'> {
   email: string
@@ -47,10 +48,10 @@ export const VerfiyOtpDialog = (props: Props) => {
     <Dialog.Root {...dialogProps}>
       <Dialog.Backdrop />
       <Dialog.Positioner>
-        <Dialog.Content boxShadow="none" maxW="fit-content">
+        <Dialog.Content boxShadow="none" minW="fit-content">
           <Card.Root boxShadow="xl">
             <Card.Header textAlign="center">
-              <Stack gap="2">
+              <Stack gap="4">
                 <Center>
                   <Icon size="lg">
                     <SendIcon />
@@ -69,16 +70,18 @@ export const VerfiyOtpDialog = (props: Props) => {
               <form onSubmit={handleSubmit}>
                 <Stack gap="3">
                   <PinInput otp value={otp} length={6} onValueChange={(e) => setOtp(e.value)} />
-                  <Button type="submit" width="full" loading={loading}>
+                  <Button type="submit" loading={loading}>
                     Submit
                   </Button>
                 </Stack>
               </form>
             </Card.Body>
           </Card.Root>
-          {/* <Dialog.CloseTrigger asChild>
-            <CloseButton size="sm" colorPalette="gray" />
-          </Dialog.CloseTrigger> */}
+          <Dialog.CloseTrigger asChild position="absolute" top="2" right="2">
+            <IconButton aria-label="Close Dialog" variant="ghost" size="sm">
+              <XIcon />
+            </IconButton>
+          </Dialog.CloseTrigger>
         </Dialog.Content>
       </Dialog.Positioner>
     </Dialog.Root>

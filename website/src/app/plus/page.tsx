@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Box, Stack } from 'styled-system/jsx'
 import { Footer } from '~/components/marketing/footer'
+import { ClaimPurchaseDialog } from '~/components/plus/claim-purchase-dialog'
 import { ExamplesShowcase } from '~/components/plus/examples-showcase'
 import { Faqs } from '~/components/plus/faqs'
 import { GetInTouch } from '~/components/plus/get-in-touch'
@@ -26,6 +27,7 @@ export default function Page() {
         <GetInTouch />
       </Stack>
       <Footer />
+      <ClaimPurchaseDialog />
     </Box>
   )
 }
