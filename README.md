@@ -1,11 +1,14 @@
-<a href="https://github.com/chakra-ui/ark"><img src="https://ark-ui.com/images/ark-logo-on-brand.svg" alt="Ark UI" height="32" /></a> &middot; 
+<p align="center"><a href="https://github.com/chakra-ui/ark"><img src="https://ark-ui.com/images/ark-logo-on-brand.svg" alt="Ark UI" height="32" /></a></p>
+<p align="center">
 <a href="https://github.com/chakra-ui/ark/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@ark-ui/react?style=for-the-badge" alt="GitHub license" /></a>
 <a href="https://www.npmjs.com/package/@ark-ui/react"><img src="https://img.shields.io/npm/dm/@zag-js/react?style=for-the-badge" alt="npm downloads" /></a>
 <a href="https://github.com/chakra-ui/ark/"><img src="https://img.shields.io/github/stars/chakra-ui/ark?logo=github&style=for-the-badge" alt="GitHub stars" /></a>
-
-
+</p>
+<p align="center">
 Ark UI is a headless component library to build scalable design systems for [React](https://reactjs.org/),
 [Vue](https://vuejs.org/), [Solid](https://solidjs.com/), and [Svelte](https://svelte.dev/).
+</p>
+<br />
 
 ## Components
 
