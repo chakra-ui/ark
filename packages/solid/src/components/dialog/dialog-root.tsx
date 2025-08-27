@@ -29,6 +29,7 @@ export const DialogRoot = (props: DialogRootProps) => {
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
+    'onRequestDismiss',
     'open',
     'persistentElements',
     'preventScroll',

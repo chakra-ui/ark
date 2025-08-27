@@ -33,6 +33,7 @@ export const MenuRoot = (props: MenuRootProps) => {
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
+    'onRequestDismiss',
     'onSelect',
     'open',
     'positioning',

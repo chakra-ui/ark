@@ -99,6 +99,17 @@ export type RootEmits = {
    */
   pointerDownOutside: [event: popover.PointerDownOutsideEvent]
   /**
+   * Function called when this layer is closed due to a parent layer being closed
+   */
+  requestDismiss: [
+    event: CustomEvent<{
+      originalLayer: HTMLElement
+      targetLayer: HTMLElement | undefined
+      originalIndex: number
+      targetIndex: number
+    }>,
+  ]
+  /**
    * The callback fired when the open state changes.
    */
   'update:open': [open: boolean]

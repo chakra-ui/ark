@@ -15,6 +15,7 @@ export const HoverCardRoot = (props: HoverCardRootProps) => {
   const [useHoverCardProps, localProps] = createSplitProps<UseHoverCardProps>()(hoverCardProps, [
     'closeDelay',
     'defaultOpen',
+    'disabled',
     'id',
     'ids',
     'onFocusOutside',

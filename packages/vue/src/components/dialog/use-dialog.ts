@@ -43,6 +43,10 @@ export const useDialog = (props: MaybeRef<UseDialogProps> = {}, emit?: EmitFn<Ro
         emit?.('pointerDownOutside', details)
         localeProps.onPointerDownOutside?.(details)
       },
+      onRequestDismiss: (details) => {
+        emit?.('requestDismiss', details)
+        localeProps.onRequestDismiss?.(details)
+      },
     }
   })
 

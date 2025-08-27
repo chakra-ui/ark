@@ -26,6 +26,7 @@ export const PopoverRoot = (props: PopoverRootProps) => {
     'onInteractOutside',
     'onOpenChange',
     'onPointerDownOutside',
+    'onRequestDismiss',
     'open',
     'persistentElements',
     'portalled',
