@@ -28,6 +28,38 @@ This will produce the following HTML:
 <span id="child" class="parent child" style="background: red; color: blue;">Ark UI</span>
 ```
 
+## ID Composition
+
+When composing components that need to work together, share IDs between them using the `ids` prop for proper
+accessibility and interaction.
+
+```tsx
+import { Avatar } from '@ark-ui/react/avatar'
+import { Tooltip } from '@ark-ui/react/tooltip'
+import { useId } from 'react'
+
+export const TooltipWithAvatar = () => {
+  const id = useId()
+
+  return (
+    <Tooltip.Root ids={{ trigger: id }}>
+      <Tooltip.Trigger asChild>
+        <Avatar.Root ids={{ root: id }}>
+          <Avatar.Image src="https://bit.ly/sage-adebayo" />
+          <Avatar.Fallback>SA</Avatar.Fallback>
+        </Avatar.Root>
+      </Tooltip.Trigger>
+      <Tooltip.Positioner>
+        <Tooltip.Content>Segun Adebayo is online</Tooltip.Content>
+      </Tooltip.Positioner>
+    </Tooltip.Root>
+  )
+}
+```
+
+Both components share the same `id` through their `ids` props, creating proper accessibility bindings, `aria-*`
+attributes and interaction behavior.
+
 ## Limitations
 
 When using the `asChild` prop, ensure you pass only a single child element. Passing multiple children may cause
