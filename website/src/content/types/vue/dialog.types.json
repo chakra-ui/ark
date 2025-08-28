@@ -71,6 +71,11 @@
         "isRequired": true,
         "description": "Function called when the pointer is pressed down outside the component"
       },
+      "requestDismiss": {
+        "type": "[\n  event: CustomEvent<{\n    originalLayer: HTMLElement\n    targetLayer: HTMLElement | undefined\n    originalIndex: number\n    targetIndex: number\n  }>,\n]",
+        "isRequired": true,
+        "description": "Function called when this layer is closed due to a parent layer being closed"
+      },
       "update:open": {
         "type": "[open: boolean]",
         "isRequired": true,

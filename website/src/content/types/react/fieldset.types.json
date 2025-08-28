@@ -27,7 +27,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }
     },
-    "element": "HTMLLegendElement"
+    "element": "HTMLDivElement"
   },
   "Root": {
     "props": {
