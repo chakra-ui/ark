@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { fetchComponentList, getComponentDataAttributes } from '../lib/fetch.js'
+import { fetchComponentList, getStyleGuide } from '../lib/fetch.js'
 import type { Tool } from '../lib/types.js'
 
 export const stylingGuideTool: Tool<{ componentList: string[] }> = {
@@ -20,14 +20,14 @@ export const stylingGuideTool: Tool<{ componentList: string[] }> = {
           .describe('The name of the component to retrieve data attributes for.'),
       },
       async ({ component }) => {
-        const attributes = await getComponentDataAttributes(component)
+        const json = await getStyleGuide(component)
         const extraGuide = customGuides[component] || ''
 
         return {
           content: [
             {
               type: 'text',
-              text: JSON.stringify(attributes, null, 2),
+              text: JSON.stringify(json, null, 2),
             },
             {
               type: 'text',
@@ -184,10 +184,6 @@ data-type: error, info, warning, success
   listbox: [orientationStyleGuide].join('\n'),
 
   dialog: [dismissibleStyleGuide, dialogStyleGuide].join('\n'),
-
-  'qr-code': `
-  Root: We expose --qrcode-pixel-size, --qrcode-width, --qrcode-height css variables.
-  `,
 
   progress: `
   ${orientationStyleGuide}

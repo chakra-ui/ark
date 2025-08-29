@@ -40,6 +40,11 @@ export interface GetExampleResponse {
   files: { name: string; content: string; npmDependencies: string[] }[]
 }
 
+export interface GetStyleGuideResponse {
+  dataAttr?: Record<string, string>
+  cssVar?: Record<string, string>
+}
+
 export interface Example {
   id: string
   filename: string

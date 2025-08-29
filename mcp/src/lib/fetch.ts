@@ -1,4 +1,9 @@
-import type { GetExampleResponse, ListComponentExamplesResponse, ListExamplesResponse } from './types.js'
+import type {
+  GetExampleResponse,
+  GetStyleGuideResponse,
+  ListComponentExamplesResponse,
+  ListExamplesResponse,
+} from './types.js'
 
 /**
  * Fetches the list of all available Ark UI components for a specific framework.
@@ -61,12 +66,12 @@ export async function getExample({
   return response.json() as Promise<GetExampleResponse>
 }
 
-export async function getComponentDataAttributes(component: string): Promise<GetExampleResponse> {
-  const response = await fetch(`https://ark-ui.com/api/data-attr/${component}`)
+export async function getStyleGuide(component: string): Promise<GetStyleGuideResponse> {
+  const response = await fetch(`https://ark-ui.com/api/style-guide/${component}`)
 
   if (!response.ok) {
     throw new Error(`Failed to fetch examples: ${response.status} ${response.statusText}`)
   }
 
-  return response.json() as Promise<GetExampleResponse>
+  return response.json() as Promise<GetStyleGuideResponse>
 }
