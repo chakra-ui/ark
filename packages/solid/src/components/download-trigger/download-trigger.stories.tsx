@@ -1,7 +1,7 @@
 import type { Meta } from 'storybook-solidjs-vite'
 
 const meta: Meta = {
-  title: 'Components/DownloadTrigger',
+  title: 'Utilities / Download Trigger',
 }
 
 export default meta

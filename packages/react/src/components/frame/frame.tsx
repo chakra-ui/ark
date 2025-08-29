@@ -86,7 +86,7 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
               mountNode,
             )
           : null}
-        {/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
+        {/* biome-ignore lint/style/noNonNullAssertion: intentional */}
         {head && frameRef ? createPortal(head, frameRef.contentDocument!.head) : null}
       </iframe>
     </EnvironmentProvider>

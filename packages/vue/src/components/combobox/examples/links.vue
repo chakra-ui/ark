@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// biome-ignore lint/style/useImportType: <explanation>
+// biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { useFilter } from '@ark-ui/vue/locale'
 
@@ -40,7 +40,7 @@ const handleInputChange = (details: Combobox.InputValueChangeDetails) => {
     <Teleport to="body">
       <Combobox.Positioner>
         <Combobox.Content>
-          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" as-child>
+          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item" :as-child="true">
             <a :href="item.href">
               <Combobox.ItemText>{{ item.label }}</Combobox.ItemText>
               <Combobox.ItemIndicator>✓</Combobox.ItemIndicator>

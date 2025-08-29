@@ -11,7 +11,6 @@ export const Dynamic = defineComponent({
       const [firstChildren, ...otherChildren] = children
 
       if (Object.keys(attrs).length > 0) {
-        // biome-ignore lint/performance/noDelete: <explanation>
         delete firstChildren.props?.ref
         const mergedProps = mergeProps(attrs, firstChildren.props ?? {})
         const cloned = cloneVNode(firstChildren, mergedProps)

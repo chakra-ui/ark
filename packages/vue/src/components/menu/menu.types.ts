@@ -99,6 +99,17 @@ export type RootEmits = {
    */
   pointerDownOutside: [event: menu.PointerDownOutsideEvent]
   /**
+   * Function called when this layer is closed due to a parent layer being closed
+   */
+  requestDismiss: [
+    event: CustomEvent<{
+      originalLayer: HTMLElement
+      targetLayer: HTMLElement | undefined
+      originalIndex: number
+      targetIndex: number
+    }>,
+  ]
+  /**
    * Function called when a menu item is selected.
    */
   select: [details: menu.SelectionDetails]

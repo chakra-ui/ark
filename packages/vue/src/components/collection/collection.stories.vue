@@ -1,19 +1,19 @@
 <script setup>
-import ListSelectionMultiple from './examples/list-selection-multiple.vue'
-import ListSelectionRange from './examples/list-selection-range.vue'
-import ListSelection from './examples/list-selection.vue'
+import BasicExample from './examples/list-selection/basic.vue'
+import MultipleExample from './examples/list-selection/multiple.vue'
+import RangeExample from './examples/list-selection/range.vue'
 </script>
 
 <template>
   <Story title="Collection">
-    <Variant title="ListSelection">
-      <ListSelection />
+    <Variant title="Basic">
+      <BasicExample />
     </Variant>
-    <Variant title="ListSelectionMultiple">
-      <ListSelectionMultiple />
+    <Variant title="Multiple">
+      <MultipleExample />
     </Variant>
-    <Variant title="ListSelectionRange">
-      <ListSelectionRange />
+    <Variant title="Range">
+      <RangeExample />
     </Variant>
   </Story>
 </template>

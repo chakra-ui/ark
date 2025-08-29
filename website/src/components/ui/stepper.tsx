@@ -32,7 +32,7 @@ export const Step = (props: PropsWithChildren<StepProps>) => {
         >
           {number}
         </Circle>
-        <Heading as="h3" my="0!">
+        <Heading as="h3" my="0!" textStyle="xl">
           {title}
         </Heading>
       </Stack>

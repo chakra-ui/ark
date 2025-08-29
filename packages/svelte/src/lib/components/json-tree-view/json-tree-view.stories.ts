@@ -10,7 +10,7 @@ import RenderValueExample from './examples/render-value.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
-  title: 'Components / Json Tree View',
+  title: 'Utilities / JSON Tree View',
 }
 
 export default meta

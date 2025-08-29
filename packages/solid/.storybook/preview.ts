@@ -5,6 +5,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
+        order: ['Utilities', 'Providers', 'Components'],
         method: 'alphabetical',
       },
     },

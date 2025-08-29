@@ -14,6 +14,7 @@ export {
   type TreeCollectionOptions,
   type TreeNode,
 } from './tree-collection'
+export { useAsyncList, type UseAsyncListProps, type UseAsyncListReturn } from './use-async-list.svelte'
 export {
   useListCollection,
   type UseListCollectionProps,

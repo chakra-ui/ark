@@ -40,6 +40,5 @@ export const FocusTrap = (props: FocusTrapProps) => {
     onCleanup(trapFocus(localNode, trapProps))
   })
 
-  // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
   return <ark.div {...localProps} ref={composeRefs((el) => (localNode = el), props.ref)} />
 }

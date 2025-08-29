@@ -25,19 +25,17 @@ interface DialogProps {
 const Dialog = (props: DialogProps) => {
   const { children, isOpen, setIsOpen, bg } = props
   return (
-    <>
-      <ArkDialog.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
-        <ArkDialog.Backdrop />
-        <ArkDialog.Positioner style={{ position: 'fixed', left: '0px', top: '0px' }}>
-          <ArkDialog.Content style={{ backgroundColor: bg, width: '300px', height: '200px' }}>
-            <ArkDialog.CloseTrigger asChild>
-              <button>Close</button>
-            </ArkDialog.CloseTrigger>
-            {children}
-          </ArkDialog.Content>
-        </ArkDialog.Positioner>
-      </ArkDialog.Root>
-    </>
+    <ArkDialog.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
+      <ArkDialog.Backdrop />
+      <ArkDialog.Positioner style={{ position: 'fixed', left: '0px', top: '0px' }}>
+        <ArkDialog.Content style={{ backgroundColor: bg, width: '300px', height: '200px' }}>
+          <ArkDialog.CloseTrigger asChild>
+            <button>Close</button>
+          </ArkDialog.CloseTrigger>
+          {children}
+        </ArkDialog.Content>
+      </ArkDialog.Positioner>
+    </ArkDialog.Root>
   )
 }
 

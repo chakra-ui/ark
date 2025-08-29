@@ -53,6 +53,7 @@
         "isRequired": false,
         "description": "The initial open state of the hover card when rendered.\nUse when you don't need to control the open state of the hover card."
       },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the hover card is disabled" },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{ trigger: string; content: string; positioner: string; arrow: string }>",

@@ -29,7 +29,7 @@ useForwardExpose()
 <template>
   <ark.input
     v-bind="field.getInputProps()"
-    :as-child
+    :as-child="asChild"
     :value="modelValue"
     @input="(event) => emit('update:modelValue', (event.target as HTMLInputElement).value)"
   >

@@ -1,3 +1,9 @@
+export type {
+  HighlightChangeDetails,
+  ValidityChangeDetails,
+  ValueChangeDetails,
+  InputValueChangeDetails,
+} from '@zag-js/tags-input'
 export {
   default as Root,
   type TagsInputRootProps as RootProps,

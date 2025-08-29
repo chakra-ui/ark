@@ -2,7 +2,6 @@
 id: list-selection
 title: List Selection
 description: Used for managing selection state in list collections.
-status: preview
 ---
 
 The `useListSelection` hook manages selection state in lists and collections. It supports single and multiple selection
@@ -36,20 +35,20 @@ By default, the hook supports single selection mode that can be deselected.
 
 > Set `deselectable` to `false` to prevent deselecting the current selection.
 
-<Example id="list-selection" component="collection" />
+<Example id="list-selection/basic" component="collection" />
 
 ### Multiple Selection
 
 Set `selectionMode` to `multiple` to allow multiple items to be selected.
 
-<Example id="list-selection-multiple" component="collection" />
+<Example id="list-selection/multiple" component="collection" />
 
 ### Range Selection
 
 Here's an example of how to implement range selection that extends the selection from the first selected item to the
 clicked item.
 
-<Example id="list-selection-range" component="collection" />
+<Example id="list-selection/range" component="collection" />
 
 ## API Reference
 

@@ -104,6 +104,11 @@
         "description": "The initial checked state of the checkbox when rendered.\nUse when you don't need to control the checked state of the checkbox."
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the checkbox is disabled" },
+      "form": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the form that the checkbox belongs to."
+      },
       "ids": {
         "type": "Partial<{ root: string; hiddenInput: string; control: string; label: string }>",
         "isRequired": false,

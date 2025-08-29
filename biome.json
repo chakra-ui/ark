@@ -19,10 +19,21 @@
       },
       "a11y": {
         "useButtonType": "off",
-        "noLabelWithoutControl": "off"
+        "noLabelWithoutControl": "off",
+        "useSemanticElements": "off"
       },
       "style": {
         "useConst": "off"
+      },
+      "correctness": {
+        "useUniqueElementIds": "off"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
       }
     }
   },

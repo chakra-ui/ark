@@ -79,7 +79,6 @@ async function extractPropertiesOfTypeName(
       }
     }
     if (Object.keys(properties).length) {
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       results[(typeStatement as any).name.getText()] = Object.fromEntries(
         Object.entries(properties)
           .sort(([aName], [bName]) => aName.localeCompare(bName))
@@ -160,7 +159,7 @@ const extractTypesForFramework = async (framework: string) => {
     throw new Error(`Framework ${framework} not supported`)
   }
 
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  // biome-ignore lint/style/noNonNullAssertion: intentional
   const rootDir = dirname(findUpSync('bun.lock')!)
   process.chdir(path.join(rootDir, 'packages', framework))
 
@@ -248,6 +247,7 @@ const extractTypesForFramework = async (framework: string) => {
           if (firstTypeParameter && name) {
             return [name, firstTypeParameter]
           }
+          return null
         })
         .filter(Boolean)
         .reduce((acc, value) => {

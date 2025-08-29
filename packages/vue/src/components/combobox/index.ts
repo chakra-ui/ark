@@ -22,6 +22,7 @@ export {
   type ComboboxContentBaseProps,
   type ComboboxContentProps,
 } from './combobox-content.vue'
+export { default as ComboboxEmpty, type ComboboxEmptyBaseProps, type ComboboxEmptyProps } from './combobox-empty.vue'
 export { default as ComboboxContext, type ComboboxContextProps } from './combobox-context.vue'
 export {
   default as ComboboxControl,

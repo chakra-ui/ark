@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
+import ExactMatch from './examples/exact-match.vue'
 import IgnoreCase from './examples/ignore-case.vue'
 import MatchAll from './examples/match-all.vue'
 import Multiple from './examples/multiple.vue'
@@ -10,6 +11,9 @@ import WithInput from './examples/with-input.vue'
   <Story title="Highlight">
     <Variant title="Basic">
       <Basic />
+    </Variant>
+    <Variant title="ExactMatch">
+      <ExactMatch />
     </Variant>
     <Variant title="Multiple">
       <Multiple />

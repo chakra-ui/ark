@@ -15,6 +15,11 @@ export {
   type ComboboxContentProps as ContentProps,
   type ComboboxContentBaseProps as ContentBaseProps,
 } from './combobox-content.svelte'
+export {
+  default as Empty,
+  type ComboboxEmptyProps as EmptyProps,
+  type ComboboxEmptyBaseProps as EmptyBaseProps,
+} from './combobox-empty.svelte'
 export { default as Context, type ComboboxContextProps as ContextProps } from './combobox-context.svelte'
 export {
   default as Control,

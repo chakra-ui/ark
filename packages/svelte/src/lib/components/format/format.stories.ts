@@ -14,7 +14,7 @@ import RelativeTimeBasicExample from './examples/relative-time-basic.svelte'
 import RelativeTimeShortExample from './examples/relative-time-short.svelte'
 
 const meta = {
-  title: 'Components / Format',
+  title: 'Utilities / Format',
 } as Meta
 
 export default meta

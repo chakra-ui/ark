@@ -22,6 +22,7 @@ export {
   type ComboboxContentProps,
   type ComboboxContentBaseProps,
 } from './combobox-content.svelte'
+export { default as ComboboxEmpty, type ComboboxEmptyProps, type ComboboxEmptyBaseProps } from './combobox-empty.svelte'
 export { default as ComboboxContext, type ComboboxContextProps } from './combobox-context.svelte'
 export {
   default as ComboboxControl,

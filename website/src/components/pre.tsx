@@ -1,6 +1,6 @@
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import type { PropsWithChildren } from 'react'
-import { codeToHtml } from 'shiki'
+import { getHighlighter } from '~/lib/highlighter'
 import { Box } from 'styled-system/jsx'
 import { CodePreview } from './code-preview'
 
@@ -9,7 +9,8 @@ export const Pre = async (props: PropsWithChildren) => {
   const lang = props.children?.props.className?.replace('language-', '')
   // @ts-expect-error it exists
   const code = props.children?.props.children.toString()
-  const html = await codeToHtml(code, {
+  const highlighter = await getHighlighter()
+  const html = await highlighter.codeToHtml(code, {
     lang,
     theme: 'github-dark-default',
     transformers: [transformerNotationHighlight()],

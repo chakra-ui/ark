@@ -12,6 +12,10 @@ export interface RootProps {
    */
   defaultOpen?: boolean
   /**
+   * Whether the hover card is disabled
+   */
+  disabled?: boolean
+  /**
    * The unique identifier of the machine.
    */
   id?: string

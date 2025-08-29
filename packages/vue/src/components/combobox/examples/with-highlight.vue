@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// biome-ignore lint/style/useImportType: <explanation>
+// biome-ignore lint/style/useImportType: intentional
 import { Combobox, useListCollection } from '@ark-ui/vue/combobox'
 import { Highlight } from '@ark-ui/vue/highlight'
 import { useFilter } from '@ark-ui/vue/locale'

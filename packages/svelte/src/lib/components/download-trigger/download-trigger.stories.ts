@@ -4,7 +4,7 @@ import Svg from './examples/svg.svelte'
 import WithPromise from './examples/with-promise.svelte'
 
 const meta = {
-  title: 'Components / Download Trigger',
+  title: 'Utilities / Download Trigger',
 } as Meta
 
 export default meta

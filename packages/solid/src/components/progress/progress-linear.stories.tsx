@@ -1,7 +1,7 @@
 import type { Meta } from 'storybook-solidjs-vite'
 
 const meta: Meta = {
-  title: 'Components / Progress / Linear',
+  title: 'Components / Progress - Linear',
 }
 
 export default meta

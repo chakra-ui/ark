@@ -6,7 +6,7 @@ export type Assign<T, U> = Omit<T, keyof U> & U
 
 export type EmitFn<T> = <K extends keyof T>(
   event: K,
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
   ...args: T[K] extends any[] ? T[K] : never
 ) => void
 

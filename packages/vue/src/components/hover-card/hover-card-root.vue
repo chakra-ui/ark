@@ -16,6 +16,7 @@ import { HoverCardProvider } from './use-hover-card-context'
 
 const props = withDefaults(defineProps<HoverCardRootProps>(), {
   defaultOpen: undefined,
+  disabled: undefined,
   open: undefined,
 } satisfies BooleanDefaults<RootProps>)
 

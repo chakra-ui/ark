@@ -1,5 +1,5 @@
 <script lang="ts">
-  // biome-ignore lint/style/useImportType: <explanation>
+  // biome-ignore lint/style/useImportType: intentional
   import { Field } from '@ark-ui/svelte/field'
   import { RatingGroup } from '@ark-ui/svelte/rating-group'
   import { StarIcon } from 'lucide-svelte'

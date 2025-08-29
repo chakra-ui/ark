@@ -7,11 +7,6 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node value" },
-      "classNames": {
-        "type": "JsonTreeViewClassNames",
-        "isRequired": false,
-        "description": "The CSS class names for each part of the component."
-      },
       "collapseStringsAfterLength": { "type": "number", "isRequired": false },
       "data": { "type": "{}", "isRequired": false, "description": "The data to display in the tree." },
       "defaultCheckedValue": {

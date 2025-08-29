@@ -1,4 +1,4 @@
-import { ClientOnly } from '../client-only'
+import { ClientOnly } from '@ark-ui/react/client-only'
 
 export const WithFallback = () => (
   <ClientOnly fallback={<div>Loading...</div>}>

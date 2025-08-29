@@ -1,12 +1,13 @@
 import type { Meta } from '@storybook/react-vite'
 
 const meta: Meta = {
-  title: 'Components / Highlight',
+  title: 'Utilities / Highlight',
 }
 
 export default meta
 
 export { Basic } from './examples/basic'
+export { ExactMatch } from './examples/exact-match'
 export { IgnoreCase } from './examples/ignore-case'
 export { MatchAll } from './examples/match-all'
 export { Multiple } from './examples/multiple'

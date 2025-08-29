@@ -1,19 +1,17 @@
 import NextLink from 'next/link'
 import { Box, Center, Container, Divider, HStack, Stack } from 'styled-system/jsx'
 import { EmailSignInForm } from '~/components/auth/email-signin-form'
-import { GitHubSignInButton } from '~/components/auth/github-signin-button'
-import { GoogleSignInButton } from '~/components/auth/google-signin-button'
+import { OAuthSignInButtons } from '~/components/auth/oauth-signin-buttons'
 import { Logo } from '~/components/logo'
 import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
 
 interface Props {
-  searchParams: Promise<{ callbackUrl?: string }>
+  searchParams: Promise<{ callbackURL?: string }>
 }
 
 export default async function Page(props: Props) {
-  const { callbackUrl } = await props.searchParams
-  const redirectTo = callbackUrl ?? '/'
+  const { callbackURL = '/' } = await props.searchParams
 
   return (
     <Container display="flex" flex="1" alignItems="center" maxW="27rem">
@@ -33,18 +31,15 @@ export default async function Page(props: Props) {
         </Card.Header>
         <Card.Body>
           <Stack gap="6">
-            <EmailSignInForm redirectTo={redirectTo} />
+            <EmailSignInForm callbackURL={callbackURL} />
             <HStack>
-              <Divider />
+              <Divider borderBottomWidth="1px" h="1px" />
               <Text textStyle="sm" color="fg.muted">
                 OR
               </Text>
-              <Divider />
+              <Divider borderBottomWidth="1px" h="1px" />
             </HStack>
-            <Stack gap="3">
-              <GoogleSignInButton redirectTo={redirectTo} />
-              <GitHubSignInButton redirectTo={redirectTo} />
-            </Stack>
+            <OAuthSignInButtons callbackURL={callbackURL} />
           </Stack>
         </Card.Body>
       </Card.Root>

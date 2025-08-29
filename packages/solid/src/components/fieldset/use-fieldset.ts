@@ -30,6 +30,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
   let rootRef: HTMLFieldSetElement | undefined
   const id = mergedProps.id ?? createUniqueId()
 
+  const legendId = `fieldset::${id}::legend`
   const errorTextId = `fieldset::${id}::error-text`
   const helperTextId = `fieldset::${id}::helper-text`
 
@@ -65,10 +66,12 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     disabled: mergedProps.disabled,
     'data-disabled': dataAttr(mergedProps.disabled),
     'data-invalid': dataAttr(mergedProps.invalid),
+    'aria-labelledby': legendId,
     'aria-describedby': labelIds.join(' ') || undefined,
   })
 
   const getLegendProps = () => ({
+    id: legendId,
     ...parts.legend.attrs,
     'data-disabled': dataAttr(mergedProps.disabled),
     'data-invalid': dataAttr(mergedProps.invalid),

@@ -35,7 +35,7 @@ export interface UseVModelOptions<T, Passive extends boolean = false> {
 export function useVModel<P extends object, K extends keyof P, Name extends string>(
   props: P,
   key?: K,
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+
   emit?: (name: Name, ...args: any[]) => void,
   options?: UseVModelOptions<P[K], false>,
 ): WritableComputedRef<NonNullable<P[K]>>
@@ -84,7 +84,6 @@ export function useVModel<P extends object, K extends keyof P, Name extends stri
       (v) => {
         if (!isUpdating) {
           isUpdating = true
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           ;(proxy as any).value = v as UnwrapRef<P[K]>
           nextTick(() => {
             isUpdating = false

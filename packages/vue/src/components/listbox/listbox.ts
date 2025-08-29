@@ -12,6 +12,11 @@ export {
   type ListboxContentProps as ContentProps,
 } from './listbox-content.vue'
 export {
+  default as Empty,
+  type ListboxEmptyBaseProps as EmptyBaseProps,
+  type ListboxEmptyProps as EmptyProps,
+} from './listbox-empty.vue'
+export {
   default as Input,
   type ListboxInputBaseProps as InputBaseProps,
   type ListboxInputProps as InputProps,

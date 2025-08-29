@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Box, Container, Stack } from 'styled-system/jsx'
+import { stack } from 'styled-system/patterns'
 import { ExamplePreview } from '~/components/example-preview'
 import { ExamplesFooter } from '~/components/navigation/examples/examples-footer'
 import { Heading } from '~/components/ui/heading'
-import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
 import { fetchExample } from '~/lib/examples'
 
@@ -19,14 +19,18 @@ export default async function Page(props: Props) {
     <Container display="flex" py="12" gap="8" justifyContent="center">
       <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
         <Box maxW="61rem" mx="auto" width="full">
-          <Prose css={{ maxWidth: 'unset' }}>
-            <Heading as="h1" fontWeight="bold">
+          <article
+            className={stack({
+              lineHeight: '1.75',
+              color: 'var(--colors-prose-body)',
+              mb: '10',
+            })}
+          >
+            <Heading as="h1" fontWeight="bold" textStyle="4xl">
               {example.title}
             </Heading>
-            <Text className="lead" color="fg.muted" mb="12">
-              {example.description}
-            </Text>
-          </Prose>
+            <Text color="fg.muted">{example.description}</Text>
+          </article>
           <ExamplePreview example={example} />
         </Box>
         <Box maxW="61rem" mx="auto" width="full">

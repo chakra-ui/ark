@@ -6,10 +6,12 @@ export const Arrow = () => (
     <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
     <Portal>
       <Tooltip.Positioner>
-        <Tooltip.Arrow>
-          <Tooltip.ArrowTip />
-        </Tooltip.Arrow>
-        <Tooltip.Content>I am a tooltip!</Tooltip.Content>
+        <Tooltip.Content>
+          <Tooltip.Arrow>
+            <Tooltip.ArrowTip />
+          </Tooltip.Arrow>
+          I am a tooltip!
+        </Tooltip.Content>
       </Tooltip.Positioner>
     </Portal>
   </Tooltip.Root>

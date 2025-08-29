@@ -1,0 +1,143 @@
+---
+id: async-list
+title: Async List
+description:
+  A hook for managing asynchronous data operations in list collections including loading, filtering, sorting, and
+  pagination.
+status: new
+---
+
+The `useAsyncList` hook manages asynchronous data operations for list collections. It provides a comprehensive solution
+for loading, filtering, sorting, and paginating data with built-in loading states, error handling, and request
+cancellation.
+
+```tsx
+import { useAsyncList } from '@ark-ui/react/collection'
+
+const list = useAsyncList<User>({
+  async load({ signal }) {
+    const response = await fetch('/api/users', { signal })
+    const users = await response.json()
+    return { items: users }
+  },
+})
+
+console.log(list.items) // User[]
+console.log(list.loading) // boolean
+console.log(list.error) // Error | null
+```
+
+## Examples
+
+### Basic Usage
+
+The most basic usage involves providing a `load` function that returns data.
+
+<Example id="async-list/reload" component="collection" />
+
+### Infinite Loading
+
+Implement pagination by returning a cursor that indicates more data is available.
+
+<Example id="async-list/infinite-loading" component="collection" />
+
+### Filtering
+
+Filter data based on user input with automatic debouncing and loading states.
+
+<Example id="async-list/filter" component="collection" />
+
+### Sorting (Client-side)
+
+Sort data on the client side after loading from the server.
+
+<Example id="async-list/sort-client-side" component="collection" />
+
+### Sorting (Server-side)
+
+Send sort parameters to the server and reload data when sorting changes.
+
+<Example id="async-list/sort-server-side" component="collection" />
+
+### Dependencies
+
+Automatically reload data when dependencies change, such as filter selections or external state.
+
+<Example id="async-list/dependencies" component="collection" />
+
+## API Reference
+
+### Props
+
+- **load** (`(params: LoadParams<C>) => Promise<LoadResult<T, C>>`) - Function to load data asynchronously
+- **sort** (`(params: SortParams<T>) => Promise<SortResult<T>> | SortResult<T>`) - Optional function for client-side
+  sorting
+- **autoReload** (`boolean`, default: `false`) - Whether to automatically reload data on mount
+- **initialItems** (`T[]`, default: `[]`) - Initial items to display before first load
+- **dependencies** (`any[]`, default: `[]`) - Values that trigger a reload when changed
+- **initialFilterText** (`string`, default: `''`) - Initial filter text value
+- **initialSortDescriptor** (`SortDescriptor | null`) - Initial sort configuration
+
+### Load Parameters
+
+The `load` function receives an object with the following properties:
+
+- **cursor** (`C | undefined`) - Current cursor for pagination
+- **filterText** (`string`) - Current filter text
+- **sortDescriptor** (`SortDescriptor | null`) - Current sort configuration
+- **signal** (`AbortSignal`) - AbortController signal for request cancellation
+
+### Load Result
+
+The `load` function should return an object with:
+
+- **items** (`T[]`) - The loaded items
+- **cursor** (`C | undefined`) - Optional cursor for next page
+
+### Sort Parameters
+
+The `sort` function receives an object with:
+
+- **items** (`T[]`) - Current items to sort
+- **descriptor** (`SortDescriptor`) - Sort configuration with `column` and `direction`
+
+### Return Value
+
+The hook returns an object with the following properties and methods:
+
+#### State Properties
+
+- **items** (`T[]`) - Current list of items
+- **loading** (`boolean`) - Whether a load operation is in progress
+- **error** (`Error | null`) - Any error from the last operation
+- **cursor** (`C | undefined`) - Current cursor for pagination
+- **filterText** (`string`) - Current filter text
+- **sortDescriptor** (`SortDescriptor | null`) - Current sort configuration
+
+#### Methods
+
+- **reload** (`() => void`) - Reload data from the beginning
+- **loadMore** (`() => void`) - Load more items (when cursor is available)
+- **setFilterText** (`(text: string) => void`) - Set filter text and reload
+- **sort** (`(descriptor: SortDescriptor) => void`) - Apply sorting
+
+#### Types
+
+```tsx
+interface SortDescriptor {
+  column: string
+  direction: 'ascending' | 'descending'
+}
+
+interface LoadParams<C> {
+  cursor?: C
+  filterText: string
+  sortDescriptor?: SortDescriptor | null
+  signal: AbortSignal
+}
+
+interface LoadResult<T, C> {
+  items: T[]
+  cursor?: C
+}
+```

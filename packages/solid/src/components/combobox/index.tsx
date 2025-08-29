@@ -18,6 +18,7 @@ export {
   type ComboboxClearTriggerProps,
 } from './combobox-clear-trigger'
 export { ComboboxContent, type ComboboxContentBaseProps, type ComboboxContentProps } from './combobox-content'
+export { ComboboxEmpty, type ComboboxEmptyBaseProps, type ComboboxEmptyProps } from './combobox-empty'
 export { ComboboxContext, type ComboboxContextProps } from './combobox-context'
 export { ComboboxControl, type ComboboxControlBaseProps, type ComboboxControlProps } from './combobox-control'
 export { ComboboxInput, type ComboboxInputBaseProps, type ComboboxInputProps } from './combobox-input'

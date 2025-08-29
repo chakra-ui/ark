@@ -5,6 +5,11 @@ export {
 } from './listbox-content.svelte'
 export { default as Context, type ListboxContextProps as ContextProps } from './listbox-context.svelte'
 export {
+  default as Empty,
+  type ListboxEmptyBaseProps as EmptyBaseProps,
+  type ListboxEmptyProps as EmptyProps,
+} from './listbox-empty.svelte'
+export {
   default as Input,
   type ListboxInputBaseProps as InputBaseProps,
   type ListboxInputProps as InputProps,

@@ -40,6 +40,7 @@
       'onInteractOutside',
       'onOpenChange',
       'onPointerDownOutside',
+      'onRequestDismiss',
       'onSelect',
       'open',
       'positioning',

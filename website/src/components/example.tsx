@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { transformerNotationHighlight } from '@shikijs/transformers'
 import { Match } from 'effect'
-import { codeToHtml } from 'shiki'
+import { getHighlighter } from '~/lib/highlighter'
 import { getFramework } from '~/lib/frameworks'
 import { getServerContext } from '~/lib/server-context'
 import { CodeTabs } from './code-tabs'
@@ -70,6 +70,7 @@ const findExamples = async (props: Props) => {
   const id = props.id
   const serverContext = getServerContext()
   const component = props.component ?? serverContext.component
+  const highlighter = await getHighlighter()
 
   if (!component) return []
 
@@ -77,7 +78,7 @@ const findExamples = async (props: Props) => {
     frameworks.map(async (framework) => {
       const { code, extension } = await frameworkExample(framework, component, id)
 
-      const html = await codeToHtml(code, {
+      const html = highlighter.codeToHtml(code, {
         lang: extension,
         theme: 'github-dark-default',
         transformers: [transformerNotationHighlight()],

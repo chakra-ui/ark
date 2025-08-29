@@ -28,7 +28,7 @@ export const Autofocus = () => {
             }}
           >
             <input type="text" placeholder="Regular input" />
-            {/* biome-ignore lint/a11y/noAutofocus: <explanation> */}
+            {/* biome-ignore lint/a11y/noAutofocus: intentional */}
             <input type="text" placeholder="Autofocused input" autoFocus />
             <button onClick={() => setTrapped(false)}>End Trap</button>
           </div>

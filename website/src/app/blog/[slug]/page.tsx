@@ -7,7 +7,6 @@ import { hstack } from 'styled-system/patterns'
 import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
-import { Prose } from '~/components/ui/prose'
 import { Text } from '~/components/ui/text'
 import { MDXContent } from '~/mdx-content'
 import { blogs } from '.velite'
@@ -76,9 +75,9 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
           })}
         />
 
-        <Prose maxW="inherit">
+        <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
           <MDXContent code={blog.code} />
-        </Prose>
+        </article>
       </Container>
 
       <Footer />

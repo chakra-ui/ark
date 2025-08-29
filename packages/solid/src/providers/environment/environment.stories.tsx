@@ -1,7 +1,7 @@
 import type { Meta } from 'storybook-solidjs-vite'
 
 const meta: Meta = {
-  title: 'Providers / Environment',
+  title: 'Utilities / Environment',
 }
 
 export default meta

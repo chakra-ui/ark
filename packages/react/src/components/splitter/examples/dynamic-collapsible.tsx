@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/correctness/useExhaustiveDependencies: intentional */
+
 import { Splitter, useSplitter } from '@ark-ui/react/splitter'
 import { useLayoutEffect, useRef, useState } from 'react'
 

@@ -1,1 +1,3 @@
-export { anatomy as comboboxAnatomy } from '@zag-js/combobox'
+import { anatomy } from '@zag-js/combobox'
+
+export const comboboxAnatomy = anatomy.extendWith('empty')

@@ -1,5 +1,137 @@
 ## [Unreleased]
 
+## [5.22.0] - 2025-08-28
+
+### Added
+
+- **Combobox**: Add `ComboboxEmpty` component to display content when the combobox has no items
+
+- **Listbox**: Add `ListboxEmpty` component to display content when the listbox has no items
+
+- **Hover Card**: Add support for `disabled` prop
+
+### Fixed
+
+- **Collection**: Fix issue where disabled items could be reached via typeahead
+
+- **Color Picker**: Fix issue where color picker was not working correctly in RTL mode
+
+- **Date Picker**: Fix issue where datepicker doesn't revert to a valid value when the input value exceeds the min/max
+  and blurred
+
+- **Dismissable**: Expose `onRequestDismiss` custom event handler for event a parent layer requests the child layer to
+  dismiss. If prevented via `event.preventDefault()`, the child layer will not dismiss when the parent layer is
+  dismissed.
+
+- **Number Input**
+  - Omit the input `pattern` when `formatOptions` is provided. This prevents native pattern validation from conflicting
+    with formatted values (e.g., currency or percent).
+  - Handle empty values consistently across all format options.
+  - Add `data-scrubbing` attribute to the number input parts.
+
+- **Tags Input**: Fix issue where highlighted item doesn't clear when tabbing out of the input to an external button
+  within the `control` part.
+
+- **Tooltip**
+  - Set `closeOnPointerdown` to `false` when `closeOnClick` is set to `false`
+  - Reduce bundle size by replacing `@zag-js/store` dependency with a lightweight store implementation.
+
+## [5.21.0] - 2025-08-24
+
+### Added
+
+- **Composables**: Add `useAsyncList` and `useCollator` composables for managing asynchronous list operations and
+  locale-aware string comparison
+- **Toast**: Export type definitions `ToastActionOptions`, `ToastPlacement`, `ToastPromiseOptions`, `ToastStatus`,
+  `ToastStatusChangeDetails`, and `ToastType`
+
+### Changed
+
+- **Fieldset**
+  - Update Legend component to render as `div` instead of `legend` element for improved styling flexibility
+  - Add `aria-labelledby` attribute to fieldset root for better accessibility by linking to legend
+
+### Fixed
+
+- **Date Picker**
+  - Clear hovered range state after completing range selection instead of waiting for pointer to leave the calendar
+    area.
+  - Fix issue where month and year select labels don't update correctly when using `min`/`max` constraints.
+  - Expose `disabled` on `api.getMonths()` and `api.getYears()` results to indicate options out of range for current
+    constraints.
+
+- **Listbox**
+  - Fix issue where first enabled item should be highlighted by default when listbox receives focus and no item is
+    currently highlighted.
+  - Add `getElement` to `scrollToIndexFn` details
+  - Track collection changes and clear `highlightedValue` if the item is no longer in the collection.
+
+- **ScrollArea**
+  - Avoid detecting hover state from portalled descendants.
+  - Add `data-dragging` attribute to scroll area parts.
+
+- **Select**: Add `getElement` to `scrollToIndexFn` details
+
+- **Combobox**: Add `getElement` to `scrollToIndexFn` details
+
+## [5.20.0] - 2025-08-20
+
+### Added
+
+- **Highlight Word**: Add `exactMatch` option that enables whole-word matching using regex word boundaries.
+
+### Fixed
+
+- **Menu**: Fix context menu repositioning logic
+
+- **Scroll Area**: Add `data-hover` to scroll area
+
+## [5.19.0] - 2025-08-18
+
+### Added
+
+- **ScrollArea [NEW]**: Add support for new scroll area component.
+
+### Fixed
+
+- **ListCollection**
+  - Avoid recomputing groups on every call to `at()` and `indexOf()`
+  - Fixed bug in `find()` method (was checking `!= null` instead of `!== -1`)
+
+- **GridCollection**: Avoid recomputing rows on every call to `getRows()`
+
+- **Menu**
+  - Add `data-state` attribute for context menu trigger
+  - Fix context menu positioning bug where reopening at the same coordinates fails to reposition
+
+## [5.18.4] - 2025-08-14
+
+### Fixed
+
+- **Listbox**: Add support for navigating grid collections
+
+- **Carousel**:
+  - Fix an issue where the carousel would not update when `slideCount` or `autoplay` props change.
+  - Fix an issue where `loop: false` was ignored when using autoplay. Now, the carousel will stop when it gets to the
+    last slide.
+
+- **Date Picker**: Expose `data-inline` attribute on Content part to enable distinct styling for inline date pickers
+  versus popover date pickers.
+
+- **Menu**: Fix issue where `onCheckedChange` could be called twice on checkbox or radio item
+
+- **Radio Group**: Fixed issue where arrow key navigation doesn't apply `data-focus-visible` on the newly focused item.
+
+- **TagsInput**: Export `InputValueChangeDetails` type
+- **Field**: Fix issue where `asChild` prop is not being applied to the input and select components, leading to
+  hydration mismatch.
+
+### Changed
+
+- **Async List**: Improve type inference for descriptors
+
+- **Framework Components**: Improve runtime performance of components
+
 ## [5.18.3] - 2025-08-01
 
 ### Fixed

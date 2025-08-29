@@ -10,6 +10,16 @@
     }
   },
   "Context": { "props": { "render": { "type": "Snippet<[UseListboxContext<T>]>", "isRequired": true } } },
+  "Empty": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'div'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
   "Input": {
     "props": {
       "asChild": {
@@ -153,9 +163,9 @@
       },
       "orientation": {
         "type": "'horizontal' | 'vertical'",
-        "defaultValue": "\"horizontal\"",
+        "defaultValue": "\"vertical\"",
         "isRequired": false,
-        "description": "The orientation of the element."
+        "description": "The orientation of the listbox."
       },
       "scrollToIndexFn": {
         "type": "(details: ScrollToIndexDetails) => void",

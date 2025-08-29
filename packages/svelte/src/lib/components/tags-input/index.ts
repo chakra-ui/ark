@@ -2,6 +2,7 @@ export type {
   HighlightChangeDetails as TagsInputHighlightChangeDetails,
   ValidityChangeDetails as TagsInputValidityChangeDetails,
   ValueChangeDetails as TagsInputValueChangeDetails,
+  InputValueChangeDetails as TagsInputInputValueChangeDetails,
 } from '@zag-js/tags-input'
 export {
   default as TagsInputClearTrigger,

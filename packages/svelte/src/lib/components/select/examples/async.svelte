@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Portal } from '@ark-ui/svelte/portal'
-  // biome-ignore lint/style/useImportType: <explanation>
+  // biome-ignore lint/style/useImportType: intentional
   import { Select, createListCollection } from '@ark-ui/svelte/select'
   import { ChevronDownIcon } from 'lucide-svelte'
 

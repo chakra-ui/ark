@@ -39,7 +39,7 @@ defineProps<Props>()
       </TreeView.Branch>
     </template>
     <template v-else>
-      <TreeView.Item asChild>
+      <TreeView.Item :as-child="true">
         <a :href="node.href">
           <TreeView.ItemText>
             <File />

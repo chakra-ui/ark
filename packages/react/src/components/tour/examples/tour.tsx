@@ -8,7 +8,7 @@ export const DemoTour = () => {
   const tour = useTour({ steps })
 
   // Start the tour when the component mounts
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
     tour.start()
   }, [])

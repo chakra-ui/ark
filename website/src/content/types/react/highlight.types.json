@@ -3,6 +3,7 @@
     "props": {
       "query": { "type": "string | string[]", "isRequired": true, "description": "The query to highlight in the text" },
       "text": { "type": "string", "isRequired": true, "description": "The text to highlight" },
+      "exactMatch": { "type": "boolean", "isRequired": false, "description": "Whether to match whole words only" },
       "ignoreCase": { "type": "boolean", "isRequired": false, "description": "Whether to ignore case while matching" },
       "matchAll": {
         "type": "boolean",

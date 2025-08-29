@@ -2,7 +2,7 @@ import { EnvironmentProvider } from '@ark-ui/react/environment'
 import { Field } from '@ark-ui/react/field'
 import root from 'react-shadow'
 
-// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+// biome-ignore lint/complexity/useLiteralKeys: intentional
 const Host = root['div']
 
 export const ShadowDom = () => (

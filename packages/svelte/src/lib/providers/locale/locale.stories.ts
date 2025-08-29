@@ -3,7 +3,7 @@ import BasicExample from './examples/basic.svelte'
 import SetupExample from './examples/setup.svelte'
 
 const meta = {
-  title: 'Providers / Locale',
+  title: 'Utilities / Locale',
 } as Meta
 
 export default meta
