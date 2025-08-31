@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- **Field**: Add `data-required` attribute to Field.Label part
+
 ## [5.22.0] - 2025-08-28
 
 ### Added

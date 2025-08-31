@@ -109,9 +109,10 @@ export const useField = (props: UseFieldProps = {}) => {
         'data-disabled': dataAttr(disabled),
         'data-invalid': dataAttr(invalid),
         'data-readonly': dataAttr(readOnly),
+        'data-required': dataAttr(required),
         htmlFor: id,
       }) as HTMLProps<'label'>,
-    [disabled, invalid, readOnly, id, labelId],
+    [disabled, invalid, readOnly, required, id, labelId],
   )
 
   const getControlProps = useMemo(

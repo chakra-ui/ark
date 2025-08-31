@@ -10,6 +10,7 @@ import Select from './examples/select.vue'
 import TextareaAutoresize from './examples/textarea-autoresize.vue'
 import TextareaControlled from './examples/textarea-controlled.vue'
 import Textarea from './examples/textarea.vue'
+import CustomControl from './examples/custom-control.vue'
 </script>
 <template>
   <Story title="Field">
@@ -27,6 +28,9 @@ import Textarea from './examples/textarea.vue'
     </Variant>
     <Variant title="Disabled">
       <Disabled />
+    </Variant>
+    <Variant title="Custom Control">
+      <CustomControl />
     </Variant>
     <Variant title="Textarea">
       <Textarea />

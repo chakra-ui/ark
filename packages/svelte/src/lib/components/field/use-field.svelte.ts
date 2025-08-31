@@ -118,6 +118,7 @@ export const useField = (inProps: MaybeFunction<UseFieldProps> = {}) => {
       'data-disabled': dataAttr(disabled),
       'data-invalid': dataAttr(invalid),
       'data-readonly': dataAttr(readOnly),
+      'data-required': dataAttr(required),
       for: controlId,
     }) as HTMLProps<'label'>
 

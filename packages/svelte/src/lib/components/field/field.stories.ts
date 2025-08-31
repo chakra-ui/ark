@@ -8,6 +8,7 @@ import RootProviderExample from './examples/root-provider.svelte'
 import SelectExample from './examples/select.svelte'
 import TextareaAutoresizeExample from './examples/textarea-autoresize.svelte'
 import TextareaExample from './examples/textarea.svelte'
+import CustomControlExample from './examples/custom-control.svelte'
 
 const meta: Meta = {
   title: 'Components/Field',
@@ -54,6 +55,12 @@ export const Select = {
 export const Disabled = {
   render: () => ({
     Component: DisabledExample,
+  }),
+}
+
+export const CustomControl = {
+  render: () => ({
+    Component: CustomControlExample,
   }),
 }
 

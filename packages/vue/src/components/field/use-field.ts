@@ -104,6 +104,7 @@ export const useField = (props: MaybeRef<UseFieldProps> = {}) => {
       'data-disabled': dataAttr(values.disabled),
       'data-invalid': dataAttr(values.invalid),
       'data-readonly': dataAttr(values.readOnly),
+      'data-required': dataAttr(values.required),
       htmlFor: id.value,
     }
   }

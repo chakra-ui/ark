@@ -6,7 +6,6 @@ const meta: Meta = {
 
 export default meta
 
-export { Disabled } from './examples/disabled'
 export { Input } from './examples/input'
 export { Invalid } from './examples/invalid'
 export { RequiredIndicator } from './examples/required-indicator'
@@ -15,3 +14,5 @@ export { Select } from './examples/select'
 export { ShadowDom } from './examples/shadow-dom'
 export { Textarea } from './examples/textarea'
 export { TextareaAutoresize } from './examples/textarea-autoresize'
+export { Disabled } from './examples/disabled'
+export { CustomControl } from './examples/custom-control'
