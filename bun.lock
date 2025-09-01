@@ -22,7 +22,7 @@
     },
     "integrations/mcp": {
       "name": "@ark-ui/mcp",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "bin": {
         "ark-ui-mcp": "./dist/stdio.js",
       },
