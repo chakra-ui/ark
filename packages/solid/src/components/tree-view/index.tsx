@@ -64,10 +64,16 @@ export {
   type TreeViewNodeProviderBaseProps,
   type TreeViewNodeProviderProps,
 } from './tree-view-node-provider'
-export { TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootProps } from './tree-view-root'
+export {
+  TreeViewRoot,
+  type TreeViewRootBaseProps,
+  type TreeViewRootComponent,
+  type TreeViewRootProps,
+} from './tree-view-root'
 export {
   TreeViewRootProvider,
   type TreeViewRootProviderBaseProps,
+  type TreeViewRootProviderComponent,
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider'
 export { TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree'

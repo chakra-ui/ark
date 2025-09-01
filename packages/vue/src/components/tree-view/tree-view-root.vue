@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
+import type { Assign, BooleanDefaults } from '../../types'
 import type { TreeNode } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tree-view.types'
@@ -15,6 +15,7 @@ export interface TreeViewRootProps<T extends TreeNode>
      * @vue-ignore
      */
     HTMLAttributes {}
+export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: Assign<TreeViewRootProps<T>, P>) => any
 export type { RootEmits as TreeViewRootEmits } from './tree-view.types'
 </script>
 

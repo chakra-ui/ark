@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type RenderStrategyProps, RenderStrategyProvider, splitRenderStrategyProps } from '../../utils/render-strategy'
@@ -49,3 +50,5 @@ export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) =>
     </TreeViewProvider>
   )
 }
+
+export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: Assign<TreeViewRootProps<T>, P>) => JSX.Element

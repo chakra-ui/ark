@@ -82,11 +82,13 @@ export {
 export {
   default as RootProvider,
   type TreeViewRootProviderBaseProps as RootProviderBaseProps,
+  type TreeViewRootProviderComponent as RootProviderComponent,
   type TreeViewRootProviderProps as RootProviderProps,
 } from './tree-view-root-provider.vue'
 export {
   default as Root,
   type TreeViewRootBaseProps as RootBaseProps,
+  type TreeViewRootComponent as RootComponent,
   type TreeViewRootEmits as RootEmits,
   type TreeViewRootProps as RootProps,
 } from './tree-view-root.vue'

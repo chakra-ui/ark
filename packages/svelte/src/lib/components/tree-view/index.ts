@@ -76,10 +76,16 @@ export {
   type TreeViewNodeProviderBaseProps,
   type TreeViewNodeProviderProps,
 } from './tree-view-node-provider.svelte'
-export { default as TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootProps } from './tree-view-root.svelte'
+export {
+  default as TreeViewRoot,
+  type TreeViewRootBaseProps,
+  type TreeViewRootComponent,
+  type TreeViewRootProps,
+} from './tree-view-root.svelte'
 export {
   default as TreeViewRootProvider,
   type TreeViewRootProviderBaseProps,
+  type TreeViewRootProviderComponent,
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider.svelte'
 export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.svelte'

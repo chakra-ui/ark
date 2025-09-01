@@ -3,8 +3,9 @@
 ### Added
 
 - **Field**: Add `data-required` attribute to `Field.Label`
-- **Select, Combobox, Listbox**: Export `RootComponent` and `RootProviderComponent` types which are useful when building
-  compositions that wrap the `Root` and `RootProvider` components and you still want type-safety for the collection.
+- **Select, Combobox, Listbox, TreeView**: Export `RootComponent` and `RootProviderComponent` types which are useful
+  when building compositions that wrap the `Root` and `RootProvider` components and you still want type-safety for the
+  collection.
 
   ```tsx
   import { Select } from '@ark-ui/solid/select'

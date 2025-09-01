@@ -75,9 +75,15 @@ export {
 export {
   default as TreeViewRootProvider,
   type TreeViewRootProviderBaseProps,
+  type TreeViewRootProviderComponent,
   type TreeViewRootProviderProps,
 } from './tree-view-root-provider.vue'
-export { default as TreeViewRoot, type TreeViewRootBaseProps, type TreeViewRootProps } from './tree-view-root.vue'
+export {
+  default as TreeViewRoot,
+  type TreeViewRootBaseProps,
+  type TreeViewRootComponent,
+  type TreeViewRootProps,
+} from './tree-view-root.vue'
 export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.vue'
 export { treeViewAnatomy } from './tree-view.anatomy'
 export { useTreeView, type UseTreeViewProps, type UseTreeViewReturn } from './use-tree-view'

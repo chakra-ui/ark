@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
+import type { Assign } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { TreeNode } from '../collection'
 import type { PolymorphicProps } from '../factory'
@@ -19,6 +20,10 @@ export interface TreeViewRootProviderProps<T extends TreeNode>
      * @vue-ignore
      */
     HTMLAttributes {}
+
+export type TreeViewRootProviderComponent<P = {}> = <T extends TreeNode>(
+  props: Assign<TreeViewRootProviderProps<T>, P>,
+) => any
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">

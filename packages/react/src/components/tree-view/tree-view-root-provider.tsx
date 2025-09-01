@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import {
   type RenderStrategyProps,
@@ -36,8 +37,8 @@ const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProviderProps<T>, r
   )
 }
 
-export type TreeViewComponent = <T extends TreeNode>(
-  props: TreeViewRootProviderProps<T> & React.RefAttributes<HTMLDivElement>,
+export type TreeViewRootProviderComponent<P = {}> = <T extends TreeNode>(
+  props: Assign<TreeViewRootProviderProps<T>, P> & React.RefAttributes<HTMLDivElement>,
 ) => JSX.Element
 
-export const TreeViewRootProvider = forwardRef(TreeViewImpl) as TreeViewComponent
+export const TreeViewRootProvider = forwardRef(TreeViewImpl) as TreeViewRootProviderComponent

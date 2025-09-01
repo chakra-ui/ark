@@ -1,5 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Snippet } from 'svelte'
   import type { TreeNode } from '../collection'
   import type { UseTreeViewProps } from './use-tree-view.svelte'
 
@@ -10,6 +11,8 @@
       RefAttribute {}
 
   export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<'div'>, TreeViewRootBaseProps<T>> {}
+
+  export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: Assign<TreeViewRootProps<T>, P>) => Snippet
 </script>
 
 <script lang="ts" generics="T extends TreeNode">
