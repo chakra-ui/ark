@@ -60,8 +60,8 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProps<T>, ref: Re
   )
 }
 
-export type SelectComponent = <T extends CollectionItem>(
-  props: SelectRootProps<T> & React.RefAttributes<HTMLDivElement>,
+export type SelectRootComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<SelectRootProps<T>, P> & React.RefAttributes<HTMLDivElement>,
 ) => JSX.Element
 
-export const SelectRoot = forwardRef(SelectImpl) as SelectComponent
+export const SelectRoot = forwardRef(SelectImpl) as SelectRootComponent

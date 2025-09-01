@@ -59,11 +59,17 @@ export {
   type ComboboxPositionerProps,
   type ComboboxPositionerBaseProps,
 } from './combobox-positioner.svelte'
-export { default as ComboboxRoot, type ComboboxRootBaseProps, type ComboboxRootProps } from './combobox-root.svelte'
+export {
+  default as ComboboxRoot,
+  type ComboboxRootBaseProps,
+  type ComboboxRootProps,
+  type ComboboxRootComponent,
+} from './combobox-root.svelte'
 export {
   default as ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
   type ComboboxRootProviderProps,
+  type ComboboxRootProviderComponent,
 } from './combobox-root-provider.svelte'
 export {
   default as ComboboxTrigger,

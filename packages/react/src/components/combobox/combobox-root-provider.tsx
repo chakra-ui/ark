@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, type Ref, type RefAttributes, forwardRef } from 'react'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -33,8 +34,8 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProviderProps
   )
 }
 
-export type ComboboxComponent = <T extends CollectionItem>(
-  props: ComboboxRootProviderProps<T> & RefAttributes<HTMLDivElement>,
+export type ComboboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<ComboboxRootProviderProps<T>, P> & RefAttributes<HTMLDivElement>,
 ) => JSX.Element
 
-export const ComboboxRootProvider = forwardRef(ComboboxImpl) as ComboboxComponent
+export const ComboboxRootProvider = forwardRef(ComboboxImpl) as ComboboxRootProviderComponent

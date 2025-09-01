@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { CollectionItem } from '../../types'
+import type { JSX } from 'solid-js/jsx-runtime'
+import type { Assign, CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
@@ -32,3 +33,7 @@ export const ComboboxRootProvider = <T extends CollectionItem>(props: ComboboxRo
     </ComboboxProvider>
   )
 }
+
+export type ComboboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<ComboboxRootProviderProps<T>, P>,
+) => JSX.Element

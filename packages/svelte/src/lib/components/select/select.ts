@@ -35,11 +35,13 @@ export {
   default as RootProvider,
   type SelectRootProviderBaseProps as RootProviderBaseProps,
   type SelectRootProviderProps as RootProviderProps,
+  type SelectRootProviderComponent as RootProviderComponent,
 } from './select-root-provider.svelte'
 export {
   default as Root,
   type SelectRootBaseProps as RootBaseProps,
   type SelectRootProps as RootProps,
+  type SelectRootComponent as RootComponent,
 } from './select-root.svelte'
 export { default as Trigger, type SelectTriggerProps as TriggerProps } from './select-trigger.svelte'
 export { default as ValueText, type SelectValueTextProps as ValueTextProps } from './select-value-text.svelte'

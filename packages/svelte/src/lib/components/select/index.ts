@@ -57,11 +57,17 @@ export {
   type SelectPositionerBaseProps,
   type SelectPositionerProps,
 } from './select-positioner.svelte'
-export { default as SelectRoot, type SelectRootBaseProps, type SelectRootProps } from './select-root.svelte'
+export {
+  default as SelectRoot,
+  type SelectRootBaseProps,
+  type SelectRootProps,
+  type SelectRootComponent,
+} from './select-root.svelte'
 export {
   default as SelectRootProvider,
   type SelectRootProviderBaseProps,
   type SelectRootProviderProps,
+  type SelectRootProviderComponent,
 } from './select-root-provider.svelte'
 export { default as SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.svelte'
 export {

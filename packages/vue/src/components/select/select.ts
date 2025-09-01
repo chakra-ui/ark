@@ -71,12 +71,14 @@ export {
   default as RootProvider,
   type SelectRootProviderProps as RootProviderProps,
   type SelectRootProviderBaseProps as RootProviderBaseProps,
+  type SelectRootProviderComponent as RootProviderComponent,
 } from './select-root-provider.vue'
 export {
   default as Root,
   type SelectRootEmits as RootEmits,
   type SelectRootBaseProps as RootBaseProps,
   type SelectRootProps as RootProps,
+  type SelectRootComponent as RootComponent,
 } from './select-root.vue'
 export {
   default as Trigger,

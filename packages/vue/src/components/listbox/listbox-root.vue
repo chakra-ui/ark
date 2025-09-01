@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
+import type { Assign, BooleanDefaults } from '../../types'
 import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './listbox.types'
@@ -12,6 +12,7 @@ export interface ListboxRootProps<T extends CollectionItem>
      * @vue-ignore
      */
     HTMLAttributes {}
+export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<ListboxRootProps<T>, P>) => any
 export type { RootEmits as ListboxRootEmits } from './listbox.types'
 </script>
 

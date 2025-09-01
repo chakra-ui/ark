@@ -1,15 +1,25 @@
-<script lang="ts" generics="T extends CollectionItem">
+<script lang="ts" module>
+  import type { Snippet } from 'svelte'
+
   import type { Assign, HTMLProps, PolymorphicProps } from '$lib/types.js'
-  import { mergeProps } from '@zag-js/svelte'
   import type { CollectionItem } from '../collection/index.js'
-  import { Ark } from '../factory/index.js'
-  import { ListboxProvider } from './use-listbox-context.js'
-  import { type UseListboxProps, useListbox } from './use-listbox.svelte.js'
-  import { createSplitProps } from '$lib/utils/create-split-props.js'
+  import type { UseListboxProps } from './use-listbox.svelte.js'
 
   export interface ListboxRootBaseProps<T extends CollectionItem> extends UseListboxProps<T>, PolymorphicProps<'div'> {}
   export interface ListboxRootProps<T extends CollectionItem>
     extends Assign<HTMLProps<'div'>, ListboxRootBaseProps<T>> {}
+
+  export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(
+    props: Assign<ListboxRootProps<T>, P>,
+  ) => Snippet
+</script>
+
+<script lang="ts" generics="T extends CollectionItem">
+  import { mergeProps } from '@zag-js/svelte'
+  import { Ark } from '../factory/index.js'
+  import { ListboxProvider } from './use-listbox-context.js'
+  import { useListbox } from './use-listbox.svelte.js'
+  import { createSplitProps } from '$lib/utils/create-split-props.js'
 
   let { highlightedValue = $bindable(), value = $bindable(), ...props }: ListboxRootProps<T> = $props()
   const providedId = $props.id()

@@ -63,10 +63,12 @@ export {
   default as ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
   type ComboboxRootProviderProps,
+  type ComboboxRootProviderComponent,
 } from './combobox-root-provider.vue'
 export {
   default as ComboboxRoot,
   type ComboboxRootBaseProps,
+  type ComboboxRootComponent,
   type ComboboxRootEmits,
   type ComboboxRootProps,
 } from './combobox-root.vue'

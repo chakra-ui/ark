@@ -1,4 +1,6 @@
 <script lang="ts" module>
+  import type { Snippet } from 'svelte'
+
   interface RootProviderProps<T extends CollectionItem> {
     value: UseListboxReturn<T>
   }
@@ -8,6 +10,10 @@
       RootProviderProps<T> {}
   export interface ListboxRootProviderProps<T extends CollectionItem>
     extends Assign<HTMLProps<'div'>, ListboxRootProviderBaseProps<T>> {}
+
+  export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
+    props: Assign<ListboxRootProviderProps<T>, P>,
+  ) => Snippet
 </script>
 
 <script lang="ts" generics="T extends CollectionItem">

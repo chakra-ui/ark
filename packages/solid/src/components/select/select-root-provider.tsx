@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/solid'
-import type { CollectionItem } from '../../types'
+import type { JSX } from 'solid-js/jsx-runtime'
+import type { Assign, CollectionItem } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
@@ -31,3 +32,7 @@ export const SelectRootProvider = <T extends CollectionItem>(props: SelectRootPr
     </SelectProvider>
   )
 }
+
+export type SelectRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<SelectRootProviderProps<T>, P>,
+) => JSX.Element

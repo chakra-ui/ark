@@ -61,12 +61,14 @@ export {
   default as SelectRootProvider,
   type SelectRootProviderBaseProps,
   type SelectRootProviderProps,
+  type SelectRootProviderComponent,
 } from './select-root-provider.vue'
 export {
   default as SelectRoot,
   type SelectRootBaseProps,
   type SelectRootEmits,
   type SelectRootProps,
+  type SelectRootComponent,
 } from './select-root.vue'
 export { default as SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.vue'
 export {

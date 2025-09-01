@@ -2,7 +2,9 @@
 
 ### Added
 
-- **Field**: Add `data-required` attribute to Field.Label part
+- **Field**: Add `data-required` attribute to `Field.Label`
+- **Select, Combobox, Listbox**: Export `RootComponent` and `RootProviderComponent` types which are useful when building
+  compositions that wrap the `Root` and `RootProvider` components and you still want type-safety for the collection.
 
 ## [5.22.0] - 2025-08-28
 

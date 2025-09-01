@@ -40,13 +40,15 @@ export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelP
 export {
   default as ListboxRoot,
   type ListboxRootBaseProps,
-  type ListboxRootProps,
+  type ListboxRootComponent,
   type ListboxRootEmits,
+  type ListboxRootProps,
 } from './listbox-root.vue'
 export {
   default as ListboxRootProvider,
   type ListboxRootProviderBaseProps,
   type ListboxRootProviderProps,
+  type ListboxRootProviderComponent,
 } from './listbox-root-provider.vue'
 export {
   default as ListboxValueText,

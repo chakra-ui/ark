@@ -56,10 +56,12 @@ export {
   default as RootProvider,
   type ListboxRootProviderBaseProps as RootProviderBaseProps,
   type ListboxRootProviderProps as RootProviderProps,
+  type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider.vue'
 export {
   default as Root,
   type ListboxRootBaseProps as RootBaseProps,
+  type ListboxRootComponent as RootComponent,
   type ListboxRootEmits as RootEmits,
   type ListboxRootProps as RootProps,
 } from './listbox-root.vue'

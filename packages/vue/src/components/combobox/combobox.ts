@@ -76,11 +76,13 @@ export {
   default as RootProvider,
   type ComboboxRootProviderProps as RootProviderProps,
   type ComboboxRootProviderBaseProps as RootProviderBaseProps,
+  type ComboboxRootProviderComponent as RootProviderComponent,
 } from './combobox-root-provider.vue'
 export {
   default as Root,
-  type ComboboxRootEmits as RootEmits,
   type ComboboxRootBaseProps as RootBaseProps,
+  type ComboboxRootComponent as RootComponent,
+  type ComboboxRootEmits as RootEmits,
   type ComboboxRootProps as RootProps,
 } from './combobox-root.vue'
 export {

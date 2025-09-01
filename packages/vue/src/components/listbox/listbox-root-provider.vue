@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
+import type { Assign } from '../../types'
 import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { UseListboxReturn } from './use-listbox'
@@ -17,6 +18,10 @@ export interface ListboxRootProviderProps<T extends CollectionItem>
      * @vue-ignore
      */
     HTMLAttributes {}
+
+export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<ListboxRootProviderProps<T>, P>,
+) => any
 </script>
 
 <script setup lang="ts" generic="T extends CollectionItem">

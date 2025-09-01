@@ -43,11 +43,17 @@ export {
   type ComboboxPositionerBaseProps,
   type ComboboxPositionerProps,
 } from './combobox-positioner'
-export { ComboboxRoot, type ComboboxRootBaseProps, type ComboboxRootProps } from './combobox-root'
+export {
+  ComboboxRoot,
+  type ComboboxRootBaseProps,
+  type ComboboxRootProps,
+  type ComboboxRootComponent,
+} from './combobox-root'
 export {
   ComboboxRootProvider,
   type ComboboxRootProviderBaseProps,
   type ComboboxRootProviderProps,
+  type ComboboxRootProviderComponent,
 } from './combobox-root-provider'
 export { ComboboxTrigger, type ComboboxTriggerBaseProps, type ComboboxTriggerProps } from './combobox-trigger'
 export { comboboxAnatomy } from './combobox.anatomy'

@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -33,8 +34,8 @@ const SelectImpl = <T extends CollectionItem>(props: SelectRootProviderProps<T>,
   )
 }
 
-export type SelectComponent = <T extends CollectionItem>(
-  props: SelectRootProviderProps<T> & React.RefAttributes<HTMLDivElement>,
+export type SelectRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<SelectRootProviderProps<T>, P> & React.RefAttributes<HTMLDivElement>,
 ) => JSX.Element
 
-export const SelectRootProvider = forwardRef(SelectImpl) as SelectComponent
+export const SelectRootProvider = forwardRef(SelectImpl) as SelectRootProviderComponent

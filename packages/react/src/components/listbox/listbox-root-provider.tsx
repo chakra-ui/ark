@@ -1,5 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import { type JSX, forwardRef } from 'react'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import type { CollectionItem } from '../collection'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -27,8 +28,8 @@ const ListboxImpl = <T extends CollectionItem>(props: ListboxRootProviderProps<T
   )
 }
 
-export type ListboxComponent = <T extends CollectionItem>(
-  props: ListboxRootProviderProps<T> & React.RefAttributes<HTMLDivElement>,
+export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<ListboxRootProviderProps<T>, P> & React.RefAttributes<HTMLDivElement>,
 ) => JSX.Element
 
-export const ListboxRootProvider = forwardRef(ListboxImpl) as ListboxComponent
+export const ListboxRootProvider = forwardRef(ListboxImpl) as ListboxRootProviderComponent

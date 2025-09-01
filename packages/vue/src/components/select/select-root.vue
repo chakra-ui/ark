@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
-import type { BooleanDefaults } from '../../types'
+import type { Assign, BooleanDefaults } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
@@ -16,6 +16,9 @@ export interface SelectRootProps<T extends CollectionItem>
      * @vue-ignore
      */
     Omit<HTMLAttributes, 'onSelect'> {}
+
+export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<SelectRootProps<T>, P>) => any
+
 export type { RootEmits as SelectRootEmits } from './select.types'
 </script>
 

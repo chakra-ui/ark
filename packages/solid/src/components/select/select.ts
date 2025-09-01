@@ -74,11 +74,13 @@ export {
   SelectRoot as Root,
   type SelectRootBaseProps as RootBaseProps,
   type SelectRootProps as RootProps,
+  type SelectRootComponent as RootComponent,
 } from './select-root'
 export {
   SelectRootProvider as RootProvider,
   type SelectRootProviderBaseProps as RootProviderBaseProps,
   type SelectRootProviderProps as RootProviderProps,
+  type SelectRootProviderComponent as RootProviderComponent,
 } from './select-root-provider'
 export {
   SelectTrigger as Trigger,

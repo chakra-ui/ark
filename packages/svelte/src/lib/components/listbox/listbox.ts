@@ -49,11 +49,13 @@ export {
   default as Root,
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootProps as RootProps,
+  type ListboxRootComponent as RootComponent,
 } from './listbox-root.svelte'
 export {
   default as RootProvider,
   type ListboxRootProviderBaseProps as RootProviderBaseProps,
   type ListboxRootProviderProps as RootProviderProps,
+  type ListboxRootProviderComponent as RootProviderComponent,
 } from './listbox-root-provider.svelte'
 export {
   default as ValueText,

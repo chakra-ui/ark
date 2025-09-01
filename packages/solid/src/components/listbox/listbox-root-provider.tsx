@@ -1,6 +1,7 @@
 import { mergeProps } from '@zag-js/solid'
+import type { JSX } from 'solid-js/jsx-runtime'
 import { createSplitProps } from '../../utils/create-split-props'
-import type { CollectionItem } from '../collection'
+import type { Assign, CollectionItem } from '../../types'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { UseListboxReturn } from './use-listbox'
 import { ListboxProvider } from './use-listbox-context'
@@ -25,3 +26,7 @@ export const ListboxRootProvider = <T extends CollectionItem>(props: ListboxRoot
     </ListboxProvider>
   )
 }
+
+export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<ListboxRootProviderProps<T>, P>,
+) => JSX.Element

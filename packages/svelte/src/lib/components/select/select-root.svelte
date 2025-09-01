@@ -1,5 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Snippet } from 'svelte'
   import type { CollectionItem } from '../collection'
   import type { UseSelectProps } from './use-select.svelte'
 
@@ -11,6 +12,8 @@
 
   export interface SelectRootProps<T extends CollectionItem = CollectionItem>
     extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
+
+  export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<SelectRootProps<T>, P>) => Snippet
 </script>
 
 <script lang="ts" generics="T extends CollectionItem = CollectionItem">

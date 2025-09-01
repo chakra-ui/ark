@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
+import type { Assign } from '../../types'
 import type { RenderStrategyProps } from '../../utils'
 import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
@@ -19,6 +20,10 @@ export interface SelectRootProviderProps<T extends CollectionItem>
      * @vue-ignore
      */
     HTMLAttributes {}
+
+export type SelectRootProviderComponent<P = {}> = <T extends CollectionItem>(
+  props: Assign<SelectRootProviderProps<T>, P>,
+) => any
 </script>
 
 <script setup lang="ts" generic="T extends CollectionItem">

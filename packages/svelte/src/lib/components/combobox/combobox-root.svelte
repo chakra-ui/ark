@@ -1,5 +1,6 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Snippet } from 'svelte'
   import type { CollectionItem } from '../collection'
   import type { UsePresenceProps } from '../presence'
   import type { UseComboboxProps } from './use-combobox.svelte'
@@ -12,6 +13,10 @@
 
   export interface ComboboxRootProps<T extends CollectionItem>
     extends Assign<HTMLProps<'div'>, ComboboxRootBaseProps<T>> {}
+
+  export type ComboboxRootComponent<P = {}> = <T extends CollectionItem>(
+    props: Assign<ComboboxRootProps<T>, P>,
+  ) => Snippet
 </script>
 
 <script lang="ts" generics="T extends CollectionItem">

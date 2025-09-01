@@ -37,11 +37,17 @@ export {
   type ListboxItemTextProps,
 } from './listbox-item-text.svelte'
 export { default as ListboxLabel, type ListboxLabelBaseProps, type ListboxLabelProps } from './listbox-label.svelte'
-export { default as ListboxRoot, type ListboxRootBaseProps, type ListboxRootProps } from './listbox-root.svelte'
+export {
+  default as ListboxRoot,
+  type ListboxRootBaseProps,
+  type ListboxRootProps,
+  type ListboxRootComponent,
+} from './listbox-root.svelte'
 export {
   default as ListboxRootProvider,
   type ListboxRootProviderBaseProps,
   type ListboxRootProviderProps,
+  type ListboxRootProviderComponent,
 } from './listbox-root-provider.svelte'
 export {
   default as ListboxValueText,

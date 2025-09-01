@@ -41,3 +41,5 @@ export const ListboxRoot = <T extends CollectionItem>(props: ListboxRootProps<T>
     </ListboxProvider>
   )
 }
+
+export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<ListboxRootProps<T>, P>) => any
