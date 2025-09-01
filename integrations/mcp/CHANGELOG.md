@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.1.1] - 2025-09-01
+
 ### Fixed
 
 Don't ship the `src` directory to the package.
