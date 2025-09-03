@@ -1,11 +1,12 @@
 import NextLink from 'next/link'
-import { Divider, HStack, Stack } from 'styled-system/jsx'
+import { Box, Divider, HStack, Stack } from 'styled-system/jsx'
 import { ColorModeButton } from '~/components/color-mode-button'
 import { Logo } from '~/components/logo'
 import { getFramework } from '~/lib/frameworks'
 import { data } from '~/lib/search'
 import { UserButton } from '../auth/user-button'
 import { CommandMenu } from '../command-menu'
+import { Announcement } from '../marketing/annoucement'
 import { FrameworkSelect } from './framework-select'
 import { GitHubLink } from './github-link'
 import { MobileNavbar } from './mobile-navbar'
@@ -24,6 +25,9 @@ export const Navbar = async () => {
             <Logo />
           </NextLink>
           <HStack gap="3" py="1" display={{ base: 'none', md: 'flex' }}>
+            <Box position="absolute" left="300px" hideBelow="xl">
+              <Announcement />
+            </Box>
             <NavbarLinks />
             <Divider orientation="vertical" h="6" />
             <div id="framework-select">
