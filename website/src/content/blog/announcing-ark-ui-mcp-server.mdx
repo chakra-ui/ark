@@ -1,0 +1,76 @@
+---
+title: Announcing Ark UI MCP Server
+description: 'The Ark UI MCP Server exposes tools for building production apps to AI agents'
+date: '2025-09-04'
+author: 'Sage'
+tags: ['ai', 'mcp-server', 'ai-agent']
+---
+
+Today, we're excited to introduce the **Ark UI MCP Server** - a server that provides a comprehensive knowledge base
+about Ark UI to AI agents.
+
+This server is built on the Model Context Protocol (MCP) , and gives AI assistants structured access to the Ark UI
+component system, allowing them to generate, suggest, and style framework-agnostic components consistently across React,
+Vue, Solid, and Svelte.
+
+## Available Tools for AI Agents
+
+The MCP Server exposes several tools that AI assistants can call:
+
+- **`list_components`**: Returns a full list of all available components
+- **`list_examples`**: Lists various component examples
+- **`get_example`**: Retrieves code examples and usage patterns
+- **`styling_guide`**: Provides guidance on how styles should be written
+
+## Framework Demos
+
+Let’s take a look at how different AI tools build Ark UI components using the MCP Server.
+
+### Building a Checkbox in React
+
+Using VSCode Copilot to generate a custom checkbox component in React.js
+
+<video src="/videos/mcp-react-demo.mp4" autoPlay loop muted playsinline />
+
+### Building an OTP Verification
+
+With Cursor, we build an OTP verification component in Vue.js
+
+<video src="/videos/mcp-vue-demo.mp4" autoPlay loop muted playsinline />
+
+## Using the MCP Server
+
+Connect the MCP Server to your IDE or AI assistant of choice via the following steps:
+
+### Configure the MCP Server
+
+To get started with the MCP server, add this to your AI tool's configuration file:
+
+```json
+{
+  "mcpServers": {
+    "chakra-ui": {
+      "command": "npx",
+      "args": ["-y", "@chakra-ui/react-mcp"]
+    }
+  }
+}
+```
+
+### Start the MCP Server
+
+In some IDEs (like VSCode), you might need to start the MCP server manually. Click the "Start" button.
+
+### Start Vibe coding! 😎
+
+That's it! Your AI assistant now has expert knowledge of:
+
+## Conclusion
+
+The Ark UI MCP Server helps you build design systems in any framework. Check out the **[MCP docs](/docs/ai/mcp-server)**
+to setup the server in your favorite IDE.
+
+---
+
+Got ideas for making the MCP Server even better? We'd love to hear from you! Share your thoughts on
+[GitHub Discussions](https://github.com/chakra-ui/ark/discussions)
