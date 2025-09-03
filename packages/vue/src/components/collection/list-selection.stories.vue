@@ -5,7 +5,7 @@ import Range from './examples/list-selection/range.vue'
 </script>
 
 <template>
-  <Story title="Utilities / List Selection">
+  <Story title="List Selection">
     <Variant title="Basic">
       <Basic />
     </Variant>

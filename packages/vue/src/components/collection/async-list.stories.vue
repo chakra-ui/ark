@@ -8,7 +8,7 @@ import SortServerSide from './examples/async-list/sort-server-side.vue'
 </script>
 
 <template>
-  <Story title="Utilities / Async List">
+  <Story title="Async List">
     <Variant title="Dependencies">
       <Dependencies />
     </Variant>

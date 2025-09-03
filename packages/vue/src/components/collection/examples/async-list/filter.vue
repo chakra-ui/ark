@@ -61,7 +61,7 @@ const list = useAsyncList<User>({
         type="text"
         placeholder="Search users..."
         :value="list.filterText"
-        @input="list.setFilterText((($event.currentTarget as HTMLInputElement).value ?? '')"
+        @input="list.setFilterText(($event.currentTarget as HTMLInputElement).value ?? '')"
       />
       <span v-if="list.loading">Loading...</span>
     </div>
