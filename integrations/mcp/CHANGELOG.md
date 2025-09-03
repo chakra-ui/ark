@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+Add missing node shebang to the `stdio` script.
+
 ## [1.1.1] - 2025-09-01
 
 ### Fixed
