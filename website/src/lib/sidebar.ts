@@ -1,15 +1,14 @@
 import { type Pages, pages } from '.velite'
 
-export const categories = ['overview', 'guides', 'collections', 'components', 'utilities']
+export const categories = ['overview', 'guides', 'ai', 'collections', 'components', 'utilities']
+
 export const getSidebarGroups = (): Pages[][] => {
-  const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about', 'llms.txt']
+  const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about']
 
   const sortedCategories = pages.reduce<Record<string, Pages[]>>((acc, page) => {
-    const category = page.category
+    let category = page.category
     if (categories.includes(category)) {
-      if (!acc[category]) {
-        acc[category] = []
-      }
+      acc[category] ||= []
       acc[category].push(page)
     }
     return acc

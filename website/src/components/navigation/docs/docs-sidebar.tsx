@@ -14,6 +14,9 @@ interface Props {
   groups: Pages[][]
 }
 
+const labelMap = new Map<string, string>([['ai', 'AI for agents']])
+const getLabel = (category: string) => labelMap.get(category) || category
+
 export const DocsSidebar = (props: Props) => {
   const { groups } = props
   const pathname = usePathname()
@@ -27,7 +30,7 @@ export const DocsSidebar = (props: Props) => {
             <li key={id} className={styles.group}>
               <Collapsible.Root defaultOpen>
                 <Collapsible.Trigger className={styles.trigger}>
-                  <span> {group[0].category}</span>
+                  <span> {getLabel(group[0].category)}</span>
                   <Icon size="sm" className={styles.indicator}>
                     <ChevronRightIcon />
                   </Icon>

@@ -1,26 +1,10 @@
-import { ArrowRightIcon, SparklesIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { Box, Container, HStack, Stack, styled } from 'styled-system/jsx'
-import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { Icon } from '../ui/icon'
+import { Announcement } from './annoucement'
 import { ReactIcon, SolidIcon, SvelteIcon, VueIcon } from './icons'
-
-const Announcement = () => {
-  return (
-    <NextLink href="/docs/components/scroll-area">
-      <Badge size="lg" variant="outline">
-        <Icon color="colorPalette.default">
-          <SparklesIcon />
-        </Icon>
-        [New] Scroll Area component
-        <ArrowRightIcon />
-      </Badge>
-    </NextLink>
-  )
-}
 
 export const Hero = () => {
   return (
