@@ -1,0 +1,136 @@
+---
+id: mcp-server
+title: MCP Server
+description: Bridging the gap between AI agents and Ark UI.
+status: new
+---
+
+The Ark UI MCP Server is a specialized [Model Context Protocol](https://modelcontextprotocol.io/introduction) server
+that empowers AI assistants like Claude Code, Cursor, and Copilot to understand and generate framework-agnostic design
+systems using Ark UI.
+
+This enables AI coding tools to generate components and apply design system logic consistently across React, Vue, Solid,
+and Svelte.
+
+## Tools
+
+The Ark UI MCP exposes the following tools to AI agents:
+
+### Component Tools
+
+- **`list_components`**: Returns a full list of all available components
+- **`list_examples`**: Lists various component examples
+- **`get_example`**: Retrieves code examples and usage patterns
+- **`styling_guide`**: Provides guidance on how styles should be written
+
+## Setup
+
+The MCP server currently supports only
+[stdio transport](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports#stdio) and is published at
+`@ark-ui/mcp`.
+
+### Visual Studio Code
+
+> Make sure you have the [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and
+> [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extensions installed.
+
+In the `.vscode/mcp.json` file at the root of your project, add the MCP server block:
+
+```json title=".vscode/mcp.json"
+{
+  "servers": {
+    "ark-ui": {
+      "command": "npx",
+      "args": ["-y", "@ark-ui/mcp"]
+    }
+  }
+}
+```
+
+The MCP server is now ready to use. Click on Start on the MCP server.
+
+### Cursor
+
+In the `.cursor/mcp.json` file at the root of your project, add the following configuration:
+
+```json
+{
+  "mcpServers": {
+    "ark-ui": {
+      "command": "npx",
+      "args": ["-y", "@ark-ui/mcp"]
+    }
+  }
+}
+```
+
+> If Cursor doesn't automatically detect the changes, restart the editor or manually enable the Ark UI server via "MCP
+> Tools."
+
+### Claude Code
+
+> Make sure you have Claude Code installed. Visit [Anthropic docs](https://docs.anthropic.com/en/docs/claude-code/mcp)
+> for installation instructions.
+
+Run the following command in your terminal to add the Ark UI MCP server:
+
+```bash
+claude mcp add ark-ui -- npx -y @ark-ui/mcp
+```
+
+The MCP server is now ready to use. Start a Claude Code session by running `claude`.
+
+### Windsurf
+
+- Navigate to "Settings" > "Windsurf Settings" > "Cascade"
+
+- Click the "Manage MCPs" button, then click the "View raw config" button.
+
+- Add the following to the MCP configuration file:
+
+```json title=".codeium/windsurf/mcp_config.json"
+{
+  "mcpServers": {
+    "ark-ui": {
+      "command": "npx",
+      "args": ["-y", "@ark-ui/mcp"]
+    }
+  }
+}
+```
+
+> You might need to click the "Refresh" button to see the MCP server in the list.
+
+### Zed
+
+- Go to Settings > Open Settings
+
+- In the `settings.json` file, add MCP server as a new **context server**
+
+```json title=".config/zed/settings.json"
+{
+  "context_servers": {
+    "ark-ui": {
+      "source": "custom",
+      "command": "npx",
+      "args": ["-y", "@ark-ui/mcp"]
+    }
+  }
+}
+```
+
+### Custom MCP Client
+
+To run the MCP server in a local or development environment using a custom MCP client, you need to add the MCP server to
+the client's configuration file.
+
+```json
+{
+  "mcpServers": {
+    "ark-ui": {
+      "command": "npx",
+      "args": ["-y", "@ark-ui/mcp"]
+    }
+  }
+}
+```
