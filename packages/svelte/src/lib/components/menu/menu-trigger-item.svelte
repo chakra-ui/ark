@@ -9,11 +9,14 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useMenuTriggerItemContext } from './use-menu-trigger-item-context'
+  import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
   let { ref = $bindable(null), ...props }: MenuTriggerItemProps = $props()
 
   const getTriggerItemProps = useMenuTriggerItemContext()
   const mergedProps = $derived(mergeProps(getTriggerItemProps?.() ?? {}, props))
+
+  MenuItemPropsProvider(() => ({ value: mergedProps['data-value'] }))
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

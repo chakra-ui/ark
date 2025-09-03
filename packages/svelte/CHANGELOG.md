@@ -13,6 +13,10 @@ description: All notable changes will be documented in this file.
   when building compositions that wrap the `Root` and `RootProvider` components and you still want type-safety for the
   collection.
 
+### Fixed
+
+- **Menu**: Fix `Menu.ItemText` not working inside `Menu.TriggerItem`
+
 ## [5.7.0] - 2025-08-28
 
 ### Added

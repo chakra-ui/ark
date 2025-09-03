@@ -13,11 +13,15 @@ export interface MenuTriggerItemProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useForwardExpose } from '../../utils'
+import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 defineProps<MenuTriggerItemProps>()
 const triggerItemProps = useMenuTriggerItemContext()
+
+MenuItemPropsProvider(computed(() => ({ value: (triggerItemProps.value as any)?.['data-value'] })))
 
 useForwardExpose()
 </script>

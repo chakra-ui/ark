@@ -14,6 +14,10 @@
   const Root = styled(Select.Root) as Select.RootComponent<{}>
   ```
 
+### Fixed
+
+- **Menu**: Fix `Menu.ItemText` not working inside `Menu.TriggerItem`
+
 ## [5.22.0] - 2025-08-28
 
 ### Added

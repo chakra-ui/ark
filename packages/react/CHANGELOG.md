@@ -7,6 +7,10 @@
   when building compositions that wrap the `Root` and `RootProvider` components and you still want type-safety for the
   collection.
 
+### Fixed
+
+- **Menu**: Fix `Menu.ItemText` not working inside `Menu.TriggerItem`
+
   ```tsx
   import { Select } from '@ark-ui/react/select'
   import { styled } from 'styling-lib'
