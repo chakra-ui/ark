@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Added
+
+- Added `get_component_props` tool to retrieve component props/properties for specific Ark UI components
+
 ## [1.1.2] - 2025-09-03
 
 ### Fixed

@@ -45,6 +45,12 @@ export interface GetStyleGuideResponse {
   cssVar?: Record<string, string>
 }
 
+export interface GetComponentPropsResponse {
+  framework: string
+  component: string
+  props: Record<string, any>
+}
+
 export interface Example {
   id: string
   filename: string

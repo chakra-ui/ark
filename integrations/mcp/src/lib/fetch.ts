@@ -1,4 +1,5 @@
 import type {
+  GetComponentPropsResponse,
   GetExampleResponse,
   GetStyleGuideResponse,
   ListComponentExamplesResponse,
@@ -74,4 +75,26 @@ export async function getStyleGuide(component: string): Promise<GetStyleGuideRes
   }
 
   return response.json() as Promise<GetStyleGuideResponse>
+}
+
+export async function getComponentProps({
+  framework,
+  component,
+}: {
+  framework: string
+  component: string
+}): Promise<GetComponentPropsResponse> {
+  const response = await fetch(`https://ark-ui.com/api/types/${framework}/${component}`)
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch component props: ${response.status} ${response.statusText}`)
+  }
+
+  const props = await response.json()
+
+  return {
+    framework,
+    component,
+    props,
+  }
 }
