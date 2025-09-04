@@ -33,7 +33,7 @@ The MCP server currently supports only
 > Make sure you have the [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and
 > [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) extensions installed.
 
-In the `.vscode/mcp.json` file at the root of your project, add the MCP server block:
+- In the `.vscode/mcp.json` file at the root of your project, add the MCP server block:
 
 ```json title=".vscode/mcp.json"
 {
@@ -46,11 +46,13 @@ In the `.vscode/mcp.json` file at the root of your project, add the MCP server b
 }
 ```
 
-The MCP server is now ready to use. Click on Start on the MCP server.
+- The MCP server is now ready to use. Click the **"Start"** button in the `mcp.json` file.
+
+- Start a new chat VSCode Copilot like _"Build me a checkbox with ark ui"_
 
 ### Cursor
 
-In the `.cursor/mcp.json` file at the root of your project, add the following configuration:
+- In the `.cursor/mcp.json` file at the root of your project, add the following configuration:
 
 ```json
 {
@@ -63,27 +65,30 @@ In the `.cursor/mcp.json` file at the root of your project, add the following co
 }
 ```
 
-> If Cursor doesn't automatically detect the changes, restart the editor or manually enable the Ark UI server via "MCP
-> Tools."
+- Go to **Settings** > **Cursor Settings** > **MCP & Integrations** and enable the Ark UI server.
+
+- Start a new chat Cursor chat like _"Build me a checkbox with ark ui"_
 
 ### Claude Code
 
 > Make sure you have Claude Code installed. Visit [Anthropic docs](https://docs.anthropic.com/en/docs/claude-code/mcp)
 > for installation instructions.
 
-Run the following command in your terminal to add the Ark UI MCP server:
+- Run the following command in your terminal to add the Ark UI MCP server:
 
 ```bash
 claude mcp add ark-ui -- npx -y @ark-ui/mcp
 ```
 
-The MCP server is now ready to use. Start a Claude Code session by running `claude`.
+- Start a Claude Code session by running `claude`
+
+- Type a prompt like _"Build me a checkbox with ark ui"_
 
 ### Windsurf
 
-- Navigate to "Settings" > "Windsurf Settings" > "Cascade"
+- Navigate to **Settings** > **Windsurf Settings** > **Cascade**
 
-- Click the "Manage MCPs" button, then click the "View raw config" button.
+- Click the **Manage MCPs** button, then click the **"View raw config"** button.
 
 - Add the following to the MCP configuration file:
 
@@ -98,13 +103,15 @@ The MCP server is now ready to use. Start a Claude Code session by running `clau
 }
 ```
 
-> You might need to click the "Refresh" button to see the MCP server in the list.
+> You might need to click the **Refresh** button to see the MCP server in the list.
+
+- Start a new chat Windsurf like _"Build me a checkbox with ark ui"_
 
 ### Zed
 
-- Go to Settings > Open Settings
+- Go to **Settings** > **Open Settings**
 
-- In the `settings.json` file, add MCP server as a new **context server**
+- In the `settings.json` file, add MCP server as a new **context server**:
 
 ```json title=".config/zed/settings.json"
 {
@@ -117,6 +124,8 @@ The MCP server is now ready to use. Start a Claude Code session by running `clau
   }
 }
 ```
+
+- Start a new chat Zed like _"Build me a checkbox with ark ui"_
 
 ### Custom MCP Client
 
