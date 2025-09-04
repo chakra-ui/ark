@@ -10,6 +10,19 @@
     "sourceMap": true,
     "strict": true,
     "module": "ESNext",
-    "moduleResolution": "bundler"
-  }
+    "moduleResolution": "bundler",
+    "types": ["vitest/globals"],
+    "isolatedModules": true
+  },
+  "include": [
+    "./.svelte-kit/ambient.d.ts",
+    "./.svelte-kit/non-ambient.d.ts",
+    "./.svelte-kit/types/**/$types.d.ts",
+    "./src/**/*.js",
+    "./src/**/*.ts",
+    "./src/**/*.svelte",
+    "./vite.config.ts",
+    "./svelte.config.js",
+    "./setup-test.ts"
+  ]
 }
