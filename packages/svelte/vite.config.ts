@@ -5,7 +5,6 @@ import { lucideOptimizeImports } from './src/lib/lucide-optimize'
 
 export default defineConfig({
   plugins: [sveltekit(), svelteTesting({ resolveBrowser: true, autoCleanup: true }), lucideOptimizeImports()],
-  // @ts-expect-error Vitest types
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/setup-test.ts'],
