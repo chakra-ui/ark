@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.8.0] - 2025-09-08
+
 ### Added
 
 - **Field**: Add `data-required` attribute to `Field.Label`
