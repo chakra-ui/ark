@@ -36,7 +36,7 @@
     "root": "."
   },
   "devDependencies": {
-    "entities": "6.0.1",
+    "entities": "7.0.0",
     "@biomejs/biome": "2.2.2",
     "@release-it/keep-a-changelog": "7.0.0",
     "@types/bun": "1.2.20",
