@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.23.0] - 2025-09-08
+
 ### Added
 
 - **Field**: Add `data-required` attribute to `Field.Label`
