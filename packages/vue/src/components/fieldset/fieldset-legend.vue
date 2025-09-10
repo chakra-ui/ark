@@ -23,5 +23,5 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.div v-bind="fieldset.getLegendProps()" :as-child="asChild"><slot /></ark.div>
+  <ark.legend v-bind="fieldset.getLegendProps()" :as-child="asChild"><slot /></ark.legend>
 </template>

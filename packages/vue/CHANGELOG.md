@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Changed
+
+- **Fieldset**: Reverted `Fieldset.Legend` to render as a `legend` element instead of a `div` element (reverting changes
+  from v5.21.0) for better semantic HTML
+
 ## [5.23.0] - 2025-09-08
 
 ### Added
