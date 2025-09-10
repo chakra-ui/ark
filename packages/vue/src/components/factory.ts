@@ -73,14 +73,21 @@ const withAsChild = (component: ElementType) => {
 }
 
 export function jsxFactory() {
-  return new Proxy(withAsChild, {
+  const cache = new Map()
+
+  const factory = new Proxy(withAsChild, {
     apply(_target, _thisArg, argArray) {
       return withAsChild(argArray[0])
     },
     get(_, element) {
-      return withAsChild(element as ElementType)
+      if (!cache.has(element)) {
+        cache.set(element, withAsChild(element as ElementType))
+      }
+      return cache.get(element)
     },
   }) as unknown as HTMLPolymorphicComponents
+
+  return factory
 }
 
 export const ark = jsxFactory()
