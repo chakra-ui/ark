@@ -44,6 +44,6 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.17.4",
     "express": "^5.1.0",
-    "zod": "^3.24.4"
+    "zod": "^4.0.0"
   }
 }
