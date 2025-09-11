@@ -119,7 +119,8 @@ function convertToIndividualImports(importNames: string, indentation: string, wi
 function convertToKebabCase(str: string): string {
   return str
     .replace(/Icon$/, '') // Remove 'Icon' suffix
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // Add hyphen between lowercase and uppercase letters
+    .replace(/([a-zA-Z])(\d)/g, '$1-$2') // Add hyphen before numbers
     .toLowerCase()
 }
 

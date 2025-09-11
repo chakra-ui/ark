@@ -1,18 +1,22 @@
 ## [Unreleased]
 
+## [5.24.0] - 2025-09-11
+
 ### Added
 
-- **Anatomy**: Export all component anatomies from `@ark-ui/react/anatomy` to prevent resolution issues with other Node
-  programs like Panda CSS. You can now import anatomies directly:
-  
-  ```tsx
-  import { accordionAnatomy, dialogAnatomy } from '@ark-ui/react/anatomy'
-  ```
+- **Dismissable**: Add support for layer types in dismissable layer stack. Layers can now be categorized as `dialog`,
+  `popover`, `menu`, or `listbox`. This enables:
+  - `data-nested` attribute on nested layers of the same type
+  - `data-has-nested` attribute on parent layers with nested children of the same type
+  - `--nested-layer-count` CSS variable indicating the number of nested layers of the same type
 
-### Changed
+### Fixed
 
-- **Fieldset**: Reverted `Fieldset.Legend` to render as a `legend` element instead of a `div` element (reverting changes
-  from v5.21.0) for better semantic HTML
+- **Menu**: Fix issue where hovering a partially visible item with pointer causes it to scroll into view
+
+- **Tabs**: Fix issue where `ids` for `item` and `content` could not be customized
+
+- **Toast**: Allow creating a toast store without any arguments
 
 ## [5.23.0] - 2025-09-08
 

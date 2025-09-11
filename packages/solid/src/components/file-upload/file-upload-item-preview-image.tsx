@@ -13,11 +13,11 @@ export const FileUploadItemPreviewImage = (props: FileUploadItemPreviewImageProp
   const [url, setUrl] = createSignal<string>('')
 
   createEffect(() => {
-    const cleanup = fileUpload().createFileUrl(itemProps.file, (url) => setUrl(url))
+    const cleanup = fileUpload().createFileUrl(itemProps().file, (url) => setUrl(url))
     onCleanup(cleanup)
   })
 
-  const mergedProps = mergeProps(() => fileUpload().getItemPreviewImageProps({ ...itemProps, url: url() }), props)
+  const mergedProps = mergeProps(() => fileUpload().getItemPreviewImageProps({ ...itemProps(), url: url() }), props)
 
   return (
     <Show when={url()}>

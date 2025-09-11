@@ -9,6 +9,7 @@ import ErrorHandlingExample from './examples/error-handling.svelte'
 import FileTransformationsExample from './examples/file-transformations.svelte'
 import InitialFilesExample from './examples/initial-files.svelte'
 import MediaCaptureExample from './examples/media-capture.svelte'
+import RejectedFilesExample from './examples/rejected-files.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SingleFileExample from './examples/single-file.svelte'
 import SizeLimitsExample from './examples/size-limits.svelte'
@@ -73,6 +74,12 @@ export const InitialFiles = {
 export const MediaCapture = {
   render: () => ({
     Component: MediaCaptureExample,
+  }),
+}
+
+export const RejectedFiles = {
+  render: () => ({
+    Component: RejectedFilesExample,
   }),
 }
 

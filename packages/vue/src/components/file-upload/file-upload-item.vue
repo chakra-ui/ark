@@ -2,7 +2,6 @@
 import type { ItemProps } from '@zag-js/file-upload'
 import type { LiHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
-import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
 export interface FileUploadItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface FileUploadItemProps
@@ -14,20 +13,26 @@ export interface FileUploadItemProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useForwardExpose } from '../../utils'
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
-import { useForwardExpose } from '../../utils'
+import { useFileUploadItemGroupPropsContext } from './use-file-upload-item-group-props-context'
+import { FileUploadItemPropsProvider } from './use-file-upload-item-props-context'
 
-const props = defineProps<FileUploadItemProps>()
+const props = defineProps<FileUploadItemBaseProps>()
 
 const fileUpload = useFileUploadContext()
-FileUploadItemPropsProvider(props)
+
+const itemGroupProps = useFileUploadItemGroupPropsContext()
+const itemPropsContext = computed(() => ({ ...props, type: itemGroupProps.value.type }))
+FileUploadItemPropsProvider(itemPropsContext)
 
 useForwardExpose()
 </script>
 
 <template>
-  <ark.li v-bind="fileUpload.getItemProps(props)" :as-child="asChild">
+  <ark.li v-bind="fileUpload.getItemProps(itemPropsContext)" :as-child="asChild">
     <slot />
   </ark.li>
 </template>

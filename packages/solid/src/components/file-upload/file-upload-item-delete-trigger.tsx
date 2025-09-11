@@ -9,7 +9,7 @@ export interface FileUploadItemDeleteTriggerProps extends HTMLProps<'button'>, F
 export const FileUploadItemDeleteTrigger = (props: FileUploadItemDeleteTriggerProps) => {
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
-  const mergedProps = mergeProps(() => fileUpload().getItemDeleteTriggerProps(itemProps), props)
+  const mergedProps = mergeProps(() => fileUpload().getItemDeleteTriggerProps(itemProps()), props)
 
   return <ark.button {...mergedProps} />
 }

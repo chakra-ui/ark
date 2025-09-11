@@ -26,7 +26,7 @@ const itemProps = useFileUploadItemPropsContext()
 const url = ref<string>('')
 
 watchEffect((onCleanup) => {
-  const cleanup = fileUpload.value.createFileUrl(itemProps.file, (src) => (url.value = src))
+  const cleanup = fileUpload.value.createFileUrl(itemProps.value.file, (src) => (url.value = src))
   onCleanup(cleanup)
 })
 

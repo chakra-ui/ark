@@ -15,9 +15,9 @@ export interface FileUploadItemPreviewProps extends HTMLProps<'div'>, FileUpload
 export const FileUploadItemPreview = (props: FileUploadItemPreviewProps) => {
   const fileUpload = useFileUploadContext()
   const itemProps = useFileUploadItemPropsContext()
-  const mergedProps = mergeProps(() => fileUpload().getItemPreviewProps(itemProps), props)
+  const mergedProps = mergeProps(() => fileUpload().getItemPreviewProps(itemProps()), props)
 
-  if (!itemProps.file.type.match(props.type ?? '.*')) return null
+  if (!itemProps().file.type.match(props.type ?? '.*')) return null
 
   return <ark.div {...mergedProps} />
 }
