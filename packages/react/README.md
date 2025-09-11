@@ -53,7 +53,6 @@ Ark UI is available for the following JavaScript frameworks:
 - [Switch](https://ark-ui.com/react/docs/components/switch)
 - [Tabs](https://ark-ui.com/react/docs/components/tabs)
 - [Tags Input](https://ark-ui.com/react/docs/components/tags-input)
-- [Time Picker](https://ark-ui.com/react/docs/components/time-picker)
 - [Timer](https://ark-ui.com/react/docs/components/timer)
 - [Toast](https://ark-ui.com/react/docs/components/toast)
 - [Toggle Group](https://ark-ui.com/react/docs/components/toggle-group)
