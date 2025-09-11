@@ -28,7 +28,6 @@ function generateConfig(jsx: boolean): Options {
     outExtension() {
       return jsx ? { js: '.jsx' } : {}
     },
-    // @ts-ignore
     esbuildPlugins: !jsx ? [solidPlugin({ solid: { generate: 'dom' } })] : [],
   }
 }
