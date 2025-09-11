@@ -29,7 +29,13 @@ export interface RootProps {
   /**
    * The ids of the elements in the tabs. Useful for composition.
    */
-  ids?: Partial<{ root: string; trigger: string; list: string; content: string; indicator: string }>
+  ids?: Partial<{
+    root: string
+    trigger: (id: string) => string
+    content: (id: string) => string
+    list: string
+    indicator: string
+  }>
   /**
    * Whether the keyboard navigation will loop from last tab to first, and vice versa.
    * @default true
