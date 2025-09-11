@@ -6,6 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Anatomy**: Export all component anatomies from `@ark-ui/svelte/anatomy` to prevent resolution issues with other Node
+  programs like Panda CSS. You can now import anatomies directly:
+  
+  ```ts
+  import { accordionAnatomy, dialogAnatomy } from '@ark-ui/svelte/anatomy'
+  ```
+
 ### Changed
 
 - **Fieldset**: Reverted `Fieldset.Legend` to render as a `legend` element instead of a `div` element (reverting changes
