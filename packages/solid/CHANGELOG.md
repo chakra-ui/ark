@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Added
+
+- **Anatomy**: Export all component anatomies from `@ark-ui/solid/anatomy` to prevent resolution issues with other Node
+  programs like Panda CSS. You can now import anatomies directly:
+
+  ```tsx
+  import { accordionAnatomy, dialogAnatomy } from '@ark-ui/solid/anatomy'
+  ```
+
 ### Changed
 
 - **Fieldset**: Reverted `Fieldset.Legend` to render as a `legend` element instead of a `div` element (reverting changes

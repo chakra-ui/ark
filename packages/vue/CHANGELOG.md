@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Added
+
+- **Anatomy**: Export all component anatomies from `@ark-ui/vue/anatomy` to prevent resolution issues with other Node
+  programs like Panda CSS. You can now import anatomies directly:
+  
+  ```ts
+  import { accordionAnatomy, dialogAnatomy } from '@ark-ui/vue/anatomy'
+  ```
+
 ### Changed
 
 - **Fieldset**: Reverted `Fieldset.Legend` to render as a `legend` element instead of a `div` element (reverting changes
