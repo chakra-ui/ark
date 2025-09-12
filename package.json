@@ -36,19 +36,19 @@
     "root": "."
   },
   "devDependencies": {
-    "entities": "6.0.1",
-    "@biomejs/biome": "2.2.2",
+    "entities": "7.0.0",
+    "@biomejs/biome": "2.2.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.20",
-    "lefthook": "1.12.3",
+    "@types/bun": "1.2.21",
+    "lefthook": "1.13.0",
     "release-it": "19.0.4",
     "prettier": "3.6.2",
     "prettier-plugin-svelte": "3.4.0",
     "turbo": "2.5.6",
     "typescript": "5.9.2",
-    "vercel": "47.0.6"
+    "vercel": "48.0.0"
   },
-  "packageManager": "bun@1.2.20",
+  "packageManager": "bun@1.2.21",
   "trustedDependencies": [
     "@ark-ui/website"
   ],
