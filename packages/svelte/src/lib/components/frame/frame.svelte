@@ -60,12 +60,14 @@
     if (!win || !mountNode) return
 
     const exec = () => {
-      if (!(mountNode && frameRef && frameRef.contentDocument)) return
+      win.requestAnimationFrame(() => {
+        if (!(mountNode && frameRef && frameRef.contentDocument)) return
 
-      const rootEl = frameRef.contentDocument?.documentElement
-      if (!rootEl) return
-      frameRef.style.setProperty('--width', `${mountNode.scrollWidth}px`)
-      frameRef.style.setProperty('--height', `${mountNode.scrollHeight}px`)
+        const rootEl = frameRef.contentDocument?.documentElement
+        if (!rootEl) return
+        frameRef.style.setProperty('--width', `${mountNode.scrollWidth}px`)
+        frameRef.style.setProperty('--height', `${mountNode.scrollHeight}px`)
+      })
     }
 
     const resizeObserver = new win.ResizeObserver(exec)
