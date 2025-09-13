@@ -57,10 +57,12 @@ export const Frame = forwardRef<HTMLIFrameElement, FrameProps>((props, ref) => {
     if (!mountNode) return
 
     const exec = () => {
-      const rootEl = frameRef.contentDocument?.documentElement
-      if (!rootEl) return
-      frameRef.style.setProperty('--width', `${mountNode.scrollWidth}px`)
-      frameRef.style.setProperty('--height', `${mountNode.scrollHeight}px`)
+      win.requestAnimationFrame(() => {
+        const rootEl = frameRef.contentDocument?.documentElement
+        if (!rootEl) return
+        frameRef.style.setProperty('--width', `${mountNode.scrollWidth}px`)
+        frameRef.style.setProperty('--height', `${mountNode.scrollHeight}px`)
+      })
     }
 
     const resizeObserver = new win.ResizeObserver(exec)
