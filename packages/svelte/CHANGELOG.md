@@ -12,6 +12,12 @@ description: All notable changes will be documented in this file.
   combobox, then Enter to submit form) and instead submit the form immediately on Enter press. This is useful for
   single-field autocomplete forms where Enter should submit the form directly.
 
+- **Dismissable**: Add support for layer types in dismissable layer stack. Layers can now be categorized as `dialog`,
+  `popover`, `menu`, or `listbox`. This enables:
+  - `data-nested` attribute on nested layers of the same type
+  - `data-has-nested` attribute on parent layers with nested children of the same type
+  - `--nested-layer-count` CSS variable indicating the number of nested layers of the same type
+
 ### Changed
 
 - **Hover Card**: Change default delay values for hover card to improve accessibility.
@@ -31,23 +37,11 @@ description: All notable changes will be documented in this file.
 
 - **File Upload**: Fix regression where clicking the trigger doesn't open the file picker when used within the dropzone
 
-- **Menu**: Fix issue where keyboard activation of menu items with `target="_blank"` would open two tabs
-
 - **Svelte**: Fix Svelte warning about state reference capturing initial value instead of current reactive state
 
-## [5.9.0] - 2025-09-11
-
-### Added
-
-- **Dismissable**: Add support for layer types in dismissable layer stack. Layers can now be categorized as `dialog`,
-  `popover`, `menu`, or `listbox`. This enables:
-  - `data-nested` attribute on nested layers of the same type
-  - `data-has-nested` attribute on parent layers with nested children of the same type
-  - `--nested-layer-count` CSS variable indicating the number of nested layers of the same type
-
-### Fixed
-
-- **Menu**: Fix issue where hovering a partially visible item with pointer causes it to scroll into view
+- **Menu**
+  - Fix issue where hovering a partially visible item with pointer causes it to scroll into view
+  - Fix issue where keyboard activation of menu items with `target="_blank"` would open two tabs
 
 - **Tabs**: Fix issue where `ids` for `item` and `content` could not be customized
 
