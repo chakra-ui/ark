@@ -7,6 +7,12 @@ export interface RootProps<T extends CollectionItem> {
    */
   allowCustomValue?: boolean
   /**
+   * Whether to allow bypassing the default two-step behavior (Enter to close combobox, then Enter to submit form)
+   * and instead submit the form immediately on Enter press. This is useful for single-field autocomplete forms
+   * where Enter should submit the form directly.
+   */
+  alwaysSubmitOnEnter?: boolean
+  /**
    * Whether to autofocus the input on mount
    */
   autoFocus?: boolean

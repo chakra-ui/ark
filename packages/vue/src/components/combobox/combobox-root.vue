@@ -29,6 +29,7 @@ import { ComboboxProvider } from './use-combobox-context'
 
 const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
   allowCustomValue: undefined,
+  alwaysSubmitOnEnter: undefined,
   autoFocus: undefined,
   closeOnSelect: undefined,
   composite: undefined,

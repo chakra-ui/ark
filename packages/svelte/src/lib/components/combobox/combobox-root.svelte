@@ -39,6 +39,7 @@
   const [useComboboxProps, localProps] = $derived(
     createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
       'allowCustomValue',
+      'alwaysSubmitOnEnter',
       'autoFocus',
       'closeOnSelect',
       'collection',

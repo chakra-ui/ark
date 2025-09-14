@@ -19,6 +19,7 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProps<T>, ref
   const [presenceProps, comboboxProps] = splitPresenceProps(props)
   const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
     'allowCustomValue',
+    'alwaysSubmitOnEnter',
     'autoFocus',
     'closeOnSelect',
     'collection',

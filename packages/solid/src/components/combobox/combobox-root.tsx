@@ -20,6 +20,7 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
   const [presenceProps, comboboxProps] = splitPresenceProps(props)
   const [useComboboxProps, localProps] = createSplitProps<UseComboboxProps<T>>()(comboboxProps, [
     'allowCustomValue',
+    'alwaysSubmitOnEnter',
     'autoFocus',
     'closeOnSelect',
     'collection',

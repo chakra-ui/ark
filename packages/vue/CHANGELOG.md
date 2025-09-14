@@ -1,5 +1,32 @@
 ## [Unreleased]
 
+### Added
+
+- **Combobox**: Add `alwaysSubmitOnEnter` prop to allow bypassing the default two-step behavior (Enter to close
+  combobox, then Enter to submit form) and instead submit the form immediately on Enter press. This is useful for
+  single-field autocomplete forms where Enter should submit the form directly.
+
+### Changed
+
+- **Hover Card**: Change default delay values for hover card to improve accessibility.
+  - `openDelay`: from `700ms` to `600ms`
+
+- **Tooltip**: Change default delay values for tooltip to improve accessibility.
+  [Learn more](https://www.nngroup.com/articles/timing-exposing-content)
+  - `openDelay`: from `1000ms` to `400ms`
+  - `closeDelay`: from `500ms` to `150ms`
+
+### Fixed
+
+- **Editable**: Allow text selection in editable preview when `autoResize` is enabled
+
+  Previously, when `autoResize` was set to `true`, the preview element had `userSelect: "none"` applied, preventing
+  users from selecting text. This has been fixed by removing the `userSelect` style property.
+
+- **File Upload**: Fix regression where clicking the trigger doesn't open the file picker when used within the dropzone
+
+- **Menu**: Fix issue where keyboard activation of menu items with `target="_blank"` would open two tabs
+
 ## [5.24.0] - 2025-09-11
 
 ### Added
