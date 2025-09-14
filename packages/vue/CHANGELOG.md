@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **General**: Fix issue where `mergeProps` throws when `props` is `undefined` or `null`
+
 ## [5.24.0] - 2025-09-14
 
 ### Added

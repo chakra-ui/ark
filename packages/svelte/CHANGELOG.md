@@ -6,6 +6,10 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **General**: Fix issue where `mergeProps` throws when `props` is `undefined` or `null`
+
 ## [5.9.0] - 2025-09-14
 
 ### Added
