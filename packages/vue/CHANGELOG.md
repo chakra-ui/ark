@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.24.0] - 2025-09-14
+
 ### Added
 
 - **Combobox**: Add `alwaysSubmitOnEnter` prop to allow bypassing the default two-step behavior (Enter to close
