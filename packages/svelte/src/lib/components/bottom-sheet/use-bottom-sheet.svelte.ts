@@ -8,7 +8,7 @@ import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 export interface UseBottomSheetProps extends Optional<Omit<bottomSheet.Props, 'getRootNode' | 'dir'>, 'id'> {}
 export interface UseBottomSheetReturn extends Accessor<bottomSheet.Api<PropTypes>> {}
 
-export const useBottomSheet = (props: MaybeFunction<UseBottomSheetProps>) => {
+export const useBottomSheet = (props: MaybeFunction<UseBottomSheetProps>): UseBottomSheetReturn => {
   const env = useEnvironmentContext()
   const locale = useLocaleContext()
 

@@ -20,7 +20,7 @@
   const renderStrategyProps = useRenderStrategyPropsContext()
 
   const presence = usePresence(() => ({ ...renderStrategyProps, present: bottomSheet().open }))
-  const mergedProps = $derived(mergeProps(bottomSheet().getBackdropProps(), props))
+  const mergedProps = $derived(mergeProps(bottomSheet().getBackdropProps(), presence().getPresenceProps(), props))
 
   function setNode(node: Element | null) {
     presence().setNode(node)

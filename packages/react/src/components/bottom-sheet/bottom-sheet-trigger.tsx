@@ -1,8 +1,8 @@
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { useBottomSheetContext } from './use-bottom-sheet-context'
 import { usePresenceContext } from '../presence'
+import { useBottomSheetContext } from './use-bottom-sheet-context'
 
 export interface BottomSheetTriggerBaseProps extends PolymorphicProps {}
 export interface BottomSheetTriggerProps extends HTMLProps<'button'>, BottomSheetTriggerBaseProps {}

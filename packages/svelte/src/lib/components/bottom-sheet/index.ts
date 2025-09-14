@@ -46,7 +46,7 @@ export {
   type BottomSheetTriggerProps,
 } from './bottom-sheet-trigger.svelte'
 export { bottomSheetAnatomy } from './bottom-sheet.anatomy'
-export { useBottomSheet, type UseBottomSheetProps, type UseBottomSheetReturn } from './use-bottom-sheet.svelte'
 export { useBottomSheetContext, type UseBottomSheetContext } from './use-bottom-sheet-context'
+export { useBottomSheet, type UseBottomSheetProps, type UseBottomSheetReturn } from './use-bottom-sheet.svelte'
 
 export * as BottomSheet from './bottom-sheet'

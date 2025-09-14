@@ -6,8 +6,8 @@
 </script>
 
 <script lang="ts">
-  import { Ark } from '../factory'
   import { mergeProps } from '@zag-js/svelte'
+  import { Ark } from '../factory'
   import { useBottomSheetContext } from './use-bottom-sheet-context'
 
   let { ref = $bindable(null), ...props }: BottomSheetTitleProps = $props()

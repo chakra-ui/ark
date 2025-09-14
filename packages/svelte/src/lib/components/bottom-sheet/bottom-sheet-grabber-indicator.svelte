@@ -1,8 +1,9 @@
 <script module lang="ts">
-  import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
+  import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
   export interface BottomSheetGrabberIndicatorBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
-  export interface BottomSheetGrabberIndicatorProps extends HTMLProps<'div'>, BottomSheetGrabberIndicatorBaseProps {}
+  export interface BottomSheetGrabberIndicatorProps
+    extends Assign<HTMLProps<'div'>, BottomSheetGrabberIndicatorBaseProps> {}
 </script>
 
 <script lang="ts">

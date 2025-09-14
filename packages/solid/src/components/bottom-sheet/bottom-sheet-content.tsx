@@ -5,6 +5,7 @@ import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useBottomSheetContext } from './use-bottom-sheet-context'
 import { usePresenceContext } from '../presence'
+import { composeRefs } from '../../utils/compose-refs'
 
 export interface BottomSheetContentBaseProps extends PolymorphicProps<'div'>, ContentProps {}
 export interface BottomSheetContentProps extends Omit<HTMLProps<'div'>, 'draggable'>, BottomSheetContentBaseProps {}
@@ -21,7 +22,7 @@ export const BottomSheetContent = (props: BottomSheetContentProps) => {
 
   return (
     <Show when={!presence().unmounted}>
-      <ark.div {...mergedProps} />
+      <ark.div {...mergedProps} ref={composeRefs(presence().ref, localProps.ref)} />
     </Show>
   )
 }
