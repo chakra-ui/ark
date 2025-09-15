@@ -39,7 +39,7 @@
     "entities": "7.0.0",
     "@biomejs/biome": "2.2.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.21",
+    "@types/bun": "1.2.22",
     "lefthook": "1.13.0",
     "release-it": "19.0.4",
     "prettier": "3.6.2",
