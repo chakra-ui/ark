@@ -5,6 +5,7 @@ import SnapPointsExample from './examples/snap-points.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import ModalExample from './examples/modal.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import ScrollableExample from './examples/scrollable.svelte'
 
 const meta: Meta = {
   title: 'Components / Bottom Sheet',
@@ -39,5 +40,11 @@ export const Modal = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const Scrollable = {
+  render: () => ({
+    Component: ScrollableExample,
   }),
 }

@@ -58,6 +58,10 @@
   right: 1rem;
 }
 
+[data-scope='bottom-sheet'] .scrollable {
+  overflow-y: auto;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

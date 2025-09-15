@@ -1,5 +1,4 @@
 <script lang="ts">
-import type { PolymorphicProps } from '../factory'
 import type { RenderStrategyProps } from '../../utils'
 import type { RootEmits, RootProps } from './bottom-sheet.types'
 import type { BooleanDefaults } from '../../types'

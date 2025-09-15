@@ -4,6 +4,7 @@ import Controlled from './examples/controlled.vue'
 import Modal from './examples/modal.vue'
 import RootProvider from './examples/root-provider.vue'
 import SnapPoints from './examples/snap-points.vue'
+import Scrollable from './examples/scrollable.vue'
 </script>
 
 <template>
@@ -22,6 +23,9 @@ import SnapPoints from './examples/snap-points.vue'
     </Variant>
     <Variant title="SnapPoints">
       <SnapPoints />
+    </Variant>
+    <Variant title="Scrollable">
+      <Scrollable />
     </Variant>
   </Story>
 </template>
