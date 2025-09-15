@@ -5,6 +5,7 @@ import Modal from './examples/modal.vue'
 import RootProvider from './examples/root-provider.vue'
 import SnapPoints from './examples/snap-points.vue'
 import Scrollable from './examples/scrollable.vue'
+import NoDragArea from './examples/no-drag-area.vue'
 </script>
 
 <template>
@@ -26,6 +27,9 @@ import Scrollable from './examples/scrollable.vue'
     </Variant>
     <Variant title="Scrollable">
       <Scrollable />
+    </Variant>
+    <Variant title="NoDragArea">
+      <NoDragArea />
     </Variant>
   </Story>
 </template>

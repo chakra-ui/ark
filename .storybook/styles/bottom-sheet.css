@@ -58,6 +58,14 @@
   right: 1rem;
 }
 
+[data-scope='bottom-sheet'] [data-no-drag] {
+  border: 1px solid black;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 [data-scope='bottom-sheet'] .scrollable {
   overflow-y: auto;
 }
