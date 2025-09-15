@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Fixed
+
+- **AngleSlider**: Export `angleSliderAnatomy` from the anatomy exports
+
 ## [5.24.1] - 2025-09-14
 
 ### Fixed
