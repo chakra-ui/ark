@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "check:anatomy": "bun run src/check-anatomy.ts",
     "check:exports": "bun run src/check-exports.ts",
     "check:nodes": "bun run src/check-nodes.ts",
     "check:zag": "bun run src/check-zag-versions.ts",

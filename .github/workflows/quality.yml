@@ -79,3 +79,6 @@ jobs:
 
       - name: Check for Zag package and versions
         run: bun scripts check:zag
+
+      - name: Check for anatomy exports
+        run: bun scripts check:anatomy

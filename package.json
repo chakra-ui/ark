@@ -12,6 +12,7 @@
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**' --filter='!./website/**' --filter='!./integrations/**'",
+    "check:anatomy": "bun scripts check:anatomy",
     "check:exports": "bun scripts check:exports",
     "check:zag": "bun scripts check:zag",
     "clean": "find . -name 'node_modules' -type d -exec rm -rf {} +",
