@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 import type { UseTourReturn } from './use-tour'
 
 export interface UseTourContext extends UseTourReturn {}

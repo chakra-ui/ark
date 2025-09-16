@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits, RootProps } from './tooltip.types'
 
 export interface TooltipRootBaseProps extends RootProps, RenderStrategyProps {}
@@ -10,7 +10,8 @@ export interface TooltipRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useTooltip } from './use-tooltip'
 import { TooltipProvider } from './use-tooltip-context'
 

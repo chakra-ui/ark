@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Slider, type SliderRootBaseProps, type SliderRootEmits } from '../'
-import { useForwardPropsEmits } from '../../../utils'
+import { useForwardPropsEmits } from '../../../utils/use-forward-props-emits'
 
 const props = defineProps<SliderRootBaseProps>()
 const emits = defineEmits<SliderRootEmits>()

@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 import type { UseFieldReturn } from './use-field'
 
 export interface UseFieldContext extends UseFieldReturn {}

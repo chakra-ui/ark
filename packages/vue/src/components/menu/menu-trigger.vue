@@ -14,7 +14,7 @@ export interface MenuTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<MenuTriggerProps>()
 const menu = useMenuContext()

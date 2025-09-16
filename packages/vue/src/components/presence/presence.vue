@@ -18,7 +18,7 @@ export interface PresenceEmits extends RootEmits {}
 import { ark } from '../factory'
 import { usePresence } from './use-presence'
 import { PresenceProvider } from './use-presence-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<PresenceProps>(), {
   immediate: undefined,

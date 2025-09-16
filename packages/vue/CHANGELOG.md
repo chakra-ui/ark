@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Added
+
+- Added `mergeProps` utility for combining multiple props objects with proper event handler and className merging.
+- Added `createContext` utility for creating typed React contexts with improved DX.
+
+```tsx
+import { createContext } from '@ark-ui/solid/utils'
+```
+
 ## [5.24.1] - 2025-09-14
 
 ### Fixed

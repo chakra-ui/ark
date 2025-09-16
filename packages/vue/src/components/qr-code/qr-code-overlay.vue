@@ -14,7 +14,7 @@ export interface QrCodeOverlayProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useQrCodeContext } from './use-qr-code-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<QrCodeOverlayProps>()
 const qrCode = useQrCodeContext()

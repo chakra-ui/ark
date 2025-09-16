@@ -3,7 +3,7 @@ import { type PropTypes, mergeProps, normalizeProps, useMachine } from '@zag-js/
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps } from '../../utils/clean-props'
 import { useFieldContext } from '../field'
 import type { RootEmits } from './checkbox'
 import { useCheckboxGroupContext } from './use-checkbox-group-context'

@@ -15,7 +15,7 @@ export interface MenuItemIndicatorProps
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuItemPropsContext } from './use-menu-option-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<MenuItemIndicatorProps>()
 

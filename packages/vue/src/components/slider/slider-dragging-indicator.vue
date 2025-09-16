@@ -14,7 +14,7 @@ export interface SliderDraggingIndicatorProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
 
 defineProps<SliderDraggingIndicatorProps>()

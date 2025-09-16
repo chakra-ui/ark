@@ -4,6 +4,7 @@ import type { Assign, BooleanDefaults } from '../../types'
 import type { TreeNode } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './tree-view.types'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 
 export interface TreeViewRootBaseProps<T extends TreeNode>
   extends RootProps<T>,
@@ -21,7 +22,8 @@ export type { RootEmits as TreeViewRootEmits } from './tree-view.types'
 
 <script setup lang="ts" generic="T extends TreeNode">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose, type RenderStrategyProps } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'

@@ -16,7 +16,7 @@ export interface SignaturePadHiddenInputProps
 import { ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<SignaturePadHiddenInputProps>()
 const signaturePad = useSignaturePadContext()

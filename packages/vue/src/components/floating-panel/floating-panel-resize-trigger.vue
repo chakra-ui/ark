@@ -15,7 +15,7 @@ export interface FloatingPanelResizeTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFloatingPanelContext } from './use-floating-panel-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<FloatingPanelResizeTriggerProps>()
 const floatingPanel = useFloatingPanelContext()

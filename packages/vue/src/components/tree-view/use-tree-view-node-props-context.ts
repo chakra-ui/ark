@@ -1,5 +1,5 @@
 import type { NodeProps } from '@zag-js/tree-view'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface UseTreeViewNodePropsContext extends NodeProps {}
 

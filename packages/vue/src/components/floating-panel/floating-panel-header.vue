@@ -14,7 +14,7 @@ export interface FloatingPanelHeaderProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFloatingPanelContext } from './use-floating-panel-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<FloatingPanelHeaderProps>()
 const floatingPanel = useFloatingPanelContext()

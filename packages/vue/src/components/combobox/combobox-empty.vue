@@ -16,7 +16,7 @@ import { computed } from 'vue'
 import { ark } from '../factory'
 import { comboboxAnatomy } from './combobox.anatomy'
 import { useComboboxContext } from './use-combobox-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const parts = comboboxAnatomy.build()
 

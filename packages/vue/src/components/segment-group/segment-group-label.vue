@@ -15,7 +15,7 @@ export interface SegmentGroupLabelProps
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<SegmentGroupLabelProps>()
 const segmentGroup = useSegmentGroupContext()

@@ -15,7 +15,7 @@ export interface DatePickerPresetTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DatePickerPresetTriggerProps>()
 const datePicker = useDatePickerContext()

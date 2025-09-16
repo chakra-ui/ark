@@ -14,7 +14,7 @@ export interface SelectListProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<SelectListProps>()
 const select = useSelectContext()

@@ -17,7 +17,7 @@ export interface PaginationRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { usePagination } from './use-pagination'
 import { PaginationProvider } from './use-pagination-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<PaginationRootProps>()
 const emits = defineEmits<PaginationRootEmits>()

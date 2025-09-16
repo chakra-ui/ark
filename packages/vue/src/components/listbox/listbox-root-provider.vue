@@ -26,7 +26,7 @@ export type ListboxRootProviderComponent<P = {}> = <T extends CollectionItem>(
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { ListboxProvider } from './use-listbox-context'
 

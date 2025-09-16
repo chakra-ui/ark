@@ -16,7 +16,7 @@ export interface FloatingPanelContentProps
 import { ark } from '../factory'
 import { useFloatingPanelContext } from './use-floating-panel-context'
 import { usePresenceContext } from '../presence'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<FloatingPanelContentProps>()
 

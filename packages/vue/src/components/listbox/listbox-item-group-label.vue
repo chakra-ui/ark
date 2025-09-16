@@ -15,7 +15,7 @@ export interface ListboxItemGroupLabelProps
 import { ark } from '../factory'
 import { useListboxContext } from './use-listbox-context'
 import { useListboxItemGroupPropsContext } from './use-listbox-item-group-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ListboxItemGroupLabelProps>()
 const listbox = useListboxContext()

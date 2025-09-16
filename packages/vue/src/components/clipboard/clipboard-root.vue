@@ -17,7 +17,7 @@ export interface ClipboardRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useClipboard } from './use-clipboard'
 import { ClipboardProvider } from './use-clipboard-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ClipboardRootProps>()
 const emits = defineEmits<ClipboardRootEmits>()

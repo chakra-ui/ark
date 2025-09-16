@@ -18,7 +18,7 @@ export interface CarouselRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useCarousel } from './use-carousel'
 import { CarouselProvider } from './use-carousel-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<CarouselRootProps>(), {
   allowMouseDrag: undefined,

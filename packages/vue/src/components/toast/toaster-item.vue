@@ -3,7 +3,7 @@ import * as toast from '@zag-js/toast'
 import { normalizeProps, useMachine } from '@zag-js/vue'
 import { type VNodeChild, computed } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ToastProvider } from './use-toast-context'
 
 interface ToastItemProps {

@@ -15,7 +15,7 @@ export interface SliderHiddenInputProps
 import { ark } from '../factory'
 import { useSliderContext } from './use-slider-context'
 import { useSliderThumbPropsContext } from './use-slider-thumb-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<SliderHiddenInputProps>()
 

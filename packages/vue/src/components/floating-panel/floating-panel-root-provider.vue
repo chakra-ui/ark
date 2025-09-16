@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { UseFloatingPanelReturn } from './use-floating-panel'
 
 export interface FloatingPanelRootProviderBaseProps extends RenderStrategyProps {
@@ -11,7 +11,7 @@ export interface FloatingPanelRootProviderProps extends FloatingPanelRootProvide
 
 <script setup lang="ts">
 import { computed, type UnwrapRef } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { PresenceProvider, usePresence } from '../presence'
 import { FloatingPanelProvider } from './use-floating-panel-context'
 

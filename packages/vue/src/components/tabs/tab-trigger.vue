@@ -15,7 +15,7 @@ export interface TabTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<TabTriggerProps>()
 const tabs = useTabsContext()

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { PolymorphicProps } from '../factory'
 import type { UseMenuReturn } from './use-menu'
 
@@ -13,7 +13,8 @@ export interface MenuRootProviderProps extends MenuRootProviderBaseProps {}
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { MenuProvider, useMenuContext } from './use-menu-context'
 import { MenuMachineProvider, useMenuMachineContext } from './use-menu-machine-context'
 import { MenuTriggerItemProvider } from './use-menu-trigger-item-context'

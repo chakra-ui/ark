@@ -15,7 +15,7 @@ export interface ComboboxInputProps
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ComboboxInputProps>()
 const combobox = useComboboxContext()

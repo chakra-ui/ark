@@ -14,7 +14,7 @@ export interface TreeViewTreeProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<TreeViewTreeProps>()
 const treeView = useTreeViewContext()

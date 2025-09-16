@@ -15,7 +15,7 @@ export interface EditableInputProps
 import { ark } from '../factory'
 import { useEditableContext } from './use-editable-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<EditableInputProps>()
 const editable = useEditableContext()

@@ -12,7 +12,8 @@ export interface TourBackdropProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps, useForwardExpose } from '../../utils'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { Presence } from '../presence'
 import { useTourContext } from './use-tour-context'
 

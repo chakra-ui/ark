@@ -17,7 +17,7 @@ export interface QrCodeRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useQrCode } from './use-qr-code'
 import { QrCodeProvider } from './use-qr-code-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<QrCodeRootProps>()
 const qrCode = useQrCode(props)

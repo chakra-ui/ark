@@ -15,7 +15,7 @@ export interface ColorPickerHiddenInputProps
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ColorPickerHiddenInputProps>()
 const colorPicker = useColorPickerContext()

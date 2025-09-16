@@ -16,7 +16,7 @@ import { computed } from 'vue'
 import { ark } from '../factory'
 import { listboxAnatomy } from './listbox.anatomy'
 import { useListboxContext } from './use-listbox-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const parts = listboxAnatomy.build()
 

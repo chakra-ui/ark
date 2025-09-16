@@ -1,6 +1,6 @@
 import type { ItemState } from '@zag-js/radio-group'
 import type { ComputedRef } from 'vue'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface UseRadioGroupItemContext extends ComputedRef<ItemState> {}
 

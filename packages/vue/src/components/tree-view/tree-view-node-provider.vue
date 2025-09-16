@@ -10,7 +10,7 @@ export interface TreeViewNodeProviderProps<T extends TreeNode> extends TreeViewN
 </script>
 
 <script setup lang="ts" generic="T extends TreeNode">
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { TreeViewNodePropsProvider } from './use-tree-view-node-props-context'
 import { useTreeViewContext } from './use-tree-view-context'
 import { computed } from 'vue'

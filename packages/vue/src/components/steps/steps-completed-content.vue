@@ -15,7 +15,7 @@ export interface StepsCompletedContentProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<StepsCompletedContentProps>()
 

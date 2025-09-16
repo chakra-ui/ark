@@ -17,7 +17,7 @@ import { useId } from 'vue'
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemGroupPropsProvider } from './use-select-item-group-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<SelectItemGroupProps>()
 

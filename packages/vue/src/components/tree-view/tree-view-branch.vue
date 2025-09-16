@@ -12,7 +12,8 @@ export interface TreeViewBranchProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose, useRenderStrategyProps } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { Collapsible } from '../collapsible'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'

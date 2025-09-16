@@ -18,7 +18,7 @@ export interface CheckboxRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useCheckbox } from './use-checkbox'
 import { CheckboxProvider } from './use-checkbox-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<CheckboxRootProps>(), {
   checked: undefined,

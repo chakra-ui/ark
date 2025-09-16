@@ -17,7 +17,7 @@ import { computed, useId } from 'vue'
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<MenuItemGroupProps>()
 

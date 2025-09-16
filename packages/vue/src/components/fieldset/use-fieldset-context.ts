@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 import type { UseFieldsetReturn } from './use-fieldset'
 
 export interface UseFieldsetContext extends UseFieldsetReturn {}

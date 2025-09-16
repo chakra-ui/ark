@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, ref, toValue, useId, watch } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps } from '../../utils/clean-props'
 import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits } from './collapsible.types'
 

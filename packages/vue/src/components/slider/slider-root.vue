@@ -18,7 +18,7 @@ export interface SliderRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useSlider } from './use-slider'
 import { SliderProvider } from './use-slider-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<SliderRootProps>(), {
   disabled: undefined,

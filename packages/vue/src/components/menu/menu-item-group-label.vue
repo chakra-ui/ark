@@ -15,7 +15,7 @@ export interface MenuItemGroupLabelProps
 import { ark } from '../factory'
 import { useMenuContext } from './use-menu-context'
 import { useMenuItemGroupContext } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<MenuItemGroupLabelProps>()
 

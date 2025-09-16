@@ -15,7 +15,7 @@ export interface ColorPickerSwatchTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ColorPickerSwatchTriggerProps>()
 const colorPicker = useColorPickerContext()

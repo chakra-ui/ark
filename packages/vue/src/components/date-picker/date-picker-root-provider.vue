@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { PolymorphicProps } from '../factory'
 import type { UseDatePickerReturn } from './use-date-picker'
 
@@ -19,10 +19,10 @@ export interface DatePickerRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { ark } from '../factory'
 import { DatePickerProvider } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DatePickerRootProviderProps>()
 const datePicker = computed(() => props.value)

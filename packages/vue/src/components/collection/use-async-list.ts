@@ -1,7 +1,7 @@
 import * as asyncList from '@zag-js/async-list'
 import { useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue } from 'vue'
-import { cleanProps } from '../../utils'
+import { cleanProps } from '../../utils/clean-props'
 
 export interface UseAsyncListProps<T, C = string> extends asyncList.Props<T, C> {}
 export interface UseAsyncListReturn<T, C = string> extends ComputedRef<asyncList.Api<T, C>> {}

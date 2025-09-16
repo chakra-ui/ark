@@ -19,7 +19,7 @@ import { ark } from '../factory'
 import { useSegmentGroup } from './use-segment-group'
 import { SegmentGroupProvider } from './use-segment-group-context'
 import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<SegmentGroupRootProps>(), {
   disabled: undefined,

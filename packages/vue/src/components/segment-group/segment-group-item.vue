@@ -19,7 +19,7 @@ import { SegmentGroupItemProvider } from './use-segment-group-item-context'
 import { ark } from '../factory'
 import { useSegmentGroupContext } from './use-segment-group-context'
 import { parts } from './segment-group.anatomy'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<SegmentGroupItemProps>()
 const segmentGroup = useSegmentGroupContext()

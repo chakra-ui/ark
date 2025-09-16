@@ -33,7 +33,7 @@ export interface DownloadTriggerProps
 import { ark } from '../factory'
 import { downloadFile } from '@zag-js/file-utils'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 const props = defineProps<DownloadTriggerProps>()
 
 const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)

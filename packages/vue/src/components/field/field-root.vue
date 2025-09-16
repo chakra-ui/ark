@@ -17,7 +17,7 @@ export interface FieldRootProps
 import { ark } from '../factory'
 import { useField } from './use-field'
 import { FieldProvider } from './use-field-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<FieldRootProps>(), {
   disabled: undefined,

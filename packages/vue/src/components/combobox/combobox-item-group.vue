@@ -17,7 +17,7 @@ import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-context'
 import { useId } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ComboboxItemGroupProps>()
 const combobox = useComboboxContext()

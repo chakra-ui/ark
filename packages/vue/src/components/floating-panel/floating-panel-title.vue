@@ -12,7 +12,7 @@ export interface FloatingPanelTitleProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { useFloatingPanelContext } from './use-floating-panel-context'
 

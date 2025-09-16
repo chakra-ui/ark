@@ -1,6 +1,6 @@
 import type { Locale } from '@zag-js/i18n-utils'
 import { type ComputedRef, computed } from 'vue'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface LocaleContext extends Locale {}
 

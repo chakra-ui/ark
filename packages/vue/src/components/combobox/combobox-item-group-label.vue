@@ -15,7 +15,7 @@ export interface ComboboxItemGroupLabelProps
 import { ark } from '../factory'
 import { useComboboxContext } from './use-combobox-context'
 import { useComboboxItemGroupPropsContext } from './use-combobox-item-group-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ComboboxItemGroupLabelProps>()
 const combobox = useComboboxContext()

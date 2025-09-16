@@ -19,7 +19,7 @@ import { ark } from '../factory'
 import { colorPickerAnatomy } from './color-picker.anatomy'
 import { useColorPickerContext } from './use-color-picker-context'
 import { ColorPickerFormatPropsProvider } from './use-color-picker-format-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ColorPickerViewProps>()
 const colorPicker = useColorPickerContext()

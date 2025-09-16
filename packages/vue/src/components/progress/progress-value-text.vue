@@ -14,7 +14,7 @@ export interface ProgressValueTextProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useProgressContext } from './use-progress-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ProgressValueTextProps>()
 const progress = useProgressContext()

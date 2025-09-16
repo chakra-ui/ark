@@ -4,7 +4,7 @@ import { type ComputedRef, useId } from 'vue'
 import { type EmitFn, type MaybeRef, computed, toValue } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps } from '../../utils/clean-props'
 import type { RootEmits } from './floating-panel.types'
 
 export interface UseFloatingPanelProps extends Optional<Omit<floatingPanel.Props, 'getRootNode'>, 'id'> {}

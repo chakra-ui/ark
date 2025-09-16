@@ -17,7 +17,7 @@ export type { RootEmits as ListboxRootEmits } from './listbox.types'
 </script>
 
 <script setup lang="ts" generic="T extends CollectionItem">
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { useListbox } from './use-listbox'
 import { ListboxProvider } from './use-listbox-context'

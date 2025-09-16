@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
 import type { Assign } from '../../types'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { TreeNode } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { UseTreeViewReturn } from './use-tree-view'
@@ -28,7 +28,8 @@ export type TreeViewRootProviderComponent<P = {}> = <T extends TreeNode>(
 
 <script setup lang="ts" generic="T extends TreeNode">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { TreeViewProvider } from './use-tree-view-context'
 

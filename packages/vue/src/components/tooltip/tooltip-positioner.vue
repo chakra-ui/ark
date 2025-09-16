@@ -12,10 +12,10 @@ export interface TooltipPositionerProps
 </script>
 
 <script setup lang="ts">
-import { useRenderStrategyProps } from '../../utils'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { PresenceProvider, usePresence } from '../presence'
 import { useTooltipContext } from './use-tooltip-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<TooltipPositionerProps>()
 const tooltip = useTooltipContext()

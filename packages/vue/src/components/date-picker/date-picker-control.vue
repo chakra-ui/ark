@@ -14,7 +14,7 @@ export interface DatePickerControlProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<DatePickerControlProps>()
 const datePicker = useDatePickerContext()

@@ -17,7 +17,7 @@ import { computed } from 'vue'
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 import { RatingGroupItemProvider } from './use-rating-group-item-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<RatingGroupItemProps>()
 const ratingGroup = useRatingGroupContext()
