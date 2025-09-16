@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.25.0] - 2025-09-16
+
 ### Added
 
 - Added `mergeProps` utility for combining multiple props objects with proper event handler and className merging.

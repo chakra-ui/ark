@@ -1,7 +1,7 @@
 {
   "name": "@ark-ui/solid",
   "type": "module",
-  "version": "5.24.1",
+  "version": "5.25.0",
   "description": "A collection of unstyled, accessible UI components for Solid, utilizing state machines for seamless interaction.",
   "keywords": [
     "accordion",
