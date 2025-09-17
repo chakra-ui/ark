@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { UseBottomSheetReturn } from './use-bottom-sheet'
 
 interface RootProviderProps {
@@ -13,7 +13,7 @@ export interface BottomSheetRootProviderProps extends BottomSheetRootProviderBas
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { BottomSheetProvider } from './use-bottom-sheet-context'
 import { useForwardExpose } from '../../utils'
 

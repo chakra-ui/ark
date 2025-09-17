@@ -12,7 +12,8 @@ export interface BottomSheetBackdropProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose, useRenderStrategyProps } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
+import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { Presence } from '../presence'
 import { useBottomSheetContext } from './use-bottom-sheet-context'
 

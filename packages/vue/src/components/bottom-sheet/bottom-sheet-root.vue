@@ -1,8 +1,6 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits, RootProps } from './bottom-sheet.types'
-import type { BooleanDefaults } from '../../types'
-import { computed } from 'vue'
 
 export interface BottomSheetRootBaseProps extends RootProps, RenderStrategyProps {}
 export interface BottomSheetRootProps extends BottomSheetRootBaseProps {}
@@ -12,7 +10,10 @@ export interface BottomSheetRootEmits extends RootEmits {}
 <script setup lang="ts">
 import { useBottomSheet } from './use-bottom-sheet'
 import { BottomSheetProvider } from './use-bottom-sheet-context'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import type { BooleanDefaults } from '../../types'
+import { computed } from 'vue'
 
 const props = withDefaults(defineProps<BottomSheetRootProps>(), {
   closeOnEscape: undefined,
