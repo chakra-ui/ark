@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { UseTooltipReturn } from './use-tooltip'
 
 interface RootProviderProps {
@@ -12,7 +12,8 @@ export interface TooltipRootProviderProps extends TooltipRootProviderBaseProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { TooltipProvider } from './use-tooltip-context'
 
 const props = defineProps<TooltipRootProviderProps>()

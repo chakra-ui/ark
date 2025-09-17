@@ -19,7 +19,7 @@ import { ark } from '../factory'
 import { checkboxAnatomy } from './checkbox.anatomy'
 import { useCheckboxGroup } from './use-checkbox-group'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   disabled: undefined,

@@ -15,7 +15,7 @@ export interface AngleSliderMarkerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useAngleSliderContext } from './use-angle-slider-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<AngleSliderMarkerProps>()
 

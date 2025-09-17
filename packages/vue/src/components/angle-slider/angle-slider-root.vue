@@ -18,7 +18,7 @@ export interface AngleSliderRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useAngleSlider } from './use-angle-slider'
 import { AngleSliderProvider } from './use-angle-slider-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<AngleSliderRootProps>(), {
   disabled: undefined,

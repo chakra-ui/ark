@@ -17,7 +17,7 @@ import { ark } from '../factory'
 import { useColorPickerContext } from './use-color-picker-context'
 import { useColorPickerChannelPropsContext } from './use-color-picker-channel-props-context'
 import { useColorPickerFormatPropsContext } from './use-color-picker-format-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ColorPickerChannelSliderThumbProps>()
 const colorPicker = useColorPickerContext()

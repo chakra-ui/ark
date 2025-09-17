@@ -21,7 +21,7 @@ export interface FileUploadItemPreviewProps
 import { ark } from '../factory'
 import { useFileUploadContext } from './use-file-upload-context'
 import { useFileUploadItemPropsContext } from './use-file-upload-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 withDefaults(defineProps<FileUploadItemPreviewProps>(), {
   type: '.*',

@@ -14,7 +14,7 @@ export interface TourDescriptionProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTourContext } from './use-tour-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<TourDescriptionProps>()
 const tour = useTourContext()

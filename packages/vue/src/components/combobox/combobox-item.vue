@@ -18,7 +18,7 @@ import { computed } from 'vue'
 import { useComboboxContext } from './use-combobox-context'
 import { ComboboxItemProvider } from './use-combobox-item-context'
 import { ComboboxItemPropsProvider } from './use-combobox-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ComboboxItemProps>()
 const combobox = useComboboxContext()

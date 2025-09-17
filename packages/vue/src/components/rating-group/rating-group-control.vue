@@ -14,7 +14,7 @@ export interface RatingGroupControlProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<RatingGroupControlProps>()
 

@@ -18,7 +18,7 @@ export interface StepsRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useSteps } from './use-steps'
 import { StepsProvider } from './use-steps-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<StepsRootProps>(), {
   linear: undefined,

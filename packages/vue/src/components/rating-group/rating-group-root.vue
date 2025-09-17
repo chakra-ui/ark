@@ -18,7 +18,7 @@ export interface RatingGroupRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useRatingGroup } from './use-rating-group'
 import { RatingGroupProvider } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<RatingGroupRootProps>(), {
   allowHalf: undefined,

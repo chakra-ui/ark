@@ -26,7 +26,7 @@ import { computed } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
 import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
   checked: undefined,

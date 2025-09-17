@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps } from '../../utils/clean-props'
 
 export interface UseScrollAreaProps extends Optional<Omit<scrollArea.Props, 'dir' | 'getRootNode'>, 'id'> {}
 

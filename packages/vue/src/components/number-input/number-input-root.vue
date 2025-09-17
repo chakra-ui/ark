@@ -18,7 +18,7 @@ export interface NumberInputRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useNumberInput } from './use-number-input'
 import { NumberInputProvider } from './use-number-input-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<NumberInputRootProps>(), {
   allowMouseWheel: undefined,

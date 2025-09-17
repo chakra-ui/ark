@@ -16,7 +16,7 @@ export interface ColorPickerAreaProps
 import { ark } from '../factory'
 import { ColorPickerAreaPropsProvider } from './use-color-picker-area-props-context'
 import { useColorPickerContext } from './use-color-picker-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ColorPickerAreaProps>()
 const colorPicker = useColorPickerContext()

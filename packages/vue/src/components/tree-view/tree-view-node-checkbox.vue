@@ -12,7 +12,7 @@ export interface TreeViewNodeCheckboxProps
 </script>
 
 <script setup lang="ts">
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { useTreeViewContext } from './use-tree-view-context'
 import { useTreeViewNodePropsContext } from './use-tree-view-node-props-context'

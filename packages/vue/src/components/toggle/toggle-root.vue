@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ButtonHTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import type { PolymorphicProps } from '../factory'
 import { ark } from '../factory'
 import type { RootEmits, RootProps } from './toggle.types'

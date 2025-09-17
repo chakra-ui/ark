@@ -15,7 +15,7 @@ export interface MenuTriggerItemProps
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ark } from '../factory'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 defineProps<MenuTriggerItemProps>()

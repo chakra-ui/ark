@@ -20,7 +20,7 @@ export interface QrCodeRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { QrCodeProvider } from './use-qr-code-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<QrCodeRootProviderProps>()
 const qrCode = computed(() => props.value)

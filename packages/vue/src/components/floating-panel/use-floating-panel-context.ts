@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 import type { UseFloatingPanelReturn } from './use-floating-panel'
 
 export interface UseFloatingPanelContext extends UseFloatingPanelReturn {}

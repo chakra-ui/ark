@@ -15,7 +15,7 @@ export interface StepsSeparatorProps
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
 import { useStepsItemPropsContext } from './use-steps-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<StepsSeparatorProps>()
 

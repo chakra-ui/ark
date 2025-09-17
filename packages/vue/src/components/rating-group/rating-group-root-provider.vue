@@ -20,7 +20,7 @@ export interface RatingGroupRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { RatingGroupProvider } from './use-rating-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<RatingGroupRootProviderProps>()
 const ratingGroup = computed(() => props.value)

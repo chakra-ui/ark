@@ -1,5 +1,6 @@
 export * from '@zag-js/anatomy'
 export { accordionAnatomy } from './accordion/accordion.anatomy'
+export { angleSliderAnatomy } from './angle-slider/angle-slider.anatomy'
 export { avatarAnatomy } from './avatar/avatar.anatomy'
 export { carouselAnatomy } from './carousel/carousel.anatomy'
 export { checkboxAnatomy } from './checkbox/checkbox.anatomy'

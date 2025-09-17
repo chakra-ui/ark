@@ -3,7 +3,7 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
-import { cleanProps } from '../../utils'
+import { cleanProps } from '../../utils/clean-props'
 import type { RootEmits } from './clipboard.types'
 
 export interface UseClipboardProps extends Optional<Omit<clipboard.Props, 'dir' | 'getRootNode'>, 'id'> {

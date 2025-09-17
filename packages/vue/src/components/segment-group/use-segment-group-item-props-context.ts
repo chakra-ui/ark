@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/radio-group'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface UseSegmentGroupItemPropsContext extends ItemProps {}
 

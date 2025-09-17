@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { PolymorphicProps } from '../factory'
 import type { UseAccordionReturn } from './use-accordion'
 
@@ -19,7 +19,8 @@ export interface AccordionRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { AccordionProvider } from './use-accordion-context'
 

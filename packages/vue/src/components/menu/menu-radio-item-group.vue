@@ -23,7 +23,7 @@ import { ark } from '../factory'
 import { computed, useId } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemGroupProvider, type UseMenuItemGroupContext } from './use-menu-item-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<MenuRadioItemGroupProps>()
 const emits = defineEmits<MenuRadioItemGroupEmits>()

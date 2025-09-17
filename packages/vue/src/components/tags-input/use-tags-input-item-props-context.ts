@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/tags-input'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface UseTagsInputItemPropsContext extends ItemProps {}
 

@@ -14,7 +14,7 @@ export interface StepsListProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useStepsContext } from './use-steps-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<StepsListProps>()
 const steps = useStepsContext()

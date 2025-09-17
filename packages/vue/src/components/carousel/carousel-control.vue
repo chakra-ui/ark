@@ -14,7 +14,7 @@ export interface CarouselControlProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<CarouselControlProps>()
 const carousel = useCarouselContext()

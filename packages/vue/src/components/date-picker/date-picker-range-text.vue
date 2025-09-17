@@ -14,7 +14,7 @@ export interface DatePickerRangeTextProps
 <script setup lang="ts">
 import { uniq } from '@zag-js/utils'
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { useDatePickerContext } from './use-date-picker-context'
 

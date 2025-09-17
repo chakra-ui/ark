@@ -17,7 +17,8 @@ export interface FocusTrapEmits extends BaseEmits {}
 import { trapFocus, type FocusTrapOptions } from '@zag-js/focus-trap'
 import { watchEffect, ref, onWatcherCleanup, onBeforeUnmount } from 'vue'
 import { ark } from '../factory'
-import { useForwardExpose, cleanProps } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
+import { cleanProps } from '../../utils/clean-props'
 
 const props = withDefaults(defineProps<FocusTrapProps>(), {
   disabled: undefined,

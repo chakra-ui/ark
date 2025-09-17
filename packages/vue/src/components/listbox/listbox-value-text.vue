@@ -16,7 +16,7 @@ export interface ListboxValueTextProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useListboxContext } from './use-listbox-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<ListboxValueTextProps>()
 const listbox = useListboxContext()

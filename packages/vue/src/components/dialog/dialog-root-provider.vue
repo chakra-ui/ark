@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { UseDialogReturn } from './use-dialog'
 
 interface RootProviderProps {
@@ -13,9 +13,9 @@ export interface DialogRootProviderProps extends DialogRootProviderBaseProps {}
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { DialogProvider } from './use-dialog-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<DialogRootProviderProps>()
 const dialog = computed(() => props.value)

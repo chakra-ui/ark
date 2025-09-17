@@ -19,7 +19,7 @@ interface VisibilityProps {
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Collapsible } from '../..'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { createSplitProps } from '../create-split-props'
 import { useAccordionContext } from './use-accordion-context'
 import { useAccordionItemPropsContext } from './use-accordion-item-props-context'

@@ -18,7 +18,7 @@ import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { SelectItemProvider } from './use-select-item-context'
 import { SelectItemPropsProvider } from './use-select-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<SelectItemProps>()
 const select = useSelectContext()

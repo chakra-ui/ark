@@ -15,7 +15,7 @@ export interface RatingGroupHiddenInputProps
 import { ark } from '../factory'
 import { useRatingGroupContext } from './use-rating-group-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<RatingGroupHiddenInputProps>()
 

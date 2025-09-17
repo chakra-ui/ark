@@ -14,7 +14,7 @@ export interface SignaturePadSegmentProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSignaturePadContext } from './use-signature-pad-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<SignaturePadSegmentProps>()
 const signaturePad = useSignaturePadContext()

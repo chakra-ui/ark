@@ -17,7 +17,7 @@ export interface SplitterRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useSplitter } from './use-splitter'
 import { SplitterProvider } from './use-splitter-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<SplitterRootProps>()
 const emits = defineEmits<SplitterRootEmits>()

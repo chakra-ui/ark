@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes, UnwrapRef } from 'vue'
 import type { Assign } from '../../types'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { CollectionItem } from '../collection'
 import type { PolymorphicProps } from '../factory'
 import type { UseSelectReturn } from './use-select'
@@ -28,7 +28,8 @@ export type SelectRootProviderComponent<P = {}> = <T extends CollectionItem>(
 
 <script setup lang="ts" generic="T extends CollectionItem">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { SelectProvider } from './use-select-context'
 

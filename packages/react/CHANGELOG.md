@@ -1,5 +1,20 @@
 ## [Unreleased]
 
+## [5.25.0] - 2025-09-16
+
+### Added
+
+- Added `mergeProps` utility for combining multiple props objects with proper event handler and className merging.
+- Added `createContext` utility for creating typed React contexts with improved DX.
+
+```tsx
+import { createContext } from '@ark-ui/react/utils'
+```
+
+### Fixed
+
+- **AngleSlider**: Export `angleSliderAnatomy` from the anatomy exports
+
 ## [5.24.1] - 2025-09-14
 
 ### Fixed

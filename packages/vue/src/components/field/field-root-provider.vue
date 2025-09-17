@@ -20,7 +20,7 @@ export interface FieldRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { FieldProvider } from './use-field-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<FieldRootProviderProps>()
 const field = computed(() => props.value)

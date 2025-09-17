@@ -18,7 +18,7 @@ export interface SwitchRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useSwitch } from './use-switch'
 import { SwitchProvider } from './use-switch-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<SwitchRootProps>(), {
   checked: undefined,

@@ -12,6 +12,7 @@
   "scripts": {
     "postinstall": "lefthook install",
     "build": "turbo run build --filter='!./templates/**' --filter='!./website/**' --filter='!./integrations/**'",
+    "check:anatomy": "bun scripts check:anatomy",
     "check:exports": "bun scripts check:exports",
     "check:zag": "bun scripts check:zag",
     "clean": "find . -name 'node_modules' -type d -exec rm -rf {} +",
@@ -39,7 +40,7 @@
     "entities": "7.0.0",
     "@biomejs/biome": "2.2.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.21",
+    "@types/bun": "1.2.22",
     "lefthook": "1.13.0",
     "release-it": "19.0.4",
     "prettier": "3.6.2",

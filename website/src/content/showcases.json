@@ -52,5 +52,11 @@
     "description": "Forge better Prompts for your LLM-powered Apps",
     "url": "https://promptmetheus.com/",
     "image": "https://promptmetheus.com/og-image.jpg"
+  },
+  {
+    "title": "NDLA",
+    "description": "The Norwegian Digital Learning Arena",
+    "url": "https://ndla.no/en/",
+    "image": "https://ndla.no/static/metaimage.png"
   }
 ]

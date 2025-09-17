@@ -15,7 +15,7 @@ export interface NumberInputInputProps
 import { ark } from '../factory'
 import { useNumberInputContext } from './use-number-input-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<NumberInputInputProps>()
 const numberInput = useNumberInputContext()

@@ -18,7 +18,7 @@ export interface AvatarRootProviderProps
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { AvatarProvider } from './use-avatar-context'
 

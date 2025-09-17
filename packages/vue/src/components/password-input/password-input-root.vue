@@ -18,7 +18,7 @@ export interface PasswordInputRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { usePasswordInput } from './use-password-input'
 import { PasswordInputProvider } from './use-password-input-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<PasswordInputRootProps>(), {
   defaultVisible: undefined,

@@ -1,5 +1,5 @@
 import type { ItemGroupProps } from '@zag-js/listbox'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface UseListboxItemGroupPropsContext extends ItemGroupProps {}
 

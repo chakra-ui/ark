@@ -14,7 +14,7 @@ export interface ToastCloseTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useToastContext } from './use-toast-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ToastCloseTriggerProps>()
 const toast = useToastContext()

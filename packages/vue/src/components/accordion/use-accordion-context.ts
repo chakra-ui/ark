@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 import type { UsePresenceProps } from '../presence'
 import type { UseAccordionReturn } from './use-accordion'
 

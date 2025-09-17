@@ -15,7 +15,7 @@ export interface PasswordInputInputProps
 import { ark } from '../factory'
 import { usePasswordInputContext } from './use-password-input-context'
 import { useFieldContext } from '../field'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<PasswordInputInputProps>()
 

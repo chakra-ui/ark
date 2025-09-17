@@ -15,7 +15,7 @@ export interface SelectItemGroupLabelProps
 import { ark } from '../factory'
 import { useSelectContext } from './use-select-context'
 import { useSelectItemGroupPropsContext } from './use-select-item-group-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<SelectItemGroupLabelProps>()
 

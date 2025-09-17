@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import type { PolymorphicProps } from '../factory'
 import { useToggleContext } from './use-toggle-context'

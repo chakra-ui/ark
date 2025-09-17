@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { BooleanDefaults } from '../../types'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './color-picker.types'
 
@@ -19,7 +19,8 @@ export interface ColorPickerRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useColorPicker } from './use-color-picker'
 import { ColorPickerProvider } from './use-color-picker-context'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<ColorPickerRootProps>(), {

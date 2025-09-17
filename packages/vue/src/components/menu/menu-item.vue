@@ -18,7 +18,7 @@ import { ark } from '../factory'
 import { computed, onBeforeUnmount, onMounted } from 'vue'
 import { useMenuContext } from './use-menu-context'
 import { MenuItemProvider } from './use-menu-item-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { MenuItemPropsProvider } from './use-menu-option-item-props-context'
 
 const props = withDefaults(defineProps<MenuItemProps>(), {

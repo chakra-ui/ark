@@ -14,7 +14,7 @@ export interface TabListProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useTabsContext } from './use-tabs-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<TabListProps>()
 const tabs = useTabsContext()

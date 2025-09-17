@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { RootEmits } from './tour.types'
 import type { UseTourReturn } from './use-tour'
 
@@ -14,7 +14,8 @@ export interface TourRootEmits extends RootEmits {}
 
 <script setup lang="ts">
 import { computed, type UnwrapRef } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { TourProvider } from './use-tour-context'
 
 const props = defineProps<TourRootProps>()

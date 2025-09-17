@@ -17,7 +17,7 @@ export interface FieldsetRootProps
 import { ark } from '../factory'
 import { useFieldset } from './use-fieldset'
 import { FieldsetProvider } from './use-fieldset-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<FieldsetRootProps>(), {
   disabled: undefined,

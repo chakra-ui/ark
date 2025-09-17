@@ -1,4 +1,4 @@
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 import type { CollectionItem } from '../collection'
 import type { UseSelectReturn } from './use-select'
 

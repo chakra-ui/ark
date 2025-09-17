@@ -16,7 +16,7 @@ export interface FieldInputProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useFieldContext } from './use-field-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<FieldInputProps>()
 const field = useFieldContext()

@@ -20,7 +20,7 @@ export interface CheckboxGroupProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { checkboxAnatomy } from './checkbox.anatomy'
 
 const props = defineProps<CheckboxGroupProviderProps>()

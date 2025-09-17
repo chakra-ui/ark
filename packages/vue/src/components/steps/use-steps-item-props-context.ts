@@ -1,5 +1,5 @@
 import type { ItemProps } from '@zag-js/steps'
-import { createContext } from '../../utils'
+import { createContext } from '../../utils/create-context'
 
 export interface UseStepsItemPropsContext extends ItemProps {}
 

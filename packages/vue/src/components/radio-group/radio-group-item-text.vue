@@ -15,7 +15,7 @@ export interface RadioGroupItemTextProps
 import { ark } from '../factory'
 import { useRadioGroupContext } from './use-radio-group-context'
 import { useRadioGroupItemPropsContext } from './use-radio-group-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<RadioGroupItemTextProps>()
 const radioGroup = useRadioGroupContext()

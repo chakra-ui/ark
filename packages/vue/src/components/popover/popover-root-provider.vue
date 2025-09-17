@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { UnwrapRef } from 'vue'
-import type { RenderStrategyProps } from '../../utils'
+import type { RenderStrategyProps } from '../../utils/use-render-strategy'
 import type { UsePopoverReturn } from './use-popover'
 
 interface RootProviderProps {
@@ -13,7 +13,8 @@ export interface PopoverRootProviderProps extends PopoverRootProviderBaseProps {
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { RenderStrategyPropsProvider, useForwardExpose } from '../../utils'
+import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { PopoverProvider } from './use-popover-context'
 
 const props = defineProps<PopoverRootProviderProps>()

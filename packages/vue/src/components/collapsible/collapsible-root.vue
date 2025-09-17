@@ -18,7 +18,7 @@ export interface CollapsibleRootEmits extends RootEmits {}
 import { ark } from '../factory'
 import { useCollapsible } from './use-collapsible'
 import { CollapsibleProvider } from './use-collapsible-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   defaultOpen: undefined,

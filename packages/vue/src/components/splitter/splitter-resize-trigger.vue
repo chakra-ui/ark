@@ -15,7 +15,7 @@ export interface SplitterResizeTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { useSplitterContext } from './use-splitter-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<SplitterResizeTriggerProps>()
 const splitter = useSplitterContext()

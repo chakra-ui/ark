@@ -15,7 +15,7 @@ export interface ListboxItemIndicatorProps
 import { ark } from '../factory'
 import { useListboxContext } from './use-listbox-context'
 import { useListboxItemPropsContext } from './use-listbox-item-props-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<ListboxItemIndicatorProps>()
 

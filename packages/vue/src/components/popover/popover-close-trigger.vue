@@ -14,7 +14,7 @@ export interface PopoverCloseTriggerProps
 <script setup lang="ts">
 import { ark } from '../factory'
 import { usePopoverContext } from './use-popover-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 defineProps<PopoverCloseTriggerProps>()
 const popover = usePopoverContext()

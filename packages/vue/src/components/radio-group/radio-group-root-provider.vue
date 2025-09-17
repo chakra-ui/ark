@@ -20,7 +20,7 @@ export interface RadioGroupRootProviderProps
 import { computed } from 'vue'
 import { ark } from '../factory'
 import { RadioGroupProvider } from './use-radio-group-context'
-import { useForwardExpose } from '../../utils'
+import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<RadioGroupRootProviderProps>()
 const radioGroup = computed(() => props.value)
