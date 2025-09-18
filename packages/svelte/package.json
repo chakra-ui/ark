@@ -66,27 +66,33 @@
   "exports": {
     ".": {
       "types": "./src/lib/index.ts",
-      "svelte": "./src/lib/index.ts"
+      "svelte": "./src/lib/index.ts",
+      "default": "./src/lib/index.ts"
     },
     "./anatomy": {
       "types": "./src/lib/components/anatomy.ts",
-      "svelte": "./src/lib/components/anatomy.ts"
+      "svelte": "./src/lib/components/anatomy.ts",
+      "default": "./src/lib/components/anatomy.ts"
     },
     "./environment": {
       "types": "./src/lib/providers/environment/index.ts",
-      "svelte": "./src/lib/providers/environment/index.ts"
+      "svelte": "./src/lib/providers/environment/index.ts",
+      "default": "./src/lib/providers/environment/index.ts"
     },
     "./locale": {
       "types": "./src/lib/providers/locale/index.ts",
-      "svelte": "./src/lib/providers/locale/index.ts"
+      "svelte": "./src/lib/providers/locale/index.ts",
+      "default": "./src/lib/providers/locale/index.ts"
     },
     "./utils": {
       "types": "./src/lib/utils/index.ts",
-      "svelte": "./src/lib/utils/index.ts"
+      "svelte": "./src/lib/utils/index.ts",
+      "default": "./src/lib/utils/index.ts"
     },
     "./*": {
       "types": "./src/lib/components/*/index.ts",
-      "svelte": "./src/lib/components/*/index.ts"
+      "svelte": "./src/lib/components/*/index.ts",
+      "default": "./src/lib/components/*/index.ts"
     }
   },
   "scripts": {
@@ -107,16 +113,22 @@
       "svelte": "./dist/index.js",
       "exports.\\..svelte": "./dist/index.js",
       "exports.\\..types": "./dist/index.d.ts",
+      "exports.\\..default": "./dist/index.js",
       "exports.\\./anatomy.svelte": "./dist/components/anatomy.js",
       "exports.\\./anatomy.types": "./dist/components/anatomy.d.ts",
+      "exports.\\./anatomy.default": "./dist/components/anatomy.js",
       "exports.\\./locale.svelte": "./dist/providers/locale/index.js",
       "exports.\\./locale.types": "./dist/providers/locale/index.d.ts",
+      "exports.\\./locale.default": "./dist/providers/locale/index.js",
       "exports.\\./environment.svelte": "./dist/providers/environment/index.js",
       "exports.\\./environment.types": "./dist/providers/environment/index.d.ts",
+      "exports.\\./environment.default": "./dist/providers/environment/index.js",
       "exports.\\./utils.svelte": "./dist/utils/index.js",
       "exports.\\./utils.types": "./dist/utils/index.d.ts",
+      "exports.\\./utils.default": "./dist/utils/index.js",
       "exports.\\./*.svelte": "./dist/components/*/index.js",
-      "exports.\\./*.types": "./dist/components/*/index.d.ts"
+      "exports.\\./*.types": "./dist/components/*/index.d.ts",
+      "exports.\\./*.default": "./dist/components/*/index.js"
     }
   },
   "publishConfig": {
