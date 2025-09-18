@@ -11,7 +11,6 @@ const isOpen = ref(false)
     <p>Sheet is {{ isOpen ? 'Open' : 'Closed' }}</p>
   </div>
   <BottomSheet.Root v-model:open="isOpen">
-    <BottomSheet.Trigger>Open Bottom Sheet</BottomSheet.Trigger>
     <BottomSheet.Backdrop />
     <BottomSheet.Content>
       <BottomSheet.Grabber>
