@@ -16,12 +16,16 @@ import { computed } from 'vue'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import { BottomSheetProvider } from './use-bottom-sheet-context'
 import { useForwardExpose } from '../../utils'
+import { PresenceProvider, usePresence } from '../presence'
 
 const props = defineProps<BottomSheetRootProviderProps>()
 const bottomSheet = computed(() => props.value)
 
 BottomSheetProvider(bottomSheet)
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
+
+const presence = usePresence(computed(() => ({ present: bottomSheet.value.open })))
+PresenceProvider(presence)
 
 useForwardExpose()
 </script>

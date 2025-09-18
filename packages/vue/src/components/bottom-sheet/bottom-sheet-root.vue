@@ -14,6 +14,7 @@ import { useForwardExpose } from '../../utils/use-forward-expose'
 import { RenderStrategyPropsProvider } from '../../utils/use-render-strategy'
 import type { BooleanDefaults } from '../../types'
 import { computed } from 'vue'
+import { PresenceProvider, usePresence } from '../presence'
 
 const props = withDefaults(defineProps<BottomSheetRootProps>(), {
   closeOnEscape: undefined,
@@ -32,6 +33,15 @@ const bottomSheet = useBottomSheet(props, emits)
 
 BottomSheetProvider(bottomSheet)
 RenderStrategyPropsProvider(computed(() => ({ lazyMount: props.lazyMount, unmountOnExit: props.unmountOnExit })))
+
+const presence = usePresence(
+  computed(() => ({
+    present: bottomSheet.value.open,
+    lazyMount: props.lazyMount,
+    unmountOnExit: props.unmountOnExit,
+  })),
+)
+PresenceProvider(presence)
 
 useForwardExpose()
 </script>
