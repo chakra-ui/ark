@@ -6,6 +6,7 @@ import RootProvider from './examples/root-provider.vue'
 import SnapPoints from './examples/snap-points.vue'
 import Scrollable from './examples/scrollable.vue'
 import NoDragArea from './examples/no-drag-area.vue'
+import nonDraggable from './examples/non-draggable.vue'
 </script>
 
 <template>
@@ -30,6 +31,9 @@ import NoDragArea from './examples/no-drag-area.vue'
     </Variant>
     <Variant title="NoDragArea">
       <NoDragArea />
+    </Variant>
+    <Variant title="NonDraggable">
+      <nonDraggable />
     </Variant>
   </Story>
 </template>

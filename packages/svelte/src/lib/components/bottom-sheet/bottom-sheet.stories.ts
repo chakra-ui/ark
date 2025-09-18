@@ -7,6 +7,7 @@ import ModalExample from './examples/modal.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ScrollableExample from './examples/scrollable.svelte'
 import NoDragAreaExample from './examples/no-drag-area.svelte'
+import NonDraggableExample from './examples/non-draggable.svelte'
 
 const meta: Meta = {
   title: 'Components / Bottom Sheet',
@@ -53,5 +54,11 @@ export const Scrollable = {
 export const NoDragArea = {
   render: () => ({
     Component: NoDragAreaExample,
+  }),
+}
+
+export const NonDraggable = {
+  render: () => ({
+    Component: NonDraggableExample,
   }),
 }
