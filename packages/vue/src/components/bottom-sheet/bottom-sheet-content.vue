@@ -21,7 +21,10 @@ import { usePresenceContext } from '../presence'
 import { mergeProps } from '@zag-js/vue'
 import { createSplitProps } from '../create-split-props'
 
-const props = defineProps<BottomSheetContentProps>()
+const props = withDefaults(defineProps<BottomSheetContentProps>(), {
+  draggable: true,
+})
+
 const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['draggable'])
 const bottomSheet = useBottomSheetContext()
 const presence = usePresenceContext()
