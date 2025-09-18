@@ -1,5 +1,5 @@
 <script setup>
-import BottomSheet from '@ark-ui/vue/bottom-sheet'
+import { BottomSheet } from '@ark-ui/vue/bottom-sheet'
 </script>
 
 <template>
