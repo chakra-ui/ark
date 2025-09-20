@@ -6,6 +6,11 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Exports**: Fix issue where Node.js programs like PandaCSS were not able to resolve the `@ark-ui/svelte/anatomy`
+  entrypoint due to the missing `default` condition
+
 ## [5.10.0] - 2025-09-17
 
 ### Added
