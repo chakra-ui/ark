@@ -1,6 +1,7 @@
 export * from './accordion'
 export * from './angle-slider'
 export * from './avatar'
+export * from './bottom-sheet'
 export * from './carousel'
 export * from './checkbox'
 export * from './client-only'
