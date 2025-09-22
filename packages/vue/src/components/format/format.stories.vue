@@ -4,6 +4,7 @@ import ByteSizes from './examples/byte-sizes.vue'
 import ByteWithLocale from './examples/byte-with-locale.vue'
 import ByteWithUnitDisplay from './examples/byte-with-unit-display.vue'
 import ByteWithUnit from './examples/byte-with-unit.vue'
+import ByteWithUnitSystem from './examples/byte-with-unit-system.vue'
 import NumberBasic from './examples/number-basic.vue'
 import NumberWithCompact from './examples/number-with-compact.vue'
 import NumberWithCurrency from './examples/number-with-currency.vue'
@@ -46,6 +47,9 @@ import RelativeTimeShort from './examples/relative-time-short.vue'
     </Variant>
     <Variant title="Byte with Unit Display">
       <ByteWithUnitDisplay />
+    </Variant>
+    <Variant title="Byte with Unit System">
+      <ByteWithUnitSystem />
     </Variant>
     <Variant title="Number with Currency">
       <NumberWithCurrency />

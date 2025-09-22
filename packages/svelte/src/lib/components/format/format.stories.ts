@@ -4,6 +4,7 @@ import ByteSizesExample from './examples/byte-sizes.svelte'
 import ByteWithLocaleExample from './examples/byte-with-locale.svelte'
 import ByteWithUnitDisplayExample from './examples/byte-with-unit-display.svelte'
 import ByteWithUnitExample from './examples/byte-with-unit.svelte'
+import ByteWithUnitSystemExample from './examples/byte-with-unit-system.svelte'
 import NumberBasicExample from './examples/number-basic.svelte'
 import NumberWithCompactExample from './examples/number-with-compact.svelte'
 import NumberWithCurrencyExample from './examples/number-with-currency.svelte'
@@ -82,6 +83,12 @@ export const ByteWithUnit = {
 export const ByteWithUnitDisplay = {
   render: () => ({
     Component: ByteWithUnitDisplayExample,
+  }),
+}
+
+export const ByteWithUnitSystem = {
+  render: () => ({
+    Component: ByteWithUnitSystemExample,
   }),
 }
 

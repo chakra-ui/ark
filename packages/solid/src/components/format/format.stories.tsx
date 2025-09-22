@@ -11,6 +11,7 @@ export { ByteSizes } from './examples/byte-sizes'
 export { ByteWithLocale } from './examples/byte-with-locale'
 export { ByteWithUnit } from './examples/byte-with-unit'
 export { ByteWithUnitDisplay } from './examples/byte-with-unit-display'
+export { ByteWithUnitSystem } from './examples/byte-with-unit-system'
 
 export { NumberBasic } from './examples/number-basic'
 export { NumberWithCompact } from './examples/number-with-compact'
