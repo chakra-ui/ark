@@ -9,6 +9,10 @@
      */
     unitDisplay?: 'long' | 'short' | 'narrow'
     /**
+     * The unit system to use for formatting
+     */
+    unitSystem?: 'decimal' | 'binary'
+    /**
      * The byte size to format
      */
     value: number

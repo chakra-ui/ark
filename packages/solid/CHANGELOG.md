@@ -1,5 +1,23 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Date Picker**
+  - Fix issue where year range picker doesn't show the hovered range
+  - Fix issue where quarter presets returns incorrect date
+
+- **FormatByte**: Add support for `unitSystem` property to allow changing between decimal (1000 bytes) and binary (1024
+  bytes) systems.
+
+- **Number Input**: When `formatOptions` is used (like `style: "currency"`), the cursor would jump to the end of the
+  input when typing in the middle. The cursor now maintains its relative position during formatting changes.
+
+- **Pin Input**: Fix issue where using the keyboard shortcuts `Cmd+Backspace` and `Cmd+Delete` to delete text in pin
+  inputs would insert "undefined" instead of clearing the field.
+
+- **Scroll Area**: Fix issue where resize tracking was not observing the root element, which caused the scrollbar to not
+  update when the root element's size changed.
+
 ## [5.25.0] - 2025-09-16
 
 ### Added
