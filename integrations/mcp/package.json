@@ -42,7 +42,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.18.0",
+    "@modelcontextprotocol/sdk": "1.18.1",
     "express": "^5.1.0",
     "zod": "^4.1.8"
   }
