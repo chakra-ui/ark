@@ -12,6 +12,10 @@ export interface FormatByteProps {
    */
   unitDisplay?: 'long' | 'short' | 'narrow' | undefined
   /**
+   * The unit system to use for formatting
+   */
+  unitSystem?: 'decimal' | 'binary' | undefined
+  /**
    * The byte size to format
    */
   value: number
