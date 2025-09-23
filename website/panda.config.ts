@@ -42,6 +42,11 @@ export default defineConfig({
       code: [{ size: ['*'] }],
       drawer: ['*'],
       dialog: ['*'],
+      popover: ['*'],
+      hoverCard: ['*'],
+      tooltip: ['*'],
+      menu: ['*'],
+      tour: ['*'],
     },
   },
   globalCss: {
