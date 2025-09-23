@@ -91,6 +91,7 @@
     "@zag-js/async-list": "1.24.2",
     "@zag-js/auto-resize": "1.24.2",
     "@zag-js/avatar": "1.24.2",
+    "@zag-js/bottom-sheet": "1.24.2",
     "@zag-js/carousel": "1.24.2",
     "@zag-js/checkbox": "1.24.2",
     "@zag-js/clipboard": "1.24.2",
