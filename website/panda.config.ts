@@ -41,6 +41,7 @@ export default defineConfig({
     recipes: {
       code: [{ size: ['*'] }],
       drawer: ['*'],
+      dialog: ['*'],
     },
   },
   globalCss: {
