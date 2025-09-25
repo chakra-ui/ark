@@ -69,7 +69,7 @@ const handleValueChange = async ({ value }: Combobox.ValueChangeDetails) => {
 <template>
   <Combobox.Root
     :collection="collection"
-    :value="selectedValue"
+    :model-value="selectedValue"
     :onInputValueChange="handleInputChange"
     :onOpenChange="handleOpenChange"
     :onValueChange="handleValueChange"
