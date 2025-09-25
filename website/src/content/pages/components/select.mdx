@@ -82,6 +82,13 @@ Here's an example of limiting the number of items that can be selected in a mult
 
 <Example id="max-selected" />
 
+### Lazy Mount
+
+The `lazyMount` and `unmountOnExit` props allow you to control when the select content is mounted and unmounted from the
+DOM. This can improve performance by only rendering the content when needed.
+
+<Example id="lazy-mount" />
+
 ## Guides
 
 ### Usage in Popover or Dialog
@@ -94,9 +101,11 @@ document body, maintaining proper interaction and accessibility behavior.
 
 ### Hidden Select
 
-The `Select.HiddenSelect` component renders a native HTML `<select>` element that's visually hidden but remains in the DOM. This component is essential for:
+The `Select.HiddenSelect` component renders a native HTML `<select>` element that's visually hidden but remains in the
+DOM. This component is essential for:
 
-- **Form submission**: Native form submission and serialization work seamlessly since the actual `<select>` element exists in the DOM
+- **Form submission**: Native form submission and serialization work seamlessly since the actual `<select>` element
+  exists in the DOM
 - **Browser auto-fill**: Browsers can properly auto-fill the select based on previously submitted form data
 - **Progressive enhancement**: Forms remain functional even if JavaScript fails to load
 
