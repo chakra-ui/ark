@@ -24,6 +24,9 @@ description: All notable changes will be documented in this file.
 - **Scroll Area**: Fix issue where resize tracking was not observing the root element, which caused the scrollbar to not
   update when the root element's size changed.
 
+- **Select**: Fix inconsistent `lazyMount`/`unmountOnExit` behavior where the positioner remained in the DOM when the
+  component was closed, while the content was correctly unmounted.
+
 - **Exports**: Fix issue where Node.js programs like PandaCSS were not able to resolve the `@ark-ui/svelte/anatomy`
   entrypoint due to the missing `default` condition
 
