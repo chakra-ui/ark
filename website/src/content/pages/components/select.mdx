@@ -92,6 +92,30 @@ When using the Select component within a `Popover` or `Dialog`, avoid rendering 
 This ensures the Select's content stays within the Popover/Dialog's DOM hierarchy rather than being portalled to the
 document body, maintaining proper interaction and accessibility behavior.
 
+### Empty State
+
+You can create an empty state component that displays when there are no items in the collection. Use the
+`useSelectContext` hook to check the collection size:
+
+```tsx
+const SelectEmpty = (props: React.ComponentProps<'div'>) => {
+  const select = useSelectContext()
+  if (select.collection.size === 0) {
+    return <div {...props} role="presentation" />
+  }
+  return null
+}
+```
+
+Then use it within your Select content:
+
+```tsx
+<Select.Content>
+  <SelectEmpty>No items to display</SelectEmpty>
+  {/* Your items */}
+</Select.Content>
+```
+
 ### Available height and width
 
 The following css variables are exposed to the `Select.Positioner` which you can use to style the `Select.Content`
