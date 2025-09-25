@@ -92,6 +92,23 @@ When using the Select component within a `Popover` or `Dialog`, avoid rendering 
 This ensures the Select's content stays within the Popover/Dialog's DOM hierarchy rather than being portalled to the
 document body, maintaining proper interaction and accessibility behavior.
 
+### Hidden Select
+
+The `Select.HiddenSelect` component renders a native HTML `<select>` element that's visually hidden but remains in the DOM. This component is essential for:
+
+- **Form submission**: Native form submission and serialization work seamlessly since the actual `<select>` element exists in the DOM
+- **Browser auto-fill**: Browsers can properly auto-fill the select based on previously submitted form data
+- **Progressive enhancement**: Forms remain functional even if JavaScript fails to load
+
+```tsx
+<Select.Root>
+  <Select.HiddenSelect />
+  {/* Other Select components */}
+</Select.Root>
+```
+
+The hidden select automatically syncs with the Select component's value, ensuring form data is always up-to-date.
+
 ### Empty State
 
 You can create an empty state component that displays when there are no items in the collection. Use the
