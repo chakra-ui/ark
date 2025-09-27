@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.25.1] - 2025-09-27
+
 ### Fixed
 
 - **Date Picker**
