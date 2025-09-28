@@ -2,6 +2,7 @@
 import Async from './examples/async.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import FormLibrary from './examples/form-library.vue'
 import Grouping from './examples/grouping.vue'
 import LazyMount from './examples/lazy-mount.vue'
 import MaxSelected from './examples/max-selected.vue'
@@ -28,6 +29,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Controlled">
       <Controlled />
+    </Variant>
+    <Variant title="Form Library">
+      <FormLibrary />
     </Variant>
     <Variant title="With Field">
       <WithField />
