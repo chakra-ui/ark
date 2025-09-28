@@ -26,10 +26,18 @@ Here's a basic example of the `Steps` component.
 
 <Example component="steps" id="basic" />
 
-### Using the Root Provider
+### Controlled Steps
 
-The `RootProvider` component provides a context for the steps. It accepts the value of the `useSteps` hook. You can
-leverage it to access the component state and methods from outside the steps.
+Using the `RootProvider` component, you can control the active step by using the `step` prop and handling the
+`onStepChange` event.
+
+<Example id="controlled" />
+
+### Root Provider
+
+An alternative way to control the steps is to use the `RootProvider` component and the `useSteps` store hook.
+
+This way you can access the steps state and methods from outside the steps.
 
 <Example id="root-provider" />
 
