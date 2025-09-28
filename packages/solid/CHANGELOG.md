@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Listbox**: Fixed type signature of `useListbox` to accept `MaybeAccessor<UseListboxProps>` instead of just
+  `UseListboxProps`. This allows reactive props to be passed correctly.
+
 ## [5.25.1] - 2025-09-27
 
 ### Fixed
