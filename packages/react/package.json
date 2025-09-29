@@ -161,7 +161,7 @@
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
     "globby": "14.1.0",
-    "happy-dom": "18.0.1",
+    "happy-dom": "19.0.1",
     "lucide-react": "0.544.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
