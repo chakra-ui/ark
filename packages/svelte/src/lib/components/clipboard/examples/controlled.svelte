@@ -1,9 +1,9 @@
 <script lang="ts">
   import { CheckIcon, ClipboardCopyIcon } from 'lucide-svelte'
   import { Clipboard } from '@ark-ui/svelte/clipboard'
-  
+
   let url = $state('https://ark-ui.com')
-  
+
   const handleUrlChange = () => {
     url = 'https://chakra-ui.com'
   }
@@ -22,6 +22,6 @@
       </Clipboard.Indicator>
     </Clipboard.Trigger>
   </Clipboard.Control>
-  
+
   <button onclick={handleUrlChange}>Change Url</button>
 </Clipboard.Root>

@@ -6,7 +6,7 @@
   <FileUpload.Label>File Upload (PNG and JPEG only)</FileUpload.Label>
   <FileUpload.Dropzone>Drop your files here</FileUpload.Dropzone>
   <FileUpload.Trigger>Select Files</FileUpload.Trigger>
-  
+
   <FileUpload.ItemGroup>
     <FileUpload.Context>
       {#snippet render(context)}

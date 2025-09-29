@@ -9,7 +9,7 @@
 <div>
   <button onclick={() => collapsible().setOpen(true)}>Open</button>
   <button onclick={() => collapsible().setOpen(false)}>Close</button>
-  
+
   <Collapsible.RootProvider value={collapsible}>
     <Collapsible.Trigger>
       Toggle (with external control)
@@ -19,4 +19,4 @@
     </Collapsible.Trigger>
     <Collapsible.Content>This collapsible is controlled externally</Collapsible.Content>
   </Collapsible.RootProvider>
-</div> 
+</div>

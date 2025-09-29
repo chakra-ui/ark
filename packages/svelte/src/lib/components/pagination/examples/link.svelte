@@ -14,9 +14,7 @@
 </script>
 
 <Pagination.RootProvider value={pagination}>
-  <a {...pagination().getPrevTriggerProps()} href={getHref(pagination().previousPage)}>
-    Previous
-  </a>
+  <a {...pagination().getPrevTriggerProps()} href={getHref(pagination().previousPage)}>Previous</a>
   {#each pagination().pages as page, index (index)}
     {#if page.type === 'page'}
       <a {...pagination().getItemProps(page)} href={getHref(page.value)}>
@@ -26,7 +24,5 @@
       <span {...pagination().getEllipsisProps({ index })}>&#8230;</span>
     {/if}
   {/each}
-  <a {...pagination().getNextTriggerProps()} href={getHref(pagination().nextPage)}>
-    Next
-  </a>
+  <a {...pagination().getNextTriggerProps()} href={getHref(pagination().nextPage)}>Next</a>
 </Pagination.RootProvider>

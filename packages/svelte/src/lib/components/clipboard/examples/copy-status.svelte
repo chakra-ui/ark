@@ -1,11 +1,11 @@
 <script lang="ts">
   import { CheckIcon, ClipboardCopyIcon } from 'lucide-svelte'
   import { Clipboard } from '@ark-ui/svelte/clipboard'
-  
+
   let copyCount = $state(0)
 </script>
 
-<Clipboard.Root 
+<Clipboard.Root
   value="https://ark-ui.com"
   onStatusChange={(details) => {
     if (details.copied) {

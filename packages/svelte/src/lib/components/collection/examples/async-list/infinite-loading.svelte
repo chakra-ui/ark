@@ -52,7 +52,7 @@
     {#each list().items as post, index}
       <div>
         <div>
-          <strong>{index + 1}: </strong>
+          <strong>{index + 1}:</strong>
           <strong>{post.title}</strong>
         </div>
         <div>{post.body}</div>

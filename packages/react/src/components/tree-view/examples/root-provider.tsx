@@ -8,7 +8,9 @@ export const RootProvider = () => {
     <TreeView.RootProvider value={treeView}>
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
-        {collection.rootNode.children?.map((node, index) => <TreeNode key={node.id} node={node} indexPath={[index]} />)}
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode key={node.id} node={node} indexPath={[index]} />
+        ))}
       </TreeView.Tree>
     </TreeView.RootProvider>
   )

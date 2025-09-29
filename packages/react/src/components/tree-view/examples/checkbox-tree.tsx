@@ -6,7 +6,9 @@ export const CheckboxTree = () => {
     <TreeView.Root collection={collection} defaultCheckedValue={[]}>
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
-        {collection.rootNode.children?.map((node, index) => <TreeNode key={node.id} node={node} indexPath={[index]} />)}
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode key={node.id} node={node} indexPath={[index]} />
+        ))}
       </TreeView.Tree>
     </TreeView.Root>
   )

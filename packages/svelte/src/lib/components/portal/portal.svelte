@@ -16,33 +16,28 @@
     children: Snippet
   }
 
-  let { children, container = globalThis.document?.body, disabled = false }: PortalProps = $props()
+  const {
+    children,
+    container = typeof document === 'undefined' ? undefined : document.body,
+    disabled = false,
+  }: PortalProps = $props()
 
   const context = getAllContexts()
 
-  let instance: any = null
   $effect(() => {
-    const cleanup = () => {
-      if (instance) {
-        void unmount(instance)
-        instance = null
-      }
-    }
-
-    if (disabled) {
-      cleanup()
+    if (disabled || !container) {
       return
     }
-
-    tick().then(() => {
-      instance = mount(children, { target: container, context })
+    const instance = mount(children, {
+      target: container,
+      context,
     })
     return () => {
-      cleanup()
+      unmount(instance)
     }
   })
 </script>
 
-{#if disabled}
+{#if disabled || typeof document === 'undefined'}
   {@render children?.()}
 {/if}
