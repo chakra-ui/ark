@@ -21,6 +21,7 @@
       'count',
       'defaultPage',
       'defaultPageSize',
+      'getPageUrl',
       'id',
       'ids',
       'onPageChange',

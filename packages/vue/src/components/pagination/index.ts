@@ -2,6 +2,7 @@ export type {
   ItemLabelDetails as PaginationItemLabelDetails,
   PageChangeDetails as PaginationPageChangeDetails,
   PageSizeChangeDetails as PaginationPageSizeChangeDetails,
+  PageUrlDetails as PaginationPageUrlDetails,
 } from '@zag-js/pagination'
 export { default as PaginationContext, type PaginationContextProps } from './pagination-context.vue'
 export {

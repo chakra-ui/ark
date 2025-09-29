@@ -12,6 +12,7 @@ export const PaginationRoot = (props: PaginationRootProps) => {
     'count',
     'defaultPage',
     'defaultPageSize',
+    'getPageUrl',
     'id',
     'ids',
     'onPageChange',

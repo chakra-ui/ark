@@ -1,9 +1,32 @@
 ## [Unreleased]
 
+### Added
+
+- **Collapsible**: Add support for `collapsedHeight` and `collapsedWidth` props to control the dimensions of the
+  collapsible content when in its collapsed state.
+
+- **Focus Trap**: Allow elements referenced by `aria-controls` to be included in the trap scope. This makes it possible
+  for menus, popovers, etc. to be portalled and work correctly.
+
+- **Pagination**: Add `getPageUrl` prop for generating `href` attributes when using pagination as links.
+
+```ts
+const service = useMachine(pagination.machine, {
+  type: "link",
+  getPageUrl: ({ page, pageSize }) => `/products?page=${page}&size=${pageSize}`,
+})
+```
+
 ### Fixed
 
 - **Listbox**: Fixed type signature of `useListbox` to accept `MaybeAccessor<UseListboxProps>` instead of just
   `UseListboxProps`. This allows reactive props to be passed correctly.
+
+- **Scroll Area**: Fix RTL horizontal scrollbar positioning on Safari
+
+- **Slider**: Fix issue where slider continues dragging when disabled during drag operation.
+
+- **Switch**: Fix issue where `data-active` is inconsistently applied when `disabled` state changes at runtime
 
 ## [5.25.1] - 2025-09-27
 

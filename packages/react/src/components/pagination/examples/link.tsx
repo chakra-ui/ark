@@ -6,18 +6,15 @@ export const Link = () => {
     count: 100,
     pageSize: 10,
     siblingCount: 2,
+    getPageUrl: ({ page }) => `/page=${page}`,
   })
-
-  const getHref = (page: number | null) => (page != null ? `/page=${page}` : '/')
 
   return (
     <Pagination.RootProvider value={pagination}>
-      <a {...pagination.getPrevTriggerProps()} href={getHref(pagination.previousPage)}>
-        Previous
-      </a>
+      <a {...pagination.getPrevTriggerProps()}>Previous</a>
       {pagination.pages.map((page, index) =>
         page.type === 'page' ? (
-          <a key={index} {...pagination.getItemProps(page)} href={getHref(page.value)}>
+          <a key={index} {...pagination.getItemProps(page)}>
             {page.value}
           </a>
         ) : (
@@ -26,9 +23,7 @@ export const Link = () => {
           </span>
         ),
       )}
-      <a {...pagination.getNextTriggerProps()} href={getHref(pagination.nextPage)}>
-        Next
-      </a>
+      <a {...pagination.getNextTriggerProps()}>Next</a>
     </Pagination.RootProvider>
   )
 }

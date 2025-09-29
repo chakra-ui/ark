@@ -9,6 +9,8 @@ export interface CollapsibleRootProps extends HTMLProps<'div'>, CollapsibleRootB
 
 export const CollapsibleRoot = (props: CollapsibleRootProps) => {
   const [useCollapsibleProps, localProps] = createSplitProps<UseCollapsibleProps>()(props, [
+    'collapsedHeight',
+    'collapsedWidth',
     'defaultOpen',
     'disabled',
     'id',

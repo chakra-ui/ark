@@ -2,6 +2,14 @@ import type * as collapsible from '@zag-js/collapsible'
 
 export interface RootProps {
   /**
+   * The height of the content when collapsed.
+   */
+  collapsedHeight?: number | string
+  /**
+   * The width of the content when collapsed.
+   */
+  collapsedWidth?: number | string
+  /**
    * The initial open state of the collapsible when rendered.
    * Use when you don't need to control the open state of the collapsible.
    */

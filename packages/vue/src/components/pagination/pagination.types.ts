@@ -53,6 +53,11 @@ export interface RootProps {
    * @default "button"
    */
   type?: 'button' | 'link'
+  /**
+   * Function to generate href attributes for pagination links.
+   * Only used when `type` is set to "link".
+   */
+  getPageUrl?: (details: pagination.PageUrlDetails) => string
 }
 
 export type RootEmits = {

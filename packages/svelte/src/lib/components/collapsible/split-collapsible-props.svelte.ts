@@ -5,6 +5,8 @@ const splitFn = createSplitProps<UseCollapsibleProps>()
 
 export const splitCollapsibleProps = <T extends UseCollapsibleProps>(props: T) =>
   splitFn(props, [
+    'collapsedHeight',
+    'collapsedWidth',
     'defaultOpen',
     'disabled',
     'id',

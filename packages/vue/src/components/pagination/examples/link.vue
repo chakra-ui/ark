@@ -6,20 +6,19 @@ const pagination = usePagination({
   count: 100,
   pageSize: 10,
   siblingCount: 2,
+  getPageUrl: ({ page }) => `/page=${page}`,
 })
-
-const getHref = (page: number | null) => (page != null ? `/page=${page}` : '/')
 </script>
 
 <template>
   <Pagination.RootProvider :value="pagination">
-    <a v-bind="pagination.getPrevTriggerProps()" :href="getHref(pagination.previousPage)">Previous</a>
+    <a v-bind="pagination.getPrevTriggerProps()">Previous</a>
     <template v-for="(page, index) in pagination.pages" :key="index">
-      <a v-if="page.type === 'page'" v-bind="pagination.getItemProps(page)" :href="getHref(page.value)">
+      <a v-if="page.type === 'page'" v-bind="pagination.getItemProps(page)">
         {{ page.value }}
       </a>
       <span v-else v-bind="pagination.getEllipsisProps({ index })">&#8230;</span>
     </template>
-    <a v-bind="pagination.getNextTriggerProps()" :href="getHref(pagination.nextPage)">Next</a>
+    <a v-bind="pagination.getNextTriggerProps()">Next</a>
   </Pagination.RootProvider>
 </template>

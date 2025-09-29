@@ -3,6 +3,8 @@ import type { UseCollapsibleProps } from './use-collapsible'
 
 export const splitCollapsibleProps = <T extends UseCollapsibleProps>(props: T) =>
   createSplitProps<UseCollapsibleProps>()(props, [
+    'collapsedHeight',
+    'collapsedWidth',
     'defaultOpen',
     'disabled',
     'id',
