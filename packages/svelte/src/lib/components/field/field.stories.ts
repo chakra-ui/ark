@@ -2,12 +2,17 @@ import type { Meta } from '@storybook/svelte'
 
 import DisabledExample from './examples/disabled.svelte'
 import InputExample from './examples/input.svelte'
+import InputControlledExample from './examples/input-controlled.svelte'
 import InvalidExample from './examples/invalid.svelte'
+import ReactiveInvalidExample from './examples/reactive-invalid.svelte'
 import RequiredExample from './examples/required.svelte'
+import RequiredIndicatorExample from './examples/required-indicator.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectExample from './examples/select.svelte'
+import SelectControlledExample from './examples/select-controlled.svelte'
 import TextareaAutoresizeExample from './examples/textarea-autoresize.svelte'
 import TextareaExample from './examples/textarea.svelte'
+import TextareaControlledExample from './examples/textarea-controlled.svelte'
 import CustomControlExample from './examples/custom-control.svelte'
 
 const meta: Meta = {
@@ -22,9 +27,21 @@ export const Input = {
   }),
 }
 
+export const InputControlled = {
+  render: () => ({
+    Component: InputControlledExample,
+  }),
+}
+
 export const Invalid = {
   render: () => ({
     Component: InvalidExample,
+  }),
+}
+
+export const ReactiveInvalid = {
+  render: () => ({
+    Component: ReactiveInvalidExample,
   }),
 }
 
@@ -34,9 +51,21 @@ export const Required = {
   }),
 }
 
+export const RequiredIndicator = {
+  render: () => ({
+    Component: RequiredIndicatorExample,
+  }),
+}
+
 export const Textarea = {
   render: () => ({
     Component: TextareaExample,
+  }),
+}
+
+export const TextareaControlled = {
+  render: () => ({
+    Component: TextareaControlledExample,
   }),
 }
 
@@ -49,6 +78,12 @@ export const TextareaAutoresize = {
 export const Select = {
   render: () => ({
     Component: SelectExample,
+  }),
+}
+
+export const SelectControlled = {
+  render: () => ({
+    Component: SelectControlledExample,
   }),
 }
 

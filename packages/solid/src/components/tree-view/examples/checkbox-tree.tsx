@@ -1,5 +1,5 @@
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, MinusSquareIcon, SquareIcon } from 'lucide-solid'
+import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-solid'
 import { For } from 'solid-js'
 
 export const CheckboxTree = () => {
@@ -16,8 +16,8 @@ export const CheckboxTree = () => {
 const TreeNodeCheckbox = () => {
   return (
     <TreeView.NodeCheckbox>
-      <TreeView.NodeCheckboxIndicator indeterminate={<MinusSquareIcon />} fallback={<SquareIcon />}>
-        <CheckSquareIcon />
+      <TreeView.NodeCheckboxIndicator indeterminate={<SquareMinusIcon />} fallback={<SquareIcon />}>
+        <SquareCheckBigIcon />
       </TreeView.NodeCheckboxIndicator>
     </TreeView.NodeCheckbox>
   )

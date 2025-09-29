@@ -1,5 +1,5 @@
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon, Loader2Icon } from 'lucide-solid'
+import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-solid'
 import { For, createSignal } from 'solid-js'
 import { useTreeViewNodeContext } from '../use-tree-view-node-context'
 
@@ -50,7 +50,7 @@ export const AsyncLoading = () => {
 
 function TreeNodeIndicator() {
   const nodeState = useTreeViewNodeContext()
-  return nodeState().loading ? <Loader2Icon style={{ animation: 'spin 1s infinite' }} /> : <FolderIcon />
+  return nodeState().loading ? <LoaderCircleIcon style={{ animation: 'spin 1s infinite' }} /> : <FolderIcon />
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
@@ -77,7 +77,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
       ) : (
         <TreeView.Item>
           <TreeView.ItemIndicator>
-            <CheckSquareIcon />
+            <SquareCheckBigIcon />
           </TreeView.ItemIndicator>
           <TreeView.ItemText>
             <FileIcon />

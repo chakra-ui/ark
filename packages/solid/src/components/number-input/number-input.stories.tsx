@@ -7,6 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { Controlled } from './examples/controlled'
 export { FormUsage } from './examples/form-usage'
 export { Formatted } from './examples/formatted'
 export { FractionDigits } from './examples/fraction-digits'

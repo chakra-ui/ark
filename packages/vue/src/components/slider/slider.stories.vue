@@ -6,7 +6,9 @@ import InitialValue from './examples/initial-value.vue'
 import MinMax from './examples/min-max.vue'
 import OnEvent from './examples/on-event.vue'
 import RootProvider from './examples/root-provider.vue'
+import Range from './examples/range.vue'
 import Step from './examples/step.vue'
+import ThumbOverlap from './examples/thumb-overlap.vue'
 import Vertical from './examples/vertical.vue'
 import WithMarks from './examples/with-marks.vue'
 </script>
@@ -24,8 +26,14 @@ import WithMarks from './examples/with-marks.vue'
     <Variant title="MinMax">
       <MinMax />
     </Variant>
+    <Variant title="Range">
+      <Range />
+    </Variant>
     <Variant title="Step">
       <Step />
+    </Variant>
+    <Variant title="ThumbOverlap">
+      <ThumbOverlap />
     </Variant>
     <Variant title="OnEvent">
       <OnEvent />

@@ -10,9 +10,21 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let { ref = $bindable(null), ...props }: FieldSelectProps = $props()
+  let { ref = $bindable(null), value = $bindable(), multiple, ...props }: FieldSelectProps = $props()
+
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getSelectProps() ?? {}, props))
+
+  const nativeSelectProps: HTMLProps<'select'> = $derived({
+    value,
+    multiple,
+    oninput(e) {
+      value = multiple
+        ? Array.from(e.currentTarget.selectedOptions).map((option) => option.value)
+        : e.currentTarget.value
+    },
+  })
+
+  const mergedProps = $derived(mergeProps(field?.().getSelectProps() ?? {}, nativeSelectProps, props))
 </script>
 
 <Ark as="select" bind:ref {...mergedProps} />

@@ -5,6 +5,7 @@ import ControlledVisibility from './examples/controlled-visibility.vue'
 import IgnorePasswordManager from './examples/ignore-password-manager.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
+import WithValidation from './examples/with-validation.vue'
 </script>
 <template>
   <Story title="PasswordInput">
@@ -25,6 +26,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="With Validation">
+      <WithValidation />
     </Variant>
   </Story>
 </template>

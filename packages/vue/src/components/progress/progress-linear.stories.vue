@@ -6,6 +6,7 @@ import Indeterminate from './examples/linear/indeterminate.vue'
 import InitialValue from './examples/linear/initial-value.vue'
 import MinMax from './examples/linear/min-max.vue'
 import ValueText from './examples/linear/value-text.vue'
+import Vertical from './examples/linear/vertical.vue'
 </script>
 <template>
   <Story title="Progress - Linear">
@@ -26,6 +27,9 @@ import ValueText from './examples/linear/value-text.vue'
     </Variant>
     <Variant title="Value Text">
       <ValueText />
+    </Variant>
+    <Variant title="Vertical">
+      <Vertical />
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />

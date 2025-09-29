@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Disabled from './examples/disabled.vue'
 import GroupControlled from './examples/group-controlled.vue'
 import GroupProvider from './examples/group-provider.vue'
+import GroupWithForm from './examples/group-with-form.vue'
+import GroupWithInvalid from './examples/group-with-invalid.vue'
+import GroupWithSelectAll from './examples/group-with-select-all.vue'
 import Group from './examples/group.vue'
 import Indeterminate from './examples/indeterminate.vue'
 import RenderProp from './examples/render-prop.vue'
@@ -17,6 +21,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Controlled">
       <Controlled />
+    </Variant>
+    <Variant title="Disabled">
+      <Disabled />
     </Variant>
     <Variant title="Indeterminate">
       <Indeterminate />
@@ -38,6 +45,15 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Group Provider">
       <GroupProvider />
+    </Variant>
+    <Variant title="Group With Form">
+      <GroupWithForm />
+    </Variant>
+    <Variant title="Group With Invalid">
+      <GroupWithInvalid />
+    </Variant>
+    <Variant title="Group With Select All">
+      <GroupWithSelectAll />
     </Variant>
   </Story>
 </template>

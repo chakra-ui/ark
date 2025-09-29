@@ -3,6 +3,7 @@ import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import Disabled from './examples/disabled.vue'
 import Indicator from './examples/indicator.vue'
+import RenderFn from './examples/render-fn.vue'
 </script>
 
 <template>
@@ -18,6 +19,9 @@ import Indicator from './examples/indicator.vue'
     </Variant>
     <Variant title="Indicator">
       <Indicator />
+    </Variant>
+    <Variant title="Render Function">
+      <RenderFn />
     </Variant>
   </Story>
 </template>

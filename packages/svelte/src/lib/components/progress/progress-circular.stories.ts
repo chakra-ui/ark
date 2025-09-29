@@ -1,5 +1,6 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/circular/basic.svelte'
+import ControlledExample from './examples/circular/controlled.svelte'
 import IndeterminateExample from './examples/circular/indeterminate.svelte'
 import InitialValueExample from './examples/circular/initial-value.svelte'
 import MinMaxExample from './examples/circular/min-max.svelte'
@@ -15,6 +16,12 @@ export default meta
 export const Basic = {
   render: () => ({
     Component: BasicExample,
+  }),
+}
+
+export const Controlled = {
+  render: () => ({
+    Component: ControlledExample,
   }),
 }
 

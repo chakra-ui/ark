@@ -1,7 +1,7 @@
 <script lang="ts">
   import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
   import { useFilter } from '@ark-ui/svelte/locale'
-  import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-svelte'
+  import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-svelte'
 
   interface Node {
     id: string
@@ -92,7 +92,7 @@
     {:else}
       <TreeView.Item>
         <TreeView.ItemIndicator>
-          <CheckSquareIcon />
+          <SquareCheckBigIcon />
         </TreeView.ItemIndicator>
         <TreeView.ItemText>
           <FileIcon />

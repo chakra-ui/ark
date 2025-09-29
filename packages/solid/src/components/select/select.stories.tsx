@@ -8,6 +8,7 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
+export { Disabled } from './examples/disabled'
 export { DynamicItems } from './examples/dynamic-items'
 export { FormLibrary } from './examples/form-library'
 export { Grouping } from './examples/grouping'

@@ -2,6 +2,7 @@
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
 import CustomControls from './examples/custom-controls.vue'
+import RenderFn from './examples/render-fn.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
 </script>
@@ -15,6 +16,9 @@ import WithField from './examples/with-field.vue'
     </Variant>
     <Variant title="Controlled">
       <Controlled />
+    </Variant>
+    <Variant title="Render Function">
+      <RenderFn />
     </Variant>
     <Variant title="With Field">
       <WithField />

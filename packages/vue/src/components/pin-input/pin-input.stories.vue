@@ -5,6 +5,7 @@ import Customized from './examples/customized.vue'
 import InitialValue from './examples/initial-value.vue'
 import OTPMode from './examples/otp-mode.vue'
 import RootProvider from './examples/root-provider.vue'
+import WithAutofocus from './examples/with-autofocus.vue'
 import WithField from './examples/with-field.vue'
 import WithMask from './examples/with-mask.vue'
 </script>
@@ -33,6 +34,9 @@ import WithMask from './examples/with-mask.vue'
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />
+    </Variant>
+    <Variant title="With Autofocus">
+      <WithAutofocus />
     </Variant>
   </Story>
 </template>

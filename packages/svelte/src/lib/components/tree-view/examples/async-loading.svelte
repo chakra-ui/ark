@@ -1,7 +1,7 @@
 <script lang="ts">
   // biome-ignore lint/style/useImportType: intentional
   import { TreeView, createTreeCollection } from '@ark-ui/svelte/tree-view'
-  import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon, Loader2Icon } from 'lucide-svelte'
+  import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-svelte'
 
   interface Node {
     id: string
@@ -61,16 +61,16 @@
   <TreeView.Label>Tree</TreeView.Label>
   <TreeView.Tree>
     {#each collection.rootNode.children ?? [] as node, index (node.id)}
-      {@render renderNode(node, [index])}
+      {@render TreeNode(node, [index])}
     {/each}
   </TreeView.Tree>
 </TreeView.Root>
 
-{#snippet renderNodeIndicator()}
+{#snippet TreeNodeIndicator()}
   <TreeView.NodeContext>
     {#snippet render(nodeState)}
       {#if nodeState().loading}
-        <Loader2Icon style="animation: spin 1s infinite" />
+        <LoaderCircleIcon style="animation: spin 1s infinite" />
       {:else}
         <FolderIcon />
       {/if}
@@ -78,13 +78,13 @@
   </TreeView.NodeContext>
 {/snippet}
 
-{#snippet renderNode(node: Node, indexPath: number[])}
+{#snippet TreeNode(node: Node, indexPath: number[])}
   <TreeView.NodeProvider {node} {indexPath}>
     {#if node.children || node.childrenCount}
       <TreeView.Branch>
         <TreeView.BranchControl>
           <TreeView.BranchText>
-            {@render renderNodeIndicator()}
+            {@render TreeNodeIndicator()}
             {node.name}
           </TreeView.BranchText>
           <TreeView.BranchIndicator>
@@ -94,14 +94,14 @@
         <TreeView.BranchContent>
           <TreeView.BranchIndentGuide />
           {#each node.children ?? [] as child, index (child.id)}
-            {@render renderNode(child, [...indexPath, index])}
+            {@render TreeNode(child, [...indexPath, index])}
           {/each}
         </TreeView.BranchContent>
       </TreeView.Branch>
     {:else}
       <TreeView.Item>
         <TreeView.ItemIndicator>
-          <CheckSquareIcon />
+          <SquareCheckBigIcon />
         </TreeView.ItemIndicator>
         <TreeView.ItemText>
           <FileIcon />

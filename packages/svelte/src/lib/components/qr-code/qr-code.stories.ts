@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ContextExample from './examples/context.svelte'
+import ControlledExample from './examples/controlled.svelte'
 import ErrorCorrectionExample from './examples/error-correction.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import WithOverlayExample from './examples/with-overlay.svelte'
@@ -20,6 +21,12 @@ export const Basic = {
 export const Context = {
   render: () => ({
     Component: ContextExample,
+  }),
+}
+
+export const Controlled = {
+  render: () => ({
+    Component: ControlledExample,
   }),
 }
 

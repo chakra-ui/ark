@@ -8,4 +8,5 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { WithField } from './examples/with-field'
+export { WithValidation } from './examples/with-validation'
 export { RootProvider } from './examples/root-provider'

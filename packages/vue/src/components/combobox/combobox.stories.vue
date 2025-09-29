@@ -7,6 +7,7 @@ import Dynamic from './examples/dynamic.vue'
 import Grouping from './examples/grouping.vue'
 import Links from './examples/links.vue'
 import Multiple from './examples/multiple.vue'
+import RenderFn from './examples/render-fn.vue'
 import RehydrateValue from './examples/rehydrate-value.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
@@ -37,6 +38,9 @@ import WithHighlight from './examples/with-highlight.vue'
     </Variant>
     <Variant title="Dynamic">
       <Dynamic />
+    </Variant>
+    <Variant title="Render Function">
+      <RenderFn />
     </Variant>
     <Variant title="Rehydrate Value">
       <RehydrateValue />

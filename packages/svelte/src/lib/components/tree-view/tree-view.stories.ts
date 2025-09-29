@@ -1,10 +1,12 @@
 import type { Meta } from '@storybook/svelte'
 import AsyncLoadingExample from './examples/async-loading.svelte'
 import BasicExample from './examples/basic.svelte'
+import CheckboxTreeExample from './examples/checkbox-tree.svelte'
 import ControlledExpandedExample from './examples/controlled-expanded.svelte'
 import ControlledSelectedExample from './examples/controlled-selected.svelte'
 import FilteringExample from './examples/filtering.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
+import LinksExample from './examples/links.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -52,5 +54,17 @@ export const Filtering = {
 export const LazyMount = {
   render: () => ({
     Component: LazyMountExample,
+  }),
+}
+
+export const Links = {
+  render: () => ({
+    Component: LinksExample,
+  }),
+}
+
+export const CheckboxTree = {
+  render: () => ({
+    Component: CheckboxTreeExample,
   }),
 }

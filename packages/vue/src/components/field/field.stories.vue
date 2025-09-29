@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import CustomControl from './examples/custom-control.vue'
 import Disabled from './examples/disabled.vue'
 import InputControlled from './examples/input-controlled.vue'
 import Input from './examples/input.vue'
+import Invalid from './examples/invalid.vue'
 import ReactiveInvalid from './examples/reactive-invalid.vue'
+import Required from './examples/required.vue'
 import RequiredIndicator from './examples/required-indicator.vue'
 import RootProvider from './examples/root-provider.vue'
 import SelectControlled from './examples/select-controlled.vue'
@@ -10,7 +13,6 @@ import Select from './examples/select.vue'
 import TextareaAutoresize from './examples/textarea-autoresize.vue'
 import TextareaControlled from './examples/textarea-controlled.vue'
 import Textarea from './examples/textarea.vue'
-import CustomControl from './examples/custom-control.vue'
 </script>
 <template>
   <Story title="Field">
@@ -28,6 +30,12 @@ import CustomControl from './examples/custom-control.vue'
     </Variant>
     <Variant title="Disabled">
       <Disabled />
+    </Variant>
+    <Variant title="Invalid">
+      <Invalid />
+    </Variant>
+    <Variant title="Required">
+      <Required />
     </Variant>
     <Variant title="Custom Control">
       <CustomControl />

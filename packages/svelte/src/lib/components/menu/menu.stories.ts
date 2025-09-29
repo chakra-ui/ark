@@ -7,6 +7,7 @@ import ControlledExample from './examples/controlled.svelte'
 import GroupExample from './examples/group.svelte'
 import NestedExample from './examples/nested.svelte'
 import RadioGroupExample from './examples/radio-group.svelte'
+import RenderPropExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import SelectEventExample from './examples/select-event.svelte'
 import SeparatorExample from './examples/separator.svelte'
@@ -81,5 +82,11 @@ export const SelectEvent = {
 export const Nested = {
   render: () => ({
     Component: NestedExample,
+  }),
+}
+
+export const RenderProp = {
+  render: () => ({
+    Component: RenderPropExample,
   }),
 }

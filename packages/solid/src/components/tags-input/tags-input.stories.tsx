@@ -8,6 +8,7 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { BlurBehavior } from './examples/blur-behavior'
+export { Controlled } from './examples/controlled'
 export { DisabledEditing } from './examples/disabled-editing'
 export { InitialValue } from './examples/initial-value'
 export { MaxWithOverflow } from './examples/max-with-overflow'

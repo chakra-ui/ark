@@ -2,6 +2,8 @@
 import Async from './examples/async.vue'
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
+import Disabled from './examples/disabled.vue'
+import DynamicItems from './examples/dynamic-items.vue'
 import FormLibrary from './examples/form-library.vue'
 import Grouping from './examples/grouping.vue'
 import LazyMount from './examples/lazy-mount.vue'
@@ -9,7 +11,9 @@ import MaxSelected from './examples/max-selected.vue'
 import Multiple from './examples/multiple.vue'
 import ReactiveCollection from './examples/reactive-collection.vue'
 import RootProvider from './examples/root-provider.vue'
+import SelectAll from './examples/select-all.vue'
 import SelectOnHighlight from './examples/select-on-highlight.vue'
+import ShadowRoot from './examples/shadow-root.vue'
 import WithField from './examples/with-field.vue'
 </script>
 
@@ -30,6 +34,12 @@ import WithField from './examples/with-field.vue'
     <Variant title="Controlled">
       <Controlled />
     </Variant>
+    <Variant title="Disabled">
+      <Disabled />
+    </Variant>
+    <Variant title="Dynamic Items">
+      <DynamicItems />
+    </Variant>
     <Variant title="Form Library">
       <FormLibrary />
     </Variant>
@@ -42,8 +52,14 @@ import WithField from './examples/with-field.vue'
     <Variant title="RootProvider">
       <RootProvider />
     </Variant>
+    <Variant title="Select All">
+      <SelectAll />
+    </Variant>
     <Variant title="Select On Highlight">
       <SelectOnHighlight />
+    </Variant>
+    <Variant title="Shadow Root">
+      <ShadowRoot />
     </Variant>
     <Variant title="Max Selected">
       <MaxSelected />

@@ -1,0 +1,24 @@
+<script lang="ts">
+  import { Menu } from '@ark-ui/svelte/menu'
+</script>
+
+<Menu.Root>
+  <Menu.Context>
+    {#snippet render(menu)}
+      <Menu.Trigger>Menu is {menu().open ? 'open' : 'closed'}</Menu.Trigger>
+    {/snippet}
+  </Menu.Context>
+  <Menu.Positioner>
+    <Menu.Content>
+      <Menu.Item value="react">
+        <Menu.ItemContext>
+          {#snippet render(item)}
+            React is {item().highlighted ? 'highlighted' : 'not highlighted'}
+          {/snippet}
+        </Menu.ItemContext>
+      </Menu.Item>
+      <Menu.Item value="solid">Solid</Menu.Item>
+      <Menu.Item value="vue">Vue</Menu.Item>
+    </Menu.Content>
+  </Menu.Positioner>
+</Menu.Root>

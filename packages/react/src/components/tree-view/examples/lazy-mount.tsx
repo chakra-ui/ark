@@ -1,12 +1,14 @@
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
+import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
 
 export const LazyMount = () => {
   return (
     <TreeView.Root collection={collection} lazyMount unmountOnExit>
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
-        {collection.rootNode.children?.map((node, index) => <TreeNode key={node.id} node={node} indexPath={[index]} />)}
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode key={node.id} node={node} indexPath={[index]} />
+        ))}
       </TreeView.Tree>
     </TreeView.Root>
   )
@@ -36,7 +38,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
       ) : (
         <TreeView.Item>
           <TreeView.ItemIndicator>
-            <CheckSquareIcon />
+            <SquareCheckBigIcon />
           </TreeView.ItemIndicator>
           <TreeView.ItemText>
             <FileIcon />

@@ -1,6 +1,6 @@
 import { Editable } from '@ark-ui/react/editable'
 import { type TreeCollection, TreeView, createTreeCollection, useTreeViewContext } from '@ark-ui/react/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
+import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-react'
 import { useState } from 'react'
 
 export const RenameNode = () => {
@@ -71,7 +71,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node> & TreeNodeHandlers) =>
       ) : (
         <TreeView.Item>
           <TreeView.ItemIndicator>
-            <CheckSquareIcon />
+            <SquareCheckBigIcon />
           </TreeView.ItemIndicator>
           <TreeView.ItemText>
             <FileIcon />

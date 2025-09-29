@@ -1,5 +1,5 @@
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon, Loader2Icon } from 'lucide-react'
+import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon, LoaderCircleIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useTreeViewNodeContext } from '../use-tree-view-node-context'
 
@@ -40,7 +40,9 @@ export const AsyncLoading = () => {
     >
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
-        {collection.rootNode.children?.map((node, index) => <TreeNode key={node.id} node={node} indexPath={[index]} />)}
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode key={node.id} node={node} indexPath={[index]} />
+        ))}
       </TreeView.Tree>
     </TreeView.Root>
   )
@@ -48,7 +50,7 @@ export const AsyncLoading = () => {
 
 function TreeNodeIndicator() {
   const nodeState = useTreeViewNodeContext()
-  return nodeState.loading ? <Loader2Icon style={{ animation: 'spin 1s infinite' }} /> : <FolderIcon />
+  return nodeState.loading ? <LoaderCircleIcon style={{ animation: 'spin 1s infinite' }} /> : <FolderIcon />
 }
 
 const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
@@ -75,7 +77,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
       ) : (
         <TreeView.Item>
           <TreeView.ItemIndicator>
-            <CheckSquareIcon />
+            <SquareCheckBigIcon />
           </TreeView.ItemIndicator>
           <TreeView.ItemText>
             <FileIcon />

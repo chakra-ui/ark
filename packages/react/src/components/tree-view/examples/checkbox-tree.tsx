@@ -1,12 +1,14 @@
 import { TreeView, createTreeCollection } from '@ark-ui/react/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, MinusSquareIcon, SquareIcon } from 'lucide-react'
+import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-react'
 
 export const CheckboxTree = () => {
   return (
     <TreeView.Root collection={collection} defaultCheckedValue={[]}>
       <TreeView.Label>Tree</TreeView.Label>
       <TreeView.Tree>
-        {collection.rootNode.children?.map((node, index) => <TreeNode key={node.id} node={node} indexPath={[index]} />)}
+        {collection.rootNode.children?.map((node, index) => (
+          <TreeNode key={node.id} node={node} indexPath={[index]} />
+        ))}
       </TreeView.Tree>
     </TreeView.Root>
   )
@@ -15,8 +17,8 @@ export const CheckboxTree = () => {
 const TreeNodeCheckbox = (props: TreeView.NodeCheckboxProps) => {
   return (
     <TreeView.NodeCheckbox {...props}>
-      <TreeView.NodeCheckboxIndicator indeterminate={<MinusSquareIcon />} fallback={<SquareIcon />}>
-        <CheckSquareIcon />
+      <TreeView.NodeCheckboxIndicator indeterminate={<SquareMinusIcon />} fallback={<SquareIcon />}>
+        <SquareCheckBigIcon />
       </TreeView.NodeCheckboxIndicator>
     </TreeView.NodeCheckbox>
   )

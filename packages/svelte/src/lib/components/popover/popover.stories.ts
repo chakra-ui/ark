@@ -9,6 +9,7 @@ import ModalExample from './examples/modal.svelte'
 import OnOpenChangeExample from './examples/on-open-change.svelte'
 import PortalledExample from './examples/portalled.svelte'
 import PositioningExample from './examples/positioning.svelte'
+import RenderFnExample from './examples/render-fn.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -74,6 +75,12 @@ export const Portalled = {
 export const Positioning = {
   render: () => ({
     Component: PositioningExample,
+  }),
+}
+
+export const RenderFn = {
+  render: () => ({
+    Component: RenderFnExample,
   }),
 }
 

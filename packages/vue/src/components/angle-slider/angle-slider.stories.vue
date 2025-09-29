@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Basic from './examples/basic.vue'
 import Controlled from './examples/controlled.vue'
-import Steps from './examples/steps.vue'
+import Step from './examples/step.vue'
 </script>
 <template>
   <Story title="AngleSlider">
@@ -11,8 +11,8 @@ import Steps from './examples/steps.vue'
     <Variant title="Controlled">
       <Controlled />
     </Variant>
-    <Variant title="Steps">
-      <Steps />
+    <Variant title="Step">
+      <Step />
     </Variant>
   </Story>
 </template>

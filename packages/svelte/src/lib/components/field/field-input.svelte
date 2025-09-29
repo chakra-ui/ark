@@ -9,10 +9,19 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
+  import type { HTMLInputAttributes } from 'svelte/elements'
 
-  let { ref = $bindable(null), ...props }: FieldInputProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: FieldInputProps = $props()
   const field = useFieldContext()
-  const mergedProps = $derived(mergeProps(field?.().getInputProps() ?? {}, props))
+
+  const nativeInputProps: HTMLInputAttributes = $derived({
+    value,
+    oninput(e) {
+      value = e.currentTarget.value
+    },
+  })
+
+  const mergedProps = $derived(mergeProps(field?.().getInputProps() ?? {}, nativeInputProps, props))
 </script>
 
 <Ark as="input" bind:ref {...mergedProps} />

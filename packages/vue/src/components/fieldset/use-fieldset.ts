@@ -31,7 +31,7 @@ export interface UseFieldsetProps {
 
 export type UseFieldsetReturn = ReturnType<typeof useFieldset>
 
-export const useFieldset = (props: MaybeRef<UseFieldsetProps>) => {
+export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const state = reactive({
     hasErrorText: false,

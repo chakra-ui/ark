@@ -1,5 +1,5 @@
 import { TreeView, createTreeCollection } from '@ark-ui/solid/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-solid'
+import { SquareCheckBigIcon, ChevronRightIcon, FileIcon, FolderIcon } from 'lucide-solid'
 import { For, Show, createSignal } from 'solid-js'
 
 export const ControlledExpanded = () => {
@@ -28,7 +28,7 @@ const TreeNode = (props: TreeView.NodeProviderProps<Node>) => {
         fallback={
           <TreeView.Item>
             <TreeView.ItemIndicator>
-              <CheckSquareIcon />
+              <SquareCheckBigIcon />
             </TreeView.ItemIndicator>
             <TreeView.ItemText>
               <FileIcon />

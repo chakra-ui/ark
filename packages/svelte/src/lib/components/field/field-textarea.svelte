@@ -17,19 +17,25 @@
   import { Ark } from '../factory'
   import { useFieldContext } from './use-field-context'
 
-  let { ref = $bindable(null), autoresize, ...props }: FieldTextareaProps = $props()
+  let { ref = $bindable(null), value = $bindable(), autoresize, ...props }: FieldTextareaProps = $props()
 
   let textareaRef = $state<HTMLTextAreaElement | null>(null)
-
-  const field = useFieldContext()
-  const mergedProps = $derived(
-    mergeProps(field?.().getTextareaProps() ?? {}, { style: { resize: autoresize ? 'none' : undefined } }, props),
-  )
-
   $effect(() => {
     if (!autoresize) return
     return autoresizeTextarea(textareaRef)
   })
+
+  const field = useFieldContext()
+
+  const nativeTextareaProps: HTMLProps<'textarea'> = $derived({
+    value,
+    oninput(e) {
+      value = e.currentTarget.value
+    },
+    style: autoresize ? 'resize: none' : undefined,
+  })
+
+  const mergedProps = $derived(mergeProps(field?.().getTextareaProps() ?? {}, nativeTextareaProps, props))
 
   function setNode(node: HTMLTextAreaElement | null) {
     textareaRef = node

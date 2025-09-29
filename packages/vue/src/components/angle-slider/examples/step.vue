@@ -3,8 +3,8 @@ import { AngleSlider } from '@ark-ui/vue/angle-slider'
 </script>
 
 <template>
-  <AngleSlider.Root :step="15">
-    <AngleSlider.Label>Wind direction (15 step)</AngleSlider.Label>
+  <AngleSlider.Root :step="45">
+    <AngleSlider.Label>Angle</AngleSlider.Label>
     <AngleSlider.Control>
       <AngleSlider.Thumb />
       <AngleSlider.MarkerGroup>

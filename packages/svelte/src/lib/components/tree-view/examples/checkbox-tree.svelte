@@ -1,6 +1,6 @@
 <script lang="ts">
   import { TreeView, createTreeCollection } from '../index.js'
-  import { CheckSquare, ChevronRight, MinusSquare, Square } from 'lucide-svelte'
+  import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-svelte'
 
   interface Node {
     id: string
@@ -60,9 +60,13 @@
 {#snippet TreeNodeCheckbox()}
   <TreeView.NodeCheckbox>
     <TreeView.NodeCheckboxIndicator>
-      {#snippet indeterminate()}<MinusSquare />{/snippet}
-      {#snippet fallback()}<Square />{/snippet}
-      <CheckSquare />
+      {#snippet indeterminate()}
+        <SquareMinusIcon />
+      {/snippet}
+      {#snippet fallback()}
+        <SquareIcon />
+      {/snippet}
+      <SquareCheckBigIcon />
     </TreeView.NodeCheckboxIndicator>
   </TreeView.NodeCheckbox>
 {/snippet}
@@ -75,7 +79,7 @@
           {@render TreeNodeCheckbox()}
           <TreeView.BranchText>{node.name}</TreeView.BranchText>
           <TreeView.BranchIndicator>
-            <ChevronRight />
+            <ChevronRightIcon />
           </TreeView.BranchIndicator>
         </TreeView.BranchControl>
         <TreeView.BranchContent>

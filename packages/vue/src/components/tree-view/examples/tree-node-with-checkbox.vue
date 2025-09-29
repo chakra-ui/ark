@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TreeView } from '@ark-ui/vue/tree-view'
-import { CheckSquareIcon, ChevronRightIcon, MinusSquareIcon, SquareIcon } from 'lucide-vue-next'
+import { SquareCheckBigIcon, ChevronRightIcon, SquareMinusIcon, SquareIcon } from 'lucide-vue-next'
 
 interface Node {
   id: string
@@ -22,9 +22,9 @@ defineProps<Props>()
       <TreeView.BranchControl>
         <TreeView.NodeCheckbox>
           <TreeView.NodeCheckboxIndicator>
-            <CheckSquareIcon />
+            <SquareCheckBigIcon />
             <template #indeterminate>
-              <MinusSquareIcon />
+              <SquareMinusIcon />
             </template>
             <template #fallback>
               <SquareIcon />
@@ -49,9 +49,9 @@ defineProps<Props>()
     <TreeView.Item v-else>
       <TreeView.NodeCheckbox>
         <TreeView.NodeCheckboxIndicator>
-          <CheckSquareIcon />
+          <SquareCheckBigIcon />
           <template #indeterminate>
-            <MinusSquareIcon />
+            <SquareMinusIcon />
           </template>
           <template #fallback>
             <SquareIcon />
