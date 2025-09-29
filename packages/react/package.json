@@ -147,6 +147,7 @@
     "@zag-js/utils": "1.24.2"
   },
   "devDependencies": {
+    "check-password-strength": "3.0.0",
     "@biomejs/biome": "2.2.4",
     "@storybook/addon-a11y": "9.1.7",
     "@storybook/react-vite": "9.1.7",

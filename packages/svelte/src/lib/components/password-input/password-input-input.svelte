@@ -10,9 +10,18 @@
   import { Ark } from '../factory'
   import { usePasswordInputContext } from './use-password-input-context'
 
-  let { ref = $bindable(null), ...props }: PasswordInputInputProps = $props()
+  let { ref = $bindable(null), value = $bindable(), ...props }: PasswordInputInputProps = $props()
+
   const passwordInput = usePasswordInputContext()
-  const mergedProps = $derived(mergeProps(passwordInput().getInputProps(), props))
+
+  const nativeInputProps: HTMLProps<'input'> = $derived({
+    value,
+    oninput(e) {
+      value = e.currentTarget.value
+    },
+  })
+
+  const mergedProps = $derived(mergeProps(passwordInput().getInputProps(), nativeInputProps, props))
 </script>
 
 <Ark as="input" bind:ref {...mergedProps} />

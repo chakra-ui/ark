@@ -5,6 +5,7 @@ import ControlledVisibility from './examples/controlled-visibility.vue'
 import IgnorePasswordManager from './examples/ignore-password-manager.vue'
 import RootProvider from './examples/root-provider.vue'
 import WithField from './examples/with-field.vue'
+import StrengthMeter from './examples/strength-meter.vue'
 import WithValidation from './examples/with-validation.vue'
 </script>
 <template>
@@ -23,6 +24,9 @@ import WithValidation from './examples/with-validation.vue'
     </Variant>
     <Variant title="With Field">
       <WithField />
+    </Variant>
+    <Variant title="Strength Meter">
+      <StrengthMeter />
     </Variant>
     <Variant title="RootProvider">
       <RootProvider />

@@ -146,6 +146,7 @@
     "@zag-js/utils": "1.24.2"
   },
   "devDependencies": {
+    "check-password-strength": "3.0.0",
     "@biomejs/biome": "2.2.4",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",

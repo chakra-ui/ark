@@ -32,6 +32,28 @@ createEffect(() => {
 return <div ref={ref} {...component().getRootProps()} />
 ```
 
+#### Conditional Rendering
+
+Solid.js uses the `<Show>` component for conditional rendering instead of boolean expressions:
+
+```tsx
+import { Show } from 'solid-js'
+
+// Preferred: Use Show component
+<Show when={isVisible()}>
+  <div>Content to show conditionally</div>
+</Show>
+
+// Avoid: Boolean expression rendering
+{isVisible() && <div>Content</div>}
+```
+
+**Benefits of `<Show>`:**
+- Better performance with reactive updates
+- Proper cleanup of nested reactive computations
+- More explicit conditional rendering semantics
+- Consistent with Solid.js reactive patterns
+
 ### Vue Pattern
 
 ```vue

@@ -211,6 +211,7 @@
     "@testing-library/svelte": "5.2.8",
     "@testing-library/user-event": "14.6.1",
     "@vitest/coverage-v8": "3.2.4",
+    "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
