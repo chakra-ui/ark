@@ -102,6 +102,92 @@ useForwardExpose() // Handles complex ref forwarding
 - asChild prop for component slot replacement
 - Automatic prop forwarding and merging
 
+## asChild Pattern Implementation
+
+The `asChild` pattern allows replacing a component's root element with a custom element while preserving the component's functionality and props. Each framework implements this pattern differently.
+
+### React asChild Pattern
+
+```tsx
+import { Menu } from '@ark-ui/react/menu'
+
+<Menu.Item value="docs" asChild>
+  <a href="https://ark-ui.com">Documentation</a>
+</Menu.Item>
+```
+
+- **Type**: `boolean`
+- **Prop Name**: `asChild`
+- **Pattern**: Boolean flag with child element wrapping
+- **Notes**: Must have exactly one child element
+
+### Solid asChild Pattern
+
+```tsx
+import { Menu } from '@ark-ui/solid/menu'
+
+<Menu.Item value="docs" asChild={(itemProps) => <a href="https://ark-ui.com" {...itemProps()}>Documentation</a>} />
+```
+
+- **Type**: `(props: PropsFn) => JSX.Element`
+- **Prop Name**: `asChild`
+- **Pattern**: Render prop function that receives props function
+- **Notes**: Always requires function pattern, call `itemProps()` to spread component props
+
+### Vue asChild Pattern
+
+```vue
+<script setup lang="ts">
+import { Menu } from '@ark-ui/vue/menu'
+</script>
+
+<template>
+  <Menu.Item value="docs" as-child>
+    <a href="https://ark-ui.com">Documentation</a>
+  </Menu.Item>
+</template>
+```
+
+- **Type**: `boolean`
+- **Prop Name**: `as-child` (kebab-case in templates), `asChild` (camelCase in script)
+- **Pattern**: Boolean flag with default slot content
+- **Notes**: Uses Vue's `Dynamic` component internally
+
+### Svelte asChild Pattern
+
+```svelte
+<script lang="ts">
+  import { Menu } from '@ark-ui/svelte/menu'
+</script>
+
+<Menu.Item value="docs">
+  {#snippet asChild(itemProps)}
+    <a href="https://ark-ui.com" {...itemProps()}>Documentation</a>
+  {/snippet}
+</Menu.Item>
+```
+
+- **Type**: `Snippet<[PropsFn]>`
+- **Prop Name**: `asChild`
+- **Pattern**: Svelte 5 snippet that receives props function
+- **Notes**: Use `{#snippet asChild(itemProps)}` block, call `itemProps()` to spread component props
+
+### asChild Pattern Summary
+
+| Framework | Prop Name | Prop Type | Usage Pattern |
+|-----------|-----------|-----------|---------------|
+| **React** | `asChild` | `boolean` | Boolean flag with children wrapping |
+| **Solid** | `asChild` | `(props: PropsFn) => JSX.Element` | Function that receives props function |
+| **Vue** | `as-child` | `boolean` | Boolean flag (kebab-case in templates) |
+| **Svelte** | `asChild` | `Snippet<[PropsFn]>` | Snippet/template slot with props function |
+
+### Common Use Cases for asChild
+
+1. **Rendering links instead of buttons**: Menu items, navigation items
+2. **Custom interactive elements**: Tooltips on custom triggers
+3. **Composition with routing libraries**: Next.js Link, Vue Router RouterLink, SvelteKit Link
+4. **Preserving component functionality**: Keeping accessibility and state while changing the underlying element
+
 ## Context Provider Patterns
 
 ### React/Solid
