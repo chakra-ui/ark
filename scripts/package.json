@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@types/fs-extra": "11.0.4",
-    "@types/node": "24.5.2",
+    "@types/node": "24.6.1",
     "@types/voca": "1.4.6",
     "find-packages": "10.0.4",
     "find-up": "8.0.0",
@@ -27,7 +27,7 @@
     "pkg-dir": "9.0.0",
     "ts-morph": "27.0.0",
     "ts-pattern": "5.8.0",
-    "typescript": "5.9.2",
+    "typescript": "5.9.3",
     "voca": "1.4.1"
   }
 }
