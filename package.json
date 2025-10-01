@@ -40,14 +40,14 @@
     "entities": "7.0.0",
     "@biomejs/biome": "2.2.4",
     "@release-it/keep-a-changelog": "7.0.0",
-    "@types/bun": "1.2.22",
-    "lefthook": "1.13.1",
+    "@types/bun": "1.2.23",
+    "lefthook": "1.13.6",
     "release-it": "19.0.5",
     "prettier": "3.6.2",
     "prettier-plugin-svelte": "3.4.0",
-    "turbo": "2.5.6",
-    "typescript": "5.9.2",
-    "vercel": "48.1.0"
+    "turbo": "2.5.8",
+    "typescript": "5.9.3",
+    "vercel": "48.1.6"
   },
   "packageManager": "bun@1.2.21",
   "trustedDependencies": [
