@@ -5,6 +5,7 @@ import CheckboxExample from './examples/checkbox.svelte'
 import ContextExample from './examples/context.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import GroupExample from './examples/group.svelte'
+import LinksExample from './examples/links.svelte'
 import NestedExample from './examples/nested.svelte'
 import RadioGroupExample from './examples/radio-group.svelte'
 import RenderPropExample from './examples/render-prop.svelte'
@@ -70,6 +71,12 @@ export const Checkbox = {
 export const Group = {
   render: () => ({
     Component: GroupExample,
+  }),
+}
+
+export const Links = {
+  render: () => ({
+    Component: LinksExample,
   }),
 }
 

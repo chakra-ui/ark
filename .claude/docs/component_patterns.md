@@ -26,6 +26,52 @@ packages/{framework}/src/components/{component-name}/
 └── tests/                       # Component tests
 ```
 
+## Creating New Examples
+
+When creating a new example for a component, you must update the following files:
+
+1. **Create example files for all frameworks**:
+   - `packages/react/src/components/{component}/examples/{example-name}.tsx`
+   - `packages/solid/src/components/{component}/examples/{example-name}.tsx`
+   - `packages/vue/src/components/{component}/examples/{example-name}.vue`
+   - `packages/svelte/src/lib/components/{component}/examples/{example-name}.svelte`
+
+2. **Update Storybook stories for all frameworks**:
+   - `packages/react/src/components/{component}/{component}.stories.tsx` - Add export
+   - `packages/solid/src/components/{component}/{component}.stories.tsx` - Add export
+   - `packages/vue/src/components/{component}/{component}.stories.vue` - Add import and variant
+   - `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import and export
+
+3. **Update component documentation**:
+   - `website/src/content/pages/components/{component}.mdx` - Add `<Example id="{example-name}" />` with description
+
+### Example Workflow
+
+For a new "links" example on the Menu component:
+
+1. Create example files in all four frameworks
+2. Update stories:
+   ```tsx
+   // React/Solid: Add to exports
+   export { Links } from './examples/links'
+
+   // Vue: Add to imports and template
+   import Links from './examples/links.vue'
+   <Variant title="Links"><Links /></Variant>
+
+   // Svelte: Add import and export
+   import LinksExample from './examples/links.svelte'
+   export const Links = { render: () => ({ Component: LinksExample }) }
+   ```
+3. Update MDX documentation:
+   ```mdx
+   ### Menu with links
+
+   To render menu items as links, use the `asChild` prop.
+
+   <Example id="links" />
+   ```
+
 ## State Management Patterns
 
 - **Solid**: Use `createSignal` for controlled components
