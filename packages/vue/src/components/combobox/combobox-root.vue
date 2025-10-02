@@ -10,13 +10,21 @@ export interface ComboboxRootBaseProps<T extends CollectionItem>
   extends RootProps<T>,
     RenderStrategyProps,
     PolymorphicProps {}
+
 export interface ComboboxRootProps<T extends CollectionItem>
   extends ComboboxRootBaseProps<T>,
     /**
      * @vue-ignore
      */
     Omit<HTMLAttributes, 'onSelect'> {}
-export type ComboboxRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<ComboboxRootProps<T>, P>) => any
+
+export type ComboboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+  ComboboxRootProps<T>,
+  P
+>
+
+export type ComboboxRootComponent<P = {}> = <T extends CollectionItem>(props: ComboboxRootComponentProps<T, P>) => any
+
 export type { RootEmits as ComboboxRootEmits } from './combobox.types'
 </script>
 

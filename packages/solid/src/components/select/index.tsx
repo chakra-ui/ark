@@ -41,7 +41,13 @@ export { SelectItemText, type SelectItemTextBaseProps, type SelectItemTextProps 
 export { SelectLabel, type SelectLabelBaseProps, type SelectLabelProps } from './select-label'
 export { SelectList, type SelectListBaseProps, type SelectListProps } from './select-list'
 export { SelectPositioner, type SelectPositionerBaseProps, type SelectPositionerProps } from './select-positioner'
-export { SelectRoot, type SelectRootBaseProps, type SelectRootProps, type SelectRootComponent } from './select-root'
+export {
+  SelectRoot,
+  type SelectRootBaseProps,
+  type SelectRootProps,
+  type SelectRootComponent,
+  type SelectRootComponentProps,
+} from './select-root'
 export {
   SelectRootProvider,
   type SelectRootProviderBaseProps,

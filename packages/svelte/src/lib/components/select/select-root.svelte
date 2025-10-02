@@ -13,7 +13,12 @@
   export interface SelectRootProps<T extends CollectionItem = CollectionItem>
     extends Assign<HTMLProps<'div'>, SelectRootBaseProps<T>> {}
 
-  export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<SelectRootProps<T>, P>) => Snippet
+  export type SelectRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+    SelectRootProps<T>,
+    P
+  >
+
+  export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: SelectRootComponentProps<T, P>) => Snippet
 </script>
 
 <script lang="ts" generics="T extends CollectionItem = CollectionItem">

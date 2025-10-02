@@ -42,6 +42,7 @@ export {
   type ListboxRootBaseProps,
   type ListboxRootProps,
   type ListboxRootComponent,
+  type ListboxRootComponentProps,
 } from './listbox-root.svelte'
 export {
   default as ListboxRootProvider,

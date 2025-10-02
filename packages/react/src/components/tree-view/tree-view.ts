@@ -76,6 +76,7 @@ export {
   TreeViewRoot as Root,
   type TreeViewRootBaseProps as RootBaseProps,
   type TreeViewRootComponent as RootComponent,
+  type TreeViewRootComponentProps as RootComponentProps,
   type TreeViewRootProps as RootProps,
 } from './tree-view-root'
 export {

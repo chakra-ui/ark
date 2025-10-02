@@ -14,8 +14,10 @@
   export interface ComboboxRootProps<T extends CollectionItem>
     extends Assign<HTMLProps<'div'>, ComboboxRootBaseProps<T>> {}
 
+  export type ComboboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<ComboboxRootProps<T>, P>
+
   export type ComboboxRootComponent<P = {}> = <T extends CollectionItem>(
-    props: Assign<ComboboxRootProps<T>, P>,
+    props: ComboboxRootComponentProps<T, P>,
   ) => Snippet
 </script>
 

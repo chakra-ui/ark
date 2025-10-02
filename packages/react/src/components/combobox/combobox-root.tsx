@@ -75,8 +75,14 @@ const ComboboxImpl = <T extends CollectionItem>(props: ComboboxRootProps<T>, ref
   )
 }
 
+export type ComboboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+  ComboboxRootProps<T>,
+  P
+> &
+  RefAttributes<HTMLDivElement>
+
 export type ComboboxRootComponent<P = {}> = <T extends CollectionItem>(
-  props: Assign<ComboboxRootProps<T>, P> & RefAttributes<HTMLDivElement>,
+  props: ComboboxRootComponentProps<T, P>,
 ) => JSX.Element
 
 export const ComboboxRoot = forwardRef(ComboboxImpl) as ComboboxRootComponent

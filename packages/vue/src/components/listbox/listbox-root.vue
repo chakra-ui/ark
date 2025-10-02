@@ -12,7 +12,14 @@ export interface ListboxRootProps<T extends CollectionItem>
      * @vue-ignore
      */
     HTMLAttributes {}
-export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<ListboxRootProps<T>, P>) => any
+
+export type ListboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+  ListboxRootProps<T>,
+  P
+>
+
+export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(props: ListboxRootComponentProps<T, P>) => any
+
 export type { RootEmits as ListboxRootEmits } from './listbox.types'
 </script>
 

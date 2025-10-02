@@ -62,6 +62,7 @@ export {
   type SelectRootBaseProps,
   type SelectRootProps,
   type SelectRootComponent,
+  type SelectRootComponentProps,
 } from './select-root.svelte'
 export {
   default as SelectRootProvider,

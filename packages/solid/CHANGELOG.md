@@ -12,10 +12,18 @@
 
 ```ts
 const service = useMachine(pagination.machine, {
-  type: "link",
+  type: 'link',
   getPageUrl: ({ page, pageSize }) => `/products?page=${page}&size=${pageSize}`,
 })
 ```
+
+- **Select**: Add `SelectRootComponentProps` type export for better component type composition.
+
+- **Listbox**: Add `ListboxRootComponentProps` type export for better component type composition.
+
+- **Combobox**: Add `ComboboxRootComponentProps` type export for better component type composition.
+
+- **TreeView**: Add `TreeViewRootComponentProps` type export for better component type composition.
 
 ### Fixed
 

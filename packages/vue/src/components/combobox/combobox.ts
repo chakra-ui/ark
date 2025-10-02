@@ -82,6 +82,7 @@ export {
   default as Root,
   type ComboboxRootBaseProps as RootBaseProps,
   type ComboboxRootComponent as RootComponent,
+  type ComboboxRootComponentProps as RootComponentProps,
   type ComboboxRootEmits as RootEmits,
   type ComboboxRootProps as RootProps,
 } from './combobox-root.vue'

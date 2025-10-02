@@ -23,6 +23,14 @@ const service = useMachine(pagination.machine, {
 })
 ```
 
+- **Select**: Add `SelectRootComponentProps` type export for better component type composition.
+
+- **Listbox**: Add `ListboxRootComponentProps` type export for better component type composition.
+
+- **Combobox**: Add `ComboboxRootComponentProps` type export for better component type composition.
+
+- **TreeView**: Add `TreeViewRootComponentProps` type export for better component type composition.
+
 ### Fixed
 
 - **Field**: Fix issue where `bind:value` doesn't work correctly in `Field.Textarea`, `Field.Input`, and `Field.Select`

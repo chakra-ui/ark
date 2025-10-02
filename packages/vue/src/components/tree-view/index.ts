@@ -82,6 +82,7 @@ export {
   default as TreeViewRoot,
   type TreeViewRootBaseProps,
   type TreeViewRootComponent,
+  type TreeViewRootComponentProps,
   type TreeViewRootProps,
 } from './tree-view-root.vue'
 export { default as TreeViewTree, type TreeViewTreeBaseProps, type TreeViewTreeProps } from './tree-view-tree.vue'

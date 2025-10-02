@@ -80,6 +80,7 @@ export {
   default as TreeViewRoot,
   type TreeViewRootBaseProps,
   type TreeViewRootComponent,
+  type TreeViewRootComponentProps,
   type TreeViewRootProps,
 } from './tree-view-root.svelte'
 export {

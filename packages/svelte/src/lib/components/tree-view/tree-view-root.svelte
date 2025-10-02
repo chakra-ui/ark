@@ -12,7 +12,9 @@
 
   export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<'div'>, TreeViewRootBaseProps<T>> {}
 
-  export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: Assign<TreeViewRootProps<T>, P>) => Snippet
+  export type TreeViewRootComponentProps<T extends TreeNode = TreeNode, P = {}> = Assign<TreeViewRootProps<T>, P>
+
+  export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: TreeViewRootComponentProps<T, P>) => Snippet
 </script>
 
 <script lang="ts" generics="T extends TreeNode">

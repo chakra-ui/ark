@@ -17,6 +17,14 @@ const service = useMachine(pagination.machine, {
 })
 ```
 
+- **Select**: Add `SelectRootComponentProps` type export for better component type composition.
+
+- **Listbox**: Add `ListboxRootComponentProps` type export for better component type composition.
+
+- **Combobox**: Add `ComboboxRootComponentProps` type export for better component type composition.
+
+- **TreeView**: Add `TreeViewRootComponentProps` type export for better component type composition.
+
 ### Fixed
 
 - **Scroll Area**: Fix RTL horizontal scrollbar positioning on Safari

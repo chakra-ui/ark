@@ -48,6 +48,7 @@ export {
   type ComboboxRootBaseProps,
   type ComboboxRootProps,
   type ComboboxRootComponent,
+  type ComboboxRootComponentProps,
 } from './combobox-root'
 export {
   ComboboxRootProvider,

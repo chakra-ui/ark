@@ -9,8 +9,13 @@
   export interface ListboxRootProps<T extends CollectionItem>
     extends Assign<HTMLProps<'div'>, ListboxRootBaseProps<T>> {}
 
+  export type ListboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+    ListboxRootProps<T>,
+    P
+  >
+
   export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(
-    props: Assign<ListboxRootProps<T>, P>,
+    props: ListboxRootComponentProps<T, P>,
   ) => Snippet
 </script>
 

@@ -80,6 +80,7 @@ export {
   type ComboboxRootBaseProps as RootBaseProps,
   type ComboboxRootProps as RootProps,
   type ComboboxRootComponent as RootComponent,
+  type ComboboxRootComponentProps as RootComponentProps,
 } from './combobox-root.svelte'
 export {
   default as RootProvider,

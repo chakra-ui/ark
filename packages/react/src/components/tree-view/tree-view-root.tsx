@@ -56,8 +56,9 @@ const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: Reac
   )
 }
 
-export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(
-  props: Assign<TreeViewRootProps<T>, P> & React.RefAttributes<HTMLDivElement>,
-) => JSX.Element
+export type TreeViewRootComponentProps<T extends TreeNode = TreeNode, P = {}> = Assign<TreeViewRootProps<T>, P> &
+  React.RefAttributes<HTMLDivElement>
+
+export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: TreeViewRootComponentProps<T, P>) => JSX.Element
 
 export const TreeViewRoot = forwardRef(TreeViewImpl) as TreeViewRootComponent

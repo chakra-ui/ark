@@ -42,8 +42,14 @@ const ListboxImpl = <T extends CollectionItem>(props: ListboxRootProps<T>, ref: 
   )
 }
 
+export type ListboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+  ListboxRootProps<T>,
+  P
+> &
+  React.RefAttributes<HTMLDivElement>
+
 export type ListboxRootComponent<P = {}> = <T extends CollectionItem>(
-  props: Assign<ListboxRootProps<T>, P> & React.RefAttributes<HTMLDivElement>,
+  props: ListboxRootComponentProps<T, P>,
 ) => JSX.Element
 
 export const ListboxRoot = forwardRef(ListboxImpl) as ListboxRootComponent

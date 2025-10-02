@@ -17,7 +17,9 @@ export interface SelectRootProps<T extends CollectionItem>
      */
     Omit<HTMLAttributes, 'onSelect'> {}
 
-export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: Assign<SelectRootProps<T>, P>) => any
+export type SelectRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<SelectRootProps<T>, P>
+
+export type SelectRootComponent<P = {}> = <T extends CollectionItem>(props: SelectRootComponentProps<T, P>) => any
 
 export type { RootEmits as SelectRootEmits } from './select.types'
 </script>

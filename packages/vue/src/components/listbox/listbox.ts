@@ -62,6 +62,7 @@ export {
   default as Root,
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootComponent as RootComponent,
+  type ListboxRootComponentProps as RootComponentProps,
   type ListboxRootEmits as RootEmits,
   type ListboxRootProps as RootProps,
 } from './listbox-root.vue'

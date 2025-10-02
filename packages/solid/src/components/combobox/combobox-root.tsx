@@ -77,6 +77,11 @@ export const ComboboxRoot = <T extends CollectionItem>(props: ComboboxRootProps<
   )
 }
 
+export type ComboboxRootComponentProps<T extends CollectionItem = CollectionItem, P = {}> = Assign<
+  ComboboxRootProps<T>,
+  P
+>
+
 export type ComboboxRootComponent<P = {}> = <T extends CollectionItem>(
-  props: Assign<ComboboxRootProps<T>, P>,
+  props: ComboboxRootComponentProps<T, P>,
 ) => JSX.Element

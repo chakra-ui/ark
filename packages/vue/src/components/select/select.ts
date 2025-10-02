@@ -79,6 +79,7 @@ export {
   type SelectRootBaseProps as RootBaseProps,
   type SelectRootProps as RootProps,
   type SelectRootComponent as RootComponent,
+  type SelectRootComponentProps as RootComponentProps,
 } from './select-root.vue'
 export {
   default as Trigger,

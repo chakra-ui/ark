@@ -60,6 +60,7 @@ export {
   type ListboxRootBaseProps as RootBaseProps,
   type ListboxRootProps as RootProps,
   type ListboxRootComponent as RootComponent,
+  type ListboxRootComponentProps as RootComponentProps,
 } from './listbox-root'
 export {
   ListboxRootProvider as RootProvider,

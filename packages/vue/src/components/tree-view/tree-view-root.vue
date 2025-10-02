@@ -16,7 +16,10 @@ export interface TreeViewRootProps<T extends TreeNode>
      * @vue-ignore
      */
     HTMLAttributes {}
-export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: Assign<TreeViewRootProps<T>, P>) => any
+
+export type TreeViewRootComponentProps<T extends TreeNode = TreeNode, P = {}> = Assign<TreeViewRootProps<T>, P>
+
+export type TreeViewRootComponent<P = {}> = <T extends TreeNode>(props: TreeViewRootComponentProps<T, P>) => any
 export type { RootEmits as TreeViewRootEmits } from './tree-view.types'
 </script>
 

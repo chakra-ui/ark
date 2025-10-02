@@ -2,8 +2,8 @@ export type {
   HighlightChangeDetails,
   InputValueChangeDetails,
   OpenChangeDetails,
-  ValueChangeDetails,
   SelectionDetails,
+  ValueChangeDetails,
 } from '@zag-js/combobox'
 export type { CollectionItem } from '../collection'
 export {
@@ -16,17 +16,17 @@ export {
   type ComboboxContentBaseProps as ContentBaseProps,
   type ComboboxContentProps as ContentProps,
 } from './combobox-content'
-export {
-  ComboboxEmpty as Empty,
-  type ComboboxEmptyBaseProps as EmptyBaseProps,
-  type ComboboxEmptyProps as EmptyProps,
-} from './combobox-empty'
 export { ComboboxContext as Context, type ComboboxContextProps as ContextProps } from './combobox-context'
 export {
   ComboboxControl as Control,
   type ComboboxControlBaseProps as ControlBaseProps,
   type ComboboxControlProps as ControlProps,
 } from './combobox-control'
+export {
+  ComboboxEmpty as Empty,
+  type ComboboxEmptyBaseProps as EmptyBaseProps,
+  type ComboboxEmptyProps as EmptyProps,
+} from './combobox-empty'
 export {
   ComboboxInput as Input,
   type ComboboxInputBaseProps as InputBaseProps,
@@ -79,14 +79,15 @@ export {
 export {
   ComboboxRoot as Root,
   type ComboboxRootBaseProps as RootBaseProps,
-  type ComboboxRootProps as RootProps,
   type ComboboxRootComponent as RootComponent,
+  type ComboboxRootComponentProps as RootComponentProps,
+  type ComboboxRootProps as RootProps,
 } from './combobox-root'
 export {
   ComboboxRootProvider as RootProvider,
   type ComboboxRootProviderBaseProps as RootProviderBaseProps,
-  type ComboboxRootProviderProps as RootProviderProps,
   type ComboboxRootProviderComponent as RootProviderComponent,
+  type ComboboxRootProviderProps as RootProviderProps,
 } from './combobox-root-provider'
 export {
   ComboboxTrigger as Trigger,

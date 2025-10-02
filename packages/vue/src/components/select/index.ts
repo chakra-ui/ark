@@ -69,6 +69,7 @@ export {
   type SelectRootEmits,
   type SelectRootProps,
   type SelectRootComponent,
+  type SelectRootComponentProps,
 } from './select-root.vue'
 export { default as SelectTrigger, type SelectTriggerBaseProps, type SelectTriggerProps } from './select-trigger.vue'
 export {
