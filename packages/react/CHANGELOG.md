@@ -12,7 +12,7 @@
 
 ```ts
 const service = useMachine(pagination.machine, {
-  type: "link",
+  type: 'link',
   getPageUrl: ({ page, pageSize }) => `/products?page=${page}&size=${pageSize}`,
 })
 ```
@@ -97,6 +97,15 @@ import { createContext } from '@ark-ui/react/utils'
   [Learn more](https://www.nngroup.com/articles/timing-exposing-content)
   - `openDelay`: from `1000ms` to `400ms`
   - `closeDelay`: from `500ms` to `150ms`
+
+### Removed
+
+- **TimePicker**: The TimePicker component has been removed from this release. This component was never part of the
+  public API and was considered experimental. It had significant bugs and usability issues across all frameworks and
+  locales, making it unsuitable for production use.
+
+  **Migration**: We recommend building a custom time picker using the Select component for simple use cases, or
+  implementing a time grid pattern for more complex scenarios.
 
 ### Fixed
 

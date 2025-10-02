@@ -18,7 +18,7 @@ description: All notable changes will be documented in this file.
 
 ```ts
 const service = useMachine(pagination.machine, {
-  type: "link",
+  type: 'link',
   getPageUrl: ({ page, pageSize }) => `/products?page=${page}&size=${pageSize}`,
 })
 ```
@@ -88,6 +88,15 @@ import { createContext } from '@ark-ui/solid/utils'
 - **General**: Fix issue where `mergeProps` throws when `props` is `undefined` or `null`
 
 ## [5.9.0] - 2025-09-14
+
+### Removed
+
+- **TimePicker**: The TimePicker component has been removed from this release. This component was never part of the
+  public API and was considered experimental. It had significant bugs and usability issues across all frameworks and
+  locales, making it unsuitable for production use.
+
+  **Migration**: We recommend building a custom time picker using the Select component for simple use cases, or
+  implementing a time grid pattern for more complex scenarios.
 
 ### Added
 

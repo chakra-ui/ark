@@ -72,6 +72,15 @@ import { createContext } from '@ark-ui/solid/utils'
 
 ## [5.24.0] - 2025-09-14
 
+### Removed
+
+- **TimePicker**: The TimePicker component has been removed from this release. This component was never part of the
+  public API and was considered experimental. It had significant bugs and usability issues across all frameworks and
+  locales, making it unsuitable for production use.
+
+  **Migration**: We recommend building a custom time picker using the Select component for simple use cases, or
+  implementing a time grid pattern for more complex scenarios.
+
 ### Added
 
 - **Combobox**: Add `alwaysSubmitOnEnter` prop to allow bypassing the default two-step behavior (Enter to close
