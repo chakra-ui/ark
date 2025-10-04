@@ -30,7 +30,6 @@ export const usePresence = (props: MaybeFunction<UsePresenceProps>) => {
 
   const setNode = (node: Element | null) => {
     if (!node) return
-    if (service.refs.get('node')) return
     service.send({ type: 'NODE.SET', node })
   }
 

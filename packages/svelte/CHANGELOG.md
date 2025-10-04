@@ -44,6 +44,8 @@ const service = useMachine(pagination.machine, {
 
 - **Switch**: Fix issue where `data-active` is inconsistently applied when `disabled` state changes at runtime
 
+- **Presence**: Fix issue where exit animations don't work on subsequent toggles when using `lazyMount` and `unmountOnExit` together
+
 ## [5.10.1] - 2025-09-27
 
 ### Fixed
