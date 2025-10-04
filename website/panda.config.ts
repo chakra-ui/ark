@@ -58,7 +58,6 @@ export default defineConfig({
       'html, body': {
         display: 'flex',
         flexDirection: 'column',
-        overflowX: 'hidden',
       },
       body: {
         display: 'flex',
