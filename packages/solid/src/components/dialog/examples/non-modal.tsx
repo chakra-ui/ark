@@ -2,16 +2,19 @@ import { XIcon } from 'lucide-solid'
 import { Dialog } from '@ark-ui/solid/dialog'
 import { Portal } from 'solid-js/web'
 
-export const Basic = () => {
+export const NonModal = () => {
   return (
-    <Dialog.Root defaultOpen>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+    <Dialog.Root modal={false}>
+      <Dialog.Trigger>Open Non-Modal Dialog</Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
           <Dialog.Content>
-            <Dialog.Title>Dialog Title</Dialog.Title>
-            <Dialog.Description>Dialog Description</Dialog.Description>
+            <Dialog.Title>Non-Modal Dialog</Dialog.Title>
+            <Dialog.Description>
+              This dialog allows interaction with elements outside. You can click buttons, select text, and interact
+              with the page behind it.
+            </Dialog.Description>
             <Dialog.CloseTrigger>
               <XIcon />
             </Dialog.CloseTrigger>

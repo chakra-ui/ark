@@ -15,7 +15,9 @@ const dialog = useDialog()
         <Dialog.Content>
           <Dialog.Title>Dialog Title</Dialog.Title>
           <Dialog.Description>Dialog Description</Dialog.Description>
-          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+          <Dialog.CloseTrigger>
+            <XIcon />
+          </Dialog.CloseTrigger>
         </Dialog.Content>
       </Dialog.Positioner>
     </Teleport>

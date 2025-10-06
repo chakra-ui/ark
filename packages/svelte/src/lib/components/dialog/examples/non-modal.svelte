@@ -2,18 +2,19 @@
   import { Dialog } from '@ark-ui/svelte/dialog'
   import { XIcon } from 'lucide-svelte'
   import { Portal } from '@ark-ui/svelte/portal'
-
-  let open = $state(false)
 </script>
 
-<button type="button" onclick={() => (open = !open)}>Toggle</button>
-<Dialog.Root bind:open>
+<Dialog.Root modal={false}>
+  <Dialog.Trigger>Open Non-Modal Dialog</Dialog.Trigger>
   <Portal>
     <Dialog.Backdrop />
     <Dialog.Positioner>
       <Dialog.Content>
-        <Dialog.Title>Controlled Dialog</Dialog.Title>
-        <Dialog.Description>This dialog's open state is controlled externally.</Dialog.Description>
+        <Dialog.Title>Non-Modal Dialog</Dialog.Title>
+        <Dialog.Description>
+          This dialog allows interaction with elements outside. You can click buttons, select text,
+          and interact with the page behind it.
+        </Dialog.Description>
         <Dialog.CloseTrigger>
       <XIcon />
       </Dialog.CloseTrigger>

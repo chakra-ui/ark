@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Dialog } from '@ark-ui/vue/dialog'
+import { XIcon } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -10,7 +11,9 @@ import { Dialog } from '@ark-ui/vue/dialog'
       <Dialog.Content>
         <Dialog.Title>Dialog Title</Dialog.Title>
         <Dialog.Description>Dialog Description</Dialog.Description>
-        <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+        <Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Dialog.Root>

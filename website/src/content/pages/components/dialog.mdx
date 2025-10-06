@@ -37,6 +37,93 @@ Dialog is closed, freeing up resources. The next time the dialog is activated, i
 
 <Example id="lazy-mount" />
 
+### Alert Dialog
+
+For critical confirmations or destructive actions, use `role="alertdialog"`. Alert dialogs differ from regular dialogs
+in important ways:
+
+- **Automatic focus**: The close/cancel button receives focus when opened, prioritizing the safest action
+- **Requires explicit dismissal**: Cannot be closed by clicking outside, only via button clicks or Escape key
+
+<Example id="alert-dialog" />
+
+### Initial Focus
+
+Control which element receives focus when the dialog opens using the `initialFocusEl` prop. This is useful for forms
+where you want to focus a specific input field:
+
+<Example id="initial-focus" />
+
+### Final Focus
+
+Control which element receives focus when the dialog closes using the `finalFocusEl` prop. By default, focus returns to
+the trigger element, but you can specify a different element:
+
+<Example id="final-focus" />
+
+### Non-Modal Dialog
+
+Use `modal={false}` to create a non-modal dialog that allows interaction with elements outside of it. This disables
+focus trapping, scroll prevention, and pointer blocking, making it useful for auxiliary panels or inspector windows:
+
+<Example id="non-modal" />
+
+### Close on Interact Outside
+
+Prevent the dialog from closing when clicking outside by setting `closeOnInteractOutside={false}`. Use the
+`onInteractOutside` event with `e.preventDefault()` for advanced control:
+
+<Example id="close-on-interact-outside" />
+
+### Close on Escape
+
+Prevent the dialog from closing when pressing Escape by setting `closeOnEscape={false}`. Use the `onEscapeKeyDown` event
+with `e.preventDefault()` to implement custom behavior like unsaved changes warnings:
+
+<Example id="close-on-escape" />
+
+### Render Function
+
+Use the `Dialog.Context` component to access the dialog's state and methods.
+
+<Example id="render-fn" />
+
+### Root Provider
+
+The `useDialog` hook gives you programmatic access to the dialog's state and methods. Use it with `Dialog.RootProvider`
+when you need to control the dialog from outside its component tree.
+
+<Example id="root-provider" />
+
+> **Note:** There are two ways to use the Dialog component: (1) `Dialog.Root` for declarative usage, or (2)
+> `useDialog()` + `Dialog.RootProvider` for programmatic control with access to state properties and methods like
+> `setOpen()`. Never use both approaches together - choose one based on your needs.
+
+### Nested Dialogs
+
+Multiple dialogs can be stacked with automatic z-index management. Zag.js manages layering through CSS variables like
+`--z-index` and `--layer-index`, which are automatically updated when dialogs are opened or closed:
+
+<Example id="nested" />
+
+You can create a zoom-out effect for parent dialogs using the `data-has-nested` attribute and `--nested-layer-count`
+variable:
+
+```css
+[data-scope='dialog'][data-part='backdrop'][data-has-nested] {
+  transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+}
+```
+
+### Confirmation Dialog
+
+Dialogs can intercept close attempts to show confirmation prompts. This pattern is useful for preventing data loss from
+unsaved changes:
+
+<Example id="confirmation" />
+
+## Guides
+
 ### Lazy Mount and Dynamic Imports
 
 When using `lazyMount` and dynamically rendering components in the dialog (via `React.lazy`, Next.js `dynamic`), wrap
@@ -62,21 +149,6 @@ export default function DialogExample() {
   )
 }
 ```
-
-### Render Function
-
-Use the `Dialog.Context` component to access the dialog's state and methods.
-
-<Example id="render-fn" />
-
-### Root Provider
-
-Use the `useDialog` hook to create the dialog store and pass it to the `Dialog.RootProvider` component. This allows you
-to have maximum control over the dialog programmatically.
-
-<Example id="root-provider" />
-
-> If you're using the `Dialog.RootProvider` component, you don't need to use the `Dialog.Root` component.
 
 ## API Reference
 

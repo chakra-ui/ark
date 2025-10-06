@@ -486,12 +486,12 @@ Svelte 5 uses the new runes syntax for component development:
     createSplitProps<UseComponentProps>()(props, ['disabled', 'invalid', 'required']),
   )
 
-  const providedId = $props.id()
+  const id = $props.id()
 
   // Reactive machine props with $derived
   const machineProps = $derived.by(() => ({
     ...useComponentProps,
-    id: useComponentProps.id ?? providedId,
+    id: useComponentProps.id ?? id,
   }))
 
   // Initialize component logic with Zag.js
@@ -511,6 +511,34 @@ Svelte 5 uses the new runes syntax for component development:
 <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 ```
 
+**IMPORTANT: Svelte useComponent ID Requirement**
+
+When using `useComponent` hooks in Svelte examples, you must **always** provide an explicit `id` prop:
+
+```svelte
+<script lang="ts">
+  import { Dialog, useDialog } from '@ark-ui/svelte/dialog'
+
+  // ✅ CORRECT - Get id from props explicitly
+  const id = $props.id()
+  const dialog = useDialog({ id })
+
+  // ❌ WRONG - No fallback ID generation in Svelte
+  const dialog = useDialog()
+</script>
+```
+
+For examples with multiple component instances, use suffixes:
+
+```svelte
+<script lang="ts">
+  const id = $props.id()
+
+  const parentDialog = useDialog({ id: `${id}-parent` })
+  const childDialog = useDialog({ id: `${id}-child` })
+</script>
+```
+
 ### Svelte 5 Specific Patterns
 
 **Props and Refs:**
@@ -527,7 +555,7 @@ Svelte 5 uses the new runes syntax for component development:
 
 **Ark Component:**
 
-- `<Ark as="div" />` - Polymorphic component factory
+- `<Ark as="div" />` - Polymorphic component factory (void elements only)
 - `bind:ref` - Bind template ref to variable (works with $bindable)
 - `{...mergedProps}` - Spread Zag.js props
 - `{@attach setNode}` - Attach additional refs for complex components
@@ -537,6 +565,33 @@ Svelte 5 uses the new runes syntax for component development:
 - `createSplitProps()` - Utility to split component and DOM props
 - `mergeProps()` - Merge Zag.js props with local props
 - Provider pattern for compound components
+
+**Self-Closing Tags:**
+
+Svelte requires proper closing tags for non-void HTML elements to avoid ambiguity:
+
+```svelte
+<!-- ✅ CORRECT - Non-void elements need closing tags -->
+<textarea placeholder="Enter text..."></textarea>
+<div></div>
+<span></span>
+
+<!-- ❌ WRONG - Self-closing non-void elements are ambiguous -->
+<textarea placeholder="Enter text..." />
+<div />
+<span />
+
+<!-- ✅ CORRECT - Void elements can be self-closing -->
+<input />
+<img />
+<br />
+```
+
+**Non-void elements that require closing tags:**
+- `<textarea>`, `<div>`, `<span>`, `<button>`, `<a>`, `<form>`, etc.
+
+**Void elements that can be self-closing:**
+- `<input>`, `<img>`, `<br>`, `<hr>`, `<meta>`, `<link>`, etc.
 
 ## Framework-Specific Utilities
 

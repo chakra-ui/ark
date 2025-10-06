@@ -202,7 +202,55 @@ Every component should include these example patterns where applicable:
 
 ## Root Provider Pattern (Critical)
 
-**The `root-provider` example is essential for most components** as it demonstrates external state management using component hooks:
+**The `root-provider` example is essential for most components** as it demonstrates external state management using component hooks.
+
+### Two Approaches: Choose One
+
+There are two ways to use components - pick one approach, never mix them:
+
+**Approach 1: Component.Root (Declarative)**
+- Pass props directly to `Component.Root`
+- Component manages its own internal state
+- Limited access to state and methods
+
+```tsx
+// ✅ Using Component.Root
+<Dialog.Root onOpenChange={(e) => console.log(e.open)}>
+  <Dialog.Trigger>Open</Dialog.Trigger>
+  <Dialog.Content>Content</Dialog.Content>
+</Dialog.Root>
+```
+
+**Approach 2: useComponent + RootProvider (Programmatic)**
+- Call `useComponent(props)` to get the component API/store
+- Pass the store to `Component.RootProvider`
+- Full access to state properties and methods (`.setOpen()`, `.open`, etc.)
+- Better for programmatic control and complex interactions
+
+```tsx
+// ✅ Using useDialog + RootProvider
+const dialog = useDialog({ onOpenChange: (e) => console.log(e.open) })
+
+return (
+  <Dialog.RootProvider value={dialog}>
+    <button onClick={() => dialog.setOpen(true)}>Open</button>
+    <Dialog.Trigger>Open</Dialog.Trigger>
+    <Dialog.Content>Content</Dialog.Content>
+  </Dialog.RootProvider>
+)
+```
+
+**❌ NEVER mix both approaches:**
+```tsx
+// ❌ WRONG - Don't use Root inside RootProvider
+<Dialog.RootProvider value={dialog}>
+  <Dialog.Root> {/* This is incorrect! */}
+    <Dialog.Content />
+  </Dialog.Root>
+</Dialog.RootProvider>
+```
+
+The benefit of `useComponent + RootProvider` is direct access to the component's state and methods, enabling programmatic control from anywhere in your component.
 
 ### React Pattern
 
@@ -223,6 +271,32 @@ export const RootProvider = () => {
         <Field.ErrorText>Error Info</Field.ErrorText>
       </Field.RootProvider>
     </>
+  )
+}
+```
+
+### Handling Events with RootProvider
+
+Pass event handlers directly to the hook, not as props to child components:
+
+```tsx
+// React example with onOpenChange
+import { Dialog, useDialog } from '@ark-ui/react/dialog'
+
+export const Example = () => {
+  const dialog = useDialog({
+    onOpenChange: (details) => {
+      console.log('Dialog opened:', details.open)
+    },
+  })
+
+  return (
+    <Dialog.RootProvider value={dialog}>
+      <Dialog.Trigger>Open</Dialog.Trigger>
+      <Dialog.Content>
+        {/* Content */}
+      </Dialog.Content>
+    </Dialog.RootProvider>
   )
 }
 ```
@@ -250,6 +324,28 @@ export const RootProvider = () => {
 }
 ```
 
+```tsx
+// Solid example with onOpenChange
+import { Dialog, useDialog } from '@ark-ui/solid/dialog'
+
+export const Example = () => {
+  const dialog = useDialog({
+    onOpenChange: (details) => {
+      console.log('Dialog opened:', details.open)
+    },
+  })
+
+  return (
+    <Dialog.RootProvider value={dialog}>
+      <Dialog.Trigger>Open</Dialog.Trigger>
+      <Dialog.Content>
+        {/* Content */}
+      </Dialog.Content>
+    </Dialog.RootProvider>
+  )
+}
+```
+
 ### Vue Pattern
 
 ```vue
@@ -268,6 +364,28 @@ const fieldset = useFieldset()
     </div>
     <Fieldset.HelperText>Please fill out required fields</Fieldset.HelperText>
   </Fieldset.RootProvider>
+</template>
+```
+
+```vue
+<!-- Vue example with onOpenChange -->
+<script setup lang="ts">
+import { Dialog, useDialog } from '@ark-ui/vue/dialog'
+
+const dialog = useDialog({
+  onOpenChange: (details) => {
+    console.log('Dialog opened:', details.open)
+  },
+})
+</script>
+
+<template>
+  <Dialog.RootProvider :value="dialog">
+    <Dialog.Trigger>Open</Dialog.Trigger>
+    <Dialog.Content>
+      <!-- Content -->
+    </Dialog.Content>
+  </Dialog.RootProvider>
 </template>
 ```
 
@@ -291,6 +409,26 @@ const fieldset = useFieldset()
   <Field.Input />
   <Field.ErrorText>Error Info</Field.ErrorText>
 </Field.RootProvider>
+```
+
+```svelte
+<!-- Svelte example with onOpenChange -->
+<script lang="ts">
+  import { Dialog, useDialog } from '@ark-ui/svelte/dialog'
+
+  const dialog = useDialog({
+    onOpenChange: (details) => {
+      console.log('Dialog opened:', details.open)
+    },
+  })
+</script>
+
+<Dialog.RootProvider value={dialog}>
+  <Dialog.Trigger>Open</Dialog.Trigger>
+  <Dialog.Content>
+    <!-- Content -->
+  </Dialog.Content>
+</Dialog.RootProvider>
 ```
 
 ## Form Integration Patterns

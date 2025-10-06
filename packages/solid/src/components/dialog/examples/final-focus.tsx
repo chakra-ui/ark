@@ -1,29 +1,32 @@
 import { XIcon } from 'lucide-solid'
-import { Dialog, useDialog } from '@ark-ui/solid/dialog'
+import { Dialog } from '@ark-ui/solid/dialog'
 import { Portal } from 'solid-js/web'
 
-export const RootProvider = () => {
-  const dialog = useDialog()
+export const FinalFocus = () => {
+  let finalRef: HTMLButtonElement | null = null
 
   return (
     <>
-      <button onClick={() => dialog().setOpen(true)}>Open</button>
-
-      <Dialog.RootProvider value={dialog}>
+      <button type="button" ref={finalRef!}>
+        I will receive focus when dialog closes
+      </button>
+      <Dialog.Root finalFocusEl={() => finalRef}>
         <Dialog.Trigger>Open Dialog</Dialog.Trigger>
         <Portal>
           <Dialog.Backdrop />
           <Dialog.Positioner>
             <Dialog.Content>
               <Dialog.Title>Dialog Title</Dialog.Title>
-              <Dialog.Description>Dialog Description</Dialog.Description>
+              <Dialog.Description>
+                When this dialog closes, focus will return to the button above instead of the trigger.
+              </Dialog.Description>
               <Dialog.CloseTrigger>
                 <XIcon />
               </Dialog.CloseTrigger>
             </Dialog.Content>
           </Dialog.Positioner>
         </Portal>
-      </Dialog.RootProvider>
+      </Dialog.Root>
     </>
   )
 }

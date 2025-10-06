@@ -2,14 +2,13 @@
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   inset: 0px;
-}
+  &[data-state='open'] {
+    animation: fadeIn 0.25s ease-out;
+  }
 
-[data-scope='dialog'][data-part='backdrop'][data-state='open'] {
-  animation: fadeIn 0.25s ease-out;
-}
-
-[data-scope='dialog'][data-part='backdrop'][data-state='closed'] {
-  animation: fadeOut 0.2s ease-in;
+  &[data-state='closed'] {
+    animation: fadeOut 0.2s ease-in;
+  }
 }
 
 [data-scope='dialog'][data-part='positioner'] {
@@ -47,25 +46,31 @@
   max-height: 85vh;
   padding: 24px;
   position: relative;
-}
+  z-index: var(--layer-index);
+  transition: transform 0.2s ease-in-out;
 
-[data-scope='dialog'][data-part='content'][data-state='open'] {
-  animation: scaleIn 0.5s ease-out;
-}
+  &[data-has-nested] {
+    transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+  }
 
-[data-scope='dialog'][data-part='content'][data-state='closed'] {
-  animation: scaleOut 0.5s ease-in;
+  &[data-state='open'] {
+    animation: scaleIn 0.25s ease-in-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scaleOut 0.2s ease-in-out;
+  }
 }
 
 [data-scope='dialog'][data-part='close-trigger'] {
   position: absolute;
   top: 10px;
   right: 10px;
-}
 
-[data-scope='dialog'][data-part='close-trigger']:focus {
-  outline: 2px blue solid;
-  outline-offset: 2px;
+  &:focus {
+    outline: 2px blue solid;
+    outline-offset: 2px;
+  }
 }
 
 @keyframes fadeIn {

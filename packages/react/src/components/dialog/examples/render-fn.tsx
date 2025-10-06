@@ -1,5 +1,6 @@
 import { Dialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
+import { XIcon } from 'lucide-react'
 
 export const RenderFn = () => (
   <Dialog.Root>
@@ -10,7 +11,9 @@ export const RenderFn = () => (
         <Dialog.Content>
           <Dialog.Title>Dialog Title</Dialog.Title>
           <Dialog.Description>Dialog Description</Dialog.Description>
-          <Dialog.CloseTrigger>Close</Dialog.CloseTrigger>
+          <Dialog.CloseTrigger>
+            <XIcon />
+          </Dialog.CloseTrigger>
         </Dialog.Content>
       </Dialog.Positioner>
     </Portal>
