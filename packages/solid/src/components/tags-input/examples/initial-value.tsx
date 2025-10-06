@@ -1,4 +1,5 @@
 import { TagsInput } from '@ark-ui/solid/tags-input'
+import { XIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 
 export const InitialValue = () => {
@@ -12,15 +13,21 @@ export const InitialValue = () => {
               <Index each={api().value}>
                 {(value, index) => (
                   <TagsInput.Item index={index} value={value()}>
-                    <TagsInput.ItemText>{value()}</TagsInput.ItemText>
+                    <TagsInput.ItemPreview>
+                      <TagsInput.ItemText>{value()}</TagsInput.ItemText>
+                      <TagsInput.ItemDeleteTrigger>
+                        <XIcon />
+                      </TagsInput.ItemDeleteTrigger>
+                    </TagsInput.ItemPreview>
                     <TagsInput.ItemInput />
-                    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
                   </TagsInput.Item>
                 )}
               </Index>
+              <TagsInput.Input placeholder="Add tag" />
+              <TagsInput.ClearTrigger>
+                <XIcon />
+              </TagsInput.ClearTrigger>
             </TagsInput.Control>
-            <TagsInput.Input placeholder="Add tag" />
-            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
           </>
         )}
       </TagsInput.Context>

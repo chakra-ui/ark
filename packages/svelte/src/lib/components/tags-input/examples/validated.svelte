@@ -1,5 +1,6 @@
 <script lang="ts">
   import { TagsInput } from '@ark-ui/svelte/tags-input'
+  import { XIcon } from 'lucide-svelte'
 </script>
 
 <TagsInput.Root
@@ -13,14 +14,16 @@
       <TagsInput.Control>
         {#each tagsInput().value as value, index (index)}
           <TagsInput.Item {index} {value}>
+            <TagsInput.ItemPreview>
+              <TagsInput.ItemText>{value}</TagsInput.ItemText>
+              <TagsInput.ItemDeleteTrigger><XIcon /></TagsInput.ItemDeleteTrigger>
+            </TagsInput.ItemPreview>
             <TagsInput.ItemInput />
-            <TagsInput.ItemText>{value}</TagsInput.ItemText>
-            <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
           </TagsInput.Item>
         {/each}
       </TagsInput.Control>
       <TagsInput.Input placeholder="Add Framework" />
-      <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+      <TagsInput.ClearTrigger><XIcon /></TagsInput.ClearTrigger>
     {/snippet}
   </TagsInput.Context>
   <TagsInput.HiddenInput />

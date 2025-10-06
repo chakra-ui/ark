@@ -1,4 +1,5 @@
 import { TagsInput } from '@ark-ui/react/tags-input'
+import { XIcon } from 'lucide-react'
 
 export const Basic = () => {
   return (
@@ -12,14 +13,18 @@ export const Basic = () => {
                 <TagsInput.Item key={index} index={index} value={value}>
                   <TagsInput.ItemPreview>
                     <TagsInput.ItemText>{value}</TagsInput.ItemText>
-                    <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
+                    <TagsInput.ItemDeleteTrigger>
+                      <XIcon />
+                    </TagsInput.ItemDeleteTrigger>
                   </TagsInput.ItemPreview>
                   <TagsInput.ItemInput />
                 </TagsInput.Item>
               ))}
             </TagsInput.Control>
             <TagsInput.Input placeholder="Add Framework" />
-            <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+            <TagsInput.ClearTrigger>
+              <XIcon />
+            </TagsInput.ClearTrigger>
           </>
         )}
       </TagsInput.Context>

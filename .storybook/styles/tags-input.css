@@ -2,7 +2,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 [data-scope='tags-input'][data-part='label'] {
@@ -15,21 +15,27 @@
   border: 1px solid #ccc;
   width: 40em;
   border-radius: 2px;
+  position: relative;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
 
-[data-scope='tags-input'][data-part='control'][data-disabled] {
-  background: #f9f9f9;
-}
+  &[data-disabled] {
+    background: #f9f9f9;
+  }
 
-[data-scope='tags-input'][data-part='control'][data-focus],
-[data-scope='tags-input'][data-part='control']:focus {
-  outline: 2px solid rgb(234, 234, 234);
+  &[data-focus],
+  &:focus {
+    outline: 2px solid var(--ring-color);
+    outline-offset: 2px;
+  }
+
+  svg {
+    width: 1em;
+    height: 1em;
+  }
 }
 
 [data-scope='tags-input'][data-part='item'] {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
 }
 
 [data-scope='tags-input'][data-part='item-preview'] {
@@ -44,19 +50,21 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-}
 
-[data-scope='tags-input'][data-part='item-preview'][hidden] {
-  display: none !important;
-}
-[data-scope='tags-input'][data-part='item-preview'][data-highlighted] {
-  background-color: #777;
-  border-color: #777;
-  color: #eee;
-}
-[data-scope='tags-input'][data-part='item-preview'][data-disabled] {
-  opacity: 0.6;
-  cursor: default;
+  &[hidden] {
+    display: none !important;
+  }
+
+  &[data-highlighted] {
+    background-color: #777;
+    border-color: #777;
+    color: #eee;
+  }
+
+  &[data-disabled] {
+    opacity: 0.6;
+    cursor: default;
+  }
 }
 
 [data-scope='tags-input'][data-part*='input'] {
@@ -70,14 +78,14 @@
   font-size: 100%;
   outline: none;
   display: inline-block !important;
-}
 
-[data-scope='tags-input'][data-part*='input'][hidden] {
-  display: none !important;
-}
+  &[hidden] {
+    display: none !important;
+  }
 
-[data-scope='tags-input'][data-part*='input']:disabled {
-  opacity: 0.6;
+  &:disabled {
+    opacity: 0.6;
+  }
 }
 
 [data-scope='tags-input'][data-part='item-delete-trigger'] {
@@ -85,9 +93,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  background: #eee;
-  color: #444;
+}
+
+[data-scope='tags-input'][data-part='clear-trigger'] {
+  position: absolute;
+  top: 0;
+  right: 0.5px;
+  bottom: 0;
+  scale: 0.8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    scale: 1.2;
+  }
 }

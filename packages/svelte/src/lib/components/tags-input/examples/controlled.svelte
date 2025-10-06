@@ -23,7 +23,7 @@
     </TagsInput.Context>
     <TagsInput.Input placeholder="Add Framework" />
   </TagsInput.Control>
-  <TagsInput.ClearTrigger>Clear All</TagsInput.ClearTrigger>
+  <TagsInput.ClearTrigger><XIcon /></TagsInput.ClearTrigger>
   <TagsInput.HiddenInput />
 </TagsInput.Root>
 

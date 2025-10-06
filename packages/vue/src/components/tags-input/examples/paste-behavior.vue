@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TagsInput } from '@ark-ui/vue/tags-input'
+import { XIcon } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -8,12 +9,14 @@ import { TagsInput } from '@ark-ui/vue/tags-input'
       <TagsInput.Label>Frameworks</TagsInput.Label>
       <TagsInput.Control>
         <TagsInput.Item v-for="(value, index) in tagsInput.value" :key="index" :index="index" :value="value">
+          <TagsInput.ItemPreview>
+            <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
+            <TagsInput.ItemDeleteTrigger><XIcon /></TagsInput.ItemDeleteTrigger>
+          </TagsInput.ItemPreview>
           <TagsInput.ItemInput />
-          <TagsInput.ItemText>{{ value }}</TagsInput.ItemText>
-          <TagsInput.ItemDeleteTrigger>Delete</TagsInput.ItemDeleteTrigger>
         </TagsInput.Item>
         <TagsInput.Input placeholder="Add Framework" />
-        <TagsInput.ClearTrigger>Clear all</TagsInput.ClearTrigger>
+        <TagsInput.ClearTrigger><XIcon /></TagsInput.ClearTrigger>
       </TagsInput.Control>
     </TagsInput.Context>
     <TagsInput.HiddenInput />
