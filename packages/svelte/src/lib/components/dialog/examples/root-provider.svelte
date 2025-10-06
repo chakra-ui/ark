@@ -19,8 +19,8 @@
         <Dialog.Title>Dialog Title</Dialog.Title>
         <Dialog.Description>Dialog Description</Dialog.Description>
         <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

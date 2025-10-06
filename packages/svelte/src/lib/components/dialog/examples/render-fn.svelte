@@ -15,8 +15,8 @@
             <Dialog.Title>Dialog State: {dialog().open ? 'Open' : 'Closed'}</Dialog.Title>
             <Dialog.Description>This example uses a render function to access dialog state.</Dialog.Description>
             <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+              <XIcon />
+            </Dialog.CloseTrigger>
           </Dialog.Content>
         </Dialog.Positioner>
       </Portal>

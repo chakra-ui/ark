@@ -3,7 +3,7 @@ import { Dialog } from '@ark-ui/vue/dialog'
 import { XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 
-const finalRef = ref<HTMLButtonElement>()
+const finalRef = ref<HTMLButtonElement | null>(null)
 </script>
 
 <template>

@@ -16,7 +16,9 @@ export const AlertDialog = () => {
               servers.
             </Dialog.Description>
             <div>
-              <Dialog.CloseTrigger>Cancel</Dialog.CloseTrigger>
+              <Dialog.CloseTrigger>
+                <XIcon />
+              </Dialog.CloseTrigger>
               <button type="button">Delete Account</button>
             </div>
           </Dialog.Content>

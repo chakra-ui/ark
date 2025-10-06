@@ -12,12 +12,12 @@
       <Dialog.Content>
         <Dialog.Title>Non-Modal Dialog</Dialog.Title>
         <Dialog.Description>
-          This dialog allows interaction with elements outside. You can click buttons, select text,
-          and interact with the page behind it.
+          This dialog allows interaction with elements outside. You can click buttons, select text, and interact with
+          the page behind it.
         </Dialog.Description>
         <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

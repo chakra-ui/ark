@@ -13,8 +13,8 @@
         <Dialog.Title>Lazy Mounted Dialog</Dialog.Title>
         <Dialog.Description>This dialog content is only rendered when the dialog is first opened.</Dialog.Description>
         <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

@@ -14,13 +14,10 @@ export const AlertDialog = () => (
             This action cannot be undone. This will permanently delete your account and remove your data from our
             servers.
           </Dialog.Description>
-          <div>
-            <Dialog.CloseTrigger>Cancel</Dialog.CloseTrigger>
-            <button type="button">Delete Account</button>
-          </div>
           <Dialog.CloseTrigger>
             <XIcon />
           </Dialog.CloseTrigger>
+          <button type="button">Delete Account</button>
         </Dialog.Content>
       </Dialog.Positioner>
     </Portal>

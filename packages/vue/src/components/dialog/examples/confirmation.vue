@@ -9,14 +9,14 @@ const confirmDialog = useDialog()
 const parentDialog = useDialog({
   onOpenChange: (details) => {
     if (!details.open && formContent.value.trim()) {
-      confirmDialog.setOpen(true)
+      confirmDialog.value.setOpen(true)
     }
   },
 })
 
 const handleConfirmClose = () => {
-  confirmDialog.setOpen(false)
-  parentDialog.setOpen(false)
+  confirmDialog.value.setOpen(false)
+  parentDialog.value.setOpen(false)
   formContent.value = ''
 }
 </script>

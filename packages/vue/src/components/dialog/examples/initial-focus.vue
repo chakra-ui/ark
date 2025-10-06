@@ -3,7 +3,7 @@ import { Dialog } from '@ark-ui/vue/dialog'
 import { XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 
-const inputRef = ref<HTMLInputElement>()
+const inputRef = ref<HTMLInputElement | null>(null)
 </script>
 
 <template>
