@@ -2,6 +2,63 @@
 
 This guide covers advanced patterns, utilities, and implementation details specific to each framework.
 
+## Icon Imports
+
+When using icons from Lucide in examples, follow these framework-specific import patterns:
+
+### React Icon Imports
+
+```tsx
+import { XIcon } from 'lucide-react'
+
+// Usage
+<TagsInput.ItemDeleteTrigger>
+  <XIcon />
+</TagsInput.ItemDeleteTrigger>
+```
+
+### Solid Icon Imports
+
+```tsx
+import { XIcon } from 'lucide-solid'
+
+// Usage
+<TagsInput.ItemDeleteTrigger>
+  <XIcon />
+</TagsInput.ItemDeleteTrigger>
+```
+
+### Vue Icon Imports
+
+```vue
+<script setup lang="ts">
+import { XIcon } from 'lucide-vue-next'
+</script>
+
+<template>
+  <TagsInput.ItemDeleteTrigger>
+    <XIcon />
+  </TagsInput.ItemDeleteTrigger>
+</template>
+```
+
+### Svelte Icon Imports
+
+```svelte
+<script lang="ts">
+  import { XIcon } from 'lucide-svelte'
+</script>
+
+<TagsInput.ItemDeleteTrigger>
+  <XIcon />
+</TagsInput.ItemDeleteTrigger>
+```
+
+**Icon Naming Convention:**
+- Always import icons with the `Icon` suffix (e.g., `XIcon`, `CheckIcon`, `ChevronDownIcon`)
+- Use the full icon name directly from Lucide (don't rename with `as`)
+- This maintains consistency across all framework examples
+
 ## Ref Synchronization Strategies
 
 Each framework handles refs differently, requiring specific synchronization patterns:
