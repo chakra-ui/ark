@@ -160,7 +160,7 @@
     "@vue/compiler-sfc": "3.5.22",
     "check-password-strength": "3.0.0",
     "clean-package": "2.2.0",
-    "globby": "14.1.0",
+    "globby": "15.0.0",
     "histoire": "0.17.17",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
