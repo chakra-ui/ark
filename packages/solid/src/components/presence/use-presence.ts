@@ -26,12 +26,17 @@ export const usePresence = (props: MaybeAccessor<UsePresenceProps>) => {
     if (present) setWasEverPresent(true)
   })
 
+  const setNode = (node: Element | null) => {
+    if (!node) return
+    service.send({ type: 'NODE.SET', node })
+  }
+
   return createMemo(() => ({
     unmounted:
       (!api().present && !wasEverPresent() && renderStrategyProps.lazyMount) ||
       (renderStrategyProps.unmountOnExit && !api().present && wasEverPresent()),
     present: api().present,
-    ref: api().setNode,
+    ref: setNode,
     presenceProps: {
       hidden: !api().present,
       'data-state': api().skip && localProps.skipAnimationOnMount ? undefined : localProps.present ? 'open' : 'closed',

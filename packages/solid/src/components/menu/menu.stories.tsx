@@ -9,6 +9,7 @@ export default meta
 export { Basic } from './examples/basic'
 export { Checkbox } from './examples/checkbox'
 export { Context } from './examples/context'
+export { ContextLazyMount } from './examples/context-lazy-mount'
 export { Controlled } from './examples/controlled'
 export { Group } from './examples/group'
 export { Links } from './examples/links'
