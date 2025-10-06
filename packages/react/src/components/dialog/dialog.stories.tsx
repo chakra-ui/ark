@@ -9,5 +9,6 @@ export default meta
 export { Basic } from './examples/basic'
 export { Controlled } from './examples/controlled'
 export { LazyMount } from './examples/lazy-mount'
+export { RapidStateChange } from './examples/rapid-state-change'
 export { RenderFn } from './examples/render-fn'
 export { RootProvider } from './examples/root-provider'
