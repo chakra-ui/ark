@@ -16,8 +16,11 @@
 </script>
 
 <Ark as="select" bind:ref {...mergedProps}>
+  {#if select().value.length === 0}
+    <option value=""></option>
+  {/if}
   {#each select().collection.items as item}
-    <option value={select().collection.stringifyItem(item)}>
+    <option value={select().collection.getItemValue(item) ?? ''} disabled={select().collection.getItemDisabled(item)}>
       {select().collection.stringifyItem(item)}
     </option>
   {/each}

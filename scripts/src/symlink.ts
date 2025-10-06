@@ -56,6 +56,8 @@ async function main() {
       spawnSync('mv', [oldLockFilePath, lockFilePath], { stdio: 'inherit' })
     }
 
+    spawnSync('bun', ['run', 'clean'], { stdio: 'inherit', cwd: resolve('..') })
+
     //
   } else {
     packageJson.overrides ||= {}
@@ -66,8 +68,6 @@ async function main() {
       stdio: 'inherit',
     })
   }
-
-  spawnSync('bun', ['run', 'clean'], { stdio: 'inherit', cwd: resolve('..') })
 
   spawnSync('bun', ['install', '--force'], { stdio: 'inherit', cwd: resolve('..') })
 }

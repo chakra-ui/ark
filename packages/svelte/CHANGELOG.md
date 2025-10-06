@@ -33,6 +33,8 @@ const service = useMachine(pagination.machine, {
 
 ### Fixed
 
+- **Select**: Fix issue where `Select.HiddenSelect` doesn't emit correct values when using custom objects with `itemToValue`
+
 - **Field**: Fix issue where `bind:value` doesn't work correctly in `Field.Textarea`, `Field.Input`, and `Field.Select`
   components
 
