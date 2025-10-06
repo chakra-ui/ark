@@ -80,16 +80,19 @@ Then use in styles:
 
 ## Styling with Panda CSS
 
-[Panda CSS](https://panda-css.com) is a build-time CSS-in-JS framework that integrates seamlessly with Ark UI, providing
-an efficient styling solution.
+[Panda CSS](https://panda-css.com) is a best-in-class CSS-in-JS framework that integrates seamlessly with Ark UI,
+providing an efficient styling solution.
 
 ### Styling a part
 
 Panda offers various ways to write styles, but in the context of Ark UI, we recommend using the `defineSlotRecipe`
 function to style a component with its different parts and variants.
 
+> **Important:** When importing anatomy objects, we recommend using the `@ark-ui/<framework>/anatomy` entrypoint (e.g.,
+> `@ark-ui/react/anatomy`) instead of the main package export to avoid potential build and import errors.
+
 ```ts
-import { accordionAnatomy } from '@ark-ui/anatomy'
+import { accordionAnatomy } from '@ark-ui/react/anatomy'
 import { defineSlotRecipe } from '@pandacss/dev'
 
 export const accordionStyles = defineSlotRecipe({
@@ -111,7 +114,7 @@ To style a component based on its state, you can use built in
 [conditions](https://panda-css.com/docs/customization/conditions) in Panda CSS.
 
 ```ts
-import { accordionAnatomy } from '@ark-ui/anatomy'
+import { accordionAnatomy } from '@ark-ui/react/anatomy'
 import { defineSlotRecipe } from '@pandacss/dev'
 
 export const accordionStyles = defineSlotRecipe({
