@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve } from 'node:path'
 import { findPackages } from 'find-packages'
 import { findUpSync } from 'find-up'
@@ -52,7 +52,9 @@ async function main() {
     writeFileSync('../package.json', JSON.stringify(packageJson, null, 2))
 
     const oldLockFilePath = resolve('../bun.lock.copy')
-    spawnSync('mv', [oldLockFilePath, lockFilePath], { stdio: 'inherit' })
+    if (existsSync(oldLockFilePath)) {
+      spawnSync('mv', [oldLockFilePath, lockFilePath], { stdio: 'inherit' })
+    }
 
     //
   } else {
@@ -64,11 +66,10 @@ async function main() {
       stdio: 'inherit',
     })
   }
-  spawnSync('rm', ['-rf', 'node_modules', '**/node_modules', '**/*/node_modules'], {
-    stdio: 'inherit',
-  })
 
-  spawnSync('bun', ['install', '--force'], { stdio: 'inherit' })
+  spawnSync('bun', ['run', 'clean'], { stdio: 'inherit', cwd: resolve('..') })
+
+  spawnSync('bun', ['install', '--force'], { stdio: 'inherit', cwd: resolve('..') })
 }
 
 main().catch((err) => {

@@ -15,7 +15,7 @@
     "check:anatomy": "bun scripts check:anatomy",
     "check:exports": "bun scripts check:exports",
     "check:zag": "bun scripts check:zag",
-    "clean": "find . -name 'node_modules' -type d -exec rm -rf {} +",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf {} \\;",
     "exports:sync": "bun scripts exports:sync",
     "local:sync": "bun scripts local:sync",
     "local:revert": "bun scripts local:sync --revert",
