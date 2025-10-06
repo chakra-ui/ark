@@ -50,6 +50,51 @@ property.
 
 <Example id="group" />
 
+## Guides
+
+### Type-Safety
+
+The `Listbox.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full type
+safety for collection items.
+
+This is particularly useful when building reusable listbox components with custom props and consistent styling.
+
+```tsx
+import { Listbox as ArkListbox, type CollectionItem } from '@ark-ui/react/listbox'
+import { createListCollection } from '@ark-ui/react/collection'
+
+interface ListboxProps<T extends CollectionItem> extends ArkListbox.RootProps<T> {}
+
+const Listbox: ArkListbox.RootComponent = (props) => {
+  return <ArkListbox.Root {...props}>{/* ... */}</ArkListbox.Root>
+}
+```
+
+Then, you can use the `Listbox` component as follows:
+
+```tsx
+const App = () => {
+  const collection = createListCollection({
+    initialItems: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte' },
+    ],
+  })
+  return (
+    <Listbox
+      collection={collection}
+      onValueChange={(e) => {
+        // this will be strongly typed Array<{ label: string, value: string }>
+        console.log(e.items)
+      }}
+    >
+      {/* ... */}
+    </Listbox>
+  )
+}
+```
+
 ## API Reference
 
 <ComponentTypes id="listbox" />

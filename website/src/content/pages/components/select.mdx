@@ -91,6 +91,49 @@ DOM. This can improve performance by only rendering the content when needed.
 
 ## Guides
 
+### Type-Safety
+
+The `Select.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full type
+safety for collection items.
+
+This is particularly useful when building reusable select components with custom props and consistent styling.
+
+```tsx
+import { Select as ArkSelect, type CollectionItem } from '@ark-ui/react/select'
+import { createListCollection } from '@ark-ui/react/collection'
+
+interface SelectProps<T extends CollectionItem> extends ArkSelect.RootProps<T> {}
+
+const Select: ArkSelect.RootComponent = (props) => {
+  return <ArkSelect.Root {...props}>{/* ... */}</ArkSelect.Root>
+}
+```
+
+Then, you can use the `Select` component as follows:
+
+```tsx
+const App = () => {
+  const collection = createListCollection({
+    initialItems: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte' },
+    ],
+  })
+  return (
+    <Select
+      collection={collection}
+      onValueChange={(e) => {
+        // this will be strongly typed Array<{ label: string, value: string }>
+        console.log(e.items)
+      }}
+    >
+      {/* ... */}
+    </Select>
+  )
+}
+```
+
 ### Usage in Popover or Dialog
 
 When using the Select component within a `Popover` or `Dialog`, avoid rendering its content within a `Portal` or

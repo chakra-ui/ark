@@ -86,6 +86,51 @@ prop to render the tree items as links, passing the `href` prop to a `<a>` eleme
 
 <Example id="links" />
 
+## Guides
+
+### Type-Safety
+
+The `TreeView.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full type
+safety for tree nodes.
+
+This is particularly useful when building reusable tree view components with custom props and consistent styling.
+
+```tsx
+import { TreeView as ArkTreeView, type TreeNode } from '@ark-ui/react/tree-view'
+import { createTreeCollection } from '@ark-ui/react/collection'
+
+interface TreeViewProps<T extends TreeNode> extends ArkTreeView.RootProps<T> {}
+
+const TreeView: ArkTreeView.RootComponent = (props) => {
+  return <ArkTreeView.Root {...props}>{/* ... */}</ArkTreeView.Root>
+}
+```
+
+Then, you can use the `TreeView` component as follows:
+
+```tsx
+const App = () => {
+  const collection = createTreeCollection({
+    initialItems: [
+      { id: '1', label: 'React', children: [] },
+      { id: '2', label: 'Vue', children: [] },
+      { id: '3', label: 'Svelte', children: [] },
+    ],
+  })
+  return (
+    <TreeView
+      collection={collection}
+      onSelectionChange={(e) => {
+        // this will be strongly typed Array<{ id: string, label: string, children: [] }>
+        console.log(e.value)
+      }}
+    >
+      {/* ... */}
+    </TreeView>
+  )
+}
+```
+
 ## API Reference
 
 <ComponentTypes id="tree-view" />

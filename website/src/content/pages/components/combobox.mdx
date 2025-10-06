@@ -93,7 +93,8 @@ functionality.
 
 ### Creatable Options
 
-Allow users to create new options when their search doesn't match any existing items. This is useful for tags, categories, or other custom values.
+Allow users to create new options when their search doesn't match any existing items. This is useful for tags,
+categories, or other custom values.
 
 <Example id="creatable" />
 
@@ -122,6 +123,49 @@ const { collection } = useListCollection({
 <Example id="custom-object" />
 
 ## Guides
+
+### Type-Safety
+
+The `Combobox.RootComponent` type enables you to create closed, strongly typed wrapper components that maintain full
+type safety for collection items.
+
+This is particularly useful when building reusable combobox components with custom props and consistent styling.
+
+```tsx
+import { Combobox as ArkCombobox, type CollectionItem } from '@ark-ui/react/combobox'
+import { useListCollection } from '@ark-ui/react/collection'
+
+interface ComboboxProps<T extends CollectionItem> extends ArkCombobox.RootProps<T> {}
+
+const Combobox: ArkCombobox.RootComponent = (props) => {
+  return <ArkCombobox.Root {...props}>{/* ... */}</ArkCombobox.Root>
+}
+```
+
+Then, you can use the `Combobox` component as follows:
+
+```tsx
+const App = () => {
+  const { collection } = useListCollection({
+    initialItems: [
+      { label: 'React', value: 'react' },
+      { label: 'Vue', value: 'vue' },
+      { label: 'Svelte', value: 'svelte' },
+    ],
+  })
+  return (
+    <Combobox
+      collection={collection}
+      onValueChange={(e) => {
+        // this will be strongly typed Array<{ label: string, value: string }>
+        console.log(e.items)
+      }}
+    >
+      {/* ... */}
+    </Combobox>
+  )
+}
+```
 
 ### Limit Large Datasets
 
