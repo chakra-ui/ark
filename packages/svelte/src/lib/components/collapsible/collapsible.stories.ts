@@ -1,10 +1,14 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import DisabledExample from './examples/disabled.svelte'
 import InitialOpenExample from './examples/initial-open.svelte'
 import LazyMountAndUnmountOnExitExample from './examples/lazy-mount-and-unmount-on-exit.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
+import NestedCollapsibleExample from './examples/nested-collapsible.svelte'
 import OnExitCompleteExample from './examples/on-exit-complete.svelte'
+import PartialCollapseExample from './examples/partial-collapse.svelte'
+import ProgrammaticOpenExample from './examples/programmatic-open.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import UnmountOnExitExample from './examples/unmount-on-exit.svelte'
 
@@ -26,6 +30,12 @@ export const Controlled = {
   }),
 }
 
+export const Disabled = {
+  render: () => ({
+    Component: DisabledExample,
+  }),
+}
+
 export const InitialOpen = {
   render: () => ({
     Component: InitialOpenExample,
@@ -35,6 +45,12 @@ export const InitialOpen = {
 export const LazyMount = {
   render: () => ({
     Component: LazyMountExample,
+  }),
+}
+
+export const NestedCollapsible = {
+  render: () => ({
+    Component: NestedCollapsibleExample,
   }),
 }
 
@@ -53,6 +69,18 @@ export const LazyMountAndUnmountOnExit = {
 export const OnExitComplete = {
   render: () => ({
     Component: OnExitCompleteExample,
+  }),
+}
+
+export const PartialCollapse = {
+  render: () => ({
+    Component: PartialCollapseExample,
+  }),
+}
+
+export const ProgrammaticOpen = {
+  render: () => ({
+    Component: ProgrammaticOpenExample,
   }),
 }
 

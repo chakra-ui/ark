@@ -1,13 +1,13 @@
 <script lang="ts">
   import { Collapsible } from '@ark-ui/svelte/collapsible'
-  import { ChevronRightIcon } from 'lucide-svelte'
+  import { ChevronRight } from 'lucide-svelte'
 </script>
 
-<Collapsible.Root>
+<Collapsible.Root disabled>
   <Collapsible.Trigger>
     Toggle
     <Collapsible.Indicator>
-      <ChevronRightIcon />
+      <ChevronRight />
     </Collapsible.Indicator>
   </Collapsible.Trigger>
   <Collapsible.Content>Content</Collapsible.Content>

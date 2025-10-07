@@ -28,7 +28,9 @@ packages/{framework}/src/components/{component-name}/
 
 ## Creating New Examples
 
-When creating a new example for a component, you must update the following files:
+**IMPORTANT: When adding examples, ALL steps below must be completed. Missing any step means the example is incomplete.**
+
+When creating a new example for a component, you **MUST** update the following files:
 
 1. **Create example files for all frameworks**:
    - `packages/react/src/components/{component}/examples/{example-name}.tsx`
@@ -36,14 +38,16 @@ When creating a new example for a component, you must update the following files
    - `packages/vue/src/components/{component}/examples/{example-name}.vue`
    - `packages/svelte/src/lib/components/{component}/examples/{example-name}.svelte`
 
-2. **Update Storybook stories for all frameworks**:
-   - `packages/react/src/components/{component}/{component}.stories.tsx` - Add export
-   - `packages/solid/src/components/{component}/{component}.stories.tsx` - Add export
-   - `packages/vue/src/components/{component}/{component}.stories.vue` - Add import and variant
-   - `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import and export
+2. **Update Storybook stories for all frameworks** (REQUIRED - examples won't appear without this):
+   - `packages/react/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
+   - `packages/solid/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
+   - `packages/vue/src/components/{component}/{component}.stories.vue` - Add import and `<Variant>` in alphabetical order
+   - `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import and export in alphabetical order
 
-3. **Update component documentation**:
+3. **Update component documentation** (if applicable):
    - `website/src/content/pages/components/{component}.mdx` - Add `<Example id="{example-name}" />` with description
+
+**Note**: Steps 1 and 2 are MANDATORY. Without updating the stories files, the examples will not be visible in Storybook.
 
 ### Example Workflow
 

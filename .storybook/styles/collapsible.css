@@ -1,22 +1,36 @@
-@keyframes slideDown {
+@keyframes fadeIn {
   from {
-    opacity: 0.01;
-    height: 0;
+    opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes expandHeight {
+  from {
+    height: var(--collapsed-height, 0);
+  }
+  to {
     height: var(--height);
   }
 }
 
-@keyframes slideUp {
+@keyframes collapseHeight {
   from {
-    opacity: 1;
     height: var(--height);
   }
   to {
-    opacity: 0.01;
-    height: 0;
+    height: var(--collapsed-height, 0);
   }
 }
 
@@ -25,12 +39,45 @@
   max-width: 400px;
   background-color: cadetblue;
   color: white;
+
+  &[data-state='open'] {
+    animation-name: fadeIn, expandHeight;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+
+    &[data-has-collapsed-size] {
+      animation-name: expandHeight;
+    }
+  }
+
+  &[data-state='closed'] {
+    animation-name: fadeOut, collapseHeight;
+    animation-duration: 200ms;
+    animation-timing-function: ease;
+
+    &[data-has-collapsed-size] {
+      animation-name: collapseHeight;
+    }
+  }
+
+  > * {
+    margin: 12px;
+  }
 }
 
-[data-scope='collapsible'][data-part='content'][data-state='open'] {
-  animation: slideDown 250ms cubic-bezier(0, 0, 0.38, 0.9);
+[data-scope='collapsible'][data-part='indicator'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms;
+
+  &[data-state='open'] {
+    transform: rotate(90deg);
+  }
 }
 
-[data-scope='collapsible'][data-part='content'][data-state='closed'] {
-  animation: slideUp 200ms cubic-bezier(0, 0, 0.38, 0.9);
+[data-scope='collapsible'][data-part='trigger'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }

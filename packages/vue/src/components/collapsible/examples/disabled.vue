@@ -1,8 +1,10 @@
-import { Collapsible } from '@ark-ui/react/collapsible'
-import { ChevronRightIcon } from 'lucide-react'
+<script setup lang="ts">
+import { Collapsible } from '@ark-ui/vue/collapsible'
+import { ChevronRightIcon } from 'lucide-vue-next'
+</script>
 
-export const InitialOpen = () => (
-  <Collapsible.Root defaultOpen>
+<template>
+  <Collapsible.Root disabled>
     <Collapsible.Trigger>
       Toggle
       <Collapsible.Indicator>
@@ -11,4 +13,4 @@ export const InitialOpen = () => (
     </Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>
   </Collapsible.Root>
-)
+</template>

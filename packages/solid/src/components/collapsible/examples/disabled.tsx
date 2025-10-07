@@ -1,8 +1,8 @@
-import { Collapsible } from '@ark-ui/react/collapsible'
-import { ChevronRightIcon } from 'lucide-react'
+import { Collapsible } from '@ark-ui/solid/collapsible'
+import { ChevronRightIcon } from 'lucide-solid'
 
-export const InitialOpen = () => (
-  <Collapsible.Root defaultOpen>
+export const Disabled = () => (
+  <Collapsible.Root disabled>
     <Collapsible.Trigger>
       Toggle
       <Collapsible.Indicator>

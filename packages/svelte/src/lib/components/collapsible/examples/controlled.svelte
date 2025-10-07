@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Collapsible } from '@ark-ui/svelte/collapsible'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronRightIcon } from 'lucide-svelte'
 
   let open = $state(false)
 </script>
@@ -14,7 +14,7 @@
     <Collapsible.Trigger>
       Toggle (controlled: {open ? 'open' : 'closed'})
       <Collapsible.Indicator>
-        <ChevronDownIcon />
+        <ChevronRightIcon />
       </Collapsible.Indicator>
     </Collapsible.Trigger>
     <Collapsible.Content>This collapsible is controlled with bind:open</Collapsible.Content>

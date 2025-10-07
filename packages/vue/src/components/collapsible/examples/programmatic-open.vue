@@ -6,7 +6,21 @@ const collapsible = useCollapsible()
 </script>
 
 <template>
-  <span>{{ collapsible.visible ? 'Visible' : 'Hidden' }}</span>
+  <div>
+    <p>
+      Open:
+      <strong>{{ String(collapsible.open) }}</strong>
+    </p>
+    <p>
+      Visible:
+      <strong>{{ String(collapsible.visible) }}</strong>
+    </p>
+  </div>
+
+  <div style="display: flex; gap: 8px; margin-top: 8px">
+    <button type="button" @click="collapsible.setOpen(true)">Open</button>
+    <button type="button" @click="collapsible.setOpen(false)">Close</button>
+  </div>
 
   <Collapsible.RootProvider :value="collapsible">
     <Collapsible.Trigger>

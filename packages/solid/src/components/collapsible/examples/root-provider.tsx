@@ -1,5 +1,5 @@
 import { Collapsible, useCollapsible } from '@ark-ui/solid/collapsible'
-import { ChevronDownIcon } from 'lucide-solid'
+import { ChevronRightIcon } from 'lucide-solid'
 
 export const RootProvider = () => {
   const collapsible = useCollapsible()
@@ -12,7 +12,7 @@ export const RootProvider = () => {
         <Collapsible.Trigger>
           Toggle
           <Collapsible.Indicator>
-            <ChevronDownIcon />
+            <ChevronRightIcon />
           </Collapsible.Indicator>
         </Collapsible.Trigger>
         <Collapsible.Content>Content</Collapsible.Content>

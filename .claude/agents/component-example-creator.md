@@ -22,6 +22,8 @@ creating clear, comprehensive examples that demonstrate component capabilities.
 
 ## Implementation Workflow
 
+**CRITICAL: Every example MUST include ALL steps below. An example is incomplete if any step is skipped.**
+
 When creating examples for a component:
 
 1. **Analyze Component API**: First, examine the component's TypeScript types, props interface, and existing
@@ -41,13 +43,18 @@ When creating examples for a component:
 4. **Implement Across Frameworks**: Create examples for ALL supported frameworks (React, Solid, Svelte, Vue),
    maintaining API parity and following framework-specific patterns documented in @.claude/docs/framework_patterns.md.
 
-5. **Update Stories File**: Add or modify stories in the component's `.stories.tsx` file:
-   - Use clear, descriptive story names
-   - Organize stories logically (Basic → Variants → Advanced)
-   - Include controls for interactive props when appropriate
-   - Add accessibility annotations
+5. **Update Stories Files** (MANDATORY - examples won't appear in Storybook without this):
+   - **React**: `packages/react/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
+   - **Solid**: `packages/solid/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
+   - **Vue**: `packages/vue/src/components/{component}/{component}.stories.vue` - Add import AND `<Variant>` in alphabetical order
+   - **Svelte**: `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import AND export in alphabetical order
 
-6. **Update Documentation**: Ensure the component's documentation includes:
+   Each framework has a different pattern:
+   - React/Solid: Add a single line export (e.g., `export { Disabled } from './examples/disabled'`)
+   - Vue: Add import in `<script setup>` AND add `<Variant>` in `<template>` section
+   - Svelte: Add import statement AND export const with Component wrapper
+
+6. **Update Documentation** (if applicable): Ensure the component's documentation includes:
    - Code snippets matching the new examples
    - Clear descriptions of when to use each variant
    - Accessibility notes

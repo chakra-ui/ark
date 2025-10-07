@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Collapsible, useCollapsible } from '@ark-ui/svelte/collapsible'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronRightIcon } from 'lucide-svelte'
 
   const id = $props.id()
   const collapsible = useCollapsible({ id })
@@ -14,7 +14,7 @@
     <Collapsible.Trigger>
       Toggle (with external control)
       <Collapsible.Indicator>
-        <ChevronDownIcon />
+        <ChevronRightIcon />
       </Collapsible.Indicator>
     </Collapsible.Trigger>
     <Collapsible.Content>This collapsible is controlled externally</Collapsible.Content>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Collapsible } from '@ark-ui/vue/collapsible'
-import { ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronRightIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 
 const open = ref(false)
@@ -11,7 +11,7 @@ const open = ref(false)
     <Collapsible.Trigger>
       Toggle
       <Collapsible.Indicator>
-        <ChevronDownIcon />
+        <ChevronRightIcon />
       </Collapsible.Indicator>
     </Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>

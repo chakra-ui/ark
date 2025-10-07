@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useForwardPropsEmits } from '@ark-ui/vue'
 import { Collapsible, type CollapsibleRootEmits, type CollapsibleRootProps } from '@ark-ui/vue/collapsible'
-import { ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronRightIcon } from 'lucide-vue-next'
 
 const props = defineProps<CollapsibleRootProps>()
 const emits = defineEmits<CollapsibleRootEmits>()
@@ -13,7 +13,7 @@ const localProps = useForwardPropsEmits(props, emits)
     <Collapsible.Trigger>
       Toggle
       <Collapsible.Indicator>
-        <ChevronDownIcon />
+        <ChevronRightIcon />
       </Collapsible.Indicator>
     </Collapsible.Trigger>
     <Collapsible.Content>Content</Collapsible.Content>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Collapsible } from '@ark-ui/svelte/collapsible'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronRightIcon } from 'lucide-svelte'
 
   let logs = $state<string[]>([])
 </script>
@@ -10,7 +10,7 @@
     <Collapsible.Trigger>
       Toggle (with exit callback)
       <Collapsible.Indicator>
-        <ChevronDownIcon />
+        <ChevronRightIcon />
       </Collapsible.Indicator>
     </Collapsible.Trigger>
     <Collapsible.Content>This content has an exit callback</Collapsible.Content>
