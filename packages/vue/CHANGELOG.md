@@ -23,7 +23,13 @@ const service = useMachine(pagination.machine, {
 
 - **Combobox**: Add `ComboboxRootComponentProps` type export for better component type composition.
 
-- **TreeView**: Add `TreeViewRootComponentProps` type export for better component type composition.
+- **TreeView**:
+  - Add `TreeViewRootComponentProps` type export for better component type composition.
+  - (Experimental) Add support for node renaming functionality:
+    - Add `TreeViewNodeRenameInput` component for inline node label editing
+    - Add `canRename` prop to control which nodes can be renamed
+    - Add `renameStart`, `beforeRename`, and `renameComplete` event emitters for rename lifecycle
+    - Add `CheckedChangeDetails`, `LoadChildrenErrorDetails`, `RenameStartDetails`, and `RenameCompleteDetails` type exports
 
 ### Fixed
 

@@ -72,6 +72,10 @@ export interface RootProps<T extends TreeNode> {
    * A function that loads the children of a node.
    */
   loadChildren?: (details: treeView.LoadChildrenDetails<T>) => Promise<T[]>
+  /**
+   * Function to determine if a node can be renamed
+   */
+  canRename?: (node: T, indexPath: number[]) => boolean
 }
 
 export type RootEmits<T extends TreeNode> = {
@@ -99,6 +103,18 @@ export type RootEmits<T extends TreeNode> = {
    * A function that is called when there is an error loading the children.
    */
   loadChildrenError: [details: treeView.LoadChildrenErrorDetails<T>]
+  /**
+   * Called when a node starts being renamed
+   */
+  renameStart: [details: treeView.RenameStartDetails<T>]
+  /**
+   * Called before a rename is completed. Return false to prevent the rename.
+   */
+  beforeRename: [details: treeView.RenameCompleteDetails]
+  /**
+   * Called when a node label rename is completed
+   */
+  renameComplete: [details: treeView.RenameCompleteDetails]
   /**
    * Called when the expanded value changes
    */

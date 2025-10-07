@@ -21,6 +21,7 @@ export interface TreeViewRootProps<T extends TreeNode> extends HTMLProps<'div'>,
 const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: React.Ref<HTMLDivElement>) => {
   const [renderStrategyProps, treeViewProps] = splitRenderStrategyProps(props)
   const [useTreeViewProps, localProps] = createSplitProps<UseTreeViewProps<T>>()(treeViewProps, [
+    'canRename',
     'checkedValue',
     'collection',
     'defaultCheckedValue',
@@ -33,11 +34,14 @@ const TreeViewImpl = <T extends TreeNode>(props: TreeViewRootProps<T>, ref: Reac
     'id',
     'ids',
     'loadChildren',
+    'onBeforeRename',
     'onCheckedChange',
     'onExpandedChange',
     'onFocusChange',
     'onLoadChildrenComplete',
     'onLoadChildrenError',
+    'onRenameComplete',
+    'onRenameStart',
     'onSelectionChange',
     'selectedValue',
     'selectionMode',

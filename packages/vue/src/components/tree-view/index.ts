@@ -1,11 +1,15 @@
 export type {
+  CheckedChangeDetails as TreeViewCheckedChangeDetails,
   ExpandedChangeDetails as TreeViewExpandedChangeDetails,
   FocusChangeDetails as TreeViewFocusChangeDetails,
-  SelectionChangeDetails as TreeViewSelectionChangeDetails,
-  LoadChildrenDetails as TreeViewLoadChildrenDetails,
   LoadChildrenCompleteDetails as TreeViewLoadChildrenCompleteDetails,
-  NodeState as TreeViewNodeState,
+  LoadChildrenDetails as TreeViewLoadChildrenDetails,
+  LoadChildrenErrorDetails as TreeViewLoadChildrenErrorDetails,
   NodeProps as TreeViewNodeProps,
+  NodeState as TreeViewNodeState,
+  RenameCompleteDetails as TreeViewRenameCompleteDetails,
+  RenameStartDetails as TreeViewRenameStartDetails,
+  SelectionChangeDetails as TreeViewSelectionChangeDetails,
 } from '@zag-js/tree-view'
 export { createFileTreeCollection, createTreeCollection, type TreeCollection, type TreeNode } from '../collection'
 export {
@@ -66,6 +70,11 @@ export {
   type TreeViewNodeCheckboxIndicatorBaseProps,
   type TreeViewNodeCheckboxIndicatorProps,
 } from './tree-view-node-checkbox-indicator.vue'
+export {
+  default as TreeViewNodeRenameInput,
+  type TreeViewNodeRenameInputBaseProps,
+  type TreeViewNodeRenameInputProps,
+} from './tree-view-node-rename-input.vue'
 export { default as TreeViewNodeContext, type TreeViewNodeContextProps } from './tree-view-node-context.vue'
 export {
   default as TreeViewNodeProvider,

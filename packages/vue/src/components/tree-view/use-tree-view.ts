@@ -61,6 +61,18 @@ export const useTreeView = <T extends TreeNode>(
         emit?.('loadChildrenError', details)
         localeProps.onLoadChildrenError?.(details)
       },
+      onRenameStart: (details) => {
+        emit?.('renameStart', details)
+        localeProps.onRenameStart?.(details)
+      },
+      onBeforeRename: (details) => {
+        emit?.('beforeRename', details)
+        return localeProps.onBeforeRename?.(details) ?? true
+      },
+      onRenameComplete: (details) => {
+        emit?.('renameComplete', details)
+        localeProps.onRenameComplete?.(details)
+      },
     }
   })
 

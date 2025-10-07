@@ -1,11 +1,15 @@
 export type {
+  CheckedChangeDetails,
   ExpandedChangeDetails,
   FocusChangeDetails,
-  SelectionChangeDetails,
-  LoadChildrenDetails,
   LoadChildrenCompleteDetails,
-  NodeState,
+  LoadChildrenDetails,
+  LoadChildrenErrorDetails,
   NodeProps,
+  NodeState,
+  RenameCompleteDetails,
+  RenameStartDetails,
+  SelectionChangeDetails,
 } from '@zag-js/tree-view'
 export {
   TreeViewBranch as Branch,
@@ -100,3 +104,8 @@ export {
   type TreeViewNodeCheckboxIndicatorBaseProps as NodeCheckboxIndicatorBaseProps,
   type TreeViewNodeCheckboxIndicatorProps as NodeCheckboxIndicatorProps,
 } from './tree-view-node-checkbox-indicator'
+export {
+  TreeViewNodeRenameInput as NodeRenameInput,
+  type TreeViewNodeRenameInputBaseProps as NodeRenameInputBaseProps,
+  type TreeViewNodeRenameInputProps as NodeRenameInputProps,
+} from './tree-view-node-rename-input'
