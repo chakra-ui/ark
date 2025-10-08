@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.11.0] - 2025-10-08
+
 ### Added
 
 - **Collapsible**: Add support for `collapsedHeight` and `collapsedWidth` props to control the dimensions of the
