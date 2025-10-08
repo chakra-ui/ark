@@ -5,8 +5,8 @@
   const checkbox = useCheckbox()
 </script>
 
-<button type="button" onclick={() => checkbox.setChecked(true)}>Check</button>
-<button type="button" onclick={() => checkbox.setChecked(false)}>Uncheck</button>
+<button type="button" onclick={() => checkbox().setChecked(true)}>Check</button>
+<button type="button" onclick={() => checkbox().setChecked(false)}>Uncheck</button>
 
 <Checkbox.RootProvider value={checkbox}>
   <Checkbox.Label>Checkbox</Checkbox.Label>
