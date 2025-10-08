@@ -46,8 +46,10 @@ When creating examples for a component:
 5. **Update Stories Files** (MANDATORY - examples won't appear in Storybook without this):
    - **React**: `packages/react/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
    - **Solid**: `packages/solid/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
-   - **Vue**: `packages/vue/src/components/{component}/{component}.stories.vue` - Add import AND `<Variant>` in alphabetical order
-   - **Svelte**: `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import AND export in alphabetical order
+   - **Vue**: `packages/vue/src/components/{component}/{component}.stories.vue` - Add import AND `<Variant>` in
+     alphabetical order
+   - **Svelte**: `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import AND export in
+     alphabetical order
 
    Each framework has a different pattern:
    - React/Solid: Add a single line export (e.g., `export { Disabled } from './examples/disabled'`)
@@ -59,6 +61,8 @@ When creating examples for a component:
    - Clear descriptions of when to use each variant
    - Accessibility notes
    - Links to related components or patterns
+
+7. **Checking for errors**: Never run typecheck or linting when creating examples. Just keep going.
 
 ## Code Quality Standards
 
