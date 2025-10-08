@@ -35,18 +35,30 @@ Use the `checked` and `onCheckedChange` props to programatically control the che
 
 <Example id="controlled" />
 
+### Default Checked
+
+Use the `defaultChecked` prop to set the initial checked state in an uncontrolled manner. The checkbox will manage its
+own state internally.
+
+<Example id="default-checked" />
+
+### Disabled
+
+Use the `disabled` prop to make the checkbox non-interactive.
+
+<Example id="disabled" />
+
 ### Indeterminate
 
 Use the `indeterminate` prop to create a checkbox in an indeterminate state (partially checked).
 
 <Example id="indeterminate" />
 
-### Checkbox Group
+### Programmatic Control
 
-Ark provides a `Checkbox.Group` component to manage a group of checkboxes. The `Checkbox.Group` component manages the
-state of the checkboxes and provides a way to access the checked values:
+Use the `useCheckbox` hook with `setChecked()` to programmatically control the checkbox state.
 
-<Example id="group" />
+<Example id="programmatic-control" />
 
 ### Access Checkbox state
 
@@ -61,6 +73,13 @@ accessibility.
 
 <Example id="with-field" />
 
+### Form
+
+Pass the `name` and `value` props to the `Checkbox.Root` component to make the checkbox part of a form. The checkbox's
+value will be submitted with the form when the user submits it.
+
+<Example id="with-form" />
+
 ### Root Provider
 
 Use the `useCheckbox` hook to create the checkbox store and pass it to the `Checkbox.RootProvider` component. This
@@ -69,6 +88,57 @@ allows you to have maximum control over the checkbox programmatically.
 <Example id="root-provider" />
 
 > If you're using the `Checkbox.RootProvider` component, you don't need to use the `Checkbox.Root` component.
+
+### Group
+
+Use the `Checkbox.Group` component to manage a group of checkboxes. The `Checkbox.Group` component manages the state of
+the checkboxes and provides a way to access the checked values.
+
+<Example id="group" />
+
+### Group Controlled
+
+Use the `value` and `onValueChange` props to programmatically control the checkbox group's state. This example
+demonstrates how to manage selected checkboxes in an array and display the current selection.
+
+<Example id="group-controlled" />
+
+### Group Provider
+
+Use the `useCheckboxGroup` hook to create the checkbox group store and pass it to the `Checkbox.GroupProvider`
+component. This provides maximum control over the group programmatically, similar to how `RootProvider` works for
+individual checkboxes.
+
+<Example id="group-provider" />
+
+### Group + Form
+
+Use the `Checkbox.Group` component within a form to handle multiple checkbox values with form submission. The `name`
+prop ensures all selected values are collected as an array when the form is submitted using `FormData.getAll()`.
+
+<Example id="group-with-form" />
+
+### Group + Invalid
+
+Use the `invalid` prop on `Checkbox.Group` to mark the entire group as invalid for validation purposes. This applies the
+invalid state to all checkboxes within the group.
+
+<Example id="group-with-invalid" />
+
+### Group + Select All
+
+Implement a "select all" checkbox that controls all checkboxes within a group. The parent checkbox automatically shows
+an indeterminate state when some (but not all) items are selected, and becomes fully checked when all items are
+selected.
+
+<Example id="group-with-select-all" />
+
+### Group + Fieldset
+
+Use the `Fieldset` component with `Checkbox.Group` to provide semantic grouping with legend, helper text, and error text
+support.
+
+<Example id="group-with-fieldset" />
 
 ## API Reference
 
