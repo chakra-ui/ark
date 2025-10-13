@@ -33,9 +33,6 @@
     "setup": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull website/.env",
     "setup:prod": "vc link --scope=chakra-ui -p ark-docs -y && vc env pull --environment production website/.env"
   },
-  "dependencies": {
-    "root": "."
-  },
   "devDependencies": {
     "entities": "7.0.0",
     "@biomejs/biome": "2.2.5",
@@ -49,7 +46,7 @@
     "typescript": "5.9.3",
     "vercel": "48.2.0"
   },
-  "packageManager": "bun@1.2.21",
+  "packageManager": "bun@1.3.0",
   "trustedDependencies": [
     "@ark-ui/website"
   ],
