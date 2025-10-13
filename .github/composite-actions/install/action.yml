@@ -5,6 +5,8 @@ runs:
   using: composite
   steps:
     - uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: 1.2.21
 
     - name: Setup Git User
       shell: bash
