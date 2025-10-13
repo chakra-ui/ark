@@ -200,6 +200,7 @@
   },
   "devDependencies": {
     "@storybook/addon-a11y": "9.1.10",
+    "@storybook/svelte": "9.1.10",
     "@storybook/sveltekit": "9.1.10",
     "@sveltejs/adapter-auto": "6.1.1",
     "@sveltejs/kit": "2.44.0",
