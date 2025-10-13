@@ -1,13 +1,33 @@
 import { TagsInput } from '@ark-ui/react/tags-input'
 import { XIcon } from 'lucide-react'
 
-export const Validated = () => {
+const TAG_PATTERN = /^[a-zA-Z0-9-]+$/
+
+const validateTag = (details: { value: string[]; inputValue: string }) => {
+  const { value, inputValue } = details
+
+  if (!inputValue || inputValue.trim() === '') {
+    return false
+  }
+
+  if (value.includes(inputValue)) {
+    return false
+  }
+
+  if (inputValue.length < 3) {
+    return false
+  }
+
+  if (!TAG_PATTERN.test(inputValue)) {
+    return false
+  }
+
+  return true
+}
+
+export const Validation = () => {
   return (
-    <TagsInput.Root
-      validate={(details) => {
-        return !details.value.includes(details.inputValue)
-      }}
-    >
+    <TagsInput.Root validate={validateTag}>
       <TagsInput.Context>
         {(tagsInput) => (
           <>
@@ -24,11 +44,11 @@ export const Validated = () => {
                   <TagsInput.ItemInput />
                 </TagsInput.Item>
               ))}
+              <TagsInput.Input placeholder="Add Framework (min 3 chars, alphanumeric)" />
+              <TagsInput.ClearTrigger>
+                <XIcon />
+              </TagsInput.ClearTrigger>
             </TagsInput.Control>
-            <TagsInput.Input placeholder="Add Framework" />
-            <TagsInput.ClearTrigger>
-              <XIcon />
-            </TagsInput.ClearTrigger>
           </>
         )}
       </TagsInput.Context>

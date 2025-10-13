@@ -3,13 +3,20 @@ import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import BlurBehaviorExample from './examples/blur-behavior.svelte'
 import ControlledExample from './examples/controlled.svelte'
+import ControlledInputValueExample from './examples/controlled-input-value.svelte'
+import DelimiterExample from './examples/delimiter.svelte'
+import DisabledExample from './examples/disabled.svelte'
 import DisabledEditingExample from './examples/disabled-editing.svelte'
 import InitialValueExample from './examples/initial-value.svelte'
+import InvalidExample from './examples/invalid.svelte'
+import MaxTagLengthExample from './examples/max-tag-length.svelte'
 import MaxWithOverflowExample from './examples/max-with-overflow.svelte'
 import OnEventExample from './examples/on-event.svelte'
 import PasteBehaviorExample from './examples/paste-behavior.svelte'
+import ProgrammaticControlExample from './examples/programmatic-control.svelte'
+import ReadonlyExample from './examples/readonly.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import ValidatedExample from './examples/validated.svelte'
+import ValidationExample from './examples/validation.svelte'
 import WithFieldExample from './examples/with-field.svelte'
 
 const meta: Meta = {
@@ -36,6 +43,24 @@ export const Controlled = {
   }),
 }
 
+export const ControlledInputValue = {
+  render: () => ({
+    Component: ControlledInputValueExample,
+  }),
+}
+
+export const Delimiter = {
+  render: () => ({
+    Component: DelimiterExample,
+  }),
+}
+
+export const Disabled = {
+  render: () => ({
+    Component: DisabledExample,
+  }),
+}
+
 export const DisabledEditing = {
   render: () => ({
     Component: DisabledEditingExample,
@@ -45,6 +70,18 @@ export const DisabledEditing = {
 export const InitialValue = {
   render: () => ({
     Component: InitialValueExample,
+  }),
+}
+
+export const Invalid = {
+  render: () => ({
+    Component: InvalidExample,
+  }),
+}
+
+export const MaxTagLength = {
+  render: () => ({
+    Component: MaxTagLengthExample,
   }),
 }
 
@@ -66,9 +103,21 @@ export const PasteBehavior = {
   }),
 }
 
-export const Validated = {
+export const ProgrammaticControl = {
   render: () => ({
-    Component: ValidatedExample,
+    Component: ProgrammaticControlExample,
+  }),
+}
+
+export const Readonly = {
+  render: () => ({
+    Component: ReadonlyExample,
+  }),
+}
+
+export const Validation = {
+  render: () => ({
+    Component: ValidationExample,
   }),
 }
 

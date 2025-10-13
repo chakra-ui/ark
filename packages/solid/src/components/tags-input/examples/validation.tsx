@@ -2,7 +2,7 @@ import { TagsInput } from '@ark-ui/solid/tags-input'
 import { XIcon } from 'lucide-solid'
 import { Index } from 'solid-js'
 
-export const Validated = () => {
+export const Validation = () => {
   return (
     <TagsInput.Root
       validate={(details) => {

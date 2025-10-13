@@ -20,22 +20,13 @@ Learn how to use the `TagsInput` component in your project. Let's take a look at
 
 <Example id="basic" />
 
-### Navigating and Editing tags
-
-When the input has an empty value or the caret is at the start position, the tags can be selected by using the arrow
-left and arrow right keys. When "visual" focus in on any tag:
-
-- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit mode, allowing the user change its value
-  and press <kbd>Enter</kbd> to commit the changes.
-- Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that has _visual_ focus.
-
-### Setting the initial tags
+### Initial tags
 
 To set the initial tag values, set the `defaultValue` prop.
 
 <Example id="initial-value" />
 
-### Limiting the number of tags
+### Max Tags
 
 To limit the number of tags within the component, you can set the `max` property to the limit you want. The default
 value is `Infinity`.
@@ -44,13 +35,67 @@ When the tag reaches the limit, new tags cannot be added except the `allowOverfl
 
 <Example id="max-with-overflow" />
 
+### Controlled
+
+Use the `value` and `onValueChange` props to programmatically control the tags input's state. This allows you to manage
+the tags array externally and respond to changes.
+
+<Example id="controlled" />
+
+### Controlled Input Value
+
+Use the `inputValue` and `onInputValueChange` props to control the text input field independently. This is useful for
+clearing the input or pre-filling it programmatically.
+
+<Example id="controlled-input-value" />
+
+### Custom Delimiter
+
+Use the `delimiter` prop with a regex pattern to specify multiple characters that can separate tags. By default, only
+the Enter key creates tags.
+
+<Example id="delimiter" />
+
+### Disabled
+
+Use the `disabled` prop to make the tags input non-interactive. Users won't be able to add, remove, or edit tags.
+
+<Example id="disabled" />
+
+### Invalid
+
+Use the `invalid` prop to mark the tags input as invalid for form validation purposes.
+
+<Example id="invalid" />
+
+### Max Tag Length
+
+Use the `maxLength` prop to limit the number of characters allowed per tag. This prevents users from creating overly
+long tags.
+
+<Example id="max-tag-length" />
+
+### Programmatic Control
+
+Use the `useTagsInput` hook with `RootProvider` to access the component's API methods like `addValue()`, `setValue()`,
+and `clearValue()` for full programmatic control.
+
+<Example id="programmatic-control" />
+
+### Read-only
+
+Use the `readOnly` prop to make tags visible but not editable. Users can view tags but cannot add, remove, or modify
+them.
+
+<Example id="readonly" />
+
 ### Validating Tags
 
 Before a tag is added, the `validate` function is called to determine whether to accept or reject a tag.
 
 A common use-case for validating tags is preventing duplicates or validating the data type.
 
-<Example id="validated" />
+<Example id="validation" />
 
 ### Blur behavior
 
@@ -106,6 +151,17 @@ You can leverage it to access the component state and methods from outside the t
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+## Guides
+
+### Navigating and Editing tags
+
+When the input has an empty value or the caret is at the start position, the tags can be selected by using the arrow
+left and arrow right keys. When "visual" focus in on any tag:
+
+- Pressing <kbd>Enter</kbd> or double-clicking on the tag will put it in edit mode, allowing the user change its value
+  and press <kbd>Enter</kbd> to commit the changes.
+- Pressing <kbd>Delete</kbd> or <kbd>Backspace</kbd> will delete the tag that has _visual_ focus.
 
 ## API Reference
 

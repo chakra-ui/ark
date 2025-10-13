@@ -1,0 +1,34 @@
+import { TagsInput } from '@ark-ui/react/tags-input'
+import { XIcon } from 'lucide-react'
+
+export const MaxTagLength = () => {
+  return (
+    <TagsInput.Root maxLength={10}>
+      <TagsInput.Context>
+        {(tagsInput) => (
+          <>
+            <TagsInput.Label>Frameworks (max 10 characters per tag)</TagsInput.Label>
+            <TagsInput.Control>
+              {tagsInput.value.map((value, index) => (
+                <TagsInput.Item key={index} index={index} value={value}>
+                  <TagsInput.ItemPreview>
+                    <TagsInput.ItemText>{value}</TagsInput.ItemText>
+                    <TagsInput.ItemDeleteTrigger>
+                      <XIcon />
+                    </TagsInput.ItemDeleteTrigger>
+                  </TagsInput.ItemPreview>
+                  <TagsInput.ItemInput />
+                </TagsInput.Item>
+              ))}
+            </TagsInput.Control>
+            <TagsInput.Input placeholder="Max 10 characters" />
+            <TagsInput.ClearTrigger>
+              <XIcon />
+            </TagsInput.ClearTrigger>
+          </>
+        )}
+      </TagsInput.Context>
+      <TagsInput.HiddenInput />
+    </TagsInput.Root>
+  )
+}
