@@ -1,3 +1,4 @@
+/// <reference types="@testing-library/jest-dom" />
 import '@testing-library/jest-dom'
 import { JSDOM } from 'jsdom'
 import ResizeObserver from 'resize-observer-polyfill'
@@ -18,7 +19,7 @@ window.URL.createObjectURL = () => 'https://i.pravatar.cc/300'
 window.URL.revokeObjectURL = () => {}
 
 // stub Array.prototype.toSorted (used in zag.js collection)
-// @ts-ignore
+// @ts-expect-error
 Array.prototype.toSorted = function () {
   return [...this].sort()
 }
