@@ -84,7 +84,7 @@
   "sideEffects": false,
   "dependencies": {
     "@internationalized/date": "3.10.0",
-    "@tanstack/vue-form": "1.23.5",
+    "@tanstack/vue-form": "1.23.7",
     "@zag-js/accordion": "1.26.1",
     "@zag-js/anatomy": "1.26.1",
     "@zag-js/angle-slider": "1.26.1",
@@ -147,7 +147,7 @@
     "@zag-js/vue": "1.26.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.5",
+    "@biomejs/biome": "2.2.6",
     "@histoire/plugin-vue": "0.17.17",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
@@ -164,14 +164,14 @@
     "histoire": "0.17.17",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
-    "lucide-vue-next": "0.544.0",
+    "lucide-vue-next": "0.545.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.9.3",
     "vite": "7.1.9",
     "vite-plugin-dts": "4.5.4",
     "vitest": "3.2.4",
     "vue": "3.5.22",
-    "vue-tsc": "3.1.0"
+    "vue-tsc": "3.1.1"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"
