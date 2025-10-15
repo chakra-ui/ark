@@ -1,5 +1,27 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Checkbox**
+  - Fix issue where setting initial checked state to `indeterminate` doesn't work
+  - Ensure `api.checkedState` returns the correct checked state (`boolean | "indeterminate"`)
+
+- **Collapsible**: Fix issue where `dir` prop value was hardcoded to `ltr` instead of using the provided value
+
+- **Combobox**: Fix issue where controlled single-select combobox does not propagate its initial value to `inputValue`
+
+- **Listbox**: Fix issue where pressing Enter key when no highlighted item still calls `event.preventDefault()`
+
+- **Radio Group**: Refactor to use `getBoundingClientRect()` for precise indicator positioning
+
+- **Slider**
+  - Fix issue where slider could stop abruptly when scrubbing thumb
+  - Fix issue where range slider thumbs become stuck when dragged to the same position without `minStepsBetweenThumbs`
+
+- **Tabs**: Refactor to use `getBoundingClientRect()` for precise indicator positioning
+
+- **Tags Input**: Fix issue where `maxLength` doesn't apply to the edit input as well
+
 ## [5.26.0] - 2025-10-08
 
 ### Added
