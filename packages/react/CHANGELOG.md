@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.26.1] - 2025-10-15
+
 ### Fixed
 
 - **Checkbox**
