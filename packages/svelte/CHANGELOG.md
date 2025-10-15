@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.11.1] - 2025-10-15
+
 ### Fixed
 
 - **Checkbox**
