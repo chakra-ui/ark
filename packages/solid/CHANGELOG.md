@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.26.2] - 2025-10-18
+
 ### Fixed
 
 - **Angle Slider**: Fix accessibility violation where the slider thumb element lacked an accessible name. The thumb now
