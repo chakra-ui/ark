@@ -2,11 +2,15 @@
 
 ### Fixed
 
-- **Angle Slider**: Fix accessibility violation where the slider thumb element lacked an accessible name. The thumb now supports `aria-label` and `aria-labelledby` props, and automatically falls back to the label element's ID for proper ARIA labeling.
+- **Angle Slider**: Fix accessibility violation where the slider thumb element lacked an accessible name. The thumb now
+  supports `aria-label` and `aria-labelledby` props, and automatically falls back to the label element's ID for proper
+  ARIA labeling.
 
 - **Select**: Fix accessibility violation where the required state was not set correctly to on the trigger.
 
-- **Tags Input**: Fix issue where entering a custom tag with combobox integration required pressing `Enter` twice. The tags-input now correctly handles custom values when the combobox has no highlighted item (`aria-activedescendant` is empty), allowing the tag to be added on the first `Enter` press.
+- **Tags Input**: Fix issue where entering a custom tag with combobox integration required pressing `Enter` twice. The
+  tags-input now correctly handles custom values when the combobox has no highlighted item (`aria-activedescendant` is
+  empty), allowing the tag to be added on the first `Enter` press.
 
 ## [5.26.1] - 2025-10-15
 
@@ -63,7 +67,8 @@ const service = useMachine(pagination.machine, {
     - Add `TreeViewNodeRenameInput` component for inline node label editing
     - Add `canRename` prop to control which nodes can be renamed
     - Add `renameStart`, `beforeRename`, and `renameComplete` event emitters for rename lifecycle
-    - Add `CheckedChangeDetails`, `LoadChildrenErrorDetails`, `RenameStartDetails`, and `RenameCompleteDetails` type exports
+    - Add `CheckedChangeDetails`, `LoadChildrenErrorDetails`, `RenameStartDetails`, and `RenameCompleteDetails` type
+      exports
 
 ### Fixed
 
