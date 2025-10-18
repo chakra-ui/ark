@@ -28,7 +28,8 @@ packages/{framework}/src/components/{component-name}/
 
 ## Creating New Examples
 
-**IMPORTANT: When adding examples, ALL steps below must be completed. Missing any step means the example is incomplete.**
+**IMPORTANT: When adding examples, ALL steps below must be completed. Missing any step means the example is
+incomplete.**
 
 When creating a new example for a component, you **MUST** update the following files:
 
@@ -41,13 +42,16 @@ When creating a new example for a component, you **MUST** update the following f
 2. **Update Storybook stories for all frameworks** (REQUIRED - examples won't appear without this):
    - `packages/react/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
    - `packages/solid/src/components/{component}/{component}.stories.tsx` - Add export in alphabetical order
-   - `packages/vue/src/components/{component}/{component}.stories.vue` - Add import and `<Variant>` in alphabetical order
-   - `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import and export in alphabetical order
+   - `packages/vue/src/components/{component}/{component}.stories.vue` - Add import and `<Variant>` in alphabetical
+     order
+   - `packages/svelte/src/lib/components/{component}/{component}.stories.ts` - Add import and export in alphabetical
+     order
 
 3. **Update component documentation** (if applicable):
    - `website/src/content/pages/components/{component}.mdx` - Add `<Example id="{example-name}" />` with description
 
-**Note**: Steps 1 and 2 are MANDATORY. Without updating the stories files, the examples will not be visible in Storybook.
+**Note**: Steps 1 and 2 are MANDATORY. Without updating the stories files, the examples will not be visible in
+Storybook.
 
 ### Example Workflow
 
@@ -55,19 +59,24 @@ For a new "links" example on the Menu component:
 
 1. Create example files in all four frameworks
 2. Update stories:
+
    ```tsx
    // React/Solid: Add to exports
    export { Links } from './examples/links'
 
    // Vue: Add to imports and template
    import Links from './examples/links.vue'
-   <Variant title="Links"><Links /></Variant>
+   ;<Variant title="Links">
+     <Links />
+   </Variant>
 
    // Svelte: Add import and export
    import LinksExample from './examples/links.svelte'
    export const Links = { render: () => ({ Component: LinksExample }) }
    ```
+
 3. Update MDX documentation:
+
    ```mdx
    ### Menu with links
 
@@ -206,13 +215,15 @@ Every component should include these example patterns where applicable:
 
 ## Root Provider Pattern (Critical)
 
-**The `root-provider` example is essential for most components** as it demonstrates external state management using component hooks.
+**The `root-provider` example is essential for most components** as it demonstrates external state management using
+component hooks.
 
 ### Two Approaches: Choose One
 
 There are two ways to use components - pick one approach, never mix them:
 
 **Approach 1: Component.Root (Declarative)**
+
 - Pass props directly to `Component.Root`
 - Component manages its own internal state
 - Limited access to state and methods
@@ -226,6 +237,7 @@ There are two ways to use components - pick one approach, never mix them:
 ```
 
 **Approach 2: useComponent + RootProvider (Programmatic)**
+
 - Call `useComponent(props)` to get the component API/store
 - Pass the store to `Component.RootProvider`
 - Full access to state properties and methods (`.setOpen()`, `.open`, etc.)
@@ -245,16 +257,20 @@ return (
 ```
 
 **❌ NEVER mix both approaches:**
+
 ```tsx
 // ❌ WRONG - Don't use Root inside RootProvider
 <Dialog.RootProvider value={dialog}>
-  <Dialog.Root> {/* This is incorrect! */}
+  <Dialog.Root>
+    {' '}
+    {/* This is incorrect! */}
     <Dialog.Content />
   </Dialog.Root>
 </Dialog.RootProvider>
 ```
 
-The benefit of `useComponent + RootProvider` is direct access to the component's state and methods, enabling programmatic control from anywhere in your component.
+The benefit of `useComponent + RootProvider` is direct access to the component's state and methods, enabling
+programmatic control from anywhere in your component.
 
 ### React Pattern
 
@@ -297,9 +313,7 @@ export const Example = () => {
   return (
     <Dialog.RootProvider value={dialog}>
       <Dialog.Trigger>Open</Dialog.Trigger>
-      <Dialog.Content>
-        {/* Content */}
-      </Dialog.Content>
+      <Dialog.Content>{/* Content */}</Dialog.Content>
     </Dialog.RootProvider>
   )
 }
@@ -342,9 +356,7 @@ export const Example = () => {
   return (
     <Dialog.RootProvider value={dialog}>
       <Dialog.Trigger>Open</Dialog.Trigger>
-      <Dialog.Content>
-        {/* Content */}
-      </Dialog.Content>
+      <Dialog.Content>{/* Content */}</Dialog.Content>
     </Dialog.RootProvider>
   )
 }
@@ -584,15 +596,15 @@ import { Teleport } from 'vue'
 ```ts
 // React/Svelte Portal Props
 interface PortalProps {
-  disabled?: boolean        // Renders inline when true
-  container?: HTMLElement   // Custom mount point
-  children: ReactNode       // Content to portal
+  disabled?: boolean // Renders inline when true
+  container?: HTMLElement // Custom mount point
+  children: ReactNode // Content to portal
 }
 
 // Vue Teleport Props
 interface TeleportProps {
-  to: string | Element      // Target selector or element
-  disabled?: boolean        // Renders inline when true
+  to: string | Element // Target selector or element
+  disabled?: boolean // Renders inline when true
 }
 ```
 
@@ -608,6 +620,7 @@ interface TeleportProps {
 ### Accessibility Testing
 
 **vitest-axe Integration:**
+
 ```ts
 import { axe } from 'vitest-axe'
 import { render } from '@testing-library/react' // or framework equivalent
@@ -620,6 +633,7 @@ test('should not have accessibility violations', async () => {
 ```
 
 **Keyboard Navigation Testing:**
+
 ```ts
 import { fireEvent } from '@testing-library/react'
 
@@ -641,6 +655,7 @@ test('should handle keyboard navigation', async () => {
 ```
 
 **ARIA Attributes Testing:**
+
 ```ts
 test('should have correct ARIA attributes', () => {
   render(<Component expanded={true} />)
@@ -654,22 +669,26 @@ test('should have correct ARIA attributes', () => {
 ### Cross-Framework Testing Patterns
 
 **React Testing:**
+
 ```ts
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 ```
 
 **Solid Testing:**
+
 ```ts
 import { render, screen } from '@solidjs/testing-library'
 ```
 
 **Vue Testing:**
+
 ```ts
 import { render, screen } from '@testing-library/vue'
 ```
 
 **Svelte Testing:**
+
 ```ts
 import { render, screen } from '@testing-library/svelte'
 ```
@@ -677,6 +696,7 @@ import { render, screen } from '@testing-library/svelte'
 ### Component State Testing
 
 **Controlled vs Uncontrolled:**
+
 ```ts
 test('controlled component', () => {
   const onValueChange = vi.fn()
@@ -699,6 +719,7 @@ test('uncontrolled component', () => {
 ### Screen Reader Compatibility
 
 **Announcement Testing:**
+
 ```ts
 test('should announce state changes', async () => {
   render(<Component />)
@@ -714,6 +735,7 @@ test('should announce state changes', async () => {
 ```
 
 **Focus Management:**
+
 ```ts
 test('should manage focus correctly', () => {
   render(<Dialog />)
@@ -750,3 +772,8 @@ test('should manage focus correctly', () => {
 - Use lazy mounting for heavy components (`lazy-mount.tsx`)
 - Implement proper cleanup in unmount handlers
 - Follow framework-specific performance patterns
+
+### When to Use Each Approach
+
+- **Use `Component.Context`**: When you need to access the API for composition within the component tree
+- **Use `useComponent + RootProvider`**: When you need external control and state management outside the component

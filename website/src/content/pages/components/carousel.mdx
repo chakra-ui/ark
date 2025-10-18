@@ -36,13 +36,6 @@ when the `onPageChange` event handler is called:
 
 <Example id="controlled" />
 
-### Autoplay
-
-The Carousel can play automatically. Just add the `autoplay` prop. You'll probably want to add `loop` too, so it keeps
-going after the last slide.
-
-<Example id="autoplay" />
-
 ### Root Provider
 
 Use the `useCarousel` hook to create the carousel store and pass it to the `Carousel.RootProvider` component. This
@@ -51,6 +44,61 @@ allows you to have maximum control over the carousel programmatically.
 <Example id="root-provider" />
 
 > If you're using the `Carousel.RootProvider` component, you don't need to use the `Carousel.Root` component.
+
+### Autoplay
+
+Pass the `autoplay` and `loop` props to `Carousel.Root` to make the carousel play automatically.
+
+> **Note:** Adding `loop` ensures the carousel keeps going after the last slide.
+
+<Example id="autoplay" />
+
+### Pause on Hover
+
+This feature isn't built-in, but you can use the `play()` and `pause()` methods from `Carousel.Context` to implement
+pause on hover.
+
+Add the `autoplay` and `loop` props to `Carousel.Root`, then attach `onPointerOver` and `onPointerLeave` handlers to
+`Carousel.ItemGroup` that call `api.pause()` and `api.play()` respectively.
+
+<Example id="pause-on-hover" />
+
+### Custom Indicators
+
+Replace default indicator dots with custom content by wrapping `Carousel.IndicatorGroup` in `Carousel.Context`. Use
+`api.page` to determine the active indicator and render image thumbnails for each slide:
+
+<Example id="custom-indicator" />
+
+### Vertical Orientation
+
+Set the `orientation="vertical"` prop on `Carousel.Root` to change the carousel from horizontal to vertical scrolling.
+This is useful for vertical galleries or content feeds.
+
+<Example id="vertical" />
+
+### Dynamic Slides
+
+Manage slides dynamically by storing them in state and syncing the carousel page. Pass the `page` prop and
+`onPageChange` handler to `Carousel.Root`, and update `slideCount` when slides are added or removed. This demonstrates
+bidirectional state synchronization between your component state and the carousel.
+
+<Example id="dynamic-slides" />
+
+### Scroll to Slide
+
+Use `Carousel.Context` to access the carousel API and call `api.scrollToIndex(index)` to programmatically navigate to a
+specific slide. This is useful for creating custom navigation or jump-to-slide functionality.
+
+<Example id="scroll-to" />
+
+### Slides Per Page
+
+Display multiple slides simultaneously by setting the `slidesPerPage` prop on `Carousel.Root`. Use `api.pageSnapPoints`
+from `Carousel.Context` to render the correct number of indicators based on pages rather than individual slides. Add the
+`spacing` prop to control the gap between slides.
+
+<Example id="slides-per-page" />
 
 ## API Reference
 

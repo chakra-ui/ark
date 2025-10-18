@@ -58,7 +58,10 @@ When creating examples for a component:
 
 6. **Update Documentation** (if applicable): Ensure the component's documentation includes:
    - Code snippets matching the new examples
-   - Clear descriptions of when to use each variant
+   - **Specific implementation details**: Which props go on which components, what methods to call
+   - **Use cases and benefits**: When and why to use each pattern
+   - **Built-in vs composition**: Clarify if features require composition or are built-in
+   - **State synchronization**: Explain bidirectional sync when relevant
    - Accessibility notes
    - Links to related components or patterns
 

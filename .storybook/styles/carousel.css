@@ -66,8 +66,8 @@
   border: none;
   justify-content: center;
   align-items: center;
-  height: 12px;
-  width: 12px;
+  min-height: 12px;
+  min-width: 12px;
   border-radius: 6px;
   cursor: pointer;
   background-color: lightgray;
