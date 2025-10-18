@@ -42,46 +42,32 @@ describe('Portal', () => {
   })
 
   it('should render portal children next to the body', () => {
-    const view = render(
-      <div>
+    const { baseElement, container } = render(
+      <div data-testid="parent">
         <Portal>
           <p>Anything must be visible</p>
         </Portal>
       </div>,
     )
 
-    expect(view.baseElement).toMatchInlineSnapshot(`
-      <body>
-        <div>
-          <div />
-        </div>
-        <p>
-          Anything must be visible
-        </p>
-      </body>
-    `)
+    const portalContent = screen.getByText('Anything must be visible')
+    expect(portalContent).toBeVisible()
+    expect(baseElement).toContainElement(portalContent)
+    expect(container.querySelector('[data-testid="parent"]')).not.toContainElement(portalContent)
   })
 
   it('should not render portal children next to the body if marked as `disabled`', () => {
-    const view = render(
-      <div>
+    const { container } = render(
+      <div data-testid="parent">
         <Portal disabled>
           <p>Anything must be visible</p>
         </Portal>
       </div>,
     )
 
-    expect(view.baseElement).toMatchInlineSnapshot(`
-      <body>
-        <div>
-          <div>
-            <p>
-              Anything must be visible
-            </p>
-          </div>
-        </div>
-      </body>
-    `)
+    const portalContent = screen.getByText('Anything must be visible')
+    expect(portalContent).toBeVisible()
+    expect(container.querySelector('[data-testid="parent"]')).toContainElement(portalContent)
   })
 
   it('should render portal children inside a custom element', () => {
@@ -106,20 +92,14 @@ describe('Portal', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     const shadowRoot = div.attachShadow({ mode: 'open' })
-    const view = render(
+    render(
       <EnvironmentProvider value={() => shadowRoot}>
         <Portal>
           <p>Anything must be visible</p>
         </Portal>
       </EnvironmentProvider>,
     )
-    expect(view.baseElement).toMatchInlineSnapshot(`
-      <body>
-        <div />
-        <div />
-      </body>
-    `)
-    expect(shadowRoot.innerHTML).toMatchInlineSnapshot(`"<p>Anything must be visible</p>"`)
+    expect(shadowRoot.innerHTML).toBe('<p>Anything must be visible</p>')
   })
 
   it('should render twice if container was specified', async () => {
