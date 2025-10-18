@@ -20,6 +20,8 @@ export const AngleSliderRoot = (props: AngleSliderRootProps) => {
     'defaultValue',
     'value',
     'step',
+    'aria-label',
+    'aria-labelledby',
   ])
   const angleSlider = useAngleSlider(useAngleSliderProps)
   const mergedProps = mergeProps(() => angleSlider().getRootProps(), localProps)

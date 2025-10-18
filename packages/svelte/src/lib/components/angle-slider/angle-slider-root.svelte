@@ -32,6 +32,8 @@
       'defaultValue',
       'value',
       'step',
+      'aria-label',
+      'aria-labelledby',
     ]),
   )
 

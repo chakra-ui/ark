@@ -50,6 +50,14 @@ export interface RootProps {
    * @default 1
    */
   step?: number
+  /**
+   * The aria-label of the slider.
+   */
+  'aria-label'?: string
+  /**
+   * The aria-labelledby of the slider.
+   */
+  'aria-labelledby'?: string
 }
 
 export type RootEmits = {
