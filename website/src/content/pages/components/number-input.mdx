@@ -99,6 +99,35 @@ smooth dragging interactions.
 > **Note:** Browsers may show a notification when the Pointer Lock API is activated. The scrubber is automatically
 > disabled in Safari to prevent layout shifts.
 
+### Controlling the value
+
+When controlling the NumberInput component, it's recommended to use string values instead of converting to numbers. This
+is especially important when using `formatOptions` for currency or locale-specific formatting.
+
+```tsx
+const [value, setValue] = useState('0')
+
+<NumberInput.Root value={value} onValueChange={(details) => setValue(details.value)}>
+  {/* ... */}
+</NumberInput.Root>
+```
+
+Converting values to numbers can cause issues with locale-specific formatting, particularly for currencies that use
+different decimal and thousands separators (e.g., `1.523,30` vs `1,523.30`). By keeping values as strings, you preserve
+the correct formatting and avoid parsing issues.
+
+If you need to submit a numeric value in your form, use a hidden input that reads `valueAsNumber` from
+`NumberInput.Context`:
+
+```tsx
+<NumberInput.Root value={value} onValueChange={(details) => setValue(details.value)}>
+  <NumberInput.Input />
+  <NumberInput.Context>
+    {(context) => <input type="hidden" name="amount" value={context.valueAsNumber} />}
+  </NumberInput.Context>
+</NumberInput.Root>
+```
+
 ## API Reference
 
 <ComponentTypes id="number-input" />
