@@ -84,7 +84,6 @@
   "sideEffects": false,
   "dependencies": {
     "@internationalized/date": "3.10.0",
-    "@tanstack/vue-form": "1.23.7",
     "@zag-js/accordion": "1.26.3",
     "@zag-js/anatomy": "1.26.3",
     "@zag-js/angle-slider": "1.26.3",
@@ -167,6 +166,7 @@
     "lucide-vue-next": "0.546.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.9.3",
+    "vee-validate": "4.15.1",
     "vite": "7.1.11",
     "vite-plugin-dts": "4.5.4",
     "vitest": "3.2.4",

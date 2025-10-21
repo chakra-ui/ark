@@ -12,25 +12,33 @@ export interface BottomSheetBackdropProps
 </script>
 
 <script setup lang="ts">
+import { mergeProps } from '@zag-js/vue'
+import { computed } from 'vue'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { Presence } from '../presence'
+import { usePresence } from '../presence'
+import { ark } from '../factory'
 import { useBottomSheetContext } from './use-bottom-sheet-context'
 
 defineProps<BottomSheetBackdropProps>()
+
 const bottomSheet = useBottomSheetContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: bottomSheet.value.open,
+  })),
+)
+
+const mergedProps = computed(() => mergeProps(bottomSheet.value.getBackdropProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>
 
 <template>
-  <Presence
-    v-bind="bottomSheet.getBackdropProps()"
-    :present="bottomSheet.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

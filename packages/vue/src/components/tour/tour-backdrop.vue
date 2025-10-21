@@ -12,27 +12,33 @@ export interface TourBackdropProps
 </script>
 
 <script setup lang="ts">
+import { mergeProps } from '@zag-js/vue'
+import { computed } from 'vue'
 import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
-import { Presence } from '../presence'
+import { usePresence } from '../presence'
+import { ark } from '../factory'
 import { useTourContext } from './use-tour-context'
 
 defineProps<TourBackdropProps>()
+
 const tour = useTourContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: tour.value.open,
+  })),
+)
+
+const mergedProps = computed(() => mergeProps(tour.value.getBackdropProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>
 
 <template>
-  <Presence
-    v-if="tour.step?.backdrop"
-    v-bind="tour.getBackdropProps()"
-    :hidden="!tour.open"
-    :present="tour.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="tour.step?.backdrop && !presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

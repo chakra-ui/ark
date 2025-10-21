@@ -13,26 +13,36 @@ export interface TabContentProps
 </script>
 
 <script setup lang="ts">
+import { mergeProps } from '@zag-js/vue'
+import { computed } from 'vue'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { useTabsContext } from './use-tabs-context'
-import { Presence } from '../presence'
+import { PresenceProvider, usePresence } from '../presence'
+import { ark } from '../factory'
 
 const props = defineProps<TabContentProps>()
+
 const tabs = useTabsContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: tabs.value.value === props.value,
+    immediate: true,
+  })),
+)
+
+PresenceProvider(presence)
+
+const mergedProps = computed(() => mergeProps(tabs.value.getContentProps(props), presence.value.presenceProps))
 
 useForwardExpose()
 </script>
 
 <template>
-  <Presence
-    v-bind="tabs.getContentProps(props)"
-    :present="tabs.value === props.value"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-    :immediate="true"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

@@ -12,25 +12,33 @@ export interface DialogBackdropProps
 </script>
 
 <script setup lang="ts">
+import { mergeProps } from '@zag-js/vue'
+import { computed } from 'vue'
 import { useRenderStrategyProps } from '../../utils/use-render-strategy'
 import { useForwardExpose } from '../../utils/use-forward-expose'
-import { Presence } from '../presence'
+import { usePresence } from '../presence'
+import { ark } from '../factory'
 import { useDialogContext } from './use-dialog-context'
 
 defineProps<DialogBackdropProps>()
+
 const dialog = useDialogContext()
 const renderStrategy = useRenderStrategyProps()
+
+const presence = usePresence(
+  computed(() => ({
+    ...renderStrategy.value,
+    present: dialog.value.open,
+  })),
+)
+
+const mergedProps = computed(() => mergeProps(dialog.value.getBackdropProps(), presence.value.presenceProps))
 
 useForwardExpose()
 </script>
 
 <template>
-  <Presence
-    v-bind="dialog.getBackdropProps()"
-    :present="dialog.open"
-    :lazy-mount="renderStrategy.lazyMount"
-    :unmount-on-exit="renderStrategy.unmountOnExit"
-  >
+  <ark.div v-if="!presence.unmounted" v-bind="mergedProps" :as-child="asChild">
     <slot />
-  </Presence>
+  </ark.div>
 </template>

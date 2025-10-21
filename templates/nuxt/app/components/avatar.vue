@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Avatar, type AvatarRootEmits, type AvatarRootProps, useForwardPropsEmits } from '@ark-ui/vue'
 import { computed } from 'vue'
-import './avatar.css'
 
 export interface AvatarProps extends AvatarRootProps {
   src?: string

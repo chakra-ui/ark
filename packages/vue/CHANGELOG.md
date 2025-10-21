@@ -1,5 +1,16 @@
 ## [Unreleased]
 
+### Fixed
+
+- **Dialog**: Fix issue where `Dialog.Backdrop` does not respect exit animations when closing. The backdrop now properly
+  uses the presence composable to enable CSS transitions and animations on close.
+
+- **Bottom Sheet**: Fix issue where `BottomSheet.Backdrop` does not respect exit animations when closing.
+
+- **Tour**: Fix issue where `Tour.Backdrop` does not respect exit animations when closing.
+
+- **Tabs**: Fix issue where `Tab.Content` does not respect exit animations when switching tabs.
+
 ## [5.26.2] - 2025-10-18
 
 ### Fixed
