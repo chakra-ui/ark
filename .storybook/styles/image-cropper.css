@@ -1,0 +1,94 @@
+[data-scope='image-cropper'][data-part='root'] {
+  max-width: fit-content;
+}
+
+[data-scope='image-cropper'][data-part='viewport'] {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+}
+
+[data-scope='image-cropper'][data-part='selection'] {
+  position: absolute;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: move;
+  touch-action: none;
+}
+
+[data-scope='image-cropper'][data-part='selection'][data-shape='circle'] {
+  border-radius: 50%;
+}
+
+[data-scope='image-cropper'][data-part='image'] {
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-scope='image-cropper'][data-part='handle'] {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  touch-action: none;
+  cursor: grab;
+  transform: translate(-50%, -50%);
+  background: #fff;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='top-left'] {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  cursor: nwse-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='top'] {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: ns-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='top-right'] {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  cursor: nesw-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='right'] {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  cursor: ew-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='bottom-right'] {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+  cursor: nwse-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='bottom'] {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  cursor: ns-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='bottom-left'] {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+  cursor: nesw-resize;
+}
+
+[data-scope='image-cropper'][data-part='handle'][data-position='left'] {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  cursor: ew-resize;
+}
