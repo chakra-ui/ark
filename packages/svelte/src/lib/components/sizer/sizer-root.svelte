@@ -16,7 +16,7 @@
   let { ref = $bindable(null), ...props }: SizerRootProps = $props()
 
   const [useSizerProps, localProps] = $derived(splitSizerProps(props))
-  const sizer = useSizer(useSizerProps)
+  const sizer = useSizer(() => useSizerProps)
 
   function setRootNode(node: HTMLDivElement | null) {
     sizer().setRootRef(node)
@@ -25,4 +25,4 @@
   SizerProvider(sizer)
 </script>
 
-<Ark as="div" bind:ref {@attach setRootNode} {...parts.root} {...localProps} />
+<Ark as="div" bind:ref {@attach setRootNode} {...parts.root.attrs} {...localProps} />

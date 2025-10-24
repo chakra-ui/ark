@@ -114,6 +114,7 @@
     "@zag-js/i18n-utils": "1.26.4",
     "@zag-js/json-tree-utils": "1.26.4",
     "@zag-js/listbox": "1.26.4",
+    "@zag-js/marquee": "1.26.4",
     "@zag-js/menu": "1.26.4",
     "@zag-js/number-input": "1.26.4",
     "@zag-js/pagination": "1.26.4",

@@ -19,4 +19,4 @@
   }
 </script>
 
-<Ark as="div" bind:ref {@attach setContentNode} {...parts.content} {...props} />
+<Ark as="div" bind:ref {@attach setContentNode} {...parts.content.attrs} {...props} />

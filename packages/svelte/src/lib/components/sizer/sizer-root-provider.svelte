@@ -22,4 +22,4 @@
   SizerProvider(value)
 </script>
 
-<Ark as="div" bind:ref {@attach setRootNode} {...parts.root} {...props} />
+<Ark as="div" bind:ref {@attach setRootNode} {...parts.root.attrs} {...props} />

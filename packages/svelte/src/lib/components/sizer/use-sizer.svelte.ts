@@ -1,6 +1,7 @@
 import { useEnvironmentContext } from '$lib/providers/environment'
 import type { Accessor } from '$lib/types'
 import type { Size } from '@zag-js/types'
+import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 
 export interface SizerResizeDetails extends Size {}
 
@@ -17,9 +18,8 @@ const fuzzyEqual = (a: number, b: number, tolerance = 0.1): boolean => {
   return Math.abs(a - b) <= tolerance
 }
 
-export const useSizer = (props: UseSizerProps = {}): Accessor<UseSizerReturn> => {
+export const useSizer = (props: MaybeFunction<UseSizerProps> = {}): Accessor<UseSizerReturn> => {
   const env = useEnvironmentContext()
-  const { onSizeChange } = props
 
   let rootEl = $state<HTMLDivElement | null>(null)
   let contentEl = $state<HTMLDivElement | null>(null)
@@ -34,6 +34,8 @@ export const useSizer = (props: UseSizerProps = {}): Accessor<UseSizerReturn> =>
     const win = env().getWindow()
 
     let animationFrameId: number | undefined
+
+    const { onSizeChange } = runIfFn(props)
 
     const resizeObserver = new win.ResizeObserver((entries) => {
       const entry = entries[0]

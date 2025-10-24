@@ -1,11 +1,10 @@
 [data-scope='sizer'][data-part='root'] {
-  border: 2px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
   overflow: hidden;
 }
 
 [data-scope='sizer'][data-part='content'] {
-  padding: 1rem;
   min-width: 300px;
 }
 
