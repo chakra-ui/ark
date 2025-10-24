@@ -1,4 +1,4 @@
-export { anatomy as sizerAnatomy } from './sizer.anatomy'
+export { sizerAnatomy } from './sizer.anatomy'
 export { SizerContent, type SizerContentBaseProps, type SizerContentProps } from './sizer-content'
 export { SizerRoot, type SizerRootBaseProps, type SizerRootProps } from './sizer-root'
 export { SizerRootProvider, type SizerRootProviderBaseProps, type SizerRootProviderProps } from './sizer-root-provider'

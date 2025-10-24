@@ -1,5 +1,5 @@
 import { createAnatomy } from '@zag-js/anatomy'
 
-export const anatomy = createAnatomy('sizer').parts('root', 'content')
+export const sizerAnatomy = createAnatomy('sizer').parts('root', 'content')
 
-export const parts = anatomy.build()
+export const parts = sizerAnatomy.build()

@@ -1,5 +1,17 @@
 ## [Unreleased]
 
+### Added
+
+- **Marquee** [New]: Initial release of marquee component for continuously scrolling content
+
+### Fixed
+
+- **Angle Slider**: Resolved an issue where dragging the thumb from non-center positions caused unexpected value jumps.
+  The thumb now maintains consistent positioning relative to the initial click point.
+
+- **Slider**: Fixed a problem where the thumb offset shifted dynamically during dragging, resulting in value jumps. The
+  offset now remains constant from the pointer throughout the drag operation.
+
 ## [5.26.2] - 2025-10-18
 
 ### Fixed
