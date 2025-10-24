@@ -4,7 +4,7 @@ export {
   type MarqueeContentBaseProps as ContentBaseProps,
   type MarqueeContentProps as ContentProps,
 } from './marquee-content.vue'
-export { default as Context } from './marquee-context.vue'
+export { default as Context, type MarqueeContextProps as ContextProps } from './marquee-context.vue'
 export {
   default as Edge,
   type MarqueeEdgeBaseProps as EdgeBaseProps,
