@@ -25,6 +25,8 @@
   display: block;
   pointer-events: none;
   user-select: none;
+  width: 600px;
+  height: 400px;
 }
 
 [data-scope='image-cropper'][data-part='handle'] {
