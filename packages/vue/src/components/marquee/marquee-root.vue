@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { HTMLAttributes } from 'vue'
+import type { BooleanDefaults } from '../../types'
 import type { PolymorphicProps } from '../factory'
 import type { RootEmits, RootProps } from './marquee.types'
 
@@ -14,12 +15,19 @@ export interface MarqueeRootEmits extends RootEmits {}
 </script>
 
 <script setup lang="ts">
+import { useForwardExpose } from '../../utils/use-forward-expose'
 import { ark } from '../factory'
 import { useMarquee } from './use-marquee'
 import { MarqueeProvider } from './use-marquee-context'
-import { useForwardExpose } from '../../utils/use-forward-expose'
 
-const props = defineProps<MarqueeRootProps>()
+const props = withDefaults(defineProps<MarqueeRootProps>(), {
+  autoFill: undefined,
+  defaultPaused: undefined,
+  pauseOnInteraction: undefined,
+  paused: undefined,
+  reverse: undefined,
+} satisfies BooleanDefaults<RootProps>)
+
 const emits = defineEmits<MarqueeRootEmits>()
 
 const marquee = useMarquee(props, emits)
