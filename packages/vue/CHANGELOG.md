@@ -1,6 +1,16 @@
 ## [Unreleased]
 
+### Added
+
+- **Marquee** [New]: Initial release of marquee component for continuously scrolling content
+
 ### Fixed
+
+- **Angle Slider**: Resolved an issue where dragging the thumb from non-center positions caused unexpected value jumps.
+  The thumb now maintains consistent positioning relative to the initial click point.
+
+- **Slider**: Fixed a problem where the thumb offset shifted dynamically during dragging, resulting in value jumps. The
+  offset now remains constant from the pointer throughout the drag operation.
 
 - **Dialog**: Fix issue where `Dialog.Backdrop` does not respect exit animations when closing. The backdrop now properly
   uses the presence composable to enable CSS transitions and animations on close.

@@ -18,10 +18,10 @@
     "@sveltejs/adapter-auto": "^6.1.0",
     "@sveltejs/kit": "^2.39.0",
     "@sveltejs/vite-plugin-svelte": "^6.2.0",
-    "svelte": "^5.38.10",
+    "svelte": "^5.41.3",
     "svelte-check": "^4.3.1",
     "typescript": "^5.9.2",
-    "vite": "^7.1.5",
+    "vite": "^7.1.12",
     "lucide-svelte": "0.546.0"
   }
 }
