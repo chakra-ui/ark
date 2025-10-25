@@ -164,6 +164,7 @@
     "@zag-js/focus-trap": "1.26.4",
     "@zag-js/highlight-word": "1.26.4",
     "@zag-js/hover-card": "1.26.4",
+    "@zag-js/image-cropper": "1.26.4",
     "@zag-js/i18n-utils": "1.26.4",
     "@zag-js/json-tree-utils": "1.26.4",
     "@zag-js/listbox": "1.26.4",
