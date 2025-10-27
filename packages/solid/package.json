@@ -148,7 +148,7 @@
   },
   "devDependencies": {
     "check-password-strength": "3.0.0",
-    "@biomejs/biome": "2.2.6",
+    "@biomejs/biome": "2.3.1",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "9.1.15",
@@ -163,7 +163,7 @@
     "esbuild-plugin-solid": "0.6.0",
     "globby": "15.0.0",
     "jsdom": "26.1.0",
-    "lucide-solid": "0.546.0",
+    "lucide-solid": "0.548.0",
     "resize-observer-polyfill": "1.5.1",
     "solid-js": "1.9.9",
     "storybook": "9.1.15",
@@ -171,7 +171,7 @@
     "tsup": "8.5.0",
     "typescript": "5.9.3",
     "vite": "7.1.12",
-    "vite-plugin-solid": "2.11.9",
+    "vite-plugin-solid": "2.11.10",
     "vitest": "3.2.4",
     "@vitest/coverage-v8": "3.2.4",
     "vitest-axe": "1.0.0-pre.5"
