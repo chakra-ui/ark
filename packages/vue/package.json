@@ -147,7 +147,7 @@
     "@zag-js/vue": "1.26.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.6",
+    "@biomejs/biome": "2.3.1",
     "@histoire/plugin-vue": "0.17.17",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "6.9.1",
@@ -164,7 +164,7 @@
     "histoire": "0.17.17",
     "image-conversion": "2.1.1",
     "jsdom": "26.1.0",
-    "lucide-vue-next": "0.546.0",
+    "lucide-vue-next": "0.548.0",
     "resize-observer-polyfill": "1.5.1",
     "typescript": "5.9.3",
     "vee-validate": "4.15.1",
@@ -172,7 +172,7 @@
     "vite-plugin-dts": "4.5.4",
     "vitest": "3.2.4",
     "vue": "3.5.22",
-    "vue-tsc": "3.1.1"
+    "vue-tsc": "3.1.2"
   },
   "peerDependencies": {
     "vue": ">=3.5.0"
