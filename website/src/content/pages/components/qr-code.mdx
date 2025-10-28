@@ -20,17 +20,6 @@ Learn how to use the `QR Code` component in your project. Let's take a look at t
 
 <Example id="basic" />
 
-### Download a QR Code
-
-You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the `fileName` and the
-`mimeType` of the image.
-
-```tsx
-<QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
-  Download
-</QrCode.DownloadTrigger>
-```
-
 ### With Overlay
 
 You can also add a logo or overlay to the QR code. This is useful when you want to brand the QR code.
@@ -59,6 +48,19 @@ leverage it to access the component state and methods from outside the QR code.
 <Example id="root-provider" />
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+## Guides
+
+### Download a QR Code
+
+You can download the QR code by using the `QrCode.DownloadTrigger`. You will have to provide the `fileName` and the
+`mimeType` of the image.
+
+```tsx
+<QrCode.DownloadTrigger fileName="qr-code.png" mimeType="image/png">
+  Download
+</QrCode.DownloadTrigger>
+```
 
 ## API Reference
 

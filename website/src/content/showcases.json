@@ -45,7 +45,7 @@
     "title": "Gumbo",
     "description": "AI-powered Personalised Recipe Search Engine",
     "url": "https://www.gumbo.kitchen/",
-    "image": "https://i.imgur.com/y76kzDu.png"
+    "image": "/images/gumbo.png"
   },
   {
     "title": "Promptmetheus",
@@ -58,5 +58,11 @@
     "description": "The Norwegian Digital Learning Arena",
     "url": "https://ndla.no/en/",
     "image": "https://ndla.no/static/metaimage.png"
+  },
+  {
+    "title": "Cerberus Design System",
+    "description": "Guarding brand integrity with a flexible design system",
+    "url": "https://cerberus.digitalu.design/",
+    "image": "/images/cerberus-design-system.png"
   }
 ]

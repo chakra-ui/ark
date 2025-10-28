@@ -56,6 +56,35 @@ To create a controlled Tabs component, manage the current selected tab using the
 
 <Example id="controlled" />
 
+### Vertical Tabs
+
+The default orientation of the tabs is `horizontal`. To change the orientation, set the `orientation` prop to
+`vertical`.
+
+<Example id="vertical" />
+
+### Manual Activation
+
+By default, the tab can be selected when it receives focus from either the keyboard or pointer interaction. This is
+called automatic tab activation.
+
+In contrast, manual tab activation means the tab is selected with the
+
+<kbd>Enter</kbd> key or by clicking on the tab.
+
+<Example id="manual" />
+
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the tabs. It accepts the value of the `useTabs` hook. You can
+leverage it to access the component state and methods from outside the tabs.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+## Guides
+
 ### Router Controlled Tabs
 
 When using frameworks like Next.js, Remix, or React Router, controlling the active tabs based on the URL can be useful.
@@ -99,33 +128,6 @@ export default function App() {
   )
 }
 ```
-
-### Vertical Tabs
-
-The default orientation of the tabs is `horizontal`. To change the orientation, set the `orientation` prop to
-`vertical`.
-
-<Example id="vertical" />
-
-### Manual Activation
-
-By default, the tab can be selected when it receives focus from either the keyboard or pointer interaction. This is
-called automatic tab activation.
-
-In contrast, manual tab activation means the tab is selected with the
-
-<kbd>Enter</kbd> key or by clicking on the tab.
-
-<Example id="manual" />
-
-### Using the Root Provider
-
-The `RootProvider` component provides a context for the tabs. It accepts the value of the `useTabs` hook. You can
-leverage it to access the component state and methods from outside the tabs.
-
-<Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
 ## API Reference
 
