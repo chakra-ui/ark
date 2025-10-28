@@ -17,6 +17,14 @@ const nextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/docs/:path*.mdx',
+        destination: '/llms.txt/:path*.mdx',
+      },
+    ]
+  },
 }
 
 const isDev = process.argv.indexOf('dev') !== -1

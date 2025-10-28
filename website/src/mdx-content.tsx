@@ -7,6 +7,7 @@ import { Step, Steps } from '~/components/ui/stepper'
 import { Anatomy } from './components/anatomy'
 import { ComponentPreview } from './components/component-preview'
 import { ComponentTypes } from './components/component-types'
+import { ContextType } from './components/context-type'
 import { Example } from './components/example'
 import { Faq } from './components/faq'
 import { InstallCmd } from './components/install-cmd'
@@ -427,6 +428,7 @@ const sharedComponents = {
   code: Code,
   ComponentPreview,
   ComponentTypes,
+  ContextType,
   Example,
   Faq,
   InstallCmd,
