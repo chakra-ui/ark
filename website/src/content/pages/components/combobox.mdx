@@ -49,28 +49,6 @@ Use the `asChild` prop to render the combobox items as links.
 
 <Example id="links" />
 
-For custom router links, you can customize the `navigate` prop on the `Combobox.Root` component.
-
-Here's an example of using the Tanstack Router.
-
-```tsx
-import { Combobox } from '@ark-ui/react/combobox'
-import { useNavigate } from '@tanstack/react-router'
-
-function Demo() {
-  const navigate = useNavigate()
-  return (
-    <Combobox.Root
-      navigate={(e) => {
-        navigate({ to: e.node.href })
-      }}
-    >
-      {/* ... */}
-    </Combobox.Root>
-  )
-}
-```
-
 ### Rehydrate Value
 
 In some cases, where a combobox has a `defaultValue` or `value` but the `collection` is not loaded yet, here's how to
@@ -98,6 +76,34 @@ categories, or other custom values.
 
 <Example id="creatable" />
 
+<Example id="custom-object" />
+
+## Guides
+
+### Custom Router Links
+
+For custom router links, you can customize the `navigate` prop on the `Combobox.Root` component.
+
+Here's an example of using the Tanstack Router.
+
+```tsx
+import { Combobox } from '@ark-ui/react/combobox'
+import { useNavigate } from '@tanstack/react-router'
+
+function Demo() {
+  const navigate = useNavigate()
+  return (
+    <Combobox.Root
+      navigate={(e) => {
+        navigate({ to: e.node.href })
+      }}
+    >
+      {/* ... */}
+    </Combobox.Root>
+  )
+}
+```
+
 ### Custom Objects
 
 By default, the combobox collection expects an array of objects with `label` and `value` properties. In some cases, you
@@ -119,10 +125,6 @@ const { collection } = useListCollection({
   itemToValue: (item) => item.code,
 })
 ```
-
-<Example id="custom-object" />
-
-## Guides
 
 ### Type-Safety
 
@@ -202,7 +204,15 @@ For example, if you want to make sure the maximum height doesn't exceed the avai
 
 ## API Reference
 
+### Props
+
 <ComponentTypes id="combobox" />
+
+### Context
+
+These are the properties available when using `Combobox.Context`, `useComboboxContext` hook or `useCombobox` hook.
+
+<ContextType id="combobox" />
 
 ## Accessibility
 

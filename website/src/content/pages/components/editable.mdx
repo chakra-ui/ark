@@ -27,6 +27,24 @@ provide access to the internal state of the component.
 
 <Example id="custom-controls" />
 
+### Field
+
+The `Field` component helps manage form-related state and accessibility attributes of an editable. It includes handling
+ARIA labels, helper text, and error text to ensure proper accessibility.
+
+<Example id="with-field" />
+
+### Root Provider
+
+Use the `useEditable` hook to create the editable store and pass it to the `Editable.RootProvider` component. This
+allows you to have maximum control over the editable programmatically.
+
+<Example id="root-provider" />
+
+> If you're using the `Editable.RootProvider` component, you don't need to use the `Editable.Root` component.
+
+## Guides
+
 ### Auto-resizing
 
 To auto-grow the editable as the content changes, set the `autoResize` prop to `true`.
@@ -62,25 +80,17 @@ To change the mode to double-click, pass the prop `activationMode="dblclick"`.
 </Editable.Root>
 ```
 
-### Field
-
-The `Field` component helps manage form-related state and accessibility attributes of an editable. It includes handling
-ARIA labels, helper text, and error text to ensure proper accessibility.
-
-<Example id="with-field" />
-
-### Root Provider
-
-Use the `useEditable` hook to create the editable store and pass it to the `Editable.RootProvider` component. This
-allows you to have maximum control over the editable programmatically.
-
-<Example id="root-provider" />
-
-> If you're using the `Editable.RootProvider` component, you don't need to use the `Editable.Root` component.
-
 ## API Reference
 
+### Props
+
 <ComponentTypes id="editable" />
+
+### Context
+
+These are the properties available when using `Editable.Context`, `useEditableContext` hook or `useEditable` hook.
+
+<ContextType id="editable" />
 
 ## Accessibility
 

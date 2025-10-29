@@ -11,6 +11,7 @@ import { join } from 'node:path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
+import { replaceComponentTypes, replaceContextType, replaceExample } from './src/lib/mdx-transform'
 
 const pages = defineCollection({
   name: 'Pages',
@@ -29,7 +30,19 @@ const pages = defineCollection({
       toc: s.toc(),
       code: s.mdx(),
       llm: s.custom<string>().transform((_data, { meta }) => {
-        return meta.content as string
+        const content = meta.content as string
+        const path = meta.path as string
+        const isChangelog = path.includes('CHANGELOG.md')
+        const component = isChangelog
+          ? ''
+          : path
+              .split('/')
+              .pop()
+              ?.replace(/\.mdx$/, '') || ''
+        let processed = replaceExample(content, component)
+        processed = replaceComponentTypes(processed)
+        processed = replaceContextType(processed)
+        return processed
       }),
     })
     .transform((data, { meta }) => {

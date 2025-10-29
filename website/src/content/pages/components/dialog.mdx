@@ -106,15 +106,6 @@ Multiple dialogs can be stacked with automatic z-index management. Zag.js manage
 
 <Example id="nested" />
 
-You can create a zoom-out effect for parent dialogs using the `data-has-nested` attribute and `--nested-layer-count`
-variable:
-
-```css
-[data-scope='dialog'][data-part='backdrop'][data-has-nested] {
-  transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
-}
-```
-
 ### Confirmation Dialog
 
 Dialogs can intercept close attempts to show confirmation prompts. This pattern is useful for preventing data loss from
@@ -123,6 +114,17 @@ unsaved changes:
 <Example id="confirmation" />
 
 ## Guides
+
+### Nested Dialog Styling
+
+You can create a zoom-out effect for parent dialogs using the `data-has-nested` attribute and `--nested-layer-count`
+variable:
+
+```css
+[data-scope='dialog'][data-part='backdrop'][data-has-nested] {
+  transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+}
+```
 
 ### Lazy Mount and Dynamic Imports
 
@@ -152,7 +154,15 @@ export default function DialogExample() {
 
 ## API Reference
 
+### Props
+
 <ComponentTypes id="dialog" />
+
+### Context
+
+These are the properties available when using `Dialog.Context`, `useDialogContext` hook or `useDialog` hook.
+
+<ContextType id="dialog" />
 
 ## Accessibility
 

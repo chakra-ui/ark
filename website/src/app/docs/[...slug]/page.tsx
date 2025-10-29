@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
 import { Box, Container, Stack } from 'styled-system/jsx'
+import { CopyPageWidget } from '~/components/copy-page-widget'
 import { DocsFooter } from '~/components/navigation/docs/docs-footer'
 import { TableOfContent } from '~/components/table-of-content'
 import { Heading } from '~/components/ui/heading'
@@ -31,6 +32,7 @@ export default async function Page(props: Props) {
         <Stack gap="16" px={{ base: '0', xl: '8' }} width="full">
           <article
             className={css({
+              position: 'relative',
               lineHeight: '1.75',
               color: 'var(--colors-prose-body)',
               maxW: '45rem',
@@ -44,6 +46,9 @@ export default async function Page(props: Props) {
             <Text className="lead" color="fg.muted" my="6" size="xl">
               {currentPage.description}
             </Text>
+            <Box position={{ md: 'absolute' }} top="2" right="2">
+              <CopyPageWidget slug={currentPage.slug} content={currentPage.llm} />
+            </Box>
             <MDXContent code={currentPage.code} />
           </article>
 

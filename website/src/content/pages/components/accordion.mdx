@@ -49,6 +49,39 @@ By default, the Accordion is oriented vertically. Use the `orientation` prop to 
 
 <Example id="horizontal" />
 
+### Using the Root Provider
+
+The `RootProvider` component provides a context for the accordion. It accepts the value of the `useAccordion` hook. You
+can leverage it to access the component state and methods from outside the accordion.
+
+<Example id="root-provider" />
+
+> If you're using the `RootProvider` component, you don't need to use the `Root` component.
+
+### Accessing context
+
+Use the `Accordion.Context` component or `useAccordionContext` hook to access the state of an accordion. It exposes the
+following properties:
+
+- `focusedValue`: The value of the focused accordion item.
+- `value`: The value of the selected accordion items.
+- `setValue`: A method to set the selected accordion items.
+
+<Example id="context" />
+
+### Accessing the item context
+
+Use the `Accordion.ItemContext` component or `useAccordionItemContext` hook to access the state of an accordion item. It
+exposes the following properties:
+
+- `expanded`: Whether the accordion item is expanded.
+- `focused`: Whether the accordion item is focused.
+- `disabled`: Whether the accordion item is disabled.
+
+<Example id="item-context" />
+
+## Guides
+
 ### Animate Content Size
 
 Use the `--height` and/or `--width` CSS variables to animate the size of the content when it expands or closes:
@@ -85,40 +118,17 @@ Use the `--height` and/or `--width` CSS variables to animate the size of the con
 }
 ```
 
-### Using the Root Provider
-
-The `RootProvider` component provides a context for the accordion. It accepts the value of the `useAccordion` hook. You
-can leverage it to access the component state and methods from outside the accordion.
-
-<Example id="root-provider" />
-
-> If you're using the `RootProvider` component, you don't need to use the `Root` component.
-
-### Accessing context
-
-Use the `Accordion.Context` component or `useAccordionContext` hook to access the state of an accordion. It exposes the
-following properties:
-
-- `focusedValue`: The value of the focused accordion item.
-- `value`: The value of the selected accordion items.
-- `setValue`: A method to set the selected accordion items.
-
-<Example id="context" />
-
-### Accessing the item context
-
-Use the `Accordion.ItemContext` component or `useAccordionItemContext` hook to access the state of an accordion item. It
-exposes the following properties:
-
-- `expanded`: Whether the accordion item is expanded.
-- `focused`: Whether the accordion item is focused.
-- `disabled`: Whether the accordion item is disabled.
-
-<Example id="item-context" />
-
 ## API Reference
 
+### Props
+
 <ComponentTypes id="accordion" />
+
+### Context
+
+These are the properties available when using `Accordion.Context`, `useAccordionContext` hook or `useAccordion` hook.
+
+<ContextType id="accordion" />
 
 ## Accessibility
 
