@@ -6,10 +6,10 @@ description: Sync changelog updates from chakra-ui/zag repo to all Ark UI framew
 
 1. Fetch the latest CHANGELOG.md from the chakra-ui/zag repository
    - Use GitHub API or web fetch to get the changelog content
-   - Focus on the `## Unreleased` section
+   - Focus on the version that matches the latest zag.js version we have locally
 
 2. Parse the unreleased changes from Zag.js changelog
-   - Extract all entries under `## Unreleased`
+   - Extract all entries under `## <VERSION>`
    - Identify component-specific changes and general improvements
    - Filter out any Zag.js internal changes that don't affect Ark UI
 

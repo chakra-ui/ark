@@ -21,6 +21,17 @@
 
 - **Tabs**: Fix issue where `Tab.Content` does not respect exit animations when switching tabs.
 
+- **Date Picker**: Resolved a crash in the range date picker occurring when users typed the end date first by
+  implementing `null`/`undefined` checks for date property access.
+
+- **Radio Group**: Reverted to `offsetLeft`/`offsetTop` calculations to restore correct indicator positioning within
+  scrollable container contexts.
+
+- **Tour**:
+  - Corrected improper effect cleanup procedures
+  - Fixed wait step functionality
+  - Added step validation on mount to verify configuration validity
+
 ## [5.26.2] - 2025-10-18
 
 ### Fixed
