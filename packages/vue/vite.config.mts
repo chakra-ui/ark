@@ -14,7 +14,7 @@ export default defineConfig({
       staticImport: true,
       exclude: ['**/*.stories.*', '**/*.test.*', '**/tests/*', '**/examples/*', '**/setup-test.ts'],
       afterBuild: () => {
-        globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).map((file) => {
+        globbySync(['dist/**/*.d.ts', 'dist/**.d.ts']).forEach((file) => {
           copyFileSync(file, file.replace(/\.d\.ts$/, '.d.cts'))
         })
       },

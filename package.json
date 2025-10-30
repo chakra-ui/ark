@@ -50,6 +50,7 @@
     "@ark-ui/website"
   ],
   "overrides": {
-    "flexsearch": "0.8.212"
+    "flexsearch": "0.8.212",
+    "vite": "7.1.12"
   }
 }
