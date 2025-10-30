@@ -8,7 +8,7 @@ export interface UseImageCropperProps extends Optional<Omit<imageCropper.Props, 
 
 export interface UseImageCropperReturn extends imageCropper.Api<PropTypes> {}
 
-export const useImageCropper = (props: UseImageCropperProps = {}): UseImageCropperReturn => {
+export const useImageCropper = (props?: UseImageCropperProps): UseImageCropperReturn => {
   const id = useId()
   const { dir } = useLocaleContext()
   const { getRootNode } = useEnvironmentContext()
@@ -20,6 +20,6 @@ export const useImageCropper = (props: UseImageCropperProps = {}): UseImageCropp
     ...props,
   }
 
-  const service = useMachine(imageCropper.machine as any, machineProps)
-  return imageCropper.connect(service as any, normalizeProps)
+  const service = useMachine(imageCropper.machine, machineProps)
+  return imageCropper.connect(service, normalizeProps)
 }
