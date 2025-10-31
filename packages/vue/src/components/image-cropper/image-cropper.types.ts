@@ -1,17 +1,6 @@
 import type * as imageCropper from '@zag-js/image-cropper'
 import type { Rect } from '@zag-js/types'
 
-export interface IntlTranslations {
-  rootLabel?: string
-  rootRoleDescription?: string
-  previewLoading?: string
-  previewDescription?: (details: any) => string
-  selectionLabel?: (details: any) => string
-  selectionRoleDescription?: string
-  selectionInstructions?: string
-  selectionValueText?: (details: any) => string
-}
-
 export interface RootProps {
   /**
    * The ids of the image cropper elements
@@ -20,7 +9,7 @@ export interface RootProps {
   /**
    * Specifies the localized strings that identify accessibility elements and their states.
    */
-  translations?: IntlTranslations
+  translations?: imageCropper.IntlTranslations
   /**
    * The initial rectangle of the crop area.
    * If not provided, a smart default will be computed based on viewport size and aspect ratio.
