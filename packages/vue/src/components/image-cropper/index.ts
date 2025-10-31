@@ -24,6 +24,11 @@ export {
   type ImageCropperRootProps,
 } from './image-cropper-root.vue'
 export {
+  default as ImageCropperRootProvider,
+  type ImageCropperRootProviderBaseProps,
+  type ImageCropperRootProviderProps,
+} from './image-cropper-root-provider.vue'
+export {
   default as ImageCropperSelection,
   type ImageCropperSelectionProps,
   type ImageCropperSelectionBaseProps,
