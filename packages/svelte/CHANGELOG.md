@@ -21,6 +21,20 @@ description: All notable changes will be documented in this file.
 - **Svelte**: Refactored `mergeProps` to return class values as arrays, delegating resolution to Svelte's native class
   handling for improved support of conditional classes and objects.
 
+- **Date Picker**: Resolved a crash in the range date picker occurring when users typed the end date first by
+  implementing `null`/`undefined` checks for date property access.
+
+- **Radio Group**: Reverted to `offsetLeft`/`offsetTop` calculations to restore correct indicator positioning within
+  scrollable container contexts.
+
+- **Tabs**: Reverted to `offsetLeft`/`offsetTop` calculations to fix indicator positioning issues in scrollable
+  containers.
+
+- **Tour**:
+  - Corrected improper effect cleanup procedures
+  - Fixed wait step functionality
+  - Added step validation on mount to verify configuration validity
+
 ## [5.11.2] - 2025-10-18
 
 ### Fixed

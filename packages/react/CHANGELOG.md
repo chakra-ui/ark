@@ -12,6 +12,20 @@
 - **Slider**: Fixed a problem where the thumb offset shifted dynamically during dragging, resulting in value jumps. The
   offset now remains constant from the pointer throughout the drag operation.
 
+- **Date Picker**: Resolved a crash in the range date picker occurring when users typed the end date first by
+  implementing `null`/`undefined` checks for date property access.
+
+- **Radio Group**: Reverted to `offsetLeft`/`offsetTop` calculations to restore correct indicator positioning within
+  scrollable container contexts.
+
+- **Tabs**: Reverted to `offsetLeft`/`offsetTop` calculations to fix indicator positioning issues in scrollable
+  containers.
+
+- **Tour**:
+  - Corrected improper effect cleanup procedures
+  - Fixed wait step functionality
+  - Added step validation on mount to verify configuration validity
+
 ## [5.26.2] - 2025-10-18
 
 ### Fixed
