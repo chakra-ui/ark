@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.27.1] - 2025-11-02
+
 ### Fixed
 
 - **Dialog, Popover**: Improved shadow DOM support for interact outside and focus trap detection
