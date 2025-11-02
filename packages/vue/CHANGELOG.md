@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.27.0] - 2025-11-01
+
 ### Added
 
 - **Marquee** [New]: Initial release of marquee component for continuously scrolling content

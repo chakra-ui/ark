@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.12.0] - 2025-11-01
+
 ### Added
 
 - **Marquee** [New]: Initial release of marquee component for continuously scrolling content
