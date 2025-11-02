@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import { ImageCropper } from '../'
+import { ImageCropper } from '@ark-ui/solid/image-cropper'
 
 export const Basic = () => {
   const handlePositions = [
