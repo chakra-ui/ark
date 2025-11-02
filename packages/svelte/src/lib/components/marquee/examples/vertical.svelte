@@ -8,7 +8,7 @@
   <Marquee.Viewport>
     <Marquee.Content>
       {#each items as item}
-        <div style="padding: 1rem 0">{item}</div>
+        <Marquee.Item style="padding: 1rem 0">{item}</Marquee.Item>
       {/each}
     </Marquee.Content>
   </Marquee.Viewport>

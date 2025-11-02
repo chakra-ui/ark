@@ -107,6 +107,24 @@ export default defineConfig({
           code: { value: 'var(--font-roboto-mono), monospace' },
         },
       },
+      keyframes: {
+        marqueeX: {
+          from: {
+            transform: 'translateX(0%)',
+          },
+          to: {
+            transform: 'translateX(var(--marquee-translate))',
+          },
+        },
+        marqueeY: {
+          from: {
+            transform: 'translateY(0%)',
+          },
+          to: {
+            transform: 'translateY(var(--marquee-translate))',
+          },
+        },
+      },
       slotRecipes: {
         field,
         tour,

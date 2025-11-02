@@ -2,6 +2,7 @@ export type { PauseStatusDetails as MarqueePauseStatusDetails, Side as MarqueeSi
 export { MarqueeContent, type MarqueeContentBaseProps, type MarqueeContentProps } from './marquee-content'
 export { MarqueeContext, type MarqueeContextProps } from './marquee-context'
 export { MarqueeEdge, type MarqueeEdgeBaseProps, type MarqueeEdgeProps } from './marquee-edge'
+export { MarqueeItem, type MarqueeItemBaseProps, type MarqueeItemProps } from './marquee-item'
 export { MarqueeRoot, type MarqueeRootBaseProps, type MarqueeRootProps } from './marquee-root'
 export {
   MarqueeRootProvider,

@@ -11,6 +11,11 @@ export {
   type MarqueeEdgeProps as EdgeProps,
 } from './marquee-edge.svelte'
 export {
+  default as Item,
+  type MarqueeItemBaseProps as ItemBaseProps,
+  type MarqueeItemProps as ItemProps,
+} from './marquee-item.svelte'
+export {
   default as Root,
   type MarqueeRootBaseProps as RootBaseProps,
   type MarqueeRootProps as RootProps,

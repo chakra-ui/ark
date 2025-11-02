@@ -6,6 +6,7 @@ export {
 } from './marquee-content.svelte'
 export { default as MarqueeContext, type MarqueeContextProps } from './marquee-context.svelte'
 export { default as MarqueeEdge, type MarqueeEdgeBaseProps, type MarqueeEdgeProps } from './marquee-edge.svelte'
+export { default as MarqueeItem, type MarqueeItemBaseProps, type MarqueeItemProps } from './marquee-item.svelte'
 export { default as MarqueeRoot, type MarqueeRootBaseProps, type MarqueeRootProps } from './marquee-root.svelte'
 export {
   default as MarqueeRootProvider,

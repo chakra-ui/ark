@@ -11,9 +11,9 @@ export const ProgrammaticControl = () => {
         <Marquee.Viewport>
           <Marquee.Content>
             {items.map((item, i) => (
-              <div key={i} style={{ padding: '0 2rem' }}>
+              <Marquee.Item key={i} style={{ padding: '0 2rem' }}>
                 {item}
-              </div>
+              </Marquee.Item>
             ))}
           </Marquee.Content>
         </Marquee.Viewport>

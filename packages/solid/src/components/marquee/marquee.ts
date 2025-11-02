@@ -11,6 +11,11 @@ export {
   type MarqueeEdgeProps as EdgeProps,
 } from './marquee-edge'
 export {
+  MarqueeItem as Item,
+  type MarqueeItemBaseProps as ItemBaseProps,
+  type MarqueeItemProps as ItemProps,
+} from './marquee-item'
+export {
   MarqueeRoot as Root,
   type MarqueeRootBaseProps as RootBaseProps,
   type MarqueeRootProps as RootProps,

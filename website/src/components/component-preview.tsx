@@ -36,7 +36,7 @@ export const ComponentPreview = (props: Props) => {
         className="not-prose"
         my="12"
       >
-        <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }}>
+        <Flex justify="center" align="center" flex="1" p={{ base: '4', md: '6' }} style={{ width: '100%' }}>
           <Suspense fallback={<div>Loading...</div>}>
             <Demo />
           </Suspense>

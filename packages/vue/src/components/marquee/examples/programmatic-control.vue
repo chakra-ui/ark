@@ -10,7 +10,7 @@ const marquee = useMarquee({})
   <Marquee.RootProvider :value="marquee">
     <Marquee.Viewport>
       <Marquee.Content>
-        <div v-for="item in items" :key="item" style="padding: 0 2rem">{{ item }}</div>
+        <Marquee.Item v-for="item in items" :key="item" style="padding: 0 2rem">{{ item }}</Marquee.Item>
       </Marquee.Content>
     </Marquee.Viewport>
   </Marquee.RootProvider>

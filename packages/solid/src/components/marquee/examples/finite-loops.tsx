@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js'
+import { For, createSignal } from 'solid-js'
 import { Marquee } from '@ark-ui/solid/marquee'
 
 const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']
@@ -16,9 +16,7 @@ export const FiniteLoops = () => {
       >
         <Marquee.Viewport>
           <Marquee.Content>
-            {items.map((item) => (
-              <div style={{ padding: '0 2rem' }}>{item}</div>
-            ))}
+            <For each={items}>{(item) => <Marquee.Item style={{ padding: '0 2rem' }}>{item}</Marquee.Item>}</For>
           </Marquee.Content>
         </Marquee.Viewport>
       </Marquee.Root>

@@ -5,12 +5,12 @@ import { Icon } from '../ui/icon'
 
 export const Announcement = () => {
   return (
-    <NextLink href="/docs/ai/mcp-server">
+    <NextLink href="/docs/components/marquee">
       <Badge size="lg" variant="outline">
         <Icon color="colorPalette.default">
           <SparklesIcon />
         </Icon>
-        [New] MCP Server for AI agents
+        [New] Marquee component
         <ArrowRightIcon />
       </Badge>
     </NextLink>
