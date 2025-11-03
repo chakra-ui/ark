@@ -7,9 +7,9 @@ export const Vertical = () => (
     <Marquee.Viewport>
       <Marquee.Content>
         {items.map((item, i) => (
-          <div key={i} style={{ padding: '1rem 0' }}>
+          <Marquee.Item key={i} style={{ padding: '1rem 0' }}>
             {item}
-          </div>
+          </Marquee.Item>
         ))}
       </Marquee.Content>
     </Marquee.Viewport>

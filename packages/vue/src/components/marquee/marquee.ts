@@ -11,6 +11,11 @@ export {
   type MarqueeEdgeProps as EdgeProps,
 } from './marquee-edge.vue'
 export {
+  default as Item,
+  type MarqueeItemBaseProps as ItemBaseProps,
+  type MarqueeItemProps as ItemProps,
+} from './marquee-item.vue'
+export {
   default as Root,
   type MarqueeRootBaseProps as RootBaseProps,
   type MarqueeRootEmits as RootEmits,

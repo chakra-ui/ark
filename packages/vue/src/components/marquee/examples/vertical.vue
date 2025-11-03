@@ -8,7 +8,7 @@ const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape'
   <Marquee.Root side="bottom" style="height: 300px">
     <Marquee.Viewport>
       <Marquee.Content>
-        <div v-for="item in items" :key="item" style="padding: 1rem 0">{{ item }}</div>
+        <Marquee.Item v-for="item in items" :key="item" style="padding: 1rem 0">{{ item }}</Marquee.Item>
       </Marquee.Content>
     </Marquee.Viewport>
   </Marquee.Root>

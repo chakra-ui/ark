@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+## [5.27.1] - 2025-11-02
+
+### Fixed
+
+- **Dialog, Popover**: Improved shadow DOM support for interact outside and focus trap detection
+- **Marquee**: Fixed Firefox flicker and added GPU acceleration
+- **Dialog**: Fixed layout shift issue when using `scrollbar-gutter: stable` in CSS
+- **Slider**: Fixed `onValueChangeEnd` callback not triggering for programmatic value changes
+
 ## [5.27.0] - 2025-11-01
 
 ### Added
