@@ -10,14 +10,9 @@ const imageSrc = ref('https://images.unsplash.com/photo-1506905925346-21bda4d32d
     <ImageCropper.Viewport>
       <ImageCropper.Image :src="imageSrc" alt="Sample image" />
       <ImageCropper.Selection>
-        <ImageCropper.Handle position="top-left" />
-        <ImageCropper.Handle position="top" />
-        <ImageCropper.Handle position="top-right" />
-        <ImageCropper.Handle position="right" />
-        <ImageCropper.Handle position="bottom-right" />
-        <ImageCropper.Handle position="bottom" />
-        <ImageCropper.Handle position="bottom-left" />
-        <ImageCropper.Handle position="left" />
+        <ImageCropper.Handle v-for="position in ImageCropper.handles" :key="position" :position="position">
+          <div />
+        </ImageCropper.Handle>
       </ImageCropper.Selection>
     </ImageCropper.Viewport>
   </ImageCropper.Root>
