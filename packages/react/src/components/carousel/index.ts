@@ -4,6 +4,16 @@ export type {
   PageChangeDetails as CarouselPageChangeDetails,
 } from '@zag-js/carousel'
 export {
+  CarouselAutoplayIndicator,
+  type CarouselAutoplayIndicatorBaseProps,
+  type CarouselAutoplayIndicatorProps,
+} from './carousel-autoplay-indicator'
+export {
+  CarouselProgressText,
+  type CarouselProgressTextBaseProps,
+  type CarouselProgressTextProps,
+} from './carousel-progress-text'
+export {
   CarouselAutoplayTrigger,
   type CarouselAutoplayTriggerBaseProps,
   type CarouselAutoplayTriggerProps,

@@ -7,8 +7,9 @@ export const Autoplay = () => {
     <Carousel.Root slideCount={images.length} autoplay loop>
       <Carousel.Control>
         <Carousel.AutoplayTrigger>
-          <Carousel.Context>{({ isPlaying }) => (isPlaying ? 'Pause' : 'Play')}</Carousel.Context>
+          <Carousel.AutoplayIndicator paused="Pause" playing="Play" />
         </Carousel.AutoplayTrigger>
+        <Carousel.ProgressText />
       </Carousel.Control>
       <Carousel.IndicatorGroup>
         {images.map((_, index) => (

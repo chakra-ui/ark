@@ -1,4 +1,14 @@
 export type { PageChangeDetails, AutoplayStatusDetails, DragStatusDetails } from '@zag-js/carousel'
+export {
+  default as AutoplayIndicator,
+  type CarouselAutoplayIndicatorProps as AutoplayIndicatorProps,
+  type CarouselAutoplayIndicatorBaseProps as AutoplayIndicatorBaseProps,
+} from './carousel-autoplay-indicator.vue'
+export {
+  default as ProgressText,
+  type CarouselProgressTextProps as ProgressTextProps,
+  type CarouselProgressTextBaseProps as ProgressTextBaseProps,
+} from './carousel-progress-text.vue'
 export { default as Context, type CarouselContextProps as ContextProps } from './carousel-context.vue'
 export {
   default as Control,

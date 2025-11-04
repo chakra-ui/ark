@@ -1,5 +1,15 @@
 export type { AutoplayStatusDetails, DragStatusDetails, PageChangeDetails } from '@zag-js/carousel'
 export {
+  CarouselAutoplayIndicator as AutoplayIndicator,
+  type CarouselAutoplayIndicatorBaseProps as AutoplayIndicatorBaseProps,
+  type CarouselAutoplayIndicatorProps as AutoplayIndicatorProps,
+} from './carousel-autoplay-indicator'
+export {
+  CarouselProgressText as ProgressText,
+  type CarouselProgressTextBaseProps as ProgressTextBaseProps,
+  type CarouselProgressTextProps as ProgressTextProps,
+} from './carousel-progress-text'
+export {
   CarouselAutoplayTrigger as AutoplayTrigger,
   type CarouselAutoplayTriggerBaseProps as AutoplayTriggerBaseProps,
   type CarouselAutoplayTriggerProps as AutoplayTriggerProps,

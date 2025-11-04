@@ -6,6 +6,12 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- **Carousel**:
+  - Added `Carousel.AutoplayIndicator` component for conditionally rendering content based on autoplay state
+  - Added `Carousel.ProgressText` component for displaying current page progress (e.g., "1 / 5")
+
 ## [5.12.1] - 2025-11-02
 
 ### Fixed
