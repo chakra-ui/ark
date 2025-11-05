@@ -7,8 +7,14 @@
 <Carousel.Root defaultPage={0} slideCount={images.length} autoplay={{ delay: 3000 }}>
   <Carousel.Control>
     <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
-    <Carousel.AutoplayTrigger>Toggle Autoplay</Carousel.AutoplayTrigger>
+    <Carousel.AutoplayTrigger>
+      <Carousel.AutoplayIndicator>
+        {#snippet paused()}Pause{/snippet}
+        {#snippet playing()}Play{/snippet}
+      </Carousel.AutoplayIndicator>
+    </Carousel.AutoplayTrigger>
     <Carousel.NextTrigger>Next</Carousel.NextTrigger>
+    <Carousel.ProgressText />
   </Carousel.Control>
   <Carousel.IndicatorGroup>
     {#each images as _, index}

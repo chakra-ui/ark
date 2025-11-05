@@ -8,10 +8,12 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
   <Carousel.Root :slide-count="images.length" autoplay loop>
     <Carousel.Control>
       <Carousel.AutoplayTrigger>
-        <Carousel.Context v-slot="context">
-          {{ context.isPlaying ? 'Pause' : 'Play' }}
-        </Carousel.Context>
+        <Carousel.AutoplayIndicator>
+          <template #paused>Pause</template>
+          <template #playing>Play</template>
+        </Carousel.AutoplayIndicator>
       </Carousel.AutoplayTrigger>
+      <Carousel.ProgressText />
     </Carousel.Control>
     <Carousel.IndicatorGroup>
       <Carousel.Indicator v-for="(_, idx) in images" :key="idx" :index="idx" />
