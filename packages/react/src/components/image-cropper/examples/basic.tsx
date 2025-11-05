@@ -11,6 +11,8 @@ export const Basic = () => {
               <div />
             </ImageCropper.Handle>
           ))}
+          <ImageCropper.Grid axis="horizontal" />
+          <ImageCropper.Grid axis="vertical" />
         </ImageCropper.Selection>
       </ImageCropper.Viewport>
     </ImageCropper.Root>

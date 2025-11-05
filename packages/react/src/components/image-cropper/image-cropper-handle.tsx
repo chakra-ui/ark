@@ -1,15 +1,10 @@
-import type { HandlePosition } from '@zag-js/image-cropper'
+import type { HandleProps } from '@zag-js/image-cropper'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useImageCropperContext } from './use-image-cropper-context'
 
-export interface ImageCropperHandleBaseProps extends PolymorphicProps {
-  /**
-   * The position of the handle
-   */
-  position: HandlePosition
-}
+export interface ImageCropperHandleBaseProps extends PolymorphicProps, HandleProps {}
 export interface ImageCropperHandleProps extends HTMLProps<'div'>, ImageCropperHandleBaseProps {}
 
 export const ImageCropperHandle = forwardRef<HTMLDivElement, ImageCropperHandleProps>((props, ref) => {

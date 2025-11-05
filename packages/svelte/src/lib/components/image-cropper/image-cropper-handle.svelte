@@ -2,7 +2,7 @@
   import type { HandleProps } from '@zag-js/image-cropper'
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface ImageCropperHandleBaseProps extends HandleProps, PolymorphicProps<'div'>, RefAttribute {}
+  export interface ImageCropperHandleBaseProps extends PolymorphicProps<'div'>, RefAttribute, HandleProps {}
   export interface ImageCropperHandleProps extends Assign<HTMLProps<'div'>, ImageCropperHandleBaseProps> {}
 </script>
 

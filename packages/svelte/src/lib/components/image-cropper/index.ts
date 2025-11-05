@@ -9,6 +9,11 @@ export type {
 } from '@zag-js/image-cropper'
 export { default as ImageCropperContext, type ImageCropperContextProps } from './image-cropper-context.svelte'
 export {
+  default as ImageCropperGrid,
+  type ImageCropperGridBaseProps,
+  type ImageCropperGridProps,
+} from './image-cropper-grid.svelte'
+export {
   default as ImageCropperHandle,
   type ImageCropperHandleBaseProps,
   type ImageCropperHandleProps,

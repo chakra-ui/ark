@@ -14,6 +14,8 @@ export const Basic = () => {
               </ImageCropper.Handle>
             )}
           </For>
+          <ImageCropper.Grid axis="horizontal" />
+          <ImageCropper.Grid axis="vertical" />
         </ImageCropper.Selection>
       </ImageCropper.Viewport>
     </ImageCropper.Root>

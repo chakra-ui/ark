@@ -7,6 +7,7 @@ export type {
   ZoomChangeDetails as ImageCropperZoomChangeDetails,
 } from '@zag-js/image-cropper'
 export { ImageCropperContext, type ImageCropperContextProps } from './image-cropper-context'
+export { ImageCropperGrid, type ImageCropperGridBaseProps, type ImageCropperGridProps } from './image-cropper-grid'
 export {
   ImageCropperHandle,
   type ImageCropperHandleBaseProps,

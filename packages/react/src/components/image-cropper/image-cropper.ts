@@ -12,6 +12,11 @@ export type {
 export { handles } from '@zag-js/image-cropper'
 export { ImageCropperContext as Context, type ImageCropperContextProps as ContextProps } from './image-cropper-context'
 export {
+  ImageCropperGrid as Grid,
+  type ImageCropperGridBaseProps as GridBaseProps,
+  type ImageCropperGridProps as GridProps,
+} from './image-cropper-grid'
+export {
   ImageCropperHandle as Handle,
   type ImageCropperHandleBaseProps as HandleBaseProps,
   type ImageCropperHandleProps as HandleProps,

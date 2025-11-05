@@ -149,10 +149,3 @@ export type RootEmits = {
    */
   'update:crop': [crop: Rect]
 }
-
-export interface HandleProps {
-  /**
-   * The position of the handle
-   */
-  position: imageCropper.HandlePosition
-}

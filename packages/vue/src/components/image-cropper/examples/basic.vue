@@ -13,6 +13,8 @@ const imageSrc = ref('https://images.unsplash.com/photo-1506905925346-21bda4d32d
         <ImageCropper.Handle v-for="position in ImageCropper.handles" :key="position" :position="position">
           <div />
         </ImageCropper.Handle>
+        <ImageCropper.Grid axis="horizontal" />
+        <ImageCropper.Grid axis="vertical" />
       </ImageCropper.Selection>
     </ImageCropper.Viewport>
   </ImageCropper.Root>

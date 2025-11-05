@@ -8,6 +8,11 @@ export type {
 } from '@zag-js/image-cropper'
 export { default as ImageCropperContext, type ImageCropperContextProps } from './image-cropper-context.vue'
 export {
+  default as ImageCropperGrid,
+  type ImageCropperGridProps,
+  type ImageCropperGridBaseProps,
+} from './image-cropper-grid.vue'
+export {
   default as ImageCropperHandle,
   type ImageCropperHandleProps,
   type ImageCropperHandleBaseProps,

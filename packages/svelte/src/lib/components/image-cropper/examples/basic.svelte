@@ -11,6 +11,8 @@
           <div></div>
         </ImageCropper.Handle>
       {/each}
+      <ImageCropper.Grid axis="horizontal" />
+      <ImageCropper.Grid axis="vertical" />
     </ImageCropper.Selection>
   </ImageCropper.Viewport>
 </ImageCropper.Root>
