@@ -7,3 +7,7 @@ const meta: Meta = {
 export default meta
 
 export { Basic } from './examples/basic'
+export { Circle } from './examples/circle'
+export { Controlled } from './examples/controlled'
+export { Fixed } from './examples/fixed'
+export { RootProvider } from './examples/root-provider'
