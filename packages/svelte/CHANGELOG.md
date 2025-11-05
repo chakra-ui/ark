@@ -12,6 +12,12 @@ description: All notable changes will be documented in this file.
   - Added `Carousel.AutoplayIndicator` component for conditionally rendering content based on autoplay state
   - Added `Carousel.ProgressText` component for displaying current page progress (e.g., "1 / 5")
 
+### Fixed
+
+- **Combobox**:
+  - Fixed focus stealing in controlled open mode
+  - Removed problematic `aria-hidden` behavior to allow interaction with other page elements
+
 ## [5.12.1] - 2025-11-02
 
 ### Fixed
