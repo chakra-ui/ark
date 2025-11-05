@@ -1,7 +1,10 @@
 <script module lang="ts">
+  import type { Snippet } from 'svelte'
   import type { HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
 
-  export interface SliderValueTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {}
+  export interface SliderValueTextBaseProps extends PolymorphicProps<'div'>, RefAttribute {
+    children?: Snippet
+  }
   export interface SliderValueTextProps extends HTMLProps<'div'>, SliderValueTextBaseProps {}
 </script>
 
@@ -10,9 +13,15 @@
   import { Ark } from '../factory'
   import { useSliderContext } from './use-slider-context'
 
-  let { ref = $bindable(null), ...props }: SliderValueTextProps = $props()
+  let { ref = $bindable(null), children, ...props }: SliderValueTextProps = $props()
   const slider = useSliderContext()
   const mergedProps = $derived(mergeProps(slider().getValueTextProps(), props))
 </script>
 
-<Ark as="div" bind:ref {...mergedProps} />
+<Ark as="div" bind:ref {...mergedProps}>
+  {#if children}
+    {@render children()}
+  {:else}
+    {slider().value.join(', ')}
+  {/if}
+</Ark>

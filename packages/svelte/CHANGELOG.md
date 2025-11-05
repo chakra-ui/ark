@@ -14,6 +14,7 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
+- **Slider**: Fixed `Slider.ValueText` not displaying default value when no children provided
 - **Combobox**:
   - Fixed focus stealing in controlled open mode
   - Removed problematic `aria-hidden` behavior to allow interaction with other page elements
