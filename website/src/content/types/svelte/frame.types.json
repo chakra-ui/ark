@@ -1,1 +1,27 @@
-{}
+{
+  "Frame": {
+    "props": {
+      "head": {
+        "type": "Snippet<[]>",
+        "isRequired": false,
+        "description": "Additional content to be inserted into the frame's <head>"
+      },
+      "onMount": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Callback function to be executed when the frame is mounted"
+      },
+      "onUnmount": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Callback function to be executed when the frame is unmounted"
+      },
+      "ref": { "type": "HTMLIFrameElement", "isRequired": false, "description": "The bindable ref of the iframe" },
+      "srcdoc": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The source document to be displayed in the frame"
+      }
+    }
+  }
+}

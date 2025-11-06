@@ -99,7 +99,7 @@
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the hover card" },
       "openDelay": {
         "type": "number",
-        "defaultValue": "700",
+        "defaultValue": "600",
         "isRequired": false,
         "description": "The duration from when the mouse enters the trigger until the hover card opens."
       },

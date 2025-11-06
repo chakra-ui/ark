@@ -1,1 +1,12 @@
-{}
+{
+  "Portal": {
+    "props": {
+      "container": {
+        "type": "HTMLElement",
+        "isRequired": false,
+        "description": "The container to render the portal into."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "If true, the portal will not be rendered." }
+    }
+  }
+}

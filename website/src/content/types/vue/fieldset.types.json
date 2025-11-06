@@ -34,7 +34,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "disabled": {
-        "type": "boolean | 'false' | 'true'",
+        "type": "boolean | 'true' | 'false'",
         "isRequired": false,
         "description": "Indicates whether the fieldset is disabled."
       },
@@ -45,7 +45,7 @@
   "RootProvider": {
     "props": {
       "value": {
-        "type": "{ refs: { rootRef: Ref<null, null>; }; disabled: boolean | \"false\" | \"true\" | undefined; invalid: boolean | undefined; getRootProps: () => FieldsetHTMLAttributes; getLegendProps: () => { ...; }; getHelperTextProps: () => { ...; }; getErrorTextProps: () => HTMLAttributes; }",
+        "type": "{ refs: { rootRef: Ref<null, null>; }; disabled: boolean | \"true\" | \"false\" | undefined; invalid: boolean | undefined; getRootProps: () => FieldsetHTMLAttributes; getLegendProps: () => { ...; }; getHelperTextProps: () => { ...; }; getErrorTextProps: () => HTMLAttributes; }",
         "isRequired": true
       },
       "asChild": {

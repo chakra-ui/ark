@@ -47,6 +47,8 @@
   },
   "Root": {
     "props": {
+      "aria-label": { "type": "string", "isRequired": false, "description": "The aria-label of the slider." },
+      "aria-labelledby": { "type": "string", "isRequired": false, "description": "The aria-labelledby of the slider." },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -66,7 +68,7 @@
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the slider is disabled." },
       "getRootNode": {
-        "type": "() => Node | Document | ShadowRoot",
+        "type": "() => ShadowRoot | Node | Document",
         "isRequired": false,
         "description": "A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron."
       },

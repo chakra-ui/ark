@@ -63,6 +63,11 @@
         "isRequired": false,
         "description": "The initial number of data items per page when rendered.\nUse when you don't need to control the page size of the pagination."
       },
+      "getPageUrl": {
+        "type": "(details: PageUrlDetails) => string",
+        "isRequired": false,
+        "description": "Function to generate href attributes for pagination links.\nOnly used when `type` is set to \"link\"."
+      },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
         "type": "Partial<{\n  root: string\n  ellipsis: (index: number) => string\n  prevTrigger: string\n  nextTrigger: string\n  item: (page: number) => string\n}>",
@@ -98,7 +103,7 @@
         "description": "Specifies the localized strings that identifies the accessibility elements and their states"
       },
       "type": {
-        "type": "'link' | 'button'",
+        "type": "'button' | 'link'",
         "defaultValue": "\"button\"",
         "isRequired": false,
         "description": "The type of the trigger element"

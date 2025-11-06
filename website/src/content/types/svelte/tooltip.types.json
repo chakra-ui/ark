@@ -46,7 +46,7 @@
       "aria-label": { "type": "string", "isRequired": false, "description": "Custom label for the tooltip." },
       "closeDelay": {
         "type": "number",
-        "defaultValue": "500",
+        "defaultValue": "150",
         "isRequired": false,
         "description": "The close delay of the tooltip."
       },
@@ -115,7 +115,7 @@
       "open": { "type": "boolean", "isRequired": false, "description": "The controlled open state of the tooltip" },
       "openDelay": {
         "type": "number",
-        "defaultValue": "1000",
+        "defaultValue": "400",
         "isRequired": false,
         "description": "The open delay of the tooltip."
       },

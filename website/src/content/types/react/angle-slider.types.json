@@ -52,6 +52,16 @@
   },
   "Root": {
     "props": {
+      "aria-label": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The accessible label for the slider thumb."
+      },
+      "aria-labelledby": {
+        "type": "string",
+        "isRequired": false,
+        "description": "The id of the element that labels the slider thumb."
+      },
       "asChild": {
         "type": "boolean",
         "isRequired": false,
@@ -66,7 +76,7 @@
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the slider is disabled." },
       "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
       "ids": {
-        "type": "Partial<{ root: string; thumb: string; hiddenInput: string; control: string; valueText: string }>",
+        "type": "Partial<{\n  root: string\n  thumb: string\n  hiddenInput: string\n  control: string\n  valueText: string\n  label: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the machine.\nUseful for composition."
       },

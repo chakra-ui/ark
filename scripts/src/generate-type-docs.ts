@@ -54,19 +54,21 @@ async function extractPropertiesOfTypeName(
   for (const typeStatement of typeStatements) {
     const properties: TypeProperties = {}
     const type = typeChecker.getTypeAtLocation(typeStatement)
+    const typeName = (typeStatement as any).name.getText()
+
     for (const property of type.getProperties()) {
       const propertyName = property.getName()
       const type = typeChecker.getTypeOfSymbolAtLocation(property, sourceFile)
       const nonNullableType = type.getNonNullableType()
-      const typeName = typeChecker.typeToString(nonNullableType)
-      const isRequired = nonNullableType === type && typeName !== 'any'
+      const typeNameStr = typeChecker.typeToString(nonNullableType)
+      const isRequired = nonNullableType === type && typeNameStr !== 'any'
 
       const defaultValue = property.getJsDocTags().filter((tag) => tag.name === 'default')[0]?.text?.[0].text
 
       if (shouldIgnoreProperty(property)) {
         continue
       }
-      const prettyType = await tryPrettier(typeName)
+      const prettyType = await tryPrettier(typeNameStr)
       properties[propertyName] = {
         type: prettyType,
         defaultValue,
@@ -78,8 +80,9 @@ async function extractPropertiesOfTypeName(
             .join('\n') || undefined,
       }
     }
+
     if (Object.keys(properties).length) {
-      results[(typeStatement as any).name.getText()] = Object.fromEntries(
+      results[typeName] = Object.fromEntries(
         Object.entries(properties)
           .sort(([aName], [bName]) => aName.localeCompare(bName))
           .sort(([, a], [, b]) => (a.isRequired === b.isRequired ? 0 : a.isRequired ? -1 : 1))
@@ -98,12 +101,17 @@ async function extractPropertiesOfTypeName(
   return Object.keys(foo).length ? results : null
 }
 
-async function createTypeSearch(tsConfigPath: string, typeSearchOptions: TypeSearchOptions = {}) {
+async function createTypeSearch(
+  tsConfigPath: string,
+  componentPath: string,
+  typeSearchOptions: TypeSearchOptions = {},
+) {
   const { shouldIgnoreProperty } = typeSearchOptions
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile)
   const { options } = ts.parseJsonConfigFileContent(configFile.config, ts.sys, './dist')
 
-  const files = globbySync('./dist/')
+  // Scope file search to the specific component directory to avoid type name collisions
+  const files = globbySync(`${componentPath}/**/*.d.ts`)
   const program = ts.createProgram(files, options)
   const sourceFiles = program.getSourceFiles()
 
@@ -130,7 +138,13 @@ function getSourceFileName(symbol: ts.Symbol): string | undefined {
 
 function shouldIgnoreProperty(property: ts.Symbol) {
   const sourceFileName = getSourceFileName(property)
-  const isExternal = sourceFileName?.includes('node_modules') && !sourceFileName?.includes('@zag-js')
+
+  // Allow properties without source files (can happen with complex type resolution)
+  if (!sourceFileName) {
+    return false
+  }
+
+  const isExternal = sourceFileName.includes('node_modules') && !sourceFileName.includes('@zag-js')
   const isExcludedByName = ['children'].includes(property.getName())
   return isExternal || isExcludedByName
 }
@@ -144,12 +158,15 @@ function extractTypeExports(fileContent?: string) {
   return sourceFile
     .forEachDescendantAsArray()
     .filter((node): node is ExportDeclaration => Node.isExportDeclaration(node))
-    .flatMap((node) =>
-      node
+    .flatMap((node) => {
+      // Check if the export declaration itself is type-only (export type {})
+      const isTypeOnlyExport = node.isTypeOnly()
+
+      return node
         .getNamedExports()
-        .filter((namedExport) => namedExport.isTypeOnly())
-        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName()),
-    )
+        .filter((namedExport) => isTypeOnlyExport || namedExport.isTypeOnly())
+        .map((namedExport) => namedExport.getAliasNode()?.getText() ?? namedExport.getName())
+    })
     .sort()
 }
 
@@ -180,13 +197,19 @@ const extractTypesForFramework = async (framework: string) => {
     ),
   )
 
-  const searchType = await createTypeSearch('tsconfig.json', {
-    shouldIgnoreProperty,
-  })
-
   const result = await Promise.all(
     Object.entries(componentExportMap).flatMap(async ([component, typeExports]) => {
+      // Convert component path to dist path for type search
+      // e.g., src/components/foo -> dist/components/foo
+      const componentDistPath = component.replace(/^src\//, 'dist/')
+
+      // Create a type searcher scoped to this specific component to avoid type name collisions
+      const searchType = await createTypeSearch('tsconfig.json', componentDistPath, {
+        shouldIgnoreProperty,
+      })
+
       const resolvedTypeExports = await Promise.all(typeExports.map(async (type) => await searchType(type)))
+
       return {
         component,
         typeExports: resolvedTypeExports
@@ -272,8 +295,11 @@ const extractTypesForFramework = async (framework: string) => {
           return { ...acc, ...value }
         }, {})
 
+      const filename = `${path.basename(component)}.types.json`
+      const filePath = path.join(outDir, framework, filename)
+
       fs.outputFileSync(
-        path.join(outDir, framework, `${path.basename(component)}.types.json`),
+        filePath,
         await prettier.format(JSON.stringify(typeExportsWithElement), {
           ...prettierConfig,
           parser: 'json',

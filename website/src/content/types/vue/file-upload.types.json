@@ -46,7 +46,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "type": { "type": "ItemType", "isRequired": false }
     }
   },
   "ItemName": {
@@ -89,7 +90,8 @@
         "type": "boolean",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
-      }
+      },
+      "type": { "type": "ItemType", "isRequired": false }
     }
   },
   "ItemSizeText": {

@@ -1,1 +1,38 @@
-{}
+{
+  "FocusTrap": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "disabled": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the focus trap is disabled"
+      },
+      "fallbackFocus": {
+        "type": "FocusTarget",
+        "isRequired": false,
+        "description": "Element to focus if initialFocus is not found. By default, focuses on container element"
+      },
+      "initialFocus": {
+        "type": "FocusTargetOrFalse | VoidFunction",
+        "isRequired": false,
+        "description": "Element to focus when trap is activated. By default, focuses on first tabbable element"
+      },
+      "returnFocusOnDeactivate": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to return focus to the element that had focus when trap was activated"
+      },
+      "setReturnFocus": {
+        "type": "FocusTargetValueOrFalse | ((node: FocusableElement) => FocusTargetValueOrFalse)",
+        "isRequired": false,
+        "description": "Custom element to return focus to when trap is deactivated"
+      }
+    }
+  }
+}

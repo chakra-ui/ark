@@ -6,6 +6,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "canRename": {
+        "type": "(node: JsonNode<any>, indexPath: IndexPath) => boolean",
+        "isRequired": false,
+        "description": "Function to determine if a node can be renamed"
+      },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node value" },
       "collapseStringsAfterLength": { "type": "number", "isRequired": false },
       "data": { "type": "{}", "isRequired": false, "description": "The data to display in the tree." },
@@ -57,6 +62,11 @@
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
       "maxPreviewItems": { "type": "number", "isRequired": false },
+      "onBeforeRename": {
+        "type": "(details: RenameCompleteDetails) => boolean",
+        "isRequired": false,
+        "description": "Called before a rename is completed. Return false to prevent the rename."
+      },
       "onCheckedChange": {
         "type": "(details: CheckedChangeDetails) => void",
         "isRequired": false,
@@ -82,6 +92,16 @@
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
       },
+      "onRenameComplete": {
+        "type": "(details: RenameCompleteDetails) => void",
+        "isRequired": false,
+        "description": "Called when a node label rename is completed"
+      },
+      "onRenameStart": {
+        "type": "(details: RenameStartDetails<JsonNode<any>>) => void",
+        "isRequired": false,
+        "description": "Called when a node starts being renamed"
+      },
       "onSelectionChange": {
         "type": "(details: SelectionChangeDetails<JsonNode<any>>) => void",
         "isRequired": false,
@@ -91,7 +111,7 @@
       "ref": { "type": "Element", "isRequired": false },
       "selectedValue": { "type": "string[]", "isRequired": false, "description": "The controlled selected node value" },
       "selectionMode": {
-        "type": "'multiple' | 'single'",
+        "type": "'single' | 'multiple'",
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"

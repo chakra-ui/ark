@@ -3,19 +3,24 @@
     "props": {
       "value": { "type": "number", "isRequired": true, "description": "The byte size to format" },
       "unit": { "type": "'bit' | 'byte'", "isRequired": false, "description": "The unit granularity to display" },
-      "unitDisplay": { "type": "'long' | 'short' | 'narrow'", "isRequired": false, "description": "The unit display" }
+      "unitDisplay": { "type": "'short' | 'long' | 'narrow'", "isRequired": false, "description": "The unit display" },
+      "unitSystem": {
+        "type": "'decimal' | 'binary'",
+        "isRequired": false,
+        "description": "The unit system to use for formatting"
+      }
     }
   },
   "Number": {
     "props": {
       "value": { "type": "number", "isRequired": true, "description": "The byte size to format" },
-      "compactDisplay": { "type": "'long' | 'short'", "isRequired": false },
+      "compactDisplay": { "type": "'short' | 'long'", "isRequired": false },
       "currencyDisplay": { "type": "string", "isRequired": false },
       "currencySign": { "type": "string", "isRequired": false },
       "notation": { "type": "'standard' | 'scientific' | 'engineering' | 'compact'", "isRequired": false },
-      "signDisplay": { "type": "'auto' | 'always' | 'never' | 'exceptZero'", "isRequired": false },
+      "signDisplay": { "type": "'always' | 'auto' | 'never' | 'exceptZero'", "isRequired": false },
       "unit": { "type": "string", "isRequired": false },
-      "unitDisplay": { "type": "'long' | 'short' | 'narrow'", "isRequired": false }
+      "unitDisplay": { "type": "'short' | 'long' | 'narrow'", "isRequired": false }
     }
   },
   "RelativeTime": {

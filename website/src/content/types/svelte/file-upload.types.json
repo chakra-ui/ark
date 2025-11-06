@@ -52,7 +52,8 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
-      "ref": { "type": "Element", "isRequired": false }
+      "ref": { "type": "Element", "isRequired": false },
+      "type": { "type": "ItemType", "isRequired": false }
     }
   },
   "ItemName": {
@@ -124,7 +125,7 @@
   "Root": {
     "props": {
       "accept": {
-        "type": "FileMimeType | Record<string, string[]> | FileMimeType[]",
+        "type": "Record<string, string[]> | FileMimeType | FileMimeType[]",
         "isRequired": false,
         "description": "The accept file types"
       },

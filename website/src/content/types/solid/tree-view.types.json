@@ -119,6 +119,15 @@
       "node": { "type": "NonNullable<T>", "isRequired": false, "description": "The tree node" }
     }
   },
+  "NodeRenameInput": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'input'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
   "Root": {
     "props": {
       "collection": { "type": "TreeCollection<T>", "isRequired": true, "description": "The collection of tree nodes" },
@@ -126,6 +135,11 @@
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "canRename": {
+        "type": "(node: any, indexPath: IndexPath) => boolean",
+        "isRequired": false,
+        "description": "Function to determine if a node can be renamed"
       },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node value" },
       "defaultCheckedValue": {
@@ -173,6 +187,11 @@
         "isRequired": false,
         "description": "Function to load children for a node asynchronously.\nWhen provided, branches will wait for this promise to resolve before expanding."
       },
+      "onBeforeRename": {
+        "type": "(details: RenameCompleteDetails) => boolean",
+        "isRequired": false,
+        "description": "Called before a rename is completed. Return false to prevent the rename."
+      },
       "onCheckedChange": {
         "type": "(details: CheckedChangeDetails) => void",
         "isRequired": false,
@@ -197,6 +216,16 @@
         "type": "(details: LoadChildrenErrorDetails<any>) => void",
         "isRequired": false,
         "description": "Called when loading children fails for one or more nodes"
+      },
+      "onRenameComplete": {
+        "type": "(details: RenameCompleteDetails) => void",
+        "isRequired": false,
+        "description": "Called when a node label rename is completed"
+      },
+      "onRenameStart": {
+        "type": "(details: RenameStartDetails<any>) => void",
+        "isRequired": false,
+        "description": "Called when a node starts being renamed"
       },
       "onSelectionChange": {
         "type": "(details: SelectionChangeDetails<any>) => void",

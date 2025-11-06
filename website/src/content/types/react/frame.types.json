@@ -1,1 +1,21 @@
-{}
+{
+  "Frame": {
+    "props": {
+      "head": {
+        "type": "string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>",
+        "isRequired": false,
+        "description": "Additional content to be inserted into the frame's <head>"
+      },
+      "onMount": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Callback function to be executed when the frame is mounted"
+      },
+      "onUnmount": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Callback function to be executed when the frame is unmounted"
+      }
+    }
+  }
+}

@@ -1,1 +1,39 @@
-{}
+{
+  "Indicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "Root": {
+    "emits": {
+      "pressedChange": {
+        "type": "[pressed: boolean]",
+        "isRequired": true,
+        "description": "Event handler called when the pressed state of the toggle changes."
+      },
+      "update:pressed": {
+        "type": "[pressed: boolean]",
+        "isRequired": true,
+        "description": "The callback fired when the pressed state changes."
+      }
+    },
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "defaultPressed": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The default pressed state of the toggle."
+      },
+      "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the toggle is disabled." },
+      "pressed": { "type": "boolean", "isRequired": false, "description": "The pressed state of the toggle." }
+    }
+  }
+}

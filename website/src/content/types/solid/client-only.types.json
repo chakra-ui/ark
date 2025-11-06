@@ -1,5 +1,5 @@
 {
   "ClientOnly": {
-    "props": { "fallback": { "type": "number | boolean | Node | (string & {}) | ArrayElement", "isRequired": false } }
+    "props": { "fallback": { "type": "number | boolean | Node | ArrayElement | (string & {})", "isRequired": false } }
   }
 }

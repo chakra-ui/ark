@@ -130,6 +130,12 @@
         "isRequired": false,
         "description": "Whether to allow typing custom values in the input"
       },
+      "alwaysSubmitOnEnter": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to always submit on Enter key press, even if popup is open.\nUseful for single-field autocomplete forms where Enter should submit the form."
+      },
       "asChild": {
         "type": "(props: ParentProps<'div'>) => Element",
         "isRequired": false,
@@ -192,7 +198,7 @@
         "description": "Whether to synchronize the present change immediately or defer it to the next frame"
       },
       "inputBehavior": {
-        "type": "'none' | 'autocomplete' | 'autohighlight'",
+        "type": "'none' | 'autohighlight' | 'autocomplete'",
         "defaultValue": "\"none\"",
         "isRequired": false,
         "description": "Defines the auto-completion behavior of the combobox.\n\n- `autohighlight`: The first focused item is highlighted as the user types\n- `autocomplete`: Navigating the listbox with the arrow keys selects the item and the input is updated"

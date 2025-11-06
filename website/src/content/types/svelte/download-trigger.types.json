@@ -1,9 +1,15 @@
 {
   "DownloadTrigger": {
     "props": {
-      "fileName": { "type": "string", "isRequired": true, "description": "The name of the file." },
-      "mimeType": { "type": "DataUrlType", "isRequired": true, "description": "The mime type of the image." },
-      "quality": { "type": "number", "isRequired": false, "description": "The quality of the image." }
+      "data": { "type": "DownloadableData | (() => MaybePromise<DownloadableData>)", "isRequired": true },
+      "fileName": { "type": "string", "isRequired": true },
+      "mimeType": { "type": "FileMimeType", "isRequired": true },
+      "asChild": {
+        "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
     }
   }
 }

@@ -60,7 +60,7 @@
       },
       "disabled": { "type": "boolean", "isRequired": false, "description": "Whether the slider is disabled." },
       "ids": {
-        "type": "Partial<{ root: string; thumb: string; hiddenInput: string; control: string; valueText: string }>",
+        "type": "Partial<{\n  root: string\n  thumb: string\n  hiddenInput: string\n  control: string\n  valueText: string\n  label: string\n}>",
         "isRequired": false,
         "description": "The ids of the elements in the machine.\nUseful for composition."
       },

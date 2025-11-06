@@ -7,6 +7,11 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "canRename": {
+        "type": "(node: JsonNode<any>, indexPath: number[]) => boolean",
+        "isRequired": false,
+        "description": "Function to determine if a node can be renamed"
+      },
       "checkedValue": { "type": "string[]", "isRequired": false, "description": "The controlled checked node values" },
       "collapseStringsAfterLength": { "type": "number", "isRequired": false },
       "defaultCheckedValue": {
@@ -68,7 +73,7 @@
         "description": "The controlled selected node values"
       },
       "selectionMode": {
-        "type": "'multiple' | 'single'",
+        "type": "'single' | 'multiple'",
         "defaultValue": "\"single\"",
         "isRequired": false,
         "description": "Whether the tree supports multiple selection\n- \"single\": only one node can be selected\n- \"multiple\": multiple nodes can be selected"

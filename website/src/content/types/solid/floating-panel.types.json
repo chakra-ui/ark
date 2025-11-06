@@ -211,7 +211,7 @@
         "description": "Whether to allow the initial presence animation."
       },
       "strategy": {
-        "type": "'fixed' | 'absolute'",
+        "type": "'absolute' | 'fixed'",
         "defaultValue": "\"fixed\"",
         "isRequired": false,
         "description": "The strategy to use for positioning"

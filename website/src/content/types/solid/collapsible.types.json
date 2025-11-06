@@ -24,6 +24,16 @@
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
+      "collapsedHeight": {
+        "type": "string | number",
+        "isRequired": false,
+        "description": "The height of the content when collapsed."
+      },
+      "collapsedWidth": {
+        "type": "string | number",
+        "isRequired": false,
+        "description": "The width of the content when collapsed."
+      },
       "defaultOpen": {
         "type": "boolean",
         "isRequired": false,

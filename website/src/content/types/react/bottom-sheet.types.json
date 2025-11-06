@@ -1,0 +1,292 @@
+{
+  "Backdrop": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "CloseTrigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement"
+  },
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "draggable": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether the bottom sheet content is draggable.\nIf false, the bottom sheet can only be dragged by the grabber."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "GrabberIndicator": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Grabber": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Root": {
+    "props": {
+      "activeSnapPoint": {
+        "type": "string | number",
+        "isRequired": false,
+        "description": "The currently active snap point."
+      },
+      "closeOnEscape": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to close the bottom sheet when the escape key is pressed."
+      },
+      "closeOnInteractOutside": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to close the bottom sheet when the outside is clicked."
+      },
+      "closeThreshold": {
+        "type": "number",
+        "defaultValue": "0.25",
+        "isRequired": false,
+        "description": "The threshold distance for dismissing the bottom sheet."
+      },
+      "defaultActiveSnapPoint": {
+        "type": "string | number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The default active snap point of the bottom sheet."
+      },
+      "defaultOpen": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "The initial open state of the bottom sheet."
+      },
+      "finalFocusEl": {
+        "type": "() => MaybeElement",
+        "isRequired": false,
+        "description": "Element to receive focus when the sheet is closed."
+      },
+      "id": { "type": "string", "isRequired": false, "description": "The unique identifier of the machine." },
+      "ids": {
+        "type": "Partial<{\n  backdrop: string\n  content: string\n  trigger: string\n  grabber: string\n  grabberIndicator: string\n  closeTrigger: string\n}>",
+        "isRequired": false,
+        "description": "The ids of the elements in the bottom sheet. Useful for composition."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "initialFocusEl": {
+        "type": "() => MaybeElement",
+        "isRequired": false,
+        "description": "Element to receive focus when the sheet is opened."
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "modal": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent pointer interaction outside the element and hide all content below it."
+      },
+      "onActiveSnapPointChange": {
+        "type": "(details: SnapPointChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the active snap point changes."
+      },
+      "onEscapeKeyDown": {
+        "type": "(event: KeyboardEvent) => void",
+        "isRequired": false,
+        "description": "Function called when the escape key is pressed"
+      },
+      "onExitComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "onFocusOutside": {
+        "type": "(event: FocusOutsideEvent) => void",
+        "isRequired": false,
+        "description": "Function called when the focus is moved outside the component"
+      },
+      "onInteractOutside": {
+        "type": "(event: InteractOutsideEvent) => void",
+        "isRequired": false,
+        "description": "Function called when an interaction happens outside the component"
+      },
+      "onOpenChange": {
+        "type": "(details: OpenChangeDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the open state changes."
+      },
+      "onPointerDownOutside": {
+        "type": "(event: PointerDownOutsideEvent) => void",
+        "isRequired": false,
+        "description": "Function called when the pointer is pressed down outside the component"
+      },
+      "onRequestDismiss": {
+        "type": "(event: LayerDismissEvent) => void",
+        "isRequired": false,
+        "description": "Function called when this layer is closed due to a parent layer being closed"
+      },
+      "open": { "type": "boolean", "isRequired": false, "description": "Whether the bottom sheet is open." },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "preventDragOnScroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent dragging on scrollable elements.\nWhen enabled, the sheet will not start dragging if the user is interacting with a scrollable element."
+      },
+      "preventScroll": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to prevent scrolling behind the sheet when it's opened"
+      },
+      "restoreFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to restore focus to the element that had focus before the sheet was opened."
+      },
+      "role": {
+        "type": "'dialog' | 'alertdialog'",
+        "defaultValue": "\"dialog\"",
+        "isRequired": false,
+        "description": "The sheet's role"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "snapPoints": {
+        "type": "(string | number)[]",
+        "defaultValue": "[1]",
+        "isRequired": false,
+        "description": "The snap points of the bottom sheet.\nArray of numbers or strings representing the snap points."
+      },
+      "swipeVelocityThreshold": {
+        "type": "number",
+        "defaultValue": "700",
+        "isRequired": false,
+        "description": "The threshold velocity (in pixels/s) for closing the bottom sheet."
+      },
+      "trapFocus": {
+        "type": "boolean",
+        "defaultValue": "true",
+        "isRequired": false,
+        "description": "Whether to trap focus inside the sheet when it's opened."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseBottomSheetReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "immediate": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether to synchronize the present change immediately or defer it to the next frame"
+      },
+      "lazyMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to enable lazy mounting"
+      },
+      "onExitComplete": {
+        "type": "VoidFunction",
+        "isRequired": false,
+        "description": "Function called when the animation ends in the closed state"
+      },
+      "present": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Whether the node is present (controlled by the user)"
+      },
+      "skipAnimationOnMount": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to allow the initial presence animation."
+      },
+      "unmountOnExit": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to unmount on exit."
+      }
+    }
+  },
+  "Title": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLHeadingElement"
+  },
+  "Trigger": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLButtonElement"
+  }
+}

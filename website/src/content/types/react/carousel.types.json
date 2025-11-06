@@ -1,4 +1,18 @@
 {
+  "AutoplayIndicator": {
+    "props": {
+      "paused": {
+        "type": "string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>",
+        "isRequired": false,
+        "description": "The content to render when autoplay is paused."
+      },
+      "playing": {
+        "type": "string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>",
+        "isRequired": false,
+        "description": "The content to render when autoplay is playing."
+      }
+    }
+  },
   "AutoplayTrigger": {
     "props": {
       "asChild": {
@@ -65,7 +79,7 @@
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },
       "snapAlign": {
-        "type": "'center' | 'end' | 'start'",
+        "type": "'center' | 'start' | 'end'",
         "defaultValue": "\"start\"",
         "isRequired": false,
         "description": "The snap alignment of the item."
@@ -92,6 +106,16 @@
       }
     },
     "element": "HTMLButtonElement"
+  },
+  "ProgressText": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLSpanElement"
   },
   "Root": {
     "props": {

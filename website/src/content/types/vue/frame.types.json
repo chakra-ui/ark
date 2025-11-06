@@ -1,1 +1,11 @@
-{}
+{
+  "Frame": {
+    "props": {
+      "head": {
+        "type": "VNode<RendererNode, RendererElement, { [key: string]: any; }> | VNode<RendererNode, RendererElement, { ...; }>[]",
+        "isRequired": false
+      },
+      "srcDoc": { "type": "string", "isRequired": false }
+    }
+  }
+}

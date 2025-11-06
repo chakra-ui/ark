@@ -1,0 +1,144 @@
+{
+  "Content": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Edge": {
+    "props": {
+      "side": { "type": "Side", "isRequired": true, "description": "The side where the edge gradient should appear." },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Item": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "autoFill": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to automatically duplicate content to fill the container."
+      },
+      "defaultPaused": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the marquee is paused by default."
+      },
+      "delay": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The delay before the animation starts (in seconds)."
+      },
+      "ids": {
+        "type": "Partial<{ root: string; viewport: string; content: (index: number) => string }>",
+        "isRequired": false,
+        "description": "The ids of the elements in the marquee. Useful for composition."
+      },
+      "loopCount": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The number of times to loop the animation (0 = infinite)."
+      },
+      "onComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the marquee completes all loops and stops.\nOnly fires for finite loops (loopCount > 0)."
+      },
+      "onLoopComplete": {
+        "type": "() => void",
+        "isRequired": false,
+        "description": "Function called when the marquee completes one loop iteration."
+      },
+      "onPauseChange": {
+        "type": "(details: PauseStatusDetails) => void",
+        "isRequired": false,
+        "description": "Function called when the pause status changes."
+      },
+      "paused": { "type": "boolean", "isRequired": false, "description": "Whether the marquee is paused." },
+      "pauseOnInteraction": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to pause the marquee on user interaction (hover, focus)."
+      },
+      "reverse": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether to reverse the animation direction."
+      },
+      "side": {
+        "type": "Side",
+        "defaultValue": "\"start\"",
+        "isRequired": false,
+        "description": "The side/direction the marquee scrolls towards."
+      },
+      "spacing": {
+        "type": "string",
+        "defaultValue": "\"1rem\"",
+        "isRequired": false,
+        "description": "The spacing between marquee items."
+      },
+      "speed": {
+        "type": "number",
+        "defaultValue": "50",
+        "isRequired": false,
+        "description": "The speed of the marquee animation in pixels per second."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "The localized messages to use."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseMarqueeReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Viewport": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  }
+}

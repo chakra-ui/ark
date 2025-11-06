@@ -67,7 +67,7 @@
       },
       "ref": { "type": "Element", "isRequired": false },
       "snapAlign": {
-        "type": "'center' | 'end' | 'start'",
+        "type": "'start' | 'end' | 'center'",
         "defaultValue": "\"start\"",
         "isRequired": false,
         "description": "The snap alignment of the item."
