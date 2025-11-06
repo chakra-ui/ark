@@ -12,6 +12,10 @@ description: All notable changes will be documented in this file.
   - Added `Carousel.AutoplayIndicator` component for conditionally rendering content based on autoplay state
   - Added `Carousel.ProgressText` component for displaying current page progress (e.g., "1 / 5")
 
+### Changed
+
+- **useListCollection**: Updated `initialItems` to accept `readonly` arrays for better compatibility with immutable data patterns.
+
 ### Fixed
 
 - **Slider**: Fixed `Slider.ValueText` not displaying default value when no children provided

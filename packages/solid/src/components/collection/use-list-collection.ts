@@ -6,7 +6,7 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   /**
    * The initial items to display in the collection.
    */
-  initialItems: T[]
+  initialItems: T[] | readonly T[]
   /**
    * The filter function to use to filter the items.
    */
@@ -29,15 +29,15 @@ export function useListCollection<T>(props: MaybeAccessor<UseListCollectionProps
     return localProps.initialItems
   }
 
-  const [items, setItemsImpl] = createSignal<T[]>(init())
+  const [items, setItemsImpl] = createSignal<T[] | readonly T[]>(init())
   const [filterText, setFilterText] = createSignal('')
 
-  const setItems = (newItems: T[]) => {
+  const setItems = (newItems: T[] | readonly T[]) => {
     setItemsImpl(newItems)
     setFilterText('')
   }
 
-  const create = (itemsToCreate: T[]) => {
+  const create = (itemsToCreate: T[] | readonly T[]) => {
     const [, collectionOptions] = splittedProps()
     return createListCollection({ ...collectionOptions, items: itemsToCreate })
   }

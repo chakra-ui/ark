@@ -6,7 +6,7 @@ export interface UseListCollectionProps<T> extends Omit<CollectionOptions<T>, 'i
   /**
    * The initial items to display in the collection.
    */
-  initialItems: T[]
+  initialItems: T[] | readonly T[]
   /**
    * The filter function to use to filter the items.
    */
@@ -24,15 +24,15 @@ export function useListCollection<T>(props: MaybeFunction<UseListCollectionProps
     return [{ initialItems, filter, limit }, collectionOptions]
   })
 
-  let items = $state<T[]>(untrack(() => localProps.initialItems))
+  let items = $state<T[] | readonly T[]>(untrack(() => localProps.initialItems))
   let filterText = $state('')
 
-  const setItems = (newItems: T[]) => {
+  const setItems = (newItems: T[] | readonly T[]) => {
     items = newItems
     filterText = ''
   }
 
-  const create = (itemsToCreate: T[]) => {
+  const create = (itemsToCreate: T[] | readonly T[]) => {
     return createListCollection({ ...collectionOptions, items: itemsToCreate })
   }
 
