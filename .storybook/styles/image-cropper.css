@@ -1,0 +1,56 @@
+[data-scope='image-cropper'][data-part='root'] {
+  max-width: fit-content;
+}
+
+[data-scope='image-cropper'][data-part='selection'] {
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: move;
+  &[data-shape='circle'] {
+    border-radius: 50%;
+  }
+}
+
+[data-scope='image-cropper'][data-part='image'] {
+  display: block;
+  max-width: 100%;
+}
+
+[data-scope='image-cropper'][data-part='handle'] {
+  --handle-size: 12px;
+  width: var(--handle-size);
+  height: var(--handle-size);
+
+  &[data-position='n'],
+  &[data-position='s'] {
+    height: 6px;
+  }
+
+  &[data-position='e'],
+  &[data-position='w'] {
+    width: 6px;
+  }
+
+  & > div {
+    width: calc(var(--handle-size) / 2);
+    height: calc(var(--handle-size) / 2);
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+[data-scope='image-cropper'][data-part='grid'] {
+  --grid-color: rgba(255, 255, 255, 0.7);
+  --grid-line-width: 1px;
+
+  &[data-axis='vertical'] {
+    border-inline: var(--grid-line-width) solid var(--grid-color);
+  }
+
+  &[data-axis='horizontal'] {
+    border-block: var(--grid-line-width) solid var(--grid-color);
+  }
+}
