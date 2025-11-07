@@ -3,7 +3,7 @@ import { DatePicker } from '@ark-ui/vue/date-picker'
 </script>
 
 <template>
-  <DatePicker.Root open>
+  <DatePicker.Root inline>
     <DatePicker.View view="day">
       <DatePicker.Context v-slot="api">
         <DatePicker.ViewControl>

@@ -47,10 +47,10 @@ To create a date picker that allows multiple months, you need to:
 
 ### Inline
 
-In some cases, you might want to display an inline date picker without a popup. This can be achieved by passing the
-`inline` prop and avoiding the use of `Portal`, `Positioner` and `Content` components.
+Use the `inline` prop to display the date picker directly on the page, without a popup.
 
-> Important to note that inline date picker doesn't use the `Portal` and `Positioner` components.
+> When using the `inline` prop, omit the `Portal`, `Positioner`, and `Content` components to render the calendar inline
+> within your layout.
 
 <Example id="inline" />
 
@@ -71,7 +71,8 @@ This allows you to have maximum control over the date picker programmatically.
 
 ### Context
 
-These are the properties available when using `UdateUpicker.Context`, `useUdateUpickerContext` hook or `useUdateUpicker` hook.
+These are the properties available when using `UdateUpicker.Context`, `useUdateUpickerContext` hook or `useUdateUpicker`
+hook.
 
 <ContextType id="date-picker" />
 

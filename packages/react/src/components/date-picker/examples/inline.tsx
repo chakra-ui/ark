@@ -2,7 +2,7 @@ import { DatePicker } from '@ark-ui/react/date-picker'
 
 export const Inline = () => {
   return (
-    <DatePicker.Root open>
+    <DatePicker.Root inline>
       <DatePicker.Input />
       <DatePicker.View view="day">
         <DatePicker.Context>

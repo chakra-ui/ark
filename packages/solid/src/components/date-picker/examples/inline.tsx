@@ -3,7 +3,7 @@ import { Index } from 'solid-js'
 
 export const Inline = () => {
   return (
-    <DatePicker.Root open>
+    <DatePicker.Root inline>
       <DatePicker.Context>
         {(context) => (
           <>

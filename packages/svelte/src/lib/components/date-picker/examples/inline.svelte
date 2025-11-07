@@ -2,7 +2,7 @@
   import { DatePicker } from '@ark-ui/svelte/date-picker'
 </script>
 
-<DatePicker.Root open>
+<DatePicker.Root inline>
   <DatePicker.Input />
   <DatePicker.View view="day">
     <DatePicker.Context>
