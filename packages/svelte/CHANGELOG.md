@@ -18,7 +18,9 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
-- **Slider**: Fixed `Slider.ValueText` not displaying default value when no children provided
+- **Slider**:
+  - Fixed `Slider.ValueText` not displaying default value when no children provided
+  - Fixed `SliderThumbPropsProvider` to use modern Svelte 5 runes (`$props()` and `{@render children?.()}`)
 - **Combobox**:
   - Fixed focus stealing in controlled open mode
   - Removed problematic `aria-hidden` behavior to allow interaction with other page elements

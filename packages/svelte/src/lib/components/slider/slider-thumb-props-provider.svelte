@@ -1,9 +1,18 @@
-<script lang="ts">
+<script module lang="ts">
+  import type { Snippet } from 'svelte'
   import type { ThumbProps } from '@zag-js/slider'
+
+  export interface SliderThumbPropsProviderProps {
+    value: ThumbProps
+    children?: Snippet
+  }
+</script>
+
+<script lang="ts">
   import { SliderThumbPropsProvider } from './use-slider-thumb-props-context'
 
-  export let value: ThumbProps
+  let { value, children }: SliderThumbPropsProviderProps = $props()
   SliderThumbPropsProvider(value)
 </script>
 
-<slot />
+{@render children?.()}
