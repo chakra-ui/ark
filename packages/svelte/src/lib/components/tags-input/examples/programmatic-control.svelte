@@ -9,9 +9,7 @@
   <div style="display: flex; gap: 8px; margin-bottom: 12px;">
     <button type="button" onclick={() => tags().addValue('React')}>Add React</button>
     <button type="button" onclick={() => tags().addValue('Solid')}>Add Solid</button>
-    <button type="button" onclick={() => tags().setValue(['Vue', 'Svelte'])}>
-      Set to Vue & Svelte
-    </button>
+    <button type="button" onclick={() => tags().setValue(['Vue', 'Svelte'])}>Set to Vue & Svelte</button>
     <button type="button" onclick={() => tags().clearValue()}>Clear All</button>
   </div>
 

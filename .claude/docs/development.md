@@ -115,6 +115,7 @@ bun run svelte dev     # Port 6006
 ### Component Development Process
 
 1. **Component Structure Setup:**
+
    ```bash
    packages/{framework}/src/components/{component-name}/
    ├── index.{tsx,ts}                     # Main export file
@@ -132,6 +133,7 @@ bun run svelte dev     # Port 6006
    ```
 
 2. **Anatomy Definition (Required):**
+
    ```ts
    // {component}.anatomy.ts
    import { createAnatomy } from '@zag-js/anatomy'
@@ -155,6 +157,7 @@ bun run svelte dev     # Port 6006
 ### Story File Requirements
 
 **Naming Convention:**
+
 ```ts
 // {component}.stories.{tsx,vue,svelte}
 export default {
@@ -167,6 +170,7 @@ export const WithField = () => ({ ... })
 ```
 
 **Story Categories:**
+
 - **Basic**: Default component usage
 - **Controlled**: External state management
 - **Variants**: Different visual styles
@@ -176,11 +180,13 @@ export const WithField = () => ({ ... })
 ### Example Development Guidelines
 
 **Example Naming Requirements:**
+
 - Use descriptive, consistent names across frameworks
 - Follow existing patterns from similar components
 - Include common scenarios (basic, controlled, disabled, invalid)
 
 **Framework Consistency:**
+
 ```bash
 # All frameworks should have equivalent examples
 packages/react/src/components/field/examples/controlled.tsx
@@ -190,6 +196,7 @@ packages/svelte/src/lib/components/field/examples/controlled.svelte
 ```
 
 **Example Documentation:**
+
 - Update `COMPONENT_EXAMPLES_DIFF.md` when adding examples
 - Include description of what the example demonstrates
 - Note framework-specific implementation details
@@ -197,6 +204,7 @@ packages/svelte/src/lib/components/field/examples/controlled.svelte
 ### Type System Requirements
 
 **Required Type Exports:**
+
 ```ts
 // Every component part must export both BaseProps and Props
 export interface ComponentRootBaseProps extends UseComponentProps, PolymorphicProps {}
@@ -210,6 +218,7 @@ export type RootEmits = { ... }
 ### Quality Checklist
 
 **Before Component Completion:**
+
 - [ ] Anatomy file created and exported
 - [ ] All component parts have BaseProps and Props types
 - [ ] Context provider implemented
@@ -220,6 +229,7 @@ export type RootEmits = { ... }
 - [ ] `COMPONENT_EXAMPLES_DIFF.md` updated
 
 **Before Release:**
+
 - [ ] All frameworks have equivalent functionality
 - [ ] Examples work identically across frameworks
 - [ ] Types generated for website documentation
@@ -228,7 +238,8 @@ export type RootEmits = { ... }
 
 ## Website Development
 
-The Ark UI documentation website is built with Next.js and uses several key patterns for content management and documentation generation.
+The Ark UI documentation website is built with Next.js and uses several key patterns for content management and
+documentation generation.
 
 ### Website Structure
 

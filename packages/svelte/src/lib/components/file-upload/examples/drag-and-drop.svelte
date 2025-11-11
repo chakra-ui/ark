@@ -3,9 +3,7 @@
 </script>
 
 <FileUpload.Root accept="image/*" maxFiles={3}>
-  <FileUpload.Dropzone>
-    Drag and drop your images here
-  </FileUpload.Dropzone>
+  <FileUpload.Dropzone>Drag and drop your images here</FileUpload.Dropzone>
 
   <FileUpload.ItemGroup>
     <FileUpload.Context>

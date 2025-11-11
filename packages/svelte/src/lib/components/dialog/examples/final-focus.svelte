@@ -18,8 +18,8 @@
           When this dialog closes, focus will return to the button above instead of the trigger.
         </Dialog.Description>
         <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

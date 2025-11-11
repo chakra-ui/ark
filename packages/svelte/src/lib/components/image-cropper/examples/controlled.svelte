@@ -10,10 +10,7 @@
 
   <ImageCropper.Root bind:zoom>
     <ImageCropper.Viewport>
-      <ImageCropper.Image
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800"
-        alt="Sample"
-      />
+      <ImageCropper.Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="Sample" />
       <ImageCropper.Selection>
         {#each ImageCropper.handles as position}
           <ImageCropper.Handle {position}>

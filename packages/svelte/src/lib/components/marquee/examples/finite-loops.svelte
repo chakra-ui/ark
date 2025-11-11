@@ -7,11 +7,7 @@
   let completedCount = $state(0)
 </script>
 
-<Marquee.Root
-  loopCount={3}
-  onLoopComplete={() => loopCount++}
-  onComplete={() => completedCount++}
->
+<Marquee.Root loopCount={3} onLoopComplete={() => loopCount++} onComplete={() => completedCount++}>
   <Marquee.Viewport>
     <Marquee.Content>
       {#each items as item}

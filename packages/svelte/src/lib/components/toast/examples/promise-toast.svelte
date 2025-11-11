@@ -49,7 +49,10 @@
       <Toast.Root>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
           {#if icon}
-            <svelte:component this={icon} style={toast().type === 'loading' ? 'animation: spin 1s linear infinite;' : ''} />
+            <svelte:component
+              this={icon}
+              style={toast().type === 'loading' ? 'animation: spin 1s linear infinite;' : ''}
+            />
           {/if}
           <div style="flex: 1;">
             <Toast.Title>{toast().title}</Toast.Title>

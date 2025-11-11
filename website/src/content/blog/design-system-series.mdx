@@ -533,11 +533,11 @@ Start by extending your `panda.config.ts` with the **semantic tokens,** **shadow
   },
 ```
 
-### Creating the Button Recipe 
+### Creating the Button Recipe
 
-Buttons appear across multiple components (menus, dialogs, etc.), so create a reusable button
-recipe that will be used across different components. Since buttons don't have multiple parts, we'll define its styles using
-Panda's [atomic recipe](https://panda-css.com/docs/concepts/recipes#atomic-recipe-or-cva) `cva()` function.
+Buttons appear across multiple components (menus, dialogs, etc.), so create a reusable button recipe that will be used
+across different components. Since buttons don't have multiple parts, we'll define its styles using Panda's
+[atomic recipe](https://panda-css.com/docs/concepts/recipes#atomic-recipe-or-cva) `cva()` function.
 
 Add the following recipe in your `button.ts` file:
 
@@ -670,7 +670,6 @@ export const buttonRecipe = cva({
   `variants` represents a category of variation (e.g., `size`, `variant`), and each nested object defines the specific
   styles for each option within that category.
 - The `defaultVariants` section sets the **fallback values** when no specific size or variant is passed.
-
 
 With the global styles properly set up, we're now ready to start styling individual components. Let's dive in!
 

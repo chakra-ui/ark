@@ -19,8 +19,8 @@
         <input bind:this={inputRef} type="text" placeholder="Enter your name..." />
         <input type="email" placeholder="Enter your email..." />
         <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

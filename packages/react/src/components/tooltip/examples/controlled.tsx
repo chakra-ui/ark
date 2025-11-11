@@ -8,7 +8,7 @@ export const Controlled = () => {
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
         Toggle
       </button>
-      <Tooltip.Root open={isOpen} onOpenChange={({open}) => setIsOpen(open)}>
+      <Tooltip.Root open={isOpen} onOpenChange={({ open }) => setIsOpen(open)}>
         <Tooltip.Trigger>Hover Me</Tooltip.Trigger>
         <Tooltip.Positioner>
           <Tooltip.Content>I am a tooltip!</Tooltip.Content>

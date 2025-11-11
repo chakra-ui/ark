@@ -2,7 +2,10 @@
   import type { Assign, HTMLProps, Optional, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { UseMarqueeProps } from './use-marquee.svelte'
 
-  export interface MarqueeRootBaseProps extends Optional<UseMarqueeProps, 'id'>, PolymorphicProps<'div'>, RefAttribute {}
+  export interface MarqueeRootBaseProps
+    extends Optional<UseMarqueeProps, 'id'>,
+      PolymorphicProps<'div'>,
+      RefAttribute {}
   export interface MarqueeRootProps extends Assign<HTMLProps<'div'>, MarqueeRootBaseProps> {}
 </script>
 

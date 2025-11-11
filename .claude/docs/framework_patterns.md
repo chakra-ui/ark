@@ -12,7 +12,7 @@ When using icons from Lucide in examples, follow these framework-specific import
 import { XIcon } from 'lucide-react'
 
 // Usage
-<TagsInput.ItemDeleteTrigger>
+;<TagsInput.ItemDeleteTrigger>
   <XIcon />
 </TagsInput.ItemDeleteTrigger>
 ```
@@ -23,7 +23,7 @@ import { XIcon } from 'lucide-react'
 import { XIcon } from 'lucide-solid'
 
 // Usage
-<TagsInput.ItemDeleteTrigger>
+;<TagsInput.ItemDeleteTrigger>
   <XIcon />
 </TagsInput.ItemDeleteTrigger>
 ```
@@ -55,6 +55,7 @@ import { XIcon } from 'lucide-vue-next'
 ```
 
 **Icon Naming Convention:**
+
 - Always import icons with the `Icon` suffix (e.g., `XIcon`, `CheckIcon`, `ChevronDownIcon`)
 - Use the full icon name directly from Lucide (don't rename with `as`)
 - This maintains consistency across all framework examples
@@ -97,15 +98,18 @@ Solid.js uses the `<Show>` component for conditional rendering instead of boolea
 import { Show } from 'solid-js'
 
 // Preferred: Use Show component
-<Show when={isVisible()}>
+;<Show when={isVisible()}>
   <div>Content to show conditionally</div>
 </Show>
 
 // Avoid: Boolean expression rendering
-{isVisible() && <div>Content</div>}
+{
+  isVisible() && <div>Content</div>
+}
 ```
 
 **Benefits of `<Show>`:**
+
 - Better performance with reactive updates
 - Proper cleanup of nested reactive computations
 - More explicit conditional rendering semantics
@@ -161,14 +165,15 @@ useForwardExpose() // Handles complex ref forwarding
 
 ## asChild Pattern Implementation
 
-The `asChild` pattern allows replacing a component's root element with a custom element while preserving the component's functionality and props. Each framework implements this pattern differently.
+The `asChild` pattern allows replacing a component's root element with a custom element while preserving the component's
+functionality and props. Each framework implements this pattern differently.
 
 ### React asChild Pattern
 
 ```tsx
 import { Menu } from '@ark-ui/react/menu'
 
-<Menu.Item value="docs" asChild>
+;<Menu.Item value="docs" asChild>
   <a href="https://ark-ui.com">Documentation</a>
 </Menu.Item>
 ```
@@ -183,7 +188,14 @@ import { Menu } from '@ark-ui/react/menu'
 ```tsx
 import { Menu } from '@ark-ui/solid/menu'
 
-<Menu.Item value="docs" asChild={(itemProps) => <a href="https://ark-ui.com" {...itemProps()}>Documentation</a>} />
+;<Menu.Item
+  value="docs"
+  asChild={(itemProps) => (
+    <a href="https://ark-ui.com" {...itemProps()}>
+      Documentation
+    </a>
+  )}
+/>
 ```
 
 - **Type**: `(props: PropsFn) => JSX.Element`
@@ -231,12 +243,12 @@ import { Menu } from '@ark-ui/vue/menu'
 
 ### asChild Pattern Summary
 
-| Framework | Prop Name | Prop Type | Usage Pattern |
-|-----------|-----------|-----------|---------------|
-| **React** | `asChild` | `boolean` | Boolean flag with children wrapping |
-| **Solid** | `asChild` | `(props: PropsFn) => JSX.Element` | Function that receives props function |
-| **Vue** | `as-child` | `boolean` | Boolean flag (kebab-case in templates) |
-| **Svelte** | `asChild` | `Snippet<[PropsFn]>` | Snippet/template slot with props function |
+| Framework  | Prop Name  | Prop Type                         | Usage Pattern                             |
+| ---------- | ---------- | --------------------------------- | ----------------------------------------- |
+| **React**  | `asChild`  | `boolean`                         | Boolean flag with children wrapping       |
+| **Solid**  | `asChild`  | `(props: PropsFn) => JSX.Element` | Function that receives props function     |
+| **Vue**    | `as-child` | `boolean`                         | Boolean flag (kebab-case in templates)    |
+| **Svelte** | `asChild`  | `Snippet<[PropsFn]>`              | Snippet/template slot with props function |
 
 ### Common Use Cases for asChild
 
@@ -588,9 +600,11 @@ Svelte requires proper closing tags for non-void HTML elements to avoid ambiguit
 ```
 
 **Non-void elements that require closing tags:**
+
 - `<textarea>`, `<div>`, `<span>`, `<button>`, `<a>`, `<form>`, etc.
 
 **Void elements that can be self-closing:**
+
 - `<input>`, `<img>`, `<br>`, `<hr>`, `<meta>`, `<link>`, etc.
 
 ## Framework-Specific Utilities

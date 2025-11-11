@@ -10,8 +10,10 @@ This guide is split into focused documents for better navigation:
 - **[Overview](@.claude/docs/overview.md)** - Project overview, architecture, and available components
 - **[Development](@.claude/docs/development.md)** - Development workflows, commands, and processes
 - **[Component Patterns](@.claude/docs/component_patterns.md)** - Component development patterns, examples, and testing
-- **[Framework Patterns](@.claude/docs/framework_patterns.md)** - Framework-specific patterns and advanced implementations
-- **[Documentation Patterns](@.claude/docs/documentation-patterns.md)** - Website documentation structure, Examples vs Guides, and writing guidelines
+- **[Framework Patterns](@.claude/docs/framework_patterns.md)** - Framework-specific patterns and advanced
+  implementations
+- **[Documentation Patterns](@.claude/docs/documentation-patterns.md)** - Website documentation structure, Examples vs
+  Guides, and writing guidelines
 
 ## Quick Start
 

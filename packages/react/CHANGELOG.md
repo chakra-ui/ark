@@ -8,7 +8,8 @@
 
 ### Changed
 
-- **useListCollection**: Updated `initialItems` to accept `readonly` arrays for better compatibility with immutable data patterns.
+- **useListCollection**: Updated `initialItems` to accept `readonly` arrays for better compatibility with immutable data
+  patterns.
 
 ### Fixed
 
