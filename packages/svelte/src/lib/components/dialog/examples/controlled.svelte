@@ -15,8 +15,8 @@
         <Dialog.Title>Controlled Dialog</Dialog.Title>
         <Dialog.Description>This dialog's open state is controlled externally.</Dialog.Description>
         <Dialog.CloseTrigger>
-      <XIcon />
-      </Dialog.CloseTrigger>
+          <XIcon />
+        </Dialog.CloseTrigger>
       </Dialog.Content>
     </Dialog.Positioner>
   </Portal>

@@ -55,11 +55,13 @@ Non-interactive guides with code snippets.
 ### Examples vs Guides
 
 **Examples Section** - Interactive demos with `<Example id="..." />`:
+
 - Show component behavior through working demos
 - Framework-agnostic (shown for all frameworks via tabs)
 - Each example has a brief description
 
 **Guides Section** - Non-interactive implementation guidance:
+
 - CSS styling patterns and animations
 - Integration guides (Next.js, Remix, router setup)
 - Advanced configuration and type safety patterns
@@ -119,11 +121,7 @@ To create a controlled component, manage the state using the `value` and `onValu
 
 The following CSS variables are exposed to the `Component.Positioner`:
 
-\`\`\`css
---reference-width: <pixel-value>;
---available-width: <pixel-value>;
---available-height: <pixel-value>;
-\`\`\`
+\`\`\`css --reference-width: <pixel-value>; --available-width: <pixel-value>; --available-height: <pixel-value>; \`\`\`
 ```
 
 ### CSS Animations
@@ -133,11 +131,7 @@ The following CSS variables are exposed to the `Component.Positioner`:
 
 Use the `--height` CSS variable to animate content:
 
-\`\`\`css
-@keyframes slideDown {
-  to { height: var(--height); }
-}
-\`\`\`
+\`\`\`css @keyframes slideDown { to { height: var(--height); } } \`\`\`
 ```
 
 ### Framework Integration
@@ -147,11 +141,7 @@ Use the `--height` CSS variable to animate content:
 
 Here's an example using `next/image`:
 
-\`\`\`tsx
-import { Component } from '@ark-ui/react/component'
-import { getImageProps } from 'next/image'
-// ...
-\`\`\`
+\`\`\`tsx import { Component } from '@ark-ui/react/component' import { getImageProps } from 'next/image' // ... \`\`\`
 ```
 
 ### Router Integration
@@ -164,9 +154,7 @@ Control active state based on URL:
 - Set `value` prop to current URL path
 - Listen to `onValueChange` and update URL
 
-\`\`\`tsx
-// Remix Router example
-\`\`\`
+\`\`\`tsx // Remix Router example \`\`\`
 ```
 
 ## Formatting
@@ -176,13 +164,9 @@ Control active state based on URL:
 Specify language for syntax highlighting:
 
 ```markdown
-\`\`\`tsx
-// TypeScript code
-\`\`\`
+\`\`\`tsx // TypeScript code \`\`\`
 
-\`\`\`css
-/* CSS code */
-\`\`\`
+\`\`\`css /_ CSS code _/ \`\`\`
 ```
 
 ### Notes and Warnings
@@ -225,17 +209,13 @@ Use kebab-case, descriptive IDs:
 
 ## Common Mistakes
 
-❌ Don't include CSS examples in Examples section
-✅ Move CSS examples to Guides
+❌ Don't include CSS examples in Examples section ✅ Move CSS examples to Guides
 
-❌ Don't include router integration in Examples
-✅ Move integration guides to Guides
+❌ Don't include router integration in Examples ✅ Move integration guides to Guides
 
-❌ Don't write generic descriptions
-✅ Write specific descriptions explaining props/features
+❌ Don't write generic descriptions ✅ Write specific descriptions explaining props/features
 
-❌ Don't use code blocks without `<Example>` tags in Examples
-✅ Use `<Example>` tags or move to Guides
+❌ Don't use code blocks without `<Example>` tags in Examples ✅ Use `<Example>` tags or move to Guides
 
 ## Adding to Showcase
 
@@ -246,6 +226,7 @@ Add projects/design systems built with Ark UI to `website/src/content/showcases.
    - Or capture screenshot with Playwright using `networkidle` and `viewport: { width: 1200, height: 630 }`
 
 2. **Add entry** to `showcases.json`:
+
    ```json
    {
      "title": "Project Name",

@@ -25,9 +25,7 @@
           toaster.create({
             title: `Toast (${duration.label})`,
             description: `This toast will ${
-              duration.value === Infinity
-                ? 'stay until dismissed'
-                : `disappear in ${duration.label}`
+              duration.value === Infinity ? 'stay until dismissed' : `disappear in ${duration.label}`
             }.`,
             type: 'info',
             duration: duration.value,

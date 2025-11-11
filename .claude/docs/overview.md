@@ -1,6 +1,7 @@
 # Ark UI - Project Overview
 
-Ark UI is a headless component library for building scalable Design Systems across React, Solid, Svelte, and Vue. Built on top of Zag.js state machines, it provides unstyled, accessible UI components.
+Ark UI is a headless component library for building scalable Design Systems across React, Solid, Svelte, and Vue. Built
+on top of Zag.js state machines, it provides unstyled, accessible UI components.
 
 ## Project Structure
 
@@ -19,7 +20,8 @@ ark/
 
 ## Available Components
 
-- **Form Controls**: Checkbox, Field, Fieldset, Number Input, Password Input, Pin Input, Radio Group, Select, Switch, Tags Input
+- **Form Controls**: Checkbox, Field, Fieldset, Number Input, Password Input, Pin Input, Radio Group, Select, Switch,
+  Tags Input
 - **Data Display**: Avatar, Progress, Rating Group, Signature Pad, Toast, Tree View
 - **Navigation**: Menu, Pagination, Tabs, Tour
 - **Layout**: Accordion, Collapsible, Splitter
@@ -39,7 +41,8 @@ ark/
 
 ## Example Development Status
 
-The project tracks component example consistency across frameworks in `COMPONENT_EXAMPLES_DIFF.md`. Key areas needing attention:
+The project tracks component example consistency across frameworks in `COMPONENT_EXAMPLES_DIFF.md`. Key areas needing
+attention:
 
 ### Priority Areas
 
@@ -69,7 +72,8 @@ When designing components and APIs, we draw inspiration from these leading headl
 - **[Base UI](https://mui.com/base-ui/)** - MUI's headless component library with excellent accessibility patterns
 - **[Reka UI](https://reka-ui.com/)** - Vue-focused headless components with clean API design
 - **[Radix UI](https://radix-ui.com/)** - React primitives with exceptional accessibility and developer experience
-- **[React Spectrum](https://react-spectrum.adobe.com/)** - Adobe's design system with robust accessibility and internationalization
+- **[React Spectrum](https://react-spectrum.adobe.com/)** - Adobe's design system with robust accessibility and
+  internationalization
 
 **What to Learn:**
 

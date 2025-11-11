@@ -326,8 +326,9 @@ We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) 
 
 ## Sponsors
 
-Ark UI is maintained by [Christian Schröter](https://github.com/cschroeter), [Segun Adebayo](https://github.com/segunadebayo), and the Chakra UI team.
-Development is supported by our amazing sponsors:
+Ark UI is maintained by [Christian Schröter](https://github.com/cschroeter),
+[Segun Adebayo](https://github.com/segunadebayo), and the Chakra UI team. Development is supported by our amazing
+sponsors:
 
 [Become a sponsor →](https://opencollective.com/chakra-ui)
 
