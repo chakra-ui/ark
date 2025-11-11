@@ -18,7 +18,7 @@ function formatDate(date: string) {
 
 const sortedBlogs = blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-export default async function Page() {
+export default function Page() {
   return (
     <Flex
       direction="column"

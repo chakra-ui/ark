@@ -19,6 +19,12 @@ function formatDate(date: string) {
   })
 }
 
+export async function generateStaticParams() {
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }))
+}
+
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params
   const blog = blogs.find((blog) => blog.slug === slug)
