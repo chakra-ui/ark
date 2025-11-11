@@ -82,6 +82,53 @@ leverage it to access the component state and methods from outside the menu.
 
 > If you're using the `RootProvider` component, you don't need to use the `Root` component.
 
+## Guides
+
+### Avoid passing custom ids to menu items
+
+Ark UI autogenerates ids for menu items internally. Passing a custom `id` prop breaks the internal `getElementById`
+functionality used by the component.
+
+```tsx
+// ❌ Don't do this
+<Menu.Item id="custom-id" value="custom-value">
+  Custom Item
+</Menu.Item>
+
+// ✅ Do this
+<Menu.Item value="custom-value">
+  Custom Item
+</Menu.Item>
+```
+
+### Menu items as links
+
+To render a menu item as a link, render the link as the menu item itself using the `asChild` prop, not as a child of the
+menu item.
+
+> This pattern ensures the link element receives the correct ARIA attributes and keyboard interactions from the menu
+> item.
+
+Here's an example of a reusable `MenuItemLink` component:
+
+```tsx
+interface MenuItemLinkProps extends Menu.ItemProps {
+  href?: string
+  target?: string
+}
+
+export const MenuItemLink = (props: MenuItemLinkProps) => {
+  const { href, target, children, ...rest } = props
+  return (
+    <Menu.Item {...rest} asChild>
+      <a href={href} target={target}>
+        {children}
+      </a>
+    </Menu.Item>
+  )
+}
+```
+
 ## API Reference
 
 ### Props
