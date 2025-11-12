@@ -19,6 +19,8 @@
 - **Combobox**:
   - Fixed focus stealing in controlled open mode
   - Removed problematic `aria-hidden` behavior to allow interaction with other page elements
+- **Marquee**: Fixed `Marquee.Content` not receiving `data-v-*` attribute for scoped styles when using `v-for` at the
+  root level.
 
 ## [5.27.1] - 2025-11-02
 

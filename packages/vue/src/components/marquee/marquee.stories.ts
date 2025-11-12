@@ -6,6 +6,7 @@ import FiniteLoopsExample from './examples/finite-loops.vue'
 import PauseOnInteractionExample from './examples/pause-on-interaction.vue'
 import ProgrammaticControlExample from './examples/programmatic-control.vue'
 import ReverseExample from './examples/reverse.vue'
+import ScopedStylesExample from './examples/scoped-styles.vue'
 import SpeedExample from './examples/speed.vue'
 import VerticalExample from './examples/vertical.vue'
 import WithEdgesExample from './examples/with-edges.vue'
@@ -54,6 +55,13 @@ export const ProgrammaticControl = {
 export const Reverse = {
   render: () => ({
     components: { Component: ReverseExample },
+    template: '<Component />',
+  }),
+}
+
+export const ScopedStyles = {
+  render: () => ({
+    components: { Component: ScopedStylesExample },
     template: '<Component />',
   }),
 }
