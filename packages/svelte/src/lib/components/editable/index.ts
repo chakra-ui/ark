@@ -1,4 +1,9 @@
-export type { ValueChangeDetails as EditableValueChangeDetails } from '@zag-js/editable'
+export type {
+  FocusOutsideEvent as EditableFocusOutsideEvent,
+  InteractOutsideEvent as EditableInteractOutsideEvent,
+  PointerDownOutsideEvent as EditablePointerDownOutsideEvent,
+  ValueChangeDetails as EditableValueChangeDetails,
+} from '@zag-js/editable'
 export { default as EditableArea, type EditableAreaBaseProps, type EditableAreaProps } from './editable-area.svelte'
 export {
   default as EditableCancelTrigger,

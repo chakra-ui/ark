@@ -2,8 +2,11 @@ export { parse as parseColor } from '@zag-js/color-picker'
 export type {
   Color,
   ColorFormat as ColorPickerColorFormat,
+  FocusOutsideEvent as ColorPickerFocusOutsideEvent,
   FormatChangeDetails as ColorPickerFormatChangeDetails,
+  InteractOutsideEvent as ColorPickerInteractOutsideEvent,
   OpenChangeDetails as ColorPickerOpenChangeDetails,
+  PointerDownOutsideEvent as ColorPickerPointerDownOutsideEvent,
   ValueChangeDetails as ColorPickerValueChangeDetails,
 } from '@zag-js/color-picker'
 export { ColorPickerArea, type ColorPickerAreaBaseProps, type ColorPickerAreaProps } from './color-picker-area'

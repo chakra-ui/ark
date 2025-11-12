@@ -1,4 +1,9 @@
-export type { StepDetails as TourStepDetails } from '@zag-js/tour'
+export type {
+  FocusOutsideEvent as TourFocusOutsideEvent,
+  InteractOutsideEvent as TourInteractOutsideEvent,
+  PointerDownOutsideEvent as TourPointerDownOutsideEvent,
+  StepDetails as TourStepDetails,
+} from '@zag-js/tour'
 export { TourActionTrigger, type TourActionTriggerBaseProps, type TourActionTriggerProps } from './tour-action-trigger'
 export { TourActions, type TourActionsProps } from './tour-actions'
 export { TourArrow, type TourArrowBaseProps, type TourArrowProps } from './tour-arrow'

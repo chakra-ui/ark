@@ -1,4 +1,11 @@
-export type { HighlightChangeDetails, OpenChangeDetails, SelectionDetails } from '@zag-js/menu'
+export type {
+  FocusOutsideEvent,
+  HighlightChangeDetails,
+  InteractOutsideEvent,
+  OpenChangeDetails,
+  PointerDownOutsideEvent,
+  SelectionDetails,
+} from '@zag-js/menu'
 export {
   default as ArrowTip,
   type MenuArrowTipBaseProps as ArrowTipBaseProps,

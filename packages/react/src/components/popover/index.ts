@@ -1,4 +1,9 @@
-export type { OpenChangeDetails as PopoverOpenChangeDetails } from '@zag-js/popover'
+export type {
+  FocusOutsideEvent as PopoverFocusOutsideEvent,
+  InteractOutsideEvent as PopoverInteractOutsideEvent,
+  OpenChangeDetails as PopoverOpenChangeDetails,
+  PointerDownOutsideEvent as PopoverPointerDownOutsideEvent,
+} from '@zag-js/popover'
 export { PopoverAnchor, type PopoverAnchorBaseProps, type PopoverAnchorProps } from './popover-anchor'
 export { PopoverArrow, type PopoverArrowBaseProps, type PopoverArrowProps } from './popover-arrow'
 export { PopoverArrowTip, type PopoverArrowTipBaseProps, type PopoverArrowTipProps } from './popover-arrow-tip'

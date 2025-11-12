@@ -1,6 +1,9 @@
 export type {
+  FocusOutsideEvent as MenuFocusOutsideEvent,
   HighlightChangeDetails as MenuHighlightChangeDetails,
+  InteractOutsideEvent as MenuInteractOutsideEvent,
   OpenChangeDetails as MenuOpenChangeDetails,
+  PointerDownOutsideEvent as MenuPointerDownOutsideEvent,
   SelectionDetails as MenuSelectionDetails,
 } from '@zag-js/menu'
 export { MenuArrow, type MenuArrowBaseProps, type MenuArrowProps } from './menu-arrow'

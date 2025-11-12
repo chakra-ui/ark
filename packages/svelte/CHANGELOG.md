@@ -11,6 +11,8 @@ description: All notable changes will be documented in this file.
 - **Carousel**:
   - Added `Carousel.AutoplayIndicator` component for conditionally rendering content based on autoplay state
   - Added `Carousel.ProgressText` component for displaying current page progress (e.g., "1 / 5")
+- **General**: Exported `InteractOutsideEvent`, `FocusOutsideEvent`, and `PointerDownOutsideEvent` types for better type
+  safety
 
 ### Changed
 

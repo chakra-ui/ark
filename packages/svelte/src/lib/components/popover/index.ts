@@ -1,4 +1,9 @@
-export type { OpenChangeDetails as PopoverOpenChangeDetails } from '@zag-js/popover'
+export type {
+  FocusOutsideEvent as PopoverFocusOutsideEvent,
+  InteractOutsideEvent as PopoverInteractOutsideEvent,
+  OpenChangeDetails as PopoverOpenChangeDetails,
+  PointerDownOutsideEvent as PopoverPointerDownOutsideEvent,
+} from '@zag-js/popover'
 export { default as PopoverAnchor, type PopoverAnchorBaseProps, type PopoverAnchorProps } from './popover-anchor.svelte'
 export {
   default as PopoverArrowTip,

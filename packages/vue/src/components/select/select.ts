@@ -1,4 +1,11 @@
-export type { HighlightChangeDetails, OpenChangeDetails, ValueChangeDetails } from '@zag-js/select'
+export type {
+  FocusOutsideEvent,
+  HighlightChangeDetails,
+  InteractOutsideEvent,
+  OpenChangeDetails,
+  PointerDownOutsideEvent,
+  ValueChangeDetails,
+} from '@zag-js/select'
 export type { CollectionItem, ListCollection } from '../collection'
 export {
   default as ClearTrigger,

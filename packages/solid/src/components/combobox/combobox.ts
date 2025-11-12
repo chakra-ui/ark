@@ -1,9 +1,12 @@
 export type {
+  FocusOutsideEvent,
   HighlightChangeDetails,
   InputValueChangeDetails,
+  InteractOutsideEvent,
   OpenChangeDetails,
-  ValueChangeDetails,
+  PointerDownOutsideEvent,
   SelectionDetails,
+  ValueChangeDetails,
 } from '@zag-js/combobox'
 export type { CollectionItem } from '../collection'
 export {

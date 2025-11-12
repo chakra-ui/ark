@@ -172,7 +172,6 @@ functionality and props. Each framework implements this pattern differently.
 
 ```tsx
 import { Menu } from '@ark-ui/react/menu'
-
 ;<Menu.Item value="docs" asChild>
   <a href="https://ark-ui.com">Documentation</a>
 </Menu.Item>
@@ -187,7 +186,6 @@ import { Menu } from '@ark-ui/react/menu'
 
 ```tsx
 import { Menu } from '@ark-ui/solid/menu'
-
 ;<Menu.Item
   value="docs"
   asChild={(itemProps) => (

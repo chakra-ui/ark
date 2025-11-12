@@ -1,4 +1,9 @@
-export type { OpenChangeDetails as HoverCardOpenChangeDetails } from '@zag-js/hover-card'
+export type {
+  FocusOutsideEvent as HoverCardFocusOutsideEvent,
+  InteractOutsideEvent as HoverCardInteractOutsideEvent,
+  OpenChangeDetails as HoverCardOpenChangeDetails,
+  PointerDownOutsideEvent as HoverCardPointerDownOutsideEvent,
+} from '@zag-js/hover-card'
 export { HoverCardArrow, type HoverCardArrowBaseProps, type HoverCardArrowProps } from './hover-card-arrow'
 export { HoverCardArrowTip, type HoverCardArrowTipBaseProps, type HoverCardArrowTipProps } from './hover-card-arrow-tip'
 export { HoverCardContent, type HoverCardContentBaseProps, type HoverCardContentProps } from './hover-card-content'

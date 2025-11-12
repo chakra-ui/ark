@@ -1,6 +1,9 @@
 export type { WaitForOptions as WaitOptions } from '@zag-js/dom-query'
 export type {
+  FocusOutsideEvent,
+  InteractOutsideEvent,
   Point,
+  PointerDownOutsideEvent,
   ProgressTextDetails,
   StatusChangeDetails,
   StepAction,

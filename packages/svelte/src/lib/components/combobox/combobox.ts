@@ -1,7 +1,10 @@
 export type {
+  FocusOutsideEvent,
   HighlightChangeDetails,
   InputValueChangeDetails,
+  InteractOutsideEvent,
   OpenChangeDetails,
+  PointerDownOutsideEvent,
   SelectionDetails,
   ValueChangeDetails,
 } from '@zag-js/combobox'

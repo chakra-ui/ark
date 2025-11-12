@@ -1,4 +1,9 @@
-export type { OpenChangeDetails as DialogOpenChangeDetails } from '@zag-js/dialog'
+export type {
+  FocusOutsideEvent as DialogFocusOutsideEvent,
+  InteractOutsideEvent as DialogInteractOutsideEvent,
+  OpenChangeDetails as DialogOpenChangeDetails,
+  PointerDownOutsideEvent as DialogPointerDownOutsideEvent,
+} from '@zag-js/dialog'
 export {
   default as DialogBackdrop,
   type DialogBackdropBaseProps,

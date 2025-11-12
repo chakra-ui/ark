@@ -1,5 +1,8 @@
 export type {
   EditChangeDetails as EditableEditChangeDetails,
+  FocusOutsideEvent as EditableFocusOutsideEvent,
+  InteractOutsideEvent as EditableInteractOutsideEvent,
+  PointerDownOutsideEvent as EditablePointerDownOutsideEvent,
   ValueChangeDetails as EditableValueChangeDetails,
 } from '@zag-js/editable'
 export { default as EditableArea, type EditableAreaBaseProps, type EditableAreaProps } from './editable-area.vue'

@@ -1,4 +1,9 @@
-export type { ValueChangeDetails } from '@zag-js/editable'
+export type {
+  FocusOutsideEvent,
+  InteractOutsideEvent,
+  PointerDownOutsideEvent,
+  ValueChangeDetails,
+} from '@zag-js/editable'
 export {
   EditableArea as Area,
   type EditableAreaBaseProps as AreaBaseProps,

@@ -1,8 +1,11 @@
 export type {
   Color,
   ColorFormat,
+  FocusOutsideEvent,
   FormatChangeDetails,
+  InteractOutsideEvent,
   OpenChangeDetails,
+  PointerDownOutsideEvent,
   ValueChangeDetails,
 } from '@zag-js/color-picker'
 export {

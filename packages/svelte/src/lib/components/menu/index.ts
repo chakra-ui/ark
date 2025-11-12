@@ -1,6 +1,9 @@
 export type {
+  FocusOutsideEvent as MenuFocusOutsideEvent,
   HighlightChangeDetails as MenuHighlightChangeDetails,
+  InteractOutsideEvent as MenuInteractOutsideEvent,
   OpenChangeDetails as MenuOpenChangeDetails,
+  PointerDownOutsideEvent as MenuPointerDownOutsideEvent,
   SelectionDetails as MenuSelectionDetails,
 } from '@zag-js/menu'
 export { default as MenuArrowTip, type MenuArrowTipBaseProps, type MenuArrowTipProps } from './menu-arrow-tip.svelte'
