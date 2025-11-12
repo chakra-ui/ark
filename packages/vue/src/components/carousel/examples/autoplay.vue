@@ -8,10 +8,7 @@ const images = Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/$
   <Carousel.Root :slide-count="images.length" autoplay loop>
     <Carousel.Control>
       <Carousel.AutoplayTrigger>
-        <Carousel.AutoplayIndicator>
-          <template #paused>Pause</template>
-          <template #playing>Play</template>
-        </Carousel.AutoplayIndicator>
+        <Carousel.AutoplayIndicator fallback="Play">Pause</Carousel.AutoplayIndicator>
       </Carousel.AutoplayTrigger>
       <Carousel.ProgressText />
     </Carousel.Control>

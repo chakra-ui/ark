@@ -9,8 +9,8 @@
     <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
     <Carousel.AutoplayTrigger>
       <Carousel.AutoplayIndicator>
-        {#snippet paused()}Pause{/snippet}
-        {#snippet playing()}Play{/snippet}
+        {#snippet fallback()}Play{/snippet}
+        Pause
       </Carousel.AutoplayIndicator>
     </Carousel.AutoplayTrigger>
     <Carousel.NextTrigger>Next</Carousel.NextTrigger>

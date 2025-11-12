@@ -1,21 +1,26 @@
-import type { ReactNode } from 'react'
+import { forwardRef } from 'react'
+import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
+import { carouselAnatomy } from './carousel.anatomy'
 import { useCarouselContext } from './use-carousel-context'
 
-export interface CarouselAutoplayIndicatorBaseProps {
-  /**
-   * The content to render when autoplay is paused.
-   */
-  paused: ReactNode
-  /**
-   * The content to render when autoplay is playing.
-   */
-  playing: ReactNode
-}
-export interface CarouselAutoplayIndicatorProps extends CarouselAutoplayIndicatorBaseProps {}
+const parts = carouselAnatomy.build()
 
-export const CarouselAutoplayIndicator = (props: CarouselAutoplayIndicatorProps) => {
-  const carousel = useCarouselContext()
-  return <>{carousel.isPlaying ? props.paused : props.playing}</>
+export interface CarouselAutoplayIndicatorBaseProps extends PolymorphicProps {
+  /**
+   * The fallback content to render when autoplay is paused.
+   */
+  fallback?: React.ReactNode
 }
+export interface CarouselAutoplayIndicatorProps extends HTMLProps<'span'>, CarouselAutoplayIndicatorBaseProps {}
+
+export const CarouselAutoplayIndicator = forwardRef<HTMLSpanElement, CarouselAutoplayIndicatorProps>((props, ref) => {
+  const { children, fallback, ...restProps } = props
+  const carousel = useCarouselContext()
+  return (
+    <ark.span ref={ref} {...parts.autoplayIndicator.attrs} {...restProps}>
+      {carousel.isPlaying ? children : fallback}
+    </ark.span>
+  )
+})
 
 CarouselAutoplayIndicator.displayName = 'CarouselAutoplayIndicator'

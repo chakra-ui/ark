@@ -7,7 +7,7 @@ export const Autoplay = () => {
     <Carousel.Root slideCount={images.length} autoplay loop>
       <Carousel.Control>
         <Carousel.AutoplayTrigger>
-          <Carousel.AutoplayIndicator paused="Pause" playing="Play" />
+          <Carousel.AutoplayIndicator fallback="Play">Pause</Carousel.AutoplayIndicator>
         </Carousel.AutoplayTrigger>
         <Carousel.ProgressText />
       </Carousel.Control>
