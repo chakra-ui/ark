@@ -8,6 +8,8 @@
   import type { CreateToasterReturn } from './create-toaster.js'
   import ToasterItem from './toaster-item.svelte'
 
+  export type ToastOptions = toast.Options<Snippet>
+
   export interface ToasterBaseProps extends Omit<toast.GroupProps, 'store' | 'id'>, RefAttribute {
     /**
      * The toaster instance.
@@ -16,7 +18,7 @@
     /**
      * The children of the toaster.
      */
-    children: Snippet<[Accessor<toast.Options<Snippet>>]>
+    children: Snippet<[Accessor<ToastOptions>]>
   }
 
   export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}

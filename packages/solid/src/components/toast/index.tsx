@@ -4,6 +4,7 @@ export type {
   PromiseOptions as ToastPromiseOptions,
   Status as ToastStatus,
   StatusChangeDetails as ToastStatusChangeDetails,
+  StoreProps as ToastStoreProps,
   Type as ToastType,
 } from '@zag-js/toast'
 export { createToaster, type CreateToasterProps, type CreateToasterReturn } from './create-toaster'
@@ -18,7 +19,7 @@ export { ToastDescription, type ToastDescriptionBaseProps, type ToastDescription
 export { ToastRoot, type ToastRootBaseProps, type ToastRootProps } from './toast-root'
 export { ToastTitle, type ToastTitleBaseProps, type ToastTitleProps } from './toast-title'
 export { toastAnatomy } from './toast.anatomy'
-export { Toaster, type ToasterBaseProps, type ToasterProps } from './toaster'
+export { Toaster, type ToasterBaseProps, type ToasterProps, type ToastOptions } from './toaster'
 export { useToastContext, type UseToastContext } from './use-toast-context'
 
 export * as Toast from './toast'

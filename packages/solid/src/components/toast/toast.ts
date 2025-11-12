@@ -1,3 +1,13 @@
+export type {
+  ActionOptions,
+  Placement,
+  PromiseOptions,
+  Status,
+  StatusChangeDetails,
+  StoreProps,
+  Type,
+} from '@zag-js/toast'
+export type { ToastOptions as Options } from './toaster'
 export {
   ToastActionTrigger as ActionTrigger,
   type ToastActionTriggerBaseProps as ActionTriggerBaseProps,

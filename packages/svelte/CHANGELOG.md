@@ -8,11 +8,12 @@ description: All notable changes will be documented in this file.
 
 ### Added
 
+- **General**: Exported `InteractOutsideEvent`, `FocusOutsideEvent`, and `PointerDownOutsideEvent` types for better type
+  safety
 - **Carousel**:
   - Added `Carousel.AutoplayIndicator` component for conditionally rendering content based on autoplay state
   - Added `Carousel.ProgressText` component for displaying current page progress (e.g., "1 / 5")
-- **General**: Exported `InteractOutsideEvent`, `FocusOutsideEvent`, and `PointerDownOutsideEvent` types for better type
-  safety
+- **Toast**: Exported `ToastOptions` and `ToastStoreProps` types for better type safety
 
 ### Changed
 

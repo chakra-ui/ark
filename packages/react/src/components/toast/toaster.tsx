@@ -7,9 +7,11 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import { ToastProvider } from './use-toast-context'
 
+export type ToastOptions = toast.Options<ReactNode>
+
 export interface ToasterBaseProps extends PolymorphicProps, Omit<toast.GroupProps, 'store' | 'id'> {
   toaster: CreateToasterReturn
-  children: (toast: toast.Options<ReactNode>) => ReactNode
+  children: (toast: ToastOptions) => ReactNode
 }
 
 export interface ToasterProps extends Assign<HTMLProps<'div'>, ToasterBaseProps> {}

@@ -8,6 +8,8 @@ import { type PolymorphicProps, ark } from '../factory'
 import type { CreateToasterReturn } from './create-toaster'
 import ToasterItem from './toaster-item.vue'
 
+export type ToastOptions = toast.Options<VNodeChild>
+
 export interface ToasterBaseProps extends PolymorphicProps {
   toaster: CreateToasterReturn
 }
@@ -18,7 +20,7 @@ export interface ToasterProps
     HTMLAttributes,
     /** @vue-ignore */
     SlotsType<{
-      default: toast.Options<VNodeChild>
+      default: ToastOptions
     }> {}
 
 const props = defineProps<ToasterProps>()
