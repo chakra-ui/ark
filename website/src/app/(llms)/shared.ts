@@ -2,7 +2,7 @@ import { type AccessibilityDocKey, type DataAttrDocKey, getAccessibilityDoc, get
 import { frameworkExample } from '~/components/example'
 import { cmdMap } from '~/components/install-cmd'
 import type { Page } from '~/lib/source'
-import { types } from '@/.source'
+// import { types } from '@/.source'
 
 // Constants for regex patterns
 const PATTERNS = {
@@ -53,24 +53,24 @@ const replaceKeyboardTable = (id: string) => {
   }
 }
 
-type Part = (typeof types)[number]['parts'][keyof (typeof types)[number]['parts']]
+// type Part = (typeof types)[number]['parts'][keyof (typeof types)[number]['parts']]
 
 // Component type formatting
-const formatPropTypes = (props: NonNullable<Part['props']>) =>
-  Object.entries(props ?? {}).map(([propName, propDetails]) =>
-    [
-      `**\`${propName}\`**`,
-      `Type: \`${propDetails.type}\``,
-      `Required: ${propDetails.isRequired ? 'true' : 'false'}`,
-      `Default Value: \`${propDetails.defaultValue}\``,
-      `Description: ${propDetails.description}`,
-    ].join('\n'),
-  )
+// const formatPropTypes = (props: NonNullable<Part['props']>) =>
+//   Object.entries(props ?? {}).map(([propName, propDetails]) =>
+//     [
+//       `**\`${propName}\`**`,
+//       `Type: \`${propDetails.type}\``,
+//       `Required: ${propDetails.isRequired ? 'true' : 'false'}`,
+//       `Default Value: \`${propDetails.defaultValue}\``,
+//       `Description: ${propDetails.description}`,
+//     ].join('\n'),
+//   )
 
-const formatEmitTypes = (emits: NonNullable<Part['emits']>) =>
-  Object.entries(emits ?? {}).map(([emitName, emitDetails]) =>
-    [`**\`${emitName}\`**`, `Type: \`${emitDetails.type}\``, `Description: ${emitDetails.description}`].join('\n'),
-  )
+// const formatEmitTypes = (emits: NonNullable<Part['emits']>) =>
+//   Object.entries(emits ?? {}).map(([emitName, emitDetails]) =>
+//     [`**\`${emitName}\`**`, `Type: \`${emitDetails.type}\``, `Description: ${emitDetails.description}`].join('\n'),
+//   )
 
 const formatDataAttributes = (key: string, id: string) => {
   try {
@@ -84,29 +84,30 @@ const formatDataAttributes = (key: string, id: string) => {
   }
 }
 
-const formatComponentType = (key: string, part: Part, id: string) => {
-  const lines = [`### ${key}`, '#### Props', ...formatPropTypes(part.props)]
+// const formatComponentType = (key: string, part: Part, id: string) => {
+//   const lines = [`### ${key}`, '#### Props', ...formatPropTypes(part.props)]
 
-  if (part.emits) {
-    lines.push('#### Emits', ...formatEmitTypes(part.emits))
-  }
+//   if (part.emits) {
+//     lines.push('#### Emits', ...formatEmitTypes(part.emits))
+//   }
 
-  const dataAttrItems = formatDataAttributes(key, id)
-  if (dataAttrItems) {
-    lines.push('#### Data Attributes', dataAttrItems)
-  }
+//   const dataAttrItems = formatDataAttributes(key, id)
+//   if (dataAttrItems) {
+//     lines.push('#### Data Attributes', dataAttrItems)
+//   }
 
-  return lines.join('\n\n')
-}
+//   return lines.join('\n\n')
+// }
 
 const replaceComponentTypes = (id: string, framework: string) => {
-  const api = types.find((type) => type.component === id && type.framework === framework)
-  if (!api) return ''
+  return ''
+  // const api = types.find((type) => type.component === id && type.framework === framework)
+  // if (!api) return ''
 
-  return Object.entries(api.parts)
-    .sort(([key]) => (key === 'Root' ? -1 : 1))
-    .map(([key, part]) => formatComponentType(key, part, id))
-    .join('\n\n')
+  // return Object.entries(api.parts)
+  //   .sort(([key]) => (key === 'Root' ? -1 : 1))
+  //   .map(([key, part]) => formatComponentType(key, part, id))
+  //   .join('\n\n')
 }
 
 const replaceExamples = async (content: string, page: Page, framework: string) => {
