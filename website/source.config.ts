@@ -52,33 +52,33 @@ export const pages = defineCollections({
   },
 })
 
-// const PropDefinition = z.object({
-//   type: z.string(),
-//   isRequired: z.boolean(),
-//   defaultValue: z.string().optional(),
-//   description: z.string().optional(),
-// })
+const PropDefinition = z.object({
+  type: z.string(),
+  isRequired: z.boolean(),
+  defaultValue: z.string().optional(),
+  description: z.string().optional(),
+})
 
-// export const types = defineCollections({
-//   type: 'meta',
-//   dir: 'src/content/types',
-//   schema: (ctx) =>
-//     z
-//       .record(
-//         z.string(),
-//         z.object({
-//           props: z.record(z.string(), PropDefinition),
-//           element: z.string().optional(),
-//           tag: z.string().optional(),
-//           emits: z.record(z.string(), PropDefinition).optional(),
-//         }),
-//       )
-//       .transform((data) => ({
-//         parts: data,
-//         component: ctx.path.match(/\/([^/]+)\.types\.json$/)?.[1] ?? '',
-//         framework: ctx.path.match(/\/types\/([^/]+)\/[^/]+\.types\.json$/)?.[1] ?? '',
-//       })),
-// })
+export const types = defineCollections({
+  type: 'meta',
+  dir: 'src/content/types',
+  schema: (ctx) =>
+    z
+      .record(
+        z.string(),
+        z.object({
+          props: z.record(z.string(), PropDefinition),
+          element: z.string().optional(),
+          tag: z.string().optional(),
+          emits: z.record(z.string(), PropDefinition).optional(),
+        }),
+      )
+      .transform((data) => ({
+        parts: data,
+        component: ctx.path.match(/\/([^/]+)\.types\.json$/)?.[1] ?? '',
+        framework: ctx.path.match(/\/types\/([^/]+)\/[^/]+\.types\.json$/)?.[1] ?? '',
+      })),
+})
 
 export default defineConfig({
   mdxOptions: {
