@@ -13,6 +13,7 @@
 
 - **useListCollection**: Updated `initialItems` to accept `readonly` arrays for better compatibility with immutable data
   patterns.
+- **CollectionItem**: Use the collection type from `@zag-js/collection` just like the other frameworks.
 
 ### Fixed
 

@@ -1,11 +1,12 @@
 import { mergeProps } from '@zag-js/solid'
 import type { JSX } from 'solid-js'
-import type { Assign, CollectionItem } from '../../types'
+import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { PresenceProvider, type UsePresenceProps, splitPresenceProps, usePresence } from '../presence'
 import { type UseSelectProps, useSelect } from './use-select'
 import { SelectProvider } from './use-select-context'
+import type { CollectionItem } from '../collection'
 
 export interface SelectRootBaseProps<T extends CollectionItem>
   extends UseSelectProps<T>,
