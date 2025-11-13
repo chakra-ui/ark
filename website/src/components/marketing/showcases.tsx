@@ -1,7 +1,7 @@
-import { showcases } from '.velite'
 import { Container, Grid, Stack } from 'styled-system/jsx'
 import { SectionHeader } from '../section-header'
 import { ShowcaseCard } from '../showcase-card'
+import { showcases } from '~/data/showcases'
 
 export const Showcases = () => {
   return (

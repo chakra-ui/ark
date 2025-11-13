@@ -1,4 +1,3 @@
-import * as runtime from 'react/jsx-runtime'
 import { styled } from 'styled-system/jsx'
 import { BlogCardGroup } from '~/components/blog-card'
 import { Kbd } from '~/components/ui/kbd'
@@ -14,6 +13,7 @@ import { InstallCmd } from './components/install-cmd'
 import { KeyBindingsTable } from './components/key-bindings-table'
 import { Quickstart } from './components/quickstart'
 import { ThemeImage } from './components/theme-image'
+import type { MDXComponents } from 'mdx/types'
 
 const P = styled('p', {
   base: {
@@ -469,17 +469,6 @@ const sharedComponents = {
   em: Em,
 }
 
-const useMDXComponent = (code: string) => {
-  const fn = new Function(code)
-  return fn({ ...runtime }).default
-}
-
-interface MDXProps {
-  code: string
-  components?: Record<string, React.ComponentType>
-}
-
-export const MDXContent = ({ code, components }: MDXProps) => {
-  const Component = useMDXComponent(code)
-  return <Component components={{ ...sharedComponents, ...components }} />
+export const getMDXComponents = (components?: MDXComponents): MDXComponents => {
+  return { ...sharedComponents, ...components }
 }

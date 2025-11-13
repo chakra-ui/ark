@@ -1,4 +1,5 @@
 import { ArrowLeftIcon } from 'lucide-react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { css } from 'styled-system/css'
@@ -8,8 +9,8 @@ import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { MDXContent } from '~/mdx-content'
-import { blogs } from '.velite'
+import { blogSource } from '~/lib/source'
+import { getMDXComponents } from '~/mdx-components'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {
@@ -21,11 +22,13 @@ function formatDate(date: string) {
 
 export default async function Page(props: { params: Promise<{ slug: string }> }) {
   const { slug } = await props.params
-  const blog = blogs.find((blog) => blog.slug === slug)
+  const blog = blogSource.getPage([slug])
 
   if (!blog) {
     return notFound()
   }
+
+  const MDX = blog.data.body
 
   return (
     <Flex
@@ -56,13 +59,13 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
             Back to Blog
           </Link>
           <Heading as="h1" size="5xl" mt="4">
-            {blog.title}
+            {blog.data.title}
           </Heading>
-          <Text color="fg.muted">{blog.description}</Text>
+          <Text color="fg.muted">{blog.data.description}</Text>
           <HStack mt="4" gap="2" className={css({ color: 'fg.muted' })}>
-            <Text>{blog.author}</Text>
+            <Text>{blog.data.author}</Text>
             <span>/</span>
-            <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+            <time dateTime={blog.data.date}>{formatDate(blog.data.date)}</time>
           </HStack>
         </Stack>
 
@@ -76,7 +79,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
         />
 
         <article className={css({ lineHeight: '1.75', color: 'var(--colors-prose-body)' })}>
-          <MDXContent code={blog.code} />
+          <MDX components={getMDXComponents()} />
         </article>
       </Container>
 
@@ -85,26 +88,26 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
   )
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const blog = blogs.find((blog) => blog.slug === slug)
+  const blog = blogSource.getPage([slug])
   if (!blog) return {}
 
   return {
-    title: blog.title,
-    description: blog.description,
+    title: blog.data.title,
+    description: blog.data.description,
     openGraph: {
-      title: blog.title,
-      description: blog.description,
+      title: blog.data.title,
+      description: blog.data.description,
       type: 'article',
-      publishedTime: blog.date,
-      authors: [blog.author],
-      tags: blog.tags,
+      publishedTime: blog.data.date,
+      authors: blog.data.author ? [blog.data.author] : undefined,
+      tags: blog.data.tags,
     },
     twitter: {
       card: 'summary_large_image',
-      title: blog.title,
-      description: blog.description,
+      title: blog.data.title,
+      description: blog.data.description,
     },
   }
 }

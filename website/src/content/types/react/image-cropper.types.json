@@ -1,0 +1,222 @@
+{
+  "Grid": {
+    "props": {
+      "axis": {
+        "type": "'horizontal' | 'vertical'",
+        "isRequired": true,
+        "description": "The axis of the grid lines to display"
+      },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Handle": {
+    "props": {
+      "position": { "type": "HandlePosition", "isRequired": true, "description": "The position of the handle" },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Image": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLImageElement"
+  },
+  "Root": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "aspectRatio": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The aspect ratio to maintain for the crop area (width / height).\nFor example, an aspect ratio of 16 / 9 will maintain a width to height ratio of 16:9.\nIf not provided, the crop area can be freely resized."
+      },
+      "cropShape": {
+        "type": "'circle' | 'rectangle'",
+        "defaultValue": "\"rectangle\"",
+        "isRequired": false,
+        "description": "The shape of the crop area."
+      },
+      "defaultFlip": {
+        "type": "FlipState",
+        "defaultValue": "{ horizontal: false, vertical: false }",
+        "isRequired": false,
+        "description": "The initial flip state to apply to the image."
+      },
+      "defaultRotation": {
+        "type": "number",
+        "defaultValue": "0",
+        "isRequired": false,
+        "description": "The initial rotation to apply to the image in degrees."
+      },
+      "defaultZoom": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The initial zoom factor to apply to the image."
+      },
+      "fixedCropArea": {
+        "type": "boolean",
+        "defaultValue": "false",
+        "isRequired": false,
+        "description": "Whether the crop area is fixed in size and position."
+      },
+      "flip": { "type": "FlipState", "isRequired": false, "description": "The controlled flip state of the image." },
+      "ids": {
+        "type": "Partial<{\n  root: string\n  viewport: string\n  image: string\n  selection: string\n  handle: (position: string) => string\n}>",
+        "isRequired": false,
+        "description": "The ids of the image cropper elements"
+      },
+      "initialCrop": {
+        "type": "Rect",
+        "isRequired": false,
+        "description": "The initial rectangle of the crop area.\nIf not provided, a smart default will be computed based on viewport size and aspect ratio."
+      },
+      "maxHeight": {
+        "type": "number",
+        "defaultValue": "Infinity",
+        "isRequired": false,
+        "description": "The maximum height of the crop area"
+      },
+      "maxWidth": {
+        "type": "number",
+        "defaultValue": "Infinity",
+        "isRequired": false,
+        "description": "The maximum width of the crop area"
+      },
+      "maxZoom": {
+        "type": "number",
+        "defaultValue": "5",
+        "isRequired": false,
+        "description": "The maximum zoom factor allowed."
+      },
+      "minHeight": {
+        "type": "number",
+        "defaultValue": "40",
+        "isRequired": false,
+        "description": "The minimum height of the crop area"
+      },
+      "minWidth": {
+        "type": "number",
+        "defaultValue": "40",
+        "isRequired": false,
+        "description": "The minimum width of the crop area"
+      },
+      "minZoom": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The minimum zoom factor allowed."
+      },
+      "nudgeStep": {
+        "type": "number",
+        "defaultValue": "1",
+        "isRequired": false,
+        "description": "The base nudge step for keyboard arrow keys (in pixels)."
+      },
+      "nudgeStepCtrl": {
+        "type": "number",
+        "defaultValue": "50",
+        "isRequired": false,
+        "description": "The nudge step when Ctrl/Cmd key is held (in pixels)."
+      },
+      "nudgeStepShift": {
+        "type": "number",
+        "defaultValue": "10",
+        "isRequired": false,
+        "description": "The nudge step when Shift key is held (in pixels)."
+      },
+      "onCropChange": {
+        "type": "(details: CropChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the crop area changes."
+      },
+      "onFlipChange": {
+        "type": "(details: FlipChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the flip state changes."
+      },
+      "onRotationChange": {
+        "type": "(details: RotationChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the rotation changes."
+      },
+      "onZoomChange": {
+        "type": "(details: ZoomChangeDetails) => void",
+        "isRequired": false,
+        "description": "Callback fired when the zoom level changes."
+      },
+      "rotation": {
+        "type": "number",
+        "isRequired": false,
+        "description": "The controlled rotation of the image in degrees (0 - 360)."
+      },
+      "translations": {
+        "type": "IntlTranslations",
+        "isRequired": false,
+        "description": "Specifies the localized strings that identify accessibility elements and their states."
+      },
+      "zoom": { "type": "number", "isRequired": false, "description": "The controlled zoom level of the image." },
+      "zoomSensitivity": {
+        "type": "number",
+        "defaultValue": "2",
+        "isRequired": false,
+        "description": "Controls how responsive pinch-to-zoom is."
+      },
+      "zoomStep": {
+        "type": "number",
+        "defaultValue": "0.1",
+        "isRequired": false,
+        "description": "The amount of zoom applied per wheel step."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "RootProvider": {
+    "props": {
+      "value": { "type": "UseImageCropperReturn", "isRequired": true },
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Selection": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  },
+  "Viewport": {
+    "props": {
+      "asChild": {
+        "type": "boolean",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    },
+    "element": "HTMLDivElement"
+  }
+}

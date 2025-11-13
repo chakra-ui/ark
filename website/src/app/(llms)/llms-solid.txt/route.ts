@@ -1,12 +1,13 @@
 import { cleanupPageContent } from '~/app/(llms)/shared'
 import { categories, getSidebarGroups } from '~/lib/sidebar'
-import type { Pages } from '.velite'
+import type { Page } from '~/lib/source'
 
 export const dynamic = 'force-static'
 
-const generatePageContent = async (page: Pages) => `# ${page.title}\n\n${await cleanupPageContent(page, 'solid')}\n\n`
+const generatePageContent = async (page: Page) =>
+  `# ${page.data.title}\n\n${await cleanupPageContent(page, 'solid')}\n\n`
 
-const generateCategorySection = async (category: string, pages: Pages[]) => {
+const generateCategorySection = async (category: string, pages: Page[]) => {
   const header = `# ${category.toUpperCase()}\n\n---\n`
   const pagesContent = await Promise.all(pages.map(generatePageContent))
   return `${header}\n${pagesContent.join('\n')}`

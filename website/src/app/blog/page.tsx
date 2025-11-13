@@ -5,8 +5,9 @@ import { Footer } from '~/components/marketing/footer'
 import { Navbar } from '~/components/marketing/navbar'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
-import { Card } from '../../components/ui/card'
-import { blogs } from '.velite'
+import { Card } from '~/components/ui/card'
+import { blogSource } from '~/lib/source'
+import type { Metadata } from 'next'
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('en-US', {
@@ -16,7 +17,9 @@ function formatDate(date: string) {
   })
 }
 
-const sortedBlogs = blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+const sortedBlogs = blogSource
+  .getPages()
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
 
 export default async function Page() {
   return (
@@ -50,20 +53,20 @@ export default async function Page() {
 
         <Grid columns={{ base: 1, md: 2 }} gap="6" mt="12">
           {sortedBlogs.map((blog, index) => (
-            <NextLink href={`/blog/${blog.slug}`} key={index}>
+            <NextLink href={`/blog/${blog.slugs[0]}`} key={index}>
               <Card.Root h="100%">
                 <Card.Header gap="2">
                   <Card.Title textStyle="xl" _hover={{ textDecoration: 'underline' }}>
-                    {blog.title}
+                    {blog.data.title}
                   </Card.Title>
                   <HStack gap="2" className={css({ color: 'fg.muted', textStyle: 'sm' })}>
-                    <Text>{blog.author}</Text>
+                    <Text>{blog.data.author}</Text>
                     <span>/</span>
-                    <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+                    <time dateTime={blog.data.date}>{formatDate(blog.data.date)}</time>
                   </HStack>
                 </Card.Header>
                 <Card.Body>
-                  <Text minH="2lh">{blog.description}</Text>
+                  <Text minH="2lh">{blog.data.description}</Text>
                   <Text mt="2" fontWeight="medium" color="colorPalette.default">
                     Read more
                   </Text>
@@ -79,7 +82,7 @@ export default async function Page() {
   )
 }
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Blog',
   description: 'This blog is the official source for the updates from the Ark UI team',
 }

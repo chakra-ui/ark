@@ -1,10 +1,10 @@
-import type { Showcases } from '.velite'
 import { cva } from 'styled-system/css'
 import { GridItem, styled } from 'styled-system/jsx'
 import { Card } from './ui/card'
+import type { Showcase } from '~/data/showcases'
 
 interface ShowcaseCardProps {
-  data: Showcases
+  data: Showcase
 }
 
 export const ShowcaseCard = ({ data }: ShowcaseCardProps) => {

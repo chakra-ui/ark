@@ -1,4 +1,4 @@
-import { showcases } from '.velite'
+import { showcases } from '~/data/showcases'
 import type { Metadata } from 'next'
 import { Box, Container, Grid, Stack } from 'styled-system/jsx'
 import { Footer } from '~/components/marketing/footer'

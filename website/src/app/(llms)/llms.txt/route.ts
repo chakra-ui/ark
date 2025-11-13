@@ -8,8 +8,8 @@ export const GET = async () => {
 
   const generateUrl = (framework: string, slug: string) => `https://ark-ui.com/${framework}/docs/${slug}`
 
-  const generatePageLinks = (page: { title: string; slug: string }) =>
-    frameworks.map((framework) => `- [${page.title}](${generateUrl(framework, page.slug)})`).join('\n')
+  const generatePageLinks = (page: { slugs: string[]; data: { title: string } }) =>
+    frameworks.map((framework) => `- [${page.data.title}](${generateUrl(framework, page.slugs.join('/'))})`).join('\n')
 
   const generateCategorySection = (category: string, pages: (typeof sidebarGroups)[number]) => {
     const header = `# ${category.toUpperCase()}\n`

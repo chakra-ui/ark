@@ -254,13 +254,13 @@ website/
 │   ├── demos/               # Interactive component demos
 │   └── lib/                 # Utility functions
 ├── .storybook/              # Storybook configuration
-├── velite.config.ts         # Content management configuration
+├── source.config.ts         # Content management configuration
 └── panda.config.ts          # Styling configuration
 ```
 
-### Content Management (Velite)
+### Content Management (fumadocs-mdx)
 
-The website uses **Velite** for content management with these collections:
+The website uses **fumadocs-mdx** for content management with these collections:
 
 **Pages Collection:**
 
@@ -433,6 +433,6 @@ bun run web dev
 # Build website
 bun run web build
 
-# Generate content (Velite)
+# Generate content (fumadocs-mdx)
 bun run web prepare
 ```

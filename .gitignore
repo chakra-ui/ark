@@ -304,7 +304,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 vite.config.mts.timestamp-*
 
-.velite
+.source
 .vercel
 
 # Claude

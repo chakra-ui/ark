@@ -1,15 +1,14 @@
-'use client'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import NextLink from 'next/link'
 import { css, cva, cx } from 'styled-system/css'
 import { HStack, Stack } from 'styled-system/jsx'
 import { Icon } from '~/components/ui/icon'
 import { Text } from '~/components/ui/text'
-import type { Pages } from '.velite'
+import type { Page } from '~/lib/source'
 
 interface Props {
-  prevPage?: Pages
-  nextPage?: Pages
+  prevPage?: Page
+  nextPage?: Page
 }
 
 export const DocsFooter = (props: Props) => {
@@ -19,7 +18,7 @@ export const DocsFooter = (props: Props) => {
   return (
     <Stack justify="space-between" gap="3" direction={{ base: 'column-reverse', sm: 'row' }}>
       {prevPage && (
-        <NextLink href={[basepath, prevPage.slug].join('/')} className={link}>
+        <NextLink href={[basepath, ...prevPage.slugs].join('/')} className={link}>
           <Text color="fg.muted" fontWeight="medium" textStyle="sm">
             Prev page
           </Text>
@@ -27,20 +26,20 @@ export const DocsFooter = (props: Props) => {
             <Icon size="md">
               <ArrowLeftIcon />
             </Icon>
-            <Text fontWeight="medium">{prevPage.title}</Text>
+            <Text fontWeight="medium">{prevPage.data.title}</Text>
           </HStack>
         </NextLink>
       )}
       {nextPage && (
         <NextLink
-          href={[basepath, nextPage.slug].join('/')}
+          href={[basepath, ...nextPage.slugs].join('/')}
           className={cx(link, css({ marginLeft: 'auto', alignItems: 'flex-end' }))}
         >
           <Text color="fg.muted" fontWeight="medium" textStyle="sm">
             Next page
           </Text>
           <HStack gap="1">
-            <Text fontWeight="medium">{nextPage.title}</Text>
+            <Text fontWeight="medium">{nextPage.data.title}</Text>
             <Icon size="md">
               <ArrowRightIcon />
             </Icon>

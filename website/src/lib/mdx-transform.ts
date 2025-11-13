@@ -45,7 +45,7 @@ export function replaceExample(text: string, componentFromPath: string): string 
     const component = match[2] || componentFromPath
 
     if (!component) {
-      console.log('[velite] no component for example:', id)
+      console.log('[fumadocs-mdx] no component for example:', id)
       continue
     }
 
@@ -64,7 +64,7 @@ export function replaceExample(text: string, componentFromPath: string): string 
       const replacement = `**Example: ${id}**\n\n${codeBlocks.join('\n\n')}`
       text = text.replace(match[0], replacement)
     } else {
-      console.log('[velite] no examples found for:', component, id)
+      console.log('[fumadocs-mdx] no examples found for:', component, id)
     }
   }
 
@@ -176,7 +176,7 @@ export function replaceContextType(text: string): string {
         text = text.replace(match[0], apiTable)
       }
     } catch {
-      console.log('[velite] no context/api found for:', id)
+      console.log('[fumadocs-mdx] no context/api found for:', id)
     }
   }
 

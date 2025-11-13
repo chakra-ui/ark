@@ -1,4 +1,18 @@
 {
+  "AutoplayIndicator": {
+    "props": {
+      "paused": {
+        "type": "number | boolean | Node | ArrayElement | (string & {})",
+        "isRequired": false,
+        "description": "The content to render when autoplay is paused."
+      },
+      "playing": {
+        "type": "number | boolean | Node | ArrayElement | (string & {})",
+        "isRequired": false,
+        "description": "The content to render when autoplay is playing."
+      }
+    }
+  },
   "AutoplayTrigger": {
     "props": {
       "asChild": {
@@ -80,6 +94,15 @@
     "props": {
       "asChild": {
         "type": "(props: ParentProps<'button'>) => Element",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      }
+    }
+  },
+  "ProgressText": {
+    "props": {
+      "asChild": {
+        "type": "(props: ParentProps<'span'>) => Element",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       }

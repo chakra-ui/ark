@@ -2,7 +2,7 @@ import NextLink from 'next/link'
 import { css } from 'styled-system/css'
 import { Card } from '~/components/ui/card'
 import { Text } from '~/components/ui/text'
-import { blogs } from '.velite'
+import { blogSource } from '~/lib/source'
 
 interface BlogCardGroupProps {
   match: string
@@ -10,8 +10,8 @@ interface BlogCardGroupProps {
 }
 
 export const BlogCardGroup = (props: BlogCardGroupProps) => {
-  const items = blogs.filter((blog) => {
-    return new RegExp(props.match).test(blog.slug) && props.exclude !== blog.slug
+  const items = blogSource.getPages().filter((blog) => {
+    return new RegExp(props.match).test(blog.slugs[0]) && props.exclude !== blog.slugs[0]
   })
 
   return (
@@ -24,13 +24,13 @@ export const BlogCardGroup = (props: BlogCardGroupProps) => {
     >
       {items.map((item) => {
         return (
-          <NextLink className="not-prose" href={`/blog/${item.slug}`} key={item.slug}>
+          <NextLink className="not-prose" href={`/blog/${item.slugs[0]}`} key={item.slugs[0]}>
             <Card.Root h="100%">
               <Card.Header gap="2">
                 <Card.Title textStyle="lg" _hover={{ textDecoration: 'underline' }}>
-                  {item.title}
+                  {item.data.title}
                 </Card.Title>
-                <Text minH="2lh">{item.description}</Text>
+                <Text minH="2lh">{item.data.description}</Text>
               </Card.Header>
             </Card.Root>
           </NextLink>

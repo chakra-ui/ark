@@ -1,12 +1,13 @@
 import { fetchExamplesGroupedByCategory } from './examples'
-import { pages } from '.velite'
+import { pageSource } from './source'
 
-const components = pages
-  .filter((page) => page.category === 'components')
+const components = pageSource
+  .getPages()
+  .filter((page) => page.data.category === 'components')
   .map((page) => ({
-    label: page.title,
-    value: `/docs/${page.slug}`,
-    description: page.description,
+    label: page.data.title,
+    value: `/docs/${page.slugs.join('/')}`,
+    description: page.data.description,
     category: 'Component',
   }))
 

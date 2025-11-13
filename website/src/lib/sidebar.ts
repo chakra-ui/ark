@@ -1,12 +1,12 @@
-import { type Pages, pages } from '.velite'
+import { pageSource, type Page } from './source'
 
 export const categories = ['overview', 'guides', 'ai', 'collections', 'components', 'utilities']
 
-export const getSidebarGroups = (): Pages[][] => {
+export const getSidebarGroups = (): Page[][] => {
   const overviewPriority = ['introduction', 'getting-started', 'changelog', 'about']
 
-  const sortedCategories = pages.reduce<Record<string, Pages[]>>((acc, page) => {
-    let category = page.category
+  const sortedCategories = pageSource.getPages().reduce<Record<string, Page[]>>((acc, page) => {
+    let category = page.data.category
     if (categories.includes(category)) {
       acc[category] ||= []
       acc[category].push(page)
@@ -16,7 +16,7 @@ export const getSidebarGroups = (): Pages[][] => {
 
   // Sort pages within the 'overview' category by priority
   if (sortedCategories.overview) {
-    sortedCategories.overview.sort((a, b) => overviewPriority.indexOf(a.id) - overviewPriority.indexOf(b.id))
+    sortedCategories.overview.sort((a, b) => overviewPriority.indexOf(a.data.id) - overviewPriority.indexOf(b.data.id))
   }
 
   return (

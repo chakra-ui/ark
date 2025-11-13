@@ -1,32 +1,17 @@
 'use client'
 import { useWindowScroll } from '@uidotdev/usehooks'
+import type { TOCItemType } from 'fumadocs-core/toc'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { SegmentGroup } from '~/components/ui/segment-group'
 import { Text } from '~/components/ui/text'
 
-interface TocEntry {
-  /**
-   * Title of the entry
-   */
-  title: string
-  /**
-   * URL that can be used to reach
-   * the content
-   */
-  url: string
-  /**
-   * Nested items
-   */
-  items: TocEntry[]
-}
-
 interface Props {
-  entries?: TocEntry[]
+  entries?: TOCItemType[]
 }
 
 export const TableOfContent = (props: Props) => {
-  const entries = flattenTocEntries(props.entries)
+  const { entries = [] } = props
   const activeItem = useScrollSpy(entries.map((entry) => entry.url))
   const router = useRouter()
   const [{ y }] = useWindowScroll()
@@ -62,17 +47,6 @@ export const TableOfContent = (props: Props) => {
     </nav>
   )
 }
-
-interface FlattenedTocEntry extends Omit<TocEntry, 'items'> {
-  depth: number
-}
-
-const flattenTocEntries = (entries: TocEntry[] = [], depth = 0): FlattenedTocEntry[] =>
-  entries.reduce<FlattenedTocEntry[]>(
-    (acc, entry) =>
-      acc.concat({ title: entry.title, url: entry.url, depth }, flattenTocEntries(entry.items, depth + 1)),
-    [],
-  )
 
 const useScrollSpy = (selectors: string[]) => {
   const [activeId, setActiveId] = useState<string | null>(selectors[0])

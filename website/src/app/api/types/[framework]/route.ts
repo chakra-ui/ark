@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server'
-import { types } from '.velite'
+import { types } from '@/.source'
 
 type Params = Promise<{ framework: string }>
 

@@ -1,4 +1,18 @@
 {
+  "AutoplayIndicator": {
+    "props": {
+      "paused": {
+        "type": "Snippet<[]>",
+        "isRequired": true,
+        "description": "The snippet to render when autoplay is paused."
+      },
+      "playing": {
+        "type": "Snippet<[]>",
+        "isRequired": true,
+        "description": "The snippet to render when autoplay is playing."
+      }
+    }
+  },
   "AutoplayTrigger": {
     "props": {
       "asChild": {
@@ -88,6 +102,16 @@
     "props": {
       "asChild": {
         "type": "Snippet<[PropsFn<'button'>]>",
+        "isRequired": false,
+        "description": "Use the provided child element as the default rendered element, combining their props and behavior."
+      },
+      "ref": { "type": "Element", "isRequired": false }
+    }
+  },
+  "ProgressText": {
+    "props": {
+      "asChild": {
+        "type": "Snippet<[PropsFn<'span'>]>",
         "isRequired": false,
         "description": "Use the provided child element as the default rendered element, combining their props and behavior."
       },

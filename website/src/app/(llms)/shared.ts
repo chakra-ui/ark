@@ -1,8 +1,8 @@
 import { type AccessibilityDocKey, type DataAttrDocKey, getAccessibilityDoc, getDataAttrDoc } from '@zag-js/docs'
 import { frameworkExample } from '~/components/example'
 import { cmdMap } from '~/components/install-cmd'
-import type { Pages } from '.velite'
-import { types } from '.velite'
+import type { Page } from '~/lib/source'
+import { types } from '@/.source'
 
 // Constants for regex patterns
 const PATTERNS = {
@@ -109,7 +109,7 @@ const replaceComponentTypes = (id: string, framework: string) => {
     .join('\n\n')
 }
 
-const replaceExamples = async (content: string, page: Pages, framework: string) => {
+const replaceExamples = async (content: string, page: Page, framework: string) => {
   const examples = content.match(PATTERNS.EXAMPLE) || []
   let res = content
 
@@ -120,7 +120,7 @@ const replaceExamples = async (content: string, page: Pages, framework: string) 
     const id = idMatch?.[1]
     if (!id) continue
 
-    const component = componentMatch?.[1] || page.slug.split('/')[1]
+    const component = componentMatch?.[1] || page.slugs[1]
     const { code, extension } = await frameworkExample(framework, component, id)
     res = res.replace(example, `\`\`\`${extension}\n${code}\`\`\``)
   }
@@ -128,9 +128,9 @@ const replaceExamples = async (content: string, page: Pages, framework: string) 
   return res
 }
 
-export const cleanupPageContent = async (page: Pages, framework: 'react' | 'solid' | 'vue' | 'svelte') => {
-  if (!page.llm) return ''
-  let res = page.llm
+export const cleanupPageContent = async (page: Page, framework: 'react' | 'solid' | 'vue' | 'svelte') => {
+  if (!page.data.llm) return ''
+  let res = page.data.llm
 
   // Remove unwanted components
   res = res.replace(PATTERNS.ANATOMY, '')

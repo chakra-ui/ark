@@ -5,7 +5,7 @@ import { CssVarTable } from './css-var-table'
 import { DataAttrTable } from './data-attr-table'
 import { EmitsTable } from './emits-table'
 import { PropsTable } from './props-table'
-import { types } from '.velite'
+import { types } from '@/.source'
 
 interface Props {
   id: string

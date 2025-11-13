@@ -4,7 +4,7 @@ import { Grid, Stack } from 'styled-system/jsx'
 import { Heading } from '~/components/ui/heading'
 import { Text } from '~/components/ui/text'
 import type { Example } from '~/lib/examples'
-import { pages } from '.velite'
+import { pageSource } from '~/lib/source'
 
 interface Props {
   example: Example
@@ -19,12 +19,12 @@ export const ExamplesFooter = (props: Props) => {
         <Heading textStyle="2xl">Components in this Example</Heading>
         <Grid columns={{ base: 1, sm: 2, md: 3 }} gap="8">
           {example.relatedComponents.map((component) => {
-            const page = pages.find((page) => page.id === component)
+            const page = pageSource.getPage(['components', component])
             return (
               <NextLink key={component} href={`/docs/components/${component}`} className={link}>
-                <Text fontWeight="medium">{page?.title}</Text>
+                <Text fontWeight="medium">{page?.data.title}</Text>
                 <Text color="fg.muted" textStyle="sm">
-                  {page?.description}
+                  {page?.data.description}
                 </Text>
               </NextLink>
             )

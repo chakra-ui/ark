@@ -17,9 +17,9 @@ export async function GET(_request: Request, context: RouteContext) {
   }
 
   const fullSlug = slugParts.join('/')
-  const page = pages.find((p) => p.slug === fullSlug)
+  const page = pages.find((p) => p.slugs.join('/') === fullSlug)
 
-  if (!page || !page.llm) {
+  if (!page || !page.data.llm) {
     notFound()
   }
 
@@ -34,18 +34,18 @@ export async function GET(_request: Request, context: RouteContext) {
 }
 
 function generateLlmContent(page: (typeof pages)[0]) {
-  const sourceUrl = `https://raw.githubusercontent.com/chakra-ui/ark/refs/heads/main/website/src/content/pages/${page.slug}.mdx`
+  const sourceUrl = `https://raw.githubusercontent.com/chakra-ui/ark/refs/heads/main/website/src/content/pages/${page.slugs.join('/')}.mdx`
 
-  const header = `# ${page.title}
+  const header = `# ${page.data.title}
 
-URL: https://ark-ui.com/docs/${page.slug}
+URL: https://ark-ui.com/docs/${page.slugs.join('/')}
 Source: ${sourceUrl}
 
-${page.description || ''}
+${page.data.description || ''}
 
 ---
 
 `
 
-  return `${header}${page.llm}`
+  return `${header}${page.data.llm}`
 }
