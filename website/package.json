@@ -14,6 +14,7 @@
     "@biomejs/biome": "2.3.4",
     "@chakra-ui/better-auth": "0.3.0",
     "@effect/schema": "0.75.5",
+    "@fumadocs/mdx-remote": "1.4.3",
     "@icons-pack/react-simple-icons": "13.8.0",
     "@pandacss/dev": "1.5.0",
     "@pandacss/preset-base": "1.5.0",

@@ -6,14 +6,14 @@ import { PageHeader } from '~/components/page-header'
 import { pageSource } from '~/lib/source'
 import { getMDXComponents } from '~/mdx-components'
 
-export default function Page() {
+export default async function Page() {
   const page = pageSource.getPage(['license'])
 
   if (!page) {
     return notFound()
   }
 
-  const MDX = page.data.body
+  const { body: MDX } = await page.data.load()
 
   return (
     <Container py={{ base: '16', md: '24' }} maxW="3xl">

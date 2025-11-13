@@ -28,7 +28,7 @@ export default async function Page(props: { params: Promise<{ slug: string }> })
     return notFound()
   }
 
-  const MDX = blog.data.body
+  const { body: MDX } = await blog.data.load()
 
   return (
     <Flex

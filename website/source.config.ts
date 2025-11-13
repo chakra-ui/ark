@@ -24,6 +24,7 @@ export const blogPosts = defineCollections({
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
   }),
+  async: true,
 })
 
 export const pages = defineCollections({
@@ -50,6 +51,7 @@ export const pages = defineCollections({
       }),
     })
   },
+  async: true,
 })
 
 const PropDefinition = z.object({

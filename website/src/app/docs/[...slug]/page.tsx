@@ -26,7 +26,7 @@ export default async function Page(props: Props) {
   serverContext.component = params.slug[1]
 
   if (currentPage) {
-    const MDX = currentPage.data.body
+    const { body: MDX, toc } = await currentPage.data.load()
 
     return (
       <Container display="flex" py="12" gap="8" justifyContent="center">
@@ -57,7 +57,7 @@ export default async function Page(props: Props) {
         </Stack>
         <Box flexGrow="1" width="full" maxW="14rem" display={{ base: 'none', xl: 'block' }}>
           <Box position="fixed">
-            <TableOfContent entries={currentPage.data.toc} />
+            <TableOfContent entries={toc} />
           </Box>
         </Box>
       </Container>
