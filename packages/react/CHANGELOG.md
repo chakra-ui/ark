@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.28.0] - 2025-11-14
+
 ### Added
 
 - **General**: Exported `InteractOutsideEvent`, `FocusOutsideEvent`, and `PointerDownOutsideEvent` types for better type
