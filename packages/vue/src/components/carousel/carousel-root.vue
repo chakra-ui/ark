@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<CarouselRootProps>(), {
   allowMouseDrag: undefined,
   loop: undefined,
   autoplay: undefined,
+  autoSize: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<CarouselRootEmits>()

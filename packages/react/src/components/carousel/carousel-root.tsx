@@ -12,6 +12,7 @@ export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props
   const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
     'allowMouseDrag',
     'autoplay',
+    'autoSize',
     'defaultPage',
     'id',
     'ids',

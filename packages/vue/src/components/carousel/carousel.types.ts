@@ -12,6 +12,11 @@ export interface RootProps {
    */
   autoplay?: boolean | { delay: number }
   /**
+   * Whether to enable variable width slides.
+   * @default false
+   */
+  autoSize?: boolean
+  /**
    * The initial page to scroll to when rendered.
    * Use when you don't need to control the page of the carousel.
    * @default 0
