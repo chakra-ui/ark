@@ -73,6 +73,7 @@
         "@zag-js/listbox": "1.28.0",
         "@zag-js/marquee": "1.28.0",
         "@zag-js/menu": "1.28.0",
+        "@zag-js/navigation-menu": "1.28.0",
         "@zag-js/number-input": "1.28.0",
         "@zag-js/pagination": "1.28.0",
         "@zag-js/password-input": "1.28.0",
@@ -179,6 +180,7 @@
         "@zag-js/listbox": "1.28.0",
         "@zag-js/marquee": "1.28.0",
         "@zag-js/menu": "1.28.0",
+        "@zag-js/navigation-menu": "1.28.0",
         "@zag-js/number-input": "1.28.0",
         "@zag-js/pagination": "1.28.0",
         "@zag-js/password-input": "1.28.0",
@@ -281,6 +283,7 @@
         "@zag-js/listbox": "1.28.0",
         "@zag-js/marquee": "1.28.0",
         "@zag-js/menu": "1.28.0",
+        "@zag-js/navigation-menu": "1.28.0",
         "@zag-js/number-input": "1.28.0",
         "@zag-js/pagination": "1.28.0",
         "@zag-js/password-input": "1.28.0",
@@ -381,6 +384,7 @@
         "@zag-js/listbox": "1.28.0",
         "@zag-js/marquee": "1.28.0",
         "@zag-js/menu": "1.28.0",
+        "@zag-js/navigation-menu": "1.28.0",
         "@zag-js/number-input": "1.28.0",
         "@zag-js/pagination": "1.28.0",
         "@zag-js/password-input": "1.28.0",
@@ -1796,6 +1800,8 @@
     "@zag-js/marquee": ["@zag-js/marquee@1.28.0", "", { "dependencies": { "@zag-js/anatomy": "1.28.0", "@zag-js/core": "1.28.0", "@zag-js/dom-query": "1.28.0", "@zag-js/types": "1.28.0", "@zag-js/utils": "1.28.0" } }, "sha512-lOenp6zPUiGp7CDpImf2Zgr7zFY+hWvl0sMs6z3csQ3lTNWpLijFuyFee7TLJjwPlauE920gxW3QY26qHmGS1A=="],
 
     "@zag-js/menu": ["@zag-js/menu@1.28.0", "", { "dependencies": { "@zag-js/anatomy": "1.28.0", "@zag-js/core": "1.28.0", "@zag-js/dismissable": "1.28.0", "@zag-js/dom-query": "1.28.0", "@zag-js/popper": "1.28.0", "@zag-js/rect-utils": "1.28.0", "@zag-js/types": "1.28.0", "@zag-js/utils": "1.28.0" } }, "sha512-k8VwWaxrr7bZJV12VCZn6WANJGwU/slIQJwhA9OmMN4iLPThkuOmfHYySnCJtBrBqB5F4tOk+pW8e1pHh+06OA=="],
+
+    "@zag-js/navigation-menu": ["@zag-js/navigation-menu@1.28.0", "", { "dependencies": { "@zag-js/anatomy": "1.28.0", "@zag-js/core": "1.28.0", "@zag-js/dismissable": "1.28.0", "@zag-js/dom-query": "1.28.0", "@zag-js/types": "1.28.0", "@zag-js/utils": "1.28.0" } }, "sha512-gURO0nTcDXA+7FO8wNDbHG/97Gn6zae8pTJnudCyrrVRHzhfX7hlXj6gaXFso1WIS5djZeTF7YYBc6BsgGP9Aw=="],
 
     "@zag-js/number-input": ["@zag-js/number-input@1.28.0", "", { "dependencies": { "@internationalized/number": "3.6.5", "@zag-js/anatomy": "1.28.0", "@zag-js/core": "1.28.0", "@zag-js/dom-query": "1.28.0", "@zag-js/types": "1.28.0", "@zag-js/utils": "1.28.0" } }, "sha512-48+c620djETFj4+zhrfNGnHjWO9S2DGxFmD7Icwrs8cbaGz6WfdMLep6eLySBNkokTWT6Nok6quEku7rHTxx3Q=="],
 
