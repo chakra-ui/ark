@@ -3,7 +3,13 @@ import { Select, createListCollection } from '@ark-ui/vue/select'
 import { ChevronDownIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
 
-const collection = createListCollection({
+interface Item {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const collection = createListCollection<Item>({
   items: [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
@@ -11,7 +17,7 @@ const collection = createListCollection({
     { label: 'Svelte', value: 'svelte', disabled: true },
   ],
 })
-const value = ref(['vue'])
+const value = ref<string[]>(['vue'])
 </script>
 
 <template>

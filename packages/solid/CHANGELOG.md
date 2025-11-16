@@ -2,6 +2,23 @@
 
 ### Added
 
+- **Carousel**: Added support for `autoSize` prop to allow variable width/height slide items
+
+### Fixed
+
+- **Carousel**: Fixed dragging behavior that stops working after switching browser tabs or scrolling the page
+- **Date Picker**: Fixed issue where the range date picker crashes when typing the end date first and blurring the
+  input field multiple times
+- **Presence**: Fixed a bug where elements get stuck in unmountSuspended state during rapid state updates
+- **Radio Group, Tabs**: Fixed indicator prematurely showing when rect has not been resolved yet
+- **ScrollArea**: Removed unnecessary `createMemo` wrapper in scrollbar props as is already reactive.
+- **Tabs**: Fixed tabs indicator position not updating when inactive tabs change size
+- **Tags Input**: Fixed issue where item delete trigger doesn't have `data-*` attached
+
+## [5.28.0] - 2025-11-14
+
+### Added
+
 - **General**: Exported `InteractOutsideEvent`, `FocusOutsideEvent`, and `PointerDownOutsideEvent` types for better type
   safety
 - **Carousel**:
@@ -13,6 +30,7 @@
 
 - **useListCollection**: Updated `initialItems` to accept `readonly` arrays for better compatibility with immutable data
   patterns.
+- **CollectionItem**: Use the collection type from `@zag-js/collection` just like the other frameworks.
 
 ### Fixed
 

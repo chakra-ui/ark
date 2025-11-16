@@ -8,6 +8,7 @@ import PauseOnHoverExample from './examples/pause-on-hover.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import ScrollToExample from './examples/scroll-to.svelte'
 import SlidesPerPageExample from './examples/slides-per-page.svelte'
+import VariableSizeExample from './examples/variable-size.svelte'
 import VerticalExample from './examples/vertical.svelte'
 
 const meta: Meta = {
@@ -67,6 +68,12 @@ export const ScrollTo = {
 export const SlidesPerPage = {
   render: () => ({
     Component: SlidesPerPageExample,
+  }),
+}
+
+export const VariableSize = {
+  render: () => ({
+    Component: VariableSizeExample,
   }),
 }
 

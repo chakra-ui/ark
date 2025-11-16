@@ -9,7 +9,7 @@ interface Item {
 }
 
 export const Controlled = () => {
-  const [, setSelectedItems] = createSignal<Item[]>([])
+  const [value, setValue] = createSignal<string[]>([])
 
   const collection = createListCollection<Item>({
     items: [
@@ -20,8 +20,12 @@ export const Controlled = () => {
     ],
   })
 
+  const handleValueChange = (details: Select.ValueChangeDetails<Item>) => {
+    setValue(details.value)
+  }
+
   return (
-    <Select.Root collection={collection} onValueChange={(e) => setSelectedItems(e.items)}>
+    <Select.Root collection={collection} value={value()} onValueChange={handleValueChange}>
       <Select.Label>Framework</Select.Label>
       <Select.Control>
         <Select.Trigger>

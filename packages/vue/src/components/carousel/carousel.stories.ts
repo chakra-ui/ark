@@ -9,6 +9,7 @@ import PauseOnHoverExample from './examples/pause-on-hover.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import ScrollToExample from './examples/scroll-to.vue'
 import SlidesPerPageExample from './examples/slides-per-page.vue'
+import VariableSizeExample from './examples/variable-size.vue'
 import VerticalExample from './examples/vertical.vue'
 
 const meta: Meta = {
@@ -76,6 +77,13 @@ export const ScrollTo = {
 export const SlidesPerPage = {
   render: () => ({
     components: { Component: SlidesPerPageExample },
+    template: '<Component />',
+  }),
+}
+
+export const VariableSize = {
+  render: () => ({
+    components: { Component: VariableSizeExample },
     template: '<Component />',
   }),
 }

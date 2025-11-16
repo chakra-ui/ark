@@ -2,9 +2,9 @@ import * as select from '@zag-js/select'
 import { type PropTypes, normalizeProps, useMachine } from '@zag-js/solid'
 import { type Accessor, createMemo, createUniqueId } from 'solid-js'
 import { useEnvironmentContext, useLocaleContext } from '../../providers'
-import type { CollectionItem, MaybeAccessor, Optional } from '../../types'
+import type { MaybeAccessor, Optional } from '../../types'
 import { runIfFn } from '../../utils/run-if-fn'
-import type { ListCollection } from '../collection'
+import type { CollectionItem, ListCollection } from '../collection'
 import { useFieldContext } from '../field'
 
 export interface UseSelectProps<T extends CollectionItem>
