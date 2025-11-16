@@ -11,7 +11,7 @@ export const ScrollAreaThumb = (props: ScrollAreaThumbProps) => {
   const scrollAreaApi = useScrollAreaContext()
   const scrollbarProps = useScrollAreaScrollbarContext()
 
-  const mergedProps = mergeProps(() => scrollAreaApi().getThumbProps(scrollbarProps()), props)
+  const mergedProps = mergeProps(() => scrollAreaApi().getThumbProps(scrollbarProps), props)
 
   return <ark.div {...mergedProps} />
 }

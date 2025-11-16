@@ -1,6 +1,5 @@
 import type { ScrollbarProps } from '@zag-js/scroll-area'
 import { mergeProps } from '@zag-js/solid'
-import { createMemo } from 'solid-js'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
@@ -12,13 +11,11 @@ export interface ScrollAreaScrollbarProps extends Assign<HTMLProps<'div'>, Scrol
 
 export const ScrollAreaScrollbar = (props: ScrollAreaScrollbarProps) => {
   const [scrollbarProps, localProps] = createSplitProps<ScrollbarProps>()(props, ['orientation'])
-  const scrollAreaApi = useScrollAreaContext()
-  const mergedProps = mergeProps(() => scrollAreaApi().getScrollbarProps(scrollbarProps), localProps)
-
-  const scrollbarContext = createMemo(() => scrollbarProps)
+  const scrollArea = useScrollAreaContext()
+  const mergedProps = mergeProps(() => scrollArea().getScrollbarProps(scrollbarProps), localProps)
 
   return (
-    <ScrollAreaScrollbarProvider value={scrollbarContext}>
+    <ScrollAreaScrollbarProvider value={scrollbarProps}>
       <ark.div {...mergedProps} />
     </ScrollAreaScrollbarProvider>
   )
