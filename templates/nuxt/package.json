@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@ark-ui/vue": "workspace:*",
-    "lucide-vue-next": "0.553.0",
+    "lucide-vue-next": "0.554.0",
     "nuxt": "4.2.1",
     "vue": "3.5.24",
     "vue-router": "4.6.3"
