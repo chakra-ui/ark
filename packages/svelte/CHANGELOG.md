@@ -9,6 +9,7 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Carousel**: Added support for `autoSize` prop to allow variable width/height slide items
+- **Splitter**: Exported `getLayout` and `getSplitterLayout` functions for calculating splitter panel layouts
 
 ### Fixed
 
