@@ -2,7 +2,7 @@ import { mergeConfig } from 'vite'
 
 import type { StorybookConfig } from 'storybook-solidjs-vite'
 
-export default <StorybookConfig>{
+export default {
   framework: 'storybook-solidjs-vite',
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   async viteFinal(config) {
@@ -22,4 +22,4 @@ export default <StorybookConfig>{
       propFilter: (prop: Record<string, any>) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
   },
-}
+} as StorybookConfig
