@@ -8,7 +8,6 @@ import {
   splitRenderStrategyProps,
 } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { NavigationMenuContentProvider } from './navigation-menu-viewport-content-context'
 import { type UseNavigationMenuProps, useNavigationMenu } from './use-navigation-menu'
 import { NavigationMenuProvider } from './use-navigation-menu-context'
 
@@ -34,13 +33,11 @@ export const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuRootProp
   const mergedProps = mergeProps(navigationMenu.getRootProps(), localProps)
 
   return (
-    <NavigationMenuContentProvider>
-      <NavigationMenuProvider value={navigationMenu}>
-        <RenderStrategyPropsProvider value={renderStrategyProps}>
-          <ark.nav {...mergedProps} ref={ref} />
-        </RenderStrategyPropsProvider>
-      </NavigationMenuProvider>
-    </NavigationMenuContentProvider>
+    <NavigationMenuProvider value={navigationMenu}>
+      <RenderStrategyPropsProvider value={renderStrategyProps}>
+        <ark.nav {...mergedProps} ref={ref} />
+      </RenderStrategyPropsProvider>
+    </NavigationMenuProvider>
   )
 })
 
