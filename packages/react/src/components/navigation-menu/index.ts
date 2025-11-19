@@ -73,9 +73,5 @@ export {
 export { navigationMenuAnatomy } from './navigation-menu.anatomy'
 export { useNavigationMenu, type UseNavigationMenuProps, type UseNavigationMenuReturn } from './use-navigation-menu'
 export { useNavigationMenuContext, type UseNavigationMenuContext } from './use-navigation-menu-context'
-export {
-  useNavigationMenuItemPropsContext,
-  type UseNavigationMenuItemPropsContext,
-} from './use-navigation-menu-item-props-context'
 
 export * as NavigationMenu from './navigation-menu'

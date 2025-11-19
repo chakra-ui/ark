@@ -4,7 +4,7 @@ export const WithViewport = () => {
   const renderLinks = (opts: { value: string; items: string[] }) => {
     const { value, items } = opts
     return items.map((item, index) => (
-      <NavigationMenu.Link key={`${value}-${item}-${index}`} asChild>
+      <NavigationMenu.Link key={`${value}-${item}-${index}`} value={value} asChild>
         <a href="# ">{item}</a>
       </NavigationMenu.Link>
     ))
@@ -15,25 +15,27 @@ export const WithViewport = () => {
       <NavigationMenu.IndicatorTrack>
         <NavigationMenu.List>
           <NavigationMenu.Item value="products">
-            <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
-            <NavigationMenu.TriggerProxy />
-            <NavigationMenu.ViewportProxy />
+            <NavigationMenu.Trigger value="products">Products</NavigationMenu.Trigger>
+            <NavigationMenu.TriggerProxy value="products" />
+            <NavigationMenu.ViewportProxy value="products" />
           </NavigationMenu.Item>
 
           <NavigationMenu.Item value="company">
-            <NavigationMenu.Trigger>Company</NavigationMenu.Trigger>
-            <NavigationMenu.TriggerProxy />
-            <NavigationMenu.ViewportProxy />
+            <NavigationMenu.Trigger value="company">Company</NavigationMenu.Trigger>
+            <NavigationMenu.TriggerProxy value="company" />
+            <NavigationMenu.ViewportProxy value="company" />
           </NavigationMenu.Item>
 
           <NavigationMenu.Item value="developers">
-            <NavigationMenu.Trigger>Developers</NavigationMenu.Trigger>
-            <NavigationMenu.TriggerProxy />
-            <NavigationMenu.ViewportProxy />
+            <NavigationMenu.Trigger value="developers">Developers</NavigationMenu.Trigger>
+            <NavigationMenu.TriggerProxy value="developers" />
+            <NavigationMenu.ViewportProxy value="developers" />
           </NavigationMenu.Item>
 
           <NavigationMenu.Item value="pricing">
-            <NavigationMenu.Link href="#pricing">pricing</NavigationMenu.Link>
+            <NavigationMenu.Link href="#pricing" value="pricing">
+              pricing
+            </NavigationMenu.Link>
           </NavigationMenu.Item>
 
           <NavigationMenu.Indicator>
