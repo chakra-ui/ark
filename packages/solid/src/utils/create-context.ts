@@ -1,3 +1,4 @@
+import { hasProp, isFunction } from '@zag-js/utils'
 import { type Context, createContext as createSolidContext, useContext as useSolidContext } from 'solid-js'
 
 export interface CreateContextOptions<T> {
@@ -25,7 +26,9 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     if (!context && strict) {
       const error = new Error(errorMessage ?? getErrorMessage(hookName, providerName))
       error.name = 'ContextError'
-      Error.captureStackTrace?.(error, useContext)
+      if (hasProp(Error, 'captureStackTrace') && isFunction(Error.captureStackTrace)) {
+        Error.captureStackTrace(error, useContext)
+      }
       throw error
     }
 
