@@ -2,29 +2,31 @@
 
 ### Added
 
-- **Carousel, Color Picker, Combobox, Date Picker, Select**: Added `value` to `OpenChangeDetails` for better context when handling open state changes
+- **Carousel, Color Picker, Combobox, Date Picker, Select**: Added `value` to `OpenChangeDetails` for better context
+  when handling open state changes
 - **Carousel**: Added support for `autoSize` prop to allow variable width/height slide items
-- **Splitter**: 
-  - Added `getResizeTriggerIndicator` to render an indicator when resizing
+- **Splitter**:
+  - Added `Splitter.ResizeTriggerIndicator` to render an indicator when resizing
   - Exported `getLayout` and `getSplitterLayout` functions for calculating splitter panel layouts
 - **Toast**: Exposed viewport offset as CSS variables on the toast group element
 
 ### Fixed
 
-- **Carousel**: 
+- **Carousel**:
   - Fixed dragging behavior that stops working after switching browser tabs or scrolling the page
   - Fixed dragging not working after scrolling with mouse wheel when `allowMouseDrag` is enabled
 - **Combobox**: Fixed `onHighlightChange` not being invoked when collection is filtered to empty
-- **Date Picker**: Fixed issue where the range date picker crashes when typing the end date first and blurring the
-  input field multiple times
-- **File Upload**: Fixed issue where clicking on non-interactive children inside the dropzone doesn't open the file picker
+- **Date Picker**: Fixed issue where the range date picker crashes when typing the end date first and blurring the input
+  field multiple times
+- **File Upload**: Fixed issue where clicking on non-interactive children inside the dropzone doesn't open the file
+  picker
 - **Presence**: Fixed a bug where elements get stuck in unmountSuspended state during rapid state updates
-- **Radio Group**: 
+- **Radio Group**:
   - Fixed inconsistent application of `data-focus-visible` and `data-focus` attributes
   - Fixed indicator prematurely showing when rect has not been resolved yet (with Tabs)
 - **ScrollArea**: Removed unnecessary `createMemo` wrapper in scrollbar props as is already reactive.
 - **Splitter**: Fixed disabled splitter showing resize cursor and allowing dragging
-- **Tabs**: 
+- **Tabs**:
   - Fixed indicator prematurely showing when rect has not been resolved yet (with Radio Group)
   - Fixed tabs indicator position not updating when inactive tabs change size
 - **Tags Input**: Fixed issue where item delete trigger doesn't have `data-*` attached

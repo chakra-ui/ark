@@ -8,7 +8,8 @@
      */
     fallback?: Snippet
   }
-  export interface CarouselAutoplayIndicatorProps extends Assign<HTMLProps<'span'>, CarouselAutoplayIndicatorBaseProps> {
+  export interface CarouselAutoplayIndicatorProps
+    extends Assign<HTMLProps<'span'>, CarouselAutoplayIndicatorBaseProps> {
     children?: Snippet
   }
 </script>
