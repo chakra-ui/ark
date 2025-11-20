@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface NumberInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface NumberInputRootProviderProps extends HTMLProps<'div'>, NumberInputRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const NumberInputRootProvider = forwardRef<HTMLDivElement, NumberInputRootProviderProps>((props, ref) => {
-  const [{ value: numberInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: numberInput }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(numberInput.getRootProps(), localProps)
 
   return (

@@ -9,8 +9,10 @@ import { CheckboxGroupContextProvider } from './use-checkbox-group-context'
 export interface CheckboxGroupBaseProps extends UseCheckboxGroupProps, PolymorphicProps {}
 export interface CheckboxGroupProps extends Assign<HTMLProps<'div'>, CheckboxGroupBaseProps> {}
 
+const splitGroupProps = createSplitProps<UseCheckboxGroupProps>()
+
 export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>((props, ref) => {
-  const [checkboxGroupProps, localProps] = createSplitProps<UseCheckboxGroupProps>()(props, [
+  const [checkboxGroupProps, localProps] = splitGroupProps(props, [
     'defaultValue',
     'value',
     'onValueChange',

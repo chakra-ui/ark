@@ -11,8 +11,10 @@ export interface TreeViewNodeProviderProps<T> extends TreeViewNodeProviderBasePr
   children?: React.ReactNode | undefined
 }
 
+const splitNodeProps = createSplitProps<NodeProps>()
+
 export function TreeViewNodeProvider<T>(props: TreeViewNodeProviderProps<T>) {
-  const [nodeProps, localProps] = createSplitProps<NodeProps>()(props, ['indexPath', 'node'])
+  const [nodeProps, localProps] = splitNodeProps(props, ['indexPath', 'node'])
   const treeView = useTreeViewContext()
   const nodeState = treeView.getNodeState(nodeProps)
   return (

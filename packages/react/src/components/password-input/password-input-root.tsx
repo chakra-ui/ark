@@ -9,8 +9,10 @@ import { PasswordInputProvider } from './use-password-input-context'
 export interface PasswordInputRootBaseProps extends UsePasswordInputProps, PolymorphicProps {}
 export interface PasswordInputRootProps extends Assign<HTMLProps<'div'>, PasswordInputRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UsePasswordInputProps>()
+
 export const PasswordInputRoot = forwardRef<HTMLDivElement, PasswordInputRootProps>((props, ref) => {
-  const [usePasswordInputProps, localProps] = createSplitProps<UsePasswordInputProps>()(props, [
+  const [usePasswordInputProps, localProps] = splitRootProps(props, [
     'autoComplete',
     'defaultVisible',
     'disabled',

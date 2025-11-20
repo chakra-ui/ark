@@ -9,8 +9,10 @@ import { PinInputProvider } from './use-pin-input-context'
 export interface PinInputRootBaseProps extends UsePinInputProps, PolymorphicProps {}
 export interface PinInputRootProps extends Assign<HTMLProps<'div'>, PinInputRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UsePinInputProps>()
+
 export const PinInputRoot = forwardRef<HTMLDivElement, PinInputRootProps>((props, ref) => {
-  const [usePinInputProps, localProps] = createSplitProps<UsePinInputProps>()(props, [
+  const [usePinInputProps, localProps] = splitRootProps(props, [
     'autoFocus',
     'blurOnComplete',
     'count',

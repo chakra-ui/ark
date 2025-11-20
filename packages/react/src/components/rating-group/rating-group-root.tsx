@@ -9,8 +9,10 @@ import { RatingGroupProvider } from './use-rating-group-context'
 export interface RatingGroupRootBaseProps extends UseRatingGroupProps, PolymorphicProps {}
 export interface RatingGroupRootProps extends Assign<HTMLProps<'div'>, RatingGroupRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseRatingGroupProps>()
+
 export const RatingGroupRoot = forwardRef<HTMLDivElement, RatingGroupRootProps>((props, ref) => {
-  const [useRatingProps, localProps] = createSplitProps<UseRatingGroupProps>()(props, [
+  const [useRatingProps, localProps] = splitRootProps(props, [
     'allowHalf',
     'autoFocus',
     'count',

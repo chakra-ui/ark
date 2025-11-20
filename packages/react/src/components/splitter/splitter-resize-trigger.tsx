@@ -10,8 +10,10 @@ import { SplitterResizeTriggerPropsProvider } from './use-splitter-resize-trigge
 export interface SplitterResizeTriggerBaseProps extends ResizeTriggerProps, PolymorphicProps {}
 export interface SplitterResizeTriggerProps extends Assign<HTMLProps<'button'>, SplitterResizeTriggerBaseProps> {}
 
+const splitResizeTriggerProps = createSplitProps<ResizeTriggerProps>()
+
 export const SplitterResizeTrigger = forwardRef<HTMLButtonElement, SplitterResizeTriggerProps>((props, ref) => {
-  const [triggerProps, localProps] = createSplitProps<ResizeTriggerProps>()(props, ['disabled', 'id'])
+  const [triggerProps, localProps] = splitResizeTriggerProps(props, ['disabled', 'id'])
   const splitter = useSplitterContext()
   const mergedProps = mergeProps(splitter.getResizeTriggerProps(triggerProps), localProps)
 

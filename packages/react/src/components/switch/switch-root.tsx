@@ -8,8 +8,10 @@ import { SwitchProvider } from './use-switch-context'
 export interface SwitchRootBaseProps extends UseSwitchProps, PolymorphicProps {}
 export interface SwitchRootProps extends HTMLProps<'label'>, SwitchRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseSwitchProps>()
+
 export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, ref) => {
-  const [switchProps, localProps] = createSplitProps<UseSwitchProps>()(props, [
+  const [useSwitchProps, localProps] = splitRootProps(props, [
     'checked',
     'defaultChecked',
     'disabled',
@@ -25,7 +27,7 @@ export const SwitchRoot = forwardRef<HTMLLabelElement, SwitchRootProps>((props, 
     'value',
   ])
 
-  const switchContext = useSwitch(switchProps)
+  const switchContext = useSwitch(useSwitchProps)
   const mergedProps = mergeProps(switchContext.getRootProps(), localProps)
 
   return (

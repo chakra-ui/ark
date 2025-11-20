@@ -9,8 +9,10 @@ import { TagsInputProvider } from './use-tags-input-context'
 export interface TagsInputRootBaseProps extends UseTagsInputProps, PolymorphicProps {}
 export interface TagsInputRootProps extends Assign<HTMLProps<'div'>, TagsInputRootBaseProps> {}
 
+const splitTagsInputProps = createSplitProps<UseTagsInputProps>()
+
 export const TagsInputRoot = forwardRef<HTMLDivElement, TagsInputRootProps>((props, ref) => {
-  const [useTagsInputProps, localProps] = createSplitProps<UseTagsInputProps>()(props, [
+  const [useTagsInputProps, localProps] = splitTagsInputProps(props, [
     'addOnPaste',
     'allowOverflow',
     'autoFocus',

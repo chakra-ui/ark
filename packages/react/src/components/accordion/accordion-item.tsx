@@ -12,8 +12,10 @@ import { AccordionItemPropsProvider } from './use-accordion-item-props-context'
 export interface AccordionItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface AccordionItemProps extends HTMLProps<'div'>, AccordionItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
+  const [itemProps, localProps] = splitItemProps(props, ['value', 'disabled'])
   const accordion = useAccordionContext()
   const renderStrategy = useRenderStrategyPropsContext()
   const mergedProps = mergeProps(accordion.getItemProps(itemProps), localProps)

@@ -8,8 +8,10 @@ import { useFloatingPanelContext } from './use-floating-panel-context'
 export interface FloatingPanelStageTriggerBaseProps extends PolymorphicProps, StageTriggerProps {}
 export interface FloatingPanelStageTriggerProps extends HTMLProps<'button'>, FloatingPanelStageTriggerBaseProps {}
 
+const splitStageTriggerProps = createSplitProps<StageTriggerProps>()
+
 export const FloatingPanelStageTrigger = forwardRef<HTMLButtonElement, FloatingPanelStageTriggerProps>((props, ref) => {
-  const [stage, localProps] = createSplitProps<StageTriggerProps>()(props, ['stage'])
+  const [stage, localProps] = splitStageTriggerProps(props, ['stage'])
   const floatingPanel = useFloatingPanelContext()
   const mergedProps = mergeProps(floatingPanel.getStageTriggerProps(stage), localProps)
 

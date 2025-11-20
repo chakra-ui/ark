@@ -9,8 +9,10 @@ import { useDatePickerContext } from './use-date-picker-context'
 export interface DatePickerPresetTriggerBaseProps extends PresetTriggerProps, PolymorphicProps {}
 export interface DatePickerPresetTriggerProps extends Assign<HTMLProps<'button'>, DatePickerPresetTriggerBaseProps> {}
 
+const splitPresetTriggerProps = createSplitProps<PresetTriggerProps>()
+
 export const DatePickerPresetTrigger = forwardRef<HTMLButtonElement, DatePickerPresetTriggerProps>((props, ref) => {
-  const [presetTriggerProps, localProps] = createSplitProps<PresetTriggerProps>()(props, ['value'])
+  const [presetTriggerProps, localProps] = splitPresetTriggerProps(props, ['value'])
   const datePicker = useDatePickerContext()
   const mergedProps = mergeProps(datePicker.getPresetTriggerProps(presetTriggerProps), localProps)
 

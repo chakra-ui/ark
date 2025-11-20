@@ -10,9 +10,11 @@ import { DatePickerProvider } from './use-date-picker-context'
 export interface DatePickerRootBaseProps extends UseDatePickerProps, UsePresenceProps, PolymorphicProps {}
 export interface DatePickerRootProps extends Assign<HTMLProps<'div'>, DatePickerRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseDatePickerProps>()
+
 export const DatePickerRoot = forwardRef<HTMLDivElement, DatePickerRootProps>((props, ref) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
-  const [useDatePickerProps, localProps] = createSplitProps<UseDatePickerProps>()(datePickerProps, [
+  const [useDatePickerProps, localProps] = splitRootProps(datePickerProps, [
     'closeOnSelect',
     'defaultFocusedValue',
     'defaultOpen',

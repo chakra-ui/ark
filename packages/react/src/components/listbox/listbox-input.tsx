@@ -8,8 +8,10 @@ import { useListboxContext } from './use-listbox-context'
 export interface ListboxInputBaseProps extends InputProps, PolymorphicProps {}
 export interface ListboxInputProps extends HTMLProps<'input'>, ListboxInputBaseProps {}
 
+const splitInputProps = createSplitProps<InputProps>()
+
 export const ListboxInput = forwardRef<HTMLInputElement, ListboxInputProps>((props, ref) => {
-  const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['autoHighlight'])
+  const [inputProps, localProps] = splitInputProps(props, ['autoHighlight'])
   const listbox = useListboxContext()
   const mergedProps = mergeProps(listbox.getInputProps(inputProps), localProps)
 

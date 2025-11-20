@@ -10,8 +10,10 @@ import { SegmentGroupProvider } from './use-segment-group-context'
 export interface SegmentGroupRootBaseProps extends UseSegmentGroupProps, PolymorphicProps {}
 export interface SegmentGroupRootProps extends Assign<HTMLProps<'div'>, SegmentGroupRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseSegmentGroupProps>()
+
 export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps>((props, ref) => {
-  const [useSegmentGroupProps, localProps] = createSplitProps<UseSegmentGroupProps>()(props, [
+  const [useSegmentGroupProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'disabled',
     'form',

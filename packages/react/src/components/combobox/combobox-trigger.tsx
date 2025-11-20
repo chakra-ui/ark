@@ -8,8 +8,10 @@ import { useComboboxContext } from './use-combobox-context'
 export interface ComboboxTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface ComboboxTriggerProps extends HTMLProps<'button'>, ComboboxTriggerBaseProps {}
 
+const splitTriggerProps = createSplitProps<TriggerProps>()
+
 export const ComboboxTrigger = forwardRef<HTMLButtonElement, ComboboxTriggerProps>((props, ref) => {
-  const [triggerProps, localProps] = createSplitProps<TriggerProps>()(props, ['focusable'])
+  const [triggerProps, localProps] = splitTriggerProps(props, ['focusable'])
   const combobox = useComboboxContext()
   const mergedProps = mergeProps(combobox.getTriggerProps(triggerProps), localProps)
 

@@ -19,8 +19,10 @@ export interface MenuItemBaseProps extends ItemBaseProps, PolymorphicProps {}
 
 export interface MenuItemProps extends Assign<HTMLProps<'div'>, MenuItemBaseProps> {}
 
+const splitItemBaseProps = createSplitProps<ItemBaseProps>()
+
 export const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemBaseProps>()(props, [
+  const [itemProps, localProps] = splitItemBaseProps(props, [
     'closeOnSelect',
     'disabled',
     'value',

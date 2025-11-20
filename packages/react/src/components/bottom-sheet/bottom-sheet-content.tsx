@@ -10,8 +10,10 @@ import { createSplitProps } from '../../utils/create-split-props'
 export interface BottomSheetContentBaseProps extends PolymorphicProps, ContentProps {}
 export interface BottomSheetContentProps extends Omit<HTMLProps<'div'>, 'draggable'>, BottomSheetContentBaseProps {}
 
+const splitContentProps = createSplitProps<ContentProps>()
+
 export const BottomSheetContent = forwardRef<HTMLDivElement, BottomSheetContentProps>((props, ref) => {
-  const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['draggable'])
+  const [contentProps, localProps] = splitContentProps(props, ['draggable'])
   const bottomSheet = useBottomSheetContext()
   const presence = usePresenceContext()
   const mergedProps = mergeProps(

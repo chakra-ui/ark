@@ -9,8 +9,10 @@ import { DatePickerViewPropsProvider } from './use-date-picker-view-props-contex
 export interface DatePickerViewBaseProps extends Required<ViewProps>, PolymorphicProps {}
 export interface DatePickerViewProps extends HTMLProps<'div'>, DatePickerViewBaseProps {}
 
+const splitViewProps = createSplitProps<Required<ViewProps>>()
+
 export const DatePickerView = forwardRef<HTMLDivElement, DatePickerViewProps>((props, ref) => {
-  const [viewProps, localProps] = createSplitProps<Required<ViewProps>>()(props, ['view'])
+  const [viewProps, localProps] = splitViewProps(props, ['view'])
   const datePicker = useDatePickerContext()
 
   return (

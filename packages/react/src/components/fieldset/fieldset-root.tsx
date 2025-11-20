@@ -9,8 +9,10 @@ import { FieldsetProvider } from './use-fieldset-context'
 export interface FieldsetRootBaseProps extends UseFieldsetProps, PolymorphicProps {}
 export interface FieldsetRootProps extends HTMLProps<'fieldset'>, FieldsetRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseFieldsetProps>()
+
 export const FieldsetRoot = forwardRef<HTMLFieldSetElement, FieldsetRootProps>((props, ref) => {
-  const [useFieldsetProps, localProps] = createSplitProps<UseFieldsetProps>()(props, ['id', 'disabled', 'invalid'])
+  const [useFieldsetProps, localProps] = splitRootProps(props, ['id', 'disabled', 'invalid'])
   const fieldset = useFieldset(useFieldsetProps)
   const mergedProps = mergeProps<HTMLProps<'fieldset'>>(fieldset.getRootProps(), localProps)
 

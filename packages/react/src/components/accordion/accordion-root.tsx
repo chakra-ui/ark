@@ -14,9 +14,11 @@ import { AccordionProvider } from './use-accordion-context'
 export interface AccordionRootBaseProps extends UseAccordionProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProps extends Assign<HTMLProps<'div'>, AccordionRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseAccordionProps>()
+
 export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
-  const [useAccordionProps, localProps] = createSplitProps<UseAccordionProps>()(accordionProps, [
+  const [useAccordionProps, localProps] = splitRootProps(accordionProps, [
     'collapsible',
     'defaultValue',
     'disabled',

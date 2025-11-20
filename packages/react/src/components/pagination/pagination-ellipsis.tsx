@@ -8,8 +8,10 @@ import { usePaginationContext } from './use-pagination-context'
 export interface PaginationEllipsisBaseProps extends EllipsisProps, PolymorphicProps {}
 export interface PaginationEllipsisProps extends HTMLProps<'div'>, PaginationEllipsisBaseProps {}
 
+const splitEllipsisProps = createSplitProps<EllipsisProps>()
+
 export const PaginationEllipsis = forwardRef<HTMLDivElement, PaginationEllipsisProps>((props, ref) => {
-  const [ellipsisProps, localProps] = createSplitProps<EllipsisProps>()(props, ['index'])
+  const [ellipsisProps, localProps] = splitEllipsisProps(props, ['index'])
   const pagination = usePaginationContext()
   const mergedProps = mergeProps(pagination.getEllipsisProps(ellipsisProps), localProps)
 

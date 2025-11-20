@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface FieldsetRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FieldsetRootProviderProps extends HTMLProps<'fieldset'>, FieldsetRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const FieldsetRootProvider = forwardRef<HTMLFieldSetElement, FieldsetRootProviderProps>((props, ref) => {
-  const [{ value: fieldset }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: fieldset }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(fieldset.getRootProps(), localProps)
 
   return (

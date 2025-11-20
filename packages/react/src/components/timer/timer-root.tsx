@@ -9,8 +9,10 @@ export interface TimerRootBaseProps extends UseTimerProps, PolymorphicProps {}
 
 export interface TimerRootProps extends HTMLProps<'div'>, TimerRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseTimerProps>()
+
 export const TimerRoot = forwardRef<HTMLDivElement, TimerRootProps>((props, ref) => {
-  const [useTimerProps, localProps] = createSplitProps<UseTimerProps>()(props, [
+  const [useTimerProps, localProps] = splitRootProps(props, [
     'id',
     'ids',
     'autoStart',

@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface AngleSliderRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface AngleSliderRootProviderProps extends HTMLProps<'div'>, AngleSliderRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const AngleSliderRootProvider = forwardRef<HTMLDivElement, AngleSliderRootProviderProps>((props, ref) => {
-  const [{ value: angleSlider }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: angleSlider }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(angleSlider.getRootProps(), localProps)
 
   return (

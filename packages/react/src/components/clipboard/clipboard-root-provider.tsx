@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface ClipboardRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ClipboardRootProviderProps extends HTMLProps<'div'>, ClipboardRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const ClipboardRootProvider = forwardRef<HTMLDivElement, ClipboardRootProviderProps>((props, ref) => {
-  const [{ value: clipboard }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: clipboard }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(clipboard.getRootProps(), localProps)
 
   return (

@@ -9,8 +9,10 @@ import { ColorPickerSwatchPropsProvider } from './use-color-picker-swatch-props-
 export interface ColorPickerSwatchBaseProps extends SwatchProps, PolymorphicProps {}
 export interface ColorPickerSwatchProps extends HTMLProps<'div'>, ColorPickerSwatchBaseProps {}
 
+const splitSwatchProps = createSplitProps<SwatchProps>()
+
 export const ColorPickerSwatch = forwardRef<HTMLDivElement, ColorPickerSwatchProps>((props, ref) => {
-  const [swatwchProps, localProps] = createSplitProps<SwatchProps>()(props, ['respectAlpha', 'value'])
+  const [swatwchProps, localProps] = splitSwatchProps(props, ['respectAlpha', 'value'])
   const colorPicker = useColorPickerContext()
   const mergedProps = mergeProps(colorPicker.getSwatchProps(swatwchProps), localProps)
 

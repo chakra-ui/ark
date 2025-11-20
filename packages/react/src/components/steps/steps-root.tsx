@@ -8,8 +8,10 @@ import { StepsProvider } from './use-steps-context'
 export interface StepsRootBaseProps extends UseStepsProps, PolymorphicProps {}
 export interface StepsRootProps extends HTMLProps<'div'>, StepsRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseStepsProps>()
+
 export const StepsRoot = forwardRef<HTMLDivElement, StepsRootProps>((props, ref) => {
-  const [useStepsProps, localProps] = createSplitProps<UseStepsProps>()(props, [
+  const [useStepsProps, localProps] = splitRootProps(props, [
     'defaultStep',
     'id',
     'ids',

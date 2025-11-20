@@ -8,8 +8,10 @@ import { useSliderContext } from './use-slider-context'
 export interface SliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface SliderMarkerProps extends HTMLProps<'span'>, SliderMarkerBaseProps {}
 
+const splitMarkerProps = createSplitProps<MarkerProps>()
+
 export const SliderMarker = forwardRef<HTMLSpanElement, SliderMarkerProps>((props, ref) => {
-  const [markerProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])
+  const [markerProps, localProps] = splitMarkerProps(props, ['value'])
   const slider = useSliderContext()
   const mergedProps = mergeProps(slider.getMarkerProps(markerProps), localProps)
 

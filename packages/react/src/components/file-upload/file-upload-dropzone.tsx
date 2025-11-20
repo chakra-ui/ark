@@ -8,8 +8,10 @@ import { useFileUploadContext } from './use-file-upload-context'
 export interface FileUploadDropzoneBaseProps extends PolymorphicProps, DropzoneProps {}
 export interface FileUploadDropzoneProps extends HTMLProps<'div'>, FileUploadDropzoneBaseProps {}
 
+const splitDropzoneProps = createSplitProps<DropzoneProps>()
+
 export const FileUploadDropzone = forwardRef<HTMLDivElement, FileUploadDropzoneProps>((props, ref) => {
-  const [dropzoneProps, localProps] = createSplitProps<DropzoneProps>()(props, ['disableClick'])
+  const [dropzoneProps, localProps] = splitDropzoneProps(props, ['disableClick'])
   const fileUpload = useFileUploadContext()
   const mergedProps = mergeProps(fileUpload.getDropzoneProps(dropzoneProps), localProps)
 

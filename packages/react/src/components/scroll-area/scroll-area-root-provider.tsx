@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface ScrollAreaRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ScrollAreaRootProviderProps extends HTMLProps<'div'>, ScrollAreaRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const ScrollAreaRootProvider = forwardRef<HTMLDivElement, ScrollAreaRootProviderProps>((props, ref) => {
-  const [{ value: scrollArea }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: scrollArea }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(scrollArea.getRootProps(), localProps)
 
   return (

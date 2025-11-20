@@ -9,9 +9,11 @@ import { ListboxItemGroupPropsProvider } from './use-listbox-item-group-props'
 export interface ListboxItemGroupBaseProps extends PolymorphicProps {}
 export interface ListboxItemGroupProps extends HTMLProps<'div'>, ListboxItemGroupBaseProps {}
 
+const splitItemGroupProps = createSplitProps<Partial<ItemGroupProps>>()
+
 export const ListboxItemGroup = forwardRef<HTMLDivElement, ListboxItemGroupProps>((props, ref) => {
   const id = useId()
-  const [_itemGroupProps, localProps] = createSplitProps<Partial<ItemGroupProps>>()(props, ['id'])
+  const [_itemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const itemGroupProps = { id, ..._itemGroupProps }
 
   const listbox = useListboxContext()

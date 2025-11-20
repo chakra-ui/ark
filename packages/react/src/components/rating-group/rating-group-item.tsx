@@ -9,8 +9,10 @@ import { RatingGroupItemProvider } from './use-rating-group-item-context'
 export interface RatingGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface RatingGroupItemProps extends HTMLProps<'span'>, RatingGroupItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const RatingGroupItem = forwardRef<HTMLSpanElement, RatingGroupItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = splitItemProps(props, ['index'])
   const ratingGroup = useRatingGroupContext()
   const mergedProps = mergeProps(ratingGroup.getItemProps(itemProps), localProps)
   const itemState = ratingGroup.getItemState(itemProps)

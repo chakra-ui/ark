@@ -9,8 +9,10 @@ import { usePaginationContext } from './use-pagination-context'
 export interface PaginationItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface PaginationItemProps extends Assign<HTMLProps<'button'>, PaginationItemBaseProps> {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const PaginationItem = forwardRef<HTMLButtonElement, PaginationItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'type'])
+  const [itemProps, localProps] = splitItemProps(props, ['value', 'type'])
   const pagination = usePaginationContext()
   const mergedProps = mergeProps(pagination.getItemProps(itemProps), localProps)
 

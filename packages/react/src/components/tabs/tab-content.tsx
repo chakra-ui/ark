@@ -11,8 +11,10 @@ import { useTabsContext } from './use-tabs-context'
 export interface TabContentBaseProps extends ContentProps, PolymorphicProps {}
 export interface TabContentProps extends HTMLProps<'div'>, TabContentBaseProps {}
 
+const splitContentProps = createSplitProps<ContentProps>()
+
 export const TabContent = forwardRef<HTMLDivElement, TabContentProps>((props, ref) => {
-  const [contentProps, localProps] = createSplitProps<ContentProps>()(props, ['value'])
+  const [contentProps, localProps] = splitContentProps(props, ['value'])
   const tabs = useTabsContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
 

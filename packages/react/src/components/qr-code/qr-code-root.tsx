@@ -9,8 +9,10 @@ import { QrCodeProvider } from './use-qr-code-context'
 export interface QrCodeRootBaseProps extends UseQrCodeProps, PolymorphicProps {}
 export interface QrCodeRootProps extends Assign<HTMLProps<'div'>, QrCodeRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseQrCodeProps>()
+
 export const QrCodeRoot = forwardRef<HTMLDivElement, QrCodeRootProps>((props, ref) => {
-  const [qrcodeProps, localProps] = createSplitProps<UseQrCodeProps>()(props, [
+  const [qrcodeProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'encoding',
     'id',

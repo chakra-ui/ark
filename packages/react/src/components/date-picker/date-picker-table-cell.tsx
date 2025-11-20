@@ -12,13 +12,11 @@ import { useDatePickerViewPropsContext } from './use-date-picker-view-props-cont
 export interface DatePickerTableCellBaseProps extends UseDatePickerTableCellPropsContext, PolymorphicProps {}
 export interface DatePickerTableCellProps extends HTMLProps<'td'>, DatePickerTableCellBaseProps {}
 
+const splitTableCellProps = createSplitProps<UseDatePickerTableCellPropsContext>()
+
 export const DatePickerTableCell = forwardRef<HTMLTableCellElement, DatePickerTableCellProps>((props, ref) => {
-  const [cellProps, localProps] = createSplitProps<UseDatePickerTableCellPropsContext>()(props, [
-    'disabled',
-    'value',
-    'visibleRange',
-    'columns',
-  ])
+  const [cellProps, localProps] = splitTableCellProps(props, ['disabled', 'value', 'visibleRange', 'columns'])
+
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
   const tableCellProps = {

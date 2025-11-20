@@ -9,8 +9,10 @@ import { useTabsContext } from './use-tabs-context'
 export interface TabTriggerBaseProps extends TriggerProps, PolymorphicProps {}
 export interface TabTriggerProps extends Assign<HTMLProps<'button'>, TabTriggerBaseProps> {}
 
+const splitTriggerProps = createSplitProps<TriggerProps>()
+
 export const TabTrigger = forwardRef<HTMLButtonElement, TabTriggerProps>((props, ref) => {
-  const [tabProps, localProps] = createSplitProps<TriggerProps>()(props, ['disabled', 'value'])
+  const [tabProps, localProps] = splitTriggerProps(props, ['disabled', 'value'])
   const tabs = useTabsContext()
   const mergedProps = mergeProps(tabs.getTriggerProps(tabProps), localProps)
 

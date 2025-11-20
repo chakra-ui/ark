@@ -9,8 +9,10 @@ import { ClipboardProvider } from './use-clipboard-context'
 export interface ClipboardRootBaseProps extends UseClipboardProps, PolymorphicProps {}
 export interface ClipboardRootProps extends Assign<HTMLProps<'div'>, ClipboardRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseClipboardProps>()
+
 export const ClipboardRoot = forwardRef<HTMLDivElement, ClipboardRootProps>((props, ref) => {
-  const [useClipboardProps, localProps] = createSplitProps<UseClipboardProps>()(props, [
+  const [useClipboardProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'id',
     'ids',

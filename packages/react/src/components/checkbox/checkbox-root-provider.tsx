@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface CheckboxRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface CheckboxRootProviderProps extends HTMLProps<'label'>, CheckboxRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const CheckboxRootProvider = forwardRef<HTMLLabelElement, CheckboxRootProviderProps>((props, ref) => {
-  const [{ value: checkbox }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: checkbox }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(checkbox.getRootProps(), localProps)
 
   return (

@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface StepsRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface StepsRootProviderProps extends HTMLProps<'div'>, StepsRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const StepsRootProvider = forwardRef<HTMLDivElement, StepsRootProviderProps>((props, ref) => {
-  const [{ value: steps }, rootProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: steps }, rootProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(steps.getRootProps(), rootProps)
 
   return (

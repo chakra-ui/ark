@@ -9,8 +9,10 @@ import { ToggleGroupProvider } from './use-toggle-group-context'
 export interface ToggleGroupRootBaseProps extends UseToggleGroupProps, PolymorphicProps {}
 export interface ToggleGroupRootProps extends Assign<HTMLProps<'div'>, ToggleGroupRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseToggleGroupProps>()
+
 export const ToggleGroupRoot = forwardRef<HTMLDivElement, ToggleGroupRootProps>((props, ref) => {
-  const [useToggleGroupProps, localProps] = createSplitProps<UseToggleGroupProps>()(props, [
+  const [useToggleGroupProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'deselectable',
     'disabled',

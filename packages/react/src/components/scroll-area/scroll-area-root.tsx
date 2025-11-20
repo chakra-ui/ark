@@ -8,8 +8,10 @@ import { ScrollAreaProvider } from './use-scroll-area-context'
 export interface ScrollAreaRootBaseProps extends UseScrollAreaProps, PolymorphicProps {}
 export interface ScrollAreaRootProps extends HTMLProps<'div'>, ScrollAreaRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseScrollAreaProps>()
+
 export const ScrollAreaRoot = forwardRef<HTMLDivElement, ScrollAreaRootProps>((props, ref) => {
-  const [useScrollAreaProps, localProps] = createSplitProps<UseScrollAreaProps>()(props, ['id', 'ids'])
+  const [useScrollAreaProps, localProps] = splitRootProps(props, ['id', 'ids'])
   const scrollArea = useScrollArea(useScrollAreaProps)
   const mergedProps = mergeProps(scrollArea.getRootProps(), localProps)
 

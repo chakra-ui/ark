@@ -8,8 +8,10 @@ import { useCarouselContext } from './use-carousel-context'
 export interface CarouselItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface CarouselItemProps extends HTMLProps<'div'>, CarouselItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const CarouselItem = forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index', 'snapAlign'])
+  const [itemProps, localProps] = splitItemProps(props, ['index', 'snapAlign'])
   const carousel = useCarouselContext()
   const mergedProps = mergeProps(carousel.getItemProps(itemProps), localProps)
 

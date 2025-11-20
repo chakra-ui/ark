@@ -10,8 +10,10 @@ export interface ToggleRootBaseProps extends UseToggleProps, PolymorphicProps {}
 
 export interface ToggleRootProps extends HTMLProps<'button'>, ToggleRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseToggleProps>()
+
 export const ToggleRoot = forwardRef<HTMLButtonElement, ToggleRootProps>((props, ref) => {
-  const [useToggleProps, localProps] = createSplitProps<UseToggleProps>()(props, [
+  const [useToggleProps, localProps] = splitRootProps(props, [
     'pressed',
     'defaultPressed',
     'disabled',

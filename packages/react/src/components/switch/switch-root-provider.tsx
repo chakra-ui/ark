@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface SwitchRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SwitchRootProviderProps extends HTMLProps<'label'>, SwitchRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const SwitchRootProvider = forwardRef<HTMLLabelElement, SwitchRootProviderProps>((props, ref) => {
-  const [{ value: api }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: api }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(api.getRootProps(), localProps)
 
   return (

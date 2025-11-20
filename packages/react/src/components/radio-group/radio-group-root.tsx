@@ -9,8 +9,10 @@ import { RadioGroupProvider } from './use-radio-group-context'
 export interface RadioGroupRootBaseProps extends UseRadioGroupProps, PolymorphicProps {}
 export interface RadioGroupRootProps extends Assign<HTMLProps<'div'>, RadioGroupRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseRadioGroupProps>()
+
 export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((props, ref) => {
-  const [useRadioGroupProps, localProps] = createSplitProps<UseRadioGroupProps>()(props, [
+  const [useRadioGroupProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'disabled',
     'form',

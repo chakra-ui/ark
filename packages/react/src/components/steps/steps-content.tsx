@@ -8,8 +8,10 @@ import { useStepsContext } from './use-steps-context'
 export interface StepsContentBaseProps extends PolymorphicProps, ItemProps {}
 export interface StepsContentProps extends HTMLProps<'div'>, StepsContentBaseProps {}
 
+const splitContentProps = createSplitProps<ItemProps>()
+
 export const StepsContent = forwardRef<HTMLDivElement, StepsContentProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['index'])
+  const [itemProps, localProps] = splitContentProps(props, ['index'])
   const steps = useStepsContext()
   const mergedProps = mergeProps(steps.getContentProps(itemProps), localProps)
 

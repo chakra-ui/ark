@@ -9,8 +9,10 @@ import { FileUploadItemGroupPropsProvider } from './use-file-upload-item-group-p
 export interface FileUploadItemGroupBaseProps extends PolymorphicProps, ItemGroupProps {}
 export interface FileUploadItemGroupProps extends HTMLProps<'ul'>, FileUploadItemGroupBaseProps {}
 
+const splitItemGroupProps = createSplitProps<ItemGroupProps>()
+
 export const FileUploadItemGroup = forwardRef<HTMLUListElement, FileUploadItemGroupProps>((props, ref) => {
-  const [itemGroupProps, localProps] = createSplitProps<ItemGroupProps>()(props, ['type'])
+  const [itemGroupProps, localProps] = splitItemGroupProps(props, ['type'])
   const fileUpload = useFileUploadContext()
   const mergedProps = mergeProps(fileUpload.getItemGroupProps(itemGroupProps), localProps)
 

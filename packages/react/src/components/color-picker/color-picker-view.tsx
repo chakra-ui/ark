@@ -13,9 +13,11 @@ interface FormatOptions {
 export interface ColorPickerViewBaseProps extends FormatOptions, PolymorphicProps {}
 export interface ColorPickerViewProps extends HTMLProps<'div'>, ColorPickerViewBaseProps {}
 
+const splitFormatOptions = createSplitProps<FormatOptions>()
+
 export const ColorPickerView = forwardRef<HTMLDivElement, ColorPickerViewProps>((props, ref) => {
   const colorPicker = useColorPickerContext()
-  const [formatProps, restProps] = createSplitProps<FormatOptions>()(props, ['format'])
+  const [formatProps, restProps] = splitFormatOptions(props, ['format'])
 
   if (colorPicker.format !== formatProps.format) {
     return null

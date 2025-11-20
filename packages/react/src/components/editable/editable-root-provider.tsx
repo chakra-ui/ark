@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface EditableRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface EditableRootProviderProps extends HTMLProps<'div'>, EditableRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const EditableRootProvider = forwardRef<HTMLDivElement, EditableRootProviderProps>((props, ref) => {
-  const [{ value: editable }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: editable }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(editable.getRootProps(), localProps)
 
   return (

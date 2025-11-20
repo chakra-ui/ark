@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface QrCodeRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface QrCodeRootProviderProps extends HTMLProps<'div'>, QrCodeRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const QrCodeRootProvider = forwardRef<HTMLDivElement, QrCodeRootProviderProps>((props, ref) => {
-  const [{ value: qrCode }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: qrCode }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(qrCode.getRootProps(), localProps)
 
   return (

@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface SignaturePadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SignaturePadRootProviderProps extends HTMLProps<'div'>, SignaturePadRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const SignaturePadRootProvider = forwardRef<HTMLDivElement, SignaturePadRootProviderProps>((props, ref) => {
-  const [{ value: signaturePad }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: signaturePad }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(signaturePad.getRootProps(), localProps)
 
   return (

@@ -8,12 +8,14 @@ export interface HighlightBaseProps extends UseHighlightProps {}
 
 export interface HighlightProps extends Assign<React.ComponentProps<'mark'>, HighlightBaseProps> {}
 
+const splitHighlightBaseProps = createSplitProps<HighlightBaseProps>()
+
 export const Highlight = (props: HighlightProps) => {
   if (typeof props.text !== 'string') {
     throw new Error('[ark-ui/highlight] text must be a string')
   }
 
-  const [highlightProps, localProps] = createSplitProps<HighlightBaseProps>()(props, [
+  const [highlightProps, localProps] = splitHighlightBaseProps(props, [
     'query',
     'text',
     'ignoreCase',
