@@ -1,7 +1,6 @@
 import { mergeProps } from '@zag-js/react'
 import type { ViewportProps } from '@zag-js/navigation-menu'
 import { forwardRef } from 'react'
-import type { Assign } from '../../types'
 import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyPropsContext } from '../../utils/render-strategy'
@@ -10,7 +9,7 @@ import { PresenceProvider, usePresence } from '../presence'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 
 export interface NavigationMenuViewportBaseProps extends ViewportProps, PolymorphicProps {}
-export interface NavigationMenuViewportProps extends Assign<HTMLProps<'div'>, NavigationMenuViewportBaseProps> {}
+export interface NavigationMenuViewportProps extends HTMLProps<'div'>, NavigationMenuViewportBaseProps {}
 
 export const NavigationMenuViewport = forwardRef<HTMLDivElement, NavigationMenuViewportProps>((props, ref) => {
   const [viewportProps, localProps] = createSplitProps<ViewportProps>()(props, ['align'])
