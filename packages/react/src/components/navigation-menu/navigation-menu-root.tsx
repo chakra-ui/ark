@@ -2,16 +2,20 @@ import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
 import { createSplitProps } from '../../utils/create-split-props'
+import {
+  type RenderStrategyProps,
+  RenderStrategyPropsProvider,
+  splitRenderStrategyProps,
+} from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseNavigationMenuProps, useNavigationMenu } from './use-navigation-menu'
 import { NavigationMenuProvider } from './use-navigation-menu-context'
-import { PresenceProvider, splitPresenceProps, usePresence, type UsePresenceProps } from '../presence'
 
-export interface NavigationMenuRootBaseProps extends UseNavigationMenuProps, UsePresenceProps, PolymorphicProps {}
+export interface NavigationMenuRootBaseProps extends UseNavigationMenuProps, RenderStrategyProps, PolymorphicProps {}
 export interface NavigationMenuRootProps extends Assign<HTMLProps<'nav'>, NavigationMenuRootBaseProps> {}
 
 export const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuRootProps>((props, ref) => {
-  const [presenceProps, navigationMenuProps] = splitPresenceProps(props)
+  const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)
   const [useNavigationMenuProps, localProps] = createSplitProps<UseNavigationMenuProps>()(navigationMenuProps, [
     'closeDelay',
     'defaultValue',
@@ -26,14 +30,13 @@ export const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuRootProp
     'value',
   ])
   const navigationMenu = useNavigationMenu(useNavigationMenuProps)
-  const presence = usePresence(mergeProps({ present: navigationMenu.open }, presenceProps))
   const mergedProps = mergeProps(navigationMenu.getRootProps(), localProps)
 
   return (
     <NavigationMenuProvider value={navigationMenu}>
-      <PresenceProvider value={presence}>
+      <RenderStrategyPropsProvider value={renderStrategyProps}>
         <ark.nav {...mergedProps} ref={ref} />
-      </PresenceProvider>
+      </RenderStrategyPropsProvider>
     </NavigationMenuProvider>
   )
 })
