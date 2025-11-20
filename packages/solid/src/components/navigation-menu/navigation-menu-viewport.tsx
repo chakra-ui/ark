@@ -5,7 +5,7 @@ import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { useRenderStrategyContext } from '../../utils/render-strategy'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
+import { usePresence } from '../presence'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 
 export interface NavigationMenuViewportBaseProps extends ViewportProps, PolymorphicProps<'div'> {}
@@ -23,10 +23,8 @@ export const NavigationMenuViewport = (props: NavigationMenuViewportProps) => {
   )
 
   return (
-    <PresenceProvider value={presenceApi}>
-      <Show when={!presenceApi().unmounted}>
-        <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
-      </Show>
-    </PresenceProvider>
+    <Show when={!presenceApi().unmounted}>
+      <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
+    </Show>
   )
 }

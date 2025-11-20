@@ -9,7 +9,7 @@
 <script lang="ts">
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
-  import { usePresence, usePresenceContext } from '../presence'
+  import { usePresence } from '../presence'
   import { useNavigationMenuContext } from './use-navigation-menu-context'
   import { useRenderStrategyPropsContext } from '$lib/utils/render-strategy'
   import { createSplitProps } from '$lib/utils/create-split-props'

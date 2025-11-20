@@ -16,7 +16,7 @@ export interface NavigationMenuViewportProps
 import { mergeProps } from '@zag-js/vue'
 import { computed } from 'vue'
 import { ark } from '../factory'
-import { PresenceProvider, usePresence } from '../presence'
+import { usePresence } from '../presence'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useRenderStrategyProps } from '../../utils/use-render-strategy'
@@ -26,8 +26,6 @@ const props = defineProps<NavigationMenuViewportProps>()
 const navigationMenu = useNavigationMenuContext()
 const renderStrategy = useRenderStrategyProps()
 const presence = usePresence(computed(() => ({ ...renderStrategy.value, present: navigationMenu.value.open })))
-
-PresenceProvider(presence)
 
 const mergedProps = computed(() =>
   mergeProps(navigationMenu.value.getViewportProps(props), presence.value.presenceProps),

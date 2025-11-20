@@ -13,7 +13,7 @@ export interface NavigationMenuRootProps extends HTMLProps<'nav'>, NavigationMen
 
 export const NavigationMenuRoot = (props: NavigationMenuRootProps) => {
   const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)
-  const [useNavigationMenuProps, restProps] = createSplitProps<UseNavigationMenuProps>()(navigationMenuProps, [
+  const [useNavigationMenuProps, localProps] = createSplitProps<UseNavigationMenuProps>()(navigationMenuProps, [
     'closeDelay',
     'defaultValue',
     'disableClickTrigger',
@@ -28,7 +28,7 @@ export const NavigationMenuRoot = (props: NavigationMenuRootProps) => {
   ])
 
   const api = useNavigationMenu(useNavigationMenuProps)
-  const mergedProps = mergeProps(() => api().getRootProps(), restProps)
+  const mergedProps = mergeProps(() => api().getRootProps(), localProps)
 
   return (
     <NavigationMenuProvider value={api}>

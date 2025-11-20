@@ -17,11 +17,11 @@ export interface NavigationMenuRootProviderProps
 
 export const NavigationMenuRootProvider = (props: NavigationMenuRootProviderProps) => {
   const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)
-  const [{ value: api }, restProps] = createSplitProps<RootProviderProps>()(navigationMenuProps, ['value'])
-  const mergedProps = mergeProps(() => api().getRootProps(), restProps)
+  const [{ value: navigationMenu }, localProps] = createSplitProps<RootProviderProps>()(navigationMenuProps, ['value'])
+  const mergedProps = mergeProps(() => navigationMenu().getRootProps(), localProps)
 
   return (
-    <NavigationMenuProvider value={api}>
+    <NavigationMenuProvider value={navigationMenu}>
       <RenderStrategyProvider value={renderStrategyProps}>
         <ark.nav {...mergedProps} />
       </RenderStrategyProvider>

@@ -18,7 +18,7 @@ import { computed } from 'vue'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 import { useRenderStrategyProps } from '../../utils/use-render-strategy'
-import { usePresence, PresenceProvider } from '../presence'
+import { usePresence } from '../presence'
 import { ark } from '../factory'
 
 const props = defineProps<NavigationMenuContentProps>()
@@ -29,8 +29,6 @@ const renderStrategy = useRenderStrategyProps()
 const presence = usePresence(
   computed(() => ({ ...renderStrategy.value, present: navigationMenu.value.value === props.value })),
 )
-
-PresenceProvider(presence)
 
 const mergedProps = computed(() =>
   mergeProps(navigationMenu.value.getContentProps(props), presence.value.presenceProps),
