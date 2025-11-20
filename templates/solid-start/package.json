@@ -11,10 +11,10 @@
   "dependencies": {
     "@ark-ui/solid": "workspace*",
     "@solidjs/meta": "0.29.4",
-    "@solidjs/router": "0.15.3",
+    "@solidjs/router": "0.15.4",
     "@solidjs/start": "1.2.0",
     "solid-js": "1.9.10",
     "vinxi": "0.5.8",
-    "lucide-solid": "0.553.0"
+    "lucide-solid": "0.554.0"
   }
 }
