@@ -23,18 +23,26 @@ Object.assign(global.navigator, {
 })
 
 // Mock ResizeObserver
-global.ResizeObserver = vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-}))
+global.ResizeObserver = vi.fn(function ResizeObserver() {
+  return {
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+  }
+})
 
 // Mock IntersectionObserver
-global.IntersectionObserver = vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-}))
+global.IntersectionObserver = vi.fn(function IntersectionObserver() {
+  return {
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+    takeRecords: vi.fn(),
+    root: null,
+    rootMargin: '',
+    thresholds: [],
+  }
+})
 
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
