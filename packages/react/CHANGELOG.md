@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.29.0] - 2025-11-20
+
 ### Added
 
 - **Carousel, Color Picker, Combobox, Date Picker, Select**: Added `value` to `OpenChangeDetails` for better context
