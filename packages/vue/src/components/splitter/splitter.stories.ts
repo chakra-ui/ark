@@ -5,6 +5,7 @@ import CollapsibleExample from './examples/collapsible.vue'
 import EventsExample from './examples/events.vue'
 import MultiplePanelsExample from './examples/multiple-panels.vue'
 import RenderPropExample from './examples/render-prop.vue'
+import ResizeIndicatorExample from './examples/resize-indicator.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import VerticalExample from './examples/vertical.vue'
 
@@ -59,6 +60,13 @@ export const MultiplePanels = {
 export const RenderProp = {
   render: () => ({
     components: { Component: RenderPropExample },
+    template: '<Component />',
+  }),
+}
+
+export const ResizeIndicator = {
+  render: () => ({
+    components: { Component: ResizeIndicatorExample },
     template: '<Component />',
   }),
 }

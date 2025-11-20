@@ -12,6 +12,11 @@ export {
   type SplitterResizeTriggerProps as ResizeTriggerProps,
 } from './splitter-resize-trigger'
 export {
+  SplitterResizeTriggerIndicator as ResizeTriggerIndicator,
+  type SplitterResizeTriggerIndicatorBaseProps as ResizeTriggerIndicatorBaseProps,
+  type SplitterResizeTriggerIndicatorProps as ResizeTriggerIndicatorProps,
+} from './splitter-resize-trigger-indicator'
+export {
   SplitterRoot as Root,
   type SplitterRootBaseProps as RootBaseProps,
   type SplitterRootProps as RootProps,
