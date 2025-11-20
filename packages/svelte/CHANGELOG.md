@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.14.0] - 2025-11-20
+
 ### Added
 
 - **Carousel, Color Picker, Combobox, Date Picker, Select**: Added `value` to `OpenChangeDetails` for better context
