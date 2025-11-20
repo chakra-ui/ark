@@ -1,3 +1,4 @@
+export { layout as getSplitterLayout } from '@zag-js/splitter'
 export type {
   ExpandCollapseDetails as SplitterExpandCollapseDetails,
   PanelData as SplitterPanelData,

@@ -1,3 +1,4 @@
+export { layout as getLayout } from '@zag-js/splitter'
 export type { ExpandCollapseDetails, PanelData, ResizeDetails, ResizeEndDetails } from '@zag-js/splitter'
 export { default as Context, type SplitterContextProps as ContextProps } from './splitter-context.svelte'
 export {
@@ -11,12 +12,12 @@ export {
   type SplitterResizeTriggerProps as ResizeTriggerProps,
 } from './splitter-resize-trigger.svelte'
 export {
-  default as Root,
-  type SplitterRootBaseProps as RootBaseProps,
-  type SplitterRootProps as RootProps,
-} from './splitter-root.svelte'
-export {
   default as RootProvider,
   type SplitterRootProviderBaseProps as RootProviderBaseProps,
   type SplitterRootProviderProps as RootProviderProps,
 } from './splitter-root-provider.svelte'
+export {
+  default as Root,
+  type SplitterRootBaseProps as RootBaseProps,
+  type SplitterRootProps as RootProps,
+} from './splitter-root.svelte'

@@ -1,3 +1,4 @@
+export { layout as getLayout } from '@zag-js/splitter'
 export type { ExpandCollapseDetails, PanelData, ResizeDetails, ResizeEndDetails } from '@zag-js/splitter'
 export { SplitterContext as Context, type SplitterContextProps as ContextProps } from './splitter-context'
 export {
