@@ -9,8 +9,10 @@ import { useSplitterContext } from './use-splitter-context'
 export interface SplitterPanelBaseProps extends PanelProps, PolymorphicProps {}
 export interface SplitterPanelProps extends Assign<HTMLProps<'div'>, SplitterPanelBaseProps> {}
 
+const splitPanelProps = createSplitProps<PanelProps>()
+
 export const SplitterPanel = forwardRef<HTMLDivElement, SplitterPanelProps>((props, ref) => {
-  const [splitterPanelProps, localProps] = createSplitProps<PanelProps>()(props, ['id'])
+  const [splitterPanelProps, localProps] = splitPanelProps(props, ['id'])
   const splitter = useSplitterContext()
   const mergedProps = mergeProps(splitter.getPanelProps(splitterPanelProps), localProps)
 

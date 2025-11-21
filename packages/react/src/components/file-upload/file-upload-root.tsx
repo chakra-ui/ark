@@ -8,8 +8,10 @@ import { FileUploadProvider } from './use-file-upload-context'
 export interface FileUploadRootBaseProps extends UseFileUploadProps, PolymorphicProps {}
 export interface FileUploadRootProps extends HTMLProps<'div'>, FileUploadRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseFileUploadProps>()
+
 export const FileUploadRoot = forwardRef<HTMLDivElement, FileUploadRootProps>((props, ref) => {
-  const [useFileUploadProps, localProps] = createSplitProps<UseFileUploadProps>()(props, [
+  const [useFileUploadProps, localProps] = splitRootProps(props, [
     'accept',
     'acceptedFiles',
     'allowDrop',

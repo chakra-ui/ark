@@ -10,9 +10,11 @@ import { ColorPickerProvider } from './use-color-picker-context'
 export interface ColorPickerRootBaseProps extends UseColorPickerProps, UsePresenceProps, PolymorphicProps {}
 export interface ColorPickerRootProps extends Assign<HTMLProps<'div'>, ColorPickerRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseColorPickerProps>()
+
 export const ColorPickerRoot = forwardRef<HTMLDivElement, ColorPickerRootProps>((props, ref) => {
   const [presenceProps, colorPickerProps] = splitPresenceProps(props)
-  const [useColorPickerProps, localProps] = createSplitProps<UseColorPickerProps>()(colorPickerProps, [
+  const [useColorPickerProps, localProps] = splitRootProps(colorPickerProps, [
     'closeOnSelect',
     'defaultOpen',
     'defaultValue',

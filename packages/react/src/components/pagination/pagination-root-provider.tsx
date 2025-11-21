@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface PaginationRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PaginationRootProviderProps extends HTMLProps<'nav'>, PaginationRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const PaginationRootProvider = forwardRef<HTMLElement, PaginationRootProviderProps>((props, ref) => {
-  const [{ value: pagination }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: pagination }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(pagination.getRootProps(), localProps)
 
   return (

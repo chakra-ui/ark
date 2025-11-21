@@ -14,9 +14,11 @@ import { TabsProvider } from './use-tabs-context'
 export interface TabsRootBaseProps extends UseTabsProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProps extends Assign<HTMLProps<'div'>, TabsRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseTabsProps>()
+
 export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
-  const [useTabsProps, localprops] = createSplitProps<UseTabsProps>()(tabsProps, [
+  const [useTabsProps, localProps] = splitRootProps(tabsProps, [
     'activationMode',
     'composite',
     'defaultValue',
@@ -32,7 +34,7 @@ export const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =
     'value',
   ])
   const tabs = useTabs(useTabsProps)
-  const mergedProps = mergeProps(tabs.getRootProps(), localprops)
+  const mergedProps = mergeProps(tabs.getRootProps(), localProps)
 
   return (
     <TabsProvider value={tabs}>

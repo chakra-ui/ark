@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface SplitterRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface SplitterRootProviderProps extends HTMLProps<'div'>, SplitterRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const SplitterRootProvider = forwardRef<HTMLDivElement, SplitterRootProviderProps>((props, ref) => {
-  const [{ value: splitter }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: splitter }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(splitter.getRootProps(), localProps)
 
   return (

@@ -7,8 +7,11 @@ import { SignaturePadProvider } from './use-signature-pad-context'
 
 export interface SignaturePadRootBaseProps extends UseSignaturePadProps, PolymorphicProps {}
 export interface SignaturePadRootProps extends HTMLProps<'div'>, SignaturePadRootBaseProps {}
+
+const splitRootProps = createSplitProps<UseSignaturePadProps>()
+
 export const SignaturePadRoot = forwardRef<HTMLDivElement, SignaturePadRootProps>((props, ref) => {
-  const [useSignaturePadProps, localProps] = createSplitProps<UseSignaturePadProps>()(props, [
+  const [useSignaturePadProps, localProps] = splitRootProps(props, [
     'id',
     'ids',
     'defaultPaths',

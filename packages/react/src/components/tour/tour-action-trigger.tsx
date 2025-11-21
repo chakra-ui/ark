@@ -8,8 +8,10 @@ import { useTourContext } from './use-tour-context'
 export interface TourActionTriggerBaseProps extends PolymorphicProps, StepActionTriggerProps {}
 export interface TourActionTriggerProps extends HTMLProps<'button'>, TourActionTriggerBaseProps {}
 
+const splitActionTriggerProps = createSplitProps<StepActionTriggerProps>()
+
 export const TourActionTrigger = forwardRef<HTMLButtonElement, TourActionTriggerProps>((props, ref) => {
-  const [actionTriggerProps, localProps] = createSplitProps<StepActionTriggerProps>()(props, ['action'])
+  const [actionTriggerProps, localProps] = splitActionTriggerProps(props, ['action'])
   const tour = useTourContext()
   const mergedProps = mergeProps(tour.getActionTriggerProps(actionTriggerProps), localProps)
 

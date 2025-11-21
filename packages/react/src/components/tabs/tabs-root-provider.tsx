@@ -17,10 +17,12 @@ interface RootProviderProps {
 export interface TabsRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface TabsRootProviderProps extends HTMLProps<'div'>, TabsRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const TabsRootProvider = forwardRef<HTMLDivElement, TabsRootProviderProps>((props, ref) => {
   const [renderStrategyProps, tabsProps] = splitRenderStrategyProps(props)
-  const [{ value: tabs }, localprops] = createSplitProps<RootProviderProps>()(tabsProps, ['value'])
-  const mergedProps = mergeProps(tabs.getRootProps(), localprops)
+  const [{ value: tabs }, localProps] = splitRootProviderProps(tabsProps, ['value'])
+  const mergedProps = mergeProps(tabs.getRootProps(), localProps)
 
   return (
     <TabsProvider value={tabs}>

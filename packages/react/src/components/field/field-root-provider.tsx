@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface FieldRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FieldRootProviderProps extends HTMLProps<'div'>, FieldRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const FieldRootProvider = forwardRef<HTMLDivElement, FieldRootProviderProps>((props, ref) => {
-  const [{ value: field }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: field }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps<HTMLProps<'div'>>(field.getRootProps(), localProps)
 
   return (

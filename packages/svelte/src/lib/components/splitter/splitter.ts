@@ -12,6 +12,11 @@ export {
   type SplitterResizeTriggerProps as ResizeTriggerProps,
 } from './splitter-resize-trigger.svelte'
 export {
+  default as ResizeTriggerIndicator,
+  type SplitterResizeTriggerIndicatorBaseProps as ResizeTriggerIndicatorBaseProps,
+  type SplitterResizeTriggerIndicatorProps as ResizeTriggerIndicatorProps,
+} from './splitter-resize-trigger-indicator.svelte'
+export {
   default as RootProvider,
   type SplitterRootProviderBaseProps as RootProviderBaseProps,
   type SplitterRootProviderProps as RootProviderProps,

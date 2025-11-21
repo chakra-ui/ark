@@ -8,8 +8,10 @@ import { useProgressContext } from './use-progress-context'
 export interface ProgressViewBaseProps extends ViewProps, PolymorphicProps {}
 export interface ProgressViewProps extends HTMLProps<'span'>, ProgressViewBaseProps {}
 
+const splitViewProps = createSplitProps<ViewProps>()
+
 export const ProgressView = forwardRef<HTMLSpanElement, ProgressViewProps>((props, ref) => {
-  const [viewProps, localProps] = createSplitProps<ViewProps>()(props, ['state'])
+  const [viewProps, localProps] = splitViewProps(props, ['state'])
   const progress = useProgressContext()
   const mergedProps = mergeProps(progress.getViewProps(viewProps), localProps)
 

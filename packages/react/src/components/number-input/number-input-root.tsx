@@ -9,8 +9,10 @@ import { NumberInputProvider } from './use-number-input-context'
 export interface NumberInputRootBaseProps extends UseNumberInputProps, PolymorphicProps {}
 export interface NumberInputRootProps extends Assign<HTMLProps<'div'>, NumberInputRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseNumberInputProps>()
+
 export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>((props, ref) => {
-  const [useNumberInputProps, localProps] = createSplitProps<UseNumberInputProps>()(props, [
+  const [useNumberInputProps, localProps] = splitRootProps(props, [
     'allowMouseWheel',
     'allowOverflow',
     'clampValueOnBlur',

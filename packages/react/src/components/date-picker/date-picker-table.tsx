@@ -10,8 +10,10 @@ import { useDatePickerViewPropsContext } from './use-date-picker-view-props-cont
 export interface DatePickerTableBaseProps extends Pick<TableProps, 'columns'>, PolymorphicProps {}
 export interface DatePickerTableProps extends HTMLProps<'table'>, DatePickerTableBaseProps {}
 
+const splitTableProps = createSplitProps<Pick<TableProps, 'columns'>>()
+
 export const DatePickerTable = forwardRef<HTMLTableElement, DatePickerTableProps>((props, ref) => {
-  const [{ columns }, localProps] = createSplitProps<Pick<TableProps, 'columns'>>()(props, ['columns'])
+  const [{ columns }, localProps] = splitTableProps(props, ['columns'])
   const datePicker = useDatePickerContext()
   const viewProps = useDatePickerViewPropsContext()
   const tableProps = { columns, id: useId(), ...viewProps }

@@ -11,12 +11,10 @@ type OptionalUseMenuItemGroupContext = Optional<UseMenuItemGroupContext, 'id'>
 export interface MenuRadioItemGroupBaseProps extends OptionalUseMenuItemGroupContext, PolymorphicProps {}
 export interface MenuRadioItemGroupProps extends HTMLProps<'div'>, MenuRadioItemGroupBaseProps {}
 
+const splitItemGroupProps = createSplitProps<OptionalUseMenuItemGroupContext>()
+
 export const MenuRadioItemGroup = forwardRef<HTMLDivElement, MenuRadioItemGroupProps>((props, ref) => {
-  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalUseMenuItemGroupContext>()(props, [
-    'id',
-    'onValueChange',
-    'value',
-  ])
+  const [optionalItemGroupProps, localProps] = splitItemGroupProps(props, ['id', 'onValueChange', 'value'])
   const menu = useMenuContext()
   const id = useId()
   const itemGroupProps = { id, ...optionalItemGroupProps }

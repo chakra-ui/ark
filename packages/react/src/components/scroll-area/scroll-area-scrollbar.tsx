@@ -13,8 +13,10 @@ interface ScrollbarProps {
 export interface ScrollAreaScrollbarBaseProps extends ScrollbarProps, PolymorphicProps {}
 export interface ScrollAreaScrollbarProps extends HTMLProps<'div'>, ScrollAreaScrollbarBaseProps {}
 
+const splitScrollbarProps = createSplitProps<ScrollbarProps>()
+
 export const ScrollAreaScrollbar = forwardRef<HTMLDivElement, ScrollAreaScrollbarProps>((props, ref) => {
-  const [scrollbarProps, localProps] = createSplitProps<ScrollbarProps>()(props, ['orientation'])
+  const [scrollbarProps, localProps] = splitScrollbarProps(props, ['orientation'])
   const scrollAreaApi = useScrollAreaContext()
   const mergedProps = mergeProps(scrollAreaApi.getScrollbarProps(scrollbarProps), localProps)
 

@@ -13,9 +13,11 @@ export interface MenuRootProps extends MenuRootBaseProps {
   children?: ReactNode | undefined
 }
 
+const splitRootProps = createSplitProps<UseMenuProps>()
+
 export const MenuRoot = (props: MenuRootProps) => {
   const [presenceProps, menuProps] = splitPresenceProps(props)
-  const [useMenuProps, localProps] = createSplitProps<UseMenuProps>()(menuProps, [
+  const [useMenuProps, localProps] = splitRootProps(menuProps, [
     'anchorPoint',
     'aria-label',
     'closeOnSelect',

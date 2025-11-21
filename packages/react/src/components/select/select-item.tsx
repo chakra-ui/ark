@@ -10,8 +10,10 @@ import { SelectItemPropsProvider } from './use-select-item-props-context'
 export interface SelectItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SelectItemProps extends HTMLProps<'div'>, SelectItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'persistFocus'])
+  const [itemProps, localProps] = splitItemProps(props, ['item', 'persistFocus'])
   const select = useSelectContext()
   const mergedProps = mergeProps(select.getItemProps(itemProps), localProps)
   const itemState = select.getItemState(itemProps)

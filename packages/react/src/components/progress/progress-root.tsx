@@ -9,8 +9,10 @@ import { ProgressProvider } from './use-progress-context'
 export interface ProgressRootBaseProps extends UseProgressProps, PolymorphicProps {}
 export interface ProgressRootProps extends Assign<HTMLProps<'div'>, ProgressRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseProgressProps>()
+
 export const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>((props, ref) => {
-  const [progressProps, localProps] = createSplitProps<UseProgressProps>()(props, [
+  const [progressProps, localProps] = splitRootProps(props, [
     'defaultValue',
     'formatOptions',
     'id',

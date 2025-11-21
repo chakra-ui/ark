@@ -8,8 +8,10 @@ import { useMarqueeContext } from './use-marquee-context'
 export interface MarqueeEdgeBaseProps extends EdgeProps, PolymorphicProps {}
 export interface MarqueeEdgeProps extends HTMLProps<'div'>, MarqueeEdgeBaseProps {}
 
+const splitEdgeProps = createSplitProps<EdgeProps>()
+
 export const MarqueeEdge = forwardRef<HTMLDivElement, MarqueeEdgeProps>((props, ref) => {
-  const [edgeProps, localProps] = createSplitProps<EdgeProps>()(props, ['side'])
+  const [edgeProps, localProps] = splitEdgeProps(props, ['side'])
   const marquee = useMarqueeContext()
   const mergedProps = mergeProps(marquee.getEdgeProps(edgeProps), localProps)
 

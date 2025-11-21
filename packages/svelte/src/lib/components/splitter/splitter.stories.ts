@@ -4,6 +4,7 @@ import BasicExample from './examples/basic.svelte'
 import CollapsibleExample from './examples/collapsible.svelte'
 import EventsExample from './examples/events.svelte'
 import MultiplePanelsExample from './examples/multiple-panels.svelte'
+import ResizeIndicatorExample from './examples/resize-indicator.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 import VerticalExample from './examples/vertical.svelte'
 
@@ -40,6 +41,12 @@ export const Collapsible = {
 export const Events = {
   render: () => ({
     Component: EventsExample,
+  }),
+}
+
+export const ResizeIndicator = {
+  render: () => ({
+    Component: ResizeIndicatorExample,
   }),
 }
 

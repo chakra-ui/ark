@@ -8,8 +8,10 @@ import { MarqueeProvider } from './use-marquee-context'
 export interface MarqueeRootBaseProps extends UseMarqueeProps, PolymorphicProps {}
 export interface MarqueeRootProps extends HTMLProps<'div'>, MarqueeRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseMarqueeProps>()
+
 export const MarqueeRoot = forwardRef<HTMLDivElement, MarqueeRootProps>((props, ref) => {
-  const [useMarqueeProps, localProps] = createSplitProps<UseMarqueeProps>()(props, [
+  const [useMarqueeProps, localProps] = splitRootProps(props, [
     'autoFill',
     'defaultPaused',
     'delay',

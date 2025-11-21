@@ -10,8 +10,10 @@ export interface AngleSliderRootBaseProps extends UseAngleSliderProps, Polymorph
 
 export interface AngleSliderRootProps extends Assign<HTMLProps<'div'>, AngleSliderRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseAngleSliderProps>()
+
 export const AngleSliderRoot = forwardRef<HTMLDivElement, AngleSliderRootProps>((props, ref) => {
-  const [useAngleSliderProps, localProps] = createSplitProps<UseAngleSliderProps>()(props, [
+  const [useAngleSliderProps, localProps] = splitRootProps(props, [
     'id',
     'ids',
     'name',
@@ -26,6 +28,7 @@ export const AngleSliderRoot = forwardRef<HTMLDivElement, AngleSliderRootProps>(
     'aria-label',
     'aria-labelledby',
   ])
+
   const angleSlider = useAngleSlider(useAngleSliderProps)
   const mergedProps = mergeProps(angleSlider.getRootProps(), localProps)
 

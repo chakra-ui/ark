@@ -8,8 +8,10 @@ import { usePinInputContext } from './use-pin-input-context'
 export interface PinInputInputBaseProps extends InputProps, PolymorphicProps {}
 export interface PinInputInputProps extends HTMLProps<'input'>, PinInputInputBaseProps {}
 
+const splitInputProps = createSplitProps<InputProps>()
+
 export const PinInputInput = forwardRef<HTMLInputElement, PinInputInputProps>((props, ref) => {
-  const [inputProps, localProps] = createSplitProps<InputProps>()(props, ['index'])
+  const [inputProps, localProps] = splitInputProps(props, ['index'])
   const pinInput = usePinInputContext()
   const mergedProps = mergeProps(pinInput.getInputProps(inputProps), localProps)
 

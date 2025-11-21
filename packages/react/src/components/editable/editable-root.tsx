@@ -9,8 +9,10 @@ import { EditableProvider } from './use-editable-context'
 export interface EditableRootBaseProps extends UseEditableProps, PolymorphicProps {}
 export interface EditableRootProps extends Assign<HTMLProps<'div'>, EditableRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseEditableProps>()
+
 export const EditableRoot = forwardRef<HTMLDivElement, EditableRootProps>((props, ref) => {
-  const [useEditableProps, localProps] = createSplitProps<UseEditableProps>()(props, [
+  const [useEditableProps, localProps] = splitRootProps(props, [
     'activationMode',
     'autoResize',
     'defaultEdit',

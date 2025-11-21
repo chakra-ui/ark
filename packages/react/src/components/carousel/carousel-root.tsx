@@ -8,8 +8,10 @@ import { CarouselProvider } from './use-carousel-context'
 export interface CarouselRootBaseProps extends UseCarouselProps, PolymorphicProps {}
 export interface CarouselRootProps extends HTMLProps<'div'>, CarouselRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseCarouselProps>()
+
 export const CarouselRoot = forwardRef<HTMLDivElement, CarouselRootProps>((props, ref) => {
-  const [useCarouselProps, localProps] = createSplitProps<UseCarouselProps>()(props, [
+  const [useCarouselProps, localProps] = splitRootProps(props, [
     'allowMouseDrag',
     'autoplay',
     'autoSize',

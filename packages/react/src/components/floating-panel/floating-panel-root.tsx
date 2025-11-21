@@ -12,9 +12,11 @@ export interface FloatingPanelRootProps extends FloatingPanelRootBaseProps {
   children?: ReactNode | undefined
 }
 
+const splitRootProps = createSplitProps<UseFloatingPanelProps>()
+
 export const FloatingPanelRoot = (props: FloatingPanelRootProps) => {
   const [presenceProps, otherProps] = splitPresenceProps(props)
-  const [useFloatingPanelProps, localProps] = createSplitProps<UseFloatingPanelProps>()(otherProps, [
+  const [useFloatingPanelProps, localProps] = splitRootProps(otherProps, [
     'allowOverflow',
     'closeOnEscape',
     'defaultOpen',

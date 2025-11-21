@@ -9,9 +9,11 @@ import { ComboboxItemGroupPropsProvider } from './use-combobox-item-group-props-
 export interface ComboboxItemGroupBaseProps extends PolymorphicProps {}
 export interface ComboboxItemGroupProps extends HTMLProps<'div'>, ComboboxItemGroupBaseProps {}
 
+const splitItemGroupProps = createSplitProps<Partial<ItemGroupProps>>()
+
 export const ComboboxItemGroup = forwardRef<HTMLDivElement, ComboboxItemGroupProps>((props, ref) => {
   const id = useId()
-  const [_itemGroupProps, localProps] = createSplitProps<Partial<ItemGroupProps>>()(props, ['id'])
+  const [_itemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const itemGroupProps = { id, ..._itemGroupProps }
 
   const combobox = useComboboxContext()

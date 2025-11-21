@@ -16,10 +16,12 @@ export interface FloatingPanelRootProviderProps extends FloatingPanelRootProvide
   children?: ReactNode | undefined
 }
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const FloatingPanelRootProvider = (props: FloatingPanelRootProviderProps) => {
   const [presenceProps, baseProps] = splitPresenceProps(props)
 
-  const [{ value: floatingPanel }, localProps] = createSplitProps<RootProviderProps>()(baseProps, ['value'])
+  const [{ value: floatingPanel }, localProps] = splitRootProviderProps(baseProps, ['value'])
   const presence = usePresence(mergeProps({ present: floatingPanel.open }, presenceProps))
 
   return (

@@ -14,11 +14,15 @@ export interface SplitterResizeTriggerProps
 
 <script setup lang="ts">
 import { ark } from '../factory'
+import { computed } from 'vue'
 import { useSplitterContext } from './use-splitter-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
+import { SplitterResizeTriggerPropsProvider } from './use-splitter-resize-trigger-props-context'
 
 const props = defineProps<SplitterResizeTriggerProps>()
 const splitter = useSplitterContext()
+
+SplitterResizeTriggerPropsProvider(computed(() => props))
 
 useForwardExpose()
 </script>

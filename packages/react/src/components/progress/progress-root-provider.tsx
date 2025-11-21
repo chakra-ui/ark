@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface ProgressRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ProgressRootProviderProps extends HTMLProps<'div'>, ProgressRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const ProgressRootProvider = forwardRef<HTMLDivElement, ProgressRootProviderProps>((props, ref) => {
-  const [{ value: progress }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: progress }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(progress.getRootProps(), localProps)
 
   return (

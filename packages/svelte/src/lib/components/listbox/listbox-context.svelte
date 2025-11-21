@@ -1,6 +1,6 @@
 <script module lang="ts">
   import type { Snippet } from 'svelte'
-    import type { CollectionItem } from '../collection'
+  import type { CollectionItem } from '../collection'
 
   export interface ListboxContextProps<T extends CollectionItem> {
     render: Snippet<[UseListboxContext<T>]>

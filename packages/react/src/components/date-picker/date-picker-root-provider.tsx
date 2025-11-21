@@ -13,9 +13,12 @@ interface RootProviderProps {
 export interface DatePickerRootProviderBaseProps extends RootProviderProps, UsePresenceProps, PolymorphicProps {}
 export interface DatePickerRootProviderProps extends HTMLProps<'div'>, DatePickerRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const DatePickerRootProvider = forwardRef<HTMLDivElement, DatePickerRootProviderProps>((props, ref) => {
   const [presenceProps, datePickerProps] = splitPresenceProps(props)
-  const [{ value: datePicker }, localProps] = createSplitProps<RootProviderProps>()(datePickerProps, ['value'])
+  const [{ value: datePicker }, localProps] = splitRootProviderProps(datePickerProps, ['value'])
+
   const presence = usePresence(mergeProps({ present: datePicker.open }, presenceProps))
   const mergedProps = mergeProps(datePicker.getRootProps(), localProps)
 

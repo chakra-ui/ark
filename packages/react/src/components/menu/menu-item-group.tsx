@@ -12,8 +12,10 @@ type OptionalItemGroupProps = Optional<ItemGroupProps, 'id'>
 export interface MenuItemGroupBaseProps extends OptionalItemGroupProps, PolymorphicProps {}
 export interface MenuItemGroupProps extends HTMLProps<'div'>, MenuItemGroupBaseProps {}
 
+const splitItemGroupProps = createSplitProps<OptionalItemGroupProps>()
+
 export const MenuItemGroup = forwardRef<HTMLDivElement, MenuItemGroupProps>((props, ref) => {
-  const [optionalItemGroupProps, localProps] = createSplitProps<OptionalItemGroupProps>()(props, ['id'])
+  const [optionalItemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const menu = useMenuContext()
   const id = useId()
   const itemGroupProps = { id, ...optionalItemGroupProps }

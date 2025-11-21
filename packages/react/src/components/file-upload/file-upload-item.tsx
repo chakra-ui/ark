@@ -12,8 +12,10 @@ type ItemBaseProps = Omit<ItemProps, 'type'>
 export interface FileUploadItemBaseProps extends ItemBaseProps, PolymorphicProps {}
 export interface FileUploadItemProps extends HTMLProps<'li'>, FileUploadItemBaseProps {}
 
+const splitItemBaseProps = createSplitProps<ItemBaseProps>()
+
 export const FileUploadItem = forwardRef<HTMLLIElement, FileUploadItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemBaseProps>()(props, ['file'])
+  const [itemProps, localProps] = splitItemBaseProps(props, ['file'])
   const fileUpload = useFileUploadContext()
 
   const itemGroupProps = useFileUploadItemGroupPropsContext()

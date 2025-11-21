@@ -9,8 +9,10 @@ import { FieldProvider } from './use-field-context'
 export interface FieldRootBaseProps extends UseFieldProps, PolymorphicProps {}
 export interface FieldRootProps extends HTMLProps<'div'>, FieldRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseFieldProps>()
+
 export const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>((props, ref) => {
-  const [useFieldProps, localProps] = createSplitProps<UseFieldProps>()(props, [
+  const [useFieldProps, localProps] = splitRootProps(props, [
     'id',
     'ids',
     'disabled',
@@ -18,6 +20,7 @@ export const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>((props, ref)
     'readOnly',
     'required',
   ])
+
   const field = useField(useFieldProps)
   const mergedProps = mergeProps<HTMLProps<'div'>>(field.getRootProps(), localProps)
 

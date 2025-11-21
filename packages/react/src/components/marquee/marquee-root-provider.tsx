@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface MarqueeRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface MarqueeRootProviderProps extends HTMLProps<'div'>, MarqueeRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const MarqueeRootProvider = forwardRef<HTMLDivElement, MarqueeRootProviderProps>((props, ref) => {
-  const [{ value: marquee }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: marquee }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(marquee.getRootProps(), localProps)
 
   return (

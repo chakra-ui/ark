@@ -8,9 +8,11 @@ import { useColorPickerContext } from './use-color-picker-context'
 export interface ColorPickerTransparencyGridBaseProps extends TransparencyGridProps, PolymorphicProps {}
 export interface ColorPickerTransparencyGridProps extends HTMLProps<'div'>, ColorPickerTransparencyGridBaseProps {}
 
+const splitTransparencyGridProps = createSplitProps<TransparencyGridProps>()
+
 export const ColorPickerTransparencyGrid = forwardRef<HTMLDivElement, ColorPickerTransparencyGridProps>(
   (props, ref) => {
-    const [gridProps, localProps] = createSplitProps<TransparencyGridProps>()(props, ['size'])
+    const [gridProps, localProps] = splitTransparencyGridProps(props, ['size'])
     const colorPicker = useColorPickerContext()
     const mergedProps = mergeProps(colorPicker.getTransparencyGridProps(gridProps), localProps)
 

@@ -8,8 +8,10 @@ import { useTimerContext } from './use-timer-context'
 export interface TimerItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface TimerItemProps extends HTMLProps<'div'>, TimerItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const TimerItem = forwardRef<HTMLDivElement, TimerItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['type'])
+  const [itemProps, localProps] = splitItemProps(props, ['type'])
   const timer = useTimerContext()
 
   const mergedProps = mergeProps(timer.getItemProps(itemProps), localProps)

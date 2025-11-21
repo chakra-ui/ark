@@ -10,8 +10,10 @@ import { ListboxItemPropsProvider } from './use-listbox-item-props-context'
 export interface ListboxItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ListboxItemProps extends HTMLProps<'div'>, ListboxItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const ListboxItem = forwardRef<HTMLDivElement, ListboxItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['item', 'highlightOnHover'])
+  const [itemProps, localProps] = splitItemProps(props, ['item', 'highlightOnHover'])
   const listbox = useListboxContext()
   const mergedProps = mergeProps(listbox.getItemProps(itemProps), localProps)
   const itemState = listbox.getItemState(itemProps)

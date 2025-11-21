@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface PinInputRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface PinInputRootProviderProps extends HTMLProps<'div'>, PinInputRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const PinInputRootProvider = forwardRef<HTMLDivElement, PinInputRootProviderProps>((props, ref) => {
-  const [{ value: pinInput }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: pinInput }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(pinInput.getRootProps(), localProps)
 
   return (

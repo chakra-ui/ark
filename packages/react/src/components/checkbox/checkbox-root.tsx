@@ -9,8 +9,10 @@ import { CheckboxProvider } from './use-checkbox-context'
 export interface CheckboxRootBaseProps extends UseCheckboxProps, PolymorphicProps {}
 export interface CheckboxRootProps extends Assign<HTMLProps<'label'>, CheckboxRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseCheckboxProps>()
+
 export const CheckboxRoot = forwardRef<HTMLLabelElement, CheckboxRootProps>((props, ref) => {
-  const [useCheckboxProps, localProps] = createSplitProps<UseCheckboxProps>()(props, [
+  const [useCheckboxProps, localProps] = splitRootProps(props, [
     'checked',
     'defaultChecked',
     'disabled',

@@ -12,8 +12,10 @@ type PartialOptionItemProps = Omit<OptionItemProps, 'type'>
 export interface MenuCheckboxItemBaseProps extends PartialOptionItemProps, PolymorphicProps {}
 export interface MenuCheckboxItemProps extends HTMLProps<'div'>, MenuCheckboxItemBaseProps {}
 
+const splitOptionItemProps = createSplitProps<PartialOptionItemProps>()
+
 export const MenuCheckboxItem = forwardRef<HTMLDivElement, MenuCheckboxItemProps>((props, ref) => {
-  const [partialOptionItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [
+  const [partialOptionItemProps, localProps] = splitOptionItemProps(props, [
     'checked',
     'closeOnSelect',
     'disabled',

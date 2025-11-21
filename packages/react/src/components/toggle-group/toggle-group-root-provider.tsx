@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface ToggleGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface ToggleGroupRootProviderProps extends HTMLProps<'div'>, ToggleGroupRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const ToggleGroupRootProvider = forwardRef<HTMLDivElement, ToggleGroupRootProviderProps>((props, ref) => {
-  const [{ value: toggleGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: toggleGroup }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(toggleGroup.getRootProps(), localProps)
 
   return (

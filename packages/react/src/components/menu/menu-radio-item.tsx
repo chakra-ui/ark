@@ -13,8 +13,10 @@ type PartialOptionItemProps = Omit<OptionItemProps, 'type' | 'checked' | 'onChec
 export interface MenuRadioItemBaseProps extends PartialOptionItemProps, PolymorphicProps {}
 export interface MenuRadioItemProps extends HTMLProps<'div'>, MenuRadioItemBaseProps {}
 
+const splitOptionItemProps = createSplitProps<PartialOptionItemProps>()
+
 export const MenuRadioItem = forwardRef<HTMLDivElement, MenuRadioItemProps>((props, ref) => {
-  const [partialItemProps, localProps] = createSplitProps<PartialOptionItemProps>()(props, [
+  const [partialItemProps, localProps] = splitOptionItemProps(props, [
     'closeOnSelect',
     'disabled',
     'value',

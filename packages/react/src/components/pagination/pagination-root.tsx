@@ -8,8 +8,10 @@ import { PaginationProvider } from './use-pagination-context'
 export interface PaginationRootBaseProps extends UsePaginationProps, PolymorphicProps {}
 export interface PaginationRootProps extends HTMLProps<'nav'>, PaginationRootBaseProps {}
 
+const splitRootProps = createSplitProps<UsePaginationProps>()
+
 export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((props, ref) => {
-  const [paginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
+  const [paginationProps, localProps] = splitRootProps(props, [
     'count',
     'defaultPage',
     'defaultPageSize',

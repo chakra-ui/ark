@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface RadioGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RadioGroupRootProviderProps extends HTMLProps<'div'>, RadioGroupRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const RadioGroupRootProvider = forwardRef<HTMLDivElement, RadioGroupRootProviderProps>((props, ref) => {
-  const [{ value: radioGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: radioGroup }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(radioGroup.getRootProps(), localProps)
 
   return (

@@ -9,8 +9,10 @@ import { useToggleGroupContext } from './use-toggle-group-context'
 export interface ToggleGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface ToggleGroupItemProps extends Assign<HTMLProps<'button'>, ToggleGroupItemBaseProps> {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const ToggleGroupItem = forwardRef<HTMLButtonElement, ToggleGroupItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled'])
+  const [itemProps, localProps] = splitItemProps(props, ['value', 'disabled'])
   const toggleGroup = useToggleGroupContext()
   const mergedProps = mergeProps(toggleGroup.getItemProps(itemProps), localProps)
 

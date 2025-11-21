@@ -21,9 +21,11 @@ export interface FocusTrapBaseProps extends PolymorphicProps, TrapOptions {}
 
 export interface FocusTrapProps extends Assign<HTMLProps<'div'>, FocusTrapBaseProps> {}
 
+const splitTrapProps = createSplitProps<TrapOptions>()
+
 export const FocusTrap = forwardRef<HTMLDivElement, FocusTrapProps>((props, ref) => {
   const localRef = useRef<HTMLDivElement | null>(null)
-  const [trapProps, localProps] = createSplitProps<TrapOptions>()(props, [
+  const [trapProps, localProps] = splitTrapProps(props, [
     'disabled',
     'onActivate',
     'onDeactivate',

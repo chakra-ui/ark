@@ -12,8 +12,10 @@ interface ProviderProps {
 export interface CheckboxGroupProviderBaseProps extends ProviderProps, PolymorphicProps {}
 export interface CheckboxGroupProviderProps extends Assign<HTMLProps<'div'>, CheckboxGroupProviderBaseProps> {}
 
+const splitProviderProps = createSplitProps<ProviderProps>()
+
 export const CheckboxGroupProvider = forwardRef<HTMLDivElement, CheckboxGroupProviderProps>((props, ref) => {
-  const [localProps, restProps] = createSplitProps<ProviderProps>()(props, ['value'])
+  const [localProps, restProps] = splitProviderProps(props, ['value'])
 
   return (
     <CheckboxGroupContextProvider value={localProps.value}>

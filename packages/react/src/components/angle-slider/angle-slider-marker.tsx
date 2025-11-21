@@ -9,11 +9,13 @@ import { useAngleSliderContext } from './use-angle-slider-context'
 export interface AngleSliderMarkerBaseProps extends MarkerProps, PolymorphicProps {}
 export interface AngleSliderMarkerProps extends Assign<HTMLProps<'div'>, AngleSliderMarkerBaseProps> {}
 
+const splitMarkerProps = createSplitProps<MarkerProps>()
+
 export const AngleSliderMarker = forwardRef<HTMLDivElement, AngleSliderMarkerProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<MarkerProps>()(props, ['value'])
+  const [markerProps, localProps] = splitMarkerProps(props, ['value'])
 
   const angleSlider = useAngleSliderContext()
-  const mergedProps = mergeProps(angleSlider.getMarkerProps(itemProps), localProps)
+  const mergedProps = mergeProps(angleSlider.getMarkerProps(markerProps), localProps)
 
   return <ark.div {...mergedProps} ref={ref} />
 })

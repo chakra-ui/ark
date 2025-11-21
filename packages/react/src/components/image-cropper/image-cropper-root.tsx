@@ -8,8 +8,10 @@ import { ImageCropperProvider } from './use-image-cropper-context'
 export interface ImageCropperRootBaseProps extends UseImageCropperProps, PolymorphicProps {}
 export interface ImageCropperRootProps extends HTMLProps<'div'>, ImageCropperRootBaseProps {}
 
+const splitRootProps = createSplitProps<UseImageCropperProps>()
+
 export const ImageCropperRoot = forwardRef<HTMLDivElement, ImageCropperRootProps>((props, ref) => {
-  const [useImageCropperProps, localProps] = createSplitProps<UseImageCropperProps>()(props, [
+  const [useImageCropperProps, localProps] = splitRootProps(props, [
     'aspectRatio',
     'cropShape',
     'defaultFlip',

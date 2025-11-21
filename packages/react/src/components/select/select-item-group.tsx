@@ -9,9 +9,11 @@ import { SelectItemGroupPropsProvider } from './use-select-item-group-props'
 export interface SelectItemGroupBaseProps extends PolymorphicProps {}
 export interface SelectItemGroupProps extends HTMLProps<'div'>, SelectItemGroupBaseProps {}
 
+const splitItemGroupProps = createSplitProps<Partial<ItemGroupProps>>()
+
 export const SelectItemGroup = forwardRef<HTMLDivElement, SelectItemGroupProps>((props, ref) => {
   const id = useId()
-  const [_itemGroupProps, localProps] = createSplitProps<Partial<ItemGroupProps>>()(props, ['id'])
+  const [_itemGroupProps, localProps] = splitItemGroupProps(props, ['id'])
   const itemGroupProps = { id, ..._itemGroupProps }
 
   const select = useSelectContext()

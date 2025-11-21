@@ -9,8 +9,10 @@ import { SliderProvider } from './use-slider-context'
 export interface SliderRootBaseProps extends UseSliderProps, PolymorphicProps {}
 export interface SliderRootProps extends Assign<HTMLProps<'div'>, SliderRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseSliderProps>()
+
 export const SliderRoot = forwardRef<HTMLDivElement, SliderRootProps>((props, ref) => {
-  const [useSliderProps, localProps] = createSplitProps<UseSliderProps>()(props, [
+  const [useSliderProps, localProps] = splitRootProps(props, [
     'aria-label',
     'aria-labelledby',
     'defaultValue',

@@ -11,8 +11,10 @@ interface ValueSwatchProps extends Omit<SwatchProps, 'value'> {}
 export interface ColorPickerValueSwatchBaseProps extends ValueSwatchProps, PolymorphicProps {}
 export interface ColorPickerValueSwatchProps extends HTMLProps<'div'>, ColorPickerValueSwatchBaseProps {}
 
+const splitValueSwatchProps = createSplitProps<ValueSwatchProps>()
+
 export const ColorPickerValueSwatch = forwardRef<HTMLDivElement, ColorPickerValueSwatchProps>((props, ref) => {
-  const [{ respectAlpha }, localProps] = createSplitProps<ValueSwatchProps>()(props, ['respectAlpha'])
+  const [{ respectAlpha }, localProps] = splitValueSwatchProps(props, ['respectAlpha'])
   const colorPicker = useColorPickerContext()
   const swatchProps = {
     respectAlpha,

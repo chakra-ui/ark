@@ -17,9 +17,11 @@ interface RootProviderProps {
 export interface AccordionRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface AccordionRootProviderProps extends HTMLProps<'div'>, AccordionRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const AccordionRootProvider = forwardRef<HTMLDivElement, AccordionRootProviderProps>((props, ref) => {
   const [renderStrategyProps, accordionProps] = splitRenderStrategyProps(props)
-  const [{ value: accordion }, localProps] = createSplitProps<RootProviderProps>()(accordionProps, ['value'])
+  const [{ value: accordion }, localProps] = splitRootProviderProps(accordionProps, ['value'])
   const mergedProps = mergeProps(accordion.getRootProps(), localProps)
 
   return (

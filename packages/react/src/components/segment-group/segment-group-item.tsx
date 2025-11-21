@@ -11,8 +11,10 @@ import { SegmentGroupItemPropsProvider } from './use-segment-group-item-props-co
 export interface SegmentGroupItemBaseProps extends ItemProps, PolymorphicProps {}
 export interface SegmentGroupItemProps extends HTMLProps<'label'>, SegmentGroupItemBaseProps {}
 
+const splitItemProps = createSplitProps<ItemProps>()
+
 export const SegmentGroupItem = forwardRef<HTMLLabelElement, SegmentGroupItemProps>((props, ref) => {
-  const [itemProps, localProps] = createSplitProps<ItemProps>()(props, ['value', 'disabled', 'invalid'])
+  const [itemProps, localProps] = splitItemProps(props, ['value', 'disabled', 'invalid'])
   const segmentGroup = useSegmentGroupContext()
   const mergedProps = mergeProps(
     segmentGroup.getItemProps(itemProps),

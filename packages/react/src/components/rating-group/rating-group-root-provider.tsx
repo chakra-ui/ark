@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface RatingGroupRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface RatingGroupRootProviderProps extends HTMLProps<'div'>, RatingGroupRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const RatingGroupRootProvider = forwardRef<HTMLDivElement, RatingGroupRootProviderProps>((props, ref) => {
-  const [{ value: ratingGroup }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: ratingGroup }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(ratingGroup.getRootProps(), localProps)
 
   return (

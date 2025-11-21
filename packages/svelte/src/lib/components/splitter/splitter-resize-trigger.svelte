@@ -14,6 +14,7 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useSplitterContext } from './use-splitter-context'
+  import { SplitterResizeTriggerPropsProvider } from './use-splitter-resize-trigger-props-context'
 
   let { ref = $bindable(null), ...props }: SplitterResizeTriggerProps = $props()
 
@@ -21,6 +22,8 @@
 
   const splitter = useSplitterContext()
   const mergedProps = $derived(mergeProps(splitter().getResizeTriggerProps(triggerProps), localProps))
+
+  SplitterResizeTriggerPropsProvider(() => triggerProps)
 </script>
 
 <Ark as="button" bind:ref {...mergedProps} />

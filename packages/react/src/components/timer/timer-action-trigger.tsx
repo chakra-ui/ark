@@ -8,8 +8,10 @@ import { useTimerContext } from './use-timer-context'
 export interface TimerActionTriggerBaseProps extends ActionTriggerProps, PolymorphicProps {}
 export interface TimerActionTriggerProps extends HTMLProps<'button'>, TimerActionTriggerBaseProps {}
 
+const splitActionTriggerProps = createSplitProps<ActionTriggerProps>()
+
 export const TimerActionTrigger = forwardRef<HTMLButtonElement, TimerActionTriggerProps>((props, ref) => {
-  const [actionTriggerProps, localProps] = createSplitProps<ActionTriggerProps>()(props, ['action'])
+  const [actionTriggerProps, localProps] = splitActionTriggerProps(props, ['action'])
   const timer = useTimerContext()
   const mergedProps = mergeProps(timer.getActionTriggerProps(actionTriggerProps), localProps)
 

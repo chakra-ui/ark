@@ -12,8 +12,10 @@ interface RootProviderProps {
 export interface FileUploadRootProviderBaseProps extends RootProviderProps, PolymorphicProps {}
 export interface FileUploadRootProviderProps extends HTMLProps<'div'>, FileUploadRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const FileUploadRootProvider = forwardRef<HTMLDivElement, FileUploadRootProviderProps>((props, ref) => {
-  const [{ value: fileUpload }, localProps] = createSplitProps<RootProviderProps>()(props, ['value'])
+  const [{ value: fileUpload }, localProps] = splitRootProviderProps(props, ['value'])
   const mergedProps = mergeProps(fileUpload.getRootProps(), localProps)
 
   return (
