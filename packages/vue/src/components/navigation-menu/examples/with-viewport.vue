@@ -1,0 +1,167 @@
+<script setup lang="ts">
+import { NavigationMenu } from '@ark-ui/vue/navigation-menu'
+
+const renderLinks = (opts: { value: string; items: string[] }) => {
+  const { value, items } = opts
+  return items.map((item, index) => ({
+    key: `${value}-${item}-${index}`,
+    value,
+    href: '# ',
+    text: item,
+  }))
+}
+</script>
+
+<template>
+  <NavigationMenu.Root class="viewport">
+    <NavigationMenu.IndicatorTrack>
+      <NavigationMenu.List>
+        <NavigationMenu.Item value="products">
+          <NavigationMenu.Trigger value="products">Products</NavigationMenu.Trigger>
+          <NavigationMenu.TriggerProxy value="products" />
+          <NavigationMenu.ViewportProxy value="products" />
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item value="company">
+          <NavigationMenu.Trigger value="company">Company</NavigationMenu.Trigger>
+          <NavigationMenu.TriggerProxy value="company" />
+          <NavigationMenu.ViewportProxy value="company" />
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item value="developers">
+          <NavigationMenu.Trigger value="developers">Developers</NavigationMenu.Trigger>
+          <NavigationMenu.TriggerProxy value="developers" />
+          <NavigationMenu.ViewportProxy value="developers" />
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item value="pricing">
+          <NavigationMenu.Link href="#pricing" value="pricing">pricing</NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Indicator>
+          <NavigationMenu.Arrow />
+        </NavigationMenu.Indicator>
+      </NavigationMenu.List>
+    </NavigationMenu.IndicatorTrack>
+
+    <NavigationMenu.ViewportPositioner>
+      <NavigationMenu.Viewport>
+        <NavigationMenu.Content
+          value="products"
+          :style="{
+            gridTemplateColumns: '1fr 2fr',
+            width: '600px',
+          }"
+        >
+          <NavigationMenu.Link
+            v-for="link in renderLinks({
+              value: 'products',
+              items: [
+                'Analytics Platform',
+                'Customer Engagement',
+                'Marketing Automation',
+                'Data Integration',
+                'Enterprise Solutions',
+                'API Documentation',
+              ],
+            })"
+            :key="link.key"
+            :value="link.value"
+            :href="link.href"
+            as-child
+          >
+            <a>{{ link.text }}</a>
+          </NavigationMenu.Link>
+
+          <NavigationMenu.Link
+            v-for="link in renderLinks({
+              value: 'products',
+              items: ['Case Studies', 'Success Stories', 'Integration Partners', 'Security & Compliance'],
+            })"
+            :key="link.key"
+            :value="link.value"
+            :href="link.href"
+            as-child
+          >
+            <a>{{ link.text }}</a>
+          </NavigationMenu.Link>
+        </NavigationMenu.Content>
+
+        <NavigationMenu.Content
+          value="company"
+          :style="{
+            gridTemplateColumns: '1fr 1fr',
+            width: '450px',
+          }"
+        >
+          <NavigationMenu.Link
+            v-for="link in renderLinks({
+              value: 'company',
+              items: ['About Us', 'Leadership Team', 'Careers', 'Press Releases'],
+            })"
+            :key="link.key"
+            :value="link.value"
+            :href="link.href"
+            as-child
+          >
+            <a>{{ link.text }}</a>
+          </NavigationMenu.Link>
+
+          <NavigationMenu.Link
+            v-for="link in renderLinks({
+              value: 'company',
+              items: ['Investors', 'Partners', 'Corporate Responsibility'],
+            })"
+            :key="link.key"
+            :value="link.value"
+            :href="link.href"
+            as-child
+          >
+            <a>{{ link.text }}</a>
+          </NavigationMenu.Link>
+        </NavigationMenu.Content>
+
+        <NavigationMenu.Content
+          value="developers"
+          :style="{
+            gridTemplateColumns: '1.6fr 1fr',
+            width: '650px',
+          }"
+        >
+          <NavigationMenu.Link
+            v-for="link in renderLinks({
+              value: 'developers',
+              items: [
+                'API Documentation',
+                'SDKs & Libraries',
+                'Developer Guides',
+                'Code Samples',
+                'Webhooks',
+                'GraphQL Explorer',
+              ],
+            })"
+            :key="link.key"
+            :value="link.value"
+            :href="link.href"
+            as-child
+          >
+            <a>{{ link.text }}</a>
+          </NavigationMenu.Link>
+
+          <NavigationMenu.Link
+            v-for="link in renderLinks({
+              value: 'developers',
+              items: ['Developer Community', 'Changelog', 'Status Page', 'Rate Limits'],
+            })"
+            :key="link.key"
+            :value="link.value"
+            :href="link.href"
+            as-child
+          >
+            <a>{{ link.text }}</a>
+          </NavigationMenu.Link>
+        </NavigationMenu.Content>
+      </NavigationMenu.Viewport>
+    </NavigationMenu.ViewportPositioner>
+  </NavigationMenu.Root>
+</template>
