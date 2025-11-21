@@ -1,5 +1,5 @@
 import { dataAttr } from '@zag-js/dom-query'
-import { useId, useMemo, useRef } from 'react'
+import { useId, useRef, useState } from 'react'
 import { useEnvironmentContext } from '../../providers'
 import { useSafeLayoutEffect } from '../../utils/use-safe-layout-effect'
 import type { HTMLProps } from '../factory'
@@ -27,8 +27,7 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
 
   const env = useEnvironmentContext()
 
-  const hasErrorText = useRef(false)
-  const hasHelperText = useRef(false)
+  const [textElements, setTextElements] = useState({ hasErrorText: false, hasHelperText: false })
 
   const uid = useId()
   const id = props.id ?? uid
@@ -44,8 +43,9 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
 
     const checkTextElements = () => {
       const docOrShadowRoot = env.getRootNode() as ShadowRoot | Document
-      hasErrorText.current = !!docOrShadowRoot.getElementById(errorTextId)
-      hasHelperText.current = !!docOrShadowRoot.getElementById(helperTextId)
+      const hasErrorText = !!docOrShadowRoot.getElementById(errorTextId)
+      const hasHelperText = !!docOrShadowRoot.getElementById(helperTextId)
+      setTextElements({ hasErrorText, hasHelperText })
     }
 
     checkTextElements()
@@ -57,56 +57,42 @@ export const useFieldset = (props: UseFieldsetProps = {}) => {
     return () => observer.disconnect()
   }, [env, errorTextId, helperTextId])
 
-  const labelIds = useMemo(() => {
-    const ids: string[] = []
-    if (hasErrorText.current && invalid) ids.push(errorTextId)
-    if (hasHelperText.current) ids.push(helperTextId)
-    return ids.join(' ') || undefined
-  }, [invalid, errorTextId, helperTextId])
+  const ids: string[] = []
+  if (textElements.hasErrorText && invalid) ids.push(errorTextId)
+  if (textElements.hasHelperText) ids.push(helperTextId)
+  const labelIds = ids.length > 0 ? ids.join(' ') : undefined
 
-  const getRootProps = useMemo(
-    () => () =>
-      ({
-        ...parts.root.attrs,
-        ref: rootRef,
-        disabled,
-        'data-disabled': dataAttr(disabled),
-        'data-invalid': dataAttr(invalid),
-        'aria-labelledby': legendId,
-        'aria-describedby': labelIds,
-      }) as HTMLProps<'fieldset'>,
-    [disabled, invalid, legendId, labelIds],
-  )
+  const getRootProps = () =>
+    ({
+      ...parts.root.attrs,
+      ref: rootRef,
+      disabled,
+      'data-disabled': dataAttr(disabled),
+      'data-invalid': dataAttr(invalid),
+      'aria-labelledby': legendId,
+      'aria-describedby': labelIds,
+    }) as HTMLProps<'fieldset'>
 
-  const getLegendProps = useMemo(
-    () => () =>
-      ({
-        id: legendId,
-        ...parts.legend.attrs,
-        'data-disabled': dataAttr(disabled),
-        'data-invalid': dataAttr(invalid),
-      }) as HTMLProps<'legend'>,
-    [legendId, disabled, invalid],
-  )
+  const getLegendProps = () =>
+    ({
+      id: legendId,
+      ...parts.legend.attrs,
+      'data-disabled': dataAttr(disabled),
+      'data-invalid': dataAttr(invalid),
+    }) as HTMLProps<'legend'>
 
-  const getHelperTextProps = useMemo(
-    () => () =>
-      ({
-        id: helperTextId,
-        ...parts.helperText.attrs,
-      }) as HTMLProps<'span'>,
-    [helperTextId],
-  )
+  const getHelperTextProps = () =>
+    ({
+      id: helperTextId,
+      ...parts.helperText.attrs,
+    }) as HTMLProps<'span'>
 
-  const getErrorTextProps = useMemo(
-    () => () =>
-      ({
-        id: errorTextId,
-        ...parts.errorText.attrs,
-        'aria-live': 'polite',
-      }) as HTMLProps<'span'>,
-    [errorTextId],
-  )
+  const getErrorTextProps = () =>
+    ({
+      id: errorTextId,
+      ...parts.errorText.attrs,
+      'aria-live': 'polite',
+    }) as HTMLProps<'span'>
 
   return {
     refs: {

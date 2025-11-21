@@ -1,5 +1,5 @@
 import { dataAttr } from '@zag-js/dom-query'
-import { createEffect, createMemo, createSignal, createUniqueId, mergeProps, onCleanup } from 'solid-js'
+import { createMemo, createSignal, createUniqueId, mergeProps, onCleanup, onMount } from 'solid-js'
 import { useEnvironmentContext } from '../../providers'
 import type { MaybeAccessor } from '../../types'
 import { runIfFn } from '../../utils/run-if-fn'
@@ -27,7 +27,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
 
   const mergedProps = mergeProps({ disabled: false, invalid: false }, runIfFn(props))
 
-  let rootRef: HTMLFieldSetElement | undefined
+  const [rootRef, setRootRef] = createSignal<HTMLFieldSetElement | undefined>(undefined)
   const id = mergedProps.id ?? createUniqueId()
 
   const legendId = `fieldset::${id}::legend`
@@ -37,8 +37,8 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
   const [hasErrorText, setHasErrorText] = createSignal(false)
   const [hasHelperText, setHasHelperText] = createSignal(false)
 
-  createEffect(() => {
-    const rootNode = rootRef
+  onMount(() => {
+    const rootNode = rootRef()
     if (!rootNode) return
 
     const checkTextElements = () => {
@@ -56,10 +56,12 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     onCleanup(() => observer.disconnect())
   })
 
-  const labelIds: string[] = []
-
-  if (hasErrorText() && mergedProps.invalid) labelIds.push(errorTextId)
-  if (hasHelperText()) labelIds.push(helperTextId)
+  const labelIds = createMemo(() => {
+    const ids: string[] = []
+    if (hasErrorText() && mergedProps.invalid) ids.push(errorTextId)
+    if (hasHelperText()) ids.push(helperTextId)
+    return ids
+  })
 
   const getRootProps = () => ({
     ...parts.root.attrs,
@@ -67,7 +69,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     'data-disabled': dataAttr(mergedProps.disabled),
     'data-invalid': dataAttr(mergedProps.invalid),
     'aria-labelledby': legendId,
-    'aria-describedby': labelIds.join(' ') || undefined,
+    'aria-describedby': labelIds().join(' ') || undefined,
   })
 
   const getLegendProps = () => ({
@@ -90,7 +92,7 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
 
   return createMemo(() => ({
     refs: {
-      rootRef,
+      rootRef: setRootRef,
     },
     disabled: mergedProps.disabled,
     invalid: mergedProps.invalid,

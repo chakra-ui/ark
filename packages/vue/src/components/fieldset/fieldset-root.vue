@@ -31,7 +31,7 @@ useForwardExpose()
 </script>
 
 <template>
-  <ark.fieldset v-bind="fieldset.getRootProps()" :as-child="asChild">
+  <ark.fieldset v-bind="fieldset.getRootProps()" :ref="fieldset.refs.rootRef" :as-child="asChild">
     <slot />
   </ark.fieldset>
 </template>
