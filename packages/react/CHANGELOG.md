@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.29.1] - 2025-11-22
+
 ### Fixed
 
 - **Fieldset**: Fixed `aria-describedby` resolution to correctly reference helper text and error text IDs
