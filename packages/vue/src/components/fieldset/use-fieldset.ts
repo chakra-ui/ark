@@ -12,6 +12,7 @@ import {
   useId,
 } from 'vue'
 import { DEFAULT_ENVIRONMENT, useEnvironmentContext } from '../../providers'
+import { unrefElement } from '../../utils/unref-element'
 import { parts } from './fieldset.anatomy'
 
 export interface UseFieldsetProps {
@@ -46,14 +47,14 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
     const fieldsetProps = toValue<UseFieldsetProps>(props)
     const id = fieldsetProps.id ?? uuid
     return {
-      labelId: `fieldset::${id}::label`,
+      legendId: `fieldset::${id}::legend`,
       errorTextId: `fieldset::${id}::error-text`,
       helperTextId: `fieldset::${id}::helper-text`,
     }
   })
 
   onMounted(() => {
-    const rootNode = rootRef.value
+    const rootNode = unrefElement(rootRef)
     if (!rootNode) return
 
     const checkTextElements = () => {
@@ -76,11 +77,12 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
 
   return computed(() => {
     const { disabled, invalid } = toValue<UseFieldsetProps>(props)
-    const { labelId, errorTextId, helperTextId } = ids.value
+    const { legendId, errorTextId, helperTextId } = ids.value
 
-    const labelIds: string[] = []
-    if (state.hasErrorText && invalid) labelIds.push(errorTextId)
-    if (state.hasHelperText) labelIds.push(helperTextId)
+    const describedByIds: string[] = []
+    if (state.hasErrorText && invalid) describedByIds.push(errorTextId)
+    if (state.hasHelperText) describedByIds.push(helperTextId)
+    const describedBy = describedByIds.length > 0 ? describedByIds.join(' ') : undefined
 
     const getRootProps = () =>
       ({
@@ -88,12 +90,12 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
         disabled,
         'data-disabled': dataAttr(!!disabled),
         'data-invalid': dataAttr(invalid),
-        'aria-labelledby': labelId,
-        'aria-describedby': labelIds.join(' '),
+        'aria-labelledby': legendId,
+        'aria-describedby': describedBy,
       }) as FieldsetHTMLAttributes
 
     const getLegendProps = () => ({
-      id: labelId,
+      id: legendId,
       ...parts.legend.attrs,
       'data-disabled': dataAttr(!!disabled),
       'data-invalid': dataAttr(invalid),
