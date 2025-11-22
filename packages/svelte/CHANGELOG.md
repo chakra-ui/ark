@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.14.1] - 2025-11-22
+
 ### Fixed
 
 - **Floating Panel**:
