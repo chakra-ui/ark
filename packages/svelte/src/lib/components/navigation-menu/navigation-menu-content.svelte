@@ -26,7 +26,7 @@
   const splitLinkProps = createSplitProps<LinkProps>()
 
   const itemContext = useNavigationMenuItemPropsContext()
-  const value = $derived(props.value ?? itemContext?.())
+  const value = $derived(props.value ?? itemContext()?.value)
 
   const combinedProps = $derived(mergeProps(props, { value }) as RequiredBy<NavigationMenuContentProps, 'value'>)
   const [contentProps, localProps] = $derived(splitLinkProps(combinedProps, ['value', 'current', 'onSelect']))
