@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { axe } from 'vitest-axe'
 import { Field, Fieldset } from '../'
 
@@ -42,5 +42,36 @@ describe('Fieldset', () => {
   it('should not display error text when no error is present', async () => {
     render(<ComponentUnderTest />)
     expect(screen.queryByText('Fieldset Error Text')).not.toBeInTheDocument()
+  })
+
+  it('should render aria-labelledby on the fieldset', async () => {
+    render(<ComponentUnderTest />)
+    const fieldset = screen.getByRole('group', { name: /legend/i })
+    expect(fieldset).toHaveAttribute('aria-labelledby', expect.stringContaining('legend'))
+  })
+
+  it('should have helper text accessible', async () => {
+    render(<ComponentUnderTest />)
+    const fieldset = screen.getByRole('group', { name: /legend/i })
+    expect(fieldset).toBeInTheDocument()
+    expect(screen.getByText('Fieldset Helper Text')).toBeInTheDocument()
+  })
+
+  it('should set aria-describedby with helper text', async () => {
+    render(<ComponentUnderTest />)
+    const fieldset = screen.getByRole('group', { name: /legend/i })
+    await waitFor(() => {
+      expect(fieldset).toHaveAttribute('aria-describedby', expect.stringContaining('helper-text'))
+    })
+  })
+
+  it('should set aria-describedby with error text when invalid', async () => {
+    render(<ComponentUnderTest invalid />)
+    const fieldset = screen.getByRole('group', { name: /legend/i })
+    await waitFor(() => {
+      const describedBy = fieldset.getAttribute('aria-describedby')
+      expect(describedBy).toContain('error-text')
+      expect(describedBy).toContain('helper-text')
+    })
   })
 })

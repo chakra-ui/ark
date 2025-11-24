@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+## [5.29.1] - 2025-11-22
+
+### Fixed
+
+- **Fieldset**: Fixed `aria-describedby` resolution to correctly reference helper text and error text IDs, and corrected `aria-labelledby` to use legend ID instead of label ID
+- **Floating Panel**:
+  - Fixed resize trigger issue with `n` axis by explicitly setting `top: 0`
+  - Fixed `draggable` and `resizable` options not being respected when set to `false`
+- **Presence**: Fixed regression where UNMOUNT transition might not be called consistently
+
 ## [5.29.0] - 2025-11-20
 
 ### Added

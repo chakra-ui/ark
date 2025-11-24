@@ -1,4 +1,5 @@
 import { mergeProps } from '@zag-js/solid'
+import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
 import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { type UseFieldsetProps, useFieldset } from './use-fieldset'
@@ -14,7 +15,7 @@ export const FieldsetRoot = (props: FieldsetRootProps) => {
 
   return (
     <FieldsetProvider value={fieldset}>
-      <ark.fieldset {...mergedProps} />
+      <ark.fieldset {...mergedProps} ref={composeRefs(fieldset().refs.rootRef, props.ref)} />
     </FieldsetProvider>
   )
 }

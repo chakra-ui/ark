@@ -6,6 +6,15 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.14.1] - 2025-11-22
+
+### Fixed
+
+- **Floating Panel**:
+  - Fixed resize trigger issue with `n` axis by explicitly setting `top: 0`
+  - Fixed `draggable` and `resizable` options not being respected when set to `false`
+- **Presence**: Fixed regression where UNMOUNT transition might not be called consistently
+
 ## [5.14.0] - 2025-11-20
 
 ### Added
