@@ -54,11 +54,6 @@ export {
   type NavigationMenuTriggerProps as TriggerProps,
 } from './navigation-menu-trigger'
 export {
-  NavigationMenuTriggerProxy as TriggerProxy,
-  type NavigationMenuTriggerProxyBaseProps as TriggerProxyBaseProps,
-  type NavigationMenuTriggerProxyProps as TriggerProxyProps,
-} from './navigation-menu-trigger-proxy'
-export {
   NavigationMenuViewport as Viewport,
   type NavigationMenuViewportBaseProps as ViewportBaseProps,
   type NavigationMenuViewportProps as ViewportProps,
@@ -68,8 +63,3 @@ export {
   type NavigationMenuViewportPositionerBaseProps as ViewportPositionerBaseProps,
   type NavigationMenuViewportPositionerProps as ViewportPositionerProps,
 } from './navigation-menu-viewport-positioner'
-export {
-  NavigationMenuViewportProxy as ViewportProxy,
-  type NavigationMenuViewportProxyBaseProps as ViewportProxyBaseProps,
-  type NavigationMenuViewportProxyProps as ViewportProxyProps,
-} from './navigation-menu-viewport-proxy'

@@ -52,11 +52,6 @@ export {
   type NavigationMenuTriggerProps,
 } from './navigation-menu-trigger.vue'
 export {
-  default as NavigationMenuTriggerProxy,
-  type NavigationMenuTriggerProxyBaseProps,
-  type NavigationMenuTriggerProxyProps,
-} from './navigation-menu-trigger-proxy.vue'
-export {
   default as NavigationMenuViewport,
   type NavigationMenuViewportBaseProps,
   type NavigationMenuViewportProps,
@@ -66,11 +61,6 @@ export {
   type NavigationMenuViewportPositionerBaseProps,
   type NavigationMenuViewportPositionerProps,
 } from './navigation-menu-viewport-positioner.vue'
-export {
-  default as NavigationMenuViewportProxy,
-  type NavigationMenuViewportProxyBaseProps,
-  type NavigationMenuViewportProxyProps,
-} from './navigation-menu-viewport-proxy.vue'
 export { navigationMenuAnatomy } from './navigation-menu.anatomy'
 export { useNavigationMenu, type UseNavigationMenuProps, type UseNavigationMenuReturn } from './use-navigation-menu'
 export { useNavigationMenuContext, type UseNavigationMenuContext } from './use-navigation-menu-context'

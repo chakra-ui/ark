@@ -1,6 +1,7 @@
 import type { LinkProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, Show } from 'solid-js'
+import { Portal } from 'solid-js/web'
 import type { Assign } from '../../types'
 import { composeRefs } from '../../utils/compose-refs'
 import { createSplitProps } from '../../utils/create-split-props'
@@ -18,13 +19,13 @@ export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, Nav
 const splitLinkProps = createSplitProps<LinkProps>()
 
 export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
+  const api = useNavigationMenuContext()
   const itemContext = useNavigationMenuItemPropsContext()
 
   const value = createMemo(() => props.value ?? itemContext?.value)
   const combinedProps = mergeProps(props, () => ({ value: value() }))
 
   const [contentProps, localProps] = splitLinkProps(combinedProps, ['current', 'onSelect', 'value'])
-  const api = useNavigationMenuContext()
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(
     mergeProps(renderStrategyProps, () => ({
@@ -37,11 +38,22 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
     localProps,
   )
 
-  return (
+  const viewportNode = createMemo(() => api().getViewportNode())
+  const isViewportRendered = createMemo(() => api().isViewportRendered)
+
+  const content = (
     <PresenceProvider value={presenceApi}>
       <Show when={!presenceApi().unmounted}>
         <ark.div {...mergedProps} ref={composeRefs(presenceApi().ref, props.ref)} />
       </Show>
     </PresenceProvider>
+  )
+
+  return (
+    <Show when={isViewportRendered() && viewportNode()} fallback={content}>
+      <div {...api().getViewportProxyProps(contentProps)} />
+      <div {...api().getTriggerProxyProps(contentProps)} />
+      <Portal mount={viewportNode()!}>{content}</Portal>
+    </Show>
   )
 }

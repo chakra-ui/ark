@@ -17,6 +17,7 @@
   import { mergeProps } from '@zag-js/svelte'
   import type { RequiredBy } from '@zag-js/types'
   import { Ark } from '../factory'
+  import { Portal } from '../portal'
   import { usePresence } from '../presence'
   import { useNavigationMenuContext } from './use-navigation-menu-context'
   import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
@@ -25,13 +26,14 @@
 
   const splitLinkProps = createSplitProps<LinkProps>()
 
+  const navigationMenu = useNavigationMenuContext()
   const itemContext = useNavigationMenuItemPropsContext()
+
   const value = $derived(props.value ?? itemContext()?.value)
 
   const combinedProps = $derived(mergeProps(props, { value }) as RequiredBy<NavigationMenuContentProps, 'value'>)
   const [contentProps, localProps] = $derived(splitLinkProps(combinedProps, ['value', 'current', 'onSelect']))
 
-  const navigationMenu = useNavigationMenuContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
 
   const presence = usePresence(() => ({
@@ -43,11 +45,21 @@
     mergeProps(navigationMenu().getContentProps(contentProps), presence().getPresenceProps(), localProps),
   )
 
+  const viewportNode = $derived(navigationMenu().getViewportNode())
+
   function setNode(node: Element | null) {
     presence().setNode(node)
   }
 </script>
 
-{#if !presence().unmounted}
+{#if navigationMenu().isViewportRendered && viewportNode}
+  <div {...navigationMenu().getViewportProxyProps(contentProps)}></div>
+  <div {...navigationMenu().getTriggerProxyProps(contentProps)}></div>
+  <Portal container={viewportNode}>
+    {#if !presence().unmounted}
+      <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
+    {/if}
+  </Portal>
+{:else if !presence().unmounted}
   <Ark as="div" bind:ref {...mergedProps} {@attach setNode} />
 {/if}

@@ -52,11 +52,6 @@ export {
   type NavigationMenuTriggerBaseProps as TriggerBaseProps,
 } from './navigation-menu-trigger.vue'
 export {
-  default as TriggerProxy,
-  type NavigationMenuTriggerProxyProps as TriggerProxyProps,
-  type NavigationMenuTriggerProxyBaseProps as TriggerProxyBaseProps,
-} from './navigation-menu-trigger-proxy.vue'
-export {
   default as Viewport,
   type NavigationMenuViewportProps as ViewportProps,
   type NavigationMenuViewportBaseProps as ViewportBaseProps,
@@ -66,8 +61,3 @@ export {
   type NavigationMenuViewportPositionerProps as ViewportPositionerProps,
   type NavigationMenuViewportPositionerBaseProps as ViewportPositionerBaseProps,
 } from './navigation-menu-viewport-positioner.vue'
-export {
-  default as ViewportProxy,
-  type NavigationMenuViewportProxyProps as ViewportProxyProps,
-  type NavigationMenuViewportProxyBaseProps as ViewportProxyBaseProps,
-} from './navigation-menu-viewport-proxy.vue'

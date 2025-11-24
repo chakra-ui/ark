@@ -51,11 +51,6 @@ export {
   type NavigationMenuTriggerProps as TriggerProps,
 } from './navigation-menu-trigger.svelte'
 export {
-  default as TriggerProxy,
-  type NavigationMenuTriggerProxyBaseProps as TriggerProxyBaseProps,
-  type NavigationMenuTriggerProxyProps as TriggerProxyProps,
-} from './navigation-menu-trigger-proxy.svelte'
-export {
   default as Viewport,
   type NavigationMenuViewportBaseProps as ViewportBaseProps,
   type NavigationMenuViewportProps as ViewportProps,
@@ -65,8 +60,3 @@ export {
   type NavigationMenuViewportPositionerBaseProps as ViewportPositionerBaseProps,
   type NavigationMenuViewportPositionerProps as ViewportPositionerProps,
 } from './navigation-menu-viewport-positioner.svelte'
-export {
-  default as ViewportProxy,
-  type NavigationMenuViewportProxyBaseProps as ViewportProxyBaseProps,
-  type NavigationMenuViewportProxyProps as ViewportProxyProps,
-} from './navigation-menu-viewport-proxy.svelte'
