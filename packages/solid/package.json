@@ -149,7 +149,7 @@
   },
   "devDependencies": {
     "check-password-strength": "3.0.0",
-    "@biomejs/biome": "2.3.6",
+    "@biomejs/biome": "2.3.7",
     "@modular-forms/solid": "0.25.1",
     "@solidjs/testing-library": "0.8.10",
     "@storybook/addon-a11y": "9.1.16",
@@ -171,7 +171,7 @@
     "storybook-solidjs-vite": "9.0.3",
     "tsup": "8.5.1",
     "typescript": "5.9.3",
-    "vite": "7.2.2",
+    "vite": "7.2.4",
     "vite-plugin-solid": "2.11.10",
     "vitest": "^4.0.0",
     "@vitest/coverage-v8": "^4.0.0",
