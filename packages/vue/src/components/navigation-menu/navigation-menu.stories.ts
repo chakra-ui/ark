@@ -4,7 +4,7 @@ import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import RenderPropExample from './examples/render-prop.vue'
 import RootProviderExample from './examples/root-provider.vue'
-import WithViewportExample from './examples/with-viewport.vue'
+import ViewportExample from './examples/viewport.vue'
 
 const meta: Meta = {
   title: 'Components / Navigation Menu',
@@ -40,9 +40,9 @@ export const RootProvider = {
   }),
 }
 
-export const WithViewport = {
+export const Viewport = {
   render: () => ({
-    components: { Component: WithViewportExample },
+    components: { Component: ViewportExample },
     template: '<Component />',
   }),
 }

@@ -10,13 +10,17 @@
   import { mergeProps } from '@zag-js/svelte'
   import { Ark } from '../factory'
   import { useNavigationMenuContext } from './use-navigation-menu-context'
+  import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-props-context'
   import { createSplitProps } from '$lib/utils/create-split-props'
 
   let { ref = $bindable(null), ...props }: NavigationMenuItemProps = $props()
-  const [itemProps, localProps] = $derived(createSplitProps<ItemProps>()(props, ['disabled', 'value']))
+  const splitItemProps = createSplitProps<ItemProps>()
+  const [itemProps, localProps] = $derived(splitItemProps(props, ['disabled', 'value']))
 
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = $derived(mergeProps(navigationMenu().getItemProps(itemProps), localProps))
+
+  NavigationMenuItemPropsProvider(() => itemProps)
 </script>
 
 <Ark as="div" bind:ref {...mergedProps} />

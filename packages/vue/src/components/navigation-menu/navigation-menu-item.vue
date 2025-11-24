@@ -13,12 +13,17 @@ export interface NavigationMenuItemProps
 </script>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ark } from '../factory'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
+import { NavigationMenuItemPropsProvider } from './use-navigation-menu-item-props-context'
 import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = defineProps<NavigationMenuItemProps>()
 const navigationMenu = useNavigationMenuContext()
+
+const itemProps = computed(() => ({ value: props.value, disabled: props.disabled }))
+NavigationMenuItemPropsProvider(itemProps)
 
 useForwardExpose()
 </script>

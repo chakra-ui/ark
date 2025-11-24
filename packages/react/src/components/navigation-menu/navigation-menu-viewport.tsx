@@ -11,8 +11,10 @@ import { useNavigationMenuContext } from './use-navigation-menu-context'
 export interface NavigationMenuViewportBaseProps extends ViewportProps, PolymorphicProps {}
 export interface NavigationMenuViewportProps extends HTMLProps<'div'>, NavigationMenuViewportBaseProps {}
 
+const splitViewportProps = createSplitProps<ViewportProps>()
+
 export const NavigationMenuViewport = forwardRef<HTMLDivElement, NavigationMenuViewportProps>((props, ref) => {
-  const [viewportProps, localProps] = createSplitProps<ViewportProps>()(props, ['align'])
+  const [viewportProps, localProps] = splitViewportProps(props, ['align'])
   const navigationMenu = useNavigationMenuContext()
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: navigationMenu.open })

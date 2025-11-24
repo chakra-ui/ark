@@ -10,9 +10,11 @@ export interface NavigationMenuViewportPositionerProps
   extends HTMLProps<'div'>,
     NavigationMenuViewportPositionerBaseProps {}
 
+const splitViewportProps = createSplitProps<ViewportProps>()
+
 export const NavigationMenuViewportPositioner = forwardRef<HTMLDivElement, NavigationMenuViewportPositionerProps>(
   (props, ref) => {
-    const [positionerProps, localProps] = createSplitProps<ViewportProps>()(props, ['align'])
+    const [positionerProps, localProps] = splitViewportProps(props, ['align'])
     const navigationMenu = useNavigationMenuContext()
     const mergedProps = mergeProps(navigationMenu.getViewportPositionerProps(positionerProps), localProps)
 

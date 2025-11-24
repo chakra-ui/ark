@@ -22,10 +22,11 @@
   let { ref = $bindable(null), value = $bindable(), ...props }: NavigationMenuRootProps = $props()
 
   const providedId = $props.id()
+  const splitRootProps = createSplitProps<UseNavigationMenuProps>()
 
   const [renderStrategyProps, navigationMenuProps] = $derived(splitRenderStrategyProps(props))
   const [useNavigationMenuProps, localProps] = $derived(
-    createSplitProps<UseNavigationMenuProps>()(navigationMenuProps, [
+    splitRootProps(navigationMenuProps, [
       'closeDelay',
       'defaultValue',
       'disableClickTrigger',

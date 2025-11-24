@@ -17,9 +17,11 @@ interface RootProviderProps {
 export interface NavigationMenuRootProviderBaseProps extends RootProviderProps, RenderStrategyProps, PolymorphicProps {}
 export interface NavigationMenuRootProviderProps extends HTMLProps<'nav'>, NavigationMenuRootProviderBaseProps {}
 
+const splitRootProviderProps = createSplitProps<RootProviderProps>()
+
 export const NavigationMenuRootProvider = forwardRef<HTMLElement, NavigationMenuRootProviderProps>((props, ref) => {
   const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)
-  const [{ value: navigationMenu }, localProps] = createSplitProps<RootProviderProps>()(navigationMenuProps, ['value'])
+  const [{ value: navigationMenu }, localProps] = splitRootProviderProps(navigationMenuProps, ['value'])
   const mergedProps = mergeProps(navigationMenu.getRootProps(), localProps)
 
   return (

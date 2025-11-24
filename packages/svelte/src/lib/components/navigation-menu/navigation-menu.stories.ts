@@ -2,7 +2,7 @@ import BasicExample from './examples/basic.svelte'
 import ControlledExample from './examples/controlled.svelte'
 import RenderPropExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
-import WithViewportExample from './examples/with-viewport.svelte'
+import ViewportExample from './examples/viewport.svelte'
 import type { Meta } from '@storybook/svelte'
 
 const meta: Meta = {
@@ -31,8 +31,8 @@ export const RootProvider = {
     Component: RootProviderExample,
   }),
 }
-export const WithViewport = {
+export const Viewport = {
   render: () => ({
-    Component: WithViewportExample,
+    Component: ViewportExample,
   }),
 }

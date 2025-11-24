@@ -14,9 +14,11 @@ import { NavigationMenuProvider } from './use-navigation-menu-context'
 export interface NavigationMenuRootBaseProps extends UseNavigationMenuProps, RenderStrategyProps, PolymorphicProps {}
 export interface NavigationMenuRootProps extends Assign<HTMLProps<'nav'>, NavigationMenuRootBaseProps> {}
 
+const splitRootProps = createSplitProps<UseNavigationMenuProps>()
+
 export const NavigationMenuRoot = forwardRef<HTMLElement, NavigationMenuRootProps>((props, ref) => {
   const [renderStrategyProps, navigationMenuProps] = splitRenderStrategyProps(props)
-  const [useNavigationMenuProps, localProps] = createSplitProps<UseNavigationMenuProps>()(navigationMenuProps, [
+  const [useNavigationMenuProps, localProps] = splitRootProps(navigationMenuProps, [
     'closeDelay',
     'defaultValue',
     'disableClickTrigger',

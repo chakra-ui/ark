@@ -17,7 +17,8 @@
   import { createSplitProps } from '$lib/utils/create-split-props'
 
   let { ref = $bindable(null), ...props }: NavigationMenuViewportPositionerProps = $props()
-  const [viewportPositionerProps, localProps] = $derived(createSplitProps<ViewportProps>()(props, ['align']))
+  const splitViewportProps = createSplitProps<ViewportProps>()
+  const [viewportPositionerProps, localProps] = $derived(splitViewportProps(props, ['align']))
 
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = $derived(
