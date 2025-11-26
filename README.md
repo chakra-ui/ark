@@ -285,7 +285,7 @@ Visit [ark-ui.com](https://ark-ui.com) for:
 
 - **[Chakra UI v3](https://chakra-ui.com)** - A simple, modular component library
 - **[Park UI](https://park-ui.com)** - Beautifully designed components built with Ark UI and Panda CSS
-- **[Tark UI](https://www.tarkui.xyz/)** - Ark UI components styled with Tailwind CSS
+- **[Tark UI](https://www.tarkui.com/)** - Ark UI components styled with Tailwind CSS
 
 ### Styling Libraries
 
@@ -299,7 +299,7 @@ Ark UI works seamlessly with:
 
 ### Developer Tools
 
-- **[MCP Server](https://github.com/chakra-ui/ark-mcp)** - AI-assisted development with Claude and other AI agents
+- **[MCP Server](https://github.com/chakra-ui/ark/tree/main/integrations/mcp)** - AI-assisted development with Claude and other AI agents
 
 ## Community
 
