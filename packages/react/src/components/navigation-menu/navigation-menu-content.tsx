@@ -1,4 +1,4 @@
-import type { LinkProps } from '@zag-js/navigation-menu'
+import type { ContentProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/react'
 import { forwardRef } from 'react'
 import type { Assign } from '../../types'
@@ -11,19 +11,17 @@ import { PresenceProvider, usePresence } from '../presence'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
 
-export interface NavigationMenuContentBaseProps extends Omit<LinkProps, 'value'>, PolymorphicProps {
-  value?: LinkProps['value']
-}
+export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps {}
 export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 
-const splitLinkProps = createSplitProps<LinkProps>()
+const splitContentProps = createSplitProps<ContentProps>()
 
 export const NavigationMenuContent = forwardRef<HTMLDivElement, NavigationMenuContentProps>((props, ref) => {
   const api = useNavigationMenuContext()
   const itemContext = useNavigationMenuItemPropsContext()
 
   const value = props.value ?? itemContext?.value
-  const [contentProps, localProps] = splitLinkProps({ ...props, value }, ['current', 'onSelect', 'value'])
+  const [contentProps, localProps] = splitContentProps({ ...props, value }, ['value'])
 
   const renderStrategyProps = useRenderStrategyPropsContext()
   const presence = usePresence({ ...renderStrategyProps, present: api.value === value })

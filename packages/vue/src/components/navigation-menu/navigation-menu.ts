@@ -16,15 +16,15 @@ export {
   type NavigationMenuIndicatorBaseProps as IndicatorBaseProps,
 } from './navigation-menu-indicator.vue'
 export {
-  default as IndicatorTrack,
-  type NavigationMenuIndicatorTrackProps as IndicatorTrackProps,
-  type NavigationMenuIndicatorTrackBaseProps as IndicatorTrackBaseProps,
-} from './navigation-menu-indicator-track.vue'
-export {
   default as Item,
   type NavigationMenuItemProps as ItemProps,
   type NavigationMenuItemBaseProps as ItemBaseProps,
 } from './navigation-menu-item.vue'
+export {
+  default as ItemIndicator,
+  type NavigationMenuItemIndicatorProps as ItemIndicatorProps,
+  type NavigationMenuItemIndicatorBaseProps as ItemIndicatorBaseProps,
+} from './navigation-menu-item-indicator.vue'
 export {
   default as Link,
   type NavigationMenuLinkProps as LinkProps,

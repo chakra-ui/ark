@@ -1,11 +1,9 @@
 <script lang="ts">
-import type { LinkProps } from '@zag-js/navigation-menu'
+import type { ContentProps } from '@zag-js/navigation-menu'
 import type { HTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface NavigationMenuContentBaseProps extends Omit<LinkProps, 'value'>, PolymorphicProps {
-  value?: LinkProps['value']
-}
+export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps {}
 export interface NavigationMenuContentProps
   extends NavigationMenuContentBaseProps,
     /**

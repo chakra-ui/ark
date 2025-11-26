@@ -7,9 +7,7 @@ import { type HTMLProps, type PolymorphicProps, ark } from '../factory'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
 
-export interface NavigationMenuLinkBaseProps extends Omit<LinkProps, 'value'>, PolymorphicProps {
-  value?: LinkProps['value']
-}
+export interface NavigationMenuLinkBaseProps extends Partial<LinkProps>, PolymorphicProps {}
 export interface NavigationMenuLinkProps extends Assign<HTMLProps<'a'>, NavigationMenuLinkBaseProps> {}
 
 const splitLinkProps = createSplitProps<LinkProps>()
@@ -18,7 +16,7 @@ export const NavigationMenuLink = forwardRef<HTMLAnchorElement, NavigationMenuLi
   const itemContext = useNavigationMenuItemPropsContext()
   const value = props.value ?? itemContext?.value
 
-  const [linkProps, localProps] = splitLinkProps({ ...props, value }, ['current', 'onSelect', 'value'])
+  const [linkProps, localProps] = splitLinkProps({ ...props, value }, ['current', 'onSelect', 'value', 'closeOnClick'])
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = mergeProps(navigationMenu.getLinkProps(linkProps), localProps)
 

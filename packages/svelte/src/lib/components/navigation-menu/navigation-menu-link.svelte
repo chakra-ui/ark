@@ -2,9 +2,7 @@
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
   import type { LinkProps } from '@zag-js/navigation-menu'
 
-  export interface NavigationMenuLinkBaseProps extends Omit<LinkProps, 'value'>, PolymorphicProps<'a'>, RefAttribute {
-    value?: LinkProps['value']
-  }
+  export interface NavigationMenuLinkBaseProps extends Partial<LinkProps>, PolymorphicProps<'a'>, RefAttribute {}
   export interface NavigationMenuLinkProps extends Assign<HTMLProps<'a'>, NavigationMenuLinkBaseProps> {}
 </script>
 
@@ -23,7 +21,9 @@
   const combinedProps = $derived(mergeProps(props, { value }) as RequiredBy<NavigationMenuLinkProps, 'value'>)
 
   const splitLinkProps = createSplitProps<LinkProps>()
-  const [linkProps, localProps] = $derived(splitLinkProps(combinedProps, ['current', 'onSelect', 'value']))
+  const [linkProps, localProps] = $derived(
+    splitLinkProps(combinedProps, ['current', 'onSelect', 'value', 'closeOnClick']),
+  )
 
   const navigationMenu = useNavigationMenuContext()
   const mergedProps = $derived(mergeProps(navigationMenu().getLinkProps(linkProps), localProps))

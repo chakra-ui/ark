@@ -3,6 +3,9 @@
   "extends": "//",
   "linter": {
     "rules": {
+      "style": {
+        "noNonNullAssertion": "off"
+      },
       "suspicious": {
         "noAssignInExpressions": "off"
       },

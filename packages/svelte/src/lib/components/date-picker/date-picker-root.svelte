@@ -43,6 +43,8 @@
       'format',
       'id',
       'ids',
+      'inline',
+      'invalid',
       'isDateUnavailable',
       'locale',
       'max',
@@ -61,13 +63,13 @@
       'placeholder',
       'positioning',
       'readOnly',
+      'required',
       'selectionMode',
       'startOfWeek',
       'timeZone',
       'translations',
       'value',
       'view',
-      'inline',
     ]),
   )
 

@@ -16,15 +16,15 @@ export {
   type NavigationMenuIndicatorProps as IndicatorProps,
 } from './navigation-menu-indicator.svelte'
 export {
-  default as IndicatorTrack,
-  type NavigationMenuIndicatorTrackBaseProps as IndicatorTrackBaseProps,
-  type NavigationMenuIndicatorTrackProps as IndicatorTrackProps,
-} from './navigation-menu-indicator-track.svelte'
-export {
   default as Item,
   type NavigationMenuItemBaseProps as ItemBaseProps,
   type NavigationMenuItemProps as ItemProps,
 } from './navigation-menu-item.svelte'
+export {
+  default as ItemIndicator,
+  type NavigationMenuItemIndicatorBaseProps as ItemIndicatorBaseProps,
+  type NavigationMenuItemIndicatorProps as ItemIndicatorProps,
+} from './navigation-menu-item-indicator.svelte'
 export {
   default as Link,
   type NavigationMenuLinkBaseProps as LinkBaseProps,

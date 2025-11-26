@@ -3,9 +3,7 @@ import type { LinkProps } from '@zag-js/navigation-menu'
 import type { AnchorHTMLAttributes } from 'vue'
 import type { PolymorphicProps } from '../factory'
 
-export interface NavigationMenuLinkBaseProps extends Omit<LinkProps, 'value'>, PolymorphicProps {
-  value?: LinkProps['value']
-}
+export interface NavigationMenuLinkBaseProps extends Partial<LinkProps>, PolymorphicProps {}
 export interface NavigationMenuLinkProps
   extends NavigationMenuLinkBaseProps,
     /**

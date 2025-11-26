@@ -172,6 +172,14 @@ export interface RootProps {
    * Whether the date picker is inline
    */
   inline?: boolean
+  /**
+   * Whether the date picker is in an invalid state
+   */
+  invalid?: boolean
+  /**
+   * Whether the date picker is required
+   */
+  required?: boolean
 }
 
 export type RootEmits = {

@@ -16,15 +16,15 @@ export {
   type NavigationMenuIndicatorProps,
 } from './navigation-menu-indicator'
 export {
-  NavigationMenuIndicatorTrack,
-  type NavigationMenuIndicatorTrackBaseProps,
-  type NavigationMenuIndicatorTrackProps,
-} from './navigation-menu-indicator-track'
-export {
   NavigationMenuItem,
   type NavigationMenuItemBaseProps,
   type NavigationMenuItemProps,
 } from './navigation-menu-item'
+export {
+  NavigationMenuItemIndicator,
+  type NavigationMenuItemIndicatorBaseProps,
+  type NavigationMenuItemIndicatorProps,
+} from './navigation-menu-item-indicator'
 export {
   NavigationMenuLink,
   type NavigationMenuLinkBaseProps,

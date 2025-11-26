@@ -1,13 +1,11 @@
 <script module lang="ts">
   import type { Assign, HTMLProps, PolymorphicProps, RefAttribute } from '$lib/types'
-  import type { LinkProps } from '@zag-js/navigation-menu'
+  import type { ContentProps } from '@zag-js/navigation-menu'
 
   export interface NavigationMenuContentBaseProps
-    extends Omit<LinkProps, 'value'>,
+    extends Partial<ContentProps>,
       PolymorphicProps<'div'>,
-      RefAttribute {
-    value?: LinkProps['value']
-  }
+      RefAttribute {}
   export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 </script>
 
@@ -24,7 +22,7 @@
 
   let { ref = $bindable(null), ...props }: NavigationMenuContentProps = $props()
 
-  const splitLinkProps = createSplitProps<LinkProps>()
+  const splitContentProps = createSplitProps<ContentProps>()
 
   const navigationMenu = useNavigationMenuContext()
   const itemContext = useNavigationMenuItemPropsContext()
@@ -32,7 +30,7 @@
   const value = $derived(props.value ?? itemContext()?.value)
 
   const combinedProps = $derived(mergeProps(props, { value }) as RequiredBy<NavigationMenuContentProps, 'value'>)
-  const [contentProps, localProps] = $derived(splitLinkProps(combinedProps, ['value', 'current', 'onSelect']))
+  const [contentProps, localProps] = $derived(splitContentProps(combinedProps, ['value']))
 
   const renderStrategyProps = useRenderStrategyPropsContext()
 

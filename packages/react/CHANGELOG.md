@@ -1,5 +1,18 @@
 ## [Unreleased]
 
+### Added
+
+- **Date Picker**: Added `required` and `invalid` props
+
+### Fixed
+
+- **Floating Panel**:
+  - Fixed `dir` prop now properly delegated to all panel parts
+  - Fixed double-click behavior improvements
+  - Fixed to check `event.defaultPrevented` for custom behavior
+
+- **Number Input**: Fixed improved controlled usage sync
+
 ## [5.29.1] - 2025-11-22
 
 ### Fixed

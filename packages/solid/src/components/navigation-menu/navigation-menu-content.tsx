@@ -1,4 +1,4 @@
-import type { LinkProps } from '@zag-js/navigation-menu'
+import type { ContentProps } from '@zag-js/navigation-menu'
 import { mergeProps } from '@zag-js/solid'
 import { createMemo, Show } from 'solid-js'
 import { Portal } from 'solid-js/web'
@@ -11,12 +11,10 @@ import { PresenceProvider, usePresence } from '../presence'
 import { useNavigationMenuContext } from './use-navigation-menu-context'
 import { useNavigationMenuItemPropsContext } from './use-navigation-menu-item-props-context'
 
-export interface NavigationMenuContentBaseProps extends Omit<LinkProps, 'value'>, PolymorphicProps<'div'> {
-  value?: LinkProps['value']
-}
+export interface NavigationMenuContentBaseProps extends Partial<ContentProps>, PolymorphicProps<'div'> {}
 export interface NavigationMenuContentProps extends Assign<HTMLProps<'div'>, NavigationMenuContentBaseProps> {}
 
-const splitLinkProps = createSplitProps<LinkProps>()
+const splitContentProps = createSplitProps<ContentProps>()
 
 export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
   const api = useNavigationMenuContext()
@@ -25,7 +23,7 @@ export const NavigationMenuContent = (props: NavigationMenuContentProps) => {
   const value = createMemo(() => props.value ?? itemContext?.value)
   const combinedProps = mergeProps(props, () => ({ value: value() }))
 
-  const [contentProps, localProps] = splitLinkProps(combinedProps, ['current', 'onSelect', 'value'])
+  const [contentProps, localProps] = splitContentProps(combinedProps, ['value'])
   const renderStrategyProps = useRenderStrategyContext()
   const presenceApi = usePresence(
     mergeProps(renderStrategyProps, () => ({

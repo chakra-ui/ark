@@ -19,15 +19,15 @@ export {
   type NavigationMenuIndicatorProps as IndicatorProps,
 } from './navigation-menu-indicator'
 export {
-  NavigationMenuIndicatorTrack as IndicatorTrack,
-  type NavigationMenuIndicatorTrackBaseProps as IndicatorTrackBaseProps,
-  type NavigationMenuIndicatorTrackProps as IndicatorTrackProps,
-} from './navigation-menu-indicator-track'
-export {
   NavigationMenuItem as Item,
   type NavigationMenuItemBaseProps as ItemBaseProps,
   type NavigationMenuItemProps as ItemProps,
 } from './navigation-menu-item'
+export {
+  NavigationMenuItemIndicator as ItemIndicator,
+  type NavigationMenuItemIndicatorBaseProps as ItemIndicatorBaseProps,
+  type NavigationMenuItemIndicatorProps as ItemIndicatorProps,
+} from './navigation-menu-item-indicator'
 export {
   NavigationMenuLink as Link,
   type NavigationMenuLinkBaseProps as LinkBaseProps,

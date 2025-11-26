@@ -1,10 +1,23 @@
 ## [Unreleased]
 
+### Added
+
+- **Date Picker**: Added `required` and `invalid` props
+
+### Fixed
+
+- **Floating Panel**:
+  - Fixed `dir` prop now properly delegated to all panel parts
+  - Fixed double-click behavior improvements
+  - Fixed to check `event.defaultPrevented` for custom behavior
+- **Number Input**: Fixed improved controlled usage sync
+
 ## [5.29.1] - 2025-11-22
 
 ### Fixed
 
-- **Fieldset**: Fixed `aria-describedby` resolution to correctly reference helper text and error text IDs, and corrected `aria-labelledby` to use legend ID instead of label ID
+- **Fieldset**: Fixed `aria-describedby` resolution to correctly reference helper text and error text IDs, and corrected
+  `aria-labelledby` to use legend ID instead of label ID
 - **Floating Panel**:
   - Fixed resize trigger issue with `n` axis by explicitly setting `top: 0`
   - Fixed `draggable` and `resizable` options not being respected when set to `false`
