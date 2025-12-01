@@ -15,6 +15,6 @@
     "@solidjs/start": "1.2.0",
     "solid-js": "1.9.10",
     "vinxi": "0.5.8",
-    "lucide-solid": "0.554.0"
+    "lucide-solid": "0.555.0"
   }
 }
