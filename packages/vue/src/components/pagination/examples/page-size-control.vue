@@ -3,7 +3,7 @@ import { Pagination } from '@ark-ui/vue/pagination'
 </script>
 
 <template>
-  <Pagination.Root :count="100" :pageSize="10">
+  <Pagination.Root :count="100" :defaultPageSize="10">
     <Pagination.Context v-slot="pagination">
       <div>
         <div>

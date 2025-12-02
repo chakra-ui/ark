@@ -2,7 +2,7 @@
   import { Pagination } from '@ark-ui/svelte/pagination'
 </script>
 
-<Pagination.Root count={100} pageSize={10}>
+<Pagination.Root count={100} defaultPageSize={10}>
   <Pagination.Context>
     {#snippet render(pagination)}
       <div>

@@ -2,7 +2,7 @@ import { Pagination } from '@ark-ui/react/pagination'
 
 export const PageSizeControl = () => {
   return (
-    <Pagination.Root count={100} pageSize={10}>
+    <Pagination.Root count={100} defaultPageSize={10}>
       <Pagination.Context>
         {(pagination) => (
           <div>
