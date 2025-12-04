@@ -1,0 +1,215 @@
+@layer recipes {
+  @layer _base {
+    .button {
+      border-radius: var(--radii-l2);
+      gap: var(--spacing-2);
+      outline: 0;
+      transition-property: background-color, border-color, color, box-shadow;
+      transition-timing-function: var(--transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+      transition-duration: var(--transition-duration, 150ms);
+      align-items: center;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      display: inline-flex;
+      flex-shrink: 0;
+      font-weight: var(--font-weights-semibold);
+      isolation: isolate;
+      justify-content: center;
+      position: relative;
+      --transition-prop: background-color, border-color, color, box-shadow;
+      -webkit-user-select: none;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
+}
+
+    .button:is(:focus-visible, [data-focus-visible]) {
+      outline-width: var(--focus-ring-width, 2px);
+      outline-offset: var(--focus-ring-offset, 2px);
+      outline-style: var(--focus-ring-style, solid);
+      outline-color: var(--focus-ring-color);
+}
+
+    .button :where(svg) {
+      flex-shrink: 0;
+}
+
+    .button:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+      cursor: not-allowed;
+      opacity: 0.67;
+      filter: grayscale(100%);
+}
+}
+
+  .button--variant_plain {
+    color: var(--colors-color-palette-plain-fg);
+}
+
+  .button--variant_plain:is([data-state=on]) {
+    background: var(--colors-color-palette-plain-bg-active);
+}
+
+  .button--variant_plain:not(:disabled):hover {
+    background: var(--colors-color-palette-plain-bg-hover);
+}
+
+  .button--variant_plain:not(:disabled):active {
+    background: var(--colors-color-palette-plain-bg-active);
+}
+
+  .button--size_md {
+    padding-inline: var(--spacing-3\.5);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-10);
+    min-width: var(--sizes-10);
+}
+
+  .button--size_md :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .button--variant_solid {
+    background: var(--colors-color-palette-solid-bg);
+    color: var(--colors-color-palette-solid-fg);
+}
+
+  .button--variant_solid:not(:disabled):hover {
+    background: var(--colors-color-palette-solid-bg-hover);
+}
+
+  .button--size_sm {
+    padding-inline: var(--spacing-3);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-9);
+    min-width: var(--sizes-9);
+}
+
+  .button--size_sm :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .button--size_xs {
+    padding-inline: var(--spacing-2\.5);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-8);
+    min-width: var(--sizes-8);
+}
+
+  .button--size_xs :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .button--variant_outline {
+    border-width: 1px;
+    border-color: var(--colors-color-palette-outline-border);
+    color: var(--colors-color-palette-outline-fg);
+}
+
+  .button--variant_outline:is([data-state=on]) {
+    background: var(--colors-color-palette-outline-bg-active);
+}
+
+  .button--variant_outline:not(:disabled):hover {
+    background: var(--colors-color-palette-outline-bg-hover);
+}
+
+  .button--variant_outline:not(:disabled):active {
+    background: var(--colors-color-palette-outline-bg-active);
+}
+
+  .button--variant_surface {
+    background: var(--colors-color-palette-surface-bg);
+    border-width: 1px;
+    border-color: var(--colors-color-palette-surface-border);
+    color: var(--colors-color-palette-surface-fg);
+}
+
+  .button--variant_surface:is([data-state=on]) {
+    background: var(--colors-color-palette-surface-bg-active);
+}
+
+  .button--variant_surface:not(:disabled):hover {
+    border-color: var(--colors-color-palette-surface-border-hover);
+}
+
+  .button--variant_surface:not(:disabled):active {
+    background: var(--colors-color-palette-surface-bg-active);
+}
+
+  .button--variant_subtle {
+    background: var(--colors-color-palette-subtle-bg);
+    color: var(--colors-color-palette-subtle-fg);
+}
+
+  .button--variant_subtle:is([data-state=on]) {
+    background: var(--colors-color-palette-subtle-bg-active);
+}
+
+  .button--variant_subtle:not(:disabled):hover {
+    background: var(--colors-color-palette-subtle-bg-hover);
+}
+
+  .button--variant_subtle:not(:disabled):active {
+    background: var(--colors-color-palette-subtle-bg-active);
+}
+
+  .button--size_lg {
+    padding-inline: var(--spacing-4);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+    height: var(--sizes-11);
+    min-width: var(--sizes-11);
+}
+
+  .button--size_lg :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .button--size_xl {
+    padding-inline: var(--spacing-4\.5);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+    height: var(--sizes-12);
+    min-width: var(--sizes-12);
+}
+
+  .button--size_xl :where(svg) {
+    width: var(--sizes-5\.5);
+    height: var(--sizes-5\.5);
+}
+
+  .button--size_2xs {
+    padding-inline: var(--spacing-2);
+    font-size: var(--font-sizes-xs);
+    line-height: 1.125rem;
+    height: var(--sizes-6);
+    min-width: var(--sizes-6);
+}
+
+  .button--size_2xs :where(svg) {
+    width: var(--sizes-3\.5);
+    height: var(--sizes-3\.5);
+}
+
+  .button--size_2xl {
+    padding-inline: var(--spacing-6);
+    font-size: var(--font-sizes-xl);
+    line-height: 1.875rem;
+    height: var(--sizes-16);
+    min-width: var(--sizes-16);
+}
+
+  .button--size_2xl :where(svg) {
+    width: var(--sizes-6);
+    height: var(--sizes-6);
+}
+}

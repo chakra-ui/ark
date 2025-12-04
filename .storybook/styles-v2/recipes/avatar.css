@@ -1,0 +1,142 @@
+@layer recipes.slots {
+  @layer _base {
+    .avatar__root {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: var(--font-weights-medium);
+      position: relative;
+      vertical-align: top;
+      flex-shrink: 0;
+      -webkit-user-select: none;
+      user-select: none;
+      font-size: var(--avatar-font-size);
+      width: var(--avatar-size);
+      height: var(--avatar-size);
+}
+
+    .avatar__root,.avatar__image {
+      border-radius: var(--avatar-radius);
+}
+
+    .avatar__image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+}
+
+    .avatar__fallback {
+      border-radius: var(--avatar-radius);
+      line-height: 1;
+      text-transform: uppercase;
+      font-weight: var(--font-weights-medium);
+      font-size: var(--avatar-font-size);
+}
+}
+
+  .avatar__root--size_lg {
+    --avatar-font-size: var(--font-sizes-md);
+    --avatar-size: var(--sizes-11);
+}
+
+  .avatar__fallback--size_lg :where(svg) {
+    width: var(--sizes-5\.5);
+    height: var(--sizes-5\.5);
+}
+
+  .avatar__root--shape_full {
+    --avatar-radius: var(--radii-full);
+}
+
+  .avatar__root--variant_subtle {
+    background: var(--colors-color-palette-subtle-bg);
+    color: var(--colors-color-palette-subtle-fg);
+}
+
+  .avatar__root--size_md {
+    --avatar-font-size: var(--font-sizes-md);
+    --avatar-size: var(--sizes-10);
+}
+
+  .avatar__fallback--size_md :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .avatar__root--size_full {
+    --avatar-size: 100%;
+    --avatar-font-size: 100%;
+}
+
+  .avatar__root--size_2xs {
+    --avatar-font-size: var(--font-sizes-2xs);
+    --avatar-size: var(--sizes-6);
+}
+
+  .avatar__fallback--size_2xs :where(svg) {
+    width: var(--sizes-3);
+    height: var(--sizes-3);
+}
+
+  .avatar__root--size_xs {
+    --avatar-font-size: var(--font-sizes-xs);
+    --avatar-size: var(--sizes-8);
+}
+
+  .avatar__fallback--size_xs :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .avatar__root--size_sm {
+    --avatar-font-size: var(--font-sizes-sm);
+    --avatar-size: var(--sizes-9);
+}
+
+  .avatar__fallback--size_sm :where(svg) {
+    width: var(--sizes-4\.5);
+    height: var(--sizes-4\.5);
+}
+
+  .avatar__root--size_xl {
+    --avatar-font-size: var(--font-sizes-lg);
+    --avatar-size: var(--sizes-12);
+}
+
+  .avatar__fallback--size_xl :where(svg) {
+    width: var(--sizes-6);
+    height: var(--sizes-6);
+}
+
+  .avatar__root--size_2xl {
+    --avatar-font-size: var(--font-sizes-xl);
+    --avatar-size: var(--sizes-16);
+}
+
+  .avatar__fallback--size_2xl :where(svg) {
+    width: var(--sizes-8);
+    height: var(--sizes-8);
+}
+
+  .avatar__root--variant_solid {
+    background: var(--colors-color-palette-solid-bg);
+    color: var(--colors-color-palette-solid-fg);
+}
+
+  .avatar__root--variant_surface {
+    background: var(--colors-color-palette-surface-bg);
+    border-width: 1px;
+    border-color: var(--colors-color-palette-surface-border);
+    color: var(--colors-color-palette-surface-fg);
+}
+
+  .avatar__root--variant_outline {
+    border-width: 1px;
+    border-color: var(--colors-color-palette-outline-border);
+    color: var(--colors-color-palette-outline-fg);
+}
+
+  .avatar__root--shape_rounded {
+    --avatar-radius: var(--radii-l3);
+}
+}
