@@ -1,0 +1,7 @@
+@layer reset, base, tokens, recipes, utilities;
+
+@import './styles-v2/reset.css';
+@import './styles-v2/global.css';
+@import './styles-v2/tokens.css';
+@import './styles-v2/utilities.css';
+@import './styles-v2/recipes.css';
