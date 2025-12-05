@@ -4,6 +4,10 @@ import { Badge } from '~/components/ui/badge'
 import { Icon } from '../ui/icon'
 
 export const Announcement = () => {
+  return null
+}
+
+export const Announcement_ = () => {
   return (
     <NextLink href="/docs/components/marquee">
       <Badge size="lg" variant="outline">
