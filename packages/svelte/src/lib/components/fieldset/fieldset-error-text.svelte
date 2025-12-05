@@ -15,4 +15,6 @@
   const mergedProps = $derived(mergeProps(fieldset?.().getErrorTextProps(), props))
 </script>
 
-<Ark as="span" bind:ref {...mergedProps} />
+{#if fieldset?.().invalid}
+  <Ark as="span" bind:ref {...mergedProps} />
+{/if}

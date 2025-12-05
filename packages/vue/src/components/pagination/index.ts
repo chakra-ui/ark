@@ -11,10 +11,20 @@ export {
   type PaginationEllipsisProps,
 } from './pagination-ellipsis.vue'
 export {
+  default as PaginationFirstTrigger,
+  type PaginationFirstTriggerBaseProps,
+  type PaginationFirstTriggerProps,
+} from './pagination-first-trigger.vue'
+export {
   default as PaginationItem,
   type PaginationItemBaseProps,
   type PaginationItemProps,
 } from './pagination-item.vue'
+export {
+  default as PaginationLastTrigger,
+  type PaginationLastTriggerBaseProps,
+  type PaginationLastTriggerProps,
+} from './pagination-last-trigger.vue'
 export {
   default as PaginationNextTrigger,
   type PaginationNextTriggerBaseProps,

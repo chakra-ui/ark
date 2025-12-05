@@ -8,6 +8,7 @@ import LinkExample from './examples/link.svelte'
 import PageRangeExample from './examples/page-range.svelte'
 import PageSizeControlExample from './examples/page-size-control.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
+import WithEdgesExample from './examples/with-edges.svelte'
 
 const meta: Meta = {
   title: 'Components / Pagination',
@@ -48,6 +49,12 @@ export const DataSlicing = {
 export const RootProvider = {
   render: () => ({
     Component: RootProviderExample,
+  }),
+}
+
+export const WithEdges = {
+  render: () => ({
+    Component: WithEdgesExample,
   }),
 }
 

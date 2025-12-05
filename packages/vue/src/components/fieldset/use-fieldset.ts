@@ -116,6 +116,11 @@ export const useFieldset = (props: MaybeRef<UseFieldsetProps> = {}) => {
       refs: {
         rootRef,
       },
+      ids: {
+        legend: legendId,
+        errorText: errorTextId,
+        helperText: helperTextId,
+      },
       disabled,
       invalid,
       getRootProps,

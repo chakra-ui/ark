@@ -1,6 +1,7 @@
 import type { Accessor } from '$lib/types'
 import { type MaybeFunction, runIfFn } from '@zag-js/utils'
 import { untrack } from 'svelte'
+import { useFieldsetContext } from '../fieldset'
 
 export interface UseCheckboxGroupProps {
   /**
@@ -41,12 +42,15 @@ export interface CheckboxGroupItemProps {
 export type UseCheckboxGroupReturn = ReturnType<typeof useCheckboxGroup>
 
 export const useCheckboxGroup = (props: MaybeFunction<UseCheckboxGroupProps> = {}) => {
+  const fieldset = useFieldsetContext()
   const resolvedProps = $derived(runIfFn(props) || {})
 
   let valueState = $state<string[]>(untrack(() => resolvedProps.defaultValue) ?? [])
   const value = $derived(resolvedProps.value !== undefined ? resolvedProps.value : valueState)
 
-  const interactive = $derived(!(resolvedProps.disabled || resolvedProps.readOnly))
+  const disabled = $derived(resolvedProps.disabled ?? fieldset?.()?.disabled)
+  const invalid = $derived(resolvedProps.invalid ?? fieldset?.()?.invalid)
+  const interactive = $derived(!(disabled || resolvedProps.readOnly))
 
   const setValue = (newValue: string[]) => {
     if (resolvedProps.value === undefined) {
@@ -83,9 +87,9 @@ export const useCheckboxGroup = (props: MaybeFunction<UseCheckboxGroupProps> = {
         }
       },
       name: resolvedProps.name,
-      disabled: !!resolvedProps.disabled,
+      disabled: !!disabled,
       readOnly: !!resolvedProps.readOnly,
-      invalid: !!resolvedProps.invalid,
+      invalid: !!invalid,
     }
   }
 
@@ -93,9 +97,9 @@ export const useCheckboxGroup = (props: MaybeFunction<UseCheckboxGroupProps> = {
     isChecked,
     value,
     name: resolvedProps.name,
-    disabled: !!resolvedProps.disabled,
+    disabled: !!disabled,
     readOnly: !!resolvedProps.readOnly,
-    invalid: !!resolvedProps.invalid,
+    invalid: !!invalid,
     setValue,
     addValue,
     toggleValue,

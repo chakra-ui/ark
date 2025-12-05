@@ -23,6 +23,7 @@ export const splitNumberInputProps = <T extends UseNumberInputProps>(props: T) =
     'name',
     'onFocusChange',
     'onValueChange',
+    'onValueCommit',
     'onValueInvalid',
     'pattern',
     'readOnly',

@@ -9,6 +9,7 @@ import LinkExample from './examples/link.vue'
 import PageRangeExample from './examples/page-range.vue'
 import PageSizeControlExample from './examples/page-size-control.vue'
 import RootProviderExample from './examples/root-provider.vue'
+import WithEdgesExample from './examples/with-edges.vue'
 
 const meta: Meta = {
   title: 'Components / Pagination',
@@ -75,6 +76,13 @@ export const PageSizeControl = {
 export const RootProvider = {
   render: () => ({
     components: { Component: RootProviderExample },
+    template: '<Component />',
+  }),
+}
+
+export const WithEdges = {
+  render: () => ({
+    components: { Component: WithEdgesExample },
     template: '<Component />',
   }),
 }

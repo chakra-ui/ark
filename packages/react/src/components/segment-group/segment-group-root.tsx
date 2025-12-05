@@ -19,10 +19,12 @@ export const SegmentGroupRoot = forwardRef<HTMLDivElement, SegmentGroupRootProps
     'form',
     'id',
     'ids',
+    'invalid',
     'name',
     'onValueChange',
     'orientation',
     'readOnly',
+    'required',
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)

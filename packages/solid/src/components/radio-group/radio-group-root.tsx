@@ -14,10 +14,12 @@ export const RadioGroupRoot = (props: RadioGroupRootProps) => {
     'form',
     'id',
     'ids',
+    'invalid',
     'name',
     'onValueChange',
     'orientation',
     'readOnly',
+    'required',
     'value',
   ])
 

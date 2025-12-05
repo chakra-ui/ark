@@ -1,8 +1,17 @@
 [data-scope='radio-group'][data-part='root'] {
   position: relative;
   display: flex;
-  align-items: center;
   gap: 16px;
+
+  &[data-orientation='vertical'] {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &[data-orientation='horizontal'] {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 [data-scope='radio-group'][data-part='item'] {
@@ -11,14 +20,16 @@
   gap: 8px;
   position: relative;
   z-index: 2;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
 }
 
-[data-scope='radio-group'][data-part='item'][data-disabled] {
-  cursor: not-allowed;
-}
-
-[data-scope='radio-group'][data-part='item-label'][data-disabled] {
-  opacity: 0.4;
+[data-scope='radio-group'][data-part='item-label'] {
+  &[data-disabled] {
+    opacity: 0.4;
+  }
 }
 
 [data-scope='radio-group'][data-part='item-control'] {
@@ -30,35 +41,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-[data-scope='radio-group'][data-part='item-control'][data-focus] {
-  outline: 2px solid royalblue;
-}
+  &[data-focus] {
+    outline: 2px solid royalblue;
+  }
 
-[data-scope='radio-group'][data-part='item-control'][data-hover] {
-  background-color: #ccc;
-}
+  &[data-hover] {
+    background-color: #ccc;
+  }
 
-[data-scope='radio-group'][data-part='item-control'][data-state='checked'] {
-  background-color: #2196f3;
-  border-color: #2196f3;
-}
+  &[data-state='checked'] {
+    background-color: #2196f3;
+    border-color: #2196f3;
+  }
 
-[data-scope='radio-group'][data-part='item-control'][data-state='checked']::after {
-  display: initial;
-}
+  &[data-state='checked']::after {
+    display: initial;
+  }
 
-[data-scope='radio-group'][data-part='item-control']::after {
-  content: '';
-  display: none;
-  width: 4px;
-  height: 9px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  position: relative;
-  top: -1px;
+  &[data-invalid] {
+    border-color: red;
+  }
+
+  &::after {
+    content: '';
+    display: none;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    position: relative;
+    top: -1px;
+  }
 }
 
 [data-scope='radio-group'][data-part='indicator'] {

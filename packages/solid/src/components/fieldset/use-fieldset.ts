@@ -94,6 +94,11 @@ export const useFieldset = (props?: MaybeAccessor<UseFieldsetProps>) => {
     refs: {
       rootRef: setRootRef,
     },
+    ids: {
+      legend: legendId,
+      errorText: errorTextId,
+      helperText: helperTextId,
+    },
     disabled: mergedProps.disabled,
     invalid: mergedProps.invalid,
     getRootProps,

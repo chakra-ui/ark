@@ -6,7 +6,8 @@ import type { RootEmits, RootProps } from './radio-group.types'
 
 export interface RadioGroupRootBaseProps extends RootProps, PolymorphicProps {}
 export interface RadioGroupRootProps
-  extends RadioGroupRootBaseProps,
+  extends
+    RadioGroupRootBaseProps,
     /**
      * @vue-ignore
      */
@@ -22,7 +23,9 @@ import { useForwardExpose } from '../../utils/use-forward-expose'
 
 const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   disabled: undefined,
+  invalid: undefined,
   readOnly: undefined,
+  required: undefined,
 } satisfies BooleanDefaults<RootProps>)
 
 const emits = defineEmits<RadioGroupRootEmits>()

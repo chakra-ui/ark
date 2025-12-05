@@ -8,6 +8,7 @@ export default meta
 
 export { Basic } from './examples/basic'
 export { Disabled } from './examples/disabled'
+export { GroupWithFieldset } from './examples/group-with-fieldset'
 export { InitialValue } from './examples/initial-value'
 export { OnEvent } from './examples/on-event'
 export { RootProvider } from './examples/root-provider'

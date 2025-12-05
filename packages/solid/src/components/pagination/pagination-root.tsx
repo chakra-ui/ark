@@ -9,6 +9,7 @@ export interface PaginationRootProps extends HTMLProps<'nav'>, PaginationRootBas
 
 export const PaginationRoot = (props: PaginationRootProps) => {
   const [usePaginationProps, localProps] = createSplitProps<UsePaginationProps>()(props, [
+    'boundaryCount',
     'count',
     'defaultPage',
     'defaultPageSize',

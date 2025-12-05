@@ -108,6 +108,11 @@ export const useFieldset = (inProps: MaybeFunction<UseFieldsetProps> = {}) => {
 
   const api = $derived({
     setRootRef,
+    ids: {
+      legend: legendId,
+      errorText: errorTextId,
+      helperText: helperTextId,
+    },
     disabled,
     invalid,
     getRootProps,

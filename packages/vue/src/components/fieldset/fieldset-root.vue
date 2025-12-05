@@ -6,7 +6,8 @@ import type { RootProps } from './fieldset.types'
 
 export interface FieldsetRootBaseProps extends RootProps, PolymorphicProps {}
 export interface FieldsetRootProps
-  extends FieldsetRootBaseProps,
+  extends
+    FieldsetRootBaseProps,
     /**
      * @vue-ignore
      */

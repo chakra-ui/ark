@@ -31,5 +31,6 @@ export function splitTreeViewProps<T extends UseTreeViewProps<TreeNode>>(props: 
     'selectedValue',
     'selectionMode',
     'typeahead',
+    'scrollToIndexFn',
   ])
 }

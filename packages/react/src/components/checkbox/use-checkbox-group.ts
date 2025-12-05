@@ -1,5 +1,6 @@
 import { useControllableState } from '../../utils/use-controllable-state'
 import { useEvent } from '../../utils/use-event'
+import { useFieldsetContext } from '../fieldset'
 
 export interface UseCheckboxGroupProps {
   /**
@@ -38,7 +39,16 @@ export interface CheckboxGroupItemProps {
 }
 
 export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
-  const { defaultValue, value: controlledValue, onValueChange, disabled, readOnly, name, invalid } = props
+  const fieldset = useFieldsetContext()
+  const {
+    defaultValue,
+    value: controlledValue,
+    onValueChange,
+    disabled = fieldset?.disabled,
+    readOnly,
+    name,
+    invalid = fieldset?.invalid,
+  } = props
 
   const interactive = !(disabled || readOnly)
 

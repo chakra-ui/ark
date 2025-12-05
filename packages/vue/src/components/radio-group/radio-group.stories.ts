@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/vue3-vite'
 
 import BasicExample from './examples/basic.vue'
 import DisabledExample from './examples/disabled.vue'
+import GroupWithFieldsetExample from './examples/group-with-fieldset.vue'
 import InitialValueExample from './examples/initial-value.vue'
 import OnEventExample from './examples/on-event.vue'
 import RootProviderExample from './examples/root-provider.vue'
@@ -22,6 +23,13 @@ export const Basic = {
 export const Disabled = {
   render: () => ({
     components: { Component: DisabledExample },
+    template: '<Component />',
+  }),
+}
+
+export const GroupWithFieldset = {
+  render: () => ({
+    components: { Component: GroupWithFieldsetExample },
     template: '<Component />',
   }),
 }
