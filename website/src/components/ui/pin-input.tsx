@@ -14,7 +14,7 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>((props, ref) =
   const { children, length = 4, ...rootProps } = props
 
   return (
-    <ArkPinInput.Root ref={ref} {...rootProps}>
+    <ArkPinInput.Root ref={ref} {...rootProps} placeholder="">
       {children && <ArkPinInput.Label>{children}</ArkPinInput.Label>}
       <ArkPinInput.Control>
         {Array.from({ length }, (_, index) => index).map((id, index) => (
