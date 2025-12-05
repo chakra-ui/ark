@@ -1,5 +1,7 @@
 import { computed, toRefs } from 'vue'
 import type { EmitFn } from '../../types'
+import { toBooleanValue } from '../../utils/boolean'
+import { useFieldsetContext } from '../fieldset'
 import { useVModel } from '../use-v-model'
 import type { GroupEmits, GroupProps } from './checkbox-group.types'
 
@@ -11,7 +13,10 @@ interface CheckboxGroupItemProps {
 }
 
 export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
-  const interactive = computed(() => !(props.disabled || props.readOnly))
+  const fieldset = useFieldsetContext()
+  const disabled = computed(() => props.disabled ?? fieldset?.value?.disabled)
+  const invalid = computed(() => props.invalid ?? fieldset?.value?.invalid)
+  const interactive = computed(() => !(disabled.value || props.readOnly))
 
   const { defaultValue } = toRefs(props)
 
@@ -49,9 +54,9 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
         }
       },
       name: props.name,
-      disabled: props.disabled,
+      disabled: toBooleanValue(disabled.value),
       readOnly: props.readOnly,
-      invalid: props.invalid,
+      invalid: invalid.value,
     }
   }
   const setValue = (value: string[]) => {
@@ -62,9 +67,9 @@ export function useCheckboxGroup(props: GroupProps, emit?: EmitFn<GroupEmits>) {
     isChecked,
     value: valueRef.value,
     name: props.name,
-    disabled: props.disabled,
+    disabled: toBooleanValue(disabled.value),
     readOnly: props.readOnly,
-    invalid: props.invalid,
+    invalid: invalid.value,
     addValue,
     setValue,
     toggleValue,

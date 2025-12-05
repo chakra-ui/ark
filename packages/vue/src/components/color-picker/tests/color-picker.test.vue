@@ -24,7 +24,7 @@ const defaultValue = props.defaultValue ?? parseColor('#eb5e41')
       </ColorPicker.Trigger>
     </ColorPicker.Control>
     <ColorPicker.Positioner data-testid="positioner">
-      <ColorPicker.Content>
+      <ColorPicker.Content aria-label="colorpicker">
         <ColorPicker.FormatTrigger>Toggle ColorFormat</ColorPicker.FormatTrigger>
         <ColorPicker.FormatSelect />
         <ColorPicker.Area>

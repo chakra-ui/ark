@@ -9,9 +9,7 @@ import { type UseTreeViewProps, useTreeView } from './use-tree-view'
 import { TreeViewProvider } from './use-tree-view-context'
 
 export interface TreeViewRootBaseProps<T extends TreeNode>
-  extends UseTreeViewProps<T>,
-    RenderStrategyProps,
-    PolymorphicProps<'div'> {}
+  extends UseTreeViewProps<T>, RenderStrategyProps, PolymorphicProps<'div'> {}
 export interface TreeViewRootProps<T extends TreeNode> extends Assign<HTMLProps<'div'>, TreeViewRootBaseProps<T>> {}
 
 export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) => {
@@ -42,6 +40,7 @@ export const TreeViewRoot = <T extends TreeNode>(props: TreeViewRootProps<T>) =>
     'selectedValue',
     'selectionMode',
     'typeahead',
+    'scrollToIndexFn',
   ])
   const treeView = useTreeView(useTreeViewProps)
   const mergedProps = mergeProps(() => treeView().getRootProps(), localProps)

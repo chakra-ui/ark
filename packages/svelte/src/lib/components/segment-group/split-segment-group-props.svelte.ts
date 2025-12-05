@@ -10,9 +10,11 @@ export const splitSegmentGroupProps = <T extends UseSegmentGroupProps>(props: T)
     'form',
     'id',
     'ids',
+    'invalid',
     'name',
     'onValueChange',
     'orientation',
     'readOnly',
+    'required',
     'value',
   ])

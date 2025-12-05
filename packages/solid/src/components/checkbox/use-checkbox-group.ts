@@ -1,5 +1,6 @@
 import { type Accessor, createMemo } from 'solid-js'
 import { useControllableState } from '../../utils/use-controllable-state'
+import { useFieldsetContext } from '../fieldset'
 
 export interface UseCheckboxGroupProps {
   /**
@@ -38,7 +39,10 @@ export interface CheckboxGroupItemProps {
 }
 
 export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
-  const interactive = createMemo(() => !(props.disabled || props.readOnly))
+  const fieldset = useFieldsetContext()
+  const disabled = () => props.disabled ?? fieldset?.()?.disabled
+  const invalid = () => props.invalid ?? fieldset?.()?.invalid
+  const interactive = createMemo(() => !(disabled() || props.readOnly))
 
   const [value, setValue] = useControllableState({
     value: props.value,
@@ -75,9 +79,9 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
           }
         },
         name: props.name,
-        disabled: props.disabled,
+        disabled: disabled(),
         readOnly: props.readOnly,
-        invalid: props.invalid,
+        invalid: invalid(),
       }
     }
 
@@ -85,9 +89,9 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps = {}) {
       isChecked,
       value,
       name: props.name,
-      disabled: props.disabled,
+      disabled: disabled(),
       readOnly: props.readOnly,
-      invalid: props.invalid,
+      invalid: invalid(),
       setValue,
       addValue,
       toggleValue,

@@ -9,14 +9,34 @@ description: All notable changes will be documented in this file.
 ### Added
 
 - **Date Picker**: Added `required` and `invalid` props
+- **Number Input**: Added `onValueCommit` callback that fires when the input loses focus or Enter is pressed
+- **Pagination**: 
+  - Added `FirstTrigger` and `LastTrigger` components for navigating to first/last page
+  - Added `boundaryCount` parameter for controlling boundary pages (start/end)
+  - Implemented balanced pagination algorithm for consistent UI with max 7 elements
+- **Radio Group**: Added `invalid` and `required` props with corresponding `data-*` and `aria-*` attributes
+- **Tree View**: Added `scrollToIndexFn` prop to enable keyboard navigation in virtualized trees
 
 ### Fixed
 
+- **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better accessibility
+- **Date Picker**: Fixed issue where date picker input does not update format when locale changes
 - **Floating Panel**:
   - Fixed `dir` prop now properly delegated to all panel parts
-  - Fixed double-click behavior improvements
-  - Fixed to check `event.defaultPrevented` for custom behavior
-- **Number Input**: Fixed improved controlled usage sync
+  - Fixed double-click behavior improvements and to check `event.defaultPrevented` for custom behavior
+- **Listbox**: 
+  - Fixed issue where `data-highlighted` wasn't applied to the first item when using `autoHighlight` with input filtering
+- **Number Input**: 
+  - Fixed issue where input element doesn't sync when `formatOptions` changes dynamically
+  - Ensured cursor position is preserved when `Enter` key is pressed and formatting is triggered
+  - Fixed cursor jumping to start when value is changed externally via props while user is typing
+- **Pagination**: Fixed ellipsis showing when only 1 page gap
+- **Tooltip**: Fixed tooltip not showing when scrolling with pointer over trigger
+- **Collapsible, Presence, Tour**: Fixed machines setting reactive state in unmount lifecycle
+
+### Changed
+
+- **Tree View**: `getVisibleNodes()` now returns `{ node, indexPath }[]` instead of `node[]`
 
 ## [5.14.1] - 2025-11-22
 
@@ -52,10 +72,8 @@ description: All notable changes will be documented in this file.
 - **Presence**: Fixed a bug where elements get stuck in unmountSuspended state during rapid state updates
 - **Radio Group**:
   - Fixed inconsistent application of `data-focus-visible` and `data-focus` attributes
-  - Fixed indicator prematurely showing when rect has not been resolved yet (with Tabs)
 - **Splitter**: Fixed disabled splitter showing resize cursor and allowing dragging
 - **Tabs**:
-  - Fixed indicator prematurely showing when rect has not been resolved yet (with Radio Group)
   - Fixed tabs indicator position not updating when inactive tabs change size
 - **Tags Input**: Fixed issue where item delete trigger doesn't have `data-*` attached
 

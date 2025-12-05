@@ -18,10 +18,12 @@ export const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>((p
     'form',
     'id',
     'ids',
+    'invalid',
     'name',
     'onValueChange',
     'orientation',
     'readOnly',
+    'required',
     'value',
   ])
   const radioGroup = useRadioGroup(useRadioGroupProps)

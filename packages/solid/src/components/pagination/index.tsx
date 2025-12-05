@@ -10,7 +10,17 @@ export {
   type PaginationEllipsisBaseProps,
   type PaginationEllipsisProps,
 } from './pagination-ellipsis'
+export {
+  PaginationFirstTrigger,
+  type PaginationFirstTriggerBaseProps,
+  type PaginationFirstTriggerProps,
+} from './pagination-first-trigger'
 export { PaginationItem, type PaginationItemBaseProps, type PaginationItemProps } from './pagination-item'
+export {
+  PaginationLastTrigger,
+  type PaginationLastTriggerBaseProps,
+  type PaginationLastTriggerProps,
+} from './pagination-last-trigger'
 export {
   PaginationNextTrigger,
   type PaginationNextTriggerBaseProps,

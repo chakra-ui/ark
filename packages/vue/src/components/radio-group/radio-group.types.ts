@@ -31,6 +31,10 @@ export interface RootProps {
     itemHiddenInput(value: string): string
   }>
   /**
+   * Whether the radio group is invalid
+   */
+  invalid?: boolean
+  /**
    * The v-model value of the radio group
    */
   modelValue?: string | null
@@ -47,6 +51,10 @@ export interface RootProps {
    * Whether the checkbox is read-only
    */
   readOnly?: boolean
+  /**
+   * Whether the radio group is required
+   */
+  required?: boolean
 }
 
 export type RootEmits = {

@@ -18,6 +18,7 @@
 
   const [paginationProps, localProps] = $derived(
     createSplitProps<UsePaginationProps>()(props, [
+      'boundaryCount',
       'count',
       'defaultPage',
       'defaultPageSize',

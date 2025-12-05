@@ -28,6 +28,7 @@ export const NumberInputRoot = (props: NumberInputRootProps) => {
     'name',
     'onFocusChange',
     'onValueChange',
+    'onValueCommit',
     'onValueInvalid',
     'pattern',
     'readOnly',

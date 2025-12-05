@@ -31,6 +31,7 @@ export const NumberInputRoot = forwardRef<HTMLDivElement, NumberInputRootProps>(
     'name',
     'onFocusChange',
     'onValueChange',
+    'onValueCommit',
     'onValueInvalid',
     'pattern',
     'readOnly',

@@ -3,7 +3,9 @@ import { type PropTypes, normalizeProps, useMachine } from '@zag-js/vue'
 import { type ComputedRef, type MaybeRef, computed, toValue, useId } from 'vue'
 import { DEFAULT_ENVIRONMENT, DEFAULT_LOCALE, useEnvironmentContext, useLocaleContext } from '../../providers'
 import type { EmitFn, Optional } from '../../types'
+import { toBooleanValue } from '../../utils/boolean'
 import { cleanProps } from '../../utils/clean-props'
+import { useFieldsetContext } from '../fieldset'
 import type { RootEmits } from './radio-group.types'
 
 export interface UseRadioGroupProps extends Optional<Omit<radioGroup.Props, 'dir' | 'getRootNode'>, 'id'> {
@@ -21,12 +23,18 @@ export const useRadioGroup = (
   const id = useId()
   const env = useEnvironmentContext(DEFAULT_ENVIRONMENT)
   const locale = useLocaleContext(DEFAULT_LOCALE)
+  const fieldset = useFieldsetContext()
 
   const context = computed<radioGroup.Props>(() => {
     const localProps = toValue<UseRadioGroupProps>(props)
-
+    const fieldsetContext = fieldset?.value
     return {
       id,
+      ids: {
+        label: fieldsetContext?.ids?.legend,
+      },
+      disabled: toBooleanValue(fieldsetContext?.disabled),
+      invalid: fieldsetContext?.invalid,
       dir: locale.value.dir,
       value: localProps.modelValue,
       getRootNode: env?.value.getRootNode,

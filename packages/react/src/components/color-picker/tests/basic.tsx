@@ -16,7 +16,7 @@ export const ComponentUnderTest = (props: ColorPicker.RootProps) => (
             </ColorPicker.Trigger>
           </ColorPicker.Control>
           <ColorPicker.Positioner data-testid="positioner">
-            <ColorPicker.Content>
+            <ColorPicker.Content aria-label="colorpicker">
               <ColorPicker.FormatTrigger>Toggle ColorFormat</ColorPicker.FormatTrigger>
               <ColorPicker.FormatSelect />
               <ColorPicker.Area>

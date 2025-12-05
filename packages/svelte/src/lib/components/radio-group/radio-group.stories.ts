@@ -1,6 +1,7 @@
 import type { Meta } from '@storybook/svelte'
 import BasicExample from './examples/basic.svelte'
 import DisabledExample from './examples/disabled.svelte'
+import GroupWithFieldsetExample from './examples/group-with-fieldset.svelte'
 import InitialValueExample from './examples/initial-value.svelte'
 import OnEventExample from './examples/on-event.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
@@ -20,6 +21,12 @@ export const Basic = {
 export const Disabled = {
   render: () => ({
     Component: DisabledExample,
+  }),
+}
+
+export const GroupWithFieldset = {
+  render: () => ({
+    Component: GroupWithFieldsetExample,
   }),
 }
 

@@ -1,0 +1,450 @@
+---
+id: forms
+title: Forms
+description: A guide to building forms with Ark UI components.
+---
+
+Ark UI provides the `Field` and `Fieldset` components for integrating with native `form` element or popular form
+libraries like [React Hook Form](https://react-hook-form.com/), [TanStack Form](https://tanstack.com/form/latest), and
+[Vee Validate](https://vee-validate.logaretm.com).
+
+## Field Context
+
+Form components in Ark UI automatically integrate with `Field` through context. When nested inside a `Field.Root`, they
+inherit `disabled`, `invalid`, `required`, and `readOnly` states automatically.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+import { NumberInput } from '@ark-ui/react/number-input'
+
+const Demo = () => (
+  <Field.Root disabled>
+    <NumberInput.Root /> {/* NumberInput will be disabled */}
+  </Field.Root>
+)
+```
+
+### Accessible Labels
+
+When building accessible forms, you need to ensure that they are properly labeled and described.
+
+- `Field.Label`: Used to provide an accessible label the input.
+- `Field.HelperText`: Used to provide additional instructions about the input.
+
+These components are automatically linked to the input element via the `aria-describedby` attribute.
+
+> **Best practice**: Make sure that labels are visible (and not just used as placeholders) for screen readers to read
+> them.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+
+const Demo = () => (
+  <form>
+    <Field.Root>
+      <Field.Label>Username</Field.Label>
+      <Field.Input placeholder="Enter your username" />
+      <Field.HelperText>This will be your public display name.</Field.HelperText>
+    </Field.Root>
+  </form>
+)
+```
+
+### Error Handling and Validation
+
+When the input is invalid, you can use the `Field.ErrorText` component to provide an error message for the input, and
+pass the `invalid` prop to the `Field.Root` component.
+
+> **Best practice**: Make sure to provide clear, specific error messages that are easy to understand and fix.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+
+const Demo = () => (
+  <form>
+    <Field.Root invalid>
+      <Field.Label>Username</Field.Label>
+      <Field.Input placeholder="Enter your username" />
+      <Field.ErrorText>Username is required.</Field.ErrorText>
+    </Field.Root>
+  </form>
+)
+```
+
+### Required Fields
+
+To indicate that a field is required, you can pass the `required` prop to the `Field.Root` component. Optionally, you
+can use the `Field.RequiredIndicator` component to indicate that the field is required.
+
+> **Best practice**: Don't rely solely on color to indicate required status
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+
+export const Demo = () => (
+  <form>
+    <Field.Root required>
+      <Field.Label>
+        Username
+        <Field.RequiredIndicator>(required)</Field.RequiredIndicator>
+      </Field.Label>
+      <Field.Input placeholder="Enter your username" />
+      <Field.ErrorText>Username is required.</Field.ErrorText>
+    </Field.Root>
+  </form>
+)
+```
+
+To indicate that a field is optional, use the `fallback` prop on the `Field.RequiredIndicator` component.
+
+```tsx
+<Field.RequiredIndicator fallback="Optional">(required)</Field.RequiredIndicator>
+```
+
+### Native Controls
+
+Field supports native HTML form controls including `input`, `textarea`, and `select`:
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+
+const Demo = () => (
+  <form>
+    {/* Input */}
+    <Field.Root>
+      <Field.Label>Email</Field.Label>
+      <Field.Input type="email" placeholder="you@example.com" />
+    </Field.Root>
+
+    {/* Textarea */}
+    <Field.Root>
+      <Field.Label>Bio</Field.Label>
+      <Field.Textarea placeholder="Tell us about yourself" />
+    </Field.Root>
+
+    {/* Select */}
+    <Field.Root>
+      <Field.Label>Country</Field.Label>
+      <Field.Select>
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="de">Germany</option>
+      </Field.Select>
+    </Field.Root>
+  </form>
+)
+```
+
+### Form Reset
+
+When the `reset` event is triggered on a form, all Ark UI components automatically sync their internal state with the
+form's reset values.
+
+> **Note**: For this to work correctly, always include the `HiddenInput` component in your form controls. The hidden
+> input participates in the native form reset mechanism, and Ark UI listens for this to sync the component state.
+
+```tsx
+import { Checkbox } from '@ark-ui/react/checkbox'
+
+const Demo = () => {
+  return (
+    <form>
+      <Checkbox.Root name="terms" defaultChecked>
+        <Checkbox.Label>I agree to the terms</Checkbox.Label>
+        <Checkbox.Control>
+          <Checkbox.Indicator />
+        </Checkbox.Control>
+        <Checkbox.HiddenInput />
+      </Checkbox.Root>
+
+      {/* Clicking reset will restore checkbox to defaultChecked state */}
+      <button type="reset">Reset</button>
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+```
+
+## Fieldset Context
+
+When you have multiple fields in a form or a component that renders multiple `input` elements, you can use the
+`Fieldset` component to group them together.
+
+Common use cases checkbox group, radio group, input + select composition, etc.
+
+### Checkbox Group
+
+```tsx
+import { Fieldset } from '@ark-ui/react/fieldset'
+import { Checkbox } from '@ark-ui/react/checkbox'
+import { CheckIcon } from 'lucide-react'
+
+const items = [
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+  { label: 'Svelte', value: 'svelte' },
+]
+
+const Demo = () => (
+  <Fieldset.Root>
+    <Fieldset.Legend>Frameworks</Fieldset.Legend>
+    <Checkbox.Group name="framework">
+      {items.map((item) => (
+        <Checkbox.Root value={item.value} key={item.value} />
+      ))}
+    </Checkbox.Group>
+    <Fieldset.HelperText>Choose your preferred frameworks</Fieldset.HelperText>
+  </Fieldset.Root>
+)
+```
+
+### Radio Group
+
+```tsx
+import { Fieldset } from '@ark-ui/react/fieldset'
+import { RadioGroup } from '@ark-ui/react/radio-group'
+import { RadioIcon } from 'lucide-react'
+
+const items = [
+  { label: 'React', value: 'react' },
+  { label: 'Solid', value: 'solid' },
+  { label: 'Vue', value: 'vue' },
+  { label: 'Svelte', value: 'svelte' },
+]
+
+const Demo = () => (
+  <Fieldset.Root>
+    <Fieldset.Legend>Frameworks</Fieldset.Legend>
+    <RadioGroup.Root name="framework">
+      {items.map((item) => (
+        <RadioGroup.Item value={item.value} key={item.value} />
+      ))}
+    </RadioGroup.Root>
+    <Fieldset.HelperText>Choose your preferred framework</Fieldset.HelperText>
+  </Fieldset.Root>
+)
+```
+
+## React Hook Form
+
+Ark UI integrates seamlessly with React Hook Form. Use the `register` function for simple inputs and `Controller` for
+complex components.
+
+### Native Controls
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+import { useForm } from 'react-hook-form'
+
+interface FormValues {
+  firstName: string
+  email: string
+}
+
+const Demo = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>()
+
+  const onSubmit = (data: FormValues) => console.log(data)
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Field.Root invalid={!!errors.firstName}>
+        <Field.Label>First Name</Field.Label>
+        <Field.Input {...register('firstName', { required: 'First name is required' })} />
+        <Field.ErrorText>{errors.firstName?.message}</Field.ErrorText>
+      </Field.Root>
+
+      <Field.Root invalid={!!errors.email}>
+        <Field.Label>Email</Field.Label>
+        <Field.Input
+          {...register('email', {
+            required: 'Email is required',
+            pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
+          })}
+        />
+        <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
+      </Field.Root>
+
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+```
+
+### Custom Components
+
+Use the `Controller` hook to integrate custom form components like select or combobox.
+
+> **Best practice**: To ensure `react-hook-form` moves focus to invalid field control when performing validation,
+> forward the field's `ref` to the respective Ark UI component.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+import { Select, createListCollection } from '@ark-ui/react/select'
+import { Controller, useForm } from 'react-hook-form'
+
+const Demo = () => {
+  const { control, handleSubmit } = useForm({
+    defaultValues: { framework: '' },
+  })
+
+  const collection = createListCollection({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
+  })
+
+  return (
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <Controller
+        name="framework"
+        control={control}
+        rules={{ required: 'Please select a framework' }}
+        render={({
+          field: { name, ref, value, onBlur, onChange },
+          fieldState: { invalid, isTouched, isDirty, error },
+        }) => (
+          <Field.Root invalid={invalid}>
+            <Select.Root
+              name={name}
+              collection={collection}
+              value={value ? [value] : []}
+              onValueChange={(e) => onChange(e.value[0])}
+              onInteractOutside={() => onBlur()}
+            >
+              <Select.Label>Framework</Select.Label>
+              <Select.Control>
+                <Select.Trigger ref={ref}>
+                  <Select.ValueText placeholder="Select a Framework" />
+                </Select.Trigger>
+              </Select.Control>
+              <Select.Positioner>
+                <Select.Content>
+                  {collection.items.map((item) => (
+                    <Select.Item key={item} item={item}>
+                      <Select.ItemText>{item}</Select.ItemText>
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Positioner>
+              <Select.HiddenSelect />
+            </Select.Root>
+            <Field.ErrorText>{error?.message}</Field.ErrorText>
+          </Field.Root>
+        )}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+```
+
+## TanStack Form
+
+TanStack Form provides powerful form state management that works well with Ark UI.
+
+### Native Controls
+
+```tsx
+import { useForm } from '@tanstack/react-form'
+
+const form = useForm({
+  defaultValues: { firstName: '' },
+})
+
+const Demo = () => (
+  <form onSubmit={form.handleSubmit}>
+    <form.Field
+      name="firstName"
+      children={(field) => (
+        <Field.Root
+          name={field.name}
+          invalid={!field.state.meta.isValid}
+          dirty={field.state.meta.isDirty}
+          touched={field.state.meta.isTouched}
+        >
+          <Field.Label>First Name</Field.Label>
+          <Field.Input
+            value={field.state.value}
+            onChange={(e) => field.handleChange(e.target.value)}
+            onBlur={field.handleBlur}
+          />
+          <Field.ErrorText match={!field.state.meta.isValid}>{field.state.meta.errors.join(',')}</Field.ErrorText>
+        </Field.Root>
+      )}
+    />
+    <button type="submit">Submit</button>
+  </form>
+)
+```
+
+### Custom Components
+
+Here's an example of how to integrate custom components like the select or combobox with Tanstack's `form.Field`
+component.
+
+```tsx
+import { Field } from '@ark-ui/react/field'
+import { Select, createListCollection } from '@ark-ui/react/select'
+import { useForm } from '@tanstack/react-form'
+
+const Demo = () => {
+  const form = useForm({
+    defaultValues: { username: '' },
+  })
+
+  const collection = createListCollection({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
+  })
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        form.handleSubmit()
+      }}
+    >
+      <form.Field
+        name="username"
+        validators={{
+          onChange: ({ value }) => (value.length < 3 ? 'Username must be at least 3 characters' : undefined),
+        }}
+        children={(field) => (
+          <Field.Root invalid={field.state.meta.errors.length > 0}>
+            <Field.Label>Username</Field.Label>
+            <Select.Root
+              name={field.name}
+              collection={collection}
+              value={field.state.value ? [field.state.value] : []}
+              onValueChange={(e) => field.handleChange(e.value[0])}
+              onInteractOutside={() => field.handleBlur()}
+            >
+              <Select.Label>Username</Select.Label>
+              <Select.Control>
+                <Select.Trigger>
+                  <Select.ValueText placeholder="Enter your username" />
+                </Select.Trigger>
+              </Select.Control>
+              <Select.Positioner>
+                <Select.Content>
+                  {collection.items.map((item) => (
+                    <Select.Item key={item} item={item}>
+                      <Select.ItemText>{item}</Select.ItemText>
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Positioner>
+              <Select.HiddenSelect />
+            </Select.Root>
+          </Field.Root>
+        )}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+```

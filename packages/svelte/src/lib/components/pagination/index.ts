@@ -11,10 +11,20 @@ export {
   type PaginationEllipsisProps,
 } from './pagination-ellipsis.svelte'
 export {
+  default as PaginationFirstTrigger,
+  type PaginationFirstTriggerBaseProps,
+  type PaginationFirstTriggerProps,
+} from './pagination-first-trigger.svelte'
+export {
   default as PaginationItem,
   type PaginationItemBaseProps,
   type PaginationItemProps,
 } from './pagination-item.svelte'
+export {
+  default as PaginationLastTrigger,
+  type PaginationLastTriggerBaseProps,
+  type PaginationLastTriggerProps,
+} from './pagination-last-trigger.svelte'
 export {
   default as PaginationNextTrigger,
   type PaginationNextTriggerBaseProps,

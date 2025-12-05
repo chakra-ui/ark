@@ -6,10 +6,20 @@ export {
   type PaginationEllipsisBaseProps as EllipsisBaseProps,
 } from './pagination-ellipsis.vue'
 export {
+  default as FirstTrigger,
+  type PaginationFirstTriggerProps as FirstTriggerProps,
+  type PaginationFirstTriggerBaseProps as FirstTriggerBaseProps,
+} from './pagination-first-trigger.vue'
+export {
   default as Item,
   type PaginationItemProps as ItemProps,
   type PaginationItemBaseProps as ItemBaseProps,
 } from './pagination-item.vue'
+export {
+  default as LastTrigger,
+  type PaginationLastTriggerProps as LastTriggerProps,
+  type PaginationLastTriggerBaseProps as LastTriggerBaseProps,
+} from './pagination-last-trigger.vue'
 export {
   default as NextTrigger,
   type PaginationNextTriggerProps as NextTriggerProps,

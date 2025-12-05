@@ -12,6 +12,7 @@ const splitRootProps = createSplitProps<UsePaginationProps>()
 
 export const PaginationRoot = forwardRef<HTMLElement, PaginationRootProps>((props, ref) => {
   const [paginationProps, localProps] = splitRootProps(props, [
+    'boundaryCount',
     'count',
     'defaultPage',
     'defaultPageSize',

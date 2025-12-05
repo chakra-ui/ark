@@ -15,10 +15,12 @@ export const SegmentGroupRoot = (props: SegmentGroupRootProps) => {
     'form',
     'id',
     'ids',
+    'invalid',
     'name',
     'onValueChange',
     'orientation',
     'readOnly',
+    'required',
     'value',
   ])
   const segmentGroup = useSegmentGroup(useSegmentGroupProps)

@@ -19,7 +19,9 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
           pagination.pages.map((page, index) =>
             page.type === 'page' ? (
               <ArkPagination.Item key={index} {...page} asChild>
-                <Button variant="outline">{page.value}</Button>
+                <Button variant={{ base: 'outline', _selected: 'solid' }} _selected={{ colorPalette: 'coral' }}>
+                  {page.value}
+                </Button>
               </ArkPagination.Item>
             ) : (
               <ArkPagination.Ellipsis key={index} index={index}>
