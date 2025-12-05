@@ -1,0 +1,178 @@
+@layer recipes.slots {
+  @layer _base {
+    .radio-card-group__root {
+      gap: var(--spacing-1\.5);
+      display: flex;
+      flex-direction: column;
+      width: var(--sizes-full);
+}
+
+    .radio-card-group__label {
+      font-size: var(--font-sizes-sm);
+      line-height: 1.25rem;
+      font-weight: var(--font-weights-medium);
+}
+
+    .radio-card-group__item {
+      border-radius: var(--radii-l2);
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      -webkit-user-select: none;
+      user-select: none;
+      width: var(--sizes-full);
+}
+
+    .radio-card-group__itemText {
+      font-size: var(--font-sizes-sm);
+      line-height: 1.25rem;
+      font-weight: var(--font-weights-medium);
+}
+
+    .radio-card-group__itemControl {
+      border-radius: var(--radii-full);
+      align-items: center;
+      display: inline-flex;
+      flex-shrink: 0;
+      justify-content: center;
+      vertical-align: top;
+}
+
+    .radio-card-group__itemControl::after {
+      border-radius: var(--radii-full);
+      content: "";
+      display: block;
+}
+
+    .radio-card-group__itemControl:is(:focus-visible, [data-focus-visible]) {
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
+}
+
+    .radio-card-group__itemControl:is(:focus-visible, [data-focus-visible]):is(:focus-visible, [data-focus-visible]) {
+      outline-width: var(--focus-ring-width, 2px);
+      outline-offset: var(--focus-ring-offset, 2px);
+      outline-style: var(--focus-ring-style, solid);
+      outline-color: var(--focus-ring-color);
+}
+}
+
+  .radio-card-group__item--variant_outline {
+    border-width: 1px;
+    border-color: var(--colors-gray-outline-border);
+}
+
+  .radio-card-group__item--variant_outline:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    border-color: var(--colors-color-palette-solid-bg);
+    box-shadow: 0 0 0 1px var(--shadow-color);
+    --shadow-color: var(--colors-color-palette-solid-bg);
+}
+
+  .radio-card-group__itemControl--variant_outline {
+    border-width: 1px;
+    border-color: var(--colors-gray-outline-border);
+}
+
+  .radio-card-group__itemControl--variant_outline:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    background: var(--colors-color-palette-solid-bg);
+    border-color: var(--colors-color-palette-solid-bg);
+}
+
+  .radio-card-group__itemControl--variant_outline:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate])::after {
+    background: var(--colors-color-palette-solid-fg);
+}
+
+  .radio-card-group__item--size_md {
+    padding: var(--spacing-4);
+    gap: var(--spacing-2);
+}
+
+  .radio-card-group__itemText--size_md {
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+}
+
+  .radio-card-group__itemControl--size_md {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .radio-card-group__itemControl--size_md::after {
+    width: var(--sizes-2);
+    height: var(--sizes-2);
+}
+
+  .radio-card-group__item--variant_subtle {
+    background: var(--colors-gray-subtle-bg);
+    color: var(--colors-gray-subtle-fg);
+}
+
+  .radio-card-group__item--variant_subtle:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    background: var(--colors-color-palette-subtle-bg);
+    color: var(--colors-color-palette-subtle-fg);
+}
+
+  .radio-card-group__itemControl--variant_subtle {
+    border-width: 1px;
+    border-color: gray.subtle.border;
+}
+
+  .radio-card-group__itemControl--variant_subtle:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    border-color: var(--colors-color-palette-solid-bg);
+}
+
+  .radio-card-group__itemControl--variant_subtle:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate])::after {
+    background: var(--colors-color-palette-solid-bg);
+}
+
+  .radio-card-group__item--variant_surface {
+    background: var(--colors-gray-surface-bg);
+    border-width: 1px;
+    border-color: var(--colors-gray-surface-border);
+    color: var(--colors-gray-surface-fg);
+}
+
+  .radio-card-group__item--variant_surface:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    border-color: var(--colors-color-palette-solid-bg);
+    box-shadow: 0 0 0 1px var(--shadow-color);
+    --shadow-color: var(--colors-color-palette-solid-bg);
+}
+
+  .radio-card-group__itemControl--variant_surface {
+    border-width: 1px;
+    border-color: var(--colors-gray-outline-border);
+}
+
+  .radio-card-group__itemControl--variant_surface:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    background: var(--colors-color-palette-solid-bg);
+    border-color: var(--colors-color-palette-solid-bg);
+}
+
+  .radio-card-group__itemControl--variant_surface:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate])::after {
+    background: var(--colors-color-palette-solid-fg);
+}
+
+  .radio-card-group__item--variant_solid {
+    border-width: 1px;
+}
+
+  .radio-card-group__item--variant_solid:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    background: var(--colors-color-palette-solid-bg);
+    border-color: var(--colors-color-palette-solid-bg);
+    color: var(--colors-color-palette-solid-fg);
+}
+
+  .radio-card-group__itemControl--variant_solid {
+    border-width: 1px;
+    border-color: var(--colors-gray-outline-border);
+}
+
+  .radio-card-group__itemControl--variant_solid:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate]) {
+    background: var(--colors-color-palette-solid-fg);
+    border-color: var(--colors-color-palette-solid-fg);
+}
+
+  .radio-card-group__itemControl--variant_solid:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate])::after {
+    background: var(--colors-color-palette-solid-bg);
+}
+}

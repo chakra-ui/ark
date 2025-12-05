@@ -1,0 +1,403 @@
+@layer recipes.slots {
+  @layer _base {
+    .select__label {
+      font-weight: var(--font-weights-medium);
+      font-size: var(--font-sizes-sm);
+      line-height: 1.25rem;
+}
+
+    .select__label,.select__trigger {
+      -webkit-user-select: none;
+      user-select: none;
+}
+
+    .select__trigger {
+      border-radius: var(--radii-l2);
+      outline: 0;
+      transition-property: var(--transition-prop, color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter);
+      transition-timing-function: var(--transition-easing, cubic-bezier(0.4, 0, 0.2, 1));
+      transition-duration: var(--transition-duration, 150ms);
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      text-align: start;
+      min-width: var(--sizes-0);
+      width: var(--sizes-full);
+}
+
+    .select__trigger:is(:placeholder-shown, [data-placeholder-shown]) {
+      color: var(--colors-fg-subtle);
+}
+
+    .select__trigger:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+      cursor: not-allowed;
+      opacity: 0.67;
+      filter: grayscale(100%);
+}
+
+    .select__indicator {
+      justify-content: center;
+      color: var(--colors-fg-subtle);
+}
+
+    .select__indicator,.select__item {
+      display: flex;
+      align-items: center;
+}
+
+    .select__item {
+      border-radius: var(--radii-l1);
+      cursor: pointer;
+      justify-content: space-between;
+      -webkit-user-select: none;
+      user-select: none;
+}
+
+    .select__item[data-highlighted] {
+      background: var(--colors-gray-surface-bg-hover);
+}
+
+    .select__item:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
+      cursor: not-allowed;
+      opacity: 0.67;
+      filter: grayscale(100%);
+}
+
+    .select__item:not(:disabled):hover {
+      background: var(--colors-gray-surface-bg-hover);
+}
+
+    .select__itemIndicator {
+      color: var(--colors-color-palette-plain-fg);
+}
+
+    .select__itemGroupLabel {
+      gap: 1px;
+      align-items: flex-start;
+      color: var(--colors-fg-subtle);
+      display: flex;
+      flex-direction: column;
+      font-weight: var(--font-weights-medium);
+      justify-content: center;
+}
+
+    .select__itemGroupLabel::after {
+      background: var(--colors-gray-4);
+      content: "";
+      width: 100%;
+      height: 1px;
+}
+
+    .select__content {
+      background: var(--colors-gray-surface-bg);
+      border-radius: var(--radii-l2);
+      outline: 0;
+      box-shadow: var(--shadows-md);
+      display: flex;
+      flex-direction: column;
+      z-index: var(--z-index-dropdown);
+      max-height: min(var(--available-height), var(--sizes-96));
+      min-width: max(var(--reference-width), var(--sizes-40));
+      overflow-y: auto;
+}
+
+    .select__content:is([open], [data-open], [data-state="open"], :popover-open) {
+      transform-origin: var(--transform-origin);
+}
+
+    .select__content:is([open], [data-open], [data-state="open"], :popover-open)[data-placement^=top] {
+      animation-name: slide-from-bottom, fade-in;
+}
+
+    .select__content:is([open], [data-open], [data-state="open"], :popover-open)[data-placement^=bottom] {
+      animation-name: slide-from-top, fade-in;
+}
+
+    .select__content:is([open], [data-open], [data-state="open"], :popover-open)[data-placement^=left] {
+      animation-name: slide-from-right, fade-in;
+}
+
+    .select__content:is([open], [data-open], [data-state="open"], :popover-open)[data-placement^=right] {
+      animation-name: slide-from-left, fade-in;
+}
+
+    .select__content:is([open], [data-open], [data-state="open"], :popover-open) {
+      animation-duration: var(--durations-slow);
+}
+
+    .select__content:is([closed], [data-closed], [data-state="closed"]) {
+      transform-origin: var(--transform-origin);
+}
+
+    .select__content:is([closed], [data-closed], [data-state="closed"])[data-placement^=top] {
+      animation-name: slide-to-bottom, fade-out;
+}
+
+    .select__content:is([closed], [data-closed], [data-state="closed"])[data-placement^=bottom] {
+      animation-name: slide-to-top, fade-out;
+}
+
+    .select__content:is([closed], [data-closed], [data-state="closed"])[data-placement^=left] {
+      animation-name: slide-to-right, fade-out;
+}
+
+    .select__content:is([closed], [data-closed], [data-state="closed"])[data-placement^=right] {
+      animation-name: slide-to-left, fade-out;
+}
+
+    .select__content:is([closed], [data-closed], [data-state="closed"]) {
+      animation-duration: var(--durations-fastest);
+}
+
+    .select__root {
+      gap: var(--spacing-1\.5);
+      display: flex;
+      flex-direction: column;
+      width: var(--sizes-full);
+}
+
+    .select__valueText {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+}
+
+    .select__indicatorGroup {
+      gap: var(--spacing-1);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+}
+}
+
+  .select__trigger--size_md {
+    padding-inline: var(--spacing-3);
+    gap: var(--spacing-2);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+    height: var(--sizes-10);
+}
+
+  .select__trigger--size_md :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .select__item--size_md {
+    padding-inline: var(--spacing-2);
+    gap: var(--spacing-2);
+    min-height: var(--sizes-10);
+}
+
+  .select__item--size_md :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .select__itemGroup--size_md {
+    gap: var(--spacing-0\.5);
+}
+
+  .select__itemGroupLabel--size_md {
+    padding-inline: var(--spacing-2);
+    height: var(--sizes-10);
+}
+
+  .select__content--size_md {
+    padding: var(--spacing-1);
+    gap: var(--spacing-0\.5);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+}
+
+  .select__trigger--variant_outline {
+    border-width: 1px;
+    border-color: var(--colors-gray-outline-border);
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
+}
+
+  .select__trigger--variant_outline:is(:focus-visible, [data-focus-visible]) {
+    outline-offset: 0px;
+    outline-width: var(--focus-ring-width, 1px);
+    outline-color: var(--focus-ring-color);
+    outline-style: var(--focus-ring-style, solid);
+    border-color: var(--focus-ring-color);
+}
+
+  .select__trigger--variant_surface {
+    background: var(--colors-gray-surface-bg);
+    border-width: 1px;
+    border-color: var(--colors-gray-surface-border);
+    --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
+}
+
+  .select__trigger--variant_surface:is(:focus-visible, [data-focus-visible]) {
+    outline-offset: 0px;
+    outline-width: var(--focus-ring-width, 1px);
+    outline-color: var(--focus-ring-color);
+    outline-style: var(--focus-ring-style, solid);
+    border-color: var(--focus-ring-color);
+}
+
+  .select__trigger--size_xs {
+    padding-inline: var(--spacing-2);
+    gap: var(--spacing-2);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+    height: var(--sizes-8);
+}
+
+  .select__trigger--size_xs :where(svg) {
+    width: var(--sizes-3\.5);
+    height: var(--sizes-3\.5);
+}
+
+  .select__item--size_xs {
+    padding-inline: var(--spacing-1);
+    gap: var(--spacing-2);
+    min-height: var(--sizes-8);
+}
+
+  .select__item--size_xs :where(svg) {
+    width: var(--sizes-3\.5);
+    height: var(--sizes-3\.5);
+}
+
+  .select__itemGroup--size_xs {
+    gap: var(--spacing-0\.5);
+}
+
+  .select__itemGroupLabel--size_xs {
+    padding-inline: var(--spacing-1);
+    height: var(--sizes-8);
+}
+
+  .select__content--size_xs {
+    padding: var(--spacing-1);
+    gap: var(--spacing-0\.5);
+}
+
+  .select__content--size_xs,.select__trigger--size_sm {
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+}
+
+  .select__trigger--size_sm {
+    padding-inline: var(--spacing-2\.5);
+    gap: var(--spacing-2);
+    height: var(--sizes-9);
+}
+
+  .select__trigger--size_sm :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .select__item--size_sm {
+    padding-inline: var(--spacing-1\.5);
+    gap: var(--spacing-2);
+    min-height: var(--sizes-9);
+}
+
+  .select__item--size_sm :where(svg) {
+    width: var(--sizes-4);
+    height: var(--sizes-4);
+}
+
+  .select__itemGroup--size_sm {
+    gap: var(--spacing-0\.5);
+}
+
+  .select__itemGroupLabel--size_sm {
+    padding-inline: var(--spacing-1\.5);
+    height: var(--sizes-9);
+}
+
+  .select__content--size_sm {
+    padding: var(--spacing-1);
+    gap: var(--spacing-0\.5);
+    font-size: var(--font-sizes-sm);
+    line-height: 1.25rem;
+}
+
+  .select__trigger--size_lg {
+    padding-inline: var(--spacing-3\.5);
+    gap: var(--spacing-2);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+    height: var(--sizes-11);
+}
+
+  .select__trigger--size_lg :where(svg) {
+    width: var(--sizes-4\.5);
+    height: var(--sizes-4\.5);
+}
+
+  .select__item--size_lg {
+    padding-inline: var(--spacing-2\.5);
+    gap: var(--spacing-2);
+    min-height: var(--sizes-11);
+}
+
+  .select__item--size_lg :where(svg) {
+    width: var(--sizes-4\.5);
+    height: var(--sizes-4\.5);
+}
+
+  .select__itemGroup--size_lg {
+    gap: var(--spacing-0\.5);
+}
+
+  .select__itemGroupLabel--size_lg {
+    padding-inline: var(--spacing-2\.5);
+    height: var(--sizes-11);
+}
+
+  .select__content--size_lg {
+    padding: var(--spacing-1);
+    gap: var(--spacing-0\.5);
+    font-size: var(--font-sizes-md);
+    line-height: 1.5rem;
+}
+
+  .select__trigger--size_xl {
+    padding-inline: var(--spacing-4);
+    gap: var(--spacing-3);
+    font-size: var(--font-sizes-lg);
+    line-height: 1.75rem;
+    height: var(--sizes-12);
+}
+
+  .select__trigger--size_xl :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .select__item--size_xl {
+    padding-inline: var(--spacing-3);
+    gap: var(--spacing-3);
+    min-height: var(--sizes-12);
+}
+
+  .select__item--size_xl :where(svg) {
+    width: var(--sizes-5);
+    height: var(--sizes-5);
+}
+
+  .select__itemGroup--size_xl {
+    gap: var(--spacing-1);
+}
+
+  .select__itemGroupLabel--size_xl {
+    padding-inline: var(--spacing-3);
+    height: var(--sizes-12);
+}
+
+  .select__content--size_xl {
+    padding: var(--spacing-1);
+    gap: var(--spacing-1);
+    font-size: var(--font-sizes-lg);
+    line-height: 1.75rem;
+}
+}

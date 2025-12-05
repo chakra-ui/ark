@@ -1,0 +1,80 @@
+@layer recipes.slots {
+  @layer _base {
+    .carousel__root {
+      gap: var(--spacing-2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+}
+
+    .carousel__root[data-orientation=vertical] {
+      flex-direction: row;
+}
+
+    .carousel__itemGroup {
+      flex: 1 1 0%;
+}
+
+    .carousel__control {
+      border-radius: var(--radii-l2);
+      align-items: center;
+      justify-content: space-between;
+      display: flex;
+}
+
+    .carousel__control[data-orientation=vertical] {
+      flex-direction: column;
+}
+
+    .carousel__indicatorGroup {
+      display: flex;
+}
+
+    .carousel__indicatorGroup[data-orientation=vertical] {
+      flex-direction: column;
+}
+
+    .carousel__indicator {
+      background: var(--colors-gray-subtle-bg);
+      border-radius: var(--radii-full);
+      cursor: pointer;
+      --focus-ring-color: var(--focus-ring-color-prop, var(--global-color-focus-ring, #005FCC));
+}
+
+    .carousel__indicator:is(:focus-visible, [data-focus-visible]) {
+      outline-width: var(--focus-ring-width, 2px);
+      outline-offset: var(--focus-ring-offset, 2px);
+      outline-style: var(--focus-ring-style, solid);
+      outline-color: var(--focus-ring-color);
+}
+
+    .carousel__indicator:is([aria-current=true], [data-current]) {
+      background: var(--colors-color-palette-solid-bg);
+}
+}
+
+  .carousel__control--size_md,.carousel__indicatorGroup--size_md {
+    gap: var(--spacing-3);
+}
+
+  .carousel__indicator--size_md {
+    width: var(--sizes-2\.5);
+    height: var(--sizes-2\.5);
+}
+
+  .carousel__control--inline_true {
+    padding: var(--spacing-1);
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: var(--spacing-3);
+    left: 50%;
+}
+
+  :root .carousel__control--inline_true,.light .carousel__control--inline_true {
+    background: var(--colors-white-a11);
+}
+
+  .dark .carousel__control--inline_true {
+    background: var(--colors-black-a11);
+}
+}
