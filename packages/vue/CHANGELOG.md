@@ -13,6 +13,7 @@
 
 ### Fixed
 
+- **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting the content
 - **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better accessibility
 - **Date Picker**: Fixed issue where date picker input does not update format when locale changes
 - **Floating Panel**:
@@ -26,6 +27,7 @@
   - Ensured cursor position is preserved when `Enter` key is pressed and formatting is triggered
   - Fixed cursor jumping to start when value is changed externally via props while user is typing
 - **Pagination**: Fixed ellipsis showing when only 1 page gap
+- **Rating Group**: Fixed issue where rating group becomes unfocusable via keyboard when value is 0
 - **Tooltip**: Fixed tooltip not showing when scrolling with pointer over trigger
 
 ### Changed
