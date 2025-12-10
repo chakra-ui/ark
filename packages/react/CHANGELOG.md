@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [5.30.0] - 2025-12-10
+
 ### Added
 
 - **Date Picker**: Added `required` and `invalid` props
