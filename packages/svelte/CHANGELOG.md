@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.15.0] - 2025-12-10
+
 ### Added
 
 - **Date Picker**: Added `required` and `invalid` props
