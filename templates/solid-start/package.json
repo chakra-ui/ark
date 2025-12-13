@@ -14,7 +14,7 @@
     "@solidjs/router": "0.15.4",
     "@solidjs/start": "1.2.0",
     "solid-js": "1.9.10",
-    "vinxi": "0.5.8",
-    "lucide-solid": "0.555.0"
+    "vinxi": "0.5.9",
+    "lucide-solid": "0.561.0"
   }
 }
