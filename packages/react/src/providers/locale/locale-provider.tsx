@@ -1,6 +1,6 @@
-import { type Locale, isRTL } from '@zag-js/i18n-utils'
-import type { PropsWithChildren } from 'react'
-import { LocaleContextProvider } from './use-locale-context'
+import { type Locale, isRTL } from '@zag-js/i18n-utils';
+import type { PropsWithChildren } from 'react';
+import { LocaleContextProvider } from './use-locale-context';
 
 export interface LocaleProviderProps extends PropsWithChildren {
   /**
@@ -8,6 +8,8 @@ export interface LocaleProviderProps extends PropsWithChildren {
    * @default 'en-US'
    */
   locale: string
+  dir?: "rtl" | "ltr"
+
 }
 
 export const LocaleProvider = (props: LocaleProviderProps) => {
@@ -15,7 +17,7 @@ export const LocaleProvider = (props: LocaleProviderProps) => {
 
   const context: Locale = {
     locale,
-    dir: isRTL(locale) ? 'rtl' : 'ltr',
+    dir: props.dir ? props.dir : isRTL(props.locale) ? "rtl" : "ltr",
   }
 
   return <LocaleContextProvider value={context}>{children}</LocaleContextProvider>

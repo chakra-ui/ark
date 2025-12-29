@@ -8,6 +8,7 @@
      * @default 'en-US'
      */
     locale: string
+    dir?: "rtl" | "ltr"
     /**
      * The children to render.
      */
@@ -23,7 +24,7 @@
 
   const context = $derived<ReturnType<UseLocaleContext>>({
     locale,
-    dir: isRTL(locale) ? 'rtl' : 'ltr',
+    dir: props.dir ? props.dir : isRTL(props.locale) ? "rtl" : "ltr",
   })
 
   LocaleContextProvider(() => context)
