@@ -25,7 +25,7 @@
     "find-up": "8.0.0",
     "fs-extra": "11.3.2",
     "glob": "13.0.0",
-    "globby": "15.0.0",
+    "globby": "16.1.0",
     "pkg-dir": "9.0.0",
     "ts-morph": "27.0.2",
     "ts-pattern": "5.9.0",
