@@ -164,7 +164,7 @@
     "@vitejs/plugin-react": "5.1.1",
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
-    "globby": "15.0.0",
+    "globby": "16.1.0",
     "happy-dom": "20.0.11",
     "lucide-react": "0.555.0",
     "react": "19.2.1",

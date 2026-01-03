@@ -163,7 +163,7 @@
     "clean-package": "2.2.0",
     "image-conversion": "2.1.1",
     "esbuild-plugin-solid": "0.6.0",
-    "globby": "15.0.0",
+    "globby": "16.1.0",
     "jsdom": "26.1.0",
     "lucide-solid": "0.555.0",
     "resize-observer-polyfill": "1.5.1",
