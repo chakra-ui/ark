@@ -12,7 +12,12 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "types": ["vitest/globals"],
-    "isolatedModules": true
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "styles/*": ["../../.storybook/modules/*"]
+    },
+    "noPropertyAccessFromIndexSignature": false
   },
   "include": [
     "./.svelte-kit/ambient.d.ts",
@@ -23,6 +28,7 @@
     "./src/**/*.svelte",
     "./vite.config.ts",
     "./svelte.config.js",
-    "./setup-test.ts"
+    "./setup-test.ts",
+    "../../.storybook/modules/css-modules.d.ts"
   ]
 }

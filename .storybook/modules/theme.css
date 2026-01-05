@@ -1,0 +1,36 @@
+:root {
+  /* Coral semantic tokens */
+  --coral-solid: #EB5E41;
+  --coral-muted: #ffdbda;
+  --coral-subtle: #ffe5e4;
+  --coral-fg: #c9453b;
+  --coral-contrast: white;
+  --coral-focus-ring: #ffb2a8;
+
+  /* Neutral semantic tokens */
+  --neutral-solid: #8d8d86;
+  --neutral-muted: #e9e8e6;
+  --neutral-subtle: #f1f0ef;
+  --neutral-fg: #63635e;
+  --neutral-contrast: white;
+  --neutral-focus-ring: #bcbbb5;
+}
+
+.dark {
+  /* Coral dark mode */
+  --coral-solid: #EB5E41;
+  --coral-muted: #722b25;
+  --coral-subtle: #55221e;
+  --coral-fg: #f47a5c;
+  --coral-contrast: white;
+  --coral-focus-ring: #e2503f;
+
+  /* Neutral dark mode */
+  --neutral-solid: #6f6d66;
+  --neutral-muted: #2a2a28;
+  --neutral-subtle: #222221;
+  --neutral-fg: #b5b3ad;
+  --neutral-contrast: white;
+  --neutral-focus-ring: #62605b;
+}
+

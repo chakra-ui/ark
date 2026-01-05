@@ -1,0 +1,16 @@
+body {
+  font-family: system-ui;
+  margin: 0;
+  position: relative;
+}
+
+#root,
+.storybook-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3rem;
+  isolation: isolate;
+}
+
