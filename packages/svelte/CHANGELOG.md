@@ -6,6 +6,8 @@ description: All notable changes will be documented in this file.
 
 ## [Unreleased]
 
+## [5.15.0] - 2025-12-10
+
 ### Added
 
 - **Date Picker**: Added `required` and `invalid` props
@@ -19,6 +21,7 @@ description: All notable changes will be documented in this file.
 
 ### Fixed
 
+- **Accordion, Menu**: Fixed issue where querying elements by `aria-controls` attribute could fail when lazy mounting the content
 - **Color Picker**: Added `role="dialog"` to content and `aria-haspopup="dialog"` to trigger when not inline for better accessibility
 - **Date Picker**: Fixed issue where date picker input does not update format when locale changes
 - **Floating Panel**:
@@ -31,6 +34,7 @@ description: All notable changes will be documented in this file.
   - Ensured cursor position is preserved when `Enter` key is pressed and formatting is triggered
   - Fixed cursor jumping to start when value is changed externally via props while user is typing
 - **Pagination**: Fixed ellipsis showing when only 1 page gap
+- **Rating Group**: Fixed issue where rating group becomes unfocusable via keyboard when value is 0
 - **Tooltip**: Fixed tooltip not showing when scrolling with pointer over trigger
 - **Collapsible, Presence, Tour**: Fixed machines setting reactive state in unmount lifecycle
 

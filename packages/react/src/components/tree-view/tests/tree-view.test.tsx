@@ -24,7 +24,7 @@ describe('TreeView', () => {
   it('should expand branch node to reveal child leaf node', async () => {
     render(<ComponentUnderTest />)
     expect(screen.getByRole('treeitem', { name: 'src' })).toBeVisible()
-    userEvent.click(screen.getByRole('button', { name: 'src' }))
+    await userEvent.click(screen.getByRole('button', { name: 'src' }))
 
     await waitFor(() => expect(screen.getByText('app.tsx')).toBeVisible())
   })
