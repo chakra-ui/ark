@@ -1,7 +1,13 @@
 body {
-  font-family: system-ui;
-  margin: 0;
+  font-family: sans-serif;
   position: relative;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
 }
 
 #root,
@@ -13,4 +19,3 @@ body {
   padding: 3rem;
   isolation: isolate;
 }
-

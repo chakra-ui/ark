@@ -8,7 +8,6 @@ import HorizontalExample from './examples/horizontal.svelte'
 import ItemContextExample from './examples/item-context.svelte'
 import LazyMountExample from './examples/lazy-mount.svelte'
 import MultipleExample from './examples/multiple.svelte'
-import RenderPropExample from './examples/render-prop.svelte'
 import RootProviderExample from './examples/root-provider.svelte'
 
 const meta: Meta = {
@@ -74,11 +73,5 @@ export const Context = {
 export const ItemContext = {
   render: () => ({
     Component: ItemContextExample,
-  }),
-}
-
-export const RenderProp = {
-  render: () => ({
-    Component: RenderPropExample,
   }),
 }
