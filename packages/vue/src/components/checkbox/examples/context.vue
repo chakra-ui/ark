@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { CheckIcon } from 'lucide-vue-next'
+import styles from 'styles/checkbox.module.css'
 </script>
 
 <template>
-  <Checkbox.Root>
-    <Checkbox.Control>
-      <Checkbox.Indicator>
+  <Checkbox.Root :class="styles.Root">
+    <Checkbox.Control :class="styles.Control">
+      <Checkbox.Indicator :class="styles.Indicator">
         <CheckIcon />
       </Checkbox.Indicator>
     </Checkbox.Control>
     <Checkbox.Context v-slot="checkbox">
-      <Checkbox.Label>Checkbox {{ checkbox.checked.toString() }}</Checkbox.Label>
+      <Checkbox.Label :class="styles.Label">Checked: {{ String(checkbox.checked) }}</Checkbox.Label>
     </Checkbox.Context>
     <Checkbox.HiddenInput />
   </Checkbox.Root>

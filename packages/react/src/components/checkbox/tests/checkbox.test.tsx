@@ -1,7 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { WithField } from '../examples/with-field'
 import { ComponentUnderTest } from './basic'
 import { ControlledComponentUnderTest } from './controlled'
 
@@ -50,6 +49,30 @@ describe('Checkbox', () => {
     await waitFor(() => expect(checkbox).toBeChecked())
   })
 })
+
+import { Checkbox } from '@ark-ui/react/checkbox'
+import { Field } from '@ark-ui/react/field'
+import { CheckIcon, MinusIcon } from 'lucide-react'
+import styles from 'styles/checkbox.module.css'
+
+const WithField = (props: Field.RootProps) => (
+  <Field.Root {...props}>
+    <Checkbox.Root className={styles.Root}>
+      <Checkbox.Control className={styles.Control}>
+        <Checkbox.Indicator className={styles.Indicator}>
+          <CheckIcon />
+        </Checkbox.Indicator>
+        <Checkbox.Indicator className={styles.Indicator} indeterminate>
+          <MinusIcon />
+        </Checkbox.Indicator>
+      </Checkbox.Control>
+      <Checkbox.Label className={styles.Label}>Label</Checkbox.Label>
+      <Checkbox.HiddenInput />
+    </Checkbox.Root>
+    <Field.HelperText>Additional Info</Field.HelperText>
+    <Field.ErrorText>Error Info</Field.ErrorText>
+  </Field.Root>
+)
 
 describe('Checkbox / Field', () => {
   it('should set checkbox as required', async () => {

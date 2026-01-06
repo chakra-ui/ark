@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Checkbox, useCheckboxGroup } from '@ark-ui/svelte/checkbox'
   import { CheckIcon } from 'lucide-svelte'
+  import styles from 'styles/checkbox.module.css'
 
   const items = [
     { label: 'React', value: 'react' },
     { label: 'Solid', value: 'solid' },
     { label: 'Vue', value: 'vue' },
-    { label: 'Svelte', value: 'svelte' },
   ]
 
   const group = useCheckboxGroup({
@@ -15,15 +15,15 @@
   })
 </script>
 
-<Checkbox.GroupProvider value={group}>
-  {#each items as item}
-    <Checkbox.Root value={item.value}>
-      <Checkbox.Label>{item.label}</Checkbox.Label>
-      <Checkbox.Control>
-        <Checkbox.Indicator>
+<Checkbox.GroupProvider class={styles.Group} value={group}>
+  {#each items as item (item.value)}
+    <Checkbox.Root class={styles.Root} value={item.value}>
+      <Checkbox.Control class={styles.Control}>
+        <Checkbox.Indicator class={styles.Indicator}>
           <CheckIcon />
         </Checkbox.Indicator>
       </Checkbox.Control>
+      <Checkbox.Label class={styles.Label}>{item.label}</Checkbox.Label>
       <Checkbox.HiddenInput />
     </Checkbox.Root>
   {/each}

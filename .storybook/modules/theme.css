@@ -1,6 +1,7 @@
 :root {
   /* Coral semantic tokens */
-  --coral-solid: #EB5E41;
+  --coral-solid: #eb5e41;
+  --coral-emphasized: #d14d32;
   --coral-muted: #ffdbda;
   --coral-subtle: #ffe5e4;
   --coral-fg: #c9453b;
@@ -9,16 +10,23 @@
 
   /* Neutral semantic tokens */
   --neutral-solid: #8d8d86;
+  --neutral-emphasized: #6f6d66;
   --neutral-muted: #e9e8e6;
   --neutral-subtle: #f1f0ef;
-  --neutral-fg: #63635e;
+  --neutral-fg: #1a1a19;
   --neutral-contrast: white;
   --neutral-focus-ring: #bcbbb5;
+
+  /* Border semantic tokens */
+  --border: #e5e5e3;
+  --border-muted: #eeeeec;
+  --border-emphasized: #d2d2cf;
 }
 
 .dark {
   /* Coral dark mode */
-  --coral-solid: #EB5E41;
+  --coral-solid: #eb5e41;
+  --coral-emphasized: #f47a5c;
   --coral-muted: #722b25;
   --coral-subtle: #55221e;
   --coral-fg: #f47a5c;
@@ -27,10 +35,15 @@
 
   /* Neutral dark mode */
   --neutral-solid: #6f6d66;
+  --neutral-emphasized: #8d8d86;
   --neutral-muted: #2a2a28;
   --neutral-subtle: #222221;
   --neutral-fg: #b5b3ad;
   --neutral-contrast: white;
   --neutral-focus-ring: #62605b;
-}
 
+  /* Border dark mode */
+  --border: #3a3a38;
+  --border-muted: #2f2f2d;
+  --border-emphasized: #4a4a47;
+}

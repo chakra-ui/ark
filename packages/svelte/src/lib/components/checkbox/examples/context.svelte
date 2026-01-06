@@ -10,6 +10,10 @@
       <CheckIcon />
     </Checkbox.Indicator>
   </Checkbox.Control>
-  <Checkbox.Label class={styles.Label}>Checkbox</Checkbox.Label>
+  <Checkbox.Context>
+    {#snippet render(api)}
+      <Checkbox.Label class={styles.Label}>Checked: {String(api().checked)}</Checkbox.Label>
+    {/snippet}
+  </Checkbox.Context>
   <Checkbox.HiddenInput />
 </Checkbox.Root>

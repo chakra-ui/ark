@@ -1,0 +1,63 @@
+.Root {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: top;
+  gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Label {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  user-select: none;
+  color: var(--neutral-fg);
+}
+
+.Control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--border-emphasized);
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--coral-contrast);
+  cursor: pointer;
+
+  &[data-state='checked'],
+  &[data-state='indeterminate'] {
+    background: var(--coral-solid);
+    border-color: var(--coral-solid);
+  }
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  & svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.Indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
