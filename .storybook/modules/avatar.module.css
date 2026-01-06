@@ -8,8 +8,8 @@
   flex-shrink: 0;
   user-select: none;
   border-radius: 9999px;
-  background: var(--coral-subtle);
-  color: var(--coral-fg);
+  background: var(--neutral-subtle);
+  color: var(--neutral-fg);
   font-size: 1rem;
   width: 2.5rem;
   height: 2.5rem;
@@ -30,3 +30,8 @@
   font-size: inherit;
 }
 
+.Overlay {
+  position: absolute;
+  top: 48px;
+  left: 0px;
+}
