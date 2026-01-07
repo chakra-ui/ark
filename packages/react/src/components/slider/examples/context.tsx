@@ -1,13 +1,17 @@
 import { Slider } from '@ark-ui/react/slider'
 import styles from 'styles/slider.module.css'
 
-export const Basic = () => {
+export const Context = () => {
   return (
     <Slider.Root className={styles.Root} defaultValue={[40]}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Slider.Label className={styles.Label}>Label</Slider.Label>
-        <Slider.ValueText className={styles.ValueText} />
-      </div>
+      <Slider.Context>
+        {(context) => (
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Slider.Label className={styles.Label}>Dragging: {String(context.dragging)}</Slider.Label>
+            <span className={styles.ValueText}>{context.value.join(', ')}</span>
+          </div>
+        )}
+      </Slider.Context>
       <Slider.Control className={styles.Control}>
         <Slider.Track className={styles.Track}>
           <Slider.Range className={styles.Range} />

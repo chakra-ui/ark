@@ -2,6 +2,7 @@ import { Accordion } from '@ark-ui/react/accordion'
 import { Slider } from '@ark-ui/react/slider'
 import { ChevronDownIcon } from 'lucide-react'
 import styles from 'styles/accordion.module.css'
+import slider from 'styles/slider.module.css'
 
 export const WithSlider = () => {
   return (
@@ -17,13 +18,15 @@ export const WithSlider = () => {
           <Accordion.ItemContent className={styles.ItemContent}>
             <div className={styles.ItemBody}>
               {item.content}
-              <Slider.Root>
-                <Slider.Label>Slider</Slider.Label>
-                <Slider.Control>
-                  <Slider.Track>
-                    <Slider.Range />
+              <Slider.Root className={slider.Root}>
+                <Slider.Label className={slider.Label}>Slider</Slider.Label>
+                <Slider.Control className={slider.Control}>
+                  <Slider.Track className={slider.Track}>
+                    <Slider.Range className={slider.Range} />
                   </Slider.Track>
-                  <Slider.Thumb index={0} />
+                  <Slider.Thumb index={0} className={slider.Thumb}>
+                    <Slider.HiddenInput />
+                  </Slider.Thumb>
                 </Slider.Control>
               </Slider.Root>
             </div>

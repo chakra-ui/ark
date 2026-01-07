@@ -4,7 +4,7 @@ import styles from 'styles/slider.module.css'
 </script>
 
 <template>
-  <Slider.Root :min="-10" :max="10" :default-value="[5]" :class="styles.Root">
+  <Slider.Root thumb-alignment="center" :default-value="[50]" :class="styles.Root">
     <div :style="{ display: 'flex', justifyContent: 'space-between' }">
       <Slider.Label :class="styles.Label">Label</Slider.Label>
       <Slider.ValueText :class="styles.ValueText" />

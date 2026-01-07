@@ -1,17 +1,9 @@
 <script lang="ts">
-  import { Slider, type SliderValueChangeDetails } from '@ark-ui/svelte/slider'
+  import { Slider } from '@ark-ui/svelte/slider'
   import styles from 'styles/slider.module.css'
-
-  const handleValueChange = (details: SliderValueChangeDetails) => {
-    console.log('onValueChange', details.value)
-  }
-
-  const handleValueChangeEnd = (details: SliderValueChangeDetails) => {
-    console.log('onValueChangeEnd', details.value)
-  }
 </script>
 
-<Slider.Root class={styles.Root} onValueChange={handleValueChange} onValueChangeEnd={handleValueChangeEnd}>
+<Slider.Root thumbAlignment="center" defaultValue={[50]} class={styles.Root}>
   <div style="display: flex; justify-content: space-between;">
     <Slider.Label class={styles.Label}>Label</Slider.Label>
     <Slider.ValueText class={styles.ValueText} />
