@@ -21,6 +21,12 @@
   --border: #e5e5e3;
   --border-muted: #eeeeec;
   --border-emphasized: #d2d2cf;
+
+  /* Error semantic tokens */
+  --error: #dc2626;
+
+  /* Popover */
+  --bg-popover: white;
 }
 
 .dark {
@@ -46,4 +52,10 @@
   --border: #3a3a38;
   --border-muted: #2f2f2d;
   --border-emphasized: #4a4a47;
+
+  /* Error dark mode */
+  --error: #f87171;
+
+  /* Popover dark mode */
+  --bg-popover: #1a1a19;
 }

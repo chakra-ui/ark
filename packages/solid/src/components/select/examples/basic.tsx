@@ -1,29 +1,44 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-solid'
 import { Index, Portal } from 'solid-js/web'
+import styles from 'styles/select.module.css'
+
+const frameworks = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+    { label: 'Vue', value: 'vue' },
+    { label: 'Svelte', value: 'svelte' },
+  ],
+})
 
 export const Basic = () => {
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
-
   return (
-    <Select.Root collection={collection}>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a Framework" />
-          <Select.Indicator>▼</Select.Indicator>
+    <Select.Root class={styles.Root} collection={frameworks}>
+      <Select.Label class={styles.Label}>Framework</Select.Label>
+      <Select.Control class={styles.Control}>
+        <Select.Trigger class={styles.Trigger}>
+          <Select.ValueText class={styles.ValueText} placeholder="Select" />
         </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+        <div class={styles.Indicators}>
+          <Select.ClearTrigger class={styles.ClearTrigger}>
+            <XIcon />
+          </Select.ClearTrigger>
+          <Select.Indicator class={styles.Indicator}>
+            <ChevronsUpDownIcon />
+          </Select.Indicator>
+        </div>
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
-            <Select.ItemGroup>
-              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-              <Index each={collection.items}>
+          <Select.Content class={styles.Content}>
+            <Select.ItemGroup class={styles.ItemGroup}>
+              <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
+              <Index each={frameworks.items}>
                 {(item) => (
-                  <Select.Item item={item()}>
-                    <Select.ItemText>{item()}</Select.ItemText>
-                    <Select.ItemIndicator>✓</Select.ItemIndicator>
+                  <Select.Item class={styles.Item} item={item()}>
+                    <Select.ItemText class={styles.ItemText}>{item().label}</Select.ItemText>
+                    <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
               </Index>

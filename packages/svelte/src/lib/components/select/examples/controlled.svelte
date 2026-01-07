@@ -1,7 +1,8 @@
 <script lang="ts">
   import { Portal } from '@ark-ui/svelte/portal'
   import { Select, createListCollection } from '@ark-ui/svelte/select'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronsUpDownIcon, XIcon } from 'lucide-svelte'
+  import styles from 'styles/select.module.css'
 
   interface Item {
     label: string
@@ -19,32 +20,32 @@
       { label: 'Svelte', value: 'svelte', disabled: true },
     ],
   })
-
-  let selectedItems = $derived.by<Item[]>(() => {
-    return collection.items.filter((item) => value.includes(item.value))
-  })
 </script>
 
-<Select.Root {collection} bind:value>
-  <Select.Label>Framework</Select.Label>
-  <Select.Control>
-    <Select.Trigger>
-      <Select.ValueText placeholder="Select a Framework" />
-      <Select.Indicator>
-        <ChevronDownIcon />
-      </Select.Indicator>
+<Select.Root class={styles.Root} {collection} bind:value>
+  <Select.Label class={styles.Label}>Framework</Select.Label>
+  <Select.Control class={styles.Control}>
+    <Select.Trigger class={styles.Trigger}>
+      <Select.ValueText class={styles.ValueText} placeholder="Select a Framework" />
     </Select.Trigger>
-    <Select.ClearTrigger>Clear</Select.ClearTrigger>
+    <div class={styles.Indicators}>
+      <Select.ClearTrigger class={styles.ClearTrigger}>
+        <XIcon />
+      </Select.ClearTrigger>
+      <Select.Indicator class={styles.Indicator}>
+        <ChevronsUpDownIcon />
+      </Select.Indicator>
+    </div>
   </Select.Control>
   <Portal>
     <Select.Positioner>
-      <Select.Content>
-        <Select.ItemGroup>
-          <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+      <Select.Content class={styles.Content}>
+        <Select.ItemGroup class={styles.ItemGroup}>
+          <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
           {#each collection.items as item (item.value)}
-            <Select.Item {item}>
-              <Select.ItemText>{item.label}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+            <Select.Item class={styles.Item} {item}>
+              <Select.ItemText class={styles.ItemText}>{item.label}</Select.ItemText>
+              <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
             </Select.Item>
           {/each}
         </Select.ItemGroup>
@@ -53,9 +54,3 @@
   </Portal>
   <Select.HiddenSelect />
 </Select.Root>
-
-{#if selectedItems.length > 0}
-  <div style="margin-top: 1rem;">
-    <p>Selected: {selectedItems.map((item) => item.label).join(', ')}</p>
-  </div>
-{/if}

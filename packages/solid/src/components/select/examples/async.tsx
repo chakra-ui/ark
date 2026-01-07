@@ -1,6 +1,8 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
-import { Index, Show, createMemo, createSignal } from 'solid-js'
+import { ChevronsUpDownIcon } from 'lucide-solid'
+import { Index, Match, Switch, createMemo, createSignal } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import styles from 'styles/select.module.css'
 
 function loadData() {
   return new Promise<string[]>((resolve) => {
@@ -31,34 +33,37 @@ export const Async = () => {
   }
 
   return (
-    <Select.Root collection={collection()} onOpenChange={handleOpenChange}>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select" />
-          <Select.Indicator>▼</Select.Indicator>
+    <Select.Root class={styles.Root} collection={collection()} onOpenChange={handleOpenChange}>
+      <Select.Label class={styles.Label}>Framework</Select.Label>
+      <Select.Control class={styles.Control}>
+        <Select.Trigger class={styles.Trigger}>
+          <Select.ValueText class={styles.ValueText} placeholder="Select" />
+          <Select.Indicator class={styles.Indicator}>
+            <ChevronsUpDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
-            <Show when={loading()}>
-              <div>Loading...</div>
-            </Show>
-            <Show when={error()}>
-              <div>Error: {error()?.message}</div>
-            </Show>
-            <Show when={items() !== null && !loading() && !error()}>
-              <Index each={collection().items}>
-                {(item) => (
-                  <Select.Item item={item()}>
-                    <Select.ItemText>{item()}</Select.ItemText>
-                    <Select.ItemIndicator>✓</Select.ItemIndicator>
-                  </Select.Item>
-                )}
-              </Index>
-            </Show>
+          <Select.Content class={styles.Content}>
+            <Switch>
+              <Match when={loading()}>
+                <div class={styles.Item}>Loading...</div>
+              </Match>
+              <Match when={error()}>
+                <div class={styles.Item}>Error: {error()?.message}</div>
+              </Match>
+              <Match when={items() !== null}>
+                <Index each={collection().items}>
+                  {(item) => (
+                    <Select.Item class={styles.Item} item={item()}>
+                      <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
+                      <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
+                    </Select.Item>
+                  )}
+                </Index>
+              </Match>
+            </Switch>
           </Select.Content>
         </Select.Positioner>
       </Portal>

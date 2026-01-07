@@ -1,31 +1,34 @@
 <script lang="ts">
   import { Portal } from '@ark-ui/svelte/portal'
   import { Select, createListCollection } from '@ark-ui/svelte/select'
-  import { ChevronDownIcon } from 'lucide-svelte'
+  import { ChevronsUpDownIcon } from 'lucide-svelte'
+  import styles from 'styles/select.module.css'
 
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
+  const collection = createListCollection({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
+  })
 </script>
 
-<Select.Root {collection} disabled>
-  <Select.Label>Framework (Disabled)</Select.Label>
-  <Select.Control>
-    <Select.Trigger>
-      <Select.ValueText placeholder="Select a Framework" />
-      <Select.Indicator>
-        <ChevronDownIcon />
+<Select.Root class={styles.Root} {collection} disabled>
+  <Select.Label class={styles.Label}>Framework (Disabled)</Select.Label>
+  <Select.Control class={styles.Control}>
+    <Select.Trigger class={styles.Trigger}>
+      <Select.ValueText class={styles.ValueText} placeholder="Select a Framework" />
+      <Select.Indicator class={styles.Indicator}>
+        <ChevronsUpDownIcon />
       </Select.Indicator>
     </Select.Trigger>
-    <Select.ClearTrigger>Clear</Select.ClearTrigger>
+    <Select.ClearTrigger class={styles.ClearTrigger}>Clear</Select.ClearTrigger>
   </Select.Control>
   <Portal>
     <Select.Positioner>
-      <Select.Content>
-        <Select.ItemGroup>
-          <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+      <Select.Content class={styles.Content}>
+        <Select.ItemGroup class={styles.ItemGroup}>
+          <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
           {#each collection.items as item}
-            <Select.Item {item}>
-              <Select.ItemText>{item}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+            <Select.Item class={styles.Item} {item}>
+              <Select.ItemText class={styles.ItemText}>{item}</Select.ItemText>
+              <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
             </Select.Item>
           {/each}
         </Select.ItemGroup>

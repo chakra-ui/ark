@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
   font-size: 0.875rem;
   font-weight: 500;
   font-family: inherit;
@@ -17,7 +18,15 @@
     border-color 150ms,
     color 150ms;
 
-  /* Default: outline gray */
+  & svg {
+    width: 0.85em;
+    height: 0.85em;
+  }
+
+  &:has(> svg:only-child) {
+    padding-inline: 0.625rem !important;
+  }
+
   background: transparent;
   border: 1px solid var(--border-emphasized);
   color: var(--neutral-fg);

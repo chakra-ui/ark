@@ -1,0 +1,253 @@
+# CSS Module & Example Update Guide
+
+This guide documents the patterns for styling Ark UI component examples using CSS modules across all supported frameworks (React, Solid, Svelte, Vue).
+
+## Directory Structure
+
+```
+.storybook/modules/
+├── theme.css           # CSS variables (colors, semantic tokens)
+├── button.module.css   # Button component styles
+├── field.module.css    # Field component styles
+├── select.module.css   # Select component styles
+├── GUIDE.mdx          # This guide
+└── css-modules.d.ts    # TypeScript declarations
+```
+
+## CSS Variables (theme.css)
+
+The `theme.css` file defines CSS custom properties used across all modules:
+
+```css
+:root {
+  /* Neutral colors */
+  --neutral-fg: #1a1a19;
+  --neutral-subtle: #f5f5f4;
+  --neutral-emphasized: #70706b;
+  
+  /* Coral accent */
+  --coral-solid: #ec5d5e;
+  --coral-fg: #c63637;
+  --coral-subtle: #feebec;
+  
+  /* Borders */
+  --border-emphasized: #e4e4e3;
+  
+  /* Semantic */
+  --error: #dc2626;
+  --bg-popover: white;
+}
+
+.dark {
+  /* Dark mode overrides */
+}
+```
+
+## Import Patterns by Framework
+
+### React
+
+```tsx
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
+
+<Select.Root className={styles.Root}>
+  <Select.Label className={styles.Label}>Label</Select.Label>
+</Select.Root>
+```
+
+### Solid
+
+```tsx
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
+
+<Select.Root class={styles.Root}>
+  <Select.Label class={styles.Label}>Label</Select.Label>
+</Select.Root>
+```
+
+### Svelte
+
+```svelte
+<script lang="ts">
+  import styles from 'styles/select.module.css'
+  import button from 'styles/button.module.css'
+</script>
+
+<Select.Root class={styles.Root}>
+  <Select.Label class={styles.Label}>Label</Select.Label>
+</Select.Root>
+```
+
+### Vue
+
+```vue
+<script setup lang="ts">
+import styles from 'styles/select.module.css'
+import button from 'styles/button.module.css'
+</script>
+
+<template>
+  <Select.Root :class="styles.Root">
+    <Select.Label :class="styles.Label">Label</Select.Label>
+  </Select.Root>
+</template>
+```
+
+## Select Component Structure
+
+The Select component follows this consistent structure across all frameworks:
+
+```
+Select.Root
+├── Select.Label
+├── Select.Control
+│   ├── Select.Trigger
+│   │   └── Select.ValueText
+│   ├── div.Indicators (wrapper for absolute positioning)
+│   │   ├── Select.ClearTrigger
+│   │   └── Select.Indicator
+├── Portal/Teleport
+│   └── Select.Positioner
+│       └── Select.Content
+│           └── Select.ItemGroup
+│               ├── Select.ItemGroupLabel
+│               └── Select.Item (mapped)
+│                   ├── Select.ItemText
+│                   └── Select.ItemIndicator
+└── Select.HiddenSelect
+```
+
+## Icon Usage
+
+Use `lucide-*` icons consistently:
+
+| Framework | Package | Icons |
+|-----------|---------|-------|
+| React | `lucide-react` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Solid | `lucide-solid` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Svelte | `lucide-svelte` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+| Vue | `lucide-vue-next` | `ChevronsUpDownIcon`, `XIcon`, `CheckIcon` |
+
+## Collection Data Structure
+
+Prefer object-based items for better label/value separation:
+
+```ts
+// ✅ Preferred
+const collection = createListCollection({
+  items: [
+    { label: 'React', value: 'react' },
+    { label: 'Solid', value: 'solid' },
+  ],
+})
+
+// ⚠️ Simple strings for basic examples only
+const collection = createListCollection({
+  items: ['React', 'Solid', 'Vue'],
+})
+```
+
+## CSS Module Naming Convention
+
+Each component module exports classes matching Ark UI part names:
+
+```css
+/* select.module.css */
+.Root { }
+.Label { }
+.Control { }
+.Trigger { }
+.ValueText { }
+.Indicators { }  /* Custom wrapper */
+.Indicator { }
+.ClearTrigger { }
+.Content { }
+.ItemGroup { }
+.ItemGroupLabel { }
+.Item { }
+.ItemText { }
+.ItemIndicator { }
+```
+
+## Data Attributes for Styling
+
+Ark UI components expose data attributes for state-based styling:
+
+```css
+.Trigger {
+  &[data-disabled] { opacity: 0.5; }
+  &[data-invalid] { border-color: var(--error); }
+  &[data-placeholder-shown] { color: var(--neutral-emphasized); }
+}
+
+.Item {
+  &[data-highlighted] { background: var(--neutral-subtle); }
+  &[data-state='checked'] { color: var(--coral-fg); }
+  &[data-disabled] { opacity: 0.5; }
+}
+
+.Content {
+  &[data-state='open'] { animation: slide-fade-in 0.15s ease-out; }
+  &[data-state='closed'] { animation: slide-fade-out 0.1s ease-in; }
+}
+```
+
+## Button Styling for Examples
+
+When examples need buttons (e.g., Focus, Submit, Add Item):
+
+```tsx
+// React
+import button from 'styles/button.module.css'
+<button className={button.Root}>Click me</button>
+
+// Solid
+<button class={button.Root}>Click me</button>
+
+// Svelte
+<button class={button.Root}>Click me</button>
+
+// Vue
+<button :class="button.Root">Click me</button>
+```
+
+## Import Order Convention
+
+Maintain consistent import ordering:
+
+```tsx
+// 1. Ark UI components
+import { Select, createListCollection } from '@ark-ui/react/select'
+// 2. Icons
+import { ChevronsUpDownIcon, XIcon } from 'lucide-react'
+// 3. Framework utilities (React hooks, Solid signals, etc.)
+import { useState } from 'react'
+// 4. CSS modules (button before component-specific)
+import button from 'styles/button.module.css'
+import styles from 'styles/select.module.css'
+```
+
+## Example File Locations
+
+```
+packages/
+├── react/src/components/{component}/examples/*.tsx
+├── solid/src/components/{component}/examples/*.tsx
+├── svelte/src/lib/components/{component}/examples/*.svelte
+└── vue/src/components/{component}/examples/*.vue
+```
+
+## Checklist for New Component Styling
+
+1. [ ] Create `{component}.module.css` in `.storybook/modules/`
+2. [ ] Define CSS variables in `theme.css` if needed
+3. [ ] Update all React examples with CSS module imports
+4. [ ] Update all Solid examples (use `class` instead of `className`)
+5. [ ] Update all Svelte examples (use `class`)
+6. [ ] Update all Vue examples (use `:class`)
+7. [ ] Replace text icons (▼, ✓) with Lucide icons
+8. [ ] Convert string collections to object-based where appropriate
+9. [ ] Add the `Indicators` wrapper pattern for Select-like components
+

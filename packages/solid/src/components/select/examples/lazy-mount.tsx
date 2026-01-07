@@ -1,5 +1,7 @@
 import { Select, createListCollection } from '@ark-ui/solid/select'
+import { ChevronsUpDownIcon } from 'lucide-solid'
 import { Index, Portal } from 'solid-js/web'
+import styles from 'styles/select.module.css'
 
 export const LazyMount = () => {
   const collection = createListCollection({
@@ -7,25 +9,27 @@ export const LazyMount = () => {
   })
 
   return (
-    <Select.Root collection={collection} lazyMount unmountOnExit>
-      <Select.Label>Framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a Framework" />
-          <Select.Indicator>▼</Select.Indicator>
+    <Select.Root class={styles.Root} collection={collection} lazyMount unmountOnExit>
+      <Select.Label class={styles.Label}>Framework</Select.Label>
+      <Select.Control class={styles.Control}>
+        <Select.Trigger class={styles.Trigger}>
+          <Select.ValueText class={styles.ValueText} placeholder="Select a Framework" />
+          <Select.Indicator class={styles.Indicator}>
+            <ChevronsUpDownIcon />
+          </Select.Indicator>
         </Select.Trigger>
-        <Select.ClearTrigger>Clear</Select.ClearTrigger>
+        <Select.ClearTrigger class={styles.ClearTrigger}>Clear</Select.ClearTrigger>
       </Select.Control>
       <Portal>
         <Select.Positioner>
-          <Select.Content>
-            <Select.ItemGroup>
-              <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
+          <Select.Content class={styles.Content}>
+            <Select.ItemGroup class={styles.ItemGroup}>
+              <Select.ItemGroupLabel class={styles.ItemGroupLabel}>Frameworks</Select.ItemGroupLabel>
               <Index each={collection.items}>
                 {(item) => (
-                  <Select.Item item={item()}>
-                    <Select.ItemText>{item()}</Select.ItemText>
-                    <Select.ItemIndicator>✓</Select.ItemIndicator>
+                  <Select.Item class={styles.Item} item={item()}>
+                    <Select.ItemText class={styles.ItemText}>{item()}</Select.ItemText>
+                    <Select.ItemIndicator class={styles.ItemIndicator}>✓</Select.ItemIndicator>
                   </Select.Item>
                 )}
               </Index>

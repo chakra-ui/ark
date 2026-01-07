@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Select, createListCollection } from '@ark-ui/vue/select'
-import { ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-vue-next'
 import { ref } from 'vue'
+import styles from 'styles/select.module.css'
 
 interface Item {
   label: string
@@ -21,25 +22,29 @@ const value = ref<string[]>(['vue'])
 </script>
 
 <template>
-  <Select.Root :collection="collection" v-model="value">
-    <Select.Label>Framework</Select.Label>
-    <Select.Control>
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select a Framework" />
-        <Select.Indicator>
-          <ChevronDownIcon />
-        </Select.Indicator>
+  <Select.Root :class="styles.Root" :collection="collection" v-model="value">
+    <Select.Label :class="styles.Label">Framework</Select.Label>
+    <Select.Control :class="styles.Control">
+      <Select.Trigger :class="styles.Trigger">
+        <Select.ValueText :class="styles.ValueText" placeholder="Select a Framework" />
       </Select.Trigger>
-      <Select.ClearTrigger>Clear</Select.ClearTrigger>
+      <div :class="styles.Indicators">
+        <Select.ClearTrigger :class="styles.ClearTrigger">
+          <XIcon />
+        </Select.ClearTrigger>
+        <Select.Indicator :class="styles.Indicator">
+          <ChevronsUpDownIcon />
+        </Select.Indicator>
+      </div>
     </Select.Control>
     <Teleport to="body">
       <Select.Positioner>
-        <Select.Content>
-          <Select.ItemGroup>
-            <Select.ItemGroupLabel>Frameworks</Select.ItemGroupLabel>
-            <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Select.ItemText>{{ item.label }}</Select.ItemText>
-              <Select.ItemIndicator>✓</Select.ItemIndicator>
+        <Select.Content :class="styles.Content">
+          <Select.ItemGroup :class="styles.ItemGroup">
+            <Select.ItemGroupLabel :class="styles.ItemGroupLabel">Frameworks</Select.ItemGroupLabel>
+            <Select.Item v-for="item in collection.items" :key="item.value" :item="item" :class="styles.Item">
+              <Select.ItemText :class="styles.ItemText">{{ item.label }}</Select.ItemText>
+              <Select.ItemIndicator :class="styles.ItemIndicator">✓</Select.ItemIndicator>
             </Select.Item>
           </Select.ItemGroup>
         </Select.Content>

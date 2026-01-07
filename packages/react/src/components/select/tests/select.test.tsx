@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { axe } from 'vitest-axe'
-import { WithField } from '../examples/with-field'
+import { SelectWithField } from './field'
 import { ComponentUnderTest } from './basic'
 
 describe('Select', () => {
@@ -116,38 +116,38 @@ describe('Select', () => {
 
 describe('Select / Field', () => {
   it('should set combobox as required', async () => {
-    render(<WithField required />)
+    render(<SelectWithField required />)
     expect(screen.getAllByRole('combobox', { hidden: true })[1]).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
-    render(<WithField disabled />)
+    render(<SelectWithField disabled />)
     expect(screen.getByRole('combobox')).toBeDisabled()
   })
 
   it('should set input as readonly', async () => {
-    render(<WithField readOnly />)
+    render(<SelectWithField readOnly />)
     expect(screen.getByRole('combobox')).toHaveAttribute('data-readonly')
   })
 
   it('should display helper text', async () => {
-    render(<WithField />)
+    render(<SelectWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(<WithField invalid />)
+    render(<SelectWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on input when label is clicked', async () => {
-    render(<WithField />)
+    render(<SelectWithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('combobox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(<WithField />)
+    render(<SelectWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })
