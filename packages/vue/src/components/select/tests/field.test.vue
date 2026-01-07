@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { Field, type FieldRootProps } from '../../field'
 import { Select, createListCollection } from '../'
-import { useForwardProps } from '../../..'
 
 const collection = createListCollection({
   items: ['React', 'Solid', 'Vue', 'Svelte'],
 })
 
 const props = defineProps<FieldRootProps>()
-const localProps = useForwardProps(props)
 </script>
 
 <template>
-  <Field.Root v-bind="localProps">
+  <Field.Root v-bind="props">
     <Select.Root :collection="collection">
       <Select.Label>Label</Select.Label>
       <Select.Control>

@@ -42,7 +42,7 @@ export const GroupWithSelectAll = () => {
       <Checkbox.Group
         class={styles.Group}
         style={{ 'margin-inline-start': '1rem' }}
-        value={value()}
+        value={value}
         onValueChange={setValue}
         name="framework"
       >
