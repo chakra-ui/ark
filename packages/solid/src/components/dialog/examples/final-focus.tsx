@@ -12,7 +12,7 @@ export const FinalFocus = () => {
       <button ref={buttonRef} class={button.Root}>
         Focus Target
       </button>
-      <Dialog.Root finalFocusEl={() => buttonRef}>
+      <Dialog.Root finalFocusEl={() => buttonRef!}>
         <Dialog.Trigger class={button.Root}>Open Dialog</Dialog.Trigger>
         <Portal>
           <Dialog.Backdrop class={styles.Backdrop} />

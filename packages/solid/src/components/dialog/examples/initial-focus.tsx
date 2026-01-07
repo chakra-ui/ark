@@ -8,7 +8,7 @@ export const InitialFocus = () => {
   let inputRef: HTMLInputElement | undefined
 
   return (
-    <Dialog.Root initialFocusEl={() => inputRef}>
+    <Dialog.Root initialFocusEl={() => inputRef!}>
       <Dialog.Trigger class={button.Root}>Open Dialog</Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop class={styles.Backdrop} />
