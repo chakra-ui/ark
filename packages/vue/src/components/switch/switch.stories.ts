@@ -3,8 +3,8 @@ import type { Meta } from '@storybook/vue3-vite'
 import BasicExample from './examples/basic.vue'
 import ControlledExample from './examples/controlled.vue'
 import DisabledExample from './examples/disabled.vue'
-import InitialValueExample from './examples/initial-value.vue'
-import RenderPropExample from './examples/render-prop.vue'
+import InitialCheckedExample from './examples/initial-checked.vue'
+import ContextExample from './examples/context.vue'
 import RootProviderExample from './examples/root-provider.vue'
 import WithFieldExample from './examples/with-field.vue'
 
@@ -35,16 +35,16 @@ export const Disabled = {
   }),
 }
 
-export const InitialValue = {
+export const InitialChecked = {
   render: () => ({
-    components: { Component: InitialValueExample },
+    components: { Component: InitialCheckedExample },
     template: '<Component />',
   }),
 }
 
-export const RenderProp = {
+export const Context = {
   render: () => ({
-    components: { Component: RenderPropExample },
+    components: { Component: ContextExample },
     template: '<Component />',
   }),
 }

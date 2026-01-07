@@ -1,8 +1,8 @@
 import { Switch } from '@ark-ui/solid/switch'
 import styles from 'styles/switch.module.css'
 
-export const Basic = () => (
-  <Switch.Root class={styles.Root}>
+export const InitialChecked = () => (
+  <Switch.Root class={styles.Root} defaultChecked>
     <Switch.Control class={styles.Control}>
       <Switch.Thumb class={styles.Thumb} />
     </Switch.Control>

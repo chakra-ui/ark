@@ -68,7 +68,7 @@
   justify-content: center;
   width: 1.25rem;
   height: 1.25rem;
-  background: white;
+  background: var(--bg-thumb);
   border: 2px solid var(--coral-solid);
   border-radius: 9999px;
   outline: none;

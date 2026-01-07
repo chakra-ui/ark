@@ -1,7 +1,6 @@
 import { render, screen } from '@solidjs/testing-library'
 import user from '@testing-library/user-event'
-import { WithField } from '../examples/with-field'
-import { ComponentUnderTest } from './basic'
+import { ComponentUnderTest, SwitchWithField } from './basic'
 
 describe('Switch', () => {
   it('should toggle state when clicked', async () => {
@@ -42,33 +41,33 @@ describe('Switch', () => {
 
 describe('Switch / Field', () => {
   it('should set checkbox as required', async () => {
-    render(() => <WithField required />)
+    render(() => <SwitchWithField required />)
     expect(screen.getByRole('checkbox', { name: /label/i })).toBeRequired()
   })
 
   it('should set input as disabled', async () => {
-    render(() => <WithField disabled />)
+    render(() => <SwitchWithField disabled />)
     expect(screen.getByRole('checkbox', { name: /label/i })).toBeDisabled()
   })
 
   it('should display helper text', async () => {
-    render(() => <WithField />)
+    render(() => <SwitchWithField />)
     expect(screen.getByText('Additional Info')).toBeInTheDocument()
   })
 
   it('should display error text when error is present', async () => {
-    render(() => <WithField invalid />)
+    render(() => <SwitchWithField invalid />)
     expect(screen.getByText('Error Info')).toBeInTheDocument()
   })
 
   it('should focus on input when label is clicked', async () => {
-    render(() => <WithField />)
+    render(() => <SwitchWithField />)
     await user.click(screen.getByText(/label/i))
     expect(screen.getByRole('checkbox', { name: /label/i })).toHaveFocus()
   })
 
   it('should not display error text when no error is present', async () => {
-    render(() => <WithField />)
+    render(() => <SwitchWithField />)
     expect(screen.queryByText('Error Info')).not.toBeInTheDocument()
   })
 })
