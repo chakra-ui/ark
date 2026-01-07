@@ -13,10 +13,6 @@
     "moduleResolution": "bundler",
     "types": ["vitest/globals"],
     "isolatedModules": true,
-    "baseUrl": ".",
-    "paths": {
-      "styles/*": ["../../.storybook/modules/*"]
-    },
     "noPropertyAccessFromIndexSignature": false
   },
   "include": [
