@@ -1,35 +1,25 @@
-import { XIcon } from 'lucide-solid'
 import { Dialog } from '@ark-ui/solid/dialog'
+import { XIcon } from 'lucide-solid'
 import { Portal } from 'solid-js/web'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
-export const CloseOnInteractOutside = () => {
-  return (
-    <Dialog.Root
-      closeOnInteractOutside={false}
-      onInteractOutside={(e) => {
-        const target = e.target as HTMLElement
-        if (target.closest('[data-allow-close]')) {
-          return
-        }
-        e.preventDefault()
-      }}
-    >
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
-      <Portal>
-        <Dialog.Backdrop />
-        <Dialog.Positioner>
-          <Dialog.Content>
-            <Dialog.Title>Custom Close Behavior</Dialog.Title>
-            <Dialog.Description>
-              This dialog will not close when clicking outside. Try clicking the backdrop or pressing Escape to see that
-              it stays open. Only the close button will dismiss it.
-            </Dialog.Description>
-            <Dialog.CloseTrigger>
-              <XIcon />
-            </Dialog.CloseTrigger>
-          </Dialog.Content>
-        </Dialog.Positioner>
-      </Portal>
-    </Dialog.Root>
-  )
-}
+export const CloseOnInteractOutside = () => (
+  <Dialog.Root closeOnInteractOutside={false}>
+    <Dialog.Trigger class={button.Root}>Open Dialog</Dialog.Trigger>
+    <Portal>
+      <Dialog.Backdrop class={styles.Backdrop} />
+      <Dialog.Positioner class={styles.Positioner}>
+        <Dialog.Content class={styles.Content}>
+          <Dialog.CloseTrigger class={styles.CloseTrigger}>
+            <XIcon />
+          </Dialog.CloseTrigger>
+          <Dialog.Title class={styles.Title}>Click Outside Disabled</Dialog.Title>
+          <Dialog.Description class={styles.Description}>
+            Clicking outside this dialog will not close it. Use the close button instead.
+          </Dialog.Description>
+        </Dialog.Content>
+      </Dialog.Positioner>
+    </Portal>
+  </Dialog.Root>
+)

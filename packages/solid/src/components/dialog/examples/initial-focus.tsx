@@ -1,26 +1,30 @@
-import { XIcon } from 'lucide-solid'
 import { Dialog } from '@ark-ui/solid/dialog'
+import { XIcon } from 'lucide-solid'
 import { Portal } from 'solid-js/web'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
 export const InitialFocus = () => {
-  let inputRef: HTMLInputElement | null = null
+  let inputRef: HTMLInputElement | undefined
 
   return (
     <Dialog.Root initialFocusEl={() => inputRef}>
-      <Dialog.Trigger>Open Dialog</Dialog.Trigger>
+      <Dialog.Trigger class={button.Root}>Open Dialog</Dialog.Trigger>
       <Portal>
-        <Dialog.Backdrop />
-        <Dialog.Positioner>
-          <Dialog.Content>
-            <Dialog.Title>Edit Profile</Dialog.Title>
-            <Dialog.Description>
-              Make changes to your profile here. The first input will be focused when the dialog opens.
-            </Dialog.Description>
-            <input ref={inputRef!} type="text" placeholder="Enter your name..." />
-            <input type="email" placeholder="Enter your email..." />
-            <Dialog.CloseTrigger>
+        <Dialog.Backdrop class={styles.Backdrop} />
+        <Dialog.Positioner class={styles.Positioner}>
+          <Dialog.Content class={styles.Content}>
+            <Dialog.CloseTrigger class={styles.CloseTrigger}>
               <XIcon />
             </Dialog.CloseTrigger>
+            <Dialog.Title class={styles.Title}>Edit Profile</Dialog.Title>
+            <Dialog.Description class={styles.Description}>
+              The name input will be focused when this dialog opens.
+            </Dialog.Description>
+            <div class={styles.Body}>
+              <input ref={inputRef} type="text" placeholder="Enter your name" />
+              <input type="email" placeholder="Enter your email" />
+            </div>
           </Dialog.Content>
         </Dialog.Positioner>
       </Portal>

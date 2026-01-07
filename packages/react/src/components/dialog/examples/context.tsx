@@ -4,7 +4,7 @@ import { XIcon } from 'lucide-react'
 import button from 'styles/button.module.css'
 import styles from 'styles/dialog.module.css'
 
-export const Basic = () => (
+export const Context = () => (
   <Dialog.Root>
     <Dialog.Trigger className={button.Root}>Open Dialog</Dialog.Trigger>
     <Portal>
@@ -14,8 +14,10 @@ export const Basic = () => (
           <Dialog.CloseTrigger className={styles.CloseTrigger}>
             <XIcon />
           </Dialog.CloseTrigger>
-          <Dialog.Title className={styles.Title}>Welcome Back</Dialog.Title>
-          <Dialog.Description className={styles.Description}>Sign in to your account to continue.</Dialog.Description>
+          <Dialog.Title className={styles.Title}>Status</Dialog.Title>
+          <Dialog.Description className={styles.Description}>
+            <Dialog.Context>{(dialog) => <span>Dialog is {dialog.open ? 'open' : 'closed'}</span>}</Dialog.Context>
+          </Dialog.Description>
         </Dialog.Content>
       </Dialog.Positioner>
     </Portal>

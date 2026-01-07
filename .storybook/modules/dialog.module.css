@@ -40,6 +40,12 @@
     0 10px 38px -10px rgba(14, 18, 22, 0.35),
     0 10px 20px -15px rgba(14, 18, 22, 0.2);
   z-index: var(--layer-index);
+  outline: 0;
+  transition: transform 0.1s ease-in-out;
+
+  &[data-has-nested] {
+    transform: scale(calc(1 - var(--nested-layer-count) * 0.05));
+  }
 
   &[data-state='open'] {
     animation: scale-fade-in 0.15s ease-out;
@@ -55,7 +61,6 @@
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.75rem;
-  letter-spacing: -0.025em;
   color: var(--neutral-fg);
 }
 
@@ -69,6 +74,7 @@
 .Body {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 0.75rem;
   margin-top: 1.25rem;
 }

@@ -1,23 +1,26 @@
 import { Dialog } from '@ark-ui/react/dialog'
 import { Portal } from '@ark-ui/react/portal'
-import { XIcon } from 'lucide-react'
+import button from 'styles/button.module.css'
+import styles from 'styles/dialog.module.css'
 
 export const AlertDialog = () => (
   <Dialog.Root role="alertdialog">
-    <Dialog.Trigger>Delete Account</Dialog.Trigger>
+    <Dialog.Trigger className={button.Root}>Delete Account</Dialog.Trigger>
     <Portal>
-      <Dialog.Backdrop />
-      <Dialog.Positioner>
-        <Dialog.Content>
-          <Dialog.Title>Are you absolutely sure?</Dialog.Title>
-          <Dialog.Description>
+      <Dialog.Backdrop className={styles.Backdrop} />
+      <Dialog.Positioner className={styles.Positioner}>
+        <Dialog.Content className={styles.Content}>
+          <Dialog.Title className={styles.Title}>Are you absolutely sure?</Dialog.Title>
+          <Dialog.Description className={styles.Description}>
             This action cannot be undone. This will permanently delete your account and remove your data from our
             servers.
           </Dialog.Description>
-          <Dialog.CloseTrigger>
-            <XIcon />
-          </Dialog.CloseTrigger>
-          <button type="button">Delete Account</button>
+          <div className={styles.Actions}>
+            <Dialog.CloseTrigger className={button.Root}>Cancel</Dialog.CloseTrigger>
+            <button className={button.Root} data-variant="solid">
+              Delete Account
+            </button>
+          </div>
         </Dialog.Content>
       </Dialog.Positioner>
     </Portal>
