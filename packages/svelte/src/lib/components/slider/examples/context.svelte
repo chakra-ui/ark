@@ -5,12 +5,12 @@
 
 <Slider.Root class={styles.Root} defaultValue={[40]}>
   <Slider.Context>
-    {#snippet children(context)}
+    {#snippet render(context)}
       <div style="display: flex; justify-content: space-between;">
         <Slider.Label class={styles.Label}>
-          Dragging: {String(context.dragging)}
+          Dragging: {String(context().dragging)}
         </Slider.Label>
-        <span class={styles.ValueText}>{context.value.join(', ')}</span>
+        <span class={styles.ValueText}>{context().value.join(', ')}</span>
       </div>
     {/snippet}
   </Slider.Context>
