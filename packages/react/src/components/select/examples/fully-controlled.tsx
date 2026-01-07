@@ -1,12 +1,14 @@
 import { Portal } from '@ark-ui/react/portal'
 import { Select, createListCollection } from '@ark-ui/react/select'
-import { ChevronsUpDownIcon } from 'lucide-react'
+import { ChevronsUpDownIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 import styles from 'styles/select.module.css'
 
 export const FullyControlled = () => {
   const [value, setValue] = useState(['React'])
-  const collection = createListCollection({ items: ['React', 'Solid', 'Vue', 'Svelte'] })
+  const collection = createListCollection({
+    items: ['React', 'Solid', 'Vue', 'Svelte'],
+  })
 
   return (
     <Select.Root className={styles.Root} value={value} collection={collection} onValueChange={(e) => setValue(e.value)}>
@@ -14,11 +16,15 @@ export const FullyControlled = () => {
       <Select.Control className={styles.Control}>
         <Select.Trigger className={styles.Trigger}>
           <Select.ValueText className={styles.ValueText} placeholder="Select a Framework" />
+        </Select.Trigger>
+        <div className={styles.Indicators}>
+          <Select.ClearTrigger className={styles.ClearTrigger}>
+            <XIcon />
+          </Select.ClearTrigger>
           <Select.Indicator className={styles.Indicator}>
             <ChevronsUpDownIcon />
           </Select.Indicator>
-        </Select.Trigger>
-        <Select.ClearTrigger className={styles.ClearTrigger}>Clear</Select.ClearTrigger>
+        </div>
       </Select.Control>
       <Portal>
         <Select.Positioner>
