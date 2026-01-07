@@ -3,9 +3,10 @@
   import styles from 'styles/radio-group.module.css'
 
   const frameworks = ['React', 'Solid', 'Vue']
+  let value = $state<string | null>(null)
 </script>
 
-<RadioGroup.Root class={styles.Root} defaultValue="Solid">
+<RadioGroup.Root class={styles.Root} bind:value>
   <RadioGroup.Label class={styles.Label}>Framework</RadioGroup.Label>
   {#each frameworks as framework}
     <RadioGroup.Item class={styles.Item} value={framework}>

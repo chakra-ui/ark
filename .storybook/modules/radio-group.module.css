@@ -1,0 +1,80 @@
+.Root {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--neutral-fg);
+  user-select: none;
+
+  &[data-disabled] {
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+}
+
+.Item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.ItemControl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--border-emphasized);
+  border-radius: 9999px;
+  background: transparent;
+  cursor: pointer;
+
+  &[data-state='checked'] {
+    border-color: var(--coral-solid);
+    border-width: 5px;
+  }
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.ItemText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--neutral-fg);
+  user-select: none;
+}
+
+.Indicator {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--coral-solid);
+  border-radius: 9999px;
+  transition:
+    top 0.15s ease,
+    left 0.15s ease;
+}
