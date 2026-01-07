@@ -4,21 +4,20 @@ import { XIcon } from 'lucide-react'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 
-export const Arrow = () => (
+export const Context = () => (
   <Popover.Root>
     <Popover.Trigger className={button.Root}>Click Me</Popover.Trigger>
     <Portal>
-      <Popover.Positioner className={styles.Positioner}>
+      <Popover.Positioner>
         <Popover.Content className={styles.Content}>
-          <Popover.Arrow className={styles.Arrow}>
-            <Popover.ArrowTip className={styles.ArrowTip} />
-          </Popover.Arrow>
           <Popover.CloseTrigger className={styles.CloseTrigger}>
             <XIcon />
           </Popover.CloseTrigger>
-          <Popover.Title className={styles.Title}>Notifications</Popover.Title>
+          <Popover.Title className={styles.Title}>Status</Popover.Title>
           <Popover.Description className={styles.Description}>
-            You have 3 unread messages in your inbox.
+            <Popover.Context>
+              {(context) => <span>Popover is {context.open ? 'visible' : 'hidden'}</span>}
+            </Popover.Context>
           </Popover.Description>
         </Popover.Content>
       </Popover.Positioner>

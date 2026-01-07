@@ -1,23 +1,28 @@
 import { Popover } from '@ark-ui/react/popover'
+import { Portal } from '@ark-ui/react/portal'
+import { XIcon } from 'lucide-react'
 import { useState } from 'react'
+import button from 'styles/button.module.css'
+import styles from 'styles/popover.module.css'
 
 export const Controlled = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   return (
-    <>
-      <button type="button" onClick={() => setIsOpen(!isOpen)}>
-        Toggle
-      </button>
-      <Popover.Root open={isOpen} closeOnInteractOutside={false}>
-        <Popover.Anchor>Anchor</Popover.Anchor>
-        <Popover.Positioner>
-          <Popover.Content>
-            <Popover.Title>Title</Popover.Title>
-            <Popover.Description>Description</Popover.Description>
-            <Popover.CloseTrigger>Close</Popover.CloseTrigger>
+    <Popover.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
+      <Popover.Trigger className={button.Root}>Click Me</Popover.Trigger>
+      <Portal>
+        <Popover.Positioner className={styles.Positioner}>
+          <Popover.Content className={styles.Content}>
+            <Popover.CloseTrigger className={styles.CloseTrigger}>
+              <XIcon />
+            </Popover.CloseTrigger>
+            <Popover.Title className={styles.Title}>Team Members</Popover.Title>
+            <Popover.Description className={styles.Description}>
+              Invite colleagues to collaborate on this project.
+            </Popover.Description>
           </Popover.Content>
         </Popover.Positioner>
-      </Popover.Root>
-    </>
+      </Portal>
+    </Popover.Root>
   )
 }

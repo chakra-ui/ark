@@ -4,18 +4,20 @@ import { Portal } from 'solid-js/web'
 import button from 'styles/button.module.css'
 import styles from 'styles/popover.module.css'
 
-export const Modal = () => (
-  <Popover.Root modal>
+export const Context = () => (
+  <Popover.Root>
     <Popover.Trigger class={button.Root}>Click Me</Popover.Trigger>
     <Portal>
-      <Popover.Positioner class={styles.Positioner}>
+      <Popover.Positioner>
         <Popover.Content class={styles.Content}>
           <Popover.CloseTrigger class={styles.CloseTrigger}>
             <XIcon />
           </Popover.CloseTrigger>
-          <Popover.Title class={styles.Title}>Confirm Action</Popover.Title>
+          <Popover.Title class={styles.Title}>Status</Popover.Title>
           <Popover.Description class={styles.Description}>
-            Focus is trapped inside this modal popover until dismissed.
+            <Popover.Context>
+              {(context) => <span>Popover is {context().open ? 'visible' : 'hidden'}</span>}
+            </Popover.Context>
           </Popover.Description>
         </Popover.Content>
       </Popover.Positioner>

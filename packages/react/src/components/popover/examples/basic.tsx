@@ -1,19 +1,20 @@
 import { Popover } from '@ark-ui/react/popover'
-import { ChevronRightIcon } from 'lucide-react'
+import { Portal } from '@ark-ui/react/portal'
+import button from 'styles/button.module.css'
+import styles from 'styles/popover.module.css'
 
 export const Basic = () => (
   <Popover.Root>
-    <Popover.Trigger>
-      Click Me
-      <Popover.Indicator>
-        <ChevronRightIcon />
-      </Popover.Indicator>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content>
-        <Popover.Title>Title</Popover.Title>
-        <Popover.Description>Description</Popover.Description>
-      </Popover.Content>
-    </Popover.Positioner>
+    <Popover.Trigger className={button.Root}>Click Me</Popover.Trigger>
+    <Portal>
+      <Popover.Positioner className={styles.Positioner}>
+        <Popover.Content className={styles.Content}>
+          <Popover.Title className={styles.Title}>Favorite Frameworks</Popover.Title>
+          <Popover.Description className={styles.Description}>
+            Manage and organize your favorite web frameworks.
+          </Popover.Description>
+        </Popover.Content>
+      </Popover.Positioner>
+    </Portal>
   </Popover.Root>
 )

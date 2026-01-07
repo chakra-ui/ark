@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { Popover } from '@ark-ui/vue/popover'
+import button from 'styles/button.module.css'
+import styles from 'styles/popover.module.css'
 </script>
 
 <template>
-  <Popover.Root>
-    <Popover.Trigger>
-      Click Me
-      <Popover.Indicator>{{ '>' }}</Popover.Indicator>
-    </Popover.Trigger>
-    <Popover.Positioner>
-      <Popover.Content>
-        <Popover.Title>Title</Popover.Title>
-        <Popover.Description>Description</Popover.Description>
+  <Popover.Root portalled>
+    <Popover.Trigger :class="button.Root">Click Me</Popover.Trigger>
+    <Popover.Positioner :class="styles.Positioner">
+      <Popover.Content :class="styles.Content">
+        <Popover.Title :class="styles.Title">Favorite Frameworks</Popover.Title>
+        <Popover.Description :class="styles.Description">
+          Manage and organize your favorite web frameworks.
+        </Popover.Description>
       </Popover.Content>
     </Popover.Positioner>
   </Popover.Root>

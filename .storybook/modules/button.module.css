@@ -31,7 +31,7 @@
   border: 1px solid var(--border-emphasized);
   color: var(--neutral-fg);
 
-  &:hover {
+  &:is(:hover, [aria-expanded='true']):not(:disabled, [data-disabled]) {
     background: var(--neutral-subtle);
   }
 
@@ -40,8 +40,7 @@
     outline-offset: 2px;
   }
 
-  &:disabled,
-  &[data-disabled] {
+  &:is(:disabled, [data-disabled]) {
     cursor: not-allowed;
     opacity: 0.5;
     filter: grayscale(100%);

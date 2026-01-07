@@ -1,0 +1,121 @@
+.Indicator {
+  display: inline-flex;
+  margin-inline-start: 4px;
+  transition: rotate 200ms ease;
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.Anchor {
+  display: inline-flex;
+}
+
+.Content {
+  --arrow-background: var(--bg-popover);
+  --arrow-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  outline: 0;
+  padding: 20px;
+  width: max(var(--reference-width), 320px);
+  background: var(--bg-popover);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  position: relative;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transform-origin: var(--transform-origin);
+  z-index: var(--layer-index);
+
+  &[data-state='open'] {
+    animation: scale-fade-in 0.15s ease-in-out;
+  }
+
+  &[data-state='closed'] {
+    animation: scale-fade-out 0.1s ease-in-out;
+  }
+}
+
+.Arrow {
+  --arrow-background: var(--bg-popover);
+  --arrow-shadow-color: var(--border);
+}
+
+.ArrowTip {
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.Title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 19px;
+  color: var(--neutral-fg);
+}
+
+.Description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--neutral-emphasized);
+}
+
+.Body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+  font-size: 14px;
+}
+
+.CloseTrigger {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: var(--neutral-emphasized);
+  background: transparent;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  & svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--coral-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes scale-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
