@@ -37,7 +37,7 @@
 
   &:focus-visible {
     outline: 2px solid var(--coral-focus-ring);
-    outline-offset: 2px;
+    outline-offset: -1px;
   }
 
   &:is(:disabled, [data-disabled]) {
@@ -65,6 +65,10 @@
     &:hover {
       background: var(--coral-fg);
       border-color: var(--coral-fg);
+    }
+
+    &:focus-visible {
+      outline-offset: 2px;
     }
   }
 }
