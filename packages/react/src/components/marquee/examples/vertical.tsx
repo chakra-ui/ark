@@ -1,14 +1,23 @@
 import { Marquee } from '@ark-ui/react/marquee'
+import styles from 'styles/marquee.module.css'
 
-const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape']
+const items = [
+  { name: 'Apple', logo: '🍎' },
+  { name: 'Banana', logo: '🍌' },
+  { name: 'Cherry', logo: '🍒' },
+  { name: 'Grape', logo: '🍇' },
+  { name: 'Watermelon', logo: '🍉' },
+  { name: 'Strawberry', logo: '🍓' },
+]
 
 export const Vertical = () => (
-  <Marquee.Root side="bottom" style={{ height: '300px' }}>
-    <Marquee.Viewport>
-      <Marquee.Content>
+  <Marquee.Root side="bottom" className={styles.Root}>
+    <Marquee.Viewport className={styles.Viewport}>
+      <Marquee.Content className={styles.Content}>
         {items.map((item, i) => (
-          <Marquee.Item key={i} style={{ padding: '1rem 0' }}>
-            {item}
+          <Marquee.Item key={i} className={styles.Item}>
+            <span className={styles.ItemLogo}>{item.logo}</span>
+            <span className={styles.ItemName}>{item.name}</span>
           </Marquee.Item>
         ))}
       </Marquee.Content>
