@@ -1,21 +1,28 @@
 <script lang="ts">
+  import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-svelte'
   import { Pagination } from '@ark-ui/svelte/pagination'
+  import styles from 'styles/pagination.module.css'
 </script>
 
-<Pagination.Root count={100} pageSize={10}>
+<Pagination.Root count={100} pageSize={10} class={styles.Root}>
   <Pagination.Context>
     {#snippet render(pagination)}
-      <div>
-        <button onclick={() => pagination().goToFirstPage()}>First</button>
-        <button onclick={() => pagination().goToPrevPage()}>Previous</button>
-        <button onclick={() => pagination().setPage(5)}>Go to Page 5</button>
-        <button onclick={() => pagination().goToNextPage()}>Next</button>
-        <button onclick={() => pagination().goToLastPage()}>Last</button>
-
-        <p>Page {pagination().page} of {pagination().totalPages}</p>
-        <p>Items {pagination().pageRange.start + 1}-{pagination().pageRange.end}</p>
-
-        <button onclick={() => pagination().setPageSize(20)}>20 per page</button>
+      <div class={styles.Controls}>
+        <button class={styles.Trigger} onclick={() => pagination().goToFirstPage()}>
+          <ChevronsLeft />
+        </button>
+        <button class={styles.Trigger} onclick={() => pagination().goToPrevPage()}>
+          <ChevronLeft />
+        </button>
+        <p class={styles.Text} style="min-width: 120px; text-align: center;">
+          Page {pagination().page} of {pagination().totalPages}
+        </p>
+        <button class={styles.Trigger} onclick={() => pagination().goToNextPage()}>
+          <ChevronRight />
+        </button>
+        <button class={styles.Trigger} onclick={() => pagination().goToLastPage()}>
+          <ChevronsRight />
+        </button>
       </div>
     {/snippet}
   </Pagination.Context>
